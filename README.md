@@ -13,7 +13,7 @@ anything without it. Check out his mod, TableTopTweaks if you haven't already!
 I'd also like to give a big shoutout and thank you to bubbles, Narria, CascadingDragon, and everyone else who has been so kind in the Modding discord.
 Seriously, thank you!
 
-I will be adding many things, but first I'm going to finish vindictave bastard!
+I will be adding many things, but first I'm going to finish vindictive bastard!
 
 *Current Features:
 
