@@ -13,7 +13,7 @@ namespace kadynsWOTRMods.Tweaks.RacialPrereqs {
         static class BlueprintsCache_Init_Patch {
             static bool Initialized;
 
-            public  static void Postfix() {
+            public static void Postfix() {
                 if (Initialized) return;
                 Initialized = true;
 
@@ -21,6 +21,7 @@ namespace kadynsWOTRMods.Tweaks.RacialPrereqs {
 
            
                 static void AllowRacialArchetypes() {
+
                     BlueprintArchetype StonelordArchetype = Resources.GetBlueprint<BlueprintArchetype>("cf0f99b3cd7444a48681b1c1c4aa2a41");
                     StonelordArchetype.RemoveComponents<PrerequisiteFeature>();
                     BlueprintArchetype PhantasmalMageArchetype = Resources.GetBlueprint<BlueprintArchetype>("e9d0ee69305049fe8400a066010dbcd1");
