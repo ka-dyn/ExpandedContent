@@ -1,7 +1,7 @@
 ﻿using HarmonyLib;
 using Kingmaker.Blueprints.JsonSystem;
 
-namespace kadynsTweaks.Tweaks {
+namespace kadynsWOTRMods.Tweaks {
     class ContentAdder {
         [HarmonyPatch(typeof(BlueprintsCache), "Init")]
         static class BlueprintsCache_Init_Patch {

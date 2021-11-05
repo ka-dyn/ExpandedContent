@@ -19,9 +19,9 @@ using Kingmaker.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using kadynsTweaks.Extensions;
+using kadynsWOTRMods.Extensions;
 
-namespace kadynsTweaks.Utilities {
+namespace kadynsWOTRMods.Utilities {
     public static class BloodlineTools {
 
         public static void AddActionIfTrue(this Kingmaker.Designers.EventConditionActionSystem.Actions.Conditional conditional, GameAction game_action) {

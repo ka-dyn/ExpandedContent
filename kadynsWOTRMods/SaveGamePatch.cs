@@ -3,7 +3,7 @@ using Kingmaker.EntitySystem.Entities;
 using System;
 using System.Collections.Generic;
 
-namespace kadynsTweaks {
+namespace kadynsWOTRMods {
     static class SaveGameFix {
         static private List<Action<UnitEntityData>> save_game_actions = new List<Action<UnitEntityData>>();
 

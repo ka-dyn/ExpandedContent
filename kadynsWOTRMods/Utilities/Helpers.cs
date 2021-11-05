@@ -21,9 +21,9 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
-using kadynsTweaks.Config;
+using kadynsWOTRMods.Config;
 
-namespace kadynsTweaks.Utilities {
+namespace kadynsWOTRMods.Utilities {
     public static class Helpers {
         public static T Create<T>(Action<T> init = null) where T : new() {
             var result = new T();
@@ -120,9 +120,7 @@ namespace kadynsTweaks.Utilities {
             var strings = LocalizationManager.CurrentPack.Strings;
             String oldValue;
             if (strings.TryGetValue(key, out oldValue) && value != oldValue) {
-#if DEBUG
-                Main.LogDebug($"Info: duplicate localized string `{key}`, different text.");
-#endif
+
             }
             strings[key] = value;
             localized = new LocalizedString {

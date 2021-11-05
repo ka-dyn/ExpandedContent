@@ -1,12 +1,12 @@
 ﻿using HarmonyLib;
-using kadynsTweaks;
+using kadynsWOTRMods;
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.JsonSystem;
 using System;
-using kadynsTweaks.Extensions;
+using kadynsWOTRMods.Extensions;
 
-namespace kadynsTweaks.Tweaks.RacialPrereqs {
+namespace kadynsWOTRMods.Tweaks.RacialPrereqs {
     internal class AllowRacialArchetypes {
 
         [HarmonyPatch(typeof(BlueprintsCache), "Init")]

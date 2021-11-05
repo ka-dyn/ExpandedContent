@@ -1,5 +1,5 @@
 ﻿using HarmonyLib;
-using kadynsTweaks.Extensions;
+using kadynsWOTRMods.Extensions;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Prerequisites;
@@ -11,7 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace kadynsTweaks.Tweaks.Deities {
+namespace kadynsWOTRMods.Tweaks.Deities {
 
     internal class AllowForbiddenDeities {
         private static readonly BlueprintFeature LichDeityMythicFeature = Resources.GetBlueprint<BlueprintFeature>("d633cf9ebcdc8ed4e8f2546c3e08742e");

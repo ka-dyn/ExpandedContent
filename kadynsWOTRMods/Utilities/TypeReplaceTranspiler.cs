@@ -5,7 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
 
-namespace kadynsTweaks.Utilities {
+namespace kadynsWOTRMods.Utilities {
     public class TypeReplaceTranspiler {
         private Dictionary<Type, Type> m_typeMapping;
         private Dictionary<MethodInfo, MethodInfo> m_staticCallMapping;

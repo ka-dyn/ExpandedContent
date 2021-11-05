@@ -4,7 +4,7 @@ using System.IO;
 using System.Reflection;
 using static UnityModManagerNet.UnityModManager;
 
-namespace kadynsTweaks.Config {
+namespace kadynsWOTRMods.Config {
     class ModSettings {
         public static ModEntry ModEntry;
         public static Blueprints Blueprints;
