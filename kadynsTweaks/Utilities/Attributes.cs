@@ -3,7 +3,7 @@ using System;
 using System.Linq;
 using System.Reflection;
 
-namespace TabletopTweaks.Utilities {
+namespace kadynsTweaks.Utilities {
     class PostPatchInitializeAttribute : Attribute {
     }
 
@@ -16,7 +16,6 @@ namespace TabletopTweaks.Utilities {
                 .Where(x => x.GetCustomAttributes(typeof(PostPatchInitializeAttribute), false).FirstOrDefault() != null);
 
             foreach (var method in methods) {
-                Main.LogDebug($"Executing Post Patch: {method.Name}");
                 method.Invoke(null, null); // invoke the method
             }
         }

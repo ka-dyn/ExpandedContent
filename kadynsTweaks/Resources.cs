@@ -2,9 +2,9 @@
 using Kingmaker.Blueprints;
 using System;
 using System.Collections.Generic;
-using TabletopTweaks.Config;
+using kadynsTweaks.Config;
 
-namespace TabletopTweaks {
+namespace kadynsTweaks {
     static class Resources {
         public static readonly Dictionary<BlueprintGuid, SimpleBlueprint> ModBlueprints = new Dictionary<BlueprintGuid, SimpleBlueprint>();
 
@@ -33,7 +33,7 @@ namespace TabletopTweaks {
         public static T GetBlueprint<T>(BlueprintGuid id) where T : SimpleBlueprint {
             SimpleBlueprint asset = ResourcesLibrary.TryGetBlueprint(id);
             T value = asset as T;
-            if (value == null) { Main.Log($"COULD NOT LOAD: {id} - {typeof(T)}"); }
+         
             return value;
         }
         public static void AddBlueprint([NotNull] SimpleBlueprint blueprint) {
@@ -44,16 +44,15 @@ namespace TabletopTweaks {
             AddBlueprint(blueprint, Id);
         }
         public static void AddBlueprint([NotNull] SimpleBlueprint blueprint, BlueprintGuid assetId) {
-            var loadedBlueprint = ResourcesLibrary.TryGetBlueprint(assetId);
-            if (loadedBlueprint == null) {
-                ModBlueprints[assetId] = blueprint;
-                ResourcesLibrary.BlueprintsCache.AddCachedBlueprint(assetId, blueprint);
-                blueprint.OnEnable();
-                Main.LogPatch("Added", blueprint);
-            } else {
-                Main.Log($"Failed to Add: {blueprint.name}");
-                Main.Log($"Asset ID: {assetId} already in use by: {loadedBlueprint.name}");
+            if (blueprint is null) {
+                throw new ArgumentNullException(nameof(blueprint));
             }
+
+            _ = ResourcesLibrary.TryGetBlueprint(assetId);
+        }
+
+        internal static T GetBlueprint<T>(string v, Action<object> p) {
+            throw new NotImplementedException();
         }
     }
-}
+    }

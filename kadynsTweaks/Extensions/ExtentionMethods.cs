@@ -16,11 +16,11 @@ using Kingmaker.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using TabletopTweaks.Utilities;
+using kadynsTweaks.Utilities;
 using UnityEngine;
 using static Kingmaker.Blueprints.Classes.Prerequisites.Prerequisite;
 
-namespace TabletopTweaks.Extensions {
+namespace kadynsTweaks.Extensions {
     static class ExtentionMethods {
         public static IEnumerable<GameAction> FlattenAllActions(this BlueprintScriptableObject blueprint) {
             List<GameAction> actions = new List<GameAction>();
@@ -403,7 +403,7 @@ namespace TabletopTweaks.Extensions {
             return false;
         }
 
-        static readonly FastRef<BlueprintArchetype, Sprite> blueprintArchetype_set_Icon = Helpers.CreateFieldSetter<BlueprintArchetype, Sprite>("m_Icon");
+        public static readonly FastRef<BlueprintArchetype, Sprite> blueprintArchetype_set_Icon = Helpers.CreateFieldSetter<BlueprintArchetype, Sprite>("m_Icon");
 
         public static void FixDomainSpell(this BlueprintAbility spell, int level, string spellListId) {
             var spellList = Resources.GetBlueprint<BlueprintSpellList>(spellListId);

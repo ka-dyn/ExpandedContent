@@ -1,13 +1,13 @@
-﻿{
-    "AssemblyName": "TabletopTweaks.dll",
-    "Author": "Sean Petrie",
-    "DisplayName": "Tabletop Tweaks",
-    "EntryMethod": "TabletopTweaks.Main.Load",
+{
+    "AssemblyName": "kadynsTweaks.dll",
+    "Author": "kadyn",
+    "DisplayName": "kadynsTweaks",
+    "EntryMethod": "kadynsTweaks.Main.Load",
     "GameVersion": "1.1.0",
-    "HomePage": "https://github.com/Vek17/WrathMods-TabletopTweaks/releases",
-    "Id": "TabletopTweaks",
+    "HomePage": "https://github.com/ka-dyn/kadynsTweaks/releases",
+    "Id": "kadynsTweaks",
     "ManagerVersion": "0.23.0",
-    "Repository": "https://raw.githubusercontent.com/Vek17/WrathMods-TabletopTweaks/master/Repository.json",
+    "Repository": "https://raw.githubusercontent.com/ka-dyn/kadynsTweaks/master/Repository.json",
     "Requirements": [],
-    "Version": "1.9.7"
+    "Version": "0.0.1"
 }

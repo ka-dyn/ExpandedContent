@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace TabletopTweaks.Utilities {
+namespace kadynsTweaks.Utilities {
     static class DescriptionTools {
         private static readonly EncyclopediaEntry[] EncyclopediaEntries = new EncyclopediaEntry[] {
             new EncyclopediaEntry {

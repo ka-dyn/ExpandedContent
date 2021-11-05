@@ -19,10 +19,9 @@ using Kingmaker.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using TabletopTweaks.Extensions;
-using TabletopTweaks.NewComponents;
+using kadynsTweaks.Extensions;
 
-namespace TabletopTweaks.Utilities {
+namespace kadynsTweaks.Utilities {
     public static class BloodlineTools {
 
         public static void AddActionIfTrue(this Kingmaker.Designers.EventConditionActionSystem.Actions.Conditional conditional, GameAction game_action) {
@@ -136,21 +135,17 @@ namespace TabletopTweaks.Utilities {
                 m_Feature = power.ToReference<BlueprintFeatureReference>()
             });
             BlueprintFeature SelectedPrimalistLevel() {
-                switch (level) {
-                    case 4: return PrimalistTakePower4;
-                    case 8: return PrimalistTakePower8;
-                    case 12: return PrimalistTakePower12;
-                    case 16: return PrimalistTakePower16;
-                    case 20: return PrimalistTakePower20;
-                    default: return null;
-                }
+                return level switch {
+                    4 => PrimalistTakePower4,
+                    8 => PrimalistTakePower8,
+                    12 => PrimalistTakePower12,
+                    16 => PrimalistTakePower16,
+                    20 => PrimalistTakePower20,
+                    _ => null,
+                };
             }
         }
-        public static void ApplyBloodrageRestriction(this BlueprintBuff bloodrage, BlueprintAbility ability) {
-            ability.AddComponent(new AbilityRequirementHasBuff() {
-                RequiredBuff = bloodrage.ToReference<BlueprintBuffReference>()
-            });
-        }
+ 
         public static void RegisterBloodragerBloodline(BlueprintProgression bloodline, BlueprintFeature wanderingBloodline) {
             BlueprintFeatureSelection BloodragerBloodlineSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("62b33ac8ceb18dd47ad4c8f06849bc01");
             BlueprintFeatureSelection SecondBloodragerBloodline = Resources.GetBlueprint<BlueprintFeatureSelection>("b7f62628915bdb14d8888c25da3fac56");
@@ -164,7 +159,7 @@ namespace TabletopTweaks.Utilities {
             AddFactToApply(MixedBloodlineAbility, wanderingBloodline);
             AddFactToApply(MixedBloodlineAbility2, wanderingBloodline);
 
-            void AddFactToApply(BlueprintAbility ability, BlueprintUnitFact fact) {
+            static void AddFactToApply(BlueprintAbility ability, BlueprintUnitFact fact) {
                 var component = ability.GetComponent<AbilityApplyFact>();
                 component.m_Facts = component.m_Facts
                     .AppendToArray(fact.ToReference<BlueprintUnitFactReference>())
@@ -260,56 +255,6 @@ namespace TabletopTweaks.Utilities {
                 bp.AddComponent<BuffExtraEffects>(c => {
                     c.m_CheckedBuff = rageBuff.ToReference<BlueprintBuffReference>();
                     c.m_ExtraEffectBuff = spellBuff.ToReference<BlueprintBuffReference>();
-                });
-            });
-        }
-
-        public static BlueprintAbility CreateArcaneBloodrageToggle(
-            string blueprintName,
-            BlueprintAbility abilityToImitate,
-            BlueprintAbility bloodragerArcaneSpellAbility,
-            BlueprintBuff switchBuff,
-            string buffGroupName,
-            List<BlueprintBuff> allToggleBuffsInGroup,
-            BlueprintUnitProperty casterProperty
-            ) {
-            var BloodragerStandartRageBuff = Resources.GetBlueprint<BlueprintBuff>("5eac31e457999334b98f98b60fc73b2f");
-            var BloodragerClass = Resources.GetBlueprint<BlueprintCharacterClass>("d77e67a814d686842802c9cfd8ef8499");
-            return Helpers.CreateBlueprint<BlueprintAbility>(blueprintName, bp => {
-                bp.m_DisplayName = abilityToImitate.m_DisplayName;
-                bp.m_Description = abilityToImitate.m_Description;
-                bp.m_DescriptionShort = abilityToImitate.m_DescriptionShort;
-                bp.LocalizedDuration = Helpers.CreateString($"{blueprintName}.LocalizedDuration", "While Raging");
-                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
-                bp.m_Icon = abilityToImitate.m_Icon;
-                bp.DisableLog = true;
-                bp.m_Parent = bloodragerArcaneSpellAbility.ToReference<BlueprintAbilityReference>();
-                bp.ActionType = Kingmaker.UnitLogic.Commands.Base.UnitCommand.CommandType.Free;
-                bp.Type = AbilityType.Special;
-                bp.Range = AbilityRange.Personal;
-                bp.CanTargetFriends = true;
-                bp.CanTargetSelf = true;
-                bp.Animation = Kingmaker.Visual.Animation.Kingmaker.Actions.UnitAnimationActionCastSpell.CastAnimationStyle.Special;
-                bp.AddComponent<PseudoActivatable>(c => {
-                    c.m_Type = PseudoActivatable.PseudoActivatableType.BuffToggle;
-                    c.m_Buff = switchBuff.ToReference<BlueprintBuffReference>();
-                    c.m_GroupName = buffGroupName;
-                });
-                bp.AddComponent<AbilityEffectToggleBuff>(c => {
-                    c.m_Buff = switchBuff.ToReference<BlueprintBuffReference>();
-                });
-                bp.AddComponent<AbilityRequirementHasBuff>(c => {
-                    c.Not = true;
-                    c.RequiredBuff = BloodragerStandartRageBuff.ToReference<BlueprintBuffReference>();
-                });
-                bp.AddComponent<ContextSetAbilityParams>(c => {
-                    c.DC = new ContextValue();
-                    c.Concentration = new ContextValue();
-                    c.SpellLevel = new ContextValue();
-                    c.CasterLevel = new ContextValue() {
-                        ValueType = ContextValueType.CasterCustomProperty,
-                        m_CustomProperty = casterProperty.ToReference<BlueprintUnitPropertyReference>()
-                    };
                 });
             });
         }
