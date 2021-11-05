@@ -1,0 +1,576 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Aze.Publicise.MSBuild.Task.1.0.0\build\Aze.Publicise.MSBuild.Task.props" Condition="Exists('..\packages\Aze.Publicise.MSBuild.Task.1.0.0\build\Aze.Publicise.MSBuild.Task.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E6F4977C-F1BD-45EC-96BA-4BF093C2DFBA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TabletopTweaks</RootNamespace>
+    <AssemblyName>TabletopTweaks</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <LangVersion>9</LangVersion>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>portable</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <NoWarn>
+
+0649</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <NoWarn>
+
+0649</NoWarn>
+  </PropertyGroup>
+  <Target Name="RemoveLib" BeforeTargets="Clean" Condition="Exists('$(SolutionDir)lib')">
+    <RemoveDir Directories="$(SolutionDir)lib" />
+  </Target>
+  <Target Name="CreateLib" BeforeTargets="BeforeBuild" AfterTargets="RemoveLib" Condition="!Exists('$(SolutionDir)lib')">
+    <MakeDir Directories="$(SolutionDir)lib" />
+  </Target>
+  <Target Name="Publicise" AfterTargets="CreateLib">
+    <ItemGroup>
+      <PubliciseAssemblyCSharp Include="$(WrathPath)\Wrath_Data\Managed\Assembly-CSharp.dll" />
+      <PubliciseUniRx Include="$(WrathPath)\Wrath_Data\Managed\UniRx.dll" />
+    </ItemGroup>
+    <Publicise InputAssemblies="@(PubliciseAssemblyCSharp)" OutputPath="$(SolutionDir)lib/" PubliciseCompilerGenerated="true" />
+    <Publicise InputAssemblies="@(PubliciseUniRx)" OutputPath="$(SolutionDir)lib/" PubliciseCompilerGenerated="true" />
+  </Target>
+  <ItemGroup>
+    <Reference Include="0Harmony, Version=2.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Lib.Harmony.2.1.1\lib\net472\0Harmony.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>$(SolutionDir)lib\Assembly-CSharp_public.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Assembly-CSharp-firstpass">
+      <HintPath>$(WrathPath)\Wrath_Data\Managed\Assembly-CSharp-firstpass.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Build.Framework" />
+    <Reference Include="Microsoft.Build.Utilities.v4.0" />
+    <Reference Include="ModKit, Version=1.0.8.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ModKit.1.0.8\lib\net472\ModKit.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Owlcat.Runtime.Core">
+      <HintPath>$(WrathPath)\Wrath_Data\Managed\Owlcat.Runtime.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Owlcat.Runtime.UI">
+      <HintPath>$(WrathPath)\Wrath_Data\Managed\Owlcat.Runtime.UI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UniRx">
+      <HintPath>$(SolutionDir)lib\UniRx_public.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.AnimationModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(WrathPath)\Wrath_Data\Managed\UnityEngine.AnimationModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.AssetBundleModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(WrathPath)\Wrath_Data\Managed\UnityEngine.AssetBundleModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>$(WrathPath)\Wrath_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.ImageConversionModule">
+      <HintPath>$(WrathPath)\Wrath_Data\Managed\UnityEngine.ImageConversionModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>$(WrathPath)\Wrath_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>$(WrathPath)\Wrath_Data\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>$(WrathPath)\Wrath_Data\Managed\UnityEngine.UI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityModManager">
+      <HintPath>$(WrathPath)\Wrath_Data\Managed\UnityModManager\UnityModManager.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Bugfixes\Abilities\BaseAbilities.cs" />
+    <Compile Include="Bugfixes\Classes\Alchemist.cs" />
+    <Compile Include="Bugfixes\Classes\Arcanist.cs" />
+    <Compile Include="Bugfixes\Classes\Barbarian.cs" />
+    <Compile Include="Bugfixes\Classes\Cavalier.cs" />
+    <Compile Include="Bugfixes\Classes\Fighter.cs" />
+    <Compile Include="Bugfixes\Classes\Hellknight.cs" />
+    <Compile Include="Bugfixes\Classes\Kineticist.cs" />
+    <Compile Include="Bugfixes\Classes\Lich.cs" />
+    <Compile Include="Bugfixes\Classes\Loremaster.cs" />
+    <Compile Include="Bugfixes\Classes\Magus.cs" />
+    <Compile Include="Bugfixes\Classes\Monk.cs" />
+    <Compile Include="Bugfixes\Classes\Oracle.cs" />
+    <Compile Include="Bugfixes\Classes\Paladin.cs" />
+    <Compile Include="Bugfixes\Classes\Ranger.cs" />
+    <Compile Include="Bugfixes\Classes\Trickster.cs" />
+    <Compile Include="Bugfixes\Features\Backgrounds.cs" />
+    <Compile Include="Bugfixes\Features\BaseAbilities.cs" />
+    <Compile Include="Bugfixes\Features\Conditions.cs" />
+    <Compile Include="Bugfixes\Features\MythicFeats.cs" />
+    <Compile Include="Bugfixes\General\AddFactsFix.cs" />
+    <Compile Include="Bugfixes\General\ContextRankConfigFix.cs" />
+    <Compile Include="Bugfixes\General\FeatSelections.cs" />
+    <Compile Include="Bugfixes\General\ProfaneGift.cs" />
+    <Compile Include="Bugfixes\General\ShadowMagicFix.cs" />
+    <Compile Include="Bugfixes\General\SizeModifiers.cs" />
+    <Compile Include="Bugfixes\General\WeaponProperties.cs" />
+    <Compile Include="Bugfixes\Items\Armor.cs" />
+    <Compile Include="Bugfixes\Items\Equipment.cs" />
+    <Compile Include="Bugfixes\Items\Weapons.cs" />
+    <Compile Include="Bugfixes\TacticalCombat\Buildings.cs" />
+    <Compile Include="Bugfixes\UI\FeatureSelection.cs" />
+    <Compile Include="Bugfixes\UI\OvertipFixes.cs" />
+    <Compile Include="Config\Blueprints.cs" />
+    <Compile Include="Config\Homebrew.cs" />
+    <Compile Include="Config\ICollapseableGroup.cs" />
+    <Compile Include="Config\IDisableableGroup.cs" />
+    <Compile Include="Config\IUpdatableSettings.cs" />
+    <Compile Include="Config\NestedSettingGroup.cs" />
+    <Compile Include="Config\SettingGroup.cs" />
+    <Compile Include="MechanicsChanges\ActivatableAbilitySpendLogic.cs" />
+    <Compile Include="MechanicsChanges\ArchetypePrerequisites .cs" />
+    <Compile Include="MechanicsChanges\CannyDefenseStacking.cs" />
+    <Compile Include="MechanicsChanges\ActivatableResourceFreeResourceLogic.cs" />
+    <Compile Include="Bugfixes\General\CriticalConfirmOn20.cs" />
+    <Compile Include="Bugfixes\General\TemporaryHitPointDisplayFix.cs" />
+    <Compile Include="MechanicsChanges\DRRework.cs" />
+    <Compile Include="MechanicsChanges\InherentBonuses.cs" />
+    <Compile Include="MechanicsChanges\MetamagicDamage.cs" />
+    <Compile Include="Bugfixes\General\BlueprintProgressionFix.cs" />
+    <Compile Include="MechanicsChanges\SelectiveMetamagic.cs" />
+    <Compile Include="NewActions\ContextActionDispelMagicCapped.cs" />
+    <Compile Include="NewActions\ContextActionWarriorSpiritEnhance.cs" />
+    <Compile Include="NewComponents\AbilityRequirementHasWeaponTrainingWithWeapon.cs" />
+    <Compile Include="NewComponents\AbilityShowIfCasterWeaponTrainingRank.cs" />
+    <Compile Include="NewComponents\AbilitySpecific\AberrantArcanaExtendComponent.cs" />
+    <Compile Include="NewComponents\AbilityShowIfCasterCanCastSpells.cs" />
+    <Compile Include="NewComponents\AbilitySpecific\AddWarriorSpiritEnchantment.cs" />
+    <Compile Include="NewComponents\AbilitySpecific\AeonGazeResouceLogic.cs" />
+    <Compile Include="NewComponents\AbilitySpecific\FocusedWeaponComponent.cs" />
+    <Compile Include="NewComponents\AbilitySpecific\MetaRageComponent.cs" />
+    <Compile Include="NewComponents\AbilitySpecific\QuickChannelComponent.cs" />
+    <Compile Include="NewComponents\AbilitySpecific\SpellSpecializationGreaterComponent.cs" />
+    <Compile Include="NewComponents\AbilitySpecific\SpellSpecializationParametrizedExtension.cs" />
+    <Compile Include="NewComponents\ACBonusAgainstSizeDifference.cs" />
+    <Compile Include="NewComponents\AddAdditionalRacialFeatures.cs" />
+    <Compile Include="NewComponents\AddFeatureOnClassLevelExclude.cs" />
+    <Compile Include="NewComponents\AdditionalSpellSelection.cs" />
+    <Compile Include="NewComponents\AddWeaponDamageTrigger.cs" />
+    <Compile Include="NewComponents\ArmoredJuggernautDRProperty.cs" />
+    <Compile Include="NewComponents\ArmorEnchantsToWeapon.cs" />
+    <Compile Include="NewComponents\ContextArcaneSpellFailureIncrease.cs" />
+    <Compile Include="NewComponents\ContextArmorCheckPenaltyIncrease.cs" />
+    <Compile Include="NewComponents\ContextMaxDexBonusIncrease.cs" />
+    <Compile Include="NewComponents\CustomSpecialSlotAmount.cs" />
+    <Compile Include="NewComponents\ForceACUpdate.cs" />
+    <Compile Include="NewComponents\HasFactFeatureUnlock.cs" />
+    <Compile Include="NewComponents\IncreaseResourceAmountByWeaponTraining.cs" />
+    <Compile Include="NewComponents\NestedPseudoActivatableAbilities.cs" />
+    <Compile Include="NewComponents\Properties\CompositeCustomPropertyGetter.cs" />
+    <Compile Include="NewComponents\Properties\MadDogPetDRProperty.cs" />
+    <Compile Include="NewComponents\Properties\CompositePropertyGetter.cs" />
+    <Compile Include="NewComponents\Properties\ProgressionRankGetter.cs" />
+    <Compile Include="NewComponents\PseudoActivatable.cs" />
+    <Compile Include="NewComponents\AbilityEffectToggleBuff.cs" />
+    <Compile Include="NewComponents\RecalculateOnEquipmentChange.cs" />
+    <Compile Include="NewComponents\OwlcatReplacements\DamageResistance\TTAddDamageResistanceEnergy.cs" />
+    <Compile Include="NewComponents\OwlcatReplacements\DamageResistance\TTAddDamageResistanceBase.cs" />
+    <Compile Include="NewComponents\AddOutgoingWeaponDamageBonus.cs" />
+    <Compile Include="NewComponents\AbilitySpecific\ArmoredMightComponent.cs" />
+    <Compile Include="NewComponents\ArmorFeatureUnlock.cs" />
+    <Compile Include="NewComponents\OwlcatReplacements\AttackStatReplacementEnforced.cs" />
+    <Compile Include="NewComponents\AbilitySpecific\BroadStudyComponent.cs" />
+    <Compile Include="NewComponents\AbilitySpecific\BroadStudyMythicComponent.cs" />
+    <Compile Include="NewComponents\BuffExtraEffectsRequirements.cs" />
+    <Compile Include="NewComponents\ContextConditionHasCondition.cs" />
+    <Compile Include="NewComponents\OwlcatReplacements\ContextRestoreResourcesFixed.cs" />
+    <Compile Include="NewComponents\OwlcatReplacements\CoupDeGraceComponent.cs" />
+    <Compile Include="NewComponents\OwlcatReplacements\DamageGraceEnforced.cs" />
+    <Compile Include="NewComponents\AbilitySpecific\DefensiveWeaponTrainingComponent.cs" />
+    <Compile Include="NewComponents\ConstrainTargetFeatureRank.cs" />
+    <Compile Include="NewComponents\EnsureProgressionAdded.cs" />
+    <Compile Include="NewComponents\AbilitySpecific\FocusedWeaponDamageComponent.cs" />
+    <Compile Include="NewComponents\IgnoreArmorCheckPenalty.cs" />
+    <Compile Include="NewComponents\IgnoreArmorMaxDexBonus.cs" />
+    <Compile Include="NewComponents\OwlcatReplacements\IndomitableMountFixed.cs" />
+    <Compile Include="NewComponents\OwlcatReplacements\MountedCombatFixed.cs" />
+    <Compile Include="NewComponents\NegateArmorCheckSkillPenalty.cs" />
+    <Compile Include="NewComponents\OutcomingAdditionalDamageAndHealingModifier.cs" />
+    <Compile Include="NewComponents\AbilitySpecific\PrecisionCriticalComponent.cs" />
+    <Compile Include="NewComponents\Prerequisites\PrerequisiteMythicSpellbook.cs" />
+    <Compile Include="NewComponents\Prerequisites\PrerequisiteSpellbook.cs" />
+    <Compile Include="NewComponents\Prerequisites\PrerequisiteSpellBookType.cs" />
+    <Compile Include="NewComponents\Prerequisites\PrerequisiteStatBonus.cs" />
+    <Compile Include="NewComponents\Prerequisites\PrerequisiteStatValues.cs" />
+    <Compile Include="NewComponents\AbilitySpecific\QuickStudyComponent.cs" />
+    <Compile Include="NewComponents\AddTouchReach.cs" />
+    <Compile Include="NewComponents\AbilitySpecific\DestinedArcanaComponent.cs" />
+    <Compile Include="NewComponents\IgnoreClassPrerequisites.cs" />
+    <Compile Include="NewComponents\Prerequisites\PrerequisiteSize.cs" />
+    <Compile Include="NewComponents\RecalculateOnLevelUp.cs" />
+    <Compile Include="NewComponents\RecommendationWeaponCategoryFocus.cs" />
+    <Compile Include="NewComponents\SavingThrowBonusAgainstAbility.cs" />
+    <Compile Include="NewComponents\InitiatorSpellCritAutoconfirm.cs" />
+    <Compile Include="NewComponents\RemoveBuffAfterSpellResistCheck.cs" />
+    <Compile Include="NewComponents\RemoveBuffRankOnAttack.cs" />
+    <Compile Include="NewComponents\AbilityRequirementHasBuff.cs" />
+    <Compile Include="NewComponents\SavingThrowBonusUnaware.cs" />
+    <Compile Include="NewComponents\SelectionDefaultFeature.cs" />
+    <Compile Include="NewComponents\AbilitySpecific\ShatterDefensesInitiator.cs" />
+    <Compile Include="NewComponents\SpontaneousSpecialListConversion.cs" />
+    <Compile Include="NewComponents\Properties\StalwartDRProperty.cs" />
+    <Compile Include="NewComponents\SurviveDeathWithSave.cs" />
+    <Compile Include="NewComponents\OwlcatReplacements\DamageResistance\TTAddDamageResistanceForce.cs" />
+    <Compile Include="NewComponents\OwlcatReplacements\DamageResistance\TTAddDamageResistancePhysical.cs" />
+    <Compile Include="NewComponents\OwlcatReplacements\DamageResistance\TTProtectionFromEnergy.cs" />
+    <Compile Include="NewComponents\OwlcatReplacements\DamageResistance\TTResistEnergy.cs" />
+    <Compile Include="NewComponents\OwlcatReplacements\DamageResistance\TTResistEnergyContext.cs" />
+    <Compile Include="NewComponents\OwlcatReplacements\DamageResistance\TTWizardAbjurationResistance.cs" />
+    <Compile Include="NewComponents\OwlcatReplacements\DamageResistance\TTWizardEnergyAbsorption.cs" />
+    <Compile Include="NewComponents\AbilitySpecific\TrainedGraceComponent.cs" />
+    <Compile Include="NewComponents\Prerequisites\PrerequisiteFeaturesFromListFormatted.cs" />
+    <Compile Include="NewComponents\UpdateSlotsOnEquipmentChange.cs" />
+    <Compile Include="NewComponents\WeaponDamageMultiplierReplacement.cs" />
+    <Compile Include="NewContent\AlternateCapstones\MasterfulTalent.cs" />
+    <Compile Include="NewContent\ArcanistExploits\Familiar.cs" />
+    <Compile Include="NewContent\ArcanistExploits\ItemCrafting.cs" />
+    <Compile Include="NewContent\ArcanistExploits\MetamagicKnowledge.cs" />
+    <Compile Include="NewContent\Archetypes\CauldronWitch.cs" />
+    <Compile Include="Bugfixes\Abilities\Spells.cs" />
+    <Compile Include="MythicReworks\Aeon.cs" />
+    <Compile Include="MythicReworks\Azata.cs" />
+    <Compile Include="Bugfixes\Classes\Bloodrager.cs" />
+    <Compile Include="Bugfixes\Classes\Rogue.cs" />
+    <Compile Include="Bugfixes\Classes\Slayer.cs" />
+    <Compile Include="Bugfixes\Classes\Witch.cs" />
+    <Compile Include="Bugfixes\Features\Feats.cs" />
+    <Compile Include="Bugfixes\Features\MythicAbilities.cs" />
+    <Compile Include="Config\AddedContent.cs" />
+    <Compile Include="Extensions\ExtentionMethods.cs" />
+    <Compile Include="MechanicsChanges\AdditionalModifierDescriptors.cs" />
+    <Compile Include="NewActions\EnhanceShield.cs" />
+    <Compile Include="NewActions\EnhanceArmor.cs" />
+    <Compile Include="NewComponents\OwlcatReplacements\AzataFavorableMagicComponent.cs" />
+    <Compile Include="NewComponents\OwlcatReplacements\AzataZippyMagicComponent.cs" />
+    <Compile Include="NewComponents\BlockSpellDuplicationComponent.cs" />
+    <Compile Include="NewComponents\ContextConditionHasFreeHand.cs" />
+    <Compile Include="NewComponents\Prerequisites\PrerequisiteNoClassLevelVisible.cs" />
+    <Compile Include="NewComponents\OwlcatReplacements\SuppressBuffsPersistant.cs" />
+    <Compile Include="NewComponents\SuppressBuffsEveryRound.cs" />
+    <Compile Include="NewContent\Archetypes\ChannelerOfTheUnknown.cs" />
+    <Compile Include="NewContent\Archetypes\NatureFang.cs" />
+    <Compile Include="NewContent\Archetypes\DivineCommander.cs" />
+    <Compile Include="NewContent\Archetypes\ElementalMaster.cs" />
+    <Compile Include="NewContent\Archetypes\Stonelord.cs" />
+    <Compile Include="NewContent\Bloodlines\BloodragerArcaneBloodline.cs" />
+    <Compile Include="NewContent\Backgrounds\Lecturer.cs" />
+    <Compile Include="NewContent\Classes\Cavalier.cs" />
+    <Compile Include="NewContent\Classes\Loremaster.cs" />
+    <Compile Include="NewContent\Archetypes\MetamagicRager.cs" />
+    <Compile Include="NewContent\BaseAbilities\OneHandedToggleAbility.cs" />
+    <Compile Include="NewContent\Bloodlines\AberrantBloodline.cs" />
+    <Compile Include="NewContent\Bloodlines\AbyssalBloodline.cs" />
+    <Compile Include="NewContent\Bloodlines\DestinedBloodline.cs" />
+    <Compile Include="NewContent\Classes\Oracle.cs" />
+    <Compile Include="NewContent\ContentAdder.cs" />
+    <Compile Include="NewContent\ArcanistExploits\QuickStudy.cs" />
+    <Compile Include="NewContent\Feats\AnimalAlly.cs" />
+    <Compile Include="NewContent\Feats\CelestialServant.cs" />
+    <Compile Include="NewContent\Feats\DervishDance.cs" />
+    <Compile Include="NewContent\Feats\ExtraArcana.cs" />
+    <Compile Include="NewContent\Feats\ExtraArcanistExploit.cs" />
+    <Compile Include="NewContent\Feats\ExtraDiscovery.cs" />
+    <Compile Include="NewContent\Feats\ExtraHex.cs" />
+    <Compile Include="NewContent\Feats\ExtraKi.cs" />
+    <Compile Include="NewContent\Feats\ExtraMercy.cs" />
+    <Compile Include="NewContent\Feats\ExtraReservoir.cs" />
+    <Compile Include="NewContent\Feats\ExtraRevelation.cs" />
+    <Compile Include="NewContent\Feats\ExtraRogueTalent.cs" />
+    <Compile Include="NewContent\Feats\ExtraSlayerTalent.cs" />
+    <Compile Include="NewContent\Feats\ErastilsBlessing.cs" />
+    <Compile Include="NewContent\Feats\GracefulAthlete.cs" />
+    <Compile Include="NewContent\Feats\ImprovedChannel.cs" />
+    <Compile Include="NewContent\Feats\MagicalAptitude.cs" />
+    <Compile Include="NewContent\Feats\NatureSoul.cs" />
+    <Compile Include="NewContent\Feats\QuickChannel.cs" />
+    <Compile Include="NewContent\Feats\Scholar.cs" />
+    <Compile Include="NewContent\Feats\SelfSufficient.cs" />
+    <Compile Include="NewContent\Feats\ShatterDefenses.cs" />
+    <Compile Include="NewContent\Feats\ShingleRunner.cs" />
+    <Compile Include="NewContent\Feats\SpellSpecializationGreater.cs" />
+    <Compile Include="NewContent\Feats\Stalwart.cs" />
+    <Compile Include="NewContent\Feats\StreetSmarts.cs" />
+    <Compile Include="NewContent\Features\AeonBaneIncreaseResourceFeature.cs" />
+    <Compile Include="NewContent\Bloodlines\BloodlineRequisiteFeature.cs" />
+    <Compile Include="NewContent\Features\DragonDiscipleSpellbooks.cs" />
+    <Compile Include="NewContent\Features\LongspearChargeBuff.cs" />
+    <Compile Include="NewContent\Archetypes\MadDog.cs" />
+    <Compile Include="NewContent\Features\MartialWeaponProficencySelection.cs" />
+    <Compile Include="NewContent\Features\PerfectStrikeZenArcherBuff.cs" />
+    <Compile Include="NewContent\Features\PrimalistRagePowerSelection.cs" />
+    <Compile Include="NewContent\FighterAdvancedArmorTrainings\AdvancedArmorTraining.cs" />
+    <Compile Include="NewContent\FighterAdvancedArmorTrainings\ArmoredConfidence.cs" />
+    <Compile Include="NewContent\FighterAdvancedArmorTrainings\ArmoredJuggernaut.cs" />
+    <Compile Include="NewContent\FighterAdvancedArmorTrainings\ArmorSpecialization.cs" />
+    <Compile Include="NewContent\FighterAdvancedArmorTrainings\CriticalDeflection.cs" />
+    <Compile Include="NewContent\FighterAdvancedArmorTrainings\SteelHeadbutt.cs" />
+    <Compile Include="NewContent\FighterAdvancedWeaponTrainings\AdvancedWeapontrainingSelection.cs" />
+    <Compile Include="NewContent\FighterAdvancedWeaponTrainings\DefensiveWeaponTraining.cs" />
+    <Compile Include="NewContent\FighterAdvancedWeaponTrainings\FocusedWeapon.cs" />
+    <Compile Include="NewContent\FighterAdvancedWeaponTrainings\TrainedGrace.cs" />
+    <Compile Include="NewContent\FighterAdvancedWeaponTrainings\TrainedThrow.cs" />
+    <Compile Include="NewContent\FighterAdvancedWeaponTrainings\WarriorSpirit.cs" />
+    <Compile Include="NewContent\MagusArcana\BroadStudy.cs" />
+    <Compile Include="NewContent\MagusArcana\SpellBlending.cs" />
+    <Compile Include="NewContent\MythicAbilities\ArmoredMight .cs" />
+    <Compile Include="NewContent\MythicAbilities\ArmorMaster.cs" />
+    <Compile Include="NewContent\MythicAbilities\ImpossibleSpeed.cs" />
+    <Compile Include="NewContent\MythicAbilities\MountedManiac.cs" />
+    <Compile Include="NewContent\MythicAbilities\MythicSpellCombat.cs" />
+    <Compile Include="NewContent\MythicAbilities\PrecisionCritical.cs" />
+    <Compile Include="NewContent\MythicFeats\MythicShatterDefenses.cs" />
+    <Compile Include="NewContent\Races\Elf.cs" />
+    <Compile Include="NewContent\Races\Dwarf.cs" />
+    <Compile Include="NewContent\Races\Gnome.cs" />
+    <Compile Include="NewContent\Races\Halfling.cs" />
+    <Compile Include="NewContent\Spells\LongArms.cs" />
+    <Compile Include="NewContent\Spells\ShadowEnchantment.cs" />
+    <Compile Include="NewContent\Templates\AlignmentTemplates.cs" />
+    <Compile Include="NewContent\WeaponEnchantments\NonStackingTempEnchantments.cs" />
+    <Compile Include="NewContent\WeaponEnchantments\TerrifyingTremble.cs" />
+    <Compile Include="NewContent\WeaponEnchantments\TwoHandedDamageMultiplier.cs" />
+    <Compile Include="NewEvents\ISpontaneousConversionHandler.cs" />
+    <Compile Include="NewRules\RuleAttackWithWeaponPrecision.cs" />
+    <Compile Include="NewUI\ActionBarPatches.cs" />
+    <Compile Include="NewUI\IPseudoActivatableMechanicsBarSlot.cs" />
+    <Compile Include="NewUI\MechanicActionBarSlotMetaRage.cs" />
+    <Compile Include="NewUI\MechanicActionBarSlotPseudoActivatableAbility.cs" />
+    <Compile Include="NewUI\MechanicActionBarSlotPseudoActivatableAbilityVariant.cs" />
+    <Compile Include="NewUI\MechanicActionBarSlotQuickStudy.cs" />
+    <Compile Include="NewUnitParts\TTUnitPartDamageReduction.cs" />
+    <Compile Include="NewUnitParts\UnitPartAeonGazeManager.cs" />
+    <Compile Include="NewUnitParts\UnitPartBroadStudy.cs" />
+    <Compile Include="NewUnitParts\UnitPartFocusedWeapon.cs" />
+    <Compile Include="NewUnitParts\MeleeTouchReach.cs" />
+    <Compile Include="NewUnitParts\OutgoingWeaponDamageBonus.cs" />
+    <Compile Include="NewUnitParts\UnitPartPrecisionCritical.cs" />
+    <Compile Include="NewUnitParts\UnitPartPseudoActivatableAbilities.cs" />
+    <Compile Include="NewUnitParts\UnitPartSpellSpecialization.cs" />
+    <Compile Include="NewUnitParts\UnitPartWarriorSpirit.cs" />
+    <Compile Include="Resources.cs" />
+    <Compile Include="SaveGamePatch.cs" />
+    <Compile Include="UMMSettingsUI.cs" />
+    <Compile Include="Utilities\AssetLoader.cs" />
+    <Compile Include="Utilities\Attributes.cs" />
+    <Compile Include="Utilities\BloodlineTools.cs" />
+    <Compile Include="Utilities\DescriptionTools.cs" />
+    <Compile Include="Utilities\FeatTools.cs" />
+    <Compile Include="Utilities\Helpers.cs" />
+    <Compile Include="NewComponents\BuffDescriptorImmunityAgainstAlignment.cs" />
+    <Compile Include="NewComponents\SpellImmunityToSpellDescriptorAgainstAlignment.cs" />
+    <Compile Include="MechanicsChanges\NaturalArmorStacking.cs" />
+    <Compile Include="MechanicsChanges\PolymorphStacking.cs" />
+    <Compile Include="Bugfixes\Features\Bloodlines.cs" />
+    <Compile Include="NewComponents\Prerequisites\PrerequisiteNoFeaturesFromList.cs" />
+    <Compile Include="Config\ModSettings.cs" />
+    <Compile Include="Main.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Config\Fixes.cs" />
+    <Compile Include="Utilities\ILUtils.cs" />
+    <Compile Include="Utilities\SpellTools.cs" />
+    <Compile Include="Utilities\TypeReplaceTranspiler.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Config\AddedContent.json" />
+    <EmbeddedResource Include="Config\Blueprints.json" />
+    <None Include="..\.editorconfig">
+      <Link>.editorconfig</Link>
+    </None>
+    <EmbeddedResource Include="Config\Homebrew.json" />
+    <None Include="Info.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <EmbeddedResource Include="Config\Fixes.json" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Assets\Abilities\Icon_AberrantBloodline.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Abilities\Icon_AeonBane.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Abilities\Icon_ChannelEntropy.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Abilities\Icon_DestinedBloodline.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Abilities\Icon_LongArm.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Abilities\Icon_MetaRage.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Abilities\Icon_MetaRage1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Abilities\Icon_MetaRage2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Abilities\Icon_MetaRage3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Abilities\Icon_MetaRage4.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Abilities\Icon_OneHandedToggle.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Abilities\Icon_QuickStudy.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Abilities\Icon_ShadowEnchantment.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Abilities\Icon_ShadowEnchantmentGreater.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Abilities\Icon_WarriorSpirit_Activation.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Abilities\Icon_WarriorSpirit_Anarchic.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Abilities\Icon_WarriorSpirit_Axiomatic.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Abilities\Icon_WarriorSpirit_Bane.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Abilities\Icon_WarriorSpirit_BrilliantEnergy.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Abilities\Icon_WarriorSpirit_Corrosive.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Abilities\Icon_WarriorSpirit_CorrosiveBurst.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Abilities\Icon_WarriorSpirit_Cruel.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Abilities\Icon_WarriorSpirit_Flaming.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Abilities\Icon_WarriorSpirit_FlamingBurst.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Abilities\Icon_WarriorSpirit_Frost.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Abilities\Icon_WarriorSpirit_GhostTouch.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Abilities\Icon_WarriorSpirit_Holy.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Abilities\Icon_WarriorSpirit_IcyBurst.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Abilities\Icon_WarriorSpirit_Keen.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Abilities\Icon_WarriorSpirit_Shock.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Abilities\Icon_WarriorSpirit_ShockingBurst.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Abilities\Icon_WarriorSpirit_Speed.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Abilities\Icon_WarriorSpirit_Thundering.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Abilities\Icon_WarriorSpirit_ThunderingBurst.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Abilities\Icon_WarriorSpirit_Unholy.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Feats\Icon_ArmoredMight.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Feats\Icon_ArmorMaster.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Feats\Icon_MountedManiac.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Compile Include="MechanicsChanges\MountedCombatModifiers.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" AfterTargets="BeforeClean">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Aze.Publicise.MSBuild.Task.1.0.0\build\Aze.Publicise.MSBuild.Task.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Aze.Publicise.MSBuild.Task.1.0.0\build\Aze.Publicise.MSBuild.Task.props'))" />
+  </Target>
+  <PropertyGroup>
+    <PostBuildEvent>(robocopy "$(TargetDir) " "%WrathPath%\Mods\TabletopTweaks\ " /s /e )^&amp; IF %25ERRORLEVEL%25 LEQ 1 exit 0</PostBuildEvent>
+  </PropertyGroup>
+</Project>
