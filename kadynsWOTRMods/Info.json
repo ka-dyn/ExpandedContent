@@ -1,13 +1,14 @@
 {
-    "AssemblyName": "kadynsWOTRMods.dll",
-    "Author": "kadyn",
-    "DisplayName": "kadynsWOTRMods",
-    "EntryMethod": "kadynsWOTRMods.Main.Load",
-    "GameVersion": "1.1.0",
-    "HomePage": "https://github.com/ka-dyn/kadynsWOTRMods/releases",
-    "Id": "kadynsWOTRMods",
-    "ManagerVersion": "0.23.0",
-    "Repository": "https://raw.githubusercontent.com/ka-dyn/kadynsWOTRMods/master/Repository.json",
-    "Requirements": [],
-    "Version": "0.1.0"
+
+  "AssemblyName": "kadynsWOTRMods.dll",
+  "Author": "kadyn",
+  "DisplayName": "kadynsWOTRMods",
+  "EntryMethod": "kadynsWOTRMods.Main.Load",
+  "GameVersion": "1.1.0",
+  "HomePage": "https://github.com/ka-dyn/kadynsWOTRMods/releases",
+  "Id": "kadynsWOTRMods",
+  "ManagerVersion": "0.23.0",
+  "Repository": "https://raw.githubusercontent.com/ka-dyn/kadynsWOTRMods/master/Repository.json",
+  "Requirements": [],
+  "Version": "0.1.0"
 }

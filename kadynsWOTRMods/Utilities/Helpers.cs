@@ -25,7 +25,7 @@ using kadynsWOTRMods.Config;
 
 namespace kadynsWOTRMods.Utilities {
     public static class Helpers {
-        public static T Create<T>(Action<T> init = null) where T : new() {
+        public static T Create<T>(string v, Action<T> init = null) where T : new() {
             var result = new T();
             init?.Invoke(result);
             return result;
@@ -82,6 +82,10 @@ namespace kadynsWOTRMods.Utilities {
         public static ContextValue CreateContextValue(this AbilityRankType value) {
             return new ContextValue() { ValueType = ContextValueType.Rank, ValueRank = value };
         }
+
+        
+        
+
         public static ContextValue CreateContextValue(this AbilitySharedValue value) {
             return new ContextValue() { ValueType = ContextValueType.Shared, ValueShared = value };
         }
