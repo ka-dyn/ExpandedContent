@@ -183,9 +183,9 @@ namespace kadynsWOTRMods.Extensions {
             obj.AddPrerequisiteFeature(feature, GroupType.All);
         }
         public static void AddPrerequisiteFeature(this BlueprintFeature obj, BlueprintFeature feature, GroupType group) {
-            obj.AddComponent(Helpers.Create<PrerequisiteFeature>(c => {
-                c.m_Feature = feature.ToReference<BlueprintFeatureReference>();
-                c.Group = group;
+            obj.AddComponent(Helpers.Create<PrerequisiteFeature>(bp => {
+                bp.m_Feature = feature.ToReference<BlueprintFeatureReference>();
+                bp.Group = group;
             }));
             if (feature.IsPrerequisiteFor == null) { feature.IsPrerequisiteFor = new List<BlueprintFeatureReference>(); }
             if (!feature.IsPrerequisiteFor.Contains(obj.ToReference<BlueprintFeatureReference>())) {

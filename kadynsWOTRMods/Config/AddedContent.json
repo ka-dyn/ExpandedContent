@@ -1,0 +1,122 @@
+﻿{
+  "NewSettingsOffByDefault": false,
+  "RacialArchetypes": {
+    "DisableAll": false,
+    "Settings": {
+      "StonelordArchetype": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Allows you to select the Stonelord Paladin archetype regardless of race."
+      },
+      "PhantasmalMageArchetype": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Allows you to select the Phatasmal Mage Arcanist archetype regardless of race."
+      },
+      "ReformedFiendArchetype": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Allows you to select the Reformed Fiend Bloodrager archetype regardless of race."
+      },
+      "CavalierOfThePawArchetype": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Allows you to select the Cavalier of the Paw archetype regardless of race."
+      },
+      "SpellDancerArchetype": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Allows you to select the Spell Dancer archetype regardless of race."
+      },
+      "StudentOfStoneArchetype": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Allows you to select the Student of Stone archetype regardless of race."
+      },
+      "PurifierArchetype": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Allows you to select the Purifier archetype regardless of race."
+      },
+      "MasterOfAllArchetype": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Allows you to select the Master of All archetype regardless of race."
+      },
+      "WildlandShamanArchetype": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Allows you to select the Wildland Shaman archetype regardless of race."
+      },
+      "ImitatorArchetype": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Allows you to select the Imitator archetype regardless of race."
+      },
+      "NineTailedHeirArchetype": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Allows you to select the Nine-Tailed Heir archetype regardless of race."
+      },
+      "CruoromancerArchetype": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Allows you to select the Cruoromancer archetype regardless of race."
+      }
+    },
+    "IsExpanded": true
+  },
+  "Deities": {
+    "DisableAll": false,
+    "Settings": {
+      "GreenFaith": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Allows you to select the Green Faith Deity."
+      },
+      "Baphomet": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Allows you to select Baphomet as a Deity."
+      },
+      "Areshkegal": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Allows you to select the Areshkegal as a Deity."
+      },
+      "Deskari": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Allows you to select Deskari as a Deity."
+      },
+      "Kabriri": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Allows you to select Kabriri as a Deity."
+      },
+      "LichDeity": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Allows you to select the Knight Commander as a Deity."
+      },
+      "Pulura": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Allows you to select Pulura as a Deity."
+      },
+      "Milani": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds the minor goddess Milani, also known as the Everbloom, is the patron of all those who fight against oppression and unjust rule.[2] Her symbol is a rose growing out of a blood-soaked street."
+      },
+      "Ragathiel": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds the minor deity Ragathiel, who is a tower of glorious might. He stands almost 20 feet tall, and five lofty burning wings stretch from his back."
+      }
+    },
+    "IsExpanded": true
+
+
+  }
+}

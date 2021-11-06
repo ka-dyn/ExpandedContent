@@ -134,23 +134,51 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Config\AddedContent.cs" />
     <Compile Include="Config\Blueprints.cs" />
+    <Compile Include="Config\ICollapseableGroup.cs" />
+    <Compile Include="Config\IDisableableGroup.cs" />
     <Compile Include="Config\IUpdateableSettings.cs" />
     <Compile Include="Config\ModSettings.cs" />
+    <Compile Include="Config\NestedSettingGroup.cs" />
+    <Compile Include="Config\SettingGroup.cs" />
     <Compile Include="Tweaks\ContentAdder.cs" />
-    <Compile Include="Tweaks\Deities\AllowForbiddenDeities.cs" />
-    <Compile Include="Tweaks\Deities\NewDeities.cs" />
-    <Compile Include="Tweaks\RacialPrereqs\Stonelord.cs" />
+    <Compile Include="Tweaks\Deities\Areshkegal.cs" />
+    <Compile Include="Tweaks\Deities\Baphomet.cs" />
+    <Compile Include="Tweaks\Deities\DeitySelection.cs" />
+    <Compile Include="Tweaks\Deities\Deskari.cs" />
+    <Compile Include="Tweaks\Deities\GreenFaith.cs" />
+    <Compile Include="Tweaks\Deities\Kabriri.cs" />
+    <Compile Include="Tweaks\Deities\LichDeity.cs" />
+    <Compile Include="Tweaks\Deities\Milani.cs" />
+    <Compile Include="Tweaks\Deities\MilaniSacredWeaponFeature.cs" />
+    <Compile Include="Tweaks\Deities\Pulura.cs" />
+    <Compile Include="Tweaks\Deities\Ragathiel.cs" />
+    <Compile Include="Tweaks\RacialArchetypes\Cruoromancer.cs" />
+    <Compile Include="Tweaks\RacialArchetypes\NineTailedHeir.cs" />
+    <Compile Include="Tweaks\RacialArchetypes\Imitator.cs" />
+    <Compile Include="Tweaks\RacialArchetypes\WildlandShaman.cs" />
+    <Compile Include="Tweaks\RacialArchetypes\MasterOfAll.cs" />
+    <Compile Include="Tweaks\RacialArchetypes\Purifier.cs" />
+    <Compile Include="Tweaks\RacialArchetypes\StudentOfStone.cs" />
+    <Compile Include="Tweaks\RacialArchetypes\SpellDancer.cs" />
+    <Compile Include="Tweaks\RacialArchetypes\CavalierOfThePaw.cs" />
+    <Compile Include="Tweaks\RacialArchetypes\ReformedFiend.cs" />
+    <Compile Include="Tweaks\RacialArchetypes\PhantasmalMage.cs" />
+    <Compile Include="Tweaks\RacialArchetypes\Stonelord.cs" />
     <Compile Include="Extensions\ExtentionMethods.cs" />
     <Compile Include="Resources.cs" />
     <Compile Include="SaveGamePatch.cs" />
+    <Compile Include="UMMSettingsUI.cs" />
     <Compile Include="Utilities\AssetLoader.cs" />
+    <Compile Include="Utilities\Attributes.cs" />
     <Compile Include="Utilities\BloodlineTools.cs" />
     <Compile Include="Utilities\DescriptionTools.cs" />
     <Compile Include="Utilities\FeatTools.cs" />
-    <Compile Include="Utilities\Helpers.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\Helpers.cs" />
+    <Compile Include="Utilities\ILUtils.cs" />
     <Compile Include="Utilities\SpellTools.cs" />
     <Compile Include="Utilities\TypeReplaceTranspiler.cs" />
   </ItemGroup>
@@ -158,6 +186,8 @@
     <None Include="..\.editorconfig">
       <Link>.editorconfig</Link>
     </None>
+    <EmbeddedResource Include="Config\AddedContent.json" />
+    <EmbeddedResource Include="Config\Blueprints.json" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -166,8 +196,9 @@
     <Content Include="Assets\Deities\Icon_Deskari.png" />
     <Content Include="Assets\Deities\Icon_GreenFaith.jpg" />
     <Content Include="Assets\Deities\Icon_Kabriri.png" />
+    <Content Include="Assets\Deities\Icon_Milani.jpg" />
     <Content Include="Assets\Deities\Icon_Pulura.jpg" />
-    <Content Include="Assets\Icon_Milani.jpg" />
+    <Content Include="Assets\Deities\ICON_Ragathiel.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" AfterTargets="BeforeClean">

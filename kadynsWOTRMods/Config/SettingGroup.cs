@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace TabletopTweaks.Config {
+namespace kadynsWOTRMods.Config {
     public class SettingGroup : IDisableableGroup {
         public bool DisableAll = false;
         public virtual bool GroupIsDisabled() => DisableAll;

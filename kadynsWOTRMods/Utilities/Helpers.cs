@@ -22,10 +22,11 @@ using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using kadynsWOTRMods.Config;
+using kadynsWOTRMods;
 
 namespace kadynsWOTRMods.Utilities {
     public static class Helpers {
-        public static T Create<T>(string v, Action<T> init = null) where T : new() {
+        public static T Create<T>(Action<T> init = null) where T : new() {
             var result = new T();
             init?.Invoke(result);
             return result;
@@ -42,7 +43,7 @@ namespace kadynsWOTRMods.Utilities {
         }
 
         public static BlueprintBuff CreateBuff(string name, Action<BlueprintBuff> init = null) {
-            var result = Helpers.CreateBlueprint<BlueprintBuff>(name, bp => {
+            var result = CreateBlueprint<BlueprintBuff>(name, bp => {
                 bp.FxOnStart = new PrefabLink();
                 bp.FxOnRemove = new PrefabLink();
             });
@@ -66,14 +67,14 @@ namespace kadynsWOTRMods.Utilities {
         }
 
         public static LevelEntry CreateLevelEntry(int level, params BlueprintFeatureBase[] features) {
-            LevelEntry levelEntry = new LevelEntry();
+            var levelEntry = new LevelEntry();
             levelEntry.Level = level;
             features.ForEach(f => levelEntry.Features.Add(f));
             return levelEntry;
         }
 
         public static UIGroup CreateUIGroup(params BlueprintFeatureBase[] features) {
-            UIGroup uiGroup = new UIGroup();
+            var uiGroup = new UIGroup();
             features.ForEach(f => uiGroup.Features.Add(f));
             return uiGroup;
         }
@@ -82,10 +83,6 @@ namespace kadynsWOTRMods.Utilities {
         public static ContextValue CreateContextValue(this AbilityRankType value) {
             return new ContextValue() { ValueType = ContextValueType.Rank, ValueRank = value };
         }
-
-        
-        
-
         public static ContextValue CreateContextValue(this AbilitySharedValue value) {
             return new ContextValue() { ValueType = ContextValueType.Shared, ValueShared = value };
         }
@@ -109,7 +106,7 @@ namespace kadynsWOTRMods.Utilities {
 #endif
 
         // All localized strings created in this mod, mapped to their localized key. Populated by CreateString.
-        static Dictionary<String, LocalizedString> textToLocalizedString = new Dictionary<string, LocalizedString>();
+        static Dictionary<string, LocalizedString> textToLocalizedString = new Dictionary<string, LocalizedString>();
         public static LocalizedString CreateTaggedString(string key, string value) {
             return CreateString(key, DescriptionTools.TagEncyclopediaEntries(value));
         }
@@ -122,9 +119,11 @@ namespace kadynsWOTRMods.Utilities {
                 return localized;
             }
             var strings = LocalizationManager.CurrentPack.Strings;
-            String oldValue;
+            string oldValue;
             if (strings.TryGetValue(key, out oldValue) && value != oldValue) {
-
+#if DEBUG
+                Main.LogDebug($"Info: duplicate localized string `{key}`, different text.");
+#endif
             }
             strings[key] = value;
             localized = new LocalizedString {
@@ -148,10 +147,10 @@ namespace kadynsWOTRMods.Utilities {
             return HarmonyLib.AccessTools.Field(obj.GetType(), name).GetValue(obj);
         }
         // Parses the lowest 64 bits of the Guid (which corresponds to the last 16 characters).
-        static ulong ParseGuidLow(String id) => ulong.Parse(id.Substring(id.Length - 16), NumberStyles.HexNumber);
+        static ulong ParseGuidLow(string id) => ulong.Parse(id.Substring(id.Length - 16), NumberStyles.HexNumber);
         // Parses the high 64 bits of the Guid (which corresponds to the first 16 characters).
-        static ulong ParseGuidHigh(String id) => ulong.Parse(id.Substring(0, id.Length - 16), NumberStyles.HexNumber);
-        public static String MergeIds(String guid1, String guid2, String guid3 = null) {
+        static ulong ParseGuidHigh(string id) => ulong.Parse(id.Substring(0, id.Length - 16), NumberStyles.HexNumber);
+        public static string MergeIds(string guid1, string guid2, string guid3 = null) {
             // Parse into low/high 64-bit numbers, and then xor the two halves.
             ulong low = ParseGuidLow(guid1);
             ulong high = ParseGuidHigh(guid1);
@@ -232,6 +231,7 @@ namespace kadynsWOTRMods.Utilities {
             return config;
         }
 
+        
 
         private class ObjectDeepCopier {
             private class ArrayTraverse {
@@ -259,7 +259,7 @@ namespace kadynsWOTRMods.Utilities {
                     return false;
                 }
             }
-            private class ReferenceEqualityComparer : EqualityComparer<Object> {
+            private class ReferenceEqualityComparer : EqualityComparer<object> {
                 public override bool Equals(object x, object y) {
                     return ReferenceEquals(x, y);
                 }
@@ -275,16 +275,16 @@ namespace kadynsWOTRMods.Utilities {
                     return obj.GetHashCode();
                 }
             }
-            private static readonly MethodInfo CloneMethod = typeof(Object).GetMethod("MemberwiseClone", BindingFlags.NonPublic | BindingFlags.Instance);
+            private static readonly MethodInfo CloneMethod = typeof(object).GetMethod("MemberwiseClone", BindingFlags.NonPublic | BindingFlags.Instance);
 
             public static bool IsPrimitive(Type type) {
-                if (type == typeof(String)) return true;
-                return (type.IsValueType & type.IsPrimitive);
+                if (type == typeof(string)) return true;
+                return type.IsValueType & type.IsPrimitive;
             }
-            public static Object Clone(Object originalObject) {
-                return InternalCopy(originalObject, new Dictionary<Object, Object>(new ReferenceEqualityComparer()));
+            public static object Clone(object originalObject) {
+                return InternalCopy(originalObject, new Dictionary<object, object>(new ReferenceEqualityComparer()));
             }
-            private static Object InternalCopy(Object originalObject, IDictionary<Object, Object> visited) {
+            private static object InternalCopy(object originalObject, IDictionary<object, object> visited) {
                 if (originalObject == null) return null;
                 var typeToReflect = originalObject.GetType();
                 if (IsPrimitive(typeToReflect)) return originalObject;
@@ -295,7 +295,7 @@ namespace kadynsWOTRMods.Utilities {
                 if (typeToReflect.IsArray) {
                     var arrayType = typeToReflect.GetElementType();
                     if (IsPrimitive(arrayType) == false) {
-                        Array clonedArray = (Array)cloneObject;
+                        var clonedArray = (Array)cloneObject;
                         ForEach(clonedArray, (array, indices) => array.SetValue(InternalCopy(clonedArray.GetValue(indices), visited), indices));
                     }
 
@@ -307,7 +307,7 @@ namespace kadynsWOTRMods.Utilities {
 
                 void ForEach(Array array, Action<Array, int[]> action) {
                     if (array.LongLength == 0) return;
-                    ArrayTraverse walker = new ArrayTraverse(array);
+                    var walker = new ArrayTraverse(array);
                     do action(array, walker.Position);
                     while (walker.Step());
                 }
