@@ -18,6 +18,13 @@ Seriously, thank you!
 I will be adding many things, but first I'm going to finish vindictive bastard!
 
 *Current Features:
+v0.2.0
+*ALL FEATURES NOW TOGGLEABLE IN UMM SETTINGS*
+-Fixed Deskari not showing up in deity selection,
+-Added the minor deity Milani
+-Added the minor deity Ragathiel
+-Added User settings toggleable through the UMM UI
+-Fixed a spelling error in the lich deity desc
 
 Deities:
 -Added lore accurate descriptions, domains, favoured weapons and images for all religions.
