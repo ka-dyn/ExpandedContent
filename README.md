@@ -1,6 +1,8 @@
 *Install VIA UMM*
 -Drag and drop the zip file onto the UMM "Install" button.
 
+*ALL FEATURES ARE NOW TOGGLEABLE THROUGH UMM*
+
 kadynsTweaks is a mod that seeks to add more options and variety to the already amazing base game and contributions from other modders. I created this mod with the intent
 of adding the Vindictive Bastard Archetype, but I'm only about halfway through creating that.
 
@@ -18,6 +20,9 @@ I will be adding many things, but first I'm going to finish vindictive bastard!
 *Current Features:
 
 Deities:
+-Added lore accurate descriptions, domains, favoured weapons and images for all religions.
+-Added Ragathiel as a selectable deity.
+-Added Milani as a selectable deity.
 -Allows worship of the Green Faith.
 -Allows worship of Areshkagal.
 -Allows worship of Baphomet.

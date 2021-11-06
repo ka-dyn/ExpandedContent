@@ -66,7 +66,7 @@ namespace kadynsWOTRMods.Tweaks.Deities {
 
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
                 bp.AddComponent<PrerequisiteAlignment>(c => {
-                    c.Alignment = AlignmentMaskType.Good | AlignmentMaskType.ChaoticNeutral;
+                    c.Alignment = AlignmentMaskType.LawfulGood | AlignmentMaskType.NeutralGood | AlignmentMaskType.LawfulNeutral | AlignmentMaskType.TrueNeutral;
                 });
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[1] { ChannelPositiveAllowed.ToReference<BlueprintUnitFactReference>() };
