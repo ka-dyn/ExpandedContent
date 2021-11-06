@@ -13,12 +13,13 @@ namespace kadynsWOTRMods.Tweaks.Deities {
         
         public static void PatchDeitySelection() {
 
-
+            var ArsheaFeature = Resources.GetModBlueprint<BlueprintFeature>("ArsheaFeature");
             var RagathielFeature = Resources.GetModBlueprint<BlueprintFeature>("RagathielFeature");
             var MilaniFeature = Resources.GetModBlueprint<BlueprintFeature>("MilaniFeature");
             var DeitySelection = Resources.GetBlueprint<BlueprintFeatureSelection>("59e7a76987fe3b547b9cce045f4db3e4");
             DeitySelection.m_AllFeatures = DeitySelection.m_AllFeatures.AppendToArray(MilaniFeature.ToReference<BlueprintFeatureReference>());
             DeitySelection.m_AllFeatures = DeitySelection.m_AllFeatures.AppendToArray(RagathielFeature.ToReference<BlueprintFeatureReference>());
+            DeitySelection.m_AllFeatures = DeitySelection.m_AllFeatures.AppendToArray(ArsheaFeature.ToReference<BlueprintFeatureReference>());
         }
     }
 }

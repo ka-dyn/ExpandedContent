@@ -107,12 +107,17 @@
       "Milani": {
         "Enabled": true,
         "Homebrew": false,
-        "Description": "Adds the minor goddess Milani, also known as the Everbloom, is the patron of all those who fight against oppression and unjust rule.[2] Her symbol is a rose growing out of a blood-soaked street."
+        "Description": "Adds the minor goddess Milani, also known as the Everbloom, is the patron of all those who fight against oppression and unjust rule. Her symbol is a rose growing out of a blood-soaked street."
       },
       "Ragathiel": {
         "Enabled": true,
         "Homebrew": false,
         "Description": "Adds the minor deity Ragathiel, who is a tower of glorious might. He stands almost 20 feet tall, and five lofty burning wings stretch from his back."
+      },
+      "Arshea": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds the angel empyreal Lord Arshea, a champion of the repressed and weary. Arshea provides mortals deliverance from their bonds."
       }
     },
     "IsExpanded": true

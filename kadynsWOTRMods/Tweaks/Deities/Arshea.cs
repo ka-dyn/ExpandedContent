@@ -1,0 +1,118 @@
+﻿using kadynsWOTRMods.Config;
+using kadynsWOTRMods.Extensions;
+using kadynsWOTRMods.Utilities;
+using Kingmaker.Blueprints;
+using Kingmaker.Blueprints.Classes;
+using Kingmaker.Blueprints.Classes.Prerequisites;
+using Kingmaker.Blueprints.Items;
+using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.UnitLogic.Alignments;
+using Kingmaker.UnitLogic.FactLogic;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace kadynsWOTRMods.Tweaks.Deities {
+    internal class Arshea {
+        private static readonly BlueprintFeature LiberationDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("801ca88338451a546bca2ee59da87c53");
+        private static readonly BlueprintFeature CharmDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("f1ceba79ee123cc479cece27bc994ff2");
+        private static readonly BlueprintFeature StrengthDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("58d2867520de17247ac6988a31f9e397");
+        private static readonly BlueprintFeature GoodDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("882521af8012fc749930b03dc18a69de");
+        private static readonly BlueprintFeature CrusaderSpellbook = Resources.GetBlueprint<BlueprintFeature>("673d39f7da699aa408cdda6282e7dcc0");
+        private static readonly BlueprintFeature ClericSpellbook = Resources.GetBlueprint<BlueprintFeature>("4673d19a0cf2fab4f885cc4d1353da33");
+        private static readonly BlueprintFeature InquisitorSpellbook = Resources.GetBlueprint<BlueprintFeature>("57fab75111f377248810ece84193a5a5");
+        private static readonly BlueprintFeature ChannelPositiveAllowed = Resources.GetBlueprint<BlueprintFeature>("8c769102f3996684fb6e09a2c4e7e5b9");
+        private static readonly BlueprintCharacterClass ClericClass = Resources.GetBlueprint<BlueprintCharacterClass>("67819271767a9dd4fbfd4ae700befea0");
+        private static readonly BlueprintCharacterClass InquistorClass = Resources.GetBlueprint<BlueprintCharacterClass>("f1a70d9e1b0b41e49874e1fa9052a1ce");
+        private static readonly BlueprintCharacterClass WarpriestClass = Resources.GetBlueprint<BlueprintCharacterClass>("30b5e47d47a0e37438cc5a80c96cfb99");
+
+
+
+        public static void AddArsheaFeature() {
+
+            if (ModSettings.AddedContent.Deities.IsDisabled("Arshea")) { return; }
+            BlueprintItem ColdIronFlail = Resources.GetBlueprint<BlueprintItem>("28c5eaa3604027941a9399433411f888");
+
+            BlueprintArchetype FeralChampionArchetype = Resources.GetBlueprint<BlueprintArchetype>("f68ca492c9c15e241ab73735fbd0fb9f");
+            BlueprintArchetype PriestOfBalance = Resources.GetBlueprint<BlueprintArchetype>("a4560e3fb5d247d68fb1a2738fcc0855");
+
+            BlueprintFeature FlailProficiency = Resources.GetBlueprint<BlueprintFeature>("6d273f46bce2e0f47a0958810dc4c7d9");
+            var ArsheaIcon = AssetLoader.LoadInternal("Deities", "Icon_Arshea.jpg");
+            var ArsheaFeature = Helpers.CreateBlueprint<BlueprintFeature>("ArsheaFeature", (bp => {
+
+                bp.SetName("Arshea");
+                bp.SetDescription("The angel empyreal Lord Arshea is a champion of the repressed and weary, " +
+                    "providing mortals deliverance from their bonds. This liberation applies to many of Arshea's worshipers, who " +
+                    "often choose to ignore conventional gender identities, eventually choosing one that fits them best. " +
+                    "Arshea is worshipped by artisans, courtesans, some fey, and those seeking to escape repression. They eschew " +
+                    "gender roles and often dress and behave as members of the opposite sex (or another gender role in societies " +
+                    "with multiple gender roles) for a period of time ranging from months to decades, which they consider " +
+                    "the best way to overcome repression and understand freedom, choosing the most fitting gender after this period of " +
+                    "pilgrimage. Arshea teaches them to abandon constraining beliefs and " +
+                    "practice free love and sexuality. \nDomains: Charm, Good, Liberation, Strength \nFavoured Weapon: Flail");
+                bp.m_Icon = ArsheaIcon;
+                bp.Ranks = 1;
+                bp.IsClassFeature = true;
+                bp.HideInCharacterSheetAndLevelUp = false;
+                bp.AddComponent<PrerequisiteNoArchetype>(c => {
+                    c.m_CharacterClass = ClericClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = PriestOfBalance.ToReference<BlueprintArchetypeReference>();
+                });
+                bp.AddComponent<PrerequisiteNoArchetype>(c => {
+                    c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = FeralChampionArchetype.ToReference<BlueprintArchetypeReference>();
+                });
+
+                bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
+                bp.AddComponent<PrerequisiteAlignment>(c => {
+                    c.Alignment = AlignmentMaskType.Good | AlignmentMaskType.TrueNeutral;
+                });
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[1] { ChannelPositiveAllowed.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[1] { GoodDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[1] { LiberationDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[1] { StrengthDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[1] { CharmDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<ForbidSpellbookOnAlignmentDeviation>(c => {
+                    c.m_Spellbooks = new BlueprintSpellbookReference[1] { CrusaderSpellbook.ToReference<BlueprintSpellbookReference>() };
+                    c.m_Spellbooks = new BlueprintSpellbookReference[1] { ClericSpellbook.ToReference<BlueprintSpellbookReference>() };
+                    c.m_Spellbooks = new BlueprintSpellbookReference[1] { InquisitorSpellbook.ToReference<BlueprintSpellbookReference>() };
+                });
+
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>();
+
+
+                    c.m_Feature = FlailProficiency.ToReference<BlueprintFeatureReference>();
+
+                    c.Level = 1;
+                    c.m_Archetypes = null;
+                    c.m_AdditionalClasses = new BlueprintCharacterClassReference[2] {
+                               InquistorClass.ToReference<BlueprintCharacterClassReference>(),
+                               WarpriestClass.ToReference<BlueprintCharacterClassReference>() };
+                });
+                bp.AddComponent<AddStartingEquipment>(c => {
+                    c.m_BasicItems = new BlueprintItemReference[1] { ColdIronFlail.ToReference<BlueprintItemReference>() };
+                    c.m_RestrictedByClass = new BlueprintCharacterClassReference[3] {
+                                ClericClass.ToReference<BlueprintCharacterClassReference>(),
+                                InquistorClass.ToReference<BlueprintCharacterClassReference>(),
+                                WarpriestClass.ToReference<BlueprintCharacterClassReference>()
+                    };
+                });
+            }));
+            Resources.AddBlueprint(ArsheaFeature);
+        }
+    }
+
+}

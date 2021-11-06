@@ -34,7 +34,7 @@ namespace kadynsWOTRMods {
                 UI.Space(25);
 
                 SetttingUI.SettingGroup("Racial Archetypes", TabLevel, AddedContent.RacialArchetypes);
-                SetttingUI.SettingGroup("Forbidden Deities", TabLevel, AddedContent.Deities);
+                SetttingUI.SettingGroup("Deities", TabLevel, AddedContent.Deities);
                 
                
                 

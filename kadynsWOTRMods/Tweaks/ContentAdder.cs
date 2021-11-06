@@ -25,23 +25,24 @@ namespace kadynsWOTRMods.Tweaks {
                 RacialArchetypes.WildlandShaman.AllowWildlandShamanArchetype();
 
                 Deities.Areshkegal.AddAreshkegal();
-                Deities.Milani.AddMilaniFeature();
                 Deities.Baphomet.AddBaphomet();
                 Deities.Deskari.AddDeskari();
                 Deities.GreenFaith.AddGreenFaith();
                 Deities.Kabriri.AddKabriri();
-                Deities.PatchLichDeity.AddLichDeity();
                 Deities.PatchPulura.AddPulura();
                 Deities.MilaniSacredWeaponFeature.AddMilaniSacredWeaponFeature();
                 Deities.Ragathiel.AddRagathielFeature();
+                Deities.Arshea.AddArsheaFeature();
+                Deities.Milani.AddMilaniFeature();
                 Deities.DeitySelectionFeature.PatchDeitySelection();
+                Deities.PatchLichDeity.AddLichDeity();
 
-                
 
-                
-                
 
-                
+
+
+
+
             }
         }
     }
