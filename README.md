@@ -18,8 +18,11 @@ Seriously, thank you!
 I will be adding many things, but first I'm going to finish vindictive bastard!
 
 *Current Features:
+v0.2.1
+-Added the minor deity Arshea
+
 v0.2.0
-**ALL FEATURES NOW TOGGLEABLE IN UMM SETTINGS**
+*ALL FEATURES NOW TOGGLEABLE IN UMM SETTINGS*
 -Fixed Deskari not showing up in deity selection,
 -Added the minor deity Milani
 -Added the minor deity Ragathiel
