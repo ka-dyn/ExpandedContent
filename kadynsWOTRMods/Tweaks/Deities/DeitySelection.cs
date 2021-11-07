@@ -13,6 +13,8 @@ namespace kadynsWOTRMods.Tweaks.Deities {
         
         public static void PatchDeitySelection() {
 
+
+            var ZuraFeature = Resources.GetModBlueprint<BlueprintFeature>("ZuraFeature");
             var ApsuFeature = Resources.GetModBlueprint<BlueprintFeature>("ApsuFeature");
             var MephistophelesFeature = Resources.GetModBlueprint<BlueprintFeature>("MephistophelesFeature");
             var DispaterFeature = Resources.GetModBlueprint<BlueprintFeature>("DispaterFeature");
@@ -26,6 +28,7 @@ namespace kadynsWOTRMods.Tweaks.Deities {
             DeitySelection.m_AllFeatures = DeitySelection.m_AllFeatures.AppendToArray(DispaterFeature.ToReference<BlueprintFeatureReference>());
             DeitySelection.m_AllFeatures = DeitySelection.m_AllFeatures.AppendToArray(MephistophelesFeature.ToReference<BlueprintFeatureReference>());
             DeitySelection.m_AllFeatures = DeitySelection.m_AllFeatures.AppendToArray(ApsuFeature.ToReference<BlueprintFeatureReference>());
+            DeitySelection.m_AllFeatures = DeitySelection.m_AllFeatures.AppendToArray(ZuraFeature.ToReference<BlueprintFeatureReference>());
         }
     }
 }

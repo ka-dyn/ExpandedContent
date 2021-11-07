@@ -289,6 +289,11 @@ namespace kadynsWOTRMods.Utilities {
             new EncyclopediaEntry {
                 Entry = "Damage",
                 Patterns = { "damage" }
+            },
+            new EncyclopediaEntry  {
+                Entry = "Title",
+                Patterns = { "Titles" }
+
             }
         };
 

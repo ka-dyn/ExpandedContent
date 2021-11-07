@@ -134,6 +134,48 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BlueprintCore\Abilities\Restrictions\New\TargetHasBuffsFromCaster.cs" />
+    <Compile Include="BlueprintCore\Actions\Builder\ActionsBuilder.cs" />
+    <Compile Include="BlueprintCore\Actions\Builder\AreaEx\ActionsBuilderAreaEx.cs" />
+    <Compile Include="BlueprintCore\Actions\Builder\AVEx\ActionsBuilderAVEx.cs" />
+    <Compile Include="BlueprintCore\Actions\Builder\BasicEx\ActionsBuilderBasicEx.cs" />
+    <Compile Include="BlueprintCore\Actions\Builder\ContextEx\ActionsBuilderContextEx.cs" />
+    <Compile Include="BlueprintCore\Actions\Builder\KingdomEx\ActionsBuilderKingdomEx.cs" />
+    <Compile Include="BlueprintCore\Actions\Builder\MiscEx\ActionsBuilderMiscEx.cs" />
+    <Compile Include="BlueprintCore\Actions\Builder\NewEx\ActionsBuilderNewEx.cs" />
+    <Compile Include="BlueprintCore\Actions\Builder\StoryEx\ActionsBuilderStoryEx.cs" />
+    <Compile Include="BlueprintCore\Actions\Builder\UpgraderEx\ActionsBuilderUpgraderEx.cs" />
+    <Compile Include="BlueprintCore\Blueprints\Abilities\AbilityAreaEffectConfigurator.cs" />
+    <Compile Include="BlueprintCore\Blueprints\Abilities\AbilityConfigurator.cs" />
+    <Compile Include="BlueprintCore\Blueprints\Abilities\AbilityResourceConfigurator.cs" />
+    <Compile Include="BlueprintCore\Blueprints\BaseBlueprintConfigurator.cs" />
+    <Compile Include="BlueprintCore\Blueprints\BlueprintConfigurator.cs" />
+    <Compile Include="BlueprintCore\Blueprints\BlueprintTool.cs" />
+    <Compile Include="BlueprintCore\Blueprints\Buffs\BuffConfigurator.cs" />
+    <Compile Include="BlueprintCore\Blueprints\Classes\ArchetypeConfigurator.cs" />
+    <Compile Include="BlueprintCore\Blueprints\Classes\BaseFeatureConfigurator.cs" />
+    <Compile Include="BlueprintCore\Blueprints\Classes\FeatureConfigurator.cs" />
+    <Compile Include="BlueprintCore\Blueprints\Classes\Selection\FeatureSelectionConfigurator.cs" />
+    <Compile Include="BlueprintCore\Blueprints\Components\ContextRankConfigs.cs" />
+    <Compile Include="BlueprintCore\Blueprints\Facts\BlueprintUnitFactConfigurator.cs" />
+    <Compile Include="BlueprintCore\Conditions\Builder\AreaEx\ConditionsBuilderAreaEx.cs" />
+    <Compile Include="BlueprintCore\Conditions\Builder\BasicEx\ConditionsBuilderBasicEx.cs" />
+    <Compile Include="BlueprintCore\Conditions\Builder\ConditionsBuilder.cs" />
+    <Compile Include="BlueprintCore\Conditions\Builder\ContextEx\ConditionsBuilderContextEx.cs" />
+    <Compile Include="BlueprintCore\Conditions\Builder\KingdomEx\ConditionsBuilderKingdomEx.cs" />
+    <Compile Include="BlueprintCore\Conditions\Builder\MiscEx\ConditionsBuilderMiscEx.cs" />
+    <Compile Include="BlueprintCore\Conditions\Builder\NewEx\ConditionsBuilderNewEx.cs" />
+    <Compile Include="BlueprintCore\Conditions\Builder\StoryEx\ConditionsBuilderStoryEx.cs" />
+    <Compile Include="BlueprintCore\Conditions\New\TargetInMeleeRange.cs" />
+    <Compile Include="BlueprintCore\Utils\Attributes.cs" />
+    <Compile Include="BlueprintCore\Utils\CommonTool.cs" />
+    <Compile Include="BlueprintCore\Utils\Constants.cs" />
+    <Compile Include="BlueprintCore\Utils\ContextDuration.cs" />
+    <Compile Include="BlueprintCore\Utils\ContextValues.cs" />
+    <Compile Include="BlueprintCore\Utils\ElementTool.cs" />
+    <Compile Include="BlueprintCore\Utils\LogWrapper.cs" />
+    <Compile Include="BlueprintCore\Utils\PrereqTool.cs" />
+    <Compile Include="BlueprintCore\Utils\Validator.cs" />
     <Compile Include="Config\AddedContent.cs" />
     <Compile Include="Config\Blueprints.cs" />
     <Compile Include="Config\ICollapseableGroup.cs" />
@@ -153,22 +195,22 @@
     <Compile Include="Tweaks\ContentAdder.cs" />
     <Compile Include="Tweaks\Deities\Abraxas.cs" />
     <Compile Include="Tweaks\Deities\Apsu.cs" />
-    <Compile Include="Tweaks\Deities\Areshkegal.cs" />
+    <Compile Include="Tweaks\DemonLords\Areshkegal.cs" />
     <Compile Include="Tweaks\Deities\Arshea.cs" />
-    <Compile Include="Tweaks\Deities\Baphomet.cs" />
+    <Compile Include="Tweaks\DemonLords\Baphomet.cs" />
     <Compile Include="Tweaks\Deities\BlackButterfly.cs" />
     <Compile Include="Tweaks\Deities\Dagon.cs" />
     <Compile Include="Tweaks\Deities\Dahak.cs" />
     <Compile Include="Tweaks\Deities\DeitySelection.cs" />
-    <Compile Include="Tweaks\Deities\Deskari.cs" />
+    <Compile Include="Tweaks\DemonLords\Deskari.cs" />
     <Compile Include="Tweaks\Deities\GreenFaith.cs" />
-    <Compile Include="Tweaks\Deities\Kabriri.cs" />
+    <Compile Include="Tweaks\DemonLords\Kabriri.cs" />
     <Compile Include="Tweaks\Deities\LichDeity.cs" />
     <Compile Include="Tweaks\Deities\Milani.cs" />
     <Compile Include="Tweaks\Deities\MilaniSacredWeaponFeature.cs" />
     <Compile Include="Tweaks\Deities\Pulura.cs" />
     <Compile Include="Tweaks\Deities\Ragathiel.cs" />
-    <Compile Include="Tweaks\Deities\Zura.cs" />
+    <Compile Include="Tweaks\DemonLords\Zura.cs" />
     <Compile Include="Tweaks\Domains\VoidDomain.cs" />
     <Compile Include="Tweaks\FourHorsemen\Apollyon.cs" />
     <Compile Include="Tweaks\FourHorsemen\Charon.cs" />
@@ -226,6 +268,10 @@
     <Content Include="Assets\Deities\Icon_Milani.jpg" />
     <Content Include="Assets\Deities\Icon_Pulura.jpg" />
     <Content Include="Assets\Deities\ICON_Ragathiel.jpg" />
+    <Content Include="Assets\Icon_Zura.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Tweaks\Archetypes\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" AfterTargets="BeforeClean">

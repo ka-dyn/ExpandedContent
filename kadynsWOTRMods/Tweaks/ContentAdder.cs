@@ -1,7 +1,9 @@
 ﻿using HarmonyLib;
+using kadynsWOTRMods.Tweaks;
 using Kingmaker.Blueprints.JsonSystem;
 
-namespace kadynsWOTRMods.Tweaks {
+namespace kadynsWOTRMods.Tweaks
+{
     class ContentAdder {
         [HarmonyPatch(typeof(BlueprintsCache), "Init")]
         static class BlueprintsCache_Init_Patch {
@@ -23,16 +25,24 @@ namespace kadynsWOTRMods.Tweaks {
                 RacialArchetypes.Stonelord.AllowStonelordArchetype();
                 RacialArchetypes.StudentOfStone.AllowStudentOfStoneArchetype();
                 RacialArchetypes.WildlandShaman.AllowWildlandShamanArchetype();
+                RacialArchetypes.PhantasmalMage.AllowPhantasmalMageArchetype();
 
                 Archdevils.Dispater.AddDispater();
                 Archdevils.Mephistopheles.AddMephistopheles();
 
-                Deities.Areshkegal.AddAreshkegal();
+                DemonLords.Areshkegal.AddAreshkegal();
+                DemonLords.Deskari.AddDeskari();
+                DemonLords.Kabriri.AddKabriri();
+                DemonLords.Baphomet.AddBaphomet();
+                DemonLords.Zura.AddZura();
+
+
+
                 Deities.Apsu.AddApsu();
-                Deities.Baphomet.AddBaphomet();
-                Deities.Deskari.AddDeskari();
+                
+                
                 Deities.GreenFaith.AddGreenFaith();
-                Deities.Kabriri.AddKabriri();
+               
                 Deities.PatchPulura.AddPulura();
                 Deities.MilaniSacredWeaponFeature.AddMilaniSacredWeaponFeature();
                 Deities.Ragathiel.AddRagathielFeature();

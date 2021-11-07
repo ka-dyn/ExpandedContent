@@ -64,7 +64,7 @@
         "Description": "Allows you to select the Cruoromancer archetype regardless of race."
       }
     },
-    "IsExpanded": true
+    "IsExpanded": false
   },
   "Deities": {
     "DisableAll": false,
@@ -73,26 +73,6 @@
         "Enabled": true,
         "Homebrew": false,
         "Description": "Allows you to select the Green Faith Deity."
-      },
-      "Baphomet": {
-        "Enabled": true,
-        "Homebrew": false,
-        "Description": "Allows you to select Baphomet as a Deity."
-      },
-      "Areshkegal": {
-        "Enabled": true,
-        "Homebrew": false,
-        "Description": "Allows you to select the Areshkegal as a Deity."
-      },
-      "Deskari": {
-        "Enabled": true,
-        "Homebrew": false,
-        "Description": "Allows you to select Deskari as a Deity."
-      },
-      "Kabriri": {
-        "Enabled": true,
-        "Homebrew": false,
-        "Description": "Allows you to select Kabriri as a Deity."
       },
       "LichDeity": {
         "Enabled": true,
@@ -125,7 +105,7 @@
         "Description": "Adds Apsu, patron deity of all good and metallic dragons, and one of the oldest gods of the Great Beyond. Along with Tiamat, he is (at least according to draconic lore) believed to be one of the two original creator beings of the multiverse."
       }
     },
-    "IsExpanded": true
+    "IsExpanded": false
   },
   "Archdevils": {
     "DisableAll": false,
@@ -142,7 +122,38 @@
       }
     },
 
-    "IsExpanded": true
+    "IsExpanded": false
+  },
+  "DemonLords": {
+    "DisableAll": false,
+    "Settings": {
+      "Zura": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds The demon lord Zura, the Vampire Queen. Her unholy symbol is a blood-red, fanged skull, embossed with runes."
+      },
+      "Baphomet": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Allows you to select Baphomet as a Deity."
+      },
+      "Areshkegal": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Allows you to select the Areshkegal as a Deity."
+      },
+      "Deskari": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Allows you to select Deskari as a Deity."
+      },
+      "Kabriri": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Allows you to select Kabriri as a Deity."
+      }
+    },
+    "IsExpanded": false
   }
 
   

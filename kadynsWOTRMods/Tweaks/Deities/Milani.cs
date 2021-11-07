@@ -54,7 +54,7 @@ namespace kadynsWOTRMods.Tweaks.Deities {
             var MilaniFeature = Helpers.CreateBlueprint<BlueprintFeature>("MilaniFeature", (bp => {
                 
                 bp.SetName("Milani");
-                bp.SetDescription("\nTitles: The Everbloom   " +
+                bp.SetDescription("\n<b>Titles</b>: The Everbloom   " +
                 "\nRealm(s): Refuge of the Red Rose, Axis/ Milani's Garden, Elysium   " +
                 "\nAlignment: Chaotic Good   " +
                 "\nAreas of Concern: Hope, Devotion, Uprisings   " +

@@ -11,7 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace kadynsWOTRMods.Tweaks.Deities {
+namespace kadynsWOTRMods.Tweaks.DemonLords {
     internal class Deskari {
 
 
@@ -22,7 +22,7 @@ namespace kadynsWOTRMods.Tweaks.Deities {
                     var DeskariIcon = AssetLoader.LoadInternal("Deities", "Icon_Deskari.png");
                     var DeskariFeature = Resources.GetBlueprint<BlueprintFeature>("ddf913858bdf43b4da3b731e082fbcc0");
                     DeskariFeature.m_Icon = DeskariIcon;
-                    if (ModSettings.AddedContent.Deities.IsDisabled("Deskari")) { return; }
+                    if (ModSettings.AddedContent.DemonLords.IsDisabled("Deskari")) { return; }
                     DeskariFeature.RemoveComponents<PrerequisiteNoFeature>();
                 
         }

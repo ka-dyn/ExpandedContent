@@ -5,6 +5,7 @@ namespace kadynsWOTRMods.Config {
         public SettingGroup RacialArchetypes = new SettingGroup();
         public SettingGroup Deities = new SettingGroup();
         public SettingGroup Archdevils = new SettingGroup();
+        public SettingGroup DemonLords = new SettingGroup();
         
         
 
@@ -17,6 +18,7 @@ namespace kadynsWOTRMods.Config {
             RacialArchetypes.LoadSettingGroup(loadedSettings.RacialArchetypes, NewSettingsOffByDefault);
             Deities.LoadSettingGroup(loadedSettings.Deities, NewSettingsOffByDefault);
             Archdevils.LoadSettingGroup (loadedSettings.Archdevils, NewSettingsOffByDefault);
+            DemonLords.LoadSettingGroup (loadedSettings.DemonLords, NewSettingsOffByDefault);
             
         }
     }

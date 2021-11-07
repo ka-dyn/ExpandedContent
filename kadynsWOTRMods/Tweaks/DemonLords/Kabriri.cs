@@ -11,7 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace kadynsWOTRMods.Tweaks.Deities {
+namespace kadynsWOTRMods.Tweaks.DemonLords {
     internal class Kabriri {
 
 
@@ -22,7 +22,7 @@ namespace kadynsWOTRMods.Tweaks.Deities {
                     var KabririIcon = AssetLoader.LoadInternal("Deities", "Icon_Kabriri.png");
                     var KabririFeature = Resources.GetBlueprint<BlueprintFeature>("f12c1ccc9d600c04f8887cd28a8f45a5");
                     KabririFeature.m_Icon = KabririIcon;
-                    if (ModSettings.AddedContent.Deities.IsDisabled("Kabriri")) { return; }
+                    if (ModSettings.AddedContent.DemonLords.IsDisabled("Kabriri")) { return; }
                     KabririFeature.RemoveComponents<PrerequisiteNoFeature>();
 
                 

@@ -36,6 +36,7 @@ namespace kadynsWOTRMods {
                 SetttingUI.SettingGroup("Racial Archetypes", TabLevel, AddedContent.RacialArchetypes);
                 SetttingUI.SettingGroup("Deities", TabLevel, AddedContent.Deities);
                 SetttingUI.SettingGroup("Archdevils", TabLevel, AddedContent.Archdevils);
+                SetttingUI.SettingGroup("DemonLords", TabLevel, AddedContent.DemonLords);
 
 
 
