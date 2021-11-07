@@ -43,7 +43,17 @@ namespace kadynsWOTRMods.Tweaks.Archdevils {
             var DispaterFeature = Helpers.CreateBlueprint<BlueprintFeature>("DispaterFeature", (bp => {
 
                 bp.SetName("Dispater");
-                bp.SetDescription("The archdevil Dispater is Hell's greatest jailer and politician and " +
+                bp.SetDescription("\nTitles: Iron Lord, Father of Dis, First King, King of Iron, Asmodeus' Eye, Master of the Tower, Lord of the Second   " +
+                    "\nRealm: Dis, Hell   " +
+                    "\nAlignment: Lawful Evil   " +
+                    "\nAreas of Concern: Cities, Prisons, Rulership   " +
+                    "\nDomains: Evil, Law, Nobility, Trickery   " +
+                    "\nSubdomains: Deception, Devil, Leadership, Legislation, Thievery   " +
+                    "\nProfane Symbol: Iron Nail, Crown and Ring   " +
+                    "\nFavoured Weapon: Heavy Mace   " +
+                    "\nProfane Animal: Hound   " +
+                    "\nProfane Colours: Iron gray, Red" +
+                    "\nThe archdevil Dispater is Hell's greatest jailer and politician and " +
                     "rules its second layer, Dis. Also known as the Iron Lord, Father of Dis and First King, Dispater is one " +
                     "of the more active rulers of Hell and one of Asmodeus's closest and longest-standing allies. His unholy symbol " +
                     "is an iron spike driven into a golden ring with a red and purple crown. His symbol of office is an artefact " +
@@ -58,17 +68,7 @@ namespace kadynsWOTRMods.Tweaks.Archdevils {
                     "that hovers above his head. His skin bears dozens of scars and piercings, each of them a past wound turned into a mark of " +
                     "pride. He retains his angelic wings, though they are now black, and he keeps them retracted within his body at almost all times. " +
                     "The First King's staff of office is The Eclipsing Eye, a bladed staff with a great ruby through which Asmodeus constantly " +
-                    "watches him.   " +
-                    "\nTitles: Iron Lord, Father of Dis, First King, King of Iron, Asmodeus' Eye, Master of the Tower, Lord of the Second   " +                   
-                    "\nRealm: Dis, Hell   " +
-                    "\nAlignment: Lawful Evil   " +
-                    "\nAreas of Concern: Cities, Prisons, Rulership" +
-                    "\nDomains: Evil, Law, Nobility, Trickery   " +
-                    "\nSubdomains: Deception, Devil, Leadership, Legislation, Thievery   " +
-                    "\nProfane Symbol: Iron Nail, Crown and Ring   " +
-                    "\nFavoured Weapon: Heavy Mace   " +
-                    "\nProfane Animal: Hound   " +
-                    "\nProfane Colours: Iron gray, Red");
+                    "watches him.");
                 bp.m_Icon = DispaterIcon;
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;

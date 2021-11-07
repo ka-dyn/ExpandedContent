@@ -42,7 +42,15 @@ namespace kadynsWOTRMods.Tweaks.Deities {
             var RagathielFeature = Helpers.CreateBlueprint<BlueprintFeature>("RagathielFeature", (bp => {
 
                 bp.SetName("Ragathiel");
-                bp.SetDescription("Ragathiel is an empyreal lord—a good servant of the gods who through transcendence has achieved " +
+                bp.SetDescription("\nTitles: General of Vengeance   " +
+                    "\nAlignment: Lawful Good   " +
+                    "\nDomains: Destruction, Good, Law, Nobility   " +
+                    "\nSubdomains: Archon, Leadership, Martyr, Rage   " +
+                    "\nFavoured Weapon: Bastard Sword   " +
+                    "\nHoly Symbol: Sword, crossed with Wing   " +
+                    "\nSacred Animal: Mastiff   " +
+                    "\nSacred Colours: Crimson, Gold   " +
+                    "\nRagathiel is an empyreal lord—a good servant of the gods who through transcendence has achieved " +
                     "some small measure of divine power—known as the General of Vengeance. His portfolio includes chivalry, duty, " +
                     "and vengeance, and his holy symbol is a bastard sword crossed with a crimson wing. He makes his home at the base " +
                     "of the mountain of Heaven, in his eponymous fortress, a magnificent steel structure designed to withstand a thousand-year siege " +
@@ -68,14 +76,6 @@ namespace kadynsWOTRMods.Tweaks.Deities {
                     "The faithful ask Ragathiel's eyes to fall upon them and for his wings to shield them.This is also a standard greeting and farewell among worshipers. " +
                     "Followers of Ragathiel commonly wear red and silver clothing.Many also don an ornament or sigil the color of flames, typically on the helmet. " +
                     "Ragathiel has a small but old cult in Magnimar, a city known for its many mystery cults revering various empyreal lords.   " +
-                    "\nTitles: General of Vengeance   " +
-                    "\nAlignment: Lawful Good   " +
-                    "\nDomains: Destruction, Good, Law, Nobility   " +
-                    "\nSubdomains: Archon, Leadership, Martyr, Rage   " +
-                    "\nFavoured Weapon: Bastard Sword   " +
-                    "\nHoly Symbol: Sword, crossed with Wing   " +
-                    "\nSacred Animal: Mastiff   " +
-                    "\nSacred Colours: Crimson, Gold   " +
                     "\nPaladin Code:   " +
                     "\n*I will avenge evil wrought upon the innocent.   " +
                     "\n*I will not give my word lightly, but once it is given, I will uphold a promise until my last breath.   " +

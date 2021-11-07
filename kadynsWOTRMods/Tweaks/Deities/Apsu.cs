@@ -51,15 +51,7 @@ namespace kadynsWOTRMods.Tweaks.Deities {
             var ApsuFeature = Helpers.CreateBlueprint<BlueprintFeature>("ApsuFeature", (bp => {
 
                 bp.SetName("Apsu");
-                bp.SetDescription("Apsu is the patron deity of all good and metallic dragons, and one of the oldest gods of the Great Beyond. " +
-                "Along with Tiamat, he is (at least according to draconic lore) believed to be one of the two original creator " +
-                "beings of the multiverse. According to draconic lore, in the dawn of time there flowed two waters, fresh and salt, " +
-                "which became Apsu and Tiamat, parents of the first gods. However, their eldest son Dahak came to Hell to rampage, " +
-                "then killed his siblings, whose shattered remains fell into the Material Plane and became the first metallic dragons. " +
-                "Enraged, the fresh water descended upon the Material Plane to confront his son, saying the eternal words: " +
-                "I shall then be Apsu, for I am the first. " +
-                "\nAppearance: Apsu appears as a regal silver dragon dwarfing the largest great wyrms. His scales sparkle with a pearlescent glow.   " +
-                "\nTitles: Waybringer, The Exiled Wyrm, Maker of All   " +
+                bp.SetDescription("\nTitles: Waybringer, The Exiled Wyrm, Maker of All   " +
                 "\nRealm: Immortal Ambulatory, a traveling demi-plane   " +
                 "\nAlignment: Lawful Good   " +
                 "\nAreas of Concern: Good Dragons, Glory, Leadership, Peace   " +
@@ -67,7 +59,15 @@ namespace kadynsWOTRMods.Tweaks.Deities {
                 "\nSubdomains: Archon, Construct, Dragon, Exploration, Judgment, Toll, Trade   " +
                 "\nFavoured Weapon: Bite, Quarterstaff (Arcana)  " +
                 "\nHoly Symbol: Silver Dragon above Pool   " +
-                "\nSacred Colours: Metallic Colors   ");
+                "\nSacred Colours: Metallic Colors  " +
+                "\nApsu is the patron deity of all good and metallic dragons, and one of the oldest gods of the Great Beyond. " +
+                "Along with Tiamat, he is (at least according to draconic lore) believed to be one of the two original creator " +
+                "beings of the multiverse. According to draconic lore, in the dawn of time there flowed two waters, fresh and salt, " +
+                "which became Apsu and Tiamat, parents of the first gods. However, their eldest son Dahak came to Hell to rampage, " +
+                "then killed his siblings, whose shattered remains fell into the Material Plane and became the first metallic dragons. " +
+                "Enraged, the fresh water descended upon the Material Plane to confront his son, saying the eternal words: " +
+                "I shall then be Apsu, for I am the first. " +
+                "\nAppearance: Apsu appears as a regal silver dragon dwarfing the largest great wyrms. His scales sparkle with a pearlescent glow. ");
                 bp.m_Icon = ApsuIcon;
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;

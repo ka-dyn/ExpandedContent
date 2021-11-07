@@ -43,16 +43,7 @@ namespace kadynsWOTRMods.Tweaks.Archdevils {
             var MephistophelesFeature = Helpers.CreateBlueprint<BlueprintFeature>("MephistophelesFeature", (bp => {
 
                 bp.SetName("Mephistopheles");
-                bp.SetDescription("The archdevil Mephistopheles is the ruler of Caina, the Eighth Layer of Hell, where he keeps many of Hell's greatest secrets and contracts. " +
-                    "Mephistopheles' official and true unholy symbol is, in essence, a crimson trident piercing a golden ring, with the three prongs of the trident alluding " +
-                    "to the spires of Caina. His symbols are rarely seen, however, as owing one's allegiance to Mephistopheles is most often kept secret. " +
-                    "Simpler, alternative versions of his unholy symbol exist, including a red sun eclipsed by three mountains; a tongue pierced with three studs; and a " +
-                    "scale surmounted with a feather, topped by a bone. The latter evokes Mephistopheles' three sets of wings. Mephistopheles originated as the consciousness of " +
-                    "Hell itself, predating Asmodeus' discovery of the plane. When Asmodeus and his followers entered Hell following their Exodus from Heaven, Asmodeus traveled " +
-                    "into Caina and tore Hell's very flesh from its bones, reshaping it into a being he named Mephistopheles. The newly formed entity, the first true devil, pledged " +
-                    "to oppose Asmodeus' enemies as if they were its own, and became one of Asmodeus' closest lieutenants. This story is recorded in the " +
-                    "Book of the Damned.   " +
-                    "\nTitles: Crimson Son, Devil King, Lord of the Eighth, Merchant of Souls, Seneschal of Hell   " +
+                bp.SetDescription("\nTitles: Crimson Son, Devil King, Lord of the Eighth, Merchant of Souls, Seneschal of Hell   " +
                     "\nRealm: Caina, Hell   " +
                     "\nAlignment: Lawful Evil   " +
                     "\nAreas of Concern: Contracts, Devils, Secrets   " +
@@ -61,7 +52,16 @@ namespace kadynsWOTRMods.Tweaks.Archdevils {
                     "\nFavoured Weapon: Trident  " +
                     "\nProfane Symbol: Trident and Ring  " +
                     "\nProfane Animal: Mockingbird  " +
-                    "\nProfane Colours: Red and Yellow  ");
+                    "\nProfane Colours: Red and Yellow " +
+                    "\nThe archdevil Mephistopheles is the ruler of Caina, the Eighth Layer of Hell, where he keeps many of Hell's greatest secrets and contracts. " +
+                    "Mephistopheles' official and true unholy symbol is, in essence, a crimson trident piercing a golden ring, with the three prongs of the trident alluding " +
+                    "to the spires of Caina. His symbols are rarely seen, however, as owing one's allegiance to Mephistopheles is most often kept secret. " +
+                    "Simpler, alternative versions of his unholy symbol exist, including a red sun eclipsed by three mountains; a tongue pierced with three studs; and a " +
+                    "scale surmounted with a feather, topped by a bone. The latter evokes Mephistopheles' three sets of wings. Mephistopheles originated as the consciousness of " +
+                    "Hell itself, predating Asmodeus' discovery of the plane. When Asmodeus and his followers entered Hell following their Exodus from Heaven, Asmodeus traveled " +
+                    "into Caina and tore Hell's very flesh from its bones, reshaping it into a being he named Mephistopheles. The newly formed entity, the first true devil, pledged " +
+                    "to oppose Asmodeus' enemies as if they were its own, and became one of Asmodeus' closest lieutenants. This story is recorded in the " +
+                    "Book of the Damned.");
                 bp.m_Icon = MephistophelesIcon;
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;

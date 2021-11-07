@@ -43,7 +43,16 @@ namespace kadynsWOTRMods.Tweaks.Deities {
             var ArsheaFeature = Helpers.CreateBlueprint<BlueprintFeature>("ArsheaFeature", (bp => {
 
                 bp.SetName("Arshea");
-                bp.SetDescription("The angel empyreal Lord Arshea is a champion of the repressed and weary, " +
+                bp.SetDescription("\nTitles: Spirit of Abandon, Host of Delectation   " +
+                    "\nAlignment: Neutral Good   " +
+                    "\nEdict: Inspire passion, comfort and free the repressed, seek your true self and desires   " +
+                    "\nDomains: Charm, Good, Liberation, Strength   " +
+                    "\nSubdomains: Agathion, Freedom, Love, Lust   " +
+                    "\nFavoured Weapon: Flail   " +
+                    "\nHoly Symbol: Figure with colourful sashes   " +
+                    "\nSacred Animal: Swan   " +
+                    "\nSacred Colours: Purple, White" +
+                    "\nThe angel empyreal Lord Arshea is a champion of the repressed and weary, " +
                     "providing mortals deliverance from their bonds. This liberation applies to many of Arshea's worshipers, who " +
                     "often choose to ignore conventional gender identities, eventually choosing one that fits them best. " +
                     "Arshea is worshipped by artisans, courtesans, some fey, and those seeking to escape repression. They eschew " +
@@ -57,16 +66,7 @@ namespace kadynsWOTRMods.Tweaks.Deities {
                     "always dressed in many-colored veils of gossamer. Indeed, Arshea is of both genders and neither, unhindered " +
                     "by such differences. Arshea has a perfect face, a lithe body, and wings of gray and blue. Their form is seen " +
                     "as ideal by any species that look upon them, and some claim that those who directly behold Arshea can never " +
-                    "be satisfied with mortal beauty again.   " +
-                    "\nTitles: Spirit of Abandon, Host of Delectation   " +
-                    "\nAlignment: Neutral Good   " +
-                    "\nEdict: Inspire passion, comfort and free the repressed, seek your true self and desires   " +
-                    "\nDomains: Charm, Good, Liberation, Strength   " +
-                    "\nSubdomains: Agathion, Freedom, Love, Lust   " +
-                    "\nFavoured Weapon: Flail   " +
-                    "\nHoly Symbol: Figure with colourful sashes   " +
-                    "\nSacred Animal: Swan   " +
-                    "\nSacred Colours: Purple, White");
+                    "be satisfied with mortal beauty again.");
                 bp.m_Icon = ArsheaIcon;
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;
