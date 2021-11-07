@@ -72,45 +72,45 @@ namespace kadynsWOTRMods.Tweaks.Deities {
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;
                 bp.HideInCharacterSheetAndLevelUp = false;
-                bp.AddComponent<PrerequisiteNoArchetype>(c => {
+                bp.AddComponents<PrerequisiteNoArchetype>(c => {
                     c.m_CharacterClass = ClericClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_Archetype = PriestOfBalance.ToReference<BlueprintArchetypeReference>();
                 });
-                bp.AddComponent<PrerequisiteNoArchetype>(c => {
+                bp.AddComponents<PrerequisiteNoArchetype>(c => {
                     c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_Archetype = FeralChampionArchetype.ToReference<BlueprintArchetypeReference>();
                 });
 
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
-                bp.AddComponent<PrerequisiteAlignment>(c => {
+                bp.AddComponents<PrerequisiteAlignment>(c => {
                     c.Alignment = AlignmentMaskType.LawfulGood | AlignmentMaskType.LawfulNeutral | AlignmentMaskType.NeutralGood | AlignmentMaskType.TrueNeutral;
                 });
-                bp.AddComponent<AddFacts>(c => {
+                bp.AddComponents<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[1] { ChannelPositiveAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
-                bp.AddComponent<AddFacts>(c => {
+                bp.AddComponents<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[1] { GoodDomainAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
-                bp.AddComponent<AddFacts>(c => {
+                bp.AddComponents<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[1] { LawDomainAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
-                bp.AddComponent<AddFacts>(c => {
+                bp.AddComponents<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[1] { TravelDomainAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
-                bp.AddComponent<AddFacts>(c => {
+                bp.AddComponents<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[1] { ArtificeDomainAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
-                bp.AddComponent<AddFacts>(c => {
+                bp.AddComponents<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[1] { CommunityDomainAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
-                bp.AddComponent<ForbidSpellbookOnAlignmentDeviation>(c => {
+                bp.AddComponents<ForbidSpellbookOnAlignmentDeviation>(c => {
                     c.m_Spellbooks = new BlueprintSpellbookReference[1] { CrusaderSpellbook.ToReference<BlueprintSpellbookReference>() };
                     c.m_Spellbooks = new BlueprintSpellbookReference[1] { ClericSpellbook.ToReference<BlueprintSpellbookReference>() };
                     c.m_Spellbooks = new BlueprintSpellbookReference[1] { InquisitorSpellbook.ToReference<BlueprintSpellbookReference>() };
                 });
                 
 
-                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                bp.AddComponents<AddFeatureOnClassLevel>(c => {
                     c.m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>();
 
                     c.m_Feature = BloodlineDraconicSilverArcana.ToReference<BlueprintFeatureReference>();
@@ -123,7 +123,7 @@ namespace kadynsWOTRMods.Tweaks.Deities {
                         WarpriestClass.ToReference<BlueprintCharacterClassReference>()
                     };
                 });
-                bp.AddComponent<AddStartingEquipment>(c => {
+                bp.AddComponents<AddStartingEquipment>(c => {
                     c.m_BasicItems = new BlueprintItemReference[1] { MasterworkQuarterstaff.ToReference<BlueprintItemReference>() };
                     c.m_RestrictedByClass = new BlueprintCharacterClassReference[3] {
                         ClericClass.ToReference<BlueprintCharacterClassReference>(),
@@ -133,7 +133,7 @@ namespace kadynsWOTRMods.Tweaks.Deities {
                 });
                 
             }));
-            Resources.AddBlueprint(ApsuFeature);
+            
         }
             
     }

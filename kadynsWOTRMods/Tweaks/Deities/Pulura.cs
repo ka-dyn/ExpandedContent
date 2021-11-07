@@ -56,14 +56,14 @@ namespace kadynsWOTRMods.Tweaks.Deities {
             PuluraFeature.RemoveComponents<PrerequisiteAlignment>();
 
                     
-            PuluraFeature.AddComponent<PrerequisiteAlignment>(bp => {
+            PuluraFeature.AddComponents<PrerequisiteAlignment>(bp => {
                         
                 bp.Alignment = AlignmentMaskType.Good | AlignmentMaskType.ChaoticNeutral;
 
                     
             });
                     
-            PuluraFeature.AddComponent<AddFacts>(bp => {
+            PuluraFeature.AddComponents<AddFacts>(bp => {
                         
                 bp.m_Facts = new BlueprintUnitFactReference[] { GoodDomainAllowed.ToReference<BlueprintUnitFactReference>() };
                     

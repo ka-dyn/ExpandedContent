@@ -182,7 +182,7 @@ namespace kadynsWOTRMods.Utilities {
                     foreach (var feature in entry.Features) {
                         if (feature is BlueprintFeatureSelection) { continue; }
                         if (feature.GetComponent<AddKnownSpell>()) { continue; }
-                        bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                        bp.AddComponents<AddFeatureOnClassLevel>(c => {
                             c.m_Class = BloodragerClass;
                             c.m_AdditionalClasses = new BlueprintCharacterClassReference[0];
                             c.m_Archetypes = new BlueprintArchetypeReference[0];
@@ -252,7 +252,7 @@ namespace kadynsWOTRMods.Utilities {
                 bp.m_Description = bloodragerArcaneSpellAbility.m_Description;
                 bp.m_DescriptionShort = bloodragerArcaneSpellAbility.m_DescriptionShort;
                 bp.m_Icon = spellBuff.m_Icon;
-                bp.AddComponent<BuffExtraEffects>(c => {
+                bp.AddComponents<BuffExtraEffects>(c => {
                     c.m_CheckedBuff = rageBuff.ToReference<BlueprintBuffReference>();
                     c.m_ExtraEffectBuff = spellBuff.ToReference<BlueprintBuffReference>();
                 });
@@ -269,7 +269,7 @@ namespace kadynsWOTRMods.Utilities {
                 bp.SetName(displayName);
                 bp.m_Description = polymorphBuff.m_Description;
                 bp.m_Icon = polymorphBuff.m_Icon;
-                bp.AddComponent<AddFactContextActions>(c => {
+                bp.AddComponents<AddFactContextActions>(c => {
                     c.Activated = new ActionList() {
                         Actions = new GameAction[] {
                                 new ContextActionRemoveBuffsByDescriptor() {

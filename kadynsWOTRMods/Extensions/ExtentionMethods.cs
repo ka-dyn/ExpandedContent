@@ -296,7 +296,7 @@ namespace kadynsWOTRMods.Extensions {
             obj.SetComponents(obj.ComponentsArray.AppendToArray(component));
         }
 
-        public static void AddComponent<T>(this BlueprintScriptableObject obj, Action<T> init = null) where T : BlueprintComponent, new() {
+        public static void AddComponents<T>(this BlueprintScriptableObject obj, Action<T> init = null) where T : BlueprintComponent, new() {
             obj.SetComponents(obj.ComponentsArray.AppendToArray(Helpers.Create(init)));
         }
 
