@@ -20,7 +20,7 @@ namespace kadynsWOTRMods.Tweaks.Deities {
 
 
                 bp.SetName("Milani's Sacred Weapon");
-                bp.AddComponents<AddFacts>(c => {
+                bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] { AsmodeusSacredWeaponFeature.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.HideInCharacterSheetAndLevelUp = true;

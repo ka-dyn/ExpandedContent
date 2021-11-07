@@ -140,11 +140,11 @@ namespace kadynsWOTRMods.Utilities {
                 bp.ReapplyOnLevelUp = true;
                 bp.IsClassFeature = true;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Feat };
-                bp.AddComponents<IncreaseResourceAmount>(c => {
+                bp.AddComponent<IncreaseResourceAmount>(c => {
                     c.m_Resource = resource.ToReference<BlueprintAbilityResourceReference>();
                     c.Value = amount;
                 });
-                bp.AddComponents<FeatureTagsComponent>(c => {
+                bp.AddComponent<FeatureTagsComponent>(c => {
                     c.FeatureTags = FeatureTag.ClassSpecific;
                 });
             });
@@ -161,7 +161,7 @@ namespace kadynsWOTRMods.Utilities {
                 bp.m_AllFeatures = selection.m_AllFeatures.ToArray();
                 bp.Mode = selection.Mode;
                 bp.IgnorePrerequisites = selection.IgnorePrerequisites;
-                bp.AddComponents<FeatureTagsComponent>(c => {
+                bp.AddComponent<FeatureTagsComponent>(c => {
                     c.FeatureTags = FeatureTag.ClassSpecific;
                 });
                 bp.AddPrerequisiteFeature(selection);
