@@ -118,10 +118,32 @@
         "Enabled": true,
         "Homebrew": false,
         "Description": "Adds the angel empyreal Lord Arshea, a champion of the repressed and weary. Arshea provides mortals deliverance from their bonds."
+      },
+      "Apsu": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds Apsu, patron deity of all good and metallic dragons, and one of the oldest gods of the Great Beyond. Along with Tiamat, he is (at least according to draconic lore) believed to be one of the two original creator beings of the multiverse."
       }
     },
     "IsExpanded": true
+  },
+  "Archdevils": {
+    "DisableAll": false,
+    "Settings": {
+      "Dispater": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds the Archdevil Dispater, Hell's greatest jailer and politician who rules its second layer, Dis. Also known as the Iron Lord, Father of Dis and First King"
+      },
+      "Mephistopheles": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds The archdevil Mephistopheles, the ruler of Caina, the Eighth Layer of Hell, where he keeps many of Hell's greatest secrets and contracts."
+      }
+    },
 
-
+    "IsExpanded": true
   }
+
+  
 }

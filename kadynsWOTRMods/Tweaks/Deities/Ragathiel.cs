@@ -50,7 +50,38 @@ namespace kadynsWOTRMods.Tweaks.Deities {
                     "a figure of golden light cleaving through the ranks of devils that face him. Soldiers of all kinds, but particularly knights, " +
                     "pay homage to Ragathiel and pray for his virtue and wrathful strength in battle. Those who have taken vows, especially those " +
                     "of duty or vengeance, hold Ragathiel as their ideal, and his agents sometimes assist those who have been grievously wronged " +
-                    "and now seek righteous vengeance \nDomains: Destruction, Good, Law, Nobility \nFavoured Weapon: Bastard Sword");
+                    "and now seek righteous vengeance. As strange as it may seem, Ragathiel is the son of Feronia, a demigoddess of the Plane of Fire, " +
+                    "and Dispater, the Father of Dis. He was conceived in a brief tryst (lasting only a few centuries), after which his mother took " +
+                    "him out of Hell. Ragathiel's tainted heritage has left him with a wrathful heart, and the angel struggles constantly to master " +
+                    "his baser impulses in service to the light. For thousands of years he strove to prove himself to the angelic choirs of Heaven. In the " +
+                    "Maelstrom he wrestled for 16 years with a monstrous evil serpent whose scales wept acidic blood until he was able to choke the " +
+                    "life out of it. He led an entire army against one of the iron fortresses of Avernus and burned the castle to the ground with holy fire, " +
+                    "single-handedly maiming Infernal Duke Deumus in the process. Finally the other empyreal lords agreed to admit Ragathiel into their ranks, and now " +
+                    "they appear to trust the angel completely—though that trust took centuries to develop. At some point in history, Ragathiel destroyed " +
+                    "Typhon, the original ruler of the first layer of Hell.He may have been manipulated into doing so by the schemes of Asmodeus to punish " +
+                    "Typhon for his indiscretions.[9] Ragathiel was once served by the Hand of the Inheritor, an angel who now acts as the goddess Iomedae's herald. " +
+                    "Then known as the Hand of Vengeance, this angel asked to be reassigned to Iomedae after the death of Aroden. " +
+                    "\nAppearance: Ragathiel is a tower of glorious might. He stands almost 20 feet tall, and five lofty burning wings stretch from his back. " +
+                    "The General of Vengeance once had six wings, but one was severed, torn from his body by the archdevil Dispater—Ragathiel's father.   " +
+                    "\nWorship: Ragathiel is commonly worshiped by the avowed, knights, soldiers, the wronged, and the empyreal lord employs aasimar, paladins, " +
+                    "blink dogs, and kirin as his most common servants.[4] The holiest time for Ragathiel's followers is the brief moments before and after a battle. " +
+                    "The faithful ask Ragathiel's eyes to fall upon them and for his wings to shield them.This is also a standard greeting and farewell among worshipers. " +
+                    "Followers of Ragathiel commonly wear red and silver clothing.Many also don an ornament or sigil the color of flames, typically on the helmet. " +
+                    "Ragathiel has a small but old cult in Magnimar, a city known for its many mystery cults revering various empyreal lords.   " +
+                    "\nTitles: General of Vengeance   " +
+                    "\nAlignment: Lawful Good   " +
+                    "\nDomains: Destruction, Good, Law, Nobility   " +
+                    "\nSubdomains: Archon, Leadership, Martyr, Rage   " +
+                    "\nFavoured Weapon: Bastard Sword   " +
+                    "\nHoly Symbol: Sword, crossed with Wing   " +
+                    "\nSacred Animal: Mastiff   " +
+                    "\nSacred Colours: Crimson, Gold   " +
+                    "\nPaladin Code:   " +
+                    "\n*I will avenge evil wrought upon the innocent.   " +
+                    "\n*I will not give my word lightly, but once it is given, I will uphold a promise until my last breath.   " +
+                    "\n*Those proven guilty must be punished for their crimes. I will not turn a blind eye to wrongdoing.   " +
+                    "\n*Rage is a virtue and a strength only when focused against the deserving. I will never seek disproportionate retribution.   " +
+                    "\n*Redemption finds hearts from even the cruelest origins. I will strive not to act upon prejudice against fellow mortals based on race or origin.");
                 bp.m_Icon = RagathielIcon;
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;

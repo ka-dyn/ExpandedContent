@@ -51,7 +51,22 @@ namespace kadynsWOTRMods.Tweaks.Deities {
                     "with multiple gender roles) for a period of time ranging from months to decades, which they consider " +
                     "the best way to overcome repression and understand freedom, choosing the most fitting gender after this period of " +
                     "pilgrimage. Arshea teaches them to abandon constraining beliefs and " +
-                    "practice free love and sexuality. \nDomains: Charm, Good, Liberation, Strength \nFavoured Weapon: Flail");
+                    "practice free love and sexuality. Arshea has no permanent home, and constantly travels through the Material " +
+                    "Plane, Nirvana, Elysium and Heaven.   " +
+                    "\nAppearance: Arshea is androgynous and has been depicted as both male and female, but in either case, " +
+                    "always dressed in many-colored veils of gossamer. Indeed, Arshea is of both genders and neither, unhindered " +
+                    "by such differences. Arshea has a perfect face, a lithe body, and wings of gray and blue. Their form is seen " +
+                    "as ideal by any species that look upon them, and some claim that those who directly behold Arshea can never " +
+                    "be satisfied with mortal beauty again.   " +
+                    "\nTitles: Spirit of Abandon, Host of Delectation   " +
+                    "\nAlignment: Neutral Good   " +
+                    "\nEdict: Inspire passion, comfort and free the repressed, seek your true self and desires   " +
+                    "\nDomains: Charm, Good, Liberation, Strength   " +
+                    "\nSubdomains: Agathion, Freedom, Love, Lust   " +
+                    "\nFavoured Weapon: Flail   " +
+                    "\nHoly Symbol: Figure with colourful sashes   " +
+                    "\nSacred Animal: Swan   " +
+                    "\nSacred Colours: Purple, White");
                 bp.m_Icon = ArsheaIcon;
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;

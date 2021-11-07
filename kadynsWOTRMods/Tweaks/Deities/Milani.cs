@@ -54,14 +54,30 @@ namespace kadynsWOTRMods.Tweaks.Deities {
             var MilaniFeature = Helpers.CreateBlueprint<BlueprintFeature>("MilaniFeature", (bp => {
                 
                 bp.SetName("Milani");
-                bp.SetDescription("Until the death of Aroden in 4606 AR, the goddess Milani was simply one of dozens of saints within the Last Azlanti's faith. " +
+                bp.SetDescription("The minor goddess Milani, also known as the Everbloom, is the patron of all those who fight " +
+                 "against oppression and unjust rule. Her symbol is a rose growing out of a blood-soaked street. Until the death of Aroden in " +
+                 "4606 AR, the goddess Milani was simply one of dozens of saints within the Last Azlanti's faith. " +
                 "She was the beacon of hope to all those who fought against repressive regimes, giving courage to those who had little but their desire to " +
                 "live a free life. The death of her patron, combined with the tremendous upheaval and suffering that followed his death, gave her a focus and " +
                 "attracted many new followers. Those devoted to her found the courage to organize the rebellions against the infernal takeover of the " +
                 "Chelish Empire, helping many of her outlying territories break free of its control. They fought against the slow slide into barbarism, " +
                 "restoring people's hope that a just and good society could be restored. Milani has never been as popular as Aroden's other followers," +
                 "such as Iomedae, perhaps because the Inheritor's worship had already been firmly established before their patron's " +
-                "passing. \nDomains: Chaos, Good, Healing, Liberation, Protection \nFavoured Weapon: Morningstar (Mace)");
+                "passing. Milani has two realms: Milani's Garden in Elysium, where she spends most of her time, and the Refuge of the Red Rose in Axis, " +
+                "a small corner located within the collapsing divine realm of Aroden. Only a few square miles in size, the Refuge of the Red Rose " +
+                "sits near the center of her former patron's realm. From here she gives aid to all those fighting oppression and evil, strives to mitigate " +
+                "the institutionalised inequality in Axis, and seeks to relocate the downtrodden to " +
+                "friendlier places.  " +
+                "\nTitles: The Everbloom   " +
+                "\nRealm(s): Refuge of the Red Rose, Axis/ Milani's Garden, Elysium   " +
+                "\nAlignment: Chaotic Good   " +
+                "\nAreas of Concern: Hope, Devotion, Uprisings   " +
+                "\nDomains: Chaos, Good, Healing, Liberation, Protection   " +
+                "\nSubdomains: Azata, Defense, Freedom, Purity, Restoration, Revolution   " +
+                "\nFavoured Weapon: Morningstar (Mace)   " +
+                "\nHoly Symbol: Rose on Bloody Street   " +
+                "\nSacred Animal: Mouse   " +
+                "\nSacred Colours: Red, White");
                 bp.m_Icon = MilaniIcon;
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;

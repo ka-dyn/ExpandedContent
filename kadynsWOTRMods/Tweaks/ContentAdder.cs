@@ -24,7 +24,11 @@ namespace kadynsWOTRMods.Tweaks {
                 RacialArchetypes.StudentOfStone.AllowStudentOfStoneArchetype();
                 RacialArchetypes.WildlandShaman.AllowWildlandShamanArchetype();
 
+                Archdevils.Dispater.AddDispater();
+                Archdevils.Mephistopheles.AddMephistopheles();
+
                 Deities.Areshkegal.AddAreshkegal();
+                Deities.Apsu.AddApsu();
                 Deities.Baphomet.AddBaphomet();
                 Deities.Deskari.AddDeskari();
                 Deities.GreenFaith.AddGreenFaith();

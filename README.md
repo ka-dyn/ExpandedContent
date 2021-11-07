@@ -18,6 +18,11 @@ Seriously, thank you!
 I will be adding many things, but first I'm going to finish vindictive bastard!
 
 *Current Features:
+v0.2.2
+-Added many lore-friendly descriptors to added deities
+-Added the Archdevils Dispater and Mephistopheles
+-Added Apsu
+
 v0.2.1
 -Added the minor deity Arshea
 
