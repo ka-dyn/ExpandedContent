@@ -26,7 +26,7 @@ using kadynsWOTRMods;
 
 namespace kadynsWOTRMods.Utilities {
     public static class Helpers {
-        public static T Create<T>(Action<T> init = null) where T : new() {
+        public static T CreateBlueprint<T>(Action<T> init = null) where T : new() {
             var result = new T();
             init?.Invoke(result);
             return result;

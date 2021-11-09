@@ -183,7 +183,7 @@ namespace kadynsWOTRMods.Extensions {
             obj.AddPrerequisiteFeature(feature, GroupType.All);
         }
         public static void AddPrerequisiteFeature(this BlueprintFeature obj, BlueprintFeature feature, GroupType group) {
-            obj.AddComponent(Helpers.Create<PrerequisiteFeature>(bp => {
+            obj.AddComponent(Helpers.CreateBlueprint<PrerequisiteFeature>(bp => {
                 bp.m_Feature = feature.ToReference<BlueprintFeatureReference>();
                 bp.Group = group;
             }));
@@ -196,7 +196,7 @@ namespace kadynsWOTRMods.Extensions {
             obj.AddPrerequisiteFeaturesFromList(amount, GroupType.All, features);
         }
         public static void AddPrerequisiteFeaturesFromList(this BlueprintFeature obj, int amount, GroupType group = GroupType.All, params BlueprintFeature[] features) {
-            obj.AddComponent(Helpers.Create<PrerequisiteFeaturesFromList>(c => {
+            obj.AddComponent(Helpers.CreateBlueprint<PrerequisiteFeaturesFromList>(c => {
                 c.m_Features = features.Select(f => f.ToReference<BlueprintFeatureReference>()).ToArray();
                 c.Amount = amount;
                 c.Group = group;
@@ -210,7 +210,7 @@ namespace kadynsWOTRMods.Extensions {
         }
 
         public static void AddPrerequisite<T>(this BlueprintFeature obj, Action<T> init = null) where T : Prerequisite, new() {
-            obj.AddPrerequisite(Helpers.Create(init));
+            obj.AddPrerequisite(Helpers.CreateBlueprint(init));
         }
 
         public static void AddPrerequisite<T>(this BlueprintFeature obj, T prerequisite) where T : Prerequisite {
@@ -297,7 +297,7 @@ namespace kadynsWOTRMods.Extensions {
         }
 
         public static void AddComponent<T>(this BlueprintScriptableObject obj, Action<T> init = null) where T : BlueprintComponent, new() {
-            obj.SetComponents(obj.ComponentsArray.AppendToArray(Helpers.Create(init)));
+            obj.SetComponents(obj.ComponentsArray.AppendToArray(Helpers.CreateBlueprint(init)));
         }
 
         public static void RemoveComponent(this BlueprintScriptableObject obj, BlueprintComponent component) {

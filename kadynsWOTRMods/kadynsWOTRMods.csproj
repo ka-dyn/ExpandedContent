@@ -192,6 +192,15 @@
     <Compile Include="Tweaks\Archdevils\Mammon.cs" />
     <Compile Include="Tweaks\Archdevils\Mephistopheles.cs" />
     <Compile Include="Tweaks\Archdevils\Moloch.cs" />
+    <Compile Include="Tweaks\Classes\ClassFeatures\FadedGrace.cs" />
+    <Compile Include="Tweaks\Classes\ClassFeatures\OathbreakersDirection.cs" />
+    <Compile Include="Tweaks\Classes\ClassFeatures\SpitefulTenacity.cs" />
+    <Compile Include="Tweaks\Classes\ClassFeatures\VindictiveBastardProgression.cs" />
+    <Compile Include="Tweaks\Classes\ClassFeatures\VindictiveBastardSmiteBuff.cs" />
+    <Compile Include="Tweaks\Classes\ClassFeatures\VindictiveBastardSoloTactics.cs" />
+    <Compile Include="Tweaks\Classes\ClassFeatures\VindictiveSmiteAbility.cs" />
+    <Compile Include="Tweaks\Classes\ClassFeatures\VindictiveSmiteFeature.cs" />
+    <Compile Include="Tweaks\Classes\VindictiveBastard.cs" />
     <Compile Include="Tweaks\ContentAdder.cs" />
     <Compile Include="Tweaks\Deities\Abraxas.cs" />
     <Compile Include="Tweaks\Deities\Apsu.cs" />
