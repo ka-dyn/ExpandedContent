@@ -131,7 +131,7 @@ namespace kadynsWOTRMods.Tweaks.DemonLords {
                     };
                 });
             }));
-            Resources.AddBlueprint(ZuraFeature);
+            
         }
     }
 }

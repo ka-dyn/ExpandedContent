@@ -133,7 +133,7 @@ namespace kadynsWOTRMods.Tweaks.Deities {
                 });
                 
             }));
-            Resources.AddBlueprint(ApsuFeature);
+            
         }
             
     }

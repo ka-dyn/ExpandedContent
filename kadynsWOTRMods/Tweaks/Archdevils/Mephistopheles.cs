@@ -121,7 +121,7 @@ namespace kadynsWOTRMods.Tweaks.Archdevils {
                     };
                 });
             }));
-            Resources.AddBlueprint(MephistophelesFeature);
+            
         }
     }
 }

@@ -144,7 +144,7 @@ namespace kadynsWOTRMods.Tweaks.Deities {
                     c.m_Facts = new BlueprintUnitFactReference[1] { MilaniSacredWeaponFeature.ToReference<BlueprintUnitFactReference>() };
                 });
             }));
-            Resources.AddBlueprint(MilaniFeature);
+            
             
 
 

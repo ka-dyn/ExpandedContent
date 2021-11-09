@@ -128,7 +128,7 @@ namespace kadynsWOTRMods.Tweaks.Archdevils {
                     };
                 });
             }));
-            Resources.AddBlueprint(DispaterFeature);
+            
         }
     }
 }

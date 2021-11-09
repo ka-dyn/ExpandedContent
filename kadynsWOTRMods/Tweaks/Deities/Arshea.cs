@@ -126,7 +126,7 @@ namespace kadynsWOTRMods.Tweaks.Deities {
                     };
                 });
             }));
-            Resources.AddBlueprint(ArsheaFeature);
+            
         }
     }
 
