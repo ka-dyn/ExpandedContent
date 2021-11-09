@@ -1,3 +1,10 @@
+v0.2.4a
+-Fixed issue where Warpriest and Inquisitor could not select blessings/domains
+v0.2.4
+-Huge update to UI - shoutout to bubbles for the assistance
+-Deity selection now categorized and nested, allowing for much easier browsing
+-Fixed paladins of new deities not being able to level up
+
 v0.2.0
 **ALL FEATURES NOW TOGGLEABLE IN UMM SETTINGS**
 -Fixed Deskari not showing up in deity selection,

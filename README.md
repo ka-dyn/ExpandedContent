@@ -16,6 +16,9 @@ I'd also like to give a big shoutout and thank you to bubbles, Narria, Cascading
 Seriously, thank you!
 
 I will be adding many things, but first I'm going to finish vindictive bastard!
+v0.2.4a
+-Fixed issue where Warpriest and Inquisitor could not select blessings/domains
+
 v0.2.4
 -Large UI update for deity selection
 -All deities now grouped and nested
