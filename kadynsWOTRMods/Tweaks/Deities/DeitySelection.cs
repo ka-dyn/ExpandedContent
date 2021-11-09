@@ -100,6 +100,7 @@ namespace kadynsWOTRMods.Tweaks.Deities
 
                 bp.IsClassFeature = true;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
+                bp.Group = FeatureGroup.Deities;
             });
             var ArchdevilIcon = AssetLoader.LoadInternal("Deities", "Icon_Archdevils.jpg");
             var ArchdevilSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("ArchdevilSelection", bp =>
@@ -116,6 +117,7 @@ namespace kadynsWOTRMods.Tweaks.Deities
                 MephistophelesFeature.ToReference<BlueprintFeatureReference>() };
                 bp.IsClassFeature = true;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
+                bp.Group = FeatureGroup.Deities;
             });
             var EmpyrealLordsIcon = AssetLoader.LoadInternal("Deities", "Icon_EmpyrealLords.jpg");
             var EmpyrealLordSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("EmpyrealLordSelection", bp =>
@@ -132,6 +134,7 @@ namespace kadynsWOTRMods.Tweaks.Deities
                 PuluraFeature.ToReference<BlueprintFeatureReference>()};
                 bp.IsClassFeature = true;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
+                bp.Group = FeatureGroup.Deities;
             });
             var DeitiesSelectionIcon = AssetLoader.LoadInternal("Deities", "Icon_DeitiesSelection.jpg");
             var DeitiesSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("DeitiesSelection", bp =>
@@ -168,6 +171,7 @@ namespace kadynsWOTRMods.Tweaks.Deities
                 };
                 bp.IsClassFeature = true;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
+                bp.Group = FeatureGroup.Deities;
             });
             var DragonDeityIcon = AssetLoader.LoadInternal("Deities", "Icon_DragonDeities.jpg");
             var DraconicDeitySelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("DraconicDeitySelection", bp =>
@@ -182,6 +186,7 @@ namespace kadynsWOTRMods.Tweaks.Deities
                 };
                 bp.IsClassFeature = true;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
+                bp.Group = FeatureGroup.Deities;
             });
             var PhilosophiesIcon = AssetLoader.LoadInternal("Deities", "Icon_Philosophies.jpg");
             var PhilosophiesSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("PhilosophiesSelection", bp =>
@@ -199,6 +204,7 @@ namespace kadynsWOTRMods.Tweaks.Deities
                 };
                 bp.IsClassFeature = true;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
+                bp.Group = FeatureGroup.Deities;
             });
             var PantheonIcon = AssetLoader.LoadInternal("Deities", "Icon_Pantheon.jpg");
             var PantheonSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("PantheonSelection", bp =>
@@ -214,6 +220,7 @@ namespace kadynsWOTRMods.Tweaks.Deities
                 };
                 bp.IsClassFeature = true;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
+                bp.Group = FeatureGroup.Deities;
             });
 
 
@@ -234,7 +241,9 @@ namespace kadynsWOTRMods.Tweaks.Deities
                 DraconicDeitySelection.ToReference<BlueprintFeatureReference>(),
                 PhilosophiesSelection.ToReference<BlueprintFeatureReference>(),
                 PantheonSelection.ToReference<BlueprintFeatureReference>()};
-        
+            DeitySelection.Groups = new FeatureGroup[] { FeatureGroup.Deities };
+            DeitySelection.Group = FeatureGroup.Deities;
+
 
 
 
