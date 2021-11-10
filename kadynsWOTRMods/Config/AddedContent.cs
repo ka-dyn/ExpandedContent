@@ -6,6 +6,7 @@ namespace kadynsWOTRMods.Config {
         public SettingGroup Deities = new SettingGroup();
         public SettingGroup Archdevils = new SettingGroup();
         public SettingGroup DemonLords = new SettingGroup();
+        public SettingGroup Classes = new SettingGroup();
         
         
 
@@ -19,7 +20,8 @@ namespace kadynsWOTRMods.Config {
             Deities.LoadSettingGroup(loadedSettings.Deities, NewSettingsOffByDefault);
             Archdevils.LoadSettingGroup (loadedSettings.Archdevils, NewSettingsOffByDefault);
             DemonLords.LoadSettingGroup (loadedSettings.DemonLords, NewSettingsOffByDefault);
-            
+            Classes.LoadSettingGroup(loadedSettings.Classes, NewSettingsOffByDefault);
+
         }
     }
 }

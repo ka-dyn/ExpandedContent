@@ -27,6 +27,27 @@ namespace kadynsWOTRMods.Tweaks
                 RacialArchetypes.WildlandShaman.AllowWildlandShamanArchetype();
                 RacialArchetypes.PhantasmalMage.AllowPhantasmalMageArchetype();
 
+
+
+
+
+                Classes.ClassFeatures.OathbreakersBaneBuff.AddOathbreakersBaneBuff();
+                Classes.ClassFeatures.OathbreakersBaneAbility.AddOathbreakersBaneResource();                
+                Classes.ClassFeatures.OathbreakersBaneAbility.AddOathbreakersBaneAbility();
+                Classes.ClassFeatures.OathbreakersBaneFeature.AddOathbreakersBaneFeature();
+                Classes.ClassFeatures.OathbreakersDirection.AddOathbreakersDirection();
+                Classes.ClassFeatures.OathbreakerSoloTactics.AddOathbreakerSoloTactics();
+                Classes.ClassFeatures.OathbreakerStalwart.AddStalwartFeature();
+                Classes.ClassFeatures.SpitefulTenacity.AddSpitefulTenacity();
+                Classes.ClassFeatures.AuraOfSelfRighteousness.AddAuraOfSelfRighteousnessFeature();
+                Classes.ClassFeatures.FadedGrace.AddFadedGrace();
+                
+                Classes.ClassFeatures.BreakerOfOaths.AddBreakerOfOaths();
+                Classes.ClassFeatures.OathbreakerProgression.AddOathbreakerProgression();
+                Classes.Oathbreaker.AddOathbreakerClass();
+
+
+
                 Archdevils.Dispater.AddDispater();
                 Archdevils.Mephistopheles.AddMephistopheles();
 
@@ -35,6 +56,7 @@ namespace kadynsWOTRMods.Tweaks
                 DemonLords.Kabriri.AddKabriri();
                 DemonLords.Baphomet.AddBaphomet();
                 DemonLords.Zura.AddZura();
+
 
 
 

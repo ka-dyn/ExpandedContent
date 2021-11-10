@@ -16,7 +16,7 @@ namespace kadynsWOTRMods {
 
             UI.AutoWidth();
             UI.TabBar(ref selectedTab,
-                    () => UI.Label("SETTINGS WILL NOT BE UPDATED UNTIL YOU RESTART YOUR GAME.".yellow().bold()),
+                    () => UI.Label("Select your preferred settings and restart your game.".yellow().bold()),
                     
                    new NamedAction("Added Content", () => SettingsTabs.AddedContent())
             );
@@ -37,6 +37,7 @@ namespace kadynsWOTRMods {
                 SetttingUI.SettingGroup("Deities", TabLevel, AddedContent.Deities);
                 SetttingUI.SettingGroup("Archdevils", TabLevel, AddedContent.Archdevils);
                 SetttingUI.SettingGroup("DemonLords", TabLevel, AddedContent.DemonLords);
+                SetttingUI.SettingGroup("Classes", TabLevel, AddedContent.Classes);
 
 
 

@@ -192,15 +192,18 @@
     <Compile Include="Tweaks\Archdevils\Mammon.cs" />
     <Compile Include="Tweaks\Archdevils\Mephistopheles.cs" />
     <Compile Include="Tweaks\Archdevils\Moloch.cs" />
+    <Compile Include="Tweaks\Classes\ClassFeatures\AuraOfSelfRighteousness.cs" />
+    <Compile Include="Tweaks\Classes\ClassFeatures\BreakerOfOaths.cs" />
     <Compile Include="Tweaks\Classes\ClassFeatures\FadedGrace.cs" />
     <Compile Include="Tweaks\Classes\ClassFeatures\OathbreakersDirection.cs" />
+    <Compile Include="Tweaks\Classes\ClassFeatures\OathbreakerStalwart.cs" />
     <Compile Include="Tweaks\Classes\ClassFeatures\SpitefulTenacity.cs" />
-    <Compile Include="Tweaks\Classes\ClassFeatures\VindictiveBastardProgression.cs" />
-    <Compile Include="Tweaks\Classes\ClassFeatures\VindictiveBastardSmiteBuff.cs" />
-    <Compile Include="Tweaks\Classes\ClassFeatures\VindictiveBastardSoloTactics.cs" />
-    <Compile Include="Tweaks\Classes\ClassFeatures\VindictiveSmiteAbility.cs" />
-    <Compile Include="Tweaks\Classes\ClassFeatures\VindictiveSmiteFeature.cs" />
-    <Compile Include="Tweaks\Classes\VindictiveBastard.cs" />
+    <Compile Include="Tweaks\Classes\ClassFeatures\OathbreakerProgression.cs" />
+    <Compile Include="Tweaks\Classes\ClassFeatures\OathbreakersBaneBuff.cs" />
+    <Compile Include="Tweaks\Classes\ClassFeatures\OathbreakerSoloTactics.cs" />
+    <Compile Include="Tweaks\Classes\ClassFeatures\OathbreakersBaneAbility.cs" />
+    <Compile Include="Tweaks\Classes\ClassFeatures\OathbreakersBaneFeature.cs" />
+    <Compile Include="Tweaks\Classes\Oathbreaker.cs" />
     <Compile Include="Tweaks\ContentAdder.cs" />
     <Compile Include="Tweaks\Deities\Abraxas.cs" />
     <Compile Include="Tweaks\Deities\Apsu.cs" />
@@ -284,6 +287,10 @@
     <Content Include="Assets\Icon_DeitySelection.jpg" />
     <Content Include="Assets\Icon_DemonLords.jpg" />
     <Content Include="Assets\Icon_Zura.png" />
+    <Content Include="Assets\Skills\Icon_AOSR.png" />
+    <Content Include="Assets\Skills\Icon_BOO.png" />
+    <Content Include="Assets\Skills\Icon_OBBANE.png" />
+    <Content Include="Assets\Skills\Icon_OD.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Tweaks\Archetypes\" />

@@ -154,6 +154,16 @@
       }
     },
     "IsExpanded": false
+  },
+  "Classes": {
+    "DisableAll": false,
+    "Settings": {
+      "Oathbreaker": {
+        "Enabled": true,
+        "Homebrew": true,
+        "Description": "Adds a modified version of the Vindictive Bastard archetype as a full class."
+      }
+    }
   }
 
   

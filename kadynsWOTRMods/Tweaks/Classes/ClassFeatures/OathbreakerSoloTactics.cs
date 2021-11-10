@@ -18,9 +18,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace kadynsTweaks.NewWIP.VindictiveBastard
+namespace kadynsWOTRMods.Tweaks.Classes.ClassFeatures
 {
-    internal class VindictiveBastardSoloTactics
+    internal class OathbreakerSoloTactics
     {
 
         private static readonly BlueprintAbility VindictiveBastardVindictiveSmiteAbility = Resources.GetModBlueprint<BlueprintAbility>("VindictiveBastardVindictiveSmiteAbility");
@@ -34,7 +34,7 @@ namespace kadynsTweaks.NewWIP.VindictiveBastard
         private static readonly BlueprintActivatableAbility BattleMeditationAbility = Resources.GetBlueprint<BlueprintActivatableAbility>("a7a3303c8ab81914e8ecca76aedc70ec");
         private static readonly BlueprintFeature InquisitorSoloTacticsFeature = Resources.GetBlueprint<BlueprintFeature>("5602845cd22683840a6f28ec46331051");
         private static readonly BlueprintAbilityResource VindictiveBastardVindictiveSmiteResource = Resources.GetModBlueprint<BlueprintAbilityResource>("VindictiveBastardVindictiveSmiteResource");
-        private static readonly BlueprintBuff VindictiveBastardVindictiveSmiteBuff = Resources.GetModBlueprint<BlueprintBuff>("VindictiveBastardVindictiveSmiteBuff");
+        private static readonly BlueprintBuff OathbreakersBaneBuff = Resources.GetModBlueprint<BlueprintBuff>("OathbreakersBaneBuff");
 
         private static readonly BlueprintFeature PaladinLayOnHands = Resources.GetBlueprint<BlueprintFeature>("a1adf65aad7a4f3ba9a7a18e6075a2ec");
         private static readonly BlueprintFeature PaladinDivineBond = Resources.GetBlueprint<BlueprintFeature>("bf8a4b51ff7b41c3b5aa139e0fe16b34");
@@ -52,64 +52,30 @@ namespace kadynsTweaks.NewWIP.VindictiveBastard
         private static readonly BlueprintFeature SiezeTheMoment = Resources.GetBlueprint<BlueprintFeature>("1191ef3065e6f8e4f9fbe1b7e3c0f760");
         private static readonly BlueprintFeature TandemTrip = Resources.GetBlueprint<BlueprintFeature>("d26eb8ab2aabd0e45a4d7eec0340bbce");
 
-        public static void AddVindictiveSoloTactics()
+        public static void AddOathbreakerSoloTactics()
         {
 
-            var VindictiveBastardSoloTacticsResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("VindictiveBastardSoloTacticsResource", bp =>
-            {
-                bp.m_Min = 1;
-                bp.m_MaxAmount = new BlueprintAbilityResource.Amount
-                {
-                    BaseValue = 1,
-                    IncreasedByStat = true,
-                    ResourceBonusStat = StatType.Charisma,
-                    m_Class = new BlueprintCharacterClassReference[0],
-                    m_ClassDiv = new BlueprintCharacterClassReference[] {
-                        PaladinClass.ToReference<BlueprintCharacterClassReference>()
-                        },
-                    m_Archetypes = new BlueprintArchetypeReference[0],
-                    m_ArchetypesDiv = new BlueprintArchetypeReference[] {
-                        VindictiveBastardArchetype.ToReference<BlueprintArchetypeReference>()
-                        },
-                    IncreasedByLevelStartPlusDivStep = true,
-                    StartingLevel = 2,
-                    LevelStep = 2,
-                    PerStepIncrease = 1
-                };
-            });
-            var VindictiveBastardSoloTacticsAbility = Helpers.CreateBlueprint<BlueprintAbility>("VindictiveBastardSoloTacticsAbility", bp =>
-            {
+            var OathbreakerSoloTactics = Helpers.CreateBlueprint<BlueprintFeature>("OathbreakerSoloTactics", bp => {
+
                 bp.SetName("Solo Tactics");
-                bp.SetDescription("At 2nd level, a vindictive bastard gains solo tactics, as per the inquisitor class feature. She can " +
-                    "activate this ability as a swift action and gains the benefits of it for 1 round. She can use this ability a " +
-                    "number of rounds per day equal to half her paladin level + her Charisma modifier.This replaces lay on hands.");
+                bp.SetDescription("At 2nd level, an Oathbreaker gains solo tactics, as per the inquisitor class feature.");
                 bp.m_Icon = BattleMeditationAbility.Icon;
-                bp.Type = AbilityType.Extraordinary;
-                bp.Range = AbilityRange.Personal;
-                bp.CanTargetSelf = true;
-                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
-                bp.ActionType = UnitCommand.CommandType.Swift;
-                bp.AddComponent<AddFacts>(c =>
-                {
-                    c.m_Facts = new BlueprintUnitFactReference[] { InquisitorSoloTacticsFeature.ToReference<BlueprintUnitFactReference>() };
+                bp.Ranks = 1;
+                bp.IsClassFeature = true;
+                bp.AddComponent<AddMechanicsFeature>(c => {
+                    c.m_Feature = AddMechanicsFeature.MechanicsFeatureType.SoloTactics;
                 });
-                bp.AddComponent<AbilityResourceLogic>(c =>
-                {
-                    c.m_RequiredResource = VindictiveBastardSoloTacticsResource.ToReference<BlueprintAbilityResourceReference>();
-                    c.m_IsSpendResource = true;
-                    c.Amount = 1;
-                    c.ResourceCostIncreasingFacts = new List<BlueprintUnitFactReference>();
-                    c.ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>();
-                });
-            });
-            var VindictiveBastardTeamworkFeat = Helpers.CreateBlueprint<BlueprintFeatureSelection>("VindictiveBastardTeamworkFeat", bp =>
-            {
-                bp.SetName("Teamwork Feat");
-                bp.SetDescription("At 3rd level and every 6 levels thereafter, the vindictive bastard gains a bonus feat in addition to those gained from normal advancement. " +
-                    "These bonus feats must be selected from those listed as teamwork feats. " +
-                    "The vindictive bastard must meet the prerequisites of the selected bonus feat.");
-                bp.m_Icon = TeamworkFeat.Icon;
-                bp.m_AllFeatures = new BlueprintFeatureReference[] {
+
+
+
+
+                var OathbreakerTeamworkFeat = Helpers.CreateBlueprint<BlueprintFeatureSelection>("OathbreakerTeamworkFeat", bp => {
+                    bp.SetName("Teamwork Feat");
+                    bp.SetDescription("At 3rd level and every 6 levels thereafter, the Oathbreaker gains a bonus feat in addition to those gained from normal advancement. " +
+                        "These bonus feats must be selected from those listed as teamwork feats. " +
+                        "The vindictive bastard must meet the prerequisites of the selected bonus feat.");
+                    bp.m_Icon = TeamworkFeat.Icon;
+                    bp.m_AllFeatures = new BlueprintFeatureReference[] {
                     AlliedSpellcaster.ToReference<BlueprintFeatureReference>(),
                     BackToBack.ToReference<BlueprintFeatureReference>(),
                     CoordinatedDefense.ToReference<BlueprintFeatureReference>(),
@@ -122,8 +88,10 @@ namespace kadynsTweaks.NewWIP.VindictiveBastard
                     SiezeTheMoment.ToReference<BlueprintFeatureReference>(),
                     TandemTrip.ToReference<BlueprintFeatureReference>()
                 };
-                bp.IsClassFeature = true;
+                    bp.IsClassFeature = true;
+                });
             });
+          
         }
     }
 }
