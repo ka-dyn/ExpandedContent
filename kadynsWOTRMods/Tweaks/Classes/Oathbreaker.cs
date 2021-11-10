@@ -75,7 +75,7 @@ namespace kadynsWOTRMods.Tweaks.Classes {
         }
 
         public static void AddOathbreakerClass() {
-
+            if (ModSettings.AddedContent.Classes.IsDisabled("Oathbreaker")) { return; }
             var BOOIcon = AssetLoader.LoadInternal("Skills", "Icon_BOO.png");
             var OathbreakerSoloTactics = Resources.GetModBlueprint<BlueprintFeature>("OathbreakerSoloTactics");
             var OathbreakersDirectionFeature = Resources.GetModBlueprint<BlueprintFeature>("OathbreakersDirectionFeature");
