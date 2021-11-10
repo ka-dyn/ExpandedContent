@@ -75,9 +75,9 @@ namespace kadynsWOTRMods.Tweaks.Classes.ClassFeatures
 
                 var OathbreakerTeamworkFeat = Helpers.CreateBlueprint<BlueprintFeatureSelection>("OathbreakerTeamworkFeat", bp => {
                     bp.SetName("Teamwork Feat");
-                    bp.SetDescription("At 3rd level and every 6 levels thereafter, the Oathbreaker gains a bonus feat in addition to those gained from normal advancement. " +
+                    bp.SetDescription("At 3rd level and every 6 levels thereafter, an Oathbreaker gains a bonus feat in addition to those gained from normal advancement. " +
                         "These bonus feats must be selected from those listed as teamwork feats. " +
-                        "The vindictive bastard must meet the prerequisites of the selected bonus feat.");
+                        "The Oathbreaker must meet the prerequisites of the selected bonus feat.");
                     bp.m_Icon = TeamworkFeat.Icon;
                     bp.m_AllFeatures = new BlueprintFeatureReference[] {
                     AlliedSpellcaster.ToReference<BlueprintFeatureReference>(),

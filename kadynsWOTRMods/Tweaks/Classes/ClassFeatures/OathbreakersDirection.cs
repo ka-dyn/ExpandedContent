@@ -118,6 +118,14 @@ namespace kadynsWOTRMods.Tweaks.Classes.ClassFeatures
                     "activates this ability. At 5th level and every 5 levels thereafter (10th, 15th, and 20th level), the bonus increases by 1. The Oathbreaker's Direction " +
                     "lasts until the target dies or the Oathbreaker selects a new target.");
                 bp.m_Icon = ODIcon;
+                bp.Type = AbilityType.Extraordinary;
+                bp.Range = AbilityRange.Medium;
+                bp.CanTargetEnemies = true;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = Kingmaker.Visual.Animation.Kingmaker.Actions.UnitAnimationActionCastSpell.CastAnimationStyle.Kineticist;
+                bp.ActionType = Kingmaker.UnitLogic.Commands.Base.UnitCommand.CommandType.Move;
+                bp.AvailableMetamagic = Kingmaker.UnitLogic.Abilities.Metamagic.Heighten | Kingmaker.UnitLogic.Abilities.Metamagic.Reach;
+
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.Actions = Helpers.CreateActionList(
                         new ContextActionApplyBuff() {
@@ -155,7 +163,7 @@ namespace kadynsWOTRMods.Tweaks.Classes.ClassFeatures
                 bp.Range = AbilityRange.Medium;
                 bp.CanTargetEnemies = true;
                 bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
-                bp.Animation = Kingmaker.Visual.Animation.Kingmaker.Actions.UnitAnimationActionCastSpell.CastAnimationStyle.Point;
+                bp.Animation = Kingmaker.Visual.Animation.Kingmaker.Actions.UnitAnimationActionCastSpell.CastAnimationStyle.Kineticist;
                 bp.AvailableMetamagic = Kingmaker.UnitLogic.Abilities.Metamagic.Heighten | Kingmaker.UnitLogic.Abilities.Metamagic.Reach;
                 bp.ComponentsArray = OathbreakersDirectionAbility.ComponentsArray;
 
@@ -163,7 +171,7 @@ namespace kadynsWOTRMods.Tweaks.Classes.ClassFeatures
             var OathbreakersDirectionSwiftFeature = Helpers.CreateBlueprint<BlueprintFeature>("OathbreakersDirectionSwiftFeature", bp => {
 
                 bp.SetName("Oathbreakers Direction (Swift)");
-                bp.SetDescription("At 1st level, the Oathbreaker can, as a swift action, indicate an enemy in combat and rally her allies to " +
+                bp.SetDescription("At 11th level, the Oathbreaker can, as a swift action, indicate an enemy in combat and rally her allies to " +
                     "focus on that target. The Oathbreaker and her allies gain a +1 bonus on weapon attack and damage rolls against the target. " +
                     "This ability applies only to allies who can see or hear the Oathbreaker and who are within 30 feet of the Oathbreaker at the time she " +
                     "activates this ability. At 5th level and every 5 levels thereafter (10th, 15th, and 20th level), the bonus increases by 1. The Oathbreaker's Direction " +
@@ -201,8 +209,21 @@ namespace kadynsWOTRMods.Tweaks.Classes.ClassFeatures
                     c.m_Facts = new BlueprintUnitFactReference[1] { OathbreakersDirectionAbility.ToReference<BlueprintUnitFactReference>() };
                 });
             });
-            
-            
+            var OathbreakersDirectionIncrease = Helpers.CreateBlueprint<BlueprintFeature>("OathbreakersDirectionIncrease", bp => {
+
+                bp.SetName("Oathbreakers Direction - Bonus Increase");
+                bp.SetDescription("At 5th level and every 5 levels thereafter (10th, 15th, and 20th level), the bonus increases by 1. The Oathbreaker's Direction " +
+                    "lasts until the target dies or the Oathbreaker selects a new target.");
+                bp.m_DescriptionShort = Helpers.CreateString("$OathbreakersDirection.DescriptionShort", "At 1st level, the Oathbreaker can, as a move action, indicate an enemy in combat and rally her allies to " +
+                    "focus on that target. The Oathbreaker and her allies gain a +1 bonus on weapon attack and damage rolls against the target.");
+                bp.Ranks = 1;
+                bp.IsClassFeature = true;
+                bp.m_Icon = ODIcon;
+
+                
+            });
+
+
         }
     }
 }

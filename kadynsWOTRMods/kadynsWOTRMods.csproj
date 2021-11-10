@@ -265,31 +265,89 @@
     </None>
     <EmbeddedResource Include="Config\AddedContent.json" />
     <EmbeddedResource Include="Config\Blueprints.json" />
+    <None Include="Info.json" />
     <None Include="packages.config" />
+    <None Include="Repository.json" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\Deities\Icon_Apsu.jpg" />
-    <Content Include="Assets\Deities\Icon_Areshkagal.png" />
-    <Content Include="Assets\Deities\Icon_Baphomet.jpg" />
-    <Content Include="Assets\Deities\Icon_DeitiesSelection.jpg" />
-    <Content Include="Assets\Deities\Icon_Deskari.png" />
-    <Content Include="Assets\Deities\Icon_Dispater.jpg" />
-    <Content Include="Assets\Deities\Icon_EmpyrealLords.jpg" />
-    <Content Include="Assets\Deities\Icon_GreenFaith.jpg" />
-    <Content Include="Assets\Deities\Icon_Kabriri.png" />
-    <Content Include="Assets\Deities\Icon_Mephistopheles.jpg" />
-    <Content Include="Assets\Deities\Icon_Milani.jpg" />
-    <Content Include="Assets\Deities\Icon_Philosophies.jpg" />
-    <Content Include="Assets\Deities\Icon_Pulura.jpg" />
-    <Content Include="Assets\Deities\ICON_Ragathiel.jpg" />
-    <Content Include="Assets\Icon_Archdevils.jpg" />
-    <Content Include="Assets\Icon_DeitySelection.jpg" />
-    <Content Include="Assets\Icon_DemonLords.jpg" />
-    <Content Include="Assets\Icon_Zura.png" />
-    <Content Include="Assets\Skills\Icon_AOSR.png" />
-    <Content Include="Assets\Skills\Icon_BOO.png" />
-    <Content Include="Assets\Skills\Icon_OBBANE.png" />
-    <Content Include="Assets\Skills\Icon_OD.png" />
+    <Content Include="Assets\Deities\Icon_Apsu.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Areshkagal.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Baphomet.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_DeitiesSelection.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Deskari.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Dispater.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_EmpyrealLords.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_GreenFaith.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Kabriri.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Mephistopheles.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Milani.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Philosophies.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Pulura.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\ICON_Ragathiel.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Icon_Archdevils.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Icon_DeitySelection.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Icon_DemonLords.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Icon_Zura.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_AOSR.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_BOO.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_FadedGrace.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_OBBANE.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_OBProf.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_OD.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_SpitefulTenacity.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_Stalwart.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Tweaks\Archetypes\" />

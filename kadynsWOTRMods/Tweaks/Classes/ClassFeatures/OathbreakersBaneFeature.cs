@@ -27,9 +27,7 @@ namespace kadynsWOTRMods.Tweaks.Classes.ClassFeatures {
               "Once per day as a swift action, she can channel her anger at one target within sight who is engaged in melee combat with her or an ally. " +
               "She adds her Charisma modifier to her attack rolls and adds her Oathbreaker level to damage rolls against the target of her bane. " +
               "In addition, while Oathbreaker's Bane is in effect, the Oathbreaker gains a deflection bonus equal to her Charisma bonus (if any) " +
-              "to her AC against attacks by the target of the smite. If the target of Oathbreaker's Bane has rendered an ally of the Oathbreaker " +
-              "unconscious or dead within the last 24 hours, the bonus on damage rolls on the first attack that hits increases by 2 for every paladin " +
-              "level she has. The Oathbreaker's Bane effect remains until the target of the Oathbreaker's Bane is dead or the next time the Oathbreaker rests " +
+              "to her AC against attacks by the target of the smite.  The Oathbreaker's Bane effect remains until the target of the Oathbreaker's Bane is dead or the next time the Oathbreaker rests " +
               "and regains her uses of this ability.At 4th level and every 3 levels thereafter, the Oathbreaker can invoke her Oathbreaker's Bane " +
               "one additional time per day, to a maximum of seven times per day at 19th level.");
                 bp.m_DescriptionShort = Helpers.CreateString("$OathbreakersBaneFeature.DescriptionShort", "Once per day as a swift action, she can channel her anger at one target within sight who is engaged in melee combat with her or an ally. " +
@@ -55,9 +53,7 @@ namespace kadynsWOTRMods.Tweaks.Classes.ClassFeatures {
               "Once per day as a swift action, she can channel her anger at one target within sight who is engaged in melee combat with her or an ally. " +
               "She adds her Charisma modifier to her attack rolls and adds her Oathbreaker level to damage rolls against the target of her bane. " +
               "In addition, while Oathbreaker's Bane is in effect, the Oathbreaker gains a deflection bonus equal to her Charisma bonus (if any) " +
-              "to her AC against attacks by the target of the smite. If the target of Oathbreaker's Bane has rendered an ally of the Oathbreaker " +
-              "unconscious or dead within the last 24 hours, the bonus on damage rolls on the first attack that hits increases by 2 for every paladin " +
-              "level she has. The Oathbreaker's Bane effect remains until the target of the Oathbreaker's Bane is dead or the next time the Oathbreaker rests " +
+              "to her AC against attacks by the target of the smite.  The Oathbreaker's Bane effect remains until the target of the Oathbreaker's Bane is dead or the next time the Oathbreaker rests " +
               "and regains her uses of this ability.At 4th level and every 3 levels thereafter, the Oathbreaker can invoke her Oathbreaker's Bane " +
               "one additional time per day, to a maximum of seven times per day at 19th level.");
                 bp.m_Icon = OBBaneIcon;

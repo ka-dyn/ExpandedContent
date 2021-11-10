@@ -35,9 +35,9 @@ namespace kadynsWOTRMods.Tweaks.Classes.ClassFeatures
             var AuraOfSelfRighteousnessEffectBuff = Helpers.CreateBlueprint<BlueprintBuff>("AuraOfSelfRighteousnessEffectBuff", bp => {
 
                 bp.SetName("Aura of Self-Righteousness");
-                bp.SetDescription("At 17th level, a vindictive bastard gains DR 5/lawful or good and immunity to compulsion " +
+                bp.SetDescription("At 17th level, an Oathbreaker gains DR 5/lawful or good and immunity to compulsion " +
                         "spells and spell-like abilities. Each ally within 10 feet of her gains a +4 morale bonus on saving throws " +
-                        "against compulsion effects. Aura of self-righteousness functions only while the Oathbreaker is conscious, " +
+                        "against compulsion effects. Aura of Self-Righteousness functions only while the Oathbreaker is conscious, " +
                         "not if she is unconscious or dead.");
                 bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
                 bp.IsClassFeature = true;
@@ -72,9 +72,9 @@ namespace kadynsWOTRMods.Tweaks.Classes.ClassFeatures
             var AuraOfSelfRighteousnessBuff = Helpers.CreateBlueprint<BlueprintBuff>("AuraOfSelfRighteousnessBuff", bp =>
             {
                 bp.SetName("Aura of Self-Righteousness");
-                bp.SetDescription("At 17th level, a vindictive bastard gains DR 5/lawful or good and immunity to compulsion " +
+                bp.SetDescription("At 17th level, an Oathbreaker gains DR 5/lawful or good and immunity to compulsion " +
                     "spells and spell-like abilities. Each ally within 10 feet of her gains a +4 morale bonus on saving throws " +
-                    "against compulsion effects. Aura of self-righteousness functions only while the Oathbreaker is conscious, " +
+                    "against compulsion effects. Aura of Self-Righteousness functions only while the Oathbreaker is conscious, " +
                     "not if she is unconscious or dead.");
                 bp.m_Icon = AOSRIcon;
                 bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
@@ -89,9 +89,9 @@ namespace kadynsWOTRMods.Tweaks.Classes.ClassFeatures
             {
 
                 bp.SetName("Aura of Self-Righteousness");
-                bp.SetDescription("At 17th level, a vindictive bastard gains DR 10/Good and immunity to compulsion " +
+                bp.SetDescription("At 17th level, an Oathbreaker gains DR 10/Good and immunity to compulsion " +
     "spells and spell-like abilities. Each ally within 10 feet of her gains a +4 morale bonus on saving throws " +
-    "against compulsion effects. Aura of self-righteousness functions only while the Oathbreaker is conscious, " +
+    "against compulsion effects. Aura of Self-Righteousness functions only while the Oathbreaker is conscious, " +
     "not if she is unconscious or dead.");
                 bp.m_Icon = AOSRIcon;
                 bp.Ranks = 1;
