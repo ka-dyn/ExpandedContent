@@ -23,9 +23,39 @@ using System.Linq;
 using System.Reflection;
 using kadynsWOTRMods.Config;
 using kadynsWOTRMods;
+using Kingmaker.Blueprints.Root;
+using kadynsWOTRMods.Extensions;
 
 namespace kadynsWOTRMods.Utilities {
     public static class Helpers {
+
+        public static void RegisterClass(BlueprintCharacterClass ClassToRegister) {
+            ProgressionRoot progression = ResourcesLibrary.GetRoot().Progression;
+            List<BlueprintCharacterClassReference> list = ((IEnumerable<BlueprintCharacterClassReference>)progression.m_CharacterClasses).ToList<BlueprintCharacterClassReference>();
+            list.Add(ClassToRegister.ToReference<BlueprintCharacterClassReference>());
+            list.Sort((Comparison<BlueprintCharacterClassReference>)((x, y) => {
+                BlueprintCharacterClass blueprint1 = ResourcesLibrary.TryGetBlueprint<BlueprintCharacterClass>(x.guid);
+                BlueprintCharacterClass blueprint2 = ResourcesLibrary.TryGetBlueprint<BlueprintCharacterClass>(y.guid);
+                return blueprint1 == null || blueprint2 == null ? 1 : (blueprint1.PrestigeClass == blueprint2.PrestigeClass ? blueprint1.NameSafe().CompareTo(blueprint2.NameSafe()) : (blueprint1.PrestigeClass ? 1 : -1));
+            }));
+            progression.m_CharacterClasses = list.ToArray();
+            if (!ClassToRegister.IsArcaneCaster && !ClassToRegister.IsDivineCaster)
+                return;
+            BlueprintProgression.ClassWithLevel classWithLevel = Helpers.ClassToClassWithLevel(ClassToRegister);
+            BlueprintProgression blueprint = ResourcesLibrary.TryGetBlueprint<BlueprintProgression>("fe9220cdc16e5f444a84d85d5fa8e3d5");
+            blueprint.m_Classes = blueprint.m_Classes.AppendToArray<BlueprintProgression.ClassWithLevel>(new BlueprintProgression.ClassWithLevel[1]
+            {
+                   classWithLevel
+            });
+        }
+        public static BlueprintProgression.ClassWithLevel ClassToClassWithLevel(
+      BlueprintCharacterClass orig,
+      int addLevel = 0) {
+            return new BlueprintProgression.ClassWithLevel() {
+                m_Class = orig.ToReference<BlueprintCharacterClassReference>(),
+                AdditionalLevel = addLevel
+            };
+        }
         public static T CreateBlueprint<T>(Action<T> init = null) where T : new() {
             var result = new T();
             init?.Invoke(result);
@@ -57,29 +87,83 @@ namespace kadynsWOTRMods.Utilities {
             return result;
         }
 
-        public static LevelEntry LevelEntry(int level, BlueprintFeatureBase feature) {
-            return new LevelEntry {
-                Level = level,
-                Features = {
-                    feature
-                }
-            };
-        }
 
-        public static LevelEntry CreateLevelEntry(int level, params BlueprintFeatureBase[] features) {
-            var levelEntry = new LevelEntry();
+        public static Kingmaker.Blueprints.Classes.LevelEntry LevelEntry(
+       int level,
+       BlueprintFeatureBase feature) {
+            Kingmaker.Blueprints.Classes.LevelEntry levelEntry = new Kingmaker.Blueprints.Classes.LevelEntry();
             levelEntry.Level = level;
-            features.ForEach(f => levelEntry.Features.Add(f));
+            levelEntry.Features.Add(feature);
             return levelEntry;
         }
 
-        public static UIGroup CreateUIGroup(params BlueprintFeatureBase[] features) {
-            var uiGroup = new UIGroup();
-            features.ForEach(f => uiGroup.Features.Add(f));
+        public static Kingmaker.Blueprints.Classes.LevelEntry LevelEntry(
+          int level,
+          params BlueprintFeatureBase[] features) {
+            return Helpers.CreateLevelEntry(level, (IEnumerable<BlueprintFeatureBase>)features);
+        }
+
+        public static Kingmaker.Blueprints.Classes.LevelEntry CreateLevelEntry(
+          int level,
+          IEnumerable<BlueprintFeatureBase> features) {
+            Kingmaker.Blueprints.Classes.LevelEntry levelEntry = new Kingmaker.Blueprints.Classes.LevelEntry();
+            levelEntry.Level = level;
+            features.ForEach<BlueprintFeatureBase>((Action<BlueprintFeatureBase>)(f => levelEntry.Features.Add(f)));
+            return levelEntry;
+        }
+
+        public static UIGroup CreateUIGroup(params BlueprintFeatureBase[] features) => Helpers.CreateUIGroup((IEnumerable<BlueprintFeatureBase>)features);
+
+        public static UIGroup CreateUIGroup(IEnumerable<BlueprintFeatureBase> features) {
+            UIGroup uiGroup = new UIGroup();
+            BlueprintFeatureBaseReference[] featureBaseReferenceArray = new BlueprintFeatureBaseReference[features.Count<BlueprintFeatureBase>()];
+            for (int index = 0; index < ((IEnumerable<BlueprintFeatureBaseReference>)featureBaseReferenceArray).Count<BlueprintFeatureBaseReference>(); ++index)
+                featureBaseReferenceArray[index] = features.ElementAt<BlueprintFeatureBase>(index).ToReference<BlueprintFeatureBaseReference>();
+            uiGroup.m_Features.AddRange((IEnumerable<BlueprintFeatureBaseReference>)featureBaseReferenceArray);
             return uiGroup;
         }
 
-        public static ContextValue CreateContextValueRank(AbilityRankType value = AbilityRankType.Default) => value.CreateContextValue();
+        public static UIGroup[] CreateUIGroups(params BlueprintFeatureBase[] features) => Helpers.CreateUIGroups((IEnumerable<BlueprintFeatureBase>)features);
+
+        public static UIGroup[] CreateUIGroups(IEnumerable<BlueprintFeatureBase> features) {
+            UIGroup uiGroup = new UIGroup();
+            BlueprintFeatureBaseReference[] featureBaseReferenceArray = new BlueprintFeatureBaseReference[features.Count<BlueprintFeatureBase>()];
+            for (int index = 0; index < ((IEnumerable<BlueprintFeatureBaseReference>)featureBaseReferenceArray).Count<BlueprintFeatureBaseReference>(); ++index)
+                featureBaseReferenceArray[index] = features.ElementAt<BlueprintFeatureBase>(index).ToReference<BlueprintFeatureBaseReference>();
+            uiGroup.m_Features.AddRange((IEnumerable<BlueprintFeatureBaseReference>)featureBaseReferenceArray);
+            return new UIGroup[1] { uiGroup };
+        }
+        public static BlueprintProgression CreateProgression(
+      string name,
+      string displayName,
+      string description,
+      
+      FeatureGroup group,
+      params BlueprintComponent[] components) {
+            BlueprintProgression blueprint = Helpers.CreateBlueprint<BlueprintProgression>(name);
+            Helpers.SetFeatureInfo((BlueprintFeature)blueprint, displayName, description,  group, components);
+            blueprint.m_UIDeterminatorsGroup = Array.Empty<BlueprintFeatureBaseReference>();
+            blueprint.UIGroups = Array.Empty<UIGroup>();
+            blueprint.m_Classes = Array.Empty<BlueprintProgression.ClassWithLevel>();
+            blueprint.m_Archetypes = Array.Empty<BlueprintProgression.ArchetypeWithLevel>();
+            return blueprint;
+        }
+
+        public static void SetFeatureInfo(
+          BlueprintFeature feat,
+          string displayName,
+          string description,
+ 
+          FeatureGroup group,
+          params BlueprintComponent[] components) {
+            feat.SetComponents(components);
+            feat.Groups = new FeatureGroup[1] { group };
+            feat.SetNameDescription(displayName, description);
+            
+        }
+
+
+            public static ContextValue CreateContextValueRank(AbilityRankType value = AbilityRankType.Default) => value.CreateContextValue();
         public static ContextValue CreateContextValue(this AbilityRankType value) {
             return new ContextValue() { ValueType = ContextValueType.Rank, ValueRank = value };
         }
@@ -104,6 +188,7 @@ namespace kadynsWOTRMods.Utilities {
             return c;
         }
 #endif
+
 
         // All localized strings created in this mod, mapped to their localized key. Populated by CreateString.
         static Dictionary<string, LocalizedString> textToLocalizedString = new Dictionary<string, LocalizedString>();
@@ -231,7 +316,7 @@ namespace kadynsWOTRMods.Utilities {
             return config;
         }
 
-        
+
 
         private class ObjectDeepCopier {
             private class ArrayTraverse {
@@ -327,10 +412,16 @@ namespace kadynsWOTRMods.Utilities {
                     fieldInfo.SetValue(cloneObject, clonedFieldValue);
                 }
             }
+
+
+
+
+
+
         }
+        public delegate ref S FastRef<T, S>(T source = default);
+        public delegate void FastSetter<T, S>(T source, S value);
+        public delegate S FastGetter<T, S>(T source);
+        public delegate object FastInvoke(object target, params object[] paramters);
     }
-    public delegate ref S FastRef<T, S>(T source = default);
-    public delegate void FastSetter<T, S>(T source, S value);
-    public delegate S FastGetter<T, S>(T source);
-    public delegate object FastInvoke(object target, params object[] paramters);
 }

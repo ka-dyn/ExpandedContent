@@ -1,4 +1,5 @@
-﻿using BlueprintCore.Blueprints;
+﻿using HarmonyLib;
+using BlueprintCore.Blueprints;
 using kadynsWOTRMods.Config;
 using kadynsWOTRMods.Extensions;
 using kadynsWOTRMods.Utilities;
@@ -6,6 +7,7 @@ using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Items.Equipment;
+using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.Blueprints.Root;
 using Kingmaker.Designers.EventConditionActionSystem.Actions;
 using Kingmaker.EntitySystem.Stats;
@@ -18,33 +20,69 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Kingmaker.Blueprints.Classes.Selection;
 
-namespace kadynsWOTRMods.Tweaks.Classes
-{
-    internal class Oathbreaker
-    {
+namespace kadynsWOTRMods.Tweaks.Classes {
 
-        private static readonly BlueprintFeature OathbreakersBaneFeature = Resources.GetModBlueprint<BlueprintFeature>("OathbreakersBaneFeature");
-
-        private static readonly BlueprintFeature OathbreakerSoloTacticsFeature = Resources.GetModBlueprint<BlueprintFeature>("OathbreakerSoloTactics");
-        private static readonly BlueprintFeature OathbreakersDirection = Resources.GetModBlueprint<BlueprintFeature>("OathbreakersDirection");
-
-
-        private static readonly BlueprintFeature PaladinClassProficiencies = Resources.GetBlueprint<BlueprintFeature>("b10ff88c03308b649b50c31611c2fefb");
-
-        private static readonly BlueprintProgression OathbreakerProgression = Resources.GetModBlueprint<BlueprintProgression>("OathbreakerProgression");
+    [HarmonyPatch(typeof(BlueprintsCache), "Init")]
+    public class OathbreakerClassAdder {
+        private static bool Initialized;
+        public static BlueprintProgression OathbreakerProgression;
+        public static BlueprintAbilityAreaEffect AuraOfSelfRighteousnessArea;
+        public static BlueprintFeature BreakerOfOaths;
+        public static BlueprintFeature AuraOfSelfRighteousnessFeature;
+        public static BlueprintFeature OathbreakerStalwart;
+        public static BlueprintFeature OathbreakersDirectionSwiftFeature;
+        public static BlueprintFeature OathbreakersBaneUse;
+        public static BlueprintFeatureSelection OathbreakerTeamworkFeat;
+        public static BlueprintFeature SpitefulTenacity;
+        public static BlueprintFeature FadedGrace;
+        public static BlueprintFeature OathbreakerSoloTactics;
+        public static BlueprintFeature OathbreakersBaneFeature;
+        public static BlueprintFeature OathbreakersDirectionFeature;
+        public static BlueprintCharacterClass OathbreakerClass;
+        public static BlueprintFeature OathbreakerProficiencies;
         
-        public static void AddOathbreakerClass()
-        {
+        
+
+        [HarmonyPriority(Priority.First)]
+        public static void Postfix() {
+            if (OathbreakerClassAdder.Initialized) return;
+            OathbreakerClassAdder.Initialized = true;
+
             
+            Classes.ClassFeatures.OathbreakersBaneAbility.AddOathbreakersBaneResource();
+            Classes.ClassFeatures.OathbreakersBaneBuff.AddOathbreakersBaneBuff();
+            Classes.ClassFeatures.OathbreakersBaneAbility.AddOathbreakersBaneAbility();
+            Classes.ClassFeatures.OathbreakersBaneFeature.AddOathbreakersBaneFeature();
+            Classes.ClassFeatures.OathbreakersBaneAbility.AddOathbreakersBaneResource();
+            Classes.ClassFeatures.OathbreakersDirection.AddOathbreakersDirection();
+            Classes.ClassFeatures.OathbreakerSoloTactics.AddOathbreakerSoloTactics();
+            Classes.ClassFeatures.OathbreakerStalwart.AddStalwartFeature();
+            Classes.ClassFeatures.SpitefulTenacity.AddSpitefulTenacity();
+            Classes.ClassFeatures.AuraOfSelfRighteousness.AddAuraOfSelfRighteousnessFeature();
+            Classes.ClassFeatures.FadedGrace.AddFadedGrace();
+            Classes.ClassFeatures.BreakerOfOaths.AddBreakerOfOaths();
+            OathbreakerClassAdder.AddOathbreakerProgression();
+
+            OathbreakerClassAdder.AddOathbreakerClass();
+            
+
+
+
+
+
+        }
+
+        public static void AddOathbreakerClass() {
+
             var BOOIcon = AssetLoader.LoadInternal("Skills", "Icon_BOO.png");
             var OathbreakerSoloTactics = Resources.GetModBlueprint<BlueprintFeature>("OathbreakerSoloTactics");
-            var OathbreakersDirection = Resources.GetModBlueprint<BlueprintFeature>("OathbreakersDirection");
+            var OathbreakersDirectionFeature = Resources.GetModBlueprint<BlueprintFeature>("OathbreakersDirectionFeature");
             var OathbreakersBaneFeature = Resources.GetModBlueprint<BlueprintFeature>("OathbreakersBaneFeature");
             var OathbreakerProgression = Resources.GetModBlueprint<BlueprintProgression>("OathbreakerProgression");
-            var BABFull = Resources.GetBlueprint<BlueprintStatProgression>("b3057560ffff3514299e8b93e7648a9d");
             var AnimalClass = Resources.GetBlueprint<BlueprintCharacterClass>("4cd1757a0eea7694ba5c933729a53920");
-            
+
             var PaladinClass = Resources.GetBlueprint<BlueprintCharacterClass>("bfa11238e7ae3544bbeb4d0b92e897ec");
             var OathbreakerClass = Helpers.CreateBlueprint<BlueprintCharacterClass>("OathbreakerClass", bp => {
                 bp.LocalizedName = Helpers.CreateString($"OathbreakerClass.Name", "Oathbreaker");
@@ -53,28 +91,32 @@ namespace kadynsWOTRMods.Tweaks.Classes
                     "companions with particularly loose morals run the risk of adopting those same unscrupulous ideologies and methods. Such an " +
                     "Oathbreaker, as these fallen paladins are known, strikes out for retribution and revenge, far more interested in " +
                     "tearing down those who have harmed her or her companions than furthering a distant deity’s cause.");
-                bp.LocalizedDescriptionShort = Helpers.CreateString($"OathbreakerClass.Description", "Oathbreakers are fallen Paladins.");
-                bp.HitDie = PaladinClass.HitDie;
-                bp.m_BaseAttackBonus = BABFull.ToReference<BlueprintStatProgressionReference>();
-                bp.m_FortitudeSave = PaladinClass.ToReference<BlueprintStatProgressionReference>();
-                bp.m_ReflexSave = PaladinClass.ToReference<BlueprintStatProgressionReference>();
-                bp.m_WillSave = PaladinClass.ToReference<BlueprintStatProgressionReference>();
+                bp.LocalizedDescriptionShort = Helpers.CreateString($"OathbreakerClass.Description", "Oathbreakers are fallen Paladins that are far more interested in " +
+                    "tearing down those who have harmed her - or her companions - than furthering a distant deity’s cause.");
+                bp.HitDie = Kingmaker.RuleSystem.DiceType.D10;
+                bp.m_BaseAttackBonus = PaladinClass.m_BaseAttackBonus;
+                bp.m_FortitudeSave = PaladinClass.m_FortitudeSave;
+                bp.m_PrototypeId = PaladinClass.m_PrototypeId;
+                bp.m_ReflexSave = PaladinClass.m_ReflexSave;
+                bp.m_WillSave = PaladinClass.m_WillSave;
                 bp.m_Progression = OathbreakerProgression.ToReference<BlueprintProgressionReference>();
                 bp.m_Difficulty = PaladinClass.Difficulty;
-                bp.m_DefaultBuild = null;
-                bp.m_Icon = BOOIcon;
                 bp.RecommendedAttributes = PaladinClass.RecommendedAttributes;
                 bp.NotRecommendedAttributes = PaladinClass.NotRecommendedAttributes;
-                bp.m_Spellbook = null;
+                bp.m_Spellbook = PaladinClass.m_Spellbook;
+                bp.m_EquipmentEntities = PaladinClass.m_EquipmentEntities;
                 bp.m_StartingItems = PaladinClass.StartingItems;
                 bp.m_SignatureAbilities = new BlueprintFeatureReference[3]
                 {
                     OathbreakersBaneFeature.ToReference<BlueprintFeatureReference>(),
                     OathbreakerSoloTactics.ToReference<BlueprintFeatureReference>(),
-                    OathbreakersDirection.ToReference<BlueprintFeatureReference>(),
+                    OathbreakersDirectionFeature.ToReference<BlueprintFeatureReference>(),
+
                 };
                 bp.m_Difficulty = PaladinClass.Difficulty;
-                bp.m_Archetypes = null;
+                bp.m_DefaultBuild = null;
+                bp.m_Archetypes = new BlueprintArchetypeReference[0];
+
 
                 bp.SkillPoints = 2;
                 bp.ClassSkills = new StatType[4] {
@@ -93,16 +135,132 @@ namespace kadynsWOTRMods.Tweaks.Classes
                     c.m_CharacterClass = PaladinClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_CharacterClass = AnimalClass.ToReference<BlueprintCharacterClassReference>();
                 });
+                bp.AddComponent<PrerequisiteIsPet>(c => {
+                    c.Not = true;
+                    c.HideInUI = true;
+                });
             });
-                BlueprintRoot root = Resources.GetBlueprint<BlueprintRoot>("2d77316c72b9ed44f888ceefc2a131f6");
-                root.Progression.m_CharacterClasses = root.Progression.m_CharacterClasses.AppendToArray(OathbreakerClass.ToReference<BlueprintCharacterClassReference>());
-                
-                
-
-           
+            Helpers.RegisterClass(OathbreakerClass);
         }
+
+        public static void AddOathbreakerProgression() {
+
+            
+
+            var PaladinClassProficiencies = Resources.GetBlueprint<BlueprintFeature>("b10ff88c03308b649b50c31611c2fefb");
+            var OathbreakerProficiencies = Helpers.CreateBlueprint<BlueprintFeature>("OathbreakerProficiencies", bp => {
+                bp.SetName("Oathbreaker Proficiences");
+                bp.SetDescription("Oathbreakers are proficient with all simple and {g|Encyclopedia:Weapon_Proficiency}martial weapons{/g}, with all types of armor " +
+                    "(heavy, medium, and light), and with shields (except tower shields).");
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { PaladinClassProficiencies.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.Ranks = 1;
+                bp.IsClassFeature = true;
+            });
+
+
+
+
+            var OathbreakerClass = Resources.GetModBlueprint<BlueprintCharacterClass>("OathbreakerClass");
+            var BreakerOfOaths = Resources.GetModBlueprint<BlueprintFeature>("BreakerOfOaths");
+            var AuraOfSelfRighteousnessFeature = Resources.GetModBlueprint<BlueprintFeature>("AuraOfSelfRighteousnessFeature");
+            var OathbreakerStalwart = Resources.GetModBlueprint<BlueprintFeature>("OathbreakerStalwart");
+            var OathbreakersDirectionSwiftFeature = Resources.GetModBlueprint<BlueprintFeature>("OathbreakersDirectionSwiftFeature");
+            var OathbreakersBaneUse = Resources.GetModBlueprint<BlueprintFeature>("OathbreakersBaneUse");
+            var OathbreakerTeamworkFeat = Resources.GetModBlueprint<BlueprintFeatureSelection>("OathbreakerTeamworkFeat");
+            var SpitefulTenacity = Resources.GetModBlueprint<BlueprintFeature>("SpitefulTenacity");
+            var FadedGrace = Resources.GetModBlueprint<BlueprintFeature>("FadedGrace");
+            var OathbreakerSoloTactics = Resources.GetModBlueprint<BlueprintFeature>("OathbreakerSoloTactics");
+            var OathbreakersBaneFeature = Resources.GetModBlueprint<BlueprintFeature>("OathbreakersBaneFeature");
+            var OathbreakersDirectionFeature = Resources.GetModBlueprint<BlueprintFeature>("OathbreakersDirectionFeature");
+            
+
+            var OathbreakerProgression = Helpers.CreateBlueprint<BlueprintProgression>("OathbreakerProgression");
+            OathbreakerProgression.SetName("Oathbreaker");
+            OathbreakerProgression.SetDescription("While paladins often " +
+                    "collaborate with less righteous adventurers in order to further their causes, those who spend too much time around " +
+                    "companions with particularly loose morals run the risk of adopting those same unscrupulous ideologies and methods. Such an " +
+                    "Oathbreaker, as these fallen paladins are known, strikes out for retribution and revenge, far more interested in " +
+                    "tearing down those who have harmed her or her companions than furthering a distant deity’s cause.");
+
+            
+            OathbreakerProgression.m_Classes = new BlueprintProgression.ClassWithLevel[] { new BlueprintProgression.ClassWithLevel { m_Class = OathbreakerClass.ToReference<BlueprintCharacterClassReference>() } };
+            OathbreakerProgression.LevelEntries = new LevelEntry[20]
+            
+            {
+        Helpers.LevelEntry(1, (BlueprintFeatureBase) OathbreakersBaneFeature, (BlueprintFeatureBase) OathbreakersDirectionFeature, (BlueprintFeatureBase) OathbreakerProficiencies),
+        Helpers.LevelEntry(2, (BlueprintFeatureBase) FadedGrace, (BlueprintFeatureBase) OathbreakerSoloTactics),
+        Helpers.LevelEntry(3, (BlueprintFeatureBase) SpitefulTenacity, (BlueprintFeatureBase) OathbreakerTeamworkFeat),
+        Helpers.LevelEntry(4,  (BlueprintFeatureBase) OathbreakersBaneUse),
+        Helpers.LevelEntry(5),
+        Helpers.LevelEntry(6, (BlueprintFeatureBase) OathbreakerTeamworkFeat),
+        Helpers.LevelEntry(7, (BlueprintFeatureBase) OathbreakersBaneUse),
+        Helpers.LevelEntry(8),
+        Helpers.LevelEntry(9, (BlueprintFeatureBase) OathbreakerTeamworkFeat),
+        Helpers.LevelEntry(10,(BlueprintFeatureBase) OathbreakersBaneUse),
+        Helpers.LevelEntry(11, (BlueprintFeatureBase) OathbreakersDirectionSwiftFeature),
+        Helpers.LevelEntry(12, (BlueprintFeatureBase) OathbreakerTeamworkFeat),
+        Helpers.LevelEntry(13, (BlueprintFeatureBase) OathbreakersBaneUse),
+        Helpers.LevelEntry(14, (BlueprintFeatureBase) OathbreakerStalwart),
+        Helpers.LevelEntry(15, (BlueprintFeatureBase) OathbreakerTeamworkFeat),
+        Helpers.LevelEntry(16, (BlueprintFeatureBase) OathbreakersBaneUse),
+        Helpers.LevelEntry(17, (BlueprintFeatureBase) AuraOfSelfRighteousnessFeature),
+        Helpers.LevelEntry(18, (BlueprintFeatureBase) OathbreakerTeamworkFeat),
+        Helpers.LevelEntry(19, (BlueprintFeatureBase) OathbreakersBaneUse),
+        Helpers.LevelEntry(20, (BlueprintFeatureBase) BreakerOfOaths)
+            };
+            OathbreakerProgression.m_UIDeterminatorsGroup = new BlueprintFeatureBaseReference[4]
+            {
+        OathbreakerProficiencies.ToReference<BlueprintFeatureBaseReference>(),
+        OathbreakersBaneFeature.ToReference<BlueprintFeatureBaseReference>(),
+        OathbreakersDirectionFeature.ToReference<BlueprintFeatureBaseReference>(),
+        OathbreakerSoloTactics.ToReference<BlueprintFeatureBaseReference>()
+            };
+           OathbreakerProgression.UIGroups = new UIGroup[4]
+            {
+                Helpers.CreateUIGroup((BlueprintFeatureBase )OathbreakersBaneFeature,
+                      (BlueprintFeatureBase) OathbreakersBaneUse,
+                      (BlueprintFeatureBase) OathbreakersBaneUse,
+                      (BlueprintFeatureBase) OathbreakersBaneUse,
+                      (BlueprintFeatureBase) OathbreakersBaneUse,
+                      (BlueprintFeatureBase) OathbreakersBaneUse,
+                     (BlueprintFeatureBase) OathbreakersBaneUse),
+                Helpers.CreateUIGroup((BlueprintFeatureBase) OathbreakersDirectionFeature,
+                     (BlueprintFeatureBase) OathbreakersDirectionSwiftFeature),
+                Helpers.CreateUIGroup((BlueprintFeatureBase) FadedGrace,
+                       (BlueprintFeatureBase) SpitefulTenacity,
+                       (BlueprintFeatureBase) OathbreakerStalwart,
+                       (BlueprintFeatureBase) AuraOfSelfRighteousnessFeature,
+                      (BlueprintFeatureBase) BreakerOfOaths),
+                Helpers.CreateUIGroup((BlueprintFeatureBase) OathbreakerSoloTactics,
+                       (BlueprintFeatureBase) OathbreakerTeamworkFeat,
+                       (BlueprintFeatureBase) OathbreakerTeamworkFeat,
+                       (BlueprintFeatureBase) OathbreakerTeamworkFeat,
+                       (BlueprintFeatureBase) OathbreakerTeamworkFeat,
+                       (BlueprintFeatureBase) OathbreakerTeamworkFeat,
+                       (BlueprintFeatureBase) OathbreakerTeamworkFeat)
+            };
+
+        }
+        
+        
+
+
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

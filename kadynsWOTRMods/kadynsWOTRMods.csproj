@@ -198,7 +198,6 @@
     <Compile Include="Tweaks\Classes\ClassFeatures\OathbreakersDirection.cs" />
     <Compile Include="Tweaks\Classes\ClassFeatures\OathbreakerStalwart.cs" />
     <Compile Include="Tweaks\Classes\ClassFeatures\SpitefulTenacity.cs" />
-    <Compile Include="Tweaks\Classes\ClassFeatures\OathbreakerProgression.cs" />
     <Compile Include="Tweaks\Classes\ClassFeatures\OathbreakersBaneBuff.cs" />
     <Compile Include="Tweaks\Classes\ClassFeatures\OathbreakerSoloTactics.cs" />
     <Compile Include="Tweaks\Classes\ClassFeatures\OathbreakersBaneAbility.cs" />

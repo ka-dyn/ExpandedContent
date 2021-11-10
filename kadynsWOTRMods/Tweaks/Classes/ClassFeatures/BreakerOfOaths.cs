@@ -21,12 +21,14 @@ namespace kadynsWOTRMods.Tweaks.Classes.ClassFeatures {
 
 
         public static void AddBreakerOfOaths() {
-
+            var BOOIcon = AssetLoader.LoadInternal("Skills", "Icon_BOO.png");
             var BreakerOfOaths = Helpers.CreateBlueprint<BlueprintFeature>("BreakerOfOaths", bp => {
                 bp.SetName("Breaker of Oaths");
                 bp.SetDescription("At 20th level, an Oathbreaker becomes a champion of her own ambition. Her {g|Encyclopedia:Damage_Reduction}DR{/g} increases to 15/lawful or good and whenever " +
                     "she makes a saving throw, she adds her charisma modifier as a bonus.");
-
+                bp.m_Icon = BOOIcon;
+                bp.Ranks = 1;
+                bp.IsClassFeature = true;
                 bp.AddComponent<AddDamageResistancePhysical>(c => {
                     c.m_WeaponType = null;
                     c.Material = Kingmaker.Enums.Damage.PhysicalDamageMaterial.Adamantite;

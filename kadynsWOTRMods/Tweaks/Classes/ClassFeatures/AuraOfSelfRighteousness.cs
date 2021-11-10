@@ -94,6 +94,8 @@ namespace kadynsWOTRMods.Tweaks.Classes.ClassFeatures
     "against compulsion effects. Aura of self-righteousness functions only while the Oathbreaker is conscious, " +
     "not if she is unconscious or dead.");
                 bp.m_Icon = AOSRIcon;
+                bp.Ranks = 1;
+                bp.IsClassFeature = true;
                 bp.AddComponent<BuffDescriptorImmunity>(c =>
                 {
                     c.m_IgnoreFeature = null;

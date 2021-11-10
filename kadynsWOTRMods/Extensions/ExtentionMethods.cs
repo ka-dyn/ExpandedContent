@@ -19,6 +19,7 @@ using System.Linq;
 using kadynsWOTRMods.Utilities;
 using UnityEngine;
 using static Kingmaker.Blueprints.Classes.Prerequisites.Prerequisite;
+using static kadynsWOTRMods.Utilities.Helpers;
 
 namespace kadynsWOTRMods.Extensions {
     static class ExtentionMethods {
@@ -73,7 +74,7 @@ namespace kadynsWOTRMods.Extensions {
             return value;
         }
 
-        public static T[] AppendToArray<T>(this T[] array, T value) {
+        public static T[] AddToArray<T>(this T[] array, T value) {
             var len = array.Length;
             var result = new T[len + 1];
             Array.Copy(array, result, len);
@@ -170,10 +171,10 @@ namespace kadynsWOTRMods.Extensions {
             foreach (var feature in features) {
                 var featureReference = feature.ToReference<BlueprintFeatureReference>();
                 if (!selection.m_AllFeatures.Contains(featureReference)) {
-                    selection.m_AllFeatures = selection.m_AllFeatures.AppendToArray(featureReference);
+                    selection.m_AllFeatures = selection.m_AllFeatures.AddToArray(featureReference);
                 }
                 if (!selection.m_Features.Contains(featureReference)) {
-                    selection.m_Features = selection.m_Features.AppendToArray(featureReference);
+                    selection.m_Features = selection.m_Features.AddToArray(featureReference);
                 }
             }
             selection.m_AllFeatures = selection.m_AllFeatures.OrderBy(feature => feature.Get().Name).ToArray();
@@ -293,11 +294,11 @@ namespace kadynsWOTRMods.Extensions {
         }
 
         public static void AddComponent(this BlueprintScriptableObject obj, BlueprintComponent component) {
-            obj.SetComponents(obj.ComponentsArray.AppendToArray(component));
+            obj.SetComponents(obj.ComponentsArray.AddToArray(component));
         }
 
         public static void AddComponent<T>(this BlueprintScriptableObject obj, Action<T> init = null) where T : BlueprintComponent, new() {
-            obj.SetComponents(obj.ComponentsArray.AppendToArray(Helpers.CreateBlueprint(init)));
+            obj.SetComponents(obj.ComponentsArray.AddToArray(Helpers.CreateBlueprint(init)));
         }
 
         public static void RemoveComponent(this BlueprintScriptableObject obj, BlueprintComponent component) {
@@ -457,7 +458,7 @@ namespace kadynsWOTRMods.Extensions {
         public static void AddAction(this Kingmaker.UnitLogic.Abilities.Components.AbilityEffectRunAction action, Kingmaker.ElementsSystem.GameAction game_action) {
             if (action.Actions != null) {
                 action.Actions = Helpers.CreateActionList(action.Actions.Actions);
-                action.Actions.Actions = action.Actions.Actions.AppendToArray(game_action);
+                action.Actions.Actions = action.Actions.Actions.AddToArray(game_action);
             } else {
                 action.Actions = Helpers.CreateActionList(game_action);
             }

@@ -40,6 +40,8 @@ namespace kadynsWOTRMods.Tweaks.Classes.ClassFeatures
         private static readonly BlueprintFeature PaladinDivineBond = Resources.GetBlueprint<BlueprintFeature>("bf8a4b51ff7b41c3b5aa139e0fe16b34");
         private static readonly BlueprintFeatureSelection TeamworkFeat = Resources.GetBlueprint<BlueprintFeatureSelection>("d87e2f6a9278ac04caeb0f93eff95fcb");
 
+        
+
         private static readonly BlueprintFeature AlliedSpellcaster = Resources.GetBlueprint<BlueprintFeature>("9093ceeefe9b84746a5993d619d7c86f");
         private static readonly BlueprintFeature BackToBack = Resources.GetBlueprint<BlueprintFeature>("c920f2cd2244d284aa69a146aeefcb2c");
         private static readonly BlueprintFeature CoordinatedDefense = Resources.GetBlueprint<BlueprintFeature>("992fd59da1783de49b135ad89142c6d7");
@@ -59,12 +61,14 @@ namespace kadynsWOTRMods.Tweaks.Classes.ClassFeatures
 
                 bp.SetName("Solo Tactics");
                 bp.SetDescription("At 2nd level, an Oathbreaker gains solo tactics, as per the inquisitor class feature.");
+                bp.m_DescriptionShort = Helpers.CreateString("$OathbreakersSoloTactics.DescriptionShort", "At 2nd level, an Oathbreaker gains solo tactics, as per the inquisitor class feature.");
                 bp.m_Icon = BattleMeditationAbility.Icon;
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;
                 bp.AddComponent<AddMechanicsFeature>(c => {
                     c.m_Feature = AddMechanicsFeature.MechanicsFeatureType.SoloTactics;
                 });
+            });
 
 
 
@@ -90,7 +94,7 @@ namespace kadynsWOTRMods.Tweaks.Classes.ClassFeatures
                 };
                     bp.IsClassFeature = true;
                 });
-            });
+            
           
         }
     }

@@ -160,7 +160,7 @@
     "Settings": {
       "Oathbreaker": {
         "Enabled": true,
-        "Homebrew": true,
+        "Homebrew": false,
         "Description": "Adds a modified version of the Vindictive Bastard archetype as a full class."
       }
     }

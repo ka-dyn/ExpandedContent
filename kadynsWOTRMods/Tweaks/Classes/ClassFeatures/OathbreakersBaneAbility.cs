@@ -34,6 +34,8 @@ namespace kadynsWOTRMods.Tweaks.Classes.ClassFeatures {
         private static readonly BlueprintAbilityResource OathbreakersBaneResource = Resources.GetModBlueprint<BlueprintAbilityResource>("OathbreakersBaneResource");
 
         public static void AddOathbreakersBaneAbility() {
+            var OathbreakersBaneResource = Resources.GetModBlueprint<BlueprintAbilityResource>("OathbreakersBaneResource");
+            var OathbreakerClass = Resources.GetModBlueprint<BlueprintCharacterClass>("OathbreakerClass");
             var OBBaneIcon = AssetLoader.LoadInternal("Skills", "Icon_OBBane.png");
             var SmiteEvilAbility = Resources.GetBlueprint<BlueprintAbility>("7bb9eb2042e67bf489ccd1374423cdec");
             var OathbreakersBaneAbility = Helpers.CreateBlueprint<BlueprintAbility>("OathbreakersBaneAbility", bp => {

@@ -5,6 +5,7 @@ using Kingmaker.Blueprints.Classes;
 using Kingmaker.Designers.Mechanics.Buffs;
 using Kingmaker.ElementsSystem;
 using Kingmaker.Enums;
+using Kingmaker.Localization;
 using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.UnitLogic.Abilities.Components;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
@@ -32,8 +33,8 @@ namespace kadynsWOTRMods.Tweaks.Classes.ClassFeatures
 
                 bp.SetName("Oathbreaker's Direction");
                 bp.SetDescription("At 1st level, the Oathbreaker can, as a move action, indicate an enemy in combat and rally her allies to " +
-                    "focus on that target. The Oahtbreaker and her allies gain a +1 bonus on weapon attack and damage rolls against the target. " +
-                    "This ability applies only to allies who can see or hear the Oathbreaker and who are within 30 feet of the freebooter at the time she " +
+                    "focus on that target. The Oathbreaker and her allies gain a +1 bonus on weapon attack and damage rolls against the target. " +
+                    "This ability applies only to allies who can see or hear the Oathbreaker and who are within 30 feet of the Oathbreaker at the time she " +
                     "activates this ability. At 5th level and every 5 levels thereafter (10th, 15th, and 20th level), the bonus increases by 1. The Oathbreaker's Direction " +
                     "lasts until the target dies or the Oathbreaker selects a new target.");
                 bp.m_Icon = ODIcon;
@@ -64,8 +65,8 @@ namespace kadynsWOTRMods.Tweaks.Classes.ClassFeatures
 
                 bp.SetName("Oathbreaker's Direction");
                 bp.SetDescription("At 1st level, the Oathbreaker can, as a move action, indicate an enemy in combat and rally her allies to " +
-                    "focus on that target. The Oahtbreaker and her allies gain a +1 bonus on weapon attack and damage rolls against the target. " +
-                    "This ability applies only to allies who can see or hear the Oathbreaker and who are within 30 feet of the freebooter at the time she " +
+                    "focus on that target. The Oathbreaker and her allies gain a +1 bonus on weapon attack and damage rolls against the target. " +
+                    "This ability applies only to allies who can see or hear the Oathbreaker and who are within 30 feet of the Oathbreaker at the time she " +
                     "activates this ability. At 5th level and every 5 levels thereafter (10th, 15th, and 20th level), the bonus increases by 1. The Oathbreaker's Direction " +
                     "lasts until the target dies or the Oathbreaker selects a new target.");
                 bp.m_Icon = ODIcon;
@@ -112,8 +113,8 @@ namespace kadynsWOTRMods.Tweaks.Classes.ClassFeatures
 
                 bp.SetName("Oathbreaker's Direction");
                 bp.SetDescription("At 1st level, the Oathbreaker can, as a move action, indicate an enemy in combat and rally her allies to " +
-                    "focus on that target. The Oahtbreaker and her allies gain a +1 bonus on weapon attack and damage rolls against the target. " +
-                    "This ability applies only to allies who can see or hear the Oathbreaker and who are within 30 feet of the freebooter at the time she " +
+                    "focus on that target. The Oathbreaker and her allies gain a +1 bonus on weapon attack and damage rolls against the target. " +
+                    "This ability applies only to allies who can see or hear the Oathbreaker and who are within 30 feet of the Oathbreaker at the time she " +
                     "activates this ability. At 5th level and every 5 levels thereafter (10th, 15th, and 20th level), the bonus increases by 1. The Oathbreaker's Direction " +
                     "lasts until the target dies or the Oathbreaker selects a new target.");
                 bp.m_Icon = ODIcon;
@@ -161,10 +162,10 @@ namespace kadynsWOTRMods.Tweaks.Classes.ClassFeatures
             });
             var OathbreakersDirectionSwiftFeature = Helpers.CreateBlueprint<BlueprintFeature>("OathbreakersDirectionSwiftFeature", bp => {
 
-                bp.SetName("Oathbreakers Direction");
+                bp.SetName("Oathbreakers Direction (Swift)");
                 bp.SetDescription("At 1st level, the Oathbreaker can, as a swift action, indicate an enemy in combat and rally her allies to " +
-                    "focus on that target. The Oahtbreaker and her allies gain a +1 bonus on weapon attack and damage rolls against the target. " +
-                    "This ability applies only to allies who can see or hear the Oathbreaker and who are within 30 feet of the freebooter at the time she " +
+                    "focus on that target. The Oathbreaker and her allies gain a +1 bonus on weapon attack and damage rolls against the target. " +
+                    "This ability applies only to allies who can see or hear the Oathbreaker and who are within 30 feet of the Oathbreaker at the time she " +
                     "activates this ability. At 5th level and every 5 levels thereafter (10th, 15th, and 20th level), the bonus increases by 1. The Oathbreaker's Direction " +
                     "lasts until the target dies or the Oathbreaker selects a new target.");
                 bp.m_Icon = ODIcon;
@@ -185,10 +186,13 @@ namespace kadynsWOTRMods.Tweaks.Classes.ClassFeatures
 
                 bp.SetName("Oathbreakers Direction");
                 bp.SetDescription("At 1st level, the Oathbreaker can, as a move action, indicate an enemy in combat and rally her allies to " +
-                    "focus on that target. The Oahtbreaker and her allies gain a +1 bonus on weapon attack and damage rolls against the target. " +
-                    "This ability applies only to allies who can see or hear the Oathbreaker and who are within 30 feet of the freebooter at the time she " +
+                    "focus on that target. The Oathbreaker and her allies gain a +1 bonus on weapon attack and damage rolls against the target. " +
+                    "This ability applies only to allies who can see or hear the Oathbreaker and who are within 30 feet of the Oathbreaker at the time she " +
                     "activates this ability. At 5th level and every 5 levels thereafter (10th, 15th, and 20th level), the bonus increases by 1. The Oathbreaker's Direction " +
                     "lasts until the target dies or the Oathbreaker selects a new target.");
+                bp.m_DescriptionShort = Helpers.CreateString("$OathbreakersDirection.DescriptionShort", "At 1st level, the Oathbreaker can, as a move action, indicate an enemy in combat and rally her allies to " +
+                    "focus on that target. The Oathbreaker and her allies gain a +1 bonus on weapon attack and damage rolls against the target.");
+
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;
                 bp.m_Icon = ODIcon;

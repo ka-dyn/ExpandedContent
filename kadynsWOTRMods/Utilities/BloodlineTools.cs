@@ -28,25 +28,25 @@ namespace kadynsWOTRMods.Utilities {
             if (conditional.IfTrue == null) {
                 conditional.IfTrue = new ActionList();
             }
-            conditional.IfTrue.Actions = conditional.IfTrue.Actions.AppendToArray(game_action);
+            conditional.IfTrue.Actions = conditional.IfTrue.Actions.AddToArray(game_action);
         }
         public static void AddActionIfFalse(this Kingmaker.Designers.EventConditionActionSystem.Actions.Conditional conditional, GameAction game_action) {
             if (conditional.IfFalse == null) {
                 conditional.IfFalse = new ActionList();
             }
-            conditional.IfFalse.Actions = conditional.IfTrue.Actions.AppendToArray(game_action);
+            conditional.IfFalse.Actions = conditional.IfTrue.Actions.AddToArray(game_action);
         }
         public static void AddActionActivated(this AddFactContextActions component, GameAction game_action) {
             if (component.Activated == null) {
                 component.Activated = new ActionList();
             }
-            component.Activated.Actions = component.Activated.Actions.AppendToArray(game_action);
+            component.Activated.Actions = component.Activated.Actions.AddToArray(game_action);
         }
         public static void AddActionDeactivated(this AddFactContextActions component, GameAction game_action) {
             if (component.Deactivated == null) {
                 component.Deactivated = new ActionList();
             }
-            component.Deactivated.Actions = component.Deactivated.Actions.AppendToArray(game_action);
+            component.Deactivated.Actions = component.Deactivated.Actions.AddToArray(game_action);
         }
         public static void AddConditionalBuff(this BlueprintBuff parent, BlueprintFeature hasFeature, BlueprintBuff buff) {
             var AddfactContext = parent.GetComponent<AddFactContextActions>();
@@ -152,9 +152,9 @@ namespace kadynsWOTRMods.Utilities {
             BlueprintAbility MixedBloodlineAbility = Resources.GetBlueprint<BlueprintAbility>("352b4e8bb5ca4301b6e6084304a86546");
             BlueprintAbility MixedBloodlineAbility2 = Resources.GetBlueprint<BlueprintAbility>("291fa8cf38fa401397dd3c9b7515b153");
 
-            SecondBloodragerBloodline.m_Features = BloodragerBloodlineSelection.m_AllFeatures.AppendToArray(bloodline.ToReference<BlueprintFeatureReference>());
-            SecondBloodragerBloodline.m_AllFeatures = BloodragerBloodlineSelection.m_AllFeatures.AppendToArray(bloodline.ToReference<BlueprintFeatureReference>());
-            BloodragerBloodlineSelection.m_AllFeatures = BloodragerBloodlineSelection.m_AllFeatures.AppendToArray(bloodline.ToReference<BlueprintFeatureReference>());
+            SecondBloodragerBloodline.m_Features = BloodragerBloodlineSelection.m_AllFeatures.AddToArray(bloodline.ToReference<BlueprintFeatureReference>());
+            SecondBloodragerBloodline.m_AllFeatures = BloodragerBloodlineSelection.m_AllFeatures.AddToArray(bloodline.ToReference<BlueprintFeatureReference>());
+            BloodragerBloodlineSelection.m_AllFeatures = BloodragerBloodlineSelection.m_AllFeatures.AddToArray(bloodline.ToReference<BlueprintFeatureReference>());
 
             AddFactToApply(MixedBloodlineAbility, wanderingBloodline);
             AddFactToApply(MixedBloodlineAbility2, wanderingBloodline);
@@ -162,7 +162,7 @@ namespace kadynsWOTRMods.Utilities {
             static void AddFactToApply(BlueprintAbility ability, BlueprintUnitFact fact) {
                 var component = ability.GetComponent<AbilityApplyFact>();
                 component.m_Facts = component.m_Facts
-                    .AppendToArray(fact.ToReference<BlueprintUnitFactReference>())
+                    .AddToArray(fact.ToReference<BlueprintUnitFactReference>())
                     .OrderBy(f => f.Get().Name)
                     .ToArray();
             }
@@ -200,16 +200,16 @@ namespace kadynsWOTRMods.Utilities {
             BlueprintFeatureSelection SecondBloodline = Resources.GetBlueprint<BlueprintFeatureSelection>("3cf2ab2c320b73347a7c21cf0d0995bd");
             BlueprintFeatureSelection BloodlineAscendance = Resources.GetBlueprint<BlueprintFeatureSelection>("ce85aee1726900641ab53ede61ac5c19");
 
-            SorcererBloodlineSelection.m_AllFeatures = SorcererBloodlineSelection.m_AllFeatures.AppendToArray(bloodline.ToReference<BlueprintFeatureReference>());
-            SecondBloodline.m_AllFeatures = SecondBloodline.m_AllFeatures.AppendToArray(bloodline.ToReference<BlueprintFeatureReference>());
+            SorcererBloodlineSelection.m_AllFeatures = SorcererBloodlineSelection.m_AllFeatures.AddToArray(bloodline.ToReference<BlueprintFeatureReference>());
+            SecondBloodline.m_AllFeatures = SecondBloodline.m_AllFeatures.AddToArray(bloodline.ToReference<BlueprintFeatureReference>());
 
             var capstone = bloodline.LevelEntries.Where(entry => entry.Level == 20).First().Features[0];
             capstone.AddComponent(new PrerequisiteFeature() {
                 m_Feature = bloodline.ToReference<BlueprintFeatureReference>(),
                 Group = Prerequisite.GroupType.Any
             });
-            BloodlineAscendance.m_Features = BloodlineAscendance.m_AllFeatures.AppendToArray(capstone.ToReference<BlueprintFeatureReference>());
-            BloodlineAscendance.m_AllFeatures = BloodlineAscendance.m_AllFeatures.AppendToArray(capstone.ToReference<BlueprintFeatureReference>());
+            BloodlineAscendance.m_Features = BloodlineAscendance.m_AllFeatures.AddToArray(capstone.ToReference<BlueprintFeatureReference>());
+            BloodlineAscendance.m_AllFeatures = BloodlineAscendance.m_AllFeatures.AddToArray(capstone.ToReference<BlueprintFeatureReference>());
         }
         public static void RegisterSorcererFeatSelection(BlueprintFeatureSelection selection, BlueprintProgression bloodline) {
             BlueprintFeatureSelection SorcererFeatSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("3a60f0c0442acfb419b0c03b584e1394");
@@ -217,18 +217,18 @@ namespace kadynsWOTRMods.Utilities {
                 m_Feature = bloodline.ToReference<BlueprintFeatureReference>(),
                 Group = Prerequisite.GroupType.All
             });
-            SorcererFeatSelection.m_Features = SorcererFeatSelection.m_AllFeatures.AppendToArray(selection.ToReference<BlueprintFeatureReference>());
-            SorcererFeatSelection.m_AllFeatures = SorcererFeatSelection.m_AllFeatures.AppendToArray(selection.ToReference<BlueprintFeatureReference>());
+            SorcererFeatSelection.m_Features = SorcererFeatSelection.m_AllFeatures.AddToArray(selection.ToReference<BlueprintFeatureReference>());
+            SorcererFeatSelection.m_AllFeatures = SorcererFeatSelection.m_AllFeatures.AddToArray(selection.ToReference<BlueprintFeatureReference>());
         }
         public static void RegisterCrossbloodedBloodline(BlueprintProgression bloodline) {
             BlueprintFeatureSelection CrossbloodedSecondaryBloodlineSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("60c99d78a70e0b44f87ba01d02d909a6");
-            CrossbloodedSecondaryBloodlineSelection.m_Features = CrossbloodedSecondaryBloodlineSelection.m_AllFeatures.AppendToArray(bloodline.ToReference<BlueprintFeatureReference>());
-            CrossbloodedSecondaryBloodlineSelection.m_AllFeatures = CrossbloodedSecondaryBloodlineSelection.m_AllFeatures.AppendToArray(bloodline.ToReference<BlueprintFeatureReference>());
+            CrossbloodedSecondaryBloodlineSelection.m_Features = CrossbloodedSecondaryBloodlineSelection.m_AllFeatures.AddToArray(bloodline.ToReference<BlueprintFeatureReference>());
+            CrossbloodedSecondaryBloodlineSelection.m_AllFeatures = CrossbloodedSecondaryBloodlineSelection.m_AllFeatures.AddToArray(bloodline.ToReference<BlueprintFeatureReference>());
         }
         public static void RegisterSeekerBloodline(BlueprintProgression bloodline) {
             BlueprintFeatureSelection SeekerBloodlineSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("7bda7cdb0ccda664c9eb8978cf512dbc");
-            SeekerBloodlineSelection.m_Features = SeekerBloodlineSelection.m_Features.AppendToArray(bloodline.ToReference<BlueprintFeatureReference>());
-            SeekerBloodlineSelection.m_AllFeatures = SeekerBloodlineSelection.m_AllFeatures.AppendToArray(bloodline.ToReference<BlueprintFeatureReference>());
+            SeekerBloodlineSelection.m_Features = SeekerBloodlineSelection.m_Features.AddToArray(bloodline.ToReference<BlueprintFeatureReference>());
+            SeekerBloodlineSelection.m_AllFeatures = SeekerBloodlineSelection.m_AllFeatures.AddToArray(bloodline.ToReference<BlueprintFeatureReference>());
 
             var capstone = bloodline.LevelEntries.Where(entry => entry.Level == 20).First().Features[0];
             capstone.AddComponent(new PrerequisiteFeature() {
