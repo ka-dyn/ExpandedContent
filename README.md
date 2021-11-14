@@ -3,19 +3,16 @@
 
 *ALL FEATURES ARE NOW TOGGLEABLE THROUGH UMM*
 
-kadynsTweaks is a mod that seeks to add more options and variety to the already amazing base game and contributions from other modders. I created this mod with the intent
-of adding the Vindictive Bastard Archetype, but I'm only about halfway through creating that.
-
-Currently, the mod allows all forbidden deities and racial class archetypes. I will be adding to it daily as things pique my interest, or if something is suggested to me.
-
 I'd like to give a huge thank you to Vek17, as much of the coding in this repository is his; I simply repurposed it or learned from it. I wouldn't be able to release
 anything without it. Check out his mod, TableTopTweaks if you haven't already!
 - https://github.com/Vek17/WrathMods-TabletopTweaks/releases
 
 I'd also like to give a big shoutout and thank you to bubbles, Narria, CascadingDragon, and everyone else who has been so kind in the Modding discord.
 Seriously, thank you!
+v0.2.5b
+**Added Oathbreaker as a playable class**
 
-I will be adding many things, but first I'm going to finish vindictive bastard!
+
 v0.2.4a
 -Fixed issue where Warpriest and Inquisitor could not select blessings/domains
 
