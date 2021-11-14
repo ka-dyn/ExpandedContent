@@ -1,0 +1,399 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\Aze.Publicise.MSBuild.Task.1.0.0\build\Aze.Publicise.MSBuild.Task.props" Condition="Exists('packages\Aze.Publicise.MSBuild.Task.1.0.0\build\Aze.Publicise.MSBuild.Task.props')" />
+  <Import Project="..\packages\Aze.Publicise.MSBuild.Task.1.0.0\build\Aze.Publicise.MSBuild.Task.props" Condition="Exists('..\packages\Aze.Publicise.MSBuild.Task.1.0.0\build\Aze.Publicise.MSBuild.Task.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E6F4977C-F1BD-45EC-96BA-4BF093C2DFBA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ExpandedContent</RootNamespace>
+    <AssemblyName>ExpandedContent</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <LangVersion>9</LangVersion>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>portable</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <NoWarn>
+
+0649</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\Releases\ExpandedContent\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <NoWarn>
+
+0649</NoWarn>
+  </PropertyGroup>
+  <Target Name="RemoveLib" BeforeTargets="Clean" Condition="Exists('$(SolutionDir)lib')">
+    <RemoveDir Directories="$(SolutionDir)lib" />
+  </Target>
+  <Target Name="CreateLib" BeforeTargets="BeforeBuild" AfterTargets="RemoveLib" Condition="!Exists('$(SolutionDir)lib')">
+    <MakeDir Directories="$(SolutionDir)lib" />
+  </Target>
+  <Target Name="Publicise" AfterTargets="CreateLib">
+    <ItemGroup>
+      <PubliciseAssemblyCSharp Include="$(WrathPath)\Wrath_Data\Managed\Assembly-CSharp.dll" />
+      <PubliciseUniRx Include="$(WrathPath)\Wrath_Data\Managed\UniRx.dll" />
+    </ItemGroup>
+    <Publicise InputAssemblies="@(PubliciseAssemblyCSharp)" OutputPath="$(SolutionDir)lib/" PubliciseCompilerGenerated="true" />
+    <Publicise InputAssemblies="@(PubliciseUniRx)" OutputPath="$(SolutionDir)lib/" PubliciseCompilerGenerated="true" />
+  </Target>
+  <ItemGroup>
+    <Reference Include="0Harmony, Version=2.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Lib.Harmony.2.1.1\lib\net472\0Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>$(SolutionDir)lib\Assembly-CSharp_public.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Build.Framework" />
+    <Reference Include="Microsoft.Build.Utilities.v4.0" />
+    <Reference Include="ModKit, Version=1.0.8.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\ModKit.1.0.8\lib\net472\ModKit.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owlcat.Runtime.Core">
+      <HintPath>$(WrathPath)\Wrath_Data\Managed\Owlcat.Runtime.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Owlcat.Runtime.UI">
+      <HintPath>$(WrathPath)\Wrath_Data\Managed\Owlcat.Runtime.UI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UniRx">
+      <HintPath>$(SolutionDir)lib\UniRx_public.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.AnimationModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(WrathPath)\Wrath_Data\Managed\UnityEngine.AnimationModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.AssetBundleModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(WrathPath)\Wrath_Data\Managed\UnityEngine.AssetBundleModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>$(WrathPath)\Wrath_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.ImageConversionModule">
+      <HintPath>$(WrathPath)\Wrath_Data\Managed\UnityEngine.ImageConversionModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>$(WrathPath)\Wrath_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>$(WrathPath)\Wrath_Data\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>$(WrathPath)\Wrath_Data\Managed\UnityEngine.UI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityModManager">
+      <HintPath>$(WrathPath)\Wrath_Data\Managed\UnityModManager\UnityModManager.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BlueprintCore\Abilities\Restrictions\New\TargetHasBuffsFromCaster.cs" />
+    <Compile Include="BlueprintCore\Actions\Builder\ActionsBuilder.cs" />
+    <Compile Include="BlueprintCore\Actions\Builder\AreaEx\ActionsBuilderAreaEx.cs" />
+    <Compile Include="BlueprintCore\Actions\Builder\AVEx\ActionsBuilderAVEx.cs" />
+    <Compile Include="BlueprintCore\Actions\Builder\BasicEx\ActionsBuilderBasicEx.cs" />
+    <Compile Include="BlueprintCore\Actions\Builder\ContextEx\ActionsBuilderContextEx.cs" />
+    <Compile Include="BlueprintCore\Actions\Builder\KingdomEx\ActionsBuilderKingdomEx.cs" />
+    <Compile Include="BlueprintCore\Actions\Builder\MiscEx\ActionsBuilderMiscEx.cs" />
+    <Compile Include="BlueprintCore\Actions\Builder\NewEx\ActionsBuilderNewEx.cs" />
+    <Compile Include="BlueprintCore\Actions\Builder\StoryEx\ActionsBuilderStoryEx.cs" />
+    <Compile Include="BlueprintCore\Actions\Builder\UpgraderEx\ActionsBuilderUpgraderEx.cs" />
+    <Compile Include="BlueprintCore\Blueprints\Abilities\AbilityAreaEffectConfigurator.cs" />
+    <Compile Include="BlueprintCore\Blueprints\Abilities\AbilityConfigurator.cs" />
+    <Compile Include="BlueprintCore\Blueprints\Abilities\AbilityResourceConfigurator.cs" />
+    <Compile Include="BlueprintCore\Blueprints\BaseBlueprintConfigurator.cs" />
+    <Compile Include="BlueprintCore\Blueprints\BlueprintConfigurator.cs" />
+    <Compile Include="BlueprintCore\Blueprints\BlueprintTool.cs" />
+    <Compile Include="BlueprintCore\Blueprints\Buffs\BuffConfigurator.cs" />
+    <Compile Include="BlueprintCore\Blueprints\Classes\ArchetypeConfigurator.cs" />
+    <Compile Include="BlueprintCore\Blueprints\Classes\BaseFeatureConfigurator.cs" />
+    <Compile Include="BlueprintCore\Blueprints\Classes\FeatureConfigurator.cs" />
+    <Compile Include="BlueprintCore\Blueprints\Classes\Selection\FeatureSelectionConfigurator.cs" />
+    <Compile Include="BlueprintCore\Blueprints\Components\ContextRankConfigs.cs" />
+    <Compile Include="BlueprintCore\Blueprints\Facts\BlueprintUnitFactConfigurator.cs" />
+    <Compile Include="BlueprintCore\Conditions\Builder\AreaEx\ConditionsBuilderAreaEx.cs" />
+    <Compile Include="BlueprintCore\Conditions\Builder\BasicEx\ConditionsBuilderBasicEx.cs" />
+    <Compile Include="BlueprintCore\Conditions\Builder\ConditionsBuilder.cs" />
+    <Compile Include="BlueprintCore\Conditions\Builder\ContextEx\ConditionsBuilderContextEx.cs" />
+    <Compile Include="BlueprintCore\Conditions\Builder\KingdomEx\ConditionsBuilderKingdomEx.cs" />
+    <Compile Include="BlueprintCore\Conditions\Builder\MiscEx\ConditionsBuilderMiscEx.cs" />
+    <Compile Include="BlueprintCore\Conditions\Builder\NewEx\ConditionsBuilderNewEx.cs" />
+    <Compile Include="BlueprintCore\Conditions\Builder\StoryEx\ConditionsBuilderStoryEx.cs" />
+    <Compile Include="BlueprintCore\Conditions\New\TargetInMeleeRange.cs" />
+    <Compile Include="BlueprintCore\Utils\Attributes.cs" />
+    <Compile Include="BlueprintCore\Utils\CommonTool.cs" />
+    <Compile Include="BlueprintCore\Utils\Constants.cs" />
+    <Compile Include="BlueprintCore\Utils\ContextDuration.cs" />
+    <Compile Include="BlueprintCore\Utils\ContextValues.cs" />
+    <Compile Include="BlueprintCore\Utils\ElementTool.cs" />
+    <Compile Include="BlueprintCore\Utils\LogWrapper.cs" />
+    <Compile Include="BlueprintCore\Utils\PrereqTool.cs" />
+    <Compile Include="BlueprintCore\Utils\Validator.cs" />
+    <Compile Include="Config\AddedContent.cs" />
+    <Compile Include="Config\Blueprints.cs" />
+    <Compile Include="Config\ICollapseableGroup.cs" />
+    <Compile Include="Config\IDisableableGroup.cs" />
+    <Compile Include="Config\IUpdateableSettings.cs" />
+    <Compile Include="Config\ModSettings.cs" />
+    <Compile Include="Config\NestedSettingGroup.cs" />
+    <Compile Include="Config\SettingGroup.cs" />
+    <Compile Include="Tweaks\Archdevils\Baalzebul.cs" />
+    <Compile Include="Tweaks\Archdevils\Barbatos.cs" />
+    <Compile Include="Tweaks\Archdevils\Belial.cs" />
+    <Compile Include="Tweaks\Archdevils\Dispater.cs" />
+    <Compile Include="Tweaks\Archdevils\Geryon.cs" />
+    <Compile Include="Tweaks\Archdevils\Mammon.cs" />
+    <Compile Include="Tweaks\Archdevils\Mephistopheles.cs" />
+    <Compile Include="Tweaks\Archdevils\Moloch.cs" />
+    <Compile Include="Tweaks\Classes\ClassFeatures\AuraOfSelfRighteousness.cs" />
+    <Compile Include="Tweaks\Classes\ClassFeatures\BreakerOfOaths.cs" />
+    <Compile Include="Tweaks\Classes\ClassFeatures\FadedGrace.cs" />
+    <Compile Include="Tweaks\Classes\ClassFeatures\OathbreakerDefensiveStance.cs" />
+    <Compile Include="Tweaks\Classes\ClassFeatures\OathbreakersDirection.cs" />
+    <Compile Include="Tweaks\Classes\ClassFeatures\OathbreakerStalwart.cs" />
+    <Compile Include="Tweaks\Classes\ClassFeatures\SpitefulTenacity.cs" />
+    <Compile Include="Tweaks\Classes\ClassFeatures\OathbreakerSoloTactics.cs" />
+    <Compile Include="Tweaks\Classes\ClassFeatures\OathbreakersBaneFeature.cs" />
+    <Compile Include="Tweaks\Classes\Oathbreaker.cs" />
+    <Compile Include="Tweaks\ContentAdder.cs" />
+    <Compile Include="Tweaks\Deities\Abraxas.cs" />
+    <Compile Include="Tweaks\Deities\Apsu.cs" />
+    <Compile Include="Tweaks\DemonLords\Areshkegal.cs" />
+    <Compile Include="Tweaks\Deities\Arshea.cs" />
+    <Compile Include="Tweaks\DemonLords\Baphomet.cs" />
+    <Compile Include="Tweaks\Deities\BlackButterfly.cs" />
+    <Compile Include="Tweaks\Deities\Dagon.cs" />
+    <Compile Include="Tweaks\Deities\Dahak.cs" />
+    <Compile Include="Tweaks\Deities\DeitySelection.cs" />
+    <Compile Include="Tweaks\DemonLords\Deskari.cs" />
+    <Compile Include="Tweaks\Deities\GreenFaith.cs" />
+    <Compile Include="Tweaks\DemonLords\Kabriri.cs" />
+    <Compile Include="Tweaks\Deities\LichDeity.cs" />
+    <Compile Include="Tweaks\Deities\Milani.cs" />
+    <Compile Include="Tweaks\Deities\MilaniSacredWeaponFeature.cs" />
+    <Compile Include="Tweaks\Deities\Pulura.cs" />
+    <Compile Include="Tweaks\Deities\Ragathiel.cs" />
+    <Compile Include="Tweaks\DemonLords\Zura.cs" />
+    <Compile Include="Tweaks\Domains\VoidDomain.cs" />
+    <Compile Include="Tweaks\FourHorsemen\Apollyon.cs" />
+    <Compile Include="Tweaks\FourHorsemen\Charon.cs" />
+    <Compile Include="Tweaks\FourHorsemen\Szuriel.cs" />
+    <Compile Include="Tweaks\FourHorsemen\Terlmarixian.cs" />
+    <Compile Include="Tweaks\QueensOfNight\ArdadLili.cs" />
+    <Compile Include="Tweaks\QueensOfNight\Doloras.cs" />
+    <Compile Include="Tweaks\QueensOfNight\Eiseth.cs" />
+    <Compile Include="Tweaks\QueensOfNight\Mahathallah.cs" />
+    <Compile Include="Tweaks\RacialArchetypes\Cruoromancer.cs" />
+    <Compile Include="Tweaks\RacialArchetypes\NineTailedHeir.cs" />
+    <Compile Include="Tweaks\RacialArchetypes\Imitator.cs" />
+    <Compile Include="Tweaks\RacialArchetypes\WildlandShaman.cs" />
+    <Compile Include="Tweaks\RacialArchetypes\MasterOfAll.cs" />
+    <Compile Include="Tweaks\RacialArchetypes\Purifier.cs" />
+    <Compile Include="Tweaks\RacialArchetypes\StudentOfStone.cs" />
+    <Compile Include="Tweaks\RacialArchetypes\SpellDancer.cs" />
+    <Compile Include="Tweaks\RacialArchetypes\CavalierOfThePaw.cs" />
+    <Compile Include="Tweaks\RacialArchetypes\ReformedFiend.cs" />
+    <Compile Include="Tweaks\RacialArchetypes\PhantasmalMage.cs" />
+    <Compile Include="Tweaks\RacialArchetypes\Stonelord.cs" />
+    <Compile Include="Extensions\ExtentionMethods.cs" />
+    <Compile Include="Resources.cs" />
+    <Compile Include="SaveGamePatch.cs" />
+    <Compile Include="UMMSettingsUI.cs" />
+    <Compile Include="Utilities\AssetLoader.cs" />
+    <Compile Include="Utilities\Attributes.cs" />
+    <Compile Include="Utilities\BloodlineTools.cs" />
+    <Compile Include="Utilities\DescriptionTools.cs" />
+    <Compile Include="Utilities\FeatTools.cs" />
+    <Compile Include="Main.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\Helpers.cs" />
+    <Compile Include="Utilities\ILUtils.cs" />
+    <Compile Include="Utilities\SpellTools.cs" />
+    <Compile Include="Utilities\TypeReplaceTranspiler.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\.editorconfig">
+      <Link>.editorconfig</Link>
+    </None>
+    <EmbeddedResource Include="Config\AddedContent.json" />
+    <EmbeddedResource Include="Config\Blueprints.json" />
+    <None Include="Info.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Repository.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Deities\Icon_Apsu.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Archdevils.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Areshkagal.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Arshea.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Baphomet.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_DeitiesSelection.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_DeitySelection.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_DemonLords.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Deskari.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Dispater.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_DragonDeities.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_EmpyrealLords.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_GreenFaith.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Kabriri.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Mephistopheles.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Milani.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Pantheon.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Philosophies.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Pulura.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\ICON_Ragathiel.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Zura.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Icon_Archdevils.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Icon_DeitySelection.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Icon_DemonLords.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Icon_Zura.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_AOSR.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_BOO.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_DefensivePowers.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_DreadfulCalm.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_FadedGrace.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_FeatSelection.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_OBBANE.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_OBProf.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_OD.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_SpitefulTenacity.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_Stalwart.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Tweaks\Archetypes\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" AfterTargets="BeforeClean">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Aze.Publicise.MSBuild.Task.1.0.0\build\Aze.Publicise.MSBuild.Task.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Aze.Publicise.MSBuild.Task.1.0.0\build\Aze.Publicise.MSBuild.Task.props'))" />
+    <Error Condition="!Exists('packages\Aze.Publicise.MSBuild.Task.1.0.0\build\Aze.Publicise.MSBuild.Task.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Aze.Publicise.MSBuild.Task.1.0.0\build\Aze.Publicise.MSBuild.Task.props'))" />
+  </Target>
+  <PropertyGroup>
+    <PostBuildEvent>(robocopy "$(TargetDir) " "%WrathPath%\Mods\ExpandedContent\ " /s /e )^&amp; IF %25ERRORLEVEL%25 LEQ 1 exit 0</PostBuildEvent>
+  </PropertyGroup>
+</Project>
