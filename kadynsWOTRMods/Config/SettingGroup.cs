@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace kadynsWOTRMods.Config {
+namespace ExpandedContent.Config {
     public class SettingGroup : IDisableableGroup {
         public bool DisableAll = false;
         public virtual bool GroupIsDisabled() => DisableAll;

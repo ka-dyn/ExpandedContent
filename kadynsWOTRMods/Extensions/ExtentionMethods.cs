@@ -16,12 +16,12 @@ using Kingmaker.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using kadynsWOTRMods.Utilities;
+using ExpandedContent.Utilities;
 using UnityEngine;
 using static Kingmaker.Blueprints.Classes.Prerequisites.Prerequisite;
-using static kadynsWOTRMods.Utilities.Helpers;
+using static ExpandedContent.Utilities.Helpers;
 
-namespace kadynsWOTRMods.Extensions {
+namespace ExpandedContent.Extensions {
     static class ExtentionMethods {
         public static IEnumerable<GameAction> FlattenAllActions(this BlueprintScriptableObject blueprint) {
             List<GameAction> actions = new List<GameAction>();

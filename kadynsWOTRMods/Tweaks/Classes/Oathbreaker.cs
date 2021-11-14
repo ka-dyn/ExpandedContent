@@ -1,8 +1,8 @@
 ﻿using HarmonyLib;
 using BlueprintCore.Blueprints;
-using kadynsWOTRMods.Config;
-using kadynsWOTRMods.Extensions;
-using kadynsWOTRMods.Utilities;
+using ExpandedContent.Config;
+using ExpandedContent.Extensions;
+using ExpandedContent.Utilities;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Prerequisites;
@@ -22,7 +22,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Kingmaker.Blueprints.Classes.Selection;
 
-namespace kadynsWOTRMods.Tweaks.Classes {
+namespace ExpandedContent.Tweaks.Classes {
 
     [HarmonyPatch(typeof(BlueprintsCache), "Init")]
     public class OathbreakerClassAdder {
@@ -51,11 +51,10 @@ namespace kadynsWOTRMods.Tweaks.Classes {
             OathbreakerClassAdder.Initialized = true;
 
             
-            Classes.ClassFeatures.OathbreakersBaneAbility.AddOathbreakersBaneResource();
-            Classes.ClassFeatures.OathbreakersBaneBuff.AddOathbreakersBaneBuff();
-            Classes.ClassFeatures.OathbreakersBaneAbility.AddOathbreakersBaneAbility();
+
+
             Classes.ClassFeatures.OathbreakersBaneFeature.AddOathbreakersBaneFeature();
-            Classes.ClassFeatures.OathbreakersBaneAbility.AddOathbreakersBaneResource();
+            Classes.ClassFeatures.OathbreakerDefensiveStance.AddDefensiveStance();
             Classes.ClassFeatures.OathbreakersDirection.AddOathbreakersDirection();
             Classes.ClassFeatures.OathbreakerSoloTactics.AddOathbreakerSoloTactics();
             Classes.ClassFeatures.OathbreakerStalwart.AddStalwartFeature();
@@ -82,7 +81,7 @@ namespace kadynsWOTRMods.Tweaks.Classes {
             var OathbreakersBaneFeature = Resources.GetModBlueprint<BlueprintFeature>("OathbreakersBaneFeature");
             var OathbreakerProgression = Resources.GetModBlueprint<BlueprintProgression>("OathbreakerProgression");
             var AnimalClass = Resources.GetBlueprint<BlueprintCharacterClass>("4cd1757a0eea7694ba5c933729a53920");
-
+            var DreadfulCalm = Resources.GetModBlueprint<BlueprintFeature>("DreadfulCalm");
             var PaladinClass = Resources.GetBlueprint<BlueprintCharacterClass>("bfa11238e7ae3544bbeb4d0b92e897ec");
             var OathbreakerClass = Helpers.CreateBlueprint<BlueprintCharacterClass>("OathbreakerClass", bp => {
                 bp.LocalizedName = Helpers.CreateString($"OathbreakerClass.Name", "Oathbreaker");
@@ -109,19 +108,18 @@ namespace kadynsWOTRMods.Tweaks.Classes {
                 bp.m_Spellbook = null;
                 bp.m_EquipmentEntities = PaladinClass.m_EquipmentEntities;
                 bp.m_StartingItems = PaladinClass.StartingItems;
-                bp.m_SignatureAbilities = new BlueprintFeatureReference[3]
+                bp.m_SignatureAbilities = new BlueprintFeatureReference[4]
                 {
                     OathbreakersBaneFeature.ToReference<BlueprintFeatureReference>(),
                     OathbreakerSoloTactics.ToReference<BlueprintFeatureReference>(),
                     OathbreakersDirectionFeature.ToReference<BlueprintFeatureReference>(),
+                    DreadfulCalm.ToReference<BlueprintFeatureReference>(),
 
                 };
                 bp.m_Difficulty = PaladinClass.Difficulty;
                 bp.m_DefaultBuild = null;
                 bp.m_Archetypes = new BlueprintArchetypeReference[0];
-                bp.m_Icon = BOOIcon;
-
-                bp.SkillPoints = 2;
+                bp.SkillPoints = 3;
                 bp.ClassSkills = new StatType[4] {
 
                 StatType.SkillKnowledgeWorld, StatType.SkillLoreNature, StatType.SkillKnowledgeArcana, StatType.SkillLoreReligion
@@ -179,8 +177,15 @@ namespace kadynsWOTRMods.Tweaks.Classes {
             var OathbreakerSoloTactics = Resources.GetModBlueprint<BlueprintFeature>("OathbreakerSoloTactics");
             var OathbreakersBaneFeature = Resources.GetModBlueprint<BlueprintFeature>("OathbreakersBaneFeature");
             var OathbreakersDirectionFeature = Resources.GetModBlueprint<BlueprintFeature>("OathbreakersDirectionFeature");
-            
-
+            var DreadfulCalm = Resources.GetModBlueprint<BlueprintFeature>("DreadfulCalm");
+            var DefensivePowers = AssetLoader.LoadInternal("Skills", "Icon_DefensivePowers.png");
+            var StalwartDefenderDefensivePowerSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("2cd91c501bda80b47ac2df0d51b02973");
+            StalwartDefenderDefensivePowerSelection.m_Icon = DefensivePowers;
+            var FeatSelectionIcon = AssetLoader.LoadInternal("Skills", "Icon_FeatSelection.png");
+            var FeatSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("303fd456ddb14437946e344bad9a893b");
+            FeatSelection.m_Icon = FeatSelectionIcon;
+            FeatSelection.SetDescription("At 3rd level and every 3 levels thereafter, this class gains a bonus {g|Encyclopedia:Feat}feat{/g} in addition to " +
+                "those gained from normal advancement. These bonus feats must be selected from those listed as Combat Feats, sometimes also called \"fighter bonus feats.\"");
             var OathbreakerProgression = Helpers.CreateBlueprint<BlueprintProgression>("OathbreakerProgression");
             OathbreakerProgression.SetName("Oathbreaker");
             OathbreakerProgression.SetDescription("While paladins often " +
@@ -196,22 +201,22 @@ namespace kadynsWOTRMods.Tweaks.Classes {
             {
         Helpers.LevelEntry(1, (BlueprintFeatureBase) OathbreakersBaneFeature, (BlueprintFeatureBase) OathbreakersDirectionFeature, (BlueprintFeatureBase) OathbreakerProficiencies),
         Helpers.LevelEntry(2, (BlueprintFeatureBase) FadedGrace, (BlueprintFeatureBase) OathbreakerSoloTactics),
-        Helpers.LevelEntry(3, (BlueprintFeatureBase) SpitefulTenacity, (BlueprintFeatureBase) OathbreakerTeamworkFeat),
-        Helpers.LevelEntry(4,  (BlueprintFeatureBase) OathbreakersBaneUse),
+        Helpers.LevelEntry(3, (BlueprintFeatureBase) SpitefulTenacity, (BlueprintFeatureBase) OathbreakerTeamworkFeat, (BlueprintFeatureBase) FeatSelection),
+        Helpers.LevelEntry(4, (BlueprintFeatureBase) OathbreakersBaneUse, (BlueprintFeatureBase) DreadfulCalm),
         Helpers.LevelEntry(5, (BlueprintFeatureBase) OathbreakersDirectionIncrease),
-        Helpers.LevelEntry(6),
+        Helpers.LevelEntry(6, (BlueprintFeatureBase) StalwartDefenderDefensivePowerSelection, (BlueprintFeatureBase) FeatSelection),
         Helpers.LevelEntry(7, (BlueprintFeatureBase) OathbreakersBaneUse),
-        Helpers.LevelEntry(8),
-        Helpers.LevelEntry(9, (BlueprintFeatureBase) OathbreakerTeamworkFeat),
-        Helpers.LevelEntry(10,(BlueprintFeatureBase) OathbreakersBaneUse, (BlueprintFeatureBase) OathbreakersDirectionIncrease),
+        Helpers.LevelEntry(8, (BlueprintFeatureBase) StalwartDefenderDefensivePowerSelection),
+        Helpers.LevelEntry(9, (BlueprintFeatureBase) OathbreakerTeamworkFeat, (BlueprintFeatureBase) FeatSelection),
+        Helpers.LevelEntry(10, (BlueprintFeatureBase) OathbreakersBaneUse, (BlueprintFeatureBase) OathbreakersDirectionIncrease, (BlueprintFeatureBase) StalwartDefenderDefensivePowerSelection),
         Helpers.LevelEntry(11, (BlueprintFeatureBase) OathbreakersDirectionSwiftFeature),
-        Helpers.LevelEntry(12),
+        Helpers.LevelEntry(12, (BlueprintFeatureBase) StalwartDefenderDefensivePowerSelection, (BlueprintFeatureBase) FeatSelection),
         Helpers.LevelEntry(13, (BlueprintFeatureBase) OathbreakersBaneUse),
-        Helpers.LevelEntry(14, (BlueprintFeatureBase) OathbreakerStalwart),
-        Helpers.LevelEntry(15, (BlueprintFeatureBase) OathbreakerTeamworkFeat, (BlueprintFeatureBase) OathbreakersDirectionIncrease),
-        Helpers.LevelEntry(16, (BlueprintFeatureBase) OathbreakersBaneUse),
+        Helpers.LevelEntry(14, (BlueprintFeatureBase) OathbreakerStalwart, (BlueprintFeatureBase) StalwartDefenderDefensivePowerSelection),
+        Helpers.LevelEntry(15, (BlueprintFeatureBase) OathbreakerTeamworkFeat, (BlueprintFeatureBase) OathbreakersDirectionIncrease, (BlueprintFeatureBase) FeatSelection),
+        Helpers.LevelEntry(16, (BlueprintFeatureBase) OathbreakersBaneUse, StalwartDefenderDefensivePowerSelection),
         Helpers.LevelEntry(17, (BlueprintFeatureBase) AuraOfSelfRighteousnessFeature),
-        Helpers.LevelEntry(18),
+        Helpers.LevelEntry(18, (BlueprintFeatureBase) FeatSelection),
         Helpers.LevelEntry(19, (BlueprintFeatureBase) OathbreakersBaneUse),
         Helpers.LevelEntry(20, (BlueprintFeatureBase) BreakerOfOaths, (BlueprintFeatureBase) OathbreakersDirectionIncrease)
             };
@@ -222,6 +227,8 @@ namespace kadynsWOTRMods.Tweaks.Classes {
                  Helpers.CreateUIGroup(OathbreakersDirectionFeature, OathbreakersDirectionIncrease, OathbreakersDirectionSwiftFeature),
                  Helpers.CreateUIGroup(FadedGrace, SpitefulTenacity, OathbreakerStalwart, AuraOfSelfRighteousnessFeature, BreakerOfOaths),
                  Helpers.CreateUIGroup(OathbreakerSoloTactics, OathbreakerTeamworkFeat),
+                 Helpers.CreateUIGroup(DreadfulCalm, StalwartDefenderDefensivePowerSelection),
+                 Helpers.CreateUIGroup(FeatSelection)
              };
         }
     }

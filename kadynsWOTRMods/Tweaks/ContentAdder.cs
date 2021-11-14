@@ -1,13 +1,13 @@
 ﻿using HarmonyLib;
-using kadynsWOTRMods.Extensions;
-using kadynsWOTRMods.Tweaks;
-using kadynsWOTRMods.Utilities;
+using ExpandedContent.Extensions;
+using ExpandedContent.Tweaks;
+using ExpandedContent.Utilities;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.Blueprints.Root;
 
-namespace kadynsWOTRMods.Tweaks
+namespace ExpandedContent.Tweaks
 {
     class ContentAdder {
 

@@ -1,6 +1,6 @@
 ﻿using JetBrains.Annotations;
 
-namespace kadynsWOTRMods.Config {
+namespace ExpandedContent.Config {
     public class NestedSettingGroup : SettingGroup {
         private IDisableableGroup parent;
         public IDisableableGroup Parent { set { parent = value; } }

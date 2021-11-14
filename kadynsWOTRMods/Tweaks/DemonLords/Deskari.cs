@@ -1,7 +1,7 @@
 ﻿using HarmonyLib;
-using kadynsWOTRMods.Config;
-using kadynsWOTRMods.Extensions;
-using kadynsWOTRMods.Utilities;
+using ExpandedContent.Config;
+using ExpandedContent.Extensions;
+using ExpandedContent.Utilities;
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.JsonSystem;
@@ -11,7 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace kadynsWOTRMods.Tweaks.DemonLords {
+namespace ExpandedContent.Tweaks.DemonLords {
     internal class Deskari {
 
 

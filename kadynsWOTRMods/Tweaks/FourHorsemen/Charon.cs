@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace kadynsWOTRMods.Tweaks.FourHorsemen {
+namespace ExpandedContent.Tweaks.FourHorsemen {
     internal class Charon {
     }
 }

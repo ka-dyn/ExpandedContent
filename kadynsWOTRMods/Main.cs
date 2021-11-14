@@ -3,11 +3,11 @@ using JetBrains.Annotations;
 using Kingmaker;
 using Kingmaker.Blueprints.JsonSystem;
 using System;
-using kadynsWOTRMods.Config;
-using kadynsWOTRMods.Utilities;
+using ExpandedContent.Config;
+using ExpandedContent.Utilities;
 using UnityModManagerNet;
 
-namespace kadynsWOTRMods {
+namespace ExpandedContent {
     static class Main {
         public static bool Enabled;
         public static bool Load(UnityModManager.ModEntry modEntry) {

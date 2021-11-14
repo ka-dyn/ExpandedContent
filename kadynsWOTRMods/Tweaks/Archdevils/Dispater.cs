@@ -1,6 +1,6 @@
-﻿using kadynsWOTRMods.Config;
-using kadynsWOTRMods.Extensions;
-using kadynsWOTRMods.Utilities;
+﻿using ExpandedContent.Config;
+using ExpandedContent.Extensions;
+using ExpandedContent.Utilities;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Prerequisites;
@@ -14,7 +14,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace kadynsWOTRMods.Tweaks.Archdevils {
+namespace ExpandedContent.Tweaks.Archdevils {
     internal class Dispater {
 
         private static readonly BlueprintFeature TrickeryDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("eaa368e08628a8641b16cd41cbd2cb33");

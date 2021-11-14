@@ -1,5 +1,5 @@
 ﻿
-namespace kadynsWOTRMods.Config {
+namespace ExpandedContent.Config {
     public class AddedContent : IUpdatableSettings {
         public bool NewSettingsOffByDefault = false;
         public SettingGroup RacialArchetypes = new SettingGroup();

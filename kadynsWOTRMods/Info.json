@@ -1,14 +1,14 @@
 {
 
-  "AssemblyName": "kadynsWOTRMods.dll",
+  "AssemblyName": "ExpandedContent.dll",
   "Author": "kadyn",
-  "DisplayName": "kadynsWOTRMods",
-  "EntryMethod": "kadynsWOTRMods.Main.Load",
-  "GameVersion": "1.1.0",
+  "DisplayName": "Expanded Content",
+  "EntryMethod": "ExpandedContent.Main.Load",
+  "GameVersion": "1.1.1k",
   "HomePage": "https://github.com/ka-dyn/kadynsWOTRMods/releases",
-  "Id": "kadynsWOTRMods",
+  "Id": "ExpandedContent",
   "ManagerVersion": "0.23.0",
   "Repository": "https://raw.githubusercontent.com/ka-dyn/kadynsWOTRMods/master/Repository.json",
   "Requirements": [],
-  "Version": "0.2.5a"
+  "Version": "0.2.5b"
 }

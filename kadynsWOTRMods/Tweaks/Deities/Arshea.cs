@@ -1,6 +1,6 @@
-﻿using kadynsWOTRMods.Config;
-using kadynsWOTRMods.Extensions;
-using kadynsWOTRMods.Utilities;
+﻿using ExpandedContent.Config;
+using ExpandedContent.Extensions;
+using ExpandedContent.Utilities;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Prerequisites;
@@ -14,7 +14,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace kadynsWOTRMods.Tweaks.Deities {
+namespace ExpandedContent.Tweaks.Deities {
     internal class Arshea {
         private static readonly BlueprintFeature LiberationDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("801ca88338451a546bca2ee59da87c53");
         private static readonly BlueprintFeature CharmDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("f1ceba79ee123cc479cece27bc994ff2");

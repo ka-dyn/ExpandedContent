@@ -1,5 +1,5 @@
-﻿using kadynsWOTRMods.Extensions;
-using kadynsWOTRMods.Utilities;
+﻿using ExpandedContent.Extensions;
+using ExpandedContent.Utilities;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Designers.Mechanics.Buffs;
@@ -9,6 +9,7 @@ using Kingmaker.Localization;
 using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.UnitLogic.Abilities.Components;
+using Kingmaker.UnitLogic.Abilities.Components.Base;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.Buffs.Components;
 using Kingmaker.UnitLogic.FactLogic;
@@ -22,7 +23,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ValueType = Kingmaker.UnitLogic.Mechanics.ValueType;
 
-namespace kadynsWOTRMods.Tweaks.Classes.ClassFeatures {
+namespace ExpandedContent.Tweaks.Classes.ClassFeatures {
     internal class OathbreakersDirection {
 
         private static readonly BlueprintCharacterClass OathbreakerClass = Resources.GetModBlueprint<BlueprintCharacterClass>("OathbreakerClass");
@@ -40,12 +41,13 @@ namespace kadynsWOTRMods.Tweaks.Classes.ClassFeatures {
                 bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
                 bp.IsClassFeature = true;
                 bp.AddComponent<AttackBonusAgainstTarget>(c => {
+                    c.CheckCasterFriend = true;
                     c.Descriptor = ModifierDescriptor.UntypedStackable;
                     c.Value = new ContextValue() {
                         ValueType = ContextValueType.Shared,
                         ValueShared = Kingmaker.UnitLogic.Abilities.AbilitySharedValue.DamageBonus
                     };
-                    c.CheckCasterFriend = true;
+                    
                 });
                 bp.AddComponent<DamageBonusAgainstTarget>(c => {
                     c.CheckCasterFriend = true;
@@ -60,6 +62,7 @@ namespace kadynsWOTRMods.Tweaks.Classes.ClassFeatures {
                     c.RemoveOnCasterDeath = true;
                 });
             });
+            var HellSealVariantDevouringFlamesBuff = Resources.GetBlueprint<BlueprintBuff>("5617dbbb3890e2f4b96b47318c5c438b");
             var OathbreakersDirectionBuff = Helpers.CreateBlueprint<BlueprintBuff>("OathbreakersDirectionBuff", bp => {
 
                 bp.SetName("Oathbreaker's Direction");
@@ -68,30 +71,33 @@ namespace kadynsWOTRMods.Tweaks.Classes.ClassFeatures {
                     "This ability applies only to allies who can see or hear the Oathbreaker and who are within 30 feet of the Oathbreaker at the time she " +
                     "activates this ability. At 5th level and every 5 levels thereafter (10th, 15th, and 20th level), the bonus increases by 1. The Oathbreaker's Direction " +
                     "lasts until the target dies or the Oathbreaker selects a new target.");
-                bp.m_Icon = ODIcon;
-
+                bp.m_Icon = ODIcon;               
+                bp.FxOnStart = HellSealVariantDevouringFlamesBuff.FxOnStart;
                 bp.IsClassFeature = true;
                 bp.AddComponent<AttackBonusAgainstTarget>(c => {
+                    c.CheckCaster = true;
                     c.Descriptor = ModifierDescriptor.UntypedStackable;
                     c.Value = new ContextValue() {
                         ValueType = ContextValueType.Shared,
                         ValueShared = Kingmaker.UnitLogic.Abilities.AbilitySharedValue.DamageBonus
                     };
-                    c.CheckCasterFriend = true;
+                    
                 });
                 bp.AddComponent<DamageBonusAgainstTarget>(c => {
-                    c.CheckCasterFriend = true;
+                    c.CheckCaster = true;
                     c.ApplyToSpellDamage = true;
                     c.Value = new ContextValue() {
                         ValueType = ContextValueType.Shared,
                         ValueShared = Kingmaker.UnitLogic.Abilities.AbilitySharedValue.DamageBonus
                     };
+                    
 
                 });
-                bp.AddComponent<UniqueBuff>();
+                
                 bp.AddComponent<RemoveBuffIfCasterIsMissing>(c => {
                     c.RemoveOnCasterDeath = true;
                 });
+                bp.AddComponent<UniqueBuff>();
                 bp.AddComponent<AddFactContextActions>(c => {
                     c.Activated = new ActionList() { };
                     c.Deactivated = new ActionList() {
@@ -116,6 +122,8 @@ namespace kadynsWOTRMods.Tweaks.Classes.ClassFeatures {
                     "This ability applies only to allies who can see or hear the Oathbreaker and who are within 30 feet of the Oathbreaker at the time she " +
                     "activates this ability. At 5th level and every 5 levels thereafter (10th, 15th, and 20th level), the bonus increases by 1. The Oathbreaker's Direction " +
                     "lasts until the target dies or the Oathbreaker selects a new target.");
+                bp.LocalizedDuration = Helpers.CreateString($"{bp.name}.Duration", "Until the directed target is dead");
+                bp.LocalizedSavingThrow = Helpers.CreateString($"{bp.name}.SavingThrow", "None");
                 bp.m_Icon = ODIcon;
                 bp.Type = AbilityType.Extraordinary;
                 bp.Range = AbilityRange.Medium;
@@ -125,7 +133,6 @@ namespace kadynsWOTRMods.Tweaks.Classes.ClassFeatures {
                 bp.ActionType = Kingmaker.UnitLogic.Commands.Base.UnitCommand.CommandType.Move;
 
                 bp.AvailableMetamagic = Kingmaker.UnitLogic.Abilities.Metamagic.Heighten | Kingmaker.UnitLogic.Abilities.Metamagic.Reach;
-
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.Actions = Helpers.CreateActionList(
                         new ContextActionApplyBuff() {
@@ -154,12 +161,6 @@ namespace kadynsWOTRMods.Tweaks.Classes.ClassFeatures {
 
                     c.Modifier = 1;
                 });
-
-
-
-
-
-
                 bp.AddContextRankConfig(c => {
                     c.m_Type = Kingmaker.Enums.AbilityRankType.DamageBonus;
                     c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
@@ -177,6 +178,7 @@ namespace kadynsWOTRMods.Tweaks.Classes.ClassFeatures {
                     bp.SetDescription("At 11th level, an Oathbreaker can active her Oathbreaker's Direction ability " +
                         "as a swift action.");
                     bp.m_Icon = ODIcon;
+                    
                     bp.Type = AbilityType.Extraordinary;
                     bp.Range = AbilityRange.Medium;
                     bp.ActionType = Kingmaker.UnitLogic.Commands.Base.UnitCommand.CommandType.Swift;
@@ -189,7 +191,7 @@ namespace kadynsWOTRMods.Tweaks.Classes.ClassFeatures {
                 });
                 var OathbreakersDirectionSwiftFeature = Helpers.CreateBlueprint<BlueprintFeature>("OathbreakersDirectionSwiftFeature", bp => {
 
-                    bp.SetName("Oathbreakers Direction (Swift)");
+                    bp.SetName("Oathbreaker's Direction (Swift)");
                     bp.SetDescription("At 11th level, the Oathbreaker can, as a swift action, indicate an enemy in combat and rally her allies to " +
                         "focus on that target. The Oathbreaker and her allies gain a +1 bonus on weapon attack and damage rolls against the target. " +
                         "This ability applies only to allies who can see or hear the Oathbreaker and who are within 30 feet of the Oathbreaker at the time she " +
@@ -211,7 +213,7 @@ namespace kadynsWOTRMods.Tweaks.Classes.ClassFeatures {
 
                 var OathbreakersDirectionFeature = Helpers.CreateBlueprint<BlueprintFeature>("OathbreakersDirectionFeature", bp => {
 
-                    bp.SetName("Oathbreakers Direction");
+                    bp.SetName("Oathbreaker's Direction");
                     bp.SetDescription("At 1st level, the Oathbreaker can, as a move action, indicate an enemy in combat and rally her allies to " +
                         "focus on that target. The Oathbreaker and her allies gain a +1 bonus on weapon attack and damage rolls against the target. " +
                         "This ability applies only to allies who can see or hear the Oathbreaker and who are within 30 feet of the Oathbreaker at the time she " +
@@ -230,7 +232,7 @@ namespace kadynsWOTRMods.Tweaks.Classes.ClassFeatures {
                 });
                 var OathbreakersDirectionIncrease = Helpers.CreateBlueprint<BlueprintFeature>("OathbreakersDirectionIncrease", bp => {
 
-                    bp.SetName("Oathbreakers Direction - Bonus Increase");
+                    bp.SetName("Oathbreaker's Direction - Bonus Increase");
                     bp.SetDescription("At 5th level and every 5 levels thereafter (10th, 15th, and 20th level), the bonus increases by 1. The Oathbreaker's Direction " +
                         "lasts until the target dies or the Oathbreaker selects a new target.");
                     bp.m_DescriptionShort = Helpers.CreateString("$OathbreakersDirection.DescriptionShort", "At 1st level, the Oathbreaker can, as a move action, indicate an enemy in combat and rally her allies to " +

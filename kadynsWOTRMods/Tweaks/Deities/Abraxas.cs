@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace kadynsWOTRMods.Tweaks.Deities {
+namespace ExpandedContent.Tweaks.Deities {
     internal class Abraxas {
     }
 }

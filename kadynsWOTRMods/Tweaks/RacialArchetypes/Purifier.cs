@@ -1,13 +1,13 @@
 ﻿using HarmonyLib;
-using kadynsWOTRMods;
+using ExpandedContent;
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.JsonSystem;
 using System;
-using kadynsWOTRMods.Extensions;
-using kadynsWOTRMods.Config;
+using ExpandedContent.Extensions;
+using ExpandedContent.Config;
 
-namespace kadynsWOTRMods.Tweaks.RacialArchetypes {
+namespace ExpandedContent.Tweaks.RacialArchetypes {
     internal class Purifier {
 
         

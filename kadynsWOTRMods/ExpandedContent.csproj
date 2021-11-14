@@ -9,8 +9,8 @@
     <ProjectGuid>{E6F4977C-F1BD-45EC-96BA-4BF093C2DFBA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>kadynsWOTRMods</RootNamespace>
-    <AssemblyName>kadynsWOTRMods</AssemblyName>
+    <RootNamespace>ExpandedContent</RootNamespace>
+    <AssemblyName>ExpandedContent</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <LangVersion>9</LangVersion>
@@ -36,7 +36,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\Releases\kadynsWOTRMods\</OutputPath>
+    <OutputPath>..\..\Releases\ExpandedContent\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -195,12 +195,11 @@
     <Compile Include="Tweaks\Classes\ClassFeatures\AuraOfSelfRighteousness.cs" />
     <Compile Include="Tweaks\Classes\ClassFeatures\BreakerOfOaths.cs" />
     <Compile Include="Tweaks\Classes\ClassFeatures\FadedGrace.cs" />
+    <Compile Include="Tweaks\Classes\ClassFeatures\OathbreakerDefensiveStance.cs" />
     <Compile Include="Tweaks\Classes\ClassFeatures\OathbreakersDirection.cs" />
     <Compile Include="Tweaks\Classes\ClassFeatures\OathbreakerStalwart.cs" />
     <Compile Include="Tweaks\Classes\ClassFeatures\SpitefulTenacity.cs" />
-    <Compile Include="Tweaks\Classes\ClassFeatures\OathbreakersBaneBuff.cs" />
     <Compile Include="Tweaks\Classes\ClassFeatures\OathbreakerSoloTactics.cs" />
-    <Compile Include="Tweaks\Classes\ClassFeatures\OathbreakersBaneAbility.cs" />
     <Compile Include="Tweaks\Classes\ClassFeatures\OathbreakersBaneFeature.cs" />
     <Compile Include="Tweaks\Classes\Oathbreaker.cs" />
     <Compile Include="Tweaks\ContentAdder.cs" />
@@ -265,15 +264,25 @@
     </None>
     <EmbeddedResource Include="Config\AddedContent.json" />
     <EmbeddedResource Include="Config\Blueprints.json" />
-    <None Include="Info.json" />
+    <None Include="Info.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
-    <None Include="Repository.json" />
+    <None Include="Repository.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Deities\Icon_Apsu.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Deities\Icon_Archdevils.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Deities\Icon_Areshkagal.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Arshea.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Baphomet.jpg">
@@ -282,10 +291,19 @@
     <Content Include="Assets\Deities\Icon_DeitiesSelection.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Deities\Icon_DeitySelection.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_DemonLords.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Deities\Icon_Deskari.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Dispater.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_DragonDeities.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_EmpyrealLords.jpg">
@@ -303,6 +321,9 @@
     <Content Include="Assets\Deities\Icon_Milani.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Deities\Icon_Pantheon.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Deities\Icon_Philosophies.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -310,6 +331,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\ICON_Ragathiel.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Zura.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Icon_Archdevils.jpg">
@@ -330,7 +354,16 @@
     <Content Include="Assets\Skills\Icon_BOO.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Skills\Icon_DefensivePowers.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_DreadfulCalm.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Skills\Icon_FadedGrace.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_FeatSelection.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_OBBANE.png">
@@ -361,6 +394,6 @@
     <Error Condition="!Exists('packages\Aze.Publicise.MSBuild.Task.1.0.0\build\Aze.Publicise.MSBuild.Task.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Aze.Publicise.MSBuild.Task.1.0.0\build\Aze.Publicise.MSBuild.Task.props'))" />
   </Target>
   <PropertyGroup>
-    <PostBuildEvent>(robocopy "$(TargetDir) " "%WrathPath%\Mods\kadynsWOTRMods\ " /s /e )^&amp; IF %25ERRORLEVEL%25 LEQ 1 exit 0</PostBuildEvent>
+    <PostBuildEvent>(robocopy "$(TargetDir) " "%WrathPath%\Mods\ExpandedContent\ " /s /e )^&amp; IF %25ERRORLEVEL%25 LEQ 1 exit 0</PostBuildEvent>
   </PropertyGroup>
 </Project>

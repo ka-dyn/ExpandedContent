@@ -21,12 +21,12 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
-using kadynsWOTRMods.Config;
-using kadynsWOTRMods;
+using ExpandedContent.Config;
+using ExpandedContent;
 using Kingmaker.Blueprints.Root;
-using kadynsWOTRMods.Extensions;
+using ExpandedContent.Extensions;
 
-namespace kadynsWOTRMods.Utilities {
+namespace ExpandedContent.Utilities {
     public static class Helpers {
 
         public static void RegisterClass(BlueprintCharacterClass ClassToRegister) {

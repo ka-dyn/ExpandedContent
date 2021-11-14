@@ -2,9 +2,9 @@
 using Kingmaker.Blueprints;
 using System;
 using System.Collections.Generic;
-using kadynsWOTRMods.Config;
+using ExpandedContent.Config;
 
-namespace kadynsWOTRMods {
+namespace ExpandedContent {
     static class Resources {
         public static readonly Dictionary<BlueprintGuid, SimpleBlueprint> ModBlueprints = new Dictionary<BlueprintGuid, SimpleBlueprint>();
 

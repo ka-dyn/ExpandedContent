@@ -3,7 +3,7 @@ using System.IO;
 using System.Reflection;
 using static UnityModManagerNet.UnityModManager;
 
-namespace kadynsWOTRMods.Config {
+namespace ExpandedContent.Config {
     class ModSettings {
         public static ModEntry ModEntry;
         
@@ -41,7 +41,7 @@ namespace kadynsWOTRMods.Config {
         private static void LoadSettings<T>(string fileName, ref T setting) where T : IUpdatableSettings {
             JsonSerializer serializer = JsonSerializer.Create(SerializerSettings);
             var assembly = Assembly.GetExecutingAssembly();
-            var resourcePath = $"kadynsWOTRMods.Config.{fileName}";
+            var resourcePath = $"ExpandedContent.Config.{fileName}";
             var userPath = $"{UserConfigFolder}{Path.DirectorySeparatorChar}{fileName}";
 
             Directory.CreateDirectory(UserConfigFolder);

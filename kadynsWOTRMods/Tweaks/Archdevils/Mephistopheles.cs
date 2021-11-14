@@ -1,6 +1,6 @@
-﻿using kadynsWOTRMods.Config;
-using kadynsWOTRMods.Extensions;
-using kadynsWOTRMods.Utilities;
+﻿using ExpandedContent.Config;
+using ExpandedContent.Extensions;
+using ExpandedContent.Utilities;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Prerequisites;
@@ -14,7 +14,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace kadynsWOTRMods.Tweaks.Archdevils {
+namespace ExpandedContent.Tweaks.Archdevils {
     internal class Mephistopheles {
 
         private static readonly BlueprintFeature RuneDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("77637f81d6aa33b4f82873d7934e8c4b");

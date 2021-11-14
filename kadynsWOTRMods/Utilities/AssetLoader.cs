@@ -1,8 +1,8 @@
 ﻿using System.IO;
-using kadynsWOTRMods.Config;
+using ExpandedContent.Config;
 using UnityEngine;
 
-namespace kadynsWOTRMods.Utilities {
+namespace ExpandedContent.Utilities {
     class AssetLoader {
         public static Sprite LoadInternal(string folder, string file) {
             return Image2Sprite.Create($"{ModSettings.ModEntry.Path}Assets{Path.DirectorySeparatorChar}{folder}{Path.DirectorySeparatorChar}{file}");

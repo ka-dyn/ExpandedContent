@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Emit;
 
-namespace kadynsWOTRMods.Utilities {
+namespace ExpandedContent.Utilities {
     public static class ILUtils {
         public static void LogIL(List<CodeInstruction> codes) {
             Main.LogDebug("");

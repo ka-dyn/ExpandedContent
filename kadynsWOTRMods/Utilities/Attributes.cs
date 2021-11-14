@@ -3,7 +3,7 @@ using System;
 using System.Linq;
 using System.Reflection;
 
-namespace kadynsWOTRMods.Utilities {
+namespace ExpandedContent.Utilities {
     class PostPatchInitializeAttribute : Attribute {
     }
 

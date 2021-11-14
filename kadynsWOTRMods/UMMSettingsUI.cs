@@ -4,11 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using kadynsWOTRMods.Config;
+using ExpandedContent.Config;
 using UnityEngine;
 using UnityModManagerNet;
 
-namespace kadynsWOTRMods {
+namespace ExpandedContent {
     public static class UMMSettingsUI {
         private static int selectedTab;
         public static void OnGUI(UnityModManager.ModEntry modEntry) {

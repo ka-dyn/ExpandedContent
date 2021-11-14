@@ -1,20 +1,20 @@
-﻿using kadynsWOTRMods.Extensions;
-using kadynsWOTRMods.Utilities;
+﻿using ExpandedContent.Extensions;
+using ExpandedContent.Utilities;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Selection;
+using Kingmaker.Designers.Mechanics.Facts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace kadynsWOTRMods.Tweaks.Classes.ClassFeatures
+namespace ExpandedContent.Tweaks.Classes.ClassFeatures
 {
     internal class FadedGrace
     {
-        public static void AddFadedGrace()
-        {
+        public static void AddFadedGrace() {
             var FadedGraceIcon = AssetLoader.LoadInternal("Skills", "Icon_FadedGrace.png");
             var IronWill = Resources.GetBlueprint<BlueprintFeature>("175d1577bb6c9a04baf88eec99c66334").ToReference<BlueprintFeatureReference>();
             var GreatFortitude = Resources.GetBlueprint<BlueprintFeature>("79042cb55f030614ea29956177977c52").ToReference<BlueprintFeatureReference>();
@@ -25,7 +25,6 @@ namespace kadynsWOTRMods.Tweaks.Classes.ClassFeatures
                     "Iron Will, or Lightning Reflexes.");
                 bp.IsClassFeature = true;
                 bp.Ranks = 1;
-                bp.IsClassFeature = true;
                 bp.HideNotAvailibleInUI = true;
                 bp.m_Icon = FadedGraceIcon;
                 bp.m_Features = new BlueprintFeatureReference[] {
@@ -36,5 +35,6 @@ namespace kadynsWOTRMods.Tweaks.Classes.ClassFeatures
                 bp.m_AllFeatures = bp.m_Features;
             });
         }
+        
     }
 }

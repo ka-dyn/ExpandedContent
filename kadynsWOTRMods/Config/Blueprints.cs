@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
-namespace kadynsWOTRMods.Config {
+namespace ExpandedContent.Config {
     public class Blueprints : IUpdatableSettings {
         [JsonProperty]
         private bool OverrideIds = false;

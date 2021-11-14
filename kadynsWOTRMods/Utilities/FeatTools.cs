@@ -11,9 +11,9 @@ using Kingmaker.UnitLogic.Mechanics.Components;
 using Kingmaker.Utility;
 using System;
 using System.Linq;
-using kadynsWOTRMods.Extensions;
+using ExpandedContent.Extensions;
 
-namespace kadynsWOTRMods.Utilities {
+namespace ExpandedContent.Utilities {
     static class FeatTools {
         public static void AddAsFeat(params BlueprintFeature[] features) {
             foreach (var feature in features) {

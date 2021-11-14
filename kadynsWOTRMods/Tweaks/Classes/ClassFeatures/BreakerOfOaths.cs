@@ -1,5 +1,5 @@
-﻿using kadynsWOTRMods.Extensions;
-using kadynsWOTRMods.Utilities;
+﻿using ExpandedContent.Extensions;
+using ExpandedContent.Utilities;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Designers.Mechanics.Facts;
@@ -16,7 +16,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace kadynsWOTRMods.Tweaks.Classes.ClassFeatures {
+namespace ExpandedContent.Tweaks.Classes.ClassFeatures {
     internal class BreakerOfOaths {
 
 
