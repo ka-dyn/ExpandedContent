@@ -1,3 +1,6 @@
+v0.2.5b
+-Added playable Oathbreaker class
+
 v0.2.4a
 -Fixed issue where Warpriest and Inquisitor could not select blessings/domains
 v0.2.4
