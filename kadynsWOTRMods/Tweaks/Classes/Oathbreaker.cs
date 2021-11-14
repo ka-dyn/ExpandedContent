@@ -215,43 +215,15 @@ namespace kadynsWOTRMods.Tweaks.Classes {
         Helpers.LevelEntry(19, (BlueprintFeatureBase) OathbreakersBaneUse),
         Helpers.LevelEntry(20, (BlueprintFeatureBase) BreakerOfOaths, (BlueprintFeatureBase) OathbreakersDirectionIncrease)
             };
-            OathbreakerProgression.m_UIDeterminatorsGroup = new BlueprintFeatureBaseReference[4]
-            {
-        OathbreakerProficiencies.ToReference<BlueprintFeatureBaseReference>(),
-        OathbreakersBaneFeature.ToReference<BlueprintFeatureBaseReference>(),
-        OathbreakersDirectionFeature.ToReference<BlueprintFeatureBaseReference>(),
-        OathbreakerSoloTactics.ToReference<BlueprintFeatureBaseReference>()
-            };
-           OathbreakerProgression.UIGroups = new UIGroup[4]
-            {
-                Helpers.CreateUIGroup((BlueprintFeatureBase )OathbreakersBaneFeature,
-                      (BlueprintFeatureBase) OathbreakersBaneUse,
-                      (BlueprintFeatureBase) OathbreakersBaneUse,
-                      (BlueprintFeatureBase) OathbreakersBaneUse,
-                      (BlueprintFeatureBase) OathbreakersBaneUse,
-                      (BlueprintFeatureBase) OathbreakersBaneUse,
-                     (BlueprintFeatureBase) OathbreakersBaneUse),
-                Helpers.CreateUIGroup((BlueprintFeatureBase) OathbreakersDirectionFeature, (BlueprintFeatureBase) OathbreakersDirectionIncrease, (BlueprintFeatureBase) OathbreakersDirectionIncrease,
-                     (BlueprintFeatureBase) OathbreakersDirectionSwiftFeature, (BlueprintFeatureBase) OathbreakersDirectionIncrease, (BlueprintFeatureBase) OathbreakersDirectionIncrease),
-                Helpers.CreateUIGroup((BlueprintFeatureBase) FadedGrace,
-                       (BlueprintFeatureBase) SpitefulTenacity,
-                       (BlueprintFeatureBase) OathbreakerStalwart,
-                       (BlueprintFeatureBase) AuraOfSelfRighteousnessFeature,
-                      (BlueprintFeatureBase) BreakerOfOaths),
-                Helpers.CreateUIGroup((BlueprintFeatureBase) OathbreakerSoloTactics,
-                       (BlueprintFeatureBase) OathbreakerTeamworkFeat,
-                       (BlueprintFeatureBase) OathbreakerTeamworkFeat,
-                       (BlueprintFeatureBase) OathbreakerTeamworkFeat,
-                       (BlueprintFeatureBase) OathbreakerTeamworkFeat,
-                       (BlueprintFeatureBase) OathbreakerTeamworkFeat,
-                       (BlueprintFeatureBase) OathbreakerTeamworkFeat)
-            };
 
+            OathbreakerProgression.UIGroups = new UIGroup[]
+            {
+                 Helpers.CreateUIGroup(OathbreakersBaneFeature, OathbreakersBaneUse),
+                 Helpers.CreateUIGroup(OathbreakersDirectionFeature, OathbreakersDirectionIncrease, OathbreakersDirectionSwiftFeature),
+                 Helpers.CreateUIGroup(FadedGrace, SpitefulTenacity, OathbreakerStalwart, AuraOfSelfRighteousnessFeature, BreakerOfOaths),
+                 Helpers.CreateUIGroup(OathbreakerSoloTactics, OathbreakerTeamworkFeat),
+             };
         }
-        
-        
-
-
     }
 }
 
