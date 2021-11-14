@@ -336,18 +336,6 @@
     <Content Include="Assets\Deities\Icon_Zura.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\Icon_Archdevils.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Icon_DeitySelection.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Icon_DemonLords.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Icon_Zura.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Assets\Skills\Icon_AOSR.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
