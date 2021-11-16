@@ -18,7 +18,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExpandedContent.Tweaks.Classes.ClassFeatures
+namespace ExpandedContent.Tweaks.Classes.ClassFeaturesOathbreaker
 {
     internal class OathbreakerSoloTactics
     {
@@ -60,8 +60,15 @@ namespace ExpandedContent.Tweaks.Classes.ClassFeatures
             var OathbreakerSoloTactics = Helpers.CreateBlueprint<BlueprintFeature>("OathbreakerSoloTactics", bp => {
 
                 bp.SetName("Solo Tactics");
-                bp.SetDescription("At 2nd level, an Oathbreaker gains solo tactics, as per the inquisitor class feature.");
-                bp.m_DescriptionShort = Helpers.CreateString("$OathbreakersSoloTactics.DescriptionShort", "At 2nd level, an Oathbreaker gains solo tactics, as per the inquisitor class feature.");
+                bp.SetDescription("At 2nd level, all of the Oathbreaker's allies are treated as if they possessed the same teamwork {g|Encyclopedia:Feat}feats{/g} as the Oathbreaker " +
+                    "for the purpose of determining whether the Oathbreaker receives a {g|Encyclopedia:Bonus}bonus{/g} from her teamwork feats. Her allies do not receive any bonuses " +
+                    "from these feats unless they actually possess the feats themselves. The allies' positioning and {g|Encyclopedia:CA_Types}actions{/g} must still meet the " +
+                    "prerequisites listed in the teamwork feat for the Oathbreaker to receive the listed bonus.");
+                bp.m_DescriptionShort = Helpers.CreateString("$OathbreakersSoloTactics.DescriptionShort", "At 2nd level, all of the Oathbreaker's allies are treated as if they " +
+                    "possessed the same teamwork {g|Encyclopedia:Feat}feats{/g} as the Oathbreaker " +
+                    "for the purpose of determining whether the Oathbreaker receives a {g|Encyclopedia:Bonus}bonus{/g} from her teamwork feats. Her allies do not receive any bonuses " +
+                    "from these feats unless they actually possess the feats themselves. The allies' positioning and {g|Encyclopedia:CA_Types}actions{/g} must still meet the " +
+                    "prerequisites listed in the teamwork feat for the Oathbreaker to receive the listed bonus.");
                 bp.m_Icon = BattleMeditationAbility.Icon;
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;

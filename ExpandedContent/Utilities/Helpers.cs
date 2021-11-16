@@ -56,6 +56,11 @@ namespace ExpandedContent.Utilities {
                 AdditionalLevel = addLevel
             };
         }
+        public static T Create<T>(Action<T> init = null) where T : new() {
+            var result = new T();
+            init?.Invoke(result);
+            return result;
+        }
         public static T CreateBlueprint<T>(Action<T> init = null) where T : new() {
             var result = new T();
             init?.Invoke(result);

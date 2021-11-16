@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Kingmaker.Blueprints.Classes.Selection;
 
 namespace ExpandedContent.Tweaks.Deities {
     internal class PatchPulura {
@@ -75,8 +76,10 @@ namespace ExpandedContent.Tweaks.Deities {
             if (ModSettings.AddedContent.Deities.IsDisabled("Pulura")) { return; }
                     
             PuluraFeature.RemoveComponents<PrerequisiteNoFeature>();
+            var EmpyrealLordSelection = Resources.GetModBlueprint<BlueprintFeatureSelection>("EmpyrealLordSelection");
+            
 
-                
+
         }
                 
             

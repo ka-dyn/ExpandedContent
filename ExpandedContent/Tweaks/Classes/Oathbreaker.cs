@@ -53,15 +53,15 @@ namespace ExpandedContent.Tweaks.Classes {
             
 
 
-            Classes.ClassFeatures.OathbreakersBaneFeature.AddOathbreakersBaneFeature();
-            Classes.ClassFeatures.OathbreakerDefensiveStance.AddDefensiveStance();
-            Classes.ClassFeatures.OathbreakersDirection.AddOathbreakersDirection();
-            Classes.ClassFeatures.OathbreakerSoloTactics.AddOathbreakerSoloTactics();
-            Classes.ClassFeatures.OathbreakerStalwart.AddStalwartFeature();
-            Classes.ClassFeatures.SpitefulTenacity.AddSpitefulTenacity();
-            Classes.ClassFeatures.AuraOfSelfRighteousness.AddAuraOfSelfRighteousnessFeature();
-            Classes.ClassFeatures.FadedGrace.AddFadedGrace();
-            Classes.ClassFeatures.BreakerOfOaths.AddBreakerOfOaths();
+            Classes.ClassFeaturesOathbreaker.OathbreakersBaneFeature.AddOathbreakersBaneFeature();
+            Classes.ClassFeaturesOathbreaker.OathbreakerDefensiveStance.AddDefensiveStance();
+            Classes.ClassFeaturesOathbreaker.OathbreakersDirection.AddOathbreakersDirection();
+            Classes.ClassFeaturesOathbreaker.OathbreakerSoloTactics.AddOathbreakerSoloTactics();
+            Classes.ClassFeaturesOathbreaker.OathbreakerStalwart.AddStalwartFeature();
+            Classes.ClassFeaturesOathbreaker.SpitefulTenacity.AddSpitefulTenacity();
+            Classes.ClassFeaturesOathbreaker.AuraOfSelfRighteousness.AddAuraOfSelfRighteousnessFeature();
+            Classes.ClassFeaturesOathbreaker.FadedGrace.AddFadedGrace();
+            Classes.ClassFeaturesOathbreaker.BreakerOfOaths.AddBreakerOfOaths();
             OathbreakerClassAdder.AddOathbreakerProgression();
 
             OathbreakerClassAdder.AddOathbreakerClass();

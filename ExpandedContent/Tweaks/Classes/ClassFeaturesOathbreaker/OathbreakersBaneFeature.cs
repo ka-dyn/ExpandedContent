@@ -28,7 +28,7 @@ using Kingmaker.Designers.EventConditionActionSystem.Actions;
 using Kingmaker.ElementsSystem;
 using Kingmaker.UnitLogic.Mechanics.Conditions;
 
-namespace ExpandedContent.Tweaks.Classes.ClassFeatures {
+namespace ExpandedContent.Tweaks.Classes.ClassFeaturesOathbreaker {
     internal class OathbreakersBaneFeature {
 
         public static void AddOathbreakersBaneFeature() {

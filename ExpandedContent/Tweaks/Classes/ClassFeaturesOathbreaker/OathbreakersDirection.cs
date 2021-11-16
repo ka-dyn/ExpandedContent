@@ -23,7 +23,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ValueType = Kingmaker.UnitLogic.Mechanics.ValueType;
 
-namespace ExpandedContent.Tweaks.Classes.ClassFeatures {
+namespace ExpandedContent.Tweaks.Classes.ClassFeaturesOathbreaker {
     internal class OathbreakersDirection {
 
         private static readonly BlueprintCharacterClass OathbreakerClass = Resources.GetModBlueprint<BlueprintCharacterClass>("OathbreakerClass");

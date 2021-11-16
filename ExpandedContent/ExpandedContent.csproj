@@ -192,16 +192,31 @@
     <Compile Include="Tweaks\Archdevils\Mammon.cs" />
     <Compile Include="Tweaks\Archdevils\Mephistopheles.cs" />
     <Compile Include="Tweaks\Archdevils\Moloch.cs" />
-    <Compile Include="Tweaks\Classes\ClassFeatures\AuraOfSelfRighteousness.cs" />
-    <Compile Include="Tweaks\Classes\ClassFeatures\BreakerOfOaths.cs" />
-    <Compile Include="Tweaks\Classes\ClassFeatures\FadedGrace.cs" />
-    <Compile Include="Tweaks\Classes\ClassFeatures\OathbreakerDefensiveStance.cs" />
-    <Compile Include="Tweaks\Classes\ClassFeatures\OathbreakersDirection.cs" />
-    <Compile Include="Tweaks\Classes\ClassFeatures\OathbreakerStalwart.cs" />
-    <Compile Include="Tweaks\Classes\ClassFeatures\SpitefulTenacity.cs" />
-    <Compile Include="Tweaks\Classes\ClassFeatures\OathbreakerSoloTactics.cs" />
-    <Compile Include="Tweaks\Classes\ClassFeatures\OathbreakersBaneFeature.cs" />
+    <Compile Include="Tweaks\Backgrounds\ArchdukeOfCheliax.cs" />
+    <Compile Include="Tweaks\Classes\ClassFeaturesDreadKnight\AuraOfCowardice.cs" />
+    <Compile Include="Tweaks\Classes\ClassFeaturesDreadKnight\AuraOfDepravity.cs" />
+    <Compile Include="Tweaks\Classes\ClassFeaturesDreadKnight\AuraOfDespair.cs" />
+    <Compile Include="Tweaks\Classes\ClassFeaturesDreadKnight\AuraOfSin.cs" />
+    <Compile Include="Tweaks\Classes\ClassFeaturesDreadKnight\AuraOfAbsolution.cs" />
+    <Compile Include="Tweaks\Classes\ClassFeaturesDreadKnight\DKChannelNegativeEnergy.cs" />
+    <Compile Include="Tweaks\Classes\ClassFeaturesDreadKnight\Cruelties.cs" />
+    <Compile Include="Tweaks\Classes\ClassFeaturesDreadKnight\ProfaneBoon.cs" />
+    <Compile Include="Tweaks\Classes\ClassFeaturesDreadKnight\PlagueBringer.cs" />
+    <Compile Include="Tweaks\Classes\ClassFeaturesDreadKnight\ProfaneChampion.cs" />
+    <Compile Include="Tweaks\Classes\ClassFeaturesDreadKnight\ProfaneResilience.cs" />
+    <Compile Include="Tweaks\Classes\ClassFeaturesDreadKnight\TouchOfProfaneCorruption.cs" />
+    <Compile Include="Tweaks\Classes\ClassFeaturesOathbreaker\AuraOfSelfRighteousness.cs" />
+    <Compile Include="Tweaks\Classes\ClassFeaturesOathbreaker\BreakerOfOaths.cs" />
+    <Compile Include="Tweaks\Classes\ClassFeaturesOathbreaker\FadedGrace.cs" />
+    <Compile Include="Tweaks\Classes\ClassFeaturesOathbreaker\OathbreakerDefensiveStance.cs" />
+    <Compile Include="Tweaks\Classes\ClassFeaturesOathbreaker\OathbreakersDirection.cs" />
+    <Compile Include="Tweaks\Classes\ClassFeaturesOathbreaker\OathbreakerStalwart.cs" />
+    <Compile Include="Tweaks\Classes\ClassFeaturesDreadKnight\SinfulAbsolution.cs" />
+    <Compile Include="Tweaks\Classes\ClassFeaturesOathbreaker\SpitefulTenacity.cs" />
+    <Compile Include="Tweaks\Classes\ClassFeaturesOathbreaker\OathbreakerSoloTactics.cs" />
+    <Compile Include="Tweaks\Classes\ClassFeaturesOathbreaker\OathbreakersBaneFeature.cs" />
     <Compile Include="Tweaks\Classes\Oathbreaker.cs" />
+    <Compile Include="Tweaks\Classes\DreadKnight.cs" />
     <Compile Include="Tweaks\ContentAdder.cs" />
     <Compile Include="Tweaks\Deities\Abraxas.cs" />
     <Compile Include="Tweaks\Deities\Apsu.cs" />
@@ -246,15 +261,18 @@
     <Compile Include="Resources.cs" />
     <Compile Include="SaveGamePatch.cs" />
     <Compile Include="UMMSettingsUI.cs" />
+    <Compile Include="Utilities\AlignmentTemplates.cs" />
     <Compile Include="Utilities\AssetLoader.cs" />
     <Compile Include="Utilities\Attributes.cs" />
     <Compile Include="Utilities\BloodlineTools.cs" />
+    <Compile Include="Utilities\Cavalier.cs" />
     <Compile Include="Utilities\DescriptionTools.cs" />
     <Compile Include="Utilities\FeatTools.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\Helpers.cs" />
     <Compile Include="Utilities\ILUtils.cs" />
+    <Compile Include="Utilities\PrerequisiteSize.cs" />
     <Compile Include="Utilities\SpellTools.cs" />
     <Compile Include="Utilities\TypeReplaceTranspiler.cs" />
   </ItemGroup>
@@ -273,6 +291,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Backgrounds\Icon_AOC.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Deities\Icon_Apsu.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -336,13 +357,37 @@
     <Content Include="Assets\Deities\Icon_Zura.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Skills\Icon_AOAbsolution.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_AOC.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_AODepravity.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_AODespair.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_AOS.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Skills\Icon_AOSR.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_BOO.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Skills\Icon_ChannelTOC.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_CrueltySelect.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Skills\Icon_DefensivePowers.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_DKProf.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_DreadfulCalm.png">
@@ -363,10 +408,34 @@
     <Content Include="Assets\Skills\Icon_OD.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Skills\Icon_Plague.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_ProfaneBoon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_ProfaneChamp.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_ProfaneWeapon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_Servant.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_SinfulAbsolution.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Skills\Icon_SpitefulTenacity.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_Stalwart.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_TouchCorrupt.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_UnholyRes.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

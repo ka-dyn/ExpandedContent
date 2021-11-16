@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Kingmaker.Blueprints.Classes.Selection;
 
 namespace ExpandedContent.Tweaks.Deities {
     internal class Apsu {
@@ -38,7 +39,7 @@ namespace ExpandedContent.Tweaks.Deities {
 
 
 
-            
+
             if (ModSettings.AddedContent.Deities.IsDisabled("Apsu")) { return; }
 
             BlueprintFeature ImprovedUnarmedStrike = Resources.GetBlueprint<BlueprintFeature>("7812ad3672a4b9a4fb894ea402095167");
@@ -108,7 +109,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     c.m_Spellbooks = new BlueprintSpellbookReference[1] { ClericSpellbook.ToReference<BlueprintSpellbookReference>() };
                     c.m_Spellbooks = new BlueprintSpellbookReference[1] { InquisitorSpellbook.ToReference<BlueprintSpellbookReference>() };
                 });
-                
+
 
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>();
@@ -131,15 +132,16 @@ namespace ExpandedContent.Tweaks.Deities {
                         WarpriestClass.ToReference<BlueprintCharacterClassReference>()
                     };
                 });
-                
+
             }));
-            
+
+ 
         }
-            
     }
 }
-            
 
+           
+       
 
  
 

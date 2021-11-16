@@ -13,13 +13,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExpandedContent.Tweaks.Deities
-{
-    internal class DeitySelectionFeature
-    {
+namespace ExpandedContent.Tweaks.Deities {
+    internal class DeitySelectionFeature {
 
-        public static void PatchDeitySelection()
-        {
+        public static void PatchDeitySelection() {
 
             //Demon Lords
             var ZuraFeature = Resources.GetModBlueprint<BlueprintFeature>("ZuraFeature");
@@ -83,8 +80,7 @@ namespace ExpandedContent.Tweaks.Deities
 
 
             var DemonLordsIcon = AssetLoader.LoadInternal("Deities", "Icon_DemonLords.jpg");
-            var DemonLordSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("DemonLordSelection", bp =>
-            {
+            var DemonLordSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("DemonLordSelection", bp => {
                 bp.SetName("Demon Lords");
                 bp.SetDescription("A demon lord is a very powerful and unique demon. They are, by definition, rulers of at least " +
                     "one layer of the Abyss, and have hordes of nascent demon lords and lesser demons in their service. Being creatures " +
@@ -103,8 +99,7 @@ namespace ExpandedContent.Tweaks.Deities
                 bp.Group = FeatureGroup.Deities;
             });
             var ArchdevilIcon = AssetLoader.LoadInternal("Deities", "Icon_Archdevils.jpg");
-            var ArchdevilSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("ArchdevilSelection", bp =>
-            {
+            var ArchdevilSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("ArchdevilSelection", bp => {
                 bp.SetName("Archdevils");
                 bp.SetDescription("Archdevils are the nine major devils who rule the nine layers of Hell. They are demigods " +
                     "who posses god-like powers (such as the ability to grant spells to their worshipers), but are less " +
@@ -120,8 +115,7 @@ namespace ExpandedContent.Tweaks.Deities
                 bp.Group = FeatureGroup.Deities;
             });
             var EmpyrealLordsIcon = AssetLoader.LoadInternal("Deities", "Icon_EmpyrealLords.jpg");
-            var EmpyrealLordSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("EmpyrealLordSelection", bp =>
-            {
+            var EmpyrealLordSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("EmpyrealLordSelection", bp => {
                 bp.SetName("Empyreal Lords");
                 bp.SetDescription("Empyreal Lords, or the Lords of the Empyrean, are unique outsiders who have transcended their original " +
                     "forms and have acquired a small spark of divinity, becoming demigods. They guide mortals on the various paths to " +
@@ -131,14 +125,13 @@ namespace ExpandedContent.Tweaks.Deities
                 bp.m_AllFeatures = new BlueprintFeatureReference[] {
                 ArsheaFeature.ToReference<BlueprintFeatureReference>(),
                 RagathielFeature.ToReference<BlueprintFeatureReference>(),
-                PuluraFeature.ToReference<BlueprintFeatureReference>()};
+                PuluraFeature.ToReference<BlueprintFeatureReference>() };
                 bp.IsClassFeature = true;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
                 bp.Group = FeatureGroup.Deities;
             });
             var DeitiesSelectionIcon = AssetLoader.LoadInternal("Deities", "Icon_DeitiesSelection.jpg");
-            var DeitiesSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("DeitiesSelection", bp =>
-            {
+            var DeitiesSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("DeitiesSelection", bp => {
                 bp.SetName("Gods and Goddesses");
                 bp.SetDescription("A deity, also known as a god or goddess, is a being or force of incredible power capable " +
                     "of granting its power to mortal beings through divine magic. These are the only beings that can claim full Divinity. " +
@@ -146,7 +139,6 @@ namespace ExpandedContent.Tweaks.Deities
                     "several domains, and a plane (typically an Outer Sphere plane).");
                 bp.m_Icon = DeitiesSelectionIcon;
                 bp.m_AllFeatures = new BlueprintFeatureReference[] {
-                MilaniFeature.ToReference<BlueprintFeatureReference>(),
                 IomedaeFeature.ToReference<BlueprintFeatureReference>(),
                 AsmodeusFeature.ToReference<BlueprintFeatureReference>(),
                 GorumFeature.ToReference<BlueprintFeatureReference>(),
@@ -168,29 +160,26 @@ namespace ExpandedContent.Tweaks.Deities
                 NethysFeature.ToReference<BlueprintFeatureReference>(),
                 ErastilFeature.ToReference<BlueprintFeatureReference>(),
                 LichDeityFeature.ToReference<BlueprintFeatureReference>(),
+                MilaniFeature.ToReference<BlueprintFeatureReference>()
                 };
                 bp.IsClassFeature = true;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
                 bp.Group = FeatureGroup.Deities;
             });
             var DragonDeityIcon = AssetLoader.LoadInternal("Deities", "Icon_DragonDeities.jpg");
-            var DraconicDeitySelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("DraconicDeitySelection", bp =>
-            {
+            var DraconicDeitySelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("DraconicDeitySelection", bp => {
                 bp.SetName("Draconic Deities");
                 bp.SetDescription("In accordance with Draconic Lore, at the dawn of time there flowed two waters, fresh and salt, which became Apsu and Tiamat, " +
                     "parents of the first gods. However, their eldest son Dahak came to Hell to rampage, then killed his siblings, " +
                     "whose shattered remains fell into the Material Plane and became the first metallic dragons.");
                 bp.m_Icon = DragonDeityIcon;
-                bp.m_AllFeatures = new BlueprintFeatureReference[] {
-                    ApsuFeature.ToReference<BlueprintFeatureReference>()
-                };
+                bp.m_AllFeatures = new BlueprintFeatureReference[] { ApsuFeature.ToReference<BlueprintFeatureReference>() };
                 bp.IsClassFeature = true;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
                 bp.Group = FeatureGroup.Deities;
             });
             var PhilosophiesIcon = AssetLoader.LoadInternal("Deities", "Icon_Philosophies.jpg");
-            var PhilosophiesSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("PhilosophiesSelection", bp =>
-            {
+            var PhilosophiesSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("PhilosophiesSelection", bp => {
                 bp.SetName("Philosophies");
                 bp.SetDescription("Philosophies of Golarion differ from religions in that they are teachings and ways of " +
                     "thinking that are propounded by a mortal founder who, usually, does not become a deity. By assenting to a " +
@@ -207,8 +196,7 @@ namespace ExpandedContent.Tweaks.Deities
                 bp.Group = FeatureGroup.Deities;
             });
             var PantheonIcon = AssetLoader.LoadInternal("Deities", "Icon_Pantheon.jpg");
-            var PantheonSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("PantheonSelection", bp =>
-            {
+            var PantheonSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("PantheonSelection", bp => {
                 bp.SetName("Pantheons");
                 bp.SetDescription("A pantheon is a group of related gods worshipped either individually or together. " +
                     "Most pantheons are associated with a specific ancestry or geopolitical region, but rarely, a pantheon " +
@@ -244,31 +232,23 @@ namespace ExpandedContent.Tweaks.Deities
             DeitySelection.Groups = new FeatureGroup[] { FeatureGroup.Deities };
             DeitySelection.Group = FeatureGroup.Deities;
 
-
-
-
             PaladinClass.RemoveComponents<PrerequisiteFeaturesFromList>();
-            PaladinClass.AddComponent<PrerequisiteFeaturesFromList>(c =>
-            {
-                c.m_Features = new BlueprintFeatureReference[11] { ArsheaFeature.ToReference<BlueprintFeatureReference>(),
-                ErastilFeature.ToReference<BlueprintFeatureReference>(),
-                IroriFeature.ToReference<BlueprintFeatureReference>(),
-                IomedaeFeature.ToReference<BlueprintFeatureReference>(),
-                ToragFeature.ToReference<BlueprintFeatureReference>(),
-                ShelynFeature.ToReference<BlueprintFeatureReference>(),
-                SarenraeFeature.ToReference<BlueprintFeatureReference>(),
-                AbadarFeature.ToReference<BlueprintFeatureReference>(),
-                ApsuFeature.ToReference<BlueprintFeatureReference>(),
-                RagathielFeature.ToReference<BlueprintFeatureReference>(),
-                MilaniFeature.ToReference<BlueprintFeatureReference>()};
+            PaladinClass.AddComponent<PrerequisiteFeaturesFromList>(c => {
+                c.m_Features = new BlueprintFeatureReference[] {
+                    IomedaeFeature.ToReference<BlueprintFeatureReference>(),
+                    MilaniFeature.ToReference<BlueprintFeatureReference>(),
+                    IroriFeature.ToReference<BlueprintFeatureReference>(),
+                    ToragFeature.ToReference<BlueprintFeatureReference>(),
+                    ShelynFeature.ToReference<BlueprintFeatureReference>(),
+                    SarenraeFeature.ToReference<BlueprintFeatureReference>(),
+                    ErastilFeature.ToReference<BlueprintFeatureReference>(),
+                    ArsheaFeature.ToReference<BlueprintFeatureReference>(),
+                    RagathielFeature.ToReference<BlueprintFeatureReference>(),
+                    ApsuFeature.ToReference<BlueprintFeatureReference>() };
             });
         }
     }
 }
-
-
-
-
 
 
 

@@ -160,11 +160,28 @@
     "Settings": {
       "Oathbreaker": {
         "Enabled": true,
-        "Homebrew": false,
+        "Homebrew": true,
         "Description": "Adds a modified version of the Vindictive Bastard archetype as a full class."
+      },
+      "Dread Knight": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds the Antipaladin as a class, renamed and modified slightly to fit the campaign setting."
+      }
+    },
+    "IsExpanded": false
+  },
+  "Backgrounds": {
+    "DisableAll": false,
+    "Settings": {
+      "Archduke of Cheliax": {
+        "Enabled": true,
+        "Homebrew": true,
+        "Description": "[Request, not tuned for balance] The highest rank of the standard nobility in Cheliax are the Archdukes."
       }
     }
-  }
+  },
+  "IsExpanded": false
 
-  
+
 }

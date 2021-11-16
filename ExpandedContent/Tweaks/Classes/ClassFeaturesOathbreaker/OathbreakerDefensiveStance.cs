@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExpandedContent.Tweaks.Classes.ClassFeatures {
+namespace ExpandedContent.Tweaks.Classes.ClassFeaturesOathbreaker {
     internal class OathbreakerDefensiveStance {
 
 

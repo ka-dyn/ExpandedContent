@@ -23,7 +23,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExpandedContent.Tweaks.Classes.ClassFeatures
+namespace ExpandedContent.Tweaks.Classes.ClassFeaturesOathbreaker
 {
     internal class AuraOfSelfRighteousness
     {
@@ -44,7 +44,7 @@ namespace ExpandedContent.Tweaks.Classes.ClassFeatures
                 bp.m_Icon = AOSRIcon;
                 bp.AddComponent<SavingThrowBonusAgainstDescriptor>(c => {
                     c.m_DisablingFeature = null;
-                    c.SpellDescriptor = Compulsion;
+                    c.SpellDescriptor = SpellDescriptor.Compulsion;
                     c.ModifierDescriptor = Kingmaker.Enums.ModifierDescriptor.Morale;
                     c.Value = 4;
                 });

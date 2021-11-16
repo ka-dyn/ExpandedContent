@@ -37,7 +37,7 @@ namespace ExpandedContent.Tweaks
                 RacialArchetypes.WildlandShaman.AllowWildlandShamanArchetype();
                 RacialArchetypes.PhantasmalMage.AllowPhantasmalMageArchetype();
 
-
+                Backgrounds.ArchdukeOfCheliax.AddBackgroundArchdukeOfCheliax();
                 
                 
 

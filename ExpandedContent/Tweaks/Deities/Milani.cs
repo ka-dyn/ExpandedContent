@@ -52,7 +52,7 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintArchetype PriestOfBalance = Resources.GetBlueprint<BlueprintArchetype>("a4560e3fb5d247d68fb1a2738fcc0855");
             var MilaniIcon = AssetLoader.LoadInternal("Deities", "Icon_Milani.jpg");
             var MilaniFeature = Helpers.CreateBlueprint<BlueprintFeature>("MilaniFeature", (bp => {
-                
+
                 bp.SetName("Milani");
                 bp.SetDescription("\n<b>Titles</b>: The Everbloom   " +
                 "\nRealm(s): Refuge of the Red Rose, Axis/ Milani's Garden, Elysium   " +
@@ -78,7 +78,7 @@ namespace ExpandedContent.Tweaks.Deities {
                 "sits near the center of her former patron's realm. From here she gives aid to all those fighting oppression and evil, strives to mitigate " +
                 "the institutionalised inequality in Axis, and seeks to relocate the downtrodden to " +
                 "friendlier places.");
-                
+
                 bp.m_Icon = MilaniIcon;
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;
@@ -144,27 +144,32 @@ namespace ExpandedContent.Tweaks.Deities {
                     c.m_Facts = new BlueprintUnitFactReference[1] { MilaniSacredWeaponFeature.ToReference<BlueprintUnitFactReference>() };
                 });
             }));
-            
-            
-
-
-
-
-
-
-
-
-
-
-
-
 
         }
-
-        }
-
     }
+}
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

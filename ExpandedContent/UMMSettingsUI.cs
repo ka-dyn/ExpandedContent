@@ -38,6 +38,8 @@ namespace ExpandedContent {
                 SetttingUI.SettingGroup("Archdevils", TabLevel, AddedContent.Archdevils);
                 SetttingUI.SettingGroup("DemonLords", TabLevel, AddedContent.DemonLords);
                 SetttingUI.SettingGroup("Classes", TabLevel, AddedContent.Classes);
+                SetttingUI.SettingGroup("Backgrounds", TabLevel, AddedContent.Backgrounds);
+
 
 
 

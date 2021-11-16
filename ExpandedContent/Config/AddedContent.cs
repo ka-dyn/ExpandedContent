@@ -7,6 +7,7 @@ namespace ExpandedContent.Config {
         public SettingGroup Archdevils = new SettingGroup();
         public SettingGroup DemonLords = new SettingGroup();
         public SettingGroup Classes = new SettingGroup();
+        public SettingGroup Backgrounds = new SettingGroup();
         
         
 
@@ -21,6 +22,7 @@ namespace ExpandedContent.Config {
             Archdevils.LoadSettingGroup (loadedSettings.Archdevils, NewSettingsOffByDefault);
             DemonLords.LoadSettingGroup (loadedSettings.DemonLords, NewSettingsOffByDefault);
             Classes.LoadSettingGroup(loadedSettings.Classes, NewSettingsOffByDefault);
+            Backgrounds.LoadSettingGroup(loadedSettings.Backgrounds, NewSettingsOffByDefault);
 
         }
     }
