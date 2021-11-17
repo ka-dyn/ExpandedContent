@@ -44,6 +44,7 @@ namespace ExpandedContent.Tweaks.Classes.ClassFeaturesDreadKnight {
         private static readonly BlueprintFeature SelectiveChannel = Resources.GetBlueprint<BlueprintFeature>("fd30c69417b434d47b6b03b9c1f568ff");
         private static readonly BlueprintFeature ExtraChannel = Resources.GetBlueprint<BlueprintFeature>("cd9f19775bd9d3343a31a065e93f0c47");
         public static void AddDKChannelNegativeEnery() {
+            var TouchOfProfaneCorruptionResource = Resources.GetModBlueprint<BlueprintAbilityResource>("TouchOfProfaneCorruptionResource");
             var DreadKnightClass = Resources.GetModBlueprint<BlueprintCharacterClass>("DreadKnightClass");
             var NegativeEnergyAffinity = Resources.GetBlueprint<BlueprintFeature>("d5ee498e19722854198439629c1841a5");
             var DreadKnightChannelNegativeEnergyAbility = Helpers.CreateBlueprint<BlueprintAbility>("DreadKnightChannelNegativeEnergyAbility", bp => {
@@ -52,6 +53,9 @@ namespace ExpandedContent.Tweaks.Classes.ClassFeaturesDreadKnight {
                     "inflicted is equal to 1d6 points of damage plus 1d6 points of damage for every two Dread Knight levels beyond 1st (2d6 at 3rd, 3d6 at 5th, and so on). " +
                     "Creatures that take damage from channeled energy receive a Will save to halve the damage. " +
                     "The DC of this save is equal to 10 + 1/2 the Dread Knight's level + the Dread Knight's Charisma modifier.");
+                bp.m_DescriptionShort = Helpers.CreateString("$DreadKnightChannelNegativeEnergyAbility.DescriptionShort", "Channeling negative energy causes a burst that damages every creature in a 30-foot radius centered on the Dread Knight. The amount of damage " +
+                    "inflicted is equal to 1d6 points of damage plus 1d6 points of damage for every two Dread Knight levels beyond 1st (2d6 at 3rd, 3d6 at 5th, and so on). " +
+                    "Creatures that take damage from channeled energy receive a Will save to halve the damage.");
                 bp.m_Icon = ChannelNegativeEnergy.Icon;
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
@@ -66,7 +70,7 @@ namespace ExpandedContent.Tweaks.Classes.ClassFeaturesDreadKnight {
                 bp.ActionType = UnitCommand.CommandType.Standard;
                 bp.ResourceAssetIds = ChannelNegativeEnergy.ResourceAssetIds;
                 bp.AddComponent<AbilityResourceLogic>(c => {
-                    c.m_RequiredResource = ChannelEnergyResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_RequiredResource = TouchOfProfaneCorruptionResource.ToReference<BlueprintAbilityResourceReference>();
                     c.m_IsSpendResource = true;
                     c.Amount = 2;
                     c.ResourceCostIncreasingFacts = new List<BlueprintUnitFactReference>();
@@ -235,6 +239,9 @@ namespace ExpandedContent.Tweaks.Classes.ClassFeaturesDreadKnight {
                 bp.SetDescription("When a Dread Knight reaches 4th level, he gains the supernatural ability to channel negative " +
                     "energy like a cleric. Using this ability consumes two uses of his touch of corruption ability. A Dread Knight " +
                     "uses his level as his effective cleric level when channeling negative energy. This is a Charisma-based ability..");
+                bp.m_DescriptionShort = Helpers.CreateString("$DreadKnightChannelNegativeEnergyFeature.DescriptionShort", "Channeling negative energy causes a burst that damages every creature in a 30-foot radius centered on the Dread Knight. The amount of damage " +
+                    "inflicted is equal to 1d6 points of damage plus 1d6 points of damage for every two Dread Knight levels beyond 1st (2d6 at 3rd, 3d6 at 5th, and so on). " +
+                    "Creatures that take damage from channeled energy receive a Will save to halve the damage.");
                 bp.m_Icon = ChannelNegativeEnergy.Icon;
                 bp.Ranks = 1;
                 bp.Groups = new FeatureGroup[0];

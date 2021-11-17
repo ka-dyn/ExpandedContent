@@ -200,6 +200,7 @@
     <Compile Include="Tweaks\Classes\ClassFeaturesDreadKnight\AuraOfAbsolution.cs" />
     <Compile Include="Tweaks\Classes\ClassFeaturesDreadKnight\DKChannelNegativeEnergy.cs" />
     <Compile Include="Tweaks\Classes\ClassFeaturesDreadKnight\Cruelties.cs" />
+    <Compile Include="Tweaks\Classes\ClassFeaturesDreadKnight\DreadKnightSpellbook.cs" />
     <Compile Include="Tweaks\Classes\ClassFeaturesDreadKnight\ProfaneBoon.cs" />
     <Compile Include="Tweaks\Classes\ClassFeaturesDreadKnight\PlagueBringer.cs" />
     <Compile Include="Tweaks\Classes\ClassFeaturesDreadKnight\ProfaneChampion.cs" />
@@ -436,6 +437,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_UnholyRes.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_Vicious.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_Vorpal.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

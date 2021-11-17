@@ -130,7 +130,7 @@ namespace ExpandedContent.Tweaks.Classes.ClassFeaturesDreadKnight {
             var SinfulAbsolutionAbility = Helpers.CreateBlueprint<BlueprintAbility>("SinfulAbsolutionAbility", bp => {
                 bp.SetName("Sinful Absolution");
                 bp.SetDescription("Once per day, a Dread Knight can reach out to the profane lords to grant sinful absolution to the forces arrayed against them. As a swift action, " +
-                    "the Dread Knight chooses one target within sight to crush. The Dread Knight adds their Charisma bonus (if any) on " +
+                    "the Dread Knight chooses one enemy within sight to crush. The Dread Knight adds their Charisma bonus (if any) on " +
                     "their attack rolls and adds their Dread Knight level on all damage rolls made against the target of their unholy smite. Regardless of the target, sinful absolution " +
                     "attacks automatically bypass any DR the creature might possess. In addition, while Sinful Absolution is in effect, the Dread Knight gains a deflection " +
                     "bonus equal to their Charisma modifier(if any) to their AC against attacks made by the target of sinful absolution. The sinful absolution effect remains until the " +

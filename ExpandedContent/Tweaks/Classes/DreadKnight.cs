@@ -36,7 +36,7 @@ namespace ExpandedContent.Tweaks.Classes {
         public static void Postfix() {
             if (DreadKnightClassAdder.Initialized) return;
             DreadKnightClassAdder.Initialized = true;
-
+            if (ModSettings.AddedContent.Classes.IsDisabled("Oathbreaker")) { return; }
 
             Utilities.AlignmentTemplates.AddFiendishTemplate();
             Utilities.Cavalier.AddCavalierFeatures();
@@ -59,7 +59,7 @@ namespace ExpandedContent.Tweaks.Classes {
             Classes.ClassFeaturesDreadKnight.ProfaneBoon.AddProfaneBoon();
 
 
-
+            Classes.ClassFeaturesDreadKnight.DreadKnightSpellbook.AddDreadKnightSpellbook();
             DreadKnightClassAdder.AddDreadKnightProgression();
             DreadKnightClassAdder.AddDreadKnightClass();
 
@@ -71,13 +71,15 @@ namespace ExpandedContent.Tweaks.Classes {
         }
 
         public static void AddDreadKnightClass() {
-            if (ModSettings.AddedContent.Classes.IsDisabled("Oathbreaker")) { return; }
+
+            var DreadKnightSpellbook = Resources.GetModBlueprint<BlueprintSpellbook>("DreadKnightSpellbook");
+            var WeaponBondProgression = Resources.GetBlueprint<BlueprintProgression>("e08a817f475c8794aa56fdd904f43a57");
             var WarpriestSpellbook = Resources.GetBlueprint<BlueprintSpellbook>("7d7d51be2948d2544b3c2e1596fd7603");
             var ProfaneBoonSelection = Resources.GetModBlueprint<BlueprintFeatureSelection>("ProfaneBoonSelection");
             var DreadKnightAnimalCompanionProgression = Resources.GetModBlueprint<BlueprintProgression>("DreadKnightAnimalCompanionProgression");
             var FiendishWeaponBondProgression = Resources.GetModBlueprint<BlueprintProgression>("FiendishWeaponBondProgression");
             var DreadKnightChannelNegativeEnergyFeature = Resources.GetModBlueprint<BlueprintFeature>("DreadKnightChannelNegativeEnergyFeature");
-            var DreadKnightSpellbook = Resources.GetModBlueprint<BlueprintSpellbook>("DreadKnightSpellbook");
+      
             var CrueltySelection1 = Resources.GetModBlueprint<BlueprintFeatureSelection>("CrueltySelection1");
             var CrueltySelection2 = Resources.GetModBlueprint<BlueprintFeatureSelection>("CrueltySelection2");
             var CrueltySelection3 = Resources.GetModBlueprint<BlueprintFeatureSelection>("CrueltySelection3");
@@ -117,13 +119,13 @@ namespace ExpandedContent.Tweaks.Classes {
                 bp.m_Difficulty = PaladinClass.Difficulty;
                 bp.RecommendedAttributes = PaladinClass.RecommendedAttributes;
                 bp.NotRecommendedAttributes = PaladinClass.NotRecommendedAttributes;
-                bp.m_Spellbook = WarpriestSpellbook.ToReference<BlueprintSpellbookReference>();
+                bp.m_Spellbook = DreadKnightSpellbook.ToReference<BlueprintSpellbookReference>();
                 bp.m_EquipmentEntities = PaladinClass.m_EquipmentEntities;
                 bp.m_StartingItems = PaladinClass.StartingItems;
                 bp.m_SignatureAbilities = new BlueprintFeatureReference[5]
                 {
                     SinfulAbsolutionFeature.ToReference<BlueprintFeatureReference>(),
-                    CrueltySelection1.ToReference<BlueprintFeatureReference>(),
+                    CrueltySelection4.ToReference<BlueprintFeatureReference>(),
                     TouchOfProfaneCorruptionFeature.ToReference<BlueprintFeatureReference>(),
                     DreadKnightChannelNegativeEnergyFeature.ToReference<BlueprintFeatureReference>(),
                     ProfaneBoonSelection.ToReference<BlueprintFeatureReference>(),
@@ -134,7 +136,7 @@ namespace ExpandedContent.Tweaks.Classes {
                 bp.SkillPoints = 3;
                 bp.ClassSkills = new StatType[4] {
 
-                StatType.SkillKnowledgeWorld, StatType.SkillLoreNature, StatType.SkillKnowledgeArcana, StatType.SkillLoreReligion
+                StatType.SkillKnowledgeWorld, StatType.SkillMobility, StatType.SkillAthletics, StatType.SkillLoreReligion
                 };
                 bp.IsDivineCaster = true;
                 bp.IsArcaneCaster = false;
@@ -166,7 +168,18 @@ namespace ExpandedContent.Tweaks.Classes {
 
 
 
-
+            var WeaponBondProgression = Resources.GetBlueprint<BlueprintProgression>("e08a817f475c8794aa56fdd904f43a57");
+            WeaponBondProgression.m_DisplayName = Helpers.CreateString("$WeaponBondSwitchAbility.DisplayName", "Divine/Profane Weapon Bond");
+            WeaponBondProgression.m_Description = Helpers.CreateString("$WeaponBondSwitchAbility.Description", "Upon reaching 5th level, a paladin/dreadknight forms a divine/profane bond with her weapon. " +
+                "As a {g|Encyclopedia:Standard_Actions}standard action{/g}, she can call upon the aid of a celestial/fiendish spirit for 1 minute per " +
+                "paladin/dreadknight level.\nAt 5th level, this spirit grants the weapon a +1 enhancement {g|Encyclopedia:Bonus}bonus{/g}. For every three " +
+                "levels beyond 5th, the weapon gains another +1 enhancement bonus, to a maximum of +6 at 20th level. These bonuses can be added " +
+                "to the weapon, stacking with existing weapon bonuses to a maximum of +5.\nAlternatively, they can be used to add any of the " +
+                "following weapon properties: axiomatic/anarchic, brilliant energy/vorpal, defending, disruption/vicious, flaming, flaming burst, holy/unholy, keen, " +
+                "and {g|Encyclopedia:Speed}speed{/g} depending on class. Adding these properties consumes an amount of bonus equal to the " +
+                "property's cost. These bonuses are added to any properties the weapon already has, but duplicate abilities do not " +
+                "stack.\nA paladin/dreadknight can use this ability once per day at 5th level, and one additional time per day for every four " +
+                "levels beyond 5th, to a total of four times per day at 17th level.");
             var ProfaneWeaponIcon = AssetLoader.LoadInternal("Skills", "Icon_ProfaneWeapon.png");
             var ProfaneChampion = Resources.GetModBlueprint<BlueprintFeature>("ProfaneChampion");
             var AuraOfDepravityFeature = Resources.GetModBlueprint<BlueprintFeature>("AuraOfDepravityFeature");
@@ -204,10 +217,14 @@ namespace ExpandedContent.Tweaks.Classes {
 
             var ProfaneBoonSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("ProfaneBoonSelection", bp => {
                 bp.SetName("Profane Boon");
-                bp.SetDescription("Upon reaching 5th level, an antipaladin receives a boon from his dark patrons. This boon can take one of two forms. Once the form is chosen, it cannot be changed. " +
-                    "The first type of bond allows the antipaladin to enhance his weapon as a standard action by calling upon the aid of a fiendish spirit for 1 " +
-                    "minute per antipaladin level. When called, the spirit causes the weapon to shed unholy light as a torch. At 5th level, this spirit grants the " +
+                bp.SetDescription("Upon reaching 5th level, a dread knight receives a boon from their dark patrons. This boon can take one of two forms. Once the form is chosen, it cannot be changed. " +
+                    "The first type of bond allows the dread knight to enhance their weapon as a standard action by calling upon the aid of a fiendish spirit for 1 " +
+                    "minute per dread knight level. When called, the spirit causes the weapon to shed unholy light as a torch. At 5th level, this spirit grants the " +
                     "weapon a + 1 enhancement bonus.For every three levels beyond 5th, the weapon gains another + 1 enhancement bonus, to a maximum of + 6 at 20th level. ");
+                bp.m_DescriptionShort = Helpers.CreateString("$ProfaneBoonSelection.DescriptionShort", "Upon reaching 5th level, a dread knight receives a boon from their dark patrons. This boon can take one of two forms. Once the form is chosen, it cannot be changed. " +
+                    "The first type of bond allows the dread knight to enhance their weapon as a standard action by calling upon the aid of a fiendish spirit for 1 " +
+                    "minute per dread knight level. When called, the spirit causes the weapon to shed unholy light as a torch. At 5th level, this spirit grants the " +
+                    "weapon a + 1 enhancement bonus.For every three levels beyond 5th, the weapon gains another + 1 enhancement bonus, to a maximum of + 6 at 20th level.");
                 bp.m_Icon = ProfaneWeaponIcon;
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;

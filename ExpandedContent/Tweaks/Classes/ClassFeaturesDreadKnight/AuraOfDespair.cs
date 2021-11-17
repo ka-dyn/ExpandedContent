@@ -42,6 +42,7 @@ namespace ExpandedContent.Tweaks.Classes.ClassFeaturesDreadKnight {
                     c.Descriptor = Kingmaker.Enums.ModifierDescriptor.Penalty;
                     c.Value = -2;
                 });
+               
             });
 
 

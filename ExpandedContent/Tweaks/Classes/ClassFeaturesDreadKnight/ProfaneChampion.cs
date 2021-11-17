@@ -30,7 +30,7 @@ namespace ExpandedContent.Tweaks.Classes.ClassFeaturesDreadKnight {
             var ProfaneChampion = Helpers.CreateBlueprint<BlueprintFeature>("ProfaneChampion", bp => {
                 bp.SetName("Profane Champion");
                 bp.SetDescription("At 20th level, a Dread Knight becomes a conduit for the might of dark powers. Her DR increases to 10/good. " +
-                    "\nThe Dread Knight gains an additional 3 uses of sinful absolution and touch of corruption. In addition, whenever she channels negative energy or uses " +
+                    "\nThe Dread Knight gains an additional 3 uses of Profane Corruption. In addition, whenever she channels negative energy or uses " +
                     "touch of corruption to damage a creature, she deals the maximum possible amount. ");  
                 bp.m_Icon = ProfaneChampIcon;
                 bp.Ranks = 1;

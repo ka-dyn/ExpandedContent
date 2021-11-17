@@ -139,6 +139,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     "several domains, and a plane (typically an Outer Sphere plane).");
                 bp.m_Icon = DeitiesSelectionIcon;
                 bp.m_AllFeatures = new BlueprintFeatureReference[] {
+                AbadarFeature.ToReference<BlueprintFeatureReference>(),
                 IomedaeFeature.ToReference<BlueprintFeatureReference>(),
                 AsmodeusFeature.ToReference<BlueprintFeatureReference>(),
                 GorumFeature.ToReference<BlueprintFeatureReference>(),
