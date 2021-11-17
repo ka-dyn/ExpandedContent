@@ -36,7 +36,7 @@ namespace ExpandedContent.Tweaks.Classes {
         public static void Postfix() {
             if (DreadKnightClassAdder.Initialized) return;
             DreadKnightClassAdder.Initialized = true;
-            if (ModSettings.AddedContent.Classes.IsDisabled("Oathbreaker")) { return; }
+            if (ModSettings.AddedContent.Classes.IsDisabled("Dread Knight")) { return; }
 
             Utilities.AlignmentTemplates.AddFiendishTemplate();
             Utilities.Cavalier.AddCavalierFeatures();
