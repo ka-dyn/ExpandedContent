@@ -50,6 +50,7 @@ namespace ExpandedContent.Tweaks.Classes.ClassFeaturesDreadKnight {
                 bp.m_CharacterClass = DreadKnightClass.ToReference<BlueprintCharacterClassReference>();
                 bp.m_Overrides = BloodragerClass.Spellbook.m_Overrides;
                 bp.IsArcane = false;
+                bp.Spontaneous = true;
                 
                 SpellTools.Spellbook.AllSpellbooks.Add(bp);
             });

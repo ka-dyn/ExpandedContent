@@ -106,23 +106,12 @@ namespace ExpandedContent.Tweaks.Classes.ClassFeaturesDreadKnight {
                 bp.m_Min = 1;
                 bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
                     BaseValue = 1,
-
                     IncreasedByStat = false,
-                    m_Class = new BlueprintCharacterClassReference[1] {
-                        DreadKnightClass.ToReference<BlueprintCharacterClassReference>() },
-                    m_ClassDiv = new BlueprintCharacterClassReference[1] {
-                        DreadKnightClass.ToReference<BlueprintCharacterClassReference>() },
-                    m_Archetypes = new BlueprintArchetypeReference[0],
-                    m_ArchetypesDiv = new BlueprintArchetypeReference[0],
-
-                    IncreasedByLevelStartPlusDivStep = true,
-                    StartingLevel = 4,
-                    LevelStep = 3,
-                    PerStepIncrease = 1,
-                    StartingIncrease = 1
+                    IncreasedByLevel = false,
+                    
 
                 };
-                bp.m_Max = 10;
+                bp.m_Max = 10;                
 
             });
             
@@ -251,7 +240,7 @@ namespace ExpandedContent.Tweaks.Classes.ClassFeaturesDreadKnight {
 
                 bp.AddComponent<AddAbilityResources>(c => {
                     c.m_Resource = SinfulAbsolutionResource.ToReference<BlueprintAbilityResourceReference>();
-                });
+                });                
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] {
                         SinfulAbsolutionAbility.ToReference<BlueprintUnitFactReference>(),

@@ -247,6 +247,10 @@ namespace ExpandedContent.Tweaks.Deities {
                     RagathielFeature.ToReference<BlueprintFeatureReference>(),
                     ApsuFeature.ToReference<BlueprintFeatureReference>() };
             });
+            var Seelah = Resources.GetBlueprint<BlueprintUnit>("54be53f0b35bf3c4592a97ae335fe765");
+            Seelah.AddComponent<AddFacts>(c => {
+                c.m_Facts = new BlueprintUnitFactReference[] { IomedaeFeature.ToReference<BlueprintUnitFactReference>() };
+            });
         }
     }
 }

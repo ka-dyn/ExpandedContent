@@ -93,8 +93,8 @@ namespace ExpandedContent.Tweaks.Classes.ClassFeaturesDreadKnight {
                 });
                 bp.AddContextRankConfig(c => {
                     c.m_Type = AbilityRankType.DamageDice;
-                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
-                    c.m_Class = new BlueprintCharacterClassReference[] { DreadKnightClass.ToReference<BlueprintCharacterClassReference>() };
+                    c.m_BaseValueType = ContextRankBaseValueType.CharacterLevel;
+                 
                     c.m_Progression = ContextRankProgression.DelayedStartPlusDivStep;
                     c.m_StartLevel = 1;
                     c.m_StepLevel = 2;

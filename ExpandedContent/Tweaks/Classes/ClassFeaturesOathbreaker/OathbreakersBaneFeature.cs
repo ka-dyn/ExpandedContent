@@ -32,7 +32,7 @@ namespace ExpandedContent.Tweaks.Classes.ClassFeaturesOathbreaker {
     internal class OathbreakersBaneFeature {
 
         public static void AddOathbreakersBaneFeature() {
-
+            var HellsDecreeAbilityMagicBuff = Resources.GetBlueprint<BlueprintBuff>("c695587d5307d234cb34f62750ff7616");
             var OBBaneIcon = AssetLoader.LoadInternal("Skills", "Icon_OBBane.png");
             var SmiteEvilBuff = Resources.GetBlueprint<BlueprintBuff>("b6570b8cbb32eaf4ca8255d0ec3310b0");
             var OathbreakersBaneBuff = Helpers.CreateBlueprint<BlueprintBuff>("OathbreakersBaneBuff", bp => {
@@ -47,8 +47,8 @@ namespace ExpandedContent.Tweaks.Classes.ClassFeaturesOathbreaker {
                 bp.IsClassFeature = true;
                 bp.Stacking = StackingType.Stack;
                 bp.m_Icon = OBBaneIcon;
-                bp.FxOnStart = SmiteEvilBuff.FxOnStart;
-                bp.FxOnRemove = SmiteEvilBuff.FxOnRemove;
+                bp.FxOnStart = HellsDecreeAbilityMagicBuff.FxOnStart;
+                bp.FxOnRemove = HellsDecreeAbilityMagicBuff.FxOnRemove;
                 bp.AddComponent<AttackBonusAgainstTarget>(c => {
                     c.Descriptor = ModifierDescriptor.UntypedStackable;
                     c.Value = new ContextValue() {
@@ -104,6 +104,7 @@ namespace ExpandedContent.Tweaks.Classes.ClassFeaturesOathbreaker {
                 bp.m_Max = 10;
 
             });
+            var FiendishSmiteGoodAbility = Resources.GetBlueprint<BlueprintAbility>("478cf0e6c5f3a4142835faeae3bd3e04");
             var SmiteEvilAbility = Resources.GetBlueprint<BlueprintAbility>("7bb9eb2042e67bf489ccd1374423cdec");
             var OathbreakersBaneAbility = Helpers.CreateBlueprint<BlueprintAbility>("OathbreakersBaneAbility", bp => {
                 bp.SetName("Oathbreaker's Bane");
@@ -193,10 +194,10 @@ namespace ExpandedContent.Tweaks.Classes.ClassFeaturesOathbreaker {
                 }));
 
                 bp.AddComponent<AbilitySpawnFx>(c => {
-                    c.PrefabLink = SmiteEvilAbility.GetComponent<AbilitySpawnFx>().PrefabLink;
-                    c.Anchor = SmiteEvilAbility.GetComponent<AbilitySpawnFx>().Anchor;
-                    c.PositionAnchor = SmiteEvilAbility.GetComponent<AbilitySpawnFx>().PositionAnchor;
-                    c.OrientationAnchor = SmiteEvilAbility.GetComponent<AbilitySpawnFx>().OrientationAnchor;
+                    c.PrefabLink = FiendishSmiteGoodAbility.GetComponent<AbilitySpawnFx>().PrefabLink;
+                    c.Anchor = FiendishSmiteGoodAbility.GetComponent<AbilitySpawnFx>().Anchor;
+                    c.PositionAnchor = FiendishSmiteGoodAbility.GetComponent<AbilitySpawnFx>().PositionAnchor;
+                    c.OrientationAnchor = FiendishSmiteGoodAbility.GetComponent<AbilitySpawnFx>().OrientationAnchor;
                 });
                 bp.AddComponent<AbilityResourceLogic>(c => {
                     c.m_RequiredResource = OathbreakersBaneResource.ToReference<BlueprintAbilityResourceReference>();

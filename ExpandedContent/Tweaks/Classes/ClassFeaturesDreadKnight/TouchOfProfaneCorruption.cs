@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Facts;
 using Kingmaker.Blueprints.Items.Weapons;
 using Kingmaker.Designers.EventConditionActionSystem.Actions;
+using Kingmaker.Designers.EventConditionActionSystem.Evaluators;
 using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.ElementsSystem;
 using Kingmaker.EntitySystem.Stats;
@@ -14,6 +15,7 @@ using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.UnitLogic.Abilities.Components;
 using Kingmaker.UnitLogic.Abilities.Components.AreaEffects;
 using Kingmaker.UnitLogic.Abilities.Components.Base;
+using Kingmaker.UnitLogic.Abilities.Components.CasterCheckers;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.Buffs.Components;
 using Kingmaker.UnitLogic.FactLogic;
@@ -37,7 +39,7 @@ namespace ExpandedContent.Tweaks.Classes.ClassFeaturesDreadKnight {
         public static void AddTouchOfProfaneCorruption() {
             var TOCIcon = AssetLoader.LoadInternal("Skills", "Icon_TouchCorrupt.png");
             var ChannelTOCIcon = AssetLoader.LoadInternal("Skills", "Icon_ChannelTOC.png");
-            var BestowCurseFeebleBody = Resources.GetBlueprint<BlueprintAbility>("0c853a9f35a7bf749821ebe5d06fade7");
+            var AbsoluteDeathAbility = Resources.GetBlueprint<BlueprintAbility>("7d721be6d74f07f4d952ee8d6f8f44a0");
             var DreadKnightClass = Resources.GetModBlueprint<BlueprintCharacterClass>("DreadKnightClass");
             var TouchOfProfaneCorruptionAbilityFatigued = Resources.GetModBlueprint<BlueprintFeature>("TouchOfProfaneCorruptionAbilityFatigued");
             var TouchOfProfaneCorruptionAbilityShaken = Resources.GetModBlueprint<BlueprintFeature>("TouchOfProfaneCorruptionAbilityShaken");
@@ -91,6 +93,7 @@ namespace ExpandedContent.Tweaks.Classes.ClassFeaturesDreadKnight {
                "For example, the Extra Lay On Hands feat grants a Dread Knight 2 additional uses of the touch of corruption class feature.");
                 bp.m_Icon = TOCIcon;
                 bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Touch;
                 bp.CanTargetEnemies = true;
                 bp.CanTargetFriends = true;
                 bp.Animation = Kingmaker.Visual.Animation.Kingmaker.Actions.UnitAnimationActionCastSpell.CastAnimationStyle.Touch;
@@ -113,6 +116,10 @@ namespace ExpandedContent.Tweaks.Classes.ClassFeaturesDreadKnight {
                     c.m_StepLevel = 2;
                     c.m_Min = 1;
                     c.m_UseMin = true;
+                });
+                bp.AddComponent<AbilityDeliverTouch>(c => {
+                    c.m_TouchWeapon = TouchItem.ToReference<BlueprintItemWeaponReference>();
+
                 });
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.Actions = Helpers.CreateActionList(
@@ -160,14 +167,14 @@ namespace ExpandedContent.Tweaks.Classes.ClassFeaturesDreadKnight {
                       });
                 });
 
-                bp.AddComponent<AbilityDeliverTouch>(c => {
-                    c.m_TouchWeapon = TouchItem.ToReference<BlueprintItemWeaponReference>();
-                });
+                bp.AddComponent<AbilityEffectMiss>();
+
+
                 bp.AddComponent<AbilitySpawnFx>(c => {
-                    c.PrefabLink = BestowCurseFeebleBody.GetComponent<AbilitySpawnFx>().PrefabLink;
-                    c.Anchor = BestowCurseFeebleBody.GetComponent<AbilitySpawnFx>().Anchor;
-                    c.PositionAnchor = BestowCurseFeebleBody.GetComponent<AbilitySpawnFx>().PositionAnchor;
-                    c.OrientationAnchor = BestowCurseFeebleBody.GetComponent<AbilitySpawnFx>().OrientationAnchor;
+                    c.PrefabLink = AbsoluteDeathAbility.GetComponent<AbilitySpawnFx>().PrefabLink;
+                    c.Anchor = AbsoluteDeathAbility.GetComponent<AbilitySpawnFx>().Anchor;
+                    c.PositionAnchor = AbsoluteDeathAbility.GetComponent<AbilitySpawnFx>().PositionAnchor;
+                    c.OrientationAnchor = AbsoluteDeathAbility.GetComponent<AbilitySpawnFx>().OrientationAnchor;
                 });
 
 
@@ -177,17 +184,20 @@ namespace ExpandedContent.Tweaks.Classes.ClassFeaturesDreadKnight {
             var FiendishSmiteGoodAbility = Resources.GetBlueprint<BlueprintAbility>("478cf0e6c5f3a4142835faeae3bd3e04");
             var ChannelTouchOfProfaneCorruptionAbility = Helpers.CreateBlueprint<BlueprintAbility>("ChannelTouchOfProfaneCorruptionAbility", bp => {
                 bp.SetName("Channel Profane Corruption");
-                bp.SetDescription("Beginning at 7th level as a swift action, a Dread Knight can spend two uses of their profane corruption to " +
-                    "surround his weapon with a profane flame and deliver an attack, causing additonal unholy wounds to open, as well as applying the cruelty selected. ");
+                bp.SetDescription("Beginning at 7th level as a swift action, a Dread Knight can spend three uses of their profane corruption to " +
+                    "surround their weapon with a profane flame and deliver an attack with their weapon, causing 1d6 points of damage plus an additional " +
+                    "1d6 points of damage for every two Dread Knight levels they possesses, as well as applying the cruelty selected. ");
                 bp.m_Icon = ChannelTOCIcon;
                 bp.Type = AbilityType.Supernatural;
                 bp.Range = AbilityRange.Weapon;
+
+
                 bp.CanTargetEnemies = true;
                 bp.CanTargetFriends = true;
                 bp.ActionType = Kingmaker.UnitLogic.Commands.Base.UnitCommand.CommandType.Swift;
                 bp.LocalizedDuration = Helpers.CreateString($"{bp.name}.Duration", "Instant");
                 bp.LocalizedSavingThrow = Helpers.CreateString($"{bp.name}.SavingThrow", "None");
-                
+
                 bp.AddContextRankConfig(c => {
                     c.m_Type = Kingmaker.Enums.AbilityRankType.DamageBonus;
                     c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
@@ -197,7 +207,8 @@ namespace ExpandedContent.Tweaks.Classes.ClassFeaturesDreadKnight {
                     c.m_StepLevel = 2;
                     c.m_Min = 1;
                     c.m_UseMin = true;
-                });
+                });                           
+               
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.Actions = Helpers.CreateActionList(
                       new Conditional() {
@@ -244,7 +255,6 @@ namespace ExpandedContent.Tweaks.Classes.ClassFeaturesDreadKnight {
                       });
                 });
                 bp.AddComponent<AbilityDeliverAttackWithWeapon>();
-                
                 bp.AddComponent<AbilitySpawnFx>(c => {
                     c.PrefabLink = FiendishSmiteGoodAbility.GetComponent<AbilitySpawnFx>().PrefabLink;
                     c.Anchor = FiendishSmiteGoodAbility.GetComponent<AbilitySpawnFx>().Anchor;
@@ -254,10 +264,12 @@ namespace ExpandedContent.Tweaks.Classes.ClassFeaturesDreadKnight {
                 bp.AddComponent<AbilityResourceLogic>(c => {
                     c.m_RequiredResource = TouchOfProfaneCorruptionResource.ToReference<BlueprintAbilityResourceReference>();
                     c.m_IsSpendResource = true;
-                    c.Amount = 2;
+                    c.Amount = 3;
                     c.ResourceCostIncreasingFacts = new List<BlueprintUnitFactReference>();
                     c.ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>();
                 });
+
+
 
 
 
@@ -284,8 +296,8 @@ namespace ExpandedContent.Tweaks.Classes.ClassFeaturesDreadKnight {
 
 
             });
-
-
+            var CrueltyResource = Resources.GetModBlueprint<BlueprintUnitFact>("CrueltyResource");
+            var CrueltyFact = Resources.GetModBlueprint<BlueprintUnitFact>("CrueltyFact");
 
             var TouchOfProfaneCorruptionFeature = Helpers.CreateBlueprint<BlueprintFeature>("TouchOfProfaneCorruptionFeature", bp => {
                 bp.SetName("Profane Corruption");
@@ -302,10 +314,14 @@ namespace ExpandedContent.Tweaks.Classes.ClassFeaturesDreadKnight {
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;
                 bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[2] { TouchOfProfaneCorruptionAbility.ToReference<BlueprintUnitFactReference>(), TouchOfProfaneCorruptionFact.ToReference<BlueprintUnitFactReference>() };
+                    c.m_Facts = new BlueprintUnitFactReference[] { TouchOfProfaneCorruptionAbility.ToReference<BlueprintUnitFactReference>(), TouchOfProfaneCorruptionFact.ToReference<BlueprintUnitFactReference>(), CrueltyFact.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<IncreaseResourceAmount>(c => {
                     c.m_Resource = TouchOfProfaneCorruptionResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.Value = 1;
+                });
+                bp.AddComponent<IncreaseResourceAmount>(c => {
+                    c.m_Resource = CrueltyResource.ToReference<BlueprintAbilityResourceReference>();
                     c.Value = 1;
                 });
             });

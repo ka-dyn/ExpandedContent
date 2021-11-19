@@ -39,8 +39,7 @@ namespace ExpandedContent.Tweaks.Classes.ClassFeaturesDreadKnight {
 
                 bp.IsClassFeature = true;
                 bp.m_Icon = AODepIcon;
-                bp.AddComponent<SavingThrowBonusAgainstDescriptor>(c => {
-                    c.m_DisablingFeature = null;
+                bp.AddComponent<SavingThrowBonusAgainstDescriptor>(c => {                
                     c.SpellDescriptor = SpellDescriptor.Compulsion;
                     c.ModifierDescriptor = Kingmaker.Enums.ModifierDescriptor.Penalty;
                     c.Value = -4;
@@ -79,7 +78,7 @@ namespace ExpandedContent.Tweaks.Classes.ClassFeaturesDreadKnight {
                     c.m_AreaEffect = AuraOfDepravityArea.ToReference<BlueprintAbilityAreaEffectReference>();
                 });
             });
-
+            var SinfulAbsolutionResource = Resources.GetModBlueprint<BlueprintAbilityResource>("SinfulAbsolutionResource");
             var AuraOfDepravityFeature = Helpers.CreateBlueprint<BlueprintFeature>("AuraOfDepravityFeature", bp => {
 
                 bp.SetName("Aura of Depravity");
@@ -89,6 +88,10 @@ namespace ExpandedContent.Tweaks.Classes.ClassFeaturesDreadKnight {
                 bp.m_Icon = AODepIcon;
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;
+                bp.AddComponent<IncreaseResourceAmount>(c => {
+                    c.m_Resource = SinfulAbsolutionResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.Value = 1;
+                });
                 bp.AddComponent<BuffDescriptorImmunity>(c => {
                     c.m_IgnoreFeature = null;
                     c.m_FactToCheck = null;

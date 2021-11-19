@@ -80,7 +80,7 @@ namespace ExpandedContent.Tweaks.Classes.ClassFeaturesDreadKnight {
                 });
                 bp.AddComponent<IgnoreTargetDR>(c => {
                     c.CheckCasterFriend = true;
-                   
+
                 });
                 bp.AddComponent<UniqueBuff>();
             });
@@ -90,6 +90,7 @@ namespace ExpandedContent.Tweaks.Classes.ClassFeaturesDreadKnight {
                 bp.SetDescription("At 11th level, a Dread Knight can expend two uses of his sinful absolution ability to grant the " +
                     "ability to all allies within 10 feet, using his bonuses. Allies must use this ability " +
                     "by the start of the antipaladin’s next turn and the bonuses last for 1 minute. Using this ability is a free action.");
+                bp.LocalizedDuration = Helpers.CreateString($"{bp.name}.Duration", "Until the target of Sinful Absolution is dead");
                 bp.LocalizedSavingThrow = Helpers.CreateString($"{bp.name}.SavingThrow", "None");
                 bp.m_Icon = AOAIcon;
                 bp.Type = AbilityType.Supernatural;
@@ -99,8 +100,15 @@ namespace ExpandedContent.Tweaks.Classes.ClassFeaturesDreadKnight {
                 bp.CanTargetFriends = true;
                 bp.CanTargetSelf = false;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Point;
-                bp.ActionType = UnitCommand.CommandType.Swift;
+                bp.ActionType = UnitCommand.CommandType.Free;
                 bp.AvailableMetamagic = Metamagic.Heighten | Metamagic.Reach;
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = SinfulAbsolutionResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                    c.Amount = 2;
+                    c.ResourceCostIncreasingFacts = new List<BlueprintUnitFactReference>();
+                    c.ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>();
+                });
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.Actions = Helpers.CreateActionList(
                                 new ContextActionApplyBuff() {
@@ -160,13 +168,7 @@ namespace ExpandedContent.Tweaks.Classes.ClassFeaturesDreadKnight {
                     c.PositionAnchor = FiendishSmiteGoodAbility.GetComponent<AbilitySpawnFx>().PositionAnchor;
                     c.OrientationAnchor = FiendishSmiteGoodAbility.GetComponent<AbilitySpawnFx>().OrientationAnchor;
                 });
-                bp.AddComponent<AbilityResourceLogic>(c => {
-                    c.m_RequiredResource = SinfulAbsolutionResource.ToReference<BlueprintAbilityResourceReference>();
-                    c.m_IsSpendResource = true;
-                    c.Amount = 2;
-                    c.ResourceCostIncreasingFacts = new List<BlueprintUnitFactReference>();
-                    c.ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>();
-                });
+                
             });
             var AuraOfAbsolutionFeature = Helpers.CreateBlueprint<BlueprintFeature>("AuraOfAbsolutionFeature", bp => {
                 bp.SetName("Aura of Absolution");
@@ -176,15 +178,14 @@ namespace ExpandedContent.Tweaks.Classes.ClassFeaturesDreadKnight {
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;
                 bp.m_Icon = AOAIcon;
-                bp.AddComponent<AddAbilityResources>(c => {
-                    c.m_Resource = SinfulAbsolutionResource.ToReference<BlueprintAbilityResourceReference>();
-                });
+
+
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] {
-                        AuraOfAbsolutionAbility.ToReference<BlueprintUnitFactReference>(),
-
-                    };
+                            AuraOfAbsolutionAbility.ToReference<BlueprintUnitFactReference>(),
+                        };
                 });
+
             });
         }
     }

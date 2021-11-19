@@ -39,8 +39,7 @@ namespace ExpandedContent.Tweaks.Classes.ClassFeaturesDreadKnight {
 
                 bp.IsClassFeature = true;
                 bp.m_Icon = AOCIcon;
-                bp.AddComponent<SavingThrowBonusAgainstDescriptor>(c => {
-                    c.m_DisablingFeature = null;
+                bp.AddComponent<SavingThrowBonusAgainstDescriptor>(c => {                
                     c.SpellDescriptor = SpellDescriptor.Fear;
                     c.Value = -4;
                 });

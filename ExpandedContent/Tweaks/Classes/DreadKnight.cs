@@ -41,7 +41,7 @@ namespace ExpandedContent.Tweaks.Classes {
             Utilities.AlignmentTemplates.AddFiendishTemplate();
             Utilities.Cavalier.AddCavalierFeatures();
             Classes.ClassFeaturesDreadKnight.TouchOfProfaneCorruption.AddTouchOfProfaneCorruption();
-            Classes.ClassFeaturesDreadKnight.AuraOfAbsolution.AddAuraOfAbsolution();
+           
             Classes.ClassFeaturesDreadKnight.AuraOfCowardice.AddAuraOfCowardiceFeature();
             Classes.ClassFeaturesDreadKnight.AuraOfDepravity.AddAuraOfDepravityFeature();
             Classes.ClassFeaturesDreadKnight.AuraOfDespair.AddAuraOfDespairFeature();
@@ -50,7 +50,7 @@ namespace ExpandedContent.Tweaks.Classes {
             Classes.ClassFeaturesDreadKnight.SinfulAbsolution.AddSinfulAbsolution();
             Classes.ClassFeaturesDreadKnight.DKChannelNegativeEnergy.AddDKChannelNegativeEnery();
             Classes.ClassFeaturesDreadKnight.PlagueBringer.AddPlagueBringer();
-            
+            Classes.ClassFeaturesDreadKnight.AuraOfAbsolution.AddAuraOfAbsolution();
             Classes.ClassFeaturesDreadKnight.ProfaneChampion.AddProfaneChampion();
             Classes.ClassFeaturesDreadKnight.ProfaneResilience.AddProfaneResilience();
             
@@ -277,10 +277,19 @@ namespace ExpandedContent.Tweaks.Classes {
                  Helpers.CreateUIGroup(SinfulAbsolutionFeature, SinfulAbsolutionUse),
                  Helpers.CreateUIGroup(DreadKnightProficiencies, TouchOfProfaneCorruptionFeature, TouchOfProfaneCorruptionUse),
                  Helpers.CreateUIGroup(ProfaneResilience, AuraOfCowardiceFeature, ProfaneBoonSelection, AuraOfDespairFeature, AuraOfSinFeature, AuraOfDepravityFeature, ProfaneChampion),
-                 Helpers.CreateUIGroup(CrueltySelection1, CrueltySelection2, CrueltySelection3, CrueltySelection4),                              
+                 Helpers.CreateUIGroup(CrueltySelection1, CrueltySelection2, CrueltySelection3, CrueltySelection4),
                  Helpers.CreateUIGroup(PlagueBringer, DreadKnightChannelNegativeEnergyFeature, ChannelTouchOfProfaneCorruptionFeature, AuraOfSinFeature, AuraOfAbsolutionFeature)
 
              };
+
         }
+
+
+     
+            
+
+
+           
+        
     }
 }
