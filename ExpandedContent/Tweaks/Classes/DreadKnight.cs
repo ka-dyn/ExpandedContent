@@ -58,7 +58,7 @@ namespace ExpandedContent.Tweaks.Classes {
             Classes.ClassFeaturesDreadKnight.Cruelties.AddCrueltyAbilities();
             Classes.ClassFeaturesDreadKnight.ProfaneBoon.AddProfaneBoon();
 
-
+           
             Classes.ClassFeaturesDreadKnight.DreadKnightSpellbook.AddDreadKnightSpellbook();
             DreadKnightClassAdder.AddDreadKnightProgression();
             DreadKnightClassAdder.AddDreadKnightClass();

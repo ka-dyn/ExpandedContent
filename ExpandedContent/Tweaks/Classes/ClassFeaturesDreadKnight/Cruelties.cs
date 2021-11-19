@@ -122,7 +122,7 @@ namespace ExpandedContent.Tweaks.Classes.ClassFeaturesDreadKnight {
                         });
                 });
                 bp.AddComponent<UniqueBuff>();
-
+                
 
 
             });
@@ -919,7 +919,7 @@ namespace ExpandedContent.Tweaks.Classes.ClassFeaturesDreadKnight {
                         new Conditional {
                             ConditionsChecker = new ConditionsChecker {
                                 Conditions = new Condition[] {
-
+                                    
                                     new ContextConditionIsCaster() { Not = true }
 
                                 }
@@ -978,7 +978,7 @@ namespace ExpandedContent.Tweaks.Classes.ClassFeaturesDreadKnight {
                 bp.m_Icon = FatigueIcon.Icon;
                 bp.m_Buff = CrueltyFatiguedBuff.ToReference<BlueprintBuffReference>();
                 bp.DeactivateImmediately = true;
-                bp.ActivationType = AbilityActivationType.Immediately;
+                bp.ActivationType = AbilityActivationType.WithUnitCommand;
                 bp.Group = ActivatableAbilityGroup.MasterHealingTechnique;
                 bp.WeightInGroup = 1;
 
@@ -1029,7 +1029,7 @@ namespace ExpandedContent.Tweaks.Classes.ClassFeaturesDreadKnight {
                     "This cruelty causes the target to become sickened for 1 round/dread knight level upon a failed fortitude save.");
                 bp.m_Icon = SickenedBuff.Icon;
                 bp.m_Buff = CrueltySickenedBuff.ToReference<BlueprintBuffReference>();
-                bp.DeactivateImmediately = true;
+                bp.DeactivateImmediately = true;           
                 bp.ActivationType = AbilityActivationType.Immediately;
                 bp.Group = ActivatableAbilityGroup.MasterHealingTechnique;
                 bp.WeightInGroup = 1;
@@ -1039,6 +1039,7 @@ namespace ExpandedContent.Tweaks.Classes.ClassFeaturesDreadKnight {
                 bp.SetDescription("A Dread Knight may enhance their Profane Corruption with learned cruelties. Only one cruelty may be selected at a time, and must be used once before selecting another cruelty. " +
                     "This cruelty causes the target to become sickened upon a failed fortitude save.");
                 bp.m_Icon = CrueltySelectIcon;
+               
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] { TouchOfProfaneCorruptionAbilitySickened.ToReference<BlueprintUnitFactReference>() };
                 });

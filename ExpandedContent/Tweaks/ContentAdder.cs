@@ -23,6 +23,7 @@ namespace ExpandedContent.Tweaks
                 if (Initialized) return;
                 Initialized = true;
 
+                
 
                 RacialArchetypes.Cruoromancer.AllowCruoromancerArchetype();
                 RacialArchetypes.CavalierOfThePaw.AllowCavalierOfThePaw();

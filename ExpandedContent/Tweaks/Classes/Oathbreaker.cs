@@ -268,10 +268,10 @@ namespace ExpandedContent.Tweaks.Classes {
             var CounterIcon = AssetLoader.LoadInternal("Skills", "Icon_Counter.png");
             var CastigatorPaybackFeature = Helpers.CreateBlueprint<BlueprintFeature>("CastigatorPaybackFeature", bp => {
                 bp.SetName("Payback");
-                bp.SetDescription("At 7th level, a castigator can make an {g|Encyclopedia:Attack_Of_Opportunity}attack of opportunity{/g} as an immediate {g|Encyclopedia:CA_Types}action{/g} against an " +
+                bp.SetDescription("At 8th level, a castigator can make an {g|Encyclopedia:Attack_Of_Opportunity}attack of opportunity{/g} as an immediate {g|Encyclopedia:CA_Types}action{/g} against an " +
                     "opponent who hits the castigator with a {g|Encyclopedia:MeleeAttack}melee attack{/g}, so long as the {g|Encyclopedia:Attack}attacking{/g} creature is " +
                     "within the castigator's {g|Encyclopedia:Reach}reach{/g}.");
-                bp.m_DescriptionShort = Helpers.CreateString($"CastigatorPayback.Description", "At 7th level, a castigator can make an {g|Encyclopedia:Attack_Of_Opportunity}attack of opportunity{/g} as an " +
+                bp.m_DescriptionShort = Helpers.CreateString($"CastigatorPayback.Description", "At 8th level, a castigator can make an {g|Encyclopedia:Attack_Of_Opportunity}attack of opportunity{/g} as an " +
                     "immediate {g|Encyclopedia:CA_Types}action{/g} against an " +
                     "opponent who hits the castigator with a {g|Encyclopedia:MeleeAttack}melee attack{/g}, so long as the {g|Encyclopedia:Attack}attacking{/g} creature is " +
                     "within the castigator's {g|Encyclopedia:Reach}reach{/g}.");
@@ -303,8 +303,8 @@ namespace ExpandedContent.Tweaks.Classes {
             var OpportunistFeature = Resources.GetBlueprint<BlueprintFeature>("5bb6dc5ce00550441880a6ff8ad4c968");
             var CastigatorOpportunistFeature = Helpers.CreateBlueprint<BlueprintFeature>("CastigatorOpportunistFeature", bp => {
                 bp.SetName("Even the Score");
-                bp.SetDescription("At 10th level, a castigator gains the Opportunist rogue talent.");
-                bp.m_DescriptionShort = Helpers.CreateString($"CastigatorOpportunist.Description", "At 10th level, a castigator gains the Opportunist rogue talent.");
+                bp.SetDescription("At 12th level, a castigator gains the Opportunist rogue talent.");
+                bp.m_DescriptionShort = Helpers.CreateString($"CastigatorOpportunist.Description", "At 12th level, a castigator gains the Opportunist rogue talent.");
                 bp.m_Icon = OpportunistFeature.Icon;
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;
