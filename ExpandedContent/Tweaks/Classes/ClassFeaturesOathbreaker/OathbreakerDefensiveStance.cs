@@ -2,6 +2,7 @@
 using ExpandedContent.Utilities;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
+using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.UnitLogic.FactLogic;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,9 @@ using System.Threading.Tasks;
 namespace ExpandedContent.Tweaks.Classes.ClassFeaturesOathbreaker {
     internal class OathbreakerDefensiveStance {
 
+
+
+        
 
         public static void AddDefensiveStance() {
             var DreadfulIcon = AssetLoader.LoadInternal("Skills", "Icon_DreadfulCalm.png");
@@ -29,6 +33,12 @@ namespace ExpandedContent.Tweaks.Classes.ClassFeaturesOathbreaker {
                     c.m_Facts = new BlueprintUnitFactReference[] { DefensiveStanceFeature.ToReference<BlueprintUnitFactReference>() };
                 });
             });
+
+            var OathbreakerClass = Resources.GetModBlueprint<BlueprintCharacterClass>("OathbreakerClass");
+            var IncreasedDamageReductionDefensivePower = Resources.GetBlueprint<BlueprintFeature>("d10496e92d0799a40bb3930b8f4fda0d");
+            IncreasedDamageReductionDefensivePower.AddComponent<PrerequisiteClassLevel>(c => {c.m_CharacterClass = OathbreakerClass.ToReference<BlueprintCharacterClassReference>(); c.Level = 1; });
+            var FearlessDefenseDefensivePower = Resources.GetBlueprint<BlueprintFeature>("2c13bd43a7ed4844b9f4dcc919fd74f8");
+            FearlessDefenseDefensivePower.AddComponent<PrerequisiteClassLevel>(c => { c.m_CharacterClass = OathbreakerClass.ToReference<BlueprintCharacterClassReference>(); c.Level = 1; });
         }
     }
 }

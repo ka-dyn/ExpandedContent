@@ -392,8 +392,56 @@ namespace ExpandedContent.Tweaks.Classes.ClassFeaturesDreadKnight {
                 bp.m_Icon = ProfaneWeaponIcon;
                 bp.Ranks = 1;
             });
+            var AnimatedLongsword = Resources.GetBlueprint<BlueprintUnit>("34df84245e875364b9a8832256bc349f");
+            var WyvernCharoite = Resources.GetBlueprint<BlueprintUnit>("fb3cf6666c50638439cdecfa45ae80ac");
+            var UnitDog = Resources.GetBlueprint<BlueprintUnit>("918939943bf32ba4a95470ea696c2ba5");
+            var LongswordCompanionUnit = Helpers.CreateBlueprint<BlueprintUnit>("LongswordCompanionUnit", bp => {
+                bp.m_Portrait = AnimatedLongsword.m_Portrait;
+                bp.m_Faction = UnitDog.m_Faction;
+                bp.m_Brain = UnitDog.m_Brain;
+                bp.m_AddFacts = AnimatedLongsword.m_AddFacts;
+                bp.Gender = AnimatedLongsword.Gender;
+                bp.LocalizedName = AnimatedLongsword.LocalizedName;
+                bp.Size = AnimatedLongsword.Size;
+                bp.Color = AnimatedLongsword.Color;
+                bp.Alignment = Kingmaker.Enums.Alignment.TrueNeutral;
+                bp.Prefab = AnimatedLongsword.Prefab;
+                bp.Visual = AnimatedLongsword.Visual;
+                bp.FactionOverrides = UnitDog.FactionOverrides;
+                bp.Body = AnimatedLongsword.Body;
+                bp.Strength = UnitDog.Strength;
+                bp.Dexterity = UnitDog.Dexterity;
+                bp.Constitution = UnitDog.Constitution;
+                bp.Intelligence = UnitDog.Intelligence;
+                bp.Wisdom = UnitDog.Wisdom;
+                bp.Charisma = UnitDog.Charisma;
+                bp.Speed = AnimatedLongsword.Speed;
+                bp.Skills = UnitDog.Skills;
+                bp.m_DisplayName = AnimatedLongsword.m_DisplayName;
+                bp.m_Description = AnimatedLongsword.m_Description;
+                bp.m_DescriptionShort = AnimatedLongsword.m_DescriptionShort;
+                bp.ComponentsArray = UnitDog.ComponentsArray;
+
+
+
+            });
+            var LongswordCompanion = Helpers.CreateBlueprint<BlueprintFeature>("LongswordCompanion", bp => {
+                bp.SetName("Intelligent Longsword");
+                bp.SetDescription("You gain an intelligent longsword companion.");
+                bp.m_DescriptionShort = Helpers.CreateString("LongswordCompanion.DescriptionShort", "You gain an intelligent longsword companion.");
+                bp.m_Icon = ProfaneWeaponIcon;
+                bp.Ranks = 1;
+                bp.Groups = new FeatureGroup[] { FeatureGroup.AnimalCompanion };
+                bp.ReapplyOnLevelUp = true;
+                bp.IsClassFeature = true;
+                bp.AddComponent<AddPet>(c => {
+                    c.m_Pet = LongswordCompanionUnit.ToReference<BlueprintUnitReference>();
+                    c.m_LevelRank = AnimalCompanionRank.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisitePet>(c => { c.NoCompanion = true; });
+            });
             FiendishWeaponBondProgression.LevelEntries = new LevelEntry[8] {
-                Helpers.LevelEntry(5, (BlueprintFeatureBase) FiendishWeaponBondFeature),
+                Helpers.LevelEntry(5, (BlueprintFeatureBase) FiendishWeaponBondFeature,(BlueprintFeatureBase) LongswordCompanion),
                 Helpers.LevelEntry(8, (BlueprintFeatureBase) FiendishWeaponBondPlus2),
                 Helpers.LevelEntry(9, (BlueprintFeatureBase) WeaponBondAdditionalUse),
                 Helpers.LevelEntry(11, (BlueprintFeatureBase) FiendishWeaponBondPlus3),
@@ -508,9 +556,7 @@ namespace ExpandedContent.Tweaks.Classes.ClassFeaturesDreadKnight {
             var PaladinDivineMountSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("e2f0e0efc9e155e43ba431984429678e");
             var ShamanNatureSpiritTrueSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("e7f4cfcd7488ac14bbc3e09426b59fd0");
             var SoheiMonasticMountHorseSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("918432cc97b146a4b93e2b3060bdd1ed");
-           
-            var WyvernCharoite = Resources.GetBlueprint<BlueprintUnit>("fb3cf6666c50638439cdecfa45ae80ac");
-            var UnitDog = Resources.GetBlueprint<BlueprintUnit>("918939943bf32ba4a95470ea696c2ba5");
+
             var CharacterBrain = Resources.GetBlueprint<BlueprintBrain>("cf986dd7ba9d4ec46ad8a3a0406d02ae");
             var AzataDragonUnitNPC_medium = Resources.GetBlueprint<BlueprintUnit>("3e56db348cc24838bc78b55a114e552a");
             var AzataDragonUnitNPC_large = Resources.GetBlueprint<BlueprintUnit>("a643ed45374b070468138d16815ca2df");
@@ -545,6 +591,7 @@ namespace ExpandedContent.Tweaks.Classes.ClassFeaturesDreadKnight {
 
 
             });
+            
             var HavocDragonLargeUnit = Helpers.CreateBlueprint<BlueprintUnit>("HavocDragonLargeUnit", bp => {
                 bp.m_Portrait = AzataDragonUnit.m_Portrait;
                 bp.m_Faction = UnitDog.m_Faction;
@@ -555,10 +602,10 @@ namespace ExpandedContent.Tweaks.Classes.ClassFeaturesDreadKnight {
                 bp.Size = Kingmaker.Enums.Size.Large;
                 bp.Color = AzataDragonUnit.Color;
                 bp.Alignment = Kingmaker.Enums.Alignment.TrueNeutral;
-                bp.Prefab = AzataDragonUnitNPC_large.Prefab;
-                bp.Visual = AzataDragonUnitNPC_large.Visual;
+                bp.Prefab = AzataDragonUnitNPC_medium.Prefab;
+                bp.Visual = AzataDragonUnitNPC_medium.Visual;
                 bp.FactionOverrides = AzataDragonUnit.FactionOverrides;
-                bp.Body = AzataDragonUnitNPC_large.Body;
+                bp.Body = AzataDragonUnitNPC_medium.Body;
                 bp.Strength = AzataDragonUnit.Strength;
                 bp.Dexterity = AzataDragonUnit.Dexterity;
                 bp.Constitution = AzataDragonUnit.Constitution;
@@ -575,8 +622,9 @@ namespace ExpandedContent.Tweaks.Classes.ClassFeaturesDreadKnight {
 
 
             });
+            
 
-        
+
             var HavocIcon = AssetLoader.LoadInternal("Skills", "Icon_Havoc.png");
             var HavocDragonPetLarge = Helpers.CreateBlueprint<BlueprintFeature>("HavocDragonPetLarge", bp => {
                 bp.SetName("Havoc Dragon Companion - Large");
@@ -612,11 +660,11 @@ namespace ExpandedContent.Tweaks.Classes.ClassFeaturesDreadKnight {
                 });
                 bp.AddComponent<PrerequisitePet>(c => { c.NoCompanion = true; });
             });
-            
 
 
 
 
+           
             AnimalCompanionSelectionBase.m_AllFeatures = AnimalCompanionSelectionBase.m_AllFeatures.AppendToArray(HavocDragonPetMedium.ToReference<BlueprintFeatureReference>(), HavocDragonPetLarge.ToReference<BlueprintFeatureReference>());
             DreadKnightCompanionSelection.m_AllFeatures = DreadKnightCompanionSelection.m_AllFeatures.AppendToArray(HavocDragonPetMedium.ToReference<BlueprintFeatureReference>(), HavocDragonPetLarge.ToReference<BlueprintFeatureReference>());
             AnimalCompanionSelectionDomain.m_AllFeatures = AnimalCompanionSelectionDomain.m_AllFeatures.AppendToArray(HavocDragonPetMedium.ToReference<BlueprintFeatureReference>(), HavocDragonPetLarge.ToReference<BlueprintFeatureReference>());
