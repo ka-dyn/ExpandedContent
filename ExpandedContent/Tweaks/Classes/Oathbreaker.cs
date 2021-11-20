@@ -343,7 +343,9 @@ namespace ExpandedContent.Tweaks.Classes {
                     Helpers.LevelEntry(8, CastigatorPaybackFeature),
                     Helpers.LevelEntry(12, CastigatorOpportunistFeature)
                 };
+                
             });
+
           
 
 

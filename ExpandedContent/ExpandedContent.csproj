@@ -196,6 +196,7 @@
     <Compile Include="Tweaks\Classes\ClassFeaturesDreadKnight\AuraOfCowardice.cs" />
     <Compile Include="Tweaks\Classes\ClassFeaturesDreadKnight\AuraOfDepravity.cs" />
     <Compile Include="Tweaks\Classes\ClassFeaturesDreadKnight\AuraOfDespair.cs" />
+    <Compile Include="Tweaks\Classes\ClassFeaturesDreadKnight\AuraOfEvil.cs" />
     <Compile Include="Tweaks\Classes\ClassFeaturesDreadKnight\AuraOfSin.cs" />
     <Compile Include="Tweaks\Classes\ClassFeaturesDreadKnight\AuraOfAbsolution.cs" />
     <Compile Include="Tweaks\Classes\ClassFeaturesDreadKnight\DKChannelNegativeEnergy.cs" />
@@ -382,6 +383,9 @@
     <Content Include="Assets\Skills\Icon_ChannelTOC.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Skills\Icon_Command.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Skills\Icon_Counter.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -425,6 +429,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_ProfaneChamp.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_ProfaneLord.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_ProfaneWeapon.png">
