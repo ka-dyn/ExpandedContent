@@ -258,7 +258,7 @@ namespace ExpandedContent.Tweaks.Classes.ClassFeaturesDreadKnight {
                     "target of sinful absolution is dead or the next time the Dread Knight rests and regains their uses of this ability. At 4th level, " +
                     "and at every three levels thereafter, the Dread Knight may grant sinful absoltion one additional time per day.");
                 bp.m_Icon = SinfulAbsIcon;
-                bp.Ranks = 1;
+                bp.Ranks = 10;
                 bp.IsClassFeature = true;
                 bp.AddComponent<IncreaseResourceAmount>(c => {
                     c.m_Resource = SinfulAbsolutionResource.ToReference<BlueprintAbilityResourceReference>();

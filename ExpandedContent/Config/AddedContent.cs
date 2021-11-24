@@ -8,8 +8,9 @@ namespace ExpandedContent.Config {
         public SettingGroup DemonLords = new SettingGroup();
         public SettingGroup Classes = new SettingGroup();
         public SettingGroup Backgrounds = new SettingGroup();
-        
-        
+        public SettingGroup Archetypes = new SettingGroup();
+
+
 
         public void Init() {
         }
@@ -23,6 +24,7 @@ namespace ExpandedContent.Config {
             DemonLords.LoadSettingGroup (loadedSettings.DemonLords, NewSettingsOffByDefault);
             Classes.LoadSettingGroup(loadedSettings.Classes, NewSettingsOffByDefault);
             Backgrounds.LoadSettingGroup(loadedSettings.Backgrounds, NewSettingsOffByDefault);
+            Archetypes.LoadSettingGroup(loadedSettings.Archetypes, NewSettingsOffByDefault);
 
         }
     }

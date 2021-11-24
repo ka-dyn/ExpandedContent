@@ -57,7 +57,9 @@ namespace ExpandedContent.Tweaks.Deities {
             var CalistriaFeature = Resources.GetBlueprint<BlueprintFeature>("c7531715a3f046d4da129619be63f44c");
             var CaydenCaileanFeature = Resources.GetBlueprint<BlueprintFeature>("300e212868bca984687c92bcb66d381b");
             var DesnaFeature = Resources.GetBlueprint<BlueprintFeature>("2c0a3b9971327ba4d9d85354d16998c1");
-
+            var DaikitsuFeature = Resources.GetModBlueprint<BlueprintFeature>("DaikitsuFeature");
+            var FumeiyoshiFeature = Resources.GetModBlueprint<BlueprintFeature>("FumeiyoshiFeature");
+            var WukongFeature = Resources.GetModBlueprint<BlueprintFeature>("WukongFeature");
 
             //Philosophies
             var GreenFaithFeature = Resources.GetBlueprint<BlueprintFeature>("99a7a8f13c1300c42878558fa9471e2f");
@@ -68,7 +70,7 @@ namespace ExpandedContent.Tweaks.Deities {
 
             //Dragon Gods/Aspects
             var ApsuFeature = Resources.GetModBlueprint<BlueprintFeature>("ApsuFeature");
-
+            var DahakFeature = Resources.GetModBlueprint<BlueprintFeature>("DahakFeature");
 
             //Archdevils
             var MephistophelesFeature = Resources.GetModBlueprint<BlueprintFeature>("MephistophelesFeature");
@@ -161,7 +163,10 @@ namespace ExpandedContent.Tweaks.Deities {
                 NethysFeature.ToReference<BlueprintFeatureReference>(),
                 ErastilFeature.ToReference<BlueprintFeatureReference>(),
                 LichDeityFeature.ToReference<BlueprintFeatureReference>(),
-                MilaniFeature.ToReference<BlueprintFeatureReference>()
+                MilaniFeature.ToReference<BlueprintFeatureReference>(),
+                WukongFeature.ToReference<BlueprintFeatureReference>(),
+                DaikitsuFeature.ToReference<BlueprintFeatureReference>(),
+                FumeiyoshiFeature.ToReference<BlueprintFeatureReference>(),
                 };
                 bp.IsClassFeature = true;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
@@ -174,7 +179,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     "parents of the first gods. However, their eldest son Dahak came to Hell to rampage, then killed his siblings, " +
                     "whose shattered remains fell into the Material Plane and became the first metallic dragons.");
                 bp.m_Icon = DragonDeityIcon;
-                bp.m_AllFeatures = new BlueprintFeatureReference[] { ApsuFeature.ToReference<BlueprintFeatureReference>() };
+                bp.m_AllFeatures = new BlueprintFeatureReference[] { ApsuFeature.ToReference<BlueprintFeatureReference>(), DahakFeature.ToReference<BlueprintFeatureReference>() };
                 bp.IsClassFeature = true;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
                 bp.Group = FeatureGroup.Deities;
@@ -245,7 +250,8 @@ namespace ExpandedContent.Tweaks.Deities {
                     ErastilFeature.ToReference<BlueprintFeatureReference>(),
                     ArsheaFeature.ToReference<BlueprintFeatureReference>(),
                     RagathielFeature.ToReference<BlueprintFeatureReference>(),
-                    ApsuFeature.ToReference<BlueprintFeatureReference>() };
+                    ApsuFeature.ToReference<BlueprintFeatureReference>(),
+                    DaikitsuFeature.ToReference<BlueprintFeatureReference>()};
             });
             var Seelah = Resources.GetBlueprint<BlueprintUnit>("54be53f0b35bf3c4592a97ae335fe765");
             Seelah.AddComponent<AddFacts>(c => {

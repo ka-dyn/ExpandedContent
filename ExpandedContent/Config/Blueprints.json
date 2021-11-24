@@ -179,7 +179,16 @@
     "ConquerorProfaneConquestFeature": "D96E856C-D57C-48F3-99F8-79A44C5801B0",
     "ConquerorInspiredRageFeature": "D6FB782A-DEDC-48AA-B27B-63A4BD5E8B19",
     "LongswordCompanion": "0F47B155-A13C-42E3-AF25-77C90319A68A",
-    "LongswordCompanionUnit": "5A8D4C37-AB63-46AD-B0BE-0B953706C552"
+    "LongswordCompanionUnit": "5A8D4C37-AB63-46AD-B0BE-0B953706C552",
+    "DivineScriptureFeature": "B950E62E-9D26-4716-9563-0A61E55A6395",
+    "ImpenetrableScriptureFeature": "2A84C8AE-785B-4F0D-B933-F52D7FF7A39E",
+    "LivingScriptureArchetype": "ED24635A-F5BE-47C8-89A2-6D43D6E8855F",
+    "WukongFeature": "E4392532-2AA7-45E7-9F8E-72B205E05FD2",
+    "FumeiyoshiFeature": "B60358F0-2E20-41CF-B6DC-ED2FCE05003A",
+    "DaikitsuFeature": "1A8DE097-A1A7-4986-A72C-F208F1FA0C48",
+    "DahakFeature": "D7E1F722-EBE2-4652-823A-241D4F3F4736"
+
+
 
 
 

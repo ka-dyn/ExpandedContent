@@ -290,7 +290,8 @@ namespace ExpandedContent.Tweaks.Classes {
             var MasterSkald = Resources.GetBlueprint<BlueprintFeature>("ae4d45a39a91dee4fb4200d7a677d9a7");
             var SkaldRagePowerSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("2476514e31791394fa140f1a07941c96");
             var IconCommand = AssetLoader.LoadInternal("Skills", "Icon_Command.png");
-            var ConquerorInspiredRageFeature = Helpers.CreateBlueprint<BlueprintFeature>("ConquerorInspiredageFeature", bp => {
+
+            var ConquerorInspiredRageFeature = Helpers.CreateBlueprint<BlueprintFeature>("ConquerorInspiredRageFeature", bp => {
                 bp.SetName("Profane Commandment");
                 bp.SetDescription("At 1st level, a conqueror receives the ability to incite rage in those he rules over, as per the skald inspired rage class feature. " +
                     "Affected allies gain a +1 {g|Encyclopedia:Bonus}bonus{/g} to {g|Encyclopedia:MeleeAttack}melee attack{/g} and {g|Encyclopedia:Damage}damage rolls{/g} and a +1 " +
@@ -300,7 +301,7 @@ namespace ExpandedContent.Tweaks.Classes {
                     "{g|Encyclopedia:Attack}attack{/g} and damage increase by 1. (Unlike the barbarian's rage ability, those affected are not fatigued after the song ends.)");
                 bp.m_DescriptionShort = Helpers.CreateString($"ConquerorInspiredageFeature.Description", "At 1st level, a conqueror receives the ability to incite rage in those he rules over, as the skald inspired rage class feature.");
                 bp.m_Icon = IconCommand;
-                bp.m_Icon = InspiredRage.Icon;
+               
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;
                 bp.AddComponent<AddFacts>(c => {
@@ -356,7 +357,7 @@ namespace ExpandedContent.Tweaks.Classes {
 
                 };
                 bp.AddFeatures = new LevelEntry[] {
-                    Helpers.LevelEntry(1, InspiredRage, RagingSong),
+                    Helpers.LevelEntry(1, ConquerorInspiredRageFeature, RagingSong),
                     Helpers.LevelEntry(3, FiendishMaw1d6Feature),
                     Helpers.LevelEntry(6, FiendTotemFeature, SongOfStrength),
                     Helpers.LevelEntry(7, FiendishMaw1d8Feature, ConquerorProfaneConquestFeature, SkaldMovePerformance),
@@ -382,7 +383,7 @@ namespace ExpandedContent.Tweaks.Classes {
                  Helpers.CreateUIGroup(SkaldRagePowerSelection, SkaldRagePowerSelection, SkaldRagePowerSelection),
                  Helpers.CreateUIGroup(SongOfStrength, SongOfStrength, DirgeOfDoom, SongOfTheFallen),
                  Helpers.CreateUIGroup(FiendTotemFeature, FiendTotemGreaterFeature),
-                 Helpers.CreateUIGroup(InspiredRage, SkaldMovePerformance, SkaldSwiftPerformance, ProfaneLordFeature),
+                 Helpers.CreateUIGroup(ConquerorInspiredRageFeature, SkaldMovePerformance, SkaldSwiftPerformance, ProfaneLordFeature),
 
              };
 

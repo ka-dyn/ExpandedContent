@@ -179,9 +179,19 @@
         "Homebrew": true,
         "Description": "[Request, not tuned for balance] The highest rank of the standard nobility in Cheliax are the Archdukes."
       }
-    }
+    },
+    "IsExpanded": false
   },
-  "IsExpanded": false
-
-
+  "Archetypes": {
+    "DisableAll": false,
+    "Settings": {
+      "Living Scripture": {
+        "Enabled": true,
+        "Homebrew": true,
+        "Description": "Adds the living scripture archetype, a requested inquisitor archetype that focuses on divine spellcasting."
+      }
+    },
+    "IsExpanded": false
+  }
+ 
 }

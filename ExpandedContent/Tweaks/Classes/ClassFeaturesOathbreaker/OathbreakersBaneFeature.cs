@@ -245,7 +245,7 @@ namespace ExpandedContent.Tweaks.Classes.ClassFeaturesOathbreaker {
               "and regains her uses of this ability. At 4th level and every 3 levels thereafter, the Oathbreaker can invoke her Oathbreaker's Bane " +
               "one additional time per day, to a maximum of seven times per day at 19th level.");
                 bp.m_Icon = OBBaneIcon;
-                bp.Ranks = 1;
+                bp.Ranks = 10;
                 bp.IsClassFeature = true;
                 bp.AddComponent<IncreaseResourceAmount>(c => {
                     c.m_Resource = OathbreakersBaneResource.ToReference<BlueprintAbilityResourceReference>();
