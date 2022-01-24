@@ -16,11 +16,12 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ExpandedContent.Tweaks.Deities {
-    internal class BlackButterfly {
+    internal class Selket {
         private static readonly BlueprintFeature ChaosDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("8c7d778bc39fec642befc1435b00f613");
         private static readonly BlueprintFeature GoodDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("882521af8012fc749930b03dc18a69de");
-        private static readonly BlueprintFeature LiberationDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("801ca88338451a546bca2ee59da87c53");
-        private static readonly BlueprintFeature TravelDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("c008853fe044bd442ae8bd22260592b7");
+        private static readonly BlueprintFeature HealingDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("73ae164c388990c43ade94cfe8ed5755");
+        private static readonly BlueprintFeature ProtectionDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("d4ce7592bd12d63439907ad64e986e59");
+        private static readonly BlueprintFeature ReposeDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("076ba1e3a05fac146acfc956a9f41e95");
         private static readonly BlueprintFeature CrusaderSpellbook = Resources.GetBlueprint<BlueprintFeature>("673d39f7da699aa408cdda6282e7dcc0");
         private static readonly BlueprintFeature ClericSpellbook = Resources.GetBlueprint<BlueprintFeature>("4673d19a0cf2fab4f885cc4d1353da33");
         private static readonly BlueprintFeature InquisitorSpellbook = Resources.GetBlueprint<BlueprintFeature>("57fab75111f377248810ece84193a5a5");
@@ -31,39 +32,37 @@ namespace ExpandedContent.Tweaks.Deities {
 
 
 
-        public static void AddBlackButterflyFeature() {
+        public static void AddSelketFeature() {
 
-            BlueprintItem MasterworkStarknife = Resources.GetBlueprint<BlueprintItem>("657eca867b9324c4ca46cbf9ca01b940");
+            BlueprintItem MasterworkKama = Resources.GetBlueprint<BlueprintItem>("3bb3abe8cd983e542b001a6ff3bd1d4c");
 
             BlueprintArchetype FeralChampionArchetype = Resources.GetBlueprint<BlueprintArchetype>("f68ca492c9c15e241ab73735fbd0fb9f");
             BlueprintArchetype PriestOfBalance = Resources.GetBlueprint<BlueprintArchetype>("a4560e3fb5d247d68fb1a2738fcc0855");
 
-            BlueprintFeature StarknifeProficiency = Resources.GetBlueprint<BlueprintFeature>("7818ba3db79ac064e88fa14a2478b24b");
-            var BlackButterflyIcon = AssetLoader.LoadInternal("Deities", "Icon_BlackButterfly.jpg");
-            var BlackButterflyFeature = Helpers.CreateBlueprint<BlueprintFeature>("BlackButterflyFeature", (bp => {
+            BlueprintFeature KamaProficiency = Resources.GetBlueprint<BlueprintFeature>("403740e8112651141a12f0d73d793dbc");
+            var SelketIcon = AssetLoader.LoadInternal("Deities", "Icon_Selket.jpg");
+            var SelketFeature = Helpers.CreateBlueprint<BlueprintFeature>("SelketFeature", (bp => {
 
-                bp.SetName("Black Butterfly");
-                bp.SetDescription("\nTitles: The Silence Between, Desna's Shadow   " +
+                bp.SetName("Selket");
+                bp.SetDescription("\nTitles: Mistress of the Beautiful House   " +
                     "\nAlignment: Chaotic Good   " +
-                    "\nAreas of Concern: Distance, Silence, Space   " +
-                    "\nDomains: Chaos, Good, Liberation, Void   " +
-                    "\nSubdomains: Azata, Freedom, Revolution, Stars   " +
-                    "\nFavoured Weapon: Starknife   " +
-                    "\nHoly Symbol: Black butterfly with star   " +
-                    "\nSacred Animal: Butterfly   " +
-                    "\nLegend tells that at the dawn of creation, Desna placed the stars in the sky. As the goddess worked, she realized " +
-                    "she had created a pattern of spaces between the stars. When Desna placed the final star, a shadowy butterfly formed in " +
-                    "the spaces between and sprang into existence. This is the Black Butterfly, Desna's Shadow. The Black Butterfly appears as " +
-                    "the living silhouette of a graceful woman with white hair and eyes. Her expansive black butterfly wings hold reflections of " +
-                    "all the stars, planets, and galaxies in creation. One of the stars on the Black Butterfly's wings is actually her magical " +
-                    "starknife, Voidsedge, which can disappear from her wing and appear in her hand with a thought. The Silence Between knows the " +
-                    "value of stillness. She has seen the great expanse of space, and its vast and awful silence is reflected in her ancient eyes. " +
-                    "Those who live lives of silence, happily or unhappily, turn to the Black Butterfly as one who understands their solemn existence. " +
-                    "Explorers venturing into strange territories offer prayers to the Black Butterfly as well. Desna's Shadow teaches that in the " +
-                    "silences between breaths and thoughts, one can see one's true nature. While she despises all the forces of evil, she holds particular " +
-                    "enmity for the entities of the Dark Tapestry, and it is said she possesses great knowledge about the Dark Tapestry to which she refuses " +
-                    "to give voice.");
-                bp.m_Icon = BlackButterflyIcon;
+                    "\nAreas of Concern: Embalming, Healing, Scorpions   " +
+                    "\nDomains: Chaos, Good, Healing, Protection, Repose   " +
+                    "\nSubdomains: Ancestors, Azata, Defense, Purity, Restoration, Souls   " +
+                    "\nFavoured Weapon: Scorpion whip (Kama)   " +
+                    "\nHoly Symbol: Red Scorpion   " +
+                    "\nSacred Animal: Scorpion   " +
+                    "\nThe deserts of Osirion contain many species of venomous scorpions, and the scorpion goddess Selket is both a protective " +
+                    "and punitive deity, healing venomous bites and stings and afflicting the wicked with her own deadly sting. Like many of the " +
+                    "ancient Osirian gods, she is a funerary deity, and she is responsible for protecting the canopic jar that holds the deceased's " +
+                    "intestines. Selket is the goddess of embalming, and her epithet, Mistress of the Beautiful House, refers to the embalming pavilion " +
+                    "where bodies are prepared for burial. Along with Isis, Neith, and Nephthys, Selket assists Anubis in protecting the dead. She is " +
+                    "often paired with Neith, as Isis is with Nephthys, and in the form of seven scorpions, she guarded Isis when Isis was pregnant with Horus. " +
+                    "When a woman later refused the expectant mother shelter, it was Selket who punished the woman for turning Isis away. Selket also guards " +
+                    "the other ancient O sirian gods against the poisonous bite of Apep, and has assisted Ra on numerous occasions in his battles against the Devourer " +
+                    "of the Dawn. Selket normally appears as a woman wearing a scorpion with a raised tail on her head, or more rarely, as a lustrous black scorpion " +
+                    "with the head of a woman.");
+                bp.m_Icon = SelketIcon;
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;
                 bp.HideInCharacterSheetAndLevelUp = false;
@@ -90,10 +89,13 @@ namespace ExpandedContent.Tweaks.Deities {
                     c.m_Facts = new BlueprintUnitFactReference[1] { GoodDomainAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[1] { LiberationDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+                    c.m_Facts = new BlueprintUnitFactReference[1] { HealingDomainAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[1] { TravelDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+                    c.m_Facts = new BlueprintUnitFactReference[1] { ProtectionDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[1] { ReposeDomainAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<ForbidSpellbookOnAlignmentDeviation>(c => {
                     c.m_Spellbooks = new BlueprintSpellbookReference[1] { CrusaderSpellbook.ToReference<BlueprintSpellbookReference>() };
@@ -105,7 +107,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     c.m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>();
 
 
-                    c.m_Feature = StarknifeProficiency.ToReference<BlueprintFeatureReference>();
+                    c.m_Feature = KamaProficiency.ToReference<BlueprintFeatureReference>();
 
                     c.Level = 1;
                     c.m_Archetypes = null;
@@ -114,7 +116,8 @@ namespace ExpandedContent.Tweaks.Deities {
                                WarpriestClass.ToReference<BlueprintCharacterClassReference>() };
                 });
                 bp.AddComponent<AddStartingEquipment>(c => {
-                    c.m_BasicItems = new BlueprintItemReference[1] { MasterworkStarknife.ToReference<BlueprintItemReference>() };
+                    c.m_BasicItems = new BlueprintItemReference[1] { MasterworkKama.ToReference<BlueprintItemReference>() };
+                    c.m_BasicItems = new BlueprintItemReference[1] { MasterworkKama.ToReference<BlueprintItemReference>() };
                     c.m_RestrictedByClass = new BlueprintCharacterClassReference[3] {
                                 ClericClass.ToReference<BlueprintCharacterClassReference>(),
                                 InquistorClass.ToReference<BlueprintCharacterClassReference>(),

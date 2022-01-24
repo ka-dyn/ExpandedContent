@@ -16,54 +16,54 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ExpandedContent.Tweaks.Deities {
-    internal class BlackButterfly {
-        private static readonly BlueprintFeature ChaosDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("8c7d778bc39fec642befc1435b00f613");
+    internal class Korada {
         private static readonly BlueprintFeature GoodDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("882521af8012fc749930b03dc18a69de");
-        private static readonly BlueprintFeature LiberationDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("801ca88338451a546bca2ee59da87c53");
-        private static readonly BlueprintFeature TravelDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("c008853fe044bd442ae8bd22260592b7");
+        private static readonly BlueprintFeature HealingDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("73ae164c388990c43ade94cfe8ed5755");
+        private static readonly BlueprintFeature MagicDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("08a5686378a87b64399d329ba4ef71b8");
+        private static readonly BlueprintFeature ProtectionDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("d4ce7592bd12d63439907ad64e986e59");
         private static readonly BlueprintFeature CrusaderSpellbook = Resources.GetBlueprint<BlueprintFeature>("673d39f7da699aa408cdda6282e7dcc0");
         private static readonly BlueprintFeature ClericSpellbook = Resources.GetBlueprint<BlueprintFeature>("4673d19a0cf2fab4f885cc4d1353da33");
         private static readonly BlueprintFeature InquisitorSpellbook = Resources.GetBlueprint<BlueprintFeature>("57fab75111f377248810ece84193a5a5");
         private static readonly BlueprintFeature ChannelPositiveAllowed = Resources.GetBlueprint<BlueprintFeature>("8c769102f3996684fb6e09a2c4e7e5b9");
+        private static readonly BlueprintFeature ChannelNegativeAllowed = Resources.GetBlueprint<BlueprintFeature>("dab5255d809f77c4395afc2b713e9cd6");
         private static readonly BlueprintCharacterClass ClericClass = Resources.GetBlueprint<BlueprintCharacterClass>("67819271767a9dd4fbfd4ae700befea0");
         private static readonly BlueprintCharacterClass InquistorClass = Resources.GetBlueprint<BlueprintCharacterClass>("f1a70d9e1b0b41e49874e1fa9052a1ce");
         private static readonly BlueprintCharacterClass WarpriestClass = Resources.GetBlueprint<BlueprintCharacterClass>("30b5e47d47a0e37438cc5a80c96cfb99");
 
 
 
-        public static void AddBlackButterflyFeature() {
+        public static void AddKoradaFeature() {
 
-            BlueprintItem MasterworkStarknife = Resources.GetBlueprint<BlueprintItem>("657eca867b9324c4ca46cbf9ca01b940");
+            BlueprintItem StandardQuarterstaff = Resources.GetBlueprint<BlueprintItem>("ada85dae8d12eda4bbe6747bb8b5883c");
 
             BlueprintArchetype FeralChampionArchetype = Resources.GetBlueprint<BlueprintArchetype>("f68ca492c9c15e241ab73735fbd0fb9f");
             BlueprintArchetype PriestOfBalance = Resources.GetBlueprint<BlueprintArchetype>("a4560e3fb5d247d68fb1a2738fcc0855");
 
-            BlueprintFeature StarknifeProficiency = Resources.GetBlueprint<BlueprintFeature>("7818ba3db79ac064e88fa14a2478b24b");
-            var BlackButterflyIcon = AssetLoader.LoadInternal("Deities", "Icon_BlackButterfly.jpg");
-            var BlackButterflyFeature = Helpers.CreateBlueprint<BlueprintFeature>("BlackButterflyFeature", (bp => {
+            BlueprintFeature ImprovedUnarmedStrike = Resources.GetBlueprint<BlueprintFeature>("7812ad3672a4b9a4fb894ea402095167");
+            var KoradaIcon = AssetLoader.LoadInternal("Deities", "Icon_Korada.jpg");
+            var KoradaFeature = Helpers.CreateBlueprint<BlueprintFeature>("KoradaFeature", (bp => {
 
-                bp.SetName("Black Butterfly");
-                bp.SetDescription("\nTitles: The Silence Between, Desna's Shadow   " +
-                    "\nAlignment: Chaotic Good   " +
-                    "\nAreas of Concern: Distance, Silence, Space   " +
-                    "\nDomains: Chaos, Good, Liberation, Void   " +
-                    "\nSubdomains: Azata, Freedom, Revolution, Stars   " +
-                    "\nFavoured Weapon: Starknife   " +
-                    "\nHoly Symbol: Black butterfly with star   " +
-                    "\nSacred Animal: Butterfly   " +
-                    "\nLegend tells that at the dawn of creation, Desna placed the stars in the sky. As the goddess worked, she realized " +
-                    "she had created a pattern of spaces between the stars. When Desna placed the final star, a shadowy butterfly formed in " +
-                    "the spaces between and sprang into existence. This is the Black Butterfly, Desna's Shadow. The Black Butterfly appears as " +
-                    "the living silhouette of a graceful woman with white hair and eyes. Her expansive black butterfly wings hold reflections of " +
-                    "all the stars, planets, and galaxies in creation. One of the stars on the Black Butterfly's wings is actually her magical " +
-                    "starknife, Voidsedge, which can disappear from her wing and appear in her hand with a thought. The Silence Between knows the " +
-                    "value of stillness. She has seen the great expanse of space, and its vast and awful silence is reflected in her ancient eyes. " +
-                    "Those who live lives of silence, happily or unhappily, turn to the Black Butterfly as one who understands their solemn existence. " +
-                    "Explorers venturing into strange territories offer prayers to the Black Butterfly as well. Desna's Shadow teaches that in the " +
-                    "silences between breaths and thoughts, one can see one's true nature. While she despises all the forces of evil, she holds particular " +
-                    "enmity for the entities of the Dark Tapestry, and it is said she possesses great knowledge about the Dark Tapestry to which she refuses " +
-                    "to give voice.");
-                bp.m_Icon = BlackButterflyIcon;
+                bp.SetName("Korada");
+                bp.SetDescription("\nTitles: The Open Hand of Harmony   " +
+                    "\nAlignment: Neutral Good   " +
+                    "\nAreas of Concern: Foresight, Forgiveness, Peace   " +
+                    "\nDomains: Good, Healing, Magic, Protection   " +
+                    "\nSubdomains: Agathion, Defense, Divine, Restoration   " +
+                    "\nFavoured Weapon: Unarmed strikes   " +
+                    "\nHoly Symbol: Lotus above two figures    " +
+                    "\nSacred Animal: Monkey   " +
+                    "\nKorada is neither young nor old, only present and wise. Sparse light brown fur covers his body, and his three monkey tails constantly writhe " +
+                    "behind him like the flickering flames of a fire. He carries no weapons; when spurred to anger, the Open Hand of Harmony uses only his hands and " +
+                    "millennia of martial training to defend himself, refusing to cause lethal harm to his attacker. Korada's holy symbol has several incarnations based on " +
+                    "the viewer's region and the local ideals of enlightenment and peace, though the most common representation is that of two kneeling figures before a lotus. " +
+                    "Many who are weary from a lifetime of imbalance or violence turn to Korada in search of peace. Retired soldiers, their hands stained with blood, lay down " +
+                    "their weapons forever in the name of this empyreal lord. Likewise, diplomats in strange lands, individuals facing difficult moral choices, and champions of " +
+                    "evil who long for absolution all find comfort in the teachings of the OpenHand of Harmony. While true repentance is necessary for evil to turn to good, " +
+                    "Korada believes that no mortals are beyond redemption. Korada is said to possess the gift of foresight, but he rarely acts on these strange visions. He " +
+                    "believes the struggle to change is always worthwhile, even if such a journey does not always end in success. It is the process, not the result, that matters " +
+                    "most to Korada and his followers. When he is not teaching lessons of harmony to his devotees, Korada resides in Nirvana, in the heart of the Dream Lotus-an " +
+                    "efflorescent palace whose blossoming violet walls always drip with cool, golden nectar that is said to calm even the wildest of spirits.");
+                bp.m_Icon = KoradaIcon;
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;
                 bp.HideInCharacterSheetAndLevelUp = false;
@@ -78,22 +78,22 @@ namespace ExpandedContent.Tweaks.Deities {
 
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
                 bp.AddComponent<PrerequisiteAlignment>(c => {
-                    c.Alignment = AlignmentMaskType.NeutralGood | AlignmentMaskType.ChaoticGood | AlignmentMaskType.ChaoticNeutral;
+                    c.Alignment = AlignmentMaskType.LawfulGood | AlignmentMaskType.NeutralGood | AlignmentMaskType.ChaoticGood | AlignmentMaskType.TrueNeutral;
                 });
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[1] { ChannelPositiveAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[1] { ChaosDomainAllowed.ToReference<BlueprintUnitFactReference>() };
-                });
-                bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[1] { GoodDomainAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[1] { LiberationDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+                    c.m_Facts = new BlueprintUnitFactReference[1] { HealingDomainAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[1] { TravelDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+                    c.m_Facts = new BlueprintUnitFactReference[1] { MagicDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[1] { ProtectionDomainAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<ForbidSpellbookOnAlignmentDeviation>(c => {
                     c.m_Spellbooks = new BlueprintSpellbookReference[1] { CrusaderSpellbook.ToReference<BlueprintSpellbookReference>() };
@@ -105,7 +105,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     c.m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>();
 
 
-                    c.m_Feature = StarknifeProficiency.ToReference<BlueprintFeatureReference>();
+                    c.m_Feature = ImprovedUnarmedStrike.ToReference<BlueprintFeatureReference>();
 
                     c.Level = 1;
                     c.m_Archetypes = null;
@@ -114,7 +114,7 @@ namespace ExpandedContent.Tweaks.Deities {
                                WarpriestClass.ToReference<BlueprintCharacterClassReference>() };
                 });
                 bp.AddComponent<AddStartingEquipment>(c => {
-                    c.m_BasicItems = new BlueprintItemReference[1] { MasterworkStarknife.ToReference<BlueprintItemReference>() };
+                    c.m_BasicItems = new BlueprintItemReference[1] { StandardQuarterstaff.ToReference<BlueprintItemReference>() };
                     c.m_RestrictedByClass = new BlueprintCharacterClassReference[3] {
                                 ClericClass.ToReference<BlueprintCharacterClassReference>(),
                                 InquistorClass.ToReference<BlueprintCharacterClassReference>(),

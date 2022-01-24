@@ -18,20 +18,80 @@ namespace ExpandedContent.Tweaks.Deities {
 
         public static void PatchDeitySelection() {
 
+            //Deities of Ancient Osirion
+            var AnubisFeature = Resources.GetModBlueprint<BlueprintFeature>("AnubisFeature");
+            var ApepFeature = Resources.GetModBlueprint<BlueprintFeature>("ApepFeature");
+            var BastetFeature = Resources.GetModBlueprint<BlueprintFeature>("BastetFeature");
+            var BesFeature = Resources.GetModBlueprint<BlueprintFeature>("BesFeature");
+            var HathorFeature = Resources.GetModBlueprint<BlueprintFeature>("HathorFeature");
+            var HorusFeature = Resources.GetModBlueprint<BlueprintFeature>("HorusFeature");
+            var IsisFeature = Resources.GetModBlueprint<BlueprintFeature>("IsisFeature");
+            var KhepriFeature = Resources.GetModBlueprint<BlueprintFeature>("KhepriFeature");
+            var MaatFeature = Resources.GetModBlueprint<BlueprintFeature>("MaatFeature");
+            var NeithFeature = Resources.GetModBlueprint<BlueprintFeature>("NeithFeature");
+            var NephthysFeature = Resources.GetModBlueprint<BlueprintFeature>("NephthysFeature");
+            var OsirisFeature = Resources.GetModBlueprint<BlueprintFeature>("OsirisFeature");
+            var PtahFeature = Resources.GetModBlueprint<BlueprintFeature>("PtahFeature");
+            var RaFeature = Resources.GetModBlueprint<BlueprintFeature>("RaFeature");
+            var SekhmetFeature = Resources.GetModBlueprint<BlueprintFeature>("SekhmetFeature");
+            var SelketFeature = Resources.GetModBlueprint<BlueprintFeature>("SelketFeature");
+            var SetFeature = Resources.GetModBlueprint<BlueprintFeature>("SetFeature");
+            var SobekFeature = Resources.GetModBlueprint<BlueprintFeature>("SobekFeature");
+            var ThothFeature = Resources.GetModBlueprint<BlueprintFeature>("ThothFeature");
+            var WadjetFeature = Resources.GetModBlueprint<BlueprintFeature>("WadjetFeature");
+
+            //Deities of Tian Xia
+            var DaikitsuFeature = Resources.GetModBlueprint<BlueprintFeature>("DaikitsuFeature");
+            var FumeiyoshiFeature = Resources.GetModBlueprint<BlueprintFeature>("FumeiyoshiFeature");
+            var GeneralSusumuFeature = Resources.GetModBlueprint<BlueprintFeature>("GeneralSusumuFeature");
+            var HeiFengFeature = Resources.GetModBlueprint<BlueprintFeature>("HeiFengFeature");
+            var KofusachiFeature = Resources.GetModBlueprint<BlueprintFeature>("KofusachiFeature");
+            var LadyNanbyoFeature = Resources.GetModBlueprint<BlueprintFeature>("LadyNanbyoFeature");
+            var LaoShuPoFeature = Resources.GetModBlueprint<BlueprintFeature>("LaoShuPoFeature");
+            var NalinivatiFeature = Resources.GetModBlueprint<BlueprintFeature>("NalinivatiFeature");
+            var QiZhongFeature = Resources.GetModBlueprint<BlueprintFeature>("QiZhongFeature");
+            var ShizuruFeature = Resources.GetModBlueprint<BlueprintFeature>("ShizuruFeature");
+            var WukongFeature = Resources.GetModBlueprint<BlueprintFeature>("WukongFeature");
+            var TsukiyoFeature = Resources.GetModBlueprint<BlueprintFeature>("TsukiyoFeature");
+            var YaezhingFeature = Resources.GetModBlueprint<BlueprintFeature>("YaezhingFeature");
+            var YamatsumiFeature = Resources.GetModBlueprint<BlueprintFeature>("YamatsumiFeature");
+
             //Demon Lords
             var ZuraFeature = Resources.GetModBlueprint<BlueprintFeature>("ZuraFeature");
             var DeskariFeature = Resources.GetBlueprint<BlueprintFeature>("ddf913858bdf43b4da3b731e082fbcc0");
             var BaphometFeature = Resources.GetBlueprint<BlueprintFeature>("bd72ca8ffcfec5745899ac56c93f12c5");
             var AreshkegalFeature = Resources.GetBlueprint<BlueprintFeature>("d714ecb5d5bb89a42957de0304e459c9");
             var KabririFeature = Resources.GetBlueprint<BlueprintFeature>("f12c1ccc9d600c04f8887cd28a8f45a5");
+            var DagonFeature = Resources.GetModBlueprint<BlueprintFeature>("DagonFeature");
+            var TreerazerFeature = Resources.GetModBlueprint<BlueprintFeature>("TreerazerFeature");
 
 
             //Empyreal Lords
             var ArsheaFeature = Resources.GetModBlueprint<BlueprintFeature>("ArsheaFeature");
             var RagathielFeature = Resources.GetModBlueprint<BlueprintFeature>("RagathielFeature");
             var PuluraFeature = Resources.GetBlueprint<BlueprintFeature>("ebb0b46f95dbac74681c78aae895dbd0");
+            var AndolettaFeature = Resources.GetModBlueprint<BlueprintFeature>("AndolettaFeature");
+            var ArquerosFeature = Resources.GetModBlueprint<BlueprintFeature>("ArquerosFeature");
+            var AshavaFeature = Resources.GetModBlueprint<BlueprintFeature>("AshavaFeature");
+            var BharnarolFeature = Resources.GetModBlueprint<BlueprintFeature>("BharnarolFeature");
+            var BlackButterflyFeature = Resources.GetModBlueprint<BlueprintFeature>("BlackButterflyFeature");
+            var ChadaliFeature = Resources.GetModBlueprint<BlueprintFeature>("ChadaliFeature");
+            var ChucaroFeature = Resources.GetModBlueprint<BlueprintFeature>("ChucaroFeature");
+            var DammerichFeature = Resources.GetModBlueprint<BlueprintFeature>("DammerichFeature");
+            var EritriceFeature = Resources.GetModBlueprint<BlueprintFeature>("EritriceFeature");
+            var FalaynaFeature = Resources.GetModBlueprint<BlueprintFeature>("FalaynaFeature");
+            var GhenshauFeature = Resources.GetModBlueprint<BlueprintFeature>("GhenshauFeature");
+            var HalcamoraFeature = Resources.GetModBlueprint<BlueprintFeature>("HalcamoraFeature");
+            var ImmonhielFeature = Resources.GetModBlueprint<BlueprintFeature>("ImmonhielFeature");
+            var IrezFeature = Resources.GetModBlueprint<BlueprintFeature>("IrezFeature");
+            var JaidzFeature = Resources.GetModBlueprint<BlueprintFeature>("JaidzFeature");
+            var JalaijataliFeature = Resources.GetModBlueprint<BlueprintFeature>("JalaijataliFeature");
+            var KoradaFeature = Resources.GetModBlueprint<BlueprintFeature>("KoradaFeature");
 
-
+            //Elven Pantheon
+            var FindeladlaraFeature = Resources.GetModBlueprint<BlueprintFeature>("FindeladlaraFeature");
+            var KetephysFeature = Resources.GetModBlueprint<BlueprintFeature>("KetephysFeature");
+            var YuelralFeature = Resources.GetModBlueprint<BlueprintFeature>("YuelralFeature");
 
             //Gods and Goddesses
             var MilaniFeature = Resources.GetModBlueprint<BlueprintFeature>("MilaniFeature");
@@ -57,9 +117,7 @@ namespace ExpandedContent.Tweaks.Deities {
             var CalistriaFeature = Resources.GetBlueprint<BlueprintFeature>("c7531715a3f046d4da129619be63f44c");
             var CaydenCaileanFeature = Resources.GetBlueprint<BlueprintFeature>("300e212868bca984687c92bcb66d381b");
             var DesnaFeature = Resources.GetBlueprint<BlueprintFeature>("2c0a3b9971327ba4d9d85354d16998c1");
-            var DaikitsuFeature = Resources.GetModBlueprint<BlueprintFeature>("DaikitsuFeature");
-            var FumeiyoshiFeature = Resources.GetModBlueprint<BlueprintFeature>("FumeiyoshiFeature");
-            var WukongFeature = Resources.GetModBlueprint<BlueprintFeature>("WukongFeature");
+            var BesmaraFeature = Resources.GetModBlueprint<BlueprintFeature>("BesmaraFeature");
 
             //Philosophies
             var GreenFaithFeature = Resources.GetBlueprint<BlueprintFeature>("99a7a8f13c1300c42878558fa9471e2f");
@@ -76,11 +134,79 @@ namespace ExpandedContent.Tweaks.Deities {
             var MephistophelesFeature = Resources.GetModBlueprint<BlueprintFeature>("MephistophelesFeature");
             var DispaterFeature = Resources.GetModBlueprint<BlueprintFeature>("DispaterFeature");
 
+            //The Eldest
+            var NgFeature = Resources.GetModBlueprint<BlueprintFeature>("NgFeature");
+            var ShykaFeature = Resources.GetModBlueprint<BlueprintFeature>("ShykaFeature");
+            var TheLanternKingFeature = Resources.GetModBlueprint<BlueprintFeature>("TheLanternKingFeature");
+
+            //Monitors
+            var MonadFeature = Resources.GetModBlueprint<BlueprintFeature>("MonadFeature");
 
             var DeitySelection = Resources.GetBlueprint<BlueprintFeatureSelection>("59e7a76987fe3b547b9cce045f4db3e4");
             var PaladinClass = Resources.GetBlueprint<BlueprintCharacterClass>("bfa11238e7ae3544bbeb4d0b92e897ec");
-
-
+            
+            var DeitiesofAncientOsirionIcon = AssetLoader.LoadInternal("Deities", "Icon_DeitiesofAncientOsirion.jpg");
+            var DeitiesofAncientOsirionSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("DeitiesofAncientOsirionSelection", bp => {
+                bp.SetName("Deities of Ancient Osirion");
+                bp.SetDescription("Since the Age of Destiny, the people of Osirion have worshiped their own local gods, in addition " +
+                    "to those deities venerated throughout the Inner Sea region. They were most popular during the early days of Osirion, " +
+                    "but their faith waned as the Osirian people gradually turned to the worship of foreign deities. When Osirion was under " +
+                    "Keleshite rule, the foreign overlords sought to eradicate the faith in the indigenous gods, but they remain a part of the " +
+                    "history of Osirion's land and people, and with the restoration of native Osirian rule, interest in these ancient divinities " +
+                    "has been rekindled.");
+                bp.m_Icon = DeitiesofAncientOsirionIcon;
+                bp.m_AllFeatures = new BlueprintFeatureReference[] {
+                AnubisFeature.ToReference<BlueprintFeatureReference>(),
+                ApepFeature.ToReference<BlueprintFeatureReference>(),
+                BastetFeature.ToReference<BlueprintFeatureReference>(),
+                BesFeature.ToReference<BlueprintFeatureReference>(),
+                HathorFeature.ToReference<BlueprintFeatureReference>(),
+                HorusFeature.ToReference<BlueprintFeatureReference>(),
+                IsisFeature.ToReference<BlueprintFeatureReference>(),
+                KhepriFeature.ToReference<BlueprintFeatureReference>(),
+                MaatFeature.ToReference<BlueprintFeatureReference>(),
+                NeithFeature.ToReference<BlueprintFeatureReference>(),
+                NephthysFeature.ToReference<BlueprintFeatureReference>(),
+                OsirisFeature.ToReference<BlueprintFeatureReference>(),
+                PtahFeature.ToReference<BlueprintFeatureReference>(),
+                RaFeature.ToReference<BlueprintFeatureReference>(),
+                SekhmetFeature.ToReference<BlueprintFeatureReference>(),
+                SelketFeature.ToReference<BlueprintFeatureReference>(),
+                SetFeature.ToReference<BlueprintFeatureReference>(),
+                SobekFeature.ToReference<BlueprintFeatureReference>(),
+                ThothFeature.ToReference<BlueprintFeatureReference>(),
+                WadjetFeature.ToReference<BlueprintFeatureReference>(),
+                };
+                bp.IsClassFeature = true;
+                bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
+                bp.Group = FeatureGroup.Deities;
+            });
+            var DeitiesofTianXiaIcon = AssetLoader.LoadInternal("Deities", "Icon_DeitiesofTianXia.jpg");
+            var DeitiesofTianXiaSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("DeitiesofTianXiaSelection", bp => {
+                bp.SetName("Deities of Tian Xia");
+                bp.SetDescription("Just as in the lands of the Inner Sea, religion and faith play a vital role in the daily lives of the people " +
+                    "of the Dragon Empires. And while there are deities and powerful extraplanar beings beyond count in search of followers, the " +
+                    "faiths of 14 gods are particularly strong in Tian Xia");
+                bp.m_Icon = DeitiesofTianXiaIcon;
+                bp.m_AllFeatures = new BlueprintFeatureReference[] {
+                DaikitsuFeature.ToReference<BlueprintFeatureReference>(),
+                FumeiyoshiFeature.ToReference<BlueprintFeatureReference>(),
+                GeneralSusumuFeature.ToReference<BlueprintFeatureReference>(),
+                HeiFengFeature.ToReference<BlueprintFeatureReference>(),
+                LadyNanbyoFeature.ToReference<BlueprintFeatureReference>(),
+                LaoShuPoFeature.ToReference<BlueprintFeatureReference>(),
+                NalinivatiFeature.ToReference<BlueprintFeatureReference>(),
+                QiZhongFeature.ToReference<BlueprintFeatureReference>(),
+                ShizuruFeature.ToReference<BlueprintFeatureReference>(),
+                WukongFeature.ToReference<BlueprintFeatureReference>(),
+                TsukiyoFeature.ToReference<BlueprintFeatureReference>(),
+                YaezhingFeature.ToReference<BlueprintFeatureReference>(),
+                YamatsumiFeature.ToReference<BlueprintFeatureReference>(),
+                };
+                bp.IsClassFeature = true;
+                bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
+                bp.Group = FeatureGroup.Deities;
+            });
             var DemonLordsIcon = AssetLoader.LoadInternal("Deities", "Icon_DemonLords.jpg");
             var DemonLordSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("DemonLordSelection", bp => {
                 bp.SetName("Demon Lords");
@@ -94,7 +220,10 @@ namespace ExpandedContent.Tweaks.Deities {
                 DeskariFeature.ToReference<BlueprintFeatureReference>(),
                 KabririFeature.ToReference<BlueprintFeatureReference>(),
                 AreshkegalFeature.ToReference<BlueprintFeatureReference>(),
-                BaphometFeature.ToReference<BlueprintFeatureReference>() };
+                BaphometFeature.ToReference<BlueprintFeatureReference>(),
+                DagonFeature.ToReference<BlueprintFeatureReference>(),
+                TreerazerFeature.ToReference<BlueprintFeatureReference>()
+                };
 
                 bp.IsClassFeature = true;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
@@ -127,7 +256,44 @@ namespace ExpandedContent.Tweaks.Deities {
                 bp.m_AllFeatures = new BlueprintFeatureReference[] {
                 ArsheaFeature.ToReference<BlueprintFeatureReference>(),
                 RagathielFeature.ToReference<BlueprintFeatureReference>(),
-                PuluraFeature.ToReference<BlueprintFeatureReference>() };
+                PuluraFeature.ToReference<BlueprintFeatureReference>(),
+                AndolettaFeature.ToReference<BlueprintFeatureReference>(),
+                ArquerosFeature.ToReference<BlueprintFeatureReference>(),
+                AshavaFeature.ToReference<BlueprintFeatureReference>(),
+                BharnarolFeature.ToReference<BlueprintFeatureReference>(),
+                BlackButterflyFeature.ToReference<BlueprintFeatureReference>(),
+                ChadaliFeature.ToReference<BlueprintFeatureReference>(),
+                ChucaroFeature.ToReference<BlueprintFeatureReference>(),
+                DammerichFeature.ToReference<BlueprintFeatureReference>(),
+                EritriceFeature.ToReference<BlueprintFeatureReference>(),
+                FalaynaFeature.ToReference<BlueprintFeatureReference>(),
+                GhenshauFeature.ToReference<BlueprintFeatureReference>(),
+                HalcamoraFeature.ToReference<BlueprintFeatureReference>(),
+                ImmonhielFeature.ToReference<BlueprintFeatureReference>(),
+                IrezFeature.ToReference<BlueprintFeatureReference>(),
+                JaidzFeature.ToReference<BlueprintFeatureReference>(),
+                JalaijataliFeature.ToReference<BlueprintFeatureReference>(),
+                KoradaFeature.ToReference<BlueprintFeatureReference>()
+                };
+                bp.IsClassFeature = true;
+                bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
+                bp.Group = FeatureGroup.Deities;
+            });
+            var ElvenPantheonIcon = AssetLoader.LoadInternal("Deities", "Icon_ElvenPantheon.jpg");
+            var ElvenPantheonSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("ElvenPantheonSelection", bp => {
+                bp.SetName("Elven Pantheon");
+                bp.SetDescription("Although elves will worship any deity that strikes their fancy, the large majority worship the goddesses " +
+                    "Calistria and Desna, and to a lesser extent, Nethys, Shelyn, or even more rarely, the various empyreal lords. They tend to " +
+                    "have a less formal relationship with the divine, seeing the gods as general inspiration, and are not tied down with the " +
+                    "particulars of dogma. In addition to the worship of the major deities, elves also have a number of minor elven gods who are " +
+                    "almost only worshiped by their own kind. These include include Alseta goddess of transitions and the magical elf gates, " +
+                    "Findeladlara, the goddess of art and architecture, Ketephys, god of the hunt, and Yuelral the Wise, goddess of crafting " +
+                    "and magic.");
+                bp.m_Icon = ElvenPantheonIcon;
+                bp.m_AllFeatures = new BlueprintFeatureReference[] {
+                FindeladlaraFeature.ToReference<BlueprintFeatureReference>(),
+                KetephysFeature.ToReference<BlueprintFeatureReference>(),
+                YuelralFeature.ToReference<BlueprintFeatureReference>() };
                 bp.IsClassFeature = true;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
                 bp.Group = FeatureGroup.Deities;
@@ -164,9 +330,7 @@ namespace ExpandedContent.Tweaks.Deities {
                 ErastilFeature.ToReference<BlueprintFeatureReference>(),
                 LichDeityFeature.ToReference<BlueprintFeatureReference>(),
                 MilaniFeature.ToReference<BlueprintFeatureReference>(),
-                WukongFeature.ToReference<BlueprintFeatureReference>(),
-                DaikitsuFeature.ToReference<BlueprintFeatureReference>(),
-                FumeiyoshiFeature.ToReference<BlueprintFeatureReference>(),
+                BesmaraFeature.ToReference<BlueprintFeatureReference>(),
                 };
                 bp.IsClassFeature = true;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
@@ -216,9 +380,43 @@ namespace ExpandedContent.Tweaks.Deities {
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
                 bp.Group = FeatureGroup.Deities;
             });
-
-
-
+            var TheEldestIcon = AssetLoader.LoadInternal("Deities", "Icon_TheEldest.jpg");
+            var TheEldestSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("TheEldestSelection", bp => {
+                bp.SetName("The Eldest");
+                bp.SetDescription("When the gods abandoned the First World to focus their attentions on the Material Plane and the cycle " +
+                    "of souls, they left behind a power vacuum. The fey were like children abandoned by their parents, and like those children, " +
+                    "they fought and despaired, tormenting each other in hopes that an authority would appear to make them stop." +
+                    "Into this void stepped the realm’s most powerful remaining residents, creatures that might as well have been gods " +
+                    "in the minds of the average fey.Seeking all the same boons that had drawn them to the faith of the original gods—safety, " +
+                    "belonging, knowledge, power—the common people not only served these great beings, but worshiped them.In time, these powerful " +
+                    "fey learned the trick of granting spells to their worshipers, and thus the Eldest became gods in truth.");
+                bp.m_Icon = TheEldestIcon;
+                bp.m_AllFeatures = new BlueprintFeatureReference[] {
+                NgFeature.ToReference<BlueprintFeatureReference>(),
+                ShykaFeature.ToReference<BlueprintFeatureReference>(),
+                TheLanternKingFeature.ToReference<BlueprintFeatureReference>(),
+                };
+                bp.IsClassFeature = true;
+                bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
+                bp.Group = FeatureGroup.Deities;
+            });
+            var MonitorsIcon = AssetLoader.LoadInternal("Deities", "Icon_Monitors.jpg");
+            var MonitorsSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("MonitorsSelection", bp => {
+                bp.SetName("Monitors");
+                bp.SetDescription("The monitors are enigmatic and ever at odds, yet all share a duty to the fundamental nature of reality. Acting " +
+                    "together, they create a homeostasis perfectly suited to maintaining the multiverse as it now exists. The Aeons claim they forged " +
+                    "the monitors in the fires of creation, while Psychopomps insist their beloved Pharasma anointed the first monitors to ensure the " +
+                    "smooth flow of souls. Inevitables claim they first gave faces to the rules of reality, and Proteans believe that other monitors are " +
+                    "simply corrupted Proteans. Monitors seem born from the multiverse itself—fractured pieces of a mind that finds equilibrium only in the " +
+                    "conflict of its component parts.");
+                bp.m_Icon = MonitorsIcon;
+                bp.m_AllFeatures = new BlueprintFeatureReference[] {
+                MonadFeature.ToReference<BlueprintFeatureReference>(),
+                };
+                bp.IsClassFeature = true;
+                bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
+                bp.Group = FeatureGroup.Deities;
+            });
 
 
 
@@ -228,19 +426,26 @@ namespace ExpandedContent.Tweaks.Deities {
             var DeitySelectionIcon = AssetLoader.LoadInternal("Deities", "Icon_DeitySelection.jpg");
             DeitySelection.m_Icon = DeitySelectionIcon;
             DeitySelection.m_AllFeatures = new BlueprintFeatureReference[] {
+                DeitiesofAncientOsirionSelection.ToReference<BlueprintFeatureReference>(),
+                DeitiesofTianXiaSelection.ToReference<BlueprintFeatureReference>(),
                 DemonLordSelection.ToReference<BlueprintFeatureReference>(),
                 ArchdevilSelection.ToReference<BlueprintFeatureReference>(),
                 EmpyrealLordSelection.ToReference<BlueprintFeatureReference>(),
+                ElvenPantheonSelection.ToReference<BlueprintFeatureReference>(),
                 DeitiesSelection.ToReference<BlueprintFeatureReference>(),
                 DraconicDeitySelection.ToReference<BlueprintFeatureReference>(),
                 PhilosophiesSelection.ToReference<BlueprintFeatureReference>(),
-                PantheonSelection.ToReference<BlueprintFeatureReference>()};
+                PantheonSelection.ToReference<BlueprintFeatureReference>(),
+                TheEldestSelection.ToReference<BlueprintFeatureReference>(),
+                MonitorsSelection.ToReference<BlueprintFeatureReference>()
+            };
             DeitySelection.Groups = new FeatureGroup[] { FeatureGroup.Deities };
             DeitySelection.Group = FeatureGroup.Deities;
 
             PaladinClass.RemoveComponents<PrerequisiteFeaturesFromList>();
             PaladinClass.AddComponent<PrerequisiteFeaturesFromList>(c => {
                 c.m_Features = new BlueprintFeatureReference[] {
+                    AbadarFeature.ToReference<BlueprintFeatureReference>(),
                     IomedaeFeature.ToReference<BlueprintFeatureReference>(),
                     MilaniFeature.ToReference<BlueprintFeatureReference>(),
                     IroriFeature.ToReference<BlueprintFeatureReference>(),
@@ -251,7 +456,33 @@ namespace ExpandedContent.Tweaks.Deities {
                     ArsheaFeature.ToReference<BlueprintFeatureReference>(),
                     RagathielFeature.ToReference<BlueprintFeatureReference>(),
                     ApsuFeature.ToReference<BlueprintFeatureReference>(),
-                    DaikitsuFeature.ToReference<BlueprintFeatureReference>()};
+                    QiZhongFeature.ToReference<BlueprintFeatureReference>(),
+                    ShizuruFeature.ToReference<BlueprintFeatureReference>(),
+                    TsukiyoFeature.ToReference<BlueprintFeatureReference>(),
+                    AnubisFeature.ToReference<BlueprintFeatureReference>(),
+                    BesFeature.ToReference<BlueprintFeatureReference>(),
+                    HorusFeature.ToReference<BlueprintFeatureReference>(),
+                    IsisFeature.ToReference<BlueprintFeatureReference>(),
+                    KhepriFeature.ToReference<BlueprintFeatureReference>(),
+                    MaatFeature.ToReference<BlueprintFeatureReference>(),
+                    NeithFeature.ToReference<BlueprintFeatureReference>(),
+                    OsirisFeature.ToReference<BlueprintFeatureReference>(),
+                    RaFeature.ToReference<BlueprintFeatureReference>(),
+                    ThothFeature.ToReference<BlueprintFeatureReference>(),
+                    WadjetFeature.ToReference<BlueprintFeatureReference>(),
+                    YuelralFeature.ToReference<BlueprintFeatureReference>(),
+                    AndolettaFeature.ToReference<BlueprintFeatureReference>(),
+                    ArquerosFeature.ToReference<BlueprintFeatureReference>(),
+                    BharnarolFeature.ToReference<BlueprintFeatureReference>(),
+                    DammerichFeature.ToReference<BlueprintFeatureReference>(),
+                    EritriceFeature.ToReference<BlueprintFeatureReference>(),
+                    FalaynaFeature.ToReference<BlueprintFeatureReference>(),
+                    GhenshauFeature.ToReference<BlueprintFeatureReference>(),
+                    HalcamoraFeature.ToReference<BlueprintFeatureReference>(),
+                    IrezFeature.ToReference<BlueprintFeatureReference>(),
+                    JaidzFeature.ToReference<BlueprintFeatureReference>(),
+                    KoradaFeature.ToReference<BlueprintFeatureReference>()
+                };
             });
             var Seelah = Resources.GetBlueprint<BlueprintUnit>("54be53f0b35bf3c4592a97ae335fe765");
             Seelah.AddComponent<AddFacts>(c => {

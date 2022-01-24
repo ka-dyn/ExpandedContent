@@ -16,11 +16,12 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ExpandedContent.Tweaks.Deities {
-    internal class BlackButterfly {
-        private static readonly BlueprintFeature ChaosDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("8c7d778bc39fec642befc1435b00f613");
+    internal class Khepri {
+        private static readonly BlueprintFeature ArtificeDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("9656b1c7214180f4b9a6ab56f83b92fb");
         private static readonly BlueprintFeature GoodDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("882521af8012fc749930b03dc18a69de");
         private static readonly BlueprintFeature LiberationDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("801ca88338451a546bca2ee59da87c53");
-        private static readonly BlueprintFeature TravelDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("c008853fe044bd442ae8bd22260592b7");
+        private static readonly BlueprintFeature SunDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("e28412c548ff21a49ac5b8b792b0aa9b");
+        private static readonly BlueprintFeature TrickeryDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("eaa368e08628a8641b16cd41cbd2cb33");
         private static readonly BlueprintFeature CrusaderSpellbook = Resources.GetBlueprint<BlueprintFeature>("673d39f7da699aa408cdda6282e7dcc0");
         private static readonly BlueprintFeature ClericSpellbook = Resources.GetBlueprint<BlueprintFeature>("4673d19a0cf2fab4f885cc4d1353da33");
         private static readonly BlueprintFeature InquisitorSpellbook = Resources.GetBlueprint<BlueprintFeature>("57fab75111f377248810ece84193a5a5");
@@ -31,39 +32,38 @@ namespace ExpandedContent.Tweaks.Deities {
 
 
 
-        public static void AddBlackButterflyFeature() {
+        public static void AddKhepriFeature() {
 
-            BlueprintItem MasterworkStarknife = Resources.GetBlueprint<BlueprintItem>("657eca867b9324c4ca46cbf9ca01b940");
+            BlueprintItem MasterworkSlingStaff = Resources.GetBlueprint<BlueprintItem>("9f6b88554d5eb564ab2d247ab11f40b0");
 
             BlueprintArchetype FeralChampionArchetype = Resources.GetBlueprint<BlueprintArchetype>("f68ca492c9c15e241ab73735fbd0fb9f");
             BlueprintArchetype PriestOfBalance = Resources.GetBlueprint<BlueprintArchetype>("a4560e3fb5d247d68fb1a2738fcc0855");
 
-            BlueprintFeature StarknifeProficiency = Resources.GetBlueprint<BlueprintFeature>("7818ba3db79ac064e88fa14a2478b24b");
-            var BlackButterflyIcon = AssetLoader.LoadInternal("Deities", "Icon_BlackButterfly.jpg");
-            var BlackButterflyFeature = Helpers.CreateBlueprint<BlueprintFeature>("BlackButterflyFeature", (bp => {
+            BlueprintFeature SlingStaffProficiency = Resources.GetBlueprint<BlueprintFeature>("a0be067e11f4d8345a8b57a92e52a301");
+            var KhepriIcon = AssetLoader.LoadInternal("Deities", "Icon_Khepri.jpg");
+            var KhepriFeature = Helpers.CreateBlueprint<BlueprintFeature>("KhepriFeature", (bp => {
 
-                bp.SetName("Black Butterfly");
-                bp.SetDescription("\nTitles: The Silence Between, Desna's Shadow   " +
-                    "\nAlignment: Chaotic Good   " +
-                    "\nAreas of Concern: Distance, Silence, Space   " +
-                    "\nDomains: Chaos, Good, Liberation, Void   " +
-                    "\nSubdomains: Azata, Freedom, Revolution, Stars   " +
-                    "\nFavoured Weapon: Starknife   " +
-                    "\nHoly Symbol: Black butterfly with star   " +
-                    "\nSacred Animal: Butterfly   " +
-                    "\nLegend tells that at the dawn of creation, Desna placed the stars in the sky. As the goddess worked, she realized " +
-                    "she had created a pattern of spaces between the stars. When Desna placed the final star, a shadowy butterfly formed in " +
-                    "the spaces between and sprang into existence. This is the Black Butterfly, Desna's Shadow. The Black Butterfly appears as " +
-                    "the living silhouette of a graceful woman with white hair and eyes. Her expansive black butterfly wings hold reflections of " +
-                    "all the stars, planets, and galaxies in creation. One of the stars on the Black Butterfly's wings is actually her magical " +
-                    "starknife, Voidsedge, which can disappear from her wing and appear in her hand with a thought. The Silence Between knows the " +
-                    "value of stillness. She has seen the great expanse of space, and its vast and awful silence is reflected in her ancient eyes. " +
-                    "Those who live lives of silence, happily or unhappily, turn to the Black Butterfly as one who understands their solemn existence. " +
-                    "Explorers venturing into strange territories offer prayers to the Black Butterfly as well. Desna's Shadow teaches that in the " +
-                    "silences between breaths and thoughts, one can see one's true nature. While she despises all the forces of evil, she holds particular " +
-                    "enmity for the entities of the Dark Tapestry, and it is said she possesses great knowledge about the Dark Tapestry to which she refuses " +
-                    "to give voice.");
-                bp.m_Icon = BlackButterflyIcon;
+                bp.SetName("Khepri");
+                bp.SetDescription("\nTitles: The Humble Hand   " +
+                    "\nAlignment: Neutral Good   " +
+                    "\nAreas of Concern: Freedom, The Rising Sun, Work   " +
+                    "\nDomains: Artifice, Good, Liberation, Sun, Trickery   " +
+                    "\nSubdomains: Agathion, Day, Deception, Freedom, Revolution, Toil   " +
+                    "\nFavoured Weapon: Sling (Slingstaff)   " +
+                    "\nHoly Symbol: Blue Scarab   " +
+                    "\nSacred Animal: Scarab Beetle   " +
+                    "\nPerhaps the most popular of the old gods among the common folk of Osirion is Khepri, who takes the form of a scarab or dung beetle. " +
+                    "Khepri is the god of the rising sun in the eastern horizon, and the scarab rolling a ball of dung across the ground is seen as a symbol " +
+                    "of Khepri pushing the sun across the sky. As the sun rises in the morning, so do the peasants who work all day with little reward, and " +
+                    "Khepri is their divine embodiment, promising freedom from toil and reward for their labor in the afterlife. He is also a mischievous " +
+                    "prankster, breaking up the tedium of the long days with his antics and poking fun at those who consider themselves the commoners' betters. " +
+                    "Khepri is typically represented as a scarab beetle, or as a man with a scarab beetle for a head. As a solar deity, Khepri works closely with " +
+                    "Ra and Horus, is friendly with Hathor, and is opposed to Apep and Set and their evil machinations. As a trickster, Khepri is close friends with " +
+                    "Bes, and he relishes the distaste that his strange appearance, his pungent aroma, and all that he represents elicit in more refined and civilized " +
+                    "gods such as Bastet, Maat, and Thoth. Khepri seldom has dedicated temples, but as the patron of peasants, his priests can be found anywhere the " +
+                    "common folk labor. Temporary shrines to the scarab god often spring up next to fields or at building sites, where workers make small offerings of " +
+                    "a bite of their food or a sip of their beer, and ask Khepri to grant them an easy and productive day of work.");
+                bp.m_Icon = KhepriIcon;
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;
                 bp.HideInCharacterSheetAndLevelUp = false;
@@ -78,13 +78,13 @@ namespace ExpandedContent.Tweaks.Deities {
 
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
                 bp.AddComponent<PrerequisiteAlignment>(c => {
-                    c.Alignment = AlignmentMaskType.NeutralGood | AlignmentMaskType.ChaoticGood | AlignmentMaskType.ChaoticNeutral;
+                    c.Alignment = AlignmentMaskType.LawfulGood | AlignmentMaskType.NeutralGood | AlignmentMaskType.ChaoticGood | AlignmentMaskType.TrueNeutral;
                 });
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[1] { ChannelPositiveAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[1] { ChaosDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+                    c.m_Facts = new BlueprintUnitFactReference[1] { ArtificeDomainAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[1] { GoodDomainAllowed.ToReference<BlueprintUnitFactReference>() };
@@ -93,7 +93,10 @@ namespace ExpandedContent.Tweaks.Deities {
                     c.m_Facts = new BlueprintUnitFactReference[1] { LiberationDomainAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[1] { TravelDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+                    c.m_Facts = new BlueprintUnitFactReference[1] { SunDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[1] { TrickeryDomainAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<ForbidSpellbookOnAlignmentDeviation>(c => {
                     c.m_Spellbooks = new BlueprintSpellbookReference[1] { CrusaderSpellbook.ToReference<BlueprintSpellbookReference>() };
@@ -105,7 +108,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     c.m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>();
 
 
-                    c.m_Feature = StarknifeProficiency.ToReference<BlueprintFeatureReference>();
+                    c.m_Feature = SlingStaffProficiency.ToReference<BlueprintFeatureReference>();
 
                     c.Level = 1;
                     c.m_Archetypes = null;
@@ -114,7 +117,7 @@ namespace ExpandedContent.Tweaks.Deities {
                                WarpriestClass.ToReference<BlueprintCharacterClassReference>() };
                 });
                 bp.AddComponent<AddStartingEquipment>(c => {
-                    c.m_BasicItems = new BlueprintItemReference[1] { MasterworkStarknife.ToReference<BlueprintItemReference>() };
+                    c.m_BasicItems = new BlueprintItemReference[1] { MasterworkSlingStaff.ToReference<BlueprintItemReference>() };
                     c.m_RestrictedByClass = new BlueprintCharacterClassReference[3] {
                                 ClericClass.ToReference<BlueprintCharacterClassReference>(),
                                 InquistorClass.ToReference<BlueprintCharacterClassReference>(),

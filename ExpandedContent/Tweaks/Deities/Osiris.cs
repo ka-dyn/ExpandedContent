@@ -16,11 +16,12 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ExpandedContent.Tweaks.Deities {
-    internal class BlackButterfly {
-        private static readonly BlueprintFeature ChaosDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("8c7d778bc39fec642befc1435b00f613");
+    internal class Osiris {
         private static readonly BlueprintFeature GoodDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("882521af8012fc749930b03dc18a69de");
-        private static readonly BlueprintFeature LiberationDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("801ca88338451a546bca2ee59da87c53");
-        private static readonly BlueprintFeature TravelDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("c008853fe044bd442ae8bd22260592b7");
+        private static readonly BlueprintFeature HealingDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("73ae164c388990c43ade94cfe8ed5755");
+        private static readonly BlueprintFeature LawDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("092714336606cfc45a37d2ab39fabfa8");
+        private static readonly BlueprintFeature PlantDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("0e03c2a03222b0b42acf96096b286327");
+        private static readonly BlueprintFeature ReposeDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("076ba1e3a05fac146acfc956a9f41e95");
         private static readonly BlueprintFeature CrusaderSpellbook = Resources.GetBlueprint<BlueprintFeature>("673d39f7da699aa408cdda6282e7dcc0");
         private static readonly BlueprintFeature ClericSpellbook = Resources.GetBlueprint<BlueprintFeature>("4673d19a0cf2fab4f885cc4d1353da33");
         private static readonly BlueprintFeature InquisitorSpellbook = Resources.GetBlueprint<BlueprintFeature>("57fab75111f377248810ece84193a5a5");
@@ -31,39 +32,36 @@ namespace ExpandedContent.Tweaks.Deities {
 
 
 
-        public static void AddBlackButterflyFeature() {
+        public static void AddOsirisFeature() {
 
-            BlueprintItem MasterworkStarknife = Resources.GetBlueprint<BlueprintItem>("657eca867b9324c4ca46cbf9ca01b940");
+            BlueprintItem MasterworkFlail = Resources.GetBlueprint<BlueprintItem>("433ab4d3f4c7393488981a4a8b48bec5");
 
             BlueprintArchetype FeralChampionArchetype = Resources.GetBlueprint<BlueprintArchetype>("f68ca492c9c15e241ab73735fbd0fb9f");
             BlueprintArchetype PriestOfBalance = Resources.GetBlueprint<BlueprintArchetype>("a4560e3fb5d247d68fb1a2738fcc0855");
 
-            BlueprintFeature StarknifeProficiency = Resources.GetBlueprint<BlueprintFeature>("7818ba3db79ac064e88fa14a2478b24b");
-            var BlackButterflyIcon = AssetLoader.LoadInternal("Deities", "Icon_BlackButterfly.jpg");
-            var BlackButterflyFeature = Helpers.CreateBlueprint<BlueprintFeature>("BlackButterflyFeature", (bp => {
+            BlueprintFeature FlailProficiency = Resources.GetBlueprint<BlueprintFeature>("6d273f46bce2e0f47a0958810dc4c7d9");
+            var OsirisIcon = AssetLoader.LoadInternal("Deities", "Icon_Osiris.jpg");
+            var OsirisFeature = Helpers.CreateBlueprint<BlueprintFeature>("OsirisFeature", (bp => {
 
-                bp.SetName("Black Butterfly");
-                bp.SetDescription("\nTitles: The Silence Between, Desna's Shadow   " +
-                    "\nAlignment: Chaotic Good   " +
-                    "\nAreas of Concern: Distance, Silence, Space   " +
-                    "\nDomains: Chaos, Good, Liberation, Void   " +
-                    "\nSubdomains: Azata, Freedom, Revolution, Stars   " +
-                    "\nFavoured Weapon: Starknife   " +
-                    "\nHoly Symbol: Black butterfly with star   " +
-                    "\nSacred Animal: Butterfly   " +
-                    "\nLegend tells that at the dawn of creation, Desna placed the stars in the sky. As the goddess worked, she realized " +
-                    "she had created a pattern of spaces between the stars. When Desna placed the final star, a shadowy butterfly formed in " +
-                    "the spaces between and sprang into existence. This is the Black Butterfly, Desna's Shadow. The Black Butterfly appears as " +
-                    "the living silhouette of a graceful woman with white hair and eyes. Her expansive black butterfly wings hold reflections of " +
-                    "all the stars, planets, and galaxies in creation. One of the stars on the Black Butterfly's wings is actually her magical " +
-                    "starknife, Voidsedge, which can disappear from her wing and appear in her hand with a thought. The Silence Between knows the " +
-                    "value of stillness. She has seen the great expanse of space, and its vast and awful silence is reflected in her ancient eyes. " +
-                    "Those who live lives of silence, happily or unhappily, turn to the Black Butterfly as one who understands their solemn existence. " +
-                    "Explorers venturing into strange territories offer prayers to the Black Butterfly as well. Desna's Shadow teaches that in the " +
-                    "silences between breaths and thoughts, one can see one's true nature. While she despises all the forces of evil, she holds particular " +
-                    "enmity for the entities of the Dark Tapestry, and it is said she possesses great knowledge about the Dark Tapestry to which she refuses " +
-                    "to give voice.");
-                bp.m_Icon = BlackButterflyIcon;
+                bp.SetName("Osiris");
+                bp.SetDescription("\nTitles: The Monkey King, Aware of Vacuity   " +
+                    "\nAlignment: Lawful Good   " +
+                    "\nAreas of Concern: Afterlife, Fertility, Rebirth, Resurrection   " +
+                    "\nDomains: Good, Healing, Law, Plant, Repose   " +
+                    "\nSubdomains: Ancestors, Archon, Growth, Restoration, Resurrection, Souls   " +
+                    "\nFavoured Weapon: Flail   " +
+                    "\nHoly Symbol: Crook and flail   " +
+                    "\nSacred Animal: Ram   " +
+                    "\nMyths say that during the Age of Legend, Osiris ruled Osirion as its king. But his brother Set was jealous of Osiris's " +
+                    "power and coveted his throne, so Set killed Osiris, dismembered his brother's body, and scattered the pieces across the world. " +
+                    "Isis gathered up the pieces, and using her magic, she brought her husband back to life. Now free from death, Osiris became a god " +
+                    "of death and life after death, whose resurrection mirrors the rebirth of souls in the afterlife. Osiris is also a fertility god, a " +
+                    "deity of nature and growth who dies each year with the harvest and is reborn again in the spring when vegetation sprouts again. " +
+                    "Osiris always appears wrapped up like a mummy, but with green skin symbolizing his role as a god of fertility. He wears a white atef " +
+                    "crown with two ostrich feathers and carries a crook and flail, the symbols of pharaonic rule. Osiris is the brother of Nephthys and Set. " +
+                    "His sister Isis is also his wife, and he is the father of Horus. As a death god, Osiris is tightly aligned with the likes of Pharasma and " +
+                    "Anubis, but his brother Set remains his sworn enemy.");
+                bp.m_Icon = OsirisIcon;
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;
                 bp.HideInCharacterSheetAndLevelUp = false;
@@ -78,22 +76,25 @@ namespace ExpandedContent.Tweaks.Deities {
 
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
                 bp.AddComponent<PrerequisiteAlignment>(c => {
-                    c.Alignment = AlignmentMaskType.NeutralGood | AlignmentMaskType.ChaoticGood | AlignmentMaskType.ChaoticNeutral;
+                    c.Alignment = AlignmentMaskType.LawfulGood | AlignmentMaskType.NeutralGood | AlignmentMaskType.LawfulNeutral;
                 });
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[1] { ChannelPositiveAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[1] { ChaosDomainAllowed.ToReference<BlueprintUnitFactReference>() };
-                });
-                bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[1] { GoodDomainAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[1] { LiberationDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+                    c.m_Facts = new BlueprintUnitFactReference[1] { HealingDomainAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[1] { TravelDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+                    c.m_Facts = new BlueprintUnitFactReference[1] { LawDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[1] { PlantDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[1] { ReposeDomainAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<ForbidSpellbookOnAlignmentDeviation>(c => {
                     c.m_Spellbooks = new BlueprintSpellbookReference[1] { CrusaderSpellbook.ToReference<BlueprintSpellbookReference>() };
@@ -105,7 +106,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     c.m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>();
 
 
-                    c.m_Feature = StarknifeProficiency.ToReference<BlueprintFeatureReference>();
+                    c.m_Feature = FlailProficiency.ToReference<BlueprintFeatureReference>();
 
                     c.Level = 1;
                     c.m_Archetypes = null;
@@ -114,7 +115,7 @@ namespace ExpandedContent.Tweaks.Deities {
                                WarpriestClass.ToReference<BlueprintCharacterClassReference>() };
                 });
                 bp.AddComponent<AddStartingEquipment>(c => {
-                    c.m_BasicItems = new BlueprintItemReference[1] { MasterworkStarknife.ToReference<BlueprintItemReference>() };
+                    c.m_BasicItems = new BlueprintItemReference[1] { MasterworkFlail.ToReference<BlueprintItemReference>() };
                     c.m_RestrictedByClass = new BlueprintCharacterClassReference[3] {
                                 ClericClass.ToReference<BlueprintCharacterClassReference>(),
                                 InquistorClass.ToReference<BlueprintCharacterClassReference>(),

@@ -16,11 +16,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ExpandedContent.Tweaks.Deities {
-    internal class BlackButterfly {
+    internal class Chadali {
         private static readonly BlueprintFeature ChaosDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("8c7d778bc39fec642befc1435b00f613");
         private static readonly BlueprintFeature GoodDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("882521af8012fc749930b03dc18a69de");
-        private static readonly BlueprintFeature LiberationDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("801ca88338451a546bca2ee59da87c53");
-        private static readonly BlueprintFeature TravelDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("c008853fe044bd442ae8bd22260592b7");
+        private static readonly BlueprintFeature LuckDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("d4e192475bb1a1045859c7664addd461");
+        private static readonly BlueprintFeature ProtectionDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("d4ce7592bd12d63439907ad64e986e59");
         private static readonly BlueprintFeature CrusaderSpellbook = Resources.GetBlueprint<BlueprintFeature>("673d39f7da699aa408cdda6282e7dcc0");
         private static readonly BlueprintFeature ClericSpellbook = Resources.GetBlueprint<BlueprintFeature>("4673d19a0cf2fab4f885cc4d1353da33");
         private static readonly BlueprintFeature InquisitorSpellbook = Resources.GetBlueprint<BlueprintFeature>("57fab75111f377248810ece84193a5a5");
@@ -31,7 +31,7 @@ namespace ExpandedContent.Tweaks.Deities {
 
 
 
-        public static void AddBlackButterflyFeature() {
+        public static void AddChadaliFeature() {
 
             BlueprintItem MasterworkStarknife = Resources.GetBlueprint<BlueprintItem>("657eca867b9324c4ca46cbf9ca01b940");
 
@@ -39,31 +39,29 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintArchetype PriestOfBalance = Resources.GetBlueprint<BlueprintArchetype>("a4560e3fb5d247d68fb1a2738fcc0855");
 
             BlueprintFeature StarknifeProficiency = Resources.GetBlueprint<BlueprintFeature>("7818ba3db79ac064e88fa14a2478b24b");
-            var BlackButterflyIcon = AssetLoader.LoadInternal("Deities", "Icon_BlackButterfly.jpg");
-            var BlackButterflyFeature = Helpers.CreateBlueprint<BlueprintFeature>("BlackButterflyFeature", (bp => {
+            var ChadaliIcon = AssetLoader.LoadInternal("Deities", "Icon_Chadali.jpg");
+            var ChadaliFeature = Helpers.CreateBlueprint<BlueprintFeature>("ChadaliFeature", (bp => {
 
-                bp.SetName("Black Butterfly");
-                bp.SetDescription("\nTitles: The Silence Between, Desna's Shadow   " +
+                bp.SetName("Chadali");
+                bp.SetDescription("\nTitles: The Serendipitous Path   " +
                     "\nAlignment: Chaotic Good   " +
-                    "\nAreas of Concern: Distance, Silence, Space   " +
-                    "\nDomains: Chaos, Good, Liberation, Void   " +
-                    "\nSubdomains: Azata, Freedom, Revolution, Stars   " +
-                    "\nFavoured Weapon: Starknife   " +
-                    "\nHoly Symbol: Black butterfly with star   " +
-                    "\nSacred Animal: Butterfly   " +
-                    "\nLegend tells that at the dawn of creation, Desna placed the stars in the sky. As the goddess worked, she realized " +
-                    "she had created a pattern of spaces between the stars. When Desna placed the final star, a shadowy butterfly formed in " +
-                    "the spaces between and sprang into existence. This is the Black Butterfly, Desna's Shadow. The Black Butterfly appears as " +
-                    "the living silhouette of a graceful woman with white hair and eyes. Her expansive black butterfly wings hold reflections of " +
-                    "all the stars, planets, and galaxies in creation. One of the stars on the Black Butterfly's wings is actually her magical " +
-                    "starknife, Voidsedge, which can disappear from her wing and appear in her hand with a thought. The Silence Between knows the " +
-                    "value of stillness. She has seen the great expanse of space, and its vast and awful silence is reflected in her ancient eyes. " +
-                    "Those who live lives of silence, happily or unhappily, turn to the Black Butterfly as one who understands their solemn existence. " +
-                    "Explorers venturing into strange territories offer prayers to the Black Butterfly as well. Desna's Shadow teaches that in the " +
-                    "silences between breaths and thoughts, one can see one's true nature. While she despises all the forces of evil, she holds particular " +
-                    "enmity for the entities of the Dark Tapestry, and it is said she possesses great knowledge about the Dark Tapestry to which she refuses " +
-                    "to give voice.");
-                bp.m_Icon = BlackButterflyIcon;
+                    "\nAreas of Concern: Fate, Safety, Serendipity   " +
+                    "\nDomains: Chaos, Good, Luck, Protection   " +
+                    "\nSubdomains: Azata, Defense, Fate, Purity   " +
+                    "\nFavoured Weapon: Net (Starknife)   " +
+                    "\nHoly Symbol: Symmetrical water lily   " +
+                    "\nSacred Animal: Gecko   " +
+                    "\nChadali gently nudges events and individuals to create fortunate detours, harmonious meetings, and unexpected revelations. " +
+                    "Her followers claim that a confluence of singular events-a yellow aurora, a lunar eclipse, and a meteor shower-occurred " +
+                    "simultaneously on Elysium, and that from that confluence Chadali was born. Chadali appears as a beautiful, middle-aged Vudrani " +
+                    "woman who stands firmly on the ground but whose dark eyes often lift to the sky. Fresh water lilies peep out from the coiled " +
+                    "masses of her shining black hair, and she wears silken robes of pale yellow that fall to her bare feet. In her hands she holds " +
+                    "a net woven of red threads; tiny rubies glimmer within the folds of the net. The Serendipitous Path teaches that fate is beautiful " +
+                    "in its unpredictability. Seemingly insignificant events can determine the course of an entire life. Her agents visit those who are " +
+                    "afraid to take chances and encourage them to step out into the world and trust fate. The greatest evil, in Chadali's eyes , is " +
+                    "rigidly structuring one's life to prevent unexpected events from happening. Chadali lives in the Pavilion of Serendipity, a structure " +
+                    "of glimmering light on the coast of the Boundless Azure Ocean in Elysium.");
+                bp.m_Icon = ChadaliIcon;
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;
                 bp.HideInCharacterSheetAndLevelUp = false;
@@ -90,10 +88,10 @@ namespace ExpandedContent.Tweaks.Deities {
                     c.m_Facts = new BlueprintUnitFactReference[1] { GoodDomainAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[1] { LiberationDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+                    c.m_Facts = new BlueprintUnitFactReference[1] { LuckDomainAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[1] { TravelDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+                    c.m_Facts = new BlueprintUnitFactReference[1] { ProtectionDomainAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<ForbidSpellbookOnAlignmentDeviation>(c => {
                     c.m_Spellbooks = new BlueprintSpellbookReference[1] { CrusaderSpellbook.ToReference<BlueprintSpellbookReference>() };

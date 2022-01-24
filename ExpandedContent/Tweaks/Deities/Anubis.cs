@@ -16,12 +16,12 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ExpandedContent.Tweaks.Deities {
-    internal class Daikitsu {
-        private static readonly BlueprintFeature AnimalDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("9f05f9da2ea5ae44eac47d407a0000e5");
-        private static readonly BlueprintFeature ArtificeDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("9656b1c7214180f4b9a6ab56f83b92fb");
-        private static readonly BlueprintFeature CommunityDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("c87004460f3328c408d22c5ead05291f");
-        private static readonly BlueprintFeature PlantDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("0e03c2a03222b0b42acf96096b286327");
-        private static readonly BlueprintFeature WeatherDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("9dfdfd4904e98fa48b80c8f63ec2cf11");
+    internal class Anubis {
+        private static readonly BlueprintFeature DeathDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("a099afe1b0b32554199b230699a69525");
+        private static readonly BlueprintFeature EarthDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("5ca99a6ae118feb449dbbd165a8fe7c4");
+        private static readonly BlueprintFeature LawDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("092714336606cfc45a37d2ab39fabfa8");
+        private static readonly BlueprintFeature ProtectionDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("d4ce7592bd12d63439907ad64e986e59");
+        private static readonly BlueprintFeature ReposeDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("076ba1e3a05fac146acfc956a9f41e95");
         private static readonly BlueprintFeature CrusaderSpellbook = Resources.GetBlueprint<BlueprintFeature>("673d39f7da699aa408cdda6282e7dcc0");
         private static readonly BlueprintFeature ClericSpellbook = Resources.GetBlueprint<BlueprintFeature>("4673d19a0cf2fab4f885cc4d1353da33");
         private static readonly BlueprintFeature InquisitorSpellbook = Resources.GetBlueprint<BlueprintFeature>("57fab75111f377248810ece84193a5a5");
@@ -33,38 +33,47 @@ namespace ExpandedContent.Tweaks.Deities {
 
 
 
-        public static void AddDaikitsuFeature() {
-
+        public static void AddAnubisFeature() {
 
             BlueprintItem MasterworkFlail = Resources.GetBlueprint<BlueprintItem>("433ab4d3f4c7393488981a4a8b48bec5");
 
+            BlueprintArchetype FeralChampionArchetype = Resources.GetBlueprint<BlueprintArchetype>("f68ca492c9c15e241ab73735fbd0fb9f");
 
             BlueprintFeature FlailProficiency = Resources.GetBlueprint<BlueprintFeature>("6d273f46bce2e0f47a0958810dc4c7d9");
-            var DaikitsuIcon = AssetLoader.LoadInternal("Deities", "Icon_Daikitsu.jpg");
-            var DaikitsuFeature = Helpers.CreateBlueprint<BlueprintFeature>("DaikitsuFeature", (bp => {
+            var AnubisIcon = AssetLoader.LoadInternal("Deities", "Icon_Anubis.jpg");
+            var AnubisFeature = Helpers.CreateBlueprint<BlueprintFeature>("AnubisFeature", (bp => {
 
-                bp.SetName("Daikitsu");
-                bp.SetDescription("\nTitles: Lady of Foxes   " +
-                    "\nAlignment: Neutral   " +
-                    "\nAreas of Concern: Agriculture, Craftsmanship, Kitsune, Rice" +
-                    "\nEdict: Ensure the health of crops and vegetation, perfect a craft or trade, leave offerings for foxes, celebrate the turning of the seasons   " +
-                    "\nDomains: Animal, Artifice, Community, Plant, Weather   " +
-                    "\nSubdomains: Construct, Family, Fur, Growth, Home, Industry, Seasons   " +
+                bp.SetName("Anubis");
+                bp.SetDescription("\nTitles: Guardian of the Timb   " +
+                    "\nAlignment: Lawful Neutral   " +
+                    "\nAreas of Concern: Burial, The Dead, Funeral Rites, Mummification, Tombs   " +
+                    "\nDomains: Death, Earth, Law, Protection , Repose   " +
+                    "\nSubdomains: Ancestors, Defense, Inevitable, Metal, Purity, Souls   " +
                     "\nFavoured Weapon: Flail   " +
-                    "\nHoly Symbol: Nine-tailed fox   " +
-                    "\nSacred Animal: Fox   " +
-                    "Daikitsu is widely worshiped in Tian Xia, as she is the goddess of rice, a staple food in those lands, as well as of " +
-                    "agriculture and craftsmanship. Farmers pray to Daikitsu for good harvests, smiths and craftsmen seek her blessing for their " +
-                    "creations, and families ask for her protection for their homes and families. Known as the Lady of Foxes, Daikitsu usually " +
-                    "appears as beautiful kitsune woman with snow-white fur and nine tails. She is also the patron of kitsune, who venerate her " +
-                    "as the mother of their race.");
-                bp.m_Icon = DaikitsuIcon;
+                    "\nHoly Symbol: Black Jackal Head   " +
+                    "\nSacred Animal: Jackal   " +
+                    "\nVirtually every Osirian tomb contains images of the jackal-headed god Anubis, " +
+                    "the god of mummification and protector of tombs. He presides over funerals and embalming, " +
+                    "and guides souls to Pharasma to await their judgment in the afterlife, punishing tomb robbers " +
+                    "and defending the dead on their journeys to the Boneyard. Anubis is the son of Osiris and Nephthys, " +
+                    "and assisted Isis with Osiris's mummification. Like his father, Anubis frequently comes into conflict " +
+                    "with Set, particularly regarding that god's association with undeath. As a guardian of the dead and " +
+                    "their tombs, Anubis frequently works with Isis, Neith, Nephthys, and Selket, who protect the canopic jars " +
+                    "containing the organs of the deceased. Anubis usually appears as a man with jet-black skin and the head of a " +
+                    "jackal, though he sometimes takes the entire form of a jackal. Clerics and paladins of Anubis dedicated to " +
+                    "destroying undead creatures wherever they find them.");
+                bp.m_Icon = AnubisIcon;
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;
                 bp.HideInCharacterSheetAndLevelUp = false;
+                bp.AddComponent<PrerequisiteNoArchetype>(c => {
+                    c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = FeralChampionArchetype.ToReference<BlueprintArchetypeReference>();
+                });
+
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
                 bp.AddComponent<PrerequisiteAlignment>(c => {
-                    c.Alignment = AlignmentMaskType.NeutralGood | AlignmentMaskType.LawfulNeutral | AlignmentMaskType.TrueNeutral | AlignmentMaskType.ChaoticNeutral | AlignmentMaskType.NeutralEvil;
+                    c.Alignment = AlignmentMaskType.LawfulGood | AlignmentMaskType.LawfulNeutral | AlignmentMaskType.TrueNeutral | AlignmentMaskType.LawfulEvil;
                 });
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[1] { ChannelPositiveAllowed.ToReference<BlueprintUnitFactReference>() };
@@ -73,19 +82,19 @@ namespace ExpandedContent.Tweaks.Deities {
                     c.m_Facts = new BlueprintUnitFactReference[1] { ChannelNegativeAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[1] { AnimalDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+                    c.m_Facts = new BlueprintUnitFactReference[1] { DeathDomainAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[1] { ArtificeDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+                    c.m_Facts = new BlueprintUnitFactReference[1] { EarthDomainAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[1] { CommunityDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+                    c.m_Facts = new BlueprintUnitFactReference[1] { LawDomainAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[1] { PlantDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+                    c.m_Facts = new BlueprintUnitFactReference[1] { ProtectionDomainAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[1] { WeatherDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+                    c.m_Facts = new BlueprintUnitFactReference[1] { ReposeDomainAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<ForbidSpellbookOnAlignmentDeviation>(c => {
                     c.m_Spellbooks = new BlueprintSpellbookReference[1] { CrusaderSpellbook.ToReference<BlueprintSpellbookReference>() };

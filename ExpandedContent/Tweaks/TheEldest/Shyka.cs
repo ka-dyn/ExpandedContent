@@ -15,13 +15,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExpandedContent.Tweaks.Deities {
-    internal class Daikitsu {
-        private static readonly BlueprintFeature AnimalDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("9f05f9da2ea5ae44eac47d407a0000e5");
-        private static readonly BlueprintFeature ArtificeDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("9656b1c7214180f4b9a6ab56f83b92fb");
-        private static readonly BlueprintFeature CommunityDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("c87004460f3328c408d22c5ead05291f");
-        private static readonly BlueprintFeature PlantDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("0e03c2a03222b0b42acf96096b286327");
-        private static readonly BlueprintFeature WeatherDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("9dfdfd4904e98fa48b80c8f63ec2cf11");
+namespace ExpandedContent.Tweaks.TheEldest {
+    internal class Shyka {
+        private static readonly BlueprintFeature DeathDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("a099afe1b0b32554199b230699a69525");
+        private static readonly BlueprintFeature DestructionDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("6832681c9a91bf946a1d9da28c5be4b4");
+        private static readonly BlueprintFeature MadnessDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("c346bcc77a6613040b3aa915b1ceddec");
+        private static readonly BlueprintFeature MagicDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("08a5686378a87b64399d329ba4ef71b8");
         private static readonly BlueprintFeature CrusaderSpellbook = Resources.GetBlueprint<BlueprintFeature>("673d39f7da699aa408cdda6282e7dcc0");
         private static readonly BlueprintFeature ClericSpellbook = Resources.GetBlueprint<BlueprintFeature>("4673d19a0cf2fab4f885cc4d1353da33");
         private static readonly BlueprintFeature InquisitorSpellbook = Resources.GetBlueprint<BlueprintFeature>("57fab75111f377248810ece84193a5a5");
@@ -33,35 +32,42 @@ namespace ExpandedContent.Tweaks.Deities {
 
 
 
-        public static void AddDaikitsuFeature() {
+        public static void AddShykaFeature() {
 
+            BlueprintItem MasterworkLightMace = Resources.GetBlueprint<BlueprintItem>("519f28989b9e30c49b4899b9d6fc5441");
 
-            BlueprintItem MasterworkFlail = Resources.GetBlueprint<BlueprintItem>("433ab4d3f4c7393488981a4a8b48bec5");
+            BlueprintArchetype FeralChampionArchetype = Resources.GetBlueprint<BlueprintArchetype>("f68ca492c9c15e241ab73735fbd0fb9f");
 
+            BlueprintFeature LightMaceProficiency = Resources.GetBlueprint<BlueprintFeature>("d0a788c77b0eae948944fa424125c120");
+            var ShykaIcon = AssetLoader.LoadInternal("Deities", "Icon_Shyka.jpg");
+            var ShykaFeature = Helpers.CreateBlueprint<BlueprintFeature>("ShykaFeature", (bp => {
 
-            BlueprintFeature FlailProficiency = Resources.GetBlueprint<BlueprintFeature>("6d273f46bce2e0f47a0958810dc4c7d9");
-            var DaikitsuIcon = AssetLoader.LoadInternal("Deities", "Icon_Daikitsu.jpg");
-            var DaikitsuFeature = Helpers.CreateBlueprint<BlueprintFeature>("DaikitsuFeature", (bp => {
-
-                bp.SetName("Daikitsu");
-                bp.SetDescription("\nTitles: Lady of Foxes   " +
+                bp.SetName("Shyka");
+                bp.SetDescription("\nTitles: The Many   " +
                     "\nAlignment: Neutral   " +
-                    "\nAreas of Concern: Agriculture, Craftsmanship, Kitsune, Rice" +
-                    "\nEdict: Ensure the health of crops and vegetation, perfect a craft or trade, leave offerings for foxes, celebrate the turning of the seasons   " +
-                    "\nDomains: Animal, Artifice, Community, Plant, Weather   " +
-                    "\nSubdomains: Construct, Family, Fur, Growth, Home, Industry, Seasons   " +
-                    "\nFavoured Weapon: Flail   " +
-                    "\nHoly Symbol: Nine-tailed fox   " +
-                    "\nSacred Animal: Fox   " +
-                    "Daikitsu is widely worshiped in Tian Xia, as she is the goddess of rice, a staple food in those lands, as well as of " +
-                    "agriculture and craftsmanship. Farmers pray to Daikitsu for good harvests, smiths and craftsmen seek her blessing for their " +
-                    "creations, and families ask for her protection for their homes and families. Known as the Lady of Foxes, Daikitsu usually " +
-                    "appears as beautiful kitsune woman with snow-white fur and nine tails. She is also the patron of kitsune, who venerate her " +
-                    "as the mother of their race.");
-                bp.m_Icon = DaikitsuIcon;
+                    "\nAreas of Concern: Entropy, Reincarnation, Time   " +
+                    "\nDomains: Death, Destruction, Madness, Magic   " +
+                    "\nSubdomains: Arcane, Catastrophe, Divine, Insanity   " +
+                    "\nFavoured Weapon: Light Mace   " +
+                    "\nHoly Symbol: Broken hourglass   " +
+                    "\nSacred Animal: Communal or hive animals   " +
+                    "\nShyka the Many is one of the Eldest, a divine fey creature of tremendous power said to be able to reshape the very " +
+                    "fabric of the First World on a whim. Shyka is considered a title or a role, for many entities, both male and female, have " +
+                    "borne this name over the ages. All have been chronomancers with mastery over time; time acts strangely within the First World, " +
+                    "but Shyka seems able to manipulate it. Indeed, their many forms and personalities over time, past and future, may well sit " +
+                    "within Shyka together, out of time, as they all speak with the same voice. All of Shyka's incarnations have seen both the " +
+                    "beginning and the end of the Great Beyond, yet they are strangely interested in small events, especially those related to the " +
+                    "continuum of time, which they call \"perceived causality\". Many of their worshippers believe that Shyka quickly shepherds existence " +
+                    "toward the best possible version, and has prevented its destruction innumerous times.");
+                bp.m_Icon = ShykaIcon;
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;
                 bp.HideInCharacterSheetAndLevelUp = false;
+                bp.AddComponent<PrerequisiteNoArchetype>(c => {
+                    c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = FeralChampionArchetype.ToReference<BlueprintArchetypeReference>();
+                });
+
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
                 bp.AddComponent<PrerequisiteAlignment>(c => {
                     c.Alignment = AlignmentMaskType.NeutralGood | AlignmentMaskType.LawfulNeutral | AlignmentMaskType.TrueNeutral | AlignmentMaskType.ChaoticNeutral | AlignmentMaskType.NeutralEvil;
@@ -73,19 +79,16 @@ namespace ExpandedContent.Tweaks.Deities {
                     c.m_Facts = new BlueprintUnitFactReference[1] { ChannelNegativeAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[1] { AnimalDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+                    c.m_Facts = new BlueprintUnitFactReference[1] { DeathDomainAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[1] { ArtificeDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+                    c.m_Facts = new BlueprintUnitFactReference[1] { DestructionDomainAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[1] { CommunityDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+                    c.m_Facts = new BlueprintUnitFactReference[1] { MagicDomainAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[1] { PlantDomainAllowed.ToReference<BlueprintUnitFactReference>() };
-                });
-                bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[1] { WeatherDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+                    c.m_Facts = new BlueprintUnitFactReference[1] { MadnessDomainAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<ForbidSpellbookOnAlignmentDeviation>(c => {
                     c.m_Spellbooks = new BlueprintSpellbookReference[1] { CrusaderSpellbook.ToReference<BlueprintSpellbookReference>() };
@@ -97,7 +100,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     c.m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>();
 
 
-                    c.m_Feature = FlailProficiency.ToReference<BlueprintFeatureReference>();
+                    c.m_Feature = LightMaceProficiency.ToReference<BlueprintFeatureReference>();
 
                     c.Level = 1;
                     c.m_Archetypes = null;
@@ -106,7 +109,7 @@ namespace ExpandedContent.Tweaks.Deities {
                                WarpriestClass.ToReference<BlueprintCharacterClassReference>() };
                 });
                 bp.AddComponent<AddStartingEquipment>(c => {
-                    c.m_BasicItems = new BlueprintItemReference[1] { MasterworkFlail.ToReference<BlueprintItemReference>() };
+                    c.m_BasicItems = new BlueprintItemReference[1] { MasterworkLightMace.ToReference<BlueprintItemReference>() };
                     c.m_RestrictedByClass = new BlueprintCharacterClassReference[3] {
                                 ClericClass.ToReference<BlueprintCharacterClassReference>(),
                                 InquistorClass.ToReference<BlueprintCharacterClassReference>(),

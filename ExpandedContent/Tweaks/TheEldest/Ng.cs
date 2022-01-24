@@ -15,12 +15,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExpandedContent.Tweaks.Deities {
-    internal class Daikitsu {
-        private static readonly BlueprintFeature AnimalDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("9f05f9da2ea5ae44eac47d407a0000e5");
-        private static readonly BlueprintFeature ArtificeDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("9656b1c7214180f4b9a6ab56f83b92fb");
-        private static readonly BlueprintFeature CommunityDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("c87004460f3328c408d22c5ead05291f");
-        private static readonly BlueprintFeature PlantDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("0e03c2a03222b0b42acf96096b286327");
+namespace ExpandedContent.Tweaks.TheEldest {
+    internal class Ng {
+        private static readonly BlueprintFeature KnowledgeDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("443d44b3e0ea84046a9bf304c82a0425");
+        private static readonly BlueprintFeature MagicDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("08a5686378a87b64399d329ba4ef71b8");
+        private static readonly BlueprintFeature TravelDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("c008853fe044bd442ae8bd22260592b7");
         private static readonly BlueprintFeature WeatherDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("9dfdfd4904e98fa48b80c8f63ec2cf11");
         private static readonly BlueprintFeature CrusaderSpellbook = Resources.GetBlueprint<BlueprintFeature>("673d39f7da699aa408cdda6282e7dcc0");
         private static readonly BlueprintFeature ClericSpellbook = Resources.GetBlueprint<BlueprintFeature>("4673d19a0cf2fab4f885cc4d1353da33");
@@ -33,39 +32,51 @@ namespace ExpandedContent.Tweaks.Deities {
 
 
 
-        public static void AddDaikitsuFeature() {
+        public static void AddNgFeature() {
 
+            BlueprintItem MasterworkPunchingDagger = Resources.GetBlueprint<BlueprintItem>("4eadc3edae4500a4c972b61cad66add8");
 
-            BlueprintItem MasterworkFlail = Resources.GetBlueprint<BlueprintItem>("433ab4d3f4c7393488981a4a8b48bec5");
+            BlueprintArchetype FeralChampionArchetype = Resources.GetBlueprint<BlueprintArchetype>("f68ca492c9c15e241ab73735fbd0fb9f");
 
+            BlueprintFeature PunchingDaggerProficiency = Resources.GetBlueprint<BlueprintFeature>("a13839f75ac30cc48945c96ef1c98e1c");
+            var NgIcon = AssetLoader.LoadInternal("Deities", "Icon_Ng.jpg");
+            var NgFeature = Helpers.CreateBlueprint<BlueprintFeature>("NgFeature", (bp => {
 
-            BlueprintFeature FlailProficiency = Resources.GetBlueprint<BlueprintFeature>("6d273f46bce2e0f47a0958810dc4c7d9");
-            var DaikitsuIcon = AssetLoader.LoadInternal("Deities", "Icon_Daikitsu.jpg");
-            var DaikitsuFeature = Helpers.CreateBlueprint<BlueprintFeature>("DaikitsuFeature", (bp => {
-
-                bp.SetName("Daikitsu");
-                bp.SetDescription("\nTitles: Lady of Foxes   " +
+                bp.SetName("Ng");
+                bp.SetDescription("\nTitles: The Hooded, The Lord of the Crossroads   " +
                     "\nAlignment: Neutral   " +
-                    "\nAreas of Concern: Agriculture, Craftsmanship, Kitsune, Rice" +
-                    "\nEdict: Ensure the health of crops and vegetation, perfect a craft or trade, leave offerings for foxes, celebrate the turning of the seasons   " +
-                    "\nDomains: Animal, Artifice, Community, Plant, Weather   " +
-                    "\nSubdomains: Construct, Family, Fur, Growth, Home, Industry, Seasons   " +
-                    "\nFavoured Weapon: Flail   " +
-                    "\nHoly Symbol: Nine-tailed fox   " +
-                    "\nSacred Animal: Fox   " +
-                    "Daikitsu is widely worshiped in Tian Xia, as she is the goddess of rice, a staple food in those lands, as well as of " +
-                    "agriculture and craftsmanship. Farmers pray to Daikitsu for good harvests, smiths and craftsmen seek her blessing for their " +
-                    "creations, and families ask for her protection for their homes and families. Known as the Lady of Foxes, Daikitsu usually " +
-                    "appears as beautiful kitsune woman with snow-white fur and nine tails. She is also the patron of kitsune, who venerate her " +
-                    "as the mother of their race.");
-                bp.m_Icon = DaikitsuIcon;
+                    "\nAreas of Concern: The Seasons, Secrets, Wanderers   " +
+                    "\nDomains: Knowledge, Magic, Travel, Weather   " +
+                    "\nSubdomains: Exploration, Seasons, Thought, Trade   " +
+                    "\nFavoured Weapon: Gauntlet (Punching dagger)   " +
+                    "\nHoly Symbol: Silver hood containing stars and a comet   " +
+                    "\nSacred Animal: Migratory animals   " +
+                    "\nTaciturn and mysterious, Ng the Hooded is the patron of those wanderers who—unlike happy-go-lucky Desnans—understand the " +
+                    "seriousness of what they do, cognizant of the physical dangers of the open road as well as the larger metaphysical dangers such " +
+                    "freedom represents. As with every traveler met on a lonely road far from civilization, the Lord of the Crossroads is an enigma. " +
+                    "While many Eldest and gods like Norgorber concern themselves with secrets, Ng’s are perhaps the greatest, as even his most " +
+                    "steadfast worshipers have no idea what he truly is, nor what ends he might be pursuing. Indeed, the Hooded rarely acknowledges " +
+                    "his worshipers at all, leading some to question whether he’s actually responsible for granting spells to those who pray to him. " +
+                    "Ng’s seemingly aimless wanderings and inscrutable questions have led to many theories about his nature. Some paint him as a ghost, " +
+                    "the shade of some forgotten Eldest too powerful to abandon the First World entirely. Others cite his endless patience and logic as " +
+                    "those of a clockwork automaton, a servant of whatever distant being created the Palace of Seasons, or perhaps even the mouthpiece " +
+                    "through which a departed god maintains a hand in the plane’s affairs. Still others believe him to be the voice of the First World " +
+                    "itself, the avatar of a vast emergent consciousness. Ng has heard all of these theories, and met them with stoic silence. Whatever " +
+                    "his nature or motives, they remain solidly and silently his own—a fitting response for a lord of secrets.");
+                bp.m_Icon = NgIcon;
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;
                 bp.HideInCharacterSheetAndLevelUp = false;
+                bp.AddComponent<PrerequisiteNoArchetype>(c => {
+                    c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = FeralChampionArchetype.ToReference<BlueprintArchetypeReference>();
+                });
+
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
                 bp.AddComponent<PrerequisiteAlignment>(c => {
                     c.Alignment = AlignmentMaskType.NeutralGood | AlignmentMaskType.LawfulNeutral | AlignmentMaskType.TrueNeutral | AlignmentMaskType.ChaoticNeutral | AlignmentMaskType.NeutralEvil;
                 });
+
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[1] { ChannelPositiveAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
@@ -73,16 +84,13 @@ namespace ExpandedContent.Tweaks.Deities {
                     c.m_Facts = new BlueprintUnitFactReference[1] { ChannelNegativeAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[1] { AnimalDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+                    c.m_Facts = new BlueprintUnitFactReference[1] { KnowledgeDomainAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[1] { ArtificeDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+                    c.m_Facts = new BlueprintUnitFactReference[1] { MagicDomainAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[1] { CommunityDomainAllowed.ToReference<BlueprintUnitFactReference>() };
-                });
-                bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[1] { PlantDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+                    c.m_Facts = new BlueprintUnitFactReference[1] { TravelDomainAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[1] { WeatherDomainAllowed.ToReference<BlueprintUnitFactReference>() };
@@ -97,7 +105,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     c.m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>();
 
 
-                    c.m_Feature = FlailProficiency.ToReference<BlueprintFeatureReference>();
+                    c.m_Feature = PunchingDaggerProficiency.ToReference<BlueprintFeatureReference>();
 
                     c.Level = 1;
                     c.m_Archetypes = null;
@@ -106,7 +114,7 @@ namespace ExpandedContent.Tweaks.Deities {
                                WarpriestClass.ToReference<BlueprintCharacterClassReference>() };
                 });
                 bp.AddComponent<AddStartingEquipment>(c => {
-                    c.m_BasicItems = new BlueprintItemReference[1] { MasterworkFlail.ToReference<BlueprintItemReference>() };
+                    c.m_BasicItems = new BlueprintItemReference[1] { MasterworkPunchingDagger.ToReference<BlueprintItemReference>() };
                     c.m_RestrictedByClass = new BlueprintCharacterClassReference[3] {
                                 ClericClass.ToReference<BlueprintCharacterClassReference>(),
                                 InquistorClass.ToReference<BlueprintCharacterClassReference>(),

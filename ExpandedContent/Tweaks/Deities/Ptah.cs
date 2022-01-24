@@ -16,12 +16,12 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ExpandedContent.Tweaks.Deities {
-    internal class Daikitsu {
-        private static readonly BlueprintFeature AnimalDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("9f05f9da2ea5ae44eac47d407a0000e5");
+    internal class Ptah {
         private static readonly BlueprintFeature ArtificeDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("9656b1c7214180f4b9a6ab56f83b92fb");
-        private static readonly BlueprintFeature CommunityDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("c87004460f3328c408d22c5ead05291f");
-        private static readonly BlueprintFeature PlantDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("0e03c2a03222b0b42acf96096b286327");
-        private static readonly BlueprintFeature WeatherDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("9dfdfd4904e98fa48b80c8f63ec2cf11");
+        private static readonly BlueprintFeature EarthDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("5ca99a6ae118feb449dbbd165a8fe7c4");
+        private static readonly BlueprintFeature FireDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("8d4e9731082008640b28417f577f5f31");
+        private static readonly BlueprintFeature KnowledgeDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("443d44b3e0ea84046a9bf304c82a0425");
+        private static readonly BlueprintFeature TravelDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("c008853fe044bd442ae8bd22260592b7");
         private static readonly BlueprintFeature CrusaderSpellbook = Resources.GetBlueprint<BlueprintFeature>("673d39f7da699aa408cdda6282e7dcc0");
         private static readonly BlueprintFeature ClericSpellbook = Resources.GetBlueprint<BlueprintFeature>("4673d19a0cf2fab4f885cc4d1353da33");
         private static readonly BlueprintFeature InquisitorSpellbook = Resources.GetBlueprint<BlueprintFeature>("57fab75111f377248810ece84193a5a5");
@@ -33,35 +33,45 @@ namespace ExpandedContent.Tweaks.Deities {
 
 
 
-        public static void AddDaikitsuFeature() {
+        public static void AddPtahFeature() {
 
+            BlueprintItem MasterworkQuarterstaff = Resources.GetBlueprint<BlueprintItem>("ad1a532601f8b644991d5012adccee6c");
 
-            BlueprintItem MasterworkFlail = Resources.GetBlueprint<BlueprintItem>("433ab4d3f4c7393488981a4a8b48bec5");
+            BlueprintArchetype FeralChampionArchetype = Resources.GetBlueprint<BlueprintArchetype>("f68ca492c9c15e241ab73735fbd0fb9f");
 
+            BlueprintFeature QuarterstaffProficiency = Resources.GetBlueprint<BlueprintFeature>("aed4f88b52ae0fb468895f90da854ad4");
+            var PtahIcon = AssetLoader.LoadInternal("Deities", "Icon_Ptah.jpg");
+            var PtahFeature = Helpers.CreateBlueprint<BlueprintFeature>("PtahFeature", (bp => {
 
-            BlueprintFeature FlailProficiency = Resources.GetBlueprint<BlueprintFeature>("6d273f46bce2e0f47a0958810dc4c7d9");
-            var DaikitsuIcon = AssetLoader.LoadInternal("Deities", "Icon_Daikitsu.jpg");
-            var DaikitsuFeature = Helpers.CreateBlueprint<BlueprintFeature>("DaikitsuFeature", (bp => {
-
-                bp.SetName("Daikitsu");
-                bp.SetDescription("\nTitles: Lady of Foxes   " +
+                bp.SetName("Ptah");
+                bp.SetDescription("\nTitles: Lord of Eternity   " +
                     "\nAlignment: Neutral   " +
-                    "\nAreas of Concern: Agriculture, Craftsmanship, Kitsune, Rice" +
-                    "\nEdict: Ensure the health of crops and vegetation, perfect a craft or trade, leave offerings for foxes, celebrate the turning of the seasons   " +
-                    "\nDomains: Animal, Artifice, Community, Plant, Weather   " +
-                    "\nSubdomains: Construct, Family, Fur, Growth, Home, Industry, Seasons   " +
-                    "\nFavoured Weapon: Flail   " +
-                    "\nHoly Symbol: Nine-tailed fox   " +
-                    "\nSacred Animal: Fox   " +
-                    "Daikitsu is widely worshiped in Tian Xia, as she is the goddess of rice, a staple food in those lands, as well as of " +
-                    "agriculture and craftsmanship. Farmers pray to Daikitsu for good harvests, smiths and craftsmen seek her blessing for their " +
-                    "creations, and families ask for her protection for their homes and families. Known as the Lady of Foxes, Daikitsu usually " +
-                    "appears as beautiful kitsune woman with snow-white fur and nine tails. She is also the patron of kitsune, who venerate her " +
-                    "as the mother of their race.");
-                bp.m_Icon = DaikitsuIcon;
+                    "\nAreas of Concern: Architecture, Craftsmanship, Creation, Metalworking   " +
+                    "\nDomains: Artifice, Earth, Fire, Knowledge, Travel   " +
+                    "\nSubdomains: Ash, Construct, Metal, Smoke, Thought, Trade   " +
+                    "\nFavoured Weapon: Quarterstaff   " +
+                    "\nHoly Symbol: Staff composed of the ankh, djed, and was   " +
+                    "\nSacred Animal: Bull   " +
+                    "\nAccording to ancient Osirian mythology, Ptah is the demiurge who created the universe through his thought and creative " +
+                    "word. He is the artisan of the gods, a deity of creation and the arts, of architecture, invention, metalworking, and sculpture. " +
+                    "Such is Ptah's creative power that alone among the ancient Osirian gods, he created himself. He is the fire beneath the earth, and " +
+                    "earthquakes and tremors are said to be signs of his disfavor. Ptah is the husband of Sekhmet, and an ally of Ra and Maat. Although he " +
+                    "normally remains aloof from divine politics, he has come into conflict with Apep and Set when those gods attempt to destroy his creations. " +
+                    "Ptah normally appears as a man wearing the wrappings of a mummy, with a simple skullcap on his head, and holding a staff in his hands composed " +
+                    "of three combined symbols of his creative power-the ankh, representing life; the djed pillar, signifying stability; and the was scepter, symbolizing " +
+                    "power. At other times, Ptah is depicted as a naked and deformed dwarf, and it is in this form that the Pahmet dwarves of Osirion venerate him. " +
+                    "Ptah is the patron of alchemists, architects, artisans, artists, bards, builders, carpenters, masons, metalworkers, shipbuilders, and anyone " +
+                    "else who is involved in creative endeavors. Additionally, Ptah is said to hear the prayers of all mortal worshipers, and he often intercedes " +
+                    "with the other gods on behalf of humanity.");
+                bp.m_Icon = PtahIcon;
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;
                 bp.HideInCharacterSheetAndLevelUp = false;
+                bp.AddComponent<PrerequisiteNoArchetype>(c => {
+                    c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = FeralChampionArchetype.ToReference<BlueprintArchetypeReference>();
+                });
+
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
                 bp.AddComponent<PrerequisiteAlignment>(c => {
                     c.Alignment = AlignmentMaskType.NeutralGood | AlignmentMaskType.LawfulNeutral | AlignmentMaskType.TrueNeutral | AlignmentMaskType.ChaoticNeutral | AlignmentMaskType.NeutralEvil;
@@ -73,19 +83,19 @@ namespace ExpandedContent.Tweaks.Deities {
                     c.m_Facts = new BlueprintUnitFactReference[1] { ChannelNegativeAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[1] { AnimalDomainAllowed.ToReference<BlueprintUnitFactReference>() };
-                });
-                bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[1] { ArtificeDomainAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[1] { CommunityDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+                    c.m_Facts = new BlueprintUnitFactReference[1] { EarthDomainAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[1] { PlantDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+                    c.m_Facts = new BlueprintUnitFactReference[1] { FireDomainAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[1] { WeatherDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+                    c.m_Facts = new BlueprintUnitFactReference[1] { KnowledgeDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[1] { TravelDomainAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<ForbidSpellbookOnAlignmentDeviation>(c => {
                     c.m_Spellbooks = new BlueprintSpellbookReference[1] { CrusaderSpellbook.ToReference<BlueprintSpellbookReference>() };
@@ -97,7 +107,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     c.m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>();
 
 
-                    c.m_Feature = FlailProficiency.ToReference<BlueprintFeatureReference>();
+                    c.m_Feature = QuarterstaffProficiency.ToReference<BlueprintFeatureReference>();
 
                     c.Level = 1;
                     c.m_Archetypes = null;
@@ -106,7 +116,7 @@ namespace ExpandedContent.Tweaks.Deities {
                                WarpriestClass.ToReference<BlueprintCharacterClassReference>() };
                 });
                 bp.AddComponent<AddStartingEquipment>(c => {
-                    c.m_BasicItems = new BlueprintItemReference[1] { MasterworkFlail.ToReference<BlueprintItemReference>() };
+                    c.m_BasicItems = new BlueprintItemReference[1] { MasterworkQuarterstaff.ToReference<BlueprintItemReference>() };
                     c.m_RestrictedByClass = new BlueprintCharacterClassReference[3] {
                                 ClericClass.ToReference<BlueprintCharacterClassReference>(),
                                 InquistorClass.ToReference<BlueprintCharacterClassReference>(),
