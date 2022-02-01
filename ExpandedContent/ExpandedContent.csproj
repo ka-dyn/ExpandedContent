@@ -1,7 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="packages\Aze.Publicise.MSBuild.Task.1.0.0\build\Aze.Publicise.MSBuild.Task.props" Condition="Exists('packages\Aze.Publicise.MSBuild.Task.1.0.0\build\Aze.Publicise.MSBuild.Task.props')" />
-  <Import Project="..\packages\Aze.Publicise.MSBuild.Task.1.0.0\build\Aze.Publicise.MSBuild.Task.props" Condition="Exists('..\packages\Aze.Publicise.MSBuild.Task.1.0.0\build\Aze.Publicise.MSBuild.Task.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -52,20 +50,12 @@
   <Target Name="CreateLib" BeforeTargets="BeforeBuild" AfterTargets="RemoveLib" Condition="!Exists('$(SolutionDir)lib')">
     <MakeDir Directories="$(SolutionDir)lib" />
   </Target>
-  <Target Name="Publicise" AfterTargets="CreateLib">
-    <ItemGroup>
-      <PubliciseAssemblyCSharp Include="$(WrathPath)\Wrath_Data\Managed\Assembly-CSharp.dll" />
-      <PubliciseUniRx Include="$(WrathPath)\Wrath_Data\Managed\UniRx.dll" />
-    </ItemGroup>
-    <Publicise InputAssemblies="@(PubliciseAssemblyCSharp)" OutputPath="$(SolutionDir)lib/" PubliciseCompilerGenerated="true" />
-    <Publicise InputAssemblies="@(PubliciseUniRx)" OutputPath="$(SolutionDir)lib/" PubliciseCompilerGenerated="true" />
-  </Target>
   <ItemGroup>
     <Reference Include="0Harmony, Version=2.1.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\Lib.Harmony.2.1.1\lib\net472\0Harmony.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp">
-      <HintPath>$(SolutionDir)lib\Assembly-CSharp_public.dll</HintPath>
+      <HintPath>D:\Games\PathfinderModing\lib\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.Build.Framework" />
@@ -95,7 +85,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="UniRx">
-      <HintPath>$(SolutionDir)lib\UniRx_public.dll</HintPath>
+      <HintPath>D:\Games\PathfinderModing\lib\UniRx.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.AnimationModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -192,6 +182,7 @@
     <Compile Include="Tweaks\Archdevils\Mammon.cs" />
     <Compile Include="Tweaks\Archdevils\Mephistopheles.cs" />
     <Compile Include="Tweaks\Archdevils\Moloch.cs" />
+    <Compile Include="Tweaks\Archetypes\PriestOfBalance.cs" />
     <Compile Include="Tweaks\Archetypes\LivingScripture.cs" />
     <Compile Include="Tweaks\Backgrounds\ArchdukeOfCheliax.cs" />
     <Compile Include="Tweaks\Classes\ClassFeaturesDreadKnight\AuraOfCowardice.cs" />
@@ -223,6 +214,57 @@
     <Compile Include="Tweaks\ContentAdder.cs" />
     <Compile Include="Tweaks\Deities\Abraxas.cs" />
     <Compile Include="Tweaks\Deities\Apsu.cs" />
+    <Compile Include="Tweaks\Deities\Besmara.cs" />
+    <Compile Include="Tweaks\Deities\Anubis.cs" />
+    <Compile Include="Tweaks\Deities\Apep.cs" />
+    <Compile Include="Tweaks\Deities\Bastet.cs" />
+    <Compile Include="Tweaks\Deities\Bes.cs" />
+    <Compile Include="Tweaks\Deities\Andoletta.cs" />
+    <Compile Include="Tweaks\Deities\Arqueros.cs" />
+    <Compile Include="Tweaks\Deities\Ashava.cs" />
+    <Compile Include="Tweaks\Deities\Bharnarol.cs" />
+    <Compile Include="Tweaks\Deities\Chadali.cs" />
+    <Compile Include="Tweaks\Deities\Chucaro.cs" />
+    <Compile Include="Tweaks\Deities\Dammerich.cs" />
+    <Compile Include="Tweaks\Deities\Eritrice.cs" />
+    <Compile Include="Tweaks\Deities\Falayna.cs" />
+    <Compile Include="Tweaks\Deities\Ghenshau.cs" />
+    <Compile Include="Tweaks\Deities\Halcamora.cs" />
+    <Compile Include="Tweaks\Deities\Immonhiel.cs" />
+    <Compile Include="Tweaks\Deities\Irez.cs" />
+    <Compile Include="Tweaks\Deities\Jaidz.cs" />
+    <Compile Include="Tweaks\Deities\Jalaijatali.cs" />
+    <Compile Include="Tweaks\Deities\Korada.cs" />
+    <Compile Include="Tweaks\Deities\Findeladlara.cs" />
+    <Compile Include="Tweaks\Deities\Ketephys.cs" />
+    <Compile Include="Tweaks\Deities\Yuelral.cs" />
+    <Compile Include="Tweaks\Deities\Wadjet.cs" />
+    <Compile Include="Tweaks\Deities\Thoth.cs" />
+    <Compile Include="Tweaks\Deities\Sobek.cs" />
+    <Compile Include="Tweaks\Deities\Set.cs" />
+    <Compile Include="Tweaks\Deities\Selket.cs" />
+    <Compile Include="Tweaks\Deities\Sekhmet.cs" />
+    <Compile Include="Tweaks\Deities\Ra.cs" />
+    <Compile Include="Tweaks\Deities\Ptah.cs" />
+    <Compile Include="Tweaks\Deities\Osiris.cs" />
+    <Compile Include="Tweaks\Deities\Nephthys.cs" />
+    <Compile Include="Tweaks\Deities\Neith.cs" />
+    <Compile Include="Tweaks\Deities\Maat.cs" />
+    <Compile Include="Tweaks\Deities\Khepri.cs" />
+    <Compile Include="Tweaks\Deities\Isis.cs" />
+    <Compile Include="Tweaks\Deities\Horus.cs" />
+    <Compile Include="Tweaks\Deities\Hathor.cs" />
+    <Compile Include="Tweaks\Deities\Yamatsumi.cs" />
+    <Compile Include="Tweaks\Deities\Yaezhing.cs" />
+    <Compile Include="Tweaks\Deities\Tsukiyo.cs" />
+    <Compile Include="Tweaks\Deities\Shizuru.cs" />
+    <Compile Include="Tweaks\Deities\QiZhong.cs" />
+    <Compile Include="Tweaks\Deities\Nalinivati.cs" />
+    <Compile Include="Tweaks\Deities\LaoShuPo.cs" />
+    <Compile Include="Tweaks\Deities\LadyNanbyo.cs" />
+    <Compile Include="Tweaks\Deities\Kofusachi.cs" />
+    <Compile Include="Tweaks\Deities\HeiFeng.cs" />
+    <Compile Include="Tweaks\Deities\GeneralSusumu.cs" />
     <Compile Include="Tweaks\Deities\Daikitsu.cs" />
     <Compile Include="Tweaks\Deities\Fumeiyoshi.cs" />
     <Compile Include="Tweaks\Deities\Wukong.cs" />
@@ -233,6 +275,8 @@
     <Compile Include="Tweaks\Deities\Dagon.cs" />
     <Compile Include="Tweaks\Deities\Dahak.cs" />
     <Compile Include="Tweaks\Deities\DeitySelection.cs" />
+    <Compile Include="Tweaks\DemonLords\Treerazer.cs" />
+    <Compile Include="Tweaks\DemonLords\Dagon.cs" />
     <Compile Include="Tweaks\DemonLords\Deskari.cs" />
     <Compile Include="Tweaks\Deities\GreenFaith.cs" />
     <Compile Include="Tweaks\DemonLords\Kabriri.cs" />
@@ -247,6 +291,7 @@
     <Compile Include="Tweaks\FourHorsemen\Charon.cs" />
     <Compile Include="Tweaks\FourHorsemen\Szuriel.cs" />
     <Compile Include="Tweaks\FourHorsemen\Terlmarixian.cs" />
+    <Compile Include="Tweaks\Monitors\Monad.cs" />
     <Compile Include="Tweaks\QueensOfNight\ArdadLili.cs" />
     <Compile Include="Tweaks\QueensOfNight\Doloras.cs" />
     <Compile Include="Tweaks\QueensOfNight\Eiseth.cs" />
@@ -266,6 +311,9 @@
     <Compile Include="Extensions\ExtentionMethods.cs" />
     <Compile Include="Resources.cs" />
     <Compile Include="SaveGamePatch.cs" />
+    <Compile Include="Tweaks\TheEldest\Shyka.cs" />
+    <Compile Include="Tweaks\TheEldest\TheLanternKing.cs" />
+    <Compile Include="Tweaks\TheEldest\Ng.cs" />
     <Compile Include="UMMSettingsUI.cs" />
     <Compile Include="Utilities\AlignmentTemplates.cs" />
     <Compile Include="Utilities\AssetLoader.cs" />
@@ -300,6 +348,15 @@
     <Content Include="Assets\Backgrounds\Icon_AOC.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Deities\Icon_Andoletta.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Anubis.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Apep.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Deities\Icon_Apsu.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -309,16 +366,55 @@
     <Content Include="Assets\Deities\Icon_Areshkagal.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Deities\Icon_Arqueros.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Deities\Icon_Arshea.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Deities\Icon_Ashava.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Deities\Icon_Baphomet.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Bastet.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Bes.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Besmara.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Bharnarol.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_BlackButterfly.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Chadali.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Chucaro.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Dagon.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Dahak.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Daikitsu.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Dammerich.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_DeitiesofAncientOsirion.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_DeitiesofTianXia.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_DeitiesSelection.jpg">
@@ -342,13 +438,76 @@
     <Content Include="Assets\Deities\Icon_EmpyrealLords.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Deities\Icon_Eritrice.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Falayna.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Findeladlara.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Deities\Icon_Fumeiyoshi.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_GeneralSusumu.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Ghenshau.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_GreenFaith.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Deities\Icon_Halcamora.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Hathor.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_HeiFeng.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Horus.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Immonhiel.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Irez.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Isis.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Jaidz.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Jalaijatali.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Deities\Icon_Kabriri.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Ketephys.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Khepri.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Kofusachi.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Korada.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_LadyNanbyo.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_LaoShuPo.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Maat.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Mephistopheles.jpg">
@@ -357,19 +516,97 @@
     <Content Include="Assets\Deities\Icon_Milani.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Deities\Icon_Monad.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Monitors.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Nalinivati.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Neith.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Nephthys.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Ng.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Osiris.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Deities\Icon_Pantheon.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Philosophies.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Deities\Icon_Ptah.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Deities\Icon_Pulura.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_QiZhong.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Ra.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\ICON_Ragathiel.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Deities\Icon_Sekhmet.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Selket.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Set.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Shizuru.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Shyka.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Sobek.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_ElvenPantheon.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_TheEldest.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_TheLanternKing.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Thoth.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Treerazer.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Tsukiyo.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Wadjet.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Deities\Icon_Wukong.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Yaezhing.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Yamatsumi.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Yuelral.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Zura.png">
@@ -490,11 +727,6 @@
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" AfterTargets="BeforeClean">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Aze.Publicise.MSBuild.Task.1.0.0\build\Aze.Publicise.MSBuild.Task.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Aze.Publicise.MSBuild.Task.1.0.0\build\Aze.Publicise.MSBuild.Task.props'))" />
-    <Error Condition="!Exists('packages\Aze.Publicise.MSBuild.Task.1.0.0\build\Aze.Publicise.MSBuild.Task.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Aze.Publicise.MSBuild.Task.1.0.0\build\Aze.Publicise.MSBuild.Task.props'))" />
   </Target>
   <PropertyGroup>
     <PostBuildEvent>(robocopy "$(TargetDir) " "%WrathPath%\Mods\ExpandedContent\ " /s /e )^&amp; IF %25ERRORLEVEL%25 LEQ 1 exit 0</PostBuildEvent>

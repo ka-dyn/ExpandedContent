@@ -35,11 +35,9 @@ namespace ExpandedContent.Tweaks.Deities {
 
         public static void AddDaikitsuFeature() {
 
-           
+
             BlueprintItem MasterworkFlail = Resources.GetBlueprint<BlueprintItem>("433ab4d3f4c7393488981a4a8b48bec5");
 
-            BlueprintArchetype FeralChampionArchetype = Resources.GetBlueprint<BlueprintArchetype>("f68ca492c9c15e241ab73735fbd0fb9f");
-            BlueprintArchetype PriestOfBalance = Resources.GetBlueprint<BlueprintArchetype>("a4560e3fb5d247d68fb1a2738fcc0855");
 
             BlueprintFeature FlailProficiency = Resources.GetBlueprint<BlueprintFeature>("6d273f46bce2e0f47a0958810dc4c7d9");
             var DaikitsuIcon = AssetLoader.LoadInternal("Deities", "Icon_Daikitsu.jpg");
@@ -64,18 +62,9 @@ namespace ExpandedContent.Tweaks.Deities {
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;
                 bp.HideInCharacterSheetAndLevelUp = false;
-                bp.AddComponent<PrerequisiteNoArchetype>(c => {
-                    c.m_CharacterClass = ClericClass.ToReference<BlueprintCharacterClassReference>();
-                    c.m_Archetype = PriestOfBalance.ToReference<BlueprintArchetypeReference>();
-                });
-                bp.AddComponent<PrerequisiteNoArchetype>(c => {
-                    c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
-                    c.m_Archetype = FeralChampionArchetype.ToReference<BlueprintArchetypeReference>();
-                });
-
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
                 bp.AddComponent<PrerequisiteAlignment>(c => {
-                    c.Alignment = AlignmentMaskType.NeutralGood | AlignmentMaskType.LawfulGood | AlignmentMaskType.TrueNeutral | AlignmentMaskType.ChaoticNeutral | AlignmentMaskType.NeutralEvil;
+                    c.Alignment = AlignmentMaskType.NeutralGood | AlignmentMaskType.LawfulNeutral | AlignmentMaskType.TrueNeutral | AlignmentMaskType.ChaoticNeutral | AlignmentMaskType.NeutralEvil;
                 });
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[1] { ChannelPositiveAllowed.ToReference<BlueprintUnitFactReference>() };
