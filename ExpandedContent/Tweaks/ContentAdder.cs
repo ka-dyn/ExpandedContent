@@ -126,6 +126,22 @@ namespace ExpandedContent.Tweaks
                 Deities.Jaidz.AddJaidzFeature();
                 Deities.Jalaijatali.AddJalaijataliFeature();
                 Deities.Korada.AddKoradaFeature();
+                Deities.Lalaci.AddLalaciFeature();
+                Deities.Lymnieris.AddLymnierisFeature();
+                Deities.Olheon.AddOlheonFeature();
+                Deities.Picoperi.AddPicoperiFeature();
+                Deities.Rowdrosh.AddRowdroshFeature();
+                Deities.Seramaydiel.AddSeramaydielFeature();
+                Deities.Shei.AddSheiFeature();
+                Deities.Sinashakti.AddSinashaktiFeature();
+                Deities.Soralyon.AddSoralyonFeature();
+                Deities.Tanagaar.AddTanagaarFeature();
+                Deities.Tolc.AddTolcFeature();
+                Deities.Valani.AddValaniFeature();
+                Deities.Vildeis.AddVildeisFeature();
+                Deities.Winlas.AddWinlasFeature();
+                Deities.Ylimancha.AddYlimanchaFeature();
+                Deities.Zohls.AddZohlsFeature();
 
                 TheEldest.Ng.AddNgFeature();
                 TheEldest.Shyka.AddShykaFeature();

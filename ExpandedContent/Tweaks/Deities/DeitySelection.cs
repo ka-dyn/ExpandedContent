@@ -87,6 +87,22 @@ namespace ExpandedContent.Tweaks.Deities {
             var JaidzFeature = Resources.GetModBlueprint<BlueprintFeature>("JaidzFeature");
             var JalaijataliFeature = Resources.GetModBlueprint<BlueprintFeature>("JalaijataliFeature");
             var KoradaFeature = Resources.GetModBlueprint<BlueprintFeature>("KoradaFeature");
+            var LalaciFeature = Resources.GetModBlueprint<BlueprintFeature>("LalaciFeature");
+            var LymnierisFeature = Resources.GetModBlueprint<BlueprintFeature>("LymnierisFeature");
+            var OlheonFeature = Resources.GetModBlueprint<BlueprintFeature>("OlheonFeature");
+            var PicoperiFeature = Resources.GetModBlueprint<BlueprintFeature>("PicoperiFeature");
+            var RowdroshFeature = Resources.GetModBlueprint<BlueprintFeature>("RowdroshFeature");
+            var SeramaydielFeature = Resources.GetModBlueprint<BlueprintFeature>("SeramaydielFeature");
+            var SheiFeature = Resources.GetModBlueprint<BlueprintFeature>("SheiFeature");
+            var SinashaktiFeature = Resources.GetModBlueprint<BlueprintFeature>("SinashaktiFeature");
+            var SoralyonFeature = Resources.GetModBlueprint<BlueprintFeature>("SoralyonFeature");
+            var TanagaarFeature = Resources.GetModBlueprint<BlueprintFeature>("TanagaarFeature");
+            var TolcFeature = Resources.GetModBlueprint<BlueprintFeature>("TolcFeature");
+            var ValaniFeature = Resources.GetModBlueprint<BlueprintFeature>("ValaniFeature");
+            var VildeisFeature = Resources.GetModBlueprint<BlueprintFeature>("VildeisFeature");
+            var WinlasFeature = Resources.GetModBlueprint<BlueprintFeature>("WinlasFeature");
+            var YlimanchaFeature = Resources.GetModBlueprint<BlueprintFeature>("YlimanchaFeature");
+            var ZohlsFeature = Resources.GetModBlueprint<BlueprintFeature>("ZohlsFeature");
 
             //Elven Pantheon
             var FindeladlaraFeature = Resources.GetModBlueprint<BlueprintFeature>("FindeladlaraFeature");
@@ -273,7 +289,23 @@ namespace ExpandedContent.Tweaks.Deities {
                 IrezFeature.ToReference<BlueprintFeatureReference>(),
                 JaidzFeature.ToReference<BlueprintFeatureReference>(),
                 JalaijataliFeature.ToReference<BlueprintFeatureReference>(),
-                KoradaFeature.ToReference<BlueprintFeatureReference>()
+                KoradaFeature.ToReference<BlueprintFeatureReference>(),
+                LalaciFeature.ToReference<BlueprintFeatureReference>(),
+                LymnierisFeature.ToReference<BlueprintFeatureReference>(),
+                OlheonFeature.ToReference<BlueprintFeatureReference>(),
+                PicoperiFeature.ToReference<BlueprintFeatureReference>(),
+                RowdroshFeature.ToReference<BlueprintFeatureReference>(),
+                SeramaydielFeature.ToReference<BlueprintFeatureReference>(),
+                SheiFeature.ToReference<BlueprintFeatureReference>(),
+                SinashaktiFeature.ToReference<BlueprintFeatureReference>(),
+                SoralyonFeature.ToReference<BlueprintFeatureReference>(),
+                TanagaarFeature.ToReference<BlueprintFeatureReference>(),
+                TolcFeature.ToReference<BlueprintFeatureReference>(),
+                ValaniFeature.ToReference<BlueprintFeatureReference>(),
+                VildeisFeature.ToReference<BlueprintFeatureReference>(),
+                WinlasFeature.ToReference<BlueprintFeatureReference>(),
+                YlimanchaFeature.ToReference<BlueprintFeatureReference>(),
+                ZohlsFeature.ToReference<BlueprintFeatureReference>()
                 };
                 bp.IsClassFeature = true;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
@@ -444,6 +476,7 @@ namespace ExpandedContent.Tweaks.Deities {
 
             PaladinClass.RemoveComponents<PrerequisiteFeaturesFromList>();
             PaladinClass.AddComponent<PrerequisiteFeaturesFromList>(c => {
+                c.HideInUI = true;
                 c.m_Features = new BlueprintFeatureReference[] {
                     AbadarFeature.ToReference<BlueprintFeatureReference>(),
                     IomedaeFeature.ToReference<BlueprintFeatureReference>(),
@@ -481,7 +514,18 @@ namespace ExpandedContent.Tweaks.Deities {
                     HalcamoraFeature.ToReference<BlueprintFeatureReference>(),
                     IrezFeature.ToReference<BlueprintFeatureReference>(),
                     JaidzFeature.ToReference<BlueprintFeatureReference>(),
-                    KoradaFeature.ToReference<BlueprintFeatureReference>()
+                    KoradaFeature.ToReference<BlueprintFeatureReference>(),
+                    LymnierisFeature.ToReference<BlueprintFeatureReference>(),
+                    OlheonFeature.ToReference<BlueprintFeatureReference>(),
+                    RowdroshFeature.ToReference<BlueprintFeatureReference>(),
+                    SeramaydielFeature.ToReference<BlueprintFeatureReference>(),
+                    SheiFeature.ToReference<BlueprintFeatureReference>(),
+                    SoralyonFeature.ToReference<BlueprintFeatureReference>(),
+                    TanagaarFeature.ToReference<BlueprintFeatureReference>(),
+                    VildeisFeature.ToReference<BlueprintFeatureReference>(),
+                    WinlasFeature.ToReference<BlueprintFeatureReference>(),
+                    YlimanchaFeature.ToReference<BlueprintFeatureReference>(),
+                    ZohlsFeature.ToReference<BlueprintFeatureReference>()
                 };
             });
             var Seelah = Resources.GetBlueprint<BlueprintUnit>("54be53f0b35bf3c4592a97ae335fe765");
