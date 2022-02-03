@@ -10,6 +10,9 @@ anything without it. Check out his mod, TableTopTweaks if you haven't already!
 I'd also like to give a big shoutout and thank you to bubbles, Narria, CascadingDragon, and everyone else who has been so kind in the Modding discord.
 Seriously, thank you!
 
+v0.2.8
+-Added 74 new deities
+
 v0.2.5b
 **Added Oathbreaker as a playable class**
 
