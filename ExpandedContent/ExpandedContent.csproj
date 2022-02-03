@@ -225,6 +225,22 @@
     <Compile Include="Tweaks\Deities\Bharnarol.cs" />
     <Compile Include="Tweaks\Deities\Chadali.cs" />
     <Compile Include="Tweaks\Deities\Chucaro.cs" />
+    <Compile Include="Tweaks\Deities\Lalaci.cs" />
+    <Compile Include="Tweaks\Deities\Lymnieris.cs" />
+    <Compile Include="Tweaks\Deities\Olheon.cs" />
+    <Compile Include="Tweaks\Deities\Picoperi.cs" />
+    <Compile Include="Tweaks\Deities\Rowdrosh.cs" />
+    <Compile Include="Tweaks\Deities\Seramaydiel.cs" />
+    <Compile Include="Tweaks\Deities\Shei.cs" />
+    <Compile Include="Tweaks\Deities\Sinashakti.cs" />
+    <Compile Include="Tweaks\Deities\Soralyon.cs" />
+    <Compile Include="Tweaks\Deities\Tanagaar.cs" />
+    <Compile Include="Tweaks\Deities\Tolc.cs" />
+    <Compile Include="Tweaks\Deities\Valani.cs" />
+    <Compile Include="Tweaks\Deities\Vildeis.cs" />
+    <Compile Include="Tweaks\Deities\Winlas.cs" />
+    <Compile Include="Tweaks\Deities\Ylimancha.cs" />
+    <Compile Include="Tweaks\Deities\Zohls.cs" />
     <Compile Include="Tweaks\Deities\Dammerich.cs" />
     <Compile Include="Tweaks\Deities\Eritrice.cs" />
     <Compile Include="Tweaks\Deities\Falayna.cs" />
@@ -504,7 +520,13 @@
     <Content Include="Assets\Deities\Icon_LadyNanbyo.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Deities\Icon_Lalaci.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Deities\Icon_LaoShuPo.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Lymnieris.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Maat.jpg">
@@ -534,6 +556,9 @@
     <Content Include="Assets\Deities\Icon_Ng.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Deities\Icon_Olheon.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Deities\Icon_Osiris.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -541,6 +566,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Philosophies.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Picoperi.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Ptah.jpg">
@@ -558,13 +586,22 @@
     <Content Include="Assets\Deities\ICON_Ragathiel.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Deities\Icon_Rowdrosh.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Deities\Icon_Sekhmet.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Selket.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Deities\Icon_Seramaydiel.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Deities\Icon_Set.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Shei.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Shizuru.jpg">
@@ -573,10 +610,19 @@
     <Content Include="Assets\Deities\Icon_Shyka.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Deities\Icon_Sinashakti.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Deities\Icon_Sobek.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_ElvenPantheon.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Soralyon.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Tanagaar.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_TheEldest.jpg">
@@ -588,13 +634,25 @@
     <Content Include="Assets\Deities\Icon_Thoth.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Deities\Icon_Tolc.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Deities\Icon_Treerazer.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Tsukiyo.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Deities\Icon_Valani.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Vildeis.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Deities\Icon_Wadjet.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Winlas.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Wukong.jpg">
@@ -606,7 +664,13 @@
     <Content Include="Assets\Deities\Icon_Yamatsumi.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Deities\Icon_Ylimancha.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Deities\Icon_Yuelral.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Zohls.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Zura.png">
