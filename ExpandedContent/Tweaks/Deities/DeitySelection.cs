@@ -151,9 +151,15 @@ namespace ExpandedContent.Tweaks.Deities {
             var DispaterFeature = Resources.GetModBlueprint<BlueprintFeature>("DispaterFeature");
 
             //The Eldest
-            var NgFeature = Resources.GetModBlueprint<BlueprintFeature>("NgFeature");
-            var ShykaFeature = Resources.GetModBlueprint<BlueprintFeature>("ShykaFeature");
+            var CountRanalcFeature = Resources.GetModBlueprint<BlueprintFeature>("CountRanalcFeature");
+            var TheGreenMotherFeature = Resources.GetModBlueprint<BlueprintFeature>("TheGreenMotherFeature");
+            var ImbrexFeature = Resources.GetModBlueprint<BlueprintFeature>("ImbrexFeature");
             var TheLanternKingFeature = Resources.GetModBlueprint<BlueprintFeature>("TheLanternKingFeature");
+            var TheLostPrinceFeature = Resources.GetModBlueprint<BlueprintFeature>("TheLostPrinceFeature");
+            var MagdhFeature = Resources.GetModBlueprint<BlueprintFeature>("MagdhFeature");
+            var NgFeature = Resources.GetModBlueprint<BlueprintFeature>("NgFeature");
+            var RagadahnFeature = Resources.GetModBlueprint<BlueprintFeature>("RagadahnFeature");
+            var ShykaFeature = Resources.GetModBlueprint<BlueprintFeature>("ShykaFeature");
 
             //Monitors
             var MonadFeature = Resources.GetModBlueprint<BlueprintFeature>("MonadFeature");
@@ -424,9 +430,15 @@ namespace ExpandedContent.Tweaks.Deities {
                     "fey learned the trick of granting spells to their worshipers, and thus the Eldest became gods in truth.");
                 bp.m_Icon = TheEldestIcon;
                 bp.m_AllFeatures = new BlueprintFeatureReference[] {
-                NgFeature.ToReference<BlueprintFeatureReference>(),
-                ShykaFeature.ToReference<BlueprintFeatureReference>(),
+                CountRanalcFeature.ToReference<BlueprintFeatureReference>(),
+                TheGreenMotherFeature.ToReference<BlueprintFeatureReference>(),
+                ImbrexFeature.ToReference<BlueprintFeatureReference>(),
                 TheLanternKingFeature.ToReference<BlueprintFeatureReference>(),
+                TheLostPrinceFeature.ToReference<BlueprintFeatureReference>(),
+                MagdhFeature.ToReference<BlueprintFeatureReference>(),
+                NgFeature.ToReference<BlueprintFeatureReference>(),
+                RagadahnFeature.ToReference<BlueprintFeatureReference>(),
+                ShykaFeature.ToReference<BlueprintFeatureReference>(),
                 };
                 bp.IsClassFeature = true;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
@@ -525,7 +537,9 @@ namespace ExpandedContent.Tweaks.Deities {
                     VildeisFeature.ToReference<BlueprintFeatureReference>(),
                     WinlasFeature.ToReference<BlueprintFeatureReference>(),
                     YlimanchaFeature.ToReference<BlueprintFeatureReference>(),
-                    ZohlsFeature.ToReference<BlueprintFeatureReference>()
+                    ZohlsFeature.ToReference<BlueprintFeatureReference>(),
+                    ImbrexFeature.ToReference<BlueprintFeatureReference>(),
+                    MagdhFeature.ToReference<BlueprintFeatureReference>()
                 };
             });
             var Seelah = Resources.GetBlueprint<BlueprintUnit>("54be53f0b35bf3c4592a97ae335fe765");

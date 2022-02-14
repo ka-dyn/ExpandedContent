@@ -55,8 +55,13 @@
       <HintPath>packages\Lib.Harmony.2.1.1\lib\net472\0Harmony.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp">
-      <HintPath>D:\Games\PathfinderModing\lib\Assembly-CSharp.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>D:\Games\PathfinderModing\lib\1.2\Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="BlueprintCore, Version=1.3.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\WW-Blueprint-Core.1.3.2\lib\net472\BlueprintCore.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Bcl.AsyncInterfaces.6.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Build.Framework" />
     <Reference Include="Microsoft.Build.Utilities.v4.0" />
@@ -74,10 +79,38 @@
       <HintPath>$(WrathPath)\Wrath_Data\Managed\Owlcat.Runtime.UI.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Owlcat.Runtime.Validation">
+      <HintPath>D:\Games\PathfinderModing\lib\1.2\Owlcat.Runtime.Validation.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
     <Reference Include="System.Net.Http" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Text.Encodings.Web.6.0.0\lib\net461\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=6.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Text.Json.6.0.1\lib\net461\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -85,8 +118,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="UniRx">
-      <HintPath>D:\Games\PathfinderModing\lib\UniRx.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>D:\Games\PathfinderModing\lib\1.2\UniRx.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AnimationModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -124,48 +156,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BlueprintCore\Abilities\Restrictions\New\TargetHasBuffsFromCaster.cs" />
-    <Compile Include="BlueprintCore\Actions\Builder\ActionsBuilder.cs" />
-    <Compile Include="BlueprintCore\Actions\Builder\AreaEx\ActionsBuilderAreaEx.cs" />
-    <Compile Include="BlueprintCore\Actions\Builder\AVEx\ActionsBuilderAVEx.cs" />
-    <Compile Include="BlueprintCore\Actions\Builder\BasicEx\ActionsBuilderBasicEx.cs" />
-    <Compile Include="BlueprintCore\Actions\Builder\ContextEx\ActionsBuilderContextEx.cs" />
-    <Compile Include="BlueprintCore\Actions\Builder\KingdomEx\ActionsBuilderKingdomEx.cs" />
-    <Compile Include="BlueprintCore\Actions\Builder\MiscEx\ActionsBuilderMiscEx.cs" />
-    <Compile Include="BlueprintCore\Actions\Builder\NewEx\ActionsBuilderNewEx.cs" />
-    <Compile Include="BlueprintCore\Actions\Builder\StoryEx\ActionsBuilderStoryEx.cs" />
-    <Compile Include="BlueprintCore\Actions\Builder\UpgraderEx\ActionsBuilderUpgraderEx.cs" />
-    <Compile Include="BlueprintCore\Blueprints\Abilities\AbilityAreaEffectConfigurator.cs" />
-    <Compile Include="BlueprintCore\Blueprints\Abilities\AbilityConfigurator.cs" />
-    <Compile Include="BlueprintCore\Blueprints\Abilities\AbilityResourceConfigurator.cs" />
-    <Compile Include="BlueprintCore\Blueprints\BaseBlueprintConfigurator.cs" />
-    <Compile Include="BlueprintCore\Blueprints\BlueprintConfigurator.cs" />
-    <Compile Include="BlueprintCore\Blueprints\BlueprintTool.cs" />
-    <Compile Include="BlueprintCore\Blueprints\Buffs\BuffConfigurator.cs" />
-    <Compile Include="BlueprintCore\Blueprints\Classes\ArchetypeConfigurator.cs" />
-    <Compile Include="BlueprintCore\Blueprints\Classes\BaseFeatureConfigurator.cs" />
-    <Compile Include="BlueprintCore\Blueprints\Classes\FeatureConfigurator.cs" />
-    <Compile Include="BlueprintCore\Blueprints\Classes\Selection\FeatureSelectionConfigurator.cs" />
-    <Compile Include="BlueprintCore\Blueprints\Components\ContextRankConfigs.cs" />
-    <Compile Include="BlueprintCore\Blueprints\Facts\BlueprintUnitFactConfigurator.cs" />
-    <Compile Include="BlueprintCore\Conditions\Builder\AreaEx\ConditionsBuilderAreaEx.cs" />
-    <Compile Include="BlueprintCore\Conditions\Builder\BasicEx\ConditionsBuilderBasicEx.cs" />
-    <Compile Include="BlueprintCore\Conditions\Builder\ConditionsBuilder.cs" />
-    <Compile Include="BlueprintCore\Conditions\Builder\ContextEx\ConditionsBuilderContextEx.cs" />
-    <Compile Include="BlueprintCore\Conditions\Builder\KingdomEx\ConditionsBuilderKingdomEx.cs" />
-    <Compile Include="BlueprintCore\Conditions\Builder\MiscEx\ConditionsBuilderMiscEx.cs" />
-    <Compile Include="BlueprintCore\Conditions\Builder\NewEx\ConditionsBuilderNewEx.cs" />
-    <Compile Include="BlueprintCore\Conditions\Builder\StoryEx\ConditionsBuilderStoryEx.cs" />
-    <Compile Include="BlueprintCore\Conditions\New\TargetInMeleeRange.cs" />
-    <Compile Include="BlueprintCore\Utils\Attributes.cs" />
-    <Compile Include="BlueprintCore\Utils\CommonTool.cs" />
-    <Compile Include="BlueprintCore\Utils\Constants.cs" />
-    <Compile Include="BlueprintCore\Utils\ContextDuration.cs" />
-    <Compile Include="BlueprintCore\Utils\ContextValues.cs" />
-    <Compile Include="BlueprintCore\Utils\ElementTool.cs" />
-    <Compile Include="BlueprintCore\Utils\LogWrapper.cs" />
-    <Compile Include="BlueprintCore\Utils\PrereqTool.cs" />
-    <Compile Include="BlueprintCore\Utils\Validator.cs" />
     <Compile Include="Config\AddedContent.cs" />
     <Compile Include="Config\Blueprints.cs" />
     <Compile Include="Config\ICollapseableGroup.cs" />
@@ -174,6 +164,7 @@
     <Compile Include="Config\ModSettings.cs" />
     <Compile Include="Config\NestedSettingGroup.cs" />
     <Compile Include="Config\SettingGroup.cs" />
+    <Compile Include="Localization\MultiLocalizationPack.cs" />
     <Compile Include="Tweaks\Archdevils\Baalzebul.cs" />
     <Compile Include="Tweaks\Archdevils\Barbatos.cs" />
     <Compile Include="Tweaks\Archdevils\Belial.cs" />
@@ -182,6 +173,7 @@
     <Compile Include="Tweaks\Archdevils\Mammon.cs" />
     <Compile Include="Tweaks\Archdevils\Mephistopheles.cs" />
     <Compile Include="Tweaks\Archdevils\Moloch.cs" />
+    <Compile Include="Tweaks\Archetypes\TempleChampion.cs" />
     <Compile Include="Tweaks\Archetypes\PriestOfBalance.cs" />
     <Compile Include="Tweaks\Archetypes\LivingScripture.cs" />
     <Compile Include="Tweaks\Backgrounds\ArchdukeOfCheliax.cs" />
@@ -327,6 +319,12 @@
     <Compile Include="Extensions\ExtentionMethods.cs" />
     <Compile Include="Resources.cs" />
     <Compile Include="SaveGamePatch.cs" />
+    <Compile Include="Tweaks\TheEldest\TheGreenMother.cs" />
+    <Compile Include="Tweaks\TheEldest\TheLostPrince.cs" />
+    <Compile Include="Tweaks\TheEldest\Ragadahn.cs" />
+    <Compile Include="Tweaks\TheEldest\Magdh.cs" />
+    <Compile Include="Tweaks\TheEldest\Imbrex.cs" />
+    <Compile Include="Tweaks\TheEldest\CountRanalc.cs" />
     <Compile Include="Tweaks\TheEldest\Shyka.cs" />
     <Compile Include="Tweaks\TheEldest\TheLanternKing.cs" />
     <Compile Include="Tweaks\TheEldest\Ng.cs" />
@@ -352,9 +350,16 @@
     </None>
     <EmbeddedResource Include="Config\AddedContent.json" />
     <EmbeddedResource Include="Config\Blueprints.json" />
+    <None Include="app.config" />
+    <None Include="BlueprintCore\changes.md" />
+    <None Include="BlueprintCore\LICENSE" />
+    <None Include="BlueprintCore\README.md" />
     <None Include="Info.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <EmbeddedResource Include="Localization\LocalizationPack.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Repository.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -413,6 +418,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Chucaro.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_CountRanalc.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Dagon.jpg">
@@ -487,6 +495,9 @@
     <Content Include="Assets\Deities\Icon_Horus.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Deities\Icon_Imbrex.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Deities\Icon_Immonhiel.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -530,6 +541,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Maat.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Magdh.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Mephistopheles.jpg">
@@ -583,6 +597,9 @@
     <Content Include="Assets\Deities\Icon_Ra.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Deities\Icon_Ragadahn.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Deities\ICON_Ragathiel.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -628,7 +645,13 @@
     <Content Include="Assets\Deities\Icon_TheEldest.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Deities\Icon_TheGreenMother.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Deities\Icon_TheLanternKing.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_TheLostPrince.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Thoth.jpg">
@@ -791,8 +814,10 @@
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" AfterTargets="BeforeClean">
+    <Error Condition="!Exists('packages\System.Text.Json.6.0.1\build\System.Text.Json.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\System.Text.Json.6.0.1\build\System.Text.Json.targets'))" />
   </Target>
   <PropertyGroup>
     <PostBuildEvent>(robocopy "$(TargetDir) " "%WrathPath%\Mods\ExpandedContent\ " /s /e )^&amp; IF %25ERRORLEVEL%25 LEQ 1 exit 0</PostBuildEvent>
   </PropertyGroup>
+  <Import Project="packages\System.Text.Json.6.0.1\build\System.Text.Json.targets" Condition="Exists('packages\System.Text.Json.6.0.1\build\System.Text.Json.targets')" />
 </Project>
