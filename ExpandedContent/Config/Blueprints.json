@@ -56,6 +56,13 @@
     "DreadfulCalm": "B301918B-8130-4C2B-AFB0-5CC5ABC7CCE0",
     "BackgroundArchdukeOfCheliax": "4D6097A2-3021-4CCA-9D78-6CA59C425B15",
 
+    "TempleChampionArchetype": "b25d0630-d552-4ad6-a1f9-cc82efdb68f7",
+    "DomainChampionFeature": "6ab07195-83a2-4b67-a34b-2427265ca6df",
+    "DomainChampionFeatureSecondary": "aea2aa68-ba9c-4306-a958-f0bae4429c33",
+    "TempleChampionArmoredSwiftnessFeature": "16452676-531e-42c7-a1f1-0f9cccc12eec",
+    "TempleChampionIprovedArmoredSwiftnessFeature": "5b16f093-1746-41cf-9455-ace9d6249b6e",
+    "WisdomOfTheTempleFeature": "c4eebc09-0163-4a30-b8fc-1842ec675c64",
+
     "DreadKnightProgression": "164F6982-16E8-400D-9FD2-58D908460EAB",
     "DreadKnightClass": "D0EB4CA4-4E11-417C-9B2F-0208491067A0",
     "DreadKnightProficiencies": "C0626ACC-5BF5-46DA-BEA7-ED4895900D10",
@@ -268,6 +275,12 @@
     "NgFeature": "0b2f8b8d-59dd-4d38-a4bd-1a2ba211c66f",
     "ShykaFeature": "bc9f89ed-70ac-4389-9fca-aa51611f9061",
     "TheLanternKingFeature": "ecb81f58-8458-4471-a62b-bb07728b8658",
+    "CountRanalcFeature": "9add5461-5018-44d6-ac8a-22cb0d4db029",
+    "ImbrexFeature": "963e0e6a-ee1c-4c9e-915b-f11327ae2452",
+    "MagdhFeature": "51865166-14c5-405c-9f4c-792629b30286",
+    "RagadahnFeature": "3d2c0af9-3888-44e4-a551-5c5b2d380924",
+    "TheGreenMotherFeature": "741ef2fe-9f35-4ab5-b06a-315c41ee2a6d",
+    "TheLostPrinceFeature": "cef75410-3bb2-4706-9b96-a5b30cd17cf0",
 
     "MonitorsSelection": "156a6a1e-62a2-4504-a47c-4d1e8b44982e",
     "MonadFeature": "4e2bfab2-8bfe-46f1-a1a6-7316789b3130"

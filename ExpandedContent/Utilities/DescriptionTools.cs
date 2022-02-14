@@ -288,12 +288,17 @@ namespace ExpandedContent.Utilities {
             },
             new EncyclopediaEntry {
                 Entry = "Damage",
-                Patterns = { "damage" }
+                Patterns = {
+                    "damage",
+                    "damage rolls?"
+                }
             },
-            new EncyclopediaEntry  {
-                Entry = "Title",
-                Patterns = { "Titles" }
-
+            new EncyclopediaEntry {
+                Entry = "Dice",
+                Patterns = {
+                    "rolls?",
+                    "rolled"
+                }
             }
         };
 
@@ -323,13 +328,23 @@ namespace ExpandedContent.Utilities {
                 .OfType<Match>()
                 .Select(m => m.Value)
                 .Distinct();
+            var firstMatch = matches.FirstOrDefault();
+            if (!string.IsNullOrEmpty(firstMatch)) {
+                var resultPattern = new Regex(Regex.Escape(firstMatch).EnforceSolo().ExcludeTagged(), RegexOptions.IgnoreCase);
+                str = resultPattern.Replace(str, entry.Tag(firstMatch), 1);
+            }
+            /*
             foreach (string match in matches) {
                 str = Regex.Replace(str, Regex.Escape(match).EnforceSolo().ExcludeTagged(), entry.Tag(match), RegexOptions.IgnoreCase);
             }
+            */
             return str;
         }
-        private static string StripHTML(this string str) {
+        public static string StripHTML(this string str) {
             return Regex.Replace(str, "<.*?>", string.Empty);
+        }
+        public static string StripEncyclopediaTags(this string str) {
+            return Regex.Replace(str, "{.*?}", string.Empty);
         }
         private static string ExcludeTagged(this string str) {
             return $"{@"(?<!{g\|Encyclopedia:\w+}[^}]*)"}{str}{@"(?![^{]*{\/g})"}";

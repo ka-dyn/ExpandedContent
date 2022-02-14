@@ -18,6 +18,7 @@ using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Mechanics.Components;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace ExpandedContent.Tweaks.Classes.ClassFeaturesDreadKnight {
     static class ProfaneBoon {
@@ -462,7 +463,7 @@ namespace ExpandedContent.Tweaks.Classes.ClassFeaturesDreadKnight {
                 bp.GiveFeaturesForPreviousLevels = true;
                 bp.ReapplyOnLevelUp = true;
                 bp.m_ExclusiveProgression = DreadKnightClass.ToReference<BlueprintCharacterClassReference>();
-                bp.m_FeatureRankIncrease = new BlueprintFeatureReference();
+                bp.m_FeaturesRankIncrease = new List<BlueprintFeatureReference>();
                 bp.LevelEntries = Enumerable.Range(2, 20)
                     .Select(i => new LevelEntry {
                         Level = i,

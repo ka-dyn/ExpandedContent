@@ -26,6 +26,8 @@ namespace ExpandedContent.Tweaks
              
                 Archetypes.LivingScripture.AddLivingScripture();
                 Archetypes.PriestOfBalance.PatchPriestOfBalanceArchetype();
+                Archetypes.TempleChampion.AddTempleChampion();
+                // not done Archetypes.MantisZealot.AddMantisZealot();
 
                 RacialArchetypes.Cruoromancer.AllowCruoromancerArchetype();
                 RacialArchetypes.CavalierOfThePaw.AllowCavalierOfThePaw();
@@ -103,6 +105,7 @@ namespace ExpandedContent.Tweaks
                 
                 Deities.GreenFaith.AddGreenFaith();
                 Deities.Besmara.AddBesmaraFeature();
+                Deities.Achaekek.AddAchaekekFeature();
                
                 Deities.PatchPulura.AddPulura();
                 Deities.MilaniSacredWeaponFeature.AddMilaniSacredWeaponFeature();
@@ -146,6 +149,12 @@ namespace ExpandedContent.Tweaks
                 TheEldest.Ng.AddNgFeature();
                 TheEldest.Shyka.AddShykaFeature();
                 TheEldest.TheLanternKing.AddTheLanternKingFeature();
+                TheEldest.CountRanalc.AddCountRanalcFeature();
+                TheEldest.TheGreenMother.AddTheGreenMotherFeature();
+                TheEldest.Imbrex.AddImbrexFeature();
+                TheEldest.TheLostPrince.AddTheLostPrinceFeature();
+                TheEldest.Magdh.AddMagdhFeature();
+                TheEldest.Ragadahn.AddRagadahnFeature();
 
                 Monitors.Monad.AddMonadFeature();
 

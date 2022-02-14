@@ -134,6 +134,7 @@ namespace ExpandedContent.Tweaks.Deities {
             var CaydenCaileanFeature = Resources.GetBlueprint<BlueprintFeature>("300e212868bca984687c92bcb66d381b");
             var DesnaFeature = Resources.GetBlueprint<BlueprintFeature>("2c0a3b9971327ba4d9d85354d16998c1");
             var BesmaraFeature = Resources.GetModBlueprint<BlueprintFeature>("BesmaraFeature");
+            var AchaekekFeature = Resources.GetModBlueprint<BlueprintFeature>("AchaekekFeature");
 
             //Philosophies
             var GreenFaithFeature = Resources.GetBlueprint<BlueprintFeature>("99a7a8f13c1300c42878558fa9471e2f");
@@ -151,9 +152,15 @@ namespace ExpandedContent.Tweaks.Deities {
             var DispaterFeature = Resources.GetModBlueprint<BlueprintFeature>("DispaterFeature");
 
             //The Eldest
-            var NgFeature = Resources.GetModBlueprint<BlueprintFeature>("NgFeature");
-            var ShykaFeature = Resources.GetModBlueprint<BlueprintFeature>("ShykaFeature");
+            var CountRanalcFeature = Resources.GetModBlueprint<BlueprintFeature>("CountRanalcFeature");
+            var TheGreenMotherFeature = Resources.GetModBlueprint<BlueprintFeature>("TheGreenMotherFeature");
+            var ImbrexFeature = Resources.GetModBlueprint<BlueprintFeature>("ImbrexFeature");
             var TheLanternKingFeature = Resources.GetModBlueprint<BlueprintFeature>("TheLanternKingFeature");
+            var TheLostPrinceFeature = Resources.GetModBlueprint<BlueprintFeature>("TheLostPrinceFeature");
+            var MagdhFeature = Resources.GetModBlueprint<BlueprintFeature>("MagdhFeature");
+            var NgFeature = Resources.GetModBlueprint<BlueprintFeature>("NgFeature");
+            var RagadahnFeature = Resources.GetModBlueprint<BlueprintFeature>("RagadahnFeature");
+            var ShykaFeature = Resources.GetModBlueprint<BlueprintFeature>("ShykaFeature");
 
             //Monitors
             var MonadFeature = Resources.GetModBlueprint<BlueprintFeature>("MonadFeature");
@@ -363,6 +370,7 @@ namespace ExpandedContent.Tweaks.Deities {
                 LichDeityFeature.ToReference<BlueprintFeatureReference>(),
                 MilaniFeature.ToReference<BlueprintFeatureReference>(),
                 BesmaraFeature.ToReference<BlueprintFeatureReference>(),
+                AchaekekFeature.ToReference<BlueprintFeatureReference>(),
                 };
                 bp.IsClassFeature = true;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
@@ -424,9 +432,15 @@ namespace ExpandedContent.Tweaks.Deities {
                     "fey learned the trick of granting spells to their worshipers, and thus the Eldest became gods in truth.");
                 bp.m_Icon = TheEldestIcon;
                 bp.m_AllFeatures = new BlueprintFeatureReference[] {
-                NgFeature.ToReference<BlueprintFeatureReference>(),
-                ShykaFeature.ToReference<BlueprintFeatureReference>(),
+                CountRanalcFeature.ToReference<BlueprintFeatureReference>(),
+                TheGreenMotherFeature.ToReference<BlueprintFeatureReference>(),
+                ImbrexFeature.ToReference<BlueprintFeatureReference>(),
                 TheLanternKingFeature.ToReference<BlueprintFeatureReference>(),
+                TheLostPrinceFeature.ToReference<BlueprintFeatureReference>(),
+                MagdhFeature.ToReference<BlueprintFeatureReference>(),
+                NgFeature.ToReference<BlueprintFeatureReference>(),
+                RagadahnFeature.ToReference<BlueprintFeatureReference>(),
+                ShykaFeature.ToReference<BlueprintFeatureReference>(),
                 };
                 bp.IsClassFeature = true;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
@@ -525,12 +539,38 @@ namespace ExpandedContent.Tweaks.Deities {
                     VildeisFeature.ToReference<BlueprintFeatureReference>(),
                     WinlasFeature.ToReference<BlueprintFeatureReference>(),
                     YlimanchaFeature.ToReference<BlueprintFeatureReference>(),
-                    ZohlsFeature.ToReference<BlueprintFeatureReference>()
+                    ZohlsFeature.ToReference<BlueprintFeatureReference>(),
+                    ImbrexFeature.ToReference<BlueprintFeatureReference>(),
+                    MagdhFeature.ToReference<BlueprintFeatureReference>()
                 };
             });
             var Seelah = Resources.GetBlueprint<BlueprintUnit>("54be53f0b35bf3c4592a97ae335fe765");
             Seelah.AddComponent<AddFacts>(c => {
                 c.m_Facts = new BlueprintUnitFactReference[] { IomedaeFeature.ToReference<BlueprintUnitFactReference>() };
+            });
+            var Lann = Resources.GetBlueprint<BlueprintUnit>("cb29621d99b902e4da6f5d232352fbda");
+            Lann.AddComponent<AddFacts>(c => {
+                c.m_Facts = new BlueprintUnitFactReference[] { SarenraeFeature.ToReference<BlueprintUnitFactReference>() };
+            });
+            var Wenduag = Resources.GetBlueprint<BlueprintUnit>("ae766624c03058440a036de90a7f2009");
+            Wenduag.AddComponent<AddFacts>(c => {
+                c.m_Facts = new BlueprintUnitFactReference[] { LamashtuFeature.ToReference<BlueprintUnitFactReference>() };
+            });
+            var Woljif = Resources.GetBlueprint<BlueprintUnit>("766435873b1361c4287c351de194e5f9");
+            Woljif.AddComponent<AddFacts>(c => {
+                c.m_Facts = new BlueprintUnitFactReference[] { CalistriaFeature.ToReference<BlueprintUnitFactReference>() };
+            });
+            var Camelia = Resources.GetBlueprint<BlueprintUnit>("397b090721c41044ea3220445300e1b8");
+            Camelia.AddComponent<AddFacts>(c => {
+                c.m_Facts = new BlueprintUnitFactReference[] { GreenFaithFeature.ToReference<BlueprintUnitFactReference>() };
+            });
+            var Arueshalae = Resources.GetBlueprint<BlueprintUnit>("a352873d37ec6c54c9fa8f6da3a6b3e1");
+            Arueshalae.AddComponent<AddFacts>(c => {
+                c.m_Facts = new BlueprintUnitFactReference[] { DesnaFeature.ToReference<BlueprintUnitFactReference>() };
+            });
+            var Sosiel = Resources.GetBlueprint<BlueprintUnit>("1cbbbb892f93c3d439f8417ad7cbb6aa");
+            Sosiel.AddComponent<AddFacts>(c => {
+                c.m_Facts = new BlueprintUnitFactReference[] { DesnaFeature.ToReference<BlueprintUnitFactReference>() };
             });
         }
     }
