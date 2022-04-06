@@ -550,7 +550,7 @@ namespace ExpandedContent.Tweaks.Deities {
             });
             var Lann = Resources.GetBlueprint<BlueprintUnit>("cb29621d99b902e4da6f5d232352fbda");
             Lann.AddComponent<AddFacts>(c => {
-                c.m_Facts = new BlueprintUnitFactReference[] { SarenraeFeature.ToReference<BlueprintUnitFactReference>() };
+                c.m_Facts = new BlueprintUnitFactReference[] { IomedaeFeature.ToReference<BlueprintUnitFactReference>() };
             });
             var Wenduag = Resources.GetBlueprint<BlueprintUnit>("ae766624c03058440a036de90a7f2009");
             Wenduag.AddComponent<AddFacts>(c => {
