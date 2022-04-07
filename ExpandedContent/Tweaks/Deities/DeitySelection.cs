@@ -570,7 +570,11 @@ namespace ExpandedContent.Tweaks.Deities {
             });
             var Sosiel = Resources.GetBlueprint<BlueprintUnit>("1cbbbb892f93c3d439f8417ad7cbb6aa");
             Sosiel.AddComponent<AddFacts>(c => {
-                c.m_Facts = new BlueprintUnitFactReference[] { DesnaFeature.ToReference<BlueprintUnitFactReference>() };
+                c.m_Facts = new BlueprintUnitFactReference[] { ShelynFeature.ToReference<BlueprintUnitFactReference>() };
+            });
+            var Greybor = Resources.GetBlueprint<BlueprintUnit>("f72bb7c48bb3e45458f866045448fb58");
+            Sosiel.AddComponent<AddFacts>(c => {
+                c.m_Facts = new BlueprintUnitFactReference[] { NorgorberFeature.ToReference<BlueprintUnitFactReference>() };
             });
         }
     }
