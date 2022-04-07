@@ -157,6 +157,7 @@ namespace ExpandedContent.Tweaks
                 TheEldest.Ragadahn.AddRagadahnFeature();
 
                 Monitors.Monad.AddMonadFeature();
+                Monitors.Kerkamoth.AddKerkamothFeature();
 
                 Deities.DeitySelectionFeature.PatchDeitySelection();
                 Deities.PatchLichDeity.AddLichDeity();

@@ -301,6 +301,7 @@
     <Compile Include="Tweaks\FourHorsemen\Charon.cs" />
     <Compile Include="Tweaks\FourHorsemen\Szuriel.cs" />
     <Compile Include="Tweaks\FourHorsemen\Terlmarixian.cs" />
+    <Compile Include="Tweaks\Monitors\Kerkamoth.cs" />
     <Compile Include="Tweaks\Monitors\Monad.cs" />
     <Compile Include="Tweaks\QueensOfNight\ArdadLili.cs" />
     <Compile Include="Tweaks\QueensOfNight\Doloras.cs" />
@@ -519,6 +520,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Kabriri.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Kerkamoth.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Ketephys.jpg">

@@ -164,6 +164,7 @@ namespace ExpandedContent.Tweaks.Deities {
 
             //Monitors
             var MonadFeature = Resources.GetModBlueprint<BlueprintFeature>("MonadFeature");
+            var KerkamothFeature = Resources.GetModBlueprint<BlueprintFeature>("KerkamothFeature");
 
             var DeitySelection = Resources.GetBlueprint<BlueprintFeatureSelection>("59e7a76987fe3b547b9cce045f4db3e4");
             var PaladinClass = Resources.GetBlueprint<BlueprintCharacterClass>("bfa11238e7ae3544bbeb4d0b92e897ec");
@@ -458,6 +459,7 @@ namespace ExpandedContent.Tweaks.Deities {
                 bp.m_Icon = MonitorsIcon;
                 bp.m_AllFeatures = new BlueprintFeatureReference[] {
                 MonadFeature.ToReference<BlueprintFeatureReference>(),
+                KerkamothFeature.ToReference<BlueprintFeatureReference>(),
                 };
                 bp.IsClassFeature = true;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
@@ -541,7 +543,8 @@ namespace ExpandedContent.Tweaks.Deities {
                     YlimanchaFeature.ToReference<BlueprintFeatureReference>(),
                     ZohlsFeature.ToReference<BlueprintFeatureReference>(),
                     ImbrexFeature.ToReference<BlueprintFeatureReference>(),
-                    MagdhFeature.ToReference<BlueprintFeatureReference>()
+                    MagdhFeature.ToReference<BlueprintFeatureReference>(),
+                    KerkamothFeature.ToReference<BlueprintFeatureReference>()
                 };
             });
             var Seelah = Resources.GetBlueprint<BlueprintUnit>("54be53f0b35bf3c4592a97ae335fe765");
@@ -573,7 +576,7 @@ namespace ExpandedContent.Tweaks.Deities {
                 c.m_Facts = new BlueprintUnitFactReference[] { ShelynFeature.ToReference<BlueprintUnitFactReference>() };
             });
             var Greybor = Resources.GetBlueprint<BlueprintUnit>("f72bb7c48bb3e45458f866045448fb58");
-            Sosiel.AddComponent<AddFacts>(c => {
+            Greybor.AddComponent<AddFacts>(c => {
                 c.m_Facts = new BlueprintUnitFactReference[] { NorgorberFeature.ToReference<BlueprintUnitFactReference>() };
             });
         }
