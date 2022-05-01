@@ -38,6 +38,7 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintItem MasterworkStarknife = Resources.GetBlueprint<BlueprintItem>("657eca867b9324c4ca46cbf9ca01b940");
 
             BlueprintArchetype FeralChampionArchetype = Resources.GetBlueprint<BlueprintArchetype>("f68ca492c9c15e241ab73735fbd0fb9f");
+            BlueprintArchetype MantisZealotArchetype = Resources.GetModBlueprint<BlueprintArchetype>("MantisZealotArchetype");
 
             BlueprintFeature StarknifeProficiency = Resources.GetBlueprint<BlueprintFeature>("7818ba3db79ac064e88fa14a2478b24b");
             var MaatIcon = AssetLoader.LoadInternal("Deities", "Icon_Maat.jpg");
@@ -71,7 +72,10 @@ namespace ExpandedContent.Tweaks.Deities {
                     c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_Archetype = FeralChampionArchetype.ToReference<BlueprintArchetypeReference>();
                 });
-
+                bp.AddComponent<PrerequisiteNoArchetype>(c => {
+                    c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = MantisZealotArchetype.ToReference<BlueprintArchetypeReference>();
+                });
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
                 bp.AddComponent<PrerequisiteAlignment>(c => {
                     c.Alignment = AlignmentMaskType.LawfulGood | AlignmentMaskType.LawfulNeutral | AlignmentMaskType.TrueNeutral | AlignmentMaskType.LawfulEvil;

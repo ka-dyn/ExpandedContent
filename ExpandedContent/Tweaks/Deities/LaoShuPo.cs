@@ -37,6 +37,7 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintItem MasterworkDagger = Resources.GetBlueprint<BlueprintItem>("dfc92affae244554e8745a9ee9b7c520");
 
             BlueprintArchetype PriestOfBalance = Resources.GetBlueprint<BlueprintArchetype>("a4560e3fb5d247d68fb1a2738fcc0855");
+            BlueprintArchetype MantisZealotArchetype = Resources.GetModBlueprint<BlueprintArchetype>("MantisZealotArchetype");
 
             BlueprintFeature DaggerProficiency = Resources.GetBlueprint<BlueprintFeature>("b776c19291928cf4184d4dc65f09f3a6");
             var LaoShuPoIcon = AssetLoader.LoadInternal("Deities", "Icon_LaoShuPo.jpg");
@@ -65,7 +66,10 @@ namespace ExpandedContent.Tweaks.Deities {
                     c.m_CharacterClass = ClericClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_Archetype = PriestOfBalance.ToReference<BlueprintArchetypeReference>();
                 });
-                
+                bp.AddComponent<PrerequisiteNoArchetype>(c => {
+                    c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = MantisZealotArchetype.ToReference<BlueprintArchetypeReference>();
+                });
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
                 bp.AddComponent<PrerequisiteAlignment>(c => {
                     c.Alignment = AlignmentMaskType.TrueNeutral | AlignmentMaskType.LawfulEvil | AlignmentMaskType.NeutralEvil | AlignmentMaskType.ChaoticEvil;

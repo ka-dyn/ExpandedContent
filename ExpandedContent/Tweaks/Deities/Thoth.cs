@@ -38,6 +38,7 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintItem MasterworkSickle = Resources.GetBlueprint<BlueprintItem>("eae563aae0febbc4e91a1c5d0a6fd82a");
 
             BlueprintArchetype FeralChampionArchetype = Resources.GetBlueprint<BlueprintArchetype>("f68ca492c9c15e241ab73735fbd0fb9f");
+            BlueprintArchetype MantisZealotArchetype = Resources.GetModBlueprint<BlueprintArchetype>("MantisZealotArchetype");
 
             BlueprintFeature SickleProficiency = Resources.GetBlueprint<BlueprintFeature>("7b4c0488057fa2e42b8a92bac3304eb9");
             var ThothIcon = AssetLoader.LoadInternal("Deities", "Icon_Thoth.jpg");
@@ -70,7 +71,10 @@ namespace ExpandedContent.Tweaks.Deities {
                     c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_Archetype = FeralChampionArchetype.ToReference<BlueprintArchetypeReference>();
                 });
-
+                bp.AddComponent<PrerequisiteNoArchetype>(c => {
+                    c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = MantisZealotArchetype.ToReference<BlueprintArchetypeReference>();
+                });
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
                 bp.AddComponent<PrerequisiteAlignment>(c => {
                     c.Alignment = AlignmentMaskType.LawfulGood | AlignmentMaskType.LawfulNeutral | AlignmentMaskType.TrueNeutral | AlignmentMaskType.LawfulEvil;

@@ -37,6 +37,7 @@ namespace ExpandedContent.Tweaks.TheEldest {
             BlueprintItem MasterworkScythe = Resources.GetBlueprint<BlueprintItem>("4546c8236b5e9b74c8d692a923ab3f9a");
 
             BlueprintArchetype FeralChampionArchetype = Resources.GetBlueprint<BlueprintArchetype>("f68ca492c9c15e241ab73735fbd0fb9f");
+            BlueprintArchetype MantisZealotArchetype = Resources.GetModBlueprint<BlueprintArchetype>("MantisZealotArchetype");
 
             BlueprintFeature ScytheProficiency = Resources.GetBlueprint<BlueprintFeature>("96c174b0ebca7b246b82d4bc4aac4574");
             var MagdhIcon = AssetLoader.LoadInternal("Deities", "Icon_Magdh.jpg");
@@ -70,7 +71,10 @@ namespace ExpandedContent.Tweaks.TheEldest {
                     c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_Archetype = FeralChampionArchetype.ToReference<BlueprintArchetypeReference>();
                 });
-
+                bp.AddComponent<PrerequisiteNoArchetype>(c => {
+                    c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = MantisZealotArchetype.ToReference<BlueprintArchetypeReference>();
+                });
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
                 bp.AddComponent<PrerequisiteAlignment>(c => {
                     c.Alignment = AlignmentMaskType.LawfulGood | AlignmentMaskType.LawfulNeutral | AlignmentMaskType.TrueNeutral | AlignmentMaskType.LawfulEvil;

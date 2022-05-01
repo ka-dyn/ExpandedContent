@@ -38,6 +38,7 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintItem MasterworkLongsword = Resources.GetBlueprint<BlueprintItem>("571c56d11dafbb04094cbaae659974b5");
 
             BlueprintArchetype FeralChampionArchetype = Resources.GetBlueprint<BlueprintArchetype>("f68ca492c9c15e241ab73735fbd0fb9f");
+            BlueprintArchetype MantisZealotArchetype = Resources.GetModBlueprint<BlueprintArchetype>("MantisZealotArchetype");
 
             BlueprintFeature LongswordProficiency = Resources.GetBlueprint<BlueprintFeature>("62e27ffd9d53e14479f73da29760f64e");
             var HeiFengIcon = AssetLoader.LoadInternal("Deities", "Icon_HeiFeng.jpg");
@@ -65,7 +66,10 @@ namespace ExpandedContent.Tweaks.Deities {
                     c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_Archetype = FeralChampionArchetype.ToReference<BlueprintArchetypeReference>();
                 });
-
+                bp.AddComponent<PrerequisiteNoArchetype>(c => {
+                    c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = MantisZealotArchetype.ToReference<BlueprintArchetypeReference>();
+                });
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
                 bp.AddComponent<PrerequisiteAlignment>(c => {
                     c.Alignment = AlignmentMaskType.ChaoticGood | AlignmentMaskType.TrueNeutral | AlignmentMaskType.ChaoticNeutral | AlignmentMaskType.ChaoticEvil;

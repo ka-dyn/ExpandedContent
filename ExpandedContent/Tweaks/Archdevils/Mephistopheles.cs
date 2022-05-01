@@ -37,6 +37,7 @@ namespace ExpandedContent.Tweaks.Archdevils {
             BlueprintFeature TridentProficiency = Resources.GetBlueprint<BlueprintFeature>("f9565a97342ac594e9b6a495368c1a57");
             BlueprintArchetype FeralChampionArchetype = Resources.GetBlueprint<BlueprintArchetype>("f68ca492c9c15e241ab73735fbd0fb9f");
             BlueprintArchetype PriestOfBalance = Resources.GetBlueprint<BlueprintArchetype>("a4560e3fb5d247d68fb1a2738fcc0855");
+            BlueprintArchetype MantisZealotArchetype = Resources.GetModBlueprint<BlueprintArchetype>("MantisZealotArchetype");
             BlueprintItem ColdIronTrident = Resources.GetBlueprint<BlueprintItem>("fed59d344fe866d42a51c128dc1cc86b");
 
             var MephistophelesIcon = AssetLoader.LoadInternal("Deities", "Icon_Mephistopheles.jpg");
@@ -74,7 +75,10 @@ namespace ExpandedContent.Tweaks.Archdevils {
                     c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_Archetype = FeralChampionArchetype.ToReference<BlueprintArchetypeReference>();
                 });
-
+                bp.AddComponent<PrerequisiteNoArchetype>(c => {
+                    c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = MantisZealotArchetype.ToReference<BlueprintArchetypeReference>();
+                });
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
                 bp.AddComponent<PrerequisiteAlignment>(c => {
                     c.Alignment = AlignmentMaskType.LawfulEvil | AlignmentMaskType.NeutralEvil | AlignmentMaskType.LawfulNeutral | AlignmentMaskType.TrueNeutral;

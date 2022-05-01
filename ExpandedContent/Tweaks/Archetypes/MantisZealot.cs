@@ -23,6 +23,7 @@ using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Utility;
 using Kingmaker.RuleSystem;
+using Kingmaker.RuleSystem.Rules.Damage;
 using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Mechanics.Properties;
 using Kingmaker.UnitLogic.ActivatableAbilities;
@@ -33,6 +34,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Kingmaker.UnitLogic.Mechanics.Actions;
+using Kingmaker.UI.GenericSlot;
+using Kingmaker.Blueprints.Items.Ecnchantments;
 
 namespace ExpandedContent.Tweaks.Archetypes {
     internal class MantisZealot {
@@ -53,6 +56,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var SacredWeaponEnchantPlus5 = Resources.GetBlueprint<BlueprintFeature>("5fffe6a74adb1b742a8ebf64b8bb90fb");
             var SacredArmorEnchantPlus5 = Resources.GetBlueprint<BlueprintFeature>("1e560784dfcb00f4da1415bbad3226c3");
             var WarpriestAspectOfWar = Resources.GetBlueprint<BlueprintFeature>("65cc7abc21826a344aa156e2a40dcecc");
+            var WarpriestAspectOfWarResource = Resources.GetBlueprint<BlueprintAbilityResource>("973c613b8443cf14495c283e293d35f9");
             var SneakAttack = Resources.GetBlueprint<BlueprintFeature>("9b9eac6709e1c084cb18c3a366e0ec87");
 
             var LightArmorProficiency = Resources.GetBlueprint<BlueprintFeature>("6d3728d4e9c9898458fe5e9532951132");
@@ -62,6 +66,9 @@ namespace ExpandedContent.Tweaks.Archetypes {
 
             var EffortlessDualWielding = Resources.GetBlueprint<BlueprintFeature>("0ad7c2825c8504642b571265757d7037");
             var WeaponTrainingHeavyBlades = Resources.GetBlueprint<BlueprintFeature>("2a0ce0186af38ed419f47fce16f93c2a");
+            //Icons
+            var AchaekekIcon = AssetLoader.LoadInternal("Deities", "Icon_Achaekek.jpg");
+            var MantisAspectIcon = AssetLoader.LoadInternal("Skills", "Icon_MantisAspect.png");
 
             var MantisZealotArchetype = Helpers.CreateBlueprint<BlueprintArchetype>("MantisZealotArchetype", bp => {
                 bp.LocalizedName = Helpers.CreateString($"MantisZealotArchetype.Name", "Mantis Zealot");
@@ -108,23 +115,20 @@ namespace ExpandedContent.Tweaks.Archetypes {
             });
 
             //Sacred Reflexes
-            //Icon
-            var AchaekekIcon = AssetLoader.LoadInternal("Deities", "Icon_Achaekek.jpg");
-
-
-            //Resource
+            ///Resource
             var SacredReflexesAbilityResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("SacredReflexesAbilityResource", bp => {
                 bp.m_Min = 7;
                 bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
-                    BaseValue = 7,
+                    BaseValue = 0,
+
                     IncreasedByStat = false,
-                    IncreasedByLevel = true,
                     m_Class = new BlueprintCharacterClassReference[] {
-                        WarpriestClass.ToReference<BlueprintCharacterClassReference>()
-                    },
+                        WarpriestClass.ToReference<BlueprintCharacterClassReference>() },
                     m_Archetypes = new BlueprintArchetypeReference[] {
-                        MantisZealotArchetype.ToReference<BlueprintArchetypeReference>()
-                    },
+                        MantisZealotArchetype.ToReference<BlueprintArchetypeReference>() },
+                    
+                    IncreasedByLevel = true,
+                    StartingLevel = 7,
                     LevelIncrease = 1,
                     StartingIncrease = 1,
                     LevelStep = 1,
@@ -132,8 +136,11 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 };
 
             });
-            // Buffs
+            ///Buffs
             var SacredReflexesAbility1Buff = Helpers.CreateBuff("SacredReflexesAbility1Buff", bp => {
+                bp.SetName("Sacred Reflexes");
+                bp.SetDescription("Emulate the Mantis God’s grace and move with a supernatural fluidity. As a swift action gain uncanny dodge as per the rogue " +
+                    "class feature. You can use this ability for a number of minutes per day equal to his warpriest level, but it must be spent in 1-minute increments.");
                 bp.AddComponent<FlatFootedIgnore>(c => {
                     c.Type = FlatFootedIgnoreType.UncannyDodge;
                 });
@@ -142,7 +149,11 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 });
                 bp.m_Icon = AchaekekIcon;
             });
-            var SacredReflexesAbility2Buff = Helpers.CreateBuff("SacredReflexesAbility1Buff", bp => {
+            var SacredReflexesAbility2Buff = Helpers.CreateBuff("SacredReflexesAbility2Buff", bp => {
+                bp.SetName("Sacred Reflexes Improved");
+                bp.SetDescription("Emulate the Mantis God’s grace and move with a supernatural fluidity. As a swift action gain uncanny dodge as per the rogue " +
+                    "class feature and evasion as per the Monk feature. You can use this ability for a number of minutes per day equal to his warpriest level, but it must be spent in 1-minute " +
+                    "increments.");
                 bp.AddComponent<FlatFootedIgnore>(c => {
                     c.Type = FlatFootedIgnoreType.UncannyDodge;
                 });
@@ -154,7 +165,11 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 });
                 bp.m_Icon = AchaekekIcon;
             });
-            var SacredReflexesAbility3Buff = Helpers.CreateBuff("SacredReflexesAbility1Buff", bp => {
+            var SacredReflexesAbility3Buff = Helpers.CreateBuff("SacredReflexesAbility3Buff", bp => {
+                bp.SetName("Sacred Reflexes Mastered");
+                bp.SetDescription("Emulate the Mantis God’s grace and move with a supernatural fluidity. As a swift action gain improved uncanny dodge as per the rogue " +
+                    "class feature and evasion as per the Monk feature. You can use this ability for a number of minutes per day equal to his warpriest level, but it must be spent in 1-minute " +
+                    "increments.");
                 bp.AddComponent<FlatFootedIgnore>(c => {
                     c.Type = FlatFootedIgnoreType.UncannyDodge;
                 });
@@ -169,7 +184,11 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 });
                 bp.m_Icon = AchaekekIcon;
             });
-            var SacredReflexesAbility4Buff = Helpers.CreateBuff("SacredReflexesAbility1Buff", bp => {
+            var SacredReflexesAbility4Buff = Helpers.CreateBuff("SacredReflexesAbility4Buff", bp => {
+                bp.SetName("Sacred Reflexes Perfect");
+                bp.SetDescription("Emulate the Mantis God’s grace and move with a supernatural fluidity. As a swift action gain improved uncanny dodge as per the rogue " +
+                    "class feature and improved evasion as per the Monk feature. You can use this ability for a number of minutes per day equal to his warpriest level, but it must be spent in 1-minute " +
+                    "increments.");
                 bp.AddComponent<FlatFootedIgnore>(c => {
                     c.Type = FlatFootedIgnoreType.UncannyDodge;
                 });
@@ -184,12 +203,11 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 });
                 bp.m_Icon = AchaekekIcon;
             });
+            ///Abilities
             var SacredReflexesAbility1 = Helpers.CreateBlueprint<BlueprintActivatableAbility>("SacredReflexesAbility", bp => {
                 bp.SetName("Sacred Reflexes");
-                bp.SetDescription("At 7th level, a mantis zealot can emulate the Mantis God’s grace and move with a supernatural fluidity. As a swift action he can gain uncanny dodge as per the rogue " +
-                    "class feature. He can use this ability for a number of minutes per day equal to his warpriest level, but it must be spent in 1-minute increments. At 10th level, when he uses this " +
-                    "ability, he also gains evasion as per the monk class feature. At 13th level, he gains improved uncanny dodge instead of uncanny dodge. At 19th level, he gains improved evasion " +
-                    "instead of evasion.");
+                bp.SetDescription("Emulate the Mantis God’s grace and move with a supernatural fluidity. As a swift action gain uncanny dodge as per the rogue " +
+                    "class feature. You can use this ability for a number of minutes per day equal to his warpriest level, but it must be spent in 1-minute increments."); ;
                 bp.m_Icon = AchaekekIcon;
                 bp.AddComponent<ActivatableAbilityResourceLogic> (c => {
                     c.SpendType = ActivatableAbilityResourceLogic.ResourceSpendType.OncePerMinute;
@@ -201,12 +219,11 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.m_ActivateWithUnitCommand = UnitCommand.CommandType.Swift;
                 
             });
-            var SacredReflexesAbility2 = Helpers.CreateBlueprint<BlueprintActivatableAbility>("SacredReflexesAbility", bp => {
-                bp.SetName("Sacred Reflexes 2");
-                bp.SetDescription("At 7th level, a mantis zealot can emulate the Mantis God’s grace and move with a supernatural fluidity. As a swift action he can gain uncanny dodge as per the rogue " +
-                    "class feature. He can use this ability for a number of minutes per day equal to his warpriest level, but it must be spent in 1-minute increments. At 10th level, when he uses this " +
-                    "ability, he also gains evasion as per the monk class feature. At 13th level, he gains improved uncanny dodge instead of uncanny dodge. At 19th level, he gains improved evasion " +
-                    "instead of evasion.");
+            var SacredReflexesAbility2 = Helpers.CreateBlueprint<BlueprintActivatableAbility>("SacredReflexesAbility2", bp => {
+                bp.SetName("Sacred Reflexes Improved");
+                bp.SetDescription("Emulate the Mantis God’s grace and move with a supernatural fluidity. As a swift action gain uncanny dodge as per the rogue " +
+                    "class feature and evasion as per the Monk feature. You can use this ability for a number of minutes per day equal to his warpriest level, but it must be spent in 1-minute " +
+                    "increments.");
                 bp.m_Icon = AchaekekIcon;
                 bp.AddComponent<ActivatableAbilityResourceLogic>(c => {
                     c.SpendType = ActivatableAbilityResourceLogic.ResourceSpendType.OncePerMinute;
@@ -217,12 +234,12 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.ActivationType = AbilityActivationType.WithUnitCommand;
                 bp.m_ActivateWithUnitCommand = UnitCommand.CommandType.Swift;
 
-            }); var SacredReflexesAbility3 = Helpers.CreateBlueprint<BlueprintActivatableAbility>("SacredReflexesAbility", bp => {
-                bp.SetName("Sacred Reflexes 3");
-                bp.SetDescription("At 7th level, a mantis zealot can emulate the Mantis God’s grace and move with a supernatural fluidity. As a swift action he can gain uncanny dodge as per the rogue " +
-                    "class feature. He can use this ability for a number of minutes per day equal to his warpriest level, but it must be spent in 1-minute increments. At 10th level, when he uses this " +
-                    "ability, he also gains evasion as per the monk class feature. At 13th level, he gains improved uncanny dodge instead of uncanny dodge. At 19th level, he gains improved evasion " +
-                    "instead of evasion.");
+            }); 
+            var SacredReflexesAbility3 = Helpers.CreateBlueprint<BlueprintActivatableAbility>("SacredReflexesAbility3", bp => {
+                bp.SetName("Sacred Reflexes Mastered");
+                bp.SetDescription("Emulate the Mantis God’s grace and move with a supernatural fluidity. As a swift action gain improved uncanny dodge as per the rogue " +
+                    "class feature and evasion as per the Monk feature. You can use this ability for a number of minutes per day equal to his warpriest level, but it must be spent in 1-minute " +
+                    "increments.");
                 bp.m_Icon = AchaekekIcon;
                 bp.AddComponent<ActivatableAbilityResourceLogic>(c => {
                     c.SpendType = ActivatableAbilityResourceLogic.ResourceSpendType.OncePerMinute;
@@ -233,12 +250,12 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.ActivationType = AbilityActivationType.WithUnitCommand;
                 bp.m_ActivateWithUnitCommand = UnitCommand.CommandType.Swift;
 
-            }); var SacredReflexesAbility4 = Helpers.CreateBlueprint<BlueprintActivatableAbility>("SacredReflexesAbility", bp => {
-                bp.SetName("Sacred Reflexes 4");
-                bp.SetDescription("At 7th level, a mantis zealot can emulate the Mantis God’s grace and move with a supernatural fluidity. As a swift action he can gain uncanny dodge as per the rogue " +
-                    "class feature. He can use this ability for a number of minutes per day equal to his warpriest level, but it must be spent in 1-minute increments. At 10th level, when he uses this " +
-                    "ability, he also gains evasion as per the monk class feature. At 13th level, he gains improved uncanny dodge instead of uncanny dodge. At 19th level, he gains improved evasion " +
-                    "instead of evasion.");
+            }); 
+            var SacredReflexesAbility4 = Helpers.CreateBlueprint<BlueprintActivatableAbility>("SacredReflexesAbility4", bp => {
+                bp.SetName("Sacred Reflexes Perfect");
+                bp.SetDescription("Emulate the Mantis God’s grace and move with a supernatural fluidity. As a swift action gain improved uncanny dodge as per the rogue " +
+                    "class feature and improved evasion as per the Monk feature. You can use this ability for a number of minutes per day equal to his warpriest level, but it must be spent in 1-minute " +
+                    "increments.");
                 bp.m_Icon = AchaekekIcon;
                 bp.AddComponent<ActivatableAbilityResourceLogic>(c => {
                     c.SpendType = ActivatableAbilityResourceLogic.ResourceSpendType.OncePerMinute;
@@ -250,8 +267,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.m_ActivateWithUnitCommand = UnitCommand.CommandType.Swift;
 
             });
-
-
+            ///Features
             var SacredReflexesFeature1 = Helpers.CreateBlueprint<BlueprintFeature>("SacredReflexesFeature1", bp => {
                 bp.SetName("Sacred Reflexes");
                 bp.SetDescription("At 7th level, a mantis zealot can emulate the Mantis God’s grace and move with a supernatural fluidity. As a swift action he can gain uncanny dodge as per the rogue " +
@@ -261,6 +277,9 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.m_Icon = AchaekekIcon;
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] { SacredReflexesAbility1.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = SacredReflexesAbilityResource.ToReference<BlueprintAbilityResourceReference>();
                 });
             });
             var SacredReflexesFeature2 = Helpers.CreateBlueprint<BlueprintFeature>("SacredReflexesFeature2", bp => {
@@ -273,6 +292,9 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] { SacredReflexesAbility2.ToReference<BlueprintUnitFactReference>() };
                 });
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = SacredReflexesAbilityResource.ToReference<BlueprintAbilityResourceReference>();
+                });
             });
             var SacredReflexesFeature3 = Helpers.CreateBlueprint<BlueprintFeature>("SacredReflexesFeature3", bp => {
                 bp.SetName("Sacred Reflexes Mastered");
@@ -283,6 +305,9 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.m_Icon = AchaekekIcon;
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] { SacredReflexesAbility3.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = SacredReflexesAbilityResource.ToReference<BlueprintAbilityResourceReference>();
                 });
             });
             var SacredReflexesFeature4 = Helpers.CreateBlueprint<BlueprintFeature>("SacredReflexesFeature4", bp => {
@@ -295,9 +320,10 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] { SacredReflexesAbility4.ToReference<BlueprintUnitFactReference>() };
                 });
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = SacredReflexesAbilityResource.ToReference<BlueprintAbilityResourceReference>();
+                });
             });
-
-
             //Sneak Attack
             var MantisZealotSneakAttackFeature = Helpers.CreateBlueprint<BlueprintFeature>("MantisZealotSneakAttackFeature", bp => {
                 bp.SetName("Zealots Sneak Attack");
@@ -313,13 +339,237 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.m_Facts = new BlueprintUnitFactReference[] { SneakAttack.ToReference<BlueprintUnitFactReference>() };
                 });
             });
-
-
-
-
-
-
-
+            //Aspect of the Mantis Capstone
+            var AspectOfTheMantisResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("AspectOfTheMantisResource", bp => {
+                bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
+                    BaseValue = 1,
+                    IncreasedByLevel = false,
+                    LevelIncrease = 0,
+                    IncreasedByLevelStartPlusDivStep = false,
+                    StartingLevel = 0,
+                    StartingIncrease = 0,
+                    LevelStep = 0,
+                    PerStepIncrease = 0,
+                    MinClassLevelIncrease = 0,
+                    OtherClassesModifier = 0,
+                    IncreasedByStat = false,
+                    ResourceBonusStat = StatType.Unknown,
+                };                
+            });
+            var MantisBleedBuff = Helpers.CreateBlueprint<BlueprintBuff>("MantisBleedBuff", bp => {
+                bp.SetName("Mantis Bleed");
+                bp.SetDescription("This creature takes 25 hit point {g|Encyclopedia:Damage}damage{/g} each turn. Bleeding can be stopped through the application " +
+                    "of any {g|Encyclopedia:Spell}spell{/g} that cures hit point damage.");
+                bp.m_Icon = MantisAspectIcon;
+                bp.AddComponent<AddFactContextActions>(c => {
+                    //Dex bleed damage or just 25 depending on time
+                    c.NewRound = Helpers.CreateActionList(
+                        new ContextActionDealDamage() {
+                            m_Type = ContextActionDealDamage.Type.Damage,
+                            DamageType = new DamageTypeDescription() {
+                                Common = new DamageTypeDescription.CommomData() {
+                                    Reality = 0,
+                                    Alignment = 0,
+                                    Precision = false
+                                },
+                                Physical = new DamageTypeDescription.PhysicalData() {
+                                    Material = 0,
+                                    Form = Kingmaker.Enums.Damage.PhysicalDamageForm.Slashing,
+                                    Enhancement = 0,
+                                    EnhancementTotal = 0
+                                },
+                                Energy = Kingmaker.Enums.Damage.DamageEnergyType.Fire,
+                                Type = DamageType.Direct
+                            },
+                            Drain = false,
+                            AbilityType = StatType.Unknown,
+                            Duration = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                m_IsExtendable = true,
+                            },
+                            PreRolledSharedValue = AbilitySharedValue.Damage,
+                            Value = new ContextDiceValue() {
+                                DiceType = DiceType.One,
+                                DiceCountValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 25,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                            },
+                            ResultSharedValue = AbilitySharedValue.Damage,
+                            CriticalSharedValue = AbilitySharedValue.Damage
+                        });
+                        new Conditional() {
+                            ConditionsChecker = new ConditionsChecker() {
+                                Operation = Operation.And,
+                                Conditions = new Condition[] {
+                                    new ContextConditionIsInCombat() {
+                                        Not = false
+                                    }
+                                }
+                            },
+                            IfTrue = Helpers.CreateActionList(),
+                            IfFalse = Helpers.CreateActionList(
+                                new Conditional() {
+                                    ConditionsChecker = new ConditionsChecker() { 
+                                        Operation = Operation.And,
+                                        Conditions = new Condition[] {
+                                            new ContextConditionIsPartyMember() {
+                                                Not = false
+                                            }
+                                        }
+                                    },
+                                    IfTrue = Helpers.CreateActionList(),
+                                    IfFalse= Helpers.CreateActionList(
+                                        new ContextActionRemoveSelf()
+                                        )
+                                    }
+                                )
+                        };
+                });
+                bp.AddComponent<AddHealTrigger>(c => {
+                    c.Action = Helpers.CreateActionList(
+                        new ContextActionRemoveSelf()
+                        );
+                    c.OnHealDamage = true;
+                });
+                bp.AddComponent<CombatStateTrigger>(c => {
+                    c.CombatEndActions = Helpers.CreateActionList(
+                        new ContextActionRemoveSelf()                        
+                        );
+                });
+                bp.Stacking = StackingType.Replace;
+                bp.Frequency = DurationRate.Rounds;
+            });
+            var MantisBleedEnchantment = Helpers.CreateBlueprint<BlueprintWeaponEnchantment>("MantisBleedEnchantment", bp => {
+                bp.SetName("Mantis");
+                bp.SetDescription("All attacks deal 25 bleed damage that triggers each round but does not stack with itself.");
+                bp.AddComponent<AddInitiatorAttackWithWeaponTrigger>(c => {
+                    c.OnlyHit = true;
+                    c.Action = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = MantisBleedBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                m_IsExtendable = true,
+                            }
+                        });
+                });
+                bp.SetPrefix("Mantis");
+                bp.SetSuffix("");
+            });
+            var AspectOfTheMantisBuff = Helpers.CreateBuff("AspectOfTheMantisBuff", bp => {
+                bp.SetName("Aspect of the Mantis");
+                bp.SetDescription("At 20th level, the Mantis Zealot can become an aspect of Achaekek. Once per day as a swift action, they can add 5 " +
+                    "to their base attack bonus, gain DR 10/—, and can cause all attacks to deal 25 bleed damage that triggers each round but does not stack. This " +
+                    "ability lasts for 1 minute.");
+                bp.m_Icon = MantisAspectIcon;
+                bp.AddComponent<AddContextStatBonus>(c => {
+                    c.Descriptor = ModifierDescriptor.None;
+                    c.Stat = StatType.BaseAttackBonus;
+                    c.Value = new ContextValue() {
+                        ValueType = ContextValueType.Simple,
+                        Value = 5,
+                        ValueRank = AbilityRankType.Default,
+                        ValueShared = AbilitySharedValue.Damage,
+                        Property = UnitProperty.None
+                    };
+                });
+                bp.AddComponent<AddDamageResistancePhysical>(c => {
+                    c.Value = new ContextValue() {
+                        ValueType = ContextValueType.Simple,
+                        Value = 10,
+                        ValueRank = AbilityRankType.Default,
+                        ValueShared = AbilitySharedValue.Damage,
+                        Property = UnitProperty.None
+                    };
+                });
+                //Bleed Stuff
+                bp.AddComponent<BuffEnchantWornItem>(c => {
+                    c.m_EnchantmentBlueprint = MantisBleedEnchantment.ToReference<BlueprintItemEnchantmentReference>();
+                    c.Slot = EquipSlotBase.SlotType.PrimaryHand;
+                });
+                bp.AddComponent<BuffEnchantWornItem>(c => {
+                    c.m_EnchantmentBlueprint = MantisBleedEnchantment.ToReference<BlueprintItemEnchantmentReference>();
+                    c.Slot = EquipSlotBase.SlotType.SecondaryHand;
+                });
+            });
+            var AspectOfTheMantisAbility = Helpers.CreateBlueprint<BlueprintAbility>("AspectOfTheMantisAbility", bp => {
+                bp.SetName("Aspect Of The Mantis");
+                bp.SetDescription("At 20th level, the Mantis Zealot can become an aspect of Achaekek. Once per day as a swift action, they can add 5 " +
+                    "to their base attack bonus, gain DR 10/—, and can cause all attacks to deal 25 bleed damage that triggers each round but does not stack. This " +
+                    "ability lasts for 1 minute.");
+                bp.m_Icon = MantisAspectIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = AspectOfTheMantisBuff.ToReference<BlueprintBuffReference>(),
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Minutes,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 1,
+                                m_IsExtendable = true
+                            },
+                            DurationSeconds = 0
+                        });
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = AspectOfTheMantisResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.HasFastAnimation = false;
+                bp.ActionType = UnitCommand.CommandType.Swift;
+                bp.AvailableMetamagic = 0;
+            });
+            var AspectOfTheMantisFeature = Helpers.CreateBlueprint<BlueprintFeature>("AspectOfTheMantisFeature", bp => {
+                bp.SetName("Aspect Of The Mantis");
+                bp.SetDescription("At 20th level, the Mantis Zealot can become an aspect of Achaekek. Once per day as a swift action, they can add 5 " +
+                    "to their base attack bonus, gain DR 10/—, and can cause all attacks to deal 25 bleed damage that triggers each round but does not stack. This " +
+                    "ability lasts for 1 minute.");
+                bp.m_Icon = MantisAspectIcon;
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {AspectOfTheMantisAbility.ToReference<BlueprintUnitFactReference>()};
+                });
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = AspectOfTheMantisResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
             MantisZealotArchetype.RemoveFeatures = new LevelEntry[] {
                     Helpers.LevelEntry(1, WarpriestProficiencies, WarpriestSacredWeaponBaseDamageFeature, WarpriestWeaponFocusSelection),
                     Helpers.LevelEntry(4, SacredWeaponEnchantFeature),
@@ -342,7 +592,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     Helpers.LevelEntry(13, SacredReflexesFeature3),
                     Helpers.LevelEntry(16, MantisZealotSneakAttackFeature),
                     Helpers.LevelEntry(19, SacredReflexesFeature4),
-                    Helpers.LevelEntry(20, MantisZealotSneakAttackFeature),
+                    Helpers.LevelEntry(20, MantisZealotSneakAttackFeature, AspectOfTheMantisFeature),
             };
             
             WarpriestClass.m_Archetypes = WarpriestClass.m_Archetypes.AppendToArray(MantisZealotArchetype.ToReference<BlueprintArchetypeReference>());

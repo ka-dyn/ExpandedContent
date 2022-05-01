@@ -37,6 +37,8 @@ namespace ExpandedContent.Tweaks.Deities {
 
             BlueprintItem MasterworkFalcata = Resources.GetBlueprint<BlueprintItem>("833083b0efacf80499135953d66a0c45");
 
+            BlueprintArchetype MantisZealotArchetype = Resources.GetModBlueprint<BlueprintArchetype>("MantisZealotArchetype");
+
             BlueprintFeature FalcataProficiency = Resources.GetBlueprint<BlueprintFeature>("91fe4440ac82dbf4383c872c065c6661");
             var HorusIcon = AssetLoader.LoadInternal("Deities", "Icon_Horus.jpg");
             var HorusFeature = Helpers.CreateBlueprint<BlueprintFeature>("HorusFeature", (bp => {
@@ -69,6 +71,10 @@ namespace ExpandedContent.Tweaks.Deities {
                 bp.HideInCharacterSheetAndLevelUp = false;
                 
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
+                bp.AddComponent<PrerequisiteNoArchetype>(c => {
+                    c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = MantisZealotArchetype.ToReference<BlueprintArchetypeReference>();
+                });
                 bp.AddComponent<PrerequisiteAlignment>(c => {
                     c.Alignment = AlignmentMaskType.LawfulGood | AlignmentMaskType.LawfulNeutral | AlignmentMaskType.TrueNeutral | AlignmentMaskType.LawfulEvil;
                 });

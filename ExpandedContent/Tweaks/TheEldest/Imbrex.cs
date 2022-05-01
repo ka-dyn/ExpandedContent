@@ -37,6 +37,7 @@ namespace ExpandedContent.Tweaks.TheEldest {
             BlueprintItem MasterworkHeavyFlail = Resources.GetBlueprint<BlueprintItem>("0198b7e5e662ce54d82d6a53c30c3173");
 
             BlueprintArchetype FeralChampionArchetype = Resources.GetBlueprint<BlueprintArchetype>("f68ca492c9c15e241ab73735fbd0fb9f");
+            BlueprintArchetype MantisZealotArchetype = Resources.GetModBlueprint<BlueprintArchetype>("MantisZealotArchetype");
 
             BlueprintFeature HeavyFlailProficiency = Resources.GetBlueprint<BlueprintFeature>("a22e30bd35fbb704cab2d7e3c00717c1");
             var ImbrexIcon = AssetLoader.LoadInternal("Deities", "Icon_Imbrex.jpg");
@@ -69,7 +70,10 @@ namespace ExpandedContent.Tweaks.TheEldest {
                     c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_Archetype = FeralChampionArchetype.ToReference<BlueprintArchetypeReference>();
                 });
-
+                bp.AddComponent<PrerequisiteNoArchetype>(c => {
+                    c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = MantisZealotArchetype.ToReference<BlueprintArchetypeReference>();
+                });
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
                 bp.AddComponent<PrerequisiteAlignment>(c => {
                     c.Alignment = AlignmentMaskType.LawfulGood | AlignmentMaskType.LawfulNeutral | AlignmentMaskType.TrueNeutral | AlignmentMaskType.LawfulEvil;

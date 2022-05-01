@@ -37,6 +37,7 @@ namespace ExpandedContent.Tweaks.Monitors {
             BlueprintItem MasterworkWarhammer = Resources.GetBlueprint<BlueprintItem>("e912d86260a9dbd40944e93cb7cd7857");
 
             BlueprintArchetype FeralChampionArchetype = Resources.GetBlueprint<BlueprintArchetype>("f68ca492c9c15e241ab73735fbd0fb9f");
+            BlueprintArchetype MantisZealotArchetype = Resources.GetModBlueprint<BlueprintArchetype>("MantisZealotArchetype");
 
             BlueprintFeature WarhammerProficiency = Resources.GetBlueprint<BlueprintFeature>("aba1be1d113ea4049b99ea92165e91dc");
             var KerkamothIcon = AssetLoader.LoadInternal("Deities", "Icon_Kerkamoth.jpg");
@@ -64,7 +65,10 @@ namespace ExpandedContent.Tweaks.Monitors {
                     c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_Archetype = FeralChampionArchetype.ToReference<BlueprintArchetypeReference>();
                 });
-
+                bp.AddComponent<PrerequisiteNoArchetype>(c => {
+                    c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = MantisZealotArchetype.ToReference<BlueprintArchetypeReference>();
+                });
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
                 bp.AddComponent<PrerequisiteAlignment>(c => {
                     c.Alignment = AlignmentMaskType.LawfulGood | AlignmentMaskType.LawfulNeutral | AlignmentMaskType.TrueNeutral | AlignmentMaskType.LawfulEvil;

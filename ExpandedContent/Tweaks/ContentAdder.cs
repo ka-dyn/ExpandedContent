@@ -27,7 +27,8 @@ namespace ExpandedContent.Tweaks
                 Archetypes.LivingScripture.AddLivingScripture();
                 Archetypes.PriestOfBalance.PatchPriestOfBalanceArchetype();
                 Archetypes.TempleChampion.AddTempleChampion();
-                // not done Archetypes.MantisZealot.AddMantisZealot();
+                Archetypes.MantisZealot.AddMantisZealot();
+                Archetypes.PatchMantisZealotDeity.MantisZealotDeityPatch();
 
                 RacialArchetypes.Cruoromancer.AllowCruoromancerArchetype();
                 RacialArchetypes.CavalierOfThePaw.AllowCavalierOfThePaw();

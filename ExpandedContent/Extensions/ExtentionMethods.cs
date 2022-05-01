@@ -20,6 +20,7 @@ using ExpandedContent.Utilities;
 using UnityEngine;
 using static Kingmaker.Blueprints.Classes.Prerequisites.Prerequisite;
 using static ExpandedContent.Utilities.Helpers;
+using Kingmaker.Blueprints.Items.Ecnchantments;
 
 namespace ExpandedContent.Extensions {
     static class ExtentionMethods {
@@ -376,7 +377,20 @@ namespace ExpandedContent.Extensions {
         public static void SetName(this BlueprintUnitFact feature, String name) {
             feature.m_DisplayName = Helpers.CreateString(feature.name + ".Name", name);
         }
-
+        //Faff bitter wrote start
+        public static void SetName(this BlueprintItemEnchantment enchantment, string name) {
+            enchantment.m_EnchantName = Helpers.CreateString(enchantment.name + ".Name", name);
+        }
+        public static void SetDescription(this BlueprintItemEnchantment enchantment, string description) {
+            enchantment.m_Description = Helpers.CreateString(enchantment.Description + "Description", description);
+        }
+        public static void SetPrefix(this BlueprintItemEnchantment enchantment, string prefix) {
+            enchantment.m_Prefix = Helpers.CreateString(enchantment.Prefix + "Prefix", prefix);
+        }
+        public static void SetSuffix(this BlueprintItemEnchantment enchantment, string suffix) {
+            enchantment.m_Suffix = Helpers.CreateString(enchantment.Suffix + "suffix", suffix);
+        }
+        //Faff bitter wrote end
         public static void SetDescriptionUntagged(this BlueprintUnitFact feature, String description) {
             feature.m_Description = Helpers.CreateString(feature.name + ".Description", description);
         }
