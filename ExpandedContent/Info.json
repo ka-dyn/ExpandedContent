@@ -3,11 +3,11 @@
   "Author": "kadyn",
   "DisplayName": "Expanded Content",
   "EntryMethod": "ExpandedContent.Main.Load",
-  "GameVersion": "1.2.2a",
+  "GameVersion": "1.3.2c",
   "HomePage": "https://github.com/ka-dyn/ExpandedContent/releases",
   "Id": "ExpandedContent",
   "ManagerVersion": "0.23.0",
   "Repository": "https://raw.githubusercontent.com/ka-dyn/ExpandedContent/master/Repository.json",
   "Requirements": [],
-  "Version": "0.2.93"
+  "Version": "0.2.94"
 }

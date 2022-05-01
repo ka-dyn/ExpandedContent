@@ -782,7 +782,9 @@
     <Content Include="Assets\Skills\Icon_Havoc.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\Skills\Icon_MantisAspect.jpg" />
+    <Content Include="Assets\Skills\Icon_MantisAspect.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Skills\Icon_OBBANE.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

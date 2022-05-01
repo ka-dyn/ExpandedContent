@@ -68,7 +68,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var WeaponTrainingHeavyBlades = Resources.GetBlueprint<BlueprintFeature>("2a0ce0186af38ed419f47fce16f93c2a");
             //Icons
             var AchaekekIcon = AssetLoader.LoadInternal("Deities", "Icon_Achaekek.jpg");
-            var MantisAspectIcon = AssetLoader.LoadInternal("Skills", "Icon_MantisAspect.png");
+            var MantisAspectIcon = AssetLoader.LoadInternal("Skills", "Icon_MantisAspect.jpg");
 
             var MantisZealotArchetype = Helpers.CreateBlueprint<BlueprintArchetype>("MantisZealotArchetype", bp => {
                 bp.LocalizedName = Helpers.CreateString($"MantisZealotArchetype.Name", "Mantis Zealot");
