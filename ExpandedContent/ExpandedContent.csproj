@@ -173,6 +173,7 @@
     <Compile Include="Tweaks\Archdevils\Mammon.cs" />
     <Compile Include="Tweaks\Archdevils\Mephistopheles.cs" />
     <Compile Include="Tweaks\Archdevils\Moloch.cs" />
+    <Compile Include="Tweaks\Archetypes\Mooncaller.cs" />
     <Compile Include="Tweaks\Archetypes\MantisZealot.cs" />
     <Compile Include="Tweaks\Archetypes\PatchMantisZealotDeity.cs" />
     <Compile Include="Tweaks\Archetypes\TempleChampion.cs" />

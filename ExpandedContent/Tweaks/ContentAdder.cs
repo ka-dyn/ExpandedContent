@@ -29,6 +29,7 @@ namespace ExpandedContent.Tweaks
                 Archetypes.TempleChampion.AddTempleChampion();
                 Archetypes.MantisZealot.AddMantisZealot();
                 Archetypes.PatchMantisZealotDeity.MantisZealotDeityPatch();
+                Archetypes.Mooncaller.AddMooncaller();
 
                 RacialArchetypes.Cruoromancer.AllowCruoromancerArchetype();
                 RacialArchetypes.CavalierOfThePaw.AllowCavalierOfThePaw();
