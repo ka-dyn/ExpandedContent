@@ -87,6 +87,16 @@
     "MantisBleedBuff": "00c4f28e-401d-4e96-a712-9bb676248372",
     "MantisBleedEnchantment": "ee81e9a7-c0c7-485f-901b-e619177a0dec",
 
+    "MooncallerArchetype": "08151cf9-57a8-4792-ba00-baf2924b54a8",
+    "NightSightFeature": "ad11ad96-db23-4eee-a61e-5556654e8831",
+    "ResistCallOfTheWildFeature": "18ee7c70-0d27-42ec-8670-04029a3d06d0",
+    "WolfsbaneFeature1": "68b5db2d-5b8e-48da-9385-a1afe6316674",
+    "WolfsbaneFeature1DR": "9f7a6ce6-35da-4193-b5e0-2203fe84a25f",
+    "WolfsbaneFeature2": "f894f2a8-9e43-4da3-9f09-e94b63930524",
+    "WolfsbaneFeature2DR": "f4a2fd75-a424-42b2-99d4-1130314989ea",
+    "WolfsbaneFeature3": "b1561db3-2510-4555-851c-2b4e589a27aa",
+    "WolfsbaneFeature3DR": "84bf8ac0-9ffd-4cd6-9c34-4dc848780c9a",
+
     "DreadKnightProgression": "164F6982-16E8-400D-9FD2-58D908460EAB",
     "DreadKnightClass": "D0EB4CA4-4E11-417C-9B2F-0208491067A0",
     "DreadKnightProficiencies": "C0626ACC-5BF5-46DA-BEA7-ED4895900D10",
@@ -234,6 +244,7 @@
     "TsukiyoFeature": "501eb8a8-2846-42f5-bc18-d9766885e886",
     "YaezhingFeature": "e0aa87e8-9805-41a8-8f98-6ee364a80210",
     "YamatsumiFeature": "58c0be36-a959-42ff-943d-3a7ba6449482",
+    "AlsetaFeature": "a32f8b7c-6b73-4340-ab2a-ef4972db9369",
 
     "AnubisFeature": "f6f536b1-9623-4afa-98f0-f6ab70c3e6ba",
     "ApepFeature": "97ea0b6b-f0b6-4ab8-ad7c-5779035be6cd",
@@ -307,6 +318,9 @@
     "TheLostPrinceFeature": "cef75410-3bb2-4706-9b96-a5b30cd17cf0",
 
     "MonitorsSelection": "156a6a1e-62a2-4504-a47c-4d1e8b44982e",
+    "AtroposFeature": "f2b17188-2ff6-441c-ac13-588f84ddb377",
+    "BarzahkFeature": "c202c113-66fc-4e6b-b544-00a53823890a",
+    "CeyannanFeature": "fdfea8aa-700c-4f25-9902-287a51df4219",
     "KerkamothFeature": "8aa0a2be-a426-401b-8f95-5c60fe6cf1a2",
     "MonadFeature": "4e2bfab2-8bfe-46f1-a1a6-7316789b3130",
 

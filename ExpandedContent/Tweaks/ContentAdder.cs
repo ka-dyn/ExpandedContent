@@ -108,6 +108,7 @@ namespace ExpandedContent.Tweaks
                 Deities.GreenFaith.AddGreenFaith();
                 Deities.Besmara.AddBesmaraFeature();
                 Deities.Achaekek.AddAchaekekFeature();
+                Deities.Alseta.AddAlsetaFeature();
                
                 Deities.PatchPulura.AddPulura();
                 Deities.MilaniSacredWeaponFeature.AddMilaniSacredWeaponFeature();
@@ -160,6 +161,9 @@ namespace ExpandedContent.Tweaks
 
                 Monitors.Monad.AddMonadFeature();
                 Monitors.Kerkamoth.AddKerkamothFeature();
+                Monitors.Atropos.AddAtroposFeature();
+                Monitors.Barzahk.AddBarzahkFeature();
+                Monitors.Ceyannan.AddCeyannanFeature();
 
                 Deities.DeitySelectionFeature.PatchDeitySelection();
                 Deities.PatchLichDeity.AddLichDeity();

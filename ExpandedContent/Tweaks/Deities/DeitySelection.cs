@@ -135,6 +135,7 @@ namespace ExpandedContent.Tweaks.Deities {
             var DesnaFeature = Resources.GetBlueprint<BlueprintFeature>("2c0a3b9971327ba4d9d85354d16998c1");
             var BesmaraFeature = Resources.GetModBlueprint<BlueprintFeature>("BesmaraFeature");
             var AchaekekFeature = Resources.GetModBlueprint<BlueprintFeature>("AchaekekFeature");
+            var AlsetaFeature = Resources.GetModBlueprint<BlueprintFeature>("AlsetaFeature");
 
             //Philosophies
             var GreenFaithFeature = Resources.GetBlueprint<BlueprintFeature>("99a7a8f13c1300c42878558fa9471e2f");
@@ -163,8 +164,12 @@ namespace ExpandedContent.Tweaks.Deities {
             var ShykaFeature = Resources.GetModBlueprint<BlueprintFeature>("ShykaFeature");
 
             //Monitors
-            var MonadFeature = Resources.GetModBlueprint<BlueprintFeature>("MonadFeature");
+            var AtroposFeature = Resources.GetModBlueprint<BlueprintFeature>("AtroposFeature");
+            var BarzahkFeature = Resources.GetModBlueprint<BlueprintFeature>("BarzahkFeature");
+            var CeyannanFeature = Resources.GetModBlueprint<BlueprintFeature>("CeyannanFeature");
             var KerkamothFeature = Resources.GetModBlueprint<BlueprintFeature>("KerkamothFeature");
+            var MonadFeature = Resources.GetModBlueprint<BlueprintFeature>("MonadFeature");
+            
 
             var DeitySelection = Resources.GetBlueprint<BlueprintFeatureSelection>("59e7a76987fe3b547b9cce045f4db3e4");
             var PaladinClass = Resources.GetBlueprint<BlueprintCharacterClass>("bfa11238e7ae3544bbeb4d0b92e897ec");
@@ -372,6 +377,7 @@ namespace ExpandedContent.Tweaks.Deities {
                 MilaniFeature.ToReference<BlueprintFeatureReference>(),
                 BesmaraFeature.ToReference<BlueprintFeatureReference>(),
                 AchaekekFeature.ToReference<BlueprintFeatureReference>(),
+                AlsetaFeature.ToReference<BlueprintFeatureReference>(),
                 };
                 bp.IsClassFeature = true;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
@@ -457,9 +463,12 @@ namespace ExpandedContent.Tweaks.Deities {
                     "simply corrupted Proteans. Monitors seem born from the multiverse itself—fractured pieces of a mind that finds equilibrium only in the " +
                     "conflict of its component parts.");
                 bp.m_Icon = MonitorsIcon;
-                bp.m_AllFeatures = new BlueprintFeatureReference[] {
-                MonadFeature.ToReference<BlueprintFeatureReference>(),
+                bp.m_AllFeatures = new BlueprintFeatureReference[] {                
+                AtroposFeature.ToReference<BlueprintFeatureReference>(),
+                BarzahkFeature.ToReference<BlueprintFeatureReference>(),
+                CeyannanFeature.ToReference<BlueprintFeatureReference>(),
                 KerkamothFeature.ToReference<BlueprintFeatureReference>(),
+                MonadFeature.ToReference<BlueprintFeatureReference>(),
                 };
                 bp.IsClassFeature = true;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
@@ -544,7 +553,9 @@ namespace ExpandedContent.Tweaks.Deities {
                     ZohlsFeature.ToReference<BlueprintFeatureReference>(),
                     ImbrexFeature.ToReference<BlueprintFeatureReference>(),
                     MagdhFeature.ToReference<BlueprintFeatureReference>(),
-                    KerkamothFeature.ToReference<BlueprintFeatureReference>()
+                    KerkamothFeature.ToReference<BlueprintFeatureReference>(),
+                    AlsetaFeature.ToReference<BlueprintFeatureReference>(),
+
                 };
             });
             var Seelah = Resources.GetBlueprint<BlueprintUnit>("54be53f0b35bf3c4592a97ae335fe765");

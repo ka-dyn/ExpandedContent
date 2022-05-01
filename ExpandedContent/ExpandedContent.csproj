@@ -221,6 +221,7 @@
     <Compile Include="Tweaks\Deities\Chadali.cs" />
     <Compile Include="Tweaks\Deities\Chucaro.cs" />
     <Compile Include="Tweaks\Deities\Achaekek.cs" />
+    <Compile Include="Tweaks\Deities\Alseta.cs" />
     <Compile Include="Tweaks\Deities\Lalaci.cs" />
     <Compile Include="Tweaks\Deities\Lymnieris.cs" />
     <Compile Include="Tweaks\Deities\Olheon.cs" />
@@ -284,7 +285,6 @@
     <Compile Include="Tweaks\Deities\Arshea.cs" />
     <Compile Include="Tweaks\DemonLords\Baphomet.cs" />
     <Compile Include="Tweaks\Deities\BlackButterfly.cs" />
-    <Compile Include="Tweaks\Deities\Dagon.cs" />
     <Compile Include="Tweaks\Deities\Dahak.cs" />
     <Compile Include="Tweaks\Deities\DeitySelection.cs" />
     <Compile Include="Tweaks\DemonLords\Treerazer.cs" />
@@ -303,6 +303,9 @@
     <Compile Include="Tweaks\FourHorsemen\Charon.cs" />
     <Compile Include="Tweaks\FourHorsemen\Szuriel.cs" />
     <Compile Include="Tweaks\FourHorsemen\Terlmarixian.cs" />
+    <Compile Include="Tweaks\Monitors\Atropos.cs" />
+    <Compile Include="Tweaks\Monitors\Barzahk.cs" />
+    <Compile Include="Tweaks\Monitors\Ceyannan.cs" />
     <Compile Include="Tweaks\Monitors\Kerkamoth.cs" />
     <Compile Include="Tweaks\Monitors\Monad.cs" />
     <Compile Include="Tweaks\QueensOfNight\ArdadLili.cs" />
@@ -377,6 +380,9 @@
     <Content Include="Assets\Deities\Icon_Achaekek.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Deities\Icon_Alseta.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Deities\Icon_Andoletta.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -404,7 +410,13 @@
     <Content Include="Assets\Deities\Icon_Ashava.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Deities\Icon_Atropos.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Deities\Icon_Baphomet.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Barzahk.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Bastet.jpg">
@@ -420,6 +432,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_BlackButterfly.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Ceyannan.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Chadali.jpg">
