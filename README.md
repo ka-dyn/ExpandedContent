@@ -10,6 +10,12 @@ anything without it. Check out his mod, TableTopTweaks if you haven't already!
 I'd also like to give a big shoutout and thank you to bubbles, Narria, CascadingDragon, and everyone else who has been so kind in the Modding discord.
 Seriously, thank you!
 
+
+v0.2.94
+-New archetype Mantis Zealot
+-New archetype Mooncaller
+4 new deitys
+
 v0.2.93
 -Added Kerkamoth
 -Fixed bug with Sosiel
