@@ -30,6 +30,11 @@ using ExpandedContent.Localization;
 namespace ExpandedContent.Utilities {
     public static class Helpers {
 
+        //stuff stole from Bubbles vv
+        public static T[] Arr<T>(params T[] val) {
+            return val;
+        }
+        //stuff stole from Bubbles ^^
         public static void RegisterClass(BlueprintCharacterClass ClassToRegister) {
             ProgressionRoot progression = ResourcesLibrary.GetRoot().Progression;
             List<BlueprintCharacterClassReference> list = ((IEnumerable<BlueprintCharacterClassReference>)progression.m_CharacterClasses).ToList<BlueprintCharacterClassReference>();

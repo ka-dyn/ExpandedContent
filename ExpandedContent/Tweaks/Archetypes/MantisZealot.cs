@@ -553,6 +553,8 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.HasFastAnimation = false;
                 bp.ActionType = UnitCommand.CommandType.Swift;
                 bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
             var AspectOfTheMantisFeature = Helpers.CreateBlueprint<BlueprintFeature>("AspectOfTheMantisFeature", bp => {
                 bp.SetName("Aspect Of The Mantis");

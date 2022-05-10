@@ -25,30 +25,37 @@ namespace ExpandedContent.Tweaks.Archetypes
             var GodClawFeature = Resources.GetBlueprint<BlueprintFeature>("583a26e88031d0a4a94c8180105692a5");
 
             AbadarFeature.AddComponent<PrerequisiteNoArchetype>(c => {
+                c.HideInUI = true;
                 c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
                 c.m_Archetype = MantisZealotArchetype.ToReference<BlueprintArchetypeReference>();
             });
             AsmodeusFeature.AddComponent<PrerequisiteNoArchetype>(c => {
+                c.HideInUI = true;
                 c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
                 c.m_Archetype = MantisZealotArchetype.ToReference<BlueprintArchetypeReference>();
             });
             IroriFeature.AddComponent<PrerequisiteNoArchetype>(c => {
+                c.HideInUI = true;
                 c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
                 c.m_Archetype = MantisZealotArchetype.ToReference<BlueprintArchetypeReference>();
             });
             NorgorberFeature.AddComponent<PrerequisiteNoArchetype>(c => {
+                c.HideInUI = true;
                 c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
                 c.m_Archetype = MantisZealotArchetype.ToReference<BlueprintArchetypeReference>();
             });
             UrgathoaFeature.AddComponent<PrerequisiteNoArchetype>(c => {
+                c.HideInUI = true;
                 c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
                 c.m_Archetype = MantisZealotArchetype.ToReference<BlueprintArchetypeReference>();
             });
             ZonKuthonFeature.AddComponent<PrerequisiteNoArchetype>(c => {
+                c.HideInUI = true;
                 c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
                 c.m_Archetype = MantisZealotArchetype.ToReference<BlueprintArchetypeReference>();
             });
             GodClawFeature.AddComponent<PrerequisiteNoArchetype>(c => {
+                c.HideInUI = true;
                 c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
                 c.m_Archetype = MantisZealotArchetype.ToReference<BlueprintArchetypeReference>();
             });

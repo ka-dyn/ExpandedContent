@@ -17,7 +17,7 @@ using System.Threading.Tasks;
 
 namespace ExpandedContent.Tweaks.TheEldest {
     internal class Ragadahn {
-        private static readonly BlueprintFeature AnimalDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("9f05f9da2ea5ae44eac47d407a0000e5");
+        private static readonly BlueprintFeature ScalykindDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("ScalykindDomainAllowed");
         private static readonly BlueprintFeature ChaosDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("8c7d778bc39fec642befc1435b00f613");
         private static readonly BlueprintFeature EvilDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("351235ac5fc2b7e47801f63d117b656c");
         private static readonly BlueprintFeature WaterDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("8f49469c40e2c6e4db61296558e08966");
@@ -45,7 +45,7 @@ namespace ExpandedContent.Tweaks.TheEldest {
                 bp.SetDescription("\nTitles: The Water Lord, Serpent King, The World Serpent, The Father of Dragons   " +
                     "\nAlignment: Chaotic Evil   " +
                     "\nAreas of Concern: Linnorms, Oceans, Spirals   " +
-                    "\nDomains: Chaos, Evil, Scalykind (Animal), Water   " +
+                    "\nDomains: Chaos, Evil, Scalykind , Water   " +
                     "\nSubdomains: Ancestors, Dragon, Oceans, Venom   " +
                     "\nFavoured Weapon: Whip (Trident)   " +
                     "\nHoly Symbol: Blue ouroboros   " +
@@ -79,7 +79,7 @@ namespace ExpandedContent.Tweaks.TheEldest {
                     c.m_Facts = new BlueprintUnitFactReference[1] { ChannelNegativeAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[1] { AnimalDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+                    c.m_Facts = new BlueprintUnitFactReference[1] { ScalykindDomainAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[1] { ChaosDomainAllowed.ToReference<BlueprintUnitFactReference>() };

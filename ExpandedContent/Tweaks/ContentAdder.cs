@@ -45,8 +45,12 @@ namespace ExpandedContent.Tweaks
                 RacialArchetypes.PhantasmalMage.AllowPhantasmalMageArchetype();
         
                 Backgrounds.ArchdukeOfCheliax.AddBackgroundArchdukeOfCheliax();
-                
-                
+
+                Domains.BloodDomain.AddBloodDomain();
+                Domains.CavesDomain.AddCavesDomain();
+                /// Unfinished Domains.StormDomain.AddStormDomain();
+                Domains.ScalykindDomain.AddScalykindDomain();
+                Domains.BaseDeityPatch.AddBaseDeityPatch();
 
                 Archdevils.Dispater.AddDispater();
                 Archdevils.Mephistopheles.AddMephistopheles();
@@ -165,6 +169,7 @@ namespace ExpandedContent.Tweaks
                 Monitors.Barzahk.AddBarzahkFeature();
                 Monitors.Ceyannan.AddCeyannanFeature();
 
+                
                 Deities.DeitySelectionFeature.PatchDeitySelection();
                 Deities.PatchLichDeity.AddLichDeity();
 

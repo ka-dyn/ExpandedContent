@@ -154,6 +154,8 @@ namespace ExpandedContent.Tweaks.Classes {
                 });
             });
             Helpers.RegisterClass(OathbreakerClass);
+            OathbreakerProgression.m_Classes = new BlueprintProgression.ClassWithLevel[] { new BlueprintProgression.ClassWithLevel { m_Class = OathbreakerClass.ToReference<BlueprintCharacterClassReference>() } };
+
 
         }
 

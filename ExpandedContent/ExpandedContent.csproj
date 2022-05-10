@@ -298,6 +298,11 @@
     <Compile Include="Tweaks\Deities\Pulura.cs" />
     <Compile Include="Tweaks\Deities\Ragathiel.cs" />
     <Compile Include="Tweaks\DemonLords\Zura.cs" />
+    <Compile Include="Tweaks\Domains\BloodDomain.cs" />
+    <Compile Include="Tweaks\Domains\BaseDeityPatch.cs" />
+    <Compile Include="Tweaks\Domains\CavesDomain.cs" />
+    <Compile Include="Tweaks\Domains\ScalykindDomain.cs" />
+    <Compile Include="Tweaks\Domains\StormDomain.cs" />
     <Compile Include="Tweaks\Domains\VoidDomain.cs" />
     <Compile Include="Tweaks\FourHorsemen\Apollyon.cs" />
     <Compile Include="Tweaks\FourHorsemen\Charon.cs" />
@@ -342,6 +347,7 @@
     <Compile Include="Utilities\Attributes.cs" />
     <Compile Include="Utilities\BloodlineTools.cs" />
     <Compile Include="Utilities\Cavalier.cs" />
+    <Compile Include="Utilities\DomainTools.cs" />
     <Compile Include="Utilities\DescriptionTools.cs" />
     <Compile Include="Utilities\FeatTools.cs" />
     <Compile Include="Main.cs" />
@@ -777,6 +783,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_FeatSelection.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_GaleAura.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_Havoc.png">

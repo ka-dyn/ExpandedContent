@@ -17,7 +17,7 @@ using System.Threading.Tasks;
 
 namespace ExpandedContent.Tweaks.Deities {
     internal class Jalaijatali {
-        private static readonly BlueprintFeature AnimalDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("9f05f9da2ea5ae44eac47d407a0000e5");
+        private static readonly BlueprintFeature ScalykindDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("ScalykindDomainAllowed");
         private static readonly BlueprintFeature ChaosDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("8c7d778bc39fec642befc1435b00f613");
         private static readonly BlueprintFeature GoodDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("882521af8012fc749930b03dc18a69de");
         private static readonly BlueprintFeature WaterDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("8f49469c40e2c6e4db61296558e08966");
@@ -45,7 +45,7 @@ namespace ExpandedContent.Tweaks.Deities {
                 bp.SetDescription("\nTitles: Rillsong   " +
                     "\nAlignment: Chaotic Good   " +
                     "\nAreas of Concern: Natural music, Rapids, Waterfalls   " +
-                    "\nDomains: Chaos, Good, Scalykind (Animal), Water   " +
+                    "\nDomains: Chaos, Good, Scalykind , Water   " +
                     "\nSubdomains: Azata, Flotsam, Revelry, Rivers   " +
                     "\nFavoured Weapon: Whip (Trident)   " +
                     "\nHoly Symbol: Water from wood pipe   " +
@@ -75,7 +75,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     c.m_Facts = new BlueprintUnitFactReference[1] { ChannelPositiveAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[1] { AnimalDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+                    c.m_Facts = new BlueprintUnitFactReference[1] { ScalykindDomainAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[1] { ChaosDomainAllowed.ToReference<BlueprintUnitFactReference>() };
