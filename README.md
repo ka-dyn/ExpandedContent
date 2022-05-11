@@ -2,26 +2,40 @@
 -Drag and drop the zip file onto the UMM "Install" button.
 
 *Contents*
+
 New Archetypes
--Living Scripture, Inquisitor 
+
+-Living Scripture, Inquisitor
+
 -Mantis Zealot, Warpriest
+
 -Mooncaller, Druid
+
 -Temple Champion, Paladin
 
+
 New Classes
+
 -Oathbreaker - Based off the Vindictive Bastard fallen Paladin class. 
   -With Castigator archetype
+  
 -DreadKnight - Based off the Antipaladin alternative class.
   -With Conqueror archetype
 
 New Deities
+
 Most of the deities from the tabletop game are included, split into categories based on group and hooked up with the correct Domains and features
+
 -All deities of Ancient Osirion, All deities of Tian Xia, The Eldest, The Empyreal Lords, Draconic Deities and many more.
+
 -Treerazer
 
 New Domains / Subdomains
+
 -Scalykind Domain
+
 -Blood Subdomain
+
 -Caves Subdomain
 
 
