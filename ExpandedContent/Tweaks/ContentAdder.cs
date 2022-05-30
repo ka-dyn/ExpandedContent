@@ -23,6 +23,17 @@ namespace ExpandedContent.Tweaks
                 if (Initialized) return;
                 Initialized = true;
 
+                Classes.DrakeClass.DrakeCompanionClass.AddDrakeCompanionClass();
+                Classes.DrakeClass.DrakeCompanionGreen.AddDrakeCompanionGreen();
+                Classes.DrakeClass.DrakeCompanionSilver.AddDrakeCompanionSilver();
+                Classes.DrakeClass.DrakeCompanionBlack.AddDrakeCompanionBlack();
+                Classes.DrakeClass.DrakeCompanionBlue.AddDrakeCompanionBlue();
+                Classes.DrakeClass.DrakeCompanionBrass.AddDrakeCompanionBrass();
+                Classes.DrakeClass.DrakeCompanionRed.AddDrakeCompanionRed();
+                Classes.DrakeClass.DrakeCompanionWhite.AddDrakeCompanionWhite();
+                Classes.DrakeClass.DrakeSpells.AddDrakeSpells();
+                Classes.DrakeClass.DrakeCompanionSelection.AddDrakeCompanionSelection();
+                Classes.DrakeClass.DrakeMythicAbilities.AddDrakeMythicAbilities();
              
                 Archetypes.LivingScripture.AddLivingScripture();
                 Archetypes.PriestOfBalance.PatchPriestOfBalanceArchetype();
@@ -30,6 +41,9 @@ namespace ExpandedContent.Tweaks
                 Archetypes.MantisZealot.AddMantisZealot();
                 Archetypes.PatchMantisZealotDeity.MantisZealotDeityPatch();
                 Archetypes.Mooncaller.AddMooncaller();
+                Archetypes.DraconicDruid.AddDraconicDruid();
+                Archetypes.DrakeWarden.AddDrakeWarden();
+                Archetypes.SilverChampion.AddSilverChampion();
 
                 RacialArchetypes.Cruoromancer.AllowCruoromancerArchetype();
                 RacialArchetypes.CavalierOfThePaw.AllowCavalierOfThePaw();
@@ -50,6 +64,7 @@ namespace ExpandedContent.Tweaks
                 Domains.CavesDomain.AddCavesDomain();
                 /// Unfinished Domains.StormDomain.AddStormDomain();
                 Domains.ScalykindDomain.AddScalykindDomain();
+                Domains.DragonDomain.AddDragonDomain();
                 Domains.BaseDeityPatch.AddBaseDeityPatch();
 
                 Archdevils.Dispater.AddDispater();

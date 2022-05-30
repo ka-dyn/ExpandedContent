@@ -81,7 +81,7 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.SpellResistance = false;
                 bp.AffectEnemies = true;
                 bp.Shape = AreaEffectShape.Cylinder;
-                bp.Size = 30.Feet();
+                bp.Size = new Feet() {m_Value = 30};
             });
             //StormDomainGreaterBuff
             var StormDomainGreaterBuff = Helpers.CreateBuff("StormDomainGreaterBuff", bp => {

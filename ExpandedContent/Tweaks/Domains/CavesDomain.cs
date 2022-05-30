@@ -472,6 +472,9 @@ namespace ExpandedContent.Tweaks.Domains {
             DomainTools.RegisterSecondaryDomain(CavesDomainProgressionSecondary);
             DomainTools.RegisterDruidDomain(CavesDomainProgressionDruid);
             DomainTools.RegisterBlightDruidDomain(CavesDomainProgressionDruid);
+            DomainTools.RegisterDivineHunterDomain(CavesDomainProgression);
+            DomainTools.RegisterTempleDomain(CavesDomainProgression);
+            DomainTools.RegisterSecondaryTempleDomain(CavesDomainProgressionSecondary);
         }
 
     }

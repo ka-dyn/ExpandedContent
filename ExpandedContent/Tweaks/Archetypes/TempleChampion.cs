@@ -122,7 +122,6 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.AddComponent<AddFacts>(c => {
                     // To support all features that check for domains this way
                     c.m_Facts = new BlueprintUnitFactReference[] { DomainsSelection.ToReference<BlueprintUnitFactReference>() };
-
                 });
             });
             var DomainChampionFeatureSecondary = Helpers.CreateBlueprint<BlueprintFeatureSelection>("DomainChampionFeatureSecondary", bp => {
@@ -155,8 +154,6 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.Stat = StatType.Wisdom;
                     c.Value = 4;
                 });
-
-
             });
 
             var TempleChampionArmoredSwiftnessFeature = Helpers.CreateBlueprint<BlueprintFeature>("TempleChampionArmoredSwiftnessFeature", bp => {

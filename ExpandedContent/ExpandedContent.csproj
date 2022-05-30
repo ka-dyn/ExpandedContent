@@ -173,6 +173,9 @@
     <Compile Include="Tweaks\Archdevils\Mammon.cs" />
     <Compile Include="Tweaks\Archdevils\Mephistopheles.cs" />
     <Compile Include="Tweaks\Archdevils\Moloch.cs" />
+    <Compile Include="Tweaks\Archetypes\SilverChampion.cs" />
+    <Compile Include="Tweaks\Archetypes\DrakeWarden.cs" />
+    <Compile Include="Tweaks\Archetypes\DraconicDruid.cs" />
     <Compile Include="Tweaks\Archetypes\Mooncaller.cs" />
     <Compile Include="Tweaks\Archetypes\MantisZealot.cs" />
     <Compile Include="Tweaks\Archetypes\PatchMantisZealotDeity.cs" />
@@ -204,6 +207,17 @@
     <Compile Include="Tweaks\Classes\ClassFeaturesOathbreaker\SpitefulTenacity.cs" />
     <Compile Include="Tweaks\Classes\ClassFeaturesOathbreaker\OathbreakerSoloTactics.cs" />
     <Compile Include="Tweaks\Classes\ClassFeaturesOathbreaker\OathbreakersBaneFeature.cs" />
+    <Compile Include="Tweaks\Classes\DrakeClass\DrakeCompanionBlack.cs" />
+    <Compile Include="Tweaks\Classes\DrakeClass\DrakeCompanionBlue.cs" />
+    <Compile Include="Tweaks\Classes\DrakeClass\DrakeCompanionRed.cs" />
+    <Compile Include="Tweaks\Classes\DrakeClass\DrakeCompanionBrass.cs" />
+    <Compile Include="Tweaks\Classes\DrakeClass\DrakeCompanionWhite.cs" />
+    <Compile Include="Tweaks\Classes\DrakeClass\DrakeCompanionSilver.cs" />
+    <Compile Include="Tweaks\Classes\DrakeClass\DrakeSpells.cs" />
+    <Compile Include="Tweaks\Classes\DrakeClass\DrakeMythicAbilities.cs" />
+    <Compile Include="Tweaks\Classes\DrakeClass\DrakeCompanionClass.cs" />
+    <Compile Include="Tweaks\Classes\DrakeClass\DrakeCompanionGreen.cs" />
+    <Compile Include="Tweaks\Classes\DrakeClass\DrakeCompanionSelection.cs" />
     <Compile Include="Tweaks\Classes\Oathbreaker.cs" />
     <Compile Include="Tweaks\Classes\DreadKnight.cs" />
     <Compile Include="Tweaks\ContentAdder.cs" />
@@ -301,6 +315,7 @@
     <Compile Include="Tweaks\Domains\BloodDomain.cs" />
     <Compile Include="Tweaks\Domains\BaseDeityPatch.cs" />
     <Compile Include="Tweaks\Domains\CavesDomain.cs" />
+    <Compile Include="Tweaks\Domains\DragonDomain.cs" />
     <Compile Include="Tweaks\Domains\ScalykindDomain.cs" />
     <Compile Include="Tweaks\Domains\StormDomain.cs" />
     <Compile Include="Tweaks\Domains\VoidDomain.cs" />

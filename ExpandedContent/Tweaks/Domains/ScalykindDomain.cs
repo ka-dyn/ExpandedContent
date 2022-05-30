@@ -415,7 +415,10 @@ namespace ExpandedContent.Tweaks.Domains {
             DomainMastery.Abilities.Add(ScalykindDomainBaseAbility.ToReference<BlueprintAbilityReference>());
             DomainTools.RegisterDomain(ScalykindDomainProgression);
             DomainTools.RegisterSecondaryDomain(ScalykindDomainProgressionSecondary);
-            
+            DomainTools.RegisterDivineHunterDomain(ScalykindDomainProgression);
+            DomainTools.RegisterTempleDomain(ScalykindDomainProgression);
+            DomainTools.RegisterSecondaryTempleDomain(ScalykindDomainProgressionSecondary);
+
         }
 
     }

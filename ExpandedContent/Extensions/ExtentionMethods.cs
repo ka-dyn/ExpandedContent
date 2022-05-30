@@ -390,6 +390,10 @@ namespace ExpandedContent.Extensions {
         public static void SetSuffix(this BlueprintItemEnchantment enchantment, string suffix) {
             enchantment.m_Suffix = Helpers.CreateString(enchantment.Suffix + "suffix", suffix);
         }
+        //Test
+        public static void SetFoleySoundPrefix(this BlueprintUnit blueprintUnit, string soundPrefix) {
+            blueprintUnit.Visual.FoleySoundPrefix = Helpers.CreateString(blueprintUnit.Visual.FoleySoundPrefix + "FoleySoundPrefix", soundPrefix);
+        }
         //Faff bitter wrote end
         public static void SetDescriptionUntagged(this BlueprintUnitFact feature, String description) {
             feature.m_Description = Helpers.CreateString(feature.name + ".Description", description);

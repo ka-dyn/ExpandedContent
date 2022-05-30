@@ -73,8 +73,8 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var ResistCallOfTheWildFeature = Helpers.CreateBlueprint<BlueprintFeature>("ResistCallOfTheWildFeature", bp => {
                 bp.SetName("Resist Call of the Wild");
                 bp.SetDescription("At 4th level, a mooncaller gains a +4 bonus on saving throws to avoid confusion, daze, feeblemind, and insanity effects. She also gains a +4 bonus " +
-                    "gainst the, spell-like, and supernatural abilities of creatures with the shapechanger subtype.");
-                /// Shapechange type not in game yet
+                    "against the, spell-like, and supernatural abilities of creatures with the shapechanger subtype.");
+                /// Shapechanger type not in game yet
                 //bp.AddComponent<SavingThrowBonusAgainstFact>(c => {
                 //    c.m_CheckedFact = ShapechangerType;
                 //    c.Value = 4;

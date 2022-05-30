@@ -552,6 +552,9 @@ namespace ExpandedContent.Tweaks.Domains {
             DomainMastery.Abilities.Add(BloodDomainGreaterAbility.ToReference<BlueprintAbilityReference>());
             DomainTools.RegisterDomain(BloodDomainProgression);
             DomainTools.RegisterSecondaryDomain(BloodDomainProgressionSecondary);
+            DomainTools.RegisterDivineHunterDomain(BloodDomainProgression);
+            DomainTools.RegisterTempleDomain(BloodDomainProgression);
+            DomainTools.RegisterSecondaryTempleDomain(BloodDomainProgressionSecondary);
            
         }
 

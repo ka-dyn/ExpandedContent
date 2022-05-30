@@ -28,6 +28,7 @@ namespace ExpandedContent.Tweaks.Deities {
         private static readonly BlueprintCharacterClass ClericClass = Resources.GetBlueprint<BlueprintCharacterClass>("67819271767a9dd4fbfd4ae700befea0");
         private static readonly BlueprintCharacterClass InquistorClass = Resources.GetBlueprint<BlueprintCharacterClass>("f1a70d9e1b0b41e49874e1fa9052a1ce");
         private static readonly BlueprintCharacterClass WarpriestClass = Resources.GetBlueprint<BlueprintCharacterClass>("30b5e47d47a0e37438cc5a80c96cfb99");
+        private static readonly BlueprintCharacterClass PaladinClass = Resources.GetBlueprint<BlueprintCharacterClass>("bfa11238e7ae3544bbeb4d0b92e897ec");
 
 
 
@@ -36,6 +37,7 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintItem MasterworkLongbow = Resources.GetBlueprint<BlueprintItem>("8e89a5d3c1a9dae44b967fb4fd7e5117");
 
             BlueprintArchetype PriestOfBalance = Resources.GetBlueprint<BlueprintArchetype>("a4560e3fb5d247d68fb1a2738fcc0855");
+            BlueprintArchetype SilverChampionArchetype = Resources.GetModBlueprint<BlueprintArchetype>("SilverChampionArchetype");
 
             BlueprintFeature LongbowProficiency = Resources.GetBlueprint<BlueprintFeature>("0978f630fc5d6a6409ac641137bf6659");
             var YlimanchaIcon = AssetLoader.LoadInternal("Deities", "Icon_Ylimancha.jpg");
@@ -67,7 +69,11 @@ namespace ExpandedContent.Tweaks.Deities {
                     c.m_CharacterClass = ClericClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_Archetype = PriestOfBalance.ToReference<BlueprintArchetypeReference>();
                 });
-
+                bp.AddComponent<PrerequisiteNoArchetype>(c => {
+                    c.HideInUI = true;
+                    c.m_CharacterClass = PaladinClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = SilverChampionArchetype.ToReference<BlueprintArchetypeReference>();
+                });
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
                 bp.AddComponent<PrerequisiteAlignment>(c => {
                     c.Alignment = AlignmentMaskType.LawfulGood | AlignmentMaskType.NeutralGood | AlignmentMaskType.ChaoticGood | AlignmentMaskType.TrueNeutral;

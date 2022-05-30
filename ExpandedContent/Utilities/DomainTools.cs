@@ -17,20 +17,35 @@ namespace ExpandedContent.Utilities {
             DomainSelection.m_AllFeatures = DomainSelection.m_AllFeatures.AddToArray(domain.ToReference<BlueprintFeatureReference>());
 
         }
-        public static void RegisterSecondaryDomain(BlueprintProgression secondaryDomain) {
+        public static void RegisterSecondaryDomain(BlueprintProgression secondarydomain) {
             BlueprintFeatureSelection SecondDomainSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("43281c3d7fe18cc4d91928395837cd1e");
-            SecondDomainSelection.m_AllFeatures = SecondDomainSelection.m_AllFeatures.AddToArray(secondaryDomain.ToReference<BlueprintFeatureReference>());
+            SecondDomainSelection.m_AllFeatures = SecondDomainSelection.m_AllFeatures.AddToArray(secondarydomain.ToReference<BlueprintFeatureReference>());
 
         }
-        public static void RegisterDruidDomain(BlueprintProgression secondaryDomain) {
+        public static void RegisterDruidDomain(BlueprintProgression domain) {
             BlueprintFeatureSelection DruidDomainSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("5edfe84c93823d04f8c40ca2b4e0f039");
-            DruidDomainSelection.m_AllFeatures = DruidDomainSelection.m_AllFeatures.AddToArray(secondaryDomain.ToReference<BlueprintFeatureReference>());
+            DruidDomainSelection.m_AllFeatures = DruidDomainSelection.m_AllFeatures.AddToArray(domain.ToReference<BlueprintFeatureReference>());
 
         }
-        public static void RegisterBlightDruidDomain(BlueprintProgression secondaryDomain)
+        public static void RegisterBlightDruidDomain(BlueprintProgression secondarydomain)
         {
             BlueprintFeatureSelection BlightDruidDomainSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("096fc02f6cc817a43991c4b437e12b8e");
-            BlightDruidDomainSelection.m_AllFeatures = BlightDruidDomainSelection.m_AllFeatures.AddToArray(secondaryDomain.ToReference<BlueprintFeatureReference>());
+            BlightDruidDomainSelection.m_AllFeatures = BlightDruidDomainSelection.m_AllFeatures.AddToArray(secondarydomain.ToReference<BlueprintFeatureReference>());
+
+        }
+        public static void RegisterDivineHunterDomain(BlueprintProgression domain) {
+            BlueprintFeatureSelection DivineHunterDomainSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("72909a37a1ed5344f88ec9d1d31f5c5b");
+            DivineHunterDomainSelection.m_AllFeatures = DivineHunterDomainSelection.m_AllFeatures.AddToArray(domain.ToReference<BlueprintFeatureReference>());
+
+        }
+        public static void RegisterTempleDomain(BlueprintProgression domain) {
+            BlueprintFeatureSelection DomainChampionFeature = Resources.GetModBlueprint<BlueprintFeatureSelection>("DomainChampionFeature");
+            DomainChampionFeature.m_AllFeatures = DomainChampionFeature.m_AllFeatures.AddToArray(domain.ToReference<BlueprintFeatureReference>());
+
+        }
+        public static void RegisterSecondaryTempleDomain(BlueprintProgression secondarydomain) {
+            BlueprintFeatureSelection DomainChampionFeatureSecondary = Resources.GetModBlueprint<BlueprintFeatureSelection>("DomainChampionFeatureSecondary");
+            DomainChampionFeatureSecondary.m_AllFeatures = DomainChampionFeatureSecondary.m_AllFeatures.AddToArray(secondarydomain.ToReference<BlueprintFeatureReference>());
 
         }
     }
