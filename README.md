@@ -1,6 +1,8 @@
 *Install VIA UMM*
 -Drag and drop the zip file onto the UMM "Install" button.
 
+While this mod is not dependant on https://github.com/Vek17/TabletopTweaks-Base it is recommended as all testing is done with it installed and it fixes several base game issues.
+
 *Contents*
 
 New Archetypes
