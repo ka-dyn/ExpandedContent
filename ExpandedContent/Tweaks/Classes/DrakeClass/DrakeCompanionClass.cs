@@ -1622,6 +1622,8 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                     c.m_Facts = new BlueprintUnitFactReference[] { DrakenClawsBuff.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.IsClassFeature = true;
+                bp.m_AllowNonContextActions = false;
+
             });
             var DrakenScalesFire = Helpers.CreateBlueprint<BlueprintFeature>("DrakenScalesFire", bp => {
                 bp.HideInUI = true;
@@ -2116,12 +2118,12 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 bp.AddComponent<AddStatBonus>(c => {
                     c.Descriptor = ModifierDescriptor.UntypedStackable;
                     c.Stat = StatType.Strength;
-                    c.Value = 4;
+                    c.Value = -4;
                 });
                 bp.AddComponent<AddStatBonus>(c => {
                     c.Descriptor = ModifierDescriptor.UntypedStackable;
                     c.Stat = StatType.Dexterity;
-                    c.Value = -2;
+                    c.Value = 2;
                 });
                 bp.AddComponent<ChangeUnitSize>(c => {
                     c.m_Type = ChangeUnitSize.ChangeType.Delta;

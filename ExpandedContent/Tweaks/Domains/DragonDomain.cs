@@ -1066,9 +1066,9 @@ namespace ExpandedContent.Tweaks.Domains {
             });
             var DomainMastery = Resources.GetBlueprint<BlueprintFeature>("2de64f6a1f2baee4f9b7e52e3f046ec5").GetComponent<AutoMetamagic>();
             DomainMastery.Abilities.Add(DragonDomainGreaterFireAbility.ToReference<BlueprintAbilityReference>());
-
-
-
+            DomainMastery.Abilities.Add(DragonDomainGreaterColdAbility.ToReference<BlueprintAbilityReference>());
+            DomainMastery.Abilities.Add(DragonDomainGreaterElectricityAbility.ToReference<BlueprintAbilityReference>());
+            DomainMastery.Abilities.Add(DragonDomainGreaterAcidAbility.ToReference<BlueprintAbilityReference>());
             DomainTools.RegisterDomain(DragonDomainProgression);
             DomainTools.RegisterSecondaryDomain(DragonDomainProgressionSecondary);
             DomainTools.RegisterDivineHunterDomain(DragonDomainProgression);

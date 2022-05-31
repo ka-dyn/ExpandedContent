@@ -4,6 +4,7 @@ using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Selection;
+using Kingmaker.Blueprints.Items.Ecnchantments;
 using Kingmaker.Blueprints.Items.Weapons;
 using Kingmaker.Designers.EventConditionActionSystem.Actions;
 using Kingmaker.Designers.Mechanics.Facts;
@@ -14,6 +15,7 @@ using Kingmaker.Enums.Damage;
 using Kingmaker.RuleSystem;
 using Kingmaker.RuleSystem.Rules;
 using Kingmaker.RuleSystem.Rules.Damage;
+using Kingmaker.UI.GenericSlot;
 using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.UnitLogic.Abilities.Components;
@@ -793,11 +795,11 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 DrakeBreathWeaponAcid3Feature.ToReference<BlueprintUnitFactReference>()
             };
 
-
-            var DraconicBodyBuff = Helpers.CreateBuff("DrakenClawsBuff", bp => {
+            
+            var DraconicBodyBuff = Helpers.CreateBuff("DraconicBodyBuff", bp => {
                 bp.SetName("Draconic Body");
                 bp.SetDescription("The drake gains two natural claw attacks that deal {g|Encyclopedia:Dice}1d2{/g} damage from a tiny drake, but increase " +
-                    "damage dice size each time the drake grows");
+                    "damage dice size each time the drake grows");                
                 bp.AddComponent<AddAdditionalLimb>(c => {
                     c.m_Weapon = WingLarge1n6.ToReference<BlueprintItemWeaponReference>();
                 });
@@ -809,7 +811,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 bp.Frequency = DurationRate.Rounds;
                 bp.IsClassFeature = true;
             });
-            var DraconicBodyFeature = Helpers.CreateBlueprint<BlueprintFeature>("DrakenClawsFeature", bp => {
+            var DraconicBodyFeature = Helpers.CreateBlueprint<BlueprintFeature>("DraconicBodyFeature", bp => {
                 bp.SetName("Draconic Body");
                 bp.SetDescription("The drake gains two natural Wing attacks that increase damage dice size each time the drake grows, it also gains the Multiattack Feat");
                 bp.AddComponent<AddFacts>(c => {

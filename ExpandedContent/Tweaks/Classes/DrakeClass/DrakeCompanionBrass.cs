@@ -76,7 +76,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 bp.Gender = Gender.Male;
                 bp.Size = Size.Huge;
                 bp.Color = AzataDragonUnit.Color;
-                bp.Alignment = Alignment.LawfulEvil;
+                bp.Alignment = Alignment.ChaoticGood;
                 bp.m_Portrait = AzataDragonUnit.m_Portrait;
                 bp.Prefab = FormOfTheDragonBrassBuff.m_Prefab;
                 bp.Visual = RedDragon.Visual;
