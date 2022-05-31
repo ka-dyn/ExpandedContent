@@ -1,6 +1,8 @@
 *Install VIA UMM*
 -Drag and drop the zip file onto the UMM "Install" button.
 
+While this mod is not dependant on https://github.com/Vek17/TabletopTweaks-Base it is recommended as all testing is done with it installed and it fixes several base game issues.
+
 *Contents*
 
 New Archetypes
@@ -9,9 +11,11 @@ New Archetypes
 
 -Mantis Zealot, Warpriest
 
--Mooncaller, Druid
+-Mooncaller, Draconic Druid, Druid
 
--Temple Champion, Paladin
+-Temple Champion, Silver Champion, Paladin
+
+-Drake Warden, Ranger
 
 
 New Classes
@@ -21,6 +25,15 @@ New Classes
   
 -DreadKnight - Based off the Antipaladin alternative class.
   -With Conqueror archetype
+
+New Features
+
+-Drake Companions - Limited to certain archetypes; Draconic Druid, Silver Champion, Drake Warden. Reworked from tabletop to work in a CRPG setting.
+
+New Mythic Abilities
+
+-Mythic Drake - Grants new powers to your drake depending on breed of drake and drake powers selected during leveling, ranging from unlocking their draconic
+bloodline to mythic breath attacks.
 
 New Deities
 
@@ -33,6 +46,8 @@ Most of the deities from the tabletop game are included, split into categories b
 New Domains / Subdomains
 
 -Scalykind Domain
+
+-Dragon Subdomain
 
 -Blood Subdomain
 
