@@ -332,7 +332,8 @@ namespace ExpandedContent.Tweaks.Domains {
                     "times per day equal to 3 + your {g|Encyclopedia:Wisdom}Wisdom{/g} modifier.\nTunnel Runner (Su): At 6th level, as a standard action, " +
                     "you can create a 30-foot aura of gale-like winds that slows the progress of enemies. Creatures in the aura cannot take a 5-foot step " +
                     "and treat it as as difficult terrain. You can use this ability for a number of rounds per day equal to your cleric level. The rounds " +
-                    "do not need to be consecutive.");
+                    "do not need to be consecutive.\nDomain Spells: stone fist, createpit, spiked pit, spike stones, acidic spray, hungry pit, elemental body IV (earth), " +
+                    "iron body, elemental swarm (earth).");
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Domain };
                 bp.IsClassFeature = true;
                 bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
@@ -393,12 +394,23 @@ namespace ExpandedContent.Tweaks.Domains {
                     "times per day equal to 3 + your {g|Encyclopedia:Wisdom}Wisdom{/g} modifier.\nTunnel Runner (Su): At 6th level, as a standard action, " +
                     "you can create a 30-foot aura of gale-like winds that slows the progress of enemies. Creatures in the aura cannot take a 5-foot step " +
                     "and treat it as as difficult terrain. You can use this ability for a number of rounds per day equal to your cleric level. The rounds " +
-                    "do not need to be consecutive.");
+                    "do not need to be consecutive.\nDomain Spells: stone fist, createpit, spiked pit, spike stones, acidic spray, hungry pit, elemental body IV (earth), " +
+                    "iron body, elemental swarm (earth).");
                 bp.Groups = new FeatureGroup[] { FeatureGroup.ClericSecondaryDomain };
                 bp.IsClassFeature = true;
                 bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
                     new BlueprintProgression.ClassWithLevel {
                         m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    },
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = PaladinClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    },
+                };
+                bp.m_Archetypes = new BlueprintProgression.ArchetypeWithLevel[] {
+                    new BlueprintProgression.ArchetypeWithLevel {
+                        m_Archetype = TempleChampionArchetype.ToReference<BlueprintArchetypeReference>(),
                         AdditionalLevel = 0
                     }
                 };
@@ -423,15 +435,15 @@ namespace ExpandedContent.Tweaks.Domains {
             // CavesDomainProgressionDruid
             var CavesDomainProgressionDruid = Helpers.CreateBlueprint<BlueprintProgression>("CavesDomainProgressionDruid", bp => {
                 bp.SetName("Caves Subdomain");
-                bp.SetDescription("\nWith power over Caves and sky, you can call down the wrath of the gods upon the world below.\nCaves Burst: As " +
-                "a {g|Encyclopedia:Standard_Actions}standard action{/g}, you can create a Caves burst targeting any foe within 30 feet as a ranged " +
-                "{g|Encyclopedia:TouchAttack}touch attack{/g}. The Caves burst deals {g|Encyclopedia:Dice}1d6{/g} points of {g|Encyclopedia:Damage}damage{/g} + " +
-                "1 point for every two levels you possess in the class that gave you access to this domain. In addition, the target is buffeted by winds and rain, " +
-                "causing it to take a –2 {g|Encyclopedia:Penalty}penalty{/g} on {g|Encyclopedia:Attack}attack rolls{/g} for 1 {g|Encyclopedia:Combat_Round}round{/g}. " +
-                "You can use this ability a number of times per day equal to 3 + your {g|Encyclopedia:Wisdom}Wisdom{/g} modifier." +
-                "\nTunnel Runner (Su): At 6th level, as a standard action, you can create a 30-foot aura of gale-like winds that slows the progress of enemies. Creatures " +
-                "in the aura cannot take a 5-foot step. Enemies in the aura treat each square that brings them closer to you as difficult terrain. They can move normally " +
-                "in any other direction. You can use this ability for a number of rounds per day equal to your cleric level. The rounds do not need to be consecutive.");
+                bp.SetDescription("\nYou have mastery over rock and stone, can manifest vast pits, and command earth creatures.\nAcid Dart: As a " +
+                    "{g|Encyclopedia:Standard_Actions}standard action{/g}, you can unleash an acid dart targeting any foe within 30 feet as a ranged " +
+                    "{g|Encyclopedia:TouchAttack}touch attack{/g}. This acid dart deals {g|Encyclopedia:Dice}1d6{/g} points of {g|Encyclopedia:Energy_Damage}acid damage{/g}" +
+                    "+ 1 point for every two levels you possess in the class that gave you access to this domain. You can use this ability a number of " +
+                    "times per day equal to 3 + your {g|Encyclopedia:Wisdom}Wisdom{/g} modifier.\nTunnel Runner (Su): At 6th level, as a standard action, " +
+                    "you can create a 30-foot aura of gale-like winds that slows the progress of enemies. Creatures in the aura cannot take a 5-foot step " +
+                    "and treat it as as difficult terrain. You can use this ability for a number of rounds per day equal to your cleric level. The rounds " +
+                    "do not need to be consecutive.\nDomain Spells: stone fist, createpit, spiked pit, spike stones, acidic spray, hungry pit, elemental body IV (earth), " +
+                    "iron body, elemental swarm (earth).");
                 bp.AddComponent<PrerequisiteClassLevel>(c => {
                     c.Group = Prerequisite.GroupType.All;
                     c.m_CharacterClass = DruidClass.ToReference<BlueprintCharacterClassReference>();

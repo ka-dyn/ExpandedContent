@@ -34,7 +34,6 @@ namespace ExpandedContent.Tweaks.Deities {
 
         public static void AddArsheaFeature() {
 
-            if (ModSettings.AddedContent.Deities.IsDisabled("Arshea")) { return; }
             BlueprintItem ColdIronFlail = Resources.GetBlueprint<BlueprintItem>("28c5eaa3604027941a9399433411f888");
 
             BlueprintArchetype FeralChampionArchetype = Resources.GetBlueprint<BlueprintArchetype>("f68ca492c9c15e241ab73735fbd0fb9f");

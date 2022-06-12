@@ -42,7 +42,6 @@ namespace ExpandedContent.Tweaks.Deities {
 
 
 
-            if (ModSettings.AddedContent.Deities.IsDisabled("Milani")) { return; }
             var MilaniSacredWeaponFeature = Resources.GetModBlueprint<BlueprintFeature>("MilaniSacredWeaponFeature");
             var DeitySelection = Resources.GetBlueprint<BlueprintFeatureSelection>("59e7a76987fe3b547b9cce045f4db3e4");
             BlueprintFeature LightMaceProficiency = Resources.GetBlueprint<BlueprintFeature>("d0a788c77b0eae948944fa424125c120");

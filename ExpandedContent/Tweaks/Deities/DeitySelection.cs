@@ -64,6 +64,8 @@ namespace ExpandedContent.Tweaks.Deities {
             var KabririFeature = Resources.GetBlueprint<BlueprintFeature>("f12c1ccc9d600c04f8887cd28a8f45a5");
             var DagonFeature = Resources.GetModBlueprint<BlueprintFeature>("DagonFeature");
             var TreerazerFeature = Resources.GetModBlueprint<BlueprintFeature>("TreerazerFeature");
+            var NocticulaFeature = Resources.GetModBlueprint<BlueprintFeature>("NocticulaFeature");
+
 
 
             //Empyreal Lords
@@ -136,6 +138,10 @@ namespace ExpandedContent.Tweaks.Deities {
             var BesmaraFeature = Resources.GetModBlueprint<BlueprintFeature>("BesmaraFeature");
             var AchaekekFeature = Resources.GetModBlueprint<BlueprintFeature>("AchaekekFeature");
             var AlsetaFeature = Resources.GetModBlueprint<BlueprintFeature>("AlsetaFeature");
+            var ZyphusFeature = Resources.GetModBlueprint<BlueprintFeature>("ZyphusFeature");
+            var KurgessFeature = Resources.GetModBlueprint<BlueprintFeature>("KurgessFeature");
+            var YdersiusFeature = Resources.GetModBlueprint<BlueprintFeature>("YdersiusFeature");
+
 
             //Philosophies
             var GreenFaithFeature = Resources.GetBlueprint<BlueprintFeature>("99a7a8f13c1300c42878558fa9471e2f");
@@ -169,7 +175,9 @@ namespace ExpandedContent.Tweaks.Deities {
             var CeyannanFeature = Resources.GetModBlueprint<BlueprintFeature>("CeyannanFeature");
             var KerkamothFeature = Resources.GetModBlueprint<BlueprintFeature>("KerkamothFeature");
             var MonadFeature = Resources.GetModBlueprint<BlueprintFeature>("MonadFeature");
-            
+            var SsilameshnikFeature = Resources.GetModBlueprint<BlueprintFeature>("SsilameshnikFeature");
+
+
 
             var DeitySelection = Resources.GetBlueprint<BlueprintFeatureSelection>("59e7a76987fe3b547b9cce045f4db3e4");
             var PaladinClass = Resources.GetBlueprint<BlueprintCharacterClass>("bfa11238e7ae3544bbeb4d0b92e897ec");
@@ -245,13 +253,14 @@ namespace ExpandedContent.Tweaks.Deities {
                     "the number of demon lords.");
                 bp.m_Icon = DemonLordsIcon;
                 bp.m_AllFeatures = new BlueprintFeatureReference[] {
-                ZuraFeature.ToReference<BlueprintFeatureReference>(),
-                DeskariFeature.ToReference<BlueprintFeatureReference>(),
-                KabririFeature.ToReference<BlueprintFeatureReference>(),
                 AreshkegalFeature.ToReference<BlueprintFeatureReference>(),
                 BaphometFeature.ToReference<BlueprintFeatureReference>(),
                 DagonFeature.ToReference<BlueprintFeatureReference>(),
-                TreerazerFeature.ToReference<BlueprintFeatureReference>()
+                DeskariFeature.ToReference<BlueprintFeatureReference>(),
+                KabririFeature.ToReference<BlueprintFeatureReference>(),
+                NocticulaFeature.ToReference<BlueprintFeatureReference>(),
+                TreerazerFeature.ToReference<BlueprintFeatureReference>(),
+                ZuraFeature.ToReference<BlueprintFeatureReference>(),
                 };
 
                 bp.IsClassFeature = true;
@@ -283,11 +292,9 @@ namespace ExpandedContent.Tweaks.Deities {
                     "powerful agathions known as agathion leaders have all entered the ranks of empyreal lords.");
                 bp.m_Icon = EmpyrealLordsIcon;
                 bp.m_AllFeatures = new BlueprintFeatureReference[] {
-                ArsheaFeature.ToReference<BlueprintFeatureReference>(),
-                RagathielFeature.ToReference<BlueprintFeatureReference>(),
-                PuluraFeature.ToReference<BlueprintFeatureReference>(),
                 AndolettaFeature.ToReference<BlueprintFeatureReference>(),
                 ArquerosFeature.ToReference<BlueprintFeatureReference>(),
+                ArsheaFeature.ToReference<BlueprintFeatureReference>(),
                 AshavaFeature.ToReference<BlueprintFeatureReference>(),
                 BharnarolFeature.ToReference<BlueprintFeatureReference>(),
                 BlackButterflyFeature.ToReference<BlueprintFeatureReference>(),
@@ -307,6 +314,8 @@ namespace ExpandedContent.Tweaks.Deities {
                 LymnierisFeature.ToReference<BlueprintFeatureReference>(),
                 OlheonFeature.ToReference<BlueprintFeatureReference>(),
                 PicoperiFeature.ToReference<BlueprintFeatureReference>(),
+                PuluraFeature.ToReference<BlueprintFeatureReference>(),
+                RagathielFeature.ToReference<BlueprintFeatureReference>(),
                 RowdroshFeature.ToReference<BlueprintFeatureReference>(),
                 SeramaydielFeature.ToReference<BlueprintFeatureReference>(),
                 SheiFeature.ToReference<BlueprintFeatureReference>(),
@@ -353,31 +362,34 @@ namespace ExpandedContent.Tweaks.Deities {
                 bp.m_Icon = DeitiesSelectionIcon;
                 bp.m_AllFeatures = new BlueprintFeatureReference[] {
                 AbadarFeature.ToReference<BlueprintFeatureReference>(),
-                IomedaeFeature.ToReference<BlueprintFeatureReference>(),
-                AsmodeusFeature.ToReference<BlueprintFeatureReference>(),
-                GorumFeature.ToReference<BlueprintFeatureReference>(),
-                GozrehFeature.ToReference<BlueprintFeatureReference>(),
-                IroriFeature.ToReference<BlueprintFeatureReference>(),
-                ToragFeature.ToReference<BlueprintFeatureReference>(),
-                ShelynFeature.ToReference<BlueprintFeatureReference>(),
-                SarenraeFeature.ToReference<BlueprintFeatureReference>(),
-                DesnaFeature.ToReference<BlueprintFeatureReference>(),
-                UrgathoaFeature.ToReference<BlueprintFeatureReference>(),
-                ZonKuthonFeature.ToReference<BlueprintFeatureReference>(),
-                CalistriaFeature.ToReference<BlueprintFeatureReference>(),
-                CaydenCaileanFeature.ToReference<BlueprintFeatureReference>(),
-                GyronnaFeature.ToReference<BlueprintFeatureReference>(),
-                PharasmaFeature.ToReference<BlueprintFeatureReference>(),
-                NorgorberFeature.ToReference<BlueprintFeatureReference>(),
-                LamashtuFeature.ToReference<BlueprintFeatureReference>(),
-                RovagugFeature.ToReference<BlueprintFeatureReference>(),
-                NethysFeature.ToReference<BlueprintFeatureReference>(),
-                ErastilFeature.ToReference<BlueprintFeatureReference>(),
-                LichDeityFeature.ToReference<BlueprintFeatureReference>(),
-                MilaniFeature.ToReference<BlueprintFeatureReference>(),
-                BesmaraFeature.ToReference<BlueprintFeatureReference>(),
                 AchaekekFeature.ToReference<BlueprintFeatureReference>(),
                 AlsetaFeature.ToReference<BlueprintFeatureReference>(),
+                AsmodeusFeature.ToReference<BlueprintFeatureReference>(),
+                BesmaraFeature.ToReference<BlueprintFeatureReference>(),
+                CalistriaFeature.ToReference<BlueprintFeatureReference>(),
+                CaydenCaileanFeature.ToReference<BlueprintFeatureReference>(),
+                DesnaFeature.ToReference<BlueprintFeatureReference>(),
+                ErastilFeature.ToReference<BlueprintFeatureReference>(),
+                GorumFeature.ToReference<BlueprintFeatureReference>(),
+                GozrehFeature.ToReference<BlueprintFeatureReference>(),
+                GyronnaFeature.ToReference<BlueprintFeatureReference>(),
+                IomedaeFeature.ToReference<BlueprintFeatureReference>(),
+                IroriFeature.ToReference<BlueprintFeatureReference>(),
+                KurgessFeature.ToReference<BlueprintFeatureReference>(),
+                LamashtuFeature.ToReference<BlueprintFeatureReference>(),
+                LichDeityFeature.ToReference<BlueprintFeatureReference>(),
+                MilaniFeature.ToReference<BlueprintFeatureReference>(),
+                NethysFeature.ToReference<BlueprintFeatureReference>(),
+                NorgorberFeature.ToReference<BlueprintFeatureReference>(),
+                PharasmaFeature.ToReference<BlueprintFeatureReference>(),
+                RovagugFeature.ToReference<BlueprintFeatureReference>(),
+                SarenraeFeature.ToReference<BlueprintFeatureReference>(),
+                ShelynFeature.ToReference<BlueprintFeatureReference>(),
+                ToragFeature.ToReference<BlueprintFeatureReference>(),
+                UrgathoaFeature.ToReference<BlueprintFeatureReference>(),
+                YdersiusFeature.ToReference<BlueprintFeatureReference>(),
+                ZonKuthonFeature.ToReference<BlueprintFeatureReference>(),
+                ZyphusFeature.ToReference<BlueprintFeatureReference>(),
                 };
                 bp.IsClassFeature = true;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
@@ -469,6 +481,7 @@ namespace ExpandedContent.Tweaks.Deities {
                 CeyannanFeature.ToReference<BlueprintFeatureReference>(),
                 KerkamothFeature.ToReference<BlueprintFeatureReference>(),
                 MonadFeature.ToReference<BlueprintFeatureReference>(),
+                SsilameshnikFeature.ToReference<BlueprintFeatureReference>(),
                 };
                 bp.IsClassFeature = true;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
@@ -555,7 +568,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     MagdhFeature.ToReference<BlueprintFeatureReference>(),
                     KerkamothFeature.ToReference<BlueprintFeatureReference>(),
                     AlsetaFeature.ToReference<BlueprintFeatureReference>(),
-
+                    KurgessFeature.ToReference<BlueprintFeatureReference>(),
                 };
             });
             var Seelah = Resources.GetBlueprint<BlueprintUnit>("54be53f0b35bf3c4592a97ae335fe765");

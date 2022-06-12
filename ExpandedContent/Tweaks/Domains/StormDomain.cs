@@ -26,6 +26,7 @@ using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.RuleSystem;
 using Kingmaker.Utility;
+using Kingmaker.ResourceLinks;
 
 namespace ExpandedContent.Tweaks.Domains {
     internal class StormDomain {
@@ -55,33 +56,15 @@ namespace ExpandedContent.Tweaks.Domains {
             });
             //StormDomainGreaterArea
             var StormDomainGreaterArea = Helpers.CreateBlueprint<BlueprintAbilityAreaEffect>("StormDomainGreaterAreabuff", bp => {
-                bp.AddComponent<AbilityAreaEffectRunAction>(c => {
-                    c.UnitEnter = Helpers.CreateActionList(
-                        new Conditional() {
-                            ConditionsChecker = new ConditionsChecker() {
-                                Conditions = new Condition[] {
-                                    new ContextConditionIsEnemy()
-                                }
-                            },
-                            IfTrue = Helpers.CreateActionList(
-                                new ContextActionApplyBuff() {
-                                    m_Buff = StormDomainDifficultTerrainBuff.ToReference<BlueprintBuffReference>(),
-                                    Permanent = true,
-                                    AsChild = false
-                                }),
-                            IfFalse = Helpers.CreateActionList()
-                        });
-                    c.UnitExit = Helpers.CreateActionList(
-                        new ContextActionRemoveBuff() {
-                            m_Buff = StormDomainDifficultTerrainBuff.ToReference<BlueprintBuffReference>()
-                        });
-                });
-                
-                bp.m_TargetType = BlueprintAbilityAreaEffect.TargetType.Any;
+                bp.m_TargetType = BlueprintAbilityAreaEffect.TargetType.Enemy;
                 bp.SpellResistance = false;
-                bp.AffectEnemies = true;
+                bp.AggroEnemies = true;
+                bp.AffectEnemies = true;                
                 bp.Shape = AreaEffectShape.Cylinder;
-                bp.Size = new Feet() {m_Value = 30};
+                bp.Size = 30.Feet();
+                bp.Fx = new PrefabLink();
+                bp.AddComponent(AuraUtils.CreateUnconditionalAuraEffect(StormDomainDifficultTerrainBuff.ToReference<BlueprintBuffReference>()));
+
             });
             //StormDomainGreaterBuff
             var StormDomainGreaterBuff = Helpers.CreateBuff("StormDomainGreaterBuff", bp => {
@@ -131,8 +114,6 @@ namespace ExpandedContent.Tweaks.Domains {
                 });
                 bp.ActivationType = AbilityActivationType.WithUnitCommand;
                 bp.m_ActivateWithUnitCommand = UnitCommand.CommandType.Standard;
-                bp.m_ActivateOnUnitAction = AbilityActivateOnUnitActionType.Attack;
-                bp.DeactivateIfCombatEnded = true;
             });
             //StormDomainGreaterFeature
             var StormDomainGreaterFeature = Helpers.CreateBlueprint<BlueprintFeature>("StormDomainGreaterFeature", bp => {
@@ -303,7 +284,8 @@ namespace ExpandedContent.Tweaks.Domains {
                 "You can use this ability a number of times per day equal to 3 + your {g|Encyclopedia:Wisdom}Wisdom{/g} modifier." +
                 "\nGale Aura (Su): At 6th level, as a standard action, you can create a 30-foot aura of gale-like winds that slows the progress of enemies. Creatures " +
                 "in the aura cannot take a 5-foot step and treat it as as difficult terrain. You can use this ability for a number of rounds per " +
-                "day equal to your cleric level. The rounds do not need to be consecutive.");
+                "day equal to your cleric level. The rounds do not need to be consecutive.\nDomain Spells: snowball, summon small elemental, call lightning, slowing mud, " +
+                "call lightning storm, sirocco, sunburst, fire storm, tsunami.");
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Domain };
                 bp.IsClassFeature = true;
                 bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
@@ -365,12 +347,23 @@ namespace ExpandedContent.Tweaks.Domains {
                 "You can use this ability a number of times per day equal to 3 + your {g|Encyclopedia:Wisdom}Wisdom{/g} modifier." +
                 "\nGale Aura (Su): At 6th level, as a standard action, you can create a 30-foot aura of gale-like winds that slows the progress of enemies. Creatures " +
                 "in the aura cannot take a 5-foot step and treat it as as difficult terrain. You can use this ability for a number of rounds per " +
-                "day equal to your cleric level. The rounds do not need to be consecutive.");
+                "day equal to your cleric level. The rounds do not need to be consecutive.\nDomain Spells: snowball, summon small elemental, call lightning, slowing mud, " +
+                "call lightning storm, sirocco, sunburst, fire storm, tsunami.");
                 bp.Groups = new FeatureGroup[] { FeatureGroup.ClericSecondaryDomain };
                 bp.IsClassFeature = true;
                 bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
                     new BlueprintProgression.ClassWithLevel {
                         m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    },
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = PaladinClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    },
+                };
+                bp.m_Archetypes = new BlueprintProgression.ArchetypeWithLevel[] {
+                    new BlueprintProgression.ArchetypeWithLevel {
+                        m_Archetype = TempleChampionArchetype.ToReference<BlueprintArchetypeReference>(),
                         AdditionalLevel = 0
                     }
                 };
@@ -402,8 +395,9 @@ namespace ExpandedContent.Tweaks.Domains {
                 "causing it to take a –2 {g|Encyclopedia:Penalty}penalty{/g} on {g|Encyclopedia:Attack}attack rolls{/g} for 1 {g|Encyclopedia:Combat_Round}round{/g}. " +
                 "You can use this ability a number of times per day equal to 3 + your {g|Encyclopedia:Wisdom}Wisdom{/g} modifier." +
                 "\nGale Aura (Su): At 6th level, as a standard action, you can create a 30-foot aura of gale-like winds that slows the progress of enemies. Creatures " +
-                "in the aura cannot take a 5-foot step. Enemies in the aura treat each square that brings them closer to you as difficult terrain. They can move normally " +
-                "in any other direction. You can use this ability for a number of rounds per day equal to your cleric level. The rounds do not need to be consecutive.");
+                "in the aura cannot take a 5-foot step and treat it as as difficult terrain. You can use this ability for a number of rounds per " +
+                "day equal to your cleric level. The rounds do not need to be consecutive.\nDomain Spells: snowball, summon small elemental, call lightning, slowing mud, " +
+                "call lightning storm, sirocco, sunburst, fire storm, tsunami.");
                 bp.AddComponent<PrerequisiteClassLevel>(c => {
                     c.Group = Prerequisite.GroupType.All;
                     c.m_CharacterClass = DruidClass.ToReference<BlueprintCharacterClassReference>();

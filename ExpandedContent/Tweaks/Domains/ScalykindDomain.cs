@@ -290,7 +290,8 @@ namespace ExpandedContent.Tweaks.Domains {
                     "modifier). Those who fail take 1d6 points of nonlethal damage + 1 point for every two cleric levels you possess and are fascinated until the " +
                     "beginning of your next turn. You can use this ability a number of times per day equal to 3 + your Wisdom modifier. This is a mind-affecting " +
                     "effect. \nScaled Companion: At 4th level, you gain the service of an animal companion. Your effective druid level for this animal " +
-                    "companion is equal to your cleric level –2.");
+                    "companion is equal to your cleric level –2.\nDomain Spells: magic fang, pernicious poison, greater magic fang, poison, animal growth, eyebite, " +
+                    "creeping doom, animal shapes, shapechange.");
                 bp.AddComponent<PrerequisiteFeature>(c => {
                     c.Group = Prerequisite.GroupType.All;
                     c.HideInUI = true;
@@ -360,7 +361,8 @@ namespace ExpandedContent.Tweaks.Domains {
                     "modifier). Those who fail take 1d6 points of nonlethal damage + 1 point for every two cleric levels you possess and are fascinated until the " +
                     "beginning of your next turn. You can use this ability a number of times per day equal to 3 + your Wisdom modifier. This is a mind-affecting " +
                     "effect. \nScaled Companion: At 4th level, you gain the service of an animal companion. Your effective druid level for this animal " +
-                    "companion is equal to your cleric level –2.");
+                    "companion is equal to your cleric level –2.\nDomain Spells: magic fang, pernicious poison, greater magic fang, poison, animal growth, eyebite, " +
+                    "creeping doom, animal shapes, shapechange.");
                 bp.AddComponent<PrerequisiteFeature>(c => {
                     c.Group = Prerequisite.GroupType.All;
                     c.HideInUI = true;
@@ -383,6 +385,16 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
                     new BlueprintProgression.ClassWithLevel {
                         m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    },
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = PaladinClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    },
+                };
+                bp.m_Archetypes = new BlueprintProgression.ArchetypeWithLevel[] {
+                    new BlueprintProgression.ArchetypeWithLevel {
+                        m_Archetype = TempleChampionArchetype.ToReference<BlueprintArchetypeReference>(),
                         AdditionalLevel = 0
                     }
                 };

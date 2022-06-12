@@ -47,6 +47,7 @@ namespace ExpandedContent.Tweaks.Monitors {
                 bp.SetName("Barzahk");
                 bp.SetDescription("\nTitles: The Passage   " +
                     "\nAlignment: Neutral   " +
+                    "\nForm: Psychopomp Usher " +
                     "\nAreas of Concern: Compasses, Travellers, Vigils   " +
                     "\nDomains: Knowledge, Protection, Repose, Travel   " +
                     "\nFavoured Weapon: Club   " +

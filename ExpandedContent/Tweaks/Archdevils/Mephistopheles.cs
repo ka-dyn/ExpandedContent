@@ -32,7 +32,6 @@ namespace ExpandedContent.Tweaks.Archdevils {
 
         public static void AddMephistopheles() {
 
-            if (ModSettings.AddedContent.Archdevils.IsDisabled("Mephistopheles")) { return; }
 
             BlueprintFeature TridentProficiency = Resources.GetBlueprint<BlueprintFeature>("f9565a97342ac594e9b6a495368c1a57");
             BlueprintArchetype FeralChampionArchetype = Resources.GetBlueprint<BlueprintArchetype>("f68ca492c9c15e241ab73735fbd0fb9f");

@@ -73,7 +73,6 @@ namespace ExpandedContent.Tweaks.Deities {
             PuluraFeature.m_Icon = PuluraIcon;
                     
                     
-            if (ModSettings.AddedContent.Deities.IsDisabled("Pulura")) { return; }
                     
             PuluraFeature.RemoveComponents<PrerequisiteNoFeature>();
             var EmpyrealLordSelection = Resources.GetModBlueprint<BlueprintFeatureSelection>("EmpyrealLordSelection");

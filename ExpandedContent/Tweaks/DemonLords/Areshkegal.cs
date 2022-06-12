@@ -10,6 +10,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Kingmaker.Blueprints;
+using Kingmaker.UnitLogic.FactLogic;
 
 namespace ExpandedContent.Tweaks.DemonLords
 {
@@ -21,12 +23,23 @@ namespace ExpandedContent.Tweaks.DemonLords
         public static void AddAreshkegal()
         {
 
-            var AreshkagalIcon = AssetLoader.LoadInternal("Deities", "Icon_Areshkagal.png");
+            var AreshkagalIcon = AssetLoader.LoadInternal("Deities", "Icon_Areshkagal.jpg");
             var AreshkegalFeature = Resources.GetBlueprint<BlueprintFeature>("d714ecb5d5bb89a42957de0304e459c9");
-            AreshkegalFeature.m_Icon = AreshkagalIcon;
-            if (ModSettings.AddedContent.DemonLords.IsDisabled("Areshkegal")) { return; }
-            AreshkegalFeature.RemoveComponents<PrerequisiteNoFeature>();
+            var DemonDomainChaosAllowed = Resources.GetModBlueprint<BlueprintFeature>("DemonDomainChaosAllowed");
+            var DemonDomainEvilAllowed = Resources.GetModBlueprint<BlueprintFeature>("DemonDomainEvilAllowed");
+            var WindDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("WindDomainAllowed");
 
+            AreshkegalFeature.m_Icon = AreshkagalIcon;
+            AreshkegalFeature.RemoveComponents<PrerequisiteNoFeature>();
+            AreshkegalFeature.AddComponent<AddFacts>(c => {
+                c.m_Facts = new BlueprintUnitFactReference[1] { DemonDomainChaosAllowed.ToReference<BlueprintUnitFactReference>() };
+            });
+            AreshkegalFeature.AddComponent<AddFacts>(c => {
+                c.m_Facts = new BlueprintUnitFactReference[1] { DemonDomainEvilAllowed.ToReference<BlueprintUnitFactReference>() };
+            });
+            AreshkegalFeature.AddComponent<AddFacts>(c => {
+                c.m_Facts = new BlueprintUnitFactReference[1] { WindDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+            });
         }
 
 

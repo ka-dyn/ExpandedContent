@@ -34,9 +34,7 @@ namespace ExpandedContent {
                 UI.Space(25);
 
                 SetttingUI.SettingGroup("Racial Archetypes", TabLevel, AddedContent.RacialArchetypes);
-                SetttingUI.SettingGroup("Deities", TabLevel, AddedContent.Deities);
-                SetttingUI.SettingGroup("Archdevils", TabLevel, AddedContent.Archdevils);
-                SetttingUI.SettingGroup("DemonLords", TabLevel, AddedContent.DemonLords);
+                SetttingUI.SettingGroup("AivuPet", TabLevel, AddedContent.AivuPet);
                 SetttingUI.SettingGroup("Classes", TabLevel, AddedContent.Classes);
                 SetttingUI.SettingGroup("Backgrounds", TabLevel, AddedContent.Backgrounds);
 

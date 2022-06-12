@@ -47,6 +47,7 @@ namespace ExpandedContent.Tweaks.Monitors {
                 bp.SetName("Ceyannan");
                 bp.SetDescription("\nTitles: The Shepherd   " +
                     "\nAlignment: Neutral   " +
+                    "\nForm: Psychopomp Usher " +
                     "\nAreas of Concern: Final words, Lost souls, Searches   " +
                     "\nDomains: Community, Protection, Repose, Strength   " +
                     "\nFavoured Weapon: Quarterstaff   " +

@@ -10,6 +10,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Kingmaker.UnitLogic.FactLogic;
+using Kingmaker.Blueprints;
 
 namespace ExpandedContent.Tweaks.DemonLords
 {
@@ -24,10 +26,17 @@ namespace ExpandedContent.Tweaks.DemonLords
 
             var BaphometIcon = AssetLoader.LoadInternal("Deities", "Icon_Baphomet.jpg");
             var BaphometFeature = Resources.GetBlueprint<BlueprintFeature>("bd72ca8ffcfec5745899ac56c93f12c5");
-            BaphometFeature.m_Icon = BaphometIcon;
-            if (ModSettings.AddedContent.DemonLords.IsDisabled("Areshkegal")) { return; }
-            BaphometFeature.RemoveComponents<PrerequisiteNoFeature>();
+            var DemonDomainChaosAllowed = Resources.GetModBlueprint<BlueprintFeature>("DemonDomainChaosAllowed");
+            var DemonDomainEvilAllowed = Resources.GetModBlueprint<BlueprintFeature>("DemonDomainEvilAllowed");
 
+            BaphometFeature.m_Icon = BaphometIcon;
+            BaphometFeature.RemoveComponents<PrerequisiteNoFeature>();
+            BaphometFeature.AddComponent<AddFacts>(c => {
+                c.m_Facts = new BlueprintUnitFactReference[1] { DemonDomainChaosAllowed.ToReference<BlueprintUnitFactReference>() };
+            });
+            BaphometFeature.AddComponent<AddFacts>(c => {
+                c.m_Facts = new BlueprintUnitFactReference[1] { DemonDomainEvilAllowed.ToReference<BlueprintUnitFactReference>() };
+            });
         }
 
 

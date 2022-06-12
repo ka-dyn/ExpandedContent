@@ -60,11 +60,19 @@ namespace ExpandedContent.Tweaks
         
                 Backgrounds.ArchdukeOfCheliax.AddBackgroundArchdukeOfCheliax();
 
+                Domains.ArchonDomainGood.AddArchonDomainGood();
+                Domains.ArchonDomainLaw.AddArchonDomainLaw();
                 Domains.BloodDomain.AddBloodDomain();
                 Domains.CavesDomain.AddCavesDomain();
-                /// Unfinished Domains.StormDomain.AddStormDomain();
+                Domains.DemonDomainChaos.AddDemonDomainChaos();
+                Domains.DemonDomainEvil.AddDemonDomainEvil();
+                Domains.StormDomain.AddStormDomain();
+                Domains.IceDomain.AddIceDomain();
                 Domains.ScalykindDomain.AddScalykindDomain();
                 Domains.DragonDomain.AddDragonDomain();
+                Domains.WindDomain.AddWindDomain();
+                Domains.UndeadDomain.AddUndeadDomain();
+                Domains.RevelationDomain.AddRevelationDomain();
                 Domains.BaseDeityPatch.AddBaseDeityPatch();
 
                 Archdevils.Dispater.AddDispater();
@@ -77,6 +85,7 @@ namespace ExpandedContent.Tweaks
                 DemonLords.Zura.AddZura();
                 DemonLords.Dagon.AddDagonFeature();
                 DemonLords.Treerazer.AddTreerazerFeature();
+                DemonLords.Nocticula.AddNocticulaFeature();
 
 
 
@@ -128,6 +137,9 @@ namespace ExpandedContent.Tweaks
                 Deities.Besmara.AddBesmaraFeature();
                 Deities.Achaekek.AddAchaekekFeature();
                 Deities.Alseta.AddAlsetaFeature();
+                Deities.Zyphus.AddZyphusFeature();
+                Deities.Kurgess.AddKurgessFeature();
+                Deities.Ydersius.AddYdersiusFeature();
                
                 Deities.PatchPulura.AddPulura();
                 Deities.MilaniSacredWeaponFeature.AddMilaniSacredWeaponFeature();
@@ -183,6 +195,7 @@ namespace ExpandedContent.Tweaks
                 Monitors.Atropos.AddAtroposFeature();
                 Monitors.Barzahk.AddBarzahkFeature();
                 Monitors.Ceyannan.AddCeyannanFeature();
+                Monitors.Ssilameshnik.AddSsilameshnikFeature();
 
                 
                 Deities.DeitySelectionFeature.PatchDeitySelection();

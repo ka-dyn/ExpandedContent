@@ -221,8 +221,9 @@
     <Compile Include="Tweaks\Classes\Oathbreaker.cs" />
     <Compile Include="Tweaks\Classes\DreadKnight.cs" />
     <Compile Include="Tweaks\ContentAdder.cs" />
-    <Compile Include="Tweaks\Deities\Abraxas.cs" />
+    <Compile Include="Tweaks\Deities\Ydersius.cs" />
     <Compile Include="Tweaks\Deities\Apsu.cs" />
+    <Compile Include="Tweaks\Deities\Kurgess.cs" />
     <Compile Include="Tweaks\Deities\Besmara.cs" />
     <Compile Include="Tweaks\Deities\Anubis.cs" />
     <Compile Include="Tweaks\Deities\Apep.cs" />
@@ -247,6 +248,7 @@
     <Compile Include="Tweaks\Deities\Soralyon.cs" />
     <Compile Include="Tweaks\Deities\Tanagaar.cs" />
     <Compile Include="Tweaks\Deities\Tolc.cs" />
+    <Compile Include="Tweaks\Deities\Zyphus.cs" />
     <Compile Include="Tweaks\Deities\Valani.cs" />
     <Compile Include="Tweaks\Deities\Vildeis.cs" />
     <Compile Include="Tweaks\Deities\Winlas.cs" />
@@ -301,6 +303,7 @@
     <Compile Include="Tweaks\Deities\BlackButterfly.cs" />
     <Compile Include="Tweaks\Deities\Dahak.cs" />
     <Compile Include="Tweaks\Deities\DeitySelection.cs" />
+    <Compile Include="Tweaks\DemonLords\Nocticula.cs" />
     <Compile Include="Tweaks\DemonLords\Treerazer.cs" />
     <Compile Include="Tweaks\DemonLords\Dagon.cs" />
     <Compile Include="Tweaks\DemonLords\Deskari.cs" />
@@ -312,8 +315,16 @@
     <Compile Include="Tweaks\Deities\Pulura.cs" />
     <Compile Include="Tweaks\Deities\Ragathiel.cs" />
     <Compile Include="Tweaks\DemonLords\Zura.cs" />
+    <Compile Include="Tweaks\Domains\RevelationDomain.cs" />
+    <Compile Include="Tweaks\Domains\ArchonDomainLaw.cs" />
+    <Compile Include="Tweaks\Domains\ArchonDomainGood.cs" />
+    <Compile Include="Tweaks\Domains\DemonDomainEvil.cs" />
+    <Compile Include="Tweaks\Domains\DemonDomainChaos.cs" />
     <Compile Include="Tweaks\Domains\BloodDomain.cs" />
     <Compile Include="Tweaks\Domains\BaseDeityPatch.cs" />
+    <Compile Include="Tweaks\Domains\UndeadDomain.cs" />
+    <Compile Include="Tweaks\Domains\WindDomain.cs" />
+    <Compile Include="Tweaks\Domains\IceDomain.cs" />
     <Compile Include="Tweaks\Domains\CavesDomain.cs" />
     <Compile Include="Tweaks\Domains\DragonDomain.cs" />
     <Compile Include="Tweaks\Domains\ScalykindDomain.cs" />
@@ -327,6 +338,7 @@
     <Compile Include="Tweaks\Monitors\Barzahk.cs" />
     <Compile Include="Tweaks\Monitors\Ceyannan.cs" />
     <Compile Include="Tweaks\Monitors\Kerkamoth.cs" />
+    <Compile Include="Tweaks\Monitors\Ssilameshnik.cs" />
     <Compile Include="Tweaks\Monitors\Monad.cs" />
     <Compile Include="Tweaks\QueensOfNight\ArdadLili.cs" />
     <Compile Include="Tweaks\QueensOfNight\Doloras.cs" />
@@ -362,6 +374,8 @@
     <Compile Include="Utilities\Attributes.cs" />
     <Compile Include="Utilities\BloodlineTools.cs" />
     <Compile Include="Utilities\Cavalier.cs" />
+    <Compile Include="Utilities\ActionFlow.cs" />
+    <Compile Include="Utilities\AuraUtils.cs" />
     <Compile Include="Utilities\DomainTools.cs" />
     <Compile Include="Utilities\DescriptionTools.cs" />
     <Compile Include="Utilities\FeatTools.cs" />
@@ -419,7 +433,7 @@
     <Content Include="Assets\Deities\Icon_Archdevils.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\Deities\Icon_Areshkagal.png">
+    <Content Include="Assets\Deities\Icon_Areshkagal.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Arqueros.jpg">
@@ -494,7 +508,7 @@
     <Content Include="Assets\Deities\Icon_DemonLords.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\Deities\Icon_Deskari.png">
+    <Content Include="Assets\Deities\Icon_Deskari.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Dispater.jpg">
@@ -557,7 +571,7 @@
     <Content Include="Assets\Deities\Icon_Jalaijatali.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\Deities\Icon_Kabriri.png">
+    <Content Include="Assets\Deities\Icon_Kabriri.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Kerkamoth.jpg">
@@ -573,6 +587,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Korada.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Kurgess.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_LadyNanbyo.jpg">
@@ -615,6 +632,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Ng.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Nocticula.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Olheon.jpg">
@@ -686,6 +706,9 @@
     <Content Include="Assets\Deities\Icon_Soralyon.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Deities\Icon_Ssilameshnik.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Deities\Icon_Tanagaar.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -734,6 +757,9 @@
     <Content Include="Assets\Deities\Icon_Yamatsumi.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Deities\Icon_Ydersius.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Deities\Icon_Ylimancha.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -743,7 +769,10 @@
     <Content Include="Assets\Deities\Icon_Zohls.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\Deities\Icon_Zura.png">
+    <Content Include="Assets\Deities\Icon_Zura.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Zyphus.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_AOAbsolution.png">

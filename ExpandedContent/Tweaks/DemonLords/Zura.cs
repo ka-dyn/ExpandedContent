@@ -23,6 +23,9 @@ namespace ExpandedContent.Tweaks.DemonLords {
 		private static readonly BlueprintFeature DeathDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("a099afe1b0b32554199b230699a69525");
 		private static readonly BlueprintFeature MadnessDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("c346bcc77a6613040b3aa915b1ceddec");
         private static readonly BlueprintFeature BloodDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("BloodDomainAllowed");
+        private static readonly BlueprintFeature DemonDomainChaosAllowed = Resources.GetModBlueprint<BlueprintFeature>("DemonDomainChaosAllowed");
+        private static readonly BlueprintFeature DemonDomainEvilAllowed = Resources.GetModBlueprint<BlueprintFeature>("DemonDomainEvilAllowed");
+        private static readonly BlueprintFeature UndeadDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("UndeadDomainAllowed");
         private static readonly BlueprintFeature CrusaderSpellbook = Resources.GetBlueprint<BlueprintFeature>("673d39f7da699aa408cdda6282e7dcc0");
 		private static readonly BlueprintFeature ClericSpellbook = Resources.GetBlueprint<BlueprintFeature>("4673d19a0cf2fab4f885cc4d1353da33");
 		private static readonly BlueprintFeature InquisitorSpellbook = Resources.GetBlueprint<BlueprintFeature>("57fab75111f377248810ece84193a5a5");
@@ -35,14 +38,13 @@ namespace ExpandedContent.Tweaks.DemonLords {
 		public static void AddZura()
 		{
 
-			if (ModSettings.AddedContent.DemonLords.IsDisabled("Zura")) { return; }
 
 			BlueprintFeature RapierProficiency = Resources.GetBlueprint<BlueprintFeature>("292d51f3d6a331644a8c29be0614f671");
 			BlueprintArchetype FeralChampionArchetype = Resources.GetBlueprint<BlueprintArchetype>("f68ca492c9c15e241ab73735fbd0fb9f");
 			BlueprintArchetype PriestOfBalance = Resources.GetBlueprint<BlueprintArchetype>("a4560e3fb5d247d68fb1a2738fcc0855");
 			BlueprintItem ColdIronRapier = Resources.GetBlueprint<BlueprintItem>("ec731c55e657cf0408fd89c648ccc536");
 
-			var ZuraIcon = AssetLoader.LoadInternal("Deities", "Icon_Zura.png");
+			var ZuraIcon = AssetLoader.LoadInternal("Deities", "Icon_Zura.jpg");
 			var ZuraFeature = Helpers.CreateBlueprint<BlueprintFeature>("ZuraFeature", (bp => {
 
 				bp.SetName("Zura");
@@ -107,6 +109,15 @@ namespace ExpandedContent.Tweaks.DemonLords {
 				});
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[1] { BloodDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[1] { DemonDomainChaosAllowed.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[1] { DemonDomainEvilAllowed.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[1] { UndeadDomainAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<ForbidSpellbookOnAlignmentDeviation>(c => {
 					c.m_Spellbooks = new BlueprintSpellbookReference[1] { CrusaderSpellbook.ToReference<BlueprintSpellbookReference>() };

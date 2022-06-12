@@ -66,91 +66,13 @@
     },
     "IsExpanded": false
   },
-  "Deities": {
+  "AivuPet": {
     "DisableAll": false,
     "Settings": {
-      "GreenFaith": {
-        "Enabled": true,
-        "Homebrew": false,
-        "Description": "Allows you to select the Green Faith Deity."
-      },
-      "LichDeity": {
-        "Enabled": true,
-        "Homebrew": false,
-        "Description": "Allows you to select the Knight Commander as a Deity."
-      },
-      "Pulura": {
-        "Enabled": true,
-        "Homebrew": false,
-        "Description": "Allows you to select Pulura as a Deity."
-      },
-      "Milani": {
-        "Enabled": true,
-        "Homebrew": false,
-        "Description": "Adds the minor goddess Milani, also known as the Everbloom, is the patron of all those who fight against oppression and unjust rule. Her symbol is a rose growing out of a blood-soaked street."
-      },
-      "Ragathiel": {
-        "Enabled": true,
-        "Homebrew": false,
-        "Description": "Adds the minor deity Ragathiel, who is a tower of glorious might. He stands almost 20 feet tall, and five lofty burning wings stretch from his back."
-      },
-      "Arshea": {
-        "Enabled": true,
-        "Homebrew": false,
-        "Description": "Adds the angel empyreal Lord Arshea, a champion of the repressed and weary. Arshea provides mortals deliverance from their bonds."
-      },
-      "Apsu": {
-        "Enabled": true,
-        "Homebrew": false,
-        "Description": "Adds Apsu, patron deity of all good and metallic dragons, and one of the oldest gods of the Great Beyond. Along with Tiamat, he is (at least according to draconic lore) believed to be one of the two original creator beings of the multiverse."
-      }
-    },
-    "IsExpanded": false
-  },
-  "Archdevils": {
-    "DisableAll": false,
-    "Settings": {
-      "Dispater": {
-        "Enabled": true,
-        "Homebrew": false,
-        "Description": "Adds the Archdevil Dispater, Hell's greatest jailer and politician who rules its second layer, Dis. Also known as the Iron Lord, Father of Dis and First King"
-      },
-      "Mephistopheles": {
-        "Enabled": true,
-        "Homebrew": false,
-        "Description": "Adds The archdevil Mephistopheles, the ruler of Caina, the Eighth Layer of Hell, where he keeps many of Hell's greatest secrets and contracts."
-      }
-    },
-
-    "IsExpanded": false
-  },
-  "DemonLords": {
-    "DisableAll": false,
-    "Settings": {
-      "Zura": {
-        "Enabled": true,
-        "Homebrew": false,
-        "Description": "Adds The demon lord Zura, the Vampire Queen. Her unholy symbol is a blood-red, fanged skull, embossed with runes."
-      },
-      "Baphomet": {
-        "Enabled": true,
-        "Homebrew": false,
-        "Description": "Allows you to select Baphomet as a Deity."
-      },
-      "Areshkegal": {
-        "Enabled": true,
-        "Homebrew": false,
-        "Description": "Allows you to select the Areshkegal as a Deity."
-      },
-      "Deskari": {
-        "Enabled": true,
-        "Homebrew": false,
-        "Description": "Allows you to select Deskari as a Deity."
-      },
-      "Kabriri": {
-        "Enabled": true,
-        "Homebrew": false,
-        "Description": "Allows you to select Kabriri as a Deity."
+      "AivuPet": {
+        "Enabled": false,
+        "Homebrew": true,
+        "Description": "Allows you to select Aivu as a normal animal companion."
       }
     },
     "IsExpanded": false
@@ -193,5 +115,5 @@
     },
     "IsExpanded": false
   }
- 
+
 }

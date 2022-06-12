@@ -47,6 +47,7 @@ namespace ExpandedContent.Tweaks.Monitors {
                 bp.SetName("Atropos");
                 bp.SetDescription("\nTitles: The Last Sister, Judge of Judges   " +
                     "\nAlignment: Neutral   " +
+                    "\nForm: Psychopomp Usher " +
                     "\nAreas of Concern: Fate, Sleep, Youth   " +
                     "\nDomains: Darkness, Death, Luck, Repose   " +
                     "\nFavoured Weapon: Dagger   " +

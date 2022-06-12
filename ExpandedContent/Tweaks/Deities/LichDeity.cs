@@ -39,7 +39,6 @@ namespace ExpandedContent.Tweaks.Deities {
             LichDeityFeature.AddComponent<AddFacts>(c => {
                         c.m_Facts = new BlueprintUnitFactReference[] { LichDeityMythicFeature.ToReference<BlueprintUnitFactReference>() };
                     });
-                          if (ModSettings.AddedContent.Deities.IsDisabled("LichDeity")) { return; }
             LichDeityFeature.SetDescription("Leader of a small cult of undead, created by h{mf|is|er} own hands, {name} became famous as the " +
                 "indomitable commander of the Fifth Mendevian Crusade against the Worldwound. Determined to destroy the forces of the Abyss at any cost, " +
                 "{mf||s}he ventured on the path of the L{mf|ord|ady} of Death. For millennia, powerful necromancers have dreamed of a power that could rival the divine. " +

@@ -46,7 +46,7 @@ namespace ExpandedContent.Tweaks.Monitors {
                 bp.SetName("Kerkamoth");
                 bp.SetDescription("\nTitles: The Waiting Void   " +
                     "\nAlignment: Lawful Neutral   " +
-                    "\nForm: Primordial inevitable   " +
+                    "\nForm: Primordial Inevitable   " +
                     "\nAreas of Concern: Emptiness, Entropy, Stillness   " +
                     "\nDomains: Darkness, Destruction, Law, Void (Travel)   " +
                     "\nFavoured Weapon: Warhammer   " +

@@ -19,6 +19,7 @@ using Kingmaker.UnitLogic.Mechanics.Components;
 using System.Collections.Generic;
 using System.Linq;
 using System;
+using ExpandedContent.Config;
 
 namespace ExpandedContent.Tweaks.Classes.ClassFeaturesDreadKnight {
     static class ProfaneBoon {
@@ -665,7 +666,7 @@ namespace ExpandedContent.Tweaks.Classes.ClassFeaturesDreadKnight {
 
 
 
-           
+            if (ModSettings.AddedContent.AivuPet.IsDisabled("AivuPet")) { return; }
             AnimalCompanionSelectionBase.m_AllFeatures = AnimalCompanionSelectionBase.m_AllFeatures.AppendToArray(HavocDragonPetMedium.ToReference<BlueprintFeatureReference>(), HavocDragonPetLarge.ToReference<BlueprintFeatureReference>());
             DreadKnightCompanionSelection.m_AllFeatures = DreadKnightCompanionSelection.m_AllFeatures.AppendToArray(HavocDragonPetMedium.ToReference<BlueprintFeatureReference>(), HavocDragonPetLarge.ToReference<BlueprintFeatureReference>());
             AnimalCompanionSelectionDomain.m_AllFeatures = AnimalCompanionSelectionDomain.m_AllFeatures.AppendToArray(HavocDragonPetMedium.ToReference<BlueprintFeatureReference>(), HavocDragonPetLarge.ToReference<BlueprintFeatureReference>());

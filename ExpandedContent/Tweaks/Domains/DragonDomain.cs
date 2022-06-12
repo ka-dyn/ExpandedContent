@@ -940,7 +940,8 @@ namespace ExpandedContent.Tweaks.Domains {
                     "or electricity—this determines what kind of damage your breath weapon deals. Your breath weapon fills a 15-foot cone, and deals 3d6 points of " +
                     "damage—this damage increases by 1d6 points at every even-numbered level you gain beyond 4th level. A creature hit by your dragonbreath attack " +
                     "can attempt a Reflex save (DC 10 + 1/2 your cleric level + your Wisdom modifier) to take half damage. At 9th level, you can use this ability " +
-                    "two times per day, and at 14th level you can use it three times per day.");
+                    "two times per day, and at 14th level you can use it three times per day.\nDomain Spells: magic fang, pernicious poison, greater magic fang, " +
+                    "dragon breath, animal growth, form of the dragon, creeping doom, animal shapes, shapechange.");
                 bp.AddComponent<PrerequisiteFeature>(c => {
                     c.Group = Prerequisite.GroupType.All;
                     c.HideInUI = true;
@@ -1013,7 +1014,8 @@ namespace ExpandedContent.Tweaks.Domains {
                     "or electricity—this determines what kind of damage your breath weapon deals. Your breath weapon fills a 15-foot cone, and deals 3d6 points of " +
                     "damage—this damage increases by 1d6 points at every even-numbered level you gain beyond 4th level. A creature hit by your dragonbreath attack " +
                     "can attempt a Reflex save (DC 10 + 1/2 your cleric level + your Wisdom modifier) to take half damage. At 9th level, you can use this ability " +
-                    "two times per day, and at 14th level you can use it three times per day.");
+                    "two times per day, and at 14th level you can use it three times per day.\nDomain Spells: magic fang, pernicious poison, greater magic fang, " +
+                    "dragon breath, animal growth, form of the dragon, creeping doom, animal shapes, shapechange.");
                 bp.AddComponent<PrerequisiteFeature>(c => {
                     c.Group = Prerequisite.GroupType.All;
                     c.HideInUI = true;
@@ -1036,6 +1038,16 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
                     new BlueprintProgression.ClassWithLevel {
                         m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    },
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = PaladinClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    },
+                };
+                bp.m_Archetypes = new BlueprintProgression.ArchetypeWithLevel[] {
+                    new BlueprintProgression.ArchetypeWithLevel {
+                        m_Archetype = TempleChampionArchetype.ToReference<BlueprintArchetypeReference>(),
                         AdditionalLevel = 0
                     }
                 };

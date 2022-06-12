@@ -32,7 +32,6 @@ namespace ExpandedContent.Tweaks.Archdevils {
 
         public static void AddDispater() {
 
-            if (ModSettings.AddedContent.Archdevils.IsDisabled("Dispater")) { return; }
             
             BlueprintFeature HeavyMaceProficiency = Resources.GetBlueprint<BlueprintFeature>("3f18330d717ea0148b496ee8cc291a60");
             BlueprintArchetype FeralChampionArchetype = Resources.GetBlueprint<BlueprintArchetype>("f68ca492c9c15e241ab73735fbd0fb9f");
