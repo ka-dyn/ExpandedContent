@@ -47,11 +47,23 @@ New Domains / Subdomains
 
 -Scalykind Domain
 
--Dragon Subdomain
+-Archon Subdomain
 
 -Blood Subdomain
 
 -Caves Subdomain
+
+-Demon Subdomain
+
+-Ice Subdomain
+
+-Revelation Subdomain
+
+-Storm Subdomain
+
+-Undead Subdomain
+
+-Wind Subdomain
 
 
 I'd like to give a huge thank you to Vek17, as much of the coding in this repository is his; I simply repurposed it or learned from it. I wouldn't be able to release
