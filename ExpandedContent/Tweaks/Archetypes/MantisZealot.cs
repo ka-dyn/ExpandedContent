@@ -56,7 +56,6 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var SacredWeaponEnchantPlus5 = Resources.GetBlueprint<BlueprintFeature>("5fffe6a74adb1b742a8ebf64b8bb90fb");
             var SacredArmorEnchantPlus5 = Resources.GetBlueprint<BlueprintFeature>("1e560784dfcb00f4da1415bbad3226c3");
             var WarpriestAspectOfWar = Resources.GetBlueprint<BlueprintFeature>("65cc7abc21826a344aa156e2a40dcecc");
-            var WarpriestAspectOfWarResource = Resources.GetBlueprint<BlueprintAbilityResource>("973c613b8443cf14495c283e293d35f9");
             var SneakAttack = Resources.GetBlueprint<BlueprintFeature>("9b9eac6709e1c084cb18c3a366e0ec87");
 
             var LightArmorProficiency = Resources.GetBlueprint<BlueprintFeature>("6d3728d4e9c9898458fe5e9532951132");

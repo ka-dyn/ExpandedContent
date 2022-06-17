@@ -39,11 +39,12 @@ namespace ExpandedContent.Tweaks
                 Archetypes.PriestOfBalance.PatchPriestOfBalanceArchetype();
                 Archetypes.TempleChampion.AddTempleChampion();
                 Archetypes.MantisZealot.AddMantisZealot();
-                Archetypes.PatchMantisZealotDeity.MantisZealotDeityPatch();
                 Archetypes.Mooncaller.AddMooncaller();
                 Archetypes.DraconicDruid.AddDraconicDruid();
                 Archetypes.DrakeWarden.AddDrakeWarden();
                 Archetypes.SilverChampion.AddSilverChampion();
+                Archetypes.PatchMantisZealotDeity.MantisZealotDeityPatch();
+
 
                 RacialArchetypes.Cruoromancer.AllowCruoromancerArchetype();
                 RacialArchetypes.CavalierOfThePaw.AllowCavalierOfThePaw();

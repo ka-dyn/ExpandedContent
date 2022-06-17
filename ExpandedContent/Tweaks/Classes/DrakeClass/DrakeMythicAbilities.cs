@@ -822,16 +822,6 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 });
                 bp.IsClassFeature = true;
             });
-
-
-
-            
-
-
-
-
-
-
             var DraconicSoulFeature = Helpers.CreateBlueprint<BlueprintFeature>("DraconicSoulFeature", bp => {
                 bp.SetName("Draconic Soul");
                 bp.SetDescription("The drake gains a Charisma bonus equal to its level minus 5, along with a limited spellbook as its draconic bloodline awakens. " +
@@ -887,12 +877,6 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                     c.m_Feature = DrakeBloodWhiteSpelllist.ToReference<BlueprintUnitFactReference>();
                 });
             });
-
-
-
-
-
-
             var MythicalDrakePet = Helpers.CreateBlueprint<BlueprintFeature>("MythicalDrakePet", bp => {
                 bp.AddComponent<AddFeatureIfHasFact>(c => {
                     c.m_CheckedFact = DrakeBreathWeaponFire2Feature.ToReference<BlueprintUnitFactReference>();

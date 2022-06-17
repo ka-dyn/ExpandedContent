@@ -192,9 +192,11 @@ namespace ExpandedContent.Tweaks.Classes {
             var OathbreakersBaneFeature = Resources.GetModBlueprint<BlueprintFeature>("OathbreakersBaneFeature");
             var OathbreakersDirectionFeature = Resources.GetModBlueprint<BlueprintFeature>("OathbreakersDirectionFeature");
             var DreadfulCalm = Resources.GetModBlueprint<BlueprintFeature>("DreadfulCalm");
+
             var DefensivePowers = AssetLoader.LoadInternal("Skills", "Icon_DefensivePowers.png");
             var StalwartDefenderDefensivePowerSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("2cd91c501bda80b47ac2df0d51b02973");
             StalwartDefenderDefensivePowerSelection.m_Icon = DefensivePowers;
+
             var FeatSelectionIcon = AssetLoader.LoadInternal("Skills", "Icon_FeatSelection.png");
             var FeatSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("303fd456ddb14437946e344bad9a893b");
             FeatSelection.m_Icon = FeatSelectionIcon;
@@ -213,26 +215,26 @@ namespace ExpandedContent.Tweaks.Classes {
             OathbreakerProgression.LevelEntries = new LevelEntry[20]
             
             {
-        Helpers.LevelEntry(1, (BlueprintFeatureBase) OathbreakersBaneFeature, (BlueprintFeatureBase) OathbreakersDirectionFeature, (BlueprintFeatureBase) OathbreakerProficiencies),
-        Helpers.LevelEntry(2, (BlueprintFeatureBase) FadedGrace, (BlueprintFeatureBase) OathbreakerSoloTactics),
-        Helpers.LevelEntry(3, (BlueprintFeatureBase) SpitefulTenacity, (BlueprintFeatureBase) OathbreakerTeamworkFeat, (BlueprintFeatureBase) FeatSelection),
-        Helpers.LevelEntry(4, (BlueprintFeatureBase) OathbreakersBaneUse, (BlueprintFeatureBase) DreadfulCalm),
-        Helpers.LevelEntry(5, (BlueprintFeatureBase) OathbreakersDirectionIncrease),
-        Helpers.LevelEntry(6, (BlueprintFeatureBase) StalwartDefenderDefensivePowerSelection, (BlueprintFeatureBase) FeatSelection),
-        Helpers.LevelEntry(7, (BlueprintFeatureBase) OathbreakersBaneUse),
-        Helpers.LevelEntry(8, (BlueprintFeatureBase) StalwartDefenderDefensivePowerSelection),
-        Helpers.LevelEntry(9, (BlueprintFeatureBase) OathbreakerTeamworkFeat, (BlueprintFeatureBase) FeatSelection),
-        Helpers.LevelEntry(10, (BlueprintFeatureBase) OathbreakersBaneUse, (BlueprintFeatureBase) OathbreakersDirectionIncrease, (BlueprintFeatureBase) StalwartDefenderDefensivePowerSelection),
-        Helpers.LevelEntry(11, (BlueprintFeatureBase) OathbreakersDirectionSwiftFeature),
-        Helpers.LevelEntry(12, (BlueprintFeatureBase) StalwartDefenderDefensivePowerSelection, (BlueprintFeatureBase) FeatSelection),
-        Helpers.LevelEntry(13, (BlueprintFeatureBase) OathbreakersBaneUse),
-        Helpers.LevelEntry(14, (BlueprintFeatureBase) OathbreakerStalwart, (BlueprintFeatureBase) StalwartDefenderDefensivePowerSelection),
-        Helpers.LevelEntry(15, (BlueprintFeatureBase) OathbreakerTeamworkFeat, (BlueprintFeatureBase) OathbreakersDirectionIncrease, (BlueprintFeatureBase) FeatSelection),
-        Helpers.LevelEntry(16, (BlueprintFeatureBase) OathbreakersBaneUse, StalwartDefenderDefensivePowerSelection),
-        Helpers.LevelEntry(17, (BlueprintFeatureBase) AuraOfSelfRighteousnessFeature),
-        Helpers.LevelEntry(18, (BlueprintFeatureBase) FeatSelection),
-        Helpers.LevelEntry(19, (BlueprintFeatureBase) OathbreakersBaneUse),
-        Helpers.LevelEntry(20, (BlueprintFeatureBase) BreakerOfOaths, (BlueprintFeatureBase) OathbreakersDirectionIncrease)
+        Helpers.LevelEntry(1, OathbreakersBaneFeature,  OathbreakersDirectionFeature,  OathbreakerProficiencies),
+        Helpers.LevelEntry(2,  FadedGrace,  OathbreakerSoloTactics),
+        Helpers.LevelEntry(3,  SpitefulTenacity,  OathbreakerTeamworkFeat,  FeatSelection),
+        Helpers.LevelEntry(4,  OathbreakersBaneUse,  DreadfulCalm),
+        Helpers.LevelEntry(5,  OathbreakersDirectionIncrease),
+        Helpers.LevelEntry(6,  StalwartDefenderDefensivePowerSelection,  FeatSelection),
+        Helpers.LevelEntry(7,  OathbreakersBaneUse),
+        Helpers.LevelEntry(8,  StalwartDefenderDefensivePowerSelection),
+        Helpers.LevelEntry(9,  OathbreakerTeamworkFeat,  FeatSelection),
+        Helpers.LevelEntry(10,  OathbreakersBaneUse,  OathbreakersDirectionIncrease,  StalwartDefenderDefensivePowerSelection),
+        Helpers.LevelEntry(11,  OathbreakersDirectionSwiftFeature),
+        Helpers.LevelEntry(12,  StalwartDefenderDefensivePowerSelection,  FeatSelection),
+        Helpers.LevelEntry(13,  OathbreakersBaneUse),
+        Helpers.LevelEntry(14,  OathbreakerStalwart,  StalwartDefenderDefensivePowerSelection),
+        Helpers.LevelEntry(15,  OathbreakerTeamworkFeat,  OathbreakersDirectionIncrease,  FeatSelection),
+        Helpers.LevelEntry(16,  OathbreakersBaneUse, StalwartDefenderDefensivePowerSelection),
+        Helpers.LevelEntry(17,  AuraOfSelfRighteousnessFeature),
+        Helpers.LevelEntry(18,  FeatSelection),
+        Helpers.LevelEntry(19,  OathbreakersBaneUse),
+        Helpers.LevelEntry(20,  BreakerOfOaths,  OathbreakersDirectionIncrease)
             };
 
             OathbreakerProgression.UIGroups = new UIGroup[]
