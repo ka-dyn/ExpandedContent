@@ -34,6 +34,9 @@ namespace ExpandedContent.Tweaks
                 Classes.DrakeClass.DrakeSpells.AddDrakeSpells();
                 Classes.DrakeClass.DrakeCompanionSelection.AddDrakeCompanionSelection();
                 Classes.DrakeClass.DrakeMythicAbilities.AddDrakeMythicAbilities();
+
+                Miscellaneous.AlignmentTemplates.AddFiendishTemplate();
+                Miscellaneous.Cavalier.AddCavalierFeatures();
              
                 Archetypes.LivingScripture.AddLivingScripture();
                 Archetypes.PriestOfBalance.PatchPriestOfBalanceArchetype();
@@ -43,8 +46,16 @@ namespace ExpandedContent.Tweaks
                 Archetypes.DraconicDruid.AddDraconicDruid();
                 Archetypes.DrakeWarden.AddDrakeWarden();
                 Archetypes.SilverChampion.AddSilverChampion();
-                Archetypes.PatchMantisZealotDeity.MantisZealotDeityPatch();
+                Archetypes.ClutchThief.AddClutchThief();
 
+                Classes.OathbreakerClass.AddOathbreakerClass();
+                Archetypes.Castigator.AddCastigator();
+
+                Classes.DreadKnightClass.AddDreadKnightClass();
+                Archetypes.Conqueror.AddConqueror();
+                Archetypes.ClawOfTheFalseWyrm.AddClawOfTheFalseWyrm();
+
+                Archetypes.PatchMantisZealotDeity.MantisZealotDeityPatch();
 
                 RacialArchetypes.Cruoromancer.AllowCruoromancerArchetype();
                 RacialArchetypes.CavalierOfThePaw.AllowCavalierOfThePaw();
@@ -87,9 +98,6 @@ namespace ExpandedContent.Tweaks
                 DemonLords.Dagon.AddDagonFeature();
                 DemonLords.Treerazer.AddTreerazerFeature();
                 DemonLords.Nocticula.AddNocticulaFeature();
-
-
-
 
                 Deities.Apsu.AddApsu();
                 Deities.Dahak.AddDahakFeature();
@@ -197,12 +205,11 @@ namespace ExpandedContent.Tweaks
                 Monitors.Barzahk.AddBarzahkFeature();
                 Monitors.Ceyannan.AddCeyannanFeature();
                 Monitors.Ssilameshnik.AddSsilameshnikFeature();
-
                 
                 Deities.DeitySelectionFeature.PatchDeitySelection();
                 Deities.PatchLichDeity.AddLichDeity();
 
-
+                Miscellaneous.HavocDragonPet.AddHavocDragonPet();
 
 
 

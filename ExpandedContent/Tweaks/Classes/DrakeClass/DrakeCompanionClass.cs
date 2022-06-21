@@ -46,6 +46,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
             var DruidClass = Resources.GetBlueprint<BlueprintCharacterClass>("610d836f3a3a9ed42a4349b62f002e96");
             var RangerClass = Resources.GetBlueprint<BlueprintCharacterClass>("cda0615668a6df14eb36ba19ee881af6");
             var PaladinClass = Resources.GetBlueprint<BlueprintCharacterClass>("bfa11238e7ae3544bbeb4d0b92e897ec");
+            var RogueClass = Resources.GetBlueprint<BlueprintCharacterClass>("299aa766dee3cbf4790da4efb8c72484");
             var AnimalCompanionRank = Resources.GetBlueprint<BlueprintFeature>("1670990255e4fe948a863bafd5dbda5d");
             var DrakeCompanionProgression = Helpers.CreateBlueprint<BlueprintProgression>("DrakeCompanionProgression", bp => {
                 bp.m_AllowNonContextActions = false;
@@ -63,6 +64,10 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                     },
                     new BlueprintProgression.ClassWithLevel {
                         m_Class = RangerClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    },
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = RogueClass.ToReference<BlueprintCharacterClassReference>(),
                         AdditionalLevel = 0
                     }
                 };

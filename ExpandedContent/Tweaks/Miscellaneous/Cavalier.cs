@@ -1,4 +1,5 @@
 ﻿using ExpandedContent.Extensions;
+using ExpandedContent.Utilities;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Prerequisites;
@@ -10,7 +11,7 @@ using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.UnitLogic.Mechanics;
 
 
-namespace ExpandedContent.Utilities {
+namespace ExpandedContent.Tweaks.Miscellaneous {
     static class Cavalier {
         public static void AddCavalierFeatures() {
             var MountedBuff = Resources.GetBlueprint<BlueprintBuff>("b2d13e8f3bb0f1d4c891d71b4d983cf7");

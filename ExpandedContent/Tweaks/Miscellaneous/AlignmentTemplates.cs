@@ -1,5 +1,6 @@
 ﻿using ExpandedContent;
 using ExpandedContent.Extensions;
+using ExpandedContent.Utilities;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Designers.EventConditionActionSystem.Actions;
@@ -27,7 +28,7 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
 
-namespace ExpandedContent.Utilities {
+namespace ExpandedContent.Tweaks.Miscellaneous {
     static class AlignmentTemplates {
         private static readonly BlueprintAbility SmiteEvilAbility = Resources.GetBlueprint<BlueprintAbility>("7bb9eb2042e67bf489ccd1374423cdec");
         private static readonly BlueprintBuff SmiteEvilBuff = Resources.GetBlueprint<BlueprintBuff>("b6570b8cbb32eaf4ca8255d0ec3310b0");

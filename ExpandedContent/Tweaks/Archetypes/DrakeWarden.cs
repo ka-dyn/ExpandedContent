@@ -30,10 +30,10 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var DrakeWardenArchetype = Helpers.CreateBlueprint<BlueprintArchetype>("DrakeWardenArchetype", bp => {
                 bp.LocalizedName = Helpers.CreateString($"DrakeWardenArchetype.Name", "Drake Warden");
                 bp.LocalizedDescription = Helpers.CreateString($"DrakeWardenArchetype.Description", "Some rangers specialize in dealing with rambunctious younger drakes, " +
-                    "protecting them and teaching them to tolerate, and even trust, humanoid creatures.These drake wardens follow and pass along secret techniques for " +
+                    "protecting them and teaching them to tolerate, and even trust, humanoid creatures. These drake wardens follow and pass along secret techniques for " +
                     "raising drakes effectively, and thanks to their methods, their drakes are both fiercely loyal and extremely useful for scouting and stealth missions.");
                 bp.LocalizedDescriptionShort = Helpers.CreateString($"DrakeWardenArchetype.Description", "Some rangers specialize in dealing with rambunctious younger drakes, " +
-                    "protecting them and teaching them to tolerate, and even trust, humanoid creatures.These drake wardens follow and pass along secret techniques for " +
+                    "protecting them and teaching them to tolerate, and even trust, humanoid creatures. These drake wardens follow and pass along secret techniques for " +
                     "raising drakes effectively, and thanks to their methods, their drakes are both fiercely loyal and extremely useful for scouting and stealth missions.");
             });
             var DrakeWardenBondFeature = Helpers.CreateBlueprint<BlueprintFeatureSelection>("DrakeWardenBondFeature", bp => {

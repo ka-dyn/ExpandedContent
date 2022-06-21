@@ -258,6 +258,14 @@
     "DreadKnightChannelNegativeEnergyAbility": "D33EED71-B992-4D38-8036-9A481EAE576A",
     "DreadKnightSpellbook": "FDA83B75-D1B8-4858-9F3E-87A251560FF9",
 
+    "ClawOfTheFalseWyrmArchetype": "80073844-84f9-49f3-a35c-8bbb24de3993",
+    "ClawOfTheFalseWyrmSpellbook": "4e0a9fa3-23c7-449f-af05-f4a20d5a20e1",
+    "DahaksGift": "0fd9aa68-32fb-4b8b-9039-777c8014800a",
+    "RedDrakeCompanion": "57bce562-b6a8-4be6-ace8-4b5410af7a17",
+    "TemplateFiendishResource": "f4455142-457e-49f9-a46a-ba68a565900b",
+    "TemplateFiendishSmiteGoodAbility": "9a01e212-fe98-4da6-b2bb-8a4d8b942c0f",
+    "TemplateFiendishSmiteGoodBuff": "a8e59432-edfe-41da-a544-9b159825f16e",
+
     "TouchOfProfaneCorruptionAbilityFatigued": "B8678514-04F0-46E3-9F37-92483E81DF34",
     "TouchOfProfaneCorruptionAbilityShaken": "3E3E92CA-66C0-4F1E-A24E-5A933CC499B1",
     "TouchOfProfaneCorruptionAbilitySickened": "9CBE4F30-F79B-430F-B61B-F9A8DDAC25D7",
@@ -605,7 +613,9 @@
     "WildShapeDragonShapeWhite": "b8682180-d4b3-458b-8255-04984e28d813",
     "WildShapeDragonShapeWhite2": "40e0ffbb-1680-4b33-8d1f-df6292faa247",
     "DraconicBodyBuff": "41d3bd74-1047-4785-8d7d-7eb840cca37d",
-    "DraconicBodyFeature": "bc01f044-82ce-4600-aac2-b6ef89e90948"
+    "DraconicBodyFeature": "bc01f044-82ce-4600-aac2-b6ef89e90948",
+    "ClutchThiefArchetype": "b25229fa-90bf-4461-ab33-8c8fc5a6070d",
+    "ClutchThiefBondFeature": "b6d48cfb-64bf-459f-b4a6-086c218081bf"
 
 
 

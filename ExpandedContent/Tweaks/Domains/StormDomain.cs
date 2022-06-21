@@ -64,7 +64,6 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.Size = 30.Feet();
                 bp.Fx = new PrefabLink();
                 bp.AddComponent(AuraUtils.CreateUnconditionalAuraEffect(StormDomainDifficultTerrainBuff.ToReference<BlueprintBuffReference>()));
-
             });
             //StormDomainGreaterBuff
             var StormDomainGreaterBuff = Helpers.CreateBuff("StormDomainGreaterBuff", bp => {
