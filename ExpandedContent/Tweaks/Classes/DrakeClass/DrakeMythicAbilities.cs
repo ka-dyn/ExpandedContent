@@ -76,6 +76,8 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
             var DrakeBloodRedSpelllist = Resources.GetModBlueprint<BlueprintFeature>("DrakeBloodRedSpelllist");
             var DrakeBloodWhite = Resources.GetModBlueprint<BlueprintFeature>("DrakeBloodWhite");
             var DrakeBloodWhiteSpelllist = Resources.GetModBlueprint<BlueprintFeature>("DrakeBloodWhiteSpelllist");
+            var DrakeBloodGold = Resources.GetModBlueprint<BlueprintFeature>("DrakeBloodGold");
+            var DrakeBloodGoldSpelllist = Resources.GetModBlueprint<BlueprintFeature>("DrakeBloodGoldSpelllist");
 
 
             var DrakeBreathWeaponFire3 = Helpers.CreateBlueprint<BlueprintAbility>("DrakeBreathWeaponFire3", bp => {
@@ -875,6 +877,10 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 bp.AddComponent<AddFeatureIfHasFact>(c => {
                     c.m_CheckedFact = DrakeBloodWhite.ToReference<BlueprintUnitFactReference>();
                     c.m_Feature = DrakeBloodWhiteSpelllist.ToReference<BlueprintUnitFactReference>();
+                });
+                bp.AddComponent<AddFeatureIfHasFact>(c => {
+                    c.m_CheckedFact = DrakeBloodGold.ToReference<BlueprintUnitFactReference>();
+                    c.m_Feature = DrakeBloodGoldSpelllist.ToReference<BlueprintUnitFactReference>();
                 });
             });
             var MythicalDrakePet = Helpers.CreateBlueprint<BlueprintFeature>("MythicalDrakePet", bp => {

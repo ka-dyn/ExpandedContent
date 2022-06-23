@@ -3,6 +3,7 @@ using ExpandedContent.Utilities;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Selection;
+using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.UnitLogic.FactLogic;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var DrakeCompanionFeatureBlack = Resources.GetModBlueprint<BlueprintFeature>("DrakeCompanionFeatureBlack");
             var DrakeCompanionFeatureBlue = Resources.GetModBlueprint<BlueprintFeature>("DrakeCompanionFeatureBlue");
             var DrakeCompanionFeatureBrass = Resources.GetModBlueprint<BlueprintFeature>("DrakeCompanionFeatureBrass");
+            var DrakeCompanionFeatureGold = Resources.GetModBlueprint<BlueprintFeature>("DrakeCompanionFeatureGold");
             var DrakeCompanionFeatureRed = Resources.GetModBlueprint<BlueprintFeature>("DrakeCompanionFeatureRed");
             var DrakeCompanionFeatureWhite = Resources.GetModBlueprint<BlueprintFeature>("DrakeCompanionFeatureWhite");
             var SneakAttack = Resources.GetBlueprint<BlueprintFeature>("9b9eac6709e1c084cb18c3a366e0ec87");
@@ -50,13 +52,40 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     DrakeCompanionFeatureBlack.ToReference<BlueprintFeatureReference>(),
                     DrakeCompanionFeatureBlue.ToReference<BlueprintFeatureReference>(),
                     DrakeCompanionFeatureBrass.ToReference<BlueprintFeatureReference>(),
-                    DrakeCompanionFeatureRed.ToReference<BlueprintFeatureReference>(),
+                    DrakeCompanionFeatureGold.ToReference<BlueprintFeatureReference>(),
                     DrakeCompanionFeatureGreen.ToReference<BlueprintFeatureReference>(),
+                    DrakeCompanionFeatureRed.ToReference<BlueprintFeatureReference>(),
                     DrakeCompanionFeatureSilver.ToReference<BlueprintFeatureReference>(),
                     DrakeCompanionFeatureWhite.ToReference<BlueprintFeatureReference>()
                 };
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] { DrakeCompanionSelection.ToReference<BlueprintUnitFactReference>() };
+                });
+            });
+            var Outflank = Resources.GetBlueprint<BlueprintFeature>("422dab7309e1ad343935f33a4d6e9f11");
+            var ClutchThiefOutflankFeature = Helpers.CreateBlueprint<BlueprintFeature>("ClutchThiefOutflankFeature", bp => {
+                bp.SetName("Shared Outflank Feat");
+                bp.SetDescription("At level 11 both the clutch thief and the drake have mastered fighting in tandem, both gain the Outflank teamwork feat.");
+                bp.m_Icon = Outflank.m_Icon;
+                bp.IsClassFeature = true;
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { Outflank.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AddFeatureToPet>(c => {
+                    c.m_Feature = Outflank.ToReference<BlueprintFeatureReference>();
+                });
+            });
+            var BackToBack = Resources.GetBlueprint<BlueprintFeature>("c920f2cd2244d284aa69a146aeefcb2c");
+            var ClutchThiefBackToBackFeature = Helpers.CreateBlueprint<BlueprintFeature>("ClutchThiefBackToBackFeature", bp => {
+                bp.SetName("Shared Outflank Feat");
+                bp.SetDescription("By level 17 the clutch thief and the drake instinctively guard each others openings in combat, both gain the Back To Back teamwork feat.");
+                bp.m_Icon = BackToBack.m_Icon;
+                bp.IsClassFeature = true;
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { BackToBack.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AddFeatureToPet>(c => {
+                    c.m_Feature = BackToBack.ToReference<BlueprintFeatureReference>();
                 });
             });
             ClutchThiefArchetype.RemoveFeatures = new LevelEntry[] {
@@ -77,7 +106,9 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     Helpers.LevelEntry(20, RogueTalentSelection)
             };
             ClutchThiefArchetype.AddFeatures = new LevelEntry[] {
-                    Helpers.LevelEntry(4, ClutchThiefBondFeature)
+                    Helpers.LevelEntry(4, ClutchThiefBondFeature),
+                    Helpers.LevelEntry(11, ClutchThiefOutflankFeature),
+                    Helpers.LevelEntry(17, ClutchThiefBackToBackFeature)
             };
             var DrakeCompanionProgression = Resources.GetModBlueprint<BlueprintProgression>("DrakeCompanionProgression");
             DrakeCompanionProgression.m_Archetypes = DrakeCompanionProgression.m_Archetypes.AppendToArray(

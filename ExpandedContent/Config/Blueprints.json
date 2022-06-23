@@ -460,9 +460,15 @@
     "AchaekekFeature": "4654a801-2a33-420a-8fda-75dcdb6f39d9",
 
     "ApsusGift": "293d1d25-65ed-4ca5-ac77-506d2dfc0ee9",
+    "ClutchThiefArchetype": "b25229fa-90bf-4461-ab33-8c8fc5a6070d",
+    "ClutchThiefBackToBackFeature": "c8e8c8fc-965a-4177-83fc-fddb9e4e4e53",
+    "ClutchThiefBondFeature": "b6d48cfb-64bf-459f-b4a6-086c218081bf",
+    "ClutchThiefOutflankFeature": "aa3ea76b-9b43-498b-af38-125d22a96232",
     "CompactDrake": "0f100b9c-5edf-4ed0-98ef-67ff55824c49",
     "CompactDrakeBuff": "d0354b09-0189-466a-9fe8-372813cd40f2",
     "CompactDrakeFeature": "8e1db197-6f84-4861-9602-c59035594aff",
+    "DraconicBodyBuff": "41d3bd74-1047-4785-8d7d-7eb840cca37d",
+    "DraconicBodyFeature": "bc01f044-82ce-4600-aac2-b6ef89e90948",
     "DraconicDruidArchetype": "58f9dac2-a580-4a7d-b315-fdfa3d8b6485",
     "DraconicSoulFeature": "503168bb-fe33-486b-be0b-aebc85fb94e0",
     "DragonBaseAbility": "075b9cc9-7dc0-4e14-8ea5-a7992f2e3ec1",
@@ -490,6 +496,8 @@
     "DrakeBloodBlueSpelllist": "3951f419-32a3-4c66-8380-3489e0d499cb",
     "DrakeBloodBrass": "cfa6d7e3-c04e-44dc-bd60-0fb6df961b5c",
     "DrakeBloodBrassSpelllist": "1c5d0d00-948a-494a-b3b7-1cf759ffbb80",
+    "DrakeBloodGold": "a8cc80c5-a93f-49a7-812e-58e6cbad756f",
+    "DrakeBloodGoldSpelllist": "0b2a29a8-3d1e-4e30-a5b4-8dbc2ffd1b5a",
     "DrakeBloodGreen": "d4cbb575-d430-4e03-897c-6ed9bfa5f7a0",
     "DrakeBloodGreenSpelllist": "d37d5081-bf7e-4778-8b99-48f00bb8fde4",
     "DrakeBloodRed": "2c9383ba-88bb-4cc2-a490-e29a9d80a700",
@@ -529,6 +537,7 @@
     "DrakeCompanionFeatureBlack": "8a41c6c0-0647-4b5f-b442-a3232fb39034",
     "DrakeCompanionFeatureBlue": "3e1f0d4d-8278-4b18-b8eb-28206a475737",
     "DrakeCompanionFeatureBrass": "863864d6-b19c-41e0-b3ad-c353adb01dcf",
+    "DrakeCompanionFeatureGold": "b7bb6077-3879-480b-8e8d-49b4bbae7750",
     "DrakeCompanionFeatureGreen": "bef2fb86-de28-4ccf-bf7c-b391754c9d63",
     "DrakeCompanionFeatureRed": "9780a4d1-9ca0-4717-853a-ae86daa86d88",
     "DrakeCompanionFeatureSilver": "c58b42a6-2ce1-4cb7-97e5-16d8608225ea",
@@ -539,6 +548,7 @@
     "DrakeCompanionUnitBlack": "9618870e-ffa9-4c34-8acd-8b6763f7dca0",
     "DrakeCompanionUnitBlue": "bde018e7-6d42-4a73-9bcd-52a777eb3bd2",
     "DrakeCompanionUnitBrass": "c7021857-6aab-40f8-a601-ebaf86bea776",
+    "DrakeCompanionUnitGold": "9422eb0e-f662-499d-a6a5-96f85ebeb6e7",
     "DrakeCompanionUnitGreen": "9c824cba-62cc-4030-beac-e1545a0083fc",
     "DrakeCompanionUnitRed": "47912a3f-25be-4219-ab71-fdd8f64ee5ab",
     "DrakeCompanionUnitSilver": "6af628a8-a7f3-4799-8755-1e30e178c090",
@@ -612,11 +622,6 @@
     "WildShapeDragonShapeSilver2": "286de93c-abd6-4009-8d32-2d21580cb083",
     "WildShapeDragonShapeWhite": "b8682180-d4b3-458b-8255-04984e28d813",
     "WildShapeDragonShapeWhite2": "40e0ffbb-1680-4b33-8d1f-df6292faa247",
-    "DraconicBodyBuff": "41d3bd74-1047-4785-8d7d-7eb840cca37d",
-    "DraconicBodyFeature": "bc01f044-82ce-4600-aac2-b6ef89e90948",
-    "ClutchThiefArchetype": "b25229fa-90bf-4461-ab33-8c8fc5a6070d",
-    "ClutchThiefBondFeature": "b6d48cfb-64bf-459f-b4a6-086c218081bf"
-
 
 
 

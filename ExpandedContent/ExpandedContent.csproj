@@ -189,6 +189,7 @@
     <Compile Include="Tweaks\Backgrounds\ArchdukeOfCheliax.cs" />
     <Compile Include="Tweaks\Classes\DrakeClass\DrakeCompanionBlack.cs" />
     <Compile Include="Tweaks\Classes\DrakeClass\DrakeCompanionBlue.cs" />
+    <Compile Include="Tweaks\Classes\DrakeClass\DrakeCompanionGold.cs" />
     <Compile Include="Tweaks\Classes\DrakeClass\DrakeCompanionRed.cs" />
     <Compile Include="Tweaks\Classes\DrakeClass\DrakeCompanionBrass.cs" />
     <Compile Include="Tweaks\Classes\DrakeClass\DrakeCompanionWhite.cs" />

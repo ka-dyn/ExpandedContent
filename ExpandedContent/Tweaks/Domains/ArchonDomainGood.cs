@@ -54,7 +54,7 @@ namespace ExpandedContent.Tweaks.Domains {
             var HolyAura = Resources.GetBlueprint<BlueprintAbility>("808ab74c12df8784ab4eeaf6a107dbea");
             var MadnessDomainGreaterArea = Resources.GetBlueprint<BlueprintAbilityAreaEffect>("19ee79b1da25ea049ba4fea92c2a4025");
 
-            //ArchonDomainGoodDifficultTerrainBuff
+            //ArchonDomainGreaterAreaBuff
             var ArchonDomainGreaterAreaBuff = Helpers.CreateBuff("ArchonDomainGreaterAreaBuff", bp => {
                 bp.SetName("Aura of Menace");
                 bp.SetDescription("While in a Aura of Menace foes take a -2 penalty to their AC and all saves.");

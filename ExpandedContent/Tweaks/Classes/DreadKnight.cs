@@ -461,18 +461,12 @@ namespace ExpandedContent.Tweaks.Classes {
             var AbsoluteDeathAbility = Resources.GetBlueprint<BlueprintAbility>("7d721be6d74f07f4d952ee8d6f8f44a0");            
             var TouchOfProfaneCorruptionResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("TouchOfProfaneCorruptionResource", bp => {
                 bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
-                    BaseValue = 1,
-                    m_Class = new BlueprintCharacterClassReference[1] {
-                        DreadKnightClass.ToReference<BlueprintCharacterClassReference>() },
-                    m_ClassDiv = new BlueprintCharacterClassReference[1] {
-                        DreadKnightClass.ToReference<BlueprintCharacterClassReference>() },
+                    BaseValue = 0,
+                    m_Class = new BlueprintCharacterClassReference[0],
+                    m_ClassDiv = new BlueprintCharacterClassReference[0],
                     m_Archetypes = new BlueprintArchetypeReference[0],
                     m_ArchetypesDiv = new BlueprintArchetypeReference[0],
-                    IncreasedByLevelStartPlusDivStep = true,
-                    StartingLevel = 2,
-                    LevelStep = 2,
-                    PerStepIncrease = 1,
-                    StartingIncrease = 1,
+                    IncreasedByLevelStartPlusDivStep = false,
                     IncreasedByStat = true,
                     ResourceBonusStat = StatType.Charisma
                 };
@@ -742,8 +736,11 @@ namespace ExpandedContent.Tweaks.Classes {
                 bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
                 bp.IsClassFeature = true;
                 bp.AddComponent<AddAbilityUseTrigger>(c => {
-                    c.m_Ability = TouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>();
-                    c.m_Ability = ChannelTouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>();
+                    c.ForMultipleSpells = true;
+                    c.Abilities = new List<BlueprintAbilityReference>() {
+                        TouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>(),
+                        ChannelTouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>()
+                    };
                     c.ActionsOnTarget = true;
                     c.Action = Helpers.CreateActionList(
                         new Conditional {
@@ -754,8 +751,8 @@ namespace ExpandedContent.Tweaks.Classes {
                             },
                             IfTrue = Helpers.CreateActionList(
                             new ContextActionSavingThrow() {
-                                m_ConditionalDCIncrease = new ContextActionSavingThrow.ConditionalDCIncrease[0],
                                 Type = SavingThrowType.Fortitude,
+                                m_ConditionalDCIncrease = new ContextActionSavingThrow.ConditionalDCIncrease[0],
                                 CustomDC = new ContextValue(),
                                 Actions = Helpers.CreateActionList(
                                                 new ContextActionConditionalSaved() {
@@ -777,6 +774,10 @@ namespace ExpandedContent.Tweaks.Classes {
                         });
                 });
                 bp.AddComponent<UniqueBuff>();
+                bp.AddComponent<ContextCalculateAbilityParamsBasedOnClass>(c => {
+                    c.StatType = StatType.Charisma;
+                    c.m_CharacterClass = DreadKnightClass.ToReference<BlueprintCharacterClassReference>();
+                });
             });
             var CrueltyShakenBuff = Helpers.CreateBlueprint<BlueprintBuff>("CrueltyShakenBuff", bp => {
                 bp.SetName("Cruelty - Shaken");
@@ -786,8 +787,11 @@ namespace ExpandedContent.Tweaks.Classes {
                 bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
                 bp.IsClassFeature = true;
                 bp.AddComponent<AddAbilityUseTrigger>(c => {
-                    c.m_Ability = TouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>();
-                    c.m_Ability = ChannelTouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>();
+                    c.ForMultipleSpells = true;
+                    c.Abilities = new List<BlueprintAbilityReference>() {
+                        TouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>(),
+                        ChannelTouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>()
+                    };
                     c.ActionsOnTarget = true;
                     c.Action = Helpers.CreateActionList(
                         new Conditional {
@@ -826,17 +830,24 @@ namespace ExpandedContent.Tweaks.Classes {
                     c.m_Progression = ContextRankProgression.AsIs;
                     c.m_Max = 20;
                 });
+                bp.AddComponent<ContextCalculateAbilityParamsBasedOnClass>(c => {
+                    c.StatType = StatType.Charisma;
+                    c.m_CharacterClass = DreadKnightClass.ToReference<BlueprintCharacterClassReference>();
+                });
             });
             var CrueltySickenedBuff = Helpers.CreateBlueprint<BlueprintBuff>("CrueltySickenedBuff", bp => {
                 bp.SetName("Cruelty - Sickened");
-                bp.SetDescription("The next use of profane corruption will be enhanced with the fatigued cruelty.");
+                bp.SetDescription("The next use of profane corruption will be enhanced with the sickened cruelty.");
                 bp.Ranks = 1;
                 bp.m_Icon = FatigueIcon.Icon;
                 bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
                 bp.IsClassFeature = true;
                 bp.AddComponent<AddAbilityUseTrigger>(c => {
-                    c.m_Ability = TouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>();
-                    c.m_Ability = ChannelTouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>();
+                    c.ForMultipleSpells = true;
+                    c.Abilities = new List<BlueprintAbilityReference>() {
+                        TouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>(),
+                        ChannelTouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>()
+                    };
                     c.ActionsOnTarget = true;
                     c.Action = Helpers.CreateActionList(
                         new Conditional {
@@ -878,6 +889,10 @@ namespace ExpandedContent.Tweaks.Classes {
                     c.m_Progression = ContextRankProgression.AsIs;
                     c.m_Max = 20;
                 });
+                bp.AddComponent<ContextCalculateAbilityParamsBasedOnClass>(c => {
+                    c.StatType = StatType.Charisma;
+                    c.m_CharacterClass = DreadKnightClass.ToReference<BlueprintCharacterClassReference>();
+                });
             });
             var CrueltyDazedBuff = Helpers.CreateBlueprint<BlueprintBuff>("CrueltyDazedBuff", bp => {
                 bp.SetName("Cruelty - Dazed");
@@ -887,8 +902,11 @@ namespace ExpandedContent.Tweaks.Classes {
                 bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
                 bp.IsClassFeature = true;
                 bp.AddComponent<AddAbilityUseTrigger>(c => {
-                    c.m_Ability = TouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>();
-                    c.m_Ability = ChannelTouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>();
+                    c.ForMultipleSpells = true;
+                    c.Abilities = new List<BlueprintAbilityReference>() {
+                        TouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>(),
+                        ChannelTouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>()
+                    };
                     c.ActionsOnTarget = true;
                     c.Action = Helpers.CreateActionList(
                         new Conditional {
@@ -923,6 +941,10 @@ namespace ExpandedContent.Tweaks.Classes {
                             IfFalse = Helpers.CreateActionList(),
                         });
                 });
+                bp.AddComponent<ContextCalculateAbilityParamsBasedOnClass>(c => {
+                    c.StatType = StatType.Charisma;
+                    c.m_CharacterClass = DreadKnightClass.ToReference<BlueprintCharacterClassReference>();
+                });
             });
             var CrueltyDiseasedBuff = Helpers.CreateBlueprint<BlueprintBuff>("CrueltyDiseasedBuff", bp => {
                 bp.SetName("Cruelty - Diseased");
@@ -931,8 +953,11 @@ namespace ExpandedContent.Tweaks.Classes {
                 bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
                 bp.IsClassFeature = true;
                 bp.AddComponent<AddAbilityUseTrigger>(c => {
-                    c.m_Ability = TouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>();
-                    c.m_Ability = ChannelTouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>();
+                    c.ForMultipleSpells = true;
+                    c.Abilities = new List<BlueprintAbilityReference>() {
+                        TouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>(),
+                        ChannelTouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>()
+                    };
                     c.ActionsOnTarget = true;
                     c.Action = Helpers.CreateActionList(
                         new Conditional {
@@ -965,6 +990,10 @@ namespace ExpandedContent.Tweaks.Classes {
                             IfFalse = Helpers.CreateActionList(),
                         });
                 });
+                bp.AddComponent<ContextCalculateAbilityParamsBasedOnClass>(c => {
+                    c.StatType = StatType.Charisma;
+                    c.m_CharacterClass = DreadKnightClass.ToReference<BlueprintCharacterClassReference>();
+                });
             });
             var CrueltyStaggeredBuff = Helpers.CreateBlueprint<BlueprintBuff>("CrueltyStaggeredBuff", bp => {
                 bp.SetName("Cruelty - Staggered");
@@ -974,8 +1003,11 @@ namespace ExpandedContent.Tweaks.Classes {
                 bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
                 bp.IsClassFeature = true;
                 bp.AddComponent<AddAbilityUseTrigger>(c => {
-                    c.m_Ability = TouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>();
-                    c.m_Ability = ChannelTouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>();
+                    c.ForMultipleSpells = true;
+                    c.Abilities = new List<BlueprintAbilityReference>() {
+                        TouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>(),
+                        ChannelTouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>()
+                    };
                     c.ActionsOnTarget = true;
                     c.Action = Helpers.CreateActionList(
                         new Conditional {
@@ -1016,6 +1048,10 @@ namespace ExpandedContent.Tweaks.Classes {
                     c.m_Progression = ContextRankProgression.AsIs;
                     c.m_Max = 10;
                 });
+                bp.AddComponent<ContextCalculateAbilityParamsBasedOnClass>(c => {
+                    c.StatType = StatType.Charisma;
+                    c.m_CharacterClass = DreadKnightClass.ToReference<BlueprintCharacterClassReference>();
+                });
             });
             var CrueltyCursedBuff = Helpers.CreateBlueprint<BlueprintBuff>("CrueltyCursedBuff", bp => {
                 bp.SetName("Select Cruelty - Cursed");
@@ -1024,8 +1060,11 @@ namespace ExpandedContent.Tweaks.Classes {
                 bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
                 bp.IsClassFeature = true;
                 bp.AddComponent<AddAbilityUseTrigger>(c => {
-                    c.m_Ability = TouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>();
-                    c.m_Ability = ChannelTouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>();
+                    c.ForMultipleSpells = true;
+                    c.Abilities = new List<BlueprintAbilityReference>() {
+                        TouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>(),
+                        ChannelTouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>()
+                    };
                     c.ActionsOnTarget = true;
                     c.Action = Helpers.CreateActionList(
                         new Conditional {
@@ -1058,6 +1097,10 @@ namespace ExpandedContent.Tweaks.Classes {
                             IfFalse = Helpers.CreateActionList(),
                         });
                 });
+                bp.AddComponent<ContextCalculateAbilityParamsBasedOnClass>(c => {
+                    c.StatType = StatType.Charisma;
+                    c.m_CharacterClass = DreadKnightClass.ToReference<BlueprintCharacterClassReference>();
+                });
             });
             var CrueltyExhaustedBuff = Helpers.CreateBlueprint<BlueprintBuff>("CrueltyExhaustedBuff", bp => {
                 bp.SetName("Cruelty - Exhausted");
@@ -1066,8 +1109,11 @@ namespace ExpandedContent.Tweaks.Classes {
                 bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
                 bp.IsClassFeature = true;
                 bp.AddComponent<AddAbilityUseTrigger>(c => {
-                    c.m_Ability = TouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>();
-                    c.m_Ability = ChannelTouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>();
+                    c.ForMultipleSpells = true;
+                    c.Abilities = new List<BlueprintAbilityReference>() {
+                        TouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>(),
+                        ChannelTouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>()
+                    };
                     c.ActionsOnTarget = true;
                     c.Action = Helpers.CreateActionList(
                         new Conditional {
@@ -1098,7 +1144,11 @@ namespace ExpandedContent.Tweaks.Classes {
                                                 }),
                             }),
                             IfFalse = Helpers.CreateActionList(),
-                        });
+                        });                   
+                });
+                bp.AddComponent<ContextCalculateAbilityParamsBasedOnClass>(c => {
+                    c.StatType = StatType.Charisma;
+                    c.m_CharacterClass = DreadKnightClass.ToReference<BlueprintCharacterClassReference>();
                 });
             });
             var CrueltyFrightenedBuff = Helpers.CreateBlueprint<BlueprintBuff>("CrueltyFrightenedBuff", bp => {
@@ -1109,8 +1159,11 @@ namespace ExpandedContent.Tweaks.Classes {
                 bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
                 bp.IsClassFeature = true;
                 bp.AddComponent<AddAbilityUseTrigger>(c => {
-                    c.m_Ability = TouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>();
-                    c.m_Ability = ChannelTouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>();
+                    c.ForMultipleSpells = true;
+                    c.Abilities = new List<BlueprintAbilityReference>() {
+                        TouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>(),
+                        ChannelTouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>()
+                    };
                     c.ActionsOnTarget = true;
                     c.Action = Helpers.CreateActionList(
                         new Conditional {
@@ -1151,6 +1204,10 @@ namespace ExpandedContent.Tweaks.Classes {
                     c.m_Progression = ContextRankProgression.AsIs;
                     c.m_Max = 10;
                 });
+                bp.AddComponent<ContextCalculateAbilityParamsBasedOnClass>(c => {
+                    c.StatType = StatType.Charisma;
+                    c.m_CharacterClass = DreadKnightClass.ToReference<BlueprintCharacterClassReference>();
+                });
             });
             var CrueltyNauseatedBuff = Helpers.CreateBlueprint<BlueprintBuff>("CrueltyNauseatedBuff", bp => {
                 bp.SetName("Cruelty - Nauseated");
@@ -1160,8 +1217,11 @@ namespace ExpandedContent.Tweaks.Classes {
                 bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
                 bp.IsClassFeature = true;
                 bp.AddComponent<AddAbilityUseTrigger>(c => {
-                    c.m_Ability = TouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>();
-                    c.m_Ability = ChannelTouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>();
+                    c.ForMultipleSpells = true;
+                    c.Abilities = new List<BlueprintAbilityReference>() {
+                        TouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>(),
+                        ChannelTouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>()
+                    };
                     c.ActionsOnTarget = true;
                     c.Action = Helpers.CreateActionList(
                         new Conditional {
@@ -1203,6 +1263,10 @@ namespace ExpandedContent.Tweaks.Classes {
                     c.m_Progression = ContextRankProgression.AsIs;
                     c.m_Max = 7;
                 });
+                bp.AddComponent<ContextCalculateAbilityParamsBasedOnClass>(c => {
+                    c.StatType = StatType.Charisma;
+                    c.m_CharacterClass = DreadKnightClass.ToReference<BlueprintCharacterClassReference>();
+                });
             });
             var CrueltyPoisonedBuff = Helpers.CreateBlueprint<BlueprintBuff>("CrueltyPoisonedBuff", bp => {
                 bp.SetName("Cruelty - Poisoned");
@@ -1212,8 +1276,11 @@ namespace ExpandedContent.Tweaks.Classes {
                 bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
                 bp.IsClassFeature = true;
                 bp.AddComponent<AddAbilityUseTrigger>(c => {
-                    c.m_Ability = TouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>();
-                    c.m_Ability = ChannelTouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>();
+                    c.ForMultipleSpells = true;
+                    c.Abilities = new List<BlueprintAbilityReference>() {
+                        TouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>(),
+                        ChannelTouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>()
+                    };
                     c.ActionsOnTarget = true;
                     c.Action = Helpers.CreateActionList(
                         new Conditional {
@@ -1254,6 +1321,10 @@ namespace ExpandedContent.Tweaks.Classes {
                     c.m_Progression = ContextRankProgression.AsIs;
                     c.m_Max = 20;
                 });
+                bp.AddComponent<ContextCalculateAbilityParamsBasedOnClass>(c => {
+                    c.StatType = StatType.Charisma;
+                    c.m_CharacterClass = DreadKnightClass.ToReference<BlueprintCharacterClassReference>();
+                });
             });
             var CrueltyBlindedBuff = Helpers.CreateBlueprint<BlueprintBuff>("CrueltyBlindedBuff", bp => {
                 bp.SetName("Cruelty - Blinded");
@@ -1263,8 +1334,11 @@ namespace ExpandedContent.Tweaks.Classes {
                 bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
                 bp.IsClassFeature = true;
                 bp.AddComponent<AddAbilityUseTrigger>(c => {
-                    c.m_Ability = TouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>();
-                    c.m_Ability = ChannelTouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>();
+                    c.ForMultipleSpells = true;
+                    c.Abilities = new List<BlueprintAbilityReference>() {
+                        TouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>(),
+                        ChannelTouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>()
+                    };
                     c.ActionsOnTarget = true;
                     c.Action = Helpers.CreateActionList(
                         new Conditional {
@@ -1305,6 +1379,10 @@ namespace ExpandedContent.Tweaks.Classes {
                     c.m_Progression = ContextRankProgression.AsIs;
                     c.m_Max = 20;
                 });
+                bp.AddComponent<ContextCalculateAbilityParamsBasedOnClass>(c => {
+                    c.StatType = StatType.Charisma;
+                    c.m_CharacterClass = DreadKnightClass.ToReference<BlueprintCharacterClassReference>();
+                });
             });
             var CrueltyParalyzedBuff = Helpers.CreateBlueprint<BlueprintBuff>("CrueltyParalyzedBuff", bp => {
                 bp.SetName("Cruelty - Paralyzed");
@@ -1314,8 +1392,11 @@ namespace ExpandedContent.Tweaks.Classes {
                 bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
                 bp.IsClassFeature = true;
                 bp.AddComponent<AddAbilityUseTrigger>(c => {
-                    c.m_Ability = TouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>();
-                    c.m_Ability = ChannelTouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>();
+                    c.ForMultipleSpells = true;
+                    c.Abilities = new List<BlueprintAbilityReference>() {
+                        TouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>(),
+                        ChannelTouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>()
+                    };
                     c.ActionsOnTarget = true;
                     c.Action = Helpers.CreateActionList(
                         new Conditional {
@@ -1356,6 +1437,10 @@ namespace ExpandedContent.Tweaks.Classes {
                     c.m_Progression = ContextRankProgression.AsIs;
                     c.m_Max = 1;
                 });
+                bp.AddComponent<ContextCalculateAbilityParamsBasedOnClass>(c => {
+                    c.StatType = StatType.Charisma;
+                    c.m_CharacterClass = DreadKnightClass.ToReference<BlueprintCharacterClassReference>();
+                });
             });
             var CrueltyStunnedBuff = Helpers.CreateBlueprint<BlueprintBuff>("CrueltyStunnedBuff", bp => {
                 bp.SetName("Cruelty - Stunned");
@@ -1365,8 +1450,11 @@ namespace ExpandedContent.Tweaks.Classes {
                 bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
                 bp.IsClassFeature = true;
                 bp.AddComponent<AddAbilityUseTrigger>(c => {
-                    c.m_Ability = TouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>();
-                    c.m_Ability = ChannelTouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>();
+                    c.ForMultipleSpells = true;
+                    c.Abilities = new List<BlueprintAbilityReference>() {
+                        TouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>(),
+                        ChannelTouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>()
+                    };
                     c.ActionsOnTarget = true;
                     c.Action = Helpers.CreateActionList(
                         new Conditional {
@@ -1406,6 +1494,10 @@ namespace ExpandedContent.Tweaks.Classes {
                     c.m_CustomProperty = StunnedBuff.ToReference<BlueprintUnitPropertyReference>();
                     c.m_Progression = ContextRankProgression.AsIs;
                     c.m_Max = 5;
+                });
+                bp.AddComponent<ContextCalculateAbilityParamsBasedOnClass>(c => {
+                    c.StatType = StatType.Charisma;
+                    c.m_CharacterClass = DreadKnightClass.ToReference<BlueprintCharacterClassReference>();
                 });
             });
             var TouchOfProfaneCorruptionAbilityFatigued = Helpers.CreateBlueprint<BlueprintActivatableAbility>("TouchOfProfaneCorruptionAbilityFatigued", bp => {

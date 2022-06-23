@@ -146,7 +146,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
 
             var WisdomOfTheTempleFeature = Helpers.CreateBlueprint<BlueprintFeature>("WisdomOfTheTempleFeature", bp => {
                 bp.SetName("Wisdom of the Temple");
-                bp.SetDescription("The deeds done in the name of your Deity have been noted, at 13th level the Temple Champion gains the hidden wisdom of her faith, gaining a +4 to " +
+                bp.SetDescription("The deeds done in the name of your Deity have been noted, at 15th level the Temple Champion gains the hidden wisdom of her faith, gaining a +4 to " +
                     "her Wisdom Score.");
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;
