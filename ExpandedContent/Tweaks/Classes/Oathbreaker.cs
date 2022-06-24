@@ -457,9 +457,29 @@ namespace ExpandedContent.Tweaks.Classes {
                 bp.AddContextRankConfig(c => {
                     c.m_Type = AbilityRankType.DamageBonus;
                     c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
-                    c.m_Progression = ContextRankProgression.StartPlusDivStep;
-                    c.m_StepLevel = 5;
-                    c.m_Max = 20;
+                    c.m_Progression = ContextRankProgression.Custom;
+                    c.m_CustomProgression = new ContextRankConfig.CustomProgressionItem[] {
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 1, ProgressionValue = 1 },
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 2, ProgressionValue = 1 },
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 3, ProgressionValue = 1 },
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 4, ProgressionValue = 1 },
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 5, ProgressionValue = 2 },
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 6, ProgressionValue = 2 },
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 7, ProgressionValue = 2 },
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 8, ProgressionValue = 2 },
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 9, ProgressionValue = 2 },
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 10, ProgressionValue = 3 },
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 11, ProgressionValue = 3 },
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 12, ProgressionValue = 3 },
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 13, ProgressionValue = 3 },
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 14, ProgressionValue = 3 },
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 15, ProgressionValue = 4 },
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 16, ProgressionValue = 4 },
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 17, ProgressionValue = 4 },
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 18, ProgressionValue = 4 },
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 19, ProgressionValue = 4 },
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 20, ProgressionValue = 5 }
+                    };
                     c.m_Class = new BlueprintCharacterClassReference[1] { OathbreakerClass.ToReference<BlueprintCharacterClassReference>() };
                 });
             });
