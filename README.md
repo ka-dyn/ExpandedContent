@@ -17,6 +17,7 @@ New Archetypes
 
 -Drake Warden, Ranger
 
+-Clutch Thief, Rogue
 
 New Classes
 
@@ -24,11 +25,11 @@ New Classes
   -With Castigator archetype
   
 -DreadKnight - Based off the Antipaladin alternative class.
-  -With Conqueror archetype
+  -With Conqueror and Claw of the False Wyrm archetypes
 
 New Features
 
--Drake Companions - Limited to certain archetypes; Draconic Druid, Silver Champion, Drake Warden. Reworked from tabletop to work in a CRPG setting.
+-Drake Companions - Limited to certain archetypes; Draconic Druid, Silver Champion, Drake Warden, Clutch Thief, and Claw of the False Wyrm. Reworked from tabletop to work in a CRPG setting.
 
 New Mythic Abilities
 
@@ -54,6 +55,8 @@ New Domains / Subdomains
 -Caves Subdomain
 
 -Demon Subdomain
+
+-Dragon Subdomain
 
 -Ice Subdomain
 
