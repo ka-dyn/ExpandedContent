@@ -23,13 +23,22 @@ namespace ExpandedContent.Tweaks.Deities {
                 
         public static void AddGreenFaith() {
 
-                    var GreenFaithIcon = AssetLoader.LoadInternal("Deities", "Icon_GreenFaith.jpg");
-                    var GreenFaithFeature = Resources.GetBlueprint<BlueprintFeature>("99a7a8f13c1300c42878558fa9471e2f");
-                    var WarpriestClass = Resources.GetBlueprint<BlueprintCharacterClass>("30b5e47d47a0e37438cc5a80c96cfb99");
-                    var MantisZealotArchetype = Resources.GetModBlueprint<BlueprintArchetype>("MantisZealotArchetype");
+            var GreenFaithIcon = AssetLoader.LoadInternal("Deities", "Icon_GreenFaith.jpg");
+            var GreenFaithFeature = Resources.GetBlueprint<BlueprintFeature>("99a7a8f13c1300c42878558fa9471e2f");
+            var WarpriestClass = Resources.GetBlueprint<BlueprintCharacterClass>("30b5e47d47a0e37438cc5a80c96cfb99");
+            var MantisZealotArchetype = Resources.GetModBlueprint<BlueprintArchetype>("MantisZealotArchetype");
+            var DreadKnightClass = Resources.GetModBlueprint<BlueprintCharacterClass>("DreadKnightClass");
+            var ClawOfTheFalseWyrmArchetype = Resources.GetModBlueprint<BlueprintArchetype>("ClawOfTheFalseWyrmArchetype");
+
             GreenFaithFeature.AddComponent<PrerequisiteNoArchetype>(c => {
+                c.HideInUI = true;
                 c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
                 c.m_Archetype = MantisZealotArchetype.ToReference<BlueprintArchetypeReference>();
+            });
+            GreenFaithFeature.AddComponent<PrerequisiteNoArchetype>(c => {
+                c.HideInUI = true;
+                c.m_CharacterClass = DreadKnightClass.ToReference<BlueprintCharacterClassReference>();
+                c.m_Archetype = ClawOfTheFalseWyrmArchetype.ToReference<BlueprintArchetypeReference>();
             });
             GreenFaithFeature.SetDescription("\nType: Druidic  " +
                         "\nLeader: \bThe Archdruid   " +

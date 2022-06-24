@@ -28,14 +28,23 @@ namespace ExpandedContent.Tweaks.Deities {
 
             var WarpriestClass = Resources.GetBlueprint<BlueprintCharacterClass>("30b5e47d47a0e37438cc5a80c96cfb99");
             var MantisZealotArchetype = Resources.GetModBlueprint<BlueprintArchetype>("MantisZealotArchetype");
+            var DreadKnightClass = Resources.GetModBlueprint<BlueprintCharacterClass>("DreadKnightClass");
+            var ClawOfTheFalseWyrmArchetype = Resources.GetModBlueprint<BlueprintArchetype>("ClawOfTheFalseWyrmArchetype");
+
 
             var LichDeityMythicFeature = Resources.GetBlueprint<BlueprintFeature>("d633cf9ebcdc8ed4e8f2546c3e08742e");
-                    var LichDeityFeature = Resources.GetBlueprint<BlueprintFeature>("b4153b422d02d4f48b3f8f0ceb6a10eb");
-                    LichDeityFeature.RemoveComponents<PrerequisiteNoFeature>();
-                    LichDeityFeature.AddComponent<PrerequisiteNoArchetype>(c => {
-                        c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
-                        c.m_Archetype = MantisZealotArchetype.ToReference<BlueprintArchetypeReference>();
-                    });
+            var LichDeityFeature = Resources.GetBlueprint<BlueprintFeature>("b4153b422d02d4f48b3f8f0ceb6a10eb");
+            LichDeityFeature.RemoveComponents<PrerequisiteNoFeature>();
+            LichDeityFeature.AddComponent<PrerequisiteNoArchetype>(c => {
+                c.HideInUI = true;
+                c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
+                c.m_Archetype = MantisZealotArchetype.ToReference<BlueprintArchetypeReference>();
+            });
+            LichDeityFeature.AddComponent<PrerequisiteNoArchetype>(c => {
+                c.HideInUI = true;
+                c.m_CharacterClass = DreadKnightClass.ToReference<BlueprintCharacterClassReference>();
+                c.m_Archetype = ClawOfTheFalseWyrmArchetype.ToReference<BlueprintArchetypeReference>();
+            });
             LichDeityFeature.AddComponent<AddFacts>(c => {
                         c.m_Facts = new BlueprintUnitFactReference[] { LichDeityMythicFeature.ToReference<BlueprintUnitFactReference>() };
                     });
