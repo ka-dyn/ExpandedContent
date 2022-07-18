@@ -48,7 +48,7 @@ namespace ExpandedContent.Tweaks.Deities {
             var AnubisFeature = Helpers.CreateBlueprint<BlueprintFeature>("AnubisFeature", (bp => {
 
                 bp.SetName("Anubis");
-                bp.SetDescription("\nTitles: Guardian of the Timb   " +
+                bp.SetDescription("\nTitles: Guardian of the Tomb   " +
                     "\nAlignment: Lawful Neutral   " +
                     "\nAreas of Concern: Burial, The Dead, Funeral Rites, Mummification, Tombs   " +
                     "\nDomains: Death, Earth, Law, Protection , Repose   " +
