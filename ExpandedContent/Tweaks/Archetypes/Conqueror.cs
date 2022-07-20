@@ -37,7 +37,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.SetName("Profane Commandment");
                 bp.SetDescription("At 1st level, a conqueror receives the ability to incite rage in those he rules over, as per the skald inspired rage class feature. " +
                     "Affected allies gain a +1 {g|Encyclopedia:Bonus}bonus{/g} to {g|Encyclopedia:MeleeAttack}melee attack{/g} and {g|Encyclopedia:Damage}damage rolls{/g} and a +1 " +
-                    "bonus on Will {g|Encyclopedia:Saving_Throw}saving throws{/g}, but also take a ?1 {g|Encyclopedia:Penalty}penalty{/g} to {g|Encyclopedia:Armor_Class}AC{/g}. While under the " +
+                    "bonus on Will {g|Encyclopedia:Saving_Throw}saving throws{/g}, but also take a -1 {g|Encyclopedia:Penalty}penalty{/g} to {g|Encyclopedia:Armor_Class}AC{/g}. While under the " +
                     "effects of inspired rage, allies other than the conqueror cannot use any ability that requires patience or {g|Encyclopedia:Concentration}concentration{/g}. At 4th level and " +
                     "every 4 levels thereafter, the song's bonuses on Will saves increase by 1; the penalty to AC doesn't change. At 8th and 16th levels, the song's bonuses to " +
                     "{g|Encyclopedia:Attack}attack{/g} and damage increase by 1. (Unlike the barbarian's rage ability, those affected are not fatigued after the song ends.)");

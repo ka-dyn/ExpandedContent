@@ -77,7 +77,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             });
             var BackToBack = Resources.GetBlueprint<BlueprintFeature>("c920f2cd2244d284aa69a146aeefcb2c");
             var ClutchThiefBackToBackFeature = Helpers.CreateBlueprint<BlueprintFeature>("ClutchThiefBackToBackFeature", bp => {
-                bp.SetName("Shared Outflank Feat");
+                bp.SetName("Shared Back to Back Feat");
                 bp.SetDescription("By level 17 the clutch thief and the drake instinctively guard each others openings in combat, both gain the Back To Back teamwork feat.");
                 bp.m_Icon = BackToBack.m_Icon;
                 bp.IsClassFeature = true;

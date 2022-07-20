@@ -175,13 +175,13 @@ namespace ExpandedContent.Tweaks.Classes {
             var FiendishSmiteGoodBuff = Resources.GetBlueprint<BlueprintBuff>("a9035e49d6d79a64eaec321f2cb629a8");
             var SinfulAbsolutionBuff = Helpers.CreateBlueprint<BlueprintBuff>("SinfulAbsolutionBuff", bp => {
                 bp.SetName("Sinful Absolution");
-                bp.SetDescription("Once per day, a Dread Knight can reach out to the profane lords to grant sinful absolution to the forces arrayed against them. As a swift action, " +
-                    "the Dread Knight chooses one target within sight to crush. The Dread Knight adds their Charisma bonus (if any) on " +
-                    "their attack rolls and adds their Dread Knight level on all damage rolls made against the target of their unholy smite. Regardless of the target, sinful absolution " +
-                    "attacks automatically bypass any DR the creature might possess. In addition, while Sinful Absolution is in effect, the Dread Knight gains a deflection " +
+                bp.SetDescription("Once per day, a dreadknight can reach out to the profane lords to grant sinful absolution to the forces arrayed against them. As a swift action, " +
+                    "the dreadknight chooses one target within sight to crush. The Dread Knight adds their Charisma bonus (if any) on " +
+                    "their attack rolls and adds their dreadknight level on all damage rolls made against the target of their unholy smite. Regardless of the target, sinful absolution " +
+                    "attacks automatically bypass any DR the creature might possess. In addition, while Sinful Absolution is in effect, the dreadknight gains a deflection " +
                     "bonus equal to their Charisma modifier(if any) to their AC against attacks made by the target of sinful absolution. The sinful absolution effect remains until the " +
                     "target of sinful absolution is dead or the next time the Dread Knight rests and regains their uses of this ability. At 4th level, " +
-                    "and at every three levels thereafter, the Dread Knight may grant sinful absoltion one additional time per day.");
+                    "and at every three levels thereafter, the dreadknight may grant sinful absoltion one additional time per day.");
                 bp.m_Icon = SinfulAbsIcon;
                 bp.IsClassFeature = true;
                 bp.Stacking = StackingType.Stack;
@@ -231,13 +231,13 @@ namespace ExpandedContent.Tweaks.Classes {
             var FiendishSmiteGoodAbility = Resources.GetBlueprint<BlueprintAbility>("478cf0e6c5f3a4142835faeae3bd3e04");
             var SinfulAbsolutionAbility = Helpers.CreateBlueprint<BlueprintAbility>("SinfulAbsolutionAbility", bp => {
                 bp.SetName("Sinful Absolution");
-                bp.SetDescription("Once per day, a Dread Knight can reach out to the profane lords to grant sinful absolution to the forces arrayed against them. As a swift action, " +
-                    "the Dread Knight chooses one enemy within sight to crush. The Dread Knight adds their Charisma bonus (if any) on " +
-                    "their attack rolls and adds their Dread Knight level on all damage rolls made against the target of their unholy smite. Regardless of the target, sinful absolution " +
-                    "attacks automatically bypass any DR the creature might possess. In addition, while Sinful Absolution is in effect, the Dread Knight gains a deflection " +
+                bp.SetDescription("Once per day, a dreadknight can reach out to the profane lords to grant sinful absolution to the forces arrayed against them. As a swift action, " +
+                    "the dreadknight chooses one enemy within sight to crush. The dreadknight adds their Charisma bonus (if any) on " +
+                    "their attack rolls and adds their dreadknight level on all damage rolls made against the target of their unholy smite. Regardless of the target, sinful absolution " +
+                    "attacks automatically bypass any DR the creature might possess. In addition, while Sinful Absolution is in effect, the dreadknight gains a deflection " +
                     "bonus equal to their Charisma modifier(if any) to their AC against attacks made by the target of sinful absolution. The sinful absolution effect remains until the " +
-                    "target of sinful absolution is dead or the next time the Dread Knight rests and regains their uses of this ability. At 4th level, " +
-                    "and at every three levels thereafter, the Dread Knight may grant sinful absoltion one additional time per day.");
+                    "target of sinful absolution is dead or the next time the dreadknight rests and regains their uses of this ability. At 4th level, " +
+                    "and at every three levels thereafter, the dreadknight may grant sinful absoltion one additional time per day.");
                 bp.LocalizedDuration = Helpers.CreateString($"{bp.name}.Duration", "Until the target of Sinful Absolution is dead");
                 bp.LocalizedSavingThrow = Helpers.CreateString($"{bp.name}.SavingThrow", "None");
                 bp.m_Icon = SinfulAbsIcon;
@@ -327,17 +327,17 @@ namespace ExpandedContent.Tweaks.Classes {
             });
             var SinfulAbsolutionFeature = Helpers.CreateBlueprint<BlueprintFeature>("SinfulAbsolutionFeature", bp => {
                 bp.SetName("Sinful Absolution");
-                bp.SetDescription("Once per day, a Dread Knight can reach out to the profane lords to grant sinful absolution to the forces arrayed against them. As a swift action, " +
-                    "the Dread Knight chooses one target within sight to crush. The Dread Knight adds their Charisma bonus (if any) on " +
-                    "their attack rolls and adds their Dread Knight level on all damage rolls made against the target of their unholy smite. Regardless of the target, sinful absolution " +
-                    "attacks automatically bypass any DR the creature might possess. In addition, while Sinful Absolution is in effect, the Dread Knight gains a deflection " +
+                bp.SetDescription("Once per day, a dreadknight can reach out to the profane lords to grant sinful absolution to the forces arrayed against them. As a swift action, " +
+                    "the dreadknight chooses one target within sight to crush. The dreadknight adds their Charisma bonus (if any) on " +
+                    "their attack rolls and adds their dreadknight level on all damage rolls made against the target of their unholy smite. Regardless of the target, sinful absolution " +
+                    "attacks automatically bypass any DR the creature might possess. In addition, while Sinful Absolution is in effect, the dreadknight gains a deflection " +
                     "bonus equal to their Charisma modifier(if any) to their AC against attacks made by the target of sinful absolution. The sinful absolution effect remains until the " +
                     "target of sinful absolution is dead or the next time the Dread Knight rests and regains their uses of this ability. At 4th level, " +
-                    "and at every three levels thereafter, the Dread Knight may grant sinful absoltion one additional time per day.");
-                bp.m_DescriptionShort = Helpers.CreateString("$SinfulAbsolutionFeature.DescriptionShort", "Once per day, a Dread Knight can reach out to the profane lords to grant sinful absolution to the forces arrayed against them. As a swift action, " +
-                    "the Dread Knight chooses one target within sight to crush. The Dread Knight adds their Charisma bonus (if any) on " +
-                    "their attack rolls and adds their Dread Knight level on all damage rolls made against the target of their unholy smite. Regardless of the target, sinful absolution " +
-                    "attacks automatically bypass any DR the creature might possess. In addition, while Sinful Absolution is in effect, the Dread Knight gains a deflection " +
+                    "and at every three levels thereafter, the dreadknight may grant sinful absoltion one additional time per day.");
+                bp.m_DescriptionShort = Helpers.CreateString("$SinfulAbsolutionFeature.DescriptionShort", "Once per day, a dreadknight can reach out to the profane lords to grant sinful absolution to the forces arrayed against them. As a swift action, " +
+                    "the dreadknight chooses one target within sight to crush. The dreadknight adds their Charisma bonus (if any) on " +
+                    "their attack rolls and adds their dreadknight level on all damage rolls made against the target of their unholy smite. Regardless of the target, sinful absolution " +
+                    "attacks automatically bypass any DR the creature might possess. In addition, while Sinful Absolution is in effect, the dreadknight gains a deflection " +
                     "bonus equal to their Charisma modifier(if any) to their AC against attacks made by the target of sinful absolution.");
                 bp.m_Icon = SinfulAbsIcon;
                 bp.Ranks = 1;
@@ -353,12 +353,12 @@ namespace ExpandedContent.Tweaks.Classes {
             });
             var SinfulAbsolutionUse = Helpers.CreateBlueprint<BlueprintFeature>("SinfulAbsolutionUse", bp => {
                 bp.SetName("Sinful Absolution - Additional Use");
-                bp.SetDescription("Once per day, a Dread Knight can reach out to the profane lords to grant sinful absolution to the forces arrayed against them. As a swift action, " +
-                    "the Dread Knight chooses one target within sight to crush. The Dread Knight adds their Charisma bonus (if any) on " +
-                    "their attack rolls and adds their Dread Knight level on all damage rolls made against the target of their unholy smite. Regardless of the target, sinful absolution " +
-                    "attacks automatically bypass any DR the creature might possess. In addition, while Sinful Absolution is in effect, the Dread Knight gains a deflection " +
+                bp.SetDescription("Once per day, a dreadknight can reach out to the profane lords to grant sinful absolution to the forces arrayed against them. As a swift action, " +
+                    "the dreadknight chooses one target within sight to crush. The Dread Knight adds their Charisma bonus (if any) on " +
+                    "their attack rolls and adds their dreadknight level on all damage rolls made against the target of their unholy smite. Regardless of the target, sinful absolution " +
+                    "attacks automatically bypass any DR the creature might possess. In addition, while Sinful Absolution is in effect, the dreadknight gains a deflection " +
                     "bonus equal to their Charisma modifier(if any) to their AC against attacks made by the target of sinful absolution. The sinful absolution effect remains until the " +
-                    "target of sinful absolution is dead or the next time the Dread Knight rests and regains their uses of this ability. At 4th level, " +
+                    "target of sinful absolution is dead or the next time the dreadknight rests and regains their uses of this ability. At 4th level, " +
                     "and at every three levels thereafter, the Dread Knight may grant sinful absoltion one additional time per day.");
                 bp.m_Icon = SinfulAbsIcon;
                 bp.Ranks = 10;
@@ -415,7 +415,7 @@ namespace ExpandedContent.Tweaks.Classes {
             var UnholyNimbus = Resources.GetBlueprint<BlueprintBuff>("ec14c8e821c460b42bb925a2320ddf0c");
             var AuraOfEvilBuff = Helpers.CreateBlueprint<BlueprintBuff>("AuraOfEvilBuff", bp => {
                 bp.SetName("Aura of Evil");
-                bp.SetDescription("At 1st level, a Dread Knight radiates a profane aura that is easily detectable by those strongly " +
+                bp.SetDescription("At 1st level, a dreadknight radiates a profane aura that is easily detectable by those strongly " +
                     "attuned to a good alignment. This aura has no negative or positive effect.");
                 bp.m_Icon = EvilIcon;
                 bp.FxOnStart = UnholyNimbus.FxOnStart;
@@ -424,7 +424,7 @@ namespace ExpandedContent.Tweaks.Classes {
             });
             var AuraOfEvilFeature = Helpers.CreateBlueprint<BlueprintFeature>("AuraOfEvilFeature", bp => {
                 bp.SetName("Aura of Evil");
-                bp.SetDescription("At 1st level, a Dread Knight radiates a profane aura that is easily detectable by those strongly " +
+                bp.SetDescription("At 1st level, a dreadknight radiates a profane aura that is easily detectable by those strongly " +
                     "attuned to a good alignment. This aura has no negative or positive effect.");
                 bp.m_Icon = EvilIcon;
                 bp.Ranks = 1;
@@ -438,7 +438,7 @@ namespace ExpandedContent.Tweaks.Classes {
             var ProfaneResIcon = AssetLoader.LoadInternal("Skills", "Icon_UnholyRes.png");
             var ProfaneResilience = Helpers.CreateBlueprint<BlueprintFeature>("ProfaneResilience", bp => {
                 bp.SetName("Profane Resilience");
-                bp.SetDescription("At 2nd level, a Dread Knight gains a bonus equal to his Charisma bonus (if any) on all saving throws.");
+                bp.SetDescription("At 2nd level, a dreadknight gains a bonus equal to his Charisma bonus (if any) on all saving throws.");
                 bp.m_Icon = ProfaneResIcon;
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;
@@ -477,13 +477,13 @@ namespace ExpandedContent.Tweaks.Classes {
             var NegativeEnergyAffinity = Resources.GetBlueprint<BlueprintFeature>("d5ee498e19722854198439629c1841a5");
             var TouchOfProfaneCorruptionAbility = Helpers.CreateBlueprint<BlueprintAbility>("TouchOfProfaneCorruptionAbility", bp => {
                 bp.SetName("Touch of Profane Corruption");
-                bp.SetDescription("Beginning at 2nd level, a Dread Knight surrounds his hand with a profane flame, causing terrible wounds to open on those he touches. " +
-               "Each day he can use this ability a number of times equal to 1/2 his Dread Knight level + his Charisma modifier. As a touch attack, a Dread Knight can cause " +
-               "1d6 points of damage plus an additional 1d6 points of damage for every two Dread Knight levels he possesses. Using this ability is a standard action that does " +
+                bp.SetDescription("Beginning at 2nd level, a dreadknight surrounds his hand with a profane flame, causing terrible wounds to open on those he touches. " +
+               "Each day he can use this ability a number of times equal to 1/2 his Dread Knight level + his Charisma modifier. As a touch attack, a dreadknight can cause " +
+               "1d6 points of damage plus an additional 1d6 points of damage for every two dreadknight levels he possesses. Using this ability is a standard action that does " +
                "not provoke attacks of opportunity. " +
-               "\nAlternatively, a Dread Knight can use this power to heal undead creatures, restoring 1d6 hit points plus an additional 1d6 hit points for every two levels " +
-               "the Dread Knight possesses.This ability is modified by any feat, spell, or effect that specifically works with the lay on hands paladin class feature. " +
-               "For example, the Extra Lay On Hands feat grants a Dread Knight 2 additional uses of the touch of corruption class feature.");
+               "\nAlternatively, a dreadknight can use this power to heal undead creatures, restoring 1d6 hit points plus an additional 1d6 hit points for every two levels " +
+               "the dreadknight possesses.This ability is modified by any feat, spell, or effect that specifically works with the lay on hands paladin class feature. " +
+               "For example, the Extra Lay On Hands feat grants a dreadknight 2 additional uses of the touch of corruption class feature.");
                 bp.m_Icon = TOCIcon;
                 bp.Type = AbilityType.Supernatural;
                 bp.Range = AbilityRange.Touch;
@@ -567,9 +567,9 @@ namespace ExpandedContent.Tweaks.Classes {
             var FiendishQuarryAbility = Resources.GetBlueprint<BlueprintAbility>("d9660af97d116f94ab98dbec15dbc704");
             var ChannelTouchOfProfaneCorruptionAbility = Helpers.CreateBlueprint<BlueprintAbility>("ChannelTouchOfProfaneCorruptionAbility", bp => {
                 bp.SetName("Channel Profane Corruption");
-                bp.SetDescription("Beginning at 7th level as a swift action, a Dread Knight can spend three uses of their profane corruption to " +
+                bp.SetDescription("Beginning at 7th level as a swift action, a dreadknight can spend three uses of their profane corruption to " +
                     "surround their weapon with a profane flame and deliver an attack with their weapon, causing 1d6 points of damage plus an additional " +
-                    "1d6 points of damage for every two Dread Knight levels they possesses, as well as applying the cruelty selected. ");
+                    "1d6 points of damage for every two dreadknight levels they possesses, as well as applying the cruelty selected. ");
                 bp.m_Icon = ChannelTOCIcon;
                 bp.Type = AbilityType.Supernatural;
                 bp.Range = AbilityRange.Weapon;
@@ -648,9 +648,9 @@ namespace ExpandedContent.Tweaks.Classes {
             });
             var ChannelTouchOfProfaneCorruptionFeature = Helpers.CreateBlueprint<BlueprintFeature>("ChannelTouchOfProfaneCorruptionFeature", bp => {
                 bp.SetName("Channel Profane Corruption");
-                bp.SetDescription("Beginning at 7th level as a swift action, a Dread Knight can spend three uses of their touch of profane corruption to " +
+                bp.SetDescription("Beginning at 7th level as a swift action, a dreadknight can spend three uses of their touch of profane corruption to " +
                     "surround their weapon with a profane flame, causing terrible wounds to open on those they attacks. This ability works with any weapon.");
-                bp.m_DescriptionShort = Helpers.CreateString("$TouchOfProfaneCorruptionFeature.DescriptionShort", "Beginning at 7th level as a swift action, a Dread Knight can spend two uses of their touch of profane corruption to " +
+                bp.m_DescriptionShort = Helpers.CreateString("$TouchOfProfaneCorruptionFeature.DescriptionShort", "Beginning at 7th level as a swift action, a dreadknight can spend two uses of their touch of profane corruption to " +
                     "surround their weapon with a profane flame, causing terrible wounds to open on those they attacks. This ability works with any weapon.");
                 bp.m_Icon = ChannelTOCIcon;
                 bp.Ranks = 1;
@@ -669,15 +669,15 @@ namespace ExpandedContent.Tweaks.Classes {
             var CrueltyFact = Resources.GetModBlueprint<BlueprintUnitFact>("CrueltyFact");
             var TouchOfProfaneCorruptionFeature = Helpers.CreateBlueprint<BlueprintFeature>("TouchOfProfaneCorruptionFeature", bp => {
                 bp.SetName("Profane Corruption");
-                bp.SetDescription("Beginning at 2nd level, a Dread Knight surrounds her hand with a profane flame, causing terrible wounds to open on those she touches. " +
-               "Each day she can use this ability a number of times equal to 1/2 his Dread Knight level + her Charisma modifier. As a touch attack, a Dread Knight can cause " +
+                bp.SetDescription("Beginning at 2nd level, a dreadknight surrounds her hand with a profane flame, causing terrible wounds to open on those she touches. " +
+               "Each day she can use this ability a number of times equal to 1/2 his Dread Knight level + her Charisma modifier. As a touch attack, a dreadknight can cause " +
                "1d6 points of damage plus an additional 1d6 points of damage for every two Dread Knight levels she possesses. Using this ability is a standard action that does " +
                "not provoke attacks of opportunity. " +
-               "\nAlternatively, a Dread Knight can use this power to heal undead creatures, restoring 1d6 hit points plus an additional 1d6 hit points for every two levels " +
-               "the Dread Knight possesses.This ability is modified by any feat, spell, or effect that specifically works with the lay on hands paladin class feature. " +
-               "For example, the Extra Lay On Hands feat grants a Dread Knight 2 additional uses of the touch of corruption class feature.");
-                bp.m_DescriptionShort = Helpers.CreateString("$TouchOfProfaneCorruptionFeature.DescriptionShort", "Beginning at 2nd level, a Dread Knight can surround her hand " +
-                    "with a profane flame, causing terrible wounds to open on those she touches. Alternatively, a Dread Knight can use this power to heal undead creatures.");
+               "\nAlternatively, a dreadknight can use this power to heal undead creatures, restoring 1d6 hit points plus an additional 1d6 hit points for every two levels " +
+               "the dreadknight possesses.This ability is modified by any feat, spell, or effect that specifically works with the lay on hands paladin class feature. " +
+               "For example, the Extra Lay On Hands feat grants a dreadknight 2 additional uses of the touch of corruption class feature.");
+                bp.m_DescriptionShort = Helpers.CreateString("$TouchOfProfaneCorruptionFeature.DescriptionShort", "Beginning at 2nd level, a dreadknight can surround her hand " +
+                    "with a profane flame, causing terrible wounds to open on those she touches. Alternatively, a dreadknight can use this power to heal undead creatures.");
                 bp.m_Icon = TOCIcon;
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;
@@ -695,13 +695,13 @@ namespace ExpandedContent.Tweaks.Classes {
             });
             var TouchOfProfaneCorruptionUse = Helpers.CreateBlueprint<BlueprintFeature>("TouchOfProfaneCorruptionUse", bp => {
                 bp.SetName("Profane Corruption - Additional Use");
-                bp.SetDescription("Beginning at 2nd level, a Dread Knight surrounds his hand with a profane flame, causing terrible wounds to open on those he touches. " +
-               "Each day he can use this ability a number of times equal to 1/2 his Dread Knight level + his Charisma modifier. As a touch attack, a Dread Knight can cause " +
+                bp.SetDescription("Beginning at 2nd level, a dreadknight surrounds his hand with a profane flame, causing terrible wounds to open on those he touches. " +
+               "Each day he can use this ability a number of times equal to 1/2 his dreadknight level + his Charisma modifier. As a touch attack, a dreadknight can cause " +
                "1d6 points of damage plus an additional 1d6 points of damage for every two Dread Knight levels he possesses. Using this ability is a standard action that does " +
                "not provoke attacks of opportunity. " +
-               "\nAlternatively, a Dread Knight can use this power to heal undead creatures, restoring 1d6 hit points plus an additional 1d6 hit points for every two levels " +
+               "\nAlternatively, a dreadknight can use this power to heal undead creatures, restoring 1d6 hit points plus an additional 1d6 hit points for every two levels " +
                "the Dread Knight possesses.This ability is modified by any feat, spell, or effect that specifically works with the lay on hands paladin class feature. " +
-               "For example, the Extra Lay On Hands feat grants a Dread Knight 2 additional uses of the touch of corruption class feature.");
+               "For example, the Extra Lay On Hands feat grants a dreadknight 2 additional uses of the touch of corruption class feature.");
                 bp.m_Icon = TOCIcon;
                 bp.Ranks = 10;
                 bp.IsClassFeature = true;
@@ -1502,7 +1502,7 @@ namespace ExpandedContent.Tweaks.Classes {
             });
             var TouchOfProfaneCorruptionAbilityFatigued = Helpers.CreateBlueprint<BlueprintActivatableAbility>("TouchOfProfaneCorruptionAbilityFatigued", bp => {
                 bp.SetName("Select Cruelty - Fatigued");
-                bp.SetDescription("A Dread Knight may enhance their Profane Corruption with learned cruelties. Only one cruelty may be selected at a time. " +
+                bp.SetDescription("A dreadknight may enhance their Profane Corruption with learned cruelties. Only one cruelty may be selected at a time. " +
                     "This cruelty causes the target to become fatigued.");
                 bp.m_Icon = FatigueIcon.Icon;
                 bp.m_Buff = CrueltyFatiguedBuff.ToReference<BlueprintBuffReference>();
@@ -1513,7 +1513,7 @@ namespace ExpandedContent.Tweaks.Classes {
             });
             var CrueltyFatigued = Helpers.CreateBlueprint<BlueprintFeature>("CrueltyFatigued", bp => {
                 bp.SetName("Cruelty - Fatigued");
-                bp.SetDescription("A Dread Knight may enhance their Profane Corruption with learned cruelties. Only one cruelty may be selected at a time. " +
+                bp.SetDescription("A dreadknight may enhance their Profane Corruption with learned cruelties. Only one cruelty may be selected at a time. " +
                     "This cruelty causes the target to become fatigued upon a failed fortitude save.");
                 bp.m_Icon = CrueltySelectIcon;
                 bp.Ranks = 1;
@@ -1524,7 +1524,7 @@ namespace ExpandedContent.Tweaks.Classes {
             });
             var TouchOfProfaneCorruptionAbilityShaken = Helpers.CreateBlueprint<BlueprintActivatableAbility>("TouchOfProfaneCorruptionAbilityShaken", bp => {
                 bp.SetName("Select Cruelty - Shaken");
-                bp.SetDescription("A Dread Knight may enhance their Profane Corruption with learned cruelties. Only one cruelty may be selected at a time. " +
+                bp.SetDescription("A dreadknight may enhance their Profane Corruption with learned cruelties. Only one cruelty may be selected at a time. " +
                     "This cruelty causes the target to become shaken for 1 round/dread knight level upon a failed fortitude save.");
                 bp.m_Buff = CrueltyShakenBuff.ToReference<BlueprintBuffReference>();
                 bp.m_Icon = ShakenBuff.Icon;
@@ -1535,7 +1535,7 @@ namespace ExpandedContent.Tweaks.Classes {
             });
             var CrueltyShaken = Helpers.CreateBlueprint<BlueprintFeature>("CrueltyShaken", bp => {
                 bp.SetName("Cruelty - Shaken");
-                bp.SetDescription("A Dread Knight may enhance their Profane Corruption with learned cruelties. Only one cruelty may be selected at a time, and must be used once before selecting another cruelty. " +
+                bp.SetDescription("A dreadknight may enhance their Profane Corruption with learned cruelties. Only one cruelty may be selected at a time, and must be used once before selecting another cruelty. " +
                     "This cruelty causes the target to become shaken upon a failed fortitude save.");
                 bp.m_Icon = CrueltySelectIcon;
                 bp.AddComponent<AddFacts>(c => {
@@ -1544,7 +1544,7 @@ namespace ExpandedContent.Tweaks.Classes {
             });
             var TouchOfProfaneCorruptionAbilitySickened = Helpers.CreateBlueprint<BlueprintActivatableAbility>("TouchOfProfaneCorruptionAbilitySickened", bp => {
                 bp.SetName("Select Cruelty - Sickened");
-                bp.SetDescription("A Dread Knight may enhance their Profane Corruption with learned cruelties. Only one cruelty may be selected at a time. " +
+                bp.SetDescription("A dreadknight may enhance their Profane Corruption with learned cruelties. Only one cruelty may be selected at a time. " +
                     "This cruelty causes the target to become sickened for 1 round/dread knight level upon a failed fortitude save.");
                 bp.m_Icon = SickenedBuff.Icon;
                 bp.m_Buff = CrueltySickenedBuff.ToReference<BlueprintBuffReference>();
@@ -1555,7 +1555,7 @@ namespace ExpandedContent.Tweaks.Classes {
             });
             var CrueltySickened = Helpers.CreateBlueprint<BlueprintFeature>("CrueltySickened", bp => {
                 bp.SetName("Cruelty - Sickened");
-                bp.SetDescription("A Dread Knight may enhance their Profane Corruption with learned cruelties. Only one cruelty may be selected at a time, and must be used once before selecting another cruelty. " +
+                bp.SetDescription("A dreadknight may enhance their Profane Corruption with learned cruelties. Only one cruelty may be selected at a time, and must be used once before selecting another cruelty. " +
                     "This cruelty causes the target to become sickened upon a failed fortitude save.");
                 bp.m_Icon = CrueltySelectIcon;
                 bp.AddComponent<AddFacts>(c => {
@@ -1564,7 +1564,7 @@ namespace ExpandedContent.Tweaks.Classes {
             });
             var TouchOfProfaneCorruptionAbilityDazed = Helpers.CreateBlueprint<BlueprintActivatableAbility>("TouchOfProfaneCorruptionAbilityDazed", bp => {
                 bp.SetName("Select Cruelty - Dazed");
-                bp.SetDescription("A Dread Knight may enhance their Profane Corruption with learned cruelties. Only one cruelty may be selected at a time. " +
+                bp.SetDescription("A dreadknight may enhance their Profane Corruption with learned cruelties. Only one cruelty may be selected at a time. " +
                     "This cruelty causes the target to become dazed for 1 round upon a failed fortitude save.");
                 bp.m_Icon = DazedBuff.Icon;
                 bp.m_Buff = CrueltyDazedBuff.ToReference<BlueprintBuffReference>();
@@ -1584,7 +1584,7 @@ namespace ExpandedContent.Tweaks.Classes {
             });
             var TouchOfProfaneCorruptionAbilityDiseased = Helpers.CreateBlueprint<BlueprintActivatableAbility>("TouchOfProfaneCorruptionAbilityDiseased", bp => {
                 bp.SetName("Select Cruelty - Diseased");
-                bp.SetDescription("A Dread Knight may enhance their Profane Corruption with learned cruelties. Only one cruelty may be selected at a time. " +
+                bp.SetDescription("A dreadknight may enhance their Profane Corruption with learned cruelties. Only one cruelty may be selected at a time. " +
                     "This cruelty causes the target to contract the bubonic plague upon a failed fortitude save.");
                 bp.m_Icon = DiseasedBuff.Icon;
                 bp.m_Buff = CrueltyDiseasedBuff.ToReference<BlueprintBuffReference>();
@@ -1595,7 +1595,7 @@ namespace ExpandedContent.Tweaks.Classes {
             });
             var CrueltyDiseased = Helpers.CreateBlueprint<BlueprintFeature>("CrueltyDiseased", bp => {
                 bp.SetName("Cruelty - Diseased");
-                bp.SetDescription("A Dread Knight may enhance their Profane Corruption with learned cruelties. Only one cruelty may be selected at a time. " +
+                bp.SetDescription("A dreadknight may enhance their Profane Corruption with learned cruelties. Only one cruelty may be selected at a time. " +
                     "This cruelty causes the target to contract the bubonic plague upon a failed fortitude save.");
                 bp.m_Icon = CrueltySelectIcon;
                 bp.AddComponent<AddFacts>(c => {
@@ -1604,8 +1604,8 @@ namespace ExpandedContent.Tweaks.Classes {
             });
             var TouchOfProfaneCorruptionAbilityStaggered = Helpers.CreateBlueprint<BlueprintActivatableAbility>("TouchOfProfaneCorruptionAbilityStaggered", bp => {
                 bp.SetName("Select Cruelty - Staggered");
-                bp.SetDescription("A Dread Knight may enhance their Profane Corruption with learned cruelties. Only one cruelty may be selected at a time. " +
-                    "This cruelty causes the target to become staggered for 1 round/two levels of dread knight upon a failed fortitude save.");
+                bp.SetDescription("A dreadknight may enhance their Profane Corruption with learned cruelties. Only one cruelty may be selected at a time. " +
+                    "This cruelty causes the target to become staggered for 1 round/two levels of dreadknight upon a failed fortitude save.");
                 bp.m_Icon = StaggeredBuff.Icon;
                 bp.m_Buff = CrueltyStaggeredBuff.ToReference<BlueprintBuffReference>();
                 bp.DeactivateImmediately = true;
@@ -1615,7 +1615,7 @@ namespace ExpandedContent.Tweaks.Classes {
             });
             var CrueltyStaggered = Helpers.CreateBlueprint<BlueprintFeature>("CrueltyStaggered", bp => {
                 bp.SetName("Cruelty - Staggered");
-                bp.SetDescription("A Dread Knight may enhance their Profane Corruption with learned cruelties. Only one cruelty may be selected at a time. " +
+                bp.SetDescription("A dreadknight may enhance their Profane Corruption with learned cruelties. Only one cruelty may be selected at a time. " +
                     "This cruelty causes the target to contract the bubonic plague upon a failed fortitude save.");
                 bp.m_Icon = CrueltySelectIcon;
                 bp.AddComponent<AddFacts>(c => {
@@ -1624,7 +1624,7 @@ namespace ExpandedContent.Tweaks.Classes {
             });
             var TouchOfProfaneCorruptionAbilityCursed = Helpers.CreateBlueprint<BlueprintActivatableAbility>("TouchOfProfaneCorruptionAbilityCursed", bp => {
                 bp.SetName("Select Cruelty - Cursed");
-                bp.SetDescription("A Dread Knight may enhance their Profane Corruption with learned cruelties. Only one cruelty may be selected at a time. " +
+                bp.SetDescription("A dreadknight may enhance their Profane Corruption with learned cruelties. Only one cruelty may be selected at a time. " +
                     "This cruelty bestows a curse of deteroriation upon a failed fortitude save.");
                 bp.m_Icon = CursedBuff.Icon;
                 bp.m_Buff = CrueltyCursedBuff.ToReference<BlueprintBuffReference>();
@@ -1635,7 +1635,7 @@ namespace ExpandedContent.Tweaks.Classes {
             });
             var CrueltyCursed = Helpers.CreateBlueprint<BlueprintFeature>("CrueltyCursed", bp => {
                 bp.SetName("Cruelty - Cursed");
-                bp.SetDescription("A Dread Knight may enhance their Profane Corruption with learned cruelties. Only one cruelty may be selected at a time. " +
+                bp.SetDescription("A dreadknight may enhance their Profane Corruption with learned cruelties. Only one cruelty may be selected at a time. " +
                     "This cruelty bestows a curse of deteroriation upon a failed fortitude save.");
                 bp.m_Icon = CrueltySelectIcon;
                 bp.AddComponent<AddFacts>(c => {
@@ -1644,7 +1644,7 @@ namespace ExpandedContent.Tweaks.Classes {
             });
             var TouchOfProfaneCorruptionAbilityExhausted = Helpers.CreateBlueprint<BlueprintActivatableAbility>("TouchOfProfaneCorruptionAbilityExhausted", bp => {
                 bp.SetName("Select Cruelty - Exhausted");
-                bp.SetDescription("A Dread Knight may enhance their Profane Corruption with learned cruelties. Only one cruelty may be selected at a time. " +
+                bp.SetDescription("A dreadknight may enhance their Profane Corruption with learned cruelties. Only one cruelty may be selected at a time. " +
                     "This cruelty forces exhaustion on the target upon a failed fortitude save.");
                 bp.m_Icon = ExhaustedBuff.Icon;
                 bp.m_Buff = CrueltyExhaustedBuff.ToReference<BlueprintBuffReference>();
@@ -1655,7 +1655,7 @@ namespace ExpandedContent.Tweaks.Classes {
             });
             var CrueltyExhausted = Helpers.CreateBlueprint<BlueprintFeature>("CrueltyExhausted", bp => {
                 bp.SetName("Cruelty - Exhausted");
-                bp.SetDescription("A Dread Knight may enhance their Profane Corruption with learned cruelties. Only one cruelty may be selected at a time. " +
+                bp.SetDescription("A dreadknight may enhance their Profane Corruption with learned cruelties. Only one cruelty may be selected at a time. " +
                     "This cruelty forces exhaustion on the target upon a failed fortitude save.");
                 bp.m_Icon = CrueltySelectIcon;
                 bp.AddComponent<AddFacts>(c => {
@@ -1668,8 +1668,8 @@ namespace ExpandedContent.Tweaks.Classes {
             });
             var TouchOfProfaneCorruptionAbilityFrightened = Helpers.CreateBlueprint<BlueprintActivatableAbility>("TouchOfProfaneCorruptionAbilityFrightened", bp => {
                 bp.SetName("Select Cruelty - Frightened");
-                bp.SetDescription("A Dread Knight may enhance their Profane Corruption with learned cruelties. Only one cruelty may be selected at a time. " +
-                    "This cruelty causes the target to be frightened for 1 round/2 levels of dread knight upon a failed fortitude save.");
+                bp.SetDescription("A dreadknight may enhance their Profane Corruption with learned cruelties. Only one cruelty may be selected at a time. " +
+                    "This cruelty causes the target to be frightened for 1 round/2 levels of dreadknight upon a failed fortitude save.");
                 bp.m_Icon = FrightenedBuff.Icon;
                 bp.m_Buff = CrueltyFrightenedBuff.ToReference<BlueprintBuffReference>();
                 bp.DeactivateImmediately = true;
@@ -1679,8 +1679,8 @@ namespace ExpandedContent.Tweaks.Classes {
             });
             var CrueltyFrightened = Helpers.CreateBlueprint<BlueprintFeature>("CrueltyFrightened", bp => {
                 bp.SetName("Cruelty - Frightened");
-                bp.SetDescription("A Dread Knight may enhance their Profane Corruption with learned cruelties. Only one cruelty may be selected at a time. " +
-                    "This cruelty causes the target to be frightened for 1 round/2 levels of dread knight upon a failed fortitude save.");
+                bp.SetDescription("A dreadknight may enhance their Profane Corruption with learned cruelties. Only one cruelty may be selected at a time. " +
+                    "This cruelty causes the target to be frightened for 1 round/2 levels of dreadknight upon a failed fortitude save.");
                 bp.m_Icon = CrueltySelectIcon;
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] { TouchOfProfaneCorruptionAbilityFrightened.ToReference<BlueprintUnitFactReference>() };
@@ -1692,8 +1692,8 @@ namespace ExpandedContent.Tweaks.Classes {
             });
             var TouchOfProfaneCorruptionAbilityNauseated = Helpers.CreateBlueprint<BlueprintActivatableAbility>("TouchOfProfaneCorruptionAbilityNauseated", bp => {
                 bp.SetName("Select Cruelty - Nauseated");
-                bp.SetDescription("A Dread Knight may enhance their Profane Corruption with learned cruelties. Only one cruelty may be selected at a time. " +
-                    "This cruelty causes the target to be nauseated for 1 round/3 levels of dread knight upon a failed fortitude save.");
+                bp.SetDescription("A dreadknight may enhance their Profane Corruption with learned cruelties. Only one cruelty may be selected at a time. " +
+                    "This cruelty causes the target to be nauseated for 1 round/3 levels of dreadknight upon a failed fortitude save.");
                 bp.m_Icon = NauseatedBuff.Icon;
                 bp.m_Buff = CrueltyNauseatedBuff.ToReference<BlueprintBuffReference>();
                 bp.DeactivateImmediately = true;
@@ -1703,8 +1703,8 @@ namespace ExpandedContent.Tweaks.Classes {
             });
             var CrueltyNauseated = Helpers.CreateBlueprint<BlueprintFeature>("CrueltyNauseated", bp => {
                 bp.SetName("Cruelty - Nauseated");
-                bp.SetDescription("A Dread Knight may enhance their Profane Corruption with learned cruelties. Only one cruelty may be selected at a time. " +
-                    "This cruelty causes the target to be nauseated for 1 round/3 levels of dread knight upon a failed fortitude save.");
+                bp.SetDescription("A dreadknight may enhance their Profane Corruption with learned cruelties. Only one cruelty may be selected at a time. " +
+                    "This cruelty causes the target to be nauseated for 1 round/3 levels of dreadknight upon a failed fortitude save.");
                 bp.m_Icon = CrueltySelectIcon;
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] { TouchOfProfaneCorruptionAbilityNauseated.ToReference<BlueprintUnitFactReference>() };
@@ -1716,8 +1716,8 @@ namespace ExpandedContent.Tweaks.Classes {
             });
             var TouchOfProfaneCorruptionAbilityPoisoned = Helpers.CreateBlueprint<BlueprintActivatableAbility>("TouchOfProfaneCorruptionAbilityPoisoned", bp => {
                 bp.SetName("Select Cruelty - Poisoned");
-                bp.SetDescription("A Dread Knight may enhance their Profane Corruption with learned cruelties. Only one cruelty may be selected at a time. " +
-                    "This cruelty causes the target to be poisoned for 1 round/level of dread knight upon a failed fortitude save.");
+                bp.SetDescription("A dreadknight may enhance their Profane Corruption with learned cruelties. Only one cruelty may be selected at a time. " +
+                    "This cruelty causes the target to be poisoned for 1 round/level of dreadknight upon a failed fortitude save.");
                 bp.m_Icon = PoisonedBuff.Icon;
                 bp.m_Buff = CrueltyPoisonedBuff.ToReference<BlueprintBuffReference>();
                 bp.DeactivateImmediately = true;
@@ -1727,8 +1727,8 @@ namespace ExpandedContent.Tweaks.Classes {
             });
             var CrueltyPoisoned = Helpers.CreateBlueprint<BlueprintFeature>("CrueltyPoisoned", bp => {
                 bp.SetName("Cruelty - Poisoned");
-                bp.SetDescription("A Dread Knight may enhance their Profane Corruption with learned cruelties. Only one cruelty may be selected at a time. " +
-                    "This cruelty causes the target to be poisoned for 1 round/level of dread knight upon a failed fortitude save.");
+                bp.SetDescription("A dreadknight may enhance their Profane Corruption with learned cruelties. Only one cruelty may be selected at a time. " +
+                    "This cruelty causes the target to be poisoned for 1 round/level of dreadknight upon a failed fortitude save.");
                 bp.m_Icon = CrueltySelectIcon;
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] { TouchOfProfaneCorruptionAbilityPoisoned.ToReference<BlueprintUnitFactReference>() };
@@ -1736,8 +1736,8 @@ namespace ExpandedContent.Tweaks.Classes {
             });
             var TouchOfProfaneCorruptionAbilityBlinded = Helpers.CreateBlueprint<BlueprintActivatableAbility>("TouchOfProfaneCorruptionAbilityBlinded", bp => {
                 bp.SetName("Select Cruelty - Blinded");
-                bp.SetDescription("A Dread Knight may enhance their Profane Corruption with learned cruelties. Only one cruelty may be selected at a time. " +
-                    "This cruelty causes the target to be become blinded for 1 round/level of dread knight upon a failed fortitude save.");
+                bp.SetDescription("A dreadknight may enhance their Profane Corruption with learned cruelties. Only one cruelty may be selected at a time. " +
+                    "This cruelty causes the target to be become blinded for 1 round/level of dreadknight upon a failed fortitude save.");
                 bp.m_Icon = BlindedBuff.Icon;
                 bp.m_Buff = CrueltyBlindedBuff.ToReference<BlueprintBuffReference>();
                 bp.DeactivateImmediately = true;
@@ -1747,8 +1747,8 @@ namespace ExpandedContent.Tweaks.Classes {
             });
             var CrueltyBlinded = Helpers.CreateBlueprint<BlueprintFeature>("CrueltyBlinded", bp => {
                 bp.SetName("Cruelty - Blinded");
-                bp.SetDescription("A Dread Knight may enhance their Profane Corruption with learned cruelties. Only one cruelty may be selected at a time. " +
-                    "\nThis cruelty causes the target to be become blinded for 1 round/level of dread knight upon a failed fortitude save.");
+                bp.SetDescription("A dreadknight may enhance their Profane Corruption with learned cruelties. Only one cruelty may be selected at a time. " +
+                    "\nThis cruelty causes the target to be become blinded for 1 round/level of dreadknight upon a failed fortitude save.");
                 bp.m_Icon = CrueltySelectIcon;
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] { TouchOfProfaneCorruptionAbilityBlinded.ToReference<BlueprintUnitFactReference>() };
@@ -1756,7 +1756,7 @@ namespace ExpandedContent.Tweaks.Classes {
             });
             var TouchOfProfaneCorruptionAbilityParalyzed = Helpers.CreateBlueprint<BlueprintActivatableAbility>("TouchOfProfaneCorruptionAbilityParalyzed", bp => {
                 bp.SetName("Select Cruelty - Paralyzed");
-                bp.SetDescription("A Dread Knight may enhance their Profane Corruption with learned cruelties. Only one cruelty may be selected at a time. " +
+                bp.SetDescription("A dreadknight may enhance their Profane Corruption with learned cruelties. Only one cruelty may be selected at a time. " +
                     "This cruelty causes the target to be become paralyzed for 1 round upon a failed fortitude save.");
                 bp.m_Icon = ParalyzedBuff.Icon;
                 bp.m_Buff = CrueltyParalyzedBuff.ToReference<BlueprintBuffReference>();
@@ -1767,7 +1767,7 @@ namespace ExpandedContent.Tweaks.Classes {
             });
             var CrueltyParalyzed = Helpers.CreateBlueprint<BlueprintFeature>("CrueltyParalyzed", bp => {
                 bp.SetName("Cruelty - Paralyzed");
-                bp.SetDescription("A Dread Knight may enhance their Profane Corruption with learned cruelties. Only one cruelty may be selected at a time. " +
+                bp.SetDescription("A dreadknight may enhance their Profane Corruption with learned cruelties. Only one cruelty may be selected at a time. " +
                     "This cruelty causes the target to be become paralyzed for 1 round upon a failed fortitude save.");
                 bp.m_Icon = CrueltySelectIcon;
                 bp.AddComponent<AddFacts>(c => {
@@ -1776,8 +1776,8 @@ namespace ExpandedContent.Tweaks.Classes {
             });
             var TouchOfProfaneCorruptionAbilityStunned = Helpers.CreateBlueprint<BlueprintActivatableAbility>("TouchOfProfaneCorruptionAbilityStunned", bp => {
                 bp.SetName("Select Cruelty - Stunned");
-                bp.SetDescription("A Dread Knight may enhance their Profane Corruption with learned cruelties. Only one cruelty may be selected at a time. " +
-                    "This cruelty causes the target to be become stunned for 1 round/4 levels of Dread Knight upon a failed fortitude save.");
+                bp.SetDescription("A dreadknight may enhance their Profane Corruption with learned cruelties. Only one cruelty may be selected at a time. " +
+                    "This cruelty causes the target to be become stunned for 1 round/4 levels of dreadknight upon a failed fortitude save.");
                 bp.m_Icon = StunnedBuff.Icon;
                 bp.m_Buff = CrueltyStunnedBuff.ToReference<BlueprintBuffReference>();
                 bp.DeactivateImmediately = true;
@@ -1787,8 +1787,8 @@ namespace ExpandedContent.Tweaks.Classes {
             });
             var CrueltyStunned = Helpers.CreateBlueprint<BlueprintFeature>("CrueltyStunned", bp => {
                 bp.SetName("Cruelty - Stunned");
-                bp.SetDescription("A Dread Knight may enhance their Profane Corruption with learned cruelties. Only one cruelty may be selected at a time. " +
-                    "\nThis cruelty causes the target to be become stunned for 1 round/4 levels of Dread Knight upon a failed fortitude save.");
+                bp.SetDescription("A dreadknight may enhance their Profane Corruption with learned cruelties. Only one cruelty may be selected at a time. " +
+                    "\nThis cruelty causes the target to be become stunned for 1 round/4 levels of dreadknight upon a failed fortitude save.");
                 bp.m_Icon = CrueltySelectIcon;
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] { TouchOfProfaneCorruptionAbilityStunned.ToReference<BlueprintUnitFactReference>() };
@@ -1796,12 +1796,12 @@ namespace ExpandedContent.Tweaks.Classes {
             });
             var CrueltySelection1 = Helpers.CreateBlueprint<BlueprintFeatureSelection>("CrueltySelection1", bp => {
                 bp.SetName("Cruelty Selection");
-                bp.SetDescription("At 3rd level, and every three levels thereafter, a Dread Knight can select one cruelty. " +
-                    "Each cruelty adds an effect to the Dread Knight's profane corruption ability. Whenever the Dread Knight uses " +
+                bp.SetDescription("At 3rd level, and every three levels thereafter, a dreadknight can select one cruelty. " +
+                    "Each cruelty adds an effect to the dreadknight's profane corruption ability. Whenever the dreadknight uses " +
                     "any from of profane corruption to deal damage to one target, the target also receives the additional effect from one of the " +
-                    "cruelties possessed by the Dread Knight. The Dread Knight selects this cruelty before the attack. The target receives a Fortitude " +
+                    "cruelties possessed by the dreadknight. The Dread Knight selects this cruelty before the attack. The target receives a Fortitude " +
                     "save to avoid this cruelty. If the save is successful, the target takes the damage as normal, but not the effects of the " +
-                    "cruelty. The DC of this save is equal to 10 + 1/2 the antipaladin’s level + the antipaladin’s Charisma modifier.");
+                    "cruelty. The DC of this save is equal to 10 + 1/2 the dreadknight’s level + the dreadknight’s Charisma modifier.");
                 bp.m_Icon = CrueltySelectIcon;
                 bp.Ranks = 1;
                 bp.m_AllFeatures = new BlueprintFeatureReference[] {
@@ -1816,12 +1816,12 @@ namespace ExpandedContent.Tweaks.Classes {
             });
             var CrueltySelection2 = Helpers.CreateBlueprint<BlueprintFeatureSelection>("CrueltySelection2", bp => {
                 bp.SetName("Cruelty Selection");
-                bp.SetDescription("At 3rd level, and every three levels thereafter, a Dread Knight can select one cruelty. " +
-                    "Each cruelty adds an effect to the Dread Knight's touch of profane corruption ability. Whenever the Dread Knight uses " +
+                bp.SetDescription("At 3rd level, and every three levels thereafter, a dreadknight can select one cruelty. " +
+                    "Each cruelty adds an effect to the dreadknight's touch of profane corruption ability. Whenever the dreadknight uses " +
                     "touch of profane corruption to deal damage to one target, the target also receives the additional effect from one of the " +
-                    "cruelties possessed by the Dread Knight. This choice is made when the touch is used. The target receives a Fortitude " +
+                    "cruelties possessed by the dreadknight. This choice is made when the touch is used. The target receives a Fortitude " +
                     "save to avoid this cruelty. If the save is successful, the target takes the damage as normal, but not the effects of the " +
-                    "cruelty. The DC of this save is equal to 10 + 1/2 the antipaladin’s level + the antipaladin’s Charisma modifier.");
+                    "cruelty. The DC of this save is equal to 10 + 1/2 the dreadknight’s level + the dreadknight’s Charisma modifier.");
                 bp.m_Icon = CrueltySelectIcon;
                 bp.Ranks = 1;
                 bp.m_AllFeatures = new BlueprintFeatureReference[] {
@@ -1843,11 +1843,11 @@ namespace ExpandedContent.Tweaks.Classes {
             var CrueltySelection3 = Helpers.CreateBlueprint<BlueprintFeatureSelection>("CrueltySelection3", bp => {
                 bp.SetName("Cruelty Selection");
                 bp.SetDescription("At 3rd level, and every three levels thereafter, a Dread Knight can select one cruelty. " +
-                    "Each cruelty adds an effect to the Dread Knight's touch of profane corruption ability. Whenever the Dread Knight uses " +
+                    "Each cruelty adds an effect to the dreadknight's touch of profane corruption ability. Whenever the dreadknight uses " +
                     "touch of profane corruption to deal damage to one target, the target also receives the additional effect from one of the " +
                     "cruelties possessed by the Dread Knight. This choice is made when the touch is used. The target receives a Fortitude " +
                     "save to avoid this cruelty. If the save is successful, the target takes the damage as normal, but not the effects of the " +
-                    "cruelty. The DC of this save is equal to 10 + 1/2 the antipaladin’s level + the antipaladin’s Charisma modifier.");
+                    "cruelty. The DC of this save is equal to 10 + 1/2 the dreadknight’s level + the dreadknight’s Charisma modifier.");
                 bp.m_Icon = CrueltySelectIcon;
                 bp.m_AllFeatures = new BlueprintFeatureReference[] {
                 CrueltyCursed.ToReference<BlueprintFeatureReference>(),
@@ -1878,16 +1878,16 @@ namespace ExpandedContent.Tweaks.Classes {
             });
             var CrueltySelection4 = Helpers.CreateBlueprint<BlueprintFeatureSelection>("CrueltySelection4", bp => {
                 bp.SetName("Cruelty Selection");
-                bp.SetDescription("At 3rd level, and every three levels thereafter, a Dread Knight can select one cruelty. " +
-                    "Each cruelty adds an effect to the Dread Knight's touch of profane corruption ability. Whenever the Dread Knight uses " +
+                bp.SetDescription("At 3rd level, and every three levels thereafter, a dreadknight can select one cruelty. " +
+                    "Each cruelty adds an effect to the dreadknight's touch of profane corruption ability. Whenever the Dread Knight uses " +
                     "profane corruption to deal damage to one target, the target also receives the additional effect from one of the " +
-                    "cruelties possessed by the Dread Knight. This choice is made when the touch is used. The target receives a Fortitude " +
+                    "cruelties possessed by the dreadknight. This choice is made when the touch is used. The target receives a Fortitude " +
                     "save to avoid this cruelty. If the save is successful, the target takes the damage as normal, but not the effects of the " +
-                    "cruelty. The DC of this save is equal to 10 + 1/2 the antipaladin’s level + the antipaladin’s Charisma modifier.");
-                bp.m_DescriptionShort = Helpers.CreateString("$CrueltySelection4.DescriptionShort", "At 3rd level, and every three levels thereafter, a Dread Knight can select one cruelty. " +
-                    "Each cruelty adds an effect to the Dread Knight's touch of profane corruption ability. Whenever the Dread Knight uses " +
+                    "cruelty. The DC of this save is equal to 10 + 1/2 the dreadknight’s level + the dreadknight’s Charisma modifier.");
+                bp.m_DescriptionShort = Helpers.CreateString("$CrueltySelection4.DescriptionShort", "At 3rd level, and every three levels thereafter, a dreadknight can select one cruelty. " +
+                    "Each cruelty adds an effect to the dreadknight's touch of profane corruption ability. Whenever the dreadknight uses " +
                     "profane corruption to deal damage to one target, the target also receives the additional effect from one of the " +
-                    "cruelties possessed by the Dread Knight.");
+                    "cruelties possessed by the dreadknight.");
                 bp.m_Icon = CrueltySelectIcon;
                 bp.Ranks = 1;
                 bp.m_AllFeatures = new BlueprintFeatureReference[] {
@@ -1941,8 +1941,8 @@ namespace ExpandedContent.Tweaks.Classes {
             var PlagueIcon = AssetLoader.LoadInternal("Skills", "Icon_Plague.png");
             var PlagueBringer = Helpers.CreateBlueprint<BlueprintFeature>("PlagueBringer", bp => {
                 bp.SetName("Plague Bringer");
-                bp.SetDescription("At 3rd level, the powers of darkness make the Dread Knight a beacon of corruption and disease. " +
-                    "A Dread Knight does not take any damage or take any penalty from diseases.");
+                bp.SetDescription("At 3rd level, the powers of darkness make the dreadknight a beacon of corruption and disease. " +
+                    "A dreadknight does not take any damage or take any penalty from diseases.");
                 bp.m_Icon = PlagueIcon;
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;
@@ -1952,13 +1952,14 @@ namespace ExpandedContent.Tweaks.Classes {
             var AOCIcon = AssetLoader.LoadInternal("Skills", "Icon_AOC.png");
             var AuraOfCowardiceEffectBuff = Helpers.CreateBlueprint<BlueprintBuff>("AuraOfCowardiceEffectBuff", bp => {
                 bp.SetName("Aura of Cowardice");
-                bp.SetDescription("At 3rd level, a Dread Knight radiates a palpably daunting aura that causes all enemies within 10 " +
+                bp.SetDescription("At 3rd level, a dreadknight radiates a palpably daunting aura that causes all enemies within 10 " +
                     "feet to take a –4 penalty on saving throws against fear effects. Creatures that are normally immune to fear lose that " +
-                    "immunity while within 10 feet of a Dread Knight with this ability. This ability functions only while the Dread Knight remains " +
+                    "immunity while within 10 feet of a dreadknight with this ability. This ability functions only while the dreadknight remains " +
                     "conscious, not if he is unconscious or dead.");
                 bp.IsClassFeature = true;
                 bp.m_Icon = AOCIcon;
                 bp.AddComponent<SavingThrowBonusAgainstDescriptor>(c => {
+                    c.ModifierDescriptor = ModifierDescriptor.Penalty;
                     c.SpellDescriptor = SpellDescriptor.Fear;
                     c.Value = -4;
                 });
@@ -1981,9 +1982,9 @@ namespace ExpandedContent.Tweaks.Classes {
             });
             var AuraOfCowardiceBuff = Helpers.CreateBlueprint<BlueprintBuff>("AuraOfCowardiceBuff", bp => {
                 bp.SetName("Aura of Cowardice");
-                bp.SetDescription("At 3rd level, a Dread Knight radiates a palpably daunting aura that causes all enemies within 10 " +
+                bp.SetDescription("At 3rd level, a dreadknight radiates a palpably daunting aura that causes all enemies within 10 " +
                     "feet to take a –4 penalty on saving throws against fear effects. Creatures that are normally immune to fear lose that " +
-                    "immunity while within 10 feet of a Dread Knight with this ability. This ability functions only while the Dread Knight remains " +
+                    "immunity while within 10 feet of a dreadknight with this ability. This ability functions only while the Dread Knight remains " +
                     "conscious, not if he is unconscious or dead.");
                 bp.m_Icon = AOCIcon;
                 bp.IsClassFeature = true;
@@ -1993,9 +1994,9 @@ namespace ExpandedContent.Tweaks.Classes {
             });
             var AuraOfCowardiceFeature = Helpers.CreateBlueprint<BlueprintFeature>("AuraOfCowardiceFeature", bp => {
                 bp.SetName("Aura of Cowardice");
-                bp.SetDescription("At 3rd level, a Dread Knight radiates a palpably daunting aura that causes all enemies within 10 " +
+                bp.SetDescription("At 3rd level, a dreadknight radiates a palpably daunting aura that causes all enemies within 10 " +
                     "feet to take a –4 penalty on saving throws against fear effects. Creatures that are normally immune to fear lose that " +
-                    "immunity while within 10 feet of a Dread Knight with this ability. This ability functions only while the Dread Knight remains " +
+                    "immunity while within 10 feet of a dreadknight with this ability. This ability functions only while the Dread Knight remains " +
                     "conscious, not if he is unconscious or dead.");
                 bp.m_Icon = AOCIcon;
                 bp.Ranks = 1;
@@ -2343,11 +2344,10 @@ namespace ExpandedContent.Tweaks.Classes {
             });
             var FiendishWeaponViciousChoice = Helpers.CreateBlueprint<BlueprintActivatableAbility>("FiendishWeaponViciousChoice", bp => {
                 bp.SetName("Profane Weapon Bond - Vicious");
-                bp.SetDescription("A dread knight can add the vicious property to a weapon enhanced with her profane weapon bond, but this " +
+                bp.SetDescription("A dreadknight can add the vicious property to a weapon enhanced with her profane weapon bond, but this " +
                     "consumes 1 points of enhancement {g|Encyclopedia:Bonus}bonus{/g} granted to this weapon.\nWhen a vicious weapon strikes an " +
                     "opponent, it creates a flash of disruptive energy that resonates between the opponent and the wielder. This energy deals an " +
-                    "extra {g|Encyclopedia:Dice}2d6{/g} points of {g|Encyclopedia:Damage}damage{/g} to the opponent and 1d6 points of damage to the wielder. " +
-                    "however, die when their heads are cut off.");
+                    "extra {g|Encyclopedia:Dice}2d6{/g} points of {g|Encyclopedia:Damage}damage{/g} to the opponent and 1d6 points of damage to the wielder.");
                 bp.m_Icon = ViciousIcon;
                 bp.Group = ActivatableAbilityGroup.DivineWeaponProperty;
                 bp.WeightInGroup = 1;
@@ -2365,7 +2365,7 @@ namespace ExpandedContent.Tweaks.Classes {
             });
             var FiendishWeaponVorpalChoice = Helpers.CreateBlueprint<BlueprintActivatableAbility>("FiendishWeaponVorpalChoice", bp => {
                 bp.SetName("Profane Weapon Bond - Vorpal");
-                bp.SetDescription("A dread knight can add the vorpal property to a weapon enhanced with her profane weapon bond, but this " +
+                bp.SetDescription("A dreadknight can add the vorpal property to a weapon enhanced with her profane weapon bond, but this " +
                     "consumes 5 points of enhancement {g|Encyclopedia:Bonus}bonus{/g} granted to this weapon.\nA vorpal weapon is infused with " +
                     "terrifying power. It allows the weapon to sever the heads of those it strikes.\nUpon a {g|Encyclopedia:Dice}roll{/g} of natural " +
                     "20 (followed by a successful roll to confirm the {g|Encyclopedia:Critical}critical hit{/g}), the weapon severs the opponent's " +
@@ -2390,7 +2390,7 @@ namespace ExpandedContent.Tweaks.Classes {
             var SacredWeaponAnarchicChoice = Resources.GetBlueprint<BlueprintActivatableAbility>("6fdc32d0af41ffb42b8285dbac9a050a");
             var FiendishWeaponAnarchicChoice = Helpers.CreateBlueprint<BlueprintActivatableAbility>("FiendishWeaponAnarchicChoice", bp => {
                 bp.SetName("Profane Weapon Bond - Anarchic");
-                bp.SetDescription("A dread knight can add the anarchic property to a weapon enhanced with her profane weapon bond, but this " +
+                bp.SetDescription("A dreadknight can add the anarchic property to a weapon enhanced with her profane weapon bond, but this " +
                     "consumes 2 points of enhancement {g|Encyclopedia:Bonus}bonus{/g} granted to this weapon.\nAn anarchic weapon is infused with " +
                     "chaotic power. It makes the weapon {g|Encyclopedia:Alignment}chaotic-aligned{/g} and thus overcomes the corresponding " +
                     "{g|Encyclopedia:Damage_Reduction}damage reduction{/g}. It deals an extra {g|Encyclopedia:Dice}2d6{/g} points of " +
@@ -2413,7 +2413,7 @@ namespace ExpandedContent.Tweaks.Classes {
             });
             var FiendishWeaponUnholyChoice = Helpers.CreateBlueprint<BlueprintActivatableAbility>("FiendishWeaponUnholyChoice", bp => {
                 bp.SetName("Profane Weapon Bond - Unholy");
-                bp.SetDescription("A dread knight can add the unholy property to a weapon enhanced with her profane weapon bond, but this consumes " +
+                bp.SetDescription("A dreadknight can add the unholy property to a weapon enhanced with her profane weapon bond, but this consumes " +
                     "2 points of enhancement {g|Encyclopedia:Bonus}bonus{/g} granted to this weapon.\nAn unholy weapon is imbued with unholy power. " +
                     "This power makes the weapon evil-aligned and thus overcomes the corresponding {g|Encyclopedia:Damage_Reduction}damage reduction{/g}. " +
                     "It deals an extra {g|Encyclopedia:Dice}2d6{/g} points of {g|Encyclopedia:Damage}damage{/g} against all creatures of " +
@@ -2644,7 +2644,7 @@ namespace ExpandedContent.Tweaks.Classes {
             var ServantIcon = AssetLoader.LoadInternal("Skills", "Icon_Servant.png");
             var DreadKnightProfaneMountFiendish = Helpers.CreateBlueprint<BlueprintFeature>("DreadKnightProfaneMountFiendish", bp => {
                 bp.SetName("Profane Mount — Fiendish");
-                bp.SetDescription("A Dread Knight's animal companion gains spell resistance equal to its level +5. It also gains:\n" +
+                bp.SetDescription("A dreadknight's animal companion gains spell resistance equal to its level +5. It also gains:\n" +
                     "1 — 4 HD: resistance 5 to cold and fire.\n" +
                     "5 — 10 HD: resistance 10 to cold and fire, DR 5/good\n" +
                     "11+ HD: resistance 15 to cold and fire, DR 10/good\n" +
@@ -2667,9 +2667,9 @@ namespace ExpandedContent.Tweaks.Classes {
             var AnimalCompanionFeatureHorse = Resources.GetBlueprint<BlueprintFeature>("9dc58b5901677c942854019d1dd98374");
             var DreadKnightCompanionSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("DreadKnightCompanionSelection", bp => {
                 bp.SetName("Fiendish Servant");
-                bp.SetDescription("The Dread Knight is granted a fiendish steed to carry her into battle. This mount functions " +
-                    "as a druid’s animal companion, using the Dread Knight’s level as her effective druid level. The creature must be one that " +
-                    "she is capable of riding and must be suitable as a mount. A Medium Dread Knight can select a horse. A Small Dread Knight can select a wolf.");
+                bp.SetDescription("The dreadknight is granted a fiendish steed to carry her into battle. This mount functions " +
+                    "as a druid’s animal companion, using the dreadknight’s level as her effective druid level. The creature must be one that " +
+                    "she is capable of riding and must be suitable as a mount. A Medium dreadknight can select a horse. A Small dreadknight can select a wolf.");
                 bp.IsClassFeature = true;
                 bp.ReapplyOnLevelUp = true;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Feat };
@@ -2699,12 +2699,12 @@ namespace ExpandedContent.Tweaks.Classes {
                     c.m_Feature = DreadKnightProfaneMountFiendish.ToReference<BlueprintFeatureReference>();
                 });
             });
-            // Aura of Despair - NEEDS TESTING
+            // Aura of Despair
             var AODespIcon = AssetLoader.LoadInternal("Skills", "Icon_AODespair.png");
             var AuraOfDespairEffectBuff = Helpers.CreateBlueprint<BlueprintBuff>("AuraOfDespairEffectBuff", bp => {
                 bp.SetName("Aura of Despair");
                 bp.SetDescription("At 8th level, enemies within 10 feet of an antipaladin take a –2 penalty on all saving throws. This penalty does not stack with the penalty from aura of cowardice. " +
-                    "This ability functions only while the antipaladin is conscious, not if he is unconscious or dead.");
+                    "This ability functions only while the dreadknight is conscious, not if he is unconscious or dead.");
                 bp.IsClassFeature = true;
                 bp.m_Icon = AODespIcon;
                 bp.AddComponent<BuffAllSavesBonus>(c => {
@@ -2724,8 +2724,8 @@ namespace ExpandedContent.Tweaks.Classes {
             });
             var AuraOfDespairBuff = Helpers.CreateBlueprint<BlueprintBuff>("AuraOfDespairBuff", bp => {
                 bp.SetName("Aura of Despair");
-                bp.SetDescription("At 8th level, enemies within 10 feet of an antipaladin take a –2 penalty on all saving throws. This penalty does not stack with the penalty from aura of cowardice. " +
-                    "This ability functions only while the antipaladin is conscious, not if he is unconscious or dead.");
+                bp.SetDescription("At 8th level, enemies within 10 feet of an dreadknight take a –2 penalty on all saving throws. This penalty does not stack with the penalty from aura of cowardice. " +
+                    "This ability functions only while the dreadknight is conscious, not if he is unconscious or dead.");
                 bp.m_Icon = AODespIcon;
                 bp.IsClassFeature = true;
                 bp.AddComponent<AddAreaEffect>(c => {
@@ -2734,8 +2734,8 @@ namespace ExpandedContent.Tweaks.Classes {
             });
             var AuraOfDespairFeature = Helpers.CreateBlueprint<BlueprintFeature>("AuraOfDespairFeature", bp => {
                 bp.SetName("Aura of Despair");
-                bp.SetDescription("At 8th level, enemies within 10 feet of an antipaladin take a –2 penalty on all saving throws. This penalty does not stack with the penalty from aura of cowardice. " +
-                    "This ability functions only while the antipaladin is conscious, not if he is unconscious or dead.");
+                bp.SetDescription("At 8th level, enemies within 10 feet of an dreadknight take a –2 penalty on all saving throws. This penalty does not stack with the penalty from aura of cowardice. " +
+                    "This ability functions only while the dreadknight is conscious, not if he is unconscious or dead.");
                 bp.m_Icon = AODespIcon;
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;
@@ -2748,13 +2748,13 @@ namespace ExpandedContent.Tweaks.Classes {
             var OBBaneIcon = AssetLoader.LoadInternal("Skills", "Icon_OBBane.png");
             var AuraOfAbsolutionBuff = Helpers.CreateBlueprint<BlueprintBuff>("AuraOfAbsolutionBuff", bp => {
                 bp.SetName("Aura of Absolution");
-                bp.SetDescription("Once per day, a Dread Knight can reach out to the profane lords to grant sinful absolution to the forces arrayed against them. As a swift action, " +
-                    "the Dread Knight chooses one target within sight to crush. The Dread Knight adds their Charisma bonus (if any) on " +
+                bp.SetDescription("Once per day, a dreadknight can reach out to the profane lords to grant sinful absolution to the forces arrayed against them. As a swift action, " +
+                    "the dreadknight chooses one target within sight to crush. The dreadknight adds their Charisma bonus (if any) on " +
                     "their attack rolls and adds their Dread Knight level on all damage rolls made against the target of their unholy smite. Regardless of the target, sinful absolution " +
-                    "attacks automatically bypass any DR the creature might possess. In addition, while Sinful Absolution is in effect, the Dread Knight gains a deflection " +
+                    "attacks automatically bypass any DR the creature might possess. In addition, while Sinful Absolution is in effect, the dreadknight gains a deflection " +
                     "bonus equal to their Charisma modifier(if any) to their AC against attacks made by the target of sinful absolution. The sinful absolution effect remains until the " +
-                    "target of sinful absolution is dead or the next time the Dread Knight rests and regains their uses of this ability. At 4th level, " +
-                    "and at every three levels thereafter, the Dread Knight may grant sinful absoltion one additional time per day.");
+                    "target of sinful absolution is dead or the next time the dreadknight rests and regains their uses of this ability. At 4th level, " +
+                    "and at every three levels thereafter, the dreadknight may grant sinful absoltion one additional time per day.");
                 bp.IsClassFeature = true;
                 bp.Stacking = StackingType.Stack;
                 bp.m_Icon = AOAIcon;
@@ -2791,9 +2791,9 @@ namespace ExpandedContent.Tweaks.Classes {
             });
             var AuraOfAbsolutionAbility = Helpers.CreateBlueprint<BlueprintAbility>("AuraOfAbsolutionAbility", bp => {
                 bp.SetName("Aura of Absolution");
-                bp.SetDescription("At 11th level, a Dread Knight can expend two uses of his sinful absolution ability to grant the " +
+                bp.SetDescription("At 11th level, a dreadknight can expend two uses of his sinful absolution ability to grant the " +
                     "ability to all allies within 10 feet, using his bonuses. Allies must use this ability " +
-                    "by the start of the antipaladin’s next turn and the bonuses last for 1 minute. Using this ability is a free action.");
+                    "by the start of the dreadknight’s next turn and the bonuses last for 1 minute. Using this ability is a free action.");
                 bp.LocalizedDuration = Helpers.CreateString($"{bp.name}.Duration", "Until the target of Sinful Absolution is dead");
                 bp.LocalizedSavingThrow = Helpers.CreateString($"{bp.name}.SavingThrow", "None");
                 bp.m_Icon = AOAIcon;
@@ -2868,9 +2868,9 @@ namespace ExpandedContent.Tweaks.Classes {
             });
             var AuraOfAbsolutionFeature = Helpers.CreateBlueprint<BlueprintFeature>("AuraOfAbsolutionFeature", bp => {
                 bp.SetName("Aura of Absolution");
-                bp.SetDescription("At 11th level, a Dread Knight can expend two uses of his sinful absolution ability to grant the " +
+                bp.SetDescription("At 11th level, a dreadknight can expend two uses of his sinful absolution ability to grant the " +
                     "ability to all allies within 10 feet, using his bonuses. Allies must use this ability " +
-                    "by the start of the antipaladin’s next turn and the bonuses last for 1 minute. Using this ability is a free action.");
+                    "by the start of the dreadknight’s next turn and the bonuses last for 1 minute. Using this ability is a free action.");
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;
                 bp.m_Icon = AOAIcon;
@@ -2884,9 +2884,9 @@ namespace ExpandedContent.Tweaks.Classes {
             var AOSIcon = AssetLoader.LoadInternal("Skills", "Icon_AOS.png");
             var AuraOfSinEffectBuff = Helpers.CreateBlueprint<BlueprintBuff>("AuraOfSinEffectBuff", bp => {
                 bp.SetName("Aura of Sin");
-                bp.SetDescription("At 14th level, an antipaladin’s weapons are treated as evil-aligned for the purposes of overcoming damage " +
+                bp.SetDescription("At 14th level, an dreadknight’s weapons are treated as evil-aligned for the purposes of overcoming damage " +
                     "reduction. Any attack made against an enemy within 10 feet of him is treated as evil-aligned for the purposes of overcoming damage " +
-                    "reduction. This ability functions only while the antipaladin is conscious, not if he is unconscious or dead.");
+                    "reduction. This ability functions only while the dreadknight is conscious, not if he is unconscious or dead.");
                 bp.m_Icon = AOSIcon;
                 bp.IsClassFeature = true;
                 bp.AddComponent<AddIncomingDamageWeaponProperty>(c => {
@@ -2908,9 +2908,9 @@ namespace ExpandedContent.Tweaks.Classes {
             });
             var AuraOfSinBuff = Helpers.CreateBlueprint<BlueprintBuff>("AuraOfSinBuff", bp => {
                 bp.SetName("Aura of Sin");
-                bp.SetDescription("At 14th level, an antipaladin’s weapons are treated as evil-aligned for the purposes of overcoming damage " +
+                bp.SetDescription("At 14th level, an dreadknight’s weapons are treated as evil-aligned for the purposes of overcoming damage " +
                     "reduction. Any attack made against an enemy within 10 feet of him is treated as evil-aligned for the purposes of overcoming damage " +
-                    "reduction. This ability functions only while the antipaladin is conscious, not if he is unconscious or dead.");
+                    "reduction. This ability functions only while the dreadknight is conscious, not if he is unconscious or dead.");
                 bp.m_Icon = AOSIcon;
                 bp.IsClassFeature = true;
                 bp.AddComponent<AddAreaEffect>(c => {
@@ -2919,9 +2919,9 @@ namespace ExpandedContent.Tweaks.Classes {
             });
             var AuraOfSinFeature = Helpers.CreateBlueprint<BlueprintFeature>("AuraOfSinFeature", bp => {
                 bp.SetName("Aura of Sin");
-                bp.SetDescription("At 14th level, an antipaladin’s weapons are treated as evil-aligned for the purposes of overcoming damage " +
+                bp.SetDescription("At 14th level, an dreadknight’s weapons are treated as evil-aligned for the purposes of overcoming damage " +
                     "reduction. Any attack made against an enemy within 10 feet of him is treated as evil-aligned for the purposes of overcoming damage " +
-                    "reduction. This ability functions only while the antipaladin is conscious, not if he is unconscious or dead.");
+                    "reduction. This ability functions only while the dreadknight is conscious, not if he is unconscious or dead.");
                 bp.m_Icon = AOSIcon;
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;
@@ -2933,9 +2933,9 @@ namespace ExpandedContent.Tweaks.Classes {
             var AODepIcon = AssetLoader.LoadInternal("Skills", "Icon_AODepravity.png");
             var AuraOfDepravityEffectBuff = Helpers.CreateBlueprint<BlueprintBuff>("AuraOfDepravityEffectBuff", bp => {
                 bp.SetName("Aura of Depravity");
-                bp.SetDescription("At 17th level, a Dread Knight gains DR 5/good and immunity to compulsion " +
+                bp.SetDescription("At 17th level, a dreadknight gains DR 5/good and immunity to compulsion " +
                     "spells and spell-like abilities.Each enemy within 10 feet takes a –4 penalty on saving throws against compulsion effects. " +
-                    "This ability functions only while the antipaladin is conscious, not if he is unconscious or dead.");
+                    "This ability functions only while the dreadknight is conscious, not if he is unconscious or dead.");
                 bp.IsClassFeature = true;
                 bp.m_Icon = AODepIcon;
                 bp.AddComponent<SavingThrowBonusAgainstDescriptor>(c => {
@@ -2956,9 +2956,9 @@ namespace ExpandedContent.Tweaks.Classes {
             });
             var AuraOfDepravityBuff = Helpers.CreateBlueprint<BlueprintBuff>("AuraOfDepravityBuff", bp => {
                 bp.SetName("Aura of Depravity");
-                bp.SetDescription("At 17th level, a Dread Knight gains DR 5/good and immunity to compulsion " +
+                bp.SetDescription("At 17th level, a dreadknight gains DR 5/good and immunity to compulsion " +
                     "spells and spell-like abilities. Each enemy within 10 feet takes a –4 penalty on saving throws against compulsion effects. " +
-                    "This ability functions only while the antipaladin is conscious, not if he is unconscious or dead.");
+                    "This ability functions only while the dreadknight is conscious, not if he is unconscious or dead.");
                 bp.m_Icon = AODepIcon;
                 bp.IsClassFeature = true;
                 bp.AddComponent<AddAreaEffect>(c => {
@@ -2967,9 +2967,9 @@ namespace ExpandedContent.Tweaks.Classes {
             });
             var AuraOfDepravityFeature = Helpers.CreateBlueprint<BlueprintFeature>("AuraOfDepravityFeature", bp => {
                 bp.SetName("Aura of Depravity");
-                bp.SetDescription("At 17th level, a Dread Knight gains DR 5/good and immunity to compulsion " +
+                bp.SetDescription("At 17th level, a dreadknight gains DR 5/good and immunity to compulsion " +
                     "spells and spell-like abilities. Each enemy within 10 feet takes a –4 penalty on saving throws against compulsion effects. " +
-                    "This ability functions only while the antipaladin is conscious, not if he is unconscious or dead.");
+                    "This ability functions only while the dreadknight is conscious, not if he is unconscious or dead.");
                 bp.m_Icon = AODepIcon;
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;
@@ -3005,8 +3005,8 @@ namespace ExpandedContent.Tweaks.Classes {
             var ProfaneChampIcon = AssetLoader.LoadInternal("Skills", "Icon_ProfaneChamp.png");            
             var ProfaneChampion = Helpers.CreateBlueprint<BlueprintFeature>("ProfaneChampion", bp => {
                 bp.SetName("Profane Champion");
-                bp.SetDescription("At 20th level, a Dread Knight becomes a conduit for the might of dark powers. Her DR increases to 10/good. " +
-                    "\nThe Dread Knight gains an additional 3 uses of Profane Corruption. In addition, whenever she channels negative energy or uses " +
+                bp.SetDescription("At 20th level, a dreadknight becomes a conduit for the might of dark powers. Her DR increases to 10/good. " +
+                    "\nThe dreadknight gains an additional 3 uses of Profane Corruption. In addition, whenever she channels negative energy or uses " +
                     "touch of corruption to damage a creature, she deals the maximum possible amount. ");
                 bp.m_Icon = ProfaneChampIcon;
                 bp.Ranks = 1;
@@ -3045,13 +3045,13 @@ namespace ExpandedContent.Tweaks.Classes {
 
             var ProfaneBoonSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("ProfaneBoonSelection", bp => {
                 bp.SetName("Profane Boon");
-                bp.SetDescription("Upon reaching 5th level, a dread knight receives a boon from their dark patrons. This boon can take one of two forms. Once the form is chosen, it cannot be changed. " +
+                bp.SetDescription("Upon reaching 5th level, a dreadknight receives a boon from their dark patrons. This boon can take one of two forms. Once the form is chosen, it cannot be changed. " +
                     "The first type of bond allows the dread knight to enhance their weapon as a standard action by calling upon the aid of a fiendish spirit for 1 " +
-                    "minute per dread knight level. When called, the spirit causes the weapon to shed unholy light as a torch. At 5th level, this spirit grants the " +
+                    "minute per dreadknight level. When called, the spirit causes the weapon to shed unholy light as a torch. At 5th level, this spirit grants the " +
                     "weapon a + 1 enhancement bonus.For every three levels beyond 5th, the weapon gains another + 1 enhancement bonus, to a maximum of + 6 at 20th level. ");
-                bp.m_DescriptionShort = Helpers.CreateString("$ProfaneBoonSelection.DescriptionShort", "Upon reaching 5th level, a dread knight receives a boon from their dark patrons. This boon can take one of two forms. Once the form is chosen, it cannot be changed. " +
+                bp.m_DescriptionShort = Helpers.CreateString("$ProfaneBoonSelection.DescriptionShort", "Upon reaching 5th level, a dreadknight receives a boon from their dark patrons. This boon can take one of two forms. Once the form is chosen, it cannot be changed. " +
                     "The first type of bond allows the dread knight to enhance their weapon as a standard action by calling upon the aid of a fiendish spirit for 1 " +
-                    "minute per dread knight level. When called, the spirit causes the weapon to shed unholy light as a torch. At 5th level, this spirit grants the " +
+                    "minute per dreadknight level. When called, the spirit causes the weapon to shed unholy light as a torch. At 5th level, this spirit grants the " +
                     "weapon a + 1 enhancement bonus.For every three levels beyond 5th, the weapon gains another + 1 enhancement bonus, to a maximum of + 6 at 20th level.");
                 bp.m_Icon = ProfaneWeaponIcon;
                 bp.Ranks = 1;
