@@ -1,53 +1,53 @@
-﻿using HarmonyLib;
-using BlueprintCore.Blueprints;
+﻿using BlueprintCore.Blueprints;
 using ExpandedContent.Config;
 using ExpandedContent.Extensions;
 using ExpandedContent.Utilities;
-using Kingmaker.Blueprints;
-using Kingmaker.Blueprints.Classes;
+using HarmonyLib;
 using Kingmaker.Blueprints.Classes.Prerequisites;
+using Kingmaker.Blueprints.Classes.Selection;
+using Kingmaker.Blueprints.Classes.Spells;
+using Kingmaker.Blueprints.Classes;
+using Kingmaker.Blueprints.Facts;
+using Kingmaker.Blueprints.Items.Ecnchantments;
 using Kingmaker.Blueprints.Items.Equipment;
+using Kingmaker.Blueprints.Items.Weapons;
 using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.Blueprints.Root;
+using Kingmaker.Blueprints;
 using Kingmaker.Designers.EventConditionActionSystem.Actions;
+using Kingmaker.Designers.Mechanics.Buffs;
+using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.ElementsSystem;
 using Kingmaker.EntitySystem.Stats;
+using Kingmaker.Enums.Damage;
+using Kingmaker.Enums;
+using Kingmaker.ResourceLinks;
+using Kingmaker.RuleSystem.Rules.Damage;
+using Kingmaker.RuleSystem;
 using Kingmaker.UnitLogic.Abilities.Blueprints;
+using Kingmaker.UnitLogic.Abilities.Components.AreaEffects;
+using Kingmaker.UnitLogic.Abilities.Components.Base;
+using Kingmaker.UnitLogic.Abilities.Components.CasterCheckers;
+using Kingmaker.UnitLogic.Abilities.Components;
+using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.UnitLogic.ActivatableAbilities;
+using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
+using Kingmaker.UnitLogic.Buffs.Components;
+using Kingmaker.UnitLogic.Commands.Base;
 using Kingmaker.UnitLogic.FactLogic;
-using System;
+using Kingmaker.UnitLogic.Mechanics.Actions;
+using Kingmaker.UnitLogic.Mechanics.Components;
+using Kingmaker.UnitLogic.Mechanics.Conditions;
+using Kingmaker.UnitLogic.Mechanics.Properties;
+using Kingmaker.UnitLogic.Mechanics;
+using Kingmaker.Utility;
+using Kingmaker.Visual.Animation.Kingmaker.Actions;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Kingmaker.Blueprints.Classes.Selection;
-using Kingmaker.Blueprints.Classes.Spells;
-using Kingmaker.Designers.Mechanics.Buffs;
-using Kingmaker.UnitLogic.Mechanics.Components;
-using Kingmaker.UnitLogic.Mechanics;
-using Kingmaker.UnitLogic.Abilities.Components.Base;
-using Kingmaker.UnitLogic.Abilities.Components;
-using Kingmaker.UnitLogic.Abilities;
-using Kingmaker.Enums;
-using Kingmaker.UnitLogic.Mechanics.Actions;
-using Kingmaker.UnitLogic.Mechanics.Conditions;
-using Kingmaker.ElementsSystem;
-using Kingmaker.UnitLogic.Commands.Base;
-using Kingmaker.Visual.Animation.Kingmaker.Actions;
-using Kingmaker.UnitLogic.Buffs.Components;
-using Kingmaker.Designers.Mechanics.Facts;
-using Kingmaker.Blueprints.Facts;
-using Kingmaker.RuleSystem;
-using Kingmaker.RuleSystem.Rules.Damage;
-using Kingmaker.Blueprints.Items.Weapons;
-using Kingmaker.Enums.Damage;
-using Kingmaker.Utility;
-using Kingmaker.UnitLogic.Mechanics.Properties;
-using Kingmaker.UnitLogic.Abilities.Components.AreaEffects;
-using Kingmaker.UnitLogic.Abilities.Components.CasterCheckers;
-using Kingmaker.UnitLogic.Alignments;
-using Kingmaker.Blueprints.Items.Ecnchantments;
-using Kingmaker.ResourceLinks;
+using System;
 
 namespace ExpandedContent.Tweaks.Classes {
 
@@ -1958,10 +1958,27 @@ namespace ExpandedContent.Tweaks.Classes {
                     "conscious, not if he is unconscious or dead.");
                 bp.IsClassFeature = true;
                 bp.m_Icon = AOCIcon;
-                bp.AddComponent<SavingThrowBonusAgainstDescriptor>(c => {
+                bp.AddComponent<SavingThrowContextBonusAgainstDescriptor>(c => {
                     c.ModifierDescriptor = ModifierDescriptor.Penalty;
                     c.SpellDescriptor = SpellDescriptor.Fear;
-                    c.Value = -4;
+                    c.Value = new ContextValue() {
+                        ValueType = ContextValueType.Rank
+                    };
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
+                    c.m_Progression = ContextRankProgression.Custom;
+                    c.m_Class = new BlueprintCharacterClassReference[] { DreadKnightClass.ToReference<BlueprintCharacterClassReference>() };
+                    c.m_CustomProgression = new ContextRankConfig.CustomProgressionItem[] {
+                        new ContextRankConfig.CustomProgressionItem() {
+                            BaseValue = 7,
+                            ProgressionValue = -4
+                        },
+                        new ContextRankConfig.CustomProgressionItem() {
+                            BaseValue = 100,
+                            ProgressionValue = -2
+                        }
+                    };
                 });
                 bp.AddComponent<AbilityAreaEffectRunAction>(c => {
                     c.Round = Helpers.CreateActionList(
@@ -1988,6 +2005,7 @@ namespace ExpandedContent.Tweaks.Classes {
                     "conscious, not if he is unconscious or dead.");
                 bp.m_Icon = AOCIcon;
                 bp.IsClassFeature = true;
+                bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
                 bp.AddComponent<AddAreaEffect>(c => {
                     c.m_AreaEffect = AuraOfCowardiceArea.ToReference<BlueprintAbilityAreaEffectReference>();
                 });
@@ -2728,6 +2746,7 @@ namespace ExpandedContent.Tweaks.Classes {
                     "This ability functions only while the dreadknight is conscious, not if he is unconscious or dead.");
                 bp.m_Icon = AODespIcon;
                 bp.IsClassFeature = true;
+                bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
                 bp.AddComponent<AddAreaEffect>(c => {
                     c.m_AreaEffect = AuraOfDespairArea.ToReference<BlueprintAbilityAreaEffectReference>();
                 });
