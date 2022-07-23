@@ -2,11 +2,25 @@
 using ExpandedContent.Utilities;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
+using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.EntitySystem.Stats;
+using Kingmaker.Enums;
+using Kingmaker.RuleSystem;
+using Kingmaker.UnitLogic;
+using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.UnitLogic.Abilities.Blueprints;
+using Kingmaker.UnitLogic.Abilities.Components;
+using Kingmaker.UnitLogic.Buffs.Blueprints;
+using Kingmaker.UnitLogic.Commands.Base;
 using Kingmaker.UnitLogic.FactLogic;
+using Kingmaker.UnitLogic.Mechanics;
+using Kingmaker.UnitLogic.Mechanics.Actions;
+using Kingmaker.UnitLogic.Mechanics.Components;
+using Kingmaker.UnitLogic.Mechanics.Properties;
+using Kingmaker.Utility;
+using Kingmaker.Visual.Animation.Kingmaker.Actions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +34,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
 
             var OracleClass = Resources.GetBlueprint<BlueprintCharacterClass>("20ce9bf8af32bee4c8557a045ab499b1");
             var OracleRevelationSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("60008a10ad7ad6543b1f63016741a5d2");
+            var BlindFight = Resources.GetBlueprint<BlueprintFeature>("4e219f5894ad0ea4daa0699e28c37b1d");
             
             //Spelllist
             var CauseFearSpell = Resources.GetBlueprint<BlueprintAbility>("bd81a3931aa285a4f9844585b5d97e51");
@@ -38,8 +53,6 @@ namespace ExpandedContent.Tweaks.Mysteries {
             var OwlsWisdomMassSpell = Resources.GetBlueprint<BlueprintAbility>("9f5ada581af3db4419b54db77f44e430");
             var MindBlankSpell = Resources.GetBlueprint<BlueprintAbility>("df2a0ba6b6dcecf429cbb80a56fee5cf");
             var MindBlankMassSpell = Resources.GetBlueprint<BlueprintAbility>("87a29febd010993419f2a4a9bee11cfc");
-
-
             var OracleDragonSpells = Helpers.CreateBlueprint<BlueprintFeature>("OracleDragonSpells", bp => {
                 bp.HideInCharacterSheetAndLevelUp = true;
                 bp.IsClassFeature = true;
@@ -137,12 +150,10 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     c.m_Spell = MindBlankMassSpell.ToReference<BlueprintAbilityReference>();
                     c.SpellLevel = 9;
                 });
-            });
+            });            
 
             //Final Revelation (not done just here to stop errors)
             var OracleDragonFinalRevelation = Helpers.CreateBlueprint<BlueprintFeature>("OracleDragonFinalRevelation");
-
-
 
             //Main Mystery Feature
             var OracleDragonMysteryFeature = Helpers.CreateBlueprint<BlueprintFeature>("OracleDragonMysteryFeature", bp => {
@@ -221,6 +232,236 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     c.m_Feature = OracleDragonSpells.ToReference<BlueprintFeatureReference>();
                 });
                 bp.Groups = new FeatureGroup[] { FeatureGroup.DivineHerbalistMystery };
+            });
+
+            //Wings of the Dragon
+            var BuffWingsDraconicRed = Resources.GetBlueprint<BlueprintBuff>("08ae1c01155a2184db869e9ebedc758d");
+            var BuffWingsDraconicBlue = Resources.GetBlueprint<BlueprintBuff>("800cde038f9e6304d95365edc60ab0a4");
+            var BuffWingsDraconicGold = Resources.GetBlueprint<BlueprintBuff>("984064a3dd0f25444ad143b8a33d7d92");
+            var BuffWingsDraconicGreen = Resources.GetBlueprint<BlueprintBuff>("a4ccc396e60a00f44907e95bc8bf463f");
+            var BuffWingsDraconicBrass = Resources.GetBlueprint<BlueprintBuff>("7f5acae38fc1e0f4c9325d8a4f4f81fc");
+            var BuffWingsDraconicWhite = Resources.GetBlueprint<BlueprintBuff>("381a168acd79cd54baf87a17ca861d9b");
+            var BuffWingsDraconicBlack = Resources.GetBlueprint<BlueprintBuff>("ddfe6e85e1eed7a40aa911280373c228");
+            var BuffWingsDraconicCopper = Resources.GetBlueprint<BlueprintBuff>("a25d6fc69cba80548832afc6c4787379");
+            var BuffWingsDraconicBronze = Resources.GetBlueprint<BlueprintBuff>("482ee5d001527204bb86e34240e2ce65");
+            var BuffWingsDraconicSilver = Resources.GetBlueprint<BlueprintBuff>("5a791c1b0bacee3459d7f5137fa0bd5f");
+            var OracleRevelationWingsOfTheDragonResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("OracleRevelationWingsOfTheDragonResource", bp => {
+
+            });
+
+
+
+
+            var OracleRevelationWingsOfTheDragonSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("OracleRevelationWingsOfTheDragonSelection", bp => {
+                bp.SetName("Wings of the Dragon");
+                bp.SetDescription("As a swift action, you can gain a pair of wings that grant a +3 dodge {g|Encyclopedia:Bonus}bonus{/g} to {g|Encyclopedia:Armor_Class}AC{/g} " +
+                    "against {g|Encyclopedia:MeleeAttack}melee attacks{/g} and an immunity to ground based effects, such as difficult terrain. You can use these wings for 1 minute " +
+                    "per day for each oracle level you have. This duration does not need to be consecutive, but it must be spent in 1-minute increments. At 11th level you can " +
+                    "use these wings for 10 minutes per day for each oracle level you have. At 15th level, you can use the wings indefinitely. You must be at least 7th level to " +
+                    "select this revelation.\nColour of the wings is selected when choosing this revelation.");
+
+
+
+
+
+                bp.AddComponent<PrerequisiteFeaturesFromList>(c => {
+                    c.m_Features = new BlueprintFeatureReference[] {
+                        OracleDragonMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        EnlightnedPhilosopherDragonMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        DivineHerbalistDragonMysteryFeature.ToReference<BlueprintFeatureReference>()
+                    };
+                    c.Amount = 1;
+                });
+                bp.AddComponent<PrerequisiteClassLevel>(c => {
+                    c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 7;
+                });
+                bp.Groups = new FeatureGroup[] { FeatureGroup.OracleRevelation };
+                bp.IsClassFeature = true;
+            });
+            //Dragon Sense Revelation
+            var OracleDragonSensesBlindsense = Helpers.CreateBlueprint<BlueprintFeature>("OracleDragonSensesBlindsense", bp => {
+                bp.SetName("Dragon Senses");
+                bp.SetDescription("");
+                bp.AddComponent<Blindsense>(c => {
+                    c.Range = 30.Feet();
+                });
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.HideInUI = true;
+                bp.IsClassFeature = true;
+            });
+            var OracleRevelationDragonSenses = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationDragonSenses", bp => {
+                bp.SetName("Dragon Senses");
+                bp.SetDescription("Your senses take on a keen draconic edge. You gain a +2 bonus on {g|Encyclopedia:Perception}Perception{/g} checks. At 5th level gain a " +
+                    "blindsense of 30 feet allowing you to locate unseen foes. At 11th level gain the Blind Fight feat. At 15th level " +
+                    "your {g|Encyclopedia:Perception}Perception{/g} check bonus increases to +4.");
+                bp.AddComponent<AddContextStatBonus>(c => {
+                    c.Stat = StatType.SkillPerception;
+                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+                    c.Value = new ContextValue {
+                        ValueType = ContextValueType.Rank,
+                        Value = 0,
+                        ValueShared = AbilitySharedValue.Damage,
+                        ValueRank = AbilityRankType.Default,
+                        Property = UnitProperty.None
+                    };
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
+                    c.m_Progression = ContextRankProgression.Custom;
+                    c.m_Class = new BlueprintCharacterClassReference[] { OracleClass.ToReference<BlueprintCharacterClassReference>() };
+                    c.m_CustomProgression = new ContextRankConfig.CustomProgressionItem[] {
+                        new ContextRankConfig.CustomProgressionItem() {
+                            BaseValue = 14,
+                            ProgressionValue = 2
+                        },
+                        new ContextRankConfig.CustomProgressionItem() {
+                            BaseValue = 100,
+                            ProgressionValue = 4
+                        }
+                    };
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 5;
+                    c.m_Feature = OracleDragonSensesBlindsense.ToReference<BlueprintFeatureReference>();
+                    c.BeforeThisLevel = false;
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 11;
+                    c.m_Feature = BlindFight.ToReference<BlueprintFeatureReference>();
+                    c.BeforeThisLevel = false;
+                });
+                bp.AddComponent<PrerequisiteFeaturesFromList>(c => {
+                    c.m_Features = new BlueprintFeatureReference[] {
+                        OracleDragonMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        EnlightnedPhilosopherDragonMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        DivineHerbalistDragonMysteryFeature.ToReference<BlueprintFeatureReference>()
+                    };
+                    c.Amount = 1;
+                });
+                bp.Groups = new FeatureGroup[] { FeatureGroup.OracleRevelation };
+                bp.IsClassFeature = true;
+            });
+
+            //Scaled Toughness Revelation
+            var OracleRevelationScaledToughnessResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("OracleRevelationScaledToughnessResource", bp => {
+                bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
+                    BaseValue = 0,
+                    IncreasedByLevel = false,
+                    IncreasedByLevelStartPlusDivStep =true,
+                    m_ClassDiv = new BlueprintCharacterClassReference[] {
+                        OracleClass.ToReference<BlueprintCharacterClassReference>()
+                    },
+                    StartingLevel = 7,
+                    LevelStep = 6,
+                    StartingIncrease = 1,
+                    PerStepIncrease = 1
+                };
+                bp.m_UseMax = true;
+                bp.m_Max = 2;
+            });
+            var OracleRevelationScaledToughnessBuff = Helpers.CreateBlueprint<BlueprintBuff>("OracleRevelationScaledToughnessBuff", bp => {
+                bp.SetName("Scaled Toughness");
+                bp.SetDescription("You can manifest the scaly toughness of dragonkind. Once per day as a swift action you can harden your skin, " +
+                    "granting you DR 10/magic. During this time, you are also immune to paralysis and sleep effects. This effect lasts for a number " +
+                    "of rounds equal to your oracle level. At 13th level, you can use this ability twice per day. You must be at least 7th level to " +
+                    "select this revelation.");
+                //bp.m_Icon = ???
+                bp.AddComponent<AddDamageResistancePhysical>(c => {
+                    c.Value = 10;
+                    c.BypassedByMagic = true;
+                });
+                bp.AddComponent<AddConditionImmunity>(c => {
+                    c.Condition = UnitCondition.Paralyzed;
+                });
+                bp.AddComponent<AddConditionImmunity>(c => {
+                    c.Condition = UnitCondition.Sleeping;
+                });
+                bp.Stacking = StackingType.Replace;
+                bp.Frequency = DurationRate.Rounds;
+            });
+            var OracleRevelationScaledToughnessAbility = Helpers.CreateBlueprint<BlueprintAbility>("OracleRevelationScaledToughnessAbility", bp => {
+                bp.SetName("Scaled Toughness");
+                bp.SetDescription("You can manifest the scaly toughness of dragonkind. Once per day as a swift action you can harden your skin, " +
+                    "granting you DR 10/magic. During this time, you are also immune to paralysis and sleep effects. This effect lasts for a number " +
+                    "of rounds equal to your oracle level. At 13th level, you can use this ability twice per day. You must be at least 7th level to " +
+                    "select this revelation.");
+                //bp.m_Icon = ???
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = OracleRevelationScaledToughnessBuff.ToReference<BlueprintBuffReference>(),
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Rank,
+                                    Value = 1,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage
+                                },
+                                m_IsExtendable = true
+                            },
+                            DurationSeconds = 0,
+                            IsFromSpell = true,
+                            ToCaster = true,
+                            AsChild = false,
+                        });
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.BonusValue;
+                    c.m_StepLevel = 1;
+                    c.m_Class = new BlueprintCharacterClassReference[] {
+                        OracleClass.ToReference<BlueprintCharacterClassReference>()
+                    };
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = OracleRevelationScaledToughnessResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetSelf = true;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Swift;
+            });
+            var OracleRevelationScaledToughness = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationScaledToughness", bp => {
+                bp.SetName("Scaled Toughness");
+                bp.SetDescription("You can manifest the scaly toughness of dragonkind. Once per day as a swift action you can harden your skin, " +
+                    "granting you DR 10/magic. During this time, you are also immune to paralysis and sleep effects. This effect lasts for a number " +
+                    "of rounds equal to your oracle level. At 13th level, you can use this ability twice per day. You must be at least 7th level to " +
+                    "select this revelation.");
+                //bp.m_Icon = ???
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = OracleRevelationScaledToughnessResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { OracleRevelationScaledToughnessAbility.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<PrerequisiteFeaturesFromList>(c => {
+                    c.m_Features = new BlueprintFeatureReference[] {
+                        OracleDragonMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        EnlightnedPhilosopherDragonMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        DivineHerbalistDragonMysteryFeature.ToReference<BlueprintFeatureReference>()
+                    };
+                    c.Amount = 1;
+                });
+                bp.AddComponent<PrerequisiteClassLevel>(c => {
+                    c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 7;
+                });
+                bp.Groups = new FeatureGroup[] { FeatureGroup.OracleRevelation };
+                bp.IsClassFeature = true;
             });
         }
     }
