@@ -119,7 +119,6 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.m_Min = 7;
                 bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
                     BaseValue = 0,
-
                     IncreasedByStat = false,
                     m_Class = new BlueprintCharacterClassReference[] {
                         WarpriestClass.ToReference<BlueprintCharacterClassReference>() },

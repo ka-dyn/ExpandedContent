@@ -88,6 +88,8 @@ namespace ExpandedContent.Tweaks
                 Domains.RevelationDomain.AddRevelationDomain();
                 Domains.BaseDeityPatch.AddBaseDeityPatch();
 
+                Mysteries.DragonMystery.AddDragonMystery();
+
                 Archdevils.Dispater.AddDispater();
                 Archdevils.Mephistopheles.AddMephistopheles();
 
