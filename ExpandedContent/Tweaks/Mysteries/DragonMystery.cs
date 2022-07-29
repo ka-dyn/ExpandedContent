@@ -5,10 +5,13 @@ using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.Blueprints.Classes.Spells;
+using Kingmaker.Designers.EventConditionActionSystem.Actions;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.ElementsSystem;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
 using Kingmaker.Enums.Damage;
+using Kingmaker.ResourceLinks;
 using Kingmaker.RuleSystem;
 using Kingmaker.RuleSystem.Rules;
 using Kingmaker.RuleSystem.Rules.Damage;
@@ -16,6 +19,7 @@ using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.UnitLogic.Abilities.Components;
+using Kingmaker.UnitLogic.Abilities.Components.Base;
 using Kingmaker.UnitLogic.Abilities.Components.CasterCheckers;
 using Kingmaker.UnitLogic.Abilities.Components.TargetCheckers;
 using Kingmaker.UnitLogic.ActivatableAbilities;
@@ -26,6 +30,7 @@ using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Mechanics.Actions;
 using Kingmaker.UnitLogic.Mechanics.Components;
+using Kingmaker.UnitLogic.Mechanics.Conditions;
 using Kingmaker.UnitLogic.Mechanics.Properties;
 using Kingmaker.Utility;
 using Kingmaker.Visual.Animation.Kingmaker.Actions;
@@ -42,6 +47,8 @@ namespace ExpandedContent.Tweaks.Mysteries {
 
             var OracleClass = Resources.GetBlueprint<BlueprintCharacterClass>("20ce9bf8af32bee4c8557a045ab499b1");
             var OracleRevelationSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("60008a10ad7ad6543b1f63016741a5d2");
+            var DazzlingDisplaySwiftAction = Resources.GetBlueprint<BlueprintAbility>("3de922e9946e9804a95500ad97ba2cb2");
+
             var BlindFight = Resources.GetBlueprint<BlueprintFeature>("4e219f5894ad0ea4daa0699e28c37b1d");
             var BuffWingsMutagen = Resources.GetBlueprint<BlueprintBuff>("e4979934bdb39d842b28bee614606823");
             //Spelllist
@@ -399,6 +406,143 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 });
                 bp.Groups = new FeatureGroup[] { FeatureGroup.DivineHerbalistMystery };
             });
+            //Presence of Dragons
+            var ShakenBuff = Resources.GetBlueprint<BlueprintBuff>("25ec6cb6ab1845c48a95f9c20b034220");
+            var OracleRevelationPresenceOfDragonsResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("OracleRevelationPresenceOfDragonsResource", bp => {
+                bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
+                    BaseValue = 1,
+                    IncreasedByLevel = false,
+                    IncreasedByLevelStartPlusDivStep = true,
+                    m_ClassDiv = new BlueprintCharacterClassReference[] {
+                        OracleClass.ToReference<BlueprintCharacterClassReference>()
+                    },
+                    StartingLevel = 5,
+                    LevelStep = 5,
+                    StartingIncrease = 1,
+                    PerStepIncrease = 1
+                };
+            });
+            var OracleRevelationPresenceOfDragonsCooldown = Helpers.CreateBlueprint<BlueprintBuff>("OracleRevelationPresenceOfDragonsCooldown", bp => {
+                bp.SetName("Presence of Dragons Immunity");
+                bp.SetDescription("Succeeding the {g|Encyclopedia:Saving_Throw}Will saving throw{/g} of Presence of Dragons had caused this creature to be immune to the ability " +
+                    "for 24 hours.");
+                bp.m_Icon = ShakenBuff.m_Icon;
+                bp.m_AllowNonContextActions = false;
+                bp.Stacking = StackingType.Replace;
+                bp.Frequency = DurationRate.Rounds;
+            });
+            var OracleRevelationPresenceOfDragonsAbility = Helpers.CreateBlueprint<BlueprintAbility>("OracleRevelationPresenceOfDragonsAbility", bp => {
+                bp.SetName("Presence of Dragons");
+                bp.SetDescription("Those who would oppose you must overcome their fear of dragons or be struck with terror at your draconic majesty. As a swift " +
+                    "action, you can manifest an aura of draconic might around yourself. Enemies within 30 feet who can see you when you activate this ability must " +
+                    "attempt a Will save. Success means that the creature is immune to this ability for the following 24 hours. On a failed save, the opponent is " +
+                    "shaken for 2d6 rounds. This is a mind-affecting fear effect. You can use this ability once per day at 1st level, plus one additional time per " +
+                    "day at 5th level and for every 5 levels beyond 5th.");
+                bp.m_Icon = ShakenBuff.m_Icon;
+                bp.AddComponent<AbilitySpawnFx>(c => {
+                    c.PrefabLink = DazzlingDisplaySwiftAction.GetComponent<AbilitySpawnFx>().PrefabLink;
+                    c.DestroyOnCast = true;
+                    c.PositionAnchor = AbilitySpawnFxAnchor.None;
+                    c.OrientationAnchor = AbilitySpawnFxAnchor.None;
+                });
+                bp.AddComponent<AbilityTargetsAround>(c => {
+                    c.m_Radius = 30.Feet();
+                    c.m_TargetType = TargetType.Enemy;
+                    c.m_Condition = new ConditionsChecker();
+                });
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Will;
+                    c.Actions = Helpers.CreateActionList(
+                        new Conditional() {
+                            ConditionsChecker = new ConditionsChecker() {
+                                Operation = Operation.Or,
+                                Conditions = new Condition[] {
+                                    new ContextConditionHasBuffFromCaster() {
+                                        m_Buff = OracleRevelationPresenceOfDragonsCooldown.ToReference<BlueprintBuffReference>()
+                                    },
+                                    new ContextConditionIsCaster() {
+                                        Not = false
+                                    },
+                                    new ContextConditionIsEnemy() {
+                                        Not = true
+                                    }
+                                }
+                            },
+                            IfTrue = Helpers.CreateActionList(),
+                            IfFalse = Helpers.CreateActionList(
+                                new ContextActionConditionalSaved() {
+                                    Succeed = Helpers.CreateActionList(
+                                        new ContextActionApplyBuff() {
+                                            m_Buff = OracleRevelationPresenceOfDragonsCooldown.ToReference<BlueprintBuffReference>(),
+                                            Permanent = true,
+                                            DurationValue = new ContextDurationValue() {
+                                                Rate = DurationRate.Days,
+                                                DiceType = DiceType.One,
+                                                m_IsExtendable = true
+                                            },
+                                            
+                                        }),
+                                    Failed = Helpers.CreateActionList(
+                                        new ContextActionApplyBuff() {
+                                            m_Buff = ShakenBuff.ToReference<BlueprintBuffReference>(),
+                                            Permanent = false,
+                                            DurationValue = new ContextDurationValue() {
+                                                Rate = DurationRate.Rounds,
+                                                DiceType = DiceType.D6,
+                                                DiceCountValue = 2,
+                                                m_IsExtendable = true
+                                            },
+
+                                        })
+                                }
+                                )
+                        }
+                        );
+                });
+                bp.AddComponent<SpellDescriptorComponent>(c => {
+                    c.Descriptor = SpellDescriptor.MindAffecting;
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = OracleRevelationPresenceOfDragonsResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.EnchantWeapon;
+                bp.AvailableMetamagic = Metamagic.Heighten;
+                bp.ActionType = UnitCommand.CommandType.Swift;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var OracleRevelationPresenceOfDragons = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationPresenceOfDragons", bp => {
+                bp.SetName("Presence of Dragons");
+                bp.SetDescription("Those who would oppose you must overcome their fear of dragons or be struck with terror at your draconic majesty. As a swift " +
+                    "action, you can manifest an aura of draconic might around yourself. Enemies within 30 feet who can see you when you activate this ability must " +
+                    "attempt a Will save. Success means that the creature is immune to this ability for the following 24 hours. On a failed save, the opponent is " +
+                    "shaken for 2d6 rounds. This is a mind-affecting fear effect. You can use this ability once per day at 1st level, plus one additional time per " +
+                    "day at 5th level and for every 5 levels beyond 5th.");
+                //bp.m_Icon = ???
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = OracleRevelationPresenceOfDragonsResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { OracleRevelationPresenceOfDragonsAbility.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<PrerequisiteFeaturesFromList>(c => {
+                    c.m_Features = new BlueprintFeatureReference[] {
+                        OracleDragonMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        EnlightnedPhilosopherDragonMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        DivineHerbalistDragonMysteryFeature.ToReference<BlueprintFeatureReference>()
+                    };
+                    c.Amount = 1;
+                });                
+                bp.Groups = new FeatureGroup[] { FeatureGroup.OracleRevelation };
+                bp.IsClassFeature = true;
+            });
+            OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationPresenceOfDragons.ToReference<BlueprintFeatureReference>());
             //Talons of the Dragon
             var BloodlineDraconicClawsResource = Resources.GetBlueprint<BlueprintAbilityResource>("5be91334e3de5aa458ade509cc16daff");
             var BloodlineDraconicBlackClawsFeatureLevel1 = Resources.GetBlueprint<BlueprintFeature>("2594e96fb980fdc49b139fdf88bc7679");
@@ -774,67 +918,53 @@ namespace ExpandedContent.Tweaks.Mysteries {
             OracleRevelationDragonTalonsSelection.AddComponent<PrerequisiteNoFeature>(c => { c.m_Feature = OracleRevelationDragonTalonsSelection.ToReference<BlueprintFeatureReference>(); });
             OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationDragonTalonsSelection.ToReference<BlueprintFeatureReference>());
             //Draconic Resistances
-            var OracleRevelationDraconicResistancesAcid = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationDraconicResistancesAcid", bp => {
+            var BloodlineDraconicBlackResistancesAbilityLevel1 = Resources.GetBlueprint<BlueprintFeature>("5623c02b343f59a46a4227f32f44ba8b");
+            var BloodlineDraconicBlackResistancesAbilityLevel2 = Resources.GetBlueprint<BlueprintFeature>("307544d817c7d5f4883f1400918d07fb");
+            var BloodlineDraconicBlackResistancesAbilityLevel3 = Resources.GetBlueprint<BlueprintFeature>("586f50b2310239647b8c054e9d12a3e3");
+            var OracleRevelationDraconicResistancesAcidLevel1 = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationDraconicResistancesAcidLevel1", bp => {
                 bp.SetName("Draconic Resistances - Acid");
                 bp.SetDescription("Like the great dragons, you are not easily harmed by common means of attack. You gain acid resistance 5 and a +1 natural armor bonus. " +
                     "At 9th level, your acid resistance increases to 10 and your natural armor bonus increases to +2. At 15th level, your acid resistance increases to 20 and your natural armor " +
                     "bonus increases to +4.");
-                bp.AddComponent<AddDamageResistanceEnergy>(c => {
-                    c.Value = new ContextValue() {
-                        ValueType = ContextValueType.Rank,
-                        Value = 0,
-                        ValueRank = AbilityRankType.Default,
-                        ValueShared = AbilitySharedValue.Damage,
-                        Property = UnitProperty.None
-                    };
-                    c.Type = DamageEnergyType.Acid;
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 9;
+                    c.m_Feature = BloodlineDraconicBlackResistancesAbilityLevel1.ToReference<BlueprintFeatureReference>();
+                    c.BeforeThisLevel = true;
                 });
-                bp.AddComponent<AddContextStatBonus>(c => {
-                    c.Descriptor = ModifierDescriptor.NaturalArmor;
-                    c.Stat = StatType.AC;
-                    c.Value = new ContextValue() {
-                        ValueType = ContextValueType.Rank,
-                        Value = 0,
-                        ValueRank = AbilityRankType.StatBonus,
-                        ValueShared = AbilitySharedValue.Damage,
-                        Property = UnitProperty.None
-                    };
+                bp.HideInUI = false;
+                bp.Ranks = 2;
+                bp.IsClassFeature = true;
+            });
+            var OracleRevelationDraconicResistancesAcidLevel2 = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationDraconicResistancesAcidLevel2", bp => {
+                bp.SetName("");
+                bp.SetDescription("");
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 15;
+                    c.m_Feature = BloodlineDraconicBlackResistancesAbilityLevel2.ToReference<BlueprintFeatureReference>();
+                    c.BeforeThisLevel = true;
                 });
-                bp.AddComponent<ContextRankConfig>(c => {
-                    c.m_Type = AbilityRankType.Default;
-                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
-                    c.m_Stat = StatType.Unknown;
-                    c.m_SpecificModifier = ModifierDescriptor.None;
-                    c.m_Progression = ContextRankProgression.Custom;
-                    c.m_CustomProgression = new ContextRankConfig.CustomProgressionItem[] {
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 8, ProgressionValue = 5 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 14, ProgressionValue = 10 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 100, ProgressionValue = 20 }
-                    };
-                    c.m_Class = new BlueprintCharacterClassReference[] {
-                        OracleClass.ToReference<BlueprintCharacterClassReference>()
-                    };
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 15;
+                    c.m_Feature = BloodlineDraconicBlackResistancesAbilityLevel3.ToReference<BlueprintFeatureReference>();
+                    c.BeforeThisLevel = false;
                 });
-                bp.AddComponent<ContextRankConfig>(c => {
-                    c.m_Type = AbilityRankType.StatBonus;
-                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
-                    c.m_Stat = StatType.Unknown;
-                    c.m_SpecificModifier = ModifierDescriptor.None;
-                    c.m_Progression = ContextRankProgression.Custom;
-                    c.m_CustomProgression = new ContextRankConfig.CustomProgressionItem[] {
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 8, ProgressionValue = 1 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 14, ProgressionValue = 2 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 100, ProgressionValue = 4 }
-                    };
-                    c.m_Class = new BlueprintCharacterClassReference[] {
-                        OracleClass.ToReference<BlueprintCharacterClassReference>()
-                    };
-                });
-                bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[] {                        
-                        OracleDragonMysteryFlagAcid.ToReference<BlueprintUnitFactReference>()
-                    };
-                });
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.Ranks = 2;
+                bp.IsClassFeature = true;
+            });
+            var OracleRevelationDraconicResistancesAcidProgress = Helpers.CreateBlueprint<BlueprintProgression>("OracleRevelationDraconicResistancesAcidProgress", bp => {
+                bp.SetName("Draconic Resistances - Acid");
+                bp.SetDescription("Like the great dragons, you are not easily harmed by common means of attack. You gain acid resistance 5 and a +1 natural armor bonus. " +
+                    "At 9th level, your acid resistance increases to 10 and your natural armor bonus increases to +2. At 15th level, your acid resistance increases to 20 and your natural armor " +
+                    "bonus increases to +4.");
+                bp.LevelEntries = new LevelEntry[] {
+                    Helpers.LevelEntry(1, OracleDragonMysteryFlagAcid, OracleRevelationDraconicResistancesAcidLevel1),
+                    Helpers.LevelEntry(9, OracleRevelationDraconicResistancesAcidLevel2)
+                };
                 bp.AddComponent<PrerequisiteNoFeature>(c => {
                     c.m_Feature = OracleDragonMysteryFlagCold.ToReference<BlueprintFeatureReference>();
                 });
@@ -846,68 +976,56 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 });
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = true;
+                bp.HideInUI = true;
+                bp.GiveFeaturesForPreviousLevels = true;
             });
-            var OracleRevelationDraconicResistancesCold = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationDraconicResistancesCold", bp => {
+            var BloodlineDraconicWhiteResistancesAbilityLevel1 = Resources.GetBlueprint<BlueprintFeature>("f0808daee57206645a2b23b17d5b63f0");
+            var BloodlineDraconicWhiteResistancesAbilityLevel2 = Resources.GetBlueprint<BlueprintFeature>("64b243d2b7d780e459779c446af558e4");
+            var BloodlineDraconicWhiteResistancesAbilityLevel3 = Resources.GetBlueprint<BlueprintFeature>("66d8598b2c9c69f468c2efcdc9ad0e2d");
+            var OracleRevelationDraconicResistancesColdLevel1 = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationDraconicResistancesColdLevel1", bp => {
                 bp.SetName("Draconic Resistances - Cold");
                 bp.SetDescription("Like the great dragons, you are not easily harmed by common means of attack. You gain cold resistance 5 and a +1 natural armor bonus. " +
                     "At 9th level, your cold resistance increases to 10 and your natural armor bonus increases to +2. At 15th level, your cold resistance increases to 20 and your natural armor " +
                     "bonus increases to +4.");
-                bp.AddComponent<AddDamageResistanceEnergy>(c => {
-                    c.Value = new ContextValue() {
-                        ValueType = ContextValueType.Rank,
-                        Value = 0,
-                        ValueRank = AbilityRankType.Default,
-                        ValueShared = AbilitySharedValue.Damage,
-                        Property = UnitProperty.None
-                    };
-                    c.Type = DamageEnergyType.Cold;
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 9;
+                    c.m_Feature = BloodlineDraconicWhiteResistancesAbilityLevel1.ToReference<BlueprintFeatureReference>();
+                    c.BeforeThisLevel = true;
                 });
-                bp.AddComponent<AddContextStatBonus>(c => {
-                    c.Descriptor = ModifierDescriptor.NaturalArmor;
-                    c.Stat = StatType.AC;
-                    c.Value = new ContextValue() {
-                        ValueType = ContextValueType.Rank,
-                        Value = 0,
-                        ValueRank = AbilityRankType.StatBonus,
-                        ValueShared = AbilitySharedValue.Damage,
-                        Property = UnitProperty.None
-                    };
+                bp.HideInUI = false;
+                bp.Ranks = 2;
+                bp.IsClassFeature = true;
+            });
+            var OracleRevelationDraconicResistancesColdLevel2 = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationDraconicResistancesColdLevel2", bp => {
+                bp.SetName("");
+                bp.SetDescription("");
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 15;
+                    c.m_Feature = BloodlineDraconicWhiteResistancesAbilityLevel2.ToReference<BlueprintFeatureReference>();
+                    c.BeforeThisLevel = true;
                 });
-                bp.AddComponent<ContextRankConfig>(c => {
-                    c.m_Type = AbilityRankType.Default;
-                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
-                    c.m_Stat = StatType.Unknown;
-                    c.m_SpecificModifier = ModifierDescriptor.None;
-                    c.m_Progression = ContextRankProgression.Custom;
-                    c.m_CustomProgression = new ContextRankConfig.CustomProgressionItem[] {
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 8, ProgressionValue = 5 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 14, ProgressionValue = 10 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 100, ProgressionValue = 20 }
-                    };
-                    c.m_Class = new BlueprintCharacterClassReference[] {
-                        OracleClass.ToReference<BlueprintCharacterClassReference>()
-                    };
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 15;
+                    c.m_Feature = BloodlineDraconicWhiteResistancesAbilityLevel3.ToReference<BlueprintFeatureReference>();
+                    c.BeforeThisLevel = false;
                 });
-                bp.AddComponent<ContextRankConfig>(c => {
-                    c.m_Type = AbilityRankType.StatBonus;
-                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
-                    c.m_Stat = StatType.Unknown;
-                    c.m_SpecificModifier = ModifierDescriptor.None;
-                    c.m_Progression = ContextRankProgression.Custom;
-                    c.m_CustomProgression = new ContextRankConfig.CustomProgressionItem[] {
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 8, ProgressionValue = 1 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 14, ProgressionValue = 2 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 100, ProgressionValue = 4 }
-                    };
-                    c.m_Class = new BlueprintCharacterClassReference[] {
-                        OracleClass.ToReference<BlueprintCharacterClassReference>()
-                    };
-                });
-                bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[] {
-                        OracleDragonMysteryFlagCold.ToReference<BlueprintUnitFactReference>()
-                    };
-                });
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.Ranks = 2;
+                bp.IsClassFeature = true;
+            });
+            var OracleRevelationDraconicResistancesColdProgress = Helpers.CreateBlueprint<BlueprintProgression>("OracleRevelationDraconicResistancesColdProgress", bp => {
+                bp.SetName("Draconic Resistances - Cold");
+                bp.SetDescription("Like the great dragons, you are not easily harmed by common means of attack. You gain cold resistance 5 and a +1 natural armor bonus. " +
+                    "At 9th level, your cold resistance increases to 10 and your natural armor bonus increases to +2. At 15th level, your acid resistance increases to 20 and your natural armor " +
+                    "bonus increases to +4.");
+                bp.LevelEntries = new LevelEntry[] {
+                    Helpers.LevelEntry(1, OracleDragonMysteryFlagCold, OracleRevelationDraconicResistancesColdLevel1),
+                    Helpers.LevelEntry(9, OracleRevelationDraconicResistancesColdLevel2)
+                };
                 bp.AddComponent<PrerequisiteNoFeature>(c => {
                     c.m_Feature = OracleDragonMysteryFlagAcid.ToReference<BlueprintFeatureReference>();
                 });
@@ -919,68 +1037,56 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 });
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = true;
+                bp.HideInUI = true;
+                bp.GiveFeaturesForPreviousLevels = true;
             });
-            var OracleRevelationDraconicResistancesElectric = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationDraconicResistancesElectric", bp => {
+            var BloodlineDraconicBlueResistancesAbilityLevel1 = Resources.GetBlueprint<BlueprintFeature>("73916f082fbb1b843a55dec6671da447");
+            var BloodlineDraconicBlueResistancesAbilityLevel2 = Resources.GetBlueprint<BlueprintFeature>("9fc2e77baef2ee5429d6918678102d80");
+            var BloodlineDraconicBlueResistancesAbilityLevel3 = Resources.GetBlueprint<BlueprintFeature>("c4f5015c46c12ab40b6274ee5e49f33e");
+            var OracleRevelationDraconicResistancesElectricLevel1 = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationDraconicResistancesElectricLevel1", bp => {
                 bp.SetName("Draconic Resistances - Electric");
-                bp.SetDescription("Like the great dragons, you are not easily harmed by common means of attack. You gain electric resistance 5 and a +1 natural armor bonus. " +
-                    "At 9th level, your electric resistance increases to 10 and your natural armor bonus increases to +2. At 15th level, your electric resistance increases to 20 and your natural armor " +
+                bp.SetDescription("Like the great dragons, you are not easily harmed by common means of attack. You gain electricity resistance 5 and a +1 natural armor bonus. " +
+                    "At 9th level, your electricity resistance increases to 10 and your natural armor bonus increases to +2. At 15th level, your electric resistance increases to 20 and your natural armor " +
                     "bonus increases to +4.");
-                bp.AddComponent<AddDamageResistanceEnergy>(c => {
-                    c.Value = new ContextValue() {
-                        ValueType = ContextValueType.Rank,
-                        Value = 0,
-                        ValueRank = AbilityRankType.Default,
-                        ValueShared = AbilitySharedValue.Damage,
-                        Property = UnitProperty.None
-                    };
-                    c.Type = DamageEnergyType.Electricity;
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 9;
+                    c.m_Feature = BloodlineDraconicBlueResistancesAbilityLevel1.ToReference<BlueprintFeatureReference>();
+                    c.BeforeThisLevel = true;
                 });
-                bp.AddComponent<AddContextStatBonus>(c => {
-                    c.Descriptor = ModifierDescriptor.NaturalArmor;
-                    c.Stat = StatType.AC;
-                    c.Value = new ContextValue() {
-                        ValueType = ContextValueType.Rank,
-                        Value = 0,
-                        ValueRank = AbilityRankType.StatBonus,
-                        ValueShared = AbilitySharedValue.Damage,
-                        Property = UnitProperty.None
-                    };
+                bp.HideInUI = false;
+                bp.Ranks = 2;
+                bp.IsClassFeature = true;
+            });
+            var OracleRevelationDraconicResistancesElectricLevel2 = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationDraconicResistancesElectricLevel2", bp => {
+                bp.SetName("");
+                bp.SetDescription("");
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 15;
+                    c.m_Feature = BloodlineDraconicBlueResistancesAbilityLevel2.ToReference<BlueprintFeatureReference>();
+                    c.BeforeThisLevel = true;
                 });
-                bp.AddComponent<ContextRankConfig>(c => {
-                    c.m_Type = AbilityRankType.Default;
-                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
-                    c.m_Stat = StatType.Unknown;
-                    c.m_SpecificModifier = ModifierDescriptor.None;
-                    c.m_Progression = ContextRankProgression.Custom;
-                    c.m_CustomProgression = new ContextRankConfig.CustomProgressionItem[] {
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 8, ProgressionValue = 5 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 14, ProgressionValue = 10 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 100, ProgressionValue = 20 }
-                    };
-                    c.m_Class = new BlueprintCharacterClassReference[] {
-                        OracleClass.ToReference<BlueprintCharacterClassReference>()
-                    };
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 15;
+                    c.m_Feature = BloodlineDraconicBlueResistancesAbilityLevel3.ToReference<BlueprintFeatureReference>();
+                    c.BeforeThisLevel = false;
                 });
-                bp.AddComponent<ContextRankConfig>(c => {
-                    c.m_Type = AbilityRankType.StatBonus;
-                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
-                    c.m_Stat = StatType.Unknown;
-                    c.m_SpecificModifier = ModifierDescriptor.None;
-                    c.m_Progression = ContextRankProgression.Custom;
-                    c.m_CustomProgression = new ContextRankConfig.CustomProgressionItem[] {
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 8, ProgressionValue = 1 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 14, ProgressionValue = 2 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 100, ProgressionValue = 4 }
-                    };
-                    c.m_Class = new BlueprintCharacterClassReference[] {
-                        OracleClass.ToReference<BlueprintCharacterClassReference>()
-                    };
-                });
-                bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[] {
-                        OracleDragonMysteryFlagElectric.ToReference<BlueprintUnitFactReference>()
-                    };
-                });
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.Ranks = 2;
+                bp.IsClassFeature = true;
+            });
+            var OracleRevelationDraconicResistancesElectricProgress = Helpers.CreateBlueprint<BlueprintProgression>("OracleRevelationDraconicResistancesElectricProgress", bp => {
+                bp.SetName("Draconic Resistances - Electric");
+                bp.SetDescription("Like the great dragons, you are not easily harmed by common means of attack. You gain electricity resistance 5 and a +1 natural armor bonus. " +
+                    "At 9th level, your electricity resistance increases to 10 and your natural armor bonus increases to +2. At 15th level, your electricity resistance increases to 20 and your natural armor " +
+                    "bonus increases to +4.");
+                bp.LevelEntries = new LevelEntry[] {
+                    Helpers.LevelEntry(1, OracleDragonMysteryFlagElectric, OracleRevelationDraconicResistancesElectricLevel1),
+                    Helpers.LevelEntry(9, OracleRevelationDraconicResistancesElectricLevel2)
+                };
                 bp.AddComponent<PrerequisiteNoFeature>(c => {
                     c.m_Feature = OracleDragonMysteryFlagAcid.ToReference<BlueprintFeatureReference>();
                 });
@@ -992,68 +1098,56 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 });
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = true;
+                bp.HideInUI = true;
+                bp.GiveFeaturesForPreviousLevels = true;
             });
-            var OracleRevelationDraconicResistancesFire = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationDraconicResistancesFire", bp => {
+            var BloodlineDraconicRedResistancesAbilityLevel1 = Resources.GetBlueprint<BlueprintFeature>("f0808daee57206645a2b23b17d5b63f0");
+            var BloodlineDraconicRedResistancesAbilityLevel2 = Resources.GetBlueprint<BlueprintFeature>("e353df68a1bb5894ea1d33b0bda1400d");
+            var BloodlineDraconicRedResistancesAbilityLevel3 = Resources.GetBlueprint<BlueprintFeature>("d102a33c03260a6458b7508a243e1958");
+            var OracleRevelationDraconicResistancesFireLevel1 = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationDraconicResistancesFireLevel1", bp => {
                 bp.SetName("Draconic Resistances - Fire");
                 bp.SetDescription("Like the great dragons, you are not easily harmed by common means of attack. You gain fire resistance 5 and a +1 natural armor bonus. " +
                     "At 9th level, your fire resistance increases to 10 and your natural armor bonus increases to +2. At 15th level, your fire resistance increases to 20 and your natural armor " +
                     "bonus increases to +4.");
-                bp.AddComponent<AddDamageResistanceEnergy>(c => {
-                    c.Value = new ContextValue() {
-                        ValueType = ContextValueType.Rank,
-                        Value = 0,
-                        ValueRank = AbilityRankType.Default,
-                        ValueShared = AbilitySharedValue.Damage,
-                        Property = UnitProperty.None
-                    };
-                    c.Type = DamageEnergyType.Fire;
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 9;
+                    c.m_Feature = BloodlineDraconicRedResistancesAbilityLevel1.ToReference<BlueprintFeatureReference>();
+                    c.BeforeThisLevel = true;
                 });
-                bp.AddComponent<AddContextStatBonus>(c => {
-                    c.Descriptor = ModifierDescriptor.NaturalArmor;
-                    c.Stat = StatType.AC;
-                    c.Value = new ContextValue() {
-                        ValueType = ContextValueType.Rank,
-                        Value = 0,
-                        ValueRank = AbilityRankType.StatBonus,
-                        ValueShared = AbilitySharedValue.Damage,
-                        Property = UnitProperty.None
-                    };
+                bp.HideInUI = false;
+                bp.Ranks = 2;
+                bp.IsClassFeature = true;
+            });
+            var OracleRevelationDraconicResistancesFireLevel2 = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationDraconicResistancesFireLevel2", bp => {
+                bp.SetName("");
+                bp.SetDescription("");
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 15;
+                    c.m_Feature = BloodlineDraconicRedResistancesAbilityLevel2.ToReference<BlueprintFeatureReference>();
+                    c.BeforeThisLevel = true;
                 });
-                bp.AddComponent<ContextRankConfig>(c => {
-                    c.m_Type = AbilityRankType.Default;
-                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
-                    c.m_Stat = StatType.Unknown;
-                    c.m_SpecificModifier = ModifierDescriptor.None;
-                    c.m_Progression = ContextRankProgression.Custom;
-                    c.m_CustomProgression = new ContextRankConfig.CustomProgressionItem[] {
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 8, ProgressionValue = 5 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 14, ProgressionValue = 10 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 100, ProgressionValue = 20 }
-                    };
-                    c.m_Class = new BlueprintCharacterClassReference[] {
-                        OracleClass.ToReference<BlueprintCharacterClassReference>()
-                    };
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 15;
+                    c.m_Feature = BloodlineDraconicRedResistancesAbilityLevel3.ToReference<BlueprintFeatureReference>();
+                    c.BeforeThisLevel = false;
                 });
-                bp.AddComponent<ContextRankConfig>(c => {
-                    c.m_Type = AbilityRankType.StatBonus;
-                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
-                    c.m_Stat = StatType.Unknown;
-                    c.m_SpecificModifier = ModifierDescriptor.None;
-                    c.m_Progression = ContextRankProgression.Custom;
-                    c.m_CustomProgression = new ContextRankConfig.CustomProgressionItem[] {
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 8, ProgressionValue = 1 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 14, ProgressionValue = 2 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 100, ProgressionValue = 4 }
-                    };
-                    c.m_Class = new BlueprintCharacterClassReference[] {
-                        OracleClass.ToReference<BlueprintCharacterClassReference>()
-                    };
-                });
-                bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[] {
-                        OracleDragonMysteryFlagFire.ToReference<BlueprintUnitFactReference>()
-                    };
-                });
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.Ranks = 2;
+                bp.IsClassFeature = true;
+            });
+            var OracleRevelationDraconicResistancesFireProgress = Helpers.CreateBlueprint<BlueprintProgression>("OracleRevelationDraconicResistancesFireProgress", bp => {
+                bp.SetName("Draconic Resistances - Fire");
+                bp.SetDescription("Like the great dragons, you are not easily harmed by common means of attack. You gain fire resistance 5 and a +1 natural armor bonus. " +
+                    "At 9th level, your fire resistance increases to 10 and your natural armor bonus increases to +2. At 15th level, your fire resistance increases to 20 and your natural armor " +
+                    "bonus increases to +4.");
+                bp.LevelEntries = new LevelEntry[] {
+                    Helpers.LevelEntry(1, OracleDragonMysteryFlagFire, OracleRevelationDraconicResistancesFireLevel1),
+                    Helpers.LevelEntry(9, OracleRevelationDraconicResistancesFireLevel2)
+                };
                 bp.AddComponent<PrerequisiteNoFeature>(c => {
                     c.m_Feature = OracleDragonMysteryFlagAcid.ToReference<BlueprintFeatureReference>();
                 });
@@ -1065,6 +1159,8 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 });
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = true;
+                bp.HideInUI = true;
+                bp.GiveFeaturesForPreviousLevels = true;
             });
             var OracleRevelationDraconicResistancesSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("OracleRevelationDraconicResistancesSelection", bp => {
                 bp.SetName("Draconic Resistances");
@@ -1072,10 +1168,10 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     "At 9th level, your energy resistance increases to 10 and your natural armor bonus increases to +2. At 15th level, your energy resistance increases to 20 and your natural armor " +
                     "bonus increases to +4.");
                 bp.m_AllFeatures = new BlueprintFeatureReference[] {
-                    OracleRevelationDraconicResistancesAcid.ToReference<BlueprintFeatureReference>(),
-                    OracleRevelationDraconicResistancesFire.ToReference<BlueprintFeatureReference>(),
-                    OracleRevelationDraconicResistancesCold.ToReference<BlueprintFeatureReference>(),
-                    OracleRevelationDraconicResistancesElectric.ToReference<BlueprintFeatureReference>()
+                    OracleRevelationDraconicResistancesAcidProgress.ToReference<BlueprintFeatureReference>(),
+                    OracleRevelationDraconicResistancesColdProgress.ToReference<BlueprintFeatureReference>(),
+                    OracleRevelationDraconicResistancesElectricProgress.ToReference<BlueprintFeatureReference>(),
+                    OracleRevelationDraconicResistancesFireProgress.ToReference<BlueprintFeatureReference>()
                 };
                 bp.AddComponent<PrerequisiteFeaturesFromList>(c => {
                     c.m_Features = new BlueprintFeatureReference[] {
@@ -4953,6 +5049,8 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 });
                 bp.Stacking = StackingType.Replace;
                 bp.Frequency = DurationRate.Rounds;
+                bp.FxOnStart = new PrefabLink();
+                bp.FxOnRemove = new PrefabLink();
             });
             var OracleRevelationScaledToughnessAbility = Helpers.CreateBlueprint<BlueprintAbility>("OracleRevelationScaledToughnessAbility", bp => {
                 bp.SetName("Scaled Toughness");
