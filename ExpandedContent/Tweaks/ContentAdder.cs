@@ -90,6 +90,8 @@ namespace ExpandedContent.Tweaks
 
                 Mysteries.DragonMystery.AddDragonMystery();
 
+                Curses.Vampirism.AddVampirismCurse();
+
                 Archdevils.Dispater.AddDispater();
                 Archdevils.Mephistopheles.AddMephistopheles();
 
