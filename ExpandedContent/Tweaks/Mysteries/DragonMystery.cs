@@ -48,7 +48,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
             var OracleClass = Resources.GetBlueprint<BlueprintCharacterClass>("20ce9bf8af32bee4c8557a045ab499b1");
             var OracleRevelationSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("60008a10ad7ad6543b1f63016741a5d2");
             var DazzlingDisplaySwiftAction = Resources.GetBlueprint<BlueprintAbility>("3de922e9946e9804a95500ad97ba2cb2");
-
+            var ArchonsAura = Resources.GetBlueprint<BlueprintAbility>("e67efd8c84f69d24ab472c9f546fff7e");
             var BlindFight = Resources.GetBlueprint<BlueprintFeature>("4e219f5894ad0ea4daa0699e28c37b1d");
             var BuffWingsMutagen = Resources.GetBlueprint<BlueprintBuff>("e4979934bdb39d842b28bee614606823");
             //Spelllist
@@ -355,13 +355,10 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 });
                 bp.AddComponent<AddClassSkill>(c => {
                     c.Skill = StatType.SkillKnowledgeArcana;
-                });
-                bp.AddComponent<AddFeaturesFromSelectionToDescription>(c => {
-                    //c.Introduction - Does this need filling in??
-                    c.m_FeatureSelection = OracleRevelationSelection.ToReference<BlueprintFeatureSelectionReference>();
-                    c.OnlyIfRequiresThisFeature = true;
-                });
+                });                
                 bp.Groups = new FeatureGroup[] { FeatureGroup.OracleMystery };
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
             });
             //EnlightnedPhilosopherMystery
             var EnlightnedPhilosopherDragonMysteryFeature = Helpers.CreateBlueprint<BlueprintFeature>("EnlightnedPhilosopherDragonMysteryFeature", bp => {
@@ -387,6 +384,8 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     c.Skill = StatType.SkillKnowledgeArcana;
                 });
                 bp.Groups = new FeatureGroup[] { FeatureGroup.EnlightenedPhilosopherMystery };
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
             });
             //DivineHerbalistMystery
             var DivineHerbalistDragonMysteryFeature = Helpers.CreateBlueprint<BlueprintFeature>("DivineHerbalistDragonMysteryFeature", bp => {
@@ -405,6 +404,8 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     c.m_Feature = OracleDragonSpells.ToReference<BlueprintFeatureReference>();
                 });
                 bp.Groups = new FeatureGroup[] { FeatureGroup.DivineHerbalistMystery };
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
             });
             //Presence of Dragons
             var ShakenBuff = Resources.GetBlueprint<BlueprintBuff>("25ec6cb6ab1845c48a95f9c20b034220");
@@ -426,7 +427,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.SetName("Presence of Dragons Immunity");
                 bp.SetDescription("Succeeding the {g|Encyclopedia:Saving_Throw}Will saving throw{/g} of Presence of Dragons had caused this creature to be immune to the ability " +
                     "for 24 hours.");
-                bp.m_Icon = ShakenBuff.m_Icon;
+                bp.m_Icon = ArchonsAura.m_Icon;
                 bp.m_AllowNonContextActions = false;
                 bp.Stacking = StackingType.Replace;
                 bp.Frequency = DurationRate.Rounds;
@@ -438,7 +439,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     "attempt a Will save. Success means that the creature is immune to this ability for the following 24 hours. On a failed save, the opponent is " +
                     "shaken for 2d6 rounds. This is a mind-affecting fear effect. You can use this ability once per day at 1st level, plus one additional time per " +
                     "day at 5th level and for every 5 levels beyond 5th.");
-                bp.m_Icon = ShakenBuff.m_Icon;
+                bp.m_Icon = ArchonsAura.m_Icon;
                 bp.AddComponent<AbilitySpawnFx>(c => {
                     c.PrefabLink = DazzlingDisplaySwiftAction.GetComponent<AbilitySpawnFx>().PrefabLink;
                     c.DestroyOnCast = true;
@@ -523,7 +524,6 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     "attempt a Will save. Success means that the creature is immune to this ability for the following 24 hours. On a failed save, the opponent is " +
                     "shaken for 2d6 rounds. This is a mind-affecting fear effect. You can use this ability once per day at 1st level, plus one additional time per " +
                     "day at 5th level and for every 5 levels beyond 5th.");
-                //bp.m_Icon = ???
                 bp.AddComponent<AddAbilityResources>(c => {
                     c.m_Resource = OracleRevelationPresenceOfDragonsResource.ToReference<BlueprintAbilityResourceReference>();
                     c.RestoreAmount = true;

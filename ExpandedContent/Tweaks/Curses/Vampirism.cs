@@ -102,6 +102,7 @@ namespace ExpandedContent.Tweaks.Curses {
             VampirismCurseProgression.AddComponent<PrerequisiteNoFeature>(c => {
                 c.CheckInProgression = true;
                 c.m_Feature = VampirismCurseProgression.ToReference<BlueprintFeatureReference>();
+                c.HideInUI = true;
             });
             var BeneficialVampirismCurseProgression = Helpers.CreateBlueprint<BlueprintProgression>("BeneficialVampirismCurseProgression", bp => {
                 bp.SetName("Beneficial Vampirism");
