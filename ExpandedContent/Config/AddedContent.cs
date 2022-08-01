@@ -7,8 +7,8 @@ namespace ExpandedContent.Config {
         public SettingGroup Classes = new SettingGroup();
         public SettingGroup Backgrounds = new SettingGroup();
         public SettingGroup Archetypes = new SettingGroup();
-
-
+        public SettingGroup Domains = new SettingGroup();
+        public SettingGroup Deities = new SettingGroup();
 
         public void Init() {
         }
@@ -21,7 +21,8 @@ namespace ExpandedContent.Config {
             Classes.LoadSettingGroup(loadedSettings.Classes, NewSettingsOffByDefault);
             Backgrounds.LoadSettingGroup(loadedSettings.Backgrounds, NewSettingsOffByDefault);
             Archetypes.LoadSettingGroup(loadedSettings.Archetypes, NewSettingsOffByDefault);
-
+            Domains.LoadSettingGroup(loadedSettings.Domains, NewSettingsOffByDefault);
+            Deities.LoadSettingGroup(loadedSettings.Deities, NewSettingsOffByDefault);
         }
     }
 }

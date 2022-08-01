@@ -211,8 +211,17 @@ namespace ExpandedContent.Tweaks
                 Monitors.Ceyannan.AddCeyannanFeature();
                 Monitors.Ssilameshnik.AddSsilameshnikFeature();
                 
-                Deities.DeitySelectionFeature.PatchDeitySelection();
                 Deities.PatchLichDeity.AddLichDeity();
+                Deities.DeitySelectionFeature.PatchDeitySelection();
+                Deities.DeitySelectionFeature.ArchdevilsToggle();
+                Deities.DeitySelectionFeature.DeitiesofAncientOsirionToggle();
+                Deities.DeitySelectionFeature.DeitiesofTianXiaToggle();
+                Deities.DeitySelectionFeature.DemonLordToggle();
+                Deities.DeitySelectionFeature.EmpyrealLordsToggle();
+                Deities.DeitySelectionFeature.ElvenPantheonToggle();
+                Deities.DeitySelectionFeature.DraconicDeityToggle();
+                Deities.DeitySelectionFeature.TheEldestToggle();
+                Deities.DeitySelectionFeature.MonitorsToggle();
 
                 Miscellaneous.HavocDragonPet.AddHavocDragonPet();
 

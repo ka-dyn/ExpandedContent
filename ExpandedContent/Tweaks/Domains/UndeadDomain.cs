@@ -33,6 +33,7 @@ using Kingmaker.UnitLogic.Mechanics.Components;
 using Kingmaker.Enums.Damage;
 using Kingmaker.UnitLogic.Abilities.Components;
 using Kingmaker.Visual.Animation.Kingmaker.Actions;
+using ExpandedContent.Config;
 
 namespace ExpandedContent.Tweaks.Domains {
     internal class UndeadDomain {
@@ -426,6 +427,7 @@ namespace ExpandedContent.Tweaks.Domains {
             });
             var DomainMastery = Resources.GetBlueprint<BlueprintFeature>("2de64f6a1f2baee4f9b7e52e3f046ec5").GetComponent<AutoMetamagic>();
             DomainMastery.Abilities.Add(UndeadDomainBaseAbility.ToReference<BlueprintAbilityReference>());
+            if (ModSettings.AddedContent.Domains.IsDisabled("Undead Subdomain")) { return; }
             DomainTools.RegisterDomain(UndeadDomainProgression);
             DomainTools.RegisterSecondaryDomain(UndeadDomainProgressionSecondary);
             DomainTools.RegisterBlightDruidDomain(UndeadDomainProgressionDruid);

@@ -36,6 +36,7 @@ using Kingmaker.Blueprints.Items.Ecnchantments;
 using Kingmaker.RuleSystem.Rules.Damage;
 using Kingmaker.ResourceLinks;
 using Kingmaker.Designers.Mechanics.Buffs;
+using ExpandedContent.Config;
 
 namespace ExpandedContent.Tweaks.Domains {
     internal class ArchonDomainGood {
@@ -415,6 +416,7 @@ namespace ExpandedContent.Tweaks.Domains {
             });
             var DomainMastery = Resources.GetBlueprint<BlueprintFeature>("2de64f6a1f2baee4f9b7e52e3f046ec5").GetComponent<AutoMetamagic>();
             DomainMastery.Abilities.Add(ArchonDomainGreaterAbility.ToReference<BlueprintAbilityReference>());
+            if (ModSettings.AddedContent.Domains.IsDisabled("Archon Subdomain")) { return; }
             DomainTools.RegisterDomain(ArchonDomainGoodProgression);
             DomainTools.RegisterSecondaryDomain(ArchonDomainGoodProgressionSecondary);
             DomainTools.RegisterDivineHunterDomain(ArchonDomainGoodProgression);

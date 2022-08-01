@@ -31,6 +31,7 @@ using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.UnitLogic.Mechanics.Properties;
 using Kingmaker.UnitLogic.Mechanics.Components;
 using Kingmaker.Enums.Damage;
+using ExpandedContent.Config;
 
 namespace ExpandedContent.Tweaks.Domains {
     internal class IceDomain {
@@ -435,6 +436,7 @@ namespace ExpandedContent.Tweaks.Domains {
             });
             var DomainMastery = Resources.GetBlueprint<BlueprintFeature>("2de64f6a1f2baee4f9b7e52e3f046ec5").GetComponent<AutoMetamagic>();
             DomainMastery.Abilities.Add(IceDomainGreaterAbility.ToReference<BlueprintAbilityReference>());
+            if (ModSettings.AddedContent.Domains.IsDisabled("Ice Subdomain")) { return; }
             DomainTools.RegisterDomain(IceDomainProgression);
             DomainTools.RegisterSecondaryDomain(IceDomainProgressionSecondary);
             DomainTools.RegisterDruidDomain(IceDomainProgressionDruid);

@@ -1245,6 +1245,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     m_Archetype = DraconicDruidArchetype.ToReference<BlueprintArchetypeReference>(),
                     AdditionalLevel = 0
                 });
+            if (ModSettings.AddedContent.Archetypes.IsDisabled("Draconic Druid")) { return; }
             DruidClass.m_Archetypes = DruidClass.m_Archetypes.AppendToArray(DraconicDruidArchetype.ToReference<BlueprintArchetypeReference>());
         }
     }

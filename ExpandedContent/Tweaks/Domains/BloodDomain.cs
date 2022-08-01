@@ -34,6 +34,7 @@ using Kingmaker.UnitLogic.Mechanics.Components;
 using Kingmaker.Visual.Animation.Kingmaker.Actions;
 using Kingmaker.Blueprints.Items.Ecnchantments;
 using Kingmaker.RuleSystem.Rules.Damage;
+using ExpandedContent.Config;
 
 namespace ExpandedContent.Tweaks.Domains {
     internal class BloodDomain {
@@ -560,6 +561,7 @@ namespace ExpandedContent.Tweaks.Domains {
             });
             var DomainMastery = Resources.GetBlueprint<BlueprintFeature>("2de64f6a1f2baee4f9b7e52e3f046ec5").GetComponent<AutoMetamagic>();
             DomainMastery.Abilities.Add(BloodDomainGreaterAbility.ToReference<BlueprintAbilityReference>());
+            if (ModSettings.AddedContent.Domains.IsDisabled("Blood Subdomain")) { return; }
             DomainTools.RegisterDomain(BloodDomainProgression);
             DomainTools.RegisterSecondaryDomain(BloodDomainProgressionSecondary);
             DomainTools.RegisterDivineHunterDomain(BloodDomainProgression);

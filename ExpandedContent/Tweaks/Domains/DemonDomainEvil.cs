@@ -34,6 +34,7 @@ using Kingmaker.UnitLogic.Mechanics.Components;
 using Kingmaker.Visual.Animation.Kingmaker.Actions;
 using Kingmaker.Blueprints.Items.Ecnchantments;
 using Kingmaker.RuleSystem.Rules.Damage;
+using ExpandedContent.Config;
 
 namespace ExpandedContent.Tweaks.Domains {
     internal class DemonDomainEvil {
@@ -301,7 +302,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     c.HideInUI = true;
                     c.m_Feature = DemonDomainEvilProgressionSecondary.ToReference<BlueprintFeatureReference>();
             });
-            
+            if (ModSettings.AddedContent.Domains.IsDisabled("Demon Subdomain")) { return; }
             DomainTools.RegisterDomain(DemonDomainEvilProgression);
             DomainTools.RegisterSecondaryDomain(DemonDomainEvilProgressionSecondary);
             DomainTools.RegisterDivineHunterDomain(DemonDomainEvilProgression);

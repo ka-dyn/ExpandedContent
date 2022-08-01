@@ -1,4 +1,5 @@
-﻿using ExpandedContent.Extensions;
+﻿using ExpandedContent.Config;
+using ExpandedContent.Extensions;
 using ExpandedContent.Utilities;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
@@ -116,6 +117,8 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     m_Archetype = ClutchThiefArchetype.ToReference<BlueprintArchetypeReference>(),
                     AdditionalLevel = -3
                 });
+
+            if (ModSettings.AddedContent.Archetypes.IsDisabled("Clutch Thief")) { return; }
             RogueClass.m_Archetypes = RogueClass.m_Archetypes.AppendToArray(ClutchThiefArchetype.ToReference<BlueprintArchetypeReference>());
         }
     }

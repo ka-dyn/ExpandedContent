@@ -36,6 +36,7 @@ using Kingmaker.Blueprints.Items.Ecnchantments;
 using Kingmaker.RuleSystem.Rules.Damage;
 using Kingmaker.ResourceLinks;
 using Kingmaker.Designers.Mechanics.Buffs;
+using ExpandedContent.Config;
 
 namespace ExpandedContent.Tweaks.Domains {
     internal class RevelationDomain {
@@ -316,7 +317,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     c.HideInUI = true;
                     c.m_Feature = RevelationDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
             });
-            
+            if (ModSettings.AddedContent.Domains.IsDisabled("Revelation Subdomain")) { return; }
             DomainTools.RegisterDomain(RevelationDomainProgression);
             DomainTools.RegisterSecondaryDomain(RevelationDomainProgressionSecondary);
             DomainTools.RegisterDivineHunterDomain(RevelationDomainProgression);

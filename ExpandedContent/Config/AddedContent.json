@@ -66,17 +66,6 @@
     },
     "IsExpanded": false
   },
-  "AivuPet": {
-    "DisableAll": false,
-    "Settings": {
-      "AivuPet": {
-        "Enabled": false,
-        "Homebrew": true,
-        "Description": "Allows you to select Aivu as a normal animal companion."
-      }
-    },
-    "IsExpanded": false
-  },
   "Classes": {
     "DisableAll": false,
     "Settings": {
@@ -93,27 +82,184 @@
     },
     "IsExpanded": false
   },
-  "Backgrounds": {
-    "DisableAll": false,
-    "Settings": {
-      "Archduke of Cheliax": {
-        "Enabled": true,
-        "Homebrew": true,
-        "Description": "[Request, not tuned for balance] The highest rank of the standard nobility in Cheliax are the Archdukes."
-      }
-    },
-    "IsExpanded": false
-  },
   "Archetypes": {
     "DisableAll": false,
     "Settings": {
       "Living Scripture": {
         "Enabled": true,
         "Homebrew": true,
-        "Description": "Adds the living scripture archetype, a requested inquisitor archetype that focuses on divine spellcasting."
+        "Description": "A requested inquisitor archetype that focuses on divine spellcasting, buffed from tabletop to be a full caster."
+      },
+      "Temple Champion": {
+        "Enabled": true,
+        "Homebrew": true,
+        "Description": "A paladin archetype with access to domain powers at the cost of their spellcasting, slightly buffed as archetype underperforms on tabletop."
+      },
+      "Mantis Zealot": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "A warpriest archetype focusing on assassination and dual wielding, must worship Achaekek."
+      },
+      "Mooncaller": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "A druid archetype dedicated to the endless cycle of the moon."
+      },
+      "Draconic Druid": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "A druid archetype that gains a drake companion and the ability to wildshape into draconic forms."
+      },
+      "Drake Warden": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "A ranger archetype charged with raising a young drake companion."
+      },
+      "Silver Champion": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "A paladin of Apsu gifted with a silver drake companion and a altered spellbook."
+      },
+      "Clutch Thief": {
+        "Enabled": true,
+        "Homebrew": true,
+        "Description": "A rogue archeype combining sneak attacks and teamwork feats with a drake partner."
+      }
+    },
+    "IsExpanded": false
+  },
+  "Domains": {
+    "DisableAll": false,
+    "Settings": {
+      "Scalykind Domain": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds the scalykind domain, a animal companion domain with different options the the animal domain."
+      },
+      "Archon Subdomain": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds the archon subdomain, a subdomain to the good and law domains."
+      },
+      "Blood Subdomain": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds the blood subdomain, a subdomain to the war domain."
+      },
+      "Caves Subdomain": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds the caves subdomain, a subdomain to the earth domain."
+      },
+      "Demon Subdomain": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds the deamon subdomain, a subdomain to the chaos and evil domains."
+      },
+      "Dragon Subdomain": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds the dragon subdomain, a subdomain to the scalykind domain."
+      },
+      "Ice Subdomain": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds the ice subdomain, a subdomain to the water domain."
+      },
+      "Revelation Subdomain": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds the revelation subdomain, a subdomain to the sun domain."
+      },
+      "Storm Subdomain": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds the storm subdomain, a subdomain to the weather domain."
+      },
+      "Undead Subdomain": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds the undead subdomain, a subdomain to the death domain."
+      },
+      "Wind Subdomain": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds the wind subdomain, a subdomain to the air domain."
+      }
+    },
+    "IsExpanded": false
+  },
+  "Deities": {
+    "DisableAll": false,
+    "Settings": {
+      "Archdevils": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds the Archdevils of hell as deity options"
+      },
+      "Deities of Ancient Osirion": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds the deities of Ancient Oririon as deity options"
+      },
+      "Deities of Tian Xia": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds the deities of Tian Xia as deity options"
+      },
+      "Demon Lords": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds the Demon Lords of the Abyss as deity options"
+      },
+      "Empyreal Lords": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds the Empyral Lords of the positive planes as deity options"
+      },
+      "Elven Pantheon": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds the deities of the Elven Pantheon as deity options"
+      },
+      "Draconic Deities": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds the Draconic Deities as deity options"
+      },
+      "The Eldest": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds the Eldest of The First World as deity options"
+      },
+      "Monitors": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds the Monitors of the neutral planes as deity options"
+      }
+    },
+    "IsExpanded": false
+  },
+  "Backgrounds": {
+    "DisableAll": false,
+    "Settings": {
+      "Archduke of Cheliax": {
+        "Enabled": false,
+        "Homebrew": true,
+        "Description": "[Request, not tuned for balance] The highest rank of the standard nobility in Cheliax are the Archdukes."
+      }
+    },
+    "IsExpanded": false
+  },
+  "AivuPet": {
+    "DisableAll": false,
+    "Settings": {
+      "AivuPet": {
+        "Enabled": false,
+        "Homebrew": true,
+        "Description": "Allows you to select Aivu as a normal animal companion."
       }
     },
     "IsExpanded": false
   }
-
 }

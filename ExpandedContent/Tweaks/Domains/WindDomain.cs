@@ -35,6 +35,7 @@ using Kingmaker.UnitLogic.Abilities.Components;
 using Kingmaker.RuleSystem.Rules;
 using Kingmaker.Visual.Animation.Kingmaker.Actions;
 using Kingmaker.Craft;
+using ExpandedContent.Config;
 
 namespace ExpandedContent.Tweaks.Domains {
     internal class WindDomain {
@@ -403,6 +404,7 @@ namespace ExpandedContent.Tweaks.Domains {
             });
             var DomainMastery = Resources.GetBlueprint<BlueprintFeature>("2de64f6a1f2baee4f9b7e52e3f046ec5").GetComponent<AutoMetamagic>();
             DomainMastery.Abilities.Add(WindDomainBaseAbility.ToReference<BlueprintAbilityReference>());
+            if (ModSettings.AddedContent.Domains.IsDisabled("Wind Subdomain")) { return; }
             DomainTools.RegisterDomain(WindDomainProgression);
             DomainTools.RegisterSecondaryDomain(WindDomainProgressionSecondary);
             DomainTools.RegisterDruidDomain(WindDomainProgressionDruid);

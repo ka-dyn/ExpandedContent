@@ -161,7 +161,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     Helpers.LevelEntry(19, WolfsbaneFeature3)
 
             };
-            
+            if (ModSettings.AddedContent.Archetypes.IsDisabled("Mooncaller")) { return; }
             DruidClass.m_Archetypes = DruidClass.m_Archetypes.AppendToArray(MooncallerArchetype.ToReference<BlueprintArchetypeReference>());
 
         }

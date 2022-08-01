@@ -33,13 +33,13 @@ namespace ExpandedContent {
                 UI.Toggle("New Settings Off By Default".bold(), ref AddedContent.NewSettingsOffByDefault);
                 UI.Space(25);
 
-                SetttingUI.SettingGroup("Racial Archetypes", TabLevel, AddedContent.RacialArchetypes);
-                SetttingUI.SettingGroup("AivuPet", TabLevel, AddedContent.AivuPet);
-                SetttingUI.SettingGroup("Classes", TabLevel, AddedContent.Classes);
+                SetttingUI.SettingGroup("Racial Archetypes", TabLevel, AddedContent.RacialArchetypes);                
+                SetttingUI.SettingGroup("Classes", TabLevel, AddedContent.Classes);                
+                SetttingUI.SettingGroup("Archetypes", TabLevel, AddedContent.Archetypes);
+                SetttingUI.SettingGroup("Domains", TabLevel, AddedContent.Domains);
+                SetttingUI.SettingGroup("Deities", TabLevel, AddedContent.Deities);
                 SetttingUI.SettingGroup("Backgrounds", TabLevel, AddedContent.Backgrounds);
-
-
-
+                SetttingUI.SettingGroup("AivuPet", TabLevel, AddedContent.AivuPet);
 
 
 

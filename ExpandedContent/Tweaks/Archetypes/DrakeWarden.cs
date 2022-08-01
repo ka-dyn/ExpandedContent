@@ -1,4 +1,5 @@
-﻿using ExpandedContent.Extensions;
+﻿using ExpandedContent.Config;
+using ExpandedContent.Extensions;
 using ExpandedContent.Utilities;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
@@ -74,6 +75,8 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     m_Archetype = DrakeWardenArchetype.ToReference<BlueprintArchetypeReference>(),
                     AdditionalLevel = -3
                 });
+
+            if (ModSettings.AddedContent.Archetypes.IsDisabled("Drake Warden")) { return; }
             RangerClass.m_Archetypes = RangerClass.m_Archetypes.AppendToArray(DrakeWardenArchetype.ToReference<BlueprintArchetypeReference>());
         }
     }

@@ -1356,6 +1356,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             WeatherBlessingFeatureConfig.m_AdditionalClasses = WeatherBlessingFeatureConfig.m_AdditionalClasses.AppendToArray(PaladinClass.ToReference<BlueprintCharacterClassReference>());
             WeatherBlessingFeatureConfig.m_Archetypes = WeatherBlessingFeatureConfig.m_Archetypes.AppendToArray(TempleChampionArchetype.ToReference<BlueprintArchetypeReference>());
 
+            if (ModSettings.AddedContent.Archetypes.IsDisabled("Temple Champion")) { return; }
             PaladinClass.m_Archetypes = PaladinClass.m_Archetypes.AppendToArray(TempleChampionArchetype.ToReference<BlueprintArchetypeReference>());
             
         }

@@ -36,6 +36,7 @@ using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.Enums.Damage;
 using Kingmaker.UnitLogic.Mechanics.Properties;
 using Kingmaker.RuleSystem.Rules;
+using ExpandedContent.Config;
 
 namespace ExpandedContent.Tweaks.Domains {
     internal class DragonDomain {
@@ -1081,6 +1082,7 @@ namespace ExpandedContent.Tweaks.Domains {
             DomainMastery.Abilities.Add(DragonDomainGreaterColdAbility.ToReference<BlueprintAbilityReference>());
             DomainMastery.Abilities.Add(DragonDomainGreaterElectricityAbility.ToReference<BlueprintAbilityReference>());
             DomainMastery.Abilities.Add(DragonDomainGreaterAcidAbility.ToReference<BlueprintAbilityReference>());
+            if (ModSettings.AddedContent.Domains.IsDisabled("Dragon Subdomain")) { return; }
             DomainTools.RegisterDomain(DragonDomainProgression);
             DomainTools.RegisterSecondaryDomain(DragonDomainProgressionSecondary);
             DomainTools.RegisterDivineHunterDomain(DragonDomainProgression);

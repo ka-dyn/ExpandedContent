@@ -27,6 +27,7 @@ using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.RuleSystem;
 using Kingmaker.Utility;
 using Kingmaker.ResourceLinks;
+using ExpandedContent.Config;
 
 namespace ExpandedContent.Tweaks.Domains {
     internal class StormDomain {
@@ -433,6 +434,7 @@ namespace ExpandedContent.Tweaks.Domains {
             });
             var DomainMastery = Resources.GetBlueprint<BlueprintFeature>("2de64f6a1f2baee4f9b7e52e3f046ec5").GetComponent<AutoMetamagic>();
             DomainMastery.Abilities.Add(StormDomainGreaterAbility.ToReference<BlueprintAbilityReference>());
+            if (ModSettings.AddedContent.Domains.IsDisabled("Storm Subdomain")) { return; }
             DomainTools.RegisterDomain(StormDomainProgression);
             DomainTools.RegisterSecondaryDomain(StormDomainProgressionSecondary);
             DomainTools.RegisterDruidDomain(StormDomainProgressionDruid);

@@ -1,4 +1,5 @@
-﻿using ExpandedContent.Extensions;
+﻿using ExpandedContent.Config;
+using ExpandedContent.Extensions;
 using ExpandedContent.Utilities;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
@@ -165,6 +166,8 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     m_Archetype = SilverChampionArchetype.ToReference<BlueprintArchetypeReference>(),
                     AdditionalLevel = 0
                 });
+
+            if (ModSettings.AddedContent.Archetypes.IsDisabled("Silver Champion")) { return; }
             PaladinClass.m_Archetypes = PaladinClass.m_Archetypes.AppendToArray(SilverChampionArchetype.ToReference<BlueprintArchetypeReference>());
         }
     }

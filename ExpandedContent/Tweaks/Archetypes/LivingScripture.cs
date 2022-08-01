@@ -23,7 +23,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
 
         public static void AddLivingScripture() {
 
-            if (ModSettings.AddedContent.Archetypes.IsDisabled("Living Scripture")) { return; }
+            
             var OverwhelmingSpellAbility9 = Resources.GetBlueprint<BlueprintAbility>("b4e57533bea14f0b9d7b0e7d767ad8ea");
             var OverwhelmingSpellAbility6 = Resources.GetBlueprint<BlueprintAbility>("827ef56e1a4d4a9888d83ed0edc873e2");
             var OverwhelmingSpellAbility3 = Resources.GetBlueprint<BlueprintAbility>("d79544d7b9da4445ad427b00d929c398");
@@ -108,9 +108,11 @@ namespace ExpandedContent.Tweaks.Archetypes {
 
                 };
             });
-            InquisitorClass.m_Archetypes = InquisitorClass.m_Archetypes.AppendToArray(LivingScriptureArchetype.ToReference<BlueprintArchetypeReference>());
             InquisitorClass.Progression.UIGroups = InquisitorClass.Progression.UIGroups.AppendToArray(
                 Helpers.CreateUIGroup(SpellFocus, SpellSpecializationSelection, SpellFocusGreater, ImpenetrableScriptureFeature, WizardFeatSelection, WizardFeatSelection, WizardFeatSelection));
+            if (ModSettings.AddedContent.Archetypes.IsDisabled("Living Scripture")) { return; }
+            InquisitorClass.m_Archetypes = InquisitorClass.m_Archetypes.AppendToArray(LivingScriptureArchetype.ToReference<BlueprintArchetypeReference>());
+            
 
 
 

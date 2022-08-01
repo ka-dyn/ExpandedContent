@@ -1,4 +1,5 @@
 ﻿using BlueprintCore.Blueprints;
+using ExpandedContent.Config;
 using ExpandedContent.Extensions;
 using ExpandedContent.Utilities;
 using Kingmaker.Blueprints;
@@ -496,18 +497,9 @@ namespace ExpandedContent.Tweaks.Deities {
             var DeitySelectionIcon = AssetLoader.LoadInternal("Deities", "Icon_DeitySelection.jpg");
             DeitySelection.m_Icon = DeitySelectionIcon;
             DeitySelection.m_AllFeatures = new BlueprintFeatureReference[] {
-                DeitiesofAncientOsirionSelection.ToReference<BlueprintFeatureReference>(),
-                DeitiesofTianXiaSelection.ToReference<BlueprintFeatureReference>(),
-                DemonLordSelection.ToReference<BlueprintFeatureReference>(),
-                ArchdevilSelection.ToReference<BlueprintFeatureReference>(),
-                EmpyrealLordSelection.ToReference<BlueprintFeatureReference>(),
-                ElvenPantheonSelection.ToReference<BlueprintFeatureReference>(),
                 DeitiesSelection.ToReference<BlueprintFeatureReference>(),
-                DraconicDeitySelection.ToReference<BlueprintFeatureReference>(),
                 PhilosophiesSelection.ToReference<BlueprintFeatureReference>(),
-                PantheonSelection.ToReference<BlueprintFeatureReference>(),
-                TheEldestSelection.ToReference<BlueprintFeatureReference>(),
-                MonitorsSelection.ToReference<BlueprintFeatureReference>()
+                PantheonSelection.ToReference<BlueprintFeatureReference>()
             };
             DeitySelection.Groups = new FeatureGroup[] { FeatureGroup.Deities };
             DeitySelection.Group = FeatureGroup.Deities;
@@ -603,6 +595,60 @@ namespace ExpandedContent.Tweaks.Deities {
             Greybor.AddComponent<AddFacts>(c => {
                 c.m_Facts = new BlueprintUnitFactReference[] { NorgorberFeature.ToReference<BlueprintUnitFactReference>() };
             });
+        }
+        public static void ArchdevilsToggle() {
+            if (ModSettings.AddedContent.Deities.IsDisabled("Archdevils")) { return; }
+            var DeitySelection = Resources.GetBlueprint<BlueprintFeatureSelection>("59e7a76987fe3b547b9cce045f4db3e4");
+            var ArchdevilSelection = Resources.GetModBlueprint<BlueprintFeatureSelection>("ArchdevilSelection");
+            DeitySelection.m_AllFeatures = DeitySelection.m_AllFeatures.AddToArray(ArchdevilSelection.ToReference<BlueprintFeatureReference>());
+        }
+        public static void DeitiesofAncientOsirionToggle() {
+            if (ModSettings.AddedContent.Deities.IsDisabled("Deities of Ancient Osirion")) { return; }
+            var DeitySelection = Resources.GetBlueprint<BlueprintFeatureSelection>("59e7a76987fe3b547b9cce045f4db3e4");
+            var DeitiesofAncientOsirionSelection = Resources.GetModBlueprint<BlueprintFeatureSelection>("DeitiesofAncientOsirionSelection");
+            DeitySelection.m_AllFeatures = DeitySelection.m_AllFeatures.AddToArray(DeitiesofAncientOsirionSelection.ToReference<BlueprintFeatureReference>());
+        }
+        public static void DeitiesofTianXiaToggle() {
+            if (ModSettings.AddedContent.Deities.IsDisabled("Deities of Tian Xia")) { return; }
+            var DeitySelection = Resources.GetBlueprint<BlueprintFeatureSelection>("59e7a76987fe3b547b9cce045f4db3e4");
+            var DeitiesofTianXiaSelection = Resources.GetModBlueprint<BlueprintFeatureSelection>("DeitiesofTianXiaSelection");
+            DeitySelection.m_AllFeatures = DeitySelection.m_AllFeatures.AddToArray(DeitiesofTianXiaSelection.ToReference<BlueprintFeatureReference>());
+        }
+        public static void DemonLordToggle() {
+            if (ModSettings.AddedContent.Deities.IsDisabled("Demon Lords")) { return; }
+            var DeitySelection = Resources.GetBlueprint<BlueprintFeatureSelection>("59e7a76987fe3b547b9cce045f4db3e4");
+            var DemonLordSelection = Resources.GetModBlueprint<BlueprintFeatureSelection>("DemonLordSelection");
+            DeitySelection.m_AllFeatures = DeitySelection.m_AllFeatures.AddToArray(DemonLordSelection.ToReference<BlueprintFeatureReference>());
+        }
+        public static void EmpyrealLordsToggle() {
+            if (ModSettings.AddedContent.Deities.IsDisabled("Empyreal Lords")) { return; }
+            var DeitySelection = Resources.GetBlueprint<BlueprintFeatureSelection>("59e7a76987fe3b547b9cce045f4db3e4");
+            var EmpyrealLordSelection = Resources.GetModBlueprint<BlueprintFeatureSelection>("EmpyrealLordSelection");
+            DeitySelection.m_AllFeatures = DeitySelection.m_AllFeatures.AddToArray(EmpyrealLordSelection.ToReference<BlueprintFeatureReference>());
+        }
+        public static void ElvenPantheonToggle() {
+            if (ModSettings.AddedContent.Deities.IsDisabled("Elven Pantheon")) { return; }
+            var DeitySelection = Resources.GetBlueprint<BlueprintFeatureSelection>("59e7a76987fe3b547b9cce045f4db3e4");
+            var ElvenPantheonSelection = Resources.GetModBlueprint<BlueprintFeatureSelection>("ElvenPantheonSelection");
+            DeitySelection.m_AllFeatures = DeitySelection.m_AllFeatures.AddToArray(ElvenPantheonSelection.ToReference<BlueprintFeatureReference>());
+        }
+        public static void DraconicDeityToggle() {
+            if (ModSettings.AddedContent.Deities.IsDisabled("Draconic Deities")) { return; }
+            var DeitySelection = Resources.GetBlueprint<BlueprintFeatureSelection>("59e7a76987fe3b547b9cce045f4db3e4");
+            var DraconicDeitySelection = Resources.GetModBlueprint<BlueprintFeatureSelection>("DraconicDeitySelection");
+            DeitySelection.m_AllFeatures = DeitySelection.m_AllFeatures.AddToArray(DraconicDeitySelection.ToReference<BlueprintFeatureReference>());
+        }
+        public static void TheEldestToggle() {
+            if (ModSettings.AddedContent.Deities.IsDisabled("The Eldest")) { return; }
+            var DeitySelection = Resources.GetBlueprint<BlueprintFeatureSelection>("59e7a76987fe3b547b9cce045f4db3e4");
+            var TheEldestSelection = Resources.GetModBlueprint<BlueprintFeatureSelection>("TheEldestSelection");
+            DeitySelection.m_AllFeatures = DeitySelection.m_AllFeatures.AddToArray(TheEldestSelection.ToReference<BlueprintFeatureReference>());
+        }
+        public static void MonitorsToggle() {
+            if (ModSettings.AddedContent.Deities.IsDisabled("Monitors")) { return; }
+            var DeitySelection = Resources.GetBlueprint<BlueprintFeatureSelection>("59e7a76987fe3b547b9cce045f4db3e4");
+            var MonitorsSelection = Resources.GetModBlueprint<BlueprintFeatureSelection>("MonitorsSelection");
+            DeitySelection.m_AllFeatures = DeitySelection.m_AllFeatures.AddToArray(MonitorsSelection.ToReference<BlueprintFeatureReference>());
         }
     }
 }
