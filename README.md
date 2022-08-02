@@ -1,5 +1,5 @@
 *Install VIA UMM*
--Drag and drop the zip file onto the UMM "Install" button.
+-Drag and drop the zip file onto the UMM "Install" button. Most features can be disabled in the UMM menu if not wanted
 
 While this mod is not dependant on https://github.com/Vek17/TabletopTweaks-Base it is recommended as all testing is done with it installed and it fixes several base game issues.
 
@@ -30,6 +30,8 @@ New Classes
 New Features
 
 -Drake Companions - Limited to certain archetypes; Draconic Druid, Silver Champion, Drake Warden, Clutch Thief, and Claw of the False Wyrm. Reworked from tabletop to work in a CRPG setting.
+
+-Dragon Mystery and Vampirism curse for Oracle class.
 
 New Mythic Abilities
 
