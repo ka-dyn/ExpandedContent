@@ -1891,17 +1891,17 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                     c.BeforeThisLevel = true;
                 });
                 bp.AddComponent<AddStatBonus>(c => {
-                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+                    c.Descriptor = ModifierDescriptor.Racial;
                     c.Stat = StatType.Strength;
                     c.Value = 4;
                 });
                 bp.AddComponent<AddStatBonus>(c => {
-                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+                    c.Descriptor = ModifierDescriptor.Racial;
                     c.Stat = StatType.Dexterity;
                     c.Value = -2;
                 });
                 bp.AddComponent<AddStatBonus>(c => {
-                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+                    c.Descriptor = ModifierDescriptor.Racial;
                     c.Stat = StatType.Constitution;
                     c.Value = 2;
                 });                
@@ -1940,17 +1940,17 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                     c.BeforeThisLevel = true;
                 });
                 bp.AddComponent<AddStatBonus>(c => {
-                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+                    c.Descriptor = ModifierDescriptor.Racial;
                     c.Stat = StatType.Strength;
                     c.Value = 4;
                 });
                 bp.AddComponent<AddStatBonus>(c => {
-                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+                    c.Descriptor = ModifierDescriptor.Racial;
                     c.Stat = StatType.Dexterity;
                     c.Value = -2;
                 });
                 bp.AddComponent<AddStatBonus>(c => {
-                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+                    c.Descriptor = ModifierDescriptor.Racial;
                     c.Stat = StatType.Constitution;
                     c.Value = 2;
                 });                
@@ -1993,17 +1993,17 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                     c.BeforeThisLevel = true;
                 });
                 bp.AddComponent<AddStatBonus>(c => {
-                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+                    c.Descriptor = ModifierDescriptor.Racial;
                     c.Stat = StatType.Strength;
                     c.Value = 4;
                 });
                 bp.AddComponent<AddStatBonus>(c => {
-                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+                    c.Descriptor = ModifierDescriptor.Racial;
                     c.Stat = StatType.Dexterity;
                     c.Value = -2;
                 });
                 bp.AddComponent<AddStatBonus>(c => {
-                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+                    c.Descriptor = ModifierDescriptor.Racial;
                     c.Stat = StatType.Constitution;
                     c.Value = 2;
                 });                
@@ -2016,17 +2016,17 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                     "category, and it gains the following ability scores adjustments: Str +4, Dex –2, Con +2. When the drake reaches Medium size, its speed " +
                     "increases from 20 feet to 30 feet");
                 bp.AddComponent<AddStatBonus>(c => {
-                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+                    c.Descriptor = ModifierDescriptor.Racial;
                     c.Stat = StatType.Strength;
                     c.Value = 4;
                 });
                 bp.AddComponent<AddStatBonus>(c => {
-                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+                    c.Descriptor = ModifierDescriptor.Racial;
                     c.Stat = StatType.Dexterity;
                     c.Value = -2;
                 });
                 bp.AddComponent<AddStatBonus>(c => {
-                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+                    c.Descriptor = ModifierDescriptor.Racial;
                     c.Stat = StatType.Constitution;
                     c.Value = 2;
                 });                

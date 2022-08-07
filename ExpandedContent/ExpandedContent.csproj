@@ -174,6 +174,7 @@
     <Compile Include="Tweaks\Archdevils\Mephistopheles.cs" />
     <Compile Include="Tweaks\Archdevils\Moloch.cs" />
     <Compile Include="Tweaks\Archetypes\Castigator.cs" />
+    <Compile Include="Tweaks\Archetypes\OceansEcho.cs" />
     <Compile Include="Tweaks\Archetypes\ClutchThief.cs" />
     <Compile Include="Tweaks\Archetypes\ClawOfTheFalseWyrm.cs" />
     <Compile Include="Tweaks\Archetypes\Conqueror.cs" />

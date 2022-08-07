@@ -46,5 +46,14 @@ namespace ExpandedContent.Utilities {
             BlueprintFeatureSelection SecondMysteryHermit = Resources.GetBlueprint<BlueprintFeatureSelection>("324476155d5c4968babfecda37bcc87c");
             SecondMysteryHermit.m_AllFeatures = SecondMysteryHermit.m_AllFeatures.AddToArray(secondmystery.ToReference<BlueprintFeatureReference>());
         }
+        //Ocean's Echo Mystery
+        public static void RegisterOceansEchoMystery(BlueprintFeature mystery) {
+            BlueprintFeatureSelection OceansEchoMysterySelection = Resources.GetModBlueprint<BlueprintFeatureSelection>("OceansEchoMysterySelection");
+            OceansEchoMysterySelection.m_AllFeatures = OceansEchoMysterySelection.m_AllFeatures.AddToArray(mystery.ToReference<BlueprintFeatureReference>());
+        }
+        public static void RegisterSecondOceansEchoMystery(BlueprintFeature secondmystery) {
+            BlueprintFeatureSelection SecondMysteryOceansEcho = Resources.GetModBlueprint<BlueprintFeatureSelection>("SecondMysteryOceansEcho");
+            SecondMysteryOceansEcho.m_AllFeatures = SecondMysteryOceansEcho.m_AllFeatures.AddToArray(secondmystery.ToReference<BlueprintFeatureReference>());
+        }
     }
 }

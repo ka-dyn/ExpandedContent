@@ -68,6 +68,11 @@ namespace ExpandedContent.Tweaks.Mysteries {
             var OwlsWisdomMassSpell = Resources.GetBlueprint<BlueprintAbility>("9f5ada581af3db4419b54db77f44e430");
             var MindBlankSpell = Resources.GetBlueprint<BlueprintAbility>("df2a0ba6b6dcecf429cbb80a56fee5cf");
             var MindBlankMassSpell = Resources.GetBlueprint<BlueprintAbility>("87a29febd010993419f2a4a9bee11cfc");
+            var SoundBurstSpell = Resources.GetBlueprint<BlueprintAbility>("c3893092a333b93499fd0a21845aa265");
+            var ShoutSpell = Resources.GetBlueprint<BlueprintAbility>("f09453607e683784c8fca646eec49162");
+            var SongOfDiscordSpell = Resources.GetBlueprint<BlueprintAbility>("d38aaf487e29c3d43a3bffa4a4a55f8f");
+            var ShoutGreaterSpell = Resources.GetBlueprint<BlueprintAbility>("fd0d3840c48cafb44bb29e8eb74df204");
+            var BrilliantInspirationSpell = Resources.GetBlueprint<BlueprintAbility>("a5c56f0f699daec44b7aedd8b273b08a");
             var OracleDragonSpells = Helpers.CreateBlueprint<BlueprintFeature>("OracleDragonSpells", bp => {
                 bp.HideInCharacterSheetAndLevelUp = true;
                 bp.IsClassFeature = true;
@@ -163,6 +168,55 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.AddComponent<AddKnownSpell>(c => {
                     c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_Spell = MindBlankMassSpell.ToReference<BlueprintAbilityReference>();
+                    c.SpellLevel = 9;
+                });
+            });
+            var OceansEchoDragonSpells = Helpers.CreateBlueprint<BlueprintFeature>("OceansEchoDragonSpells", bp => {
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.IsClassFeature = true;
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Spell = CauseFearSpell.ToReference<BlueprintAbilityReference>();
+                    c.SpellLevel = 1;
+                });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Spell = SoundBurstSpell.ToReference<BlueprintAbilityReference>();
+                    c.SpellLevel = 2;
+                });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Spell = ResistEnergyCommunalSpell.ToReference<BlueprintAbilityReference>();
+                    c.SpellLevel = 3;
+                });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Spell = ShoutSpell.ToReference<BlueprintAbilityReference>();
+                    c.SpellLevel = 4;
+                });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Spell = SongOfDiscordSpell.ToReference<BlueprintAbilityReference>();
+                    c.SpellLevel = 5;
+                });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Spell = ShoutGreaterSpell.ToReference<BlueprintAbilityReference>();
+                    c.SpellLevel = 6;
+                });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Spell = BrilliantInspirationSpell.ToReference<BlueprintAbilityReference>();
+                    c.SpellLevel = 7;
+                });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Spell = FormOfTheDragonIIISpell.ToReference<BlueprintAbilityReference>();
+                    c.SpellLevel = 8;
+                });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Spell = OverwhelmingPresenceSpell.ToReference<BlueprintAbilityReference>();
                     c.SpellLevel = 9;
                 });
             });
@@ -332,7 +386,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
             var OracleDragonMysteryFeature = Helpers.CreateBlueprint<BlueprintFeature>("OracleDragonMysteryFeature", bp => {
                 //bp.m_Icon = Waiting on Gnomes
                 bp.SetName("Dragon");
-                bp.SetDescription("An oracle with the bones mystery adds {g|Encyclopedia:Mobility}Mobility{/g}, {g|Encyclopedia:Persuasion}Persuasion{/g}, " +
+                bp.SetDescription("An oracle with the dragon mystery adds {g|Encyclopedia:Mobility}Mobility{/g}, {g|Encyclopedia:Persuasion}Persuasion{/g}, " +
                     "{g|Encyclopedia:Perception}Perception{/g} and {g|Encyclopedia:Knowledge_Arcana}Knowledge (world) {/g} to her list of class {g|Encyclopedia:Skills}skills{/g}.");
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
@@ -364,7 +418,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
             var EnlightnedPhilosopherDragonMysteryFeature = Helpers.CreateBlueprint<BlueprintFeature>("EnlightnedPhilosopherDragonMysteryFeature", bp => {
                 //bp.m_Icon = Waiting on Gnomes
                 bp.SetName("Dragon");
-                bp.SetDescription("An oracle with the bones mystery adds {g|Encyclopedia:Mobility}Mobility{/g}, {g|Encyclopedia:Persuasion}Persuasion{/g}, " +
+                bp.SetDescription("An oracle with the dragon mystery adds {g|Encyclopedia:Mobility}Mobility{/g}, {g|Encyclopedia:Persuasion}Persuasion{/g}, " +
                     "{g|Encyclopedia:Perception}Perception{/g} and {g|Encyclopedia:Knowledge_Arcana}Knowledge (world) {/g} to her list of class {g|Encyclopedia:Skills}skills{/g}.");
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
@@ -391,7 +445,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
             var DivineHerbalistDragonMysteryFeature = Helpers.CreateBlueprint<BlueprintFeature>("DivineHerbalistDragonMysteryFeature", bp => {
                 //bp.m_Icon = Waiting on Gnomes
                 bp.SetName("Dragon");
-                bp.SetDescription("An oracle with the bones mystery adds {g|Encyclopedia:Mobility}Mobility{/g}, {g|Encyclopedia:Persuasion}Persuasion{/g}, " +
+                bp.SetDescription("An oracle with the dragon mystery adds {g|Encyclopedia:Mobility}Mobility{/g}, {g|Encyclopedia:Persuasion}Persuasion{/g}, " +
                     "{g|Encyclopedia:Perception}Perception{/g} and {g|Encyclopedia:Knowledge_Arcana}Knowledge (world) {/g} to her list of class {g|Encyclopedia:Skills}skills{/g}.");
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
@@ -404,6 +458,35 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     c.m_Feature = OracleDragonSpells.ToReference<BlueprintFeatureReference>();
                 });
                 bp.Groups = new FeatureGroup[] { FeatureGroup.DivineHerbalistMystery };
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+            //Ocean's Echo
+            var OceansEchoDragonMysteryFeature = Helpers.CreateBlueprint<BlueprintFeature>("OceansEchoDragonMysteryFeature", bp => {
+                //bp.m_Icon = Waiting on Gnomes
+                bp.SetName("Dragon");
+                bp.SetDescription("An oracle with the dragon mystery adds {g|Encyclopedia:Mobility}Mobility{/g}, {g|Encyclopedia:Persuasion}Persuasion{/g}, " +
+                    "{g|Encyclopedia:Perception}Perception{/g} and {g|Encyclopedia:Knowledge_Arcana}Knowledge (world) {/g} to her list of class {g|Encyclopedia:Skills}skills{/g}.");
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 20;
+                    c.m_Feature = OracleDragonFinalRevelation.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 2;
+                    c.m_Feature = OceansEchoDragonSpells.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<AddClassSkill>(c => {
+                    c.Skill = StatType.SkillLoreNature;
+                });
+                bp.AddComponent<AddClassSkill>(c => {
+                    c.Skill = StatType.SkillPersuasion;
+                });
+                bp.AddComponent<AddClassSkill>(c => {
+                    c.Skill = StatType.SkillKnowledgeWorld;
+                });
+                bp.Groups = new FeatureGroup[] { FeatureGroup.None };
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = true;
             });
@@ -535,7 +618,8 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     c.m_Features = new BlueprintFeatureReference[] {
                         OracleDragonMysteryFeature.ToReference<BlueprintFeatureReference>(),
                         EnlightnedPhilosopherDragonMysteryFeature.ToReference<BlueprintFeatureReference>(),
-                        DivineHerbalistDragonMysteryFeature.ToReference<BlueprintFeatureReference>()
+                        DivineHerbalistDragonMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        OceansEchoDragonMysteryFeature.ToReference<BlueprintFeatureReference>()
                     };
                     c.Amount = 1;
                 });                
@@ -908,7 +992,8 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     c.m_Features = new BlueprintFeatureReference[] {
                         OracleDragonMysteryFeature.ToReference<BlueprintFeatureReference>(),
                         EnlightnedPhilosopherDragonMysteryFeature.ToReference<BlueprintFeatureReference>(),
-                        DivineHerbalistDragonMysteryFeature.ToReference<BlueprintFeatureReference>()
+                        DivineHerbalistDragonMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        OceansEchoDragonMysteryFeature.ToReference<BlueprintFeatureReference>()
                     };
                     c.Amount = 1;
                 });
@@ -1177,7 +1262,8 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     c.m_Features = new BlueprintFeatureReference[] {
                         OracleDragonMysteryFeature.ToReference<BlueprintFeatureReference>(),
                         EnlightnedPhilosopherDragonMysteryFeature.ToReference<BlueprintFeatureReference>(),
-                        DivineHerbalistDragonMysteryFeature.ToReference<BlueprintFeatureReference>()
+                        DivineHerbalistDragonMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        OceansEchoDragonMysteryFeature.ToReference<BlueprintFeatureReference>()
                     };
                     c.Amount = 1;
                 });
@@ -2640,7 +2726,8 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     c.m_Features = new BlueprintFeatureReference[] {
                         OracleDragonMysteryFeature.ToReference<BlueprintFeatureReference>(),
                         EnlightnedPhilosopherDragonMysteryFeature.ToReference<BlueprintFeatureReference>(),
-                        DivineHerbalistDragonMysteryFeature.ToReference<BlueprintFeatureReference>()
+                        DivineHerbalistDragonMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        OceansEchoDragonMysteryFeature.ToReference<BlueprintFeatureReference>()
                     };
                     c.Amount = 1;
                 });
@@ -4396,7 +4483,8 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     c.m_Features = new BlueprintFeatureReference[] {
                         OracleDragonMysteryFeature.ToReference<BlueprintFeatureReference>(),
                         EnlightnedPhilosopherDragonMysteryFeature.ToReference<BlueprintFeatureReference>(),
-                        DivineHerbalistDragonMysteryFeature.ToReference<BlueprintFeatureReference>()
+                        DivineHerbalistDragonMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        OceansEchoDragonMysteryFeature.ToReference<BlueprintFeatureReference>()
                     };
                     c.Amount = 1;
                 });
@@ -4934,7 +5022,8 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     c.m_Features = new BlueprintFeatureReference[] {
                         OracleDragonMysteryFeature.ToReference<BlueprintFeatureReference>(),
                         EnlightnedPhilosopherDragonMysteryFeature.ToReference<BlueprintFeatureReference>(),
-                        DivineHerbalistDragonMysteryFeature.ToReference<BlueprintFeatureReference>()
+                        DivineHerbalistDragonMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        OceansEchoDragonMysteryFeature.ToReference<BlueprintFeatureReference>()
                     };
                     c.Amount = 1;
                 });
@@ -5005,7 +5094,8 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     c.m_Features = new BlueprintFeatureReference[] {
                         OracleDragonMysteryFeature.ToReference<BlueprintFeatureReference>(),
                         EnlightnedPhilosopherDragonMysteryFeature.ToReference<BlueprintFeatureReference>(),
-                        DivineHerbalistDragonMysteryFeature.ToReference<BlueprintFeatureReference>()
+                        DivineHerbalistDragonMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        OceansEchoDragonMysteryFeature.ToReference<BlueprintFeatureReference>()
                     };
                     c.Amount = 1;
                 });
@@ -5124,7 +5214,8 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     c.m_Features = new BlueprintFeatureReference[] {
                         OracleDragonMysteryFeature.ToReference<BlueprintFeatureReference>(),
                         EnlightnedPhilosopherDragonMysteryFeature.ToReference<BlueprintFeatureReference>(),
-                        DivineHerbalistDragonMysteryFeature.ToReference<BlueprintFeatureReference>()
+                        DivineHerbalistDragonMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        OceansEchoDragonMysteryFeature.ToReference<BlueprintFeatureReference>()
                     };
                     c.Amount = 1;
                 });
@@ -5142,6 +5233,8 @@ namespace ExpandedContent.Tweaks.Mysteries {
             MysteryTools.RegisterSecondEnlightendPhilosopherMystery(EnlightnedPhilosopherDragonMysteryFeature);
             MysteryTools.RegisterHerbalistMystery(DivineHerbalistDragonMysteryFeature);
             MysteryTools.RegisterSecondHerbalistMystery(DivineHerbalistDragonMysteryFeature);
+            MysteryTools.RegisterOceansEchoMystery(OceansEchoDragonMysteryFeature);
+            MysteryTools.RegisterSecondOceansEchoMystery(OceansEchoDragonMysteryFeature);
         }
     }
 }

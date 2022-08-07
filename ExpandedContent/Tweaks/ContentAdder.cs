@@ -48,6 +48,7 @@ namespace ExpandedContent.Tweaks
                 Archetypes.DrakeWarden.AddDrakeWarden();
                 Archetypes.SilverChampion.AddSilverChampion();
                 Archetypes.ClutchThief.AddClutchThief();
+                Archetypes.OceansEcho.AddOceansEcho();
 
                 Classes.OathbreakerClass.AddOathbreakerClass();
                 Archetypes.Castigator.AddCastigator();

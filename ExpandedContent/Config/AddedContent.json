@@ -124,6 +124,11 @@
         "Enabled": true,
         "Homebrew": true,
         "Description": "A rogue archeype combining sneak attacks and teamwork feats with a drake partner."
+      },
+      "Ocean's Echo": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "A oracle archeype swapping serveral revelations for limited bardic abilities."
       }
     },
     "IsExpanded": false
