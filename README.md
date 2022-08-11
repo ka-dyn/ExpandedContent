@@ -19,6 +19,8 @@ New Archetypes
 
 -Clutch Thief, Rogue
 
+-Ocean's Echo, Oracle
+
 New Classes
 
 -Oathbreaker - Based off the Vindictive Bastard fallen Paladin class. 
