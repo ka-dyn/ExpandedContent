@@ -211,6 +211,24 @@ namespace ExpandedContent.Tweaks
                 Monitors.Barzahk.AddBarzahkFeature();
                 Monitors.Ceyannan.AddCeyannanFeature();
                 Monitors.Ssilameshnik.AddSsilameshnikFeature();
+                Monitors.Jerishall.AddJerishallFeature();
+                Monitors.Otolmens.AddOtolmensFeature();
+                Monitors.Valmallos.AddValmallosFeature();
+                Monitors.Ilsurrish.AddIlsurrishFeature();
+                Monitors.Narriseminek.AddNarriseminekFeature();
+                Monitors.Ydajisk.AddYdajiskFeature();
+                Monitors.Dammar.AddDammarFeature();
+                Monitors.Imot.AddImotFeature();
+                Monitors.MotherVulture.AddMotherVultureFeature();
+                Monitors.Mrtyu.AddMrtyuFeature();
+                Monitors.Narakaas.AddNarakaasFeature();
+                Monitors.Phlegyas.AddPhlegyasFeature();
+                Monitors.Saloc.AddSalocFeature();
+                Monitors.Teshallas.AddTeshallasFeature();
+                Monitors.ThePaleHorse.AddThePaleHorseFeature();
+                Monitors.Vale.AddValeFeature();
+                Monitors.Vavaalrav.AddVavaalravFeature();
+                Monitors.Vonymos.AddVonymosFeature();
                 
                 Deities.PatchLichDeity.AddLichDeity();
                 Deities.DeitySelectionFeature.PatchDeitySelection();

@@ -67,8 +67,6 @@ namespace ExpandedContent.Tweaks.Deities {
             var TreerazerFeature = Resources.GetModBlueprint<BlueprintFeature>("TreerazerFeature");
             var NocticulaFeature = Resources.GetModBlueprint<BlueprintFeature>("NocticulaFeature");
 
-
-
             //Empyreal Lords
             var ArsheaFeature = Resources.GetModBlueprint<BlueprintFeature>("ArsheaFeature");
             var RagathielFeature = Resources.GetModBlueprint<BlueprintFeature>("RagathielFeature");
@@ -143,7 +141,6 @@ namespace ExpandedContent.Tweaks.Deities {
             var KurgessFeature = Resources.GetModBlueprint<BlueprintFeature>("KurgessFeature");
             var YdersiusFeature = Resources.GetModBlueprint<BlueprintFeature>("YdersiusFeature");
 
-
             //Philosophies
             var GreenFaithFeature = Resources.GetBlueprint<BlueprintFeature>("99a7a8f13c1300c42878558fa9471e2f");
             var AtheismFeature = Resources.GetBlueprint<BlueprintFeature>("92c0d2da0a836ce418a267093c09ca54");
@@ -174,10 +171,27 @@ namespace ExpandedContent.Tweaks.Deities {
             var AtroposFeature = Resources.GetModBlueprint<BlueprintFeature>("AtroposFeature");
             var BarzahkFeature = Resources.GetModBlueprint<BlueprintFeature>("BarzahkFeature");
             var CeyannanFeature = Resources.GetModBlueprint<BlueprintFeature>("CeyannanFeature");
+            var IlsurrishFeature = Resources.GetModBlueprint<BlueprintFeature>("IlsurrishFeature");
+            var JerishallFeature = Resources.GetModBlueprint<BlueprintFeature>("JerishallFeature");
             var KerkamothFeature = Resources.GetModBlueprint<BlueprintFeature>("KerkamothFeature");
             var MonadFeature = Resources.GetModBlueprint<BlueprintFeature>("MonadFeature");
+            var NarrisemineFeature = Resources.GetModBlueprint<BlueprintFeature>("NarrisemineFeature");
+            var OtolmensFeature = Resources.GetModBlueprint<BlueprintFeature>("OtolmensFeature");
             var SsilameshnikFeature = Resources.GetModBlueprint<BlueprintFeature>("SsilameshnikFeature");
-
+            var ValmallosFeature = Resources.GetModBlueprint<BlueprintFeature>("ValmallosFeature");
+            var YdajiskFeature = Resources.GetModBlueprint<BlueprintFeature>("YdajiskFeature");
+            var DammarFeature = Resources.GetModBlueprint<BlueprintFeature>("DammarFeature");
+            var ImotFeature = Resources.GetModBlueprint<BlueprintFeature>("ImotFeature");
+            var MotherVultureFeature = Resources.GetModBlueprint<BlueprintFeature>("MotherVultureFeature");
+            var MrtyuFeature = Resources.GetModBlueprint<BlueprintFeature>("MrtyuFeature");
+            var NarakaasFeature = Resources.GetModBlueprint<BlueprintFeature>("NarakaasFeature");
+            var PhlegyasFeature = Resources.GetModBlueprint<BlueprintFeature>("PhlegyasFeature");
+            var SalocFeature = Resources.GetModBlueprint<BlueprintFeature>("SalocFeature");
+            var TeshallasFeature = Resources.GetModBlueprint<BlueprintFeature>("TeshallasFeature");
+            var ThePaleHorseFeature = Resources.GetModBlueprint<BlueprintFeature>("ThePaleHorseFeature");
+            var ValeFeature = Resources.GetModBlueprint<BlueprintFeature>("ValeFeature");
+            var VavaalravFeature = Resources.GetModBlueprint<BlueprintFeature>("VavaalravFeature");
+            var VonymosFeature = Resources.GetModBlueprint<BlueprintFeature>("VonymosFeature");
 
 
             var DeitySelection = Resources.GetBlueprint<BlueprintFeatureSelection>("59e7a76987fe3b547b9cce045f4db3e4");
@@ -480,9 +494,27 @@ namespace ExpandedContent.Tweaks.Deities {
                 AtroposFeature.ToReference<BlueprintFeatureReference>(),
                 BarzahkFeature.ToReference<BlueprintFeatureReference>(),
                 CeyannanFeature.ToReference<BlueprintFeatureReference>(),
+                DammarFeature.ToReference<BlueprintFeatureReference>(),
+                IlsurrishFeature.ToReference<BlueprintFeatureReference>(),
+                ImotFeature.ToReference<BlueprintFeatureReference>(),
+                JerishallFeature.ToReference<BlueprintFeatureReference>(),
                 KerkamothFeature.ToReference<BlueprintFeatureReference>(),
                 MonadFeature.ToReference<BlueprintFeatureReference>(),
+                MotherVultureFeature.ToReference<BlueprintFeatureReference>(),
+                MrtyuFeature.ToReference<BlueprintFeatureReference>(),
+                NarakaasFeature.ToReference<BlueprintFeatureReference>(),
+                NarrisemineFeature.ToReference<BlueprintFeatureReference>(),
+                OtolmensFeature.ToReference<BlueprintFeatureReference>(),
+                PhlegyasFeature.ToReference<BlueprintFeatureReference>(),
+                SalocFeature.ToReference<BlueprintFeatureReference>(),
                 SsilameshnikFeature.ToReference<BlueprintFeatureReference>(),
+                TeshallasFeature.ToReference<BlueprintFeatureReference>(),
+                ThePaleHorseFeature.ToReference<BlueprintFeatureReference>(),
+                ValeFeature.ToReference<BlueprintFeatureReference>(),
+                ValmallosFeature.ToReference<BlueprintFeatureReference>(),
+                VavaalravFeature.ToReference<BlueprintFeatureReference>(),
+                VonymosFeature.ToReference<BlueprintFeatureReference>(),
+                YdajiskFeature.ToReference<BlueprintFeatureReference>(),
                 };
                 bp.IsClassFeature = true;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
@@ -561,6 +593,9 @@ namespace ExpandedContent.Tweaks.Deities {
                     KerkamothFeature.ToReference<BlueprintFeatureReference>(),
                     AlsetaFeature.ToReference<BlueprintFeatureReference>(),
                     KurgessFeature.ToReference<BlueprintFeatureReference>(),
+                    JerishallFeature.ToReference<BlueprintFeatureReference>(),
+                    OtolmensFeature.ToReference<BlueprintFeatureReference>(),
+                    ValmallosFeature.ToReference<BlueprintFeatureReference>(),
                 };
             });
             var Seelah = Resources.GetBlueprint<BlueprintUnit>("54be53f0b35bf3c4592a97ae335fe765");

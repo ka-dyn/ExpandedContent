@@ -17,11 +17,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ExpandedContent.Tweaks.Monitors {
-    internal class Ssilameshnik {
-        private static readonly BlueprintFeature ChaosDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("8c7d778bc39fec642befc1435b00f613");
-        private static readonly BlueprintFeature KnowledgeDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("443d44b3e0ea84046a9bf304c82a0425");
-        private static readonly BlueprintFeature LiberationDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("801ca88338451a546bca2ee59da87c53");
-        private static readonly BlueprintFeature TrickeryDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("eaa368e08628a8641b16cd41cbd2cb33");
+    internal class Imot {
+        private static readonly BlueprintFeature LuckDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("d4e192475bb1a1045859c7664addd461");
+        private static readonly BlueprintFeature ReposeDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("076ba1e3a05fac146acfc956a9f41e95");
+        private static readonly BlueprintFeature RuneDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("77637f81d6aa33b4f82873d7934e8c4b");
+        private static readonly BlueprintFeature WeatherDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("9dfdfd4904e98fa48b80c8f63ec2cf11");
         private static readonly BlueprintSpellbook CrusaderSpellbook = Resources.GetBlueprint<BlueprintSpellbook>("673d39f7da699aa408cdda6282e7dcc0");
         private static readonly BlueprintSpellbook ClericSpellbook = Resources.GetBlueprint<BlueprintSpellbook>("4673d19a0cf2fab4f885cc4d1353da33");
         private static readonly BlueprintSpellbook InquisitorSpellbook = Resources.GetBlueprint<BlueprintSpellbook>("57fab75111f377248810ece84193a5a5");
@@ -32,35 +32,43 @@ namespace ExpandedContent.Tweaks.Monitors {
         private static readonly BlueprintCharacterClass WarpriestClass = Resources.GetBlueprint<BlueprintCharacterClass>("30b5e47d47a0e37438cc5a80c96cfb99");
         private static readonly BlueprintCharacterClass DreadKnightClass = Resources.GetModBlueprint<BlueprintCharacterClass>("DreadKnightClass");
 
-        public static void AddSsilameshnikFeature() {
 
-            BlueprintItem MasterworkLightHammer = Resources.GetBlueprint<BlueprintItem>("7d1b0a182a9654f4498cb1a6b3ed9ae2");
+
+        public static void AddImotFeature() {
+
+            BlueprintItem MasterworkSpikedLightShield = Resources.GetBlueprint<BlueprintItem>("2b1490f5e3894da4b883645a61600dfd");
 
             BlueprintArchetype FeralChampionArchetype = Resources.GetBlueprint<BlueprintArchetype>("f68ca492c9c15e241ab73735fbd0fb9f");
+            BlueprintArchetype MantisZealotArchetype = Resources.GetModBlueprint<BlueprintArchetype>("MantisZealotArchetype");
             BlueprintArchetype ClawOfTheFalseWyrmArchetype = Resources.GetModBlueprint<BlueprintArchetype>("ClawOfTheFalseWyrmArchetype");
 
-            BlueprintFeature LightHammerProficiency = Resources.GetBlueprint<BlueprintFeature>("8a43b4c0a59f7bb479d2af66d9a43ac5");
-            var SsilameshnikIcon = AssetLoader.LoadInternal("Deities", "Icon_Ssilameshnik.jpg");
-            var SsilameshnikFeature = Helpers.CreateBlueprint<BlueprintFeature>("SsilameshnikFeature", (bp => {
 
-                bp.SetName("Ssila'meshnik");
-                bp.SetDescription("\nTitles: The Colourless Lord, Warden of Galisemni   " +
-                    "\nAlignment: Chaotic Neutral   " +
-                    "\nForm: Protean Lord  " +
-                    "\nAreas of Concern: Fate, Freedom, Paradox   " +
-                    "\nDomains: Chaos, Knowledge, Liberation, Trickery   " +
-                    "\nFavoured Weapon: Light hammer   " +
-                    "\nHoly Symbol: Triquetra over a keketar head   " +
-                    "\nThe most prominent protean lord, Ssila'meshnik manifests as a leucistic keketar ranging in size, or as a ganzi of varying gender with a triune halo " +
-                    "of interwoven keketar crowns. Shadowed by afterimages, their form periodically breaks into a flurry of superimposed possibilities as they manipulate " +
-                    "reality moment by moment, choosing the most opportune course of future actions—the only true constant in a creature of inconsistency. Ssila'meshnik " +
-                    "occasionally frequents Pharasma’s court to argue in favor of or against the fate of particular souls. The chosen souls seem arbitrary at times, and this " +
-                    "mind-set seems to be the focus of most of the Colorless Lord's followers. These worshippers tend to live as contradictions, choosing a path to follow in " +
-                    "life while simultaneously taking actions that work against their chosen path. In addition, these worshippers spontaneously change their life paths at a " +
-                    "whim, insistence upon the freedom to seek new fates being the only consistent thread in their lives. Ssila'meshnik has no known divine domain, but " +
-                    "ancient texts record them as “Warden of Galisemni.” The city of Galisemni rests within the Maelstrom, containing a set of seven towering statues of " +
-                    "keketars known as the Watching Seven.");
-                bp.m_Icon = SsilameshnikIcon;
+            BlueprintFeature ShieldsProficiency = Resources.GetBlueprint<BlueprintFeature>("cb8686e7357a68c42bdd9d4e65334633");
+            var ImotIcon = AssetLoader.LoadInternal("Deities", "Icon_Imot.jpg");
+            var ImotFeature = Helpers.CreateBlueprint<BlueprintFeature>("ImotFeature", (bp => {
+
+                bp.SetName("Imot");
+                bp.SetDescription("\nTitles: The Symbol of Doom   " +
+                    "\nAlignment: Neutral   " +
+                    "\nForm: Psychopomp Usher " +
+                    "\nAreas of Concern: Inevitability, Mathematics, Portents  " +
+                    "\nDomains: Luck, Repose, Rune, Weather  " +
+                    "\nFavoured Weapon: Light shield   " +
+                    "\nHoly Symbol: Three adjacent circles arranged vertically, bisected by a horizontal line  " +
+                    "\nWhile most commonly associated with mass deaths, Imot was born from mortal guilt and the desire for hindsight in the wake of tragedy. Rather than cause " +
+                    "loss of life directly, their machinations precede large disasters, though as the penultimate usher of order, they also arrange for disasters when mortal " +
+                    "cultures are too slow in dying. A compulsion buried deep within Imot compels them to hide clues to every disaster in the natural world before the event " +
+                    "transpires, wrapped in confounding symbolism and boggling equations. These vague hints and hidden meanings inspire anxiety in most mortal minds. To those " +
+                    "unaware of the true nature of these premonitions, this takes the form of subconscious unease; to those aware of the usher’s omens, these clues provide a " +
+                    "means of averting disaster that is often found far too late. Because of this, Imot is also the usher of dread, paranoia, self-blame for unavoidable disasters, " +
+                    "and the omnipresent fear of personal failing. Imot’s nature makes them the natural patron of mathematicians—especially those who press the boundaries of " +
+                    "mortal understanding—and the bearer of souls that perished due to seemingly inevitable ends or that died en masse. People plagued with uneasy premonitions, " +
+                    "be they true glimpses of impending tragedy or simply figments of the mind, are sometimes drawn toward the worship of Imot. Prophets who seek accurate omens " +
+                    "in an age of lost prophecy are drawn to Imot’s complex and hidden portents, seeking to painstakingly unravel the usher’s hidden clues to look into the future. " +
+                    "The Symbol of Doom’s own predictions aren’t divine in nature, however, and are simply the result of their own infinitely complex calculations. Imot manifests " +
+                    "as a golden, four-sided pyramid with a wing sprouting from each of their facets. They have great difficulty expressing themselves verbally and instead conjure " +
+                    "images and symbols to communicate.");
+                bp.m_Icon = ImotIcon;
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;
                 bp.HideInCharacterSheetAndLevelUp = false;
@@ -70,12 +78,17 @@ namespace ExpandedContent.Tweaks.Monitors {
                 });
                 bp.AddComponent<PrerequisiteNoArchetype>(c => {
                     c.HideInUI = true;
+                    c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = MantisZealotArchetype.ToReference<BlueprintArchetypeReference>();
+                });
+                bp.AddComponent<PrerequisiteNoArchetype>(c => {
+                    c.HideInUI = true;
                     c.m_CharacterClass = DreadKnightClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_Archetype = ClawOfTheFalseWyrmArchetype.ToReference<BlueprintArchetypeReference>();
                 });
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
                 bp.AddComponent<PrerequisiteAlignment>(c => {
-                    c.Alignment = AlignmentMaskType.ChaoticGood | AlignmentMaskType.TrueNeutral | AlignmentMaskType.ChaoticNeutral | AlignmentMaskType.ChaoticEvil;
+                    c.Alignment = AlignmentMaskType.NeutralGood | AlignmentMaskType.LawfulNeutral | AlignmentMaskType.TrueNeutral | AlignmentMaskType.ChaoticNeutral | AlignmentMaskType.NeutralEvil;
                 });
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[1] { ChannelPositiveAllowed.ToReference<BlueprintUnitFactReference>() };
@@ -84,16 +97,16 @@ namespace ExpandedContent.Tweaks.Monitors {
                     c.m_Facts = new BlueprintUnitFactReference[1] { ChannelNegativeAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[1] { ChaosDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+                    c.m_Facts = new BlueprintUnitFactReference[1] { LuckDomainAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[1] { LiberationDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+                    c.m_Facts = new BlueprintUnitFactReference[1] { RuneDomainAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[1] { KnowledgeDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+                    c.m_Facts = new BlueprintUnitFactReference[1] { ReposeDomainAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[1] { TrickeryDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+                    c.m_Facts = new BlueprintUnitFactReference[1] { WeatherDomainAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<ForbidSpellbookOnAlignmentDeviation>(c => {
                     c.m_Spellbooks = new BlueprintSpellbookReference[1] { CrusaderSpellbook.ToReference<BlueprintSpellbookReference>() };
@@ -105,7 +118,7 @@ namespace ExpandedContent.Tweaks.Monitors {
                     c.m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>();
 
 
-                    c.m_Feature = LightHammerProficiency.ToReference<BlueprintFeatureReference>();
+                    c.m_Feature = ShieldsProficiency.ToReference<BlueprintFeatureReference>();
 
                     c.Level = 1;
                     c.m_Archetypes = null;
@@ -114,7 +127,7 @@ namespace ExpandedContent.Tweaks.Monitors {
                                WarpriestClass.ToReference<BlueprintCharacterClassReference>() };
                 });
                 bp.AddComponent<AddStartingEquipment>(c => {
-                    c.m_BasicItems = new BlueprintItemReference[1] { MasterworkLightHammer.ToReference<BlueprintItemReference>() };
+                    c.m_BasicItems = new BlueprintItemReference[1] { MasterworkSpikedLightShield.ToReference<BlueprintItemReference>() };
                     c.m_RestrictedByClass = new BlueprintCharacterClassReference[3] {
                                 ClericClass.ToReference<BlueprintCharacterClassReference>(),
                                 InquistorClass.ToReference<BlueprintCharacterClassReference>(),

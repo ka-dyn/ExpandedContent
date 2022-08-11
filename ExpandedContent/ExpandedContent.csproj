@@ -318,9 +318,27 @@
     <Compile Include="Tweaks\FourHorsemen\Szuriel.cs" />
     <Compile Include="Tweaks\FourHorsemen\Terlmarixian.cs" />
     <Compile Include="Tweaks\Miscellaneous\HavocDragonPet.cs" />
+    <Compile Include="Tweaks\Monitors\Vonymos.cs" />
+    <Compile Include="Tweaks\Monitors\Vavaalrav.cs" />
+    <Compile Include="Tweaks\Monitors\Vale.cs" />
+    <Compile Include="Tweaks\Monitors\Teshallas.cs" />
+    <Compile Include="Tweaks\Monitors\Saloc.cs" />
+    <Compile Include="Tweaks\Monitors\Phlegyas.cs" />
+    <Compile Include="Tweaks\Monitors\ThePaleHorse.cs" />
+    <Compile Include="Tweaks\Monitors\Narakaas.cs" />
+    <Compile Include="Tweaks\Monitors\Mrtyu.cs" />
+    <Compile Include="Tweaks\Monitors\MotherVulture.cs" />
     <Compile Include="Tweaks\Monitors\Atropos.cs" />
     <Compile Include="Tweaks\Monitors\Barzahk.cs" />
+    <Compile Include="Tweaks\Monitors\Imot.cs" />
+    <Compile Include="Tweaks\Monitors\Dammar.cs" />
     <Compile Include="Tweaks\Monitors\Ceyannan.cs" />
+    <Compile Include="Tweaks\Monitors\Jerishall.cs" />
+    <Compile Include="Tweaks\Monitors\Ilsurrish.cs" />
+    <Compile Include="Tweaks\Monitors\Ydajisk.cs" />
+    <Compile Include="Tweaks\Monitors\Narriseminek.cs" />
+    <Compile Include="Tweaks\Monitors\Valmallos.cs" />
+    <Compile Include="Tweaks\Monitors\Otolmens.cs" />
     <Compile Include="Tweaks\Monitors\Kerkamoth.cs" />
     <Compile Include="Tweaks\Monitors\Ssilameshnik.cs" />
     <Compile Include="Tweaks\Monitors\Monad.cs" />
@@ -476,6 +494,9 @@
     <Content Include="Assets\Deities\Icon_Daikitsu.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Deities\Icon_Dammar.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Deities\Icon_Dammerich.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -539,10 +560,16 @@
     <Content Include="Assets\Deities\Icon_Horus.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Deities\Icon_Ilsurrish.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Deities\Icon_Imbrex.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Immonhiel.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Imot.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Irez.jpg">
@@ -555,6 +582,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Jalaijatali.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Jerishall.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Kabriri.jpg">
@@ -608,7 +638,19 @@
     <Content Include="Assets\Deities\Icon_Monitors.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Deities\Icon_MotherVulture.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Mrtyu.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Deities\Icon_Nalinivati.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Narakaas.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Narriseminek.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Neith.jpg">
@@ -629,10 +671,16 @@
     <Content Include="Assets\Deities\Icon_Osiris.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Deities\Icon_Otolmens.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Deities\Icon_Pantheon.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Philosophies.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Phlegyas.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Picoperi.jpg">
@@ -657,6 +705,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Rowdrosh.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Saloc.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Sekhmet.jpg">
@@ -698,6 +749,9 @@
     <Content Include="Assets\Deities\Icon_Tanagaar.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Deities\Icon_Teshallas.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Deities\Icon_TheEldest.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -708,6 +762,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_TheLostPrince.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_ThePaleHorse.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Thoth.jpg">
@@ -725,7 +782,19 @@
     <Content Include="Assets\Deities\Icon_Valani.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Deities\Icon_Vale.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Valmallos.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Vavaalrav.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Deities\Icon_Vildeis.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Vonymos.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Wadjet.jpg">
@@ -741,6 +810,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Yamatsumi.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Ydajisk.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Ydersius.jpg">

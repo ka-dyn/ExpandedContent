@@ -17,11 +17,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ExpandedContent.Tweaks.Monitors {
-    internal class Ssilameshnik {
-        private static readonly BlueprintFeature ChaosDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("8c7d778bc39fec642befc1435b00f613");
+    internal class Phlegyas {
+        private static readonly BlueprintFeature ArtificeDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("9656b1c7214180f4b9a6ab56f83b92fb");
+        private static readonly BlueprintFeature EarthDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("5ca99a6ae118feb449dbbd165a8fe7c4");
         private static readonly BlueprintFeature KnowledgeDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("443d44b3e0ea84046a9bf304c82a0425");
-        private static readonly BlueprintFeature LiberationDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("801ca88338451a546bca2ee59da87c53");
-        private static readonly BlueprintFeature TrickeryDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("eaa368e08628a8641b16cd41cbd2cb33");
+        private static readonly BlueprintFeature ReposeDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("076ba1e3a05fac146acfc956a9f41e95");
         private static readonly BlueprintSpellbook CrusaderSpellbook = Resources.GetBlueprint<BlueprintSpellbook>("673d39f7da699aa408cdda6282e7dcc0");
         private static readonly BlueprintSpellbook ClericSpellbook = Resources.GetBlueprint<BlueprintSpellbook>("4673d19a0cf2fab4f885cc4d1353da33");
         private static readonly BlueprintSpellbook InquisitorSpellbook = Resources.GetBlueprint<BlueprintSpellbook>("57fab75111f377248810ece84193a5a5");
@@ -32,35 +32,39 @@ namespace ExpandedContent.Tweaks.Monitors {
         private static readonly BlueprintCharacterClass WarpriestClass = Resources.GetBlueprint<BlueprintCharacterClass>("30b5e47d47a0e37438cc5a80c96cfb99");
         private static readonly BlueprintCharacterClass DreadKnightClass = Resources.GetModBlueprint<BlueprintCharacterClass>("DreadKnightClass");
 
-        public static void AddSsilameshnikFeature() {
 
-            BlueprintItem MasterworkLightHammer = Resources.GetBlueprint<BlueprintItem>("7d1b0a182a9654f4498cb1a6b3ed9ae2");
+
+        public static void AddPhlegyasFeature() {
+
+            BlueprintItem MasterworkLongbow = Resources.GetBlueprint<BlueprintItem>("8e89a5d3c1a9dae44b967fb4fd7e5117");
 
             BlueprintArchetype FeralChampionArchetype = Resources.GetBlueprint<BlueprintArchetype>("f68ca492c9c15e241ab73735fbd0fb9f");
+            BlueprintArchetype MantisZealotArchetype = Resources.GetModBlueprint<BlueprintArchetype>("MantisZealotArchetype");
             BlueprintArchetype ClawOfTheFalseWyrmArchetype = Resources.GetModBlueprint<BlueprintArchetype>("ClawOfTheFalseWyrmArchetype");
 
-            BlueprintFeature LightHammerProficiency = Resources.GetBlueprint<BlueprintFeature>("8a43b4c0a59f7bb479d2af66d9a43ac5");
-            var SsilameshnikIcon = AssetLoader.LoadInternal("Deities", "Icon_Ssilameshnik.jpg");
-            var SsilameshnikFeature = Helpers.CreateBlueprint<BlueprintFeature>("SsilameshnikFeature", (bp => {
 
-                bp.SetName("Ssila'meshnik");
-                bp.SetDescription("\nTitles: The Colourless Lord, Warden of Galisemni   " +
-                    "\nAlignment: Chaotic Neutral   " +
-                    "\nForm: Protean Lord  " +
-                    "\nAreas of Concern: Fate, Freedom, Paradox   " +
-                    "\nDomains: Chaos, Knowledge, Liberation, Trickery   " +
-                    "\nFavoured Weapon: Light hammer   " +
-                    "\nHoly Symbol: Triquetra over a keketar head   " +
-                    "\nThe most prominent protean lord, Ssila'meshnik manifests as a leucistic keketar ranging in size, or as a ganzi of varying gender with a triune halo " +
-                    "of interwoven keketar crowns. Shadowed by afterimages, their form periodically breaks into a flurry of superimposed possibilities as they manipulate " +
-                    "reality moment by moment, choosing the most opportune course of future actions—the only true constant in a creature of inconsistency. Ssila'meshnik " +
-                    "occasionally frequents Pharasma’s court to argue in favor of or against the fate of particular souls. The chosen souls seem arbitrary at times, and this " +
-                    "mind-set seems to be the focus of most of the Colorless Lord's followers. These worshippers tend to live as contradictions, choosing a path to follow in " +
-                    "life while simultaneously taking actions that work against their chosen path. In addition, these worshippers spontaneously change their life paths at a " +
-                    "whim, insistence upon the freedom to seek new fates being the only consistent thread in their lives. Ssila'meshnik has no known divine domain, but " +
-                    "ancient texts record them as “Warden of Galisemni.” The city of Galisemni rests within the Maelstrom, containing a set of seven towering statues of " +
-                    "keketars known as the Watching Seven.");
-                bp.m_Icon = SsilameshnikIcon;
+            BlueprintFeature LongbowProficiency = Resources.GetBlueprint<BlueprintFeature>("0978f630fc5d6a6409ac641137bf6659");
+            var PhlegyasIcon = AssetLoader.LoadInternal("Deities", "Icon_Phlegyas.jpg");
+            var PhlegyasFeature = Helpers.CreateBlueprint<BlueprintFeature>("PhlegyasFeature", (bp => {
+
+                bp.SetName("Phlegyas");
+                bp.SetDescription("\nTitles: The Consoler of Atheists  " +
+                    "\nAlignment: Neutral   " +
+                    "\nForm: Psychopomp Usher " +
+                    "\nAreas of Concern: Atheists, Legacies, Reincarnation  " +
+                    "\nDomains: Artifice, Earth, Knowledge, Repose  " +
+                    "\nFavoured Weapon: Longbow   " +
+                    "\nHoly Symbol: Two circles overlapping vertically  " +
+                    "\nIn life, Phlegyas was an arrogant but gifted man. He was cast out from Shelyn’s church for his blasphemy and pride, but the clergy’s attempt to " +
+                    "wipe away Phlegyas’s legacy was undone, as the mortal’s name survived among admirers and detractors alike. Pharasma saw this form of immortality " +
+                    "as fundamental to mortal experience and raised Phlegyas up to be a patron both of art outlasting its creator and of those who spurned the gods. " +
+                    "As a symbol of creations outliving their creators, she is also the usher of new parents, especially those who die in childbirth. Unlike Shelyn’s " +
+                    "domain of beauty, the Consoler of Atheists embodies resonance, and the works Phlegyas inspires are as often painful or horrifying as they are " +
+                    "beautiful. Time and perspective cooled Phlegyas’s resentment of the divine, and now she and her servants offer respite to atheists who arrive at " +
+                    "the Boneyard. Those godless souls who show potential she reserves to train as psychopomps. Phlegyas is the most human of the ushers: a tall, " +
+                    "broadshouldered woman wearing a simple, plaster domino mask and carrying an oar she uses to ferry those who spurn the call of their gods. Her " +
+                    "realm is the Anonymous Loggia, a museum of works by long-forgotten creators that still remain linchpins in mortal cultures.");
+                bp.m_Icon = PhlegyasIcon;
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;
                 bp.HideInCharacterSheetAndLevelUp = false;
@@ -70,12 +74,17 @@ namespace ExpandedContent.Tweaks.Monitors {
                 });
                 bp.AddComponent<PrerequisiteNoArchetype>(c => {
                     c.HideInUI = true;
+                    c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = MantisZealotArchetype.ToReference<BlueprintArchetypeReference>();
+                });
+                bp.AddComponent<PrerequisiteNoArchetype>(c => {
+                    c.HideInUI = true;
                     c.m_CharacterClass = DreadKnightClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_Archetype = ClawOfTheFalseWyrmArchetype.ToReference<BlueprintArchetypeReference>();
                 });
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
                 bp.AddComponent<PrerequisiteAlignment>(c => {
-                    c.Alignment = AlignmentMaskType.ChaoticGood | AlignmentMaskType.TrueNeutral | AlignmentMaskType.ChaoticNeutral | AlignmentMaskType.ChaoticEvil;
+                    c.Alignment = AlignmentMaskType.NeutralGood | AlignmentMaskType.LawfulNeutral | AlignmentMaskType.TrueNeutral | AlignmentMaskType.ChaoticNeutral | AlignmentMaskType.NeutralEvil;
                 });
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[1] { ChannelPositiveAllowed.ToReference<BlueprintUnitFactReference>() };
@@ -84,16 +93,16 @@ namespace ExpandedContent.Tweaks.Monitors {
                     c.m_Facts = new BlueprintUnitFactReference[1] { ChannelNegativeAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[1] { ChaosDomainAllowed.ToReference<BlueprintUnitFactReference>() };
-                });
-                bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[1] { LiberationDomainAllowed.ToReference<BlueprintUnitFactReference>() };
-                });
-                bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[1] { KnowledgeDomainAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[1] { TrickeryDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+                    c.m_Facts = new BlueprintUnitFactReference[1] { ArtificeDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[1] { ReposeDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[1] { EarthDomainAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<ForbidSpellbookOnAlignmentDeviation>(c => {
                     c.m_Spellbooks = new BlueprintSpellbookReference[1] { CrusaderSpellbook.ToReference<BlueprintSpellbookReference>() };
@@ -105,7 +114,7 @@ namespace ExpandedContent.Tweaks.Monitors {
                     c.m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>();
 
 
-                    c.m_Feature = LightHammerProficiency.ToReference<BlueprintFeatureReference>();
+                    c.m_Feature = LongbowProficiency.ToReference<BlueprintFeatureReference>();
 
                     c.Level = 1;
                     c.m_Archetypes = null;
@@ -114,7 +123,7 @@ namespace ExpandedContent.Tweaks.Monitors {
                                WarpriestClass.ToReference<BlueprintCharacterClassReference>() };
                 });
                 bp.AddComponent<AddStartingEquipment>(c => {
-                    c.m_BasicItems = new BlueprintItemReference[1] { MasterworkLightHammer.ToReference<BlueprintItemReference>() };
+                    c.m_BasicItems = new BlueprintItemReference[1] { MasterworkLongbow.ToReference<BlueprintItemReference>() };
                     c.m_RestrictedByClass = new BlueprintCharacterClassReference[3] {
                                 ClericClass.ToReference<BlueprintCharacterClassReference>(),
                                 InquistorClass.ToReference<BlueprintCharacterClassReference>(),
