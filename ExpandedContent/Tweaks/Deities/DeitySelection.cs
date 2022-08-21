@@ -193,6 +193,38 @@ namespace ExpandedContent.Tweaks.Deities {
             var VavaalravFeature = Resources.GetModBlueprint<BlueprintFeature>("VavaalravFeature");
             var VonymosFeature = Resources.GetModBlueprint<BlueprintFeature>("VonymosFeature");
 
+            //The Elder Mythos
+            var AbhothFeature = Resources.GetModBlueprint<BlueprintFeature>("AbhothFeature");
+            var AtlachNachaFeature = Resources.GetModBlueprint<BlueprintFeature>("AtlachNachaFeature");
+            var AzathothFeature = Resources.GetModBlueprint<BlueprintFeature>("AzathothFeature");
+            var BokugFeature = Resources.GetModBlueprint<BlueprintFeature>("BokugFeature");
+            var ChaugnarFaugnFeature = Resources.GetModBlueprint<BlueprintFeature>("ChaugnarFaugnFeature");
+            var CthulhuFeature = Resources.GetModBlueprint<BlueprintFeature>("CthulhuFeature");
+            var GhatanothoaFeature = Resources.GetModBlueprint<BlueprintFeature>("GhatanothoaFeature");
+            var HasturFeature = Resources.GetModBlueprint<BlueprintFeature>("HasturFeature");
+            var IthaquaFeature = Resources.GetModBlueprint<BlueprintFeature>("IthaquaFeature");
+            var MharFeature = Resources.GetModBlueprint<BlueprintFeature>("MharFeature");
+            var MordiggianFeature = Resources.GetModBlueprint<BlueprintFeature>("MordiggianFeature");
+            var NhimbalothFeature = Resources.GetModBlueprint<BlueprintFeature>("NhimbalothFeature");
+            var NyarlathotepFeature = Resources.GetModBlueprint<BlueprintFeature>("NyarlathotepFeature");
+            var OrgeshFeature = Resources.GetModBlueprint<BlueprintFeature>("OrgeshFeature");
+            var RhanTegothFeature = Resources.GetModBlueprint<BlueprintFeature>("RhanTegothFeature");
+            var ShubNiggurathFeature = Resources.GetModBlueprint<BlueprintFeature>("ShubNiggurathFeature");
+            var TsathogguaFeature = Resources.GetModBlueprint<BlueprintFeature>("TsathogguaFeature");
+            var XhameDorFeature = Resources.GetModBlueprint<BlueprintFeature>("XhameDorFeature");
+            var YigFeature = Resources.GetModBlueprint<BlueprintFeature>("YigFeature");
+            var YogSothothFeature = Resources.GetModBlueprint<BlueprintFeature>("YogSothothFeature");
+
+            //Orc Pantheon
+            var DrethaFeature = Resources.GetModBlueprint<BlueprintFeature>("DrethaFeature");
+            var LanishraFeature = Resources.GetModBlueprint<BlueprintFeature>("LanishraFeature");
+            var NulgrethFeature = Resources.GetModBlueprint<BlueprintFeature>("NulgrethFeature");
+            var RullFeature = Resources.GetModBlueprint<BlueprintFeature>("RullFeature");
+            var SezelrianFeature = Resources.GetModBlueprint<BlueprintFeature>("SezelrianFeature");
+            var VargFeature = Resources.GetModBlueprint<BlueprintFeature>("VargFeature");
+            var VerexFeature = Resources.GetModBlueprint<BlueprintFeature>("VerexFeature");
+            var ZagreshFeature = Resources.GetModBlueprint<BlueprintFeature>("ZagreshFeature");
+
 
             var DeitySelection = Resources.GetBlueprint<BlueprintFeatureSelection>("59e7a76987fe3b547b9cce045f4db3e4");
             var PaladinClass = Resources.GetBlueprint<BlueprintCharacterClass>("bfa11238e7ae3544bbeb4d0b92e897ec");
@@ -520,8 +552,65 @@ namespace ExpandedContent.Tweaks.Deities {
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
                 bp.Group = FeatureGroup.Deities;
             });
-
-
+            var TheElderMythosIcon = AssetLoader.LoadInternal("Deities", "Icon_TheElderMythos.jpg");
+            var TheElderMythosSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("TheElderMythosSelection", bp => {
+                bp.SetName("The Elder Mythos");
+                bp.SetDescription("In the early days, there were older gods whose existence dwarfed even those who helped shape the course of written history. " +
+                    "These are the unimaginably ancient and inconceivably potent Great Old Ones, who in turn serve and worship the even greater Outer Gods. " +
+                    "Scholars call these entities by many names, but on Golarion, their faiths and the entities themselves are known as the Elder Mythos. " +
+                    "Worshipped primarily by the mad or desperate, the knowledge gained from gazing into the Dark Tapestry will often break even the strongest " +
+                    "mind, freeing it to maddening truth.");
+                bp.m_Icon = TheElderMythosIcon;
+                bp.m_AllFeatures = new BlueprintFeatureReference[] {
+                    AbhothFeature.ToReference<BlueprintFeatureReference>(),
+                    AtlachNachaFeature.ToReference<BlueprintFeatureReference>(),
+                    AzathothFeature.ToReference<BlueprintFeatureReference>(),
+                    BokugFeature.ToReference<BlueprintFeatureReference>(),
+                    ChaugnarFaugnFeature.ToReference<BlueprintFeatureReference>(),
+                    CthulhuFeature.ToReference<BlueprintFeatureReference>(),
+                    GhatanothoaFeature.ToReference<BlueprintFeatureReference>(),
+                    HasturFeature.ToReference<BlueprintFeatureReference>(),
+                    IthaquaFeature.ToReference<BlueprintFeatureReference>(),
+                    MharFeature.ToReference<BlueprintFeatureReference>(),
+                    MordiggianFeature.ToReference<BlueprintFeatureReference>(),
+                    NhimbalothFeature.ToReference<BlueprintFeatureReference>(),
+                    NyarlathotepFeature.ToReference<BlueprintFeatureReference>(),
+                    OrgeshFeature.ToReference<BlueprintFeatureReference>(),
+                    RhanTegothFeature.ToReference<BlueprintFeatureReference>(),
+                    ShubNiggurathFeature.ToReference<BlueprintFeatureReference>(),
+                    TsathogguaFeature.ToReference<BlueprintFeatureReference>(),
+                    XhameDorFeature.ToReference<BlueprintFeatureReference>(),
+                    YigFeature.ToReference<BlueprintFeatureReference>(),
+                    YogSothothFeature.ToReference<BlueprintFeatureReference>()
+                };
+                bp.IsClassFeature = true;
+                bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
+                bp.Group = FeatureGroup.Deities;
+            });
+            var OrcPantheonIcon = AssetLoader.LoadInternal("Deities", "Icon_OrcPantheon.jpg");
+            var OrcPantheonSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("OrcPantheonSelection", bp => {
+                bp.SetName("Orc Pantheon");
+                bp.SetDescription("Orcs are not known for their discretion, yet in matters of religion, they are surprisingly tight-lipped. When a common orc " +
+                    "refers to a god, even his own patron deity, he never uses its name, only one of its titles. The superstitious orcs believe that the names " +
+                    "of gods hold power, and to speak a god’s name is to draw its attention. Orcs may revere violent gods, not even they wish to see the full " +
+                    "manifestation of such deities’ destructive power. Only the shamans and witch doctors dare speak these unholy names, and then only in the " +
+                    "midst of ecstatic rituals. This reticence on the part of orcs has led many outsiders to the erroneous conclusion that orc gods have no names. " +
+                    "Some scholars have even gone so far as to suggest that the orc gods are not even gods at all.");
+                bp.m_Icon = OrcPantheonIcon;
+                bp.m_AllFeatures = new BlueprintFeatureReference[] {
+                    DrethaFeature.ToReference<BlueprintFeatureReference>(),
+                    LanishraFeature.ToReference<BlueprintFeatureReference>(),
+                    NulgrethFeature.ToReference<BlueprintFeatureReference>(),
+                    RullFeature.ToReference<BlueprintFeatureReference>(),
+                    SezelrianFeature.ToReference<BlueprintFeatureReference>(),
+                    VargFeature.ToReference<BlueprintFeatureReference>(),
+                    VerexFeature.ToReference<BlueprintFeatureReference>(),
+                    ZagreshFeature.ToReference<BlueprintFeatureReference>()
+                };
+                bp.IsClassFeature = true;
+                bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
+                bp.Group = FeatureGroup.Deities;
+            });
 
 
 
@@ -684,6 +773,18 @@ namespace ExpandedContent.Tweaks.Deities {
             var DeitySelection = Resources.GetBlueprint<BlueprintFeatureSelection>("59e7a76987fe3b547b9cce045f4db3e4");
             var MonitorsSelection = Resources.GetModBlueprint<BlueprintFeatureSelection>("MonitorsSelection");
             DeitySelection.m_AllFeatures = DeitySelection.m_AllFeatures.AddToArray(MonitorsSelection.ToReference<BlueprintFeatureReference>());
+        }
+        public static void TheElderMythosToggle() {
+            if (ModSettings.AddedContent.Deities.IsDisabled("The Elder Mythos")) { return; }
+            var DeitySelection = Resources.GetBlueprint<BlueprintFeatureSelection>("59e7a76987fe3b547b9cce045f4db3e4");
+            var TheElderMythosSelection = Resources.GetModBlueprint<BlueprintFeatureSelection>("TheElderMythosSelection");
+            DeitySelection.m_AllFeatures = DeitySelection.m_AllFeatures.AddToArray(TheElderMythosSelection.ToReference<BlueprintFeatureReference>());
+        }
+        public static void OrcPantheonToggle() {
+            if (ModSettings.AddedContent.Deities.IsDisabled("Orc Pantheon")) { return; }
+            var DeitySelection = Resources.GetBlueprint<BlueprintFeatureSelection>("59e7a76987fe3b547b9cce045f4db3e4");
+            var OrcPantheonSelection = Resources.GetModBlueprint<BlueprintFeatureSelection>("OrcPantheonSelection");
+            DeitySelection.m_AllFeatures = DeitySelection.m_AllFeatures.AddToArray(OrcPantheonSelection.ToReference<BlueprintFeatureReference>());
         }
     }
 }

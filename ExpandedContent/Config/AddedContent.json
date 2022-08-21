@@ -241,6 +241,16 @@
         "Enabled": true,
         "Homebrew": false,
         "Description": "Adds the Monitors of the neutral planes as deity options"
+      },
+      "The Elder Mythos": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds the Elder Mythos of the Dark Tapestry as deity options"
+      },
+      "Orc Pantheon": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds the deities of the Orc Pantheon as deity options"
       }
     },
     "IsExpanded": false

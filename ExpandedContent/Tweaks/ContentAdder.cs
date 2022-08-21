@@ -229,6 +229,36 @@ namespace ExpandedContent.Tweaks
                 Monitors.Vale.AddValeFeature();
                 Monitors.Vavaalrav.AddVavaalravFeature();
                 Monitors.Vonymos.AddVonymosFeature();
+
+                TheElderMythos.Abhoth.AddAbhothFeature();
+                TheElderMythos.AtlachNacha.AddAtlachNachaFeature();
+                TheElderMythos.Azathoth.AddAzathothFeature();
+                TheElderMythos.Bokrug.AddBokrugFeature();
+                TheElderMythos.ChaugnarFaugn.AddChaugnarFaugnFeature();
+                TheElderMythos.Cthulhu.AddCthulhuFeature();
+                TheElderMythos.Ghatanothoa.AddGhatanothoaFeature();
+                TheElderMythos.Hastur.AddHasturFeature();
+                TheElderMythos.Ithaqua.AddIthaquaFeature();
+                TheElderMythos.Mhar.AddMharFeature();
+                TheElderMythos.Mordiggian.AddMordiggianFeature();
+                TheElderMythos.Nhimbaloth.AddNhimbalothFeature();
+                TheElderMythos.Nyarlathotep.AddNyarlathotepFeature();
+                TheElderMythos.Orgesh.AddOrgeshFeature();
+                TheElderMythos.RhanTegoth.AddRhanTegothFeature();
+                TheElderMythos.ShubNiggurath.AddShubNiggurathFeature();
+                TheElderMythos.Tsathoggua.AddTsathogguaFeature();
+                TheElderMythos.XhameDor.AddXhameDorFeature();
+                TheElderMythos.Yig.AddYigFeature();
+                TheElderMythos.YogSothoth.AddYogSothothFeature();
+
+                Deities.Dretha.AddDrethaFeature();
+                Deities.Lanishra.AddLanishraFeature();
+                Deities.Nulgreth.AddNulgrethFeature();
+                Deities.Rull.AddRullFeature();
+                Deities.Sezelrian.AddSezelrianFeature();
+                Deities.Varg.AddVargFeature();
+                Deities.Verex.AddVerexFeature();
+                Deities.Zagresh.AddZagreshFeature();
                 
                 Deities.PatchLichDeity.AddLichDeity();
                 Deities.DeitySelectionFeature.PatchDeitySelection();
@@ -241,6 +271,8 @@ namespace ExpandedContent.Tweaks
                 Deities.DeitySelectionFeature.DraconicDeityToggle();
                 Deities.DeitySelectionFeature.TheEldestToggle();
                 Deities.DeitySelectionFeature.MonitorsToggle();
+                Deities.DeitySelectionFeature.TheElderMythosToggle();
+                Deities.DeitySelectionFeature.OrcPantheonToggle();
 
                 Miscellaneous.HavocDragonPet.AddHavocDragonPet();
 

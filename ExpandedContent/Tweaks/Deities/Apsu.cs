@@ -127,6 +127,17 @@ namespace ExpandedContent.Tweaks.Deities {
                     c.m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>();
 
                     c.m_Feature = BloodlineDraconicSilverArcana.ToReference<BlueprintFeatureReference>();
+
+                    c.Level = 1;
+                    c.m_Archetypes = null;
+                    c.m_AdditionalClasses = new BlueprintCharacterClassReference[2] {
+                        InquistorClass.ToReference<BlueprintCharacterClassReference>(),
+                        WarpriestClass.ToReference<BlueprintCharacterClassReference>()
+                    };
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>();
+
                     c.m_Feature = QuarterstaffProficiency.ToReference<BlueprintFeatureReference>();
 
                     c.Level = 1;
