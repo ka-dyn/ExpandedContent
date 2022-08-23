@@ -62,6 +62,8 @@ New Domains / Subdomains
 
 -Dragon Subdomain
 
+-Ferocity Subdomain
+
 -Ice Subdomain
 
 -Revelation Subdomain
