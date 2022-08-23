@@ -306,6 +306,7 @@
     <Compile Include="Tweaks\Deities\Pulura.cs" />
     <Compile Include="Tweaks\Deities\Ragathiel.cs" />
     <Compile Include="Tweaks\DemonLords\Zura.cs" />
+    <Compile Include="Tweaks\Domains\FerocityDomain.cs" />
     <Compile Include="Tweaks\Domains\RevelationDomain.cs" />
     <Compile Include="Tweaks\Domains\ArchonDomainLaw.cs" />
     <Compile Include="Tweaks\Domains\ArchonDomainGood.cs" />

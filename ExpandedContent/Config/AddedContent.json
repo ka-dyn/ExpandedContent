@@ -190,6 +190,11 @@
         "Enabled": true,
         "Homebrew": false,
         "Description": "Adds the wind subdomain, a subdomain to the air domain."
+      },
+      "Ferocity Subdomain": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds the ferocity subdomain, a subdomain to the strength domain."
       }
     },
     "IsExpanded": false

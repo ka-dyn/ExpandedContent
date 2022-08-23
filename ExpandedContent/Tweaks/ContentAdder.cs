@@ -87,6 +87,7 @@ namespace ExpandedContent.Tweaks
                 Domains.WindDomain.AddWindDomain();
                 Domains.UndeadDomain.AddUndeadDomain();
                 Domains.RevelationDomain.AddRevelationDomain();
+                Domains.FerocityDomain.AddFerocityDomain();
                 Domains.BaseDeityPatch.AddBaseDeityPatch();
 
                 Mysteries.DragonMystery.AddDragonMystery();
