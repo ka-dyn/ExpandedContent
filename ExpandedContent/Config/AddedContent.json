@@ -195,6 +195,11 @@
         "Enabled": true,
         "Homebrew": false,
         "Description": "Adds the ferocity subdomain, a subdomain to the strength domain."
+      },
+      "Psychopomp Subdomain": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds the Psychopomp subdomain, a subdomain to the death and repose domains."
       }
     },
     "IsExpanded": false

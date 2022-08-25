@@ -42,14 +42,16 @@ namespace ExpandedContent.Tweaks.Domains {
             var ArchonDomainLawAllowed = Resources.GetModBlueprint<BlueprintFeature>("ArchonDomainLawAllowed");
             var BloodDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("BloodDomainAllowed");
             var CavesDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("CavesDomainAllowed");
-            var IceDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("IceDomainAllowed");
-            var StormDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("StormDomainAllowed");
             var DemonDomainChaosAllowed = Resources.GetModBlueprint<BlueprintFeature>("DemonDomainChaosAllowed");
             var DemonDomainEvilAllowed = Resources.GetModBlueprint<BlueprintFeature>("DemonDomainEvilAllowed");
-            var WindDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("WindDomainAllowed");
-            var UndeadDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("UndeadDomainAllowed");
-            var RevelationDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("RevelationDomainAllowed");
             var FerocityDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("FerocityDomainAllowed");
+            var IceDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("IceDomainAllowed");
+            var PsychopompDomainDeathAllowed = Resources.GetModBlueprint<BlueprintFeature>("PsychopompDomainDeathAllowed");
+            var PsychopompDomainReposeAllowed = Resources.GetModBlueprint<BlueprintFeature>("PsychopompDomainReposeAllowed");
+            var RevelationDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("RevelationDomainAllowed");
+            var StormDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("StormDomainAllowed");
+            var UndeadDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("UndeadDomainAllowed");
+            var WindDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("WindDomainAllowed");
 
 
             CaydenCaileanFeature.AddComponent<AddFacts>(c => {
@@ -96,6 +98,12 @@ namespace ExpandedContent.Tweaks.Domains {
             });
             PharasmaFeature.AddComponent<AddFacts>(c => {
                 c.m_Facts = new BlueprintUnitFactReference[1] { IceDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+            });
+            PharasmaFeature.AddComponent<AddFacts>(c => {
+                c.m_Facts = new BlueprintUnitFactReference[1] { PsychopompDomainDeathAllowed.ToReference<BlueprintUnitFactReference>() };
+            });
+            PharasmaFeature.AddComponent<AddFacts>(c => {
+                c.m_Facts = new BlueprintUnitFactReference[1] { PsychopompDomainReposeAllowed.ToReference<BlueprintUnitFactReference>() };
             });
             RovagugFeature.AddComponent<AddFacts>(c => {
                 c.m_Facts = new BlueprintUnitFactReference[1] { BloodDomainAllowed.ToReference<BlueprintUnitFactReference>() };

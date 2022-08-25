@@ -89,6 +89,8 @@ namespace ExpandedContent.Tweaks.Domains {
                         HunterClass.ToReference<BlueprintCharacterClassReference>(),
                         PaladinClass.ToReference<BlueprintCharacterClassReference>()
                     };
+                    c.m_UseMin = true;
+                    c.m_Min = 1;
                 });
             });
 

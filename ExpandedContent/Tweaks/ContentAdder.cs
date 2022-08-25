@@ -88,6 +88,8 @@ namespace ExpandedContent.Tweaks
                 Domains.UndeadDomain.AddUndeadDomain();
                 Domains.RevelationDomain.AddRevelationDomain();
                 Domains.FerocityDomain.AddFerocityDomain();
+                Domains.PsychopompDomainDeath.AddPsychopompDomainDeath();
+                Domains.PsychopompDomainRepose.AddPsychopompDomainRepose();                
                 Domains.BaseDeityPatch.AddBaseDeityPatch();
 
                 Mysteries.DragonMystery.AddDragonMystery();
