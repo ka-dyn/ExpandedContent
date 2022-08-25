@@ -215,7 +215,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     "that gave you access to this domain (minimum 1).\nRage: At 8th level, you can enter a fearsome rage, like a barbarian, for a number of rounds per day equal to your cleric level + your " +
                     "constitution modifier. At 12th and 16th level, you can select one rage power. You cannot select any rage power that possesses a level requirement, but otherwise your barbarian " +
                     "level is equal to 1/2 your cleric level. These rounds of rage stack with any rounds of rage you might have from levels of barbarian.\nDomain {g|Encyclopedia:Spell}Spells{/g}: " +
-                    "true strike, boneshaker, rage, fear, boneshatter, harm, disintegrate, horrid wilting, tsunami.");
+                    "true strike, bulls strength, rage, fear, boneshatter, harm, disintegrate, horrid wilting, tsunami.");
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Domain };
                 bp.IsClassFeature = true;
                 bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
@@ -287,7 +287,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     "that gave you access to this domain (minimum 1).\nRage: At 8th level, you can enter a fearsome rage, like a barbarian, for a number of rounds per day equal to your cleric level + your " +
                     "constitution modifier. At 12th and 16th level, you can select one rage power. You cannot select any rage power that possesses a level requirement, but otherwise your barbarian " +
                     "level is equal to 1/2 your cleric level. These rounds of rage stack with any rounds of rage you might have from levels of barbarian.\nDomain {g|Encyclopedia:Spell}Spells{/g}: " +
-                    "true strike, boneshaker, rage, fear, boneshatter, harm, disintegrate, horrid wilting, tsunami.");
+                    "true strike, bulls strength, rage, fear, boneshatter, harm, disintegrate, horrid wilting, tsunami.");
                 bp.Groups = new FeatureGroup[] { FeatureGroup.ClericSecondaryDomain };
                 bp.IsClassFeature = true;
                 bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
