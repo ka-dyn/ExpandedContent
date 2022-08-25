@@ -306,6 +306,7 @@
     <Compile Include="Tweaks\Deities\Pulura.cs" />
     <Compile Include="Tweaks\Deities\Ragathiel.cs" />
     <Compile Include="Tweaks\DemonLords\Zura.cs" />
+    <Compile Include="Tweaks\Domains\RageDomain.cs" />
     <Compile Include="Tweaks\Domains\PsychopompDomainRepose.cs" />
     <Compile Include="Tweaks\Domains\PsychopompDomainDeath.cs" />
     <Compile Include="Tweaks\Domains\FerocityDomain.cs" />

@@ -94,6 +94,7 @@ namespace ExpandedContent.Tweaks
                 Domains.PsychopompDomainDeath.AddPsychopompDomainDeath();
                 Domains.PsychopompDomainRepose.AddPsychopompDomainRepose();
                 Domains.RiversDomain.AddRiversDomain();
+                Domains.RageDomain.AddRageDomain();
                 Domains.BaseDeityPatch.AddBaseDeityPatch();
 
                 Mysteries.DragonMystery.AddDragonMystery();

@@ -205,6 +205,11 @@
         "Enabled": true,
         "Homebrew": false,
         "Description": "Adds the rivers subdomain, a subdomain to the water domain."
+      },
+      "Rage Subdomain": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds the rage subdomain, a subdomain to the destruction domain."
       }
     },
     "IsExpanded": false

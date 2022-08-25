@@ -191,6 +191,13 @@
     "RiversDomainSpellList": "81fea2c6-fa82-4eee-8fa3-aa60fc07c891",
     "RiversDomainSpellListFeature": "652205f4-40bd-4ec1-b69c-c47b48505489",
     "RiversDomainSpellListFeatureDruid": "cbc1eab6-29d7-45be-952d-1c78059ef064",
+    "RageDomainAllowed": "4662bcb9-888f-4ca0-bd81-1f5629db6685",
+    "RageDomainBaseFeature": "7286413c-34ed-49c0-9543-fb63f68a2cbc",
+    "RageDomainExtraRage": "a6836243-34c7-474c-8def-7f97b2d57958",
+    "RageDomainProgression": "7198bee2-e30f-499e-bab2-c0239d0e80f3",
+    "RageDomainProgressionSecondary": "f3652bf9-709d-4f4d-af0e-3e93b36455e4",
+    "RageDomainSpellList": "6e77951c-cd32-4374-b82e-077ba7d4a791",
+    "RageDomainSpellListFeature": "9a8ad128-708a-4b15-a544-a74053aa9f84",
 
     "OathbreakersBaneResource": "9F4099A6-73AD-4F59-9581-F942323D6C66",
     "OathbreakersBaneAbility": "507879C4-4D4F-49D0-8215-9C43C3842FFD",
