@@ -200,6 +200,11 @@
         "Enabled": true,
         "Homebrew": false,
         "Description": "Adds the Psychopomp subdomain, a subdomain to the death and repose domains."
+      },
+      "Rivers Subdomain": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds the rivers subdomain, a subdomain to the water domain."
       }
     },
     "IsExpanded": false

@@ -180,6 +180,17 @@
     "PsychopompDomainReposeProgressionSecondary": "4966427e-e8f2-4294-bcbe-2d2b46704db0",
     "PsychopompDomainReposeSpellList": "8d077bd1-0d99-482e-a37e-913c12f3c6c8",
     "PsychopompDomainReposeSpellListFeature": "aa0bda49-30c6-480a-a3ea-0bdd4ee444f6",
+    "RiversDomainAllowed": "aa9919ce-50a6-4f2b-a15f-76d8d0afc841",
+    "RiversDomainBaseAbility": "fdc00193-cfde-44cf-ac65-29cd9d7ecc07",
+    "RiversDomainBaseBuff": "8389fc3d-c3ac-4337-9a89-ebaf5b3a6b3a",
+    "RiversDomainBaseFeature": "58d8fd93-08ac-4f00-b09a-fdce6b724336",
+    "RiversDomainBaseResource": "2e0df8f7-d92c-45af-a434-2e1265eb4532",
+    "RiversDomainProgression": "40a47e98-61c0-4451-8dbe-fa0634820904",
+    "RiversDomainProgressionDruid": "a5454cde-fab4-4b1d-a5ba-7b6c3b665c5c",
+    "RiversDomainProgressionSecondary": "472fa544-2ae7-490b-91b8-6c1af04a4e3d",
+    "RiversDomainSpellList": "81fea2c6-fa82-4eee-8fa3-aa60fc07c891",
+    "RiversDomainSpellListFeature": "652205f4-40bd-4ec1-b69c-c47b48505489",
+    "RiversDomainSpellListFeatureDruid": "cbc1eab6-29d7-45be-952d-1c78059ef064",
 
     "OathbreakersBaneResource": "9F4099A6-73AD-4F59-9581-F942323D6C66",
     "OathbreakersBaneAbility": "507879C4-4D4F-49D0-8215-9C43C3842FFD",
@@ -863,7 +874,11 @@
     "OceansEchoWavesSpells": "a87af19f-7b6d-4603-8926-301bf7cd634f",
     "OceansEchoWindMysteryFeature": "594b133e-f5d7-46e7-810d-9e1f2ae4aa41",
     "OceansEchoWindSpells": "6e7a3e7d-8b42-4aba-aa36-ac0c11b8b1e1",
-    "SecondMysteryOceansEcho": "62fc4303-7bfa-45da-97df-0dd6c0b10d04"
+    "SecondMysteryOceansEcho": "62fc4303-7bfa-45da-97df-0dd6c0b10d04",
+
+    "HydraulicPushAbility": "490cc690-49be-462e-afec-f69d7030b07a",
+    "SlipstreamAbility": "fe43fadb-91b0-40b3-8718-e88dd5744413",
+    "SlipstreamBuff": "f455287f-bfe2-40dd-a4b0-a9c5bb24309d"
 
 
 

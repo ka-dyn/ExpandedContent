@@ -74,6 +74,9 @@ namespace ExpandedContent.Tweaks
         
                 Backgrounds.ArchdukeOfCheliax.AddBackgroundArchdukeOfCheliax();
 
+                Spells.HydraulicPush.AddHydraulicPush();
+                Spells.Slipstream.AddSlipstream();
+
                 Domains.ArchonDomainGood.AddArchonDomainGood();
                 Domains.ArchonDomainLaw.AddArchonDomainLaw();
                 Domains.BloodDomain.AddBloodDomain();
@@ -89,7 +92,8 @@ namespace ExpandedContent.Tweaks
                 Domains.RevelationDomain.AddRevelationDomain();
                 Domains.FerocityDomain.AddFerocityDomain();
                 Domains.PsychopompDomainDeath.AddPsychopompDomainDeath();
-                Domains.PsychopompDomainRepose.AddPsychopompDomainRepose();                
+                Domains.PsychopompDomainRepose.AddPsychopompDomainRepose();
+                Domains.RiversDomain.AddRiversDomain();
                 Domains.BaseDeityPatch.AddBaseDeityPatch();
 
                 Mysteries.DragonMystery.AddDragonMystery();

@@ -317,6 +317,7 @@
     <Compile Include="Tweaks\Domains\BloodDomain.cs" />
     <Compile Include="Tweaks\Domains\BaseDeityPatch.cs" />
     <Compile Include="Tweaks\Domains\UndeadDomain.cs" />
+    <Compile Include="Tweaks\Domains\RiversDomain.cs" />
     <Compile Include="Tweaks\Domains\WindDomain.cs" />
     <Compile Include="Tweaks\Domains\IceDomain.cs" />
     <Compile Include="Tweaks\Domains\CavesDomain.cs" />
@@ -372,6 +373,8 @@
     <Compile Include="Extensions\ExtentionMethods.cs" />
     <Compile Include="Resources.cs" />
     <Compile Include="SaveGamePatch.cs" />
+    <Compile Include="Tweaks\Spells\Slipstream.cs" />
+    <Compile Include="Tweaks\Spells\HydraulicPush.cs" />
     <Compile Include="Tweaks\TheElderMythos\Abhoth.cs" />
     <Compile Include="Tweaks\TheElderMythos\AtlachNacha.cs" />
     <Compile Include="Tweaks\TheElderMythos\Azathoth.cs" />
@@ -1040,6 +1043,9 @@
     <Content Include="Assets\Skills\Icon_ProfaneWeapon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Skills\Icon_RiversDomainBaseAbility.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Skills\Icon_Scripture.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -1047,6 +1053,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_SinfulAbsolution.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_Slipstream.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_SpitefulTenacity.png">
