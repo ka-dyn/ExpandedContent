@@ -49,6 +49,7 @@ namespace ExpandedContent.Tweaks
                 Archetypes.SilverChampion.AddSilverChampion();
                 Archetypes.ClutchThief.AddClutchThief();
                 Archetypes.OceansEcho.AddOceansEcho();
+                Archetypes.DraconicShaman.AddDraconicShaman();
 
                 Classes.OathbreakerClass.AddOathbreakerClass();
                 Archetypes.Castigator.AddCastigator();

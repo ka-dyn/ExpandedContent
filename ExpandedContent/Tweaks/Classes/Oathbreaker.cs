@@ -338,7 +338,7 @@ namespace ExpandedContent.Tweaks.Classes {
             });
             // Oathbreakers Direction
             var ODIcon = AssetLoader.LoadInternal("Skills", "Icon_OD.png");
-            var OathbreakersDirectionBuffAllies = Helpers.CreateBlueprint<BlueprintBuff>("OathbreakersDirectionBuffAllies", bp => {
+            var OathbreakersDirectionBuffAllies = Helpers.CreateBuff("OathbreakersDirectionBuffAllies", bp => {
                 bp.SetName("Oathbreaker's Direction");
                 bp.SetDescription("At 1st level, the Oathbreaker can, as a move action, indicate an enemy in combat and rally her allies to " +
                     "focus on that target. The Oathbreaker and her allies gain a +1 bonus on weapon attack and damage rolls against the target. " +
@@ -369,7 +369,7 @@ namespace ExpandedContent.Tweaks.Classes {
                 });
             });
             var HellSealVariantDevouringFlamesBuff = Resources.GetBlueprint<BlueprintBuff>("5617dbbb3890e2f4b96b47318c5c438b");
-            var OathbreakersDirectionBuff = Helpers.CreateBlueprint<BlueprintBuff>("OathbreakersDirectionBuff", bp => {
+            var OathbreakersDirectionBuff = Helpers.CreateBuff("OathbreakersDirectionBuff", bp => {
                 bp.SetName("Oathbreaker's Direction");
                 bp.SetDescription("At 1st level, the Oathbreaker can, as a move action, indicate an enemy in combat and rally her allies to " +
                     "focus on that target. The Oathbreaker and her allies gain a +1 bonus on weapon attack and damage rolls against the target. " +
@@ -422,6 +422,7 @@ namespace ExpandedContent.Tweaks.Classes {
                 bp.m_Icon = ODIcon;
                 bp.Type = AbilityType.Extraordinary;
                 bp.Range = AbilityRange.Medium;
+                bp.CanTargetFriends = false;
                 bp.CanTargetEnemies = true;
                 bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Kineticist;

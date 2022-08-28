@@ -129,6 +129,11 @@
         "Enabled": true,
         "Homebrew": false,
         "Description": "A oracle archeype swapping serveral revelations for limited bardic abilities."
+      },
+      "Draconic Shaman": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "A shaman archeype swapping sprit and some hexes for a drake companion."
       }
     },
     "IsExpanded": false
