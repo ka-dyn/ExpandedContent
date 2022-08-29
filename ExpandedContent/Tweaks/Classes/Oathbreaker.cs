@@ -39,6 +39,7 @@ using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.UnitLogic.Abilities.Components.AreaEffects;
 using Kingmaker.Utility;
 using Kingmaker.Enums.Damage;
+using Kingmaker.UnitLogic.Mechanics.Properties;
 
 namespace ExpandedContent.Tweaks.Classes {
 
@@ -377,38 +378,40 @@ namespace ExpandedContent.Tweaks.Classes {
                     "activates this ability. At 5th level and every 5 levels thereafter (10th, 15th, and 20th level), the bonus increases by 1. The Oathbreaker's Direction " +
                     "lasts until the target dies or the Oathbreaker selects a new target.");
                 bp.m_Icon = ODIcon;
-                bp.FxOnStart = HellSealVariantDevouringFlamesBuff.FxOnStart;
-                bp.IsClassFeature = true;
-                bp.AddComponent<AttackBonusAgainstTarget>(c => {
-                    c.CheckCaster = true;
-                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+                bp.AddComponent<AttackBonusAgainstTarget>(c => {                                       
                     c.Value = new ContextValue() {
                         ValueType = ContextValueType.Shared,
-                        ValueShared = AbilitySharedValue.DamageBonus
+                        Value = 0,
+                        ValueRank = AbilityRankType.Default,
+                        ValueShared = AbilitySharedValue.DamageBonus,
+                        Property = UnitProperty.None,
                     };
+                    c.CheckCaster = true;
+                    c.CheckCasterFriend = true;
+                    c.Descriptor = ModifierDescriptor.UntypedStackable;
                 });
                 bp.AddComponent<DamageBonusAgainstTarget>(c => {
-                    c.CheckCaster = true;
-                    c.ApplyToSpellDamage = true;
                     c.Value = new ContextValue() {
                         ValueType = ContextValueType.Shared,
-                        ValueShared = AbilitySharedValue.DamageBonus
+                        Value = 0,
+                        ValueRank = AbilityRankType.Default,
+                        ValueShared = AbilitySharedValue.DamageBonus,
+                        Property = UnitProperty.None,
                     };
+                    c.CheckCaster = true;
+                    c.CheckCasterFriend = true;
+                    c.ApplyToSpellDamage = false;
                 });
                 bp.AddComponent<RemoveBuffIfCasterIsMissing>(c => {
                     c.RemoveOnCasterDeath = true;
                 });
                 bp.AddComponent<UniqueBuff>();
-                bp.AddComponent<AddFactContextActions>(c => {
-                    c.Activated = new ActionList() { };
-                    c.Deactivated = new ActionList() {
-                        Actions = new ContextAction[1] {
-                            new ContextActionRemoveBuff() {
-                                m_Buff = OathbreakersDirectionBuffAllies.ToReference<BlueprintBuffReference>()
-                            }
-                        }
-                    };
-                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+                bp.Stacking = StackingType.Replace;
+                bp.Ranks = 0;
+                bp.TickEachSecond = false;
+                bp.FxOnStart = HellSealVariantDevouringFlamesBuff.FxOnStart;
             });
             var OathbreakersDirectionAbility = Helpers.CreateBlueprint<BlueprintAbility>("OathbreakersDirectionAbility", bp => {
                 bp.SetName("Oathbreaker's Direction");
@@ -417,27 +420,11 @@ namespace ExpandedContent.Tweaks.Classes {
                     "This ability applies only to allies who can see or hear the Oathbreaker and who are within 30 feet of the Oathbreaker at the time she " +
                     "activates this ability. At 5th level and every 5 levels thereafter (10th, 15th, and 20th level), the bonus increases by 1. The Oathbreaker's Direction " +
                     "lasts until the target dies or the Oathbreaker selects a new target.");
-                bp.LocalizedDuration = Helpers.CreateString($"{bp.name}.Duration", "Until the directed target is dead");
-                bp.LocalizedSavingThrow = Helpers.CreateString($"{bp.name}.SavingThrow", "None");
                 bp.m_Icon = ODIcon;
-                bp.Type = AbilityType.Extraordinary;
-                bp.Range = AbilityRange.Medium;
-                bp.CanTargetFriends = false;
-                bp.CanTargetEnemies = true;
-                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
-                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Kineticist;
-                bp.ActionType =UnitCommand.CommandType.Move;
-                bp.AvailableMetamagic = Metamagic.Heighten | Metamagic.Reach;
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.Actions = Helpers.CreateActionList(
                         new ContextActionApplyBuff() {
                             m_Buff = OathbreakersDirectionBuff.ToReference<BlueprintBuffReference>(),
-                            Permanent = true,
-                            DurationValue = new ContextDurationValue() { m_IsExtendable = true },
-                            AsChild = true,
-                        },
-                        new ContextActionApplyBuff() {
-                            m_Buff = OathbreakersDirectionBuffAllies.ToReference<BlueprintBuffReference>(),
                             Permanent = true,
                             DurationValue = new ContextDurationValue() { m_IsExtendable = true },
                             AsChild = true,
@@ -455,7 +442,7 @@ namespace ExpandedContent.Tweaks.Classes {
                     };
                     c.Modifier = 1;
                 });
-                bp.AddContextRankConfig(c => {
+                bp.AddComponent<ContextRankConfig>(c => {
                     c.m_Type = AbilityRankType.DamageBonus;
                     c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
                     c.m_Progression = ContextRankProgression.Custom;
@@ -479,10 +466,24 @@ namespace ExpandedContent.Tweaks.Classes {
                         new ContextRankConfig.CustomProgressionItem(){ BaseValue = 17, ProgressionValue = 4 },
                         new ContextRankConfig.CustomProgressionItem(){ BaseValue = 18, ProgressionValue = 4 },
                         new ContextRankConfig.CustomProgressionItem(){ BaseValue = 19, ProgressionValue = 4 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 20, ProgressionValue = 5 }
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 20, ProgressionValue = 5 },
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 100, ProgressionValue = 5 }
                     };
-                    c.m_Class = new BlueprintCharacterClassReference[1] { OathbreakerClass.ToReference<BlueprintCharacterClassReference>() };
+                    c.m_Class = new BlueprintCharacterClassReference[1] { 
+                        OathbreakerClass.ToReference<BlueprintCharacterClassReference>() 
+                    };
                 });
+                bp.m_AllowNonContextActions = false;
+                bp.LocalizedDuration = Helpers.CreateString($"{bp.name}.Duration", "Until the directed target is dead");
+                bp.LocalizedSavingThrow = Helpers.CreateString($"{bp.name}.SavingThrow", "None");
+                bp.Type = AbilityType.Extraordinary;
+                bp.Range = AbilityRange.Medium;
+                bp.CanTargetFriends = false;
+                bp.CanTargetEnemies = true;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Kineticist;
+                bp.ActionType = UnitCommand.CommandType.Move;
+                bp.AvailableMetamagic = Metamagic.Heighten | Metamagic.Reach;
             });
             var OathbreakersDirectionAbilitySwift = Helpers.CreateBlueprint<BlueprintAbility>("OathbreakersDirectionAbilitySwift", bp => {
                 bp.SetName("Oathbreaker's Direction (Swift)");
@@ -532,7 +533,7 @@ namespace ExpandedContent.Tweaks.Classes {
                     "lasts until the target dies or the Oathbreaker selects a new target.");
                 bp.m_DescriptionShort = Helpers.CreateString("$OathbreakersDirection.DescriptionShort", "At 1st level, the Oathbreaker can, as a move action, indicate an enemy in combat and rally her allies to " +
                     "focus on that target. The Oathbreaker and her allies gain a +1 bonus on weapon attack and damage rolls against the target.");
-                bp.Ranks = 1;
+                bp.Ranks = 4;
                 bp.IsClassFeature = true;
                 bp.m_Icon = ODIcon;
             });
