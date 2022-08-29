@@ -21,6 +21,8 @@ New Archetypes
 
 -Ocean's Echo, Oracle
 
+-Draconic Shaman, Shaman
+
 New Classes
 
 -Oathbreaker - Based off the Vindictive Bastard fallen Paladin class. 
