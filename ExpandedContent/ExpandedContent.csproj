@@ -205,6 +205,7 @@
     <Compile Include="Tweaks\Classes\DreadKnight.cs" />
     <Compile Include="Tweaks\ContentAdder.cs" />
     <Compile Include="Tweaks\Curses\Vampirism.cs" />
+    <Compile Include="Tweaks\Deities\Groetus.cs" />
     <Compile Include="Tweaks\Deities\Dretha.cs" />
     <Compile Include="Tweaks\Deities\Lanishra.cs" />
     <Compile Include="Tweaks\Deities\Nulgreth.cs" />
@@ -375,6 +376,8 @@
     <Compile Include="Extensions\ExtentionMethods.cs" />
     <Compile Include="Resources.cs" />
     <Compile Include="SaveGamePatch.cs" />
+    <Compile Include="Tweaks\Spells\RigorMortis.cs" />
+    <Compile Include="Tweaks\Spells\ScourgeOfTheHorsemen.cs" />
     <Compile Include="Tweaks\Spells\Slipstream.cs" />
     <Compile Include="Tweaks\Spells\HydraulicPush.cs" />
     <Compile Include="Tweaks\TheElderMythos\Abhoth.cs" />
@@ -1046,6 +1049,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_RiversDomainBaseAbility.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_ScourgeOfTheHorsemen.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_Scripture.png">

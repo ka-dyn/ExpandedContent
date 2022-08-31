@@ -84,6 +84,7 @@ namespace ExpandedContent.Tweaks.Spells {
             SlipstreamAbility.AddToSpellList(SpellTools.SpellList.BloodragerSpellList, 2);
             SlipstreamAbility.AddToSpellList(SpellTools.SpellList.DruidSpellList, 2);
             SlipstreamAbility.AddToSpellList(SpellTools.SpellList.RangerSpellList, 2);
+            SlipstreamAbility.AddToSpellList(SpellTools.SpellList.HunterSpelllist, 2);
             SlipstreamAbility.AddToSpellList(SpellTools.SpellList.WizardSpellList, 2);
         }
     }

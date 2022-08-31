@@ -78,6 +78,7 @@ namespace ExpandedContent.Tweaks.Spells {
 
             HydraulicPushAbility.AddToSpellList(SpellTools.SpellList.BloodragerSpellList, 1);
             HydraulicPushAbility.AddToSpellList(SpellTools.SpellList.DruidSpellList, 1);
+            HydraulicPushAbility.AddToSpellList(SpellTools.SpellList.HunterSpelllist, 1);
             HydraulicPushAbility.AddToSpellList(SpellTools.SpellList.MagusSpellList, 1);
             HydraulicPushAbility.AddToSpellList(SpellTools.SpellList.ShamanSpelllist, 1);
             HydraulicPushAbility.AddToSpellList(SpellTools.SpellList.WizardSpellList, 1);

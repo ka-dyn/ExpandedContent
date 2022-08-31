@@ -140,6 +140,8 @@ namespace ExpandedContent.Tweaks.Deities {
             var ZyphusFeature = Resources.GetModBlueprint<BlueprintFeature>("ZyphusFeature");
             var KurgessFeature = Resources.GetModBlueprint<BlueprintFeature>("KurgessFeature");
             var YdersiusFeature = Resources.GetModBlueprint<BlueprintFeature>("YdersiusFeature");
+            var GroetusFeature = Resources.GetBlueprint<BlueprintFeature>("c3e4d5681906d5246ab8b0637b98cbfe");
+
 
             //Philosophies
             var GreenFaithFeature = Resources.GetBlueprint<BlueprintFeature>("99a7a8f13c1300c42878558fa9471e2f");
@@ -437,6 +439,7 @@ namespace ExpandedContent.Tweaks.Deities {
                 YdersiusFeature.ToReference<BlueprintFeatureReference>(),
                 ZonKuthonFeature.ToReference<BlueprintFeatureReference>(),
                 ZyphusFeature.ToReference<BlueprintFeatureReference>(),
+                GroetusFeature.ToReference<BlueprintFeatureReference>()
                 };
                 bp.IsClassFeature = true;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };

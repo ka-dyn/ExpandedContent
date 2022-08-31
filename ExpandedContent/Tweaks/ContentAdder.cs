@@ -77,6 +77,8 @@ namespace ExpandedContent.Tweaks
 
                 Spells.HydraulicPush.AddHydraulicPush();
                 Spells.Slipstream.AddSlipstream();
+                Spells.ScourgeOfTheHorsemen.AddScourgeOfTheHorsemen();
+                Spells.RigorMortis.AddRigorMortis();
 
                 Domains.ArchonDomainGood.AddArchonDomainGood();
                 Domains.ArchonDomainLaw.AddArchonDomainLaw();
@@ -164,6 +166,7 @@ namespace ExpandedContent.Tweaks
                 Deities.Zyphus.AddZyphusFeature();
                 Deities.Kurgess.AddKurgessFeature();
                 Deities.Ydersius.AddYdersiusFeature();
+                Deities.Groetus.AddGroetus();
                
                 Deities.PatchPulura.AddPulura();
                 Deities.MilaniSacredWeaponFeature.AddMilaniSacredWeaponFeature();

@@ -339,7 +339,7 @@ namespace ExpandedContent.Tweaks.Classes {
             });
             // Oathbreakers Direction
             var ODIcon = AssetLoader.LoadInternal("Skills", "Icon_OD.png");
-            var OathbreakersDirectionBuffAllies = Helpers.CreateBuff("OathbreakersDirectionBuffAllies", bp => {
+            var OathbreakersDirectionBuffAllies = Helpers.CreateBuff("OathbreakersDirectionBuffAllies", bp => { //Removed but still here to not break saves
                 bp.SetName("Oathbreaker's Direction");
                 bp.SetDescription("At 1st level, the Oathbreaker can, as a move action, indicate an enemy in combat and rally her allies to " +
                     "focus on that target. The Oathbreaker and her allies gain a +1 bonus on weapon attack and damage rolls against the target. " +

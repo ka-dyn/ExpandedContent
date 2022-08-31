@@ -887,7 +887,10 @@
 
     "HydraulicPushAbility": "490cc690-49be-462e-afec-f69d7030b07a",
     "SlipstreamAbility": "fe43fadb-91b0-40b3-8718-e88dd5744413",
-    "SlipstreamBuff": "f455287f-bfe2-40dd-a4b0-a9c5bb24309d"
+    "SlipstreamBuff": "f455287f-bfe2-40dd-a4b0-a9c5bb24309d",
+    "ScourgeOfTheHorsemenAbility": "dafdc0ee-f437-4785-aa82-7bf5b2059bf0",
+    "RigorMortisAbility": "2bba0384-72a6-4f67-b235-674c7e27d90c",
+    "RigorMortisBuff": "70f7386c-c79c-4cd1-a9a7-5d53e9a7bcf6"
 
 
 
