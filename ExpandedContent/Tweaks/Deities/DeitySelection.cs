@@ -722,6 +722,34 @@ namespace ExpandedContent.Tweaks.Deities {
             Greybor.AddComponent<AddFacts>(c => {
                 c.m_Facts = new BlueprintUnitFactReference[] { NorgorberFeature.ToReference<BlueprintUnitFactReference>() };
             });
+            var Nenio = Resources.GetBlueprint<BlueprintUnit>("1b893f7cf2b150e4f8bc2b3c389ba71d");
+            Nenio.AddComponent<AddFacts>(c => {
+                c.m_Facts = new BlueprintUnitFactReference[] { NethysFeature.ToReference<BlueprintUnitFactReference>() };
+            });
+            var Ember = Resources.GetBlueprint<BlueprintUnit>("2779754eecffd044fbd4842dba55312c");
+            Ember.AddComponent<AddFacts>(c => {
+                c.m_Facts = new BlueprintUnitFactReference[] { AtheismFeature.ToReference<BlueprintUnitFactReference>() };
+            });
+            var Sendri = Resources.GetBlueprint<BlueprintUnit>("561036c882a640089b1d42f03ebe3a6c");
+            Sendri.AddComponent<AddFacts>(c => {
+                c.m_Facts = new BlueprintUnitFactReference[] { DesnaFeature.ToReference<BlueprintUnitFactReference>() };
+            });
+            var Daeran = Resources.GetBlueprint<BlueprintUnit>("096fc4a96d675bb45a0396bcaa7aa993");
+            Daeran.AddComponent<AddFacts>(c => {
+                c.m_Facts = new BlueprintUnitFactReference[] { AtheismFeature.ToReference<BlueprintUnitFactReference>() };
+            });
+            var Regill = Resources.GetBlueprint<BlueprintUnit>("0d37024170b172346b3769df92a971f5");
+            Regill.AddComponent<AddFacts>(c => {
+                c.m_Facts = new BlueprintUnitFactReference[] { GodclawFeature.ToReference<BlueprintUnitFactReference>() };
+            });
+            var Trever = Resources.GetBlueprint<BlueprintUnit>("0bb1c03b9f7bbcf42bb74478af2c6258");
+            Trever.AddComponent<AddFacts>(c => {
+                c.m_Facts = new BlueprintUnitFactReference[] { ShelynFeature.ToReference<BlueprintUnitFactReference>() };
+            });
+            var Rekarth = Resources.GetBlueprint<BlueprintUnit>("3e0014e4be454482a2797fd81123d7b4");
+            Rekarth.AddComponent<AddFacts>(c => {
+                c.m_Facts = new BlueprintUnitFactReference[] { CalistriaFeature.ToReference<BlueprintUnitFactReference>() };
+            });
         }
         public static void ArchdevilsToggle() {
             if (ModSettings.AddedContent.Deities.IsDisabled("Archdevils")) { return; }
