@@ -395,6 +395,11 @@ namespace ExpandedContent.Extensions {
             blueprintUnit.Visual.FoleySoundPrefix = Helpers.CreateString(blueprintUnit.Visual.FoleySoundPrefix + "FoleySoundPrefix", soundPrefix);
         }
         //Faff bitter wrote end
+        //Bubbles start
+        public static void AppendInPlace<T>(ref T[] arr, params T[] newValue) {
+            arr = arr.AppendToArray(newValue);
+        }
+        //bubbles end
         public static void SetDescriptionUntagged(this BlueprintUnitFact feature, String description) {
             feature.m_Description = Helpers.CreateString(feature.name + ".Description", description);
         }

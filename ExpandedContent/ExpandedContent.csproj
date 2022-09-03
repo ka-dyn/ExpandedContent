@@ -376,6 +376,9 @@
     <Compile Include="Extensions\ExtentionMethods.cs" />
     <Compile Include="Resources.cs" />
     <Compile Include="SaveGamePatch.cs" />
+    <Compile Include="Tweaks\Spells\RevivingFinale.cs" />
+    <Compile Include="Tweaks\Spells\DeadlyFinale.cs" />
+    <Compile Include="Tweaks\Spells\FinaleSetup.cs" />
     <Compile Include="Tweaks\Spells\RigorMortis.cs" />
     <Compile Include="Tweaks\Spells\ScourgeOfTheHorsemen.cs" />
     <Compile Include="Tweaks\Spells\Slipstream.cs" />
@@ -417,6 +420,7 @@
     <Compile Include="Tweaks\Miscellaneous\Cavalier.cs" />
     <Compile Include="Utilities\ActionFlow.cs" />
     <Compile Include="Utilities\AuraUtils.cs" />
+    <Compile Include="Utilities\FinaleTools.cs" />
     <Compile Include="Utilities\MysteryTools.cs" />
     <Compile Include="Utilities\DomainTools.cs" />
     <Compile Include="Utilities\DescriptionTools.cs" />
@@ -1000,6 +1004,9 @@
     <Content Include="Assets\Skills\Icon_CVengeance.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Skills\Icon_DeadlyFinale.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Skills\Icon_DefensivePowers.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -1046,6 +1053,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_ProfaneWeapon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_RevivingFinale.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_RiversDomainBaseAbility.jpg">

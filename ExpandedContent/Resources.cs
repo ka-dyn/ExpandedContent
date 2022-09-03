@@ -36,6 +36,17 @@ namespace ExpandedContent {
             if (value == null) { Main.Log($"COULD NOT LOAD: {id} - {typeof(T)}"); }
             return value;
         }
+        public static T GetBlueprintReference<T>(string id) where T : BlueprintReferenceBase {
+            var assetId = BlueprintGuid.Parse(id);
+            var reference = Activator.CreateInstance<T>();
+            reference.deserializedGuid = assetId;
+            return reference;
+        }
+        public static T GetBlueprintReference<T>(BlueprintGuid id) where T : BlueprintReferenceBase {
+            var reference = Activator.CreateInstance<T>();
+            reference.deserializedGuid = id;
+            return reference;
+        }
         public static void AddBlueprint([NotNull] SimpleBlueprint blueprint) {
             AddBlueprint(blueprint, blueprint.AssetGuid);
         }

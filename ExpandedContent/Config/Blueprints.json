@@ -890,7 +890,11 @@
     "SlipstreamBuff": "f455287f-bfe2-40dd-a4b0-a9c5bb24309d",
     "ScourgeOfTheHorsemenAbility": "dafdc0ee-f437-4785-aa82-7bf5b2059bf0",
     "RigorMortisAbility": "2bba0384-72a6-4f67-b235-674c7e27d90c",
-    "RigorMortisBuff": "70f7386c-c79c-4cd1-a9a7-5d53e9a7bcf6"
+    "RigorMortisBuff": "70f7386c-c79c-4cd1-a9a7-5d53e9a7bcf6",
+    "DeadlyFinale": "3385edd2-3aad-4795-8614-25acfa798d64",
+    "DeadlyFinaleBuff": "ff9b494a-13fb-4db0-a78e-b76e4cbf16fc",
+    "PerformanceCooldown": "654f482e-ccfc-4157-becb-8152f2a5e3c3",
+    "RevivingFinale": "9f8ab280-738a-4578-a294-ccb8f0b25fa7"
 
 
 

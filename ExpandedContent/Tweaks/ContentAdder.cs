@@ -79,6 +79,9 @@ namespace ExpandedContent.Tweaks
                 Spells.Slipstream.AddSlipstream();
                 Spells.ScourgeOfTheHorsemen.AddScourgeOfTheHorsemen();
                 Spells.RigorMortis.AddRigorMortis();
+                Spells.FinaleSetup.AddFinale();
+                Spells.DeadlyFinale.AddDeadlyFinale();
+                Spells.RevivingFinale.AddRevivingFinale();
 
                 Domains.ArchonDomainGood.AddArchonDomainGood();
                 Domains.ArchonDomainLaw.AddArchonDomainLaw();
