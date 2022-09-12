@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace ExpandedContent.Tweaks.Classes.DrakeClass {
     internal class DrakeCompanionRed {
@@ -44,9 +45,14 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
             var HeadLocatorFeature = Resources.GetBlueprint<BlueprintFeature>("9c57e9674b4a4a2b9920f9fec47f7e6a");
             var DrakeSizeTiny = Resources.GetModBlueprint<BlueprintFeature>("DrakeSizeTiny");
 
-            
 
-
+            var DrakeRedPortrait = Helpers.CreateBlueprint<BlueprintPortrait>("DrakeRedPortrait", bp => {
+                bp.Data = new PortraitData() {
+                    PortraitCategory = PortraitCategory.None,
+                    IsDefault = false,
+                    InitiativePortrait = false
+                };
+            });
 
             var DrakeBloodRed = Helpers.CreateBlueprint<BlueprintFeature>("DrakeBloodRed", bp => {
                 bp.SetName("DrakeBloodRed");
@@ -77,7 +83,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 bp.Size = Size.Huge;
                 bp.Color = AzataDragonUnit.Color;
                 bp.Alignment = Alignment.ChaoticEvil;
-                bp.m_Portrait = AzataDragonUnit.m_Portrait;
+                bp.m_Portrait = DrakeRedPortrait.ToReference<BlueprintPortraitReference>();
                 bp.Prefab = FormOfTheDragonRedBuff.m_Prefab;
                 bp.Visual = RedDragon.Visual;
                 bp.m_Faction = Neutrals.ToReference<BlueprintFactionReference>();
@@ -126,6 +132,9 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 };
             });
 
+            FullPortraitInjecotr.Replacements[DrakeCompanionUnitRed.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "RedFulllength.png", new Vector2Int(692, 1024), TextureFormat.RGBA32);
+            HalfPortraitInjecotr.Replacements[DrakeCompanionUnitRed.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "RedMedium.png", new Vector2Int(330, 432), TextureFormat.RGBA32);
+            SmallPortraitInjecotr.Replacements[DrakeCompanionUnitRed.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "RedSmall.png", new Vector2Int(185, 242), TextureFormat.RGBA32);
 
 
             var DrakeCompanionFeatureRed = Helpers.CreateBlueprint<BlueprintFeature>("DrakeCompanionFeatureRed", bp => {

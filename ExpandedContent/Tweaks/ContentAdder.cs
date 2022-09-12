@@ -29,6 +29,8 @@ namespace ExpandedContent.Tweaks
                 Classes.DrakeClass.DrakeCompanionBlack.AddDrakeCompanionBlack();
                 Classes.DrakeClass.DrakeCompanionBlue.AddDrakeCompanionBlue();
                 Classes.DrakeClass.DrakeCompanionBrass.AddDrakeCompanionBrass();
+                Classes.DrakeClass.DrakeCompanionBronze.AddDrakeCompanionBronze();
+                Classes.DrakeClass.DrakeCompanionCopper.AddDrakeCompanionCopper();
                 Classes.DrakeClass.DrakeCompanionRed.AddDrakeCompanionRed();
                 Classes.DrakeClass.DrakeCompanionWhite.AddDrakeCompanionWhite();
                 Classes.DrakeClass.DrakeCompanionGold.AddDrakeCompanionGold();
@@ -82,6 +84,7 @@ namespace ExpandedContent.Tweaks
                 Spells.FinaleSetup.AddFinale();
                 Spells.DeadlyFinale.AddDeadlyFinale();
                 Spells.RevivingFinale.AddRevivingFinale();
+                Spells.StunningFinale.AddStunningFinale();
 
                 Domains.ArchonDomainGood.AddArchonDomainGood();
                 Domains.ArchonDomainLaw.AddArchonDomainLaw();

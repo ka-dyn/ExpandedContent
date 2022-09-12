@@ -181,6 +181,11 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     m_Archetype = ClawOfTheFalseWyrmArchetype.ToReference<BlueprintArchetypeReference>(),
                     AdditionalLevel = 0
                 });
+            DrakeCompanionProgression.m_Classes = DrakeCompanionProgression.m_Classes.AppendToArray(
+                new BlueprintProgression.ClassWithLevel() {
+                    m_Class = DreadKnightClass.ToReference<BlueprintCharacterClassReference>(),
+                    AdditionalLevel = 0
+                });
             DreadKnightClass.m_Archetypes = DreadKnightClass.m_Archetypes.AppendToArray(ClawOfTheFalseWyrmArchetype.ToReference<BlueprintArchetypeReference>());
         }
     }

@@ -721,6 +721,24 @@
     "WildShapeDragonShapeWhite2": "40e0ffbb-1680-4b33-8d1f-df6292faa247",
     "DraconicShamanArchetype": "1bd909b6-13dc-4773-bf7b-645f10beb75c",
     "ShamanDrakeCompanionFeature": "70aece5d-e1dc-4ada-8e3a-54cc7983dcd8",
+    "DrakeBlackPortrait": "ba138db0-fba0-4bd1-a553-08f93fe56d06",
+    "DrakeBloodBronze": "b28638f4-9711-45fc-9119-275a22ca16d5",
+    "DrakeBloodBronzeSpelllist": "ca4f28b2-4e60-415e-826d-1aa9ee98e2b4",
+    "DrakeBloodCopper": "37b47188-22cf-4d54-a0a5-b5be92c34acb",
+    "DrakeBloodCopperSpelllist": "213157ab-9ce3-47a8-9625-14d69db940aa",
+    "DrakeBluePortrait": "94811102-35ee-488a-8dc0-ca2c70e5cd6e",
+    "DrakeBrassPortrait": "0756d307-bc90-4152-b384-2ca53a1a5d3a",
+    "DrakeBronzePortrait": "f7ad9577-ce77-432e-9f27-70e16018bd05",
+    "DrakeCompanionFeatureBronze": "cbb556d0-e50b-465d-b435-f009594f9fd4",
+    "DrakeCompanionFeatureCopper": "b1499283-8c8b-4175-b5d7-7046d14fbd82",
+    "DrakeCompanionUnitBronze": "9329050b-3f44-4846-a85e-dfea7e7bff77",
+    "DrakeCompanionUnitCopper": "38aaa778-9e33-43ec-9822-d00102c11d47",
+    "DrakeCopperPortrait": "6abaab3f-1718-41a8-8dd0-c6db23a203ef",
+    "DrakeGoldPortrait": "de6e414b-c060-4d69-ab7b-99388dbcc0f7",
+    "DrakeGreenPortrait": "cea1ffee-e7f2-4f68-baa2-dec014c7262c",
+    "DrakeRedPortrait": "5c063bc4-c28b-4f8c-a842-0ea1a8c65830",
+    "DrakeSilverPortrait": "32617896-d875-475d-b7b6-892aedf00cd9",
+    "DrakeWhitePortrait": "63ecf9ef-3d5a-472e-9378-2441e3656e32",
 
     "BeneficialVampirismCurseProgression": "8c70b8f6-44aa-489b-a537-0e08c06def3a",
     "DivineHerbalistDragonMysteryFeature": "160babe5-5b4c-406d-a153-1db87ea544f6",
@@ -894,7 +912,8 @@
     "DeadlyFinale": "3385edd2-3aad-4795-8614-25acfa798d64",
     "DeadlyFinaleBuff": "ff9b494a-13fb-4db0-a78e-b76e4cbf16fc",
     "PerformanceCooldown": "654f482e-ccfc-4157-becb-8152f2a5e3c3",
-    "RevivingFinale": "9f8ab280-738a-4578-a294-ccb8f0b25fa7"
+    "RevivingFinale": "9f8ab280-738a-4578-a294-ccb8f0b25fa7",
+    "StunningFinale": "a1f0d4c3-ce2c-4c2e-b705-b18861f14708"
 
 
 

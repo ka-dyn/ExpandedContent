@@ -7,6 +7,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Items.Weapons;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
+using Kingmaker.ResourceLinks;
 using Kingmaker.UnitLogic.Buffs;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.FactLogic;
@@ -21,15 +22,15 @@ using System.Threading.Tasks;
 using UnityEngine;
 
 namespace ExpandedContent.Tweaks.Classes.DrakeClass {
-    internal class DrakeCompanionBlue {
+    internal class DrakeCompanionCopper {
 
-        public static void AddDrakeCompanionBlue() {
+        public static void AddDrakeCompanionCopper() {
 
             var AnimalCompanionRank = Resources.GetBlueprint<BlueprintFeature>("1670990255e4fe948a863bafd5dbda5d");
             var DrakeCompanionClass = Resources.GetModBlueprint<BlueprintCharacterClass>("DrakeCompanionClass");
-            var DrakeSubtypeAir = Resources.GetModBlueprint<BlueprintFeature>("DrakeSubtypeAir");
-            var FormOfTheDragonBlueBuff = Resources.GetBlueprint<BlueprintBuff>("b117bc8b41735924dba3fb23318f39ff").GetComponent<Polymorph>();
-            var BloodlineDraconicBlueProgression = Resources.GetBlueprint<BlueprintProgression>("8a7f100c02d0b254d8f5f3affc8ef386");
+            var DrakeSubtypeEarth = Resources.GetModBlueprint<BlueprintFeature>("DrakeSubtypeEarth");
+            var ArmyDragonCopper = Resources.GetBlueprint<BlueprintUnit>("dcdbc80e8fd6430c8608ab1477d8ca9f"); //Model is Brass
+            var BloodlineDraconicCopperProgression = Resources.GetBlueprint<BlueprintProgression>("b522759a265897b4f8f7a1a180a692e4");
             var BlackDragon_Barks = Resources.GetBlueprint<BlueprintUnitAsksList>("3c0924a80e504f04c94de6ec2a28f9aa");
             var CharacterBrain = Resources.GetBlueprint<BlueprintBrain>("cf986dd7ba9d4ec46ad8a3a0406d02ae");
             var Neutrals = Resources.GetBlueprint<BlueprintFaction>("d8de50cc80eb4dc409a983991e0b77ad");
@@ -46,18 +47,20 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
             var DrakeSizeTiny = Resources.GetModBlueprint<BlueprintFeature>("DrakeSizeTiny");
 
 
-            var DrakeBluePortrait = Helpers.CreateBlueprint<BlueprintPortrait>("DrakeBluePortrait", bp => {
+
+
+            var DrakeCopperPortrait = Helpers.CreateBlueprint<BlueprintPortrait>("DrakeCopperPortrait", bp => {
                 bp.Data = new PortraitData() {
                     PortraitCategory = PortraitCategory.None,
                     IsDefault = false,
                     InitiativePortrait = false
                 };
-
+                
             });
 
 
-            var DrakeBloodBlue = Helpers.CreateBlueprint<BlueprintFeature>("DrakeBloodBlue", bp => {
-                bp.SetName("DrakeBloodBlue");
+            var DrakeBloodCopper = Helpers.CreateBlueprint<BlueprintFeature>("DrakeBloodCopper", bp => {
+                bp.SetName("DrakeBloodCopper");
                 bp.SetDescription("");
                 bp.m_AllowNonContextActions = false;
                 bp.HideInUI = true;
@@ -65,7 +68,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
             });
 
 
-            var DrakeCompanionUnitBlue = Helpers.CreateBlueprint<BlueprintUnit>("DrakeCompanionUnitBlue", bp => {
+            var DrakeCompanionUnitCopper = Helpers.CreateBlueprint<BlueprintUnit>("DrakeCompanionUnitCopper", bp => {
                 bp.AddComponent<AddClassLevels>(c => {
                     c.m_CharacterClass = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
                     c.RaceStat = StatType.Unknown;
@@ -84,9 +87,9 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 bp.Gender = Gender.Male;
                 bp.Size = Size.Huge;
                 bp.Color = AzataDragonUnit.Color;
-                bp.Alignment = Alignment.LawfulEvil;
-                bp.m_Portrait = DrakeBluePortrait.ToReference<BlueprintPortraitReference>();
-                bp.Prefab = FormOfTheDragonBlueBuff.m_Prefab;
+                bp.Alignment = Alignment.ChaoticGood;
+                bp.m_Portrait = DrakeCopperPortrait.ToReference<BlueprintPortraitReference>();
+                bp.Prefab = ArmyDragonCopper.Prefab;
                 bp.Visual = RedDragon.Visual;
                 bp.m_Faction = Neutrals.ToReference<BlueprintFactionReference>();
                 bp.FactionOverrides = AzataDragonUnit.FactionOverrides;
@@ -127,28 +130,28 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 bp.MaxHP = 0;
                 bp.m_AddFacts = new BlueprintUnitFactReference[] {
                     DrakeCompanionSlotFeature.ToReference<BlueprintUnitFactReference>(),
-                    DrakeSubtypeAir.ToReference<BlueprintUnitFactReference>(),
+                    DrakeSubtypeEarth.ToReference<BlueprintUnitFactReference>(),
                     DragonType.ToReference<BlueprintUnitFactReference>(),
-                    DrakeBloodBlue.ToReference<BlueprintUnitFactReference>(),
+                    DrakeBloodCopper.ToReference<BlueprintUnitFactReference>(),
                     DrakeSizeTiny.ToReference<BlueprintUnitFactReference>()
                 };
             });
 
-            FullPortraitInjecotr.Replacements[DrakeCompanionUnitBlue.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "BlueFulllength.png", new Vector2Int(692, 1024), TextureFormat.RGBA32);
-            HalfPortraitInjecotr.Replacements[DrakeCompanionUnitBlue.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "BlueMedium.png", new Vector2Int(330, 432), TextureFormat.RGBA32);
-            SmallPortraitInjecotr.Replacements[DrakeCompanionUnitBlue.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "BlueSmall.png", new Vector2Int(185, 242), TextureFormat.RGBA32);
+            FullPortraitInjecotr.Replacements[DrakeCompanionUnitCopper.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "CopperFulllength.png", new Vector2Int(692, 1024), TextureFormat.RGBA32);
+            HalfPortraitInjecotr.Replacements[DrakeCompanionUnitCopper.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "CopperMedium.png", new Vector2Int(330, 432), TextureFormat.RGBA32);
+            SmallPortraitInjecotr.Replacements[DrakeCompanionUnitCopper.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "CopperSmall.png", new Vector2Int(185, 242), TextureFormat.RGBA32);
 
 
-            var DrakeCompanionFeatureBlue = Helpers.CreateBlueprint<BlueprintFeature>("DrakeCompanionFeatureBlue", bp => {
-                bp.SetName("Drake Companion - Blue");
+            var DrakeCompanionFeatureCopper = Helpers.CreateBlueprint<BlueprintFeature>("DrakeCompanionFeatureCopper", bp => {
+                bp.SetName("Drake Companion - Copper");
                 bp.SetDescription("Drakes are brutish lesser kindred of true dragons. Though they aren’t particularly intelligent, drakes’ significantly faster breeding allows their kind to survive in harsh environments. While a " +
                     "young drake is weaker than a standard animal companion, as they grow they will start to resemble their draconic cousins more and more until they rival them in power. " +
-                    "\n This drake is descended from chromatic blue dragons, giving it the air subtype and granting it potential to wield electric breath attacks");
-                bp.m_Icon = BloodlineDraconicBlueProgression.m_Icon;
+                    "\n This drake is descended from metallic copper dragons, giving it the earth subtype and granting it potential to wield acid breath attacks");
+                bp.m_Icon = BloodlineDraconicCopperProgression.m_Icon;
                 bp.AddComponent<AddPet>(c => {
                     c.Type = PetType.AnimalCompanion;
                     c.ProgressionType = PetProgressionType.AnimalCompanion;
-                    c.m_Pet = DrakeCompanionUnitBlue.ToReference<BlueprintUnitReference>();
+                    c.m_Pet = DrakeCompanionUnitCopper.ToReference<BlueprintUnitReference>();
                     c.m_LevelRank = AnimalCompanionRank.ToReference<BlueprintFeatureReference>();
                 });
                 bp.AddComponent<PrerequisitePet>(c => {

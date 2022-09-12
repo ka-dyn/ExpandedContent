@@ -107,7 +107,7 @@ namespace ExpandedContent.Tweaks.Spells {
             });
 
 
-            //Ability test
+            
             var DeadlyFinale = Helpers.CreateBlueprint<BlueprintAbility>("DeadlyFinale", bp => {
                 bp.SetName("Deadly Finale");
                 bp.SetDescription("You must have a bardic performance in effect to cast this spell. With a flourish, you immediately end your performance, dealing 2d8 points of " +

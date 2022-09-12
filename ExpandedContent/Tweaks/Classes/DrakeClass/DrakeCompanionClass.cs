@@ -85,6 +85,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                         },
                     })
                     .ToArray();
+                bp.ForAllOtherClasses = false;
                 bp.GiveFeaturesForPreviousLevels = true;
             });
             var DrakeCompanionClassProgression = Helpers.CreateBlueprint<BlueprintProgression>("DrakeCompanionClassProgression", bp => {
@@ -2159,6 +2160,15 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                     c.m_Facts = new BlueprintUnitFactReference[] {CompactDrake.ToReference<BlueprintUnitFactReference>()};
                 });
             });
+
+            //Feat Lock
+            var LightArmorProficiency = Resources.GetBlueprint<BlueprintFeature>("6d3728d4e9c9898458fe5e9532951132");
+            var MediumArmorProficiency = Resources.GetBlueprint<BlueprintFeature>("46f4fb320f35704488ba3d513397789d");
+            var HeavyArmorProficiency = Resources.GetBlueprint<BlueprintFeature>("1b0f68188dcc435429fb87a022239681");
+            LightArmorProficiency.AddComponent<PrerequisiteNoFeature>(c => { c.m_Feature = DrakeCompanionSlotFeature.ToReference<BlueprintFeatureReference>(); c.HideInUI = true; });
+            MediumArmorProficiency.AddComponent<PrerequisiteNoFeature>(c => { c.m_Feature = DrakeCompanionSlotFeature.ToReference<BlueprintFeatureReference>(); c.HideInUI = true; });
+            HeavyArmorProficiency.AddComponent<PrerequisiteNoFeature>(c => { c.m_Feature = DrakeCompanionSlotFeature.ToReference<BlueprintFeatureReference>(); c.HideInUI = true; });
+
 
             DrakeCompanionClassProgression.m_Classes = new BlueprintProgression.ClassWithLevel[] {
                 new BlueprintProgression.ClassWithLevel {

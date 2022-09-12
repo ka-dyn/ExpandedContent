@@ -19,6 +19,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace ExpandedContent.Tweaks.Classes.DrakeClass {
     internal class DrakeCompanionBlack {
@@ -49,17 +50,15 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
             //var BlackLarge = AssetLoader.LoadInternal("Portraits", "BlackLarge.png");
             //var BlackSmall = AssetLoader.LoadInternal("Portraits", "BlackSmall.png");
 
-            //var DrakeBlackPortrait = Helpers.CreateBlueprint<BlueprintPortrait>("DrakeBlackPortrait", bp => {
-            //    bp.Data = new PortraitData() {
-            //        m_FullLengthImage = new SpriteLink() { AssetId = "BlackLarge.png" },
-            //        m_HalfLengthImage = new SpriteLink() { AssetId = "BlackLarge.png" },
-            //        m_PortraitImage = new SpriteLink() { AssetId = "BlackSmall.png" },
-            //        PortraitCategory = PortraitCategory.None,
-            //        IsDefault = false,
-            //        InitiativePortrait = false
-            //    };
-            //    
-            //});
+            var DrakeBlackPortrait = Helpers.CreateBlueprint<BlueprintPortrait>("DrakeBlackPortrait", bp => {
+                bp.Data = new PortraitData() {
+                    PortraitCategory = PortraitCategory.None,
+                    IsDefault = false,
+                    InitiativePortrait = false
+                };
+                
+            });
+
 
             var DrakeBloodBlack = Helpers.CreateBlueprint<BlueprintFeature>("DrakeBloodBlack", bp => {
                 bp.SetName("DrakeBloodBlack");
@@ -90,7 +89,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 bp.Size = Size.Huge;
                 bp.Color = AzataDragonUnit.Color;
                 bp.Alignment = Alignment.ChaoticEvil;
-                bp.m_Portrait = AzataDragonUnit.m_Portrait;
+                bp.m_Portrait = DrakeBlackPortrait.ToReference<BlueprintPortraitReference>();
                 bp.Prefab = FormOfTheDragonBlackBuff.m_Prefab;
                 bp.Visual = RedDragon.Visual;
                 bp.m_Faction = Neutrals.ToReference<BlueprintFactionReference>();
@@ -139,6 +138,9 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 };
             });
 
+            FullPortraitInjecotr.Replacements[DrakeCompanionUnitBlack.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "BlackFulllength.png", new Vector2Int(692, 1024), TextureFormat.RGBA32);
+            HalfPortraitInjecotr.Replacements[DrakeCompanionUnitBlack.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "BlackMedium.png", new Vector2Int(330, 432), TextureFormat.RGBA32);
+            SmallPortraitInjecotr.Replacements[DrakeCompanionUnitBlack.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "BlackSmall.png", new Vector2Int(185, 242), TextureFormat.RGBA32);
 
 
             var DrakeCompanionFeatureBlack = Helpers.CreateBlueprint<BlueprintFeature>("DrakeCompanionFeatureBlack", bp => {

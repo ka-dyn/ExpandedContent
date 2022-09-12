@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace ExpandedContent.Tweaks.Classes.DrakeClass {
     internal class DrakeCompanionBrass {
@@ -27,8 +28,11 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
             var AnimalCompanionRank = Resources.GetBlueprint<BlueprintFeature>("1670990255e4fe948a863bafd5dbda5d");
             var DrakeCompanionClass = Resources.GetModBlueprint<BlueprintCharacterClass>("DrakeCompanionClass");
             var DrakeSubtypeFire = Resources.GetModBlueprint<BlueprintFeature>("DrakeSubtypeFire");
-            var FormOfTheDragonBrassBuff = Resources.GetBlueprint<BlueprintBuff>("17d330af03f5b3042a4417ab1d45e484").GetComponent<Polymorph>();
+            var FormOfTheDragonBrassBuff = Resources.GetBlueprint<BlueprintBuff>("17d330af03f5b3042a4417ab1d45e484").GetComponent<Polymorph>(); //Model is Bronze
+            var ArmyDragonCopper = Resources.GetBlueprint<BlueprintUnit>("dcdbc80e8fd6430c8608ab1477d8ca9f"); //Model is Brass
+            var BloodlineDraconicCopperProgression = Resources.GetBlueprint<BlueprintProgression>("b522759a265897b4f8f7a1a180a692e4"); //Pic is Brass
             var BloodlineDraconicBrassProgression = Resources.GetBlueprint<BlueprintProgression>("5f9ecbee67db8364985e9d0500eb25f1");
+            var FormOfTheDragonGoldBuff = Resources.GetBlueprint<BlueprintBuff>("89669cfba3d9c15448c23b79dd604c41").GetComponent<Polymorph>();
             var BlackDragon_Barks = Resources.GetBlueprint<BlueprintUnitAsksList>("3c0924a80e504f04c94de6ec2a28f9aa");
             var CharacterBrain = Resources.GetBlueprint<BlueprintBrain>("cf986dd7ba9d4ec46ad8a3a0406d02ae");
             var Neutrals = Resources.GetBlueprint<BlueprintFaction>("d8de50cc80eb4dc409a983991e0b77ad");
@@ -44,7 +48,14 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
             var HeadLocatorFeature = Resources.GetBlueprint<BlueprintFeature>("9c57e9674b4a4a2b9920f9fec47f7e6a");
             var DrakeSizeTiny = Resources.GetModBlueprint<BlueprintFeature>("DrakeSizeTiny");
 
-            
+            var DrakeBrassPortrait = Helpers.CreateBlueprint<BlueprintPortrait>("DrakeBrassPortrait", bp => {
+                bp.Data = new PortraitData() {
+                    PortraitCategory = PortraitCategory.None,
+                    IsDefault = false,
+                    InitiativePortrait = false
+                };
+
+            });
 
 
 
@@ -77,8 +88,8 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 bp.Size = Size.Huge;
                 bp.Color = AzataDragonUnit.Color;
                 bp.Alignment = Alignment.ChaoticGood;
-                bp.m_Portrait = AzataDragonUnit.m_Portrait;
-                bp.Prefab = FormOfTheDragonBrassBuff.m_Prefab;
+                bp.m_Portrait = DrakeBrassPortrait.ToReference<BlueprintPortraitReference>();
+                bp.Prefab = FormOfTheDragonGoldBuff.m_Prefab;
                 bp.Visual = RedDragon.Visual;
                 bp.m_Faction = Neutrals.ToReference<BlueprintFactionReference>();
                 bp.FactionOverrides = AzataDragonUnit.FactionOverrides;
@@ -126,6 +137,9 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 };
             });
 
+            FullPortraitInjecotr.Replacements[DrakeCompanionUnitBrass.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "BrassFulllength.png", new Vector2Int(692, 1024), TextureFormat.RGBA32);
+            HalfPortraitInjecotr.Replacements[DrakeCompanionUnitBrass.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "BrassMedium.png", new Vector2Int(330, 432), TextureFormat.RGBA32);
+            SmallPortraitInjecotr.Replacements[DrakeCompanionUnitBrass.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "BrassSmall.png", new Vector2Int(185, 242), TextureFormat.RGBA32);
 
 
             var DrakeCompanionFeatureBrass = Helpers.CreateBlueprint<BlueprintFeature>("DrakeCompanionFeatureBrass", bp => {

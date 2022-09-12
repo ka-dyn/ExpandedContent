@@ -189,8 +189,10 @@
     <Compile Include="Tweaks\Archetypes\PriestOfBalance.cs" />
     <Compile Include="Tweaks\Archetypes\LivingScripture.cs" />
     <Compile Include="Tweaks\Backgrounds\ArchdukeOfCheliax.cs" />
+    <Compile Include="Tweaks\Classes\DrakeClass\DrakeCompanionCopper.cs" />
     <Compile Include="Tweaks\Classes\DrakeClass\DrakeCompanionBlack.cs" />
     <Compile Include="Tweaks\Classes\DrakeClass\DrakeCompanionBlue.cs" />
+    <Compile Include="Tweaks\Classes\DrakeClass\DrakeCompanionBronze.cs" />
     <Compile Include="Tweaks\Classes\DrakeClass\DrakeCompanionGold.cs" />
     <Compile Include="Tweaks\Classes\DrakeClass\DrakeCompanionRed.cs" />
     <Compile Include="Tweaks\Classes\DrakeClass\DrakeCompanionBrass.cs" />
@@ -376,6 +378,7 @@
     <Compile Include="Extensions\ExtentionMethods.cs" />
     <Compile Include="Resources.cs" />
     <Compile Include="SaveGamePatch.cs" />
+    <Compile Include="Tweaks\Spells\StunningFinale.cs" />
     <Compile Include="Tweaks\Spells\RevivingFinale.cs" />
     <Compile Include="Tweaks\Spells\DeadlyFinale.cs" />
     <Compile Include="Tweaks\Spells\FinaleSetup.cs" />
@@ -420,6 +423,8 @@
     <Compile Include="Tweaks\Miscellaneous\Cavalier.cs" />
     <Compile Include="Utilities\ActionFlow.cs" />
     <Compile Include="Utilities\AuraUtils.cs" />
+    <Compile Include="Utilities\PortraitLoader.cs" />
+    <Compile Include="Utilities\PortraitInjector.cs" />
     <Compile Include="Utilities\FinaleTools.cs" />
     <Compile Include="Utilities\MysteryTools.cs" />
     <Compile Include="Utilities\DomainTools.cs" />
@@ -965,6 +970,96 @@
     <Content Include="Assets\Deities\Icon_Zyphus.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Portraits\BlackFulllength.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Portraits\BlackMedium.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Portraits\BlackSmall.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Portraits\BlueFulllength.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Portraits\BlueMedium.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Portraits\BlueSmall.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Portraits\BrassFulllength.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Portraits\BrassMedium.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Portraits\BrassSmall.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Portraits\BronzeFulllength.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Portraits\BronzeMedium.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Portraits\BronzeSmall.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Portraits\CopperFulllength.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Portraits\CopperMedium.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Portraits\CopperSmall.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Portraits\GoldFulllength.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Portraits\GoldMedium.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Portraits\GoldSmall.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Portraits\GreenFulllength.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Portraits\GreenMedium.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Portraits\GreenSmall.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Portraits\RedFulllength.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Portraits\RedMedium.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Portraits\RedSmall.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Portraits\SilverFulllength.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Portraits\SilverMedium.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Portraits\SilverSmall.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Portraits\WhiteFulllength.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Portraits\WhiteMedium.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Portraits\WhiteSmall.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Skills\Icon_AOAbsolution.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -1083,6 +1178,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_Stalwart.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_StunningFinale.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_TouchCorrupt.png">

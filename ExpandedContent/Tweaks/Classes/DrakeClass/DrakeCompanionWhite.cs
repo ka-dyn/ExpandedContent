@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace ExpandedContent.Tweaks.Classes.DrakeClass {
     internal class DrakeCompanionWhite {
@@ -44,9 +45,13 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
             var HeadLocatorFeature = Resources.GetBlueprint<BlueprintFeature>("9c57e9674b4a4a2b9920f9fec47f7e6a");
             var DrakeSizeTiny = Resources.GetModBlueprint<BlueprintFeature>("DrakeSizeTiny");
 
-
-
-
+            var DrakeWhitePortrait = Helpers.CreateBlueprint<BlueprintPortrait>("DrakeWhitePortrait", bp => {
+                bp.Data = new PortraitData() {
+                    PortraitCategory = PortraitCategory.None,
+                    IsDefault = false,
+                    InitiativePortrait = false
+                };
+            });
 
             var DrakeBloodWhite = Helpers.CreateBlueprint<BlueprintFeature>("DrakeBloodWhite", bp => {
                 bp.SetName("DrakeBloodWhite");
@@ -55,7 +60,6 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 bp.HideInUI = true;
                 bp.IsClassFeature = true;
             });
-
 
             var DrakeCompanionUnitWhite = Helpers.CreateBlueprint<BlueprintUnit>("DrakeCompanionUnitWhite", bp => {
                 bp.AddComponent<AddClassLevels>(c => {
@@ -77,7 +81,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 bp.Size = Size.Huge;
                 bp.Color = AzataDragonUnit.Color;
                 bp.Alignment = Alignment.ChaoticEvil;
-                bp.m_Portrait = AzataDragonUnit.m_Portrait;
+                bp.m_Portrait = DrakeWhitePortrait.ToReference<BlueprintPortraitReference>();
                 bp.Prefab = FormOfTheDragonWhiteBuff.m_Prefab;
                 bp.Visual = RedDragon.Visual;
                 bp.m_Faction = Neutrals.ToReference<BlueprintFactionReference>();
@@ -126,6 +130,9 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 };
             });
 
+            FullPortraitInjecotr.Replacements[DrakeCompanionUnitWhite.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "WhiteFulllength.png", new Vector2Int(692, 1024), TextureFormat.RGBA32);
+            HalfPortraitInjecotr.Replacements[DrakeCompanionUnitWhite.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "WhiteMedium.png", new Vector2Int(330, 432), TextureFormat.RGBA32);
+            SmallPortraitInjecotr.Replacements[DrakeCompanionUnitWhite.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "WhiteSmall.png", new Vector2Int(185, 242), TextureFormat.RGBA32);
 
 
             var DrakeCompanionFeatureWhite = Helpers.CreateBlueprint<BlueprintFeature>("DrakeCompanionFeatureWhite", bp => {

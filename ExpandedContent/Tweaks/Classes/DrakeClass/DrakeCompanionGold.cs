@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace ExpandedContent.Tweaks.Classes.DrakeClass {
     internal class DrakeCompanionGold {
@@ -44,8 +45,15 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
             var HeadLocatorFeature = Resources.GetBlueprint<BlueprintFeature>("9c57e9674b4a4a2b9920f9fec47f7e6a");
             var DrakeSizeTiny = Resources.GetModBlueprint<BlueprintFeature>("DrakeSizeTiny");
 
-            
 
+            var DrakeGoldPortrait = Helpers.CreateBlueprint<BlueprintPortrait>("DrakeGoldPortrait", bp => {
+                bp.Data = new PortraitData() {
+                    PortraitCategory = PortraitCategory.None,
+                    IsDefault = false,
+                    InitiativePortrait = false
+                };
+
+            });
 
 
             var DrakeBloodGold = Helpers.CreateBlueprint<BlueprintFeature>("DrakeBloodGold", bp => {
@@ -77,7 +85,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 bp.Size = Size.Huge;
                 bp.Color = AzataDragonUnit.Color;
                 bp.Alignment = Alignment.ChaoticEvil;
-                bp.m_Portrait = AzataDragonUnit.m_Portrait;
+                bp.m_Portrait = DrakeGoldPortrait.ToReference<BlueprintPortraitReference>();
                 bp.Prefab = FormOfTheDragonGoldBuff.m_Prefab;
                 bp.Visual = RedDragon.Visual;
                 bp.m_Faction = Neutrals.ToReference<BlueprintFactionReference>();
@@ -126,6 +134,9 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 };
             });
 
+            FullPortraitInjecotr.Replacements[DrakeCompanionUnitGold.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "GoldFulllength.png", new Vector2Int(692, 1024), TextureFormat.RGBA32);
+            HalfPortraitInjecotr.Replacements[DrakeCompanionUnitGold.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "GoldMedium.png", new Vector2Int(330, 432), TextureFormat.RGBA32);
+            SmallPortraitInjecotr.Replacements[DrakeCompanionUnitGold.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "GoldSmall.png", new Vector2Int(185, 242), TextureFormat.RGBA32);
 
 
             var DrakeCompanionFeatureGold = Helpers.CreateBlueprint<BlueprintFeature>("DrakeCompanionFeatureGold", bp => {

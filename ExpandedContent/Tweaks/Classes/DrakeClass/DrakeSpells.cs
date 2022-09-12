@@ -111,10 +111,12 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
             var Blur = Resources.GetBlueprint<BlueprintAbility>("14ec7a4e52e90fa47a4c8d63c69fd5c1");
             var BreakEnchantment = Resources.GetBlueprint<BlueprintAbility>("7792da00c85b9e042a0fdfc2b66ec9a8");
             var BreathOfLifeCast = Resources.GetBlueprint<BlueprintAbility>("d5847cad0b0e54c4d82d6c59a3cda6b0");
+            var BrilliantInspiration = Resources.GetBlueprint<BlueprintAbility>("a5c56f0f699daec44b7aedd8b273b08a");
             var BullsStrength = Resources.GetBlueprint<BlueprintAbility>("4c3d08935262b6544ae97599b3a9556d");
             var CausticEruption = Resources.GetBlueprint<BlueprintAbility>("8c29e953190cc67429dc9c701b16b7c2");
             var ChainLightning = Resources.GetBlueprint<BlueprintAbility>("645558d63604747428d55f0dd3a4cb58");
             var CircleOfDeath = Resources.GetBlueprint<BlueprintAbility>("a89dcbbab8f40e44e920cc60636097cf");
+            var CloakOfDreams = Resources.GetBlueprint<BlueprintAbility>("7f71a70d822af94458dc1a235507e972");
             var ConeOfCold = Resources.GetBlueprint<BlueprintAbility>("e7c530f8137630f4d9d7ee1aa7b1edc0");
             var ConfusionSpell = Resources.GetBlueprint<BlueprintAbility>("cf6c901fb7acc904e85c63b342e9c949");
             var CureModerateWounds = Resources.GetBlueprint<BlueprintAbility>("1c1ebf5370939a9418da93176cc44cd9");
@@ -130,6 +132,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
             var DominatePerson = Resources.GetBlueprint<BlueprintAbility>("d7cbd2004ce66a042aeab2e95a3c5c61");
             var Enervation = Resources.GetBlueprint<BlueprintAbility>("f34fb78eaaec141469079af124bcfa0f");
             var Entangle = Resources.GetBlueprint<BlueprintAbility>("0fd00984a2c0e0a429cf1a911b4ec5ca");
+            var ExpeditousRetreat = Resources.GetBlueprint<BlueprintAbility>("4f8181e7a7f1d904fbaea64220e83379");
             var FalseLife = Resources.GetBlueprint<BlueprintAbility>("7a5b5bf845779a941a67251539545762");
             var Fear = Resources.GetBlueprint<BlueprintAbility>("d2aeac47450c76347aebbc02e4f463e0");
             var Feeblemind = Resources.GetBlueprint<BlueprintAbility>("444eed6e26f773a40ab6e4d160c67faa");
@@ -143,6 +146,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
             var Haste = Resources.GetBlueprint<BlueprintAbility>("486eaff58293f6441a5c2759c4872f98");
             var Heal = Resources.GetBlueprint<BlueprintAbility>("ff8f1534f66559c478448723e16b6624");
             var Heroism = Resources.GetBlueprint<BlueprintAbility>("5ab0d42fb68c9e34abae4921822b9d63");
+            var HideousLaughter = Resources.GetBlueprint<BlueprintAbility>("fd4d9fd7f87575d47aafe2a64a6e2d8d");
             var HoldMonster = Resources.GetBlueprint<BlueprintAbility>("41e8a952da7a5c247b3ec1c2dbb73018");
             var HoldPerson = Resources.GetBlueprint<BlueprintAbility>("c7104f7526c4c524f91474614054547e");
             var HoldPersonMass = Resources.GetBlueprint<BlueprintAbility>("defbbeaef79eda64abc645036228a31b");
@@ -166,9 +170,11 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
             var PolymorphBase = Resources.GetBlueprint<BlueprintAbility>("93d9d74dac46b9b458d4d2ea7f4b1911");
             var PowerWordBlind = Resources.GetBlueprint<BlueprintAbility>("261e1788bfc5ac1419eec68b1d485dbc");
             var Prayer = Resources.GetBlueprint<BlueprintAbility>("faabd2cc67efa4646ac58c7bb3e40fcc");
+            var PredictionOfFailure = Resources.GetBlueprint<BlueprintAbility>("0e67fa8f011662c43934d486acc50253");
             var PrimalRegression = Resources.GetBlueprint<BlueprintAbility>("07d577a74441a3a44890e3006efcf604");
             var PrismaticSpray = Resources.GetBlueprint<BlueprintAbility>("b22fd434bdb60fb4ba1068206402c4cf");
             var ProtectionFromEvil = Resources.GetBlueprint<BlueprintAbility>("eee384c813b6d74498d1b9cc720d61f4");
+            var RainbowPattern = Resources.GetBlueprint<BlueprintAbility>("4b8265132f9c8174f87ce7fa6d0fe47b");
             var RemoveBlindness = Resources.GetBlueprint<BlueprintAbility>("c927a8b0cd3f5174f8c0b67cdbfde539");
             var ResistEnergy = Resources.GetBlueprint<BlueprintAbility>("21ffef7791ce73f468b6fca4d9371e8b");
             var Restoration = Resources.GetBlueprint<BlueprintAbility>("f2115ac1148256b4ba20788f7e966830");
@@ -176,6 +182,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
             var Resurrection = Resources.GetBlueprint<BlueprintAbility>("80a1a388ee938aa4e90d427ce9a7a3e9");
             var ScorchingRay = Resources.GetBlueprint<BlueprintAbility>("cdb106d53c65bbc4086183d54c3b97c7");
             var SeeInvisibility = Resources.GetBlueprint<BlueprintAbility>("30e5dc243f937fc4b95d2f8f4e1b7ff3");
+            var SeeInvisibilityCommunal = Resources.GetBlueprint<BlueprintAbility>("1a045f845778dc54db1c2be33a8c3c0a");
             var Serenity = Resources.GetBlueprint<BlueprintAbility>("30e5dc243f937fc4b95d2f8f4e1b7ff3");
             var ShadowEvocation = Resources.GetBlueprint<BlueprintAbility>("237427308e48c3341b3d532b9d3a001f");
             var ShieldOfFaith = Resources.GetBlueprint<BlueprintAbility>("183d5bb91dea3a1489a6db6c9cb64445");
@@ -190,6 +197,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
             var TarPool = Resources.GetBlueprint<BlueprintAbility>("7d700cdf260d36e48bb7af3a8ca5031f");
             var ThoughtSense = Resources.GetBlueprint<BlueprintAbility>("8fb1a1670b6e1f84b89ea846f589b627");
             var TrueSeeing = Resources.GetBlueprint<BlueprintAbility>("b3da3fbee6a751d4197e446c7e852bcb");
+            var TrueSeeingCommunal = Resources.GetBlueprint<BlueprintAbility>("fa08cb49ade3eee42b5fd42bd33cb407");
             var TrueStrike = Resources.GetBlueprint<BlueprintAbility>("2c38da66e5a599347ac95b3294acbe00");
             var VampiricTouch = Resources.GetBlueprint<BlueprintAbility>("6cbb040023868574b992677885390f92");
             var WavesOfFatigue = Resources.GetBlueprint<BlueprintAbility>("8878d0c46dfbd564e9d5756349d5e439");
@@ -1227,6 +1235,265 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                     c.SpellLevel = 7;
                 });
             });
+            var DrakeBloodBronzeSpelllist = Helpers.CreateBlueprint<BlueprintFeature>("DrakeBloodBronzeSpelllist", bp => {
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Spell = DismissAreaEffect.ToReference<BlueprintAbilityReference>();
+                    c.SpellLevel = 0;
+                });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Spell = MageArmor.ToReference<BlueprintAbilityReference>();
+                    c.SpellLevel = 1;
+                });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Spell = MageShield.ToReference<BlueprintAbilityReference>();
+                    c.SpellLevel = 1;
+                });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Spell = TrueStrike.ToReference<BlueprintAbilityReference>();
+                    c.SpellLevel = 1;
+                });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Spell = ProtectionFromEvil.ToReference<BlueprintAbilityReference>();
+                    c.SpellLevel = 1;
+                });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Spell = Blur.ToReference<BlueprintAbilityReference>();
+                    c.SpellLevel = 2;
+                });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Spell = Invisibility.ToReference<BlueprintAbilityReference>();
+                    c.SpellLevel = 2;
+                });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Spell = MirrorImage.ToReference<BlueprintAbilityReference>();
+                    c.SpellLevel = 2;
+                });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Spell = Web.ToReference<BlueprintAbilityReference>();
+                    c.SpellLevel = 2;
+                });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Spell = DispelMagic.ToReference<BlueprintAbilityReference>();
+                    c.SpellLevel = 3;
+                });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Spell = Heroism.ToReference<BlueprintAbilityReference>();
+                    c.SpellLevel = 3;
+                });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Spell = Slow.ToReference<BlueprintAbilityReference>();
+                    c.SpellLevel = 3;
+                });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Spell = SeeInvisibilityCommunal.ToReference<BlueprintAbilityReference>();
+                    c.SpellLevel = 3;
+                });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Spell = DimensionDoor.ToReference<BlueprintAbilityReference>();
+                    c.SpellLevel = 4;
+                });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Spell = IceStorm.ToReference<BlueprintAbilityReference>();
+                    c.SpellLevel = 4;
+                });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Spell = Stoneskin.ToReference<BlueprintAbilityReference>();
+                    c.SpellLevel = 4;
+                });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Spell = SymbolOfRevelation.ToReference<BlueprintAbilityReference>();
+                    c.SpellLevel = 4;
+                });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Spell = Dismissal.ToReference<BlueprintAbilityReference>();
+                    c.SpellLevel = 5;
+                });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Spell = MindFog.ToReference<BlueprintAbilityReference>();
+                    c.SpellLevel = 5;
+                });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Spell = ThoughtSense.ToReference<BlueprintAbilityReference>();
+                    c.SpellLevel = 5;
+                });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Spell = DispelMagicGreater.ToReference<BlueprintAbilityReference>();
+                    c.SpellLevel = 6;
+                });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Spell = TrueSeeing.ToReference<BlueprintAbilityReference>();
+                    c.SpellLevel = 6;
+                });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Spell = ChainLightning.ToReference<BlueprintAbilityReference>();
+                    c.SpellLevel = 6;
+                });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Spell = TrueSeeingCommunal.ToReference<BlueprintAbilityReference>();
+                    c.SpellLevel = 7;
+                });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Spell = PredictionOfFailure.ToReference<BlueprintAbilityReference>();
+                    c.SpellLevel = 7;
+                });
+            });
+            var DrakeBloodCopperSpelllist = Helpers.CreateBlueprint<BlueprintFeature>("DrakeBloodCopperSpelllist", bp => {
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Spell = DismissAreaEffect.ToReference<BlueprintAbilityReference>();
+                    c.SpellLevel = 0;
+                });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Spell = HideousLaughter.ToReference<BlueprintAbilityReference>();
+                    c.SpellLevel = 1;
+                });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Spell = Grease.ToReference<BlueprintAbilityReference>();
+                    c.SpellLevel = 1;
+                });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Spell = MageShield.ToReference<BlueprintAbilityReference>();
+                    c.SpellLevel = 1;
+                });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Spell = ExpeditousRetreat.ToReference<BlueprintAbilityReference>();
+                    c.SpellLevel = 1;
+                });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Spell = Glitterdust.ToReference<BlueprintAbilityReference>();
+                    c.SpellLevel = 2;
+                });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Spell = SeeInvisibility.ToReference<BlueprintAbilityReference>();
+                    c.SpellLevel = 2;
+                });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Spell = Invisibility.ToReference<BlueprintAbilityReference>();
+                    c.SpellLevel = 2;
+                });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Spell = ResistEnergy.ToReference<BlueprintAbilityReference>();
+                    c.SpellLevel = 2;
+                });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Spell = DispelMagic.ToReference<BlueprintAbilityReference>();
+                    c.SpellLevel = 3;
+                });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Spell = Haste.ToReference<BlueprintAbilityReference>();
+                    c.SpellLevel = 3;
+                });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Spell = HoldPerson.ToReference<BlueprintAbilityReference>();
+                    c.SpellLevel = 3;
+                });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Spell = Displacement.ToReference<BlueprintAbilityReference>();
+                    c.SpellLevel = 3;
+                });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Spell = ConfusionSpell.ToReference<BlueprintAbilityReference>();
+                    c.SpellLevel = 4;
+                });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Spell = RainbowPattern.ToReference<BlueprintAbilityReference>();
+                    c.SpellLevel = 4;
+                });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Spell = Stoneskin.ToReference<BlueprintAbilityReference>();
+                    c.SpellLevel = 4;
+                });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Spell = Fear.ToReference<BlueprintAbilityReference>();
+                    c.SpellLevel = 4;
+                });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Spell = MindFog.ToReference<BlueprintAbilityReference>();
+                    c.SpellLevel = 5;
+                });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Spell = PolymorphBase.ToReference<BlueprintAbilityReference>();
+                    c.SpellLevel = 5;
+                });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Spell = BalefulPolymorph.ToReference<BlueprintAbilityReference>();
+                    c.SpellLevel = 5;
+                });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Spell = AcidFog.ToReference<BlueprintAbilityReference>();
+                    c.SpellLevel = 6;
+                });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Spell = DispelMagicGreater.ToReference<BlueprintAbilityReference>();
+                    c.SpellLevel = 6;
+                });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Spell = CloakOfDreams.ToReference<BlueprintAbilityReference>();
+                    c.SpellLevel = 6;
+                });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Spell = PrismaticSpray.ToReference<BlueprintAbilityReference>();
+                    c.SpellLevel = 7;
+                });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Spell = HoldPersonMass.ToReference<BlueprintAbilityReference>();
+                    c.SpellLevel = 7;
+                });
+            });
+
         }
     }
 }
