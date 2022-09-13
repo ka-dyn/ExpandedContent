@@ -378,6 +378,7 @@
     <Compile Include="Extensions\ExtentionMethods.cs" />
     <Compile Include="Resources.cs" />
     <Compile Include="SaveGamePatch.cs" />
+    <Compile Include="Tweaks\Spells\PurgingFinale.cs" />
     <Compile Include="Tweaks\Spells\StunningFinale.cs" />
     <Compile Include="Tweaks\Spells\RevivingFinale.cs" />
     <Compile Include="Tweaks\Spells\DeadlyFinale.cs" />
@@ -1148,6 +1149,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_ProfaneWeapon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_PurgingFinale.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_RevivingFinale.jpg">

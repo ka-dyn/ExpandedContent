@@ -85,6 +85,7 @@ namespace ExpandedContent.Tweaks
                 Spells.DeadlyFinale.AddDeadlyFinale();
                 Spells.RevivingFinale.AddRevivingFinale();
                 Spells.StunningFinale.AddStunningFinale();
+                Spells.PurgingFinale.AddPurgingFinale();
 
                 Domains.ArchonDomainGood.AddArchonDomainGood();
                 Domains.ArchonDomainLaw.AddArchonDomainLaw();

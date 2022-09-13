@@ -913,7 +913,13 @@
     "DeadlyFinaleBuff": "ff9b494a-13fb-4db0-a78e-b76e4cbf16fc",
     "PerformanceCooldown": "654f482e-ccfc-4157-becb-8152f2a5e3c3",
     "RevivingFinale": "9f8ab280-738a-4578-a294-ccb8f0b25fa7",
-    "StunningFinale": "a1f0d4c3-ce2c-4c2e-b705-b18861f14708"
+    "StunningFinale": "a1f0d4c3-ce2c-4c2e-b705-b18861f14708",
+    "PurgingFinale": "6eff7010-6841-43c5-bcd4-7120718c75ef",
+    "PurgingFinaleDazzled": "c9aaed93-2d41-455c-83d1-cd160007a0e8",
+    "PurgingFinaleExhausted": "647acaa5-e862-4656-ab63-82995c0657c3",
+    "PurgingFinaleParalyzed": "4b791509-1a63-491e-b1df-d9b6e5563de8",
+    "PurgingFinaleShaken": "2e5113e3-857f-43c1-bebb-b15c71b06783",
+    "PurgingFinaleStunned": "c0c60baf-9432-4a80-893f-bd79ef24affc"
 
 
 
