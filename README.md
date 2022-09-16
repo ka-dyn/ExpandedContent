@@ -58,7 +58,7 @@ New Domains / Subdomains
 
 New Spells
 
--Hydraulic push, Slipstream, Scourge of the Horsemen, Rigor mortis, Reviving Finale, Deadly Finale, Purging Finale, Stunning Finale
+-Hydraulic push, Slipstream, Scourge of the Horsemen, Rigor mortis, Reviving Finale, Deadly Finale, Purging Finale, Stunning Finale, Hollow Blades
 
 I'd like to give a huge thank you to Vek17, as much of the coding in this repository is his; I simply repurposed it or learned from it. I wouldn't be able to release
 anything without it. Check out his mod, TableTopTweaks if you haven't already!
