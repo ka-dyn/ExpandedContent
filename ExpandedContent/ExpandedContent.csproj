@@ -378,6 +378,7 @@
     <Compile Include="Extensions\ExtentionMethods.cs" />
     <Compile Include="Resources.cs" />
     <Compile Include="SaveGamePatch.cs" />
+    <Compile Include="Tweaks\Spells\HollowBlades.cs" />
     <Compile Include="Tweaks\Spells\PurgingFinale.cs" />
     <Compile Include="Tweaks\Spells\StunningFinale.cs" />
     <Compile Include="Tweaks\Spells\RevivingFinale.cs" />
@@ -1122,6 +1123,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_Havoc.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_HollowBlades.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_MantisAspect.jpg">
