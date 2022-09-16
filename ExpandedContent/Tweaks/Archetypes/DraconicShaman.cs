@@ -57,6 +57,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var DrakeCompanionFeatureGold = Resources.GetModBlueprint<BlueprintFeature>("DrakeCompanionFeatureGold");
             var DrakeCompanionFeatureRed = Resources.GetModBlueprint<BlueprintFeature>("DrakeCompanionFeatureRed");
             var DrakeCompanionFeatureWhite = Resources.GetModBlueprint<BlueprintFeature>("DrakeCompanionFeatureWhite");
+            var DrakeCompanionFeatureCopper = Resources.GetModBlueprint<BlueprintFeature>("DrakeCompanionFeatureCopper");
 
 
 
@@ -87,6 +88,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     DrakeCompanionFeatureBlue.ToReference<BlueprintFeatureReference>(),
                     DrakeCompanionFeatureBrass.ToReference<BlueprintFeatureReference>(),
                     DrakeCompanionFeatureBronze.ToReference<BlueprintFeatureReference>(),
+                    DrakeCompanionFeatureCopper.ToReference<BlueprintFeatureReference>(),
                     DrakeCompanionFeatureGold.ToReference<BlueprintFeatureReference>(),
                     DrakeCompanionFeatureGreen.ToReference<BlueprintFeatureReference>(),
                     DrakeCompanionFeatureRed.ToReference<BlueprintFeatureReference>(),

@@ -36,7 +36,6 @@ namespace ExpandedContent.Tweaks.Spells {
             var PerformanceCooldown = Resources.GetModBlueprint<BlueprintBuff>("PerformanceCooldown");
             var PurgingFinaleIcon = AssetLoader.LoadInternal("Skills", "Icon_PurgingFinale.jpg");
             var RestorationLesserFX = Resources.GetBlueprint<BlueprintAbility>("e84fc922ccf952943b5240293669b171").GetComponent<AbilitySpawnFx>();
-
             //Main
             var PurgingFinale = Helpers.CreateBlueprint<BlueprintAbility>("PurgingFinale", bp => {
                 bp.SetName("Purging Finale");
@@ -71,7 +70,6 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
-
             //Exhausted
             var PurgingFinaleExhausted = Helpers.CreateBlueprint<BlueprintAbility>("PurgingFinaleExhausted", bp => {
                 bp.SetName("Purging Finale - Exhausted");
@@ -636,13 +634,6 @@ namespace ExpandedContent.Tweaks.Spells {
                     PurgingFinaleStunned.ToReference<BlueprintAbilityReference>()
                 };
             });
-
-
-
-
-
-
-
             PurgingFinale.AddToSpellList(SpellTools.SpellList.BardSpellList, 3);
         }
     }

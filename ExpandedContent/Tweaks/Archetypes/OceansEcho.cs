@@ -72,8 +72,8 @@ namespace ExpandedContent.Tweaks.Archetypes {
             });
             var InspireCourageBuff = Resources.GetBlueprint<BlueprintBuff>("b4027a834204042409248889cc8abf67");
             var InspireCourageEffectBuff = Resources.GetBlueprint<BlueprintBuff>("6d6d9e06b76f5204a8b7856c78607d5d").GetComponent<ContextRankConfig>();
-            InspireCourageEffectBuff.m_AdditionalArchetypes.AppendToArray(OceansEchoArchetype.ToReference<BlueprintArchetypeReference>());
-            InspireCourageEffectBuff.m_Class.AppendToArray(OracleClass.ToReference<BlueprintCharacterClassReference>());
+            InspireCourageEffectBuff.m_AdditionalArchetypes = InspireCourageEffectBuff.m_AdditionalArchetypes.AppendToArray(OceansEchoArchetype.ToReference<BlueprintArchetypeReference>());
+            InspireCourageEffectBuff.m_Class = InspireCourageEffectBuff.m_Class.AppendToArray(OracleClass.ToReference<BlueprintCharacterClassReference>());
             var OceansEchoInspireCourageToggleAbility = Helpers.CreateBlueprint<BlueprintActivatableAbility>("OceansEchoInspireCourageToggleAbility", bp => {
                 bp.SetName("Inspiring Song - Courage");
                 bp.SetDescription("A 1st level ocean's echo can use her performance to inspire courage in her allies (including himself), bolstering them against fear and improving their " +
@@ -120,8 +120,8 @@ namespace ExpandedContent.Tweaks.Archetypes {
             });
             var InspireCompetenceBuff = Resources.GetBlueprint<BlueprintBuff>("f58e8500ebc8594499bd804b0277cdd8");
             var InspireCompetenceEffectBuff = Resources.GetBlueprint<BlueprintBuff>("1fa5f733fa1d77743bf54f5f3da5a6b1").GetComponent<ContextRankConfig>();
-            InspireCompetenceEffectBuff.m_AdditionalArchetypes.AppendToArray(OceansEchoArchetype.ToReference<BlueprintArchetypeReference>());
-            InspireCompetenceEffectBuff.m_Class.AppendToArray(OracleClass.ToReference<BlueprintCharacterClassReference>());
+            InspireCompetenceEffectBuff.m_AdditionalArchetypes = InspireCompetenceEffectBuff.m_AdditionalArchetypes.AppendToArray(OceansEchoArchetype.ToReference<BlueprintArchetypeReference>());
+            InspireCompetenceEffectBuff.m_Class = InspireCompetenceEffectBuff.m_Class.AppendToArray(OracleClass.ToReference<BlueprintCharacterClassReference>());
             var OceansEchoInspireCompetenceToggleAbility = Helpers.CreateBlueprint<BlueprintActivatableAbility>("OceansEchoInspireCompetenceToggleAbility", bp => {
                 bp.SetName("Inspiring Song - Competence");
                 bp.SetDescription("A ocean's echo of 3rd level or higher can use her performance to help allies succeed at a task. They must be within 30 feet and able to see and hear the " +
