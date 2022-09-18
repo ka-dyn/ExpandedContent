@@ -379,6 +379,7 @@
     <Compile Include="Extensions\ExtentionMethods.cs" />
     <Compile Include="Resources.cs" />
     <Compile Include="SaveGamePatch.cs" />
+    <Compile Include="Tweaks\Spells\Goodberry.cs" />
     <Compile Include="Tweaks\Spells\HollowBlades.cs" />
     <Compile Include="Tweaks\Spells\PurgingFinale.cs" />
     <Compile Include="Tweaks\Spells\StunningFinale.cs" />
@@ -1121,6 +1122,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_GaleAura.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_Goodberry.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_Havoc.png">

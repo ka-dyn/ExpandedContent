@@ -21,6 +21,7 @@ using UnityEngine;
 using static Kingmaker.Blueprints.Classes.Prerequisites.Prerequisite;
 using static ExpandedContent.Utilities.Helpers;
 using Kingmaker.Blueprints.Items.Ecnchantments;
+using Kingmaker.Blueprints.Items.Equipment;
 
 namespace ExpandedContent.Extensions {
     static class ExtentionMethods {
@@ -390,9 +391,14 @@ namespace ExpandedContent.Extensions {
         public static void SetSuffix(this BlueprintItemEnchantment enchantment, string suffix) {
             enchantment.m_Suffix = Helpers.CreateString(enchantment.Suffix + "suffix", suffix);
         }
-        //Test
-        public static void SetFoleySoundPrefix(this BlueprintUnit blueprintUnit, string soundPrefix) {
-            blueprintUnit.Visual.FoleySoundPrefix = Helpers.CreateString(blueprintUnit.Visual.FoleySoundPrefix + "FoleySoundPrefix", soundPrefix);
+        public static void SetName(this BlueprintItemEquipmentUsable Item, string name) {
+            Item.m_DisplayNameText = Helpers.CreateString(Item.name + ".Name", name);
+        }
+        public static void SetDescription(this BlueprintItemEquipmentUsable Item, string description) {
+            Item.m_DescriptionText = Helpers.CreateString(Item.Description + "Description", description);
+        }
+        public static void SetFlavorText(this BlueprintItemEquipmentUsable Item, string description) {
+            Item.m_FlavorText = Helpers.CreateString(Item.FlavorText + "FlavorText", description);
         }
         //Faff bitter wrote end
         //Bubbles start

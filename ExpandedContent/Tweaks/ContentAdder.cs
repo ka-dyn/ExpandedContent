@@ -87,6 +87,7 @@ namespace ExpandedContent.Tweaks
                 Spells.StunningFinale.AddStunningFinale();
                 Spells.PurgingFinale.AddPurgingFinale();
                 Spells.HollowBlades.AddHollowBlades();
+                Spells.Goodberry.AddGoodberry();
 
                 Domains.ArchonDomainGood.AddArchonDomainGood();
                 Domains.ArchonDomainLaw.AddArchonDomainLaw();
