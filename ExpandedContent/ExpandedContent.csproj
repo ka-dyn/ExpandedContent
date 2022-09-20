@@ -174,7 +174,7 @@
     <Compile Include="Tweaks\Archdevils\Mephistopheles.cs" />
     <Compile Include="Tweaks\Archdevils\Moloch.cs" />
     <Compile Include="Tweaks\Archetypes\Castigator.cs" />
-    <Compile Include="Tweaks\Archetypes\LizardBlizzard.cs" />
+    <Compile Include="Tweaks\Archetypes\DraconicScholar.cs" />
     <Compile Include="Tweaks\Archetypes\DraconicShaman.cs" />
     <Compile Include="Tweaks\Archetypes\OceansEcho.cs" />
     <Compile Include="Tweaks\Archetypes\ClutchThief.cs" />
@@ -1110,6 +1110,15 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_DKProf.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_DraconicExploit.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_DraconicExploitQuicken.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_DraconicExploitType.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_DreadfulCalm.png">

@@ -80,11 +80,13 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
             var DrakeBloodGoldSpelllist = Resources.GetModBlueprint<BlueprintFeature>("DrakeBloodGoldSpelllist");
             var DrakeBloodBronze = Resources.GetModBlueprint<BlueprintFeature>("DrakeBloodBronze");
             var DrakeBloodBronzeSpelllist = Resources.GetModBlueprint<BlueprintFeature>("DrakeBloodBronzeSpelllist");
+            var DrakeBloodCopper = Resources.GetModBlueprint<BlueprintFeature>("DrakeBloodCopper");
+            var DrakeBloodCopperSpelllist = Resources.GetModBlueprint<BlueprintFeature>("DrakeBloodCopperSpelllist");
 
 
             var DrakeBreathWeaponFire3 = Helpers.CreateBlueprint<BlueprintAbility>("DrakeBreathWeaponFire3", bp => {
                 bp.SetName("Mythic Drake Fire Breath");
-                bp.SetDescription("This breath weapon deals {g|Encyclopedia:Dice}1d8{/g} points of {g|Encyclopedia:Energy_Damage}fire damage{/g} per drake companion level in a 50-foot cone. " +
+                bp.SetDescription("This breath weapon deals {g|Encyclopedia:Dice}1d6{/g} points of {g|Encyclopedia:Energy_Damage}fire damage{/g} per drake companion level in a 50-foot cone. " +
                     "Those caught in the area of the breath receive a {g|Encyclopedia:Saving_Throw}Reflex save{/g} for half {g|Encyclopedia:Damage}damage{/g}. " +
                     "The {g|Encyclopedia:DC}DC{/g} of this save is equal to 10 + 1/2 your drake companion level + your {g|Encyclopedia:Constitution}Constitution{/g} modifier." +
                     "After use this ability takes {g|Encyclopedia:Dice}1d4{/g} rounds to recharge. You can use this 5 times a day. \nUnlocking this " +
@@ -153,7 +155,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                                     },
                                     PreRolledSharedValue = AbilitySharedValue.Damage,
                                     Value = new ContextDiceValue() {
-                                        DiceType = DiceType.D8,
+                                        DiceType = DiceType.D6,
                                         DiceCountValue = new ContextValue() {
                                             ValueType = ContextValueType.Rank,
                                             Value = 0,
@@ -233,7 +235,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
             });
             var DrakeBreathWeaponFire3Feature = Helpers.CreateBlueprint<BlueprintFeature>("DrakeBreathWeaponFire3Feature", bp => {
                 bp.SetName("Mythic Drake Fire Breath");
-                bp.SetDescription("This breath weapon deals {g|Encyclopedia:Dice}1d8{/g} points of {g|Encyclopedia:Energy_Damage}fire damage{/g} per drake companion level in a 50-foot cone. " +
+                bp.SetDescription("This breath weapon deals {g|Encyclopedia:Dice}1d6{/g} points of {g|Encyclopedia:Energy_Damage}fire damage{/g} per drake companion level in a 50-foot cone. " +
                     "Those caught in the area of the breath receive a {g|Encyclopedia:Saving_Throw}Reflex save{/g} for half {g|Encyclopedia:Damage}damage{/g}. " +
                     "The {g|Encyclopedia:DC}DC{/g} of this save is equal to 10 + 1/2 your drake companion level + your {g|Encyclopedia:Constitution}Constitution{/g} modifier." +
                     "After use this ability takes {g|Encyclopedia:Dice}1d4{/g} rounds to recharge. You can use this 5 times a day. \nUnlocking this " +
@@ -263,7 +265,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
             };
             var DrakeBreathWeaponCold3 = Helpers.CreateBlueprint<BlueprintAbility>("DrakeBreathWeaponCold3", bp => {
                 bp.SetName("Mythic Drake Cold Breath");
-                bp.SetDescription("This breath weapon deals {g|Encyclopedia:Dice}1d8{/g} points of {g|Encyclopedia:Energy_Damage}cold damage{/g} per drake companion level in a 50-foot cone. " +
+                bp.SetDescription("This breath weapon deals {g|Encyclopedia:Dice}1d6{/g} points of {g|Encyclopedia:Energy_Damage}cold damage{/g} per drake companion level in a 50-foot cone. " +
                     "Those caught in the area of the breath receive a {g|Encyclopedia:Saving_Throw}Reflex save{/g} for half {g|Encyclopedia:Damage}damage{/g}. " +
                     "The {g|Encyclopedia:DC}DC{/g} of this save is equal to 10 + 1/2 your drake companion level + your {g|Encyclopedia:Constitution}Constitution{/g} modifier." +
                     "After use this ability takes {g|Encyclopedia:Dice}1d4{/g} rounds to recharge. You can use this 5 times a day. \nUnlocking this " +
@@ -332,7 +334,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                                     },
                                     PreRolledSharedValue = AbilitySharedValue.Damage,
                                     Value = new ContextDiceValue() {
-                                        DiceType = DiceType.D8,
+                                        DiceType = DiceType.D6,
                                         DiceCountValue = new ContextValue() {
                                             ValueType = ContextValueType.Rank,
                                             Value = 0,
@@ -412,7 +414,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
             });
             var DrakeBreathWeaponCold3Feature = Helpers.CreateBlueprint<BlueprintFeature>("DrakeBreathWeaponCold3Feature", bp => {
                 bp.SetName("Mythic Drake Cold Breath");
-                bp.SetDescription("This breath weapon deals {g|Encyclopedia:Dice}1d8{/g} points of {g|Encyclopedia:Energy_Damage}cold damage{/g} per drake companion level in a 50-foot cone. " +
+                bp.SetDescription("This breath weapon deals {g|Encyclopedia:Dice}1d6{/g} points of {g|Encyclopedia:Energy_Damage}cold damage{/g} per drake companion level in a 50-foot cone. " +
                     "Those caught in the area of the breath receive a {g|Encyclopedia:Saving_Throw}Reflex save{/g} for half {g|Encyclopedia:Damage}damage{/g}. " +
                     "The {g|Encyclopedia:DC}DC{/g} of this save is equal to 10 + 1/2 your drake companion level + your {g|Encyclopedia:Constitution}Constitution{/g} modifier." +
                     "After use this ability takes {g|Encyclopedia:Dice}1d4{/g} rounds to recharge. You can use this 5 times a day. \nUnlocking this " +
@@ -442,7 +444,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
             };
             var DrakeBreathWeaponElectricity3 = Helpers.CreateBlueprint<BlueprintAbility>("DrakeBreathWeaponElectricity3", bp => {
                 bp.SetName("Mythic Drake Electricity Breath");
-                bp.SetDescription("This breath weapon deals {g|Encyclopedia:Dice}1d8{/g} points of {g|Encyclopedia:Energy_Damage}electricity damage{/g} per drake companion level in a 40-foot cone. " +
+                bp.SetDescription("This breath weapon deals {g|Encyclopedia:Dice}1d6{/g} points of {g|Encyclopedia:Energy_Damage}electricity damage{/g} per drake companion level in a 40-foot cone. " +
                     "Those caught in the area of the breath receive a {g|Encyclopedia:Saving_Throw}Reflex save{/g} for half {g|Encyclopedia:Damage}damage{/g}. " +
                     "The {g|Encyclopedia:DC}DC{/g} of this save is equal to 10 + 1/2 your drake companion level + your {g|Encyclopedia:Constitution}Constitution{/g} modifier." +
                     "After use this ability takes {g|Encyclopedia:Dice}1d4{/g} rounds to recharge. You can use this 5 times a day. \nUnlocking this " +
@@ -511,7 +513,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                                     },
                                     PreRolledSharedValue = AbilitySharedValue.Damage,
                                     Value = new ContextDiceValue() {
-                                        DiceType = DiceType.D8,
+                                        DiceType = DiceType.D6,
                                         DiceCountValue = new ContextValue() {
                                             ValueType = ContextValueType.Rank,
                                             Value = 0,
@@ -591,7 +593,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
             });
             var DrakeBreathWeaponElectricity3Feature = Helpers.CreateBlueprint<BlueprintFeature>("DrakeBreathWeaponElectricity3Feature", bp => {
                 bp.SetName("Mythic Drake Electricity Breath");
-                bp.SetDescription("This breath weapon deals {g|Encyclopedia:Dice}1d8{/g} points of {g|Encyclopedia:Energy_Damage}electricity damage{/g} per drake companion level in a 40-foot cone. " +
+                bp.SetDescription("This breath weapon deals {g|Encyclopedia:Dice}1d6{/g} points of {g|Encyclopedia:Energy_Damage}electricity damage{/g} per drake companion level in a 40-foot cone. " +
                     "Those caught in the area of the breath receive a {g|Encyclopedia:Saving_Throw}Reflex save{/g} for half {g|Encyclopedia:Damage}damage{/g}. " +
                     "The {g|Encyclopedia:DC}DC{/g} of this save is equal to 10 + 1/2 your drake companion level + your {g|Encyclopedia:Constitution}Constitution{/g} modifier." +
                     "After use this ability takes {g|Encyclopedia:Dice}1d4{/g} rounds to recharge. You can use this 5 times a day. \nUnlocking this " +
@@ -621,7 +623,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
             };
             var DrakeBreathWeaponAcid3 = Helpers.CreateBlueprint<BlueprintAbility>("DrakeBreathWeaponAcid3", bp => {
                 bp.SetName("Mythic Drake Acid Breath");
-                bp.SetDescription("This breath weapon deals {g|Encyclopedia:Dice}1d8{/g} points of {g|Encyclopedia:Energy_Damage}acid damage{/g} per drake companion level in a 50-foot cone. " +
+                bp.SetDescription("This breath weapon deals {g|Encyclopedia:Dice}1d6{/g} points of {g|Encyclopedia:Energy_Damage}acid damage{/g} per drake companion level in a 50-foot cone. " +
                     "Those caught in the area of the breath receive a {g|Encyclopedia:Saving_Throw}Reflex save{/g} for half {g|Encyclopedia:Damage}damage{/g}. " +
                     "The {g|Encyclopedia:DC}DC{/g} of this save is equal to 10 + 1/2 your drake companion level + your {g|Encyclopedia:Constitution}Constitution{/g} modifier." +
                     "After use this ability takes {g|Encyclopedia:Dice}1d4{/g} rounds to recharge. You can use this 5 times a day. \nUnlocking this " +
@@ -690,7 +692,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                                     },
                                     PreRolledSharedValue = AbilitySharedValue.Damage,
                                     Value = new ContextDiceValue() {
-                                        DiceType = DiceType.D8,
+                                        DiceType = DiceType.D6,
                                         DiceCountValue = new ContextValue() {
                                             ValueType = ContextValueType.Rank,
                                             Value = 0,
@@ -770,7 +772,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
             });
             var DrakeBreathWeaponAcid3Feature = Helpers.CreateBlueprint<BlueprintFeature>("DrakeBreathWeaponAcid3Feature", bp => {
                 bp.SetName("Mythic Drake Acid Breath");
-                bp.SetDescription("This breath weapon deals {g|Encyclopedia:Dice}1d8{/g} points of {g|Encyclopedia:Energy_Damage}acid damage{/g} per drake companion level in a 50-foot cone. " +
+                bp.SetDescription("This breath weapon deals {g|Encyclopedia:Dice}1d6{/g} points of {g|Encyclopedia:Energy_Damage}acid damage{/g} per drake companion level in a 50-foot cone. " +
                     "Those caught in the area of the breath receive a {g|Encyclopedia:Saving_Throw}Reflex save{/g} for half {g|Encyclopedia:Damage}damage{/g}. " +
                     "The {g|Encyclopedia:DC}DC{/g} of this save is equal to 10 + 1/2 your drake companion level + your {g|Encyclopedia:Constitution}Constitution{/g} modifier." +
                     "After use this ability takes {g|Encyclopedia:Dice}1d4{/g} rounds to recharge. You can use this 5 times a day. \nUnlocking this " +
@@ -888,6 +890,10 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                     c.m_CheckedFact = DrakeBloodBronze.ToReference<BlueprintUnitFactReference>();
                     c.m_Feature = DrakeBloodBronzeSpelllist.ToReference<BlueprintUnitFactReference>();
                 });
+                bp.AddComponent<AddFeatureIfHasFact>(c => {
+                    c.m_CheckedFact = DrakeBloodCopper.ToReference<BlueprintUnitFactReference>();
+                    c.m_Feature = DrakeBloodCopperSpelllist.ToReference<BlueprintUnitFactReference>();
+                });
             });
             var MythicalDrakePet = Helpers.CreateBlueprint<BlueprintFeature>("MythicalDrakePet", bp => {
                 bp.AddComponent<AddFeatureIfHasFact>(c => {
@@ -921,7 +927,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
             var MythicalDrakeMaster = Helpers.CreateBlueprint<BlueprintFeature>("MythicalDrakeMaster", bp => {
                 bp.SetName("Mythical Drake");
                 bp.SetDescription("Your mythic powers unlock the latent draconic might in your drake companion, granting it new abilities based off its own Drake Power choices." +
-                    "\nIf your drake has a greater breath weapon it gains access to the mythic variant, dealing {g|Encyclopedia:Dice}1d8{/g} damage per class level. It also deals no damage to allies. " +
+                    "\nIf your drake has a greater breath weapon it gains access to the mythic variant, dealing {g|Encyclopedia:Dice}1d6{/g} damage per class level. It also deals no damage to allies. " +
                     "\nIf your drake has the draken claws ability it gains 2 natural wing attacks and the Multiattack feat." +
                     "\nIf your drake has the keen mind ability it gains a Charisma bonus equal to its level minus 5, along with a limited spellbook. " +
                     "Spells granted this way are spontaneously cast and scale using Charisma. Spells granted are dependent on which type of dragon the drake is descended from.");

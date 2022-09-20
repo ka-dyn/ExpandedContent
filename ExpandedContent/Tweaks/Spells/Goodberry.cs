@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Items;
 using Kingmaker.Blueprints.Items.Equipment;
 using Kingmaker.Craft;
 using Kingmaker.Designers.EventConditionActionSystem.Actions;
+using Kingmaker.ElementsSystem;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
 using Kingmaker.ResourceLinks;
@@ -13,9 +14,11 @@ using Kingmaker.RuleSystem;
 using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.UnitLogic.Abilities.Components;
+using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.Commands.Base;
 using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Mechanics.Actions;
+using Kingmaker.UnitLogic.Mechanics.Conditions;
 using Kingmaker.Visual.Animation.Kingmaker.Actions;
 using System;
 using System.Collections.Generic;
@@ -29,21 +32,68 @@ namespace ExpandedContent.Tweaks.Spells {
             var Kameberry = Resources.GetBlueprint<BlueprintItem>("9673fb63c820b5345ad07c32219edfde");
             var DustShardItem = Resources.GetBlueprint<BlueprintItem>("b352a456952e4d50b1b2069d7b8debd0");
             var PotionOfCureLightWounds = Resources.GetBlueprint<BlueprintItemEquipmentUsable>("d52566ae8cbe8dc4dae977ef51c27d91");
+            var Sickened = Resources.GetBlueprint<BlueprintBuff>("4e42460798665fd4cb9173ffa7ada323");
             var GooberryIcon = AssetLoader.LoadInternal("Skills", "Icon_Goodberry.jpg");
+
+            var GoodberryCooldown = Helpers.CreateBuff("GoodberryCooldown", bp => {
+                bp.m_AllowNonContextActions = false;
+                bp.SetName("");
+                bp.SetDescription("");
+                bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
+                bp.Stacking = StackingType.Replace;
+                bp.Frequency = DurationRate.Rounds;
+            });
 
             var GoodberryItemAbility = Helpers.CreateBlueprint<BlueprintAbility>("GoodberryItemAbility", bp => {
                 bp.SetName("Goodberry");
-                bp.SetDescription("When eaten goodberries heal 2d4 point of damage, however if they are eaten more than once a day they can make the creature that ate them sick for a short time.");
+                bp.SetDescription("When eaten goodberries heal 2d4 point of damage, however if they are eaten more than once every 24 hours they can make the creature that ate them sick for a short time.");
                 bp.m_Icon = Kameberry.m_Icon;
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.SavingThrowType = SavingThrowType.Unknown;
                     c.Actions = Helpers.CreateActionList(
-                        new ContextActionHealTarget() {
-                            Value = new ContextDiceValue() {
-                                DiceType = DiceType.D4,
-                                DiceCountValue = 2,
-                                BonusValue = 0
-                            }
+                        new Conditional() {
+                            ConditionsChecker = new ConditionsChecker() {
+                                Operation = Operation.And,
+                                Conditions = new Condition[] {
+                                    new ContextConditionCasterHasFact() {
+                                        Not = false,
+                                        m_Fact = GoodberryCooldown.ToReference<BlueprintUnitFactReference>()
+                                    }
+                                }
+                            },
+                            IfTrue = Helpers.CreateActionList(
+                                new ContextActionApplyBuff() {
+                                    m_Buff = Sickened.ToReference<BlueprintBuffReference>(),
+                                    Permanent = false,
+                                    UseDurationSeconds = false,
+                                    DurationValue = new ContextDurationValue() {
+                                        Rate = DurationRate.Rounds,
+                                        DiceType = 0,
+                                        DiceCountValue = 0,
+                                        BonusValue = 1
+                                    }
+                                }),
+                            IfFalse = Helpers.CreateActionList(
+                                new ContextActionHealTarget() {
+                                    Value = new ContextDiceValue() {
+                                        DiceType = DiceType.D4,
+                                        DiceCountValue = 2,
+                                        BonusValue = 0
+                                    }
+                                },
+                                new ContextActionApplyBuff() {
+                                    m_Buff = GoodberryCooldown.ToReference<BlueprintBuffReference>(),
+                                    Permanent = false,
+                                    UseDurationSeconds = false,
+                                    DurationValue = new ContextDurationValue() {
+                                        Rate = DurationRate.Days,
+                                        DiceType = 0,
+                                        DiceCountValue = 0,
+                                        BonusValue = 1
+                                    },
+                                    IsNotDispelable = true
+                                }
+                                )
                         });
                 });
                 bp.Type = AbilityType.Extraordinary;
@@ -63,7 +113,7 @@ namespace ExpandedContent.Tweaks.Spells {
 
             var GoodberryItem = Helpers.CreateBlueprint<BlueprintItemEquipmentUsable>("GoodberryItem", bp => {
                 bp.SetName("Bunch of Goodberries");
-                bp.SetDescription("When eaten goodberries heal 2d4 point of damage, however if they are eaten more than once a day they can make the creature that ate them sick for a short time.");
+                bp.SetDescription("When eaten goodberries heal 2d4 point of damage, however if they are eaten more than once every 24 hours they can make the creature that ate them sick for a short time.");
                 bp.SetFlavorText("A small bunch of magic berries made from plant matter with druidic magic.");
                 bp.m_Icon = Kameberry.m_Icon;
                 bp.m_ForceStackable = true; //?

@@ -740,6 +740,31 @@
     "DrakeSilverPortrait": "32617896-d875-475d-b7b6-892aedf00cd9",
     "DrakeWhitePortrait": "63ecf9ef-3d5a-472e-9378-2441e3656e32",
 
+    "ArcanistDraconicExploitSelection": "a264d213-ba79-4ad6-a81b-94fb4ff6dc60",
+    "ArcanistDrakeCompanionFeature": "386113f7-04e5-44f6-9706-58053a68d62a",
+    "ArcanistExploitTypeSelection": "a10ddb5d-9e19-48c7-86f3-bf1f4c1b91d4",
+    "DraconicExploitBreathAbility": "ff08dfc7-8121-4ffc-8bc1-40c710c9d732",
+    "DraconicExploitBreathFeature": "3de4f00b-00c2-46c9-b96e-e79afac1c1b6",
+    "DraconicExploitCooldown": "f6e6fed2-6eca-4616-96ed-9bb9fa781e72",
+    "DraconicExploitEleMeleeAbility": "2976c563-aecd-4ccb-802e-6b136e035f12",
+    "DraconicExploitEleMeleeAir": "df3dab18-6c62-4d28-af7c-b07bde3927ed",
+    "DraconicExploitEleMeleeCold": "2477b6b3-23a1-4ba4-8e23-702fe0419dc4",
+    "DraconicExploitEleMeleeEarth": "9b81a52b-437f-40c5-9235-46de34e1d250",
+    "DraconicExploitEleMeleeFeature": "23db7417-6424-46e6-be35-f037e07bc1a2",
+    "DraconicExploitEleMeleeFire": "ee0a9614-38c8-45ef-a924-89f5b1a5eef5",
+    "DraconicExploitHealAbility": "d1dbc2d0-67bd-4f2c-9ff1-59bab7755b70",
+    "DraconicExploitHealFeature": "64f2a068-fa0d-44c8-be71-30eaafe90cbc",
+    "DraconicExploitMentalAbility": "401c7d4e-6114-47bf-b248-6487b59b3d8c",
+    "DraconicExploitMentalBuff": "4e2ca05f-de14-4577-b0fd-ec68490eaaf4",
+    "DraconicExploitMentalFeature": "ab91c699-1363-4d69-96c2-0139eee1ec56",
+    "DraconicExploitPhysicalAbility": "5005b223-bcad-4784-a321-a9f158ca74da",
+    "DraconicExploitPhysicalBuff": "d90ebb5b-1607-4d97-bf53-e3324b882848",
+    "DraconicExploitPhysicalFeature": "aa570276-e57d-4474-879e-bfc829a1ec86",
+    "DraconicExploitQuickenAbility": "1a9c5758-fc95-48dd-8ff9-45374ceef720",
+    "DraconicExploitQuickenBuff": "0b65c9c7-9a94-43a3-85f2-6877cfe198c6",
+    "DraconicExploitQuickenFeature": "b66e9808-fc1b-4311-af28-8457b3d917c5",
+    "DraconicScholarArchetype": "e1d20c23-6aea-487e-b56a-b93fd0af86e1",
+
     "BeneficialVampirismCurseProgression": "8c70b8f6-44aa-489b-a537-0e08c06def3a",
     "DivineHerbalistDragonMysteryFeature": "160babe5-5b4c-406d-a153-1db87ea544f6",
     "EnlightnedPhilosopherDragonMysteryFeature": "09249a4f-24aa-42cd-bde5-707401094117",
@@ -921,7 +946,11 @@
     "PurgingFinaleShaken": "2e5113e3-857f-43c1-bebb-b15c71b06783",
     "PurgingFinaleStunned": "c0c60baf-9432-4a80-893f-bd79ef24affc",
     "HollowBladesAbility": "bad01be5-ec68-4dc3-9019-269c6eff4d6f",
-    "HollowBladesBuff": "7ebdb88d-a8b4-44e1-a61d-514ebc269678"
+    "HollowBladesBuff": "7ebdb88d-a8b4-44e1-a61d-514ebc269678",
+    "GoodberryAbility": "f8774451-760a-427a-b469-4d10581cfda6",
+    "GoodberryCooldown": "8ae5802a-fe46-434b-93a0-7c6073d421d2",
+    "GoodberryItem": "68d78d54-678e-4852-99ac-c98a2d00ba3b",
+    "GoodberryItemAbility": "3019fa73-9ec8-4be0-8d16-7e16dbf41ff1"
 
 
 

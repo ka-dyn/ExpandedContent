@@ -134,6 +134,11 @@
         "Enabled": true,
         "Homebrew": false,
         "Description": "A shaman archeype swapping sprit and some hexes for a drake companion."
+      },
+      "Draconic Scholar": {
+        "Enabled": true,
+        "Homebrew": true,
+        "Description": "A arcanist archeype most exploits for a drake companion and draconic exploits."
       }
     },
     "IsExpanded": false
