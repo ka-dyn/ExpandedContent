@@ -945,6 +945,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 bp.IsClassFeature = true;
 
             });
+            MythicalBeastMaster.IsPrerequisiteFor = new List<BlueprintFeatureReference>() { MythicalDrakeMaster.ToReference<BlueprintFeatureReference>() };
             FeatTools.AddAsMythicAbility(MythicalDrakeMaster);
         }
     }

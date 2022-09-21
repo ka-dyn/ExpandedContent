@@ -1054,6 +1054,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
             DrakeBreathWeaponFire1.GetComponent<AbilityResourceLogic>().ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>() { 
                 DrakeBreathWeaponFire2Feature.ToReference<BlueprintUnitFactReference>() 
             };
+            DrakeBreathWeaponFire1Feature.IsPrerequisiteFor = new List<BlueprintFeatureReference>() { DrakeBreathWeaponFire2Feature.ToReference<BlueprintFeatureReference>() };
             var DrakeBreathWeaponCold2 = Helpers.CreateBlueprint<BlueprintAbility>("DrakeBreathWeaponCold2", bp => {
                 bp.SetName("Greater Drake Cold Breath");
                 bp.SetDescription("This breath weapon deals {g|Encyclopedia:Dice}8d6{/g} points of {g|Encyclopedia:Energy_Damage}cold damage{/g} in a 30-foot cone. " +
@@ -1221,6 +1222,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
             DrakeBreathWeaponCold1.GetComponent<AbilityResourceLogic>().ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>() {
                 DrakeBreathWeaponCold2Feature.ToReference<BlueprintUnitFactReference>()
             };
+            DrakeBreathWeaponCold1Feature.IsPrerequisiteFor = new List<BlueprintFeatureReference>() { DrakeBreathWeaponCold2Feature.ToReference<BlueprintFeatureReference>() };
             var DrakeBreathWeaponElectricity2 = Helpers.CreateBlueprint<BlueprintAbility>("DrakeBreathWeaponElectricity2", bp => {
                 bp.SetName("Greater Drake Electricity Breath");
                 bp.SetDescription("This breath weapon deals {g|Encyclopedia:Dice}8d6{/g} points of {g|Encyclopedia:Energy_Damage}electricity damage{/g} in a 30-foot cone. " +
@@ -1388,6 +1390,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
             DrakeBreathWeaponElectricity1.GetComponent<AbilityResourceLogic>().ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>() {
                 DrakeBreathWeaponElectricity2Feature.ToReference<BlueprintUnitFactReference>()
             };
+            DrakeBreathWeaponElectricity1Feature.IsPrerequisiteFor = new List<BlueprintFeatureReference>() { DrakeBreathWeaponElectricity2Feature.ToReference<BlueprintFeatureReference>() };
             var DrakeBreathWeaponAcid2 = Helpers.CreateBlueprint<BlueprintAbility>("DrakeBreathWeaponAcid2", bp => {
                 bp.SetName("Greater Drake Acid Breath");
                 bp.SetDescription("This breath weapon deals {g|Encyclopedia:Dice}8d6{/g} points of {g|Encyclopedia:Energy_Damage}acid damage{/g} in a 30-foot cone. " +
@@ -1555,6 +1558,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
             DrakeBreathWeaponAcid1.GetComponent<AbilityResourceLogic>().ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>() {
                 DrakeBreathWeaponAcid2Feature.ToReference<BlueprintUnitFactReference>()
             };
+            DrakeBreathWeaponAcid1Feature.IsPrerequisiteFor = new List<BlueprintFeatureReference>() { DrakeBreathWeaponAcid2Feature.ToReference<BlueprintFeatureReference>() };
             var DrakeIntellectFeature = Helpers.CreateBlueprint<BlueprintFeature>("DrakeIntellectFeature", bp => {
                 bp.SetName("Drake Intellect");
                 bp.SetDescription("The drake’s Intelligence score increases by 4.");
@@ -1587,6 +1591,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                     c.Value = 2;
                 });
             });
+            DrakeIntellectFeature.IsPrerequisiteFor = new List<BlueprintFeatureReference>() { DrakeKeenMindFeature.ToReference<BlueprintFeatureReference>() };
             var DrakeAgilityFeature = Helpers.CreateBlueprint<BlueprintFeature>("DrakeAgilityFeature", bp => {
                 bp.SetName("Drake Agility");
                 bp.SetDescription("The drake companions speed increases as it becomes used to moving and reacting in combat, movement speed increases by an " +
@@ -1610,6 +1615,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                     c.Value = 15;
                 });
             });
+            DrakeAgilityFeature.IsPrerequisiteFor = new List<BlueprintFeatureReference>() { DrakeGreaterAgilityFeature.ToReference<BlueprintFeatureReference>() };
             var ClawHuge1d8 = Resources.GetBlueprint<BlueprintItemWeapon>("96cb163919afd3445a4b863c677f95a1");
             var DrakenClawsBuff = Helpers.CreateBuff("DrakenClawsBuff", bp => {
                 bp.SetName("Draken Claws");
@@ -1641,6 +1647,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 bp.m_AllowNonContextActions = false;
 
             });
+            DrakeAgilityFeature.IsPrerequisiteFor = new List<BlueprintFeatureReference>() { DrakenClawsFeature.ToReference<BlueprintFeatureReference>() };
             var DrakenScalesFire = Helpers.CreateBlueprint<BlueprintFeature>("DrakenScalesFire", bp => {
                 bp.HideInUI = true;
                 bp.IsClassFeature = true;

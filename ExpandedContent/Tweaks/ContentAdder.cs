@@ -177,6 +177,7 @@ namespace ExpandedContent.Tweaks
                 Deities.Kurgess.AddKurgessFeature();
                 Deities.Ydersius.AddYdersiusFeature();
                 Deities.Groetus.AddGroetus();
+                Deities.Naderi.AddNaderiFeature();
                
                 Deities.PatchPulura.AddPulura();
                 Deities.MilaniSacredWeaponFeature.AddMilaniSacredWeaponFeature();

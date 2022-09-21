@@ -208,6 +208,7 @@
     <Compile Include="Tweaks\Classes\DreadKnight.cs" />
     <Compile Include="Tweaks\ContentAdder.cs" />
     <Compile Include="Tweaks\Curses\Vampirism.cs" />
+    <Compile Include="Tweaks\Deities\Naderi.cs" />
     <Compile Include="Tweaks\Deities\Groetus.cs" />
     <Compile Include="Tweaks\Deities\Dretha.cs" />
     <Compile Include="Tweaks\Deities\Lanishra.cs" />
@@ -732,6 +733,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Mrtyu.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Naderi.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Nalinivati.jpg">
