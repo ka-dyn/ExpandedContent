@@ -608,6 +608,7 @@ namespace ExpandedContent.Tweaks.Classes {
                     "These bonus feats must be selected from those listed as teamwork feats. " +
                     "The Oathbreaker must meet the prerequisites of the selected bonus feat.");
                 bp.m_Icon = TeamworkFeat.Icon;
+                bp.Group = FeatureGroup.TeamworkFeat;
                 bp.m_AllFeatures = new BlueprintFeatureReference[] {
                     AlliedSpellcaster.ToReference<BlueprintFeatureReference>(),
                     BackToBack.ToReference<BlueprintFeatureReference>(),

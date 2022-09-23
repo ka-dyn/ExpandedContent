@@ -2049,6 +2049,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                     c.Value = 2;
                 });                
             });
+            //Natural Armor 
             var DrakeNaturalArmor1 = Helpers.CreateBlueprint<BlueprintFeature>("DrakeNaturalArmor1", bp => {
                 bp.SetName("Drake Natural Armor");
                 bp.AddComponent<AddStatBonus>(c => {
