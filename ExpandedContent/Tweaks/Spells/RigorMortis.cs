@@ -189,7 +189,7 @@ namespace ExpandedContent.Tweaks.Spells {
             RigorMortisAbility.AddToSpellList(SpellTools.SpellList.WarpriestSpelllist, 4);
             RigorMortisAbility.AddToSpellList(SpellTools.SpellList.WizardSpellList, 4);
             RigorMortisAbility.AddToSpellList(SpellTools.SpellList.WitchSpellList, 4);
-            RigorMortisAbility.AddToSpellList(SpellTools.SpellList.LichMythicSpelllist, 4);
+            RigorMortisAbility.AddToSpellList(SpellTools.SpellList.LichWizardSpelllist, 4);
 
         }
     }

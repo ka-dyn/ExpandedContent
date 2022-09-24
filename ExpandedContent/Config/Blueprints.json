@@ -951,7 +951,10 @@
     "GoodberryAbility": "f8774451-760a-427a-b469-4d10581cfda6",
     "GoodberryCooldown": "8ae5802a-fe46-434b-93a0-7c6073d421d2",
     "GoodberryItem": "68d78d54-678e-4852-99ac-c98a2d00ba3b",
-    "GoodberryItemAbility": "3019fa73-9ec8-4be0-8d16-7e16dbf41ff1"
+    "GoodberryItemAbility": "3019fa73-9ec8-4be0-8d16-7e16dbf41ff1",
+    "SteamRayFusilladeAbility": "a8be30dd-f370-42d5-b56f-faa8eae976d6",
+    "SteamRayFusilladeBuff": "2344e20c-a595-45da-802d-052ec914d1ac",
+    "SteamRayFusilladeBuffAbility": "786bb462-6a58-4db5-b408-8dd666aece23"
 
 
 

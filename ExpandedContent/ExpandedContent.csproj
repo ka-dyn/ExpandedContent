@@ -380,6 +380,7 @@
     <Compile Include="Extensions\ExtentionMethods.cs" />
     <Compile Include="Resources.cs" />
     <Compile Include="SaveGamePatch.cs" />
+    <Compile Include="Tweaks\Spells\SteamRayFusillade.cs" />
     <Compile Include="Tweaks\Spells\Goodberry.cs" />
     <Compile Include="Tweaks\Spells\HollowBlades.cs" />
     <Compile Include="Tweaks\Spells\PurgingFinale.cs" />
@@ -1204,6 +1205,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_Stalwart.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_SteamRayFusillade.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_StunningFinale.jpg">

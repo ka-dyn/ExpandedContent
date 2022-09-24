@@ -90,6 +90,8 @@ namespace ExpandedContent.Tweaks
                 Spells.HollowBlades.AddHollowBlades();
                 Spells.Goodberry.AddGoodberry();
 
+                Spells.SteamRayFusillade.AddSteamRayFusillade();
+
                 Domains.ArchonDomainGood.AddArchonDomainGood();
                 Domains.ArchonDomainLaw.AddArchonDomainLaw();
                 Domains.BloodDomain.AddBloodDomain();
