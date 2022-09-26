@@ -16,15 +16,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExpandedContent.Tweaks.Deities {
-    internal class Achaekek {
-        private static readonly BlueprintFeature DeathDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("a099afe1b0b32554199b230699a69525");
+namespace ExpandedContent.Tweaks.DemonLords {
+    internal class Pazuzu {
+        private static readonly BlueprintFeature AirDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("6e5f4ff5a7010754ca78708ce1a9b233");
+        private static readonly BlueprintFeature ChaosDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("8c7d778bc39fec642befc1435b00f613");
         private static readonly BlueprintFeature EvilDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("351235ac5fc2b7e47801f63d117b656c");
-        private static readonly BlueprintFeature LawDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("092714336606cfc45a37d2ab39fabfa8");
         private static readonly BlueprintFeature TrickeryDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("eaa368e08628a8641b16cd41cbd2cb33");
-        private static readonly BlueprintFeature WarDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("3795653d6d3b291418164b27be88cb43");
-        private static readonly BlueprintFeature BloodDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("BloodDomainAllowed");
-        private static readonly BlueprintFeature ThieveryDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("ThieveryDomainAllowed");
+        private static readonly BlueprintFeature DemonDomainChaosAllowed = Resources.GetModBlueprint<BlueprintFeature>("DemonDomainChaosAllowed");
+        private static readonly BlueprintFeature DemonDomainEvilAllowed = Resources.GetModBlueprint<BlueprintFeature>("DemonDomainEvilAllowed");
+        private static readonly BlueprintFeature WindDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("WindDomainAllowed");
         private static readonly BlueprintSpellbook CrusaderSpellbook = Resources.GetBlueprint<BlueprintSpellbook>("673d39f7da699aa408cdda6282e7dcc0");
         private static readonly BlueprintSpellbook ClericSpellbook = Resources.GetBlueprint<BlueprintSpellbook>("4673d19a0cf2fab4f885cc4d1353da33");
         private static readonly BlueprintSpellbook InquisitorSpellbook = Resources.GetBlueprint<BlueprintSpellbook>("57fab75111f377248810ece84193a5a5");
@@ -34,41 +34,39 @@ namespace ExpandedContent.Tweaks.Deities {
         private static readonly BlueprintCharacterClass WarpriestClass = Resources.GetBlueprint<BlueprintCharacterClass>("30b5e47d47a0e37438cc5a80c96cfb99");
         private static readonly BlueprintCharacterClass DreadKnightClass = Resources.GetModBlueprint<BlueprintCharacterClass>("DreadKnightClass");
 
+        public static void AddPazuzuFeature() {
 
-
-        public static void AddAchaekekFeature() {
-
-            BlueprintItem MasterworkFalcata = Resources.GetBlueprint<BlueprintItem>("833083b0efacf80499135953d66a0c45");
+            BlueprintItem MasterworkLongsword = Resources.GetBlueprint<BlueprintItem>("571c56d11dafbb04094cbaae659974b5");
 
             BlueprintArchetype FeralChampionArchetype = Resources.GetBlueprint<BlueprintArchetype>("f68ca492c9c15e241ab73735fbd0fb9f");
             BlueprintArchetype PriestOfBalance = Resources.GetBlueprint<BlueprintArchetype>("a4560e3fb5d247d68fb1a2738fcc0855");
             BlueprintArchetype ClawOfTheFalseWyrmArchetype = Resources.GetModBlueprint<BlueprintArchetype>("ClawOfTheFalseWyrmArchetype");
 
+            BlueprintFeature LongswordProficiency = Resources.GetBlueprint<BlueprintFeature>("62e27ffd9d53e14479f73da29760f64e");
+            var PazuzuIcon = AssetLoader.LoadInternal("Deities", "Icon_Pazuzu.jpg");
+            var PazuzuFeature = Helpers.CreateBlueprint<BlueprintFeature>("PazuzuFeature", (bp => {
 
-            BlueprintFeature FalcataProficiency = Resources.GetBlueprint<BlueprintFeature>("91fe4440ac82dbf4383c872c065c6661");
-            var AchaekekIcon = AssetLoader.LoadInternal("Deities", "Icon_Achaekek.jpg");
-            var AchaekekFeature = Helpers.CreateBlueprint<BlueprintFeature>("AchaekekFeature", (bp => {
-
-                bp.SetName("Achaekek");
-                bp.SetDescription("\nTitles: The Mantis God, He Who Walks in Blood   " +
-                    "\nAlignment: Lawful Evil   " +
-                    "\nAreas of Concern: Blood, Death. Assassination   " +
-                    "\nDomains: Death, Evil, Law, Trickery, War   " +
-                    "\nSubdomains: Blood, Deception, Devil, Murder, Tactics, Thievery   " +
-                    "\nFavoured Weapon: Sawtooth saber (Falcata)   " +
-                    "\nHoly Symbol: Crossed mantis claws   " +
-                    "\nSacred Animal: Crimson Mantis   " +
-                    "\nAchaekek's status as a deity is sometimes debated, but many theologians agree that he was the first entity created by the gods to carry out " +
-                    "their will. There is general disagreement as to who exactly is responsible for Achaekek's creation, although it was most likely an alliance of " +
-                    "several deities—or perhaps, as his own church suggests, Achaekek's creator might have been a deity long ago murdered by Achaekek himself. According " +
-                    "to the Windsong Testaments, Achaekek was one of the first eight deities of this incarnation of creation, and originated as a lawful neutral judge " +
-                    "over good and evil. When the first deities turned their attention toward the Material Plane, Achaekek stood sentinel at the edge of Pharasma's Spire " +
-                    "to oversee the creation of life. Near the end of the Age of Creation, when Rovagug was rampaging across creation, Achaekek consumed his own impartiality " +
-                    "and descended into savagery, becoming a mindless beast. Whatever his true origins may be, Achaekek was created as an agent for the gods, an enforcer " +
-                    "of divine justice, specifically targeting all mortals who hoped to usurp the power of a god and achieve divinity. Not wishing to be become targets of He " +
-                    "Who Walks in Blood themselves, however, they made him incapable of killing those who truly were gods, restricting his powers to slay those of demigod " +
-                    "status or below.");
-                bp.m_Icon = AchaekekIcon;
+                bp.SetName("Pazuzu");
+                bp.SetDescription("\nTitles: King of the Wind Demons, Demon Lord of the Sky and Winged Creatures   " +
+                    "\nAlignment: Chaotic Evil   " +
+                    "\nAreas of Concern: The Sky, Temptation, Winged creatures   " +
+                    "\nDomains: Air, Chaos, Evil, Trickery   " +
+                    "\nSubdomains: Cloud, Deception, Demon, Wind   " +
+                    "\nFavoured Weapon: Longsword   " +
+                    "\nHoly Symbol: Image of Pazuzu, right hand raised   " +
+                    "\nSacred Animal: All flying animals   " +
+                    "\nPazuzu appears as a wiry human with eagle’s legs and talons, a demonic avian head, two pairs of bird wings, a scorpion tail, and a writhing snake in place of " +
+                    "his genitals. Pazuzu is an aggressive demon fond of possessing mortals and using them to work his evils upon the world—it is said that Pazuzu can hear his name " +
+                    "when an innocent speaks it unknowingly, and that this may be all that is needed to invite possession by the demon. He is the patron of all evil things that fly, " +
+                    "particularly vrocks and harpies. His breath is a cloud of locusts, and it is said that at the dawn of civilization his first breath of air upon the Material Plane " +
+                    "spawned the demon that, in time, would become Deskari. Pazuzu is among the oldest of the demon lords, one of the first to rise to power in the Abyss long ago " +
+                    "alongside the likes of Lamashtu, Abraxas, and Dagon, yet his long conf lictwith Lamashtu has prevented him from achieving greater power or perhaps even godhood " +
+                    "himself—a fact that only serves to spur his unending conflict with the Mother of Monsters. Pazuzu’s Abyssal realm of High M’Vania exists on the side of one of " +
+                    "the great Abyssal rifts. This vertical realm includes an immense city on a vast shelf, as well as the depths below it and the skies above. The unique location " +
+                    "of this realm allows Pazuzu unprecedented mobility among the Outer Planes, a freedom he often abuses in his war against Lamashtu, recruiting powerful allies from " +
+                    "Hell, Abaddon, and beyond. Pazuzu’s personal rookery is a tangle of towers called Shibaxet—a place only his most trusted minions or his favored meals ever get to " +
+                    "see.");
+                bp.m_Icon = PazuzuIcon;
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;
                 bp.HideInCharacterSheetAndLevelUp = false;
@@ -87,31 +85,31 @@ namespace ExpandedContent.Tweaks.Deities {
                 });
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
                 bp.AddComponent<PrerequisiteAlignment>(c => {
-                    c.Alignment = AlignmentMaskType.LawfulNeutral | AlignmentMaskType.LawfulEvil | AlignmentMaskType.NeutralEvil;
+                    c.Alignment = AlignmentMaskType.ChaoticNeutral | AlignmentMaskType.NeutralEvil | AlignmentMaskType.ChaoticEvil;
                 });
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[1] { ChannelNegativeAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[1] { DeathDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+                    c.m_Facts = new BlueprintUnitFactReference[1] { ChaosDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[1] { AirDomainAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[1] { EvilDomainAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[1] { LawDomainAllowed.ToReference<BlueprintUnitFactReference>() };
-                });
-                bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[1] { TrickeryDomainAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[1] { WarDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+                    c.m_Facts = new BlueprintUnitFactReference[1] { DemonDomainChaosAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[1] { BloodDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+                    c.m_Facts = new BlueprintUnitFactReference[1] { DemonDomainEvilAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[1] { ThieveryDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+                    c.m_Facts = new BlueprintUnitFactReference[1] { WindDomainAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<ForbidSpellbookOnAlignmentDeviation>(c => {
                     c.m_Spellbooks = new BlueprintSpellbookReference[1] { CrusaderSpellbook.ToReference<BlueprintSpellbookReference>() };
@@ -123,7 +121,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     c.m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>();
 
 
-                    c.m_Feature = FalcataProficiency.ToReference<BlueprintFeatureReference>();
+                    c.m_Feature = LongswordProficiency.ToReference<BlueprintFeatureReference>();
 
                     c.Level = 1;
                     c.m_Archetypes = null;
@@ -132,7 +130,7 @@ namespace ExpandedContent.Tweaks.Deities {
                                WarpriestClass.ToReference<BlueprintCharacterClassReference>() };
                 });
                 bp.AddComponent<AddStartingEquipment>(c => {
-                    c.m_BasicItems = new BlueprintItemReference[1] { MasterworkFalcata.ToReference<BlueprintItemReference>() };
+                    c.m_BasicItems = new BlueprintItemReference[1] { MasterworkLongsword.ToReference<BlueprintItemReference>() };
                     c.m_RestrictedByClass = new BlueprintCharacterClassReference[3] {
                                 ClericClass.ToReference<BlueprintCharacterClassReference>(),
                                 InquistorClass.ToReference<BlueprintCharacterClassReference>(),

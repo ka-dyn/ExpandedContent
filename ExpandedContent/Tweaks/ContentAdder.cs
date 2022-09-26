@@ -110,6 +110,7 @@ namespace ExpandedContent.Tweaks
                 Domains.PsychopompDomainRepose.AddPsychopompDomainRepose();
                 Domains.RiversDomain.AddRiversDomain();
                 Domains.RageDomain.AddRageDomain();
+                Domains.ThieveryDomain.AddThieveryDomain();
                 Domains.BaseDeityPatch.AddBaseDeityPatch();
 
                 Mysteries.DragonMystery.AddDragonMystery();
@@ -127,6 +128,7 @@ namespace ExpandedContent.Tweaks
                 DemonLords.Dagon.AddDagonFeature();
                 DemonLords.Treerazer.AddTreerazerFeature();
                 DemonLords.Nocticula.AddNocticulaFeature();
+                DemonLords.Pazuzu.AddPazuzuFeature();
 
                 Deities.Apsu.AddApsu();
                 Deities.Dahak.AddDahakFeature();

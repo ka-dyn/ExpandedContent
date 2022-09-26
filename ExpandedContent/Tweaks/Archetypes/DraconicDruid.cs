@@ -144,7 +144,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.AddComponent<AbilityResourceLogic>(c => {
                     c.m_RequiredResource = WildShapeResource.ToReference<BlueprintAbilityResourceReference>();
                     c.m_IsSpendResource = true;
-                    c.CostIsCustom = true;
+                    c.CostIsCustom = false;
                     c.Amount = 2;
                     c.ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>() { MasterShapeshifter.ToReference<BlueprintUnitFactReference>() };
                 });
@@ -218,7 +218,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.AddComponent<AbilityResourceLogic>(c => {
                     c.m_RequiredResource = WildShapeResource.ToReference<BlueprintAbilityResourceReference>();
                     c.m_IsSpendResource = true;
-                    c.CostIsCustom = true;
+                    c.CostIsCustom = false;
                     c.Amount = 2;
                     c.ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>() { MasterShapeshifter.ToReference<BlueprintUnitFactReference>() };
                 });
@@ -292,7 +292,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.AddComponent<AbilityResourceLogic>(c => {
                     c.m_RequiredResource = WildShapeResource.ToReference<BlueprintAbilityResourceReference>();
                     c.m_IsSpendResource = true;
-                    c.CostIsCustom = true;
+                    c.CostIsCustom = false;
                     c.Amount = 2;
                     c.ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>() { MasterShapeshifter.ToReference<BlueprintUnitFactReference>() };
                 });
@@ -366,7 +366,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.AddComponent<AbilityResourceLogic>(c => {
                     c.m_RequiredResource = WildShapeResource.ToReference<BlueprintAbilityResourceReference>();
                     c.m_IsSpendResource = true;
-                    c.CostIsCustom = true;
+                    c.CostIsCustom = false;
                     c.Amount = 2;
                     c.ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>() { MasterShapeshifter.ToReference<BlueprintUnitFactReference>() };
                 });
@@ -440,7 +440,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.AddComponent<AbilityResourceLogic>(c => {
                     c.m_RequiredResource = WildShapeResource.ToReference<BlueprintAbilityResourceReference>();
                     c.m_IsSpendResource = true;
-                    c.CostIsCustom = true;
+                    c.CostIsCustom = false;
                     c.Amount = 2;
                     c.ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>() { MasterShapeshifter.ToReference<BlueprintUnitFactReference>() };
                 });
@@ -514,7 +514,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.AddComponent<AbilityResourceLogic>(c => {
                     c.m_RequiredResource = WildShapeResource.ToReference<BlueprintAbilityResourceReference>();
                     c.m_IsSpendResource = true;
-                    c.CostIsCustom = true;
+                    c.CostIsCustom = false;
                     c.Amount = 2;
                     c.ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>() { MasterShapeshifter.ToReference<BlueprintUnitFactReference>() };
                 });
@@ -588,7 +588,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.AddComponent<AbilityResourceLogic>(c => {
                     c.m_RequiredResource = WildShapeResource.ToReference<BlueprintAbilityResourceReference>();
                     c.m_IsSpendResource = true;
-                    c.CostIsCustom = true;
+                    c.CostIsCustom = false;
                     c.Amount = 2;
                     c.ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>() { MasterShapeshifter.ToReference<BlueprintUnitFactReference>() };
                 });
@@ -702,7 +702,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.AddComponent<AbilityResourceLogic>(c => {
                     c.m_RequiredResource = WildShapeResource.ToReference<BlueprintAbilityResourceReference>();
                     c.m_IsSpendResource = true;
-                    c.CostIsCustom = true;
+                    c.CostIsCustom = false;
                     c.Amount = 2;
                     c.ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>() { MasterShapeshifter.ToReference<BlueprintUnitFactReference>() };
                 });
@@ -776,7 +776,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.AddComponent<AbilityResourceLogic>(c => {
                     c.m_RequiredResource = WildShapeResource.ToReference<BlueprintAbilityResourceReference>();
                     c.m_IsSpendResource = true;
-                    c.CostIsCustom = true;
+                    c.CostIsCustom = false;
                     c.Amount = 2;
                     c.ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>() { MasterShapeshifter.ToReference<BlueprintUnitFactReference>() };
                 });
@@ -850,7 +850,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.AddComponent<AbilityResourceLogic>(c => {
                     c.m_RequiredResource = WildShapeResource.ToReference<BlueprintAbilityResourceReference>();
                     c.m_IsSpendResource = true;
-                    c.CostIsCustom = true;
+                    c.CostIsCustom = false;
                     c.Amount = 2;
                     c.ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>() { MasterShapeshifter.ToReference<BlueprintUnitFactReference>() };
                 });
@@ -924,7 +924,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.AddComponent<AbilityResourceLogic>(c => {
                     c.m_RequiredResource = WildShapeResource.ToReference<BlueprintAbilityResourceReference>();
                     c.m_IsSpendResource = true;
-                    c.CostIsCustom = true;
+                    c.CostIsCustom = false;
                     c.Amount = 2;
                     c.ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>() { MasterShapeshifter.ToReference<BlueprintUnitFactReference>() };
                 });
@@ -998,7 +998,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.AddComponent<AbilityResourceLogic>(c => {
                     c.m_RequiredResource = WildShapeResource.ToReference<BlueprintAbilityResourceReference>();
                     c.m_IsSpendResource = true;
-                    c.CostIsCustom = true;
+                    c.CostIsCustom = false;
                     c.Amount = 2;
                     c.ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>() { MasterShapeshifter.ToReference<BlueprintUnitFactReference>() };
                 });
@@ -1072,7 +1072,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.AddComponent<AbilityResourceLogic>(c => {
                     c.m_RequiredResource = WildShapeResource.ToReference<BlueprintAbilityResourceReference>();
                     c.m_IsSpendResource = true;
-                    c.CostIsCustom = true;
+                    c.CostIsCustom = false;
                     c.Amount = 2;
                     c.ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>() { MasterShapeshifter.ToReference<BlueprintUnitFactReference>() };
                 });
@@ -1146,7 +1146,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.AddComponent<AbilityResourceLogic>(c => {
                     c.m_RequiredResource = WildShapeResource.ToReference<BlueprintAbilityResourceReference>();
                     c.m_IsSpendResource = true;
-                    c.CostIsCustom = true;
+                    c.CostIsCustom = false;
                     c.Amount = 2;
                     c.ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>() { MasterShapeshifter.ToReference<BlueprintUnitFactReference>() };
                 });

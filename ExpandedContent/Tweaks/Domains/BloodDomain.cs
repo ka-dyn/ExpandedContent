@@ -202,13 +202,15 @@ namespace ExpandedContent.Tweaks.Domains {
                     BaseValue = 1,
                     IncreasedByLevel = false,
                     IncreasedByLevelStartPlusDivStep = true,
-                    m_Class = new BlueprintCharacterClassReference[] {
+                    m_Class = new BlueprintCharacterClassReference[0],
+                    m_ClassDiv = new BlueprintCharacterClassReference[] {
                         ClericClass.ToReference<BlueprintCharacterClassReference>(),
                         InquisitorClass.ToReference<BlueprintCharacterClassReference>(),
                         HunterClass.ToReference<BlueprintCharacterClassReference>(),
                         PaladinClass.ToReference<BlueprintCharacterClassReference>(),
                     },
-                    m_Archetypes = new BlueprintArchetypeReference[] {
+                    m_Archetypes = new BlueprintArchetypeReference[0],
+                    m_ArchetypesDiv = new BlueprintArchetypeReference[] {
                         DivineHunterArchetype.ToReference<BlueprintArchetypeReference>(),
                         TempleChampionArchetype.ToReference<BlueprintArchetypeReference>(),
                     },

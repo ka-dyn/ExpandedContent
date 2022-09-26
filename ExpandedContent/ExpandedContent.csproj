@@ -300,6 +300,7 @@
     <Compile Include="Tweaks\Deities\BlackButterfly.cs" />
     <Compile Include="Tweaks\Deities\Dahak.cs" />
     <Compile Include="Tweaks\Deities\DeitySelection.cs" />
+    <Compile Include="Tweaks\DemonLords\Pazuzu.cs" />
     <Compile Include="Tweaks\DemonLords\Nocticula.cs" />
     <Compile Include="Tweaks\DemonLords\Treerazer.cs" />
     <Compile Include="Tweaks\DemonLords\Dagon.cs" />
@@ -312,6 +313,7 @@
     <Compile Include="Tweaks\Deities\Pulura.cs" />
     <Compile Include="Tweaks\Deities\Ragathiel.cs" />
     <Compile Include="Tweaks\DemonLords\Zura.cs" />
+    <Compile Include="Tweaks\Domains\ThieveryDomain.cs" />
     <Compile Include="Tweaks\Domains\RageDomain.cs" />
     <Compile Include="Tweaks\Domains\PsychopompDomainRepose.cs" />
     <Compile Include="Tweaks\Domains\PsychopompDomainDeath.cs" />
@@ -785,6 +787,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Pantheon.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Pazuzu.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Philosophies.jpg">

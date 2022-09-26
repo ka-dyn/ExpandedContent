@@ -66,6 +66,7 @@ namespace ExpandedContent.Tweaks.Deities {
             var DagonFeature = Resources.GetModBlueprint<BlueprintFeature>("DagonFeature");
             var TreerazerFeature = Resources.GetModBlueprint<BlueprintFeature>("TreerazerFeature");
             var NocticulaFeature = Resources.GetModBlueprint<BlueprintFeature>("NocticulaFeature");
+            var PazuzuFeature = Resources.GetModBlueprint<BlueprintFeature>("PazuzuFeature");
 
             //Empyreal Lords
             var ArsheaFeature = Resources.GetModBlueprint<BlueprintFeature>("ArsheaFeature");
@@ -310,6 +311,7 @@ namespace ExpandedContent.Tweaks.Deities {
                 DeskariFeature.ToReference<BlueprintFeatureReference>(),
                 KabririFeature.ToReference<BlueprintFeatureReference>(),
                 NocticulaFeature.ToReference<BlueprintFeatureReference>(),
+                PazuzuFeature.ToReference<BlueprintFeatureReference>(),
                 TreerazerFeature.ToReference<BlueprintFeatureReference>(),
                 ZuraFeature.ToReference<BlueprintFeatureReference>(),
                 };

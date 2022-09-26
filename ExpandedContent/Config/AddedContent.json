@@ -220,6 +220,11 @@
         "Enabled": true,
         "Homebrew": false,
         "Description": "Adds the rage subdomain, a subdomain to the destruction domain."
+      },
+      "Thievery Subdomain": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds the thievery subdomain, a subdomain to the trickery domain."
       }
     },
     "IsExpanded": false
