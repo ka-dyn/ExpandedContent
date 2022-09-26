@@ -358,7 +358,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.LocalizedDuration = Helpers.CreateString("SteamRayFusilladeAbility.Duration", "Buff 1 round/level ");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
-            SteamRayFusilladeAbility.AddToSpellList(SpellTools.SpellList.DruidSpellList, 1);
+            SteamRayFusilladeAbility.AddToSpellList(SpellTools.SpellList.WizardSpellList, 7);
 
         }
     }

@@ -20,6 +20,7 @@ using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.UnitLogic.Abilities.Components;
 using Kingmaker.UnitLogic.Abilities.Components.CasterCheckers;
+using Kingmaker.UnitLogic.Abilities.Components.TargetCheckers;
 using Kingmaker.UnitLogic.ActivatableAbilities;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.FactLogic;
@@ -49,7 +50,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
             var RogueClass = Resources.GetBlueprint<BlueprintCharacterClass>("299aa766dee3cbf4790da4efb8c72484");
             var ShamanClass = Resources.GetBlueprint<BlueprintCharacterClass>("145f1d3d360a7ad48bd95d392c81b38e");
             var ArcanistClass = Resources.GetBlueprint<BlueprintCharacterClass>("52dbfd8505e22f84fad8d702611f60b7");
-            var AnimalCompanionRank = Resources.GetBlueprint<BlueprintFeature>("1670990255e4fe948a863bafd5dbda5d");
+            var AnimalCompanionRank = Resources.GetBlueprint<BlueprintFeature>("1670990255e4fe948a863bafd5dbda5d");            
             var DrakeCompanionProgression = Helpers.CreateBlueprint<BlueprintProgression>("DrakeCompanionProgression", bp => {
                 bp.m_AllowNonContextActions = false;
                 bp.SetName("");
@@ -238,6 +239,13 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 bp.HideInCharacterSheetAndLevelUp = true;
                 bp.HideNotAvailibleInUI = true;
                 bp.IsClassFeature = true;
+            });
+            var MountTargetAbility = Resources.GetBlueprint<BlueprintAbility>("9f8c0f4fcabdb3145b449826d17da18d");
+            MountTargetAbility.AddComponent<AbilityTargetHasFact>(c => {
+                c.m_CheckedFacts = new BlueprintUnitFactReference[] {
+                    DrakeCompanionSlotFeature.ToReference<BlueprintUnitFactReference>()
+                };
+                c.Inverted = true;
             });
             var DrakeNaturalArmorFeature = Helpers.CreateBlueprint<BlueprintFeature>("DrakeNaturalArmor", bp => {
                 bp.SetName("Drake Natural Armor");
