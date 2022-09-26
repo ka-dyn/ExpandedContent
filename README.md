@@ -56,11 +56,11 @@ New Domains / Subdomains
 
 -Domains: Scalykind
 
--Subdomains: Archon, Blood, Caves, Demon, Dragon, Ferocity, Ice, Psychopomp, Rage, Revelation, Rivers, Storm, Undead, Wind
+-Subdomains: Archon, Blood, Caves, Demon, Dragon, Ferocity, Ice, Psychopomp, Rage, Revelation, Rivers, Storm, Thievery, Undead, Wind
 
 New Spells
 
--Hydraulic push, Slipstream, Scourge of the Horsemen, Rigor mortis, Reviving Finale, Deadly Finale, Purging Finale, Stunning Finale, Hollow Blades, Goodberry
+-Hydraulic push, Slipstream, Scourge of the Horsemen, Rigor mortis, Reviving Finale, Deadly Finale, Purging Finale, Stunning Finale, Hollow Blades, Goodberry, Steam Ray Fusillade
 
 I'd like to give a huge thank you to Vek17, as much of the coding in this repository is his; I simply repurposed it or learned from it. I wouldn't be able to release
 anything without it. Check out his mod, TableTopTweaks if you haven't already!
