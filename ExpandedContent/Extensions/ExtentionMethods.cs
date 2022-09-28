@@ -416,8 +416,7 @@ namespace ExpandedContent.Extensions {
         }
 
         public static void SetDescription(this BlueprintUnitFact feature, String description) {
-            var taggedDescription = DescriptionTools.TagEncyclopediaEntries(description);
-            feature.m_Description = Helpers.CreateString(feature.name + ".Description", taggedDescription);
+            feature.m_Description = Helpers.CreateString(feature.name + ".Description", description, shouldProcess: true);
         }
 
         public static bool HasFeatureWithId(this LevelEntry level, String id) {

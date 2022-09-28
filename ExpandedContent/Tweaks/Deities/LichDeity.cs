@@ -48,11 +48,11 @@ namespace ExpandedContent.Tweaks.Deities {
             LichDeityFeature.AddComponent<AddFacts>(c => {
                         c.m_Facts = new BlueprintUnitFactReference[] { LichDeityMythicFeature.ToReference<BlueprintUnitFactReference>() };
                     });
-            LichDeityFeature.SetDescription("Leader of a small cult of undead, created by h{mf|is|er} own hands, {name} became famous as the " +
+            LichDeityFeature.SetDescription("Leader of a small cult of undead, created by their own hands, becoming famous as the " +
                 "indomitable commander of the Fifth Mendevian Crusade against the Worldwound. Determined to destroy the forces of the Abyss at any cost, " +
-                "{mf||s}he ventured on the path of the L{mf|ord|ady} of Death. For millennia, powerful necromancers have dreamed of a power that could rival the divine. " +
-                "They have created cults in their own names, and attracted many followers. Thanks to h{mf|is|er} legendary powers, {name} has managed to achieve much greater " +
-                "success than the others: {mf||s}he has acquired a talent to bestow divine spells upon h{mf|is|er} followers. From that moment, the undead created by h{mf|im|er} " +
+                "they ventured on the path of the Lord of Death. For millennia, powerful necromancers have dreamed of a power that could rival the divine. " +
+                "They have created cults in their own names, and attracted many followers. Thanks to their legendary powers, they has managed to achieve much greater " +
+                "success than the others: acquireing a talent to bestow divine spells upon their followers. From that moment, the undead created by them " +
                 "needed no other deities to cast spells.\nDomains: Death, Evil, Strength, War. \nFavoured Weapons: Scythe, Sickle.");
 
                     

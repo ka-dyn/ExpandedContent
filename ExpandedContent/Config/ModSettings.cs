@@ -14,7 +14,7 @@ namespace ExpandedContent.Config {
         public static MultiLocalizationPack ModLocalizationPack = new MultiLocalizationPack();
 
         private static string UserConfigFolder => ModEntry.Path + "UserSettings";
-        private static string localizationFolder => ModEntry.Path + "Localization";
+        private static string LocalizationFolder => ModEntry.Path + "Localization";
 
         private static JsonSerializerSettings cachedSettings;
         private static JsonSerializerSettings SerializerSettings {
@@ -42,14 +42,16 @@ namespace ExpandedContent.Config {
             LoadSettings("AddedContent.json", ref AddedContent);
             
             LoadSettings("Blueprints.json", ref Blueprints);
+
+            LoadLocalization();
         }
         public static void LoadLocalization() {
             JsonSerializer serializer = JsonSerializer.Create(SerializerSettings);
             var fileName = "LocalizationPack.json";
             var assembly = Assembly.GetExecutingAssembly();
             var resourcePath = $"ExpandedContent.Localization.{fileName}"; ;
-            var localizationPath = $"{localizationFolder}{Path.DirectorySeparatorChar}{fileName}";
-            Directory.CreateDirectory(localizationFolder);
+            var localizationPath = $"{LocalizationFolder}{Path.DirectorySeparatorChar}{fileName}";
+            Directory.CreateDirectory(LocalizationFolder);
             if (File.Exists(localizationPath)) {
                 using (StreamReader streamReader = File.OpenText(localizationPath))
                 using (JsonReader jsonReader = new JsonTextReader(streamReader)) {
@@ -73,7 +75,7 @@ namespace ExpandedContent.Config {
         public static void SaveLocalization(string fileName, MultiLocalizationPack localizaiton) {
             localizaiton.Strings.Sort((x, y) => string.Compare(x.SimpleName, y.SimpleName));
             Directory.CreateDirectory(UserConfigFolder);
-            var localizationPath = $"{localizationFolder}{Path.DirectorySeparatorChar}{fileName}";
+            var localizationPath = $"{LocalizationFolder}{Path.DirectorySeparatorChar}{fileName}";
 
             JsonSerializer serializer = JsonSerializer.Create(SerializerSettings);
             using (StreamWriter streamWriter = new StreamWriter(localizationPath))
