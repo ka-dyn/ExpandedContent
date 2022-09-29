@@ -111,6 +111,7 @@ namespace ExpandedContent.Tweaks
                 Domains.RiversDomain.AddRiversDomain();
                 Domains.RageDomain.AddRageDomain();
                 Domains.ThieveryDomain.AddThieveryDomain();
+                Domains.RevolutionDomain.AddRevolutionDomain();
                 Domains.BaseDeityPatch.AddBaseDeityPatch();
 
                 Mysteries.DragonMystery.AddDragonMystery();

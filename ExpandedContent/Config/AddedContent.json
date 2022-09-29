@@ -225,6 +225,11 @@
         "Enabled": true,
         "Homebrew": false,
         "Description": "Adds the thievery subdomain, a subdomain to the trickery domain."
+      },
+      "Revolution Subdomain": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds the revolution subdomain, a subdomain to the liberation domain."
       }
     },
     "IsExpanded": false

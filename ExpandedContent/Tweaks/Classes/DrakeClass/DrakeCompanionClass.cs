@@ -180,6 +180,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 });
             });
             var DrakeCompanionSlotFeature = Helpers.CreateBlueprint<BlueprintFeature>("DrakeCompanionSlotFeature", bp => {
+                bp.SetName("Feature not available");
                 bp.AddComponent<LockEquipmentSlot>(c => {
                     c.m_SlotType = LockEquipmentSlot.SlotType.MainHand;
                 });
