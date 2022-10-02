@@ -908,7 +908,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 });
                 bp.AddComponent<AddKnownSpell>(c => {
                     c.m_CharacterClass = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
-                    c.m_Spell = Haste.ToReference<BlueprintAbilityReference>();
+                    c.m_Spell = Fireball.ToReference<BlueprintAbilityReference>();
                     c.SpellLevel = 3;
                 });
                 bp.AddComponent<AddKnownSpell>(c => {
