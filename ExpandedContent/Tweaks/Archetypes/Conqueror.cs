@@ -3,7 +3,10 @@ using ExpandedContent.Utilities;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Selection;
+using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.FactLogic;
+using Kingmaker.UnitLogic.Mechanics.Components;
+using Kingmaker.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,6 +35,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var SkaldRagePowerSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("2476514e31791394fa140f1a07941c96");
             var IconCommand = AssetLoader.LoadInternal("Skills", "Icon_Command.png");
 
+            
 
             var ConquerorInspiredRageFeature = Helpers.CreateBlueprint<BlueprintFeature>("ConquerorInspiredRageFeature", bp => {
                 bp.SetName("Profane Commandment");
@@ -114,6 +118,20 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     Helpers.LevelEntry(20, ProfaneLordFeature)
                 };
             });
+            var RagingSongResource = Resources.GetBlueprint<BlueprintAbilityResource>("4a2302c4ec2cfb042bba67d825babfec");
+            RagingSongResource.m_MaxAmount.m_Class = RagingSongResource.m_MaxAmount.m_Class.AppendToArray(DreadKnightClass.ToReference<BlueprintCharacterClassReference>());
+            RagingSongResource.m_MaxAmount.m_Archetypes = RagingSongResource.m_MaxAmount.m_Archetypes.AppendToArray(ConquerorArchetype.ToReference<BlueprintArchetypeReference>());
+            var InspiredRageEffectBuff = Resources.GetBlueprint<BlueprintBuff>("75b3978757908d24aaaecaf2dc209b89");
+            InspiredRageEffectBuff.GetComponents<ContextRankConfig>().ForEach(c => { c.m_Class = c.m_Class.AppendToArray(DreadKnightClass.ToReference<BlueprintCharacterClassReference>()); });
+            InspiredRageEffectBuff.GetComponents<ContextRankConfig>().ForEach(c => { c.Archetype = ConquerorArchetype.ToReference<BlueprintArchetypeReference>();
+
+
+
+
+
+
+
+
             DreadKnightClass.m_Archetypes = DreadKnightClass.m_Archetypes.AppendToArray(ConquerorArchetype.ToReference<BlueprintArchetypeReference>());
         }
     }
