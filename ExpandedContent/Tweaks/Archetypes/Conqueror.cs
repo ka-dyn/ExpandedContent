@@ -123,7 +123,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             RagingSongResource.m_MaxAmount.m_Archetypes = RagingSongResource.m_MaxAmount.m_Archetypes.AppendToArray(ConquerorArchetype.ToReference<BlueprintArchetypeReference>());
             var InspiredRageEffectBuff = Resources.GetBlueprint<BlueprintBuff>("75b3978757908d24aaaecaf2dc209b89");
             InspiredRageEffectBuff.GetComponents<ContextRankConfig>().ForEach(c => { c.m_Class = c.m_Class.AppendToArray(DreadKnightClass.ToReference<BlueprintCharacterClassReference>()); });
-            InspiredRageEffectBuff.GetComponents<ContextRankConfig>().ForEach(c => { c.Archetype = ConquerorArchetype.ToReference<BlueprintArchetypeReference>();
+            InspiredRageEffectBuff.GetComponents<ContextRankConfig>().ForEach(c => { c.Archetype = ConquerorArchetype.ToReference<BlueprintArchetypeReference>(); });
 
 
 
