@@ -32,6 +32,8 @@ namespace ExpandedContent.Tweaks.Spells {
         public static void AddRigorMortis() {
 
             var FiendTotemFeature = Resources.GetBlueprint<BlueprintFeature>("ce449404eeb4a7c499fbe0248056174f");
+            var Icon_ScrollOfRigorMortis = AssetLoader.LoadInternal("Items", "Icon_ScrollOfRigorMortis.png");
+
 
             var RigorMortisBuff = Helpers.CreateBuff("RigorMortisBuff", bp => {
                 bp.SetName("Rigor Mortis");
@@ -183,6 +185,8 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = Helpers.CreateString("RigorMortisAbility.SavingThrow", "Fortitude partial");
             });
+            var RigorMortisScroll = ItemTools.CreateScroll("ScrollOfRigorMortis", Icon_ScrollOfRigorMortis, RigorMortisAbility, 4, 7);
+            VenderTools.AddScrollToLeveledVenders(RigorMortisScroll);
             RigorMortisAbility.AddToSpellList(SpellTools.SpellList.ClericSpellList, 4);
             RigorMortisAbility.AddToSpellList(SpellTools.SpellList.MagusSpellList, 4);
             RigorMortisAbility.AddToSpellList(SpellTools.SpellList.ShamanSpelllist, 4);

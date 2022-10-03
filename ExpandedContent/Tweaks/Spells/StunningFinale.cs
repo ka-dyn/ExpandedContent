@@ -38,8 +38,9 @@ namespace ExpandedContent.Tweaks.Spells {
             var DerakniDroneAbility = Resources.GetBlueprint<BlueprintAbility>("30e1b50180b115840a94c611599de01e").GetComponent<AbilitySpawnFx>();
             var Stunned = Resources.GetBlueprint<BlueprintBuff>("09d39b38bb7c6014394b6daced9bacd3");
             var Staggered = Resources.GetBlueprint<BlueprintBuff>("df3950af5a783bd4d91ab73eb8fa0fd3");
+            var Icon_ScrollOfStunningFinale = AssetLoader.LoadInternal("Items", "Icon_ScrollOfStunningFinale.png");
 
-            
+
             var StunningFinale = Helpers.CreateBlueprint<BlueprintAbility>("StunningFinale", bp => {
                 bp.SetName("Stunning Finale");
                 bp.SetDescription("You must have a bardic performance in effect to cast this spell. With a flourish, you immediately end your bardic performance, " +
@@ -178,6 +179,8 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
+            var StunningFinaleScroll = ItemTools.CreateScroll("ScrollOfStunningFinale", Icon_ScrollOfStunningFinale, StunningFinale, 5, 13);
+            VenderTools.AddScrollToLeveledVenders(StunningFinaleScroll);
             StunningFinale.AddToSpellList(SpellTools.SpellList.BardSpellList, 5);
         }
     }

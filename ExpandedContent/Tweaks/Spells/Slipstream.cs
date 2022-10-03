@@ -24,6 +24,8 @@ namespace ExpandedContent.Tweaks.Spells {
     internal class Slipstream {
         public static void AddSlipstream() {
             var SlipstreamIcon = AssetLoader.LoadInternal("Skills", "Icon_Slipstream.jpg");
+            var Icon_ScrollOfSlipstream = AssetLoader.LoadInternal("Items", "Icon_ScrollOfSlipstream.png");
+
 
             var SlipstreamBuff = Helpers.CreateBuff("SlipstreamBuff", bp => {
                 bp.SetName("Slipstream");
@@ -80,7 +82,8 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.LocalizedDuration = Helpers.CreateString("SlipstreamAbility.Duration", "10 minutes/level");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
-
+            var SlipstreamScroll = ItemTools.CreateScroll("ScrollOfSlipstream", Icon_ScrollOfSlipstream, SlipstreamAbility, 1, 1);
+            VenderTools.AddScrollToLeveledVenders(SlipstreamScroll);
             SlipstreamAbility.AddToSpellList(SpellTools.SpellList.BloodragerSpellList, 2);
             SlipstreamAbility.AddToSpellList(SpellTools.SpellList.DruidSpellList, 2);
             SlipstreamAbility.AddToSpellList(SpellTools.SpellList.RangerSpellList, 2);

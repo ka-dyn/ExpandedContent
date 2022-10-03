@@ -26,6 +26,8 @@ namespace ExpandedContent.Tweaks.Spells {
     internal class HollowBlades {
         public static void AddHollowBlades() {
             var HollowBladesIcon = AssetLoader.LoadInternal("Skills", "Icon_HollowBlades.jpg");
+            var Icon_ScrollOfHollowBlades = AssetLoader.LoadInternal("Items", "Icon_ScrollOfHollowBlades.png");
+
             var HollowBladesBuff = Helpers.CreateBuff("HollowBladesBuff", bp => {
                 bp.SetName("Hollow Blades");
                 bp.SetDescription("");
@@ -104,6 +106,8 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
+            var HollowBladesScroll = ItemTools.CreateScroll("ScrollOfHollowBlades", Icon_ScrollOfHollowBlades, HollowBladesAbility, 3, 5);
+            VenderTools.AddScrollToLeveledVenders(HollowBladesScroll);
             HollowBladesAbility.AddToSpellList(SpellTools.SpellList.MagusSpellList, 2);
             HollowBladesAbility.AddToSpellList(SpellTools.SpellList.HunterSpelllist, 1);
             HollowBladesAbility.AddToSpellList(SpellTools.SpellList.RangerSpellList, 1);

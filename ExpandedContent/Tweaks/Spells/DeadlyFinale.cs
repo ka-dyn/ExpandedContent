@@ -35,6 +35,8 @@ namespace ExpandedContent.Tweaks.Spells {
         public static void AddDeadlyFinale() {
             var PerformanceCooldown = Resources.GetModBlueprint<BlueprintBuff>("PerformanceCooldown");
             var DeadlyFinaleIcon = AssetLoader.LoadInternal("Skills", "Icon_DeadlyFinale.jpg");
+            var Icon_ScrollOfDeadlyFinale = AssetLoader.LoadInternal("Items", "Icon_ScrollOfDeadlyFinale.png");
+
             var DazzlingDisplayFX = Resources.GetBlueprint<BlueprintAbility>("5f3126d4120b2b244a95cb2ec23d69fb").GetComponent<AbilitySpawnFx>();
             var DeadlyFinaleBuff = Helpers.CreateBuff("DeadlyFinaleBuff", bp => {
                 bp.SetName("Deadly Vibrations");
@@ -284,6 +286,8 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
+            var DeadlyFinaleScroll = ItemTools.CreateScroll("ScrollOfDeadlyFinale", Icon_ScrollOfDeadlyFinale, DeadlyFinale, 6, 16);
+            VenderTools.AddScrollToLeveledVenders(DeadlyFinaleScroll);
             DeadlyFinale.AddToSpellList(SpellTools.SpellList.BardSpellList, 6);
         }
     }

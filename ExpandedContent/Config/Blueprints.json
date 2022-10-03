@@ -975,7 +975,19 @@
     "GoodberryItemAbility": "3019fa73-9ec8-4be0-8d16-7e16dbf41ff1",
     "SteamRayFusilladeAbility": "a8be30dd-f370-42d5-b56f-faa8eae976d6",
     "SteamRayFusilladeBuff": "2344e20c-a595-45da-802d-052ec914d1ac",
-    "SteamRayFusilladeBuffAbility": "786bb462-6a58-4db5-b408-8dd666aece23"
+    "SteamRayFusilladeBuffAbility": "786bb462-6a58-4db5-b408-8dd666aece23",
+
+    "ScrollOfDeadlyFinale": "8cfb536d-66df-4577-8479-cecfe6fff905",
+    "ScrollOfGoodberry": "8abffd7d-9a80-4556-bfec-dba8efb2daa7",
+    "ScrollOfHollowBlades": "8329641d-1038-4ff2-a5c5-6d770812ccbc",
+    "ScrollOfHydraulicPush": "7f528850-de59-4be5-a60d-9536c2e67772",
+    "ScrollOfPurgingFinale": "4837bd57-0efc-4294-8176-ecfa3814a829",
+    "ScrollOfRevivingFinale": "09de03af-0e71-43a0-8bcf-281d816c8a0a",
+    "ScrollOfRigorMortis": "9f909b2a-da16-44af-af54-5be61dd41612",
+    "ScrollOfScourgeOfTheHorsemen": "d845c083-1f01-43f9-b1cf-56fec384e740",
+    "ScrollOfSlipstream": "899922fb-c539-4ac0-a6cd-07170c80cb41",
+    "ScrollOfSteamRayFusilladeh": "ac0fdbc5-97c6-417e-bda5-1a4ccb2985c5",
+    "ScrollOfStunningFinale": "eaaf4489-0c31-4d25-98f3-b4cdc412b048"
 
 
 

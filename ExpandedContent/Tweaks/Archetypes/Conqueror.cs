@@ -118,6 +118,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     Helpers.LevelEntry(20, ProfaneLordFeature)
                 };
             });
+            //Skald stuff plugin
             var RagingSongResource = Resources.GetBlueprint<BlueprintAbilityResource>("4a2302c4ec2cfb042bba67d825babfec");
             RagingSongResource.m_MaxAmount.m_Class = RagingSongResource.m_MaxAmount.m_Class.AppendToArray(DreadKnightClass.ToReference<BlueprintCharacterClassReference>());
             RagingSongResource.m_MaxAmount.m_Archetypes = RagingSongResource.m_MaxAmount.m_Archetypes.AppendToArray(ConquerorArchetype.ToReference<BlueprintArchetypeReference>());

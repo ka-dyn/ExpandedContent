@@ -32,6 +32,8 @@ namespace ExpandedContent.Tweaks.Spells {
         public static void AddScourgeOfTheHorsemen() {
 
             var ScourgeOfTheHorsemenIcon = AssetLoader.LoadInternal("Skills", "Icon_ScourgeOfTheHorsemen.jpg");
+            var Icon_ScrollOfScourgeOfTheHorsemen = AssetLoader.LoadInternal("Items", "Icon_ScrollOfScourgeOfTheHorsemen.png");
+
             var CausticEruptionFx = Resources.GetBlueprint<BlueprintAbility>("8c29e953190cc67429dc9c701b16b7c2").GetComponent<AbilitySpawnFx>();
             var WailOfBansheeFx = Resources.GetBlueprint<BlueprintAbility>("b24583190f36a8442b212e45226c54fc").GetComponent<AbilitySpawnFx>();
 
@@ -235,7 +237,8 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = Helpers.CreateString("ScourgeOfTheHorsemenAbility.SavingThrow", "Fortitude half");
             });
-
+            var ScourgeOfTheHorsemenScroll = ItemTools.CreateScroll("ScrollOfScourgeOfTheHorsemen", Icon_ScrollOfScourgeOfTheHorsemen, ScourgeOfTheHorsemenAbility, 9, 17);
+            VenderTools.AddScrollToLeveledVenders(ScourgeOfTheHorsemenScroll);
             ScourgeOfTheHorsemenAbility.AddToSpellList(SpellTools.SpellList.ClericSpellList, 9);
             ScourgeOfTheHorsemenAbility.AddToSpellList(SpellTools.SpellList.WizardSpellList, 9);
 

@@ -35,6 +35,7 @@ namespace ExpandedContent.Tweaks.Spells {
         public static void AddPurgingFinale() {
             var PerformanceCooldown = Resources.GetModBlueprint<BlueprintBuff>("PerformanceCooldown");
             var PurgingFinaleIcon = AssetLoader.LoadInternal("Skills", "Icon_PurgingFinale.jpg");
+            var Icon_ScrollOfPurgingFinale = AssetLoader.LoadInternal("Items", "Icon_ScrollOfPurgingFinale.png");
             var RestorationLesserFX = Resources.GetBlueprint<BlueprintAbility>("e84fc922ccf952943b5240293669b171").GetComponent<AbilitySpawnFx>();
             //Main
             var PurgingFinale = Helpers.CreateBlueprint<BlueprintAbility>("PurgingFinale", bp => {
@@ -634,6 +635,8 @@ namespace ExpandedContent.Tweaks.Spells {
                     PurgingFinaleStunned.ToReference<BlueprintAbilityReference>()
                 };
             });
+            var PurgingFinaleScroll = ItemTools.CreateScroll("ScrollOfPurgingFinale", Icon_ScrollOfPurgingFinale, PurgingFinale, 3, 7);
+            VenderTools.AddScrollToLeveledVenders(PurgingFinaleScroll);
             PurgingFinale.AddToSpellList(SpellTools.SpellList.BardSpellList, 3);
         }
     }

@@ -35,6 +35,7 @@ namespace ExpandedContent.Tweaks.Spells {
         public static void AddRevivingFinale() {
             var PerformanceCooldown = Resources.GetModBlueprint<BlueprintBuff>("PerformanceCooldown");
             var RevivingFinaleIcon = AssetLoader.LoadInternal("Skills", "Icon_RevivingFinale.jpg");
+            var Icon_ScrollOfRevivingFinale = AssetLoader.LoadInternal("Items", "Icon_ScrollOfRevivingFinale.png");
             var ChannelEnergyFX = Resources.GetBlueprint<BlueprintAbility>("f5fc9a1a2a3c1a946a31b320d1dd31b2").GetComponent<AbilitySpawnFx>();
             
             //Ability test
@@ -139,6 +140,8 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
+            var RevivingFinaleScroll = ItemTools.CreateScroll("ScrollOfRevivingFinale", Icon_ScrollOfRevivingFinale, RevivingFinale, 3, 7);
+            VenderTools.AddScrollToLeveledVenders(RevivingFinaleScroll);
             RevivingFinale.AddToSpellList(SpellTools.SpellList.BardSpellList, 3);
         }
     }

@@ -41,6 +41,7 @@ namespace ExpandedContent.Tweaks.Spells {
             var Kinetic_Steam00_Projectile = Resources.GetBlueprint<BlueprintProjectile>("36e5df234b905d34f8f5ff542b1f21b8");
             var RayWeapon = Resources.GetBlueprint<BlueprintItemWeapon>("f6ef95b1f7bb52b408a5b345a330ffe8");
             var SteamRayFusilladeIcon = AssetLoader.LoadInternal("Skills", "Icon_SteamRayFusillade.jpg");
+            var Icon_ScrollOfSteamRayFusillade = AssetLoader.LoadInternal("Items", "Icon_ScrollOfSteamRayFusillade.png");
 
 
             // Buff Ability
@@ -358,6 +359,8 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.LocalizedDuration = Helpers.CreateString("SteamRayFusilladeAbility.Duration", "Buff 1 round/level ");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
+            var SteamRayFusilladeScroll = ItemTools.CreateScroll("ScrollOfSteamRayFusilladeh", Icon_ScrollOfSteamRayFusillade, SteamRayFusilladeAbility, 7, 13);
+            VenderTools.AddScrollToLeveledVenders(SteamRayFusilladeScroll);
             SteamRayFusilladeAbility.AddToSpellList(SpellTools.SpellList.WizardSpellList, 7);
 
         }

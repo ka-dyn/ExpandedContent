@@ -34,6 +34,8 @@ namespace ExpandedContent.Tweaks.Spells {
             var PotionOfCureLightWounds = Resources.GetBlueprint<BlueprintItemEquipmentUsable>("d52566ae8cbe8dc4dae977ef51c27d91");
             var Sickened = Resources.GetBlueprint<BlueprintBuff>("4e42460798665fd4cb9173ffa7ada323");
             var GooberryIcon = AssetLoader.LoadInternal("Skills", "Icon_Goodberry.jpg");
+            var Icon_ScrollOfGoodberry = AssetLoader.LoadInternal("Items", "Icon_ScrollOfGoodberry.png");
+
 
             var GoodberryCooldown = Helpers.CreateBuff("GoodberryCooldown", bp => {
                 bp.m_AllowNonContextActions = false;
@@ -183,6 +185,8 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
+            var GoodberryScroll = ItemTools.CreateScroll("ScrollOfGoodberry", Icon_ScrollOfGoodberry, GoodberryAbility, 1, 1);
+            VenderTools.AddScrollToLeveledVenders(GoodberryScroll);
             GoodberryAbility.AddToSpellList(SpellTools.SpellList.DruidSpellList, 1);
             GoodberryAbility.AddToSpellList(SpellTools.SpellList.HunterSpelllist, 1);
             GoodberryAbility.AddToSpellList(SpellTools.SpellList.ShamanSpelllist, 1);

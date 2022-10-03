@@ -24,6 +24,8 @@ namespace ExpandedContent.Tweaks.Spells {
 
             var Kinetic_WaterBlast00_Projectile = Resources.GetBlueprint<BlueprintProjectile>("06e268d6a2b5a3a438c2dd52d68bfef6");
             var WaterBlastAbility = Resources.GetBlueprint<BlueprintAbility>("e3f41966c2d662a4e9582a0497621c46");
+            var Icon_ScrollOfHydraulicPush = AssetLoader.LoadInternal("Items", "Icon_ScrollOfHydraulicPush.png");
+
 
             var HydraulicPushAbility = Helpers.CreateBlueprint<BlueprintAbility>("HydraulicPushAbility", bp => {
                 bp.SetName("Hydraulic Push");
@@ -44,8 +46,8 @@ namespace ExpandedContent.Tweaks.Spells {
                     c.Actions = Helpers.CreateActionList(
                         new ContextActionCombatManeuver() {
                             Type = CombatManeuver.BullRush,
-                            ReplaceStat = false,
-                            NewStat = StatType.Wisdom,
+                            ReplaceStat = true,
+                            NewStat = StatType.Unknown,
                             UseCasterLevelAsBaseAttack = true,
                             UseBestMentalStat =true,
                             OnSuccess = Helpers.CreateActionList()
@@ -75,6 +77,10 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
+
+            var HydraulicPushScroll = ItemTools.CreateScroll("ScrollOfHydraulicPush", Icon_ScrollOfHydraulicPush, HydraulicPushAbility, 1, 1);
+            VenderTools.AddScrollToLeveledVenders(HydraulicPushScroll);
+
 
             HydraulicPushAbility.AddToSpellList(SpellTools.SpellList.BloodragerSpellList, 1);
             HydraulicPushAbility.AddToSpellList(SpellTools.SpellList.DruidSpellList, 1);
