@@ -384,6 +384,8 @@
     <Compile Include="Extensions\ExtentionMethods.cs" />
     <Compile Include="Resources.cs" />
     <Compile Include="SaveGamePatch.cs" />
+    <Compile Include="Tweaks\Spells\InflictPainMass.cs" />
+    <Compile Include="Tweaks\Spells\InflictPain.cs" />
     <Compile Include="Tweaks\Spells\SteamRayFusillade.cs" />
     <Compile Include="Tweaks\Spells\Goodberry.cs" />
     <Compile Include="Tweaks\Spells\HollowBlades.cs" />
@@ -1000,6 +1002,12 @@
     <Content Include="Assets\Items\Icon_ScrollOfHydraulicPush.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Items\Icon_ScrollOfInflictPain.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Items\Icon_ScrollOfInflictPainMass.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Items\Icon_ScrollOfPurgingFinale.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -1262,6 +1270,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_HollowBlades.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_InflictPain.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_InflictPainMass.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_MantisAspect.jpg">

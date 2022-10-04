@@ -979,6 +979,9 @@
     "SteamRayFusilladeAbility": "a8be30dd-f370-42d5-b56f-faa8eae976d6",
     "SteamRayFusilladeBuff": "2344e20c-a595-45da-802d-052ec914d1ac",
     "SteamRayFusilladeBuffAbility": "786bb462-6a58-4db5-b408-8dd666aece23",
+    "InflictPainAbility": "e023af1a-f9c1-4754-9a8e-7bd246967861",
+    "InflictPainBuff": "4865223d-0cc1-4ba3-b994-f5090e01f652",
+    "InflictPainMassAbility": "ff31ae1a-be3c-418d-b784-2dcc76eca7ee",
 
     "ScrollOfDeadlyFinale": "8cfb536d-66df-4577-8479-cecfe6fff905",
     "ScrollOfGoodberry": "8abffd7d-9a80-4556-bfec-dba8efb2daa7",
@@ -990,7 +993,9 @@
     "ScrollOfScourgeOfTheHorsemen": "d845c083-1f01-43f9-b1cf-56fec384e740",
     "ScrollOfSlipstream": "899922fb-c539-4ac0-a6cd-07170c80cb41",
     "ScrollOfSteamRayFusilladeh": "ac0fdbc5-97c6-417e-bda5-1a4ccb2985c5",
-    "ScrollOfStunningFinale": "eaaf4489-0c31-4d25-98f3-b4cdc412b048"
+    "ScrollOfStunningFinale": "eaaf4489-0c31-4d25-98f3-b4cdc412b048",
+    "ScrollOfInflictPain": "7529196e-4259-4d32-892c-1b4d5e5b02f0",
+    "ScrollOfInflictPainMass": "4d5daaba-e0a1-4661-b19e-f6c89c8ae2c2"
 
 
 

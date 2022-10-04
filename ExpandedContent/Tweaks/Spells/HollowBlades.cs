@@ -30,7 +30,9 @@ namespace ExpandedContent.Tweaks.Spells {
 
             var HollowBladesBuff = Helpers.CreateBuff("HollowBladesBuff", bp => {
                 bp.SetName("Hollow Blades");
-                bp.SetDescription("");
+                bp.SetDescription("Hollow Blades lowers the momentum and density of the targets melee weapons the moment they would land an attack. All melee weapons used by the target deal damage" +
+                    "as if they are one size category smaller than they actually are. For instance, a Large longsword normally deals {g|Encyclopedia:Dice}2d6{/g} points of damage, but it would " +
+                    "instead deal 1d8 points of damage if effected by hollow blades.");
                 bp.m_Icon = HollowBladesIcon;
                 bp.AddComponent<MeleeWeaponSizeChange>(c => {
                     c.SizeCategoryChange = -1;
@@ -103,8 +105,8 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
                 bp.ActionType = UnitCommand.CommandType.Standard;
                 bp.AvailableMetamagic =  Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten | Metamagic.Reach;
-                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
-                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedDuration = Helpers.CreateString("HollowBladesAbility.Duration", "1 round/level");
+                bp.LocalizedSavingThrow = Helpers.CreateString("HollowBladesAbility.SavingThrow", "Fortitude negates");
             });
             var HollowBladesScroll = ItemTools.CreateScroll("ScrollOfHollowBlades", Icon_ScrollOfHollowBlades, HollowBladesAbility, 3, 5);
             VenderTools.AddScrollToLeveledVenders(HollowBladesScroll);
