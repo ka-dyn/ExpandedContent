@@ -129,8 +129,8 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.Range = AbilityRange.Close;
                 bp.CanTargetPoint = false;
                 bp.CanTargetEnemies = true;
-                bp.CanTargetFriends = true;
-                bp.CanTargetSelf = true;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = false;
                 bp.SpellResistance = true;
                 bp.EffectOnAlly = AbilityEffectOnUnit.None;
                 bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
