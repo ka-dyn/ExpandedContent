@@ -44,6 +44,8 @@ New Mythic Abilities
 -Mythic Drake - Grants new powers to your drake depending on breed of drake and drake powers selected during leveling, ranging from unlocking their draconic
 bloodline to mythic breath attacks.
 
+-Impossible Subdomain - Impossible Domain but for added subdomains.
+
 New Deities
 
 Most of the deities from the tabletop game are included, split into categories based on group and hooked up with the correct Domains and features
@@ -60,7 +62,7 @@ New Domains / Subdomains
 
 New Spells
 
--Hydraulic push, Slipstream, Scourge of the Horsemen, Rigor mortis, Reviving Finale, Deadly Finale, Purging Finale, Stunning Finale, Hollow Blades, Goodberry, Steam Ray Fusillade
+-Hydraulic push, Slipstream, Scourge of the Horsemen, Rigor mortis, Reviving Finale, Deadly Finale, Purging Finale, Stunning Finale, Hollow Blades, Goodberry, Steam Ray Fusillade, Inflict Pain, Inflict Pain Mass
 
 I'd like to give a huge thank you to Vek17, as much of the coding in this repository is his; I simply repurposed it or learned from it. I wouldn't be able to release
 anything without it. Check out his mod, TableTopTweaks if you haven't already!
