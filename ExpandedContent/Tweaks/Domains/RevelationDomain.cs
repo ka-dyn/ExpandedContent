@@ -323,8 +323,7 @@ namespace ExpandedContent.Tweaks.Domains {
             DomainTools.RegisterDivineHunterDomain(RevelationDomainProgression);
             DomainTools.RegisterTempleDomain(RevelationDomainProgression);
             DomainTools.RegisterSecondaryTempleDomain(RevelationDomainProgressionSecondary);
-           
+            DomainTools.RegisterImpossibleSubdomain(RevelationDomainProgression, RevelationDomainProgressionSecondary);
         }
-
     }
 }

@@ -432,6 +432,7 @@ namespace ExpandedContent.Tweaks.Domains {
             DomainTools.RegisterDivineHunterDomain(ScalykindDomainProgression);
             DomainTools.RegisterTempleDomain(ScalykindDomainProgression);
             DomainTools.RegisterSecondaryTempleDomain(ScalykindDomainProgressionSecondary);
+            DomainTools.RegisterImpossibleDomain(ScalykindDomainProgression, ScalykindDomainProgressionSecondary);
 
         }
 

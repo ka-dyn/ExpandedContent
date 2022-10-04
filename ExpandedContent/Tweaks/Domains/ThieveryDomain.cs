@@ -433,8 +433,7 @@ namespace ExpandedContent.Tweaks.Domains {
             DomainTools.RegisterDivineHunterDomain(ThieveryDomainProgression);
             DomainTools.RegisterTempleDomain(ThieveryDomainProgression);
             DomainTools.RegisterSecondaryTempleDomain(ThieveryDomainProgressionSecondary);
-           
+            DomainTools.RegisterImpossibleSubdomain(ThieveryDomainProgression, ThieveryDomainProgressionSecondary);
         }
-
     }
 }

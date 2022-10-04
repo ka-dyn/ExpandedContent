@@ -379,8 +379,7 @@ namespace ExpandedContent.Tweaks.Domains {
             DomainTools.RegisterDivineHunterDomain(FerocityDomainProgression);
             DomainTools.RegisterTempleDomain(FerocityDomainProgression);
             DomainTools.RegisterSecondaryTempleDomain(FerocityDomainProgressionSecondary);
-           
+            DomainTools.RegisterImpossibleSubdomain(FerocityDomainProgression, FerocityDomainProgressionSecondary);
         }
-
     }
 }

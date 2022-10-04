@@ -46,6 +46,7 @@ namespace ExpandedContent.Tweaks.Domains {
             var EcclesitheurgeArchetype = Resources.GetBlueprint<BlueprintArchetype>("472af8cb3de628f4a805dc4a038971bc");
             var InquisitorClass = Resources.GetBlueprint<BlueprintCharacterClass>("f1a70d9e1b0b41e49874e1fa9052a1ce");
             var HunterClass = Resources.GetBlueprint<BlueprintCharacterClass>("34ecd1b5e1b90b9498795791b0855239");
+            var DruidClass = Resources.GetBlueprint<BlueprintCharacterClass>("610d836f3a3a9ed42a4349b62f002e96");
             var DivineHunterArchetype = Resources.GetBlueprint<BlueprintArchetype>("f996f0a18e5d945459e710ee3a6dd485");
             var PaladinClass = Resources.GetBlueprint<BlueprintCharacterClass>("bfa11238e7ae3544bbeb4d0b92e897ec");
             var TempleChampionArchetype = Resources.GetModBlueprint<BlueprintArchetype>("TempleChampionArchetype");
@@ -328,7 +329,59 @@ namespace ExpandedContent.Tweaks.Domains {
                 };
                 bp.GiveFeaturesForPreviousLevels = true;
             });
-            
+            // RageDomainSpellListFeatureDruid
+            var RageDomainSpellListFeatureDruid = Helpers.CreateBlueprint<BlueprintFeature>("RageDomainSpellListFeatureDruid", bp => {
+                bp.AddComponent<AddSpecialSpellList>(c => {
+                    c.m_CharacterClass = DruidClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_SpellList = RageDomainSpellList.ToReference<BlueprintSpellListReference>();
+                });
+                bp.HideInUI = true;
+                bp.IsClassFeature = true;
+            });
+            // RageDomainProgressionDruid
+            var RageDomainProgressionDruid = Helpers.CreateBlueprint<BlueprintProgression>("RageDomainProgressionDruid", bp => {
+                bp.SetName("Rage Subdomain");
+                bp.SetDescription("\nYou are granted a fraction of the pure divine rage of your deity.\nDestructive Smite: You gain the the {g|Encyclopedia:Special_Abilities}supernatural ability{/g} " +
+                    "to make a {g|Encyclopedia:MeleeAttack}melee attack{/g} with a morale {g|Encyclopedia:Bonus}bonus{/g} on {g|Encyclopedia:Damage}damage rolls{/g} equal to 1/2 your level in the class " +
+                    "that gave you access to this domain (minimum 1).\nRage: At 8th level, you can enter a fearsome rage, like a barbarian, for a number of rounds per day equal to your cleric level + your " +
+                    "constitution modifier. At 12th and 16th level, you can select one rage power. You cannot select any rage power that possesses a level requirement, but otherwise your barbarian " +
+                    "level is equal to 1/2 your cleric level. These rounds of rage stack with any rounds of rage you might have from levels of barbarian.\nDomain {g|Encyclopedia:Spell}Spells{/g}: " +
+                    "true strike, bulls strength, rage, fear, boneshatter, harm, disintegrate, horrid wilting, tsunami.");
+                bp.AddComponent<PrerequisiteClassLevel>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.m_CharacterClass = DruidClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                });
+                bp.Groups = new FeatureGroup[] { FeatureGroup.DruidDomain, FeatureGroup.BlightDruidDomain };
+                bp.IsClassFeature = true;
+                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = DruidClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    }
+                };
+                bp.LevelEntries = new LevelEntry[] {
+                    Helpers.LevelEntry(1, RageDomainBaseFeature),
+                    Helpers.LevelEntry(8, RageFeature, RageDomainExtraRage, RageDomainExtraRage, RageDomainExtraRage, RageDomainExtraRage, RageDomainExtraRage, RageDomainExtraRage),
+                    Helpers.LevelEntry(9, RageDomainExtraRage),
+                    Helpers.LevelEntry(10, RageDomainExtraRage),
+                    Helpers.LevelEntry(11, RageDomainExtraRage),
+                    Helpers.LevelEntry(12, RagePowerSelection, RageDomainExtraRage),
+                    Helpers.LevelEntry(13, RageDomainExtraRage),
+                    Helpers.LevelEntry(14, RageDomainExtraRage),
+                    Helpers.LevelEntry(15, RageDomainExtraRage),
+                    Helpers.LevelEntry(16, RagePowerSelection, RageDomainExtraRage),
+                    Helpers.LevelEntry(16, RageDomainExtraRage),
+                    Helpers.LevelEntry(17, RageDomainExtraRage),
+                    Helpers.LevelEntry(18, RageDomainExtraRage),
+                    Helpers.LevelEntry(19, RageDomainExtraRage),
+                    Helpers.LevelEntry(20, RageDomainExtraRage)
+                };
+                bp.UIGroups = new UIGroup[] {
+                    Helpers.CreateUIGroup(RageDomainBaseFeature, RageFeature, RagePowerSelection, RagePowerSelection)
+                };
+                bp.GiveFeaturesForPreviousLevels = true;
+            });
             RageDomainAllowed.IsPrerequisiteFor = new List<BlueprintFeatureReference>() { 
                 RageDomainProgression.ToReference<BlueprintFeatureReference>(),
                 RageDomainProgressionSecondary.ToReference<BlueprintFeatureReference>()
@@ -346,11 +399,11 @@ namespace ExpandedContent.Tweaks.Domains {
             if (ModSettings.AddedContent.Domains.IsDisabled("Rage Subdomain")) { return; }
             DomainTools.RegisterDomain(RageDomainProgression);
             DomainTools.RegisterSecondaryDomain(RageDomainProgressionSecondary);
+            DomainTools.RegisterBlightDruidDomain(RageDomainProgressionDruid);
             DomainTools.RegisterDivineHunterDomain(RageDomainProgression);
             DomainTools.RegisterTempleDomain(RageDomainProgression);
             DomainTools.RegisterSecondaryTempleDomain(RageDomainProgressionSecondary);
-           
+            DomainTools.RegisterImpossibleSubdomain(RageDomainProgression, RageDomainProgressionSecondary);
         }
-
     }
 }

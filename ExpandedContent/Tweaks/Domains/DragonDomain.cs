@@ -1088,8 +1088,8 @@ namespace ExpandedContent.Tweaks.Domains {
             DomainTools.RegisterDivineHunterDomain(DragonDomainProgression);
             DomainTools.RegisterTempleDomain(DragonDomainProgression);
             DomainTools.RegisterSecondaryTempleDomain(DragonDomainProgressionSecondary);
+            DomainTools.RegisterImpossibleSubdomain(DragonDomainProgression, DragonDomainProgressionSecondary);
 
         }
-
     }
 }

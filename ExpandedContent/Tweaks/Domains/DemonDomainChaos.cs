@@ -424,8 +424,8 @@ namespace ExpandedContent.Tweaks.Domains {
             DomainTools.RegisterDivineHunterDomain(DemonDomainChaosProgression);
             DomainTools.RegisterTempleDomain(DemonDomainChaosProgression);
             DomainTools.RegisterSecondaryTempleDomain(DemonDomainChaosProgressionSecondary);
-           
-        }
+            DomainTools.RegisterImpossibleSubdomain(DemonDomainChaosProgression, DemonDomainChaosProgressionSecondary);
 
+        }
     }
 }

@@ -330,7 +330,8 @@ namespace ExpandedContent.Tweaks.Domains {
             DomainTools.RegisterDivineHunterDomain(ArchonDomainLawProgression);
             DomainTools.RegisterTempleDomain(ArchonDomainLawProgression);
             DomainTools.RegisterSecondaryTempleDomain(ArchonDomainLawProgressionSecondary);
-           
+            DomainTools.RegisterImpossibleSubdomain(ArchonDomainLawProgression, ArchonDomainLawProgressionSecondary);
+
         }
 
     }

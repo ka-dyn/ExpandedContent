@@ -384,8 +384,7 @@ namespace ExpandedContent.Tweaks.Domains {
             DomainTools.RegisterDivineHunterDomain(PsychopompDomainDeathProgression);
             DomainTools.RegisterTempleDomain(PsychopompDomainDeathProgression);
             DomainTools.RegisterSecondaryTempleDomain(PsychopompDomainDeathProgressionSecondary);
-           
+            DomainTools.RegisterImpossibleSubdomain(PsychopompDomainDeathProgression, PsychopompDomainDeathProgressionSecondary);
         }
-
     }
 }

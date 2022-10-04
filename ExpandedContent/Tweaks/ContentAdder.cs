@@ -89,29 +89,29 @@ namespace ExpandedContent.Tweaks
                 Spells.PurgingFinale.AddPurgingFinale();
                 Spells.HollowBlades.AddHollowBlades();
                 Spells.Goodberry.AddGoodberry();
-
                 Spells.SteamRayFusillade.AddSteamRayFusillade();
 
+                Domains.ImpossibleSubdomainSelection.AddImpossibleSubdomainSelection();
+                Domains.ScalykindDomain.AddScalykindDomain();
                 Domains.ArchonDomainGood.AddArchonDomainGood();
                 Domains.ArchonDomainLaw.AddArchonDomainLaw();
                 Domains.BloodDomain.AddBloodDomain();
                 Domains.CavesDomain.AddCavesDomain();
                 Domains.DemonDomainChaos.AddDemonDomainChaos();
                 Domains.DemonDomainEvil.AddDemonDomainEvil();
-                Domains.StormDomain.AddStormDomain();
-                Domains.IceDomain.AddIceDomain();
-                Domains.ScalykindDomain.AddScalykindDomain();
                 Domains.DragonDomain.AddDragonDomain();
-                Domains.WindDomain.AddWindDomain();
-                Domains.UndeadDomain.AddUndeadDomain();
-                Domains.RevelationDomain.AddRevelationDomain();
                 Domains.FerocityDomain.AddFerocityDomain();
+                Domains.IceDomain.AddIceDomain();
                 Domains.PsychopompDomainDeath.AddPsychopompDomainDeath();
                 Domains.PsychopompDomainRepose.AddPsychopompDomainRepose();
-                Domains.RiversDomain.AddRiversDomain();
                 Domains.RageDomain.AddRageDomain();
-                Domains.ThieveryDomain.AddThieveryDomain();
+                Domains.RevelationDomain.AddRevelationDomain();
                 Domains.RevolutionDomain.AddRevolutionDomain();
+                Domains.RiversDomain.AddRiversDomain();
+                Domains.StormDomain.AddStormDomain();
+                Domains.ThieveryDomain.AddThieveryDomain();
+                Domains.UndeadDomain.AddUndeadDomain();
+                Domains.WindDomain.AddWindDomain();
                 Domains.BaseDeityPatch.AddBaseDeityPatch();
 
                 Mysteries.DragonMystery.AddDragonMystery();

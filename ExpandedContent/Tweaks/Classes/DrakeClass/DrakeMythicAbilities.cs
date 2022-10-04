@@ -941,6 +941,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 bp.AddComponent<AddFeatureToPet>(c => {
                     c.m_Feature = MythicalDrakePet.ToReference<BlueprintFeatureReference>();
                 });
+                bp.Groups = new FeatureGroup[] { FeatureGroup.MythicAbility };
                 bp.ReapplyOnLevelUp = true;
                 bp.IsClassFeature = true;
 

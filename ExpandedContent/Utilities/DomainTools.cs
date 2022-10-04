@@ -48,5 +48,17 @@ namespace ExpandedContent.Utilities {
             DomainChampionFeatureSecondary.m_AllFeatures = DomainChampionFeatureSecondary.m_AllFeatures.AddToArray(secondarydomain.ToReference<BlueprintFeatureReference>());
 
         }
+        public static void RegisterImpossibleDomain(BlueprintProgression domain, BlueprintProgression secondarydomain) {
+            BlueprintFeatureSelection ImpossibleDomainSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("213a8480d22206b45acbfa0619ca5aaf");
+            ImpossibleDomainSelection.m_AllFeatures = ImpossibleDomainSelection.m_AllFeatures.AddToArray(domain.ToReference<BlueprintFeatureReference>());
+            ImpossibleDomainSelection.m_Features = ImpossibleDomainSelection.m_Features.AddToArray(secondarydomain.ToReference<BlueprintFeatureReference>());
+
+        }
+        public static void RegisterImpossibleSubdomain(BlueprintProgression subdomain, BlueprintProgression secondarysubdomain) {
+            BlueprintFeatureSelection ImpossibleSubdomainSelection = Resources.GetModBlueprint<BlueprintFeatureSelection>("ImpossibleSubdomainSelection");
+            ImpossibleSubdomainSelection.m_AllFeatures = ImpossibleSubdomainSelection.m_AllFeatures.AddToArray(subdomain.ToReference<BlueprintFeatureReference>());
+            ImpossibleSubdomainSelection.m_Features = ImpossibleSubdomainSelection.m_Features.AddToArray(secondarysubdomain.ToReference<BlueprintFeatureReference>());
+
+        }
     }
 }

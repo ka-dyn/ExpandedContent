@@ -489,7 +489,8 @@ namespace ExpandedContent.Tweaks.Domains {
             DomainTools.RegisterDivineHunterDomain(CavesDomainProgression);
             DomainTools.RegisterTempleDomain(CavesDomainProgression);
             DomainTools.RegisterSecondaryTempleDomain(CavesDomainProgressionSecondary);
-        }
+            DomainTools.RegisterImpossibleSubdomain(CavesDomainProgression, CavesDomainProgressionSecondary);
 
+        }
     }
 }

@@ -422,6 +422,7 @@ namespace ExpandedContent.Tweaks.Domains {
             DomainTools.RegisterDivineHunterDomain(ArchonDomainGoodProgression);
             DomainTools.RegisterTempleDomain(ArchonDomainGoodProgression);
             DomainTools.RegisterSecondaryTempleDomain(ArchonDomainGoodProgressionSecondary);
+            DomainTools.RegisterImpossibleSubdomain(ArchonDomainGoodProgression, ArchonDomainGoodProgressionSecondary);
            
         }
 

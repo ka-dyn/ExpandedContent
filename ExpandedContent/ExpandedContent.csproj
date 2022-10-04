@@ -313,6 +313,7 @@
     <Compile Include="Tweaks\Deities\Pulura.cs" />
     <Compile Include="Tweaks\Deities\Ragathiel.cs" />
     <Compile Include="Tweaks\DemonLords\Zura.cs" />
+    <Compile Include="Tweaks\Domains\ImpossibleSubdomainSelection.cs" />
     <Compile Include="Tweaks\Domains\RevolutionDomain.cs" />
     <Compile Include="Tweaks\Domains\ThieveryDomain.cs" />
     <Compile Include="Tweaks\Domains\RageDomain.cs" />

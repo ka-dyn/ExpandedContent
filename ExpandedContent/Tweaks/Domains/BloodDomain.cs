@@ -569,7 +569,8 @@ namespace ExpandedContent.Tweaks.Domains {
             DomainTools.RegisterDivineHunterDomain(BloodDomainProgression);
             DomainTools.RegisterTempleDomain(BloodDomainProgression);
             DomainTools.RegisterSecondaryTempleDomain(BloodDomainProgressionSecondary);
-           
+            DomainTools.RegisterImpossibleSubdomain(BloodDomainProgression, BloodDomainProgressionSecondary);
+
         }
 
     }

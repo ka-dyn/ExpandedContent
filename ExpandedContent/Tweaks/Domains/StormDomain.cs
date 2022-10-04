@@ -439,7 +439,10 @@ namespace ExpandedContent.Tweaks.Domains {
             DomainTools.RegisterSecondaryDomain(StormDomainProgressionSecondary);
             DomainTools.RegisterDruidDomain(StormDomainProgressionDruid);
             DomainTools.RegisterBlightDruidDomain(StormDomainProgressionDruid);
+            DomainTools.RegisterDivineHunterDomain(StormDomainProgression);
+            DomainTools.RegisterTempleDomain(StormDomainProgression);
+            DomainTools.RegisterSecondaryTempleDomain(StormDomainProgressionSecondary);
+            DomainTools.RegisterImpossibleSubdomain(StormDomainProgression, StormDomainProgressionSecondary);
         }
-
     }
 }

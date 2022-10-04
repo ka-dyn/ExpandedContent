@@ -434,7 +434,7 @@ namespace ExpandedContent.Tweaks.Domains {
             DomainTools.RegisterDivineHunterDomain(UndeadDomainProgression);
             DomainTools.RegisterTempleDomain(UndeadDomainProgression);
             DomainTools.RegisterSecondaryTempleDomain(UndeadDomainProgressionSecondary);
+            DomainTools.RegisterImpossibleSubdomain(UndeadDomainProgression, UndeadDomainProgressionSecondary);
         }
-
     }
 }

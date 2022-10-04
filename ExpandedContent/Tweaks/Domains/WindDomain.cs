@@ -412,7 +412,7 @@ namespace ExpandedContent.Tweaks.Domains {
             DomainTools.RegisterDivineHunterDomain(WindDomainProgression);
             DomainTools.RegisterTempleDomain(WindDomainProgression);
             DomainTools.RegisterSecondaryTempleDomain(WindDomainProgressionSecondary);
+            DomainTools.RegisterImpossibleSubdomain(WindDomainProgression, WindDomainProgressionSecondary);
         }
-
     }
 }

@@ -317,8 +317,7 @@ namespace ExpandedContent.Tweaks.Domains {
             DomainTools.RegisterDivineHunterDomain(PsychopompDomainReposeProgression);
             DomainTools.RegisterTempleDomain(PsychopompDomainReposeProgression);
             DomainTools.RegisterSecondaryTempleDomain(PsychopompDomainReposeProgressionSecondary);
-           
+            DomainTools.RegisterImpossibleSubdomain(PsychopompDomainReposeProgression, PsychopompDomainReposeProgressionSecondary);
         }
-
     }
 }

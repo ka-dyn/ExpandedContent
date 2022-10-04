@@ -37,6 +37,7 @@
     "CastigatorPaybackFeature": "112094F8-966D-4486-8925-1317B256997B",
     "CastigatorOpportunistFeature": "0F1F22D4-AE95-4DEF-ACB8-92EEB23E49B7",
 
+    "ImpossibleSubdomainSelection": "8f240415-1c84-401e-8590-445c6be87963",
     "BloodDomainAllowed": "f153c26c-15c1-4990-8236-22ca7124dfa2",
     "BloodDomainBaseFeature": "3334828b-277a-4fd3-bff2-9b9bc4aac548",
     "BloodDomainGreaterAbility": "8402e09f-5486-411c-8354-582599ebca7a",
@@ -199,6 +200,8 @@
     "RageDomainProgressionSecondary": "f3652bf9-709d-4f4d-af0e-3e93b36455e4",
     "RageDomainSpellList": "6e77951c-cd32-4374-b82e-077ba7d4a791",
     "RageDomainSpellListFeature": "9a8ad128-708a-4b15-a544-a74053aa9f84",
+    "RageDomainProgressionDruid": "c03e284b-a68c-48ac-83b9-a7cdf7127b44",
+    "RageDomainSpellListFeatureDruid": "a5433f93-af4f-41f2-96c3-538396fb81a6",
     "ThieveryDomainAllowed": "232b2efa-c489-4502-b1e8-2f481e0ee12f",
     "ThieveryDomainBaseFeature": "339b101e-54f9-4891-a6d0-d8bfd6031a6b",
     "ThieveryDomainGreaterAbility": "4cc4ee87-6a06-4ded-b317-51ab9c2b3782",

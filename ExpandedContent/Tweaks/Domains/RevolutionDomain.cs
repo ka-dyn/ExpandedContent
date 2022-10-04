@@ -427,8 +427,7 @@ namespace ExpandedContent.Tweaks.Domains {
             DomainTools.RegisterDivineHunterDomain(RevolutionDomainProgression);
             DomainTools.RegisterTempleDomain(RevolutionDomainProgression);
             DomainTools.RegisterSecondaryTempleDomain(RevolutionDomainProgressionSecondary);
-           
+            DomainTools.RegisterImpossibleSubdomain(RevolutionDomainProgression, RevolutionDomainProgressionSecondary);
         }
-
     }
 }

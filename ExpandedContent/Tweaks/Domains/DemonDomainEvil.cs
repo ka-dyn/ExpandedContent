@@ -308,8 +308,8 @@ namespace ExpandedContent.Tweaks.Domains {
             DomainTools.RegisterDivineHunterDomain(DemonDomainEvilProgression);
             DomainTools.RegisterTempleDomain(DemonDomainEvilProgression);
             DomainTools.RegisterSecondaryTempleDomain(DemonDomainEvilProgressionSecondary);
-           
-        }
+            DomainTools.RegisterImpossibleSubdomain(DemonDomainEvilProgression, DemonDomainEvilProgressionSecondary);
 
+        }
     }
 }
