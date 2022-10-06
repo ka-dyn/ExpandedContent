@@ -2025,17 +2025,22 @@ namespace ExpandedContent.Tweaks.Classes {
             });
             // Dreadknight Channel Negitive Energy
             var ChannelNegativeEnergy = Resources.GetBlueprint<BlueprintAbility>("89df18039ef22174b81052e2e419c728");
+            var ChannelNegativeHeal = Resources.GetBlueprint<BlueprintAbility>("9be3aa47a13d5654cbcb8dbd40c325f2");
             var MythicChannelProperty = Resources.GetBlueprint<BlueprintUnitProperty>("152e61de154108d489ff34b98066c25c");
             var SelectiveChannel = Resources.GetBlueprint<BlueprintFeature>("fd30c69417b434d47b6b03b9c1f568ff");
+            var DeathDomainGreaterLiving = Resources.GetBlueprint<BlueprintFeature>("fd7c08ccd3c7773458eb9613db3e93ad");
+            var LifeDominantSoul = Resources.GetBlueprint<BlueprintFeature>("8f58b4029511b5345981ffaf1da5ea2e");
             var ExtraChannel = Resources.GetBlueprint<BlueprintFeature>("cd9f19775bd9d3343a31a065e93f0c47");
             var ChannelEnergyFact = Resources.GetBlueprint<BlueprintUnitFact>("93f062bc0bf70e84ebae436e325e30e8");
+            var HealTargetFX = new PrefabLink() { AssetId = "9a38d742801be084d89bd34318c600e8" };
             var DreadKnightChannelNegativeEnergyAbility = Helpers.CreateBlueprint<BlueprintAbility>("DreadKnightChannelNegativeEnergyAbility", bp => {
-                bp.SetName("Channel Negative Energy");
-                bp.SetDescription("Channeling negative energy causes a burst that damages every creature in a 30-foot radius centered on the Dread Knight. The amount of damage " +
+                bp.SetName("Channel Negative Energy - Damage Living");
+                bp.SetDescription("Channeling negative energy causes a burst that damages every living creature in a 30-foot radius centered on the Dread Knight. The amount of damage " +
                     "inflicted is equal to 1d6 points of damage plus 1d6 points of damage for every two Dread Knight levels beyond 1st (2d6 at 3rd, 3d6 at 5th, and so on). " +
                     "Creatures that take damage from channeled energy receive a Will save to halve the damage. " +
                     "The DC of this save is equal to 10 + 1/2 the Dread Knight's level + the Dread Knight's Charisma modifier.");
-                bp.m_DescriptionShort = Helpers.CreateString("$DreadKnightChannelNegativeEnergyAbility.DescriptionShort", "Channeling negative energy causes a burst that damages every creature in a 30-foot radius centered on the Dread Knight. The amount of damage " +
+                bp.m_DescriptionShort = Helpers.CreateString("$DreadKnightChannelNegativeEnergyAbility.DescriptionShort", "Channeling negative energy causes a burst that damages " +
+                    "every creature in a 30-foot radius centered on the Dread Knight. The amount of damage " +
                     "inflicted is equal to 1d6 points of damage plus 1d6 points of damage for every two Dread Knight levels beyond 1st (2d6 at 3rd, 3d6 at 5th, and so on). " +
                     "Creatures that take damage from channeled energy receive a Will save to halve the damage.");
                 bp.m_Icon = ChannelNegativeEnergy.Icon;
@@ -2067,23 +2072,24 @@ namespace ExpandedContent.Tweaks.Classes {
                 });
                 bp.AddComponent<AbilitySpawnFx>(c => {
                     c.PrefabLink = ChannelNegativeEnergy.GetComponent<AbilitySpawnFx>().PrefabLink;
+                    c.Anchor = AbilitySpawnFxAnchor.Caster;
                     c.PositionAnchor = AbilitySpawnFxAnchor.None;
                     c.OrientationAnchor = AbilitySpawnFxAnchor.None;
                 });
                 bp.AddComponent<SpellDescriptorComponent>(c => {
                     c.Descriptor = new SpellDescriptorWrapper(SpellDescriptor.ChannelNegativeHarm);
                 });
-                bp.AddContextRankConfig(c => {
+                bp.AddComponent<ContextRankConfig>(c => {
                     c.m_Type = AbilityRankType.DamageDice;
-                    c.m_BaseValueType = ContextRankBaseValueType.CharacterLevel;
-
-                    c.m_Progression = ContextRankProgression.DelayedStartPlusDivStep;
-                    c.m_StartLevel = 1;
-                    c.m_StepLevel = 2;
-                    c.m_Min = 1;
-                    c.m_UseMin = true;
+                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
+                    c.m_Progression = ContextRankProgression.OnePlusDiv2;
+                    c.m_StartLevel = 0;
+                    c.m_StepLevel = 0;
+                    c.m_Min = 0;
+                    c.m_UseMin = false;
+                    c.m_Class = new BlueprintCharacterClassReference[] { DreadKnightClass.ToReference<BlueprintCharacterClassReference>()};
                 });
-                bp.AddContextRankConfig(c => {
+                bp.AddComponent<ContextRankConfig>(c => {
                     c.m_Type = AbilityRankType.DamageBonus;
                     c.m_BaseValueType = ContextRankBaseValueType.CustomProperty;
                     c.m_CustomProperty = MythicChannelProperty.ToReference<BlueprintUnitPropertyReference>();
@@ -2096,28 +2102,238 @@ namespace ExpandedContent.Tweaks.Classes {
                         new Conditional() {
                             ConditionsChecker = new ConditionsChecker() {
                                 Conditions = new Condition[] {
-                                  new ContextConditionHasFact() {
-                                      m_Fact = NegativeEnergyAffinity.ToReference<BlueprintUnitFactReference>()
-                                  }
-                              }
+                                    new ContextConditionHasFact() {
+                                        m_Fact = NegativeEnergyAffinity.ToReference<BlueprintUnitFactReference>()
+                                    }
+                                }
                             },
-                            IfTrue = Helpers.CreateActionList(
-                              new ContextActionHealTarget() {
-                                  Value = new ContextDiceValue() {
-                                      DiceType = Kingmaker.RuleSystem.DiceType.D6,
-                                      DiceCountValue = new ContextValue() {
-                                          ValueType = ContextValueType.Rank
-                                      },
-                                      BonusValue = new ContextValue()
-                                  }
-                              }),
-                            IfFalse = Helpers.CreateActionList(),
+                            IfTrue = Helpers.CreateActionList(),
+                            IfFalse = Helpers.CreateActionList(
+                                new Conditional() {
+                                    ConditionsChecker = new ConditionsChecker() {
+                                        Conditions = new Condition[] {
+                                            new ContextConditionCasterHasFact() {
+                                                m_Fact = SelectiveChannel.ToReference<BlueprintUnitFactReference>()
+                                            }
+                                        }
+                                    },
+                                    IfTrue = Helpers.CreateActionList(
+                                        new Conditional() {
+                                            ConditionsChecker = new ConditionsChecker() {
+                                                Conditions = new Condition[] {
+                                                    new ContextConditionIsEnemy() {
+                                                        Not = false
+                                                    },
+                                                }
+                                            },
+                                            IfTrue = Helpers.CreateActionList(
+                                                new ContextActionSavingThrow() {
+                                                    m_ConditionalDCIncrease = new ContextActionSavingThrow.ConditionalDCIncrease[0],
+                                                    Type = SavingThrowType.Will,
+                                                    CustomDC = new ContextValue(),
+                                                    Actions = Helpers.CreateActionList(
+                                                        new ContextActionDealDamage() {
+                                                            DamageType = new DamageTypeDescription() {
+                                                                Type = DamageType.Energy,
+                                                                Common = new DamageTypeDescription.CommomData(),
+                                                                Physical = new DamageTypeDescription.PhysicalData(),
+                                                                Energy = DamageEnergyType.NegativeEnergy
+                                                            },
+                                                            Duration = new ContextDurationValue() {
+                                                                m_IsExtendable = true,
+                                                                DiceCountValue = new ContextValue(),
+                                                                BonusValue = new ContextValue()
+                                                            },
+                                                            Value = new ContextDiceValue() {
+                                                                DiceType = Kingmaker.RuleSystem.DiceType.D6,
+                                                                DiceCountValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Rank,
+                                                                    ValueRank = AbilityRankType.DamageDice
+                                                                },
+                                                                BonusValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Rank,
+                                                                    ValueRank = AbilityRankType.DamageBonus
+                                                                }
+                                                            },
+                                                            IsAoE = true,
+                                                            HalfIfSaved = true
+                                                        }
+                                                    )
+                                                }
+                                            ),
+                                            IfFalse = Helpers.CreateActionList()
+                                        }
+                                    ),
+                                    IfFalse = Helpers.CreateActionList(
+                                        new Conditional() {
+                                            ConditionsChecker = new ConditionsChecker() {
+                                                Conditions = new Condition[] {
+                                                    new ContextConditionIsCaster() {
+                                                        Not = true
+                                                    }
+                                                }
+                                            },
+                                            IfTrue = Helpers.CreateActionList(
+                                                new ContextActionSavingThrow() {
+                                                    m_ConditionalDCIncrease = new ContextActionSavingThrow.ConditionalDCIncrease[0],
+                                                    Type = SavingThrowType.Will,
+                                                    CustomDC = new ContextValue(),
+                                                    Actions = Helpers.CreateActionList(
+                                                        new ContextActionDealDamage() {
+                                                            DamageType = new DamageTypeDescription() {
+                                                                Type = DamageType.Energy,
+                                                                Common = new DamageTypeDescription.CommomData(),
+                                                                Physical = new DamageTypeDescription.PhysicalData(),
+                                                                Energy = DamageEnergyType.NegativeEnergy
+                                                            },
+                                                            Duration = new ContextDurationValue() {
+                                                                m_IsExtendable = true,
+                                                                DiceCountValue = new ContextValue(),
+                                                                BonusValue = new ContextValue()
+                                                            },
+                                                            Value = new ContextDiceValue() {
+                                                                DiceType = Kingmaker.RuleSystem.DiceType.D6,
+                                                                DiceCountValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Rank,
+                                                                    ValueRank = AbilityRankType.DamageDice
+                                                                },
+                                                                BonusValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Rank,
+                                                                    ValueRank = AbilityRankType.DamageBonus
+                                                                }
+                                                            },
+                                                            IsAoE = true,
+                                                            HalfIfSaved = true
+                                                        }
+                                                    )
+                                                }
+                                            ),
+                                            IfFalse = Helpers.CreateActionList()
+                                        }
+                                    )
+                                }
+                            ),
+                        }                        
+                    );
+                });
+            });
+            var DreadKnightChannelNegativeHealAbility = Helpers.CreateBlueprint<BlueprintAbility>("DreadKnightChannelNegativeHealAbility", bp => {
+                bp.SetName("Channel Negative Energy - Heal Undead");
+                bp.SetDescription("Channeling negative energy causes a burst that heals every undead creature in a 30-foot radius centered on the Dread Knight. The amount of damage " +
+                    "healed is equal to 1d6 points of damage plus 1d6 points of damage for every two Dread Knight levels beyond 1st (2d6 at 3rd, 3d6 at 5th, and so on).");
+                bp.m_DescriptionShort = Helpers.CreateString("$DreadKnightChannelNegativeEnergyAbility.DescriptionShort", "Channeling negative energy causes a burst that heals every undead " +
+                    "creature in a 30-foot radius centered on the Dread Knight. The amount of damage " +
+                    "healed is equal to 1d6 points of damage plus 1d6 points of damage for every two Dread Knight levels beyond 1st (2d6 at 3rd, 3d6 at 5th, and so on).");
+                bp.m_Icon = ChannelNegativeHeal.Icon;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Heighten | Metamagic.Quicken;
+                bp.Range = AbilityRange.Personal;
+                bp.Type = AbilityType.Special;
+                bp.CanTargetEnemies = true;
+                bp.CanTargetFriends = true;
+                bp.EffectOnAlly = AbilityEffectOnUnit.Harmful;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Standard;
+                bp.ResourceAssetIds = ChannelNegativeHeal.ResourceAssetIds;
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = TouchOfProfaneCorruptionResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                    c.Amount = 2;
+                    c.ResourceCostIncreasingFacts = new List<BlueprintUnitFactReference>();
+                    c.ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>();
+                });
+                bp.AddComponent<AbilityTargetsAround>(c => {
+                    c.m_Radius = 30.Feet();
+                    c.m_TargetType = TargetType.Any;
+                    c.m_Condition = new ConditionsChecker() {
+                        Conditions = new Condition[0]
+                    };
+                });
+                bp.AddComponent<AbilitySpawnFx>(c => {
+                    c.PrefabLink = ChannelNegativeHeal.GetComponent<AbilitySpawnFx>().PrefabLink;
+                    c.Anchor = AbilitySpawnFxAnchor.Caster;
+                    c.PositionAnchor = AbilitySpawnFxAnchor.None;
+                    c.OrientationAnchor = AbilitySpawnFxAnchor.None;
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
+                    c.m_Progression = ContextRankProgression.OnePlusDiv2;
+                    c.m_StartLevel = 0;
+                    c.m_StepLevel = 0;
+                    c.m_Min = 0;
+                    c.m_UseMin = false;
+                    c.m_Class = new BlueprintCharacterClassReference[] { DreadKnightClass.ToReference<BlueprintCharacterClassReference>() };
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.DamageBonus;
+                    c.m_BaseValueType = ContextRankBaseValueType.CustomProperty;
+                    c.m_CustomProperty = MythicChannelProperty.ToReference<BlueprintUnitPropertyReference>();
+                    c.m_Progression = ContextRankProgression.AsIs;
+                    c.m_Min = 0;
+                    c.m_UseMin = true;
+                });
+                bp.AddComponent<ContextCalculateSharedValue>(c => {
+                    c.ValueType = AbilitySharedValue.Heal;
+                    c.Value = new ContextDiceValue() {
+                        DiceType = DiceType.D6,
+                        DiceCountValue = new ContextValue() {
+                            ValueType = ContextValueType.Rank,
+                            Value = 0,
+                            ValueRank = AbilityRankType.Default,
+                            ValueShared = AbilitySharedValue.Damage,
+                            Property = UnitProperty.None,
+                            m_AbilityParameter = AbilityParameterType.Level
                         },
+                        BonusValue = new ContextValue() {
+                            ValueType = ContextValueType.Rank,
+                            Value = 0,
+                            ValueRank = AbilityRankType.DamageBonus,
+                            ValueShared = AbilitySharedValue.Damage,
+                            Property = UnitProperty.None,
+                            m_AbilityParameter = AbilityParameterType.Level
+                        }
+                    };
+                    c.Modifier = 1;
+                });
+                bp.AddComponent<ContextCalculateSharedValue>(c => {
+                    c.ValueType = AbilitySharedValue.StatBonus;
+                    c.Value = new ContextDiceValue() {
+                        DiceType = DiceType.D6,
+                        DiceCountValue = new ContextValue() {
+                            ValueType = ContextValueType.Simple,
+                            Value = 0,
+                            ValueRank = AbilityRankType.Default,
+                            ValueShared = AbilitySharedValue.Damage,
+                            Property = UnitProperty.None,
+                            m_AbilityParameter = AbilityParameterType.Level
+                        },
+                        BonusValue = new ContextValue() {
+                            ValueType = ContextValueType.Shared,
+                            Value = 0,
+                            ValueRank = AbilityRankType.StatBonus,
+                            ValueShared = AbilitySharedValue.Heal,
+                            Property = UnitProperty.None,
+                            m_AbilityParameter = AbilityParameterType.Level
+                        }
+                    };
+                    c.Modifier = 0.5;
+                });
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.Actions = Helpers.CreateActionList(
                         new Conditional() {
                             ConditionsChecker = new ConditionsChecker() {
+                                Operation = Operation.Or,
                                 Conditions = new Condition[] {
-                                    new ContextConditionCasterHasFact() {
-                                        m_Fact = SelectiveChannel.ToReference<BlueprintUnitFactReference>()
+                                    new ContextConditionHasFact() {
+                                        m_Fact = NegativeEnergyAffinity.ToReference<BlueprintUnitFactReference>(),
+                                        Not = false
+                                    },
+                                    new ContextConditionHasFact() {
+                                        m_Fact = DeathDomainGreaterLiving.ToReference<BlueprintUnitFactReference>(),
+                                        Not = false
                                     }
                                 }
                             },
@@ -2125,94 +2341,175 @@ namespace ExpandedContent.Tweaks.Classes {
                                 new Conditional() {
                                     ConditionsChecker = new ConditionsChecker() {
                                         Conditions = new Condition[] {
-                                            new ContextConditionIsEnemy()
-                                        }
-                                    },
-                                    IfTrue = Helpers.CreateActionList(
-                                        new ContextActionSavingThrow() {
-                                            m_ConditionalDCIncrease = new ContextActionSavingThrow.ConditionalDCIncrease[0],
-                                            Type = SavingThrowType.Will,
-                                            CustomDC = new ContextValue(),
-                                            Actions = Helpers.CreateActionList(
-                                                new ContextActionDealDamage() {
-                                                    DamageType = new DamageTypeDescription() {
-                                                        Type = DamageType.Direct,
-                                                        Common = new DamageTypeDescription.CommomData(),
-                                                        Physical = new DamageTypeDescription.PhysicalData(),
-                                                    },
-                                                    Duration = new ContextDurationValue() {
-                                                        m_IsExtendable = true,
-                                                        DiceCountValue = new ContextValue(),
-                                                        BonusValue = new ContextValue()
-                                                    },
-                                                    Value = new ContextDiceValue() {
-                                                        DiceType = Kingmaker.RuleSystem.DiceType.D6,
-                                                        DiceCountValue = new ContextValue() {
-                                                            ValueType = ContextValueType.Rank,
-                                                            ValueRank = AbilityRankType.DamageDice
-                                                        },
-                                                        BonusValue = new ContextValue() {
-                                                            ValueType = ContextValueType.Rank,
-                                                            ValueRank = AbilityRankType.DamageBonus
-                                                        }
-                                                    },
-                                                    IsAoE = true,
-                                                    HalfIfSaved = true
-                                                }
-                                            )
-                                        }
-                                    ),
-                                    IfFalse = Helpers.CreateActionList()
-                                }
-                            ),
-                            IfFalse = Helpers.CreateActionList(
-                                new Conditional() {
-                                    ConditionsChecker = new ConditionsChecker() {
-                                        Conditions = new Condition[] {
-                                            new ContextConditionIsCaster(){
-                                                Not = true
+                                            new ContextConditionCasterHasFact() {
+                                                m_Fact = SelectiveChannel.ToReference<BlueprintUnitFactReference>()
                                             }
                                         }
                                     },
                                     IfTrue = Helpers.CreateActionList(
-                                        new ContextActionSavingThrow() {
-                                            m_ConditionalDCIncrease = new ContextActionSavingThrow.ConditionalDCIncrease[0],
-                                            Type = SavingThrowType.Will,
-                                            CustomDC = new ContextValue(),
-                                            Actions = Helpers.CreateActionList(
-                                                new ContextActionDealDamage() {
-                                                    DamageType = new DamageTypeDescription() {
-                                                        Type = DamageType.Direct,
-                                                        Common = new DamageTypeDescription.CommomData(),
-                                                        Physical = new DamageTypeDescription.PhysicalData(),
+                                        new Conditional() {
+                                            ConditionsChecker = new ConditionsChecker() {
+                                                Operation = Operation.And,
+                                                Conditions = new Condition[] {
+                                                    new ContextConditionIsAlly() {
+                                                        Not = false
                                                     },
-                                                    Duration = new ContextDurationValue() {
-                                                        m_IsExtendable = true,
-                                                        DiceCountValue = new ContextValue(),
-                                                        BonusValue = new ContextValue()
-                                                    },
+                                                    new ContextConditionHasFact() {
+                                                        m_Fact = LifeDominantSoul.ToReference<BlueprintUnitFactReference>(),
+                                                        Not = true
+                                                    }
+                                                }
+                                            },
+                                            IfTrue = Helpers.CreateActionList(
+                                                new ContextActionHealTarget() {
                                                     Value = new ContextDiceValue() {
-                                                        DiceType = Kingmaker.RuleSystem.DiceType.D6,
+                                                        DiceType = DiceType.Zero,
                                                         DiceCountValue = new ContextValue() {
-                                                            ValueType = ContextValueType.Rank,
-                                                            ValueRank = AbilityRankType.DamageDice
+                                                            ValueType = ContextValueType.Simple,
+                                                            Value = 0,
+                                                            ValueRank = AbilityRankType.Default,
+                                                            ValueShared = AbilitySharedValue.Damage,
+                                                            Property = UnitProperty.None,
+                                                            m_AbilityParameter = AbilityParameterType.Level
                                                         },
                                                         BonusValue = new ContextValue() {
-                                                            ValueType = ContextValueType.Rank,
-                                                            ValueRank = AbilityRankType.DamageBonus
+                                                            ValueType = ContextValueType.Shared,
+                                                            Value = 0,
+                                                            ValueRank = AbilityRankType.Default,
+                                                            ValueShared = AbilitySharedValue.Heal,
+                                                            Property = UnitProperty.None,
+                                                            m_AbilityParameter = AbilityParameterType.Level
+                                                        }
+                                                    }
+                                                },
+                                                new ContextActionSpawnFx() {
+                                                    PrefabLink = HealTargetFX
+                                                }
+                                                ),
+                                            IfFalse = Helpers.CreateActionList(
+                                                new Conditional() {
+                                                    ConditionsChecker = new ConditionsChecker() {
+                                                        Operation = Operation.And,
+                                                        Conditions = new Condition[] {
+                                                            new ContextConditionIsAlly() {
+                                                                Not = false
+                                                            },
+                                                            new ContextConditionHasFact() {
+                                                                m_Fact = LifeDominantSoul.ToReference<BlueprintUnitFactReference>(),
+                                                                Not = false
+                                                            }
                                                         }
                                                     },
-                                                    IsAoE = true,
-                                                    HalfIfSaved = true
+                                                    IfTrue = Helpers.CreateActionList(
+                                                        new ContextActionHealTarget() {
+                                                            Value = new ContextDiceValue() {
+                                                                DiceType = DiceType.Zero,
+                                                                DiceCountValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Simple,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.Default,
+                                                                    ValueShared = AbilitySharedValue.Damage,
+                                                                    Property = UnitProperty.None,
+                                                                    m_AbilityParameter = AbilityParameterType.Level
+                                                                },
+                                                                BonusValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Shared,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.Default,
+                                                                    ValueShared = AbilitySharedValue.StatBonus,
+                                                                    Property = UnitProperty.None,
+                                                                    m_AbilityParameter = AbilityParameterType.Level
+                                                                }
+                                                            }
+                                                        },
+                                                        new ContextActionSpawnFx() {
+                                                            PrefabLink = HealTargetFX
+                                                        }
+                                                        ),
+                                                    IfFalse = Helpers.CreateActionList()
                                                 }
-                                            )
+                                                )
                                         }
                                     ),
-                                    IfFalse = Helpers.CreateActionList()
+                                    IfFalse = Helpers.CreateActionList(
+                                        new Conditional() {
+                                            ConditionsChecker = new ConditionsChecker() {
+                                                Conditions = new Condition[] {
+                                                    new ContextConditionHasFact() {
+                                                        m_Fact = LifeDominantSoul.ToReference<BlueprintUnitFactReference>(),
+                                                        Not = false
+                                                    }
+                                                }
+                                            },
+                                            IfTrue = Helpers.CreateActionList(
+                                                new ContextActionHealTarget() {
+                                                    Value = new ContextDiceValue() {
+                                                        DiceType = DiceType.Zero,
+                                                        DiceCountValue = new ContextValue() {
+                                                            ValueType = ContextValueType.Simple,
+                                                            Value = 0,
+                                                            ValueRank = AbilityRankType.Default,
+                                                            ValueShared = AbilitySharedValue.Damage,
+                                                            Property = UnitProperty.None,
+                                                            m_AbilityParameter = AbilityParameterType.Level
+                                                        },
+                                                        BonusValue = new ContextValue() {
+                                                            ValueType = ContextValueType.Shared,
+                                                            Value = 0,
+                                                            ValueRank = AbilityRankType.Default,
+                                                            ValueShared = AbilitySharedValue.StatBonus,
+                                                            Property = UnitProperty.None,
+                                                            m_AbilityParameter = AbilityParameterType.Level
+                                                        }
+                                                    }
+                                                },
+                                                new ContextActionSpawnFx() {
+                                                    PrefabLink = HealTargetFX
+                                                }
+                                                ),
+                                            IfFalse = Helpers.CreateActionList(
+                                                new ContextActionHealTarget() {
+                                                    Value = new ContextDiceValue() {
+                                                        DiceType = DiceType.Zero,
+                                                        DiceCountValue = new ContextValue() {
+                                                            ValueType = ContextValueType.Simple,
+                                                            Value = 0,
+                                                            ValueRank = AbilityRankType.Default,
+                                                            ValueShared = AbilitySharedValue.Damage,
+                                                            Property = UnitProperty.None,
+                                                            m_AbilityParameter = AbilityParameterType.Level
+                                                        },
+                                                        BonusValue = new ContextValue() {
+                                                            ValueType = ContextValueType.Shared,
+                                                            Value = 0,
+                                                            ValueRank = AbilityRankType.Default,
+                                                            ValueShared = AbilitySharedValue.Heal,
+                                                            Property = UnitProperty.None,
+                                                            m_AbilityParameter = AbilityParameterType.Level
+                                                        }
+                                                    }
+                                                },
+                                                new ContextActionSpawnFx() {
+                                                    PrefabLink = HealTargetFX
+                                                }
+                                                )
+                                        }
+                                    )
                                 }
-                            )
+                                ),
+                            IfFalse = Helpers.CreateActionList(),
                         }
                     );
+                });
+                bp.AddComponent<AbilityUseOnRest>(c => {
+                    c.Type = AbilityUseOnRestType.HealMassUndead;
+                    c.BaseValue = 10;
+                    c.AddCasterLevel = true;
+                    c.MultiplyByCasterLevel = false;
+                    c.MaxCasterLevel = 0;
+                });
+                bp.AddComponent<SpellDescriptorComponent>(c => {
+                    c.Descriptor = SpellDescriptor.RestoreHP | SpellDescriptor.ChannelNegativeHeal;
                 });
             });
             var DreadKnightChannelNegativeEnergyFeature = Helpers.CreateBlueprint<BlueprintFeature>("DreadKnightChannelNegativeEnergyFeature", bp => {
@@ -2230,7 +2527,8 @@ namespace ExpandedContent.Tweaks.Classes {
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] {
                         ChannelEnergyFact.ToReference<BlueprintUnitFactReference>(),
-                        DreadKnightChannelNegativeEnergyAbility.ToReference<BlueprintUnitFactReference>()
+                        DreadKnightChannelNegativeEnergyAbility.ToReference<BlueprintUnitFactReference>(),
+                        DreadKnightChannelNegativeHealAbility.ToReference<BlueprintUnitFactReference>()
                     };
                 });
             });

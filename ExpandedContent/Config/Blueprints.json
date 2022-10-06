@@ -323,6 +323,7 @@
     "AbundantSin": "B4388668-FE32-4798-8A69-B40B81933925",
     "DreadKnightChannelNegativeEnergyFeature": "6368FAF6-E748-4845-838D-781C9E49918E",
     "DreadKnightChannelNegativeEnergyAbility": "D33EED71-B992-4D38-8036-9A481EAE576A",
+    "DreadKnightChannelNegativeHealAbility": "4a7e96a9-6894-402c-b26a-da42e4532be9",
     "DreadKnightSpellbook": "FDA83B75-D1B8-4858-9F3E-87A251560FF9",
 
     "ClawOfTheFalseWyrmArchetype": "80073844-84f9-49f3-a35c-8bbb24de3993",
@@ -982,6 +983,7 @@
     "InflictPainAbility": "e023af1a-f9c1-4754-9a8e-7bd246967861",
     "InflictPainBuff": "4865223d-0cc1-4ba3-b994-f5090e01f652",
     "InflictPainMassAbility": "ff31ae1a-be3c-418d-b784-2dcc76eca7ee",
+    "GloomblindBoltsAbility": "e28f4633-c0a2-425d-8895-adf20cb22f8f",
 
     "ScrollOfDeadlyFinale": "8cfb536d-66df-4577-8479-cecfe6fff905",
     "ScrollOfGoodberry": "8abffd7d-9a80-4556-bfec-dba8efb2daa7",
@@ -995,7 +997,8 @@
     "ScrollOfSteamRayFusilladeh": "ac0fdbc5-97c6-417e-bda5-1a4ccb2985c5",
     "ScrollOfStunningFinale": "eaaf4489-0c31-4d25-98f3-b4cdc412b048",
     "ScrollOfInflictPain": "7529196e-4259-4d32-892c-1b4d5e5b02f0",
-    "ScrollOfInflictPainMass": "4d5daaba-e0a1-4661-b19e-f6c89c8ae2c2"
+    "ScrollOfInflictPainMass": "4d5daaba-e0a1-4661-b19e-f6c89c8ae2c2",
+    "ScrollOfGloomblindBolts": "fc26d2a5-28f3-4e80-954a-168b743962e9"
 
 
 
