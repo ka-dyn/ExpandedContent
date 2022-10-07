@@ -385,6 +385,7 @@
     <Compile Include="Resources.cs" />
     <Compile Include="SaveGamePatch.cs" />
     <Compile Include="Tweaks\Spells\GloomblindBolts.cs" />
+    <Compile Include="Tweaks\Spells\FuryOftheSun.cs" />
     <Compile Include="Tweaks\Spells\InflictPainMass.cs" />
     <Compile Include="Tweaks\Spells\InflictPain.cs" />
     <Compile Include="Tweaks\Spells\SteamRayFusillade.cs" />
@@ -994,6 +995,9 @@
     <Content Include="Assets\Items\Icon_ScrollOfDeadlyFinale.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Items\Icon_ScrollOfFuryOfTheSun.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Items\Icon_ScrollOfGloomblindBolts.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -1262,6 +1266,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_FeatSelection.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_FuryOfTheSun.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_GaleAura.jpg">

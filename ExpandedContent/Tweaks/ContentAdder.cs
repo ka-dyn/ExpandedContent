@@ -93,6 +93,7 @@ namespace ExpandedContent.Tweaks
                 Spells.InflictPain.AddInflictPain();
                 Spells.InflictPainMass.AddInflictPainMass();
                 Spells.GloomblindBolts.AddGloomblindBolts();
+                Spells.FuryOftheSun.AddFuryOftheSun();
 
                 Domains.ImpossibleSubdomainSelection.AddImpossibleSubdomainSelection();
                 Domains.ScalykindDomain.AddScalykindDomain();

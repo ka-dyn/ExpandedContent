@@ -66,7 +66,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.SetDescription("You telepathically wrack the target’s mind and body with agonizing pain that imposes a –4 penalty on attack rolls, skill checks, and combat maneuver checks. " +
                     "A successful Will save reduces the duration to 1 round.");
                 bp.AddComponent<AbilityEffectRunAction>(c => {
-                    c.SavingThrowType = SavingThrowType.Fortitude;
+                    c.SavingThrowType = SavingThrowType.Will;
                     c.Actions = Helpers.CreateActionList(                        
                         new ContextActionConditionalSaved() {
                             Succeed = Helpers.CreateActionList(
