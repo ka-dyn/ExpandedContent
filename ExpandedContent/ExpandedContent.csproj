@@ -384,6 +384,7 @@
     <Compile Include="Extensions\ExtentionMethods.cs" />
     <Compile Include="Resources.cs" />
     <Compile Include="SaveGamePatch.cs" />
+    <Compile Include="Tweaks\Spells\InvokeDeity.cs" />
     <Compile Include="Tweaks\Spells\GloomblindBolts.cs" />
     <Compile Include="Tweaks\Spells\FuryOftheSun.cs" />
     <Compile Include="Tweaks\Spells\InflictPainMass.cs" />
@@ -1290,6 +1291,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_InflictPainMass.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_InvokeDeity.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_MantisAspect.jpg">

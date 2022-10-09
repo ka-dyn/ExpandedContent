@@ -103,7 +103,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var DraconicExploitCooldown = Helpers.CreateBuff("DraconicExploitCooldown", bp => {
                 bp.m_AllowNonContextActions = false;
                 bp.SetName("Draconic Exploit Cooldown");
-                bp.SetDescription("Targeted by draconic exploits used within 1 minute.");
+                bp.SetDescription("Targeted by draconic exploits within 1 minute.");
                 bp.m_Icon = DraconicExploitIcon;
                 bp.Stacking = StackingType.Replace;
                 bp.Frequency = DurationRate.Rounds;

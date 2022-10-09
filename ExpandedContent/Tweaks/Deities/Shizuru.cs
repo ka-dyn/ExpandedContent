@@ -40,12 +40,14 @@ namespace ExpandedContent.Tweaks.Deities {
         public static void AddShizuruFeature() {
 
             BlueprintItem MasterworkLongsword = Resources.GetBlueprint<BlueprintItem>("571c56d11dafbb04094cbaae659974b5");
+            BlueprintItem MasterworkDuelingsword = Resources.GetBlueprint<BlueprintItem>("354f5109f1da7d24c830f37ef3b56cb8");
 
             BlueprintArchetype FeralChampionArchetype = Resources.GetBlueprint<BlueprintArchetype>("f68ca492c9c15e241ab73735fbd0fb9f");
             BlueprintArchetype PriestOfBalance = Resources.GetBlueprint<BlueprintArchetype>("a4560e3fb5d247d68fb1a2738fcc0855");
             BlueprintArchetype SilverChampionArchetype = Resources.GetModBlueprint<BlueprintArchetype>("SilverChampionArchetype");
 
             BlueprintFeature LongswordProficiency = Resources.GetBlueprint<BlueprintFeature>("62e27ffd9d53e14479f73da29760f64e");
+            BlueprintFeature DuelingswordProficiency = Resources.GetBlueprint<BlueprintFeature>("9c37279588fd9e34e9c4cb234857492c");
             var ShizuruIcon = AssetLoader.LoadInternal("Deities", "Icon_Shizuru.jpg");
             var ShizuruFeature = Helpers.CreateBlueprint<BlueprintFeature>("ShizuruFeature", (bp => {
 
@@ -55,7 +57,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     "\nAreas of Concern: Ancestors, Honor, The Sun, Swordplay   " +
                     "\nDomains: Glory, Good, Law, Repose, Sun   " +
                     "\nSubdomains: Ancestors, Archon, Day, Heroism, Honor, Light, Revelation  " +
-                    "\nFavoured Weapon: Katana (Longsword)   " +
+                    "\nFavoured Weapon: Katana (Longsword & Dueling sword)   " +
                     "\nHoly Symbol: Katana in front of the sun   " +
                     "\nSacred Animal: Carp   " +
                     "\nShizuru is the Empress of Heaven, goddess of ancestors and the sun. She is also the goddess of honor and swordplay, " +
@@ -118,13 +120,18 @@ namespace ExpandedContent.Tweaks.Deities {
                     c.m_Spellbooks = new BlueprintSpellbookReference[1] { ClericSpellbook.ToReference<BlueprintSpellbookReference>() };
                     c.m_Spellbooks = new BlueprintSpellbookReference[1] { InquisitorSpellbook.ToReference<BlueprintSpellbookReference>() };
                 });
-
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>();
-
-
                     c.m_Feature = LongswordProficiency.ToReference<BlueprintFeatureReference>();
-
+                    c.Level = 1;
+                    c.m_Archetypes = null;
+                    c.m_AdditionalClasses = new BlueprintCharacterClassReference[2] {
+                               InquistorClass.ToReference<BlueprintCharacterClassReference>(),
+                               WarpriestClass.ToReference<BlueprintCharacterClassReference>() };
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Feature = DuelingswordProficiency.ToReference<BlueprintFeatureReference>();
                     c.Level = 1;
                     c.m_Archetypes = null;
                     c.m_AdditionalClasses = new BlueprintCharacterClassReference[2] {
@@ -132,7 +139,10 @@ namespace ExpandedContent.Tweaks.Deities {
                                WarpriestClass.ToReference<BlueprintCharacterClassReference>() };
                 });
                 bp.AddComponent<AddStartingEquipment>(c => {
-                    c.m_BasicItems = new BlueprintItemReference[1] { MasterworkLongsword.ToReference<BlueprintItemReference>() };
+                    c.m_BasicItems = new BlueprintItemReference[2] { 
+                        MasterworkLongsword.ToReference<BlueprintItemReference>(),
+                        MasterworkDuelingsword.ToReference<BlueprintItemReference>() 
+                    };
                     c.m_RestrictedByClass = new BlueprintCharacterClassReference[3] {
                                 ClericClass.ToReference<BlueprintCharacterClassReference>(),
                                 InquistorClass.ToReference<BlueprintCharacterClassReference>(),
