@@ -89,6 +89,9 @@ namespace ExpandedContent.Tweaks.Deities {
                     c.m_Facts = new BlueprintUnitFactReference[1] { GoodDomainAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[1] { CommunityDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[1] { LuckDomainAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<AddFacts>(c => {
