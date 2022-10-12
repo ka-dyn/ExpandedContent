@@ -95,6 +95,8 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 bp.GiveFeaturesForPreviousLevels = true;
             });
             var DrakeCompanionClassProgression = Helpers.CreateBlueprint<BlueprintProgression>("DrakeCompanionClassProgression", bp => {
+                bp.SetName("");
+                bp.SetDescription("");
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = true;
             });
