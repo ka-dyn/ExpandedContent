@@ -3361,9 +3361,6 @@ namespace ExpandedContent.Tweaks.Classes {
                     };
                 });
             });
-
-
-
             var ProfaneBoonSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("ProfaneBoonSelection", bp => {
                 bp.SetName("Profane Boon");
                 bp.SetDescription("Upon reaching 5th level, a dreadknight receives a boon from their dark patrons. This boon can take one of two forms. Once the form is chosen, it cannot be changed. " +
@@ -3384,7 +3381,68 @@ namespace ExpandedContent.Tweaks.Classes {
                 DreadKnightCompanionSelection.ToReference<BlueprintFeatureReference>(),
                 FiendishWeaponBondProgression.ToReference<BlueprintFeatureReference>() };
             });
-
+            //Hellknight Singnifer Spellbook Stuffs
+            var HellknightSigniferClass = Resources.GetBlueprint<BlueprintCharacterClass>("ee6425d6392101843af35f756ce7fefd");
+            var HellknightSigniferDreadknightLevelUp = Helpers.CreateBlueprint<BlueprintFeature>("HellknightSigniferDreadknightLevelUp", bp => {
+                bp.SetName("Dreadknight");
+                bp.SetDescription("At 1st level, and at every level thereafter, a Hellknight signifer gains new {g|Encyclopedia:Spell}spells{/g} per day as if he had also gained a level in a " +
+                    "spellcasting class he belonged to before adding the prestige class. He does not, however, gain any other benefit a character of that class would have gained, except for " +
+                    "additional spells per day, spells known, and an increased effective level of spellcasting. If a character had more than one spellcasting class before becoming a Hellknight " +
+                    "signifer, he must decide to which class he adds the new level for purposes of determining spells per day.");
+                bp.AddComponent<AddSpellbookLevel>(c => {
+                    c.m_Spellbook = DreadKnightSpellbook.ToReference<BlueprintSpellbookReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = false;
+                bp.HideNotAvailibleInUI = false;
+                bp.Ranks = 10;
+                bp.ReapplyOnLevelUp = false;
+                bp.IsClassFeature = true;
+            });
+            var HellknightSigniferDreadknightProgression = Helpers.CreateBlueprint<BlueprintProgression>("HellknightSigniferDreadknightProgression", bp => {
+                bp.SetName("Dreadknight");
+                bp.SetDescription("At 1st level, and at every level thereafter, a Hellknight signifer gains new {g|Encyclopedia:Spell}spells{/g} per day as if he had also gained a level in a " +
+                    "spellcasting class he belonged to before adding the prestige class. He does not, however, gain any other benefit a character of that class would have gained, except for " +
+                    "additional spells per day, spells known, and an increased effective level of spellcasting. If a character had more than one spellcasting class before becoming a Hellknight " +
+                    "signifer, he must decide to which class he adds the new level for purposes of determining spells per day.");
+                bp.AddComponent<PrerequisiteClassSpellLevel>(c => {
+                    c.Group = Prerequisite.GroupType.Any;
+                    c.CheckInProgression = false;
+                    c.HideInUI = false;
+                    c.m_CharacterClass = DreadKnightClass.ToReference<BlueprintCharacterClassReference>();
+                    c.RequiredSpellLevel = 3;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = false;
+                bp.HideNotAvailibleInUI = true;
+                bp.Groups = new FeatureGroup[] { FeatureGroup.HellknightSigniferSpellbook };
+                bp.Ranks = 1;
+                bp.ReapplyOnLevelUp = false;
+                bp.IsClassFeature = true;
+                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] { 
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class =  HellknightSigniferClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    }                      
+                };
+                bp.m_Archetypes = new BlueprintProgression.ArchetypeWithLevel[] { };
+                bp.ForAllOtherClasses = false;
+                bp.LevelEntries = new LevelEntry[10] {
+                    Helpers.LevelEntry(1, HellknightSigniferDreadknightLevelUp),
+                    Helpers.LevelEntry(2, HellknightSigniferDreadknightLevelUp),
+                    Helpers.LevelEntry(3, HellknightSigniferDreadknightLevelUp),
+                    Helpers.LevelEntry(4, HellknightSigniferDreadknightLevelUp),
+                    Helpers.LevelEntry(5, HellknightSigniferDreadknightLevelUp),
+                    Helpers.LevelEntry(6, HellknightSigniferDreadknightLevelUp),
+                    Helpers.LevelEntry(7, HellknightSigniferDreadknightLevelUp),
+                    Helpers.LevelEntry(8, HellknightSigniferDreadknightLevelUp),
+                    Helpers.LevelEntry(9, HellknightSigniferDreadknightLevelUp),
+                    Helpers.LevelEntry(10, HellknightSigniferDreadknightLevelUp)
+                };
+                bp.GiveFeaturesForPreviousLevels = false;
+            });
             // Signature Abilities
             DreadKnightClass.m_SignatureAbilities = new BlueprintFeatureReference[5] {
                     SinfulAbsolutionFeature.ToReference<BlueprintFeatureReference>(),

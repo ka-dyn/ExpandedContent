@@ -325,6 +325,8 @@
     "DreadKnightChannelNegativeEnergyAbility": "D33EED71-B992-4D38-8036-9A481EAE576A",
     "DreadKnightChannelNegativeHealAbility": "4a7e96a9-6894-402c-b26a-da42e4532be9",
     "DreadKnightSpellbook": "FDA83B75-D1B8-4858-9F3E-87A251560FF9",
+    "HellknightSigniferDreadknightLevelUp": "419906be-fe6b-4643-9bfd-b3eb38c5b994",
+    "HellknightSigniferDreadknightProgression": "2d865c84-d6c3-4913-87ea-363569165445",
 
     "ClawOfTheFalseWyrmArchetype": "80073844-84f9-49f3-a35c-8bbb24de3993",
     "ClawOfTheFalseWyrmSpellbook": "4e0a9fa3-23c7-449f-af05-f4a20d5a20e1",
@@ -1012,7 +1014,7 @@
     "EvilInvokeDeityBuff": "29fb12f6-0614-4c8e-99e3-e8e53e314f54",
     "FireInvokeDeityAbility": "36639e5e-4b9d-44fe-b4d1-e4bdb76942e0",
     "FireInvokeDeityBuff": "a2870b41-e102-435c-90ba-51bc9ca9c425",
-    "FireInvokeDeityBuffAbility": "dc246b91-f4be-47a4-bd82-7cf1851203df",    
+    "FireInvokeDeityBuffAbility": "dc246b91-f4be-47a4-bd82-7cf1851203df",
     "GloryInvokeDeityAbility": "dc5321b8-be91-485a-84b3-1b8967ae3d94",
     "GloryInvokeDeityBuff": "a329df08-3319-4f60-8004-7241b0c1eca2",
     "GoodInvokeDeityAbility": "d45771e5-8afd-496e-8c1e-44a38ae60ea1",
