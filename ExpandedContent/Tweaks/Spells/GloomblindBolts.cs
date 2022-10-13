@@ -36,7 +36,9 @@ namespace ExpandedContent.Tweaks.Spells {
         public static void AddGloomblindBolts() {
 
             var NegativeEnergyAffinity = Resources.GetBlueprint<BlueprintFeature>("d5ee498e19722854198439629c1841a5");
-            var RayOfEnfeeblement00 = Resources.GetBlueprint<BlueprintProjectile>("450af0402422b0b4980d9c2175869612");
+            var MagicMissile00 = Resources.GetBlueprint<BlueprintProjectile>("2e3992d1695960347a7f9bdf8122966f");
+            var MagicMissile01 = Resources.GetBlueprint<BlueprintProjectile>("741743ccd287a854fbb68ce70f75fa05");
+            var MagicMissile02 = Resources.GetBlueprint<BlueprintProjectile>("674e6d958be63ff4a85a7e5fdc1e818a");
             var RayWeapon = Resources.GetBlueprint<BlueprintItemWeapon>("f6ef95b1f7bb52b408a5b345a330ffe8");
             var Blind = Resources.GetBlueprint<BlueprintBuff>("0ec36e7596a4928489d2049e1e1c76a7");
             var GloomblindBoltsIcon = AssetLoader.LoadInternal("Skills", "Icon_GloomblindBolts.jpg");
@@ -52,9 +54,9 @@ namespace ExpandedContent.Tweaks.Spells {
                     "blinded for 1 round.");
                 bp.AddComponent<AbilityDeliverProjectile>(c => {
                     c.m_Projectiles = new BlueprintProjectileReference[3] {
-                        RayOfEnfeeblement00.ToReference<BlueprintProjectileReference>(),
-                        RayOfEnfeeblement00.ToReference<BlueprintProjectileReference>(),
-                        RayOfEnfeeblement00.ToReference<BlueprintProjectileReference>()
+                        MagicMissile00.ToReference<BlueprintProjectileReference>(),
+                        MagicMissile01.ToReference<BlueprintProjectileReference>(),
+                        MagicMissile02.ToReference<BlueprintProjectileReference>()
                     };
                     c.Type = AbilityProjectileType.Simple;
                     c.IsHandOfTheApprentice = false;
@@ -66,7 +68,7 @@ namespace ExpandedContent.Tweaks.Spells {
                     c.AttackRollBonusStat = StatType.Unknown;
                     c.UseMaxProjectilesCount = true;
                     c.MaxProjectilesCountRank = AbilityRankType.ProjectilesCount;
-                    c.DelayBetweenProjectiles = 0.2f;
+                    c.DelayBetweenProjectiles = 0.0f;
                     c.m_ControlledProjectileHolderBuff = null; //?
                 });
                 bp.AddComponent<AbilityEffectRunAction>(c => {

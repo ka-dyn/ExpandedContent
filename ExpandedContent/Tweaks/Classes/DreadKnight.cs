@@ -454,6 +454,10 @@ namespace ExpandedContent.Tweaks.Classes {
                     c.BaseStat = StatType.Charisma;
                     c.DerivativeStat = StatType.SaveReflex;
                 });
+                bp.AddComponent<RecalculateOnStatChange>(c => {
+                    c.UseKineticistMainStat = false;
+                    c.Stat = StatType.Charisma;
+                });
             });
             // Touch of Profane Corruption
             var TOCIcon = AssetLoader.LoadInternal("Skills", "Icon_TouchCorrupt.png");

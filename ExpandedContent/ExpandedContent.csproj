@@ -206,6 +206,7 @@
     <Compile Include="Tweaks\Classes\DrakeClass\DrakeCompanionSelection.cs" />
     <Compile Include="Tweaks\Classes\Oathbreaker.cs" />
     <Compile Include="Tweaks\Classes\DreadKnight.cs" />
+    <Compile Include="Tweaks\Components\SavingThrowAgainstCaster.cs" />
     <Compile Include="Tweaks\ContentAdder.cs" />
     <Compile Include="Tweaks\Curses\Vampirism.cs" />
     <Compile Include="Tweaks\Deities\Naderi.cs" />
