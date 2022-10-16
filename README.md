@@ -11,7 +11,7 @@ New Archetypes
 
 -Mantis Zealot, Warpriest
 
--Mooncaller, Draconic Druid, Druid
+-Mooncaller, Draconic Druid, Storm Druid, Druid
 
 -Temple Champion, Silver Champion, Paladin
 
