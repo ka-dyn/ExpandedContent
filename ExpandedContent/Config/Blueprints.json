@@ -336,6 +336,18 @@
     "TemplateFiendishSmiteGoodAbility": "9a01e212-fe98-4da6-b2bb-8a4d8b942c0f",
     "TemplateFiendishSmiteGoodBuff": "a8e59432-edfe-41da-a544-9b159825f16e",
 
+    "EyesOfTheStormFeature": "e0c94959-7e22-478f-8d9c-845f217f3d16",
+    "SpontaneousDomainCastingStormDruid": "a4b391a9-099c-4602-8713-ea5e34372860",
+    "StormDruidArchetype": "18d308c7-a041-4910-a4d8-be7de37b271c",
+    "StormDruidBondSelection": "16f8dec1-9b9e-41a8-a370-29cff2b0bb42",
+    "StormDruidSpontaneousAirDomain": "ca79777a-49e3-47dc-bfa8-de5e5a31f918",
+    "StormDruidSpontaneousStormDomain": "ccfba97e-270a-447d-b797-ce1aff12d1f6",
+    "StormDruidSpontaneousWeatherDomain": "2c3807f1-7faf-4104-b149-7650e4b2cc05",
+    "StormDruidSpontaneousWindDomain": "3961b36b-f823-4331-9d9e-9dc4d588f4c2",
+    "StormLordFeature": "baf158f9-e7a7-412e-b9bc-b9fa63e7cfb1",
+    "WindlordDomainSelection": "09ca4e24-ccdc-40d8-8908-8633f25ea98a",
+    "WindwalkerFeature": "06425014-9c9e-4d69-af83-71a51ba79a24",
+
     "TouchOfProfaneCorruptionAbilityFatigued": "B8678514-04F0-46E3-9F37-92483E81DF34",
     "TouchOfProfaneCorruptionAbilityShaken": "3E3E92CA-66C0-4F1E-A24E-5A933CC499B1",
     "TouchOfProfaneCorruptionAbilitySickened": "9CBE4F30-F79B-430F-B61B-F9A8DDAC25D7",

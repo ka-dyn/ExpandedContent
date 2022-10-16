@@ -72,29 +72,27 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 
             });
             //Spell Bank
-            var CallLightningSpell = Resources.GetBlueprint<BlueprintAbility>("2a9ef0e0b5822a24d88b16673a267456");
-            var CallLightningStormSpell = Resources.GetBlueprint<BlueprintAbility>("d5a36a7ee8177be4f848b953d1c53c84");
-            var ChainLightningSpell = Resources.GetBlueprint<BlueprintAbility>("645558d63604747428d55f0dd3a4cb58");
-            var CloudkillSpell = Resources.GetBlueprint<BlueprintAbility>("548d339ba87ee56459c98e80167bdf10");
-            var EarPiercingScreamSpell = Resources.GetBlueprint<BlueprintAbility>("8e7cfa5f213a90549aadd18f8f6f4664");
-            var ElementalBodyIVAirSpell = Resources.GetBlueprint<BlueprintAbility>("ee63301f83c76694692d4704d8a05bdc");
-            var ElementalSwarmAir = Resources.GetBlueprint<BlueprintAbility>("07e8f6479cbcc3f46a12696784805305");
-            var FireStormSpell = Resources.GetBlueprint<BlueprintAbility>("e3d0dfe1c8527934294f241e0ae96a8d");
-            var IceStorm = Resources.GetBlueprint<BlueprintAbility>("fcb028205a71ee64d98175ff39a0abf9");
-            var LightningBoltSpell = Resources.GetBlueprint<BlueprintAbility>("d2cff9243a7ee804cb6d5be47af30c73");
-            var ProtectionFromArrowsSpell = Resources.GetBlueprint<BlueprintAbility>("c28de1f98a3f432448e52e5d47c73208");
-            var ShockingGraspCast = Resources.GetBlueprint<BlueprintAbility>("ab395d2335d3f384e99dddee8562978f");
-            var ShoutGreaterSpell = Resources.GetBlueprint<BlueprintAbility>("fd0d3840c48cafb44bb29e8eb74df204");
-            var ShoutSpell = Resources.GetBlueprint<BlueprintAbility>("f09453607e683784c8fca646eec49162");
-            var SiroccoSpell = Resources.GetBlueprint<BlueprintAbility>("093ed1d67a539ad4c939d9d05cfe192c");
-            var SlowMudSpell = Resources.GetBlueprint<BlueprintAbility>("6b30813c3709fc44b92dc8fd8191f345");
-            var SnowballSpell = Resources.GetBlueprint<BlueprintAbility>("9f10909f0be1f5141bf1c102041f93d9");
-            var SummonElementalSmallBaseSpell = Resources.GetBlueprint<BlueprintAbility>("970c6db48ff0c6f43afc9dbb48780d03");
-            var SunburstSpell = Resources.GetBlueprint<BlueprintAbility>("e96424f70ff884947b06f41a765b7658");
-            var TsunamiSpell = Resources.GetBlueprint<BlueprintAbility>("d8144161e352ca846a73cf90e85bf9ac");
-            var WindsOfVengeanceSpell = Resources.GetBlueprint<BlueprintAbility>("5d8f1da2fdc0b9242af9f326f9e507be");
-
-            var DismissAreaEffect = Resources.GetBlueprint<BlueprintAbility>("97a23111df7547fd8f6417f9ba9b9775");
+            var CallLightningSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("2a9ef0e0b5822a24d88b16673a267456");
+            var CallLightningStormSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("d5a36a7ee8177be4f848b953d1c53c84");
+            var ChainLightningSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("645558d63604747428d55f0dd3a4cb58");
+            var CloudkillSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("548d339ba87ee56459c98e80167bdf10");
+            var EarPiercingScreamSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("8e7cfa5f213a90549aadd18f8f6f4664");
+            var ElementalBodyIVAirSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("ee63301f83c76694692d4704d8a05bdc");
+            var ElementalSwarmAir = Resources.GetBlueprintReference<BlueprintAbilityReference>("07e8f6479cbcc3f46a12696784805305");
+            var FireStormSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("e3d0dfe1c8527934294f241e0ae96a8d");
+            var IceStorm = Resources.GetBlueprintReference<BlueprintAbilityReference>("fcb028205a71ee64d98175ff39a0abf9");
+            var LightningBoltSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("d2cff9243a7ee804cb6d5be47af30c73");
+            var ProtectionFromArrowsSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("c28de1f98a3f432448e52e5d47c73208");
+            var ShockingGraspCast = Resources.GetBlueprintReference<BlueprintAbilityReference>("ab395d2335d3f384e99dddee8562978f");
+            var ShoutGreaterSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("fd0d3840c48cafb44bb29e8eb74df204");
+            var ShoutSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("f09453607e683784c8fca646eec49162");
+            var SiroccoSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("093ed1d67a539ad4c939d9d05cfe192c");
+            var SlowMudSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("6b30813c3709fc44b92dc8fd8191f345");
+            var SnowballSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("9f10909f0be1f5141bf1c102041f93d9");
+            var SummonElementalSmallBaseSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("970c6db48ff0c6f43afc9dbb48780d03");
+            var SunburstSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("e96424f70ff884947b06f41a765b7658");
+            var TsunamiSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("d8144161e352ca846a73cf90e85bf9ac");
+            var WindsOfVengeanceSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("5d8f1da2fdc0b9242af9f326f9e507be");
 
 
             var StormDruidSpontaneousAirDomain = Helpers.CreateBlueprint<BlueprintFeature>("StormDruidSpontaneousAirDomain", bp => {
@@ -105,15 +103,15 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.m_CharacterClass = DruidClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
                         new BlueprintAbilityReference(),
-                        ShockingGraspCast.ToReference<BlueprintAbilityReference>(),
-                        ProtectionFromArrowsSpell.ToReference<BlueprintAbilityReference>(),
-                        LightningBoltSpell.ToReference<BlueprintAbilityReference>(),
-                        ShoutSpell.ToReference<BlueprintAbilityReference>(),
-                        CloudkillSpell.ToReference<BlueprintAbilityReference>(),
-                        ChainLightningSpell.ToReference<BlueprintAbilityReference>(),
-                        ElementalBodyIVAirSpell.ToReference<BlueprintAbilityReference>(),
-                        ShoutGreaterSpell.ToReference<BlueprintAbilityReference>(),
-                        ElementalSwarmAir.ToReference<BlueprintAbilityReference>()
+                        ShockingGraspCast,
+                        ProtectionFromArrowsSpell,
+                        LightningBoltSpell,
+                        ShoutSpell,
+                        CloudkillSpell,
+                        ChainLightningSpell,
+                        ElementalBodyIVAirSpell,
+                        ShoutGreaterSpell,
+                        ElementalSwarmAir
                     };
                 });
                 bp.m_AllowNonContextActions = false;
@@ -132,15 +130,15 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.m_CharacterClass = DruidClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
                         new BlueprintAbilityReference(),
-                        SnowballSpell.ToReference<BlueprintAbilityReference>(),
-                        SummonElementalSmallBaseSpell.ToReference<BlueprintAbilityReference>(),
-                        CallLightningSpell.ToReference<BlueprintAbilityReference>(),
-                        SlowMudSpell.ToReference<BlueprintAbilityReference>(),
-                        IceStorm.ToReference<BlueprintAbilityReference>(),
-                        SiroccoSpell.ToReference<BlueprintAbilityReference>(),
-                        FireStormSpell.ToReference<BlueprintAbilityReference>(),
-                        SunburstSpell.ToReference<BlueprintAbilityReference>(),
-                        TsunamiSpell.ToReference<BlueprintAbilityReference>()
+                        SnowballSpell,
+                        SummonElementalSmallBaseSpell,
+                        CallLightningSpell,
+                        SlowMudSpell,
+                        IceStorm,
+                        SiroccoSpell,
+                        FireStormSpell,
+                        SunburstSpell,
+                        TsunamiSpell
                     };
                 });
                 bp.m_AllowNonContextActions = false;
@@ -159,15 +157,15 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.m_CharacterClass = DruidClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
                         new BlueprintAbilityReference(),
-                        EarPiercingScreamSpell.ToReference<BlueprintAbilityReference>(),
-                        ProtectionFromArrowsSpell.ToReference<BlueprintAbilityReference>(),
-                        LightningBoltSpell.ToReference<BlueprintAbilityReference>(),
-                        ShoutSpell.ToReference<BlueprintAbilityReference>(),
-                        CloudkillSpell.ToReference<BlueprintAbilityReference>(),
-                        SiroccoSpell.ToReference<BlueprintAbilityReference>(),
-                        ElementalBodyIVAirSpell.ToReference<BlueprintAbilityReference>(),
-                        ShoutGreaterSpell.ToReference<BlueprintAbilityReference>(),
-                        WindsOfVengeanceSpell.ToReference<BlueprintAbilityReference>()
+                        EarPiercingScreamSpell,
+                        ProtectionFromArrowsSpell,
+                        LightningBoltSpell,
+                        ShoutSpell,
+                        CloudkillSpell,
+                        SiroccoSpell,
+                        ElementalBodyIVAirSpell,
+                        ShoutGreaterSpell,
+                        WindsOfVengeanceSpell
                     };
                 });
                 bp.m_AllowNonContextActions = false;
@@ -186,15 +184,15 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.m_CharacterClass = DruidClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
                         new BlueprintAbilityReference(),
-                        SnowballSpell.BlueprintAbilityReference,
-                        SummonElementalSmallBaseSpell.ToReference<BlueprintAbilityReference>(),
-                        CallLightningSpell.ToReference<BlueprintAbilityReference>(),
-                        SlowMudSpell.ToReference<BlueprintAbilityReference>(),
-                        CallLightningStormSpell.ToReference<BlueprintAbilityReference>(),
-                        SiroccoSpell.ToReference<BlueprintAbilityReference>(),
-                        FireStormSpell.ToReference<BlueprintAbilityReference>(),
-                        SunburstSpell.ToReference<BlueprintAbilityReference>(),
-                        TsunamiSpell.ToReference<BlueprintAbilityReference>()
+                        SnowballSpell,
+                        SummonElementalSmallBaseSpell,
+                        CallLightningSpell,
+                        SlowMudSpell,
+                        CallLightningStormSpell,
+                        SiroccoSpell,
+                        FireStormSpell,
+                        SunburstSpell,
+                        TsunamiSpell
                     };
                 });
                 bp.m_AllowNonContextActions = false;
@@ -243,8 +241,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             });
             var WindwalkerFeature = Helpers.CreateBlueprint<BlueprintFeature>("WindwalkerFeature", bp => {
                 bp.SetName("Windwalker");
-                bp.SetDescription("At 4th level, a StormDruid gains a +4 bonus on saving throws to avoid confusion, daze, feeblemind, and insanity effects. She also gains a +4 bonus " +
-                    "against the, spell-like, and supernatural abilities of creatures with the shapechanger subtype.");
+                bp.SetDescription("At 2nd level, a storm druid is unaffected by all light wind and snow effects.");
                 bp.AddComponent<SpecificBuffImmunity>(c => {
                     c.m_Buff = RainLightBuff.ToReference<BlueprintBuffReference>();
                 });
@@ -254,8 +251,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             });
             var EyesOfTheStormFeature = Helpers.CreateBlueprint<BlueprintFeature>("EyesOfTheStormFeature", bp => {
                 bp.SetName("Eyes of the Storm");
-                bp.SetDescription("At 4th level, a StormDruid gains a +4 bonus on saving throws to avoid confusion, daze, feeblemind, and insanity effects. She also gains a +4 bonus " +
-                    "against the, spell-like, and supernatural abilities of creatures with the shapechanger subtype.");
+                bp.SetDescription("At 4th level, a storm druid is unaffected by all moderate wind and snow effects.");
                 bp.AddComponent<SpecificBuffImmunity>(c => {
                     c.m_Buff = SnowModerateBuff.ToReference<BlueprintBuffReference>();
                 });
@@ -265,7 +261,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             });
             var WindlordDomainSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("WindlordDomainSelection", bp => {
                 bp.SetName("Windlords Domain");
-                bp.SetDescription("A storm druid may not choose an animal companion. A storm druid must choose the Air or Weather domain, or the Storm, or Wind subdomain.");
+                bp.SetDescription("At 9th level, a storm druid can select another domain or subdomain from those available to her through her nature bond.");
                 bp.HideInCharacterSheetAndLevelUp = false;
                 bp.HideInUI = false;
                 bp.HideNotAvailibleInUI = false;
@@ -277,8 +273,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             });
             var StormLordFeature = Helpers.CreateBlueprint<BlueprintFeature>("StormLordFeature", bp => {
                 bp.SetName("Storm Lord");
-                bp.SetDescription("At 4th level, a StormDruid gains a +4 bonus on saving throws to avoid confusion, daze, feeblemind, and insanity effects. She also gains a +4 bonus " +
-                    "against the, spell-like, and supernatural abilities of creatures with the shapechanger subtype.");
+                bp.SetDescription("At 13th level, a storm druid is unaffected by all natural and magical wind effects. She gains +2 bonus on saving throws against sonic effects.");
                 bp.AddComponent<SavingThrowBonusAgainstDescriptor>(c => {
                     c.SpellDescriptor = SpellDescriptor.Sonic;
                     c.ModifierDescriptor = ModifierDescriptor.UntypedStackable;
