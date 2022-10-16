@@ -119,6 +119,8 @@ namespace ExpandedContent.Tweaks
                 Domains.WindDomain.AddWindDomain();
                 Domains.BaseDeityPatch.AddBaseDeityPatch();
 
+                Archetypes.StormDruid.AddStormDruid();
+
                 Mysteries.DragonMystery.AddDragonMystery();
 
                 Curses.Vampirism.AddVampirismCurse();

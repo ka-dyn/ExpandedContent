@@ -138,7 +138,12 @@
       "Draconic Scholar": {
         "Enabled": true,
         "Homebrew": true,
-        "Description": "A arcanist archeype most exploits for a drake companion and draconic exploits."
+        "Description": "A arcanist archeype trades most exploits for a drake companion and draconic exploits."
+      },
+      "Storm Druid": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "A druid archeype focused on spontaneous casting of domain spells"
       }
     },
     "IsExpanded": false

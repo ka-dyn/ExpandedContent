@@ -176,6 +176,7 @@
     <Compile Include="Tweaks\Archetypes\Castigator.cs" />
     <Compile Include="Tweaks\Archetypes\DraconicScholar.cs" />
     <Compile Include="Tweaks\Archetypes\DraconicShaman.cs" />
+    <Compile Include="Tweaks\Archetypes\StormDruid.cs" />
     <Compile Include="Tweaks\Archetypes\OceansEcho.cs" />
     <Compile Include="Tweaks\Archetypes\ClutchThief.cs" />
     <Compile Include="Tweaks\Archetypes\ClawOfTheFalseWyrm.cs" />
