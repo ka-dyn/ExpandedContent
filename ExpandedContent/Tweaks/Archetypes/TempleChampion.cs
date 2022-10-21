@@ -992,9 +992,13 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var KnowledgeDomainBaseAbilityConfig = Resources.GetBlueprint<BlueprintAbility>("02a79a205bce6f5419dcdf26b64f13c6").GetComponent<ContextRankConfig>();
             KnowledgeDomainBaseAbilityConfig.m_AdditionalArchetypes = KnowledgeDomainBaseAbilityConfig.m_AdditionalArchetypes.AppendToArray(TempleChampionArchetype.ToReference<BlueprintArchetypeReference>());
             KnowledgeDomainBaseAbilityConfig.m_Class = KnowledgeDomainBaseAbilityConfig.m_Class.AppendToArray(PaladinClass.ToReference<BlueprintCharacterClassReference>());
-            var KnowledgedDomainBaseFeatureConfig = Resources.GetBlueprint<BlueprintFeature>("5335f015063776d429a0b5eab97eb060").GetComponent<AddFeatureOnClassLevel>();
-            KnowledgedDomainBaseFeatureConfig.m_AdditionalClasses = KnowledgedDomainBaseFeatureConfig.m_AdditionalClasses.AppendToArray(PaladinClass.ToReference<BlueprintCharacterClassReference>());
-            KnowledgedDomainBaseFeatureConfig.m_Archetypes = KnowledgedDomainBaseFeatureConfig.m_Archetypes.AppendToArray(TempleChampionArchetype.ToReference<BlueprintArchetypeReference>());
+            var KnowledgedDomainBaseFeatureConfig = Resources.GetBlueprint<BlueprintFeature>("5335f015063776d429a0b5eab97eb060");
+            KnowledgedDomainBaseFeatureConfig.GetComponents<AddFeatureOnClassLevel>().ForEach(c => {
+                c.m_AdditionalClasses = c.m_AdditionalClasses.AppendToArray(PaladinClass.ToReference<BlueprintCharacterClassReference>());
+            });
+            KnowledgedDomainBaseFeatureConfig.GetComponents<AddFeatureOnClassLevel>().ForEach(c => {
+                c.m_Archetypes = c.m_Archetypes.AppendToArray(TempleChampionArchetype.ToReference<BlueprintArchetypeReference>());
+            });
             var KnowledgeDomainBaseResource = Resources.GetBlueprint<BlueprintAbilityResource>("f88f616a4b6bd5f419025115c52cb329");
             KnowledgeDomainBaseResource.m_MaxAmount.m_Class = KnowledgeDomainBaseResource.m_MaxAmount.m_Class.AppendToArray(PaladinClass.ToReference<BlueprintCharacterClassReference>());
             KnowledgeDomainBaseResource.m_MaxAmount.m_Archetypes = KnowledgeDomainBaseResource.m_MaxAmount.m_Archetypes.AppendToArray(TempleChampionArchetype.ToReference<BlueprintArchetypeReference>());

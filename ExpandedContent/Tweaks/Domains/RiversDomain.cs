@@ -99,6 +99,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     c.m_AdditionalArchetypes = new BlueprintArchetypeReference[] { TempleChampionArchetype.ToReference<BlueprintArchetypeReference>() };
                     c.m_Class = new BlueprintCharacterClassReference[] {
                         ClericClass.ToReference<BlueprintCharacterClassReference>(),
+                        DruidClass.ToReference<BlueprintCharacterClassReference>(),
                         InquisitorClass.ToReference<BlueprintCharacterClassReference>(),
                         HunterClass.ToReference<BlueprintCharacterClassReference>(),
                         PaladinClass.ToReference<BlueprintCharacterClassReference>()
@@ -431,7 +432,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     }
                 };
                 bp.LevelEntries = new LevelEntry[] {
-                    Helpers.LevelEntry(1, RiversDomainBaseFeature),
+                    Helpers.LevelEntry(1, RiversDomainBaseFeature, RiversDomainSpellListFeatureDruid),
                     Helpers.LevelEntry(6, WaterDomainGreaterFeature),
                     Helpers.LevelEntry(12, WaterDomainGreaterFeature),
                     Helpers.LevelEntry(20, WaterDomainCapstone)

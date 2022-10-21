@@ -352,7 +352,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     c.m_CharacterClass = DruidClass.ToReference<BlueprintCharacterClassReference>();
                     c.Level = 1;
                 });
-                bp.Groups = new FeatureGroup[] { FeatureGroup.DruidDomain, FeatureGroup.BlightDruidDomain };
+                bp.Groups = new FeatureGroup[] { FeatureGroup.BlightDruidDomain };
                 bp.IsClassFeature = true;
                 bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
                     new BlueprintProgression.ClassWithLevel {
@@ -361,7 +361,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     }
                 };
                 bp.LevelEntries = new LevelEntry[] {
-                    Helpers.LevelEntry(1, RageDomainBaseFeature),
+                    Helpers.LevelEntry(1, RageDomainBaseFeature, RageDomainSpellListFeatureDruid),
                     Helpers.LevelEntry(8, RageFeature, RageDomainExtraRage, RageDomainExtraRage, RageDomainExtraRage, RageDomainExtraRage, RageDomainExtraRage, RageDomainExtraRage),
                     Helpers.LevelEntry(9, RageDomainExtraRage),
                     Helpers.LevelEntry(10, RageDomainExtraRage),

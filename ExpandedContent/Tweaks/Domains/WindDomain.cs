@@ -377,7 +377,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     }
                 };
                 bp.LevelEntries = new LevelEntry[] {
-                    Helpers.LevelEntry(1, WindDomainBaseFeature),
+                    Helpers.LevelEntry(1, WindDomainBaseFeature,WindDomainSpellListFeatureDruid),
                     Helpers.LevelEntry(6, AirDomainGreaterFeature),
                     Helpers.LevelEntry(12, AirDomainGreaterFeature),
                     Helpers.LevelEntry(20, AirDomainCapstone)

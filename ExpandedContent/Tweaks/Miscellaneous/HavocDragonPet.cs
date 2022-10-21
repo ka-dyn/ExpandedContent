@@ -136,6 +136,8 @@ namespace ExpandedContent.Tweaks.Miscellaneous {
                 bp.AddComponent<PrerequisitePet>(c => { c.NoCompanion = true; });
             });
 
+            //Seems to work
+            //var CleaveMythicFeature = Resources.GetBlueprint<BlueprintFeature>("2ced576e-5eb4-48f2-93cf-502f338ee5d0");
 
             if (ModSettings.AddedContent.AivuPet.IsDisabled("AivuPet")) { return; }
             AnimalCompanionSelectionBase.m_AllFeatures = AnimalCompanionSelectionBase.m_AllFeatures.AppendToArray(HavocDragonPetMedium.ToReference<BlueprintFeatureReference>(), HavocDragonPetLarge.ToReference<BlueprintFeatureReference>());

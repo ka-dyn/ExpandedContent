@@ -7,13 +7,8 @@ using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.Blueprints.Root;
 
-namespace ExpandedContent.Tweaks
-{
+namespace ExpandedContent.Tweaks {
     class ContentAdder {
-
-
-
-
         [HarmonyPatch(typeof(BlueprintsCache), "Init")]
         static class BlueprintsCache_Init_Patch {
             static bool Initialized;
@@ -40,6 +35,8 @@ namespace ExpandedContent.Tweaks
 
                 Miscellaneous.AlignmentTemplates.AddFiendishTemplate();
                 Miscellaneous.Cavalier.AddCavalierFeatures();
+
+                Domains.BaseDomainDruidPatch.AddBaseDomainDruidPatch();
              
                 Archetypes.LivingScripture.AddLivingScripture();
                 Archetypes.PriestOfBalance.PatchPriestOfBalanceArchetype();
@@ -308,13 +305,11 @@ namespace ExpandedContent.Tweaks
                 Deities.DeitySelectionFeature.MonitorsToggle();
                 Deities.DeitySelectionFeature.TheElderMythosToggle();
                 Deities.DeitySelectionFeature.OrcPantheonToggle();
-
+            }
+            [HarmonyPriority(Priority.Last)]
+            [HarmonyPostfix]
+            public static void PatchAfter() {
                 Miscellaneous.HavocDragonPet.AddHavocDragonPet();
-
-
-
-
-
             }
         }
     }

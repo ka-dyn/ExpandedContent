@@ -397,7 +397,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     c.m_CharacterClass = DruidClass.ToReference<BlueprintCharacterClassReference>();
                     c.Level = 1;
                 });
-                bp.Groups = new FeatureGroup[] { FeatureGroup.DruidDomain, FeatureGroup.BlightDruidDomain };
+                bp.Groups = new FeatureGroup[] { FeatureGroup.BlightDruidDomain };
                 bp.IsClassFeature = true;
                 bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
                     new BlueprintProgression.ClassWithLevel {
