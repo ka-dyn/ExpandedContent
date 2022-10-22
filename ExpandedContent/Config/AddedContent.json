@@ -144,6 +144,11 @@
         "Enabled": true,
         "Homebrew": false,
         "Description": "A druid archeype focused on spontaneous casting of domain spells"
+      },
+      "Urban Druid": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "A druid archeype focused on spontaneous casting of domain spells"
       }
     },
     "IsExpanded": false

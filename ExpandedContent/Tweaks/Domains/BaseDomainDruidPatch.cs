@@ -41,7 +41,8 @@ namespace ExpandedContent.Tweaks.Domains {
                     c.m_CharacterClass = DruidClass;
                     c.Level = 1;
                 });
-                bp.Groups = new FeatureGroup[] {};
+                bp.m_AllowNonContextActions = false;
+                bp.Groups = new FeatureGroup[] { FeatureGroup.DruidDomain };
                 bp.IsClassFeature = true;
                 bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
                     new BlueprintProgression.ClassWithLevel {
@@ -61,7 +62,7 @@ namespace ExpandedContent.Tweaks.Domains {
             //Community
             var CommunityDomainBaseFeature = Resources.GetBlueprintReference<BlueprintFeatureReference>("102d61a114786894bb2b30568943ef1f");
             var CommunityDomainGreaterFeature = Resources.GetBlueprintReference<BlueprintFeatureReference>("4cddbb24833e1d24ea1ff0f59574284a");
-            var CommunityDomainSpellList = Resources.GetBlueprintReference<BlueprintSpellListReference>("e4375aee61487fc4ba8f23159102dfd8");
+            var CommunityDomainSpellList = Resources.GetBlueprintReference<BlueprintSpellListReference>("75576ed8cab010644a11f9ecd512a7f9");
             var CommunityDomainSpellListFeatureDruid = Helpers.CreateBlueprint<BlueprintFeature>("CommunityDomainSpellListFeatureDruid", bp => {
                 bp.AddComponent<AddSpecialSpellList>(c => {
                     c.m_CharacterClass = DruidClass;
@@ -86,7 +87,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     c.m_CharacterClass = DruidClass;
                     c.Level = 1;
                 });
-                bp.Groups = new FeatureGroup[] { };
+                bp.Groups = new FeatureGroup[] { FeatureGroup.DruidDomain };
                 bp.IsClassFeature = true;
                 bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
                     new BlueprintProgression.ClassWithLevel {
@@ -132,7 +133,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     c.m_CharacterClass = DruidClass;
                     c.Level = 1;
                 });
-                bp.Groups = new FeatureGroup[] { };
+                bp.Groups = new FeatureGroup[] { FeatureGroup.DruidDomain };
                 bp.IsClassFeature = true;
                 bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
                     new BlueprintProgression.ClassWithLevel {
@@ -177,7 +178,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     c.m_CharacterClass = DruidClass;
                     c.Level = 1;
                 });
-                bp.Groups = new FeatureGroup[] { };
+                bp.Groups = new FeatureGroup[] {FeatureGroup.DruidDomain };
                 bp.IsClassFeature = true;
                 bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
                     new BlueprintProgression.ClassWithLevel {
@@ -223,7 +224,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     c.m_CharacterClass = DruidClass;
                     c.Level = 1;
                 });
-                bp.Groups = new FeatureGroup[] { };
+                bp.Groups = new FeatureGroup[] {FeatureGroup.DruidDomain };
                 bp.IsClassFeature = true;
                 bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
                     new BlueprintProgression.ClassWithLevel {
@@ -268,7 +269,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     c.m_CharacterClass = DruidClass;
                     c.Level = 1;
                 });
-                bp.Groups = new FeatureGroup[] { };
+                bp.Groups = new FeatureGroup[] {FeatureGroup.DruidDomain };
                 bp.IsClassFeature = true;
                 bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
                     new BlueprintProgression.ClassWithLevel {
@@ -314,7 +315,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     c.m_CharacterClass = DruidClass;
                     c.Level = 1;
                 });
-                bp.Groups = new FeatureGroup[] { };
+                bp.Groups = new FeatureGroup[] {FeatureGroup.DruidDomain };
                 bp.IsClassFeature = true;
                 bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
                     new BlueprintProgression.ClassWithLevel {

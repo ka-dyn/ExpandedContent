@@ -50,6 +50,7 @@ namespace ExpandedContent.Tweaks {
                 Archetypes.OceansEcho.AddOceansEcho();
                 Archetypes.DraconicShaman.AddDraconicShaman();
                 Archetypes.DraconicScholar.AddDraconicScholar();
+                Archetypes.UrbanDruid.AddUrbanDruid();
 
                 Classes.OathbreakerClass.AddOathbreakerClass();
                 Archetypes.Castigator.AddCastigator();

@@ -43,11 +43,11 @@ namespace ExpandedContent.Tweaks.Archetypes {
         public static void AddStormDruid() {
 
             var DruidClass = Resources.GetBlueprint<BlueprintCharacterClass>("610d836f3a3a9ed42a4349b62f002e96");
-            var DruidBondSelection = Resources.GetBlueprint<BlueprintFeature>("3830f3630a33eba49b60f511b4c8f2a8");
-            var WoodlandStrideFeature = Resources.GetBlueprint<BlueprintFeature>("11f4072ea766a5840a46e6660894527d");
-            var DruidSpontaneousSummonFeature = Resources.GetBlueprint<BlueprintFeature>("b296531ffe013c8499ad712f8ae97f6b");
-            var VenomImmunityFeature = Resources.GetBlueprint<BlueprintFeature>("5078622eb5cecaf4683fa16a9b948c2c");
-            var ResistNaturesLureFeature = Resources.GetBlueprint<BlueprintFeature>("ad6a5b0e1a65c3540986cf9a7b006388");
+            var DruidBondSelection = Resources.GetBlueprintReference<BlueprintFeatureReference>("3830f3630a33eba49b60f511b4c8f2a8");
+            var WoodlandStrideFeature = Resources.GetBlueprintReference<BlueprintFeatureReference>("11f4072ea766a5840a46e6660894527d");
+            var DruidSpontaneousSummonFeature = Resources.GetBlueprintReference<BlueprintFeatureReference>("b296531ffe013c8499ad712f8ae97f6b");
+            var VenomImmunityFeature = Resources.GetBlueprintReference<BlueprintFeatureReference>("5078622eb5cecaf4683fa16a9b948c2c");
+            var ResistNaturesLureFeature = Resources.GetBlueprintReference<BlueprintFeatureReference>("ad6a5b0e1a65c3540986cf9a7b006388");
             var AirDomainProgressionDruid = Resources.GetBlueprint<BlueprintProgression>("3aef017b78329db4fa53fe8560069886");
             var WeatherDomainProgressionDruid = Resources.GetBlueprint<BlueprintProgression>("4a3516fdc4cda764ebd1279b22d10205");
             var StormDomainProgressionDruid = Resources.GetModBlueprint<BlueprintProgression>("StormDomainProgressionDruid");
@@ -60,7 +60,6 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var SnowHeavyBuff = Resources.GetBlueprint<BlueprintBuff>("4a15ab872f11463da1c1265d5b4324ad");
             var SnowLightBuff = Resources.GetBlueprint<BlueprintBuff>("26d8835510914ca2a8fe74b1519c09ac");
 
-
             var StormDruidArchetype = Helpers.CreateBlueprint<BlueprintArchetype>("StormDruidArchetype", bp => {
                 bp.LocalizedName = Helpers.CreateString($"StormDruidArchetype.Name", "Storm Druid");
                 bp.LocalizedDescription = Helpers.CreateString($"StormDruidArchetype.Description", "While most druids focus their attention upon the rich earth and the bounty of " +
@@ -68,8 +67,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     "untamed aspects of nature.");
                 bp.LocalizedDescriptionShort = Helpers.CreateString($"StormDruidArchetype.Description", "While most druids focus their attention upon the rich earth and the " +
                     "bounty of nature that springs forth from it, the storm druid’s eyes have ever been cast to the skies and the endless expanse of blue, channeling the " +
-                    "most raw and untamed aspects of nature.");
-                
+                    "most raw and untamed aspects of nature.");                
             });
             //Spell Bank
             var CallLightningSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("2a9ef0e0b5822a24d88b16673a267456");
@@ -248,6 +246,8 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.AddComponent<SpecificBuffImmunity>(c => {
                     c.m_Buff = SnowLightBuff.ToReference<BlueprintBuffReference>();
                 });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
             });
             var EyesOfTheStormFeature = Helpers.CreateBlueprint<BlueprintFeature>("EyesOfTheStormFeature", bp => {
                 bp.SetName("Eyes of the Storm");
@@ -257,7 +257,9 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 });
                 bp.AddComponent<SpecificBuffImmunity>(c => {
                     c.m_Buff = RainModerate.ToReference<BlueprintBuffReference>();
-                });                          
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
             });
             var WindlordDomainSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("WindlordDomainSelection", bp => {
                 bp.SetName("Windlords Domain");
@@ -289,6 +291,8 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.AddComponent<SpecificBuffImmunity>(c => {
                     c.m_Buff = SnowHeavyBuff.ToReference<BlueprintBuffReference>();
                 });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
             });
             StormDruidArchetype.RemoveFeatures = new LevelEntry[] {
                     Helpers.LevelEntry(1, DruidBondSelection, DruidSpontaneousSummonFeature),
