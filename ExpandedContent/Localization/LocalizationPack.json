@@ -10,6 +10,7 @@
       "Key": "9790ac745aaa44ed97d1207857a5442c",
       "SimpleName": "$DreadKnightChannelNegativeEnergyAbility.DescriptionShort",
       "ProcessTemplates": false,
+      "IsUsed": false,
       "enGB": "Channeling negative energy causes a burst that heals every undead creature in a 30-foot radius centered on the Dread Knight. The amount of damage healed is equal to 1d6 points of damage plus 1d6 points of damage for every two Dread Knight levels beyond 1st (2d6 at 3rd, 3d6 at 5th, and so on)."
     },
     {
@@ -56,16 +57,16 @@
       "enGB": "Once per day, a dreadknight can reach out to the profane lords to grant sinful absolution to the forces arrayed against them. As a swift action, the dreadknight chooses one target within sight to crush. The dreadknight adds their Charisma bonus (if any) on their attack rolls and adds their dreadknight level on all damage rolls made against the target of their unholy smite. Regardless of the target, sinful absolution attacks automatically bypass any DR the creature might possess. In addition, while Sinful Absolution is in effect, the dreadknight gains a deflection bonus equal to their Charisma modifier(if any) to their AC against attacks made by the target of sinful absolution."
     },
     {
-      "Key": "caa10bd594a24eb192670bf6289cab8a",
-      "SimpleName": "$TouchOfProfaneCorruptionFeature.DescriptionShort",
-      "ProcessTemplates": false,
-      "enGB": "Beginning at 7th level as a swift action, a dreadknight can spend two uses of their touch of profane corruption to surround their weapon with a profane flame, causing terrible wounds to open on those they attacks. This ability works with any weapon."
-    },
-    {
       "Key": "a21570d8a87645adbcc9b95ed420216d",
       "SimpleName": "$TouchOfProfaneCorruptionFeature.DescriptionShort",
       "ProcessTemplates": false,
       "enGB": "Beginning at 2nd level, a dreadknight can surround her hand with a profane flame, causing terrible wounds to open on those she touches. Alternatively, a dreadknight can use this power to heal undead creatures."
+    },
+    {
+      "Key": "caa10bd594a24eb192670bf6289cab8a",
+      "SimpleName": "$TouchOfProfaneCorruptionFeature.DescriptionShort",
+      "ProcessTemplates": false,
+      "enGB": "Beginning at 7th level as a swift action, a dreadknight can spend two uses of their touch of profane corruption to surround their weapon with a profane flame, causing terrible wounds to open on those they attacks. This ability works with any weapon."
     },
     {
       "Key": "dd8c0bee59ea466b9f9a584af23aa32e",
@@ -144,6 +145,7 @@
       "Key": "5d9f9bc653ac4408b471657f86002042",
       "SimpleName": "AirInvokeDeityAbility.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "By holding aloft a holy symbol and calling your deity’s name, you take on an aspect of that divinity. When you cast this spell, choose a domain offered by your deity. You gain that domain’s benefits, along with the listed physical changes; abilities that allow a saving throw use this spell’s DC. \nAir: Increase your current speed by 30 feet and gain a +1 dodge bonus to your AC."
     },
     {
@@ -186,6 +188,7 @@
       "Key": "c3c56e34d2064aa1b500422fe7888cb3",
       "SimpleName": "AnimalInvokeDeityAbility.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "By holding aloft a holy symbol and calling your deity’s name, you take on an aspect of that divinity. When you cast this spell, choose a domain offered by your deity. You gain that domain’s benefits, along with the listed physical changes; abilities that allow a saving throw use this spell’s DC. \nAnimal: You gain low-light vision, scent, a +6 natural armor bonus, and a bite attack that deals damage as normal for a creature of your size."
     },
     {
@@ -401,6 +404,7 @@
       "Key": "1c9f6f305a134239a7d4b185598fc13a",
       "SimpleName": "ArtificeInvokeDeityAbility.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "By holding aloft a holy symbol and calling your deity’s name, you take on an aspect of that divinity. When you cast this spell, choose a domain offered by your deity. You gain that domain’s benefits, along with the listed physical changes; abilities that allow a saving throw use this spell’s DC. \nArtifice: You are immune to bleed, disease, and poison effects, and you gain a +4 bonus on saving throws against death effects, mind-affecting effects, and necromancy effects."
     },
     {
@@ -861,15 +865,15 @@
       "enGB": "Payback"
     },
     {
-      "Key": "86125955dbd447829e29b6b38c9f0535",
-      "SimpleName": "CastigatorVengeance.Description",
-      "ProcessTemplates": true,
-      "enGB": "At 4th level, a castigator can make an additional number of attacks of opportunity in a round equal to their Charisma modifier (minimum 1). This effect stacks with the Combat Reflexes feat."
-    },
-    {
       "Key": "2f91fdfbde3c4bc78942800497c111bd",
       "SimpleName": "CastigatorVengeance.Description",
       "ProcessTemplates": false,
+      "enGB": "At 4th level, a castigator can make an additional number of attacks of opportunity in a round equal to their Charisma modifier (minimum 1). This effect stacks with the Combat Reflexes feat."
+    },
+    {
+      "Key": "86125955dbd447829e29b6b38c9f0535",
+      "SimpleName": "CastigatorVengeance.Description",
+      "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "At 4th level, a castigator can make an additional number of attacks of opportunity in a round equal to their Charisma modifier (minimum 1). This effect stacks with the Combat Reflexes feat."
     },
@@ -983,6 +987,7 @@
       "Key": "00aa6fff497c44b6af15959efb8d57b5",
       "SimpleName": "ChaosInvokeDeityAbility.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "By holding aloft a holy symbol and calling your deity’s name, you take on an aspect of that divinity. When you cast this spell, choose a domain offered by your deity. You gain that domain’s benefits, along with the listed physical changes; abilities that allow a saving throw use this spell’s DC. \nChaos: You are immune to additional damage from critical hits and precision damage (such as sneak attack damage), and weapons you wield count as chaotic for the purpose of overcoming damage reduction."
     },
     {
@@ -996,6 +1001,12 @@
       "SimpleName": "ChaosInvokeDeityBuff.Name",
       "ProcessTemplates": false,
       "enGB": "Invoke Deity - Chaos Domain"
+    },
+    {
+      "Key": "cb72125c5fd84b768c11a6992b9b946b",
+      "SimpleName": "CharmDomainBaseFeatureDruid.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nYou can baffle and befuddle foes with a touch or a smile, and your beauty and grace are divine. Dazing Touch: You can cause a living creature to become dazed for 1 round as a melee touch attack. Creatures with more Hit Dice than your level in the class that gave you access to this domain are unaffected. You can use this ability a number of times per day equal to 3 + your Wisdom modifier. Charming Smile: At 8th level, you can cast charm person as a swift action, with a DC of 10 + 1/2 your level in the class that gave you access to this domain + your Wisdom modifier. The effect of charm person lasts for 1 round. You can use this ability a number of times per day equal to your caster level."
     },
     {
       "Key": "ee9f941fe17a463982b189da267efdcc",
@@ -1013,6 +1024,7 @@
       "Key": "fcdf93d5218b45368ffeb56ce683afbf",
       "SimpleName": "CharmInvokeDeityAbility.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "By holding aloft a holy symbol and calling your deity’s name, you take on an aspect of that divinity. When you cast this spell, choose a domain offered by your deity. You gain that domain’s benefits, along with the listed physical changes; abilities that allow a saving throw use this spell’s DC. \nCharm: You gain a +6 enhancement bonus to Charisma."
     },
     {
@@ -1106,6 +1118,12 @@
       "enGB": "Shared Outflank Feat"
     },
     {
+      "Key": "fb2e4fecffe2459f81d16f82dffa1210",
+      "SimpleName": "CommunityDomainBaseFeatureDruid.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nYour touch can heal wounds, and your presence instills unity and strengthens emotional bonds. Calming Touch: You can touch a creature as a standard action to heal it of 1d6 points of damage + 1 point per level in the class that gave you access to this domain. This touch also removes the fatigued, shaken, and sickened conditions (but has no effect on more severe conditions). You can use this ability a number of times per day equal to 3 + your Wisdom modifier. Guarded Hearth: At 8th level, you can create a ward that protects a specified area. Creating this ward is a full-round action. All friendly creatures in the area receive a resistance bonus equal to your Wisdom modifier on all saving throws and an equal competence bonus on attack rolls while inside the warded area. The ward lasts for 1 hour per level in the class that gave you access to this domain. You can use this ability once per day."
+    },
+    {
       "Key": "03e861cfdc154e849df85bd6ae3fdb11",
       "SimpleName": "CommunityDomainProgressionDruid.Description",
       "ProcessTemplates": true,
@@ -1121,12 +1139,14 @@
       "Key": "53038dd9e9d74f1bae00b8a5d121df0a",
       "SimpleName": "CommunityInvokeDeityAbility.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "By holding aloft a holy symbol and calling your deity’s name, you take on an aspect of that divinity. When you cast this spell, choose a domain offered by your deity. You gain that domain’s benefits, along with the listed physical changes; abilities that allow a saving throw use this spell’s DC. \nCommunity: You give a sacred +2 will save bonus to all allies within 30 feet."
     },
     {
       "Key": "95a3dc09e59d4340993eb805b6afd5d3",
       "SimpleName": "CommunityInvokeDeityAreaBuff.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "By holding aloft a holy symbol and calling your deity’s name, you take on an aspect of that divinity. When you cast this spell, choose a domain offered by your deity. You gain that domain’s benefits, along with the listed physical changes; abilities that allow a saving throw use this spell’s DC. \nCommunity: You give a sacred +2 will save bonus to all allies within 30 feet."
     },
     {
@@ -1180,16 +1200,16 @@
       "enGB": "Conqueror"
     },
     {
-      "Key": "ffbd05fa7c3843f9a96165dbf5705983",
-      "SimpleName": "ConquerorInspiredageFeature.Description",
-      "ProcessTemplates": false,
-      "enGB": "At 7th level, the conqueror's commandments warp the minds of those who accept them even further."
-    },
-    {
       "Key": "9197b62c357f4051b3b7df813d06f88d",
       "SimpleName": "ConquerorInspiredageFeature.Description",
       "ProcessTemplates": false,
       "enGB": "At 1st level, a conqueror receives the ability to incite rage in those he rules over, as the skald inspired rage class feature."
+    },
+    {
+      "Key": "ffbd05fa7c3843f9a96165dbf5705983",
+      "SimpleName": "ConquerorInspiredageFeature.Description",
+      "ProcessTemplates": false,
+      "enGB": "At 7th level, the conqueror's commandments warp the minds of those who accept them even further."
     },
     {
       "Key": "0160ab7b5c884199a1047c169ecc1d34",
@@ -1611,6 +1631,7 @@
       "Key": "bd0ff0bfbc7149b4bd78efb49ef8afca",
       "SimpleName": "DarknessInvokeDeityAbility.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "By holding aloft a holy symbol and calling your deity’s name, you take on an aspect of that divinity. When you cast this spell, choose a domain offered by your deity. You gain that domain’s benefits, along with the listed physical changes; abilities that allow a saving throw use this spell’s DC. \nDarkness: You gain the effects of the improved blind fight feat and are immune to blindness effects."
     },
     {
@@ -1653,6 +1674,7 @@
       "Key": "c1f588610fd8479a9a140adf76b9642e",
       "SimpleName": "DeathInvokeDeityAbility.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "By holding aloft a holy symbol and calling your deity’s name, you take on an aspect of that divinity. When you cast this spell, choose a domain offered by your deity. You gain that domain’s benefits, along with the listed physical changes; abilities that allow a saving throw use this spell’s DC. \nDeath: You gain resistance 30 to positive and negative energy that would harm you, you are also immune to energy drain and death effects."
     },
     {
@@ -1788,6 +1810,7 @@
       "Key": "dbab5fb83ea64bcab48495205576dbf9",
       "SimpleName": "DestructionInvokeDeityAbility.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "By holding aloft a holy symbol and calling your deity’s name, you take on an aspect of that divinity. When you cast this spell, choose a domain offered by your deity. You gain that domain’s benefits, along with the listed physical changes; abilities that allow a saving throw use this spell’s DC. \nDestruction: You gain a +2 bonus on damage rolls with melee weapons, spells you cast from the evocation spell school have their save DCs (if any) increased by 1, and your attacks against enemies with the construct type deal an additional 1d6 points of force damage."
     },
     {
@@ -1920,17 +1943,17 @@
       "enGB": "The arcanist can expend 3 points from their arcane reservoir to remove the cooldown on a drakes breath attack weapon. All draconic exploits can only target ally drakes and once a drake is targeted by a exploit it cannot benefit from another for 1 minute."
     },
     {
+      "Key": "5ae0ffde6bbe4ac680183aecb14a2dbb",
+      "SimpleName": "DraconicExploitCooldown.Description",
+      "ProcessTemplates": true,
+      "enGB": "Targeted by draconic exploits within 1 minute."
+    },
+    {
       "Key": "64b983e112ca43afa13d0aa2beeb779d",
       "SimpleName": "DraconicExploitCooldown.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "Targeted by draconic exploits used within 1 minute."
-    },
-    {
-      "Key": "5ae0ffde6bbe4ac680183aecb14a2dbb",
-      "SimpleName": "DraconicExploitCooldown.Description",
-      "ProcessTemplates": true,
-      "enGB": "Targeted by draconic exploits within 1 minute."
     },
     {
       "Key": "089db77d8c014fd2a1c1476ece2f2ab4",
@@ -3137,6 +3160,7 @@
       "Key": "6e6ac04c393948fcbef347aa3cbde8fa",
       "SimpleName": "EarthInvokeDeityAbility.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "By holding aloft a holy symbol and calling your deity’s name, you take on an aspect of that divinity. When you cast this spell, choose a domain offered by your deity. You gain that domain’s benefits, along with the listed physical changes; abilities that allow a saving throw use this spell’s DC. \nEarth: You gain DR 10/bludgeoning and are immune to petrification effects."
     },
     {
@@ -3204,6 +3228,7 @@
       "Key": "e71786eccd5241bda7d1318169b5a872",
       "SimpleName": "EvilInvokeDeityAbility.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "By holding aloft a holy symbol and calling your deity’s name, you take on an aspect of that divinity. When you cast this spell, choose a domain offered by your deity. You gain that domain’s benefits, along with the listed physical changes; abilities that allow a saving throw use this spell’s DC. \nEvil: You automatically confirm critical hits, and weapons you wield count as evil for the purpose of overcoming damage reduction."
     },
     {
@@ -3404,6 +3429,7 @@
       "Key": "247a1b1c3c4348d686c75aea37f381e3",
       "SimpleName": "FireInvokeDeityAbility.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "By holding aloft a holy symbol and calling your deity’s name, you take on an aspect of that divinity. When you cast this spell, choose a domain offered by your deity. You gain that domain’s benefits, along with the listed physical changes; abilities that allow a saving throw use this spell’s DC. \nFire: You gain fire resistance 30, and as a standard action, you can fire a ray of flame, as per scorching ray (limit one ray) once per round."
     },
     {
@@ -3524,6 +3550,7 @@
       "Key": "60841d310e574b37a172c9d3e9fb1d22",
       "SimpleName": "GloryInvokeDeityAbility.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "By holding aloft a holy symbol and calling your deity’s name, you take on an aspect of that divinity. When you cast this spell, choose a domain offered by your deity. You gain that domain’s benefits, along with the listed physical changes; abilities that allow a saving throw use this spell’s DC. \nGlory: You gain the benefits of heroism and protection from evil, and your first successful attack each round against an undead target deals an additional 1d6 points of positive energy damage."
     },
     {
@@ -3566,6 +3593,7 @@
       "Key": "dabbeb07f51f478da8e5bb6d297402ff",
       "SimpleName": "GoodInvokeDeityAbility.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "By holding aloft a holy symbol and calling your deity’s name, you take on an aspect of that divinity. When you cast this spell, choose a domain offered by your deity. You gain that domain’s benefits, along with the listed physical changes; abilities that allow a saving throw use this spell’s DC. \nGood: You are immune to fear and compulsion effects, and weapons you wield count as good for the purpose of overcoming damage reduction."
     },
     {
@@ -3656,6 +3684,7 @@
       "Key": "cfb71888cb384ad2ba0c5e0eb1465ad2",
       "SimpleName": "HealingInvokeDeityAbility.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "By holding aloft a holy symbol and calling your deity’s name, you take on an aspect of that divinity. When you cast this spell, choose a domain offered by your deity. You gain that domain’s benefits, along with the listed physical changes; abilities that allow a saving throw use this spell’s DC. \nHealing: You gain fast healing 3. Your spells and class features that have the Cure spell descriptor, along with channeling energy to heal, have their caster level raised by 2."
     },
     {
@@ -3686,6 +3715,7 @@
       "Key": "8439e022d08e44f6ae71053e83a77410",
       "SimpleName": "HellknightSigniferDreadknightLevelUp.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "At 1st level, and at every level thereafter, a Hellknight signifer gains new spells per day as if he had also gained a level in a spellcasting class he belonged to before adding the prestige class. He does not, however, gain any other benefit a character of that class would have gained, except for additional spells per day, spells known, and an increased effective level of spellcasting. If a character had more than one spellcasting class before becoming a Hellknight signifer, he must decide to which class he adds the new level for purposes of determining spells per day."
     },
     {
@@ -4046,6 +4076,12 @@
       "enGB": "Khepri"
     },
     {
+      "Key": "04c66d3e24e74140b3993e55f1a5cdb4",
+      "SimpleName": "KnowledgeDomainBaseFeatureDruid.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nYou are a scholar and a sage of legends. In addition, you treat all Knowledge and Lore skills as class skills. Void Form: You can become semi-tangible as a standard action. While in this form, you are immune to critical hits and gain a +1 deflection bonus to AC. This bonus increases by 1 at 8th level and every 4 levels thereafter. You can use this power a number of rounds per day equal to your level in the class that gave you access to this domain. Teaching Moment: At 8th level as a swift action you can grant all allies within 30 feet special insights. Once during the next minute, each affected creature can choose to roll twice and take the better result before attempting an attack roll, ability check, skill check, or saving throw. You can use this ability once per day at 8th level, and one additional time per day for every 4 levels in the class that gave you access to this domain beyond 8th."
+    },
+    {
       "Key": "202a55c7a5b24b339f27cbb5543fee1c",
       "SimpleName": "KnowledgeDomainProgressionDruid.Description",
       "ProcessTemplates": true,
@@ -4061,6 +4097,7 @@
       "Key": "5a317e5c52a24a7aade5ed29bc75227a",
       "SimpleName": "KnowledgeInvokeDeityAbility.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "By holding aloft a holy symbol and calling your deity’s name, you take on an aspect of that divinity. When you cast this spell, choose a domain offered by your deity. You gain that domain’s benefits, along with the listed physical changes; abilities that allow a saving throw use this spell’s DC. \nKnowledge: You gain a +6 enhancement bonus to Intelligence."
     },
     {
@@ -4163,6 +4200,7 @@
       "Key": "a29e08f2f19a44a2a020e86869f7eeda",
       "SimpleName": "LawInvokeDeityAbility.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "By holding aloft a holy symbol and calling your deity’s name, you take on an aspect of that divinity. When you cast this spell, choose a domain offered by your deity. You gain that domain’s benefits, along with the listed physical changes; abilities that allow a saving throw use this spell’s DC. \nLaw: You are immune to confusion effects, gain a +4 bonus on saving throws against transmutation spells, and weapons you wield count as lawful for the purpose of overcoming damage reduction."
     },
     {
@@ -4181,6 +4219,7 @@
       "Key": "4ca806a100044c338f88fad4f8a4f425",
       "SimpleName": "LiberationInvokeDeityAbility.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "By holding aloft a holy symbol and calling your deity’s name, you take on an aspect of that divinity. When you cast this spell, choose a domain offered by your deity. You gain that domain’s benefits, along with the listed physical changes; abilities that allow a saving throw use this spell’s DC. \nLiberation: You gain a +6 enhancement bonus to Dexterity."
     },
     {
@@ -4230,6 +4269,7 @@
       "Key": "8893093462ae4cb4bb75b39fb52a524b",
       "SimpleName": "LuckInvokeDeityAbility.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "By holding aloft a holy symbol and calling your deity’s name, you take on an aspect of that divinity. When you cast this spell, choose a domain offered by your deity. You gain that domain’s benefits, along with the listed physical changes; abilities that allow a saving throw use this spell’s DC. \nLuck: You gain a +1 luck bonus to your AC and on attack rolls, ability checks, saving throws, and skill checks."
     },
     {
@@ -4272,6 +4312,7 @@
       "Key": "cb26c7946c4847c588aff3e4ac5b912c",
       "SimpleName": "MadnessInvokeDeityAbility.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "By holding aloft a holy symbol and calling your deity’s name, you take on an aspect of that divinity. When you cast this spell, choose a domain offered by your deity. You gain that domain’s benefits, along with the listed physical changes; abilities that allow a saving throw use this spell’s DC. \nMadness: As a move action, you can issue one order to a single creature to halt. This effect functions as if you had cast the spell command."
     },
     {
@@ -4290,6 +4331,7 @@
       "Key": "61574e9e61034931815be87540e052a1",
       "SimpleName": "MadnessInvokeDeityBuffAbility.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "The subject stands in place for 1 round. It may not take any actions but is not considered helpless. If the subject can't carry out your command on its next turn, the spell automatically fails.\nThis ability takes a Move action."
     },
     {
@@ -4338,6 +4380,7 @@
       "Key": "d00c71a8e2254e7ea8de0ed658eab46f",
       "SimpleName": "MagicInvokeDeityAbility.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "By holding aloft a holy symbol and calling your deity’s name, you take on an aspect of that divinity. When you cast this spell, choose a domain offered by your deity. You gain that domain’s benefits, along with the listed physical changes; abilities that allow a saving throw use this spell’s DC. \nMagic: You gain spell resistance equal to 11 + your caster level."
     },
     {
@@ -4653,6 +4696,12 @@
       "enGB": "Night Sight"
     },
     {
+      "Key": "c171a42d0b424b629068b29b04f135eb",
+      "SimpleName": "NobilityDomainBaseFeatureDruid.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nYou are a great leader, an inspiration to all who follow the teachings of your faith. Inspiring Word: As a standard action, you can speak an inspiring word to a creature within 30 feet. That creature receives a +2 morale bonus on attack rolls, skill checks, ability checks, and saving throws for a number of rounds equal to 1/2 your level in the class that gave you access to this domain (minimum 1). You can use this power a number of times per day equal to 3 + your Wisdom modifier. Inspiring Command: At 8th level, you can issue an inspiring command to your allies, who must all be within 30 feet of you. Affected allies gain a +2 insight bonus on attack rolls, AC, Combat Maneuver Defense, and skill checks for a number of rounds equal to 1/2 your level in the class that gave you access to this domain (minimum 1). You can use this power a number of times per day equal to 3 + your Wisdom modifier."
+    },
+    {
       "Key": "c43208c5d4c44c368a1add560d495dcb",
       "SimpleName": "NobilityDomainProgressionDruid.Description",
       "ProcessTemplates": true,
@@ -4668,6 +4717,7 @@
       "Key": "16b98ebf727f4d1f9384452cb8ba73a0",
       "SimpleName": "NobilityInvokeDeityAbility.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "By holding aloft a holy symbol and calling your deity’s name, you take on an aspect of that divinity. When you cast this spell, choose a domain offered by your deity. You gain that domain’s benefits, along with the listed physical changes; abilities that allow a saving throw use this spell’s DC. \nNobility: As a move action, you can issue one order to a single creature to halt. This effect functions as if you had cast the spell command."
     },
     {
@@ -6190,6 +6240,7 @@
       "Key": "55a8428c938543c6ab59f08d5545e2ea",
       "SimpleName": "PlantInvokeDeityAbility.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "By holding aloft a holy symbol and calling your deity’s name, you take on an aspect of that divinity. When you cast this spell, choose a domain offered by your deity. You gain that domain’s benefits, along with the listed physical changes; abilities that allow a saving throw use this spell’s DC. \nPlant: You become immune to paralysis, poison, polymorph effects, sleep effects, and stunning."
     },
     {
@@ -6251,6 +6302,12 @@
       "SimpleName": "ProfaneResilience.Name",
       "ProcessTemplates": false,
       "enGB": "Profane Resilience"
+    },
+    {
+      "Key": "2e3c22b9bb904cd49057a34388602857",
+      "SimpleName": "ProtectionDomainBaseFeatureDruid.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nYour faith is your greatest source of protection, and you can use that faith to defend others. In addition, you receive a +1 resistance bonus on saving throws. This bonus increases by 1 for every 5 levels you possess in the class that gave you access to this domain. Resistant Touch: As a standard action, you can touch an ally to grant them your resistance bonus for 1 minute. When you use this ability, you lose your resistance bonus granted by the Protection domain for 1 minute. You can use this ability a number of times per day equal to 3 + your Wisdom modifier. Aura of Protection: At 8th level, you can emit a 30-foot aura of protection for a number of rounds per day equal to your level in the class that gave you access to this domain. You and your allies within this aura gain a +1 deflection bonus to AC and resistance 5 against all elements (acid, cold, electricity, fire, and sonic). The deflection bonus increases by +1 for every four levels you possess in the class that gave you access to this domain beyond 8th. At 14th level, the resistance against all elements increases to 10. These rounds do not need to be consecutive."
     },
     {
       "Key": "b42dbb1825a541ecb15dc91acc4e38c4",
@@ -6528,6 +6585,12 @@
       "enGB": "Red Drake Companion"
     },
     {
+      "Key": "5084442862144923a11c357fc8f97480",
+      "SimpleName": "ReposeDomainBaseFeatureDruid.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nYou see death not as something to be feared, but as a final rest and reward for a life well spent. The taint of undeath is a mockery of what you hold dear. Gentle Rest: Your touch can fill a creature with lethargy, causing a living creature to become staggered for 1 round as a melee touch attack. If you touch a staggered living creature, that creature falls asleep for 1 round instead. Undead creatures touched are staggered for a number of rounds equal to your Wisdom modifier. You can use this ability a number of times per day equal to 3 + your Wisdom modifier. Ward Against Death: At 8th level, you can emit a 30-foot aura that wards against death for a number of rounds per day equal to your level in the class that gave you access to this domain. Living creatures in this area are immune to all death effects, energy drain, and effects that cause negative levels. This ward does not remove negative levels that a creature has already gained, but the negative levels have no effect while the creature is inside the warded area. These rounds do not need to be consecutive."
+    },
+    {
       "Key": "5ff6f20680e14da3badb0ded06d52678",
       "SimpleName": "ReposeDomainProgressionDruid.Description",
       "ProcessTemplates": true,
@@ -6543,6 +6606,7 @@
       "Key": "bd93c3b76bd54799ad4ba24072262660",
       "SimpleName": "ReposeInvokeDeityAbility.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "By holding aloft a holy symbol and calling your deity’s name, you take on an aspect of that divinity. When you cast this spell, choose a domain offered by your deity. You gain that domain’s benefits, along with the listed physical changes; abilities that allow a saving throw use this spell’s DC. \nRepose: You gain a +6 enhancement bonus to Wisdom."
     },
     {
@@ -6646,12 +6710,14 @@
       "Key": "885f5f014b2746aaaa007e84cb467c35",
       "SimpleName": "RevolutionDomainGreaterAbility.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "At 8th level, you can make grant yourself the ability to roll twice on any persuasion or intimidate  skill check, this abilities effect lasts until used then dispels itself. You can use this ability once per day at 8th level, plus one additional time per day for every 2 levels beyond 8th."
     },
     {
       "Key": "522e0ad001724960901662efac18046e",
       "SimpleName": "RevolutionDomainGreaterBuff.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "At 8th level, you can make grant yourself the ability to roll twice on any persuasion or intimidate  skill check, this abilities effect lasts until used then dispels itself. You can use this ability once per day at 8th level, plus one additional time per day for every 2 levels beyond 8th."
     },
     {
@@ -6670,6 +6736,7 @@
       "Key": "4cacd3913bb247158b5d7270e20cd765",
       "SimpleName": "RevolutionDomainProgression.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "\nYou are a beacon of revolution inspiring your allies to fight well and all foes to relent.\nYou have the ability to ignore impediments to your mobility. For a number of rounds per day equal to your level in the class that gave you access to this domain, you can move normally regardless of magical effects that impede movement, as if you were affected by freedom of movement. This effect occurs automatically as soon as it applies. These rounds do not need to be consecutive.\nPowerful Persuader: At 8th level, you can make grant yourself the ability to roll twice on any persuasion or intimidate  skill check, this abilities effect lasts until used then dispels itself. You can use this ability once per day at 8th level, plus one additional time per day for every 2 levels beyond 8th.\nDomain Spells: remove fear, scare, remove curse, freedom of movement, break enchantment, greater heroism, elemental body IV, mind blank, communal mind blank."
     },
     {
@@ -6788,6 +6855,12 @@
       "SimpleName": "RullFeature.Name",
       "ProcessTemplates": false,
       "enGB": "Rull"
+    },
+    {
+      "Key": "c403ec11e2a244e1936fa224172972b2",
+      "SimpleName": "RuneDomainBaseFeatureDruid.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nIn strange and eldritch runes you find potent magic. Blast Rune: As a standard action, you can create a blast rune in a desired location. Any creature entering a 5-foot area around the rune takes 1d6 points of damage + 1 point for every two levels you possess in the class that gave you access to this domain. This rune deals either acid, cold, electricity, or fire damage, decided when you create the rune. The rune lasts a number of rounds equal to your level in the class that gave you access to this domain. You can use this ability a number of times per day equal to 3 + your Wisdom modifier. Warding Rune: At 8th level, you can create a warding rune in a desired location. Any creature entering a 5-foot area around the rune must make a Will save or they will not be able to attack for a number of rounds equal to 1/2 your level in the class that gave you access to this domain. The rune lasts a number of rounds equal to your level in the class that gave you access to this domain. You can use this ability once per day at 8th level and one additional time per day for every four levels in the class that gave you access to this domain beyond 8th."
     },
     {
       "Key": "484a0e2ff14940d1adf417f5ba8cc532",
@@ -7086,17 +7159,17 @@
       "enGB": "Shei"
     },
     {
+      "Key": "63b15554a33a4aac8390229ed2c68f7b",
+      "SimpleName": "ShizuruFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nTitles: Empress of Heaven   \nAlignment: Lawful Good   \nAreas of Concern: Ancestors, Honor, The Sun, Swordplay   \nDomains: Glory, Good, Law, Repose, Sun   \nSubdomains: Ancestors, Archon, Day, Heroism, Honor, Light, Revelation  \nFavoured Weapon: Katana (Longsword & Dueling sword)   \nHoly Symbol: Katana in front of the sun   \nSacred Animal: Carp   \nShizuru is the Empress of Heaven, goddess of ancestors and the sun. She is also the goddess of honor and swordplay, and is the patron of samurai and other honorable swordfighters. Shizuru loves the moon god Tsukiyo, so much so that she returned him to life when he was slain by his brother Fumeiyoshi. The two lovers are rarely together, however, just as night and day are forever divided, but the two deities are able to rejoin, if only briefly, during rare solar eclipses—a sacred time for both faiths. Shizuru’s worship is popular throughout the Dragon Empires, but her faith is strongest in Minkai, for the emperors of that land revere Shizuru as their divine ancestor. Shizuru is often depicted in art as a beautiful samurai, as a magnificent dragon with golden scales, or as both simultaneously."
+    },
+    {
       "Key": "805fec87a0a04ccf90147dcc7b5282fc",
       "SimpleName": "ShizuruFeature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "\nTitles: Empress of Heaven   \nAlignment: Lawful Good   \nAreas of Concern: Ancestors, Honor, The Sun, Swordplay   \nDomains: Glory, Good, Law, Repose, Sun   \nSubdomains: Ancestors, Archon, Day, Heroism, Honor, Light, Revelation  \nFavoured Weapon: Katana (Longsword)   \nHoly Symbol: Katana in front of the sun   \nSacred Animal: Carp   \nShizuru is the Empress of Heaven, goddess of ancestors and the sun. She is also the goddess of honor and swordplay, and is the patron of samurai and other honorable swordfighters. Shizuru loves the moon god Tsukiyo, so much so that she returned him to life when he was slain by his brother Fumeiyoshi. The two lovers are rarely together, however, just as night and day are forever divided, but the two deities are able to rejoin, if only briefly, during rare solar eclipses—a sacred time for both faiths. Shizuru’s worship is popular throughout the Dragon Empires, but her faith is strongest in Minkai, for the emperors of that land revere Shizuru as their divine ancestor. Shizuru is often depicted in art as a beautiful samurai, as a magnificent dragon with golden scales, or as both simultaneously."
-    },
-    {
-      "Key": "63b15554a33a4aac8390229ed2c68f7b",
-      "SimpleName": "ShizuruFeature.Description",
-      "ProcessTemplates": true,
-      "enGB": "\nTitles: Empress of Heaven   \nAlignment: Lawful Good   \nAreas of Concern: Ancestors, Honor, The Sun, Swordplay   \nDomains: Glory, Good, Law, Repose, Sun   \nSubdomains: Ancestors, Archon, Day, Heroism, Honor, Light, Revelation  \nFavoured Weapon: Katana (Longsword & Dueling sword)   \nHoly Symbol: Katana in front of the sun   \nSacred Animal: Carp   \nShizuru is the Empress of Heaven, goddess of ancestors and the sun. She is also the goddess of honor and swordplay, and is the patron of samurai and other honorable swordfighters. Shizuru loves the moon god Tsukiyo, so much so that she returned him to life when he was slain by his brother Fumeiyoshi. The two lovers are rarely together, however, just as night and day are forever divided, but the two deities are able to rejoin, if only briefly, during rare solar eclipses—a sacred time for both faiths. Shizuru’s worship is popular throughout the Dragon Empires, but her faith is strongest in Minkai, for the emperors of that land revere Shizuru as their divine ancestor. Shizuru is often depicted in art as a beautiful samurai, as a magnificent dragon with golden scales, or as both simultaneously."
     },
     {
       "Key": "3ef498a3b1f34038af628a74d00a11e6",
@@ -7141,16 +7214,16 @@
       "enGB": "Silver Champion"
     },
     {
-      "Key": "c8220270704a44c79e2d4ef6bf6ddce6",
-      "SimpleName": "SilverChampionSpellbook.Name",
-      "ProcessTemplates": false,
-      "enGB": "Claw of the False Wyrm"
-    },
-    {
       "Key": "96ac5395a9054d339832829bc004945d",
       "SimpleName": "SilverChampionSpellbook.Name",
       "ProcessTemplates": false,
       "enGB": "SilverChampion"
+    },
+    {
+      "Key": "c8220270704a44c79e2d4ef6bf6ddce6",
+      "SimpleName": "SilverChampionSpellbook.Name",
+      "ProcessTemplates": false,
+      "enGB": "Claw of the False Wyrm"
     },
     {
       "Key": "8847cba8444f4ce29366a7d71760800c",
@@ -7486,6 +7559,7 @@
       "Key": "c2ccbbd7acf949fba1b838544fcdc521",
       "SimpleName": "StrengthInvokeDeityAbility.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "By holding aloft a holy symbol and calling your deity’s name, you take on an aspect of that divinity. When you cast this spell, choose a domain offered by your deity. You gain that domain’s benefits, along with the listed physical changes; abilities that allow a saving throw use this spell’s DC. \nStrength: You gain a +6 enhancement bonus to Strength."
     },
     {
@@ -7516,6 +7590,7 @@
       "Key": "fa25fa49e13a4a6abdd4b1694d7e8bed",
       "SimpleName": "SunInvokeDeityAbility.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "By holding aloft a holy symbol and calling your deity’s name, you take on an aspect of that divinity. When you cast this spell, choose a domain offered by your deity. You gain that domain’s benefits, along with the listed physical changes; abilities that allow a saving throw use this spell’s DC. \nSun: You are immune to the blindness, dazed, and dazzled conditions.Any enemies that attack you with melee weapons find their vision obscured by divine sun-rays (50% miss chance)."
     },
     {
@@ -7963,6 +8038,7 @@
       "Key": "d9312ad536fa400cba5f41271743f5a8",
       "SimpleName": "TravelInvokeDeityAbility.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "By holding aloft a holy symbol and calling your deity’s name, you take on an aspect of that divinity. When you cast this spell, choose a domain offered by your deity. You gain that domain’s benefits, along with the listed physical changes; abilities that allow a saving throw use this spell’s DC. \nTravel: You gain a +6 enhancement bonus to Constitution."
     },
     {
@@ -7993,6 +8069,7 @@
       "Key": "bd973f152b0648e8bda23307c0a61baf",
       "SimpleName": "TrickeryInvokeDeityAbility.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "By holding aloft a holy symbol and calling your deity’s name, you take on an aspect of that divinity. When you cast this spell, choose a domain offered by your deity. You gain that domain’s benefits, along with the listed physical changes; abilities that allow a saving throw use this spell’s DC. \nTrickery: You gain a +4 enhancement bonus to Persuasion, Thievery and Stealth checks."
     },
     {
@@ -8373,6 +8450,7 @@
       "Key": "bc7b7c35870846fc811e835c217e223d",
       "SimpleName": "WarInvokeDeityAbility.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "By holding aloft a holy symbol and calling your deity’s name, you take on an aspect of that divinity. When you cast this spell, choose a domain offered by your deity. You gain that domain’s benefits, along with the listed physical changes; abilities that allow a saving throw use this spell’s DC. \nWar: You gain a +2 insight bonus on attack rolls and deal an additional 1d6 points of damage each time you hit a foe."
     },
     {
@@ -8397,6 +8475,7 @@
       "Key": "ac39ccac26d1446bacecc09d1e6ad2e8",
       "SimpleName": "WaterInvokeDeityAbility.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "By holding aloft a holy symbol and calling your deity’s name, you take on an aspect of that divinity. When you cast this spell, choose a domain offered by your deity. You gain that domain’s benefits, along with the listed physical changes; abilities that allow a saving throw use this spell’s DC. \nWater: You gain cold resistance 30, and a +6 enhancement to your CMD."
     },
     {
@@ -8493,6 +8572,7 @@
       "Key": "c142dc7849b14cbb8ae8cdbfa5efea50",
       "SimpleName": "WeatherInvokeDeityAbility.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "By holding aloft a holy symbol and calling your deity’s name, you take on an aspect of that divinity. When you cast this spell, choose a domain offered by your deity. You gain that domain’s benefits, along with the listed physical changes; abilities that allow a saving throw use this spell’s DC. \nWeather: You do not take penalties or damage or suffer from reduced visibility or other effects due to natural weather. You gain electricity resistance 30, and your call lightning and call lightning storm spells and effects always function as though called outdoors in stormy weather."
     },
     {
