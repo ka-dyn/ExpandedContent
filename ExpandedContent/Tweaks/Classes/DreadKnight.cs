@@ -505,12 +505,10 @@ namespace ExpandedContent.Tweaks.Classes {
                     c.ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>();
                 });
                 bp.AddContextRankConfig(c => {
-                    c.m_Type = Kingmaker.Enums.AbilityRankType.DamageBonus;
+                    c.m_Type = AbilityRankType.DamageDice;
                     c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
                     c.m_Class = new BlueprintCharacterClassReference[] { DreadKnightClass.ToReference<BlueprintCharacterClassReference>() };
-                    c.m_Progression = ContextRankProgression.DelayedStartPlusDivStep;
-                    c.m_StartLevel = 1;
-                    c.m_StepLevel = 2;
+                    c.m_Progression = ContextRankProgression.Div2;                    
                     c.m_Min = 1;
                     c.m_UseMin = true;
                 });
@@ -532,7 +530,8 @@ namespace ExpandedContent.Tweaks.Classes {
                                   Value = new ContextDiceValue() {
                                       DiceType = DiceType.D6,
                                       DiceCountValue = new ContextValue() {
-                                          ValueType = ContextValueType.Rank
+                                          ValueType = ContextValueType.Rank,
+                                          ValueRank = AbilityRankType.DamageDice
                                       },
                                       BonusValue = new ContextValue()
                                   }
@@ -554,6 +553,7 @@ namespace ExpandedContent.Tweaks.Classes {
                                                         DiceType = DiceType.D6,
                                                         DiceCountValue = new ContextValue() {
                                                             ValueType = ContextValueType.Rank,
+                                                            ValueRank = AbilityRankType.DamageDice
                                                         },
                                                         BonusValue = new ContextValue(),
                                                     }
@@ -579,11 +579,11 @@ namespace ExpandedContent.Tweaks.Classes {
                 bp.Range = AbilityRange.Weapon;
                 bp.CanTargetEnemies = true;
                 bp.CanTargetFriends = true;
-                bp.ActionType = Kingmaker.UnitLogic.Commands.Base.UnitCommand.CommandType.Swift;
+                bp.ActionType = UnitCommand.CommandType.Swift;
                 bp.LocalizedDuration = Helpers.CreateString($"{bp.name}.Duration", "Instant");
                 bp.LocalizedSavingThrow = Helpers.CreateString($"{bp.name}.SavingThrow", "None");
                 bp.AddContextRankConfig(c => {
-                    c.m_Type = Kingmaker.Enums.AbilityRankType.DamageBonus;
+                    c.m_Type = AbilityRankType.DamageDice;
                     c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
                     c.m_Class = new BlueprintCharacterClassReference[] { DreadKnightClass.ToReference<BlueprintCharacterClassReference>() };
                     c.m_Progression = ContextRankProgression.DelayedStartPlusDivStep;
@@ -607,7 +607,8 @@ namespace ExpandedContent.Tweaks.Classes {
                                   Value = new ContextDiceValue() {
                                       DiceType = DiceType.D6,
                                       DiceCountValue = new ContextValue() {
-                                          ValueType = ContextValueType.Rank
+                                          ValueType = ContextValueType.Rank,
+                                          ValueRank = AbilityRankType.DamageDice
                                       },
                                       BonusValue = new ContextValue()
                                   }
@@ -629,6 +630,7 @@ namespace ExpandedContent.Tweaks.Classes {
                                                         DiceType = DiceType.D6,
                                                         DiceCountValue = new ContextValue() {
                                                             ValueType = ContextValueType.Rank,
+                                                            ValueRank = AbilityRankType.DamageDice
                                                         },
                                                         BonusValue = new ContextValue(),
                                                     }
@@ -726,53 +728,70 @@ namespace ExpandedContent.Tweaks.Classes {
             var ExhaustedBuff = Resources.GetBlueprint<BlueprintBuff>("46d1b9cc3d0fd36469a471b047d773a2");
             var CursedBuff = Resources.GetBlueprint<BlueprintBuff>("caae9592917719a41b601b678a8e6ddf");
             var StaggeredBuff = Resources.GetBlueprint<BlueprintBuff>("df3950af5a783bd4d91ab73eb8fa0fd3");
-            var DiseasedBuff = Resources.GetBlueprint<BlueprintBuff>("103aac6bc1cfd454492cee1fd680db05");
+            var DiseasedBuff = Resources.GetBlueprint<BlueprintBuff>("b523ff6c5db9a9c489daff7aae41afb9");
             var DazedBuff = Resources.GetBlueprint<BlueprintBuff>("d2e35b870e4ac574d9873b36402487e5");
             var SickenedBuff = Resources.GetBlueprint<BlueprintBuff>("4e42460798665fd4cb9173ffa7ada323");
             var ShakenBuff = Resources.GetBlueprint<BlueprintBuff>("25ec6cb6ab1845c48a95f9c20b034220");
             var CrueltySelectIcon = AssetLoader.LoadInternal("Skills", "Icon_CrueltySelect.png");
             var FatigueIcon = Resources.GetBlueprint<BlueprintBuff>("e6f2fc5d73d88064583cb828801212f4");
             var BestowCurseFeeblyBody = Resources.GetBlueprint<BlueprintAbility>("0c853a9f35a7bf749821ebe5d06fade7");
-            var CrueltyFatiguedBuff = Helpers.CreateBlueprint<BlueprintBuff>("CrueltyFatiguedBuff", bp => {
+            var CrueltyFatiguedBuff = Helpers.CreateBuff("CrueltyFatiguedBuff", bp => {
                 bp.SetName("Cruelty - Fatigued");
                 bp.SetDescription("The next use of profane corruption will be enhanced with the fatigued cruelty.");
                 bp.m_Icon = FatigueIcon.Icon;
                 bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
                 bp.IsClassFeature = true;
                 bp.AddComponent<AddAbilityUseTrigger>(c => {
+                    c.ActionsOnAllTargets = false;
+                    c.AfterCast = false;
+                    c.ActionsOnTarget = true;
+                    c.FromSpellbook = false;
+                    c.m_Spellbooks = new BlueprintSpellbookReference[] { };
+                    c.ForOneSpell = false;
+                    c.m_Ability = new BlueprintAbilityReference();
                     c.ForMultipleSpells = true;
                     c.Abilities = new List<BlueprintAbilityReference>() {
                         TouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>(),
                         ChannelTouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>()
                     };
-                    c.ActionsOnTarget = true;
+                    c.MinSpellLevel = false;
+                    c.MinSpellLevelLimit = 0;
+                    c.ExactSpellLevel = false;
+                    c.ExactSpellLevelLimit = 0;
+                    c.CheckAbilityType = false;
+                    c.Type = AbilityType.Spell;
+                    c.CheckDescriptor = false;
+                    c.SpellDescriptor = new SpellDescriptor();
+                    c.CheckRange = false;
+                    c.Range = AbilityRange.Touch;
                     c.Action = Helpers.CreateActionList(
                         new Conditional {
                             ConditionsChecker = new ConditionsChecker {
                                 Conditions = new Condition[] {
-                                    new ContextConditionIsCaster() { Not = true }
+                                    new ContextConditionIsAlly() { Not = true }
                                 }
                             },
                             IfTrue = Helpers.CreateActionList(
                             new ContextActionSavingThrow() {
                                 Type = SavingThrowType.Fortitude,
                                 m_ConditionalDCIncrease = new ContextActionSavingThrow.ConditionalDCIncrease[0],
+                                HasCustomDC = false,
                                 CustomDC = new ContextValue(),
                                 Actions = Helpers.CreateActionList(
-                                                new ContextActionConditionalSaved() {
-                                                    Succeed = new ActionList(),
-                                                    Failed = Helpers.CreateActionList(
-                                                        new ContextActionApplyBuff() {
-                                                            m_Buff = FatiguedBuff.ToReference<BlueprintBuffReference>(),
-                                                            Permanent = true,
-                                                            DurationValue = new ContextDurationValue() {
-                                                                m_IsExtendable = true,
-                                                                DiceCountValue = new ContextValue(),
-                                                                BonusValue = new ContextValue()
-                                                            },
-                                                            IsFromSpell = true,
-                                                        }),
-                                                }),
+                                    new ContextActionConditionalSaved() {
+                                        Succeed = new ActionList(),
+                                        Failed = Helpers.CreateActionList(
+                                            new ContextActionApplyBuff() {
+                                                m_Buff = FatiguedBuff.ToReference<BlueprintBuffReference>(),
+                                                Permanent = true,
+                                                DurationValue = new ContextDurationValue() {
+                                                    m_IsExtendable = true,
+                                                    DiceCountValue = new ContextValue(),
+                                                    BonusValue = new ContextValue()
+                                                },
+                                                IsFromSpell = true,
+                                            }),
+                                    }),
                             }),
                             IfFalse = Helpers.CreateActionList(),
                         });
@@ -783,7 +802,7 @@ namespace ExpandedContent.Tweaks.Classes {
                     c.m_CharacterClass = DreadKnightClass.ToReference<BlueprintCharacterClassReference>();
                 });
             });
-            var CrueltyShakenBuff = Helpers.CreateBlueprint<BlueprintBuff>("CrueltyShakenBuff", bp => {
+            var CrueltyShakenBuff = Helpers.CreateBuff("CrueltyShakenBuff", bp => {
                 bp.SetName("Cruelty - Shaken");
                 bp.SetDescription("The next use of profane corruption will be enhanced with the shaken cruelty.");
                 bp.Ranks = 1;
@@ -791,46 +810,68 @@ namespace ExpandedContent.Tweaks.Classes {
                 bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
                 bp.IsClassFeature = true;
                 bp.AddComponent<AddAbilityUseTrigger>(c => {
+                    c.ActionsOnAllTargets = false;
+                    c.AfterCast = false;
+                    c.ActionsOnTarget = true;
+                    c.FromSpellbook = false;
+                    c.m_Spellbooks = new BlueprintSpellbookReference[] { };
+                    c.ForOneSpell = false;
+                    c.m_Ability = new BlueprintAbilityReference();
                     c.ForMultipleSpells = true;
                     c.Abilities = new List<BlueprintAbilityReference>() {
                         TouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>(),
                         ChannelTouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>()
                     };
-                    c.ActionsOnTarget = true;
+                    c.MinSpellLevel = false;
+                    c.MinSpellLevelLimit = 0;
+                    c.ExactSpellLevel = false;
+                    c.ExactSpellLevelLimit = 0;
+                    c.CheckAbilityType = false;
+                    c.Type = AbilityType.Spell;
+                    c.CheckDescriptor = false;
+                    c.SpellDescriptor = new SpellDescriptor();
+                    c.CheckRange = false;
+                    c.Range = AbilityRange.Touch;
                     c.Action = Helpers.CreateActionList(
                         new Conditional {
                             ConditionsChecker = new ConditionsChecker {
                                 Conditions = new Condition[] {
-                                    new ContextConditionIsCaster() { Not = true }
+                                    new ContextConditionIsAlly() { Not = true }
                                 }
                             },
                             IfTrue = Helpers.CreateActionList(
                             new ContextActionSavingThrow() {
                                 m_ConditionalDCIncrease = new ContextActionSavingThrow.ConditionalDCIncrease[0],
                                 Type = SavingThrowType.Fortitude,
+                                HasCustomDC = false,
                                 CustomDC = new ContextValue(),
                                 Actions = Helpers.CreateActionList(
-                                                new ContextActionConditionalSaved() {
-                                                    Succeed = new ActionList(),
-                                                    Failed = Helpers.CreateActionList(
-                                                        new ContextActionApplyBuff() {
-                                                            m_Buff = ShakenBuff.ToReference<BlueprintBuffReference>(),
-                                                            DurationValue = new ContextDurationValue() {
-                                                                m_IsExtendable = true,
-                                                                DiceCountValue = 0,
-                                                                BonusValue = new ContextValue()
-                                                            },
-                                                            IsFromSpell = true,
-                                                        }),
-                                                }),
+                                    new ContextActionConditionalSaved() {
+                                        Succeed = new ActionList(),
+                                        Failed = Helpers.CreateActionList(
+                                            new ContextActionApplyBuff() {
+                                                m_Buff = ShakenBuff.ToReference<BlueprintBuffReference>(),
+                                                DurationValue = new ContextDurationValue() {
+                                                    m_IsExtendable = true,
+                                                    DiceCountValue = 0,
+                                                    BonusValue = new ContextValue() {
+                                                        Value = 1,
+                                                        ValueType = ContextValueType.Rank,
+                                                        ValueRank = AbilityRankType.Default
+                                                    }
+                                                },
+                                                IsFromSpell = true,
+                                            }),
+                                    }),
                             }),
                             IfFalse = Helpers.CreateActionList(),
                         });
                 });
                 bp.AddComponent<UniqueBuff>();
                 bp.AddContextRankConfig(c => {
-                    c.m_BaseValueType = ContextRankBaseValueType.CustomProperty;
-                    c.m_CustomProperty = ShakenBuff.ToReference<BlueprintUnitPropertyReference>();
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
+                    c.m_Class = new BlueprintCharacterClassReference[] { DreadKnightClass.ToReference<BlueprintCharacterClassReference>() };
                     c.m_Progression = ContextRankProgression.AsIs;
                     c.m_Max = 20;
                 });
@@ -839,57 +880,76 @@ namespace ExpandedContent.Tweaks.Classes {
                     c.m_CharacterClass = DreadKnightClass.ToReference<BlueprintCharacterClassReference>();
                 });
             });
-            var CrueltySickenedBuff = Helpers.CreateBlueprint<BlueprintBuff>("CrueltySickenedBuff", bp => {
+            var CrueltySickenedBuff = Helpers.CreateBuff("CrueltySickenedBuff", bp => {
                 bp.SetName("Cruelty - Sickened");
                 bp.SetDescription("The next use of profane corruption will be enhanced with the sickened cruelty.");
                 bp.Ranks = 1;
-                bp.m_Icon = FatigueIcon.Icon;
+                bp.m_Icon = SickenedBuff.Icon;
                 bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
                 bp.IsClassFeature = true;
                 bp.AddComponent<AddAbilityUseTrigger>(c => {
+                    c.ActionsOnAllTargets = false;
+                    c.AfterCast = false;
+                    c.ActionsOnTarget = true;
+                    c.FromSpellbook = false;
+                    c.m_Spellbooks = new BlueprintSpellbookReference[] { };
+                    c.ForOneSpell = false;
+                    c.m_Ability = new BlueprintAbilityReference();
                     c.ForMultipleSpells = true;
                     c.Abilities = new List<BlueprintAbilityReference>() {
                         TouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>(),
                         ChannelTouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>()
                     };
-                    c.ActionsOnTarget = true;
+                    c.MinSpellLevel = false;
+                    c.MinSpellLevelLimit = 0;
+                    c.ExactSpellLevel = false;
+                    c.ExactSpellLevelLimit = 0;
+                    c.CheckAbilityType = false;
+                    c.Type = AbilityType.Spell;
+                    c.CheckDescriptor = false;
+                    c.SpellDescriptor = new SpellDescriptor();
+                    c.CheckRange = false;
+                    c.Range = AbilityRange.Touch;
                     c.Action = Helpers.CreateActionList(
                         new Conditional {
                             ConditionsChecker = new ConditionsChecker {
                                 Conditions = new Condition[] {
-                                    new ContextConditionIsCaster() { Not = true }
+                                    new ContextConditionIsAlly() { Not = true }
                                 }
                             },
                             IfTrue = Helpers.CreateActionList(
                             new ContextActionSavingThrow() {
                                 m_ConditionalDCIncrease = new ContextActionSavingThrow.ConditionalDCIncrease[0],
                                 Type = SavingThrowType.Fortitude,
+                                HasCustomDC = false,
                                 CustomDC = new ContextValue(),
                                 Actions = Helpers.CreateActionList(
-                                                new ContextActionConditionalSaved() {
-                                                    Succeed = new ActionList(),
-                                                    Failed = Helpers.CreateActionList(
-                                                        new ContextActionApplyBuff() {
-                                                            m_Buff = SickenedBuff.ToReference<BlueprintBuffReference>(),
-                                                            DurationValue = new ContextDurationValue() {
-                                                                m_IsExtendable = true,
-                                                                DiceCountValue = 0,
-                                                                BonusValue = new ContextValue() {
-                                                                    Value = 1,
-                                                                    ValueType = ContextValueType.Rank
-                                                                }
-                                                            },
-                                                            IsFromSpell = true,
-                                                        }),
-                                                }),
+                                    new ContextActionConditionalSaved() {
+                                        Succeed = new ActionList(),
+                                        Failed = Helpers.CreateActionList(
+                                            new ContextActionApplyBuff() {
+                                                m_Buff = SickenedBuff.ToReference<BlueprintBuffReference>(),
+                                                DurationValue = new ContextDurationValue() {
+                                                    m_IsExtendable = true,
+                                                    DiceCountValue = 0,
+                                                    BonusValue = new ContextValue() {
+                                                        Value = 1,
+                                                        ValueType = ContextValueType.Rank,
+                                                        ValueRank = AbilityRankType.Default
+                                                    }
+                                                },
+                                                IsFromSpell = true,
+                                            }),
+                                    }),
                             }),
                             IfFalse = Helpers.CreateActionList(),
                         });
                 });
                 bp.AddComponent<UniqueBuff>();
                 bp.AddContextRankConfig(c => {
-                    c.m_BaseValueType = ContextRankBaseValueType.CustomProperty;
-                    c.m_CustomProperty = SickenedBuff.ToReference<BlueprintUnitPropertyReference>();
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
+                    c.m_Class = new BlueprintCharacterClassReference[] { DreadKnightClass.ToReference<BlueprintCharacterClassReference>() };
                     c.m_Progression = ContextRankProgression.AsIs;
                     c.m_Max = 20;
                 });
@@ -898,7 +958,7 @@ namespace ExpandedContent.Tweaks.Classes {
                     c.m_CharacterClass = DreadKnightClass.ToReference<BlueprintCharacterClassReference>();
                 });
             });
-            var CrueltyDazedBuff = Helpers.CreateBlueprint<BlueprintBuff>("CrueltyDazedBuff", bp => {
+            var CrueltyDazedBuff = Helpers.CreateBuff("CrueltyDazedBuff", bp => {
                 bp.SetName("Cruelty - Dazed");
                 bp.SetDescription("The next use of profane corruption will be enhanced with the dazed cruelty.");
                 bp.Ranks = 1;
@@ -906,41 +966,57 @@ namespace ExpandedContent.Tweaks.Classes {
                 bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
                 bp.IsClassFeature = true;
                 bp.AddComponent<AddAbilityUseTrigger>(c => {
+                    c.ActionsOnAllTargets = false;
+                    c.AfterCast = false;
+                    c.ActionsOnTarget = true;
+                    c.FromSpellbook = false;
+                    c.m_Spellbooks = new BlueprintSpellbookReference[] { };
+                    c.ForOneSpell = false;
+                    c.m_Ability = new BlueprintAbilityReference();
                     c.ForMultipleSpells = true;
                     c.Abilities = new List<BlueprintAbilityReference>() {
                         TouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>(),
                         ChannelTouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>()
                     };
-                    c.ActionsOnTarget = true;
+                    c.MinSpellLevel = false;
+                    c.MinSpellLevelLimit = 0;
+                    c.ExactSpellLevel = false;
+                    c.ExactSpellLevelLimit = 0;
+                    c.CheckAbilityType = false;
+                    c.Type = AbilityType.Spell;
+                    c.CheckDescriptor = false;
+                    c.SpellDescriptor = new SpellDescriptor();
+                    c.CheckRange = false;
+                    c.Range = AbilityRange.Touch;
                     c.Action = Helpers.CreateActionList(
                         new Conditional {
                             ConditionsChecker = new ConditionsChecker {
                                 Conditions = new Condition[] {
-                                    new ContextConditionIsCaster() { Not = true }
+                                    new ContextConditionIsAlly() { Not = true }
                                 }
                             },
                             IfTrue = Helpers.CreateActionList(
                             new ContextActionSavingThrow() {
                                 m_ConditionalDCIncrease = new ContextActionSavingThrow.ConditionalDCIncrease[0],
                                 Type = SavingThrowType.Fortitude,
+                                HasCustomDC = false,
                                 CustomDC = new ContextValue(),
                                 Actions = Helpers.CreateActionList(
-                                                new ContextActionConditionalSaved() {
-                                                    Succeed = new ActionList(),
-                                                    Failed = Helpers.CreateActionList(
-                                                        new ContextActionApplyBuff() {
-                                                            m_Buff = DazedBuff.ToReference<BlueprintBuffReference>(),
-                                                            DurationValue = new ContextDurationValue() {
-                                                                m_IsExtendable = true,
-                                                                DiceCountValue = 0,
-                                                                BonusValue = new ContextValue() {
-                                                                    Value = 1,
-                                                                    ValueType = ContextValueType.Rank
-                                                                }
-                                                            },
-                                                            IsFromSpell = true,
-                                                        }),
-                                                }),
+                                    new ContextActionConditionalSaved() {
+                                        Succeed = new ActionList(),
+                                        Failed = Helpers.CreateActionList(
+                                            new ContextActionApplyBuff() {
+                                                m_Buff = DazedBuff.ToReference<BlueprintBuffReference>(),
+                                                DurationValue = new ContextDurationValue() {
+                                                    m_IsExtendable = true,
+                                                    DiceCountValue = 0,
+                                                    BonusValue = new ContextValue() {
+                                                        Value = 1
+                                                    }
+                                                },
+                                                IsFromSpell = true,
+                                            }),
+                                    }),
                             }),
                             IfFalse = Helpers.CreateActionList(),
                         });
@@ -950,46 +1026,63 @@ namespace ExpandedContent.Tweaks.Classes {
                     c.m_CharacterClass = DreadKnightClass.ToReference<BlueprintCharacterClassReference>();
                 });
             });
-            var CrueltyDiseasedBuff = Helpers.CreateBlueprint<BlueprintBuff>("CrueltyDiseasedBuff", bp => {
+            var CrueltyDiseasedBuff = Helpers.CreateBuff("CrueltyDiseasedBuff", bp => {
                 bp.SetName("Cruelty - Diseased");
                 bp.SetDescription("The next use of profane corruption will be enhanced with the diseased cruelty.");
                 bp.m_Icon = DiseasedBuff.Icon;
                 bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
                 bp.IsClassFeature = true;
                 bp.AddComponent<AddAbilityUseTrigger>(c => {
+                    c.ActionsOnAllTargets = false;
+                    c.AfterCast = false;
+                    c.ActionsOnTarget = true;
+                    c.FromSpellbook = false;
+                    c.m_Spellbooks = new BlueprintSpellbookReference[] { };
+                    c.ForOneSpell = false;
+                    c.m_Ability = new BlueprintAbilityReference();
                     c.ForMultipleSpells = true;
                     c.Abilities = new List<BlueprintAbilityReference>() {
                         TouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>(),
                         ChannelTouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>()
                     };
-                    c.ActionsOnTarget = true;
+                    c.MinSpellLevel = false;
+                    c.MinSpellLevelLimit = 0;
+                    c.ExactSpellLevel = false;
+                    c.ExactSpellLevelLimit = 0;
+                    c.CheckAbilityType = false;
+                    c.Type = AbilityType.Spell;
+                    c.CheckDescriptor = false;
+                    c.SpellDescriptor = new SpellDescriptor();
+                    c.CheckRange = false;
+                    c.Range = AbilityRange.Touch;
                     c.Action = Helpers.CreateActionList(
                         new Conditional {
                             ConditionsChecker = new ConditionsChecker {
                                 Conditions = new Condition[] {
-                                    new ContextConditionIsCaster() { Not = true }
+                                    new ContextConditionIsAlly() { Not = true }
                                 }
                             },
                             IfTrue = Helpers.CreateActionList(
                             new ContextActionSavingThrow() {
                                 m_ConditionalDCIncrease = new ContextActionSavingThrow.ConditionalDCIncrease[0],
                                 Type = SavingThrowType.Fortitude,
+                                HasCustomDC = false,
                                 CustomDC = new ContextValue(),
                                 Actions = Helpers.CreateActionList(
-                                                new ContextActionConditionalSaved() {
-                                                    Succeed = new ActionList(),
-                                                    Failed = Helpers.CreateActionList(
-                                                        new ContextActionApplyBuff() {
-                                                            m_Buff = DiseasedBuff.ToReference<BlueprintBuffReference>(),
-                                                            Permanent = true,
-                                                            DurationValue = new ContextDurationValue() {
-                                                                m_IsExtendable = true,
-                                                                DiceCountValue = new ContextValue(),
-                                                                BonusValue = new ContextValue()
-                                                            },
-                                                            IsFromSpell = true,
-                                                        }),
-                                                }),
+                                    new ContextActionConditionalSaved() {
+                                        Succeed = new ActionList(),
+                                        Failed = Helpers.CreateActionList(
+                                            new ContextActionApplyBuff() {
+                                                m_Buff = DiseasedBuff.ToReference<BlueprintBuffReference>(),
+                                                Permanent = true,
+                                                DurationValue = new ContextDurationValue() {
+                                                    m_IsExtendable = true,
+                                                    DiceCountValue = new ContextValue(),
+                                                    BonusValue = new ContextValue()
+                                                },
+                                                IsFromSpell = true,
+                                            }),
+                                    }),
                             }),
                             IfFalse = Helpers.CreateActionList(),
                         });
@@ -999,104 +1092,142 @@ namespace ExpandedContent.Tweaks.Classes {
                     c.m_CharacterClass = DreadKnightClass.ToReference<BlueprintCharacterClassReference>();
                 });
             });
-            var CrueltyStaggeredBuff = Helpers.CreateBlueprint<BlueprintBuff>("CrueltyStaggeredBuff", bp => {
+            var CrueltyStaggeredBuff = Helpers.CreateBuff("CrueltyStaggeredBuff", bp => {
                 bp.SetName("Cruelty - Staggered");
                 bp.SetDescription("The next use of profane corruption will be enhanced with the staggered cruelty.");
                 bp.Ranks = 1;
-                bp.m_Icon = FatigueIcon.Icon;
+                bp.m_Icon = StaggeredBuff.Icon;
                 bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
                 bp.IsClassFeature = true;
                 bp.AddComponent<AddAbilityUseTrigger>(c => {
+                    c.ActionsOnAllTargets = false;
+                    c.AfterCast = false;
+                    c.ActionsOnTarget = true;
+                    c.FromSpellbook = false;
+                    c.m_Spellbooks = new BlueprintSpellbookReference[] { };
+                    c.ForOneSpell = false;
+                    c.m_Ability = new BlueprintAbilityReference();
                     c.ForMultipleSpells = true;
                     c.Abilities = new List<BlueprintAbilityReference>() {
                         TouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>(),
                         ChannelTouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>()
                     };
-                    c.ActionsOnTarget = true;
+                    c.MinSpellLevel = false;
+                    c.MinSpellLevelLimit = 0;
+                    c.ExactSpellLevel = false;
+                    c.ExactSpellLevelLimit = 0;
+                    c.CheckAbilityType = false;
+                    c.Type = AbilityType.Spell;
+                    c.CheckDescriptor = false;
+                    c.SpellDescriptor = new SpellDescriptor();
+                    c.CheckRange = false;
+                    c.Range = AbilityRange.Touch;
                     c.Action = Helpers.CreateActionList(
                         new Conditional {
                             ConditionsChecker = new ConditionsChecker {
                                 Conditions = new Condition[] {
-                                    new ContextConditionIsCaster() { Not = true }
+                                    new ContextConditionIsAlly() { Not = true }
                                 }
                             },
                             IfTrue = Helpers.CreateActionList(
                             new ContextActionSavingThrow() {
                                 m_ConditionalDCIncrease = new ContextActionSavingThrow.ConditionalDCIncrease[0],
                                 Type = SavingThrowType.Fortitude,
+                                HasCustomDC = false,
                                 CustomDC = new ContextValue(),
                                 Actions = Helpers.CreateActionList(
-                                                new ContextActionConditionalSaved() {
-                                                    Succeed = new ActionList(),
-                                                    Failed = Helpers.CreateActionList(
-                                                        new ContextActionApplyBuff() {
-                                                            m_Buff = StaggeredBuff.ToReference<BlueprintBuffReference>(),
-                                                            DurationValue = new ContextDurationValue() {
-                                                                m_IsExtendable = true,
-                                                                DiceCountValue = 0,
-                                                                BonusValue = new ContextValue() {
-                                                                    Value = 1,
-                                                                    ValueType = ContextValueType.Rank
-                                                                }
-                                                            },
-                                                            IsFromSpell = true,
-                                                        }),
-                                                }),
+                                    new ContextActionConditionalSaved() {
+                                        Succeed = new ActionList(),
+                                        Failed = Helpers.CreateActionList(
+                                            new ContextActionApplyBuff() {
+                                                m_Buff = StaggeredBuff.ToReference<BlueprintBuffReference>(),
+                                                DurationValue = new ContextDurationValue() {
+                                                    m_IsExtendable = true,
+                                                    DiceCountValue = 0,
+                                                    BonusValue = new ContextValue() {
+                                                        Value = 1,
+                                                        ValueType = ContextValueType.Rank,
+                                                        ValueRank = AbilityRankType.Default
+                                                    }
+                                                },
+                                                IsFromSpell = true,
+                                            }),
+                                    }),
                             }),
-                            IfFalse = Helpers.CreateActionList()
+                            IfFalse = Helpers.CreateActionList(),
                         });
-                });
+                });;
                 bp.AddContextRankConfig(c => {
-                    c.m_BaseValueType = ContextRankBaseValueType.CustomProperty;
-                    c.m_CustomProperty = StaggeredBuff.ToReference<BlueprintUnitPropertyReference>();
-                    c.m_Progression = ContextRankProgression.AsIs;
-                    c.m_Max = 10;
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
+                    c.m_Class = new BlueprintCharacterClassReference[] { DreadKnightClass.ToReference<BlueprintCharacterClassReference>() };
+                    c.m_Progression = ContextRankProgression.Div2;
+                    c.m_UseMin = true;
+                    c.m_Min = 1;
+                    c.m_Max = 20;
                 });
                 bp.AddComponent<ContextCalculateAbilityParamsBasedOnClass>(c => {
                     c.StatType = StatType.Charisma;
                     c.m_CharacterClass = DreadKnightClass.ToReference<BlueprintCharacterClassReference>();
                 });
             });
-            var CrueltyCursedBuff = Helpers.CreateBlueprint<BlueprintBuff>("CrueltyCursedBuff", bp => {
+            var CrueltyCursedBuff = Helpers.CreateBuff("CrueltyCursedBuff", bp => {
                 bp.SetName("Select Cruelty - Cursed");
                 bp.SetDescription("The next use of profane corruption will be enhanced with the cursed cruelty.");
-                bp.m_Icon = FatigueIcon.Icon;
+                bp.m_Icon = CursedBuff.Icon;
                 bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
                 bp.IsClassFeature = true;
                 bp.AddComponent<AddAbilityUseTrigger>(c => {
+                    c.ActionsOnAllTargets = false;
+                    c.AfterCast = false;
+                    c.ActionsOnTarget = true;
+                    c.FromSpellbook = false;
+                    c.m_Spellbooks = new BlueprintSpellbookReference[] { };
+                    c.ForOneSpell = false;
+                    c.m_Ability = new BlueprintAbilityReference();
                     c.ForMultipleSpells = true;
                     c.Abilities = new List<BlueprintAbilityReference>() {
                         TouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>(),
                         ChannelTouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>()
                     };
-                    c.ActionsOnTarget = true;
+                    c.MinSpellLevel = false;
+                    c.MinSpellLevelLimit = 0;
+                    c.ExactSpellLevel = false;
+                    c.ExactSpellLevelLimit = 0;
+                    c.CheckAbilityType = false;
+                    c.Type = AbilityType.Spell;
+                    c.CheckDescriptor = false;
+                    c.SpellDescriptor = new SpellDescriptor();
+                    c.CheckRange = false;
+                    c.Range = AbilityRange.Touch;
                     c.Action = Helpers.CreateActionList(
                         new Conditional {
                             ConditionsChecker = new ConditionsChecker {
                                 Conditions = new Condition[] {
-                                    new ContextConditionIsCaster() { Not = true }
+                                    new ContextConditionIsAlly() { Not = true }
                                 }
                             },
                             IfTrue = Helpers.CreateActionList(
                             new ContextActionSavingThrow() {
                                 m_ConditionalDCIncrease = new ContextActionSavingThrow.ConditionalDCIncrease[0],
                                 Type = SavingThrowType.Fortitude,
+                                HasCustomDC = false,
                                 CustomDC = new ContextValue(),
                                 Actions = Helpers.CreateActionList(
-                                                new ContextActionConditionalSaved() {
-                                                    Succeed = new ActionList(),
-                                                    Failed = Helpers.CreateActionList(
-                                                        new ContextActionApplyBuff() {
-                                                            m_Buff = CursedBuff.ToReference<BlueprintBuffReference>(),
-                                                            Permanent = true,
-                                                            DurationValue = new ContextDurationValue() {
-                                                                m_IsExtendable = true,
-                                                                DiceCountValue = new ContextValue(),
-                                                                BonusValue = new ContextValue()
-                                                            },
-                                                            IsFromSpell = true,
-                                                        }),
-                                                }),
+                                    new ContextActionConditionalSaved() {
+                                        Succeed = new ActionList(),
+                                        Failed = Helpers.CreateActionList(
+                                            new ContextActionApplyBuff() {
+                                                m_Buff = CursedBuff.ToReference<BlueprintBuffReference>(),
+                                                Permanent = true,
+                                                DurationValue = new ContextDurationValue() {
+                                                    m_IsExtendable = true,
+                                                    DiceCountValue = new ContextValue(),
+                                                    BonusValue = new ContextValue()
+                                                },
+                                                IsFromSpell = true,
+                                            }),
+                                    }),
                             }),
                             IfFalse = Helpers.CreateActionList(),
                         });
@@ -1106,114 +1237,152 @@ namespace ExpandedContent.Tweaks.Classes {
                     c.m_CharacterClass = DreadKnightClass.ToReference<BlueprintCharacterClassReference>();
                 });
             });
-            var CrueltyExhaustedBuff = Helpers.CreateBlueprint<BlueprintBuff>("CrueltyExhaustedBuff", bp => {
+            var CrueltyExhaustedBuff = Helpers.CreateBuff("CrueltyExhaustedBuff", bp => {
                 bp.SetName("Cruelty - Exhausted");
                 bp.SetDescription("The next use of profane corruption will be enhanced with the exhausted cruelty.");
-                bp.m_Icon = FatigueIcon.Icon;
+                bp.m_Icon = ExhaustedBuff.Icon;
                 bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
                 bp.IsClassFeature = true;
                 bp.AddComponent<AddAbilityUseTrigger>(c => {
+                    c.ActionsOnAllTargets = false;
+                    c.AfterCast = false;
+                    c.ActionsOnTarget = true;
+                    c.FromSpellbook = false;
+                    c.m_Spellbooks = new BlueprintSpellbookReference[] { };
+                    c.ForOneSpell = false;
+                    c.m_Ability = new BlueprintAbilityReference();
                     c.ForMultipleSpells = true;
                     c.Abilities = new List<BlueprintAbilityReference>() {
                         TouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>(),
                         ChannelTouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>()
                     };
-                    c.ActionsOnTarget = true;
+                    c.MinSpellLevel = false;
+                    c.MinSpellLevelLimit = 0;
+                    c.ExactSpellLevel = false;
+                    c.ExactSpellLevelLimit = 0;
+                    c.CheckAbilityType = false;
+                    c.Type = AbilityType.Spell;
+                    c.CheckDescriptor = false;
+                    c.SpellDescriptor = new SpellDescriptor();
+                    c.CheckRange = false;
+                    c.Range = AbilityRange.Touch;
                     c.Action = Helpers.CreateActionList(
                         new Conditional {
                             ConditionsChecker = new ConditionsChecker {
                                 Conditions = new Condition[] {
-                                    new ContextConditionIsCaster() { Not = true }
+                                    new ContextConditionIsAlly() { Not = true }
                                 }
                             },
                             IfTrue = Helpers.CreateActionList(
                             new ContextActionSavingThrow() {
                                 m_ConditionalDCIncrease = new ContextActionSavingThrow.ConditionalDCIncrease[0],
                                 Type = SavingThrowType.Fortitude,
+                                HasCustomDC = false,
                                 CustomDC = new ContextValue(),
                                 Actions = Helpers.CreateActionList(
-                                                new ContextActionConditionalSaved() {
-                                                    Succeed = new ActionList(),
-                                                    Failed = Helpers.CreateActionList(
-                                                        new ContextActionApplyBuff() {
-                                                            m_Buff = ExhaustedBuff.ToReference<BlueprintBuffReference>(),
-                                                            Permanent = true,
-                                                            DurationValue = new ContextDurationValue() {
-                                                                m_IsExtendable = true,
-                                                                DiceCountValue = new ContextValue(),
-                                                                BonusValue = new ContextValue()
-                                                            },
-                                                            IsFromSpell = true,
-                                                        }),
-                                                }),
+                                    new ContextActionConditionalSaved() {
+                                        Succeed = new ActionList(),
+                                        Failed = Helpers.CreateActionList(
+                                            new ContextActionApplyBuff() {
+                                                m_Buff = ExhaustedBuff.ToReference<BlueprintBuffReference>(),
+                                                Permanent = true,
+                                                DurationValue = new ContextDurationValue() {
+                                                    m_IsExtendable = true,
+                                                    DiceCountValue = new ContextValue(),
+                                                    BonusValue = new ContextValue()
+                                                },
+                                                IsFromSpell = true,
+                                            }),
+                                    }),
                             }),
                             IfFalse = Helpers.CreateActionList(),
-                        });                   
+                        });
                 });
                 bp.AddComponent<ContextCalculateAbilityParamsBasedOnClass>(c => {
                     c.StatType = StatType.Charisma;
                     c.m_CharacterClass = DreadKnightClass.ToReference<BlueprintCharacterClassReference>();
                 });
             });
-            var CrueltyFrightenedBuff = Helpers.CreateBlueprint<BlueprintBuff>("CrueltyFrightenedBuff", bp => {
+            var CrueltyFrightenedBuff = Helpers.CreateBuff("CrueltyFrightenedBuff", bp => {
                 bp.SetName("Cruelty - Frightened");
                 bp.SetDescription("The next use of profane corruption will be enhanced with the frightened cruelty.");
                 bp.Ranks = 1;
-                bp.m_Icon = FatigueIcon.Icon;
+                bp.m_Icon = FrightenedBuff.Icon;
                 bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
                 bp.IsClassFeature = true;
                 bp.AddComponent<AddAbilityUseTrigger>(c => {
+                    c.ActionsOnAllTargets = false;
+                    c.AfterCast = false;
+                    c.ActionsOnTarget = true;
+                    c.FromSpellbook = false;
+                    c.m_Spellbooks = new BlueprintSpellbookReference[] { };
+                    c.ForOneSpell = false;
+                    c.m_Ability = new BlueprintAbilityReference();
                     c.ForMultipleSpells = true;
                     c.Abilities = new List<BlueprintAbilityReference>() {
                         TouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>(),
                         ChannelTouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>()
                     };
-                    c.ActionsOnTarget = true;
+                    c.MinSpellLevel = false;
+                    c.MinSpellLevelLimit = 0;
+                    c.ExactSpellLevel = false;
+                    c.ExactSpellLevelLimit = 0;
+                    c.CheckAbilityType = false;
+                    c.Type = AbilityType.Spell;
+                    c.CheckDescriptor = false;
+                    c.SpellDescriptor = new SpellDescriptor();
+                    c.CheckRange = false;
+                    c.Range = AbilityRange.Touch;
                     c.Action = Helpers.CreateActionList(
                         new Conditional {
                             ConditionsChecker = new ConditionsChecker {
                                 Conditions = new Condition[] {
-                                    new ContextConditionIsCaster() { Not = true }
+                                    new ContextConditionIsAlly() { Not = true }
                                 }
                             },
                             IfTrue = Helpers.CreateActionList(
                             new ContextActionSavingThrow() {
                                 m_ConditionalDCIncrease = new ContextActionSavingThrow.ConditionalDCIncrease[0],
                                 Type = SavingThrowType.Fortitude,
+                                HasCustomDC = false,
                                 CustomDC = new ContextValue(),
                                 Actions = Helpers.CreateActionList(
-                                                new ContextActionConditionalSaved() {
-                                                    Succeed = new ActionList(),
-                                                    Failed = Helpers.CreateActionList(
-                                                        new ContextActionApplyBuff() {
-                                                            m_Buff = FrightenedBuff.ToReference<BlueprintBuffReference>(),
-                                                            DurationValue = new ContextDurationValue() {
-                                                                m_IsExtendable = true,
-                                                                DiceCountValue = 0,
-                                                                BonusValue = new ContextValue() {
-                                                                    Value = 1,
-                                                                    ValueType = ContextValueType.Rank
-                                                                }
-                                                            },
-                                                            IsFromSpell = true,
-                                                        }),
-                                                }),
+                                    new ContextActionConditionalSaved() {
+                                        Succeed = new ActionList(),
+                                        Failed = Helpers.CreateActionList(
+                                            new ContextActionApplyBuff() {
+                                                m_Buff = FrightenedBuff.ToReference<BlueprintBuffReference>(),
+                                                DurationValue = new ContextDurationValue() {
+                                                    m_IsExtendable = true,
+                                                    DiceCountValue = 0,
+                                                    BonusValue = new ContextValue() {
+                                                        Value = 1,
+                                                        ValueType = ContextValueType.Rank,
+                                                        ValueRank = AbilityRankType.Default
+                                                    }
+                                                },
+                                                IsFromSpell = true,
+                                            }),
+                                    }),
                             }),
                             IfFalse = Helpers.CreateActionList(),
                         });
                 });
                 bp.AddContextRankConfig(c => {
-                    c.m_BaseValueType = ContextRankBaseValueType.CustomProperty;
-                    c.m_CustomProperty = FrightenedBuff.ToReference<BlueprintUnitPropertyReference>();
-                    c.m_Progression = ContextRankProgression.AsIs;
-                    c.m_Max = 10;
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
+                    c.m_Class = new BlueprintCharacterClassReference[] { DreadKnightClass.ToReference<BlueprintCharacterClassReference>() };
+                    c.m_Progression = ContextRankProgression.Div2;
+                    c.m_UseMin = true;
+                    c.m_Min = 1;
+                    c.m_Max = 20;
                 });
                 bp.AddComponent<ContextCalculateAbilityParamsBasedOnClass>(c => {
                     c.StatType = StatType.Charisma;
                     c.m_CharacterClass = DreadKnightClass.ToReference<BlueprintCharacterClassReference>();
                 });
             });
-            var CrueltyNauseatedBuff = Helpers.CreateBlueprint<BlueprintBuff>("CrueltyNauseatedBuff", bp => {
+            var CrueltyNauseatedBuff = Helpers.CreateBuff("CrueltyNauseatedBuff", bp => {
                 bp.SetName("Cruelty - Nauseated");
                 bp.SetDescription("The next use of profane corruption will be enhanced with the nauseated cruelty.");
                 bp.Ranks = 1;
@@ -1221,165 +1390,214 @@ namespace ExpandedContent.Tweaks.Classes {
                 bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
                 bp.IsClassFeature = true;
                 bp.AddComponent<AddAbilityUseTrigger>(c => {
+                    c.ActionsOnAllTargets = false;
+                    c.AfterCast = false;
+                    c.ActionsOnTarget = true;
+                    c.FromSpellbook = false;
+                    c.m_Spellbooks = new BlueprintSpellbookReference[] { };
+                    c.ForOneSpell = false;
+                    c.m_Ability = new BlueprintAbilityReference();
                     c.ForMultipleSpells = true;
                     c.Abilities = new List<BlueprintAbilityReference>() {
                         TouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>(),
                         ChannelTouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>()
                     };
-                    c.ActionsOnTarget = true;
+                    c.MinSpellLevel = false;
+                    c.MinSpellLevelLimit = 0;
+                    c.ExactSpellLevel = false;
+                    c.ExactSpellLevelLimit = 0;
+                    c.CheckAbilityType = false;
+                    c.Type = AbilityType.Spell;
+                    c.CheckDescriptor = false;
+                    c.SpellDescriptor = new SpellDescriptor();
+                    c.CheckRange = false;
+                    c.Range = AbilityRange.Touch;
                     c.Action = Helpers.CreateActionList(
                         new Conditional {
                             ConditionsChecker = new ConditionsChecker {
                                 Conditions = new Condition[] {
-                                    new ContextConditionIsCaster() { Not = true }
+                                    new ContextConditionIsAlly() { Not = true }
                                 }
                             },
                             IfTrue = Helpers.CreateActionList(
                             new ContextActionSavingThrow() {
                                 m_ConditionalDCIncrease = new ContextActionSavingThrow.ConditionalDCIncrease[0],
                                 Type = SavingThrowType.Fortitude,
+                                HasCustomDC = false,
                                 CustomDC = new ContextValue(),
                                 Actions = Helpers.CreateActionList(
-                                                new ContextActionConditionalSaved() {
-                                                    Succeed = new ActionList(),
-                                                    Failed = Helpers.CreateActionList(
-                                                        new ContextActionApplyBuff() {
-                                                            m_Buff = NauseatedBuff.ToReference<BlueprintBuffReference>(),
-                                                            AsChild = true,
-                                                            DurationValue = new ContextDurationValue() {
-                                                                m_IsExtendable = true,
-                                                                DiceCountValue = 0,
-                                                                BonusValue = new ContextValue() {
-                                                                    Value = 1,
-                                                                    ValueType = ContextValueType.Rank
-                                                                }
-                                                            },
-                                                            IsFromSpell = true,
-                                                        }),
-                                                }),
+                                    new ContextActionConditionalSaved() {
+                                        Succeed = new ActionList(),
+                                        Failed = Helpers.CreateActionList(
+                                            new ContextActionApplyBuff() {
+                                                m_Buff = NauseatedBuff.ToReference<BlueprintBuffReference>(),
+                                                DurationValue = new ContextDurationValue() {
+                                                    m_IsExtendable = true,
+                                                    DiceCountValue = 0,
+                                                    BonusValue = new ContextValue() {
+                                                        Value = 1,
+                                                        ValueType = ContextValueType.Rank,
+                                                        ValueRank = AbilityRankType.Default
+                                                    }
+                                                },
+                                                IsFromSpell = true,
+                                            }),
+                                    }),
                             }),
                             IfFalse = Helpers.CreateActionList(),
                         });
                 });
                 bp.AddContextRankConfig(c => {
-                    c.m_BaseValueType = ContextRankBaseValueType.CustomProperty;
-                    c.m_CustomProperty = StaggeredBuff.ToReference<BlueprintUnitPropertyReference>();
-                    c.m_Progression = ContextRankProgression.AsIs;
-                    c.m_Max = 7;
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
+                    c.m_Class = new BlueprintCharacterClassReference[] { DreadKnightClass.ToReference<BlueprintCharacterClassReference>() };
+                    c.m_Progression = ContextRankProgression.DivStep;
+                    c.m_StartLevel = 0;
+                    c.m_StepLevel = 3;
+                    c.m_UseMin = true;
+                    c.m_Min = 1;                    
                 });
                 bp.AddComponent<ContextCalculateAbilityParamsBasedOnClass>(c => {
                     c.StatType = StatType.Charisma;
                     c.m_CharacterClass = DreadKnightClass.ToReference<BlueprintCharacterClassReference>();
                 });
             });
-            var CrueltyPoisonedBuff = Helpers.CreateBlueprint<BlueprintBuff>("CrueltyPoisonedBuff", bp => {
+            var CrueltyPoisonedBuff = Helpers.CreateBuff("CrueltyPoisonedBuff", bp => {
                 bp.SetName("Cruelty - Poisoned");
                 bp.SetDescription("The next use of profane corruption will be enhanced with the poisoned cruelty.");
                 bp.Ranks = 1;
-                bp.m_Icon = FatigueIcon.Icon;
+                bp.m_Icon = PoisonedBuff.Icon;
                 bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
                 bp.IsClassFeature = true;
                 bp.AddComponent<AddAbilityUseTrigger>(c => {
+                    c.ActionsOnAllTargets = false;
+                    c.AfterCast = false;
+                    c.ActionsOnTarget = true;
+                    c.FromSpellbook = false;
+                    c.m_Spellbooks = new BlueprintSpellbookReference[] { };
+                    c.ForOneSpell = false;
+                    c.m_Ability = new BlueprintAbilityReference();
                     c.ForMultipleSpells = true;
                     c.Abilities = new List<BlueprintAbilityReference>() {
                         TouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>(),
                         ChannelTouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>()
                     };
-                    c.ActionsOnTarget = true;
+                    c.MinSpellLevel = false;
+                    c.MinSpellLevelLimit = 0;
+                    c.ExactSpellLevel = false;
+                    c.ExactSpellLevelLimit = 0;
+                    c.CheckAbilityType = false;
+                    c.Type = AbilityType.Spell;
+                    c.CheckDescriptor = false;
+                    c.SpellDescriptor = new SpellDescriptor();
+                    c.CheckRange = false;
+                    c.Range = AbilityRange.Touch;
                     c.Action = Helpers.CreateActionList(
                         new Conditional {
                             ConditionsChecker = new ConditionsChecker {
                                 Conditions = new Condition[] {
-                                    new ContextConditionIsCaster() { Not = true }
+                                    new ContextConditionIsAlly() { Not = true }
                                 }
                             },
                             IfTrue = Helpers.CreateActionList(
                             new ContextActionSavingThrow() {
                                 m_ConditionalDCIncrease = new ContextActionSavingThrow.ConditionalDCIncrease[0],
                                 Type = SavingThrowType.Fortitude,
+                                HasCustomDC = false,
                                 CustomDC = new ContextValue(),
                                 Actions = Helpers.CreateActionList(
-                                                new ContextActionConditionalSaved() {
-                                                    Succeed = new ActionList(),
-                                                    Failed = Helpers.CreateActionList(
-                                                        new ContextActionApplyBuff() {
-                                                            m_Buff = PoisonedBuff.ToReference<BlueprintBuffReference>(),
-                                                            DurationValue = new ContextDurationValue() {
-                                                                m_IsExtendable = true,
-                                                                DiceCountValue = 0,
-                                                                BonusValue = new ContextValue() {
-                                                                    Value = 1,
-                                                                    ValueType = ContextValueType.Rank
-                                                                }
-                                                            },
-                                                            IsFromSpell = true,
-                                                        }),
-                                                }),
+                                    new ContextActionConditionalSaved() {
+                                        Succeed = new ActionList(),
+                                        Failed = Helpers.CreateActionList(
+                                            new ContextActionApplyBuff() {
+                                                m_Buff = PoisonedBuff.ToReference<BlueprintBuffReference>(),
+                                                Permanent = true,
+                                                DurationValue = new ContextDurationValue() {
+                                                    m_IsExtendable = true,
+                                                    DiceCountValue = new ContextValue(),
+                                                    BonusValue = new ContextValue()
+                                                },
+                                                IsFromSpell = true,
+                                            }),
+                                    }),
                             }),
                             IfFalse = Helpers.CreateActionList(),
                         });
-                });
-                bp.AddContextRankConfig(c => {
-                    c.m_BaseValueType = ContextRankBaseValueType.CustomProperty;
-                    c.m_CustomProperty = PoisonedBuff.ToReference<BlueprintUnitPropertyReference>();
-                    c.m_Progression = ContextRankProgression.AsIs;
-                    c.m_Max = 20;
                 });
                 bp.AddComponent<ContextCalculateAbilityParamsBasedOnClass>(c => {
                     c.StatType = StatType.Charisma;
                     c.m_CharacterClass = DreadKnightClass.ToReference<BlueprintCharacterClassReference>();
                 });
             });
-            var CrueltyBlindedBuff = Helpers.CreateBlueprint<BlueprintBuff>("CrueltyBlindedBuff", bp => {
+            var CrueltyBlindedBuff = Helpers.CreateBuff("CrueltyBlindedBuff", bp => {
                 bp.SetName("Cruelty - Blinded");
                 bp.SetDescription("The next use of profane corruption will be enhanced with the blinded cruelty.");
                 bp.Ranks = 1;
-                bp.m_Icon = FatigueIcon.Icon;
+                bp.m_Icon = BlindedBuff.Icon;
                 bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
                 bp.IsClassFeature = true;
                 bp.AddComponent<AddAbilityUseTrigger>(c => {
+                    c.ActionsOnAllTargets = false;
+                    c.AfterCast = false;
+                    c.ActionsOnTarget = true;
+                    c.FromSpellbook = false;
+                    c.m_Spellbooks = new BlueprintSpellbookReference[] { };
+                    c.ForOneSpell = false;
+                    c.m_Ability = new BlueprintAbilityReference();
                     c.ForMultipleSpells = true;
                     c.Abilities = new List<BlueprintAbilityReference>() {
                         TouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>(),
                         ChannelTouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>()
                     };
-                    c.ActionsOnTarget = true;
+                    c.MinSpellLevel = false;
+                    c.MinSpellLevelLimit = 0;
+                    c.ExactSpellLevel = false;
+                    c.ExactSpellLevelLimit = 0;
+                    c.CheckAbilityType = false;
+                    c.Type = AbilityType.Spell;
+                    c.CheckDescriptor = false;
+                    c.SpellDescriptor = new SpellDescriptor();
+                    c.CheckRange = false;
+                    c.Range = AbilityRange.Touch;
                     c.Action = Helpers.CreateActionList(
                         new Conditional {
                             ConditionsChecker = new ConditionsChecker {
                                 Conditions = new Condition[] {
-                                    new ContextConditionIsCaster() { Not = true }
+                                    new ContextConditionIsAlly() { Not = true }
                                 }
                             },
                             IfTrue = Helpers.CreateActionList(
                             new ContextActionSavingThrow() {
                                 m_ConditionalDCIncrease = new ContextActionSavingThrow.ConditionalDCIncrease[0],
                                 Type = SavingThrowType.Fortitude,
+                                HasCustomDC = false,
                                 CustomDC = new ContextValue(),
                                 Actions = Helpers.CreateActionList(
-                                                new ContextActionConditionalSaved() {
-                                                    Succeed = new ActionList(),
-                                                    Failed = Helpers.CreateActionList(
-                                                        new ContextActionApplyBuff() {
-                                                            m_Buff = BlindedBuff.ToReference<BlueprintBuffReference>(),
-                                                            DurationValue = new ContextDurationValue() {
-                                                                m_IsExtendable = true,
-                                                                DiceCountValue = 0,
-                                                                BonusValue = new ContextValue() {
-                                                                    Value = 1,
-                                                                    ValueType = ContextValueType.Rank
-                                                                }
-                                                            },
-                                                            IsFromSpell = true,
-                                                        }),
-                                                }),
+                                    new ContextActionConditionalSaved() {
+                                        Succeed = new ActionList(),
+                                        Failed = Helpers.CreateActionList(
+                                            new ContextActionApplyBuff() {
+                                                m_Buff = BlindedBuff.ToReference<BlueprintBuffReference>(),
+                                                DurationValue = new ContextDurationValue() {
+                                                    m_IsExtendable = true,
+                                                    DiceCountValue = 0,
+                                                    BonusValue = new ContextValue() {
+                                                        Value = 1,
+                                                        ValueType = ContextValueType.Rank,
+                                                        ValueRank = AbilityRankType.Default
+                                                    }
+                                                },
+                                                IsFromSpell = true,
+                                            }),
+                                    }),
                             }),
                             IfFalse = Helpers.CreateActionList(),
                         });
                 });
                 bp.AddContextRankConfig(c => {
-                    c.m_BaseValueType = ContextRankBaseValueType.CustomProperty;
-                    c.m_CustomProperty = BlindedBuff.ToReference<BlueprintUnitPropertyReference>();
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
+                    c.m_Class = new BlueprintCharacterClassReference[] { DreadKnightClass.ToReference<BlueprintCharacterClassReference>() };
                     c.m_Progression = ContextRankProgression.AsIs;
                     c.m_Max = 20;
                 });
@@ -1388,7 +1606,7 @@ namespace ExpandedContent.Tweaks.Classes {
                     c.m_CharacterClass = DreadKnightClass.ToReference<BlueprintCharacterClassReference>();
                 });
             });
-            var CrueltyParalyzedBuff = Helpers.CreateBlueprint<BlueprintBuff>("CrueltyParalyzedBuff", bp => {
+            var CrueltyParalyzedBuff = Helpers.CreateBuff("CrueltyParalyzedBuff", bp => {
                 bp.SetName("Cruelty - Paralyzed");
                 bp.SetDescription("The next use of profane corruption will be enhanced with the paralyzed cruelty.");
                 bp.Ranks = 1;
@@ -1396,70 +1614,96 @@ namespace ExpandedContent.Tweaks.Classes {
                 bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
                 bp.IsClassFeature = true;
                 bp.AddComponent<AddAbilityUseTrigger>(c => {
+                    c.ActionsOnAllTargets = false;
+                    c.AfterCast = false;
+                    c.ActionsOnTarget = true;
+                    c.FromSpellbook = false;
+                    c.m_Spellbooks = new BlueprintSpellbookReference[] { };
+                    c.ForOneSpell = false;
+                    c.m_Ability = new BlueprintAbilityReference();
                     c.ForMultipleSpells = true;
                     c.Abilities = new List<BlueprintAbilityReference>() {
                         TouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>(),
                         ChannelTouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>()
                     };
-                    c.ActionsOnTarget = true;
+                    c.MinSpellLevel = false;
+                    c.MinSpellLevelLimit = 0;
+                    c.ExactSpellLevel = false;
+                    c.ExactSpellLevelLimit = 0;
+                    c.CheckAbilityType = false;
+                    c.Type = AbilityType.Spell;
+                    c.CheckDescriptor = false;
+                    c.SpellDescriptor = new SpellDescriptor();
+                    c.CheckRange = false;
+                    c.Range = AbilityRange.Touch;
                     c.Action = Helpers.CreateActionList(
                         new Conditional {
                             ConditionsChecker = new ConditionsChecker {
                                 Conditions = new Condition[] {
-                                    new ContextConditionIsCaster() { Not = true }
+                                    new ContextConditionIsAlly() { Not = true }
                                 }
                             },
                             IfTrue = Helpers.CreateActionList(
                             new ContextActionSavingThrow() {
                                 m_ConditionalDCIncrease = new ContextActionSavingThrow.ConditionalDCIncrease[0],
                                 Type = SavingThrowType.Fortitude,
+                                HasCustomDC = false,
                                 CustomDC = new ContextValue(),
                                 Actions = Helpers.CreateActionList(
-                                                new ContextActionConditionalSaved() {
-                                                    Succeed = new ActionList(),
-                                                    Failed = Helpers.CreateActionList(
-                                                        new ContextActionApplyBuff() {
-                                                            m_Buff = ParalyzedBuff.ToReference<BlueprintBuffReference>(),
-                                                            DurationValue = new ContextDurationValue() {
-                                                                m_IsExtendable = true,
-                                                                DiceCountValue = 0,
-                                                                BonusValue = new ContextValue() {
-                                                                    Value = 1,
-                                                                    ValueType = ContextValueType.Rank
-                                                                }
-                                                            },
-                                                            IsFromSpell = true,
-                                                        }),
-                                                }),
+                                    new ContextActionConditionalSaved() {
+                                        Succeed = new ActionList(),
+                                        Failed = Helpers.CreateActionList(
+                                            new ContextActionApplyBuff() {
+                                                m_Buff = ParalyzedBuff.ToReference<BlueprintBuffReference>(),
+                                                DurationValue = new ContextDurationValue() {
+                                                    m_IsExtendable = true,
+                                                    DiceCountValue = 0,
+                                                    BonusValue = new ContextValue() {
+                                                        Value = 1                                                        
+                                                    }
+                                                },
+                                                IsFromSpell = true,
+                                            }),
+                                    }),
                             }),
                             IfFalse = Helpers.CreateActionList(),
                         });
-                });
-                bp.AddContextRankConfig(c => {
-                    c.m_BaseValueType = ContextRankBaseValueType.CustomProperty;
-                    c.m_CustomProperty = ParalyzedBuff.ToReference<BlueprintUnitPropertyReference>();
-                    c.m_Progression = ContextRankProgression.AsIs;
-                    c.m_Max = 1;
                 });
                 bp.AddComponent<ContextCalculateAbilityParamsBasedOnClass>(c => {
                     c.StatType = StatType.Charisma;
                     c.m_CharacterClass = DreadKnightClass.ToReference<BlueprintCharacterClassReference>();
                 });
             });
-            var CrueltyStunnedBuff = Helpers.CreateBlueprint<BlueprintBuff>("CrueltyStunnedBuff", bp => {
+            var CrueltyStunnedBuff = Helpers.CreateBuff("CrueltyStunnedBuff", bp => {
                 bp.SetName("Cruelty - Stunned");
                 bp.SetDescription("The next use of profane corruption will be enhanced with the stunned cruelty.");
                 bp.Ranks = 1;
-                bp.m_Icon = FatigueIcon.Icon;
+                bp.m_Icon = StunnedBuff.Icon;
                 bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
                 bp.IsClassFeature = true;
                 bp.AddComponent<AddAbilityUseTrigger>(c => {
+                    c.ActionsOnAllTargets = false;
+                    c.AfterCast = false;
+                    c.ActionsOnTarget = true;
+                    c.FromSpellbook = false;
+                    c.m_Spellbooks = new BlueprintSpellbookReference[] { };
+                    c.ForOneSpell = false;
+                    c.m_Ability = new BlueprintAbilityReference();
                     c.ForMultipleSpells = true;
                     c.Abilities = new List<BlueprintAbilityReference>() {
                         TouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>(),
                         ChannelTouchOfProfaneCorruptionAbility.ToReference<BlueprintAbilityReference>()
                     };
-                    c.ActionsOnTarget = true;
+                    c.MinSpellLevel = false;
+                    c.MinSpellLevelLimit = 0;
+                    c.ExactSpellLevel = false;
+                    c.ExactSpellLevelLimit = 0;
+                    c.CheckAbilityType = false;
+                    c.Type = AbilityType.Spell;
+                    c.CheckDescriptor = false;
+                    c.SpellDescriptor = new SpellDescriptor();
+                    c.CheckRange = false;
+                    c.Range = AbilityRange.Touch;
                     c.Action = Helpers.CreateActionList(
                         new Conditional {
                             ConditionsChecker = new ConditionsChecker {
@@ -1473,31 +1717,35 @@ namespace ExpandedContent.Tweaks.Classes {
                                 Type = SavingThrowType.Fortitude,
                                 CustomDC = new ContextValue(),
                                 Actions = Helpers.CreateActionList(
-                                                new ContextActionConditionalSaved() {
-                                                    Succeed = new ActionList(),
-                                                    Failed = Helpers.CreateActionList(
-                                                        new ContextActionApplyBuff() {
-                                                            m_Buff = StunnedBuff.ToReference<BlueprintBuffReference>(),
-                                                            DurationValue = new ContextDurationValue() {
-                                                                m_IsExtendable = true,
-                                                                DiceCountValue = 0,
-                                                                BonusValue = new ContextValue() {
-                                                                    Value = 1,
-                                                                    ValueType = ContextValueType.Rank
-                                                                }
-                                                            },
-                                                            IsFromSpell = true,
-                                                        }),
-                                                }),
+                                    new ContextActionConditionalSaved() {
+                                        Succeed = new ActionList(),
+                                        Failed = Helpers.CreateActionList(
+                                            new ContextActionApplyBuff() {
+                                                m_Buff = StunnedBuff.ToReference<BlueprintBuffReference>(),
+                                                DurationValue = new ContextDurationValue() {
+                                                    m_IsExtendable = true,
+                                                    DiceCountValue = 0,
+                                                    BonusValue = new ContextValue() {
+                                                        Value = 1,
+                                                        ValueType = ContextValueType.Rank
+                                                    }
+                                                },
+                                                IsFromSpell = true,
+                                            }),
+                                    }),
                             }),
                             IfFalse = Helpers.CreateActionList(),
                         });
                 });
                 bp.AddContextRankConfig(c => {
-                    c.m_BaseValueType = ContextRankBaseValueType.CustomProperty;
-                    c.m_CustomProperty = StunnedBuff.ToReference<BlueprintUnitPropertyReference>();
-                    c.m_Progression = ContextRankProgression.AsIs;
-                    c.m_Max = 5;
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
+                    c.m_Class = new BlueprintCharacterClassReference[] { DreadKnightClass.ToReference<BlueprintCharacterClassReference>() };
+                    c.m_Progression = ContextRankProgression.DivStep;
+                    c.m_StartLevel = 0;
+                    c.m_StepLevel = 4;
+                    c.m_UseMin = true;
+                    c.m_Min = 1;
                 });
                 bp.AddComponent<ContextCalculateAbilityParamsBasedOnClass>(c => {
                     c.StatType = StatType.Charisma;
