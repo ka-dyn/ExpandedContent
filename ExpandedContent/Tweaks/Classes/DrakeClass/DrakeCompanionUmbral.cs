@@ -46,6 +46,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
             var UnitDog = Resources.GetBlueprint<BlueprintUnit>("918939943bf32ba4a95470ea696c2ba5");
             var HeadLocatorFeature = Resources.GetBlueprint<BlueprintFeature>("9c57e9674b4a4a2b9920f9fec47f7e6a");
             var DrakeSizeTiny = Resources.GetModBlueprint<BlueprintFeature>("DrakeSizeTiny");
+            var NegativeEnergyAffinity = Resources.GetBlueprint<BlueprintFeature>("d5ee498e19722854198439629c1841a5");
 
 
             var DrakeUmbralPortrait = Helpers.CreateBlueprint<BlueprintPortrait>("DrakeUmbralPortrait", bp => {
@@ -154,7 +155,8 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                     DrakeSubtypeUmbral.ToReference<BlueprintUnitFactReference>(),
                     DragonType.ToReference<BlueprintUnitFactReference>(),
                     DrakeBloodUmbral.ToReference<BlueprintUnitFactReference>(),
-                    DrakeSizeTiny.ToReference<BlueprintUnitFactReference>()
+                    DrakeSizeTiny.ToReference<BlueprintUnitFactReference>(),
+                    NegativeEnergyAffinity.ToReference<BlueprintUnitFactReference>()
                 };
             });
 
