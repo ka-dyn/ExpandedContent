@@ -51,6 +51,8 @@ namespace ExpandedContent.Tweaks.Mysteries {
             var ArchonsAura = Resources.GetBlueprint<BlueprintAbility>("e67efd8c84f69d24ab472c9f546fff7e");
             var BlindFight = Resources.GetBlueprint<BlueprintFeature>("4e219f5894ad0ea4daa0699e28c37b1d");
             var BuffWingsMutagen = Resources.GetBlueprint<BlueprintBuff>("e4979934bdb39d842b28bee614606823");
+            var DraconicMysteryIcon = AssetLoader.LoadInternal("Skills", "Icon_OracleDraconicMystery.png");
+
             //Spelllist
             var CauseFearSpell = Resources.GetBlueprint<BlueprintAbility>("bd81a3931aa285a4f9844585b5d97e51");
             var ResistEnergySpell = Resources.GetBlueprint<BlueprintAbility>("21ffef7791ce73f468b6fca4d9371e8b");
@@ -384,7 +386,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
             });
             //Main Mystery Feature
             var OracleDragonMysteryFeature = Helpers.CreateBlueprint<BlueprintFeature>("OracleDragonMysteryFeature", bp => {
-                //bp.m_Icon = Waiting on Gnomes
+                bp.m_Icon = DraconicMysteryIcon;
                 bp.SetName("Dragon");
                 bp.SetDescription("An oracle with the dragon mystery adds {g|Encyclopedia:Mobility}Mobility{/g}, {g|Encyclopedia:Persuasion}Persuasion{/g}, " +
                     "{g|Encyclopedia:Perception}Perception{/g} and {g|Encyclopedia:Knowledge_Arcana}Knowledge (world) {/g} to her list of class {g|Encyclopedia:Skills}skills{/g}.");
@@ -416,7 +418,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
             });
             //EnlightnedPhilosopherMystery
             var EnlightnedPhilosopherDragonMysteryFeature = Helpers.CreateBlueprint<BlueprintFeature>("EnlightnedPhilosopherDragonMysteryFeature", bp => {
-                //bp.m_Icon = Waiting on Gnomes
+                bp.m_Icon = DraconicMysteryIcon;
                 bp.SetName("Dragon");
                 bp.SetDescription("An oracle with the dragon mystery adds {g|Encyclopedia:Mobility}Mobility{/g}, {g|Encyclopedia:Persuasion}Persuasion{/g}, " +
                     "{g|Encyclopedia:Perception}Perception{/g} and {g|Encyclopedia:Knowledge_Arcana}Knowledge (Arcana) {/g} to her list of class {g|Encyclopedia:Skills}skills{/g}.");
@@ -443,7 +445,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
             });
             //DivineHerbalistMystery
             var DivineHerbalistDragonMysteryFeature = Helpers.CreateBlueprint<BlueprintFeature>("DivineHerbalistDragonMysteryFeature", bp => {
-                //bp.m_Icon = Waiting on Gnomes
+                bp.m_Icon = DraconicMysteryIcon;
                 bp.SetName("Dragon");
                 bp.SetDescription("An oracle with the dragon mystery adds {g|Encyclopedia:Mobility}Mobility{/g}, {g|Encyclopedia:Persuasion}Persuasion{/g}, " +
                     "{g|Encyclopedia:Perception}Perception{/g} and {g|Encyclopedia:Knowledge_Arcana}Knowledge (world) {/g} to her list of class {g|Encyclopedia:Skills}skills{/g}.");
@@ -463,7 +465,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
             });
             //Ocean's Echo
             var OceansEchoDragonMysteryFeature = Helpers.CreateBlueprint<BlueprintFeature>("OceansEchoDragonMysteryFeature", bp => {
-                //bp.m_Icon = Waiting on Gnomes
+                bp.m_Icon = DraconicMysteryIcon;
                 bp.SetName("Dragon");
                 bp.SetDescription("An oracle with the dragon mystery adds {g|Encyclopedia:Mobility}Mobility{/g}, {g|Encyclopedia:Persuasion}Persuasion{/g}, " +
                     "{g|Encyclopedia:Perception}Perception{/g} and {g|Encyclopedia:Knowledge_Arcana}Knowledge (world) {/g} to her list of class {g|Encyclopedia:Skills}skills{/g}.");

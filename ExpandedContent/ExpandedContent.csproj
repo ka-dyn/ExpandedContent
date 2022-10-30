@@ -196,6 +196,7 @@
     <Compile Include="Tweaks\Classes\DrakeClass\DrakeCompanionBlack.cs" />
     <Compile Include="Tweaks\Classes\DrakeClass\DrakeCompanionBlue.cs" />
     <Compile Include="Tweaks\Classes\DrakeClass\DrakeCompanionBronze.cs" />
+    <Compile Include="Tweaks\Classes\DrakeClass\DrakeCompanionUmbral.cs" />
     <Compile Include="Tweaks\Classes\DrakeClass\DrakeCompanionGold.cs" />
     <Compile Include="Tweaks\Classes\DrakeClass\DrakeCompanionRed.cs" />
     <Compile Include="Tweaks\Classes\DrakeClass\DrakeCompanionBrass.cs" />
@@ -1123,6 +1124,15 @@
     <Content Include="Assets\Portraits\SilverSmall.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Portraits\UmbralFulllength.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Portraits\UmbralMedium.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Portraits\UmbralSmall.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Portraits\WhiteFulllength.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -1312,6 +1322,9 @@
     <Content Include="Assets\Skills\Icon_OD.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Skills\Icon_OracleDraconicMystery.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Skills\Icon_Plague.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -1370,6 +1383,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_UnholyRes.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_VampireCurse.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_Vicious.png">

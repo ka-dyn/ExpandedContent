@@ -29,6 +29,7 @@ namespace ExpandedContent.Tweaks {
                 Classes.DrakeClass.DrakeCompanionRed.AddDrakeCompanionRed();
                 Classes.DrakeClass.DrakeCompanionWhite.AddDrakeCompanionWhite();
                 Classes.DrakeClass.DrakeCompanionGold.AddDrakeCompanionGold();
+                Classes.DrakeClass.DrakeCompanionUmbral.AddDrakeCompanionUmbral();
                 Classes.DrakeClass.DrakeSpells.AddDrakeSpells();
                 Classes.DrakeClass.DrakeCompanionSelection.AddDrakeCompanionSelection();
                 Classes.DrakeClass.DrakeMythicAbilities.AddDrakeMythicAbilities();

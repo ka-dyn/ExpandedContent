@@ -7,6 +7,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Items.Weapons;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
+using Kingmaker.ResourceLinks;
 using Kingmaker.UnitLogic.Buffs;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.FactLogic;
@@ -21,14 +22,15 @@ using System.Threading.Tasks;
 using UnityEngine;
 
 namespace ExpandedContent.Tweaks.Classes.DrakeClass {
-    internal class DrakeCompanionGold {
+    internal class DrakeCompanionUmbral {
 
-        public static void AddDrakeCompanionGold() {
+        public static void AddDrakeCompanionUmbral() {
 
             var AnimalCompanionRank = Resources.GetBlueprint<BlueprintFeature>("1670990255e4fe948a863bafd5dbda5d");
             var DrakeCompanionClass = Resources.GetModBlueprint<BlueprintCharacterClass>("DrakeCompanionClass");
-            var DrakeSubtypeFire = Resources.GetModBlueprint<BlueprintFeature>("DrakeSubtypeFire");
-            var FormOfTheDragonGoldBuff = Resources.GetBlueprint<BlueprintBuff>("89669cfba3d9c15448c23b79dd604c41").GetComponent<Polymorph>();
+            var DrakeSubtypeUmbral = Resources.GetModBlueprint<BlueprintFeature>("DrakeSubtypeUmbral");
+            var Melazmera = Resources.GetBlueprint<BlueprintUnit>("85c7a3fd80f93db43a3e588ba5f5f9bc");
+            var UmbralDragonBarks = Resources.GetBlueprint<BlueprintUnitAsksList>("a526fcf667234d4e8bb2ba5376a0f91a");
             var BloodlineDraconicGoldProgression = Resources.GetBlueprint<BlueprintProgression>("6c67ef823db8d7d45bb0ef82f959743d");
             var BlackDragon_Barks = Resources.GetBlueprint<BlueprintUnitAsksList>("3c0924a80e504f04c94de6ec2a28f9aa");
             var CharacterBrain = Resources.GetBlueprint<BlueprintBrain>("cf986dd7ba9d4ec46ad8a3a0406d02ae");
@@ -46,7 +48,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
             var DrakeSizeTiny = Resources.GetModBlueprint<BlueprintFeature>("DrakeSizeTiny");
 
 
-            var DrakeGoldPortrait = Helpers.CreateBlueprint<BlueprintPortrait>("DrakeGoldPortrait", bp => {
+            var DrakeUmbralPortrait = Helpers.CreateBlueprint<BlueprintPortrait>("DrakeUmbralPortrait", bp => {
                 bp.Data = new PortraitData() {
                     PortraitCategory = PortraitCategory.None,
                     IsDefault = false,
@@ -56,8 +58,8 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
             });
 
 
-            var DrakeBloodGold = Helpers.CreateBlueprint<BlueprintFeature>("DrakeBloodGold", bp => {
-                bp.SetName("DrakeBloodGold");
+            var DrakeBloodUmbral = Helpers.CreateBlueprint<BlueprintFeature>("DrakeBloodUmbral", bp => {
+                bp.SetName("DrakeBloodUmbral");
                 bp.SetDescription("");
                 bp.m_AllowNonContextActions = false;
                 bp.HideInUI = true;
@@ -65,7 +67,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
             });
 
 
-            var DrakeCompanionUnitGold = Helpers.CreateBlueprint<BlueprintUnit>("DrakeCompanionUnitGold", bp => {
+            var DrakeCompanionUnitUmbral = Helpers.CreateBlueprint<BlueprintUnit>("DrakeCompanionUnitUmbral", bp => {
                 bp.AddComponent<AddClassLevels>(c => {
                     c.m_CharacterClass = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
                     c.RaceStat = StatType.Unknown;
@@ -84,10 +86,32 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 bp.Gender = Gender.Male;
                 bp.Size = Size.Huge;
                 bp.Color = AzataDragonUnit.Color;
-                bp.Alignment = Alignment.LawfulGood;
-                bp.m_Portrait = DrakeGoldPortrait.ToReference<BlueprintPortraitReference>();
-                bp.Prefab = FormOfTheDragonGoldBuff.m_Prefab;
-                bp.Visual = RedDragon.Visual;
+                bp.Alignment = Alignment.ChaoticEvil;
+                bp.m_Portrait = DrakeUmbralPortrait.ToReference<BlueprintPortraitReference>();
+                bp.Prefab = Melazmera.Prefab;
+                //bp.Visual = RedDragon.Visual;
+                bp.Visual = new UnitVisualParams() {
+                    BloodType = BloodType.Common,
+                    FootprintType = FootprintType.Humanoid,
+                    FootprintScale = 1,
+                    ArmorFx = new PrefabLink(),
+                    BloodPuddleFx = new PrefabLink(),
+                    DismemberFx = new PrefabLink(),
+                    RipLimbsApartFx = new PrefabLink(),
+                    IsNotUseDismember = false,
+                    m_Barks = UmbralDragonBarks.ToReference<BlueprintUnitAsksListReference>(),
+                    ReachFXThresholdBonus = 0,
+                    DefaultArmorSoundType = ArmorSoundType.Flesh,
+                    FootstepSoundSizeType = FootstepSoundSizeType.BootMedium,
+                    FootSoundType = FootSoundType.HardPaw,
+                    FootSoundSize = Size.Medium,
+                    BodySoundType = BodySoundType.Flesh,
+                    BodySoundSize = Size.Medium,
+                    FoleySoundPrefix = null, //?
+                    NoFinishingBlow = false,
+                    ImportanceOverride = 0,
+                    SilentCaster = true
+                };
                 bp.m_Faction = Neutrals.ToReference<BlueprintFactionReference>();
                 bp.FactionOverrides = AzataDragonUnit.FactionOverrides;
                 bp.m_Brain = CharacterBrain.ToReference<BlueprintBrainReference>();
@@ -127,28 +151,29 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 bp.MaxHP = 0;
                 bp.m_AddFacts = new BlueprintUnitFactReference[] {
                     DrakeCompanionSlotFeature.ToReference<BlueprintUnitFactReference>(),
-                    DrakeSubtypeFire.ToReference<BlueprintUnitFactReference>(),
+                    DrakeSubtypeUmbral.ToReference<BlueprintUnitFactReference>(),
                     DragonType.ToReference<BlueprintUnitFactReference>(),
-                    DrakeBloodGold.ToReference<BlueprintUnitFactReference>(),
+                    DrakeBloodUmbral.ToReference<BlueprintUnitFactReference>(),
                     DrakeSizeTiny.ToReference<BlueprintUnitFactReference>()
                 };
             });
 
-            FullPortraitInjecotr.Replacements[DrakeCompanionUnitGold.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "GoldFulllength.png", new Vector2Int(692, 1024), TextureFormat.RGBA32);
-            HalfPortraitInjecotr.Replacements[DrakeCompanionUnitGold.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "GoldMedium.png", new Vector2Int(330, 432), TextureFormat.RGBA32);
-            SmallPortraitInjecotr.Replacements[DrakeCompanionUnitGold.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "GoldSmall.png", new Vector2Int(185, 242), TextureFormat.RGBA32);
+            FullPortraitInjecotr.Replacements[DrakeCompanionUnitUmbral.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "UmbralFulllength.png", new Vector2Int(692, 1024), TextureFormat.RGBA32);
+            HalfPortraitInjecotr.Replacements[DrakeCompanionUnitUmbral.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "UmbralMedium.png", new Vector2Int(330, 432), TextureFormat.RGBA32);
+            SmallPortraitInjecotr.Replacements[DrakeCompanionUnitUmbral.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "UmbralSmall.png", new Vector2Int(185, 242), TextureFormat.RGBA32);
 
 
-            var DrakeCompanionFeatureGold = Helpers.CreateBlueprint<BlueprintFeature>("DrakeCompanionFeatureGold", bp => {
-                bp.SetName("Drake Companion - Gold");
+            var DrakeCompanionFeatureUmbral = Helpers.CreateBlueprint<BlueprintFeature>("DrakeCompanionFeatureUmbral", bp => {
+                bp.SetName("Drake Companion - Umbral");
                 bp.SetDescription("Drakes are brutish lesser kindred of true dragons. Though they aren’t particularly intelligent, drakes’ significantly faster breeding allows their kind to survive in harsh environments. While a " +
                     "young drake is weaker than a standard animal companion, as they grow they will start to resemble their draconic cousins more and more until they rival them in power. " +
-                    "\n This drake is descended from metallic gold dragons, giving it the fire subtype and granting it potential to wield fire breath attacks");
-                bp.m_Icon = BloodlineDraconicGoldProgression.m_Icon;
+                    "\n This drake is descended from umbral dragons from the plain of shadows, giving it the outsider subtype and granting it potential to wield negative energy breath attacks." +
+                    "\nThough a living creature, a umbral drake reacts to positive and negative energy as if they were undead — positive energy harms them, while negative energy {g|Encyclopedia:Healing}heals{/g} them.");
+                //bp.m_Icon = BloodlineDraconicGoldProgression.m_Icon;
                 bp.AddComponent<AddPet>(c => {
                     c.Type = PetType.AnimalCompanion;
                     c.ProgressionType = PetProgressionType.AnimalCompanion;
-                    c.m_Pet = DrakeCompanionUnitGold.ToReference<BlueprintUnitReference>();
+                    c.m_Pet = DrakeCompanionUnitUmbral.ToReference<BlueprintUnitReference>();
                     c.m_LevelRank = AnimalCompanionRank.ToReference<BlueprintFeatureReference>();
                 });
                 bp.AddComponent<PrerequisitePet>(c => {

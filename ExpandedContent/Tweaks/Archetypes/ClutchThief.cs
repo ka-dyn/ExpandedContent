@@ -28,6 +28,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var DrakeCompanionFeatureGold = Resources.GetModBlueprint<BlueprintFeature>("DrakeCompanionFeatureGold");
             var DrakeCompanionFeatureRed = Resources.GetModBlueprint<BlueprintFeature>("DrakeCompanionFeatureRed");
             var DrakeCompanionFeatureWhite = Resources.GetModBlueprint<BlueprintFeature>("DrakeCompanionFeatureWhite");
+            var DrakeCompanionFeatureUmbral = Resources.GetModBlueprint<BlueprintFeature>("DrakeCompanionFeatureUmbral");
             var SneakAttack = Resources.GetBlueprint<BlueprintFeature>("9b9eac6709e1c084cb18c3a366e0ec87");
             var RogueTalentSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("c074a5d615200494b8f2a9c845799d93");
             var DangerSenseRogue = Resources.GetBlueprint<BlueprintFeature>("0bcbe9e450b0e7b428f08f66c53c5136");
@@ -61,6 +62,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     DrakeCompanionFeatureGreen.ToReference<BlueprintFeatureReference>(),
                     DrakeCompanionFeatureRed.ToReference<BlueprintFeatureReference>(),
                     DrakeCompanionFeatureSilver.ToReference<BlueprintFeatureReference>(),
+                    DrakeCompanionFeatureUmbral.ToReference<BlueprintFeatureReference>(),
                     DrakeCompanionFeatureWhite.ToReference<BlueprintFeatureReference>()
                 };
                 bp.AddComponent<AddFacts>(c => {

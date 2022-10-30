@@ -7,6 +7,7 @@ using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items.Weapons;
 using Kingmaker.Blueprints.Root;
+using Kingmaker.Designers.EventConditionActionSystem.Actions;
 using Kingmaker.Designers.Mechanics.Buffs;
 using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.ElementsSystem;
@@ -27,6 +28,7 @@ using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Mechanics.Actions;
 using Kingmaker.UnitLogic.Mechanics.Components;
+using Kingmaker.UnitLogic.Mechanics.Conditions;
 using Kingmaker.UnitLogic.Mechanics.Properties;
 using Kingmaker.Utility;
 using Kingmaker.Visual.Animation.Kingmaker.Actions;
@@ -50,7 +52,8 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
             var RogueClass = Resources.GetBlueprint<BlueprintCharacterClass>("299aa766dee3cbf4790da4efb8c72484");
             var ShamanClass = Resources.GetBlueprint<BlueprintCharacterClass>("145f1d3d360a7ad48bd95d392c81b38e");
             var ArcanistClass = Resources.GetBlueprint<BlueprintCharacterClass>("52dbfd8505e22f84fad8d702611f60b7");
-            var AnimalCompanionRank = Resources.GetBlueprint<BlueprintFeature>("1670990255e4fe948a863bafd5dbda5d");            
+            var AnimalCompanionRank = Resources.GetBlueprint<BlueprintFeature>("1670990255e4fe948a863bafd5dbda5d");
+            var NegativeEnergyAffinity = Resources.GetBlueprint<BlueprintFeature>("d5ee498e19722854198439629c1841a5");
             var DrakeCompanionProgression = Helpers.CreateBlueprint<BlueprintProgression>("DrakeCompanionProgression", bp => {
                 bp.m_AllowNonContextActions = false;
                 bp.SetName("");
@@ -162,6 +165,13 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 bp.HideInUI = true;
                 bp.IsClassFeature = true;
             });
+            var DrakeSubtypeUmbral = Helpers.CreateBlueprint<BlueprintFeature>("DrakeSubtypeUmbral", bp => {
+                bp.SetName("Drake Subtype - Umbral");
+                bp.SetDescription("");
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.IsClassFeature = true;
+            });
 
             var DrakeVisionFeature = Helpers.CreateBlueprint<BlueprintFeature>("DrakeVisionFeature", bp => {
                 bp.SetName("Drake Vision");
@@ -254,6 +264,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 bp.SetName("Drake Natural Armor");
                 bp.SetDescription("The drake’s natural armor bonus to its AC increases by 2 when the charge reaches 3rd level and every 3 levels thereafter.");
             });
+            //Drake Powers
             var DrakeBreathCooldown = Helpers.CreateBuff("DrakeBreathCooldown", bp => {
                 bp.m_AllowNonContextActions = false;
                 bp.SetName("Breath Weapon - Ability is not ready yet");
@@ -282,6 +293,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
             var ColdCone15Feet00 = Resources.GetBlueprint<BlueprintProjectile>("5af8b717a209fd444a1e4d077ed776f0");
             var SonicCone15Feet00 = Resources.GetBlueprint<BlueprintProjectile>("868f9126707bdc5428528dd492524d52");
             var AcidCone15Feet00 = Resources.GetBlueprint<BlueprintProjectile>("f6544caac8fe528489327cd86a84b025");
+            var PoisonCone15Feet00 = Resources.GetBlueprint<BlueprintProjectile>("2758f6a35e0e3544f8d7367e57f70d61");
             var BloodlineDraconicRedBreathWeaponAbility = Resources.GetBlueprint<BlueprintAbility>("3f31704e595e78942b3640cdc9b95d8b");
             var BloodlineDraconicWhiteBreathWeaponAbility = Resources.GetBlueprint<BlueprintAbility>("84be529914c90664aa948d8266bb3fa6");
             var BloodlineDraconicBlueBreathWeaponAbility = Resources.GetBlueprint<BlueprintAbility>("60a3047f434f38544a2878c26955d3ad");
@@ -290,7 +302,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 bp.SetName("Drake Fire Breath");
                 bp.SetDescription("This breath weapon deals {g|Encyclopedia:Dice}4d6{/g} points of {g|Encyclopedia:Energy_Damage}fire damage{/g} in a 15-foot cone. " +
                     "Those caught in the area of the breath receive a {g|Encyclopedia:Saving_Throw}Reflex save{/g} for half {g|Encyclopedia:Damage}damage{/g}. " +
-                    "The {g|Encyclopedia:DC}DC{/g} of this save is equal to 10 + 1/2 your drake companion level + your {g|Encyclopedia:Constitution}Constitution{/g} modifier." +
+                    "The {g|Encyclopedia:DC}DC{/g} of this save is equal to 10 + 1/2 your drake companion level + your {g|Encyclopedia:Constitution}Constitution{/g} modifier. " +
                     "After use this ability takes {g|Encyclopedia:Dice}1d4{/g} rounds to recharge. Until upgraded you can use this twice a day.");
                 bp.m_Icon = BloodlineDraconicRedBreathWeaponAbility.m_Icon;
                 bp.AddComponent<AbilityDeliverProjectile>(c => {
@@ -418,7 +430,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 bp.SetName("Drake Fire Breath");
                 bp.SetDescription("This breath weapon deals {g|Encyclopedia:Dice}4d6{/g} points of {g|Encyclopedia:Energy_Damage}fire damage{/g} in a 15-foot cone. " +
                     "Those caught in the area of the breath receive a {g|Encyclopedia:Saving_Throw}Reflex save{/g} for half {g|Encyclopedia:Damage}damage{/g}. " +
-                    "The {g|Encyclopedia:DC}DC{/g} of this save is equal to 10 + 1/2 your drake companion level + your {g|Encyclopedia:Constitution}Constitution{/g} modifier." +
+                    "The {g|Encyclopedia:DC}DC{/g} of this save is equal to 10 + 1/2 your drake companion level + your {g|Encyclopedia:Constitution}Constitution{/g} modifier. " +
                     "After use this ability takes {g|Encyclopedia:Dice}1d4{/g} rounds to recharge. Until upgraded you can use this twice a day.");
                 bp.m_Icon = BloodlineDraconicRedBreathWeaponAbility.m_Icon;
                 bp.AddComponent<AddFacts>(c => {
@@ -442,7 +454,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 bp.SetName("Drake Cold Breath");
                 bp.SetDescription("This breath weapon deals {g|Encyclopedia:Dice}4d6{/g} points of {g|Encyclopedia:Energy_Damage}cold damage{/g} in a 15-foot cone. " +
                     "Those caught in the area of the breath receive a {g|Encyclopedia:Saving_Throw}Reflex save{/g} for half {g|Encyclopedia:Damage}damage{/g}. " +
-                    "The {g|Encyclopedia:DC}DC{/g} of this save is equal to 10 + 1/2 your drake companion level + your {g|Encyclopedia:Constitution}Constitution{/g} modifier." +
+                    "The {g|Encyclopedia:DC}DC{/g} of this save is equal to 10 + 1/2 your drake companion level + your {g|Encyclopedia:Constitution}Constitution{/g} modifier. " +
                     "After use this ability takes {g|Encyclopedia:Dice}1d4{/g} rounds to recharge. Until upgraded you can use this twice a day.");
                 bp.m_Icon = BloodlineDraconicWhiteBreathWeaponAbility.m_Icon;
                 bp.AddComponent<AbilityDeliverProjectile>(c => {
@@ -570,7 +582,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 bp.SetName("Drake Cold Breath");
                 bp.SetDescription("This breath weapon deals {g|Encyclopedia:Dice}4d6{/g} points of {g|Encyclopedia:Energy_Damage}cold damage{/g} in a 15-foot cone. " +
                     "Those caught in the area of the breath receive a {g|Encyclopedia:Saving_Throw}Reflex save{/g} for half {g|Encyclopedia:Damage}damage{/g}. " +
-                    "The {g|Encyclopedia:DC}DC{/g} of this save is equal to 10 + 1/2 your drake companion level + your {g|Encyclopedia:Constitution}Constitution{/g} modifier." +
+                    "The {g|Encyclopedia:DC}DC{/g} of this save is equal to 10 + 1/2 your drake companion level + your {g|Encyclopedia:Constitution}Constitution{/g} modifier. " +
                     "After use this ability takes {g|Encyclopedia:Dice}1d4{/g} rounds to recharge. Until upgraded you can use this twice a day.");
                 bp.m_Icon = BloodlineDraconicWhiteBreathWeaponAbility.m_Icon;
                 bp.AddComponent<AddFacts>(c => {
@@ -594,7 +606,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 bp.SetName("Drake Electricity Breath");
                 bp.SetDescription("This breath weapon deals {g|Encyclopedia:Dice}4d6{/g} points of {g|Encyclopedia:Energy_Damage}electricity damage{/g} in a 15-foot cone. " +
                     "Those caught in the area of the breath receive a {g|Encyclopedia:Saving_Throw}Reflex save{/g} for half {g|Encyclopedia:Damage}damage{/g}. " +
-                    "The {g|Encyclopedia:DC}DC{/g} of this save is equal to 10 + 1/2 your drake companion level + your {g|Encyclopedia:Constitution}Constitution{/g} modifier." +
+                    "The {g|Encyclopedia:DC}DC{/g} of this save is equal to 10 + 1/2 your drake companion level + your {g|Encyclopedia:Constitution}Constitution{/g} modifier. " +
                     "After use this ability takes {g|Encyclopedia:Dice}1d4{/g} rounds to recharge. Until upgraded you can use this twice a day.");
                 bp.m_Icon = BloodlineDraconicBlueBreathWeaponAbility.m_Icon;
                 bp.AddComponent<AbilityDeliverProjectile>(c => {
@@ -722,7 +734,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 bp.SetName("Drake Electricity Breath");
                 bp.SetDescription("This breath weapon deals {g|Encyclopedia:Dice}4d6{/g} points of {g|Encyclopedia:Energy_Damage}electricity damage{/g} in a 15-foot cone. " +
                     "Those caught in the area of the breath receive a {g|Encyclopedia:Saving_Throw}Reflex save{/g} for half {g|Encyclopedia:Damage}damage{/g}. " +
-                    "The {g|Encyclopedia:DC}DC{/g} of this save is equal to 10 + 1/2 your drake companion level + your {g|Encyclopedia:Constitution}Constitution{/g} modifier." +
+                    "The {g|Encyclopedia:DC}DC{/g} of this save is equal to 10 + 1/2 your drake companion level + your {g|Encyclopedia:Constitution}Constitution{/g} modifier. " +
                     "After use this ability takes {g|Encyclopedia:Dice}1d4{/g} rounds to recharge. Until upgraded you can use this twice a day.");
                 bp.m_Icon = BloodlineDraconicBlueBreathWeaponAbility.m_Icon;
                 bp.AddComponent<AddFacts>(c => {
@@ -746,7 +758,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 bp.SetName("Drake Acid Breath");
                 bp.SetDescription("This breath weapon deals {g|Encyclopedia:Dice}4d6{/g} points of {g|Encyclopedia:Energy_Damage}acid damage{/g} in a 15-foot cone. " +
                     "Those caught in the area of the breath receive a {g|Encyclopedia:Saving_Throw}Reflex save{/g} for half {g|Encyclopedia:Damage}damage{/g}. " +
-                    "The {g|Encyclopedia:DC}DC{/g} of this save is equal to 10 + 1/2 your drake companion level + your {g|Encyclopedia:Constitution}Constitution{/g} modifier." +
+                    "The {g|Encyclopedia:DC}DC{/g} of this save is equal to 10 + 1/2 your drake companion level + your {g|Encyclopedia:Constitution}Constitution{/g} modifier. " +
                     "After use this ability takes {g|Encyclopedia:Dice}1d4{/g} rounds to recharge. Until upgraded you can use this twice a day.");
                 bp.m_Icon = BloodlineDraconicBlackBreathWeaponAbility.m_Icon;
                 bp.AddComponent<AbilityDeliverProjectile>(c => {
@@ -874,7 +886,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 bp.SetName("Drake Acid Breath");
                 bp.SetDescription("This breath weapon deals {g|Encyclopedia:Dice}4d6{/g} points of {g|Encyclopedia:Energy_Damage}acid damage{/g} in a 15-foot cone. " +
                     "Those caught in the area of the breath receive a {g|Encyclopedia:Saving_Throw}Reflex save{/g} for half {g|Encyclopedia:Damage}damage{/g}. " +
-                    "The {g|Encyclopedia:DC}DC{/g} of this save is equal to 10 + 1/2 your drake companion level + your {g|Encyclopedia:Constitution}Constitution{/g} modifier." +
+                    "The {g|Encyclopedia:DC}DC{/g} of this save is equal to 10 + 1/2 your drake companion level + your {g|Encyclopedia:Constitution}Constitution{/g} modifier. " +
                     "After use this ability takes {g|Encyclopedia:Dice}1d4{/g} rounds to recharge. Until upgraded you can use this twice a day.");
                 bp.m_Icon = BloodlineDraconicBlackBreathWeaponAbility.m_Icon;
                 bp.AddComponent<AddFacts>(c => {
@@ -894,15 +906,184 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = true;
             });
+            var DrakeBreathWeaponUmbral1 = Helpers.CreateBlueprint<BlueprintAbility>("DrakeBreathWeaponUmbral1", bp => {
+                bp.SetName("Drake Negative Energy Breath");
+                bp.SetDescription("This breath weapon deals {g|Encyclopedia:Dice}4d6{/g} points of {g|Encyclopedia:Energy_Damage} negative damage{/g} in a 15-foot cone. " +
+                    "Those caught in the area of the breath receive a {g|Encyclopedia:Saving_Throw}Reflex save{/g} for half {g|Encyclopedia:Damage}damage{/g}. " +
+                    "The {g|Encyclopedia:DC}DC{/g} of this save is equal to 10 + 1/2 your drake companion level + your {g|Encyclopedia:Constitution}Constitution{/g} modifier. " +
+                    "After use this ability takes {g|Encyclopedia:Dice}1d4{/g} rounds to recharge. Until upgraded you can use this twice a day.\nTargets with an affinity to negative " +
+                    "energy (such as undead) are not healed by this ability and are treated as if the ability did not hit them.");
+                bp.m_Icon = BloodlineDraconicRedBreathWeaponAbility.m_Icon;
+                bp.AddComponent<AbilityDeliverProjectile>(c => {
+                    c.m_Projectiles = new BlueprintProjectileReference[] {
+                        PoisonCone15Feet00.ToReference<BlueprintProjectileReference>()
+                    };
+                    c.Type = AbilityProjectileType.Cone;
+                    c.m_Length = new Feet() { m_Value = 15 };
+                    c.m_LineWidth = new Feet() { m_Value = 5 };
+                    c.AttackRollBonusStat = StatType.Unknown;
+                });
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Reflex;
+                    c.Actions = Helpers.CreateActionList(
+                        new Conditional() {
+                            ConditionsChecker = new ConditionsChecker() {
+                                Operation = Operation.And,
+                                Conditions = new Condition[] {
+                                    new ContextConditionHasFact() {
+                                        m_Fact = NegativeEnergyAffinity.ToReference<BlueprintUnitFactReference>(),
+                                        Not = false
+                                    }
+                                }
+                            },
+                            IfTrue = Helpers.CreateActionList(),
+                            IfFalse = Helpers.CreateActionList(
+                                new ContextActionDealDamage() {
+                                    m_Type = ContextActionDealDamage.Type.Damage,
+                                    DamageType = new DamageTypeDescription() {
+                                        Type = DamageType.Energy,
+                                        Common = new DamageTypeDescription.CommomData() {
+                                            Reality = 0,
+                                            Alignment = 0,
+                                            Precision = false
+                                        },
+                                        Physical = new DamageTypeDescription.PhysicalData() {
+                                            Material = 0,
+                                            Form = 0,
+                                            Enhancement = 0,
+                                            EnhancementTotal = 0
+                                        },
+                                        Energy = DamageEnergyType.NegativeEnergy
+                                    },
+                                    AbilityType = StatType.Unknown,
+                                    EnergyDrainType = EnergyDrainType.Temporary,
+                                    Duration = new ContextDurationValue() {
+                                        Rate = DurationRate.Rounds,
+                                        DiceType = DiceType.Zero,
+                                        DiceCountValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                        BonusValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                        m_IsExtendable = true,
+                                    },
+                                    PreRolledSharedValue = AbilitySharedValue.Damage,
+                                    Value = new ContextDiceValue() {
+                                        DiceType = DiceType.D6,
+                                        DiceCountValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 4,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                        BonusValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                    },
+                                    IsAoE = true,
+                                    HalfIfSaved = true,
+                                    ResultSharedValue = AbilitySharedValue.Damage,
+                                    CriticalSharedValue = AbilitySharedValue.Damage
+                                }
+                                )
+                        },
+                        new ContextActionOnContextCaster() {
+                            Actions = Helpers.CreateActionList(
+                                new ContextActionApplyBuff() {
+                                    m_Buff = DrakeBreathCooldown.ToReference<BlueprintBuffReference>(),
+                                    DurationValue = new ContextDurationValue() {
+                                        Rate = DurationRate.Rounds,
+                                        DiceType = DiceType.D4,
+                                        DiceCountValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 1,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                        BonusValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                        m_IsExtendable = true,
+                                    }
+                                }
+                                )
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { DrakeBreathCooldown.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = DrakeBreathAbilityResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.Type = AbilityType.Special;
+                bp.Range = AbilityRange.Projectile;
+                bp.CanTargetPoint = true;
+                bp.CanTargetEnemies = true;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.BreathWeapon;
+                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Extend | Metamagic.Heighten | Metamagic.Selective | Metamagic.Bolstered;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var DrakeBreathWeaponUmbral1Feature = Helpers.CreateBlueprint<BlueprintFeature>("DrakeBreathWeaponUmbral1Feature", bp => {
+                bp.SetName("Drake Negative Energy Breath");
+                bp.SetDescription("This breath weapon deals {g|Encyclopedia:Dice}4d6{/g} points of {g|Encyclopedia:Energy_Damage} negative damage{/g} in a 15-foot cone. " +
+                    "Those caught in the area of the breath receive a {g|Encyclopedia:Saving_Throw}Reflex save{/g} for half {g|Encyclopedia:Damage}damage{/g}. " +
+                    "The {g|Encyclopedia:DC}DC{/g} of this save is equal to 10 + 1/2 your drake companion level + your {g|Encyclopedia:Constitution}Constitution{/g} modifier. " +
+                    "After use this ability takes {g|Encyclopedia:Dice}1d4{/g} rounds to recharge. Until upgraded you can use this twice a day.\nTargets with an affinity to negative " +
+                    "energy (such as undead) are not healed by this ability and are treated as if the ability did not hit them.");
+                bp.m_Icon = BloodlineDraconicRedBreathWeaponAbility.m_Icon;
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { DrakeBreathWeaponUmbral1.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = DrakeBreathAbilityResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.AddComponent<ReplaceAbilitiesStat>(c => {
+                    c.m_Ability = new BlueprintAbilityReference[] { DrakeBreathWeaponUmbral1.ToReference<BlueprintAbilityReference>() };
+                    c.Stat = StatType.Constitution;
+                });
+                bp.AddComponent<PrerequisiteFeature>(c => {
+                    c.m_Feature = DrakeSubtypeUmbral.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
             var FireCone30Feet00 = Resources.GetBlueprint<BlueprintProjectile>("acf144d4da2638e4eadde1bb9dac29b4");
             var ColdCone30Feet00 = Resources.GetBlueprint<BlueprintProjectile>("c202b61bf074a7442bf335b27721853f");
             var SonicCone30Feet00 = Resources.GetBlueprint<BlueprintProjectile>("c7fd792125b79904881530dbc2ff83de");
             var AcidCone30Feet00 = Resources.GetBlueprint<BlueprintProjectile>("155104dfdc285f3449610e625fa85729");
+            var NegativeCone30Feet00 = Resources.GetBlueprint<BlueprintProjectile>("f8f8f0402c24a584bb076a2f222d4270");
             var DrakeBreathWeaponFire2 = Helpers.CreateBlueprint<BlueprintAbility>("DrakeBreathWeaponFire2", bp => {
                 bp.SetName("Greater Drake Fire Breath");
                 bp.SetDescription("This breath weapon deals {g|Encyclopedia:Dice}8d6{/g} points of {g|Encyclopedia:Energy_Damage}fire damage{/g} in a 30-foot cone. " +
                     "Those caught in the area of the breath receive a {g|Encyclopedia:Saving_Throw}Reflex save{/g} for half {g|Encyclopedia:Damage}damage{/g}. " +
-                    "The {g|Encyclopedia:DC}DC{/g} of this save is equal to 10 + 1/2 your drake companion level + your {g|Encyclopedia:Constitution}Constitution{/g} modifier." +
+                    "The {g|Encyclopedia:DC}DC{/g} of this save is equal to 10 + 1/2 your drake companion level + your {g|Encyclopedia:Constitution}Constitution{/g} modifier. " +
                     "After use this ability takes {g|Encyclopedia:Dice}1d4{/g} rounds to recharge. Until upgraded you can use this 5 times a day.");
                 bp.m_Icon = BloodlineDraconicRedBreathWeaponAbility.m_Icon;
                 bp.AddComponent<AbilityDeliverProjectile>(c => {
@@ -1030,7 +1211,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 bp.SetName("Greater Drake Fire Breath");
                 bp.SetDescription("This breath weapon deals {g|Encyclopedia:Dice}8d6{/g} points of {g|Encyclopedia:Energy_Damage}fire damage{/g} in a 30-foot cone. " +
                     "Those caught in the area of the breath receive a {g|Encyclopedia:Saving_Throw}Reflex save{/g} for half {g|Encyclopedia:Damage}damage{/g}. " +
-                    "The {g|Encyclopedia:DC}DC{/g} of this save is equal to 10 + 1/2 your drake companion level + your {g|Encyclopedia:Constitution}Constitution{/g} modifier." +
+                    "The {g|Encyclopedia:DC}DC{/g} of this save is equal to 10 + 1/2 your drake companion level + your {g|Encyclopedia:Constitution}Constitution{/g} modifier. " +
                     "After use this ability takes {g|Encyclopedia:Dice}1d4{/g} rounds to recharge. Until upgraded you can use this 5 times a day. \nUnlocking this " +
                     "allows you to use your lesser breath weapon without spending any resources, however you must wait {g|Encyclopedia:Dice}1d4{/g} rounds to recharge.");
                 bp.m_Icon = BloodlineDraconicRedBreathWeaponAbility.m_Icon;
@@ -1070,7 +1251,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 bp.SetName("Greater Drake Cold Breath");
                 bp.SetDescription("This breath weapon deals {g|Encyclopedia:Dice}8d6{/g} points of {g|Encyclopedia:Energy_Damage}cold damage{/g} in a 30-foot cone. " +
                     "Those caught in the area of the breath receive a {g|Encyclopedia:Saving_Throw}Reflex save{/g} for half {g|Encyclopedia:Damage}damage{/g}. " +
-                    "The {g|Encyclopedia:DC}DC{/g} of this save is equal to 10 + 1/2 your drake companion level + your {g|Encyclopedia:Constitution}Constitution{/g} modifier." +
+                    "The {g|Encyclopedia:DC}DC{/g} of this save is equal to 10 + 1/2 your drake companion level + your {g|Encyclopedia:Constitution}Constitution{/g} modifier. " +
                     "After use this ability takes {g|Encyclopedia:Dice}1d4{/g} rounds to recharge. Until upgraded you can use this 5 times a day.");
                 bp.m_Icon = BloodlineDraconicWhiteBreathWeaponAbility.m_Icon;
                 bp.AddComponent<AbilityDeliverProjectile>(c => {
@@ -1198,7 +1379,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 bp.SetName("Greater Drake Cold Breath");
                 bp.SetDescription("This breath weapon deals {g|Encyclopedia:Dice}8d6{/g} points of {g|Encyclopedia:Energy_Damage}cold damage{/g} in a 30-foot cone. " +
                     "Those caught in the area of the breath receive a {g|Encyclopedia:Saving_Throw}Reflex save{/g} for half {g|Encyclopedia:Damage}damage{/g}. " +
-                    "The {g|Encyclopedia:DC}DC{/g} of this save is equal to 10 + 1/2 your drake companion level + your {g|Encyclopedia:Constitution}Constitution{/g} modifier." +
+                    "The {g|Encyclopedia:DC}DC{/g} of this save is equal to 10 + 1/2 your drake companion level + your {g|Encyclopedia:Constitution}Constitution{/g} modifier. " +
                     "After use this ability takes {g|Encyclopedia:Dice}1d4{/g} rounds to recharge. Until upgraded you can use this 5 times a day. \nUnlocking this " +
                     "allows you to use your lesser breath weapon without spending any resources, however you must wait {g|Encyclopedia:Dice}1d4{/g} rounds to recharge.");
                 bp.m_Icon = BloodlineDraconicWhiteBreathWeaponAbility.m_Icon;
@@ -1238,7 +1419,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 bp.SetName("Greater Drake Electricity Breath");
                 bp.SetDescription("This breath weapon deals {g|Encyclopedia:Dice}8d6{/g} points of {g|Encyclopedia:Energy_Damage}electricity damage{/g} in a 30-foot cone. " +
                     "Those caught in the area of the breath receive a {g|Encyclopedia:Saving_Throw}Reflex save{/g} for half {g|Encyclopedia:Damage}damage{/g}. " +
-                    "The {g|Encyclopedia:DC}DC{/g} of this save is equal to 10 + 1/2 your drake companion level + your {g|Encyclopedia:Constitution}Constitution{/g} modifier." +
+                    "The {g|Encyclopedia:DC}DC{/g} of this save is equal to 10 + 1/2 your drake companion level + your {g|Encyclopedia:Constitution}Constitution{/g} modifier. " +
                     "After use this ability takes {g|Encyclopedia:Dice}1d4{/g} rounds to recharge. Until upgraded you can use this 5 times a day.");
                 bp.m_Icon = BloodlineDraconicBlueBreathWeaponAbility.m_Icon;
                 bp.AddComponent<AbilityDeliverProjectile>(c => {
@@ -1366,7 +1547,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 bp.SetName("Greater Drake Electricity Breath");
                 bp.SetDescription("This breath weapon deals {g|Encyclopedia:Dice}8d6{/g} points of {g|Encyclopedia:Energy_Damage}electricity damage{/g} in a 30-foot cone. " +
                     "Those caught in the area of the breath receive a {g|Encyclopedia:Saving_Throw}Reflex save{/g} for half {g|Encyclopedia:Damage}damage{/g}. " +
-                    "The {g|Encyclopedia:DC}DC{/g} of this save is equal to 10 + 1/2 your drake companion level + your {g|Encyclopedia:Constitution}Constitution{/g} modifier." +
+                    "The {g|Encyclopedia:DC}DC{/g} of this save is equal to 10 + 1/2 your drake companion level + your {g|Encyclopedia:Constitution}Constitution{/g} modifier. " +
                     "After use this ability takes {g|Encyclopedia:Dice}1d4{/g} rounds to recharge. Until upgraded you can use this 5 times a day. \nUnlocking this " +
                     "allows you to use your lesser breath weapon without spending any resources, however you must wait {g|Encyclopedia:Dice}1d4{/g} rounds to recharge.");
                 bp.m_Icon = BloodlineDraconicBlueBreathWeaponAbility.m_Icon;
@@ -1406,7 +1587,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 bp.SetName("Greater Drake Acid Breath");
                 bp.SetDescription("This breath weapon deals {g|Encyclopedia:Dice}8d6{/g} points of {g|Encyclopedia:Energy_Damage}acid damage{/g} in a 30-foot cone. " +
                     "Those caught in the area of the breath receive a {g|Encyclopedia:Saving_Throw}Reflex save{/g} for half {g|Encyclopedia:Damage}damage{/g}. " +
-                    "The {g|Encyclopedia:DC}DC{/g} of this save is equal to 10 + 1/2 your drake companion level + your {g|Encyclopedia:Constitution}Constitution{/g} modifier." +
+                    "The {g|Encyclopedia:DC}DC{/g} of this save is equal to 10 + 1/2 your drake companion level + your {g|Encyclopedia:Constitution}Constitution{/g} modifier. " +
                     "After use this ability takes {g|Encyclopedia:Dice}1d4{/g} rounds to recharge. Until upgraded you can use this 5 times a day.");
                 bp.m_Icon = BloodlineDraconicBlackBreathWeaponAbility.m_Icon;
                 bp.AddComponent<AbilityDeliverProjectile>(c => {
@@ -1534,7 +1715,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 bp.SetName("Greater Drake Acid Breath");
                 bp.SetDescription("This breath weapon deals {g|Encyclopedia:Dice}8d6{/g} points of {g|Encyclopedia:Energy_Damage}acid damage{/g} in a 30-foot cone. " +
                     "Those caught in the area of the breath receive a {g|Encyclopedia:Saving_Throw}Reflex save{/g} for half {g|Encyclopedia:Damage}damage{/g}. " +
-                    "The {g|Encyclopedia:DC}DC{/g} of this save is equal to 10 + 1/2 your drake companion level + your {g|Encyclopedia:Constitution}Constitution{/g} modifier." +
+                    "The {g|Encyclopedia:DC}DC{/g} of this save is equal to 10 + 1/2 your drake companion level + your {g|Encyclopedia:Constitution}Constitution{/g} modifier. " +
                     "After use this ability takes {g|Encyclopedia:Dice}1d4{/g} rounds to recharge. Until upgraded you can use this 5 times a day. \nUnlocking this " +
                     "allows you to use your lesser breath weapon without spending any resources, however you must wait {g|Encyclopedia:Dice}1d4{/g} rounds to recharge.");
                 bp.m_Icon = BloodlineDraconicBlackBreathWeaponAbility.m_Icon;
@@ -1570,6 +1751,197 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 DrakeBreathWeaponAcid2Feature.ToReference<BlueprintUnitFactReference>()
             };
             DrakeBreathWeaponAcid1Feature.IsPrerequisiteFor = new List<BlueprintFeatureReference>() { DrakeBreathWeaponAcid2Feature.ToReference<BlueprintFeatureReference>() };
+
+            var DrakeBreathWeaponUmbral2 = Helpers.CreateBlueprint<BlueprintAbility>("DrakeBreathWeaponUmbral2", bp => {
+                bp.SetName("Greater Drake Negative Energy Breath");
+                bp.SetDescription("This breath weapon deals {g|Encyclopedia:Dice}8d6{/g} points of {g|Encyclopedia:Energy_Damage}negative damage{/g} in a 30-foot cone. " +
+                    "Those caught in the area of the breath receive a {g|Encyclopedia:Saving_Throw}Reflex save{/g} for half {g|Encyclopedia:Damage}damage{/g}. " +
+                    "The {g|Encyclopedia:DC}DC{/g} of this save is equal to 10 + 1/2 your drake companion level + your {g|Encyclopedia:Constitution}Constitution{/g} modifier. " +
+                    "After use this ability takes {g|Encyclopedia:Dice}1d4{/g} rounds to recharge. Until upgraded you can use this 5 times a day.\nTargets with an affinity to negative " +
+                    "energy (such as undead) are not healed by this ability and are treated as if the ability did not hit them.");
+                bp.m_Icon = BloodlineDraconicRedBreathWeaponAbility.m_Icon;
+                bp.AddComponent<AbilityDeliverProjectile>(c => {
+                    c.m_Projectiles = new BlueprintProjectileReference[] {
+                        NegativeCone30Feet00.ToReference<BlueprintProjectileReference>()
+                    };
+                    c.Type = AbilityProjectileType.Cone;
+                    c.m_Length = new Feet() { m_Value = 30 };
+                    c.m_LineWidth = new Feet() { m_Value = 5 };
+                    c.AttackRollBonusStat = StatType.Unknown;
+                });
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Reflex;
+                    c.Actions = Helpers.CreateActionList(
+                        new Conditional() {
+                            ConditionsChecker = new ConditionsChecker() {
+                                Operation = Operation.And,
+                                Conditions = new Condition[] {
+                                    new ContextConditionHasFact() {
+                                        m_Fact = NegativeEnergyAffinity.ToReference<BlueprintUnitFactReference>(),
+                                        Not = false
+                                    }
+                                }
+                            },
+                            IfTrue = Helpers.CreateActionList(),
+                            IfFalse = Helpers.CreateActionList(
+                                new ContextActionDealDamage() {
+                                    m_Type = ContextActionDealDamage.Type.Damage,
+                                    DamageType = new DamageTypeDescription() {
+                                        Type = DamageType.Energy,
+                                        Common = new DamageTypeDescription.CommomData() {
+                                            Reality = 0,
+                                            Alignment = 0,
+                                            Precision = false
+                                        },
+                                        Physical = new DamageTypeDescription.PhysicalData() {
+                                            Material = 0,
+                                            Form = 0,
+                                            Enhancement = 0,
+                                            EnhancementTotal = 0
+                                        },
+                                        Energy = DamageEnergyType.Fire
+                                    },
+                                    AbilityType = StatType.Unknown,
+                                    EnergyDrainType = EnergyDrainType.Temporary,
+                                    Duration = new ContextDurationValue() {
+                                        Rate = DurationRate.Rounds,
+                                        DiceType = DiceType.Zero,
+                                        DiceCountValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                        BonusValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                        m_IsExtendable = true,
+                                    },
+                                    PreRolledSharedValue = AbilitySharedValue.Damage,
+                                    Value = new ContextDiceValue() {
+                                        DiceType = DiceType.D6,
+                                        DiceCountValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 8,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                        BonusValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                    },
+                                    IsAoE = true,
+                                    HalfIfSaved = true,
+                                    ResultSharedValue = AbilitySharedValue.Damage,
+                                    CriticalSharedValue = AbilitySharedValue.Damage
+                                }
+                                )
+                        },
+                        new ContextActionOnContextCaster() {
+                            Actions = Helpers.CreateActionList(
+                                new ContextActionApplyBuff() {
+                                    m_Buff = DrakeBreathCooldown.ToReference<BlueprintBuffReference>(),
+                                    DurationValue = new ContextDurationValue() {
+                                        Rate = DurationRate.Rounds,
+                                        DiceType = DiceType.D4,
+                                        DiceCountValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 1,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                        BonusValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                    }
+                                }
+                                )
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { DrakeBreathCooldown.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = DrakeBreathAbilityResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                    //c.ResourceCostDecreasingFacts = Final Breath Upgrade
+                });
+                bp.Type = AbilityType.Special;
+                bp.Range = AbilityRange.Projectile;
+                bp.CanTargetPoint = true;
+                bp.CanTargetEnemies = true;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.BreathWeapon;
+                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Extend | Metamagic.Heighten | Metamagic.Selective | Metamagic.Bolstered;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var DrakeBreathWeaponUmbral2Feature = Helpers.CreateBlueprint<BlueprintFeature>("DrakeBreathWeaponUmbral2Feature", bp => {
+                bp.SetName("Greater Drake Negative Energy Breath");
+                bp.SetDescription("This breath weapon deals {g|Encyclopedia:Dice}8d6{/g} points of {g|Encyclopedia:Energy_Damage}negative damage{/g} in a 30-foot cone. " +
+                    "Those caught in the area of the breath receive a {g|Encyclopedia:Saving_Throw}Reflex save{/g} for half {g|Encyclopedia:Damage}damage{/g}. " +
+                    "The {g|Encyclopedia:DC}DC{/g} of this save is equal to 10 + 1/2 your drake companion level + your {g|Encyclopedia:Constitution}Constitution{/g} modifier. " +
+                    "After use this ability takes {g|Encyclopedia:Dice}1d4{/g} rounds to recharge. Until upgraded you can use this 5 times a day. \nTargets with an affinity to negative " +
+                    "energy (such as undead) are not healed by this ability and are treated as if the ability did not hit them.\nUnlocking this " +
+                    "allows you to use your lesser breath weapon without spending any resources, however you must wait {g|Encyclopedia:Dice}1d4{/g} rounds to recharge.");
+                bp.m_Icon = BloodlineDraconicRedBreathWeaponAbility.m_Icon;
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { DrakeBreathWeaponUmbral2.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = DrakeBreathAbilityResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.AddComponent<IncreaseResourceAmount>(c => {
+                    c.m_Resource = DrakeBreathAbilityResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.Value = 3;
+                });
+                bp.AddComponent<ReplaceAbilitiesStat>(c => {
+                    c.m_Ability = new BlueprintAbilityReference[] { DrakeBreathWeaponUmbral2.ToReference<BlueprintAbilityReference>() };
+                    c.Stat = StatType.Constitution;
+                });
+                bp.AddComponent<PrerequisiteFeature>(c => {
+                    c.m_Feature = DrakeSubtypeUmbral.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteFeature>(c => {
+                    c.m_Feature = DrakeBreathWeaponUmbral1Feature.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteClassLevel>(c => {
+                    c.Level = 11;
+                    c.m_CharacterClass = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+            DrakeBreathWeaponUmbral1.GetComponent<AbilityResourceLogic>().ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>() {
+                DrakeBreathWeaponUmbral2Feature.ToReference<BlueprintUnitFactReference>()
+            };
+            DrakeBreathWeaponUmbral1Feature.IsPrerequisiteFor = new List<BlueprintFeatureReference>() { DrakeBreathWeaponUmbral2Feature.ToReference<BlueprintFeatureReference>() };
+
+
+
+
+
+
             var DrakeIntellectFeature = Helpers.CreateBlueprint<BlueprintFeature>("DrakeIntellectFeature", bp => {
                 bp.SetName("Drake Intellect");
                 bp.SetDescription("The drake’s Intelligence score increases by 4.");
@@ -1804,13 +2176,62 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
 
                 });
             });
+            var DrakenScalesOutsider = Helpers.CreateBlueprint<BlueprintFeature>("DrakenScalesOutsider", bp => {
+                bp.HideInUI = true;
+                bp.IsClassFeature = true;
+                bp.AddComponent<AddDamageResistanceEnergy>(c => {
+                    c.Value = new ContextValue() {
+                        ValueType = ContextValueType.Simple,
+                        Value = 10,
+                        ValueRank = AbilityRankType.Default,
+                        ValueShared = AbilitySharedValue.Damage,
+                        Property = UnitProperty.None
+                    };
+                    c.Type = DamageEnergyType.Acid;
+
+                });
+                bp.AddComponent<AddDamageResistanceEnergy>(c => {
+                    c.Value = new ContextValue() {
+                        ValueType = ContextValueType.Simple,
+                        Value = 10,
+                        ValueRank = AbilityRankType.Default,
+                        ValueShared = AbilitySharedValue.Damage,
+                        Property = UnitProperty.None
+                    };
+                    c.Type = DamageEnergyType.Fire;
+
+                });
+                bp.AddComponent<AddDamageResistanceEnergy>(c => {
+                    c.Value = new ContextValue() {
+                        ValueType = ContextValueType.Simple,
+                        Value = 10,
+                        ValueRank = AbilityRankType.Default,
+                        ValueShared = AbilitySharedValue.Damage,
+                        Property = UnitProperty.None
+                    };
+                    c.Type = DamageEnergyType.Electricity;
+
+                });
+                bp.AddComponent<AddDamageResistanceEnergy>(c => {
+                    c.Value = new ContextValue() {
+                        ValueType = ContextValueType.Simple,
+                        Value = 10,
+                        ValueRank = AbilityRankType.Default,
+                        ValueShared = AbilitySharedValue.Damage,
+                        Property = UnitProperty.None
+                    };
+                    c.Type = DamageEnergyType.Cold;
+
+                });
+            });
             var DrakenScalesFeature = Helpers.CreateBlueprint<BlueprintFeature>("DrakenScalesFeature", bp => {
                 bp.SetName("Draken Scales");
                 bp.SetDescription("The drake gains elemental resistances based on its subtype, along with minor resistance to elemental damage from non-opposing elements. " +
                     "\nFire subtype - Fire resistance 25, Eletricity resistance 5, Acid resistance 5." +
                     "\nCold subtype - Cold resistance 25, Eletricity resistance 5, Acid resistance 5." +
                     "\nAir subtype - Eletricity resistance 25, Fire resistance 5, Cold resistance 5." +
-                    "\nAcid subtype - Acid resistance 25, Fire resistance 5, Cold resistance 5.");
+                    "\nAcid subtype - Acid resistance 25, Fire resistance 5, Cold resistance 5." +
+                    "\nOutsider subtype - Fire, Cold, Acid, Electricity resistance 10.");
                 bp.AddComponent<AddFeatureIfHasFact>(c => {
                     c.m_CheckedFact = DrakeSubtypeFire.ToReference<BlueprintUnitFactReference>();
                     c.m_Feature = DrakenScalesFire.ToReference<BlueprintUnitFactReference>();
@@ -1826,6 +2247,10 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 bp.AddComponent<AddFeatureIfHasFact>(c => {
                     c.m_CheckedFact = DrakeSubtypeEarth.ToReference<BlueprintUnitFactReference>();
                     c.m_Feature = DrakenScalesAcid.ToReference<BlueprintUnitFactReference>();
+                });
+                bp.AddComponent<AddFeatureIfHasFact>(c => {
+                    c.m_CheckedFact = DrakeSubtypeUmbral.ToReference<BlueprintUnitFactReference>();
+                    c.m_Feature = DrakenScalesOutsider.ToReference<BlueprintUnitFactReference>();
                 });
             });
 
@@ -1844,10 +2269,12 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                     DrakeBreathWeaponCold1Feature.ToReference<BlueprintFeatureReference>(),
                     DrakeBreathWeaponElectricity1Feature.ToReference<BlueprintFeatureReference>(),
                     DrakeBreathWeaponAcid1Feature.ToReference<BlueprintFeatureReference>(),
+                    DrakeBreathWeaponUmbral1Feature.ToReference<BlueprintFeatureReference>(),
                     DrakeBreathWeaponFire2Feature.ToReference<BlueprintFeatureReference>(),
                     DrakeBreathWeaponCold2Feature.ToReference<BlueprintFeatureReference>(),
                     DrakeBreathWeaponElectricity2Feature.ToReference<BlueprintFeatureReference>(),
                     DrakeBreathWeaponAcid2Feature.ToReference<BlueprintFeatureReference>(),
+                    DrakeBreathWeaponUmbral2Feature.ToReference<BlueprintFeatureReference>(),
                     DrakenClawsFeature.ToReference<BlueprintFeatureReference>(),
                     DrakenScalesFeature.ToReference<BlueprintFeatureReference>()
                 };

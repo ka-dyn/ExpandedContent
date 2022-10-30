@@ -57,16 +57,16 @@
       "enGB": "Once per day, a dreadknight can reach out to the profane lords to grant sinful absolution to the forces arrayed against them. As a swift action, the dreadknight chooses one target within sight to crush. The dreadknight adds their Charisma bonus (if any) on their attack rolls and adds their dreadknight level on all damage rolls made against the target of their unholy smite. Regardless of the target, sinful absolution attacks automatically bypass any DR the creature might possess. In addition, while Sinful Absolution is in effect, the dreadknight gains a deflection bonus equal to their Charisma modifier(if any) to their AC against attacks made by the target of sinful absolution."
     },
     {
-      "Key": "a21570d8a87645adbcc9b95ed420216d",
-      "SimpleName": "$TouchOfProfaneCorruptionFeature.DescriptionShort",
-      "ProcessTemplates": false,
-      "enGB": "Beginning at 2nd level, a dreadknight can surround her hand with a profane flame, causing terrible wounds to open on those she touches. Alternatively, a dreadknight can use this power to heal undead creatures."
-    },
-    {
       "Key": "caa10bd594a24eb192670bf6289cab8a",
       "SimpleName": "$TouchOfProfaneCorruptionFeature.DescriptionShort",
       "ProcessTemplates": false,
       "enGB": "Beginning at 7th level as a swift action, a dreadknight can spend two uses of their touch of profane corruption to surround their weapon with a profane flame, causing terrible wounds to open on those they attacks. This ability works with any weapon."
+    },
+    {
+      "Key": "a21570d8a87645adbcc9b95ed420216d",
+      "SimpleName": "$TouchOfProfaneCorruptionFeature.DescriptionShort",
+      "ProcessTemplates": false,
+      "enGB": "Beginning at 2nd level, a dreadknight can surround her hand with a profane flame, causing terrible wounds to open on those she touches. Alternatively, a dreadknight can use this power to heal undead creatures."
     },
     {
       "Key": "dd8c0bee59ea466b9f9a584af23aa32e",
@@ -868,13 +868,13 @@
       "Key": "2f91fdfbde3c4bc78942800497c111bd",
       "SimpleName": "CastigatorVengeance.Description",
       "ProcessTemplates": false,
+      "IsUsed": false,
       "enGB": "At 4th level, a castigator can make an additional number of attacks of opportunity in a round equal to their Charisma modifier (minimum 1). This effect stacks with the Combat Reflexes feat."
     },
     {
       "Key": "86125955dbd447829e29b6b38c9f0535",
       "SimpleName": "CastigatorVengeance.Description",
       "ProcessTemplates": true,
-      "IsUsed": false,
       "enGB": "At 4th level, a castigator can make an additional number of attacks of opportunity in a round equal to their Charisma modifier (minimum 1). This effect stacks with the Combat Reflexes feat."
     },
     {
@@ -1200,16 +1200,16 @@
       "enGB": "Conqueror"
     },
     {
-      "Key": "9197b62c357f4051b3b7df813d06f88d",
-      "SimpleName": "ConquerorInspiredageFeature.Description",
-      "ProcessTemplates": false,
-      "enGB": "At 1st level, a conqueror receives the ability to incite rage in those he rules over, as the skald inspired rage class feature."
-    },
-    {
       "Key": "ffbd05fa7c3843f9a96165dbf5705983",
       "SimpleName": "ConquerorInspiredageFeature.Description",
       "ProcessTemplates": false,
       "enGB": "At 7th level, the conqueror's commandments warp the minds of those who accept them even further."
+    },
+    {
+      "Key": "9197b62c357f4051b3b7df813d06f88d",
+      "SimpleName": "ConquerorInspiredageFeature.Description",
+      "ProcessTemplates": false,
+      "enGB": "At 1st level, a conqueror receives the ability to incite rage in those he rules over, as the skald inspired rage class feature."
     },
     {
       "Key": "0160ab7b5c884199a1047c169ecc1d34",
@@ -2035,6 +2035,18 @@
       "enGB": "Draconic Exploit - Fire Melee"
     },
     {
+      "Key": "34c2b3e050c74d81a236918b15798aa6",
+      "SimpleName": "DraconicExploitEleMeleeNegative.Description",
+      "ProcessTemplates": true,
+      "enGB": "The arcanist can expend 3 points from their arcane reservoir to grant a drake 2d6 negative energy damage on all melee attacks, this effect lasts for rounds equal to half your arcanist level. All draconic exploits can only target ally drakes and once a drake is targeted by a exploit it cannot benefit from another for 1 minute."
+    },
+    {
+      "Key": "2f1a9ee4e78040a0adef87da239aa9e8",
+      "SimpleName": "DraconicExploitEleMeleeNegative.Name",
+      "ProcessTemplates": false,
+      "enGB": "Draconic Exploit - Negative Energy Melee"
+    },
+    {
       "Key": "0282aa7a7ee7466aab013019eea41189",
       "SimpleName": "DraconicExploitHealAbility.Description",
       "ProcessTemplates": true,
@@ -2366,6 +2378,12 @@
       "enGB": "DrakeBloodSilver"
     },
     {
+      "Key": "cbfeefc217af4c2184bcccf180c6ff54",
+      "SimpleName": "DrakeBloodUmbral.Name",
+      "ProcessTemplates": false,
+      "enGB": "DrakeBloodUmbral"
+    },
+    {
       "Key": "899ab05e126b4d7b9209c0c16f247219",
       "SimpleName": "DrakeBloodWhite.Name",
       "ProcessTemplates": false,
@@ -2602,6 +2620,60 @@
       "enGB": "This breath weapon deals 1d6 points of fire damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
     },
     {
+      "Key": "c7a50bde6aa7476fb23eba2c637d9490",
+      "SimpleName": "DrakeBreathWeaponUmbral1.Description",
+      "ProcessTemplates": true,
+      "enGB": "This breath weapon deals 4d6 points of  negative damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day.\nTargets with an affinity to negativeenergy (such as undead) are not healed by this ability and are treated as if the ability did not hit them."
+    },
+    {
+      "Key": "9125e12ae3514d918be88fab671e3fbc",
+      "SimpleName": "DrakeBreathWeaponUmbral1.Name",
+      "ProcessTemplates": false,
+      "enGB": "Drake Negative Energy Breath"
+    },
+    {
+      "Key": "9dcf386ecbdd464c8e79505773731c5c",
+      "SimpleName": "DrakeBreathWeaponUmbral1Feature.Description",
+      "ProcessTemplates": true,
+      "enGB": "This breath weapon deals 4d6 points of  negative damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day.\nTargets with an affinity to negativeenergy (such as undead) are not healed by this ability and are treated as if the ability did not hit them."
+    },
+    {
+      "Key": "0d2d69b7f16a46b9947d3f18fba771df",
+      "SimpleName": "DrakeBreathWeaponUmbral2.Description",
+      "ProcessTemplates": true,
+      "enGB": "This breath weapon deals 8d6 points of negative damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day.\nTargets with an affinity to negativeenergy (such as undead) are not healed by this ability and are treated as if the ability did not hit them."
+    },
+    {
+      "Key": "adce6cb14e3a42f9a461694633daaa8b",
+      "SimpleName": "DrakeBreathWeaponUmbral2.Name",
+      "ProcessTemplates": false,
+      "enGB": "Greater Drake Negative Energy Breath"
+    },
+    {
+      "Key": "73f5183bb1c24c45992400a39e4f1ba6",
+      "SimpleName": "DrakeBreathWeaponUmbral2Feature.Description",
+      "ProcessTemplates": true,
+      "enGB": "This breath weapon deals 8d6 points of negative damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day. \nTargets with an affinity to negativeenergy (such as undead) are not healed by this ability and are treated as if the ability did not hit them.\nUnlocking this allows you to use your lesser breath weapon without spending any resources, however you must wait 1d4 rounds to recharge."
+    },
+    {
+      "Key": "d151307697904d948457f71e4a2adaa5",
+      "SimpleName": "DrakeBreathWeaponUmbral3.Description",
+      "ProcessTemplates": true,
+      "enGB": "This breath weapon deals 1d6 points of negative energy damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nTargets with an affinity to negativeenergy (such as undead) are not healed by this ability and are treated as if the ability did not hit them. \nUnlike non-mythic breath attacks, this does not damage allies."
+    },
+    {
+      "Key": "763b3dcab4134d63aa8b74df5f85dcdb",
+      "SimpleName": "DrakeBreathWeaponUmbral3.Name",
+      "ProcessTemplates": false,
+      "enGB": "Mythic Drake Negative Energy Breath"
+    },
+    {
+      "Key": "2501763ac7a141a68f0422d203e733e3",
+      "SimpleName": "DrakeBreathWeaponUmbral3Feature.Description",
+      "ProcessTemplates": true,
+      "enGB": "This breath weapon deals 1d6 points of negative energy damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nTargets with an affinity to negativeenergy (such as undead) are not healed by this ability and are treated as if the ability did not hit them. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
+    },
+    {
       "Key": "1575f0e880054301ae568c652325ff76",
       "SimpleName": "DrakeCompanionClass.Description",
       "ProcessTemplates": false,
@@ -2722,6 +2794,18 @@
       "enGB": "Drake Companion - Silver"
     },
     {
+      "Key": "0d7e71b7b79e4b77ba4b2147e5255bd5",
+      "SimpleName": "DrakeCompanionFeatureUmbral.Description",
+      "ProcessTemplates": true,
+      "enGB": "Drakes are brutish lesser kindred of true dragons. Though they aren’t particularly intelligent, drakes’ significantly faster breeding allows their kind to survive in harsh environments. While a young drake is weaker than a standard animal companion, as they grow they will start to resemble their draconic cousins more and more until they rival them in power. \n This drake is descended from umbral dragons from the plain of shadows, giving it the outsider subtype and granting it potential to wield negative energy breath attacks.\nThough a living creature, a umbral drake reacts to positive and negative energy as if they were undead — positive energy harms them, while negative energy heals them."
+    },
+    {
+      "Key": "5bbaa627af6146e8b075761419969ea5",
+      "SimpleName": "DrakeCompanionFeatureUmbral.Name",
+      "ProcessTemplates": false,
+      "enGB": "Drake Companion - Umbral"
+    },
+    {
       "Key": "7b9ca3d9781a4f29b5b2f507204702dd",
       "SimpleName": "DrakeCompanionFeatureWhite.Description",
       "ProcessTemplates": true,
@@ -2830,9 +2914,16 @@
       "enGB": "The drake gains two natural claw attacks that deal 1d2 damage from a tiny drake, but increase damage dice size each time the drake grows\nUnlocks the extra Wing attacks component of the Mythic Drake Ability."
     },
     {
+      "Key": "fae2d01a258d437494c423afc2c32476",
+      "SimpleName": "DrakenScalesFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "The drake gains elemental resistances based on its subtype, along with minor resistance to elemental damage from non-opposing elements. \nFire subtype - Fire resistance 25, Eletricity resistance 5, Acid resistance 5.\nCold subtype - Cold resistance 25, Eletricity resistance 5, Acid resistance 5.\nAir subtype - Eletricity resistance 25, Fire resistance 5, Cold resistance 5.\nAcid subtype - Acid resistance 25, Fire resistance 5, Cold resistance 5.\nOutsider subtype - Fire, Cold, Acid, Electricity resistance 10."
+    },
+    {
       "Key": "04ed6b896c35425fa26212ff0a823110",
       "SimpleName": "DrakenScalesFeature.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "The drake gains elemental resistances based on its subtype, along with minor resistance to elemental damage from non-opposing elements. \nFire subtype - Fire resistance 25, Eletricity resistance 5, Acid resistance 5.\nCold subtype - Cold resistance 25, Eletricity resistance 5, Acid resistance 5.\nAir subtype - Eletricity resistance 25, Fire resistance 5, Cold resistance 5.\nAcid subtype - Acid resistance 25, Fire resistance 5, Cold resistance 5."
     },
     {
@@ -3000,6 +3091,12 @@
       "enGB": "Drake Subtype - Fire"
     },
     {
+      "Key": "1baf2950fe89415db62033d5466f2bf0",
+      "SimpleName": "DrakeSubtypeUmbral.Name",
+      "ProcessTemplates": false,
+      "enGB": "Drake Subtype - Umbral"
+    },
+    {
       "Key": "7de42d17cc44404a8fd20625af6e2334",
       "SimpleName": "DrakeVisionFeature.Description",
       "ProcessTemplates": true,
@@ -3054,17 +3151,17 @@
       "enGB": "Dread Knight Animal Companion Progression"
     },
     {
-      "Key": "d670b365e6b04ae4a3877948f2caebed",
-      "SimpleName": "DreadKnightChannelNegativeEnergyAbility.Description",
-      "ProcessTemplates": true,
-      "enGB": "Channeling negative energy causes a burst that damages every living creature in a 30-foot radius centered on the Dread Knight. The amount of damage inflicted is equal to 1d6 points of damage plus 1d6 points of damage for every two Dread Knight levels beyond 1st (2d6 at 3rd, 3d6 at 5th, and so on). Creatures that take damage from channeled energy receive a Will save to halve the damage. The DC of this save is equal to 10 + 1/2 the Dread Knight's level + the Dread Knight's Charisma modifier."
-    },
-    {
       "Key": "c693dad056614f1ead3e49b0ca8d3119",
       "SimpleName": "DreadKnightChannelNegativeEnergyAbility.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "Channeling negative energy causes a burst that damages every creature in a 30-foot radius centered on the Dread Knight. The amount of damage inflicted is equal to 1d6 points of damage plus 1d6 points of damage for every two Dread Knight levels beyond 1st (2d6 at 3rd, 3d6 at 5th, and so on). Creatures that take damage from channeled energy receive a Will save to halve the damage. The DC of this save is equal to 10 + 1/2 the Dread Knight's level + the Dread Knight's Charisma modifier."
+    },
+    {
+      "Key": "d670b365e6b04ae4a3877948f2caebed",
+      "SimpleName": "DreadKnightChannelNegativeEnergyAbility.Description",
+      "ProcessTemplates": true,
+      "enGB": "Channeling negative energy causes a burst that damages every living creature in a 30-foot radius centered on the Dread Knight. The amount of damage inflicted is equal to 1d6 points of damage plus 1d6 points of damage for every two Dread Knight levels beyond 1st (2d6 at 3rd, 3d6 at 5th, and so on). Creatures that take damage from channeled energy receive a Will save to halve the damage. The DC of this save is equal to 10 + 1/2 the Dread Knight's level + the Dread Knight's Charisma modifier."
     },
     {
       "Key": "79390dccfaff42259b9430c3eda7052b",
@@ -4235,17 +4332,17 @@
       "enGB": "Invoke Deity - Liberation Domain"
     },
     {
-      "Key": "27022cf8398f4e0cb110c88054d7d9af",
-      "SimpleName": "LichDeityFeature.Description",
-      "ProcessTemplates": true,
-      "enGB": "Leader of a small cult of undead, created by their own hands, becoming famous as the indomitable commander of the Fifth Mendevian Crusade against the Worldwound. Determined to destroy the forces of the Abyss at any cost, they ventured on the path of the Lord of Death. For millennia, powerful necromancers have dreamed of a power that could rival the divine. They have created cults in their own names, and attracted many followers. Thanks to their legendary powers, they has managed to achieve much greater success than the others: acquireing a talent to bestow divine spells upon their followers. From that moment, the undead created by them needed no other deities to cast spells.\nDomains: Death, Evil, Strength, War. \nFavoured Weapons: Scythe, Sickle."
-    },
-    {
       "Key": "dcf93abfee98445eb8af11b4118f70d2",
       "SimpleName": "LichDeityFeature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "Leader of a small cult of undead, created by h own hands,  became famous as the indomitable commander of the Fifth Mendevian Crusade against the Worldwound. Determined to destroy the forces of the Abyss at any cost, he ventured on the path of the L of Death. For millennia, powerful necromancers have dreamed of a power that could rival the divine. They have created cults in their own names, and attracted many followers. Thanks to h legendary powers,  has managed to achieve much greater success than the others: he has acquired a talent to bestow divine spells upon h followers. From that moment, the undead created by h needed no other deities to cast spells.\nDomains: Death, Evil, Strength, War. \nFavoured Weapons: Scythe, Sickle."
+    },
+    {
+      "Key": "27022cf8398f4e0cb110c88054d7d9af",
+      "SimpleName": "LichDeityFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "Leader of a small cult of undead, created by their own hands, becoming famous as the indomitable commander of the Fifth Mendevian Crusade against the Worldwound. Determined to destroy the forces of the Abyss at any cost, they ventured on the path of the Lord of Death. For millennia, powerful necromancers have dreamed of a power that could rival the divine. They have created cults in their own names, and attracted many followers. Thanks to their legendary powers, they has managed to achieve much greater success than the others: acquireing a talent to bestow divine spells upon their followers. From that moment, the undead created by them needed no other deities to cast spells.\nDomains: Death, Evil, Strength, War. \nFavoured Weapons: Scythe, Sickle."
     },
     {
       "Key": "3d2b85c4110b44dcae8a149272b71fe8",
@@ -7159,17 +7256,17 @@
       "enGB": "Shei"
     },
     {
-      "Key": "63b15554a33a4aac8390229ed2c68f7b",
-      "SimpleName": "ShizuruFeature.Description",
-      "ProcessTemplates": true,
-      "enGB": "\nTitles: Empress of Heaven   \nAlignment: Lawful Good   \nAreas of Concern: Ancestors, Honor, The Sun, Swordplay   \nDomains: Glory, Good, Law, Repose, Sun   \nSubdomains: Ancestors, Archon, Day, Heroism, Honor, Light, Revelation  \nFavoured Weapon: Katana (Longsword & Dueling sword)   \nHoly Symbol: Katana in front of the sun   \nSacred Animal: Carp   \nShizuru is the Empress of Heaven, goddess of ancestors and the sun. She is also the goddess of honor and swordplay, and is the patron of samurai and other honorable swordfighters. Shizuru loves the moon god Tsukiyo, so much so that she returned him to life when he was slain by his brother Fumeiyoshi. The two lovers are rarely together, however, just as night and day are forever divided, but the two deities are able to rejoin, if only briefly, during rare solar eclipses—a sacred time for both faiths. Shizuru’s worship is popular throughout the Dragon Empires, but her faith is strongest in Minkai, for the emperors of that land revere Shizuru as their divine ancestor. Shizuru is often depicted in art as a beautiful samurai, as a magnificent dragon with golden scales, or as both simultaneously."
-    },
-    {
       "Key": "805fec87a0a04ccf90147dcc7b5282fc",
       "SimpleName": "ShizuruFeature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "\nTitles: Empress of Heaven   \nAlignment: Lawful Good   \nAreas of Concern: Ancestors, Honor, The Sun, Swordplay   \nDomains: Glory, Good, Law, Repose, Sun   \nSubdomains: Ancestors, Archon, Day, Heroism, Honor, Light, Revelation  \nFavoured Weapon: Katana (Longsword)   \nHoly Symbol: Katana in front of the sun   \nSacred Animal: Carp   \nShizuru is the Empress of Heaven, goddess of ancestors and the sun. She is also the goddess of honor and swordplay, and is the patron of samurai and other honorable swordfighters. Shizuru loves the moon god Tsukiyo, so much so that she returned him to life when he was slain by his brother Fumeiyoshi. The two lovers are rarely together, however, just as night and day are forever divided, but the two deities are able to rejoin, if only briefly, during rare solar eclipses—a sacred time for both faiths. Shizuru’s worship is popular throughout the Dragon Empires, but her faith is strongest in Minkai, for the emperors of that land revere Shizuru as their divine ancestor. Shizuru is often depicted in art as a beautiful samurai, as a magnificent dragon with golden scales, or as both simultaneously."
+    },
+    {
+      "Key": "63b15554a33a4aac8390229ed2c68f7b",
+      "SimpleName": "ShizuruFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nTitles: Empress of Heaven   \nAlignment: Lawful Good   \nAreas of Concern: Ancestors, Honor, The Sun, Swordplay   \nDomains: Glory, Good, Law, Repose, Sun   \nSubdomains: Ancestors, Archon, Day, Heroism, Honor, Light, Revelation  \nFavoured Weapon: Katana (Longsword & Dueling sword)   \nHoly Symbol: Katana in front of the sun   \nSacred Animal: Carp   \nShizuru is the Empress of Heaven, goddess of ancestors and the sun. She is also the goddess of honor and swordplay, and is the patron of samurai and other honorable swordfighters. Shizuru loves the moon god Tsukiyo, so much so that she returned him to life when he was slain by his brother Fumeiyoshi. The two lovers are rarely together, however, just as night and day are forever divided, but the two deities are able to rejoin, if only briefly, during rare solar eclipses—a sacred time for both faiths. Shizuru’s worship is popular throughout the Dragon Empires, but her faith is strongest in Minkai, for the emperors of that land revere Shizuru as their divine ancestor. Shizuru is often depicted in art as a beautiful samurai, as a magnificent dragon with golden scales, or as both simultaneously."
     },
     {
       "Key": "3ef498a3b1f34038af628a74d00a11e6",
@@ -7214,16 +7311,16 @@
       "enGB": "Silver Champion"
     },
     {
-      "Key": "96ac5395a9054d339832829bc004945d",
-      "SimpleName": "SilverChampionSpellbook.Name",
-      "ProcessTemplates": false,
-      "enGB": "SilverChampion"
-    },
-    {
       "Key": "c8220270704a44c79e2d4ef6bf6ddce6",
       "SimpleName": "SilverChampionSpellbook.Name",
       "ProcessTemplates": false,
       "enGB": "Claw of the False Wyrm"
+    },
+    {
+      "Key": "96ac5395a9054d339832829bc004945d",
+      "SimpleName": "SilverChampionSpellbook.Name",
+      "ProcessTemplates": false,
+      "enGB": "SilverChampion"
     },
     {
       "Key": "8847cba8444f4ce29366a7d71760800c",

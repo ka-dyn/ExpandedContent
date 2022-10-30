@@ -25,6 +25,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
             var DrakeCompanionFeatureGold = Resources.GetModBlueprint<BlueprintFeature>("DrakeCompanionFeatureGold");
             var DrakeCompanionFeatureBronze = Resources.GetModBlueprint<BlueprintFeature>("DrakeCompanionFeatureBronze");
             var DrakeCompanionFeatureCopper = Resources.GetModBlueprint<BlueprintFeature>("DrakeCompanionFeatureCopper");
+            var DrakeCompanionFeatureUmbral = Resources.GetModBlueprint<BlueprintFeature>("DrakeCompanionFeatureUmbral");
 
 
             var MountTargetFeature = Resources.GetBlueprint<BlueprintFeature>("cb06f0e72ffb5c640a156bd9f8000c1d");
@@ -58,6 +59,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                     DrakeCompanionFeatureGreen.ToReference<BlueprintFeatureReference>(),
                     DrakeCompanionFeatureRed.ToReference<BlueprintFeatureReference>(),
                     DrakeCompanionFeatureSilver.ToReference<BlueprintFeatureReference>(),
+                    DrakeCompanionFeatureUmbral.ToReference<BlueprintFeatureReference>(),
                     DrakeCompanionFeatureWhite.ToReference<BlueprintFeatureReference>()
                 };
             });

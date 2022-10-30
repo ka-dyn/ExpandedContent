@@ -26,6 +26,8 @@ namespace ExpandedContent.Tweaks.Curses {
             var ChannelResistance4 = Resources.GetBlueprint<BlueprintFeature>("a9ac84c6f48b491438f91bb237bc9212");
             var VampiricTouchSpell = Resources.GetBlueprint<BlueprintAbility>("6cbb040023868574b992677885390f92");
             var CreateUndeadSpell = Resources.GetBlueprint<BlueprintAbility>("76a11b460be25e44ca85904d6806e5a3");
+            var VampirismIcon = AssetLoader.LoadInternal("Skills", "Icon_VampireCurse.png");
+
             var VampirismCurseFeatureLevel10 = Helpers.CreateBlueprint<BlueprintFeature>("VampirismCurseFeatureLevel10", bp => {
                 bp.SetName("Vampirism");
                 bp.SetDescription("");
@@ -73,6 +75,7 @@ namespace ExpandedContent.Tweaks.Curses {
                 bp.SetDescription("You crave the taste of fresh, warm blood. \nYou take damage from positive energy and heal from negative energy as if you were " +
                     "undead. \nAt 5th level, you gain channel resistance +4. \nAt 10th level, you add vampiric touch to your list of 3rd-level oracle spells known " +
                     "and create undead to your list of 5th-level oracle spells known. \nAt 15th level, you gain damage reduction 5/magic.");
+                bp.m_Icon = VampirismIcon;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.OracleCurse };
                 bp.IsClassFeature = true;
                 bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
@@ -110,6 +113,7 @@ namespace ExpandedContent.Tweaks.Curses {
                     "undead. \nAt 5th level, you gain channel resistance +4. \nAt 10th level, you add vampiric touch to your list of 3rd-level oracle spells known " +
                     "and create undead to your list of 5th-level oracle spells known. \nAt 15th level, you gain damage reduction 5/magic.\n(The Negative Energy " +
                     "Affinity granted at level 1 is not considered a penalty and therefore is not removed.)");
+                bp.m_Icon = VampirismIcon;
                 bp.IsClassFeature = true;
                 bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
                     new BlueprintProgression.ClassWithLevel {

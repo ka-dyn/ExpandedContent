@@ -51,6 +51,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var DrakeCompanionFeatureBlue = Resources.GetModBlueprint<BlueprintFeature>("DrakeCompanionFeatureBlue");
             var DrakeCompanionFeatureBrass = Resources.GetModBlueprint<BlueprintFeature>("DrakeCompanionFeatureBrass");
             var DrakeCompanionFeatureBronze = Resources.GetModBlueprint<BlueprintFeature>("DrakeCompanionFeatureBronze");
+            var DrakeCompanionFeatureUmbral = Resources.GetModBlueprint<BlueprintFeature>("DrakeCompanionFeatureUmbral");
             var DrakeCompanionFeatureGold = Resources.GetModBlueprint<BlueprintFeature>("DrakeCompanionFeatureGold");
             var DrakeCompanionFeatureRed = Resources.GetModBlueprint<BlueprintFeature>("DrakeCompanionFeatureRed");
             var DrakeCompanionFeatureWhite = Resources.GetModBlueprint<BlueprintFeature>("DrakeCompanionFeatureWhite");
@@ -62,6 +63,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var DrakeSubtypeCold = Resources.GetModBlueprint<BlueprintFeature>("DrakeSubtypeCold");
             var DrakeSubtypeAir = Resources.GetModBlueprint<BlueprintFeature>("DrakeSubtypeAir");
             var DrakeSubtypeEarth = Resources.GetModBlueprint<BlueprintFeature>("DrakeSubtypeEarth");
+            var DrakeSubtypeUmbral = Resources.GetModBlueprint<BlueprintFeature>("DrakeSubtypeUmbral");
             var DraconicExploitIcon = AssetLoader.LoadInternal("Skills", "Icon_DraconicExploit.jpg");
             var DraconicExploitTypeIcon = AssetLoader.LoadInternal("Skills", "Icon_DraconicExploitType.jpg");
             var DraconicExploitQuickenIcon = AssetLoader.LoadInternal("Skills", "Icon_DraconicExploitQuicken.jpg");
@@ -93,6 +95,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     DrakeCompanionFeatureGreen.ToReference<BlueprintFeatureReference>(),
                     DrakeCompanionFeatureRed.ToReference<BlueprintFeatureReference>(),
                     DrakeCompanionFeatureSilver.ToReference<BlueprintFeatureReference>(),
+                    DrakeCompanionFeatureUmbral.ToReference<BlueprintFeatureReference>(),
                     DrakeCompanionFeatureWhite.ToReference<BlueprintFeatureReference>()
                 };
                 bp.AddComponent<AddFacts>(c => {
@@ -586,6 +589,109 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.m_AllowNonContextActions = false;
                 bp.Stacking = StackingType.Replace;
             });
+            var InflictWounds = Resources.GetBlueprint<BlueprintAbility>("5ee395a2423808c4baf342a4f8395b19");
+            var DraconicExploitEleMeleeNegative = Helpers.CreateBuff("DraconicExploitEleMeleeNegative", bp => {
+                bp.SetName("Draconic Exploit - Negative Energy Melee");
+                bp.SetDescription("The arcanist can expend 3 points from their arcane reservoir to grant a drake 2d6 negative energy damage on all melee attacks, " +
+                    "this effect lasts for rounds equal to half your arcanist level. All draconic exploits can only target ally drakes and once a drake is " +
+                    "targeted by a exploit it cannot benefit from another for 1 minute.");
+                bp.m_Icon = InflictWounds.m_Icon;
+                bp.AddComponent<AddInitiatorAttackWithWeaponTrigger>(c => {
+                    c.WaitForAttackResolve = true;
+                    c.OnlyHit = true;
+                    c.OnMiss = false;
+                    c.OnlyOnFullAttack = false;
+                    c.OnlyOnFirstAttack = false;
+                    c.OnlyOnFirstHit = false;
+                    c.CriticalHit = false;
+                    c.OnAttackOfOpportunity = false;
+                    c.NotCriticalHit = false;
+                    c.OnlySneakAttack = false;
+                    c.NotSneakAttack = false;
+                    c.m_WeaponType = new BlueprintWeaponTypeReference();
+                    c.CheckWeaponCategory = false;
+                    c.Category = WeaponCategory.UnarmedStrike;
+                    c.CheckWeaponGroup = false;
+                    c.Group = WeaponFighterGroup.None;
+                    c.CheckWeaponRangeType = false;
+                    c.RangeType = WeaponRangeType.Melee;
+                    c.ActionsOnInitiator = false;
+                    c.ReduceHPToZero = false;
+                    c.DamageMoreTargetMaxHP = false;
+                    c.CheckDistance = false;
+                    c.DistanceLessEqual = new Feet(); //?
+                    c.AllNaturalAndUnarmed = true;
+                    c.DuelistWeapon = false;
+                    c.NotExtraAttack = false;
+                    c.OnCharge = false;
+                    c.Action = Helpers.CreateActionList(
+                        new ContextActionDealDamage() {
+                            m_Type = ContextActionDealDamage.Type.Damage,
+                            DamageType = new DamageTypeDescription() {
+                                Type = DamageType.Energy,
+                                Common = new DamageTypeDescription.CommomData() {
+                                    Reality = 0,
+                                    Alignment = 0,
+                                    Precision = false
+                                },
+                                Physical = new DamageTypeDescription.PhysicalData() {
+                                    Material = 0,
+                                    Form = PhysicalDamageForm.Slashing,
+                                    Enhancement = 0,
+                                    EnhancementTotal = 0
+                                },
+                                Energy = DamageEnergyType.NegativeEnergy
+                            },
+                            Drain = false,
+                            AbilityType = StatType.Unknown,
+                            EnergyDrainType = EnergyDrainType.Temporary,
+                            Duration = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                m_IsExtendable = true,
+                            },
+                            PreRolledSharedValue = AbilitySharedValue.Damage,
+                            Value = new ContextDiceValue() {
+                                DiceType = DiceType.D6,
+                                DiceCountValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 2,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                            },
+                            IsAoE = false,
+                            HalfIfSaved = false,
+                            ResultSharedValue = AbilitySharedValue.Damage,
+                            CriticalSharedValue = AbilitySharedValue.Damage
+                        }
+                        );
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.Stacking = StackingType.Replace;
+            });
             var DraconicExploitEleMeleeAbility = Helpers.CreateBlueprint<BlueprintAbility>("DraconicExploitEleMeleeAbility", bp => {
                 bp.SetName("Draconic Exploit - Elemental Melee");
                 bp.SetDescription("The arcanist can expend 3 points from their arcane reservoir to grant a drake 2d6 energy damage on all melee attacks, the " +
@@ -730,7 +836,36 @@ namespace ExpandedContent.Tweaks.Archetypes {
                                                                 m_IsExtendable = false,
                                                             }
                                                         }),
-                                                    IfFalse = Helpers.CreateActionList()
+                                                    IfFalse = Helpers.CreateActionList(
+                                                        new Conditional() {
+                                                            ConditionsChecker = new ConditionsChecker() {
+                                                                Operation = Operation.And,
+                                                                Conditions = new Condition[] {
+                                                                    new ContextConditionHasFact() {
+                                                                        m_Fact = DrakeSubtypeUmbral.ToReference<BlueprintUnitFactReference>(),
+                                                                        Not = false
+                                                                    }
+                                                                }
+                                                            },
+                                                            IfTrue = Helpers.CreateActionList(
+                                                                new ContextActionApplyBuff() {
+                                                                    m_Buff = DraconicExploitEleMeleeNegative.ToReference<BlueprintBuffReference>(),
+                                                                    DurationValue = new ContextDurationValue() {
+                                                                        Rate = DurationRate.Rounds,
+                                                                        DiceType = DiceType.Zero,
+                                                                        DiceCountValue = 0,
+                                                                        BonusValue = new ContextValue() {
+                                                                            ValueType = ContextValueType.Rank,
+                                                                            Value = 0,
+                                                                            ValueRank = AbilityRankType.Default,
+                                                                            ValueShared = AbilitySharedValue.Damage,
+                                                                            Property = UnitProperty.None
+                                                                        },
+                                                                        m_IsExtendable = false,
+                                                                    }
+                                                                }),
+                                                            IfFalse = Helpers.CreateActionList()
+                                                        })
                                                 })
                                         })
                                 })
