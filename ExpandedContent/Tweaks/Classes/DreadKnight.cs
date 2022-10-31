@@ -743,7 +743,7 @@ namespace ExpandedContent.Tweaks.Classes {
                 bp.IsClassFeature = true;
                 bp.AddComponent<AddAbilityUseTrigger>(c => {
                     c.ActionsOnAllTargets = false;
-                    c.AfterCast = false;
+                    c.AfterCast = true;
                     c.ActionsOnTarget = true;
                     c.FromSpellbook = false;
                     c.m_Spellbooks = new BlueprintSpellbookReference[] { };
@@ -811,7 +811,7 @@ namespace ExpandedContent.Tweaks.Classes {
                 bp.IsClassFeature = true;
                 bp.AddComponent<AddAbilityUseTrigger>(c => {
                     c.ActionsOnAllTargets = false;
-                    c.AfterCast = false;
+                    c.AfterCast = true;
                     c.ActionsOnTarget = true;
                     c.FromSpellbook = false;
                     c.m_Spellbooks = new BlueprintSpellbookReference[] { };
@@ -889,7 +889,7 @@ namespace ExpandedContent.Tweaks.Classes {
                 bp.IsClassFeature = true;
                 bp.AddComponent<AddAbilityUseTrigger>(c => {
                     c.ActionsOnAllTargets = false;
-                    c.AfterCast = false;
+                    c.AfterCast = true;
                     c.ActionsOnTarget = true;
                     c.FromSpellbook = false;
                     c.m_Spellbooks = new BlueprintSpellbookReference[] { };
@@ -967,7 +967,7 @@ namespace ExpandedContent.Tweaks.Classes {
                 bp.IsClassFeature = true;
                 bp.AddComponent<AddAbilityUseTrigger>(c => {
                     c.ActionsOnAllTargets = false;
-                    c.AfterCast = false;
+                    c.AfterCast = true;
                     c.ActionsOnTarget = true;
                     c.FromSpellbook = false;
                     c.m_Spellbooks = new BlueprintSpellbookReference[] { };
@@ -1034,7 +1034,7 @@ namespace ExpandedContent.Tweaks.Classes {
                 bp.IsClassFeature = true;
                 bp.AddComponent<AddAbilityUseTrigger>(c => {
                     c.ActionsOnAllTargets = false;
-                    c.AfterCast = false;
+                    c.AfterCast = true;
                     c.ActionsOnTarget = true;
                     c.FromSpellbook = false;
                     c.m_Spellbooks = new BlueprintSpellbookReference[] { };
@@ -1101,7 +1101,7 @@ namespace ExpandedContent.Tweaks.Classes {
                 bp.IsClassFeature = true;
                 bp.AddComponent<AddAbilityUseTrigger>(c => {
                     c.ActionsOnAllTargets = false;
-                    c.AfterCast = false;
+                    c.AfterCast = true;
                     c.ActionsOnTarget = true;
                     c.FromSpellbook = false;
                     c.m_Spellbooks = new BlueprintSpellbookReference[] { };
@@ -1179,7 +1179,7 @@ namespace ExpandedContent.Tweaks.Classes {
                 bp.IsClassFeature = true;
                 bp.AddComponent<AddAbilityUseTrigger>(c => {
                     c.ActionsOnAllTargets = false;
-                    c.AfterCast = false;
+                    c.AfterCast = true;
                     c.ActionsOnTarget = true;
                     c.FromSpellbook = false;
                     c.m_Spellbooks = new BlueprintSpellbookReference[] { };
@@ -1245,7 +1245,7 @@ namespace ExpandedContent.Tweaks.Classes {
                 bp.IsClassFeature = true;
                 bp.AddComponent<AddAbilityUseTrigger>(c => {
                     c.ActionsOnAllTargets = false;
-                    c.AfterCast = false;
+                    c.AfterCast = true;
                     c.ActionsOnTarget = true;
                     c.FromSpellbook = false;
                     c.m_Spellbooks = new BlueprintSpellbookReference[] { };
@@ -1312,7 +1312,7 @@ namespace ExpandedContent.Tweaks.Classes {
                 bp.IsClassFeature = true;
                 bp.AddComponent<AddAbilityUseTrigger>(c => {
                     c.ActionsOnAllTargets = false;
-                    c.AfterCast = false;
+                    c.AfterCast = true;
                     c.ActionsOnTarget = true;
                     c.FromSpellbook = false;
                     c.m_Spellbooks = new BlueprintSpellbookReference[] { };
@@ -1391,7 +1391,7 @@ namespace ExpandedContent.Tweaks.Classes {
                 bp.IsClassFeature = true;
                 bp.AddComponent<AddAbilityUseTrigger>(c => {
                     c.ActionsOnAllTargets = false;
-                    c.AfterCast = false;
+                    c.AfterCast = true;
                     c.ActionsOnTarget = true;
                     c.FromSpellbook = false;
                     c.m_Spellbooks = new BlueprintSpellbookReference[] { };
@@ -1471,7 +1471,7 @@ namespace ExpandedContent.Tweaks.Classes {
                 bp.IsClassFeature = true;
                 bp.AddComponent<AddAbilityUseTrigger>(c => {
                     c.ActionsOnAllTargets = false;
-                    c.AfterCast = false;
+                    c.AfterCast = true;
                     c.ActionsOnTarget = true;
                     c.FromSpellbook = false;
                     c.m_Spellbooks = new BlueprintSpellbookReference[] { };
@@ -1538,7 +1538,7 @@ namespace ExpandedContent.Tweaks.Classes {
                 bp.IsClassFeature = true;
                 bp.AddComponent<AddAbilityUseTrigger>(c => {
                     c.ActionsOnAllTargets = false;
-                    c.AfterCast = false;
+                    c.AfterCast = true;
                     c.ActionsOnTarget = true;
                     c.FromSpellbook = false;
                     c.m_Spellbooks = new BlueprintSpellbookReference[] { };
@@ -1615,7 +1615,7 @@ namespace ExpandedContent.Tweaks.Classes {
                 bp.IsClassFeature = true;
                 bp.AddComponent<AddAbilityUseTrigger>(c => {
                     c.ActionsOnAllTargets = false;
-                    c.AfterCast = false;
+                    c.AfterCast = true;
                     c.ActionsOnTarget = true;
                     c.FromSpellbook = false;
                     c.m_Spellbooks = new BlueprintSpellbookReference[] { };
@@ -1683,7 +1683,7 @@ namespace ExpandedContent.Tweaks.Classes {
                 bp.IsClassFeature = true;
                 bp.AddComponent<AddAbilityUseTrigger>(c => {
                     c.ActionsOnAllTargets = false;
-                    c.AfterCast = false;
+                    c.AfterCast = true;
                     c.ActionsOnTarget = true;
                     c.FromSpellbook = false;
                     c.m_Spellbooks = new BlueprintSpellbookReference[] { };

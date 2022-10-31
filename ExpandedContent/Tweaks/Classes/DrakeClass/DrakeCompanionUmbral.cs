@@ -32,7 +32,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
             var Melazmera = Resources.GetBlueprint<BlueprintUnit>("85c7a3fd80f93db43a3e588ba5f5f9bc");
             var UmbralDragonBarks = Resources.GetBlueprint<BlueprintUnitAsksList>("a526fcf667234d4e8bb2ba5376a0f91a");
             var BloodlineDraconicGoldProgression = Resources.GetBlueprint<BlueprintProgression>("6c67ef823db8d7d45bb0ef82f959743d");
-            var BlackDragon_Barks = Resources.GetBlueprint<BlueprintUnitAsksList>("3c0924a80e504f04c94de6ec2a28f9aa");
+            var BlackDragonBarks = Resources.GetBlueprint<BlueprintUnitAsksList>("3c0924a80e504f04c94de6ec2a28f9aa");
             var CharacterBrain = Resources.GetBlueprint<BlueprintBrain>("cf986dd7ba9d4ec46ad8a3a0406d02ae");
             var Neutrals = Resources.GetBlueprint<BlueprintFaction>("d8de50cc80eb4dc409a983991e0b77ad");
             var WeaponEmptyHand = Resources.GetBlueprint<BlueprintItemWeapon>("20375b5a0c9243d45966bd72c690ab74");
@@ -47,6 +47,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
             var HeadLocatorFeature = Resources.GetBlueprint<BlueprintFeature>("9c57e9674b4a4a2b9920f9fec47f7e6a");
             var DrakeSizeTiny = Resources.GetModBlueprint<BlueprintFeature>("DrakeSizeTiny");
             var NegativeEnergyAffinity = Resources.GetBlueprint<BlueprintFeature>("d5ee498e19722854198439629c1841a5");
+            var UmbralDrakeIcon = AssetLoader.LoadInternal("Skills", "Icon_UmbralDrake.png");
 
 
             var DrakeUmbralPortrait = Helpers.CreateBlueprint<BlueprintPortrait>("DrakeUmbralPortrait", bp => {
@@ -171,7 +172,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                     "young drake is weaker than a standard animal companion, as they grow they will start to resemble their draconic cousins more and more until they rival them in power. " +
                     "\n This drake is descended from umbral dragons from the plain of shadows, giving it the outsider subtype and granting it potential to wield negative energy breath attacks." +
                     "\nThough a living creature, a umbral drake reacts to positive and negative energy as if they were undead — positive energy harms them, while negative energy {g|Encyclopedia:Healing}heals{/g} them.");
-                //bp.m_Icon = BloodlineDraconicGoldProgression.m_Icon;
+                bp.m_Icon = UmbralDrakeIcon;
                 bp.AddComponent<AddPet>(c => {
                     c.Type = PetType.AnimalCompanion;
                     c.ProgressionType = PetProgressionType.AnimalCompanion;

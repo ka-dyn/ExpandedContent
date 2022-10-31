@@ -7,6 +7,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Items.Weapons;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
+using Kingmaker.ResourceLinks;
 using Kingmaker.UnitLogic.Buffs;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.FactLogic;
@@ -30,7 +31,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
             var DrakeSubtypeEarth = Resources.GetModBlueprint<BlueprintFeature>("DrakeSubtypeEarth");
             var FormOfTheDragonGreenBuff = Resources.GetBlueprint<BlueprintBuff>("02611a12f38bed340920d1d427865917").GetComponent<Polymorph>();
             var BloodlineDraconicGreenProgression = Resources.GetBlueprint<BlueprintProgression>("7181be57d1cc3bc40bc4b552e4e4ce24");
-            var BlackDragon_Barks = Resources.GetBlueprint<BlueprintUnitAsksList>("3c0924a80e504f04c94de6ec2a28f9aa");
+            var BlackDragonBarks = Resources.GetBlueprint<BlueprintUnitAsksList>("3c0924a80e504f04c94de6ec2a28f9aa");
             var CharacterBrain = Resources.GetBlueprint<BlueprintBrain>("cf986dd7ba9d4ec46ad8a3a0406d02ae");
             var Neutrals = Resources.GetBlueprint<BlueprintFaction>("d8de50cc80eb4dc409a983991e0b77ad");
             var WeaponEmptyHand = Resources.GetBlueprint<BlueprintItemWeapon>("20375b5a0c9243d45966bd72c690ab74");
@@ -84,7 +85,29 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 bp.Alignment = Alignment.LawfulEvil;
                 bp.m_Portrait = DrakeGreenPortrait.ToReference<BlueprintPortraitReference>();
                 bp.Prefab = FormOfTheDragonGreenBuff.m_Prefab;
-                bp.Visual = RedDragon.Visual;
+                //bp.Visual = RedDragon.Visual;
+                bp.Visual = new UnitVisualParams() {
+                    BloodType = BloodType.Common,
+                    FootprintType = FootprintType.Humanoid,
+                    FootprintScale = 1,
+                    ArmorFx = new PrefabLink(),
+                    BloodPuddleFx = new PrefabLink(),
+                    DismemberFx = new PrefabLink(),
+                    RipLimbsApartFx = new PrefabLink(),
+                    IsNotUseDismember = false,
+                    m_Barks = BlackDragonBarks.ToReference<BlueprintUnitAsksListReference>(),
+                    ReachFXThresholdBonus = 0,
+                    DefaultArmorSoundType = ArmorSoundType.Flesh,
+                    FootstepSoundSizeType = FootstepSoundSizeType.BootMedium,
+                    FootSoundType = FootSoundType.HardPaw,
+                    FootSoundSize = Size.Medium,
+                    BodySoundType = BodySoundType.Flesh,
+                    BodySoundSize = Size.Medium,
+                    FoleySoundPrefix = null, //?
+                    NoFinishingBlow = false,
+                    ImportanceOverride = 0,
+                    SilentCaster = true
+                };
                 bp.m_Faction = Neutrals.ToReference<BlueprintFactionReference>();
                 bp.FactionOverrides = AzataDragonUnit.FactionOverrides;
                 bp.m_Brain = CharacterBrain.ToReference<BlueprintBrainReference>();

@@ -1394,6 +1394,9 @@
     <Content Include="Assets\Skills\Icon_Vorpal.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Skills\Icon_UmbralDrake.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Tweaks\AnimalCompanions\" />
