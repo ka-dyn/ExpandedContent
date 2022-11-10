@@ -17,6 +17,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
         public static void AddClutchThief() {
 
             var RogueClass = Resources.GetBlueprint<BlueprintCharacterClass>("299aa766dee3cbf4790da4efb8c72484");
+            var AnimalCompanionEmpty = Resources.GetBlueprintReference<BlueprintFeatureReference>("472091361cf118049a2b4339c4ea836a");
             var DrakeCompanionSelection = Resources.GetModBlueprint<BlueprintFeatureSelection>("DrakeCompanionSelection");
             var DrakeCompanionFeatureGreen = Resources.GetModBlueprint<BlueprintFeature>("DrakeCompanionFeatureGreen");
             var DrakeCompanionFeatureSilver = Resources.GetModBlueprint<BlueprintFeature>("DrakeCompanionFeatureSilver");
@@ -53,6 +54,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.IsClassFeature = true;
                 bp.Group = FeatureGroup.None;
                 bp.m_AllFeatures = new BlueprintFeatureReference[] {
+                    AnimalCompanionEmpty,
                     DrakeCompanionFeatureBlack.ToReference<BlueprintFeatureReference>(),
                     DrakeCompanionFeatureBlue.ToReference<BlueprintFeatureReference>(),
                     DrakeCompanionFeatureBrass.ToReference<BlueprintFeatureReference>(),

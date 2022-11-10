@@ -44,6 +44,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var ArcanistClass = Resources.GetBlueprint<BlueprintCharacterClass>("52dbfd8505e22f84fad8d702611f60b7");
             var ArcanistExploitSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("b8bf3d5023f2d8c428fdf6438cecaea7");
             var ArcanistGreaterExploits = Resources.GetBlueprint<BlueprintFeature>("c7536b93f17c70d4fa3a8cf9aa76bfb7");
+            var AnimalCompanionEmpty = Resources.GetBlueprintReference<BlueprintFeatureReference>("472091361cf118049a2b4339c4ea836a");
             var DrakeCompanionSelection = Resources.GetModBlueprint<BlueprintFeatureSelection>("DrakeCompanionSelection");
             var DrakeCompanionFeatureGreen = Resources.GetModBlueprint<BlueprintFeature>("DrakeCompanionFeatureGreen");
             var DrakeCompanionFeatureSilver = Resources.GetModBlueprint<BlueprintFeature>("DrakeCompanionFeatureSilver");
@@ -86,6 +87,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.IsClassFeature = true;
                 bp.Group = FeatureGroup.None;
                 bp.m_AllFeatures = new BlueprintFeatureReference[] {
+                    AnimalCompanionEmpty,
                     DrakeCompanionFeatureBlack.ToReference<BlueprintFeatureReference>(),
                     DrakeCompanionFeatureBlue.ToReference<BlueprintFeatureReference>(),
                     DrakeCompanionFeatureBrass.ToReference<BlueprintFeatureReference>(),

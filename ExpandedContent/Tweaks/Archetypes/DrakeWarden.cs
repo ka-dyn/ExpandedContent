@@ -17,6 +17,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
 
             var RangerClass = Resources.GetBlueprint<BlueprintCharacterClass>("cda0615668a6df14eb36ba19ee881af6");
             var DrakeCompanionSelection = Resources.GetModBlueprint<BlueprintFeatureSelection>("DrakeCompanionSelection");
+            var AnimalCompanionEmpty = Resources.GetBlueprintReference<BlueprintFeatureReference>("472091361cf118049a2b4339c4ea836a");
             var HuntersBondSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("b705c5184a96a84428eeb35ae2517a14");
             var DrakeCompanionFeatureGreen = Resources.GetModBlueprint<BlueprintFeature>("DrakeCompanionFeatureGreen");
             var DrakeCompanionFeatureSilver = Resources.GetModBlueprint<BlueprintFeature>("DrakeCompanionFeatureSilver");
@@ -49,6 +50,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.IsClassFeature = true;
                 bp.Group = FeatureGroup.None;
                 bp.m_AllFeatures = new BlueprintFeatureReference[] {
+                    AnimalCompanionEmpty,
                     DrakeCompanionFeatureBlack.ToReference<BlueprintFeatureReference>(),
                     DrakeCompanionFeatureBlue.ToReference<BlueprintFeatureReference>(),
                     DrakeCompanionFeatureBrass.ToReference<BlueprintFeatureReference>(),

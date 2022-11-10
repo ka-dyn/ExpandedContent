@@ -15,6 +15,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
 
         public static void AddDrakeCompanionSelection() {
 
+            var AnimalCompanionEmpty = Resources.GetBlueprintReference<BlueprintFeatureReference>("472091361cf118049a2b4339c4ea836a");
             var DrakeCompanionFeatureGreen = Resources.GetModBlueprint<BlueprintFeature>("DrakeCompanionFeatureGreen");
             var DrakeCompanionFeatureSilver = Resources.GetModBlueprint<BlueprintFeature>("DrakeCompanionFeatureSilver");
             var DrakeCompanionFeatureBlack = Resources.GetModBlueprint<BlueprintFeature>("DrakeCompanionFeatureBlack");
@@ -50,6 +51,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 bp.IsClassFeature = true;
                 bp.Group = FeatureGroup.None;
                 bp.m_AllFeatures = new BlueprintFeatureReference[] {
+                    AnimalCompanionEmpty,
                     DrakeCompanionFeatureBlack.ToReference<BlueprintFeatureReference>(),
                     DrakeCompanionFeatureBlue.ToReference<BlueprintFeatureReference>(),
                     DrakeCompanionFeatureBrass.ToReference<BlueprintFeatureReference>(),

@@ -158,7 +158,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
             FullPortraitInjecotr.Replacements[DrakeCompanionUnitRed.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "RedFulllength.png", new Vector2Int(692, 1024), TextureFormat.RGBA32);
             HalfPortraitInjecotr.Replacements[DrakeCompanionUnitRed.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "RedMedium.png", new Vector2Int(330, 432), TextureFormat.RGBA32);
             SmallPortraitInjecotr.Replacements[DrakeCompanionUnitRed.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "RedSmall.png", new Vector2Int(185, 242), TextureFormat.RGBA32);
-
+            EyePortraitInjecotr.Replacements[DrakeCompanionUnitRed.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "RedPetEye.png", new Vector2Int(176, 24), TextureFormat.RGBA32);
 
             var DrakeCompanionFeatureRed = Helpers.CreateBlueprint<BlueprintFeature>("DrakeCompanionFeatureRed", bp => {
                 bp.SetName("Drake Companion - Red");

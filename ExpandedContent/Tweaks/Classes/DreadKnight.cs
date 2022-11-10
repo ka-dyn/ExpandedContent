@@ -1868,7 +1868,7 @@ namespace ExpandedContent.Tweaks.Classes {
             var CrueltyStaggered = Helpers.CreateBlueprint<BlueprintFeature>("CrueltyStaggered", bp => {
                 bp.SetName("Cruelty - Staggered");
                 bp.SetDescription("A dreadknight may enhance their Profane Corruption with learned cruelties. Only one cruelty may be selected at a time. " +
-                    "This cruelty causes the target to contract the bubonic plague upon a failed fortitude save.");
+                     "This cruelty causes the target to become staggered for 1 round/two levels of dreadknight upon a failed fortitude save.");
                 bp.m_Icon = CrueltySelectIcon;
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] { TouchOfProfaneCorruptionAbilityStaggered.ToReference<BlueprintUnitFactReference>() };
@@ -3230,6 +3230,7 @@ namespace ExpandedContent.Tweaks.Classes {
                     p.HideInUI = true;
                 });
             });
+            var AnimalCompanionEmpty = Resources.GetBlueprintReference<BlueprintFeatureReference>("472091361cf118049a2b4339c4ea836a");
             var CavalierMountFeatureWolf = Resources.GetModBlueprint<BlueprintFeature>("CavalierMountFeatureWolf");
             var AnimalCompanionFeatureHorse_PreorderBonus = Resources.GetBlueprint<BlueprintFeature>("bfeb9be0a3c9420b8b2beecc8171029c");
             var AnimalCompanionFeatureHorse = Resources.GetBlueprint<BlueprintFeature>("9dc58b5901677c942854019d1dd98374");
@@ -3239,14 +3240,15 @@ namespace ExpandedContent.Tweaks.Classes {
                     "as a druid’s animal companion, using the dreadknight’s level as her effective druid level. The creature must be one that " +
                     "she is capable of riding and must be suitable as a mount. A Medium dreadknight can select a horse. A Small dreadknight can select a wolf.");
                 bp.IsClassFeature = true;
-                bp.ReapplyOnLevelUp = true;
-                bp.Groups = new FeatureGroup[] { FeatureGroup.Feat };
+                bp.ReapplyOnLevelUp = false;
+                bp.Groups = new FeatureGroup[0];
                 bp.Mode = SelectionMode.OnlyNew;
-                bp.Group = FeatureGroup.AnimalCompanion;
+                bp.Group = FeatureGroup.None;
                 bp.Ranks = 1;
                 bp.m_Icon = ServantIcon;
                 bp.IsPrerequisiteFor = new List<BlueprintFeatureReference>();
                 bp.AddFeatures(
+                    AnimalCompanionEmpty,
                     AnimalCompanionFeatureHorse.ToReference<BlueprintFeatureReference>(),
                     AnimalCompanionFeatureHorse_PreorderBonus.ToReference<BlueprintFeatureReference>(),
                     CavalierMountFeatureWolf.ToReference<BlueprintFeatureReference>()

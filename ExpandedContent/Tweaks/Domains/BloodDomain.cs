@@ -223,9 +223,10 @@ namespace ExpandedContent.Tweaks.Domains {
             //BloodDomainGreaterAbility
             var BloodDomainGreaterAbility = Helpers.CreateBlueprint<BlueprintAbility>("BloodDomainGreaterAbility", bp => {
                 bp.SetName("Wounding Blade");
-                bp.SetDescription("At 8th level, you can give a weapon that you touch the wounding special weapon quality for a number of rounds equal " +
+                bp.SetDescription("You may give a weapon that you touch the wounding special weapon quality for a number of rounds equal " +
                     "to 1/2 your cleric level. You can use this ability once per day at 8th level, and an additional time per day for every four levels " +
-                    "beyond 8th.");
+                    "beyond 8th. \nWounded: Creatures hit by this weapon take 1 hit point {g|Encyclopedia:Damage}damage{/g} each turn for each stack of this status. " +
+                    "This can be stopped through the application of any {g|Encyclopedia:Spell}spell{/g} that cures hit point damage.");
                 bp.m_Icon = SacredWeaponEnchantAnarchicChoice.Icon;
                 bp.AddComponent<SpellComponent>(c => {
                     c.m_Flags = 0;
@@ -301,7 +302,8 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.SetName("Wounding Blade");
                 bp.SetDescription("At 8th level, you can give a weapon that you touch the wounding special weapon quality for a number of rounds equal " +
                     "to 1/2 your cleric level. You can use this ability once per day at 8th level, and an additional time per day for every four levels " +
-                    "beyond 8th.");
+                    "beyond 8th. \nWounded: Creatures hit by this weapon take 1 hit point {g|Encyclopedia:Damage}damage{/g} each turn for each stack of this status. " +
+                    "This can be stopped through the application of any {g|Encyclopedia:Spell}spell{/g} that cures hit point damage.");
                 bp.m_Icon = SacredWeaponEnchantAnarchicChoice.Icon;
                 bp.AddComponent<AddAbilityResources>(c => {
                     c.m_Resource = BloodDomainGreaterResource.ToReference<BlueprintAbilityResourceReference>();

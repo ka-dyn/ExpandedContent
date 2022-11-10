@@ -162,7 +162,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
             FullPortraitInjecotr.Replacements[DrakeCompanionUnitBronze.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "BronzeFulllength.png", new Vector2Int(692, 1024), TextureFormat.RGBA32);
             HalfPortraitInjecotr.Replacements[DrakeCompanionUnitBronze.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "BronzeMedium.png", new Vector2Int(330, 432), TextureFormat.RGBA32);
             SmallPortraitInjecotr.Replacements[DrakeCompanionUnitBronze.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "BronzeSmall.png", new Vector2Int(185, 242), TextureFormat.RGBA32);
-
+            EyePortraitInjecotr.Replacements[DrakeCompanionUnitBronze.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "BronzePetEye.png", new Vector2Int(176, 24), TextureFormat.RGBA32);
 
             var DrakeCompanionFeatureBronze = Helpers.CreateBlueprint<BlueprintFeature>("DrakeCompanionFeatureBronze", bp => {
                 bp.SetName("Drake Companion - Bronze");

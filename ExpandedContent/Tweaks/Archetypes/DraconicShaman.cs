@@ -48,6 +48,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var ShamanSpritSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("00c8c566d1825dd4a871250f35285982");
             var ShamanSpritAnimalSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("d22f319fefac4ca4b90f03ac5cb9c714");
             var ShamanHexSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("4223fe18c75d4d14787af196a04e14e7");
+            var AnimalCompanionEmpty = Resources.GetBlueprintReference<BlueprintFeatureReference>("472091361cf118049a2b4339c4ea836a");
             var DrakeCompanionFeatureGreen = Resources.GetModBlueprint<BlueprintFeature>("DrakeCompanionFeatureGreen");
             var DrakeCompanionFeatureSilver = Resources.GetModBlueprint<BlueprintFeature>("DrakeCompanionFeatureSilver");
             var DrakeCompanionFeatureBlack = Resources.GetModBlueprint<BlueprintFeature>("DrakeCompanionFeatureBlack");
@@ -85,6 +86,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.IsClassFeature = true;
                 bp.Group = FeatureGroup.None;
                 bp.m_AllFeatures = new BlueprintFeatureReference[] {
+                    AnimalCompanionEmpty,
                     DrakeCompanionFeatureBlack.ToReference<BlueprintFeatureReference>(),
                     DrakeCompanionFeatureBlue.ToReference<BlueprintFeatureReference>(),
                     DrakeCompanionFeatureBrass.ToReference<BlueprintFeatureReference>(),
