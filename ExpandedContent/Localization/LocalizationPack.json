@@ -81,11 +81,10 @@
       "enGB": "Divine/Profane Weapon Bond"
     },
     {
-      "Key": "f1047d721d884a54af13e3c1ed7bf9d2",
+      "Key": "ea96a107c28a4c119231b531c1755543",
       "SimpleName": "<null>Description",
       "ProcessTemplates": false,
-      "IsUsed": false,
-      "enGB": "When eaten goodberries heal 2d4 point of damage, however if they are eaten more than once every 24 hours they can make the creature that ate them sick for a short time."
+      "enGB": "All attacks deal 25 bleed damage that triggers each round but does not stack with itself."
     },
     {
       "Key": "1f793c98c9d84419a226e3e543d88f8c",
@@ -94,10 +93,11 @@
       "enGB": "All attacks deal 1 bleed damage that triggers each round and stacks with itself."
     },
     {
-      "Key": "ea96a107c28a4c119231b531c1755543",
+      "Key": "f1047d721d884a54af13e3c1ed7bf9d2",
       "SimpleName": "<null>Description",
       "ProcessTemplates": false,
-      "enGB": "All attacks deal 25 bleed damage that triggers each round but does not stack with itself."
+      "IsUsed": false,
+      "enGB": "When eaten goodberries heal 2d4 point of damage, however if they are eaten more than once every 24 hours they can make the creature that ate them sick for a short time."
     },
     {
       "Key": "6174558e720345a48658694e8e2ccba2",
@@ -766,9 +766,16 @@
       "enGB": "Blood Subdomain"
     },
     {
+      "Key": "28c9c690cca54668b290e26c0443cdc8",
+      "SimpleName": "BloodDomainGreaterAbility.Description",
+      "ProcessTemplates": true,
+      "enGB": "You may give a weapon that you touch the wounding special weapon quality for a number of rounds equal to 1/2 your cleric level. You can use this ability once per day at 8th level, and an additional time per day for every four levels beyond 8th. \nWounded: Creatures hit by this weapon take 1 hit point damage each turn for each stack of this status. This can be stopped through the application of any spell that cures hit point damage."
+    },
+    {
       "Key": "ee51b50bd47943d481d41494583cfbe1",
       "SimpleName": "BloodDomainGreaterAbility.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "At 8th level, you can give a weapon that you touch the wounding special weapon quality for a number of rounds equal to 1/2 your cleric level. You can use this ability once per day at 8th level, and an additional time per day for every four levels beyond 8th."
     },
     {
@@ -776,6 +783,12 @@
       "SimpleName": "BloodDomainGreaterAbility.Name",
       "ProcessTemplates": false,
       "enGB": "Wounding Blade"
+    },
+    {
+      "Key": "7854afdb43ef4497bebd597f19615b5d",
+      "SimpleName": "BloodDomainGreaterFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "At 8th level, you can give a weapon that you touch the wounding special weapon quality for a number of rounds equal to 1/2 your cleric level. You can use this ability once per day at 8th level, and an additional time per day for every four levels beyond 8th. \nWounded: Creatures hit by this weapon take 1 hit point damage each turn for each stack of this status. This can be stopped through the application of any spell that cures hit point damage."
     },
     {
       "Key": "80b493600a354fc692f498c39d0c432e",
@@ -1200,16 +1213,16 @@
       "enGB": "Conqueror"
     },
     {
-      "Key": "ffbd05fa7c3843f9a96165dbf5705983",
-      "SimpleName": "ConquerorInspiredageFeature.Description",
-      "ProcessTemplates": false,
-      "enGB": "At 7th level, the conqueror's commandments warp the minds of those who accept them even further."
-    },
-    {
       "Key": "9197b62c357f4051b3b7df813d06f88d",
       "SimpleName": "ConquerorInspiredageFeature.Description",
       "ProcessTemplates": false,
       "enGB": "At 1st level, a conqueror receives the ability to incite rage in those he rules over, as the skald inspired rage class feature."
+    },
+    {
+      "Key": "ffbd05fa7c3843f9a96165dbf5705983",
+      "SimpleName": "ConquerorInspiredageFeature.Description",
+      "ProcessTemplates": false,
+      "enGB": "At 7th level, the conqueror's commandments warp the minds of those who accept them even further."
     },
     {
       "Key": "0160ab7b5c884199a1047c169ecc1d34",
@@ -1554,6 +1567,18 @@
       "SimpleName": "CthulhuFeature.Name",
       "ProcessTemplates": false,
       "enGB": "Cthulhu"
+    },
+    {
+      "Key": "5c9e198e570844f78346444bfa1bafb5",
+      "SimpleName": "CythVsugFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nTitles: Prince of the Blasted Heath, Demon Lord of Fungus and Parasites, Lord of Filth and Pollution\nAlignment: Chaotic Evil   \nAreas of Concern: Disease, Fungus, Parasites   \nDomains: Chaos, Earth, Evil, Plant   \nSubdomains: Caves, Decay, Demon, Growth, Plague   \nFavoured Weapon: Scimitar   \nHoly Symbol: Moldy spiraling tentacle\nSacred Animal: Centipede   \nCyth-V’sug’s realm is both a place and a being—an immense parasitic fungus called the Jeharlu capable of extending tendrils into other planes, corrupting them, and then drawing them into the Abyss to expand itself. A quivering, spherical clot of fungal matter much larger than the largest of planets, the Jeharlu lies at the center of an immense cavern, suspended by thick white filaments that attach it to the surrounding rift. Pallid giant worms, moldering shamblers, deformed fungoid dragons, and all manner of demons are but a few of the Jeharlu’s dangers. Cyth-V’sug dwells at the heart of this fungal sphere, an immense monstrosity that appears as a tangled mass of fungal tubers, tentacles, and grasping claws topped by a heaving draconic body with puff ball eyes and jagged teeth. Cyth-V’sug can be thought of as a planetary parasite that infests worlds and consumes them, adding the waste that he leaves behind to his ever-expanding Abyssal realm. One of Cyth-V’sug’s greatest minions, the nascent demon lord Treerazer, recently established a domain on the Material Plane after a failed coup against Cyth-V’sug, yet curiously, the Prince of the Blasted Heath has done little to strike against his wayward minion since."
+    },
+    {
+      "Key": "40581fe9230c43ec8ab100a83a8514fb",
+      "SimpleName": "CythVsugFeature.Name",
+      "ProcessTemplates": false,
+      "enGB": "Cyth-V'sug"
     },
     {
       "Key": "2a15a5d5cf614eb182aa39cd29712c79",
@@ -2399,6 +2424,7 @@
       "Key": "55fbdda3aa6d4d05b429855f3a6c0403",
       "SimpleName": "DrakeBreathWeaponAcid1.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "This breath weapon deals 4d6 points of acid damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day."
     },
     {
@@ -2428,17 +2454,17 @@
       "enGB": "This breath weapon deals 4d6 points of acid damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day."
     },
     {
+      "Key": "37a378dd8b8a488495109c35c06cc102",
+      "SimpleName": "DrakeBreathWeaponAcid2.Description",
+      "ProcessTemplates": true,
+      "enGB": "This breath weapon deals 8d6 points of acid damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day."
+    },
+    {
       "Key": "54c86ff112d44b6d9878ade81198c1b7",
       "SimpleName": "DrakeBreathWeaponAcid2.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "This breath weapon deals 8d6 points of acid damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day."
-    },
-    {
-      "Key": "37a378dd8b8a488495109c35c06cc102",
-      "SimpleName": "DrakeBreathWeaponAcid2.Description",
-      "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 8d6 points of acid damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day."
     },
     {
       "Key": "c3a25063dd8749bfa8a8f08784b6fe35",
@@ -2447,17 +2473,17 @@
       "enGB": "Greater Drake Acid Breath"
     },
     {
+      "Key": "1df6eca3d484449bbfe6a838c4cd4ade",
+      "SimpleName": "DrakeBreathWeaponAcid2Feature.Description",
+      "ProcessTemplates": true,
+      "enGB": "This breath weapon deals 8d6 points of acid damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day. \nUnlocking this allows you to use your lesser breath weapon without spending any resources, however you must wait 1d4 rounds to recharge."
+    },
+    {
       "Key": "df00f6bb8f614cb59316f7627c01fbd2",
       "SimpleName": "DrakeBreathWeaponAcid2Feature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "This breath weapon deals 8d6 points of acid damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day. \nUnlocking this allows you to use your lesser breath weapon without spending any resources, however you must wait 1d4 rounds to recharge."
-    },
-    {
-      "Key": "1df6eca3d484449bbfe6a838c4cd4ade",
-      "SimpleName": "DrakeBreathWeaponAcid2Feature.Description",
-      "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 8d6 points of acid damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day. \nUnlocking this allows you to use your lesser breath weapon without spending any resources, however you must wait 1d4 rounds to recharge."
     },
     {
       "Key": "a4feef2ded00453697b10859100ef717",
@@ -2470,6 +2496,7 @@
       "Key": "21423a23b82c4fa5a54cd3a2c68157f8",
       "SimpleName": "DrakeBreathWeaponAcid3.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "This breath weapon deals 1d6 points of acid damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
     },
     {
@@ -2479,6 +2506,12 @@
       "enGB": "Mythic Drake Acid Breath"
     },
     {
+      "Key": "c3397a5fd99c4a1c88e4b1ce4a91d3e3",
+      "SimpleName": "DrakeBreathWeaponAcid3Feature.Description",
+      "ProcessTemplates": true,
+      "enGB": "This breath weapon deals 1d6 points of acid damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
+    },
+    {
       "Key": "be45de1db0684f2f8e3ffa5e462b2cc2",
       "SimpleName": "DrakeBreathWeaponAcid3Feature.Description",
       "ProcessTemplates": true,
@@ -2486,15 +2519,10 @@
       "enGB": "This breath weapon deals 1d6 points of acid damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
     },
     {
-      "Key": "c3397a5fd99c4a1c88e4b1ce4a91d3e3",
-      "SimpleName": "DrakeBreathWeaponAcid3Feature.Description",
-      "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 1d6 points of acid damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
-    },
-    {
       "Key": "3bba44b3e3de459080d550f4018199e5",
       "SimpleName": "DrakeBreathWeaponCold1.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "This breath weapon deals 4d6 points of cold damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day."
     },
     {
@@ -2559,6 +2587,7 @@
       "Key": "aa4f5369b79343e19de67ebc56132b4b",
       "SimpleName": "DrakeBreathWeaponCold3.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "This breath weapon deals 1d6 points of cold damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
     },
     {
@@ -2575,12 +2604,6 @@
       "enGB": "Mythic Drake Cold Breath"
     },
     {
-      "Key": "0f22f8c4ad924927a399bd9b770d89b7",
-      "SimpleName": "DrakeBreathWeaponCold3Feature.Description",
-      "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 1d6 points of cold damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
-    },
-    {
       "Key": "5de2e3e5ae104dd6889e010b8efdabba",
       "SimpleName": "DrakeBreathWeaponCold3Feature.Description",
       "ProcessTemplates": true,
@@ -2588,9 +2611,16 @@
       "enGB": "This breath weapon deals 1d6 points of cold damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
     },
     {
+      "Key": "0f22f8c4ad924927a399bd9b770d89b7",
+      "SimpleName": "DrakeBreathWeaponCold3Feature.Description",
+      "ProcessTemplates": true,
+      "enGB": "This breath weapon deals 1d6 points of cold damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
+    },
+    {
       "Key": "791c70eb71fa47bc939447ac7c5232aa",
       "SimpleName": "DrakeBreathWeaponElectricity1.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "This breath weapon deals 4d6 points of electricity damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day."
     },
     {
@@ -2655,6 +2685,7 @@
       "Key": "014480f94ab64957a6fc217aa5a36887",
       "SimpleName": "DrakeBreathWeaponElectricity3.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "This breath weapon deals 1d6 points of electricity damage per drake companion level in a 40-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
     },
     {
@@ -2687,6 +2718,7 @@
       "Key": "175585e969b64296a6580facaf078dd8",
       "SimpleName": "DrakeBreathWeaponFire1.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "This breath weapon deals 4d6 points of fire damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day."
     },
     {
@@ -2751,6 +2783,7 @@
       "Key": "8c788890645148329f0c9962114d729b",
       "SimpleName": "DrakeBreathWeaponFire3.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "This breath weapon deals 1d6 points of fire damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
     },
     {
@@ -2780,17 +2813,18 @@
       "enGB": "This breath weapon deals 1d6 points of fire damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
     },
     {
-      "Key": "b6243310dbe242d09c095ec59bd2e4ef",
-      "SimpleName": "DrakeBreathWeaponUmbral1.Description",
-      "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 4d6 points of  negative damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day.\nTargets with an affinity to negative energy (such as undead) are not healed by this ability and are treated as if the ability did not hit them."
-    },
-    {
       "Key": "c7a50bde6aa7476fb23eba2c637d9490",
       "SimpleName": "DrakeBreathWeaponUmbral1.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "This breath weapon deals 4d6 points of  negative damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day.\nTargets with an affinity to negativeenergy (such as undead) are not healed by this ability and are treated as if the ability did not hit them."
+    },
+    {
+      "Key": "b6243310dbe242d09c095ec59bd2e4ef",
+      "SimpleName": "DrakeBreathWeaponUmbral1.Description",
+      "ProcessTemplates": true,
+      "IsUsed": false,
+      "enGB": "This breath weapon deals 4d6 points of  negative damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day.\nTargets with an affinity to negative energy (such as undead) are not healed by this ability and are treated as if the ability did not hit them."
     },
     {
       "Key": "9125e12ae3514d918be88fab671e3fbc",
@@ -2831,12 +2865,6 @@
       "enGB": "Greater Drake Negative Energy Breath"
     },
     {
-      "Key": "e9dc69d808f34e2885d082cf807db6d8",
-      "SimpleName": "DrakeBreathWeaponUmbral2Feature.Description",
-      "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 8d6 points of negative damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day. \nTargets with an affinity to negative energy (such as undead) are not healed by this ability and are treated as if the ability did not hit them.\nUnlocking this allows you to use your lesser breath weapon without spending any resources, however you must wait 1d4 rounds to recharge."
-    },
-    {
       "Key": "73f5183bb1c24c45992400a39e4f1ba6",
       "SimpleName": "DrakeBreathWeaponUmbral2Feature.Description",
       "ProcessTemplates": true,
@@ -2844,17 +2872,23 @@
       "enGB": "This breath weapon deals 8d6 points of negative damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day. \nTargets with an affinity to negativeenergy (such as undead) are not healed by this ability and are treated as if the ability did not hit them.\nUnlocking this allows you to use your lesser breath weapon without spending any resources, however you must wait 1d4 rounds to recharge."
     },
     {
-      "Key": "d151307697904d948457f71e4a2adaa5",
-      "SimpleName": "DrakeBreathWeaponUmbral3.Description",
+      "Key": "e9dc69d808f34e2885d082cf807db6d8",
+      "SimpleName": "DrakeBreathWeaponUmbral2Feature.Description",
       "ProcessTemplates": true,
-      "IsUsed": false,
-      "enGB": "This breath weapon deals 1d6 points of negative energy damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nTargets with an affinity to negativeenergy (such as undead) are not healed by this ability and are treated as if the ability did not hit them. \nUnlike non-mythic breath attacks, this does not damage allies."
+      "enGB": "This breath weapon deals 8d6 points of negative damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day. \nTargets with an affinity to negative energy (such as undead) are not healed by this ability and are treated as if the ability did not hit them.\nUnlocking this allows you to use your lesser breath weapon without spending any resources, however you must wait 1d4 rounds to recharge."
     },
     {
       "Key": "7ac6675de47c4940b4f8843612eb4b2d",
       "SimpleName": "DrakeBreathWeaponUmbral3.Description",
       "ProcessTemplates": true,
       "enGB": "This breath weapon deals 1d6 points of negative energy damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nTargets with an affinity to negativeenergy (such as undead) are not healed by this ability and are treated as if the ability did not hit them. \nUnlike non-mythic breath attacks, this does not damage allies."
+    },
+    {
+      "Key": "d151307697904d948457f71e4a2adaa5",
+      "SimpleName": "DrakeBreathWeaponUmbral3.Description",
+      "ProcessTemplates": true,
+      "IsUsed": false,
+      "enGB": "This breath weapon deals 1d6 points of negative energy damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nTargets with an affinity to negativeenergy (such as undead) are not healed by this ability and are treated as if the ability did not hit them. \nUnlike non-mythic breath attacks, this does not damage allies."
     },
     {
       "Key": "763b3dcab4134d63aa8b74df5f85dcdb",
@@ -3865,6 +3899,18 @@
       "enGB": "Invoke Deity - Glory Domain"
     },
     {
+      "Key": "cdc785eea9cf468597472dc8b328af09",
+      "SimpleName": "GoguntaFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nTitles: Song of the Swamp, Goddess of the Boggards, Mother of Swamps, Frog Mother   \nAlignment: Chaotic Evil   \nAreas of Concern: Amphibians, Boggards, Swamps   \nDomains: Chaos, Death, Evil, Water   \nSubdomains: Demon, Murder, Oceans, Undead   \nFavoured Weapon: Whip (dagger)   \nHoly Symbol: Twig fetish of a boggard   \nSacred Animal: Frog   \nThe goddess of the boggards, Gogunta began her life as a mighty mobogo. Her route to ascension as a demon lord is believed by the boggards to have been the result of a life spent slaughtering just the right creatures and feeding on just the right parts of their bodies. Scholars of the demonic believe it more likely that she was a herzrou in Dagon’s service who ascended to the role of demon lord by more traditional means—certainly she favors the hezrous as guardians and lovers, and often sends them to guard or even lead boggard tribes on the Material Plane (particularly tribes in Varisia’s Mushfens, the River Kingdoms, or the Sodden Lands). Gogunta is unusual among the demon lords in that her realm is not wholly her own—the stinking saltmarsh of Mephizim is a vast region, yet it is contained wholly within the realm of Dagon’s Ishiar. Mephizim floats upon the surface of the vast sea of Ishiar, being pulled idly along by the current. Despite the swampy island’s continental size, it remains a relative speck on the surface of the great Abyssal sea. Dagon seems content to let Gogunta rule her tiny realm above his own, ignoring her blasphemous cavortings. Gogunta’s cult often mingles freely with that of Dagon on the Material Plane, with her boggards and Dagon’s cultists mixing and mating in disgusting ways that nature never intended. Gogunta appears as an immense, multi-headed frog with too many eyes and even more tongues, but in some boggard artwork she appears instead as an immense boggard queen."
+    },
+    {
+      "Key": "c3ebc10472e249919a734c995f6db5d8",
+      "SimpleName": "GoguntaFeature.Name",
+      "ProcessTemplates": false,
+      "enGB": "Gogunta"
+    },
+    {
       "Key": "7eca3fdd4bf947219fb2d9384f850c73",
       "SimpleName": "GoodberryAbility.Description",
       "ProcessTemplates": true,
@@ -4339,6 +4385,30 @@
       "enGB": "Jerishall"
     },
     {
+      "Key": "d24400078cd6451fae349dd8377fff86",
+      "SimpleName": "JezeldaFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nTitles: Mistress of the Hungry Moon, Lord of Werewolves, Demon Lord of The Moon and Werewolves\nAlignment: Chaotic Evil   \nAreas of Concern: Desolation, The Moon, Werewolves\nDomains: Animal, Chaos, Evil, Trickery\nSubdomains: Deception, Demon, Fur, Moon\nFavoured Weapon: Scimitar   \nHoly Symbol: Full moon above moor   \nSacred Animal: Wolf   \nIn certain rural areas of the world, particularly in the region around Darkmoon Vale and the darkened woodlands of Lozeri in northern Ustalav, the barrier between human and wolf grows thin on nights of the full moon. Many religious texts point to the werewolf Jezelda as the first to spread lycanthropy among the mortals of the world, but strangely, neither she nor her faithful support that claim; instead they remain strangely silent upon her history, as if they shared a secret that the world is not yet meant to know. As the patron of werewolves, Jezelda is herself a shapechanger. She can appear as a beautiful and darkhaired Varisian woman, a feral and slavering wolf with huge fangs and yellow eyes, or her favored form—that of an emaciated amalgamation of these two embodiments, also bearing a pair of demonic horns. She despises non-werewolf lycanthropes, and charges her worshipers with seeking out such creatures as heretics worthy only for sacrifice. Goodaligned lycanthropes in particular raise Jezelda’s ire, and such a sacrifice almost always curries her favor. Jezelda’s realm on the Abyss is known as the Moonbog. This vast realm is large enough to contain a single glowing moon high above—the “stars” in the night sky are said to be the eyes of her favored wolf consorts looking down upon the realm below. Below, the Moonbog consists of vast stretches of moorland separated by winding wetlands of bogs and fens infested with all manner of monstrous denizens—the deeper and more remote of these bogs are often ruled by powerful hezrous or half-fiend froghemoths. Yet it is on the moors themselves where the true dangers of this realm can be found—for it is here that Jezelda and her favored consorts hunt under the wan light of the moon. These moors are populated by isolated communities of humanoids harvested from countless worlds. Jezelda enjoys moving from one village to the other, constantly hunting while her minions work furiously to abduct and repopulate the realm behind her so she need never be faced with an empty realm."
+    },
+    {
+      "Key": "464f03b6c68a4835b3e3695e03b4c250",
+      "SimpleName": "JezeldaFeature.Name",
+      "ProcessTemplates": false,
+      "enGB": "Jezelda"
+    },
+    {
+      "Key": "6a3bffdae72649e39f0b3a964375b5c7",
+      "SimpleName": "JubilexFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nTitles: The Faceless Lord, Lord of Sloth, Demon Lord of Poison and Ooze   \nAlignment: Chaotic Evil   \nAreas of Concern: Poison, Ooze, Sloth  \nDomains: Chaos, Destruction, Evil, Water   \nSubdomains: Catastrophe, Demon, Flotsam, Rage   \nFavoured Weapon: Heavy mace   \nHoly Symbol: Melting red eye   \nSacred Animal: None   \nOf the demon lords listed here, Jubilex is perhaps the one least concerned with maintaining a cult. His favored minions, the omoxes, do more to spread his cults than he does—in fact, it’s debatable whether Jubilex even realizes he has worshipers. Only among the drow is his faith particularly popular and pervasive. Certainly, those who worship him tend not to think of him as an entity to be venerated as much as a source of power. Yet despite the Faceless Lord’s lack of interest in his faithful, he certainly knows of the Material Plane and enjoys absorbing the bodies of unwilling mortals into his protoplasmic bulk. Jubilex appears as a shapeless green mass of ooze shot through with dark ribbons of tar and hundreds of glaring red eyes the size of a man’s head. His realm on the Abyss is called the Undersump, and consists of a tangled warren of sewer-like catacombs and tunnels that winds below dozens of other Abyssal realms—many creatures use the Undersump as a method of covertly moving from one such realm to the other, but they must take care to avoid Jubilex’s awareness when they do. Of course, Jubilex’s wanderings and attention to the regions of the Undersump are basically random, and certain parts of the realm are so rarely visited by the Faceless Lord that other strange and dangerous creatures have claimed them."
+    },
+    {
+      "Key": "82f71d2ced64496cbc269a724242fb61",
+      "SimpleName": "JubilexFeature.Name",
+      "ProcessTemplates": false,
+      "enGB": "Jubilex"
+    },
+    {
       "Key": "17abc08df90f4066a1ca4af7eacdd8fe",
       "SimpleName": "KerkamothFeature.Description",
       "ProcessTemplates": true,
@@ -4761,6 +4831,18 @@
       "enGB": "Cruel Master"
     },
     {
+      "Key": "21a27078c09c4eaea66730ad1f3311e5",
+      "SimpleName": "MazmezzFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nTitles: The Creeping Queen, Lord of Vermin, Demon Lord of Vermin and Bindings \nAlignment: Chaotic Evil   \nAreas of Concern: Bindings, Driders, Vermin   \nDomains: Animal, Chaos, Destruction, Evil   \nSubdomains: Catastrophe, Demon, Rage, Venom   \nFavoured Weapon: Net (Kukri)   \nHoly Symbol: Skull in spiderweb   \nSacred Animal: Spider   \nMazmezz appears as a hideous tangle of insectoid legs, far too many for any worldly insect to command. Some of these legs end in claws, others in pincers, and still others in spinnerets. At the center, a sickening clot of wriggling hair boils around a roughly spherical body, the only concession toward a “front” being an immense spider’s mouth filled with thrashing pedipalps and fangs. Mazmezz has the insidious ability to wrap herself in gauzy, vexing swaths of webbing that can magically alter her form to anything she can imagine—the form of a beautiful woman or female drider is a particular favorite when she’s dealing with those she might wish to capture and keep as trophies for her horrific harem. Yet when forced to punish foes or do battle, the Creeping Queen always reverts to her nauseating true form. Mazmezz is worshiped primarily by drow, driders, and ettercaps, but some particularly demented humanoids worship her as well—these tend to be isolated admirers rather than members of full-blown cults. Her hive-like Abyssal domain is known as Khavak-Vog, and its tangled ways are the lair of her favored children, the bebiliths. The core of her maze-like lair is guarded by several of these fiends grown to great size. Legend holds that the first bebiliths were spawned by Mazmezz; if true, this would explain the disgust and hatred with which most other demon lords hold the Creeping Queen."
+    },
+    {
+      "Key": "dc4ab32b9a5347c4bfe7472c20de7425",
+      "SimpleName": "MazmezzFeature.Name",
+      "ProcessTemplates": false,
+      "enGB": "Mazmezz"
+    },
+    {
       "Key": "3ce2009624944d3c8ba8146ab74616e9",
       "SimpleName": "MephistophelesFeature.Description",
       "ProcessTemplates": true,
@@ -4771,6 +4853,18 @@
       "SimpleName": "MephistophelesFeature.Name",
       "ProcessTemplates": false,
       "enGB": "Mephistopheles"
+    },
+    {
+      "Key": "39084a7dc1b848adaa54369504cfdbe8",
+      "SimpleName": "MestamaFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nTitles: The Mother of Witches, Lord of Deception, Demon Lord of Hags and Deception\nAlignment: Chaotic Evil   \nAreas of Concern: Cruelty, Deception, Hags   \nDomains: Chaos, Charm, Evil, Trickery   \nSubdomains: Deception, Demon, Lust, Thievery   \nFavoured Weapon: Punching dagger   \nHoly Symbol: Eye on three sharp stones   \nSacred Animal: Black widow   \nPatron of hags, witches, and vengeful widows, Mestama takes great delight in murdering young women on the night before their wedding day so she can take their form and wed their husbands-to-be, only to return to her true form (that of a fanged crone with sunken black eyes, talons, raven wings, and a donkey’s tail) at the height of the wedding’s consummation that evening, at which point she castrates the husband and vanishes. Those who survive often receive visits decades later from twisted and hideous half-fiends—their sons or daughters, sent by Mestama to finish off the job and murder their fathers. Mestama’s cult is a hateful one, composed entirely of eunuchs or women who live for the spread of cruelty through deception. Her cultists generally regard competing faiths (such as worshipers of Gyronna) with jealous anger. The Mother of Witches dwells in an Abyssal realm called the Barren Wood, a vexing forest of dead and dying pine and fir trees. Decrepit houses serve witches and hags as dens or traps, and darker creatures haunt the more desolate reaches of the wood. Certain remote forests in Avistan (particularly in Nidal, Taldor, and Galt) are said to connect to the Barren Wood—those who unknowingly wander too deeply into these areas can become lost forever."
+    },
+    {
+      "Key": "5053a475cb964894a51b50a09adb240d",
+      "SimpleName": "MestamaFeature.Name",
+      "ProcessTemplates": false,
+      "enGB": "Mestama"
     },
     {
       "Key": "cadeb48b71504c5e9bda55b44fdc2bff",
@@ -5066,6 +5160,18 @@
       "SimpleName": "NulgrethFeature.Name",
       "ProcessTemplates": false,
       "enGB": "Nulgreth"
+    },
+    {
+      "Key": "86b7051b128c4dcc91ad85924674814b",
+      "SimpleName": "NurgalFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nTitles: The Shining Scourge, Lord of Senseless War \nAlignment: Chaotic Evil   \nAreas of Concern: Deserts, Senseless warfare, The Sun   \nDomains: Chaos, Evil, Fire, Sun   \nSubdomains: Ash, Day, Demon, Smoke   \nFavoured Weapon: Heavy mace   \nHoly Symbol: Lion jaws around the sun   \nSacred Animal: Lion   \nNot all who worship the sun do so with joy and kindness in their hearts. Those who venerate the Shining Scourge worship out of fear or awe. Nurgal embodies the destructive aspects of the sun, and his minions walk without fear in the full light of day. His lower body is that of a golden lion with a draconic tail. His torso is deeply tanned and masculine, and he is rarely seen without a heavy mace, the head of which appears to be a miniature sun, held in one four-fingered, taloned hand. His head is that of a lion as well, and blinding light spews from his eyes and mouth. Nurgal’s faith was quite strong in ancient Azlant, and not a few Azlanti ruins bear evidence of this connection in carvings that depict a fanged mouth around a sun or the presence of lion-like monsters. Today, his worship has lessened, and is limited to the deserts of northern Garund, Qadira, and ruined Ninshabur. His Abyssal realm is known as Kuthan, an expansive region of alternating desert and dry savannas under a vast red sun that never moves from its noontime height above. Narrow gorges hundreds of miles long connect Kuthan to its neighboring realm, the Sea of Whispering Sands, where Nurgal’s lover, Areshkagal, used to rule before being banished to the Blood Clefts by her sister. Nurgal is also believed to be the half-brother of Socothbenoth, but this relationship is not friendly, and the two have been at war for as long as they both have existed."
+    },
+    {
+      "Key": "3de60e60585d42d8aeee6e487a80c617",
+      "SimpleName": "NurgalFeature.Name",
+      "ProcessTemplates": false,
+      "enGB": "Nurgal"
     },
     {
       "Key": "2afc1f9ce1794c39a1f52c850587f15e",
@@ -6422,6 +6528,18 @@
       "enGB": "Orc Pantheon"
     },
     {
+      "Key": "cb00b595089e46a9b2673053a6228721",
+      "SimpleName": "OrcusFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nTitles: Prince of Undeath, Demon Lord of Necromancy and the Undead \nAlignment: Chaotic Evil   \nAreas of Concern: Death, Necromancy, Wrath, Undeath   \nDomains: Chaos, Death, Evil, Magic   \nSubdomains: Demon, Divine, Murder, Undead   \nFavoured Weapon: Heavy Mace   \nHoly Symbol: Four-horned goat head   \nSacred Animal: Goat   \nAlthough Orcus doesn’t have a strong following on Golarion (his worship is mostly restricted to the nation of Geb and certain backwater regions in Nidal), he has far more dealings with other worlds than most of Golarion’s demon lords. His cultists maintain that the Prince of Undeath is merely waiting for matters in other worlds to resolve themselves before turning his gaze upon this world as his next prize—and that when he does, his faithful shall be rightly rewarded for preparing the way. Of course, fierce competition for worshipers with the cults of Zura and Kabriri and the church of Urgathoa is a more likely reason why Orcus’s cult on Golarion isn’t more widespread. Orcus appears as an immense, fat humanoid with a ram’s head, bat-like wings, cloven feet, and a long tail ending in a stinger. His legendary weapon, the Wand of Orcus, is never far from his taloned hand. His Abyssal realm of Uligor is an entire world of undead-haunted ruins, frozen seas, ragged mountains, and hideous deserts and swamps. Orcus shares this realm with a large number of evil thanatotic titans, not all of whom worship or even ally with the Prince of Undeath. Large regions of Uligor are scarred by the unending civil war between the titans. It is unknown what shadowy force directly opposes Orcus on Uligor, but his war with this mysterious demigod has lasted for millennia."
+    },
+    {
+      "Key": "f91a2288c39c448fb42ed47ba0444a69",
+      "SimpleName": "OrcusFeature.Name",
+      "ProcessTemplates": false,
+      "enGB": "Orcus"
+    },
+    {
       "Key": "8f32789991d04bc69c77a2c7e4498ad8",
       "SimpleName": "OrgeshFeature.Description",
       "ProcessTemplates": true,
@@ -7446,6 +7564,18 @@
       "enGB": "A draconic shaman gains a drake companion instead of a spirit animal, and she communes with the drake to prepare her spells just as other shamans commune with their spirit animals. She doesn’t gain a primary spirit, but she still gains wandering spirit at 4th level. She must select all her hexes (other than her wandering hexes) from the list of shaman hexes. She doesn’t gain spirit magic slots until 4th level when she gains her wandering spirit. \nThis ability replaces spirit, spirit animal, and the hexes gained at 4th and 10th levels and alters spirit magic."
     },
     {
+      "Key": "45f0b8710285465a9d435b571a14e270",
+      "SimpleName": "ShaxFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nTitles: The Blood Marquis, Demon Lord of Lies and Murder\nAlignment: Chaotic Evil   \nAreas of Concern: Envy, Lies, Murder\nDomains: Chaos, Destruction, Evil, Nobility\nSubdomains: Demon, Leadership, Martyr, Rage\nFavoured Weapon: Dagger   \nHoly Symbol: White bloody feather\nSacred Animal: Stork   \nCruel and sadistic, Shax revels in the act of torture and murder, especially if the victim retains hope for survival up to the very instant of death. He is particularly fond of eating the eyes of his living victims, but not until he is sure they have seen the filthy tools and bloodstained devices he intends to use upon their bodies. Shax appears as a human man with a dove’s head, bird’s legs, and an immense collection of knives and other bloodstained weaponry. His cultists are typically lone murderers or sadists, often killers who lead double lives as upstanding citizens of society and kill in secret. Shax is the creator of the babau race, and those he creates by skinning living victims and then infusing them with Abyssal energies are the most powerful of their kind. Shax’s realm is the appropriately named Charnelhome, an immense house the size of a city perched atop a slightly slanted bluff surrounded by a vast bog of thorny, blooddrinking plants. Each of Charnelhome’s rooms contains a different insidious deathtrap or horrific guardian—Shax is fond of releasing victims into a wing of the vast manor so he can watch them try to escape, often posing as a fellow prisoner so that the demon lord can experience the victim’s despair and fear on as intimate a level as possible."
+    },
+    {
+      "Key": "9f26a089b4c74abb978a59707ff17d8f",
+      "SimpleName": "ShaxFeature.Name",
+      "ProcessTemplates": false,
+      "enGB": "Shax"
+    },
+    {
       "Key": "f48f7858ed094c4d90cb317c815f5730",
       "SimpleName": "SheiFeature.Description",
       "ProcessTemplates": true,
@@ -7458,17 +7588,29 @@
       "enGB": "Shei"
     },
     {
-      "Key": "805fec87a0a04ccf90147dcc7b5282fc",
-      "SimpleName": "ShizuruFeature.Description",
+      "Key": "e095ce743df642f2b0ce6fe37631d27d",
+      "SimpleName": "ShivaskaFeature.Description",
       "ProcessTemplates": true,
-      "IsUsed": false,
-      "enGB": "\nTitles: Empress of Heaven   \nAlignment: Lawful Good   \nAreas of Concern: Ancestors, Honor, The Sun, Swordplay   \nDomains: Glory, Good, Law, Repose, Sun   \nSubdomains: Ancestors, Archon, Day, Heroism, Honor, Light, Revelation  \nFavoured Weapon: Katana (Longsword)   \nHoly Symbol: Katana in front of the sun   \nSacred Animal: Carp   \nShizuru is the Empress of Heaven, goddess of ancestors and the sun. She is also the goddess of honor and swordplay, and is the patron of samurai and other honorable swordfighters. Shizuru loves the moon god Tsukiyo, so much so that she returned him to life when he was slain by his brother Fumeiyoshi. The two lovers are rarely together, however, just as night and day are forever divided, but the two deities are able to rejoin, if only briefly, during rare solar eclipses—a sacred time for both faiths. Shizuru’s worship is popular throughout the Dragon Empires, but her faith is strongest in Minkai, for the emperors of that land revere Shizuru as their divine ancestor. Shizuru is often depicted in art as a beautiful samurai, as a magnificent dragon with golden scales, or as both simultaneously."
+      "enGB": "\nTitles: The Chained Maiden, Lord of Prisons\nAlignment: Chaotic Evil   \nAreas of Concern: Aberrations, Clocks, Prisons\nDomains: Chaos, Darkness, Evil, Madness   \nSubdomains: Demon, Insanity, Loss, Nightmare   \nFavoured Weapon: Heavy flail   \nHoly Symbol: Clock face with 13 hours \nSacred Animal: Tarantula   \nShivaska appears as a female choker with four arms and four legs. Her mouth is unnaturally large, but she has no eyes on her head—her eyes glare red from the palms of her four hands. From her back writhe a dozen long, thin animated chains that end in cruel hooks. Shivaska’s cult has a particular interest in orphanages, and an unsettling number of these institutions have ties to the Chained Maiden. An orphanage under the secret control of the cult of Shivaska uses its orphans for all manner of cruel labor, and keeps the children in line by allowing unsettling aberrations (usually chokers) to prowl the orphanage after dark. Tales of monsters and fears of being taken away by strange things lurking in chimneys or cramped closets or hiding under the floorboards work quite well to keep child laborers in line. Shivaska’s realm on the Abyss is a gloomy temperate wilderness known as the Winding Wood. Her palace, the Ticking House, is an immense workhouse with a huge clock tower, the face of which accounts for 13 hours rather than 12. This clock is kept running by the constant toil of a small army of abducted children."
+    },
+    {
+      "Key": "5bd8957a88834f13a30ff748d6875585",
+      "SimpleName": "ShivaskaFeature.Name",
+      "ProcessTemplates": false,
+      "enGB": "Shivaska"
     },
     {
       "Key": "63b15554a33a4aac8390229ed2c68f7b",
       "SimpleName": "ShizuruFeature.Description",
       "ProcessTemplates": true,
       "enGB": "\nTitles: Empress of Heaven   \nAlignment: Lawful Good   \nAreas of Concern: Ancestors, Honor, The Sun, Swordplay   \nDomains: Glory, Good, Law, Repose, Sun   \nSubdomains: Ancestors, Archon, Day, Heroism, Honor, Light, Revelation  \nFavoured Weapon: Katana (Longsword & Dueling sword)   \nHoly Symbol: Katana in front of the sun   \nSacred Animal: Carp   \nShizuru is the Empress of Heaven, goddess of ancestors and the sun. She is also the goddess of honor and swordplay, and is the patron of samurai and other honorable swordfighters. Shizuru loves the moon god Tsukiyo, so much so that she returned him to life when he was slain by his brother Fumeiyoshi. The two lovers are rarely together, however, just as night and day are forever divided, but the two deities are able to rejoin, if only briefly, during rare solar eclipses—a sacred time for both faiths. Shizuru’s worship is popular throughout the Dragon Empires, but her faith is strongest in Minkai, for the emperors of that land revere Shizuru as their divine ancestor. Shizuru is often depicted in art as a beautiful samurai, as a magnificent dragon with golden scales, or as both simultaneously."
+    },
+    {
+      "Key": "805fec87a0a04ccf90147dcc7b5282fc",
+      "SimpleName": "ShizuruFeature.Description",
+      "ProcessTemplates": true,
+      "IsUsed": false,
+      "enGB": "\nTitles: Empress of Heaven   \nAlignment: Lawful Good   \nAreas of Concern: Ancestors, Honor, The Sun, Swordplay   \nDomains: Glory, Good, Law, Repose, Sun   \nSubdomains: Ancestors, Archon, Day, Heroism, Honor, Light, Revelation  \nFavoured Weapon: Katana (Longsword)   \nHoly Symbol: Katana in front of the sun   \nSacred Animal: Carp   \nShizuru is the Empress of Heaven, goddess of ancestors and the sun. She is also the goddess of honor and swordplay, and is the patron of samurai and other honorable swordfighters. Shizuru loves the moon god Tsukiyo, so much so that she returned him to life when he was slain by his brother Fumeiyoshi. The two lovers are rarely together, however, just as night and day are forever divided, but the two deities are able to rejoin, if only briefly, during rare solar eclipses—a sacred time for both faiths. Shizuru’s worship is popular throughout the Dragon Empires, but her faith is strongest in Minkai, for the emperors of that land revere Shizuru as their divine ancestor. Shizuru is often depicted in art as a beautiful samurai, as a magnificent dragon with golden scales, or as both simultaneously."
     },
     {
       "Key": "3ef498a3b1f34038af628a74d00a11e6",

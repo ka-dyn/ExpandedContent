@@ -67,6 +67,16 @@ namespace ExpandedContent.Tweaks.Deities {
             var TreerazerFeature = Resources.GetModBlueprint<BlueprintFeature>("TreerazerFeature");
             var NocticulaFeature = Resources.GetModBlueprint<BlueprintFeature>("NocticulaFeature");
             var PazuzuFeature = Resources.GetModBlueprint<BlueprintFeature>("PazuzuFeature");
+            var ShivaskaFeature = Resources.GetModBlueprint<BlueprintFeature>("ShivaskaFeature");
+            var NurgalFeature = Resources.GetModBlueprint<BlueprintFeature>("NurgalFeature");
+            var OrcusFeature = Resources.GetModBlueprint<BlueprintFeature>("OrcusFeature");
+            var MestamaFeature = Resources.GetModBlueprint<BlueprintFeature>("MestamaFeature");
+            var MazmezzFeature = Resources.GetModBlueprint<BlueprintFeature>("MazmezzFeature");
+            var JubilexFeature = Resources.GetModBlueprint<BlueprintFeature>("JubilexFeature");
+            var GoguntaFeature = Resources.GetModBlueprint<BlueprintFeature>("GoguntaFeature");
+            var CythVsugFeature = Resources.GetModBlueprint<BlueprintFeature>("CythVsugFeature");
+            var JezeldaFeature = Resources.GetModBlueprint<BlueprintFeature>("JezeldaFeature");
+            var ShaxFeature = Resources.GetModBlueprint<BlueprintFeature>("ShaxFeature");
 
             //Empyreal Lords
             var ArsheaFeature = Resources.GetModBlueprint<BlueprintFeature>("ArsheaFeature");
@@ -307,11 +317,21 @@ namespace ExpandedContent.Tweaks.Deities {
                 bp.m_AllFeatures = new BlueprintFeatureReference[] {
                 AreshkegalFeature.ToReference<BlueprintFeatureReference>(),
                 BaphometFeature.ToReference<BlueprintFeatureReference>(),
+                CythVsugFeature.ToReference<BlueprintFeatureReference>(),
                 DagonFeature.ToReference<BlueprintFeatureReference>(),
                 DeskariFeature.ToReference<BlueprintFeatureReference>(),
+                GoguntaFeature.ToReference<BlueprintFeatureReference>(),
+                JezeldaFeature.ToReference<BlueprintFeatureReference>(),
+                JubilexFeature.ToReference<BlueprintFeatureReference>(),
                 KabririFeature.ToReference<BlueprintFeatureReference>(),
+                MazmezzFeature.ToReference<BlueprintFeatureReference>(),
+                MestamaFeature.ToReference<BlueprintFeatureReference>(),
                 NocticulaFeature.ToReference<BlueprintFeatureReference>(),
+                NurgalFeature.ToReference<BlueprintFeatureReference>(),
+                OrcusFeature.ToReference<BlueprintFeatureReference>(),
                 PazuzuFeature.ToReference<BlueprintFeatureReference>(),
+                ShaxFeature.ToReference<BlueprintFeatureReference>(),
+                ShivaskaFeature.ToReference<BlueprintFeatureReference>(),
                 TreerazerFeature.ToReference<BlueprintFeatureReference>(),
                 ZuraFeature.ToReference<BlueprintFeatureReference>(),
                 };

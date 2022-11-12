@@ -136,6 +136,16 @@ namespace ExpandedContent.Tweaks {
                 DemonLords.Treerazer.AddTreerazerFeature();
                 DemonLords.Nocticula.AddNocticulaFeature();
                 DemonLords.Pazuzu.AddPazuzuFeature();
+                DemonLords.Shivaska.AddShivaskaFeature();
+                DemonLords.Nurgal.AddNurgalFeature();
+                DemonLords.Orcus.AddOrcusFeature();
+                DemonLords.Mestama.AddMestamaFeature();
+                DemonLords.Mazmezz.AddMazmezzFeature();
+                DemonLords.Jubilex.AddJubilexFeature();
+                DemonLords.Gogunta.AddGoguntaFeature();
+                DemonLords.CythVsug.AddCythVsugFeature();
+                DemonLords.Jezelda.AddJezeldaFeature();
+                DemonLords.Shax.AddShaxFeature();
 
                 Deities.Apsu.AddApsu();
                 Deities.Dahak.AddDahakFeature();
