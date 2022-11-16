@@ -42,6 +42,7 @@ namespace ExpandedContent.Tweaks.Domains {
             var ArchonDomainLawAllowed = Resources.GetModBlueprint<BlueprintFeature>("ArchonDomainLawAllowed");
             var BloodDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("BloodDomainAllowed");
             var CavesDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("CavesDomainAllowed");
+            var CurseDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("CurseDomainAllowed");
             var DemonDomainChaosAllowed = Resources.GetModBlueprint<BlueprintFeature>("DemonDomainChaosAllowed");
             var DemonDomainEvilAllowed = Resources.GetModBlueprint<BlueprintFeature>("DemonDomainEvilAllowed");
             var FerocityDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("FerocityDomainAllowed");
@@ -59,7 +60,13 @@ namespace ExpandedContent.Tweaks.Domains {
                 c.m_Facts = new BlueprintUnitFactReference[1] { FerocityDomainAllowed.ToReference<BlueprintUnitFactReference>() };
             });
             CalistriaFeature.AddComponent<AddFacts>(c => {
+                c.m_Facts = new BlueprintUnitFactReference[1] { CurseDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+            });
+            CalistriaFeature.AddComponent<AddFacts>(c => {
                 c.m_Facts = new BlueprintUnitFactReference[1] { ThieveryDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+            });
+            DesnaFeature.AddComponent<AddFacts>(c => {
+                c.m_Facts = new BlueprintUnitFactReference[1] { CurseDomainAllowed.ToReference<BlueprintUnitFactReference>() };
             });
             DesnaFeature.AddComponent<AddFacts>(c => {
                 c.m_Facts = new BlueprintUnitFactReference[1] { RevolutionDomainAllowed.ToReference<BlueprintUnitFactReference>() };

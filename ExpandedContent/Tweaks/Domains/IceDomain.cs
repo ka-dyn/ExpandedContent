@@ -240,14 +240,14 @@ namespace ExpandedContent.Tweaks.Domains {
                 });
                 bp.m_AllowNonContextActions = false;
                 bp.SetName("Ice Subdomain");
-                bp.SetDescription("\nYou have mastery over rock and stone, can manifest vast pits, and command earth creatures.\nAcid Dart: As a " +
-                    "{g|Encyclopedia:Standard_Actions}standard action{/g}, you can unleash an acid dart targeting any foe within 30 feet as a ranged " +
-                    "{g|Encyclopedia:TouchAttack}touch attack{/g}. This acid dart deals {g|Encyclopedia:Dice}1d6{/g} points of {g|Encyclopedia:Energy_Damage}acid damage{/g}" +
-                    "+ 1 point for every two levels you possess in the class that gave you access to this domain. You can use this ability a number of " +
-                    "times per day equal to 3 + your {g|Encyclopedia:Wisdom}Wisdom{/g} modifier.\nTunnel Runner (Su): At 6th level, as a standard action, " +
-                    "you can create a 30-foot aura of gale-like winds that slows the progress of enemies. Creatures in the aura cannot take a 5-foot step " +
-                    "and treat it as as difficult terrain. You can use this ability for a number of rounds per day equal to your cleric level. The rounds " +
-                    "do not need to be consecutive.");
+                bp.SetDescription("\nYou can manipulate ice and water and mist, conjure hails of ice, and transmute yourself into a frozen form.\nIcicle: As a " +
+                    "{g|Encyclopedia:Standard_Actions}standard action{/g}, you can fire an icicle from your finger, targeting any foe within 30 feet as a " +
+                    "ranged {g|Encyclopedia:TouchAttack}touch attack{/g}. The icicle deals {g|Encyclopedia:Dice}1d6{/g} points of {g|Encyclopedia:Energy_Damage}cold damage{/g}" +
+                    "+ 1 point for every two levels you possess in the class that gave you access to this domain. You can use this ability a number of times per day equal to 3 " +
+                    "+ your {g|Encyclopedia:Wisdom}Wisdom{/g} modifier.\nBody of Ice: At 8th level, you can transmute your body and equipment to ice for a period of time. It takes " +
+                    "a standard action to take on the form of ice, and you can end the transmutation with a free action on your turn. When you take on the form of ice, you are " +
+                    "immune to cold and have DR 5/—, but you take twice the normal amount of damage from fire. You can take on the form of ice for a number of rounds per day equal " +
+                    "to your cleric level. The rounds need not be consecutive.");
                 bp.IsClassFeature = true;
             });
             //Deity plug

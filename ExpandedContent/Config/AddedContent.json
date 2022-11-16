@@ -240,6 +240,11 @@
         "Enabled": true,
         "Homebrew": false,
         "Description": "Adds the revolution subdomain, a subdomain to the liberation domain."
+      },
+      "Curse Subdomain": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds the curse subdomain, a subdomain to the luck domain."
       }
     },
     "IsExpanded": false

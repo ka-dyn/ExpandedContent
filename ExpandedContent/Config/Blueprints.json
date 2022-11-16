@@ -233,6 +233,18 @@
     "RevolutionDomainSpellList": "83d266af-29f8-460a-870b-a0134c393f0e",
     "RevolutionDomainSpellListFeature": "5a2a8584-e68a-4448-9d1d-1529d900bfff",
 
+    "CurseDomainAllowed": "6a79e529-0a20-4224-b7e4-e70cac263b0d",
+    "CurseDomainBaseAbility": "e67a3a5c-d348-48d0-b82b-7edd941a05a9",
+    "CurseDomainBaseBuff": "6d9786a8-3ccf-4cb0-a564-489e89112a70",
+    "CurseDomainBaseFeature": "16bd2119-0449-4fcb-a1f8-53358300f280",
+    "CurseDomainBaseResource": "87c09ad4-6a28-451f-b01f-d1d410ca4a82",
+    "CurseDomainProgression": "1f7d5b40-a9b1-4442-83b1-df00cd6d3e08",
+    "CurseDomainProgressionSecondary": "6623dea1-518e-4628-9dfd-23478aaca98a",
+    "CurseDomainSpellList": "f774ce73-09d8-4449-a86d-2675f4d23b61",
+    "CurseDomainSpellListFeature": "9847ef41-6183-4a65-8316-221df65be0a7",
+
+
+
     "CharmDomainBaseFeatureDruid": "3ff01cbe-66a3-4b40-ba3e-3418a2a9e567",
     "CharmDomainProgressionDruid": "c25ddac7-6f0a-46f3-848b-13ad52135c78",
     "CharmDomainSpellListFeatureDruid": "54c0b37d-da89-45f6-90b1-655d359f869c",

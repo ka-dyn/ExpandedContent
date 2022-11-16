@@ -101,6 +101,7 @@ namespace ExpandedContent.Tweaks {
                 Domains.ArchonDomainLaw.AddArchonDomainLaw();
                 Domains.BloodDomain.AddBloodDomain();
                 Domains.CavesDomain.AddCavesDomain();
+                Domains.CurseDomain.AddCurseDomain();
                 Domains.DemonDomainChaos.AddDemonDomainChaos();
                 Domains.DemonDomainEvil.AddDemonDomainEvil();
                 Domains.DragonDomain.AddDragonDomain();
