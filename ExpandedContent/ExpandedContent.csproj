@@ -405,6 +405,7 @@
     <Compile Include="Tweaks\Spells\FuryOftheSun.cs" />
     <Compile Include="Tweaks\Spells\InflictPainMass.cs" />
     <Compile Include="Tweaks\Spells\InflictPain.cs" />
+    <Compile Include="Tweaks\Spells\WallOfFire.cs" />
     <Compile Include="Tweaks\Spells\SteamRayFusillade.cs" />
     <Compile Include="Tweaks\Spells\Goodberry.cs" />
     <Compile Include="Tweaks\Spells\HollowBlades.cs" />
@@ -1084,6 +1085,9 @@
     <Content Include="Assets\Items\Icon_ScrollOfStunningFinale.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Items\Icon_ScrollOfWallOfFire.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Portraits\BlackFulllength.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -1469,6 +1473,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_UmbralDrake.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_WallOfFire.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

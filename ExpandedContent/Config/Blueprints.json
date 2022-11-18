@@ -1084,6 +1084,8 @@
     "GloomblindBoltsAbility": "e28f4633-c0a2-425d-8895-adf20cb22f8f",
     "FuryOftheSunAbility": "accc5584-b62e-4e73-aa0a-693f725ddf60",
     "FuryOftheSunBuff": "ef0eecff-dc4d-4db0-8be9-07f700152d98",
+    "WallOfFireAbility": "80189142-f7c6-40f3-9195-defdc9777b27",
+    "WallOfFireArea": "51a9e92d-fd84-4d5b-892f-2a66702a7ec5",
     "AirInvokeDeityAbility": "62638467-0e66-421c-b39e-6118906bcca3",
     "AirInvokeDeityBuff": "8af2c36d-d0b7-4eb7-b79b-2563d55b37c5",
     "AnimalInvokeDeityAbility": "e2b5c44d-ffbc-40c7-ab38-d0b2f3b97b67",
@@ -1169,7 +1171,8 @@
     "ScrollOfInflictPain": "7529196e-4259-4d32-892c-1b4d5e5b02f0",
     "ScrollOfInflictPainMass": "4d5daaba-e0a1-4661-b19e-f6c89c8ae2c2",
     "ScrollOfGloomblindBolts": "fc26d2a5-28f3-4e80-954a-168b743962e9",
-    "ScrollOfFuryOftheSun": "fc209f74-eb48-48b1-a457-2bc0394e6f4a"
+    "ScrollOfFuryOftheSun": "fc209f74-eb48-48b1-a457-2bc0394e6f4a",
+    "ScrollOfWallOfFire": "39a69236-792d-4fcb-a603-e88dd3613695"
 
 
 
