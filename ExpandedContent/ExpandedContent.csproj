@@ -328,6 +328,7 @@
     <Compile Include="Tweaks\Domains\BaseDomainDruidPatch.cs" />
     <Compile Include="Tweaks\Domains\CurseDomain.cs" />
     <Compile Include="Tweaks\Domains\ImpossibleSubdomainSelection.cs" />
+    <Compile Include="Tweaks\Domains\WhimsyDomain.cs" />
     <Compile Include="Tweaks\Domains\RevolutionDomain.cs" />
     <Compile Include="Tweaks\Domains\ThieveryDomain.cs" />
     <Compile Include="Tweaks\Domains\RageDomain.cs" />
@@ -353,6 +354,7 @@
     <Compile Include="Tweaks\FourHorsemen\Charon.cs" />
     <Compile Include="Tweaks\FourHorsemen\Szuriel.cs" />
     <Compile Include="Tweaks\FourHorsemen\Terlmarixian.cs" />
+    <Compile Include="Tweaks\Miscellaneous\ModifierDescriptors.cs" />
     <Compile Include="Tweaks\Miscellaneous\HavocDragonPet.cs" />
     <Compile Include="Tweaks\Monitors\Vonymos.cs" />
     <Compile Include="Tweaks\Monitors\Vavaalrav.cs" />

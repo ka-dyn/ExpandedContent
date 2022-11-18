@@ -284,7 +284,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.ActionType = UnitCommand.CommandType.Standard;
                 bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Extend | Metamagic.Heighten | Metamagic.Selective | Metamagic.Bolstered;
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
-                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = Helpers.CreateString("DeadlyFinale.SavingThrow", "Fortitude partial");
             });
             var DeadlyFinaleScroll = ItemTools.CreateScroll("ScrollOfDeadlyFinale", Icon_ScrollOfDeadlyFinale, DeadlyFinale, 6, 16);
             VenderTools.AddScrollToLeveledVenders(DeadlyFinaleScroll);

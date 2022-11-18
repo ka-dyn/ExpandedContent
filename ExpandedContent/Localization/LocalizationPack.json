@@ -81,12 +81,6 @@
       "enGB": "Divine/Profane Weapon Bond"
     },
     {
-      "Key": "ea96a107c28a4c119231b531c1755543",
-      "SimpleName": "<null>Description",
-      "ProcessTemplates": false,
-      "enGB": "All attacks deal 25 bleed damage that triggers each round but does not stack with itself."
-    },
-    {
       "Key": "1f793c98c9d84419a226e3e543d88f8c",
       "SimpleName": "<null>Description",
       "ProcessTemplates": false,
@@ -98,6 +92,12 @@
       "ProcessTemplates": false,
       "IsUsed": false,
       "enGB": "When eaten goodberries heal 2d4 point of damage, however if they are eaten more than once every 24 hours they can make the creature that ate them sick for a short time."
+    },
+    {
+      "Key": "ea96a107c28a4c119231b531c1755543",
+      "SimpleName": "<null>Description",
+      "ProcessTemplates": false,
+      "enGB": "All attacks deal 25 bleed damage that triggers each round but does not stack with itself."
     },
     {
       "Key": "6174558e720345a48658694e8e2ccba2",
@@ -878,16 +878,16 @@
       "enGB": "Payback"
     },
     {
+      "Key": "86125955dbd447829e29b6b38c9f0535",
+      "SimpleName": "CastigatorVengeance.Description",
+      "ProcessTemplates": true,
+      "enGB": "At 4th level, a castigator can make an additional number of attacks of opportunity in a round equal to their Charisma modifier (minimum 1). This effect stacks with the Combat Reflexes feat."
+    },
+    {
       "Key": "2f91fdfbde3c4bc78942800497c111bd",
       "SimpleName": "CastigatorVengeance.Description",
       "ProcessTemplates": false,
       "IsUsed": false,
-      "enGB": "At 4th level, a castigator can make an additional number of attacks of opportunity in a round equal to their Charisma modifier (minimum 1). This effect stacks with the Combat Reflexes feat."
-    },
-    {
-      "Key": "86125955dbd447829e29b6b38c9f0535",
-      "SimpleName": "CastigatorVengeance.Description",
-      "ProcessTemplates": true,
       "enGB": "At 4th level, a castigator can make an additional number of attacks of opportunity in a round equal to their Charisma modifier (minimum 1). This effect stacks with the Combat Reflexes feat."
     },
     {
@@ -1567,6 +1567,48 @@
       "SimpleName": "CthulhuFeature.Name",
       "ProcessTemplates": false,
       "enGB": "Cthulhu"
+    },
+    {
+      "Key": "2a2f180cbd844b9eb92bd020866d3ea4",
+      "SimpleName": "CurseDomainBaseAbility.Description",
+      "ProcessTemplates": true,
+      "enGB": "As a standard action, you can afflict one target within 30 feet with your malign eye, causing it to take a –2 penalty on all saving throws against your spells. The effect lasts for 1 minute. You can use this ability for a number of times per day equal to 3 + your Wisdom modifier."
+    },
+    {
+      "Key": "feab2fe7119947b1a93092e964d0d864",
+      "SimpleName": "CurseDomainBaseBuff.Description",
+      "ProcessTemplates": true,
+      "enGB": "As a standard action, you can afflict one target within 30 feet with your malign eye, causing it to take a –2 penalty on all saving throws against your spells. The effect lasts for 1 minute. You can use this ability for a number of times per day equal to 3 + your Wisdom modifier."
+    },
+    {
+      "Key": "6a9b57810dad40598f51958ec14ff90a",
+      "SimpleName": "CurseDomainBaseBuff.Name",
+      "ProcessTemplates": false,
+      "enGB": "Malign Eye"
+    },
+    {
+      "Key": "625fa031c02c41708049ee33d6d6595d",
+      "SimpleName": "CurseDomainBaseFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nYou are infused with fate, spreading ill omens to foes while granting fortune to yourself.\nMalign Eye: As a standard action, you can afflict one target within 30 feet with your malign eye, causing it to take a –2 penalty on all saving throws against your spells. The effect lasts for 1 minute. You can use this ability for a number of times per day equal to 3 + your Wisdom modifier.\nMight of the Gods: At 8th level, you add 1/2 of your level in the class that gave you access to this domain as an enhancement bonus to your Athletics checks."
+    },
+    {
+      "Key": "4bc3141c356a4e2a8672b45e57043aab",
+      "SimpleName": "CurseDomainBaseFeature.Name",
+      "ProcessTemplates": false,
+      "enGB": "Curse Subdomain"
+    },
+    {
+      "Key": "505a3bed6a2249578afa3dd31023a6a7",
+      "SimpleName": "CurseDomainProgression.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nYou are infused with fate, spreading ill omens to foes while granting fortune to yourself.\nMalign Eye: As a standard action, you can afflict one target within 30 feet with your malign eye, causing it to take a –2 penalty on all saving throws against your spells. The effect lasts for 1 minute. You can use this ability for a number of times per day equal to 3 + your Wisdom modifier.\nMight of the Gods: At 8th level, you add 1/2 of your level in the class that gave you access to this domain as an enhancement bonus to your Athletics checks.\nDomain Spells: bane, aid, bestow curse, communal protection from energy, break enchantment, eyebite, restoration greater, euphoric tranquility, mass heal."
+    },
+    {
+      "Key": "dc563dcf257349c59aa4e14450f33835",
+      "SimpleName": "CurseDomainProgressionSecondary.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nYou are infused with fate, spreading ill omens to foes while granting fortune to yourself.\nMalign Eye: As a standard action, you can afflict one target within 30 feet with your malign eye, causing it to take a –2 penalty on all saving throws against your spells. The effect lasts for 1 minute. You can use this ability for a number of times per day equal to 3 + your Wisdom modifier.\nMight of the Gods: At 8th level, you add 1/2 of your level in the class that gave you access to this domain as an enhancement bonus to your Athletics checks.\nDomain Spells: bane, aid, bestow curse, communal protection from energy, break enchantment, eyebite, restoration greater, euphoric tranquility, mass heal."
     },
     {
       "Key": "5c9e198e570844f78346444bfa1bafb5",
@@ -2454,12 +2496,6 @@
       "enGB": "This breath weapon deals 4d6 points of acid damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day."
     },
     {
-      "Key": "37a378dd8b8a488495109c35c06cc102",
-      "SimpleName": "DrakeBreathWeaponAcid2.Description",
-      "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 8d6 points of acid damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day."
-    },
-    {
       "Key": "54c86ff112d44b6d9878ade81198c1b7",
       "SimpleName": "DrakeBreathWeaponAcid2.Description",
       "ProcessTemplates": true,
@@ -2467,16 +2503,16 @@
       "enGB": "This breath weapon deals 8d6 points of acid damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day."
     },
     {
+      "Key": "37a378dd8b8a488495109c35c06cc102",
+      "SimpleName": "DrakeBreathWeaponAcid2.Description",
+      "ProcessTemplates": true,
+      "enGB": "This breath weapon deals 8d6 points of acid damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day."
+    },
+    {
       "Key": "c3a25063dd8749bfa8a8f08784b6fe35",
       "SimpleName": "DrakeBreathWeaponAcid2.Name",
       "ProcessTemplates": false,
       "enGB": "Greater Drake Acid Breath"
-    },
-    {
-      "Key": "1df6eca3d484449bbfe6a838c4cd4ade",
-      "SimpleName": "DrakeBreathWeaponAcid2Feature.Description",
-      "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 8d6 points of acid damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day. \nUnlocking this allows you to use your lesser breath weapon without spending any resources, however you must wait 1d4 rounds to recharge."
     },
     {
       "Key": "df00f6bb8f614cb59316f7627c01fbd2",
@@ -2486,11 +2522,10 @@
       "enGB": "This breath weapon deals 8d6 points of acid damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day. \nUnlocking this allows you to use your lesser breath weapon without spending any resources, however you must wait 1d4 rounds to recharge."
     },
     {
-      "Key": "a4feef2ded00453697b10859100ef717",
-      "SimpleName": "DrakeBreathWeaponAcid3.Description",
+      "Key": "1df6eca3d484449bbfe6a838c4cd4ade",
+      "SimpleName": "DrakeBreathWeaponAcid2Feature.Description",
       "ProcessTemplates": true,
-      "IsUsed": false,
-      "enGB": "This breath weapon deals 1d6 points of acid damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
+      "enGB": "This breath weapon deals 8d6 points of acid damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day. \nUnlocking this allows you to use your lesser breath weapon without spending any resources, however you must wait 1d4 rounds to recharge."
     },
     {
       "Key": "21423a23b82c4fa5a54cd3a2c68157f8",
@@ -2500,16 +2535,17 @@
       "enGB": "This breath weapon deals 1d6 points of acid damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
     },
     {
+      "Key": "a4feef2ded00453697b10859100ef717",
+      "SimpleName": "DrakeBreathWeaponAcid3.Description",
+      "ProcessTemplates": true,
+      "IsUsed": false,
+      "enGB": "This breath weapon deals 1d6 points of acid damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
+    },
+    {
       "Key": "166319244f2c43b2beeda778d1b26ea5",
       "SimpleName": "DrakeBreathWeaponAcid3.Name",
       "ProcessTemplates": false,
       "enGB": "Mythic Drake Acid Breath"
-    },
-    {
-      "Key": "c3397a5fd99c4a1c88e4b1ce4a91d3e3",
-      "SimpleName": "DrakeBreathWeaponAcid3Feature.Description",
-      "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 1d6 points of acid damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
     },
     {
       "Key": "be45de1db0684f2f8e3ffa5e462b2cc2",
@@ -2519,11 +2555,10 @@
       "enGB": "This breath weapon deals 1d6 points of acid damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
     },
     {
-      "Key": "3bba44b3e3de459080d550f4018199e5",
-      "SimpleName": "DrakeBreathWeaponCold1.Description",
+      "Key": "c3397a5fd99c4a1c88e4b1ce4a91d3e3",
+      "SimpleName": "DrakeBreathWeaponAcid3Feature.Description",
       "ProcessTemplates": true,
-      "IsUsed": false,
-      "enGB": "This breath weapon deals 4d6 points of cold damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day."
+      "enGB": "This breath weapon deals 1d6 points of acid damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
     },
     {
       "Key": "e6d7137aefbb48d692cb1f232205fa28",
@@ -2531,6 +2566,13 @@
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "This breath weapon deals 4d6 points of cold damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day."
+    },
+    {
+      "Key": "3bba44b3e3de459080d550f4018199e5",
+      "SimpleName": "DrakeBreathWeaponCold1.Description",
+      "ProcessTemplates": true,
+      "IsUsed": false,
+      "enGB": "This breath weapon deals 4d6 points of cold damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day."
     },
     {
       "Key": "66842c1a16244f8a8742e686ca85f008",
@@ -2552,17 +2594,17 @@
       "enGB": "This breath weapon deals 4d6 points of cold damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day."
     },
     {
+      "Key": "0ef9c57e42be40f68560acfccc9ccfcc",
+      "SimpleName": "DrakeBreathWeaponCold2.Description",
+      "ProcessTemplates": true,
+      "enGB": "This breath weapon deals 8d6 points of cold damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day."
+    },
+    {
       "Key": "656c5f75a55b4485b4f3535f7638d9b1",
       "SimpleName": "DrakeBreathWeaponCold2.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "This breath weapon deals 8d6 points of cold damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day."
-    },
-    {
-      "Key": "0ef9c57e42be40f68560acfccc9ccfcc",
-      "SimpleName": "DrakeBreathWeaponCold2.Description",
-      "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 8d6 points of cold damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day."
     },
     {
       "Key": "9c86cabb319c4a30b03298a4e352f8da",
@@ -2571,17 +2613,17 @@
       "enGB": "Greater Drake Cold Breath"
     },
     {
+      "Key": "eac364b4a1f74c5bb51bbaab82a2f9de",
+      "SimpleName": "DrakeBreathWeaponCold2Feature.Description",
+      "ProcessTemplates": true,
+      "enGB": "This breath weapon deals 8d6 points of cold damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day. \nUnlocking this allows you to use your lesser breath weapon without spending any resources, however you must wait 1d4 rounds to recharge."
+    },
+    {
       "Key": "59eb9da5ea3d4ed7a82984a1dd1ef00b",
       "SimpleName": "DrakeBreathWeaponCold2Feature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "This breath weapon deals 8d6 points of cold damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day. \nUnlocking this allows you to use your lesser breath weapon without spending any resources, however you must wait 1d4 rounds to recharge."
-    },
-    {
-      "Key": "eac364b4a1f74c5bb51bbaab82a2f9de",
-      "SimpleName": "DrakeBreathWeaponCold2Feature.Description",
-      "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 8d6 points of cold damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day. \nUnlocking this allows you to use your lesser breath weapon without spending any resources, however you must wait 1d4 rounds to recharge."
     },
     {
       "Key": "aa4f5369b79343e19de67ebc56132b4b",
@@ -2715,18 +2757,18 @@
       "enGB": "This breath weapon deals 1d6 points of electricity damage per drake companion level in a 40-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
     },
     {
-      "Key": "175585e969b64296a6580facaf078dd8",
-      "SimpleName": "DrakeBreathWeaponFire1.Description",
-      "ProcessTemplates": true,
-      "IsUsed": false,
-      "enGB": "This breath weapon deals 4d6 points of fire damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day."
-    },
-    {
       "Key": "6edadd64875d41a09c8ec96297578b1b",
       "SimpleName": "DrakeBreathWeaponFire1.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "This breath weapon deals 4d6 points of fire damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day."
+    },
+    {
+      "Key": "175585e969b64296a6580facaf078dd8",
+      "SimpleName": "DrakeBreathWeaponFire1.Description",
+      "ProcessTemplates": true,
+      "IsUsed": false,
+      "enGB": "This breath weapon deals 4d6 points of fire damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day."
     },
     {
       "Key": "b9856c20c78645a884b2f0ad7ea2c051",
@@ -2735,17 +2777,17 @@
       "enGB": "Drake Fire Breath"
     },
     {
-      "Key": "0827546fa62746dd97219bc4d7f3ee9a",
-      "SimpleName": "DrakeBreathWeaponFire1Feature.Description",
-      "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 4d6 points of fire damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day."
-    },
-    {
       "Key": "d946e7ff645642c3b95b57be864b62fe",
       "SimpleName": "DrakeBreathWeaponFire1Feature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "This breath weapon deals 4d6 points of fire damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day."
+    },
+    {
+      "Key": "0827546fa62746dd97219bc4d7f3ee9a",
+      "SimpleName": "DrakeBreathWeaponFire1Feature.Description",
+      "ProcessTemplates": true,
+      "enGB": "This breath weapon deals 4d6 points of fire damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day."
     },
     {
       "Key": "cd719c4bed694ad6b238072340ba27a2",
@@ -2800,12 +2842,6 @@
       "enGB": "Mythic Drake Fire Breath"
     },
     {
-      "Key": "a6783db42f2947e89c919949a0d5971c",
-      "SimpleName": "DrakeBreathWeaponFire3Feature.Description",
-      "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 1d6 points of fire damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
-    },
-    {
       "Key": "43fa93a4701f4f85961ddeea0bcade9b",
       "SimpleName": "DrakeBreathWeaponFire3Feature.Description",
       "ProcessTemplates": true,
@@ -2813,11 +2849,10 @@
       "enGB": "This breath weapon deals 1d6 points of fire damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
     },
     {
-      "Key": "c7a50bde6aa7476fb23eba2c637d9490",
-      "SimpleName": "DrakeBreathWeaponUmbral1.Description",
+      "Key": "a6783db42f2947e89c919949a0d5971c",
+      "SimpleName": "DrakeBreathWeaponFire3Feature.Description",
       "ProcessTemplates": true,
-      "IsUsed": false,
-      "enGB": "This breath weapon deals 4d6 points of  negative damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day.\nTargets with an affinity to negativeenergy (such as undead) are not healed by this ability and are treated as if the ability did not hit them."
+      "enGB": "This breath weapon deals 1d6 points of fire damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
     },
     {
       "Key": "b6243310dbe242d09c095ec59bd2e4ef",
@@ -2827,10 +2862,23 @@
       "enGB": "This breath weapon deals 4d6 points of  negative damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day.\nTargets with an affinity to negative energy (such as undead) are not healed by this ability and are treated as if the ability did not hit them."
     },
     {
+      "Key": "c7a50bde6aa7476fb23eba2c637d9490",
+      "SimpleName": "DrakeBreathWeaponUmbral1.Description",
+      "ProcessTemplates": true,
+      "IsUsed": false,
+      "enGB": "This breath weapon deals 4d6 points of  negative damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day.\nTargets with an affinity to negativeenergy (such as undead) are not healed by this ability and are treated as if the ability did not hit them."
+    },
+    {
       "Key": "9125e12ae3514d918be88fab671e3fbc",
       "SimpleName": "DrakeBreathWeaponUmbral1.Name",
       "ProcessTemplates": false,
       "enGB": "Drake Negative Energy Breath"
+    },
+    {
+      "Key": "3f82888cb6534862aa8217b840d23643",
+      "SimpleName": "DrakeBreathWeaponUmbral1Feature.Description",
+      "ProcessTemplates": true,
+      "enGB": "This breath weapon deals 4d6 points of  negative damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day.\nTargets with an affinity to negative energy (such as undead) are not healed by this ability and are treated as if the ability did not hit them."
     },
     {
       "Key": "9dcf386ecbdd464c8e79505773731c5c",
@@ -2838,12 +2886,6 @@
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "This breath weapon deals 4d6 points of  negative damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day.\nTargets with an affinity to negativeenergy (such as undead) are not healed by this ability and are treated as if the ability did not hit them."
-    },
-    {
-      "Key": "3f82888cb6534862aa8217b840d23643",
-      "SimpleName": "DrakeBreathWeaponUmbral1Feature.Description",
-      "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 4d6 points of  negative damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day.\nTargets with an affinity to negative energy (such as undead) are not healed by this ability and are treated as if the ability did not hit them."
     },
     {
       "Key": "0d2d69b7f16a46b9947d3f18fba771df",
@@ -2897,17 +2939,17 @@
       "enGB": "Mythic Drake Negative Energy Breath"
     },
     {
-      "Key": "0f7fb006bcc849bbb98412921a310e58",
-      "SimpleName": "DrakeBreathWeaponUmbral3Feature.Description",
-      "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 1d6 points of negative energy damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nTargets with an affinity to negativeenergy (such as undead) are not healed by this ability and are treated as if the ability did not hit them. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
-    },
-    {
       "Key": "2501763ac7a141a68f0422d203e733e3",
       "SimpleName": "DrakeBreathWeaponUmbral3Feature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "This breath weapon deals 1d6 points of negative energy damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nTargets with an affinity to negativeenergy (such as undead) are not healed by this ability and are treated as if the ability did not hit them. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
+    },
+    {
+      "Key": "0f7fb006bcc849bbb98412921a310e58",
+      "SimpleName": "DrakeBreathWeaponUmbral3Feature.Description",
+      "ProcessTemplates": true,
+      "enGB": "This breath weapon deals 1d6 points of negative energy damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nTargets with an affinity to negativeenergy (such as undead) are not healed by this ability and are treated as if the ability did not hit them. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
     },
     {
       "Key": "1575f0e880054301ae568c652325ff76",
@@ -3387,6 +3429,12 @@
       "enGB": "Dread Knight Animal Companion Progression"
     },
     {
+      "Key": "d670b365e6b04ae4a3877948f2caebed",
+      "SimpleName": "DreadKnightChannelNegativeEnergyAbility.Description",
+      "ProcessTemplates": true,
+      "enGB": "Channeling negative energy causes a burst that damages every living creature in a 30-foot radius centered on the Dread Knight. The amount of damage inflicted is equal to 1d6 points of damage plus 1d6 points of damage for every two Dread Knight levels beyond 1st (2d6 at 3rd, 3d6 at 5th, and so on). Creatures that take damage from channeled energy receive a Will save to halve the damage. The DC of this save is equal to 10 + 1/2 the Dread Knight's level + the Dread Knight's Charisma modifier."
+    },
+    {
       "Key": "c693dad056614f1ead3e49b0ca8d3119",
       "SimpleName": "DreadKnightChannelNegativeEnergyAbility.Description",
       "ProcessTemplates": true,
@@ -3394,22 +3442,16 @@
       "enGB": "Channeling negative energy causes a burst that damages every creature in a 30-foot radius centered on the Dread Knight. The amount of damage inflicted is equal to 1d6 points of damage plus 1d6 points of damage for every two Dread Knight levels beyond 1st (2d6 at 3rd, 3d6 at 5th, and so on). Creatures that take damage from channeled energy receive a Will save to halve the damage. The DC of this save is equal to 10 + 1/2 the Dread Knight's level + the Dread Knight's Charisma modifier."
     },
     {
-      "Key": "d670b365e6b04ae4a3877948f2caebed",
-      "SimpleName": "DreadKnightChannelNegativeEnergyAbility.Description",
-      "ProcessTemplates": true,
-      "enGB": "Channeling negative energy causes a burst that damages every living creature in a 30-foot radius centered on the Dread Knight. The amount of damage inflicted is equal to 1d6 points of damage plus 1d6 points of damage for every two Dread Knight levels beyond 1st (2d6 at 3rd, 3d6 at 5th, and so on). Creatures that take damage from channeled energy receive a Will save to halve the damage. The DC of this save is equal to 10 + 1/2 the Dread Knight's level + the Dread Knight's Charisma modifier."
+      "Key": "e1a0f9b3f21e45aaaba53aff7d45b1ad",
+      "SimpleName": "DreadKnightChannelNegativeEnergyAbility.Name",
+      "ProcessTemplates": false,
+      "enGB": "Channel Negative Energy"
     },
     {
       "Key": "79390dccfaff42259b9430c3eda7052b",
       "SimpleName": "DreadKnightChannelNegativeEnergyAbility.Name",
       "ProcessTemplates": false,
       "enGB": "Channel Negative Energy - Damage Living"
-    },
-    {
-      "Key": "e1a0f9b3f21e45aaaba53aff7d45b1ad",
-      "SimpleName": "DreadKnightChannelNegativeEnergyAbility.Name",
-      "ProcessTemplates": false,
-      "enGB": "Channel Negative Energy"
     },
     {
       "Key": "95bb51ebd24e466aa7b691a57700f158",
@@ -4128,6 +4170,12 @@
       "SimpleName": "IceDomainBaseFeature.Description",
       "ProcessTemplates": true,
       "enGB": "\nYou have mastery over rock and stone, can manifest vast pits, and command earth creatures.\nAcid Dart: As a standard action, you can unleash an acid dart targeting any foe within 30 feet as a ranged touch attack. This acid dart deals 1d6 points of acid damage+ 1 point for every two levels you possess in the class that gave you access to this domain. You can use this ability a number of times per day equal to 3 + your Wisdom modifier.\nTunnel Runner (Su): At 6th level, as a standard action, you can create a 30-foot aura of gale-like winds that slows the progress of enemies. Creatures in the aura cannot take a 5-foot step and treat it as as difficult terrain. You can use this ability for a number of rounds per day equal to your cleric level. The rounds do not need to be consecutive."
+    },
+    {
+      "Key": "06f3c959eebc44238c4971655e40c363",
+      "SimpleName": "IceDomainBaseFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nYou can manipulate ice and water and mist, conjure hails of ice, and transmute yourself into a frozen form.\nIcicle: As a standard action, you can fire an icicle from your finger, targeting any foe within 30 feet as a ranged touch attack. The icicle deals 1d6 points of cold damage+ 1 point for every two levels you possess in the class that gave you access to this domain. You can use this ability a number of times per day equal to 3 + your Wisdom modifier.\nBody of Ice: At 8th level, you can transmute your body and equipment to ice for a period of time. It takes a standard action to take on the form of ice, and you can end the transmutation with a free action on your turn. When you take on the form of ice, you are immune to cold and have DR 5/—, but you take twice the normal amount of damage from fire. You can take on the form of ice for a number of rounds per day equal to your cleric level. The rounds need not be consecutive."
     },
     {
       "Key": "75db1ef0bee54df0a0ba5c43f4c8b4f9",
@@ -9027,6 +9075,54 @@
       "SimpleName": "WeatherInvokeDeityBuff.Name",
       "ProcessTemplates": false,
       "enGB": "Invoke Deity - Weather Domain"
+    },
+    {
+      "Key": "af31061c39464aa19a1d8d675810a48a",
+      "SimpleName": "WhimsyDomainBaseFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nYour touch infuses life and weapons with chaos, and you carry a divine whimsy wherever you go.\nTouch of Chaos: You can imbue a target with chaos as a melee touch attack. For the next round, anytime the target rolls a d20, he must roll twice and take the less favorable result. You can use this ability a number of times per day equal to 3 + your Wisdom modifier.\nUnexpected Whimsy: All enemies within 30 feet of you that can see and hear you must succeed a Will saving throw or they collapse into gales of manic laughter, falling prone. Those who fail their saving throws can take no actions other than laughing for 1 round, but are not considered helpless. You can use this ability once per day at 8th level and one additional time for every 4 levels you possess beyond 8th."
+    },
+    {
+      "Key": "7f2c35a7eb30473ab77854b7f368c486",
+      "SimpleName": "WhimsyDomainBaseFeature.Name",
+      "ProcessTemplates": false,
+      "enGB": "Whimsy Subdomain"
+    },
+    {
+      "Key": "fe73a43829f64c80a45c4ae71aba2085",
+      "SimpleName": "WhimsyDomainGreaterAbility.Description",
+      "ProcessTemplates": true,
+      "enGB": "All enemies within 30 feet of you that can see and hear you must succeed a Will saving throw or they collapse into gales of manic laughter, falling prone. Those who fail their saving throws can take no actions other than laughing for 1 round, but are not considered helpless. You can use this ability once per day at 8th level and one additional time for every 4 levels you possess beyond 8th."
+    },
+    {
+      "Key": "a91336a9956341558e9c5f005c301112",
+      "SimpleName": "WhimsyDomainGreaterBuff.Description",
+      "ProcessTemplates": true,
+      "enGB": "All enemies within 30 feet of you that can see and hear you must succeed a Will saving throw or they collapse into gales of manic laughter, falling prone. Those who fail their saving throws can take no actions other than laughing for 1 round, but are not considered helpless. You can use this ability once per day at 8th level and one additional time for every 4 levels you possess beyond 8th."
+    },
+    {
+      "Key": "8e6306412a15432caab13029b8610d78",
+      "SimpleName": "WhimsyDomainGreaterBuff.Name",
+      "ProcessTemplates": false,
+      "enGB": "Unexpected Whimsy"
+    },
+    {
+      "Key": "8ca3f92c3aee4a32b3c22840f2960820",
+      "SimpleName": "WhimsyDomainGreaterFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "All enemies within 30 feet of you that can see and hear you must succeed a Will saving throw or they collapse into gales of manic laughter, falling prone. Those who fail their saving throws can take no actions other than laughing for 1 round, but are not considered helpless. You can use this ability once per day at 8th level and one additional time for every 4 levels you possess beyond 8th."
+    },
+    {
+      "Key": "8c9d8aa26f4c438bbce9317f5f78755b",
+      "SimpleName": "WhimsyDomainProgression.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nYour touch infuses life and weapons with chaos, and you carry a divine whimsy wherever you go.\nTouch of Chaos: You can imbue a target with chaos as a melee touch attack. For the next round, anytime the target rolls a d20, he must roll twice and take the less favorable result. You can use this ability a number of times per day equal to 3 + your Wisdom modifier.\nUnexpected Whimsy: All enemies within 30 feet of you that can see and hear you must succeed a Will saving throw or they collapse into gales of manic laughter, falling prone. Those who fail their saving throws can take no actions other than laughing for 1 round, but are not considered helpless. You can use this ability once per day at 8th level and one additional time for every 4 levels you possess beyond 8th.\nDomain Spells: hideous laughter, communal protection from law, dispel magic, confusion, acidic spray, cloak of dreams, word of chaos, cloak of chaos, summon monster IX."
+    },
+    {
+      "Key": "ffaa1a218cb84b749d1dfb62e0a56df0",
+      "SimpleName": "WhimsyDomainProgressionSecondary.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nYour touch infuses life and weapons with chaos, and you carry a divine whimsy wherever you go.\nTouch of Chaos: You can imbue a target with chaos as a melee touch attack. For the next round, anytime the target rolls a d20, he must roll twice and take the less favorable result. You can use this ability a number of times per day equal to 3 + your Wisdom modifier.\nUnexpected Whimsy: All enemies within 30 feet of you that can see and hear you must succeed a Will saving throw or they collapse into gales of manic laughter, falling prone. Those who fail their saving throws can take no actions other than laughing for 1 round, but are not considered helpless. You can use this ability once per day at 8th level and one additional time for every 4 levels you possess beyond 8th.\nDomain Spells: hideous laughter, communal protection from law, dispel magic, confusion, acidic spray, cloak of dreams, word of chaos, cloak of chaos, summon monster IX."
     },
     {
       "Key": "4d25f40b05944d1599a60db9883d8cff",

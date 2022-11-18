@@ -116,6 +116,7 @@ namespace ExpandedContent.Tweaks {
                 Domains.StormDomain.AddStormDomain();
                 Domains.ThieveryDomain.AddThieveryDomain();
                 Domains.UndeadDomain.AddUndeadDomain();
+                Domains.WhimsyDomain.AddWhimsyDomain();
                 Domains.WindDomain.AddWindDomain();
                 Domains.BaseDeityPatch.AddBaseDeityPatch();
 

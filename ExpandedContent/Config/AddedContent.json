@@ -245,6 +245,11 @@
         "Enabled": true,
         "Homebrew": false,
         "Description": "Adds the curse subdomain, a subdomain to the luck domain."
+      },
+      "Whimsy Subdomain": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds the whimsy subdomain, a subdomain to the chaos domain."
       }
     },
     "IsExpanded": false

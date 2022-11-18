@@ -370,6 +370,8 @@ namespace ExpandedContent.Tweaks.Domains {
                     c.HideInUI = true;
                     c.m_Feature = CurseDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
             });
+            var DomainMastery = Resources.GetBlueprint<BlueprintFeature>("2de64f6a1f2baee4f9b7e52e3f046ec5").GetComponent<AutoMetamagic>();
+            DomainMastery.Abilities.Add(CurseDomainBaseAbility.ToReference<BlueprintAbilityReference>());
             if (ModSettings.AddedContent.Domains.IsDisabled("Curse Subdomain")) { return; }
             DomainTools.RegisterDomain(CurseDomainProgression);
             DomainTools.RegisterSecondaryDomain(CurseDomainProgressionSecondary);
