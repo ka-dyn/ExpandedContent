@@ -111,6 +111,7 @@ namespace ExpandedContent.Tweaks {
                 Domains.PsychopompDomainDeath.AddPsychopompDomainDeath();
                 Domains.PsychopompDomainRepose.AddPsychopompDomainRepose();
                 Domains.RageDomain.AddRageDomain();
+                Domains.RestorationDomain.AddRestorationDomain();
                 Domains.RevelationDomain.AddRevelationDomain();
                 Domains.RevolutionDomain.AddRevolutionDomain();
                 Domains.RiversDomain.AddRiversDomain();

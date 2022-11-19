@@ -181,6 +181,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.CanTargetFriends = true;
                 bp.CanTargetSelf = true;
                 bp.SpellResistance = false;
+                bp.m_Parent = PurgingFinale.ToReference<BlueprintAbilityReference>();
                 bp.EffectOnAlly = AbilityEffectOnUnit.Helpful;
                 bp.EffectOnEnemy = AbilityEffectOnUnit.None;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Point;
@@ -299,6 +300,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.CanTargetFriends = true;
                 bp.CanTargetSelf = true;
                 bp.SpellResistance = false;
+                bp.m_Parent = PurgingFinale.ToReference<BlueprintAbilityReference>();
                 bp.EffectOnAlly = AbilityEffectOnUnit.Helpful;
                 bp.EffectOnEnemy = AbilityEffectOnUnit.None;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Point;
@@ -417,6 +419,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.CanTargetFriends = true;
                 bp.CanTargetSelf = true;
                 bp.SpellResistance = false;
+                bp.m_Parent = PurgingFinale.ToReference<BlueprintAbilityReference>();
                 bp.EffectOnAlly = AbilityEffectOnUnit.Helpful;
                 bp.EffectOnEnemy = AbilityEffectOnUnit.None;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Point;
@@ -535,6 +538,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.CanTargetFriends = true;
                 bp.CanTargetSelf = true;
                 bp.SpellResistance = false;
+                bp.m_Parent = PurgingFinale.ToReference<BlueprintAbilityReference>();
                 bp.EffectOnAlly = AbilityEffectOnUnit.Helpful;
                 bp.EffectOnEnemy = AbilityEffectOnUnit.None;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Point;
@@ -618,6 +622,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.CanTargetFriends = true;
                 bp.CanTargetSelf = true;
                 bp.SpellResistance = false;
+                bp.m_Parent = PurgingFinale.ToReference<BlueprintAbilityReference>();
                 bp.EffectOnAlly = AbilityEffectOnUnit.Helpful;
                 bp.EffectOnEnemy = AbilityEffectOnUnit.None;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Point;

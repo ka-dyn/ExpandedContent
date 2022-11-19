@@ -250,6 +250,11 @@
         "Enabled": true,
         "Homebrew": false,
         "Description": "Adds the whimsy subdomain, a subdomain to the chaos domain."
+      },
+      "Restoration Subdomain": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds the restoration subdomain, a subdomain to the healing domain."
       }
     },
     "IsExpanded": false

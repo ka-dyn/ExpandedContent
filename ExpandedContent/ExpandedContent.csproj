@@ -327,6 +327,7 @@
     <Compile Include="Tweaks\DemonLords\Zura.cs" />
     <Compile Include="Tweaks\Domains\BaseDomainDruidPatch.cs" />
     <Compile Include="Tweaks\Domains\CurseDomain.cs" />
+    <Compile Include="Tweaks\Domains\RestorationDomain.cs" />
     <Compile Include="Tweaks\Domains\ImpossibleSubdomainSelection.cs" />
     <Compile Include="Tweaks\Domains\WhimsyDomain.cs" />
     <Compile Include="Tweaks\Domains\RevolutionDomain.cs" />
