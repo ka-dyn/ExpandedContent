@@ -35,7 +35,7 @@ New Classes
 
 New Features
 
--Drake Companions - Limited to certain archetypes; Draconic Druid, Silver Champion, Drake Warden, Clutch Thief, and Claw of the False Wyrm. Reworked from tabletop to work in a CRPG setting.
+-Drake Companions - Limited to certain archetypes. Reworked from tabletop to work in a CRPG setting.
 
 -Dragon Mystery and Vampirism curse for Oracle class.
 
