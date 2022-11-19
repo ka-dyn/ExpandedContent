@@ -1707,6 +1707,13 @@ namespace ExpandedContent.Tweaks.Spells {
                 });
                 bp.AddComponent<AddEffectFastHealing>(c => {
                     c.Heal = 3;
+                    c.Bonus = new ContextValue() {
+                        ValueType = ContextValueType.Simple,
+                        Value = 0,
+                        ValueRank = AbilityRankType.Default,
+                        ValueShared = AbilitySharedValue.Damage,
+                        Property = UnitProperty.None
+                    };
                 });
                 bp.m_Icon = PillarOfLife.m_Icon;
                 bp.m_Flags = BlueprintBuff.Flags.IsFromSpell;
