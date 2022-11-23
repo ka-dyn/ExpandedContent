@@ -7116,6 +7116,7 @@
       "Key": "0766f79992c2404d927cc15d98c1f5ff",
       "SimpleName": "RestorationDomainBaseAbility.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "You can touch a creature, letting the healing power of your deity flow through you to relieve the creature of a minor condition. Your touch can remove the dazed, fatigued, shaken, sickened, or staggered condition. You choose which condition is removed. You can use this ability a number of times per day equal to 3 + your Wisdom modifier."
     },
     {
@@ -7128,6 +7129,7 @@
       "Key": "cd84bc0e7c1d401f83db39cf9011e419",
       "SimpleName": "RestorationDomainBaseAbilityDazed.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "You can touch a creature, letting the healing power of your deity flow through you to relieve the creature of a minor condition. Your touch can remove the dazed, fatigued, shaken, sickened, or staggered condition. You choose which condition is removed. You can use this ability a number of times per day equal to 3 + your Wisdom modifier."
     },
     {
@@ -7140,6 +7142,7 @@
       "Key": "2575cfaf70aa4a5db19c6bcdfd6d7a88",
       "SimpleName": "RestorationDomainBaseAbilityFatigued.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "You can touch a creature, letting the healing power of your deity flow through you to relieve the creature of a minor condition. Your touch can remove the dazed, fatigued, shaken, sickened, or staggered condition. You choose which condition is removed. You can use this ability a number of times per day equal to 3 + your Wisdom modifier."
     },
     {
@@ -7152,6 +7155,7 @@
       "Key": "e54aa4b16b84410281c43289b491dcb1",
       "SimpleName": "RestorationDomainBaseAbilityShaken.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "You can touch a creature, letting the healing power of your deity flow through you to relieve the creature of a minor condition. Your touch can remove the dazed, fatigued, shaken, sickened, or staggered condition. You choose which condition is removed. You can use this ability a number of times per day equal to 3 + your Wisdom modifier."
     },
     {
@@ -7164,6 +7168,7 @@
       "Key": "fe69fd11ca9a40cfbbb1f4bb79c9904d",
       "SimpleName": "RestorationDomainBaseAbilitySickened.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "You can touch a creature, letting the healing power of your deity flow through you to relieve the creature of a minor condition. Your touch can remove the dazed, fatigued, shaken, sickened, or staggered condition. You choose which condition is removed. You can use this ability a number of times per day equal to 3 + your Wisdom modifier."
     },
     {
@@ -7200,6 +7205,7 @@
       "Key": "c1268e46fbb64ee09f35ecc4957beb78",
       "SimpleName": "RestorationDomainProgression.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "\nYour touch restores vigor, protecting against ailments, and your healing magic is particularly vital and potent.\nRestorative Touch: You can touch a creature, letting the healing power of your deity flow through you to relieve the creature of a minor condition. Your touch can remove the dazed, fatigued, shaken, sickened, or staggered condition. You choose which condition is removed. You can use this ability a number of times per day equal to 3 + your Wisdom modifier.\nHealer's Blessing: At 6th level, all of your cure spells are treated as if they were empowered, increasing the amount of damage healed by half (+50%). This does not apply to damage dealt to undead with a cure spell. This does not stack with the Empower Spell metamagic feat.\nDomain Spells: remove sickness, remove disease, cure serious wounds, neutralize poison, break enchantment, heal, greater restoration, protection from spells, mass heal."
     },
     {
@@ -9717,6 +9723,31 @@
       "SimpleName": "ZagreshFeature.Name",
       "ProcessTemplates": false,
       "enGB": "Zagresh"
+    },
+    {
+      "Key": "ac7af5e7047f4cf0aa8cbcd4723e85a2",
+      "SimpleName": "ZephyrsFleetnessAbility.Description",
+      "ProcessTemplates": true,
+      "IsUsed": false,
+      "enGB": "You can call upon the spirits of the air to grant agility to your allies. Each target gains a +30 foot enhancement bonus to its speed. Each target can also move (and charge) through difficult terrain without penalty."
+    },
+    {
+      "Key": "97653b42d06145028942c4b97612926d",
+      "SimpleName": "ZephyrsFleetnessAbility.Duration",
+      "ProcessTemplates": false,
+      "enGB": "1 minute/level"
+    },
+    {
+      "Key": "f960c7fb31834a6ebf07909b25d7af26",
+      "SimpleName": "ZephyrsFleetnessBuff.Description",
+      "ProcessTemplates": true,
+      "enGB": "You can call upon the spirits of the air to grant agility to your allies. Each target gains a +30 foot enhancement bonus to its speed. Each target can also move (and charge) through difficult terrain without penalty."
+    },
+    {
+      "Key": "894c60ce2d9043e391e95d19da03722b",
+      "SimpleName": "ZephyrsFleetnessBuff.Name",
+      "ProcessTemplates": false,
+      "enGB": "Zephyr's Fleetness"
     },
     {
       "Key": "1146e0eb57114eb7b226175cc01dd9c1",
