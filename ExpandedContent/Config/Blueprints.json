@@ -1169,6 +1169,8 @@
     "WaterInvokeDeityBuff": "b2e98e19-767f-45fe-9861-762163edec98",
     "WeatherInvokeDeityAbility": "cf3cb5c7-4595-4adf-9f3d-ddee06d1f26b",
     "WeatherInvokeDeityBuff": "ef26e3f1-fd93-4ef9-8adc-f5e9c06eafa1",
+    "ZephyrsFleetnessAbility": "a49ee6f1-ec67-44a6-b16e-3476a504e2a9",
+    "ZephyrsFleetnessBuff": "dba6a9d5-fc13-467f-8b03-8aaa29da7c1f",
 
     "ScrollOfDeadlyFinale": "8cfb536d-66df-4577-8479-cecfe6fff905",
     "ScrollOfGoodberry": "8abffd7d-9a80-4556-bfec-dba8efb2daa7",
@@ -1185,7 +1187,8 @@
     "ScrollOfInflictPainMass": "4d5daaba-e0a1-4661-b19e-f6c89c8ae2c2",
     "ScrollOfGloomblindBolts": "fc26d2a5-28f3-4e80-954a-168b743962e9",
     "ScrollOfFuryOftheSun": "fc209f74-eb48-48b1-a457-2bc0394e6f4a",
-    "ScrollOfWallOfFire": "39a69236-792d-4fcb-a603-e88dd3613695"
+    "ScrollOfWallOfFire": "39a69236-792d-4fcb-a603-e88dd3613695",
+    "ScrollOfZephyrsFleetness": "2a7a9444-e412-4767-b393-02c6c098af1c"
 
 
 

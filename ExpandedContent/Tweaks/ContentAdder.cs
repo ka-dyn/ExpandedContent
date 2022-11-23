@@ -95,6 +95,7 @@ namespace ExpandedContent.Tweaks {
                 Spells.FuryOftheSun.AddFuryOftheSun();
                 Spells.WallOfFire.AddWallOfFire();
                 Spells.InvokeDeity.AddInvokeDeity();
+                Spells.ZephyrsFleetness.AddZephyrsFleetness();
 
                 Domains.ImpossibleSubdomainSelection.AddImpossibleSubdomainSelection();
                 Domains.ScalykindDomain.AddScalykindDomain();

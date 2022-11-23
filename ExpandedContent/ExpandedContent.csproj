@@ -401,6 +401,7 @@
     <Compile Include="Extensions\ExtentionMethods.cs" />
     <Compile Include="Resources.cs" />
     <Compile Include="SaveGamePatch.cs" />
+    <Compile Include="Tweaks\Spells\ZephyrsFleetness.cs" />
     <Compile Include="Tweaks\Spells\InvokeDeity.cs" />
     <Compile Include="Tweaks\Spells\GloomblindBolts.cs" />
     <Compile Include="Tweaks\Spells\FuryOftheSun.cs" />
@@ -1089,6 +1090,9 @@
     <Content Include="Assets\Items\Icon_ScrollOfWallOfFire.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Items\Icon_ScrollOfZephyrsFleetness.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Portraits\BlackFulllength.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -1477,6 +1481,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_WallOfFire.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_ZephyrsFleetness.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
