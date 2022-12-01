@@ -389,7 +389,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.m_Icon = DraconicMysteryIcon;
                 bp.SetName("Dragon");
                 bp.SetDescription("An oracle with the dragon mystery adds {g|Encyclopedia:Mobility}Mobility{/g}, {g|Encyclopedia:Persuasion}Persuasion{/g}, " +
-                    "{g|Encyclopedia:Perception}Perception{/g} and {g|Encyclopedia:Knowledge_Arcana}Knowledge (world) {/g} to her list of class {g|Encyclopedia:Skills}skills{/g}.");
+                    "{g|Encyclopedia:Perception}Perception{/g} and {g|Encyclopedia:Knowledge_Arcana}Knowledge (Arcana) {/g} to her list of class {g|Encyclopedia:Skills}skills{/g}.");
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
                     c.Level = 20;
@@ -447,8 +447,8 @@ namespace ExpandedContent.Tweaks.Mysteries {
             var DivineHerbalistDragonMysteryFeature = Helpers.CreateBlueprint<BlueprintFeature>("DivineHerbalistDragonMysteryFeature", bp => {
                 bp.m_Icon = DraconicMysteryIcon;
                 bp.SetName("Dragon");
-                bp.SetDescription("An oracle with the dragon mystery adds {g|Encyclopedia:Mobility}Mobility{/g}, {g|Encyclopedia:Persuasion}Persuasion{/g}, " +
-                    "{g|Encyclopedia:Perception}Perception{/g} and {g|Encyclopedia:Knowledge_Arcana}Knowledge (world) {/g} to her list of class {g|Encyclopedia:Skills}skills{/g}.");
+                bp.SetDescription("Gain access to the spells and revelations of the dragon mystery. \nDue to the divine herbalist archetype the class skills gained from this archetype" +
+                    "are replaced by the master herbalist feature and the brew potions feat.");
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
                     c.Level = 20;
@@ -467,8 +467,8 @@ namespace ExpandedContent.Tweaks.Mysteries {
             var OceansEchoDragonMysteryFeature = Helpers.CreateBlueprint<BlueprintFeature>("OceansEchoDragonMysteryFeature", bp => {
                 bp.m_Icon = DraconicMysteryIcon;
                 bp.SetName("Dragon");
-                bp.SetDescription("An oracle with the dragon mystery adds {g|Encyclopedia:Mobility}Mobility{/g}, {g|Encyclopedia:Persuasion}Persuasion{/g}, " +
-                    "{g|Encyclopedia:Perception}Perception{/g} and {g|Encyclopedia:Knowledge_Arcana}Knowledge (world) {/g} to her list of class {g|Encyclopedia:Skills}skills{/g}.");
+                bp.SetDescription("Gain access to the spells and revelations of the dragon mystery. \nDue to the ocean's echo archetype the class skills gained from this archtype" +
+                    "are changed to {g|Encyclopedia:Persuasion}Persuasion{/g}, {g|Encyclopedia:Knowledge_World}Knowledge (world){/g} and {g|Encyclopedia:Lore_Nature}Lore (nature){/g}");
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
                     c.Level = 20;
@@ -1305,7 +1305,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.m_AllowNonContextActions = false;
                 bp.SetName("Breath Weapon - Ability is not ready yet");
                 bp.SetDescription("");
-                //bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
+                bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
                 bp.Stacking = StackingType.Replace;
                 bp.Frequency = DurationRate.Rounds;
             });

@@ -96,6 +96,7 @@ namespace ExpandedContent.Tweaks {
                 Spells.WallOfFire.AddWallOfFire();
                 Spells.InvokeDeity.AddInvokeDeity();
                 Spells.ZephyrsFleetness.AddZephyrsFleetness();
+                Spells.HypnoticPattern.AddHypnoticPattern();
 
                 Domains.ImpossibleSubdomainSelection.AddImpossibleSubdomainSelection();
                 Domains.ScalykindDomain.AddScalykindDomain();
@@ -126,6 +127,7 @@ namespace ExpandedContent.Tweaks {
                 Archetypes.StormDruid.AddStormDruid();
 
                 Mysteries.DragonMystery.AddDragonMystery();
+                Mysteries.HeavensMystery.AddHeavensMystery();
 
                 Curses.Vampirism.AddVampirismCurse();
 

@@ -39,7 +39,8 @@ namespace ExpandedContent.Tweaks.Spells {
 
             var InflictPainMassAbility = Helpers.CreateBlueprint<BlueprintAbility>("InflictPainMassAbility", bp => {
                 bp.SetName("Inflict Pain, Mass ");
-                bp.SetDescription("This {g|Encyclopedia:Spell}spell{/g} functions as Inflict pain, except that is affects multiple creatures.\nInflict Pain: You telepathically wrack the target’s mind and body with agonizing pain that imposes a –4 penalty on attack rolls, skill checks, and combat maneuver checks. " +
+                bp.SetDescription("This {g|Encyclopedia:Spell}spell{/g} functions as Inflict pain, except that is affects multiple creatures.\nInflict Pain: You " +
+                    "telepathically wrack the target’s mind and body with agonizing pain that imposes a –4 penalty on attack rolls, skill checks, and combat maneuver checks. " +
                     "A successful Will save reduces the duration to 1 round.");
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.SavingThrowType = SavingThrowType.Will;
@@ -121,7 +122,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 });
                 bp.AddComponent<CraftInfoComponent>(c => {
                     c.SavingThrow = CraftSavingThrow.Will;
-                    c.AOEType = CraftAOE.None;
+                    c.AOEType = CraftAOE.AOE;
                     c.SpellType = CraftSpellType.Debuff;
                 });
                 bp.m_Icon = InflictPainMassIcon;

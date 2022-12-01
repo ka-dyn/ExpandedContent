@@ -381,6 +381,7 @@
     <Compile Include="Tweaks\Monitors\Kerkamoth.cs" />
     <Compile Include="Tweaks\Monitors\Ssilameshnik.cs" />
     <Compile Include="Tweaks\Monitors\Monad.cs" />
+    <Compile Include="Tweaks\Mysteries\HeavensMystery.cs" />
     <Compile Include="Tweaks\Mysteries\DragonMystery.cs" />
     <Compile Include="Tweaks\QueensOfNight\ArdadLili.cs" />
     <Compile Include="Tweaks\QueensOfNight\Doloras.cs" />
@@ -401,6 +402,7 @@
     <Compile Include="Extensions\ExtentionMethods.cs" />
     <Compile Include="Resources.cs" />
     <Compile Include="SaveGamePatch.cs" />
+    <Compile Include="Tweaks\Spells\HypnoticPattern.cs" />
     <Compile Include="Tweaks\Spells\ZephyrsFleetness.cs" />
     <Compile Include="Tweaks\Spells\InvokeDeity.cs" />
     <Compile Include="Tweaks\Spells\GloomblindBolts.cs" />
@@ -1060,6 +1062,9 @@
     <Content Include="Assets\Items\Icon_ScrollOfHydraulicPush.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Items\Icon_ScrollOfHypnoticPattern.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Items\Icon_ScrollOfInflictPain.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -1378,10 +1383,16 @@
     <Content Include="Assets\Skills\Icon_Goodberry.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Skills\Icon_GuidingStar.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Skills\Icon_Havoc.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_HollowBlades.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_HypnoticPattern.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_InflictPain.jpg">
@@ -1391,6 +1402,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_InvokeDeity.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_LureOfTheHeavens.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_MantisAspect.jpg">
@@ -1406,6 +1420,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_OracleDraconicMystery.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_OracleHeavensMystery.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_Plague.png">
