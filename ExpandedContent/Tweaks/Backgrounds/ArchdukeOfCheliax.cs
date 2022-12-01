@@ -4,6 +4,9 @@ using ExpandedContent.Utilities;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Selection;
+using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.EntitySystem.Stats;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.FactLogic;
 using System;
 using System.Collections.Generic;
@@ -18,7 +21,7 @@ namespace ExpandedContent.Tweaks.Backgrounds {
 
         public static void AddBackgroundArchdukeOfCheliax() {
 
-            if (ModSettings.AddedContent.Backgrounds.IsDisabled("Archduke of Cheliax")) { return; }
+            
 
             var AOCIcon = AssetLoader.LoadInternal("Backgrounds", "Icon_AOC.png");
             var BackgroundNobleSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("7b11f589e81617a46b3e5eda3632508d");
@@ -37,70 +40,75 @@ namespace ExpandedContent.Tweaks.Backgrounds {
                     "each of whom rule one of the " +
                     "Archduchies of Cheliax. Archduke is a hereditary title that is held by a single family that has not changed much since the turmoil of the civil war.");
                 bp.AddComponent<AddClassSkill>(c => {
-                    c.Skill = Kingmaker.EntitySystem.Stats.StatType.SkillKnowledgeWorld;
+                    c.Skill = StatType.SkillKnowledgeWorld;
                 });
                 bp.AddComponent<AddBackgroundClassSkill>(c => {
-                    c.Skill = Kingmaker.EntitySystem.Stats.StatType.SkillKnowledgeWorld;
+                    c.Skill = StatType.SkillKnowledgeWorld;
                 });
                 bp.AddComponent<AddStatBonus>(c => {
-                    c.Descriptor = Kingmaker.Enums.ModifierDescriptor.UntypedStackable;
-                    c.Stat = Kingmaker.EntitySystem.Stats.StatType.SkillKnowledgeWorld;
+                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+                    c.Stat = StatType.SkillKnowledgeWorld;
                     c.Value = 1;
                 });
                 bp.AddComponent<AddClassSkill>(c => {
-                    c.Skill = Kingmaker.EntitySystem.Stats.StatType.SkillKnowledgeArcana;
+                    c.Skill = StatType.SkillKnowledgeArcana;
                 });
                 bp.AddComponent<AddBackgroundClassSkill>(c => {
-                    c.Skill = Kingmaker.EntitySystem.Stats.StatType.SkillKnowledgeArcana;
+                    c.Skill = StatType.SkillKnowledgeArcana;
                 });
                 bp.AddComponent<AddStatBonus>(c => {
-                    c.Descriptor = Kingmaker.Enums.ModifierDescriptor.UntypedStackable;
-                    c.Stat = Kingmaker.EntitySystem.Stats.StatType.SkillKnowledgeArcana;
+                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+                    c.Stat = StatType.SkillKnowledgeArcana;
                     c.Value = 1;
                 });
                 bp.AddComponent<AddClassSkill>(c => {
-                    c.Skill = Kingmaker.EntitySystem.Stats.StatType.SkillLoreReligion;
+                    c.Skill = StatType.SkillLoreReligion;
                 });
                 bp.AddComponent<AddBackgroundClassSkill>(c => {
-                    c.Skill = Kingmaker.EntitySystem.Stats.StatType.SkillLoreReligion;
+                    c.Skill = StatType.SkillLoreReligion;
                 });
                 bp.AddComponent<AddStatBonus>(c => {
-                    c.Descriptor = Kingmaker.Enums.ModifierDescriptor.UntypedStackable;
-                    c.Stat = Kingmaker.EntitySystem.Stats.StatType.SkillLoreReligion;
+                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+                    c.Stat = StatType.SkillLoreReligion;
                     c.Value = 1;
                 });
                 bp.AddComponent<AddClassSkill>(c => {
-                    c.Skill = Kingmaker.EntitySystem.Stats.StatType.SkillLoreNature;
+                    c.Skill = StatType.SkillLoreNature;
                 });
                 bp.AddComponent<AddBackgroundClassSkill>(c => {
-                    c.Skill = Kingmaker.EntitySystem.Stats.StatType.SkillLoreNature;
+                    c.Skill = StatType.SkillLoreNature;
                 });
                 bp.AddComponent<AddStatBonus>(c => {
-                    c.Descriptor = Kingmaker.Enums.ModifierDescriptor.UntypedStackable;
-                    c.Stat = Kingmaker.EntitySystem.Stats.StatType.SkillLoreNature;
+                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+                    c.Stat = StatType.SkillLoreNature;
                     c.Value = 1;
                 });
                 bp.AddComponent<ReplaceStatBaseAttribute>(c => {
-                    c.TargetStat = Kingmaker.EntitySystem.Stats.StatType.SkillLoreNature;
-                    c.BaseAttributeReplacement = Kingmaker.EntitySystem.Stats.StatType.Intelligence;
+                    c.TargetStat = StatType.SkillLoreNature;
+                    c.BaseAttributeReplacement = StatType.Intelligence;
                 });
                 bp.AddComponent<ReplaceStatBaseAttribute>(c => {
-                    c.TargetStat = Kingmaker.EntitySystem.Stats.StatType.SkillLoreReligion;
-                    c.BaseAttributeReplacement = Kingmaker.EntitySystem.Stats.StatType.Intelligence;
+                    c.TargetStat = StatType.SkillLoreReligion;
+                    c.BaseAttributeReplacement = StatType.Intelligence;
                 });
                 bp.AddComponent<AddStatBonus>(c => {
-                    c.Stat = Kingmaker.EntitySystem.Stats.StatType.Initiative;
+                    c.Stat = StatType.Initiative;
                     c.Value = 2;
                 });
-                bp.AddComponent<ReplaceStatBaseAttribute>(c => {
-                    c.TargetStat = Kingmaker.EntitySystem.Stats.StatType.Initiative;
-                    c.BaseAttributeReplacement = Kingmaker.EntitySystem.Stats.StatType.Intelligence;
+                bp.AddComponent<DerivativeStatBonus>(c => {
+                    c.BaseStat = StatType.Intelligence;
+                    c.DerivativeStat = StatType.Initiative;
+                    c.Descriptor = ModifierDescriptor.None;
                 });
-                
-
-
+                bp.AddComponent<RecalculateOnStatChange>(c => {
+                    c.UseKineticistMainStat = false;
+                    c.Stat = StatType.Intelligence;
+                });
 
             });
+
+
+            if (ModSettings.AddedContent.Backgrounds.IsDisabled("Archduke of Cheliax")) { return; }
             BackgroundNobleSelection.m_AllFeatures = BackgroundNobleSelection.m_AllFeatures.AppendToArray(BackgroundArchdukeOfCheliax.ToReference<BlueprintFeatureReference>());
 
 
