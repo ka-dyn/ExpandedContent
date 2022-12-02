@@ -62,6 +62,9 @@ namespace ExpandedContent.Utilities {
                 AdditionalLevel = addLevel
             };
         }
+        public static void TemporaryContext<T>(this T obj, Action<T> run) {
+            run?.Invoke(obj);
+        }
         public static T Create<T>(Action<T> init = null) where T : new() {
             var result = new T();
             init?.Invoke(result);

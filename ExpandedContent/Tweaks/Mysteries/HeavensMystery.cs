@@ -1281,7 +1281,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 };
             });
             var OracleRevelationGuidingStarMetamagicBuffEmpower = Helpers.CreateBuff("OracleRevelationGuidingStarMetamagicBuffEmpower", bp => {
-                bp.SetName("Guiding Star = Empower Spell");
+                bp.SetName("Guiding Star - Empower Spell");
                 bp.SetDescription("Once per day you can cast one spell from the oracle spellbook as if it were modified by the Empower Spell feat without increasing the spell’s casting time or level.");
                 bp.m_Icon = GuidingStarIcon;
                 bp.AddComponent<AutoMetamagic>(c => {
@@ -1323,7 +1323,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.IsClassFeature = false;
             });
             var OracleRevelationGuidingStarMetamagicBuffExtend = Helpers.CreateBuff("OracleRevelationGuidingStarMetamagicBuffExtend", bp => {
-                bp.SetName("Guiding Star = Extend Spell");
+                bp.SetName("Guiding Star - Extend Spell");
                 bp.SetDescription("Once per day you can cast one spell from the oracle spellbook as if it were modified by the Extend Spell feat without increasing the spell’s casting time or level.");
                 bp.m_Icon = GuidingStarIcon;
                 bp.AddComponent<AutoMetamagic>(c => {
@@ -1389,7 +1389,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
             var OracleRevelationGuidingStarMetamagicAbilityEmpower = Helpers.CreateBlueprint<BlueprintAbility>("OracleRevelationGuidingStarMetamagicAbilityEmpower", bp => {
-                bp.SetName("Guiding Star = Empower Spell");
+                bp.SetName("Guiding Star - Empower Spell");
                 bp.SetDescription("Once per day you can cast one spell from the oracle spellbook as if it were modified by the Empower Spell feat without increasing the spell’s casting time or level.");
                 bp.m_Icon = GuidingStarIcon;
                 bp.AddComponent<AbilityEffectRunAction>(c => {
@@ -1444,7 +1444,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
             var OracleRevelationGuidingStarMetamagicAbilityExtend = Helpers.CreateBlueprint<BlueprintAbility>("OracleRevelationGuidingStarMetamagicAbilityExtend", bp => {
-                bp.SetName("Guiding Star = Extend Spell");
+                bp.SetName("Guiding Star - Extend Spell");
                 bp.SetDescription("Once per day you can cast one spell from the oracle spellbook as if it were modified by the Extend Spell feat without increasing the spell’s casting time or level.");
                 bp.m_Icon = GuidingStarIcon;
                 bp.AddComponent<AbilityEffectRunAction>(c => {
@@ -1538,21 +1538,19 @@ namespace ExpandedContent.Tweaks.Mysteries {
             var ExhaustedBuff = Resources.GetBlueprintReference<BlueprintBuffReference>("46d1b9cc3d0fd36469a471b047d773a2");
             var OracleRevelationInterstallarVoidResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("OracleRevelationInterstallarVoidResource", bp => {
                 bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
-                    BaseValue = 1,
+                    BaseValue = 0,
                     IncreasedByLevel = false,
-                    LevelIncrease = 0,
                     IncreasedByLevelStartPlusDivStep = true,
-                    StartingLevel = 0,
-                    StartingIncrease = 0,
-                    LevelStep = 10,
-                    PerStepIncrease = 1,
-                    MinClassLevelIncrease = 0,
-                    OtherClassesModifier = 0,
-                    IncreasedByStat = false,
-                    ResourceBonusStat = StatType.Unknown,
+                    m_Class = new BlueprintCharacterClassReference[0],
                     m_ClassDiv = new BlueprintCharacterClassReference[] {
                         OracleClass.ToReference<BlueprintCharacterClassReference>()
-                    }
+                    },
+                    m_Archetypes = new BlueprintArchetypeReference[0],
+                    m_ArchetypesDiv = new BlueprintArchetypeReference[0],
+                    StartingLevel = 1,
+                    LevelStep = 9,
+                    StartingIncrease = 1,
+                    PerStepIncrease = 1,
                 };
                 bp.m_UseMax = true;
                 bp.m_Max = 2;
@@ -2011,7 +2009,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     c.BeforeThisLevel = false;
                 });
                 bp.AddComponent<AddAbilityResources>(c => {
-                    c.m_Resource = OracleRevelationDwellerInTheDarknessResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_Resource = OracleRevelationInterstallarVoidResource.ToReference<BlueprintAbilityResourceReference>();
                     c.RestoreAmount = true;
                 });
                 bp.AddComponent<PrerequisiteFeaturesFromList>(c => {
@@ -2032,11 +2030,11 @@ namespace ExpandedContent.Tweaks.Mysteries {
             var LureOfTheHeavensIcon = AssetLoader.LoadInternal("Skills", "Icon_LureOfTheHeavens.png");
             var OracleRevelationLureOfTheHeavensResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("OracleRevelationLureOfTheHeavensResource", bp => {
                 bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
-                    BaseValue = 1,
+                    BaseValue = 0,
                     IncreasedByLevel = true,
-                    LevelIncrease = 0,
+                    LevelIncrease = 1,
                     IncreasedByLevelStartPlusDivStep = false,
-                    StartingLevel = 0,
+                    StartingLevel = 1,
                     StartingIncrease = 1,
                     LevelStep = 0,
                     PerStepIncrease = 1,

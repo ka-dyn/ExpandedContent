@@ -156,6 +156,7 @@
   <ItemGroup>
     <Compile Include="Config\AddedContent.cs" />
     <Compile Include="Config\Blueprints.cs" />
+    <Compile Include="Config\ModSupport.cs" />
     <Compile Include="Config\ICollapseableGroup.cs" />
     <Compile Include="Config\IDisableableGroup.cs" />
     <Compile Include="Config\IUpdateableSettings.cs" />

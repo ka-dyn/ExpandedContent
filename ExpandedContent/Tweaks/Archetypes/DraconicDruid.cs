@@ -146,7 +146,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.m_IsSpendResource = true;
                     c.CostIsCustom = false;
                     c.Amount = 2;
-                    c.ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>() { MasterShapeshifter.ToReference<BlueprintUnitFactReference>() };
+                    c.ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>() { MasterShapeshifter.ToReference<BlueprintUnitFactReference>(), MasterShapeshifter.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<SpellDescriptorComponent>(c => {
                     c.Descriptor = SpellDescriptor.Polymorph;
@@ -220,7 +220,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.m_IsSpendResource = true;
                     c.CostIsCustom = false;
                     c.Amount = 2;
-                    c.ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>() { MasterShapeshifter.ToReference<BlueprintUnitFactReference>() };
+                    c.ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>() { MasterShapeshifter.ToReference<BlueprintUnitFactReference>(), MasterShapeshifter.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<SpellDescriptorComponent>(c => {
                     c.Descriptor = SpellDescriptor.Polymorph;
@@ -294,7 +294,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.m_IsSpendResource = true;
                     c.CostIsCustom = false;
                     c.Amount = 2;
-                    c.ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>() { MasterShapeshifter.ToReference<BlueprintUnitFactReference>() };
+                    c.ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>() { MasterShapeshifter.ToReference<BlueprintUnitFactReference>(), MasterShapeshifter.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<SpellDescriptorComponent>(c => {
                     c.Descriptor = SpellDescriptor.Polymorph;
@@ -368,7 +368,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.m_IsSpendResource = true;
                     c.CostIsCustom = false;
                     c.Amount = 2;
-                    c.ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>() { MasterShapeshifter.ToReference<BlueprintUnitFactReference>() };
+                    c.ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>() { MasterShapeshifter.ToReference<BlueprintUnitFactReference>(), MasterShapeshifter.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<SpellDescriptorComponent>(c => {
                     c.Descriptor = SpellDescriptor.Polymorph;
@@ -442,7 +442,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.m_IsSpendResource = true;
                     c.CostIsCustom = false;
                     c.Amount = 2;
-                    c.ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>() { MasterShapeshifter.ToReference<BlueprintUnitFactReference>() };
+                    c.ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>() { MasterShapeshifter.ToReference<BlueprintUnitFactReference>(), MasterShapeshifter.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<SpellDescriptorComponent>(c => {
                     c.Descriptor = SpellDescriptor.Polymorph;
@@ -516,7 +516,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.m_IsSpendResource = true;
                     c.CostIsCustom = false;
                     c.Amount = 2;
-                    c.ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>() { MasterShapeshifter.ToReference<BlueprintUnitFactReference>() };
+                    c.ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>() { MasterShapeshifter.ToReference<BlueprintUnitFactReference>(), MasterShapeshifter.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<SpellDescriptorComponent>(c => {
                     c.Descriptor = SpellDescriptor.Polymorph;
@@ -590,7 +590,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.m_IsSpendResource = true;
                     c.CostIsCustom = false;
                     c.Amount = 2;
-                    c.ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>() { MasterShapeshifter.ToReference<BlueprintUnitFactReference>() };
+                    c.ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>() { MasterShapeshifter.ToReference<BlueprintUnitFactReference>(), MasterShapeshifter.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<SpellDescriptorComponent>(c => {
                     c.Descriptor = SpellDescriptor.Polymorph;
@@ -704,7 +704,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.m_IsSpendResource = true;
                     c.CostIsCustom = false;
                     c.Amount = 2;
-                    c.ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>() { MasterShapeshifter.ToReference<BlueprintUnitFactReference>() };
+                    c.ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>() { MasterShapeshifter.ToReference<BlueprintUnitFactReference>(), MasterShapeshifter.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<SpellDescriptorComponent>(c => {
                     c.Descriptor = SpellDescriptor.Polymorph;
@@ -778,7 +778,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.m_IsSpendResource = true;
                     c.CostIsCustom = false;
                     c.Amount = 2;
-                    c.ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>() { MasterShapeshifter.ToReference<BlueprintUnitFactReference>() };
+                    c.ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>() { MasterShapeshifter.ToReference<BlueprintUnitFactReference>(), MasterShapeshifter.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<SpellDescriptorComponent>(c => {
                     c.Descriptor = SpellDescriptor.Polymorph;
@@ -852,7 +852,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.m_IsSpendResource = true;
                     c.CostIsCustom = false;
                     c.Amount = 2;
-                    c.ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>() { MasterShapeshifter.ToReference<BlueprintUnitFactReference>() };
+                    c.ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>() { MasterShapeshifter.ToReference<BlueprintUnitFactReference>(), MasterShapeshifter.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<SpellDescriptorComponent>(c => {
                     c.Descriptor = SpellDescriptor.Polymorph;
@@ -926,7 +926,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.m_IsSpendResource = true;
                     c.CostIsCustom = false;
                     c.Amount = 2;
-                    c.ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>() { MasterShapeshifter.ToReference<BlueprintUnitFactReference>() };
+                    c.ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>() { MasterShapeshifter.ToReference<BlueprintUnitFactReference>(), MasterShapeshifter.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<SpellDescriptorComponent>(c => {
                     c.Descriptor = SpellDescriptor.Polymorph;
@@ -1000,7 +1000,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.m_IsSpendResource = true;
                     c.CostIsCustom = false;
                     c.Amount = 2;
-                    c.ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>() { MasterShapeshifter.ToReference<BlueprintUnitFactReference>() };
+                    c.ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>() { MasterShapeshifter.ToReference<BlueprintUnitFactReference>(), MasterShapeshifter.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<SpellDescriptorComponent>(c => {
                     c.Descriptor = SpellDescriptor.Polymorph;
@@ -1074,7 +1074,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.m_IsSpendResource = true;
                     c.CostIsCustom = false;
                     c.Amount = 2;
-                    c.ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>() { MasterShapeshifter.ToReference<BlueprintUnitFactReference>() };
+                    c.ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>() { MasterShapeshifter.ToReference<BlueprintUnitFactReference>(), MasterShapeshifter.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<SpellDescriptorComponent>(c => {
                     c.Descriptor = SpellDescriptor.Polymorph;
@@ -1148,7 +1148,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.m_IsSpendResource = true;
                     c.CostIsCustom = false;
                     c.Amount = 2;
-                    c.ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>() { MasterShapeshifter.ToReference<BlueprintUnitFactReference>() };
+                    c.ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>() { MasterShapeshifter.ToReference<BlueprintUnitFactReference>(), MasterShapeshifter.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<SpellDescriptorComponent>(c => {
                     c.Descriptor = SpellDescriptor.Polymorph;
