@@ -33,8 +33,6 @@ namespace ExpandedContent.Config {
                 Initialized = true;
                 if (IsMysticalMayhemEnabled()) {
 
-
-
                     var OracleClass = Resources.GetBlueprint<BlueprintCharacterClass>("20ce9bf8af32bee4c8557a045ab499b1");
                     var ColorSpraySpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("91da41b9793a4624797921f221db653c");
                     var RainbowPatternSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("4b8265132f9c8174f87ce7fa6d0fe47b");
@@ -152,10 +150,6 @@ namespace ExpandedContent.Config {
                             c.SpellLevel = 9;
                         });
                     });
-
-
-
-
 
 
                 }                
