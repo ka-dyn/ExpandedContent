@@ -1,10 +1,22 @@
 {
   "LocalizedStrings": [
     {
+      "Key": "72649485145f43a1b53eb14219424047",
+      "SimpleName": "$BackgroundArchdukeOfCheliax.DescriptionShort",
+      "ProcessTemplates": false,
+      "enGB": "The highest rank of the standard nobility are the Archdukes, which are fixed at six members, each of whom rule one of the Archduchies of Cheliax. Archduke is a hereditary title that is held by a single family that has not changed much since the turmoil of the civil war."
+    },
+    {
       "Key": "73f9206d352a4eb9b791a754b3405624",
       "SimpleName": "$CrueltySelection4.DescriptionShort",
       "ProcessTemplates": false,
       "enGB": "At 3rd level, and every three levels thereafter, a dreadknight can select one cruelty. Each cruelty adds an effect to the dreadknight's touch of profane corruption ability. Whenever the dreadknight uses profane corruption to deal damage to one target, the target also receives the additional effect from one of the cruelties possessed by the dreadknight."
+    },
+    {
+      "Key": "64882fdb8b55420fa95c43fa4ffa1f97",
+      "SimpleName": "$DreadKnightChannelNegativeEnergyAbility.DescriptionShort",
+      "ProcessTemplates": false,
+      "enGB": "Channeling negative energy causes a burst that damages every creature in a 30-foot radius centered on the Dread Knight. The amount of damage inflicted is equal to 1d6 points of damage plus 1d6 points of damage for every two Dread Knight levels beyond 1st (2d6 at 3rd, 3d6 at 5th, and so on). Creatures that take damage from channeled energy receive a Will save to halve the damage."
     },
     {
       "Key": "9790ac745aaa44ed97d1207857a5442c",
@@ -12,12 +24,6 @@
       "ProcessTemplates": false,
       "IsUsed": false,
       "enGB": "Channeling negative energy causes a burst that heals every undead creature in a 30-foot radius centered on the Dread Knight. The amount of damage healed is equal to 1d6 points of damage plus 1d6 points of damage for every two Dread Knight levels beyond 1st (2d6 at 3rd, 3d6 at 5th, and so on)."
-    },
-    {
-      "Key": "64882fdb8b55420fa95c43fa4ffa1f97",
-      "SimpleName": "$DreadKnightChannelNegativeEnergyAbility.DescriptionShort",
-      "ProcessTemplates": false,
-      "enGB": "Channeling negative energy causes a burst that damages every creature in a 30-foot radius centered on the Dread Knight. The amount of damage inflicted is equal to 1d6 points of damage plus 1d6 points of damage for every two Dread Knight levels beyond 1st (2d6 at 3rd, 3d6 at 5th, and so on). Creatures that take damage from channeled energy receive a Will save to halve the damage."
     },
     {
       "Key": "cb9dfc592d0146468c08489ba59aa6cc",
@@ -81,6 +87,12 @@
       "enGB": "Divine/Profane Weapon Bond"
     },
     {
+      "Key": "ea96a107c28a4c119231b531c1755543",
+      "SimpleName": "<null>Description",
+      "ProcessTemplates": false,
+      "enGB": "All attacks deal 25 bleed damage that triggers each round but does not stack with itself."
+    },
+    {
       "Key": "1f793c98c9d84419a226e3e543d88f8c",
       "SimpleName": "<null>Description",
       "ProcessTemplates": false,
@@ -92,12 +104,6 @@
       "ProcessTemplates": false,
       "IsUsed": false,
       "enGB": "When eaten goodberries heal 2d4 point of damage, however if they are eaten more than once every 24 hours they can make the creature that ate them sick for a short time."
-    },
-    {
-      "Key": "ea96a107c28a4c119231b531c1755543",
-      "SimpleName": "<null>Description",
-      "ProcessTemplates": false,
-      "enGB": "All attacks deal 25 bleed damage that triggers each round but does not stack with itself."
     },
     {
       "Key": "6174558e720345a48658694e8e2ccba2",
@@ -670,6 +676,18 @@
       "enGB": "Azathoth"
     },
     {
+      "Key": "9c73f34fc5e649a0b6dc615254dd40b1",
+      "SimpleName": "BackgroundArchdukeOfCheliax.Description",
+      "ProcessTemplates": true,
+      "enGB": "An Archduke of Cheliax adds Lore (Nature), Lore (Religion), Knowledge (World) and Knowledge (Arcana) to the list of her class skills. She can also use her Intelligence instead of Wisdom while attempting Lore (Nature) or Lore (Religion) checks. \nShe also gains a +2 bonus to initiative and can use her Intelligence modifier to determine initiative. \nThe highest rank of the standard nobility are the Archdukes, which are fixed at six members, each of whom rule one of the Archduchies of Cheliax. Archduke is a hereditary title that is held by a single family that has not changed much since the turmoil of the civil war."
+    },
+    {
+      "Key": "923986b5c8dc4ae0b79a5d81df4c48bc",
+      "SimpleName": "BackgroundArchdukeOfCheliax.Name",
+      "ProcessTemplates": false,
+      "enGB": "Archduke of Cheliax"
+    },
+    {
       "Key": "d4fa0c18d8774678b32845f2cf7c699a",
       "SimpleName": "BarzahkFeature.Description",
       "ProcessTemplates": true,
@@ -766,17 +784,17 @@
       "enGB": "Blood Subdomain"
     },
     {
-      "Key": "28c9c690cca54668b290e26c0443cdc8",
-      "SimpleName": "BloodDomainGreaterAbility.Description",
-      "ProcessTemplates": true,
-      "enGB": "You may give a weapon that you touch the wounding special weapon quality for a number of rounds equal to 1/2 your cleric level. You can use this ability once per day at 8th level, and an additional time per day for every four levels beyond 8th. \nWounded: Creatures hit by this weapon take 1 hit point damage each turn for each stack of this status. This can be stopped through the application of any spell that cures hit point damage."
-    },
-    {
       "Key": "ee51b50bd47943d481d41494583cfbe1",
       "SimpleName": "BloodDomainGreaterAbility.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "At 8th level, you can give a weapon that you touch the wounding special weapon quality for a number of rounds equal to 1/2 your cleric level. You can use this ability once per day at 8th level, and an additional time per day for every four levels beyond 8th."
+    },
+    {
+      "Key": "28c9c690cca54668b290e26c0443cdc8",
+      "SimpleName": "BloodDomainGreaterAbility.Description",
+      "ProcessTemplates": true,
+      "enGB": "You may give a weapon that you touch the wounding special weapon quality for a number of rounds equal to 1/2 your cleric level. You can use this ability once per day at 8th level, and an additional time per day for every four levels beyond 8th. \nWounded: Creatures hit by this weapon take 1 hit point damage each turn for each stack of this status. This can be stopped through the application of any spell that cures hit point damage."
     },
     {
       "Key": "21c47e8baeb743f6808ea0a328a890cf",
@@ -878,16 +896,16 @@
       "enGB": "Payback"
     },
     {
+      "Key": "2f91fdfbde3c4bc78942800497c111bd",
+      "SimpleName": "CastigatorVengeance.Description",
+      "ProcessTemplates": false,
+      "enGB": "At 4th level, a castigator can make an additional number of attacks of opportunity in a round equal to their Charisma modifier (minimum 1). This effect stacks with the Combat Reflexes feat."
+    },
+    {
       "Key": "86125955dbd447829e29b6b38c9f0535",
       "SimpleName": "CastigatorVengeance.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
-      "enGB": "At 4th level, a castigator can make an additional number of attacks of opportunity in a round equal to their Charisma modifier (minimum 1). This effect stacks with the Combat Reflexes feat."
-    },
-    {
-      "Key": "2f91fdfbde3c4bc78942800497c111bd",
-      "SimpleName": "CastigatorVengeance.Description",
-      "ProcessTemplates": false,
       "enGB": "At 4th level, a castigator can make an additional number of attacks of opportunity in a round equal to their Charisma modifier (minimum 1). This effect stacks with the Combat Reflexes feat."
     },
     {
@@ -1213,16 +1231,16 @@
       "enGB": "Conqueror"
     },
     {
-      "Key": "ffbd05fa7c3843f9a96165dbf5705983",
-      "SimpleName": "ConquerorInspiredageFeature.Description",
-      "ProcessTemplates": false,
-      "enGB": "At 7th level, the conqueror's commandments warp the minds of those who accept them even further."
-    },
-    {
       "Key": "9197b62c357f4051b3b7df813d06f88d",
       "SimpleName": "ConquerorInspiredageFeature.Description",
       "ProcessTemplates": false,
       "enGB": "At 1st level, a conqueror receives the ability to incite rage in those he rules over, as the skald inspired rage class feature."
+    },
+    {
+      "Key": "ffbd05fa7c3843f9a96165dbf5705983",
+      "SimpleName": "ConquerorInspiredageFeature.Description",
+      "ProcessTemplates": false,
+      "enGB": "At 7th level, the conqueror's commandments warp the minds of those who accept them even further."
     },
     {
       "Key": "0160ab7b5c884199a1047c169ecc1d34",
@@ -1914,6 +1932,18 @@
       "enGB": "An oracle with the dragon mystery adds Mobility, Persuasion, Perception and Knowledge (world)  to her list of class skills."
     },
     {
+      "Key": "2c3cb69dee52421ba1c30a9c0a46bba5",
+      "SimpleName": "DivineHerbalistDragonMysteryFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "Gain access to the spells and revelations of the dragon mystery. \nDue to the divine herbalist archetype the class skills gained from this archetypeare replaced by the master herbalist feature and the brew potions feat."
+    },
+    {
+      "Key": "91616eb97ea3471abc626b1a183afe2f",
+      "SimpleName": "DivineHerbalistHeavensMysteryFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "Gain access to the spells and revelations of the heavens mystery. \nDue to the divine herbalist archetype the class skills gained from this archetypeare replaced by the master herbalist feature and the brew potions feat."
+    },
+    {
       "Key": "b564652a73a94e4eafbb7f0d8d4e9e5d",
       "SimpleName": "DivineScriptureFeature.Description",
       "ProcessTemplates": true,
@@ -2517,12 +2547,6 @@
       "enGB": "Greater Drake Acid Breath"
     },
     {
-      "Key": "1df6eca3d484449bbfe6a838c4cd4ade",
-      "SimpleName": "DrakeBreathWeaponAcid2Feature.Description",
-      "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 8d6 points of acid damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day. \nUnlocking this allows you to use your lesser breath weapon without spending any resources, however you must wait 1d4 rounds to recharge."
-    },
-    {
       "Key": "df00f6bb8f614cb59316f7627c01fbd2",
       "SimpleName": "DrakeBreathWeaponAcid2Feature.Description",
       "ProcessTemplates": true,
@@ -2530,11 +2554,10 @@
       "enGB": "This breath weapon deals 8d6 points of acid damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day. \nUnlocking this allows you to use your lesser breath weapon without spending any resources, however you must wait 1d4 rounds to recharge."
     },
     {
-      "Key": "21423a23b82c4fa5a54cd3a2c68157f8",
-      "SimpleName": "DrakeBreathWeaponAcid3.Description",
+      "Key": "1df6eca3d484449bbfe6a838c4cd4ade",
+      "SimpleName": "DrakeBreathWeaponAcid2Feature.Description",
       "ProcessTemplates": true,
-      "IsUsed": false,
-      "enGB": "This breath weapon deals 1d6 points of acid damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
+      "enGB": "This breath weapon deals 8d6 points of acid damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day. \nUnlocking this allows you to use your lesser breath weapon without spending any resources, however you must wait 1d4 rounds to recharge."
     },
     {
       "Key": "a4feef2ded00453697b10859100ef717",
@@ -2542,6 +2565,13 @@
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "This breath weapon deals 1d6 points of acid damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
+    },
+    {
+      "Key": "21423a23b82c4fa5a54cd3a2c68157f8",
+      "SimpleName": "DrakeBreathWeaponAcid3.Description",
+      "ProcessTemplates": true,
+      "IsUsed": false,
+      "enGB": "This breath weapon deals 1d6 points of acid damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
     },
     {
       "Key": "166319244f2c43b2beeda778d1b26ea5",
@@ -2615,12 +2645,6 @@
       "enGB": "Greater Drake Cold Breath"
     },
     {
-      "Key": "eac364b4a1f74c5bb51bbaab82a2f9de",
-      "SimpleName": "DrakeBreathWeaponCold2Feature.Description",
-      "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 8d6 points of cold damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day. \nUnlocking this allows you to use your lesser breath weapon without spending any resources, however you must wait 1d4 rounds to recharge."
-    },
-    {
       "Key": "59eb9da5ea3d4ed7a82984a1dd1ef00b",
       "SimpleName": "DrakeBreathWeaponCold2Feature.Description",
       "ProcessTemplates": true,
@@ -2628,11 +2652,10 @@
       "enGB": "This breath weapon deals 8d6 points of cold damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day. \nUnlocking this allows you to use your lesser breath weapon without spending any resources, however you must wait 1d4 rounds to recharge."
     },
     {
-      "Key": "aa4f5369b79343e19de67ebc56132b4b",
-      "SimpleName": "DrakeBreathWeaponCold3.Description",
+      "Key": "eac364b4a1f74c5bb51bbaab82a2f9de",
+      "SimpleName": "DrakeBreathWeaponCold2Feature.Description",
       "ProcessTemplates": true,
-      "IsUsed": false,
-      "enGB": "This breath weapon deals 1d6 points of cold damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
+      "enGB": "This breath weapon deals 8d6 points of cold damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day. \nUnlocking this allows you to use your lesser breath weapon without spending any resources, however you must wait 1d4 rounds to recharge."
     },
     {
       "Key": "6f2fa3ad005e42ac83b552d046389115",
@@ -2640,6 +2663,13 @@
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "This breath weapon deals 1d6 points of cold damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
+    },
+    {
+      "Key": "aa4f5369b79343e19de67ebc56132b4b",
+      "SimpleName": "DrakeBreathWeaponCold3.Description",
+      "ProcessTemplates": true,
+      "IsUsed": false,
+      "enGB": "This breath weapon deals 1d6 points of cold damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
     },
     {
       "Key": "7bb6d397539449e5a020c99fd0752e65",
@@ -2681,12 +2711,6 @@
       "enGB": "Drake Electricity Breath"
     },
     {
-      "Key": "b0a4aa33228c497b83a93b60a7b03bb4",
-      "SimpleName": "DrakeBreathWeaponElectricity1Feature.Description",
-      "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 4d6 points of electricity damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day."
-    },
-    {
       "Key": "dcd9bb64fbe44546b21d3d62272f6b2f",
       "SimpleName": "DrakeBreathWeaponElectricity1Feature.Description",
       "ProcessTemplates": true,
@@ -2694,10 +2718,10 @@
       "enGB": "This breath weapon deals 4d6 points of electricity damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day."
     },
     {
-      "Key": "d95aedb2f0034114859ddb7acee786e7",
-      "SimpleName": "DrakeBreathWeaponElectricity2.Description",
+      "Key": "b0a4aa33228c497b83a93b60a7b03bb4",
+      "SimpleName": "DrakeBreathWeaponElectricity1Feature.Description",
       "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 8d6 points of electricity damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day."
+      "enGB": "This breath weapon deals 4d6 points of electricity damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day."
     },
     {
       "Key": "7d216a2e346f42339211e5c4e1b11892",
@@ -2705,6 +2729,12 @@
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "This breath weapon deals 8d6 points of electricity damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day."
+    },
+    {
+      "Key": "d95aedb2f0034114859ddb7acee786e7",
+      "SimpleName": "DrakeBreathWeaponElectricity2.Description",
+      "ProcessTemplates": true,
+      "enGB": "This breath weapon deals 8d6 points of electricity damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day."
     },
     {
       "Key": "43f3fac404264604a0761eadd7e377a4",
@@ -2746,6 +2776,12 @@
       "enGB": "Mythic Drake Electricity Breath"
     },
     {
+      "Key": "03a189f47d674d1da2b17480f05287be",
+      "SimpleName": "DrakeBreathWeaponElectricity3Feature.Description",
+      "ProcessTemplates": true,
+      "enGB": "This breath weapon deals 1d6 points of electricity damage per drake companion level in a 40-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
+    },
+    {
       "Key": "17a94d9f4f0546b7b390112d8c7ea24b",
       "SimpleName": "DrakeBreathWeaponElectricity3Feature.Description",
       "ProcessTemplates": true,
@@ -2753,10 +2789,11 @@
       "enGB": "This breath weapon deals 1d6 points of electricity damage per drake companion level in a 40-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
     },
     {
-      "Key": "03a189f47d674d1da2b17480f05287be",
-      "SimpleName": "DrakeBreathWeaponElectricity3Feature.Description",
+      "Key": "6edadd64875d41a09c8ec96297578b1b",
+      "SimpleName": "DrakeBreathWeaponFire1.Description",
       "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 1d6 points of electricity damage per drake companion level in a 40-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
+      "IsUsed": false,
+      "enGB": "This breath weapon deals 4d6 points of fire damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day."
     },
     {
       "Key": "175585e969b64296a6580facaf078dd8",
@@ -2764,13 +2801,6 @@
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "This breath weapon deals 4d6 points of fire damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day."
-    },
-    {
-      "Key": "6edadd64875d41a09c8ec96297578b1b",
-      "SimpleName": "DrakeBreathWeaponFire1.Description",
-      "ProcessTemplates": true,
-      "IsUsed": false,
-      "enGB": "This breath weapon deals 4d6 points of fire damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day."
     },
     {
       "Key": "b9856c20c78645a884b2f0ad7ea2c051",
@@ -2844,17 +2874,17 @@
       "enGB": "Mythic Drake Fire Breath"
     },
     {
-      "Key": "a6783db42f2947e89c919949a0d5971c",
-      "SimpleName": "DrakeBreathWeaponFire3Feature.Description",
-      "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 1d6 points of fire damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
-    },
-    {
       "Key": "43fa93a4701f4f85961ddeea0bcade9b",
       "SimpleName": "DrakeBreathWeaponFire3Feature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "This breath weapon deals 1d6 points of fire damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
+    },
+    {
+      "Key": "a6783db42f2947e89c919949a0d5971c",
+      "SimpleName": "DrakeBreathWeaponFire3Feature.Description",
+      "ProcessTemplates": true,
+      "enGB": "This breath weapon deals 1d6 points of fire damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
     },
     {
       "Key": "b6243310dbe242d09c095ec59bd2e4ef",
@@ -3444,16 +3474,16 @@
       "enGB": "Channeling negative energy causes a burst that damages every creature in a 30-foot radius centered on the Dread Knight. The amount of damage inflicted is equal to 1d6 points of damage plus 1d6 points of damage for every two Dread Knight levels beyond 1st (2d6 at 3rd, 3d6 at 5th, and so on). Creatures that take damage from channeled energy receive a Will save to halve the damage. The DC of this save is equal to 10 + 1/2 the Dread Knight's level + the Dread Knight's Charisma modifier."
     },
     {
-      "Key": "e1a0f9b3f21e45aaaba53aff7d45b1ad",
-      "SimpleName": "DreadKnightChannelNegativeEnergyAbility.Name",
-      "ProcessTemplates": false,
-      "enGB": "Channel Negative Energy"
-    },
-    {
       "Key": "79390dccfaff42259b9430c3eda7052b",
       "SimpleName": "DreadKnightChannelNegativeEnergyAbility.Name",
       "ProcessTemplates": false,
       "enGB": "Channel Negative Energy - Damage Living"
+    },
+    {
+      "Key": "e1a0f9b3f21e45aaaba53aff7d45b1ad",
+      "SimpleName": "DreadKnightChannelNegativeEnergyAbility.Name",
+      "ProcessTemplates": false,
+      "enGB": "Channel Negative Energy"
     },
     {
       "Key": "95bb51ebd24e466aa7b691a57700f158",
@@ -3588,6 +3618,12 @@
       "SimpleName": "EnlightnedPhilosopherDragonMysteryFeature.Description",
       "ProcessTemplates": true,
       "enGB": "An oracle with the dragon mystery adds Mobility, Persuasion, Perception and Knowledge (Arcana)  to her list of class skills."
+    },
+    {
+      "Key": "87a3a668a0744c2395e62368807b469d",
+      "SimpleName": "EnlightnedPhilosopherHeavensMysteryFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "An oracle with the heavens mystery adds Perception and Knowledge (world)  to her list of class skills."
     },
     {
       "Key": "1e998647f2dd4e8cab3c3034428e51b5",
@@ -4168,16 +4204,40 @@
       "enGB": "Hydraulic Push"
     },
     {
-      "Key": "72b3666c54de4c92b9d9a1c4cef5dcb2",
-      "SimpleName": "IceDomainBaseFeature.Description",
+      "Key": "0ddac8bf5f5f4269b1b49697480b8513",
+      "SimpleName": "HypnoticPatternAbility.Description",
       "ProcessTemplates": true,
-      "enGB": "\nYou have mastery over rock and stone, can manifest vast pits, and command earth creatures.\nAcid Dart: As a standard action, you can unleash an acid dart targeting any foe within 30 feet as a ranged touch attack. This acid dart deals 1d6 points of acid damage+ 1 point for every two levels you possess in the class that gave you access to this domain. You can use this ability a number of times per day equal to 3 + your Wisdom modifier.\nTunnel Runner (Su): At 6th level, as a standard action, you can create a 30-foot aura of gale-like winds that slows the progress of enemies. Creatures in the aura cannot take a 5-foot step and treat it as as difficult terrain. You can use this ability for a number of rounds per day equal to your cleric level. The rounds do not need to be consecutive."
+      "enGB": "A twisting pattern of subtle, shifting colors weaves through the air, fascinating creatures within it. Roll 2d4 and add your caster level (maximum 10) to determine the total number of HD of creatures affected. Creatures who are closest to the spell’s point of origin are affected first. HD that are not sufficient to affect a creature are wasted. Sightless creatures are not affected."
+    },
+    {
+      "Key": "468157870581468f8d4db78bc1e4c5a3",
+      "SimpleName": "HypnoticPatternAbility.Duration",
+      "ProcessTemplates": false,
+      "enGB": "3 rounds"
+    },
+    {
+      "Key": "08d66f0dd67545168996fdc7e1c858e3",
+      "SimpleName": "HypnoticPatternBuff.Description",
+      "ProcessTemplates": true,
+      "enGB": "A twisting pattern of subtle, shifting colors weaves through the air, fascinating creatures within it. Roll 2d4 and add your caster level (maximum 10) to determine the total number of HD of creatures affected. Creatures who are closest to the spell’s point of origin are affected first. HD that are not sufficient to affect a creature are wasted. Sightless creatures are not affected."
+    },
+    {
+      "Key": "933b5a3170f94b7bb18d62fd9625f1be",
+      "SimpleName": "HypnoticPatternBuff.Name",
+      "ProcessTemplates": false,
+      "enGB": "Hypnotic Pattern"
     },
     {
       "Key": "06f3c959eebc44238c4971655e40c363",
       "SimpleName": "IceDomainBaseFeature.Description",
       "ProcessTemplates": true,
       "enGB": "\nYou can manipulate ice and water and mist, conjure hails of ice, and transmute yourself into a frozen form.\nIcicle: As a standard action, you can fire an icicle from your finger, targeting any foe within 30 feet as a ranged touch attack. The icicle deals 1d6 points of cold damage+ 1 point for every two levels you possess in the class that gave you access to this domain. You can use this ability a number of times per day equal to 3 + your Wisdom modifier.\nBody of Ice: At 8th level, you can transmute your body and equipment to ice for a period of time. It takes a standard action to take on the form of ice, and you can end the transmutation with a free action on your turn. When you take on the form of ice, you are immune to cold and have DR 5/—, but you take twice the normal amount of damage from fire. You can take on the form of ice for a number of rounds per day equal to your cleric level. The rounds need not be consecutive."
+    },
+    {
+      "Key": "72b3666c54de4c92b9d9a1c4cef5dcb2",
+      "SimpleName": "IceDomainBaseFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nYou have mastery over rock and stone, can manifest vast pits, and command earth creatures.\nAcid Dart: As a standard action, you can unleash an acid dart targeting any foe within 30 feet as a ranged touch attack. This acid dart deals 1d6 points of acid damage+ 1 point for every two levels you possess in the class that gave you access to this domain. You can use this ability a number of times per day equal to 3 + your Wisdom modifier.\nTunnel Runner (Su): At 6th level, as a standard action, you can create a 30-foot aura of gale-like winds that slows the progress of enemies. Creatures in the aura cannot take a 5-foot step and treat it as as difficult terrain. You can use this ability for a number of rounds per day equal to your cleric level. The rounds do not need to be consecutive."
     },
     {
       "Key": "75db1ef0bee54df0a0ba5c43f4c8b4f9",
@@ -4307,6 +4367,12 @@
       "SimpleName": "InflictPainAbility.Description",
       "ProcessTemplates": true,
       "enGB": "You telepathically wrack the target’s mind and body with agonizing pain that imposes a –4 penalty on attack rolls, skill checks, and combat maneuver checks. A successful Will save reduces the duration to 1 round."
+    },
+    {
+      "Key": "cf9477eb02794180aeab229cc05c4e5e",
+      "SimpleName": "InflictPainAbility.SavingThrow",
+      "ProcessTemplates": false,
+      "enGB": "Will disbelief, then Fortitude partial"
     },
     {
       "Key": "91e15ae8e1f04d0f9f8855c0afdf3f28",
@@ -4654,17 +4720,17 @@
       "enGB": "Invoke Deity - Liberation Domain"
     },
     {
+      "Key": "27022cf8398f4e0cb110c88054d7d9af",
+      "SimpleName": "LichDeityFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "Leader of a small cult of undead, created by their own hands, becoming famous as the indomitable commander of the Fifth Mendevian Crusade against the Worldwound. Determined to destroy the forces of the Abyss at any cost, they ventured on the path of the Lord of Death. For millennia, powerful necromancers have dreamed of a power that could rival the divine. They have created cults in their own names, and attracted many followers. Thanks to their legendary powers, they has managed to achieve much greater success than the others: acquireing a talent to bestow divine spells upon their followers. From that moment, the undead created by them needed no other deities to cast spells.\nDomains: Death, Evil, Strength, War. \nFavoured Weapons: Scythe, Sickle."
+    },
+    {
       "Key": "dcf93abfee98445eb8af11b4118f70d2",
       "SimpleName": "LichDeityFeature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "Leader of a small cult of undead, created by h own hands,  became famous as the indomitable commander of the Fifth Mendevian Crusade against the Worldwound. Determined to destroy the forces of the Abyss at any cost, he ventured on the path of the L of Death. For millennia, powerful necromancers have dreamed of a power that could rival the divine. They have created cults in their own names, and attracted many followers. Thanks to h legendary powers,  has managed to achieve much greater success than the others: he has acquired a talent to bestow divine spells upon h followers. From that moment, the undead created by h needed no other deities to cast spells.\nDomains: Death, Evil, Strength, War. \nFavoured Weapons: Scythe, Sickle."
-    },
-    {
-      "Key": "27022cf8398f4e0cb110c88054d7d9af",
-      "SimpleName": "LichDeityFeature.Description",
-      "ProcessTemplates": true,
-      "enGB": "Leader of a small cult of undead, created by their own hands, becoming famous as the indomitable commander of the Fifth Mendevian Crusade against the Worldwound. Determined to destroy the forces of the Abyss at any cost, they ventured on the path of the Lord of Death. For millennia, powerful necromancers have dreamed of a power that could rival the divine. They have created cults in their own names, and attracted many followers. Thanks to their legendary powers, they has managed to achieve much greater success than the others: acquireing a talent to bestow divine spells upon their followers. From that moment, the undead created by them needed no other deities to cast spells.\nDomains: Death, Evil, Strength, War. \nFavoured Weapons: Scythe, Sickle."
     },
     {
       "Key": "3d2b85c4110b44dcae8a149272b71fe8",
@@ -5464,6 +5530,12 @@
       "enGB": "Bones"
     },
     {
+      "Key": "652e3f84a2804e83b5bc11a0934f7453",
+      "SimpleName": "OceansEchoDragonMysteryFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "Gain access to the spells and revelations of the dragon mystery. \nDue to the ocean's echo archetype the class skills gained from this archtypeare changed to Persuasion, Knowledge (world) and Lore (nature)"
+    },
+    {
       "Key": "98f88456e0f44c4b816a7118f3d98e27",
       "SimpleName": "OceansEchoDragonMysteryFeature.Description",
       "ProcessTemplates": true,
@@ -5481,6 +5553,12 @@
       "SimpleName": "OceansEchoFlameMysteryFeature.Name",
       "ProcessTemplates": false,
       "enGB": "Flame"
+    },
+    {
+      "Key": "7827e98516804abda0431a046067390b",
+      "SimpleName": "OceansEchoHeavensMysteryFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "Gain access to the spells and revelations of the heavens mystery. \nDue to the ocean's echo archetype the class skills gained from this archtypeare changed to Persuasion, Knowledge (world) and Lore (nature)"
     },
     {
       "Key": "fd19d8b057554c64a07e9ea308176e27",
@@ -5687,6 +5765,7 @@
       "Key": "f71ab495b5ea49e4a89a6c9053f75748",
       "SimpleName": "OracleDragonMysteryFeature.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "An oracle with the dragon mystery adds Mobility, Persuasion, Perception and Knowledge (world)  to her list of class skills."
     },
     {
@@ -5724,6 +5803,72 @@
       "SimpleName": "OracleDragonSensesBlindsense.Name",
       "ProcessTemplates": false,
       "enGB": "Dragon Senses"
+    },
+    {
+      "Key": "97b7b75f2323481da6aa4671ac1cfcd0",
+      "SimpleName": "OracleHeavensFinalRevelation.Description",
+      "ProcessTemplates": true,
+      "enGB": "Upon achieving 20th level, your rapport with the heavens grants you perfect harmony with the universe. You receive a bonus on all saving throws equal to your Charisma modifier. You become immune to fear effects, and automatically confirm all critical hits. Once per day, should you die, 1 round after dying you are reborn. Your body re-forms with all your equipment, and you return to life with maximum hit points."
+    },
+    {
+      "Key": "5a4e1c62b9e04b2e9c66bf97ef9657b7",
+      "SimpleName": "OracleHeavensMysteryFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "An oracle with the heavens mystery adds Perception and Knowledge (world)  to her list of class skills."
+    },
+    {
+      "Key": "f5c964d3e8594713b330e2723b10d374",
+      "SimpleName": "OracleHeavensMysteryFeature.Name",
+      "ProcessTemplates": false,
+      "enGB": "Heavens"
+    },
+    {
+      "Key": "c000308f146e4c56b14355b00b6654f3",
+      "SimpleName": "OracleRevelationAwesomeDisplay.Description",
+      "ProcessTemplates": true,
+      "enGB": "Your phantasmagoric displays accurately model the mysteries of the night sky, dumbfounding all who behold them. The spell DC of all Pattern spells are increased by 2, additionally you gain access to scintillating pattern as a 8th level spell. (You still need to be able to cast 8th level spells to cast scintillating pattern) \nPattern spells: color spray, hypnotic pattern, rainbow pattern, scintillating pattern."
+    },
+    {
+      "Key": "e0d788fdffbb49a69199087558976a74",
+      "SimpleName": "OracleRevelationAwesomeDisplay.Name",
+      "ProcessTemplates": false,
+      "enGB": "Awesome Display"
+    },
+    {
+      "Key": "82301235dd704b5bbaa1c9248303893b",
+      "SimpleName": "OracleRevelationCoatOfManyStarsDCAbility.Description",
+      "ProcessTemplates": true,
+      "enGB": "You conjure a coat of starry radiance that grants you a +4 armor bonus. At 7th level, and every four levels thereafter, this bonus increases by +2. At 13th level, this armor grants you DR 5/slashing. You can use this coat for 1 hour number of times per day equal to oracle level."
+    },
+    {
+      "Key": "4d7d728dc98a47129f5aa5cf0a12cecf",
+      "SimpleName": "OracleRevelationCoatOfManyStarsDCBuff.Description",
+      "ProcessTemplates": true,
+      "enGB": "You conjure a coat of starry radiance that grants you a +4 armor bonus. At 7th level, and every four levels thereafter, this bonus increases by +2. At 13th level, this armor grants you DR 5/slashing. You can use this coat for 1 hour number of times per day equal to oracle level."
+    },
+    {
+      "Key": "d9ed21eb5e74411db7cbd29aaef9f1a1",
+      "SimpleName": "OracleRevelationCoatOfManyStarsDCBuff.Name",
+      "ProcessTemplates": false,
+      "enGB": "Coat of Many Stars"
+    },
+    {
+      "Key": "835e6cfea0874315943099a748b08afb",
+      "SimpleName": "OracleRevelationCoatOfManyStarsDRAbility.Description",
+      "ProcessTemplates": true,
+      "enGB": "You conjure a coat of starry radiance that grants you a +4 armor bonus. At 7th level, and every four levels thereafter, this bonus increases by +2. At 13th level, this armor grants you DR 5/slashing. You can use this coat for 1 hour number of times per day equal to oracle level."
+    },
+    {
+      "Key": "f07d2d4ea58341779298c5811c2fba6c",
+      "SimpleName": "OracleRevelationCoatOfManyStarsDRBuff.Description",
+      "ProcessTemplates": true,
+      "enGB": "You conjure a coat of starry radiance that grants you a +4 armor bonus. At 7th level, and every four levels thereafter, this bonus increases by +2. At 13th level, this armor grants you DR 5/slashing. You can use this coat for 1 hour number of times per day equal to oracle level."
+    },
+    {
+      "Key": "c6f9c247159c4fb98f22eba7a442116c",
+      "SimpleName": "OracleRevelationCoatOfManyStarsFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "You conjure a coat of starry radiance that grants you a +4 armor bonus. At 7th level, and every four levels thereafter, this bonus increases by +2. At 13th level, this armor grants you DR 5/slashing. You can use this coat for 1 hour number of times per day equal to oracle level."
     },
     {
       "Key": "ece6f34a9fd7422d9e0e04ca71272ae8",
@@ -6070,6 +6215,42 @@
       "enGB": "Talons of the Dragon"
     },
     {
+      "Key": "4cc08a1cb4504d6cbb6593a44c6b9ba3",
+      "SimpleName": "OracleRevelationDwellerInTheDarknessAbility1.Description",
+      "ProcessTemplates": true,
+      "enGB": "Once per day, you cast your psyche into the void of space to attract the attention of a terrible otherworldly being. \nPhantasmal Killer: You create a phantasmal image of the most fearsome creature imaginable to the subject simply by forming the fears of the subject's subconscious mind into something that its conscious mind can visualize: this most horrible beast. Only the spell's subject can see the phantasmal killer. You see only a vague shape. The target first gets a Will save to recognize the image as unreal. If that save fails, the phantasm touches the subject, and the subject must succeed on a Fortitude save or die from fear. Even if the Fortitude save is successful, the subject takes 3d6 points of damage."
+    },
+    {
+      "Key": "286d82263fec40db8c6af2f34f1de33a",
+      "SimpleName": "OracleRevelationDwellerInTheDarknessAbility1.Name",
+      "ProcessTemplates": false,
+      "enGB": "Dweller in the Darkness - Phantasmal Killer"
+    },
+    {
+      "Key": "c17b21e29a8a4f7283c2754416fae73d",
+      "SimpleName": "OracleRevelationDwellerInTheDarknessAbility2.Description",
+      "ProcessTemplates": true,
+      "enGB": "Once per day, you cast your psyche into the void of space to attract the attention of a terrible otherworldly being. \nThis spell functions like phantasmal killer, except it can affect more than one creature. Only the affected creatures see the phantasmal creatures attacking them, though you see the attackers as shadowy shapes. If a subject's Fortitude save succeeds, it still takes 3d6 points of damage and is stunned for 1 round. The subject also takes 1d4 points of Strength damage. \nPhantasmal Killer: You create a phantasmal image of the most fearsome creature imaginable to the subject simply by forming the fears of the subject's subconscious mind into something that its conscious mind can visualize: this most horrible beast. Only the spell's subject can see the phantasmal killer. You see only a vague shape. The target first gets a Will save to recognize the image as unreal. If that save fails, the phantasm touches the subject, and the subject must succeed on a Fortitude save or die from fear. Even if the Fortitude save is successful, the subject takes 3d6 points of damage."
+    },
+    {
+      "Key": "c7bae1cfc163450fac2fb7a67caf9146",
+      "SimpleName": "OracleRevelationDwellerInTheDarknessAbility2.Name",
+      "ProcessTemplates": false,
+      "enGB": "Dweller in the Darkness - Weird"
+    },
+    {
+      "Key": "af519572f54b47a281458062b855e296",
+      "SimpleName": "OracleRevelationDwellerInTheDarknessFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "Once per day, you cast your psyche into the void of space to attract the attention of a terrible otherworldly being. The dweller in darkness behaves as if you had cast phantasmal killer. At 17th level, the dweller in darkness can be perceived by more than one creature, as if you had cast weird. You must be at least 11th level to choose this revelation."
+    },
+    {
+      "Key": "6fd147e0fde4485f965b24fe0d765d6d",
+      "SimpleName": "OracleRevelationDwellerInTheDarknessUpgrade.Name",
+      "ProcessTemplates": false,
+      "enGB": "Dweller in the Darkness"
+    },
+    {
       "Key": "7f1bb9782199441d90dd0e9cafa19065",
       "SimpleName": "OracleRevelationFormOfTheDragon1.Description",
       "ProcessTemplates": true,
@@ -6307,6 +6488,132 @@
       "enGB": "You become a huge white dragon. You gain a +10 size bonus to Strength, a +8 size bonus to Constitution, a +8 form natural armor bonus to AC, immunity to difficult terrain, blindsense with a range of 60 feet, a ice breath weapon, damage reduction 10/magic, frightful presence (DC equal to the DC for this spell), and immunity to cold. Your movement speed is increased by 10 feet. You also gain one bite (2d8), two claws (2d6), two wing attacks (1d8), and one tail slap attacks (2d6). You can use the breath weapon as often as you like, but you must wait 1d4 rounds between uses. All breath weapons deal 12d8 points of damage and allow a Reflex save for half damage. Line breath weapons increase to 100-foot lines and cones increase to 50-foot cones."
     },
     {
+      "Key": "edb71bad2c5644a3bdfcff4f744b0649",
+      "SimpleName": "OracleRevelationGuidingStarFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "The stars themselves hold many answers, you may add your Charisma modifier to your Wisdom modifier on all Wisdom-based checks. In addition, once per day you can cast one spell from the oracle spellbook as if it were modified by the Empower Spell or Extend Spell feat without increasing the spell’s casting time or level."
+    },
+    {
+      "Key": "f6acd10730d1426b953e3ff29b9b00b1",
+      "SimpleName": "OracleRevelationGuidingStarMetamagicAbilityBase.Description",
+      "ProcessTemplates": true,
+      "enGB": "Once per day you can cast one spell from the oracle spellbook as if it were modified by the Empower Spell or Extend Spell feat without increasing the spell’s casting time or level."
+    },
+    {
+      "Key": "1879c1cab5a2464fba3b61b73083d5c8",
+      "SimpleName": "OracleRevelationGuidingStarMetamagicAbilityBase.Name",
+      "ProcessTemplates": false,
+      "enGB": "Guiding Star"
+    },
+    {
+      "Key": "87ca5eb9dd1842a88117cb2dbfc79ab2",
+      "SimpleName": "OracleRevelationGuidingStarMetamagicAbilityEmpower.Description",
+      "ProcessTemplates": true,
+      "enGB": "Once per day you can cast one spell from the oracle spellbook as if it were modified by the Empower Spell feat without increasing the spell’s casting time or level."
+    },
+    {
+      "Key": "1d51cdc9b08e4f0691f670b8bfde03fa",
+      "SimpleName": "OracleRevelationGuidingStarMetamagicAbilityExtend.Description",
+      "ProcessTemplates": true,
+      "enGB": "Once per day you can cast one spell from the oracle spellbook as if it were modified by the Extend Spell feat without increasing the spell’s casting time or level."
+    },
+    {
+      "Key": "a389eab486054c5092a65049770556ab",
+      "SimpleName": "OracleRevelationGuidingStarMetamagicBuffEmpower.Description",
+      "ProcessTemplates": true,
+      "enGB": "Once per day you can cast one spell from the oracle spellbook as if it were modified by the Empower Spell feat without increasing the spell’s casting time or level."
+    },
+    {
+      "Key": "71f072c102534d3fb43ba2999e807dc5",
+      "SimpleName": "OracleRevelationGuidingStarMetamagicBuffEmpower.Name",
+      "ProcessTemplates": false,
+      "enGB": "Guiding Star - Empower Spell"
+    },
+    {
+      "Key": "158e22c50bcf4ed09f03f337c31accb1",
+      "SimpleName": "OracleRevelationGuidingStarMetamagicBuffExtend.Description",
+      "ProcessTemplates": true,
+      "enGB": "Once per day you can cast one spell from the oracle spellbook as if it were modified by the Extend Spell feat without increasing the spell’s casting time or level."
+    },
+    {
+      "Key": "c17324347a1449ff83721fc8c27ffc2a",
+      "SimpleName": "OracleRevelationGuidingStarMetamagicBuffExtend.Name",
+      "ProcessTemplates": false,
+      "enGB": "Guiding Star - Extend Spell"
+    },
+    {
+      "Key": "48fcad0ba1c34444a04663163fa62d89",
+      "SimpleName": "OracleRevelationGuidingStarSkillFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "The stars themselves hold many answers, you may add your Charisma modifier to your Wisdom modifier on all Wisdom-based checks."
+    },
+    {
+      "Key": "b3d45a136a8b4de48fdbad10ccce6c3b",
+      "SimpleName": "OracleRevelationGuidingStarSkillFeature.Name",
+      "ProcessTemplates": false,
+      "enGB": "Guiding Star - Skill Bonus"
+    },
+    {
+      "Key": "25e461cf87ee4e089b45637fc5c8cc97",
+      "SimpleName": "OracleRevelationInterstallarVoidAbility1.Description",
+      "ProcessTemplates": true,
+      "enGB": "You call upon the frigid depths of outer space to bring a terrible chill to your enemies. As a standard action, one target within 30 feet is cloaked in the void and takes 1d6 points of cold damage per level. A successful Fortitude save halves this damage. At 10th level, the interstellar void is so extreme that enemies who fail their saving throw are fatigued. At 15th level, creatures who fail their save are exhausted and stunned for 1 round. You can use this ability once per day plus one additional time per day at 10th level."
+    },
+    {
+      "Key": "f52f967dc4ed43f391a527797889dcf9",
+      "SimpleName": "OracleRevelationInterstallarVoidAbility1.Name",
+      "ProcessTemplates": false,
+      "enGB": "Interstallar Void"
+    },
+    {
+      "Key": "ba4f9c4c0279429392e91ee98ac51b4d",
+      "SimpleName": "OracleRevelationInterstallarVoidAbility2.Description",
+      "ProcessTemplates": true,
+      "enGB": "You call upon the frigid depths of outer space to bring a terrible chill to your enemies. As a standard action, one target within 30 feet is cloaked in the void and takes 1d6 points of cold damage per level. A successful Fortitude save halves this damage. At 10th level, the interstellar void is so extreme that enemies who fail their saving throw are fatigued. At 15th level, creatures who fail their save are exhausted and stunned for 1 round. You can use this ability once per day plus one additional time per day at 10th level."
+    },
+    {
+      "Key": "6494d049b6a547a7b5e34eb027722369",
+      "SimpleName": "OracleRevelationInterstallarVoidAbility3.Description",
+      "ProcessTemplates": true,
+      "enGB": "You call upon the frigid depths of outer space to bring a terrible chill to your enemies. As a standard action, one target within 30 feet is cloaked in the void and takes 1d6 points of cold damage per level. A successful Fortitude save halves this damage. At 10th level, the interstellar void is so extreme that enemies who fail their saving throw are fatigued. At 15th level, creatures who fail their save are exhausted and stunned for 1 round. You can use this ability once per day plus one additional time per day at 10th level."
+    },
+    {
+      "Key": "04d15f81801041c09f24599b442fa807",
+      "SimpleName": "OracleRevelationInterstallarVoidFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "You call upon the frigid depths of outer space to bring a terrible chill to your enemies. As a standard action, one target within 30 feet is cloaked in the void and takes 1d6 points of cold damage per level. A successful Fortitude save halves this damage. At 10th level, the interstellar void is so extreme that enemies who fail their saving throw are fatigued. At 15th level, creatures who fail their save are exhausted and stunned for 1 round. You can use this ability once per day plus one additional time per day at 10th level."
+    },
+    {
+      "Key": "295a0b63165c42618bb54da7861c6686",
+      "SimpleName": "OracleRevelationLureOfTheHeavensFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "Your connection to the skies above is so strong that your feet barely touch the ground. At 1st level, you no longer leave tracks gaining a +1 to stealth. At 5th level, you can hover up to 6 inches above the ground, avoiding difficult terrain. At 10th level you gain the ability to fly along the ground, gaining a +3 dodge bonus to AC against melee attacks, for a number of minutes per day equal to your oracle level. This duration does not need to be consecutive, but it must be spent in 1-minute increments."
+    },
+    {
+      "Key": "2afa620bbe1f427287a50247f8613f03",
+      "SimpleName": "OracleRevelationLureOfTheHeavensFlyAbility.Description",
+      "ProcessTemplates": true,
+      "enGB": "Your connection to the skies above is so strong that your feet barely touch the ground. At 1st level, you no longer leave tracks gaining a +1 to stealth. At 5th level, you can hover up to 6 inches above the ground, avoiding difficult terrain. At 10th level you gain the ability to fly along the ground, gaining a +3 dodge bonus to AC against melee attacks, for a number of minutes per day equal to your oracle level. This duration does not need to be consecutive, but it must be spent in 1-minute increments."
+    },
+    {
+      "Key": "0c8e92a5a42b4121803a47d8d3ee1eaa",
+      "SimpleName": "OracleRevelationLureOfTheHeavensFlyBuff.Description",
+      "ProcessTemplates": true,
+      "enGB": "Your connection to the skies above is so strong that your feet barely touch the ground. At 1st level, you no longer leave tracks gaining a +1 to stealth. At 5th level, you can hover up to 6 inches above the ground, avoiding difficult terrain. At 10th level you gain the ability to fly along the ground, gaining a +3 dodge bonus to AC against melee attacks, for a number of minutes per day equal to your oracle level. This duration does not need to be consecutive, but it must be spent in 1-minute increments."
+    },
+    {
+      "Key": "e44000209010451ebee0f3e3ee65560e",
+      "SimpleName": "OracleRevelationLureOfTheHeavensFlyFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "Your connection to the skies above is so strong that your feet barely touch the ground. At 1st level, you no longer leave tracks gaining a +1 to stealth. At 5th level, you can hover up to 6 inches above the ground, avoiding difficult terrain. At 10th level you gain the ability to fly along the ground, gaining a +3 dodge bonus to AC against melee attacks, for a number of minutes per day equal to your oracle level. This duration does not need to be consecutive, but it must be spent in 1-minute increments."
+    },
+    {
+      "Key": "3f5b81306b31472eac039a7544b30451",
+      "SimpleName": "OracleRevelationLureOfTheHeavensHoverFeature.Name",
+      "ProcessTemplates": false,
+      "enGB": "Lure of the Heavens"
+    },
+    {
       "Key": "6a1e850796ec4523a95e31200f20af3d",
       "SimpleName": "OracleRevelationPresenceOfDragons.Description",
       "ProcessTemplates": true,
@@ -6362,6 +6669,48 @@
       "SimpleName": "OracleRevelationScaledToughnessBuff.Name",
       "ProcessTemplates": false,
       "enGB": "Scaled Toughness"
+    },
+    {
+      "Key": "9d29417d777048898a15af1771da35f0",
+      "SimpleName": "OracleRevelationSprayOfShootingStarsBaseAbility.Description",
+      "ProcessTemplates": true,
+      "enGB": "As a standard action, you can unleash a ball of energy that explodes in a 5-foot radius burst dealing 1d4 points of fire damage per level. A successful Reflex save halves this damage. You can fire one explosive ball per day, plus one additional ball per day at 5th level and for every 5 levels thereafter. You can fire more than one ball at a time, but creatures caught inside more than one explosion per round only take damage once. \nOther energy balls shot by this ability are used with the \"Free Action\" version of this ability."
+    },
+    {
+      "Key": "6a358e06ae78489797d6c8bbf12d2508",
+      "SimpleName": "OracleRevelationSprayOfShootingStarsBaseAbility.SavingThrow",
+      "ProcessTemplates": false,
+      "enGB": "Reflex partial"
+    },
+    {
+      "Key": "97db1eed8fa549538d5a950a5122b9b3",
+      "SimpleName": "OracleRevelationSprayOfShootingStarsFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "As a standard action, you can unleash a ball of energy that explodes in a 5-foot radius burst dealing 1d4 points of fire damage per level. A successful Reflex save halves this damage. This attack has a range of 60 feet. You can fire one explosive ball per day, plus one additional ball per day at 5th level and for every 5 levels thereafter. You can fire more than one ball at a time, but creatures caught inside more than one simultaneous explosions only take damage once."
+    },
+    {
+      "Key": "edb9e9fc0f0241059bef71459e21fdb3",
+      "SimpleName": "OracleRevelationSprayOfShootingStarsFreeAbility.Description",
+      "ProcessTemplates": true,
+      "enGB": "As a free action, you can unleash a ball of energy that explodes in a 5-foot radius burst dealing 1d4 points of fire damage per level. A successful Reflex save halves this damage. You can fire one explosive ball per day, plus one additional ball per day at 5th level and for every 5 levels thereafter. You can fire more than one ball at a time, but creatures caught inside more than one explosion per round only take damage once. \nUsing spray of shooting stars - free action requires using the standard version at least once in the same round."
+    },
+    {
+      "Key": "31e0017a96a04c1db9b9cfec77f3fdd7",
+      "SimpleName": "OracleRevelationSprayOfShootingStarsFreeAbility.Name",
+      "ProcessTemplates": false,
+      "enGB": "Spray of Shooting Stars - Free Action"
+    },
+    {
+      "Key": "d6b86ef10a6848d0baee552ba43dc889",
+      "SimpleName": "OracleRevelationSprayOfShootingStarsFreeUnlock.Description",
+      "ProcessTemplates": true,
+      "enGB": "You may use spray of shooting stars as a free action this round as many times as you wish, until you run out of daily uses. Unused uses of this ability will be available next round if not used."
+    },
+    {
+      "Key": "92616344f0f2406cb64feac0efba1a21",
+      "SimpleName": "OracleRevelationSprayOfShootingStarsFreeUnlock.Name",
+      "ProcessTemplates": false,
+      "enGB": "Spray of Shooting Stars"
     },
     {
       "Key": "1835525e6ea843b8830975f4c7aa8577",
@@ -7752,17 +8101,17 @@
       "enGB": "Shivaska"
     },
     {
-      "Key": "63b15554a33a4aac8390229ed2c68f7b",
-      "SimpleName": "ShizuruFeature.Description",
-      "ProcessTemplates": true,
-      "enGB": "\nTitles: Empress of Heaven   \nAlignment: Lawful Good   \nAreas of Concern: Ancestors, Honor, The Sun, Swordplay   \nDomains: Glory, Good, Law, Repose, Sun   \nSubdomains: Ancestors, Archon, Day, Heroism, Honor, Light, Revelation  \nFavoured Weapon: Katana (Longsword & Dueling sword)   \nHoly Symbol: Katana in front of the sun   \nSacred Animal: Carp   \nShizuru is the Empress of Heaven, goddess of ancestors and the sun. She is also the goddess of honor and swordplay, and is the patron of samurai and other honorable swordfighters. Shizuru loves the moon god Tsukiyo, so much so that she returned him to life when he was slain by his brother Fumeiyoshi. The two lovers are rarely together, however, just as night and day are forever divided, but the two deities are able to rejoin, if only briefly, during rare solar eclipses—a sacred time for both faiths. Shizuru’s worship is popular throughout the Dragon Empires, but her faith is strongest in Minkai, for the emperors of that land revere Shizuru as their divine ancestor. Shizuru is often depicted in art as a beautiful samurai, as a magnificent dragon with golden scales, or as both simultaneously."
-    },
-    {
       "Key": "805fec87a0a04ccf90147dcc7b5282fc",
       "SimpleName": "ShizuruFeature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "\nTitles: Empress of Heaven   \nAlignment: Lawful Good   \nAreas of Concern: Ancestors, Honor, The Sun, Swordplay   \nDomains: Glory, Good, Law, Repose, Sun   \nSubdomains: Ancestors, Archon, Day, Heroism, Honor, Light, Revelation  \nFavoured Weapon: Katana (Longsword)   \nHoly Symbol: Katana in front of the sun   \nSacred Animal: Carp   \nShizuru is the Empress of Heaven, goddess of ancestors and the sun. She is also the goddess of honor and swordplay, and is the patron of samurai and other honorable swordfighters. Shizuru loves the moon god Tsukiyo, so much so that she returned him to life when he was slain by his brother Fumeiyoshi. The two lovers are rarely together, however, just as night and day are forever divided, but the two deities are able to rejoin, if only briefly, during rare solar eclipses—a sacred time for both faiths. Shizuru’s worship is popular throughout the Dragon Empires, but her faith is strongest in Minkai, for the emperors of that land revere Shizuru as their divine ancestor. Shizuru is often depicted in art as a beautiful samurai, as a magnificent dragon with golden scales, or as both simultaneously."
+    },
+    {
+      "Key": "63b15554a33a4aac8390229ed2c68f7b",
+      "SimpleName": "ShizuruFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nTitles: Empress of Heaven   \nAlignment: Lawful Good   \nAreas of Concern: Ancestors, Honor, The Sun, Swordplay   \nDomains: Glory, Good, Law, Repose, Sun   \nSubdomains: Ancestors, Archon, Day, Heroism, Honor, Light, Revelation  \nFavoured Weapon: Katana (Longsword & Dueling sword)   \nHoly Symbol: Katana in front of the sun   \nSacred Animal: Carp   \nShizuru is the Empress of Heaven, goddess of ancestors and the sun. She is also the goddess of honor and swordplay, and is the patron of samurai and other honorable swordfighters. Shizuru loves the moon god Tsukiyo, so much so that she returned him to life when he was slain by his brother Fumeiyoshi. The two lovers are rarely together, however, just as night and day are forever divided, but the two deities are able to rejoin, if only briefly, during rare solar eclipses—a sacred time for both faiths. Shizuru’s worship is popular throughout the Dragon Empires, but her faith is strongest in Minkai, for the emperors of that land revere Shizuru as their divine ancestor. Shizuru is often depicted in art as a beautiful samurai, as a magnificent dragon with golden scales, or as both simultaneously."
     },
     {
       "Key": "3ef498a3b1f34038af628a74d00a11e6",
