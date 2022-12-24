@@ -10,7 +10,7 @@ using Kingmaker.UnitLogic.Mechanics;
 using UnityEngine;
 
 namespace ExpandedContent.Tweaks.Components {
-    // This might work?
+    
     [AllowMultipleComponents]
     [ComponentName("Saving throw bonus against fact from caster")]
     [AllowedOn(typeof(BlueprintUnitFact))]

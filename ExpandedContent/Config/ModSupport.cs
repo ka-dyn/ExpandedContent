@@ -17,6 +17,7 @@ namespace ExpandedContent.Config {
     internal class ModSupport {
 
         protected static bool IsMysticalMayhemEnabled() { return IsModEnabled("MysticalMayhem"); }
+        protected static bool IsTabletopTweaksBaseEnabled() { return IsModEnabled("TabletopTweaks-Base"); }
 
 
 
@@ -152,49 +153,130 @@ namespace ExpandedContent.Config {
                     });
 
 
-                }                
+                } 
+                
+                if (IsTabletopTweaksBaseEnabled()) {
+
+                    var OracleClass = Resources.GetBlueprint<BlueprintCharacterClass>("20ce9bf8af32bee4c8557a045ab499b1");
+                    var RayOfEnfeeblementSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("450af0402422b0b4980d9c2175869612");
+                    var ShieldOfFortificationAbility = Resources.GetModBlueprint<BlueprintAbility>("ShieldOfFortificationAbility");
+                    var ShieldOfFortificationGreaterAbility = Resources.GetModBlueprint<BlueprintAbility>("ShieldOfFortificationGreaterAbility");
+                    var ClaySkinAbility = Resources.GetModBlueprint<BlueprintAbility>("ClaySkinAbility");
+                    var StoneSkinSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("c66e86905f7606c4eaa5c774f0357b2b");
+                    var HeroismGreaterSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("e15e5e7045fda2244b98c8f010adfe31");
+                    var BanishmentSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("d361391f645db984bbf58907711a146a");
+                    var ProjectionFromSpellsSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("42aa71adc7343714fa92e471baa98d42");
+                    var SoundBurstSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("c3893092a333b93499fd0a21845aa265");
+                    var ShoutSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("f09453607e683784c8fca646eec49162");
+                    var SongOfDiscordSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("d38aaf487e29c3d43a3bffa4a4a55f8f");
+                    var ShoutGreaterSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("fd0d3840c48cafb44bb29e8eb74df204");
+                    var BrilliantInspirationSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("a5c56f0f699daec44b7aedd8b273b08a");
+                    var MagesDisjunctionAbility = Resources.GetBlueprintReference<BlueprintAbilityReference>("85f616bb9d054f669f357636c6c06338 ");
+                    var OracleSuccorSpells = Resources.GetBlueprint<BlueprintFeature>("5f3dfabf6cc040f3a12e2803f2c13b49");
+                    var OceansEchoSuccorSpells = Resources.GetBlueprint<BlueprintFeature>("cd8640ade16943a187057c1022b79da6");
+                    OracleSuccorSpells.RemoveComponents<AddKnownSpell>();
+                    OceansEchoSuccorSpells.RemoveComponents<AddKnownSpell>();
+                    OracleSuccorSpells.TemporaryContext(bp => {
+                        bp.AddComponent<AddKnownSpell>(c => {
+                            c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                            c.m_Spell = RayOfEnfeeblementSpell;
+                            c.SpellLevel = 1;
+                        });
+                        bp.AddComponent<AddKnownSpell>(c => {
+                            c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                            c.m_Spell = ShieldOfFortificationAbility.ToReference<BlueprintAbilityReference>();
+                            c.SpellLevel = 2;
+                        });
+                        bp.AddComponent<AddKnownSpell>(c => {
+                            c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                            c.m_Spell = ClaySkinAbility.ToReference<BlueprintAbilityReference>();
+                            c.SpellLevel = 3;
+                        });
+                        bp.AddComponent<AddKnownSpell>(c => {
+                            c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                            c.m_Spell = ShieldOfFortificationGreaterAbility.ToReference<BlueprintAbilityReference>();
+                            c.SpellLevel = 4;
+                        });
+                        bp.AddComponent<AddKnownSpell>(c => {
+                            c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                            c.m_Spell = StoneSkinSpell;
+                            c.SpellLevel = 5;
+                        });
+                        bp.AddComponent<AddKnownSpell>(c => {
+                            c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                            c.m_Spell = HeroismGreaterSpell;
+                            c.SpellLevel = 6;
+                        });
+                        bp.AddComponent<AddKnownSpell>(c => {
+                            c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                            c.m_Spell = BanishmentSpell;
+                            c.SpellLevel = 7;
+                        });
+                        bp.AddComponent<AddKnownSpell>(c => {
+                            c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                            c.m_Spell = ProjectionFromSpellsSpell;
+                            c.SpellLevel = 8;
+                        });
+                        bp.AddComponent<AddKnownSpell>(c => {
+                            c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                            c.m_Spell = MagesDisjunctionAbility;
+                            c.SpellLevel = 9;
+                        });
+                    });
+                    OceansEchoSuccorSpells.TemporaryContext(bp => {
+                        bp.AddComponent<AddKnownSpell>(c => {
+                            c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                            c.m_Spell = RayOfEnfeeblementSpell;
+                            c.SpellLevel = 1;
+                        });
+                        bp.AddComponent<AddKnownSpell>(c => {
+                            c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                            c.m_Spell = SoundBurstSpell;
+                            c.SpellLevel = 2;
+                        });
+                        bp.AddComponent<AddKnownSpell>(c => {
+                            c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                            c.m_Spell = ClaySkinAbility.ToReference<BlueprintAbilityReference>();
+                            c.SpellLevel = 3;
+                        });
+                        bp.AddComponent<AddKnownSpell>(c => {
+                            c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                            c.m_Spell = ShoutSpell;
+                            c.SpellLevel = 4;
+                        });
+                        bp.AddComponent<AddKnownSpell>(c => {
+                            c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                            c.m_Spell = SongOfDiscordSpell;
+                            c.SpellLevel = 5;
+                        });
+                        bp.AddComponent<AddKnownSpell>(c => {
+                            c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                            c.m_Spell = ShoutGreaterSpell;
+                            c.SpellLevel = 6;
+                        });
+                        bp.AddComponent<AddKnownSpell>(c => {
+                            c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                            c.m_Spell = BrilliantInspirationSpell;
+                            c.SpellLevel = 7;
+                        });
+                        bp.AddComponent<AddKnownSpell>(c => {
+                            c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                            c.m_Spell = ProjectionFromSpellsSpell;
+                            c.SpellLevel = 8;
+                        });
+                        bp.AddComponent<AddKnownSpell>(c => {
+                            c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                            c.m_Spell = MagesDisjunctionAbility;
+                            c.SpellLevel = 9;
+                        });
+                    });
+
+
+
+
+                }
             }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -58,25 +58,25 @@ namespace ExpandedContent.Tweaks.Deities {
             var YamatsumiFeature = Resources.GetModBlueprint<BlueprintFeature>("YamatsumiFeature");
 
             //Demon Lords
-            var ZuraFeature = Resources.GetModBlueprint<BlueprintFeature>("ZuraFeature");
-            var DeskariFeature = Resources.GetBlueprint<BlueprintFeature>("ddf913858bdf43b4da3b731e082fbcc0");
-            var BaphometFeature = Resources.GetBlueprint<BlueprintFeature>("bd72ca8ffcfec5745899ac56c93f12c5");
             var AreshkegalFeature = Resources.GetBlueprint<BlueprintFeature>("d714ecb5d5bb89a42957de0304e459c9");
-            var KabririFeature = Resources.GetBlueprint<BlueprintFeature>("f12c1ccc9d600c04f8887cd28a8f45a5");
+            var BaphometFeature = Resources.GetBlueprint<BlueprintFeature>("bd72ca8ffcfec5745899ac56c93f12c5");
+            var CythVsugFeature = Resources.GetModBlueprint<BlueprintFeature>("CythVsugFeature");
             var DagonFeature = Resources.GetModBlueprint<BlueprintFeature>("DagonFeature");
-            var TreerazerFeature = Resources.GetModBlueprint<BlueprintFeature>("TreerazerFeature");
+            var DeskariFeature = Resources.GetBlueprint<BlueprintFeature>("ddf913858bdf43b4da3b731e082fbcc0");
+            var GoguntaFeature = Resources.GetModBlueprint<BlueprintFeature>("GoguntaFeature");
+            var JezeldaFeature = Resources.GetModBlueprint<BlueprintFeature>("JezeldaFeature");
+            var JubilexFeature = Resources.GetModBlueprint<BlueprintFeature>("JubilexFeature");
+            var KabririFeature = Resources.GetBlueprint<BlueprintFeature>("f12c1ccc9d600c04f8887cd28a8f45a5");
+            var MazmezzFeature = Resources.GetModBlueprint<BlueprintFeature>("MazmezzFeature");
+            var MestamaFeature = Resources.GetModBlueprint<BlueprintFeature>("MestamaFeature");
             var NocticulaFeature = Resources.GetModBlueprint<BlueprintFeature>("NocticulaFeature");
-            var PazuzuFeature = Resources.GetModBlueprint<BlueprintFeature>("PazuzuFeature");
-            var ShivaskaFeature = Resources.GetModBlueprint<BlueprintFeature>("ShivaskaFeature");
             var NurgalFeature = Resources.GetModBlueprint<BlueprintFeature>("NurgalFeature");
             var OrcusFeature = Resources.GetModBlueprint<BlueprintFeature>("OrcusFeature");
-            var MestamaFeature = Resources.GetModBlueprint<BlueprintFeature>("MestamaFeature");
-            var MazmezzFeature = Resources.GetModBlueprint<BlueprintFeature>("MazmezzFeature");
-            var JubilexFeature = Resources.GetModBlueprint<BlueprintFeature>("JubilexFeature");
-            var GoguntaFeature = Resources.GetModBlueprint<BlueprintFeature>("GoguntaFeature");
-            var CythVsugFeature = Resources.GetModBlueprint<BlueprintFeature>("CythVsugFeature");
-            var JezeldaFeature = Resources.GetModBlueprint<BlueprintFeature>("JezeldaFeature");
+            var PazuzuFeature = Resources.GetModBlueprint<BlueprintFeature>("PazuzuFeature");
             var ShaxFeature = Resources.GetModBlueprint<BlueprintFeature>("ShaxFeature");
+            var ShivaskaFeature = Resources.GetModBlueprint<BlueprintFeature>("ShivaskaFeature");
+            var TreerazerFeature = Resources.GetModBlueprint<BlueprintFeature>("TreerazerFeature");
+            var ZuraFeature = Resources.GetModBlueprint<BlueprintFeature>("ZuraFeature");
 
             //Empyreal Lords
             var ArsheaFeature = Resources.GetModBlueprint<BlueprintFeature>("ArsheaFeature");

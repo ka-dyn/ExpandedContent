@@ -156,7 +156,14 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
-
+            var ClawOfTheFalseWyrmArchetype = Resources.GetModBlueprint<BlueprintArchetype>("ClawOfTheFalseWyrmArchetype");
+            ClawOfTheFalseWyrmArchetype.AddComponent<PrerequisiteFeaturesFromList>(c => {
+                c.m_Features = new BlueprintFeatureReference[1] { DahakFeature.ToReference<BlueprintFeatureReference>() };
+                c.Amount = 0;
+                c.Group = Prerequisite.GroupType.All;
+                c.CheckInProgression = false;
+                c.HideInUI = false;
+            });
         }
     }
 

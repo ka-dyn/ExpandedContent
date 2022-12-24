@@ -97,6 +97,10 @@ namespace ExpandedContent.Tweaks {
                 Spells.InvokeDeity.AddInvokeDeity();
                 Spells.ZephyrsFleetness.AddZephyrsFleetness();
                 Spells.HypnoticPattern.AddHypnoticPattern();
+                Spells.EntropicShield.AddEntropicShield();
+                Spells.ShieldOfFortification.AddShieldOfFortification();
+                Spells.ShieldOfFortificationGreater.AddShieldOfFortificationGreater();
+                Spells.ClaySkin.AddClaySkin();
 
                 Domains.ImpossibleSubdomainSelection.AddImpossibleSubdomainSelection();
                 Domains.ScalykindDomain.AddScalykindDomain();
@@ -128,8 +132,11 @@ namespace ExpandedContent.Tweaks {
 
                 Mysteries.DragonMystery.AddDragonMystery();
                 Mysteries.HeavensMystery.AddHeavensMystery();
+                Mysteries.SuccorMystery.AddSuccorMystery();
 
                 Curses.Vampirism.AddVampirismCurse();
+
+                Miscellaneous.AidAnother.AddAidAnother();
 
                 Archdevils.Dispater.AddDispater();
                 Archdevils.Mephistopheles.AddMephistopheles();

@@ -168,20 +168,55 @@ namespace ExpandedContent.Extensions {
             selection.m_AllFeatures = selection.m_AllFeatures.OrderBy(feature => feature.Get().Name).ToArray();
             selection.m_Features = selection.m_Features.OrderBy(feature => feature.Get().Name).ToArray();
         }
+        //Test
 
         public static void AddFeatures(this BlueprintFeatureSelection selection, params BlueprintFeature[] features) {
+            selection.AddFeatures(features.Select(f => f.ToReference<BlueprintFeatureReference>()).ToArray());
+        }
+
+        public static void AddFeatures(this BlueprintFeatureSelection selection, params BlueprintFeatureReference[] features) {
             foreach (var feature in features) {
-                var featureReference = feature.ToReference<BlueprintFeatureReference>();
-                if (!selection.m_AllFeatures.Contains(featureReference)) {
-                    selection.m_AllFeatures = selection.m_AllFeatures.AddToArray(featureReference);
+                if (!selection.m_AllFeatures.Contains(feature)) {
+                    selection.m_AllFeatures = selection.m_AllFeatures.AppendToArray(feature);
                 }
-                if (!selection.m_Features.Contains(featureReference)) {
-                    selection.m_Features = selection.m_Features.AddToArray(featureReference);
+                if (!selection.m_Features.Contains(feature)) {
+                    selection.m_Features = selection.m_Features.AppendToArray(feature);
                 }
             }
-            selection.m_AllFeatures = selection.m_AllFeatures.OrderBy(feature => feature.Get().Name).ToArray();
-            selection.m_Features = selection.m_Features.OrderBy(feature => feature.Get().Name).ToArray();
+            selection.m_AllFeatures = selection.m_AllFeatures.OrderBy(feature => feature?.Get()?.Name ?? feature?.Get()?.name).ToArray();
+            selection.m_Features = selection.m_Features.OrderBy(feature => feature?.Get()?.Name ?? feature?.Get()?.name).ToArray();
         }
+
+
+
+
+
+
+
+
+        //public static void AddFeatures(this BlueprintFeatureSelection selection, params BlueprintFeature[] features) {
+        //    foreach (var feature in features) {
+        //        var featureReference = feature.ToReference<BlueprintFeatureReference>();
+        //        if (!selection.m_AllFeatures.Contains(featureReference)) {
+        //            selection.m_AllFeatures = selection.m_AllFeatures.AddToArray(featureReference);
+        //        }
+        //        if (!selection.m_Features.Contains(featureReference)) {
+        //            selection.m_Features = selection.m_Features.AddToArray(featureReference);
+        //        }
+        //    }
+        //    selection.m_AllFeatures = selection.m_AllFeatures.OrderBy(feature => feature.Get().Name).ToArray();
+        //    selection.m_Features = selection.m_Features.OrderBy(feature => feature.Get().Name).ToArray();
+        //}
+
+
+
+
+
+
+
+
+
+
         public static void AddPrerequisiteFeature(this BlueprintFeature obj, BlueprintFeature feature) {
             obj.AddPrerequisiteFeature(feature, GroupType.All);
         }

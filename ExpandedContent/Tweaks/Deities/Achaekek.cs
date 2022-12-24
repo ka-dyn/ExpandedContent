@@ -140,7 +140,14 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
-
+            var MantisZealotArchetype = Resources.GetModBlueprint<BlueprintArchetype>("MantisZealotArchetype");
+            MantisZealotArchetype.AddComponent<PrerequisiteFeaturesFromList>(c => {
+                c.m_Features = new BlueprintFeatureReference[1] { AchaekekFeature.ToReference<BlueprintFeatureReference>() };
+                c.Amount = 0;
+                c.Group = Prerequisite.GroupType.All;
+                c.CheckInProgression = false;
+                c.HideInUI = false;
+            });
         }
     }
 

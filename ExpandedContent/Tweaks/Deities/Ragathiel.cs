@@ -73,12 +73,12 @@ namespace ExpandedContent.Tweaks.Deities {
                     "single-handedly maiming Infernal Duke Deumus in the process. Finally the other empyreal lords agreed to admit Ragathiel into their ranks, and now " +
                     "they appear to trust the angel completely—though that trust took centuries to develop. At some point in history, Ragathiel destroyed " +
                     "Typhon, the original ruler of the first layer of Hell.He may have been manipulated into doing so by the schemes of Asmodeus to punish " +
-                    "Typhon for his indiscretions.[9] Ragathiel was once served by the Hand of the Inheritor, an angel who now acts as the goddess Iomedae's herald. " +
+                    "Typhon for his indiscretions. Ragathiel was once served by the Hand of the Inheritor, an angel who now acts as the goddess Iomedae's herald. " +
                     "Then known as the Hand of Vengeance, this angel asked to be reassigned to Iomedae after the death of Aroden. " +
                     "\nAppearance: Ragathiel is a tower of glorious might. He stands almost 20 feet tall, and five lofty burning wings stretch from his back. " +
                     "The General of Vengeance once had six wings, but one was severed, torn from his body by the archdevil Dispater—Ragathiel's father.   " +
                     "\nWorship: Ragathiel is commonly worshiped by the avowed, knights, soldiers, the wronged, and the empyreal lord employs aasimar, paladins, " +
-                    "blink dogs, and kirin as his most common servants.[4] The holiest time for Ragathiel's followers is the brief moments before and after a battle. " +
+                    "blink dogs, and kirin as his most common servants. The holiest time for Ragathiel's followers is the brief moments before and after a battle. " +
                     "The faithful ask Ragathiel's eyes to fall upon them and for his wings to shield them.This is also a standard greeting and farewell among worshipers. " +
                     "Followers of Ragathiel commonly wear red and silver clothing.Many also don an ornament or sigil the color of flames, typically on the helmet. " +
                     "Ragathiel has a small but old cult in Magnimar, a city known for its many mystery cults revering various empyreal lords.   " +

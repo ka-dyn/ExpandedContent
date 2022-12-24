@@ -55,7 +55,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     "\nFavoured Weapon: Dagger   " +
                     "\nHoly Symbol: Ornate golden dagger   " +
                     "\nSacred Animal: Swan   " +
-                    "The goddess Naderi was a divine assistant to Shelyn and was tasked with overseeing forbidden relationships among couples. She ascended to " +
+                    "\nThe goddess Naderi was a divine assistant to Shelyn and was tasked with overseeing forbidden relationships among couples. She ascended to " +
                     "divinity when a young couple under her gaze decided to kill themselves instead of fighting the circumstances that forbade their love. Shocked " +
                     "by her apotheosis and afraid of how Shelyn would react, Naderi fled her mistress and finally became the goddess of suicides, particularly " +
                     "romantic tragedies. Shelyn has tried to fix this strange divide between the two of them, but has been unsuccessful due to unusual circumstances. " +
