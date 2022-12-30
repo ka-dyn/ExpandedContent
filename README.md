@@ -68,11 +68,11 @@ New Domains / Subdomains
 
 -Domains: Scalykind
 
--Subdomains: Archon, Blood, Caves, Curse, Demon, Dragon, Ferocity, Ice, Psychopomp, Rage, Restoration, Revelation, Revolution, Rivers, Storm, Thievery, Undead, Whimsy, Wind
+-Subdomains: Archon, Blood, Caves, Curse, Demon, Dragon, Ferocity, Ice, Psychopomp, Rage, Restoration, Revelation, Revolution, Rivers, Stars, Storm, Thievery, Undead, Whimsy, Wind
 
 New Spells
 
--Hydraulic push, Slipstream, Scourge of the Horsemen, Rigor mortis, Reviving Finale, Deadly Finale, Purging Finale, Stunning Finale, Hollow Blades, Goodberry, Steam Ray Fusillade, Inflict Pain, Inflict Pain Mass, Gloomblind Bolts, Fury of the Sun, Invoke Deity, Wall of Fire, Zephyr's Fleetness, Hypnotic Pattern, Clay Skin, Entropic Shield, Shield of Fortification, Greater Shield of Fortification
+-Hydraulic push, Slipstream, Scourge of the Horsemen, Rigor mortis, Reviving Finale, Deadly Finale, Purging Finale, Stunning Finale, Hollow Blades, Goodberry, Steam Ray Fusillade, Inflict Pain, Inflict Pain Mass, Gloomblind Bolts, Fury of the Sun, Invoke Deity, Wall of Fire, Zephyr's Fleetness, Hypnotic Pattern, Clay Skin, Entropic Shield, Shield of Fortification, Greater Shield of Fortification, Dance of a Hundred Cuts, Dance of a Thousand Cuts
 
 I'd like to give a huge thank you to Vek17, as much of the coding in this repository is his; I simply repurposed it or learned from it. I wouldn't be able to release
 anything without it. Check out his mod, TableTopTweaks if you haven't already!
