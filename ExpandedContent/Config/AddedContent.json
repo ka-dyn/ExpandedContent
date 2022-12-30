@@ -255,6 +255,11 @@
         "Enabled": true,
         "Homebrew": false,
         "Description": "Adds the restoration subdomain, a subdomain to the healing domain."
+      },
+      "Stars Subdomain": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds the stars subdomain."
       }
     },
     "IsExpanded": false
@@ -338,6 +343,17 @@
         "Enabled": false,
         "Homebrew": true,
         "Description": "Allows you to select Aivu as a normal animal companion."
+      }
+    },
+    "IsExpanded": false
+  },
+  "Miscellaneous": {
+    "DisableAll": false,
+    "Settings": {
+      "Aid Another": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds the Aid Another feature from the tabletop, this toggle will also disable features and feats relating to the Aid Another feature."
       }
     },
     "IsExpanded": false

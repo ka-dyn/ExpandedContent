@@ -20,9 +20,10 @@ namespace ExpandedContent.Tweaks.Deities {
 
 
         private static readonly BlueprintFeature GoodDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("882521af8012fc749930b03dc18a69de");
-        
+        private static readonly BlueprintFeature StarsDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("StarsDomainAllowed");
 
-                
+
+
         public static void AddPulura() {
 
                     var PuluraIcon = AssetLoader.LoadInternal("Deities", "Icon_Pulura.jpg");
@@ -69,7 +70,9 @@ namespace ExpandedContent.Tweaks.Deities {
                 bp.m_Facts = new BlueprintUnitFactReference[] { GoodDomainAllowed.ToReference<BlueprintUnitFactReference>() };
                     
             });
-                    
+            PuluraFeature.AddComponent<AddFacts>(bp => {
+                bp.m_Facts = new BlueprintUnitFactReference[1] { StarsDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+            });
             PuluraFeature.m_Icon = PuluraIcon;
                     
                     

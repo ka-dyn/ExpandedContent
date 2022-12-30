@@ -40,6 +40,7 @@ namespace ExpandedContent {
                 SetttingUI.SettingGroup("Deities", TabLevel, AddedContent.Deities);
                 SetttingUI.SettingGroup("Backgrounds", TabLevel, AddedContent.Backgrounds);
                 SetttingUI.SettingGroup("AivuPet", TabLevel, AddedContent.AivuPet);
+                SetttingUI.SettingGroup("Miscellaneous", TabLevel, AddedContent.Miscellaneous);
 
 
 

@@ -418,25 +418,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
             });
             OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationEnhancedInflictions.ToReference<BlueprintFeatureReference>());
             //Perfect Aid
-            var OracleRevelationPerfectAid = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationPerfectAid", bp => {
-                bp.SetName("Perfect Aid");
-                bp.SetDescription("You can effortlessly give aid to your allies, whether that means providing them with help attacking or defending them in the heat of combat. Whenever you use the aid another action " +
-                    "to inflict a penalty on attack rolls or to AC against one of your allies, the penalty you inflict increases by 1. This bonus increases by 1 at 4th level and every 5 oracle levels thereafter (to a " +
-                    "maximum of -5 at 19th level). It doesn’t stack with other feats or class features that improve the bonus you provide when using the aid another action. This revelation also counts as the Combat " +
-                    "Expertise feat, but only for the purpose of meeting the prerequisites of the Swift Aid feat.");
-                bp.AddComponent<PrerequisiteFeaturesFromList>(c => {
-                    c.m_Features = new BlueprintFeatureReference[] {
-                        OracleSuccorMysteryFeature.ToReference<BlueprintFeatureReference>(),
-                        EnlightnedPhilosopherSuccorMysteryFeature.ToReference<BlueprintFeatureReference>(),
-                        DivineHerbalistSuccorMysteryFeature.ToReference<BlueprintFeatureReference>(),
-                        OceansEchoSuccorMysteryFeature.ToReference<BlueprintFeatureReference>()
-                    };
-                    c.Amount = 1;
-                });
-                bp.Groups = new FeatureGroup[] { FeatureGroup.OracleRevelation };
-                bp.IsClassFeature = true;
-            });
-            OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationPerfectAid.ToReference<BlueprintFeatureReference>());
+            ///Done on the AidAnother.cs            
             //Shell of Succor
             var OracleRevelationShellOfSuccorIcon = AssetLoader.LoadInternal("Skills", "Icon_OracleRevelationShellOfSuccor.jpg");
             var OracleRevelationShellOfSuccorResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("OracleRevelationShellOfSuccorResource", bp => {

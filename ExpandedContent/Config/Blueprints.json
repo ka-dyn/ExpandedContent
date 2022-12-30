@@ -1286,7 +1286,16 @@
     "SwiftAidAnotherDefenceBuff": "383e54f3-fc23-4904-bbaf-8feae5bee2dc",
     "SwiftAidAnotherFeature": "8590fb52-921c-4365-832c-ca7635fd5a70",
     "SwiftAidAnotherOffenceAbility": "eda56623-9a34-4d69-bc78-7a4fcaabc092",
-    "SwiftAidAnotherOffenceBuff": "604f41a0-42b7-45f7-b26a-c0da38e3ece3"
+    "SwiftAidAnotherOffenceBuff": "604f41a0-42b7-45f7-b26a-c0da38e3ece3",
+
+    "StarsDomainAllowed": "ec260fe1-6961-4dc9-9f2d-e8ae31ee41dc",
+    "StarsDomainBaseFeature": "fc810c2e-7075-4bfb-91ad-aadeeb432da8",
+    "StarsDomainGreaterFeature1": "26acde33-b61f-4448-baba-9b693fb3009e",
+    "StarsDomainGreaterFeature2": "962a7e6f-1960-4aae-ac78-4faa9df3b4af",
+    "StarsDomainProgression": "74f44da8-e5ed-4f2d-a62f-04ea0b82abe8",
+    "StarsDomainProgressionSecondary": "46f8d2ba-6d33-44fc-95d8-eb93938e78a1",
+    "StarsDomainSpellList": "ee2d13fc-3083-4036-b8ae-aee4808c2679",
+    "StarsDomainSpellListFeature": "ee1413de-382f-420e-81a4-4be509abcc83"
 
 
 

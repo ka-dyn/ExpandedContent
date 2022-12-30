@@ -1,9 +1,11 @@
-﻿using ExpandedContent.Extensions;
+﻿using ExpandedContent.Config;
+using ExpandedContent.Extensions;
 using ExpandedContent.Tweaks.Components;
 using ExpandedContent.Utilities;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Prerequisites;
+using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.Craft;
 using Kingmaker.Designers.EventConditionActionSystem.Actions;
 using Kingmaker.Designers.Mechanics.Facts;
@@ -40,9 +42,32 @@ namespace ExpandedContent.Tweaks.Miscellaneous {
             var SwiftAidAnotherIcon = AssetLoader.LoadInternal("Skills", "Icon_SwiftAidAnother.jpg");
             var SwiftAidAnotherDefenceIcon = AssetLoader.LoadInternal("Skills", "Icon_SwiftAidAnotherDefence.jpg");
             var SwiftAidAnotherOffenceIcon = AssetLoader.LoadInternal("Skills", "Icon_SwiftAidAnotherOffence.jpg");
-
+            var OracleRevelationSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("60008a10ad7ad6543b1f63016741a5d2");
             var CombatExpertise = Resources.GetBlueprint<BlueprintFeature>("4c44724ffa8844f4d9bedb5bb27d144a");
-            var OracleRevelationPerfectAid = Resources.GetModBlueprint<BlueprintFeature>("OracleRevelationPerfectAid");
+            var OracleSuccorMysteryFeature = Resources.GetModBlueprint<BlueprintFeature>("OracleSuccorMysteryFeature");
+            var EnlightnedPhilosopherSuccorMysteryFeature = Resources.GetModBlueprint<BlueprintFeature>("EnlightnedPhilosopherSuccorMysteryFeature");
+            var DivineHerbalistSuccorMysteryFeature = Resources.GetModBlueprint<BlueprintFeature>("DivineHerbalistSuccorMysteryFeature");
+            var OceansEchoSuccorMysteryFeature = Resources.GetModBlueprint<BlueprintFeature>("OceansEchoSuccorMysteryFeature");
+
+            var OracleRevelationPerfectAid = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationPerfectAid", bp => {
+                bp.SetName("Perfect Aid");
+                bp.SetDescription("You can effortlessly give aid to your allies, whether that means providing them with help attacking or defending them in the heat of combat. Whenever you use the aid another action " +
+                    "to inflict a penalty on attack rolls or to AC against one of your allies, the penalty you inflict increases by 1. This bonus increases by 1 at 4th level and every 5 oracle levels thereafter (to a " +
+                    "maximum of -5 at 19th level). It doesn’t stack with other feats or class features that improve the bonus you provide when using the aid another action. This revelation also counts as the Combat " +
+                    "Expertise feat, but only for the purpose of meeting the prerequisites of the Swift Aid feat.");
+                bp.AddComponent<PrerequisiteFeaturesFromList>(c => {
+                    c.m_Features = new BlueprintFeatureReference[] {
+                        OracleSuccorMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        EnlightnedPhilosopherSuccorMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        DivineHerbalistSuccorMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        OceansEchoSuccorMysteryFeature.ToReference<BlueprintFeatureReference>()
+                    };
+                    c.Amount = 1;
+                });
+                bp.Groups = new FeatureGroup[] { FeatureGroup.OracleRevelation };
+                bp.IsClassFeature = true;
+            });
+
             var OracleClass = Resources.GetBlueprint<BlueprintCharacterClass>("20ce9bf8af32bee4c8557a045ab499b1");
             var AidAnotherDefenceBuff = Helpers.CreateBuff("AidAnotherDefenceBuff", bp => {
                 bp.SetName("Aid Another - Distracted Attacks");
@@ -472,7 +497,7 @@ namespace ExpandedContent.Tweaks.Miscellaneous {
                 };
             });
             var SkillAbilities = Resources.GetBlueprint<BlueprintFeature>("e4c33ff99d638744686112e2a5f49856").GetComponent<AddFacts>();
-            SkillAbilities.m_Facts = SkillAbilities.m_Facts.AppendToArray(AidAnotherAbility.ToReference<BlueprintUnitFactReference>()); 
+             
             
             var SwiftAidAnotherAbility = Helpers.CreateBlueprint<BlueprintAbility>("SwiftAidAnotherAbility", bp => {
                 bp.SetName("Swift Aid Another");
@@ -693,6 +718,11 @@ namespace ExpandedContent.Tweaks.Miscellaneous {
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = true;
             });
+
+
+            if (ModSettings.AddedContent.Miscellaneous.IsDisabled("Aid Another")) { return; }
+            OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationPerfectAid.ToReference<BlueprintFeatureReference>());
+            SkillAbilities.m_Facts = SkillAbilities.m_Facts.AppendToArray(AidAnotherAbility.ToReference<BlueprintUnitFactReference>());
             FeatTools.AddAsFeat(SwiftAidAnotherFeature);
 
 

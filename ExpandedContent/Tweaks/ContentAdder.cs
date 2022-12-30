@@ -121,6 +121,7 @@ namespace ExpandedContent.Tweaks {
                 Domains.RevelationDomain.AddRevelationDomain();
                 Domains.RevolutionDomain.AddRevolutionDomain();
                 Domains.RiversDomain.AddRiversDomain();
+                Domains.StarsDomain.AddStarsDomain();
                 Domains.StormDomain.AddStormDomain();
                 Domains.ThieveryDomain.AddThieveryDomain();
                 Domains.UndeadDomain.AddUndeadDomain();

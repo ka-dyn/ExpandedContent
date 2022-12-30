@@ -2,9 +2,16 @@
 using ExpandedContent.Utilities;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
+using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.JsonSystem;
+using Kingmaker.Enums;
+using Kingmaker.RuleSystem;
+using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.UnitLogic.FactLogic;
+using Kingmaker.UnitLogic.Mechanics;
+using Kingmaker.UnitLogic.Mechanics.Actions;
+using Kingmaker.UnitLogic.Mechanics.Properties;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,6 +42,10 @@ namespace ExpandedContent.Config {
                 if (IsMysticalMayhemEnabled()) {
 
                     var OracleClass = Resources.GetBlueprint<BlueprintCharacterClass>("20ce9bf8af32bee4c8557a045ab499b1");
+                    var ClericClass = Resources.GetBlueprint<BlueprintCharacterClass>("67819271767a9dd4fbfd4ae700befea0");
+                    var InquisitorClass = Resources.GetBlueprint<BlueprintCharacterClass>("f1a70d9e1b0b41e49874e1fa9052a1ce");
+                    var HunterClass = Resources.GetBlueprint<BlueprintCharacterClass>("34ecd1b5e1b90b9498795791b0855239");
+                    var PaladinClass = Resources.GetBlueprint<BlueprintCharacterClass>("bfa11238e7ae3544bbeb4d0b92e897ec");
                     var ColorSpraySpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("91da41b9793a4624797921f221db653c");
                     var RainbowPatternSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("4b8265132f9c8174f87ce7fa6d0fe47b");
                     var PrismaticSpraySpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("b22fd434bdb60fb4ba1068206402c4cf");
@@ -151,10 +162,131 @@ namespace ExpandedContent.Config {
                             c.SpellLevel = 9;
                         });
                     });
+                    var StarsDomainGreaterFeature2 = Resources.GetBlueprint<BlueprintFeature>("962a7e6f19604aaeac784faa9df3b4af");
+                    StarsDomainGreaterFeature2.RemoveComponents<AddKnownSpell>();
+                    StarsDomainGreaterFeature2.TemporaryContext(bp => {
+                        bp.AddComponent<SpontaneousSpellConversion>(c => {
+                            c.m_CharacterClass = ClericClass.ToReference<BlueprintCharacterClassReference>();
+                            c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        MeteorSwarmAbility
+                    };
+                        });
+                        bp.AddComponent<SpontaneousSpellConversion>(c => {
+                            c.m_CharacterClass = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
+                            c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        MeteorSwarmAbility
+                    };
+                        });
+                        bp.AddComponent<SpontaneousSpellConversion>(c => {
+                            c.m_CharacterClass = HunterClass.ToReference<BlueprintCharacterClassReference>();
+                            c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        MeteorSwarmAbility
+                    };
+                        });
+                        bp.AddComponent<SpontaneousSpellConversion>(c => {
+                            c.m_CharacterClass = PaladinClass.ToReference<BlueprintCharacterClassReference>();
+                            c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        MeteorSwarmAbility
+                    };
+                        });
+                        bp.AddComponent<AddAbilityUseTrigger>(c => {
+                            c.ActionsOnAllTargets = false;
+                            c.AfterCast = false;
+                            c.ActionsOnTarget = false;
+                            c.FromSpellbook = false;
+                            c.m_Spellbooks = new BlueprintSpellbookReference[] { };
+                            c.ForOneSpell = true;
+                            c.m_Ability = MeteorSwarmAbility;
+                            c.ForMultipleSpells = true;
+                            c.Abilities = new List<BlueprintAbilityReference>();
+                            c.MinSpellLevel = false;
+                            c.MinSpellLevelLimit = 0;
+                            c.ExactSpellLevel = false;
+                            c.ExactSpellLevelLimit = 0;
+                            c.CheckAbilityType = false;
+                            c.Type = AbilityType.Spell;
+                            c.CheckDescriptor = false;
+                            c.SpellDescriptor = new SpellDescriptor();
+                            c.CheckRange = false;
+                            c.Range = AbilityRange.Touch;
+                            c.Action = Helpers.CreateActionList(
+                                new ContextActionOnContextCaster() {
+                                    Actions = Helpers.CreateActionList(
+                                        new ContextActionHealTarget() {
+                                            Value = new ContextDiceValue() {
+                                                DiceType = DiceType.Zero,
+                                                DiceCountValue = new ContextValue() {
+                                                    ValueType = ContextValueType.Simple,
+                                                    Value = 0,
+                                                    ValueRank = AbilityRankType.Default,
+                                                    ValueShared = AbilitySharedValue.Damage,
+                                                    Property = UnitProperty.None
+                                                },
+                                                BonusValue = new ContextValue() {
+                                                    ValueType = ContextValueType.Simple,
+                                                    Value = 9,
+                                                    ValueRank = AbilityRankType.Default,
+                                                    ValueShared = AbilitySharedValue.Damage,
+                                                    Property = UnitProperty.None
+                                                },
+                                            }
+                                        })
+                                });
+                        });
+                    });
+                    var StarsDomainProgression = Resources.GetBlueprint<BlueprintProgression>("74f44da8e5ed4f2da62f04ea0b82abe8");
+                    var StarsDomainProgressionSecondary = Resources.GetBlueprint<BlueprintProgression>("46f8d2ba6d3344fc95d8eb93938e78a1");
+                    StarsDomainProgression.SetDescription("\nThe firmament provides you inspiration, and you draw power from the stars’ distant light.\nGuarded Mind: You gain a +2 insight bonus on saving throws " +
+                    "against all mind-affecting effects.\nThe Stars Are Right: At 8th level, you may spontaneously cast any of your Stars subdomain spells by swapping out a spell of an equal " +
+                    "spell level. Any Stars subdomain spell that you cast heals you an amount of hit point damage equal to the spell’s level; this effect happens as you cast the spell.\nDomain " +
+                    "{g|Encyclopedia:Spell}Spells{/g}: entropic shield, hypnotic pattern, blink, dimension door, summon monster V, overwhelming presence, sunbeam, sunburst, meteor swarm.");
+                    StarsDomainProgressionSecondary.SetDescription("\nThe firmament provides you inspiration, and you draw power from the stars’ distant light.\nGuarded Mind: You gain a +2 insight bonus on saving throws " +
+                    "against all mind-affecting effects.\nThe Stars Are Right: At 8th level, you may spontaneously cast any of your Stars subdomain spells by swapping out a spell of an equal " +
+                    "spell level. Any Stars subdomain spell that you cast heals you an amount of hit point damage equal to the spell’s level; this effect happens as you cast the spell.\nDomain " +
+                    "{g|Encyclopedia:Spell}Spells{/g}: entropic shield, hypnotic pattern, blink, dimension door, summon monster V, overwhelming presence, sunbeam, sunburst, meteor swarm.");
 
 
-                } 
-                
+
+
+
+                }
+
                 if (IsTabletopTweaksBaseEnabled()) {
 
                     var OracleClass = Resources.GetBlueprint<BlueprintCharacterClass>("20ce9bf8af32bee4c8557a045ab499b1");
