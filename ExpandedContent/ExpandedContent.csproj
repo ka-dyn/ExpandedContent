@@ -408,6 +408,8 @@
     <Compile Include="Extensions\ExtentionMethods.cs" />
     <Compile Include="Resources.cs" />
     <Compile Include="SaveGamePatch.cs" />
+    <Compile Include="Tweaks\Spells\DanceOfAThousandCuts.cs" />
+    <Compile Include="Tweaks\Spells\DanceOfAHundredCuts.cs" />
     <Compile Include="Tweaks\Spells\ClaySkin.cs" />
     <Compile Include="Tweaks\Spells\ShieldOfFortificationGreater.cs" />
     <Compile Include="Tweaks\Spells\ShieldOfFortification.cs" />
@@ -1057,6 +1059,9 @@
     <Content Include="Assets\Items\Icon_ScrollOfClaySkin.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Items\Icon_ScrollOfDanceOfAThousandCuts.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Items\Icon_ScrollOfDeadlyFinale.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -1070,6 +1075,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Items\Icon_ScrollOfGoodberry.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Items\Icon_ScrollOfDanceOfAHundredCuts.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Items\Icon_ScrollOfHollowBlades.png">
@@ -1376,6 +1384,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_CVengeance.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_DanceOfAHundredCuts.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_DanceOfAThousandCuts.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_DeadlyFinale.jpg">

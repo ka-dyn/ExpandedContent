@@ -101,6 +101,8 @@ namespace ExpandedContent.Tweaks {
                 Spells.ShieldOfFortification.AddShieldOfFortification();
                 Spells.ShieldOfFortificationGreater.AddShieldOfFortificationGreater();
                 Spells.ClaySkin.AddClaySkin();
+                Spells.DanceOfAHundredCuts.AddDanceOfAHundredCuts();
+                Spells.DanceOfAThousandCuts.AddDanceOfAThousandCuts();
 
                 Domains.ImpossibleSubdomainSelection.AddImpossibleSubdomainSelection();
                 Domains.ScalykindDomain.AddScalykindDomain();
