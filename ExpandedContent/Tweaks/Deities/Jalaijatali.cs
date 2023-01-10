@@ -54,7 +54,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     "\nSacred Animal: Water lizard   " +
                     "\nJalaijatali is a free-spirited empyreal lord who sings with the voice of a rushing creek. Her presence can be felt in the rapids of " +
                     "a flowing river or beneath the misty cascade of a waterfall. Jalaijatali appears as a beautiful Mwangi woman with skin formed of tiny, " +
-                    "iridescent scales . Her pointed ears peek through short black hair, and her body is garbed in a robe of living water that continually " +
+                    "iridescent scales. Her pointed ears peek through short black hair, and her body is garbed in a robe of living water that continually " +
                     "splashes and rushes over her form. At a moment's notice, the empyreal lord can pluck a stream of water from her robe to wield as a whip. " +
                     "Rillsong loves to teach mortals the beauty of natural music, from the patter of a summer rain to the sawing of katydids. While Jalaijatali " +
                     "much prefers making music to making war, she can be roused to anger by fiends and evil creatures that corrupt her waters, particularly river " +

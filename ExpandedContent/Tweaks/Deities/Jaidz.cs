@@ -59,8 +59,8 @@ namespace ExpandedContent.Tweaks.Deities {
                     "ghostly white spots. While in the mortal realm, he often takes the shape of a dark-skinned man with thick black hair streaked with white. His " +
                     "catlike golden eyes gleam in the shadows, and curved golden claws sprout from his hands. Even in his human form he boasts a long black tail tipped " +
                     "with white. The cowardly, the anxious, and the untested pay homage to Jaidz. Youths are especially drawn to Fearless Claw, hoping that when adulthood " +
-                    "comes, it will find them brave enough to face the challenges of maturity. Jaidz teaches that the cowardly are not to be scorned, but to be helped,and " +
-                    "his agents often provide tests of courage to those who underestimate their own potential.Jaidz dwells in a pavilion of black walnut with gold lattice " +
+                    "comes, it will find them brave enough to face the challenges of maturity. Jaidz teaches that the cowardly are not to be scorned, but to be helped, and " +
+                    "his agents often provide tests of courage to those who underestimate their own potential. Jaidz dwells in a pavilion of black walnut with gold lattice " +
                     "walls and floor-length faille curtains of emerald green, magenta, and indigo. His pavilion stands on the topmost of three stone tiers cut into one of " +
                     "the Dragonmane Mountains on Nirvana.");
                 bp.m_Icon = JaidzIcon;

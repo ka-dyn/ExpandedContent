@@ -163,7 +163,7 @@ namespace ExpandedContent.Config {
                         });
                     });
                     var StarsDomainGreaterFeature2 = Resources.GetBlueprint<BlueprintFeature>("962a7e6f19604aaeac784faa9df3b4af");
-                    StarsDomainGreaterFeature2.RemoveComponents<AddKnownSpell>();
+                    StarsDomainGreaterFeature2.RemoveComponents<SpontaneousSpellConversion>();
                     StarsDomainGreaterFeature2.TemporaryContext(bp => {
                         bp.AddComponent<SpontaneousSpellConversion>(c => {
                             c.m_CharacterClass = ClericClass.ToReference<BlueprintCharacterClassReference>();

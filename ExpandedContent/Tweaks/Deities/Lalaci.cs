@@ -62,7 +62,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     "hardworking and shade to those exhausted from the sun. Glassblowers and illusionists often find creative inspiration in Lalaci's " +
                     "rainbows; particularly gifted glass artists and lightweavers who lead worthy lives sometimes find small prisms at their workstations-tokens " +
                     "of Lalaci's favor. His devotees claim that the reflections of rainbows in natural bodies of water create portals to his celestial domain: " +
-                    "an enormous, warped gla s s palace that floats on a cloud across the surface of Elysium.");
+                    "an enormous, warped glass palace that floats on a cloud across the surface of Elysium.");
                 bp.m_Icon = LalaciIcon;
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;

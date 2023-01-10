@@ -435,11 +435,15 @@ namespace ExpandedContent.Extensions {
         public static void SetFlavorText(this BlueprintItemEquipmentUsable Item, string description) {
             Item.m_FlavorText = Helpers.CreateString(Item.FlavorText + "FlavorText", description);
         }
+        public static void SetLocalisedName(this BlueprintUnit Unit, string name) {
+            Unit.LocalizedName = ScriptableObject.CreateInstance<SharedStringAsset>();
+            Unit.LocalizedName.String = Helpers.CreateString(Unit.LocalizedName + "LocalizedName", name);
+        }
         //Faff bitter wrote end
         //Bubbles start
         public static void AppendInPlace<T>(ref T[] arr, params T[] newValue) {
             arr = arr.AppendToArray(newValue);
-        }
+        }        
         //bubbles end
         public static void SetDescriptionUntagged(this BlueprintUnitFact feature, String description) {
             feature.m_Description = Helpers.CreateString(feature.name + ".Description", description);

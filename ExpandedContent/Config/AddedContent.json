@@ -149,6 +149,11 @@
         "Enabled": true,
         "Homebrew": false,
         "Description": "A druid archeype focused on spontaneous casting of domain spells"
+      },
+      "Bear Shaman": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "A druid archeype channeling the power of the bear sprits, renamed to bear totem druid to avoid confusion."
       }
     },
     "IsExpanded": false

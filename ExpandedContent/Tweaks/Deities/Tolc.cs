@@ -54,7 +54,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     "\nFavoured Weapon: Javelin   " +
                     "\nHoly Symbol: Antlers and ice javelin   " +
                     "\nSacred Animal: Caribou   " +
-                    "\nTole is master of the frozen lands, where people struggle daily to survive the harsh elements . He gazes favorably upon those who learn to " +
+                    "\nTole is master of the frozen lands, where people struggle daily to survive the harsh elements. He gazes favorably upon those who learn to " +
                     "live within this wild domain and appreciate its fierce beauty. Tole stands 7 feet tall and has a stout but muscular figure. His light brown " +
                     "skin always holds a rosy flush, as though the empyreal lord had just stepped in from the cold. Numerous scars mar his broad face, which constantly " +
                     "sports a stern expression, though a kind light occasionally warms his hardened gaze. From his back stretch two arching tusks carved from celestial " +

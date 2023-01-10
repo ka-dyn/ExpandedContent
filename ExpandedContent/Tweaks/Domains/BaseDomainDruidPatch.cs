@@ -538,6 +538,77 @@ namespace ExpandedContent.Tweaks.Domains {
                 };
                 bp.GiveFeaturesForPreviousLevels = true;
             });
+            //Strength
+            var StrengthDomainBaseFeature = Resources.GetBlueprint<BlueprintFeature>("526f99784e9fe4346824e7f210d46112");
+
+            var StrengthDomainBaseAbility = Resources.GetBlueprint<BlueprintAbility>("1d6364123e1f6a04c88313d83d3b70ee");
+            var StrengthDomainBaseResource = Resources.GetBlueprintReference<BlueprintAbilityResourceReference>("95525809d6e672a4880ea629ca5b58ab");
+            var StrengthDomainBaseFeatureDruid = Helpers.CreateBlueprint<BlueprintFeature>("StrengthDomainBaseFeatureDruid", bp => {
+                bp.SetName("Strength Domain");
+                bp.SetDescription("In strength and brawn there is truth — your faith gives you incredible might and power.\nStrength Surge: As a {g|Encyclopedia:Standard_Actions}standard action{/g}, " +
+                    "you can {g|Encyclopedia:TouchAttack}touch{/g} a creature to give it great strength. For 1 {g|Encyclopedia:Combat_Round}round{/g}, the target gains an enhancement " +
+                    "{g|Encyclopedia:Bonus}bonus{/g} equal to 1/2 your level in the class that gave you access to this domain (minimum +1) to {g|Encyclopedia:MeleeAttack}melee attacks{/g} and " +
+                    "{g|Encyclopedia:Athletics}Athletics checks{/g}. You can use this ability a number of times per day equal to 3 + your {g|Encyclopedia:Wisdom}Wisdom{/g} modifier.\nMight of the Gods: " +
+                    "At 8th level, you add 1/2 of your level in the class that gave you access to this domain as an enhancement bonus to your Athletics {g|Encyclopedia:Check}checks{/g}.");
+                bp.m_Icon = StrengthDomainBaseFeature.m_Icon;
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StrengthDomainBaseAbility.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = StrengthDomainBaseResource;
+                    c.RestoreAmount = true;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+
+            var StrengthDomainGreaterFeature = Resources.GetBlueprintReference<BlueprintFeatureReference>("3298fd30e221ef74189a06acbf376d29");
+            var StrengthDomainSpellList = Resources.GetBlueprintReference<BlueprintSpellListReference>("03db76fd27428004482f9314c334d1ab");
+            var StrengthDomainSpellListFeatureDruid = Helpers.CreateBlueprint<BlueprintFeature>("StrengthDomainSpellListFeatureDruid", bp => {
+                bp.AddComponent<AddSpecialSpellList>(c => {
+                    c.m_CharacterClass = DruidClass;
+                    c.m_SpellList = StrengthDomainSpellList;
+                });
+                bp.HideInUI = true;
+                bp.IsClassFeature = true;
+            });
+            var StrengthDomainProgressionDruid = Helpers.CreateBlueprint<BlueprintProgression>("StrengthDomainProgressionDruid", bp => {
+                bp.SetName("Strength Domain");
+                bp.SetDescription("In {g|Encyclopedia:Strength}strength{/g} and brawn there is truth — your faith gives you incredible might and power.\nStrength Surge: As a " +
+                    "{g|Encyclopedia:Standard_Actions}standard action{/g}, you can {g|Encyclopedia:TouchAttack}touch{/g} a creature to give it great strength. For 1 " +
+                    "{g|Encyclopedia:Combat_Round}round{/g}, the target gains an enhancement {g|Encyclopedia:Bonus}bonus{/g} equal to 1/2 your level in the class that gave you access to this domain " +
+                    "(minimum +1) to {g|Encyclopedia:MeleeAttack}melee attacks{/g} and {g|Encyclopedia:Athletics}Athletics checks{/g}. You can use this ability a number of times per day equal to 3 + " +
+                    "your {g|Encyclopedia:Wisdom}Wisdom{/g} modifier.\nMight of the Gods: At 8th level, you add 1/2 of your level in the class that gave you access to this domain as an enhancement " +
+                    "bonus to your Athletics {g|Encyclopedia:Check}checks{/g}.\nDomain {g|Encyclopedia:Spell}Spells{/g}: enlarge person, bull's strength, magical vestment, mass enlarge person, " +
+                    "righteous might, stoneskin, legendary proportions, frightful aspect, transformation.");
+                bp.AddComponent<PrerequisiteClassLevel>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.m_CharacterClass = DruidClass;
+                    c.Level = 1;
+                });
+                bp.Groups = new FeatureGroup[] { FeatureGroup.DruidDomain };
+                bp.IsClassFeature = true;
+                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = DruidClass,
+                        AdditionalLevel = 0
+                    }
+                };
+                bp.LevelEntries = new LevelEntry[] {
+                    Helpers.LevelEntry(1, StrengthDomainBaseFeatureDruid, StrengthDomainSpellListFeatureDruid),
+                    Helpers.LevelEntry(8, StrengthDomainGreaterFeature)
+                };
+                bp.UIGroups = new UIGroup[] {
+                    Helpers.CreateUIGroup(StrengthDomainBaseFeatureDruid, StrengthDomainGreaterFeature)
+                };
+                bp.GiveFeaturesForPreviousLevels = true;
+            });
+
+
+
+
+
+
         }
     }
 }

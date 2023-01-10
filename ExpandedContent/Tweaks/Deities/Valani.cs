@@ -60,7 +60,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     "spiked grass and purple flowers. The skin left uncovered by ornate armor crafted from tiles of shell and obsidian is dark brown and ruddy, as if " +
                     "the light of a fire were always burning just beneath his flesh. When angered-which is often-his majestic features contort into an expres sion of " +
                     "awful rage. Aside from his wrath, Valani is also known for being a proud and wise father countless times over. Dozens of tribes on serene islands " +
-                    "through the multiverse claim their blessings stem from being favored children ofFireshaker. Valani lives in the heart of the Bright-Burning Volcano " +
+                    "through the multiverse claim their blessings stem from being favored children of Fireshaker. Valani lives in the heart of the Bright-Burning Volcano " +
                     "in Elysium.");
                 bp.m_Icon = ValaniIcon;
                 bp.Ranks = 1;

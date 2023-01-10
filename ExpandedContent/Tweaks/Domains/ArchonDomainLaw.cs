@@ -50,8 +50,8 @@ namespace ExpandedContent.Tweaks.Domains {
             var DivineHunterArchetype = Resources.GetBlueprint<BlueprintArchetype>("f996f0a18e5d945459e710ee3a6dd485");
             var PaladinClass = Resources.GetBlueprint<BlueprintCharacterClass>("bfa11238e7ae3544bbeb4d0b92e897ec");
             var TempleChampionArchetype = Resources.GetModBlueprint<BlueprintArchetype>("TempleChampionArchetype");
-            var GoodDomainBaseAbility = Resources.GetBlueprint<BlueprintAbility>("017afe6934e10c3489176e759a5f01b0");
-            var GoodDomainBaseResource = Resources.GetBlueprint<BlueprintAbilityResource>("572aade8276366e40b38752be2c55883");
+            var LawDomainBaseAbility = Resources.GetBlueprint<BlueprintAbility>("a970537ea2da20e42ae709c0bb8f793f");
+            var LawDomainBaseResource = Resources.GetBlueprint<BlueprintAbilityResource>("c87873e6bc4bb884890e69f12e4e270e");
             var HolyAura = Resources.GetBlueprint<BlueprintAbility>("808ab74c12df8784ab4eeaf6a107dbea");
 
             //ArchonDomainLawDifficultTerrainBuff
@@ -151,14 +151,14 @@ namespace ExpandedContent.Tweaks.Domains {
             
             var ArchonDomainLawBaseFeature = Helpers.CreateBlueprint<BlueprintFeature>("ArchonDomainLawBaseFeature", bp => {
                 bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[] { GoodDomainBaseAbility.ToReference<BlueprintUnitFactReference>() };
+                    c.m_Facts = new BlueprintUnitFactReference[] { LawDomainBaseAbility.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<AddAbilityResources>(c => { 
-                    c.m_Resource = GoodDomainBaseResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_Resource = LawDomainBaseResource.ToReference<BlueprintAbilityResourceReference>();
                     c.RestoreAmount = true;
                 });
                 bp.AddComponent<ReplaceAbilitiesStat>(c => {
-                    c.m_Ability = new BlueprintAbilityReference[] { GoodDomainBaseAbility.ToReference<BlueprintAbilityReference>() };
+                    c.m_Ability = new BlueprintAbilityReference[] { LawDomainBaseAbility.ToReference<BlueprintAbilityReference>() };
                     c.Stat = StatType.Wisdom;
                 });
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
@@ -168,12 +168,12 @@ namespace ExpandedContent.Tweaks.Domains {
                 });
                 bp.m_AllowNonContextActions = false;
                 bp.SetName("Archon Subdomain - Law");
-                bp.SetDescription("\nYou follow the archons path of righteousness.\n{g|Encyclopedia:TouchAttack}Touch{/g} of Good: You can " +
-                    "touch a creature as a {g|Encyclopedia:Standard_Actions}standard action{/g}, granting a sacred {g|Encyclopedia:Bonus}bonus{/g} on " +
-                    "{g|Encyclopedia:Attack}attack rolls{/g}, {g|Encyclopedia:Skills}skill checks{/g}, {g|Encyclopedia:Ability_Scores}ability checks{/g}, " +
-                    "and {g|Encyclopedia:Saving_Throw}saving throws{/g} equal to half your level in the class that gave you access to this domain (minimum 1) " +
-                    "for 1 {g|Encyclopedia:Combat_Round}round{/g}. You can use this ability a number of times per day equal to 3 + your {g|Encyclopedia:Wisdom}Wisdom{/g} " +
-                    "modifier.\nAura of Menace: At 8th level, you can emit a 30-foot aura of menace as a standard action. Enemies in this aura take a –2 penalty to " +
+                bp.SetDescription("\nYou follow the archons path of righteousness.\n{g|Encyclopedia:TouchAttack}Touch{/g} of Law: You can {g|Encyclopedia:TouchAttack}touch{/g} " +
+                    "a willing creature as a {g|Encyclopedia:Standard_Actions}standard action{/g}, infusing it with the power of divine order and allowing it to treat all " +
+                    "{g|Encyclopedia:Attack}attack rolls{/g}, {g|Encyclopedia:Skills}skill checks{/g}, {g|Encyclopedia:Ability_Scores}ability checks{/g}, and " +
+                    "{g|Encyclopedia:Saving_Throw}saving throws{/g} for 1 {g|Encyclopedia:Combat_Round}round{/g} as if the natural {g|Encyclopedia:Dice}d20{/g} " +
+                    "roll resulted in an 11.[LONGSTART] You can use this ability a number of times per day equal to 3 + your {g|Encyclopedia:Wisdom}Wisdom{/g} " +
+                    "modifier.[LONGEND]\nAura of Menace: At 8th level, you can emit a 30-foot aura of menace as a standard action. Enemies in this aura take a –2 penalty to " +
                     "AC and on attacks and saves as long as they remain inside the aura. You can use this ability for a number of rounds per day equal " +
                     "to your cleric level. These rounds do not need to be consecutive.");
                 bp.IsClassFeature = true;
@@ -209,12 +209,12 @@ namespace ExpandedContent.Tweaks.Domains {
                 });
                 bp.m_AllowNonContextActions = false;
                 bp.SetName("Archon Subdomain - Law");
-                bp.SetDescription("\nYou follow the archons path of righteousness.\n{g|Encyclopedia:TouchAttack}Touch{/g} of Good: You can " +
-                    "touch a creature as a {g|Encyclopedia:Standard_Actions}standard action{/g}, granting a sacred {g|Encyclopedia:Bonus}bonus{/g} on " +
-                    "{g|Encyclopedia:Attack}attack rolls{/g}, {g|Encyclopedia:Skills}skill checks{/g}, {g|Encyclopedia:Ability_Scores}ability checks{/g}, " +
-                    "and {g|Encyclopedia:Saving_Throw}saving throws{/g} equal to half your level in the class that gave you access to this domain (minimum 1) " +
-                    "for 1 {g|Encyclopedia:Combat_Round}round{/g}. You can use this ability a number of times per day equal to 3 + your {g|Encyclopedia:Wisdom}Wisdom{/g} " +
-                    "modifier.\nAura of Menace: At 8th level, you can emit a 30-foot aura of menace as a standard action. Enemies in this aura take a –2 penalty to " +
+                bp.SetDescription("\nYou follow the archons path of righteousness.\n{g|Encyclopedia:TouchAttack}Touch{/g} of Law: You can {g|Encyclopedia:TouchAttack}touch{/g} " +
+                    "a willing creature as a {g|Encyclopedia:Standard_Actions}standard action{/g}, infusing it with the power of divine order and allowing it to treat all " +
+                    "{g|Encyclopedia:Attack}attack rolls{/g}, {g|Encyclopedia:Skills}skill checks{/g}, {g|Encyclopedia:Ability_Scores}ability checks{/g}, and " +
+                    "{g|Encyclopedia:Saving_Throw}saving throws{/g} for 1 {g|Encyclopedia:Combat_Round}round{/g} as if the natural {g|Encyclopedia:Dice}d20{/g} " +
+                    "roll resulted in an 11.[LONGSTART] You can use this ability a number of times per day equal to 3 + your {g|Encyclopedia:Wisdom}Wisdom{/g} " +
+                    "modifier.[LONGEND]\nAura of Menace: At 8th level, you can emit a 30-foot aura of menace as a standard action. Enemies in this aura take a –2 penalty to " +
                     "AC and on attacks and saves as long as they remain inside the aura. You can use this ability for a number of rounds per day equal " +
                     "to your cleric level. These rounds do not need to be consecutive.\nDomain {g|Encyclopedia:Spell}Spells{/g}: divine favor, communal protection " +
                     "from chaos, prayer, holy smite, dominate person, blade barrier, dictum, sheild of law, dominate monster.");
@@ -271,12 +271,12 @@ namespace ExpandedContent.Tweaks.Domains {
                 });                
                 bp.m_AllowNonContextActions = false;
                 bp.SetName("Archon Subdomain - Law");
-                bp.SetDescription("\nYou follow the archons path of righteousness.\n{g|Encyclopedia:TouchAttack}Touch{/g} of Good: You can " +
-                    "touch a creature as a {g|Encyclopedia:Standard_Actions}standard action{/g}, granting a sacred {g|Encyclopedia:Bonus}bonus{/g} on " +
-                    "{g|Encyclopedia:Attack}attack rolls{/g}, {g|Encyclopedia:Skills}skill checks{/g}, {g|Encyclopedia:Ability_Scores}ability checks{/g}, " +
-                    "and {g|Encyclopedia:Saving_Throw}saving throws{/g} equal to half your level in the class that gave you access to this domain (minimum 1) " +
-                    "for 1 {g|Encyclopedia:Combat_Round}round{/g}. You can use this ability a number of times per day equal to 3 + your {g|Encyclopedia:Wisdom}Wisdom{/g} " +
-                    "modifier.\nAura of Menace: At 8th level, you can emit a 30-foot aura of menace as a standard action. Enemies in this aura take a –2 penalty to " +
+                bp.SetDescription("\nYou follow the archons path of righteousness.\n{g|Encyclopedia:TouchAttack}Touch{/g} of Law: You can {g|Encyclopedia:TouchAttack}touch{/g} " +
+                    "a willing creature as a {g|Encyclopedia:Standard_Actions}standard action{/g}, infusing it with the power of divine order and allowing it to treat all " +
+                    "{g|Encyclopedia:Attack}attack rolls{/g}, {g|Encyclopedia:Skills}skill checks{/g}, {g|Encyclopedia:Ability_Scores}ability checks{/g}, and " +
+                    "{g|Encyclopedia:Saving_Throw}saving throws{/g} for 1 {g|Encyclopedia:Combat_Round}round{/g} as if the natural {g|Encyclopedia:Dice}d20{/g} " +
+                    "roll resulted in an 11.[LONGSTART] You can use this ability a number of times per day equal to 3 + your {g|Encyclopedia:Wisdom}Wisdom{/g} " +
+                    "modifier.[LONGEND]\nAura of Menace: At 8th level, you can emit a 30-foot aura of menace as a standard action. Enemies in this aura take a –2 penalty to " +
                     "AC and on attacks and saves as long as they remain inside the aura. You can use this ability for a number of rounds per day equal " +
                     "to your cleric level. These rounds do not need to be consecutive.\nDomain {g|Encyclopedia:Spell}Spells{/g}: divine favor, communal protection " +
                     "from chaos, prayer, holy smite, dominate person, blade barrier, dictum, sheild of law, dominate monster.");

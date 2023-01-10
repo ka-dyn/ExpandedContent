@@ -173,6 +173,7 @@
     <Compile Include="Tweaks\Archdevils\Mephistopheles.cs" />
     <Compile Include="Tweaks\Archdevils\Moloch.cs" />
     <Compile Include="Tweaks\Archetypes\Castigator.cs" />
+    <Compile Include="Tweaks\Archetypes\BearShaman.cs" />
     <Compile Include="Tweaks\Archetypes\UrbanDruid.cs" />
     <Compile Include="Tweaks\Archetypes\DraconicScholar.cs" />
     <Compile Include="Tweaks\Archetypes\DraconicShaman.cs" />
@@ -1365,10 +1366,16 @@
     <Content Include="Assets\Skills\Icon_AuraEvil.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Skills\Icon_BearShamanTotemTransformation.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Skills\Icon_BOO.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_ChannelTOC.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_CheetahSprint.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_ClaySkin.jpg">
@@ -1413,6 +1420,9 @@
     <Content Include="Assets\Skills\Icon_DreadfulCalm.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Skills\Icon_DruidClaws.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Skills\Icon_EntropicShield.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -1453,6 +1463,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_InvokeDeity.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_LionShamanTotemTransformation.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_LureOfTheHeavens.png">
@@ -1549,6 +1562,24 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_StunningFinale.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_SummonBear3.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_SummonBear4.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_SummonBear5.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_SummonBear6.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_SummonBear7.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_SummonBear8.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_SwiftAidAnother.jpg">

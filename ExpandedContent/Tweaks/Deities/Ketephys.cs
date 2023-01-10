@@ -55,7 +55,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     "\nThis long-faced elven god rarely speaks unless coordinating the efforts of other beings in a hunt for a dangerous " +
                     "or especially prized creature. In holy art, he is shown barefoot, wearing form-fitting brown and forestgreen to prevent " +
                     "snags and excess noise. He is usually accompanied by his dog Meycho and his hawk Falling Star, though he keeps them for " +
-                    "companionship rather than assistance, as he prefers to succeed or fail on his own skill.Ketephys is an occasional hunting " +
+                    "companionship rather than assistance, as he prefers to succeed or fail on his own skill. Ketephys is an occasional hunting " +
                     "partner of Erastil, but disapproves of his insistence upon marriage; in turn, Erastil attributes this to elven immaturity and " +
                     "capriciousness. Ketephys is an ally of Gozreh against threats to the natural world. He views Treerazer as his arch-enemy, and " +
                     "personally served as a commander during the conflict that pushed Treerazer to Tanglebriar, where he hides to this day. " +

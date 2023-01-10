@@ -55,8 +55,8 @@ namespace ExpandedContent.Tweaks.Deities {
                     "\nSubdomains: Construct, Family, Fur, Growth, Home, Industry, Seasons   " +
                     "\nFavoured Weapon: Flail   " +
                     "\nHoly Symbol: Nine-tailed fox   " +
-                    "\nSacred Animal: Fox   " +
-                    "Daikitsu is widely worshiped in Tian Xia, as she is the goddess of rice, a staple food in those lands, as well as of " +
+                    "\nSacred Animal: Fox " +
+                    "\nDaikitsu is widely worshiped in Tian Xia, as she is the goddess of rice, a staple food in those lands, as well as of " +
                     "agriculture and craftsmanship. Farmers pray to Daikitsu for good harvests, smiths and craftsmen seek her blessing for their " +
                     "creations, and families ask for her protection for their homes and families. Known as the Lady of Foxes, Daikitsu usually " +
                     "appears as beautiful kitsune woman with snow-white fur and nine tails. She is also the patron of kitsune, who venerate her " +
