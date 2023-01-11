@@ -78,6 +78,6 @@ I'd like to give a huge thank you to Vek17, as much of the coding in this reposi
 anything without it. Check out his mod, TableTopTweaks if you haven't already!
 - https://github.com/Vek17/TabletopTweaks-Base
 
-I'd also like to give a big shoutout and thank you to bubbles, Narria, CascadingDragon, and everyone else who has been so kind in the Modding discord.
-Seriously, thank you!
+Many of the icons and art stuff in the mod are thanks to xTekek
+
 
