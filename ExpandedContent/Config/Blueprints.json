@@ -1357,7 +1357,18 @@
     "SummonBearYoungD4plus1": "95c6f4e6-74f5-40cd-977f-ed27c796f522",
     "SummonBearYoungSingle": "6a04b3c7-ddda-47ee-a3b3-aa0f364a20aa",
     "SummonOwlbearStandardSingle": "dc793bcf-32ea-4533-b626-9e4026c0b552",
-    "TotemCreature": "20eebc0c-c3a4-4a6c-a101-4433ef9cd367"
+    "TotemCreature": "20eebc0c-c3a4-4a6c-a101-4433ef9cd367",
+
+    "ResolveDomainAllowed": "cb36ebc8-df0e-4846-8be7-eac2ba0f0132",
+    "ResolveDomainBaseFeature": "8236607b-8530-4f83-96fe-eb478e5ef248",
+    "ResolveDomainGreaterAbility": "2f4c8d65-17f3-4bd5-b967-9a08a5fcf5d9",
+    "ResolveDomainGreaterBuff": "b3d8ea8b-9e06-46ed-900f-def2a5ea6d16",
+    "ResolveDomainGreaterFeature": "5f506639-ea47-47ca-b87e-64e2fbffef83",
+    "ResolveDomainGreaterResource": "05409319-6c6e-4d4b-8851-2e8c2a81990a",
+    "ResolveDomainProgression": "d9adf842-306f-4296-83ee-fbef5feba8cd",
+    "ResolveDomainProgressionSecondary": "af193f79-d5da-4610-b0aa-8001eeee4c23",
+    "ResolveDomainSpellList": "0c918cf7-bfe1-4eb6-9942-afc410db9a08",
+    "ResolveDomainSpellListFeature": "32090ada-d368-44c9-adc9-111bff8d5087"
 
 
 

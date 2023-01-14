@@ -480,7 +480,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.AddComponent<ContextCalculateSharedValue>(c => {
                     c.ValueType = AbilitySharedValue.Heal;
                     c.Value = new ContextDiceValue() {
-                        DiceType = DiceType.One,
+                        DiceType = DiceType.D6,
                         DiceCountValue = new ContextValue() {
                             ValueType = ContextValueType.Rank,
                             Value = 0,

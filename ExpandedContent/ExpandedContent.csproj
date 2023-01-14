@@ -330,6 +330,7 @@
     <Compile Include="Tweaks\Deities\Ragathiel.cs" />
     <Compile Include="Tweaks\DemonLords\Zura.cs" />
     <Compile Include="Tweaks\Domains\BaseDomainDruidPatch.cs" />
+    <Compile Include="Tweaks\Domains\ResolveDomain.cs" />
     <Compile Include="Tweaks\Domains\CurseDomain.cs" />
     <Compile Include="Tweaks\Domains\StarsDomain.cs" />
     <Compile Include="Tweaks\Domains\RestorationDomain.cs" />

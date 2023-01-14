@@ -50,6 +50,7 @@ namespace ExpandedContent.Tweaks.Domains {
             var PsychopompDomainDeathAllowed = Resources.GetModBlueprint<BlueprintFeature>("PsychopompDomainDeathAllowed");
             var PsychopompDomainReposeAllowed = Resources.GetModBlueprint<BlueprintFeature>("PsychopompDomainReposeAllowed");
             var RageDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("RageDomainAllowed");
+            var ResolveDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("ResolveDomainAllowed");
             var RestorationDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("RestorationDomainAllowed");
             var RevelationDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("RevelationDomainAllowed");
             var RevolutionDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("RevolutionDomainAllowed");
@@ -60,6 +61,9 @@ namespace ExpandedContent.Tweaks.Domains {
 
             CaydenCaileanFeature.AddComponent<AddFacts>(c => {
                 c.m_Facts = new BlueprintUnitFactReference[1] { FerocityDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+            });
+            CaydenCaileanFeature.AddComponent<AddFacts>(c => {
+                c.m_Facts = new BlueprintUnitFactReference[1] { ResolveDomainAllowed.ToReference<BlueprintUnitFactReference>() };
             });
             CalistriaFeature.AddComponent<AddFacts>(c => {
                 c.m_Facts = new BlueprintUnitFactReference[1] { CurseDomainAllowed.ToReference<BlueprintUnitFactReference>() };
@@ -88,6 +92,9 @@ namespace ExpandedContent.Tweaks.Domains {
             GorumFeature.AddComponent<AddFacts>(c => {
                 c.m_Facts = new BlueprintUnitFactReference[1] { RageDomainAllowed.ToReference<BlueprintUnitFactReference>() };
             });
+            GorumFeature.AddComponent<AddFacts>(c => {
+                c.m_Facts = new BlueprintUnitFactReference[1] { ResolveDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+            });
             GozrehFeature.AddComponent<AddFacts>(c => {
                 c.m_Facts = new BlueprintUnitFactReference[1] { WindDomainAllowed.ToReference<BlueprintUnitFactReference>() };
             });
@@ -108,6 +115,9 @@ namespace ExpandedContent.Tweaks.Domains {
             });
             IomedaeFeature.AddComponent<AddFacts>(c => {
                 c.m_Facts = new BlueprintUnitFactReference[1] { RevelationDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+            });
+            IroriFeature.AddComponent<AddFacts>(c => {
+                c.m_Facts = new BlueprintUnitFactReference[1] { ResolveDomainAllowed.ToReference<BlueprintUnitFactReference>() };
             });
             IroriFeature.AddComponent<AddFacts>(c => {
                 c.m_Facts = new BlueprintUnitFactReference[1] { RestorationDomainAllowed.ToReference<BlueprintUnitFactReference>() };

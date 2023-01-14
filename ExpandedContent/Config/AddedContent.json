@@ -265,6 +265,11 @@
         "Enabled": true,
         "Homebrew": false,
         "Description": "Adds the stars subdomain."
+      },
+      "Resolve Subdomain": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds the resolve subdomain, a subdomain to the strength domain."
       }
     },
     "IsExpanded": false
