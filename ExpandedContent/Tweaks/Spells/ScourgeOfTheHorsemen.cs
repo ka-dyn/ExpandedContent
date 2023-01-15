@@ -150,7 +150,7 @@ namespace ExpandedContent.Tweaks.Spells {
                                 DiceType = DiceType.D4,
                                 DiceCountValue = new ContextValue() {
                                     ValueType = ContextValueType.Simple,
-                                    Value = 0,
+                                    Value = 1,
                                     ValueRank = AbilityRankType.Default,
                                     ValueShared = AbilitySharedValue.Damage,
                                     Property = UnitProperty.None

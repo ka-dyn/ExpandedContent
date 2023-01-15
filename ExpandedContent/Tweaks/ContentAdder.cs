@@ -131,6 +131,7 @@ namespace ExpandedContent.Tweaks {
                 Domains.WhimsyDomain.AddWhimsyDomain();
                 Domains.WindDomain.AddWindDomain();
                 Domains.ResolveDomain.AddResolveDomain();
+                Domains.AgathionDomain.AddAgathionDomain();
                 Domains.BaseDeityPatch.AddBaseDeityPatch();
 
                 Archetypes.StormDruid.AddStormDruid();

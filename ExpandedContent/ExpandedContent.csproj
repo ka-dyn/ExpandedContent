@@ -329,6 +329,7 @@
     <Compile Include="Tweaks\Deities\Pulura.cs" />
     <Compile Include="Tweaks\Deities\Ragathiel.cs" />
     <Compile Include="Tweaks\DemonLords\Zura.cs" />
+    <Compile Include="Tweaks\Domains\AgathionDomain.cs" />
     <Compile Include="Tweaks\Domains\BaseDomainDruidPatch.cs" />
     <Compile Include="Tweaks\Domains\ResolveDomain.cs" />
     <Compile Include="Tweaks\Domains\CurseDomain.cs" />
@@ -1518,6 +1519,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_ProfaneWeapon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_ProtectiveAura.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_PurgingFinale.jpg">

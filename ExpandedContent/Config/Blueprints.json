@@ -1368,7 +1368,19 @@
     "ResolveDomainProgression": "d9adf842-306f-4296-83ee-fbef5feba8cd",
     "ResolveDomainProgressionSecondary": "af193f79-d5da-4610-b0aa-8001eeee4c23",
     "ResolveDomainSpellList": "0c918cf7-bfe1-4eb6-9942-afc410db9a08",
-    "ResolveDomainSpellListFeature": "32090ada-d368-44c9-adc9-111bff8d5087"
+    "ResolveDomainSpellListFeature": "32090ada-d368-44c9-adc9-111bff8d5087",
+    "AgathionDomainAllowed": "01eb5a07-e553-44be-8247-6f2a9976ddb9",
+    "AgathionDomainBaseFeature": "d8e01e72-9bf2-4d54-989e-bbe61197473b",
+    "AgathionDomainGreaterAbility": "a114d26e-1e17-4e6c-91dc-6ceca5773317",
+    "AgathionDomainGreaterArea": "477d23ac-0d25-42d8-bdf7-8de11767f9a5",
+    "AgathionDomainGreaterAreaBuff": "f0534332-246d-4733-aad2-656b1ad5ba75",
+    "AgathionDomainGreaterBuff": "74aacd8f-f77d-4148-af1b-69f998842d85",
+    "AgathionDomainGreaterFeature": "3854aa78-b4c7-45f0-a97d-e031223669df",
+    "AgathionDomainGreaterResource": "29eb8326-de9b-4f51-aed4-13ac3217a95b",
+    "AgathionDomainProgression": "6f165733-9da7-437b-9653-91db0b5e34e5",
+    "AgathionDomainProgressionSecondary": "b21583ba-f8fc-4c3a-bf39-bcb8023712d2",
+    "AgathionDomainSpellList": "b29fd23f-e19c-4f48-8b88-9150c303ec43",
+    "AgathionDomainSpellListFeature": "d7e64d38-89b5-4989-ab4c-ffae5a118551"
 
 
 

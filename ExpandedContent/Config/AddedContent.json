@@ -270,6 +270,11 @@
         "Enabled": true,
         "Homebrew": false,
         "Description": "Adds the resolve subdomain, a subdomain to the strength domain."
+      },
+      "Agathion Subdomain": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds the agathion subdomain, a subdomain to the good domain."
       }
     },
     "IsExpanded": false
