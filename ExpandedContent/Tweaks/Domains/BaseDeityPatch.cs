@@ -48,6 +48,7 @@ namespace ExpandedContent.Tweaks.Domains {
             var DemonDomainEvilAllowed = Resources.GetModBlueprint<BlueprintFeature>("DemonDomainEvilAllowed");
             var FerocityDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("FerocityDomainAllowed");
             var IceDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("IceDomainAllowed");
+            var LustDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("LustDomainAllowed");
             var PsychopompDomainDeathAllowed = Resources.GetModBlueprint<BlueprintFeature>("PsychopompDomainDeathAllowed");
             var PsychopompDomainReposeAllowed = Resources.GetModBlueprint<BlueprintFeature>("PsychopompDomainReposeAllowed");
             var RageDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("RageDomainAllowed");
@@ -64,10 +65,16 @@ namespace ExpandedContent.Tweaks.Domains {
                 c.m_Facts = new BlueprintUnitFactReference[1] { FerocityDomainAllowed.ToReference<BlueprintUnitFactReference>() };
             });
             CaydenCaileanFeature.AddComponent<AddFacts>(c => {
+                c.m_Facts = new BlueprintUnitFactReference[1] { LustDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+            });
+            CaydenCaileanFeature.AddComponent<AddFacts>(c => {
                 c.m_Facts = new BlueprintUnitFactReference[1] { ResolveDomainAllowed.ToReference<BlueprintUnitFactReference>() };
             });
             CalistriaFeature.AddComponent<AddFacts>(c => {
                 c.m_Facts = new BlueprintUnitFactReference[1] { CurseDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+            });
+            CalistriaFeature.AddComponent<AddFacts>(c => {
+                c.m_Facts = new BlueprintUnitFactReference[1] { LustDomainAllowed.ToReference<BlueprintUnitFactReference>() };
             });
             CalistriaFeature.AddComponent<AddFacts>(c => {
                 c.m_Facts = new BlueprintUnitFactReference[1] { ThieveryDomainAllowed.ToReference<BlueprintUnitFactReference>() };

@@ -1380,7 +1380,16 @@
     "AgathionDomainProgression": "6f165733-9da7-437b-9653-91db0b5e34e5",
     "AgathionDomainProgressionSecondary": "b21583ba-f8fc-4c3a-bf39-bcb8023712d2",
     "AgathionDomainSpellList": "b29fd23f-e19c-4f48-8b88-9150c303ec43",
-    "AgathionDomainSpellListFeature": "d7e64d38-89b5-4989-ab4c-ffae5a118551"
+    "AgathionDomainSpellListFeature": "d7e64d38-89b5-4989-ab4c-ffae5a118551",
+    "LustDomainAllowed": "822e7745-fc55-46a6-9d0f-d95c1a3809d9",
+    "LustDomainBaseFeature": "c10df1c6-5bef-4af5-abc7-ee56e82abfdb",
+    "LustDomainGreaterAbility": "5c97c2f7-02ab-46d1-a534-b3bb44072db9",
+    "LustDomainGreaterFeature": "56f7a044-f8ac-4755-9a8e-e41264de10eb",
+    "LustDomainGreaterResource": "e4ee31dd-9a81-41d4-88de-2f8f3d953d5e",
+    "LustDomainProgression": "3dbbb3d7-f4b2-48d3-8758-dad2c2988ccd",
+    "LustDomainProgressionSecondary": "6be50eff-a5ed-4708-8be3-0775794f4723",
+    "LustDomainSpellList": "1047f890-23c4-4fa1-9598-2b106d5f4554",
+    "LustDomainSpellListFeature": "f2e90c45-0aad-481d-913f-47f0e7681c8e"
 
 
 

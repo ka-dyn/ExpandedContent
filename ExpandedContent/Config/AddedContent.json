@@ -275,6 +275,11 @@
         "Enabled": true,
         "Homebrew": false,
         "Description": "Adds the agathion subdomain, a subdomain to the good domain."
+      },
+      "Lust Subdomain": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds the lust subdomain, a subdomain to the charm domain."
       }
     },
     "IsExpanded": false

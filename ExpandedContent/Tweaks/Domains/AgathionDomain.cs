@@ -287,7 +287,7 @@ namespace ExpandedContent.Tweaks.Domains {
                 });
                 bp.m_AllowNonContextActions = false;
                 bp.SetName("Agathion Subdomain");
-                bp.SetDescription("\nYou follow the Agathions path of righteousness.\n{g|Encyclopedia:TouchAttack}Touch{/g} of Good: You can " +
+                bp.SetDescription("\nYou channel the pure and uncorrupted energy of Nirvana.\n{g|Encyclopedia:TouchAttack}Touch{/g} of Good: You can " +
                     "touch a creature as a {g|Encyclopedia:Standard_Actions}standard action{/g}, granting a sacred {g|Encyclopedia:Bonus}bonus{/g} on " +
                     "{g|Encyclopedia:Attack}attack rolls{/g}, {g|Encyclopedia:Skills}skill checks{/g}, {g|Encyclopedia:Ability_Scores}ability checks{/g}, " +
                     "and {g|Encyclopedia:Saving_Throw}saving throws{/g} equal to half your level in the class that gave you access to this domain (minimum 1) " +
@@ -328,7 +328,7 @@ namespace ExpandedContent.Tweaks.Domains {
                 });
                 bp.m_AllowNonContextActions = false;
                 bp.SetName("Agathion Subdomain");
-                bp.SetDescription("\nYou follow the Agathions path of righteousness.\n{g|Encyclopedia:TouchAttack}Touch{/g} of Good: You can " +
+                bp.SetDescription("\nYou channel the pure and uncorrupted energy of Nirvana.\n{g|Encyclopedia:TouchAttack}Touch{/g} of Good: You can " +
                     "touch a creature as a {g|Encyclopedia:Standard_Actions}standard action{/g}, granting a sacred {g|Encyclopedia:Bonus}bonus{/g} on " +
                     "{g|Encyclopedia:Attack}attack rolls{/g}, {g|Encyclopedia:Skills}skill checks{/g}, {g|Encyclopedia:Ability_Scores}ability checks{/g}, " +
                     "and {g|Encyclopedia:Saving_Throw}saving throws{/g} equal to half your level in the class that gave you access to this domain (minimum 1) " +
