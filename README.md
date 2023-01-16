@@ -68,7 +68,7 @@ New Domains / Subdomains
 
 -Domains: Scalykind
 
--Subdomains: Archon, Blood, Caves, Curse, Demon, Dragon, Ferocity, Ice, Psychopomp, Rage, Restoration, Revelation, Revolution, Rivers, Stars, Storm, Thievery, Undead, Whimsy, Wind
+-Subdomains: Agathion, Archon, Blood, Caves, Curse, Demon, Dragon, Ferocity, Ice, Lust, Psychopomp, Rage, Resolve, Restoration, Revelation, Revolution, Rivers, Stars, Storm, Thievery, Undead, Whimsy, Wind
 
 New Spells
 
