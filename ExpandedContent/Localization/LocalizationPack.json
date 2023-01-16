@@ -43,17 +43,17 @@
       "enGB": "At 3rd level, and every three levels thereafter, a dreadknight can select one cruelty. Each cruelty adds an effect to the dreadknight's touch of profane corruption ability. Whenever the dreadknight uses profane corruption to deal damage to one target, the target also receives the additional effect from one of the cruelties possessed by the dreadknight."
     },
     {
+      "Key": "64882fdb8b55420fa95c43fa4ffa1f97",
+      "SimpleName": "$DreadKnightChannelNegativeEnergyAbility.DescriptionShort",
+      "ProcessTemplates": false,
+      "enGB": "Channeling negative energy causes a burst that damages every creature in a 30-foot radius centered on the Dread Knight. The amount of damage inflicted is equal to 1d6 points of damage plus 1d6 points of damage for every two Dread Knight levels beyond 1st (2d6 at 3rd, 3d6 at 5th, and so on). Creatures that take damage from channeled energy receive a Will save to halve the damage."
+    },
+    {
       "Key": "9790ac745aaa44ed97d1207857a5442c",
       "SimpleName": "$DreadKnightChannelNegativeEnergyAbility.DescriptionShort",
       "ProcessTemplates": false,
       "IsUsed": false,
       "enGB": "Channeling negative energy causes a burst that heals every undead creature in a 30-foot radius centered on the Dread Knight. The amount of damage healed is equal to 1d6 points of damage plus 1d6 points of damage for every two Dread Knight levels beyond 1st (2d6 at 3rd, 3d6 at 5th, and so on)."
-    },
-    {
-      "Key": "64882fdb8b55420fa95c43fa4ffa1f97",
-      "SimpleName": "$DreadKnightChannelNegativeEnergyAbility.DescriptionShort",
-      "ProcessTemplates": false,
-      "enGB": "Channeling negative energy causes a burst that damages every creature in a 30-foot radius centered on the Dread Knight. The amount of damage inflicted is equal to 1d6 points of damage plus 1d6 points of damage for every two Dread Knight levels beyond 1st (2d6 at 3rd, 3d6 at 5th, and so on). Creatures that take damage from channeled energy receive a Will save to halve the damage."
     },
     {
       "Key": "cb9dfc592d0146468c08489ba59aa6cc",
@@ -93,16 +93,16 @@
       "enGB": "Once per day, a dreadknight can reach out to the profane lords to grant sinful absolution to the forces arrayed against them. As a swift action, the dreadknight chooses one target within sight to crush. The dreadknight adds their Charisma bonus (if any) on their attack rolls and adds their dreadknight level on all damage rolls made against the target of their unholy smite. Regardless of the target, sinful absolution attacks automatically bypass any DR the creature might possess. In addition, while Sinful Absolution is in effect, the dreadknight gains a deflection bonus equal to their Charisma modifier(if any) to their AC against attacks made by the target of sinful absolution."
     },
     {
-      "Key": "caa10bd594a24eb192670bf6289cab8a",
-      "SimpleName": "$TouchOfProfaneCorruptionFeature.DescriptionShort",
-      "ProcessTemplates": false,
-      "enGB": "Beginning at 7th level as a swift action, a dreadknight can spend two uses of their touch of profane corruption to surround their weapon with a profane flame, causing terrible wounds to open on those they attacks. This ability works with any weapon."
-    },
-    {
       "Key": "a21570d8a87645adbcc9b95ed420216d",
       "SimpleName": "$TouchOfProfaneCorruptionFeature.DescriptionShort",
       "ProcessTemplates": false,
       "enGB": "Beginning at 2nd level, a dreadknight can surround her hand with a profane flame, causing terrible wounds to open on those she touches. Alternatively, a dreadknight can use this power to heal undead creatures."
+    },
+    {
+      "Key": "caa10bd594a24eb192670bf6289cab8a",
+      "SimpleName": "$TouchOfProfaneCorruptionFeature.DescriptionShort",
+      "ProcessTemplates": false,
+      "enGB": "Beginning at 7th level as a swift action, a dreadknight can spend two uses of their touch of profane corruption to surround their weapon with a profane flame, causing terrible wounds to open on those they attacks. This ability works with any weapon."
     },
     {
       "Key": "dd8c0bee59ea466b9f9a584af23aa32e",
@@ -176,6 +176,60 @@
       "SimpleName": "AchaekekFeature.Name",
       "ProcessTemplates": false,
       "enGB": "Achaekek"
+    },
+    {
+      "Key": "b4d5e17682924058acf0f4aa249e23e3",
+      "SimpleName": "AgathionDomainBaseFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nYou channel the pure and uncorrupted energy of Nirvana.\nTouch of Good: You can touch a creature as a standard action, granting a sacred bonus on attack rolls, skill checks, ability checks, and saving throws equal to half your level in the class that gave you access to this domain (minimum 1) for 1 round. You can use this ability a number of times per day equal to 3 + your Wisdom modifier.\nProtective Aura: At 8th level, you can emit a 30-foot protective aura as a standard action. Allies in this aura receive a +2 deflection bonus to AC and a +2 resistance bonus on all saving throws. Additionally, the aura protects from attempts to dominate or charm the subject made by evil creatures. You can use this ability for a number of rounds per day equal to your cleric level. These rounds do not need to be consecutive."
+    },
+    {
+      "Key": "0fe41a62dc934c4d818f01a3cfab6e6b",
+      "SimpleName": "AgathionDomainBaseFeature.Name",
+      "ProcessTemplates": false,
+      "enGB": "Agathion Subdomain"
+    },
+    {
+      "Key": "1937d531d5a240cdb4a9df70b5b4eb97",
+      "SimpleName": "AgathionDomainGreaterAbility.Description",
+      "ProcessTemplates": true,
+      "enGB": "At 8th level, you can emit a 30-foot protective aura as a standard action. Allies in this aura receive a +2 deflection bonus to AC and a +2 resistance bonus on all saving throws. Additionally, the aura protects from attempts to dominate or charm the subject made by evil creatures. You can use this ability for a number of rounds per day equal to your cleric level. These rounds do not need to be consecutive."
+    },
+    {
+      "Key": "229d2b8088fb481fb101ff6528dbe57f",
+      "SimpleName": "AgathionDomainGreaterAreaBuff.Description",
+      "ProcessTemplates": true,
+      "enGB": "While in a Protective Aura allies gain a +2 resistance bonus to all saves and a +2 deflection bonus to AC. \nAdditionally, the aura protects from attempts to dominate or charm the subject made by evil creatures."
+    },
+    {
+      "Key": "993e42494d924900862b3f251f432d13",
+      "SimpleName": "AgathionDomainGreaterAreaBuff.Name",
+      "ProcessTemplates": false,
+      "enGB": "Protective Aura"
+    },
+    {
+      "Key": "992b417719b24a62b277e2cf73ffb926",
+      "SimpleName": "AgathionDomainGreaterBuff.Description",
+      "ProcessTemplates": true,
+      "enGB": "At 8th level, you can emit a 30-foot protective aura as a standard action. Allies in this aura receive a +2 deflection bonus to AC and a +2 resistance bonus on all saving throws. Additionally, the aura protects from attempts to dominate or charm the subject made by evil creatures. You can use this ability for a number of rounds per day equal to your cleric level. These rounds do not need to be consecutive."
+    },
+    {
+      "Key": "2932a652a04541c39172153b05b8e63b",
+      "SimpleName": "AgathionDomainGreaterFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "At 8th level, you can emit a 30-foot protective aura as a standard action. Allies in this aura receive a +2 deflection bonus to AC and a +2 resistance bonus on all saving throws. Additionally, the aura protects from attempts to dominate or charm the subject made by evil creatures. You can use this ability for a number of rounds per day equal to your cleric level. These rounds do not need to be consecutive."
+    },
+    {
+      "Key": "c8626cfacff34d6baf9eecfdbf56d9b8",
+      "SimpleName": "AgathionDomainProgression.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nYou channel the pure and uncorrupted energy of Nirvana.\nTouch of Good: You can touch a creature as a standard action, granting a sacred bonus on attack rolls, skill checks, ability checks, and saving throws equal to half your level in the class that gave you access to this domain (minimum 1) for 1 round. You can use this ability a number of times per day equal to 3 + your Wisdom modifier.\nProtective Aura: At 8th level, you can emit a 30-foot protective aura as a standard action. Allies in this aura receive a +2 deflection bonus to AC and a +2 resistance bonus on all saving throws. Additionally, the aura protects from attempts to dominate or charm the subject made by evil creatures. You can use this ability for a number of rounds per day equal to your cleric level. These rounds do not need to be consecutive.\nDomain Spells: divine favor, communal protection from evil, prayer, forced repentance, burst of glory, summon monster VI, holy word, holy aura, summon monster IX."
+    },
+    {
+      "Key": "9ea595130cd744e4b96235bdf49f7d19",
+      "SimpleName": "AgathionDomainProgressionSecondary.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nYou follow the Agathions path of righteousness.\nTouch of Good: You can touch a creature as a standard action, granting a sacred bonus on attack rolls, skill checks, ability checks, and saving throws equal to half your level in the class that gave you access to this domain (minimum 1) for 1 round. You can use this ability a number of times per day equal to 3 + your Wisdom modifier.\nProtective Aura: At 8th level, you can emit a 30-foot protective aura as a standard action. Allies in this aura receive a +2 deflection bonus to AC and a +2 resistance bonus on all saving throws. Additionally, the aura protects from attempts to dominate or charm the subject made by evil creatures. You can use this ability for a number of rounds per day equal to your cleric level. These rounds do not need to be consecutive.\nDomain Spells: divine favor, communal protection from evil, prayer, forced repentance, burst of glory, summon monster VI, holy word, holy aura, summon monster IX."
     },
     {
       "Key": "7c77d56f125d4ae18aade2595bb68b02",
@@ -458,22 +512,29 @@
       "enGB": "At 8th level, you can emit a 30-foot aura of menace as a standard action. Enemies in this aura take a –2 penalty to AC and on attacks and saves as long as they remain inside the aura. You can use this ability for a number of rounds per day equal to your cleric level. These rounds do not need to be consecutive."
     },
     {
-      "Key": "ab5422bb10d34d39b6cb701f99b9fd3e",
-      "SimpleName": "ArchonDomainLawBaseFeature.Description",
-      "ProcessTemplates": true,
-      "enGB": "\nYou follow the archons path of righteousness.\nTouch of Good: You can touch a creature as a standard action, granting a sacred bonus on attack rolls, skill checks, ability checks, and saving throws equal to half your level in the class that gave you access to this domain (minimum 1) for 1 round. You can use this ability a number of times per day equal to 3 + your Wisdom modifier.\nAura of Menace: At 8th level, you can emit a 30-foot aura of menace as a standard action. Enemies in this aura take a –2 penalty to AC and on attacks and saves as long as they remain inside the aura. You can use this ability for a number of rounds per day equal to your cleric level. These rounds do not need to be consecutive."
-    },
-    {
       "Key": "65eaa77407ea49f58fba80be8d061fb0",
       "SimpleName": "ArchonDomainLawBaseFeature.Description",
       "ProcessTemplates": true,
       "enGB": "\nYou follow the archons path of righteousness.\nTouch of Law: You can touch a willing creature as a standard action, infusing it with the power of divine order and allowing it to treat all attack rolls, skill checks, ability checks, and saving throws for 1 round as if the natural d20 roll resulted in an 11.[LONGSTART] You can use this ability a number of times per day equal to 3 + your Wisdom modifier.[LONGEND]\nAura of Menace: At 8th level, you can emit a 30-foot aura of menace as a standard action. Enemies in this aura take a –2 penalty to AC and on attacks and saves as long as they remain inside the aura. You can use this ability for a number of rounds per day equal to your cleric level. These rounds do not need to be consecutive."
     },
     {
+      "Key": "ab5422bb10d34d39b6cb701f99b9fd3e",
+      "SimpleName": "ArchonDomainLawBaseFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nYou follow the archons path of righteousness.\nTouch of Good: You can touch a creature as a standard action, granting a sacred bonus on attack rolls, skill checks, ability checks, and saving throws equal to half your level in the class that gave you access to this domain (minimum 1) for 1 round. You can use this ability a number of times per day equal to 3 + your Wisdom modifier.\nAura of Menace: At 8th level, you can emit a 30-foot aura of menace as a standard action. Enemies in this aura take a –2 penalty to AC and on attacks and saves as long as they remain inside the aura. You can use this ability for a number of rounds per day equal to your cleric level. These rounds do not need to be consecutive."
+    },
+    {
       "Key": "5bc881e905db43158dc1e5706b934537",
       "SimpleName": "ArchonDomainLawBaseFeature.Name",
       "ProcessTemplates": false,
       "enGB": "Archon Subdomain - Law"
+    },
+    {
+      "Key": "ba7dd6dd16c648f791722886bc469cf0",
+      "SimpleName": "ArchonDomainLawProgression.Description",
+      "ProcessTemplates": true,
+      "IsUsed": false,
+      "enGB": "\nYou follow the archons path of righteousness.\nTouch of Law: You can touch a willing creature as a standard action, infusing it with the power of divine order and allowing it to treat all attack rolls, skill checks, ability checks, and saving throws for 1 round as if the natural d20 roll resulted in an 11.[LONGSTART] You can use this ability a number of times per day equal to 3 + your Wisdom modifier.[LONGEND]\nAura of Menace: At 8th level, you can emit a 30-foot aura of menace as a standard action. Enemies in this aura take a –2 penalty to AC and on attacks and saves as long as they remain inside the aura. You can use this ability for a number of rounds per day equal to your cleric level. These rounds do not need to be consecutive.\nDomain Spells: divine favor, communal protection from chaos, prayer, holy smite, dominate person, blade barrier, dictum, sheild of law, dominate monster."
     },
     {
       "Key": "203a133486c94872b0617c9f5fcb4e64",
@@ -483,23 +544,17 @@
       "enGB": "\nYou follow the archons path of righteousness.\nTouch of Good: You can touch a creature as a standard action, granting a sacred bonus on attack rolls, skill checks, ability checks, and saving throws equal to half your level in the class that gave you access to this domain (minimum 1) for 1 round. You can use this ability a number of times per day equal to 3 + your Wisdom modifier.\nAura of Menace: At 8th level, you can emit a 30-foot aura of menace as a standard action. Enemies in this aura take a –2 penalty to AC and on attacks and saves as long as they remain inside the aura. You can use this ability for a number of rounds per day equal to your cleric level. These rounds do not need to be consecutive.\nDomain Spells: divine favor, communal protection from chaos, prayer, holy smite, dominate person, blade barrier, dictum, sheild of law, dominate monster."
     },
     {
-      "Key": "ba7dd6dd16c648f791722886bc469cf0",
-      "SimpleName": "ArchonDomainLawProgression.Description",
+      "Key": "f4a21b8fc9e64c2aa85b65d57f99457c",
+      "SimpleName": "ArchonDomainLawProgressionSecondary.Description",
       "ProcessTemplates": true,
-      "enGB": "\nYou follow the archons path of righteousness.\nTouch of Law: You can touch a willing creature as a standard action, infusing it with the power of divine order and allowing it to treat all attack rolls, skill checks, ability checks, and saving throws for 1 round as if the natural d20 roll resulted in an 11.[LONGSTART] You can use this ability a number of times per day equal to 3 + your Wisdom modifier.[LONGEND]\nAura of Menace: At 8th level, you can emit a 30-foot aura of menace as a standard action. Enemies in this aura take a –2 penalty to AC and on attacks and saves as long as they remain inside the aura. You can use this ability for a number of rounds per day equal to your cleric level. These rounds do not need to be consecutive.\nDomain Spells: divine favor, communal protection from chaos, prayer, holy smite, dominate person, blade barrier, dictum, sheild of law, dominate monster."
+      "IsUsed": false,
+      "enGB": "\nYou follow the archons path of righteousness.\nTouch of Good: You can touch a creature as a standard action, granting a sacred bonus on attack rolls, skill checks, ability checks, and saving throws equal to half your level in the class that gave you access to this domain (minimum 1) for 1 round. You can use this ability a number of times per day equal to 3 + your Wisdom modifier.\nAura of Menace: At 8th level, you can emit a 30-foot aura of menace as a standard action. Enemies in this aura take a –2 penalty to AC and on attacks and saves as long as they remain inside the aura. You can use this ability for a number of rounds per day equal to your cleric level. These rounds do not need to be consecutive.\nDomain Spells: divine favor, communal protection from chaos, prayer, holy smite, dominate person, blade barrier, dictum, sheild of law, dominate monster."
     },
     {
       "Key": "bab66feedd7f4602bfff2ac95ff3cb7f",
       "SimpleName": "ArchonDomainLawProgressionSecondary.Description",
       "ProcessTemplates": true,
       "enGB": "\nYou follow the archons path of righteousness.\nTouch of Law: You can touch a willing creature as a standard action, infusing it with the power of divine order and allowing it to treat all attack rolls, skill checks, ability checks, and saving throws for 1 round as if the natural d20 roll resulted in an 11.[LONGSTART] You can use this ability a number of times per day equal to 3 + your Wisdom modifier.[LONGEND]\nAura of Menace: At 8th level, you can emit a 30-foot aura of menace as a standard action. Enemies in this aura take a –2 penalty to AC and on attacks and saves as long as they remain inside the aura. You can use this ability for a number of rounds per day equal to your cleric level. These rounds do not need to be consecutive.\nDomain Spells: divine favor, communal protection from chaos, prayer, holy smite, dominate person, blade barrier, dictum, sheild of law, dominate monster."
-    },
-    {
-      "Key": "f4a21b8fc9e64c2aa85b65d57f99457c",
-      "SimpleName": "ArchonDomainLawProgressionSecondary.Description",
-      "ProcessTemplates": true,
-      "IsUsed": false,
-      "enGB": "\nYou follow the archons path of righteousness.\nTouch of Good: You can touch a creature as a standard action, granting a sacred bonus on attack rolls, skill checks, ability checks, and saving throws equal to half your level in the class that gave you access to this domain (minimum 1) for 1 round. You can use this ability a number of times per day equal to 3 + your Wisdom modifier.\nAura of Menace: At 8th level, you can emit a 30-foot aura of menace as a standard action. Enemies in this aura take a –2 penalty to AC and on attacks and saves as long as they remain inside the aura. You can use this ability for a number of rounds per day equal to your cleric level. These rounds do not need to be consecutive.\nDomain Spells: divine favor, communal protection from chaos, prayer, holy smite, dominate person, blade barrier, dictum, sheild of law, dominate monster."
     },
     {
       "Key": "5454dc1038d745f2b22e71fb374794da",
@@ -846,6 +901,7 @@
       "Key": "67668a3a8fc54692b2c3bcd80ee859cf",
       "SimpleName": "BearShamanBondSelection.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "A bear shaman who chooses an animal companion must select a bear. If choosing a domain, the bear shaman must choose from the Animal, Earth, Protection, and Strength domains."
     },
     {
@@ -936,12 +992,14 @@
       "Key": "660c66f89724484f92323553e1809b6b",
       "SimpleName": "BearShamanTotemTransformationFeature.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "At 2nd level, a bear totem druid may adopt an aspect of the bear while retaining their normal form. They gain one of the following bonuses: \nMovement (+10 enhancement bonus to speed, +4 racial bonus on Mobility checks)\nSenses (Blind Fight feat, +4 on perception checks)\nToughness (+2 natural armor bonus to AC, Endurance feat)\nNatural Weapons (bite attack dealing 1d6 damage and two claws dealing 1d4 damage for a Medium druid, +2 to CMB)\nUsing this ability is a standard action at 2nd level, a move action at 7th level, and a swift action at 12th level. This ability lasts one minute and can be used a number of times equal to their druid level. This is a polymorph effect and cannot be used while the druid is using another polymorph effect, such as wild shape."
     },
     {
       "Key": "a4921886654c4361bf01b28fdba52a3f",
       "SimpleName": "BearShamanTotemTransformationMoveFeature.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "At 2nd level, a bear totem druid may adopt an aspect of the bear while retaining their normal form. They gain one of the following bonuses: \nMovement (+10 enhancement bonus to speed, +4 racial bonus on Mobility checks)\nSenses (Blind Fight feat, +4 on perception checks)\nToughness (+2 natural armor bonus to AC, Endurance feat)\nNatural Weapons (bite attack dealing 1d6 damage and two claws dealing 1d4 damage for a Medium druid, +2 to CMB)\nUsing this ability is a standard action at 2nd level, a move action at 7th level, and a swift action at 12th level. This ability lasts one minute and can be used a number of times equal to their druid level. This is a polymorph effect and cannot be used while the druid is using another polymorph effect, such as wild shape."
     },
     {
@@ -954,6 +1012,7 @@
       "Key": "903a8df8888042248e1a64957d2a4c4e",
       "SimpleName": "BearShamanTotemTransformationMovementBuff.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "A bear totem druid may select which aspect of the bear to embue themselves with.\nMovement (+10 enhancement bonus to speed, +4 racial bonus on Mobility checks)"
     },
     {
@@ -972,6 +1031,7 @@
       "Key": "abf7499f07a14f3ca2cb2ac90b45c106",
       "SimpleName": "BearShamanTotemTransformationNaturalWeaponsBuff.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "A bear totem druid may select which aspect of the bear to embue themselves with.\nNatural Weapons (bite attack dealing 1d6 damage and two claws dealing 1d4 damage for a Medium druid, +2 to CMB)"
     },
     {
@@ -1020,6 +1080,7 @@
       "Key": "f72dcc2c600b4d7282940816b4c75aeb",
       "SimpleName": "BearShamanTotemTransformationToughnessBuff.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "A bear totem druid may select which aspect of the bear to embue themselves with.\nToughness (+2 natural armor bonus to AC, Endurance feat)"
     },
     {
@@ -1234,13 +1295,13 @@
       "Key": "2f91fdfbde3c4bc78942800497c111bd",
       "SimpleName": "CastigatorVengeance.Description",
       "ProcessTemplates": false,
+      "IsUsed": false,
       "enGB": "At 4th level, a castigator can make an additional number of attacks of opportunity in a round equal to their Charisma modifier (minimum 1). This effect stacks with the Combat Reflexes feat."
     },
     {
       "Key": "86125955dbd447829e29b6b38c9f0535",
       "SimpleName": "CastigatorVengeance.Description",
       "ProcessTemplates": true,
-      "IsUsed": false,
       "enGB": "At 4th level, a castigator can make an additional number of attacks of opportunity in a round equal to their Charisma modifier (minimum 1). This effect stacks with the Combat Reflexes feat."
     },
     {
@@ -2336,17 +2397,17 @@
       "enGB": "Dispater"
     },
     {
+      "Key": "2c3cb69dee52421ba1c30a9c0a46bba5",
+      "SimpleName": "DivineHerbalistDragonMysteryFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "Gain access to the spells and revelations of the dragon mystery. \nDue to the divine herbalist archetype the class skills gained from this archetypeare replaced by the master herbalist feature and the brew potions feat."
+    },
+    {
       "Key": "1b52c9e5e8624fe8aeaf22008d0306ad",
       "SimpleName": "DivineHerbalistDragonMysteryFeature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "An oracle with the dragon mystery adds Mobility, Persuasion, Perception and Knowledge (world)  to her list of class skills."
-    },
-    {
-      "Key": "2c3cb69dee52421ba1c30a9c0a46bba5",
-      "SimpleName": "DivineHerbalistDragonMysteryFeature.Description",
-      "ProcessTemplates": true,
-      "enGB": "Gain access to the spells and revelations of the dragon mystery. \nDue to the divine herbalist archetype the class skills gained from this archetypeare replaced by the master herbalist feature and the brew potions feat."
     },
     {
       "Key": "91616eb97ea3471abc626b1a183afe2f",
@@ -2912,13 +2973,6 @@
       "enGB": "Breath Weapon - Ability is not ready yet"
     },
     {
-      "Key": "e7c2ccd10b274883b65d4ba27368d3f0",
-      "SimpleName": "DrakeBreathWeaponAcid1.Description",
-      "ProcessTemplates": true,
-      "IsUsed": false,
-      "enGB": "This breath weapon deals 4d6 points of acid damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day."
-    },
-    {
       "Key": "55fbdda3aa6d4d05b429855f3a6c0403",
       "SimpleName": "DrakeBreathWeaponAcid1.Description",
       "ProcessTemplates": true,
@@ -2926,16 +2980,17 @@
       "enGB": "This breath weapon deals 4d6 points of acid damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day."
     },
     {
+      "Key": "e7c2ccd10b274883b65d4ba27368d3f0",
+      "SimpleName": "DrakeBreathWeaponAcid1.Description",
+      "ProcessTemplates": true,
+      "IsUsed": false,
+      "enGB": "This breath weapon deals 4d6 points of acid damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day."
+    },
+    {
       "Key": "b93f6f5ed05d4e5287bfc53ff1b89572",
       "SimpleName": "DrakeBreathWeaponAcid1.Name",
       "ProcessTemplates": false,
       "enGB": "Drake Acid Breath"
-    },
-    {
-      "Key": "c9243b63bf01462db1c4c04fe50be4f3",
-      "SimpleName": "DrakeBreathWeaponAcid1Feature.Description",
-      "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 4d6 points of acid damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day."
     },
     {
       "Key": "ebc705b901f5406d9285e6bb351cc811",
@@ -2945,10 +3000,10 @@
       "enGB": "This breath weapon deals 4d6 points of acid damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day."
     },
     {
-      "Key": "37a378dd8b8a488495109c35c06cc102",
-      "SimpleName": "DrakeBreathWeaponAcid2.Description",
+      "Key": "c9243b63bf01462db1c4c04fe50be4f3",
+      "SimpleName": "DrakeBreathWeaponAcid1Feature.Description",
       "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 8d6 points of acid damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day."
+      "enGB": "This breath weapon deals 4d6 points of acid damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day."
     },
     {
       "Key": "54c86ff112d44b6d9878ade81198c1b7",
@@ -2958,10 +3013,22 @@
       "enGB": "This breath weapon deals 8d6 points of acid damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day."
     },
     {
+      "Key": "37a378dd8b8a488495109c35c06cc102",
+      "SimpleName": "DrakeBreathWeaponAcid2.Description",
+      "ProcessTemplates": true,
+      "enGB": "This breath weapon deals 8d6 points of acid damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day."
+    },
+    {
       "Key": "c3a25063dd8749bfa8a8f08784b6fe35",
       "SimpleName": "DrakeBreathWeaponAcid2.Name",
       "ProcessTemplates": false,
       "enGB": "Greater Drake Acid Breath"
+    },
+    {
+      "Key": "1df6eca3d484449bbfe6a838c4cd4ade",
+      "SimpleName": "DrakeBreathWeaponAcid2Feature.Description",
+      "ProcessTemplates": true,
+      "enGB": "This breath weapon deals 8d6 points of acid damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day. \nUnlocking this allows you to use your lesser breath weapon without spending any resources, however you must wait 1d4 rounds to recharge."
     },
     {
       "Key": "df00f6bb8f614cb59316f7627c01fbd2",
@@ -2971,10 +3038,11 @@
       "enGB": "This breath weapon deals 8d6 points of acid damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day. \nUnlocking this allows you to use your lesser breath weapon without spending any resources, however you must wait 1d4 rounds to recharge."
     },
     {
-      "Key": "1df6eca3d484449bbfe6a838c4cd4ade",
-      "SimpleName": "DrakeBreathWeaponAcid2Feature.Description",
+      "Key": "a4feef2ded00453697b10859100ef717",
+      "SimpleName": "DrakeBreathWeaponAcid3.Description",
       "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 8d6 points of acid damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day. \nUnlocking this allows you to use your lesser breath weapon without spending any resources, however you must wait 1d4 rounds to recharge."
+      "IsUsed": false,
+      "enGB": "This breath weapon deals 1d6 points of acid damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
     },
     {
       "Key": "21423a23b82c4fa5a54cd3a2c68157f8",
@@ -2984,23 +3052,10 @@
       "enGB": "This breath weapon deals 1d6 points of acid damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
     },
     {
-      "Key": "a4feef2ded00453697b10859100ef717",
-      "SimpleName": "DrakeBreathWeaponAcid3.Description",
-      "ProcessTemplates": true,
-      "IsUsed": false,
-      "enGB": "This breath weapon deals 1d6 points of acid damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
-    },
-    {
       "Key": "166319244f2c43b2beeda778d1b26ea5",
       "SimpleName": "DrakeBreathWeaponAcid3.Name",
       "ProcessTemplates": false,
       "enGB": "Mythic Drake Acid Breath"
-    },
-    {
-      "Key": "c3397a5fd99c4a1c88e4b1ce4a91d3e3",
-      "SimpleName": "DrakeBreathWeaponAcid3Feature.Description",
-      "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 1d6 points of acid damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
     },
     {
       "Key": "be45de1db0684f2f8e3ffa5e462b2cc2",
@@ -3008,6 +3063,12 @@
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "This breath weapon deals 1d6 points of acid damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
+    },
+    {
+      "Key": "c3397a5fd99c4a1c88e4b1ce4a91d3e3",
+      "SimpleName": "DrakeBreathWeaponAcid3Feature.Description",
+      "ProcessTemplates": true,
+      "enGB": "This breath weapon deals 1d6 points of acid damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
     },
     {
       "Key": "3bba44b3e3de459080d550f4018199e5",
@@ -3030,17 +3091,17 @@
       "enGB": "Drake Cold Breath"
     },
     {
+      "Key": "1ffacbc9846a4e318f7a858b69a49d1a",
+      "SimpleName": "DrakeBreathWeaponCold1Feature.Description",
+      "ProcessTemplates": true,
+      "enGB": "This breath weapon deals 4d6 points of cold damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day."
+    },
+    {
       "Key": "52d5d2df88c441e2b22e5a93b9a1248e",
       "SimpleName": "DrakeBreathWeaponCold1Feature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "This breath weapon deals 4d6 points of cold damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day."
-    },
-    {
-      "Key": "1ffacbc9846a4e318f7a858b69a49d1a",
-      "SimpleName": "DrakeBreathWeaponCold1Feature.Description",
-      "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 4d6 points of cold damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day."
     },
     {
       "Key": "656c5f75a55b4485b4f3535f7638d9b1",
@@ -3075,18 +3136,18 @@
       "enGB": "This breath weapon deals 8d6 points of cold damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day. \nUnlocking this allows you to use your lesser breath weapon without spending any resources, however you must wait 1d4 rounds to recharge."
     },
     {
-      "Key": "aa4f5369b79343e19de67ebc56132b4b",
-      "SimpleName": "DrakeBreathWeaponCold3.Description",
-      "ProcessTemplates": true,
-      "IsUsed": false,
-      "enGB": "This breath weapon deals 1d6 points of cold damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
-    },
-    {
       "Key": "6f2fa3ad005e42ac83b552d046389115",
       "SimpleName": "DrakeBreathWeaponCold3.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "This breath weapon deals 1d6 points of cold damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
+    },
+    {
+      "Key": "aa4f5369b79343e19de67ebc56132b4b",
+      "SimpleName": "DrakeBreathWeaponCold3.Description",
+      "ProcessTemplates": true,
+      "IsUsed": false,
+      "enGB": "This breath weapon deals 1d6 points of cold damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
     },
     {
       "Key": "7bb6d397539449e5a020c99fd0752e65",
@@ -3095,17 +3156,17 @@
       "enGB": "Mythic Drake Cold Breath"
     },
     {
+      "Key": "0f22f8c4ad924927a399bd9b770d89b7",
+      "SimpleName": "DrakeBreathWeaponCold3Feature.Description",
+      "ProcessTemplates": true,
+      "enGB": "This breath weapon deals 1d6 points of cold damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
+    },
+    {
       "Key": "5de2e3e5ae104dd6889e010b8efdabba",
       "SimpleName": "DrakeBreathWeaponCold3Feature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "This breath weapon deals 1d6 points of cold damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
-    },
-    {
-      "Key": "0f22f8c4ad924927a399bd9b770d89b7",
-      "SimpleName": "DrakeBreathWeaponCold3Feature.Description",
-      "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 1d6 points of cold damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
     },
     {
       "Key": "eb3d8c2900514c838132616b1975f49a",
@@ -3193,24 +3254,17 @@
       "enGB": "Mythic Drake Electricity Breath"
     },
     {
-      "Key": "17a94d9f4f0546b7b390112d8c7ea24b",
-      "SimpleName": "DrakeBreathWeaponElectricity3Feature.Description",
-      "ProcessTemplates": true,
-      "IsUsed": false,
-      "enGB": "This breath weapon deals 1d6 points of electricity damage per drake companion level in a 40-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
-    },
-    {
       "Key": "03a189f47d674d1da2b17480f05287be",
       "SimpleName": "DrakeBreathWeaponElectricity3Feature.Description",
       "ProcessTemplates": true,
       "enGB": "This breath weapon deals 1d6 points of electricity damage per drake companion level in a 40-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
     },
     {
-      "Key": "175585e969b64296a6580facaf078dd8",
-      "SimpleName": "DrakeBreathWeaponFire1.Description",
+      "Key": "17a94d9f4f0546b7b390112d8c7ea24b",
+      "SimpleName": "DrakeBreathWeaponElectricity3Feature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
-      "enGB": "This breath weapon deals 4d6 points of fire damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day."
+      "enGB": "This breath weapon deals 1d6 points of electricity damage per drake companion level in a 40-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
     },
     {
       "Key": "6edadd64875d41a09c8ec96297578b1b",
@@ -3220,10 +3274,23 @@
       "enGB": "This breath weapon deals 4d6 points of fire damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day."
     },
     {
+      "Key": "175585e969b64296a6580facaf078dd8",
+      "SimpleName": "DrakeBreathWeaponFire1.Description",
+      "ProcessTemplates": true,
+      "IsUsed": false,
+      "enGB": "This breath weapon deals 4d6 points of fire damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day."
+    },
+    {
       "Key": "b9856c20c78645a884b2f0ad7ea2c051",
       "SimpleName": "DrakeBreathWeaponFire1.Name",
       "ProcessTemplates": false,
       "enGB": "Drake Fire Breath"
+    },
+    {
+      "Key": "0827546fa62746dd97219bc4d7f3ee9a",
+      "SimpleName": "DrakeBreathWeaponFire1Feature.Description",
+      "ProcessTemplates": true,
+      "enGB": "This breath weapon deals 4d6 points of fire damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day."
     },
     {
       "Key": "d946e7ff645642c3b95b57be864b62fe",
@@ -3233,10 +3300,10 @@
       "enGB": "This breath weapon deals 4d6 points of fire damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day."
     },
     {
-      "Key": "0827546fa62746dd97219bc4d7f3ee9a",
-      "SimpleName": "DrakeBreathWeaponFire1Feature.Description",
+      "Key": "ef73223c5cdd426ca205f1e9dedbabe6",
+      "SimpleName": "DrakeBreathWeaponFire2.Description",
       "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 4d6 points of fire damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day."
+      "enGB": "This breath weapon deals 8d6 points of fire damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day."
     },
     {
       "Key": "cd719c4bed694ad6b238072340ba27a2",
@@ -3246,22 +3313,10 @@
       "enGB": "This breath weapon deals 8d6 points of fire damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day."
     },
     {
-      "Key": "ef73223c5cdd426ca205f1e9dedbabe6",
-      "SimpleName": "DrakeBreathWeaponFire2.Description",
-      "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 8d6 points of fire damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day."
-    },
-    {
       "Key": "d3a050edc2964fc1915041fb45ea96b8",
       "SimpleName": "DrakeBreathWeaponFire2.Name",
       "ProcessTemplates": false,
       "enGB": "Greater Drake Fire Breath"
-    },
-    {
-      "Key": "3bf5c19d82e74eafbedde6ed3e02e16e",
-      "SimpleName": "DrakeBreathWeaponFire2Feature.Description",
-      "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 8d6 points of fire damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day. \nUnlocking this allows you to use your lesser breath weapon without spending any resources, however you must wait 1d4 rounds to recharge."
     },
     {
       "Key": "a5154a942bf147e4b472d048c9fbc804",
@@ -3271,11 +3326,10 @@
       "enGB": "This breath weapon deals 8d6 points of fire damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day. \nUnlocking this allows you to use your lesser breath weapon without spending any resources, however you must wait 1d4 rounds to recharge."
     },
     {
-      "Key": "8c788890645148329f0c9962114d729b",
-      "SimpleName": "DrakeBreathWeaponFire3.Description",
+      "Key": "3bf5c19d82e74eafbedde6ed3e02e16e",
+      "SimpleName": "DrakeBreathWeaponFire2Feature.Description",
       "ProcessTemplates": true,
-      "IsUsed": false,
-      "enGB": "This breath weapon deals 1d6 points of fire damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
+      "enGB": "This breath weapon deals 8d6 points of fire damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day. \nUnlocking this allows you to use your lesser breath weapon without spending any resources, however you must wait 1d4 rounds to recharge."
     },
     {
       "Key": "033f8e7260db4b54bbe04989414075a9",
@@ -3285,10 +3339,23 @@
       "enGB": "This breath weapon deals 1d6 points of fire damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
     },
     {
+      "Key": "8c788890645148329f0c9962114d729b",
+      "SimpleName": "DrakeBreathWeaponFire3.Description",
+      "ProcessTemplates": true,
+      "IsUsed": false,
+      "enGB": "This breath weapon deals 1d6 points of fire damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
+    },
+    {
       "Key": "aac59d807b0449b084b7cb13655e9491",
       "SimpleName": "DrakeBreathWeaponFire3.Name",
       "ProcessTemplates": false,
       "enGB": "Mythic Drake Fire Breath"
+    },
+    {
+      "Key": "a6783db42f2947e89c919949a0d5971c",
+      "SimpleName": "DrakeBreathWeaponFire3Feature.Description",
+      "ProcessTemplates": true,
+      "enGB": "This breath weapon deals 1d6 points of fire damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
     },
     {
       "Key": "43fa93a4701f4f85961ddeea0bcade9b",
@@ -3296,12 +3363,6 @@
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "This breath weapon deals 1d6 points of fire damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
-    },
-    {
-      "Key": "a6783db42f2947e89c919949a0d5971c",
-      "SimpleName": "DrakeBreathWeaponFire3Feature.Description",
-      "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 1d6 points of fire damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
     },
     {
       "Key": "c7a50bde6aa7476fb23eba2c637d9490",
@@ -3324,12 +3385,6 @@
       "enGB": "Drake Negative Energy Breath"
     },
     {
-      "Key": "3f82888cb6534862aa8217b840d23643",
-      "SimpleName": "DrakeBreathWeaponUmbral1Feature.Description",
-      "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 4d6 points of  negative damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day.\nTargets with an affinity to negative energy (such as undead) are not healed by this ability and are treated as if the ability did not hit them."
-    },
-    {
       "Key": "9dcf386ecbdd464c8e79505773731c5c",
       "SimpleName": "DrakeBreathWeaponUmbral1Feature.Description",
       "ProcessTemplates": true,
@@ -3337,17 +3392,23 @@
       "enGB": "This breath weapon deals 4d6 points of  negative damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day.\nTargets with an affinity to negativeenergy (such as undead) are not healed by this ability and are treated as if the ability did not hit them."
     },
     {
-      "Key": "0d2d69b7f16a46b9947d3f18fba771df",
-      "SimpleName": "DrakeBreathWeaponUmbral2.Description",
+      "Key": "3f82888cb6534862aa8217b840d23643",
+      "SimpleName": "DrakeBreathWeaponUmbral1Feature.Description",
       "ProcessTemplates": true,
-      "IsUsed": false,
-      "enGB": "This breath weapon deals 8d6 points of negative damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day.\nTargets with an affinity to negativeenergy (such as undead) are not healed by this ability and are treated as if the ability did not hit them."
+      "enGB": "This breath weapon deals 4d6 points of  negative damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day.\nTargets with an affinity to negative energy (such as undead) are not healed by this ability and are treated as if the ability did not hit them."
     },
     {
       "Key": "adba855a5963462aa50ccb1f2b3015ff",
       "SimpleName": "DrakeBreathWeaponUmbral2.Description",
       "ProcessTemplates": true,
       "enGB": "This breath weapon deals 8d6 points of negative damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day.\nTargets with an affinity to negative energy (such as undead) are not healed by this ability and are treated as if the ability did not hit them."
+    },
+    {
+      "Key": "0d2d69b7f16a46b9947d3f18fba771df",
+      "SimpleName": "DrakeBreathWeaponUmbral2.Description",
+      "ProcessTemplates": true,
+      "IsUsed": false,
+      "enGB": "This breath weapon deals 8d6 points of negative damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day.\nTargets with an affinity to negativeenergy (such as undead) are not healed by this ability and are treated as if the ability did not hit them."
     },
     {
       "Key": "adce6cb14e3a42f9a461694633daaa8b",
@@ -3369,17 +3430,17 @@
       "enGB": "This breath weapon deals 8d6 points of negative damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day. \nTargets with an affinity to negativeenergy (such as undead) are not healed by this ability and are treated as if the ability did not hit them.\nUnlocking this allows you to use your lesser breath weapon without spending any resources, however you must wait 1d4 rounds to recharge."
     },
     {
-      "Key": "7ac6675de47c4940b4f8843612eb4b2d",
-      "SimpleName": "DrakeBreathWeaponUmbral3.Description",
-      "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 1d6 points of negative energy damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nTargets with an affinity to negativeenergy (such as undead) are not healed by this ability and are treated as if the ability did not hit them. \nUnlike non-mythic breath attacks, this does not damage allies."
-    },
-    {
       "Key": "d151307697904d948457f71e4a2adaa5",
       "SimpleName": "DrakeBreathWeaponUmbral3.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "This breath weapon deals 1d6 points of negative energy damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nTargets with an affinity to negativeenergy (such as undead) are not healed by this ability and are treated as if the ability did not hit them. \nUnlike non-mythic breath attacks, this does not damage allies."
+    },
+    {
+      "Key": "7ac6675de47c4940b4f8843612eb4b2d",
+      "SimpleName": "DrakeBreathWeaponUmbral3.Description",
+      "ProcessTemplates": true,
+      "enGB": "This breath weapon deals 1d6 points of negative energy damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nTargets with an affinity to negativeenergy (such as undead) are not healed by this ability and are treated as if the ability did not hit them. \nUnlike non-mythic breath attacks, this does not damage allies."
     },
     {
       "Key": "763b3dcab4134d63aa8b74df5f85dcdb",
@@ -3641,17 +3702,17 @@
       "enGB": "The drake gains two natural claw attacks that deal 1d2 damage from a tiny drake, but increase damage dice size each time the drake grows\nUnlocks the extra Wing attacks component of the Mythic Drake Ability."
     },
     {
-      "Key": "fae2d01a258d437494c423afc2c32476",
-      "SimpleName": "DrakenScalesFeature.Description",
-      "ProcessTemplates": true,
-      "enGB": "The drake gains elemental resistances based on its subtype, along with minor resistance to elemental damage from non-opposing elements. \nFire subtype - Fire resistance 25, Eletricity resistance 5, Acid resistance 5.\nCold subtype - Cold resistance 25, Eletricity resistance 5, Acid resistance 5.\nAir subtype - Eletricity resistance 25, Fire resistance 5, Cold resistance 5.\nAcid subtype - Acid resistance 25, Fire resistance 5, Cold resistance 5.\nOutsider subtype - Fire, Cold, Acid, Electricity resistance 10."
-    },
-    {
       "Key": "04ed6b896c35425fa26212ff0a823110",
       "SimpleName": "DrakenScalesFeature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "The drake gains elemental resistances based on its subtype, along with minor resistance to elemental damage from non-opposing elements. \nFire subtype - Fire resistance 25, Eletricity resistance 5, Acid resistance 5.\nCold subtype - Cold resistance 25, Eletricity resistance 5, Acid resistance 5.\nAir subtype - Eletricity resistance 25, Fire resistance 5, Cold resistance 5.\nAcid subtype - Acid resistance 25, Fire resistance 5, Cold resistance 5."
+    },
+    {
+      "Key": "fae2d01a258d437494c423afc2c32476",
+      "SimpleName": "DrakenScalesFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "The drake gains elemental resistances based on its subtype, along with minor resistance to elemental damage from non-opposing elements. \nFire subtype - Fire resistance 25, Eletricity resistance 5, Acid resistance 5.\nCold subtype - Cold resistance 25, Eletricity resistance 5, Acid resistance 5.\nAir subtype - Eletricity resistance 25, Fire resistance 5, Cold resistance 5.\nAcid subtype - Acid resistance 25, Fire resistance 5, Cold resistance 5.\nOutsider subtype - Fire, Cold, Acid, Electricity resistance 10."
     },
     {
       "Key": "d84032f7f1f4473987524054039a1426",
@@ -3878,6 +3939,12 @@
       "enGB": "Dread Knight Animal Companion Progression"
     },
     {
+      "Key": "d670b365e6b04ae4a3877948f2caebed",
+      "SimpleName": "DreadKnightChannelNegativeEnergyAbility.Description",
+      "ProcessTemplates": true,
+      "enGB": "Channeling negative energy causes a burst that damages every living creature in a 30-foot radius centered on the Dread Knight. The amount of damage inflicted is equal to 1d6 points of damage plus 1d6 points of damage for every two Dread Knight levels beyond 1st (2d6 at 3rd, 3d6 at 5th, and so on). Creatures that take damage from channeled energy receive a Will save to halve the damage. The DC of this save is equal to 10 + 1/2 the Dread Knight's level + the Dread Knight's Charisma modifier."
+    },
+    {
       "Key": "c693dad056614f1ead3e49b0ca8d3119",
       "SimpleName": "DreadKnightChannelNegativeEnergyAbility.Description",
       "ProcessTemplates": true,
@@ -3885,22 +3952,16 @@
       "enGB": "Channeling negative energy causes a burst that damages every creature in a 30-foot radius centered on the Dread Knight. The amount of damage inflicted is equal to 1d6 points of damage plus 1d6 points of damage for every two Dread Knight levels beyond 1st (2d6 at 3rd, 3d6 at 5th, and so on). Creatures that take damage from channeled energy receive a Will save to halve the damage. The DC of this save is equal to 10 + 1/2 the Dread Knight's level + the Dread Knight's Charisma modifier."
     },
     {
-      "Key": "d670b365e6b04ae4a3877948f2caebed",
-      "SimpleName": "DreadKnightChannelNegativeEnergyAbility.Description",
-      "ProcessTemplates": true,
-      "enGB": "Channeling negative energy causes a burst that damages every living creature in a 30-foot radius centered on the Dread Knight. The amount of damage inflicted is equal to 1d6 points of damage plus 1d6 points of damage for every two Dread Knight levels beyond 1st (2d6 at 3rd, 3d6 at 5th, and so on). Creatures that take damage from channeled energy receive a Will save to halve the damage. The DC of this save is equal to 10 + 1/2 the Dread Knight's level + the Dread Knight's Charisma modifier."
+      "Key": "e1a0f9b3f21e45aaaba53aff7d45b1ad",
+      "SimpleName": "DreadKnightChannelNegativeEnergyAbility.Name",
+      "ProcessTemplates": false,
+      "enGB": "Channel Negative Energy"
     },
     {
       "Key": "79390dccfaff42259b9430c3eda7052b",
       "SimpleName": "DreadKnightChannelNegativeEnergyAbility.Name",
       "ProcessTemplates": false,
       "enGB": "Channel Negative Energy - Damage Living"
-    },
-    {
-      "Key": "e1a0f9b3f21e45aaaba53aff7d45b1ad",
-      "SimpleName": "DreadKnightChannelNegativeEnergyAbility.Name",
-      "ProcessTemplates": false,
-      "enGB": "Channel Negative Energy"
     },
     {
       "Key": "95bb51ebd24e466aa7b691a57700f158",
@@ -4037,18 +4098,18 @@
       "enGB": "An oracle with the dragon mystery adds Mobility, Persuasion, Perception and Knowledge (world)  to her list of class skills."
     },
     {
-      "Key": "ca0109695d76452e9e35dbada994a096",
-      "SimpleName": "EnlightnedPhilosopherHeavensMysteryFeature.Description",
-      "ProcessTemplates": true,
-      "IsUsed": false,
-      "enGB": "An oracle with the heavens mystery adds Perception and Knowledge (Arcana)  to her list of class skills."
-    },
-    {
       "Key": "87a3a668a0744c2395e62368807b469d",
       "SimpleName": "EnlightnedPhilosopherHeavensMysteryFeature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "An oracle with the heavens mystery adds Perception and Knowledge (world)  to her list of class skills."
+    },
+    {
+      "Key": "ca0109695d76452e9e35dbada994a096",
+      "SimpleName": "EnlightnedPhilosopherHeavensMysteryFeature.Description",
+      "ProcessTemplates": true,
+      "IsUsed": false,
+      "enGB": "An oracle with the heavens mystery adds Perception and Knowledge (Arcana)  to her list of class skills."
     },
     {
       "Key": "e3979b1a0365444ca72eecd17dbbefbf",
@@ -4680,16 +4741,16 @@
       "enGB": "Hypnotic Pattern"
     },
     {
-      "Key": "06f3c959eebc44238c4971655e40c363",
-      "SimpleName": "IceDomainBaseFeature.Description",
-      "ProcessTemplates": true,
-      "enGB": "\nYou can manipulate ice and water and mist, conjure hails of ice, and transmute yourself into a frozen form.\nIcicle: As a standard action, you can fire an icicle from your finger, targeting any foe within 30 feet as a ranged touch attack. The icicle deals 1d6 points of cold damage+ 1 point for every two levels you possess in the class that gave you access to this domain. You can use this ability a number of times per day equal to 3 + your Wisdom modifier.\nBody of Ice: At 8th level, you can transmute your body and equipment to ice for a period of time. It takes a standard action to take on the form of ice, and you can end the transmutation with a free action on your turn. When you take on the form of ice, you are immune to cold and have DR 5/—, but you take twice the normal amount of damage from fire. You can take on the form of ice for a number of rounds per day equal to your cleric level. The rounds need not be consecutive."
-    },
-    {
       "Key": "72b3666c54de4c92b9d9a1c4cef5dcb2",
       "SimpleName": "IceDomainBaseFeature.Description",
       "ProcessTemplates": true,
       "enGB": "\nYou have mastery over rock and stone, can manifest vast pits, and command earth creatures.\nAcid Dart: As a standard action, you can unleash an acid dart targeting any foe within 30 feet as a ranged touch attack. This acid dart deals 1d6 points of acid damage+ 1 point for every two levels you possess in the class that gave you access to this domain. You can use this ability a number of times per day equal to 3 + your Wisdom modifier.\nTunnel Runner (Su): At 6th level, as a standard action, you can create a 30-foot aura of gale-like winds that slows the progress of enemies. Creatures in the aura cannot take a 5-foot step and treat it as as difficult terrain. You can use this ability for a number of rounds per day equal to your cleric level. The rounds do not need to be consecutive."
+    },
+    {
+      "Key": "06f3c959eebc44238c4971655e40c363",
+      "SimpleName": "IceDomainBaseFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nYou can manipulate ice and water and mist, conjure hails of ice, and transmute yourself into a frozen form.\nIcicle: As a standard action, you can fire an icicle from your finger, targeting any foe within 30 feet as a ranged touch attack. The icicle deals 1d6 points of cold damage+ 1 point for every two levels you possess in the class that gave you access to this domain. You can use this ability a number of times per day equal to 3 + your Wisdom modifier.\nBody of Ice: At 8th level, you can transmute your body and equipment to ice for a period of time. It takes a standard action to take on the form of ice, and you can end the transmutation with a free action on your turn. When you take on the form of ice, you are immune to cold and have DR 5/—, but you take twice the normal amount of damage from fire. You can take on the form of ice for a number of rounds per day equal to your cleric level. The rounds need not be consecutive."
     },
     {
       "Key": "75db1ef0bee54df0a0ba5c43f4c8b4f9",
@@ -5003,17 +5064,17 @@
       "enGB": "Kerkamoth"
     },
     {
-      "Key": "5f128f8ec3b242e290ae05bab3a30f9a",
-      "SimpleName": "KetephysFeature.Description",
-      "ProcessTemplates": true,
-      "enGB": "\nTitles: The Hunter   \nAlignment: Chaotic Good   \nAreas of Concern: Hunting, Forestry, Running, The Moon   \nDomains: Animal, Chaos, Good, Plant, Weather   \nSubdomains: Azata, Feather, Fur, Growth, Moon, Seasons   \nFavoured Weapon: Longbow   \nHoly Symbol: Hawk with moon and sun   \nSacred Animal: Hawk   \nThis long-faced elven god rarely speaks unless coordinating the efforts of other beings in a hunt for a dangerous or especially prized creature. In holy art, he is shown barefoot, wearing form-fitting brown and forestgreen to prevent snags and excess noise. He is usually accompanied by his dog Meycho and his hawk Falling Star, though he keeps them for companionship rather than assistance, as he prefers to succeed or fail on his own skill. Ketephys is an occasional hunting partner of Erastil, but disapproves of his insistence upon marriage; in turn, Erastil attributes this to elven immaturity and capriciousness. Ketephys is an ally of Gozreh against threats to the natural world. He views Treerazer as his arch-enemy, and personally served as a commander during the conflict that pushed Treerazer to Tanglebriar, where he hides to this day. Ketephys also watches over Cyth-V'sug, Treerazer's former master, for any signs of an alliance between the two."
-    },
-    {
       "Key": "cd37e185f3c84abb800e7cbbe98f43bb",
       "SimpleName": "KetephysFeature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "\nTitles: The Hunter   \nAlignment: Chaotic Good   \nAreas of Concern: Hunting, Forestry, Running, The Moon   \nDomains: Animal, Chaos, Good, Plant, Weather   \nSubdomains: Azata, Feather, Fur, Growth, Moon, Seasons   \nFavoured Weapon: Longbow   \nHoly Symbol: Hawk with moon and sun   \nSacred Animal: Hawk   \nThis long-faced elven god rarely speaks unless coordinating the efforts of other beings in a hunt for a dangerous or especially prized creature. In holy art, he is shown barefoot, wearing form-fitting brown and forestgreen to prevent snags and excess noise. He is usually accompanied by his dog Meycho and his hawk Falling Star, though he keeps them for companionship rather than assistance, as he prefers to succeed or fail on his own skill.Ketephys is an occasional hunting partner of Erastil, but disapproves of his insistence upon marriage; in turn, Erastil attributes this to elven immaturity and capriciousness. Ketephys is an ally of Gozreh against threats to the natural world. He views Treerazer as his arch-enemy, and personally served as a commander during the conflict that pushed Treerazer to Tanglebriar, where he hides to this day. Ketephys also watches over Cyth-V'sug, Treerazer's former master, for any signs of an alliance between the two."
+    },
+    {
+      "Key": "5f128f8ec3b242e290ae05bab3a30f9a",
+      "SimpleName": "KetephysFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nTitles: The Hunter   \nAlignment: Chaotic Good   \nAreas of Concern: Hunting, Forestry, Running, The Moon   \nDomains: Animal, Chaos, Good, Plant, Weather   \nSubdomains: Azata, Feather, Fur, Growth, Moon, Seasons   \nFavoured Weapon: Longbow   \nHoly Symbol: Hawk with moon and sun   \nSacred Animal: Hawk   \nThis long-faced elven god rarely speaks unless coordinating the efforts of other beings in a hunt for a dangerous or especially prized creature. In holy art, he is shown barefoot, wearing form-fitting brown and forestgreen to prevent snags and excess noise. He is usually accompanied by his dog Meycho and his hawk Falling Star, though he keeps them for companionship rather than assistance, as he prefers to succeed or fail on his own skill. Ketephys is an occasional hunting partner of Erastil, but disapproves of his insistence upon marriage; in turn, Erastil attributes this to elven immaturity and capriciousness. Ketephys is an ally of Gozreh against threats to the natural world. He views Treerazer as his arch-enemy, and personally served as a commander during the conflict that pushed Treerazer to Tanglebriar, where he hides to this day. Ketephys also watches over Cyth-V'sug, Treerazer's former master, for any signs of an alliance between the two."
     },
     {
       "Key": "f5bf6df7fcfd4e9e9385c15ffd1636b1",
@@ -5200,17 +5261,17 @@
       "enGB": "Invoke Deity - Liberation Domain"
     },
     {
+      "Key": "27022cf8398f4e0cb110c88054d7d9af",
+      "SimpleName": "LichDeityFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "Leader of a small cult of undead, created by their own hands, becoming famous as the indomitable commander of the Fifth Mendevian Crusade against the Worldwound. Determined to destroy the forces of the Abyss at any cost, they ventured on the path of the Lord of Death. For millennia, powerful necromancers have dreamed of a power that could rival the divine. They have created cults in their own names, and attracted many followers. Thanks to their legendary powers, they has managed to achieve much greater success than the others: acquireing a talent to bestow divine spells upon their followers. From that moment, the undead created by them needed no other deities to cast spells.\nDomains: Death, Evil, Strength, War. \nFavoured Weapons: Scythe, Sickle."
+    },
+    {
       "Key": "dcf93abfee98445eb8af11b4118f70d2",
       "SimpleName": "LichDeityFeature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "Leader of a small cult of undead, created by h own hands,  became famous as the indomitable commander of the Fifth Mendevian Crusade against the Worldwound. Determined to destroy the forces of the Abyss at any cost, he ventured on the path of the L of Death. For millennia, powerful necromancers have dreamed of a power that could rival the divine. They have created cults in their own names, and attracted many followers. Thanks to h legendary powers,  has managed to achieve much greater success than the others: he has acquired a talent to bestow divine spells upon h followers. From that moment, the undead created by h needed no other deities to cast spells.\nDomains: Death, Evil, Strength, War. \nFavoured Weapons: Scythe, Sickle."
-    },
-    {
-      "Key": "27022cf8398f4e0cb110c88054d7d9af",
-      "SimpleName": "LichDeityFeature.Description",
-      "ProcessTemplates": true,
-      "enGB": "Leader of a small cult of undead, created by their own hands, becoming famous as the indomitable commander of the Fifth Mendevian Crusade against the Worldwound. Determined to destroy the forces of the Abyss at any cost, they ventured on the path of the Lord of Death. For millennia, powerful necromancers have dreamed of a power that could rival the divine. They have created cults in their own names, and attracted many followers. Thanks to their legendary powers, they has managed to achieve much greater success than the others: acquireing a talent to bestow divine spells upon their followers. From that moment, the undead created by them needed no other deities to cast spells.\nDomains: Death, Evil, Strength, War. \nFavoured Weapons: Scythe, Sickle."
     },
     {
       "Key": "3d2b85c4110b44dcae8a149272b71fe8",
@@ -5248,6 +5309,48 @@
       "SimpleName": "LuckInvokeDeityBuff.Name",
       "ProcessTemplates": false,
       "enGB": "Invoke Deity - Luck Domain"
+    },
+    {
+      "Key": "70e563f8ced04cdb80c6981d8fa58323",
+      "SimpleName": "LustDomainBaseFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nYou can entrance friend and foe alike, able to inspire people or reduce them to a stunned stupor.\nDazing Touch: You can cause a living creature to become dazed for 1 round as a melee touch attack. Creatures with more Hit Dice than your level in the class that gave you access to this domain are unaffected. You can use this ability a number of times per day equal to 3 + your Wisdom modifier.\nAnything to Please: At 8th level, you can compel a creature within close range to attempt to please you as a standard action. The creature receives a Will save to negate this affect. If the save fails, the creature attacks your enemies for 1 round, stands stunned by you for 1 round, or drops prone and grovels for 1d4 rounds, chosen at random. You can use this ability once per day at 8th level and one additional time per day for every four levels beyond 8th. This is a mind-affecting effect."
+    },
+    {
+      "Key": "a13812e143314c7286dd337d2eafbf74",
+      "SimpleName": "LustDomainBaseFeature.Name",
+      "ProcessTemplates": false,
+      "enGB": "Lust Subdomain"
+    },
+    {
+      "Key": "c7e6033803394a25a2c56785503ce3a0",
+      "SimpleName": "LustDomainGreaterAbility.Description",
+      "ProcessTemplates": true,
+      "enGB": "At 8th level, you can compel a creature within close range to attempt to please you as a standard action. The creature receives a Will save to negate this affect. If the save fails, the creature attacks your enemies for 1 round, stands stunned by you for 1 round, or drops prone and grovels for 1d4 rounds, chosen at random. You can use this ability once per day at 8th level and one additional time per day for every four levels beyond 8th. This is a mind-affecting effect."
+    },
+    {
+      "Key": "1090a8cd0aa141b5a912917e545eacfb",
+      "SimpleName": "LustDomainGreaterAbility.Name",
+      "ProcessTemplates": false,
+      "enGB": "Anything to Please"
+    },
+    {
+      "Key": "9d0f1c783c634d7f98d6321c79b250eb",
+      "SimpleName": "LustDomainGreaterFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "At 8th level, you can compel a creature within close range to attempt to please you as a standard action. The creature receives a Will save to negate this affect. If the save fails, the creature attacks your enemies for 1 round, stands stunned by you for 1 round, or drops prone and grovels for 1d4 rounds, chosen at random. You can use this ability once per day at 8th level and one additional time per day for every four levels beyond 8th. This is a mind-affecting effect."
+    },
+    {
+      "Key": "92109be1054344b6abb063dbd0379bb1",
+      "SimpleName": "LustDomainProgression.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nYou can entrance friend and foe alike, able to inspire people or reduce them to a stunned stupor.\nDazing Touch: You can cause a living creature to become dazed for 1 round as a melee touch attack. Creatures with more Hit Dice than your level in the class that gave you access to this domain are unaffected. You can use this ability a number of times per day equal to 3 + your Wisdom modifier.\nAnything to Please: At 8th level, you can compel a creature within close range to attempt to please you as a standard action. The creature receives a Will save to negate this affect. If the save fails, the creature attacks your enemies for 1 round, stands stunned by you for 1 round, or drops prone and grovels for 1d4 rounds, chosen at random. You can use this ability once per day at 8th level and one additional time per day for every four levels beyond 8th. This is a mind-affecting effect.\nDomain Spells: hypnotism, hideous laughter, deep slumber, confusion, dominate person, mass eagle's splendor, insanity, euphoric tranquility, dominate monster."
+    },
+    {
+      "Key": "1efef1fc28fb4516b0a5924c01795874",
+      "SimpleName": "LustDomainProgressionSecondary.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nYou can entrance friend and foe alike, able to inspire people or reduce them to a stunned stupor.\nDazing Touch: You can cause a living creature to become dazed for 1 round as a melee touch attack. Creatures with more Hit Dice than your level in the class that gave you access to this domain are unaffected. You can use this ability a number of times per day equal to 3 + your Wisdom modifier.\nAnything to Please: At 8th level, you can compel a creature within close range to attempt to please you as a standard action. The creature receives a Will save to negate this affect. If the save fails, the creature attacks your enemies for 1 round, stands stunned by you for 1 round, or drops prone and grovels for 1d4 rounds, chosen at random. You can use this ability once per day at 8th level and one additional time per day for every four levels beyond 8th. This is a mind-affecting effect.\nDomain Spells: hypnotism, hideous laughter, deep slumber, confusion, dominate person, mass eagle's splendor, insanity, euphoric tranquility, dominate monster."
     },
     {
       "Key": "f63572b4d35f4621a73c6e7ab9db09b8",
@@ -6017,17 +6120,17 @@
       "enGB": "Bones"
     },
     {
+      "Key": "652e3f84a2804e83b5bc11a0934f7453",
+      "SimpleName": "OceansEchoDragonMysteryFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "Gain access to the spells and revelations of the dragon mystery. \nDue to the ocean's echo archetype the class skills gained from this archtypeare changed to Persuasion, Knowledge (world) and Lore (nature)"
+    },
+    {
       "Key": "98f88456e0f44c4b816a7118f3d98e27",
       "SimpleName": "OceansEchoDragonMysteryFeature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "An oracle with the dragon mystery adds Mobility, Persuasion, Perception and Knowledge (world)  to her list of class skills."
-    },
-    {
-      "Key": "652e3f84a2804e83b5bc11a0934f7453",
-      "SimpleName": "OceansEchoDragonMysteryFeature.Description",
-      "ProcessTemplates": true,
-      "enGB": "Gain access to the spells and revelations of the dragon mystery. \nDue to the ocean's echo archetype the class skills gained from this archtypeare changed to Persuasion, Knowledge (world) and Lore (nature)"
     },
     {
       "Key": "911140f184994084b59382f6e5ff0dcf",
@@ -6304,17 +6407,17 @@
       "enGB": "Upon achieving 20th level, your rapport with the heavens grants you perfect harmony with the universe. You receive a bonus on all saving throws equal to your Charisma modifier. You become immune to fear effects, and automatically confirm all critical hits. Once per day, should you die, 1 round after dying you are reborn. Your body re-forms with all your equipment, and you return to life with maximum hit points."
     },
     {
+      "Key": "34d9258f52d54d698abef589299c445c",
+      "SimpleName": "OracleHeavensMysteryFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "An oracle with the heavens mystery adds Perception and Knowledge (Arcana)  to her list of class skills."
+    },
+    {
       "Key": "5a4e1c62b9e04b2e9c66bf97ef9657b7",
       "SimpleName": "OracleHeavensMysteryFeature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "An oracle with the heavens mystery adds Perception and Knowledge (world)  to her list of class skills."
-    },
-    {
-      "Key": "34d9258f52d54d698abef589299c445c",
-      "SimpleName": "OracleHeavensMysteryFeature.Description",
-      "ProcessTemplates": true,
-      "enGB": "An oracle with the heavens mystery adds Perception and Knowledge (Arcana)  to her list of class skills."
     },
     {
       "Key": "f5c964d3e8594713b330e2723b10d374",
@@ -7609,17 +7712,17 @@
       "enGB": "You can effortlessly give aid to your allies, whether that means providing them with help attacking or defending them in the heat of combat. Whenever you use the aid another action to inflict a penalty on attack rolls or to AC against one of your allies, the penalty you inflict increases by 1. This bonus increases by 1 at 4th level and every 5 oracle levels thereafter (to a maximum of -5 at 19th level). It doesn’t stack with other feats or class features that improve the bonus you provide when using the aid another action."
     },
     {
+      "Key": "af529b1729704857b9cfe8a6be9d3b40",
+      "SimpleName": "PerfectAidAnotherDefenceBuff.Name",
+      "ProcessTemplates": false,
+      "enGB": "Perfect Aid Another - Distracted Attacks"
+    },
+    {
       "Key": "34cafae5b6854351900dd71175dd51eb",
       "SimpleName": "PerfectAidAnotherDefenceBuff.Name",
       "ProcessTemplates": false,
       "IsUsed": false,
       "enGB": "Perfect Aid Another - Defence"
-    },
-    {
-      "Key": "af529b1729704857b9cfe8a6be9d3b40",
-      "SimpleName": "PerfectAidAnotherDefenceBuff.Name",
-      "ProcessTemplates": false,
-      "enGB": "Perfect Aid Another - Distracted Attacks"
     },
     {
       "Key": "f4e05f441eff4e289df9f048c91b297e",
@@ -7628,17 +7731,17 @@
       "enGB": "You can effortlessly give aid to your allies, whether that means providing them with help attacking or defending them in the heat of combat. Whenever you use the aid another action to inflict a penalty on attack rolls or to AC against one of your allies, the penalty you inflict increases by 1. This bonus increases by 1 at 4th level and every 5 oracle levels thereafter (to a maximum of -5 at 19th level). It doesn’t stack with other feats or class features that improve the bonus you provide when using the aid another action."
     },
     {
-      "Key": "22d57920ce524fa3851b1583bf513fa8",
-      "SimpleName": "PerfectAidAnotherOffenceBuff.Name",
-      "ProcessTemplates": false,
-      "enGB": "Perfect Aid Another - Distracted Defending"
-    },
-    {
       "Key": "6dca0ae196dd4a5ab6dad37062a7180b",
       "SimpleName": "PerfectAidAnotherOffenceBuff.Name",
       "ProcessTemplates": false,
       "IsUsed": false,
       "enGB": "Perfect Aid Another - Offence"
+    },
+    {
+      "Key": "22d57920ce524fa3851b1583bf513fa8",
+      "SimpleName": "PerfectAidAnotherOffenceBuff.Name",
+      "ProcessTemplates": false,
+      "enGB": "Perfect Aid Another - Distracted Defending"
     },
     {
       "Key": "4fa5231fdfa0430dad209a81e8b4ab91",
@@ -8001,10 +8104,11 @@
       "enGB": "Ragadahn"
     },
     {
-      "Key": "312f5f125aa545abb3fa1104c97d040a",
+      "Key": "5b9a07c6f2a94019bbfaf7e9e6d4fb6d",
       "SimpleName": "RagathielFeature.Description",
       "ProcessTemplates": true,
-      "enGB": "\nTitles: General of Vengeance   \nAlignment: Lawful Good   \nDomains: Destruction, Good, Law, Nobility   \nSubdomains: Archon, Leadership, Martyr, Rage   \nFavoured Weapon: Bastard Sword   \nHoly Symbol: Sword, crossed with Wing   \nSacred Animal: Mastiff   \nSacred Colours: Crimson, Gold   \nRagathiel is an empyreal lord—a good servant of the gods who through transcendence has achieved some small measure of divine power—known as the General of Vengeance. His portfolio includes chivalry, duty, and vengeance, and his holy symbol is a bastard sword crossed with a crimson wing. He makes his home at the base of the mountain of Heaven, in his eponymous fortress, a magnificent steel structure designed to withstand a thousand-year siege if need be. Ragathiel takes an active role in the battle against Hell's fiendish legions. He shines at the head of his army, a figure of golden light cleaving through the ranks of devils that face him. Soldiers of all kinds, but particularly knights, pay homage to Ragathiel and pray for his virtue and wrathful strength in battle. Those who have taken vows, especially those of duty or vengeance, hold Ragathiel as their ideal, and his agents sometimes assist those who have been grievously wronged and now seek righteous vengeance. As strange as it may seem, Ragathiel is the son of Feronia, a demigoddess of the Plane of Fire, and Dispater, the Father of Dis. He was conceived in a brief tryst (lasting only a few centuries), after which his mother took him out of Hell. Ragathiel's tainted heritage has left him with a wrathful heart, and the angel struggles constantly to master his baser impulses in service to the light. For thousands of years he strove to prove himself to the angelic choirs of Heaven. In the Maelstrom he wrestled for 16 years with a monstrous evil serpent whose scales wept acidic blood until he was able to choke the life out of it. He led an entire army against one of the iron fortresses of Avernus and burned the castle to the ground with holy fire, single-handedly maiming Infernal Duke Deumus in the process. Finally the other empyreal lords agreed to admit Ragathiel into their ranks, and now they appear to trust the angel completely—though that trust took centuries to develop. At some point in history, Ragathiel destroyed Typhon, the original ruler of the first layer of Hell. He may have been manipulated into doing so by the schemes of Asmodeus to punish Typhon for his indiscretions. Ragathiel was once served by the Hand of the Inheritor, an angel who now acts as the goddess Iomedae's herald. Then known as the Hand of Vengeance, this angel asked to be reassigned to Iomedae after the death of Aroden. \nAppearance: Ragathiel is a tower of glorious might. He stands almost 20 feet tall, and five lofty burning wings stretch from his back. The General of Vengeance once had six wings, but one was severed, torn from his body by the archdevil Dispater—Ragathiel's father.   \nWorship: Ragathiel is commonly worshiped by the avowed, knights, soldiers, the wronged, and the empyreal lord employs aasimar, paladins, blink dogs, and kirin as his most common servants. The holiest time for Ragathiel's followers is the brief moments before and after a battle. The faithful ask Ragathiel's eyes to fall upon them and for his wings to shield them. This is also a standard greeting and farewell among worshipers. Followers of Ragathiel commonly wear red and silver clothing. Many also don an ornament or sigil the color of flames, typically on the helmet. Ragathiel has a small but old cult in Magnimar, a city known for its many mystery cults revering various empyreal lords.   \nPaladin Code:   \n*I will avenge evil wrought upon the innocent.   \n*I will not give my word lightly, but once it is given, I will uphold a promise until my last breath.   \n*Those proven guilty must be punished for their crimes. I will not turn a blind eye to wrongdoing.   \n*Rage is a virtue and a strength only when focused against the deserving. I will never seek disproportionate retribution.   \n*Redemption finds hearts from even the cruelest origins. I will strive not to act upon prejudice against fellow mortals based on race or origin."
+      "IsUsed": false,
+      "enGB": "\nTitles: General of Vengeance   \nAlignment: Lawful Good   \nDomains: Destruction, Good, Law, Nobility   \nSubdomains: Archon, Leadership, Martyr, Rage   \nFavoured Weapon: Bastard Sword   \nHoly Symbol: Sword, crossed with Wing   \nSacred Animal: Mastiff   \nSacred Colours: Crimson, Gold   \nRagathiel is an empyreal lord—a good servant of the gods who through transcendence has achieved some small measure of divine power—known as the General of Vengeance. His portfolio includes chivalry, duty, and vengeance, and his holy symbol is a bastard sword crossed with a crimson wing. He makes his home at the base of the mountain of Heaven, in his eponymous fortress, a magnificent steel structure designed to withstand a thousand-year siege if need be. Ragathiel takes an active role in the battle against Hell's fiendish legions. He shines at the head of his army, a figure of golden light cleaving through the ranks of devils that face him. Soldiers of all kinds, but particularly knights, pay homage to Ragathiel and pray for his virtue and wrathful strength in battle. Those who have taken vows, especially those of duty or vengeance, hold Ragathiel as their ideal, and his agents sometimes assist those who have been grievously wronged and now seek righteous vengeance. As strange as it may seem, Ragathiel is the son of Feronia, a demigoddess of the Plane of Fire, and Dispater, the Father of Dis. He was conceived in a brief tryst (lasting only a few centuries), after which his mother took him out of Hell. Ragathiel's tainted heritage has left him with a wrathful heart, and the angel struggles constantly to master his baser impulses in service to the light. For thousands of years he strove to prove himself to the angelic choirs of Heaven. In the Maelstrom he wrestled for 16 years with a monstrous evil serpent whose scales wept acidic blood until he was able to choke the life out of it. He led an entire army against one of the iron fortresses of Avernus and burned the castle to the ground with holy fire, single-handedly maiming Infernal Duke Deumus in the process. Finally the other empyreal lords agreed to admit Ragathiel into their ranks, and now they appear to trust the angel completely—though that trust took centuries to develop. At some point in history, Ragathiel destroyed Typhon, the original ruler of the first layer of Hell.He may have been manipulated into doing so by the schemes of Asmodeus to punish Typhon for his indiscretions. Ragathiel was once served by the Hand of the Inheritor, an angel who now acts as the goddess Iomedae's herald. Then known as the Hand of Vengeance, this angel asked to be reassigned to Iomedae after the death of Aroden. \nAppearance: Ragathiel is a tower of glorious might. He stands almost 20 feet tall, and five lofty burning wings stretch from his back. The General of Vengeance once had six wings, but one was severed, torn from his body by the archdevil Dispater—Ragathiel's father.   \nWorship: Ragathiel is commonly worshiped by the avowed, knights, soldiers, the wronged, and the empyreal lord employs aasimar, paladins, blink dogs, and kirin as his most common servants. The holiest time for Ragathiel's followers is the brief moments before and after a battle. The faithful ask Ragathiel's eyes to fall upon them and for his wings to shield them.This is also a standard greeting and farewell among worshipers. Followers of Ragathiel commonly wear red and silver clothing.Many also don an ornament or sigil the color of flames, typically on the helmet. Ragathiel has a small but old cult in Magnimar, a city known for its many mystery cults revering various empyreal lords.   \nPaladin Code:   \n*I will avenge evil wrought upon the innocent.   \n*I will not give my word lightly, but once it is given, I will uphold a promise until my last breath.   \n*Those proven guilty must be punished for their crimes. I will not turn a blind eye to wrongdoing.   \n*Rage is a virtue and a strength only when focused against the deserving. I will never seek disproportionate retribution.   \n*Redemption finds hearts from even the cruelest origins. I will strive not to act upon prejudice against fellow mortals based on race or origin."
     },
     {
       "Key": "a25bd1eabfbf4b04bd0c91e5c1ae1ba4",
@@ -8014,11 +8118,10 @@
       "enGB": "\nTitles: General of Vengeance   \nAlignment: Lawful Good   \nDomains: Destruction, Good, Law, Nobility   \nSubdomains: Archon, Leadership, Martyr, Rage   \nFavoured Weapon: Bastard Sword   \nHoly Symbol: Sword, crossed with Wing   \nSacred Animal: Mastiff   \nSacred Colours: Crimson, Gold   \nRagathiel is an empyreal lord—a good servant of the gods who through transcendence has achieved some small measure of divine power—known as the General of Vengeance. His portfolio includes chivalry, duty, and vengeance, and his holy symbol is a bastard sword crossed with a crimson wing. He makes his home at the base of the mountain of Heaven, in his eponymous fortress, a magnificent steel structure designed to withstand a thousand-year siege if need be. Ragathiel takes an active role in the battle against Hell's fiendish legions. He shines at the head of his army, a figure of golden light cleaving through the ranks of devils that face him. Soldiers of all kinds, but particularly knights, pay homage to Ragathiel and pray for his virtue and wrathful strength in battle. Those who have taken vows, especially those of duty or vengeance, hold Ragathiel as their ideal, and his agents sometimes assist those who have been grievously wronged and now seek righteous vengeance. As strange as it may seem, Ragathiel is the son of Feronia, a demigoddess of the Plane of Fire, and Dispater, the Father of Dis. He was conceived in a brief tryst (lasting only a few centuries), after which his mother took him out of Hell. Ragathiel's tainted heritage has left him with a wrathful heart, and the angel struggles constantly to master his baser impulses in service to the light. For thousands of years he strove to prove himself to the angelic choirs of Heaven. In the Maelstrom he wrestled for 16 years with a monstrous evil serpent whose scales wept acidic blood until he was able to choke the life out of it. He led an entire army against one of the iron fortresses of Avernus and burned the castle to the ground with holy fire, single-handedly maiming Infernal Duke Deumus in the process. Finally the other empyreal lords agreed to admit Ragathiel into their ranks, and now they appear to trust the angel completely—though that trust took centuries to develop. At some point in history, Ragathiel destroyed Typhon, the original ruler of the first layer of Hell.He may have been manipulated into doing so by the schemes of Asmodeus to punish Typhon for his indiscretions.[9] Ragathiel was once served by the Hand of the Inheritor, an angel who now acts as the goddess Iomedae's herald. Then known as the Hand of Vengeance, this angel asked to be reassigned to Iomedae after the death of Aroden. \nAppearance: Ragathiel is a tower of glorious might. He stands almost 20 feet tall, and five lofty burning wings stretch from his back. The General of Vengeance once had six wings, but one was severed, torn from his body by the archdevil Dispater—Ragathiel's father.   \nWorship: Ragathiel is commonly worshiped by the avowed, knights, soldiers, the wronged, and the empyreal lord employs aasimar, paladins, blink dogs, and kirin as his most common servants.[4] The holiest time for Ragathiel's followers is the brief moments before and after a battle. The faithful ask Ragathiel's eyes to fall upon them and for his wings to shield them.This is also a standard greeting and farewell among worshipers. Followers of Ragathiel commonly wear red and silver clothing.Many also don an ornament or sigil the color of flames, typically on the helmet. Ragathiel has a small but old cult in Magnimar, a city known for its many mystery cults revering various empyreal lords.   \nPaladin Code:   \n*I will avenge evil wrought upon the innocent.   \n*I will not give my word lightly, but once it is given, I will uphold a promise until my last breath.   \n*Those proven guilty must be punished for their crimes. I will not turn a blind eye to wrongdoing.   \n*Rage is a virtue and a strength only when focused against the deserving. I will never seek disproportionate retribution.   \n*Redemption finds hearts from even the cruelest origins. I will strive not to act upon prejudice against fellow mortals based on race or origin."
     },
     {
-      "Key": "5b9a07c6f2a94019bbfaf7e9e6d4fb6d",
+      "Key": "312f5f125aa545abb3fa1104c97d040a",
       "SimpleName": "RagathielFeature.Description",
       "ProcessTemplates": true,
-      "IsUsed": false,
-      "enGB": "\nTitles: General of Vengeance   \nAlignment: Lawful Good   \nDomains: Destruction, Good, Law, Nobility   \nSubdomains: Archon, Leadership, Martyr, Rage   \nFavoured Weapon: Bastard Sword   \nHoly Symbol: Sword, crossed with Wing   \nSacred Animal: Mastiff   \nSacred Colours: Crimson, Gold   \nRagathiel is an empyreal lord—a good servant of the gods who through transcendence has achieved some small measure of divine power—known as the General of Vengeance. His portfolio includes chivalry, duty, and vengeance, and his holy symbol is a bastard sword crossed with a crimson wing. He makes his home at the base of the mountain of Heaven, in his eponymous fortress, a magnificent steel structure designed to withstand a thousand-year siege if need be. Ragathiel takes an active role in the battle against Hell's fiendish legions. He shines at the head of his army, a figure of golden light cleaving through the ranks of devils that face him. Soldiers of all kinds, but particularly knights, pay homage to Ragathiel and pray for his virtue and wrathful strength in battle. Those who have taken vows, especially those of duty or vengeance, hold Ragathiel as their ideal, and his agents sometimes assist those who have been grievously wronged and now seek righteous vengeance. As strange as it may seem, Ragathiel is the son of Feronia, a demigoddess of the Plane of Fire, and Dispater, the Father of Dis. He was conceived in a brief tryst (lasting only a few centuries), after which his mother took him out of Hell. Ragathiel's tainted heritage has left him with a wrathful heart, and the angel struggles constantly to master his baser impulses in service to the light. For thousands of years he strove to prove himself to the angelic choirs of Heaven. In the Maelstrom he wrestled for 16 years with a monstrous evil serpent whose scales wept acidic blood until he was able to choke the life out of it. He led an entire army against one of the iron fortresses of Avernus and burned the castle to the ground with holy fire, single-handedly maiming Infernal Duke Deumus in the process. Finally the other empyreal lords agreed to admit Ragathiel into their ranks, and now they appear to trust the angel completely—though that trust took centuries to develop. At some point in history, Ragathiel destroyed Typhon, the original ruler of the first layer of Hell.He may have been manipulated into doing so by the schemes of Asmodeus to punish Typhon for his indiscretions. Ragathiel was once served by the Hand of the Inheritor, an angel who now acts as the goddess Iomedae's herald. Then known as the Hand of Vengeance, this angel asked to be reassigned to Iomedae after the death of Aroden. \nAppearance: Ragathiel is a tower of glorious might. He stands almost 20 feet tall, and five lofty burning wings stretch from his back. The General of Vengeance once had six wings, but one was severed, torn from his body by the archdevil Dispater—Ragathiel's father.   \nWorship: Ragathiel is commonly worshiped by the avowed, knights, soldiers, the wronged, and the empyreal lord employs aasimar, paladins, blink dogs, and kirin as his most common servants. The holiest time for Ragathiel's followers is the brief moments before and after a battle. The faithful ask Ragathiel's eyes to fall upon them and for his wings to shield them.This is also a standard greeting and farewell among worshipers. Followers of Ragathiel commonly wear red and silver clothing.Many also don an ornament or sigil the color of flames, typically on the helmet. Ragathiel has a small but old cult in Magnimar, a city known for its many mystery cults revering various empyreal lords.   \nPaladin Code:   \n*I will avenge evil wrought upon the innocent.   \n*I will not give my word lightly, but once it is given, I will uphold a promise until my last breath.   \n*Those proven guilty must be punished for their crimes. I will not turn a blind eye to wrongdoing.   \n*Rage is a virtue and a strength only when focused against the deserving. I will never seek disproportionate retribution.   \n*Redemption finds hearts from even the cruelest origins. I will strive not to act upon prejudice against fellow mortals based on race or origin."
+      "enGB": "\nTitles: General of Vengeance   \nAlignment: Lawful Good   \nDomains: Destruction, Good, Law, Nobility   \nSubdomains: Archon, Leadership, Martyr, Rage   \nFavoured Weapon: Bastard Sword   \nHoly Symbol: Sword, crossed with Wing   \nSacred Animal: Mastiff   \nSacred Colours: Crimson, Gold   \nRagathiel is an empyreal lord—a good servant of the gods who through transcendence has achieved some small measure of divine power—known as the General of Vengeance. His portfolio includes chivalry, duty, and vengeance, and his holy symbol is a bastard sword crossed with a crimson wing. He makes his home at the base of the mountain of Heaven, in his eponymous fortress, a magnificent steel structure designed to withstand a thousand-year siege if need be. Ragathiel takes an active role in the battle against Hell's fiendish legions. He shines at the head of his army, a figure of golden light cleaving through the ranks of devils that face him. Soldiers of all kinds, but particularly knights, pay homage to Ragathiel and pray for his virtue and wrathful strength in battle. Those who have taken vows, especially those of duty or vengeance, hold Ragathiel as their ideal, and his agents sometimes assist those who have been grievously wronged and now seek righteous vengeance. As strange as it may seem, Ragathiel is the son of Feronia, a demigoddess of the Plane of Fire, and Dispater, the Father of Dis. He was conceived in a brief tryst (lasting only a few centuries), after which his mother took him out of Hell. Ragathiel's tainted heritage has left him with a wrathful heart, and the angel struggles constantly to master his baser impulses in service to the light. For thousands of years he strove to prove himself to the angelic choirs of Heaven. In the Maelstrom he wrestled for 16 years with a monstrous evil serpent whose scales wept acidic blood until he was able to choke the life out of it. He led an entire army against one of the iron fortresses of Avernus and burned the castle to the ground with holy fire, single-handedly maiming Infernal Duke Deumus in the process. Finally the other empyreal lords agreed to admit Ragathiel into their ranks, and now they appear to trust the angel completely—though that trust took centuries to develop. At some point in history, Ragathiel destroyed Typhon, the original ruler of the first layer of Hell. He may have been manipulated into doing so by the schemes of Asmodeus to punish Typhon for his indiscretions. Ragathiel was once served by the Hand of the Inheritor, an angel who now acts as the goddess Iomedae's herald. Then known as the Hand of Vengeance, this angel asked to be reassigned to Iomedae after the death of Aroden. \nAppearance: Ragathiel is a tower of glorious might. He stands almost 20 feet tall, and five lofty burning wings stretch from his back. The General of Vengeance once had six wings, but one was severed, torn from his body by the archdevil Dispater—Ragathiel's father.   \nWorship: Ragathiel is commonly worshiped by the avowed, knights, soldiers, the wronged, and the empyreal lord employs aasimar, paladins, blink dogs, and kirin as his most common servants. The holiest time for Ragathiel's followers is the brief moments before and after a battle. The faithful ask Ragathiel's eyes to fall upon them and for his wings to shield them. This is also a standard greeting and farewell among worshipers. Followers of Ragathiel commonly wear red and silver clothing. Many also don an ornament or sigil the color of flames, typically on the helmet. Ragathiel has a small but old cult in Magnimar, a city known for its many mystery cults revering various empyreal lords.   \nPaladin Code:   \n*I will avenge evil wrought upon the innocent.   \n*I will not give my word lightly, but once it is given, I will uphold a promise until my last breath.   \n*Those proven guilty must be punished for their crimes. I will not turn a blind eye to wrongdoing.   \n*Rage is a virtue and a strength only when focused against the deserving. I will never seek disproportionate retribution.   \n*Redemption finds hearts from even the cruelest origins. I will strive not to act upon prejudice against fellow mortals based on race or origin."
     },
     {
       "Key": "afeb33447f8d4df9a28228e293eb6224",
@@ -8123,6 +8226,54 @@
       "SimpleName": "ResistDragonsMightFeature.Name",
       "ProcessTemplates": false,
       "enGB": "Resist Dragon's Might"
+    },
+    {
+      "Key": "622600735be84032a274bdc278e7c8d7",
+      "SimpleName": "ResolveDomainBaseFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nFaith grants resolve — resolve grants strength and fortitude.\nStrength Surge: As a standard action, you can touch a creature to give it great strength. For 1 round, the target gains an enhancement bonus equal to 1/2 your level in the class that gave you access to this domain (minimum +1) to melee attacks and Athletics checks. You can use this ability a number of times per day equal to 3 + your Wisdom modifier. \nBestow Resolve: At 8th level, you can bless creatures with the boldness of your deity. You can bestow a number of temporary hit points equal to your level + your Wisdom modifier to all allies within 20 feet. The temporary hit points remain for 1 minute. You can use this ability once per day at 8th level, plus one additional time per day for every 4 levels you possess beyond 8th."
+    },
+    {
+      "Key": "7c996af0994140d7811f4b82a300c149",
+      "SimpleName": "ResolveDomainBaseFeature.Name",
+      "ProcessTemplates": false,
+      "enGB": "Resolve Subdomain"
+    },
+    {
+      "Key": "d9c3fecb3226428bae403deeb17f325e",
+      "SimpleName": "ResolveDomainGreaterAbility.Description",
+      "ProcessTemplates": true,
+      "enGB": "At 8th level, you can bless creatures with the boldness of your deity. You can bestow a number of temporary hit points equal to your level + your Wisdom modifier to all allies within 20 feet. The temporary hit points remain for 1 minute. You can use this ability once per day at 8th level, plus one additional time per day for every 4 levels you possess beyond 8th."
+    },
+    {
+      "Key": "e53fceebd1264475a3f47e63f8386cc3",
+      "SimpleName": "ResolveDomainGreaterBuff.Description",
+      "ProcessTemplates": true,
+      "enGB": "At 8th level, you can bless creatures with the boldness of your deity. You can bestow a number of temporary hit points equal to your level + your Wisdom modifier to all allies within 20 feet. The temporary hit points remain for 1 minute. You can use this ability once per day at 8th level, plus one additional time per day for every 4 levels you possess beyond 8th."
+    },
+    {
+      "Key": "e9bed572ccea4b75ab348f3493ac8934",
+      "SimpleName": "ResolveDomainGreaterBuff.Name",
+      "ProcessTemplates": false,
+      "enGB": "Bestow Resolve"
+    },
+    {
+      "Key": "bd4a1087db71460fbce8178c85afa4c5",
+      "SimpleName": "ResolveDomainGreaterFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "At 8th level, you can bless creatures with the boldness of your deity. You can bestow a number of temporary hit points equal to your level + your Wisdom modifier to all allies within 20 feet. The temporary hit points remain for 1 minute. You can use this ability once per day at 8th level, plus one additional time per day for every 4 levels you possess beyond 8th."
+    },
+    {
+      "Key": "b723222d88c1417699cbe2d46488b0e4",
+      "SimpleName": "ResolveDomainProgression.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nFaith grants resolve — resolve grants strength and fortitude.\nStrength Surge: As a standard action, you can touch a creature to give it great strength. For 1 round, the target gains an enhancement bonus equal to 1/2 your level in the class that gave you access to this domain (minimum +1) to melee attacks and Athletics checks. You can use this ability a number of times per day equal to 3 + your Wisdom modifier. \nBestow Resolve: At 8th level, you can bless creatures with the boldness of your deity. You can bestow a number of temporary hit points equal to your level + your Wisdom modifier to all allies within 20 feet. The temporary hit points remain for 1 minute. You can use this ability once per day at 8th level, plus one additional time per day for every 4 levels you possess beyond 8th.\nDomain Spells: bless, bull's strength, magical vestment, mass enlarge person, righteous might, stoneskin, legendary proportions, frightful aspect, transformation."
+    },
+    {
+      "Key": "4f49d21127b547d589abc424345f65a4",
+      "SimpleName": "ResolveDomainProgressionSecondary.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nFaith grants resolve — resolve grants strength and fortitude.\nStrength Surge: As a standard action, you can touch a creature to give it great strength. For 1 round, the target gains an enhancement bonus equal to 1/2 your level in the class that gave you access to this domain (minimum +1) to melee attacks and Athletics checks. You can use this ability a number of times per day equal to 3 + your Wisdom modifier. \nBestow Resolve: At 8th level, you can bless creatures with the boldness of your deity. You can bestow a number of temporary hit points equal to your level + your Wisdom modifier to all allies within 20 feet. The temporary hit points remain for 1 minute. You can use this ability once per day at 8th level, plus one additional time per day for every 4 levels you possess beyond 8th.\nDomain Spells: bless, bull's strength, magical vestment, mass enlarge person, righteous might, stoneskin, legendary proportions, frightful aspect, transformation."
     },
     {
       "Key": "0766f79992c2404d927cc15d98c1f5ff",
@@ -8802,17 +8953,17 @@
       "enGB": "Shivaska"
     },
     {
-      "Key": "63b15554a33a4aac8390229ed2c68f7b",
-      "SimpleName": "ShizuruFeature.Description",
-      "ProcessTemplates": true,
-      "enGB": "\nTitles: Empress of Heaven   \nAlignment: Lawful Good   \nAreas of Concern: Ancestors, Honor, The Sun, Swordplay   \nDomains: Glory, Good, Law, Repose, Sun   \nSubdomains: Ancestors, Archon, Day, Heroism, Honor, Light, Revelation  \nFavoured Weapon: Katana (Longsword & Dueling sword)   \nHoly Symbol: Katana in front of the sun   \nSacred Animal: Carp   \nShizuru is the Empress of Heaven, goddess of ancestors and the sun. She is also the goddess of honor and swordplay, and is the patron of samurai and other honorable swordfighters. Shizuru loves the moon god Tsukiyo, so much so that she returned him to life when he was slain by his brother Fumeiyoshi. The two lovers are rarely together, however, just as night and day are forever divided, but the two deities are able to rejoin, if only briefly, during rare solar eclipses—a sacred time for both faiths. Shizuru’s worship is popular throughout the Dragon Empires, but her faith is strongest in Minkai, for the emperors of that land revere Shizuru as their divine ancestor. Shizuru is often depicted in art as a beautiful samurai, as a magnificent dragon with golden scales, or as both simultaneously."
-    },
-    {
       "Key": "805fec87a0a04ccf90147dcc7b5282fc",
       "SimpleName": "ShizuruFeature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "\nTitles: Empress of Heaven   \nAlignment: Lawful Good   \nAreas of Concern: Ancestors, Honor, The Sun, Swordplay   \nDomains: Glory, Good, Law, Repose, Sun   \nSubdomains: Ancestors, Archon, Day, Heroism, Honor, Light, Revelation  \nFavoured Weapon: Katana (Longsword)   \nHoly Symbol: Katana in front of the sun   \nSacred Animal: Carp   \nShizuru is the Empress of Heaven, goddess of ancestors and the sun. She is also the goddess of honor and swordplay, and is the patron of samurai and other honorable swordfighters. Shizuru loves the moon god Tsukiyo, so much so that she returned him to life when he was slain by his brother Fumeiyoshi. The two lovers are rarely together, however, just as night and day are forever divided, but the two deities are able to rejoin, if only briefly, during rare solar eclipses—a sacred time for both faiths. Shizuru’s worship is popular throughout the Dragon Empires, but her faith is strongest in Minkai, for the emperors of that land revere Shizuru as their divine ancestor. Shizuru is often depicted in art as a beautiful samurai, as a magnificent dragon with golden scales, or as both simultaneously."
+    },
+    {
+      "Key": "63b15554a33a4aac8390229ed2c68f7b",
+      "SimpleName": "ShizuruFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nTitles: Empress of Heaven   \nAlignment: Lawful Good   \nAreas of Concern: Ancestors, Honor, The Sun, Swordplay   \nDomains: Glory, Good, Law, Repose, Sun   \nSubdomains: Ancestors, Archon, Day, Heroism, Honor, Light, Revelation  \nFavoured Weapon: Katana (Longsword & Dueling sword)   \nHoly Symbol: Katana in front of the sun   \nSacred Animal: Carp   \nShizuru is the Empress of Heaven, goddess of ancestors and the sun. She is also the goddess of honor and swordplay, and is the patron of samurai and other honorable swordfighters. Shizuru loves the moon god Tsukiyo, so much so that she returned him to life when he was slain by his brother Fumeiyoshi. The two lovers are rarely together, however, just as night and day are forever divided, but the two deities are able to rejoin, if only briefly, during rare solar eclipses—a sacred time for both faiths. Shizuru’s worship is popular throughout the Dragon Empires, but her faith is strongest in Minkai, for the emperors of that land revere Shizuru as their divine ancestor. Shizuru is often depicted in art as a beautiful samurai, as a magnificent dragon with golden scales, or as both simultaneously."
     },
     {
       "Key": "3ef498a3b1f34038af628a74d00a11e6",
@@ -8857,16 +9008,16 @@
       "enGB": "Silver Champion"
     },
     {
-      "Key": "96ac5395a9054d339832829bc004945d",
-      "SimpleName": "SilverChampionSpellbook.Name",
-      "ProcessTemplates": false,
-      "enGB": "SilverChampion"
-    },
-    {
       "Key": "c8220270704a44c79e2d4ef6bf6ddce6",
       "SimpleName": "SilverChampionSpellbook.Name",
       "ProcessTemplates": false,
       "enGB": "Claw of the False Wyrm"
+    },
+    {
+      "Key": "96ac5395a9054d339832829bc004945d",
+      "SimpleName": "SilverChampionSpellbook.Name",
+      "ProcessTemplates": false,
+      "enGB": "SilverChampion"
     },
     {
       "Key": "8847cba8444f4ce29366a7d71760800c",
@@ -9564,17 +9715,17 @@
       "enGB": "In melee combat, you can help your allies attack or defend by distracting or interfering with an opponent. If you’re in position to make a melee attack on an opponent you can attempt to aid your allies against that enemy as a swift action. The distracted enemy is inflicted with a -1 penalty to either their AC against the next attack by your allies. This penalty only applies to the first attack roll and is removed after 1 round."
     },
     {
+      "Key": "2530e57ca69a41dbba4e72c80ac2d2d9",
+      "SimpleName": "SwiftAidAnotherOffenceBuff.Name",
+      "ProcessTemplates": false,
+      "enGB": "Swift Aid Another - Distracted Defending"
+    },
+    {
       "Key": "39d6c37ad59b44a8b74ff1d81c1d5cb3",
       "SimpleName": "SwiftAidAnotherOffenceBuff.Name",
       "ProcessTemplates": false,
       "IsUsed": false,
       "enGB": "Swift Aid Another - Offence"
-    },
-    {
-      "Key": "2530e57ca69a41dbba4e72c80ac2d2d9",
-      "SimpleName": "SwiftAidAnotherOffenceBuff.Name",
-      "ProcessTemplates": false,
-      "enGB": "Swift Aid Another - Distracted Defending"
     },
     {
       "Key": "691f16ab03b2471280c3f15fd5459295",
@@ -10318,17 +10469,17 @@
       "enGB": "Wild Shape - Urban Druid"
     },
     {
-      "Key": "0269241f6f7d46dfa35389317c1a9315",
-      "SimpleName": "ValaniFeature.Description",
-      "ProcessTemplates": true,
-      "enGB": "\nTitles: Fireshaker, The Father of Islands   \nAlignment: Chaotic Good   \nAreas of Concern: Change, Growth, Primal forces   \nDomains: Chaos, Earth, Good, Weather   \nSubdomains: Azata, Growth, Seasons, Storms   \nFavoured Weapon: Club   \nHoly Symbol: Volcano with gold lava   \nSacred Animal: Dinosaur   \nIt is said that trees bend beneath the force of Valani's laugh and his wrathful roar can split the ground around him. Valani's hot temper is well known among the empyreal lords, and his peers respect him for his mastery over the forces of nature. Fireshaker understands that change cannot be forestalled and that growth requires destruction in order for goodness to take root in what was once evil soil. Valani is a massive figure, standing 10 feet tall with the thick arms and legs of a primate and the head of a boar. His wavy dark hair falls free under a crown of spiked grass and purple flowers. The skin left uncovered by ornate armor crafted from tiles of shell and obsidian is dark brown and ruddy, as if the light of a fire were always burning just beneath his flesh. When angered-which is often-his majestic features contort into an expres sion of awful rage. Aside from his wrath, Valani is also known for being a proud and wise father countless times over. Dozens of tribes on serene islands through the multiverse claim their blessings stem from being favored children of Fireshaker. Valani lives in the heart of the Bright-Burning Volcano in Elysium."
-    },
-    {
       "Key": "8168f85829b041f9979f0acd6139ac91",
       "SimpleName": "ValaniFeature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "\nTitles: Fireshaker, The Father of Islands   \nAlignment: Chaotic Good   \nAreas of Concern: Change, Growth, Primal forces   \nDomains: Chaos, Earth, Good, Weather   \nSubdomains: Azata, Growth, Seasons, Storms   \nFavoured Weapon: Club   \nHoly Symbol: Volcano with gold lava   \nSacred Animal: Dinosaur   \nIt is said that trees bend beneath the force of Valani's laugh and his wrathful roar can split the ground around him. Valani's hot temper is well known among the empyreal lords, and his peers respect him for his mastery over the forces of nature. Fireshaker understands that change cannot be forestalled and that growth requires destruction in order for goodness to take root in what was once evil soil. Valani is a massive figure, standing 10 feet tall with the thick arms and legs of a primate and the head of a boar. His wavy dark hair falls free under a crown of spiked grass and purple flowers. The skin left uncovered by ornate armor crafted from tiles of shell and obsidian is dark brown and ruddy, as if the light of a fire were always burning just beneath his flesh. When angered-which is often-his majestic features contort into an expres sion of awful rage. Aside from his wrath, Valani is also known for being a proud and wise father countless times over. Dozens of tribes on serene islands through the multiverse claim their blessings stem from being favored children ofFireshaker. Valani lives in the heart of the Bright-Burning Volcano in Elysium."
+    },
+    {
+      "Key": "0269241f6f7d46dfa35389317c1a9315",
+      "SimpleName": "ValaniFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nTitles: Fireshaker, The Father of Islands   \nAlignment: Chaotic Good   \nAreas of Concern: Change, Growth, Primal forces   \nDomains: Chaos, Earth, Good, Weather   \nSubdomains: Azata, Growth, Seasons, Storms   \nFavoured Weapon: Club   \nHoly Symbol: Volcano with gold lava   \nSacred Animal: Dinosaur   \nIt is said that trees bend beneath the force of Valani's laugh and his wrathful roar can split the ground around him. Valani's hot temper is well known among the empyreal lords, and his peers respect him for his mastery over the forces of nature. Fireshaker understands that change cannot be forestalled and that growth requires destruction in order for goodness to take root in what was once evil soil. Valani is a massive figure, standing 10 feet tall with the thick arms and legs of a primate and the head of a boar. His wavy dark hair falls free under a crown of spiked grass and purple flowers. The skin left uncovered by ornate armor crafted from tiles of shell and obsidian is dark brown and ruddy, as if the light of a fire were always burning just beneath his flesh. When angered-which is often-his majestic features contort into an expres sion of awful rage. Aside from his wrath, Valani is also known for being a proud and wise father countless times over. Dozens of tribes on serene islands through the multiverse claim their blessings stem from being favored children of Fireshaker. Valani lives in the heart of the Bright-Burning Volcano in Elysium."
     },
     {
       "Key": "c699e182666044658c5bb864fa064bad",
