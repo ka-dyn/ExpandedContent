@@ -514,7 +514,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                             Permanent = false,
                             UseDurationSeconds = false,
                             DurationValue = new ContextDurationValue() {
-                                Rate = DurationRate.Rounds,
+                                Rate = DurationRate.Minutes,
                                 DiceType = 0,
                                 DiceCountValue = 0,
                                 BonusValue = new ContextValue() {
