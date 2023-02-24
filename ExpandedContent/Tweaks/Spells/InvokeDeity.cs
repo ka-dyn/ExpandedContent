@@ -860,7 +860,7 @@ namespace ExpandedContent.Tweaks.Spells {
                     c.BonusDC = 1;
                 });
                 bp.AddComponent<AddInitiatorAttackWithWeaponTrigger>(c => {
-                    c.WaitForAttackResolve = true;
+                    c.TriggerBeforeAttack = false;
                     c.OnlyHit = true;
                     c.OnMiss = false;
                     c.OnlyOnFullAttack = false;
@@ -1406,7 +1406,7 @@ namespace ExpandedContent.Tweaks.Spells {
                     "You gain that domain’s benefits, along with the listed physical changes; abilities that allow a saving throw use this spell’s DC. \nGlory: You gain the benefits of heroism and " +
                     "protection from evil, and your first successful attack each round against an undead target deals an additional 1d6 points of positive energy damage.");
                 bp.AddComponent<AddInitiatorAttackWithWeaponTrigger>(c => {
-                    c.WaitForAttackResolve = true;
+                    c.TriggerBeforeAttack = false;
                     c.OnlyHit = true;
                     c.OnMiss = false;
                     c.OnlyOnFullAttack = false;
@@ -3252,7 +3252,7 @@ namespace ExpandedContent.Tweaks.Spells {
                     c.Value = 2;
                 });
                 bp.AddComponent<AddInitiatorAttackWithWeaponTrigger>(c => {
-                    c.WaitForAttackResolve = true;
+                    c.TriggerBeforeAttack = false;
                     c.OnlyHit = true;
                     c.OnMiss = false;
                     c.OnlyOnFullAttack = false;

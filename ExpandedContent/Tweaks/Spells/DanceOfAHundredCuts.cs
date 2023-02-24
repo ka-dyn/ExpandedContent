@@ -123,7 +123,7 @@ namespace ExpandedContent.Tweaks.Spells {
                     c.TiggerCountMaximumInOneRound = 1;
                 });
                 bp.AddComponent<AddInitiatorAttackWithWeaponTrigger>(c => {
-                    c.WaitForAttackResolve = false;
+                    c.TriggerBeforeAttack = false;
                     c.OnlyHit = false;
                     c.OnMiss = false;
                     c.OnlyOnFullAttack = false;

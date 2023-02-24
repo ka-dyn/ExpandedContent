@@ -187,7 +187,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     "targeted by a exploit it cannot benefit from another for 1 minute.");
                 bp.m_Icon = SummonElementalSmallAir.m_Icon;
                 bp.AddComponent<AddInitiatorAttackWithWeaponTrigger>(c => {
-                    c.WaitForAttackResolve = true;
+                    c.TriggerBeforeAttack = false;
                     c.OnlyHit = true;
                     c.OnMiss = false;
                     c.OnlyOnFullAttack = false;
@@ -290,7 +290,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     "targeted by a exploit it cannot benefit from another for 1 minute.");
                 bp.m_Icon = SummonElementalSmallWater.m_Icon;
                 bp.AddComponent<AddInitiatorAttackWithWeaponTrigger>(c => {
-                    c.WaitForAttackResolve = true;
+                    c.TriggerBeforeAttack = false;
                     c.OnlyHit = true;
                     c.OnMiss = false;
                     c.OnlyOnFullAttack = false;
@@ -393,7 +393,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     "targeted by a exploit it cannot benefit from another for 1 minute.");
                 bp.m_Icon = SummonElementalSmallEarth.m_Icon;
                 bp.AddComponent<AddInitiatorAttackWithWeaponTrigger>(c => {
-                    c.WaitForAttackResolve = true;
+                    c.TriggerBeforeAttack = false;
                     c.OnlyHit = true;
                     c.OnMiss = false;
                     c.OnlyOnFullAttack = false;
@@ -496,7 +496,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     "targeted by a exploit it cannot benefit from another for 1 minute.");
                 bp.m_Icon = SummonElementalSmallFire.m_Icon;
                 bp.AddComponent<AddInitiatorAttackWithWeaponTrigger>(c => {
-                    c.WaitForAttackResolve = true;
+                    c.TriggerBeforeAttack = false;
                     c.OnlyHit = true;
                     c.OnMiss = false;
                     c.OnlyOnFullAttack = false;
@@ -599,7 +599,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     "targeted by a exploit it cannot benefit from another for 1 minute.");
                 bp.m_Icon = InflictWounds.m_Icon;
                 bp.AddComponent<AddInitiatorAttackWithWeaponTrigger>(c => {
-                    c.WaitForAttackResolve = true;
+                    c.TriggerBeforeAttack = false;
                     c.OnlyHit = true;
                     c.OnMiss = false;
                     c.OnlyOnFullAttack = false;

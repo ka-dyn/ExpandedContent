@@ -70,6 +70,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
 
 
             var DrakeCompanionUnitBronze = Helpers.CreateBlueprint<BlueprintUnit>("DrakeCompanionUnitBronze", bp => {
+                bp.SetLocalisedName("Bronze Drake");
                 bp.AddComponent<AddClassLevels>(c => {
                     c.m_CharacterClass = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
                     c.RaceStat = StatType.Unknown;
