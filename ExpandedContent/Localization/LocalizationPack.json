@@ -7,10 +7,82 @@
       "enGB": "Summoned Grizzly"
     },
     {
-      "Key": "3bfa12fd3f624f0bb59b43abbf8c4476",
+      "Key": "1822845d85d245e1a4e78cc8210b900a",
       "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
       "ProcessTemplates": false,
-      "enGB": "White Drake"
+      "enGB": "Summoned Advanced Smilodon"
+    },
+    {
+      "Key": "30bd172ba71146508718a328a7fadc71",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Summoned Young Smilodon"
+    },
+    {
+      "Key": "4b5d4a135ee04c448c736039821cf216",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Summoned Giant Advanced Leopard"
+    },
+    {
+      "Key": "8ab1da2e175249818cd9529bd3459995",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Summoned Giant Leopard"
+    },
+    {
+      "Key": "c6cfbb7f5f6f47a1bc266d8b6c94396e",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Summoned Advanced Leopard"
+    },
+    {
+      "Key": "cceb9f3a49784ef6afab7bdd568637ba",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Summoned Young Leopard"
+    },
+    {
+      "Key": "ee9a9d2f31844be2b7cb124b144bc809",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Summoned Giant Smilodon"
+    },
+    {
+      "Key": "ed20a45c798a49fd83b19b7b9f0d845c",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Summoned Advanced Grizzly"
+    },
+    {
+      "Key": "215e9f56e8054610b339d75ffa4f9ee0",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Summoned Giant Grizzly"
+    },
+    {
+      "Key": "aaefd539a796487d8cfe66d5e51916c8",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Summoned Giant Advanced Grizzly"
+    },
+    {
+      "Key": "1cfda936bc994277bf04f013b1461281",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Summoned Young Grizzly"
+    },
+    {
+      "Key": "0f2cf0a97d3f45c1bd348e117a3efbf1",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Summoned Giant Advanced Smilodon"
+    },
+    {
+      "Key": "86617a56e6504b9ba986affcddd9cc45",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Gold Drake"
     },
     {
       "Key": "7ea8613fb3634779b2d30ac481e9ffac",
@@ -43,6 +115,18 @@
       "enGB": "Blue Drake"
     },
     {
+      "Key": "dbe201e8d03947028000ff87f2712ef4",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Umbral Drake"
+    },
+    {
+      "Key": "3bfa12fd3f624f0bb59b43abbf8c4476",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "White Drake"
+    },
+    {
       "Key": "65097a09e1de4602837be487d50ad681",
       "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
       "ProcessTemplates": false,
@@ -61,42 +145,6 @@
       "enGB": "Green Drake"
     },
     {
-      "Key": "86617a56e6504b9ba986affcddd9cc45",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Gold Drake"
-    },
-    {
-      "Key": "dbe201e8d03947028000ff87f2712ef4",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Umbral Drake"
-    },
-    {
-      "Key": "1cfda936bc994277bf04f013b1461281",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Summoned Young Grizzly"
-    },
-    {
-      "Key": "aaefd539a796487d8cfe66d5e51916c8",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Summoned Giant Advanced Grizzly"
-    },
-    {
-      "Key": "215e9f56e8054610b339d75ffa4f9ee0",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Summoned Giant Grizzly"
-    },
-    {
-      "Key": "ed20a45c798a49fd83b19b7b9f0d845c",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Summoned Advanced Grizzly"
-    },
-    {
       "Key": "72649485145f43a1b53eb14219424047",
       "SimpleName": "$BackgroundArchdukeOfCheliax.DescriptionShort",
       "ProcessTemplates": false,
@@ -109,17 +157,17 @@
       "enGB": "At 3rd level, and every three levels thereafter, a dreadknight can select one cruelty. Each cruelty adds an effect to the dreadknight's touch of profane corruption ability. Whenever the dreadknight uses profane corruption to deal damage to one target, the target also receives the additional effect from one of the cruelties possessed by the dreadknight."
     },
     {
-      "Key": "64882fdb8b55420fa95c43fa4ffa1f97",
-      "SimpleName": "$DreadKnightChannelNegativeEnergyAbility.DescriptionShort",
-      "ProcessTemplates": false,
-      "enGB": "Channeling negative energy causes a burst that damages every creature in a 30-foot radius centered on the Dread Knight. The amount of damage inflicted is equal to 1d6 points of damage plus 1d6 points of damage for every two Dread Knight levels beyond 1st (2d6 at 3rd, 3d6 at 5th, and so on). Creatures that take damage from channeled energy receive a Will save to halve the damage."
-    },
-    {
       "Key": "9790ac745aaa44ed97d1207857a5442c",
       "SimpleName": "$DreadKnightChannelNegativeEnergyAbility.DescriptionShort",
       "ProcessTemplates": false,
       "IsUsed": false,
       "enGB": "Channeling negative energy causes a burst that heals every undead creature in a 30-foot radius centered on the Dread Knight. The amount of damage healed is equal to 1d6 points of damage plus 1d6 points of damage for every two Dread Knight levels beyond 1st (2d6 at 3rd, 3d6 at 5th, and so on)."
+    },
+    {
+      "Key": "64882fdb8b55420fa95c43fa4ffa1f97",
+      "SimpleName": "$DreadKnightChannelNegativeEnergyAbility.DescriptionShort",
+      "ProcessTemplates": false,
+      "enGB": "Channeling negative energy causes a burst that damages every creature in a 30-foot radius centered on the Dread Knight. The amount of damage inflicted is equal to 1d6 points of damage plus 1d6 points of damage for every two Dread Knight levels beyond 1st (2d6 at 3rd, 3d6 at 5th, and so on). Creatures that take damage from channeled energy receive a Will save to halve the damage."
     },
     {
       "Key": "cb9dfc592d0146468c08489ba59aa6cc",
@@ -331,17 +379,17 @@
       "enGB": "In melee combat, you can help your allies attack or defend by distracting or interfering with an opponent. If you’re in position to make a melee attack on an opponent you can attempt to aid your allies against that enemy as a standard action. The distracted enemy is inflicted with a -2 penalty on their next attack roll against your allies. This penalty only applies to the first attack roll and is removed after 1 round."
     },
     {
-      "Key": "a596459b25884478b1e87a8871af225d",
-      "SimpleName": "AidAnotherDefenceBuff.Name",
-      "ProcessTemplates": false,
-      "enGB": "Aid Another - Distracted Attacks"
-    },
-    {
       "Key": "4a9b0128686d4892897d756ca4116bc8",
       "SimpleName": "AidAnotherDefenceBuff.Name",
       "ProcessTemplates": false,
       "IsUsed": false,
       "enGB": "Aid Another - Defence"
+    },
+    {
+      "Key": "a596459b25884478b1e87a8871af225d",
+      "SimpleName": "AidAnotherDefenceBuff.Name",
+      "ProcessTemplates": false,
+      "enGB": "Aid Another - Distracted Attacks"
     },
     {
       "Key": "2c3bec9c5e994e66b457b5acd9e8283d",
@@ -580,16 +628,16 @@
       "enGB": "At 8th level, you can emit a 30-foot aura of menace as a standard action. Enemies in this aura take a –2 penalty to AC and on attacks and saves as long as they remain inside the aura. You can use this ability for a number of rounds per day equal to your cleric level. These rounds do not need to be consecutive."
     },
     {
-      "Key": "65eaa77407ea49f58fba80be8d061fb0",
-      "SimpleName": "ArchonDomainLawBaseFeature.Description",
-      "ProcessTemplates": true,
-      "enGB": "\nYou follow the archons path of righteousness.\nTouch of Law: You can touch a willing creature as a standard action, infusing it with the power of divine order and allowing it to treat all attack rolls, skill checks, ability checks, and saving throws for 1 round as if the natural d20 roll resulted in an 11.[LONGSTART] You can use this ability a number of times per day equal to 3 + your Wisdom modifier.[LONGEND]\nAura of Menace: At 8th level, you can emit a 30-foot aura of menace as a standard action. Enemies in this aura take a –2 penalty to AC and on attacks and saves as long as they remain inside the aura. You can use this ability for a number of rounds per day equal to your cleric level. These rounds do not need to be consecutive."
-    },
-    {
       "Key": "ab5422bb10d34d39b6cb701f99b9fd3e",
       "SimpleName": "ArchonDomainLawBaseFeature.Description",
       "ProcessTemplates": true,
       "enGB": "\nYou follow the archons path of righteousness.\nTouch of Good: You can touch a creature as a standard action, granting a sacred bonus on attack rolls, skill checks, ability checks, and saving throws equal to half your level in the class that gave you access to this domain (minimum 1) for 1 round. You can use this ability a number of times per day equal to 3 + your Wisdom modifier.\nAura of Menace: At 8th level, you can emit a 30-foot aura of menace as a standard action. Enemies in this aura take a –2 penalty to AC and on attacks and saves as long as they remain inside the aura. You can use this ability for a number of rounds per day equal to your cleric level. These rounds do not need to be consecutive."
+    },
+    {
+      "Key": "65eaa77407ea49f58fba80be8d061fb0",
+      "SimpleName": "ArchonDomainLawBaseFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nYou follow the archons path of righteousness.\nTouch of Law: You can touch a willing creature as a standard action, infusing it with the power of divine order and allowing it to treat all attack rolls, skill checks, ability checks, and saving throws for 1 round as if the natural d20 roll resulted in an 11.[LONGSTART] You can use this ability a number of times per day equal to 3 + your Wisdom modifier.[LONGEND]\nAura of Menace: At 8th level, you can emit a 30-foot aura of menace as a standard action. Enemies in this aura take a –2 penalty to AC and on attacks and saves as long as they remain inside the aura. You can use this ability for a number of rounds per day equal to your cleric level. These rounds do not need to be consecutive."
     },
     {
       "Key": "5bc881e905db43158dc1e5706b934537",
@@ -966,6 +1014,12 @@
       "enGB": "Bear Totem Druid"
     },
     {
+      "Key": "9e2500c0f7e3466aa7dad2b168054125",
+      "SimpleName": "BearShamanBondSelection.Description",
+      "ProcessTemplates": true,
+      "enGB": "A bear totem druid who chooses an animal companion must select a bear. If choosing a domain, the bear totem druid must choose from the Animal, Earth, Protection, and Strength domains."
+    },
+    {
       "Key": "67668a3a8fc54692b2c3bcd80ee859cf",
       "SimpleName": "BearShamanBondSelection.Description",
       "ProcessTemplates": true,
@@ -985,9 +1039,16 @@
       "enGB": "Bear Totem Druid Bonus Feat"
     },
     {
+      "Key": "5732b13616734f61ab2639bf8a84e43f",
+      "SimpleName": "BearShamanDomainSelection.Description",
+      "ProcessTemplates": true,
+      "enGB": "A bear totem druid who chooses an animal companion must select a bear. If choosing a domain, the bear totem druid must choose from the Animal, Earth, Protection, and Strength domains."
+    },
+    {
       "Key": "c6b3ce75f0f44737b69e1b6d456609fc",
       "SimpleName": "BearShamanDomainSelection.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "A bear shaman who chooses an animal companion must select a bear. If choosing a domain, the bear shaman must choose from the Animal, Earth, Protection, and Strength domains."
     },
     {
@@ -1055,6 +1116,12 @@
       "SimpleName": "BearShamanTotemTransformationAbilitySwift.Description",
       "ProcessTemplates": true,
       "enGB": "As a swift action a bear totem druid may adopt an aspect of the bear while retaining her normal form. They gain one of the following bonuses: \nMovement (+10 enhancement bonus to speed, +4 racial bonus on Mobility checks)\nSenses (Blind Fight feat, +4 on perception checks)\nToughness (+2 natural armor bonus to AC, Endurance feat)\nNatural Weapons (bite attack dealing 1d6 damage and two claws dealing 1d4 damage for a Medium druid, +2 to CMB)"
+    },
+    {
+      "Key": "905cfc706357418c891071701f85c125",
+      "SimpleName": "BearShamanTotemTransformationAbilitySwift.Name",
+      "ProcessTemplates": false,
+      "enGB": "Bear Totem Transformation - Swift Action"
     },
     {
       "Key": "660c66f89724484f92323553e1809b6b",
@@ -1360,16 +1427,16 @@
       "enGB": "Payback"
     },
     {
+      "Key": "86125955dbd447829e29b6b38c9f0535",
+      "SimpleName": "CastigatorVengeance.Description",
+      "ProcessTemplates": true,
+      "enGB": "At 4th level, a castigator can make an additional number of attacks of opportunity in a round equal to their Charisma modifier (minimum 1). This effect stacks with the Combat Reflexes feat."
+    },
+    {
       "Key": "2f91fdfbde3c4bc78942800497c111bd",
       "SimpleName": "CastigatorVengeance.Description",
       "ProcessTemplates": false,
       "IsUsed": false,
-      "enGB": "At 4th level, a castigator can make an additional number of attacks of opportunity in a round equal to their Charisma modifier (minimum 1). This effect stacks with the Combat Reflexes feat."
-    },
-    {
-      "Key": "86125955dbd447829e29b6b38c9f0535",
-      "SimpleName": "CastigatorVengeance.Description",
-      "ProcessTemplates": true,
       "enGB": "At 4th level, a castigator can make an additional number of attacks of opportunity in a round equal to their Charisma modifier (minimum 1). This effect stacks with the Combat Reflexes feat."
     },
     {
@@ -1720,16 +1787,16 @@
       "enGB": "Conqueror"
     },
     {
-      "Key": "ffbd05fa7c3843f9a96165dbf5705983",
-      "SimpleName": "ConquerorInspiredageFeature.Description",
-      "ProcessTemplates": false,
-      "enGB": "At 7th level, the conqueror's commandments warp the minds of those who accept them even further."
-    },
-    {
       "Key": "9197b62c357f4051b3b7df813d06f88d",
       "SimpleName": "ConquerorInspiredageFeature.Description",
       "ProcessTemplates": false,
       "enGB": "At 1st level, a conqueror receives the ability to incite rage in those he rules over, as the skald inspired rage class feature."
+    },
+    {
+      "Key": "ffbd05fa7c3843f9a96165dbf5705983",
+      "SimpleName": "ConquerorInspiredageFeature.Description",
+      "ProcessTemplates": false,
+      "enGB": "At 7th level, the conqueror's commandments warp the minds of those who accept them even further."
     },
     {
       "Key": "0160ab7b5c884199a1047c169ecc1d34",
@@ -2465,17 +2532,17 @@
       "enGB": "Dispater"
     },
     {
+      "Key": "2c3cb69dee52421ba1c30a9c0a46bba5",
+      "SimpleName": "DivineHerbalistDragonMysteryFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "Gain access to the spells and revelations of the dragon mystery. \nDue to the divine herbalist archetype the class skills gained from this archetypeare replaced by the master herbalist feature and the brew potions feat."
+    },
+    {
       "Key": "1b52c9e5e8624fe8aeaf22008d0306ad",
       "SimpleName": "DivineHerbalistDragonMysteryFeature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "An oracle with the dragon mystery adds Mobility, Persuasion, Perception and Knowledge (world)  to her list of class skills."
-    },
-    {
-      "Key": "2c3cb69dee52421ba1c30a9c0a46bba5",
-      "SimpleName": "DivineHerbalistDragonMysteryFeature.Description",
-      "ProcessTemplates": true,
-      "enGB": "Gain access to the spells and revelations of the dragon mystery. \nDue to the divine herbalist archetype the class skills gained from this archetypeare replaced by the master herbalist feature and the brew potions feat."
     },
     {
       "Key": "91616eb97ea3471abc626b1a183afe2f",
@@ -2588,17 +2655,17 @@
       "enGB": "The arcanist can expend 3 points from their arcane reservoir to remove the cooldown on a drakes breath attack weapon. All draconic exploits can only target ally drakes and once a drake is targeted by a exploit it cannot benefit from another for 1 minute."
     },
     {
+      "Key": "5ae0ffde6bbe4ac680183aecb14a2dbb",
+      "SimpleName": "DraconicExploitCooldown.Description",
+      "ProcessTemplates": true,
+      "enGB": "Targeted by draconic exploits within 1 minute."
+    },
+    {
       "Key": "64b983e112ca43afa13d0aa2beeb779d",
       "SimpleName": "DraconicExploitCooldown.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "Targeted by draconic exploits used within 1 minute."
-    },
-    {
-      "Key": "5ae0ffde6bbe4ac680183aecb14a2dbb",
-      "SimpleName": "DraconicExploitCooldown.Description",
-      "ProcessTemplates": true,
-      "enGB": "Targeted by draconic exploits within 1 minute."
     },
     {
       "Key": "089db77d8c014fd2a1c1476ece2f2ab4",
@@ -3041,13 +3108,6 @@
       "enGB": "Breath Weapon - Ability is not ready yet"
     },
     {
-      "Key": "55fbdda3aa6d4d05b429855f3a6c0403",
-      "SimpleName": "DrakeBreathWeaponAcid1.Description",
-      "ProcessTemplates": true,
-      "IsUsed": false,
-      "enGB": "This breath weapon deals 4d6 points of acid damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day."
-    },
-    {
       "Key": "e7c2ccd10b274883b65d4ba27368d3f0",
       "SimpleName": "DrakeBreathWeaponAcid1.Description",
       "ProcessTemplates": true,
@@ -3055,10 +3115,23 @@
       "enGB": "This breath weapon deals 4d6 points of acid damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day."
     },
     {
+      "Key": "55fbdda3aa6d4d05b429855f3a6c0403",
+      "SimpleName": "DrakeBreathWeaponAcid1.Description",
+      "ProcessTemplates": true,
+      "IsUsed": false,
+      "enGB": "This breath weapon deals 4d6 points of acid damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day."
+    },
+    {
       "Key": "b93f6f5ed05d4e5287bfc53ff1b89572",
       "SimpleName": "DrakeBreathWeaponAcid1.Name",
       "ProcessTemplates": false,
       "enGB": "Drake Acid Breath"
+    },
+    {
+      "Key": "c9243b63bf01462db1c4c04fe50be4f3",
+      "SimpleName": "DrakeBreathWeaponAcid1Feature.Description",
+      "ProcessTemplates": true,
+      "enGB": "This breath weapon deals 4d6 points of acid damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day."
     },
     {
       "Key": "ebc705b901f5406d9285e6bb351cc811",
@@ -3068,10 +3141,11 @@
       "enGB": "This breath weapon deals 4d6 points of acid damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day."
     },
     {
-      "Key": "c9243b63bf01462db1c4c04fe50be4f3",
-      "SimpleName": "DrakeBreathWeaponAcid1Feature.Description",
+      "Key": "54c86ff112d44b6d9878ade81198c1b7",
+      "SimpleName": "DrakeBreathWeaponAcid2.Description",
       "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 4d6 points of acid damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day."
+      "IsUsed": false,
+      "enGB": "This breath weapon deals 8d6 points of acid damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day."
     },
     {
       "Key": "37a378dd8b8a488495109c35c06cc102",
@@ -3080,17 +3154,16 @@
       "enGB": "This breath weapon deals 8d6 points of acid damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day."
     },
     {
-      "Key": "54c86ff112d44b6d9878ade81198c1b7",
-      "SimpleName": "DrakeBreathWeaponAcid2.Description",
-      "ProcessTemplates": true,
-      "IsUsed": false,
-      "enGB": "This breath weapon deals 8d6 points of acid damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day."
-    },
-    {
       "Key": "c3a25063dd8749bfa8a8f08784b6fe35",
       "SimpleName": "DrakeBreathWeaponAcid2.Name",
       "ProcessTemplates": false,
       "enGB": "Greater Drake Acid Breath"
+    },
+    {
+      "Key": "1df6eca3d484449bbfe6a838c4cd4ade",
+      "SimpleName": "DrakeBreathWeaponAcid2Feature.Description",
+      "ProcessTemplates": true,
+      "enGB": "This breath weapon deals 8d6 points of acid damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day. \nUnlocking this allows you to use your lesser breath weapon without spending any resources, however you must wait 1d4 rounds to recharge."
     },
     {
       "Key": "df00f6bb8f614cb59316f7627c01fbd2",
@@ -3100,10 +3173,11 @@
       "enGB": "This breath weapon deals 8d6 points of acid damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day. \nUnlocking this allows you to use your lesser breath weapon without spending any resources, however you must wait 1d4 rounds to recharge."
     },
     {
-      "Key": "1df6eca3d484449bbfe6a838c4cd4ade",
-      "SimpleName": "DrakeBreathWeaponAcid2Feature.Description",
+      "Key": "a4feef2ded00453697b10859100ef717",
+      "SimpleName": "DrakeBreathWeaponAcid3.Description",
       "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 8d6 points of acid damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day. \nUnlocking this allows you to use your lesser breath weapon without spending any resources, however you must wait 1d4 rounds to recharge."
+      "IsUsed": false,
+      "enGB": "This breath weapon deals 1d6 points of acid damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
     },
     {
       "Key": "21423a23b82c4fa5a54cd3a2c68157f8",
@@ -3111,13 +3185,6 @@
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "This breath weapon deals 1d6 points of acid damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
-    },
-    {
-      "Key": "a4feef2ded00453697b10859100ef717",
-      "SimpleName": "DrakeBreathWeaponAcid3.Description",
-      "ProcessTemplates": true,
-      "IsUsed": false,
-      "enGB": "This breath weapon deals 1d6 points of acid damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
     },
     {
       "Key": "166319244f2c43b2beeda778d1b26ea5",
@@ -3172,12 +3239,6 @@
       "enGB": "This breath weapon deals 4d6 points of cold damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day."
     },
     {
-      "Key": "0ef9c57e42be40f68560acfccc9ccfcc",
-      "SimpleName": "DrakeBreathWeaponCold2.Description",
-      "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 8d6 points of cold damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day."
-    },
-    {
       "Key": "656c5f75a55b4485b4f3535f7638d9b1",
       "SimpleName": "DrakeBreathWeaponCold2.Description",
       "ProcessTemplates": true,
@@ -3185,10 +3246,22 @@
       "enGB": "This breath weapon deals 8d6 points of cold damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day."
     },
     {
+      "Key": "0ef9c57e42be40f68560acfccc9ccfcc",
+      "SimpleName": "DrakeBreathWeaponCold2.Description",
+      "ProcessTemplates": true,
+      "enGB": "This breath weapon deals 8d6 points of cold damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day."
+    },
+    {
       "Key": "9c86cabb319c4a30b03298a4e352f8da",
       "SimpleName": "DrakeBreathWeaponCold2.Name",
       "ProcessTemplates": false,
       "enGB": "Greater Drake Cold Breath"
+    },
+    {
+      "Key": "eac364b4a1f74c5bb51bbaab82a2f9de",
+      "SimpleName": "DrakeBreathWeaponCold2Feature.Description",
+      "ProcessTemplates": true,
+      "enGB": "This breath weapon deals 8d6 points of cold damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day. \nUnlocking this allows you to use your lesser breath weapon without spending any resources, however you must wait 1d4 rounds to recharge."
     },
     {
       "Key": "59eb9da5ea3d4ed7a82984a1dd1ef00b",
@@ -3198,10 +3271,11 @@
       "enGB": "This breath weapon deals 8d6 points of cold damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day. \nUnlocking this allows you to use your lesser breath weapon without spending any resources, however you must wait 1d4 rounds to recharge."
     },
     {
-      "Key": "eac364b4a1f74c5bb51bbaab82a2f9de",
-      "SimpleName": "DrakeBreathWeaponCold2Feature.Description",
+      "Key": "aa4f5369b79343e19de67ebc56132b4b",
+      "SimpleName": "DrakeBreathWeaponCold3.Description",
       "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 8d6 points of cold damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day. \nUnlocking this allows you to use your lesser breath weapon without spending any resources, however you must wait 1d4 rounds to recharge."
+      "IsUsed": false,
+      "enGB": "This breath weapon deals 1d6 points of cold damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
     },
     {
       "Key": "6f2fa3ad005e42ac83b552d046389115",
@@ -3209,13 +3283,6 @@
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "This breath weapon deals 1d6 points of cold damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
-    },
-    {
-      "Key": "aa4f5369b79343e19de67ebc56132b4b",
-      "SimpleName": "DrakeBreathWeaponCold3.Description",
-      "ProcessTemplates": true,
-      "IsUsed": false,
-      "enGB": "This breath weapon deals 1d6 points of cold damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
     },
     {
       "Key": "7bb6d397539449e5a020c99fd0752e65",
@@ -3257,17 +3324,17 @@
       "enGB": "Drake Electricity Breath"
     },
     {
-      "Key": "b0a4aa33228c497b83a93b60a7b03bb4",
-      "SimpleName": "DrakeBreathWeaponElectricity1Feature.Description",
-      "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 4d6 points of electricity damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day."
-    },
-    {
       "Key": "dcd9bb64fbe44546b21d3d62272f6b2f",
       "SimpleName": "DrakeBreathWeaponElectricity1Feature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "This breath weapon deals 4d6 points of electricity damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day."
+    },
+    {
+      "Key": "b0a4aa33228c497b83a93b60a7b03bb4",
+      "SimpleName": "DrakeBreathWeaponElectricity1Feature.Description",
+      "ProcessTemplates": true,
+      "enGB": "This breath weapon deals 4d6 points of electricity damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day."
     },
     {
       "Key": "7d216a2e346f42339211e5c4e1b11892",
@@ -3322,24 +3389,17 @@
       "enGB": "Mythic Drake Electricity Breath"
     },
     {
-      "Key": "17a94d9f4f0546b7b390112d8c7ea24b",
-      "SimpleName": "DrakeBreathWeaponElectricity3Feature.Description",
-      "ProcessTemplates": true,
-      "IsUsed": false,
-      "enGB": "This breath weapon deals 1d6 points of electricity damage per drake companion level in a 40-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
-    },
-    {
       "Key": "03a189f47d674d1da2b17480f05287be",
       "SimpleName": "DrakeBreathWeaponElectricity3Feature.Description",
       "ProcessTemplates": true,
       "enGB": "This breath weapon deals 1d6 points of electricity damage per drake companion level in a 40-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
     },
     {
-      "Key": "175585e969b64296a6580facaf078dd8",
-      "SimpleName": "DrakeBreathWeaponFire1.Description",
+      "Key": "17a94d9f4f0546b7b390112d8c7ea24b",
+      "SimpleName": "DrakeBreathWeaponElectricity3Feature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
-      "enGB": "This breath weapon deals 4d6 points of fire damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day."
+      "enGB": "This breath weapon deals 1d6 points of electricity damage per drake companion level in a 40-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
     },
     {
       "Key": "6edadd64875d41a09c8ec96297578b1b",
@@ -3349,10 +3409,23 @@
       "enGB": "This breath weapon deals 4d6 points of fire damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day."
     },
     {
+      "Key": "175585e969b64296a6580facaf078dd8",
+      "SimpleName": "DrakeBreathWeaponFire1.Description",
+      "ProcessTemplates": true,
+      "IsUsed": false,
+      "enGB": "This breath weapon deals 4d6 points of fire damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day."
+    },
+    {
       "Key": "b9856c20c78645a884b2f0ad7ea2c051",
       "SimpleName": "DrakeBreathWeaponFire1.Name",
       "ProcessTemplates": false,
       "enGB": "Drake Fire Breath"
+    },
+    {
+      "Key": "0827546fa62746dd97219bc4d7f3ee9a",
+      "SimpleName": "DrakeBreathWeaponFire1Feature.Description",
+      "ProcessTemplates": true,
+      "enGB": "This breath weapon deals 4d6 points of fire damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day."
     },
     {
       "Key": "d946e7ff645642c3b95b57be864b62fe",
@@ -3362,10 +3435,10 @@
       "enGB": "This breath weapon deals 4d6 points of fire damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day."
     },
     {
-      "Key": "0827546fa62746dd97219bc4d7f3ee9a",
-      "SimpleName": "DrakeBreathWeaponFire1Feature.Description",
+      "Key": "ef73223c5cdd426ca205f1e9dedbabe6",
+      "SimpleName": "DrakeBreathWeaponFire2.Description",
       "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 4d6 points of fire damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day."
+      "enGB": "This breath weapon deals 8d6 points of fire damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day."
     },
     {
       "Key": "cd719c4bed694ad6b238072340ba27a2",
@@ -3375,22 +3448,10 @@
       "enGB": "This breath weapon deals 8d6 points of fire damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day."
     },
     {
-      "Key": "ef73223c5cdd426ca205f1e9dedbabe6",
-      "SimpleName": "DrakeBreathWeaponFire2.Description",
-      "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 8d6 points of fire damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day."
-    },
-    {
       "Key": "d3a050edc2964fc1915041fb45ea96b8",
       "SimpleName": "DrakeBreathWeaponFire2.Name",
       "ProcessTemplates": false,
       "enGB": "Greater Drake Fire Breath"
-    },
-    {
-      "Key": "3bf5c19d82e74eafbedde6ed3e02e16e",
-      "SimpleName": "DrakeBreathWeaponFire2Feature.Description",
-      "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 8d6 points of fire damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day. \nUnlocking this allows you to use your lesser breath weapon without spending any resources, however you must wait 1d4 rounds to recharge."
     },
     {
       "Key": "a5154a942bf147e4b472d048c9fbc804",
@@ -3400,11 +3461,10 @@
       "enGB": "This breath weapon deals 8d6 points of fire damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day. \nUnlocking this allows you to use your lesser breath weapon without spending any resources, however you must wait 1d4 rounds to recharge."
     },
     {
-      "Key": "8c788890645148329f0c9962114d729b",
-      "SimpleName": "DrakeBreathWeaponFire3.Description",
+      "Key": "3bf5c19d82e74eafbedde6ed3e02e16e",
+      "SimpleName": "DrakeBreathWeaponFire2Feature.Description",
       "ProcessTemplates": true,
-      "IsUsed": false,
-      "enGB": "This breath weapon deals 1d6 points of fire damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
+      "enGB": "This breath weapon deals 8d6 points of fire damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day. \nUnlocking this allows you to use your lesser breath weapon without spending any resources, however you must wait 1d4 rounds to recharge."
     },
     {
       "Key": "033f8e7260db4b54bbe04989414075a9",
@@ -3412,6 +3472,13 @@
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "This breath weapon deals 1d6 points of fire damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
+    },
+    {
+      "Key": "8c788890645148329f0c9962114d729b",
+      "SimpleName": "DrakeBreathWeaponFire3.Description",
+      "ProcessTemplates": true,
+      "IsUsed": false,
+      "enGB": "This breath weapon deals 1d6 points of fire damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
     },
     {
       "Key": "aac59d807b0449b084b7cb13655e9491",
@@ -3433,13 +3500,6 @@
       "enGB": "This breath weapon deals 1d6 points of fire damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
     },
     {
-      "Key": "b6243310dbe242d09c095ec59bd2e4ef",
-      "SimpleName": "DrakeBreathWeaponUmbral1.Description",
-      "ProcessTemplates": true,
-      "IsUsed": false,
-      "enGB": "This breath weapon deals 4d6 points of  negative damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day.\nTargets with an affinity to negative energy (such as undead) are not healed by this ability and are treated as if the ability did not hit them."
-    },
-    {
       "Key": "c7a50bde6aa7476fb23eba2c637d9490",
       "SimpleName": "DrakeBreathWeaponUmbral1.Description",
       "ProcessTemplates": true,
@@ -3447,16 +3507,17 @@
       "enGB": "This breath weapon deals 4d6 points of  negative damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day.\nTargets with an affinity to negativeenergy (such as undead) are not healed by this ability and are treated as if the ability did not hit them."
     },
     {
+      "Key": "b6243310dbe242d09c095ec59bd2e4ef",
+      "SimpleName": "DrakeBreathWeaponUmbral1.Description",
+      "ProcessTemplates": true,
+      "IsUsed": false,
+      "enGB": "This breath weapon deals 4d6 points of  negative damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day.\nTargets with an affinity to negative energy (such as undead) are not healed by this ability and are treated as if the ability did not hit them."
+    },
+    {
       "Key": "9125e12ae3514d918be88fab671e3fbc",
       "SimpleName": "DrakeBreathWeaponUmbral1.Name",
       "ProcessTemplates": false,
       "enGB": "Drake Negative Energy Breath"
-    },
-    {
-      "Key": "3f82888cb6534862aa8217b840d23643",
-      "SimpleName": "DrakeBreathWeaponUmbral1Feature.Description",
-      "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 4d6 points of  negative damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day.\nTargets with an affinity to negative energy (such as undead) are not healed by this ability and are treated as if the ability did not hit them."
     },
     {
       "Key": "9dcf386ecbdd464c8e79505773731c5c",
@@ -3466,11 +3527,10 @@
       "enGB": "This breath weapon deals 4d6 points of  negative damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day.\nTargets with an affinity to negativeenergy (such as undead) are not healed by this ability and are treated as if the ability did not hit them."
     },
     {
-      "Key": "0d2d69b7f16a46b9947d3f18fba771df",
-      "SimpleName": "DrakeBreathWeaponUmbral2.Description",
+      "Key": "3f82888cb6534862aa8217b840d23643",
+      "SimpleName": "DrakeBreathWeaponUmbral1Feature.Description",
       "ProcessTemplates": true,
-      "IsUsed": false,
-      "enGB": "This breath weapon deals 8d6 points of negative damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day.\nTargets with an affinity to negativeenergy (such as undead) are not healed by this ability and are treated as if the ability did not hit them."
+      "enGB": "This breath weapon deals 4d6 points of  negative damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day.\nTargets with an affinity to negative energy (such as undead) are not healed by this ability and are treated as if the ability did not hit them."
     },
     {
       "Key": "adba855a5963462aa50ccb1f2b3015ff",
@@ -3479,10 +3539,23 @@
       "enGB": "This breath weapon deals 8d6 points of negative damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day.\nTargets with an affinity to negative energy (such as undead) are not healed by this ability and are treated as if the ability did not hit them."
     },
     {
+      "Key": "0d2d69b7f16a46b9947d3f18fba771df",
+      "SimpleName": "DrakeBreathWeaponUmbral2.Description",
+      "ProcessTemplates": true,
+      "IsUsed": false,
+      "enGB": "This breath weapon deals 8d6 points of negative damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day.\nTargets with an affinity to negativeenergy (such as undead) are not healed by this ability and are treated as if the ability did not hit them."
+    },
+    {
       "Key": "adce6cb14e3a42f9a461694633daaa8b",
       "SimpleName": "DrakeBreathWeaponUmbral2.Name",
       "ProcessTemplates": false,
       "enGB": "Greater Drake Negative Energy Breath"
+    },
+    {
+      "Key": "e9dc69d808f34e2885d082cf807db6d8",
+      "SimpleName": "DrakeBreathWeaponUmbral2Feature.Description",
+      "ProcessTemplates": true,
+      "enGB": "This breath weapon deals 8d6 points of negative damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day. \nTargets with an affinity to negative energy (such as undead) are not healed by this ability and are treated as if the ability did not hit them.\nUnlocking this allows you to use your lesser breath weapon without spending any resources, however you must wait 1d4 rounds to recharge."
     },
     {
       "Key": "73f5183bb1c24c45992400a39e4f1ba6",
@@ -3490,12 +3563,6 @@
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "This breath weapon deals 8d6 points of negative damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day. \nTargets with an affinity to negativeenergy (such as undead) are not healed by this ability and are treated as if the ability did not hit them.\nUnlocking this allows you to use your lesser breath weapon without spending any resources, however you must wait 1d4 rounds to recharge."
-    },
-    {
-      "Key": "e9dc69d808f34e2885d082cf807db6d8",
-      "SimpleName": "DrakeBreathWeaponUmbral2Feature.Description",
-      "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 8d6 points of negative damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day. \nTargets with an affinity to negative energy (such as undead) are not healed by this ability and are treated as if the ability did not hit them.\nUnlocking this allows you to use your lesser breath weapon without spending any resources, however you must wait 1d4 rounds to recharge."
     },
     {
       "Key": "7ac6675de47c4940b4f8843612eb4b2d",
@@ -3770,17 +3837,17 @@
       "enGB": "The drake gains two natural claw attacks that deal 1d2 damage from a tiny drake, but increase damage dice size each time the drake grows\nUnlocks the extra Wing attacks component of the Mythic Drake Ability."
     },
     {
+      "Key": "fae2d01a258d437494c423afc2c32476",
+      "SimpleName": "DrakenScalesFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "The drake gains elemental resistances based on its subtype, along with minor resistance to elemental damage from non-opposing elements. \nFire subtype - Fire resistance 25, Eletricity resistance 5, Acid resistance 5.\nCold subtype - Cold resistance 25, Eletricity resistance 5, Acid resistance 5.\nAir subtype - Eletricity resistance 25, Fire resistance 5, Cold resistance 5.\nAcid subtype - Acid resistance 25, Fire resistance 5, Cold resistance 5.\nOutsider subtype - Fire, Cold, Acid, Electricity resistance 10."
+    },
+    {
       "Key": "04ed6b896c35425fa26212ff0a823110",
       "SimpleName": "DrakenScalesFeature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "The drake gains elemental resistances based on its subtype, along with minor resistance to elemental damage from non-opposing elements. \nFire subtype - Fire resistance 25, Eletricity resistance 5, Acid resistance 5.\nCold subtype - Cold resistance 25, Eletricity resistance 5, Acid resistance 5.\nAir subtype - Eletricity resistance 25, Fire resistance 5, Cold resistance 5.\nAcid subtype - Acid resistance 25, Fire resistance 5, Cold resistance 5."
-    },
-    {
-      "Key": "fae2d01a258d437494c423afc2c32476",
-      "SimpleName": "DrakenScalesFeature.Description",
-      "ProcessTemplates": true,
-      "enGB": "The drake gains elemental resistances based on its subtype, along with minor resistance to elemental damage from non-opposing elements. \nFire subtype - Fire resistance 25, Eletricity resistance 5, Acid resistance 5.\nCold subtype - Cold resistance 25, Eletricity resistance 5, Acid resistance 5.\nAir subtype - Eletricity resistance 25, Fire resistance 5, Cold resistance 5.\nAcid subtype - Acid resistance 25, Fire resistance 5, Cold resistance 5.\nOutsider subtype - Fire, Cold, Acid, Electricity resistance 10."
     },
     {
       "Key": "d84032f7f1f4473987524054039a1426",
@@ -4007,6 +4074,12 @@
       "enGB": "Dread Knight Animal Companion Progression"
     },
     {
+      "Key": "d670b365e6b04ae4a3877948f2caebed",
+      "SimpleName": "DreadKnightChannelNegativeEnergyAbility.Description",
+      "ProcessTemplates": true,
+      "enGB": "Channeling negative energy causes a burst that damages every living creature in a 30-foot radius centered on the Dread Knight. The amount of damage inflicted is equal to 1d6 points of damage plus 1d6 points of damage for every two Dread Knight levels beyond 1st (2d6 at 3rd, 3d6 at 5th, and so on). Creatures that take damage from channeled energy receive a Will save to halve the damage. The DC of this save is equal to 10 + 1/2 the Dread Knight's level + the Dread Knight's Charisma modifier."
+    },
+    {
       "Key": "c693dad056614f1ead3e49b0ca8d3119",
       "SimpleName": "DreadKnightChannelNegativeEnergyAbility.Description",
       "ProcessTemplates": true,
@@ -4014,22 +4087,16 @@
       "enGB": "Channeling negative energy causes a burst that damages every creature in a 30-foot radius centered on the Dread Knight. The amount of damage inflicted is equal to 1d6 points of damage plus 1d6 points of damage for every two Dread Knight levels beyond 1st (2d6 at 3rd, 3d6 at 5th, and so on). Creatures that take damage from channeled energy receive a Will save to halve the damage. The DC of this save is equal to 10 + 1/2 the Dread Knight's level + the Dread Knight's Charisma modifier."
     },
     {
-      "Key": "d670b365e6b04ae4a3877948f2caebed",
-      "SimpleName": "DreadKnightChannelNegativeEnergyAbility.Description",
-      "ProcessTemplates": true,
-      "enGB": "Channeling negative energy causes a burst that damages every living creature in a 30-foot radius centered on the Dread Knight. The amount of damage inflicted is equal to 1d6 points of damage plus 1d6 points of damage for every two Dread Knight levels beyond 1st (2d6 at 3rd, 3d6 at 5th, and so on). Creatures that take damage from channeled energy receive a Will save to halve the damage. The DC of this save is equal to 10 + 1/2 the Dread Knight's level + the Dread Knight's Charisma modifier."
+      "Key": "e1a0f9b3f21e45aaaba53aff7d45b1ad",
+      "SimpleName": "DreadKnightChannelNegativeEnergyAbility.Name",
+      "ProcessTemplates": false,
+      "enGB": "Channel Negative Energy"
     },
     {
       "Key": "79390dccfaff42259b9430c3eda7052b",
       "SimpleName": "DreadKnightChannelNegativeEnergyAbility.Name",
       "ProcessTemplates": false,
       "enGB": "Channel Negative Energy - Damage Living"
-    },
-    {
-      "Key": "e1a0f9b3f21e45aaaba53aff7d45b1ad",
-      "SimpleName": "DreadKnightChannelNegativeEnergyAbility.Name",
-      "ProcessTemplates": false,
-      "enGB": "Channel Negative Energy"
     },
     {
       "Key": "95bb51ebd24e466aa7b691a57700f158",
@@ -4153,6 +4220,12 @@
       "enGB": "Empyreal Lords"
     },
     {
+      "Key": "033bd1b1f0a443feb217e7b4b78c65a2",
+      "SimpleName": "EnlightnedPhilosopherDragonMysteryFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "An oracle with the dragon mystery adds Mobility, Persuasion, Perception and Knowledge (Arcana)  to her list of class skills."
+    },
+    {
       "Key": "8706d70824cc44be8eeeebcbc251cc0b",
       "SimpleName": "EnlightnedPhilosopherDragonMysteryFeature.Description",
       "ProcessTemplates": true,
@@ -4160,10 +4233,11 @@
       "enGB": "An oracle with the dragon mystery adds Mobility, Persuasion, Perception and Knowledge (world)  to her list of class skills."
     },
     {
-      "Key": "033bd1b1f0a443feb217e7b4b78c65a2",
-      "SimpleName": "EnlightnedPhilosopherDragonMysteryFeature.Description",
+      "Key": "87a3a668a0744c2395e62368807b469d",
+      "SimpleName": "EnlightnedPhilosopherHeavensMysteryFeature.Description",
       "ProcessTemplates": true,
-      "enGB": "An oracle with the dragon mystery adds Mobility, Persuasion, Perception and Knowledge (Arcana)  to her list of class skills."
+      "IsUsed": false,
+      "enGB": "An oracle with the heavens mystery adds Perception and Knowledge (world)  to her list of class skills."
     },
     {
       "Key": "ca0109695d76452e9e35dbada994a096",
@@ -4171,13 +4245,6 @@
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "An oracle with the heavens mystery adds Perception and Knowledge (Arcana)  to her list of class skills."
-    },
-    {
-      "Key": "87a3a668a0744c2395e62368807b469d",
-      "SimpleName": "EnlightnedPhilosopherHeavensMysteryFeature.Description",
-      "ProcessTemplates": true,
-      "IsUsed": false,
-      "enGB": "An oracle with the heavens mystery adds Perception and Knowledge (world)  to her list of class skills."
     },
     {
       "Key": "e3979b1a0365444ca72eecd17dbbefbf",
@@ -4540,6 +4607,24 @@
       "enGB": "Relex partial"
     },
     {
+      "Key": "efa498f01c9c49f99f8d7bc2d71c6939",
+      "SimpleName": "GloryDomainBaseFeatureDruid.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nYou are infused with the glory of the divine, and are a true foe of the undead. In addition, when you channel positive energy to harm undead creatures, the save DC to halve the damage is increased by 2.\nTouch of Glory: You can cause your hand to shimmer with divine radiance, allowing you to touch a creature as a standard action and give it a bonus equal to your level in the class that gave you access to this domain on a single Charisma-based skill check or Charisma ability check. This ability lasts for 1 hour or until the creature touched applies the bonus to a roll. You can use this ability to grant the bonus a number of times per day equal to 3 + your Wisdom modifier.\nAura of Heroism: At 8th level, you can emit a 30-foot aura of heroism for a number of rounds per day equal to your level in the class that gave you access to this domain. Using this ability is a swift action. Allies in the area are treated as if they were under the effects of heroism spell."
+    },
+    {
+      "Key": "a496e2e439af46a697487e94b4b0bd3f",
+      "SimpleName": "GloryDomainBaseFeatureDruid.Name",
+      "ProcessTemplates": false,
+      "enGB": "Glory Domain"
+    },
+    {
+      "Key": "414a8bcb4c3f4e78b16108c21c1fec71",
+      "SimpleName": "GloryDomainProgressionDruid.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nYou are infused with the glory of the divine, and are a true foe of the undead. In addition, when you channel positive energy to harm undead creatures, the save DC to halve the damage is increased by 2.\nTouch of Glory: You can cause your hand to shimmer with divine radiance, allowing you to touch a creature as a standard action and give it a bonus equal to your level in the class that gave you access to this domain on a single Charisma-based skill check or Charisma ability check. This ability lasts for 1 hour or until the creature touched applies the bonus to a roll. You can use this ability to grant the bonus a number of times per day equal to 3 + your Wisdom modifier.\nAura of Heroism: At 8th level, you can emit a 30-foot aura of heroism for a number of rounds per day equal to your level in the class that gave you access to this domain. Using this ability is a swift action. Allies in the area are treated as if they were under the effects of heroism spell.\nDomain Spells: shield of faith, bless weapon, searing light, divine power, burst of glory, inspiring recovery, holy sword, holy aura, overwhelming presence."
+    },
+    {
       "Key": "60841d310e574b37a172c9d3e9fb1d22",
       "SimpleName": "GloryInvokeDeityAbility.Description",
       "ProcessTemplates": true,
@@ -4809,16 +4894,16 @@
       "enGB": "Hypnotic Pattern"
     },
     {
-      "Key": "06f3c959eebc44238c4971655e40c363",
-      "SimpleName": "IceDomainBaseFeature.Description",
-      "ProcessTemplates": true,
-      "enGB": "\nYou can manipulate ice and water and mist, conjure hails of ice, and transmute yourself into a frozen form.\nIcicle: As a standard action, you can fire an icicle from your finger, targeting any foe within 30 feet as a ranged touch attack. The icicle deals 1d6 points of cold damage+ 1 point for every two levels you possess in the class that gave you access to this domain. You can use this ability a number of times per day equal to 3 + your Wisdom modifier.\nBody of Ice: At 8th level, you can transmute your body and equipment to ice for a period of time. It takes a standard action to take on the form of ice, and you can end the transmutation with a free action on your turn. When you take on the form of ice, you are immune to cold and have DR 5/—, but you take twice the normal amount of damage from fire. You can take on the form of ice for a number of rounds per day equal to your cleric level. The rounds need not be consecutive."
-    },
-    {
       "Key": "72b3666c54de4c92b9d9a1c4cef5dcb2",
       "SimpleName": "IceDomainBaseFeature.Description",
       "ProcessTemplates": true,
       "enGB": "\nYou have mastery over rock and stone, can manifest vast pits, and command earth creatures.\nAcid Dart: As a standard action, you can unleash an acid dart targeting any foe within 30 feet as a ranged touch attack. This acid dart deals 1d6 points of acid damage+ 1 point for every two levels you possess in the class that gave you access to this domain. You can use this ability a number of times per day equal to 3 + your Wisdom modifier.\nTunnel Runner (Su): At 6th level, as a standard action, you can create a 30-foot aura of gale-like winds that slows the progress of enemies. Creatures in the aura cannot take a 5-foot step and treat it as as difficult terrain. You can use this ability for a number of rounds per day equal to your cleric level. The rounds do not need to be consecutive."
+    },
+    {
+      "Key": "06f3c959eebc44238c4971655e40c363",
+      "SimpleName": "IceDomainBaseFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nYou can manipulate ice and water and mist, conjure hails of ice, and transmute yourself into a frozen form.\nIcicle: As a standard action, you can fire an icicle from your finger, targeting any foe within 30 feet as a ranged touch attack. The icicle deals 1d6 points of cold damage+ 1 point for every two levels you possess in the class that gave you access to this domain. You can use this ability a number of times per day equal to 3 + your Wisdom modifier.\nBody of Ice: At 8th level, you can transmute your body and equipment to ice for a period of time. It takes a standard action to take on the form of ice, and you can end the transmutation with a free action on your turn. When you take on the form of ice, you are immune to cold and have DR 5/—, but you take twice the normal amount of damage from fire. You can take on the form of ice for a number of rounds per day equal to your cleric level. The rounds need not be consecutive."
     },
     {
       "Key": "75db1ef0bee54df0a0ba5c43f4c8b4f9",
@@ -4950,16 +5035,16 @@
       "enGB": "You telepathically wrack the target’s mind and body with agonizing pain that imposes a –4 penalty on attack rolls, skill checks, and combat maneuver checks. A successful Will save reduces the duration to 1 round."
     },
     {
-      "Key": "91e15ae8e1f04d0f9f8855c0afdf3f28",
-      "SimpleName": "InflictPainAbility.SavingThrow",
-      "ProcessTemplates": false,
-      "enGB": "Will partial"
-    },
-    {
       "Key": "cf9477eb02794180aeab229cc05c4e5e",
       "SimpleName": "InflictPainAbility.SavingThrow",
       "ProcessTemplates": false,
       "enGB": "Will disbelief, then Fortitude partial"
+    },
+    {
+      "Key": "91e15ae8e1f04d0f9f8855c0afdf3f28",
+      "SimpleName": "InflictPainAbility.SavingThrow",
+      "ProcessTemplates": false,
+      "enGB": "Will partial"
     },
     {
       "Key": "ce3735ec762040b4a44ce9dcc374f3fd",
@@ -5046,17 +5131,17 @@
       "enGB": "Ithaqua"
     },
     {
-      "Key": "ba4c336f3f6f4e51a34ec9af86a15ae2",
-      "SimpleName": "JaidzFeature.Description",
-      "ProcessTemplates": true,
-      "enGB": "\nTitles: Fearless Claw   \nAlignment: Neutral Good   \nAreas of Concern: Cowards, The Untested, Youths   \nDomains: Glory, Good, Protection, Travel   \nSubdomains: Agathion, Defense, Exploration, Purity   \nFavoured Weapon: Short sword   \nHoly Symbol: Winding path between two trees   \nSacred Animal: Black tiger   \nJaidz believes cowards can be turned to a life of bravery with compassion and firm guidance. He steps softly so as not to frighten those who need to hear his wisdom, and helps those he visits to find the strength within themselves. Jaidz appears as a giant black tiger with ghostly white spots. While in the mortal realm, he often takes the shape of a dark-skinned man with thick black hair streaked with white. His catlike golden eyes gleam in the shadows, and curved golden claws sprout from his hands. Even in his human form he boasts a long black tail tipped with white. The cowardly, the anxious, and the untested pay homage to Jaidz. Youths are especially drawn to Fearless Claw, hoping that when adulthood comes, it will find them brave enough to face the challenges of maturity. Jaidz teaches that the cowardly are not to be scorned, but to be helped, and his agents often provide tests of courage to those who underestimate their own potential. Jaidz dwells in a pavilion of black walnut with gold lattice walls and floor-length faille curtains of emerald green, magenta, and indigo. His pavilion stands on the topmost of three stone tiers cut into one of the Dragonmane Mountains on Nirvana."
-    },
-    {
       "Key": "08764f1156ef47d683746ea68a8bb71a",
       "SimpleName": "JaidzFeature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "\nTitles: Fearless Claw   \nAlignment: Neutral Good   \nAreas of Concern: Cowards, The Untested, Youths   \nDomains: Glory, Good, Protection, Travel   \nSubdomains: Agathion, Defense, Exploration, Purity   \nFavoured Weapon: Short sword   \nHoly Symbol: Winding path between two trees   \nSacred Animal: Black tiger   \nJaidz believes cowards can be turned to a life of bravery with compassion and firm guidance. He steps softly so as not to frighten those who need to hear his wisdom, and helps those he visits to find the strength within themselves. Jaidz appears as a giant black tiger with ghostly white spots. While in the mortal realm, he often takes the shape of a dark-skinned man with thick black hair streaked with white. His catlike golden eyes gleam in the shadows, and curved golden claws sprout from his hands. Even in his human form he boasts a long black tail tipped with white. The cowardly, the anxious, and the untested pay homage to Jaidz. Youths are especially drawn to Fearless Claw, hoping that when adulthood comes, it will find them brave enough to face the challenges of maturity. Jaidz teaches that the cowardly are not to be scorned, but to be helped,and his agents often provide tests of courage to those who underestimate their own potential.Jaidz dwells in a pavilion of black walnut with gold lattice walls and floor-length faille curtains of emerald green, magenta, and indigo. His pavilion stands on the topmost of three stone tiers cut into one of the Dragonmane Mountains on Nirvana."
+    },
+    {
+      "Key": "ba4c336f3f6f4e51a34ec9af86a15ae2",
+      "SimpleName": "JaidzFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nTitles: Fearless Claw   \nAlignment: Neutral Good   \nAreas of Concern: Cowards, The Untested, Youths   \nDomains: Glory, Good, Protection, Travel   \nSubdomains: Agathion, Defense, Exploration, Purity   \nFavoured Weapon: Short sword   \nHoly Symbol: Winding path between two trees   \nSacred Animal: Black tiger   \nJaidz believes cowards can be turned to a life of bravery with compassion and firm guidance. He steps softly so as not to frighten those who need to hear his wisdom, and helps those he visits to find the strength within themselves. Jaidz appears as a giant black tiger with ghostly white spots. While in the mortal realm, he often takes the shape of a dark-skinned man with thick black hair streaked with white. His catlike golden eyes gleam in the shadows, and curved golden claws sprout from his hands. Even in his human form he boasts a long black tail tipped with white. The cowardly, the anxious, and the untested pay homage to Jaidz. Youths are especially drawn to Fearless Claw, hoping that when adulthood comes, it will find them brave enough to face the challenges of maturity. Jaidz teaches that the cowardly are not to be scorned, but to be helped, and his agents often provide tests of courage to those who underestimate their own potential. Jaidz dwells in a pavilion of black walnut with gold lattice walls and floor-length faille curtains of emerald green, magenta, and indigo. His pavilion stands on the topmost of three stone tiers cut into one of the Dragonmane Mountains on Nirvana."
     },
     {
       "Key": "049b8173b11d43b1adaf9df051648ed2",
@@ -5065,17 +5150,17 @@
       "enGB": "Jaidz"
     },
     {
-      "Key": "92a4e62f50d7416aae1becc807e61aa3",
-      "SimpleName": "JalaijataliFeature.Description",
-      "ProcessTemplates": true,
-      "enGB": "\nTitles: Rillsong   \nAlignment: Chaotic Good   \nAreas of Concern: Natural music, Rapids, Waterfalls   \nDomains: Chaos, Good, Scalykind , Water   \nSubdomains: Azata, Flotsam, Revelry, Rivers   \nFavoured Weapon: Whip (Trident)   \nHoly Symbol: Water from wood pipe   \nSacred Animal: Water lizard   \nJalaijatali is a free-spirited empyreal lord who sings with the voice of a rushing creek. Her presence can be felt in the rapids of a flowing river or beneath the misty cascade of a waterfall. Jalaijatali appears as a beautiful Mwangi woman with skin formed of tiny, iridescent scales. Her pointed ears peek through short black hair, and her body is garbed in a robe of living water that continually splashes and rushes over her form. At a moment's notice, the empyreal lord can pluck a stream of water from her robe to wield as a whip. Rillsong loves to teach mortals the beauty of natural music, from the patter of a summer rain to the sawing of katydids. While Jalaijatali much prefers making music to making war, she can be roused to anger by fiends and evil creatures that corrupt her waters, particularly river drakes or water oni. On Elysium, Jalaijatali lives in a pool fed by a waterfall that falls continually from the sky with no apparent source. Around the pool stands a gazebo of acacia wood and crystal, with raised wooden platforms covered in soft mats of greenery where guests can recline."
-    },
-    {
       "Key": "59e3ebed3bae4b69abecb4091f48ee1c",
       "SimpleName": "JalaijataliFeature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "\nTitles: Rillsong   \nAlignment: Chaotic Good   \nAreas of Concern: Natural music, Rapids, Waterfalls   \nDomains: Chaos, Good, Scalykind , Water   \nSubdomains: Azata, Flotsam, Revelry, Rivers   \nFavoured Weapon: Whip (Trident)   \nHoly Symbol: Water from wood pipe   \nSacred Animal: Water lizard   \nJalaijatali is a free-spirited empyreal lord who sings with the voice of a rushing creek. Her presence can be felt in the rapids of a flowing river or beneath the misty cascade of a waterfall. Jalaijatali appears as a beautiful Mwangi woman with skin formed of tiny, iridescent scales . Her pointed ears peek through short black hair, and her body is garbed in a robe of living water that continually splashes and rushes over her form. At a moment's notice, the empyreal lord can pluck a stream of water from her robe to wield as a whip. Rillsong loves to teach mortals the beauty of natural music, from the patter of a summer rain to the sawing of katydids. While Jalaijatali much prefers making music to making war, she can be roused to anger by fiends and evil creatures that corrupt her waters, particularly river drakes or water oni. On Elysium, Jalaijatali lives in a pool fed by a waterfall that falls continually from the sky with no apparent source. Around the pool stands a gazebo of acacia wood and crystal, with raised wooden platforms covered in soft mats of greenery where guests can recline."
+    },
+    {
+      "Key": "92a4e62f50d7416aae1becc807e61aa3",
+      "SimpleName": "JalaijataliFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nTitles: Rillsong   \nAlignment: Chaotic Good   \nAreas of Concern: Natural music, Rapids, Waterfalls   \nDomains: Chaos, Good, Scalykind , Water   \nSubdomains: Azata, Flotsam, Revelry, Rivers   \nFavoured Weapon: Whip (Trident)   \nHoly Symbol: Water from wood pipe   \nSacred Animal: Water lizard   \nJalaijatali is a free-spirited empyreal lord who sings with the voice of a rushing creek. Her presence can be felt in the rapids of a flowing river or beneath the misty cascade of a waterfall. Jalaijatali appears as a beautiful Mwangi woman with skin formed of tiny, iridescent scales. Her pointed ears peek through short black hair, and her body is garbed in a robe of living water that continually splashes and rushes over her form. At a moment's notice, the empyreal lord can pluck a stream of water from her robe to wield as a whip. Rillsong loves to teach mortals the beauty of natural music, from the patter of a summer rain to the sawing of katydids. While Jalaijatali much prefers making music to making war, she can be roused to anger by fiends and evil creatures that corrupt her waters, particularly river drakes or water oni. On Elysium, Jalaijatali lives in a pool fed by a waterfall that falls continually from the sky with no apparent source. Around the pool stands a gazebo of acacia wood and crystal, with raised wooden platforms covered in soft mats of greenery where guests can recline."
     },
     {
       "Key": "8e2a5f0557a94d51be2ebb1313ae91b8",
@@ -5132,17 +5217,17 @@
       "enGB": "Kerkamoth"
     },
     {
+      "Key": "5f128f8ec3b242e290ae05bab3a30f9a",
+      "SimpleName": "KetephysFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nTitles: The Hunter   \nAlignment: Chaotic Good   \nAreas of Concern: Hunting, Forestry, Running, The Moon   \nDomains: Animal, Chaos, Good, Plant, Weather   \nSubdomains: Azata, Feather, Fur, Growth, Moon, Seasons   \nFavoured Weapon: Longbow   \nHoly Symbol: Hawk with moon and sun   \nSacred Animal: Hawk   \nThis long-faced elven god rarely speaks unless coordinating the efforts of other beings in a hunt for a dangerous or especially prized creature. In holy art, he is shown barefoot, wearing form-fitting brown and forestgreen to prevent snags and excess noise. He is usually accompanied by his dog Meycho and his hawk Falling Star, though he keeps them for companionship rather than assistance, as he prefers to succeed or fail on his own skill. Ketephys is an occasional hunting partner of Erastil, but disapproves of his insistence upon marriage; in turn, Erastil attributes this to elven immaturity and capriciousness. Ketephys is an ally of Gozreh against threats to the natural world. He views Treerazer as his arch-enemy, and personally served as a commander during the conflict that pushed Treerazer to Tanglebriar, where he hides to this day. Ketephys also watches over Cyth-V'sug, Treerazer's former master, for any signs of an alliance between the two."
+    },
+    {
       "Key": "cd37e185f3c84abb800e7cbbe98f43bb",
       "SimpleName": "KetephysFeature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "\nTitles: The Hunter   \nAlignment: Chaotic Good   \nAreas of Concern: Hunting, Forestry, Running, The Moon   \nDomains: Animal, Chaos, Good, Plant, Weather   \nSubdomains: Azata, Feather, Fur, Growth, Moon, Seasons   \nFavoured Weapon: Longbow   \nHoly Symbol: Hawk with moon and sun   \nSacred Animal: Hawk   \nThis long-faced elven god rarely speaks unless coordinating the efforts of other beings in a hunt for a dangerous or especially prized creature. In holy art, he is shown barefoot, wearing form-fitting brown and forestgreen to prevent snags and excess noise. He is usually accompanied by his dog Meycho and his hawk Falling Star, though he keeps them for companionship rather than assistance, as he prefers to succeed or fail on his own skill.Ketephys is an occasional hunting partner of Erastil, but disapproves of his insistence upon marriage; in turn, Erastil attributes this to elven immaturity and capriciousness. Ketephys is an ally of Gozreh against threats to the natural world. He views Treerazer as his arch-enemy, and personally served as a commander during the conflict that pushed Treerazer to Tanglebriar, where he hides to this day. Ketephys also watches over Cyth-V'sug, Treerazer's former master, for any signs of an alliance between the two."
-    },
-    {
-      "Key": "5f128f8ec3b242e290ae05bab3a30f9a",
-      "SimpleName": "KetephysFeature.Description",
-      "ProcessTemplates": true,
-      "enGB": "\nTitles: The Hunter   \nAlignment: Chaotic Good   \nAreas of Concern: Hunting, Forestry, Running, The Moon   \nDomains: Animal, Chaos, Good, Plant, Weather   \nSubdomains: Azata, Feather, Fur, Growth, Moon, Seasons   \nFavoured Weapon: Longbow   \nHoly Symbol: Hawk with moon and sun   \nSacred Animal: Hawk   \nThis long-faced elven god rarely speaks unless coordinating the efforts of other beings in a hunt for a dangerous or especially prized creature. In holy art, he is shown barefoot, wearing form-fitting brown and forestgreen to prevent snags and excess noise. He is usually accompanied by his dog Meycho and his hawk Falling Star, though he keeps them for companionship rather than assistance, as he prefers to succeed or fail on his own skill. Ketephys is an occasional hunting partner of Erastil, but disapproves of his insistence upon marriage; in turn, Erastil attributes this to elven immaturity and capriciousness. Ketephys is an ally of Gozreh against threats to the natural world. He views Treerazer as his arch-enemy, and personally served as a commander during the conflict that pushed Treerazer to Tanglebriar, where he hides to this day. Ketephys also watches over Cyth-V'sug, Treerazer's former master, for any signs of an alliance between the two."
     },
     {
       "Key": "f5bf6df7fcfd4e9e9385c15ffd1636b1",
@@ -5248,17 +5333,17 @@
       "enGB": "Lady Nanbyo"
     },
     {
+      "Key": "44cfe3bd69c84e1b9f07ca7fde904b3d",
+      "SimpleName": "LalaciFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nTitles: He of Motley Repose   \nAlignment: Chaotic Good   \nAreas of Concern: Rainbows, Relaxation, Shade   \nDomains: Chaos, Good, Luck, Sun   \nSubdomains: Azata, Fate, Light, Whimsy   \nFavoured Weapon: Sling (Slingstaff)   \nHoly Symbol: Rainbow with shadow   \nSacred Animal: Lacewing   \nLalaci sees the beauty in conflict. The sun wars with the rain and creates a rainbow, and He of Motley Repose believes that everyone's inner nature should be a similar mix of action and restraint, placid adoration and righteous scorn. He offers rest and relaxation to those who meet each day with excitement and vigor and who may be tired from the chaotic beauty that is their life. To mortal eyes, Lalaci appears to be fair-skinned with white-blonde hair and yellow-white eyes. He tucks the two prismatic wings that curve from his shoulders down so that he appears to wear a beautiful multicolored cloak, though among his own kind he walks in his true naked form, with crystalline flesh that refracts light as golden rays. He of Motley Repose provides rest to the hardworking and shade to those exhausted from the sun. Glassblowers and illusionists often find creative inspiration in Lalaci's rainbows; particularly gifted glass artists and lightweavers who lead worthy lives sometimes find small prisms at their workstations-tokens of Lalaci's favor. His devotees claim that the reflections of rainbows in natural bodies of water create portals to his celestial domain: an enormous, warped glass palace that floats on a cloud across the surface of Elysium."
+    },
+    {
       "Key": "21eaf4d1d6474217a066392160e8dd15",
       "SimpleName": "LalaciFeature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "\nTitles: He of Motley Repose   \nAlignment: Chaotic Good   \nAreas of Concern: Rainbows, Relaxation, Shade   \nDomains: Chaos, Good, Luck, Sun   \nSubdomains: Azata, Fate, Light, Whimsy   \nFavoured Weapon: Sling (Slingstaff)   \nHoly Symbol: Rainbow with shadow   \nSacred Animal: Lacewing   \nLalaci sees the beauty in conflict. The sun wars with the rain and creates a rainbow, and He of Motley Repose believes that everyone's inner nature should be a similar mix of action and restraint, placid adoration and righteous scorn. He offers rest and relaxation to those who meet each day with excitement and vigor and who may be tired from the chaotic beauty that is their life. To mortal eyes, Lalaci appears to be fair-skinned with white-blonde hair and yellow-white eyes. He tucks the two prismatic wings that curve from his shoulders down so that he appears to wear a beautiful multicolored cloak, though among his own kind he walks in his true naked form, with crystalline flesh that refracts light as golden rays. He of Motley Repose provides rest to the hardworking and shade to those exhausted from the sun. Glassblowers and illusionists often find creative inspiration in Lalaci's rainbows; particularly gifted glass artists and lightweavers who lead worthy lives sometimes find small prisms at their workstations-tokens of Lalaci's favor. His devotees claim that the reflections of rainbows in natural bodies of water create portals to his celestial domain: an enormous, warped gla s s palace that floats on a cloud across the surface of Elysium."
-    },
-    {
-      "Key": "44cfe3bd69c84e1b9f07ca7fde904b3d",
-      "SimpleName": "LalaciFeature.Description",
-      "ProcessTemplates": true,
-      "enGB": "\nTitles: He of Motley Repose   \nAlignment: Chaotic Good   \nAreas of Concern: Rainbows, Relaxation, Shade   \nDomains: Chaos, Good, Luck, Sun   \nSubdomains: Azata, Fate, Light, Whimsy   \nFavoured Weapon: Sling (Slingstaff)   \nHoly Symbol: Rainbow with shadow   \nSacred Animal: Lacewing   \nLalaci sees the beauty in conflict. The sun wars with the rain and creates a rainbow, and He of Motley Repose believes that everyone's inner nature should be a similar mix of action and restraint, placid adoration and righteous scorn. He offers rest and relaxation to those who meet each day with excitement and vigor and who may be tired from the chaotic beauty that is their life. To mortal eyes, Lalaci appears to be fair-skinned with white-blonde hair and yellow-white eyes. He tucks the two prismatic wings that curve from his shoulders down so that he appears to wear a beautiful multicolored cloak, though among his own kind he walks in his true naked form, with crystalline flesh that refracts light as golden rays. He of Motley Repose provides rest to the hardworking and shade to those exhausted from the sun. Glassblowers and illusionists often find creative inspiration in Lalaci's rainbows; particularly gifted glass artists and lightweavers who lead worthy lives sometimes find small prisms at their workstations-tokens of Lalaci's favor. His devotees claim that the reflections of rainbows in natural bodies of water create portals to his celestial domain: an enormous, warped glass palace that floats on a cloud across the surface of Elysium."
     },
     {
       "Key": "2ea2124c29414986a7b509b9b5184b8b",
@@ -5340,6 +5425,186 @@
       "SimpleName": "LichDeityFeature.Description",
       "ProcessTemplates": true,
       "enGB": "Leader of a small cult of undead, created by their own hands, becoming famous as the indomitable commander of the Fifth Mendevian Crusade against the Worldwound. Determined to destroy the forces of the Abyss at any cost, they ventured on the path of the Lord of Death. For millennia, powerful necromancers have dreamed of a power that could rival the divine. They have created cults in their own names, and attracted many followers. Thanks to their legendary powers, they has managed to achieve much greater success than the others: acquireing a talent to bestow divine spells upon their followers. From that moment, the undead created by them needed no other deities to cast spells.\nDomains: Death, Evil, Strength, War. \nFavoured Weapons: Scythe, Sickle."
+    },
+    {
+      "Key": "f1ef28cf5f3344dbb8f5f2a78d7abc1d",
+      "SimpleName": "LionShamanArchetype.Description",
+      "ProcessTemplates": false,
+      "enGB": "A druid with this totem calls upon the proud lion, imposing and majestic, the mighty leader of deadly hunters."
+    },
+    {
+      "Key": "9f4b2a48a3f643b6a2a52d560c98c8c6",
+      "SimpleName": "LionShamanArchetype.Name",
+      "ProcessTemplates": false,
+      "enGB": "Lion Totem Druid"
+    },
+    {
+      "Key": "7cf8d93c518641f5adfa5a375bdeab83",
+      "SimpleName": "LionShamanBonusFeatSelection.Description",
+      "ProcessTemplates": true,
+      "enGB": "At 9th level and every 4 levels thereafter, a lion totem druid gains one of the following bonus feats: Dodge, Lunge, Improved Iron Will, Iron Will, or Skill Focus (Acrobatics). She must meet the prerequisites for these bonus feats."
+    },
+    {
+      "Key": "6101461166a7418eb90b30b52fe51380",
+      "SimpleName": "LionShamanBonusFeatSelection.Name",
+      "ProcessTemplates": false,
+      "enGB": "Lion Totem Druid Bonus Feat"
+    },
+    {
+      "Key": "5566249330e242f0b0ab83fc3b5172c7",
+      "SimpleName": "LionShamanDomainSelection.Description",
+      "ProcessTemplates": true,
+      "enGB": "A lion totem druid who chooses an animal companion must select a feline. If choosing a domain, the lion totem druid must choose from the Animal, Glory, Nobility, and Sun domains."
+    },
+    {
+      "Key": "7fad0f16e592430eaa94c8719f69659d",
+      "SimpleName": "LionShamanDomainSelection.Name",
+      "ProcessTemplates": false,
+      "enGB": "Lion Totem Druids Bond"
+    },
+    {
+      "Key": "2619af29f76b4fe2a87b7bc2ae4ca7b4",
+      "SimpleName": "LionShamanTotemicSummonsFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "At 5th level, a lion totem druid may cast summon nature’s ally as a standard action when summoning felines, and summoned felines gain temporary hit points equal to their druid level. They can apply the young template to any feline to reduce the level of the summoning spell required by one. They can also increase the level of summoning required by one in order to apply either the advanced or the giant template, or increase it by two to apply both the advanced and giant templates."
+    },
+    {
+      "Key": "57389dfecbcc4665916062b1e3e3eccc",
+      "SimpleName": "LionShamanTotemicSummonsTempHitPoints.Description",
+      "ProcessTemplates": true,
+      "enGB": "A lion totem druid may cast summon nature’s ally as a standard action when summoning felines, and summoned felines gain temporary hit points equal to their druid level."
+    },
+    {
+      "Key": "6a07aefdf0154ca3b82a52d0c8aa5af2",
+      "SimpleName": "LionShamanTotemTransformationAbilityMove.Description",
+      "ProcessTemplates": true,
+      "enGB": "As a move action a lion totem druid may adopt an aspect of the lion while retaining her normal form. They gain one of the following bonuses: \nMovement (+20 enhancement bonus to speed, +4 racial bonus on Mobility checks)\nSenses (Blind Fight feat, +4 on perception checks)\nNatural Weapons (bite attack dealing 1d4 damage and two claws dealing 1d4 damage for a Medium druid, +2 to CMB)"
+    },
+    {
+      "Key": "c1c8753be8e24727a6452a9d80ea2e79",
+      "SimpleName": "LionShamanTotemTransformationAbilityMove.Name",
+      "ProcessTemplates": false,
+      "enGB": "Lion Totem Transformation - Move Action"
+    },
+    {
+      "Key": "097b9ef8f0094d9da7a1266b8f2ed18d",
+      "SimpleName": "LionShamanTotemTransformationAbilityStandard.Description",
+      "ProcessTemplates": true,
+      "enGB": "As a standard action a lion totem druid may adopt an aspect of the lion while retaining her normal form. They gain one of the following bonuses: \nMovement (+20 enhancement bonus to speed, +4 racial bonus on Mobility checks)\nSenses (Blind Fight feat, +4 on perception checks)\nNatural Weapons (bite attack dealing 1d4 damage and two claws dealing 1d4 damage for a Medium druid, +2 to CMB)"
+    },
+    {
+      "Key": "51e695df8b8544129f4eab6332a96f63",
+      "SimpleName": "LionShamanTotemTransformationAbilityStandard.Name",
+      "ProcessTemplates": false,
+      "enGB": "Lion Totem Transformation"
+    },
+    {
+      "Key": "e201b9e564c94e95846c8d90f2c9f72b",
+      "SimpleName": "LionShamanTotemTransformationAbilitySwift.Description",
+      "ProcessTemplates": true,
+      "enGB": "As a swift action a lion totem druid may adopt an aspect of the lion while retaining her normal form. They gain one of the following bonuses: \nMovement (+20 enhancement bonus to speed, +4 racial bonus on Mobility checks)\nSenses (Blind Fight feat, +4 on perception checks)\nNatural Weapons (bite attack dealing 1d4 damage and two claws dealing 1d4 damage for a Medium druid, +2 to CMB)"
+    },
+    {
+      "Key": "d4b3558fd95542f99285c5408c4f210c",
+      "SimpleName": "LionShamanTotemTransformationAbilitySwift.Name",
+      "ProcessTemplates": false,
+      "enGB": "Lion Totem Transformation - Swift Action"
+    },
+    {
+      "Key": "0d97d394cbb94ffeaaeca93ff89d149e",
+      "SimpleName": "LionShamanTotemTransformationFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "At 2nd level, a lion totem druid may adopt an aspect of the lion while retaining their normal form. They gain one of the following bonuses: \nMovement (+20 enhancement bonus to speed, +4 racial bonus on Mobility checks)\nSenses (Blind Fight feat, +4 on perception checks)\nNatural Weapons (bite attack dealing 1d4 damage and two claws dealing 1d4 damage for a Medium druid, +2 to CMB)\nUsing this ability is a standard action at 2nd level, a move action at 7th level, and a swift action at 12th level. This ability lasts one minute and can be used a number of times equal to their druid level. This is a polymorph effect and cannot be used while the druid is using another polymorph effect, such as wild shape."
+    },
+    {
+      "Key": "450f1d014e7e452484f30e4e2acd2e93",
+      "SimpleName": "LionShamanTotemTransformationMoveFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "At 2nd level, a lion totem druid may adopt an aspect of the lion while retaining their normal form. They gain one of the following bonuses: \nMovement (+20 enhancement bonus to speed, +4 racial bonus on Mobility checks)\nSenses (Blind Fight feat, +4 on perception checks)\nNatural Weapons (bite attack dealing 1d4 damage and two claws dealing 1d4 damage for a Medium druid, +2 to CMB)\nUsing this ability is a standard action at 2nd level, a move action at 7th level, and a swift action at 12th level. This ability lasts one minute and can be used a number of times equal to their druid level. This is a polymorph effect and cannot be used while the druid is using another polymorph effect, such as wild shape."
+    },
+    {
+      "Key": "58c8e9c36dab41b5b727f15e9b2a55a7",
+      "SimpleName": "LionShamanTotemTransformationMoveFeature.Name",
+      "ProcessTemplates": false,
+      "enGB": "Lion Totem Transformation (Move Action)"
+    },
+    {
+      "Key": "decd85c29c9745bdab8123f13d29ec60",
+      "SimpleName": "LionShamanTotemTransformationMovementBuff.Description",
+      "ProcessTemplates": true,
+      "enGB": "A lion totem druid may select which aspect of the lion to embue themselves with.\nMovement (+20 enhancement bonus to speed, +4 racial bonus on Mobility checks)"
+    },
+    {
+      "Key": "44c8afbced244fdcbaf917ee3968885d",
+      "SimpleName": "LionShamanTotemTransformationMovementBuff.Name",
+      "ProcessTemplates": false,
+      "enGB": "Lion Totem Transformation - Movement"
+    },
+    {
+      "Key": "03bc059f009e4f9eb8c11955846ab453",
+      "SimpleName": "LionShamanTotemTransformationMovementToggleAbility.Description",
+      "ProcessTemplates": true,
+      "enGB": "A lion totem druid may select which aspect of the lion to embue themselves with.\nMovement (+20 enhancement bonus to speed, +4 racial bonus on Mobility checks)"
+    },
+    {
+      "Key": "7462a1c73f184425894fb4e3674d2ebf",
+      "SimpleName": "LionShamanTotemTransformationNaturalWeaponsBuff.Description",
+      "ProcessTemplates": true,
+      "enGB": "A lion totem druid may select which aspect of the lion to embue themselves with.\nNatural Weapons (bite attack dealing 1d4 damage and two claws dealing 1d4 damage for a Medium druid, +2 to CMB)"
+    },
+    {
+      "Key": "9777702483114145a85fe2074f58e92a",
+      "SimpleName": "LionShamanTotemTransformationNaturalWeaponsBuff.Name",
+      "ProcessTemplates": false,
+      "enGB": "Lion Totem Transformation - Natural Weapons"
+    },
+    {
+      "Key": "4734f1de70fd414583f27c65b765fb2c",
+      "SimpleName": "LionShamanTotemTransformationNaturalWeaponsToggleAbility.Description",
+      "ProcessTemplates": true,
+      "enGB": "A lion totem druid may select which aspect of the lion to embue themselves with.\nNatural Weapons (bite attack dealing 1d4 damage and two claws dealing 1d4 damage for a Medium druid, +2 to CMB)"
+    },
+    {
+      "Key": "03f526af2b0d41289153c763121e4710",
+      "SimpleName": "LionShamanTotemTransformationSensesBuff.Description",
+      "ProcessTemplates": true,
+      "enGB": "A lion totem druid may select which aspect of the lion to embue themselves with.\nSenses (Blind Fight feat, +4 on racial bonus on perception checks)"
+    },
+    {
+      "Key": "6a7f53ef81e74eea829c6b43ec97a786",
+      "SimpleName": "LionShamanTotemTransformationSensesBuff.Name",
+      "ProcessTemplates": false,
+      "enGB": "Lion Totem Transformation - Senses"
+    },
+    {
+      "Key": "419364f20bf440a8a54a77fa7b7d3b7b",
+      "SimpleName": "LionShamanTotemTransformationSensesToggleAbility.Description",
+      "ProcessTemplates": true,
+      "enGB": "A lion totem druid may select which aspect of the lion to embue themselves with.\nSenses (Blind Fight feat, +4 on perception checks)"
+    },
+    {
+      "Key": "9dc00df801704df4bf20ab1f4925e310",
+      "SimpleName": "LionShamanTotemTransformationSwiftFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "At 2nd level, a lion totem druid may adopt an aspect of the lion while retaining their normal form. They gain one of the following bonuses: \nMovement (+20 enhancement bonus to speed, +4 racial bonus on Mobility checks)\nSenses (Blind Fight feat, +4 on perception checks)\nNatural Weapons (bite attack dealing 1d4 damage and two claws dealing 1d4 damage for a Medium druid, +2 to CMB)\nUsing this ability is a standard action at 2nd level, a move action at 7th level, and a swift action at 12th level. This ability lasts one minute and can be used a number of times equal to their druid level. This is a polymorph effect and cannot be used while the druid is using another polymorph effect, such as wild shape."
+    },
+    {
+      "Key": "6d67e7d6c03d4078906e1263d44fb838",
+      "SimpleName": "LionShamanTotemTransformationSwiftFeature.Name",
+      "ProcessTemplates": false,
+      "enGB": "Lion Totem Transformation (Swift Action)"
+    },
+    {
+      "Key": "582ebdf8147644769888dd8385a33ac5",
+      "SimpleName": "LionShamanWildShape.Description",
+      "ProcessTemplates": true,
+      "enGB": "A lion totem druid wild shape is effected by their dedication to feline sprits. All wild shape forms gained from level 6 onwards are gained 2 levels later than a standard druid, however feline forms are gained 2 levels earlier."
+    },
+    {
+      "Key": "d15180011a77461cacef9d8154c18ec9",
+      "SimpleName": "LionShamanWildShape.Name",
+      "ProcessTemplates": false,
+      "enGB": "Wild Shape - Lion Totem Druid"
     },
     {
       "Key": "3d2b85c4110b44dcae8a149272b71fe8",
@@ -6477,17 +6742,17 @@
       "enGB": "Upon achieving 20th level, your rapport with the heavens grants you perfect harmony with the universe. You receive a bonus on all saving throws equal to your Charisma modifier. You become immune to fear effects, and automatically confirm all critical hits. Once per day, should you die, 1 round after dying you are reborn. Your body re-forms with all your equipment, and you return to life with maximum hit points."
     },
     {
-      "Key": "34d9258f52d54d698abef589299c445c",
-      "SimpleName": "OracleHeavensMysteryFeature.Description",
-      "ProcessTemplates": true,
-      "enGB": "An oracle with the heavens mystery adds Perception and Knowledge (Arcana)  to her list of class skills."
-    },
-    {
       "Key": "5a4e1c62b9e04b2e9c66bf97ef9657b7",
       "SimpleName": "OracleHeavensMysteryFeature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "An oracle with the heavens mystery adds Perception and Knowledge (world)  to her list of class skills."
+    },
+    {
+      "Key": "34d9258f52d54d698abef589299c445c",
+      "SimpleName": "OracleHeavensMysteryFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "An oracle with the heavens mystery adds Perception and Knowledge (Arcana)  to her list of class skills."
     },
     {
       "Key": "f5c964d3e8594713b330e2723b10d374",
@@ -7801,17 +8066,17 @@
       "enGB": "You can effortlessly give aid to your allies, whether that means providing them with help attacking or defending them in the heat of combat. Whenever you use the aid another action to inflict a penalty on attack rolls or to AC against one of your allies, the penalty you inflict increases by 1. This bonus increases by 1 at 4th level and every 5 oracle levels thereafter (to a maximum of -5 at 19th level). It doesn’t stack with other feats or class features that improve the bonus you provide when using the aid another action."
     },
     {
+      "Key": "22d57920ce524fa3851b1583bf513fa8",
+      "SimpleName": "PerfectAidAnotherOffenceBuff.Name",
+      "ProcessTemplates": false,
+      "enGB": "Perfect Aid Another - Distracted Defending"
+    },
+    {
       "Key": "6dca0ae196dd4a5ab6dad37062a7180b",
       "SimpleName": "PerfectAidAnotherOffenceBuff.Name",
       "ProcessTemplates": false,
       "IsUsed": false,
       "enGB": "Perfect Aid Another - Offence"
-    },
-    {
-      "Key": "22d57920ce524fa3851b1583bf513fa8",
-      "SimpleName": "PerfectAidAnotherOffenceBuff.Name",
-      "ProcessTemplates": false,
-      "enGB": "Perfect Aid Another - Distracted Defending"
     },
     {
       "Key": "4fa5231fdfa0430dad209a81e8b4ab91",
@@ -9709,6 +9974,372 @@
       "enGB": "Summon Young Grizzly Bear"
     },
     {
+      "Key": "b4ce886fdffa4d379694664dd6eb4f19",
+      "SimpleName": "SummonLeopardAdvancedD3.Description",
+      "ProcessTemplates": true,
+      "enGB": "This spell summons to your side 1d3 natural advanced leopards. The summoned allies appear where you designate and acts according to its initiative check results. It attacks your opponents to the best of its ability.\nAdvanced: Creature has natural armor increased by 2, gains a +4 bonus all ability scores (except Int scores of 2 or less)."
+    },
+    {
+      "Key": "0b1428b0fb5242bab6c7e4605ec13ae3",
+      "SimpleName": "SummonLeopardAdvancedD3.Name",
+      "ProcessTemplates": false,
+      "enGB": "Summon Advanced Leopard (1d3)"
+    },
+    {
+      "Key": "f8999b2fadaa41a4befb25509d9c77a1",
+      "SimpleName": "SummonLeopardAdvancedD4plus1.Description",
+      "ProcessTemplates": true,
+      "enGB": "This spell summons to your side 1d4 + 1 natural advanced leopards. The summoned allies appear where you designate and acts according to its initiative check results. It attacks your opponents to the best of its ability.\nAdvanced: Creature has natural armor increased by 2, gains a +4 bonus all ability scores (except Int scores of 2 or less)."
+    },
+    {
+      "Key": "8a2d79a4165c40b2b44462426b8e85a9",
+      "SimpleName": "SummonLeopardAdvancedD4plus1.Name",
+      "ProcessTemplates": false,
+      "enGB": "Summon Advanced Leopard (1d4 + 1)"
+    },
+    {
+      "Key": "c496666ef4db4a7087ffbaab92436c6f",
+      "SimpleName": "SummonLeopardAdvancedSingle.Description",
+      "ProcessTemplates": true,
+      "enGB": "This spell summons to your side a natural advanced leopard. The summoned ally appears where you designate and acts according to its initiative check results. It attacks your opponents to the best of its ability.\nAdvanced: Creature has natural armor increased by 2, gains a +4 bonus all ability scores (except Int scores of 2 or less)."
+    },
+    {
+      "Key": "f10c99d427e14dae9aa059298aa39c22",
+      "SimpleName": "SummonLeopardAdvancedSingle.Name",
+      "ProcessTemplates": false,
+      "enGB": "Summon Advanced Leopard"
+    },
+    {
+      "Key": "150701dafe9443a0807a9f028006eb94",
+      "SimpleName": "SummonLeopardFinalD3.Description",
+      "ProcessTemplates": true,
+      "enGB": "This spell summons to your side 1d3 natural giant advanced leopards. The summoned allies appear where you designate and acts according to its initiative check results. It attacks your opponents to the best of its ability.\nGiant + Advanced: Creature is one size category larger, has natural armor increased by 5, gains a +8 bonus to strength and constitution, a +4 bonus to wisdom and charisma, and a +2 bonus to dexterity."
+    },
+    {
+      "Key": "fa07cfd14516429499ed37633de3629a",
+      "SimpleName": "SummonLeopardFinalD3.Name",
+      "ProcessTemplates": false,
+      "enGB": "Summon Giant Advanced Leopard (1d3)"
+    },
+    {
+      "Key": "95f20c6604054a949fdf090d65a5482c",
+      "SimpleName": "SummonLeopardFinalD4plus1.Description",
+      "ProcessTemplates": true,
+      "enGB": "This spell summons to your side 1d4 + 1 natural giant advanced leopards. The summoned allies appear where you designate and acts according to its initiative check results. It attacks your opponents to the best of its ability.\nGiant + Advanced: Creature is one size category larger, has natural armor increased by 5, gains a +8 bonus to strength and constitution, a +4 bonus to wisdom and charisma, and a +2 bonus to dexterity."
+    },
+    {
+      "Key": "3c972d4fd693430cb15c281228642433",
+      "SimpleName": "SummonLeopardFinalD4plus1.Name",
+      "ProcessTemplates": false,
+      "enGB": "Summon Giant Advanced Leopard (1d4 + 1)"
+    },
+    {
+      "Key": "6532db75a2784166932ff10ccb7d7f08",
+      "SimpleName": "SummonLeopardFinalSingle.Description",
+      "ProcessTemplates": true,
+      "enGB": "This spell summons to your side a natural giant advanced leopard. The summoned ally appears where you designate and acts according to its initiative check results. It attacks your opponents to the best of its ability.\nGiant + Advanced: Creature is one size category larger, has natural armor increased by 5, gains a +8 bonus to strength and constitution, a +4 bonus to wisdom and charisma, and a +2 bonus to dexterity."
+    },
+    {
+      "Key": "f27291b4cd8c4cb18df97f23d2318758",
+      "SimpleName": "SummonLeopardFinalSingle.Name",
+      "ProcessTemplates": false,
+      "enGB": "Summon Giant Advanced Leopard"
+    },
+    {
+      "Key": "786cac7df7724c9ebdeb8f13f088cb5e",
+      "SimpleName": "SummonLeopardGiantD3.Description",
+      "ProcessTemplates": true,
+      "enGB": "This spell summons to your side 1d3 natural giant leopards. The summoned allies appear where you designate and acts according to its initiative check results. It attacks your opponents to the best of its ability.\nGiant: Creature is one size category larger, has natural armor increased by 3, gains a +4 bonus to strength and constitution, and a -2 penalty to dexterity."
+    },
+    {
+      "Key": "ad1bf6767a6e436eaf0b0542a6bbc847",
+      "SimpleName": "SummonLeopardGiantD3.Name",
+      "ProcessTemplates": false,
+      "enGB": "Summon Giant Leopard (1d3)"
+    },
+    {
+      "Key": "3bf67fab8ac34ba8a000efb3e25abdfe",
+      "SimpleName": "SummonLeopardGiantD4plus1.Description",
+      "ProcessTemplates": true,
+      "enGB": "This spell summons to your side 1d4 + 1 natural giant leopards. The summoned allies appear where you designate and acts according to its initiative check results. It attacks your opponents to the best of its ability.\nGiant: Creature is one size category larger, has natural armor increased by 3, gains a +4 bonus to strength and constitution, and a -2 penalty to dexterity."
+    },
+    {
+      "Key": "cacbba5d8533406abfd9530bdef9f2e0",
+      "SimpleName": "SummonLeopardGiantD4plus1.Name",
+      "ProcessTemplates": false,
+      "enGB": "Summon Giant Leopard (1d4 + 1)"
+    },
+    {
+      "Key": "88546c1d99944f7291c9d7a895d0bedc",
+      "SimpleName": "SummonLeopardGiantSingle.Description",
+      "ProcessTemplates": true,
+      "enGB": "This spell summons to your side a natural giant leopard. The summoned ally appears where you designate and acts according to its initiative check results. It attacks your opponents to the best of its ability.\nGiant: Creature is one size category larger, has natural armor increased by 3, gains a +4 bonus to strength and constitution, and a -2 penalty to dexterity."
+    },
+    {
+      "Key": "c8bcbfeaba0249a0b2c1d10e64004e83",
+      "SimpleName": "SummonLeopardGiantSingle.Name",
+      "ProcessTemplates": false,
+      "enGB": "Summon Giant Leopard"
+    },
+    {
+      "Key": "d91216f74b4e4b459787ab462227e58e",
+      "SimpleName": "SummonLeopardStandardD3.Description",
+      "ProcessTemplates": true,
+      "enGB": "This spell summons to your side 1d3 natural young leopards. The summoned allies appear where you designate and acts according to its initiative check results. It attacks your opponents to the best of its ability."
+    },
+    {
+      "Key": "9bd35593b8b945f6b730dbb3b51eb3a4",
+      "SimpleName": "SummonLeopardStandardD3.Name",
+      "ProcessTemplates": false,
+      "enGB": "Summon Leopard (1d3)"
+    },
+    {
+      "Key": "507dd4a67e0b45828ae7bffb7339a9a5",
+      "SimpleName": "SummonLeopardStandardD4plus1.Description",
+      "ProcessTemplates": true,
+      "enGB": "This spell summons to your side 1d4 + 1 natural young leopards. The summoned allies appear where you designate and acts according to its initiative check results. It attacks your opponents to the best of its ability."
+    },
+    {
+      "Key": "e90087e27bde49988d1e774255f718bb",
+      "SimpleName": "SummonLeopardStandardD4plus1.Name",
+      "ProcessTemplates": false,
+      "enGB": "Summon Leopard (1d4 + 1)"
+    },
+    {
+      "Key": "0c6a1265b9c046949eb884b2f6442c49",
+      "SimpleName": "SummonLeopardStandardSingle.Description",
+      "ProcessTemplates": true,
+      "enGB": "This spell summons to your side a natural leopard. The summoned ally appears where you designate and acts according to its initiative check results. It attacks your opponents to the best of its ability."
+    },
+    {
+      "Key": "8dec7c4b8b8c4866aa0a604240ac41aa",
+      "SimpleName": "SummonLeopardStandardSingle.Name",
+      "ProcessTemplates": false,
+      "enGB": "Summon Leopard"
+    },
+    {
+      "Key": "e02216506c0a46e5a053b24a8babc958",
+      "SimpleName": "SummonLeopardYoungD3.Description",
+      "ProcessTemplates": true,
+      "enGB": "This spell summons to your side 1d3 natural young leopards. The summoned allies appear where you designate and acts according to its initiative check results. It attacks your opponents to the best of its ability.\nYoung: Creature is one size category smaller, has natural armor decreased by 2, gains a -4 penalty to strength and constitution, and a +4 bonus to dexterity."
+    },
+    {
+      "Key": "d6575ccbfb0540fcbb5d41301b0252fe",
+      "SimpleName": "SummonLeopardYoungD3.Name",
+      "ProcessTemplates": false,
+      "enGB": "Summon Young Leopard (1d3)"
+    },
+    {
+      "Key": "67f25324fad1409ca7778aed09119ec3",
+      "SimpleName": "SummonLeopardYoungD4plus1.Description",
+      "ProcessTemplates": true,
+      "enGB": "This spell summons to your side 1d4 + 1 natural young leopards. The summoned allies appear where you designate and acts according to its initiative check results. It attacks your opponents to the best of its ability.\nYoung: Creature is one size category smaller, has natural armor decreased by 2, gains a -4 penalty to strength and constitution, and a +4 bonus to dexterity."
+    },
+    {
+      "Key": "e05d68438be142a989815a24336e4b6e",
+      "SimpleName": "SummonLeopardYoungD4plus1.Name",
+      "ProcessTemplates": false,
+      "enGB": "Summon Young Leopard (1d4 + 1)"
+    },
+    {
+      "Key": "a627c33853aa4fd3b6974173bc0a3ea4",
+      "SimpleName": "SummonLeopardYoungSingle.Description",
+      "ProcessTemplates": true,
+      "enGB": "This spell summons to your side a natural young leopard. The summoned ally appears where you designate and acts according to its initiative check results. It attacks your opponents to the best of its ability.\nYoung: Creature is one size category smaller, has natural armor decreased by 2, gains a -4 penalty to strength and constitution, and a +4 bonus to dexterity."
+    },
+    {
+      "Key": "a4c17ebffc6b41c9a79e9238a8d72c0f",
+      "SimpleName": "SummonLeopardYoungSingle.Name",
+      "ProcessTemplates": false,
+      "enGB": "Summon Young Leopard"
+    },
+    {
+      "Key": "ad0aa5423a45437c96c4565a177e245e",
+      "SimpleName": "SummonSmilodonAdvancedD3.Description",
+      "ProcessTemplates": true,
+      "enGB": "This spell summons to your side 1d3 natural advanced smilodons. The summoned allies appear where you designate and acts according to its initiative check results. It attacks your opponents to the best of its ability.\nAdvanced: Creature has natural armor increased by 2, gains a +4 bonus all ability scores (except Int scores of 2 or less)."
+    },
+    {
+      "Key": "e7c869d2f9734d3882f9fa4a48551029",
+      "SimpleName": "SummonSmilodonAdvancedD3.Name",
+      "ProcessTemplates": false,
+      "enGB": "Summon Advanced Smilodon (1d3)"
+    },
+    {
+      "Key": "46f024f883ac43e68789cb285bfa0468",
+      "SimpleName": "SummonSmilodonAdvancedD4plus1.Description",
+      "ProcessTemplates": true,
+      "enGB": "This spell summons to your side 1d4 + 1 natural advanced smilodons. The summoned allies appear where you designate and acts according to its initiative check results. It attacks your opponents to the best of its ability.\nAdvanced: Creature has natural armor increased by 2, gains a +4 bonus all ability scores (except Int scores of 2 or less)."
+    },
+    {
+      "Key": "eb0532ff4bdd4eb8ad2d2b78fb7301c3",
+      "SimpleName": "SummonSmilodonAdvancedD4plus1.Name",
+      "ProcessTemplates": false,
+      "enGB": "Summon Advanced Smilodon (1d4 + 1)"
+    },
+    {
+      "Key": "89acfd560dec4c149a94163c155a97b2",
+      "SimpleName": "SummonSmilodonAdvancedSingle.Description",
+      "ProcessTemplates": true,
+      "enGB": "This spell summons to your side a natural advanced smilodon. The summoned ally appears where you designate and acts according to its initiative check results. It attacks your opponents to the best of its ability.\nAdvanced: Creature has natural armor increased by 2, gains a +4 bonus all ability scores (except Int scores of 2 or less)."
+    },
+    {
+      "Key": "86099b382361412ea9ace1db04b102d0",
+      "SimpleName": "SummonSmilodonAdvancedSingle.Name",
+      "ProcessTemplates": false,
+      "enGB": "Summon Advanced Smilodon"
+    },
+    {
+      "Key": "02ba99e5700f4ba8adb350fdcfd8bf2f",
+      "SimpleName": "SummonSmilodonFinalD3.Description",
+      "ProcessTemplates": true,
+      "enGB": "This spell summons to your side 1d3 natural giant advanced smilodons. The summoned allies appear where you designate and acts according to its initiative check results. It attacks your opponents to the best of its ability.\nGiant + Advanced: Creature is one size category larger, has natural armor increased by 5, gains a +8 bonus to strength and constitution, a +4 bonus to wisdom and charisma, and a +2 bonus to dexterity."
+    },
+    {
+      "Key": "c6c3165104d54b459f218e3374c21c40",
+      "SimpleName": "SummonSmilodonFinalD3.Name",
+      "ProcessTemplates": false,
+      "enGB": "Summon Giant Advanced Smilodon (1d3)"
+    },
+    {
+      "Key": "1236edfdecae46dd9e24b327b2966ad1",
+      "SimpleName": "SummonSmilodonFinalSingle.Description",
+      "ProcessTemplates": true,
+      "enGB": "This spell summons to your side a natural giant advanced smilodon. The summoned ally appears where you designate and acts according to its initiative check results. It attacks your opponents to the best of its ability.\nGiant + Advanced: Creature is one size category larger, has natural armor increased by 5, gains a +8 bonus to strength and constitution, a +4 bonus to wisdom and charisma, and a +2 bonus to dexterity."
+    },
+    {
+      "Key": "6fecdb4c9db34e358e72db1c805836d5",
+      "SimpleName": "SummonSmilodonFinalSingle.Name",
+      "ProcessTemplates": false,
+      "enGB": "Summon Giant Advanced Smilodon"
+    },
+    {
+      "Key": "f8bfb65d915e41b29dbbe0e2f29978ba",
+      "SimpleName": "SummonSmilodonGiantD3.Description",
+      "ProcessTemplates": true,
+      "enGB": "This spell summons to your side 1d3 natural giant smilodons. The summoned allies appear where you designate and acts according to its initiative check results. It attacks your opponents to the best of its ability.\nGiant: Creature is one size category larger, has natural armor increased by 3, gains a +4 bonus to strength and constitution, and a -2 penalty to dexterity."
+    },
+    {
+      "Key": "945c6875b97a4a88b1052462f67339b9",
+      "SimpleName": "SummonSmilodonGiantD3.Name",
+      "ProcessTemplates": false,
+      "enGB": "Summon Giant Smilodon (1d3)"
+    },
+    {
+      "Key": "be1357ccbdcf465d85a37aabf1ebdaed",
+      "SimpleName": "SummonSmilodonGiantD4plus1.Description",
+      "ProcessTemplates": true,
+      "enGB": "This spell summons to your side 1d4 + 1 natural giant smilodons. The summoned allies appear where you designate and acts according to its initiative check results. It attacks your opponents to the best of its ability.\nGiant: Creature is one size category larger, has natural armor increased by 3, gains a +4 bonus to strength and constitution, and a -2 penalty to dexterity."
+    },
+    {
+      "Key": "a5edbf462de145e684184aec9b627b16",
+      "SimpleName": "SummonSmilodonGiantD4plus1.Name",
+      "ProcessTemplates": false,
+      "enGB": "Summon Giant Smilodon (1d4 + 1)"
+    },
+    {
+      "Key": "a3b081411e84425d97d6d613b3844bae",
+      "SimpleName": "SummonSmilodonGiantSingle.Description",
+      "ProcessTemplates": true,
+      "enGB": "This spell summons to your side a natural giant smilodon. The summoned ally appears where you designate and acts according to its initiative check results. It attacks your opponents to the best of its ability.\nGiant: Creature is one size category larger, has natural armor increased by 3, gains a +4 bonus to strength and constitution, and a -2 penalty to dexterity."
+    },
+    {
+      "Key": "6ce4b024f245405e97df884faac47c93",
+      "SimpleName": "SummonSmilodonGiantSingle.Name",
+      "ProcessTemplates": false,
+      "enGB": "Summon Giant Smilodon"
+    },
+    {
+      "Key": "f7a685acfaca492d951ebdf3352e97ce",
+      "SimpleName": "SummonSmilodonStandardD3.Description",
+      "ProcessTemplates": true,
+      "enGB": "This spell summons to your side 1d3 natural young smilodons. The summoned allies appear where you designate and acts according to its initiative check results. It attacks your opponents to the best of its ability."
+    },
+    {
+      "Key": "f0e71cd9c8fe49c8bf33538d41453943",
+      "SimpleName": "SummonSmilodonStandardD3.Name",
+      "ProcessTemplates": false,
+      "enGB": "Summon Smilodon (1d3)"
+    },
+    {
+      "Key": "90e6263194ea4b6c940fab3405b7a7dc",
+      "SimpleName": "SummonSmilodonStandardD4plus1.Description",
+      "ProcessTemplates": true,
+      "enGB": "This spell summons to your side 1d4 + 1 natural young smilodons. The summoned allies appear where you designate and acts according to its initiative check results. It attacks your opponents to the best of its ability."
+    },
+    {
+      "Key": "9344a69294864abdb33335d02ee28821",
+      "SimpleName": "SummonSmilodonStandardD4plus1.Name",
+      "ProcessTemplates": false,
+      "enGB": "Summon Smilodon (1d4 + 1)"
+    },
+    {
+      "Key": "3c31c7393b644871835525bd999ae056",
+      "SimpleName": "SummonSmilodonStandardSingle.Description",
+      "ProcessTemplates": true,
+      "enGB": "This spell summons to your side a natural smilodon. The summoned ally appears where you designate and acts according to its initiative check results. It attacks your opponents to the best of its ability."
+    },
+    {
+      "Key": "e3ad2ef416ea4d118aa90ec61f9994d5",
+      "SimpleName": "SummonSmilodonStandardSingle.Name",
+      "ProcessTemplates": false,
+      "enGB": "Summon Smilodon"
+    },
+    {
+      "Key": "cd4aeae4dfaf4d0f93d770a31468924a",
+      "SimpleName": "SummonSmilodonYoungD3.Description",
+      "ProcessTemplates": true,
+      "enGB": "This spell summons to your side 1d3 natural young smilodons. The summoned allies appear where you designate and acts according to its initiative check results. It attacks your opponents to the best of its ability.\nYoung: Creature is one size category smaller, has natural armor decreased by 2, gains a -4 penalty to strength and constitution, and a +4 bonus to dexterity."
+    },
+    {
+      "Key": "a55c93eedcfe4d69a72845b64399a496",
+      "SimpleName": "SummonSmilodonYoungD3.Name",
+      "ProcessTemplates": false,
+      "enGB": "Summon Young Smilodon (1d3)"
+    },
+    {
+      "Key": "b02a5e93588e4ad381e3eab5fd74bccf",
+      "SimpleName": "SummonSmilodonYoungD4plus1.Description",
+      "ProcessTemplates": true,
+      "enGB": "This spell summons to your side 1d4 + 1 natural young smilodons. The summoned allies appear where you designate and acts according to its initiative check results. It attacks your opponents to the best of its ability.\nYoung: Creature is one size category smaller, has natural armor decreased by 2, gains a -4 penalty to strength and constitution, and a +4 bonus to dexterity."
+    },
+    {
+      "Key": "21e33957458341ffbc8ead8e105adf8e",
+      "SimpleName": "SummonSmilodonYoungD4plus1.Name",
+      "ProcessTemplates": false,
+      "enGB": "Summon Young Smilodon (1d4 + 1)"
+    },
+    {
+      "Key": "004ff23437824408b533c66dfd077c87",
+      "SimpleName": "SummonSmilodonYoungSingle.Description",
+      "ProcessTemplates": true,
+      "enGB": "This spell summons to your side a natural young smilodon. The summoned ally appears where you designate and acts according to its initiative check results. It attacks your opponents to the best of its ability.\nYoung: Creature is one size category smaller, has natural armor decreased by 2, gains a -4 penalty to strength and constitution, and a +4 bonus to dexterity."
+    },
+    {
+      "Key": "e42764f7406b4a86bdfcc4dea82a946d",
+      "SimpleName": "SummonSmilodonYoungSingle.Name",
+      "ProcessTemplates": false,
+      "enGB": "Summon Young Smilodon"
+    },
+    {
+      "Key": "32d18767bd414523891e507c321c4ec6",
+      "SimpleName": "SunDomainBaseFeatureDruid.Description",
+      "ProcessTemplates": true,
+      "enGB": "You see truth in the pure and burning light of the sun, and can call upon its blessing or wrath to work great deeds.\nSun's Blessing: Whenever you channel positive energy to harm undead creatures, add your level in the class that gave you access to this domain to the damage dealt. Undead do not add their channel resistance to their saves when you channel positive energy.\nNimbus of Light: At 8th level, you can emit a 30-foot nimbus of light for a number of rounds per day equal to your level in the class that gave you access to this domain. Any hostile creature within this radius must succeed at a Fortitude save to resist the effects of this aura. If the creature fails, it is blinded until it leaves the area of the spell. A creature that has resisted the effect cannot be affected again by this particular aura. In addition, undead within this radius take an amount of damage equal to your level in the class that gave you access to this domain each round that they remain inside the nimbus. These rounds do not need to be consecutive."
+    },
+    {
+      "Key": "8be704a2dfab4fb2b92c9a4c37363171",
+      "SimpleName": "SunDomainBaseFeatureDruid.Name",
+      "ProcessTemplates": false,
+      "enGB": "Sun Domain"
+    },
+    {
+      "Key": "3288f9dc47204646b8d7b627550e3450",
+      "SimpleName": "SunDomainProgressionDruid.Description",
+      "ProcessTemplates": true,
+      "enGB": "You see truth in the pure and burning light of the sun, and can call upon its blessing or wrath to work great deeds.\nSun's Blessing: Whenever you channel positive energy to harm undead creatures, add your level in the class that gave you access to this domain to the damage dealt. Undead do not add their channel resistance to their saves when you channel positive energy.\nNimbus of Light: At 8th level, you can emit a 30-foot nimbus of light for a number of rounds per day equal to your level in the class that gave you access to this domain. Any hostile creature within this radius must succeed at a Fortitude save to resist the effects of this aura. If the creature fails, it is blinded until it leaves the area of the spell. A creature that has resisted the effect cannot be affected again by this particular aura. In addition, undead within this radius take an amount of damage equal to your level in the class that gave you access to this domain each round that they remain inside the nimbus. These rounds do not need to be consecutive.\nDomain Spells: faerie fire, see invisibility, searing light, shield of dawn, flame strike, chains of light, sunbeam, sunburst, elemental swarm (fire)."
+    },
+    {
       "Key": "fa25fa49e13a4a6abdd4b1694d7e8bed",
       "SimpleName": "SunInvokeDeityAbility.Description",
       "ProcessTemplates": true,
@@ -10543,17 +11174,17 @@
       "enGB": "Wild Shape - Urban Druid"
     },
     {
+      "Key": "0269241f6f7d46dfa35389317c1a9315",
+      "SimpleName": "ValaniFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nTitles: Fireshaker, The Father of Islands   \nAlignment: Chaotic Good   \nAreas of Concern: Change, Growth, Primal forces   \nDomains: Chaos, Earth, Good, Weather   \nSubdomains: Azata, Growth, Seasons, Storms   \nFavoured Weapon: Club   \nHoly Symbol: Volcano with gold lava   \nSacred Animal: Dinosaur   \nIt is said that trees bend beneath the force of Valani's laugh and his wrathful roar can split the ground around him. Valani's hot temper is well known among the empyreal lords, and his peers respect him for his mastery over the forces of nature. Fireshaker understands that change cannot be forestalled and that growth requires destruction in order for goodness to take root in what was once evil soil. Valani is a massive figure, standing 10 feet tall with the thick arms and legs of a primate and the head of a boar. His wavy dark hair falls free under a crown of spiked grass and purple flowers. The skin left uncovered by ornate armor crafted from tiles of shell and obsidian is dark brown and ruddy, as if the light of a fire were always burning just beneath his flesh. When angered-which is often-his majestic features contort into an expres sion of awful rage. Aside from his wrath, Valani is also known for being a proud and wise father countless times over. Dozens of tribes on serene islands through the multiverse claim their blessings stem from being favored children of Fireshaker. Valani lives in the heart of the Bright-Burning Volcano in Elysium."
+    },
+    {
       "Key": "8168f85829b041f9979f0acd6139ac91",
       "SimpleName": "ValaniFeature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "\nTitles: Fireshaker, The Father of Islands   \nAlignment: Chaotic Good   \nAreas of Concern: Change, Growth, Primal forces   \nDomains: Chaos, Earth, Good, Weather   \nSubdomains: Azata, Growth, Seasons, Storms   \nFavoured Weapon: Club   \nHoly Symbol: Volcano with gold lava   \nSacred Animal: Dinosaur   \nIt is said that trees bend beneath the force of Valani's laugh and his wrathful roar can split the ground around him. Valani's hot temper is well known among the empyreal lords, and his peers respect him for his mastery over the forces of nature. Fireshaker understands that change cannot be forestalled and that growth requires destruction in order for goodness to take root in what was once evil soil. Valani is a massive figure, standing 10 feet tall with the thick arms and legs of a primate and the head of a boar. His wavy dark hair falls free under a crown of spiked grass and purple flowers. The skin left uncovered by ornate armor crafted from tiles of shell and obsidian is dark brown and ruddy, as if the light of a fire were always burning just beneath his flesh. When angered-which is often-his majestic features contort into an expres sion of awful rage. Aside from his wrath, Valani is also known for being a proud and wise father countless times over. Dozens of tribes on serene islands through the multiverse claim their blessings stem from being favored children ofFireshaker. Valani lives in the heart of the Bright-Burning Volcano in Elysium."
-    },
-    {
-      "Key": "0269241f6f7d46dfa35389317c1a9315",
-      "SimpleName": "ValaniFeature.Description",
-      "ProcessTemplates": true,
-      "enGB": "\nTitles: Fireshaker, The Father of Islands   \nAlignment: Chaotic Good   \nAreas of Concern: Change, Growth, Primal forces   \nDomains: Chaos, Earth, Good, Weather   \nSubdomains: Azata, Growth, Seasons, Storms   \nFavoured Weapon: Club   \nHoly Symbol: Volcano with gold lava   \nSacred Animal: Dinosaur   \nIt is said that trees bend beneath the force of Valani's laugh and his wrathful roar can split the ground around him. Valani's hot temper is well known among the empyreal lords, and his peers respect him for his mastery over the forces of nature. Fireshaker understands that change cannot be forestalled and that growth requires destruction in order for goodness to take root in what was once evil soil. Valani is a massive figure, standing 10 feet tall with the thick arms and legs of a primate and the head of a boar. His wavy dark hair falls free under a crown of spiked grass and purple flowers. The skin left uncovered by ornate armor crafted from tiles of shell and obsidian is dark brown and ruddy, as if the light of a fire were always burning just beneath his flesh. When angered-which is often-his majestic features contort into an expres sion of awful rage. Aside from his wrath, Valani is also known for being a proud and wise father countless times over. Dozens of tribes on serene islands through the multiverse claim their blessings stem from being favored children of Fireshaker. Valani lives in the heart of the Bright-Burning Volcano in Elysium."
     },
     {
       "Key": "c699e182666044658c5bb864fa064bad",

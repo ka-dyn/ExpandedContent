@@ -172,6 +172,7 @@
     <Compile Include="Tweaks\Archdevils\Mammon.cs" />
     <Compile Include="Tweaks\Archdevils\Mephistopheles.cs" />
     <Compile Include="Tweaks\Archdevils\Moloch.cs" />
+    <Compile Include="Tweaks\Archetypes\LionShaman.cs" />
     <Compile Include="Tweaks\Archetypes\Castigator.cs" />
     <Compile Include="Tweaks\Archetypes\BearShaman.cs" />
     <Compile Include="Tweaks\Archetypes\UrbanDruid.cs" />
@@ -1586,6 +1587,39 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_SummonBear8.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_SummonLeopard2.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_SummonLeopard3.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_SummonLeopard4.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_SummonLeopard5.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_SummonLeopard6.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_SummonLeopard7.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_SummonSmilodon5.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_SummonSmilodon6.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_SummonSmilodon7.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_SummonSmilodon8.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_SummonSmilodon9.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_SwiftAidAnother.jpg">

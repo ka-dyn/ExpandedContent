@@ -87,7 +87,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var AnimalCompanionFeatureBear = Resources.GetBlueprintReference<BlueprintFeatureReference>("f6f1cdcc404f10c4493dc1e51208fd6f");
             var BearShamanDomainSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("BearShamanDomainSelection", bp => {
                 bp.SetName("Bear Totem Druids Bond");
-                bp.SetDescription("A bear shaman who chooses an animal companion must select a bear. If choosing a domain, the bear shaman must choose from the Animal, Earth, Protection, and Strength domains.");
+                bp.SetDescription("A bear totem druid who chooses an animal companion must select a bear. If choosing a domain, the bear totem druid must choose from the Animal, Earth, Protection, and Strength domains.");
                 bp.HideInCharacterSheetAndLevelUp = false;
                 bp.HideInUI = false;
                 bp.HideNotAvailibleInUI = false;
@@ -104,7 +104,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             });
             var BearShamanBondSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("BearShamanBondSelection", bp => {
                 bp.SetName("Bear Totem Druids Bond");
-                bp.SetDescription("A bear shaman who chooses an animal companion must select a bear. If choosing a domain, the bear shaman must choose from the Animal, Earth, Protection, and Strength domains.");
+                bp.SetDescription("A bear totem druid who chooses an animal companion must select a bear. If choosing a domain, the bear totem druid must choose from the Animal, Earth, Protection, and Strength domains.");
                 bp.HideInCharacterSheetAndLevelUp = false;
                 bp.HideInUI = false;
                 bp.HideNotAvailibleInUI = false;
@@ -341,7 +341,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
             var BearShamanTotemTransformationAbilitySwift = Helpers.CreateBlueprint<BlueprintAbility>("BearShamanTotemTransformationAbilitySwift", bp => {
-                bp.SetName("Bear Totem Transformation");
+                bp.SetName("Bear Totem Transformation - Swift Action");
                 bp.SetDescription("As a swift action a bear totem druid may adopt an aspect of the bear while retaining her normal form. They gain one of the following bonuses: \nMovement (+10 enhancement " +
                     "bonus to speed, +4 racial bonus on Mobility checks)\nSenses (Blind Fight feat, +4 on perception checks)\nToughness (+2 natural armor bonus to AC, Endurance feat)\nNatural Weapons (bite " +
                     "{g|Encyclopedia:Attack}attack{/g} dealing {g|Encyclopedia:Dice}1d6{/g} {g|Encyclopedia:Damage}damage{/g} and two claws dealing {g|Encyclopedia:Dice}1d4{/g} {g|Encyclopedia:Damage}damage{/g} " +
@@ -784,7 +784,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.AddComponent<BuffOnEntityCreated>(c => {
                     c.m_Buff = NatualAllyCreatureVisual;
                 });
-                bp.AddComponent<AddResurrectOnRest>();
+
                 bp.Gender = Gender.Male;
                 bp.Size = Size.Large;
                 bp.Color = GreaslyBearSummon.Color;
@@ -919,7 +919,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.AddComponent<BuffOnEntityCreated>(c => {
                     c.m_Buff = NatualAllyCreatureVisual;
                 });
-                bp.AddComponent<AddResurrectOnRest>();
+
                 bp.Gender = Gender.Male;
                 bp.Size = Size.Medium;
                 bp.Color = GreaslyBearSummon.Color;
@@ -1053,7 +1053,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.AddComponent<BuffOnEntityCreated>(c => {
                     c.m_Buff = NatualAllyCreatureVisual;
                 });
-                bp.AddComponent<AddResurrectOnRest>();
+
                 bp.Gender = Gender.Male;
                 bp.Size = Size.Large;
                 bp.Color = GreaslyBearSummon.Color;
@@ -1188,7 +1188,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.AddComponent<BuffOnEntityCreated>(c => {
                     c.m_Buff = NatualAllyCreatureVisual;
                 });
-                bp.AddComponent<AddResurrectOnRest>();
+
                 bp.Gender = Gender.Male;
                 bp.Size = Size.Large;
                 bp.Color = GreaslyBearSummon.Color;
@@ -1324,7 +1324,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.AddComponent<BuffOnEntityCreated>(c => {
                     c.m_Buff = NatualAllyCreatureVisual;
                 });
-                bp.AddComponent<AddResurrectOnRest>();
+
                 bp.Gender = Gender.Male;
                 bp.Size = Size.Large;
                 bp.Color = GreaslyBearSummon.Color;

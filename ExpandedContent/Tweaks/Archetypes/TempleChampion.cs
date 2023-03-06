@@ -1201,7 +1201,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var SunDomainBaseFeatureConfig = Resources.GetBlueprint<BlueprintFeature>("3d8e38c9ed54931469281ab0cec506e9").GetComponent<AddFeatureOnClassLevel>();
             SunDomainBaseFeatureConfig.m_AdditionalClasses = SunDomainBaseFeatureConfig.m_AdditionalClasses.AppendToArray(PaladinClass.ToReference<BlueprintCharacterClassReference>());
             SunDomainBaseFeatureConfig.m_Archetypes = SunDomainBaseFeatureConfig.m_Archetypes.AppendToArray(TempleChampionArchetype.ToReference<BlueprintArchetypeReference>());
-            ///new
+            ///new - added for fix
             var SunDomainBaseFeatureDamageConfig = Resources.GetBlueprint<BlueprintFeature>("3d8e38c9ed54931469281ab0cec506e9").GetComponent<IncreaseSpellDamageByClassLevel>();
             SunDomainBaseFeatureDamageConfig.m_AdditionalClasses = SunDomainBaseFeatureDamageConfig.m_AdditionalClasses.AppendToArray(PaladinClass.ToReference<BlueprintCharacterClassReference>());
             SunDomainBaseFeatureDamageConfig.m_Archetypes = SunDomainBaseFeatureDamageConfig.m_Archetypes.AppendToArray(TempleChampionArchetype.ToReference<BlueprintArchetypeReference>());

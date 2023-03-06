@@ -3,6 +3,7 @@ using ExpandedContent.Utilities;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Prerequisites;
+using Kingmaker.Designers.Mechanics.Buffs;
 using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.UnitLogic.Abilities.Blueprints;
@@ -163,8 +164,84 @@ namespace ExpandedContent.Tweaks.Domains {
                 };
                 bp.GiveFeaturesForPreviousLevels = true;
             });
+            //Glory
+            var GloryDomainBaseFeature = Resources.GetBlueprint<BlueprintFeature>("17e891b3964492f43aae44f994b5d454");
+
+            var GloryDomainBaseAbility = Resources.GetBlueprint<BlueprintAbility>("d018241b5a761414897ad6dc4df2db9f");
+            var GloryDomainBaseResource = Resources.GetBlueprintReference<BlueprintAbilityResourceReference>("a653d96fbcbce64499f425aada462f69");
+            var GloryDomainBaseFeatureDruid = Helpers.CreateBlueprint<BlueprintFeature>("GloryDomainBaseFeatureDruid", bp => {
+                bp.SetName("Glory Domain");
+                bp.SetDescription("\nYou are infused with the glory of the divine, and are a true foe of the undead. In addition, when you channel positive energy to harm undead creatures, the " +
+                    "{g|Encyclopedia:Saving_Throw}save{/g} {g|Encyclopedia:DC}DC{/g} to halve the {g|Encyclopedia:Damage}damage{/g} is increased by 2.\n{g|Encyclopedia:TouchAttack}Touch{/g} of " +
+                    "Glory: You can cause your hand to shimmer with divine radiance, allowing you to touch a creature as a {g|Encyclopedia:Standard_Actions}standard action{/g} and give it a " +
+                    "{g|Encyclopedia:Bonus}bonus{/g} equal to your level in the class that gave you access to this domain on a single {g|Encyclopedia:Charisma}Charisma{/g}-based " +
+                    "{g|Encyclopedia:Skills}skill check{/g} or Charisma {g|Encyclopedia:Ability_Scores}ability check{/g}. This ability lasts for 1 hour or until the creature touched applies " +
+                    "the bonus to a {g|Encyclopedia:Dice}roll{/g}. You can use this ability to grant the bonus a number of times per day equal to 3 + your {g|Encyclopedia:Wisdom}Wisdom{/g} " +
+                    "modifier.\nAura of Heroism: At 8th level, you can emit a 30-foot aura of heroism for a number of {g|Encyclopedia:Combat_Round}rounds{/g} per day equal to your level in " +
+                    "the class that gave you access to this domain. Using this ability is a {g|Encyclopedia:Swift_Action}swift action{/g}. Allies in the area are treated as if they were under " +
+                    "the effects of heroism {g|Encyclopedia:Spell}spell{/g}.");
+                bp.m_Icon = GloryDomainBaseFeature.m_Icon;
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { GloryDomainBaseAbility.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = GloryDomainBaseResource;
+                    c.RestoreAmount = true;
+                });
+                bp.AddComponent<ReplaceAbilitiesStat>(c => {
+                    c.m_Ability = new BlueprintAbilityReference[] { GloryDomainBaseAbility.ToReference<BlueprintAbilityReference>() };
+                    c.Stat = StatType.Wisdom;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+
+            var GloryDomainGreaterFeature = Resources.GetBlueprintReference<BlueprintFeatureReference>("bf41d1d2cf72e8545b51857f20fa58e7");
+            var GloryDomainSpellList = Resources.GetBlueprintReference<BlueprintSpellListReference>("7b3506924ed8354419b7829736ab2c7e");
+            var GloryDomainSpellListFeatureDruid = Helpers.CreateBlueprint<BlueprintFeature>("GloryDomainSpellListFeatureDruid", bp => {
+                bp.AddComponent<AddSpecialSpellList>(c => {
+                    c.m_CharacterClass = DruidClass;
+                    c.m_SpellList = GloryDomainSpellList;
+                });
+                bp.HideInUI = true;
+                bp.IsClassFeature = true;
+            });
+            var GloryDomainProgressionDruid = Helpers.CreateBlueprint<BlueprintProgression>("GloryDomainProgressionDruid", bp => {
+                bp.SetName("Glory Domain");
+                bp.SetDescription("\nYou are infused with the glory of the divine, and are a true foe of the undead. In addition, when you channel positive energy to harm undead creatures, the " +
+                    "{g|Encyclopedia:Saving_Throw}save{/g} {g|Encyclopedia:DC}DC{/g} to halve the {g|Encyclopedia:Damage}damage{/g} is increased by 2.\n{g|Encyclopedia:TouchAttack}Touch{/g} of " +
+                    "Glory: You can cause your hand to shimmer with divine radiance, allowing you to touch a creature as a {g|Encyclopedia:Standard_Actions}standard action{/g} and give it a " +
+                    "{g|Encyclopedia:Bonus}bonus{/g} equal to your level in the class that gave you access to this domain on a single {g|Encyclopedia:Charisma}Charisma{/g}-based " +
+                    "{g|Encyclopedia:Skills}skill check{/g} or Charisma {g|Encyclopedia:Ability_Scores}ability check{/g}. This ability lasts for 1 hour or until the creature touched applies " +
+                    "the bonus to a {g|Encyclopedia:Dice}roll{/g}. You can use this ability to grant the bonus a number of times per day equal to 3 + your {g|Encyclopedia:Wisdom}Wisdom{/g} " +
+                    "modifier.\nAura of Heroism: At 8th level, you can emit a 30-foot aura of heroism for a number of {g|Encyclopedia:Combat_Round}rounds{/g} per day equal to your level in " +
+                    "the class that gave you access to this domain. Using this ability is a {g|Encyclopedia:Swift_Action}swift action{/g}. Allies in the area are treated as if they were under " +
+                    "the effects of heroism {g|Encyclopedia:Spell}spell{/g}.\nDomain Spells: shield of faith, bless weapon, searing light, divine power, burst of glory, inspiring recovery, " +
+                    "holy sword, holy aura, overwhelming presence.");
+                bp.AddComponent<PrerequisiteClassLevel>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.m_CharacterClass = DruidClass;
+                    c.Level = 1;
+                });
+                bp.Groups = new FeatureGroup[] { FeatureGroup.DruidDomain };
+                bp.IsClassFeature = true;
+                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = DruidClass,
+                        AdditionalLevel = 0
+                    }
+                };
+                bp.LevelEntries = new LevelEntry[] {
+                    Helpers.LevelEntry(1, GloryDomainBaseFeatureDruid, GloryDomainSpellListFeatureDruid),
+                    Helpers.LevelEntry(8, GloryDomainGreaterFeature)
+                };
+                bp.UIGroups = new UIGroup[] {
+                    Helpers.CreateUIGroup(GloryDomainBaseFeatureDruid, GloryDomainGreaterFeature)
+                };
+                bp.GiveFeaturesForPreviousLevels = true;
+            });
             //Knowledge
-            var KnowledgeDomainBaseFeature= Resources.GetBlueprint<BlueprintFeature>("5335f015063776d429a0b5eab97eb060");
+            var KnowledgeDomainBaseFeature = Resources.GetBlueprint<BlueprintFeature>("5335f015063776d429a0b5eab97eb060");
 
             var KnowledgeDomainBaseAbility = Resources.GetBlueprint<BlueprintAbility>("02a79a205bce6f5419dcdf26b64f13c6");
             var KnowledgeDomainBaseResource = Resources.GetBlueprintReference<BlueprintAbilityResourceReference>("f88f616a4b6bd5f419025115c52cb329");
@@ -605,7 +682,81 @@ namespace ExpandedContent.Tweaks.Domains {
             });
 
 
+            //Sun
+            var SunDomainBaseFeature = Resources.GetBlueprint<BlueprintFeature>("3d8e38c9ed54931469281ab0cec506e9");
+            var ChannelPositiveHarm = Resources.GetBlueprintReference<BlueprintAbilityReference>("279447a6bf2d3544d93a0a39c3b8e91d");
+            var ChannelEnergyHospitalerHarm = Resources.GetBlueprintReference<BlueprintAbilityReference>("cc17243b2185f814aa909ac6b6599eaa");
+            var ChannelEnergyPaladinrHarm = Resources.GetBlueprintReference<BlueprintAbilityReference>("4937473d1cfd7774a979b625fb833b47");
+            var ChannelEnergyEmpyrealHarm = Resources.GetBlueprintReference<BlueprintAbilityReference>("e1536ee240c5d4141bf9f9485a665128");
 
+            var SunDomainBaseFeatureDruid = Helpers.CreateBlueprint<BlueprintFeature>("SunDomainBaseFeatureDruid", bp => {
+                bp.SetName("Sun Domain");
+                bp.SetDescription("You see truth in the pure and burning light of the sun, and can call upon its blessing or wrath to work great deeds.\nSun's Blessing: Whenever you " +
+                    "channel positive energy to harm undead creatures, add your level in the class that gave you access to this domain to the {g|Encyclopedia:Damage}damage{/g} dealt. " +
+                    "Undead do not add their channel resistance to their {g|Encyclopedia:Saving_Throw}saves{/g} when you channel positive energy.\nNimbus of Light: At 8th level, you can " +
+                    "emit a 30-foot nimbus of light for a number of {g|Encyclopedia:Combat_Round}rounds{/g} per day equal to your level in the class that gave you access to this domain. " +
+                    "Any hostile creature within this radius must succeed at a Fortitude save to resist the effects of this aura. If the creature fails, it is blinded until it leaves " +
+                    "the area of the {g|Encyclopedia:Spell}spell{/g}. A creature that has resisted the effect cannot be affected again by this particular aura. In addition, undead " +
+                    "within this radius take an amount of damage equal to your level in the class that gave you access to this domain each round that they remain inside the nimbus. " +
+                    "These rounds do not need to be consecutive.");
+                bp.m_Icon = SunDomainBaseFeature.m_Icon;
+                bp.AddComponent<IncreaseSpellDamageByClassLevel>(c => {
+                    c.m_Spells = new BlueprintAbilityReference[] { 
+                        ChannelPositiveHarm,
+                        ChannelEnergyHospitalerHarm,
+                        ChannelEnergyPaladinrHarm,
+                        ChannelEnergyEmpyrealHarm
+                    };
+                    c.m_CharacterClass = DruidClass;
+                    c.m_Archetypes = new BlueprintArchetypeReference[] { };
+                });                
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+
+            var SunDomainGreaterFeature = Resources.GetBlueprintReference<BlueprintFeatureReference>("3e301c9d0e735b649955139ee0f5f165");
+            var SunDomainSpellList = Resources.GetBlueprintReference<BlueprintSpellListReference>("600ffed45d0c3ec43a75dc76bb9377b6");
+            var SunDomainSpellListFeatureDruid = Helpers.CreateBlueprint<BlueprintFeature>("SunDomainSpellListFeatureDruid", bp => {
+                bp.AddComponent<AddSpecialSpellList>(c => {
+                    c.m_CharacterClass = DruidClass;
+                    c.m_SpellList = SunDomainSpellList;
+                });
+                bp.HideInUI = true;
+                bp.IsClassFeature = true;
+            });
+            var SunDomainProgressionDruid = Helpers.CreateBlueprint<BlueprintProgression>("SunDomainProgressionDruid", bp => {
+                bp.SetName("Sun Domain");
+                bp.SetDescription("You see truth in the pure and burning light of the sun, and can call upon its blessing or wrath to work great deeds.\nSun's Blessing: Whenever you " +
+                    "channel positive energy to harm undead creatures, add your level in the class that gave you access to this domain to the {g|Encyclopedia:Damage}damage{/g} dealt. " +
+                    "Undead do not add their channel resistance to their {g|Encyclopedia:Saving_Throw}saves{/g} when you channel positive energy.\nNimbus of Light: At 8th level, you can " +
+                    "emit a 30-foot nimbus of light for a number of {g|Encyclopedia:Combat_Round}rounds{/g} per day equal to your level in the class that gave you access to this domain. " +
+                    "Any hostile creature within this radius must succeed at a Fortitude save to resist the effects of this aura. If the creature fails, it is blinded until it leaves " +
+                    "the area of the {g|Encyclopedia:Spell}spell{/g}. A creature that has resisted the effect cannot be affected again by this particular aura. In addition, undead within " +
+                    "this radius take an amount of damage equal to your level in the class that gave you access to this domain each round that they remain inside the nimbus. These rounds " +
+                    "do not need to be consecutive.\nDomain Spells: faerie fire, see invisibility, searing light, shield of dawn, flame strike, chains of light, sunbeam, sunburst, " +
+                    "elemental swarm (fire).");
+                bp.AddComponent<PrerequisiteClassLevel>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.m_CharacterClass = DruidClass;
+                    c.Level = 1;
+                });
+                bp.Groups = new FeatureGroup[] { FeatureGroup.DruidDomain };
+                bp.IsClassFeature = true;
+                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = DruidClass,
+                        AdditionalLevel = 0
+                    }
+                };
+                bp.LevelEntries = new LevelEntry[] {
+                    Helpers.LevelEntry(1, SunDomainBaseFeatureDruid, SunDomainSpellListFeatureDruid),
+                    Helpers.LevelEntry(8, SunDomainGreaterFeature)
+                };
+                bp.UIGroups = new UIGroup[] {
+                    Helpers.CreateUIGroup(SunDomainBaseFeatureDruid, SunDomainGreaterFeature)
+                };
+                bp.GiveFeaturesForPreviousLevels = true;
+            });
 
 
 

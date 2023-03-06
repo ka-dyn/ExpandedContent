@@ -154,6 +154,11 @@
         "Enabled": true,
         "Homebrew": false,
         "Description": "A druid archeype channeling the power of the bear sprits, renamed to bear totem druid to avoid confusion."
+      },
+      "Lion Shaman": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "A druid archeype channeling the power of the lion sprits, renamed to lion totem druid to avoid confusion."
       }
     },
     "IsExpanded": false
