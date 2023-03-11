@@ -337,10 +337,25 @@ namespace ExpandedContent.Tweaks.AnimalCompanions {
 
             var AnimalCompanionSelectionBase = Resources.GetBlueprint<BlueprintFeatureSelection>("90406c575576aee40a34917a1b429254");
             var AnimalCompanionSelectionDruid = Resources.GetBlueprint<BlueprintFeatureSelection>("571f8434d98560c43935e132df65fe76");
+            var AnimalCompanionSelectionDomain = Resources.GetBlueprint<BlueprintFeatureSelection>("2ecd6c64683b59944a7fe544033bb533");
+            var AnimalCompanionSelectionHunter = Resources.GetBlueprint<BlueprintFeatureSelection>("715ac15eb8bd5e342bc8a0a3c9e3e38f");
+            var AnimalCompanionSelectionMadDog = Resources.GetBlueprint<BlueprintFeatureSelection>("738b59d0b58187f4d846b0caaf0f80d7");
+            var AnimalCompanionSelectionRanger = Resources.GetBlueprint<BlueprintFeatureSelection>("ee63330662126374e8785cc901941ac7");
+            var AnimalCompanionSelectionSacredHuntsmaster = Resources.GetBlueprint<BlueprintFeatureSelection>("2995b36659b9ad3408fd26f137ee2c67");
+            var AnimalCompanionSelectionSylvanSorcerer = Resources.GetBlueprint<BlueprintFeatureSelection>("a540d7dfe1e2a174a94198aba037274c");
+            var AnimalCompanionSelectionUrbanHunter = Resources.GetBlueprint<BlueprintFeatureSelection>("257375cd139800e459d69ccfe4ca309c");
+            var AnimalCompanionSelectionWildlandShaman = Resources.GetBlueprint<BlueprintFeatureSelection>("164c875d6b27483faba479c7f5261915");
 
             AnimalCompanionSelectionBase.m_AllFeatures = AnimalCompanionSelectionBase.m_AllFeatures.AppendToArray(CompanionWolverineFeature.ToReference<BlueprintFeatureReference>());
+            AnimalCompanionSelectionDomain.m_AllFeatures = AnimalCompanionSelectionDomain.m_AllFeatures.AppendToArray(CompanionWolverineFeature.ToReference<BlueprintFeatureReference>());
             AnimalCompanionSelectionDruid.m_AllFeatures = AnimalCompanionSelectionDruid.m_AllFeatures.AppendToArray(CompanionWolverineFeature.ToReference<BlueprintFeatureReference>());
-
+            AnimalCompanionSelectionHunter.m_AllFeatures = AnimalCompanionSelectionHunter.m_AllFeatures.AppendToArray(CompanionWolverineFeature.ToReference<BlueprintFeatureReference>());
+            AnimalCompanionSelectionMadDog.m_AllFeatures = AnimalCompanionSelectionMadDog.m_AllFeatures.AppendToArray(CompanionWolverineFeature.ToReference<BlueprintFeatureReference>());
+            AnimalCompanionSelectionRanger.m_AllFeatures = AnimalCompanionSelectionRanger.m_AllFeatures.AppendToArray(CompanionWolverineFeature.ToReference<BlueprintFeatureReference>());
+            AnimalCompanionSelectionSacredHuntsmaster.m_AllFeatures = AnimalCompanionSelectionSacredHuntsmaster.m_AllFeatures.AppendToArray(CompanionWolverineFeature.ToReference<BlueprintFeatureReference>());
+            AnimalCompanionSelectionSylvanSorcerer.m_AllFeatures = AnimalCompanionSelectionSylvanSorcerer.m_AllFeatures.AppendToArray(CompanionWolverineFeature.ToReference<BlueprintFeatureReference>());
+            AnimalCompanionSelectionUrbanHunter.m_AllFeatures = AnimalCompanionSelectionUrbanHunter.m_AllFeatures.AppendToArray(CompanionWolverineFeature.ToReference<BlueprintFeatureReference>());
+            AnimalCompanionSelectionWildlandShaman.m_AllFeatures = AnimalCompanionSelectionWildlandShaman.m_AllFeatures.AppendToArray(CompanionWolverineFeature.ToReference<BlueprintFeatureReference>());
 
         }
     }
