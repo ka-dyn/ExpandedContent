@@ -7,72 +7,128 @@ While this mod is not dependant on https://github.com/Vek17/TabletopTweaks-Base 
 
 New Archetypes
 
--Living Scripture, Inquisitor
+- Living Scripture, Inquisitor
 
--Mantis Zealot, Warpriest
+- Mantis Zealot, Warpriest
 
--Mooncaller, Draconic Druid, Storm Druid, Urban Druid, Bear Shaman, Lion Shaman, Druid
+- Mooncaller, Draconic Druid, Storm Druid, Urban Druid, Bear Shaman, Lion Shaman, Druid
 
--Temple Champion, Silver Champion, Paladin
+- Temple Champion, Silver Champion, Paladin
 
--Drake Warden, Ranger
+- Drake Warden, Ranger
 
--Clutch Thief, Rogue
+- Clutch Thief, Rogue
 
--Ocean's Echo, Oracle
+- Ocean's Echo, Oracle
 
--Draconic Shaman, Shaman
+- Draconic Shaman, Shaman
 
--Draconic Scholar, Arcanist
+- Draconic Scholar, Arcanist
 
 New Classes
 
--Oathbreaker - Based off the Vindictive Bastard fallen Paladin class. 
-  -With Castigator archetype
+- Oathbreaker - Based off the Vindictive Bastard fallen Paladin class. 
+  - With Castigator archetype
   
--DreadKnight - Based off the Antipaladin alternative class.
-  -With Conqueror and Claw of the False Wyrm archetypes
+- DreadKnight - Based off the Antipaladin alternative class.
+  - With Conqueror and Claw of the False Wyrm archetypes
 
 New Features
 
--Drake Companions - Limited to certain archetypes. Reworked from tabletop to work in a CRPG setting.
+- Drake Companions - Limited to certain archetypes. Reworked from tabletop to work in a CRPG setting.
 
--Aid Another
+- Aid Another
+
+New Animal Companions
+
+- Wolverine
 
 New Feats
 
--Swift Aid
+- Swift Aid
 
 New Mythic Abilities
 
--Mythic Drake - Grants new powers to your drake depending on breed of drake and drake powers selected during leveling, ranging from unlocking their draconic
+- Mythic Drake - Grants new powers to your drake depending on breed of drake and drake powers selected during leveling, ranging from unlocking their draconic
 bloodline to mythic breath attacks.
 
--Impossible Subdomain - Impossible Domain but for added subdomains.
+- Impossible Subdomain - Impossible Domain but for added subdomains.
 
 New Deities
 
 Most of the deities from the tabletop game are included, split into categories based on group and hooked up with the correct Domains and features
 
--All deities of Ancient Osirion, All deities of Tian Xia, The Eldest, The Empyreal Lords, Draconic Deities and many more.
+- All deities of Ancient Osirion, All deities of Tian Xia, The Eldest, The Empyreal Lords, Draconic Deities and many more.
 
--Treerazer
+- Treerazer
 
 New Oracle Mysteries / Curses
 
--Mysteries: Dragon, Heavens, Succor
+- Mysteries: 
+  - Dragon
+  - Heavens
+  - Succor
 
--Curses: Vampirism
+- Curses: 
+  - Vampirism
 
 New Domains / Subdomains
 
--Domains: Scalykind
+- Domains: 
+  - Scalykind
 
--Subdomains: Agathion, Archon, Blood, Caves, Curse, Demon, Dragon, Ferocity, Ice, Lust, Psychopomp, Rage, Resolve, Restoration, Revelation, Revolution, Rivers, Stars, Storm, Thievery, Undead, Whimsy, Wind
+- Subdomains: 
+  - Agathion
+  - Archon
+  - Blood
+  - Caves
+  - Curse
+  - Demon
+  - Dragon
+  - Ferocity
+  - Ice
+  - Lust
+  - Psychopomp
+  - Rage
+  - Resolve
+  - Restoration
+  - Revelation
+  - Revolution
+  - Rivers
+  - Stars
+  - Storm
+  - Thievery
+  - Undead
+  - Whimsy
+  - Wind
 
 New Spells
 
--Hydraulic push, Slipstream, Scourge of the Horsemen, Rigor mortis, Reviving Finale, Deadly Finale, Purging Finale, Stunning Finale, Hollow Blades, Goodberry, Steam Ray Fusillade, Inflict Pain, Inflict Pain Mass, Gloomblind Bolts, Fury of the Sun, Invoke Deity, Wall of Fire, Zephyr's Fleetness, Hypnotic Pattern, Clay Skin, Entropic Shield, Shield of Fortification, Greater Shield of Fortification, Dance of a Hundred Cuts, Dance of a Thousand Cuts
+- Hydraulic push
+- Slipstream
+- Scourge of the Horsemen
+- Rigor mortis
+- Reviving Finale
+- Deadly Finale 
+- Purging Finale
+- Stunning Finale
+- Hollow Blades
+- Goodberry
+- Steam Ray Fusillade
+- Inflict Pain
+- Inflict Pain Mass
+- Gloomblind Bolts
+- Fury of the Sun
+- Invoke Deity
+- Wall of Fire
+- Zephyr's Fleetness
+- Hypnotic Pattern
+- Clay Skin
+- Entropic Shield
+- Shield of Fortification
+- Greater Shield of Fortification
+- Dance of a Hundred Cuts
+- Dance of a Thousand Cuts
 
 I'd like to give a huge thank you to Vek17, as much of the coding in this repository is his; I simply repurposed it or learned from it. I wouldn't be able to release
 anything without it. Check out his mod, TableTopTweaks if you haven't already!
