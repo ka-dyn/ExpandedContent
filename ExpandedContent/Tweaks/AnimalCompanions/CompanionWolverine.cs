@@ -308,10 +308,10 @@ namespace ExpandedContent.Tweaks.AnimalCompanions {
 
             var CompanionWolverineFeature = Helpers.CreateBlueprint<BlueprintFeature>("CompanionWolverineFeature", bp => {
                 bp.SetName("Animal Companion - Wolverine");
-                bp.SetDescription("{g|Encyclopedia:Size}Size{/g}: Medium" +
+                bp.SetDescription("{g|Encyclopedia:Size}Size{/g}: Small" +
                     "\n{g|Encyclopedia:Speed}Speed{/g}: 30 ft." +
                     "\n{g|Encyclopedia:Armor_Class}AC{/g}: +6 natural armor" +
-                    "\n{g|Encyclopedia:Attack}Attack{/g}: bite ({g|Encyclopedia:Dice}1d4{/g})" +
+                    "\n{g|Encyclopedia:Attack}Attack{/g}: bite ({g|Encyclopedia:Dice}1d4{/g}), 2 claws ({g|Encyclopedia:Dice}1d3{/g})" +
                     "\n{g|Encyclopedia:Ability_Scores}Ability scores{/g}: {g|Encyclopedia:Strength}Str{/g} 10, {g|Encyclopedia:Dexterity}Dex{/g} 17, {g|Encyclopedia:Constitution}Con{/g} 15, {g|Encyclopedia:Intelligence}Int{/g} 2, {g|Encyclopedia:Wisdom}Wis{/g} 12, {g|Encyclopedia:Charisma}Cha{/g} 10" +
                     "\nSpecial Attacks: rage (as a barbarian for 6 rounds per day)" +
                     "\nAt 4th level size becomes Medium, Str +4, Dex -2, Con +4, +2 natural armor." +
