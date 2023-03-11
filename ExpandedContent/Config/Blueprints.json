@@ -1457,7 +1457,19 @@
     "SummonSmilodonYoungSingle": "8ab71b38-fe8b-43ae-afb6-8e4ab4913761",
     "SunDomainBaseFeatureDruid": "65f73620-4ea4-45e4-9082-1a69a7a2e586",
     "SunDomainProgressionDruid": "650b8ee2-80e2-400c-ad1d-6b4cd653af64",
-    "SunDomainSpellListFeatureDruid": "a826f95a-76e9-4d85-914c-bf06e523518e"
+    "SunDomainSpellListFeatureDruid": "a826f95a-76e9-4d85-914c-bf06e523518e",
+
+    "UnmountableFeature": "8c00b68c-508c-46b8-b2d0-891337b4d074",
+    "CompanionNotUpgradedWolverine": "ced18a87-d06a-443c-a9ce-6263c9627dbe",
+    "CompanionUpdateWolverineFeature": "cdb4cfa7-4dd1-45a1-b19e-5883779f7839",
+    "CompanionUpgradeWolverine": "6e57e335-bb9d-4527-999d-686a2f10e4a0",
+    "CompanionWolverineFeature": "29601153-4f6e-4815-b805-b6c2d2f65813",
+    "CompanionWolverinePortrait": "c478daee-ab0c-4eea-9d8d-747f2a7e34b1",
+    "CompanionWolverineRageAbility": "52f5c4cd-913b-41f3-a080-068572a75438",
+    "CompanionWolverineRageFeature": "67aefc8c-9a02-4e9c-9243-d1fe28551136",
+    "CompanionWolverineRagResource": "92f73ce7-564e-41fa-95c7-4b91e6a54a4c",
+    "CompanionWolverineUnit": "7d63a0a7-cc4e-4e60-9bdf-8e3c5d57971f",
+    "ExtraRageWolverineFeat": "0b199783-b64e-46fd-8127-39448ed392e3"
 
 
 
