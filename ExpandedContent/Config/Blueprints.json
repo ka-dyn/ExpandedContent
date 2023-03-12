@@ -1484,7 +1484,21 @@
     "FurDomainProgressionSecondary": "18aedda3-1164-40ab-8d2c-16aadbb403a6",
     "FurDomainSpellList": "80929ef6-f9c9-4543-b40e-e9949ab5ffe0",
     "FurDomainSpellListFeature": "5ca975fa-194e-4b70-baa5-4b5ad712ac4c",
-    "FurDomainSpellListFeatureDruid": "578932ae-f1f6-44ca-9fa5-9cae076caab7"
+    "FurDomainSpellListFeatureDruid": "578932ae-f1f6-44ca-9fa5-9cae076caab7",
+    "WildShapeDragonShapeBlackBuff": "52d22c0a-14a9-4394-920f-c0c3e3da34ec",
+    "WildShapeDragonShapeBlackBuff2": "c504366b-fa95-4076-9101-fd5569ffc6fe",
+    "WildShapeDragonShapeBlueBuff": "42e90625-0b31-4438-8539-2bb975ac3db4",
+    "WildShapeDragonShapeBlueBuff2": "4468530e-b83d-4bce-8df4-bd3f951d93fc",
+    "WildShapeDragonShapeBrassBuff": "3101a092-8a9f-415b-87a0-aabe35e942b1",
+    "WildShapeDragonShapeBrassBuff2": "5e00fc4b-dde5-47b7-95b5-8fcc746ec0a2",
+    "WildShapeDragonShapeGreenBuff": "08e94636-1ddc-4468-8205-799745471347",
+    "WildShapeDragonShapeGreenBuff2": "57190398-297b-442a-8fe0-34631ef57f8c",
+    "WildShapeDragonShapeRedBuff": "6adf810f-ceea-4fb2-a9d5-dafc64747c6a",
+    "WildShapeDragonShapeRedBuff2": "9a569d6d-cd7e-4457-9288-a30ae943f29d",
+    "WildShapeDragonShapeSilverBuff": "7b1bdf20-605e-44b2-96d0-3aa9c71970dd",
+    "WildShapeDragonShapeSilverBuff2": "283d26ac-0e7b-4120-8e80-4206ffce1cbe",
+    "WildShapeDragonShapeWhiteBuff": "fdc5c1f5-01fa-4a0e-ab9f-99cda8fbcaec",
+    "WildShapeDragonShapeWhiteBuff2": "a40e8880-a7c7-418c-8a0f-1afd763e90dc"
 
 
 

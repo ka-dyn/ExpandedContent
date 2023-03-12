@@ -38,6 +38,7 @@ using Kingmaker.UnitLogic.Mechanics.Actions;
 using Kingmaker.UI.GenericSlot;
 using Kingmaker.Blueprints.Items.Ecnchantments;
 using Kingmaker.UnitLogic.Abilities.Components.TargetCheckers;
+using Kingmaker.UnitLogic.Buffs;
 
 namespace ExpandedContent.Tweaks.Archetypes {
     internal class DraconicDruid {
@@ -63,6 +64,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var WildShapeIVShamblingMoundFeature = Resources.GetBlueprint<BlueprintFeature>("0f31b23c2ab39354bbde4e33e8151495");
             var WildShapeElementalHugeFeature = Resources.GetBlueprint<BlueprintFeature>("fe58dd496a36e274b86958f4677071b2");
             var WildShapeElementalAirSmallAbility = Resources.GetBlueprint<BlueprintAbility>("2f38f491888c89140969a1dc7af8c66e");
+            var EnergizedWildShapeDamageFeature = Resources.GetBlueprint<BlueprintFeature>("d808863c4bd44fd8bd9cf5892460705d");
 
 
             var DragonType = Resources.GetBlueprint<BlueprintFeature>("455ac88e22f55804ab87c2467deff1d6");
@@ -101,12 +103,96 @@ namespace ExpandedContent.Tweaks.Archetypes {
             });
             //Dragon Shape
             var FormOfTheDragonGreenBuff = Resources.GetBlueprint<BlueprintBuff>("02611a12f38bed340920d1d427865917");
+            var WildShapeDragonShapeGreenBuff = Helpers.CreateBuff("WildShapeDragonShapeGreenBuff", bp => {
+                bp.SetName("Dragon Shape - Green Dragon");
+                bp.m_Description = FormOfTheDragonGreenBuff.m_Description;
+                bp.Components = FormOfTheDragonGreenBuff.Components;
+                bp.m_Icon = FormOfTheDragonGreenBuff.Icon;
+                bp.IsClassFeature = true;
+                bp.m_Flags = 0;
+                bp.Stacking = StackingType.Replace;
+                bp.FxOnStart = FormOfTheDragonGreenBuff.FxOnStart;
+            });
+            var WildShapeDragonShapeGreenBuffPolymorph = Resources.GetModBlueprint<BlueprintBuff>("WildShapeDragonShapeGreenBuff").GetComponent<Polymorph>();
+            WildShapeDragonShapeGreenBuffPolymorph.m_Facts = WildShapeDragonShapeGreenBuffPolymorph.m_Facts.AppendToArray(EnergizedWildShapeDamageFeature.ToReference<BlueprintUnitFactReference>());
             var FormOfTheDragonSilverBuff = Resources.GetBlueprint<BlueprintBuff>("feb2ab7613e563e45bcf9f7ffe4e05c6");
+            var WildShapeDragonShapeSilverBuff = Helpers.CreateBuff("WildShapeDragonShapeSilverBuff", bp => {
+                bp.SetName("Dragon Shape - Silver Dragon");
+                bp.m_Description = FormOfTheDragonSilverBuff.m_Description;
+                bp.Components = FormOfTheDragonSilverBuff.Components;
+                bp.m_Icon = FormOfTheDragonSilverBuff.Icon;
+                bp.IsClassFeature = true;
+                bp.m_Flags = 0;
+                bp.Stacking = StackingType.Replace;
+                bp.FxOnStart = FormOfTheDragonSilverBuff.FxOnStart;
+            });
+            var WildShapeDragonShapeSilverBuffPolymorph = Resources.GetModBlueprint<BlueprintBuff>("WildShapeDragonShapeSilverBuff").GetComponent<Polymorph>();
+            WildShapeDragonShapeSilverBuffPolymorph.m_Facts = WildShapeDragonShapeSilverBuffPolymorph.m_Facts.AppendToArray(EnergizedWildShapeDamageFeature.ToReference<BlueprintUnitFactReference>());
             var FormOfTheDragonBlackBuff = Resources.GetBlueprint<BlueprintBuff>("268fafac0a5b78c42a58bd9c1ae78bcf");
+            var WildShapeDragonShapeBlackBuff = Helpers.CreateBuff("WildShapeDragonShapeBlackBuff", bp => {
+                bp.SetName("Dragon Shape - Black Dragon");
+                bp.m_Description = FormOfTheDragonBlackBuff.m_Description;
+                bp.Components = FormOfTheDragonBlackBuff.Components;
+                bp.m_Icon = FormOfTheDragonBlackBuff.Icon;
+                bp.IsClassFeature = true;
+                bp.m_Flags = 0;
+                bp.Stacking = StackingType.Replace;
+                bp.FxOnStart = FormOfTheDragonBlackBuff.FxOnStart;
+            });
+            var WildShapeDragonShapeBlackBuffPolymorph = Resources.GetModBlueprint<BlueprintBuff>("WildShapeDragonShapeBlackBuff").GetComponent<Polymorph>();
+            WildShapeDragonShapeBlackBuffPolymorph.m_Facts = WildShapeDragonShapeBlackBuffPolymorph.m_Facts.AppendToArray(EnergizedWildShapeDamageFeature.ToReference<BlueprintUnitFactReference>());
             var FormOfTheDragonBlueBuff = Resources.GetBlueprint<BlueprintBuff>("b117bc8b41735924dba3fb23318f39ff");
+            var WildShapeDragonShapeBlueBuff = Helpers.CreateBuff("WildShapeDragonShapeBlueBuff", bp => {
+                bp.SetName("Dragon Shape - Blue Dragon");
+                bp.m_Description = FormOfTheDragonBlueBuff.m_Description;
+                bp.Components = FormOfTheDragonBlueBuff.Components;
+                bp.m_Icon = FormOfTheDragonBlueBuff.Icon;
+                bp.IsClassFeature = true;
+                bp.m_Flags = 0;
+                bp.Stacking = StackingType.Replace;
+                bp.FxOnStart = FormOfTheDragonBlueBuff.FxOnStart;
+            });
+            var WildShapeDragonShapeBlueBuffPolymorph = Resources.GetModBlueprint<BlueprintBuff>("WildShapeDragonShapeBlueBuff").GetComponent<Polymorph>();
+            WildShapeDragonShapeBlueBuffPolymorph.m_Facts = WildShapeDragonShapeBlueBuffPolymorph.m_Facts.AppendToArray(EnergizedWildShapeDamageFeature.ToReference<BlueprintUnitFactReference>());
             var FormOfTheDragonBrassBuff = Resources.GetBlueprint<BlueprintBuff>("17d330af03f5b3042a4417ab1d45e484");
+            var WildShapeDragonShapeBrassBuff = Helpers.CreateBuff("WildShapeDragonShapeBrassBuff", bp => {
+                bp.SetName("Dragon Shape - Brass Dragon");
+                bp.m_Description = FormOfTheDragonBrassBuff.m_Description;
+                bp.Components = FormOfTheDragonBrassBuff.Components;
+                bp.m_Icon = FormOfTheDragonBrassBuff.Icon;
+                bp.IsClassFeature = true;
+                bp.m_Flags = 0;
+                bp.Stacking = StackingType.Replace;
+                bp.FxOnStart = FormOfTheDragonBrassBuff.FxOnStart;
+            });
+            var WildShapeDragonShapeBrassBuffPolymorph = Resources.GetModBlueprint<BlueprintBuff>("WildShapeDragonShapeBrassBuff").GetComponent<Polymorph>();
+            WildShapeDragonShapeBrassBuffPolymorph.m_Facts = WildShapeDragonShapeBrassBuffPolymorph.m_Facts.AppendToArray(EnergizedWildShapeDamageFeature.ToReference<BlueprintUnitFactReference>());
             var FormOfTheDragonRedBuff = Resources.GetBlueprint<BlueprintBuff>("294cbb3e1d547f341a5d7ec8500ffa44");
+            var WildShapeDragonShapeRedBuff = Helpers.CreateBuff("WildShapeDragonShapeRedBuff", bp => {
+                bp.SetName("Dragon Shape - Red Dragon");
+                bp.m_Description = FormOfTheDragonRedBuff.m_Description;
+                bp.Components = FormOfTheDragonRedBuff.Components;
+                bp.m_Icon = FormOfTheDragonRedBuff.Icon;
+                bp.IsClassFeature = true;
+                bp.m_Flags = 0;
+                bp.Stacking = StackingType.Replace;
+                bp.FxOnStart = FormOfTheDragonRedBuff.FxOnStart;
+            });
+            var WildShapeDragonShapeRedBuffPolymorph = Resources.GetModBlueprint<BlueprintBuff>("WildShapeDragonShapeRedBuff").GetComponent<Polymorph>();
+            WildShapeDragonShapeRedBuffPolymorph.m_Facts = WildShapeDragonShapeRedBuffPolymorph.m_Facts.AppendToArray(EnergizedWildShapeDamageFeature.ToReference<BlueprintUnitFactReference>());
             var FormOfTheDragonWhiteBuff = Resources.GetBlueprint<BlueprintBuff>("a6acd3ad1e9fa6c45998d43fd5dcd86d");
+            var WildShapeDragonShapeWhiteBuff = Helpers.CreateBuff("WildShapeDragonShapeWhiteBuff", bp => {
+                bp.SetName("Dragon Shape - White Dragon");
+                bp.m_Description = FormOfTheDragonWhiteBuff.m_Description;
+                bp.Components = FormOfTheDragonWhiteBuff.Components;
+                bp.m_Icon = FormOfTheDragonWhiteBuff.Icon;
+                bp.IsClassFeature = true;
+                bp.m_Flags = 0;
+                bp.Stacking = StackingType.Replace;
+                bp.FxOnStart = FormOfTheDragonWhiteBuff.FxOnStart;
+            });
+            var WildShapeDragonShapeWhiteBuffPolymorph = Resources.GetModBlueprint<BlueprintBuff>("WildShapeDragonShapeWhiteBuff").GetComponent<Polymorph>();
+            WildShapeDragonShapeWhiteBuffPolymorph.m_Facts = WildShapeDragonShapeWhiteBuffPolymorph.m_Facts.AppendToArray(EnergizedWildShapeDamageFeature.ToReference<BlueprintUnitFactReference>());
 
             var WildShapeDragonShapeGreen = Helpers.CreateBlueprint<BlueprintAbility>("WildShapeDragonShapeGreen", bp => {
                 bp.SetName("Dragon Shape - Green Dragon");
@@ -121,7 +207,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.SavingThrowType = SavingThrowType.Unknown;
                     c.Actions = Helpers.CreateActionList(
                         new ContextActionApplyBuff() {
-                            m_Buff = FormOfTheDragonGreenBuff.ToReference<BlueprintBuffReference>(),
+                            m_Buff = WildShapeDragonShapeGreenBuff.ToReference<BlueprintBuffReference>(),
                             UseDurationSeconds = false,
                             DurationValue = new ContextDurationValue() {
                                 Rate = DurationRate.Hours,
@@ -195,7 +281,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.SavingThrowType = SavingThrowType.Unknown;
                     c.Actions = Helpers.CreateActionList(
                         new ContextActionApplyBuff() {
-                            m_Buff = FormOfTheDragonSilverBuff.ToReference<BlueprintBuffReference>(),
+                            m_Buff = WildShapeDragonShapeSilverBuff.ToReference<BlueprintBuffReference>(),
                             UseDurationSeconds = false,
                             DurationValue = new ContextDurationValue() {
                                 Rate = DurationRate.Hours,
@@ -269,7 +355,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.SavingThrowType = SavingThrowType.Unknown;
                     c.Actions = Helpers.CreateActionList(
                         new ContextActionApplyBuff() {
-                            m_Buff = FormOfTheDragonBlackBuff.ToReference<BlueprintBuffReference>(),
+                            m_Buff = WildShapeDragonShapeBlackBuff.ToReference<BlueprintBuffReference>(),
                             UseDurationSeconds = false,
                             DurationValue = new ContextDurationValue() {
                                 Rate = DurationRate.Hours,
@@ -343,7 +429,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.SavingThrowType = SavingThrowType.Unknown;
                     c.Actions = Helpers.CreateActionList(
                         new ContextActionApplyBuff() {
-                            m_Buff = FormOfTheDragonBlueBuff.ToReference<BlueprintBuffReference>(),
+                            m_Buff = WildShapeDragonShapeBlueBuff.ToReference<BlueprintBuffReference>(),
                             UseDurationSeconds = false,
                             DurationValue = new ContextDurationValue() {
                                 Rate = DurationRate.Hours,
@@ -417,7 +503,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.SavingThrowType = SavingThrowType.Unknown;
                     c.Actions = Helpers.CreateActionList(
                         new ContextActionApplyBuff() {
-                            m_Buff = FormOfTheDragonBrassBuff.ToReference<BlueprintBuffReference>(),
+                            m_Buff = WildShapeDragonShapeBrassBuff.ToReference<BlueprintBuffReference>(),
                             UseDurationSeconds = false,
                             DurationValue = new ContextDurationValue() {
                                 Rate = DurationRate.Hours,
@@ -491,7 +577,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.SavingThrowType = SavingThrowType.Unknown;
                     c.Actions = Helpers.CreateActionList(
                         new ContextActionApplyBuff() {
-                            m_Buff = FormOfTheDragonRedBuff.ToReference<BlueprintBuffReference>(),
+                            m_Buff = WildShapeDragonShapeRedBuff.ToReference<BlueprintBuffReference>(),
                             UseDurationSeconds = false,
                             DurationValue = new ContextDurationValue() {
                                 Rate = DurationRate.Hours,
@@ -565,7 +651,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.SavingThrowType = SavingThrowType.Unknown;
                     c.Actions = Helpers.CreateActionList(
                         new ContextActionApplyBuff() {
-                            m_Buff = FormOfTheDragonWhiteBuff.ToReference<BlueprintBuffReference>(),
+                            m_Buff = WildShapeDragonShapeWhiteBuff.ToReference<BlueprintBuffReference>(),
                             UseDurationSeconds = false,
                             DurationValue = new ContextDurationValue() {
                                 Rate = DurationRate.Hours,
@@ -659,13 +745,96 @@ namespace ExpandedContent.Tweaks.Archetypes {
             });
 
             var FormOfTheDragonGreenBuff2 = Resources.GetBlueprint<BlueprintBuff>("070543328d3e9af49bb514641c56911d");
+            var WildShapeDragonShapeGreenBuff2 = Helpers.CreateBuff("WildShapeDragonShapeGreenBuff2", bp => {
+                bp.SetName("Dragon Shape - Large Green Dragon");
+                bp.m_Description = FormOfTheDragonGreenBuff2.m_Description;
+                bp.Components = FormOfTheDragonGreenBuff2.Components;
+                bp.m_Icon = FormOfTheDragonGreenBuff2.Icon;
+                bp.IsClassFeature = true;
+                bp.m_Flags = 0;
+                bp.Stacking = StackingType.Replace;
+                bp.FxOnStart = FormOfTheDragonGreenBuff2.FxOnStart;
+            });
+            var WildShapeDragonShapeGreenBuff2Polymorph = Resources.GetModBlueprint<BlueprintBuff>("WildShapeDragonShapeGreenBuff2").GetComponent<Polymorph>();
+            WildShapeDragonShapeGreenBuff2Polymorph.m_Facts = WildShapeDragonShapeGreenBuff2Polymorph.m_Facts.AppendToArray(EnergizedWildShapeDamageFeature.ToReference<BlueprintUnitFactReference>());
             var FormOfTheDragonSilverBuff2 = Resources.GetBlueprint<BlueprintBuff>("16857109dafc2b94eafd1e888552ef76");
+            var WildShapeDragonShapeSilverBuff2 = Helpers.CreateBuff("WildShapeDragonShapeSilverBuff2", bp => {
+                bp.SetName("Dragon Shape - Large Silver Dragon");
+                bp.m_Description = FormOfTheDragonSilverBuff2.m_Description;
+                bp.Components = FormOfTheDragonSilverBuff2.Components;
+                bp.m_Icon = FormOfTheDragonSilverBuff2.Icon;
+                bp.IsClassFeature = true;
+                bp.m_Flags = 0;
+                bp.Stacking = StackingType.Replace;
+                bp.FxOnStart = FormOfTheDragonSilverBuff2.FxOnStart;
+            });
+            var WildShapeDragonShapeSilverBuff2Polymorph = Resources.GetModBlueprint<BlueprintBuff>("WildShapeDragonShapeSilverBuff2").GetComponent<Polymorph>();
+            WildShapeDragonShapeSilverBuff2Polymorph.m_Facts = WildShapeDragonShapeSilverBuff2Polymorph.m_Facts.AppendToArray(EnergizedWildShapeDamageFeature.ToReference<BlueprintUnitFactReference>());
             var FormOfTheDragonBlackBuff2 = Resources.GetBlueprint<BlueprintBuff>("9eb5ba8c396d2c74c8bfabd3f5e91050");
+            var WildShapeDragonShapeBlackBuff2 = Helpers.CreateBuff("WildShapeDragonShapeBlackBuff2", bp => {
+                bp.SetName("Dragon Shape - Large Black Dragon");
+                bp.m_Description = FormOfTheDragonBlackBuff2.m_Description;
+                bp.Components = FormOfTheDragonBlackBuff2.Components;
+                bp.m_Icon = FormOfTheDragonBlackBuff2.Icon;
+                bp.IsClassFeature = true;
+                bp.m_Flags = 0;
+                bp.Stacking = StackingType.Replace;
+                bp.FxOnStart = FormOfTheDragonBlackBuff2.FxOnStart;
+            });
+            var WildShapeDragonShapeBlackBuff2Polymorph = Resources.GetModBlueprint<BlueprintBuff>("WildShapeDragonShapeBlackBuff2").GetComponent<Polymorph>();
+            WildShapeDragonShapeBlackBuff2Polymorph.m_Facts = WildShapeDragonShapeBlackBuff2Polymorph.m_Facts.AppendToArray(EnergizedWildShapeDamageFeature.ToReference<BlueprintUnitFactReference>());
             var FormOfTheDragonBlueBuff2 = Resources.GetBlueprint<BlueprintBuff>("cf8b4e861226e0545a6805036ab2a21b");
+            var WildShapeDragonShapeBlueBuff2 = Helpers.CreateBuff("WildShapeDragonShapeBlueBuff2", bp => {
+                bp.SetName("Dragon Shape - Large Blue Dragon");
+                bp.m_Description = FormOfTheDragonBlueBuff2.m_Description;
+                bp.Components = FormOfTheDragonBlueBuff2.Components;
+                bp.m_Icon = FormOfTheDragonBlueBuff2.Icon;
+                bp.IsClassFeature = true;
+                bp.m_Flags = 0;
+                bp.Stacking = StackingType.Replace;
+                bp.FxOnStart = FormOfTheDragonBlueBuff2.FxOnStart;
+            });
+            var WildShapeDragonShapeBlueBuff2Polymorph = Resources.GetModBlueprint<BlueprintBuff>("WildShapeDragonShapeBlueBuff2").GetComponent<Polymorph>();
+            WildShapeDragonShapeBlueBuff2Polymorph.m_Facts = WildShapeDragonShapeBlueBuff2Polymorph.m_Facts.AppendToArray(EnergizedWildShapeDamageFeature.ToReference<BlueprintUnitFactReference>());
             var FormOfTheDragonBrassBuff2 = Resources.GetBlueprint<BlueprintBuff>("f7fdc15aa0219104a8b38c9891cac17b");
+            var WildShapeDragonShapeBrassBuff2 = Helpers.CreateBuff("WildShapeDragonShapeBrassBuff2", bp => {
+                bp.SetName("Dragon Shape - Large Brass Dragon");
+                bp.m_Description = FormOfTheDragonBrassBuff2.m_Description;
+                bp.Components = FormOfTheDragonBrassBuff2.Components;
+                bp.m_Icon = FormOfTheDragonBrassBuff2.Icon;
+                bp.IsClassFeature = true;
+                bp.m_Flags = 0;
+                bp.Stacking = StackingType.Replace;
+                bp.FxOnStart = FormOfTheDragonBrassBuff2.FxOnStart;
+            });
+            var WildShapeDragonShapeBrassBuff2Polymorph = Resources.GetModBlueprint<BlueprintBuff>("WildShapeDragonShapeBrassBuff2").GetComponent<Polymorph>();
+            WildShapeDragonShapeBrassBuff2Polymorph.m_Facts = WildShapeDragonShapeBrassBuff2Polymorph.m_Facts.AppendToArray(EnergizedWildShapeDamageFeature.ToReference<BlueprintUnitFactReference>());
             var FormOfTheDragonRedBuff2 = Resources.GetBlueprint<BlueprintBuff>("40a96969339f3c241b4d989910f255e1");
+            var WildShapeDragonShapeRedBuff2 = Helpers.CreateBuff("WildShapeDragonShapeRedBuff2", bp => {
+                bp.SetName("Dragon Shape - Large Red Dragon");
+                bp.m_Description = FormOfTheDragonRedBuff2.m_Description;
+                bp.Components = FormOfTheDragonRedBuff2.Components;
+                bp.m_Icon = FormOfTheDragonRedBuff2.Icon;
+                bp.IsClassFeature = true;
+                bp.m_Flags = 0;
+                bp.Stacking = StackingType.Replace;
+                bp.FxOnStart = FormOfTheDragonRedBuff2.FxOnStart;
+            });
+            var WildShapeDragonShapeRedBuff2Polymorph = Resources.GetModBlueprint<BlueprintBuff>("WildShapeDragonShapeRedBuff2").GetComponent<Polymorph>();
+            WildShapeDragonShapeRedBuff2Polymorph.m_Facts = WildShapeDragonShapeRedBuff2Polymorph.m_Facts.AppendToArray(EnergizedWildShapeDamageFeature.ToReference<BlueprintUnitFactReference>());
             var FormOfTheDragonWhiteBuff2 = Resources.GetBlueprint<BlueprintBuff>("2652c61dff50a24479520c84005ede8b");
-
+            var WildShapeDragonShapeWhiteBuff2 = Helpers.CreateBuff("WildShapeDragonShapeWhiteBuff2", bp => {
+                bp.SetName("Dragon Shape - Large White Dragon");
+                bp.m_Description = FormOfTheDragonWhiteBuff2.m_Description;
+                bp.Components = FormOfTheDragonWhiteBuff2.Components;
+                bp.m_Icon = FormOfTheDragonWhiteBuff2.Icon;
+                bp.IsClassFeature = true;
+                bp.m_Flags = 0;
+                bp.Stacking = StackingType.Replace;
+                bp.FxOnStart = FormOfTheDragonWhiteBuff2.FxOnStart;
+            });
+            var WildShapeDragonShapeWhiteBuff2Polymorph = Resources.GetModBlueprint<BlueprintBuff>("WildShapeDragonShapeWhiteBuff2").GetComponent<Polymorph>();
+            WildShapeDragonShapeWhiteBuff2Polymorph.m_Facts = WildShapeDragonShapeWhiteBuff2Polymorph.m_Facts.AppendToArray(EnergizedWildShapeDamageFeature.ToReference<BlueprintUnitFactReference>());
             var WildShapeDragonShapeGreen2 = Helpers.CreateBlueprint<BlueprintAbility>("WildShapeDragonShapeGreen2", bp => {
                 bp.SetName("Dragon Shape - Large Green Dragon");
                 bp.SetDescription("You become a large green dragon. You gain a +6 {g|Encyclopedia:Size}size{/g} {g|Encyclopedia:Bonus}bonus{/g} to {g|Encyclopedia:Strength}Strength{/g}, " +
@@ -679,7 +848,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.SavingThrowType = SavingThrowType.Unknown;
                     c.Actions = Helpers.CreateActionList(
                         new ContextActionApplyBuff() {
-                            m_Buff = FormOfTheDragonGreenBuff2.ToReference<BlueprintBuffReference>(),
+                            m_Buff = WildShapeDragonShapeGreenBuff2.ToReference<BlueprintBuffReference>(),
                             UseDurationSeconds = false,
                             DurationValue = new ContextDurationValue() {
                                 Rate = DurationRate.Hours,
@@ -753,7 +922,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.SavingThrowType = SavingThrowType.Unknown;
                     c.Actions = Helpers.CreateActionList(
                         new ContextActionApplyBuff() {
-                            m_Buff = FormOfTheDragonSilverBuff2.ToReference<BlueprintBuffReference>(),
+                            m_Buff = WildShapeDragonShapeSilverBuff2.ToReference<BlueprintBuffReference>(),
                             UseDurationSeconds = false,
                             DurationValue = new ContextDurationValue() {
                                 Rate = DurationRate.Hours,
@@ -827,7 +996,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.SavingThrowType = SavingThrowType.Unknown;
                     c.Actions = Helpers.CreateActionList(
                         new ContextActionApplyBuff() {
-                            m_Buff = FormOfTheDragonBlackBuff2.ToReference<BlueprintBuffReference>(),
+                            m_Buff = WildShapeDragonShapeBlackBuff2.ToReference<BlueprintBuffReference>(),
                             UseDurationSeconds = false,
                             DurationValue = new ContextDurationValue() {
                                 Rate = DurationRate.Hours,
@@ -901,7 +1070,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.SavingThrowType = SavingThrowType.Unknown;
                     c.Actions = Helpers.CreateActionList(
                         new ContextActionApplyBuff() {
-                            m_Buff = FormOfTheDragonBlueBuff2.ToReference<BlueprintBuffReference>(),
+                            m_Buff = WildShapeDragonShapeBlueBuff2.ToReference<BlueprintBuffReference>(),
                             UseDurationSeconds = false,
                             DurationValue = new ContextDurationValue() {
                                 Rate = DurationRate.Hours,
@@ -975,7 +1144,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.SavingThrowType = SavingThrowType.Unknown;
                     c.Actions = Helpers.CreateActionList(
                         new ContextActionApplyBuff() {
-                            m_Buff = FormOfTheDragonBrassBuff2.ToReference<BlueprintBuffReference>(),
+                            m_Buff = WildShapeDragonShapeBrassBuff2.ToReference<BlueprintBuffReference>(),
                             UseDurationSeconds = false,
                             DurationValue = new ContextDurationValue() {
                                 Rate = DurationRate.Hours,
@@ -1049,7 +1218,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.SavingThrowType = SavingThrowType.Unknown;
                     c.Actions = Helpers.CreateActionList(
                         new ContextActionApplyBuff() {
-                            m_Buff = FormOfTheDragonRedBuff2.ToReference<BlueprintBuffReference>(),
+                            m_Buff = WildShapeDragonShapeRedBuff2.ToReference<BlueprintBuffReference>(),
                             UseDurationSeconds = false,
                             DurationValue = new ContextDurationValue() {
                                 Rate = DurationRate.Hours,
@@ -1123,7 +1292,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.SavingThrowType = SavingThrowType.Unknown;
                     c.Actions = Helpers.CreateActionList(
                         new ContextActionApplyBuff() {
-                            m_Buff = FormOfTheDragonWhiteBuff2.ToReference<BlueprintBuffReference>(),
+                            m_Buff = WildShapeDragonShapeWhiteBuff2.ToReference<BlueprintBuffReference>(),
                             UseDurationSeconds = false,
                             DurationValue = new ContextDurationValue() {
                                 Rate = DurationRate.Hours,

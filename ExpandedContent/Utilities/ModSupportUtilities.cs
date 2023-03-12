@@ -17,10 +17,20 @@ namespace ExpandedContent.Utilities {
                 JObject o1 = JObject.Parse(File.ReadAllText(xks));
                 return (bool)o1["Feats"]["Settings"]["ShifterRush"]["Enabled"];
             } catch (Exception ex) {
+                Main.Log(ex.Message);
                 return false;
             }
         }
-
+        public static bool GetEnergizedWildShapePrerequisitesTTTBaseSetting() {
+            try {
+                var xks = System.IO.Path.Combine(Config.ModSettings.ModEntry.Path, @"..\TabletopTweaks-Base\UserSettings\Fixes.json");
+                JObject o1 = JObject.Parse(File.ReadAllText(xks));
+                return (bool)o1["Feats"]["Settings"]["EnergizedWildShapePrerequisites"]["Enabled"];
+            } catch (Exception ex) {
+                Main.Log(ex.Message);
+                return false;
+            }
+        }
 
     }
 }
