@@ -136,6 +136,7 @@ namespace ExpandedContent.Tweaks {
                 Domains.ResolveDomain.AddResolveDomain();
                 Domains.AgathionDomain.AddAgathionDomain();
                 Domains.LustDomain.AddLustDomain();
+                Domains.FurDomain.AddFurDomain();
                 Domains.BaseDeityPatch.AddBaseDeityPatch();
 
                 Archetypes.StormDruid.AddStormDruid();
@@ -341,11 +342,14 @@ namespace ExpandedContent.Tweaks {
                 Deities.DeitySelectionFeature.MonitorsToggle();
                 Deities.DeitySelectionFeature.TheElderMythosToggle();
                 Deities.DeitySelectionFeature.OrcPantheonToggle();
+
+                
             }
             [HarmonyPriority(Priority.Last)]
             [HarmonyPostfix]
             public static void PatchAfter() {
                 Miscellaneous.HavocDragonPet.AddHavocDragonPet();
+                Miscellaneous.ShapechangeFeatsPatch.AddShapechangeFeatsPatch();
             }
         }
     }

@@ -355,6 +355,7 @@
     <Compile Include="Tweaks\Domains\BaseDeityPatch.cs" />
     <Compile Include="Tweaks\Domains\UndeadDomain.cs" />
     <Compile Include="Tweaks\Domains\RiversDomain.cs" />
+    <Compile Include="Tweaks\Domains\FurDomain.cs" />
     <Compile Include="Tweaks\Domains\WindDomain.cs" />
     <Compile Include="Tweaks\Domains\IceDomain.cs" />
     <Compile Include="Tweaks\Domains\CavesDomain.cs" />
@@ -365,6 +366,7 @@
     <Compile Include="Tweaks\FourHorsemen\Charon.cs" />
     <Compile Include="Tweaks\FourHorsemen\Szuriel.cs" />
     <Compile Include="Tweaks\FourHorsemen\Terlmarixian.cs" />
+    <Compile Include="Tweaks\Miscellaneous\ShapechangeFeatsPatch.cs" />
     <Compile Include="Tweaks\Miscellaneous\AidAnother.cs" />
     <Compile Include="Tweaks\Miscellaneous\ModifierDescriptors.cs" />
     <Compile Include="Tweaks\Miscellaneous\HavocDragonPet.cs" />
@@ -477,6 +479,7 @@
     <Compile Include="Tweaks\Miscellaneous\Cavalier.cs" />
     <Compile Include="Utilities\ActionFlow.cs" />
     <Compile Include="Utilities\AuraUtils.cs" />
+    <Compile Include="Utilities\ModSupportUtilities.cs" />
     <Compile Include="Utilities\ItemTools.cs" />
     <Compile Include="Utilities\PortraitLoader.cs" />
     <Compile Include="Utilities\PortraitInjector.cs" />

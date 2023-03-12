@@ -307,7 +307,7 @@ namespace ExpandedContent.Tweaks.AnimalCompanions {
             EyePortraitInjecotr.Replacements[CompanionWolverineUnit.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "WolverinePetEye.png", new Vector2Int(176, 24), TextureFormat.RGBA32);
 
             var CompanionWolverineFeature = Helpers.CreateBlueprint<BlueprintFeature>("CompanionWolverineFeature", bp => {
-                bp.SetName("Animal Companion - Wolverine");
+                bp.SetName("Animal Companion — Wolverine");
                 bp.SetDescription("{g|Encyclopedia:Size}Size{/g}: Small" +
                     "\n{g|Encyclopedia:Speed}Speed{/g}: 30 ft." +
                     "\n{g|Encyclopedia:Armor_Class}AC{/g}: +6 natural armor" +

@@ -1,14 +1,17 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using ExpandedContent.Config;
+using Newtonsoft.Json.Linq;
 using UnityEngine;
+using static UnityModManagerNet.UnityModManager;
 
 namespace ExpandedContent.Utilities {
     class AssetLoader {
         public static Sprite LoadInternal(string folder, string file) {
-            return Image2Sprite.Create($"{ModSettings.ModEntry.Path}Assets{Path.DirectorySeparatorChar}{folder}{Path.DirectorySeparatorChar}{file}");
+            return Image2Sprite.Create($"{Config.ModSettings.ModEntry.Path}Assets{Path.DirectorySeparatorChar}{folder}{Path.DirectorySeparatorChar}{file}");
         }        
         public static Sprite LoadInternal(string folder, string file, int size) {
-            return Image2Sprite.Create($"{ModSettings.ModEntry.Path}Assets{Path.DirectorySeparatorChar}{folder}{Path.DirectorySeparatorChar}{file}", size);
+            return Image2Sprite.Create($"{Config.ModSettings.ModEntry.Path}Assets{Path.DirectorySeparatorChar}{folder}{Path.DirectorySeparatorChar}{file}", size);
         }
         // Loosely based on https://forum.unity.com/threads/generating-sprites-dynamically-from-png-or-jpeg-files-in-c.343735/
         public static class Image2Sprite {
@@ -21,5 +24,7 @@ namespace ExpandedContent.Utilities {
                 return sprite;
             }
         }
+
+        
     }
 }

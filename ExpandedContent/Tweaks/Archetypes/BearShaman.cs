@@ -85,9 +85,56 @@ namespace ExpandedContent.Tweaks.Archetypes {
             });
 
             var AnimalCompanionFeatureBear = Resources.GetBlueprintReference<BlueprintFeatureReference>("f6f1cdcc404f10c4493dc1e51208fd6f");
+            var CompanionWolverineFeature = Resources.GetModBlueprint<BlueprintFeature>("CompanionWolverineFeature");
+
+            var DruidAnimalCompanionProgression = Resources.GetBlueprint<BlueprintProgression>("3853d5405ebfc0f4a86930bb7082b43b");
+            var AnimalCompanionRank = Resources.GetBlueprint<BlueprintFeature>("1670990255e4fe948a863bafd5dbda5d");
+            var AnimalCompanionArchetypeSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("65af7290b4efd5f418132141aaa36c1b");
+            var MountTargetFeature = Resources.GetBlueprint<BlueprintFeature>("cb06f0e72ffb5c640a156bd9f8000c1d");
+
+
+
+
+            var BearShamanCompanionSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("BearShamanCompanionSelection", bp => {
+                bp.SetName("Bear Totem Animal Companion");
+                bp.SetDescription("Unlike normal animals of its kind, an animal companion's {g|Encyclopedia:Hit_Dice}Hit Dice{/g}, abilities, {g|Encyclopedia:Skills}skills{/g}, and " +
+                    "{g|Encyclopedia:Feat}feats{/g} advance as the druid advances in level. If a character receives an animal companion from more than one source, her effective " +
+                    "druid levels stack for the purposes of determining the statistics and abilities of the companion. Most animal companions increase in {g|Encyclopedia:Size}size{/g} " +
+                    "when their druid reaches 4th or 7th level, depending on the companion.");
+                bp.AddComponent<AddFeatureOnApply>(c => {
+                    c.m_Feature = DruidAnimalCompanionProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<AddFeatureOnApply>(c => {
+                    c.m_Feature = AnimalCompanionRank.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<AddFeatureOnApply>(c => {
+                    c.m_Feature = AnimalCompanionArchetypeSelection.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<AddFeatureOnApply>(c => {
+                    c.m_Feature = MountTargetFeature.ToReference<BlueprintFeatureReference>();
+                });
+                bp.HideInCharacterSheetAndLevelUp = false;
+                bp.HideInUI = false;
+                bp.HideNotAvailibleInUI = false;
+                bp.ReapplyOnLevelUp = false;
+                bp.Mode = SelectionMode.Default;
+                bp.Group = FeatureGroup.AnimalCompanion;
+                bp.Ranks = 1;
+                bp.IsClassFeature = true;
+                bp.AddFeatures(AnimalCompanionFeatureBear, CompanionWolverineFeature);
+            });
+
+
+
+
+
+
+
+
+
             var BearShamanDomainSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("BearShamanDomainSelection", bp => {
                 bp.SetName("Bear Totem Druids Bond");
-                bp.SetDescription("A bear totem druid who chooses an animal companion must select a bear. If choosing a domain, the bear totem druid must choose from the Animal, Earth, Protection, and Strength domains.");
+                bp.SetDescription("A bear totem druid who chooses an animal companion must select a bear or wolverine. If choosing a domain, the bear totem druid must choose from the Animal, Earth, Protection, and Strength domains.");
                 bp.HideInCharacterSheetAndLevelUp = false;
                 bp.HideInUI = false;
                 bp.HideNotAvailibleInUI = false;
@@ -104,7 +151,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             });
             var BearShamanBondSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("BearShamanBondSelection", bp => {
                 bp.SetName("Bear Totem Druids Bond");
-                bp.SetDescription("A bear totem druid who chooses an animal companion must select a bear. If choosing a domain, the bear totem druid must choose from the Animal, Earth, Protection, and Strength domains.");
+                bp.SetDescription("A bear totem druid who chooses an animal companion must select a bear or wolverine. If choosing a domain, the bear totem druid must choose from the Animal, Earth, Protection, and Strength domains.");
                 bp.HideInCharacterSheetAndLevelUp = false;
                 bp.HideInUI = false;
                 bp.HideNotAvailibleInUI = false;
@@ -112,7 +159,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.Mode = SelectionMode.OnlyNew;
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;
-                bp.AddFeatures(AnimalCompanionFeatureBear, BearShamanDomainSelection);
+                bp.AddFeatures(BearShamanCompanionSelection, BearShamanDomainSelection);
             });
 
             var DiehardFeat = Resources.GetBlueprintReference<BlueprintFeatureReference>("86669ce8759f9d7478565db69b8c19ad");

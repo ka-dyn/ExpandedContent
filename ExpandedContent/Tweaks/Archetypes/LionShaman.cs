@@ -82,8 +82,50 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.IsClassFeature = true;
             });
 
+
+
+
+
             var AnimalCompanionFeatureLeopard = Resources.GetBlueprintReference<BlueprintFeatureReference>("2ee2ba60850dd064e8b98bf5c2c946ba");
             var AnimalCompanionFeatureSmilodon = Resources.GetBlueprintReference<BlueprintFeatureReference>("126712ef923ab204983d6f107629c895");
+            var DruidAnimalCompanionProgression = Resources.GetBlueprint<BlueprintProgression>("3853d5405ebfc0f4a86930bb7082b43b");
+            var AnimalCompanionRank = Resources.GetBlueprint<BlueprintFeature>("1670990255e4fe948a863bafd5dbda5d");
+            var AnimalCompanionArchetypeSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("65af7290b4efd5f418132141aaa36c1b");
+            var MountTargetFeature = Resources.GetBlueprint<BlueprintFeature>("cb06f0e72ffb5c640a156bd9f8000c1d");
+
+
+
+
+            var LionShamanCompanionSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("LionShamanCompanionSelection", bp => {
+                bp.SetName("Lion Totem Animal Companion");
+                bp.SetDescription("Unlike normal animals of its kind, an animal companion's {g|Encyclopedia:Hit_Dice}Hit Dice{/g}, abilities, {g|Encyclopedia:Skills}skills{/g}, and " +
+                    "{g|Encyclopedia:Feat}feats{/g} advance as the druid advances in level. If a character receives an animal companion from more than one source, her effective " +
+                    "druid levels stack for the purposes of determining the statistics and abilities of the companion. Most animal companions increase in {g|Encyclopedia:Size}size{/g} " +
+                    "when their druid reaches 4th or 7th level, depending on the companion.");
+                bp.AddComponent<AddFeatureOnApply>(c => {
+                    c.m_Feature = DruidAnimalCompanionProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<AddFeatureOnApply>(c => {
+                    c.m_Feature = AnimalCompanionRank.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<AddFeatureOnApply>(c => {
+                    c.m_Feature = AnimalCompanionArchetypeSelection.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<AddFeatureOnApply>(c => {
+                    c.m_Feature = MountTargetFeature.ToReference<BlueprintFeatureReference>();
+                });
+                bp.HideInCharacterSheetAndLevelUp = false;
+                bp.HideInUI = false;
+                bp.HideNotAvailibleInUI = false;
+                bp.ReapplyOnLevelUp = false;
+                bp.Mode = SelectionMode.Default;
+                bp.Group = FeatureGroup.AnimalCompanion;
+                bp.Ranks = 1;
+                bp.IsClassFeature = true;
+                bp.AddFeatures(AnimalCompanionFeatureLeopard, AnimalCompanionFeatureSmilodon);
+            });
+
+
             var LionShamanDomainSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("LionShamanDomainSelection", bp => {
                 bp.SetName("Lion Totem Druids Bond");
                 bp.SetDescription("A lion totem druid who chooses an animal companion must select a feline. If choosing a domain, the lion totem druid must choose from the Animal, Glory, Nobility, and Sun domains.");
@@ -111,7 +153,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.Mode = SelectionMode.OnlyNew;
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;
-                bp.AddFeatures(AnimalCompanionFeatureLeopard, AnimalCompanionFeatureSmilodon, LionShamanDomainSelection);
+                bp.AddFeatures(LionShamanCompanionSelection, LionShamanDomainSelection);
             });
 
             var DodgeFeat = Resources.GetBlueprintReference<BlueprintFeatureReference>("97e216dbb46ae3c4faef90cf6bbe6fd5");

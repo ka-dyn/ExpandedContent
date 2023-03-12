@@ -285,6 +285,11 @@
         "Enabled": true,
         "Homebrew": false,
         "Description": "Adds the lust subdomain, a subdomain to the charm domain."
+      },
+      "Fur Subdomain": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds the fur subdomain, a subdomain to the animal domain."
       }
     },
     "IsExpanded": false

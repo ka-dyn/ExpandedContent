@@ -1469,7 +1469,22 @@
     "CompanionWolverineRageFeature": "67aefc8c-9a02-4e9c-9243-d1fe28551136",
     "CompanionWolverineRagResource": "92f73ce7-564e-41fa-95c7-4b91e6a54a4c",
     "CompanionWolverineUnit": "7d63a0a7-cc4e-4e60-9bdf-8e3c5d57971f",
-    "ExtraRageWolverineFeat": "0b199783-b64e-46fd-8127-39448ed392e3"
+    "ExtraRageWolverineFeat": "0b199783-b64e-46fd-8127-39448ed392e3",
+
+    "BearShamanCompanionSelection": "fb4d7b52-4f8f-425e-81e4-af0a62a93318",
+    "LionShamanCompanionSelection": "062a7d3c-61c5-4d12-8a97-458883c41538",
+    "FurDomainAllowed": "89617919-c3e6-4a03-9319-8da220426c1e",
+    "FurDomainAnimalCompanionSelection": "de7876ce-abd6-4822-9d8c-62f99b622e69",
+    "FurDomainBaseAbility": "b0691f91-57a0-4ac9-8fbe-0fc8ba214db1",
+    "FurDomainBaseBuff": "060cff72-4881-4240-b4eb-bbc141931fe2",
+    "FurDomainBaseFeature": "cd2ef922-2232-4c96-b2f4-a08e6d1b6b41",
+    "FurDomainBaseResource": "271c8939-3c39-41c9-b8ff-1d7be7ba355e",
+    "FurDomainProgression": "0fae43a4-2fd2-4da7-ba6f-03e3db23d453",
+    "FurDomainProgressionDruid": "2e478fa4-9d58-46af-bba9-71cfb9dba959",
+    "FurDomainProgressionSecondary": "18aedda3-1164-40ab-8d2c-16aadbb403a6",
+    "FurDomainSpellList": "80929ef6-f9c9-4543-b40e-e9949ab5ffe0",
+    "FurDomainSpellListFeature": "5ca975fa-194e-4b70-baa5-4b5ad712ac4c",
+    "FurDomainSpellListFeatureDruid": "578932ae-f1f6-44ca-9fa5-9cae076caab7"
 
 
 
