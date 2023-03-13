@@ -65,6 +65,8 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var WildShapeElementalHugeFeature = Resources.GetBlueprint<BlueprintFeature>("fe58dd496a36e274b86958f4677071b2");
             var WildShapeElementalAirSmallAbility = Resources.GetBlueprint<BlueprintAbility>("2f38f491888c89140969a1dc7af8c66e");
             var EnergizedWildShapeDamageFeature = Resources.GetBlueprint<BlueprintFeature>("d808863c4bd44fd8bd9cf5892460705d");
+            var FrightfulShapeFeature = Resources.GetBlueprint<BlueprintFeature>("8e8a34c754d649aa9286fe8ee5cc3f10");
+            var FrightfulShapeAttackBuff = Resources.GetBlueprint<BlueprintBuff>("1a5a2ce6793a4458957f45517662bb0e");
 
 
             var DragonType = Resources.GetBlueprint<BlueprintFeature>("455ac88e22f55804ab87c2467deff1d6");
@@ -115,6 +117,40 @@ namespace ExpandedContent.Tweaks.Archetypes {
             });
             var WildShapeDragonShapeGreenBuffPolymorph = Resources.GetModBlueprint<BlueprintBuff>("WildShapeDragonShapeGreenBuff").GetComponent<Polymorph>();
             WildShapeDragonShapeGreenBuffPolymorph.m_Facts = WildShapeDragonShapeGreenBuffPolymorph.m_Facts.AppendToArray(EnergizedWildShapeDamageFeature.ToReference<BlueprintUnitFactReference>());
+
+            var WildShapeDragonShapeGreenBuffAddFactContextActions = Resources.GetModBlueprint<BlueprintBuff>("WildShapeDragonShapeGreenBuff").GetComponent<AddFactContextActions>();
+            WildShapeDragonShapeGreenBuffAddFactContextActions.Activated.Actions = WildShapeDragonShapeGreenBuffAddFactContextActions.Activated.Actions.AppendToArray(
+                new Conditional() {
+                    ConditionsChecker = new ConditionsChecker() {
+                        Operation = Operation.And,
+                        Conditions = new Condition[] {
+                            new ContextConditionHasFact() {
+                                m_Fact = FrightfulShapeFeature.ToReference<BlueprintUnitFactReference>(),
+                                Not = false
+                            }
+                        }
+                    },
+                    IfTrue = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = FrightfulShapeAttackBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0,
+                                m_IsExtendable = false,
+                            },
+                            AsChild = true
+                        }),
+                    IfFalse = Helpers.CreateActionList()
+                });
+
+
+
+
+
+
             var FormOfTheDragonSilverBuff = Resources.GetBlueprint<BlueprintBuff>("feb2ab7613e563e45bcf9f7ffe4e05c6");
             var WildShapeDragonShapeSilverBuff = Helpers.CreateBuff("WildShapeDragonShapeSilverBuff", bp => {
                 bp.SetName("Dragon Shape - Silver Dragon");
