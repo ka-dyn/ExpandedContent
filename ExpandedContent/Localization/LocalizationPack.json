@@ -7,10 +7,88 @@
       "enGB": "Summoned Grizzly"
     },
     {
-      "Key": "def2d25c45fb4ce99b9fb5307fb8eda6",
+      "Key": "215e9f56e8054610b339d75ffa4f9ee0",
       "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
       "ProcessTemplates": false,
-      "enGB": "Green Drake"
+      "enGB": "Summoned Giant Grizzly"
+    },
+    {
+      "Key": "ed20a45c798a49fd83b19b7b9f0d845c",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Summoned Advanced Grizzly"
+    },
+    {
+      "Key": "cceb9f3a49784ef6afab7bdd568637ba",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Summoned Young Leopard"
+    },
+    {
+      "Key": "aaefd539a796487d8cfe66d5e51916c8",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Summoned Giant Advanced Grizzly"
+    },
+    {
+      "Key": "ee9a9d2f31844be2b7cb124b144bc809",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Summoned Giant Smilodon"
+    },
+    {
+      "Key": "0f2cf0a97d3f45c1bd348e117a3efbf1",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Summoned Giant Advanced Smilodon"
+    },
+    {
+      "Key": "c6cfbb7f5f6f47a1bc266d8b6c94396e",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Summoned Advanced Leopard"
+    },
+    {
+      "Key": "4b5d4a135ee04c448c736039821cf216",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Summoned Giant Advanced Leopard"
+    },
+    {
+      "Key": "30bd172ba71146508718a328a7fadc71",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Summoned Young Smilodon"
+    },
+    {
+      "Key": "1822845d85d245e1a4e78cc8210b900a",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Summoned Advanced Smilodon"
+    },
+    {
+      "Key": "1cfda936bc994277bf04f013b1461281",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Summoned Young Grizzly"
+    },
+    {
+      "Key": "8ab1da2e175249818cd9529bd3459995",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Summoned Giant Leopard"
+    },
+    {
+      "Key": "86617a56e6504b9ba986affcddd9cc45",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Gold Drake"
+    },
+    {
+      "Key": "134dae07c9ca419bbb8780fe64952aea",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Wolverine"
     },
     {
       "Key": "d78cef6333094acfb027c9ea446537e5",
@@ -37,10 +115,10 @@
       "enGB": "Umbral Drake"
     },
     {
-      "Key": "f749a9876e8646db9c98bd8f5f216379",
+      "Key": "def2d25c45fb4ce99b9fb5307fb8eda6",
       "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
       "ProcessTemplates": false,
-      "enGB": "Blue Drake"
+      "enGB": "Green Drake"
     },
     {
       "Key": "a48ac449e70d4b81a5f04bc68cd5e0ad",
@@ -67,88 +145,10 @@
       "enGB": "Red Drake"
     },
     {
-      "Key": "86617a56e6504b9ba986affcddd9cc45",
+      "Key": "f749a9876e8646db9c98bd8f5f216379",
       "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
       "ProcessTemplates": false,
-      "enGB": "Gold Drake"
-    },
-    {
-      "Key": "134dae07c9ca419bbb8780fe64952aea",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Wolverine"
-    },
-    {
-      "Key": "1cfda936bc994277bf04f013b1461281",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Summoned Young Grizzly"
-    },
-    {
-      "Key": "1822845d85d245e1a4e78cc8210b900a",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Summoned Advanced Smilodon"
-    },
-    {
-      "Key": "30bd172ba71146508718a328a7fadc71",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Summoned Young Smilodon"
-    },
-    {
-      "Key": "4b5d4a135ee04c448c736039821cf216",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Summoned Giant Advanced Leopard"
-    },
-    {
-      "Key": "8ab1da2e175249818cd9529bd3459995",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Summoned Giant Leopard"
-    },
-    {
-      "Key": "c6cfbb7f5f6f47a1bc266d8b6c94396e",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Summoned Advanced Leopard"
-    },
-    {
-      "Key": "0f2cf0a97d3f45c1bd348e117a3efbf1",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Summoned Giant Advanced Smilodon"
-    },
-    {
-      "Key": "ee9a9d2f31844be2b7cb124b144bc809",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Summoned Giant Smilodon"
-    },
-    {
-      "Key": "aaefd539a796487d8cfe66d5e51916c8",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Summoned Giant Advanced Grizzly"
-    },
-    {
-      "Key": "cceb9f3a49784ef6afab7bdd568637ba",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Summoned Young Leopard"
-    },
-    {
-      "Key": "ed20a45c798a49fd83b19b7b9f0d845c",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Summoned Advanced Grizzly"
-    },
-    {
-      "Key": "215e9f56e8054610b339d75ffa4f9ee0",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Summoned Giant Grizzly"
+      "enGB": "Blue Drake"
     },
     {
       "Key": "72649485145f43a1b53eb14219424047",
@@ -213,16 +213,16 @@
       "enGB": "Once per day, a dreadknight can reach out to the profane lords to grant sinful absolution to the forces arrayed against them. As a swift action, the dreadknight chooses one target within sight to crush. The dreadknight adds their Charisma bonus (if any) on their attack rolls and adds their dreadknight level on all damage rolls made against the target of their unholy smite. Regardless of the target, sinful absolution attacks automatically bypass any DR the creature might possess. In addition, while Sinful Absolution is in effect, the dreadknight gains a deflection bonus equal to their Charisma modifier(if any) to their AC against attacks made by the target of sinful absolution."
     },
     {
-      "Key": "caa10bd594a24eb192670bf6289cab8a",
-      "SimpleName": "$TouchOfProfaneCorruptionFeature.DescriptionShort",
-      "ProcessTemplates": false,
-      "enGB": "Beginning at 7th level as a swift action, a dreadknight can spend two uses of their touch of profane corruption to surround their weapon with a profane flame, causing terrible wounds to open on those they attacks. This ability works with any weapon."
-    },
-    {
       "Key": "a21570d8a87645adbcc9b95ed420216d",
       "SimpleName": "$TouchOfProfaneCorruptionFeature.DescriptionShort",
       "ProcessTemplates": false,
       "enGB": "Beginning at 2nd level, a dreadknight can surround her hand with a profane flame, causing terrible wounds to open on those she touches. Alternatively, a dreadknight can use this power to heal undead creatures."
+    },
+    {
+      "Key": "caa10bd594a24eb192670bf6289cab8a",
+      "SimpleName": "$TouchOfProfaneCorruptionFeature.DescriptionShort",
+      "ProcessTemplates": false,
+      "enGB": "Beginning at 7th level as a swift action, a dreadknight can spend two uses of their touch of profane corruption to surround their weapon with a profane flame, causing terrible wounds to open on those they attacks. This ability works with any weapon."
     },
     {
       "Key": "dd8c0bee59ea466b9f9a584af23aa32e",
@@ -385,17 +385,17 @@
       "enGB": "In melee combat, you can help your allies attack or defend by distracting or interfering with an opponent. If you’re in position to make a melee attack on an opponent you can attempt to aid your allies against that enemy as a standard action. The distracted enemy is inflicted with a -2 penalty on their next attack roll against your allies. This penalty only applies to the first attack roll and is removed after 1 round."
     },
     {
+      "Key": "a596459b25884478b1e87a8871af225d",
+      "SimpleName": "AidAnotherDefenceBuff.Name",
+      "ProcessTemplates": false,
+      "enGB": "Aid Another - Distracted Attacks"
+    },
+    {
       "Key": "4a9b0128686d4892897d756ca4116bc8",
       "SimpleName": "AidAnotherDefenceBuff.Name",
       "ProcessTemplates": false,
       "IsUsed": false,
       "enGB": "Aid Another - Defence"
-    },
-    {
-      "Key": "a596459b25884478b1e87a8871af225d",
-      "SimpleName": "AidAnotherDefenceBuff.Name",
-      "ProcessTemplates": false,
-      "enGB": "Aid Another - Distracted Attacks"
     },
     {
       "Key": "2c3bec9c5e994e66b457b5acd9e8283d",
@@ -666,17 +666,17 @@
       "enGB": "\nYou follow the archons path of righteousness.\nTouch of Good: You can touch a creature as a standard action, granting a sacred bonus on attack rolls, skill checks, ability checks, and saving throws equal to half your level in the class that gave you access to this domain (minimum 1) for 1 round. You can use this ability a number of times per day equal to 3 + your Wisdom modifier.\nAura of Menace: At 8th level, you can emit a 30-foot aura of menace as a standard action. Enemies in this aura take a –2 penalty to AC and on attacks and saves as long as they remain inside the aura. You can use this ability for a number of rounds per day equal to your cleric level. These rounds do not need to be consecutive.\nDomain Spells: divine favor, communal protection from chaos, prayer, holy smite, dominate person, blade barrier, dictum, sheild of law, dominate monster."
     },
     {
-      "Key": "bab66feedd7f4602bfff2ac95ff3cb7f",
-      "SimpleName": "ArchonDomainLawProgressionSecondary.Description",
-      "ProcessTemplates": true,
-      "enGB": "\nYou follow the archons path of righteousness.\nTouch of Law: You can touch a willing creature as a standard action, infusing it with the power of divine order and allowing it to treat all attack rolls, skill checks, ability checks, and saving throws for 1 round as if the natural d20 roll resulted in an 11.[LONGSTART] You can use this ability a number of times per day equal to 3 + your Wisdom modifier.[LONGEND]\nAura of Menace: At 8th level, you can emit a 30-foot aura of menace as a standard action. Enemies in this aura take a –2 penalty to AC and on attacks and saves as long as they remain inside the aura. You can use this ability for a number of rounds per day equal to your cleric level. These rounds do not need to be consecutive.\nDomain Spells: divine favor, communal protection from chaos, prayer, holy smite, dominate person, blade barrier, dictum, sheild of law, dominate monster."
-    },
-    {
       "Key": "f4a21b8fc9e64c2aa85b65d57f99457c",
       "SimpleName": "ArchonDomainLawProgressionSecondary.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "\nYou follow the archons path of righteousness.\nTouch of Good: You can touch a creature as a standard action, granting a sacred bonus on attack rolls, skill checks, ability checks, and saving throws equal to half your level in the class that gave you access to this domain (minimum 1) for 1 round. You can use this ability a number of times per day equal to 3 + your Wisdom modifier.\nAura of Menace: At 8th level, you can emit a 30-foot aura of menace as a standard action. Enemies in this aura take a –2 penalty to AC and on attacks and saves as long as they remain inside the aura. You can use this ability for a number of rounds per day equal to your cleric level. These rounds do not need to be consecutive.\nDomain Spells: divine favor, communal protection from chaos, prayer, holy smite, dominate person, blade barrier, dictum, sheild of law, dominate monster."
+    },
+    {
+      "Key": "bab66feedd7f4602bfff2ac95ff3cb7f",
+      "SimpleName": "ArchonDomainLawProgressionSecondary.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nYou follow the archons path of righteousness.\nTouch of Law: You can touch a willing creature as a standard action, infusing it with the power of divine order and allowing it to treat all attack rolls, skill checks, ability checks, and saving throws for 1 round as if the natural d20 roll resulted in an 11.[LONGSTART] You can use this ability a number of times per day equal to 3 + your Wisdom modifier.[LONGEND]\nAura of Menace: At 8th level, you can emit a 30-foot aura of menace as a standard action. Enemies in this aura take a –2 penalty to AC and on attacks and saves as long as they remain inside the aura. You can use this ability for a number of rounds per day equal to your cleric level. These rounds do not need to be consecutive.\nDomain Spells: divine favor, communal protection from chaos, prayer, holy smite, dominate person, blade barrier, dictum, sheild of law, dominate monster."
     },
     {
       "Key": "5454dc1038d745f2b22e71fb374794da",
@@ -1034,6 +1034,12 @@
       "enGB": "A bear shaman who chooses an animal companion must select a bear. If choosing a domain, the bear shaman must choose from the Animal, Earth, Protection, and Strength domains."
     },
     {
+      "Key": "c586a0fe0d834cae86f271ee10363691",
+      "SimpleName": "BearShamanBondSelection.Description",
+      "ProcessTemplates": true,
+      "enGB": "A bear totem druid who chooses an animal companion must select a bear or wolverine. If choosing a domain, the bear totem druid must choose from the Animal, Earth, Protection, and Strength domains."
+    },
+    {
       "Key": "9ae3ce85da684351b27e1f2ba6fd26b8",
       "SimpleName": "BearShamanBonusFeatSelection.Description",
       "ProcessTemplates": true,
@@ -1046,17 +1052,36 @@
       "enGB": "Bear Totem Druid Bonus Feat"
     },
     {
-      "Key": "c6b3ce75f0f44737b69e1b6d456609fc",
+      "Key": "82cde0f4214f4d399cdaff25cea4015d",
+      "SimpleName": "BearShamanCompanionSelection.Description",
+      "ProcessTemplates": true,
+      "enGB": "Unlike normal animals of its kind, an animal companion's Hit Dice, abilities, skills, and feats advance as the druid advances in level. If a character receives an animal companion from more than one source, her effective druid levels stack for the purposes of determining the statistics and abilities of the companion. Most animal companions increase in size when their druid reaches 4th or 7th level, depending on the companion."
+    },
+    {
+      "Key": "d4b8edb9d96f4e68a6c772fd0075018f",
+      "SimpleName": "BearShamanCompanionSelection.Name",
+      "ProcessTemplates": false,
+      "enGB": "Bear Totem Animal Companion"
+    },
+    {
+      "Key": "a09c02ba158445c1867ca3c4283143d7",
       "SimpleName": "BearShamanDomainSelection.Description",
       "ProcessTemplates": true,
-      "IsUsed": false,
-      "enGB": "A bear shaman who chooses an animal companion must select a bear. If choosing a domain, the bear shaman must choose from the Animal, Earth, Protection, and Strength domains."
+      "enGB": "A bear totem druid who chooses an animal companion must select a bear or wolverine. If choosing a domain, the bear totem druid must choose from the Animal, Earth, Protection, and Strength domains."
     },
     {
       "Key": "5732b13616734f61ab2639bf8a84e43f",
       "SimpleName": "BearShamanDomainSelection.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "A bear totem druid who chooses an animal companion must select a bear. If choosing a domain, the bear totem druid must choose from the Animal, Earth, Protection, and Strength domains."
+    },
+    {
+      "Key": "c6b3ce75f0f44737b69e1b6d456609fc",
+      "SimpleName": "BearShamanDomainSelection.Description",
+      "ProcessTemplates": true,
+      "IsUsed": false,
+      "enGB": "A bear shaman who chooses an animal companion must select a bear. If choosing a domain, the bear shaman must choose from the Animal, Earth, Protection, and Strength domains."
     },
     {
       "Key": "61ceef4ca6f74cf89fc813406ef1b80f",
@@ -1434,16 +1459,16 @@
       "enGB": "Payback"
     },
     {
+      "Key": "2f91fdfbde3c4bc78942800497c111bd",
+      "SimpleName": "CastigatorVengeance.Description",
+      "ProcessTemplates": false,
+      "enGB": "At 4th level, a castigator can make an additional number of attacks of opportunity in a round equal to their Charisma modifier (minimum 1). This effect stacks with the Combat Reflexes feat."
+    },
+    {
       "Key": "86125955dbd447829e29b6b38c9f0535",
       "SimpleName": "CastigatorVengeance.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
-      "enGB": "At 4th level, a castigator can make an additional number of attacks of opportunity in a round equal to their Charisma modifier (minimum 1). This effect stacks with the Combat Reflexes feat."
-    },
-    {
-      "Key": "2f91fdfbde3c4bc78942800497c111bd",
-      "SimpleName": "CastigatorVengeance.Description",
-      "ProcessTemplates": false,
       "enGB": "At 4th level, a castigator can make an additional number of attacks of opportunity in a round equal to their Charisma modifier (minimum 1). This effect stacks with the Combat Reflexes feat."
     },
     {
@@ -1785,18 +1810,33 @@
       "Key": "641bbfb533224f76baf62c07a008942f",
       "SimpleName": "CompanionWolverineFeature.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "Size: Medium\nSpeed: 30 ft.\nAC: +6 natural armor\nAttack: bite (1d4)\nAbility scores: Str 10, Dex 17, Con 15, Int 2, Wis 12, Cha 10\nSpecial Attacks: rage (as a barbarian for 6 rounds per day)\nAt 4th level size becomes Medium, Str +4, Dex -2, Con +4, +2 natural armor.\nThis animal companion can't be used as a mount."
+    },
+    {
+      "Key": "837bb37abf06444b8137874fbd9e5513",
+      "SimpleName": "CompanionWolverineFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "Size: Small\nSpeed: 30 ft.\nAC: +6 natural armor\nAttack: bite (1d4), 2 claws (1d3)\nAbility scores: Str 10, Dex 17, Con 15, Int 2, Wis 12, Cha 10\nSpecial Attacks: rage (as a barbarian for 6 rounds per day)\nAt 4th level size becomes Medium, Str +4, Dex -2, Con +4, +2 natural armor.\nThis animal companion can't be used as a mount."
+    },
+    {
+      "Key": "0d9d9f90e8444c6fb359793e05c7839f",
+      "SimpleName": "CompanionWolverineFeature.Name",
+      "ProcessTemplates": false,
+      "enGB": "Animal Companion — Wolverine"
     },
     {
       "Key": "21f2c1b2dd26495ab70c377191226381",
       "SimpleName": "CompanionWolverineFeature.Name",
       "ProcessTemplates": false,
+      "IsUsed": false,
       "enGB": "Animal Companion - Wolverine"
     },
     {
       "Key": "bf4dc85c2efe413f99aaafba7024858d",
       "SimpleName": "CompanionWolverineRageAbility.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "While in rage, a barbarian gains a +2 bonus on melee attack rolls, melee damage rolls, thrown weapon damage rolls, and Will saving throws. In addition, she takes a –2 penalty to Armor Class. She also gains 2 temporary hit points per Hit Die."
     },
     {
@@ -2272,17 +2312,17 @@
       "enGB": "Dahaks's Gift"
     },
     {
+      "Key": "e66bee3ebe334bfe83034c74d1815150",
+      "SimpleName": "DaikitsuFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nTitles: Lady of Foxes   \nAlignment: Neutral   \nAreas of Concern: Agriculture, Craftsmanship, Kitsune, Rice\nEdict: Ensure the health of crops and vegetation, perfect a craft or trade, leave offerings for foxes, celebrate the turning of the seasons   \nDomains: Animal, Artifice, Community, Plant, Weather   \nSubdomains: Construct, Family, Fur, Growth, Home, Industry, Seasons   \nFavoured Weapon: Flail   \nHoly Symbol: Nine-tailed fox   \nSacred Animal: Fox \nDaikitsu is widely worshiped in Tian Xia, as she is the goddess of rice, a staple food in those lands, as well as of agriculture and craftsmanship. Farmers pray to Daikitsu for good harvests, smiths and craftsmen seek her blessing for their creations, and families ask for her protection for their homes and families. Known as the Lady of Foxes, Daikitsu usually appears as beautiful kitsune woman with snow-white fur and nine tails. She is also the patron of kitsune, who venerate her as the mother of their race."
+    },
+    {
       "Key": "8f10a004ffff4573baa853a794d256e9",
       "SimpleName": "DaikitsuFeature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "\nTitles: Lady of Foxes   \nAlignment: Neutral   \nAreas of Concern: Agriculture, Craftsmanship, Kitsune, Rice\nEdict: Ensure the health of crops and vegetation, perfect a craft or trade, leave offerings for foxes, celebrate the turning of the seasons   \nDomains: Animal, Artifice, Community, Plant, Weather   \nSubdomains: Construct, Family, Fur, Growth, Home, Industry, Seasons   \nFavoured Weapon: Flail   \nHoly Symbol: Nine-tailed fox   \nSacred Animal: Fox   Daikitsu is widely worshiped in Tian Xia, as she is the goddess of rice, a staple food in those lands, as well as of agriculture and craftsmanship. Farmers pray to Daikitsu for good harvests, smiths and craftsmen seek her blessing for their creations, and families ask for her protection for their homes and families. Known as the Lady of Foxes, Daikitsu usually appears as beautiful kitsune woman with snow-white fur and nine tails. She is also the patron of kitsune, who venerate her as the mother of their race."
-    },
-    {
-      "Key": "e66bee3ebe334bfe83034c74d1815150",
-      "SimpleName": "DaikitsuFeature.Description",
-      "ProcessTemplates": true,
-      "enGB": "\nTitles: Lady of Foxes   \nAlignment: Neutral   \nAreas of Concern: Agriculture, Craftsmanship, Kitsune, Rice\nEdict: Ensure the health of crops and vegetation, perfect a craft or trade, leave offerings for foxes, celebrate the turning of the seasons   \nDomains: Animal, Artifice, Community, Plant, Weather   \nSubdomains: Construct, Family, Fur, Growth, Home, Industry, Seasons   \nFavoured Weapon: Flail   \nHoly Symbol: Nine-tailed fox   \nSacred Animal: Fox \nDaikitsu is widely worshiped in Tian Xia, as she is the goddess of rice, a staple food in those lands, as well as of agriculture and craftsmanship. Farmers pray to Daikitsu for good harvests, smiths and craftsmen seek her blessing for their creations, and families ask for her protection for their homes and families. Known as the Lady of Foxes, Daikitsu usually appears as beautiful kitsune woman with snow-white fur and nine tails. She is also the patron of kitsune, who venerate her as the mother of their race."
     },
     {
       "Key": "0334a70cbe74471995f45f57b2782ee5",
@@ -2569,17 +2609,17 @@
       "enGB": "Dispater"
     },
     {
-      "Key": "2c3cb69dee52421ba1c30a9c0a46bba5",
-      "SimpleName": "DivineHerbalistDragonMysteryFeature.Description",
-      "ProcessTemplates": true,
-      "enGB": "Gain access to the spells and revelations of the dragon mystery. \nDue to the divine herbalist archetype the class skills gained from this archetypeare replaced by the master herbalist feature and the brew potions feat."
-    },
-    {
       "Key": "1b52c9e5e8624fe8aeaf22008d0306ad",
       "SimpleName": "DivineHerbalistDragonMysteryFeature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "An oracle with the dragon mystery adds Mobility, Persuasion, Perception and Knowledge (world)  to her list of class skills."
+    },
+    {
+      "Key": "2c3cb69dee52421ba1c30a9c0a46bba5",
+      "SimpleName": "DivineHerbalistDragonMysteryFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "Gain access to the spells and revelations of the dragon mystery. \nDue to the divine herbalist archetype the class skills gained from this archetypeare replaced by the master herbalist feature and the brew potions feat."
     },
     {
       "Key": "91616eb97ea3471abc626b1a183afe2f",
@@ -3197,17 +3237,17 @@
       "enGB": "Greater Drake Acid Breath"
     },
     {
+      "Key": "1df6eca3d484449bbfe6a838c4cd4ade",
+      "SimpleName": "DrakeBreathWeaponAcid2Feature.Description",
+      "ProcessTemplates": true,
+      "enGB": "This breath weapon deals 8d6 points of acid damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day. \nUnlocking this allows you to use your lesser breath weapon without spending any resources, however you must wait 1d4 rounds to recharge."
+    },
+    {
       "Key": "df00f6bb8f614cb59316f7627c01fbd2",
       "SimpleName": "DrakeBreathWeaponAcid2Feature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "This breath weapon deals 8d6 points of acid damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day. \nUnlocking this allows you to use your lesser breath weapon without spending any resources, however you must wait 1d4 rounds to recharge."
-    },
-    {
-      "Key": "1df6eca3d484449bbfe6a838c4cd4ade",
-      "SimpleName": "DrakeBreathWeaponAcid2Feature.Description",
-      "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 8d6 points of acid damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day. \nUnlocking this allows you to use your lesser breath weapon without spending any resources, however you must wait 1d4 rounds to recharge."
     },
     {
       "Key": "21423a23b82c4fa5a54cd3a2c68157f8",
@@ -3230,24 +3270,17 @@
       "enGB": "Mythic Drake Acid Breath"
     },
     {
-      "Key": "be45de1db0684f2f8e3ffa5e462b2cc2",
-      "SimpleName": "DrakeBreathWeaponAcid3Feature.Description",
-      "ProcessTemplates": true,
-      "IsUsed": false,
-      "enGB": "This breath weapon deals 1d6 points of acid damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
-    },
-    {
       "Key": "c3397a5fd99c4a1c88e4b1ce4a91d3e3",
       "SimpleName": "DrakeBreathWeaponAcid3Feature.Description",
       "ProcessTemplates": true,
       "enGB": "This breath weapon deals 1d6 points of acid damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
     },
     {
-      "Key": "3bba44b3e3de459080d550f4018199e5",
-      "SimpleName": "DrakeBreathWeaponCold1.Description",
+      "Key": "be45de1db0684f2f8e3ffa5e462b2cc2",
+      "SimpleName": "DrakeBreathWeaponAcid3Feature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
-      "enGB": "This breath weapon deals 4d6 points of cold damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day."
+      "enGB": "This breath weapon deals 1d6 points of acid damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
     },
     {
       "Key": "e6d7137aefbb48d692cb1f232205fa28",
@@ -3257,10 +3290,23 @@
       "enGB": "This breath weapon deals 4d6 points of cold damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day."
     },
     {
+      "Key": "3bba44b3e3de459080d550f4018199e5",
+      "SimpleName": "DrakeBreathWeaponCold1.Description",
+      "ProcessTemplates": true,
+      "IsUsed": false,
+      "enGB": "This breath weapon deals 4d6 points of cold damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day."
+    },
+    {
       "Key": "66842c1a16244f8a8742e686ca85f008",
       "SimpleName": "DrakeBreathWeaponCold1.Name",
       "ProcessTemplates": false,
       "enGB": "Drake Cold Breath"
+    },
+    {
+      "Key": "1ffacbc9846a4e318f7a858b69a49d1a",
+      "SimpleName": "DrakeBreathWeaponCold1Feature.Description",
+      "ProcessTemplates": true,
+      "enGB": "This breath weapon deals 4d6 points of cold damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day."
     },
     {
       "Key": "52d5d2df88c441e2b22e5a93b9a1248e",
@@ -3268,12 +3314,6 @@
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "This breath weapon deals 4d6 points of cold damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day."
-    },
-    {
-      "Key": "1ffacbc9846a4e318f7a858b69a49d1a",
-      "SimpleName": "DrakeBreathWeaponCold1Feature.Description",
-      "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 4d6 points of cold damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day."
     },
     {
       "Key": "0ef9c57e42be40f68560acfccc9ccfcc",
@@ -3295,17 +3335,17 @@
       "enGB": "Greater Drake Cold Breath"
     },
     {
-      "Key": "eac364b4a1f74c5bb51bbaab82a2f9de",
-      "SimpleName": "DrakeBreathWeaponCold2Feature.Description",
-      "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 8d6 points of cold damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day. \nUnlocking this allows you to use your lesser breath weapon without spending any resources, however you must wait 1d4 rounds to recharge."
-    },
-    {
       "Key": "59eb9da5ea3d4ed7a82984a1dd1ef00b",
       "SimpleName": "DrakeBreathWeaponCold2Feature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "This breath weapon deals 8d6 points of cold damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day. \nUnlocking this allows you to use your lesser breath weapon without spending any resources, however you must wait 1d4 rounds to recharge."
+    },
+    {
+      "Key": "eac364b4a1f74c5bb51bbaab82a2f9de",
+      "SimpleName": "DrakeBreathWeaponCold2Feature.Description",
+      "ProcessTemplates": true,
+      "enGB": "This breath weapon deals 8d6 points of cold damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day. \nUnlocking this allows you to use your lesser breath weapon without spending any resources, however you must wait 1d4 rounds to recharge."
     },
     {
       "Key": "aa4f5369b79343e19de67ebc56132b4b",
@@ -3328,12 +3368,6 @@
       "enGB": "Mythic Drake Cold Breath"
     },
     {
-      "Key": "0f22f8c4ad924927a399bd9b770d89b7",
-      "SimpleName": "DrakeBreathWeaponCold3Feature.Description",
-      "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 1d6 points of cold damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
-    },
-    {
       "Key": "5de2e3e5ae104dd6889e010b8efdabba",
       "SimpleName": "DrakeBreathWeaponCold3Feature.Description",
       "ProcessTemplates": true,
@@ -3341,11 +3375,10 @@
       "enGB": "This breath weapon deals 1d6 points of cold damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
     },
     {
-      "Key": "791c70eb71fa47bc939447ac7c5232aa",
-      "SimpleName": "DrakeBreathWeaponElectricity1.Description",
+      "Key": "0f22f8c4ad924927a399bd9b770d89b7",
+      "SimpleName": "DrakeBreathWeaponCold3Feature.Description",
       "ProcessTemplates": true,
-      "IsUsed": false,
-      "enGB": "This breath weapon deals 4d6 points of electricity damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day."
+      "enGB": "This breath weapon deals 1d6 points of cold damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
     },
     {
       "Key": "eb3d8c2900514c838132616b1975f49a",
@@ -3355,16 +3388,17 @@
       "enGB": "This breath weapon deals 4d6 points of electricity damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day."
     },
     {
+      "Key": "791c70eb71fa47bc939447ac7c5232aa",
+      "SimpleName": "DrakeBreathWeaponElectricity1.Description",
+      "ProcessTemplates": true,
+      "IsUsed": false,
+      "enGB": "This breath weapon deals 4d6 points of electricity damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day."
+    },
+    {
       "Key": "97824be90ab54264ab6816af37c404ae",
       "SimpleName": "DrakeBreathWeaponElectricity1.Name",
       "ProcessTemplates": false,
       "enGB": "Drake Electricity Breath"
-    },
-    {
-      "Key": "b0a4aa33228c497b83a93b60a7b03bb4",
-      "SimpleName": "DrakeBreathWeaponElectricity1Feature.Description",
-      "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 4d6 points of electricity damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day."
     },
     {
       "Key": "dcd9bb64fbe44546b21d3d62272f6b2f",
@@ -3372,6 +3406,12 @@
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "This breath weapon deals 4d6 points of electricity damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day."
+    },
+    {
+      "Key": "b0a4aa33228c497b83a93b60a7b03bb4",
+      "SimpleName": "DrakeBreathWeaponElectricity1Feature.Description",
+      "ProcessTemplates": true,
+      "enGB": "This breath weapon deals 4d6 points of electricity damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day."
     },
     {
       "Key": "7d216a2e346f42339211e5c4e1b11892",
@@ -3406,18 +3446,18 @@
       "enGB": "This breath weapon deals 8d6 points of electricity damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day. \nUnlocking this allows you to use your lesser breath weapon without spending any resources, however you must wait 1d4 rounds to recharge."
     },
     {
-      "Key": "014480f94ab64957a6fc217aa5a36887",
-      "SimpleName": "DrakeBreathWeaponElectricity3.Description",
-      "ProcessTemplates": true,
-      "IsUsed": false,
-      "enGB": "This breath weapon deals 1d6 points of electricity damage per drake companion level in a 40-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
-    },
-    {
       "Key": "9320115be0144f4c9d08ad2d63197042",
       "SimpleName": "DrakeBreathWeaponElectricity3.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "This breath weapon deals 1d6 points of electricity damage per drake companion level in a 40-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
+    },
+    {
+      "Key": "014480f94ab64957a6fc217aa5a36887",
+      "SimpleName": "DrakeBreathWeaponElectricity3.Description",
+      "ProcessTemplates": true,
+      "IsUsed": false,
+      "enGB": "This breath weapon deals 1d6 points of electricity damage per drake companion level in a 40-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
     },
     {
       "Key": "85e82cd10fb34305b3f26f726295535e",
@@ -3524,17 +3564,17 @@
       "enGB": "Mythic Drake Fire Breath"
     },
     {
+      "Key": "a6783db42f2947e89c919949a0d5971c",
+      "SimpleName": "DrakeBreathWeaponFire3Feature.Description",
+      "ProcessTemplates": true,
+      "enGB": "This breath weapon deals 1d6 points of fire damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
+    },
+    {
       "Key": "43fa93a4701f4f85961ddeea0bcade9b",
       "SimpleName": "DrakeBreathWeaponFire3Feature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "This breath weapon deals 1d6 points of fire damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
-    },
-    {
-      "Key": "a6783db42f2947e89c919949a0d5971c",
-      "SimpleName": "DrakeBreathWeaponFire3Feature.Description",
-      "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 1d6 points of fire damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies."
     },
     {
       "Key": "b6243310dbe242d09c095ec59bd2e4ef",
@@ -3557,6 +3597,12 @@
       "enGB": "Drake Negative Energy Breath"
     },
     {
+      "Key": "3f82888cb6534862aa8217b840d23643",
+      "SimpleName": "DrakeBreathWeaponUmbral1Feature.Description",
+      "ProcessTemplates": true,
+      "enGB": "This breath weapon deals 4d6 points of  negative damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day.\nTargets with an affinity to negative energy (such as undead) are not healed by this ability and are treated as if the ability did not hit them."
+    },
+    {
       "Key": "9dcf386ecbdd464c8e79505773731c5c",
       "SimpleName": "DrakeBreathWeaponUmbral1Feature.Description",
       "ProcessTemplates": true,
@@ -3564,10 +3610,10 @@
       "enGB": "This breath weapon deals 4d6 points of  negative damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day.\nTargets with an affinity to negativeenergy (such as undead) are not healed by this ability and are treated as if the ability did not hit them."
     },
     {
-      "Key": "3f82888cb6534862aa8217b840d23643",
-      "SimpleName": "DrakeBreathWeaponUmbral1Feature.Description",
+      "Key": "adba855a5963462aa50ccb1f2b3015ff",
+      "SimpleName": "DrakeBreathWeaponUmbral2.Description",
       "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 4d6 points of  negative damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day.\nTargets with an affinity to negative energy (such as undead) are not healed by this ability and are treated as if the ability did not hit them."
+      "enGB": "This breath weapon deals 8d6 points of negative damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day.\nTargets with an affinity to negative energy (such as undead) are not healed by this ability and are treated as if the ability did not hit them."
     },
     {
       "Key": "0d2d69b7f16a46b9947d3f18fba771df",
@@ -3575,12 +3621,6 @@
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "This breath weapon deals 8d6 points of negative damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day.\nTargets with an affinity to negativeenergy (such as undead) are not healed by this ability and are treated as if the ability did not hit them."
-    },
-    {
-      "Key": "adba855a5963462aa50ccb1f2b3015ff",
-      "SimpleName": "DrakeBreathWeaponUmbral2.Description",
-      "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 8d6 points of negative damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day.\nTargets with an affinity to negative energy (such as undead) are not healed by this ability and are treated as if the ability did not hit them."
     },
     {
       "Key": "adce6cb14e3a42f9a461694633daaa8b",
@@ -4124,16 +4164,16 @@
       "enGB": "Channeling negative energy causes a burst that damages every living creature in a 30-foot radius centered on the Dread Knight. The amount of damage inflicted is equal to 1d6 points of damage plus 1d6 points of damage for every two Dread Knight levels beyond 1st (2d6 at 3rd, 3d6 at 5th, and so on). Creatures that take damage from channeled energy receive a Will save to halve the damage. The DC of this save is equal to 10 + 1/2 the Dread Knight's level + the Dread Knight's Charisma modifier."
     },
     {
-      "Key": "79390dccfaff42259b9430c3eda7052b",
-      "SimpleName": "DreadKnightChannelNegativeEnergyAbility.Name",
-      "ProcessTemplates": false,
-      "enGB": "Channel Negative Energy - Damage Living"
-    },
-    {
       "Key": "e1a0f9b3f21e45aaaba53aff7d45b1ad",
       "SimpleName": "DreadKnightChannelNegativeEnergyAbility.Name",
       "ProcessTemplates": false,
       "enGB": "Channel Negative Energy"
+    },
+    {
+      "Key": "79390dccfaff42259b9430c3eda7052b",
+      "SimpleName": "DreadKnightChannelNegativeEnergyAbility.Name",
+      "ProcessTemplates": false,
+      "enGB": "Channel Negative Energy - Damage Living"
     },
     {
       "Key": "95bb51ebd24e466aa7b691a57700f158",
@@ -4270,18 +4310,18 @@
       "enGB": "An oracle with the dragon mystery adds Mobility, Persuasion, Perception and Knowledge (Arcana)  to her list of class skills."
     },
     {
-      "Key": "87a3a668a0744c2395e62368807b469d",
-      "SimpleName": "EnlightnedPhilosopherHeavensMysteryFeature.Description",
-      "ProcessTemplates": true,
-      "IsUsed": false,
-      "enGB": "An oracle with the heavens mystery adds Perception and Knowledge (world)  to her list of class skills."
-    },
-    {
       "Key": "ca0109695d76452e9e35dbada994a096",
       "SimpleName": "EnlightnedPhilosopherHeavensMysteryFeature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "An oracle with the heavens mystery adds Perception and Knowledge (Arcana)  to her list of class skills."
+    },
+    {
+      "Key": "87a3a668a0744c2395e62368807b469d",
+      "SimpleName": "EnlightnedPhilosopherHeavensMysteryFeature.Description",
+      "ProcessTemplates": true,
+      "IsUsed": false,
+      "enGB": "An oracle with the heavens mystery adds Perception and Knowledge (world)  to her list of class skills."
     },
     {
       "Key": "e3979b1a0365444ca72eecd17dbbefbf",
@@ -4576,6 +4616,66 @@
       "SimpleName": "FumeiyoshiFeature.Name",
       "ProcessTemplates": false,
       "enGB": "Fumeiyoshi"
+    },
+    {
+      "Key": "4207ea277e314b57b1de1e788264dc10",
+      "SimpleName": "FurDomainAnimalCompanionSelection.Description",
+      "ProcessTemplates": true,
+      "enGB": "At 4th level, you gain the service of an mammal animal companion. Your effective druid level for this animal companion is equal to your level in the class that gave you access to this domain – 3. (Druids who take this ability through their nature bond class feature use their druid level – 3 to determine the abilities of their animal companions.)"
+    },
+    {
+      "Key": "11ffa8482b57414692b842ca58734d50",
+      "SimpleName": "FurDomainAnimalCompanionSelection.Name",
+      "ProcessTemplates": false,
+      "enGB": "Fur Subdomain Animal Companion"
+    },
+    {
+      "Key": "dbffd64a0c3741998e251a27d9cc6d8e",
+      "SimpleName": "FurDomainBaseAbility.Description",
+      "ProcessTemplates": true,
+      "enGB": "You can, as a swift action, grant yourself a +10-foot bonus to your base speed for 1 round. This bonus increases by 5 feet for every 5 cleric levels you possess. You can use this ability a number of times per day equal to 3 + your Wisdom modifier."
+    },
+    {
+      "Key": "019eefe877454616b52ffc1d7b477021",
+      "SimpleName": "FurDomainBaseBuff.Description",
+      "ProcessTemplates": true,
+      "enGB": "You can, as a swift action, grant yourself a +10-foot bonus to your base speed for 1 round. This bonus increases by 5 feet for every 5 cleric levels you possess. You can use this ability a number of times per day equal to 3 + your Wisdom modifier."
+    },
+    {
+      "Key": "c67a81c4d3784908853e0aee77a7d298",
+      "SimpleName": "FurDomainBaseBuff.Name",
+      "ProcessTemplates": false,
+      "enGB": "Predator’s Grace"
+    },
+    {
+      "Key": "16572104e43c413bb6656c4978462c93",
+      "SimpleName": "FurDomainBaseFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "You share a bond with your furred allies. You treat Lore (nature) as a class skill.\nPredator’s Grace: You can, as a swift action, grant yourself a +10-foot bonus to your base speed for 1 round. This bonus increases by 5 feet for every 5 cleric levels you possess. You can use this ability a number of times per day equal to 3 + your Wisdom modifier.\nAnimal Companion: At 4th level, you gain the service of an mammal animal companion. Your effective druid level for this animal companion is equal to your level in the class that gave you access to this domain – 3. (Druids who take this ability through their nature bond class feature use their druid level – 3 to determine the abilities of their animal companions.)"
+    },
+    {
+      "Key": "c6256777d488483c9be6a868c6d60330",
+      "SimpleName": "FurDomainBaseFeature.Name",
+      "ProcessTemplates": false,
+      "enGB": "Fur Subdomain"
+    },
+    {
+      "Key": "0ba8fea8ca0a421ba8436d696179c7e4",
+      "SimpleName": "FurDomainProgression.Description",
+      "ProcessTemplates": true,
+      "enGB": "You share a bond with your furred allies. You treat Lore (nature) as a class skill.\nPredator’s Grace: You can, as a swift action, grant yourself a +10-foot bonus to your base speed for 1 round. This bonus increases by 5 feet for every 5 cleric levels you possess. You can use this ability a number of times per day equal to 3 + your Wisdom modifier.\nAnimal Companion: At 4th level, you gain the service of an mammal animal companion. Your effective druid level for this animal companion is equal to your level in the class that gave you access to this domain – 3. (Druids who take this ability through their nature bond class feature use their druid level – 3 to determine the abilities of their animal companions.)\nDomain Spells: magic fang, hold animal, beast shape I, summon nature's ally IV, beast shape III, summon nature's ally VI, summon nature's ally VII, summon nature's ally VIII, summon nature's ally IX."
+    },
+    {
+      "Key": "433a246b50ab41c2b99cf9eda7caca1e",
+      "SimpleName": "FurDomainProgressionDruid.Description",
+      "ProcessTemplates": true,
+      "enGB": "You share a bond with your furred allies. You treat Lore (nature) as a class skill.\nPredator’s Grace: You can, as a swift action, grant yourself a +10-foot bonus to your base speed for 1 round. This bonus increases by 5 feet for every 5 cleric levels you possess. You can use this ability a number of times per day equal to 3 + your Wisdom modifier.\nAnimal Companion: At 4th level, you gain the service of an mammal animal companion. Your effective druid level for this animal companion is equal to your level in the class that gave you access to this domain – 3. (Druids who take this ability through their nature bond class feature use their druid level – 3 to determine the abilities of their animal companions.)\nDomain Spells: magic fang, hold animal, beast shape I, summon nature's ally IV, beast shape III, summon nature's ally VI, summon nature's ally VII, summon nature's ally VIII, summon nature's ally IX."
+    },
+    {
+      "Key": "242689c58da74f31a804308ece44ef2e",
+      "SimpleName": "FurDomainProgressionSecondary.Description",
+      "ProcessTemplates": true,
+      "enGB": "You share a bond with your furred allies. You treat Lore (nature) as a class skill.\nPredator’s Grace: You can, as a swift action, grant yourself a +10-foot bonus to your base speed for 1 round. This bonus increases by 5 feet for every 5 cleric levels you possess. You can use this ability a number of times per day equal to 3 + your Wisdom modifier.\nAnimal Companion: At 4th level, you gain the service of an mammal animal companion. Your effective druid level for this animal companion is equal to your level in the class that gave you access to this domain – 3. (Druids who take this ability through their nature bond class feature use their druid level – 3 to determine the abilities of their animal companions.)\nDomain Spells: magic fang, hold animal, beast shape I, summon nature's ally IV, beast shape III, summon nature's ally VI, summon nature's ally VII, summon nature's ally VIII, summon nature's ally IX."
     },
     {
       "Key": "4bb98f450bd244e8959873312409ee1c",
@@ -4943,16 +5043,16 @@
       "enGB": "Hypnotic Pattern"
     },
     {
-      "Key": "72b3666c54de4c92b9d9a1c4cef5dcb2",
-      "SimpleName": "IceDomainBaseFeature.Description",
-      "ProcessTemplates": true,
-      "enGB": "\nYou have mastery over rock and stone, can manifest vast pits, and command earth creatures.\nAcid Dart: As a standard action, you can unleash an acid dart targeting any foe within 30 feet as a ranged touch attack. This acid dart deals 1d6 points of acid damage+ 1 point for every two levels you possess in the class that gave you access to this domain. You can use this ability a number of times per day equal to 3 + your Wisdom modifier.\nTunnel Runner (Su): At 6th level, as a standard action, you can create a 30-foot aura of gale-like winds that slows the progress of enemies. Creatures in the aura cannot take a 5-foot step and treat it as as difficult terrain. You can use this ability for a number of rounds per day equal to your cleric level. The rounds do not need to be consecutive."
-    },
-    {
       "Key": "06f3c959eebc44238c4971655e40c363",
       "SimpleName": "IceDomainBaseFeature.Description",
       "ProcessTemplates": true,
       "enGB": "\nYou can manipulate ice and water and mist, conjure hails of ice, and transmute yourself into a frozen form.\nIcicle: As a standard action, you can fire an icicle from your finger, targeting any foe within 30 feet as a ranged touch attack. The icicle deals 1d6 points of cold damage+ 1 point for every two levels you possess in the class that gave you access to this domain. You can use this ability a number of times per day equal to 3 + your Wisdom modifier.\nBody of Ice: At 8th level, you can transmute your body and equipment to ice for a period of time. It takes a standard action to take on the form of ice, and you can end the transmutation with a free action on your turn. When you take on the form of ice, you are immune to cold and have DR 5/—, but you take twice the normal amount of damage from fire. You can take on the form of ice for a number of rounds per day equal to your cleric level. The rounds need not be consecutive."
+    },
+    {
+      "Key": "72b3666c54de4c92b9d9a1c4cef5dcb2",
+      "SimpleName": "IceDomainBaseFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nYou have mastery over rock and stone, can manifest vast pits, and command earth creatures.\nAcid Dart: As a standard action, you can unleash an acid dart targeting any foe within 30 feet as a ranged touch attack. This acid dart deals 1d6 points of acid damage+ 1 point for every two levels you possess in the class that gave you access to this domain. You can use this ability a number of times per day equal to 3 + your Wisdom modifier.\nTunnel Runner (Su): At 6th level, as a standard action, you can create a 30-foot aura of gale-like winds that slows the progress of enemies. Creatures in the aura cannot take a 5-foot step and treat it as as difficult terrain. You can use this ability for a number of rounds per day equal to your cleric level. The rounds do not need to be consecutive."
     },
     {
       "Key": "75db1ef0bee54df0a0ba5c43f4c8b4f9",
@@ -5084,16 +5184,16 @@
       "enGB": "You telepathically wrack the target’s mind and body with agonizing pain that imposes a –4 penalty on attack rolls, skill checks, and combat maneuver checks. A successful Will save reduces the duration to 1 round."
     },
     {
-      "Key": "91e15ae8e1f04d0f9f8855c0afdf3f28",
-      "SimpleName": "InflictPainAbility.SavingThrow",
-      "ProcessTemplates": false,
-      "enGB": "Will partial"
-    },
-    {
       "Key": "cf9477eb02794180aeab229cc05c4e5e",
       "SimpleName": "InflictPainAbility.SavingThrow",
       "ProcessTemplates": false,
       "enGB": "Will disbelief, then Fortitude partial"
+    },
+    {
+      "Key": "91e15ae8e1f04d0f9f8855c0afdf3f28",
+      "SimpleName": "InflictPainAbility.SavingThrow",
+      "ProcessTemplates": false,
+      "enGB": "Will partial"
     },
     {
       "Key": "ce3735ec762040b4a44ce9dcc374f3fd",
@@ -5199,17 +5299,17 @@
       "enGB": "Jaidz"
     },
     {
+      "Key": "92a4e62f50d7416aae1becc807e61aa3",
+      "SimpleName": "JalaijataliFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nTitles: Rillsong   \nAlignment: Chaotic Good   \nAreas of Concern: Natural music, Rapids, Waterfalls   \nDomains: Chaos, Good, Scalykind , Water   \nSubdomains: Azata, Flotsam, Revelry, Rivers   \nFavoured Weapon: Whip (Trident)   \nHoly Symbol: Water from wood pipe   \nSacred Animal: Water lizard   \nJalaijatali is a free-spirited empyreal lord who sings with the voice of a rushing creek. Her presence can be felt in the rapids of a flowing river or beneath the misty cascade of a waterfall. Jalaijatali appears as a beautiful Mwangi woman with skin formed of tiny, iridescent scales. Her pointed ears peek through short black hair, and her body is garbed in a robe of living water that continually splashes and rushes over her form. At a moment's notice, the empyreal lord can pluck a stream of water from her robe to wield as a whip. Rillsong loves to teach mortals the beauty of natural music, from the patter of a summer rain to the sawing of katydids. While Jalaijatali much prefers making music to making war, she can be roused to anger by fiends and evil creatures that corrupt her waters, particularly river drakes or water oni. On Elysium, Jalaijatali lives in a pool fed by a waterfall that falls continually from the sky with no apparent source. Around the pool stands a gazebo of acacia wood and crystal, with raised wooden platforms covered in soft mats of greenery where guests can recline."
+    },
+    {
       "Key": "59e3ebed3bae4b69abecb4091f48ee1c",
       "SimpleName": "JalaijataliFeature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "\nTitles: Rillsong   \nAlignment: Chaotic Good   \nAreas of Concern: Natural music, Rapids, Waterfalls   \nDomains: Chaos, Good, Scalykind , Water   \nSubdomains: Azata, Flotsam, Revelry, Rivers   \nFavoured Weapon: Whip (Trident)   \nHoly Symbol: Water from wood pipe   \nSacred Animal: Water lizard   \nJalaijatali is a free-spirited empyreal lord who sings with the voice of a rushing creek. Her presence can be felt in the rapids of a flowing river or beneath the misty cascade of a waterfall. Jalaijatali appears as a beautiful Mwangi woman with skin formed of tiny, iridescent scales . Her pointed ears peek through short black hair, and her body is garbed in a robe of living water that continually splashes and rushes over her form. At a moment's notice, the empyreal lord can pluck a stream of water from her robe to wield as a whip. Rillsong loves to teach mortals the beauty of natural music, from the patter of a summer rain to the sawing of katydids. While Jalaijatali much prefers making music to making war, she can be roused to anger by fiends and evil creatures that corrupt her waters, particularly river drakes or water oni. On Elysium, Jalaijatali lives in a pool fed by a waterfall that falls continually from the sky with no apparent source. Around the pool stands a gazebo of acacia wood and crystal, with raised wooden platforms covered in soft mats of greenery where guests can recline."
-    },
-    {
-      "Key": "92a4e62f50d7416aae1becc807e61aa3",
-      "SimpleName": "JalaijataliFeature.Description",
-      "ProcessTemplates": true,
-      "enGB": "\nTitles: Rillsong   \nAlignment: Chaotic Good   \nAreas of Concern: Natural music, Rapids, Waterfalls   \nDomains: Chaos, Good, Scalykind , Water   \nSubdomains: Azata, Flotsam, Revelry, Rivers   \nFavoured Weapon: Whip (Trident)   \nHoly Symbol: Water from wood pipe   \nSacred Animal: Water lizard   \nJalaijatali is a free-spirited empyreal lord who sings with the voice of a rushing creek. Her presence can be felt in the rapids of a flowing river or beneath the misty cascade of a waterfall. Jalaijatali appears as a beautiful Mwangi woman with skin formed of tiny, iridescent scales. Her pointed ears peek through short black hair, and her body is garbed in a robe of living water that continually splashes and rushes over her form. At a moment's notice, the empyreal lord can pluck a stream of water from her robe to wield as a whip. Rillsong loves to teach mortals the beauty of natural music, from the patter of a summer rain to the sawing of katydids. While Jalaijatali much prefers making music to making war, she can be roused to anger by fiends and evil creatures that corrupt her waters, particularly river drakes or water oni. On Elysium, Jalaijatali lives in a pool fed by a waterfall that falls continually from the sky with no apparent source. Around the pool stands a gazebo of acacia wood and crystal, with raised wooden platforms covered in soft mats of greenery where guests can recline."
     },
     {
       "Key": "8e2a5f0557a94d51be2ebb1313ae91b8",
@@ -5382,17 +5482,17 @@
       "enGB": "Lady Nanbyo"
     },
     {
-      "Key": "44cfe3bd69c84e1b9f07ca7fde904b3d",
-      "SimpleName": "LalaciFeature.Description",
-      "ProcessTemplates": true,
-      "enGB": "\nTitles: He of Motley Repose   \nAlignment: Chaotic Good   \nAreas of Concern: Rainbows, Relaxation, Shade   \nDomains: Chaos, Good, Luck, Sun   \nSubdomains: Azata, Fate, Light, Whimsy   \nFavoured Weapon: Sling (Slingstaff)   \nHoly Symbol: Rainbow with shadow   \nSacred Animal: Lacewing   \nLalaci sees the beauty in conflict. The sun wars with the rain and creates a rainbow, and He of Motley Repose believes that everyone's inner nature should be a similar mix of action and restraint, placid adoration and righteous scorn. He offers rest and relaxation to those who meet each day with excitement and vigor and who may be tired from the chaotic beauty that is their life. To mortal eyes, Lalaci appears to be fair-skinned with white-blonde hair and yellow-white eyes. He tucks the two prismatic wings that curve from his shoulders down so that he appears to wear a beautiful multicolored cloak, though among his own kind he walks in his true naked form, with crystalline flesh that refracts light as golden rays. He of Motley Repose provides rest to the hardworking and shade to those exhausted from the sun. Glassblowers and illusionists often find creative inspiration in Lalaci's rainbows; particularly gifted glass artists and lightweavers who lead worthy lives sometimes find small prisms at their workstations-tokens of Lalaci's favor. His devotees claim that the reflections of rainbows in natural bodies of water create portals to his celestial domain: an enormous, warped glass palace that floats on a cloud across the surface of Elysium."
-    },
-    {
       "Key": "21eaf4d1d6474217a066392160e8dd15",
       "SimpleName": "LalaciFeature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "\nTitles: He of Motley Repose   \nAlignment: Chaotic Good   \nAreas of Concern: Rainbows, Relaxation, Shade   \nDomains: Chaos, Good, Luck, Sun   \nSubdomains: Azata, Fate, Light, Whimsy   \nFavoured Weapon: Sling (Slingstaff)   \nHoly Symbol: Rainbow with shadow   \nSacred Animal: Lacewing   \nLalaci sees the beauty in conflict. The sun wars with the rain and creates a rainbow, and He of Motley Repose believes that everyone's inner nature should be a similar mix of action and restraint, placid adoration and righteous scorn. He offers rest and relaxation to those who meet each day with excitement and vigor and who may be tired from the chaotic beauty that is their life. To mortal eyes, Lalaci appears to be fair-skinned with white-blonde hair and yellow-white eyes. He tucks the two prismatic wings that curve from his shoulders down so that he appears to wear a beautiful multicolored cloak, though among his own kind he walks in his true naked form, with crystalline flesh that refracts light as golden rays. He of Motley Repose provides rest to the hardworking and shade to those exhausted from the sun. Glassblowers and illusionists often find creative inspiration in Lalaci's rainbows; particularly gifted glass artists and lightweavers who lead worthy lives sometimes find small prisms at their workstations-tokens of Lalaci's favor. His devotees claim that the reflections of rainbows in natural bodies of water create portals to his celestial domain: an enormous, warped gla s s palace that floats on a cloud across the surface of Elysium."
+    },
+    {
+      "Key": "44cfe3bd69c84e1b9f07ca7fde904b3d",
+      "SimpleName": "LalaciFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nTitles: He of Motley Repose   \nAlignment: Chaotic Good   \nAreas of Concern: Rainbows, Relaxation, Shade   \nDomains: Chaos, Good, Luck, Sun   \nSubdomains: Azata, Fate, Light, Whimsy   \nFavoured Weapon: Sling (Slingstaff)   \nHoly Symbol: Rainbow with shadow   \nSacred Animal: Lacewing   \nLalaci sees the beauty in conflict. The sun wars with the rain and creates a rainbow, and He of Motley Repose believes that everyone's inner nature should be a similar mix of action and restraint, placid adoration and righteous scorn. He offers rest and relaxation to those who meet each day with excitement and vigor and who may be tired from the chaotic beauty that is their life. To mortal eyes, Lalaci appears to be fair-skinned with white-blonde hair and yellow-white eyes. He tucks the two prismatic wings that curve from his shoulders down so that he appears to wear a beautiful multicolored cloak, though among his own kind he walks in his true naked form, with crystalline flesh that refracts light as golden rays. He of Motley Repose provides rest to the hardworking and shade to those exhausted from the sun. Glassblowers and illusionists often find creative inspiration in Lalaci's rainbows; particularly gifted glass artists and lightweavers who lead worthy lives sometimes find small prisms at their workstations-tokens of Lalaci's favor. His devotees claim that the reflections of rainbows in natural bodies of water create portals to his celestial domain: an enormous, warped glass palace that floats on a cloud across the surface of Elysium."
     },
     {
       "Key": "2ea2124c29414986a7b509b9b5184b8b",
@@ -5498,6 +5598,18 @@
       "SimpleName": "LionShamanBonusFeatSelection.Name",
       "ProcessTemplates": false,
       "enGB": "Lion Totem Druid Bonus Feat"
+    },
+    {
+      "Key": "44ee8127c483488e9dba689602652a96",
+      "SimpleName": "LionShamanCompanionSelection.Description",
+      "ProcessTemplates": true,
+      "enGB": "Unlike normal animals of its kind, an animal companion's Hit Dice, abilities, skills, and feats advance as the druid advances in level. If a character receives an animal companion from more than one source, her effective druid levels stack for the purposes of determining the statistics and abilities of the companion. Most animal companions increase in size when their druid reaches 4th or 7th level, depending on the companion."
+    },
+    {
+      "Key": "579daab041214948bbe008d5f3f5b616",
+      "SimpleName": "LionShamanCompanionSelection.Name",
+      "ProcessTemplates": false,
+      "enGB": "Lion Totem Animal Companion"
     },
     {
       "Key": "5566249330e242f0b0ab83fc3b5172c7",
@@ -6508,17 +6620,17 @@
       "enGB": "Bones"
     },
     {
+      "Key": "652e3f84a2804e83b5bc11a0934f7453",
+      "SimpleName": "OceansEchoDragonMysteryFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "Gain access to the spells and revelations of the dragon mystery. \nDue to the ocean's echo archetype the class skills gained from this archtypeare changed to Persuasion, Knowledge (world) and Lore (nature)"
+    },
+    {
       "Key": "98f88456e0f44c4b816a7118f3d98e27",
       "SimpleName": "OceansEchoDragonMysteryFeature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "An oracle with the dragon mystery adds Mobility, Persuasion, Perception and Knowledge (world)  to her list of class skills."
-    },
-    {
-      "Key": "652e3f84a2804e83b5bc11a0934f7453",
-      "SimpleName": "OceansEchoDragonMysteryFeature.Description",
-      "ProcessTemplates": true,
-      "enGB": "Gain access to the spells and revelations of the dragon mystery. \nDue to the ocean's echo archetype the class skills gained from this archtypeare changed to Persuasion, Knowledge (world) and Lore (nature)"
     },
     {
       "Key": "911140f184994084b59382f6e5ff0dcf",
@@ -6795,17 +6907,17 @@
       "enGB": "Upon achieving 20th level, your rapport with the heavens grants you perfect harmony with the universe. You receive a bonus on all saving throws equal to your Charisma modifier. You become immune to fear effects, and automatically confirm all critical hits. Once per day, should you die, 1 round after dying you are reborn. Your body re-forms with all your equipment, and you return to life with maximum hit points."
     },
     {
-      "Key": "34d9258f52d54d698abef589299c445c",
-      "SimpleName": "OracleHeavensMysteryFeature.Description",
-      "ProcessTemplates": true,
-      "enGB": "An oracle with the heavens mystery adds Perception and Knowledge (Arcana)  to her list of class skills."
-    },
-    {
       "Key": "5a4e1c62b9e04b2e9c66bf97ef9657b7",
       "SimpleName": "OracleHeavensMysteryFeature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "An oracle with the heavens mystery adds Perception and Knowledge (world)  to her list of class skills."
+    },
+    {
+      "Key": "34d9258f52d54d698abef589299c445c",
+      "SimpleName": "OracleHeavensMysteryFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "An oracle with the heavens mystery adds Perception and Knowledge (Arcana)  to her list of class skills."
     },
     {
       "Key": "f5c964d3e8594713b330e2723b10d374",
@@ -8371,17 +8483,17 @@
       "enGB": "Ptah"
     },
     {
-      "Key": "da43197674cd494792e4798302bd608a",
-      "SimpleName": "PuluraFeature.Description",
-      "ProcessTemplates": true,
-      "enGB": "\nTitles: The Shimmering Maiden, The North Star, Mistress of the Stars, Light of the Aurora  \nAlignment: Chaotic Good   \nAreas of Concern: Constellations, Homesickness, Northern Lights\nDomains: Air, Chaos, Good, Weather   \nSubdomains: Azata, Cloud, Seasons, Stars   \nFavoured Weapon: Sling\nHoly Symbol: Face in Northern Lights   \nSacred Animal: Firefly   \nSacred Colour: Midnight Blue   \nPulura, the mistress of the stars and the aurora, is an angel empyreal lord, the patron of those travellers that become homesick, lost, or injured in the snowy wastes of the far north.Pulura was worshiped as a major deity in the lost Kellid realm of Sarkoris. The Sarkorians saw her and the demon lord Kostchtchie as dualistic gods of cold. She was honoured by a mighty ring of idols in the city of Dyinglight but, in common with the rest of Sarkoris, the city fell to the demons of the Worldwound. A cascade named for her, Pulura's Fall, once flowed to the northeast of Iz; it has since been swallowed by the Worldwound, but its namesake, a temple to Pulura, remains, and has been withstanding a demonic siege for more than a century. An idol to Pulura stands on the Walk of Lost Gods in the ravaged town of Gundrun.\nAppearance: Pulura appears as a lovely, alluring Tian woman with the grace of a dancer, a gravity about her expression, and black, flowing hair gleaming with the light of stars. Her robes appear to be made from green and pink light, and flicker with every one of her movements. She often appears dancing amid the aurora borealis in the skies of far northern lands, and legend has it that her extraordinary beauty will burn any mortals who dare approach her too closely. She wields a sling made from sighs that fires bullets of starlight."
-    },
-    {
       "Key": "f773898dd6204d04a69be8d798b026d9",
       "SimpleName": "PuluraFeature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "\n: The Shimmering Maiden, The North Star, Mistress of the Stars, Light of the Aurora  \nAlignment: Chaotic Good   \nAreas of Concern: Constellations, Homesickness, Northern Lights\nDomains: Air, Chaos, Good, Weather   \nSubdomains: Azata, Cloud, Seasons, Stars   \nFavoured Weapon: Sling\nHoly Symbol: Face in Northern Lights   \nSacred Animal: Firefly   \nSacred Colour: Midnight Blue   \nPulura, the mistress of the stars and the aurora, is an angel empyreal lord, the patron of those travellers that become homesick, lost, or injured in the snowy wastes of the far north.   Pulura was worshiped as a major deity in the lost Kellid realm of Sarkoris. The Sarkorians saw her and the demon lord Kostchtchie as dualistic gods of cold. She was honoured by a mighty ring of idols in the city of Dyinglight but, in common with the rest of Sarkoris, the city fell to the demons of the Worldwound. A cascade named for her, Pulura's Fall, once flowed to the northeast of Iz; it has since been swallowed by the Worldwound, but its namesake, a temple to Pulura, remains, and has been withstanding a demonic siege for more than a century. An idol to Pulura stands on the Walk of Lost Gods in the ravaged town of Gundrun.   \nAppearance: Pulura appears as a lovely, alluring Tian woman with the grace of a dancer, a gravity about her expression, and black, flowing hair gleaming with the light of stars. Her robes appear to be made from green and pink light, and flicker with every one of her movements. She often appears dancing amid the aurora borealis in the skies of far northern lands, and legend has it that her extraordinary beauty will burn any mortals who dare approach her too closely. She wields a sling made from sighs that fires bullets of starlight."
+    },
+    {
+      "Key": "da43197674cd494792e4798302bd608a",
+      "SimpleName": "PuluraFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nTitles: The Shimmering Maiden, The North Star, Mistress of the Stars, Light of the Aurora  \nAlignment: Chaotic Good   \nAreas of Concern: Constellations, Homesickness, Northern Lights\nDomains: Air, Chaos, Good, Weather   \nSubdomains: Azata, Cloud, Seasons, Stars   \nFavoured Weapon: Sling\nHoly Symbol: Face in Northern Lights   \nSacred Animal: Firefly   \nSacred Colour: Midnight Blue   \nPulura, the mistress of the stars and the aurora, is an angel empyreal lord, the patron of those travellers that become homesick, lost, or injured in the snowy wastes of the far north.Pulura was worshiped as a major deity in the lost Kellid realm of Sarkoris. The Sarkorians saw her and the demon lord Kostchtchie as dualistic gods of cold. She was honoured by a mighty ring of idols in the city of Dyinglight but, in common with the rest of Sarkoris, the city fell to the demons of the Worldwound. A cascade named for her, Pulura's Fall, once flowed to the northeast of Iz; it has since been swallowed by the Worldwound, but its namesake, a temple to Pulura, remains, and has been withstanding a demonic siege for more than a century. An idol to Pulura stands on the Walk of Lost Gods in the ravaged town of Gundrun.\nAppearance: Pulura appears as a lovely, alluring Tian woman with the grace of a dancer, a gravity about her expression, and black, flowing hair gleaming with the light of stars. Her robes appear to be made from green and pink light, and flicker with every one of her movements. She often appears dancing amid the aurora borealis in the skies of far northern lands, and legend has it that her extraordinary beauty will burn any mortals who dare approach her too closely. She wields a sling made from sighs that fires bullets of starlight."
     },
     {
       "Key": "0f1973ca0a0b43ba887b515be2331e58",
@@ -8492,13 +8604,6 @@
       "enGB": "Ragadahn"
     },
     {
-      "Key": "a25bd1eabfbf4b04bd0c91e5c1ae1ba4",
-      "SimpleName": "RagathielFeature.Description",
-      "ProcessTemplates": true,
-      "IsUsed": false,
-      "enGB": "\nTitles: General of Vengeance   \nAlignment: Lawful Good   \nDomains: Destruction, Good, Law, Nobility   \nSubdomains: Archon, Leadership, Martyr, Rage   \nFavoured Weapon: Bastard Sword   \nHoly Symbol: Sword, crossed with Wing   \nSacred Animal: Mastiff   \nSacred Colours: Crimson, Gold   \nRagathiel is an empyreal lord—a good servant of the gods who through transcendence has achieved some small measure of divine power—known as the General of Vengeance. His portfolio includes chivalry, duty, and vengeance, and his holy symbol is a bastard sword crossed with a crimson wing. He makes his home at the base of the mountain of Heaven, in his eponymous fortress, a magnificent steel structure designed to withstand a thousand-year siege if need be. Ragathiel takes an active role in the battle against Hell's fiendish legions. He shines at the head of his army, a figure of golden light cleaving through the ranks of devils that face him. Soldiers of all kinds, but particularly knights, pay homage to Ragathiel and pray for his virtue and wrathful strength in battle. Those who have taken vows, especially those of duty or vengeance, hold Ragathiel as their ideal, and his agents sometimes assist those who have been grievously wronged and now seek righteous vengeance. As strange as it may seem, Ragathiel is the son of Feronia, a demigoddess of the Plane of Fire, and Dispater, the Father of Dis. He was conceived in a brief tryst (lasting only a few centuries), after which his mother took him out of Hell. Ragathiel's tainted heritage has left him with a wrathful heart, and the angel struggles constantly to master his baser impulses in service to the light. For thousands of years he strove to prove himself to the angelic choirs of Heaven. In the Maelstrom he wrestled for 16 years with a monstrous evil serpent whose scales wept acidic blood until he was able to choke the life out of it. He led an entire army against one of the iron fortresses of Avernus and burned the castle to the ground with holy fire, single-handedly maiming Infernal Duke Deumus in the process. Finally the other empyreal lords agreed to admit Ragathiel into their ranks, and now they appear to trust the angel completely—though that trust took centuries to develop. At some point in history, Ragathiel destroyed Typhon, the original ruler of the first layer of Hell.He may have been manipulated into doing so by the schemes of Asmodeus to punish Typhon for his indiscretions.[9] Ragathiel was once served by the Hand of the Inheritor, an angel who now acts as the goddess Iomedae's herald. Then known as the Hand of Vengeance, this angel asked to be reassigned to Iomedae after the death of Aroden. \nAppearance: Ragathiel is a tower of glorious might. He stands almost 20 feet tall, and five lofty burning wings stretch from his back. The General of Vengeance once had six wings, but one was severed, torn from his body by the archdevil Dispater—Ragathiel's father.   \nWorship: Ragathiel is commonly worshiped by the avowed, knights, soldiers, the wronged, and the empyreal lord employs aasimar, paladins, blink dogs, and kirin as his most common servants.[4] The holiest time for Ragathiel's followers is the brief moments before and after a battle. The faithful ask Ragathiel's eyes to fall upon them and for his wings to shield them.This is also a standard greeting and farewell among worshipers. Followers of Ragathiel commonly wear red and silver clothing.Many also don an ornament or sigil the color of flames, typically on the helmet. Ragathiel has a small but old cult in Magnimar, a city known for its many mystery cults revering various empyreal lords.   \nPaladin Code:   \n*I will avenge evil wrought upon the innocent.   \n*I will not give my word lightly, but once it is given, I will uphold a promise until my last breath.   \n*Those proven guilty must be punished for their crimes. I will not turn a blind eye to wrongdoing.   \n*Rage is a virtue and a strength only when focused against the deserving. I will never seek disproportionate retribution.   \n*Redemption finds hearts from even the cruelest origins. I will strive not to act upon prejudice against fellow mortals based on race or origin."
-    },
-    {
       "Key": "312f5f125aa545abb3fa1104c97d040a",
       "SimpleName": "RagathielFeature.Description",
       "ProcessTemplates": true,
@@ -8510,6 +8615,13 @@
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "\nTitles: General of Vengeance   \nAlignment: Lawful Good   \nDomains: Destruction, Good, Law, Nobility   \nSubdomains: Archon, Leadership, Martyr, Rage   \nFavoured Weapon: Bastard Sword   \nHoly Symbol: Sword, crossed with Wing   \nSacred Animal: Mastiff   \nSacred Colours: Crimson, Gold   \nRagathiel is an empyreal lord—a good servant of the gods who through transcendence has achieved some small measure of divine power—known as the General of Vengeance. His portfolio includes chivalry, duty, and vengeance, and his holy symbol is a bastard sword crossed with a crimson wing. He makes his home at the base of the mountain of Heaven, in his eponymous fortress, a magnificent steel structure designed to withstand a thousand-year siege if need be. Ragathiel takes an active role in the battle against Hell's fiendish legions. He shines at the head of his army, a figure of golden light cleaving through the ranks of devils that face him. Soldiers of all kinds, but particularly knights, pay homage to Ragathiel and pray for his virtue and wrathful strength in battle. Those who have taken vows, especially those of duty or vengeance, hold Ragathiel as their ideal, and his agents sometimes assist those who have been grievously wronged and now seek righteous vengeance. As strange as it may seem, Ragathiel is the son of Feronia, a demigoddess of the Plane of Fire, and Dispater, the Father of Dis. He was conceived in a brief tryst (lasting only a few centuries), after which his mother took him out of Hell. Ragathiel's tainted heritage has left him with a wrathful heart, and the angel struggles constantly to master his baser impulses in service to the light. For thousands of years he strove to prove himself to the angelic choirs of Heaven. In the Maelstrom he wrestled for 16 years with a monstrous evil serpent whose scales wept acidic blood until he was able to choke the life out of it. He led an entire army against one of the iron fortresses of Avernus and burned the castle to the ground with holy fire, single-handedly maiming Infernal Duke Deumus in the process. Finally the other empyreal lords agreed to admit Ragathiel into their ranks, and now they appear to trust the angel completely—though that trust took centuries to develop. At some point in history, Ragathiel destroyed Typhon, the original ruler of the first layer of Hell.He may have been manipulated into doing so by the schemes of Asmodeus to punish Typhon for his indiscretions. Ragathiel was once served by the Hand of the Inheritor, an angel who now acts as the goddess Iomedae's herald. Then known as the Hand of Vengeance, this angel asked to be reassigned to Iomedae after the death of Aroden. \nAppearance: Ragathiel is a tower of glorious might. He stands almost 20 feet tall, and five lofty burning wings stretch from his back. The General of Vengeance once had six wings, but one was severed, torn from his body by the archdevil Dispater—Ragathiel's father.   \nWorship: Ragathiel is commonly worshiped by the avowed, knights, soldiers, the wronged, and the empyreal lord employs aasimar, paladins, blink dogs, and kirin as his most common servants. The holiest time for Ragathiel's followers is the brief moments before and after a battle. The faithful ask Ragathiel's eyes to fall upon them and for his wings to shield them.This is also a standard greeting and farewell among worshipers. Followers of Ragathiel commonly wear red and silver clothing.Many also don an ornament or sigil the color of flames, typically on the helmet. Ragathiel has a small but old cult in Magnimar, a city known for its many mystery cults revering various empyreal lords.   \nPaladin Code:   \n*I will avenge evil wrought upon the innocent.   \n*I will not give my word lightly, but once it is given, I will uphold a promise until my last breath.   \n*Those proven guilty must be punished for their crimes. I will not turn a blind eye to wrongdoing.   \n*Rage is a virtue and a strength only when focused against the deserving. I will never seek disproportionate retribution.   \n*Redemption finds hearts from even the cruelest origins. I will strive not to act upon prejudice against fellow mortals based on race or origin."
+    },
+    {
+      "Key": "a25bd1eabfbf4b04bd0c91e5c1ae1ba4",
+      "SimpleName": "RagathielFeature.Description",
+      "ProcessTemplates": true,
+      "IsUsed": false,
+      "enGB": "\nTitles: General of Vengeance   \nAlignment: Lawful Good   \nDomains: Destruction, Good, Law, Nobility   \nSubdomains: Archon, Leadership, Martyr, Rage   \nFavoured Weapon: Bastard Sword   \nHoly Symbol: Sword, crossed with Wing   \nSacred Animal: Mastiff   \nSacred Colours: Crimson, Gold   \nRagathiel is an empyreal lord—a good servant of the gods who through transcendence has achieved some small measure of divine power—known as the General of Vengeance. His portfolio includes chivalry, duty, and vengeance, and his holy symbol is a bastard sword crossed with a crimson wing. He makes his home at the base of the mountain of Heaven, in his eponymous fortress, a magnificent steel structure designed to withstand a thousand-year siege if need be. Ragathiel takes an active role in the battle against Hell's fiendish legions. He shines at the head of his army, a figure of golden light cleaving through the ranks of devils that face him. Soldiers of all kinds, but particularly knights, pay homage to Ragathiel and pray for his virtue and wrathful strength in battle. Those who have taken vows, especially those of duty or vengeance, hold Ragathiel as their ideal, and his agents sometimes assist those who have been grievously wronged and now seek righteous vengeance. As strange as it may seem, Ragathiel is the son of Feronia, a demigoddess of the Plane of Fire, and Dispater, the Father of Dis. He was conceived in a brief tryst (lasting only a few centuries), after which his mother took him out of Hell. Ragathiel's tainted heritage has left him with a wrathful heart, and the angel struggles constantly to master his baser impulses in service to the light. For thousands of years he strove to prove himself to the angelic choirs of Heaven. In the Maelstrom he wrestled for 16 years with a monstrous evil serpent whose scales wept acidic blood until he was able to choke the life out of it. He led an entire army against one of the iron fortresses of Avernus and burned the castle to the ground with holy fire, single-handedly maiming Infernal Duke Deumus in the process. Finally the other empyreal lords agreed to admit Ragathiel into their ranks, and now they appear to trust the angel completely—though that trust took centuries to develop. At some point in history, Ragathiel destroyed Typhon, the original ruler of the first layer of Hell.He may have been manipulated into doing so by the schemes of Asmodeus to punish Typhon for his indiscretions.[9] Ragathiel was once served by the Hand of the Inheritor, an angel who now acts as the goddess Iomedae's herald. Then known as the Hand of Vengeance, this angel asked to be reassigned to Iomedae after the death of Aroden. \nAppearance: Ragathiel is a tower of glorious might. He stands almost 20 feet tall, and five lofty burning wings stretch from his back. The General of Vengeance once had six wings, but one was severed, torn from his body by the archdevil Dispater—Ragathiel's father.   \nWorship: Ragathiel is commonly worshiped by the avowed, knights, soldiers, the wronged, and the empyreal lord employs aasimar, paladins, blink dogs, and kirin as his most common servants.[4] The holiest time for Ragathiel's followers is the brief moments before and after a battle. The faithful ask Ragathiel's eyes to fall upon them and for his wings to shield them.This is also a standard greeting and farewell among worshipers. Followers of Ragathiel commonly wear red and silver clothing.Many also don an ornament or sigil the color of flames, typically on the helmet. Ragathiel has a small but old cult in Magnimar, a city known for its many mystery cults revering various empyreal lords.   \nPaladin Code:   \n*I will avenge evil wrought upon the innocent.   \n*I will not give my word lightly, but once it is given, I will uphold a promise until my last breath.   \n*Those proven guilty must be punished for their crimes. I will not turn a blind eye to wrongdoing.   \n*Rage is a virtue and a strength only when focused against the deserving. I will never seek disproportionate retribution.   \n*Redemption finds hearts from even the cruelest origins. I will strive not to act upon prejudice against fellow mortals based on race or origin."
     },
     {
       "Key": "afeb33447f8d4df9a28228e293eb6224",
@@ -9399,16 +9511,16 @@
       "enGB": "Silver Champion"
     },
     {
-      "Key": "c8220270704a44c79e2d4ef6bf6ddce6",
-      "SimpleName": "SilverChampionSpellbook.Name",
-      "ProcessTemplates": false,
-      "enGB": "Claw of the False Wyrm"
-    },
-    {
       "Key": "96ac5395a9054d339832829bc004945d",
       "SimpleName": "SilverChampionSpellbook.Name",
       "ProcessTemplates": false,
       "enGB": "SilverChampion"
+    },
+    {
+      "Key": "c8220270704a44c79e2d4ef6bf6ddce6",
+      "SimpleName": "SilverChampionSpellbook.Name",
+      "ProcessTemplates": false,
+      "enGB": "Claw of the False Wyrm"
     },
     {
       "Key": "8847cba8444f4ce29366a7d71760800c",
@@ -10435,17 +10547,17 @@
       "enGB": "In melee combat, you can help your allies attack or defend by distracting or interfering with an opponent. If you’re in position to make a melee attack on an opponent you can attempt to aid your allies against that enemy as a swift action. The distracted enemy is inflicted with a -1 penalty on their next attack roll against your allies. This penalty only applies to the first attack roll and is removed after 1 round."
     },
     {
+      "Key": "b532bcb68bcf4aa59d696fdff82b944a",
+      "SimpleName": "SwiftAidAnotherDefenceBuff.Name",
+      "ProcessTemplates": false,
+      "enGB": "Swift Aid Another - Distracted Attacks"
+    },
+    {
       "Key": "837abb229abf457db821014341b7f858",
       "SimpleName": "SwiftAidAnotherDefenceBuff.Name",
       "ProcessTemplates": false,
       "IsUsed": false,
       "enGB": "Swift Aid Another - Defence"
-    },
-    {
-      "Key": "b532bcb68bcf4aa59d696fdff82b944a",
-      "SimpleName": "SwiftAidAnotherDefenceBuff.Name",
-      "ProcessTemplates": false,
-      "enGB": "Swift Aid Another - Distracted Attacks"
     },
     {
       "Key": "70cd3785f5e444169f173f38b4aaf487",
@@ -10472,17 +10584,17 @@
       "enGB": "In melee combat, you can help your allies attack or defend by distracting or interfering with an opponent. If you’re in position to make a melee attack on an opponent you can attempt to aid your allies against that enemy as a swift action. The distracted enemy is inflicted with a -1 penalty to either their AC against the next attack by your allies. This penalty only applies to the first attack roll and is removed after 1 round."
     },
     {
-      "Key": "2530e57ca69a41dbba4e72c80ac2d2d9",
-      "SimpleName": "SwiftAidAnotherOffenceBuff.Name",
-      "ProcessTemplates": false,
-      "enGB": "Swift Aid Another - Distracted Defending"
-    },
-    {
       "Key": "39d6c37ad59b44a8b74ff1d81c1d5cb3",
       "SimpleName": "SwiftAidAnotherOffenceBuff.Name",
       "ProcessTemplates": false,
       "IsUsed": false,
       "enGB": "Swift Aid Another - Offence"
+    },
+    {
+      "Key": "2530e57ca69a41dbba4e72c80ac2d2d9",
+      "SimpleName": "SwiftAidAnotherOffenceBuff.Name",
+      "ProcessTemplates": false,
+      "enGB": "Swift Aid Another - Distracted Defending"
     },
     {
       "Key": "691f16ab03b2471280c3f15fd5459295",
@@ -10989,17 +11101,17 @@
       "enGB": "Tsathoggua"
     },
     {
-      "Key": "0b1bca96ebc740a195f9b916f7444ca8",
-      "SimpleName": "TsukiyoFeature.Description",
-      "ProcessTemplates": true,
-      "enGB": "\nTitles: Prince of the Moon   \nAlignment: Lawful Good   \nAreas of Concern: Jade, The Moon, Spirits   \nDomains: Darkness, Good, Law, Madness, Repose   \nSubdomains: Ancestors, Archon, Insanity, Moon, Night, Souls   \nFavoured Weapon: Longspear   \nHoly Symbol: Jade Crescent Moon   \nSacred Animal: Hair   \nTsukiyo is the god of jade, the moon, and spirits. He is the brother of Fumeiyoshi, the god of envy, and lover of thesun goddess Shizuru. Called the Prince of the Moon, Tsukiyo was slain by his jealous brother, and it is said that Shizuru’s tears, mingled with Tsukiyo’s blood, formed the first stones of jade, which remains sacred to the moon god’s faith. Tsukiyo was returned to life by Shizuru, and upon his rebirth, he acquired the portfolio of spirits and became patron of the reincarnated samsaran race. His worship is popular in the Forest of Spirits, and his shrines can often be found attached to larger temples to Shizuru."
-    },
-    {
       "Key": "9e820d1adb3c4f1d9be14bfb1b97752f",
       "SimpleName": "TsukiyoFeature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "\nTitles: Prince of the Moon   \nAlignment: Lawful Good   \nAreas of Concern: Jade, The Moon, Spirits   \nDomains: Darkness, Good, Law, Madness, Repose   \nSubdomains: Ancestors, Archon, Insanity, Moon, Night, Souls   \nFavoured Weapon: Longspear   \nHoly Symbol: Jade Crescent Moon   \nSacred Animal: Hair   Tsukiyo is the god of jade, the moon, and spirits. He is the brother of Fumeiyoshi, the god of envy, and lover of thesun goddess Shizuru. Called the Prince of the Moon, Tsukiyo was slain by his jealous brother, and it is said that Shizuru’s tears, mingled with Tsukiyo’s blood, formed the first stones of jade, which remains sacred to the moon god’s faith. Tsukiyo was returned to life by Shizuru, and upon his rebirth, he acquired the portfolio of spirits and became patron of the reincarnated samsaran race. His worship is popular in the Forest of Spirits, and his shrines can often be found attached to larger temples to Shizuru."
+    },
+    {
+      "Key": "0b1bca96ebc740a195f9b916f7444ca8",
+      "SimpleName": "TsukiyoFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nTitles: Prince of the Moon   \nAlignment: Lawful Good   \nAreas of Concern: Jade, The Moon, Spirits   \nDomains: Darkness, Good, Law, Madness, Repose   \nSubdomains: Ancestors, Archon, Insanity, Moon, Night, Souls   \nFavoured Weapon: Longspear   \nHoly Symbol: Jade Crescent Moon   \nSacred Animal: Hair   \nTsukiyo is the god of jade, the moon, and spirits. He is the brother of Fumeiyoshi, the god of envy, and lover of thesun goddess Shizuru. Called the Prince of the Moon, Tsukiyo was slain by his jealous brother, and it is said that Shizuru’s tears, mingled with Tsukiyo’s blood, formed the first stones of jade, which remains sacred to the moon god’s faith. Tsukiyo was returned to life by Shizuru, and upon his rebirth, he acquired the portfolio of spirits and became patron of the reincarnated samsaran race. His worship is popular in the Forest of Spirits, and his shrines can often be found attached to larger temples to Shizuru."
     },
     {
       "Key": "41be91ff932b4a44b1737fabf52e2e9d",
