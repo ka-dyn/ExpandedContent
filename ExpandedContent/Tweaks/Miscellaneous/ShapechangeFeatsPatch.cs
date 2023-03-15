@@ -105,6 +105,11 @@ namespace ExpandedContent.Tweaks.Miscellaneous {
                 RakingClawsFeatureConditionsChecker.ConditionsChecker.Conditions = RakingClawsFeatureConditionsChecker.ConditionsChecker.Conditions.AppendToArray(
                     new ContextConditionHasFact() { Not = false, m_Fact = WildShapeDragonShapeFeature.ToReference<BlueprintUnitFactReference>() }
                     );
+                var FrightfulShapeFeatureCondition = Resources.GetBlueprint<BlueprintFeature>("8e8a34c754d649aa9286fe8ee5cc3f10").GetComponent<PrerequisiteCondition>().Condition;
+                var FrightfulShapeFeatureConditionsChecker = FrightfulShapeFeatureCondition as OrAndLogic;
+                FrightfulShapeFeatureConditionsChecker.ConditionsChecker.Conditions = FrightfulShapeFeatureConditionsChecker.ConditionsChecker.Conditions.AppendToArray(
+                    new ContextConditionHasFact() { Not = false, m_Fact = WildShapeDragonShapeFeature.ToReference<BlueprintUnitFactReference>() }
+                    );
             }
             if (IsTabletopTweaksBaseEnabled()) { //TTT enabled
 
@@ -133,10 +138,21 @@ namespace ExpandedContent.Tweaks.Miscellaneous {
                 if (ModSupportUtilities.GetRakingClawsTTTBaseSetting()) { //TTT Option ON - Raking Claws
                     var RakingClawsFeature = Resources.GetBlueprint<BlueprintFeature>("a1b262d2b1ef478994113fc941fa3a32").GetComponent<PrerequisiteFeaturesFromList>();
                     RakingClawsFeature.m_Features = RakingClawsFeature.m_Features.AppendToArray(WildShapeDragonShapeFeature.ToReference<BlueprintFeatureReference>());
-                } else { //TTT Option OFF - Raking Claws
+                } 
+                else { //TTT Option OFF - Raking Claws
                     var RakingClawsFeatureCondition = Resources.GetBlueprint<BlueprintFeature>("a1b262d2b1ef478994113fc941fa3a32").GetComponent<PrerequisiteCondition>().Condition;
                     var RakingClawsFeatureConditionsChecker = RakingClawsFeatureCondition as OrAndLogic;
                     RakingClawsFeatureConditionsChecker.ConditionsChecker.Conditions = RakingClawsFeatureConditionsChecker.ConditionsChecker.Conditions.AppendToArray(
+                        new ContextConditionHasFact() { Not = false, m_Fact = WildShapeDragonShapeFeature.ToReference<BlueprintUnitFactReference>() }
+                        );
+                }
+                if (ModSupportUtilities.GetFrightfulShapeTTTBaseSetting()) { //TTT Option ON - Frightful Shape
+                    var FrightfulShapeFeature = Resources.GetBlueprint<BlueprintFeature>("8e8a34c754d649aa9286fe8ee5cc3f10").GetComponent<PrerequisiteFeaturesFromList>();
+                    FrightfulShapeFeature.m_Features = FrightfulShapeFeature.m_Features.AppendToArray(WildShapeDragonShapeFeature.ToReference<BlueprintFeatureReference>());
+                } else { //TTT Option OFF - Frightful Shape
+                    var FrightfulShapeFeatureCondition = Resources.GetBlueprint<BlueprintFeature>("8e8a34c754d649aa9286fe8ee5cc3f10").GetComponent<PrerequisiteCondition>().Condition;
+                    var FrightfulShapeFeatureConditionsChecker = FrightfulShapeFeatureCondition as OrAndLogic;
+                    FrightfulShapeFeatureConditionsChecker.ConditionsChecker.Conditions = FrightfulShapeFeatureConditionsChecker.ConditionsChecker.Conditions.AppendToArray(
                         new ContextConditionHasFact() { Not = false, m_Fact = WildShapeDragonShapeFeature.ToReference<BlueprintUnitFactReference>() }
                         );
                 }

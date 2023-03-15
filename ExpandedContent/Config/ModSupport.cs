@@ -9,10 +9,13 @@ using Kingmaker.Enums;
 using Kingmaker.RuleSystem;
 using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.UnitLogic.Abilities.Blueprints;
+using Kingmaker.UnitLogic.Buffs;
+using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Mechanics.Actions;
 using Kingmaker.UnitLogic.Mechanics.Properties;
+using Kingmaker.Utility;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -407,6 +410,31 @@ namespace ExpandedContent.Config {
                     });
 
 
+                    var WildShapeDragonShapeFeature = Resources.GetModBlueprint<BlueprintFeature>("WildShapeDragonShapeFeature");
+                    var MutatedShapeFeaturePrerequisite = Resources.GetBlueprint<BlueprintFeature>("82cb6efb4e3f48cbaf2ea59a3dd1a5cc").GetComponent<PrerequisiteFeaturesFromList>();
+                    MutatedShapeFeaturePrerequisite.m_Features = MutatedShapeFeaturePrerequisite.m_Features.AppendToArray(WildShapeDragonShapeFeature.ToReference<BlueprintFeatureReference>());
+                    var MutatedShapeEffect = Resources.GetBlueprint<BlueprintBuff>("84e5049cdf7443f7a4ac6b4ac5c80c0c");
+                    var DragonShapeForms = new BlueprintBuff[] {
+                        Resources.GetModBlueprint<BlueprintBuff>("WildShapeDragonShapeBlackBuff"),
+                        Resources.GetModBlueprint<BlueprintBuff>("WildShapeDragonShapeBlackBuff2"),
+                        Resources.GetModBlueprint<BlueprintBuff>("WildShapeDragonShapeBlueBuff"),
+                        Resources.GetModBlueprint<BlueprintBuff>("WildShapeDragonShapeBlueBuff2"),
+                        Resources.GetModBlueprint<BlueprintBuff>("WildShapeDragonShapeBrassBuff"),
+                        Resources.GetModBlueprint<BlueprintBuff>("WildShapeDragonShapeBrassBuff2"),
+                        Resources.GetModBlueprint<BlueprintBuff>("WildShapeDragonShapeGreenBuff"),
+                        Resources.GetModBlueprint<BlueprintBuff>("WildShapeDragonShapeGreenBuff2"),
+                        Resources.GetModBlueprint<BlueprintBuff>("WildShapeDragonShapeRedBuff"),
+                        Resources.GetModBlueprint<BlueprintBuff>("WildShapeDragonShapeRedBuff2"),
+                        Resources.GetModBlueprint<BlueprintBuff>("WildShapeDragonShapeSilverBuff"),
+                        Resources.GetModBlueprint<BlueprintBuff>("WildShapeDragonShapeSilverBuff2"),
+                        Resources.GetModBlueprint<BlueprintBuff>("WildShapeDragonShapeWhiteBuff"),
+                        Resources.GetModBlueprint<BlueprintBuff>("WildShapeDragonShapeWhiteBuff2"),
+                    };
+                    foreach (var DragonShapeForm in DragonShapeForms) {
+                        DragonShapeForm.GetComponents<Polymorph>().ForEach(c => {
+                            c.m_Facts = c.m_Facts.AppendToArray(MutatedShapeEffect.ToReference<BlueprintUnitFactReference>());
+                        });
+                    }
 
                 }
             }
