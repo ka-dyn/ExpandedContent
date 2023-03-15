@@ -30,6 +30,7 @@ namespace ExpandedContent.Tweaks.DemonLords
             var DemonDomainEvilAllowed = Resources.GetModBlueprint<BlueprintFeature>("DemonDomainEvilAllowed");
             var FerocityDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("FerocityDomainAllowed");
             var ResolveDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("ResolveDomainAllowed");
+            var FurDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("FurDomainAllowed");
             var DreadKnightClass = Resources.GetModBlueprint<BlueprintCharacterClass>("DreadKnightClass");
             var ClawOfTheFalseWyrmArchetype = Resources.GetModBlueprint<BlueprintArchetype>("ClawOfTheFalseWyrmArchetype");
 
@@ -51,6 +52,9 @@ namespace ExpandedContent.Tweaks.DemonLords
             });
             BaphometFeature.AddComponent<AddFacts>(c => {
                 c.m_Facts = new BlueprintUnitFactReference[1] { ResolveDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+            });
+            BaphometFeature.AddComponent<AddFacts>(c => {
+                c.m_Facts = new BlueprintUnitFactReference[1] { FurDomainAllowed.ToReference<BlueprintUnitFactReference>() };
             });
         }
 

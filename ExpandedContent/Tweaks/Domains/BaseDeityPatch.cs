@@ -47,6 +47,7 @@ namespace ExpandedContent.Tweaks.Domains {
             var DemonDomainChaosAllowed = Resources.GetModBlueprint<BlueprintFeature>("DemonDomainChaosAllowed");
             var DemonDomainEvilAllowed = Resources.GetModBlueprint<BlueprintFeature>("DemonDomainEvilAllowed");
             var FerocityDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("FerocityDomainAllowed");
+            var FurDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("FurDomainAllowed");
             var IceDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("IceDomainAllowed");
             var LustDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("LustDomainAllowed");
             var PsychopompDomainDeathAllowed = Resources.GetModBlueprint<BlueprintFeature>("PsychopompDomainDeathAllowed");
@@ -90,6 +91,9 @@ namespace ExpandedContent.Tweaks.Domains {
             });
             ErastilFeature.AddComponent<AddFacts>(c => {
                 c.m_Facts = new BlueprintUnitFactReference[1] { ArchonDomainLawAllowed.ToReference<BlueprintUnitFactReference>() };
+            });
+            ErastilFeature.AddComponent<AddFacts>(c => {
+                c.m_Facts = new BlueprintUnitFactReference[1] { FurDomainAllowed.ToReference<BlueprintUnitFactReference>() };
             });
             GorumFeature.AddComponent<AddFacts>(c => {
                 c.m_Facts = new BlueprintUnitFactReference[1] { BloodDomainAllowed.ToReference<BlueprintUnitFactReference>() };

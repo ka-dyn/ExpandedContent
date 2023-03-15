@@ -23,6 +23,7 @@ namespace ExpandedContent.Tweaks.Deities {
         private static readonly BlueprintFeature EvilDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("351235ac5fc2b7e47801f63d117b656c");
         private static readonly BlueprintFeature LuckDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("d4e192475bb1a1045859c7664addd461");
         private static readonly BlueprintFeature TrickeryDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("eaa368e08628a8641b16cd41cbd2cb33");
+        private static readonly BlueprintFeature FurDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("FurDomainAllowed");
         private static readonly BlueprintFeature CurseDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("CurseDomainAllowed");
         private static readonly BlueprintFeature ThieveryDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("ThieveryDomainAllowed");
         private static readonly BlueprintSpellbook CrusaderSpellbook = Resources.GetBlueprint<BlueprintSpellbook>("673d39f7da699aa408cdda6282e7dcc0");
@@ -106,6 +107,9 @@ namespace ExpandedContent.Tweaks.Deities {
                 });
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[1] { ThieveryDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[1] { FurDomainAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<ForbidSpellbookOnAlignmentDeviation>(c => {
                     c.m_Spellbooks = new BlueprintSpellbookReference[1] { CrusaderSpellbook.ToReference<BlueprintSpellbookReference>() };
