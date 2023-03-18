@@ -86,6 +86,7 @@ New Domains / Subdomains
   - Demon
   - Dragon
   - Ferocity
+  - Fur
   - Ice
   - Lust
   - Psychopomp
