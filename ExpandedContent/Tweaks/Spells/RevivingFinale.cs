@@ -136,7 +136,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
                 bp.ActionType = UnitCommand.CommandType.Swift;
-                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Extend | Metamagic.Heighten | Metamagic.Selective | Metamagic.Bolstered;
+                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Extend | Metamagic.Heighten | Metamagic.Selective | Metamagic.Bolstered | Metamagic.CompletelyNormal;
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });

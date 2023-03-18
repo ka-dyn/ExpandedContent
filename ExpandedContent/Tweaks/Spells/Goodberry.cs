@@ -181,7 +181,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.EffectOnEnemy = AbilityEffectOnUnit.None;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.SelfTouch;
                 bp.ActionType = UnitCommand.CommandType.Standard;
-                bp.AvailableMetamagic = Metamagic.Quicken;
+                bp.AvailableMetamagic = Metamagic.Quicken | Metamagic.CompletelyNormal;
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });

@@ -67,7 +67,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.EffectOnEnemy = AbilityEffectOnUnit.None;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Point;
                 bp.ActionType = UnitCommand.CommandType.Standard;
-                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Extend | Metamagic.Heighten | Metamagic.Selective | Metamagic.Bolstered;
+                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Extend | Metamagic.Heighten | Metamagic.Selective | Metamagic.Bolstered | Metamagic.CompletelyNormal;
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
@@ -186,7 +186,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.EffectOnEnemy = AbilityEffectOnUnit.None;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Point;
                 bp.ActionType = UnitCommand.CommandType.Standard;
-                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Extend | Metamagic.Heighten | Metamagic.Selective | Metamagic.Bolstered;
+                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Extend | Metamagic.Heighten | Metamagic.Selective | Metamagic.Bolstered | Metamagic.CompletelyNormal;
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
@@ -305,7 +305,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.EffectOnEnemy = AbilityEffectOnUnit.None;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Point;
                 bp.ActionType = UnitCommand.CommandType.Standard;
-                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Extend | Metamagic.Heighten | Metamagic.Selective | Metamagic.Bolstered;
+                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Extend | Metamagic.Heighten | Metamagic.Selective | Metamagic.Bolstered | Metamagic.CompletelyNormal;
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
@@ -424,7 +424,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.EffectOnEnemy = AbilityEffectOnUnit.None;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Point;
                 bp.ActionType = UnitCommand.CommandType.Standard;
-                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Extend | Metamagic.Heighten | Metamagic.Selective | Metamagic.Bolstered;
+                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Extend | Metamagic.Heighten | Metamagic.Selective | Metamagic.Bolstered | Metamagic.CompletelyNormal;
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
@@ -543,7 +543,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.EffectOnEnemy = AbilityEffectOnUnit.None;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Point;
                 bp.ActionType = UnitCommand.CommandType.Standard;
-                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Extend | Metamagic.Heighten | Metamagic.Selective | Metamagic.Bolstered;
+                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Extend | Metamagic.Heighten | Metamagic.Selective | Metamagic.Bolstered | Metamagic.CompletelyNormal;
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
@@ -627,7 +627,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.EffectOnEnemy = AbilityEffectOnUnit.None;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Point;
                 bp.ActionType = UnitCommand.CommandType.Standard;
-                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Extend | Metamagic.Heighten | Metamagic.Selective | Metamagic.Bolstered;
+                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Extend | Metamagic.Heighten | Metamagic.Selective | Metamagic.Bolstered | Metamagic.CompletelyNormal;
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });

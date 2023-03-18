@@ -150,7 +150,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
                 bp.ActionType = UnitCommand.CommandType.Standard;
-                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten;
+                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten | Metamagic.CompletelyNormal;
                 bp.LocalizedDuration = Helpers.CreateString("InvokeDeityAbility.Duration", "10 minutes/level");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
@@ -231,7 +231,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
                 bp.ActionType = UnitCommand.CommandType.Standard;
-                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten;
+                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten | Metamagic.CompletelyNormal;
                 bp.LocalizedDuration = Helpers.CreateString("InvokeDeityAbility.Duration", "10 minutes/level");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
@@ -316,7 +316,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
                 bp.ActionType = UnitCommand.CommandType.Standard;
-                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten;
+                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten | Metamagic.CompletelyNormal;
                 bp.LocalizedDuration = Helpers.CreateString("InvokeDeityAbility.Duration", "10 minutes/level");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
@@ -405,7 +405,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
                 bp.ActionType = UnitCommand.CommandType.Standard;
-                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten;
+                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten | Metamagic.CompletelyNormal;
                 bp.LocalizedDuration = Helpers.CreateString("InvokeDeityAbility.Duration", "10 minutes/level");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
@@ -485,7 +485,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
                 bp.ActionType = UnitCommand.CommandType.Standard;
-                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten;
+                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten | Metamagic.CompletelyNormal;
                 bp.LocalizedDuration = Helpers.CreateString("InvokeDeityAbility.Duration", "10 minutes/level");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
@@ -560,7 +560,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
                 bp.ActionType = UnitCommand.CommandType.Standard;
-                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten;
+                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten | Metamagic.CompletelyNormal;
                 bp.LocalizedDuration = Helpers.CreateString("InvokeDeityAbility.Duration", "10 minutes/level");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
@@ -658,7 +658,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
                 bp.ActionType = UnitCommand.CommandType.Standard;
-                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten;
+                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten | Metamagic.CompletelyNormal;
                 bp.LocalizedDuration = Helpers.CreateString("InvokeDeityAbility.Duration", "10 minutes/level");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
@@ -748,7 +748,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
                 bp.ActionType = UnitCommand.CommandType.Standard;
-                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten;
+                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten | Metamagic.CompletelyNormal;
                 bp.LocalizedDuration = Helpers.CreateString("InvokeDeityAbility.Duration", "10 minutes/level");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
@@ -835,7 +835,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
                 bp.ActionType = UnitCommand.CommandType.Standard;
-                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten;
+                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten | Metamagic.CompletelyNormal;
                 bp.LocalizedDuration = Helpers.CreateString("InvokeDeityAbility.Duration", "10 minutes/level");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
@@ -1026,7 +1026,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
                 bp.ActionType = UnitCommand.CommandType.Standard;
-                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten;
+                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten | Metamagic.CompletelyNormal;
                 bp.LocalizedDuration = Helpers.CreateString("InvokeDeityAbility.Duration", "10 minutes/level");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
@@ -1109,7 +1109,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
                 bp.ActionType = UnitCommand.CommandType.Standard;
-                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten;
+                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten | Metamagic.CompletelyNormal;
                 bp.LocalizedDuration = Helpers.CreateString("InvokeDeityAbility.Duration", "10 minutes/level");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
@@ -1188,7 +1188,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
                 bp.ActionType = UnitCommand.CommandType.Standard;
-                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten;
+                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten | Metamagic.CompletelyNormal;
                 bp.LocalizedDuration = Helpers.CreateString("InvokeDeityAbility.Duration", "10 minutes/level");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
@@ -1305,7 +1305,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Directional;
                 bp.ActionType = UnitCommand.CommandType.Standard;
-                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten | Metamagic.Reach;
+                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten | Metamagic.CompletelyNormal | Metamagic.Reach;
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
@@ -1392,7 +1392,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
                 bp.ActionType = UnitCommand.CommandType.Standard;
-                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten;
+                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten | Metamagic.CompletelyNormal;
                 bp.LocalizedDuration = Helpers.CreateString("InvokeDeityAbility.Duration", "10 minutes/level");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
@@ -1600,7 +1600,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
                 bp.ActionType = UnitCommand.CommandType.Standard;
-                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten;
+                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten | Metamagic.CompletelyNormal;
                 bp.LocalizedDuration = Helpers.CreateString("InvokeDeityAbility.Duration", "10 minutes/level");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
@@ -1684,7 +1684,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
                 bp.ActionType = UnitCommand.CommandType.Standard;
-                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten;
+                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten | Metamagic.CompletelyNormal;
                 bp.LocalizedDuration = Helpers.CreateString("InvokeDeityAbility.Duration", "10 minutes/level");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
@@ -1771,7 +1771,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
                 bp.ActionType = UnitCommand.CommandType.Standard;
-                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten;
+                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten | Metamagic.CompletelyNormal;
                 bp.LocalizedDuration = Helpers.CreateString("InvokeDeityAbility.Duration", "10 minutes/level");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
@@ -1846,7 +1846,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
                 bp.ActionType = UnitCommand.CommandType.Standard;
-                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten;
+                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten | Metamagic.CompletelyNormal;
                 bp.LocalizedDuration = Helpers.CreateString("InvokeDeityAbility.Duration", "10 minutes/level");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
@@ -1935,7 +1935,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
                 bp.ActionType = UnitCommand.CommandType.Standard;
-                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten;
+                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten | Metamagic.CompletelyNormal;
                 bp.LocalizedDuration = Helpers.CreateString("InvokeDeityAbility.Duration", "10 minutes/level");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
@@ -2010,7 +2010,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
                 bp.ActionType = UnitCommand.CommandType.Standard;
-                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten;
+                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten | Metamagic.CompletelyNormal;
                 bp.LocalizedDuration = Helpers.CreateString("InvokeDeityAbility.Duration", "10 minutes/level");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
@@ -2100,7 +2100,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
                 bp.ActionType = UnitCommand.CommandType.Standard;
-                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten;
+                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten | Metamagic.CompletelyNormal;
                 bp.LocalizedDuration = Helpers.CreateString("InvokeDeityAbility.Duration", "10 minutes/level");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
@@ -2198,7 +2198,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Point;
                 bp.ActionType = UnitCommand.CommandType.Standard;
-                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten | Metamagic.Reach;
+                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten | Metamagic.CompletelyNormal | Metamagic.Reach;
                 bp.LocalizedDuration = Helpers.CreateString("MadnessInvokeDeityBuffAbility.Duration", "1d4 rounds");
                 bp.LocalizedSavingThrow = Helpers.CreateString("MadnessInvokeDeityBuffAbility.SavingThrow", "Will negates");
             });
@@ -2281,7 +2281,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
                 bp.ActionType = UnitCommand.CommandType.Standard;
-                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten;
+                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten | Metamagic.CompletelyNormal;
                 bp.LocalizedDuration = Helpers.CreateString("InvokeDeityAbility.Duration", "10 minutes/level");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
@@ -2393,7 +2393,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
                 bp.ActionType = UnitCommand.CommandType.Standard;
-                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten;
+                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten | Metamagic.CompletelyNormal;
                 bp.LocalizedDuration = Helpers.CreateString("InvokeDeityAbility.Duration", "10 minutes/level");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
@@ -2495,7 +2495,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Directional;
                 bp.ActionType = UnitCommand.CommandType.Move;
-                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten | Metamagic.Reach;
+                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten | Metamagic.CompletelyNormal | Metamagic.Reach;
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = Helpers.CreateString("NobilityInvokeDeityBuffAbility.SavingThrow", "Will negates");
             });
@@ -2578,7 +2578,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
                 bp.ActionType = UnitCommand.CommandType.Standard;
-                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten;
+                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten | Metamagic.CompletelyNormal;
                 bp.LocalizedDuration = Helpers.CreateString("InvokeDeityAbility.Duration", "10 minutes/level");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
@@ -2656,7 +2656,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
                 bp.ActionType = UnitCommand.CommandType.Standard;
-                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten;
+                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten | Metamagic.CompletelyNormal;
                 bp.LocalizedDuration = Helpers.CreateString("InvokeDeityAbility.Duration", "10 minutes/level");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
@@ -2823,7 +2823,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
                 bp.ActionType = UnitCommand.CommandType.Standard;
-                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten;
+                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten | Metamagic.CompletelyNormal;
                 bp.LocalizedDuration = Helpers.CreateString("InvokeDeityAbility.Duration", "10 minutes/level");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
@@ -2898,7 +2898,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
                 bp.ActionType = UnitCommand.CommandType.Standard;
-                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten;
+                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten | Metamagic.CompletelyNormal;
                 bp.LocalizedDuration = Helpers.CreateString("InvokeDeityAbility.Duration", "10 minutes/level");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
@@ -2977,7 +2977,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
                 bp.ActionType = UnitCommand.CommandType.Standard;
-                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten;
+                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten | Metamagic.CompletelyNormal;
                 bp.LocalizedDuration = Helpers.CreateString("InvokeDeityAbility.Duration", "10 minutes/level");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
@@ -3073,7 +3073,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
                 bp.ActionType = UnitCommand.CommandType.Standard;
-                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten;
+                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten | Metamagic.CompletelyNormal;
                 bp.LocalizedDuration = Helpers.CreateString("InvokeDeityAbility.Duration", "10 minutes/level");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
@@ -3148,7 +3148,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
                 bp.ActionType = UnitCommand.CommandType.Standard;
-                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten;
+                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten | Metamagic.CompletelyNormal;
                 bp.LocalizedDuration = Helpers.CreateString("InvokeDeityAbility.Duration", "10 minutes/level");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
@@ -3235,7 +3235,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
                 bp.ActionType = UnitCommand.CommandType.Standard;
-                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten;
+                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten | Metamagic.CompletelyNormal;
                 bp.LocalizedDuration = Helpers.CreateString("InvokeDeityAbility.Duration", "10 minutes/level");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
@@ -3405,7 +3405,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
                 bp.ActionType = UnitCommand.CommandType.Standard;
-                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten;
+                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten | Metamagic.CompletelyNormal;
                 bp.LocalizedDuration = Helpers.CreateString("InvokeDeityAbility.Duration", "10 minutes/level");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
@@ -3486,7 +3486,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
                 bp.ActionType = UnitCommand.CommandType.Standard;
-                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten;
+                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten | Metamagic.CompletelyNormal;
                 bp.LocalizedDuration = Helpers.CreateString("InvokeDeityAbility.Duration", "10 minutes/level");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
@@ -3629,7 +3629,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
                 bp.ActionType = UnitCommand.CommandType.Standard;
-                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten;
+                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten | Metamagic.CompletelyNormal;
                 bp.LocalizedDuration = Helpers.CreateString("InvokeDeityAbility.Duration", "10 minutes/level");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });

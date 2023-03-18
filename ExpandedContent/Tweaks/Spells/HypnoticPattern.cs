@@ -299,7 +299,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Point;
                 bp.ActionType = UnitCommand.CommandType.Standard;
-                bp.AvailableMetamagic =  Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten | Metamagic.Reach;
+                bp.AvailableMetamagic =  Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten | Metamagic.Reach | Metamagic.CompletelyNormal;
                 bp.LocalizedDuration = Helpers.CreateString("HypnoticPatternAbility.Duration", "3 rounds");
                 bp.LocalizedSavingThrow = Helpers.CreateString("HypnoticPatternAbility.SavingThrow", "Will negates");
             });

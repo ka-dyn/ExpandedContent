@@ -137,7 +137,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Point;
                 bp.ActionType = UnitCommand.CommandType.Standard;
-                bp.AvailableMetamagic =  Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten | Metamagic.Reach;
+                bp.AvailableMetamagic =  Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten | Metamagic.Reach | Metamagic.CompletelyNormal;
                 bp.LocalizedDuration = Helpers.CreateString("InflictPainMassAbility.Duration", "1 round/level");
                 bp.LocalizedSavingThrow = Helpers.CreateString("InflictPainMassAbility.SavingThrow", "Will partial");
             });

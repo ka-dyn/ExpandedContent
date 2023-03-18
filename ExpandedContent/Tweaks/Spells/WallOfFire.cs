@@ -442,7 +442,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Point;
                 bp.ActionType = UnitCommand.CommandType.Standard;
-                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten | Metamagic.Bolstered | Metamagic.Reach;
+                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten | Metamagic.Bolstered | Metamagic.Reach | Metamagic.CompletelyNormal;
                 bp.LocalizedDuration = Helpers.CreateString("WallOfFireAbility.Duration", "1 round/level");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });

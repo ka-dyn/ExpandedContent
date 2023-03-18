@@ -119,7 +119,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
                 bp.ActionType = UnitCommand.CommandType.Standard;
-                bp.AvailableMetamagic =  Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten | Metamagic.Reach;
+                bp.AvailableMetamagic =  Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten | Metamagic.Reach | Metamagic.CompletelyNormal;
                 bp.LocalizedDuration = Helpers.CreateString("ZephyrsFleetnessAbility.Duration", "1 minute/level");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });

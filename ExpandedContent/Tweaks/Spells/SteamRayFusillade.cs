@@ -355,7 +355,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Directional;
                 bp.ActionType = UnitCommand.CommandType.Standard;
-                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten | Metamagic.Reach | Metamagic.Extend;
+                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten | Metamagic.Reach | Metamagic.Extend | Metamagic.CompletelyNormal;
                 bp.LocalizedDuration = Helpers.CreateString("SteamRayFusilladeAbility.Duration", "Buff 1 round/level ");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
