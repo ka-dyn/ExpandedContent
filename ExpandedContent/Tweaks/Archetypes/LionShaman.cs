@@ -88,6 +88,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
 
             var AnimalCompanionFeatureLeopard = Resources.GetBlueprintReference<BlueprintFeatureReference>("2ee2ba60850dd064e8b98bf5c2c946ba");
             var AnimalCompanionFeatureSmilodon = Resources.GetBlueprintReference<BlueprintFeatureReference>("126712ef923ab204983d6f107629c895");
+            var AnimalCompanionFeatureSmilodonBlack = Resources.GetBlueprintReference<BlueprintFeatureReference>("44f4d77689434e07a5a44dcb65b25f71");
             var DruidAnimalCompanionProgression = Resources.GetBlueprint<BlueprintProgression>("3853d5405ebfc0f4a86930bb7082b43b");
             var AnimalCompanionRank = Resources.GetBlueprint<BlueprintFeature>("1670990255e4fe948a863bafd5dbda5d");
             var AnimalCompanionArchetypeSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("65af7290b4efd5f418132141aaa36c1b");
@@ -122,7 +123,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.Group = FeatureGroup.AnimalCompanion;
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;
-                bp.AddFeatures(AnimalCompanionFeatureLeopard, AnimalCompanionFeatureSmilodon);
+                bp.AddFeatures(AnimalCompanionFeatureLeopard, AnimalCompanionFeatureSmilodon, AnimalCompanionFeatureSmilodonBlack);
             });
 
 
