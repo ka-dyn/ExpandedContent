@@ -2487,8 +2487,10 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                     c.Value = 2;
                 });                
             });
-            //Natural Armor 
-            var DrakeNaturalArmor1 = Helpers.CreateBlueprint<BlueprintFeature>("DrakeNaturalArmor1", bp => {
+            //Natural Armor
+
+
+            var DrakeNaturalArmor1Applied = Helpers.CreateBlueprint<BlueprintFeature>("DrakeNaturalArmor1Applied", bp => {
                 bp.SetName("Drake Natural Armor");
                 bp.AddComponent<AddStatBonus>(c => {
                     c.Descriptor = ModifierDescriptor.NaturalArmor;
@@ -2497,7 +2499,19 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 });
                 bp.HideInUI = true;
             });
-            var DrakeNaturalArmor2 = Helpers.CreateBlueprint<BlueprintFeature>("DrakeNaturalArmor2", bp => {
+            var DrakeNaturalArmor1 = Helpers.CreateBlueprint<BlueprintFeature>("DrakeNaturalArmor1", bp => {
+                bp.SetName("Drake Natural Armor");
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 5;
+                    c.m_Feature = DrakeNaturalArmor1Applied.ToReference<BlueprintFeatureReference>();
+                    c.BeforeThisLevel = true;
+                });
+                bp.HideInUI = true;
+            });
+
+
+            var DrakeNaturalArmor2Applied = Helpers.CreateBlueprint<BlueprintFeature>("DrakeNaturalArmor2Applied", bp => {
                 bp.SetName("Drake Natural Armor");
                 bp.AddComponent<AddStatBonus>(c => {
                     c.Descriptor = ModifierDescriptor.NaturalArmor;
@@ -2506,7 +2520,18 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 });
                 bp.HideInUI = true;
             });
-            var DrakeNaturalArmor3 = Helpers.CreateBlueprint<BlueprintFeature>("DrakeNaturalArmor3", bp => {
+            var DrakeNaturalArmor2 = Helpers.CreateBlueprint<BlueprintFeature>("DrakeNaturalArmor2", bp => {
+                bp.SetName("Drake Natural Armor");
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 6;
+                    c.m_Feature = DrakeNaturalArmor2Applied.ToReference<BlueprintFeatureReference>();
+                    c.BeforeThisLevel = true;
+                });
+                bp.HideInUI = true;
+            });
+
+            var DrakeNaturalArmor3Applied = Helpers.CreateBlueprint<BlueprintFeature>("DrakeNaturalArmor3Applied", bp => {
                 bp.SetName("Drake Natural Armor");
                 bp.AddComponent<AddStatBonus>(c => {
                     c.Descriptor = ModifierDescriptor.NaturalArmor;
@@ -2515,7 +2540,18 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 });
                 bp.HideInUI = true;
             });
-            var DrakeNaturalArmor4 = Helpers.CreateBlueprint<BlueprintFeature>("DrakeNaturalArmor4", bp => {
+            var DrakeNaturalArmor3 = Helpers.CreateBlueprint<BlueprintFeature>("DrakeNaturalArmor3", bp => {
+                bp.SetName("Drake Natural Armor");
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 9;
+                    c.m_Feature = DrakeNaturalArmor3Applied.ToReference<BlueprintFeatureReference>();
+                    c.BeforeThisLevel = true;
+                });
+                bp.HideInUI = true;
+            });
+
+            var DrakeNaturalArmor4Applied = Helpers.CreateBlueprint<BlueprintFeature>("DrakeNaturalArmor4Applied", bp => {
                 bp.SetName("Drake Natural Armor");
                 bp.AddComponent<AddStatBonus>(c => {
                     c.Descriptor = ModifierDescriptor.NaturalArmor;
@@ -2524,7 +2560,18 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 });
                 bp.HideInUI = true;
             });
-            var DrakeNaturalArmor5 = Helpers.CreateBlueprint<BlueprintFeature>("DrakeNaturalArmor5", bp => {
+            var DrakeNaturalArmor4 = Helpers.CreateBlueprint<BlueprintFeature>("DrakeNaturalArmor4", bp => {
+                bp.SetName("Drake Natural Armor");
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 12;
+                    c.m_Feature = DrakeNaturalArmor4Applied.ToReference<BlueprintFeatureReference>();
+                    c.BeforeThisLevel = true;
+                });
+                bp.HideInUI = true;
+            });
+
+            var DrakeNaturalArmor5Applied = Helpers.CreateBlueprint<BlueprintFeature>("DrakeNaturalArmor5Applied", bp => {
                 bp.SetName("Drake Natural Armor");
                 bp.AddComponent<AddStatBonus>(c => {
                     c.Descriptor = ModifierDescriptor.NaturalArmor;
@@ -2533,7 +2580,18 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 });
                 bp.HideInUI = true;
             });
-            var DrakeNaturalArmor6 = Helpers.CreateBlueprint<BlueprintFeature>("DrakeNaturalArmor6", bp => {
+            var DrakeNaturalArmor5 = Helpers.CreateBlueprint<BlueprintFeature>("DrakeNaturalArmor5", bp => {
+                bp.SetName("Drake Natural Armor");
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 13;
+                    c.m_Feature = DrakeNaturalArmor5Applied.ToReference<BlueprintFeatureReference>();
+                    c.BeforeThisLevel = true;
+                });
+                bp.HideInUI = true;
+            });
+
+            var DrakeNaturalArmor6Applied = Helpers.CreateBlueprint<BlueprintFeature>("DrakeNaturalArmor6Applied", bp => {
                 bp.SetName("Drake Natural Armor");
                 bp.AddComponent<AddStatBonus>(c => {
                     c.Descriptor = ModifierDescriptor.NaturalArmor;
@@ -2542,7 +2600,18 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 });
                 bp.HideInUI = true;
             });
-            var DrakeNaturalArmor7 = Helpers.CreateBlueprint<BlueprintFeature>("DrakeNaturalArmor7", bp => {
+            var DrakeNaturalArmor6 = Helpers.CreateBlueprint<BlueprintFeature>("DrakeNaturalArmor6", bp => {
+                bp.SetName("Drake Natural Armor");
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 15;
+                    c.m_Feature = DrakeNaturalArmor6Applied.ToReference<BlueprintFeatureReference>();
+                    c.BeforeThisLevel = true;
+                });
+                bp.HideInUI = true;
+            });
+
+            var DrakeNaturalArmor7Applied = Helpers.CreateBlueprint<BlueprintFeature>("DrakeNaturalArmor7Applied", bp => {
                 bp.SetName("Drake Natural Armor");
                 bp.AddComponent<AddStatBonus>(c => {
                     c.Descriptor = ModifierDescriptor.NaturalArmor;
@@ -2551,7 +2620,18 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 });
                 bp.HideInUI = true;
             });
-            var DrakeNaturalArmor8 = Helpers.CreateBlueprint<BlueprintFeature>("DrakeNaturalArmor8", bp => {
+            var DrakeNaturalArmor7 = Helpers.CreateBlueprint<BlueprintFeature>("DrakeNaturalArmor7", bp => {
+                bp.SetName("Drake Natural Armor");
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 17;
+                    c.m_Feature = DrakeNaturalArmor7Applied.ToReference<BlueprintFeatureReference>();
+                    c.BeforeThisLevel = true;
+                });
+                bp.HideInUI = true;
+            });
+
+            var DrakeNaturalArmor8Applied = Helpers.CreateBlueprint<BlueprintFeature>("DrakeNaturalArmor8Applied", bp => {
                 bp.SetName("Drake Natural Armor");
                 bp.AddComponent<AddStatBonus>(c => {
                     c.Descriptor = ModifierDescriptor.NaturalArmor;
@@ -2560,6 +2640,17 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 });
                 bp.HideInUI = true;
             });
+            var DrakeNaturalArmor8 = Helpers.CreateBlueprint<BlueprintFeature>("DrakeNaturalArmor8", bp => {
+                bp.SetName("Drake Natural Armor");
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 18;
+                    c.m_Feature = DrakeNaturalArmor8Applied.ToReference<BlueprintFeatureReference>();
+                    c.BeforeThisLevel = true;
+                });
+            });
+
+            
             var DrakeNaturalArmor9 = Helpers.CreateBlueprint<BlueprintFeature>("DrakeNaturalArmor9", bp => {
                 bp.SetName("Drake Natural Armor");
                 bp.AddComponent<AddStatBonus>(c => {
@@ -2569,6 +2660,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 });
                 bp.HideInUI = true;
             });
+
 
             //Copact Drake Stuff
             var ReducePerson = Resources.GetBlueprint<BlueprintAbility>("4e0e9aba6447d514f88eff1464cc4763");
