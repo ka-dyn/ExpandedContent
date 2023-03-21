@@ -35,6 +35,8 @@ namespace ExpandedContent.Tweaks {
                 Classes.DrakeClass.DrakeMythicAbilities.AddDrakeMythicAbilities();
 
                 AnimalCompanions.CompanionWolverine.AddCompanionWolverine();
+                AnimalCompanions.CompanionGiantFly.AddCompanionGiantFly();
+                AnimalCompanions.CompanionWebSpider.AddCompanionWebSpider();
 
                 Miscellaneous.AlignmentTemplates.AddFiendishTemplate();
                 Miscellaneous.Cavalier.AddCavalierFeatures();

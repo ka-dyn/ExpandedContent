@@ -48,6 +48,7 @@ namespace ExpandedContent.Tweaks.AnimalCompanions {
             var TripDefenceFourLegs = Resources.GetBlueprint<BlueprintFeature>("136fa0343d5b4b348bdaa05d83408db3");
             var RageFeature = Resources.GetBlueprint<BlueprintFeature>("2479395977cfeeb46b482bc3385f4647");
             var RageBuff = Resources.GetBlueprint<BlueprintBuff>("da8ce41ac3cd74742b80984ccc3c9613");
+            var AnimalCompanionSlotFeature = Resources.GetBlueprint<BlueprintFeature>("75bb2b3c41c99e041b4743fdb16a4289");
 
 
 
@@ -103,7 +104,7 @@ namespace ExpandedContent.Tweaks.AnimalCompanions {
                 });
                 bp.AddComponent<AddStatBonus>(c => {
                     c.Descriptor = ModifierDescriptor.None;
-                    c.Value = 2;
+                    c.Value = 4;
                     c.Stat = StatType.Constitution;
                 });
                 bp.AddComponent<AddFacts>(c => {
@@ -227,7 +228,7 @@ namespace ExpandedContent.Tweaks.AnimalCompanions {
                 bp.AddComponent<AllowDyingCondition>();
                 bp.AddComponent<AddResurrectOnRest>();
                 bp.Gender = Gender.Male;
-                bp.Size = Size.Medium;
+                bp.Size = Size.Large;
                 bp.Color = DireWolverine.Color;
                 bp.Alignment = Alignment.TrueNeutral;
                 bp.m_Portrait = CompanionWolverinePortrait.ToReference<BlueprintPortraitReference>();
@@ -297,7 +298,8 @@ namespace ExpandedContent.Tweaks.AnimalCompanions {
                     CompanionUpdateWolverineFeature.ToReference<BlueprintUnitFactReference>(),
                     TripDefenceFourLegs.ToReference<BlueprintUnitFactReference>(),
                     UnmountableFeature.ToReference<BlueprintUnitFactReference>(),
-                    CompanionWolverineRageFeature.ToReference<BlueprintUnitFactReference>()
+                    CompanionWolverineRageFeature.ToReference<BlueprintUnitFactReference>(),
+                    AnimalCompanionSlotFeature.ToReference<BlueprintUnitFactReference>()
                 };
             });
 
@@ -343,7 +345,6 @@ namespace ExpandedContent.Tweaks.AnimalCompanions {
             var AnimalCompanionSelectionRanger = Resources.GetBlueprint<BlueprintFeatureSelection>("ee63330662126374e8785cc901941ac7");
             var AnimalCompanionSelectionSacredHuntsmaster = Resources.GetBlueprint<BlueprintFeatureSelection>("2995b36659b9ad3408fd26f137ee2c67");
             var AnimalCompanionSelectionSylvanSorcerer = Resources.GetBlueprint<BlueprintFeatureSelection>("a540d7dfe1e2a174a94198aba037274c");
-            var AnimalCompanionSelectionUrbanHunter = Resources.GetBlueprint<BlueprintFeatureSelection>("257375cd139800e459d69ccfe4ca309c");
             var AnimalCompanionSelectionWildlandShaman = Resources.GetBlueprint<BlueprintFeatureSelection>("164c875d6b27483faba479c7f5261915");
 
             AnimalCompanionSelectionBase.m_AllFeatures = AnimalCompanionSelectionBase.m_AllFeatures.AppendToArray(CompanionWolverineFeature.ToReference<BlueprintFeatureReference>());
@@ -354,7 +355,6 @@ namespace ExpandedContent.Tweaks.AnimalCompanions {
             AnimalCompanionSelectionRanger.m_AllFeatures = AnimalCompanionSelectionRanger.m_AllFeatures.AppendToArray(CompanionWolverineFeature.ToReference<BlueprintFeatureReference>());
             AnimalCompanionSelectionSacredHuntsmaster.m_AllFeatures = AnimalCompanionSelectionSacredHuntsmaster.m_AllFeatures.AppendToArray(CompanionWolverineFeature.ToReference<BlueprintFeatureReference>());
             AnimalCompanionSelectionSylvanSorcerer.m_AllFeatures = AnimalCompanionSelectionSylvanSorcerer.m_AllFeatures.AppendToArray(CompanionWolverineFeature.ToReference<BlueprintFeatureReference>());
-            AnimalCompanionSelectionUrbanHunter.m_AllFeatures = AnimalCompanionSelectionUrbanHunter.m_AllFeatures.AppendToArray(CompanionWolverineFeature.ToReference<BlueprintFeatureReference>());
             AnimalCompanionSelectionWildlandShaman.m_AllFeatures = AnimalCompanionSelectionWildlandShaman.m_AllFeatures.AppendToArray(CompanionWolverineFeature.ToReference<BlueprintFeatureReference>());
 
         }

@@ -164,6 +164,8 @@
     <Compile Include="Config\NestedSettingGroup.cs" />
     <Compile Include="Config\SettingGroup.cs" />
     <Compile Include="Localization\MultiLocalizationPack.cs" />
+    <Compile Include="Tweaks\AnimalCompanions\CompanionWebSpider.cs" />
+    <Compile Include="Tweaks\AnimalCompanions\CompanionGiantFly.cs" />
     <Compile Include="Tweaks\AnimalCompanions\CompanionWolverine.cs" />
     <Compile Include="Tweaks\Archdevils\Baalzebul.cs" />
     <Compile Include="Tweaks\Archdevils\Barbatos.cs" />
