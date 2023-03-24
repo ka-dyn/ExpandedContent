@@ -24,6 +24,7 @@ using Kingmaker.UnitLogic.Commands.Base;
 using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Mechanics.Actions;
+using Kingmaker.UnitLogic.Mechanics.Components;
 using Kingmaker.Utility;
 using Kingmaker.Visual.HitSystem;
 using Kingmaker.Visual.Sound;
@@ -55,7 +56,8 @@ namespace ExpandedContent.Tweaks.AnimalCompanions {
             var AnimalCompanionSlotFeature = Resources.GetBlueprint<BlueprintFeature>("75bb2b3c41c99e041b4743fdb16a4289");
             var InflictLightWoundsMass = Resources.GetBlueprint<BlueprintAbility>("e5af3674bb241f14b9a9f6b0c7dc3d27");
 
-
+            var Bleed1d6Buff = Resources.GetBlueprint<BlueprintBuff>("75039846c3d85d940aa96c249b97e562");
+            var Bleed2d6Buff = Resources.GetBlueprint<BlueprintBuff>("16249b8075ab8684ca105a78a047a5ef");
 
 
             var AnimalCompanionFeatureCentipede = Resources.GetBlueprint<BlueprintFeature>("f9ef7717531f5914a9b6ecacfad63f46");
@@ -63,7 +65,53 @@ namespace ExpandedContent.Tweaks.AnimalCompanions {
             var UnmountableFeature = Resources.GetModBlueprint<BlueprintFeature>("UnmountableFeature");
 
 
-            
+
+            var CompanionGiantFlyBleed1d6Feature = Helpers.CreateBlueprint<BlueprintFeature>("CompanionGiantFlyBleed1d6Feature", bp => {
+                bp.SetName("Bleed1d6");
+                bp.SetDescription("");
+                bp.AddComponent<AddInitiatorAttackWithWeaponTrigger>(c => {
+                    c.OnlyHit = true;
+                    c.Action = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = Bleed1d6Buff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                m_IsExtendable = true,
+                            }
+                        });
+                });
+                bp.IsClassFeature = true;
+            });
+            var CompanionGiantFlyBleed2d6Feature = Helpers.CreateBlueprint<BlueprintFeature>("CompanionGiantFlyBleed2d6Feature", bp => {
+                bp.SetName("Bleed2d6");
+                bp.SetDescription("");
+                bp.AddComponent<AddInitiatorAttackWithWeaponTrigger>(c => {
+                    c.OnlyHit = true;
+                    c.Action = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = Bleed2d6Buff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                m_IsExtendable = true,
+                            }
+                        });
+                });
+                bp.IsClassFeature = true;
+            });
+
+
+
+
+
+
+
+
+
+
             var CompanionGiantFlyBloodDrainAbility = Helpers.CreateBlueprint<BlueprintAbility>("CompanionGiantFlyBloodDrainAbility", bp => {
                 bp.SetName("Blood Drain");
                 bp.SetDescription("Make one attack at highest base attack bonus, if the attack hits the target they suffer 1d2 constitution damage.");
@@ -121,7 +169,8 @@ namespace ExpandedContent.Tweaks.AnimalCompanions {
                 });
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] {
-                        NaturalArmor5.ToReference<BlueprintUnitFactReference>()
+                        NaturalArmor5.ToReference<BlueprintUnitFactReference>(),
+                        CompanionGiantFlyBleed1d6Feature.ToReference<BlueprintUnitFactReference>()
                     };
                 });
                 bp.HideInUI = true;
@@ -148,7 +197,8 @@ namespace ExpandedContent.Tweaks.AnimalCompanions {
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] {
                         NaturalArmor6.ToReference<BlueprintUnitFactReference>(),
-                        CompanionGiantFlyBloodDrainFeature.ToReference<BlueprintUnitFactReference>()
+                        CompanionGiantFlyBloodDrainFeature.ToReference<BlueprintUnitFactReference>(),
+                        CompanionGiantFlyBleed2d6Feature.ToReference<BlueprintUnitFactReference>()
                     };
                 });
                 bp.AddComponent<AddMechanicsFeature>(c => {
