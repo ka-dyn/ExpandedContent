@@ -138,5 +138,5 @@ anything without it. Check out his mod, TableTopTweaks if you haven't already!
 - https://github.com/Vek17/TabletopTweaks-Base
 
 Many of the icons and art stuff in the mod are thanks to xTekek
-Mandarin Chinese Localisation - by @WFQ 
+Mandarin Chinese Localisation - by @WFQ & HerryZheng8
 
