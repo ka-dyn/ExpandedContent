@@ -42,6 +42,8 @@ New Features
 New Animal Companions
 
 - Wolverine
+- Web Tyrant Spider
+- Giant Fly (Uses Giant Mosquito stats)
 
 New Feats
 
