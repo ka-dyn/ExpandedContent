@@ -49,12 +49,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
 
 
             var DrakeBluePortrait = Helpers.CreateBlueprint<BlueprintPortrait>("DrakeBluePortrait", bp => {
-                bp.Data = new PortraitData() {
-                    PortraitCategory = PortraitCategory.None,
-                    IsDefault = false,
-                    InitiativePortrait = false
-                };
-
+                bp.Data = PortraitLoader.LoadPortraitData("Blue");
             });
 
 
@@ -159,9 +154,6 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 };
             });
 
-            FullPortraitInjecotr.Replacements[DrakeCompanionUnitBlue.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "BlueFulllength.png", new Vector2Int(692, 1024), TextureFormat.RGBA32);
-            HalfPortraitInjecotr.Replacements[DrakeCompanionUnitBlue.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "BlueMedium.png", new Vector2Int(330, 432), TextureFormat.RGBA32);
-            SmallPortraitInjecotr.Replacements[DrakeCompanionUnitBlue.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "BlueSmall.png", new Vector2Int(185, 242), TextureFormat.RGBA32);
             EyePortraitInjecotr.Replacements[DrakeCompanionUnitBlue.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "BluePetEye.png", new Vector2Int(176, 24), TextureFormat.RGBA32);
 
             var DrakeCompanionFeatureBlue = Helpers.CreateBlueprint<BlueprintFeature>("DrakeCompanionFeatureBlue", bp => {

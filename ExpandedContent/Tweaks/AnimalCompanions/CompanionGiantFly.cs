@@ -234,11 +234,7 @@ namespace ExpandedContent.Tweaks.AnimalCompanions {
             
 
             var CompanionGiantFlyPortrait = Helpers.CreateBlueprint<BlueprintPortrait>("CompanionGiantFlyPortrait", bp => {
-                bp.Data = new PortraitData() {
-                    PortraitCategory = PortraitCategory.None,
-                    IsDefault = false,
-                    InitiativePortrait = false
-                };
+                bp.Data = PortraitLoader.LoadPortraitData("GiantFly");
             });
             var CompanionGiantFlyUnit = Helpers.CreateBlueprint<BlueprintUnit>("CompanionGiantFlyUnit", bp => {
                 bp.SetLocalisedName("Giant Fly");
@@ -308,9 +304,6 @@ namespace ExpandedContent.Tweaks.AnimalCompanions {
                 };
             });
 
-            FullPortraitInjecotr.Replacements[CompanionGiantFlyUnit.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "GiantFlyFulllength.png", new Vector2Int(692, 1024), TextureFormat.RGBA32);
-            HalfPortraitInjecotr.Replacements[CompanionGiantFlyUnit.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "GiantFlyMedium.png", new Vector2Int(330, 432), TextureFormat.RGBA32);
-            SmallPortraitInjecotr.Replacements[CompanionGiantFlyUnit.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "GiantFlySmall.png", new Vector2Int(185, 242), TextureFormat.RGBA32);
             EyePortraitInjecotr.Replacements[CompanionGiantFlyUnit.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "GiantFlyPetEye.png", new Vector2Int(176, 24), TextureFormat.RGBA32);
 
             var CompanionGiantFlyFeature = Helpers.CreateBlueprint<BlueprintFeature>("CompanionGiantFlyFeature", bp => {

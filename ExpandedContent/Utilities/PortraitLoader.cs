@@ -1,4 +1,7 @@
 ﻿using ExpandedContent.Config;
+using Kingmaker.Blueprints;
+using Kingmaker.Enums;
+using Kingmaker.ResourceManagement;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -22,6 +25,36 @@ namespace ExpandedContent.Utilities {
                 _ = texture.LoadImage(bytes);
                 return Sprite.Create(texture, new Rect(0, 0, size.x, size.y), new Vector2(0, 0));
             }
+        }
+
+        public static PortraitData LoadPortraitData(string name) {
+            var imageFolderPath = Path.Combine(ModSettings.ModEntry.Path, "Assets", "Portraits");
+            var smallImagePath = Path.Combine(imageFolderPath, $"{name}Small.png");
+            var mediumImagePath = Path.Combine(imageFolderPath, $"{name}Medium.png");
+            var fullImagePath = Path.Combine(imageFolderPath, $"{name}FullLength.png");
+            var smallPortraitHandle = new CustomPortraitHandle(smallImagePath, PortraitType.SmallPortrait, CustomPortraitsManager.Instance.Storage) {
+                Request = new SpriteLoadingRequest(smallImagePath) {
+                    Resource = Image2Sprite.Create(smallImagePath, new Vector2Int(185, 242), TextureFormat.RGBA32)
+                }
+            };
+            var mediumPortraitHandle = new CustomPortraitHandle(mediumImagePath, PortraitType.HalfLengthPortrait, CustomPortraitsManager.Instance.Storage) {
+                Request = new SpriteLoadingRequest(mediumImagePath) {
+                    Resource = Image2Sprite.Create(mediumImagePath, new Vector2Int(330, 432), TextureFormat.RGBA32)
+                }
+            };
+            var fullPortraitHandle = new CustomPortraitHandle(fullImagePath, PortraitType.FullLengthPortrait, CustomPortraitsManager.Instance.Storage) {
+                Request = new SpriteLoadingRequest(fullImagePath) {
+                    Resource = Image2Sprite.Create(fullImagePath, new Vector2Int(692, 1024), TextureFormat.RGBA32)
+                }
+            };
+            return new PortraitData(name) {
+                SmallPortraitHandle = smallPortraitHandle,
+                HalfPortraitHandle = mediumPortraitHandle,
+                FullPortraitHandle = fullPortraitHandle,
+                PortraitCategory = PortraitCategory.None,
+                IsDefault = false,
+                InitiativePortrait = false
+            };
         }
     }
 }
