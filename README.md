@@ -132,6 +132,7 @@ New Spells
 - Greater Shield of Fortification
 - Dance of a Hundred Cuts
 - Dance of a Thousand Cuts
+- Particulate Form
 
 I'd like to give a huge thank you to Vek17, as much of the coding in this repository is his; I simply repurposed it or learned from it. I wouldn't be able to release
 anything without it. Check out his mod, TableTopTweaks if you haven't already!
