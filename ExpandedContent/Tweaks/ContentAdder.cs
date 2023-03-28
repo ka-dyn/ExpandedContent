@@ -109,6 +109,7 @@ namespace ExpandedContent.Tweaks {
                 Spells.ClaySkin.AddClaySkin();
                 Spells.DanceOfAHundredCuts.AddDanceOfAHundredCuts();
                 Spells.DanceOfAThousandCuts.AddDanceOfAThousandCuts();
+                Spells.ParticulateForm.AddParticulateForm();
 
                 Domains.ImpossibleSubdomainSelection.AddImpossibleSubdomainSelection();
                 Domains.ScalykindDomain.AddScalykindDomain();

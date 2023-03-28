@@ -8,6 +8,12 @@
       "zhCN": "召唤灰熊"
     },
     {
+      "Key": "8f96e34f12844530bd724473590d754a",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Web Tyrant Spider"
+    },
+    {
       "Key": "a17ca893a04545bc9753dd2fbebd28ba",
       "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
       "ProcessTemplates": false,
@@ -89,19 +95,6 @@
       "ProcessTemplates": false,
       "enGB": "Silver Drake",
       "zhCN": "银龙兽"
-    },
-    {
-      "Key": "8f96e34f12844530bd724473590d754a",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Web Tyrant Spider"
-    },
-    {
-      "Key": "ed20a45c798a49fd83b19b7b9f0d845c",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Summoned Advanced Grizzly",
-      "zhCN": "召唤高等灰熊"
     },
     {
       "Key": "def2d25c45fb4ce99b9fb5307fb8eda6",
@@ -186,6 +179,13 @@
       "ProcessTemplates": false,
       "enGB": "Summoned Giant Leopard",
       "zhCN": "召唤巨型花豹"
+    },
+    {
+      "Key": "ed20a45c798a49fd83b19b7b9f0d845c",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Summoned Advanced Grizzly",
+      "zhCN": "召唤高等灰熊"
     },
     {
       "Key": "72649485145f43a1b53eb14219424047",
@@ -2152,6 +2152,7 @@
       "Key": "fab08d6c1a09473e86800e6fc0330207",
       "SimpleName": "CompanionGiantFlyBloodDrainAbility.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "Make one attack at highest base attack bonus, if the attack hits the target they suffer 1d2 constitution damage."
     },
     {
@@ -2194,6 +2195,7 @@
       "Key": "f52067263fe640b087a507d497e0292c",
       "SimpleName": "CompanionWebSpiderWebAbility.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "Web creates a many-layered mass of strong, sticky strands. These strands trap those caught in them. Creatures caught within a web become grappled by the sticky fibers.\nAnyone in the effect's area when spider's web is cast must make a Reflex save. If this save succeeds, the creature is inside the web but is otherwise unaffected. If the save fails, the creature gains the grappled condition, but can break free by making a combat maneuver check, Athletics check, or Mobility check as a standard action against the DC of this ability. The entire area of the web is considered difficult terrain. Anyone moving through the webs must make a Reflex save each round. Creatures that fail lose their movement and become grappled in the first square of webbing that they enter. Spiders are immune to this ability. \nYou can use this ability a number of times per day equal to 3 + your Constitution modifier."
     },
     {
@@ -7299,18 +7301,18 @@
       "zhCN": "神话龙兽"
     },
     {
-      "Key": "71a9616b02404f8d997ef4ee6385e3a9",
-      "SimpleName": "NaderiFeature.Description",
-      "ProcessTemplates": true,
-      "enGB": "\nTitles: The Lost Maiden   \nAlignment: Neutral   \nAreas of Concern: Drowning, Romantic Tragedy, Suicide\nDomains: Charm, Nobility, Repose, Water   \nSubdomains: Love, Lust, Martyr, Souls   \nFavoured Weapon: Dagger   \nHoly Symbol: Ornate golden dagger   \nSacred Animal: Swan   \nThe goddess Naderi was a divine assistant to Shelyn and was tasked with overseeing forbidden relationships among couples. She ascended to divinity when a young couple under her gaze decided to kill themselves instead of fighting the circumstances that forbade their love. Shocked by her apotheosis and afraid of how Shelyn would react, Naderi fled her mistress and finally became the goddess of suicides, particularly romantic tragedies. Shelyn has tried to fix this strange divide between the two of them, but has been unsuccessful due to unusual circumstances. Unlike the adherents of other neutral divinities, few people worship Naderi openly, or for a lifetime. Most of her faithful turn to her only as a last resort when they feel their love is doomed.Those left behind by a loved one’s suicide may supplicate Naderi to care for the departed one—or, in anger at the abandonment, may beseech the goddess to bar the gates of her realm to the deceased, though such prayers are likely to be answered with signs of the goddess’s displeasure.Naderi’s secondary aspect as a goddess of drowning sometimes leads the parents of drowned children to beg her to shepherd their children’s souls safely into the afterlife.",
-      "zhCN": "\n称号：迷失少女\n阵营：中立\n神职：溺水、爱情悲剧、自杀\n领域：魅惑、崇高、宁静、流水 \n子领域：爱慕、情欲、殉难、灵魂\n偏好武器：匕首 \n圣徽：华丽的金色匕首 \n圣兽：天鹅\n女神奈德丽曾是纱林的神仆之一，奈德丽得知塔尔多的一对恋人长期以来一直祈求永恒玫瑰的保护，却很快就失去了希望。爱超越了凡间的阻隔，她在一片大瀑布的薄雾中亲自现身于他们面前。为了鼓舞这对恋人，她解释到，爱是少有的有时能超越生命终结，将灵魂聚集在一起的纽带之一。令她震惊的是，年轻的恋人们完全按字面理解了她的话；他们拥抱在一起，跳进了瀑布，感谢她在生命的最后为他们展示了真正在一起的道路。\n她本不打算把这对恋人带到死亡之地，这一牺牲推动惊愕的奈德丽成为了自杀，特别是殉情的庇护主。她的晋升烧尽了本性中那些与这领域无关的元素。大多数形式的美无法再触动她，只有爱情的美和悲剧浪漫的诱惑仍在召唤着她。她获得真正快乐的大多数能力也被抛在了身后，只剩下了苦中作乐。奈德丽对自己内心的变化感到恐惧，她认为自己背叛了莎琳，不小心把两位信徒变成了自己的，同时又把他们逼到了自杀的境地，因此逃离了纱林的领域。\n莎琳追了过去，不是出于愤怒，而是担心，但奈德丽躲开了她。几个世纪以来，永恒玫瑰多次试图找到奈德丽，因为她感觉到迷失少女的本性正逐渐变得更加黑暗，并决心不再像失去哥哥宗·库山那样失去另一位所爱。与此同时，黑暗之神厄加图雅和泽弗斯也向奈德丽示好，希望鼓励她绽放出人格中更虚无主义的一面。奈德丽本人处在不稳定的平衡中，她执着于作为莎琳的仆人所经历的光明、爱情和美好的记忆，同时也在与一种越来越强烈的信念即爱只有在死亡中才能实现，以及对自杀美学的迷恋进行斗争。她的外观是一位黑发的年轻女子，有着阴魂萦绕的一双大眼睛，穿着浸透了水的白色衣服，手里拿着一把匕首。"
-    },
-    {
       "Key": "bb5ce5209f504b5b90eca79c5655eb06",
       "SimpleName": "NaderiFeature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "\nTitles: The Lost Maiden   \nAlignment: Neutral   \nAreas of Concern: Drowning, Romantic Tragedy, Suicide\nDomains: Charm, Nobility, Repose, Water   \nSubdomains: Love, Lust, Martyr, Souls   \nFavoured Weapon: Dagger   \nHoly Symbol: Ornate golden dagger   \nSacred Animal: Swan   The goddess Naderi was a divine assistant to Shelyn and was tasked with overseeing forbidden relationships among couples. She ascended to divinity when a young couple under her gaze decided to kill themselves instead of fighting the circumstances that forbade their love. Shocked by her apotheosis and afraid of how Shelyn would react, Naderi fled her mistress and finally became the goddess of suicides, particularly romantic tragedies. Shelyn has tried to fix this strange divide between the two of them, but has been unsuccessful due to unusual circumstances. Unlike the adherents of other neutral divinities, few people worship Naderi openly, or for a lifetime. Most of her faithful turn to her only as a last resort when they feel their love is doomed.Those left behind by a loved one’s suicide may supplicate Naderi to care for the departed one—or, in anger at the abandonment, may beseech the goddess to bar the gates of her realm to the deceased, though such prayers are likely to be answered with signs of the goddess’s displeasure.Naderi’s secondary aspect as a goddess of drowning sometimes leads the parents of drowned children to beg her to shepherd their children’s souls safely into the afterlife.",
+      "zhCN": "\n称号：迷失少女\n阵营：中立\n神职：溺水、爱情悲剧、自杀\n领域：魅惑、崇高、宁静、流水 \n子领域：爱慕、情欲、殉难、灵魂\n偏好武器：匕首 \n圣徽：华丽的金色匕首 \n圣兽：天鹅\n女神奈德丽曾是纱林的神仆之一，奈德丽得知塔尔多的一对恋人长期以来一直祈求永恒玫瑰的保护，却很快就失去了希望。爱超越了凡间的阻隔，她在一片大瀑布的薄雾中亲自现身于他们面前。为了鼓舞这对恋人，她解释到，爱是少有的有时能超越生命终结，将灵魂聚集在一起的纽带之一。令她震惊的是，年轻的恋人们完全按字面理解了她的话；他们拥抱在一起，跳进了瀑布，感谢她在生命的最后为他们展示了真正在一起的道路。\n她本不打算把这对恋人带到死亡之地，这一牺牲推动惊愕的奈德丽成为了自杀，特别是殉情的庇护主。她的晋升烧尽了本性中那些与这领域无关的元素。大多数形式的美无法再触动她，只有爱情的美和悲剧浪漫的诱惑仍在召唤着她。她获得真正快乐的大多数能力也被抛在了身后，只剩下了苦中作乐。奈德丽对自己内心的变化感到恐惧，她认为自己背叛了莎琳，不小心把两位信徒变成了自己的，同时又把他们逼到了自杀的境地，因此逃离了纱林的领域。\n莎琳追了过去，不是出于愤怒，而是担心，但奈德丽躲开了她。几个世纪以来，永恒玫瑰多次试图找到奈德丽，因为她感觉到迷失少女的本性正逐渐变得更加黑暗，并决心不再像失去哥哥宗·库山那样失去另一位所爱。与此同时，黑暗之神厄加图雅和泽弗斯也向奈德丽示好，希望鼓励她绽放出人格中更虚无主义的一面。奈德丽本人处在不稳定的平衡中，她执着于作为莎琳的仆人所经历的光明、爱情和美好的记忆，同时也在与一种越来越强烈的信念即爱只有在死亡中才能实现，以及对自杀美学的迷恋进行斗争。她的外观是一位黑发的年轻女子，有着阴魂萦绕的一双大眼睛，穿着浸透了水的白色衣服，手里拿着一把匕首。"
+    },
+    {
+      "Key": "71a9616b02404f8d997ef4ee6385e3a9",
+      "SimpleName": "NaderiFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nTitles: The Lost Maiden   \nAlignment: Neutral   \nAreas of Concern: Drowning, Romantic Tragedy, Suicide\nDomains: Charm, Nobility, Repose, Water   \nSubdomains: Love, Lust, Martyr, Souls   \nFavoured Weapon: Dagger   \nHoly Symbol: Ornate golden dagger   \nSacred Animal: Swan   \nThe goddess Naderi was a divine assistant to Shelyn and was tasked with overseeing forbidden relationships among couples. She ascended to divinity when a young couple under her gaze decided to kill themselves instead of fighting the circumstances that forbade their love. Shocked by her apotheosis and afraid of how Shelyn would react, Naderi fled her mistress and finally became the goddess of suicides, particularly romantic tragedies. Shelyn has tried to fix this strange divide between the two of them, but has been unsuccessful due to unusual circumstances. Unlike the adherents of other neutral divinities, few people worship Naderi openly, or for a lifetime. Most of her faithful turn to her only as a last resort when they feel their love is doomed.Those left behind by a loved one’s suicide may supplicate Naderi to care for the departed one—or, in anger at the abandonment, may beseech the goddess to bar the gates of her realm to the deceased, though such prayers are likely to be answered with signs of the goddess’s displeasure.Naderi’s secondary aspect as a goddess of drowning sometimes leads the parents of drowned children to beg her to shepherd their children’s souls safely into the afterlife.",
       "zhCN": "\n称号：迷失少女\n阵营：中立\n神职：溺水、爱情悲剧、自杀\n领域：魅惑、崇高、宁静、流水 \n子领域：爱慕、情欲、殉难、灵魂\n偏好武器：匕首 \n圣徽：华丽的金色匕首 \n圣兽：天鹅\n女神奈德丽曾是纱林的神仆之一，奈德丽得知塔尔多的一对恋人长期以来一直祈求永恒玫瑰的保护，却很快就失去了希望。爱超越了凡间的阻隔，她在一片大瀑布的薄雾中亲自现身于他们面前。为了鼓舞这对恋人，她解释到，爱是少有的有时能超越生命终结，将灵魂聚集在一起的纽带之一。令她震惊的是，年轻的恋人们完全按字面理解了她的话；他们拥抱在一起，跳进了瀑布，感谢她在生命的最后为他们展示了真正在一起的道路。\n她本不打算把这对恋人带到死亡之地，这一牺牲推动惊愕的奈德丽成为了自杀，特别是殉情的庇护主。她的晋升烧尽了本性中那些与这领域无关的元素。大多数形式的美无法再触动她，只有爱情的美和悲剧浪漫的诱惑仍在召唤着她。她获得真正快乐的大多数能力也被抛在了身后，只剩下了苦中作乐。奈德丽对自己内心的变化感到恐惧，她认为自己背叛了莎琳，不小心把两位信徒变成了自己的，同时又把他们逼到了自杀的境地，因此逃离了纱林的领域。\n莎琳追了过去，不是出于愤怒，而是担心，但奈德丽躲开了她。几个世纪以来，永恒玫瑰多次试图找到奈德丽，因为她感觉到迷失少女的本性正逐渐变得更加黑暗，并决心不再像失去哥哥宗·库山那样失去另一位所爱。与此同时，黑暗之神厄加图雅和泽弗斯也向奈德丽示好，希望鼓励她绽放出人格中更虚无主义的一面。奈德丽本人处在不稳定的平衡中，她执着于作为莎琳的仆人所经历的光明、爱情和美好的记忆，同时也在与一种越来越强烈的信念即爱只有在死亡中才能实现，以及对自杀美学的迷恋进行斗争。她的外观是一位黑发的年轻女子，有着阴魂萦绕的一双大眼睛，穿着浸透了水的白色衣服，手里拿着一把匕首。"
     },
     {
@@ -9638,6 +9640,31 @@
       "zhCN": "万神殿"
     },
     {
+      "Key": "0505ea6e6cff4d52a2fe771d0d37f360",
+      "SimpleName": "ParticulateFormAbility.Description",
+      "ProcessTemplates": true,
+      "IsUsed": false,
+      "enGB": "The targets’ physical forms undergo a bizarre transformation. They look and function normally, but are composed of countless particles that separate and reconnect to remain whole. Each target gains fast healing 1 and is immune to bleed damage, critical hits, sneak attacks, and other forms of precision damage. The value of this fast healing increases by 1 at caster levels 10th, 15th, and 20th. Any target can end the spell effect on itself as a swift action; the target then regains 5d6 hit points and can attempt an additional saving throw against one disease or poison affecting it (at the original save DC), ending that disease or poison with a successful saving throw."
+    },
+    {
+      "Key": "f0c54e7092254149b02e3ec4b72d3205",
+      "SimpleName": "ParticulateFormBuff.Description",
+      "ProcessTemplates": true,
+      "enGB": "The targets’ physical forms undergo a bizarre transformation. They look and function normally, but are composed of countless particles that separate and reconnect to remain whole. Each target gains fast healing 1 and is immune to bleed damage, critical hits, sneak attacks, and other forms of precision damage. The value of this fast healing increases by 1 at caster levels 10th, 15th, and 20th. Any target can end the spell effect on itself as a swift action; the target then regains 5d6 hit points and can attempt an additional saving throw against one disease or poison affecting it (at the original save DC), ending that disease or poison with a successful saving throw."
+    },
+    {
+      "Key": "841deeff42bb483ba713aa42cee55417",
+      "SimpleName": "ParticulateFormBuffAbility.Description",
+      "ProcessTemplates": true,
+      "enGB": "You may end the effect of particulate form on yourself early as a swift action; regaining 5d6 hit points and attempting a additional saving throw against one disease or poison affecting you (at the original save DC), ending that disease or poison with a successful saving throw."
+    },
+    {
+      "Key": "a3a7f52d3e6145bb9d2c4fdcf34a5152",
+      "SimpleName": "ParticulateFormBuffAbility.Name",
+      "ProcessTemplates": false,
+      "enGB": "Particulate Form"
+    },
+    {
       "Key": "13bb3fcd23cd4dcfb22a6264410d9d57",
       "SimpleName": "PazuzuFeature.Description",
       "ProcessTemplates": true,
@@ -9660,18 +9687,18 @@
       "zhCN": "你可以毫不费力地为你的盟友提供帮助，无论是帮助他们在激烈的战斗中攻击还是保卫他们。每当你使用援助动作对你的一个盟友带来攻击检定或 AC 加值时，你造成的加值增加 1。此加值在第 4 级和此后每 5 个先知等级增加 1（最多-5 在 19 级）。它不与其他专长或职业特性叠加，这些专长或职业特性可以提高您在使用援助其他动作时提供的加值。"
     },
     {
-      "Key": "af529b1729704857b9cfe8a6be9d3b40",
-      "SimpleName": "PerfectAidAnotherDefenceBuff.Name",
-      "ProcessTemplates": false,
-      "enGB": "Perfect Aid Another - Distracted Attacks",
-      "zhCN": "完美助人 - 防御"
-    },
-    {
       "Key": "34cafae5b6854351900dd71175dd51eb",
       "SimpleName": "PerfectAidAnotherDefenceBuff.Name",
       "ProcessTemplates": false,
       "IsUsed": false,
       "enGB": "Perfect Aid Another - Defence",
+      "zhCN": "完美助人 - 防御"
+    },
+    {
+      "Key": "af529b1729704857b9cfe8a6be9d3b40",
+      "SimpleName": "PerfectAidAnotherDefenceBuff.Name",
+      "ProcessTemplates": false,
+      "enGB": "Perfect Aid Another - Distracted Attacks",
       "zhCN": "完美助人 - 防御"
     },
     {
@@ -9975,18 +10002,18 @@
       "zhCN": "卜塔"
     },
     {
-      "Key": "da43197674cd494792e4798302bd608a",
-      "SimpleName": "PuluraFeature.Description",
-      "ProcessTemplates": true,
-      "enGB": "\nTitles: The Shimmering Maiden, The North Star, Mistress of the Stars, Light of the Aurora  \nAlignment: Chaotic Good   \nAreas of Concern: Constellations, Homesickness, Northern Lights\nDomains: Air, Chaos, Good, Weather   \nSubdomains: Azata, Cloud, Seasons, Stars   \nFavoured Weapon: Sling\nHoly Symbol: Face in Northern Lights   \nSacred Animal: Firefly   \nSacred Colour: Midnight Blue   \nPulura, the mistress of the stars and the aurora, is an angel empyreal lord, the patron of those travellers that become homesick, lost, or injured in the snowy wastes of the far north.Pulura was worshiped as a major deity in the lost Kellid realm of Sarkoris. The Sarkorians saw her and the demon lord Kostchtchie as dualistic gods of cold. She was honoured by a mighty ring of idols in the city of Dyinglight but, in common with the rest of Sarkoris, the city fell to the demons of the Worldwound. A cascade named for her, Pulura's Fall, once flowed to the northeast of Iz; it has since been swallowed by the Worldwound, but its namesake, a temple to Pulura, remains, and has been withstanding a demonic siege for more than a century. An idol to Pulura stands on the Walk of Lost Gods in the ravaged town of Gundrun.\nAppearance: Pulura appears as a lovely, alluring Tian woman with the grace of a dancer, a gravity about her expression, and black, flowing hair gleaming with the light of stars. Her robes appear to be made from green and pink light, and flicker with every one of her movements. She often appears dancing amid the aurora borealis in the skies of far northern lands, and legend has it that her extraordinary beauty will burn any mortals who dare approach her too closely. She wields a sling made from sighs that fires bullets of starlight.",
-      "zhCN": "\n称号: 闪亮的少女, 北极星, 群星的情妇, 极光 \n阵营: 混乱善良 领域: 星座, 乡愁, 北极光 领域: 空气, 混沌, 善良, 天气 子领域: 爱塔, 云, 四季, 星星\n偏好武器：吊索 神圣象征：北极光中的脸 \n圣兽：萤火虫 神圣颜色：午夜蓝 普鲁拉，星星和极光的情妇，是一位天使至高无上的领主，那些想家、迷路或受伤的旅行者的守护神在遥远的北方白雪皑皑的荒原上。 Pulura 在失落的 Kellid 王国 Sarkoris 被崇拜为主要神祇。 Sarkorians 将她和恶魔领主 Kostchtchie 视为二元冷神。她在消逝的光芒之城获得了一个强大的偶像戒指的荣誉，但与萨科里斯的其他地方一样，这座城市也落入了世界之伤的恶魔之手。以她命名的瀑布，Pulura&#39;s Fall，曾经流向伊兹的东北部；此后，它被 Worldwound 吞并，但它的同名，Pulura 的神庙仍然存在，并且在一个多世纪以来一直承受着恶魔的围攻。 Pulura 的偶像站在被蹂躏的 Gundrun 镇的失落众神大道上。外貌：Pulura 是一位可爱迷人的田族女子，有着舞者的优雅，她的表情严肃，黑色飘逸的头发在星光中闪闪发光。她的长袍似乎是由绿光和粉光制成的，随着她的一举一动而闪烁。她经常出现在遥远的北方大陆天空中的北极光中跳舞，传说她非凡的美貌会燃烧任何敢于靠近她的凡人。她挥舞着由叹息制成的吊索，发射星光子弹。"
-    },
-    {
       "Key": "f773898dd6204d04a69be8d798b026d9",
       "SimpleName": "PuluraFeature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "\n: The Shimmering Maiden, The North Star, Mistress of the Stars, Light of the Aurora  \nAlignment: Chaotic Good   \nAreas of Concern: Constellations, Homesickness, Northern Lights\nDomains: Air, Chaos, Good, Weather   \nSubdomains: Azata, Cloud, Seasons, Stars   \nFavoured Weapon: Sling\nHoly Symbol: Face in Northern Lights   \nSacred Animal: Firefly   \nSacred Colour: Midnight Blue   \nPulura, the mistress of the stars and the aurora, is an angel empyreal lord, the patron of those travellers that become homesick, lost, or injured in the snowy wastes of the far north.   Pulura was worshiped as a major deity in the lost Kellid realm of Sarkoris. The Sarkorians saw her and the demon lord Kostchtchie as dualistic gods of cold. She was honoured by a mighty ring of idols in the city of Dyinglight but, in common with the rest of Sarkoris, the city fell to the demons of the Worldwound. A cascade named for her, Pulura's Fall, once flowed to the northeast of Iz; it has since been swallowed by the Worldwound, but its namesake, a temple to Pulura, remains, and has been withstanding a demonic siege for more than a century. An idol to Pulura stands on the Walk of Lost Gods in the ravaged town of Gundrun.   \nAppearance: Pulura appears as a lovely, alluring Tian woman with the grace of a dancer, a gravity about her expression, and black, flowing hair gleaming with the light of stars. Her robes appear to be made from green and pink light, and flicker with every one of her movements. She often appears dancing amid the aurora borealis in the skies of far northern lands, and legend has it that her extraordinary beauty will burn any mortals who dare approach her too closely. She wields a sling made from sighs that fires bullets of starlight.",
+      "zhCN": "\n称号: 闪亮的少女, 北极星, 群星的情妇, 极光 \n阵营: 混乱善良 领域: 星座, 乡愁, 北极光 领域: 空气, 混沌, 善良, 天气 子领域: 爱塔, 云, 四季, 星星\n偏好武器：吊索 神圣象征：北极光中的脸 \n圣兽：萤火虫 神圣颜色：午夜蓝 普鲁拉，星星和极光的情妇，是一位天使至高无上的领主，那些想家、迷路或受伤的旅行者的守护神在遥远的北方白雪皑皑的荒原上。 Pulura 在失落的 Kellid 王国 Sarkoris 被崇拜为主要神祇。 Sarkorians 将她和恶魔领主 Kostchtchie 视为二元冷神。她在消逝的光芒之城获得了一个强大的偶像戒指的荣誉，但与萨科里斯的其他地方一样，这座城市也落入了世界之伤的恶魔之手。以她命名的瀑布，Pulura&#39;s Fall，曾经流向伊兹的东北部；此后，它被 Worldwound 吞并，但它的同名，Pulura 的神庙仍然存在，并且在一个多世纪以来一直承受着恶魔的围攻。 Pulura 的偶像站在被蹂躏的 Gundrun 镇的失落众神大道上。外貌：Pulura 是一位可爱迷人的田族女子，有着舞者的优雅，她的表情严肃，黑色飘逸的头发在星光中闪闪发光。她的长袍似乎是由绿光和粉光制成的，随着她的一举一动而闪烁。她经常出现在遥远的北方大陆天空中的北极光中跳舞，传说她非凡的美貌会燃烧任何敢于靠近她的凡人。她挥舞着由叹息制成的吊索，发射星光子弹。"
+    },
+    {
+      "Key": "da43197674cd494792e4798302bd608a",
+      "SimpleName": "PuluraFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nTitles: The Shimmering Maiden, The North Star, Mistress of the Stars, Light of the Aurora  \nAlignment: Chaotic Good   \nAreas of Concern: Constellations, Homesickness, Northern Lights\nDomains: Air, Chaos, Good, Weather   \nSubdomains: Azata, Cloud, Seasons, Stars   \nFavoured Weapon: Sling\nHoly Symbol: Face in Northern Lights   \nSacred Animal: Firefly   \nSacred Colour: Midnight Blue   \nPulura, the mistress of the stars and the aurora, is an angel empyreal lord, the patron of those travellers that become homesick, lost, or injured in the snowy wastes of the far north.Pulura was worshiped as a major deity in the lost Kellid realm of Sarkoris. The Sarkorians saw her and the demon lord Kostchtchie as dualistic gods of cold. She was honoured by a mighty ring of idols in the city of Dyinglight but, in common with the rest of Sarkoris, the city fell to the demons of the Worldwound. A cascade named for her, Pulura's Fall, once flowed to the northeast of Iz; it has since been swallowed by the Worldwound, but its namesake, a temple to Pulura, remains, and has been withstanding a demonic siege for more than a century. An idol to Pulura stands on the Walk of Lost Gods in the ravaged town of Gundrun.\nAppearance: Pulura appears as a lovely, alluring Tian woman with the grace of a dancer, a gravity about her expression, and black, flowing hair gleaming with the light of stars. Her robes appear to be made from green and pink light, and flicker with every one of her movements. She often appears dancing amid the aurora borealis in the skies of far northern lands, and legend has it that her extraordinary beauty will burn any mortals who dare approach her too closely. She wields a sling made from sighs that fires bullets of starlight.",
       "zhCN": "\n称号: 闪亮的少女, 北极星, 群星的情妇, 极光 \n阵营: 混乱善良 领域: 星座, 乡愁, 北极光 领域: 空气, 混沌, 善良, 天气 子领域: 爱塔, 云, 四季, 星星\n偏好武器：吊索 神圣象征：北极光中的脸 \n圣兽：萤火虫 神圣颜色：午夜蓝 普鲁拉，星星和极光的情妇，是一位天使至高无上的领主，那些想家、迷路或受伤的旅行者的守护神在遥远的北方白雪皑皑的荒原上。 Pulura 在失落的 Kellid 王国 Sarkoris 被崇拜为主要神祇。 Sarkorians 将她和恶魔领主 Kostchtchie 视为二元冷神。她在消逝的光芒之城获得了一个强大的偶像戒指的荣誉，但与萨科里斯的其他地方一样，这座城市也落入了世界之伤的恶魔之手。以她命名的瀑布，Pulura&#39;s Fall，曾经流向伊兹的东北部；此后，它被 Worldwound 吞并，但它的同名，Pulura 的神庙仍然存在，并且在一个多世纪以来一直承受着恶魔的围攻。 Pulura 的偶像站在被蹂躏的 Gundrun 镇的失落众神大道上。外貌：Pulura 是一位可爱迷人的田族女子，有着舞者的优雅，她的表情严肃，黑色飘逸的头发在星光中闪闪发光。她的长袍似乎是由绿光和粉光制成的，随着她的一举一动而闪烁。她经常出现在遥远的北方大陆天空中的北极光中跳舞，传说她非凡的美貌会燃烧任何敢于靠近她的凡人。她挥舞着由叹息制成的吊索，发射星光子弹。"
     },
     {
@@ -10123,19 +10150,19 @@
       "zhCN": "\n称号：复仇将军\n阵营：守序善良\n领域：毁灭，善良，秩序，高贵\n子领域：亚空，领导，烈士，狂暴\n偏好武器：混蛋剑\n圣徽：剑，与翼交叉\n圣兽：獒犬神圣颜色：深红色，金色拉加蒂尔是一位至高无上的领主——一位神灵强力属下，他通过超越获得了一定程度的神力——被称为复仇将军。他的职责包括骑士精神、责任和复仇，他的圣徽是一把带有深红色翅膀的私生剑。他在天堂山脚下安家，在他的同名堡垒中，一座宏伟的钢结构建筑设计成可以在必要时抵御一千年的围攻。拉加蒂尔在与地狱恶魔军团的战斗中发挥了积极作用。他的大军首领闪耀，一道金色的光影劈开对面的魔族。各种士兵，尤其是骑士，都向拉加蒂尔致敬，并祈求他在战斗中的美德和愤怒的力量。那些立下誓言的人，尤其是那些负有责任或复仇的人，将拉加蒂尔视为他们的理想，他的代理人有时会帮助那些受到严重委屈并现在寻求正义复仇的人。尽管看起来很奇怪，但拉加蒂尔是火焰位面的半神弗洛尼亚和迪斯之父迪斯帕特的儿子。他在一次短暂的幽会中受孕（仅持续了几个世纪），之后他的母亲将他带出地狱。拉加蒂尔受污染的遗产让他心中充满了愤怒，这位天使不断地努力控制他为光服务的卑鄙冲动。几千年来，他努力向天堂的天使合唱团证明自己。在大漩涡中，他与一条巨大的恶蛇搏斗了 16 年，这条巨蟒的鳞片流着酸性的血液，直到他能够扼杀它的生命。他率领一整支军队攻打了阿弗纳斯的一座钢铁堡垒，并用圣火将城堡夷为平地，并在此过程中单枪匹马地致残了地狱公爵德穆斯。最终，其他天界领主同意接纳拉加蒂尔加入他们的行列，现在他们似乎完全信任这位天使——尽管这种信任需要几个世纪才能建立起来。在历史的某个时刻，Ragathiel 摧毁了 Typhon，他是地狱第一层的原始统治者。他可能是被 Asmodeus 的计划操纵这样做的，以惩罚 Typhon 的轻率行为。 [9] Ragathiel 曾经由继承者之手服务，这位天使现在担任女神 Iomedae 的使者。然后被称为复仇之手，这位天使要求在阿罗登死后被重新分配到艾奥梅代。外观：Ragathiel 是一座光辉之塔。他站起来将近 20 英尺高，五只高高的燃烧着的翅膀从他的背上伸展开来。复仇将军曾经有六只翅膀，但一只被大恶魔迪斯帕特——拉加蒂尔的父亲从身上撕下。崇拜：Ragathiel 通常受到宣誓者、骑士、士兵、受委屈者的崇拜，而天界领主雇用阿斯莫、圣武士、眨眼狗和麒麟作为他最常见的仆人。 [4]对于拉加希尔的追随者来说，最神圣的时刻是战斗前后的短暂时刻。信徒们要求拉加蒂尔的目光落在他们身上，并让他的翅膀保护他们。这也是崇拜者之间的标准问候和告别。 Ragathiel 的追随者通常穿着红色和银色的衣服。许多人还戴上火焰颜色的装饰品或印记，通常在头盔上。拉加蒂尔在马格尼玛有一个小而古老的教派，这座城市以其众多崇拜各种天界领主的神秘教派而闻名。圣骑士密码：*我将为无辜者报仇雪恨。 *我不会轻易兑现诺言，但一旦兑现，我会坚守承诺，直到最后一口气。 *那些被证明有罪的人必须为他们的罪行受到惩罚。我不会对不法行为视而不见。 *愤怒是一种美德和力量，只有当专注于应得的人时。我永远不会寻求不成比例的报应。 *救赎从最残忍的起源中找到心。我将努力不因种族或出身而对人类同胞产生偏见。"
     },
     {
-      "Key": "a25bd1eabfbf4b04bd0c91e5c1ae1ba4",
-      "SimpleName": "RagathielFeature.Description",
-      "ProcessTemplates": true,
-      "IsUsed": false,
-      "enGB": "\nTitles: General of Vengeance   \nAlignment: Lawful Good   \nDomains: Destruction, Good, Law, Nobility   \nSubdomains: Archon, Leadership, Martyr, Rage   \nFavoured Weapon: Bastard Sword   \nHoly Symbol: Sword, crossed with Wing   \nSacred Animal: Mastiff   \nSacred Colours: Crimson, Gold   \nRagathiel is an empyreal lord—a good servant of the gods who through transcendence has achieved some small measure of divine power—known as the General of Vengeance. His portfolio includes chivalry, duty, and vengeance, and his holy symbol is a bastard sword crossed with a crimson wing. He makes his home at the base of the mountain of Heaven, in his eponymous fortress, a magnificent steel structure designed to withstand a thousand-year siege if need be. Ragathiel takes an active role in the battle against Hell's fiendish legions. He shines at the head of his army, a figure of golden light cleaving through the ranks of devils that face him. Soldiers of all kinds, but particularly knights, pay homage to Ragathiel and pray for his virtue and wrathful strength in battle. Those who have taken vows, especially those of duty or vengeance, hold Ragathiel as their ideal, and his agents sometimes assist those who have been grievously wronged and now seek righteous vengeance. As strange as it may seem, Ragathiel is the son of Feronia, a demigoddess of the Plane of Fire, and Dispater, the Father of Dis. He was conceived in a brief tryst (lasting only a few centuries), after which his mother took him out of Hell. Ragathiel's tainted heritage has left him with a wrathful heart, and the angel struggles constantly to master his baser impulses in service to the light. For thousands of years he strove to prove himself to the angelic choirs of Heaven. In the Maelstrom he wrestled for 16 years with a monstrous evil serpent whose scales wept acidic blood until he was able to choke the life out of it. He led an entire army against one of the iron fortresses of Avernus and burned the castle to the ground with holy fire, single-handedly maiming Infernal Duke Deumus in the process. Finally the other empyreal lords agreed to admit Ragathiel into their ranks, and now they appear to trust the angel completely—though that trust took centuries to develop. At some point in history, Ragathiel destroyed Typhon, the original ruler of the first layer of Hell.He may have been manipulated into doing so by the schemes of Asmodeus to punish Typhon for his indiscretions.[9] Ragathiel was once served by the Hand of the Inheritor, an angel who now acts as the goddess Iomedae's herald. Then known as the Hand of Vengeance, this angel asked to be reassigned to Iomedae after the death of Aroden. \nAppearance: Ragathiel is a tower of glorious might. He stands almost 20 feet tall, and five lofty burning wings stretch from his back. The General of Vengeance once had six wings, but one was severed, torn from his body by the archdevil Dispater—Ragathiel's father.   \nWorship: Ragathiel is commonly worshiped by the avowed, knights, soldiers, the wronged, and the empyreal lord employs aasimar, paladins, blink dogs, and kirin as his most common servants.[4] The holiest time for Ragathiel's followers is the brief moments before and after a battle. The faithful ask Ragathiel's eyes to fall upon them and for his wings to shield them.This is also a standard greeting and farewell among worshipers. Followers of Ragathiel commonly wear red and silver clothing.Many also don an ornament or sigil the color of flames, typically on the helmet. Ragathiel has a small but old cult in Magnimar, a city known for its many mystery cults revering various empyreal lords.   \nPaladin Code:   \n*I will avenge evil wrought upon the innocent.   \n*I will not give my word lightly, but once it is given, I will uphold a promise until my last breath.   \n*Those proven guilty must be punished for their crimes. I will not turn a blind eye to wrongdoing.   \n*Rage is a virtue and a strength only when focused against the deserving. I will never seek disproportionate retribution.   \n*Redemption finds hearts from even the cruelest origins. I will strive not to act upon prejudice against fellow mortals based on race or origin.",
-      "zhCN": "\n称号：复仇将军\n阵营：守序善良\n领域：毁灭，善良，秩序，高贵\n子领域：亚空，领导，烈士，狂暴\n偏好武器：混蛋剑\n圣徽：剑，与翼交叉\n圣兽：獒犬神圣颜色：深红色，金色拉加蒂尔是一位至高无上的领主——一位神灵强力属下，他通过超越获得了一定程度的神力——被称为复仇将军。他的职责包括骑士精神、责任和复仇，他的圣徽是一把带有深红色翅膀的私生剑。他在天堂山脚下安家，在他的同名堡垒中，一座宏伟的钢结构建筑设计成可以在必要时抵御一千年的围攻。拉加蒂尔在与地狱恶魔军团的战斗中发挥了积极作用。他的大军首领闪耀，一道金色的光影劈开对面的魔族。各种士兵，尤其是骑士，都向拉加蒂尔致敬，并祈求他在战斗中的美德和愤怒的力量。那些立下誓言的人，尤其是那些负有责任或复仇的人，将拉加蒂尔视为他们的理想，他的代理人有时会帮助那些受到严重委屈并现在寻求正义复仇的人。尽管看起来很奇怪，但拉加蒂尔是火焰位面的半神弗洛尼亚和迪斯之父迪斯帕特的儿子。他在一次短暂的幽会中受孕（仅持续了几个世纪），之后他的母亲将他带出地狱。拉加蒂尔受污染的遗产让他心中充满了愤怒，这位天使不断地努力控制他为光服务的卑鄙冲动。几千年来，他努力向天堂的天使合唱团证明自己。在大漩涡中，他与一条巨大的恶蛇搏斗了 16 年，这条巨蟒的鳞片流着酸性的血液，直到他能够扼杀它的生命。他率领一整支军队攻打了阿弗纳斯的一座钢铁堡垒，并用圣火将城堡夷为平地，并在此过程中单枪匹马地致残了地狱公爵德穆斯。最终，其他天界领主同意接纳拉加蒂尔加入他们的行列，现在他们似乎完全信任这位天使——尽管这种信任需要几个世纪才能建立起来。在历史的某个时刻，Ragathiel 摧毁了 Typhon，他是地狱第一层的原始统治者。他可能是被 Asmodeus 的计划操纵这样做的，以惩罚 Typhon 的轻率行为。 [9] Ragathiel 曾经由继承者之手服务，这位天使现在担任女神 Iomedae 的使者。然后被称为复仇之手，这位天使要求在阿罗登死后被重新分配到艾奥梅代。外观：Ragathiel 是一座光辉之塔。他站起来将近 20 英尺高，五只高高的燃烧着的翅膀从他的背上伸展开来。复仇将军曾经有六只翅膀，但一只被大恶魔迪斯帕特——拉加蒂尔的父亲从身上撕下。崇拜：Ragathiel 通常受到宣誓者、骑士、士兵、受委屈者的崇拜，而天界领主雇用阿斯莫、圣武士、眨眼狗和麒麟作为他最常见的仆人。 [4]对于拉加希尔的追随者来说，最神圣的时刻是战斗前后的短暂时刻。信徒们要求拉加蒂尔的目光落在他们身上，并让他的翅膀保护他们。这也是崇拜者之间的标准问候和告别。 Ragathiel 的追随者通常穿着红色和银色的衣服。许多人还戴上火焰颜色的装饰品或印记，通常在头盔上。拉加蒂尔在马格尼玛有一个小而古老的教派，这座城市以其众多崇拜各种天界领主的神秘教派而闻名。圣骑士密码：*我将为无辜者报仇雪恨。 *我不会轻易兑现诺言，但一旦兑现，我会坚守承诺，直到最后一口气。 *那些被证明有罪的人必须为他们的罪行受到惩罚。我不会对不法行为视而不见。 *愤怒是一种美德和力量，只有当专注于应得的人时。我永远不会寻求不成比例的报应。 *救赎从最残忍的起源中找到心。我将努力不因种族或出身而对人类同胞产生偏见。"
-    },
-    {
       "Key": "5b9a07c6f2a94019bbfaf7e9e6d4fb6d",
       "SimpleName": "RagathielFeature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "\nTitles: General of Vengeance   \nAlignment: Lawful Good   \nDomains: Destruction, Good, Law, Nobility   \nSubdomains: Archon, Leadership, Martyr, Rage   \nFavoured Weapon: Bastard Sword   \nHoly Symbol: Sword, crossed with Wing   \nSacred Animal: Mastiff   \nSacred Colours: Crimson, Gold   \nRagathiel is an empyreal lord—a good servant of the gods who through transcendence has achieved some small measure of divine power—known as the General of Vengeance. His portfolio includes chivalry, duty, and vengeance, and his holy symbol is a bastard sword crossed with a crimson wing. He makes his home at the base of the mountain of Heaven, in his eponymous fortress, a magnificent steel structure designed to withstand a thousand-year siege if need be. Ragathiel takes an active role in the battle against Hell's fiendish legions. He shines at the head of his army, a figure of golden light cleaving through the ranks of devils that face him. Soldiers of all kinds, but particularly knights, pay homage to Ragathiel and pray for his virtue and wrathful strength in battle. Those who have taken vows, especially those of duty or vengeance, hold Ragathiel as their ideal, and his agents sometimes assist those who have been grievously wronged and now seek righteous vengeance. As strange as it may seem, Ragathiel is the son of Feronia, a demigoddess of the Plane of Fire, and Dispater, the Father of Dis. He was conceived in a brief tryst (lasting only a few centuries), after which his mother took him out of Hell. Ragathiel's tainted heritage has left him with a wrathful heart, and the angel struggles constantly to master his baser impulses in service to the light. For thousands of years he strove to prove himself to the angelic choirs of Heaven. In the Maelstrom he wrestled for 16 years with a monstrous evil serpent whose scales wept acidic blood until he was able to choke the life out of it. He led an entire army against one of the iron fortresses of Avernus and burned the castle to the ground with holy fire, single-handedly maiming Infernal Duke Deumus in the process. Finally the other empyreal lords agreed to admit Ragathiel into their ranks, and now they appear to trust the angel completely—though that trust took centuries to develop. At some point in history, Ragathiel destroyed Typhon, the original ruler of the first layer of Hell.He may have been manipulated into doing so by the schemes of Asmodeus to punish Typhon for his indiscretions. Ragathiel was once served by the Hand of the Inheritor, an angel who now acts as the goddess Iomedae's herald. Then known as the Hand of Vengeance, this angel asked to be reassigned to Iomedae after the death of Aroden. \nAppearance: Ragathiel is a tower of glorious might. He stands almost 20 feet tall, and five lofty burning wings stretch from his back. The General of Vengeance once had six wings, but one was severed, torn from his body by the archdevil Dispater—Ragathiel's father.   \nWorship: Ragathiel is commonly worshiped by the avowed, knights, soldiers, the wronged, and the empyreal lord employs aasimar, paladins, blink dogs, and kirin as his most common servants. The holiest time for Ragathiel's followers is the brief moments before and after a battle. The faithful ask Ragathiel's eyes to fall upon them and for his wings to shield them.This is also a standard greeting and farewell among worshipers. Followers of Ragathiel commonly wear red and silver clothing.Many also don an ornament or sigil the color of flames, typically on the helmet. Ragathiel has a small but old cult in Magnimar, a city known for its many mystery cults revering various empyreal lords.   \nPaladin Code:   \n*I will avenge evil wrought upon the innocent.   \n*I will not give my word lightly, but once it is given, I will uphold a promise until my last breath.   \n*Those proven guilty must be punished for their crimes. I will not turn a blind eye to wrongdoing.   \n*Rage is a virtue and a strength only when focused against the deserving. I will never seek disproportionate retribution.   \n*Redemption finds hearts from even the cruelest origins. I will strive not to act upon prejudice against fellow mortals based on race or origin.",
+      "zhCN": "\n称号：复仇将军\n阵营：守序善良\n领域：毁灭，善良，秩序，高贵\n子领域：亚空，领导，烈士，狂暴\n偏好武器：混蛋剑\n圣徽：剑，与翼交叉\n圣兽：獒犬神圣颜色：深红色，金色拉加蒂尔是一位至高无上的领主——一位神灵强力属下，他通过超越获得了一定程度的神力——被称为复仇将军。他的职责包括骑士精神、责任和复仇，他的圣徽是一把带有深红色翅膀的私生剑。他在天堂山脚下安家，在他的同名堡垒中，一座宏伟的钢结构建筑设计成可以在必要时抵御一千年的围攻。拉加蒂尔在与地狱恶魔军团的战斗中发挥了积极作用。他的大军首领闪耀，一道金色的光影劈开对面的魔族。各种士兵，尤其是骑士，都向拉加蒂尔致敬，并祈求他在战斗中的美德和愤怒的力量。那些立下誓言的人，尤其是那些负有责任或复仇的人，将拉加蒂尔视为他们的理想，他的代理人有时会帮助那些受到严重委屈并现在寻求正义复仇的人。尽管看起来很奇怪，但拉加蒂尔是火焰位面的半神弗洛尼亚和迪斯之父迪斯帕特的儿子。他在一次短暂的幽会中受孕（仅持续了几个世纪），之后他的母亲将他带出地狱。拉加蒂尔受污染的遗产让他心中充满了愤怒，这位天使不断地努力控制他为光服务的卑鄙冲动。几千年来，他努力向天堂的天使合唱团证明自己。在大漩涡中，他与一条巨大的恶蛇搏斗了 16 年，这条巨蟒的鳞片流着酸性的血液，直到他能够扼杀它的生命。他率领一整支军队攻打了阿弗纳斯的一座钢铁堡垒，并用圣火将城堡夷为平地，并在此过程中单枪匹马地致残了地狱公爵德穆斯。最终，其他天界领主同意接纳拉加蒂尔加入他们的行列，现在他们似乎完全信任这位天使——尽管这种信任需要几个世纪才能建立起来。在历史的某个时刻，Ragathiel 摧毁了 Typhon，他是地狱第一层的原始统治者。他可能是被 Asmodeus 的计划操纵这样做的，以惩罚 Typhon 的轻率行为。 [9] Ragathiel 曾经由继承者之手服务，这位天使现在担任女神 Iomedae 的使者。然后被称为复仇之手，这位天使要求在阿罗登死后被重新分配到艾奥梅代。外观：Ragathiel 是一座光辉之塔。他站起来将近 20 英尺高，五只高高的燃烧着的翅膀从他的背上伸展开来。复仇将军曾经有六只翅膀，但一只被大恶魔迪斯帕特——拉加蒂尔的父亲从身上撕下。崇拜：Ragathiel 通常受到宣誓者、骑士、士兵、受委屈者的崇拜，而天界领主雇用阿斯莫、圣武士、眨眼狗和麒麟作为他最常见的仆人。 [4]对于拉加希尔的追随者来说，最神圣的时刻是战斗前后的短暂时刻。信徒们要求拉加蒂尔的目光落在他们身上，并让他的翅膀保护他们。这也是崇拜者之间的标准问候和告别。 Ragathiel 的追随者通常穿着红色和银色的衣服。许多人还戴上火焰颜色的装饰品或印记，通常在头盔上。拉加蒂尔在马格尼玛有一个小而古老的教派，这座城市以其众多崇拜各种天界领主的神秘教派而闻名。圣骑士密码：*我将为无辜者报仇雪恨。 *我不会轻易兑现诺言，但一旦兑现，我会坚守承诺，直到最后一口气。 *那些被证明有罪的人必须为他们的罪行受到惩罚。我不会对不法行为视而不见。 *愤怒是一种美德和力量，只有当专注于应得的人时。我永远不会寻求不成比例的报应。 *救赎从最残忍的起源中找到心。我将努力不因种族或出身而对人类同胞产生偏见。"
+    },
+    {
+      "Key": "a25bd1eabfbf4b04bd0c91e5c1ae1ba4",
+      "SimpleName": "RagathielFeature.Description",
+      "ProcessTemplates": true,
+      "IsUsed": false,
+      "enGB": "\nTitles: General of Vengeance   \nAlignment: Lawful Good   \nDomains: Destruction, Good, Law, Nobility   \nSubdomains: Archon, Leadership, Martyr, Rage   \nFavoured Weapon: Bastard Sword   \nHoly Symbol: Sword, crossed with Wing   \nSacred Animal: Mastiff   \nSacred Colours: Crimson, Gold   \nRagathiel is an empyreal lord—a good servant of the gods who through transcendence has achieved some small measure of divine power—known as the General of Vengeance. His portfolio includes chivalry, duty, and vengeance, and his holy symbol is a bastard sword crossed with a crimson wing. He makes his home at the base of the mountain of Heaven, in his eponymous fortress, a magnificent steel structure designed to withstand a thousand-year siege if need be. Ragathiel takes an active role in the battle against Hell's fiendish legions. He shines at the head of his army, a figure of golden light cleaving through the ranks of devils that face him. Soldiers of all kinds, but particularly knights, pay homage to Ragathiel and pray for his virtue and wrathful strength in battle. Those who have taken vows, especially those of duty or vengeance, hold Ragathiel as their ideal, and his agents sometimes assist those who have been grievously wronged and now seek righteous vengeance. As strange as it may seem, Ragathiel is the son of Feronia, a demigoddess of the Plane of Fire, and Dispater, the Father of Dis. He was conceived in a brief tryst (lasting only a few centuries), after which his mother took him out of Hell. Ragathiel's tainted heritage has left him with a wrathful heart, and the angel struggles constantly to master his baser impulses in service to the light. For thousands of years he strove to prove himself to the angelic choirs of Heaven. In the Maelstrom he wrestled for 16 years with a monstrous evil serpent whose scales wept acidic blood until he was able to choke the life out of it. He led an entire army against one of the iron fortresses of Avernus and burned the castle to the ground with holy fire, single-handedly maiming Infernal Duke Deumus in the process. Finally the other empyreal lords agreed to admit Ragathiel into their ranks, and now they appear to trust the angel completely—though that trust took centuries to develop. At some point in history, Ragathiel destroyed Typhon, the original ruler of the first layer of Hell.He may have been manipulated into doing so by the schemes of Asmodeus to punish Typhon for his indiscretions.[9] Ragathiel was once served by the Hand of the Inheritor, an angel who now acts as the goddess Iomedae's herald. Then known as the Hand of Vengeance, this angel asked to be reassigned to Iomedae after the death of Aroden. \nAppearance: Ragathiel is a tower of glorious might. He stands almost 20 feet tall, and five lofty burning wings stretch from his back. The General of Vengeance once had six wings, but one was severed, torn from his body by the archdevil Dispater—Ragathiel's father.   \nWorship: Ragathiel is commonly worshiped by the avowed, knights, soldiers, the wronged, and the empyreal lord employs aasimar, paladins, blink dogs, and kirin as his most common servants.[4] The holiest time for Ragathiel's followers is the brief moments before and after a battle. The faithful ask Ragathiel's eyes to fall upon them and for his wings to shield them.This is also a standard greeting and farewell among worshipers. Followers of Ragathiel commonly wear red and silver clothing.Many also don an ornament or sigil the color of flames, typically on the helmet. Ragathiel has a small but old cult in Magnimar, a city known for its many mystery cults revering various empyreal lords.   \nPaladin Code:   \n*I will avenge evil wrought upon the innocent.   \n*I will not give my word lightly, but once it is given, I will uphold a promise until my last breath.   \n*Those proven guilty must be punished for their crimes. I will not turn a blind eye to wrongdoing.   \n*Rage is a virtue and a strength only when focused against the deserving. I will never seek disproportionate retribution.   \n*Redemption finds hearts from even the cruelest origins. I will strive not to act upon prejudice against fellow mortals based on race or origin.",
       "zhCN": "\n称号：复仇将军\n阵营：守序善良\n领域：毁灭，善良，秩序，高贵\n子领域：亚空，领导，烈士，狂暴\n偏好武器：混蛋剑\n圣徽：剑，与翼交叉\n圣兽：獒犬神圣颜色：深红色，金色拉加蒂尔是一位至高无上的领主——一位神灵强力属下，他通过超越获得了一定程度的神力——被称为复仇将军。他的职责包括骑士精神、责任和复仇，他的圣徽是一把带有深红色翅膀的私生剑。他在天堂山脚下安家，在他的同名堡垒中，一座宏伟的钢结构建筑设计成可以在必要时抵御一千年的围攻。拉加蒂尔在与地狱恶魔军团的战斗中发挥了积极作用。他的大军首领闪耀，一道金色的光影劈开对面的魔族。各种士兵，尤其是骑士，都向拉加蒂尔致敬，并祈求他在战斗中的美德和愤怒的力量。那些立下誓言的人，尤其是那些负有责任或复仇的人，将拉加蒂尔视为他们的理想，他的代理人有时会帮助那些受到严重委屈并现在寻求正义复仇的人。尽管看起来很奇怪，但拉加蒂尔是火焰位面的半神弗洛尼亚和迪斯之父迪斯帕特的儿子。他在一次短暂的幽会中受孕（仅持续了几个世纪），之后他的母亲将他带出地狱。拉加蒂尔受污染的遗产让他心中充满了愤怒，这位天使不断地努力控制他为光服务的卑鄙冲动。几千年来，他努力向天堂的天使合唱团证明自己。在大漩涡中，他与一条巨大的恶蛇搏斗了 16 年，这条巨蟒的鳞片流着酸性的血液，直到他能够扼杀它的生命。他率领一整支军队攻打了阿弗纳斯的一座钢铁堡垒，并用圣火将城堡夷为平地，并在此过程中单枪匹马地致残了地狱公爵德穆斯。最终，其他天界领主同意接纳拉加蒂尔加入他们的行列，现在他们似乎完全信任这位天使——尽管这种信任需要几个世纪才能建立起来。在历史的某个时刻，Ragathiel 摧毁了 Typhon，他是地狱第一层的原始统治者。他可能是被 Asmodeus 的计划操纵这样做的，以惩罚 Typhon 的轻率行为。 [9] Ragathiel 曾经由继承者之手服务，这位天使现在担任女神 Iomedae 的使者。然后被称为复仇之手，这位天使要求在阿罗登死后被重新分配到艾奥梅代。外观：Ragathiel 是一座光辉之塔。他站起来将近 20 英尺高，五只高高的燃烧着的翅膀从他的背上伸展开来。复仇将军曾经有六只翅膀，但一只被大恶魔迪斯帕特——拉加蒂尔的父亲从身上撕下。崇拜：Ragathiel 通常受到宣誓者、骑士、士兵、受委屈者的崇拜，而天界领主雇用阿斯莫、圣武士、眨眼狗和麒麟作为他最常见的仆人。 [4]对于拉加希尔的追随者来说，最神圣的时刻是战斗前后的短暂时刻。信徒们要求拉加蒂尔的目光落在他们身上，并让他的翅膀保护他们。这也是崇拜者之间的标准问候和告别。 Ragathiel 的追随者通常穿着红色和银色的衣服。许多人还戴上火焰颜色的装饰品或印记，通常在头盔上。拉加蒂尔在马格尼玛有一个小而古老的教派，这座城市以其众多崇拜各种天界领主的神秘教派而闻名。圣骑士密码：*我将为无辜者报仇雪恨。 *我不会轻易兑现诺言，但一旦兑现，我会坚守承诺，直到最后一口气。 *那些被证明有罪的人必须为他们的罪行受到惩罚。我不会对不法行为视而不见。 *愤怒是一种美德和力量，只有当专注于应得的人时。我永远不会寻求不成比例的报应。 *救赎从最残忍的起源中找到心。我将努力不因种族或出身而对人类同胞产生偏见。"
     },
     {
@@ -11169,17 +11196,17 @@
       "zhCN": "银冠勇士"
     },
     {
-      "Key": "96ac5395a9054d339832829bc004945d",
-      "SimpleName": "SilverChampionSpellbook.Name",
-      "ProcessTemplates": false,
-      "enGB": "SilverChampion",
-      "zhCN": "虚龙之爪"
-    },
-    {
       "Key": "c8220270704a44c79e2d4ef6bf6ddce6",
       "SimpleName": "SilverChampionSpellbook.Name",
       "ProcessTemplates": false,
       "enGB": "Claw of the False Wyrm",
+      "zhCN": "虚龙之爪"
+    },
+    {
+      "Key": "96ac5395a9054d339832829bc004945d",
+      "SimpleName": "SilverChampionSpellbook.Name",
+      "ProcessTemplates": false,
+      "enGB": "SilverChampion",
       "zhCN": "虚龙之爪"
     },
     {
@@ -12419,18 +12446,18 @@
       "zhCN": "在近战中，您可以通过分散或干扰对手来帮助您的盟友进攻或防御。如果你处于对对手进行近战攻击的位置，你可以尝试以一个迅捷动作帮助你的盟友对抗该敌人。分心的敌人在对抗你盟友的下一次攻击时，他们的 AC 会受到 -1 的惩罚。此惩罚仅适用于第一次攻击检定，并在 1 轮后移除。"
     },
     {
+      "Key": "2530e57ca69a41dbba4e72c80ac2d2d9",
+      "SimpleName": "SwiftAidAnotherOffenceBuff.Name",
+      "ProcessTemplates": false,
+      "enGB": "Swift Aid Another - Distracted Defending",
+      "zhCN": "迅速援助- 分心防守"
+    },
+    {
       "Key": "39d6c37ad59b44a8b74ff1d81c1d5cb3",
       "SimpleName": "SwiftAidAnotherOffenceBuff.Name",
       "ProcessTemplates": false,
       "IsUsed": false,
       "enGB": "Swift Aid Another - Offence",
-      "zhCN": "迅速援助- 分心防守"
-    },
-    {
-      "Key": "2530e57ca69a41dbba4e72c80ac2d2d9",
-      "SimpleName": "SwiftAidAnotherOffenceBuff.Name",
-      "ProcessTemplates": false,
-      "enGB": "Swift Aid Another - Distracted Defending",
       "zhCN": "迅速援助- 分心防守"
     },
     {
@@ -12682,18 +12709,18 @@
       "zhCN": "透特"
     },
     {
+      "Key": "80d49c8ff8ce404c9e453380c6dae5fa",
+      "SimpleName": "TolcFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nTitles: Snow-Strider   \nAlignment: Chaotic Good   \nAreas of Concern: Cold, Frozen wilds, Survival   \nDomains: Chaos, Good, Travel, Water   \nSubdomains: Azata, Exploration, Ice, Storms   \nFavoured Weapon: Javelin   \nHoly Symbol: Antlers and ice javelin   \nSacred Animal: Caribou   \nTole is master of the frozen lands, where people struggle daily to survive the harsh elements. He gazes favorably upon those who learn to live within this wild domain and appreciate its fierce beauty. Tole stands 7 feet tall and has a stout but muscular figure. His light brown skin always holds a rosy flush, as though the empyreal lord had just stepped in from the cold. Numerous scars mar his broad face, which constantly sports a stern expression, though a kind light occasionally warms his hardened gaze. From his back stretch two arching tusks carved from celestial ice. Snow-Strider and his agents help worthy individuals struggling to live in cold, inhospitable climes. Many northern cultures credit Tole with teaching their people to build shelters from ice. Tole is a sworn enemy of Kostchtchie, and Tole's champions hone their skills in battle to best combat frost giants and white dragons. On occasion, a mortal champion catches Tole's attention long enough for the empyreal lord to grant this mortal divine strength and tactical knowledge with which to defend her kinsfolk. Tole can sometimes be found in the coldest reaches of Elysium's mountains, but his followers on the Material Plane claim to see Snow-Strider in their temple-longhouses with some frequency. Many believe he assumes the guise of a wanderer in need of respite and leaves flecks of gold in the bedding of those who provide him hospitality.",
+      "zhCN": "\n称号：雪行者 \n阵营：混乱善良 \n领域：寒冷、冰封荒野、生存\n领域：混乱、善良、旅行、水 \n子领域：爱塔、探索、冰、风暴 \n偏好武器：标枪 \n圣徽：鹿角和冰标枪 圣兽: Caribou Tole 是冰冻土地的主人，人们每天都在为在严酷的环境中生存而奋斗。他看好那些学会在这片荒野中生活并欣赏其凶猛美丽的人。 Tole 身高 7 英尺，身材结实但肌肉发达。浅褐色的皮肤上，总是带着红润的红晕，仿佛天帝刚刚从寒风中踏进来。他宽阔的脸上布满了伤痕，脸上始终带着严厉的表情，尽管偶尔有一丝善意的光芒温暖了他僵硬的目光。从他的背部伸出两根由天冰雕刻而成的拱形獠牙。 Snow-Strider 和他的代理人帮助那些在寒冷、荒凉地区挣扎的有价值的人。许多北方文化认为托尔教他们的人民用冰建造避难所。 Tole 是 Kostchtchie 的死敌，Tole 的勇士们在战斗中磨练他们的技能，以最好地对抗霜巨人和白龙。有时，一位凡人勇士会引起托尔的注意足够长的时间，让这位至高无上的领主给予这种凡人神圣的力量和战术知识来保护她的亲属。 Tole 有时可以在极乐世界山脉最寒冷的地方找到，但他在物质位面的追随者声称在他们的神殿长屋中经常看到雪行者。许多人认为他伪装成一个需要喘息的流浪者，并在为他提供好客的人的床上留下金色的斑点。"
+    },
+    {
       "Key": "93ebaf3a3b3d4250983f2ce4b250bc6a",
       "SimpleName": "TolcFeature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "\nTitles: Snow-Strider   \nAlignment: Chaotic Good   \nAreas of Concern: Cold, Frozen wilds, Survival   \nDomains: Chaos, Good, Travel, Water   \nSubdomains: Azata, Exploration, Ice, Storms   \nFavoured Weapon: Javelin   \nHoly Symbol: Antlers and ice javelin   \nSacred Animal: Caribou   \nTole is master of the frozen lands, where people struggle daily to survive the harsh elements . He gazes favorably upon those who learn to live within this wild domain and appreciate its fierce beauty. Tole stands 7 feet tall and has a stout but muscular figure. His light brown skin always holds a rosy flush, as though the empyreal lord had just stepped in from the cold. Numerous scars mar his broad face, which constantly sports a stern expression, though a kind light occasionally warms his hardened gaze. From his back stretch two arching tusks carved from celestial ice. Snow-Strider and his agents help worthy individuals struggling to live in cold, inhospitable climes. Many northern cultures credit Tole with teaching their people to build shelters from ice. Tole is a sworn enemy of Kostchtchie, and Tole's champions hone their skills in battle to best combat frost giants and white dragons. On occasion, a mortal champion catches Tole's attention long enough for the empyreal lord to grant this mortal divine strength and tactical knowledge with which to defend her kinsfolk. Tole can sometimes be found in the coldest reaches of Elysium's mountains, but his followers on the Material Plane claim to see Snow-Strider in their temple-longhouses with some frequency. Many believe he assumes the guise of a wanderer in need of respite and leaves flecks of gold in the bedding of those who provide him hospitality.",
-      "zhCN": "\n称号：雪行者 \n阵营：混乱善良 \n领域：寒冷、冰封荒野、生存\n领域：混乱、善良、旅行、水 \n子领域：爱塔、探索、冰、风暴 \n偏好武器：标枪 \n圣徽：鹿角和冰标枪 圣兽: Caribou Tole 是冰冻土地的主人，人们每天都在为在严酷的环境中生存而奋斗。他看好那些学会在这片荒野中生活并欣赏其凶猛美丽的人。 Tole 身高 7 英尺，身材结实但肌肉发达。浅褐色的皮肤上，总是带着红润的红晕，仿佛天帝刚刚从寒风中踏进来。他宽阔的脸上布满了伤痕，脸上始终带着严厉的表情，尽管偶尔有一丝善意的光芒温暖了他僵硬的目光。从他的背部伸出两根由天冰雕刻而成的拱形獠牙。 Snow-Strider 和他的代理人帮助那些在寒冷、荒凉地区挣扎的有价值的人。许多北方文化认为托尔教他们的人民用冰建造避难所。 Tole 是 Kostchtchie 的死敌，Tole 的勇士们在战斗中磨练他们的技能，以最好地对抗霜巨人和白龙。有时，一位凡人勇士会引起托尔的注意足够长的时间，让这位至高无上的领主给予这种凡人神圣的力量和战术知识来保护她的亲属。 Tole 有时可以在极乐世界山脉最寒冷的地方找到，但他在物质位面的追随者声称在他们的神殿长屋中经常看到雪行者。许多人认为他伪装成一个需要喘息的流浪者，并在为他提供好客的人的床上留下金色的斑点。"
-    },
-    {
-      "Key": "80d49c8ff8ce404c9e453380c6dae5fa",
-      "SimpleName": "TolcFeature.Description",
-      "ProcessTemplates": true,
-      "enGB": "\nTitles: Snow-Strider   \nAlignment: Chaotic Good   \nAreas of Concern: Cold, Frozen wilds, Survival   \nDomains: Chaos, Good, Travel, Water   \nSubdomains: Azata, Exploration, Ice, Storms   \nFavoured Weapon: Javelin   \nHoly Symbol: Antlers and ice javelin   \nSacred Animal: Caribou   \nTole is master of the frozen lands, where people struggle daily to survive the harsh elements. He gazes favorably upon those who learn to live within this wild domain and appreciate its fierce beauty. Tole stands 7 feet tall and has a stout but muscular figure. His light brown skin always holds a rosy flush, as though the empyreal lord had just stepped in from the cold. Numerous scars mar his broad face, which constantly sports a stern expression, though a kind light occasionally warms his hardened gaze. From his back stretch two arching tusks carved from celestial ice. Snow-Strider and his agents help worthy individuals struggling to live in cold, inhospitable climes. Many northern cultures credit Tole with teaching their people to build shelters from ice. Tole is a sworn enemy of Kostchtchie, and Tole's champions hone their skills in battle to best combat frost giants and white dragons. On occasion, a mortal champion catches Tole's attention long enough for the empyreal lord to grant this mortal divine strength and tactical knowledge with which to defend her kinsfolk. Tole can sometimes be found in the coldest reaches of Elysium's mountains, but his followers on the Material Plane claim to see Snow-Strider in their temple-longhouses with some frequency. Many believe he assumes the guise of a wanderer in need of respite and leaves flecks of gold in the bedding of those who provide him hospitality.",
       "zhCN": "\n称号：雪行者 \n阵营：混乱善良 \n领域：寒冷、冰封荒野、生存\n领域：混乱、善良、旅行、水 \n子领域：爱塔、探索、冰、风暴 \n偏好武器：标枪 \n圣徽：鹿角和冰标枪 圣兽: Caribou Tole 是冰冻土地的主人，人们每天都在为在严酷的环境中生存而奋斗。他看好那些学会在这片荒野中生活并欣赏其凶猛美丽的人。 Tole 身高 7 英尺，身材结实但肌肉发达。浅褐色的皮肤上，总是带着红润的红晕，仿佛天帝刚刚从寒风中踏进来。他宽阔的脸上布满了伤痕，脸上始终带着严厉的表情，尽管偶尔有一丝善意的光芒温暖了他僵硬的目光。从他的背部伸出两根由天冰雕刻而成的拱形獠牙。 Snow-Strider 和他的代理人帮助那些在寒冷、荒凉地区挣扎的有价值的人。许多北方文化认为托尔教他们的人民用冰建造避难所。 Tole 是 Kostchtchie 的死敌，Tole 的勇士们在战斗中磨练他们的技能，以最好地对抗霜巨人和白龙。有时，一位凡人勇士会引起托尔的注意足够长的时间，让这位至高无上的领主给予这种凡人神圣的力量和战术知识来保护她的亲属。 Tole 有时可以在极乐世界山脉最寒冷的地方找到，但他在物质位面的追随者声称在他们的神殿长屋中经常看到雪行者。许多人认为他伪装成一个需要喘息的流浪者，并在为他提供好客的人的床上留下金色的斑点。"
     },
     {
@@ -13311,18 +13338,18 @@
       "zhCN": "野性变身 - 城镇德鲁伊"
     },
     {
-      "Key": "0269241f6f7d46dfa35389317c1a9315",
-      "SimpleName": "ValaniFeature.Description",
-      "ProcessTemplates": true,
-      "enGB": "\nTitles: Fireshaker, The Father of Islands   \nAlignment: Chaotic Good   \nAreas of Concern: Change, Growth, Primal forces   \nDomains: Chaos, Earth, Good, Weather   \nSubdomains: Azata, Growth, Seasons, Storms   \nFavoured Weapon: Club   \nHoly Symbol: Volcano with gold lava   \nSacred Animal: Dinosaur   \nIt is said that trees bend beneath the force of Valani's laugh and his wrathful roar can split the ground around him. Valani's hot temper is well known among the empyreal lords, and his peers respect him for his mastery over the forces of nature. Fireshaker understands that change cannot be forestalled and that growth requires destruction in order for goodness to take root in what was once evil soil. Valani is a massive figure, standing 10 feet tall with the thick arms and legs of a primate and the head of a boar. His wavy dark hair falls free under a crown of spiked grass and purple flowers. The skin left uncovered by ornate armor crafted from tiles of shell and obsidian is dark brown and ruddy, as if the light of a fire were always burning just beneath his flesh. When angered-which is often-his majestic features contort into an expres sion of awful rage. Aside from his wrath, Valani is also known for being a proud and wise father countless times over. Dozens of tribes on serene islands through the multiverse claim their blessings stem from being favored children of Fireshaker. Valani lives in the heart of the Bright-Burning Volcano in Elysium.",
-      "zhCN": "\n称号：Fireshaker、岛屿之父 \n阵营：混乱善良 \n领域：变化、成长、原始力量 \n领域：混乱、大地、善良、天气 \n子领域：爱塔、成长、季节、风暴 \n偏好武器：俱乐部\n圣徽：黄金火山熔岩\n神兽：恐龙 据说树木在瓦拉尼的笑声中弯曲，他愤怒的咆哮可以撕裂他周围的土地。瓦拉尼的火爆脾气在天界领主中是众所周知的，他的同辈们都尊重他对自然力量的掌握。 Fireshaker 明白变化无法阻止，成长需要破坏才能让善良在曾经邪恶的土壤中生根发芽。瓦拉尼身材魁梧，身高 10 英尺，长着灵长类动物的粗胳膊和腿，还有野猪的头。他那卷曲的黑发披散在尖草和紫色花朵的冠冕下。由贝壳和黑曜石制成的华丽盔甲所覆盖的皮肤呈深褐色和红润，仿佛火光一直在他的肉身下燃烧。当他生气时——通常是这样——他威严的容貌会扭曲成一种可怕的愤怒表情。除了愤怒之外，瓦拉尼还以无数次作为骄傲和明智的父亲而闻名。通过多元宇宙，在宁静岛屿上的数十个部落声称他们的祝福源于成为 Fireshaker 的宠儿。瓦拉尼住在极乐世界的炽热火山中心。"
-    },
-    {
       "Key": "8168f85829b041f9979f0acd6139ac91",
       "SimpleName": "ValaniFeature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "\nTitles: Fireshaker, The Father of Islands   \nAlignment: Chaotic Good   \nAreas of Concern: Change, Growth, Primal forces   \nDomains: Chaos, Earth, Good, Weather   \nSubdomains: Azata, Growth, Seasons, Storms   \nFavoured Weapon: Club   \nHoly Symbol: Volcano with gold lava   \nSacred Animal: Dinosaur   \nIt is said that trees bend beneath the force of Valani's laugh and his wrathful roar can split the ground around him. Valani's hot temper is well known among the empyreal lords, and his peers respect him for his mastery over the forces of nature. Fireshaker understands that change cannot be forestalled and that growth requires destruction in order for goodness to take root in what was once evil soil. Valani is a massive figure, standing 10 feet tall with the thick arms and legs of a primate and the head of a boar. His wavy dark hair falls free under a crown of spiked grass and purple flowers. The skin left uncovered by ornate armor crafted from tiles of shell and obsidian is dark brown and ruddy, as if the light of a fire were always burning just beneath his flesh. When angered-which is often-his majestic features contort into an expres sion of awful rage. Aside from his wrath, Valani is also known for being a proud and wise father countless times over. Dozens of tribes on serene islands through the multiverse claim their blessings stem from being favored children ofFireshaker. Valani lives in the heart of the Bright-Burning Volcano in Elysium.",
+      "zhCN": "\n称号：Fireshaker、岛屿之父 \n阵营：混乱善良 \n领域：变化、成长、原始力量 \n领域：混乱、大地、善良、天气 \n子领域：爱塔、成长、季节、风暴 \n偏好武器：俱乐部\n圣徽：黄金火山熔岩\n神兽：恐龙 据说树木在瓦拉尼的笑声中弯曲，他愤怒的咆哮可以撕裂他周围的土地。瓦拉尼的火爆脾气在天界领主中是众所周知的，他的同辈们都尊重他对自然力量的掌握。 Fireshaker 明白变化无法阻止，成长需要破坏才能让善良在曾经邪恶的土壤中生根发芽。瓦拉尼身材魁梧，身高 10 英尺，长着灵长类动物的粗胳膊和腿，还有野猪的头。他那卷曲的黑发披散在尖草和紫色花朵的冠冕下。由贝壳和黑曜石制成的华丽盔甲所覆盖的皮肤呈深褐色和红润，仿佛火光一直在他的肉身下燃烧。当他生气时——通常是这样——他威严的容貌会扭曲成一种可怕的愤怒表情。除了愤怒之外，瓦拉尼还以无数次作为骄傲和明智的父亲而闻名。通过多元宇宙，在宁静岛屿上的数十个部落声称他们的祝福源于成为 Fireshaker 的宠儿。瓦拉尼住在极乐世界的炽热火山中心。"
+    },
+    {
+      "Key": "0269241f6f7d46dfa35389317c1a9315",
+      "SimpleName": "ValaniFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nTitles: Fireshaker, The Father of Islands   \nAlignment: Chaotic Good   \nAreas of Concern: Change, Growth, Primal forces   \nDomains: Chaos, Earth, Good, Weather   \nSubdomains: Azata, Growth, Seasons, Storms   \nFavoured Weapon: Club   \nHoly Symbol: Volcano with gold lava   \nSacred Animal: Dinosaur   \nIt is said that trees bend beneath the force of Valani's laugh and his wrathful roar can split the ground around him. Valani's hot temper is well known among the empyreal lords, and his peers respect him for his mastery over the forces of nature. Fireshaker understands that change cannot be forestalled and that growth requires destruction in order for goodness to take root in what was once evil soil. Valani is a massive figure, standing 10 feet tall with the thick arms and legs of a primate and the head of a boar. His wavy dark hair falls free under a crown of spiked grass and purple flowers. The skin left uncovered by ornate armor crafted from tiles of shell and obsidian is dark brown and ruddy, as if the light of a fire were always burning just beneath his flesh. When angered-which is often-his majestic features contort into an expres sion of awful rage. Aside from his wrath, Valani is also known for being a proud and wise father countless times over. Dozens of tribes on serene islands through the multiverse claim their blessings stem from being favored children of Fireshaker. Valani lives in the heart of the Bright-Burning Volcano in Elysium.",
       "zhCN": "\n称号：Fireshaker、岛屿之父 \n阵营：混乱善良 \n领域：变化、成长、原始力量 \n领域：混乱、大地、善良、天气 \n子领域：爱塔、成长、季节、风暴 \n偏好武器：俱乐部\n圣徽：黄金火山熔岩\n神兽：恐龙 据说树木在瓦拉尼的笑声中弯曲，他愤怒的咆哮可以撕裂他周围的土地。瓦拉尼的火爆脾气在天界领主中是众所周知的，他的同辈们都尊重他对自然力量的掌握。 Fireshaker 明白变化无法阻止，成长需要破坏才能让善良在曾经邪恶的土壤中生根发芽。瓦拉尼身材魁梧，身高 10 英尺，长着灵长类动物的粗胳膊和腿，还有野猪的头。他那卷曲的黑发披散在尖草和紫色花朵的冠冕下。由贝壳和黑曜石制成的华丽盔甲所覆盖的皮肤呈深褐色和红润，仿佛火光一直在他的肉身下燃烧。当他生气时——通常是这样——他威严的容貌会扭曲成一种可怕的愤怒表情。除了愤怒之外，瓦拉尼还以无数次作为骄傲和明智的父亲而闻名。通过多元宇宙，在宁静岛屿上的数十个部落声称他们的祝福源于成为 Fireshaker 的宠儿。瓦拉尼住在极乐世界的炽热火山中心。"
     },
     {

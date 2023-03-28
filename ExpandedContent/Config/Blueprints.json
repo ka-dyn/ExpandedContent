@@ -1527,7 +1527,12 @@
     "DrakeNaturalArmor5Applied": "bc60757f-535b-4b37-ac56-24b0ed9cfac2",
     "DrakeNaturalArmor6Applied": "97a30da4-aeee-4c0c-b47d-4b2c840c22c8",
     "DrakeNaturalArmor7Applied": "f4a0ff10-aeaa-4061-b52b-8ecff979b7d4",
-    "DrakeNaturalArmor8Applied": "8b483348-79a2-4aa3-b41a-87dc157765fe"
+    "DrakeNaturalArmor8Applied": "8b483348-79a2-4aa3-b41a-87dc157765fe",
+
+    "ParticulateFormAbility": "99e39437-184a-46b9-94da-740ce399f591",
+    "ParticulateFormBuff": "78d105f6-ecd8-4eb5-ad87-4d37f69b0895",
+    "ParticulateFormBuffAbility": "7d04ef8b-cf01-42ea-a6b9-58e3823ce38b",
+    "ScrollOfParticulateForm": "6980e028-9023-4c9c-b31c-f80fe169cfff"
 
 
 

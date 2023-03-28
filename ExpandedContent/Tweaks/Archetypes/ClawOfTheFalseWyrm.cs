@@ -30,7 +30,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var DrakeCompanionFeatureRed = Resources.GetModBlueprint<BlueprintFeature>("DrakeCompanionFeatureRed");
             var DrakeCompanionSelection = Resources.GetModBlueprint<BlueprintFeatureSelection>("DrakeCompanionSelection");
             var ClawOfTheFalseWyrmSpellbook = Helpers.CreateBlueprint<BlueprintSpellbook>("ClawOfTheFalseWyrmSpellbook", bp => {
-                bp.Name = Helpers.CreateString($"SilverChampionSpellbook.Name", "Claw of the False Wyrm");
+                bp.Name = Helpers.CreateString($"ClawOfTheFalseWyrmSpellbook.Name", "Claw of the False Wyrm");
                 bp.m_SpellsPerDay = PaladinSpellLevels.ToReference<BlueprintSpellsTableReference>();
                 bp.m_SpellList = BloodragerSpellList.ToReference<BlueprintSpellListReference>();
                 bp.m_CharacterClass = DreadKnightClass.ToReference<BlueprintCharacterClassReference>();

@@ -26,7 +26,7 @@ namespace ExpandedContent.Utilities {
                 return Sprite.Create(texture, new Rect(0, 0, size.x, size.y), new Vector2(0, 0));
             }
         }
-
+        // Added by JohN100x1 to fix issues with small portraits not loading
         public static PortraitData LoadPortraitData(string name) {
             var imageFolderPath = Path.Combine(ModSettings.ModEntry.Path, "Assets", "Portraits");
             var smallImagePath = Path.Combine(imageFolderPath, $"{name}Small.png");

@@ -425,6 +425,7 @@
     <Compile Include="Tweaks\Spells\ShieldOfFortification.cs" />
     <Compile Include="Tweaks\Spells\HypnoticPattern.cs" />
     <Compile Include="Tweaks\Spells\EntropicShield.cs" />
+    <Compile Include="Tweaks\Spells\ParticulateForm.cs" />
     <Compile Include="Tweaks\Spells\ZephyrsFleetness.cs" />
     <Compile Include="Tweaks\Spells\InvokeDeity.cs" />
     <Compile Include="Tweaks\Spells\GloomblindBolts.cs" />
@@ -1106,6 +1107,9 @@
     <Content Include="Assets\Items\Icon_ScrollOfInflictPainMass.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Items\Icon_ScrollOfParticulateForm.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Items\Icon_ScrollOfPurgingFinale.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -1539,6 +1543,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_OracleSuccorMystery.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_ParticulateForm.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_PerfectAidAnother.jpg">
