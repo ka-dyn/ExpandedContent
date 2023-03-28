@@ -49,12 +49,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
 
 
             var DrakeGoldPortrait = Helpers.CreateBlueprint<BlueprintPortrait>("DrakeGoldPortrait", bp => {
-                bp.Data = new PortraitData() {
-                    PortraitCategory = PortraitCategory.None,
-                    IsDefault = false,
-                    InitiativePortrait = false
-                };
-
+                bp.Data = PortraitLoader.LoadPortraitData("Gold");
             });
 
 
@@ -159,9 +154,6 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 };
             });
 
-            FullPortraitInjecotr.Replacements[DrakeCompanionUnitGold.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "GoldFulllength.png", new Vector2Int(692, 1024), TextureFormat.RGBA32);
-            HalfPortraitInjecotr.Replacements[DrakeCompanionUnitGold.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "GoldMedium.png", new Vector2Int(330, 432), TextureFormat.RGBA32);
-            SmallPortraitInjecotr.Replacements[DrakeCompanionUnitGold.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "GoldSmall.png", new Vector2Int(185, 242), TextureFormat.RGBA32);
             EyePortraitInjecotr.Replacements[DrakeCompanionUnitGold.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "GoldPetEye.png", new Vector2Int(176, 24), TextureFormat.RGBA32);
 
             var DrakeCompanionFeatureGold = Helpers.CreateBlueprint<BlueprintFeature>("DrakeCompanionFeatureGold", bp => {

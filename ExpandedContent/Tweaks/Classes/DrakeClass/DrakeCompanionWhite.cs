@@ -48,11 +48,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
             var UmbralDragonBarks = Resources.GetBlueprint<BlueprintUnitAsksList>("a526fcf667234d4e8bb2ba5376a0f91a");
 
             var DrakeWhitePortrait = Helpers.CreateBlueprint<BlueprintPortrait>("DrakeWhitePortrait", bp => {
-                bp.Data = new PortraitData() {
-                    PortraitCategory = PortraitCategory.None,
-                    IsDefault = false,
-                    InitiativePortrait = false
-                };
+                bp.Data = PortraitLoader.LoadPortraitData("White");
             });
 
             var DrakeBloodWhite = Helpers.CreateBlueprint<BlueprintFeature>("DrakeBloodWhite", bp => {
@@ -155,9 +151,6 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 };
             });
 
-            FullPortraitInjecotr.Replacements[DrakeCompanionUnitWhite.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "WhiteFulllength.png", new Vector2Int(692, 1024), TextureFormat.RGBA32);
-            HalfPortraitInjecotr.Replacements[DrakeCompanionUnitWhite.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "WhiteMedium.png", new Vector2Int(330, 432), TextureFormat.RGBA32);
-            SmallPortraitInjecotr.Replacements[DrakeCompanionUnitWhite.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "WhiteSmall.png", new Vector2Int(185, 242), TextureFormat.RGBA32);
             EyePortraitInjecotr.Replacements[DrakeCompanionUnitWhite.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "WhitePetEye.png", new Vector2Int(176, 24), TextureFormat.RGBA32);
 
             var DrakeCompanionFeatureWhite = Helpers.CreateBlueprint<BlueprintFeature>("DrakeCompanionFeatureWhite", bp => {

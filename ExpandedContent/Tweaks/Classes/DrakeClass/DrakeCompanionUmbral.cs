@@ -51,12 +51,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
 
 
             var DrakeUmbralPortrait = Helpers.CreateBlueprint<BlueprintPortrait>("DrakeUmbralPortrait", bp => {
-                bp.Data = new PortraitData() {
-                    PortraitCategory = PortraitCategory.None,
-                    IsDefault = false,
-                    InitiativePortrait = false
-                };
-
+                bp.Data = PortraitLoader.LoadPortraitData("Umbral");
             });
 
 
@@ -162,9 +157,6 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 };
             });
 
-            FullPortraitInjecotr.Replacements[DrakeCompanionUnitUmbral.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "UmbralFulllength.png", new Vector2Int(692, 1024), TextureFormat.RGBA32);
-            HalfPortraitInjecotr.Replacements[DrakeCompanionUnitUmbral.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "UmbralMedium.png", new Vector2Int(330, 432), TextureFormat.RGBA32);
-            SmallPortraitInjecotr.Replacements[DrakeCompanionUnitUmbral.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "UmbralSmall.png", new Vector2Int(185, 242), TextureFormat.RGBA32);
             EyePortraitInjecotr.Replacements[DrakeCompanionUnitUmbral.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "UmbralPetEye.png", new Vector2Int(176, 24), TextureFormat.RGBA32);
 
             var DrakeCompanionFeatureUmbral = Helpers.CreateBlueprint<BlueprintFeature>("DrakeCompanionFeatureUmbral", bp => {

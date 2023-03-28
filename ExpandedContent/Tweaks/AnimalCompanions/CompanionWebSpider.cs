@@ -227,11 +227,7 @@ namespace ExpandedContent.Tweaks.AnimalCompanions {
             
 
             var CompanionWebSpiderPortrait = Helpers.CreateBlueprint<BlueprintPortrait>("CompanionWebSpiderPortrait", bp => {
-                bp.Data = new PortraitData() {
-                    PortraitCategory = PortraitCategory.None,
-                    IsDefault = false,
-                    InitiativePortrait = false
-                };
+                bp.Data = PortraitLoader.LoadPortraitData("WebSpider");
             });
             var CompanionWebSpiderUnit = Helpers.CreateBlueprint<BlueprintUnit>("CompanionWebSpiderUnit", bp => {
                 bp.SetLocalisedName("Web Tyrant Spider");
@@ -303,9 +299,6 @@ namespace ExpandedContent.Tweaks.AnimalCompanions {
                 };
             });
 
-            FullPortraitInjecotr.Replacements[CompanionWebSpiderUnit.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "WebSpiderFulllength.png", new Vector2Int(692, 1024), TextureFormat.RGBA32);
-            HalfPortraitInjecotr.Replacements[CompanionWebSpiderUnit.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "WebSpiderMedium.png", new Vector2Int(330, 432), TextureFormat.RGBA32);
-            SmallPortraitInjecotr.Replacements[CompanionWebSpiderUnit.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "WebSpiderSmall.png", new Vector2Int(185, 242), TextureFormat.RGBA32);
             EyePortraitInjecotr.Replacements[CompanionWebSpiderUnit.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "WebSpiderPetEye.png", new Vector2Int(176, 24), TextureFormat.RGBA32);
 
             var CompanionWebSpiderFeature = Helpers.CreateBlueprint<BlueprintFeature>("CompanionWebSpiderFeature", bp => {

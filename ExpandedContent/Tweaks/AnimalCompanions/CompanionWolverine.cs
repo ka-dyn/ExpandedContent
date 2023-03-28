@@ -204,11 +204,7 @@ namespace ExpandedContent.Tweaks.AnimalCompanions {
             });
             FeatTools.AddAsFeat(ExtraRageWolverineFeat);
             var CompanionWolverinePortrait = Helpers.CreateBlueprint<BlueprintPortrait>("CompanionWolverinePortrait", bp => {
-                bp.Data = new PortraitData() {
-                    PortraitCategory = PortraitCategory.None,
-                    IsDefault = false,
-                    InitiativePortrait = false
-                };
+                bp.Data = PortraitLoader.LoadPortraitData("Wolverine");
             });
             var CompanionWolverineUnit = Helpers.CreateBlueprint<BlueprintUnit>("CompanionWolverineUnit", bp => {
                 bp.SetLocalisedName("Wolverine");
@@ -303,9 +299,6 @@ namespace ExpandedContent.Tweaks.AnimalCompanions {
                 };
             });
 
-            FullPortraitInjecotr.Replacements[CompanionWolverineUnit.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "WolverineFulllength.png", new Vector2Int(692, 1024), TextureFormat.RGBA32);
-            HalfPortraitInjecotr.Replacements[CompanionWolverineUnit.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "WolverineMedium.png", new Vector2Int(330, 432), TextureFormat.RGBA32);
-            SmallPortraitInjecotr.Replacements[CompanionWolverineUnit.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "WolverineSmall.png", new Vector2Int(185, 242), TextureFormat.RGBA32);
             EyePortraitInjecotr.Replacements[CompanionWolverineUnit.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "WolverinePetEye.png", new Vector2Int(176, 24), TextureFormat.RGBA32);
 
             var CompanionWolverineFeature = Helpers.CreateBlueprint<BlueprintFeature>("CompanionWolverineFeature", bp => {

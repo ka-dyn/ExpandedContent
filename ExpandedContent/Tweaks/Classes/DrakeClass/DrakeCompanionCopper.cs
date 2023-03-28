@@ -51,12 +51,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
 
 
             var DrakeCopperPortrait = Helpers.CreateBlueprint<BlueprintPortrait>("DrakeCopperPortrait", bp => {
-                bp.Data = new PortraitData() {
-                    PortraitCategory = PortraitCategory.None,
-                    IsDefault = false,
-                    InitiativePortrait = false
-                };
-                
+                bp.Data = PortraitLoader.LoadPortraitData("Copper");
             });
 
 
@@ -161,9 +156,6 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 };
             });
 
-            FullPortraitInjecotr.Replacements[DrakeCompanionUnitCopper.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "CopperFulllength.png", new Vector2Int(692, 1024), TextureFormat.RGBA32);
-            HalfPortraitInjecotr.Replacements[DrakeCompanionUnitCopper.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "CopperMedium.png", new Vector2Int(330, 432), TextureFormat.RGBA32);
-            SmallPortraitInjecotr.Replacements[DrakeCompanionUnitCopper.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "CopperSmall.png", new Vector2Int(185, 242), TextureFormat.RGBA32);
             EyePortraitInjecotr.Replacements[DrakeCompanionUnitCopper.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "CopperPetEye.png", new Vector2Int(176, 24), TextureFormat.RGBA32);
 
             var DrakeCompanionFeatureCopper = Helpers.CreateBlueprint<BlueprintFeature>("DrakeCompanionFeatureCopper", bp => {

@@ -50,12 +50,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
             var HavocLargeDragonBarks = Resources.GetBlueprint<BlueprintUnitAsksList>("478370a2af1b5cb4abe9c2fe80ef0cb5");
 
             var DrakeBronzePortrait = Helpers.CreateBlueprint<BlueprintPortrait>("DrakeBronzePortrait", bp => {
-                bp.Data = new PortraitData() {
-                    PortraitCategory = PortraitCategory.None,
-                    IsDefault = false,
-                    InitiativePortrait = false
-                };
-
+                bp.Data = PortraitLoader.LoadPortraitData("Bronze");
             });
 
 
@@ -161,9 +156,6 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 };
             });
 
-            FullPortraitInjecotr.Replacements[DrakeCompanionUnitBronze.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "BronzeFulllength.png", new Vector2Int(692, 1024), TextureFormat.RGBA32);
-            HalfPortraitInjecotr.Replacements[DrakeCompanionUnitBronze.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "BronzeMedium.png", new Vector2Int(330, 432), TextureFormat.RGBA32);
-            SmallPortraitInjecotr.Replacements[DrakeCompanionUnitBronze.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "BronzeSmall.png", new Vector2Int(185, 242), TextureFormat.RGBA32);
             EyePortraitInjecotr.Replacements[DrakeCompanionUnitBronze.PortraitSafe.Data] = PortraitLoader.LoadInternal("Portraits", "BronzePetEye.png", new Vector2Int(176, 24), TextureFormat.RGBA32);
 
             var DrakeCompanionFeatureBronze = Helpers.CreateBlueprint<BlueprintFeature>("DrakeCompanionFeatureBronze", bp => {
