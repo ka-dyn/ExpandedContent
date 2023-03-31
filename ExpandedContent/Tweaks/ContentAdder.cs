@@ -140,6 +140,7 @@ namespace ExpandedContent.Tweaks {
                 Domains.AgathionDomain.AddAgathionDomain();
                 Domains.LustDomain.AddLustDomain();
                 Domains.FurDomain.AddFurDomain();
+                Domains.DefenseDomain.AddDefenseDomain();
                 Domains.BaseDeityPatch.AddBaseDeityPatch();
 
                 Archetypes.StormDruid.AddStormDruid();

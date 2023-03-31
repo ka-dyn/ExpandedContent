@@ -1532,7 +1532,20 @@
     "ParticulateFormAbility": "99e39437-184a-46b9-94da-740ce399f591",
     "ParticulateFormBuff": "78d105f6-ecd8-4eb5-ad87-4d37f69b0895",
     "ParticulateFormBuffAbility": "7d04ef8b-cf01-42ea-a6b9-58e3823ce38b",
-    "ScrollOfParticulateForm": "6980e028-9023-4c9c-b31c-f80fe169cfff"
+    "ScrollOfParticulateForm": "6980e028-9023-4c9c-b31c-f80fe169cfff",
+
+    "DefenseDomainAllowed": "2a248b33-be79-4275-9f56-7749f87cf391",
+    "DefenseDomainBaseAbility": "3ebffd80-b77c-439c-993e-4a8455ff7fea",
+    "DefenseDomainBaseArea": "03f2bfef-77a4-49b2-b134-871a57ef30a3",
+    "DefenseDomainBaseAreaBuff": "603d9806-ee8e-4368-98de-3455c5768f71",
+    "DefenseDomainBaseBuff": "f841457f-6813-488e-89ea-8c52c64c893e",
+    "DefenseDomainBaseClassFeature": "8aa7fdba-3cc5-4087-a138-7784bd925444",
+    "DefenseDomainBaseFeature": "ab8c73a3-7c4e-483c-bbaa-7c3fb0e31aac",
+    "DefenseDomainBaseResource": "a5651f29-338c-4112-ba5e-8c56935b3c9b",
+    "DefenseDomainProgression": "407af52f-9294-41b4-aee3-a71e7ad1918e",
+    "DefenseDomainProgressionSecondary": "dafd2e2d-e6f3-4940-b490-4856f690a71c",
+    "DefenseDomainSpellList": "daa7e680-d6ad-4725-8ab0-62555675d249",
+    "DefenseDomainSpellListFeature": "497a37bb-1765-44f0-9d93-4de24eadeac9"
 
 
 
