@@ -85,10 +85,12 @@ New Domains / Subdomains
   - Blood
   - Caves
   - Curse
+  - Defense
   - Demon
   - Dragon
   - Ferocity
   - Fur
+  - Heroism
   - Ice
   - Lust
   - Psychopomp
