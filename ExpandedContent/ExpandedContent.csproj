@@ -334,6 +334,7 @@
     <Compile Include="Tweaks\Deities\Ragathiel.cs" />
     <Compile Include="Tweaks\DemonLords\Zura.cs" />
     <Compile Include="Tweaks\Domains\DefenseDomain.cs" />
+    <Compile Include="Tweaks\Domains\HeroismDomain.cs" />
     <Compile Include="Tweaks\Domains\LustDomain.cs" />
     <Compile Include="Tweaks\Domains\AgathionDomain.cs" />
     <Compile Include="Tweaks\Domains\BaseDomainDruidPatch.cs" />
@@ -1682,6 +1683,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_TouchCorrupt.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_TouchofGlory.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_UnholyRes.png">

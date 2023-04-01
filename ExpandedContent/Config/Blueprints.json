@@ -1545,8 +1545,15 @@
     "DefenseDomainProgression": "407af52f-9294-41b4-aee3-a71e7ad1918e",
     "DefenseDomainProgressionSecondary": "dafd2e2d-e6f3-4940-b490-4856f690a71c",
     "DefenseDomainSpellList": "daa7e680-d6ad-4725-8ab0-62555675d249",
-    "DefenseDomainSpellListFeature": "497a37bb-1765-44f0-9d93-4de24eadeac9"
-
+    "DefenseDomainSpellListFeature": "497a37bb-1765-44f0-9d93-4de24eadeac9",
+    "HeroismDomainAllowed": "3c950c62-80fc-40e5-9a5c-eddbd44cbc71",
+    "HeroismDomainBaseAbility": "c4c79151-dfad-48c3-9c39-08152553c164",
+    "HeroismDomainBaseFeature": "c51f6965-f5d7-460b-b0b7-93119577e689",
+    "HeroismDomainBaseResource": "9add3d5e-9d99-419e-9966-a69e375123d2",
+    "HeroismDomainProgression": "e109083f-4f87-414a-9f33-aad70a9065dd",
+    "HeroismDomainProgressionSecondary": "2ef3d95e-4baa-4bf0-9877-85ea6c72f204",
+    "HeroismDomainSpellList": "78d3f2f5-4ab2-4430-9358-09d70f835fc3",
+    "HeroismDomainSpellListFeature": "d4a849cf-510f-433e-b8ef-62603196b819"
 
 
 

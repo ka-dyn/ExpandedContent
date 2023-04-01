@@ -48,6 +48,7 @@ namespace ExpandedContent.Tweaks.Domains {
             var DemonDomainChaosAllowed = Resources.GetModBlueprint<BlueprintFeature>("DemonDomainChaosAllowed");
             var DemonDomainEvilAllowed = Resources.GetModBlueprint<BlueprintFeature>("DemonDomainEvilAllowed");
             var FerocityDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("FerocityDomainAllowed");
+            var HeroismDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("HeroismDomainAllowed");
             var FurDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("FurDomainAllowed");
             var IceDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("IceDomainAllowed");
             var LustDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("LustDomainAllowed");
@@ -130,6 +131,9 @@ namespace ExpandedContent.Tweaks.Domains {
                 c.m_Facts = new BlueprintUnitFactReference[1] { ArchonDomainLawAllowed.ToReference<BlueprintUnitFactReference>() };
             });
             IomedaeFeature.AddComponent<AddFacts>(c => {
+                c.m_Facts = new BlueprintUnitFactReference[1] { HeroismDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+            });
+            IomedaeFeature.AddComponent<AddFacts>(c => {
                 c.m_Facts = new BlueprintUnitFactReference[1] { RevelationDomainAllowed.ToReference<BlueprintUnitFactReference>() };
             });
             IroriFeature.AddComponent<AddFacts>(c => {
@@ -179,6 +183,9 @@ namespace ExpandedContent.Tweaks.Domains {
             });
             RovagugFeature.AddComponent<AddFacts>(c => {
                 c.m_Facts = new BlueprintUnitFactReference[1] { StormDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+            });
+            SarenraeFeature.AddComponent<AddFacts>(c => {
+                c.m_Facts = new BlueprintUnitFactReference[1] { HeroismDomainAllowed.ToReference<BlueprintUnitFactReference>() };
             });
             SarenraeFeature.AddComponent<AddFacts>(c => {
                 c.m_Facts = new BlueprintUnitFactReference[1] { RestorationDomainAllowed.ToReference<BlueprintUnitFactReference>() };

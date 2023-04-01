@@ -141,6 +141,7 @@ namespace ExpandedContent.Tweaks {
                 Domains.LustDomain.AddLustDomain();
                 Domains.FurDomain.AddFurDomain();
                 Domains.DefenseDomain.AddDefenseDomain();
+                Domains.HeroismDomain.AddHeroismDomain();
                 Domains.BaseDeityPatch.AddBaseDeityPatch();
 
                 Archetypes.StormDruid.AddStormDruid();

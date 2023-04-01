@@ -11,9 +11,12 @@ namespace ExpandedContent.Utilities {
     class ModSupportUtilities {
 
         public static ModEntry ModEntry;
+        //Old Filepath incase something breaks                      var FilePath = $"..{Path.DirectorySeparatorChar}TabletopTweaks-Base{Path.DirectorySeparatorChar}UserSettings{Path.DirectorySeparatorChar}Fixes.json";
+
         public static bool GetShiftersRushTTTBaseSetting() {
             try {
-                var xks = System.IO.Path.Combine(Config.ModSettings.ModEntry.Path, @"..\TabletopTweaks-Base\UserSettings\Fixes.json");
+                var FilePath = Path.Combine("..", "TabletopTweaks-Base", "UserSettings", "Fixes.json");
+                var xks = System.IO.Path.Combine(Config.ModSettings.ModEntry.Path, FilePath);
                 JObject o1 = JObject.Parse(File.ReadAllText(xks));
                 return (bool)o1["Feats"]["Settings"]["ShifterRush"]["Enabled"];
             } catch (Exception ex) {
@@ -23,7 +26,8 @@ namespace ExpandedContent.Utilities {
         }
         public static bool GetEnergizedWildShapePrerequisitesTTTBaseSetting() {
             try {
-                var xks = System.IO.Path.Combine(Config.ModSettings.ModEntry.Path, @"..\TabletopTweaks-Base\UserSettings\Fixes.json");
+                var FilePath = Path.Combine("..", "TabletopTweaks-Base", "UserSettings", "Fixes.json");
+                var xks = System.IO.Path.Combine(Config.ModSettings.ModEntry.Path, FilePath);
                 JObject o1 = JObject.Parse(File.ReadAllText(xks));
                 return (bool)o1["Feats"]["Settings"]["EnergizedWildShapePrerequisites"]["Enabled"];
             } catch (Exception ex) {
@@ -31,9 +35,10 @@ namespace ExpandedContent.Utilities {
                 return false;
             }
         }
-        public static bool GetRakingClawsTTTBaseSetting() { //This one is not it TTT yet
+        public static bool GetRakingClawsTTTBaseSetting() {
             try {
-                var xks = System.IO.Path.Combine(Config.ModSettings.ModEntry.Path, @"..\TabletopTweaks-Base\UserSettings\Fixes.json");
+                var FilePath = Path.Combine("..", "TabletopTweaks-Base", "UserSettings", "Fixes.json");
+                var xks = System.IO.Path.Combine(Config.ModSettings.ModEntry.Path, FilePath); 
                 JObject o1 = JObject.Parse(File.ReadAllText(xks));
                 return (bool)o1["Feats"]["Settings"]["RakingClaws"]["Enabled"];
             } catch (Exception ex) {
@@ -43,7 +48,8 @@ namespace ExpandedContent.Utilities {
         }
         public static bool GetFrightfulShapeTTTBaseSetting() {
             try {
-                var xks = System.IO.Path.Combine(Config.ModSettings.ModEntry.Path, @"..\TabletopTweaks-Base\UserSettings\Fixes.json");
+                var FilePath = Path.Combine("..", "TabletopTweaks-Base", "UserSettings", "Fixes.json");
+                var xks = System.IO.Path.Combine(Config.ModSettings.ModEntry.Path, FilePath); 
                 JObject o1 = JObject.Parse(File.ReadAllText(xks));
                 return (bool)o1["Feats"]["Settings"]["FrightfulShape"]["Enabled"];
             } catch (Exception ex) {

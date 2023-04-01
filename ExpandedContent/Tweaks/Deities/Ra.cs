@@ -23,6 +23,7 @@ namespace ExpandedContent.Tweaks.Deities {
         private static readonly BlueprintFeature LawDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("092714336606cfc45a37d2ab39fabfa8");
         private static readonly BlueprintFeature NobilityDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("e0471d01e73254a4ca23278705b75e57");
         private static readonly BlueprintFeature SunDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("e28412c548ff21a49ac5b8b792b0aa9b");
+        private static readonly BlueprintFeature HeroismDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("HeroismDomainAllowed");
         private static readonly BlueprintSpellbook CrusaderSpellbook = Resources.GetBlueprint<BlueprintSpellbook>("673d39f7da699aa408cdda6282e7dcc0");
         private static readonly BlueprintSpellbook ClericSpellbook = Resources.GetBlueprint<BlueprintSpellbook>("4673d19a0cf2fab4f885cc4d1353da33");
         private static readonly BlueprintSpellbook InquisitorSpellbook = Resources.GetBlueprint<BlueprintSpellbook>("57fab75111f377248810ece84193a5a5");
@@ -115,6 +116,9 @@ namespace ExpandedContent.Tweaks.Deities {
                 });
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[1] { SunDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[1] { HeroismDomainAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<ForbidSpellbookOnAlignmentDeviation>(c => {
                     c.m_Spellbooks = new BlueprintSpellbookReference[1] { CrusaderSpellbook.ToReference<BlueprintSpellbookReference>() };

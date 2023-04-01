@@ -295,6 +295,11 @@
         "Enabled": true,
         "Homebrew": false,
         "Description": "Adds the defense subdomain, a subdomain to the protection domain."
+      },
+      "Heroism Subdomain": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds the heroism subdomain, a subdomain to the glory domain."
       }
     },
     "IsExpanded": false
