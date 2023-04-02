@@ -447,6 +447,7 @@
     <Compile Include="Tweaks\Spells\ScourgeOfTheHorsemen.cs" />
     <Compile Include="Tweaks\Spells\Slipstream.cs" />
     <Compile Include="Tweaks\Spells\HydraulicPush.cs" />
+    <Compile Include="Tweaks\Spirits\HeavensSpirit.cs" />
     <Compile Include="Tweaks\TheElderMythos\Abhoth.cs" />
     <Compile Include="Tweaks\TheElderMythos\AtlachNacha.cs" />
     <Compile Include="Tweaks\TheElderMythos\Azathoth.cs" />
