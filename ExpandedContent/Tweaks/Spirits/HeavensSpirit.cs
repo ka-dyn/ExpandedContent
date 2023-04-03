@@ -110,12 +110,7 @@ namespace ExpandedContent.Tweaks.Spirits {
                     c.SpellLevel = 9;
                 });
             });
-
-
-
-
-
-
+            //Spirit Features
             var ShamanHeavensSpiritBaseResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("ShamanHeavensSpiritBaseResource", bp => {
                 bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
                     BaseValue = 3,
@@ -259,19 +254,7 @@ namespace ExpandedContent.Tweaks.Spirits {
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = true;
             });
-
             var ScintillatingPatternSpell = Resources.GetBlueprint<BlueprintAbility>("4dc60d08c6c4d3c47b413904e4de5ff0");
-
-
-
-
-
-
-
-
-
-
-
             var ShamanHeavensPrismaticSprayResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("ShamanHeavensPrismaticSprayResource", bp => {
                 bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
                     BaseValue = 1,
@@ -286,18 +269,6 @@ namespace ExpandedContent.Tweaks.Spirits {
                     IncreasedByStat = false,
                 };
             });
-
-
-
-
-
-
-
-
-
-
-
-
             var ShamanHeavensPrismaticSprayAbility = Helpers.CreateBlueprint<BlueprintAbility>("ShamanHeavensPrismaticSprayAbility", bp => {
                 bp.SetName("Phantasmagoric Display - Prismatic Spray");
                 bp.SetDescription("This {g|Encyclopedia:Spell}spell{/g} causes seven shimmering, multicolored beams of light to spray from your hand. Each beam has a different power. Creatures in " +
@@ -391,9 +362,6 @@ namespace ExpandedContent.Tweaks.Spirits {
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
-
-
-
             var ShamanHeavensSpiritTrueFeature = Helpers.CreateBlueprint<BlueprintFeature>("ShamanHeavensSpiritTrueFeature", bp => {
                 bp.SetName("Phantasmagoric Display");
                 bp.SetDescription("The shaman can cast prismatic spray and scintillating pattern, each once per day with a caster level equal to her shaman level.");
@@ -421,6 +389,7 @@ namespace ExpandedContent.Tweaks.Spirits {
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = true;
             });
+            //Progression
             var ShamanHeavensSpiritProgression = Helpers.CreateBlueprint<BlueprintProgression>("ShamanHeavensSpiritProgression", bp => {
                 bp.SetName("Heavens");
                 bp.SetDescription("A shaman who selects the heavens spirit has eyes that sparkle like starlight, exuding an aura of otherworldliness to those she is around. " +

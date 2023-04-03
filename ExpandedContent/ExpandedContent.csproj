@@ -485,6 +485,7 @@
     <Compile Include="Tweaks\Miscellaneous\Cavalier.cs" />
     <Compile Include="Utilities\ActionFlow.cs" />
     <Compile Include="Utilities\AuraUtils.cs" />
+    <Compile Include="Utilities\SpiritTools.cs" />
     <Compile Include="Utilities\ModSupportUtilities.cs" />
     <Compile Include="Utilities\ItemTools.cs" />
     <Compile Include="Utilities\PortraitLoader.cs" />
