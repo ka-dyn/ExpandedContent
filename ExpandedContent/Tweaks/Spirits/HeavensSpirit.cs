@@ -34,6 +34,7 @@ using ExpandedContent.Utilities;
 using Kingmaker.Designers.EventConditionActionSystem.Evaluators;
 using Kingmaker.Craft;
 using Kingmaker.Designers.Mechanics.Buffs;
+using Kingmaker.Enums.Damage;
 
 namespace ExpandedContent.Tweaks.Spirits {
     internal class HeavensSpirit {
@@ -241,6 +242,23 @@ namespace ExpandedContent.Tweaks.Spirits {
                 bp.m_AllowNonContextActions = false;                
                 bp.IsClassFeature = true;
             });
+            var ShamanHeavensSpiritGreaterFeature = Helpers.CreateBlueprint<BlueprintFeature>("ShamanHeavensSpiritGreaterFeature", bp => {
+                bp.SetName("Void Adaptation");
+                bp.SetDescription("The shaman gains cold resistance 15. In addition, every time you miss an attack roll because of {g|Encyclopedia:Concealment}concealment{/g}, " +
+                    "you can {g|Encyclopedia:Dice}reroll{/g} your miss chance percentile roll one time to see if you actually hit.");
+                bp.AddComponent<RerollConcealment>(c => {
+                    c.m_WeaponCoverage = RerollConcealment.WeaponCoverage.All;
+                });
+                bp.AddComponent<AddDamageResistanceEnergy>(c => {
+                    c.Value = 15;
+                    c.Type = DamageEnergyType.Cold;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+
+
+
 
             var ShamanHeavensSpiritProgression = Helpers.CreateBlueprint<BlueprintProgression>("ShamanHeavensSpiritProgression", bp => {
                 bp.SetName("Heavens");
