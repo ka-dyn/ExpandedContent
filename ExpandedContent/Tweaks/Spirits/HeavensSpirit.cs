@@ -35,6 +35,9 @@ using Kingmaker.Designers.EventConditionActionSystem.Evaluators;
 using Kingmaker.Craft;
 using Kingmaker.Designers.Mechanics.Buffs;
 using Kingmaker.Enums.Damage;
+using BlueprintCore.Utils;
+using Kingmaker.UnitLogic.Abilities.Components.Base;
+using Kingmaker.ResourceLinks;
 
 namespace ExpandedContent.Tweaks.Spirits {
     internal class HeavensSpirit {
@@ -51,7 +54,7 @@ namespace ExpandedContent.Tweaks.Spirits {
             //Spelllist
             var ColorSpraySpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("91da41b9793a4624797921f221db653c");
             var RainbowPatternSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("4b8265132f9c8174f87ce7fa6d0fe47b");
-            var PrismaticSpraySpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("b22fd434bdb60fb4ba1068206402c4cf");
+            var PrismaticSpraySpell = Resources.GetBlueprint<BlueprintAbility>("b22fd434bdb60fb4ba1068206402c4cf");
             var ChainLightningSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("645558d63604747428d55f0dd3a4cb58");
             var SearingLightSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("bf0accce250381a44b857d4af6c8e10d");
             var HypnoticPatternAbility = Resources.GetModBlueprint<BlueprintAbility>("HypnoticPatternAbility");
@@ -93,7 +96,7 @@ namespace ExpandedContent.Tweaks.Spirits {
                 });
                 bp.AddComponent<AddKnownSpell>(c => {
                     c.m_CharacterClass = ShamanClass.ToReference<BlueprintCharacterClassReference>();
-                    c.m_Spell = PrismaticSpraySpell;
+                    c.m_Spell = PrismaticSpraySpell.ToReference<BlueprintAbilityReference>();
                     c.SpellLevel = 7;
                 });
                 bp.AddComponent<AddKnownSpell>(c => {
@@ -257,9 +260,167 @@ namespace ExpandedContent.Tweaks.Spirits {
                 bp.IsClassFeature = true;
             });
 
+            var ScintillatingPatternSpell = Resources.GetBlueprint<BlueprintAbility>("4dc60d08c6c4d3c47b413904e4de5ff0");
 
 
 
+
+
+
+
+
+
+
+
+            var ShamanHeavensPrismaticSprayResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("ShamanHeavensPrismaticSprayResource", bp => {
+                bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
+                    BaseValue = 1,
+                    IncreasedByLevel = false,
+                    IncreasedByStat = false,
+                };
+            });
+            var ShamanHeavensScintillatingPatternResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("ShamanHeavensScintillatingPatternResource", bp => {
+                bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
+                    BaseValue = 1,
+                    IncreasedByLevel = false,
+                    IncreasedByStat = false,
+                };
+            });
+
+
+
+
+
+
+
+
+
+
+
+
+            var ShamanHeavensPrismaticSprayAbility = Helpers.CreateBlueprint<BlueprintAbility>("ShamanHeavensPrismaticSprayAbility", bp => {
+                bp.SetName("Phantasmagoric Display - Prismatic Spray");
+                bp.SetDescription("This {g|Encyclopedia:Spell}spell{/g} causes seven shimmering, multicolored beams of light to spray from your hand. Each beam has a different power. Creatures in " +
+                    "the area of the spell with 8 HD or less are automatically blinded for {g|Encyclopedia:Dice}2d4{/g} {g|Encyclopedia:Combat_Round}rounds{/g}. Every creature in the area is randomly " +
+                    "struck by one or more beams, which have additional effects:\n20 points {g|Encyclopedia:Energy_Damage}fire damage{/g} (Reflex half)\n40 points acid " +
+                    "{g|Encyclopedia:Damage}damage{/g} (Reflex half)\n80 points electricity damage (Reflex half)\nPoison (Frequency 1/rd. for 6 rds.; Init. effect {g|Encyclopedia:Injury_Death}death{/g}; " +
+                    "Sec. effect 1 {g|Encyclopedia:Constitution}Con{/g}/rd.; {g|Encyclopedia:Healing}Cure{/g} 2 consecutive Fort {g|Encyclopedia:Saving_Throw}saves{/g})\nBaleful " +
+                    "Polymorph (Fortitude negates)\nInsane, as insanity spell (Will negates)\nSent to another plane forever (Will negates)\nCreature struck by two rays receives both rays' effects at once.");
+                bp.m_Icon = PrismaticSpraySpell.Icon;
+                bp.AddComponent<SpellComponent>(c => {
+                    c.School = SpellSchool.Evocation;
+                });
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.Actions = PrismaticSpraySpell.GetComponent<AbilityEffectRunAction>().Actions;
+                });
+                bp.AddComponent<AbilityDeliverProjectile>(c => {
+                    c.m_Projectiles = PrismaticSpraySpell.GetComponent<AbilityDeliverProjectile>().m_Projectiles;
+                    c.Type = AbilityProjectileType.Cone;
+                    c.m_Length = new Feet() { m_Value = 60 };
+                    c.m_LineWidth = new Feet() { m_Value = 5 };
+                    c.AttackRollBonusStat = StatType.Unknown;
+                });
+                bp.AddComponent<CraftInfoComponent>(c => {
+                    c.SpellType = CraftSpellType.Other;
+                    c.SavingThrow = CraftSavingThrow.None;
+                    c.AOEType = CraftAOE.AOE;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.Type = AbilityType.SpellLike;
+                bp.Range = AbilityRange.Projectile;
+                bp.CanTargetPoint = true;
+                bp.CanTargetEnemies = true;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = true;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Directional;
+                bp.ActionType = UnitCommand.CommandType.Standard;
+                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Extend | Metamagic.Heighten | Metamagic.CompletelyNormal | Metamagic.Bolstered | Metamagic.Selective;
+                bp.LocalizedDuration = PrismaticSpraySpell.LocalizedDuration;
+                bp.LocalizedSavingThrow = PrismaticSpraySpell.LocalizedSavingThrow;
+            });
+            var ShamanHeavensScintillatingPatternAbility = Helpers.CreateBlueprint<BlueprintAbility>("ShamanHeavensScintillatingPatternAbility", bp => {
+                bp.SetName("Phantasmagoric Display - Scintillating Pattern");
+                bp.SetDescription("A twisting pattern of coruscating colors weaves through the air, affecting creatures within. The {g|Encyclopedia:Spell}spell{/g} affects a total number of HD of creatures " +
+                    "equal to your {g|Encyclopedia:Caster_Level}caster level{/g} (maximum 20). Creatures with the fewest HD are affected first, and among creatures with equal HD, those who are closest to the " +
+                    "spell's point of origin are affected first. HD that are not sufficient to affect a creature are wasted. The spell affects each subject according to its HD.\n6 or less: " +
+                    "{g|Encyclopedia:Injury_Death}Unconscious{/g} for {g|Encyclopedia:Dice}1d4{/g} {g|Encyclopedia:Combat_Round}rounds{/g}, then stunned for the same amount of rounds, and then confused for the " +
+                    "same amount of rounds. (Treat an unconscious result as stunned for nonliving creatures.)\n7 to 12: Stunned for 1d4 rounds, then confused for the same amount of rounds.\n13 or more: Confused " +
+                    "for 1d4 rounds.\nSightless creatures are not affected by scintillating pattern.");        
+                bp.m_Icon = ScintillatingPatternSpell.Icon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = ScintillatingPatternSpell.GetComponent<AbilityEffectRunAction>().Actions;
+                });
+                bp.AddComponent<AbilitySpawnFx>(c => {
+                    c.PrefabLink = new PrefabLink() { AssetId = "63f322580ec0e7c4c96fc62ecabad40f" };
+                    c.Anchor = AbilitySpawnFxAnchor.Caster;
+                    c.WeaponTarget = AbilitySpawnFxWeaponTarget.None;
+                    c.DestroyOnCast = false;
+                    c.Delay = 0;
+                    c.PositionAnchor = AbilitySpawnFxAnchor.None;
+                    c.OrientationAnchor = AbilitySpawnFxAnchor.None;
+                    c.OrientationMode = AbilitySpawnFxOrientation.Copy;
+                });
+                bp.AddComponent<AbilityTargetsAround>(c => {
+                    c.m_Radius = 20.Feet();
+                    c.m_TargetType = TargetType.Any;
+                    c.m_IncludeDead = false;
+                    c.m_Condition = new ConditionsChecker() {
+                        Conditions = new Condition[0]
+                    };
+                });
+                bp.AddComponent<CraftInfoComponent>(c => {
+                    c.SpellType = CraftSpellType.Other;
+                    c.SavingThrow = CraftSavingThrow.None;
+                    c.AOEType = CraftAOE.AOE;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.Type = AbilityType.SpellLike;
+                bp.Range = AbilityRange.Close;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = true;
+                bp.CanTargetFriends = true;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = true;
+                bp.EffectOnAlly = AbilityEffectOnUnit.Harmful;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Directional;
+                bp.ActionType = UnitCommand.CommandType.Standard;
+                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Extend | Metamagic.Heighten | Metamagic.CompletelyNormal | Metamagic.Reach | Metamagic.Selective;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+
+
+
+            var ShamanHeavensSpiritTrueFeature = Helpers.CreateBlueprint<BlueprintFeature>("ShamanHeavensSpiritTrueFeature", bp => {
+                bp.SetName("Phantasmagoric Display");
+                bp.SetDescription("The shaman can cast prismatic spray and scintillating pattern, each once per day with a caster level equal to her shaman level.");
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        ShamanHeavensPrismaticSprayAbility.ToReference<BlueprintUnitFactReference>(),
+                        ShamanHeavensScintillatingPatternAbility.ToReference<BlueprintUnitFactReference>()
+                    };
+                });
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = ShamanHeavensPrismaticSprayResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = ShamanHeavensScintillatingPatternResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.AddComponent<ReplaceAbilitiesStat>(c => {
+                    c.m_Ability = new BlueprintAbilityReference[] {
+                        ShamanHeavensPrismaticSprayAbility.ToReference<BlueprintAbilityReference>(),
+                        ShamanHeavensScintillatingPatternAbility.ToReference<BlueprintAbilityReference>() 
+                    };
+                    c.Stat = StatType.Wisdom;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
             var ShamanHeavensSpiritProgression = Helpers.CreateBlueprint<BlueprintProgression>("ShamanHeavensSpiritProgression", bp => {
                 bp.SetName("Heavens");
                 bp.SetDescription("A shaman who selects the heavens spirit has eyes that sparkle like starlight, exuding an aura of otherworldliness to those she is around. " +
