@@ -242,8 +242,6 @@ namespace ExpandedContent.Tweaks.Spirits {
                 bp.IsClassFeature = true;
             });
 
-
-
             var ShamanHeavensSpiritProgression = Helpers.CreateBlueprint<BlueprintProgression>("ShamanHeavensSpiritProgression", bp => {
                 bp.SetName("Heavens");
                 bp.SetDescription("A shaman who selects the heavens spirit has eyes that sparkle like starlight, exuding an aura of otherworldliness to those she is around. " +
