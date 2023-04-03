@@ -31,6 +31,9 @@ using Kingmaker.RuleSystem.Rules.Damage;
 using ExpandedContent.Config;
 using Kingmaker.Blueprints.Classes.Selection;
 using ExpandedContent.Utilities;
+using Kingmaker.Designers.EventConditionActionSystem.Evaluators;
+using Kingmaker.Craft;
+using Kingmaker.Designers.Mechanics.Buffs;
 
 namespace ExpandedContent.Tweaks.Spirits {
     internal class HeavensSpirit {
@@ -40,7 +43,7 @@ namespace ExpandedContent.Tweaks.Spirits {
             var UnswornShamanArchetype = Resources.GetBlueprint<BlueprintArchetype>("556590a43467a27459ac1a80324c9f9f");
             var ShamanHexSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("4223fe18c75d4d14787af196a04e14e7");
 
-
+            var GlitterdustBuff = Resources.GetBlueprint<BlueprintBuff>("03457e519288aad4085eae91918a76bf");
 
 
 
@@ -109,17 +112,139 @@ namespace ExpandedContent.Tweaks.Spirits {
 
 
 
+            var ShamanHeavensSpiritBaseResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("ShamanHeavensSpiritBaseResource", bp => {
+                bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
+                    BaseValue = 3,
+                    IncreasedByLevel = false,
+                    IncreasedByStat = true,
+                    ResourceBonusStat = StatType.Charisma,
+                };
+            });
+            var ShamanHeavensSpiritBaseAbilityBuff = Helpers.CreateBuff("ShamanHeavensSpiritBaseAbilityBuff", bp => {
+                bp.SetName("Stardust");
+                bp.SetDescription("As a standard action, the shaman causes stardust to materialize around one creature within 30 feet. This stardust causes the target to shed light " +
+                    "as a candle, and it cannot benefit from concealment or any invisibility effects. The creature takes a –1 penalty on attack rolls and sight-based Perception " +
+                    "checks. This penalty to attack rolls and Perception checks increases by 1 at 4th level and every 4 levels thereafter, to a maximum of –6 at 20th level. This " +
+                    "effect lasts for a number of rounds equal to half the shaman’s level (minimum 1). Sightless creatures cannot be affected by this ability.");
+                bp.m_Icon = GlitterdustBuff.Icon;
+                bp.AddComponent<AddContextStatBonus>(c => {
+                    c.Stat = StatType.AdditionalAttackBonus;
+                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+                    c.Value = new ContextValue() {
+                        ValueType = ContextValueType.Rank,
+                        ValueRank = AbilityRankType.Default
+                    };
+                    c.Multiplier = -1;
+                });
+                bp.AddComponent<AddContextStatBonus>(c => {
+                    c.Stat = StatType.SkillPerception;
+                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+                    c.Value = new ContextValue() {
+                        ValueType = ContextValueType.Rank,
+                        ValueRank = AbilityRankType.Default
+                    };
+                    c.Multiplier = -1;
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
+                    c.m_Class = new BlueprintCharacterClassReference[] { ShamanClass.ToReference<BlueprintCharacterClassReference>() };
+                    c.m_Progression = ContextRankProgression.OnePlusDivStep;
+                    c.m_StartLevel = 0;
+                    c.m_StepLevel = 4;
+                    c.m_UseMax = true;
+                    c.m_Max = 5;
+                });
+                bp.AddComponent<AddConditionImmunity>(c => {
+                    c.Condition = UnitCondition.GreaterInvisibility;
+                });
+                bp.AddComponent<DoNotBenefitFromConcealment>();
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = false;
+                bp.m_Flags = BlueprintBuff.Flags.RemoveOnRest;
+                bp.Stacking = StackingType.Replace;
+            });
+            var ShamanHeavensSpiritBaseAbility = Helpers.CreateBlueprint<BlueprintAbility>("ShamanHeavensSpiritBaseAbility", bp => {
+                bp.SetName("Stardust");
+                bp.SetDescription("As a standard action, the shaman causes stardust to materialize around one creature within 30 feet. This stardust causes the target to shed light " +
+                    "as a candle, and it cannot benefit from concealment or any invisibility effects. The creature takes a –1 penalty on attack rolls and sight-based Perception " +
+                    "checks. This penalty to attack rolls and Perception checks increases by 1 at 4th level and every 4 levels thereafter, to a maximum of –6 at 20th level. This " +
+                    "effect lasts for a number of rounds equal to half the shaman’s level (minimum 1). Sightless creatures cannot be affected by this ability. The shaman can use " +
+                    "this ability a number of times per day equal to 3 + her Charisma modifier.");
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = ShamanHeavensSpiritBaseAbilityBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = false,
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Rank,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage
+                                }
+                            },
+                            DurationSeconds = 0
+                        });
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
+                    c.m_Class = new BlueprintCharacterClassReference[] { ShamanClass.ToReference<BlueprintCharacterClassReference>() };
+                    c.m_Progression = ContextRankProgression.Div2;
+                    
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = ShamanHeavensSpiritBaseResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<CraftInfoComponent>(c => {
+                    c.SavingThrow = CraftSavingThrow.None;
+                    c.AOEType = CraftAOE.None;
+                    c.SpellType = CraftSpellType.Debuff;
+                });
+                bp.m_Icon = GlitterdustBuff.Icon;
+                bp.Type = AbilityType.Special;
+                bp.Range = AbilityRange.Close;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = true;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = false;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Point;
+                bp.ActionType = UnitCommand.CommandType.Standard;
+                bp.AvailableMetamagic = Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten | Metamagic.Reach | Metamagic.CompletelyNormal;
+                bp.LocalizedDuration = Helpers.CreateString("ShamanHeavensSpiritBaseAbility.Duration", "1 round/2 levels");
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var ShamanHeavensSpiritBaseFeature = Helpers.CreateBlueprint<BlueprintFeature>("ShamanHeavensSpiritBaseFeature", bp => {
+                bp.SetName("Stardust");
+                bp.SetDescription("As a standard action, the shaman causes stardust to materialize around one creature within 30 feet. This stardust causes the target to shed light " +
+                    "as a candle, and it cannot benefit from concealment or any invisibility effects. The creature takes a –1 penalty on attack rolls and sight-based Perception " +
+                    "checks. This penalty to attack rolls and Perception checks increases by 1 at 4th level and every 4 levels thereafter, to a maximum of –6 at 20th level. This " +
+                    "effect lasts for a number of rounds equal to half the shaman’s level (minimum 1). Sightless creatures cannot be affected by this ability. The shaman can use " +
+                    "this ability a number of times per day equal to 3 + her Charisma modifier.");
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { ShamanHeavensSpiritBaseAbility.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = ShamanHeavensSpiritBaseResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });                
+                bp.m_AllowNonContextActions = false;                
+                bp.IsClassFeature = true;
+            });
 
 
 
-
-
-
-
-
-
-
-            var ShamanHeavensSpritProgression = Helpers.CreateBlueprint<BlueprintProgression>("ShamanHeavensSpritProgression", bp => {
+            var ShamanHeavensSpiritProgression = Helpers.CreateBlueprint<BlueprintProgression>("ShamanHeavensSpiritProgression", bp => {
                 bp.SetName("Heavens");
                 bp.SetDescription("A shaman who selects the heavens spirit has eyes that sparkle like starlight, exuding an aura of otherworldliness to those she is around. " +
                     "When she calls upon one of this spirit’s abilities, her eyes turn pitch black and the colors around her drain for a brief moment.");
