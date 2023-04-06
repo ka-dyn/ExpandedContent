@@ -150,6 +150,8 @@ namespace ExpandedContent.Tweaks {
                 Mysteries.HeavensMystery.AddHeavensMystery();
                 Mysteries.SuccorMystery.AddSuccorMystery();
 
+                Spirits.HeavensSpirit.AddHeavensSprit();
+
                 Curses.Vampirism.AddVampirismCurse();
 
                 Miscellaneous.AidAnother.AddAidAnother();

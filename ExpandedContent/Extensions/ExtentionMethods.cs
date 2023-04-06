@@ -439,6 +439,12 @@ namespace ExpandedContent.Extensions {
             Unit.LocalizedName = ScriptableObject.CreateInstance<SharedStringAsset>();
             Unit.LocalizedName.String = Helpers.CreateString(Unit.LocalizedName + "LocalizedName", name);
         }
+        public static void SetIntroduction(this AddFeaturesFromSelectionToDescription Intro, string description) {
+            Intro.Introduction = Helpers.CreateString(Intro.Introduction + "Introduction", description);
+        }
+        public static void SetIntroduction(this AddSpellsToDescription Intro, string description) {
+            Intro.Introduction = Helpers.CreateString(Intro.Introduction + "Introduction", description);
+        }
         //Faff bitter wrote end
         //Bubbles start
         public static void AppendInPlace<T>(ref T[] arr, params T[] newValue) {

@@ -34,6 +34,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var FavoriteEnemySelection = Resources.GetBlueprint<BlueprintFeatureSelection>("16cc2c937ea8d714193017780e7d4fc6");
             var FavoriteEnemyRankUp = Resources.GetBlueprint<BlueprintFeatureSelection>("c1be13839472aad46b152cf10cf46179");
             var FavoriteTerrainSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("a6ea422d7308c0d428a541562faedefd");
+            var FavoriteTerrainSelectionRankUp = Resources.GetBlueprint<BlueprintFeatureSelection>("c4de22ecac494c91b3d2f077ec162bbd");
             var DrakeWardenArchetype = Helpers.CreateBlueprint<BlueprintArchetype>("DrakeWardenArchetype", bp => {
                 bp.LocalizedName = Helpers.CreateString($"DrakeWardenArchetype.Name", "Drake Warden");
                 bp.LocalizedDescription = Helpers.CreateString($"DrakeWardenArchetype.Description", "Some rangers specialize in dealing with rambunctious younger drakes, " +
@@ -70,8 +71,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             DrakeWardenArchetype.RemoveFeatures = new LevelEntry[] {
                     Helpers.LevelEntry(4, HuntersBondSelection),
                     Helpers.LevelEntry(5, FavoriteEnemySelection, FavoriteEnemyRankUp),
-                    Helpers.LevelEntry(8, FavoriteTerrainSelection),
-                    Helpers.LevelEntry(13, FavoriteTerrainSelection),
+                    Helpers.LevelEntry(8, FavoriteTerrainSelection, FavoriteTerrainSelectionRankUp),
                     Helpers.LevelEntry(15, FavoriteEnemySelection, FavoriteEnemyRankUp),
                     Helpers.LevelEntry(20, FavoriteEnemySelection, FavoriteEnemyRankUp),
             };

@@ -38,6 +38,8 @@ using Kingmaker.Enums.Damage;
 using BlueprintCore.Utils;
 using Kingmaker.UnitLogic.Abilities.Components.Base;
 using Kingmaker.ResourceLinks;
+using Kingmaker.UnitLogic.Abilities.Components.CasterCheckers;
+using System.Collections.Generic;
 
 namespace ExpandedContent.Tweaks.Spirits {
     internal class HeavensSpirit {
@@ -46,7 +48,7 @@ namespace ExpandedContent.Tweaks.Spirits {
             var ShamanClass = Resources.GetBlueprint<BlueprintCharacterClass>("145f1d3d360a7ad48bd95d392c81b38e");
             var UnswornShamanArchetype = Resources.GetBlueprint<BlueprintArchetype>("556590a43467a27459ac1a80324c9f9f");
             var ShamanHexSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("4223fe18c75d4d14787af196a04e14e7");
-
+            var PossessedShamanSharedSkillSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("9d0477ebd71d43041b419c216b5d6cff");
             var GlitterdustBuff = Resources.GetBlueprint<BlueprintBuff>("03457e519288aad4085eae91918a76bf");
 
 
@@ -61,54 +63,85 @@ namespace ExpandedContent.Tweaks.Spirits {
             var SunburstSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("e96424f70ff884947b06f41a765b7658");
             var PolarMidnightSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("ba48abb52b142164eba309fd09898856");
             var BreakEnchantmentSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("7792da00c85b9e042a0fdfc2b66ec9a8");
-            var HeavensSpritSpells = Helpers.CreateBlueprint<BlueprintFeature>("HeavensSpritSpells", bp => {
-                bp.HideInCharacterSheetAndLevelUp = true;
-                bp.IsClassFeature = true;
-                bp.AddComponent<AddKnownSpell>(c => {
+
+            var HeavensSpiritSpellList = Helpers.CreateBlueprint<BlueprintSpellList>("HeavensSpiritSpellList", bp => {
+                bp.IsMythic = false;
+                bp.SpellsByLevel = new SpellLevelList[10] {
+                    new SpellLevelList(0) {
+                        SpellLevel = 0,
+                        m_Spells = new List<BlueprintAbilityReference>()
+                    },
+                    new SpellLevelList(1) {
+                        SpellLevel = 1,
+                        m_Spells = new List<BlueprintAbilityReference>() {
+                            ColorSpraySpell
+                        }
+                    },
+                    new SpellLevelList(2) {
+                        SpellLevel = 2,
+                        m_Spells = new List<BlueprintAbilityReference>() {
+                            HypnoticPatternAbility.ToReference<BlueprintAbilityReference>()
+                        }
+                    },
+                    new SpellLevelList(3) {
+                        SpellLevel = 3,
+                        m_Spells = new List<BlueprintAbilityReference>() {
+                            SearingLightSpell
+                        }
+                    },
+                    new SpellLevelList(4) {
+                        SpellLevel = 4,
+                        m_Spells = new List<BlueprintAbilityReference>() {
+                            RainbowPatternSpell
+                        }
+                    },
+                    new SpellLevelList(5) {
+                        SpellLevel = 5,
+                        m_Spells = new List<BlueprintAbilityReference>() {
+                            BreakEnchantmentSpell
+                        }
+                    },
+                    new SpellLevelList(6) {
+                        SpellLevel = 6,
+                        m_Spells = new List<BlueprintAbilityReference>() {
+                            ChainLightningSpell
+                        }
+                    },
+                    new SpellLevelList(7) {
+                        SpellLevel = 7,
+                        m_Spells = new List<BlueprintAbilityReference>() {
+                            PrismaticSpraySpell.ToReference<BlueprintAbilityReference>()
+                        }
+                    },
+                    new SpellLevelList(8) {
+                        SpellLevel = 8,
+                        m_Spells = new List<BlueprintAbilityReference>() {
+                            SunburstSpell
+                        }
+                    },
+                    new SpellLevelList(9) {
+                        SpellLevel = 9,
+                        m_Spells = new List<BlueprintAbilityReference>() {
+                            PolarMidnightSpell
+                        }
+                    },
+                };
+            });
+            var HeavensSpiritSpellListFeature = Helpers.CreateBlueprint<BlueprintFeature>("HeavensSpiritSpellListFeature", bp => {
+                bp.AddComponent<AddSpecialSpellList>(c => {
                     c.m_CharacterClass = ShamanClass.ToReference<BlueprintCharacterClassReference>();
-                    c.m_Spell = ColorSpraySpell;
-                    c.SpellLevel = 1;
+                    c.m_SpellList = HeavensSpiritSpellList.ToReference<BlueprintSpellListReference>();
                 });
-                bp.AddComponent<AddKnownSpell>(c => {
-                    c.m_CharacterClass = ShamanClass.ToReference<BlueprintCharacterClassReference>();
-                    c.m_Spell = HypnoticPatternAbility.ToReference<BlueprintAbilityReference>();
-                    c.SpellLevel = 2;
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.CheckInProgression = true;
+                    c.HideInUI = false;
+                    c.m_Feature = PossessedShamanSharedSkillSelection.ToReference<BlueprintFeatureReference>();
                 });
-                bp.AddComponent<AddKnownSpell>(c => {
-                    c.m_CharacterClass = ShamanClass.ToReference<BlueprintCharacterClassReference>();
-                    c.m_Spell = SearingLightSpell;
-                    c.SpellLevel = 3;
-                });
-                bp.AddComponent<AddKnownSpell>(c => {
-                    c.m_CharacterClass = ShamanClass.ToReference<BlueprintCharacterClassReference>();
-                    c.m_Spell = RainbowPatternSpell;
-                    c.SpellLevel = 4;
-                });
-                bp.AddComponent<AddKnownSpell>(c => {
-                    c.m_CharacterClass = ShamanClass.ToReference<BlueprintCharacterClassReference>();
-                    c.m_Spell = BreakEnchantmentSpell;
-                    c.SpellLevel = 5;
-                });
-                bp.AddComponent<AddKnownSpell>(c => {
-                    c.m_CharacterClass = ShamanClass.ToReference<BlueprintCharacterClassReference>();
-                    c.m_Spell = ChainLightningSpell;
-                    c.SpellLevel = 6;
-                });
-                bp.AddComponent<AddKnownSpell>(c => {
-                    c.m_CharacterClass = ShamanClass.ToReference<BlueprintCharacterClassReference>();
-                    c.m_Spell = PrismaticSpraySpell.ToReference<BlueprintAbilityReference>();
-                    c.SpellLevel = 7;
-                });
-                bp.AddComponent<AddKnownSpell>(c => {
-                    c.m_CharacterClass = ShamanClass.ToReference<BlueprintCharacterClassReference>();
-                    c.m_Spell = SunburstSpell;
-                    c.SpellLevel = 8;
-                });
-                bp.AddComponent<AddKnownSpell>(c => {
-                    c.m_CharacterClass = ShamanClass.ToReference<BlueprintCharacterClassReference>();
-                    c.m_Spell = PolarMidnightSpell;
-                    c.SpellLevel = 9;
-                });
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = false;
+                bp.HideNotAvailibleInUI = false;
+                bp.IsClassFeature = true;                
             });
             //Spirit Features
             var ShamanHeavensSpiritBaseResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("ShamanHeavensSpiritBaseResource", bp => {
@@ -230,6 +263,7 @@ namespace ExpandedContent.Tweaks.Spirits {
                     "checks. This penalty to attack rolls and Perception checks increases by 1 at 4th level and every 4 levels thereafter, to a maximum of –6 at 20th level. This " +
                     "effect lasts for a number of rounds equal to half the shaman’s level (minimum 1). Sightless creatures cannot be affected by this ability. The shaman can use " +
                     "this ability a number of times per day equal to 3 + her Charisma modifier.");
+                bp.m_Icon = GlitterdustBuff.Icon;
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] { ShamanHeavensSpiritBaseAbility.ToReference<BlueprintUnitFactReference>() };
                 });
@@ -365,6 +399,7 @@ namespace ExpandedContent.Tweaks.Spirits {
             var ShamanHeavensSpiritTrueFeature = Helpers.CreateBlueprint<BlueprintFeature>("ShamanHeavensSpiritTrueFeature", bp => {
                 bp.SetName("Phantasmagoric Display");
                 bp.SetDescription("The shaman can cast prismatic spray and scintillating pattern, each once per day with a caster level equal to her shaman level.");
+                bp.m_Icon = PrismaticSpraySpell.Icon;
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] {
                         ShamanHeavensPrismaticSprayAbility.ToReference<BlueprintUnitFactReference>(),
@@ -388,20 +423,20 @@ namespace ExpandedContent.Tweaks.Spirits {
                 });
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = true;
-            });
+            });            
             //Progression
             var ShamanHeavensSpiritProgression = Helpers.CreateBlueprint<BlueprintProgression>("ShamanHeavensSpiritProgression", bp => {
                 bp.SetName("Heavens");
                 bp.SetDescription("A shaman who selects the heavens spirit has eyes that sparkle like starlight, exuding an aura of otherworldliness to those she is around. " +
                     "When she calls upon one of this spirit’s abilities, her eyes turn pitch black and the colors around her drain for a brief moment.");
                 bp.AddComponent<AddFeaturesFromSelectionToDescription>(c => {
-                    c.Introduction = Helpers.CreateString("ShamanHeavensSpritProgression.AddFeaturesFromSelectionToDescription.Introduction", "Additional Hexes:");
+                    c.SetIntroduction("Additional Hexes:");
                     c.m_FeatureSelection = ShamanHexSelection.ToReference<BlueprintFeatureSelectionReference>();
                     c.OnlyIfRequiresThisFeature = true;
                 });
                 bp.AddComponent<AddSpellsToDescription>(c => {
-                    c.Introduction = Helpers.CreateString("ShamanHeavensSpritProgression.AddSpellsToDescription.Introduction", "Bonus Spells:");
-                    c.m_SpellLists = new BlueprintSpellListReference[] { HeavensSpritSpells.ToReference<BlueprintSpellListReference>() };
+                    c.SetIntroduction("Bonus Spells:");
+                    c.m_SpellLists = new BlueprintSpellListReference[] { HeavensSpiritSpellListFeature.ToReference<BlueprintSpellListReference>() };
                 });
                 bp.m_AllowNonContextActions = false;                
                 bp.Groups = new FeatureGroup[] { FeatureGroup.ShamanSpirit };
@@ -414,13 +449,776 @@ namespace ExpandedContent.Tweaks.Spirits {
                 };
                 bp.m_Archetypes = new BlueprintProgression.ArchetypeWithLevel[] {};
                 bp.LevelEntries = new LevelEntry[] {
-                    Helpers.LevelEntry(1, ShamanHeavensSpiritBaseFeature, HeavensSpritSpells),
+                    Helpers.LevelEntry(1, ShamanHeavensSpiritBaseFeature, HeavensSpiritSpellListFeature),
                     Helpers.LevelEntry(8, ShamanHeavensSpiritGreaterFeature),
                     Helpers.LevelEntry(16, ShamanHeavensSpiritTrueFeature)
                 };
                 bp.GiveFeaturesForPreviousLevels = true;
             });
+            //Wandering Spirit
+            var ShamanHeavensSpiritWanderingTrueBuff = Helpers.CreateBuff("ShamanHeavensSpiritWanderingTrueBuff", bp => {
+                bp.SetName("");
+                bp.SetDescription("");
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        ShamanHeavensSpiritTrueFeature.ToReference<BlueprintUnitFactReference>()
+                    };
+                });
+                bp.IsClassFeature = false;
+                bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
+                bp.Stacking = StackingType.Replace;
+            });
+            var ShamanHeavensSpiritWanderingGreaterBuff = Helpers.CreateBuff("ShamanHeavensSpiritWanderingGreaterBuff", bp => {
+                bp.SetName("");
+                bp.SetDescription("");
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        ShamanHeavensSpiritGreaterFeature.ToReference<BlueprintUnitFactReference>()
+                    };
+                });
+                bp.IsClassFeature = false;
+                bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
+                bp.Stacking = StackingType.Replace;
+            });
+            var ShamanHeavensSpiritWanderingBaseBuff = Helpers.CreateBuff("ShamanHeavensSpiritWanderingBaseBuff", bp => {
+                bp.SetName("");
+                bp.SetDescription("");
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        ShamanHeavensSpiritBaseFeature.ToReference<BlueprintUnitFactReference>()
+                    };
+                });
+                bp.IsClassFeature = false;
+                bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
+                bp.Stacking = StackingType.Replace;
+            });
+            var ShamanHeavensSpiritWanderingFeature = Helpers.CreateBlueprint<BlueprintFeature>("ShamanHeavensSpiritWanderingFeature", bp => {
+                bp.SetName("Heavens");
+                bp.SetDescription("A shaman who selects the heavens spirit has eyes that sparkle like starlight, exuding an aura of otherworldliness to those she is around. " +
+                    "When she calls upon one of this spirit’s abilities, her eyes turn pitch black and the colors around her drain for a brief moment.");
+                bp.AddComponent<AddFactContextActions>(c => {
+                    c.Activated = Helpers.CreateActionList(
+                        new Conditional() {
+                            ConditionsChecker = new ConditionsChecker() {
+                                Operation = Operation.And,
+                                Conditions = new Condition[] {
+                                    new ContextConditionSharedValueHigher() {
+                                        Not = false,
+                                        SharedValue = AbilitySharedValue.Damage,
+                                        HigherOrEqual = 20,
+                                        Inverted = false
+                                    }
+                                }
+                            },
+                            IfTrue = Helpers.CreateActionList(
+                                new ContextActionApplyBuff() {
+                                    m_Buff = ShamanHeavensSpiritWanderingTrueBuff.ToReference<BlueprintBuffReference>(),
+                                    Permanent = true,
+                                    DurationValue = new ContextDurationValue() {
+                                        Rate = DurationRate.Rounds,
+                                        DiceType = DiceType.Zero,
+                                        DiceCountValue = 0,
+                                        BonusValue = 0,
+                                        m_IsExtendable = true
+                                    }
+                                }),
+                            IfFalse = Helpers.CreateActionList()
+                        },
+                        new Conditional() {
+                            ConditionsChecker = new ConditionsChecker() {
+                                Operation = Operation.And,
+                                Conditions = new Condition[] {
+                                    new ContextConditionSharedValueHigher() {
+                                        Not = false,
+                                        SharedValue = AbilitySharedValue.Damage,
+                                        HigherOrEqual = 12,
+                                        Inverted = false
+                                    }
+                                }
+                            },
+                            IfTrue = Helpers.CreateActionList(
+                                new ContextActionApplyBuff() {
+                                    m_Buff = ShamanHeavensSpiritWanderingGreaterBuff.ToReference<BlueprintBuffReference>(),
+                                    Permanent = true,
+                                    DurationValue = new ContextDurationValue() {
+                                        Rate = DurationRate.Rounds,
+                                        DiceType = DiceType.Zero,
+                                        DiceCountValue = 0,
+                                        BonusValue = 0,
+                                        m_IsExtendable = true
+                                    }
+                                }),
+                            IfFalse = Helpers.CreateActionList()
+                        },
+                        new ContextActionApplyBuff() {
+                            m_Buff = ShamanHeavensSpiritWanderingBaseBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0,
+                                m_IsExtendable = true
+                            }
+                        }
+                        );
+                    c.Deactivated = Helpers.CreateActionList(
+                        new ContextActionRemoveBuff() {
+                            m_Buff = ShamanHeavensSpiritWanderingTrueBuff.ToReference<BlueprintBuffReference>()
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = ShamanHeavensSpiritWanderingGreaterBuff.ToReference<BlueprintBuffReference>()
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = ShamanHeavensSpiritWanderingBaseBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                    c.NewRound = Helpers.CreateActionList();
+                });
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        HeavensSpiritSpellListFeature.ToReference<BlueprintUnitFactReference>()
+                    };
+                });                
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.HideInUI = false;
+                    c.m_Feature = ShamanHeavensSpiritProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.AsIs;
+                    c.m_StartLevel = 0;
+                    c.m_StepLevel = 0;
+                    c.m_UseMax = false;
+                    c.m_Max = 0;
+                    c.m_Class = new BlueprintCharacterClassReference[] {
+                        ShamanClass.ToReference<BlueprintCharacterClassReference>()
+                    };
+                });
+                bp.AddComponent<ContextCalculateSharedValue>(c => {
+                    c.ValueType = AbilitySharedValue.Damage;
+                    c.Value = new ContextDiceValue() {
+                        DiceType = DiceType.Zero,
+                        DiceCountValue = 0,
+                        BonusValue = new ContextValue() {
+                            ValueType = ContextValueType.Rank,
+                            ValueRank = AbilityRankType.Default
+                        }                        
+                    };
+                    c.Modifier = 1;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+            //Unsworn Wandering Spirit
+            var UnswornShamanHeavensSpiritWanderingFeature1 = Helpers.CreateBlueprint<BlueprintFeature>("UnswornShamanHeavensSpiritWanderingFeature1", bp => {
+                bp.SetName("Heavens");
+                bp.SetDescription("A shaman who selects the heavens spirit has eyes that sparkle like starlight, exuding an aura of otherworldliness to those she is around. " +
+                    "When she calls upon one of this spirit’s abilities, her eyes turn pitch black and the colors around her drain for a brief moment.");
+                bp.AddComponent<AddFactContextActions>(c => {
+                    c.Activated = Helpers.CreateActionList(
+                        new Conditional() {
+                            ConditionsChecker = new ConditionsChecker() {
+                                Operation = Operation.And,
+                                Conditions = new Condition[] {
+                                    new ContextConditionSharedValueHigher() {
+                                        Not = false,
+                                        SharedValue = AbilitySharedValue.Damage,
+                                        HigherOrEqual = 18,
+                                        Inverted = false
+                                    }
+                                }
+                            },
+                            IfTrue = Helpers.CreateActionList(
+                                new ContextActionApplyBuff() {
+                                    m_Buff = ShamanHeavensSpiritWanderingTrueBuff.ToReference<BlueprintBuffReference>(),
+                                    Permanent = true,
+                                    DurationValue = new ContextDurationValue() {
+                                        Rate = DurationRate.Rounds,
+                                        DiceType = DiceType.Zero,
+                                        DiceCountValue = 0,
+                                        BonusValue = 0,
+                                        m_IsExtendable = true
+                                    }
+                                }),
+                            IfFalse = Helpers.CreateActionList()
+                        },
+                        new Conditional() {
+                            ConditionsChecker = new ConditionsChecker() {
+                                Operation = Operation.And,
+                                Conditions = new Condition[] {
+                                    new ContextConditionSharedValueHigher() {
+                                        Not = false,
+                                        SharedValue = AbilitySharedValue.Damage,
+                                        HigherOrEqual = 10,
+                                        Inverted = false
+                                    }
+                                }
+                            },
+                            IfTrue = Helpers.CreateActionList(
+                                new ContextActionApplyBuff() {
+                                    m_Buff = ShamanHeavensSpiritWanderingGreaterBuff.ToReference<BlueprintBuffReference>(),
+                                    Permanent = true,
+                                    DurationValue = new ContextDurationValue() {
+                                        Rate = DurationRate.Rounds,
+                                        DiceType = DiceType.Zero,
+                                        DiceCountValue = 0,
+                                        BonusValue = 0,
+                                        m_IsExtendable = true
+                                    }
+                                }),
+                            IfFalse = Helpers.CreateActionList()
+                        },
+                        new ContextActionApplyBuff() {
+                            m_Buff = ShamanHeavensSpiritWanderingBaseBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0,
+                                m_IsExtendable = true
+                            }
+                        }
+                        );
+                    c.Deactivated = Helpers.CreateActionList(
+                        new ContextActionRemoveBuff() {
+                            m_Buff = ShamanHeavensSpiritWanderingTrueBuff.ToReference<BlueprintBuffReference>()
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = ShamanHeavensSpiritWanderingGreaterBuff.ToReference<BlueprintBuffReference>()
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = ShamanHeavensSpiritWanderingBaseBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                    c.NewRound = Helpers.CreateActionList();
+                });
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        HeavensSpiritSpellListFeature.ToReference<BlueprintUnitFactReference>()
+                    };
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.HideInUI = false;
+                    c.m_Feature = ShamanHeavensSpiritProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.AsIs;
+                    c.m_StartLevel = 0;
+                    c.m_StepLevel = 0;
+                    c.m_UseMax = false;
+                    c.m_Max = 0;
+                    c.m_Class = new BlueprintCharacterClassReference[] {
+                        ShamanClass.ToReference<BlueprintCharacterClassReference>()
+                    };
+                });
+                bp.AddComponent<ContextCalculateSharedValue>(c => {
+                    c.ValueType = AbilitySharedValue.Damage;
+                    c.Value = new ContextDiceValue() {
+                        DiceType = DiceType.Zero,
+                        DiceCountValue = 0,
+                        BonusValue = new ContextValue() {
+                            ValueType = ContextValueType.Rank,
+                            ValueRank = AbilityRankType.Default
+                        }
+                    };
+                    c.Modifier = 1;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+            var UnswornShamanHeavensSpiritWanderingFeature2 = Helpers.CreateBlueprint<BlueprintFeature>("UnswornShamanHeavensSpiritWanderingFeature2", bp => {
+                bp.SetName("Heavens");
+                bp.SetDescription("A shaman who selects the heavens spirit has eyes that sparkle like starlight, exuding an aura of otherworldliness to those she is around. " +
+                    "When she calls upon one of this spirit’s abilities, her eyes turn pitch black and the colors around her drain for a brief moment.");
+                bp.AddComponent<AddFactContextActions>(c => {
+                    c.Activated = Helpers.CreateActionList(
+                        new Conditional() {
+                            ConditionsChecker = new ConditionsChecker() {
+                                Operation = Operation.And,
+                                Conditions = new Condition[] {
+                                    new ContextConditionSharedValueHigher() {
+                                        Not = false,
+                                        SharedValue = AbilitySharedValue.Damage,
+                                        HigherOrEqual = 20,
+                                        Inverted = false
+                                    }
+                                }
+                            },
+                            IfTrue = Helpers.CreateActionList(
+                                new ContextActionApplyBuff() {
+                                    m_Buff = ShamanHeavensSpiritWanderingTrueBuff.ToReference<BlueprintBuffReference>(),
+                                    Permanent = true,
+                                    DurationValue = new ContextDurationValue() {
+                                        Rate = DurationRate.Rounds,
+                                        DiceType = DiceType.Zero,
+                                        DiceCountValue = 0,
+                                        BonusValue = 0,
+                                        m_IsExtendable = true
+                                    }
+                                }),
+                            IfFalse = Helpers.CreateActionList()
+                        },
+                        new Conditional() {
+                            ConditionsChecker = new ConditionsChecker() {
+                                Operation = Operation.And,
+                                Conditions = new Condition[] {
+                                    new ContextConditionSharedValueHigher() {
+                                        Not = false,
+                                        SharedValue = AbilitySharedValue.Damage,
+                                        HigherOrEqual = 14,
+                                        Inverted = false
+                                    }
+                                }
+                            },
+                            IfTrue = Helpers.CreateActionList(
+                                new ContextActionApplyBuff() {
+                                    m_Buff = ShamanHeavensSpiritWanderingGreaterBuff.ToReference<BlueprintBuffReference>(),
+                                    Permanent = true,
+                                    DurationValue = new ContextDurationValue() {
+                                        Rate = DurationRate.Rounds,
+                                        DiceType = DiceType.Zero,
+                                        DiceCountValue = 0,
+                                        BonusValue = 0,
+                                        m_IsExtendable = true
+                                    }
+                                }),
+                            IfFalse = Helpers.CreateActionList()
+                        },
+                        new ContextActionApplyBuff() {
+                            m_Buff = ShamanHeavensSpiritWanderingBaseBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0,
+                                m_IsExtendable = true
+                            }
+                        }
+                        );
+                    c.Deactivated = Helpers.CreateActionList(
+                        new ContextActionRemoveBuff() {
+                            m_Buff = ShamanHeavensSpiritWanderingTrueBuff.ToReference<BlueprintBuffReference>()
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = ShamanHeavensSpiritWanderingGreaterBuff.ToReference<BlueprintBuffReference>()
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = ShamanHeavensSpiritWanderingBaseBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                    c.NewRound = Helpers.CreateActionList();
+                });
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        HeavensSpiritSpellListFeature.ToReference<BlueprintUnitFactReference>()
+                    };
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.HideInUI = false;
+                    c.m_Feature = ShamanHeavensSpiritProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.AsIs;
+                    c.m_StartLevel = 0;
+                    c.m_StepLevel = 0;
+                    c.m_UseMax = false;
+                    c.m_Max = 0;
+                    c.m_Class = new BlueprintCharacterClassReference[] {
+                        ShamanClass.ToReference<BlueprintCharacterClassReference>()
+                    };
+                });
+                bp.AddComponent<ContextCalculateSharedValue>(c => {
+                    c.ValueType = AbilitySharedValue.Damage;
+                    c.Value = new ContextDiceValue() {
+                        DiceType = DiceType.Zero,
+                        DiceCountValue = 0,
+                        BonusValue = new ContextValue() {
+                            ValueType = ContextValueType.Rank,
+                            ValueRank = AbilityRankType.Default
+                        }
+                    };
+                    c.Modifier = 1;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
 
+
+            // Guiding Star Hex
+            var GuidingStarIcon = AssetLoader.LoadInternal("Skills", "Icon_GuidingStar.png");
+            var ShamanSpellbook = Resources.GetBlueprint<BlueprintSpellbook>("44f16931dabdff643bfe2a48138e769f");
+            var ShamanHexGuidingStarSkillBuff = Helpers.CreateBuff("ShamanHexGuidingStarSkillBuff", bp => {
+                bp.SetName("");
+                bp.SetDescription("");
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.DamageDice;
+                    c.m_BaseValueType = ContextRankBaseValueType.StatBonus;
+                    c.m_Stat = StatType.Charisma;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.AsIs;
+                    c.m_StartLevel = 0;
+                    c.m_StepLevel = 0;
+                    c.m_UseMin = true;
+                    c.m_Min = 0;
+                });
+                bp.AddComponent<AddContextStatBonus>(c => {
+                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+                    c.Stat = StatType.SkillLoreNature;
+                    c.Multiplier = 1;
+                    c.Value = new ContextValue() {
+                        ValueType = ContextValueType.Rank,
+                        Value = 0,
+                        ValueRank = AbilityRankType.DamageDice,
+                        ValueShared = AbilitySharedValue.Damage,
+                        Property = UnitProperty.None
+                    };
+                    c.HasMinimal = false;
+                    c.Minimal = 0;
+                });
+                bp.AddComponent<AddContextStatBonus>(c => {
+                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+                    c.Stat = StatType.SkillLoreReligion;
+                    c.Multiplier = 1;
+                    c.Value = new ContextValue() {
+                        ValueType = ContextValueType.Rank,
+                        Value = 0,
+                        ValueRank = AbilityRankType.DamageDice,
+                        ValueShared = AbilitySharedValue.Damage,
+                        Property = UnitProperty.None
+                    };
+                    c.HasMinimal = false;
+                    c.Minimal = 0;
+                });
+                bp.AddComponent<AddContextStatBonus>(c => {
+                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+                    c.Stat = StatType.SkillPerception;
+                    c.Multiplier = 1;
+                    c.Value = new ContextValue() {
+                        ValueType = ContextValueType.Rank,
+                        Value = 0,
+                        ValueRank = AbilityRankType.DamageDice,
+                        ValueShared = AbilitySharedValue.Damage,
+                        Property = UnitProperty.None
+                    };
+                    c.HasMinimal = false;
+                    c.Minimal = 0;
+                });
+                bp.AddComponent<RecalculateOnStatChange>(c => {
+                    c.UseKineticistMainStat = false;
+                    c.Stat = StatType.Charisma;
+                });
+                bp.m_Flags = BlueprintBuff.Flags.StayOnDeath | BlueprintBuff.Flags.HiddenInUi;
+                bp.Stacking = StackingType.Replace;
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+            var ShamanHexGuidingStarSkillFeature = Helpers.CreateBlueprint<BlueprintFeature>("ShamanHexGuidingStarSkillFeature", bp => {
+                bp.SetName("Guiding Star - Skill Bonus");
+                bp.SetDescription("The stars themselves hold many answers, you may add your Charisma modifier to your Wisdom modifier on all Wisdom-based checks.");
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { ShamanHexGuidingStarSkillBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.ReapplyOnLevelUp = true;
+                bp.IsClassFeature = true;
+            });
+            var ShamanHexGuidingStarResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("ShamanHexGuidingStarResource", bp => {
+                bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
+                    BaseValue = 1,
+                    IncreasedByLevel = false,
+                    LevelIncrease = 0,
+                    IncreasedByLevelStartPlusDivStep = false,
+                    StartingLevel = 0,
+                    StartingIncrease = 0,
+                    LevelStep = 0,
+                    PerStepIncrease = 0,
+                    MinClassLevelIncrease = 0,
+                    OtherClassesModifier = 0,
+                    IncreasedByStat = false,
+                    ResourceBonusStat = StatType.Unknown,
+                };
+            });
+            var ShamanHexGuidingStarMetamagicBuffEmpower = Helpers.CreateBuff("ShamanHexGuidingStarMetamagicBuffEmpower", bp => {
+                bp.SetName("Guiding Star - Empower Spell");
+                bp.SetDescription("Once per day you can cast one spell from the shaman spellbook as if it were modified by the Empower Spell feat without increasing the spell’s casting time or level.");
+                bp.m_Icon = GuidingStarIcon;
+                bp.AddComponent<AutoMetamagic>(c => {
+                    c.m_AllowedAbilities = AutoMetamagic.AllowedType.SpellOnly;
+                    c.Metamagic = Metamagic.Empower;
+                    c.Abilities = new List<BlueprintAbilityReference> { }; //?
+                    c.Descriptor = SpellDescriptor.None;
+                    c.Once = false;
+                    c.MaxSpellLevel = 10;
+                    c.School = SpellSchool.None;
+                    c.CheckSpellbook = true;
+                    c.m_Spellbook = ShamanSpellbook.ToReference<BlueprintSpellbookReference>();
+                });
+                bp.AddComponent<AddAbilityUseTrigger>(c => {
+                    c.ActionsOnAllTargets = false;
+                    c.AfterCast = true;
+                    c.ActionsOnTarget = false;
+                    c.FromSpellbook = true;
+                    c.m_Spellbooks = new BlueprintSpellbookReference[] { ShamanSpellbook.ToReference<BlueprintSpellbookReference>() };
+                    c.ForOneSpell = false;
+                    c.m_Ability = new BlueprintAbilityReference();
+                    c.ForMultipleSpells = false;
+                    c.Abilities = new List<BlueprintAbilityReference>();
+                    c.MinSpellLevel = false;
+                    c.MinSpellLevelLimit = 0;
+                    c.ExactSpellLevel = false;
+                    c.ExactSpellLevelLimit = 0;
+                    c.CheckAbilityType = false;
+                    c.Type = AbilityType.Spell;
+                    c.CheckDescriptor = false;
+                    c.SpellDescriptor = new SpellDescriptor();
+                    c.CheckRange = false;
+                    c.Range = AbilityRange.Touch;
+                    c.Action = Helpers.CreateActionList(new ContextActionRemoveSelf());
+                });
+                bp.m_Flags = BlueprintBuff.Flags.RemoveOnRest;
+                bp.Stacking = StackingType.Replace;
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = false;
+            });
+            var ShamanHexGuidingStarMetamagicBuffExtend = Helpers.CreateBuff("ShamanHexGuidingStarMetamagicBuffExtend", bp => {
+                bp.SetName("Guiding Star - Extend Spell");
+                bp.SetDescription("Once per day you can cast one spell from the shaman spellbook as if it were modified by the Extend Spell feat without increasing the spell’s casting time or level.");
+                bp.m_Icon = GuidingStarIcon;
+                bp.AddComponent<AutoMetamagic>(c => {
+                    c.m_AllowedAbilities = AutoMetamagic.AllowedType.SpellOnly;
+                    c.Metamagic = Metamagic.Extend;
+                    c.Abilities = new List<BlueprintAbilityReference> { }; //?
+                    c.Descriptor = SpellDescriptor.None;
+                    c.Once = false;
+                    c.MaxSpellLevel = 10;
+                    c.School = SpellSchool.None;
+                    c.CheckSpellbook = true;
+                    c.m_Spellbook = ShamanSpellbook.ToReference<BlueprintSpellbookReference>();
+                });
+                bp.AddComponent<AddAbilityUseTrigger>(c => {
+                    c.ActionsOnAllTargets = false;
+                    c.AfterCast = true;
+                    c.ActionsOnTarget = false;
+                    c.FromSpellbook = true;
+                    c.m_Spellbooks = new BlueprintSpellbookReference[] { ShamanSpellbook.ToReference<BlueprintSpellbookReference>() };
+                    c.ForOneSpell = false;
+                    c.m_Ability = new BlueprintAbilityReference();
+                    c.ForMultipleSpells = false;
+                    c.Abilities = new List<BlueprintAbilityReference>();
+                    c.MinSpellLevel = false;
+                    c.MinSpellLevelLimit = 0;
+                    c.ExactSpellLevel = false;
+                    c.ExactSpellLevelLimit = 0;
+                    c.CheckAbilityType = false;
+                    c.Type = AbilityType.Spell;
+                    c.CheckDescriptor = false;
+                    c.SpellDescriptor = new SpellDescriptor();
+                    c.CheckRange = false;
+                    c.Range = AbilityRange.Touch;
+                    c.Action = Helpers.CreateActionList(new ContextActionRemoveSelf());
+                });
+                bp.m_Flags = BlueprintBuff.Flags.RemoveOnRest;
+                bp.Stacking = StackingType.Replace;
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = false;
+            });
+            var ShamanHexGuidingStarMetamagicAbilityBase = Helpers.CreateBlueprint<BlueprintAbility>("ShamanHexGuidingStarMetamagicAbilityBase", bp => {
+                bp.SetName("Guiding Star");
+                bp.SetDescription("Once per day you can cast one spell from the shaman spellbook as if it were modified by the Empower Spell or Extend Spell feat without increasing the spell’s casting time or level.");
+                bp.m_Icon = GuidingStarIcon;
+                // Ability Variants added later
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = ShamanHexGuidingStarResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var ShamanHexGuidingStarMetamagicAbilityEmpower = Helpers.CreateBlueprint<BlueprintAbility>("ShamanHexGuidingStarMetamagicAbilityEmpower", bp => {
+                bp.SetName("Guiding Star - Empower Spell");
+                bp.SetDescription("Once per day you can cast one spell from the shaman spellbook as if it were modified by the Empower Spell feat without increasing the spell’s casting time or level.");
+                bp.m_Icon = GuidingStarIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = ShamanHexGuidingStarMetamagicBuffEmpower.ToReference<BlueprintBuffReference>(),
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 1,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage
+                                },
+                                m_IsExtendable = true
+                            },
+                            DurationSeconds = 0,
+                            IsFromSpell = false,
+                            ToCaster = false,
+                            AsChild = true,
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        ShamanHexGuidingStarMetamagicBuffEmpower.ToReference<BlueprintUnitFactReference>(),
+                        ShamanHexGuidingStarMetamagicBuffExtend.ToReference<BlueprintUnitFactReference>()
+                    };
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = ShamanHexGuidingStarResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.m_Parent = ShamanHexGuidingStarMetamagicAbilityBase.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var ShamanHexGuidingStarMetamagicAbilityExtend = Helpers.CreateBlueprint<BlueprintAbility>("ShamanHexGuidingStarMetamagicAbilityExtend", bp => {
+                bp.SetName("Guiding Star - Extend Spell");
+                bp.SetDescription("Once per day you can cast one spell from the shaman spellbook as if it were modified by the Extend Spell feat without increasing the spell’s casting time or level.");
+                bp.m_Icon = GuidingStarIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = ShamanHexGuidingStarMetamagicBuffExtend.ToReference<BlueprintBuffReference>(),
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 1,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage
+                                },
+                                m_IsExtendable = true
+                            },
+                            DurationSeconds = 0,
+                            IsFromSpell = false,
+                            ToCaster = false,
+                            AsChild = true,
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        ShamanHexGuidingStarMetamagicBuffEmpower.ToReference<BlueprintUnitFactReference>(),
+                        ShamanHexGuidingStarMetamagicBuffExtend.ToReference<BlueprintUnitFactReference>()
+                    };
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = ShamanHexGuidingStarResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.m_Parent = ShamanHexGuidingStarMetamagicAbilityBase.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            ShamanHexGuidingStarMetamagicAbilityBase.AddComponent<AbilityVariants>(c => {
+                c.m_Variants = new BlueprintAbilityReference[] {
+                    ShamanHexGuidingStarMetamagicAbilityEmpower.ToReference<BlueprintAbilityReference>(),
+                    ShamanHexGuidingStarMetamagicAbilityExtend.ToReference<BlueprintAbilityReference>()
+                };
+            });
+            var ShamanHexGuidingStarFeature = Helpers.CreateBlueprint<BlueprintFeature>("ShamanHexGuidingStarFeature", bp => {
+                bp.SetName("Guiding Star");
+                bp.SetDescription("The stars themselves hold many answers, you may add your Charisma modifier to your Wisdom modifier on all Wisdom-based checks. In addition, once per day you can " +
+                    "cast one spell from the shaman spellbook as if it were modified by the Empower Spell or Extend Spell feat without increasing the spell’s casting time or level.");
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        ShamanHexGuidingStarSkillFeature.ToReference<BlueprintUnitFactReference>(),
+                        ShamanHexGuidingStarMetamagicAbilityBase.ToReference<BlueprintUnitFactReference>()
+                    };
+                });
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = ShamanHexGuidingStarResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.AddComponent<PrerequisiteFeature>(c => {
+                    c.m_Feature = ShamanHeavensSpiritProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteFeature>(c => {
+                    c.m_Feature = ShamanHeavensSpiritWanderingFeature.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteFeature>(c => {
+                    c.m_Feature = ShamanHeavensSpiritBaseFeature.ToReference<BlueprintFeatureReference>();
+                });
+                bp.Groups = new FeatureGroup[] { FeatureGroup.ShamanHex };
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });            
+            SpiritTools.RegisterShamanHex(ShamanHexGuidingStarFeature);
+
+
+
+
+
+            ShamanHeavensSpiritProgression.IsPrerequisiteFor = new List<BlueprintFeatureReference>() {
+                ShamanHexGuidingStarFeature.ToReference<BlueprintFeatureReference>(),
+            };
+
+
+
+            SpiritTools.RegisterSpirit(ShamanHeavensSpiritProgression);
+            SpiritTools.RegisterSecondSpirit(ShamanHeavensSpiritProgression);
+            SpiritTools.RegisterWanderingSpirit(ShamanHeavensSpiritWanderingFeature);
+            SpiritTools.RegisterUnswornSpirit1(UnswornShamanHeavensSpiritWanderingFeature1);
+            SpiritTools.RegisterUnswornSpirit2(UnswornShamanHeavensSpiritWanderingFeature2);
 
 
         }
