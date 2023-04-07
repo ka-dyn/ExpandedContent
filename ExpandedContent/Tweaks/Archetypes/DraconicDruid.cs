@@ -109,8 +109,8 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var AcidMawAbility = Resources.GetBlueprint<BlueprintAbility>("75de4ded3e731dc4f84d978fe947dc67");
             var WildShapeDragonShapeBiteBuff = Helpers.CreateBuff("WildShapeDragonShapeBiteBuff", bp => {
                 bp.SetName("Dragon Shape - Dragon Fangs");
-                bp.SetDescription("You can use wild shape to change into a dragon-scaled version of herself with long fangs, gaining a +1 natural armor bonus to her AC and a bite attack appropriate for her size " +
-                    "(1d6 points of damage for a Medium druid) but otherwise retaining her usual form.");
+                bp.SetDescription("You can use wild shape to change into a dragon-scaled version of yourself with long fangs, gaining a +1 natural armor bonus to your AC and a bite attack appropriate for your size " +
+                    "(1d6 points of damage for a Medium druid) but otherwise retaining your usual form.");
                 bp.m_Icon = AcidMawAbility.Icon;
                 bp.AddComponent<AddAdditionalLimb>(c => {
                     c.m_Weapon = Bite1d6.ToReference<BlueprintItemWeaponReference>();
@@ -125,11 +125,10 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = true;
             });
-
             var WildShapeDragonShapeBiteAbility = Helpers.CreateBlueprint<BlueprintAbility>("WildShapeDragonShapeBiteAbility", bp => {
                 bp.SetName("Dragon Shape - Dragon Fangs");
-                bp.SetDescription("You can use wild shape to change into a dragon-scaled version of herself with long fangs, gaining a +1 natural armor bonus to her AC and a bite attack appropriate for her size " +
-                    "(1d6 points of damage for a Medium druid) but otherwise retaining her usual form.");
+                bp.SetDescription("You can use wild shape to change into a dragon-scaled version of yourself with long fangs, gaining a +1 natural armor bonus to your AC and a bite attack appropriate for your size " +
+                    "(1d6 points of damage for a Medium druid) but otherwise retaining your usual form.");
                 bp.m_Icon = AcidMawAbility.Icon;
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.SavingThrowType = SavingThrowType.Unknown;
@@ -196,12 +195,10 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
-
-
             var WildShapeDragonShapeBiteFeature= Helpers.CreateBlueprint<BlueprintFeature>("WildShapeDragonShapeBiteFeature", bp => {
                 bp.SetName("Dragon Shape - Dragon Fangs");
-                bp.SetDescription("You can use wild shape to change into a dragon-scaled version of herself with long fangs, gaining a +1 natural armor bonus to her AC and a bite attack appropriate for her size " +
-                    "(1d6 points of damage for a Medium druid) but otherwise retaining her usual form.");
+                bp.SetDescription("You can use wild shape to change into a dragon-scaled version of yourself with long fangs, gaining a +1 natural armor bonus to your AC and a bite attack appropriate for your size " +
+                    "(1d6 points of damage for a Medium druid) but otherwise retaining your usual form.");
                 bp.m_Icon = AcidMawAbility.Icon;
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] {
@@ -216,18 +213,6 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.IsClassFeature = true;
                 bp.IsPrerequisiteFor = WildShapeIWolfFeature.IsPrerequisiteFor;
             });
-
-
-
-
-
-
-
-
-
-
-
-
             var FormOfTheDragonGreenBuff = Resources.GetBlueprint<BlueprintBuff>("02611a12f38bed340920d1d427865917");
             var WildShapeDragonShapeGreenBuff = Helpers.CreateBuff("WildShapeDragonShapeGreenBuff", bp => {
                 bp.SetName("Dragon Shape - Green Dragon");
