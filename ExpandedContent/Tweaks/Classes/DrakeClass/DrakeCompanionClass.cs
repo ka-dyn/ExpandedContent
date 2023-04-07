@@ -2488,8 +2488,6 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 });                
             });
             //Natural Armor
-
-
             var DrakeNaturalArmor1Applied = Helpers.CreateBlueprint<BlueprintFeature>("DrakeNaturalArmor1Applied", bp => {
                 bp.SetName("Drake Natural Armor");
                 bp.AddComponent<AddStatBonus>(c => {
@@ -2509,8 +2507,6 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 });
                 bp.HideInUI = true;
             });
-
-
             var DrakeNaturalArmor2Applied = Helpers.CreateBlueprint<BlueprintFeature>("DrakeNaturalArmor2Applied", bp => {
                 bp.SetName("Drake Natural Armor");
                 bp.AddComponent<AddStatBonus>(c => {
@@ -2530,7 +2526,6 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 });
                 bp.HideInUI = true;
             });
-
             var DrakeNaturalArmor3Applied = Helpers.CreateBlueprint<BlueprintFeature>("DrakeNaturalArmor3Applied", bp => {
                 bp.SetName("Drake Natural Armor");
                 bp.AddComponent<AddStatBonus>(c => {
@@ -2550,7 +2545,6 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 });
                 bp.HideInUI = true;
             });
-
             var DrakeNaturalArmor4Applied = Helpers.CreateBlueprint<BlueprintFeature>("DrakeNaturalArmor4Applied", bp => {
                 bp.SetName("Drake Natural Armor");
                 bp.AddComponent<AddStatBonus>(c => {
@@ -2570,7 +2564,6 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 });
                 bp.HideInUI = true;
             });
-
             var DrakeNaturalArmor5Applied = Helpers.CreateBlueprint<BlueprintFeature>("DrakeNaturalArmor5Applied", bp => {
                 bp.SetName("Drake Natural Armor");
                 bp.AddComponent<AddStatBonus>(c => {
@@ -2590,7 +2583,6 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 });
                 bp.HideInUI = true;
             });
-
             var DrakeNaturalArmor6Applied = Helpers.CreateBlueprint<BlueprintFeature>("DrakeNaturalArmor6Applied", bp => {
                 bp.SetName("Drake Natural Armor");
                 bp.AddComponent<AddStatBonus>(c => {
@@ -2610,7 +2602,6 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 });
                 bp.HideInUI = true;
             });
-
             var DrakeNaturalArmor7Applied = Helpers.CreateBlueprint<BlueprintFeature>("DrakeNaturalArmor7Applied", bp => {
                 bp.SetName("Drake Natural Armor");
                 bp.AddComponent<AddStatBonus>(c => {
@@ -2630,7 +2621,6 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 });
                 bp.HideInUI = true;
             });
-
             var DrakeNaturalArmor8Applied = Helpers.CreateBlueprint<BlueprintFeature>("DrakeNaturalArmor8Applied", bp => {
                 bp.SetName("Drake Natural Armor");
                 bp.AddComponent<AddStatBonus>(c => {
@@ -2648,9 +2638,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                     c.m_Feature = DrakeNaturalArmor8Applied.ToReference<BlueprintFeatureReference>();
                     c.BeforeThisLevel = true;
                 });
-            });
-
-            
+            });            
             var DrakeNaturalArmor9 = Helpers.CreateBlueprint<BlueprintFeature>("DrakeNaturalArmor9", bp => {
                 bp.SetName("Drake Natural Armor");
                 bp.AddComponent<AddStatBonus>(c => {
@@ -2660,8 +2648,6 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 });
                 bp.HideInUI = true;
             });
-
-
             //Copact Drake Stuff
             var ReducePerson = Resources.GetBlueprint<BlueprintAbility>("4e0e9aba6447d514f88eff1464cc4763");
             var CompactDrakeBuff = Helpers.CreateBuff("CompactDrakeBuff", bp => {
@@ -2684,7 +2670,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                     c.SizeDelta = -2;
                     c.Size = Size.Fine;
                 });
-            });            
+            });
             var CompactDrake = Helpers.CreateBlueprint<BlueprintActivatableAbility>("CompactDrake", bp => {
                 bp.SetName("Compact Drake");
                 bp.SetDescription("After the drake grows to a large size it gains the ability to shrink back down to their medium size. When this " +
@@ -2700,7 +2686,47 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                     "is active the drakes stats are modified; -4 Strength, +2 Dexterity, and the range on attacks is reduced to the medium size range.");
                 bp.m_Icon = ReducePerson.m_Icon;
                 bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[] {CompactDrake.ToReference<BlueprintUnitFactReference>()};
+                    c.m_Facts = new BlueprintUnitFactReference[] { CompactDrake.ToReference<BlueprintUnitFactReference>() };
+                });
+            });
+
+            var CompactDrake2Buff = Helpers.CreateBuff("CompactDrake2Buff", bp => {
+                bp.SetName("Compact Drake");
+                bp.SetDescription("After the drake grows to a huge size it gains the ability to shrink back down to their large size. When this " +
+                    "is active the drakes stats are modified; -4 Strength, +2 Dexterity, and the range on attacks is reduced to the large size range.");
+                bp.m_Icon = ReducePerson.m_Icon;
+                bp.AddComponent<AddStatBonus>(c => {
+                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+                    c.Stat = StatType.Strength;
+                    c.Value = -4;
+                });
+                bp.AddComponent<AddStatBonus>(c => {
+                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+                    c.Stat = StatType.Dexterity;
+                    c.Value = 2;
+                });
+                bp.AddComponent<ChangeUnitSize>(c => {
+                    c.m_Type = ChangeUnitSize.ChangeType.Delta;
+                    c.SizeDelta = -1;
+                    c.Size = Size.Fine;
+                });
+            });
+            var CompactDrake2 = Helpers.CreateBlueprint<BlueprintActivatableAbility>("CompactDrake2", bp => {
+                bp.SetName("Compact Drake");
+                bp.SetDescription("After the drake grows to a huge size it gains the ability to shrink back down to their large size. When this " +
+                    "is active the drakes stats are modified; -4 Strength, +2 Dexterity, and the range on attacks is reduced to the large size range.");
+                bp.m_Icon = ReducePerson.m_Icon;
+                bp.m_Buff = CompactDrake2Buff.ToReference<BlueprintBuffReference>();
+                bp.DeactivateIfOwnerDisabled = true;
+                bp.m_ActivateWithUnitCommand = Kingmaker.UnitLogic.Commands.Base.UnitCommand.CommandType.Standard;
+            });
+            var CompactDrakeFeature2 = Helpers.CreateBlueprint<BlueprintFeature>("CompactDrakeFeature2", bp => {
+                bp.SetName("Compact Drake - Large");
+                bp.SetDescription("After the drake grows to a huge size it gains the ability to shrink back down to their large size. When this " +
+                    "is active the drakes stats are modified; -4 Strength, +2 Dexterity, and the range on attacks is reduced to the large size range.");
+                bp.m_Icon = ReducePerson.m_Icon;
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { CompactDrake2.ToReference<BlueprintUnitFactReference>() };
                 });
             });
 
@@ -2730,7 +2756,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                     Helpers.LevelEntry(12, DrakeNaturalArmorFeature, DrakeNaturalArmor5),
                     Helpers.LevelEntry(13, DrakeSizeLargeFeature, DrakeNaturalArmor6, CompactDrakeFeature),
                     Helpers.LevelEntry(15, DrakeNaturalArmorFeature, DrakeNaturalArmor7, DrakePowersSelection),
-                    Helpers.LevelEntry(17, DrakeSizeHugeFeature, DrakeNaturalArmor8),
+                    Helpers.LevelEntry(17, DrakeSizeHugeFeature, DrakeNaturalArmor8, CompactDrakeFeature2),
                     Helpers.LevelEntry(18, DrakeNaturalArmorFeature, DrakeNaturalArmor9),
                     Helpers.LevelEntry(19, DrakePowersSelection),
                 };
