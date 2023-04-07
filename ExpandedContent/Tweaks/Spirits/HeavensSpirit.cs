@@ -474,47 +474,17 @@ namespace ExpandedContent.Tweaks.Spirits {
                     "on all {g|Encyclopedia:Saving_Throw}saving throws{/g} equal to your {g|Encyclopedia:Wisdom}Wisdom{/g} modifier. You become immune to fear effects, and automatically " +
                     "confirm all critical hits. Once per day, should you die, 1 {g|Encyclopedia:Combat_Round}round{/g} after dying you are reborn. Your body re-forms with all your equipment, " +
                     "and you return to life with maximum {g|Encyclopedia:HP}hit points{/g}.");
-                bp.AddComponent<AddContextStatBonus>(c => {
-                    c.Descriptor = ModifierDescriptor.UntypedStackable;
-                    c.Stat = StatType.SaveFortitude;
-                    c.Multiplier = 1;
-                    c.Value = new ContextValue() {
-                        ValueType = ContextValueType.CasterProperty,
-                        Value = 0,
-                        ValueRank = AbilityRankType.Default,
-                        ValueShared = AbilitySharedValue.Damage,
-                        Property = UnitProperty.StatBonusWisdom
-                    };
-                    c.HasMinimal = false;
-                    c.Minimal = 0;
+                bp.AddComponent<DerivativeStatBonus>(c => {
+                    c.BaseStat = StatType.Wisdom;
+                    c.DerivativeStat = StatType.SaveFortitude;
                 });
-                bp.AddComponent<AddContextStatBonus>(c => {
-                    c.Descriptor = ModifierDescriptor.UntypedStackable;
-                    c.Stat = StatType.SaveReflex;
-                    c.Multiplier = 1;
-                    c.Value = new ContextValue() {
-                        ValueType = ContextValueType.CasterProperty,
-                        Value = 0,
-                        ValueRank = AbilityRankType.Default,
-                        ValueShared = AbilitySharedValue.Damage,
-                        Property = UnitProperty.StatBonusWisdom
-                    };
-                    c.HasMinimal = false;
-                    c.Minimal = 0;
+                bp.AddComponent<DerivativeStatBonus>(c => {
+                    c.BaseStat = StatType.Wisdom;
+                    c.DerivativeStat = StatType.SaveWill;
                 });
-                bp.AddComponent<AddContextStatBonus>(c => {
-                    c.Descriptor = ModifierDescriptor.UntypedStackable;
-                    c.Stat = StatType.SaveWill;
-                    c.Multiplier = 1;
-                    c.Value = new ContextValue() {
-                        ValueType = ContextValueType.CasterProperty,
-                        Value = 0,
-                        ValueRank = AbilityRankType.Default,
-                        ValueShared = AbilitySharedValue.Damage,
-                        Property = UnitProperty.StatBonusWisdom
-                    };
-                    c.HasMinimal = false;
-                    c.Minimal = 0;
+                bp.AddComponent<DerivativeStatBonus>(c => {
+                    c.BaseStat = StatType.Wisdom;
+                    c.DerivativeStat = StatType.SaveReflex;
                 });
                 bp.AddComponent<AddConditionImmunity>(c => {
                     c.Condition = UnitCondition.Frightened;
