@@ -74,6 +74,11 @@ New Oracle Mysteries / Curses
 - Curses: 
   - Vampirism
 
+
+New Shaman Spirits
+
+- Heavens
+
 New Domains / Subdomains
 
 - Domains: 
