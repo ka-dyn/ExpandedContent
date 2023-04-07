@@ -1,5 +1,6 @@
 ﻿using ExpandedContent.Extensions;
 using ExpandedContent.Utilities;
+using HarmonyLib;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Prerequisites;
@@ -41,7 +42,7 @@ namespace ExpandedContent.Config {
         static class BlueprintsCache_Init_Patch {
             static bool Initialized;
 
-            [HarmonyLib.HarmonyAfter()]
+            [HarmonyAfter()]
             public static void Postfix() {
                 if (Initialized) return;
                 Initialized = true;
@@ -285,12 +286,15 @@ namespace ExpandedContent.Config {
                     StarsDomainProgressionSecondary.SetDescription("\nThe firmament provides you inspiration, and you draw power from the stars’ distant light.\nGuarded Mind: You gain a +2 insight bonus on saving throws " +
                     "against all mind-affecting effects.\nThe Stars Are Right: At 8th level, you may spontaneously cast any of your Stars subdomain spells by swapping out a spell of an equal " +
                     "spell level. Any Stars subdomain spell that you cast heals you an amount of hit point damage equal to the spell’s level; this effect happens as you cast the spell.\nDomain " +
-                    "{g|Encyclopedia:Spell}Spells{/g}: entropic shield, hypnotic pattern, blink, dimension door, summon monster V, overwhelming presence, sunbeam, sunburst, meteor swarm.");
-
-
-
-
-
+                    "{g|Encyclopedia:Spell}Spells{/g}: entropic shield, hypnotic pattern, blink, dimension door, summon monster V, overwhelming presence, sunbeam, sunburst, meteor swarm.");                    
+                    var HeavensSpiritSpellList = Resources.GetModBlueprint<BlueprintSpellList>("HeavensSpiritSpellList");
+                    HeavensSpiritSpellList.SpellsByLevel
+                        .Where(level => level.SpellLevel == 9)
+                        .ForEach(level => level.Spells.Clear());
+                    HeavensSpiritSpellList.SpellsByLevel[9].m_Spells.Add(MeteorSwarmAbility);
+                    var ShamanHeavensSpiritManifestationFeature = Resources.GetModBlueprint<BlueprintFeature>("ShamanHeavensSpiritManifestationFeature");
+                    var ShamanHeavensSpiritProgression = Resources.GetModBlueprint<BlueprintProgression>("ShamanHeavensSpiritProgression");
+                    ShamanHeavensSpiritProgression.LevelEntries = ShamanHeavensSpiritProgression.LevelEntries.AppendToArray(Helpers.LevelEntry(20, ShamanHeavensSpiritManifestationFeature));
                 }
 
                 if (IsTabletopTweaksBaseEnabled()) {
@@ -410,11 +414,12 @@ namespace ExpandedContent.Config {
                     });
 
 
-                    var WildShapeDragonShapeFeature = Resources.GetModBlueprint<BlueprintFeature>("WildShapeDragonShapeFeature");
+                    var WildShapeDragonShapeBiteFeature = Resources.GetModBlueprint<BlueprintFeature>("WildShapeDragonShapeBiteFeature");
                     var MutatedShapeFeaturePrerequisite = Resources.GetBlueprint<BlueprintFeature>("82cb6efb4e3f48cbaf2ea59a3dd1a5cc").GetComponent<PrerequisiteFeaturesFromList>();
-                    MutatedShapeFeaturePrerequisite.m_Features = MutatedShapeFeaturePrerequisite.m_Features.AppendToArray(WildShapeDragonShapeFeature.ToReference<BlueprintFeatureReference>());
-                    var MutatedShapeEffect = Resources.GetBlueprint<BlueprintBuff>("84e5049cdf7443f7a4ac6b4ac5c80c0c");
+                    MutatedShapeFeaturePrerequisite.m_Features = MutatedShapeFeaturePrerequisite.m_Features.AppendToArray(WildShapeDragonShapeBiteFeature.ToReference<BlueprintFeatureReference>());
+                    BlueprintFeature MutatedShapeEffect = Resources.GetBlueprint<BlueprintFeature>("84e5049cdf7443f7a4ac6b4ac5c80c0c");
                     var DragonShapeForms = new BlueprintBuff[] {
+                        Resources.GetModBlueprint<BlueprintBuff>("WildShapeDragonShapeBiteBuff"),
                         Resources.GetModBlueprint<BlueprintBuff>("WildShapeDragonShapeBlackBuff"),
                         Resources.GetModBlueprint<BlueprintBuff>("WildShapeDragonShapeBlackBuff2"),
                         Resources.GetModBlueprint<BlueprintBuff>("WildShapeDragonShapeBlueBuff"),

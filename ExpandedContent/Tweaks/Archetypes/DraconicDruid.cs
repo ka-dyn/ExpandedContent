@@ -39,6 +39,7 @@ using Kingmaker.UI.GenericSlot;
 using Kingmaker.Blueprints.Items.Ecnchantments;
 using Kingmaker.UnitLogic.Abilities.Components.TargetCheckers;
 using Kingmaker.UnitLogic.Buffs;
+using Kingmaker.Blueprints.Items.Weapons;
 
 namespace ExpandedContent.Tweaks.Archetypes {
     internal class DraconicDruid {
@@ -104,6 +105,129 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 });                
             });
             //Dragon Shape
+            var Bite1d6 = Resources.GetBlueprint<BlueprintItemWeapon>("a000716f88c969c499a535dadcf09286");
+            var AcidMawAbility = Resources.GetBlueprint<BlueprintAbility>("75de4ded3e731dc4f84d978fe947dc67");
+            var WildShapeDragonShapeBiteBuff = Helpers.CreateBuff("WildShapeDragonShapeBiteBuff", bp => {
+                bp.SetName("Dragon Shape - Dragon Fangs");
+                bp.SetDescription("You can use wild shape to change into a dragon-scaled version of herself with long fangs, gaining a +1 natural armor bonus to her AC and a bite attack appropriate for her size " +
+                    "(1d6 points of damage for a Medium druid) but otherwise retaining her usual form.");
+                bp.m_Icon = AcidMawAbility.Icon;
+                bp.AddComponent<AddAdditionalLimb>(c => {
+                    c.m_Weapon = Bite1d6.ToReference<BlueprintItemWeaponReference>();
+                });
+                bp.AddComponent<AddStatBonus>(c => {
+                    c.Stat = StatType.AC;
+                    c.Value = 1;
+                    c.Descriptor = ModifierDescriptor.NaturalArmorEnhancement;
+                });
+                bp.m_Flags = BlueprintBuff.Flags.StayOnDeath | BlueprintBuff.Flags.HiddenInUi;
+                bp.Stacking = StackingType.Replace;
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+
+            var WildShapeDragonShapeBiteAbility = Helpers.CreateBlueprint<BlueprintAbility>("WildShapeDragonShapeBiteAbility", bp => {
+                bp.SetName("Dragon Shape - Dragon Fangs");
+                bp.SetDescription("You can use wild shape to change into a dragon-scaled version of herself with long fangs, gaining a +1 natural armor bonus to her AC and a bite attack appropriate for her size " +
+                    "(1d6 points of damage for a Medium druid) but otherwise retaining her usual form.");
+                bp.m_Icon = AcidMawAbility.Icon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = WildShapeDragonShapeBiteBuff.ToReference<BlueprintBuffReference>(),
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Hours,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Rank,
+                                    Value = 1,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage
+                                },
+                                m_IsExtendable = true
+                            },
+                            DurationSeconds = 0,
+                            IsFromSpell = true,
+                            ToCaster = true,
+                            AsChild = false,
+                        });
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = WildShapeResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                    c.CostIsCustom = false;
+                    c.Amount = 1;
+                    c.ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>() { MasterShapeshifter.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<SpellDescriptorComponent>(c => {
+                    c.Descriptor = SpellDescriptor.Polymorph;
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.BonusValue;
+                    c.m_StepLevel = 1;
+                    c.m_Class = new BlueprintCharacterClassReference[] {
+                        DruidClass.ToReference<BlueprintCharacterClassReference>()
+                    };
+                });
+                bp.AddComponent<AbilityTargetHasFact>(c => {
+                    c.m_CheckedFacts = new BlueprintUnitFactReference[] { WildShapeDragonShapeBiteBuff.ToReference<BlueprintUnitFactReference>() };
+                    c.Inverted = true;
+                });
+                bp.AddComponent<AbilityExecuteActionOnCast>(c => {
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionRemoveBuffsByDescriptor() {
+                            SpellDescriptor = SpellDescriptor.Polymorph,
+                        }
+                        );
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.SelfTouch;
+                bp.ActionType = UnitCommand.CommandType.Standard;
+                bp.AvailableMetamagic = Metamagic.Quicken | Metamagic.Extend | Metamagic.Heighten;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+
+
+            var WildShapeDragonShapeBiteFeature= Helpers.CreateBlueprint<BlueprintFeature>("WildShapeDragonShapeBiteFeature", bp => {
+                bp.SetName("Dragon Shape - Dragon Fangs");
+                bp.SetDescription("You can use wild shape to change into a dragon-scaled version of herself with long fangs, gaining a +1 natural armor bonus to her AC and a bite attack appropriate for her size " +
+                    "(1d6 points of damage for a Medium druid) but otherwise retaining her usual form.");
+                bp.m_Icon = AcidMawAbility.Icon;
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        WildShapeDragonShapeBiteAbility.ToReference<BlueprintUnitFactReference>()
+                    };
+                });
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = WildShapeResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+                bp.IsPrerequisiteFor = WildShapeIWolfFeature.IsPrerequisiteFor;
+            });
+
+
+
+
+
+
+
+
+
+
+
+
             var FormOfTheDragonGreenBuff = Resources.GetBlueprint<BlueprintBuff>("02611a12f38bed340920d1d427865917");
             var WildShapeDragonShapeGreenBuff = Helpers.CreateBuff("WildShapeDragonShapeGreenBuff", bp => {
                 bp.SetName("Dragon Shape - Green Dragon");
@@ -925,14 +1049,8 @@ namespace ExpandedContent.Tweaks.Archetypes {
                         WildShapeDragonShapeWhite.ToReference<BlueprintUnitFactReference>()
                     };
                 });
-                bp.AddComponent<AddAbilityResources>(c => {
-                    c.m_Resource = WildShapeResource.ToReference<BlueprintAbilityResourceReference>();
-                    c.RestoreAmount = true;
-
-                });
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = true;
-                bp.IsPrerequisiteFor = new List<BlueprintFeatureReference>() { NaturalSpell.ToReference<BlueprintFeatureReference>() };
             });
 
             var FormOfTheDragonGreenBuff2 = Resources.GetBlueprint<BlueprintBuff>("070543328d3e9af49bb514641c56911d");
@@ -1769,7 +1887,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             // NaturalSpell patch
             NaturalSpell.AddComponent<PrerequisiteFeature>(c => {
                 c.Group = Prerequisite.GroupType.Any;
-                c.m_Feature = WildShapeDragonShapeFeature.ToReference<BlueprintFeatureReference>();
+                c.m_Feature = WildShapeDragonShapeBiteFeature.ToReference<BlueprintFeatureReference>();
             });
             DraconicDruidArchetype.RemoveFeatures = new LevelEntry[] {
                     Helpers.LevelEntry(1, DruidBondSelection, NatureSense),
@@ -1782,7 +1900,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             };
             DraconicDruidArchetype.AddFeatures = new LevelEntry[] {
                     Helpers.LevelEntry(1, DrakeCompanionSelection, DragonSenseFeature),
-                    Helpers.LevelEntry(4, ResistDragonsMightFeature),
+                    Helpers.LevelEntry(4, ResistDragonsMightFeature, WildShapeDragonShapeBiteFeature),
                     Helpers.LevelEntry(10, WildShapeDragonShapeFeature),
                     Helpers.LevelEntry(12, WildShapeDragonShapeFeature2)
 

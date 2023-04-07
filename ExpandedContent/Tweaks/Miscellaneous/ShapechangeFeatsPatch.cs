@@ -57,6 +57,7 @@ namespace ExpandedContent.Tweaks.Miscellaneous {
 
 
             //Shifters Rush Buff
+            var WildShapeDragonShapeBiteAbility = Resources.GetModBlueprint<BlueprintAbility>("WildShapeDragonShapeBiteAbility");
             var WildShapeDragonShapeGreen = Resources.GetModBlueprint<BlueprintAbility>("WildShapeDragonShapeGreen");
             var WildShapeDragonShapeSilver = Resources.GetModBlueprint<BlueprintAbility>("WildShapeDragonShapeSilver");
             var WildShapeDragonShapeBlack = Resources.GetModBlueprint<BlueprintAbility>("WildShapeDragonShapeBlack");
@@ -72,6 +73,7 @@ namespace ExpandedContent.Tweaks.Miscellaneous {
             var WildShapeDragonShapeRed2 = Resources.GetModBlueprint<BlueprintAbility>("WildShapeDragonShapeRed2");
             var WildShapeDragonShapeWhite2 = Resources.GetModBlueprint<BlueprintAbility>("WildShapeDragonShapeWhite2");
             var ShiftersRushBuff = Resources.GetBlueprint<BlueprintBuff>("c3365d5a75294b9b879c587668620bd4");
+            ShiftersRushBuff.AddComponent<FreeActionSpell>(c => { c.m_Ability = WildShapeDragonShapeBiteAbility.ToReference<BlueprintAbilityReference>(); });
             ShiftersRushBuff.AddComponent<FreeActionSpell>(c => { c.m_Ability = WildShapeDragonShapeGreen.ToReference<BlueprintAbilityReference>(); });
             ShiftersRushBuff.AddComponent<FreeActionSpell>(c => { c.m_Ability = WildShapeDragonShapeSilver.ToReference<BlueprintAbilityReference>(); });
             ShiftersRushBuff.AddComponent<FreeActionSpell>(c => { c.m_Ability = WildShapeDragonShapeBlack.ToReference<BlueprintAbilityReference>(); });
@@ -88,72 +90,72 @@ namespace ExpandedContent.Tweaks.Miscellaneous {
             ShiftersRushBuff.AddComponent<FreeActionSpell>(c => { c.m_Ability = WildShapeDragonShapeWhite2.ToReference<BlueprintAbilityReference>(); });
 
             
-            var WildShapeDragonShapeFeature = Resources.GetModBlueprint<BlueprintFeature>("WildShapeDragonShapeFeature");            
+            var WildShapeDragonShapeBiteFeature = Resources.GetModBlueprint<BlueprintFeature>("WildShapeDragonShapeBiteFeature");            
             if (!IsTabletopTweaksBaseEnabled()) {  //TTT disabled
                 var ShiftersRushFeatureCondition = Resources.GetBlueprint<BlueprintFeature>("4ddc88f422a84f76a952e24bec7b53e1").GetComponent<PrerequisiteCondition>().Condition;
                 var ShiftersRushFeatureConditionsChecker = ShiftersRushFeatureCondition as OrAndLogic;
                 ShiftersRushFeatureConditionsChecker.ConditionsChecker.Conditions = ShiftersRushFeatureConditionsChecker.ConditionsChecker.Conditions.AppendToArray(
-                    new ContextConditionHasFact() { Not = false, m_Fact = WildShapeDragonShapeFeature.ToReference<BlueprintUnitFactReference>() }
+                    new ContextConditionHasFact() { Not = false, m_Fact = WildShapeDragonShapeBiteFeature.ToReference<BlueprintUnitFactReference>() }
                     );
                 var EnergizedWildShapeFeatureCondition = Resources.GetBlueprint<BlueprintFeature>("92df031ed2cb4153950853d6a3b9813e").GetComponent<PrerequisiteCondition>().Condition;
                 var EnergizedWildShapeFeatureConditionsChecker = EnergizedWildShapeFeatureCondition as OrAndLogic;
                 EnergizedWildShapeFeatureConditionsChecker.ConditionsChecker.Conditions = EnergizedWildShapeFeatureConditionsChecker.ConditionsChecker.Conditions.AppendToArray(
-                    new ContextConditionHasFact() { Not = false, m_Fact = WildShapeDragonShapeFeature.ToReference<BlueprintUnitFactReference>() }
+                    new ContextConditionHasFact() { Not = false, m_Fact = WildShapeDragonShapeBiteFeature.ToReference<BlueprintUnitFactReference>() }
                     );
                 var RakingClawsFeatureCondition = Resources.GetBlueprint<BlueprintFeature>("a1b262d2b1ef478994113fc941fa3a32").GetComponent<PrerequisiteCondition>().Condition;
                 var RakingClawsFeatureConditionsChecker = RakingClawsFeatureCondition as OrAndLogic;
                 RakingClawsFeatureConditionsChecker.ConditionsChecker.Conditions = RakingClawsFeatureConditionsChecker.ConditionsChecker.Conditions.AppendToArray(
-                    new ContextConditionHasFact() { Not = false, m_Fact = WildShapeDragonShapeFeature.ToReference<BlueprintUnitFactReference>() }
+                    new ContextConditionHasFact() { Not = false, m_Fact = WildShapeDragonShapeBiteFeature.ToReference<BlueprintUnitFactReference>() }
                     );
                 var FrightfulShapeFeatureCondition = Resources.GetBlueprint<BlueprintFeature>("8e8a34c754d649aa9286fe8ee5cc3f10").GetComponent<PrerequisiteCondition>().Condition;
                 var FrightfulShapeFeatureConditionsChecker = FrightfulShapeFeatureCondition as OrAndLogic;
                 FrightfulShapeFeatureConditionsChecker.ConditionsChecker.Conditions = FrightfulShapeFeatureConditionsChecker.ConditionsChecker.Conditions.AppendToArray(
-                    new ContextConditionHasFact() { Not = false, m_Fact = WildShapeDragonShapeFeature.ToReference<BlueprintUnitFactReference>() }
+                    new ContextConditionHasFact() { Not = false, m_Fact = WildShapeDragonShapeBiteFeature.ToReference<BlueprintUnitFactReference>() }
                     );
             }
             if (IsTabletopTweaksBaseEnabled()) { //TTT enabled
 
                 if (ModSupportUtilities.GetShiftersRushTTTBaseSetting()) { //TTT Option ON - Shifters Rush
                     var ShiftersRushFeaturePrerequisite = Resources.GetBlueprint<BlueprintFeature>("4ddc88f422a84f76a952e24bec7b53e1").GetComponent<PrerequisiteFeaturesFromList>();
-                    ShiftersRushFeaturePrerequisite.m_Features = ShiftersRushFeaturePrerequisite.m_Features.AppendToArray(WildShapeDragonShapeFeature.ToReference<BlueprintFeatureReference>());
+                    ShiftersRushFeaturePrerequisite.m_Features = ShiftersRushFeaturePrerequisite.m_Features.AppendToArray(WildShapeDragonShapeBiteFeature.ToReference<BlueprintFeatureReference>());
                 }
                 else { //TTT Option OFF - Shifters Rush
                     var ShiftersRushFeatureCondition = Resources.GetBlueprint<BlueprintFeature>("4ddc88f422a84f76a952e24bec7b53e1").GetComponent<PrerequisiteCondition>().Condition;
                     var ShiftersRushFeatureConditionsChecker = ShiftersRushFeatureCondition as OrAndLogic;
                     ShiftersRushFeatureConditionsChecker.ConditionsChecker.Conditions = ShiftersRushFeatureConditionsChecker.ConditionsChecker.Conditions.AppendToArray(
-                        new ContextConditionHasFact() { Not = false, m_Fact = WildShapeDragonShapeFeature.ToReference<BlueprintUnitFactReference>() }
+                        new ContextConditionHasFact() { Not = false, m_Fact = WildShapeDragonShapeBiteFeature.ToReference<BlueprintUnitFactReference>() }
                         );
                 }
                 if (ModSupportUtilities.GetEnergizedWildShapePrerequisitesTTTBaseSetting()) { //TTT Option ON - Energized Wild Shape
                     var EnergizedWildShapeFeature = Resources.GetBlueprint<BlueprintFeature>("92df031ed2cb4153950853d6a3b9813e").GetComponent<PrerequisiteFeaturesFromList>();
-                    EnergizedWildShapeFeature.m_Features = EnergizedWildShapeFeature.m_Features.AppendToArray(WildShapeDragonShapeFeature.ToReference<BlueprintFeatureReference>());
+                    EnergizedWildShapeFeature.m_Features = EnergizedWildShapeFeature.m_Features.AppendToArray(WildShapeDragonShapeBiteFeature.ToReference<BlueprintFeatureReference>());
                 } 
                 else { //TTT Option OFF - Energized Wild Shape
                     var EnergizedWildShapeFeatureCondition = Resources.GetBlueprint<BlueprintFeature>("92df031ed2cb4153950853d6a3b9813e").GetComponent<PrerequisiteCondition>().Condition;
                     var EnergizedWildShapeFeatureConditionsChecker = EnergizedWildShapeFeatureCondition as OrAndLogic;
                     EnergizedWildShapeFeatureConditionsChecker.ConditionsChecker.Conditions = EnergizedWildShapeFeatureConditionsChecker.ConditionsChecker.Conditions.AppendToArray(
-                        new ContextConditionHasFact() { Not = false, m_Fact = WildShapeDragonShapeFeature.ToReference<BlueprintUnitFactReference>() }
+                        new ContextConditionHasFact() { Not = false, m_Fact = WildShapeDragonShapeBiteFeature.ToReference<BlueprintUnitFactReference>() }
                         );
                 }
                 if (ModSupportUtilities.GetRakingClawsTTTBaseSetting()) { //TTT Option ON - Raking Claws
                     var RakingClawsFeature = Resources.GetBlueprint<BlueprintFeature>("a1b262d2b1ef478994113fc941fa3a32").GetComponent<PrerequisiteFeaturesFromList>();
-                    RakingClawsFeature.m_Features = RakingClawsFeature.m_Features.AppendToArray(WildShapeDragonShapeFeature.ToReference<BlueprintFeatureReference>());
+                    RakingClawsFeature.m_Features = RakingClawsFeature.m_Features.AppendToArray(WildShapeDragonShapeBiteFeature.ToReference<BlueprintFeatureReference>());
                 } 
                 else { //TTT Option OFF - Raking Claws
                     var RakingClawsFeatureCondition = Resources.GetBlueprint<BlueprintFeature>("a1b262d2b1ef478994113fc941fa3a32").GetComponent<PrerequisiteCondition>().Condition;
                     var RakingClawsFeatureConditionsChecker = RakingClawsFeatureCondition as OrAndLogic;
                     RakingClawsFeatureConditionsChecker.ConditionsChecker.Conditions = RakingClawsFeatureConditionsChecker.ConditionsChecker.Conditions.AppendToArray(
-                        new ContextConditionHasFact() { Not = false, m_Fact = WildShapeDragonShapeFeature.ToReference<BlueprintUnitFactReference>() }
+                        new ContextConditionHasFact() { Not = false, m_Fact = WildShapeDragonShapeBiteFeature.ToReference<BlueprintUnitFactReference>() }
                         );
                 }
                 if (ModSupportUtilities.GetFrightfulShapeTTTBaseSetting()) { //TTT Option ON - Frightful Shape
                     var FrightfulShapeFeature = Resources.GetBlueprint<BlueprintFeature>("8e8a34c754d649aa9286fe8ee5cc3f10").GetComponent<PrerequisiteFeaturesFromList>();
-                    FrightfulShapeFeature.m_Features = FrightfulShapeFeature.m_Features.AppendToArray(WildShapeDragonShapeFeature.ToReference<BlueprintFeatureReference>());
+                    FrightfulShapeFeature.m_Features = FrightfulShapeFeature.m_Features.AppendToArray(WildShapeDragonShapeBiteFeature.ToReference<BlueprintFeatureReference>());
                 } else { //TTT Option OFF - Frightful Shape
                     var FrightfulShapeFeatureCondition = Resources.GetBlueprint<BlueprintFeature>("8e8a34c754d649aa9286fe8ee5cc3f10").GetComponent<PrerequisiteCondition>().Condition;
                     var FrightfulShapeFeatureConditionsChecker = FrightfulShapeFeatureCondition as OrAndLogic;
                     FrightfulShapeFeatureConditionsChecker.ConditionsChecker.Conditions = FrightfulShapeFeatureConditionsChecker.ConditionsChecker.Conditions.AppendToArray(
-                        new ContextConditionHasFact() { Not = false, m_Fact = WildShapeDragonShapeFeature.ToReference<BlueprintUnitFactReference>() }
+                        new ContextConditionHasFact() { Not = false, m_Fact = WildShapeDragonShapeBiteFeature.ToReference<BlueprintUnitFactReference>() }
                         );
                 }
             }

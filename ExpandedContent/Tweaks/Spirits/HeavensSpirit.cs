@@ -40,6 +40,8 @@ using Kingmaker.UnitLogic.Abilities.Components.Base;
 using Kingmaker.ResourceLinks;
 using Kingmaker.UnitLogic.Abilities.Components.CasterCheckers;
 using System.Collections.Generic;
+using Kingmaker.Formations.Facts;
+using Kingmaker.RuleSystem.Rules;
 
 namespace ExpandedContent.Tweaks.Spirits {
     internal class HeavensSpirit {
@@ -229,6 +231,8 @@ namespace ExpandedContent.Tweaks.Spirits {
                     c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
                     c.m_Class = new BlueprintCharacterClassReference[] { ShamanClass.ToReference<BlueprintCharacterClassReference>() };
                     c.m_Progression = ContextRankProgression.Div2;
+                    c.m_UseMin = true;
+                    c.m_Min = 1;
                     
                 });
                 bp.AddComponent<AbilityResourceLogic>(c => {
@@ -436,7 +440,7 @@ namespace ExpandedContent.Tweaks.Spirits {
                 });
                 bp.AddComponent<AddSpellsToDescription>(c => {
                     c.SetIntroduction("Bonus Spells:");
-                    c.m_SpellLists = new BlueprintSpellListReference[] { HeavensSpiritSpellListFeature.ToReference<BlueprintSpellListReference>() };
+                    c.m_SpellLists = new BlueprintSpellListReference[] { HeavensSpiritSpellList.ToReference<BlueprintSpellListReference>() };
                 });
                 bp.m_AllowNonContextActions = false;                
                 bp.Groups = new FeatureGroup[] { FeatureGroup.ShamanSpirit };
@@ -455,6 +459,101 @@ namespace ExpandedContent.Tweaks.Spirits {
                 };
                 bp.GiveFeaturesForPreviousLevels = true;
             });
+            // Manifestation -- Added in ModSupport if Mystical Mayhem is installed
+            var ShamanHeavensSpiritManifestationResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("ShamanHeavensSpiritManifestationResource", bp => {
+                bp.m_MaxAmount = new BlueprintAbilityResource.Amount() {
+                    BaseValue = 1,
+                    IncreasedByLevel = false,
+                    IncreasedByStat = false
+                };
+            });
+            var EnlightenedPhilosopherFinalRevelationBuff = Resources.GetBlueprintReference<BlueprintBuffReference>("9f1ee3c61ef993d448b0b866ee198ea8");
+            var ShamanHeavensSpiritManifestationFeature = Helpers.CreateBlueprint<BlueprintFeature>("ShamanHeavensSpiritManifestationFeature", bp => {
+                bp.SetName("Manifestation");
+                bp.SetDescription("Upon reaching 20th level, the shaman becomes the spirit of heaven. You receive a {g|Encyclopedia:Bonus}bonus{/g} " +
+                    "on all {g|Encyclopedia:Saving_Throw}saving throws{/g} equal to your {g|Encyclopedia:Wisdom}Wisdom{/g} modifier. You become immune to fear effects, and automatically " +
+                    "confirm all critical hits. Once per day, should you die, 1 {g|Encyclopedia:Combat_Round}round{/g} after dying you are reborn. Your body re-forms with all your equipment, " +
+                    "and you return to life with maximum {g|Encyclopedia:HP}hit points{/g}.");
+                bp.AddComponent<AddContextStatBonus>(c => {
+                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+                    c.Stat = StatType.SaveFortitude;
+                    c.Multiplier = 1;
+                    c.Value = new ContextValue() {
+                        ValueType = ContextValueType.CasterProperty,
+                        Value = 0,
+                        ValueRank = AbilityRankType.Default,
+                        ValueShared = AbilitySharedValue.Damage,
+                        Property = UnitProperty.StatBonusWisdom
+                    };
+                    c.HasMinimal = false;
+                    c.Minimal = 0;
+                });
+                bp.AddComponent<AddContextStatBonus>(c => {
+                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+                    c.Stat = StatType.SaveReflex;
+                    c.Multiplier = 1;
+                    c.Value = new ContextValue() {
+                        ValueType = ContextValueType.CasterProperty,
+                        Value = 0,
+                        ValueRank = AbilityRankType.Default,
+                        ValueShared = AbilitySharedValue.Damage,
+                        Property = UnitProperty.StatBonusWisdom
+                    };
+                    c.HasMinimal = false;
+                    c.Minimal = 0;
+                });
+                bp.AddComponent<AddContextStatBonus>(c => {
+                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+                    c.Stat = StatType.SaveWill;
+                    c.Multiplier = 1;
+                    c.Value = new ContextValue() {
+                        ValueType = ContextValueType.CasterProperty,
+                        Value = 0,
+                        ValueRank = AbilityRankType.Default,
+                        ValueShared = AbilitySharedValue.Damage,
+                        Property = UnitProperty.StatBonusWisdom
+                    };
+                    c.HasMinimal = false;
+                    c.Minimal = 0;
+                });
+                bp.AddComponent<AddConditionImmunity>(c => {
+                    c.Condition = UnitCondition.Frightened;
+                });
+                bp.AddComponent<InitiatorCritAutoconfirm>();
+                bp.AddComponent<DeathActions>(c => {
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = EnlightenedPhilosopherFinalRevelationBuff,
+                            Permanent = false,
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 1,
+                                m_IsExtendable = true
+                            },
+                            DurationSeconds = 0
+                        }
+                        );
+                    c.CheckResource = true;
+                    c.OnlyOnParty = false;
+                    c.m_Resource = ShamanHeavensSpiritManifestationResource.ToReference<BlueprintAbilityResourceReference>();
+                });
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.UseThisAsResource = false;
+                    c.m_Resource = ShamanHeavensSpiritManifestationResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = false;
+                bp.HideInCharacterSheetAndLevelUp = false;
+                bp.IsClassFeature = true;
+            });
+            
+
+
+
             //Wandering Spirit
             var ShamanHeavensSpiritWanderingTrueBuff = Helpers.CreateBuff("ShamanHeavensSpiritWanderingTrueBuff", bp => {
                 bp.SetName("");
@@ -858,7 +957,7 @@ namespace ExpandedContent.Tweaks.Spirits {
             });
 
 
-            // Guiding Star Hex
+            //Guiding Star Hex
             var GuidingStarIcon = AssetLoader.LoadInternal("Skills", "Icon_GuidingStar.png");
             var ShamanSpellbook = Resources.GetBlueprint<BlueprintSpellbook>("44f16931dabdff643bfe2a48138e769f");
             var ShamanHexGuidingStarSkillBuff = Helpers.CreateBuff("ShamanHexGuidingStarSkillBuff", bp => {
@@ -1044,6 +1143,9 @@ namespace ExpandedContent.Tweaks.Spirits {
                     c.m_RequiredResource = ShamanHexGuidingStarResource.ToReference<BlueprintAbilityResourceReference>();
                     c.m_IsSpendResource = true;
                 });
+                bp.AddComponent<SpellDescriptorComponent>(c => {
+                    c.Descriptor = SpellDescriptor.Hex;
+                });
                 bp.Type = AbilityType.Supernatural;
                 bp.Range = AbilityRange.Personal;
                 bp.CanTargetPoint = false;
@@ -1179,6 +1281,7 @@ namespace ExpandedContent.Tweaks.Spirits {
                 bp.SetName("Guiding Star");
                 bp.SetDescription("The stars themselves hold many answers, you may add your Charisma modifier to your Wisdom modifier on all Wisdom-based checks. In addition, once per day you can " +
                     "cast one spell from the shaman spellbook as if it were modified by the Empower Spell or Extend Spell feat without increasing the spell’s casting time or level.");
+                bp.m_Icon = GuidingStarIcon;
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] {
                         ShamanHexGuidingStarSkillFeature.ToReference<BlueprintUnitFactReference>(),
@@ -1190,12 +1293,21 @@ namespace ExpandedContent.Tweaks.Spirits {
                     c.RestoreAmount = true;
                 });
                 bp.AddComponent<PrerequisiteFeature>(c => {
+                    c.Group = Prerequisite.GroupType.Any;
+                    c.CheckInProgression = false;
+                    c.HideInUI = false;
                     c.m_Feature = ShamanHeavensSpiritProgression.ToReference<BlueprintFeatureReference>();
                 });
                 bp.AddComponent<PrerequisiteFeature>(c => {
+                    c.Group = Prerequisite.GroupType.Any;
+                    c.CheckInProgression = false;
+                    c.HideInUI = false;
                     c.m_Feature = ShamanHeavensSpiritWanderingFeature.ToReference<BlueprintFeatureReference>();
                 });
                 bp.AddComponent<PrerequisiteFeature>(c => {
+                    c.Group = Prerequisite.GroupType.Any;
+                    c.CheckInProgression = false;
+                    c.HideInUI = false;
                     c.m_Feature = ShamanHeavensSpiritBaseFeature.ToReference<BlueprintFeatureReference>();
                 });
                 bp.Groups = new FeatureGroup[] { FeatureGroup.ShamanHex };
@@ -1203,13 +1315,354 @@ namespace ExpandedContent.Tweaks.Spirits {
                 bp.IsClassFeature = true;
             });            
             SpiritTools.RegisterShamanHex(ShamanHexGuidingStarFeature);
-
-
-
+            //Lure of the Heavens
+            var LureOfTheHeavensIcon = AssetLoader.LoadInternal("Skills", "Icon_LureOfTheHeavens.png");
+            var ShamanHexLureOfTheHeavensResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("ShamanHexLureOfTheHeavensResource", bp => {
+                bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
+                    BaseValue = 0,
+                    IncreasedByLevel = true,
+                    LevelIncrease = 1,
+                    IncreasedByLevelStartPlusDivStep = false,
+                    StartingLevel = 1,
+                    StartingIncrease = 1,
+                    LevelStep = 0,
+                    PerStepIncrease = 1,
+                    MinClassLevelIncrease = 0,
+                    OtherClassesModifier = 0,
+                    IncreasedByStat = false,
+                    ResourceBonusStat = StatType.Unknown,
+                    m_Class = new BlueprintCharacterClassReference[] {
+                        ShamanClass.ToReference<BlueprintCharacterClassReference>()
+                    }
+                };
+                bp.m_UseMax = true;
+                bp.m_Max = 20;
+            });
+            var ShamanHexLureOfTheHeavensHoverFeature = Helpers.CreateBlueprint<BlueprintFeature>("ShamanHexLureOfTheHeavensHoverFeature", bp => {
+                bp.SetName("Lure of the Heavens");
+                bp.SetDescription("");
+                bp.AddComponent<AddConditionImmunity>(c => {
+                    c.Condition = UnitCondition.DifficultTerrain;
+                });
+                bp.AddComponent<BuffDescriptorImmunity>(c => {
+                    c.Descriptor = SpellDescriptor.Ground;
+                });
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+            var ShamanHexLureOfTheHeavensFlyBuff = Helpers.CreateBuff("ShamanHexLureOfTheHeavensFlyBuff", bp => {
+                bp.SetName("Lure of the Heavens");
+                bp.SetDescription("Your connection to the skies above is so strong that your feet barely touch the ground. At 1st level, you no longer leave tracks gaining a +1 to stealth. At 5th level, " +
+                    "you can hover up to 6 inches above the ground, avoiding difficult terrain. At 10th level you gain the ability to fly along the ground, gaining a +3 dodge bonus to AC against melee attacks, " +
+                    "for a number of minutes per day equal to your shaman level. This duration does not need to be consecutive, but it must be spent in 1-minute increments.");
+                bp.m_Icon = LureOfTheHeavensIcon;
+                bp.AddComponent<ACBonusAgainstAttacks>(c => {
+                    c.AgainstMeleeOnly = true;
+                    c.AgainstRangedOnly = false;
+                    c.OnlySneakAttack = false;
+                    c.NotTouch = false;
+                    c.IsTouch = false;
+                    c.OnlyAttacksOfOpportunity = false;
+                    c.Value = new ContextValue();
+                    c.ArmorClassBonus = 3;
+                    c.Descriptor = ModifierDescriptor.Dodge;
+                    c.CheckArmorCategory = false;
+                    c.NoShield = false;
+                });
+                bp.AddComponent<FormationACBonus>(c => {
+                    c.UnitProperty = false;
+                    c.Bonus = 3;
+                });
+                bp.m_Flags = BlueprintBuff.Flags.StayOnDeath;
+                bp.Stacking = StackingType.Replace;
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+            var ShamanHexLureOfTheHeavensFlyAbility = Helpers.CreateBlueprint<BlueprintActivatableAbility>("ShamanHexLureOfTheHeavensFlyAbility", bp => {
+                bp.SetName("Lure of the Heavens");
+                bp.SetDescription("Your connection to the skies above is so strong that your feet barely touch the ground. At 1st level, you no longer leave tracks gaining a +1 to stealth. At 5th level, " +
+                    "you can hover up to 6 inches above the ground, avoiding difficult terrain. At 10th level you gain the ability to fly along the ground, gaining a +3 dodge bonus to AC against melee attacks, " +
+                    "for a number of minutes per day equal to your shaman level. This duration does not need to be consecutive, but it must be spent in 1-minute increments.");
+                bp.m_Icon = LureOfTheHeavensIcon;
+                bp.AddComponent<ActivatableAbilityResourceLogic>(c => {
+                    c.SpendType = ActivatableAbilityResourceLogic.ResourceSpendType.OncePerMinute;
+                    c.m_RequiredResource = ShamanHexLureOfTheHeavensResource.ToReference<BlueprintAbilityResourceReference>();
+                });
+                bp.m_Buff = ShamanHexLureOfTheHeavensFlyBuff.ToReference<BlueprintBuffReference>();
+                bp.AddComponent<SpellDescriptorComponent>(c => {
+                    c.Descriptor = SpellDescriptor.Hex;
+                });
+                bp.DeactivateIfOwnerDisabled = true;
+                bp.ActivationType = AbilityActivationType.WithUnitCommand;
+                bp.m_ActivateWithUnitCommand = UnitCommand.CommandType.Standard;
+                bp.DeactivateIfCombatEnded = false;
+            });
+            var ShamanHexLureOfTheHeavensFlyFeature = Helpers.CreateBlueprint<BlueprintFeature>("ShamanHexLureOfTheHeavensFlyFeature", bp => {
+                bp.SetName("Lure of the Heavens");
+                bp.SetDescription("Your connection to the skies above is so strong that your feet barely touch the ground. At 1st level, you no longer leave tracks gaining a +1 to stealth. At 5th level, " +
+                    "you can hover up to 6 inches above the ground, avoiding difficult terrain. At 10th level you gain the ability to fly along the ground, gaining a +3 dodge bonus to AC against melee attacks, " +
+                    "for a number of minutes per day equal to your shaman level. This duration does not need to be consecutive, but it must be spent in 1-minute increments.");
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { ShamanHexLureOfTheHeavensFlyAbility.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.HideInUI = true;
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+            var ShamanHexLureOfTheHeavensFeature = Helpers.CreateBlueprint<BlueprintFeature>("ShamanHexLureOfTheHeavensFeature", bp => {
+                bp.SetName("Lure of the Heavens");
+                bp.SetDescription("Your connection to the skies above is so strong that your feet barely touch the ground. At 1st level, you no longer leave tracks gaining a +1 to stealth. At 5th level, " +
+                    "you can hover up to 6 inches above the ground, avoiding difficult terrain. At 10th level you gain the ability to fly along the ground, gaining a +3 dodge bonus to AC against melee attacks, " +
+                    "for a number of minutes per day equal to your shaman level. This duration does not need to be consecutive, but it must be spent in 1-minute increments.");
+                bp.m_Icon = LureOfTheHeavensIcon;
+                bp.AddComponent<AddStatBonus>(c => {
+                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+                    c.Stat = StatType.SkillStealth;
+                    c.Value = 1;
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = ShamanClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 5;
+                    c.m_Feature = ShamanHexLureOfTheHeavensHoverFeature.ToReference<BlueprintFeatureReference>();
+                    c.BeforeThisLevel = false;
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = ShamanClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 10;
+                    c.m_Feature = ShamanHexLureOfTheHeavensFlyFeature.ToReference<BlueprintFeatureReference>();
+                    c.BeforeThisLevel = false;
+                });
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = ShamanHexLureOfTheHeavensResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.AddComponent<PrerequisiteFeature>(c => {
+                    c.Group = Prerequisite.GroupType.Any;
+                    c.CheckInProgression = false;
+                    c.HideInUI = false;
+                    c.m_Feature = ShamanHeavensSpiritProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteFeature>(c => {
+                    c.Group = Prerequisite.GroupType.Any;
+                    c.CheckInProgression = false;
+                    c.HideInUI = false;
+                    c.m_Feature = ShamanHeavensSpiritWanderingFeature.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteFeature>(c => {
+                    c.Group = Prerequisite.GroupType.Any;
+                    c.CheckInProgression = false;
+                    c.HideInUI = false;
+                    c.m_Feature = ShamanHeavensSpiritBaseFeature.ToReference<BlueprintFeatureReference>();
+                });
+                bp.Groups = new FeatureGroup[] { FeatureGroup.ShamanHex };
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+            SpiritTools.RegisterShamanHex(ShamanHexLureOfTheHeavensFeature);
+            //Starburn
+            var MageLightBuff = Resources.GetBlueprint<BlueprintBuff>("571baa4cf65bbcb4996fe429ca77d1a5");
+            var ShamanHexStarburnResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("ShamanHexStarburnResource", bp => {
+                bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
+                    BaseValue = 0,
+                    IncreasedByLevel = false,
+                    IncreasedByStat = true,
+                    ResourceBonusStat = StatType.Charisma
+                };
+                bp.m_Min = 1;
+            });
+            var ShamanHexStarburnBuff = Helpers.CreateBuff("ShamanHexStarburnBuff", bp => {
+                bp.SetName("Starburn");
+                bp.SetDescription("As a standard action, the shaman causes one creature within 30 feet to burn like a star. The creature takes 1d6 points of fire damage for every " +
+                    "2 levels the shaman possesses and emits bright light for 1 round. A successful Fortitude saving throw halves the damage and negates the emission of bright light. " +
+                    "The shaman can use this hex a number of times per day equal to her Charisma modifier (minimum 1), but must wait 1d4 rounds between uses.");
+                bp.m_Icon = MageLightBuff.Icon;
+                bp.AddComponent<AddConditionImmunity>(c => {
+                    c.Condition = UnitCondition.GreaterInvisibility;
+                });
+                bp.FxOnStart = new PrefabLink() { AssetId = "72938ec0a6e4a10459ea374d65aecfa5" };
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = false;
+                bp.m_Flags = BlueprintBuff.Flags.RemoveOnRest;
+                bp.Stacking = StackingType.Replace;
+            });
+            var ShamanHexStarburnAbility = Helpers.CreateBlueprint<BlueprintAbility>("ShamanHexStarburnAbility", bp => {
+                bp.SetName("Starburn");
+                bp.SetDescription("As a standard action, the shaman causes one creature within 30 feet to burn like a star. The creature takes 1d6 points of fire damage for every " +
+                    "2 levels the shaman possesses and emits bright light for 1 round. A successful Fortitude saving throw halves the damage and negates the emission of bright light. " +
+                    "The shaman can use this hex a number of times per day equal to her Charisma modifier (minimum 1), but must wait 1d4 rounds between uses.");
+                bp.m_Icon = MageLightBuff.m_Icon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Fortitude;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionDealDamage() {
+                            m_Type = ContextActionDealDamage.Type.Damage,
+                            DamageType = new DamageTypeDescription() {
+                                Type = DamageType.Energy,
+                                Common = new DamageTypeDescription.CommomData() {
+                                    Reality = 0,
+                                    Alignment = 0,
+                                    Precision = false
+                                },
+                                Physical = new DamageTypeDescription.PhysicalData() {
+                                    Material = 0,
+                                    Form = 0,
+                                    Enhancement = 0,
+                                    EnhancementTotal = 0
+                                },
+                                Energy = DamageEnergyType.Fire
+                            },
+                            Drain = false,
+                            AbilityType = StatType.Unknown,
+                            EnergyDrainType = EnergyDrainType.Temporary,
+                            Duration = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                m_IsExtendable = true,
+                            },
+                            PreRolledSharedValue = AbilitySharedValue.Damage,
+                            Value = new ContextDiceValue() {
+                                DiceType = DiceType.D6,
+                                DiceCountValue = new ContextValue() {
+                                    ValueType = ContextValueType.Rank,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                            },
+                            IsAoE = false,
+                            HalfIfSaved = true,
+                            UseMinHPAfterDamage = false,
+                            MinHPAfterDamage = 0,
+                            ResultSharedValue = AbilitySharedValue.Damage,
+                            CriticalSharedValue = AbilitySharedValue.Damage
+                        },
+                        new ContextActionConditionalSaved() {
+                            Succeed = Helpers.CreateActionList(),
+                            Failed = Helpers.CreateActionList(
+                                new ContextActionApplyBuff() {
+                                    m_Buff = ShamanHexStarburnBuff.ToReference<BlueprintBuffReference>(),
+                                    UseDurationSeconds = false,
+                                    DurationValue = new ContextDurationValue() {
+                                        Rate = DurationRate.Rounds,
+                                        DiceType = DiceType.Zero,
+                                        DiceCountValue = 0,
+                                        BonusValue = 1,
+                                        m_IsExtendable = true
+                                    },
+                                    DurationSeconds = 0
+                                }
+                                )
+                        }
+                        );
+                });                
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = ShamanHexStarburnResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.Div2;
+                    c.m_StartLevel = 0;
+                    c.m_StepLevel = 2;
+                    c.m_UseMin = true;
+                    c.m_Min = 1;                    
+                    c.m_Class = new BlueprintCharacterClassReference[] {
+                        ShamanClass.ToReference<BlueprintCharacterClassReference>()
+                    };
+                });
+                bp.AddComponent<SpellDescriptorComponent>(c => {
+                    c.Descriptor = SpellDescriptor.Hex;
+                });
+                bp.AddComponent<ContextCalculateAbilityParamsBasedOnClass>(c => {
+                    c.UseKineticistMainStat = false;
+                    c.StatType = StatType.Wisdom;
+                    c.m_CharacterClass = ShamanClass.ToReference<BlueprintCharacterClassReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Close;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = true;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = false;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Point;
+                bp.HasFastAnimation = false;
+                bp.ActionType = UnitCommand.CommandType.Standard;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = Helpers.CreateString("ShamanHexStarburnAbility.SavingThrow", "Fortitude partial");
+            });
+            var ShamanHexStarburnFeature = Helpers.CreateBlueprint<BlueprintFeature>("ShamanHexStarburnFeature", bp => {
+                bp.SetName("Starburn");
+                bp.SetDescription("As a standard action, the shaman causes one creature within 30 feet to burn like a star. The creature takes 1d6 points of fire damage for every " +
+                    "2 levels the shaman possesses and emits bright light for 1 round. A successful Fortitude saving throw halves the damage and negates the emission of bright light. " +
+                    "The shaman can use this hex a number of times per day equal to her Charisma modifier (minimum 1), but must wait 1d4 rounds between uses.");
+                bp.m_Icon = MageLightBuff.m_Icon;
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        ShamanHexStarburnAbility.ToReference<BlueprintUnitFactReference>()
+                    };
+                });
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = ShamanHexStarburnResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.AddComponent<PrerequisiteFeature>(c => {
+                    c.Group = Prerequisite.GroupType.Any;
+                    c.CheckInProgression = false;
+                    c.HideInUI = false;
+                    c.m_Feature = ShamanHeavensSpiritProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteFeature>(c => {
+                    c.Group = Prerequisite.GroupType.Any;
+                    c.CheckInProgression = false;
+                    c.HideInUI = false;
+                    c.m_Feature = ShamanHeavensSpiritWanderingFeature.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteFeature>(c => {
+                    c.Group = Prerequisite.GroupType.Any;
+                    c.CheckInProgression = false;
+                    c.HideInUI = false;
+                    c.m_Feature = ShamanHeavensSpiritBaseFeature.ToReference<BlueprintFeatureReference>();
+                });
+                bp.Groups = new FeatureGroup[] { FeatureGroup.ShamanHex };
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+            SpiritTools.RegisterShamanHex(ShamanHexStarburnFeature);
 
 
             ShamanHeavensSpiritProgression.IsPrerequisiteFor = new List<BlueprintFeatureReference>() {
                 ShamanHexGuidingStarFeature.ToReference<BlueprintFeatureReference>(),
+                ShamanHexLureOfTheHeavensFeature.ToReference<BlueprintFeatureReference>(),
+                ShamanHexStarburnFeature.ToReference<BlueprintFeatureReference>()
             };
 
 
