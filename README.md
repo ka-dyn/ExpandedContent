@@ -45,6 +45,10 @@ New Animal Companions
 - Web Tyrant Spider
 - Giant Fly (Uses Giant Mosquito stats)
 
+New Animal Archetype
+
+- Draconic
+
 New Feats
 
 - Swift Aid
