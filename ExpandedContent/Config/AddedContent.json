@@ -159,6 +159,11 @@
         "Enabled": true,
         "Homebrew": false,
         "Description": "A druid archeype channeling the power of the lion sprits, renamed to lion totem druid to avoid confusion."
+      },
+      "Draconic Companion": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "A animal companion archeype with a faint trace of dragon blood that grants them special abilities."
       }
     },
     "IsExpanded": false

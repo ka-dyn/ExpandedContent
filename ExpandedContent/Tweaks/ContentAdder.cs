@@ -37,6 +37,7 @@ namespace ExpandedContent.Tweaks {
                 AnimalCompanions.CompanionWolverine.AddCompanionWolverine();
                 AnimalCompanions.CompanionGiantFly.AddCompanionGiantFly();
                 AnimalCompanions.CompanionWebSpider.AddCompanionWebSpider();
+                AnimalCompanions.ArchetypeDraconic.AddArchetypeDraconic();
 
                 Miscellaneous.AlignmentTemplates.AddFiendishTemplate();
                 Miscellaneous.Cavalier.AddCavalierFeatures();
