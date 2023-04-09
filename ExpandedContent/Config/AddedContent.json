@@ -78,6 +78,11 @@
         "Enabled": true,
         "Homebrew": false,
         "Description": "Adds the Antipaladin as a class, renamed and modified slightly to fit the campaign setting."
+      },
+      "Stargazer": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds Stargazer as a pretige class, a follower of Pulura and master of cosmic magic."
       }
     },
     "IsExpanded": false

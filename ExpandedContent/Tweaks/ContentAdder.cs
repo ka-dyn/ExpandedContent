@@ -351,6 +351,7 @@ namespace ExpandedContent.Tweaks {
                 Deities.DeitySelectionFeature.TheElderMythosToggle();
                 Deities.DeitySelectionFeature.OrcPantheonToggle();
 
+                Classes.StargazerClass.AddStargazerClass();
                 
             }
             [HarmonyPriority(Priority.Last)]
