@@ -67,6 +67,9 @@ namespace ExpandedContent.Tweaks {
                 Archetypes.Conqueror.AddConqueror();
                 Archetypes.ClawOfTheFalseWyrm.AddClawOfTheFalseWyrm();
 
+                Classes.StargazerClass.AddStargazerClass();
+
+
                 Archetypes.PatchMantisZealotDeity.MantisZealotDeityPatch();
 
                 RacialArchetypes.Cruoromancer.AllowCruoromancerArchetype();
@@ -351,7 +354,6 @@ namespace ExpandedContent.Tweaks {
                 Deities.DeitySelectionFeature.TheElderMythosToggle();
                 Deities.DeitySelectionFeature.OrcPantheonToggle();
 
-                Classes.StargazerClass.AddStargazerClass();
                 
             }
             [HarmonyPriority(Priority.Last)]

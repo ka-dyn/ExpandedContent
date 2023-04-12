@@ -1022,7 +1022,7 @@ namespace ExpandedContent.Tweaks.Spirits {
             });
             var ShamanHexGuidingStarMetamagicBuffEmpower = Helpers.CreateBuff("ShamanHexGuidingStarMetamagicBuffEmpower", bp => {
                 bp.SetName("Guiding Star - Empower Spell");
-                bp.SetDescription("Once per day you can cast one spell from the shaman spellbook as if it were modified by the Empower Spell feat without increasing the spell’s casting time or level.");
+                bp.SetDescription("Once per day you can cast one spell as if it were modified by the Empower Spell feat without increasing the spell’s casting time or level.");
                 bp.m_Icon = GuidingStarIcon;
                 bp.AddComponent<AutoMetamagic>(c => {
                     c.m_AllowedAbilities = AutoMetamagic.AllowedType.SpellOnly;
@@ -1032,15 +1032,15 @@ namespace ExpandedContent.Tweaks.Spirits {
                     c.Once = false;
                     c.MaxSpellLevel = 10;
                     c.School = SpellSchool.None;
-                    c.CheckSpellbook = true;
-                    c.m_Spellbook = ShamanSpellbook.ToReference<BlueprintSpellbookReference>();
+                    c.CheckSpellbook = false;
+                    c.m_Spellbook = new BlueprintSpellbookReference();
                 });
                 bp.AddComponent<AddAbilityUseTrigger>(c => {
                     c.ActionsOnAllTargets = false;
                     c.AfterCast = true;
                     c.ActionsOnTarget = false;
-                    c.FromSpellbook = true;
-                    c.m_Spellbooks = new BlueprintSpellbookReference[] { ShamanSpellbook.ToReference<BlueprintSpellbookReference>() };
+                    c.FromSpellbook = false;
+                    c.m_Spellbooks = new BlueprintSpellbookReference[] { };
                     c.ForOneSpell = false;
                     c.m_Ability = new BlueprintAbilityReference();
                     c.ForMultipleSpells = false;
@@ -1049,7 +1049,7 @@ namespace ExpandedContent.Tweaks.Spirits {
                     c.MinSpellLevelLimit = 0;
                     c.ExactSpellLevel = false;
                     c.ExactSpellLevelLimit = 0;
-                    c.CheckAbilityType = false;
+                    c.CheckAbilityType = true;
                     c.Type = AbilityType.Spell;
                     c.CheckDescriptor = false;
                     c.SpellDescriptor = new SpellDescriptor();
@@ -1064,7 +1064,7 @@ namespace ExpandedContent.Tweaks.Spirits {
             });
             var ShamanHexGuidingStarMetamagicBuffExtend = Helpers.CreateBuff("ShamanHexGuidingStarMetamagicBuffExtend", bp => {
                 bp.SetName("Guiding Star - Extend Spell");
-                bp.SetDescription("Once per day you can cast one spell from the shaman spellbook as if it were modified by the Extend Spell feat without increasing the spell’s casting time or level.");
+                bp.SetDescription("Once per day you can cast one spell as if it were modified by the Extend Spell feat without increasing the spell’s casting time or level.");
                 bp.m_Icon = GuidingStarIcon;
                 bp.AddComponent<AutoMetamagic>(c => {
                     c.m_AllowedAbilities = AutoMetamagic.AllowedType.SpellOnly;
@@ -1074,15 +1074,15 @@ namespace ExpandedContent.Tweaks.Spirits {
                     c.Once = false;
                     c.MaxSpellLevel = 10;
                     c.School = SpellSchool.None;
-                    c.CheckSpellbook = true;
-                    c.m_Spellbook = ShamanSpellbook.ToReference<BlueprintSpellbookReference>();
+                    c.CheckSpellbook = false;
+                    c.m_Spellbook = new BlueprintSpellbookReference();
                 });
                 bp.AddComponent<AddAbilityUseTrigger>(c => {
                     c.ActionsOnAllTargets = false;
                     c.AfterCast = true;
                     c.ActionsOnTarget = false;
-                    c.FromSpellbook = true;
-                    c.m_Spellbooks = new BlueprintSpellbookReference[] { ShamanSpellbook.ToReference<BlueprintSpellbookReference>() };
+                    c.FromSpellbook = false;
+                    c.m_Spellbooks = new BlueprintSpellbookReference[] { };
                     c.ForOneSpell = false;
                     c.m_Ability = new BlueprintAbilityReference();
                     c.ForMultipleSpells = false;
@@ -1091,7 +1091,7 @@ namespace ExpandedContent.Tweaks.Spirits {
                     c.MinSpellLevelLimit = 0;
                     c.ExactSpellLevel = false;
                     c.ExactSpellLevelLimit = 0;
-                    c.CheckAbilityType = false;
+                    c.CheckAbilityType = true;
                     c.Type = AbilityType.Spell;
                     c.CheckDescriptor = false;
                     c.SpellDescriptor = new SpellDescriptor();
@@ -1106,7 +1106,7 @@ namespace ExpandedContent.Tweaks.Spirits {
             });
             var ShamanHexGuidingStarMetamagicAbilityBase = Helpers.CreateBlueprint<BlueprintAbility>("ShamanHexGuidingStarMetamagicAbilityBase", bp => {
                 bp.SetName("Guiding Star");
-                bp.SetDescription("Once per day you can cast one spell from the shaman spellbook as if it were modified by the Empower Spell or Extend Spell feat without increasing the spell’s casting time or level.");
+                bp.SetDescription("Once per day you can cast one spell as if it were modified by the Empower Spell or Extend Spell feat without increasing the spell’s casting time or level.");
                 bp.m_Icon = GuidingStarIcon;
                 // Ability Variants added later
                 bp.AddComponent<AbilityResourceLogic>(c => {
@@ -1133,7 +1133,7 @@ namespace ExpandedContent.Tweaks.Spirits {
             });
             var ShamanHexGuidingStarMetamagicAbilityEmpower = Helpers.CreateBlueprint<BlueprintAbility>("ShamanHexGuidingStarMetamagicAbilityEmpower", bp => {
                 bp.SetName("Guiding Star - Empower Spell");
-                bp.SetDescription("Once per day you can cast one spell from the shaman spellbook as if it were modified by the Empower Spell feat without increasing the spell’s casting time or level.");
+                bp.SetDescription("Once per day you can cast one spell as if it were modified by the Empower Spell feat without increasing the spell’s casting time or level.");
                 bp.m_Icon = GuidingStarIcon;
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.SavingThrowType = SavingThrowType.Unknown;
@@ -1188,7 +1188,7 @@ namespace ExpandedContent.Tweaks.Spirits {
             });
             var ShamanHexGuidingStarMetamagicAbilityExtend = Helpers.CreateBlueprint<BlueprintAbility>("ShamanHexGuidingStarMetamagicAbilityExtend", bp => {
                 bp.SetName("Guiding Star - Extend Spell");
-                bp.SetDescription("Once per day you can cast one spell from the shaman spellbook as if it were modified by the Extend Spell feat without increasing the spell’s casting time or level.");
+                bp.SetDescription("Once per day you can cast one spell as if it were modified by the Extend Spell feat without increasing the spell’s casting time or level.");
                 bp.m_Icon = GuidingStarIcon;
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.SavingThrowType = SavingThrowType.Unknown;
@@ -1250,7 +1250,7 @@ namespace ExpandedContent.Tweaks.Spirits {
             var ShamanHexGuidingStarFeature = Helpers.CreateBlueprint<BlueprintFeature>("ShamanHexGuidingStarFeature", bp => {
                 bp.SetName("Guiding Star");
                 bp.SetDescription("The stars themselves hold many answers, you may add your Charisma modifier to your Wisdom modifier on all Wisdom-based checks. In addition, once per day you can " +
-                    "cast one spell from the shaman spellbook as if it were modified by the Empower Spell or Extend Spell feat without increasing the spell’s casting time or level.");
+                    "cast one spell as if it were modified by the Empower Spell or Extend Spell feat without increasing the spell’s casting time or level.");
                 bp.m_Icon = GuidingStarIcon;
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] {
