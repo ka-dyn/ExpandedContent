@@ -151,7 +151,7 @@ namespace ExpandedContent.Tweaks.Classes {
             };
             //Guiding Light
             var WitchFamiliarSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("29a333b7ccad3214ea3a51943fa0d8e9");
-            var StargazersGuidingLightFeatureSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("StargazersGuidingLightFeatureSelection", bp => {
+            var StargazerGuidingLightFeatureSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("StargazerGuidingLightFeatureSelection", bp => {
                 bp.SetName("Guiding Light");
                 bp.SetDescription("At 1st level the stargazer gains familiar. A familiar is a magic pet that enhances the stargazer's {g|Encyclopedia:Skills}skills{/g} and senses.");
                 bp.m_Icon = WitchFamiliarSelection.m_Icon;
@@ -899,7 +899,7 @@ namespace ExpandedContent.Tweaks.Classes {
                 bp.IsClassFeature = true;
             });
             WitchTools.RegisterWitchHex(WitchHexStarburnFeature);
-            var StargazersMysteryMagicHexFeatureSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("StargazersMysteryMagicHexFeatureSelection", bp => {
+            var StargazerMysteryMagicHexFeatureSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("StargazerMysteryMagicHexFeatureSelection", bp => {
                 bp.SetName("Mystery Magic - Hex");
                 bp.SetDescription("At 1st and 9th levels, the stargazer gains a hex from the witch’s list of hexes. His stargazer levels count as (and stack with) witch levels when " +
                     "determining the effects of hexes. In addition, the stargazer adds all hexes available to a shaman with the heavens spirit to the witch list.");
@@ -1600,17 +1600,77 @@ namespace ExpandedContent.Tweaks.Classes {
             WeatherDomainGreaterResource.m_MaxAmount.m_Class = WeatherDomainGreaterResource.m_MaxAmount.m_Class.AppendToArray(StargazerClass.ToReference<BlueprintCharacterClassReference>());
             WeatherDomainGreaterResource.m_MaxAmount.m_ClassDiv = WeatherDomainGreaterResource.m_MaxAmount.m_ClassDiv.AppendToArray(StargazerClass.ToReference<BlueprintCharacterClassReference>());
             #endregion
+
+
+
+
+
+
+
+
+
+
+
+            var StargazerMysteryMagicStarsDomainBackupDomainSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("StargazerMysteryMagicStarsDomainBackupDomainSelection", bp => {
+                bp.SetName("Pulura's Domains");
+                bp.SetDescription("If the stargazer already has the stars subdomain he may select another domain granted by Pulura. His stargazer levels count as (and stack with) cleric " +
+                    "levels when determining which domain abilities he gains and their effects. ");
+                bp.HideInCharacterSheetAndLevelUp = false;
+                bp.HideInUI = false;
+                bp.HideNotAvailibleInUI = false;
+                bp.ReapplyOnLevelUp = false;
+                bp.Mode = SelectionMode.OnlyNew;
+                bp.Ranks = 1;
+                bp.IsClassFeature = true;
+                bp.m_AllFeatures = new BlueprintFeatureReference[] {
+                    AirDomainProgressionSecondary.ToReference<BlueprintFeatureReference>(),
+                    ChaosDomainProgressionSecondary.ToReference<BlueprintFeatureReference>(),
+                    GoodDomainProgressionSecondary.ToReference<BlueprintFeatureReference>(),
+                    WeatherDomainProgressionSecondary.ToReference<BlueprintFeatureReference>()
+                };
+            });
+
+
+
+
+            //Starsdomain added on it's own page
+            var StargazerMysteryMagicStarsDomainFeatureSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("StargazerMysteryMagicStarsDomainFeatureSelection", bp => {
+                bp.SetName("Mystery Magic - Stars Subdomain");
+                bp.SetDescription("At 3rd level, the stargazer gains the stars subdomain in addition to any domains he already has, if he already has the stars subdomain he may select another domain granted " +
+                    "by Pulura. His stargazer levels count as (and stack with) cleric levels when determining which domain abilities he gains and their effects. He can use the stars are right ability regardless " +
+                    "of his spellcasting class.");
+                bp.HideInCharacterSheetAndLevelUp = false;
+                bp.HideInUI = false;
+                bp.HideNotAvailibleInUI = false;
+                bp.ReapplyOnLevelUp = false;
+                bp.Mode = SelectionMode.OnlyNew;
+                bp.Ranks = 1;
+                bp.IsClassFeature = true;
+                bp.m_AllFeatures = new BlueprintFeatureReference[] {
+                    StargazerMysteryMagicStarsDomainBackupDomainSelection.ToReference<BlueprintFeatureReference>()
+                };
+            });
+
+
+
+
+
+
+
+
+
+
             StargazerProgression.LevelEntries = new LevelEntry[10] {
-                Helpers.LevelEntry(1, StargazersGuidingLightFeatureSelection, StargazersMysteryMagicHexFeatureSelection),
+                Helpers.LevelEntry(1, StargazerGuidingLightFeatureSelection, StargazerMysteryMagicHexFeatureSelection),
                 Helpers.LevelEntry(2, StargazerSiderealArcanaSelection),
-                Helpers.LevelEntry(3, StargazersMysteryMagicStarsDomainFeature),
+                Helpers.LevelEntry(3, StargazerMysteryMagicStarsDomainFeatureSelection),
                 Helpers.LevelEntry(4, StargazerSiderealArcanaSelection),
-                Helpers.LevelEntry(5, StargazersMysteryMagicCOMSFeature),
+                Helpers.LevelEntry(5, StargazerMysteryMagicCOMSFeature),
                 Helpers.LevelEntry(6, StargazerSiderealArcanaSelection),
-                Helpers.LevelEntry(7, StargazersMysteryMagicStarChartFeature),
+                Helpers.LevelEntry(7, StargazerMysteryMagicStarChartFeature),
                 Helpers.LevelEntry(8, StargazerSiderealArcanaSelection),
-                Helpers.LevelEntry(9, StargazersMysteryMagicHexFeatureSelection),
-                Helpers.LevelEntry(10, StargazerSiderealArcanaSelection, StargazersStarsDanceFeature)
+                Helpers.LevelEntry(9, StargazerMysteryMagicHexFeatureSelection),
+                Helpers.LevelEntry(10, StargazerSiderealArcanaSelection, StargazerStarsDanceFeature)
             };
             StargazerProgression.UIGroups = new UIGroup[] {};
             if (ModSettings.AddedContent.Classes.IsDisabled("Stargazer")) { return; }

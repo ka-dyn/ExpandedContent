@@ -35,6 +35,7 @@ using Kingmaker.Visual.Animation.Kingmaker.Actions;
 using Kingmaker.Blueprints.Items.Ecnchantments;
 using Kingmaker.RuleSystem.Rules.Damage;
 using ExpandedContent.Config;
+using Kingmaker.Blueprints.Classes.Selection;
 
 namespace ExpandedContent.Tweaks.Domains {
     internal class StarsDomain {
@@ -151,8 +152,6 @@ namespace ExpandedContent.Tweaks.Domains {
                     "spell level. Any Stars subdomain spell that you cast heals you an amount of hit point damage equal to the spell’s level; this effect happens as you cast the spell.");
                 bp.IsClassFeature = true;
             });
-
-
 
             var StarsDomainGreaterFeature1 = Helpers.CreateBlueprint<BlueprintFeature>("StarsDomainGreaterFeature1", bp => {
                 bp.SetName("The Stars Are Right");
@@ -693,7 +692,512 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.ReapplyOnLevelUp = false;
                 bp.IsClassFeature = true;
             });
-
+            #region Stargazer stuff
+            //Extra stuff for stargazer
+            var AlchemistClass = Resources.GetBlueprint<BlueprintCharacterClass>("0937bec61c0dabc468428f496580c721");
+            var ArcanistClass = Resources.GetBlueprint<BlueprintCharacterClass>("52dbfd8505e22f84fad8d702611f60b7");
+            var BardClass = Resources.GetBlueprint<BlueprintCharacterClass>("772c83a25e2268e448e841dcd548235f");
+            var BloodragerClass = Resources.GetBlueprint<BlueprintCharacterClass>("d77e67a814d686842802c9cfd8ef8499");
+            var DruidClass = Resources.GetBlueprint<BlueprintCharacterClass>("610d836f3a3a9ed42a4349b62f002e96");
+            var MagusClass = Resources.GetBlueprint<BlueprintCharacterClass>("45a4607686d96a1498891b3286121780");
+            var OracleClass = Resources.GetBlueprint<BlueprintCharacterClass>("20ce9bf8af32bee4c8557a045ab499b1");
+            var RangerClass = Resources.GetBlueprint<BlueprintCharacterClass>("cda0615668a6df14eb36ba19ee881af6");
+            var RogueClass = Resources.GetBlueprint<BlueprintCharacterClass>("299aa766dee3cbf4790da4efb8c72484");
+            var ShamanClass = Resources.GetBlueprint<BlueprintCharacterClass>("145f1d3d360a7ad48bd95d392c81b38e");
+            var SkaldClass = Resources.GetBlueprint<BlueprintCharacterClass>("6afa347d804838b48bda16acb0573dc0");
+            var SorcererClass = Resources.GetBlueprint<BlueprintCharacterClass>("b3a505fb61437dc4097f43c3f8f9a4cf");
+            var WarpriestClass = Resources.GetBlueprint<BlueprintCharacterClass>("30b5e47d47a0e37438cc5a80c96cfb99");
+            var WitchClass = Resources.GetBlueprint<BlueprintCharacterClass>("1b9873f1e7bfe5449bc84d03e9c8e3cc");
+            var WizardClass = Resources.GetBlueprint<BlueprintCharacterClass>("ba34257984f4c41408ce1dc2004e342e");
+            var StargazerStarsDomainGreaterFeature1 = Helpers.CreateBlueprint<BlueprintFeature>("StargazerStarsDomainGreaterFeature1", bp => {
+                bp.SetName("The Stars Are Right - Stargazer");
+                bp.SetDescription("");
+                bp.AddComponent<SpontaneousSpellConversion>(c => {
+                    c.m_CharacterClass = AlchemistClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
+                        new BlueprintAbilityReference(),
+                        EntropicShieldSpell.ToReference<BlueprintAbilityReference>(),
+                        HypnoticPatternSpell.ToReference<BlueprintAbilityReference>(),
+                        BlinkSpell.ToReference<BlueprintAbilityReference>(),
+                        DimensionDoorSpell.ToReference<BlueprintAbilityReference>(),
+                        SummonMonsterVBaseSpell.ToReference<BlueprintAbilityReference>(),
+                        OverwhelmingPresenceSpell.ToReference<BlueprintAbilityReference>(),
+                        SunbeamSpell.ToReference<BlueprintAbilityReference>(),
+                        SunburstSpell.ToReference<BlueprintAbilityReference>(),
+                        new BlueprintAbilityReference()
+                    };
+                });
+                bp.AddComponent<SpontaneousSpellConversion>(c => {
+                    c.m_CharacterClass = ArcanistClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
+                        new BlueprintAbilityReference(),
+                        EntropicShieldSpell.ToReference<BlueprintAbilityReference>(),
+                        HypnoticPatternSpell.ToReference<BlueprintAbilityReference>(),
+                        BlinkSpell.ToReference<BlueprintAbilityReference>(),
+                        DimensionDoorSpell.ToReference<BlueprintAbilityReference>(),
+                        SummonMonsterVBaseSpell.ToReference<BlueprintAbilityReference>(),
+                        OverwhelmingPresenceSpell.ToReference<BlueprintAbilityReference>(),
+                        SunbeamSpell.ToReference<BlueprintAbilityReference>(),
+                        SunburstSpell.ToReference<BlueprintAbilityReference>(),
+                        new BlueprintAbilityReference()
+                    };
+                });
+                bp.AddComponent<SpontaneousSpellConversion>(c => {
+                    c.m_CharacterClass = BardClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
+                        new BlueprintAbilityReference(),
+                        EntropicShieldSpell.ToReference<BlueprintAbilityReference>(),
+                        HypnoticPatternSpell.ToReference<BlueprintAbilityReference>(),
+                        BlinkSpell.ToReference<BlueprintAbilityReference>(),
+                        DimensionDoorSpell.ToReference<BlueprintAbilityReference>(),
+                        SummonMonsterVBaseSpell.ToReference<BlueprintAbilityReference>(),
+                        OverwhelmingPresenceSpell.ToReference<BlueprintAbilityReference>(),
+                        SunbeamSpell.ToReference<BlueprintAbilityReference>(),
+                        SunburstSpell.ToReference<BlueprintAbilityReference>(),
+                        new BlueprintAbilityReference()
+                    };
+                });
+                bp.AddComponent<SpontaneousSpellConversion>(c => {
+                    c.m_CharacterClass = BloodragerClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
+                        new BlueprintAbilityReference(),
+                        EntropicShieldSpell.ToReference<BlueprintAbilityReference>(),
+                        HypnoticPatternSpell.ToReference<BlueprintAbilityReference>(),
+                        BlinkSpell.ToReference<BlueprintAbilityReference>(),
+                        DimensionDoorSpell.ToReference<BlueprintAbilityReference>(),
+                        SummonMonsterVBaseSpell.ToReference<BlueprintAbilityReference>(),
+                        OverwhelmingPresenceSpell.ToReference<BlueprintAbilityReference>(),
+                        SunbeamSpell.ToReference<BlueprintAbilityReference>(),
+                        SunburstSpell.ToReference<BlueprintAbilityReference>(),
+                        new BlueprintAbilityReference()
+                    };
+                });
+                bp.AddComponent<SpontaneousSpellConversion>(c => {
+                    c.m_CharacterClass = DruidClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
+                        new BlueprintAbilityReference(),
+                        EntropicShieldSpell.ToReference<BlueprintAbilityReference>(),
+                        HypnoticPatternSpell.ToReference<BlueprintAbilityReference>(),
+                        BlinkSpell.ToReference<BlueprintAbilityReference>(),
+                        DimensionDoorSpell.ToReference<BlueprintAbilityReference>(),
+                        SummonMonsterVBaseSpell.ToReference<BlueprintAbilityReference>(),
+                        OverwhelmingPresenceSpell.ToReference<BlueprintAbilityReference>(),
+                        SunbeamSpell.ToReference<BlueprintAbilityReference>(),
+                        SunburstSpell.ToReference<BlueprintAbilityReference>(),
+                        new BlueprintAbilityReference()
+                    };
+                });
+                bp.AddComponent<SpontaneousSpellConversion>(c => {
+                    c.m_CharacterClass = MagusClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
+                        new BlueprintAbilityReference(),
+                        EntropicShieldSpell.ToReference<BlueprintAbilityReference>(),
+                        HypnoticPatternSpell.ToReference<BlueprintAbilityReference>(),
+                        BlinkSpell.ToReference<BlueprintAbilityReference>(),
+                        DimensionDoorSpell.ToReference<BlueprintAbilityReference>(),
+                        SummonMonsterVBaseSpell.ToReference<BlueprintAbilityReference>(),
+                        OverwhelmingPresenceSpell.ToReference<BlueprintAbilityReference>(),
+                        SunbeamSpell.ToReference<BlueprintAbilityReference>(),
+                        SunburstSpell.ToReference<BlueprintAbilityReference>(),
+                        new BlueprintAbilityReference()
+                    };
+                });
+                bp.AddComponent<SpontaneousSpellConversion>(c => {
+                    c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
+                        new BlueprintAbilityReference(),
+                        EntropicShieldSpell.ToReference<BlueprintAbilityReference>(),
+                        HypnoticPatternSpell.ToReference<BlueprintAbilityReference>(),
+                        BlinkSpell.ToReference<BlueprintAbilityReference>(),
+                        DimensionDoorSpell.ToReference<BlueprintAbilityReference>(),
+                        SummonMonsterVBaseSpell.ToReference<BlueprintAbilityReference>(),
+                        OverwhelmingPresenceSpell.ToReference<BlueprintAbilityReference>(),
+                        SunbeamSpell.ToReference<BlueprintAbilityReference>(),
+                        SunburstSpell.ToReference<BlueprintAbilityReference>(),
+                        new BlueprintAbilityReference()
+                    };
+                });
+                bp.AddComponent<SpontaneousSpellConversion>(c => {
+                    c.m_CharacterClass = RangerClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
+                        new BlueprintAbilityReference(),
+                        EntropicShieldSpell.ToReference<BlueprintAbilityReference>(),
+                        HypnoticPatternSpell.ToReference<BlueprintAbilityReference>(),
+                        BlinkSpell.ToReference<BlueprintAbilityReference>(),
+                        DimensionDoorSpell.ToReference<BlueprintAbilityReference>(),
+                        SummonMonsterVBaseSpell.ToReference<BlueprintAbilityReference>(),
+                        OverwhelmingPresenceSpell.ToReference<BlueprintAbilityReference>(),
+                        SunbeamSpell.ToReference<BlueprintAbilityReference>(),
+                        SunburstSpell.ToReference<BlueprintAbilityReference>(),
+                        new BlueprintAbilityReference()
+                    };
+                });
+                bp.AddComponent<SpontaneousSpellConversion>(c => {
+                    c.m_CharacterClass = RogueClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
+                        new BlueprintAbilityReference(),
+                        EntropicShieldSpell.ToReference<BlueprintAbilityReference>(),
+                        HypnoticPatternSpell.ToReference<BlueprintAbilityReference>(),
+                        BlinkSpell.ToReference<BlueprintAbilityReference>(),
+                        DimensionDoorSpell.ToReference<BlueprintAbilityReference>(),
+                        SummonMonsterVBaseSpell.ToReference<BlueprintAbilityReference>(),
+                        OverwhelmingPresenceSpell.ToReference<BlueprintAbilityReference>(),
+                        SunbeamSpell.ToReference<BlueprintAbilityReference>(),
+                        SunburstSpell.ToReference<BlueprintAbilityReference>(),
+                        new BlueprintAbilityReference()
+                    };
+                });
+                bp.AddComponent<SpontaneousSpellConversion>(c => {
+                    c.m_CharacterClass = ShamanClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
+                        new BlueprintAbilityReference(),
+                        EntropicShieldSpell.ToReference<BlueprintAbilityReference>(),
+                        HypnoticPatternSpell.ToReference<BlueprintAbilityReference>(),
+                        BlinkSpell.ToReference<BlueprintAbilityReference>(),
+                        DimensionDoorSpell.ToReference<BlueprintAbilityReference>(),
+                        SummonMonsterVBaseSpell.ToReference<BlueprintAbilityReference>(),
+                        OverwhelmingPresenceSpell.ToReference<BlueprintAbilityReference>(),
+                        SunbeamSpell.ToReference<BlueprintAbilityReference>(),
+                        SunburstSpell.ToReference<BlueprintAbilityReference>(),
+                        new BlueprintAbilityReference()
+                    };
+                });
+                bp.AddComponent<SpontaneousSpellConversion>(c => {
+                    c.m_CharacterClass = SkaldClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
+                        new BlueprintAbilityReference(),
+                        EntropicShieldSpell.ToReference<BlueprintAbilityReference>(),
+                        HypnoticPatternSpell.ToReference<BlueprintAbilityReference>(),
+                        BlinkSpell.ToReference<BlueprintAbilityReference>(),
+                        DimensionDoorSpell.ToReference<BlueprintAbilityReference>(),
+                        SummonMonsterVBaseSpell.ToReference<BlueprintAbilityReference>(),
+                        OverwhelmingPresenceSpell.ToReference<BlueprintAbilityReference>(),
+                        SunbeamSpell.ToReference<BlueprintAbilityReference>(),
+                        SunburstSpell.ToReference<BlueprintAbilityReference>(),
+                        new BlueprintAbilityReference()
+                    };
+                });
+                bp.AddComponent<SpontaneousSpellConversion>(c => {
+                    c.m_CharacterClass = SorcererClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
+                        new BlueprintAbilityReference(),
+                        EntropicShieldSpell.ToReference<BlueprintAbilityReference>(),
+                        HypnoticPatternSpell.ToReference<BlueprintAbilityReference>(),
+                        BlinkSpell.ToReference<BlueprintAbilityReference>(),
+                        DimensionDoorSpell.ToReference<BlueprintAbilityReference>(),
+                        SummonMonsterVBaseSpell.ToReference<BlueprintAbilityReference>(),
+                        OverwhelmingPresenceSpell.ToReference<BlueprintAbilityReference>(),
+                        SunbeamSpell.ToReference<BlueprintAbilityReference>(),
+                        SunburstSpell.ToReference<BlueprintAbilityReference>(),
+                        new BlueprintAbilityReference()
+                    };
+                });
+                bp.AddComponent<SpontaneousSpellConversion>(c => {
+                    c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
+                        new BlueprintAbilityReference(),
+                        EntropicShieldSpell.ToReference<BlueprintAbilityReference>(),
+                        HypnoticPatternSpell.ToReference<BlueprintAbilityReference>(),
+                        BlinkSpell.ToReference<BlueprintAbilityReference>(),
+                        DimensionDoorSpell.ToReference<BlueprintAbilityReference>(),
+                        SummonMonsterVBaseSpell.ToReference<BlueprintAbilityReference>(),
+                        OverwhelmingPresenceSpell.ToReference<BlueprintAbilityReference>(),
+                        SunbeamSpell.ToReference<BlueprintAbilityReference>(),
+                        SunburstSpell.ToReference<BlueprintAbilityReference>(),
+                        new BlueprintAbilityReference()
+                    };
+                });
+                bp.AddComponent<SpontaneousSpellConversion>(c => {
+                    c.m_CharacterClass = WitchClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
+                        new BlueprintAbilityReference(),
+                        EntropicShieldSpell.ToReference<BlueprintAbilityReference>(),
+                        HypnoticPatternSpell.ToReference<BlueprintAbilityReference>(),
+                        BlinkSpell.ToReference<BlueprintAbilityReference>(),
+                        DimensionDoorSpell.ToReference<BlueprintAbilityReference>(),
+                        SummonMonsterVBaseSpell.ToReference<BlueprintAbilityReference>(),
+                        OverwhelmingPresenceSpell.ToReference<BlueprintAbilityReference>(),
+                        SunbeamSpell.ToReference<BlueprintAbilityReference>(),
+                        SunburstSpell.ToReference<BlueprintAbilityReference>(),
+                        new BlueprintAbilityReference()
+                    };
+                });
+                bp.AddComponent<SpontaneousSpellConversion>(c => {
+                    c.m_CharacterClass = WizardClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
+                        new BlueprintAbilityReference(),
+                        EntropicShieldSpell.ToReference<BlueprintAbilityReference>(),
+                        HypnoticPatternSpell.ToReference<BlueprintAbilityReference>(),
+                        BlinkSpell.ToReference<BlueprintAbilityReference>(),
+                        DimensionDoorSpell.ToReference<BlueprintAbilityReference>(),
+                        SummonMonsterVBaseSpell.ToReference<BlueprintAbilityReference>(),
+                        OverwhelmingPresenceSpell.ToReference<BlueprintAbilityReference>(),
+                        SunbeamSpell.ToReference<BlueprintAbilityReference>(),
+                        SunburstSpell.ToReference<BlueprintAbilityReference>(),
+                        new BlueprintAbilityReference()
+                    };
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.HideNotAvailibleInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.Ranks = 1;
+                bp.ReapplyOnLevelUp = false;
+                bp.IsClassFeature = true;
+            });
+            var StargazerStarsDomainGreaterFeature2 = Helpers.CreateBlueprint<BlueprintFeature>("StargazerStarsDomainGreaterFeature2", bp => {
+                bp.SetName("The Stars Are Right - Stargazer");
+                bp.SetDescription("");
+                bp.AddComponent<SpontaneousSpellConversion>(c => {
+                    c.m_CharacterClass = AlchemistClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        PolarMidnightSpell.ToReference<BlueprintAbilityReference>()
+                    };
+                });
+                bp.AddComponent<SpontaneousSpellConversion>(c => {
+                    c.m_CharacterClass = ArcanistClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        PolarMidnightSpell.ToReference<BlueprintAbilityReference>()
+                    };
+                });
+                bp.AddComponent<SpontaneousSpellConversion>(c => {
+                    c.m_CharacterClass = BardClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        PolarMidnightSpell.ToReference<BlueprintAbilityReference>()
+                    };
+                });
+                bp.AddComponent<SpontaneousSpellConversion>(c => {
+                    c.m_CharacterClass = BloodragerClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        PolarMidnightSpell.ToReference<BlueprintAbilityReference>()
+                    };
+                });
+                bp.AddComponent<SpontaneousSpellConversion>(c => {
+                    c.m_CharacterClass = DruidClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        PolarMidnightSpell.ToReference<BlueprintAbilityReference>()
+                    };
+                });
+                bp.AddComponent<SpontaneousSpellConversion>(c => {
+                    c.m_CharacterClass = MagusClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        PolarMidnightSpell.ToReference<BlueprintAbilityReference>()
+                    };
+                });
+                bp.AddComponent<SpontaneousSpellConversion>(c => {
+                    c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        PolarMidnightSpell.ToReference<BlueprintAbilityReference>()
+                    };
+                });
+                bp.AddComponent<SpontaneousSpellConversion>(c => {
+                    c.m_CharacterClass = RangerClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        PolarMidnightSpell.ToReference<BlueprintAbilityReference>()
+                    };
+                });
+                bp.AddComponent<SpontaneousSpellConversion>(c => {
+                    c.m_CharacterClass = RogueClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        PolarMidnightSpell.ToReference<BlueprintAbilityReference>()
+                    };
+                });
+                bp.AddComponent<SpontaneousSpellConversion>(c => {
+                    c.m_CharacterClass = ShamanClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        PolarMidnightSpell.ToReference<BlueprintAbilityReference>()
+                    };
+                });
+                bp.AddComponent<SpontaneousSpellConversion>(c => {
+                    c.m_CharacterClass = SkaldClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        PolarMidnightSpell.ToReference<BlueprintAbilityReference>()
+                    };
+                });
+                bp.AddComponent<SpontaneousSpellConversion>(c => {
+                    c.m_CharacterClass = SorcererClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        PolarMidnightSpell.ToReference<BlueprintAbilityReference>()
+                    };
+                });
+                bp.AddComponent<SpontaneousSpellConversion>(c => {
+                    c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        PolarMidnightSpell.ToReference<BlueprintAbilityReference>()
+                    };
+                });
+                bp.AddComponent<SpontaneousSpellConversion>(c => {
+                    c.m_CharacterClass = WitchClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        PolarMidnightSpell.ToReference<BlueprintAbilityReference>()
+                    };
+                });
+                bp.AddComponent<SpontaneousSpellConversion>(c => {
+                    c.m_CharacterClass = WizardClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        PolarMidnightSpell.ToReference<BlueprintAbilityReference>()
+                    };
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.HideNotAvailibleInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.Ranks = 1;
+                bp.ReapplyOnLevelUp = false;
+                bp.IsClassFeature = true;
+            });
+            var StargazerMysteryMagicStarsDomainFeatureSelection = Resources.GetModBlueprint<BlueprintFeatureSelection>("StargazerMysteryMagicStarsDomainFeatureSelection");
+            var StargazerStarsDomainGreaterFeatureCheck = Helpers.CreateBlueprint<BlueprintFeature>("StargazerStarsDomainGreaterFeatureCheck", bp => {
+                bp.SetName("The Stars Are Right - Stargazer Check");
+                bp.SetDescription("");
+                bp.AddComponent<AddFeatureIfHasFact>(c => {
+                    c.m_CheckedFact = StargazerMysteryMagicStarsDomainFeatureSelection.ToReference<BlueprintUnitFactReference>();
+                    c.m_Feature = StargazerStarsDomainGreaterFeature1.ToReference<BlueprintUnitFactReference>();
+                });
+                bp.AddComponent<AddFeatureIfHasFact>(c => {
+                    c.m_CheckedFact = StargazerMysteryMagicStarsDomainFeatureSelection.ToReference<BlueprintUnitFactReference>();
+                    c.m_Feature = StargazerStarsDomainGreaterFeature2.ToReference<BlueprintUnitFactReference>();
+                });
+                bp.ReapplyOnLevelUp = true;
+                bp.HideInUI = true;
+                bp.IsClassFeature = true;
+            });
+            #endregion
 
             //Deity plug
             var StarsDomainAllowed = Helpers.CreateBlueprint<BlueprintFeature>("StarsDomainAllowed", bp => {
@@ -766,7 +1270,7 @@ namespace ExpandedContent.Tweaks.Domains {
                 };                
                 bp.LevelEntries = new LevelEntry[] {
                     Helpers.LevelEntry(1, StarsDomainBaseFeature),
-                    Helpers.LevelEntry(8, StarsDomainGreaterFeature1, StarsDomainGreaterFeature2)
+                    Helpers.LevelEntry(8, StarsDomainGreaterFeature1, StarsDomainGreaterFeature2, StargazerStarsDomainGreaterFeatureCheck)
                 };
                 bp.UIGroups = new UIGroup[] {
                     Helpers.CreateUIGroup(StarsDomainBaseFeature, StarsDomainGreaterFeature1)
@@ -815,7 +1319,7 @@ namespace ExpandedContent.Tweaks.Domains {
                 };
                 bp.LevelEntries = new LevelEntry[] {
                     Helpers.LevelEntry(1, StarsDomainBaseFeature),
-                    Helpers.LevelEntry(8, StarsDomainGreaterFeature1, StarsDomainGreaterFeature2)
+                    Helpers.LevelEntry(8, StarsDomainGreaterFeature1, StarsDomainGreaterFeature2, StargazerStarsDomainGreaterFeatureCheck)
                 };
                 bp.UIGroups = new UIGroup[] {
                     Helpers.CreateUIGroup(StarsDomainBaseFeature, StarsDomainGreaterFeature1)
@@ -836,6 +1340,20 @@ namespace ExpandedContent.Tweaks.Domains {
                     c.HideInUI = true;
                     c.m_Feature = StarsDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
             });
+
+            //Adding to stargazer
+            StargazerMysteryMagicStarsDomainFeatureSelection.m_AllFeatures = StargazerMysteryMagicStarsDomainFeatureSelection.m_AllFeatures.AppendToArray(
+                StarsDomainProgressionSecondary.ToReference<BlueprintFeatureReference>()
+                );
+            var StargazerMysteryMagicStarsDomainBackupDomainSelection = Resources.GetModBlueprint<BlueprintFeatureSelection>("StargazerMysteryMagicStarsDomainBackupDomainSelection");
+            StargazerMysteryMagicStarsDomainBackupDomainSelection.AddComponent<PrerequisiteFeaturesFromList>(c => {
+                c.Amount = 1;
+                c.m_Features = new BlueprintFeatureReference[] {
+                    StarsDomainProgression.ToReference<BlueprintFeatureReference>(),
+                    StarsDomainProgressionSecondary.ToReference<BlueprintFeatureReference>()
+                };
+            });
+
             if (ModSettings.AddedContent.Domains.IsDisabled("Stars Subdomain")) { return; }
             DomainTools.RegisterDomain(StarsDomainProgression);
             DomainTools.RegisterSecondaryDomain(StarsDomainProgressionSecondary);

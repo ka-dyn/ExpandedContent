@@ -26,6 +26,7 @@ using ExpandedContent.Config;
 using Kingmaker.Blueprints.Root;
 using ExpandedContent.Extensions;
 using ExpandedContent.Localization;
+using Kingmaker.UnitLogic.Abilities.Blueprints;
 
 namespace ExpandedContent.Utilities {
     public static class Helpers {
@@ -423,8 +424,15 @@ namespace ExpandedContent.Utilities {
                 }
             }
 
-
-
+            //made by Bitter do not copy it is most likely cursed
+            public static void UpdateContextRankConfigFeatureList(BlueprintAbility ability, BlueprintFeature feature) {
+                ability.GetComponents<ContextRankConfig>()
+                    .Where(c => c.m_BaseValueType is ContextRankBaseValueType.FeatureList)
+                    .ForEach(c => {
+                        c.m_FeatureList = c.m_FeatureList.AppendToArray(feature.ToReference<BlueprintFeatureReference>());
+                    });
+            }
+            // end of bitter
 
 
 
