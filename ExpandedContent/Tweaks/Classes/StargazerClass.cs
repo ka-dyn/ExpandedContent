@@ -901,7 +901,7 @@ namespace ExpandedContent.Tweaks.Classes {
             WitchTools.RegisterWitchHex(WitchHexStarburnFeature);
             var StargazerMysteryMagicHexFeatureSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("StargazerMysteryMagicHexFeatureSelection", bp => {
                 bp.SetName("Mystery Magic - Hex");
-                bp.SetDescription("At 1st and 9th levels, the stargazer gains a hex from the witch’s list of hexes. His stargazer levels count as (and stack with) witch levels when " +
+                bp.SetDescription("At 1st, 7th and 9th levels, the stargazer gains a hex from the witch’s list of hexes. His stargazer levels count as (and stack with) witch levels when " +
                     "determining the effects of hexes. In addition, the stargazer adds all hexes available to a shaman with the heavens spirit to the witch list.");
                 bp.m_Icon = WitchHexSelection.m_Icon;
                 bp.IsClassFeature = true;
@@ -1600,17 +1600,6 @@ namespace ExpandedContent.Tweaks.Classes {
             WeatherDomainGreaterResource.m_MaxAmount.m_Class = WeatherDomainGreaterResource.m_MaxAmount.m_Class.AppendToArray(StargazerClass.ToReference<BlueprintCharacterClassReference>());
             WeatherDomainGreaterResource.m_MaxAmount.m_ClassDiv = WeatherDomainGreaterResource.m_MaxAmount.m_ClassDiv.AppendToArray(StargazerClass.ToReference<BlueprintCharacterClassReference>());
             #endregion
-
-
-
-
-
-
-
-
-
-
-
             var StargazerMysteryMagicStarsDomainBackupDomainSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("StargazerMysteryMagicStarsDomainBackupDomainSelection", bp => {
                 bp.SetName("Pulura's Domains");
                 bp.SetDescription("If the stargazer already has the stars subdomain he may select another domain granted by Pulura. His stargazer levels count as (and stack with) cleric " +
@@ -1629,11 +1618,6 @@ namespace ExpandedContent.Tweaks.Classes {
                     WeatherDomainProgressionSecondary.ToReference<BlueprintFeatureReference>()
                 };
             });
-
-
-
-
-            //Starsdomain added on it's own page
             var StargazerMysteryMagicStarsDomainFeatureSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("StargazerMysteryMagicStarsDomainFeatureSelection", bp => {
                 bp.SetName("Mystery Magic - Stars Subdomain");
                 bp.SetDescription("At 3rd level, the stargazer gains the stars subdomain in addition to any domains he already has, if he already has the stars subdomain he may select another domain granted " +
@@ -1647,9 +1631,159 @@ namespace ExpandedContent.Tweaks.Classes {
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;
                 bp.m_AllFeatures = new BlueprintFeatureReference[] {
-                    StargazerMysteryMagicStarsDomainBackupDomainSelection.ToReference<BlueprintFeatureReference>()
+                    StargazerMysteryMagicStarsDomainBackupDomainSelection.ToReference<BlueprintFeatureReference>() //Starsdomain added on it's own page
                 };
             });
+            //Mystery Magic - Coat of many Stars
+            var EdictOfImpenetrableFortress = Resources.GetBlueprint<BlueprintAbility>("d7741c08ccf699e4a8a8f8ab2ed345f8");
+            var StargazerMysteryMagicCOMSResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("StargazerMysteryMagicCOMSResource", bp => {
+                bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
+                    BaseValue = 0,
+                    IncreasedByLevel = true,
+                    m_Class = new BlueprintCharacterClassReference[] {
+                        StargazerClass.ToReference<BlueprintCharacterClassReference>(),
+                    },
+                    LevelIncrease = 1,
+                    StartingIncrease = 1,
+                };
+            });
+            var StargazerMysteryMagicCOMSBuff = Helpers.CreateBuff("StargazerMysteryMagicCOMSBuff", bp => {
+                bp.SetName("Mystery Magic - Coat of Many Stars");
+                bp.SetDescription("You conjure a coat of starry radiance that grants you a +4 armor {g|Encyclopedia:Bonus}bonus{/g} along with " +
+                    "{g|Encyclopedia:Damage_Reduction}DR{/g} 5/{g|Encyclopedia:Damage_Type}slashing{/g}. At 7th  and 9th level, the armor " +
+                    "bonus increases by +2. You can use this coat for 1 hour number of times per day equal to stargazer level.");
+                bp.m_Icon = EdictOfImpenetrableFortress.Icon;
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.DelayedStartPlusDivStep;
+                    c.m_StartLevel = 7;
+                    c.m_StepLevel = 2;
+                    c.m_Class = new BlueprintCharacterClassReference[] { StargazerClass.ToReference<BlueprintCharacterClassReference>() };
+                });
+                bp.AddComponent<ContextCalculateSharedValue>(c => {
+                    c.ValueType = AbilitySharedValue.Heal;
+                    c.Value = new ContextDiceValue() {
+                        DiceType = DiceType.Zero,
+                        DiceCountValue = new ContextValue() {
+                            ValueType = ContextValueType.Simple,
+                            Value = 0,
+                            ValueRank = AbilityRankType.Default,
+                            ValueShared = AbilitySharedValue.Damage,
+                            Property = UnitProperty.None
+                        },
+                        BonusValue = new ContextValue() {
+                            ValueType = ContextValueType.Rank,
+                            Value = 0,
+                            ValueRank = AbilityRankType.Default,
+                            ValueShared = AbilitySharedValue.Damage,
+                            Property = UnitProperty.None
+                        }
+                    };
+                    c.Modifier = 2;
+                });
+                bp.AddComponent<ContextCalculateSharedValue>(c => {
+                    c.ValueType = AbilitySharedValue.Damage;
+                    c.Value = new ContextDiceValue() {
+                        DiceType = DiceType.One,
+                        DiceCountValue = new ContextValue() {
+                            ValueType = ContextValueType.Simple,
+                            Value = 4,
+                            ValueRank = AbilityRankType.Default,
+                            ValueShared = AbilitySharedValue.Damage,
+                            Property = UnitProperty.None
+                        },
+                        BonusValue = new ContextValue() {
+                            ValueType = ContextValueType.Shared,
+                            Value = 0,
+                            ValueRank = AbilityRankType.Default,
+                            ValueShared = AbilitySharedValue.Heal,
+                            Property = UnitProperty.None
+                        }
+                    };
+                    c.Modifier = 1;
+                });
+                bp.AddComponent<AddContextStatBonus>(c => {
+                    c.Descriptor = ModifierDescriptor.Armor;
+                    c.Stat = StatType.AC;
+                    c.Multiplier = 1;
+                    c.Value = new ContextValue() {
+                        ValueType = ContextValueType.Shared,
+                        Value = 0,
+                        ValueRank = AbilityRankType.Default,
+                        ValueShared = AbilitySharedValue.Damage,
+                        Property = UnitProperty.None
+                    };
+                    c.HasMinimal = false;
+                    c.Minimal = 0;
+                });
+                bp.AddComponent<AddDamageResistancePhysical>(c => {
+                    c.Value = new ContextValue() {
+                        ValueType = ContextValueType.Simple,
+                        Value = 5,
+                        ValueRank = AbilityRankType.Default,
+                        ValueShared = AbilitySharedValue.Damage,
+                        Property = UnitProperty.None
+                    };
+                    c.UsePool = false;
+                    c.Pool = new ContextValue();
+                    c.Or = false;
+                    c.BypassedByMaterial = false;
+                    c.Material = PhysicalDamageMaterial.Adamantite;
+                    c.BypassedByForm = true;
+                    c.Form = PhysicalDamageForm.Slashing;
+                    c.BypassedByMagic = false;
+                    c.MinEnhancementBonus = 1;
+                    c.BypassedByAlignment = false;
+                    c.Alignment = DamageAlignment.Good;
+                    c.BypassedByReality = false;
+                    c.Reality = DamageRealityType.Ghost;
+                    c.BypassedByWeaponType = false;
+                    c.m_WeaponType = new BlueprintWeaponTypeReference();
+                    c.BypassedByEpic = false;
+                    c.m_CheckedFactMythic = new BlueprintUnitFactReference();
+                });
+                bp.m_Flags = BlueprintBuff.Flags.StayOnDeath;
+                bp.Stacking = StackingType.Replace;
+                bp.m_AllowNonContextActions = false;
+            });
+            var StargazerMysteryMagicCOMSAbility = Helpers.CreateBlueprint<BlueprintActivatableAbility>("StargazerMysteryMagicCOMSAbility", bp => {
+                bp.SetName("Mystery Magic - Coat of Many Stars");
+                bp.SetDescription("You conjure a coat of starry radiance that grants you a +4 armor {g|Encyclopedia:Bonus}bonus{/g} along with " +
+                    "{g|Encyclopedia:Damage_Reduction}DR{/g} 5/{g|Encyclopedia:Damage_Type}slashing{/g}. At 7th  and 9th level, the armor " +
+                    "bonus increases by +2. You can use this coat for 1 hour number of times per day equal to stargazer level.");
+                bp.m_Icon = EdictOfImpenetrableFortress.Icon;
+                bp.AddComponent<ActivatableAbilityResourceLogic>(c => {
+                    c.SpendType = ActivatableAbilityResourceLogic.ResourceSpendType.OncePerHour;
+                    c.m_RequiredResource = StargazerMysteryMagicCOMSResource.ToReference<BlueprintAbilityResourceReference>();
+                });
+                bp.m_Buff = StargazerMysteryMagicCOMSBuff.ToReference<BlueprintBuffReference>();
+                bp.DeactivateIfOwnerDisabled = false;
+                bp.ActivationType = AbilityActivationType.WithUnitCommand;
+                bp.m_ActivateWithUnitCommand = UnitCommand.CommandType.Standard;
+                bp.DeactivateIfCombatEnded = false;
+            });
+            var StargazerMysteryMagicCOMSFeature = Helpers.CreateBlueprint<BlueprintFeature>("StargazerMysteryMagicCOMSFeature", bp => {
+                bp.SetName("Mystery Magic - Coat of Many Stars");
+                bp.SetDescription("You conjure a coat of starry radiance that grants you a +4 armor {g|Encyclopedia:Bonus}bonus{/g} along with " +
+                    "{g|Encyclopedia:Damage_Reduction}DR{/g} 5/{g|Encyclopedia:Damage_Type}slashing{/g}. At 7th  and 9th level, the armor " +
+                    "bonus increases by +2. You can use this coat for 1 hour number of times per day equal to stargazer level.");
+                bp.m_Icon = EdictOfImpenetrableFortress.Icon;
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        StargazerMysteryMagicCOMSAbility.ToReference<BlueprintUnitFactReference>()
+                    };
+                });
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = StargazerMysteryMagicCOMSResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+            #region Sidereal Arcana
 
 
 
@@ -1660,14 +1794,36 @@ namespace ExpandedContent.Tweaks.Classes {
 
 
 
-            StargazerProgression.LevelEntries = new LevelEntry[10] {
+
+            var StargazerSiderealArcanaSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("StargazerSiderealArcanaSelection", bp => {
+                bp.SetName("Sidereal Arcana");
+                bp.SetDescription("As he studies the skies, the stargazer binds himself to constellations from the Cosmic Caravan, drawing on their unearthly power. At 2nd level and every 2 " +
+                    "class levels thereafter, the stargazer gains one sidereal arcana of his choice.");
+                bp.IsClassFeature = true;
+                bp.Group = FeatureGroup.None;
+                bp.m_AllowNonContextActions = false;
+                bp.m_AllFeatures = new BlueprintFeatureReference[] {
+                    
+
+                };
+            });
+            var StargazerStarsDanceFeature = Helpers.CreateBlueprint<BlueprintFeature>("StargazerStarsDanceFeature", bp => {
+                bp.SetName("Stars’ Dance");
+                bp.SetDescription("At 10th level, the stargazer’s mastery of the Cosmic Caravan reaches its zenith. Once per day, the stargazer can replace one of his sidereal arcana with any other one.");
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+            #endregion
+
+
+            StargazerProgression.LevelEntries = new LevelEntry[] {
                 Helpers.LevelEntry(1, StargazerGuidingLightFeatureSelection, StargazerMysteryMagicHexFeatureSelection),
                 Helpers.LevelEntry(2, StargazerSiderealArcanaSelection),
                 Helpers.LevelEntry(3, StargazerMysteryMagicStarsDomainFeatureSelection),
                 Helpers.LevelEntry(4, StargazerSiderealArcanaSelection),
                 Helpers.LevelEntry(5, StargazerMysteryMagicCOMSFeature),
                 Helpers.LevelEntry(6, StargazerSiderealArcanaSelection),
-                Helpers.LevelEntry(7, StargazerMysteryMagicStarChartFeature),
+                Helpers.LevelEntry(7, StargazerMysteryMagicHexFeatureSelection),
                 Helpers.LevelEntry(8, StargazerSiderealArcanaSelection),
                 Helpers.LevelEntry(9, StargazerMysteryMagicHexFeatureSelection),
                 Helpers.LevelEntry(10, StargazerSiderealArcanaSelection, StargazerStarsDanceFeature)

@@ -1937,11 +1937,6 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
             };
             DrakeBreathWeaponUmbral1Feature.IsPrerequisiteFor = new List<BlueprintFeatureReference>() { DrakeBreathWeaponUmbral2Feature.ToReference<BlueprintFeatureReference>() };
 
-
-
-
-
-
             var DrakeIntellectFeature = Helpers.CreateBlueprint<BlueprintFeature>("DrakeIntellectFeature", bp => {
                 bp.SetName("Drake Intellect");
                 bp.SetDescription("The drake’s Intelligence score increases by 4.");
