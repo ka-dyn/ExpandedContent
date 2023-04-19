@@ -2026,6 +2026,499 @@ namespace ExpandedContent.Tweaks.Classes {
                 bp.LocalizedDuration = Helpers.CreateString("StargazerSiderealTheWagonAbility.Duration", "1 round");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
+            #region Stars Dance
+
+
+
+
+
+
+
+            //Stars Dance Features
+            var StargazerStarsDanceBridgeFeature = Helpers.CreateBlueprint<BlueprintFeature>("StargazerStarsDanceBridgeFeature", bp => {
+                bp.SetName("Sidereal Arcana - The Bridge");
+                bp.SetDescription("The stargazer is warded against winter’s darkness. He gains cold resistance 5 and an immunity to blindness effects caused by demons.");
+                bp.AddComponent<BuffDescriptorImmunity>(c => {
+                    c.Descriptor = SpellDescriptor.Blindness;
+                    c.CheckFact = true;
+                    c.m_FactToCheck = SubtypeDemon.ToReference<BlueprintUnitFactReference>();
+                });
+                bp.AddComponent<AddDamageResistanceEnergy>(c => {
+                    c.Type = DamageEnergyType.Cold;
+                    c.Value = 5;
+                });
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        StargazerStarsDanceBridgeSwapParent.ToReference<BlueprintUnitFactReference>()
+                    };
+                });
+                bp.HideInUI = false;
+            });
+            var StargazerStarsDanceDaughterFeature = Helpers.CreateBlueprint<BlueprintFeature>("StargazerStarsDanceDaughterFeature", bp => {
+                bp.SetName("Sidereal Arcana - The Daughter");
+                bp.SetDescription("The Daughter emboldens hearts with the promise of springtime and new life. The stargazer and allies within 10 feet gain a +4 morale bonus on saving " +
+                    "throws against fear. The stargazer is immune to fear effects created by demons.");
+                bp.AddComponent<BuffDescriptorImmunity>(c => {
+                    c.Descriptor = SpellDescriptor.Fear;
+                    c.CheckFact = true;
+                    c.m_FactToCheck = SubtypeDemon.ToReference<BlueprintUnitFactReference>();
+                });
+                bp.AddComponent<AuraFeatureComponent>(c => {
+                    c.m_Buff = StargazerSiderealTheDaughterAura.ToReference<BlueprintBuffReference>();
+                });
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        StargazerStarsDanceDaughterSwapParent.ToReference<BlueprintUnitFactReference>()
+                    };
+                });
+                bp.HideInUI = false;
+            });
+            var StargazerStarsDanceFollowerFeature = Helpers.CreateBlueprint<BlueprintFeature>("StargazerStarsDanceFollowerFeature", bp => {
+                bp.SetName("Sidereal Arcana - The Follower");
+                bp.SetDescription("The specter of death follows the stargazer, shielding him from doom. The stargazer gains a +4 bonus on saves against death effects. In addition, he is immune " +
+                    "to all death effects, negative energy effects, and negative levels created by demons.");
+                bp.AddComponent<BuffDescriptorImmunity>(c => {
+                    c.Descriptor = SpellDescriptor.Death | SpellDescriptor.NegativeLevel | SpellDescriptor.ChannelNegativeHarm;
+                    c.CheckFact = true;
+                    c.m_FactToCheck = SubtypeDemon.ToReference<BlueprintUnitFactReference>();
+                });
+                bp.AddComponent<SavingThrowBonusAgainstDescriptor>(c => {
+                    c.SpellDescriptor = SpellDescriptor.Death;
+                    c.ModifierDescriptor = ModifierDescriptor.UntypedStackable;
+                    c.Value = 4;
+                });
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        StargazerStarsDanceFollowerSwapParent.ToReference<BlueprintUnitFactReference>()
+                    };
+                });
+                bp.HideInUI = false;
+            });
+            var StargazerStarsDanceLanternBearerFeature = Helpers.CreateBlueprint<BlueprintFeature>("StargazerStarsDanceLanternBearerFeature", bp => {
+                bp.SetName("Sidereal Arcana - The Lantern Bearer");
+                bp.SetDescription("The stargazer’s ability to conjure light increases. Any spell cast by the stargazer with the fire descriptor has its spell level increased by 2.");
+                bp.AddComponent<IncreaseSpellDescriptorCasterLevel>(c => {
+                    c.Descriptor = SpellDescriptor.Fire;
+                    c.ModifierDescriptor = ModifierDescriptor.UntypedStackable;
+                    c.BonusCasterLevel = 2;
+                });
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        StargazerStarsDanceLanternBearerSwapParent.ToReference<BlueprintUnitFactReference>()
+                    };
+                });
+                bp.HideInUI = false;
+            });
+            var StargazerStarsDanceMotherFeature = Helpers.CreateBlueprint<BlueprintFeature>("StargazerStarsDanceMotherFeature", bp => {
+                bp.SetName("Sidereal Arcana - The Mother");
+                bp.SetDescription("The stargazer channels the nurturing heart of the Caravan. Whenever the stargazer casts a cure spell, casts breath of life, or uses the healing hex, " +
+                    "he adds twice his class level to the hit points restored.");
+                bp.AddComponent<AddAbilityUseTrigger>(c => {
+                    c.ActionsOnAllTargets = false;
+                    c.AfterCast = true;
+                    c.ActionsOnTarget = true;
+                    c.FromSpellbook = false;
+                    c.m_Spellbooks = new BlueprintSpellbookReference[] { };
+                    c.ForOneSpell = false;
+                    c.m_Ability = new BlueprintAbilityReference();
+                    c.ForMultipleSpells = true;
+                    c.Abilities = new List<BlueprintAbilityReference>() {
+                        WitchHexHealingAbility,
+                        WitchHexMajorHealingAbility,
+                        ShamanHexHealingAbility
+                    };
+                    c.MinSpellLevel = false;
+                    c.MinSpellLevelLimit = 0;
+                    c.ExactSpellLevel = false;
+                    c.ExactSpellLevelLimit = 0;
+                    c.CheckAbilityType = false;
+                    c.Type = AbilityType.Spell;
+                    c.CheckDescriptor = true;
+                    c.SpellDescriptor = SpellDescriptor.Cure;
+                    c.CheckRange = false;
+                    c.Range = AbilityRange.Touch;
+                    c.Action = Helpers.CreateActionList(
+                        new ContextActionHealTarget() {
+                            Value = new ContextDiceValue() {
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Shared,
+                                    ValueShared = AbilitySharedValue.Heal
+                                }
+                            }
+                        }
+                        );
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.AsIs;
+                    c.m_Class = new BlueprintCharacterClassReference[] { StargazerClass.ToReference<BlueprintCharacterClassReference>() };
+                });
+                bp.AddComponent<ContextCalculateSharedValue>(c => {
+                    c.ValueType = AbilitySharedValue.Heal;
+                    c.Value = new ContextDiceValue() {
+                        DiceType = DiceType.Zero,
+                        DiceCountValue = new ContextValue() {
+                            ValueType = ContextValueType.Simple,
+                            Value = 0,
+                            ValueRank = AbilityRankType.Default,
+                            ValueShared = AbilitySharedValue.Damage,
+                            Property = UnitProperty.None
+                        },
+                        BonusValue = new ContextValue() {
+                            ValueType = ContextValueType.Rank,
+                            Value = 0,
+                            ValueRank = AbilityRankType.Default,
+                            ValueShared = AbilitySharedValue.Damage,
+                            Property = UnitProperty.None
+                        }
+                    };
+                    c.Modifier = 2;
+                });
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        StargazerStarsDanceMotherSwapParent.ToReference<BlueprintUnitFactReference>()
+                    };
+                });
+                bp.HideInUI = false;
+            });
+            var StargazerStarsDanceNewlywedsFeature = Helpers.CreateBlueprint<BlueprintFeature>("StargazerStarsDanceNewlywedsFeature", bp => {
+                bp.SetName("Sidereal Arcana - The Newlyweds");
+                bp.SetDescription("The sign of intertwined lovers grants the stargazer a romantic mystique. Whenever he uses a spell with the compulsion descriptor the save DC increases by 1. " +
+                    "In addition, stargazer gains a +2 morale bonus on saving throws against compulsion effects.");
+                bp.AddComponent<IncreaseSpellDescriptorCasterLevel>(c => {
+                    c.Descriptor = SpellDescriptor.Compulsion;
+                    c.ModifierDescriptor = ModifierDescriptor.UntypedStackable;
+                    c.BonusCasterLevel = 1;
+                });
+                bp.AddComponent<SavingThrowBonusAgainstDescriptor>(c => {
+                    c.SpellDescriptor = SpellDescriptor.Compulsion;
+                    c.ModifierDescriptor = ModifierDescriptor.Morale;
+                    c.Value = 2;
+                });
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        StargazerStarsDanceNewlywedsSwapParent.ToReference<BlueprintUnitFactReference>()
+                    };
+                });
+                bp.HideInUI = false;
+            });
+            var StargazerStarsDancePackFeature = Helpers.CreateBlueprint<BlueprintFeature>("StargazerStarsDancePackFeature", bp => {
+                bp.SetName("Sidereal Arcana - The Pack");
+                bp.SetDescription("The stargazer becomes attuned to the beasts that follow the Caravan. He gains a +2 bonus on Nature checks. In addition, whenever he casts a summoning " +
+                    "spell that conjures multiple creatures of the animal type, he summons an additional animal of that type.");
+                bp.AddComponent<AddStatBonus>(c => {
+                    c.Stat = StatType.SkillLoreNature;
+                    c.Value = 2;
+                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+                });
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        StargazerStarsDancePackSwapParent.ToReference<BlueprintUnitFactReference>()
+                    };
+                });
+                bp.HideInUI = false;
+            });
+            var StargazerStarsDancePatriarchFeature = Helpers.CreateBlueprint<BlueprintFeature>("StargazerStarsDancePatriarchFeature", bp => {
+                bp.SetName("Sidereal Arcana - The Patriarch");
+                bp.SetDescription("The stargazer gains an innate sense of direction. He gains a +4 bonus on {g|Encyclopedia:Knowledge_World}Knowledge (World){/g} and " +
+                    "Perception checks.");
+                bp.AddComponent<AddStatBonus>(c => {
+                    c.Stat = StatType.SkillKnowledgeWorld;
+                    c.Value = 4;
+                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+                });
+                bp.AddComponent<AddStatBonus>(c => {
+                    c.Stat = StatType.SkillPerception;
+                    c.Value = 4;
+                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+                });
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        StargazerStarsDancePatriarchSwapParent.ToReference<BlueprintUnitFactReference>()
+                    };
+                });
+                bp.HideInUI = false;
+            });
+            var StargazerStarsDanceRiderFeature = Helpers.CreateBlueprint<BlueprintFeature>("StargazerStarsDanceRiderFeature", bp => {
+                bp.SetName("Sidereal Arcana - The Rider");
+                bp.SetDescription("The stargazer and his mount ride as one. While he is mounted both rider and mount gain +1 on all saves and an immunity to difficult terrain.");
+                bp.AddComponent<BuffExtraEffects>(c => {
+                    c.m_CheckedBuff = MountedBuff.ToReference<BlueprintBuffReference>();
+                    c.m_ExtraEffectBuff = StargazerSiderealTheRiderMountedEffect.ToReference<BlueprintBuffReference>();
+                });
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        StargazerStarsDanceRiderSwapParent.ToReference<BlueprintUnitFactReference>()
+                    };
+                });
+                bp.HideInUI = false;
+            });
+            var StargazerStarsDanceStargazerFeature = Helpers.CreateBlueprint<BlueprintFeature>("StargazerStarsDanceStargazerFeature", bp => {
+                bp.SetName("Sidereal Arcana - The Stargazer");
+                bp.SetDescription("The constellation that shares his name warns the stargazer of danger. The stargazer gains a +2 insight bonus on " +
+                    "initiative checks and is not considered flat-footed before he acts in combat, although this does not allow him to act if he " +
+                    "could not otherwise do so.");
+                bp.AddComponent<FlatFootedIgnore>(c => {
+                    c.Type = FlatFootedIgnoreType.UncannyDodge;
+                });
+                bp.AddComponent<AddStatBonus>(c => {
+                    c.Stat = StatType.Initiative;
+                    c.Descriptor = ModifierDescriptor.Insight;
+                    c.Value = 2;
+                });
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        StargazerStarsDanceStargazerSwapParent.ToReference<BlueprintUnitFactReference>()
+                    };
+                });
+                bp.HideInUI = false;
+            });
+            var StargazerStarsDanceStrangerFeature = Helpers.CreateBlueprint<BlueprintFeature>("StargazerStarsDanceStrangerFeature", bp => {
+                bp.SetName("Sidereal Arcana - The Stranger");
+                bp.SetDescription("The stargazer learns to blend seamlessly into others’ cultures. He can use vanish on himself as a swift action spell-like ability " +
+                    "a number of times equal to half his stargazer level (min 1) per day.");
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.UseThisAsResource = false;
+                    c.m_Resource = StargazerSiderealTheStrangerAbilityResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        StargazerSiderealTheStrangerAbility.ToReference<BlueprintUnitFactReference>()
+                    };
+                });
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        StargazerStarsDanceStrangerSwapParent.ToReference<BlueprintUnitFactReference>()
+                    };
+                });
+                bp.HideInUI = false;
+            });
+            var StargazerStarsDanceThrushFeature = Helpers.CreateBlueprint<BlueprintFeature>("StargazerStarsDanceThrushFeature", bp => {
+                bp.SetName("Sidereal Arcana - The Thrush");
+                bp.SetDescription("The stargazer’s voice becomes harmonious. The stargazer gains a bonus equal to half his class level on charisma skill checks (minimum 1).");
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.Div2;
+                    c.m_Class = new BlueprintCharacterClassReference[] {
+                        StargazerClass.ToReference<BlueprintCharacterClassReference>()
+                    };
+                    c.m_UseMin = true;
+                    c.m_Min = 1;
+                });
+                bp.AddComponent<AddContextStatBonus>(c => {
+                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+                    c.Stat = StatType.SkillPersuasion;
+                    c.Value = new ContextValue() {
+                        ValueType = ContextValueType.Rank,
+                        ValueRank = AbilityRankType.Default
+                    };
+                });
+                bp.AddComponent<AddContextStatBonus>(c => {
+                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+                    c.Stat = StatType.SkillUseMagicDevice;
+                    c.Value = new ContextValue() {
+                        ValueType = ContextValueType.Rank,
+                        ValueRank = AbilityRankType.Default
+                    };
+                });
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        StargazerStarsDanceThrushSwapParent.ToReference<BlueprintUnitFactReference>()
+                    };
+                });
+                bp.HideInUI = false;
+            });
+            var StargazerStarsDanceWagonFeature = Helpers.CreateBlueprint<BlueprintFeature>("StargazerStarsDanceWagonFeature", bp => {
+                bp.SetName("Sidereal Arcana - The Wagon");
+                bp.SetDescription("The stargazer’s movement becomes swift and steady. He gains a +10-foot enhancement bonus to his movement speed. In addition, " +
+                    "three times per day as a swift action, he can gain the effects of freedom of movement for 1 round.");
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.UseThisAsResource = false;
+                    c.m_Resource = StargazerSiderealTheWagonAbilityResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        StargazerSiderealTheWagonAbility.ToReference<BlueprintUnitFactReference>()
+                    };
+                });
+                bp.AddComponent<BuffMovementSpeed>(c => {
+                    c.Descriptor = ModifierDescriptor.Enhancement;
+                    c.Value = 10;
+                    c.CappedOnMultiplier = false;
+                    c.CappedMinimum = false;
+                });
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        StargazerStarsDanceWagonSwapParent.ToReference<BlueprintUnitFactReference>()
+                    };
+                });
+                bp.HideInUI = false;
+            });
+            //Stars Dance Buffs
+            var StargazerStarsDanceBridgeBuff = Helpers.CreateBuff("StargazerStarsDanceBridgeBuff", bp => {
+                bp.SetName("Sidereal Arcana - The Bridge");
+                bp.SetDescription("The stargazer is warded against winter’s darkness. He gains cold resistance 5 and an immunity to blindness effects caused by demons.");
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        StargazerStarsDanceBridgeFeature.ToReference<BlueprintUnitFactReference>()
+                    };
+                });
+                bp.IsClassFeature = false;
+                bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
+            });
+            var StargazerStarsDanceDaughterBuff = Helpers.CreateBuff("StargazerStarsDanceDaughterBuff", bp => {
+                bp.SetName("Sidereal Arcana - The Daughter");
+                bp.SetDescription("The Daughter emboldens hearts with the promise of springtime and new life. The stargazer and allies within 10 feet gain a +4 morale bonus on saving " +
+                    "throws against fear. The stargazer is immune to fear effects created by demons.");
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        StargazerStarsDanceDaughterFeature.ToReference<BlueprintUnitFactReference>()
+                    };
+                });
+                bp.IsClassFeature = false;
+                bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
+            });
+            var StargazerStarsDanceFollowerBuff = Helpers.CreateBuff("StargazerStarsDanceFollowerBuff", bp => {
+                bp.SetName("Sidereal Arcana - The Follower");
+                bp.SetDescription("The specter of death follows the stargazer, shielding him from doom. The stargazer gains a +4 bonus on saves against death effects. In addition, he is immune " +
+                    "to all death effects, negative energy effects, and negative levels created by demons.");
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        StargazerStarsDanceFollowerFeature.ToReference<BlueprintUnitFactReference>()
+                    };
+                });
+                bp.IsClassFeature = false;
+                bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
+            });
+            var StargazerStarsDanceLanternBearerBuff = Helpers.CreateBuff("StargazerStarsDanceLanternBearerBuff", bp => {
+                bp.SetName("Sidereal Arcana - The Lantern Bearer");
+                bp.SetDescription("The stargazer’s ability to conjure light increases. Any spell cast by the stargazer with the fire descriptor has its spell level increased by 2.");
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        StargazerStarsDanceLanternBearerFeature.ToReference<BlueprintUnitFactReference>()
+                    };
+                });
+                bp.IsClassFeature = false;
+                bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
+            });
+            var StargazerStarsDanceMotherBuff = Helpers.CreateBuff("StargazerStarsDanceMotherBuff", bp => {
+                bp.SetName("Sidereal Arcana - The Mother");
+                bp.SetDescription("The stargazer channels the nurturing heart of the Caravan. Whenever the stargazer casts a cure spell, casts breath of life, or uses the healing hex, " +
+                    "he adds twice his class level to the hit points restored.");
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        StargazerStarsDanceMotherFeature.ToReference<BlueprintUnitFactReference>()
+                    };
+                });
+                bp.IsClassFeature = false;
+                bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
+            });
+            var StargazerStarsDanceNewlywedsBuff = Helpers.CreateBuff("StargazerStarsDanceNewlywedsBuff", bp => {
+                bp.SetName("Sidereal Arcana - The Newlyweds");
+                bp.SetDescription("The sign of intertwined lovers grants the stargazer a romantic mystique. Whenever he uses a spell with the compulsion descriptor the save DC increases by 1. " +
+                    "In addition, stargazer gains a +2 morale bonus on saving throws against compulsion effects.");
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        StargazerStarsDanceNewlywedsFeature.ToReference<BlueprintUnitFactReference>()
+                    };
+                });
+                bp.IsClassFeature = false;
+                bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
+            });
+            var StargazerStarsDancePackBuff = Helpers.CreateBuff("StargazerStarsDancePackBuff", bp => {
+                bp.SetName("Sidereal Arcana - The Pack");
+                bp.SetDescription("The stargazer becomes attuned to the beasts that follow the Caravan. He gains a +2 bonus on Nature checks. In addition, whenever he casts a summoning " +
+                    "spell that conjures multiple creatures of the animal type, he summons an additional animal of that type.");
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        StargazerStarsDancePackFeature.ToReference<BlueprintUnitFactReference>()
+                    };
+                });
+                bp.IsClassFeature = false;
+                bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
+            });
+            var StargazerStarsDancePatriarchBuff = Helpers.CreateBuff("StargazerStarsDancePatriarchBuff", bp => {
+                bp.SetName("Sidereal Arcana - The Patriarch");
+                bp.SetDescription("The stargazer gains an innate sense of direction. He gains a +4 bonus on {g|Encyclopedia:Knowledge_World}Knowledge (World){/g} and " +
+                    "Perception checks.");
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        StargazerStarsDancePatriarchFeature.ToReference<BlueprintUnitFactReference>()
+                    };
+                });
+                bp.IsClassFeature = false;
+                bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
+            });
+            var StargazerStarsDanceRiderBuff = Helpers.CreateBuff("StargazerStarsDanceRiderBuff", bp => {
+                bp.SetName("Sidereal Arcana - The Rider");
+                bp.SetDescription("The stargazer and his mount ride as one. While he is mounted both rider and mount gain +1 on all saves and an immunity to difficult terrain.");
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        StargazerStarsDanceRiderFeature.ToReference<BlueprintUnitFactReference>()
+                    };
+                });
+                bp.IsClassFeature = false;
+                bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
+            });
+            var StargazerStarsDanceStargazerBuff = Helpers.CreateBuff("StargazerStarsDanceStargazerBuff", bp => {
+                bp.SetName("Sidereal Arcana - The Stargazer");
+                bp.SetDescription("The constellation that shares his name warns the stargazer of danger. The stargazer gains a +2 insight bonus on " +
+                    "initiative checks and is not considered flat-footed before he acts in combat, although this does not allow him to act if he " +
+                    "could not otherwise do so.");
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        StargazerStarsDanceStargazerFeature.ToReference<BlueprintUnitFactReference>()
+                    };
+                });
+                bp.IsClassFeature = false;
+                bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
+            });
+            var StargazerStarsDanceStrangerBuff = Helpers.CreateBuff("StargazerStarsDanceStrangerBuff", bp => {
+                bp.SetName("Sidereal Arcana - The Stranger");
+                bp.SetDescription("The stargazer learns to blend seamlessly into others’ cultures. He can use vanish on himself as a swift action spell-like ability " +
+                    "a number of times equal to half his stargazer level (min 1) per day.");
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        StargazerStarsDanceStrangerFeature.ToReference<BlueprintUnitFactReference>()
+                    };
+                });
+                bp.IsClassFeature = false;
+                bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
+            });
+            var StargazerStarsDanceThrushBuff = Helpers.CreateBuff("StargazerStarsDanceThrushBuff", bp => {
+                bp.SetName("Sidereal Arcana - The Thrush");
+                bp.SetDescription("The stargazer’s voice becomes harmonious. The stargazer gains a bonus equal to half his class level on charisma skill checks (minimum 1).");
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        StargazerStarsDanceThrushFeature.ToReference<BlueprintUnitFactReference>()
+                    };
+                });
+                bp.IsClassFeature = false;
+                bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
+            });
+            var StargazerStarsDanceWagonBuff = Helpers.CreateBuff("StargazerStarsDanceWagonBuff", bp => {
+                bp.SetName("Sidereal Arcana - The Wagon");
+                bp.SetDescription("The stargazer’s movement becomes swift and steady. He gains a +10-foot enhancement bonus to his movement speed. In addition, " +
+                    "three times per day as a swift action, he can gain the effects of freedom of movement for 1 round.");
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        StargazerStarsDanceWagonFeature.ToReference<BlueprintUnitFactReference>()
+                    };
+                });
+                bp.IsClassFeature = false;
+                bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
+            });
+            #endregion
             //Pre level 10 features
             var StargazerSiderealTheBridgeEffect = Helpers.CreateBlueprint<BlueprintFeature>("StargazerSiderealTheBridgeEffect", bp => {
                 bp.SetName("Sidereal Arcana - The Bridge");
@@ -2357,6 +2850,11 @@ namespace ExpandedContent.Tweaks.Classes {
                 bp.AddComponent<FlatFootedIgnore>(c => {
                     c.Type = FlatFootedIgnoreType.UncannyDodge;
                 });
+                bp.AddComponent<AddStatBonus>(c => {
+                    c.Stat = StatType.Initiative;
+                    c.Descriptor = ModifierDescriptor.Insight;
+                    c.Value = 2;
+                });
                 bp.AddComponent<AddFactContextActions>(c => {
                     c.Activated = Helpers.CreateActionList();
                     c.Deactivated = Helpers.CreateActionList(
@@ -2494,7 +2992,6 @@ namespace ExpandedContent.Tweaks.Classes {
                 });
                 bp.HideInUI = false;
             });
-
             //Sidereal Arcana Options
             var StargazerSiderealTheBridgeFeature = Helpers.CreateBlueprint<BlueprintFeature>("StargazerSiderealTheBridgeFeature", bp => {
                 bp.SetName("Sidereal Arcana - The Bridge");
