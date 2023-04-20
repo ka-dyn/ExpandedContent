@@ -153,10 +153,9 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.IsClassFeature = true;
             });
 
-            var StarsDomainGreaterFeature1 = Helpers.CreateBlueprint<BlueprintFeature>("StarsDomainGreaterFeature1", bp => {
-                bp.SetName("The Stars Are Right");
-                bp.SetDescription("At 8th level, you may spontaneously cast any of your Stars subdomain spells by swapping out a spell of an equal " +
-                    "spell level. Any Stars subdomain spell that you cast heals you an amount of hit point damage equal to the spell’s level; this effect happens as you cast the spell.");
+            var StarsDomainGreaterFeature1Cleric = Helpers.CreateBlueprint<BlueprintFeature>("StarsDomainGreaterFeature1Cleric", bp => {
+                bp.SetName("The Stars Are Right - Cleric");
+                bp.SetDescription("");
                 bp.AddComponent<SpontaneousSpellConversion>(c => {
                     c.m_CharacterClass = ClericClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
@@ -172,6 +171,17 @@ namespace ExpandedContent.Tweaks.Domains {
                         new BlueprintAbilityReference()
                     };
                 });
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.HideNotAvailibleInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.Ranks = 1;
+                bp.ReapplyOnLevelUp = false;
+                bp.IsClassFeature = true;
+            });
+            var StarsDomainGreaterFeature1Inquisitor = Helpers.CreateBlueprint<BlueprintFeature>("StarsDomainGreaterFeature1Inquisitor", bp => {
+                bp.SetName("The Stars Are Right - Inquisitor");
+                bp.SetDescription("");
                 bp.AddComponent<SpontaneousSpellConversion>(c => {
                     c.m_CharacterClass = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
@@ -187,6 +197,17 @@ namespace ExpandedContent.Tweaks.Domains {
                         new BlueprintAbilityReference()
                     };
                 });
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.HideNotAvailibleInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.Ranks = 1;
+                bp.ReapplyOnLevelUp = false;
+                bp.IsClassFeature = true;
+            });
+            var StarsDomainGreaterFeature1Hunter = Helpers.CreateBlueprint<BlueprintFeature>("StarsDomainGreaterFeature1Hunter", bp => {
+                bp.SetName("The Stars Are Right - Hunter");
+                bp.SetDescription("");
                 bp.AddComponent<SpontaneousSpellConversion>(c => {
                     c.m_CharacterClass = HunterClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
@@ -202,6 +223,17 @@ namespace ExpandedContent.Tweaks.Domains {
                         new BlueprintAbilityReference()
                     };
                 });
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.HideNotAvailibleInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.Ranks = 1;
+                bp.ReapplyOnLevelUp = false;
+                bp.IsClassFeature = true;
+            });
+            var StarsDomainGreaterFeature1Paladin = Helpers.CreateBlueprint<BlueprintFeature>("StarsDomainGreaterFeature1Paladin", bp => {
+                bp.SetName("The Stars Are Right - Paladin");
+                bp.SetDescription("");
                 bp.AddComponent<SpontaneousSpellConversion>(c => {
                     c.m_CharacterClass = PaladinClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
@@ -216,6 +248,38 @@ namespace ExpandedContent.Tweaks.Domains {
                         SunburstSpell.ToReference<BlueprintAbilityReference>(),
                         new BlueprintAbilityReference()
                     };
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.HideNotAvailibleInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.Ranks = 1;
+                bp.ReapplyOnLevelUp = false;
+                bp.IsClassFeature = true;
+            });
+            var StarsDomainGreaterFeature1 = Helpers.CreateBlueprint<BlueprintFeature>("StarsDomainGreaterFeature1", bp => {
+                bp.SetName("The Stars Are Right");
+                bp.SetDescription("At 8th level, you may spontaneously cast any of your Stars subdomain spells by swapping out a spell of an equal " +
+                    "spell level. Any Stars subdomain spell that you cast heals you an amount of hit point damage equal to the spell’s level; this effect happens as you cast the spell.");
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = StarsDomainGreaterFeature1Cleric.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = StarsDomainGreaterFeature1Inquisitor.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = HunterClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = StarsDomainGreaterFeature1Hunter.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = PaladinClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = StarsDomainGreaterFeature1Paladin.ToReference<BlueprintFeatureReference>();
                 });
                 bp.AddComponent<AddAbilityUseTrigger>(c => {
                     c.ActionsOnAllTargets = false;
@@ -577,8 +641,9 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.ReapplyOnLevelUp = false;
                 bp.IsClassFeature = true;
             });
-            var StarsDomainGreaterFeature2 = Helpers.CreateBlueprint<BlueprintFeature>("StarsDomainGreaterFeature2", bp => {
-                bp.SetName("The Stars Are Right 2");
+
+            var StarsDomainGreaterFeature2Cleric = Helpers.CreateBlueprint<BlueprintFeature>("StarsDomainGreaterFeature2Cleric", bp => {
+                bp.SetName("The Stars Are Right - Cleric 2");
                 bp.SetDescription("");
                 bp.AddComponent<SpontaneousSpellConversion>(c => {
                     c.m_CharacterClass = ClericClass.ToReference<BlueprintCharacterClassReference>();
@@ -595,6 +660,17 @@ namespace ExpandedContent.Tweaks.Domains {
                         PolarMidnightSpell.ToReference<BlueprintAbilityReference>()
                     };
                 });
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.HideNotAvailibleInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.Ranks = 1;
+                bp.ReapplyOnLevelUp = false;
+                bp.IsClassFeature = true;
+            });
+            var StarsDomainGreaterFeature2Inquisitor = Helpers.CreateBlueprint<BlueprintFeature>("StarsDomainGreaterFeature2Inquisitor", bp => {
+                bp.SetName("The Stars Are Right - Inquisitor 2");
+                bp.SetDescription("");
                 bp.AddComponent<SpontaneousSpellConversion>(c => {
                     c.m_CharacterClass = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
@@ -610,6 +686,17 @@ namespace ExpandedContent.Tweaks.Domains {
                         PolarMidnightSpell.ToReference<BlueprintAbilityReference>()
                     };
                 });
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.HideNotAvailibleInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.Ranks = 1;
+                bp.ReapplyOnLevelUp = false;
+                bp.IsClassFeature = true;
+            });
+            var StarsDomainGreaterFeature2Hunter = Helpers.CreateBlueprint<BlueprintFeature>("StarsDomainGreaterFeature2Hunter", bp => {
+                bp.SetName("The Stars Are Right - Hunter 2");
+                bp.SetDescription("");
                 bp.AddComponent<SpontaneousSpellConversion>(c => {
                     c.m_CharacterClass = HunterClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
@@ -625,6 +712,17 @@ namespace ExpandedContent.Tweaks.Domains {
                         PolarMidnightSpell.ToReference<BlueprintAbilityReference>()
                     };
                 });
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.HideNotAvailibleInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.Ranks = 1;
+                bp.ReapplyOnLevelUp = false;
+                bp.IsClassFeature = true;
+            });
+            var StarsDomainGreaterFeature2Paladin = Helpers.CreateBlueprint<BlueprintFeature>("StarsDomainGreaterFeature2Paladin", bp => {
+                bp.SetName("The Stars Are Right - Paladin 2");
+                bp.SetDescription("");
                 bp.AddComponent<SpontaneousSpellConversion>(c => {
                     c.m_CharacterClass = PaladinClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
@@ -639,6 +737,37 @@ namespace ExpandedContent.Tweaks.Domains {
                         new BlueprintAbilityReference(),
                         PolarMidnightSpell.ToReference<BlueprintAbilityReference>()
                     };
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.HideNotAvailibleInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.Ranks = 1;
+                bp.ReapplyOnLevelUp = false;
+                bp.IsClassFeature = true;
+            });
+            var StarsDomainGreaterFeature2 = Helpers.CreateBlueprint<BlueprintFeature>("StarsDomainGreaterFeature2", bp => {
+                bp.SetName("The Stars Are Right 2");
+                bp.SetDescription("");
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = StarsDomainGreaterFeature2Cleric.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = StarsDomainGreaterFeature2Inquisitor.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = HunterClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = StarsDomainGreaterFeature2Hunter.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = PaladinClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = StarsDomainGreaterFeature2Paladin.ToReference<BlueprintFeatureReference>();
                 });
                 bp.AddComponent<AddAbilityUseTrigger>(c => {
                     c.ActionsOnAllTargets = false;
@@ -709,8 +838,9 @@ namespace ExpandedContent.Tweaks.Domains {
             var WarpriestClass = Resources.GetBlueprint<BlueprintCharacterClass>("30b5e47d47a0e37438cc5a80c96cfb99");
             var WitchClass = Resources.GetBlueprint<BlueprintCharacterClass>("1b9873f1e7bfe5449bc84d03e9c8e3cc");
             var WizardClass = Resources.GetBlueprint<BlueprintCharacterClass>("ba34257984f4c41408ce1dc2004e342e");
-            var StargazerStarsDomainGreaterFeature1 = Helpers.CreateBlueprint<BlueprintFeature>("StargazerStarsDomainGreaterFeature1", bp => {
-                bp.SetName("The Stars Are Right - Stargazer");
+
+            var StarsDomainGreaterFeature1Alchemist = Helpers.CreateBlueprint<BlueprintFeature>("StarsDomainGreaterFeature1Alchemist", bp => {
+                bp.SetName("The Stars Are Right - Alchemist");
                 bp.SetDescription("");
                 bp.AddComponent<SpontaneousSpellConversion>(c => {
                     c.m_CharacterClass = AlchemistClass.ToReference<BlueprintCharacterClassReference>();
@@ -727,6 +857,17 @@ namespace ExpandedContent.Tweaks.Domains {
                         new BlueprintAbilityReference()
                     };
                 });
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.HideNotAvailibleInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.Ranks = 1;
+                bp.ReapplyOnLevelUp = false;
+                bp.IsClassFeature = true;
+            });
+            var StarsDomainGreaterFeature1Arcanist = Helpers.CreateBlueprint<BlueprintFeature>("StarsDomainGreaterFeature1Arcanist", bp => {
+                bp.SetName("The Stars Are Right - Arcanist");
+                bp.SetDescription("");
                 bp.AddComponent<SpontaneousSpellConversion>(c => {
                     c.m_CharacterClass = ArcanistClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
@@ -742,6 +883,17 @@ namespace ExpandedContent.Tweaks.Domains {
                         new BlueprintAbilityReference()
                     };
                 });
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.HideNotAvailibleInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.Ranks = 1;
+                bp.ReapplyOnLevelUp = false;
+                bp.IsClassFeature = true;
+            });
+            var StarsDomainGreaterFeature1Bard = Helpers.CreateBlueprint<BlueprintFeature>("StarsDomainGreaterFeature1Bard", bp => {
+                bp.SetName("The Stars Are Right - Bard");
+                bp.SetDescription("");
                 bp.AddComponent<SpontaneousSpellConversion>(c => {
                     c.m_CharacterClass = BardClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
@@ -757,6 +909,17 @@ namespace ExpandedContent.Tweaks.Domains {
                         new BlueprintAbilityReference()
                     };
                 });
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.HideNotAvailibleInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.Ranks = 1;
+                bp.ReapplyOnLevelUp = false;
+                bp.IsClassFeature = true;
+            });
+            var StarsDomainGreaterFeature1Bloodrager = Helpers.CreateBlueprint<BlueprintFeature>("StarsDomainGreaterFeature1Bloodrager", bp => {
+                bp.SetName("The Stars Are Right - Bloodrager");
+                bp.SetDescription("");
                 bp.AddComponent<SpontaneousSpellConversion>(c => {
                     c.m_CharacterClass = BloodragerClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
@@ -772,6 +935,17 @@ namespace ExpandedContent.Tweaks.Domains {
                         new BlueprintAbilityReference()
                     };
                 });
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.HideNotAvailibleInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.Ranks = 1;
+                bp.ReapplyOnLevelUp = false;
+                bp.IsClassFeature = true;
+            });
+            var StarsDomainGreaterFeature1Druid = Helpers.CreateBlueprint<BlueprintFeature>("StarsDomainGreaterFeature1Druid", bp => {
+                bp.SetName("The Stars Are Right - Druid");
+                bp.SetDescription("");
                 bp.AddComponent<SpontaneousSpellConversion>(c => {
                     c.m_CharacterClass = DruidClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
@@ -787,6 +961,17 @@ namespace ExpandedContent.Tweaks.Domains {
                         new BlueprintAbilityReference()
                     };
                 });
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.HideNotAvailibleInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.Ranks = 1;
+                bp.ReapplyOnLevelUp = false;
+                bp.IsClassFeature = true;
+            });
+            var StarsDomainGreaterFeature1Magus = Helpers.CreateBlueprint<BlueprintFeature>("StarsDomainGreaterFeature1Magus", bp => {
+                bp.SetName("The Stars Are Right - Magus");
+                bp.SetDescription("");
                 bp.AddComponent<SpontaneousSpellConversion>(c => {
                     c.m_CharacterClass = MagusClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
@@ -802,6 +987,17 @@ namespace ExpandedContent.Tweaks.Domains {
                         new BlueprintAbilityReference()
                     };
                 });
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.HideNotAvailibleInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.Ranks = 1;
+                bp.ReapplyOnLevelUp = false;
+                bp.IsClassFeature = true;
+            });
+            var StarsDomainGreaterFeature1Oracle = Helpers.CreateBlueprint<BlueprintFeature>("StarsDomainGreaterFeature1Oracle", bp => {
+                bp.SetName("The Stars Are Right - Oracle");
+                bp.SetDescription("");
                 bp.AddComponent<SpontaneousSpellConversion>(c => {
                     c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
@@ -817,6 +1013,17 @@ namespace ExpandedContent.Tweaks.Domains {
                         new BlueprintAbilityReference()
                     };
                 });
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.HideNotAvailibleInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.Ranks = 1;
+                bp.ReapplyOnLevelUp = false;
+                bp.IsClassFeature = true;
+            });
+            var StarsDomainGreaterFeature1Ranger = Helpers.CreateBlueprint<BlueprintFeature>("StarsDomainGreaterFeature1Ranger", bp => {
+                bp.SetName("The Stars Are Right - Ranger");
+                bp.SetDescription("");
                 bp.AddComponent<SpontaneousSpellConversion>(c => {
                     c.m_CharacterClass = RangerClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
@@ -832,6 +1039,17 @@ namespace ExpandedContent.Tweaks.Domains {
                         new BlueprintAbilityReference()
                     };
                 });
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.HideNotAvailibleInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.Ranks = 1;
+                bp.ReapplyOnLevelUp = false;
+                bp.IsClassFeature = true;
+            });
+            var StarsDomainGreaterFeature1Rogue = Helpers.CreateBlueprint<BlueprintFeature>("StarsDomainGreaterFeature1Rogue", bp => {
+                bp.SetName("The Stars Are Right - Rogue");
+                bp.SetDescription("");
                 bp.AddComponent<SpontaneousSpellConversion>(c => {
                     c.m_CharacterClass = RogueClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
@@ -847,6 +1065,17 @@ namespace ExpandedContent.Tweaks.Domains {
                         new BlueprintAbilityReference()
                     };
                 });
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.HideNotAvailibleInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.Ranks = 1;
+                bp.ReapplyOnLevelUp = false;
+                bp.IsClassFeature = true;
+            });
+            var StarsDomainGreaterFeature1Shaman = Helpers.CreateBlueprint<BlueprintFeature>("StarsDomainGreaterFeature1Shaman", bp => {
+                bp.SetName("The Stars Are Right - Shaman");
+                bp.SetDescription("");
                 bp.AddComponent<SpontaneousSpellConversion>(c => {
                     c.m_CharacterClass = ShamanClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
@@ -862,6 +1091,17 @@ namespace ExpandedContent.Tweaks.Domains {
                         new BlueprintAbilityReference()
                     };
                 });
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.HideNotAvailibleInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.Ranks = 1;
+                bp.ReapplyOnLevelUp = false;
+                bp.IsClassFeature = true;
+            });
+            var StarsDomainGreaterFeature1Skald = Helpers.CreateBlueprint<BlueprintFeature>("StarsDomainGreaterFeature1Skald", bp => {
+                bp.SetName("The Stars Are Right - Skald");
+                bp.SetDescription("");
                 bp.AddComponent<SpontaneousSpellConversion>(c => {
                     c.m_CharacterClass = SkaldClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
@@ -877,6 +1117,17 @@ namespace ExpandedContent.Tweaks.Domains {
                         new BlueprintAbilityReference()
                     };
                 });
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.HideNotAvailibleInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.Ranks = 1;
+                bp.ReapplyOnLevelUp = false;
+                bp.IsClassFeature = true;
+            });
+            var StarsDomainGreaterFeature1Sorcerer = Helpers.CreateBlueprint<BlueprintFeature>("StarsDomainGreaterFeature1Sorcerer", bp => {
+                bp.SetName("The Stars Are Right - Sorcerer");
+                bp.SetDescription("");
                 bp.AddComponent<SpontaneousSpellConversion>(c => {
                     c.m_CharacterClass = SorcererClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
@@ -892,6 +1143,17 @@ namespace ExpandedContent.Tweaks.Domains {
                         new BlueprintAbilityReference()
                     };
                 });
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.HideNotAvailibleInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.Ranks = 1;
+                bp.ReapplyOnLevelUp = false;
+                bp.IsClassFeature = true;
+            });
+            var StarsDomainGreaterFeature1Warpriest = Helpers.CreateBlueprint<BlueprintFeature>("StarsDomainGreaterFeature1Warpriest", bp => {
+                bp.SetName("The Stars Are Right - Warpriest");
+                bp.SetDescription("");
                 bp.AddComponent<SpontaneousSpellConversion>(c => {
                     c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
@@ -907,6 +1169,17 @@ namespace ExpandedContent.Tweaks.Domains {
                         new BlueprintAbilityReference()
                     };
                 });
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.HideNotAvailibleInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.Ranks = 1;
+                bp.ReapplyOnLevelUp = false;
+                bp.IsClassFeature = true;
+            });
+            var StarsDomainGreaterFeature1Witch = Helpers.CreateBlueprint<BlueprintFeature>("StarsDomainGreaterFeature1Witch", bp => {
+                bp.SetName("The Stars Are Right - Witch");
+                bp.SetDescription("");
                 bp.AddComponent<SpontaneousSpellConversion>(c => {
                     c.m_CharacterClass = WitchClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
@@ -922,6 +1195,17 @@ namespace ExpandedContent.Tweaks.Domains {
                         new BlueprintAbilityReference()
                     };
                 });
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.HideNotAvailibleInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.Ranks = 1;
+                bp.ReapplyOnLevelUp = false;
+                bp.IsClassFeature = true;
+            });
+            var StarsDomainGreaterFeature1Wizard = Helpers.CreateBlueprint<BlueprintFeature>("StarsDomainGreaterFeature1Wizard", bp => {
+                bp.SetName("The Stars Are Right - Wizard");
+                bp.SetDescription("");
                 bp.AddComponent<SpontaneousSpellConversion>(c => {
                     c.m_CharacterClass = WizardClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
@@ -945,8 +1229,95 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.ReapplyOnLevelUp = false;
                 bp.IsClassFeature = true;
             });
-            var StargazerStarsDomainGreaterFeature2 = Helpers.CreateBlueprint<BlueprintFeature>("StargazerStarsDomainGreaterFeature2", bp => {
+            var StargazerStarsDomainGreaterFeature1 = Helpers.CreateBlueprint<BlueprintFeature>("StargazerStarsDomainGreaterFeature1", bp => {
                 bp.SetName("The Stars Are Right - Stargazer");
+                bp.SetDescription("");
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = AlchemistClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = StarsDomainGreaterFeature1Alchemist.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = ArcanistClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = StarsDomainGreaterFeature1Arcanist.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = BardClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = StarsDomainGreaterFeature1Bard.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = BloodragerClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = StarsDomainGreaterFeature1Bloodrager.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = DruidClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = StarsDomainGreaterFeature1Druid.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = MagusClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = StarsDomainGreaterFeature1Magus.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = StarsDomainGreaterFeature1Oracle.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = RangerClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = StarsDomainGreaterFeature1Ranger.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = RogueClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = StarsDomainGreaterFeature1Rogue.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = ShamanClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = StarsDomainGreaterFeature1Shaman.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = SkaldClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = StarsDomainGreaterFeature1Skald.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = SorcererClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = StarsDomainGreaterFeature1Sorcerer.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = StarsDomainGreaterFeature1Warpriest.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = WitchClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = StarsDomainGreaterFeature1Witch.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = WizardClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = StarsDomainGreaterFeature1Wizard.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.HideNotAvailibleInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.Ranks = 1;
+                bp.ReapplyOnLevelUp = false;
+                bp.IsClassFeature = true;
+            });
+
+            var StarsDomainGreaterFeature2Alchemist = Helpers.CreateBlueprint<BlueprintFeature>("StarsDomainGreaterFeature2Alchemist", bp => {
+                bp.SetName("The Stars Are Right - Alchemist 2");
                 bp.SetDescription("");
                 bp.AddComponent<SpontaneousSpellConversion>(c => {
                     c.m_CharacterClass = AlchemistClass.ToReference<BlueprintCharacterClassReference>();
@@ -963,6 +1334,17 @@ namespace ExpandedContent.Tweaks.Domains {
                         PolarMidnightSpell.ToReference<BlueprintAbilityReference>()
                     };
                 });
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.HideNotAvailibleInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.Ranks = 1;
+                bp.ReapplyOnLevelUp = false;
+                bp.IsClassFeature = true;
+            });
+            var StarsDomainGreaterFeature2Arcanist = Helpers.CreateBlueprint<BlueprintFeature>("StarsDomainGreaterFeature2Arcanist", bp => {
+                bp.SetName("The Stars Are Right - Arcanist 2");
+                bp.SetDescription("");
                 bp.AddComponent<SpontaneousSpellConversion>(c => {
                     c.m_CharacterClass = ArcanistClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
@@ -978,6 +1360,17 @@ namespace ExpandedContent.Tweaks.Domains {
                         PolarMidnightSpell.ToReference<BlueprintAbilityReference>()
                     };
                 });
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.HideNotAvailibleInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.Ranks = 1;
+                bp.ReapplyOnLevelUp = false;
+                bp.IsClassFeature = true;
+            });
+            var StarsDomainGreaterFeature2Bard = Helpers.CreateBlueprint<BlueprintFeature>("StarsDomainGreaterFeature2Bard", bp => {
+                bp.SetName("The Stars Are Right - Bard 2");
+                bp.SetDescription("");
                 bp.AddComponent<SpontaneousSpellConversion>(c => {
                     c.m_CharacterClass = BardClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
@@ -993,6 +1386,17 @@ namespace ExpandedContent.Tweaks.Domains {
                         PolarMidnightSpell.ToReference<BlueprintAbilityReference>()
                     };
                 });
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.HideNotAvailibleInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.Ranks = 1;
+                bp.ReapplyOnLevelUp = false;
+                bp.IsClassFeature = true;
+            });
+            var StarsDomainGreaterFeature2Bloodrager = Helpers.CreateBlueprint<BlueprintFeature>("StarsDomainGreaterFeature2Bloodrager", bp => {
+                bp.SetName("The Stars Are Right - Bloodrager 2");
+                bp.SetDescription("");
                 bp.AddComponent<SpontaneousSpellConversion>(c => {
                     c.m_CharacterClass = BloodragerClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
@@ -1008,6 +1412,17 @@ namespace ExpandedContent.Tweaks.Domains {
                         PolarMidnightSpell.ToReference<BlueprintAbilityReference>()
                     };
                 });
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.HideNotAvailibleInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.Ranks = 1;
+                bp.ReapplyOnLevelUp = false;
+                bp.IsClassFeature = true;
+            });
+            var StarsDomainGreaterFeature2Druid = Helpers.CreateBlueprint<BlueprintFeature>("StarsDomainGreaterFeature2Druid", bp => {
+                bp.SetName("The Stars Are Right - Druid 2");
+                bp.SetDescription("");
                 bp.AddComponent<SpontaneousSpellConversion>(c => {
                     c.m_CharacterClass = DruidClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
@@ -1023,6 +1438,17 @@ namespace ExpandedContent.Tweaks.Domains {
                         PolarMidnightSpell.ToReference<BlueprintAbilityReference>()
                     };
                 });
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.HideNotAvailibleInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.Ranks = 1;
+                bp.ReapplyOnLevelUp = false;
+                bp.IsClassFeature = true;
+            });
+            var StarsDomainGreaterFeature2Magus = Helpers.CreateBlueprint<BlueprintFeature>("StarsDomainGreaterFeature2Magus", bp => {
+                bp.SetName("The Stars Are Right - Magus 2");
+                bp.SetDescription("");
                 bp.AddComponent<SpontaneousSpellConversion>(c => {
                     c.m_CharacterClass = MagusClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
@@ -1038,6 +1464,17 @@ namespace ExpandedContent.Tweaks.Domains {
                         PolarMidnightSpell.ToReference<BlueprintAbilityReference>()
                     };
                 });
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.HideNotAvailibleInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.Ranks = 1;
+                bp.ReapplyOnLevelUp = false;
+                bp.IsClassFeature = true;
+            });
+            var StarsDomainGreaterFeature2Oracle = Helpers.CreateBlueprint<BlueprintFeature>("StarsDomainGreaterFeature2Oracle", bp => {
+                bp.SetName("The Stars Are Right - Oracle 2");
+                bp.SetDescription("");
                 bp.AddComponent<SpontaneousSpellConversion>(c => {
                     c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
@@ -1053,6 +1490,17 @@ namespace ExpandedContent.Tweaks.Domains {
                         PolarMidnightSpell.ToReference<BlueprintAbilityReference>()
                     };
                 });
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.HideNotAvailibleInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.Ranks = 1;
+                bp.ReapplyOnLevelUp = false;
+                bp.IsClassFeature = true;
+            });
+            var StarsDomainGreaterFeature2Ranger = Helpers.CreateBlueprint<BlueprintFeature>("StarsDomainGreaterFeature2Ranger", bp => {
+                bp.SetName("The Stars Are Right - Ranger 2");
+                bp.SetDescription("");
                 bp.AddComponent<SpontaneousSpellConversion>(c => {
                     c.m_CharacterClass = RangerClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
@@ -1068,6 +1516,17 @@ namespace ExpandedContent.Tweaks.Domains {
                         PolarMidnightSpell.ToReference<BlueprintAbilityReference>()
                     };
                 });
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.HideNotAvailibleInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.Ranks = 1;
+                bp.ReapplyOnLevelUp = false;
+                bp.IsClassFeature = true;
+            });
+            var StarsDomainGreaterFeature2Rogue = Helpers.CreateBlueprint<BlueprintFeature>("StarsDomainGreaterFeature2Rogue", bp => {
+                bp.SetName("The Stars Are Right - Rogue 2");
+                bp.SetDescription("");
                 bp.AddComponent<SpontaneousSpellConversion>(c => {
                     c.m_CharacterClass = RogueClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
@@ -1083,6 +1542,17 @@ namespace ExpandedContent.Tweaks.Domains {
                         PolarMidnightSpell.ToReference<BlueprintAbilityReference>()
                     };
                 });
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.HideNotAvailibleInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.Ranks = 1;
+                bp.ReapplyOnLevelUp = false;
+                bp.IsClassFeature = true;
+            });
+            var StarsDomainGreaterFeature2Shaman = Helpers.CreateBlueprint<BlueprintFeature>("StarsDomainGreaterFeature2Shaman", bp => {
+                bp.SetName("The Stars Are Right - Shaman 2");
+                bp.SetDescription("");
                 bp.AddComponent<SpontaneousSpellConversion>(c => {
                     c.m_CharacterClass = ShamanClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
@@ -1098,6 +1568,17 @@ namespace ExpandedContent.Tweaks.Domains {
                         PolarMidnightSpell.ToReference<BlueprintAbilityReference>()
                     };
                 });
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.HideNotAvailibleInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.Ranks = 1;
+                bp.ReapplyOnLevelUp = false;
+                bp.IsClassFeature = true;
+            });
+            var StarsDomainGreaterFeature2Skald = Helpers.CreateBlueprint<BlueprintFeature>("StarsDomainGreaterFeature2Skald", bp => {
+                bp.SetName("The Stars Are Right - Skald 2");
+                bp.SetDescription("");
                 bp.AddComponent<SpontaneousSpellConversion>(c => {
                     c.m_CharacterClass = SkaldClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
@@ -1113,6 +1594,17 @@ namespace ExpandedContent.Tweaks.Domains {
                         PolarMidnightSpell.ToReference<BlueprintAbilityReference>()
                     };
                 });
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.HideNotAvailibleInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.Ranks = 1;
+                bp.ReapplyOnLevelUp = false;
+                bp.IsClassFeature = true;
+            });
+            var StarsDomainGreaterFeature2Sorcerer = Helpers.CreateBlueprint<BlueprintFeature>("StarsDomainGreaterFeature2Sorcerer", bp => {
+                bp.SetName("The Stars Are Right - Sorcerer 2");
+                bp.SetDescription("");
                 bp.AddComponent<SpontaneousSpellConversion>(c => {
                     c.m_CharacterClass = SorcererClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
@@ -1128,6 +1620,17 @@ namespace ExpandedContent.Tweaks.Domains {
                         PolarMidnightSpell.ToReference<BlueprintAbilityReference>()
                     };
                 });
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.HideNotAvailibleInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.Ranks = 1;
+                bp.ReapplyOnLevelUp = false;
+                bp.IsClassFeature = true;
+            });
+            var StarsDomainGreaterFeature2Warpriest = Helpers.CreateBlueprint<BlueprintFeature>("StarsDomainGreaterFeature2Warpriest", bp => {
+                bp.SetName("The Stars Are Right - Warpriest 2");
+                bp.SetDescription("");
                 bp.AddComponent<SpontaneousSpellConversion>(c => {
                     c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
@@ -1143,6 +1646,17 @@ namespace ExpandedContent.Tweaks.Domains {
                         PolarMidnightSpell.ToReference<BlueprintAbilityReference>()
                     };
                 });
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.HideNotAvailibleInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.Ranks = 1;
+                bp.ReapplyOnLevelUp = false;
+                bp.IsClassFeature = true;
+            });
+            var StarsDomainGreaterFeature2Witch = Helpers.CreateBlueprint<BlueprintFeature>("StarsDomainGreaterFeature2Witch", bp => {
+                bp.SetName("The Stars Are Right - Witch 2");
+                bp.SetDescription("");
                 bp.AddComponent<SpontaneousSpellConversion>(c => {
                     c.m_CharacterClass = WitchClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
@@ -1158,6 +1672,17 @@ namespace ExpandedContent.Tweaks.Domains {
                         PolarMidnightSpell.ToReference<BlueprintAbilityReference>()
                     };
                 });
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.HideNotAvailibleInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.Ranks = 1;
+                bp.ReapplyOnLevelUp = false;
+                bp.IsClassFeature = true;
+            });
+            var StarsDomainGreaterFeature2Wizard = Helpers.CreateBlueprint<BlueprintFeature>("StarsDomainGreaterFeature2Wizard", bp => {
+                bp.SetName("The Stars Are Right - Wizard 2");
+                bp.SetDescription("");
                 bp.AddComponent<SpontaneousSpellConversion>(c => {
                     c.m_CharacterClass = WizardClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
@@ -1172,6 +1697,92 @@ namespace ExpandedContent.Tweaks.Domains {
                         new BlueprintAbilityReference(),
                         PolarMidnightSpell.ToReference<BlueprintAbilityReference>()
                     };
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.HideNotAvailibleInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.Ranks = 1;
+                bp.ReapplyOnLevelUp = false;
+                bp.IsClassFeature = true;
+            });
+            var StargazerStarsDomainGreaterFeature2 = Helpers.CreateBlueprint<BlueprintFeature>("StargazerStarsDomainGreaterFeature2", bp => {
+                bp.SetName("The Stars Are Right - Stargazer");
+                bp.SetDescription("");
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = AlchemistClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = StarsDomainGreaterFeature2Alchemist.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = ArcanistClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = StarsDomainGreaterFeature2Arcanist.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = BardClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = StarsDomainGreaterFeature2Bard.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = BloodragerClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = StarsDomainGreaterFeature2Bloodrager.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = DruidClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = StarsDomainGreaterFeature2Druid.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = MagusClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = StarsDomainGreaterFeature2Magus.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = StarsDomainGreaterFeature2Oracle.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = RangerClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = StarsDomainGreaterFeature2Ranger.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = RogueClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = StarsDomainGreaterFeature2Rogue.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = ShamanClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = StarsDomainGreaterFeature2Shaman.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = SkaldClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = StarsDomainGreaterFeature2Skald.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = SorcererClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = StarsDomainGreaterFeature2Sorcerer.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = StarsDomainGreaterFeature2Warpriest.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = WitchClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = StarsDomainGreaterFeature2Witch.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = WizardClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = StarsDomainGreaterFeature2Wizard.ToReference<BlueprintFeatureReference>();
                 });
                 bp.m_AllowNonContextActions = false;
                 bp.HideInUI = true;

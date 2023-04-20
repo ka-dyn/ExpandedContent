@@ -912,9 +912,9 @@ namespace ExpandedContent.Tweaks.Classes {
                     "determining the effects of hexes. In addition, the stargazer adds all hexes available to a shaman with the heavens spirit to the witch list.");
                 bp.m_Icon = WitchHexSelection.m_Icon;
                 bp.IsClassFeature = true;
-                bp.Mode |= SelectionMode.Default;
+                bp.Mode = SelectionMode.Default;
                 bp.Group = FeatureGroup.WitchHex;
-                bp.m_AllFeatures = WitchHexSelection.m_Features;
+                bp.m_AllFeatures = WitchHexSelection.m_AllFeatures;
             });
             //Hooking Stargazer into the shared witchhex params
             var WitchHexDCPropertyLevel = Resources.GetBlueprint<BlueprintUnitProperty>("bdc230ce338f427ba74de65597b0d57a").GetComponent<SummClassLevelGetter>();
@@ -2746,6 +2746,7 @@ namespace ExpandedContent.Tweaks.Classes {
                 bp.AddComponent<BuffMovementSpeed>(c => {
                     c.Descriptor = ModifierDescriptor.Enhancement;
                     c.Value = 10;
+                    c.ContextBonus = new ContextValue();
                     c.CappedOnMultiplier = false;
                     c.CappedMinimum = false;
                 });
@@ -3363,6 +3364,7 @@ namespace ExpandedContent.Tweaks.Classes {
                 bp.AddComponent<BuffMovementSpeed>(c => {
                     c.Descriptor = ModifierDescriptor.Enhancement;
                     c.Value = 10;
+                    c.ContextBonus = new ContextValue();
                     c.CappedOnMultiplier = false;
                     c.CappedMinimum = false;
                 });
@@ -3384,8 +3386,8 @@ namespace ExpandedContent.Tweaks.Classes {
                 });
                 bp.HideInUI = false;
             });
-            //Sidereal Arcana Options
-            var StargazerSiderealTheBridgeFeature = Helpers.CreateBlueprint<BlueprintFeature>("StargazerSiderealTheBridgeFeature", bp => {
+            //Holder to make UI look nice
+            var StargazerSiderealTheBridgeHolder = Helpers.CreateBlueprint<BlueprintFeature>("StargazerSiderealTheBridgeHolder", bp => {
                 bp.SetName("Sidereal Arcana - The Bridge");
                 bp.SetDescription("The stargazer is warded against winter’s darkness. He gains cold resistance 5 and an immunity to blindness effects caused by demons.");
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
@@ -3393,6 +3395,30 @@ namespace ExpandedContent.Tweaks.Classes {
                     c.Level = 10;
                     c.m_Feature = StargazerSiderealTheBridgeEffect.ToReference<BlueprintFeatureReference>();
                     c.BeforeThisLevel = true;
+                });
+                bp.HideInUI = true;
+                bp.IsClassFeature = true;
+            });
+
+
+
+
+
+
+
+
+
+
+
+
+            //Sidereal Arcana Options
+            var StargazerSiderealTheBridgeFeature = Helpers.CreateBlueprint<BlueprintFeature>("StargazerSiderealTheBridgeFeature", bp => {
+                bp.SetName("Sidereal Arcana - The Bridge");
+                bp.SetDescription("The stargazer is warded against winter’s darkness. He gains cold resistance 5 and an immunity to blindness effects caused by demons.");
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        StargazerSiderealTheBridgeHolder.ToReference<BlueprintUnitFactReference>()
+                    };
                 });
                 bp.HideInUI = true;
                 bp.IsClassFeature = true;
@@ -3561,12 +3587,28 @@ namespace ExpandedContent.Tweaks.Classes {
                 bp.m_AllowNonContextActions = false;
                 bp.m_AllFeatures = new BlueprintFeatureReference[] {
                     StargazerSiderealTheBridgeFeature.ToReference<BlueprintFeatureReference>(),
+                    StargazerSiderealTheDaughterFeature.ToReference<BlueprintFeatureReference>(),
+                    StargazerSiderealTheFollowerFeature.ToReference<BlueprintFeatureReference>(),
+                    StargazerSiderealTheLanternBearerFeature.ToReference<BlueprintFeatureReference>(),
+                    StargazerSiderealTheMotherFeature.ToReference<BlueprintFeatureReference>(),
+                    StargazerSiderealTheNewlywedsFeature.ToReference<BlueprintFeatureReference>(),
+                    StargazerSiderealThePackFeature.ToReference<BlueprintFeatureReference>(),
+                    StargazerSiderealThePatriarchFeature.ToReference<BlueprintFeatureReference>(),
+                    StargazerSiderealTheRiderFeature.ToReference<BlueprintFeatureReference>(),
+                    StargazerSiderealTheStargazerFeature.ToReference<BlueprintFeatureReference>(),
+                    StargazerSiderealTheStrangerFeature.ToReference<BlueprintFeatureReference>(),
+                    StargazerSiderealTheThrushFeature.ToReference<BlueprintFeatureReference>(),
+                    StargazerSiderealTheWagonFeature.ToReference<BlueprintFeatureReference>(),
 
                 };
             });
             var StargazerStarsDanceFeature = Helpers.CreateBlueprint<BlueprintFeature>("StargazerStarsDanceFeature", bp => {
                 bp.SetName("Stars’ Dance");
                 bp.SetDescription("At 10th level, the stargazer’s mastery of the Cosmic Caravan reaches its zenith. Once per day, the stargazer can replace one of his sidereal arcana with any other one.");
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = true;
             });

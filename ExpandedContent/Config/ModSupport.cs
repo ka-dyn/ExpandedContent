@@ -169,70 +169,46 @@ namespace ExpandedContent.Config {
                             c.SpellLevel = 9;
                         });
                     });
+                    var StarsDomainGreaterFeature2Classes = new BlueprintFeature[] {
+                        Resources.GetModBlueprint<BlueprintFeature>("StarsDomainGreaterFeature2Cleric"),
+                        Resources.GetModBlueprint<BlueprintFeature>("StarsDomainGreaterFeature2Inquisitor"),
+                        Resources.GetModBlueprint<BlueprintFeature>("StarsDomainGreaterFeature2Hunter"),
+                        Resources.GetModBlueprint<BlueprintFeature>("StarsDomainGreaterFeature2Paladin"),
+                        Resources.GetModBlueprint<BlueprintFeature>("StarsDomainGreaterFeature2Alchemist"),
+                        Resources.GetModBlueprint<BlueprintFeature>("StarsDomainGreaterFeature2Arcanist"),
+                        Resources.GetModBlueprint<BlueprintFeature>("StarsDomainGreaterFeature2Bard"),
+                        Resources.GetModBlueprint<BlueprintFeature>("StarsDomainGreaterFeature2Bloodrager"),
+                        Resources.GetModBlueprint<BlueprintFeature>("StarsDomainGreaterFeature2Druid"),
+                        Resources.GetModBlueprint<BlueprintFeature>("StarsDomainGreaterFeature2Magus"),
+                        Resources.GetModBlueprint<BlueprintFeature>("StarsDomainGreaterFeature2Oracle"),
+                        Resources.GetModBlueprint<BlueprintFeature>("StarsDomainGreaterFeature2Ranger"),
+                        Resources.GetModBlueprint<BlueprintFeature>("StarsDomainGreaterFeature2Rogue"),
+                        Resources.GetModBlueprint<BlueprintFeature>("StarsDomainGreaterFeature2Shaman"),
+                        Resources.GetModBlueprint<BlueprintFeature>("StarsDomainGreaterFeature2Skald"),
+                        Resources.GetModBlueprint<BlueprintFeature>("StarsDomainGreaterFeature2Sorcerer"),
+                        Resources.GetModBlueprint<BlueprintFeature>("StarsDomainGreaterFeature2Warpriest"),
+                        Resources.GetModBlueprint<BlueprintFeature>("StarsDomainGreaterFeature2Witch"),
+                        Resources.GetModBlueprint<BlueprintFeature>("StarsDomainGreaterFeature2Wizard")
+                    };
+                    foreach (var StarsDomainGreaterFeature2Class in StarsDomainGreaterFeature2Classes) {
+                        StarsDomainGreaterFeature2Class.GetComponents<SpontaneousSpellConversion>().ForEach(c => {
+                            c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
+                                new BlueprintAbilityReference(),
+                                new BlueprintAbilityReference(),
+                                new BlueprintAbilityReference(),
+                                new BlueprintAbilityReference(),
+                                new BlueprintAbilityReference(),
+                                new BlueprintAbilityReference(),
+                                new BlueprintAbilityReference(),
+                                new BlueprintAbilityReference(),
+                                new BlueprintAbilityReference(),
+                                MeteorSwarmAbility
+                            };
+                        });
+                    }
                     var StarsDomainGreaterFeature2 = Resources.GetBlueprint<BlueprintFeature>("962a7e6f19604aaeac784faa9df3b4af");
-                    StarsDomainGreaterFeature2.RemoveComponents<SpontaneousSpellConversion>();
-                    StarsDomainGreaterFeature2.TemporaryContext(bp => {
-                        bp.AddComponent<SpontaneousSpellConversion>(c => {
-                            c.m_CharacterClass = ClericClass.ToReference<BlueprintCharacterClassReference>();
-                            c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
-                        new BlueprintAbilityReference(),
-                        new BlueprintAbilityReference(),
-                        new BlueprintAbilityReference(),
-                        new BlueprintAbilityReference(),
-                        new BlueprintAbilityReference(),
-                        new BlueprintAbilityReference(),
-                        new BlueprintAbilityReference(),
-                        new BlueprintAbilityReference(),
-                        new BlueprintAbilityReference(),
-                        MeteorSwarmAbility
-                    };
-                        });
-                        bp.AddComponent<SpontaneousSpellConversion>(c => {
-                            c.m_CharacterClass = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
-                            c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
-                        new BlueprintAbilityReference(),
-                        new BlueprintAbilityReference(),
-                        new BlueprintAbilityReference(),
-                        new BlueprintAbilityReference(),
-                        new BlueprintAbilityReference(),
-                        new BlueprintAbilityReference(),
-                        new BlueprintAbilityReference(),
-                        new BlueprintAbilityReference(),
-                        new BlueprintAbilityReference(),
-                        MeteorSwarmAbility
-                    };
-                        });
-                        bp.AddComponent<SpontaneousSpellConversion>(c => {
-                            c.m_CharacterClass = HunterClass.ToReference<BlueprintCharacterClassReference>();
-                            c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
-                        new BlueprintAbilityReference(),
-                        new BlueprintAbilityReference(),
-                        new BlueprintAbilityReference(),
-                        new BlueprintAbilityReference(),
-                        new BlueprintAbilityReference(),
-                        new BlueprintAbilityReference(),
-                        new BlueprintAbilityReference(),
-                        new BlueprintAbilityReference(),
-                        new BlueprintAbilityReference(),
-                        MeteorSwarmAbility
-                    };
-                        });
-                        bp.AddComponent<SpontaneousSpellConversion>(c => {
-                            c.m_CharacterClass = PaladinClass.ToReference<BlueprintCharacterClassReference>();
-                            c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
-                        new BlueprintAbilityReference(),
-                        new BlueprintAbilityReference(),
-                        new BlueprintAbilityReference(),
-                        new BlueprintAbilityReference(),
-                        new BlueprintAbilityReference(),
-                        new BlueprintAbilityReference(),
-                        new BlueprintAbilityReference(),
-                        new BlueprintAbilityReference(),
-                        new BlueprintAbilityReference(),
-                        MeteorSwarmAbility
-                    };
-                        });
-                        bp.AddComponent<AddAbilityUseTrigger>(c => {
+                    StarsDomainGreaterFeature2.RemoveComponents<AddAbilityUseTrigger>();
+                    StarsDomainGreaterFeature2.AddComponent<AddAbilityUseTrigger>(c => {
                             c.ActionsOnAllTargets = false;
                             c.AfterCast = false;
                             c.ActionsOnTarget = false;
@@ -275,8 +251,7 @@ namespace ExpandedContent.Config {
                                             }
                                         })
                                 });
-                        });
-                    });
+                        });                    
                     var StarsDomainProgression = Resources.GetBlueprint<BlueprintProgression>("74f44da8e5ed4f2da62f04ea0b82abe8");
                     var StarsDomainProgressionSecondary = Resources.GetBlueprint<BlueprintProgression>("46f8d2ba6d3344fc95d8eb93938e78a1");
                     StarsDomainProgression.SetDescription("\nThe firmament provides you inspiration, and you draw power from the stars’ distant light.\nGuarded Mind: You gain a +2 insight bonus on saving throws " +
@@ -287,6 +262,11 @@ namespace ExpandedContent.Config {
                     "against all mind-affecting effects.\nThe Stars Are Right: At 8th level, you may spontaneously cast any of your Stars subdomain spells by swapping out a spell of an equal " +
                     "spell level. Any Stars subdomain spell that you cast heals you an amount of hit point damage equal to the spell’s level; this effect happens as you cast the spell.\nDomain " +
                     "{g|Encyclopedia:Spell}Spells{/g}: entropic shield, hypnotic pattern, blink, dimension door, summon monster V, overwhelming presence, sunbeam, sunburst, meteor swarm.");                    
+                    var StarsDomainSpellList = Resources.GetModBlueprint<BlueprintSpellList>("StarsDomainSpellList");
+                    StarsDomainSpellList.SpellsByLevel
+                        .Where(level => level.SpellLevel == 9)
+                        .ForEach(level => level.Spells.Clear());
+                    StarsDomainSpellList.SpellsByLevel[9].m_Spells.Add(MeteorSwarmAbility);
                     var HeavensSpiritSpellList = Resources.GetModBlueprint<BlueprintSpellList>("HeavensSpiritSpellList");
                     HeavensSpiritSpellList.SpellsByLevel
                         .Where(level => level.SpellLevel == 9)
