@@ -2990,6 +2990,355 @@ namespace ExpandedContent.Tweaks.Classes {
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
+            var StargazerStarsDanceBridgeSwapLanternBearer = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceBridgeSwapLanternBearer", bp => {
+                bp.SetName("The Bridge to The Lantern Bearer");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Bridge and gains The Lantern Bearer." +
+                    "\nThe LanternBearer: The stargazer’s ability to conjure light increases. Any spell cast by the stargazer with the fire descriptor has its spell level increased by 2.");
+                bp.m_Icon = StarsDanceLanternBearerIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceLanternBearerBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceBridgeBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceLanternBearerBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceBridgeFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceBridgeSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceBridgeSwapMother = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceBridgeSwapMother", bp => {
+                bp.SetName("The Bridge to The Mother");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Bridge and gains The Mother." +
+                    "\nThe Mother: The stargazer channels the nurturing heart of the Caravan. Whenever the stargazer casts a cure spell, casts breath of life, or uses the healing hex, " +
+                    "he adds twice his class level to the hit points restored.");
+                bp.m_Icon = StarsDanceMotherIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceMotherBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceBridgeBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceMotherBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceBridgeFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceBridgeSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceBridgeSwapNewlyweds = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceBridgeSwapNewlyweds", bp => {
+                bp.SetName("The Bridge to The Newlyweds");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Bridge and gains The Newlyweds." +
+                    "\nThe Newlyweds: The sign of intertwined lovers grants the stargazer a romantic mystique. Whenever he uses a spell with the compulsion descriptor the save DC increases by 1. " +
+                    "In addition, stargazer gains a +2 morale bonus on saving throws against compulsion effects.");
+                bp.m_Icon = StarsDanceNewlywedsIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceNewlywedsBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceBridgeBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceNewlywedsBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceBridgeFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceBridgeSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceBridgeSwapPack = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceBridgeSwapPack", bp => {
+                bp.SetName("The Bridge to The Pack");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Bridge and gains The Pack." +
+                    "\nThe Pack: The stargazer becomes attuned to the beasts that follow the Caravan. He gains a +2 bonus on Nature checks. In addition, whenever he casts a summoning " +
+                    "spell that conjures multiple creatures of the animal type, he summons an additional animal of that type.");
+                bp.m_Icon = StarsDancePackIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDancePackBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceBridgeBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDancePackBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceBridgeFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceBridgeSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceBridgeSwapPatriarch = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceBridgeSwapPatriarch", bp => {
+                bp.SetName("The Bridge to The Patriarch");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Bridge and gains The Patriarch." +
+                    "\nThe Patriarch: The stargazer gains an innate sense of direction. He gains a +4 bonus on {g|Encyclopedia:Knowledge_World}Knowledge (World){/g} and " +
+                    "Perception checks.");
+                bp.m_Icon = StarsDancePatriarchIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDancePatriarchBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceBridgeBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDancePatriarchBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceBridgeFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceBridgeSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceBridgeSwapRider = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceBridgeSwapRider", bp => {
+                bp.SetName("The Bridge to The Rider");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Bridge and gains The Rider." +
+                    "\nThe Rider: The stargazer and his mount ride as one. While he is mounted both rider and mount gain +1 on all saves and an immunity to difficult terrain.");
+                bp.m_Icon = StarsDanceRiderIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceRiderBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceBridgeBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceRiderBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceBridgeFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceBridgeSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceBridgeSwapStargazer = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceBridgeSwapStargazer", bp => {
+                bp.SetName("The Bridge to The Stargazer");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Bridge and gains The Stargazer." +
+                    "\nThe Stargazer: The constellation that shares his name warns the stargazer of danger. The stargazer gains a +2 insight bonus on " +
+                    "initiative checks and is not considered flat-footed before he acts in combat, although this does not allow him to act if he " +
+                    "could not otherwise do so.");
+                bp.m_Icon = StarsDanceStargazerIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceStargazerBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceBridgeBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceStargazerBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceBridgeFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceBridgeSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
             var StargazerStarsDanceBridgeSwapStranger = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceBridgeSwapStranger", bp => {
                 bp.SetName("The Bridge to The Stranger");
                 bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Bridge and gains The Stranger." +
@@ -3040,11 +3389,119 @@ namespace ExpandedContent.Tweaks.Classes {
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
+            var StargazerStarsDanceBridgeSwapThrush = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceBridgeSwapThrush", bp => {
+                bp.SetName("The Bridge to The Thrush");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Bridge and gains The Thrush." +
+                    "\nThe Thrush: The stargazer’s voice becomes harmonious. The stargazer gains a bonus equal to half his class level on charisma skill checks (minimum 1).");
+                bp.m_Icon = StarsDanceThrushIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceThrushBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceBridgeBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceThrushBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceBridgeFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceBridgeSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceBridgeSwapWagon = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceBridgeSwapWagon", bp => {
+                bp.SetName("The Bridge to The Wagon");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Bridge and gains The Wagon." +
+                    "\nThe Wagon: The stargazer’s movement becomes swift and steady. He gains a +10-foot enhancement bonus to his movement speed. In addition, " +
+                    "three times per day as a swift action, he can gain the effects of freedom of movement for 1 round.");
+                bp.m_Icon = StarsDanceWagonIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceWagonBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceBridgeBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceWagonBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceBridgeFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceBridgeSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
             StargazerStarsDanceBridgeSwapParent.AddComponent<AbilityVariants>(c => {
                 c.m_Variants = new BlueprintAbilityReference[] {
                     StargazerStarsDanceBridgeSwapDaughter.ToReference<BlueprintAbilityReference>(),
                     StargazerStarsDanceBridgeSwapFollower.ToReference<BlueprintAbilityReference>(),
-                    StargazerStarsDanceBridgeSwapStranger.ToReference<BlueprintAbilityReference>()
+                    StargazerStarsDanceBridgeSwapLanternBearer.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceBridgeSwapMother.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceBridgeSwapNewlyweds.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceBridgeSwapPack.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceBridgeSwapPatriarch.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceBridgeSwapRider.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceBridgeSwapStargazer.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceBridgeSwapStranger.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceBridgeSwapThrush.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceBridgeSwapWagon.ToReference<BlueprintAbilityReference>()
                 };
             });
             //Daughter
@@ -3147,7 +3604,355 @@ namespace ExpandedContent.Tweaks.Classes {
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
-
+            var StargazerStarsDanceDaughterSwapLanternBearer = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceDaughterSwapLanternBearer", bp => {
+                bp.SetName("The Daughter to The Lantern Bearer");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Daughter and gains The Lantern Bearer." +
+                    "\nThe LanternBearer: The stargazer’s ability to conjure light increases. Any spell cast by the stargazer with the fire descriptor has its spell level increased by 2.");
+                bp.m_Icon = StarsDanceLanternBearerIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceLanternBearerBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceDaughterBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceLanternBearerBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceDaughterFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceDaughterSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceDaughterSwapMother = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceDaughterSwapMother", bp => {
+                bp.SetName("The Daughter to The Mother");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Daughter and gains The Mother." +
+                    "\nThe Mother: The stargazer channels the nurturing heart of the Caravan. Whenever the stargazer casts a cure spell, casts breath of life, or uses the healing hex, " +
+                    "he adds twice his class level to the hit points restored.");
+                bp.m_Icon = StarsDanceMotherIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceMotherBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceDaughterBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceMotherBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceDaughterFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceDaughterSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceDaughterSwapNewlyweds = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceDaughterSwapNewlyweds", bp => {
+                bp.SetName("The Daughter to The Newlyweds");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Daughter and gains The Newlyweds." +
+                    "\nThe Newlyweds: The sign of intertwined lovers grants the stargazer a romantic mystique. Whenever he uses a spell with the compulsion descriptor the save DC increases by 1. " +
+                    "In addition, stargazer gains a +2 morale bonus on saving throws against compulsion effects.");
+                bp.m_Icon = StarsDanceNewlywedsIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceNewlywedsBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceDaughterBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceNewlywedsBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceDaughterFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceDaughterSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceDaughterSwapPack = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceDaughterSwapPack", bp => {
+                bp.SetName("The Daughter to The Pack");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Daughter and gains The Pack." +
+                    "\nThe Pack: The stargazer becomes attuned to the beasts that follow the Caravan. He gains a +2 bonus on Nature checks. In addition, whenever he casts a summoning " +
+                    "spell that conjures multiple creatures of the animal type, he summons an additional animal of that type.");
+                bp.m_Icon = StarsDancePackIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDancePackBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceDaughterBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDancePackBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceDaughterFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceDaughterSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceDaughterSwapPatriarch = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceDaughterSwapPatriarch", bp => {
+                bp.SetName("The Daughter to The Patriarch");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Daughter and gains The Patriarch." +
+                    "\nThe Patriarch: The stargazer gains an innate sense of direction. He gains a +4 bonus on {g|Encyclopedia:Knowledge_World}Knowledge (World){/g} and " +
+                    "Perception checks.");
+                bp.m_Icon = StarsDancePatriarchIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDancePatriarchBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceDaughterBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDancePatriarchBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceDaughterFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceDaughterSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceDaughterSwapRider = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceDaughterSwapRider", bp => {
+                bp.SetName("The Daughter to The Rider");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Daughter and gains The Rider." +
+                    "\nThe Rider: The stargazer and his mount ride as one. While he is mounted both rider and mount gain +1 on all saves and an immunity to difficult terrain.");
+                bp.m_Icon = StarsDanceRiderIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceRiderBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceDaughterBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceRiderBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceDaughterFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceDaughterSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceDaughterSwapStargazer = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceDaughterSwapStargazer", bp => {
+                bp.SetName("The Daughter to The Stargazer");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Daughter and gains The Stargazer." +
+                    "\nThe Stargazer: The constellation that shares his name warns the stargazer of danger. The stargazer gains a +2 insight bonus on " +
+                    "initiative checks and is not considered flat-footed before he acts in combat, although this does not allow him to act if he " +
+                    "could not otherwise do so.");
+                bp.m_Icon = StarsDanceStargazerIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceStargazerBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceDaughterBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceStargazerBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceDaughterFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceDaughterSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
             var StargazerStarsDanceDaughterSwapStranger = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceDaughterSwapStranger", bp => {
                 bp.SetName("The Daughter to The Stranger");
                 bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Daughter and gains The Stranger." +
@@ -3198,11 +4003,119 @@ namespace ExpandedContent.Tweaks.Classes {
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
+            var StargazerStarsDanceDaughterSwapThrush = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceDaughterSwapThrush", bp => {
+                bp.SetName("The Daughter to The Thrush");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Daughter and gains The Thrush." +
+                    "\nThe Thrush: The stargazer’s voice becomes harmonious. The stargazer gains a bonus equal to half his class level on charisma skill checks (minimum 1).");
+                bp.m_Icon = StarsDanceThrushIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceThrushBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceDaughterBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceThrushBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceDaughterFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceDaughterSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceDaughterSwapWagon = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceDaughterSwapWagon", bp => {
+                bp.SetName("The Daughter to The Wagon");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Daughter and gains The Wagon." +
+                    "\nThe Wagon: The stargazer’s movement becomes swift and steady. He gains a +10-foot enhancement bonus to his movement speed. In addition, " +
+                    "three times per day as a swift action, he can gain the effects of freedom of movement for 1 round.");
+                bp.m_Icon = StarsDanceWagonIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceWagonBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceDaughterBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceWagonBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceDaughterFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceDaughterSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
             StargazerStarsDanceDaughterSwapParent.AddComponent<AbilityVariants>(c => {
                 c.m_Variants = new BlueprintAbilityReference[] {
                     StargazerStarsDanceDaughterSwapBridge.ToReference<BlueprintAbilityReference>(),
                     StargazerStarsDanceDaughterSwapFollower.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceDaughterSwapLanternBearer.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceDaughterSwapMother.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceDaughterSwapNewlyweds.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceDaughterSwapPack.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceDaughterSwapPatriarch.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceDaughterSwapRider.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceDaughterSwapStargazer.ToReference<BlueprintAbilityReference>(),
                     StargazerStarsDanceDaughterSwapStranger.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceDaughterSwapThrush.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceDaughterSwapWagon.ToReference<BlueprintAbilityReference>()
 
                 };
             });
@@ -3306,6 +4219,355 @@ namespace ExpandedContent.Tweaks.Classes {
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
+            var StargazerStarsDanceFollowerSwapLanternBearer = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceFollowerSwapLanternBearer", bp => {
+                bp.SetName("The Follower to The Lantern Bearer");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Follower and gains The Lantern Bearer." +
+                    "\nThe LanternBearer: The stargazer’s ability to conjure light increases. Any spell cast by the stargazer with the fire descriptor has its spell level increased by 2.");
+                bp.m_Icon = StarsDanceLanternBearerIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceLanternBearerBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceFollowerBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceLanternBearerBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceFollowerFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceFollowerSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceFollowerSwapMother = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceFollowerSwapMother", bp => {
+                bp.SetName("The Follower to The Mother");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Follower and gains The Mother." +
+                    "\nThe Mother: The stargazer channels the nurturing heart of the Caravan. Whenever the stargazer casts a cure spell, casts breath of life, or uses the healing hex, " +
+                    "he adds twice his class level to the hit points restored.");
+                bp.m_Icon = StarsDanceMotherIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceMotherBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceFollowerBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceMotherBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceFollowerFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceFollowerSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceFollowerSwapNewlyweds = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceFollowerSwapNewlyweds", bp => {
+                bp.SetName("The Follower to The Newlyweds");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Follower and gains The Newlyweds." +
+                    "\nThe Newlyweds: The sign of intertwined lovers grants the stargazer a romantic mystique. Whenever he uses a spell with the compulsion descriptor the save DC increases by 1. " +
+                    "In addition, stargazer gains a +2 morale bonus on saving throws against compulsion effects.");
+                bp.m_Icon = StarsDanceNewlywedsIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceNewlywedsBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceFollowerBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceNewlywedsBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceFollowerFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceFollowerSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceFollowerSwapPack = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceFollowerSwapPack", bp => {
+                bp.SetName("The Follower to The Pack");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Follower and gains The Pack." +
+                    "\nThe Pack: The stargazer becomes attuned to the beasts that follow the Caravan. He gains a +2 bonus on Nature checks. In addition, whenever he casts a summoning " +
+                    "spell that conjures multiple creatures of the animal type, he summons an additional animal of that type.");
+                bp.m_Icon = StarsDancePackIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDancePackBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceFollowerBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDancePackBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceFollowerFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceFollowerSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceFollowerSwapPatriarch = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceFollowerSwapPatriarch", bp => {
+                bp.SetName("The Follower to The Patriarch");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Follower and gains The Patriarch." +
+                    "\nThe Patriarch: The stargazer gains an innate sense of direction. He gains a +4 bonus on {g|Encyclopedia:Knowledge_World}Knowledge (World){/g} and " +
+                    "Perception checks.");
+                bp.m_Icon = StarsDancePatriarchIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDancePatriarchBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceFollowerBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDancePatriarchBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceFollowerFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceFollowerSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceFollowerSwapRider = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceFollowerSwapRider", bp => {
+                bp.SetName("The Follower to The Rider");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Follower and gains The Rider." +
+                    "\nThe Rider: The stargazer and his mount ride as one. While he is mounted both rider and mount gain +1 on all saves and an immunity to difficult terrain.");
+                bp.m_Icon = StarsDanceRiderIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceRiderBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceFollowerBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceRiderBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceFollowerFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceFollowerSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceFollowerSwapStargazer = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceFollowerSwapStargazer", bp => {
+                bp.SetName("The Follower to The Stargazer");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Follower and gains The Stargazer." +
+                    "\nThe Stargazer: The constellation that shares his name warns the stargazer of danger. The stargazer gains a +2 insight bonus on " +
+                    "initiative checks and is not considered flat-footed before he acts in combat, although this does not allow him to act if he " +
+                    "could not otherwise do so.");
+                bp.m_Icon = StarsDanceStargazerIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceStargazerBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceFollowerBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceStargazerBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceFollowerFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceFollowerSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
             var StargazerStarsDanceFollowerSwapStranger = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceFollowerSwapStranger", bp => {
                 bp.SetName("The Follower to The Stranger");
                 bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Follower and gains The Stranger." +
@@ -3356,21 +4618,4421 @@ namespace ExpandedContent.Tweaks.Classes {
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
+            var StargazerStarsDanceFollowerSwapThrush = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceFollowerSwapThrush", bp => {
+                bp.SetName("The Follower to The Thrush");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Follower and gains The Thrush." +
+                    "\nThe Thrush: The stargazer’s voice becomes harmonious. The stargazer gains a bonus equal to half his class level on charisma skill checks (minimum 1).");
+                bp.m_Icon = StarsDanceThrushIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceThrushBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceFollowerBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceThrushBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceFollowerFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceFollowerSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceFollowerSwapWagon = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceFollowerSwapWagon", bp => {
+                bp.SetName("The Follower to The Wagon");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Follower and gains The Wagon." +
+                    "\nThe Wagon: The stargazer’s movement becomes swift and steady. He gains a +10-foot enhancement bonus to his movement speed. In addition, " +
+                    "three times per day as a swift action, he can gain the effects of freedom of movement for 1 round.");
+                bp.m_Icon = StarsDanceWagonIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceWagonBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceFollowerBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceWagonBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceFollowerFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceFollowerSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
             StargazerStarsDanceFollowerSwapParent.AddComponent<AbilityVariants>(c => {
                 c.m_Variants = new BlueprintAbilityReference[] {
                     StargazerStarsDanceFollowerSwapBridge.ToReference<BlueprintAbilityReference>(),
                     StargazerStarsDanceFollowerSwapDaughter.ToReference<BlueprintAbilityReference>(),
-                    StargazerStarsDanceFollowerSwapStranger.ToReference<BlueprintAbilityReference>()
+                    StargazerStarsDanceFollowerSwapLanternBearer.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceFollowerSwapMother.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceFollowerSwapNewlyweds.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceFollowerSwapPack.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceFollowerSwapPatriarch.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceFollowerSwapRider.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceFollowerSwapStargazer.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceFollowerSwapStranger.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceFollowerSwapThrush.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceFollowerSwapWagon.ToReference<BlueprintAbilityReference>()
                 };
             });
+            //Lantern Bearer
+            var StargazerStarsDanceLanternBearerSwapBridge = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceLanternBearerSwapBridge", bp => {
+                bp.SetName("The Lantern Bearer to The Bridge");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Lantern Bearer and gains The Bridge." +
+                    "\nThe Bridge: The stargazer is warded against winter’s darkness. He gains cold resistance 5 and an immunity to blindness effects caused by demons.");
+                bp.m_Icon = StarsDanceBridgeIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceBridgeBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceLanternBearerBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceBridgeBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceLanternBearerFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceLanternBearerSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceLanternBearerSwapDaughter = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceLanternBearerSwapDaughter", bp => {
+                bp.SetName("The Lantern Bearer to The Daughter");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Lantern Bearer and gains The Daughter." +
+                    "\nThe Daughter: The Daughter emboldens hearts with the promise of springtime and new life. The stargazer and allies within 10 feet gain a +4 morale bonus on saving " +
+                    "throws against fear. The stargazer is immune to fear effects created by demons.");
+                bp.m_Icon = StarsDanceDaughterIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceDaughterBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceLanternBearerBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceDaughterBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceLanternBearerFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceLanternBearerSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceLanternBearerSwapFollower = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceLanternBearerSwapFollower", bp => {
+                bp.SetName("The Lantern Bearer to The Follower");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Lantern Bearer and gains The Follower." +
+                    "\nThe Follower: The specter of death follows the stargazer, shielding him from doom. The stargazer gains a +4 bonus on saves against death effects. In addition, he is immune " +
+                    "to all death effects, negative energy effects, and negative levels created by demons.");
+                bp.m_Icon = StarsDanceFollowerIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceFollowerBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceLanternBearerBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceFollowerBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceLanternBearerFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceLanternBearerSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceLanternBearerSwapMother = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceLanternBearerSwapMother", bp => {
+                bp.SetName("The Lantern Bearer to The Mother");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Lantern Bearer and gains The Mother." +
+                    "\nThe Mother: The stargazer channels the nurturing heart of the Caravan. Whenever the stargazer casts a cure spell, casts breath of life, or uses the healing hex, " +
+                    "he adds twice his class level to the hit points restored.");
+                bp.m_Icon = StarsDanceMotherIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceMotherBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceLanternBearerBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceMotherBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceLanternBearerFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceLanternBearerSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceLanternBearerSwapNewlyweds = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceLanternBearerSwapNewlyweds", bp => {
+                bp.SetName("The Lantern Bearer to The Newlyweds");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Lantern Bearer and gains The Newlyweds." +
+                    "\nThe Newlyweds: The sign of intertwined lovers grants the stargazer a romantic mystique. Whenever he uses a spell with the compulsion descriptor the save DC increases by 1. " +
+                    "In addition, stargazer gains a +2 morale bonus on saving throws against compulsion effects.");
+                bp.m_Icon = StarsDanceNewlywedsIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceNewlywedsBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceLanternBearerBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceNewlywedsBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceLanternBearerFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceLanternBearerSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceLanternBearerSwapPack = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceLanternBearerSwapPack", bp => {
+                bp.SetName("The Lantern Bearer to The Pack");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Lantern Bearer and gains The Pack." +
+                    "\nThe Pack: The stargazer becomes attuned to the beasts that follow the Caravan. He gains a +2 bonus on Nature checks. In addition, whenever he casts a summoning " +
+                    "spell that conjures multiple creatures of the animal type, he summons an additional animal of that type.");
+                bp.m_Icon = StarsDancePackIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDancePackBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceLanternBearerBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDancePackBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceLanternBearerFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceLanternBearerSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceLanternBearerSwapPatriarch = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceLanternBearerSwapPatriarch", bp => {
+                bp.SetName("The Lantern Bearer to The Patriarch");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Lantern Bearer and gains The Patriarch." +
+                    "\nThe Patriarch: The stargazer gains an innate sense of direction. He gains a +4 bonus on {g|Encyclopedia:Knowledge_World}Knowledge (World){/g} and " +
+                    "Perception checks.");
+                bp.m_Icon = StarsDancePatriarchIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDancePatriarchBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceLanternBearerBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDancePatriarchBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceLanternBearerFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceLanternBearerSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceLanternBearerSwapRider = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceLanternBearerSwapRider", bp => {
+                bp.SetName("The Lantern Bearer to The Rider");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Lantern Bearer and gains The Rider." +
+                    "\nThe Rider: The stargazer and his mount ride as one. While he is mounted both rider and mount gain +1 on all saves and an immunity to difficult terrain.");
+                bp.m_Icon = StarsDanceRiderIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceRiderBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceLanternBearerBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceRiderBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceLanternBearerFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceLanternBearerSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceLanternBearerSwapStargazer = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceLanternBearerSwapStargazer", bp => {
+                bp.SetName("The Lantern Bearer to The Stargazer");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Lantern Bearer and gains The Stargazer." +
+                    "\nThe Stargazer: The constellation that shares his name warns the stargazer of danger. The stargazer gains a +2 insight bonus on " +
+                    "initiative checks and is not considered flat-footed before he acts in combat, although this does not allow him to act if he " +
+                    "could not otherwise do so.");
+                bp.m_Icon = StarsDanceStargazerIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceStargazerBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceLanternBearerBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceStargazerBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceLanternBearerFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceLanternBearerSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceLanternBearerSwapStranger = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceLanternBearerSwapStranger", bp => {
+                bp.SetName("The Lantern Bearer to The Stranger");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Lantern Bearer and gains The Stranger." +
+                    "\nThe Stranger: The stargazer learns to blend seamlessly into others’ cultures. He can use vanish on himself as a swift action spell-like ability " +
+                    "a number of times equal to half his stargazer level (min 1) per day.");
+                bp.m_Icon = StarsDanceStrangerIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceStrangerBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceLanternBearerBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceStrangerBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceLanternBearerFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceLanternBearerSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceLanternBearerSwapThrush = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceLanternBearerSwapThrush", bp => {
+                bp.SetName("The Lantern Bearer to The Thrush");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Lantern Bearer and gains The Thrush." +
+                    "\nThe Thrush: The stargazer’s voice becomes harmonious. The stargazer gains a bonus equal to half his class level on charisma skill checks (minimum 1).");
+                bp.m_Icon = StarsDanceThrushIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceThrushBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceLanternBearerBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceThrushBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceLanternBearerFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceLanternBearerSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceLanternBearerSwapWagon = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceLanternBearerSwapWagon", bp => {
+                bp.SetName("The Lantern Bearer to The Wagon");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Lantern Bearer and gains The Wagon." +
+                    "\nThe Wagon: The stargazer’s movement becomes swift and steady. He gains a +10-foot enhancement bonus to his movement speed. In addition, " +
+                    "three times per day as a swift action, he can gain the effects of freedom of movement for 1 round.");
+                bp.m_Icon = StarsDanceWagonIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceWagonBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceLanternBearerBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceWagonBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceLanternBearerFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceLanternBearerSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            StargazerStarsDanceLanternBearerSwapParent.AddComponent<AbilityVariants>(c => {
+                c.m_Variants = new BlueprintAbilityReference[] {
+                    StargazerStarsDanceLanternBearerSwapBridge.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceLanternBearerSwapDaughter.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceLanternBearerSwapFollower.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceLanternBearerSwapMother.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceLanternBearerSwapNewlyweds.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceLanternBearerSwapPack.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceLanternBearerSwapPatriarch.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceLanternBearerSwapRider.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceLanternBearerSwapStargazer.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceLanternBearerSwapStranger.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceLanternBearerSwapThrush.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceLanternBearerSwapWagon.ToReference<BlueprintAbilityReference>()
+                };
+            });
+            //Mother
+            var StargazerStarsDanceMotherSwapBridge = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceMotherSwapBridge", bp => {
+                bp.SetName("The Mother to The Bridge");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Mother and gains The Bridge." +
+                    "\nThe Bridge: The stargazer is warded against winter’s darkness. He gains cold resistance 5 and an immunity to blindness effects caused by demons.");
+                bp.m_Icon = StarsDanceBridgeIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceBridgeBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceMotherBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceBridgeBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceMotherFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceMotherSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceMotherSwapDaughter = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceMotherSwapDaughter", bp => {
+                bp.SetName("The Mother to The Daughter");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Mother and gains The Daughter." +
+                    "\nThe Daughter: The Daughter emboldens hearts with the promise of springtime and new life. The stargazer and allies within 10 feet gain a +4 morale bonus on saving " +
+                    "throws against fear. The stargazer is immune to fear effects created by demons.");
+                bp.m_Icon = StarsDanceDaughterIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceDaughterBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceMotherBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceDaughterBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceMotherFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceMotherSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceMotherSwapFollower = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceMotherSwapFollower", bp => {
+                bp.SetName("The Mother to The Follower");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Mother and gains The Follower." +
+                    "\nThe Follower: The specter of death follows the stargazer, shielding him from doom. The stargazer gains a +4 bonus on saves against death effects. In addition, he is immune " +
+                    "to all death effects, negative energy effects, and negative levels created by demons.");
+                bp.m_Icon = StarsDanceFollowerIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceFollowerBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceMotherBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceFollowerBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceMotherFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceMotherSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceMotherSwapLanternBearer = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceMotherSwapLanternBearer", bp => {
+                bp.SetName("The Mother to The Lantern Bearer");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Mother and gains The Lantern Bearer." +
+                    "\nThe LanternBearer: The stargazer’s ability to conjure light increases. Any spell cast by the stargazer with the fire descriptor has its spell level increased by 2.");
+                bp.m_Icon = StarsDanceLanternBearerIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceLanternBearerBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceMotherBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceLanternBearerBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceMotherFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceMotherSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceMotherSwapNewlyweds = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceMotherSwapNewlyweds", bp => {
+                bp.SetName("The Mother to The Newlyweds");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Mother and gains The Newlyweds." +
+                    "\nThe Newlyweds: The sign of intertwined lovers grants the stargazer a romantic mystique. Whenever he uses a spell with the compulsion descriptor the save DC increases by 1. " +
+                    "In addition, stargazer gains a +2 morale bonus on saving throws against compulsion effects.");
+                bp.m_Icon = StarsDanceNewlywedsIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceNewlywedsBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceMotherBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceNewlywedsBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceMotherFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceMotherSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceMotherSwapPack = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceMotherSwapPack", bp => {
+                bp.SetName("The Mother to The Pack");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Mother and gains The Pack." +
+                    "\nThe Pack: The stargazer becomes attuned to the beasts that follow the Caravan. He gains a +2 bonus on Nature checks. In addition, whenever he casts a summoning " +
+                    "spell that conjures multiple creatures of the animal type, he summons an additional animal of that type.");
+                bp.m_Icon = StarsDancePackIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDancePackBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceMotherBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDancePackBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceMotherFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceMotherSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceMotherSwapPatriarch = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceMotherSwapPatriarch", bp => {
+                bp.SetName("The Mother to The Patriarch");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Mother and gains The Patriarch." +
+                    "\nThe Patriarch: The stargazer gains an innate sense of direction. He gains a +4 bonus on {g|Encyclopedia:Knowledge_World}Knowledge (World){/g} and " +
+                    "Perception checks.");
+                bp.m_Icon = StarsDancePatriarchIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDancePatriarchBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceMotherBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDancePatriarchBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceMotherFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceMotherSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceMotherSwapRider = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceMotherSwapRider", bp => {
+                bp.SetName("The Mother to The Rider");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Mother and gains The Rider." +
+                    "\nThe Rider: The stargazer and his mount ride as one. While he is mounted both rider and mount gain +1 on all saves and an immunity to difficult terrain.");
+                bp.m_Icon = StarsDanceRiderIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceRiderBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceMotherBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceRiderBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceMotherFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceMotherSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceMotherSwapStargazer = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceMotherSwapStargazer", bp => {
+                bp.SetName("The Mother to The Stargazer");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Mother and gains The Stargazer." +
+                    "\nThe Stargazer: The constellation that shares his name warns the stargazer of danger. The stargazer gains a +2 insight bonus on " +
+                    "initiative checks and is not considered flat-footed before he acts in combat, although this does not allow him to act if he " +
+                    "could not otherwise do so.");
+                bp.m_Icon = StarsDanceStargazerIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceStargazerBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceMotherBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceStargazerBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceMotherFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceMotherSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceMotherSwapStranger = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceMotherSwapStranger", bp => {
+                bp.SetName("The Mother to The Stranger");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Mother and gains The Stranger." +
+                    "\nThe Stranger: The stargazer learns to blend seamlessly into others’ cultures. He can use vanish on himself as a swift action spell-like ability " +
+                    "a number of times equal to half his stargazer level (min 1) per day.");
+                bp.m_Icon = StarsDanceStrangerIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceStrangerBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceMotherBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceStrangerBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceMotherFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceMotherSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceMotherSwapThrush = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceMotherSwapThrush", bp => {
+                bp.SetName("The Mother to The Thrush");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Mother and gains The Thrush." +
+                    "\nThe Thrush: The stargazer’s voice becomes harmonious. The stargazer gains a bonus equal to half his class level on charisma skill checks (minimum 1).");
+                bp.m_Icon = StarsDanceThrushIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceThrushBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceMotherBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceThrushBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceMotherFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceMotherSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceMotherSwapWagon = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceMotherSwapWagon", bp => {
+                bp.SetName("The Mother to The Wagon");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Mother and gains The Wagon." +
+                    "\nThe Wagon: The stargazer’s movement becomes swift and steady. He gains a +10-foot enhancement bonus to his movement speed. In addition, " +
+                    "three times per day as a swift action, he can gain the effects of freedom of movement for 1 round.");
+                bp.m_Icon = StarsDanceWagonIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceWagonBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceMotherBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceWagonBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceMotherFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceMotherSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            StargazerStarsDanceMotherSwapParent.AddComponent<AbilityVariants>(c => {
+                c.m_Variants = new BlueprintAbilityReference[] {
+                    StargazerStarsDanceMotherSwapBridge.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceMotherSwapDaughter.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceMotherSwapFollower.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceMotherSwapLanternBearer.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceMotherSwapNewlyweds.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceMotherSwapPack.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceMotherSwapPatriarch.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceMotherSwapRider.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceMotherSwapStargazer.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceMotherSwapStranger.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceMotherSwapThrush.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceMotherSwapWagon.ToReference<BlueprintAbilityReference>()
+                };
+            });
+            //Newlyweds
+            var StargazerStarsDanceNewlywedsSwapBridge = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceNewlywedsSwapBridge", bp => {
+                bp.SetName("The Newlyweds to The Bridge");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Newlyweds and gains The Bridge." +
+                    "\nThe Bridge: The stargazer is warded against winter’s darkness. He gains cold resistance 5 and an immunity to blindness effects caused by demons.");
+                bp.m_Icon = StarsDanceBridgeIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceBridgeBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceNewlywedsBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceBridgeBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceNewlywedsFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceNewlywedsSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceNewlywedsSwapDaughter = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceNewlywedsSwapDaughter", bp => {
+                bp.SetName("The Newlyweds to The Daughter");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Newlyweds and gains The Daughter." +
+                    "\nThe Daughter: The Daughter emboldens hearts with the promise of springtime and new life. The stargazer and allies within 10 feet gain a +4 morale bonus on saving " +
+                    "throws against fear. The stargazer is immune to fear effects created by demons.");
+                bp.m_Icon = StarsDanceDaughterIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceDaughterBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceNewlywedsBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceDaughterBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceNewlywedsFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceNewlywedsSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceNewlywedsSwapFollower = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceNewlywedsSwapFollower", bp => {
+                bp.SetName("The Newlyweds to The Follower");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Newlyweds and gains The Follower." +
+                    "\nThe Follower: The specter of death follows the stargazer, shielding him from doom. The stargazer gains a +4 bonus on saves against death effects. In addition, he is immune " +
+                    "to all death effects, negative energy effects, and negative levels created by demons.");
+                bp.m_Icon = StarsDanceFollowerIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceFollowerBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceNewlywedsBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceFollowerBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceNewlywedsFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceNewlywedsSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceNewlywedsSwapLanternBearer = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceNewlywedsSwapLanternBearer", bp => {
+                bp.SetName("The Newlyweds to The Lantern Bearer");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Newlyweds and gains The Lantern Bearer." +
+                    "\nThe LanternBearer: The stargazer’s ability to conjure light increases. Any spell cast by the stargazer with the fire descriptor has its spell level increased by 2.");
+                bp.m_Icon = StarsDanceLanternBearerIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceLanternBearerBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceNewlywedsBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceLanternBearerBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceNewlywedsFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceNewlywedsSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceNewlywedsSwapMother = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceNewlywedsSwapMother", bp => {
+                bp.SetName("The Newlyweds to The Mother");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Newlyweds and gains The Mother." +
+                    "\nThe Mother: The stargazer channels the nurturing heart of the Caravan. Whenever the stargazer casts a cure spell, casts breath of life, or uses the healing hex, " +
+                    "he adds twice his class level to the hit points restored.");
+                bp.m_Icon = StarsDanceMotherIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceMotherBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceNewlywedsBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceMotherBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceNewlywedsFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceNewlywedsSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceNewlywedsSwapPack = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceNewlywedsSwapPack", bp => {
+                bp.SetName("The Newlyweds to The Pack");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Newlyweds and gains The Pack." +
+                    "\nThe Pack: The stargazer becomes attuned to the beasts that follow the Caravan. He gains a +2 bonus on Nature checks. In addition, whenever he casts a summoning " +
+                    "spell that conjures multiple creatures of the animal type, he summons an additional animal of that type.");
+                bp.m_Icon = StarsDancePackIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDancePackBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceNewlywedsBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDancePackBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceNewlywedsFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceNewlywedsSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceNewlywedsSwapPatriarch = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceNewlywedsSwapPatriarch", bp => {
+                bp.SetName("The Newlyweds to The Patriarch");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Newlyweds and gains The Patriarch." +
+                    "\nThe Patriarch: The stargazer gains an innate sense of direction. He gains a +4 bonus on {g|Encyclopedia:Knowledge_World}Knowledge (World){/g} and " +
+                    "Perception checks.");
+                bp.m_Icon = StarsDancePatriarchIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDancePatriarchBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceNewlywedsBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDancePatriarchBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceNewlywedsFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceNewlywedsSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceNewlywedsSwapRider = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceNewlywedsSwapRider", bp => {
+                bp.SetName("The Newlyweds to The Rider");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Newlyweds and gains The Rider." +
+                    "\nThe Rider: The stargazer and his mount ride as one. While he is mounted both rider and mount gain +1 on all saves and an immunity to difficult terrain.");
+                bp.m_Icon = StarsDanceRiderIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceRiderBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceNewlywedsBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceRiderBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceNewlywedsFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceNewlywedsSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceNewlywedsSwapStargazer = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceNewlywedsSwapStargazer", bp => {
+                bp.SetName("The Newlyweds to The Stargazer");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Newlyweds and gains The Stargazer." +
+                    "\nThe Stargazer: The constellation that shares his name warns the stargazer of danger. The stargazer gains a +2 insight bonus on " +
+                    "initiative checks and is not considered flat-footed before he acts in combat, although this does not allow him to act if he " +
+                    "could not otherwise do so.");
+                bp.m_Icon = StarsDanceStargazerIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceStargazerBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceNewlywedsBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceStargazerBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceNewlywedsFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceNewlywedsSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceNewlywedsSwapStranger = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceNewlywedsSwapStranger", bp => {
+                bp.SetName("The Newlyweds to The Stranger");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Newlyweds and gains The Stranger." +
+                    "\nThe Stranger: The stargazer learns to blend seamlessly into others’ cultures. He can use vanish on himself as a swift action spell-like ability " +
+                    "a number of times equal to half his stargazer level (min 1) per day.");
+                bp.m_Icon = StarsDanceStrangerIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceStrangerBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceNewlywedsBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceStrangerBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceNewlywedsFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceNewlywedsSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceNewlywedsSwapThrush = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceNewlywedsSwapThrush", bp => {
+                bp.SetName("The Newlyweds to The Thrush");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Newlyweds and gains The Thrush." +
+                    "\nThe Thrush: The stargazer’s voice becomes harmonious. The stargazer gains a bonus equal to half his class level on charisma skill checks (minimum 1).");
+                bp.m_Icon = StarsDanceThrushIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceThrushBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceNewlywedsBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceThrushBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceNewlywedsFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceNewlywedsSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceNewlywedsSwapWagon = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceNewlywedsSwapWagon", bp => {
+                bp.SetName("The Newlyweds to The Wagon");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Newlyweds and gains The Wagon." +
+                    "\nThe Wagon: The stargazer’s movement becomes swift and steady. He gains a +10-foot enhancement bonus to his movement speed. In addition, " +
+                    "three times per day as a swift action, he can gain the effects of freedom of movement for 1 round.");
+                bp.m_Icon = StarsDanceWagonIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceWagonBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceNewlywedsBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceWagonBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceNewlywedsFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceNewlywedsSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            StargazerStarsDanceNewlywedsSwapParent.AddComponent<AbilityVariants>(c => {
+                c.m_Variants = new BlueprintAbilityReference[] {
+                    StargazerStarsDanceNewlywedsSwapBridge.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceNewlywedsSwapDaughter.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceNewlywedsSwapFollower.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceNewlywedsSwapLanternBearer.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceNewlywedsSwapMother.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceNewlywedsSwapPack.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceNewlywedsSwapPatriarch.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceNewlywedsSwapRider.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceNewlywedsSwapStargazer.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceNewlywedsSwapStranger.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceNewlywedsSwapThrush.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceNewlywedsSwapWagon.ToReference<BlueprintAbilityReference>()
+                };
+            });
+            //Pack
+            var StargazerStarsDancePackSwapBridge = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDancePackSwapBridge", bp => {
+                bp.SetName("The Pack to The Bridge");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Pack and gains The Bridge." +
+                    "\nThe Bridge: The stargazer is warded against winter’s darkness. He gains cold resistance 5 and an immunity to blindness effects caused by demons.");
+                bp.m_Icon = StarsDanceBridgeIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceBridgeBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDancePackBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceBridgeBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDancePackFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDancePackSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDancePackSwapDaughter = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDancePackSwapDaughter", bp => {
+                bp.SetName("The Pack to The Daughter");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Pack and gains The Daughter." +
+                    "\nThe Daughter: The Daughter emboldens hearts with the promise of springtime and new life. The stargazer and allies within 10 feet gain a +4 morale bonus on saving " +
+                    "throws against fear. The stargazer is immune to fear effects created by demons.");
+                bp.m_Icon = StarsDanceDaughterIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceDaughterBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDancePackBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceDaughterBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDancePackFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDancePackSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDancePackSwapFollower = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDancePackSwapFollower", bp => {
+                bp.SetName("The Pack to The Follower");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Pack and gains The Follower." +
+                    "\nThe Follower: The specter of death follows the stargazer, shielding him from doom. The stargazer gains a +4 bonus on saves against death effects. In addition, he is immune " +
+                    "to all death effects, negative energy effects, and negative levels created by demons.");
+                bp.m_Icon = StarsDanceFollowerIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceFollowerBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDancePackBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceFollowerBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDancePackFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDancePackSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDancePackSwapLanternBearer = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDancePackSwapLanternBearer", bp => {
+                bp.SetName("The Pack to The Lantern Bearer");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Pack and gains The Lantern Bearer." +
+                    "\nThe LanternBearer: The stargazer’s ability to conjure light increases. Any spell cast by the stargazer with the fire descriptor has its spell level increased by 2.");
+                bp.m_Icon = StarsDanceLanternBearerIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceLanternBearerBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDancePackBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceLanternBearerBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDancePackFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDancePackSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDancePackSwapMother = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDancePackSwapMother", bp => {
+                bp.SetName("The Pack to The Mother");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Pack and gains The Mother." +
+                    "\nThe Mother: The stargazer channels the nurturing heart of the Caravan. Whenever the stargazer casts a cure spell, casts breath of life, or uses the healing hex, " +
+                    "he adds twice his class level to the hit points restored.");
+                bp.m_Icon = StarsDanceMotherIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceMotherBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDancePackBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceMotherBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDancePackFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDancePackSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDancePackSwapNewlyweds = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDancePackSwapNewlyweds", bp => {
+                bp.SetName("The Pack to The Newlyweds");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Pack and gains The Newlyweds." +
+                    "\nThe Newlyweds: The sign of intertwined lovers grants the stargazer a romantic mystique. Whenever he uses a spell with the compulsion descriptor the save DC increases by 1. " +
+                    "In addition, stargazer gains a +2 morale bonus on saving throws against compulsion effects.");
+                bp.m_Icon = StarsDanceNewlywedsIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceNewlywedsBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDancePackBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceNewlywedsBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDancePackFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDancePackSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDancePackSwapPatriarch = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDancePackSwapPatriarch", bp => {
+                bp.SetName("The Pack to The Patriarch");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Pack and gains The Patriarch." +
+                    "\nThe Patriarch: The stargazer gains an innate sense of direction. He gains a +4 bonus on {g|Encyclopedia:Knowledge_World}Knowledge (World){/g} and " +
+                    "Perception checks.");
+                bp.m_Icon = StarsDancePatriarchIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDancePatriarchBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDancePackBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDancePatriarchBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDancePackFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDancePackSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDancePackSwapRider = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDancePackSwapRider", bp => {
+                bp.SetName("The Pack to The Rider");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Pack and gains The Rider." +
+                    "\nThe Rider: The stargazer and his mount ride as one. While he is mounted both rider and mount gain +1 on all saves and an immunity to difficult terrain.");
+                bp.m_Icon = StarsDanceRiderIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceRiderBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDancePackBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceRiderBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDancePackFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDancePackSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDancePackSwapStargazer = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDancePackSwapStargazer", bp => {
+                bp.SetName("The Pack to The Stargazer");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Pack and gains The Stargazer." +
+                    "\nThe Stargazer: The constellation that shares his name warns the stargazer of danger. The stargazer gains a +2 insight bonus on " +
+                    "initiative checks and is not considered flat-footed before he acts in combat, although this does not allow him to act if he " +
+                    "could not otherwise do so.");
+                bp.m_Icon = StarsDanceStargazerIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceStargazerBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDancePackBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceStargazerBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDancePackFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDancePackSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDancePackSwapStranger = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDancePackSwapStranger", bp => {
+                bp.SetName("The Pack to The Stranger");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Pack and gains The Stranger." +
+                    "\nThe Stranger: The stargazer learns to blend seamlessly into others’ cultures. He can use vanish on himself as a swift action spell-like ability " +
+                    "a number of times equal to half his stargazer level (min 1) per day.");
+                bp.m_Icon = StarsDanceStrangerIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceStrangerBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDancePackBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceStrangerBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDancePackFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDancePackSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDancePackSwapThrush = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDancePackSwapThrush", bp => {
+                bp.SetName("The Pack to The Thrush");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Pack and gains The Thrush." +
+                    "\nThe Thrush: The stargazer’s voice becomes harmonious. The stargazer gains a bonus equal to half his class level on charisma skill checks (minimum 1).");
+                bp.m_Icon = StarsDanceThrushIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceThrushBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDancePackBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceThrushBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDancePackFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDancePackSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDancePackSwapWagon = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDancePackSwapWagon", bp => {
+                bp.SetName("The Pack to The Wagon");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Pack and gains The Wagon." +
+                    "\nThe Wagon: The stargazer’s movement becomes swift and steady. He gains a +10-foot enhancement bonus to his movement speed. In addition, " +
+                    "three times per day as a swift action, he can gain the effects of freedom of movement for 1 round.");
+                bp.m_Icon = StarsDanceWagonIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceWagonBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDancePackBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceWagonBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDancePackFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDancePackSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            StargazerStarsDancePackSwapParent.AddComponent<AbilityVariants>(c => {
+                c.m_Variants = new BlueprintAbilityReference[] {
+                    StargazerStarsDancePackSwapBridge.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDancePackSwapDaughter.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDancePackSwapFollower.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDancePackSwapLanternBearer.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDancePackSwapMother.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDancePackSwapNewlyweds.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDancePackSwapPatriarch.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDancePackSwapRider.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDancePackSwapStargazer.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDancePackSwapStranger.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDancePackSwapThrush.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDancePackSwapWagon.ToReference<BlueprintAbilityReference>()
+                };
+            });
+            //Patriarch
+            var StargazerStarsDancePatriarchSwapBridge = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDancePatriarchSwapBridge", bp => {
+                bp.SetName("The Patriarch to The Bridge");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Patriarch and gains The Bridge." +
+                    "\nThe Bridge: The stargazer is warded against winter’s darkness. He gains cold resistance 5 and an immunity to blindness effects caused by demons.");
+                bp.m_Icon = StarsDanceBridgeIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceBridgeBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDancePatriarchBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceBridgeBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDancePatriarchFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDancePatriarchSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDancePatriarchSwapDaughter = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDancePatriarchSwapDaughter", bp => {
+                bp.SetName("The Patriarch to The Daughter");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Patriarch and gains The Daughter." +
+                    "\nThe Daughter: The Daughter emboldens hearts with the promise of springtime and new life. The stargazer and allies within 10 feet gain a +4 morale bonus on saving " +
+                    "throws against fear. The stargazer is immune to fear effects created by demons.");
+                bp.m_Icon = StarsDanceDaughterIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceDaughterBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDancePatriarchBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceDaughterBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDancePatriarchFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDancePatriarchSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDancePatriarchSwapFollower = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDancePatriarchSwapFollower", bp => {
+                bp.SetName("The Patriarch to The Follower");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Patriarch and gains The Follower." +
+                    "\nThe Follower: The specter of death follows the stargazer, shielding him from doom. The stargazer gains a +4 bonus on saves against death effects. In addition, he is immune " +
+                    "to all death effects, negative energy effects, and negative levels created by demons.");
+                bp.m_Icon = StarsDanceFollowerIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceFollowerBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDancePatriarchBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceFollowerBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDancePatriarchFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDancePatriarchSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDancePatriarchSwapLanternBearer = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDancePatriarchSwapLanternBearer", bp => {
+                bp.SetName("The Patriarch to The Lantern Bearer");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Patriarch and gains The Lantern Bearer." +
+                    "\nThe LanternBearer: The stargazer’s ability to conjure light increases. Any spell cast by the stargazer with the fire descriptor has its spell level increased by 2.");
+                bp.m_Icon = StarsDanceLanternBearerIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceLanternBearerBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDancePatriarchBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceLanternBearerBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDancePatriarchFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDancePatriarchSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDancePatriarchSwapMother = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDancePatriarchSwapMother", bp => {
+                bp.SetName("The Patriarch to The Mother");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Patriarch and gains The Mother." +
+                    "\nThe Mother: The stargazer channels the nurturing heart of the Caravan. Whenever the stargazer casts a cure spell, casts breath of life, or uses the healing hex, " +
+                    "he adds twice his class level to the hit points restored.");
+                bp.m_Icon = StarsDanceMotherIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceMotherBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDancePatriarchBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceMotherBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDancePatriarchFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDancePatriarchSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDancePatriarchSwapNewlyweds = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDancePatriarchSwapNewlyweds", bp => {
+                bp.SetName("The Patriarch to The Newlyweds");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Patriarch and gains The Newlyweds." +
+                    "\nThe Newlyweds: The sign of intertwined lovers grants the stargazer a romantic mystique. Whenever he uses a spell with the compulsion descriptor the save DC increases by 1. " +
+                    "In addition, stargazer gains a +2 morale bonus on saving throws against compulsion effects.");
+                bp.m_Icon = StarsDanceNewlywedsIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceNewlywedsBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDancePatriarchBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceNewlywedsBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDancePatriarchFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDancePatriarchSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDancePatriarchSwapPack = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDancePatriarchSwapPack", bp => {
+                bp.SetName("The Patriarch to The Pack");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Patriarch and gains The Pack." +
+                    "\nThe Pack: The stargazer becomes attuned to the beasts that follow the Caravan. He gains a +2 bonus on Nature checks. In addition, whenever he casts a summoning " +
+                    "spell that conjures multiple creatures of the animal type, he summons an additional animal of that type.");
+                bp.m_Icon = StarsDancePackIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDancePackBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDancePatriarchBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDancePackBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDancePatriarchFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDancePatriarchSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDancePatriarchSwapRider = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDancePatriarchSwapRider", bp => {
+                bp.SetName("The Patriarch to The Rider");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Patriarch and gains The Rider." +
+                    "\nThe Rider: The stargazer and his mount ride as one. While he is mounted both rider and mount gain +1 on all saves and an immunity to difficult terrain.");
+                bp.m_Icon = StarsDanceRiderIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceRiderBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDancePatriarchBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceRiderBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDancePatriarchFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDancePatriarchSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDancePatriarchSwapStargazer = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDancePatriarchSwapStargazer", bp => {
+                bp.SetName("The Patriarch to The Stargazer");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Patriarch and gains The Stargazer." +
+                    "\nThe Stargazer: The constellation that shares his name warns the stargazer of danger. The stargazer gains a +2 insight bonus on " +
+                    "initiative checks and is not considered flat-footed before he acts in combat, although this does not allow him to act if he " +
+                    "could not otherwise do so.");
+                bp.m_Icon = StarsDanceStargazerIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceStargazerBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDancePatriarchBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceStargazerBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDancePatriarchFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDancePatriarchSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDancePatriarchSwapStranger = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDancePatriarchSwapStranger", bp => {
+                bp.SetName("The Patriarch to The Stranger");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Patriarch and gains The Stranger." +
+                    "\nThe Stranger: The stargazer learns to blend seamlessly into others’ cultures. He can use vanish on himself as a swift action spell-like ability " +
+                    "a number of times equal to half his stargazer level (min 1) per day.");
+                bp.m_Icon = StarsDanceStrangerIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceStrangerBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDancePatriarchBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceStrangerBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDancePatriarchFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDancePatriarchSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDancePatriarchSwapThrush = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDancePatriarchSwapThrush", bp => {
+                bp.SetName("The Patriarch to The Thrush");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Patriarch and gains The Thrush." +
+                    "\nThe Thrush: The stargazer’s voice becomes harmonious. The stargazer gains a bonus equal to half his class level on charisma skill checks (minimum 1).");
+                bp.m_Icon = StarsDanceThrushIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceThrushBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDancePatriarchBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceThrushBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDancePatriarchFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDancePatriarchSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDancePatriarchSwapWagon = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDancePatriarchSwapWagon", bp => {
+                bp.SetName("The Patriarch to The Wagon");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Patriarch and gains The Wagon." +
+                    "\nThe Wagon: The stargazer’s movement becomes swift and steady. He gains a +10-foot enhancement bonus to his movement speed. In addition, " +
+                    "three times per day as a swift action, he can gain the effects of freedom of movement for 1 round.");
+                bp.m_Icon = StarsDanceWagonIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceWagonBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDancePatriarchBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceWagonBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDancePatriarchFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDancePatriarchSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            StargazerStarsDancePatriarchSwapParent.AddComponent<AbilityVariants>(c => {
+                c.m_Variants = new BlueprintAbilityReference[] {
+                    StargazerStarsDancePatriarchSwapBridge.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDancePatriarchSwapDaughter.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDancePatriarchSwapFollower.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDancePatriarchSwapLanternBearer.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDancePatriarchSwapMother.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDancePatriarchSwapNewlyweds.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDancePatriarchSwapPack.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDancePatriarchSwapRider.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDancePatriarchSwapStargazer.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDancePatriarchSwapStranger.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDancePatriarchSwapThrush.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDancePatriarchSwapWagon.ToReference<BlueprintAbilityReference>()
 
-
-
-
-
-
-
-
+                };
+            });
+            //Rider
+            var StargazerStarsDanceRiderSwapBridge = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceRiderSwapBridge", bp => {
+                bp.SetName("The Rider to The Bridge");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Rider and gains The Bridge." +
+                    "\nThe Bridge: The stargazer is warded against winter’s darkness. He gains cold resistance 5 and an immunity to blindness effects caused by demons.");
+                bp.m_Icon = StarsDanceBridgeIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceBridgeBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceRiderBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceBridgeBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceRiderFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceRiderSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceRiderSwapDaughter = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceRiderSwapDaughter", bp => {
+                bp.SetName("The Rider to The Daughter");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Rider and gains The Daughter." +
+                    "\nThe Daughter: The Daughter emboldens hearts with the promise of springtime and new life. The stargazer and allies within 10 feet gain a +4 morale bonus on saving " +
+                    "throws against fear. The stargazer is immune to fear effects created by demons.");
+                bp.m_Icon = StarsDanceDaughterIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceDaughterBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceRiderBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceDaughterBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceRiderFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceRiderSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceRiderSwapFollower = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceRiderSwapFollower", bp => {
+                bp.SetName("The Rider to The Follower");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Rider and gains The Follower." +
+                    "\nThe Follower: The specter of death follows the stargazer, shielding him from doom. The stargazer gains a +4 bonus on saves against death effects. In addition, he is immune " +
+                    "to all death effects, negative energy effects, and negative levels created by demons.");
+                bp.m_Icon = StarsDanceFollowerIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceFollowerBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceRiderBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceFollowerBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceRiderFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceRiderSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceRiderSwapLanternBearer = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceRiderSwapLanternBearer", bp => {
+                bp.SetName("The Rider to The Lantern Bearer");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Rider and gains The Lantern Bearer." +
+                    "\nThe LanternBearer: The stargazer’s ability to conjure light increases. Any spell cast by the stargazer with the fire descriptor has its spell level increased by 2.");
+                bp.m_Icon = StarsDanceLanternBearerIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceLanternBearerBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceRiderBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceLanternBearerBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceRiderFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceRiderSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceRiderSwapMother = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceRiderSwapMother", bp => {
+                bp.SetName("The Rider to The Mother");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Rider and gains The Mother." +
+                    "\nThe Mother: The stargazer channels the nurturing heart of the Caravan. Whenever the stargazer casts a cure spell, casts breath of life, or uses the healing hex, " +
+                    "he adds twice his class level to the hit points restored.");
+                bp.m_Icon = StarsDanceMotherIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceMotherBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceRiderBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceMotherBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceRiderFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceRiderSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceRiderSwapNewlyweds = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceRiderSwapNewlyweds", bp => {
+                bp.SetName("The Rider to The Newlyweds");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Rider and gains The Newlyweds." +
+                    "\nThe Newlyweds: The sign of intertwined lovers grants the stargazer a romantic mystique. Whenever he uses a spell with the compulsion descriptor the save DC increases by 1. " +
+                    "In addition, stargazer gains a +2 morale bonus on saving throws against compulsion effects.");
+                bp.m_Icon = StarsDanceNewlywedsIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceNewlywedsBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceRiderBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceNewlywedsBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceRiderFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceRiderSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceRiderSwapPack = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceRiderSwapPack", bp => {
+                bp.SetName("The Rider to The Pack");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Rider and gains The Pack." +
+                    "\nThe Pack: The stargazer becomes attuned to the beasts that follow the Caravan. He gains a +2 bonus on Nature checks. In addition, whenever he casts a summoning " +
+                    "spell that conjures multiple creatures of the animal type, he summons an additional animal of that type.");
+                bp.m_Icon = StarsDancePackIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDancePackBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceRiderBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDancePackBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceRiderFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceRiderSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceRiderSwapPatriarch = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceRiderSwapPatriarch", bp => {
+                bp.SetName("The Rider to The Patriarch");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Rider and gains The Patriarch." +
+                    "\nThe Patriarch: The stargazer gains an innate sense of direction. He gains a +4 bonus on {g|Encyclopedia:Knowledge_World}Knowledge (World){/g} and " +
+                    "Perception checks.");
+                bp.m_Icon = StarsDancePatriarchIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDancePatriarchBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceRiderBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDancePatriarchBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceRiderFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceRiderSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceRiderSwapStargazer = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceRiderSwapStargazer", bp => {
+                bp.SetName("The Rider to The Stargazer");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Rider and gains The Stargazer." +
+                    "\nThe Stargazer: The constellation that shares his name warns the stargazer of danger. The stargazer gains a +2 insight bonus on " +
+                    "initiative checks and is not considered flat-footed before he acts in combat, although this does not allow him to act if he " +
+                    "could not otherwise do so.");
+                bp.m_Icon = StarsDanceStargazerIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceStargazerBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceRiderBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceStargazerBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceRiderFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceRiderSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceRiderSwapStranger = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceRiderSwapStranger", bp => {
+                bp.SetName("The Rider to The Stranger");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Rider and gains The Stranger." +
+                    "\nThe Stranger: The stargazer learns to blend seamlessly into others’ cultures. He can use vanish on himself as a swift action spell-like ability " +
+                    "a number of times equal to half his stargazer level (min 1) per day.");
+                bp.m_Icon = StarsDanceStrangerIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceStrangerBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceRiderBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceStrangerBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceRiderFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceRiderSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceRiderSwapThrush = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceRiderSwapThrush", bp => {
+                bp.SetName("The Rider to The Thrush");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Rider and gains The Thrush." +
+                    "\nThe Thrush: The stargazer’s voice becomes harmonious. The stargazer gains a bonus equal to half his class level on charisma skill checks (minimum 1).");
+                bp.m_Icon = StarsDanceThrushIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceThrushBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceRiderBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceThrushBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceRiderFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceRiderSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceRiderSwapWagon = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceRiderSwapWagon", bp => {
+                bp.SetName("The Rider to The Wagon");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Rider and gains The Wagon." +
+                    "\nThe Wagon: The stargazer’s movement becomes swift and steady. He gains a +10-foot enhancement bonus to his movement speed. In addition, " +
+                    "three times per day as a swift action, he can gain the effects of freedom of movement for 1 round.");
+                bp.m_Icon = StarsDanceWagonIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceWagonBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceRiderBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceWagonBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceRiderFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceRiderSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            StargazerStarsDanceRiderSwapParent.AddComponent<AbilityVariants>(c => {
+                c.m_Variants = new BlueprintAbilityReference[] {
+                    StargazerStarsDanceRiderSwapBridge.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceRiderSwapDaughter.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceRiderSwapFollower.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceRiderSwapLanternBearer.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceRiderSwapMother.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceRiderSwapNewlyweds.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceRiderSwapPack.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceRiderSwapPatriarch.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceRiderSwapStargazer.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceRiderSwapStranger.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceRiderSwapThrush.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceRiderSwapWagon.ToReference<BlueprintAbilityReference>()
+                };
+            });
+            //Stargazer
+            var StargazerStarsDanceStargazerSwapBridge = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceStargazerSwapBridge", bp => {
+                bp.SetName("The Stargazer to The Bridge");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Stargazer and gains The Bridge." +
+                    "\nThe Bridge: The stargazer is warded against winter’s darkness. He gains cold resistance 5 and an immunity to blindness effects caused by demons.");
+                bp.m_Icon = StarsDanceBridgeIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceBridgeBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceStargazerBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceBridgeBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceStargazerFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceStargazerSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceStargazerSwapDaughter = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceStargazerSwapDaughter", bp => {
+                bp.SetName("The Stargazer to The Daughter");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Stargazer and gains The Daughter." +
+                    "\nThe Daughter: The Daughter emboldens hearts with the promise of springtime and new life. The stargazer and allies within 10 feet gain a +4 morale bonus on saving " +
+                    "throws against fear. The stargazer is immune to fear effects created by demons.");
+                bp.m_Icon = StarsDanceDaughterIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceDaughterBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceStargazerBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceDaughterBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceStargazerFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceStargazerSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceStargazerSwapFollower = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceStargazerSwapFollower", bp => {
+                bp.SetName("The Stargazer to The Follower");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Stargazer and gains The Follower." +
+                    "\nThe Follower: The specter of death follows the stargazer, shielding him from doom. The stargazer gains a +4 bonus on saves against death effects. In addition, he is immune " +
+                    "to all death effects, negative energy effects, and negative levels created by demons.");
+                bp.m_Icon = StarsDanceFollowerIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceFollowerBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceStargazerBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceFollowerBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceStargazerFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceStargazerSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceStargazerSwapLanternBearer = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceStargazerSwapLanternBearer", bp => {
+                bp.SetName("The Stargazer to The Lantern Bearer");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Stargazer and gains The Lantern Bearer." +
+                    "\nThe LanternBearer: The stargazer’s ability to conjure light increases. Any spell cast by the stargazer with the fire descriptor has its spell level increased by 2.");
+                bp.m_Icon = StarsDanceLanternBearerIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceLanternBearerBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceStargazerBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceLanternBearerBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceStargazerFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceStargazerSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceStargazerSwapMother = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceStargazerSwapMother", bp => {
+                bp.SetName("The Stargazer to The Mother");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Stargazer and gains The Mother." +
+                    "\nThe Mother: The stargazer channels the nurturing heart of the Caravan. Whenever the stargazer casts a cure spell, casts breath of life, or uses the healing hex, " +
+                    "he adds twice his class level to the hit points restored.");
+                bp.m_Icon = StarsDanceMotherIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceMotherBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceStargazerBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceMotherBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceStargazerFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceStargazerSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceStargazerSwapNewlyweds = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceStargazerSwapNewlyweds", bp => {
+                bp.SetName("The Stargazer to The Newlyweds");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Stargazer and gains The Newlyweds." +
+                    "\nThe Newlyweds: The sign of intertwined lovers grants the stargazer a romantic mystique. Whenever he uses a spell with the compulsion descriptor the save DC increases by 1. " +
+                    "In addition, stargazer gains a +2 morale bonus on saving throws against compulsion effects.");
+                bp.m_Icon = StarsDanceNewlywedsIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceNewlywedsBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceStargazerBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceNewlywedsBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceStargazerFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceStargazerSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceStargazerSwapPack = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceStargazerSwapPack", bp => {
+                bp.SetName("The Stargazer to The Pack");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Stargazer and gains The Pack." +
+                    "\nThe Pack: The stargazer becomes attuned to the beasts that follow the Caravan. He gains a +2 bonus on Nature checks. In addition, whenever he casts a summoning " +
+                    "spell that conjures multiple creatures of the animal type, he summons an additional animal of that type.");
+                bp.m_Icon = StarsDancePackIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDancePackBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceStargazerBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDancePackBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceStargazerFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceStargazerSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceStargazerSwapPatriarch = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceStargazerSwapPatriarch", bp => {
+                bp.SetName("The Stargazer to The Patriarch");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Stargazer and gains The Patriarch." +
+                    "\nThe Patriarch: The stargazer gains an innate sense of direction. He gains a +4 bonus on {g|Encyclopedia:Knowledge_World}Knowledge (World){/g} and " +
+                    "Perception checks.");
+                bp.m_Icon = StarsDancePatriarchIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDancePatriarchBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceStargazerBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDancePatriarchBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceStargazerFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceStargazerSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceStargazerSwapRider = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceStargazerSwapRider", bp => {
+                bp.SetName("The Stargazer to The Rider");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Stargazer and gains The Rider." +
+                    "\nThe Rider: The stargazer and his mount ride as one. While he is mounted both rider and mount gain +1 on all saves and an immunity to difficult terrain.");
+                bp.m_Icon = StarsDanceRiderIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceRiderBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceStargazerBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceRiderBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceStargazerFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceStargazerSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceStargazerSwapStranger = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceStargazerSwapStranger", bp => {
+                bp.SetName("The Stargazer to The Stranger");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Stargazer and gains The Stranger." +
+                    "\nThe Stranger: The stargazer learns to blend seamlessly into others’ cultures. He can use vanish on himself as a swift action spell-like ability " +
+                    "a number of times equal to half his stargazer level (min 1) per day.");
+                bp.m_Icon = StarsDanceStrangerIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceStrangerBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceStargazerBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceStrangerBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceStargazerFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceStargazerSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceStargazerSwapThrush = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceStargazerSwapThrush", bp => {
+                bp.SetName("The Stargazer to The Thrush");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Stargazer and gains The Thrush." +
+                    "\nThe Thrush: The stargazer’s voice becomes harmonious. The stargazer gains a bonus equal to half his class level on charisma skill checks (minimum 1).");
+                bp.m_Icon = StarsDanceThrushIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceThrushBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceStargazerBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceThrushBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceStargazerFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceStargazerSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceStargazerSwapWagon = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceStargazerSwapWagon", bp => {
+                bp.SetName("The Stargazer to The Wagon");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Stargazer and gains The Wagon." +
+                    "\nThe Wagon: The stargazer’s movement becomes swift and steady. He gains a +10-foot enhancement bonus to his movement speed. In addition, " +
+                    "three times per day as a swift action, he can gain the effects of freedom of movement for 1 round.");
+                bp.m_Icon = StarsDanceWagonIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceWagonBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceStargazerBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceWagonBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceStargazerFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceStargazerSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            StargazerStarsDanceStargazerSwapParent.AddComponent<AbilityVariants>(c => {
+                c.m_Variants = new BlueprintAbilityReference[] {
+                    StargazerStarsDanceStargazerSwapBridge.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceStargazerSwapDaughter.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceStargazerSwapFollower.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceStargazerSwapLanternBearer.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceStargazerSwapMother.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceStargazerSwapNewlyweds.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceStargazerSwapPack.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceStargazerSwapPatriarch.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceStargazerSwapRider.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceStargazerSwapStranger.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceStargazerSwapThrush.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceStargazerSwapWagon.ToReference<BlueprintAbilityReference>()
+                };
+            });
             //Stranger
             var StargazerStarsDanceStrangerSwapBridge = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceStrangerSwapBridge", bp => {
                 bp.SetName("The Stranger to The Bridge");
@@ -3521,14 +9183,1700 @@ namespace ExpandedContent.Tweaks.Classes {
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
+            var StargazerStarsDanceStrangerSwapLanternBearer = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceStrangerSwapLanternBearer", bp => {
+                bp.SetName("The Stranger to The Lantern Bearer");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Stranger and gains The Lantern Bearer." +
+                    "\nThe LanternBearer: The stargazer’s ability to conjure light increases. Any spell cast by the stargazer with the fire descriptor has its spell level increased by 2.");
+                bp.m_Icon = StarsDanceLanternBearerIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceLanternBearerBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceStrangerBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceLanternBearerBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceStrangerFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceStrangerSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceStrangerSwapMother = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceStrangerSwapMother", bp => {
+                bp.SetName("The Stranger to The Mother");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Stranger and gains The Mother." +
+                    "\nThe Mother: The stargazer channels the nurturing heart of the Caravan. Whenever the stargazer casts a cure spell, casts breath of life, or uses the healing hex, " +
+                    "he adds twice his class level to the hit points restored.");
+                bp.m_Icon = StarsDanceMotherIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceMotherBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceStrangerBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceMotherBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceStrangerFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceStrangerSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceStrangerSwapNewlyweds = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceStrangerSwapNewlyweds", bp => {
+                bp.SetName("The Stranger to The Newlyweds");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Stranger and gains The Newlyweds." +
+                    "\nThe Newlyweds: The sign of intertwined lovers grants the stargazer a romantic mystique. Whenever he uses a spell with the compulsion descriptor the save DC increases by 1. " +
+                    "In addition, stargazer gains a +2 morale bonus on saving throws against compulsion effects.");
+                bp.m_Icon = StarsDanceNewlywedsIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceNewlywedsBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceStrangerBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceNewlywedsBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceStrangerFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceStrangerSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceStrangerSwapPack = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceStrangerSwapPack", bp => {
+                bp.SetName("The Stranger to The Pack");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Stranger and gains The Pack." +
+                    "\nThe Pack: The stargazer becomes attuned to the beasts that follow the Caravan. He gains a +2 bonus on Nature checks. In addition, whenever he casts a summoning " +
+                    "spell that conjures multiple creatures of the animal type, he summons an additional animal of that type.");
+                bp.m_Icon = StarsDancePackIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDancePackBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceStrangerBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDancePackBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceStrangerFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceStrangerSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceStrangerSwapPatriarch = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceStrangerSwapPatriarch", bp => {
+                bp.SetName("The Stranger to The Patriarch");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Stranger and gains The Patriarch." +
+                    "\nThe Patriarch: The stargazer gains an innate sense of direction. He gains a +4 bonus on {g|Encyclopedia:Knowledge_World}Knowledge (World){/g} and " +
+                    "Perception checks.");
+                bp.m_Icon = StarsDancePatriarchIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDancePatriarchBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceStrangerBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDancePatriarchBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceStrangerFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceStrangerSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceStrangerSwapRider = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceStrangerSwapRider", bp => {
+                bp.SetName("The Stranger to The Rider");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Stranger and gains The Rider." +
+                    "\nThe Rider: The stargazer and his mount ride as one. While he is mounted both rider and mount gain +1 on all saves and an immunity to difficult terrain.");
+                bp.m_Icon = StarsDanceRiderIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceRiderBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceStrangerBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceRiderBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceStrangerFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceStrangerSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceStrangerSwapStargazer = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceStrangerSwapStargazer", bp => {
+                bp.SetName("The Stranger to The Stargazer");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Stranger and gains The Stargazer." +
+                    "\nThe Stargazer: The constellation that shares his name warns the stargazer of danger. The stargazer gains a +2 insight bonus on " +
+                    "initiative checks and is not considered flat-footed before he acts in combat, although this does not allow him to act if he " +
+                    "could not otherwise do so.");
+                bp.m_Icon = StarsDanceStargazerIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceStargazerBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceStrangerBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceStargazerBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceStrangerFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceStrangerSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceStrangerSwapThrush = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceStrangerSwapThrush", bp => {
+                bp.SetName("The Stranger to The Thrush");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Stranger and gains The Thrush." +
+                    "\nThe Thrush: The stargazer’s voice becomes harmonious. The stargazer gains a bonus equal to half his class level on charisma skill checks (minimum 1).");
+                bp.m_Icon = StarsDanceThrushIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceThrushBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceStrangerBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceThrushBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceStrangerFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceStrangerSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceStrangerSwapWagon = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceStrangerSwapWagon", bp => {
+                bp.SetName("The Stranger to The Wagon");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Stranger and gains The Wagon." +
+                    "\nThe Wagon: The stargazer’s movement becomes swift and steady. He gains a +10-foot enhancement bonus to his movement speed. In addition, " +
+                    "three times per day as a swift action, he can gain the effects of freedom of movement for 1 round.");
+                bp.m_Icon = StarsDanceWagonIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceWagonBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceStrangerBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceWagonBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceStrangerFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceStrangerSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
             StargazerStarsDanceStrangerSwapParent.AddComponent<AbilityVariants>(c => {
                 c.m_Variants = new BlueprintAbilityReference[] {
                     StargazerStarsDanceStrangerSwapBridge.ToReference<BlueprintAbilityReference>(),
                     StargazerStarsDanceStrangerSwapDaughter.ToReference<BlueprintAbilityReference>(),
                     StargazerStarsDanceStrangerSwapFollower.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceStrangerSwapLanternBearer.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceStrangerSwapMother.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceStrangerSwapNewlyweds.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceStrangerSwapPack.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceStrangerSwapPatriarch.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceStrangerSwapRider.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceStrangerSwapStargazer.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceStrangerSwapThrush.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceStrangerSwapWagon.ToReference<BlueprintAbilityReference>()
+
                 };
             });
-
+            //Thrush
+            var StargazerStarsDanceThrushSwapBridge = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceThrushSwapBridge", bp => {
+                bp.SetName("The Thrush to The Bridge");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Thrush and gains The Bridge." +
+                    "\nThe Bridge: The stargazer is warded against winter’s darkness. He gains cold resistance 5 and an immunity to blindness effects caused by demons.");
+                bp.m_Icon = StarsDanceBridgeIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceBridgeBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceThrushBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceBridgeBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceThrushFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceThrushSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceThrushSwapDaughter = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceThrushSwapDaughter", bp => {
+                bp.SetName("The Thrush to The Daughter");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Thrush and gains The Daughter." +
+                    "\nThe Daughter: The Daughter emboldens hearts with the promise of springtime and new life. The stargazer and allies within 10 feet gain a +4 morale bonus on saving " +
+                    "throws against fear. The stargazer is immune to fear effects created by demons.");
+                bp.m_Icon = StarsDanceDaughterIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceDaughterBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceThrushBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceDaughterBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceThrushFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceThrushSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceThrushSwapFollower = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceThrushSwapFollower", bp => {
+                bp.SetName("The Thrush to The Follower");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Thrush and gains The Follower." +
+                    "\nThe Follower: The specter of death follows the stargazer, shielding him from doom. The stargazer gains a +4 bonus on saves against death effects. In addition, he is immune " +
+                    "to all death effects, negative energy effects, and negative levels created by demons.");
+                bp.m_Icon = StarsDanceFollowerIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceFollowerBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceThrushBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceFollowerBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceThrushFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceThrushSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceThrushSwapLanternBearer = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceThrushSwapLanternBearer", bp => {
+                bp.SetName("The Thrush to The Lantern Bearer");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Thrush and gains The Lantern Bearer." +
+                    "\nThe LanternBearer: The stargazer’s ability to conjure light increases. Any spell cast by the stargazer with the fire descriptor has its spell level increased by 2.");
+                bp.m_Icon = StarsDanceLanternBearerIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceLanternBearerBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceThrushBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceLanternBearerBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceThrushFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceThrushSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceThrushSwapMother = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceThrushSwapMother", bp => {
+                bp.SetName("The Thrush to The Mother");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Thrush and gains The Mother." +
+                    "\nThe Mother: The stargazer channels the nurturing heart of the Caravan. Whenever the stargazer casts a cure spell, casts breath of life, or uses the healing hex, " +
+                    "he adds twice his class level to the hit points restored.");
+                bp.m_Icon = StarsDanceMotherIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceMotherBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceThrushBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceMotherBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceThrushFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceThrushSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceThrushSwapNewlyweds = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceThrushSwapNewlyweds", bp => {
+                bp.SetName("The Thrush to The Newlyweds");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Thrush and gains The Newlyweds." +
+                    "\nThe Newlyweds: The sign of intertwined lovers grants the stargazer a romantic mystique. Whenever he uses a spell with the compulsion descriptor the save DC increases by 1. " +
+                    "In addition, stargazer gains a +2 morale bonus on saving throws against compulsion effects.");
+                bp.m_Icon = StarsDanceNewlywedsIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceNewlywedsBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceThrushBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceNewlywedsBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceThrushFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceThrushSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceThrushSwapPack = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceThrushSwapPack", bp => {
+                bp.SetName("The Thrush to The Pack");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Thrush and gains The Pack." +
+                    "\nThe Pack: The stargazer becomes attuned to the beasts that follow the Caravan. He gains a +2 bonus on Nature checks. In addition, whenever he casts a summoning " +
+                    "spell that conjures multiple creatures of the animal type, he summons an additional animal of that type.");
+                bp.m_Icon = StarsDancePackIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDancePackBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceThrushBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDancePackBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceThrushFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceThrushSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceThrushSwapPatriarch = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceThrushSwapPatriarch", bp => {
+                bp.SetName("The Thrush to The Patriarch");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Thrush and gains The Patriarch." +
+                    "\nThe Patriarch: The stargazer gains an innate sense of direction. He gains a +4 bonus on {g|Encyclopedia:Knowledge_World}Knowledge (World){/g} and " +
+                    "Perception checks.");
+                bp.m_Icon = StarsDancePatriarchIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDancePatriarchBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceThrushBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDancePatriarchBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceThrushFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceThrushSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceThrushSwapRider = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceThrushSwapRider", bp => {
+                bp.SetName("The Thrush to The Rider");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Thrush and gains The Rider." +
+                    "\nThe Rider: The stargazer and his mount ride as one. While he is mounted both rider and mount gain +1 on all saves and an immunity to difficult terrain.");
+                bp.m_Icon = StarsDanceRiderIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceRiderBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceThrushBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceRiderBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceThrushFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceThrushSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceThrushSwapStargazer = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceThrushSwapStargazer", bp => {
+                bp.SetName("The Thrush to The Stargazer");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Thrush and gains The Stargazer." +
+                    "\nThe Stargazer: The constellation that shares his name warns the stargazer of danger. The stargazer gains a +2 insight bonus on " +
+                    "initiative checks and is not considered flat-footed before he acts in combat, although this does not allow him to act if he " +
+                    "could not otherwise do so.");
+                bp.m_Icon = StarsDanceStargazerIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceStargazerBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceThrushBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceStargazerBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceThrushFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceThrushSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceThrushSwapStranger = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceThrushSwapStranger", bp => {
+                bp.SetName("The Thrush to The Stranger");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Thrush and gains The Stranger." +
+                    "\nThe Stranger: The stargazer learns to blend seamlessly into others’ cultures. He can use vanish on himself as a swift action spell-like ability " +
+                    "a number of times equal to half his stargazer level (min 1) per day.");
+                bp.m_Icon = StarsDanceStrangerIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceStrangerBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceThrushBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceStrangerBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceThrushFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceThrushSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceThrushSwapWagon = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceThrushSwapWagon", bp => {
+                bp.SetName("The Thrush to The Wagon");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Thrush and gains The Wagon." +
+                    "\nThe Wagon: The stargazer’s movement becomes swift and steady. He gains a +10-foot enhancement bonus to his movement speed. In addition, " +
+                    "three times per day as a swift action, he can gain the effects of freedom of movement for 1 round.");
+                bp.m_Icon = StarsDanceWagonIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceWagonBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceThrushBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceWagonBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceThrushFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceThrushSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            StargazerStarsDanceThrushSwapParent.AddComponent<AbilityVariants>(c => {
+                c.m_Variants = new BlueprintAbilityReference[] {
+                    StargazerStarsDanceThrushSwapBridge.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceThrushSwapDaughter.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceThrushSwapFollower.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceThrushSwapLanternBearer.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceThrushSwapMother.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceThrushSwapNewlyweds.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceThrushSwapPack.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceThrushSwapPatriarch.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceThrushSwapRider.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceThrushSwapStargazer.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceThrushSwapStranger.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceThrushSwapWagon.ToReference<BlueprintAbilityReference>()
+                };
+            });
+            //Wagon
+            var StargazerStarsDanceWagonSwapBridge = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceWagonSwapBridge", bp => {
+                bp.SetName("The Wagon to The Bridge");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Wagon and gains The Bridge." +
+                    "\nThe Bridge: The stargazer is warded against winter’s darkness. He gains cold resistance 5 and an immunity to blindness effects caused by demons.");
+                bp.m_Icon = StarsDanceBridgeIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceBridgeBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceWagonBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceBridgeBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceWagonFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceWagonSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceWagonSwapDaughter = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceWagonSwapDaughter", bp => {
+                bp.SetName("The Wagon to The Daughter");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Wagon and gains The Daughter." +
+                    "\nThe Daughter: The Daughter emboldens hearts with the promise of springtime and new life. The stargazer and allies within 10 feet gain a +4 morale bonus on saving " +
+                    "throws against fear. The stargazer is immune to fear effects created by demons.");
+                bp.m_Icon = StarsDanceDaughterIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceDaughterBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceWagonBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceDaughterBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceWagonFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceWagonSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceWagonSwapFollower = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceWagonSwapFollower", bp => {
+                bp.SetName("The Wagon to The Follower");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Wagon and gains The Follower." +
+                    "\nThe Follower: The specter of death follows the stargazer, shielding him from doom. The stargazer gains a +4 bonus on saves against death effects. In addition, he is immune " +
+                    "to all death effects, negative energy effects, and negative levels created by demons.");
+                bp.m_Icon = StarsDanceFollowerIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceFollowerBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceWagonBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceFollowerBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceWagonFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceWagonSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceWagonSwapLanternBearer = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceWagonSwapLanternBearer", bp => {
+                bp.SetName("The Wagon to The Lantern Bearer");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Wagon and gains The Lantern Bearer." +
+                    "\nThe LanternBearer: The stargazer’s ability to conjure light increases. Any spell cast by the stargazer with the fire descriptor has its spell level increased by 2.");
+                bp.m_Icon = StarsDanceLanternBearerIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceLanternBearerBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceWagonBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceLanternBearerBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceWagonFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceWagonSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceWagonSwapMother = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceWagonSwapMother", bp => {
+                bp.SetName("The Wagon to The Mother");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Wagon and gains The Mother." +
+                    "\nThe Mother: The stargazer channels the nurturing heart of the Caravan. Whenever the stargazer casts a cure spell, casts breath of life, or uses the healing hex, " +
+                    "he adds twice his class level to the hit points restored.");
+                bp.m_Icon = StarsDanceMotherIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceMotherBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceWagonBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceMotherBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceWagonFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceWagonSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceWagonSwapNewlyweds = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceWagonSwapNewlyweds", bp => {
+                bp.SetName("The Wagon to The Newlyweds");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Wagon and gains The Newlyweds." +
+                    "\nThe Newlyweds: The sign of intertwined lovers grants the stargazer a romantic mystique. Whenever he uses a spell with the compulsion descriptor the save DC increases by 1. " +
+                    "In addition, stargazer gains a +2 morale bonus on saving throws against compulsion effects.");
+                bp.m_Icon = StarsDanceNewlywedsIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceNewlywedsBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceWagonBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceNewlywedsBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceWagonFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceWagonSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceWagonSwapPack = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceWagonSwapPack", bp => {
+                bp.SetName("The Wagon to The Pack");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Wagon and gains The Pack." +
+                    "\nThe Pack: The stargazer becomes attuned to the beasts that follow the Caravan. He gains a +2 bonus on Nature checks. In addition, whenever he casts a summoning " +
+                    "spell that conjures multiple creatures of the animal type, he summons an additional animal of that type.");
+                bp.m_Icon = StarsDancePackIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDancePackBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceWagonBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDancePackBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceWagonFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceWagonSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceWagonSwapPatriarch = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceWagonSwapPatriarch", bp => {
+                bp.SetName("The Wagon to The Patriarch");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Wagon and gains The Patriarch." +
+                    "\nThe Patriarch: The stargazer gains an innate sense of direction. He gains a +4 bonus on {g|Encyclopedia:Knowledge_World}Knowledge (World){/g} and " +
+                    "Perception checks.");
+                bp.m_Icon = StarsDancePatriarchIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDancePatriarchBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceWagonBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDancePatriarchBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceWagonFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceWagonSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceWagonSwapRider = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceWagonSwapRider", bp => {
+                bp.SetName("The Wagon to The Rider");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Wagon and gains The Rider." +
+                    "\nThe Rider: The stargazer and his mount ride as one. While he is mounted both rider and mount gain +1 on all saves and an immunity to difficult terrain.");
+                bp.m_Icon = StarsDanceRiderIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceRiderBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceWagonBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceRiderBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceWagonFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceWagonSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceWagonSwapStargazer = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceWagonSwapStargazer", bp => {
+                bp.SetName("The Wagon to The Stargazer");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Wagon and gains The Stargazer." +
+                    "\nThe Stargazer: The constellation that shares his name warns the stargazer of danger. The stargazer gains a +2 insight bonus on " +
+                    "initiative checks and is not considered flat-footed before he acts in combat, although this does not allow him to act if he " +
+                    "could not otherwise do so.");
+                bp.m_Icon = StarsDanceStargazerIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceStargazerBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceWagonBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceStargazerBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceWagonFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceWagonSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceWagonSwapStranger = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceWagonSwapStranger", bp => {
+                bp.SetName("The Wagon to The Stranger");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Wagon and gains The Stranger." +
+                    "\nThe Stranger: The stargazer learns to blend seamlessly into others’ cultures. He can use vanish on himself as a swift action spell-like ability " +
+                    "a number of times equal to half his stargazer level (min 1) per day.");
+                bp.m_Icon = StarsDanceStrangerIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceStrangerBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceWagonBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceStrangerBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceWagonFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceWagonSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var StargazerStarsDanceWagonSwapThrush = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceWagonSwapThrush", bp => {
+                bp.SetName("The Wagon to The Thrush");
+                bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. This ability gives up The Wagon and gains The Thrush." +
+                    "\nThe Thrush: The stargazer’s voice becomes harmonious. The stargazer gains a bonus equal to half his class level on charisma skill checks (minimum 1).");
+                bp.m_Icon = StarsDanceThrushIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = StargazerStarsDanceThrushBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            }
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = StargazerStarsDanceWagonBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = StargazerStarsDanceResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceThrushBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StargazerStarsDanceWagonFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = StargazerStarsDanceWagonSwapParent.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            StargazerStarsDanceWagonSwapParent.AddComponent<AbilityVariants>(c => {
+                c.m_Variants = new BlueprintAbilityReference[] {
+                    StargazerStarsDanceStrangerSwapBridge.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceStrangerSwapDaughter.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceStrangerSwapFollower.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceStrangerSwapLanternBearer.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceStrangerSwapMother.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceStrangerSwapNewlyweds.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceStrangerSwapPack.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceStrangerSwapPatriarch.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceStrangerSwapRider.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceStrangerSwapStargazer.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceWagonSwapStranger.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceStrangerSwapThrush.ToReference<BlueprintAbilityReference>()
+                };
+            });
             #endregion
             #endregion
             //Pre level 10 features
