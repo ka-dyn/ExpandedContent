@@ -1884,7 +1884,7 @@ namespace ExpandedContent.Tweaks.Classes {
                     m_ArchetypesDiv = new BlueprintArchetypeReference[0],
                     StartingLevel = 0,
                     LevelStep = 2,
-                    StartingIncrease = 1,
+                    StartingIncrease = 0,
                     PerStepIncrease = 1,
                 };
             });
@@ -10862,18 +10862,18 @@ namespace ExpandedContent.Tweaks.Classes {
             });
             StargazerStarsDanceWagonSwapParent.AddComponent<AbilityVariants>(c => {
                 c.m_Variants = new BlueprintAbilityReference[] {
-                    StargazerStarsDanceStrangerSwapBridge.ToReference<BlueprintAbilityReference>(),
-                    StargazerStarsDanceStrangerSwapDaughter.ToReference<BlueprintAbilityReference>(),
-                    StargazerStarsDanceStrangerSwapFollower.ToReference<BlueprintAbilityReference>(),
-                    StargazerStarsDanceStrangerSwapLanternBearer.ToReference<BlueprintAbilityReference>(),
-                    StargazerStarsDanceStrangerSwapMother.ToReference<BlueprintAbilityReference>(),
-                    StargazerStarsDanceStrangerSwapNewlyweds.ToReference<BlueprintAbilityReference>(),
-                    StargazerStarsDanceStrangerSwapPack.ToReference<BlueprintAbilityReference>(),
-                    StargazerStarsDanceStrangerSwapPatriarch.ToReference<BlueprintAbilityReference>(),
-                    StargazerStarsDanceStrangerSwapRider.ToReference<BlueprintAbilityReference>(),
-                    StargazerStarsDanceStrangerSwapStargazer.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceWagonSwapBridge.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceWagonSwapDaughter.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceWagonSwapFollower.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceWagonSwapLanternBearer.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceWagonSwapMother.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceWagonSwapNewlyweds.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceWagonSwapPack.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceWagonSwapPatriarch.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceWagonSwapRider.ToReference<BlueprintAbilityReference>(),
+                    StargazerStarsDanceWagonSwapStargazer.ToReference<BlueprintAbilityReference>(),
                     StargazerStarsDanceWagonSwapStranger.ToReference<BlueprintAbilityReference>(),
-                    StargazerStarsDanceStrangerSwapThrush.ToReference<BlueprintAbilityReference>()
+                    StargazerStarsDanceWagonSwapThrush.ToReference<BlueprintAbilityReference>()
                 };
             });
             #endregion
@@ -13486,7 +13486,45 @@ namespace ExpandedContent.Tweaks.Classes {
                     "spells known, and an increased effective level of spellcasting. If a character had more than one spellcasting class before becoming a Stargazer, he must decide to which class " +
                     "he adds the new level for purposes of determining spells per day.");
                 bp.m_AllFeatures = new BlueprintFeatureReference[] {
-
+                    StargazerArcanist.ToReference<BlueprintFeatureReference>(),
+                    StargazerArcanistEldritchFont.ToReference<BlueprintFeatureReference>(),
+                    StargazerArcanistNatureMage.ToReference<BlueprintFeatureReference>(),
+                    StargazerArcanistUnletteredArcanist.ToReference<BlueprintFeatureReference>(),
+                    StargazerBard.ToReference<BlueprintFeatureReference>(),
+                    StargazerBloodrager.ToReference<BlueprintFeatureReference>(),
+                    StargazerCrossblooded.ToReference<BlueprintFeatureReference>(),
+                    StargazerEldritchScion.ToReference<BlueprintFeatureReference>(),
+                    StargazerEldritchScoundrel.ToReference<BlueprintFeatureReference>(),
+                    StargazerEmpyrealSorcerer.ToReference<BlueprintFeatureReference>(),
+                    StargazerExploiterWizard.ToReference<BlueprintFeatureReference>(),
+                    StargazerMagus.ToReference<BlueprintFeatureReference>(),
+                    StargazerSageSorcerer.ToReference<BlueprintFeatureReference>(),
+                    StargazerSkald.ToReference<BlueprintFeatureReference>(),
+                    StargazerSorcerer.ToReference<BlueprintFeatureReference>(),
+                    StargazerSwordSaint.ToReference<BlueprintFeatureReference>(),
+                    StargazerThassilonianAbjuration.ToReference<BlueprintFeatureReference>(),
+                    StargazerThassilonianConjuration.ToReference<BlueprintFeatureReference>(),
+                    StargazerThassilonianEnchantment.ToReference<BlueprintFeatureReference>(),
+                    StargazerThassilonianEvocation.ToReference<BlueprintFeatureReference>(),
+                    StargazerThassilonianIllusion.ToReference<BlueprintFeatureReference>(),
+                    StargazerThassilonianNecromancy.ToReference<BlueprintFeatureReference>(),
+                    StargazerThassilonianTransmutation.ToReference<BlueprintFeatureReference>(),
+                    StargazerWitch.ToReference<BlueprintFeatureReference>(),
+                    StargazerWitchAccursed.ToReference<BlueprintFeatureReference>(),
+                    StargazerWitchLeyLineGuardian.ToReference<BlueprintFeatureReference>(),
+                    StargazerWizard.ToReference<BlueprintFeatureReference>(),
+                    StargazerAngelfireApostleProgression.ToReference<BlueprintFeatureReference>(),
+                    StargazerClericProgression.ToReference<BlueprintFeatureReference>(),
+                    StargazerCrusaderProgression.ToReference<BlueprintFeatureReference>(),
+                    StargazerDruidProgression.ToReference<BlueprintFeatureReference>(),
+                    StargazerFeyspeakerProgression.ToReference<BlueprintFeatureReference>(),
+                    StargazerInquisitorProgression.ToReference<BlueprintFeatureReference>(),
+                    StargazerOracleProgression.ToReference<BlueprintFeatureReference>(),
+                    StargazerPaladinProgression.ToReference<BlueprintFeatureReference>(),
+                    StargazerRangerProgression.ToReference<BlueprintFeatureReference>(),
+                    StargazerShamanProgression.ToReference<BlueprintFeatureReference>(),
+                    StargazerHunterProgression.ToReference<BlueprintFeatureReference>(),
+                    StargazerWarpriestProgression.ToReference<BlueprintFeatureReference>(),
                 };
                 bp.m_AllowNonContextActions = false;
                 bp.HideInUI = false;
@@ -13495,7 +13533,6 @@ namespace ExpandedContent.Tweaks.Classes {
                 bp.ShowThisSelection = false;
             });
             #endregion
-
             StargazerProgression.LevelEntries = new LevelEntry[] {
                 Helpers.LevelEntry(1, StargazerGuidingLightFeatureSelection, StargazerMysteryMagicHexFeatureSelection, StargazerSpellbook),
                 Helpers.LevelEntry(2, StargazerSiderealArcanaSelection),
