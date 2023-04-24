@@ -25,6 +25,10 @@ New Archetypes
 
 - Draconic Scholar, Arcanist
 
+New Prestige Class
+
+- Stargazer
+
 New Classes
 
 - Oathbreaker - Based off the Vindictive Bastard fallen Paladin class. 
