@@ -13531,6 +13531,7 @@ namespace ExpandedContent.Tweaks.Classes {
                 bp.Groups = new FeatureGroup[] { FeatureGroup.ReplaceSpellbook };
                 bp.Mode = SelectionMode.Default;
                 bp.ShowThisSelection = false;
+                bp.Group = FeatureGroup.ReplaceSpellbook;
             });
             #endregion
             StargazerProgression.LevelEntries = new LevelEntry[] {
