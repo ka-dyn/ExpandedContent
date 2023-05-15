@@ -169,6 +169,11 @@
         "Enabled": true,
         "Homebrew": false,
         "Description": "A animal companion archeype with a faint trace of dragon blood that grants them special abilities."
+      },
+      "Wyrm Singer": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "A skald archeype that sings tales of the ongoing battle of Apsu and Dahak."
       }
     },
     "IsExpanded": false

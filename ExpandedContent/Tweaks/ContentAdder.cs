@@ -59,6 +59,7 @@ namespace ExpandedContent.Tweaks {
                 Archetypes.UrbanDruid.AddUrbanDruid();
                 Archetypes.BearShaman.AddBearShaman();
                 Archetypes.LionShaman.AddLionShaman();
+                Archetypes.WyrmSinger.AddWyrmSinger();
 
                 Classes.OathbreakerClass.AddOathbreakerClass();
                 Archetypes.Castigator.AddCastigator();
