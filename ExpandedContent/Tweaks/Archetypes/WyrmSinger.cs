@@ -80,16 +80,17 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var InsanitySpell = Resources.GetBlueprint<BlueprintAbility>("2b044152b3620c841badb090e01ed9de");
 
             var WyrmSingerArchetype = Helpers.CreateBlueprint<BlueprintArchetype>("WyrmSingerArchetype", bp => {
-                bp.LocalizedName = Helpers.CreateString($"WyrmSingerArchetype.Name", "WyrmSinger");
+                bp.LocalizedName = Helpers.CreateString($"WyrmSingerArchetype.Name", "Wyrm Singer");
                 bp.LocalizedDescription = Helpers.CreateString($"WyrmSingerArchetype.Description", "Wyrm singers spin fragments of the story of the ongoing struggle between noble Apsu and wicked Dahak.");
                 bp.LocalizedDescriptionShort = Helpers.CreateString($"WyrmSingerArchetype.Description", "Wyrm singers spin fragments of the story of the ongoing struggle between noble Apsu and wicked Dahak.");                
             });
 
             var WyrmSingerBreathWeaponBuffAcid = Helpers.CreateBuff("WyrmSingerBreathWeaponBuffAcid", bp => {
-                bp.SetName("Steam Ray Fusillade");
-                bp.SetDescription("Once per round as a standard action you may fire three rays, plus one additional ray for every four levels beyond 11th (to a maximum of " +
-                    "five rays at 19th level). Each ray requires a ranged {g|Encyclopedia:TouchAttack}touch attack{/g} to hit and deals {g|Encyclopedia:Dice}4d6{/g} points of " +
-                    "{g|Encyclopedia:Energy_Damage}fire damage{/g}.");
+                bp.SetName("Grant Breath Weapon - Acid");
+                bp.SetDescription("A wyrm singer can grant a breath weapon attack to himself or an ally affected by his draconic rage raging song. Using the breath weapon is a standard " +
+                    "action, and it affects creatures in a 30-foot cone or a 60-foot line. The breath weapon deals 1d6 points of acid damage per 2 character levels. Creatures caught " +
+                    "in the area can attempt a Reflex save (DC = 10 + 1/2 the characters level + their Constiution modifier) to halve the damage. This ability is lost either when used, or " +
+                    "when no longer effected by the wyrm singers draconic rage raging song.");
                 bp.m_Icon = DazeSpell.m_Icon;
                 //Components added later                
             });
@@ -351,8 +352,807 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.Stat = StatType.Constitution;
                 });
             });
-            
-
+            var WyrmSingerBreathWeaponBuffCold = Helpers.CreateBuff("WyrmSingerBreathWeaponBuffCold", bp => {
+                bp.SetName("Grant Breath Weapon - Cold");
+                bp.SetDescription("A wyrm singer can grant a breath weapon attack to himself or an ally affected by his draconic rage raging song. Using the breath weapon is a standard " +
+                    "action, and it affects creatures in a 30-foot cone or a 60-foot line. The breath weapon deals 1d6 points of cold damage per 2 character levels. Creatures caught " +
+                    "in the area can attempt a Reflex save (DC = 10 + 1/2 the characters level + their Constiution modifier) to halve the damage. This ability is lost either when used, or " +
+                    "when no longer effected by the wyrm singers draconic rage raging song.");
+                bp.m_Icon = DazeSpell.m_Icon;
+                //Components added later                
+            });
+            var WyrmSingerBreathWeaponBaseCold = Helpers.CreateBlueprint<BlueprintAbility>("WyrmSingerBreathWeaponBaseCold", bp => {
+                bp.SetName("Wyrm Singers Cold Breath");
+                bp.SetDescription("Your breath weapon may be either a 30-foot cone or a 60-foot line. The breath weapon deals 1d6 points of cold damage per 2 character levels. " +
+                    "Creatures caught in the area can attempt a Reflex save (DC = 10 + 1/2 the characters level + their Constiution modifier) to halve the damage.");
+                bp.m_Icon = DazeSpell.m_Icon;
+                //Variants added after
+                bp.Type = AbilityType.Special;
+                bp.Range = AbilityRange.Projectile;
+                bp.CanTargetPoint = true;
+                bp.CanTargetEnemies = true;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.BreathWeapon;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var WyrmSingerBreathWeaponConeCold = Helpers.CreateBlueprint<BlueprintAbility>("WyrmSingerBreathWeaponConeCold", bp => {
+                bp.SetName("Wyrm Singers Cold Breath - Cone");
+                bp.SetDescription("Your breath weapon may be either a 30-foot cone or a 60-foot line. The breath weapon deals 1d6 points of cold damage per 2 character levels. " +
+                    "Creatures caught in the area can attempt a Reflex save (DC = 10 + 1/2 the characters level + their Constiution modifier) to halve the damage.");
+                bp.m_Icon = DazeSpell.m_Icon;
+                bp.AddComponent<AbilityDeliverProjectile>(c => {
+                    c.m_Projectiles = new BlueprintProjectileReference[] {
+                        ColdCone30Feet00.ToReference<BlueprintProjectileReference>()
+                    };
+                    c.Type = AbilityProjectileType.Cone;
+                    c.m_Length = new Feet() { m_Value = 30 };
+                    c.m_LineWidth = new Feet() { m_Value = 5 };
+                    c.AttackRollBonusStat = StatType.Unknown;
+                });
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Reflex;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionDealDamage() {
+                            m_Type = ContextActionDealDamage.Type.Damage,
+                            DamageType = new DamageTypeDescription() {
+                                Type = DamageType.Energy,
+                                Common = new DamageTypeDescription.CommomData() {
+                                    Reality = 0,
+                                    Alignment = 0,
+                                    Precision = false
+                                },
+                                Physical = new DamageTypeDescription.PhysicalData() {
+                                    Material = 0,
+                                    Form = 0,
+                                    Enhancement = 0,
+                                    EnhancementTotal = 0
+                                },
+                                Energy = DamageEnergyType.Cold
+                            },
+                            AbilityType = StatType.Unknown,
+                            EnergyDrainType = EnergyDrainType.Temporary,
+                            Duration = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                m_IsExtendable = true,
+                            },
+                            PreRolledSharedValue = AbilitySharedValue.Damage,
+                            Value = new ContextDiceValue() {
+                                DiceType = DiceType.D6,
+                                DiceCountValue = new ContextValue() {
+                                    ValueType = ContextValueType.Rank,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                            },
+                            IsAoE = true,
+                            HalfIfSaved = true,
+                            ResultSharedValue = AbilitySharedValue.Damage,
+                            CriticalSharedValue = AbilitySharedValue.Damage
+                        },
+                        new ContextActionOnContextCaster() {
+                            Actions = Helpers.CreateActionList(
+                                new ContextActionRemoveBuff() {
+                                    m_Buff = WyrmSingerBreathWeaponBuffCold.ToReference<BlueprintBuffReference>()
+                                }
+                                )
+                        }
+                        );
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.CharacterLevel;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.AsIs;
+                });
+                bp.m_Parent = WyrmSingerBreathWeaponBaseCold.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Special;
+                bp.Range = AbilityRange.Projectile;
+                bp.CanTargetPoint = true;
+                bp.CanTargetEnemies = true;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.BreathWeapon;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var WyrmSingerBreathWeaponLineCold = Helpers.CreateBlueprint<BlueprintAbility>("WyrmSingerBreathWeaponLineCold", bp => {
+                bp.SetName("Wyrm Singers Cold Breath - Line");
+                bp.SetDescription("Your breath weapon may be either a 30-foot cone or a 60-foot line. The breath weapon deals 1d6 points of cold damage per 2 character levels. " +
+                    "Creatures caught in the area can attempt a Reflex save (DC = 10 + 1/2 the characters level + their Constiution modifier) to halve the damage.");
+                bp.m_Icon = DazeSpell.m_Icon;
+                bp.AddComponent<AbilityDeliverProjectile>(c => {
+                    c.m_Projectiles = new BlueprintProjectileReference[] {
+                        ColdLine00.ToReference<BlueprintProjectileReference>()
+                    };
+                    c.Type = AbilityProjectileType.Line;
+                    c.m_Length = new Feet() { m_Value = 60 };
+                    c.m_LineWidth = new Feet() { m_Value = 5 };
+                    c.AttackRollBonusStat = StatType.Unknown;
+                });
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Reflex;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionDealDamage() {
+                            m_Type = ContextActionDealDamage.Type.Damage,
+                            DamageType = new DamageTypeDescription() {
+                                Type = DamageType.Energy,
+                                Common = new DamageTypeDescription.CommomData() {
+                                    Reality = 0,
+                                    Alignment = 0,
+                                    Precision = false
+                                },
+                                Physical = new DamageTypeDescription.PhysicalData() {
+                                    Material = 0,
+                                    Form = 0,
+                                    Enhancement = 0,
+                                    EnhancementTotal = 0
+                                },
+                                Energy = DamageEnergyType.Cold
+                            },
+                            AbilityType = StatType.Unknown,
+                            EnergyDrainType = EnergyDrainType.Temporary,
+                            Duration = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                m_IsExtendable = true,
+                            },
+                            PreRolledSharedValue = AbilitySharedValue.Damage,
+                            Value = new ContextDiceValue() {
+                                DiceType = DiceType.D6,
+                                DiceCountValue = new ContextValue() {
+                                    ValueType = ContextValueType.Rank,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                            },
+                            IsAoE = true,
+                            HalfIfSaved = true,
+                            ResultSharedValue = AbilitySharedValue.Damage,
+                            CriticalSharedValue = AbilitySharedValue.Damage
+                        },
+                        new ContextActionOnContextCaster() {
+                            Actions = Helpers.CreateActionList(
+                                new ContextActionRemoveBuff() {
+                                    m_Buff = WyrmSingerBreathWeaponBuffCold.ToReference<BlueprintBuffReference>()
+                                }
+                                )
+                        }
+                        );
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.CharacterLevel;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.AsIs;
+                });
+                bp.m_Parent = WyrmSingerBreathWeaponBaseCold.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Special;
+                bp.Range = AbilityRange.Projectile;
+                bp.CanTargetPoint = true;
+                bp.CanTargetEnemies = true;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.BreathWeapon;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            WyrmSingerBreathWeaponBaseCold.AddComponent<AbilityVariants>(c => {
+                c.m_Variants = new BlueprintAbilityReference[] {
+                    WyrmSingerBreathWeaponConeCold.ToReference<BlueprintAbilityReference>(),
+                    WyrmSingerBreathWeaponLineCold.ToReference<BlueprintAbilityReference>()
+                };
+            });
+            WyrmSingerBreathWeaponBuffCold.TemporaryContext(bp => {
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        WyrmSingerBreathWeaponBaseCold.ToReference<BlueprintUnitFactReference>()
+                    };
+                    c.CasterLevel = 0;
+                    c.DoNotRestoreMissingFacts = false;
+                    c.HasDifficultyRequirements = false;
+                    c.InvertDifficultyRequirements = false;
+                    c.MinDifficulty = GameDifficultyOption.Story;
+                });
+                bp.AddComponent<ReplaceAbilitiesStat>(c => {
+                    c.m_Ability = new BlueprintAbilityReference[] {
+                        WyrmSingerBreathWeaponBaseCold.ToReference<BlueprintAbilityReference>(),
+                        WyrmSingerBreathWeaponConeCold.ToReference<BlueprintAbilityReference>(),
+                        WyrmSingerBreathWeaponLineCold.ToReference<BlueprintAbilityReference>()
+                    };
+                    c.Stat = StatType.Constitution;
+                });
+            });
+            var WyrmSingerBreathWeaponBuffElectricity = Helpers.CreateBuff("WyrmSingerBreathWeaponBuffElectricity", bp => {
+                bp.SetName("Grant Breath Weapon - Electricity");
+                bp.SetDescription("A wyrm singer can grant a breath weapon attack to himself or an ally affected by his draconic rage raging song. Using the breath weapon is a standard " +
+                    "action, and it affects creatures in a 30-foot cone or a 60-foot line. The breath weapon deals 1d6 points of electricity damage per 2 character levels. Creatures caught " +
+                    "in the area can attempt a Reflex save (DC = 10 + 1/2 the characters level + their Constiution modifier) to halve the damage. This ability is lost either when used, or " +
+                    "when no longer effected by the wyrm singers draconic rage raging song.");
+                bp.m_Icon = DazeSpell.m_Icon;
+                //Components added later                
+            });
+            var WyrmSingerBreathWeaponBaseElectricity = Helpers.CreateBlueprint<BlueprintAbility>("WyrmSingerBreathWeaponBaseElectricity", bp => {
+                bp.SetName("Wyrm Singers Electricity Breath");
+                bp.SetDescription("Your breath weapon may be either a 30-foot cone or a 60-foot line. The breath weapon deals 1d6 points of electricity damage per 2 character levels. " +
+                    "Creatures caught in the area can attempt a Reflex save (DC = 10 + 1/2 the characters level + their Constiution modifier) to halve the damage.");
+                bp.m_Icon = DazeSpell.m_Icon;
+                //Variants added after
+                bp.Type = AbilityType.Special;
+                bp.Range = AbilityRange.Projectile;
+                bp.CanTargetPoint = true;
+                bp.CanTargetEnemies = true;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.BreathWeapon;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var WyrmSingerBreathWeaponConeElectricity = Helpers.CreateBlueprint<BlueprintAbility>("WyrmSingerBreathWeaponConeElectricity", bp => {
+                bp.SetName("Wyrm Singers Electricity Breath - Cone");
+                bp.SetDescription("Your breath weapon may be either a 30-foot cone or a 60-foot line. The breath weapon deals 1d6 points of electricity damage per 2 character levels. " +
+                    "Creatures caught in the area can attempt a Reflex save (DC = 10 + 1/2 the characters level + their Constiution modifier) to halve the damage.");
+                bp.m_Icon = DazeSpell.m_Icon;
+                bp.AddComponent<AbilityDeliverProjectile>(c => {
+                    c.m_Projectiles = new BlueprintProjectileReference[] {
+                        SonicCone30Feet00.ToReference<BlueprintProjectileReference>()
+                    };
+                    c.Type = AbilityProjectileType.Cone;
+                    c.m_Length = new Feet() { m_Value = 30 };
+                    c.m_LineWidth = new Feet() { m_Value = 5 };
+                    c.AttackRollBonusStat = StatType.Unknown;
+                });
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Reflex;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionDealDamage() {
+                            m_Type = ContextActionDealDamage.Type.Damage,
+                            DamageType = new DamageTypeDescription() {
+                                Type = DamageType.Energy,
+                                Common = new DamageTypeDescription.CommomData() {
+                                    Reality = 0,
+                                    Alignment = 0,
+                                    Precision = false
+                                },
+                                Physical = new DamageTypeDescription.PhysicalData() {
+                                    Material = 0,
+                                    Form = 0,
+                                    Enhancement = 0,
+                                    EnhancementTotal = 0
+                                },
+                                Energy = DamageEnergyType.Electricity
+                            },
+                            AbilityType = StatType.Unknown,
+                            EnergyDrainType = EnergyDrainType.Temporary,
+                            Duration = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                m_IsExtendable = true,
+                            },
+                            PreRolledSharedValue = AbilitySharedValue.Damage,
+                            Value = new ContextDiceValue() {
+                                DiceType = DiceType.D6,
+                                DiceCountValue = new ContextValue() {
+                                    ValueType = ContextValueType.Rank,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                            },
+                            IsAoE = true,
+                            HalfIfSaved = true,
+                            ResultSharedValue = AbilitySharedValue.Damage,
+                            CriticalSharedValue = AbilitySharedValue.Damage
+                        },
+                        new ContextActionOnContextCaster() {
+                            Actions = Helpers.CreateActionList(
+                                new ContextActionRemoveBuff() {
+                                    m_Buff = WyrmSingerBreathWeaponBuffElectricity.ToReference<BlueprintBuffReference>()
+                                }
+                                )
+                        }
+                        );
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.CharacterLevel;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.AsIs;
+                });
+                bp.m_Parent = WyrmSingerBreathWeaponBaseElectricity.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Special;
+                bp.Range = AbilityRange.Projectile;
+                bp.CanTargetPoint = true;
+                bp.CanTargetEnemies = true;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.BreathWeapon;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var WyrmSingerBreathWeaponLineElectricity = Helpers.CreateBlueprint<BlueprintAbility>("WyrmSingerBreathWeaponLineElectricity", bp => {
+                bp.SetName("Wyrm Singers Electricity Breath - Line");
+                bp.SetDescription("Your breath weapon may be either a 30-foot cone or a 60-foot line. The breath weapon deals 1d6 points of electricity damage per 2 character levels. " +
+                    "Creatures caught in the area can attempt a Reflex save (DC = 10 + 1/2 the characters level + their Constiution modifier) to halve the damage.");
+                bp.m_Icon = DazeSpell.m_Icon;
+                bp.AddComponent<AbilityDeliverProjectile>(c => {
+                    c.m_Projectiles = new BlueprintProjectileReference[] {
+                        LightningBolt00.ToReference<BlueprintProjectileReference>()
+                    };
+                    c.Type = AbilityProjectileType.Line;
+                    c.m_Length = new Feet() { m_Value = 60 };
+                    c.m_LineWidth = new Feet() { m_Value = 5 };
+                    c.AttackRollBonusStat = StatType.Unknown;
+                });
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Reflex;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionDealDamage() {
+                            m_Type = ContextActionDealDamage.Type.Damage,
+                            DamageType = new DamageTypeDescription() {
+                                Type = DamageType.Energy,
+                                Common = new DamageTypeDescription.CommomData() {
+                                    Reality = 0,
+                                    Alignment = 0,
+                                    Precision = false
+                                },
+                                Physical = new DamageTypeDescription.PhysicalData() {
+                                    Material = 0,
+                                    Form = 0,
+                                    Enhancement = 0,
+                                    EnhancementTotal = 0
+                                },
+                                Energy = DamageEnergyType.Electricity
+                            },
+                            AbilityType = StatType.Unknown,
+                            EnergyDrainType = EnergyDrainType.Temporary,
+                            Duration = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                m_IsExtendable = true,
+                            },
+                            PreRolledSharedValue = AbilitySharedValue.Damage,
+                            Value = new ContextDiceValue() {
+                                DiceType = DiceType.D6,
+                                DiceCountValue = new ContextValue() {
+                                    ValueType = ContextValueType.Rank,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                            },
+                            IsAoE = true,
+                            HalfIfSaved = true,
+                            ResultSharedValue = AbilitySharedValue.Damage,
+                            CriticalSharedValue = AbilitySharedValue.Damage
+                        },
+                        new ContextActionOnContextCaster() {
+                            Actions = Helpers.CreateActionList(
+                                new ContextActionRemoveBuff() {
+                                    m_Buff = WyrmSingerBreathWeaponBuffElectricity.ToReference<BlueprintBuffReference>()
+                                }
+                                )
+                        }
+                        );
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.CharacterLevel;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.AsIs;
+                });
+                bp.m_Parent = WyrmSingerBreathWeaponBaseElectricity.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Special;
+                bp.Range = AbilityRange.Projectile;
+                bp.CanTargetPoint = true;
+                bp.CanTargetEnemies = true;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.BreathWeapon;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            WyrmSingerBreathWeaponBaseElectricity.AddComponent<AbilityVariants>(c => {
+                c.m_Variants = new BlueprintAbilityReference[] {
+                    WyrmSingerBreathWeaponConeElectricity.ToReference<BlueprintAbilityReference>(),
+                    WyrmSingerBreathWeaponLineElectricity.ToReference<BlueprintAbilityReference>()
+                };
+            });
+            WyrmSingerBreathWeaponBuffElectricity.TemporaryContext(bp => {
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        WyrmSingerBreathWeaponBaseElectricity.ToReference<BlueprintUnitFactReference>()
+                    };
+                    c.CasterLevel = 0;
+                    c.DoNotRestoreMissingFacts = false;
+                    c.HasDifficultyRequirements = false;
+                    c.InvertDifficultyRequirements = false;
+                    c.MinDifficulty = GameDifficultyOption.Story;
+                });
+                bp.AddComponent<ReplaceAbilitiesStat>(c => {
+                    c.m_Ability = new BlueprintAbilityReference[] {
+                        WyrmSingerBreathWeaponBaseElectricity.ToReference<BlueprintAbilityReference>(),
+                        WyrmSingerBreathWeaponConeElectricity.ToReference<BlueprintAbilityReference>(),
+                        WyrmSingerBreathWeaponLineElectricity.ToReference<BlueprintAbilityReference>()
+                    };
+                    c.Stat = StatType.Constitution;
+                });
+            });
+            var WyrmSingerBreathWeaponBuffFire = Helpers.CreateBuff("WyrmSingerBreathWeaponBuffFire", bp => {
+                bp.SetName("Grant Breath Weapon - Fire");
+                bp.SetDescription("A wyrm singer can grant a breath weapon attack to himself or an ally affected by his draconic rage raging song. Using the breath weapon is a standard " +
+                    "action, and it affects creatures in a 30-foot cone or a 60-foot line. The breath weapon deals 1d6 points of fire damage per 2 character levels. Creatures caught " +
+                    "in the area can attempt a Reflex save (DC = 10 + 1/2 the characters level + their Constiution modifier) to halve the damage. This ability is lost either when used, or " +
+                    "when no longer effected by the wyrm singers draconic rage raging song.");
+                bp.m_Icon = DazeSpell.m_Icon;
+                //Components added later                
+            });
+            var WyrmSingerBreathWeaponBaseFire = Helpers.CreateBlueprint<BlueprintAbility>("WyrmSingerBreathWeaponBaseFire", bp => {
+                bp.SetName("Wyrm Singers Fire Breath");
+                bp.SetDescription("Your breath weapon may be either a 30-foot cone or a 60-foot line. The breath weapon deals 1d6 points of fire damage per 2 character levels. " +
+                    "Creatures caught in the area can attempt a Reflex save (DC = 10 + 1/2 the characters level + their Constiution modifier) to halve the damage.");
+                bp.m_Icon = DazeSpell.m_Icon;
+                //Variants added after
+                bp.Type = AbilityType.Special;
+                bp.Range = AbilityRange.Projectile;
+                bp.CanTargetPoint = true;
+                bp.CanTargetEnemies = true;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.BreathWeapon;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var WyrmSingerBreathWeaponConeFire = Helpers.CreateBlueprint<BlueprintAbility>("WyrmSingerBreathWeaponConeFire", bp => {
+                bp.SetName("Wyrm Singers Fire Breath - Cone");
+                bp.SetDescription("Your breath weapon may be either a 30-foot cone or a 60-foot line. The breath weapon deals 1d6 points of fire damage per 2 character levels. " +
+                    "Creatures caught in the area can attempt a Reflex save (DC = 10 + 1/2 the characters level + their Constiution modifier) to halve the damage.");
+                bp.m_Icon = DazeSpell.m_Icon;
+                bp.AddComponent<AbilityDeliverProjectile>(c => {
+                    c.m_Projectiles = new BlueprintProjectileReference[] {
+                        FireCone30Feet00.ToReference<BlueprintProjectileReference>()
+                    };
+                    c.Type = AbilityProjectileType.Cone;
+                    c.m_Length = new Feet() { m_Value = 30 };
+                    c.m_LineWidth = new Feet() { m_Value = 5 };
+                    c.AttackRollBonusStat = StatType.Unknown;
+                });
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Reflex;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionDealDamage() {
+                            m_Type = ContextActionDealDamage.Type.Damage,
+                            DamageType = new DamageTypeDescription() {
+                                Type = DamageType.Energy,
+                                Common = new DamageTypeDescription.CommomData() {
+                                    Reality = 0,
+                                    Alignment = 0,
+                                    Precision = false
+                                },
+                                Physical = new DamageTypeDescription.PhysicalData() {
+                                    Material = 0,
+                                    Form = 0,
+                                    Enhancement = 0,
+                                    EnhancementTotal = 0
+                                },
+                                Energy = DamageEnergyType.Fire
+                            },
+                            AbilityType = StatType.Unknown,
+                            EnergyDrainType = EnergyDrainType.Temporary,
+                            Duration = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                m_IsExtendable = true,
+                            },
+                            PreRolledSharedValue = AbilitySharedValue.Damage,
+                            Value = new ContextDiceValue() {
+                                DiceType = DiceType.D6,
+                                DiceCountValue = new ContextValue() {
+                                    ValueType = ContextValueType.Rank,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                            },
+                            IsAoE = true,
+                            HalfIfSaved = true,
+                            ResultSharedValue = AbilitySharedValue.Damage,
+                            CriticalSharedValue = AbilitySharedValue.Damage
+                        },
+                        new ContextActionOnContextCaster() {
+                            Actions = Helpers.CreateActionList(
+                                new ContextActionRemoveBuff() {
+                                    m_Buff = WyrmSingerBreathWeaponBuffFire.ToReference<BlueprintBuffReference>()
+                                }
+                                )
+                        }
+                        );
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.CharacterLevel;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.AsIs;
+                });
+                bp.m_Parent = WyrmSingerBreathWeaponBaseFire.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Special;
+                bp.Range = AbilityRange.Projectile;
+                bp.CanTargetPoint = true;
+                bp.CanTargetEnemies = true;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.BreathWeapon;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var WyrmSingerBreathWeaponLineFire = Helpers.CreateBlueprint<BlueprintAbility>("WyrmSingerBreathWeaponLineFire", bp => {
+                bp.SetName("Wyrm Singers Fire Breath - Line");
+                bp.SetDescription("Your breath weapon may be either a 30-foot cone or a 60-foot line. The breath weapon deals 1d6 points of fire damage per 2 character levels. " +
+                    "Creatures caught in the area can attempt a Reflex save (DC = 10 + 1/2 the characters level + their Constiution modifier) to halve the damage.");
+                bp.m_Icon = DazeSpell.m_Icon;
+                bp.AddComponent<AbilityDeliverProjectile>(c => {
+                    c.m_Projectiles = new BlueprintProjectileReference[] {
+                        FireLine00.ToReference<BlueprintProjectileReference>()
+                    };
+                    c.Type = AbilityProjectileType.Line;
+                    c.m_Length = new Feet() { m_Value = 60 };
+                    c.m_LineWidth = new Feet() { m_Value = 5 };
+                    c.AttackRollBonusStat = StatType.Unknown;
+                });
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Reflex;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionDealDamage() {
+                            m_Type = ContextActionDealDamage.Type.Damage,
+                            DamageType = new DamageTypeDescription() {
+                                Type = DamageType.Energy,
+                                Common = new DamageTypeDescription.CommomData() {
+                                    Reality = 0,
+                                    Alignment = 0,
+                                    Precision = false
+                                },
+                                Physical = new DamageTypeDescription.PhysicalData() {
+                                    Material = 0,
+                                    Form = 0,
+                                    Enhancement = 0,
+                                    EnhancementTotal = 0
+                                },
+                                Energy = DamageEnergyType.Fire
+                            },
+                            AbilityType = StatType.Unknown,
+                            EnergyDrainType = EnergyDrainType.Temporary,
+                            Duration = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                m_IsExtendable = true,
+                            },
+                            PreRolledSharedValue = AbilitySharedValue.Damage,
+                            Value = new ContextDiceValue() {
+                                DiceType = DiceType.D6,
+                                DiceCountValue = new ContextValue() {
+                                    ValueType = ContextValueType.Rank,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                            },
+                            IsAoE = true,
+                            HalfIfSaved = true,
+                            ResultSharedValue = AbilitySharedValue.Damage,
+                            CriticalSharedValue = AbilitySharedValue.Damage
+                        },
+                        new ContextActionOnContextCaster() {
+                            Actions = Helpers.CreateActionList(
+                                new ContextActionRemoveBuff() {
+                                    m_Buff = WyrmSingerBreathWeaponBuffFire.ToReference<BlueprintBuffReference>()
+                                }
+                                )
+                        }
+                        );
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.CharacterLevel;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.AsIs;
+                });
+                bp.m_Parent = WyrmSingerBreathWeaponBaseFire.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Special;
+                bp.Range = AbilityRange.Projectile;
+                bp.CanTargetPoint = true;
+                bp.CanTargetEnemies = true;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.BreathWeapon;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            WyrmSingerBreathWeaponBaseFire.AddComponent<AbilityVariants>(c => {
+                c.m_Variants = new BlueprintAbilityReference[] {
+                    WyrmSingerBreathWeaponConeFire.ToReference<BlueprintAbilityReference>(),
+                    WyrmSingerBreathWeaponLineFire.ToReference<BlueprintAbilityReference>()
+                };
+            });
+            WyrmSingerBreathWeaponBuffFire.TemporaryContext(bp => {
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        WyrmSingerBreathWeaponBaseFire.ToReference<BlueprintUnitFactReference>()
+                    };
+                    c.CasterLevel = 0;
+                    c.DoNotRestoreMissingFacts = false;
+                    c.HasDifficultyRequirements = false;
+                    c.InvertDifficultyRequirements = false;
+                    c.MinDifficulty = GameDifficultyOption.Story;
+                });
+                bp.AddComponent<ReplaceAbilitiesStat>(c => {
+                    c.m_Ability = new BlueprintAbilityReference[] {
+                        WyrmSingerBreathWeaponBaseFire.ToReference<BlueprintAbilityReference>(),
+                        WyrmSingerBreathWeaponConeFire.ToReference<BlueprintAbilityReference>(),
+                        WyrmSingerBreathWeaponLineFire.ToReference<BlueprintAbilityReference>()
+                    };
+                    c.Stat = StatType.Constitution;
+                });
+            });
 
             var WyrmSingerBreathWeaponResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("WyrmSingerBreathWeaponResource", bp => {
                 bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
