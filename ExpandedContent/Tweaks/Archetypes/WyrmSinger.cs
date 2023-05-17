@@ -1550,7 +1550,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 c.Inverted = false;
             });
             var WyrmSingerDraconicRageArea = Helpers.CreateBlueprint<BlueprintAbilityAreaEffect>("WyrmSingerDraconicRageArea", bp => {
-                bp.AddComponent<AbilityAreaEffectBuff>(c => {
+                bp.AddComponent<AbilityAreaEffectBuff>(c => { //Not using the context action even though it work better as for some reason it causes the rage buff to last 5.9 seconds not 6???
                     c.Condition = new ConditionsChecker() {
                         Operation = Operation.And,
                         Conditions = new Condition[] {
