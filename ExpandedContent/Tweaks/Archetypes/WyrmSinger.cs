@@ -89,6 +89,14 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.LocalizedDescriptionShort = Helpers.CreateString($"WyrmSingerArchetype.Description", "Wyrm singers spin fragments of the story of the ongoing struggle between noble Apsu and wicked Dahak.");                
             });
 
+            //Change forbidden casting on rage to work with all Skald archetypes
+            var InspiredRageEffectBuffBeforeMasterSkaldForbidCasting = Resources.GetBlueprint<BlueprintBuff>("345d36cd45f5614409824209f26d0130").GetComponent<ForbidSpellCasting>();
+            var SkaldCantripsFeature = Resources.GetBlueprintReference<BlueprintFeatureReference>("aea30d43abf590142a750e72db08df7b");
+            InspiredRageEffectBuffBeforeMasterSkaldForbidCasting.m_IgnoreFeature = SkaldCantripsFeature;
+
+
+
+
             var WyrmSingerBreathWeaponBuffAcid = Helpers.CreateBuff("WyrmSingerBreathWeaponBuffAcid", bp => {
                 bp.SetName("Grant Breath Weapon - Acid");
                 bp.SetDescription("A wyrm singer can grant a breath weapon attack to himself or an ally affected by his draconic rage raging song. Using the breath weapon is a standard " +
@@ -1527,7 +1535,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = false;
                 bp.m_Flags = 0;
-                bp.Stacking = StackingType.Replace;
+                bp.Stacking = StackingType.Ignore;
                 bp.TickEachSecond = false;
                 bp.Frequency = DurationRate.Rounds;
                 bp.FxOnStart = new PrefabLink();
@@ -1550,21 +1558,99 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 c.Inverted = false;
             });
             var WyrmSingerDraconicRageArea = Helpers.CreateBlueprint<BlueprintAbilityAreaEffect>("WyrmSingerDraconicRageArea", bp => {
-                bp.AddComponent<AbilityAreaEffectBuff>(c => { //Not using the context action even though it work better as for some reason it causes the rage buff to last 5.9 seconds not 6???
-                    c.Condition = new ConditionsChecker() {
-                        Operation = Operation.And,
-                        Conditions = new Condition[] {
-                            new ContextConditionHasFact() {
-                                m_Fact = InspiredRageAllyToggleSwitchBuff.ToReference<BlueprintUnitFactReference>(),
-                                Not = false
+                bp.AddComponent<AbilityAreaEffectRunAction>(c => {
+                    c.UnitEnter = Helpers.CreateActionList(
+                        new Conditional() {
+                            ConditionsChecker = new ConditionsChecker() {
+                                Operation = Operation.And,
+                                Conditions = new Condition[] {
+                                    new ContextConditionHasFact() {
+                                        m_Fact = InspiredRageAllyToggleSwitchBuff.ToReference<BlueprintUnitFactReference>(),
+                                        Not = false
+                                    },
+                                    new ContextConditionIsAlly() {
+                                        Not = false
+                                    }
+                                }
                             },
-                            new ContextConditionIsAlly() {
-                                Not = false
-                            }
+                            IfTrue = Helpers.CreateActionList(
+                                new ContextActionApplyBuff() {
+                                    m_Buff = WyrmSingerDraconicRageEffectBuff.ToReference<BlueprintBuffReference>(),
+                                    Permanent = true,
+                                    UseDurationSeconds = false,
+                                    DurationValue = new ContextDurationValue() {
+                                        Rate = DurationRate.Rounds,
+                                        DiceType = DiceType.Zero,
+                                        DiceCountValue = 0,
+                                        BonusValue = 0
+                                    },
+                                    DurationSeconds = 0,
+                                    IsFromSpell = false,
+                                    IsNotDispelable = false,
+                                    ToCaster = false,
+                                    AsChild = true,
+                                    SameDuration = false
+                                }
+                                ),
+                            IfFalse = Helpers.CreateActionList(
+                                new ContextActionRemoveBuff() {
+                                    m_Buff = WyrmSingerDraconicRageEffectBuff.ToReference<BlueprintBuffReference>(),
+                                    RemoveRank = false,
+                                    ToCaster = false
+                                }
+                                )
                         }
-                    };
-                    c.CheckConditionEveryRound = true;
-                    c.m_Buff = WyrmSingerDraconicRageEffectBuff.ToReference<BlueprintBuffReference>();
+                        );
+                    c.UnitExit = Helpers.CreateActionList(
+                        new ContextActionRemoveBuff() {
+                            m_Buff = WyrmSingerDraconicRageEffectBuff.ToReference<BlueprintBuffReference>(),
+                            RemoveRank = false,
+                            ToCaster = false
+                        }
+                        );
+                    c.UnitMove = Helpers.CreateActionList();
+                    c.Round = Helpers.CreateActionList(
+                        new Conditional() {
+                            ConditionsChecker = new ConditionsChecker() {
+                                Operation = Operation.And,
+                                Conditions = new Condition[] {
+                                    new ContextConditionHasFact() {
+                                        m_Fact = InspiredRageAllyToggleSwitchBuff.ToReference<BlueprintUnitFactReference>(),
+                                        Not = false
+                                    },
+                                    new ContextConditionIsAlly() {
+                                        Not = false
+                                    }
+                                }
+                            },
+                            IfTrue = Helpers.CreateActionList(
+                                new ContextActionApplyBuff() {
+                                    m_Buff = WyrmSingerDraconicRageEffectBuff.ToReference<BlueprintBuffReference>(),
+                                    Permanent = true,
+                                    UseDurationSeconds = false,
+                                    DurationValue = new ContextDurationValue() {
+                                        Rate = DurationRate.Rounds,
+                                        DiceType = DiceType.Zero,
+                                        DiceCountValue = 0,
+                                        BonusValue = 0
+                                    },
+                                    DurationSeconds = 0,
+                                    IsFromSpell = false,
+                                    IsNotDispelable = false,
+                                    ToCaster = false,
+                                    AsChild = true,
+                                    SameDuration = false
+                                }
+                                ),
+                            IfFalse = Helpers.CreateActionList(
+                                new ContextActionRemoveBuff() {
+                                    m_Buff = WyrmSingerDraconicRageEffectBuff.ToReference<BlueprintBuffReference>(),
+                                    RemoveRank = false,
+                                    ToCaster = false
+                                }
+                                )
+                        }
+                        );
                 });
                 bp.m_AllowNonContextActions = false;
                 bp.m_TargetType = BlueprintAbilityAreaEffect.TargetType.Ally;
@@ -1649,7 +1735,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.m_Icon = FormOfTheDragon1BlackBuff.Icon;
                 bp.Components = FormOfTheDragon1BlackBuff.Components;
                 bp.IsClassFeature = false;
-                bp.Stacking = StackingType.Replace;
+                bp.Stacking = StackingType.Ignore;
                 bp.FxOnStart = FormOfTheDragon1BlackBuff.FxOnStart;
             });
             var WyrmSingerWyrmSagaEffectBlue = Helpers.CreateBuff("WyrmSingerWyrmSagaEffectBlue", bp => {
@@ -1661,7 +1747,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.m_Icon = FormOfTheDragon1BlueBuff.Icon;
                 bp.Components = FormOfTheDragon1BlueBuff.Components;
                 bp.IsClassFeature = false;
-                bp.Stacking = StackingType.Replace;
+                bp.Stacking = StackingType.Ignore;
                 bp.FxOnStart = FormOfTheDragon1BlueBuff.FxOnStart;
             });
             var WyrmSingerWyrmSagaEffectBrass = Helpers.CreateBuff("WyrmSingerWyrmSagaEffectBrass", bp => {
@@ -1673,7 +1759,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.m_Icon = FormOfTheDragon1BrassBuff.Icon;
                 bp.Components = FormOfTheDragon1BrassBuff.Components;
                 bp.IsClassFeature = false;
-                bp.Stacking = StackingType.Replace;
+                bp.Stacking = StackingType.Ignore;
                 bp.FxOnStart = FormOfTheDragon1BrassBuff.FxOnStart;
             });
             var WyrmSingerWyrmSagaEffectRed = Helpers.CreateBuff("WyrmSingerWyrmSagaEffectRed", bp => {
@@ -1685,7 +1771,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.m_Icon = FormOfTheDragon1RedBuff.Icon;
                 bp.Components = FormOfTheDragon1RedBuff.Components;
                 bp.IsClassFeature = false;
-                bp.Stacking = StackingType.Replace;
+                bp.Stacking = StackingType.Ignore;
                 bp.FxOnStart = FormOfTheDragon1RedBuff.FxOnStart;
             });
             var WyrmSingerWyrmSagaEffectGreen = Helpers.CreateBuff("WyrmSingerWyrmSagaEffectGreen", bp => {
@@ -1697,7 +1783,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.m_Icon = FormOfTheDragon1GreenBuff.Icon;
                 bp.Components = FormOfTheDragon1GreenBuff.Components;
                 bp.IsClassFeature = false;
-                bp.Stacking = StackingType.Replace;
+                bp.Stacking = StackingType.Ignore;
                 bp.FxOnStart = FormOfTheDragon1GreenBuff.FxOnStart;
             });
             var WyrmSingerWyrmSagaEffectSilver = Helpers.CreateBuff("WyrmSingerWyrmSagaEffectSilver", bp => {
@@ -1709,7 +1795,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.m_Icon = FormOfTheDragon1SilverBuff.Icon;
                 bp.Components = FormOfTheDragon1SilverBuff.Components;
                 bp.IsClassFeature = false;
-                bp.Stacking = StackingType.Replace;
+                bp.Stacking = StackingType.Ignore;
                 bp.FxOnStart = FormOfTheDragon1SilverBuff.FxOnStart;
             });
             var WyrmSingerWyrmSagaEffectWhite = Helpers.CreateBuff("WyrmSingerWyrmSagaEffectWhite", bp => {
@@ -1721,7 +1807,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.m_Icon = FormOfTheDragon1WhiteBuff.Icon;
                 bp.Components = FormOfTheDragon1WhiteBuff.Components;
                 bp.IsClassFeature = false;
-                bp.Stacking = StackingType.Replace;
+                bp.Stacking = StackingType.Ignore;
                 bp.FxOnStart = FormOfTheDragon1WhiteBuff.FxOnStart;
             });
             var WyrmSingerWyrmSagaEffects = new BlueprintBuff[] {
@@ -2299,7 +2385,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     WyrmSingerWyrmSagaTargetSelectorAbilityWhite.ToReference<BlueprintAbilityReference>()
                 };
             });
-            var WyrmSingerWyrmSagaArea = Helpers.CreateBlueprint<BlueprintAbilityAreaEffect>("WyrmSingerWyrmSagaArea", bp => { //Need to load up all the conditionals
+            var WyrmSingerWyrmSagaArea = Helpers.CreateBlueprint<BlueprintAbilityAreaEffect>("WyrmSingerWyrmSagaArea", bp => { 
                 bp.AddComponent<AbilityAreaEffectRunAction>(c => {
                     c.UnitEnter = Helpers.CreateActionList(
                         new Conditional() {
@@ -2309,6 +2395,10 @@ namespace ExpandedContent.Tweaks.Archetypes {
                                     new ContextConditionHasFact() {
                                         m_Fact = WyrmSingerWyrmSagaTargetBuff.ToReference<BlueprintUnitFactReference>(),
                                         Not = false
+                                    },
+                                    new ContextConditionHasFact() {
+                                        m_Fact = WyrmSingerWyrmSagaEffectBlack.ToReference<BlueprintUnitFactReference>(),
+                                        Not = true
                                     },
                                     new ContextConditionCasterHasFact() {
                                         m_Fact = WyrmSingerWyrmSagaFlagBlack.ToReference<BlueprintUnitFactReference>(),
@@ -2345,6 +2435,10 @@ namespace ExpandedContent.Tweaks.Archetypes {
                                         m_Fact = WyrmSingerWyrmSagaTargetBuff.ToReference<BlueprintUnitFactReference>(),
                                         Not = false
                                     },
+                                    new ContextConditionHasFact() {
+                                        m_Fact = WyrmSingerWyrmSagaEffectBlue.ToReference<BlueprintUnitFactReference>(),
+                                        Not = true
+                                    },
                                     new ContextConditionCasterHasFact() {
                                         m_Fact = WyrmSingerWyrmSagaFlagBlue.ToReference<BlueprintUnitFactReference>(),
                                         Not = false
@@ -2379,6 +2473,10 @@ namespace ExpandedContent.Tweaks.Archetypes {
                                     new ContextConditionHasFact() {
                                         m_Fact = WyrmSingerWyrmSagaTargetBuff.ToReference<BlueprintUnitFactReference>(),
                                         Not = false
+                                    },
+                                    new ContextConditionHasFact() {
+                                        m_Fact = WyrmSingerWyrmSagaEffectBrass.ToReference<BlueprintUnitFactReference>(),
+                                        Not = true
                                     },
                                     new ContextConditionCasterHasFact() {
                                         m_Fact = WyrmSingerWyrmSagaFlagBrass.ToReference<BlueprintUnitFactReference>(),
@@ -2415,6 +2513,10 @@ namespace ExpandedContent.Tweaks.Archetypes {
                                         m_Fact = WyrmSingerWyrmSagaTargetBuff.ToReference<BlueprintUnitFactReference>(),
                                         Not = false
                                     },
+                                    new ContextConditionHasFact() {
+                                        m_Fact = WyrmSingerWyrmSagaEffectRed.ToReference<BlueprintUnitFactReference>(),
+                                        Not = true
+                                    },
                                     new ContextConditionCasterHasFact() {
                                         m_Fact = WyrmSingerWyrmSagaFlagRed.ToReference<BlueprintUnitFactReference>(),
                                         Not = false
@@ -2449,6 +2551,10 @@ namespace ExpandedContent.Tweaks.Archetypes {
                                     new ContextConditionHasFact() {
                                         m_Fact = WyrmSingerWyrmSagaTargetBuff.ToReference<BlueprintUnitFactReference>(),
                                         Not = false
+                                    },
+                                    new ContextConditionHasFact() {
+                                        m_Fact = WyrmSingerWyrmSagaEffectGreen.ToReference<BlueprintUnitFactReference>(),
+                                        Not = true
                                     },
                                     new ContextConditionCasterHasFact() {
                                         m_Fact = WyrmSingerWyrmSagaFlagGreen.ToReference<BlueprintUnitFactReference>(),
@@ -2485,6 +2591,10 @@ namespace ExpandedContent.Tweaks.Archetypes {
                                         m_Fact = WyrmSingerWyrmSagaTargetBuff.ToReference<BlueprintUnitFactReference>(),
                                         Not = false
                                     },
+                                    new ContextConditionHasFact() {
+                                        m_Fact = WyrmSingerWyrmSagaEffectSilver.ToReference<BlueprintUnitFactReference>(),
+                                        Not = true
+                                    },
                                     new ContextConditionCasterHasFact() {
                                         m_Fact = WyrmSingerWyrmSagaFlagSilver.ToReference<BlueprintUnitFactReference>(),
                                         Not = false
@@ -2519,6 +2629,10 @@ namespace ExpandedContent.Tweaks.Archetypes {
                                     new ContextConditionHasFact() {
                                         m_Fact = WyrmSingerWyrmSagaTargetBuff.ToReference<BlueprintUnitFactReference>(),
                                         Not = false
+                                    },
+                                    new ContextConditionHasFact() {
+                                        m_Fact = WyrmSingerWyrmSagaEffectWhite.ToReference<BlueprintUnitFactReference>(),
+                                        Not = true
                                     },
                                     new ContextConditionCasterHasFact() {
                                         m_Fact = WyrmSingerWyrmSagaFlagWhite.ToReference<BlueprintUnitFactReference>(),
