@@ -1751,6 +1751,9 @@
     <Content Include="Assets\Skills\Icon_WallOfFire.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Skills\Icon_WyrmSaga.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Skills\Icon_ZephyrsFleetness.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
