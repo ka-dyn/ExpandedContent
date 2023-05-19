@@ -34,8 +34,9 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var MasterSkald = Resources.GetBlueprint<BlueprintFeature>("ae4d45a39a91dee4fb4200d7a677d9a7");
             var SkaldRagePowerSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("2476514e31791394fa140f1a07941c96");
             var IconCommand = AssetLoader.LoadInternal("Skills", "Icon_Command.png");
+            var SkaldCantripsFeature = Resources.GetBlueprintReference<BlueprintFeatureReference>("aea30d43abf590142a750e72db08df7b");
 
-            
+
 
             var ConquerorInspiredRageFeature = Helpers.CreateBlueprint<BlueprintFeature>("ConquerorInspiredRageFeature", bp => {
                 bp.SetName("Profane Commandment");
@@ -103,7 +104,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     Helpers.LevelEntry(20, ProfaneChampion)
                 };
                 bp.AddFeatures = new LevelEntry[] {
-                    Helpers.LevelEntry(1, ConquerorInspiredRageFeature, RagingSong),
+                    Helpers.LevelEntry(1, ConquerorInspiredRageFeature, RagingSong, SkaldCantripsFeature),
                     Helpers.LevelEntry(3, FiendishMaw1d6Feature),
                     Helpers.LevelEntry(6, FiendTotemFeature, SongOfStrength),
                     Helpers.LevelEntry(7, FiendishMaw1d8Feature, ConquerorProfaneConquestFeature, SkaldMovePerformance),
