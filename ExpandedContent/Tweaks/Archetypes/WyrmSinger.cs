@@ -74,6 +74,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var LightningBolt00 = Resources.GetBlueprint<BlueprintProjectile>("c7734162c01abdc478418bfb286ed7a5");
             var AcidLine00 = Resources.GetBlueprint<BlueprintProjectile>("33af0c7694f8d734397bd03e6d4b72f1");
             var ShamanflameSpiritAbility = Resources.GetBlueprint<BlueprintAbility>("457cc54f39b8d2c4cad5499ec88a19d2");
+            var FormOfTheDragon1BrassAbility = Resources.GetBlueprint<BlueprintAbility>("2271bc6960317164aa61363ebe7c0228");
             var FormOfTheDragonII = Resources.GetBlueprint<BlueprintAbility>("666556ded3a32f34885e8c318c3a0ced");
             var BloodlineDraconicRedBreathWeaponAbility = Resources.GetBlueprint<BlueprintAbility>("3f31704e595e78942b3640cdc9b95d8b");
             var BloodlineDraconicWhiteBreathWeaponAbility = Resources.GetBlueprint<BlueprintAbility>("84be529914c90664aa948d8266bb3fa6");
@@ -1717,6 +1718,11 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.IsClassFeature = true;                
             });
 
+            var WyrmSingerWyrmSagaInAreaFlag = Helpers.CreateBuff("WyrmSingerWyrmSagaInAreaFlag", bp => {
+                bp.SetName("");
+                bp.SetDescription("");
+                bp.m_Flags = BlueprintBuff.Flags.RemoveOnRest| BlueprintBuff.Flags.HiddenInUi;
+            });
             var WyrmSingerWyrmSagaTargetBuff = Helpers.CreateBuff("WyrmSingerWyrmSagaTargetBuff", bp => {
                 bp.SetName("Wyrm Saga Target");
                 bp.SetDescription("This ally is selected to take on a draconic aspect (as per form of the dragon I) of a type of the wyrm singer’s choice when under the effect of the Wyrm Saga performance. " +
@@ -1735,7 +1741,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.m_Icon = FormOfTheDragon1BlackBuff.Icon;
                 bp.Components = FormOfTheDragon1BlackBuff.Components;
                 bp.IsClassFeature = false;
-                bp.Stacking = StackingType.Ignore;
+                bp.Stacking = StackingType.Prolong;
                 bp.FxOnStart = FormOfTheDragon1BlackBuff.FxOnStart;
             });
             var WyrmSingerWyrmSagaEffectBlue = Helpers.CreateBuff("WyrmSingerWyrmSagaEffectBlue", bp => {
@@ -1756,7 +1762,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     "bonus to {g|Encyclopedia:Constitution}Constitution{/g}, a +4 natural armor bonus to {g|Encyclopedia:Armor_Class}AC{/g}, immunity to difficult terrain, and resistance to " +
                     "fire 20. Your movement {g|Encyclopedia:Speed}speed{/g} is increased by 10 feet. You also gain one bite ({g|Encyclopedia:Dice}1d8{/g}), two claws (1d6), and two " +
                     "wing {g|Encyclopedia:Attack}attacks{/g} (1d4). You do not gain the breath weapon normally gained from dragonkind spells.");
-                bp.m_Icon = FormOfTheDragon1BrassBuff.Icon;
+                bp.m_Icon = FormOfTheDragon1BrassAbility.Icon;
                 bp.Components = FormOfTheDragon1BrassBuff.Components;
                 bp.IsClassFeature = false;
                 bp.Stacking = StackingType.Ignore;
@@ -1822,6 +1828,27 @@ namespace ExpandedContent.Tweaks.Archetypes {
             foreach (var WyrmSingerWyrmSagaEffect in WyrmSingerWyrmSagaEffects) {
                 WyrmSingerWyrmSagaEffect.RemoveComponents<AddFactContextActions>();
                 WyrmSingerWyrmSagaEffect.RemoveComponents<ReplaceAbilityParamsWithContext>();
+                WyrmSingerWyrmSagaEffect.AddComponent<AddFactContextActions>(c => {
+                    c.Activated = Helpers.CreateActionList();
+                    c.Deactivated = Helpers.CreateActionList();
+                    c.NewRound = Helpers.CreateActionList(
+                        new Conditional() {
+                            ConditionsChecker = new ConditionsChecker() {
+                                Operation = Operation.And,
+                                Conditions = new Condition[] {
+                                    new ContextConditionHasFact() {
+                                        m_Fact = WyrmSingerWyrmSagaInAreaFlag.ToReference<BlueprintUnitFactReference>(),
+                                        Not = false
+                                    }
+                                }
+                            },
+                            IfTrue = Helpers.CreateActionList(),
+                            IfFalse = Helpers.CreateActionList(
+                                new ContextActionRemoveSelf()
+                                )
+                        }
+                        );
+                });
             }
             var WyrmSingerWyrmSagaFlagBlack = Helpers.CreateBuff("WyrmSingerWyrmSagaFlagBlack", bp => {
                 bp.SetName("Wyrm Saga Selection - Black");
@@ -1838,7 +1865,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var WyrmSingerWyrmSagaFlagBrass = Helpers.CreateBuff("WyrmSingerWyrmSagaFlagBrass", bp => {
                 bp.SetName("Wyrm Saga Selection - Brass");
                 bp.SetDescription("When performing the wyrm saga raging song, the selected ally will be effected by the brass dragon variant of form of the dragon I.");
-                bp.m_Icon = FormOfTheDragon1BrassBuff.Icon;
+                bp.m_Icon = FormOfTheDragon1BrassAbility.Icon;
                 bp.m_Flags = BlueprintBuff.Flags.RemoveOnRest;
             });
             var WyrmSingerWyrmSagaFlagRed = Helpers.CreateBuff("WyrmSingerWyrmSagaFlagRed", bp => {
@@ -2079,7 +2106,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                         });
                 });
                 bp.m_Parent = WyrmSingerWyrmSagaTargetSelectorAbility.ToReference<BlueprintAbilityReference>();
-                bp.m_Icon = FormOfTheDragon1BrassBuff.Icon;
+                bp.m_Icon = FormOfTheDragon1BrassAbility.Icon;
                 bp.Type = AbilityType.Special;
                 bp.Range = AbilityRange.Long;
                 bp.CanTargetPoint = false;
@@ -2388,6 +2415,24 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var WyrmSingerWyrmSagaArea = Helpers.CreateBlueprint<BlueprintAbilityAreaEffect>("WyrmSingerWyrmSagaArea", bp => { 
                 bp.AddComponent<AbilityAreaEffectRunAction>(c => {
                     c.UnitEnter = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = WyrmSingerWyrmSagaInAreaFlag.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0,
+                                m_IsExtendable = true
+                            },
+                            DurationSeconds = 0,
+                            IsFromSpell = false,
+                            IsNotDispelable = false,
+                            ToCaster = false,
+                            AsChild = true,
+                            SameDuration = false
+                        },
                         new Conditional() {
                             ConditionsChecker = new ConditionsChecker() {
                                 Operation = Operation.And,
@@ -2415,7 +2460,8 @@ namespace ExpandedContent.Tweaks.Archetypes {
                                         Rate = DurationRate.Rounds,
                                         DiceType = DiceType.Zero,
                                         DiceCountValue = 0,
-                                        BonusValue = 0
+                                        BonusValue = 0,
+                                        m_IsExtendable = true
                                     },
                                     DurationSeconds = 0,
                                     IsFromSpell = false,
@@ -2664,37 +2710,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                         );
                     c.UnitExit = Helpers.CreateActionList(
                         new ContextActionRemoveBuff() {
-                            m_Buff = WyrmSingerWyrmSagaEffectBlack.ToReference<BlueprintBuffReference>(),
-                            RemoveRank = false,
-                            ToCaster = false
-                        },
-                        new ContextActionRemoveBuff() {
-                            m_Buff = WyrmSingerWyrmSagaEffectBlue.ToReference<BlueprintBuffReference>(),
-                            RemoveRank = false,
-                            ToCaster = false
-                        },
-                        new ContextActionRemoveBuff() {
-                            m_Buff = WyrmSingerWyrmSagaEffectBrass.ToReference<BlueprintBuffReference>(),
-                            RemoveRank = false,
-                            ToCaster = false
-                        },
-                        new ContextActionRemoveBuff() {
-                            m_Buff = WyrmSingerWyrmSagaEffectRed.ToReference<BlueprintBuffReference>(),
-                            RemoveRank = false,
-                            ToCaster = false
-                        },
-                        new ContextActionRemoveBuff() {
-                            m_Buff = WyrmSingerWyrmSagaEffectGreen.ToReference<BlueprintBuffReference>(),
-                            RemoveRank = false,
-                            ToCaster = false
-                        },
-                        new ContextActionRemoveBuff() {
-                            m_Buff = WyrmSingerWyrmSagaEffectSilver.ToReference<BlueprintBuffReference>(),
-                            RemoveRank = false,
-                            ToCaster = false
-                        },
-                        new ContextActionRemoveBuff() {
-                            m_Buff = WyrmSingerWyrmSagaEffectWhite.ToReference<BlueprintBuffReference>(),
+                            m_Buff = WyrmSingerWyrmSagaInAreaFlag.ToReference<BlueprintBuffReference>(),
                             RemoveRank = false,
                             ToCaster = false
                         }
