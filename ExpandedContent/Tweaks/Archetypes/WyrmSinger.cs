@@ -57,6 +57,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var InspiredRageFeature = Resources.GetBlueprint<BlueprintFeature>("1a639eadc2c3ed546bc4bb236864cd0c");
             var SkaldRagePowerSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("2476514e31791394fa140f1a07941c96");
             var SongOfTheFallenFeature = Resources.GetBlueprint<BlueprintFeature>("9fc5d126524dbc84a90b1856707e2d87");
+            var BloodragerBloodlineSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("62b33ac8ceb18dd47ad4c8f06849bc01");
             var InspiredRageAllyToggleSwitchBuff = Resources.GetBlueprint<BlueprintBuff>("9fd2dd27d838f0049ab56e9da3508b25");
             var FormOfTheDragon1BlackBuff = Resources.GetBlueprint<BlueprintBuff>("268fafac0a5b78c42a58bd9c1ae78bcf");
             var FormOfTheDragon1BlueBuff = Resources.GetBlueprint<BlueprintBuff>("b117bc8b41735924dba3fb23318f39ff");
@@ -110,11 +111,47 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.IsClassFeature = false;
                 bp.Stacking = StackingType.Replace;
             });
-            var WyrmSingerBreathWeaponBaseAcid = Helpers.CreateBlueprint<BlueprintAbility>("WyrmSingerBreathWeaponBaseAcid", bp => {
+            var WyrmSingerBreathWeaponBuffCold = Helpers.CreateBuff("WyrmSingerBreathWeaponBuffCold", bp => {
+                bp.SetName("Grant Breath Weapon - Cold");
+                bp.SetDescription("A wyrm singer can grant a breath weapon attack to himself or an ally affected by his draconic rage raging song. Using the breath weapon is a standard " +
+                    "action, and it affects creatures in a 30-foot cone or a 60-foot line. The breath weapon deals 1d6 points of cold damage per 2 character levels. Creatures caught " +
+                    "in the area can attempt a Reflex save (DC = 10 + 1/2 the characters level + their Constiution modifier) to halve the damage. This ability is lost either when used, or " +
+                    "when no longer effected by the wyrm singers draconic rage raging song.");
+                bp.m_Icon = BloodlineDraconicWhiteBreathWeaponAbility.m_Icon;
+                //Components added later
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = false;
+                bp.Stacking = StackingType.Replace;
+            });
+            var WyrmSingerBreathWeaponBuffElectricity = Helpers.CreateBuff("WyrmSingerBreathWeaponBuffElectricity", bp => {
+                bp.SetName("Grant Breath Weapon - Electricity");
+                bp.SetDescription("A wyrm singer can grant a breath weapon attack to himself or an ally affected by his draconic rage raging song. Using the breath weapon is a standard " +
+                    "action, and it affects creatures in a 30-foot cone or a 60-foot line. The breath weapon deals 1d6 points of electricity damage per 2 character levels. Creatures caught " +
+                    "in the area can attempt a Reflex save (DC = 10 + 1/2 the characters level + their Constiution modifier) to halve the damage. This ability is lost either when used, or " +
+                    "when no longer effected by the wyrm singers draconic rage raging song.");
+                bp.m_Icon = BloodlineDraconicBlueBreathWeaponAbility.m_Icon;
+                //Components added later
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = false;
+                bp.Stacking = StackingType.Replace;
+            });
+            var WyrmSingerBreathWeaponBuffFire = Helpers.CreateBuff("WyrmSingerBreathWeaponBuffFire", bp => {
+                bp.SetName("Grant Breath Weapon - Fire");
+                bp.SetDescription("A wyrm singer can grant a breath weapon attack to himself or an ally affected by his draconic rage raging song. Using the breath weapon is a standard " +
+                    "action, and it affects creatures in a 30-foot cone or a 60-foot line. The breath weapon deals 1d6 points of fire damage per 2 character levels. Creatures caught " +
+                    "in the area can attempt a Reflex save (DC = 10 + 1/2 the characters level + their Constiution modifier) to halve the damage. This ability is lost either when used, or " +
+                    "when no longer effected by the wyrm singers draconic rage raging song.");
+                bp.m_Icon = BloodlineDraconicRedBreathWeaponAbility.m_Icon;
+                //Components added later
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = false;
+                bp.Stacking = StackingType.Replace;
+            });
+            var WyrmSingerBreathWeaponBase = Helpers.CreateBlueprint<BlueprintAbility>("WyrmSingerBreathWeaponBaseAcid", bp => {
                 bp.SetName("Wyrm Singers Acid Breath");
-                bp.SetDescription("Your breath weapon may be either a 30-foot cone or a 60-foot line. The breath weapon deals 1d6 points of acid damage per 2 character levels. " +
+                bp.SetDescription("Your breath weapon may be either a 30-foot cone or a 60-foot line. The breath weapon deals 1d6 points of elemental damage per 2 character levels. " +
                     "Creatures caught in the area can attempt a Reflex save (DC = 10 + 1/2 the characters level + their Constiution modifier) to halve the damage.");
-                bp.m_Icon = BloodlineDraconicBlackBreathWeaponAbility.m_Icon;
+                bp.m_Icon = ShamanflameSpiritAbility.m_Icon;
                 //Variants added after
                 bp.Type = AbilityType.Special;
                 bp.Range = AbilityRange.Projectile;
@@ -222,7 +259,10 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.m_SpecificModifier = ModifierDescriptor.None;
                     c.m_Progression = ContextRankProgression.AsIs;
                 });
-                bp.m_Parent = WyrmSingerBreathWeaponBaseAcid.ToReference<BlueprintAbilityReference>();
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { WyrmSingerBreathWeaponBuffAcid.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = WyrmSingerBreathWeaponBase.ToReference<BlueprintAbilityReference>();
                 bp.Type = AbilityType.Special;
                 bp.Range = AbilityRange.Projectile;
                 bp.CanTargetPoint = true;
@@ -329,7 +369,10 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.m_SpecificModifier = ModifierDescriptor.None;
                     c.m_Progression = ContextRankProgression.AsIs;
                 });
-                bp.m_Parent = WyrmSingerBreathWeaponBaseAcid.ToReference<BlueprintAbilityReference>();
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { WyrmSingerBreathWeaponBuffAcid.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = WyrmSingerBreathWeaponBase.ToReference<BlueprintAbilityReference>();
                 bp.Type = AbilityType.Special;
                 bp.Range = AbilityRange.Projectile;
                 bp.CanTargetPoint = true;
@@ -341,63 +384,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.BreathWeapon;
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
-            });
-            WyrmSingerBreathWeaponBaseAcid.AddComponent<AbilityVariants>(c => {
-                c.m_Variants = new BlueprintAbilityReference[] {
-                    WyrmSingerBreathWeaponConeAcid.ToReference<BlueprintAbilityReference>(),
-                    WyrmSingerBreathWeaponLineAcid.ToReference<BlueprintAbilityReference>()
-                };
-            });
-            WyrmSingerBreathWeaponBuffAcid.TemporaryContext(bp => {
-                bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[] {
-                        WyrmSingerBreathWeaponBaseAcid.ToReference<BlueprintUnitFactReference>()
-                    };
-                    c.CasterLevel = 0;
-                    c.DoNotRestoreMissingFacts = false;
-                    c.HasDifficultyRequirements = false;
-                    c.InvertDifficultyRequirements = false;
-                    c.MinDifficulty = GameDifficultyOption.Story;
-                });
-                bp.AddComponent<ReplaceAbilitiesStat>(c => {
-                    c.m_Ability = new BlueprintAbilityReference[] {
-                        WyrmSingerBreathWeaponBaseAcid.ToReference<BlueprintAbilityReference>(),
-                        WyrmSingerBreathWeaponConeAcid.ToReference<BlueprintAbilityReference>(),
-                        WyrmSingerBreathWeaponLineAcid.ToReference<BlueprintAbilityReference>()
-                    };
-                    c.Stat = StatType.Constitution;
-                });
-            });
-            var WyrmSingerBreathWeaponBuffCold = Helpers.CreateBuff("WyrmSingerBreathWeaponBuffCold", bp => {
-                bp.SetName("Grant Breath Weapon - Cold");
-                bp.SetDescription("A wyrm singer can grant a breath weapon attack to himself or an ally affected by his draconic rage raging song. Using the breath weapon is a standard " +
-                    "action, and it affects creatures in a 30-foot cone or a 60-foot line. The breath weapon deals 1d6 points of cold damage per 2 character levels. Creatures caught " +
-                    "in the area can attempt a Reflex save (DC = 10 + 1/2 the characters level + their Constiution modifier) to halve the damage. This ability is lost either when used, or " +
-                    "when no longer effected by the wyrm singers draconic rage raging song.");
-                bp.m_Icon = BloodlineDraconicWhiteBreathWeaponAbility.m_Icon;
-                //Components added later
-                bp.m_AllowNonContextActions = false;
-                bp.IsClassFeature = false;
-                bp.Stacking = StackingType.Replace;
-            });
-            var WyrmSingerBreathWeaponBaseCold = Helpers.CreateBlueprint<BlueprintAbility>("WyrmSingerBreathWeaponBaseCold", bp => {
-                bp.SetName("Wyrm Singers Cold Breath");
-                bp.SetDescription("Your breath weapon may be either a 30-foot cone or a 60-foot line. The breath weapon deals 1d6 points of cold damage per 2 character levels. " +
-                    "Creatures caught in the area can attempt a Reflex save (DC = 10 + 1/2 the characters level + their Constiution modifier) to halve the damage.");
-                bp.m_Icon = BloodlineDraconicWhiteBreathWeaponAbility.m_Icon;
-                //Variants added after
-                bp.Type = AbilityType.Special;
-                bp.Range = AbilityRange.Projectile;
-                bp.CanTargetPoint = true;
-                bp.CanTargetEnemies = true;
-                bp.CanTargetFriends = false;
-                bp.CanTargetSelf = false;
-                bp.EffectOnAlly = AbilityEffectOnUnit.None;
-                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
-                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.BreathWeapon;
-                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
-                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
-            });
+            });            
             var WyrmSingerBreathWeaponConeCold = Helpers.CreateBlueprint<BlueprintAbility>("WyrmSingerBreathWeaponConeCold", bp => {
                 bp.SetName("Wyrm Singers Cold Breath - Cone");
                 bp.SetDescription("Your breath weapon may be either a 30-foot cone or a 60-foot line. The breath weapon deals 1d6 points of cold damage per 2 character levels. " +
@@ -492,7 +479,10 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.m_SpecificModifier = ModifierDescriptor.None;
                     c.m_Progression = ContextRankProgression.AsIs;
                 });
-                bp.m_Parent = WyrmSingerBreathWeaponBaseCold.ToReference<BlueprintAbilityReference>();
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { WyrmSingerBreathWeaponBuffCold.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = WyrmSingerBreathWeaponBase.ToReference<BlueprintAbilityReference>();
                 bp.Type = AbilityType.Special;
                 bp.Range = AbilityRange.Projectile;
                 bp.CanTargetPoint = true;
@@ -599,7 +589,10 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.m_SpecificModifier = ModifierDescriptor.None;
                     c.m_Progression = ContextRankProgression.AsIs;
                 });
-                bp.m_Parent = WyrmSingerBreathWeaponBaseCold.ToReference<BlueprintAbilityReference>();
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { WyrmSingerBreathWeaponBuffCold.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = WyrmSingerBreathWeaponBase.ToReference<BlueprintAbilityReference>();
                 bp.Type = AbilityType.Special;
                 bp.Range = AbilityRange.Projectile;
                 bp.CanTargetPoint = true;
@@ -611,63 +604,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.BreathWeapon;
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
-            });
-            WyrmSingerBreathWeaponBaseCold.AddComponent<AbilityVariants>(c => {
-                c.m_Variants = new BlueprintAbilityReference[] {
-                    WyrmSingerBreathWeaponConeCold.ToReference<BlueprintAbilityReference>(),
-                    WyrmSingerBreathWeaponLineCold.ToReference<BlueprintAbilityReference>()
-                };
-            });
-            WyrmSingerBreathWeaponBuffCold.TemporaryContext(bp => {
-                bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[] {
-                        WyrmSingerBreathWeaponBaseCold.ToReference<BlueprintUnitFactReference>()
-                    };
-                    c.CasterLevel = 0;
-                    c.DoNotRestoreMissingFacts = false;
-                    c.HasDifficultyRequirements = false;
-                    c.InvertDifficultyRequirements = false;
-                    c.MinDifficulty = GameDifficultyOption.Story;
-                });
-                bp.AddComponent<ReplaceAbilitiesStat>(c => {
-                    c.m_Ability = new BlueprintAbilityReference[] {
-                        WyrmSingerBreathWeaponBaseCold.ToReference<BlueprintAbilityReference>(),
-                        WyrmSingerBreathWeaponConeCold.ToReference<BlueprintAbilityReference>(),
-                        WyrmSingerBreathWeaponLineCold.ToReference<BlueprintAbilityReference>()
-                    };
-                    c.Stat = StatType.Constitution;
-                });
-            });
-            var WyrmSingerBreathWeaponBuffElectricity = Helpers.CreateBuff("WyrmSingerBreathWeaponBuffElectricity", bp => {
-                bp.SetName("Grant Breath Weapon - Electricity");
-                bp.SetDescription("A wyrm singer can grant a breath weapon attack to himself or an ally affected by his draconic rage raging song. Using the breath weapon is a standard " +
-                    "action, and it affects creatures in a 30-foot cone or a 60-foot line. The breath weapon deals 1d6 points of electricity damage per 2 character levels. Creatures caught " +
-                    "in the area can attempt a Reflex save (DC = 10 + 1/2 the characters level + their Constiution modifier) to halve the damage. This ability is lost either when used, or " +
-                    "when no longer effected by the wyrm singers draconic rage raging song.");
-                bp.m_Icon = BloodlineDraconicBlueBreathWeaponAbility.m_Icon;
-                //Components added later
-                bp.m_AllowNonContextActions = false;
-                bp.IsClassFeature = false;
-                bp.Stacking = StackingType.Replace;
-            });
-            var WyrmSingerBreathWeaponBaseElectricity = Helpers.CreateBlueprint<BlueprintAbility>("WyrmSingerBreathWeaponBaseElectricity", bp => {
-                bp.SetName("Wyrm Singers Electricity Breath");
-                bp.SetDescription("Your breath weapon may be either a 30-foot cone or a 60-foot line. The breath weapon deals 1d6 points of electricity damage per 2 character levels. " +
-                    "Creatures caught in the area can attempt a Reflex save (DC = 10 + 1/2 the characters level + their Constiution modifier) to halve the damage.");
-                bp.m_Icon = BloodlineDraconicBlueBreathWeaponAbility.m_Icon;
-                //Variants added after
-                bp.Type = AbilityType.Special;
-                bp.Range = AbilityRange.Projectile;
-                bp.CanTargetPoint = true;
-                bp.CanTargetEnemies = true;
-                bp.CanTargetFriends = false;
-                bp.CanTargetSelf = false;
-                bp.EffectOnAlly = AbilityEffectOnUnit.None;
-                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
-                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.BreathWeapon;
-                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
-                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
-            });
+            });            
             var WyrmSingerBreathWeaponConeElectricity = Helpers.CreateBlueprint<BlueprintAbility>("WyrmSingerBreathWeaponConeElectricity", bp => {
                 bp.SetName("Wyrm Singers Electricity Breath - Cone");
                 bp.SetDescription("Your breath weapon may be either a 30-foot cone or a 60-foot line. The breath weapon deals 1d6 points of electricity damage per 2 character levels. " +
@@ -762,7 +699,10 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.m_SpecificModifier = ModifierDescriptor.None;
                     c.m_Progression = ContextRankProgression.AsIs;
                 });
-                bp.m_Parent = WyrmSingerBreathWeaponBaseElectricity.ToReference<BlueprintAbilityReference>();
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { WyrmSingerBreathWeaponBuffElectricity.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = WyrmSingerBreathWeaponBase.ToReference<BlueprintAbilityReference>();
                 bp.Type = AbilityType.Special;
                 bp.Range = AbilityRange.Projectile;
                 bp.CanTargetPoint = true;
@@ -869,63 +809,10 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.m_SpecificModifier = ModifierDescriptor.None;
                     c.m_Progression = ContextRankProgression.AsIs;
                 });
-                bp.m_Parent = WyrmSingerBreathWeaponBaseElectricity.ToReference<BlueprintAbilityReference>();
-                bp.Type = AbilityType.Special;
-                bp.Range = AbilityRange.Projectile;
-                bp.CanTargetPoint = true;
-                bp.CanTargetEnemies = true;
-                bp.CanTargetFriends = false;
-                bp.CanTargetSelf = false;
-                bp.EffectOnAlly = AbilityEffectOnUnit.None;
-                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
-                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.BreathWeapon;
-                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
-                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
-            });
-            WyrmSingerBreathWeaponBaseElectricity.AddComponent<AbilityVariants>(c => {
-                c.m_Variants = new BlueprintAbilityReference[] {
-                    WyrmSingerBreathWeaponConeElectricity.ToReference<BlueprintAbilityReference>(),
-                    WyrmSingerBreathWeaponLineElectricity.ToReference<BlueprintAbilityReference>()
-                };
-            });
-            WyrmSingerBreathWeaponBuffElectricity.TemporaryContext(bp => {
-                bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[] {
-                        WyrmSingerBreathWeaponBaseElectricity.ToReference<BlueprintUnitFactReference>()
-                    };
-                    c.CasterLevel = 0;
-                    c.DoNotRestoreMissingFacts = false;
-                    c.HasDifficultyRequirements = false;
-                    c.InvertDifficultyRequirements = false;
-                    c.MinDifficulty = GameDifficultyOption.Story;
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { WyrmSingerBreathWeaponBuffElectricity.ToReference<BlueprintUnitFactReference>() };
                 });
-                bp.AddComponent<ReplaceAbilitiesStat>(c => {
-                    c.m_Ability = new BlueprintAbilityReference[] {
-                        WyrmSingerBreathWeaponBaseElectricity.ToReference<BlueprintAbilityReference>(),
-                        WyrmSingerBreathWeaponConeElectricity.ToReference<BlueprintAbilityReference>(),
-                        WyrmSingerBreathWeaponLineElectricity.ToReference<BlueprintAbilityReference>()
-                    };
-                    c.Stat = StatType.Constitution;
-                });
-            });
-            var WyrmSingerBreathWeaponBuffFire = Helpers.CreateBuff("WyrmSingerBreathWeaponBuffFire", bp => {
-                bp.SetName("Grant Breath Weapon - Fire");
-                bp.SetDescription("A wyrm singer can grant a breath weapon attack to himself or an ally affected by his draconic rage raging song. Using the breath weapon is a standard " +
-                    "action, and it affects creatures in a 30-foot cone or a 60-foot line. The breath weapon deals 1d6 points of fire damage per 2 character levels. Creatures caught " +
-                    "in the area can attempt a Reflex save (DC = 10 + 1/2 the characters level + their Constiution modifier) to halve the damage. This ability is lost either when used, or " +
-                    "when no longer effected by the wyrm singers draconic rage raging song.");
-                bp.m_Icon = BloodlineDraconicRedBreathWeaponAbility.m_Icon;
-                //Components added later
-                bp.m_AllowNonContextActions = false;
-                bp.IsClassFeature = false;
-                bp.Stacking = StackingType.Replace;
-            });
-            var WyrmSingerBreathWeaponBaseFire = Helpers.CreateBlueprint<BlueprintAbility>("WyrmSingerBreathWeaponBaseFire", bp => {
-                bp.SetName("Wyrm Singers Fire Breath");
-                bp.SetDescription("Your breath weapon may be either a 30-foot cone or a 60-foot line. The breath weapon deals 1d6 points of fire damage per 2 character levels. " +
-                    "Creatures caught in the area can attempt a Reflex save (DC = 10 + 1/2 the characters level + their Constiution modifier) to halve the damage.");
-                bp.m_Icon = BloodlineDraconicRedBreathWeaponAbility.m_Icon;
-                //Variants added after
+                bp.m_Parent = WyrmSingerBreathWeaponBase.ToReference<BlueprintAbilityReference>();
                 bp.Type = AbilityType.Special;
                 bp.Range = AbilityRange.Projectile;
                 bp.CanTargetPoint = true;
@@ -1032,7 +919,10 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.m_SpecificModifier = ModifierDescriptor.None;
                     c.m_Progression = ContextRankProgression.AsIs;
                 });
-                bp.m_Parent = WyrmSingerBreathWeaponBaseFire.ToReference<BlueprintAbilityReference>();
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { WyrmSingerBreathWeaponBuffFire.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = WyrmSingerBreathWeaponBase.ToReference<BlueprintAbilityReference>();
                 bp.Type = AbilityType.Special;
                 bp.Range = AbilityRange.Projectile;
                 bp.CanTargetPoint = true;
@@ -1139,7 +1029,10 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.m_SpecificModifier = ModifierDescriptor.None;
                     c.m_Progression = ContextRankProgression.AsIs;
                 });
-                bp.m_Parent = WyrmSingerBreathWeaponBaseFire.ToReference<BlueprintAbilityReference>();
+                bp.AddComponent<AbilityCasterHasFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { WyrmSingerBreathWeaponBuffFire.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_Parent = WyrmSingerBreathWeaponBase.ToReference<BlueprintAbilityReference>();
                 bp.Type = AbilityType.Special;
                 bp.Range = AbilityRange.Projectile;
                 bp.CanTargetPoint = true;
@@ -1152,16 +1045,22 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
-            WyrmSingerBreathWeaponBaseFire.AddComponent<AbilityVariants>(c => {
+            WyrmSingerBreathWeaponBase.AddComponent<AbilityVariants>(c => {
                 c.m_Variants = new BlueprintAbilityReference[] {
+                    WyrmSingerBreathWeaponConeAcid.ToReference<BlueprintAbilityReference>(),
+                    WyrmSingerBreathWeaponLineAcid.ToReference<BlueprintAbilityReference>(),
+                    WyrmSingerBreathWeaponConeCold.ToReference<BlueprintAbilityReference>(),
+                    WyrmSingerBreathWeaponLineCold.ToReference<BlueprintAbilityReference>(),
+                    WyrmSingerBreathWeaponConeElectricity.ToReference<BlueprintAbilityReference>(),
+                    WyrmSingerBreathWeaponLineElectricity.ToReference<BlueprintAbilityReference>(),
                     WyrmSingerBreathWeaponConeFire.ToReference<BlueprintAbilityReference>(),
                     WyrmSingerBreathWeaponLineFire.ToReference<BlueprintAbilityReference>()
                 };
             });
-            WyrmSingerBreathWeaponBuffFire.TemporaryContext(bp => {
+            WyrmSingerBreathWeaponBuffAcid.TemporaryContext(bp => {
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] {
-                        WyrmSingerBreathWeaponBaseFire.ToReference<BlueprintUnitFactReference>()
+                        WyrmSingerBreathWeaponBase.ToReference<BlueprintUnitFactReference>()
                     };
                     c.CasterLevel = 0;
                     c.DoNotRestoreMissingFacts = false;
@@ -1170,9 +1069,88 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.MinDifficulty = GameDifficultyOption.Story;
                 });
                 bp.AddComponent<ReplaceAbilitiesStat>(c => {
-                    c.m_Ability = 
-                    new BlueprintAbilityReference[] {
-                        WyrmSingerBreathWeaponBaseFire.ToReference<BlueprintAbilityReference>(),
+                    c.m_Ability = new BlueprintAbilityReference[] {
+                        WyrmSingerBreathWeaponConeAcid.ToReference<BlueprintAbilityReference>(),
+                        WyrmSingerBreathWeaponLineAcid.ToReference<BlueprintAbilityReference>(),
+                        WyrmSingerBreathWeaponConeCold.ToReference<BlueprintAbilityReference>(),
+                        WyrmSingerBreathWeaponLineCold.ToReference<BlueprintAbilityReference>(),
+                        WyrmSingerBreathWeaponConeElectricity.ToReference<BlueprintAbilityReference>(),
+                        WyrmSingerBreathWeaponLineElectricity.ToReference<BlueprintAbilityReference>(),
+                        WyrmSingerBreathWeaponConeFire.ToReference<BlueprintAbilityReference>(),
+                        WyrmSingerBreathWeaponLineFire.ToReference<BlueprintAbilityReference>()
+                    };
+                    c.Stat = StatType.Constitution;
+                });
+            });
+            WyrmSingerBreathWeaponBuffCold.TemporaryContext(bp => {
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        WyrmSingerBreathWeaponBase.ToReference<BlueprintUnitFactReference>()
+                    };
+                    c.CasterLevel = 0;
+                    c.DoNotRestoreMissingFacts = false;
+                    c.HasDifficultyRequirements = false;
+                    c.InvertDifficultyRequirements = false;
+                    c.MinDifficulty = GameDifficultyOption.Story;
+                });
+                bp.AddComponent<ReplaceAbilitiesStat>(c => {
+                    c.m_Ability = new BlueprintAbilityReference[] {
+                        WyrmSingerBreathWeaponConeAcid.ToReference<BlueprintAbilityReference>(),
+                        WyrmSingerBreathWeaponLineAcid.ToReference<BlueprintAbilityReference>(),
+                        WyrmSingerBreathWeaponConeCold.ToReference<BlueprintAbilityReference>(),
+                        WyrmSingerBreathWeaponLineCold.ToReference<BlueprintAbilityReference>(),
+                        WyrmSingerBreathWeaponConeElectricity.ToReference<BlueprintAbilityReference>(),
+                        WyrmSingerBreathWeaponLineElectricity.ToReference<BlueprintAbilityReference>(),
+                        WyrmSingerBreathWeaponConeFire.ToReference<BlueprintAbilityReference>(),
+                        WyrmSingerBreathWeaponLineFire.ToReference<BlueprintAbilityReference>()
+                    };
+                    c.Stat = StatType.Constitution;
+                });
+            });
+            WyrmSingerBreathWeaponBuffElectricity.TemporaryContext(bp => {
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        WyrmSingerBreathWeaponBase.ToReference<BlueprintUnitFactReference>()
+                    };
+                    c.CasterLevel = 0;
+                    c.DoNotRestoreMissingFacts = false;
+                    c.HasDifficultyRequirements = false;
+                    c.InvertDifficultyRequirements = false;
+                    c.MinDifficulty = GameDifficultyOption.Story;
+                });
+                bp.AddComponent<ReplaceAbilitiesStat>(c => {
+                    c.m_Ability = new BlueprintAbilityReference[] {
+                        WyrmSingerBreathWeaponConeAcid.ToReference<BlueprintAbilityReference>(),
+                        WyrmSingerBreathWeaponLineAcid.ToReference<BlueprintAbilityReference>(),
+                        WyrmSingerBreathWeaponConeCold.ToReference<BlueprintAbilityReference>(),
+                        WyrmSingerBreathWeaponLineCold.ToReference<BlueprintAbilityReference>(),
+                        WyrmSingerBreathWeaponConeElectricity.ToReference<BlueprintAbilityReference>(),
+                        WyrmSingerBreathWeaponLineElectricity.ToReference<BlueprintAbilityReference>(),
+                        WyrmSingerBreathWeaponConeFire.ToReference<BlueprintAbilityReference>(),
+                        WyrmSingerBreathWeaponLineFire.ToReference<BlueprintAbilityReference>()
+                    };
+                    c.Stat = StatType.Constitution;
+                });
+            });
+            WyrmSingerBreathWeaponBuffFire.TemporaryContext(bp => {
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        WyrmSingerBreathWeaponBase.ToReference<BlueprintUnitFactReference>()
+                    };
+                    c.CasterLevel = 0;
+                    c.DoNotRestoreMissingFacts = false;
+                    c.HasDifficultyRequirements = false;
+                    c.InvertDifficultyRequirements = false;
+                    c.MinDifficulty = GameDifficultyOption.Story;
+                });
+                bp.AddComponent<ReplaceAbilitiesStat>(c => {
+                    c.m_Ability = new BlueprintAbilityReference[] {
+                        WyrmSingerBreathWeaponConeAcid.ToReference<BlueprintAbilityReference>(),
+                        WyrmSingerBreathWeaponLineAcid.ToReference<BlueprintAbilityReference>(),
+                        WyrmSingerBreathWeaponConeCold.ToReference<BlueprintAbilityReference>(),
+                        WyrmSingerBreathWeaponLineCold.ToReference<BlueprintAbilityReference>(),
+                        WyrmSingerBreathWeaponConeElectricity.ToReference<BlueprintAbilityReference>(),
+                        WyrmSingerBreathWeaponLineElectricity.ToReference<BlueprintAbilityReference>(),
                         WyrmSingerBreathWeaponConeFire.ToReference<BlueprintAbilityReference>(),
                         WyrmSingerBreathWeaponLineFire.ToReference<BlueprintAbilityReference>()
                     };
@@ -1207,7 +1185,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.m_RequiredResource = WyrmSingerBreathWeaponResource.ToReference<BlueprintAbilityResourceReference>();
                     c.m_IsSpendResource = true;
                 });
-                bp.m_Icon = BloodlineDraconicRedBreathWeaponAbility.Icon;
+                bp.m_Icon = ShamanflameSpiritAbility.Icon;
                 bp.Type = AbilityType.Supernatural;
                 bp.Range = AbilityRange.Long;
                 bp.CanTargetPoint = false;
@@ -1409,7 +1387,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     "draconic rage raging song. Using the breath weapon is a standard action, and it affects creatures in a 30-foot cone or a 60-foot line. The breath weapons " +
                     "deal 1d6 points of damage per 2 skald levels the wyrm singer has, and are of an energy type of the wyrm singer’s choice (acid, cold, electricity, or fire). " +
                     "Creatures caught in the area can attempt a Reflex save (DC = 10 + 1/2 the characters level + their Constiution modifier) to halve the damage.");
-                bp.m_Icon = BloodlineDraconicRedBreathWeaponAbility.Icon;
+                bp.m_Icon = ShamanflameSpiritAbility.Icon;
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] {
                         WyrmSingerBreathWeaponAbility.ToReference<BlueprintUnitFactReference>()
@@ -1431,7 +1409,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     "a +2 bonus on melee attack and damage rolls and a +2 bonus on saving throws against paralysis and sleep effects (but they still take a –1 penalty to their AC), rather than " +
                     "inspired rage’s normal bonuses. At 4th level and every 4 skald levels thereafter, the song’s bonuses on saves against paralysis and sleep effects increase by 1. At 8th and 16th levels, " +
                     "the song’s bonus on melee attack and damage rolls increases by 1.");
-                bp.m_Icon = ShamanflameSpiritAbility.Icon;
+                bp.m_Icon = BloodragerBloodlineSelection.Icon;
                 bp.AddComponents(InspiredRageAddFactContextActions);
                 bp.AddComponent(InspiredRageAddFactsFromCaster);
                 bp.AddComponent<WeaponAttackTypeDamageBonus>(c => {
@@ -1558,6 +1536,8 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 c.m_CheckedFacts = new BlueprintUnitFactReference[] { WyrmSingerDraconicRageEffectBuff.ToReference<BlueprintUnitFactReference>() };
                 c.Inverted = false;
             });
+
+
             var WyrmSingerDraconicRageArea = Helpers.CreateBlueprint<BlueprintAbilityAreaEffect>("WyrmSingerDraconicRageArea", bp => {
                 bp.AddComponent<AbilityAreaEffectRunAction>(c => {
                     c.UnitEnter = Helpers.CreateActionList(
@@ -1605,6 +1585,26 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.UnitExit = Helpers.CreateActionList(
                         new ContextActionRemoveBuff() {
                             m_Buff = WyrmSingerDraconicRageEffectBuff.ToReference<BlueprintBuffReference>(),
+                            RemoveRank = false,
+                            ToCaster = false
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = WyrmSingerBreathWeaponBuffAcid.ToReference<BlueprintBuffReference>(),
+                            RemoveRank = false,
+                            ToCaster = false
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = WyrmSingerBreathWeaponBuffCold.ToReference<BlueprintBuffReference>(),
+                            RemoveRank = false,
+                            ToCaster = false
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = WyrmSingerBreathWeaponBuffElectricity.ToReference<BlueprintBuffReference>(),
+                            RemoveRank = false,
+                            ToCaster = false
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = WyrmSingerBreathWeaponBuffFire.ToReference<BlueprintBuffReference>(),
                             RemoveRank = false,
                             ToCaster = false
                         }
@@ -1684,7 +1684,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     "a +2 bonus on melee attack and damage rolls and a +2 bonus on saving throws against paralysis and sleep effects (but they still take a –1 penalty to their AC), rather than " +
                     "inspired rage’s normal bonuses. At 4th level and every 4 skald levels thereafter, the song’s bonuses on saves against paralysis and sleep effects increase by 1. At 8th and 16th levels, " +
                     "the song’s bonus on melee attack and damage rolls increases by 1.");
-                bp.m_Icon = ShamanflameSpiritAbility.Icon;
+                bp.m_Icon = BloodragerBloodlineSelection.Icon;
                 bp.m_Buff = WyrmSingerDraconicRageBuff.ToReference<BlueprintBuffReference>();
                 bp.AddComponent<ActivatableAbilityResourceLogic>(c => {
                     c.SpendType = ActivatableAbilityResourceLogic.ResourceSpendType.NewRound;
@@ -1710,7 +1710,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     "a +2 bonus on melee attack and damage rolls and a +2 bonus on saving throws against paralysis and sleep effects (but they still take a –1 penalty to their AC), rather than " +
                     "inspired rage’s normal bonuses. At 4th level and every 4 skald levels thereafter, the song’s bonuses on saves against paralysis and sleep effects increase by 1. At 8th and 16th levels, " +
                     "the song’s bonus on melee attack and damage rolls increases by 1.");
-                bp.m_Icon = ShamanflameSpiritAbility.Icon;
+                //bp.m_Icon = BloodragerBloodlineSelection.Icon;
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] { WyrmSingerDraconicRageAbility.ToReference<BlueprintUnitFactReference>() };
                 });
