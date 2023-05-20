@@ -42,6 +42,8 @@ namespace ExpandedContent.Utilities {
             BlueprintBuff InspiredRageBuff = Resources.GetBlueprint<BlueprintBuff>("220e58fee6ab0bf4fab8d1a66b01edd0"); //InspiredRage
             BlueprintBuff SongOfStrengthBuff = Resources.GetBlueprint<BlueprintBuff>("538c9ee7531e7df4ba7ef3691397bbf3"); //SongOfStrength
             BlueprintBuff SongOfTheFallenBuff = Resources.GetBlueprint<BlueprintBuff>("83518d367a854084699b7e1902a3fcc2"); //SongOfTheFallen
+            BlueprintBuff WyrmSingerDraconicRageBuff = Resources.GetModBlueprint<BlueprintBuff>("WyrmSingerDraconicRageBuff"); //WyrmSingerDraconicRageBuff
+            BlueprintBuff WyrmSingerWyrmSagaBuff = Resources.GetModBlueprint<BlueprintBuff>("WyrmSingerWyrmSagaBuff"); //WyrmSingerWyrmSagaBuff
             BlueprintFeature LingeringPerformance = Resources.GetBlueprint<BlueprintFeature>("17239b298065efc459cffe2220ecb559");
             return new Conditional() {
                 ConditionsChecker = new ConditionsChecker() {
@@ -189,7 +191,17 @@ namespace ExpandedContent.Utilities {
                         m_Buff = SongOfTheFallenBuff.ToReference<BlueprintBuffReference>(),
                         RemoveRank = false,
                         ToCaster = true
-                    }   
+                    },
+                    new ContextActionRemoveBuff() {
+                        m_Buff = WyrmSingerDraconicRageBuff.ToReference<BlueprintBuffReference>(),
+                        RemoveRank = false,
+                        ToCaster = true
+                    },
+                    new ContextActionRemoveBuff() {
+                        m_Buff = WyrmSingerWyrmSagaBuff.ToReference<BlueprintBuffReference>(),
+                        RemoveRank = false,
+                        ToCaster = true
+                    }
                 )
             };
         }
@@ -221,6 +233,8 @@ namespace ExpandedContent.Utilities {
             BlueprintBuff InspiredRageBuff = Resources.GetBlueprint<BlueprintBuff>("220e58fee6ab0bf4fab8d1a66b01edd0"); //InspiredRage
             BlueprintBuff SongOfStrengthBuff = Resources.GetBlueprint<BlueprintBuff>("538c9ee7531e7df4ba7ef3691397bbf3"); //SongOfStrength
             BlueprintBuff SongOfTheFallenBuff = Resources.GetBlueprint<BlueprintBuff>("83518d367a854084699b7e1902a3fcc2"); //SongOfTheFallen
+            BlueprintBuff WyrmSingerDraconicRageBuff = Resources.GetModBlueprint<BlueprintBuff>("WyrmSingerDraconicRageBuff"); //WyrmSingerDraconicRageBuff
+            BlueprintBuff WyrmSingerWyrmSagaBuff = Resources.GetModBlueprint<BlueprintBuff>("WyrmSingerWyrmSagaBuff"); //WyrmSingerWyrmSagaBuff
             return new AbilityCasterHasFacts() {
                 m_Facts = new BlueprintUnitFactReference[] {
                     InspireCourageBuff.ToReference<BlueprintUnitFactReference>(),
@@ -249,7 +263,9 @@ namespace ExpandedContent.Utilities {
                     DirgeOfDoomSkaldBuff.ToReference<BlueprintUnitFactReference>(),
                     InspiredRageBuff.ToReference<BlueprintUnitFactReference>(),
                     SongOfStrengthBuff.ToReference<BlueprintUnitFactReference>(),
-                    SongOfTheFallenBuff.ToReference<BlueprintUnitFactReference>()
+                    SongOfTheFallenBuff.ToReference<BlueprintUnitFactReference>(),
+                    WyrmSingerDraconicRageBuff.ToReference<BlueprintUnitFactReference>(),
+                    WyrmSingerWyrmSagaBuff.ToReference<BlueprintUnitFactReference>()
                 },
                 NeedsAll = false
             };

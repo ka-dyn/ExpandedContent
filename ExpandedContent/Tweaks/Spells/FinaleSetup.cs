@@ -84,6 +84,8 @@ namespace ExpandedContent.Tweaks.Spells {
                 Resources.GetModBlueprint<BlueprintActivatableAbility>("OceansEchoInspireHeroicsToggleAbility"), //OceansEchoInspireHeroics
                 Resources.GetModBlueprint<BlueprintActivatableAbility>("OceansEchoInspireCompetenceToggleAbility"), //OceansEchoInspireCompetence
                 Resources.GetModBlueprint<BlueprintActivatableAbility>("OceansEchoInspireCourageToggleAbility"), //OceansEchoInspireCourage
+                Resources.GetModBlueprint<BlueprintActivatableAbility>("WyrmSingerDraconicRageAbility"), //WyrmSingerDraconicRageAbility
+                Resources.GetModBlueprint<BlueprintActivatableAbility>("WyrmSingerWyrmSagaAbility"), //WyrmSingerWyrmSagaAbility
             };
             foreach (var BardicPerformance in BardicPerformances) {
                 BardicPerformance.AddComponent<RestrictionHasFact>(c => {
