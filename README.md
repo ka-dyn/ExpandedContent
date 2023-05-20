@@ -25,6 +25,8 @@ New Archetypes
 
 - Draconic Scholar, Arcanist
 
+- Wyrm Singer, Skald
+
 New Prestige Class
 
 - Stargazer
