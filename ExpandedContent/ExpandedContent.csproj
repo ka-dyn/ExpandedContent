@@ -179,6 +179,7 @@
     <Compile Include="Tweaks\Archetypes\LionShaman.cs" />
     <Compile Include="Tweaks\Archetypes\Castigator.cs" />
     <Compile Include="Tweaks\Archetypes\BearShaman.cs" />
+    <Compile Include="Tweaks\Archetypes\Archer.cs" />
     <Compile Include="Tweaks\Archetypes\WyrmSinger.cs" />
     <Compile Include="Tweaks\Archetypes\UrbanDruid.cs" />
     <Compile Include="Tweaks\Archetypes\DraconicScholar.cs" />
