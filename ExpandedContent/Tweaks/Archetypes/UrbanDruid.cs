@@ -144,6 +144,35 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var WailOfBansheeSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("b24583190f36a8442b212e45226c54fc");
             var WavesOfExhaustionSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("3e4d3b9a5bd03734d9b053b9067c2f38");
 
+            var ProtectionFromAlignmentEvilSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("eee384c813b6d74498d1b9cc720d61f4");
+            var ProtectionFromAlignmentGoodSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("2ac7637daeb2aa143a3bae860095b63e");
+            var ProtectionFromAlignmentLawSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("c3aafbbb6e8fc754fb8c82ede3280051");
+            var ProtectionFromAlignmentChaosSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("1eaf1020e82028d4db55e6e464269e00");
+
+            var ProtectionFromAlignmentCommunalEvilSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("93f391b0c5a99e04e83bbfbe3bb6db64");
+            var ProtectionFromAlignmentCommunalGoodSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("5bfd4cce1557d5744914f8f6d85959a4");
+            var ProtectionFromAlignmentCommunalLawSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("8b8ccc9763e3cc74bbf5acc9c98557b9");
+            var ProtectionFromAlignmentCommunalChaosSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("0ec75ec95d9e39d47a23610123ba1bad");
+
+            var ProtectionFromEnergyAcidSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("3d77ee3fc4913c44b9df7c5bbcdc4906");
+            var ProtectionFromEnergyColdSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("021d39c8e0eec384ba69140f4875e166");
+            var ProtectionFromEnergyElectricitySpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("e24ce0c3e8eaaaf498d3656b534093df");
+            var ProtectionFromEnergyFireSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("3f9605134d34e1243b096e1f6cb4c148");
+            var ProtectionFromEnergySonicSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("0cee375b4e5265a46a13fc269beb8763");
+
+            var ProtectionFromEnergyCommunalAcidSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("de4e28c053d936d45b6c9e361f90acc2");
+            var ProtectionFromEnergyCommunalColdSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("3bd50e8acc303d244a1cec9df04ad050");
+            var ProtectionFromEnergyCommunalElectricitySpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("f10cd112b876a6f449d52dee0a57e602");
+            var ProtectionFromEnergyCommunalFireSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("2903d31d6c8356547aa4aae5a3e7a655");
+            var ProtectionFromEnergyCommunalSonicSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("b065b2f0589225f4897fc8b345acbfb6");
+
+            var SummonElementalSmallAirSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("9cc6b61eba880b944a8f489c44640b5c");
+            var SummonElementalSmallEarthSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("69b36426bb910e341a943f101daed594");
+            var SummonElementalSmallFireSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("d8f88028204bc2041be9d9d51f58e6a5");
+            var SummonElementalSmallWaterSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("107788f47c4481f4db6da06498b28270");
+
+
+
             var UrbanDruidSpontaneousCharmDomain = Helpers.CreateBlueprint<BlueprintFeature>("UrbanDruidSpontaneousCharmDomain", bp => {
                 bp.SetName("Spontaneous Charm Domain Spellcasting");
                 bp.SetDescription("A urban druid can channel stored {g|Encyclopedia:Spell}spell{/g} energy into charm domain spells that she hasn't prepared ahead of time. She can " +
@@ -180,14 +209,74 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
                         new BlueprintAbilityReference(),
                         BlessSpell,
-                        ProtectionFromAlignmentCommunalSpell,
+                        ProtectionFromAlignmentCommunalEvilSpell,
                         PrayerSpell,
-                        ProtectionFromEnergyCommunalSpell,
+                        ProtectionFromEnergyCommunalAcidSpell,
                         BurstOfGlorySpell,
                         StoneskinCommunalSpell,
                         RestorationGreaterSpell,
                         LegendaryProportionsSpell,
                         HealMassSpell
+                    };
+                });
+                bp.AddComponent<SpontaneousSpellConversion>(c => {
+                    c.m_CharacterClass = DruidClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        ProtectionFromAlignmentCommunalGoodSpell,
+                        new BlueprintAbilityReference(),
+                        ProtectionFromEnergyCommunalColdSpell,
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference()
+                    };
+                });
+                bp.AddComponent<SpontaneousSpellConversion>(c => {
+                    c.m_CharacterClass = DruidClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        ProtectionFromAlignmentCommunalLawSpell,
+                        new BlueprintAbilityReference(),
+                        ProtectionFromEnergyCommunalElectricitySpell,
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference()
+                    };
+                });
+                bp.AddComponent<SpontaneousSpellConversion>(c => {
+                    c.m_CharacterClass = DruidClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        ProtectionFromAlignmentCommunalChaosSpell,
+                        new BlueprintAbilityReference(),
+                        ProtectionFromEnergyCommunalFireSpell,
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference()
+                    };
+                });
+                bp.AddComponent<SpontaneousSpellConversion>(c => {
+                    c.m_CharacterClass = DruidClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        ProtectionFromEnergyCommunalSonicSpell,
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference()
                     };
                 });
                 bp.m_AllowNonContextActions = false;
@@ -260,15 +349,75 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.m_CharacterClass = DruidClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
                         new BlueprintAbilityReference(),
-                        ProtectionFromAlignmentSpell,
+                        ProtectionFromAlignmentEvilSpell,
                         BarkskinSpell,
-                        ProtectionFromEnergySpell,
-                        ProtectionFromEnergyCommunalSpell,
+                        ProtectionFromEnergyAcidSpell,
+                        ProtectionFromEnergyCommunalAcidSpell,
                         SpellResistanceSpell,
                         StoneskinCommunalSpell,
                         RestorationGreaterSpell,
                         ProtectionFromSpellsSpell,
                         SeamantleSpell
+                    };
+                });
+                bp.AddComponent<SpontaneousSpellConversion>(c => {
+                    c.m_CharacterClass = DruidClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
+                        new BlueprintAbilityReference(),
+                        ProtectionFromAlignmentGoodSpell,
+                        new BlueprintAbilityReference(),
+                        ProtectionFromEnergyColdSpell,
+                        ProtectionFromEnergyCommunalColdSpell,
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference()
+                    };
+                });
+                bp.AddComponent<SpontaneousSpellConversion>(c => {
+                    c.m_CharacterClass = DruidClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
+                        new BlueprintAbilityReference(),
+                        ProtectionFromAlignmentLawSpell,
+                        new BlueprintAbilityReference(),
+                        ProtectionFromEnergyElectricitySpell,
+                        ProtectionFromEnergyCommunalElectricitySpell,
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference()
+                    };
+                });
+                bp.AddComponent<SpontaneousSpellConversion>(c => {
+                    c.m_CharacterClass = DruidClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
+                        new BlueprintAbilityReference(),
+                        ProtectionFromAlignmentChaosSpell,
+                        new BlueprintAbilityReference(),
+                        ProtectionFromEnergyFireSpell,
+                        ProtectionFromEnergyCommunalFireSpell,
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference()
+                    };
+                });
+                bp.AddComponent<SpontaneousSpellConversion>(c => {
+                    c.m_CharacterClass = DruidClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        ProtectionFromEnergySonicSpell,
+                        ProtectionFromEnergyCommunalSonicSpell,
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference()
                     };
                 });
                 bp.m_AllowNonContextActions = false;
@@ -314,15 +463,75 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.m_CharacterClass = DruidClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
                         new BlueprintAbilityReference(),
-                        ProtectionFromAlignmentSpell,
+                        ProtectionFromAlignmentEvilSpell,
                         ProtectionFromArrowsSpell,
                         ProtectionFromArrowsCommunalSpell,
-                        ProtectionFromEnergyCommunalSpell,
+                        ProtectionFromEnergyCommunalAcidSpell,
                         SpellResistanceSpell,
                         DispelMagicGreaterSpell,
                         PowerWordBlindSpell,
                         PowerWordStunSpell,
                         PowerWordKillSpell
+                    };
+                });
+                bp.AddComponent<SpontaneousSpellConversion>(c => {
+                    c.m_CharacterClass = DruidClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
+                        new BlueprintAbilityReference(),
+                        ProtectionFromAlignmentGoodSpell,
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        ProtectionFromEnergyCommunalColdSpell,
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference()
+                    };
+                });
+                bp.AddComponent<SpontaneousSpellConversion>(c => {
+                    c.m_CharacterClass = DruidClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
+                        new BlueprintAbilityReference(),
+                        ProtectionFromAlignmentLawSpell,
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        ProtectionFromEnergyCommunalElectricitySpell,
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference()
+                    };
+                });
+                bp.AddComponent<SpontaneousSpellConversion>(c => {
+                    c.m_CharacterClass = DruidClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
+                        new BlueprintAbilityReference(),
+                        ProtectionFromAlignmentChaosSpell,
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        ProtectionFromEnergyCommunalFireSpell,
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference()
+                    };
+                });
+                bp.AddComponent<SpontaneousSpellConversion>(c => {
+                    c.m_CharacterClass = DruidClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        ProtectionFromEnergyCommunalSonicSpell,
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference()
                     };
                 });
                 bp.m_AllowNonContextActions = false;
@@ -342,7 +551,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
                         new BlueprintAbilityReference(),
                         SnowballSpell,
-                        SummonElementalSmallBaseSpell,
+                        SummonElementalSmallAirSpell,
                         CallLightningSpell,
                         SlowMudSpell,
                         IceStorm,
@@ -350,6 +559,51 @@ namespace ExpandedContent.Tweaks.Archetypes {
                         FireStormSpell,
                         SunburstSpell,
                         TsunamiSpell
+                    };
+                });
+                bp.AddComponent<SpontaneousSpellConversion>(c => {
+                    c.m_CharacterClass = DruidClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        SummonElementalSmallEarthSpell,
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference()
+                    };
+                });
+                bp.AddComponent<SpontaneousSpellConversion>(c => {
+                    c.m_CharacterClass = DruidClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        SummonElementalSmallFireSpell,
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference()
+                    };
+                });
+                bp.AddComponent<SpontaneousSpellConversion>(c => {
+                    c.m_CharacterClass = DruidClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        SummonElementalSmallWaterSpell,
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference(),
+                        new BlueprintAbilityReference()
                     };
                 });
                 bp.m_AllowNonContextActions = false;

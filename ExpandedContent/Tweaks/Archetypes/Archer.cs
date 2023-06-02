@@ -43,6 +43,7 @@ using Kingmaker.Blueprints.Items.Weapons;
 using Kingmaker.RuleSystem.Rules;
 using Kingmaker.Craft;
 using Kingmaker.UnitLogic.Abilities.Components.CasterCheckers;
+using ExpandedContent.Tweaks.Components;
 
 namespace ExpandedContent.Tweaks.Archetypes {
     internal class Archer {
@@ -59,6 +60,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var DisarmAction = Resources.GetBlueprint<BlueprintAbility>("45d94c6db453cfc4a9b99b72d6afe6f6");
             var ImprovedBullRushFeature = Resources.GetBlueprint<BlueprintFeature>("b3614622866fe7046b787a548bbd7f59");
             var PummelingStyleBuff = Resources.GetBlueprint<BlueprintBuff>("8cb3816915b1a8348b3872b964a2fa23");
+            var AgileManeuversFeature = Resources.GetBlueprint<BlueprintFeature>("197306972c98bb843af738dc7529a7ac");
 
             var ArcherVolleyIcon = AssetLoader.LoadInternal("Skills", "Icon_ArcherVolley.jpg");
             var TripIcon = AssetLoader.LoadInternal("Skills", "Icon_Trip.jpg");
@@ -123,7 +125,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.m_WeaponType = new BlueprintWeaponTypeReference();
                     c.CheckWeaponCategory = false;
                     c.Category = WeaponCategory.UnarmedStrike;
-                    c.CheckWeaponGroup = false;
+                    c.CheckWeaponGroup = true;
                     c.Group = WeaponFighterGroup.Bows;
                     c.CheckWeaponRangeType = false;
                     c.RangeType = WeaponRangeType.Melee;
@@ -132,7 +134,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.DamageMoreTargetMaxHP = false;
                     c.CheckDistance = false;
                     c.DistanceLessEqual = new Feet(); //?
-                    c.AllNaturalAndUnarmed = true;
+                    c.AllNaturalAndUnarmed = false;
                     c.DuelistWeapon = false;
                     c.NotExtraAttack = false;
                     c.OnCharge = false;
@@ -148,7 +150,38 @@ namespace ExpandedContent.Tweaks.Archetypes {
                             UseCasterLevelAsBaseAttack = false,
                             UseBestMentalStat = false,
                             BatteringBlast = false
-                        },
+                        }
+                        );
+                });
+                bp.AddComponent<AddInitiatorAttackWithWeaponTrigger>(c => {
+                    c.TriggerBeforeAttack = false;
+                    c.OnlyHit = true;
+                    c.OnMiss = false;
+                    c.OnlyOnFullAttack = false;
+                    c.OnlyOnFirstAttack = false;
+                    c.OnlyOnFirstHit = false;
+                    c.CriticalHit = false;
+                    c.OnAttackOfOpportunity = false;
+                    c.NotCriticalHit = false;
+                    c.OnlySneakAttack = false;
+                    c.NotSneakAttack = false;
+                    c.m_WeaponType = new BlueprintWeaponTypeReference();
+                    c.CheckWeaponCategory = false;
+                    c.Category = WeaponCategory.UnarmedStrike;
+                    c.CheckWeaponGroup = true;
+                    c.Group = WeaponFighterGroup.Bows;
+                    c.CheckWeaponRangeType = false;
+                    c.RangeType = WeaponRangeType.Melee;
+                    c.ActionsOnInitiator = true;
+                    c.ReduceHPToZero = false;
+                    c.DamageMoreTargetMaxHP = false;
+                    c.CheckDistance = false;
+                    c.DistanceLessEqual = new Feet(); //?
+                    c.AllNaturalAndUnarmed = false;
+                    c.DuelistWeapon = false;
+                    c.NotExtraAttack = false;
+                    c.OnCharge = false;
+                    c.Action = Helpers.CreateActionList(
                         new ContextActionRemoveSelf()
                         );
                 });
@@ -180,7 +213,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.m_WeaponType = new BlueprintWeaponTypeReference();
                     c.CheckWeaponCategory = false;
                     c.Category = WeaponCategory.UnarmedStrike;
-                    c.CheckWeaponGroup = false;
+                    c.CheckWeaponGroup = true;
                     c.Group = WeaponFighterGroup.Bows;
                     c.CheckWeaponRangeType = false;
                     c.RangeType = WeaponRangeType.Melee;
@@ -189,7 +222,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.DamageMoreTargetMaxHP = false;
                     c.CheckDistance = false;
                     c.DistanceLessEqual = new Feet(); //?
-                    c.AllNaturalAndUnarmed = true;
+                    c.AllNaturalAndUnarmed = false;
                     c.DuelistWeapon = false;
                     c.NotExtraAttack = false;
                     c.OnCharge = false;
@@ -205,7 +238,38 @@ namespace ExpandedContent.Tweaks.Archetypes {
                             UseCasterLevelAsBaseAttack = false,
                             UseBestMentalStat = false,
                             BatteringBlast = false
-                        },
+                        }
+                        );
+                });
+                bp.AddComponent<AddInitiatorAttackWithWeaponTrigger>(c => {
+                    c.TriggerBeforeAttack = false;
+                    c.OnlyHit = true;
+                    c.OnMiss = false;
+                    c.OnlyOnFullAttack = false;
+                    c.OnlyOnFirstAttack = false;
+                    c.OnlyOnFirstHit = false;
+                    c.CriticalHit = false;
+                    c.OnAttackOfOpportunity = false;
+                    c.NotCriticalHit = false;
+                    c.OnlySneakAttack = false;
+                    c.NotSneakAttack = false;
+                    c.m_WeaponType = new BlueprintWeaponTypeReference();
+                    c.CheckWeaponCategory = false;
+                    c.Category = WeaponCategory.UnarmedStrike;
+                    c.CheckWeaponGroup = true;
+                    c.Group = WeaponFighterGroup.Bows;
+                    c.CheckWeaponRangeType = false;
+                    c.RangeType = WeaponRangeType.Melee;
+                    c.ActionsOnInitiator = true;
+                    c.ReduceHPToZero = false;
+                    c.DamageMoreTargetMaxHP = false;
+                    c.CheckDistance = false;
+                    c.DistanceLessEqual = new Feet(); //?
+                    c.AllNaturalAndUnarmed = false;
+                    c.DuelistWeapon = false;
+                    c.NotExtraAttack = false;
+                    c.OnCharge = false;
+                    c.Action = Helpers.CreateActionList(                        
                         new ContextActionRemoveSelf()
                         );
                 });
@@ -237,7 +301,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.m_WeaponType = new BlueprintWeaponTypeReference();
                     c.CheckWeaponCategory = false;
                     c.Category = WeaponCategory.UnarmedStrike;
-                    c.CheckWeaponGroup = false;
+                    c.CheckWeaponGroup = true;
                     c.Group = WeaponFighterGroup.Bows;
                     c.CheckWeaponRangeType = false;
                     c.RangeType = WeaponRangeType.Melee;
@@ -246,7 +310,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.DamageMoreTargetMaxHP = false;
                     c.CheckDistance = false;
                     c.DistanceLessEqual = new Feet(); //?
-                    c.AllNaturalAndUnarmed = true;
+                    c.AllNaturalAndUnarmed = false;
                     c.DuelistWeapon = false;
                     c.NotExtraAttack = false;
                     c.OnCharge = false;
@@ -262,7 +326,38 @@ namespace ExpandedContent.Tweaks.Archetypes {
                             UseCasterLevelAsBaseAttack = false,
                             UseBestMentalStat = false,
                             BatteringBlast = false
-                        },
+                        }
+                        );
+                });
+                bp.AddComponent<AddInitiatorAttackWithWeaponTrigger>(c => {
+                    c.TriggerBeforeAttack = false;
+                    c.OnlyHit = true;
+                    c.OnMiss = false;
+                    c.OnlyOnFullAttack = false;
+                    c.OnlyOnFirstAttack = false;
+                    c.OnlyOnFirstHit = false;
+                    c.CriticalHit = false;
+                    c.OnAttackOfOpportunity = false;
+                    c.NotCriticalHit = false;
+                    c.OnlySneakAttack = false;
+                    c.NotSneakAttack = false;
+                    c.m_WeaponType = new BlueprintWeaponTypeReference();
+                    c.CheckWeaponCategory = false;
+                    c.Category = WeaponCategory.UnarmedStrike;
+                    c.CheckWeaponGroup = true;
+                    c.Group = WeaponFighterGroup.Bows;
+                    c.CheckWeaponRangeType = false;
+                    c.RangeType = WeaponRangeType.Melee;
+                    c.ActionsOnInitiator = true;
+                    c.ReduceHPToZero = false;
+                    c.DamageMoreTargetMaxHP = false;
+                    c.CheckDistance = false;
+                    c.DistanceLessEqual = new Feet(); //?
+                    c.AllNaturalAndUnarmed = false;
+                    c.DuelistWeapon = false;
+                    c.NotExtraAttack = false;
+                    c.OnCharge = false;
+                    c.Action = Helpers.CreateActionList(
                         new ContextActionRemoveSelf()
                         );
                 });
@@ -302,7 +397,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.m_WeaponType = new BlueprintWeaponTypeReference();
                     c.CheckWeaponCategory = false;
                     c.Category = WeaponCategory.UnarmedStrike;
-                    c.CheckWeaponGroup = false;
+                    c.CheckWeaponGroup = true;
                     c.Group = WeaponFighterGroup.Bows;
                     c.CheckWeaponRangeType = false;
                     c.RangeType = WeaponRangeType.Melee;
@@ -311,7 +406,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.DamageMoreTargetMaxHP = false;
                     c.CheckDistance = false;
                     c.DistanceLessEqual = new Feet(); //?
-                    c.AllNaturalAndUnarmed = true;
+                    c.AllNaturalAndUnarmed = false;
                     c.DuelistWeapon = false;
                     c.NotExtraAttack = false;
                     c.OnCharge = false;
@@ -324,7 +419,38 @@ namespace ExpandedContent.Tweaks.Archetypes {
                                     m_TargetBuff = BearGrappleTargetBuff.ToReference<BlueprintBuffReference>() 
                                 }
                                 )                            
-                        },
+                        }
+                        );
+                });
+                bp.AddComponent<AddInitiatorAttackWithWeaponTrigger>(c => {
+                    c.TriggerBeforeAttack = false;
+                    c.OnlyHit = true;
+                    c.OnMiss = false;
+                    c.OnlyOnFullAttack = false;
+                    c.OnlyOnFirstAttack = false;
+                    c.OnlyOnFirstHit = false;
+                    c.CriticalHit = false;
+                    c.OnAttackOfOpportunity = false;
+                    c.NotCriticalHit = false;
+                    c.OnlySneakAttack = false;
+                    c.NotSneakAttack = false;
+                    c.m_WeaponType = new BlueprintWeaponTypeReference();
+                    c.CheckWeaponCategory = false;
+                    c.Category = WeaponCategory.UnarmedStrike;
+                    c.CheckWeaponGroup = true;
+                    c.Group = WeaponFighterGroup.Bows;
+                    c.CheckWeaponRangeType = false;
+                    c.RangeType = WeaponRangeType.Melee;
+                    c.ActionsOnInitiator = true;
+                    c.ReduceHPToZero = false;
+                    c.DamageMoreTargetMaxHP = false;
+                    c.CheckDistance = false;
+                    c.DistanceLessEqual = new Feet(); //?
+                    c.AllNaturalAndUnarmed = false;
+                    c.DuelistWeapon = false;
+                    c.NotExtraAttack = false;
+                    c.OnCharge = false;
+                    c.Action = Helpers.CreateActionList(
                         new ContextActionRemoveSelf()
                         );
                 });
@@ -356,7 +482,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.m_WeaponType = new BlueprintWeaponTypeReference();
                     c.CheckWeaponCategory = false;
                     c.Category = WeaponCategory.UnarmedStrike;
-                    c.CheckWeaponGroup = false;
+                    c.CheckWeaponGroup = true;
                     c.Group = WeaponFighterGroup.Bows;
                     c.CheckWeaponRangeType = false;
                     c.RangeType = WeaponRangeType.Melee;
@@ -365,7 +491,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.DamageMoreTargetMaxHP = false;
                     c.CheckDistance = false;
                     c.DistanceLessEqual = new Feet(); //?
-                    c.AllNaturalAndUnarmed = true;
+                    c.AllNaturalAndUnarmed = false;
                     c.DuelistWeapon = false;
                     c.NotExtraAttack = false;
                     c.OnCharge = false;
@@ -381,7 +507,38 @@ namespace ExpandedContent.Tweaks.Archetypes {
                             UseCasterLevelAsBaseAttack = false,
                             UseBestMentalStat = false,
                             BatteringBlast = false
-                        },
+                        }
+                        );
+                });
+                bp.AddComponent<AddInitiatorAttackWithWeaponTrigger>(c => {
+                    c.TriggerBeforeAttack = false;
+                    c.OnlyHit = true;
+                    c.OnMiss = false;
+                    c.OnlyOnFullAttack = false;
+                    c.OnlyOnFirstAttack = false;
+                    c.OnlyOnFirstHit = false;
+                    c.CriticalHit = false;
+                    c.OnAttackOfOpportunity = false;
+                    c.NotCriticalHit = false;
+                    c.OnlySneakAttack = false;
+                    c.NotSneakAttack = false;
+                    c.m_WeaponType = new BlueprintWeaponTypeReference();
+                    c.CheckWeaponCategory = false;
+                    c.Category = WeaponCategory.UnarmedStrike;
+                    c.CheckWeaponGroup = true;
+                    c.Group = WeaponFighterGroup.Bows;
+                    c.CheckWeaponRangeType = false;
+                    c.RangeType = WeaponRangeType.Melee;
+                    c.ActionsOnInitiator = true;
+                    c.ReduceHPToZero = false;
+                    c.DamageMoreTargetMaxHP = false;
+                    c.CheckDistance = false;
+                    c.DistanceLessEqual = new Feet(); //?
+                    c.AllNaturalAndUnarmed = false;
+                    c.DuelistWeapon = false;
+                    c.NotExtraAttack = false;
+                    c.OnCharge = false;
+                    c.Action = Helpers.CreateActionList(
                         new ContextActionRemoveSelf()
                         );
                 });
@@ -613,6 +770,12 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.IsClassFeature = true;
                 bp.m_AllowNonContextActions = false;
             });
+            AgileManeuversFeature.AddComponent<PrerequisiteFeature>(c => { 
+                c.m_Feature = TrickShotSelection.ToReference<BlueprintFeatureReference>();
+                c.Group = Prerequisite.GroupType.Any;
+                c.CheckInProgression = false;
+                c.HideInUI = false;
+            });
 
             var ExpertArcherFeature = Helpers.CreateBlueprint<BlueprintFeature>("ExpertArcherFeature", bp => {
                 bp.SetName("Expert Archer");
@@ -652,23 +815,20 @@ namespace ExpandedContent.Tweaks.Archetypes {
 
             var SafeShotFeature = Helpers.CreateBlueprint<BlueprintFeature>("SafeShotFeature", bp => {
                 bp.SetName("Safe Shot");
-                bp.SetDescription("At 9th level, an archer gains a AC bonus equal to his level against attacks of opportunity when making ranged attacks with a bow.");
+                bp.SetDescription("At 9th level, an archer does not provoke attacks of opportunity when making ranged attacks with a bow.");
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;
-                bp.AddComponent<ACBonusAgainstAttackOfOpportunity>(c => {
-                    c.NotAttackOfOpportunity = false; //need to test this bit
-                    c.Bonus = new ContextValue() {
-                        ValueType = ContextValueType.Rank,
-                        ValueRank = AbilityRankType.Default
-                    };
+                bp.AddComponent<PointBlankMaster>(c => {
+                    c.Category = WeaponCategory.Shortbow;
                 });
-                bp.AddComponent<ContextRankConfig>(c => {
-                    c.m_Type = AbilityRankType.Default;
-                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
-                    c.m_Stat = StatType.Unknown;
-                    c.m_SpecificModifier = ModifierDescriptor.None;
-                    c.m_Progression = ContextRankProgression.AsIs;
-                    c.m_Class = new BlueprintCharacterClassReference[] { FighterClass.ToReference<BlueprintCharacterClassReference>() };
+                bp.AddComponent<PointBlankMaster>(c => {
+                    c.Category = WeaponCategory.Longbow;
+                });
+                bp.AddComponent<PointBlankMaster>(c => {
+                    c.Category = WeaponCategory.LightCrossbow;
+                });
+                bp.AddComponent<PointBlankMaster>(c => {
+                    c.Category = WeaponCategory.HeavyCrossbow;
                 });
             });
 
@@ -751,7 +911,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.m_IsFullRoundAction = true;
                 bp.AvailableMetamagic = 0;
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
-                bp.LocalizedSavingThrow = Helpers.CreateString("VolleyAbility.SavingThrow", "Fortitude half");
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
 
             var VolleyFeature = Helpers.CreateBlueprint<BlueprintFeature>("VolleyFeature", bp => {
@@ -764,12 +924,47 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.m_Facts = new BlueprintUnitFactReference[] { VolleyAbility.ToReference<BlueprintUnitFactReference>() };
                 });
             });
+
+
+
+
             var RangedDefenseFeature = Helpers.CreateBlueprint<BlueprintFeature>("RangedDefenseFeature", bp => {
-                bp.SetName("Ranged Defense ");
-                bp.SetDescription("At 19th level, an archer gains DR 5/— against ranged attacks.");
+                bp.SetName("Ranged Defense");
+                bp.SetDescription("At 19th level, an archer gains DR 5/— against ranged attacks. In addition, an archer may catch an arrow fired at him once per round as if " +
+                    "he had the deflect arrows feat, but only while holding a bow. \nWhen an arrow is successfully caught, he may fire it along with his next fired arrow as an " +
+                    "extra attack. You may only fire one additional arrow at a time from this feature.");
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;
-                //Need to make custom component
+                bp.AddComponent<DeflectArrowsExpanded>(c => {
+                    c.m_Restriction = DeflectArrowsExpanded.RestrictionType.Bow;
+                });
+                bp.AddComponent<AddTargetAttackRollTrigger>(c => {
+                    c.OnlyHit = true;
+                    c.ActionsOnAttacker = Helpers.CreateActionList();
+                    c.ActionOnSelf = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = Haste.ToReference<BlueprintBuffReference>(),
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.D4,
+                                DiceCountValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 1,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                            }
+                        }
+                        );
+                });
             });
 
             ArcherArchetype.RemoveFeatures = new LevelEntry[] {

@@ -16,6 +16,7 @@ using Kingmaker.RuleSystem;
 using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.UnitLogic.Abilities.Components;
+using Kingmaker.UnitLogic.Abilities.Components.TargetCheckers;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.Commands.Base;
 using Kingmaker.UnitLogic.FactLogic;
@@ -399,6 +400,9 @@ namespace ExpandedContent.Tweaks.Miscellaneous {
                             m_Buff = SwiftAidAnotherDefenceBuff.ToReference<BlueprintBuffReference>()
                         });
                 });
+                bp.AddComponent<AbilityTargetIsAlly>(c => {
+                    c.Not = true;
+                });
                 bp.AddComponent<CraftInfoComponent>(c => {
                     c.SavingThrow = CraftSavingThrow.None;
                     c.AOEType = CraftAOE.None;
@@ -468,6 +472,9 @@ namespace ExpandedContent.Tweaks.Miscellaneous {
                         new ContextActionRemoveBuff() {
                             m_Buff = SwiftAidAnotherOffenceBuff.ToReference<BlueprintBuffReference>()
                         });
+                });
+                bp.AddComponent<AbilityTargetIsAlly>(c => {
+                    c.Not = true;
                 });
                 bp.AddComponent<CraftInfoComponent>(c => {
                     c.SavingThrow = CraftSavingThrow.None;
@@ -574,6 +581,9 @@ namespace ExpandedContent.Tweaks.Miscellaneous {
                             IfFalse = Helpers.CreateActionList()
                         });
                 });
+                bp.AddComponent<AbilityTargetIsAlly>(c => {
+                    c.Not = true;
+                });
                 bp.AddComponent<CraftInfoComponent>(c => {
                     c.SavingThrow = CraftSavingThrow.None;
                     c.AOEType = CraftAOE.None;
@@ -653,6 +663,9 @@ namespace ExpandedContent.Tweaks.Miscellaneous {
                                 }),
                             IfFalse = Helpers.CreateActionList()
                         });
+                });
+                bp.AddComponent<AbilityTargetIsAlly>(c => {
+                    c.Not = true;
                 });
                 bp.AddComponent<CraftInfoComponent>(c => {
                     c.SavingThrow = CraftSavingThrow.None;
