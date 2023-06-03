@@ -2081,7 +2081,36 @@
     "WyrmSingerWyrmSagaTargetSelectorAbilityGreen": "c884a01c-fc8c-42d9-bf9f-4e416e7760a4",
     "WyrmSingerWyrmSagaTargetSelectorAbilityRed": "e4be778b-bb40-445c-a478-3d95d4cd388c",
     "WyrmSingerWyrmSagaTargetSelectorAbilitySilver": "dbb0af85-6bd1-4700-a892-3aae109cc853",
-    "WyrmSingerWyrmSagaTargetSelectorAbilityWhite": "df6fda1a-d049-4268-8e9d-e956ca1582aa"
+    "WyrmSingerWyrmSagaTargetSelectorAbilityWhite": "df6fda1a-d049-4268-8e9d-e956ca1582aa",
+
+    "ArcherArchetype": "e22bfb0b-353c-447a-9067-f19d6de6c3df",
+    "EvasiveArcherFeature": "7f37e515-fcd1-4560-bafc-adcf8b74eee2",
+    "ExpertArcherFeature": "6c395e8f-7c4f-4a14-879f-4980c6f2d61b",
+    "HawkeyeFeature": "77f6c9b8-30cd-47f0-8002-23eb2cf7f1f8",
+    "RangedDefenceCooldownBuff": "2af1b366-4e54-4d28-8841-7961dc32d36c",
+    "RangedDefenceEffectBuff": "fb827e3c-0949-4fc4-b13d-53af4380add1",
+    "RangedDefenseFeature": "213dc5ab-afee-4946-8f1d-48e410a6f686",
+    "SafeShotFeature": "69973e66-efec-449a-b4bb-9f271d29bea9",
+    "TrickShotBullRushAbility": "c3272911-d99b-44bc-a8af-498b0c05c99b",
+    "TrickShotBullRushBuff": "328cc9aa-ff9d-4f2a-b9f9-05e622641b5f",
+    "TrickShotBullRushFeature": "a1e6ab9e-152f-4fd9-acb1-9e9c7730b272",
+    "TrickShotDisarmAbility": "e3527e3a-ad36-4de5-b64f-ecf91fdca6fa",
+    "TrickShotDisarmBuff": "47301c80-9b68-4929-abfd-b9d5b3888e27",
+    "TrickShotDisarmFeature": "ccee6a0d-33b0-4f39-adb7-d3cac33b1ec1",
+    "TrickShotGrappleAbility": "299b3644-fa76-4565-9a19-92647ed1a830",
+    "TrickShotGrappleBuff": "bdb8891a-3a84-4bc2-8cb3-22462252ea33",
+    "TrickShotGrappleCasterBuff": "8f452303-b599-4100-bac6-5008be9d0946",
+    "TrickShotGrappleFeature": "c69da33f-827e-4141-9d49-b56f2acd3fc3",
+    "TrickShotGrappleTargetBuff": "5be71bae-450e-4168-b6bd-cc450aa7ece2",
+    "TrickShotSelection": "9268b5fd-854f-4905-b8c5-f6d22361ba32",
+    "TrickShotSunderAbility": "10944789-0ddf-4b48-8889-6e6630949f92",
+    "TrickShotSunderBuff": "dcf94a35-1128-494b-8df8-36c839e6310a",
+    "TrickShotSunderFeature": "d191f9aa-e498-428c-af81-a5d142c7b9c1",
+    "TrickShotTripAbility": "e99fa12e-c7b4-491f-a244-3fa04366a953",
+    "TrickShotTripBuff": "061448e1-b8c2-402e-9537-d03d2a196f7c",
+    "TrickShotTripFeature": "e02449c3-a126-49da-8369-bbfa9aa53ddd",
+    "VolleyAbility": "3a42b26c-9d31-4801-9930-c165ded9d791",
+    "VolleyFeature": "82ed2022-ec74-4695-9db9-1ddbb073cf4e"
 
 
 

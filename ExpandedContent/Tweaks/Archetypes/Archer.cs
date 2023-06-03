@@ -61,6 +61,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var ImprovedBullRushFeature = Resources.GetBlueprint<BlueprintFeature>("b3614622866fe7046b787a548bbd7f59");
             var PummelingStyleBuff = Resources.GetBlueprint<BlueprintBuff>("8cb3816915b1a8348b3872b964a2fa23");
             var AgileManeuversFeature = Resources.GetBlueprint<BlueprintFeature>("197306972c98bb843af738dc7529a7ac");
+            var DeflectArrowsFeature = Resources.GetBlueprint<BlueprintFeature>("2c61fdbf242866f4e93c3e1477fb96b5");
 
             var ArcherVolleyIcon = AssetLoader.LoadInternal("Skills", "Icon_ArcherVolley.jpg");
             var TripIcon = AssetLoader.LoadInternal("Skills", "Icon_Trip.jpg");
@@ -102,7 +103,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
 
             var TrickShotDisarmBuff = Helpers.CreateBuff("TrickShotDisarmBuff", bp => {
                 bp.SetName("Trick Shot - Disarm");
-                bp.SetDescription("The next arrow the archer fires that hits this round will also purform the disarm combat maneuver, the archer performs this maneuver with a –4 penalty to his CMB.");
+                bp.SetDescription("The next arrow the archer fires that hits this round will also perform the disarm combat maneuver, the archer performs this maneuver with a –4 penalty to his CMB.");
                 bp.m_Icon = DisarmAction.m_Icon;
                 bp.AddComponent<ManeuverBonus>(c => {
                     c.Type = CombatManeuver.Disarm;
@@ -190,7 +191,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             });
             var TrickShotSunderBuff = Helpers.CreateBuff("TrickShotSunderBuff", bp => {
                 bp.SetName("Trick Shot - Sunder");
-                bp.SetDescription("The next arrow the archer fires that hits this round will also purform the sunder combat maneuver, the archer performs this maneuver with a –4 penalty to his CMB.");
+                bp.SetDescription("The next arrow the archer fires that hits this round will also perform the sunder combat maneuver, the archer performs this maneuver with a –4 penalty to his CMB.");
                 bp.m_Icon = CrushingBlowFeature.m_Icon;
                 bp.AddComponent<ManeuverBonus>(c => {
                     c.Type = CombatManeuver.SunderArmor;
@@ -278,7 +279,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             });
             var TrickShotBullRushBuff = Helpers.CreateBuff("TrickShotBullRushBuff", bp => {
                 bp.SetName("Trick Shot - Bull Rush");
-                bp.SetDescription("The next arrow the archer fires that hits this round will also purform the bull rush combat maneuver, the archer performs this maneuver with a –4 penalty to his CMB.");
+                bp.SetDescription("The next arrow the archer fires that hits this round will also perform the bull rush combat maneuver, the archer performs this maneuver with a –4 penalty to his CMB.");
                 bp.m_Icon = ImprovedBullRushFeature.m_Icon;
                 bp.AddComponent<ManeuverBonus>(c => {
                     c.Type = CombatManeuver.BullRush;
@@ -365,16 +366,59 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.Stacking = StackingType.Replace;
             });
 
-
-
-
             var BearGrappleTargetBuff = Resources.GetBlueprint<BlueprintBuff>("88be6cbfaf534e009c501e1d2ef3c1f6");
             var Haste = Resources.GetBlueprint<BlueprintBuff>("8d20b0a6129bd814eb0146041879f38a");
 
+            var TrickShotGrappleCasterBuff = Helpers.CreateBuff("TrickShotGrappleCasterBuff", bp => { //Looks like I didn't need this, it's only still here so my own ongoing save does not break :)
+                bp.m_AllowNonContextActions = false;
+                bp.SetName("Test Stuff");
+                bp.SetDescription("");
+                bp.m_Icon = Haste.Icon;
+                bp.Stacking = StackingType.Replace;
+                bp.Frequency = DurationRate.Rounds;
+            });
+            var TrickShotGrappleTargetBuff = Helpers.CreateBuff("TrickShotGrappleTargetBuff", bp => {
+                bp.m_AllowNonContextActions = false;
+                bp.SetName("Pinned by arrows");
+                bp.SetDescription("A target grappled by an arrow can attempt to escape every {g|Encyclopedia:Combat_Round}round{/g} by making a successful combat " +
+                    "maneuver, {g|Encyclopedia:Strength}Strength{/g}, {g|Encyclopedia:Athletics}Athletics{/g}, or {g|Encyclopedia:Mobility}Mobility check{/g} against the archers " +
+                    "CMD. The pinned target gets a +4 bonus on this check.");
+                bp.AddComponent<AddCondition>(c => {
+                    c.Condition = UnitCondition.CantMove;
+                });
+                bp.AddComponent<AddCondition>(c => {
+                    c.Condition = UnitCondition.Entangled;
+                });
+                bp.AddComponent<ManeuverBonus>(c => {
+                    c.Type = CombatManeuver.Grapple;
+                    c.Mythic = false;
+                    c.Bonus = 4;
+                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+                });
+                bp.AddComponent<AddFactContextActions>(c => {
+                    c.Activated = Helpers.CreateActionList();
+                    c.Deactivated = Helpers.CreateActionList();
+                    c.NewRound = Helpers.CreateActionList(
+                        new ContextActionBreakFree() {
+                            UseCMB = true,
+                            UseCMD = false,
+                            Success = Helpers.CreateActionList(
+                                new ContextActionRemoveSelf()
+                                ),
+                            Failure = Helpers.CreateActionList(),
+                            //UseOverrideDC = true,
+                            //OverridenDC = new ContextValue() { }
+                        }
+                        );
+                });
+                bp.m_Icon = BearGrappleTargetBuff.Icon;
+                bp.Stacking = StackingType.Replace;
+                bp.Frequency = DurationRate.Rounds;
+            });
 
             var TrickShotGrappleBuff = Helpers.CreateBuff("TrickShotGrappleBuff", bp => {
                 bp.SetName("Trick Shot - Grapple");
-                bp.SetDescription("The next arrow the archer fires that hits this round will also purform the grapple combat maneuver, the archer performs this maneuver with a –4 penalty to his CMB.");
+                bp.SetDescription("The next arrow the archer fires that hits this round will also perform the grapple combat maneuver, the archer performs this maneuver with a –4 penalty to his CMB.");
                 bp.m_Icon = PummelingStyleBuff.m_Icon;
                 bp.AddComponent<ManeuverBonus>(c => {
                     c.Type = CombatManeuver.Grapple;
@@ -411,14 +455,22 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.NotExtraAttack = false;
                     c.OnCharge = false;
                     c.Action = Helpers.CreateActionList(
-                        new ContextActionCombatManeuverCustom() {
+                        new ContextActionCombatManeuver() {
                             Type = CombatManeuver.Grapple,
-                            Success = Helpers.CreateActionList(
-                                new ContextActionGrapple() {
-                                    m_CasterBuff = Haste.ToReference<BlueprintBuffReference>(),
-                                    m_TargetBuff = BearGrappleTargetBuff.ToReference<BlueprintBuffReference>() 
+                            IgnoreConcealment = true,
+                            OnSuccess = Helpers.CreateActionList(
+                                new ContextActionApplyBuff() {
+                                    m_Buff = TrickShotGrappleTargetBuff.ToReference<BlueprintBuffReference>(),
+                                    Permanent = true,
                                 }
-                                )                            
+                                ),
+                            ReplaceStat = false,
+                            NewStat = StatType.Unknown,
+                            UseKineticistMainStat = false,
+                            UseCastingStat = false,
+                            UseCasterLevelAsBaseAttack = false,
+                            UseBestMentalStat = false,
+                            BatteringBlast = false
                         }
                         );
                 });
@@ -459,7 +511,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             });
             var TrickShotTripBuff = Helpers.CreateBuff("TrickShotTripBuff", bp => {
                 bp.SetName("Trick Shot - Trip");
-                bp.SetDescription("The next arrow the archer fires that hits this round will also purform the trip combat maneuver, the archer performs this maneuver with a –4 penalty to his CMB.");
+                bp.SetDescription("The next arrow the archer fires that hits this round will also perform the trip combat maneuver, the archer performs this maneuver with a –4 penalty to his CMB.");
                 bp.m_Icon = TripIcon;
                 bp.AddComponent<ManeuverBonus>(c => {
                     c.Type = CombatManeuver.Trip;
@@ -548,7 +600,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
 
             var TrickShotDisarmAbility = Helpers.CreateBlueprint<BlueprintAbility>("TrickShotDisarmAbility", bp => {
                 bp.SetName("Trick Shot - Disarm");
-                bp.SetDescription("The next arrow the archer fires that hits this round will also purform the disarm combat maneuver, the archer performs this maneuver with a –4 penalty to his CMB.");
+                bp.SetDescription("The next arrow the archer fires that hits this round will also perform the disarm combat maneuver, the archer performs this maneuver with a –4 penalty to his CMB.");
                 bp.m_Icon = DisarmAction.m_Icon;                
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.SavingThrowType = SavingThrowType.Unknown;
@@ -564,7 +616,12 @@ namespace ExpandedContent.Tweaks.Archetypes {
                                 m_IsExtendable = true
                             },
                             DurationSeconds = 0
-                        });
+                        },
+                        new ContextActionRemoveBuff() { m_Buff = TrickShotSunderBuff.ToReference<BlueprintBuffReference>() },
+                        new ContextActionRemoveBuff() { m_Buff = TrickShotBullRushBuff.ToReference<BlueprintBuffReference>() },
+                        new ContextActionRemoveBuff() { m_Buff = TrickShotGrappleBuff.ToReference<BlueprintBuffReference>() },
+                        new ContextActionRemoveBuff() { m_Buff = TrickShotTripBuff.ToReference<BlueprintBuffReference>() }
+                        );
                 });
                 bp.Type = AbilityType.Extraordinary;
                 bp.Range = AbilityRange.Personal;
@@ -578,7 +635,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             });
             var TrickShotSunderAbility = Helpers.CreateBlueprint<BlueprintAbility>("TrickShotSunderAbility", bp => {
                 bp.SetName("Trick Shot - Sunder");
-                bp.SetDescription("The next arrow the archer fires that hits this round will also purform the sunder combat maneuver, the archer performs this maneuver with a –4 penalty to his CMB.");
+                bp.SetDescription("The next arrow the archer fires that hits this round will also perform the sunder combat maneuver, the archer performs this maneuver with a –4 penalty to his CMB.");
                 bp.m_Icon = CrushingBlowFeature.m_Icon;
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.SavingThrowType = SavingThrowType.Unknown;
@@ -594,7 +651,12 @@ namespace ExpandedContent.Tweaks.Archetypes {
                                 m_IsExtendable = true
                             },
                             DurationSeconds = 0
-                        });
+                        },
+                        new ContextActionRemoveBuff() { m_Buff = TrickShotDisarmBuff.ToReference<BlueprintBuffReference>() },
+                        new ContextActionRemoveBuff() { m_Buff = TrickShotBullRushBuff.ToReference<BlueprintBuffReference>() },
+                        new ContextActionRemoveBuff() { m_Buff = TrickShotGrappleBuff.ToReference<BlueprintBuffReference>() },
+                        new ContextActionRemoveBuff() { m_Buff = TrickShotTripBuff.ToReference<BlueprintBuffReference>() }
+                        );
                 });
                 bp.Type = AbilityType.Extraordinary;
                 bp.Range = AbilityRange.Personal;
@@ -608,7 +670,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             });
             var TrickShotBullRushAbility = Helpers.CreateBlueprint<BlueprintAbility>("TrickShotBullRushAbility", bp => {
                 bp.SetName("Trick Shot - Bull Rush");
-                bp.SetDescription("The next arrow the archer fires that hits this round will also purform the bull rush combat maneuver, the archer performs this maneuver with a –4 penalty to his CMB.");
+                bp.SetDescription("The next arrow the archer fires that hits this round will also perform the bull rush combat maneuver, the archer performs this maneuver with a –4 penalty to his CMB.");
                 bp.m_Icon = ImprovedBullRushFeature.m_Icon;
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.SavingThrowType = SavingThrowType.Unknown;
@@ -624,7 +686,12 @@ namespace ExpandedContent.Tweaks.Archetypes {
                                 m_IsExtendable = true
                             },
                             DurationSeconds = 0
-                        });
+                        },
+                        new ContextActionRemoveBuff() { m_Buff = TrickShotDisarmBuff.ToReference<BlueprintBuffReference>() },
+                        new ContextActionRemoveBuff() { m_Buff = TrickShotSunderBuff.ToReference<BlueprintBuffReference>() },
+                        new ContextActionRemoveBuff() { m_Buff = TrickShotGrappleBuff.ToReference<BlueprintBuffReference>() },
+                        new ContextActionRemoveBuff() { m_Buff = TrickShotTripBuff.ToReference<BlueprintBuffReference>() }
+                        );
                 });
                 bp.Type = AbilityType.Extraordinary;
                 bp.Range = AbilityRange.Personal;
@@ -638,7 +705,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             });
             var TrickShotGrappleAbility = Helpers.CreateBlueprint<BlueprintAbility>("TrickShotGrappleAbility", bp => {
                 bp.SetName("Trick Shot - Grapple");
-                bp.SetDescription("The next arrow the archer fires that hits this round will also purform the grapple combat maneuver, the archer performs this maneuver with a –4 penalty to his CMB.");
+                bp.SetDescription("The next arrow the archer fires that hits this round will also perform the grapple combat maneuver, the archer performs this maneuver with a –4 penalty to his CMB.");
                 bp.m_Icon = PummelingStyleBuff.m_Icon;
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.SavingThrowType = SavingThrowType.Unknown;
@@ -654,7 +721,12 @@ namespace ExpandedContent.Tweaks.Archetypes {
                                 m_IsExtendable = true
                             },
                             DurationSeconds = 0
-                        });
+                        },
+                        new ContextActionRemoveBuff() { m_Buff = TrickShotDisarmBuff.ToReference<BlueprintBuffReference>() },
+                        new ContextActionRemoveBuff() { m_Buff = TrickShotSunderBuff.ToReference<BlueprintBuffReference>() },
+                        new ContextActionRemoveBuff() { m_Buff = TrickShotBullRushBuff.ToReference<BlueprintBuffReference>() },
+                        new ContextActionRemoveBuff() { m_Buff = TrickShotTripBuff.ToReference<BlueprintBuffReference>() }
+                        );
                 });
                 bp.Type = AbilityType.Extraordinary;
                 bp.Range = AbilityRange.Personal;
@@ -668,7 +740,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             });
             var TrickShotTripAbility = Helpers.CreateBlueprint<BlueprintAbility>("TrickShotTripAbility", bp => {
                 bp.SetName("Trick Shot - Trip");
-                bp.SetDescription("The next arrow the archer fires that hits this round will also purform the trip combat maneuver, the archer performs this maneuver with a –4 penalty to his CMB.");
+                bp.SetDescription("The next arrow the archer fires that hits this round will also perform the trip combat maneuver, the archer performs this maneuver with a –4 penalty to his CMB.");
                 bp.m_Icon = TripIcon;
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.SavingThrowType = SavingThrowType.Unknown;
@@ -684,7 +756,12 @@ namespace ExpandedContent.Tweaks.Archetypes {
                                 m_IsExtendable = true
                             },
                             DurationSeconds = 0
-                        });
+                        },
+                        new ContextActionRemoveBuff() { m_Buff = TrickShotDisarmBuff.ToReference<BlueprintBuffReference>() },
+                        new ContextActionRemoveBuff() { m_Buff = TrickShotSunderBuff.ToReference<BlueprintBuffReference>() },
+                        new ContextActionRemoveBuff() { m_Buff = TrickShotBullRushBuff.ToReference<BlueprintBuffReference>() },
+                        new ContextActionRemoveBuff() { m_Buff = TrickShotGrappleBuff.ToReference<BlueprintBuffReference>() }
+                        );
                 });
                 bp.Type = AbilityType.Extraordinary;
                 bp.Range = AbilityRange.Personal;
@@ -699,7 +776,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
 
             var TrickShotDisarmFeature = Helpers.CreateBlueprint<BlueprintFeature>("TrickShotDisarmFeature", bp => {
                 bp.SetName("Trick Shot - Disarm");
-                bp.SetDescription("The archer can perform a disarm combat maneuver along with a single bow attack, the archer performs this maneuver with a –4 penalty to his CMB.");
+                bp.SetDescription("The archer can perform a disarm combat maneuver along with a bow attack, the archer performs this maneuver with a –4 penalty to his CMB.");
                 bp.m_Icon = DisarmAction.m_Icon;
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;
@@ -709,7 +786,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             });
             var TrickShotSunderFeature = Helpers.CreateBlueprint<BlueprintFeature>("TrickShotSunderFeature", bp => {
                 bp.SetName("Trick Shot - Sunder");
-                bp.SetDescription("The archer can perform a sunder combat maneuver along with a single bow attack, the archer performs this maneuver with a –4 penalty to his CMB.");
+                bp.SetDescription("The archer can perform a sunder combat maneuver along with a bow attack, the archer performs this maneuver with a –4 penalty to his CMB.");
                 bp.m_Icon = CrushingBlowFeature.m_Icon;
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;
@@ -719,7 +796,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             });
             var TrickShotBullRushFeature = Helpers.CreateBlueprint<BlueprintFeature>("TrickShotBullRushFeature", bp => {
                 bp.SetName("Trick Shot - Bull Rush");
-                bp.SetDescription("The archer can perform a bull rush combat maneuver along with a single bow attack, the archer performs this maneuver with a –4 penalty to his CMB.");
+                bp.SetDescription("The archer can perform a bull rush combat maneuver along with a bow attack, the archer performs this maneuver with a –4 penalty to his CMB.");
                 bp.m_Icon = ImprovedBullRushFeature.m_Icon;
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;
@@ -733,7 +810,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             });
             var TrickShotGrappleFeature = Helpers.CreateBlueprint<BlueprintFeature>("TrickShotGrappleFeature", bp => {
                 bp.SetName("Trick Shot - Grapple");
-                bp.SetDescription("The archer can perform a grapple combat maneuver along with a single bow attack, the archer performs this maneuver with a –4 penalty to his CMB.");
+                bp.SetDescription("The archer can perform a grapple combat maneuver along with a bow attack, the archer performs this maneuver with a –4 penalty to his CMB.");
                 bp.m_Icon = PummelingStyleBuff.m_Icon;
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;
@@ -744,10 +821,13 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.Level = 11;
                     c.m_CharacterClass = FighterClass.ToReference<BlueprintCharacterClassReference>();
                 });
+                bp.AddComponent<SpecificBuffImmunity>(c => {
+                    c.m_Buff = TrickShotGrappleCasterBuff.ToReference<BlueprintBuffReference>();
+                });
             });
             var TrickShotTripFeature = Helpers.CreateBlueprint<BlueprintFeature>("TrickShotTripFeature", bp => {
                 bp.SetName("Trick Shot - Trip");
-                bp.SetDescription("The archer can perform a trip combat maneuver along with a single bow attack, the archer performs this maneuver with a –4 penalty to his CMB.");
+                bp.SetDescription("The archer can perform a trip combat maneuver along with a bow attack, the archer performs this maneuver with a –4 penalty to his CMB.");
                 bp.m_Icon = TripIcon;
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;
@@ -913,7 +993,6 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
-
             var VolleyFeature = Helpers.CreateBlueprint<BlueprintFeature>("VolleyFeature", bp => {
                 bp.SetName("Volley");
                 bp.SetDescription("At 17th level, as a full-round action, an archer can make a single bow attack at his highest base attack bonus against any number of " +
@@ -925,16 +1004,60 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 });
             });
 
-
-
-
+            var RangedDefenceCooldownBuff = Helpers.CreateBuff("RangedDefenceCooldownBuff", bp => {
+                bp.m_AllowNonContextActions = false;
+                bp.SetName("");
+                bp.SetDescription("");
+                bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
+                bp.Stacking = StackingType.Replace;
+                bp.Frequency = DurationRate.Rounds;
+            });
+            var RangedDefenceEffectBuff = Helpers.CreateBuff("RangedDefenceEffectBuff", bp => {
+                bp.m_AllowNonContextActions = false;
+                bp.SetName("");
+                bp.SetDescription("An archer may catch an arrow fired at him once per round as if he had the deflect arrows feat, but only while holding a bow. \nWhen an arrow " +
+                    "is successfully caught, he may fire it along with his next fired arrow as an extra attack. You may only fire one additional arrow at a time from this feature.");
+                bp.m_Icon = DeflectArrowsFeature.m_Icon;
+                bp.AddComponent<AddInitiatorAttackWithWeaponTrigger>(c => {
+                    c.OnlyHit = false;
+                    c.OnlyOnFirstAttack = true;
+                    c.CheckWeaponGroup = true;
+                    c.Group = WeaponFighterGroup.Bows;
+                    c.Action = Helpers.CreateActionList(
+                        new ContextActionRangedAttack() {
+                            SelectNewTarget = false,
+                            AutoHit = false,
+                            IgnoreStatBonus = false,
+                            AutoCritThreat = false,
+                            AutoCritConfirmation = false,
+                            ExtraAttack = true,
+                            FullAttack = false,
+                        },
+                        new ContextActionRemoveSelf()
+                        );
+                });
+                bp.m_Flags = BlueprintBuff.Flags.RemoveOnRest;
+                bp.Stacking = StackingType.Replace;
+                bp.Frequency = DurationRate.Rounds;
+            });
             var RangedDefenseFeature = Helpers.CreateBlueprint<BlueprintFeature>("RangedDefenseFeature", bp => {
                 bp.SetName("Ranged Defense");
                 bp.SetDescription("At 19th level, an archer gains DR 5/— against ranged attacks. In addition, an archer may catch an arrow fired at him once per round as if " +
                     "he had the deflect arrows feat, but only while holding a bow. \nWhen an arrow is successfully caught, he may fire it along with his next fired arrow as an " +
                     "extra attack. You may only fire one additional arrow at a time from this feature.");
+                bp.m_Icon = DeflectArrowsFeature.m_Icon;
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;
+                bp.AddComponent<AddDamageResistancePhysical>(c => {
+                    c.Value = new ContextValue() {
+                        ValueType = ContextValueType.Simple,
+                        Value = 5,
+                        ValueRank = AbilityRankType.Default,
+                        ValueShared = AbilitySharedValue.Damage,
+                        Property = UnitProperty.None
+                    };
+                    c.BypassedByMeleeWeapon = true;
+                });
                 bp.AddComponent<DeflectArrowsExpanded>(c => {
                     c.m_Restriction = DeflectArrowsExpanded.RestrictionType.Bow;
                 });
@@ -943,10 +1066,10 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.ActionsOnAttacker = Helpers.CreateActionList();
                     c.ActionOnSelf = Helpers.CreateActionList(
                         new ContextActionApplyBuff() {
-                            m_Buff = Haste.ToReference<BlueprintBuffReference>(),
+                            m_Buff = RangedDefenceCooldownBuff.ToReference<BlueprintBuffReference>(),
                             DurationValue = new ContextDurationValue() {
                                 Rate = DurationRate.Rounds,
-                                DiceType = DiceType.D4,
+                                DiceType = DiceType.One,
                                 DiceCountValue = new ContextValue() {
                                     ValueType = ContextValueType.Simple,
                                     Value = 1,
@@ -961,6 +1084,16 @@ namespace ExpandedContent.Tweaks.Archetypes {
                                     ValueShared = AbilitySharedValue.Damage,
                                     Property = UnitProperty.None
                                 },
+                            }
+                        },
+                        new ContextActionApplyBuff() {
+                            m_Buff = RangedDefenceEffectBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.D4,
+                                DiceCountValue = 0,
+                                BonusValue = 0
                             }
                         }
                         );

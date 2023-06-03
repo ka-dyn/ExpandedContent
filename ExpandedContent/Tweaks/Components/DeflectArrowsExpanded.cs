@@ -13,7 +13,7 @@ using Kingmaker.UnitLogic.FactLogic;
 using UnityEngine;
 
 namespace ExpandedContent.Tweaks.Components {
-    //Test
+    // If you need to add more just add a new restriction type
     [ComponentName("New types of Deflect Arrows")]
     [AllowedOn(typeof(BlueprintUnitFact))]
 

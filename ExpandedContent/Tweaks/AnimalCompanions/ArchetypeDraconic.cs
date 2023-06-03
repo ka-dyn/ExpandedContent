@@ -450,7 +450,7 @@ namespace ExpandedContent.Tweaks.AnimalCompanions {
                 bp.m_AllowNonContextActions = false;
                 bp.SetName("Breath Weapon - Ability is not ready yet");
                 bp.SetDescription("");
-                //bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
+                bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
                 bp.Stacking = StackingType.Replace;
                 bp.Frequency = DurationRate.Rounds;
             });
