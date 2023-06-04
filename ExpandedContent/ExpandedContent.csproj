@@ -375,6 +375,7 @@
     <Compile Include="Tweaks\FourHorsemen\Charon.cs" />
     <Compile Include="Tweaks\FourHorsemen\Szuriel.cs" />
     <Compile Include="Tweaks\FourHorsemen\Terlmarixian.cs" />
+    <Compile Include="Tweaks\Miscellaneous\OpeningVolley.cs" />
     <Compile Include="Tweaks\Miscellaneous\ShapechangeFeatsPatch.cs" />
     <Compile Include="Tweaks\Miscellaneous\AidAnother.cs" />
     <Compile Include="Tweaks\Miscellaneous\ModifierDescriptors.cs" />

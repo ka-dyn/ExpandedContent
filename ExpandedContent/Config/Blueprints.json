@@ -2110,7 +2110,9 @@
     "TrickShotTripBuff": "061448e1-b8c2-402e-9537-d03d2a196f7c",
     "TrickShotTripFeature": "e02449c3-a126-49da-8369-bbfa9aa53ddd",
     "VolleyAbility": "3a42b26c-9d31-4801-9930-c165ded9d791",
-    "VolleyFeature": "82ed2022-ec74-4695-9db9-1ddbb073cf4e"
+    "VolleyFeature": "82ed2022-ec74-4695-9db9-1ddbb073cf4e",
+    "OpeningVolleyFeature": "aa422fe1-1467-4582-bb47-330ace91031d",
+    "OpeningVolleyTargetBuff": "220824f6-b0bd-4ab3-ace3-abd4c69c461f"
 
 
 

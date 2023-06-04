@@ -18,6 +18,8 @@ namespace ExpandedContent.Tweaks {
                 if (Initialized) return;
                 Initialized = true;
 
+                Miscellaneous.OpeningVolley.AddOpeningVolley();
+
                 Classes.DrakeClass.DrakeCompanionClass.AddDrakeCompanionClass();
                 Classes.DrakeClass.DrakeCompanionGreen.AddDrakeCompanionGreen();
                 Classes.DrakeClass.DrakeCompanionSilver.AddDrakeCompanionSilver();

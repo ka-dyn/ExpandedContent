@@ -385,6 +385,17 @@
     },
     "IsExpanded": false
   },
+  "Feats": {
+    "DisableAll": false,
+    "Settings": {
+      "Opening Volley": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Feat that grants a bonus for attacking with range before moving into melee."
+      }
+    },
+    "IsExpanded": false
+  },
   "Backgrounds": {
     "DisableAll": false,
     "Settings": {

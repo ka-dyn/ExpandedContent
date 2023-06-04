@@ -10,6 +10,7 @@ namespace ExpandedContent.Config {
         public SettingGroup Domains = new SettingGroup();
         public SettingGroup Deities = new SettingGroup();
         public SettingGroup Miscellaneous = new SettingGroup();
+        public SettingGroup Feats = new SettingGroup();
 
         public void Init() {
         }
@@ -25,6 +26,7 @@ namespace ExpandedContent.Config {
             Domains.LoadSettingGroup(loadedSettings.Domains, NewSettingsOffByDefault);
             Deities.LoadSettingGroup(loadedSettings.Deities, NewSettingsOffByDefault);
             Miscellaneous.LoadSettingGroup(loadedSettings.Miscellaneous, NewSettingsOffByDefault);
+            Feats.LoadSettingGroup(loadedSettings.Feats, NewSettingsOffByDefault);
         }
     }
 }
