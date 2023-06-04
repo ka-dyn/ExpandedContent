@@ -27,6 +27,8 @@ New Archetypes
 
 - Wyrm Singer, Skald
 
+- Archer, Fighter
+
 New Prestige Class
 
 - Stargazer
@@ -58,6 +60,8 @@ New Animal Archetype
 New Feats
 
 - Swift Aid
+
+- Opening Volley 
 
 New Mythic Abilities
 
