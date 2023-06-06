@@ -179,6 +179,11 @@
         "Enabled": true,
         "Homebrew": false,
         "Description": "A fighter archeype that is an archer that arches archeringly."
+      },
+      "Spear Fighter": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "A fighter archeype that is an parries with a spear fighting style."
       }
     },
     "IsExpanded": false

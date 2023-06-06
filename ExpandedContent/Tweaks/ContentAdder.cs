@@ -63,6 +63,7 @@ namespace ExpandedContent.Tweaks {
                 Archetypes.LionShaman.AddLionShaman();
                 Archetypes.WyrmSinger.AddWyrmSinger();
                 Archetypes.Archer.AddArcher();
+                Archetypes.SpearFighter.AddSpearFighter();
 
                 Classes.OathbreakerClass.AddOathbreakerClass();
                 Archetypes.Castigator.AddCastigator();

@@ -176,6 +176,7 @@
     <Compile Include="Tweaks\Archdevils\Mammon.cs" />
     <Compile Include="Tweaks\Archdevils\Mephistopheles.cs" />
     <Compile Include="Tweaks\Archdevils\Moloch.cs" />
+    <Compile Include="Tweaks\Archetypes\SpearFighter.cs" />
     <Compile Include="Tweaks\Archetypes\LionShaman.cs" />
     <Compile Include="Tweaks\Archetypes\Castigator.cs" />
     <Compile Include="Tweaks\Archetypes\BearShaman.cs" />
@@ -217,6 +218,7 @@
     <Compile Include="Tweaks\Classes\DrakeClass\DrakeCompanionSelection.cs" />
     <Compile Include="Tweaks\Classes\Oathbreaker.cs" />
     <Compile Include="Tweaks\Classes\DreadKnight.cs" />
+    <Compile Include="Tweaks\Components\SpearParry.cs" />
     <Compile Include="Tweaks\Components\DeflectArrowsExpanded.cs" />
     <Compile Include="Tweaks\Components\ACBonusAgainstNotCaster.cs" />
     <Compile Include="Tweaks\Components\AttackBonusAgainstNotCaster.cs" />

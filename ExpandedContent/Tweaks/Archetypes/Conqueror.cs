@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.UnitLogic.Mechanics.Components;
+using Kingmaker.UnitLogic.Mechanics.Properties;
 using Kingmaker.Utility;
 using System;
 using System.Collections.Generic;
@@ -126,8 +127,9 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var InspiredRageEffectBuff = Resources.GetBlueprint<BlueprintBuff>("75b3978757908d24aaaecaf2dc209b89");
             InspiredRageEffectBuff.GetComponents<ContextRankConfig>().ForEach(c => { c.m_Class = c.m_Class.AppendToArray(DreadKnightClass.ToReference<BlueprintCharacterClassReference>()); });
             InspiredRageEffectBuff.GetComponents<ContextRankConfig>().ForEach(c => { c.Archetype = ConquerorArchetype.ToReference<BlueprintArchetypeReference>(); });
-
-
+            var RageLevelProperty = Resources.GetBlueprint<BlueprintUnitProperty>("6a8e9d4b8ba547f5819354a05dd2a291").GetComponent<SummClassLevelGetter>();
+            RageLevelProperty.m_Class = RageLevelProperty.m_Class.AppendToArray(DreadKnightClass.ToReference<BlueprintCharacterClassReference>());
+            RageLevelProperty.m_Archetypes = RageLevelProperty.m_Archetypes.AppendToArray(ConquerorArchetype.ToReference<BlueprintArchetypeReference>());
 
 
 
