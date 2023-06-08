@@ -3,6 +3,7 @@ using Kingmaker.ElementsSystem;
 using Kingmaker.Enums;
 using Kingmaker.Items.Slots;
 using Kingmaker.PubSubSystem;
+using Kingmaker.RuleSystem;
 using Kingmaker.RuleSystem.Rules;
 using Kingmaker.RuleSystem.Rules.Damage;
 using Kingmaker.UnitLogic;
@@ -14,13 +15,13 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ExpandedContent.Tweaks.Components {
-    //Based off Zedals Swashbuckler component, needs testing as I've most likely broke it
     internal class SpearParry : UnitFactComponentDelegate, ITargetRulebookHandler<RuleAttackRoll>, ITargetRulebookSubscriber {
 
         public void OnEventAboutToTrigger(RuleAttackRoll evt) {
+            //If holding a spear and the enemy is close enough...
             if (!evt.Weapon.Blueprint.IsMelee || evt.Parry != null || !Owner.IsReach(evt.Target, Owner.Body.PrimaryHand) || (!IsWeaponASpear(base.Owner.Body.PrimaryHand) && !IsWeaponASpear(base.Owner.Body.SecondaryHand)))
                 return;
-
+            //..parry them
             evt.TryParry(Owner, Owner.Body.PrimaryHand.Weapon, 2 * (evt.Initiator.Descriptor.State.Size - Owner.State.Size));
 
         }
@@ -29,18 +30,21 @@ namespace ExpandedContent.Tweaks.Components {
             if (!evt.Parry.IsTriggered)
                 return;
 
-            if (evt.Result == AttackResult.Parried && Owner.CombatState.EngagedBy.Count < 2) //FlatFooted
-            {                
+            bool isFlatFooted = Rulebook.Trigger<RuleCheckTargetFlatFooted>(new RuleCheckTargetFlatFooted(evt.Initiator, evt.Target)).IsFlatFooted; //Flatfooted yes/no
+            //If you parried them and are not flatfooted
+            if (evt.Result == AttackResult.Parried && !isFlatFooted)
+            {   
+                //Stab them
                 Game.Instance.CombatEngagementController.ForceAttackOfOpportunity(Owner, evt.Initiator);
-
+                
                 IFactContextOwner factContextOwner = base.Fact as IFactContextOwner;
+                //Also do this (fill in on component addition)
                 if (factContextOwner != null) 
                 {
                     factContextOwner.RunActionInContext(this.ActionOnSelf, evt.Target);
                 }
             }            
         }
-        //Need to add ActionsOnSelf to apply the -4 penalty
         public static bool IsWeaponASpear(HandSlot hand) {
             return hand.MaybeWeapon != null && (
                 hand.MaybeWeapon.Blueprint.Category == WeaponCategory.Shortspear || 

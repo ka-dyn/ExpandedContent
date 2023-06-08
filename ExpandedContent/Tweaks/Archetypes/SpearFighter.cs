@@ -124,14 +124,33 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var SpearParryPenaltyBuff = Helpers.CreateBuff("SpearParryPenaltyBuff", bp => {
                 bp.SetName("Spear Parry Penalty");
                 bp.SetDescription("Who knows.");
-                bp.AddComponent<AddStatBonus>(c => {
+                bp.AddComponent<AddContextStatBonus>(c => {
                     c.Descriptor = ModifierDescriptor.UntypedStackable;
                     c.Stat = StatType.AdditionalAttackBonus;
-                    c.Value = -4;
+                    c.Value = new ContextValue() {
+                        ValueType = ContextValueType.Rank,
+                        ValueRank = AbilityRankType.Default
+                    };                    
+                    c.Multiplier = -1;
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.Custom;
+                    c.m_Class = new BlueprintCharacterClassReference[] { FighterClass.ToReference<BlueprintCharacterClassReference>() };
+                    c.m_CustomProgression = new ContextRankConfig.CustomProgressionItem[] {
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 6, ProgressionValue = 4 },
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 10, ProgressionValue = 3 },
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 14, ProgressionValue = 2 },
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 18, ProgressionValue = 1 },
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 100, ProgressionValue = 0 }
+                    };
                 });
                 bp.m_Icon = Haste.m_Icon;
-                bp.m_Flags = BlueprintBuff.Flags.IsFromSpell;
-                bp.Stacking = StackingType.Replace;
+                bp.m_Flags = BlueprintBuff.Flags.RemoveOnRest;
+                bp.Stacking = StackingType.Stack;
             });
 
 
@@ -145,7 +164,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                             UseDurationSeconds = false,
                             DurationValue = new ContextDurationValue() {
                                 Rate = DurationRate.Rounds,
-                                BonusValue = 2,
+                                BonusValue = 1,
                                 DiceType = DiceType.Zero,
                                 DiceCountValue = 0,
                                 m_IsExtendable = false
