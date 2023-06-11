@@ -19,6 +19,8 @@ namespace ExpandedContent.Tweaks {
                 Initialized = true;
 
                 Miscellaneous.OpeningVolley.AddOpeningVolley();
+                Miscellaneous.BullseyeShot.AddBullseyeShot();
+                Miscellaneous.PinpointTargeting.AddPinpointTargeting();
 
                 Classes.DrakeClass.DrakeCompanionClass.AddDrakeCompanionClass();
                 Classes.DrakeClass.DrakeCompanionGreen.AddDrakeCompanionGreen();

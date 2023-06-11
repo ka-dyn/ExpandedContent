@@ -32,18 +32,23 @@ namespace ExpandedContent.Tweaks.Components {
 
             bool isFlatFooted = Rulebook.Trigger<RuleCheckTargetFlatFooted>(new RuleCheckTargetFlatFooted(evt.Initiator, evt.Target)).IsFlatFooted; //Flatfooted yes/no
             //If you parried them and are not flatfooted
-            if (evt.Result == AttackResult.Parried && !isFlatFooted)
-            {   
+            if (evt.Result == AttackResult.Parried && !isFlatFooted) {   
                 //Stab them
                 Game.Instance.CombatEngagementController.ForceAttackOfOpportunity(Owner, evt.Initiator);
                 
                 IFactContextOwner factContextOwner = base.Fact as IFactContextOwner;
                 //Also do this (fill in on component addition)
-                if (factContextOwner != null) 
-                {
+                if (factContextOwner != null) {
                     factContextOwner.RunActionInContext(this.ActionOnSelf, evt.Target);
                 }
-            }            
+            }  
+            else if (evt.Result == AttackResult.Parried && isFlatFooted) {
+                IFactContextOwner factContextOwner = base.Fact as IFactContextOwner;
+                //Also do this (fill in on component addition)
+                if (factContextOwner != null) {
+                    factContextOwner.RunActionInContext(this.ActionOnSelf, evt.Target);
+                }
+            }
         }
         public static bool IsWeaponASpear(HandSlot hand) {
             return hand.MaybeWeapon != null && (

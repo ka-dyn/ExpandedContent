@@ -57,6 +57,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var WeaponTrainingSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("b8cecf4e5e464ad41b79d5b42b76b399");
             var WeaponTrainingRankUpSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("5f3cc7b9a46b880448275763fe70c0b0");
             var ArmorMasteryFeature = Resources.GetBlueprint<BlueprintFeature>("ae177f17cfb45264291d4d7c2cb64671");
+            var DefensiveSpinBuff = Resources.GetBlueprint<BlueprintBuff>("3e0146b786c064441834fc025d09a67c");
 
             var LightArmorProficiency = Resources.GetBlueprint<BlueprintFeature>("6d3728d4e9c9898458fe5e9532951132");
             var MediumArmorProficiency = Resources.GetBlueprint<BlueprintFeature>("46f4fb320f35704488ba3d513397789d");
@@ -65,7 +66,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var ShieldsProficiency = Resources.GetBlueprint<BlueprintFeature>("cb8686e7357a68c42bdd9d4e65334633");
             var DodgeFeature = Resources.GetBlueprint<BlueprintFeature>("97e216dbb46ae3c4faef90cf6bbe6fd5");
 
-            var Haste = Resources.GetBlueprint<BlueprintBuff>("8d20b0a6129bd814eb0146041879f38a");
+            var SpearParryIcon = AssetLoader.LoadInternal("Skills", "Icon_SpearParry.png");
 
 
             var SpearFighterArchetype = Helpers.CreateBlueprint<BlueprintArchetype>("SpearFighterArchetype", bp => {
@@ -123,7 +124,9 @@ namespace ExpandedContent.Tweaks.Archetypes {
 
             var SpearParryPenaltyBuff = Helpers.CreateBuff("SpearParryPenaltyBuff", bp => {
                 bp.SetName("Spear Parry Penalty");
-                bp.SetDescription("Who knows.");
+                bp.SetDescription("When an incoming attack is successfully parried using the spear parry feature gain a cumulative –4 penalty on " +
+                    "all attacks (including further parry attempts) for a full round. At 7th, 11th, and 15th levels, the penalty decreases by 1. At 19th level, a spear fighter can use " +
+                    "spear parry without penalty.");
                 bp.AddComponent<AddContextStatBonus>(c => {
                     c.Descriptor = ModifierDescriptor.UntypedStackable;
                     c.Stat = StatType.AdditionalAttackBonus;
@@ -148,15 +151,19 @@ namespace ExpandedContent.Tweaks.Archetypes {
                         new ContextRankConfig.CustomProgressionItem(){ BaseValue = 100, ProgressionValue = 0 }
                     };
                 });
-                bp.m_Icon = Haste.m_Icon;
+                bp.m_Icon = DefensiveSpinBuff.m_Icon;
                 bp.m_Flags = BlueprintBuff.Flags.RemoveOnRest;
                 bp.Stacking = StackingType.Stack;
             });
 
-
-            var SpearParryFeature = Helpers.CreateBlueprint<BlueprintFeature>("SpearParryFeature", bp => {
+            var SpearParryBuff = Helpers.CreateBuff("SpearParryBuff", bp => {
                 bp.SetName("Spear Parry");
-                bp.SetDescription("Who knows.");
+                bp.SetDescription("When attacked in melee, the spear fighter makes an attack roll as if he were making an attack of opportunity; for each size category the attacking creature is " +
+                    "larger than the spear fighter, he takes a –2 penalty on this roll. If his result is greater than the attacking creature’s result, the creature’s attack automatically misses. " +
+                    "Upon performing a successful parry, he makes an attack of opportunity against the creature whose attack he parried, provided that creature is within his reach and the spear " +
+                    "fighter has remaining attacks of opportunity." +
+                    "\nWhen an incoming attack is successfully parried gain a cumulative –4 penalty on all attacks (including further parry attempts) for a full round. " +
+                    "At 7th, 11th, and 15th levels, the penalty decreases by 1. At 19th level, a spear fighter can use spear parry without penalty.");
                 bp.AddComponent<SpearParry>(c => {
                     c.ActionOnSelf = Helpers.CreateActionList(
                         new ContextActionApplyBuff() {
@@ -169,11 +176,47 @@ namespace ExpandedContent.Tweaks.Archetypes {
                                 DiceCountValue = 0,
                                 m_IsExtendable = false
                             },
+                            AsChild = false,
+                            IsNotDispelable = true,
                             DurationSeconds = 0
                         }
                         );
                 });
+                bp.m_Icon = SpearParryIcon;
+                bp.m_Flags = BlueprintBuff.Flags.StayOnDeath;
+                bp.Stacking = StackingType.Replace;
+            });
 
+            var SpearParryActivatableAbility = Helpers.CreateBlueprint<BlueprintActivatableAbility>("SpearParryActivatableAbility", bp => {
+                bp.SetName("Spear Parry");
+                bp.SetDescription("When attacked in melee, the spear fighter makes an attack roll as if he were making an attack of opportunity; for each size category the attacking creature is " +
+                    "larger than the spear fighter, he takes a –2 penalty on this roll. If his result is greater than the attacking creature’s result, the creature’s attack automatically misses. " +
+                    "Upon performing a successful parry, he makes an attack of opportunity against the creature whose attack he parried, provided that creature is within his reach and the spear " +
+                    "fighter has remaining attacks of opportunity." +
+                    "\nWhen an incoming attack is successfully parried gain a cumulative –4 penalty on all attacks (including further parry attempts) for a full round. " +
+                    "At 7th, 11th, and 15th levels, the penalty decreases by 1. At 19th level, a spear fighter can use spear parry without penalty.");
+                bp.m_Icon = SpearParryIcon;
+                bp.m_Buff = SpearParryBuff.ToReference<BlueprintBuffReference>();
+                bp.Group = ActivatableAbilityGroup.None;
+                bp.DeactivateIfCombatEnded = false;
+                bp.DeactivateImmediately = true;
+                bp.ActivationType = AbilityActivationType.Immediately;
+                bp.m_ActivateWithUnitCommand = UnitCommand.CommandType.Free;
+            });
+
+            var SpearParryFeature = Helpers.CreateBlueprint<BlueprintFeature>("SpearParryFeature", bp => {
+                bp.SetName("Spear Parry");
+                bp.SetDescription("At 3rd level, a spear fighter learns to parry his opponents’ attacks with his spear. When attacked in melee, the spear fighter makes an attack roll as " +
+                    "if he were making an attack of opportunity; for each size category the attacking creature is larger than the spear fighter, he takes a –2 penalty on this roll. If his result is greater than " +
+                    "the attacking creature’s result, the creature’s attack automatically misses. Upon performing a successful parry, he makes an attack of opportunity against the creature whose " +
+                    "attack he parried, provided that creature is within his reach and the spear fighter has remaining attacks of opportunity." +
+                    "\nWhen an incoming attack is successfully parried gain a cumulative –4 penalty on all attacks (including further parry attempts) for a full round. " +
+                    "At 7th, 11th, and 15th levels, the penalty decreases by 1. At 19th level, a spear fighter can use spear parry without penalty.");
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        SpearParryActivatableAbility.ToReference<BlueprintUnitFactReference>(),
+                    };
+                });
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = true;
             });

@@ -397,6 +397,16 @@
         "Enabled": true,
         "Homebrew": false,
         "Description": "Feat that grants a bonus for attacking with range before moving into melee."
+      },
+      "Bullseye Shot": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Feat that allows spending a move action to better aim ranged attacks."
+      },
+      "Pinpoint Targeting": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Feat that allows attacking only once in a round, but ignoring all armor and shields."
       }
     },
     "IsExpanded": false

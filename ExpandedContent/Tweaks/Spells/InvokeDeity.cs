@@ -3557,6 +3557,8 @@ namespace ExpandedContent.Tweaks.Spells {
                             },
                         }
                         );
+                    c.Deactivated = Helpers.CreateActionList();
+                    c.NewRound = Helpers.CreateActionList();
                 });
                 bp.AddComponent<ContextRankConfig>(c => {
                     c.m_Type = AbilityRankType.Default;

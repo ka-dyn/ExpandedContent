@@ -377,6 +377,8 @@
     <Compile Include="Tweaks\FourHorsemen\Charon.cs" />
     <Compile Include="Tweaks\FourHorsemen\Szuriel.cs" />
     <Compile Include="Tweaks\FourHorsemen\Terlmarixian.cs" />
+    <Compile Include="Tweaks\Miscellaneous\Pinpoint Targeting.cs" />
+    <Compile Include="Tweaks\Miscellaneous\BullseyeShot.cs" />
     <Compile Include="Tweaks\Miscellaneous\OpeningVolley.cs" />
     <Compile Include="Tweaks\Miscellaneous\ShapechangeFeatsPatch.cs" />
     <Compile Include="Tweaks\Miscellaneous\AidAnother.cs" />
@@ -1438,6 +1440,9 @@
     <Content Include="Assets\Skills\Icon_BOO.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Skills\Icon_BullseyeShot.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Skills\Icon_ChannelTOC.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -1573,6 +1578,9 @@
     <Content Include="Assets\Skills\Icon_PerfectAidAnotherOffence.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Skills\Icon_PinpointTargeting.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Skills\Icon_Plague.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -1619,6 +1627,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_Slipstream.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_SpearParry.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_SpitefulTenacity.png">
