@@ -2112,7 +2112,26 @@
     "VolleyAbility": "3a42b26c-9d31-4801-9930-c165ded9d791",
     "VolleyFeature": "82ed2022-ec74-4695-9db9-1ddbb073cf4e",
     "OpeningVolleyFeature": "aa422fe1-1467-4582-bb47-330ace91031d",
-    "OpeningVolleyTargetBuff": "220824f6-b0bd-4ab3-ace3-abd4c69c461f"
+    "OpeningVolleyTargetBuff": "220824f6-b0bd-4ab3-ace3-abd4c69c461f",
+
+    "BalancedStrideFeature": "d1de7ab3-82c4-4978-9e9e-d44e5c0b7cdf",
+    "BullseyeShotAbility": "e9cf7919-7405-43a9-9bbe-d0a13ece0536",
+    "BullseyeShotBuff": "b7f3aa05-6a5d-47f1-8c26-2a95e0369597",
+    "BullseyeShotFeature": "31fbe31a-7727-46d6-b10a-86602cb1b941",
+    "PinpointTargetingAbility": "f05c29be-3522-4fba-af6b-839b5bcd6a18",
+    "PinpointTargetingAttackAbility": "9c356743-6d46-4319-9c0e-0925dd537642",
+    "PinpointTargetingBuff": "7ce98d4b-1a72-4469-a805-5fea1cb475b2",
+    "PinpointTargetingDisabledFlag": "6d9625fd-8cf9-4a8f-a033-002fb48b6591",
+    "PinpointTargetingFeature": "583da9f2-3981-471a-bd45-6ccc2be0b3a6",
+    "PinpointTargetingMovementChecker": "6a2c5c07-f6b4-48c6-9e67-b62468332fc9",
+    "SpearFighterArchetype": "f57cc49a-cfc7-413b-83b7-ec6bf162348e",
+    "SpearFighterProficiencies": "4fd18212-8457-43de-a735-e0f045af047d",
+    "SpearParryActivatableAbility": "cfac29ed-b320-47ce-97dd-2da924186be1",
+    "SpearParryBuff": "e362a719-df2f-4d5d-b310-8d28274d0dd1",
+    "SpearParryFeature": "6aba55c9-7eff-487b-b5ba-68a20fe8be70",
+    "SpearParryFreeMarker": "aaddaef6-90cc-4614-aae6-8c3ab5398d7c",
+    "SpearParryPenaltyBuff": "ab780eb8-81b2-4649-8ee3-45325ee65f98",
+    "SpearParryRankMarker": "31facd7c-14f7-4c91-80a7-d98c98baf731"
 
 
 

@@ -39,6 +39,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Kingmaker.UnitLogic.Abilities.Components.CasterCheckers;
+using Kingmaker.Designers.Mechanics.Facts;
 
 namespace ExpandedContent.Tweaks.Miscellaneous {
     internal class BullseyeShot {
@@ -53,7 +54,7 @@ namespace ExpandedContent.Tweaks.Miscellaneous {
                 bp.SetDescription("You slow your breath, calm yourself, and hit the bullseye, just as you were trained to do. \nYou can spend a move action to steady your shot. " +
                     "When you do, you gain a +4 bonus on your next ranged attack roll before the start of your next turn.");
                 bp.m_Icon = BullseyeShotIcon;
-                bp.AddComponent<WeaponAttackTypeDamageBonus>(c => {
+                bp.AddComponent<AttackTypeAttackBonus>(c => {
                     c.Type = WeaponRangeType.Ranged;
                     c.AttackBonus = 4;
                     c.Descriptor = ModifierDescriptor.UntypedStackable;
@@ -76,7 +77,7 @@ namespace ExpandedContent.Tweaks.Miscellaneous {
                     c.Category = WeaponCategory.UnarmedStrike;
                     c.CheckWeaponGroup = false;
                     c.Group = WeaponFighterGroup.Bows;
-                    c.CheckWeaponRangeType = false;
+                    c.CheckWeaponRangeType = true;
                     c.RangeType = WeaponRangeType.Ranged;
                     c.ActionsOnInitiator = false;
                     c.ReduceHPToZero = false;

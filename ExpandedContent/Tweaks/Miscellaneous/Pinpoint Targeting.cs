@@ -222,7 +222,7 @@ namespace ExpandedContent.Tweaks.Miscellaneous {
                 bp.CanTargetSelf = false;
                 bp.EffectOnAlly = AbilityEffectOnUnit.None;
                 bp.EffectOnEnemy = AbilityEffectOnUnit.None;
-                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Special;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Immediate;
                 bp.ActionType = UnitCommand.CommandType.Standard;
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();

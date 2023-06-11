@@ -212,6 +212,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     "attack he parried, provided that creature is within his reach and the spear fighter has remaining attacks of opportunity." +
                     "\nWhen an incoming attack is successfully parried gain a cumulative –4 penalty on all attacks (including further parry attempts) for a full round. " +
                     "At 7th, 11th, and 15th levels, the penalty decreases by 1. At 19th level, a spear fighter can use spear parry without penalty.");
+                bp.m_Icon = SpearParryIcon;
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] {
                         SpearParryActivatableAbility.ToReference<BlueprintUnitFactReference>(),
@@ -221,6 +222,31 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.IsClassFeature = true;
             });
 
+            var SpearParryRankMarker = Helpers.CreateBlueprint<BlueprintFeature>("SpearParryRankMarker", bp => {
+                bp.SetName("Spear Parry Penalty Decrease");
+                bp.SetDescription("At 7th, 11th, and 15th levels, the penalty gained from parrying using the spear parry feature decreases by 1. At 19th level, a spear fighter can use spear parry without penalty.");
+                bp.m_Icon = SpearParryIcon;
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        SpearParryActivatableAbility.ToReference<BlueprintUnitFactReference>(),
+                    };
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+
+            var SpearParryFreeMarker = Helpers.CreateBlueprint<BlueprintFeature>("SpearParryFreeMarker", bp => {
+                bp.SetName("Spear Parry Penalty Removed");
+                bp.SetDescription("At 19th level, a spear fighter can use spear parry without penalty.");
+                bp.m_Icon = SpearParryIcon;
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        SpearParryActivatableAbility.ToReference<BlueprintUnitFactReference>(),
+                    };
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
 
             SpearFighterArchetype.RemoveFeatures = new LevelEntry[] {
                     Helpers.LevelEntry(1, FighterProficiencies),
@@ -240,9 +266,17 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     Helpers.LevelEntry(1, SpearFighterProficiencies),
                     Helpers.LevelEntry(2, BalancedStrideFeature),
                     Helpers.LevelEntry(3, SpearParryFeature),
-                    Helpers.LevelEntry(5, WeaponTrainingSpears)
+                    Helpers.LevelEntry(5, WeaponTrainingSpears),
+                    Helpers.LevelEntry(7, SpearParryRankMarker),
+                    Helpers.LevelEntry(11, SpearParryRankMarker),
+                    Helpers.LevelEntry(15, SpearParryRankMarker),
+                    Helpers.LevelEntry(19, SpearParryFreeMarker)
 
             };
+            FighterClass.Progression.UIGroups = FighterClass.Progression.UIGroups.AppendToArray(
+                Helpers.CreateUIGroup(SpearParryFeature, SpearParryRankMarker, SpearParryFreeMarker)
+            );
+
             if (ModSettings.AddedContent.Archetypes.IsDisabled("Spear Fighter")) { return; }
             FighterClass.m_Archetypes = FighterClass.m_Archetypes.AppendToArray(SpearFighterArchetype.ToReference<BlueprintArchetypeReference>());
 
