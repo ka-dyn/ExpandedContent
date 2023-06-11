@@ -27,7 +27,7 @@ New Archetypes
 
 - Wyrm Singer, Skald
 
-- Archer, Fighter
+- Archer, Spear Fighter, Fighter
 
 New Prestige Class
 
@@ -61,7 +61,11 @@ New Feats
 
 - Swift Aid
 
-- Opening Volley 
+- Opening Volley
+
+- Bullseye Shot
+
+- Pinpoint Targeting
 
 New Mythic Abilities
 
