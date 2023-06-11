@@ -60,11 +60,8 @@ New Animal Archetype
 New Feats
 
 - Swift Aid
-
 - Opening Volley
-
 - Bullseye Shot
-
 - Pinpoint Targeting
 
 New Mythic Abilities
