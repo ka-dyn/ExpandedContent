@@ -7,7 +7,7 @@ While this mod is not dependant on https://github.com/Vek17/TabletopTweaks-Base 
 
 New Archetypes
 
-- Living Scripture, Inquisitor
+- Ravener Hunter, Living Scripture, Inquisitor
 
 - Mantis Zealot, Warpriest
 
@@ -63,6 +63,7 @@ New Feats
 - Opening Volley
 - Bullseye Shot
 - Pinpoint Targeting
+- Demon Hunter
 
 New Mythic Abilities
 
@@ -70,6 +71,7 @@ New Mythic Abilities
 bloodline to mythic breath attacks.
 
 - Impossible Subdomain - Impossible Domain but for added subdomains.
+- Mythic Charged by Nature - Second Mystery for Ravener Hunter.
 
 New Deities
 
