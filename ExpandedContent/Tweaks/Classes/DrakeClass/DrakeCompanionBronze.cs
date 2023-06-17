@@ -20,6 +20,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using static ExpandedContent.Tweaks.Miscellaneous.DrakePetTypeAdder;
 
 namespace ExpandedContent.Tweaks.Classes.DrakeClass {
     internal class DrakeCompanionBronze {
@@ -166,7 +167,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 bp.m_Icon = BloodlineDraconicBronzeProgression.m_Icon;
                 bp.AddComponent<AddPet>(c => {
                     c.Type = PetType.AnimalCompanion;
-                    c.ProgressionType = PetProgressionType.AnimalCompanion;
+                    c.ProgressionType = (PetProgressionType)CustomPetProgressionType.DrakeCompanion;
                     c.m_Pet = DrakeCompanionUnitBronze.ToReference<BlueprintUnitReference>();
                     c.m_LevelRank = AnimalCompanionRank.ToReference<BlueprintFeatureReference>();
                 });

@@ -2131,7 +2131,34 @@
     "SpearParryFeature": "6aba55c9-7eff-487b-b5ba-68a20fe8be70",
     "SpearParryFreeMarker": "aaddaef6-90cc-4614-aae6-8c3ab5398d7c",
     "SpearParryPenaltyBuff": "ab780eb8-81b2-4649-8ee3-45325ee65f98",
-    "SpearParryRankMarker": "31facd7c-14f7-4c91-80a7-d98c98baf731"
+    "SpearParryRankMarker": "31facd7c-14f7-4c91-80a7-d98c98baf731",
+
+    "DemonHunterFeature": "9e2db39f-8bfa-4d71-bdad-e811cb14d978",
+    "RavenerDemonHunterFeature": "167b0d20-dd9a-4a31-bee4-692e21732986",
+    "RavenerHunterAncestorsMysteryProgression": "691512d8-fc06-48e1-885f-7109b14b3066",
+    "RavenerHunterAncestorsRevelationSelection": "891380db-b30d-4358-ae4c-0f24052450fa",
+    "RavenerHunterArchetype": "a462f19d-4001-4d89-9308-0a9a62f53741",
+    "RavenerHunterBattleMysteryProgression": "9a9836f7-fa45-4177-b2af-fbb225e976f9",
+    "RavenerHunterBattleRevelationSelection": "f4abab3b-da92-4008-bcb4-cbeb9606901f",
+    "RavenerHunterChargedByNatureSelection": "6e3e30c9-48dc-4a04-91d3-db433d62ff7c",
+    "RavenerHunterFlameMysteryProgression": "217343e6-90d4-4bc5-9ff7-3dcdcb042ea2",
+    "RavenerHunterFlameRevelationSelection": "d36c0a35-f35e-476f-8381-59ae36e1266f",
+    "RavenerHunterHeavensMysteryProgression": "98f0317b-4119-4957-8e27-370de1aba95a",
+    "RavenerHunterHeavensRevelationSelection": "75d7fd28-73f9-4d10-8815-beb5b29e3101",
+    "RavenerHunterHolyMagicFeature": "6cc3b8b7-3b56-4d69-a6aa-24f53e855bb0",
+    "RavenerHunterLifeMysteryProgression": "809c9636-9a27-4ddc-b09a-62eac9a9fdea",
+    "RavenerHunterLifeRevelationSelection": "be671cda-fd42-4871-8dcc-35811a2c9d9a",
+    "RavenerHunterNatureMysteryProgression": "2aedc470-57a6-48ab-bf52-a547180d92a3",
+    "RavenerHunterNatureRevelationSelection": "9c0c4cf0-5542-45b4-9496-f16170997aac",
+    "RavenerHunterSpellbook": "e1604126-b492-4139-9add-2f9359f777e8",
+    "RavenerHunterSpelllist": "f50f3298-54f5-4b48-b0d4-2c503b91bd21",
+    "RavenerHunterStoneMysteryProgression": "d36e0625-876f-4e13-86bd-b145886ae4c1",
+    "RavenerHunterStoneRevelationSelection": "e3e643e6-276c-4b44-8efb-eddd1a72a7de",
+    "RavenerHunterWavesMysteryProgression": "3fdfc7ad-b354-4f83-a36a-88a8595a564e",
+    "RavenerHunterWavesRevelationSelection": "23c253ca-6193-4d88-8aa8-814fc6468a49",
+    "RavenerHunterWindMysteryProgression": "9cc83cff-8216-46e0-ae71-e91d2e99a92d",
+    "RavenerHunterWindRevelationSelection": "317000e9-372b-4247-8931-96924474704a",
+    "SecondChargedByNatureSelection": "3ca146ca-195a-4c8a-bf2a-6fdff1683d09"
 
 
 

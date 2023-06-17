@@ -21,6 +21,7 @@ namespace ExpandedContent.Tweaks {
                 Miscellaneous.OpeningVolley.AddOpeningVolley();
                 Miscellaneous.BullseyeShot.AddBullseyeShot();
                 Miscellaneous.PinpointTargeting.AddPinpointTargeting();
+                Miscellaneous.DemonHunter.AddDemonHunter();
 
                 Classes.DrakeClass.DrakeCompanionClass.AddDrakeCompanionClass();
                 Classes.DrakeClass.DrakeCompanionGreen.AddDrakeCompanionGreen();
@@ -66,6 +67,7 @@ namespace ExpandedContent.Tweaks {
                 Archetypes.WyrmSinger.AddWyrmSinger();
                 Archetypes.Archer.AddArcher();
                 Archetypes.SpearFighter.AddSpearFighter();
+                Archetypes.RavenerHunter.AddRavenerHunter();
 
                 Classes.OathbreakerClass.AddOathbreakerClass();
                 Archetypes.Castigator.AddCastigator();

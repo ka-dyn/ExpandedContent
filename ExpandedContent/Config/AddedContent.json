@@ -184,6 +184,11 @@
         "Enabled": true,
         "Homebrew": false,
         "Description": "A fighter archeype that is an parries with a spear fighting style."
+      },
+      "Ravener Hunter": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "aaaaahhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh"
       }
     },
     "IsExpanded": false
@@ -407,6 +412,11 @@
         "Enabled": true,
         "Homebrew": false,
         "Description": "Feat that allows attacking only once in a round, but ignoring all armor and shields."
+      },
+      "Demon Hunter": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Feat that grants a bonus to attack rolls and spell penetration against demons."
       }
     },
     "IsExpanded": false

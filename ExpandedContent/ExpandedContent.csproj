@@ -176,6 +176,7 @@
     <Compile Include="Tweaks\Archdevils\Mammon.cs" />
     <Compile Include="Tweaks\Archdevils\Mephistopheles.cs" />
     <Compile Include="Tweaks\Archdevils\Moloch.cs" />
+    <Compile Include="Tweaks\Archetypes\RavenerHunter.cs" />
     <Compile Include="Tweaks\Archetypes\SpearFighter.cs" />
     <Compile Include="Tweaks\Archetypes\LionShaman.cs" />
     <Compile Include="Tweaks\Archetypes\Castigator.cs" />
@@ -377,6 +378,8 @@
     <Compile Include="Tweaks\FourHorsemen\Charon.cs" />
     <Compile Include="Tweaks\FourHorsemen\Szuriel.cs" />
     <Compile Include="Tweaks\FourHorsemen\Terlmarixian.cs" />
+    <Compile Include="Tweaks\Miscellaneous\DrakePetTypeAdder.cs" />
+    <Compile Include="Tweaks\Miscellaneous\DemonHunter.cs" />
     <Compile Include="Tweaks\Miscellaneous\Pinpoint Targeting.cs" />
     <Compile Include="Tweaks\Miscellaneous\BullseyeShot.cs" />
     <Compile Include="Tweaks\Miscellaneous\OpeningVolley.cs" />
@@ -495,6 +498,7 @@
     <Compile Include="Tweaks\Miscellaneous\Cavalier.cs" />
     <Compile Include="Utilities\ActionFlow.cs" />
     <Compile Include="Utilities\AuraUtils.cs" />
+    <Compile Include="Utilities\SpellWithDesriptorAdders.cs" />
     <Compile Include="Utilities\WitchTools.cs" />
     <Compile Include="Utilities\SpiritTools.cs" />
     <Compile Include="Utilities\ModSupportUtilities.cs" />

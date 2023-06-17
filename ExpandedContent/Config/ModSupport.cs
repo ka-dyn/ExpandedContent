@@ -46,6 +46,13 @@ namespace ExpandedContent.Config {
             public static void Postfix() {
                 if (Initialized) return;
                 Initialized = true;
+
+                //Ravener Hunter spelllist patch
+                //This is done after other mods have loaded to also grab any spells they may add
+                var ClericSpelllist = Resources.GetBlueprint<BlueprintSpellList>("8443ce803d2d31347897a3d85cc32f53");
+                var RavenerHunterSpelllist = Resources.GetModBlueprint<BlueprintSpellList>("RavenerHunterSpelllist");
+                SpellWithDesriptorAdders.RavenerHunterSpellAdder(ClericSpelllist, RavenerHunterSpelllist);
+
                 if (IsMysticalMayhemEnabled()) {
 
                     var OracleClass = Resources.GetBlueprint<BlueprintCharacterClass>("20ce9bf8af32bee4c8557a045ab499b1");

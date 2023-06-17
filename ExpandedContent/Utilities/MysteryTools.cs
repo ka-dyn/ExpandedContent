@@ -1,6 +1,7 @@
 ﻿using ExpandedContent.Extensions;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
+using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Selection;
 using System;
 using System.Collections.Generic;
@@ -54,6 +55,68 @@ namespace ExpandedContent.Utilities {
         public static void RegisterSecondOceansEchoMystery(BlueprintFeature secondmystery) {
             BlueprintFeatureSelection SecondMysteryOceansEcho = Resources.GetModBlueprint<BlueprintFeatureSelection>("SecondMysteryOceansEcho");
             SecondMysteryOceansEcho.m_AllFeatures = SecondMysteryOceansEcho.m_AllFeatures.AddToArray(secondmystery.ToReference<BlueprintFeatureReference>());
+        }
+        //Ravener Hunter lazy prereq thing
+        public static void ConfigureRavenerHunterRevelation(BlueprintFeature revelation, BlueprintProgression mystery) {
+            revelation.TemporaryContext(bp => {
+                bp.GetComponent<PrerequisiteFeaturesFromList>().TemporaryContext(c => {
+                    c.m_Features = c.m_Features.AppendToArray(mystery.ToReference<BlueprintFeatureReference>());
+                });
+            });
+        }
+        public static void ConfigureRavenerHunterRevelation(BlueprintProgression revelation, BlueprintProgression mystery) {
+            revelation.TemporaryContext(bp => {
+                bp.GetComponent<PrerequisiteFeaturesFromList>().TemporaryContext(c => {
+                    c.m_Features = c.m_Features.AppendToArray(mystery.ToReference<BlueprintFeatureReference>());
+                });
+            });
+        }
+        public static void ConfigureRavenerHunterRevelation(BlueprintFeatureSelection revelation, BlueprintProgression mystery) {
+            revelation.TemporaryContext(bp => {
+                bp.GetComponent<PrerequisiteFeaturesFromList>().TemporaryContext(c => {
+                    c.m_Features = c.m_Features.AppendToArray(mystery.ToReference<BlueprintFeatureReference>());
+                });
+            });
+        }
+        public static void ConfigureRavenerHunterRevelation(BlueprintFeature revelation, BlueprintProgression mystery, int level) {
+            BlueprintCharacterClass InquisitorClass = Resources.GetBlueprint<BlueprintCharacterClass>("f1a70d9e1b0b41e49874e1fa9052a1ce");
+            BlueprintArchetype RavenerHunterArchetype = Resources.GetModBlueprint<BlueprintArchetype>("RavenerHunterArchetype");
+            revelation.TemporaryContext(bp => {
+                bp.GetComponent<PrerequisiteFeaturesFromList>().TemporaryContext(c => {
+                    c.m_Features = c.m_Features.AppendToArray(mystery.ToReference<BlueprintFeatureReference>());
+                });
+                bp.GetComponent<PrerequisiteClassLevel>().TemporaryContext(c => {
+                    c.Group = Prerequisite.GroupType.Any;
+                });
+                bp.AddComponent<PrerequisiteArchetypeLevel>(c => {
+                    c.Group = Prerequisite.GroupType.Any;
+                    c.CheckInProgression = false;
+                    c.HideInUI = false;
+                    c.m_CharacterClass = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.Level = level;
+                });
+            });
+        }
+        public static void ConfigureRavenerHunterRevelation(BlueprintProgression revelation, BlueprintProgression mystery, int level) {
+            BlueprintCharacterClass InquisitorClass = Resources.GetBlueprint<BlueprintCharacterClass>("f1a70d9e1b0b41e49874e1fa9052a1ce");
+            BlueprintArchetype RavenerHunterArchetype = Resources.GetModBlueprint<BlueprintArchetype>("RavenerHunterArchetype");
+            revelation.TemporaryContext(bp => {
+                bp.GetComponent<PrerequisiteFeaturesFromList>().TemporaryContext(c => {
+                    c.m_Features = c.m_Features.AppendToArray(mystery.ToReference<BlueprintFeatureReference>());
+                });
+                bp.GetComponent<PrerequisiteClassLevel>().TemporaryContext(c => {
+                    c.Group = Prerequisite.GroupType.Any;
+                });
+                bp.AddComponent<PrerequisiteArchetypeLevel>(c => {
+                    c.Group = Prerequisite.GroupType.Any;
+                    c.CheckInProgression = false;
+                    c.HideInUI = false;
+                    c.m_CharacterClass = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.Level = level;
+                });
+            });
         }
     }
 }

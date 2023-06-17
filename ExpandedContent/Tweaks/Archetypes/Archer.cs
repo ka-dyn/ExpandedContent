@@ -73,6 +73,9 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     "honed day after day on ranges and hunting for game, or else on the battlefield, raining destruction down on the enemy lines.");
                 bp.LocalizedDescriptionShort = Helpers.CreateString($"ArcherArchetype.Description", "The archer is dedicated to the careful mastery of the bow, perfecting his skills with years of " +
                     "practice honed day after day on ranges and hunting for game, or else on the battlefield, raining destruction down on the enemy lines.");
+                bp.OverrideAttributeRecommendations = true;
+                bp.RecommendedAttributes = new StatType[] { StatType.Dexterity };
+                bp.NotRecommendedAttributes = new StatType[] { StatType.Charisma };
                 
             });
             var HawkeyeFeature = Helpers.CreateBlueprint<BlueprintFeature>("HawkeyeFeature", bp => {

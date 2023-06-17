@@ -16,11 +16,6 @@ using System.Threading.Tasks;
 namespace ExpandedContent.Tweaks.Archetypes {
     internal class LivingScripture {
 
-
-
-
-
-
         public static void AddLivingScripture() {
 
             
