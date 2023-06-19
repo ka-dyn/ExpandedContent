@@ -411,6 +411,7 @@
     <Compile Include="Tweaks\Monitors\Kerkamoth.cs" />
     <Compile Include="Tweaks\Monitors\Ssilameshnik.cs" />
     <Compile Include="Tweaks\Monitors\Monad.cs" />
+    <Compile Include="Tweaks\Mysteries\WoodMystery.cs" />
     <Compile Include="Tweaks\Mysteries\SuccorMystery.cs" />
     <Compile Include="Tweaks\Mysteries\HeavensMystery.cs" />
     <Compile Include="Tweaks\Mysteries\DragonMystery.cs" />
@@ -436,6 +437,7 @@
     <Compile Include="Tweaks\Spells\DanceOfAThousandCuts.cs" />
     <Compile Include="Tweaks\Spells\DanceOfAHundredCuts.cs" />
     <Compile Include="Tweaks\Spells\ClaySkin.cs" />
+    <Compile Include="Tweaks\Spells\Shillelagh.cs" />
     <Compile Include="Tweaks\Spells\ShieldOfFortificationGreater.cs" />
     <Compile Include="Tweaks\Spells\ShieldOfFortification.cs" />
     <Compile Include="Tweaks\Spells\HypnoticPattern.cs" />
