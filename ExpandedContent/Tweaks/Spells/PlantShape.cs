@@ -24,21 +24,18 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ExpandedContent.Tweaks.Spells {
-    internal class Shillelagh {
-        public static void AddShillelagh() {
+    internal class PlantShape {
+        public static void AddPlantShape() {
 
-            var ShillelaghIcon = AssetLoader.LoadInternal("Skills", "Icon_Shillelagh.jpg");
-            var Icon_ScrollOfShillelagh = AssetLoader.LoadInternal("Items", "Icon_ScrollOfShillelagh.png");
+            var PlantShapeIcon = AssetLoader.LoadInternal("Skills", "Icon_PlantShape.jpg");
+            var Icon_ScrollOfPlantShape = AssetLoader.LoadInternal("Items", "Icon_ScrollOfPlantShape.png");
             var Enhancement1 = Resources.GetBlueprint<BlueprintWeaponEnchantment>("d42fc23b92c640846ac137dc26e000d4");
             var LeadBladesBuff = Resources.GetBlueprint<BlueprintBuff>("91f43163db96f8941a41e2b584a97514");
 
-            var ShillelaghBuff = Helpers.CreateBuff("ShillelaghBuff", bp => {
-                bp.SetName("Shillelagh");
-                bp.SetDescription("Your own non-magical club or quarterstaff becomes a weapon with a +1 enhancement bonus on attack and damage rolls. A quarterstaff gains this enhancement for both " +
-                    "ends of the weapon. It deals damage as if it were two size categories larger (a Small club or quarterstaff so transmuted deals 1d8 points of damage, a Medium 2d6, and a Large 3d6), " +
-                    "+1 for its enhancement bonus. These effects only occur when the weapon is wielded by you. If you do not wield it, the weapon behaves as if unaffected by this spell. A magical weapon " +
-                    "still gains the damage via size increase, but not the additional +1 bonuses.");
-                bp.m_Icon = ShillelaghIcon;
+            var PlantShapeBuff = Helpers.CreateBuff("PlantShapeBuff", bp => {
+                bp.SetName("Plant Shape");
+                bp.SetDescription("");
+                bp.m_Icon = PlantShapeIcon;
                 bp.AddComponent<IncreaseDiceSizeOnAttack>(c => {
                     c.CheckWeaponCategories = true;
                     c.Categories = new WeaponCategory[] { WeaponCategory.Quarterstaff | WeaponCategory.Club };
@@ -68,12 +65,9 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.m_Flags = BlueprintBuff.Flags.IsFromSpell;
                 bp.Stacking = StackingType.Replace;
             });
-            var ShillelaghAbility = Helpers.CreateBlueprint<BlueprintAbility>("ShillelaghAbility", bp => {
-                bp.SetName("Shillelagh");
-                bp.SetDescription("Your own non-magical club or quarterstaff becomes a weapon with a +1 enhancement bonus on attack and damage rolls. A quarterstaff gains this enhancement for both " +
-                    "ends of the weapon. It deals damage as if it were two size categories larger (a Small club or quarterstaff so transmuted deals 1d8 points of damage, a Medium 2d6, and a Large 3d6), " +
-                    "+1 for its enhancement bonus. These effects only occur when the weapon is wielded by you. If you do not wield it, the weapon behaves as if unaffected by this spell. A magical weapon " +
-                    "still gains the damage via size increase, but not the additional +1 bonuses.");
+            var PlantShapeAbility = Helpers.CreateBlueprint<BlueprintAbility>("PlantShapeAbility", bp => {
+                bp.SetName("Plant Shape");
+                bp.SetDescription("");
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.SavingThrowType = SavingThrowType.Unknown;
                     c.Actions = Helpers.CreateActionList(
@@ -96,7 +90,7 @@ namespace ExpandedContent.Tweaks.Spells {
                             },
                         },
                         new ContextActionApplyBuff() {
-                            m_Buff = ShillelaghBuff.ToReference<BlueprintBuffReference>(),
+                            m_Buff = PlantShapeBuff.ToReference<BlueprintBuffReference>(),
                             Permanent = false,
                             UseDurationSeconds = false,
                             DurationValue = new ContextDurationValue() {
@@ -132,7 +126,7 @@ namespace ExpandedContent.Tweaks.Spells {
                     c.AOEType = CraftAOE.None;
                     c.SpellType = CraftSpellType.Buff;
                 });
-                bp.m_Icon = ShillelaghIcon;
+                bp.m_Icon = PlantShapeIcon;
                 bp.Type = AbilityType.Spell;
                 bp.Range = AbilityRange.Personal;
                 bp.CanTargetPoint = false;
@@ -145,12 +139,12 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.EnchantWeapon;
                 bp.ActionType = UnitCommand.CommandType.Standard;
                 bp.AvailableMetamagic =  Metamagic.Quicken | Metamagic.Heighten | Metamagic.Reach | Metamagic.CompletelyNormal | Metamagic.Extend;
-                bp.LocalizedDuration = Helpers.CreateString("ShillelaghAbility.Duration", "1 minute/level");
+                bp.LocalizedDuration = Helpers.CreateString("PlantShapeAbility.Duration", "1 minute/level");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
-            var ShillelaghScroll = ItemTools.CreateScroll("ScrollOfShillelagh", Icon_ScrollOfShillelagh, ShillelaghAbility, 1, 1);
-            VenderTools.AddScrollToLeveledVenders(ShillelaghScroll);
-            ShillelaghAbility.AddToSpellList(SpellTools.SpellList.DruidSpellList, 1);
+            var PlantShapeScroll = ItemTools.CreateScroll("ScrollOfPlantShape", Icon_ScrollOfPlantShape, PlantShapeAbility, 1, 1);
+            VenderTools.AddScrollToLeveledVenders(PlantShapeScroll);
+            PlantShapeAbility.AddToSpellList(SpellTools.SpellList.DruidSpellList, 1);
         }
     }
 }
