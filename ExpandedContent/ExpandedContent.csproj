@@ -58,8 +58,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>D:\Games\PathfinderModing\lib\Assembly-CSharp.dll</HintPath>
     </Reference>
-    <Reference Include="BlueprintCore, Version=2.3.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\WW-Blueprint-Core.2.3.0\lib\net472\BlueprintCore.dll</HintPath>
+    <Reference Include="BlueprintCore, Version=2.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\WW-Blueprint-Core.2.8.0\lib\net472\BlueprintCore.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Bcl.AsyncInterfaces.6.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
@@ -224,6 +224,7 @@
     <Compile Include="Tweaks\Components\ACBonusAgainstNotCaster.cs" />
     <Compile Include="Tweaks\Components\AttackBonusAgainstNotCaster.cs" />
     <Compile Include="Tweaks\Components\SavingThrowAgainstCaster.cs" />
+    <Compile Include="Tweaks\Components\WeaponMultipleCategoriesContextAttackBonus.cs" />
     <Compile Include="Tweaks\ContentAdder.cs" />
     <Compile Include="Tweaks\Curses\Vampirism.cs" />
     <Compile Include="Tweaks\Deities\Naderi.cs" />

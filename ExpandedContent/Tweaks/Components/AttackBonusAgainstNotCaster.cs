@@ -9,7 +9,6 @@ using Kingmaker.UnitLogic.Buffs.Components;
 using Kingmaker.UnitLogic.Mechanics;
 
 namespace ExpandedContent.Tweaks.Components {
-    //Test
     [ComponentName("Attack roll bonus against all units but the caster")]
     [AllowedOn(typeof(BlueprintBuff))]
 

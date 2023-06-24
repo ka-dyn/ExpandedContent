@@ -1,10 +1,12 @@
 ﻿using ExpandedContent.Extensions;
+using ExpandedContent.Tweaks.Components;
 using ExpandedContent.Utilities;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.Blueprints.Classes.Spells;
+using Kingmaker.Blueprints.Items.Weapons;
 using Kingmaker.Craft;
 using Kingmaker.Designers.EventConditionActionSystem.Actions;
 using Kingmaker.Designers.Mechanics.Facts;
@@ -50,18 +52,20 @@ namespace ExpandedContent.Tweaks.Mysteries {
             var OracleRevelationSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("60008a10ad7ad6543b1f63016741a5d2");
             var InquisitorClass = Resources.GetBlueprint<BlueprintCharacterClass>("f1a70d9e1b0b41e49874e1fa9052a1ce");
             var RavenerHunterArchetype = Resources.GetModBlueprint<BlueprintArchetype>("RavenerHunterArchetype");
-
+            var PlantType = Resources.GetBlueprint<BlueprintFeature>("706e61781d692a042b35941f14bc41c5");
             var WoodMysteryIcon = AssetLoader.LoadInternal("Skills", "Icon_OracleWoodMystery.png");
 
+
             //Spelllist
-            var ColorSpraySpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("91da41b9793a4624797921f221db653c");
-            var RainbowPatternSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("4b8265132f9c8174f87ce7fa6d0fe47b");
-            var PrismaticSpraySpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("b22fd434bdb60fb4ba1068206402c4cf");
-            var ChainLightningSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("645558d63604747428d55f0dd3a4cb58");
-            var SearingLightSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("bf0accce250381a44b857d4af6c8e10d");
-            var HypnoticPatternAbility = Resources.GetModBlueprint<BlueprintAbility>("HypnoticPatternAbility");
-            var SunburstSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("e96424f70ff884947b06f41a765b7658");
-            var PolarMidnightSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("ba48abb52b142164eba309fd09898856");
+            var ShillelaghAbility = Resources.GetModBlueprint<BlueprintAbility>("ShillelaghAbility");
+            var BarkSkinSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("5b77d7cc65b8ab74688e74a37fc2f553");
+            var BurningEntangleSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("8a76293f5ab8485da95ef6293a11358c");
+            var ThornBodySpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("2daf9c5112f16d54ab3cd6904c705c59");
+            var PlantShapeIAbility = Resources.GetModBlueprint<BlueprintAbility>("PlantShapeIAbility");
+            var PlantShapeIIAbility = Resources.GetModBlueprint<BlueprintAbility>("PlantShapeIIAbility");
+            var PlantShapeIIIAbility = Resources.GetModBlueprint<BlueprintAbility>("PlantShapeIIIAbility");
+            var ChangeStaffSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("26be70c4664d07446bdfe83504c1d757");
+            var WoodenPhalanxAbility = Resources.GetModBlueprint<BlueprintAbility>("WoodenPhalanxAbility");
             var BreakEnchantmentSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("7792da00c85b9e042a0fdfc2b66ec9a8");
             var OwlsWisdomMassSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("9f5ada581af3db4419b54db77f44e430");
             var OwlsWisdomSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("f0455c9295b53904f9e02fc571dd2ce1");
@@ -81,47 +85,47 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.IsClassFeature = true;
                 bp.AddComponent<AddKnownSpell>(c => {
                     c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
-                    c.m_Spell = ColorSpraySpell;
+                    c.m_Spell = ShillelaghAbility.ToReference<BlueprintAbilityReference>();
                     c.SpellLevel = 1;
                 });
                 bp.AddComponent<AddKnownSpell>(c => {
                     c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
-                    c.m_Spell = HypnoticPatternAbility.ToReference<BlueprintAbilityReference>();
+                    c.m_Spell = BarkSkinSpell;
                     c.SpellLevel = 2;
                 });
                 bp.AddComponent<AddKnownSpell>(c => {
                     c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
-                    c.m_Spell = SearingLightSpell;
+                    c.m_Spell = BurningEntangleSpell;
                     c.SpellLevel = 3;
                 });
                 bp.AddComponent<AddKnownSpell>(c => {
                     c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
-                    c.m_Spell = RainbowPatternSpell;
+                    c.m_Spell = ThornBodySpell;
                     c.SpellLevel = 4;
                 });
                 bp.AddComponent<AddKnownSpell>(c => {
                     c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
-                    c.m_Spell = BreakEnchantmentSpell;
+                    c.m_Spell = PlantShapeIAbility.ToReference<BlueprintAbilityReference>();
                     c.SpellLevel = 5;
                 });
                 bp.AddComponent<AddKnownSpell>(c => {
                     c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
-                    c.m_Spell = ChainLightningSpell;
+                    c.m_Spell = PlantShapeIIAbility.ToReference<BlueprintAbilityReference>();
                     c.SpellLevel = 6;
                 });
                 bp.AddComponent<AddKnownSpell>(c => {
                     c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
-                    c.m_Spell = PrismaticSpraySpell;
+                    c.m_Spell = PlantShapeIIIAbility.ToReference<BlueprintAbilityReference>();
                     c.SpellLevel = 7;
                 });
                 bp.AddComponent<AddKnownSpell>(c => {
                     c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
-                    c.m_Spell = SunburstSpell;
+                    c.m_Spell = ChangeStaffSpell;
                     c.SpellLevel = 8;
                 });
                 bp.AddComponent<AddKnownSpell>(c => {
                     c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
-                    c.m_Spell = PolarMidnightSpell;
+                    c.m_Spell = WoodenPhalanxAbility.ToReference<BlueprintAbilityReference>();
                     c.SpellLevel = 9;
                 });
             });
@@ -130,7 +134,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.IsClassFeature = true;
                 bp.AddComponent<AddKnownSpell>(c => {
                     c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
-                    c.m_Spell = ColorSpraySpell;
+                    c.m_Spell = ShillelaghAbility.ToReference<BlueprintAbilityReference>();
                     c.SpellLevel = 1;
                 });
                 bp.AddComponent<AddKnownSpell>(c => {
@@ -179,7 +183,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.IsClassFeature = true;
                 bp.AddComponent<AddKnownSpell>(c => {
                     c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
-                    c.m_Spell = ColorSpraySpell;
+                    c.m_Spell = ShillelaghAbility.ToReference<BlueprintAbilityReference>();
                     c.SpellLevel = 1;
                 });
                 bp.AddComponent<AddKnownSpell>(c => {
@@ -189,7 +193,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 });
                 bp.AddComponent<AddKnownSpell>(c => {
                     c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
-                    c.m_Spell = SearingLightSpell;
+                    c.m_Spell = BurningEntangleSpell;
                     c.SpellLevel = 3;
                 });
                 bp.AddComponent<AddKnownSpell>(c => {
@@ -214,76 +218,39 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 });
                 bp.AddComponent<AddKnownSpell>(c => {
                     c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
-                    c.m_Spell = SunburstSpell;
+                    c.m_Spell = ChangeStaffSpell;
                     c.SpellLevel = 8;
                 });
                 bp.AddComponent<AddKnownSpell>(c => {
                     c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
-                    c.m_Spell = PolarMidnightSpell;
+                    c.m_Spell = WoodenPhalanxAbility.ToReference<BlueprintAbilityReference>();
                     c.SpellLevel = 9;
                 });
             });
             //Final Revelation
             var EnlightenedPhilosopherFinalRevelationBuff = Resources.GetBlueprintReference<BlueprintBuffReference>("9f1ee3c61ef993d448b0b866ee198ea8");
-            var EnlightenedPhilosopherFinalRevelationResource = Resources.GetBlueprintReference<BlueprintAbilityResourceReference>("d19c2e7ec505b734a973ce8d0986f4d6");
+            var EnlightenedPhilosopherFinalRevelationResource = Resources.GetBlueprintReference<BlueprintAbilityResourceReference>("d19c2e7ec505b734a973ce8d0986f4d6");            
             var OracleWoodFinalRevelation = Helpers.CreateBlueprint<BlueprintFeature>("OracleWoodFinalRevelation", bp => {
                 bp.SetName("Final Revelation");
-                bp.SetDescription("Upon achieving 20th level, your rapport with the Wood grants you perfect harmony with the universe. You receive a {g|Encyclopedia:Bonus}bonus{/g} " +
-                    "on all {g|Encyclopedia:Saving_Throw}saving throws{/g} equal to your {g|Encyclopedia:Charisma}Charisma{/g} modifier. You become immune to fear effects, and automatically " +
-                    "confirm all critical hits. Once per day, should you die, 1 {g|Encyclopedia:Combat_Round}round{/g} after dying you are reborn. Your body re-forms with all your equipment, " +
-                    "and you return to life with maximum {g|Encyclopedia:HP}hit points{/g}.");
-                bp.AddComponent<DerivativeStatBonus>(c => {
-                    c.BaseStat = StatType.Charisma;
-                    c.DerivativeStat = StatType.SaveFortitude;
-                });
-                bp.AddComponent<DerivativeStatBonus>(c => {
-                    c.BaseStat = StatType.Charisma;
-                    c.DerivativeStat = StatType.SaveWill;
-                });
-                bp.AddComponent<DerivativeStatBonus>(c => {
-                    c.BaseStat = StatType.Charisma;
-                    c.DerivativeStat = StatType.SaveReflex;
-                });
-                bp.AddComponent<AddConditionImmunity>(c => {
-                    c.Condition = UnitCondition.Frightened;
-                });
-                bp.AddComponent<InitiatorCritAutoconfirm>();
-                bp.AddComponent<DeathActions>(c => {
-                    c.Actions = Helpers.CreateActionList(
-                        new ContextActionApplyBuff() {
-                            m_Buff = EnlightenedPhilosopherFinalRevelationBuff,
-                            Permanent = false,
-                            UseDurationSeconds = false,
-                            DurationValue = new ContextDurationValue() {
-                                Rate = DurationRate.Rounds,
-                                DiceType = DiceType.Zero,
-                                DiceCountValue = 0,
-                                BonusValue = 1,
-                                m_IsExtendable = true
-                            },
-                            DurationSeconds = 0                            
-                        }
-                        );
-                    c.CheckResource = true;
-                    c.OnlyOnParty = false;
-                    c.m_Resource = EnlightenedPhilosopherFinalRevelationResource;
-                });
-                bp.AddComponent<AddAbilityResources>(c => {
-                    c.UseThisAsResource = false;
-                    c.m_Resource = EnlightenedPhilosopherFinalRevelationResource;
-                    c.RestoreAmount = true;
-                });
+                bp.SetDescription("Upon reaching 20th level, you become a living creature of wood. You gain a +4 natural armor bonus to your Armor Class and you gain immunity to paralysis, poison, " +
+                    "polymorph, sleep, and stunning.");
+                bp.AddComponent(PlantType.GetComponent<AddFacts>());
+                bp.AddComponent<AddStatBonus>(c => {
+                    c.Stat = StatType.AC;
+                    c.Descriptor = ModifierDescriptor.NaturalArmor;
+                    c.Value = 4;
+                });                
                 bp.m_AllowNonContextActions = false;
                 bp.HideInUI = false;
                 bp.HideInCharacterSheetAndLevelUp = false;
                 bp.IsClassFeature = true;
-            });
+            }); //Finish please 
             //Main Mystery Feature
             var OracleWoodMysteryFeature = Helpers.CreateBlueprint<BlueprintFeature>("OracleWoodMysteryFeature", bp => {
                 bp.m_Icon = WoodMysteryIcon;
                 bp.SetName("Wood");
-                bp.SetDescription("An oracle with the Wood mystery adds {g|Encyclopedia:Perception}Perception{/g} and {g|Encyclopedia:Knowledge_Arcana}Knowledge (Arcana) {/g} to " +
-                    "her list of class {g|Encyclopedia:Skills}skills{/g}.");
+                bp.SetDescription("An oracle with the wood mystery adds {g|Encyclopedia:Mobility}Mobility{/g}, {g|Encyclopedia:Lore_Nature}Lore (nature){/g}, " +
+                    "{g|Encyclopedia:Stealth}Stealth{/g}  and {g|Encyclopedia:Knowledge_World}Knowledge (World) {/g} to her list of class {g|Encyclopedia:Skills}skills{/g}.");
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
                     c.Level = 20;
@@ -314,8 +281,8 @@ namespace ExpandedContent.Tweaks.Mysteries {
             var EnlightnedPhilosopherWoodMysteryFeature = Helpers.CreateBlueprint<BlueprintFeature>("EnlightnedPhilosopherWoodMysteryFeature", bp => {
                 bp.m_Icon = WoodMysteryIcon;
                 bp.SetName("Wood");
-                bp.SetDescription("An oracle with the Wood mystery adds {g|Encyclopedia:Perception}Perception{/g} and {g|Encyclopedia:Knowledge_Arcana}Knowledge (Arcana) {/g} to " +
-                    "her list of class {g|Encyclopedia:Skills}skills{/g}.");
+                bp.SetDescription("An oracle with the wood mystery adds {g|Encyclopedia:Mobility}Mobility{/g}, {g|Encyclopedia:Lore_Nature}Lore (nature){/g}, " +
+                    "{g|Encyclopedia:Stealth}Stealth{/g}  and {g|Encyclopedia:Knowledge_World}Knowledge (World) {/g} to her list of class {g|Encyclopedia:Skills}skills{/g}.");
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
                     c.Level = 2;
@@ -341,7 +308,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
             var DivineHerbalistWoodMysteryFeature = Helpers.CreateBlueprint<BlueprintFeature>("DivineHerbalistWoodMysteryFeature", bp => {
                 bp.m_Icon = WoodMysteryIcon;
                 bp.SetName("Wood");
-                bp.SetDescription("Gain access to the spells and revelations of the Wood mystery. \nDue to the divine herbalist archetype the class skills gained from this archetype" +
+                bp.SetDescription("Gain access to the spells and revelations of the wood mystery. \nDue to the divine herbalist archetype the class skills gained from this archetype" +
                     "are replaced by the master herbalist feature and the brew potions feat.");
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
@@ -361,7 +328,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
             var OceansEchoWoodMysteryFeature = Helpers.CreateBlueprint<BlueprintFeature>("OceansEchoWoodMysteryFeature", bp => {
                 bp.m_Icon = WoodMysteryIcon;
                 bp.SetName("Wood");
-                bp.SetDescription("Gain access to the spells and revelations of the Wood mystery. \nDue to the ocean's echo archetype the class skills gained from this archtype" +
+                bp.SetDescription("Gain access to the spells and revelations of the wood mystery. \nDue to the ocean's echo archetype the class skills gained from this archtype" +
                     "are changed to {g|Encyclopedia:Persuasion}Persuasion{/g}, {g|Encyclopedia:Knowledge_World}Knowledge (world){/g} and {g|Encyclopedia:Lore_Nature}Lore (nature){/g}");
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
@@ -411,12 +378,363 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 //LevelEntry added later                
                 bp.GiveFeaturesForPreviousLevels = true;
             });
-            
+
+            //WoodArmor
+            var OracleRevelationWoodArmorResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("OracleRevelationWoodArmorResource", bp => {
+                bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
+                    BaseValue = 0,
+                    IncreasedByLevel = true,
+                    m_Class = new BlueprintCharacterClassReference[] {
+                        OracleClass.ToReference<BlueprintCharacterClassReference>(),
+                        InquisitorClass.ToReference<BlueprintCharacterClassReference>()
+                    },
+                    m_Archetypes = new BlueprintArchetypeReference[] {
+                        RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>()
+                    },
+                    LevelIncrease = 1,
+                    StartingIncrease = 1,
+                };
+            });
+            var OracleRevelationWoodArmorDCBuff = Helpers.CreateBuff("OracleRevelationWoodArmorDCBuff", bp => {
+                bp.SetName("Wood Armor");
+                bp.SetDescription("You can conjure wooden armor around yourself, which grants you a +4 armor bonus. At 7th level, and every four levels thereafter, " +
+                    "this bonus increases by +2. At 13th level, this armor grants you DR 5/slashing. You can use this armor for 1 hour per day per oracle level. This " +
+                    "duration does not need to be consecutive, but it must be spent in 1-hour increments.");
+                bp.m_Icon = OracleRevelationWoodArmorIcon;
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.DelayedStartPlusDivStep;
+                    c.m_StartLevel = 7;
+                    c.m_StepLevel = 4;
+                    c.m_Class = new BlueprintCharacterClassReference[] {
+                        OracleClass.ToReference<BlueprintCharacterClassReference>(),
+                        InquisitorClass.ToReference<BlueprintCharacterClassReference>()
+                    };
+                    c.Archetype = RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>();
+                });
+                bp.AddComponent<ContextCalculateSharedValue>(c => {
+                    c.ValueType = AbilitySharedValue.Heal;
+                    c.Value = new ContextDiceValue() {
+                        DiceType = DiceType.Zero,
+                        DiceCountValue = new ContextValue() {
+                            ValueType = ContextValueType.Simple,
+                            Value = 0,
+                            ValueRank = AbilityRankType.Default,
+                            ValueShared = AbilitySharedValue.Damage,
+                            Property = UnitProperty.None
+                        },
+                        BonusValue = new ContextValue() {
+                            ValueType = ContextValueType.Rank,
+                            Value = 0,
+                            ValueRank = AbilityRankType.Default,
+                            ValueShared = AbilitySharedValue.Damage,
+                            Property = UnitProperty.None
+                        }
+                    };
+                    c.Modifier = 2;
+                });
+                bp.AddComponent<ContextCalculateSharedValue>(c => {
+                    c.ValueType = AbilitySharedValue.Damage;
+                    c.Value = new ContextDiceValue() {
+                        DiceType = DiceType.One,
+                        DiceCountValue = new ContextValue() {
+                            ValueType = ContextValueType.Simple,
+                            Value = 4,
+                            ValueRank = AbilityRankType.Default,
+                            ValueShared = AbilitySharedValue.Damage,
+                            Property = UnitProperty.None
+                        },
+                        BonusValue = new ContextValue() {
+                            ValueType = ContextValueType.Shared,
+                            Value = 0,
+                            ValueRank = AbilityRankType.Default,
+                            ValueShared = AbilitySharedValue.Heal,
+                            Property = UnitProperty.None
+                        }
+                    };
+                    c.Modifier = 1;
+                });
+                bp.AddComponent<AddContextStatBonus>(c => {
+                    c.Descriptor = ModifierDescriptor.Armor;
+                    c.Stat = StatType.AC;
+                    c.Multiplier = 1;
+                    c.Value = new ContextValue() {
+                        ValueType = ContextValueType.Shared,
+                        Value = 0,
+                        ValueRank = AbilityRankType.Default,
+                        ValueShared = AbilitySharedValue.Damage,
+                        Property = UnitProperty.None
+                    };
+                    c.HasMinimal = false;
+                    c.Minimal = 0;
+                });
+                bp.m_Flags = BlueprintBuff.Flags.StayOnDeath;
+                bp.Stacking = StackingType.Replace;
+                bp.m_AllowNonContextActions = false;
+            });
+            var OracleRevelationWoodArmorDRBuff = Helpers.CreateBuff("OracleRevelationWoodArmorDRBuff", bp => {
+                bp.SetName("Wood Armor");
+                bp.SetDescription("You can conjure wooden armor around yourself, which grants you a +4 armor bonus. At 7th level, and every four levels thereafter, " +
+                    "this bonus increases by +2. At 13th level, this armor grants you DR 5/slashing. You can use this armor for 1 hour per day per oracle level. This " +
+                    "duration does not need to be consecutive, but it must be spent in 1-hour increments.");
+                bp.m_Icon = OracleRevelationWoodArmorIcon;
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.DelayedStartPlusDivStep;
+                    c.m_StartLevel = 7;
+                    c.m_StepLevel = 4;
+                    c.m_Class = new BlueprintCharacterClassReference[] {
+                        OracleClass.ToReference<BlueprintCharacterClassReference>(),
+                        InquisitorClass.ToReference<BlueprintCharacterClassReference>()
+                    };
+                    c.Archetype = RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>();
+                });
+                bp.AddComponent<ContextCalculateSharedValue>(c => {
+                    c.ValueType = AbilitySharedValue.Heal;
+                    c.Value = new ContextDiceValue() {
+                        DiceType = DiceType.Zero,
+                        DiceCountValue = new ContextValue() {
+                            ValueType = ContextValueType.Simple,
+                            Value = 0,
+                            ValueRank = AbilityRankType.Default,
+                            ValueShared = AbilitySharedValue.Damage,
+                            Property = UnitProperty.None
+                        },
+                        BonusValue = new ContextValue() {
+                            ValueType = ContextValueType.Rank,
+                            Value = 0,
+                            ValueRank = AbilityRankType.Default,
+                            ValueShared = AbilitySharedValue.Damage,
+                            Property = UnitProperty.None
+                        }
+                    };
+                    c.Modifier = 2;
+                });
+                bp.AddComponent<ContextCalculateSharedValue>(c => {
+                    c.ValueType = AbilitySharedValue.Damage;
+                    c.Value = new ContextDiceValue() {
+                        DiceType = DiceType.One,
+                        DiceCountValue = new ContextValue() {
+                            ValueType = ContextValueType.Simple,
+                            Value = 4,
+                            ValueRank = AbilityRankType.Default,
+                            ValueShared = AbilitySharedValue.Damage,
+                            Property = UnitProperty.None
+                        },
+                        BonusValue = new ContextValue() {
+                            ValueType = ContextValueType.Shared,
+                            Value = 0,
+                            ValueRank = AbilityRankType.Default,
+                            ValueShared = AbilitySharedValue.Heal,
+                            Property = UnitProperty.None
+                        }
+                    };
+                    c.Modifier = 1;
+                });
+                bp.AddComponent<AddContextStatBonus>(c => {
+                    c.Descriptor = ModifierDescriptor.Armor;
+                    c.Stat = StatType.AC;
+                    c.Multiplier = 1;
+                    c.Value = new ContextValue() {
+                        ValueType = ContextValueType.Shared,
+                        Value = 0,
+                        ValueRank = AbilityRankType.Default,
+                        ValueShared = AbilitySharedValue.Damage,
+                        Property = UnitProperty.None
+                    };
+                    c.HasMinimal = false;
+                    c.Minimal = 0;
+                });
+                bp.AddComponent<AddDamageResistancePhysical>(c => {
+                    c.Value = new ContextValue() {
+                        ValueType = ContextValueType.Simple,
+                        Value = 5,
+                        ValueRank = AbilityRankType.Default,
+                        ValueShared = AbilitySharedValue.Damage,
+                        Property = UnitProperty.None
+                    };
+                    c.UsePool = false;
+                    c.Pool = new ContextValue();
+                    c.Or = false;
+                    c.BypassedByMaterial = false;
+                    c.Material = PhysicalDamageMaterial.Adamantite;
+                    c.BypassedByForm = true;
+                    c.Form = PhysicalDamageForm.Slashing;
+                    c.BypassedByMagic = false;
+                    c.MinEnhancementBonus = 1;
+                    c.BypassedByAlignment = false;
+                    c.Alignment = DamageAlignment.Good;
+                    c.BypassedByReality = false;
+                    c.Reality = DamageRealityType.Ghost;
+                    c.BypassedByWeaponType = false;
+                    c.m_WeaponType = new BlueprintWeaponTypeReference();
+                    c.BypassedByEpic = false;
+                    c.m_CheckedFactMythic = new BlueprintUnitFactReference();
+                });
+                bp.m_Flags = BlueprintBuff.Flags.StayOnDeath;
+                bp.Stacking = StackingType.Replace;
+                bp.m_AllowNonContextActions = false;
+            });
+            var OracleRevelationWoodArmorDCAbility = Helpers.CreateBlueprint<BlueprintActivatableAbility>("OracleRevelationWoodArmorDCAbility", bp => {
+                bp.SetName("Wood Armor");
+                bp.SetDescription("You can conjure wooden armor around yourself, which grants you a +4 armor bonus. At 7th level, and every four levels thereafter, " +
+                    "this bonus increases by +2. At 13th level, this armor grants you DR 5/slashing. You can use this armor for 1 hour per day per oracle level. This " +
+                    "duration does not need to be consecutive, but it must be spent in 1-hour increments.");
+                bp.m_Icon = OracleRevelationWoodArmorIcon;
+                bp.AddComponent<ActivatableAbilityResourceLogic>(c => {
+                    c.SpendType = ActivatableAbilityResourceLogic.ResourceSpendType.OncePerHour;
+                    c.m_RequiredResource = OracleRevelationWoodArmorResource.ToReference<BlueprintAbilityResourceReference>();
+                });
+                bp.m_Buff = OracleRevelationWoodArmorDCBuff.ToReference<BlueprintBuffReference>();
+                bp.DeactivateIfOwnerDisabled = false;
+                bp.ActivationType = AbilityActivationType.WithUnitCommand;
+                bp.m_ActivateWithUnitCommand = UnitCommand.CommandType.Standard;
+                bp.DeactivateIfCombatEnded = false;
+            });
+            var OracleRevelationWoodArmorDRAbility = Helpers.CreateBlueprint<BlueprintActivatableAbility>("OracleRevelationWoodArmorDRAbility", bp => {
+                bp.SetName("Wood Armor");
+                bp.SetDescription("You can conjure wooden armor around yourself, which grants you a +4 armor bonus. At 7th level, and every four levels thereafter, " +
+                    "this bonus increases by +2. At 13th level, this armor grants you DR 5/slashing. You can use this armor for 1 hour per day per oracle level. This " +
+                    "duration does not need to be consecutive, but it must be spent in 1-hour increments.");
+                bp.m_Icon = OracleRevelationWoodArmorIcon;
+                bp.AddComponent<ActivatableAbilityResourceLogic>(c => {
+                    c.SpendType = ActivatableAbilityResourceLogic.ResourceSpendType.OncePerHour;
+                    c.m_RequiredResource = OracleRevelationWoodArmorResource.ToReference<BlueprintAbilityResourceReference>();
+                });
+                bp.m_Buff = OracleRevelationWoodArmorDRBuff.ToReference<BlueprintBuffReference>();
+                bp.DeactivateIfOwnerDisabled = false;
+                bp.ActivationType = AbilityActivationType.WithUnitCommand;
+                bp.m_ActivateWithUnitCommand = UnitCommand.CommandType.Standard;
+                bp.DeactivateIfCombatEnded = false;
+            });
+            var OracleRevelationWoodArmorDC = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationWoodArmorDC", bp => {
+                bp.SetName("Coat of Many Stars");
+                bp.SetDescription("");
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { OracleRevelationWoodArmorDCAbility.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+            var OracleRevelationWoodArmorDR = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationWoodArmorDR", bp => {
+                bp.SetName("Coat of Many Stars");
+                bp.SetDescription("");
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { OracleRevelationWoodArmorDRAbility.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.HideInUI = true;
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+            var OracleRevelationWoodArmorFeature = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationWoodArmorFeature", bp => {
+                bp.SetName("Wood Armor");
+                bp.SetDescription("You can conjure wooden armor around yourself, which grants you a +4 armor bonus. At 7th level, and every four levels thereafter, " +
+                    "this bonus increases by +2. At 13th level, this armor grants you DR 5/slashing. You can use this armor for 1 hour per day per oracle level. This " +
+                    "duration does not need to be consecutive, but it must be spent in 1-hour increments.");
+                bp.m_Icon = OracleRevelationWoodArmorIcon;
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_AdditionalClasses = new BlueprintCharacterClassReference[] {
+                        InquisitorClass.ToReference<BlueprintCharacterClassReference>()
+                    };
+                    c.m_Archetypes = new BlueprintArchetypeReference[] {
+                        RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>()
+                    };
+                    c.Level = 13;
+                    c.m_Feature = OracleRevelationWoodArmorDC.ToReference<BlueprintFeatureReference>();
+                    c.BeforeThisLevel = true;
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_AdditionalClasses = new BlueprintCharacterClassReference[] {
+                        InquisitorClass.ToReference<BlueprintCharacterClassReference>()
+                    };
+                    c.m_Archetypes = new BlueprintArchetypeReference[] {
+                        RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>()
+                    }; c.Level = 13;
+                    c.m_Feature = OracleRevelationWoodArmorDR.ToReference<BlueprintFeatureReference>();
+                    c.BeforeThisLevel = false;
+                });
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = OracleRevelationWoodArmorResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.AddComponent<PrerequisiteFeaturesFromList>(c => {
+                    c.m_Features = new BlueprintFeatureReference[] {
+                        OracleWoodMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        EnlightnedPhilosopherWoodMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        DivineHerbalistWoodMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        OceansEchoWoodMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        RavenerHunterWoodMysteryProgression.ToReference<BlueprintFeatureReference>()
+                    };
+                    c.Amount = 1;
+                });
+                bp.Groups = new FeatureGroup[] { FeatureGroup.OracleRevelation };
+                bp.IsClassFeature = true;
+            });
+            //WoodBond
+            var OracleRevelationWoodBondFeature = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationWoodBondFeature", bp => {
+                bp.SetName("Wood Bond");
+                bp.SetDescription("Your mystical bond with wood is such that your weapons become an extension of your body. You gain a +1 competence bonus on attack rolls when " +
+                    "wielding a weapon made of or mostly consisting of wood (such as a bow, club, quarterstaff, or spear). This bonus increases by +1 at 5th level and every five " +
+                    "levels thereafter.");
+                bp.m_Icon = SenseVitals.m_Icon;
+                bp.Ranks = 1;
+                bp.IsClassFeature = true;
+                bp.AddComponent<WeaponMultipleCategoriesContextAttackBonus>(c => {                    
+                    c.Descriptor = ModifierDescriptor.Circumstance;
+                    c.Categories = new WeaponCategory[] { 
+                        WeaponCategory.Greatclub | 
+                        WeaponCategory.Club | 
+                        WeaponCategory.Javelin | 
+                        WeaponCategory.Kama | 
+                        WeaponCategory.Longbow | 
+                        WeaponCategory.Longspear | 
+                        WeaponCategory.Nunchaku | 
+                        WeaponCategory.Quarterstaff | 
+                        WeaponCategory.Shortbow | 
+                        WeaponCategory.Shortspear | 
+                        WeaponCategory.SlingStaff | 
+                        WeaponCategory.Spear | 
+                        WeaponCategory.Trident |
+                        WeaponCategory.LightCrossbow |
+                        WeaponCategory.HeavyCrossbow
+                    };
+                    c.Value = new ContextValue() {
+                        ValueType = ContextValueType.Rank,
+                        ValueRank = AbilityRankType.Default
+                    };
+                    c.ExceptForCategories = false;
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.SummClassLevelWithArchetype;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.OnePlusDivStep;
+                    c.m_StartLevel = 0;
+                    c.m_StepLevel = 5;
+                    c.m_Class = new BlueprintCharacterClassReference[] { 
+                        OracleClass.ToReference<BlueprintCharacterClassReference>(),
+                        InquisitorClass.ToReference<BlueprintCharacterClassReference>(),
+                    };
+                    c.Archetype = RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>();
+                });
+            });
+            //TreeForm
 
 
+            //WoddenWeaponEnchant
 
-
-
+            //ThornBurst
 
 
 
@@ -431,8 +749,8 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.Group = FeatureGroup.None;
                 bp.Groups = new FeatureGroup[0];
                 bp.IsClassFeature = true;
-                bp.AddFeatures(OracleRevelationAwesomeDisplay, OracleRevelationCoatOfManyStarsFeature, OracleRevelationGuidingStarFeature, OracleRevelationInterstallarVoidFeature, 
-                    OracleRevelationLureOfTheWoodFeature, OracleRevelationSprayOfShootingStarsFeature);
+                bp.AddFeatures(OracleRevelationWoodArmorFeature, OracleRevelationWoodBondFeature, OracleRevelationGuidingStarFeature, OracleRevelationInterstallarVoidFeature, 
+                   OracleRevelationLureOfTheWoodFeature, OracleRevelationSprayOfShootingStarsFeature);
             });
             RavenerHunterWoodMysteryProgression.LevelEntries = new LevelEntry[] {
                  Helpers.LevelEntry(1, RavenerHunterWoodRevelationSelection),

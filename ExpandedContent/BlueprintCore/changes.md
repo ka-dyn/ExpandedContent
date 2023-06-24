@@ -1,5 +1,138 @@
 ﻿# Changelog
 
+## v2.8.0 Release
+
+* Updated for 2.1 patch
+
+### Breaking Changes
+
+* Many components changed
+* BuffCollectionConfigurator is no longer present
+    * BuffCollection (the blueprint) is no longer used in Wrath
+* `AbilityEffectRunActionOnClickedTarget` is no longer available
+    * Use `AbilityEffectRunAction`, `AbilityEffectRunActionOnClickedPoint`, or `AdditionalAbilityEffectRunActionOnClickedTarget`
+
+## v2.7.8 Release
+
+* Added `AddToLevelEntry` to ProgressionConfigurator to simplify adding new features to an existing progression
+
+## v2.7.7 Release
+
+* FeatureSelectionConfigurator is at feature parity w/ FeatureConfigurator for populating feature groups
+
+## v2.7.6 Release
+
+* New custom FeatureSelectionConfigurator for easily setting feature groups
+* FeatureConfigurator is more aggressive about setting `IsClassFeature` to `true`
+
+### Breaking Changes
+
+* Custom FeatureSelectionConfigurator requires updating imports
+
+## v2.7.5 Release
+
+* AbilityConfigurator has an override for `SetLocalizedSavingThrow` for common saving throw strings
+
+## v2.7.4 Release
+
+* Prevents mod conflict which can prevent modded spells from being learnable during level up
+
+### Breaking changes
+
+* SpellListConfigurator namespace has changed (it is now a custom configurator), so imports require updating
+
+## v2.7.3 Release
+
+* Removes `m_DescriptionModifiersCache` from feature configuration
+* Fixes a bug which breaks some feature descriptions when you modify them with configurators
+
+### Breaking changes
+
+* You can no longer modify `m_DescriptionModifiersCache` with configurators. This field is populated automatically at runtime, if you want to change it add components inheriting from `DescriptionModifier`
+
+## v2.7.2 Release
+
+* Update with latest patch data
+
+## v2.7.1 Release
+
+* Delayed configuration now sets sane defaults immediately
+    * This fixes a conflict w/ WorldCrawl
+
+## v2.7.0 Release
+
+* Update with latest patch data
+* New `AssetExtensions` class for Unity extension methods (stolen shamelessly from Bubbles)
+    * Includes new class `SnapToTransformWithRotation` and accompanying extensions, `AnchorTo()` and `AnchorToUnit()` for anchoring Unity objects to follow other objects
+* Added `SetLocalizedDuration` utility to `AbilityConfigurator` for easy reference of standard duration strings
+* Adding a spell to a mod spell list will no longer cause an NPE if the mod is not present
+    * An error is still logged in BPCore using the Verbose channel
+* Fixed a bug causing validation to always fail for some components
+
+## v2.6.2 Release
+
+* Fixes NPE with DealDamagePreRolled action
+
+## v2.6.1 Release
+
+* Updated to latest game patch (2.0.4k)
+* New `AddAll` methods for `ActionsBuilder` and `ConditionsBuilder` support copying existing `ActionLists` and `ConditionsCheckers`
+* Implicit operators support passing in `ActionList` for `ActionsBuilder` and `ConditionsChecker` for `ConditionsBuilder`
+
+## v2.6.0 Release
+
+* New `AbilityConfigurator` util methods for creating spells
+    * Use `AbilityConfigurator.NewSpell()` instead of `AbilityConfigurator.New()` and read its docs
+* Added support for dynamically replacing game assets
+    * See `AssetTool.RegisterDynamicPrefabLink()` for details
+    * Use this when you want a modified version of an existing asset
+* New `ContextDice` and `DamageTypes` utils for creating `ContextDiceValue` and `DamageTypeDescription`, respectively
+* Added links to some mods made using BPCore for examples
+
+### Breaking Changes
+
+* If you are using ILStrip there is a new patch, add the following entry point:
+    * `BlueprintCore.Utils.Assets.AssetTool/AssetBundle_Patch`
+
+## v2.5.1 Release
+
+* Update for 2.0.2c game version
+
+## v2.5.0 Release
+
+* New Type Utils
+    * `CueSelections` - For creating `CueSelection`
+    * `CharacterSelections` - For creating `CharacterSelection`
+    * `DialogSpeakers` - For creating `DialogSpeaker`
+* New Empty Constants for working with Answers, Cues, and Dialogs
+* Add option to skip selection processing in `FeatureConfigurator`: `SkipAddToSelections`
+* Teamwork feats are automatically added to Lich Skeletal Companion's feat selection
+
+## v2.4.1 Release
+
+* Fix bug causing `CopyFrom()` to ignore all components when using a predicate
+* A single delayed configurator failure no longer prevents other delayed configurators from being processed
+* Prevent NPE when calling `SetIcon(null)`
+    * You shouldn't do this but sometimes it's convenient for methods to call `SetIcon()` on arbitrary input
+
+##  v2.4.0 Release
+
+* Added blueprint copying methods: `CopyFrom()`
+    * These are shallow copies that copy all fields
+    * Components are only copied if specified, either by type or using a predicate
+
+## v2.3.3 Release
+
+* Fixes a bug preventin archetypes from working properly in ContextRankConfigs
+
+## v2.3.2 Release
+
+* Prevents features from being added to Feature Selection lists they're already on
+
+## v2.3.1 Release
+
+* Updated for EE
+
 ## v2.3.0 Release
 
 * Added more support for `FeatureGroup.TeamworkFeat` so it can be configured for sharing features. Note that you need to use the method `AddAsTeamworkFeat()` since configuring for some class features requires GUIDs used to generate additional blueprints.
