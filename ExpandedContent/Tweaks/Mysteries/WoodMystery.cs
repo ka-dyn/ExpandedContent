@@ -744,6 +744,9 @@ namespace ExpandedContent.Tweaks.Mysteries {
             });
             OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationWoodBondFeature.ToReference<BlueprintFeatureReference>());
             //TreeForm
+            var PlantShapeIIcon = AssetLoader.LoadInternal("Skills", "Icon_PlantShapeI.jpg");
+            var PlantShapeIIIcon = AssetLoader.LoadInternal("Skills", "Icon_PlantShapeII.jpg");
+            var PlantShapeIIIIcon = AssetLoader.LoadInternal("Skills", "Icon_PlantShapeIII.jpg");
             var OracleRevelationTreeFormResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("OracleRevelationTreeFormResource", bp => {
                 bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
                     BaseValue = 1,
@@ -842,7 +845,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     c.AOEType = CraftAOE.None;
                     c.SpellType = CraftSpellType.Buff;
                 });
-                bp.m_Icon = TreeFormIIcon;
+                bp.m_Icon = PlantShapeIIcon;
                 bp.Type = AbilityType.Spell;
                 bp.Range = AbilityRange.Personal;
                 bp.CanTargetPoint = false;
@@ -942,7 +945,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     c.AOEType = CraftAOE.None;
                     c.SpellType = CraftSpellType.Buff;
                 });
-                bp.m_Icon = TreeFormIIIcon;
+                bp.m_Icon = PlantShapeIIIcon;
                 bp.Type = AbilityType.Spell;
                 bp.Range = AbilityRange.Personal;
                 bp.CanTargetPoint = false;
@@ -1036,7 +1039,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     c.AOEType = CraftAOE.None;
                     c.SpellType = CraftSpellType.Buff;
                 });
-                bp.m_Icon = TreeFormIIIIcon;
+                bp.m_Icon = PlantShapeIIIIcon;
                 bp.Type = AbilityType.Spell;
                 bp.Range = AbilityRange.Personal;
                 bp.CanTargetPoint = false;
@@ -1130,7 +1133,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     c.AOEType = CraftAOE.None;
                     c.SpellType = CraftSpellType.Buff;
                 });
-                bp.m_Icon = TreeFormIIIIcon;
+                bp.m_Icon = PlantShapeIIIIcon;
                 bp.Type = AbilityType.Spell;
                 bp.Range = AbilityRange.Personal;
                 bp.CanTargetPoint = false;
@@ -1170,7 +1173,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     c.AOEType = CraftAOE.None;
                     c.SpellType = CraftSpellType.Buff;
                 });
-                bp.m_Icon = TreeFormIIIIcon;
+                bp.m_Icon = PlantShapeIIIIcon;
                 bp.Type = AbilityType.Spell;
                 bp.Range = AbilityRange.Personal;
                 bp.CanTargetPoint = false;
@@ -1192,7 +1195,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.SetName("Tree Form");
                 bp.SetDescription("");
                 bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[] { OracleRevelationTreeFormAbility1.ToReference<BlueprintUnitFactReference>() };
+                    c.m_Facts = new BlueprintUnitFactReference[] { TreeFormIAbility.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.HideInUI = true;
                 bp.m_AllowNonContextActions = false;
@@ -1202,7 +1205,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.SetName("Tree Form");
                 bp.SetDescription("");
                 bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[] { OracleRevelationTreeFormAbility2.ToReference<BlueprintUnitFactReference>() };
+                    c.m_Facts = new BlueprintUnitFactReference[] { TreeFormIIAbility.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.HideInUI = true;
                 bp.m_AllowNonContextActions = false;
@@ -1212,7 +1215,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.SetName("Tree Form");
                 bp.SetDescription("");
                 bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[] { OracleRevelationTreeFormAbility3.ToReference<BlueprintUnitFactReference>() };
+                    c.m_Facts = new BlueprintUnitFactReference[] { TreeFormIIIAbility.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.HideInUI = true;
                 bp.m_AllowNonContextActions = false;
@@ -1223,7 +1226,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.SetDescription("You can assume the form of a mandragora, as plant shape I. At 10th level, you can assume the form of a large shambling mound, as plant shape II. " +
                     "At 12th level, you can assume the form of a Huge Treant or a Huge Giant Flytrap, as plant shape III. You can use this ability once per day, but the duration is 1 " +
                     "hour/level. You must be at least 8th level to select this revelation.");
-                bp.m_Icon = SenseVdddddditals.m_Icon;
+                bp.m_Icon = PlantShapeIIIIcon;
                 bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
                     new BlueprintProgression.ClassWithLevel {
                         m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>(),
