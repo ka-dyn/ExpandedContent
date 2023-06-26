@@ -1576,6 +1576,9 @@
     <Content Include="Assets\Skills\Icon_OracleSuccorMystery.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Skills\Icon_OracleWoodMystery.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Skills\Icon_ParticulateForm.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -1768,6 +1771,9 @@
     <Content Include="Assets\Skills\Icon_SwiftAidAnotherOffence.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Skills\Icon_ThornBurst.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Skills\Icon_TouchCorrupt.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -1793,6 +1799,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_WallOfFire.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_WoodenWeaponEnchant.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_WyrmSaga.jpg">

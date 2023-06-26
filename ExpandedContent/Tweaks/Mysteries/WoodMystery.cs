@@ -56,6 +56,8 @@ namespace ExpandedContent.Tweaks.Mysteries {
             var RavenerHunterArchetype = Resources.GetModBlueprint<BlueprintArchetype>("RavenerHunterArchetype");
             var PlantType = Resources.GetBlueprint<BlueprintFeature>("706e61781d692a042b35941f14bc41c5");
             var WoodMysteryIcon = AssetLoader.LoadInternal("Skills", "Icon_OracleWoodMystery.png");
+            var ThornBurstIcon = AssetLoader.LoadInternal("Skills", "Icon_ThornBurst.jpg"); //May change this as it looks rubbish
+            var WoodenWeaponEnchantIcon = AssetLoader.LoadInternal("Skills", "Icon_WoodenWeaponEnchant.jpg"); //May change this as it looks rubbish
 
 
             //Spelllist
@@ -689,7 +691,6 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.SetDescription("Your mystical bond with wood is such that your weapons become an extension of your body. You gain a +1 competence bonus on attack rolls when " +
                     "wielding a weapon made of or mostly consisting of wood (such as a bow, club, quarterstaff, or spear). This bonus increases by +1 at 5th level and every five " +
                     "levels thereafter.");
-                bp.m_Icon = SenseVitals.m_Icon;
                 bp.AddComponent<WeaponMultipleCategoriesContextAttackBonus>(c => {                    
                     c.Descriptor = ModifierDescriptor.Circumstance;
                     c.Categories = new WeaponCategory[] { 
@@ -1333,7 +1334,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.SetDescription("You can imbue held weapons made mostly of wood, while enchanted the weapon is considered masterwork. At 7th level, 15th level, and 19th level, the weapon " +
                     "gains a +1 enhancement bonus. At 11th level, the weapon gains the keen weapon property (or the equivalent increase to its critical threat range, if it is a bludgeoning weapon). " +
                     "This effect lasts a number of minutes equal to your oracle level. You can use this ability a number of times per day equal to 3 + your Charisma modifier.");
-                bp.m_Icon = MantisAspectIcon;
+                bp.m_Icon = WoodenWeaponEnchantIcon;
                 bp.AddComponent<BuffEnchantWornItem>(c => {
                     c.m_EnchantmentBlueprint = MasterWork.ToReference<BlueprintItemEnchantmentReference>();
                     c.Slot = EquipSlotBase.SlotType.PrimaryHand;
@@ -1344,7 +1345,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.SetDescription("You can imbue held weapons made mostly of wood, while enchanted the weapon is considered masterwork. At 7th level, 15th level, and 19th level, the weapon " +
                     "gains a +1 enhancement bonus. At 11th level, the weapon gains the keen weapon property (or the equivalent increase to its critical threat range, if it is a bludgeoning weapon). " +
                     "This effect lasts a number of minutes equal to your oracle level. You can use this ability a number of times per day equal to 3 + your Charisma modifier.");
-                bp.m_Icon = MantisAspectIcon;
+                bp.m_Icon = WoodenWeaponEnchantIcon;
                 bp.AddComponent<BuffEnchantWornItem>(c => {
                     c.m_EnchantmentBlueprint = MasterWork.ToReference<BlueprintItemEnchantmentReference>();
                     c.Slot = EquipSlotBase.SlotType.SecondaryHand;
@@ -1355,21 +1356,21 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.SetDescription("You can imbue held weapons made mostly of wood, while enchanted the weapon is considered masterwork. At 7th level, 15th level, and 19th level, the weapon " +
                     "gains a +1 enhancement bonus. At 11th level, the weapon gains the keen weapon property (or the equivalent increase to its critical threat range, if it is a bludgeoning weapon). " +
                     "This effect lasts a number of minutes equal to your oracle level. You can use this ability a number of times per day equal to 3 + your Charisma modifier.");
-                bp.m_Icon = MantisAspectIcon;
+                bp.m_Icon = WoodenWeaponEnchantIcon;
             });
             var OracleRevelationWoodenWeaponEnchantBuff7OffHand = Helpers.CreateBuff("OracleRevelationWoodenWeaponEnchantBuff7OffHand", bp => {
                 bp.SetName("Wooden Weapon Enchant (Off Hand)");
                 bp.SetDescription("You can imbue held weapons made mostly of wood, while enchanted the weapon is considered masterwork. At 7th level, 15th level, and 19th level, the weapon " +
                     "gains a +1 enhancement bonus. At 11th level, the weapon gains the keen weapon property (or the equivalent increase to its critical threat range, if it is a bludgeoning weapon). " +
                     "This effect lasts a number of minutes equal to your oracle level. You can use this ability a number of times per day equal to 3 + your Charisma modifier.");
-                bp.m_Icon = MantisAspectIcon;
+                bp.m_Icon = WoodenWeaponEnchantIcon;
             });
             var OracleRevelationWoodenWeaponEnchantBuff11Main = Helpers.CreateBuff("OracleRevelationWoodenWeaponEnchantBuff11Main", bp => {
                 bp.SetName("Wooden Weapon Enchant (Main Hand)");
                 bp.SetDescription("You can imbue held weapons made mostly of wood, while enchanted the weapon is considered masterwork. At 7th level, 15th level, and 19th level, the weapon " +
                     "gains a +1 enhancement bonus. At 11th level, the weapon gains the keen weapon property (or the equivalent increase to its critical threat range, if it is a bludgeoning weapon). " +
                     "This effect lasts a number of minutes equal to your oracle level. You can use this ability a number of times per day equal to 3 + your Charisma modifier.");
-                bp.m_Icon = MantisAspectIcon;
+                bp.m_Icon = WoodenWeaponEnchantIcon;
                 bp.AddComponent<BuffEnchantWornItem>(c => {
                     c.m_EnchantmentBlueprint = Keen.ToReference<BlueprintItemEnchantmentReference>();
                     c.Slot = EquipSlotBase.SlotType.PrimaryHand;
@@ -1380,7 +1381,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.SetDescription("You can imbue held weapons made mostly of wood, while enchanted the weapon is considered masterwork. At 7th level, 15th level, and 19th level, the weapon " +
                     "gains a +1 enhancement bonus. At 11th level, the weapon gains the keen weapon property (or the equivalent increase to its critical threat range, if it is a bludgeoning weapon). " +
                     "This effect lasts a number of minutes equal to your oracle level. You can use this ability a number of times per day equal to 3 + your Charisma modifier.");
-                bp.m_Icon = MantisAspectIcon;
+                bp.m_Icon = WoodenWeaponEnchantIcon;
                 bp.AddComponent<BuffEnchantWornItem>(c => {
                     c.m_EnchantmentBlueprint = Keen.ToReference<BlueprintItemEnchantmentReference>();
                     c.Slot = EquipSlotBase.SlotType.SecondaryHand;
@@ -1391,7 +1392,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.SetDescription("You can imbue held weapons made mostly of wood, while enchanted the weapon is considered masterwork. At 7th level, 15th level, and 19th level, the weapon " +
                     "gains a +1 enhancement bonus. At 11th level, the weapon gains the keen weapon property (or the equivalent increase to its critical threat range, if it is a bludgeoning weapon). " +
                     "This effect lasts a number of minutes equal to your oracle level. You can use this ability a number of times per day equal to 3 + your Charisma modifier.");
-                bp.m_Icon = MantisAspectIcon;
+                bp.m_Icon = WoodenWeaponEnchantIcon;
                 bp.AddComponent<BuffEnchantWornItem>(c => {
                     c.m_EnchantmentBlueprint = Keen.ToReference<BlueprintItemEnchantmentReference>();
                     c.Slot = EquipSlotBase.SlotType.PrimaryHand;
@@ -1402,7 +1403,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.SetDescription("You can imbue held weapons made mostly of wood, while enchanted the weapon is considered masterwork. At 7th level, 15th level, and 19th level, the weapon " +
                     "gains a +1 enhancement bonus. At 11th level, the weapon gains the keen weapon property (or the equivalent increase to its critical threat range, if it is a bludgeoning weapon). " +
                     "This effect lasts a number of minutes equal to your oracle level. You can use this ability a number of times per day equal to 3 + your Charisma modifier.");
-                bp.m_Icon = MantisAspectIcon;
+                bp.m_Icon = WoodenWeaponEnchantIcon;
                 bp.AddComponent<BuffEnchantWornItem>(c => {
                     c.m_EnchantmentBlueprint = Keen.ToReference<BlueprintItemEnchantmentReference>();
                     c.Slot = EquipSlotBase.SlotType.SecondaryHand;
@@ -1413,7 +1414,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.SetDescription("You can imbue held weapons made mostly of wood, while enchanted the weapon is considered masterwork. At 7th level, 15th level, and 19th level, the weapon " +
                     "gains a +1 enhancement bonus. At 11th level, the weapon gains the keen weapon property (or the equivalent increase to its critical threat range, if it is a bludgeoning weapon). " +
                     "This effect lasts a number of minutes equal to your oracle level. You can use this ability a number of times per day equal to 3 + your Charisma modifier.");
-                bp.m_Icon = MantisAspectIcon;
+                bp.m_Icon = WoodenWeaponEnchantIcon;
                 bp.AddComponent<BuffEnchantWornItem>(c => {
                     c.m_EnchantmentBlueprint = Keen.ToReference<BlueprintItemEnchantmentReference>();
                     c.Slot = EquipSlotBase.SlotType.PrimaryHand;
@@ -1424,7 +1425,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.SetDescription("You can imbue held weapons made mostly of wood, while enchanted the weapon is considered masterwork. At 7th level, 15th level, and 19th level, the weapon " +
                     "gains a +1 enhancement bonus. At 11th level, the weapon gains the keen weapon property (or the equivalent increase to its critical threat range, if it is a bludgeoning weapon). " +
                     "This effect lasts a number of minutes equal to your oracle level. You can use this ability a number of times per day equal to 3 + your Charisma modifier.");
-                bp.m_Icon = MantisAspectIcon;
+                bp.m_Icon = WoodenWeaponEnchantIcon;
                 bp.AddComponent<BuffEnchantWornItem>(c => {
                     c.m_EnchantmentBlueprint = Keen.ToReference<BlueprintItemEnchantmentReference>();
                     c.Slot = EquipSlotBase.SlotType.SecondaryHand;
@@ -1436,7 +1437,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.SetDescription("You can imbue held weapons made mostly of wood, while enchanted the weapon is considered masterwork. At 7th level, 15th level, and 19th level, the weapon " +
                     "gains a +1 enhancement bonus. At 11th level, the weapon gains the keen weapon property (or the equivalent increase to its critical threat range, if it is a bludgeoning weapon). " +
                     "This effect lasts a number of minutes equal to your oracle level. You can use this ability a number of times per day equal to 3 + your Charisma modifier.");
-                bp.m_Icon = MantisAspectIcon;
+                bp.m_Icon = WoodenWeaponEnchantIcon;
                 bp.AddComponent<AbilityCasterMainWeaponCheck>(c => {
                     c.Category = new WeaponCategory[] {
                         WeaponCategory.Greatclub |
@@ -1664,7 +1665,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.SetDescription("You can imbue held weapons made mostly of wood, while enchanted the weapon is considered masterwork. At 7th level, 15th level, and 19th level, the weapon " +
                     "gains a +1 enhancement bonus. At 11th level, the weapon gains the keen weapon property (or the equivalent increase to its critical threat range, if it is a bludgeoning weapon). " +
                     "This effect lasts a number of minutes equal to your oracle level. You can use this ability a number of times per day equal to 3 + your Charisma modifier.");
-                bp.m_Icon = MantisAspectIcon;
+                bp.m_Icon = WoodenWeaponEnchantIcon;
                 bp.AddComponent<AbilityCasterOffHandWeaponCheck>(c => {
                     c.Category = new WeaponCategory[] {
                         WeaponCategory.Greatclub |
@@ -1892,7 +1893,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.SetDescription("You can imbue held weapons made mostly of wood, while enchanted the weapon is considered masterwork. At 7th level, 15th level, and 19th level, the weapon " +
                     "gains a +1 enhancement bonus. At 11th level, the weapon gains the keen weapon property (or the equivalent increase to its critical threat range, if it is a bludgeoning weapon). " +
                     "This effect lasts a number of minutes equal to your oracle level. You can use this ability a number of times per day equal to 3 + your Charisma modifier.");
-                bp.m_Icon = MantisAspectIcon;
+                bp.m_Icon = WoodenWeaponEnchantIcon;
                 bp.AddComponent<AbilityVariants>(c => {
                     c.m_Variants = new BlueprintAbilityReference[] {
                         OracleRevelationWoodenWeaponEnchantAbilityMainHand.ToReference<BlueprintAbilityReference>(),
@@ -1921,7 +1922,6 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.SetDescription("You can imbue held weapons made mostly of wood, while enchanted the weapons are considered masterwork. At 7th level, 15th level, and 19th level, the weapon " +
                     "gains a +1 enhancement bonus. At 11th level, the weapon gains the keen weapon property (or the equivalent increase to its critical threat range, if it is a bludgeoning weapon). " +
                     "This effect lasts a number of minutes equal to your oracle level. You can use this ability a number of times per day equal to 3 + your Charisma modifier.");
-                bp.m_Icon = EdictOfImpenetrableFortress.Icon;
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] { OracleRevelationWoodenWeaponEnchantAbility.ToReference<BlueprintUnitFactReference>() };
                 });
@@ -2138,7 +2138,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     c.OrientationAnchor = AbilitySpawnFxAnchor.None;
                     c.OrientationMode = AbilitySpawnFxOrientation.Copy;
                 });
-                bp.m_Icon = TreeFormIIIIcon;
+                bp.m_Icon = ThornBurstIcon;
                 bp.Type = AbilityType.Spell;
                 bp.Range = AbilityRange.Personal;
                 bp.CanTargetPoint = false;
@@ -2160,7 +2160,6 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     "deal {g|Encyclopedia:Dice}1d6{/g} points of {g|Encyclopedia:Damage_Type}piercing damage{/g} per two oracle levels (minimum 1d6) to all creatures within a 10-foot burst. " +
                     "A {g|Encyclopedia:Saving_Throw}Reflex save{/g} halves this {g|Encyclopedia:Damage}damage{/g}. You can use this ability once per day, plus one additional time per day at " +
                     "5th level and every five levels thereafter.");
-                bp.m_Icon = EdictOfImpenetrableFortress.Icon;
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] { OracleRevelationThornBurstAbility.ToReference<BlueprintUnitFactReference>() };
                 });
