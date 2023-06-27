@@ -619,18 +619,21 @@ namespace ExpandedContent.Tweaks.Spells {
             PlantShapeIIITreantAbility.m_Parent = PlantShapeIIIAbility.ToReference<BlueprintAbilityReference>();
             PlantShapeIIIGiantFlytrapAbility.m_Parent = PlantShapeIIIAbility.ToReference<BlueprintAbilityReference>();
 
-            var PlantShapeIScroll = ItemTools.CreateScroll("ScrollOfPlantShapeI", Icon_ScrollOfPlantShapeI, PlantShapeIAbility, 5, 9);
-            VenderTools.AddScrollToLeveledVenders(PlantShapeIScroll);
+
+
+            //I'll add the scrolls when I have time for more art
+            //var PlantShapeIScroll = ItemTools.CreateScroll("ScrollOfPlantShapeI", Icon_ScrollOfPlantShapeI, PlantShapeIAbility, 5, 9);
+            //VenderTools.AddScrollToLeveledVenders(PlantShapeIScroll);
             PlantShapeIAbility.AddToSpellList(SpellTools.SpellList.AlchemistSpellList, 5);
             PlantShapeIAbility.AddToSpellList(SpellTools.SpellList.WizardSpellList, 5);
 
-            var PlantShapeIIScroll = ItemTools.CreateScroll("ScrollOfPlantShapeII", Icon_ScrollOfPlantShapeII, PlantShapeIIAbility, 6, 11);
-            VenderTools.AddScrollToLeveledVenders(PlantShapeIIScroll);
+            //var PlantShapeIIScroll = ItemTools.CreateScroll("ScrollOfPlantShapeII", Icon_ScrollOfPlantShapeII, PlantShapeIIAbility, 6, 11);
+            //VenderTools.AddScrollToLeveledVenders(PlantShapeIIScroll);
             PlantShapeIIAbility.AddToSpellList(SpellTools.SpellList.AlchemistSpellList, 6);
             PlantShapeIIAbility.AddToSpellList(SpellTools.SpellList.WizardSpellList, 6);
 
-            var PlantShapeIIIScroll = ItemTools.CreateScroll("ScrollOfPlantShapeIII", Icon_ScrollOfPlantShapeIII, PlantShapeIIIAbility, 7, 13);
-            VenderTools.AddScrollToLeveledVenders(PlantShapeIIIScroll);
+            //var PlantShapeIIIScroll = ItemTools.CreateScroll("ScrollOfPlantShapeIII", Icon_ScrollOfPlantShapeIII, PlantShapeIIIAbility, 7, 13);
+            //VenderTools.AddScrollToLeveledVenders(PlantShapeIIIScroll);
             PlantShapeIIIAbility.AddToSpellList(SpellTools.SpellList.WizardSpellList, 7);
         }
     }

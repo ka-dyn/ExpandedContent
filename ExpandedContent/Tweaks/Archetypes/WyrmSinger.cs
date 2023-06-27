@@ -47,6 +47,7 @@ using Kingmaker.RuleSystem.Rules;
 using Kingmaker.UnitLogic.Abilities.Components.CasterCheckers;
 using Kingmaker.Settings;
 using Kingmaker.ResourceLinks;
+using Kingmaker.View;
 
 namespace ExpandedContent.Tweaks.Archetypes {
     internal class WyrmSinger {
@@ -1409,9 +1410,9 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     "a +2 bonus on melee attack and damage rolls and a +2 bonus on saving throws against paralysis and sleep effects (but they still take a –1 penalty to their AC), rather than " +
                     "inspired rage’s normal bonuses. At 4th level and every 4 skald levels thereafter, the song’s bonuses on saves against paralysis and sleep effects increase by 1. At 8th and 16th levels, " +
                     "the song’s bonus on melee attack and damage rolls increases by 1.");
-                bp.m_Icon = BloodragerBloodlineSelection.Icon;
-                bp.AddComponents(InspiredRageAddFactContextActions);
+                bp.m_Icon = BloodragerBloodlineSelection.Icon;                
                 bp.AddComponent(InspiredRageAddFactsFromCaster);
+                bp.AddComponents(InspiredRageAddFactContextActions);
                 bp.AddComponent<WeaponAttackTypeDamageBonus>(c => {
                     c.Type = WeaponRangeType.Melee;
                     c.AttackBonus = 1;
@@ -1716,6 +1717,53 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 });
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;                
+            });
+
+
+            var AllyRageAddFactContextActions = InspiredRageAllyToggleSwitchBuff.GetComponent<AddFactContextActions>();
+            AllyRageAddFactContextActions.Deactivated.Actions = AllyRageAddFactContextActions.Deactivated.Actions.AppendToArray(
+                new ContextActionRemoveBuff() { m_Buff = WyrmSingerDraconicRageEffectBuff.ToReference<BlueprintBuffReference>() }
+                );
+
+            var StanceBuffs = new BlueprintBuff[] {
+                Resources.GetBlueprint<BlueprintBuff>("fd0fb6aef4000a443bdc45363410e377"), //Guarded
+                Resources.GetBlueprint<BlueprintBuff>("16649b2e80602eb48bbeaad77f9f365f"), //Lethal
+                Resources.GetBlueprint<BlueprintBuff>("539e480bcfe6d6f48bdd90418240b50f"), //Powerful
+                Resources.GetBlueprint<BlueprintBuff>("539e480bcfe6d6f48bdd90418240b50f") //Reckless
+            };
+            foreach (var stance in StanceBuffs) {
+                var AddFactContextActions = stance.GetComponent<AddFactContextActions>();
+                AddFactContextActions.Activated.Actions.OfType<Conditional>().First().ConditionsChecker.Conditions =
+                    AddFactContextActions.Activated.Actions.OfType<Conditional>().First().ConditionsChecker.Conditions.AppendToArray(
+                        new ContextConditionHasFact() {
+                            Not = false,
+                            m_Fact = WyrmSingerDraconicRageEffectBuff.ToReference<BlueprintUnitFactReference>()
+                        }
+                        );
+            }
+            var ManglingFrenzy = Resources.GetBlueprint<BlueprintFeature>("29e2f51e6dd7427099b015de88718990");
+            var ManglingFrenzyBuff = Resources.GetBlueprint<BlueprintBuff>("1581c5ceea24418cadc9f26ce4d391a9");
+            ManglingFrenzy.AddComponent<BuffExtraEffects>(c => {
+                c.m_CheckedBuff = WyrmSingerDraconicRageEffectBuff.ToReference<BlueprintBuffReference>();
+                c.m_ExtraEffectBuff = WyrmSingerDraconicRageEffectBuff.ToReference<BlueprintBuffReference>();
+            });
+            var CloakOfBlood = Resources.GetBlueprint<BlueprintFeature>("9db109eee03524f4aa89881c4539a14d");
+            var CloakOfBloodBuff = Resources.GetBlueprint<BlueprintBuff>("4e850d3b0c68a6045abd10e386d07af5");
+            CloakOfBlood.AddComponent<BuffExtraEffects>(c => {
+                c.m_CheckedBuff = WyrmSingerDraconicRageEffectBuff.ToReference<BlueprintBuffReference>();
+                c.m_ExtraEffectBuff = CloakOfBloodBuff.ToReference<BlueprintBuffReference>();
+            });
+            var DemonicResentment = Resources.GetBlueprint<BlueprintFeature>("4a83b67d4f24bba4a8d881340185bff0");
+            var DemonicResentmentBuff = Resources.GetBlueprint<BlueprintBuff>("9984f9709f6d8e6428dfa5a52faeabc4");
+            DemonicResentment.AddComponent<BuffExtraEffects>(c => {
+                c.m_CheckedBuff = WyrmSingerDraconicRageEffectBuff.ToReference<BlueprintBuffReference>();
+                c.m_ExtraEffectBuff = DemonicResentmentBuff.ToReference<BlueprintBuffReference>();
+            });
+            var CallToViolence = Resources.GetBlueprint<BlueprintBuff>("421eec56d618765499c8b9e6f8e153a1");
+            var CallToViolenceBuff = Resources.GetBlueprint<BlueprintBuff>("6aae86b192b0d1e4da1dcf6936f97f98");
+            ManglingFrenzy.AddComponent<BuffExtraEffects>(c => {
+                c.m_CheckedBuff = WyrmSingerDraconicRageEffectBuff.ToReference<BlueprintBuffReference>();
+                c.m_ExtraEffectBuff = CallToViolenceBuff.ToReference<BlueprintBuffReference>();
             });
 
             var WyrmSingerWyrmSagaInAreaFlag = Helpers.CreateBuff("WyrmSingerWyrmSagaInAreaFlag", bp => {
