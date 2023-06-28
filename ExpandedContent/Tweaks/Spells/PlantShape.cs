@@ -42,14 +42,15 @@ namespace ExpandedContent.Tweaks.Spells {
             var PlantShapeIIcon = AssetLoader.LoadInternal("Skills", "Icon_PlantShapeI.jpg");
             var PlantShapeIIIcon = AssetLoader.LoadInternal("Skills", "Icon_PlantShapeII.jpg");
             var PlantShapeIIIIcon = AssetLoader.LoadInternal("Skills", "Icon_PlantShapeIII.jpg");
-            var Icon_ScrollOfPlantShapeI = AssetLoader.LoadInternal("Items", "Icon_ScrollOfPlantShapeI.png");
-            var Icon_ScrollOfPlantShapeII = AssetLoader.LoadInternal("Items", "Icon_ScrollOfPlantShapeII.png");
-            var Icon_ScrollOfPlantShapeIII = AssetLoader.LoadInternal("Items", "Icon_ScrollOfPlantShapeIII.png");
+            //var Icon_ScrollOfPlantShapeI = AssetLoader.LoadInternal("Items", "Icon_ScrollOfPlantShapeI.png");
+            //var Icon_ScrollOfPlantShapeII = AssetLoader.LoadInternal("Items", "Icon_ScrollOfPlantShapeII.png");
+            //var Icon_ScrollOfPlantShapeIII = AssetLoader.LoadInternal("Items", "Icon_ScrollOfPlantShapeIII.png");
             var Enhancement1 = Resources.GetBlueprint<BlueprintWeaponEnchantment>("d42fc23b92c640846ac137dc26e000d4");
             var Bite1d6 = Resources.GetBlueprint<BlueprintItemWeapon>("a000716f88c969c499a535dadcf09286");
             var BiteLarge1d8 = Resources.GetBlueprint<BlueprintItemWeapon>("ec35ef997ed5a984280e1a6d87ae80a8");
             var SlamLarge1d6 = Resources.GetBlueprint<BlueprintItemWeapon>("7fe0fa95a5c21ee439e6849b7e018a82");
             var SlamGargantuan2n6 = Resources.GetBlueprint<BlueprintItemWeapon>("27eee74857c42db499b3a6b20cfa6211");
+            SlamGargantuan2n6.m_DamageDice = new DiceFormula() { m_Dice = DiceType.D6, m_Rolls = 2 };
             var Slam1d4 = Resources.GetBlueprint<BlueprintItemWeapon>("7445b0b255796d34495a8bca81b2e2d4");
             var TurnBarkStandart = Resources.GetBlueprint<BlueprintAbility>("bd09b025ee2a82f46afab922c4decca9");
             var MandragoraPoisonFeature = Resources.GetBlueprint<BlueprintFeature>("ec44af8b3449c5b4889145dbfc246a00");
@@ -67,7 +68,7 @@ namespace ExpandedContent.Tweaks.Spells {
             var TreantBarks = Resources.GetBlueprint<BlueprintUnitAsksList>("bb9ffa4bd65336f4f99ebd3a234f90cf");
             var FlytrapBarks = Resources.GetBlueprint<BlueprintUnitAsksList>("6400a869e4026f242af0c3da506ecdd6");
 
-
+            var Mandragora = Resources.GetBlueprint<BlueprintUnit>("5186793686fa66240ac47624c6461865");
 
             var PlantShapeIBuff = Helpers.CreateBuff("PlantShapeIBuff", bp => {
                 bp.SetName("Plant Shape (Mandragora)");
@@ -75,8 +76,12 @@ namespace ExpandedContent.Tweaks.Spells {
                     "Your movement speed is increased by 10 feet. You also have one 1d6 bite attack, two 1d4 slams and poison ability.");
                 bp.m_Icon = PlantShapeIIcon;
                 bp.AddComponent<Polymorph>(c => {
-                    c.m_Prefab = new UnitViewLink() { AssetId = "ce880f58967fb4f4290586c57955883d" };
+                    c.m_Race = BeastShapeIBuffPolymorph.m_Race;
+                    c.m_Prefab = Mandragora.Prefab;
+                    c.m_PrefabFemale = BeastShapeIBuffPolymorph.m_PrefabFemale;
                     c.m_SpecialDollType = SpecialDollType.None;
+                    c.m_ReplaceUnitForInspection = BeastShapeIBuffPolymorph.m_ReplaceUnitForInspection;
+                    c.m_Portrait = BeastShapeIBuffPolymorph.m_Portrait;                    
                     c.m_KeepSlots = false;
                     c.Size = Size.Small;
                     c.UseSizeAsBaseForDamage = false;
@@ -87,9 +92,11 @@ namespace ExpandedContent.Tweaks.Spells {
                     c.AllowDamageTransfer = false;
                     c.m_MainHand = Bite1d6.ToReference<BlueprintItemWeaponReference>();
                     c.m_OffHand = Slam1d4.ToReference<BlueprintItemWeaponReference>();
+                    c.AllowDamageTransfer = false;
                     c.m_AdditionalLimbs = new BlueprintItemWeaponReference[] {                        
                         Slam1d4.ToReference<BlueprintItemWeaponReference>()
                     };
+                    c.m_SecondaryAdditionalLimbs = new BlueprintItemWeaponReference[0];
                     c.m_Facts = new BlueprintUnitFactReference[] {
                         TurnBarkStandart.ToReference<BlueprintUnitFactReference>(),
                         MandragoraPoisonFeature.ToReference<BlueprintUnitFactReference>()
@@ -121,7 +128,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 });
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = false;
-                bp.m_Flags = BlueprintBuff.Flags.IsFromSpell;
+                bp.m_Flags = 0;
                 bp.Stacking = StackingType.Replace;
             });
             var PlantShapeIIBuff = Helpers.CreateBuff("PlantShapeIIBuff", bp => {
@@ -140,8 +147,12 @@ namespace ExpandedContent.Tweaks.Spells {
                     "armor bonus. You also have two 2d6 slam attacks, damage reduction 10/slashing, vulnerability to fire and overrun ability.");
                 bp.m_Icon = PlantShapeIIIIcon;
                 bp.AddComponent<Polymorph>(c => {
+                    c.m_Race = BeastShapeIBuffPolymorph.m_Race;
                     c.m_Prefab = new UnitViewLink() { AssetId = "16f5bf5f4dc3c9e4dab4165b360a5e3d" };
+                    c.m_PrefabFemale = BeastShapeIBuffPolymorph.m_PrefabFemale;
                     c.m_SpecialDollType = SpecialDollType.None;
+                    c.m_ReplaceUnitForInspection = BeastShapeIBuffPolymorph.m_ReplaceUnitForInspection;
+                    c.m_Portrait = BeastShapeIBuffPolymorph.m_Portrait;
                     c.m_KeepSlots = false;
                     c.Size = Size.Huge;
                     c.UseSizeAsBaseForDamage = false;
@@ -153,6 +164,7 @@ namespace ExpandedContent.Tweaks.Spells {
                     c.m_MainHand = SlamGargantuan2n6.ToReference<BlueprintItemWeaponReference>();
                     c.m_OffHand = SlamGargantuan2n6.ToReference<BlueprintItemWeaponReference>();
                     c.m_AdditionalLimbs = new BlueprintItemWeaponReference[0];
+                    c.m_SecondaryAdditionalLimbs = new BlueprintItemWeaponReference[0];
                     c.m_Facts = new BlueprintUnitFactReference[] {
                         TurnBarkStandart.ToReference<BlueprintUnitFactReference>(),
                         DRSlashing10.ToReference<BlueprintUnitFactReference>(),
@@ -188,8 +200,12 @@ namespace ExpandedContent.Tweaks.Spells {
                     "armor bonus. You also have four 1d8 bite attacks, acid Resistance 20, immunity to trip and blindsight.");
                 bp.m_Icon = PlantShapeIIIIcon;
                 bp.AddComponent<Polymorph>(c => {
+                    c.m_Race = BeastShapeIBuffPolymorph.m_Race;
                     c.m_Prefab = new UnitViewLink() { AssetId = "c091d2aca0b6c3c45bbcc3d9a5394c7a" };
+                    c.m_PrefabFemale = BeastShapeIBuffPolymorph.m_PrefabFemale;
                     c.m_SpecialDollType = SpecialDollType.None;
+                    c.m_ReplaceUnitForInspection = BeastShapeIBuffPolymorph.m_ReplaceUnitForInspection;
+                    c.m_Portrait = BeastShapeIBuffPolymorph.m_Portrait;
                     c.m_KeepSlots = false;
                     c.Size = Size.Huge;
                     c.UseSizeAsBaseForDamage = false;
@@ -204,6 +220,7 @@ namespace ExpandedContent.Tweaks.Spells {
                         BiteLarge1d8.ToReference<BlueprintItemWeaponReference>(),
                         BiteLarge1d8.ToReference<BlueprintItemWeaponReference>()
                     };
+                    c.m_SecondaryAdditionalLimbs = new BlueprintItemWeaponReference[0];
                     c.m_Facts = new BlueprintUnitFactReference[] {
                         TurnBarkStandart.ToReference<BlueprintUnitFactReference>(),
                         DRSlashing10.ToReference<BlueprintUnitFactReference>(),

@@ -1719,28 +1719,43 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.IsClassFeature = true;                
             });
 
-
+            #region Rage Plugins
             var AllyRageAddFactContextActions = InspiredRageAllyToggleSwitchBuff.GetComponent<AddFactContextActions>();
             AllyRageAddFactContextActions.Deactivated.Actions = AllyRageAddFactContextActions.Deactivated.Actions.AppendToArray(
                 new ContextActionRemoveBuff() { m_Buff = WyrmSingerDraconicRageEffectBuff.ToReference<BlueprintBuffReference>() }
                 );
 
-            var StanceBuffs = new BlueprintBuff[] {
-                Resources.GetBlueprint<BlueprintBuff>("fd0fb6aef4000a443bdc45363410e377"), //Guarded
-                Resources.GetBlueprint<BlueprintBuff>("16649b2e80602eb48bbeaad77f9f365f"), //Lethal
-                Resources.GetBlueprint<BlueprintBuff>("539e480bcfe6d6f48bdd90418240b50f"), //Powerful
-                Resources.GetBlueprint<BlueprintBuff>("539e480bcfe6d6f48bdd90418240b50f") //Reckless
-            };
-            foreach (var stance in StanceBuffs) {
-                var AddFactContextActions = stance.GetComponent<AddFactContextActions>();
-                AddFactContextActions.Activated.Actions.OfType<Conditional>().First().ConditionsChecker.Conditions =
-                    AddFactContextActions.Activated.Actions.OfType<Conditional>().First().ConditionsChecker.Conditions.AppendToArray(
+            var LethalStanceSwitchBuff = Resources.GetBlueprint<BlueprintBuff>("16649b2e80602eb48bbeaad77f9f365f").GetComponent<AddFactContextActions>();
+            LethalStanceSwitchBuff.Activated.Actions.OfType<Conditional>().FirstOrDefault().ConditionsChecker.Conditions =
+                    LethalStanceSwitchBuff.Activated.Actions.OfType<Conditional>().FirstOrDefault().ConditionsChecker.Conditions.AppendToArray(
                         new ContextConditionHasFact() {
                             Not = false,
                             m_Fact = WyrmSingerDraconicRageEffectBuff.ToReference<BlueprintUnitFactReference>()
                         }
                         );
-            }
+            var GuardedStanceSwitchBuff = Resources.GetBlueprint<BlueprintBuff>("fd0fb6aef4000a443bdc45363410e377").GetComponent<AddFactContextActions>();
+            GuardedStanceSwitchBuff.Activated.Actions.OfType<Conditional>().FirstOrDefault().ConditionsChecker.Conditions =
+                    GuardedStanceSwitchBuff.Activated.Actions.OfType<Conditional>().FirstOrDefault().ConditionsChecker.Conditions.AppendToArray(
+                        new ContextConditionHasFact() {
+                            Not = false,
+                            m_Fact = WyrmSingerDraconicRageEffectBuff.ToReference<BlueprintUnitFactReference>()
+                        }
+                        );
+            var RecklessStanceSwitchBuff = Resources.GetBlueprint<BlueprintBuff>("c52e4fdad5df5d047b7ab077a9907937").GetComponent<AddFactContextActions>();
+            RecklessStanceSwitchBuff.Activated.Actions.OfType<Conditional>().FirstOrDefault().ConditionsChecker.Conditions =
+                    RecklessStanceSwitchBuff.Activated.Actions.OfType<Conditional>().FirstOrDefault().ConditionsChecker.Conditions.AppendToArray(
+                        new ContextConditionHasFact() {
+                            Not = false,
+                            m_Fact = WyrmSingerDraconicRageEffectBuff.ToReference<BlueprintUnitFactReference>()
+                        }
+                        );
+
+            var PowerfulStanceSwitchBuff = Resources.GetBlueprint<BlueprintBuff>("539e480bcfe6d6f48bdd90418240b50f");
+            var PowerfulStanceEffectBuff = Resources.GetBlueprint<BlueprintBuff>("aabad91034e5c7943986fe3e83bfc78e");
+            PowerfulStanceSwitchBuff.AddComponent<BuffExtraEffects>(c => {
+                c.m_CheckedBuff = WyrmSingerDraconicRageEffectBuff.ToReference<BlueprintBuffReference>();
+                c.m_ExtraEffectBuff = PowerfulStanceEffectBuff.ToReference<BlueprintBuffReference>();
+            });
             var ManglingFrenzy = Resources.GetBlueprint<BlueprintFeature>("29e2f51e6dd7427099b015de88718990");
             var ManglingFrenzyBuff = Resources.GetBlueprint<BlueprintBuff>("1581c5ceea24418cadc9f26ce4d391a9");
             ManglingFrenzy.AddComponent<BuffExtraEffects>(c => {
@@ -1765,6 +1780,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 c.m_CheckedBuff = WyrmSingerDraconicRageEffectBuff.ToReference<BlueprintBuffReference>();
                 c.m_ExtraEffectBuff = CallToViolenceBuff.ToReference<BlueprintBuffReference>();
             });
+            #endregion
 
             var WyrmSingerWyrmSagaInAreaFlag = Helpers.CreateBuff("WyrmSingerWyrmSagaInAreaFlag", bp => {
                 bp.SetName("");

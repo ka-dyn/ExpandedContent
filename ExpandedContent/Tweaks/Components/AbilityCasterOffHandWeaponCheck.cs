@@ -16,7 +16,7 @@ using Kingmaker.UnitLogic.Mechanics;
 
 namespace ExpandedContent.Tweaks.Components {
     [AllowedOn(typeof(BlueprintAbility))]
-    [TypeId("Need weapon type in offhand to use ability")]
+    [ComponentName("Need weapon type in offhand to use ability")]
     public class AbilityCasterOffHandWeaponCheck : BlueprintComponent, IAbilityCasterRestriction {
         public WeaponCategory[] Category;
 

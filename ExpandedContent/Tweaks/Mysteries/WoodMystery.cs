@@ -58,6 +58,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
             var WoodMysteryIcon = AssetLoader.LoadInternal("Skills", "Icon_OracleWoodMystery.png");
             var ThornBurstIcon = AssetLoader.LoadInternal("Skills", "Icon_ThornBurst.jpg"); //May change this as it looks rubbish
             var WoodenWeaponEnchantIcon = AssetLoader.LoadInternal("Skills", "Icon_WoodenWeaponEnchant.jpg"); //May change this as it looks rubbish
+            var OracleRevelationWoodArmorIcon = AssetLoader.LoadInternal("Skills", "Icon_OracleRevelationWoodArmor.jpg"); 
 
 
             //Spelllist
@@ -231,13 +232,13 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     c.SpellLevel = 9;
                 });
             });
-            //Final Revelation
+            //Final Revelation needs testing
             var EnlightenedPhilosopherFinalRevelationBuff = Resources.GetBlueprintReference<BlueprintBuffReference>("9f1ee3c61ef993d448b0b866ee198ea8");
             var EnlightenedPhilosopherFinalRevelationResource = Resources.GetBlueprintReference<BlueprintAbilityResourceReference>("d19c2e7ec505b734a973ce8d0986f4d6");            
             var OracleWoodFinalRevelation = Helpers.CreateBlueprint<BlueprintFeature>("OracleWoodFinalRevelation", bp => {
                 bp.SetName("Final Revelation");
                 bp.SetDescription("Upon reaching 20th level, you become a living creature of wood. You gain a +4 natural armor bonus to your Armor Class and you gain immunity to paralysis, poison, " +
-                    "polymorph, sleep, and stunning.");
+                    "stunning, sleep, and enemy polymorph effects.");
                 bp.AddComponent(PlantType.GetComponent<AddFacts>());
                 bp.AddComponent<AddStatBonus>(c => {
                     c.Stat = StatType.AC;
@@ -383,7 +384,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.GiveFeaturesForPreviousLevels = true;
             });
 
-            //WoodArmor
+            //WoodArmor needs testing
             var OracleRevelationWoodArmorResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("OracleRevelationWoodArmorResource", bp => {
                 bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
                     BaseValue = 0,
@@ -685,7 +686,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.IsClassFeature = true;
             });
             OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationWoodArmorFeature.ToReference<BlueprintFeatureReference>());
-            //WoodBond
+            //WoodBond needs testing
             var OracleRevelationWoodBondFeature = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationWoodBondFeature", bp => {
                 bp.SetName("Wood Bond");
                 bp.SetDescription("Your mystical bond with wood is such that your weapons become an extension of your body. You gain a +1 competence bonus on attack rolls when " +
@@ -1281,7 +1282,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.IsClassFeature = true;
             });
             OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationTreeFormProgression.ToReference<BlueprintFeatureReference>());
-            //WoodenWeaponEnchant
+            //WoodenWeaponEnchant needs testing
             var MasterWork = Resources.GetBlueprint<BlueprintWeaponEnchantment>("6b38844e2bffbac48b63036b66e735be");
             var Enhancement1 = Resources.GetBlueprint<BlueprintWeaponEnchantment>("d42fc23b92c640846ac137dc26e000d4");
             var Enhancement2 = Resources.GetBlueprint<BlueprintWeaponEnchantment>("eb2faccc4c9487d43b3575d7e77ff3f5");
@@ -2001,7 +2002,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.IsClassFeature = true;
             });
             OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationWoodenWeaponEnchantFeature.ToReference<BlueprintFeatureReference>());
-            //ThornBurst
+            //ThornBurst Needs FX change
             var OracleRevelationThornBurstResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("OracleRevelationThornBurstResource", bp => {
                 bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
                     BaseValue = 1,
@@ -2113,7 +2114,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     c.Archetype = RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>();
                 });
                 bp.AddComponent<AbilityResourceLogic>(c => {
-                    c.m_RequiredResource = OracleRevelationTreeFormResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_RequiredResource = OracleRevelationThornBurstResource.ToReference<BlueprintAbilityResourceReference>();
                     c.m_IsSpendResource = true;
                 });
                 bp.AddComponent<AbilityTargetsAround>(c => {
