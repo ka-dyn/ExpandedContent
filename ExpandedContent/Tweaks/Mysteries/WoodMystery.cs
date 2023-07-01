@@ -1,4 +1,5 @@
-﻿using BlueprintCore.Utils.Assets;
+﻿using BlueprintCore.Blueprints.CustomConfigurators.UnitLogic.Abilities;
+using BlueprintCore.Utils.Assets;
 using ExpandedContent.Extensions;
 using ExpandedContent.Tweaks.Classes;
 using ExpandedContent.Tweaks.Components;
@@ -54,9 +55,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
     internal class WoodMystery {
 
 
-        //fx for ThornBurst
-        string sourceAssetId = "184fcfe5e9459cc41b7350150f3dd468";
-        string assetId = "1d360e1b-630f-405d-8984-e7b1ebd3603f";
+        
 
         public static void AddWoodMystery() {
 
@@ -2070,6 +2069,9 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.AddComponent<SpellDescriptorComponent>(c => {
                     c.Descriptor = SpellDescriptor.Petrified;
                 });
+                bp.AddComponent<AddEnergyVulnerability>(c => {
+                    c.Type = DamageEnergyType.Fire;
+                });
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = false;
                 bp.m_Flags = BlueprintBuff.Flags.IsFromSpell;
@@ -2129,6 +2131,10 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     c.SavingThrow = CraftSavingThrow.Fortitude;
                     c.AOEType = CraftAOE.None;
                     c.SpellType = CraftSpellType.Debuff;
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = OracleRevelationLignificationResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
                 });
                 bp.AddComponent<AbilityTargetHasFact>(c => {
                     c.m_CheckedFacts = new BlueprintUnitFactReference[] { 
@@ -2193,10 +2199,6 @@ namespace ExpandedContent.Tweaks.Mysteries {
             });
             OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationLignificationFeature.ToReference<BlueprintFeatureReference>());
             //ThornBurst Needs FX change
-            string sourceAssetId = "184fcfe5e9459cc41b7350150f3dd468";
-            string assetId = "1d360e1b-630f-405d-8984-e7b1ebd3603f";
-            AssetTool.RegisterDynamicPrefabLink(assetId, sourceAssetId, ModifyFx);
-
             var OracleRevelationThornBurstResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("OracleRevelationThornBurstResource", bp => {
                 bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
                     BaseValue = 1,
@@ -2324,7 +2326,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     };
                 });
                 bp.AddComponent<AbilitySpawnFx>(c => {
-                    c.PrefabLink = new PrefabLink() { AssetId = assetId };
+                    c.PrefabLink = new PrefabLink() { AssetId = "2483780330931b64f97cbb6bb7cbd352" };
                     c.Time = AbilitySpawnFxTime.OnApplyEffect;
                     c.Anchor = AbilitySpawnFxAnchor.Caster;
                     c.DestroyOnCast = false;
@@ -2412,14 +2414,16 @@ namespace ExpandedContent.Tweaks.Mysteries {
             MysteryTools.RegisterSecondOceansEchoMystery(OceansEchoWoodMysteryFeature);
         }
 
-        private static void ModifyFx(GameObject AoE) {
+
+        ///FX thing if I ever get round to it
+        //private static void ModifyFx(GameObject AoE) {
             //UnityEngine.Object.DestroyImmediate(AoE.transform.Find("Root/stone_cast").gameObject);
             //UnityEngine.Object.DestroyImmediate(AoE.transform.Find("Root/SnowFlakes").gameObject);
             //UnityEngine.Object.DestroyImmediate(AoE.transform.Find("Root/StonesBig").gameObject);
             //UnityEngine.Object.DestroyImmediate(AoE.transform.Find("Root/bigstones").gameObject);
             //UnityEngine.Object.DestroyImmediate(AoE.transform.Find("Root/DropsWithTrail (1)").gameObject);
             //UnityEngine.Object.DestroyImmediate(AoE.transform.Find("Root/Flash").gameObject);
-        }
+        //}
 
     }
 }
