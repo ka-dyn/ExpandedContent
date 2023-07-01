@@ -41,7 +41,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.m_Icon = ShillelaghIcon;
                 bp.AddComponent<IncreaseDiceSizeOnAttack>(c => {
                     c.CheckWeaponCategories = true;
-                    c.Categories = new WeaponCategory[] { WeaponCategory.Quarterstaff | WeaponCategory.Club | WeaponCategory.Greatclub };
+                    c.Categories = new WeaponCategory[] { WeaponCategory.Quarterstaff, WeaponCategory.Club, WeaponCategory.Greatclub };
                     c.CheckWeaponSubCategories = false;
                     c.SubCategories = new WeaponSubCategory[0];
                     c.UseContextBonus = true;

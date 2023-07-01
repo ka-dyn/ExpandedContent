@@ -58,8 +58,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>D:\Games\PathfinderModing\lib\Assembly-CSharp.dll</HintPath>
     </Reference>
-    <Reference Include="BlueprintCore, Version=2.3.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\WW-Blueprint-Core.2.3.0\lib\net472\BlueprintCore.dll</HintPath>
+    <Reference Include="BlueprintCore, Version=2.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\WW-Blueprint-Core.2.8.0\lib\net472\BlueprintCore.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Bcl.AsyncInterfaces.6.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
@@ -1544,6 +1544,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_InvokeDeity.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_Lignification.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_LionShamanTotemTransformation.jpg">

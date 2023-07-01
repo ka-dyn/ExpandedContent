@@ -1,4 +1,6 @@
-﻿using ExpandedContent.Extensions;
+﻿using BlueprintCore.Utils.Assets;
+using ExpandedContent.Extensions;
+using ExpandedContent.Tweaks.Classes;
 using ExpandedContent.Tweaks.Components;
 using ExpandedContent.Utilities;
 using Kingmaker.Blueprints;
@@ -10,6 +12,7 @@ using Kingmaker.Blueprints.Items.Ecnchantments;
 using Kingmaker.Blueprints.Items.Weapons;
 using Kingmaker.Craft;
 using Kingmaker.Designers.EventConditionActionSystem.Actions;
+using Kingmaker.Designers.Mechanics.Buffs;
 using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.ElementsSystem;
 using Kingmaker.EntitySystem.Stats;
@@ -45,9 +48,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace ExpandedContent.Tweaks.Mysteries {
     internal class WoodMystery {
+
+
+        //fx for ThornBurst
+        string sourceAssetId = "184fcfe5e9459cc41b7350150f3dd468";
+        string assetId = "1d360e1b-630f-405d-8984-e7b1ebd3603f";
+
         public static void AddWoodMystery() {
 
             var OracleClass = Resources.GetBlueprint<BlueprintCharacterClass>("20ce9bf8af32bee4c8557a045ab499b1");
@@ -57,9 +67,14 @@ namespace ExpandedContent.Tweaks.Mysteries {
             var PlantType = Resources.GetBlueprint<BlueprintFeature>("706e61781d692a042b35941f14bc41c5");
             var WoodMysteryIcon = AssetLoader.LoadInternal("Skills", "Icon_OracleWoodMystery.png");
             var ThornBurstIcon = AssetLoader.LoadInternal("Skills", "Icon_ThornBurst.jpg"); //May change this as it looks rubbish
+            var LignificationIcon = AssetLoader.LoadInternal("Skills", "Icon_Lignification.jpg"); 
             var WoodenWeaponEnchantIcon = AssetLoader.LoadInternal("Skills", "Icon_WoodenWeaponEnchant.jpg"); //May change this as it looks rubbish
-            var OracleRevelationWoodArmorIcon = AssetLoader.LoadInternal("Skills", "Icon_OracleRevelationWoodArmor.jpg"); 
-
+            var OracleRevelationWoodArmorIcon = AssetLoader.LoadInternal("Skills", "Icon_OracleRevelationWoodArmor.jpg");
+            var ImmunityToParalysis = Resources.GetBlueprint<BlueprintFeature>("4b152a7bc5bab5042b437b955fea46cd");
+            var ImmunityToPoison = Resources.GetBlueprint<BlueprintFeature>("7e3f3228be49cce49bda37f7901bf246");
+            var ImmunityToStunning = Resources.GetBlueprint<BlueprintFeature>("bd9df2d4a4cef274285b8827b6769bde");
+            var ImmunityToSleep = Resources.GetBlueprint<BlueprintFeature>("c263f44f72df009489409af122b5eefc");
+            var BalefulPolymorphBuff = Resources.GetBlueprint<BlueprintBuff>("0a52d8761bfd125429842103aed48b90");
 
             //Spelllist
             var ShillelaghAbility = Resources.GetModBlueprint<BlueprintAbility>("ShillelaghAbility");
@@ -232,14 +247,24 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     c.SpellLevel = 9;
                 });
             });
-            //Final Revelation needs testing
+            //Final Revelation
             var EnlightenedPhilosopherFinalRevelationBuff = Resources.GetBlueprintReference<BlueprintBuffReference>("9f1ee3c61ef993d448b0b866ee198ea8");
             var EnlightenedPhilosopherFinalRevelationResource = Resources.GetBlueprintReference<BlueprintAbilityResourceReference>("d19c2e7ec505b734a973ce8d0986f4d6");            
             var OracleWoodFinalRevelation = Helpers.CreateBlueprint<BlueprintFeature>("OracleWoodFinalRevelation", bp => {
                 bp.SetName("Final Revelation");
                 bp.SetDescription("Upon reaching 20th level, you become a living creature of wood. You gain a +4 natural armor bonus to your Armor Class and you gain immunity to paralysis, poison, " +
                     "stunning, sleep, and enemy polymorph effects.");
-                bp.AddComponent(PlantType.GetComponent<AddFacts>());
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        ImmunityToParalysis.ToReference<BlueprintUnitFactReference>(),
+                        ImmunityToPoison.ToReference<BlueprintUnitFactReference>(),
+                        ImmunityToSleep.ToReference<BlueprintUnitFactReference>(),
+                        ImmunityToStunning.ToReference<BlueprintUnitFactReference>()
+                    };
+                });
+                bp.AddComponent<SpecificBuffImmunity>(c => {
+                    c.m_Buff = BalefulPolymorphBuff.ToReference<BlueprintBuffReference>();
+                });
                 bp.AddComponent<AddStatBonus>(c => {
                     c.Stat = StatType.AC;
                     c.Descriptor = ModifierDescriptor.NaturalArmor;
@@ -384,7 +409,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.GiveFeaturesForPreviousLevels = true;
             });
 
-            //WoodArmor needs testing
+            //WoodArmor
             var OracleRevelationWoodArmorResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("OracleRevelationWoodArmorResource", bp => {
                 bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
                     BaseValue = 0,
@@ -686,7 +711,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.IsClassFeature = true;
             });
             OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationWoodArmorFeature.ToReference<BlueprintFeatureReference>());
-            //WoodBond needs testing
+            //WoodBond
             var OracleRevelationWoodBondFeature = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationWoodBondFeature", bp => {
                 bp.SetName("Wood Bond");
                 bp.SetDescription("Your mystical bond with wood is such that your weapons become an extension of your body. You gain a +1 competence bonus on attack rolls when " +
@@ -695,20 +720,20 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.AddComponent<WeaponMultipleCategoriesContextAttackBonus>(c => {                    
                     c.Descriptor = ModifierDescriptor.Circumstance;
                     c.Categories = new WeaponCategory[] { 
-                        WeaponCategory.Greatclub | 
-                        WeaponCategory.Club | 
-                        WeaponCategory.Javelin | 
-                        WeaponCategory.Kama | 
-                        WeaponCategory.Longbow | 
-                        WeaponCategory.Longspear | 
-                        WeaponCategory.Nunchaku | 
-                        WeaponCategory.Quarterstaff | 
-                        WeaponCategory.Shortbow | 
-                        WeaponCategory.Shortspear | 
-                        WeaponCategory.SlingStaff | 
-                        WeaponCategory.Spear | 
-                        WeaponCategory.Trident |
-                        WeaponCategory.LightCrossbow |
+                        WeaponCategory.Greatclub, 
+                        WeaponCategory.Club, 
+                        WeaponCategory.Javelin, 
+                        WeaponCategory.Kama, 
+                        WeaponCategory.Longbow, 
+                        WeaponCategory.Longspear, 
+                        WeaponCategory.Nunchaku, 
+                        WeaponCategory.Quarterstaff, 
+                        WeaponCategory.Shortbow, 
+                        WeaponCategory.Shortspear, 
+                        WeaponCategory.SlingStaff, 
+                        WeaponCategory.Spear, 
+                        WeaponCategory.Trident,
+                        WeaponCategory.LightCrossbow,
                         WeaponCategory.HeavyCrossbow
                     };
                     c.Value = new ContextValue() {
@@ -1282,7 +1307,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.IsClassFeature = true;
             });
             OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationTreeFormProgression.ToReference<BlueprintFeatureReference>());
-            //WoodenWeaponEnchant needs testing
+            //WoodenWeaponEnchant
             var MasterWork = Resources.GetBlueprint<BlueprintWeaponEnchantment>("6b38844e2bffbac48b63036b66e735be");
             var Enhancement1 = Resources.GetBlueprint<BlueprintWeaponEnchantment>("d42fc23b92c640846ac137dc26e000d4");
             var Enhancement2 = Resources.GetBlueprint<BlueprintWeaponEnchantment>("eb2faccc4c9487d43b3575d7e77ff3f5");
@@ -1441,20 +1466,20 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.m_Icon = WoodenWeaponEnchantIcon;
                 bp.AddComponent<AbilityCasterMainWeaponCheck>(c => {
                     c.Category = new WeaponCategory[] {
-                        WeaponCategory.Greatclub |
-                        WeaponCategory.Club |
-                        WeaponCategory.Javelin |
-                        WeaponCategory.Kama |
-                        WeaponCategory.Longbow |
-                        WeaponCategory.Longspear |
-                        WeaponCategory.Nunchaku |
-                        WeaponCategory.Quarterstaff |
-                        WeaponCategory.Shortbow |
-                        WeaponCategory.Shortspear |
-                        WeaponCategory.SlingStaff |
-                        WeaponCategory.Spear |
-                        WeaponCategory.Trident |
-                        WeaponCategory.LightCrossbow |
+                        WeaponCategory.Greatclub,
+                        WeaponCategory.Club,
+                        WeaponCategory.Javelin,
+                        WeaponCategory.Kama,
+                        WeaponCategory.Longbow,
+                        WeaponCategory.Longspear,
+                        WeaponCategory.Nunchaku,
+                        WeaponCategory.Quarterstaff,
+                        WeaponCategory.Shortbow,
+                        WeaponCategory.Shortspear,
+                        WeaponCategory.SlingStaff,
+                        WeaponCategory.Spear,
+                        WeaponCategory.Trident,
+                        WeaponCategory.LightCrossbow,
                         WeaponCategory.HeavyCrossbow
                     };
                 });
@@ -1669,20 +1694,20 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.m_Icon = WoodenWeaponEnchantIcon;
                 bp.AddComponent<AbilityCasterOffHandWeaponCheck>(c => {
                     c.Category = new WeaponCategory[] {
-                        WeaponCategory.Greatclub |
-                        WeaponCategory.Club |
-                        WeaponCategory.Javelin |
-                        WeaponCategory.Kama |
-                        WeaponCategory.Longbow |
-                        WeaponCategory.Longspear |
-                        WeaponCategory.Nunchaku |
-                        WeaponCategory.Quarterstaff |
-                        WeaponCategory.Shortbow |
-                        WeaponCategory.Shortspear |
-                        WeaponCategory.SlingStaff |
-                        WeaponCategory.Spear |
-                        WeaponCategory.Trident |
-                        WeaponCategory.LightCrossbow |
+                        WeaponCategory.Greatclub,
+                        WeaponCategory.Club,
+                        WeaponCategory.Javelin,
+                        WeaponCategory.Kama,
+                        WeaponCategory.Longbow,
+                        WeaponCategory.Longspear,
+                        WeaponCategory.Nunchaku,
+                        WeaponCategory.Quarterstaff,
+                        WeaponCategory.Shortbow,
+                        WeaponCategory.Shortspear,
+                        WeaponCategory.SlingStaff,
+                        WeaponCategory.Spear,
+                        WeaponCategory.Trident,
+                        WeaponCategory.LightCrossbow,
                         WeaponCategory.HeavyCrossbow
                     };
                 });
@@ -2002,7 +2027,176 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.IsClassFeature = true;
             });
             OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationWoodenWeaponEnchantFeature.ToReference<BlueprintFeatureReference>());
+            //Lignification = Maybe patch the UnitCondition thing to stop animations
+            var Incorporeal = Resources.GetBlueprint<BlueprintFeature>("c4a7f98d743bc784c9d4cf2105852c39");
+            var SubtypeElemental = Resources.GetBlueprint<BlueprintFeature>("198fd8924dabcb5478d0f78bd453c586");
+            var ConstructType = Resources.GetBlueprint<BlueprintFeature>("fd389783027d63343b4a5634bd81645f");
+            var OracleRevelationLignificationResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("OracleRevelationLignificationResource", bp => {
+                bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
+                    BaseValue = 0,
+                    IncreasedByLevel = false,
+                    IncreasedByLevelStartPlusDivStep = true,
+                    m_Class = new BlueprintCharacterClassReference[0],
+                    m_ClassDiv = new BlueprintCharacterClassReference[] {
+                        OracleClass.ToReference<BlueprintCharacterClassReference>()
+                    },
+                    m_Archetypes = new BlueprintArchetypeReference[0],
+                    m_ArchetypesDiv = new BlueprintArchetypeReference[0],
+                    StartingLevel = 1,
+                    LevelStep = 14,
+                    StartingIncrease = 1,
+                    PerStepIncrease = 1,
+                };
+                bp.m_UseMax = true;
+                bp.m_Max = 2;
+            });
+            var BalefulPolymorph = Resources.GetBlueprint<BlueprintAbility>("3105d6e9febdc3f41a08d2b7dda1fe74");
+            var OracleRevelationLignificationBuff = Helpers.CreateBuff("OracleRevelationLignificationBuff", bp => {
+                bp.SetName("Lignification");
+                bp.SetDescription("Once per day, you can turn a creature into wood. As a standard action, you may direct your gaze against a single creature within 30 feet. " +
+                    "The targeted creature must make a Fortitude save or turn into a mindless, inert statue made out of wood for a number of rounds equal to 1/2 your oracle level. " +
+                    "This ability otherwise functions as a flesh to stone spell, except the target turns to wood instead of stone. This can be reversed by any effect that can reverse " +
+                    "flesh to stone.");
+                bp.m_Icon = LignificationIcon;
+                bp.AddComponent<AddCondition>(c => {
+                    c.Condition = UnitCondition.CantAct;
+                });
+                bp.AddComponent<AddCondition>(c => {
+                    c.Condition = UnitCondition.MovementBan;
+                });
+                bp.AddComponent<AddCondition>(c => {
+                    c.Condition = UnitCondition.CantMove;
+                });
+                bp.AddComponent<SpellDescriptorComponent>(c => {
+                    c.Descriptor = SpellDescriptor.Petrified;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = false;
+                bp.m_Flags = BlueprintBuff.Flags.IsFromSpell;
+                bp.FxOnStart = new PrefabLink() { AssetId = "f684f2a037e944f4a894037c86e4194b" };
+            });
+            var OracleRevelationLignificationAbility = Helpers.CreateBlueprint<BlueprintAbility>("OracleRevelationLignificationAbility", bp => {
+                bp.SetName("Lignification");
+                bp.SetDescription("Once per day, you can turn a creature into wood. As a standard action, you may direct your gaze against a single creature within 30 feet. " +
+                    "The targeted creature must make a Fortitude save or turn into a mindless, inert statue made out of wood for a number of rounds equal to 1/2 your oracle level. " +
+                    "This ability otherwise functions as a flesh to stone spell, except the target turns to wood instead of stone. This can be reversed by any effect that can reverse " +
+                    "flesh to stone.");
+                bp.AddComponent(BalefulPolymorph.GetComponent<AbilitySpawnFx>());
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Fortitude;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionConditionalSaved() {
+                            Succeed = Helpers.CreateActionList(),
+                            Failed = Helpers.CreateActionList(
+                                new ContextActionApplyBuff() {
+                                    m_Buff = OracleRevelationLignificationBuff.ToReference<BlueprintBuffReference>(),
+                                    Permanent = false,
+                                    UseDurationSeconds = false,
+                                    DurationValue = new ContextDurationValue() {
+                                        Rate = DurationRate.Rounds,
+                                        DiceType = DiceType.Zero,
+                                        DiceCountValue = 0,
+                                        BonusValue = new ContextValue() {
+                                            ValueType = ContextValueType.Rank,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage
+                                        }
+                                    },
+                                    DurationSeconds = 0
+                                }
+                            )
+                        });
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.Div2;
+                    c.m_StartLevel = 0;
+                    c.m_StepLevel = 2;
+                    c.m_UseMin = true;
+                    c.m_Min = 1;
+                    c.m_Class = new BlueprintCharacterClassReference[] {                        
+                        OracleClass.ToReference<BlueprintCharacterClassReference>()
+                    };
+                });
+                bp.AddComponent<SpellComponent>(c => {
+                    c.School = SpellSchool.Transmutation;
+                });
+                bp.AddComponent<CraftInfoComponent>(c => {
+                    c.SavingThrow = CraftSavingThrow.Fortitude;
+                    c.AOEType = CraftAOE.None;
+                    c.SpellType = CraftSpellType.Debuff;
+                });
+                bp.AddComponent<AbilityTargetHasFact>(c => {
+                    c.m_CheckedFacts = new BlueprintUnitFactReference[] { 
+                        Incorporeal.ToReference<BlueprintUnitFactReference>(),
+                        SubtypeElemental.ToReference<BlueprintUnitFactReference>(),
+                        ConstructType.ToReference<BlueprintUnitFactReference>(),
+                        PlantType.ToReference<BlueprintUnitFactReference>()
+                    };
+                    c.Inverted = true;
+                });
+                bp.m_Icon = LignificationIcon;
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Medium;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = true;
+                bp.CanTargetFriends = true;
+                bp.CanTargetSelf = false;
+                bp.SpellResistance = true;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Standard;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = Helpers.CreateString("OracleRevelationLignificationAbility.Duration", "1 round/2 levels");
+                bp.LocalizedSavingThrow = Helpers.CreateString("OracleRevelationLignificationAbility.SavingThrow", "Fortitude negates");
+            });
+            var OracleRevelationLignificationFeature = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationLignificationFeature", bp => {
+                bp.SetName("Lignification");
+                bp.SetDescription("Once per day, you can turn a creature into wood. As a standard action, you may direct your gaze against a single creature within 30 feet. " +
+                    "The targeted creature must make a Fortitude save or turn into a mindless, inert statue made out of wood for a number of rounds equal to 1/2 your oracle level. " +
+                    "This ability otherwise functions as a flesh to stone spell, except the target turns to wood instead of stone. This can be reversed by any effect that can reverse " +
+                    "flesh to stone. At 15th level, you can use this ability twice per day. You must be at least 11th level to select this revelation.");
+                bp.m_Icon = LignificationIcon;
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { OracleRevelationLignificationAbility.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<ReplaceAbilitiesStat>(c => {
+                    c.m_Ability = new BlueprintAbilityReference[] { OracleRevelationLignificationAbility.ToReference<BlueprintAbilityReference>() };
+                    c.Stat = StatType.Charisma;
+                });
+                bp.AddComponent<PrerequisiteFeaturesFromList>(c => {
+                    c.m_Features = new BlueprintFeatureReference[] {
+                        OracleWoodMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        EnlightnedPhilosopherWoodMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        DivineHerbalistWoodMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        OceansEchoWoodMysteryFeature.ToReference<BlueprintFeatureReference>()
+                    };
+                    c.Amount = 1;
+                });
+                bp.AddComponent<PrerequisiteClassLevel>(c => {
+                    c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Group = Prerequisite.GroupType.Any;
+                    c.Level = 11;
+                });
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = OracleRevelationLignificationResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.Groups = new FeatureGroup[] { FeatureGroup.OracleRevelation };
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+            OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationLignificationFeature.ToReference<BlueprintFeatureReference>());
             //ThornBurst Needs FX change
+            string sourceAssetId = "184fcfe5e9459cc41b7350150f3dd468";
+            string assetId = "1d360e1b-630f-405d-8984-e7b1ebd3603f";
+            AssetTool.RegisterDynamicPrefabLink(assetId, sourceAssetId, ModifyFx);
+
             var OracleRevelationThornBurstResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("OracleRevelationThornBurstResource", bp => {
                 bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
                     BaseValue = 1,
@@ -2130,7 +2324,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     };
                 });
                 bp.AddComponent<AbilitySpawnFx>(c => {
-                    c.PrefabLink = new PrefabLink() { AssetId = "184fcfe5e9459cc41b7350150f3dd468" };
+                    c.PrefabLink = new PrefabLink() { AssetId = assetId };
                     c.Time = AbilitySpawnFxTime.OnApplyEffect;
                     c.Anchor = AbilitySpawnFxAnchor.Caster;
                     c.DestroyOnCast = false;
@@ -2217,5 +2411,15 @@ namespace ExpandedContent.Tweaks.Mysteries {
             MysteryTools.RegisterOceansEchoMystery(OceansEchoWoodMysteryFeature);
             MysteryTools.RegisterSecondOceansEchoMystery(OceansEchoWoodMysteryFeature);
         }
+
+        private static void ModifyFx(GameObject AoE) {
+            //UnityEngine.Object.DestroyImmediate(AoE.transform.Find("Root/stone_cast").gameObject);
+            //UnityEngine.Object.DestroyImmediate(AoE.transform.Find("Root/SnowFlakes").gameObject);
+            //UnityEngine.Object.DestroyImmediate(AoE.transform.Find("Root/StonesBig").gameObject);
+            //UnityEngine.Object.DestroyImmediate(AoE.transform.Find("Root/bigstones").gameObject);
+            //UnityEngine.Object.DestroyImmediate(AoE.transform.Find("Root/DropsWithTrail (1)").gameObject);
+            //UnityEngine.Object.DestroyImmediate(AoE.transform.Find("Root/Flash").gameObject);
+        }
+
     }
 }

@@ -80,7 +80,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.Color = GolumWoodSummon.Color;
                 bp.Alignment = Alignment.TrueNeutral;
                 bp.m_Portrait = StoneGolemPortait.ToReference<BlueprintPortraitReference>();
-                bp.Prefab = new UnitViewLink { AssetId = "5c04c52b936e15d4baf3688f0d1b99d3" }; //BearDireElite prefab
+                bp.Prefab = GolumWoodSummon.Prefab;
                 bp.Visual = new UnitVisualParams() {
                     BloodType = BloodType.Common,
                     FootprintType = FootprintType.AnimalPaw,

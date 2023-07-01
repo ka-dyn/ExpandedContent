@@ -29,6 +29,16 @@ If you're interested in contributing, see [How to Contribute](https://wittlewolf
 
 For usage see [Getting Started](https://wittlewolfie.github.io/WW-Blueprint-Core/articles/intro.html).
 
+## Mods Using BPCore
+
+Not exhaustive but check out these mods:
+
+* [Character Options+](https://github.com/WittleWolfie/CharacterOptionsPlus)
+* [Tome of the Firebird](https://github.com/pheonix99/TomeOfTheFirebird)
+* [Added Feats](https://github.com/Telyl/AddedFeats)
+* [Medium Class](https://github.com/Telyl/MediumClass)
+* [Martial Excellence](https://github.com/Envibel/MartialExcellence)
+
 ## Features
 
 ### Blueprint Configurators
