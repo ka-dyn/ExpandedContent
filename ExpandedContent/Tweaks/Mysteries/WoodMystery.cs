@@ -1,4 +1,5 @@
 ﻿using BlueprintCore.Blueprints.CustomConfigurators.UnitLogic.Abilities;
+using BlueprintCore.Utils;
 using BlueprintCore.Utils.Assets;
 using ExpandedContent.Extensions;
 using ExpandedContent.Tweaks.Classes;
@@ -43,8 +44,8 @@ using Kingmaker.UnitLogic.Mechanics.Components;
 using Kingmaker.UnitLogic.Mechanics.Conditions;
 using Kingmaker.UnitLogic.Mechanics.Properties;
 using Kingmaker.Utility;
+using Kingmaker.View;
 using Kingmaker.Visual.Animation.Kingmaker.Actions;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -2326,7 +2327,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     };
                 });
                 bp.AddComponent<AbilitySpawnFx>(c => {
-                    c.PrefabLink = new PrefabLink() { AssetId = "2483780330931b64f97cbb6bb7cbd352" };
+                    c.PrefabLink = new PrefabLink() { AssetId = "184fcfe5e9459cc41b7350150f3dd468" };
                     c.Time = AbilitySpawnFxTime.OnApplyEffect;
                     c.Anchor = AbilitySpawnFxAnchor.Caster;
                     c.DestroyOnCast = false;
@@ -2351,6 +2352,19 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
+            var OracleRevelationThornBurstAbilitySpawnFx = OracleRevelationThornBurstAbility.GetComponent<AbilitySpawnFx>();
+            OracleRevelationThornBurstAbilitySpawnFx.PrefabLink = OracleRevelationThornBurstAbilitySpawnFx.PrefabLink.CreateDynamicProxy(pfl => {                
+                Main.Log($"Editing: {pfl}");
+                pfl.name = "ThornBurst_20feetAoE";
+                Main.Log($"{FxDebug.DumpGameObject(pfl.gameObject)}");
+                Object.DestroyImmediate(pfl.transform.Find("Root /stone_cast").gameObject);
+                Object.DestroyImmediate(pfl.transform.Find("Root /SnowFlakes").gameObject);
+                Object.DestroyImmediate(pfl.transform.Find("Root /StonesBig").gameObject);
+                Object.DestroyImmediate(pfl.transform.Find("Root /big_stones").gameObject);
+                Object.DestroyImmediate(pfl.transform.Find("Root /DropsWithTrail (1)").gameObject);
+                Object.DestroyImmediate(pfl.transform.Find("Root /flash").gameObject);
+            });
+
             var OracleRevelationThornBurstFeature = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationThornBurstFeature", bp => {
                 bp.SetName("Thorn Burst");
                 bp.SetDescription("As a {g|Encyclopedia:Swift_Action}swift action{/g}, you can cause sharp splinters of wood to explode outward from your body. These splinters " +
