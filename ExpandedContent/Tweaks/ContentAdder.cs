@@ -123,6 +123,9 @@ namespace ExpandedContent.Tweaks {
                 Spells.DanceOfAHundredCuts.AddDanceOfAHundredCuts();
                 Spells.DanceOfAThousandCuts.AddDanceOfAThousandCuts();
                 Spells.ParticulateForm.AddParticulateForm();
+                Spells.Shillelagh.AddShillelagh();
+                Spells.PlantShape.AddPlantShape();
+                Spells.WoodenPhalanx.AddWoodenPhalanx();
 
                 Domains.ImpossibleSubdomainSelection.AddImpossibleSubdomainSelection();
                 Domains.ScalykindDomain.AddScalykindDomain();
@@ -162,6 +165,7 @@ namespace ExpandedContent.Tweaks {
                 Mysteries.DragonMystery.AddDragonMystery();
                 Mysteries.HeavensMystery.AddHeavensMystery();
                 Mysteries.SuccorMystery.AddSuccorMystery();
+                Mysteries.WoodMystery.AddWoodMystery();
 
                 Spirits.HeavensSpirit.AddHeavensSprit();
 
