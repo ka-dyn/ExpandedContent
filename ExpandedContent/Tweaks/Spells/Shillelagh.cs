@@ -151,6 +151,7 @@ namespace ExpandedContent.Tweaks.Spells {
             var ShillelaghScroll = ItemTools.CreateScroll("ScrollOfShillelagh", Icon_ScrollOfShillelagh, ShillelaghAbility, 1, 1);
             VenderTools.AddScrollToLeveledVenders(ShillelaghScroll);
             ShillelaghAbility.AddToSpellList(SpellTools.SpellList.DruidSpellList, 1);
+            ShillelaghAbility.AddToSpellList(SpellTools.SpellList.HunterSpelllist, 1);
         }
     }
 }
