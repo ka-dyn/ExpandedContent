@@ -29,7 +29,9 @@ namespace ExpandedContent.Tweaks.DemonLords {
             var DemonDomainChaosAllowed = Resources.GetModBlueprint<BlueprintFeature>("DemonDomainChaosAllowed");
             var DemonDomainEvilAllowed = Resources.GetModBlueprint<BlueprintFeature>("DemonDomainEvilAllowed");
             var DreadKnightClass = Resources.GetModBlueprint<BlueprintCharacterClass>("DreadKnightClass");
+            var PaladinClass = Resources.GetBlueprint<BlueprintCharacterClass>("bfa11238e7ae3544bbeb4d0b92e897ec");
             var ClawOfTheFalseWyrmArchetype = Resources.GetModBlueprint<BlueprintArchetype>("ClawOfTheFalseWyrmArchetype");
+            var SilverChampionArchetype = Resources.GetModBlueprint<BlueprintArchetype>("SilverChampionArchetype");
 
             DeskariFeature.m_Icon = DeskariIcon;
                     DeskariFeature.RemoveComponents<PrerequisiteNoFeature>();
@@ -37,6 +39,11 @@ namespace ExpandedContent.Tweaks.DemonLords {
                 c.HideInUI = true;
                 c.m_CharacterClass = DreadKnightClass.ToReference<BlueprintCharacterClassReference>();
                 c.m_Archetype = ClawOfTheFalseWyrmArchetype.ToReference<BlueprintArchetypeReference>();
+            });
+            DeskariFeature.AddComponent<PrerequisiteNoArchetype>(c => {
+                c.HideInUI = true;
+                c.m_CharacterClass = PaladinClass.ToReference<BlueprintCharacterClassReference>();
+                c.m_Archetype = SilverChampionArchetype.ToReference<BlueprintArchetypeReference>();
             });
             DeskariFeature.AddComponent<AddFacts>(c => {
                 c.m_Facts = new BlueprintUnitFactReference[1] { BloodDomainAllowed.ToReference<BlueprintUnitFactReference>() };

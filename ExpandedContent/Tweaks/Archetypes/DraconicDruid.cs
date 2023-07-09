@@ -120,7 +120,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.Value = 1;
                     c.Descriptor = ModifierDescriptor.NaturalArmorEnhancement;
                 });
-                bp.m_Flags = BlueprintBuff.Flags.StayOnDeath | BlueprintBuff.Flags.HiddenInUi;
+                bp.m_Flags = BlueprintBuff.Flags.StayOnDeath;
                 bp.Stacking = StackingType.Replace;
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = true;

@@ -12142,6 +12142,9 @@ namespace ExpandedContent.Tweaks.Classes {
             var DivineGuardianArchetype = Resources.GetBlueprint<BlueprintArchetype>("5693945afac189a469ef970eac8f71d9");
             var WarriorOfTheHolyLightArchetype = Resources.GetBlueprint<BlueprintArchetype>("cc70a9fdcd8781a4ca2f0e594f066964");
 
+            var LivingScriptureArchetype = Resources.GetModBlueprint<BlueprintArchetype>("LivingScriptureArchetype");
+            var RavenerHunterArchetype = Resources.GetModBlueprint<BlueprintArchetype>("RavenerHunterArchetype");
+
             var ArcanistSpellbook = Resources.GetBlueprint<BlueprintSpellbook>("33903fe5c4abeaa45bc249adb9d98848");
             var UnletteredArcanistSpellbook = Resources.GetBlueprint<BlueprintSpellbook>("b242f991107095d41ae129f46ed5d97a");
             var EldritchFontSpellbook = Resources.GetBlueprint<BlueprintSpellbook>("67b574abd845f3e42983ea6eb53a6f90");
@@ -13133,6 +13136,16 @@ namespace ExpandedContent.Tweaks.Classes {
                     c.RequiredSpellLevel = 3;
                     c.HideInUI = false;
                 });
+                bp.AddComponent<PrerequisiteNoArchetype>(c => {
+                    c.m_CharacterClass = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = LivingScriptureArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.HideInUI = false;
+                });
+                bp.AddComponent<PrerequisiteNoArchetype>(c => {
+                    c.m_CharacterClass = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.HideInUI = false;
+                });
                 bp.HideInUI = true;
                 bp.HideInCharacterSheetAndLevelUp = false;
                 bp.HideNotAvailibleInUI = true;
@@ -13478,6 +13491,147 @@ namespace ExpandedContent.Tweaks.Classes {
                 };
                 bp.GiveFeaturesForPreviousLevels = false;
             });
+            //Added by Expanded Content
+            var LivingScriptureSpellbook = Resources.GetModBlueprint<BlueprintSpellbook>("LivingScriptureSpellbook");
+            var StargazerLivingScriptureLevelUp = Helpers.CreateBlueprint<BlueprintFeature>("StargazerLivingScriptureLevelUp", bp => {
+                bp.SetName("Living Scripture");
+                bp.SetDescription("At 1st level, and at every level thereafter, a Stargazer gains new {g|Encyclopedia:Spell}spells{/g} per day as if he had also gained a level in a spellcasting class " +
+                    "he belonged to before adding the prestige class. He does not, however, gain any other benefit a character of that class would have gained, except for additional spells per day, " +
+                    "spells known, and an increased effective level of spellcasting. If a character had more than one spellcasting class before becoming a Stargazer, he must decide to which class " +
+                    "he adds the new level for purposes of determining spells per day.");
+                bp.AddComponent<AddSpellbookLevel>(c => {
+                    c.m_Spellbook = LivingScriptureSpellbook.ToReference<BlueprintSpellbookReference>();
+                });
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = false;
+                bp.HideNotAvailibleInUI = false;
+                bp.IsClassFeature = true;
+                bp.m_AllowNonContextActions = false;
+                bp.Ranks = 10;
+            });
+            var StargazerLivingScriptureProgression = Helpers.CreateBlueprint<BlueprintProgression>("StargazerLivingScriptureProgression", bp => {
+                bp.SetName("Living Scripture");
+                bp.SetDescription("At 1st level, and at every level thereafter, a Stargazer gains new {g|Encyclopedia:Spell}spells{/g} per day as if he had also gained a level in a spellcasting class " +
+                    "he belonged to before adding the prestige class. He does not, however, gain any other benefit a character of that class would have gained, except for additional spells per day, " +
+                    "spells known, and an increased effective level of spellcasting. If a character had more than one spellcasting class before becoming a Stargazer, he must decide to which class " +
+                    "he adds the new level for purposes of determining spells per day.");
+                bp.AddComponent<PrerequisiteClassSpellLevel>(c => {
+                    c.m_CharacterClass = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
+                    c.RequiredSpellLevel = 3;
+                    c.HideInUI = false;
+                });
+                bp.AddComponent<PrerequisiteArchetypeLevel>(c => {
+                    c.m_CharacterClass = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = LivingScriptureArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.Level = 1;
+                    c.HideInUI = false;
+                });
+                bp.AddComponent<PrerequisiteNoArchetype>(c => {
+                    c.m_CharacterClass = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.HideInUI = false;
+                });
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = false;
+                bp.HideNotAvailibleInUI = true;
+                bp.IsClassFeature = true;
+                bp.m_AllowNonContextActions = false;
+                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
+                    new BlueprintProgression.ClassWithLevel() { AdditionalLevel = 0, m_Class = StargazerClass.ToReference<BlueprintCharacterClassReference>() }
+                };
+                bp.LevelEntries = new LevelEntry[] {
+                    Helpers.LevelEntry(1, StargazerLivingScriptureLevelUp),
+                    Helpers.LevelEntry(2, StargazerLivingScriptureLevelUp),
+                    Helpers.LevelEntry(3, StargazerLivingScriptureLevelUp),
+                    Helpers.LevelEntry(4, StargazerLivingScriptureLevelUp),
+                    Helpers.LevelEntry(5, StargazerLivingScriptureLevelUp),
+                    Helpers.LevelEntry(6, StargazerLivingScriptureLevelUp),
+                    Helpers.LevelEntry(7, StargazerLivingScriptureLevelUp),
+                    Helpers.LevelEntry(8, StargazerLivingScriptureLevelUp),
+                    Helpers.LevelEntry(9, StargazerLivingScriptureLevelUp),
+                    Helpers.LevelEntry(10, StargazerLivingScriptureLevelUp)
+                };
+                bp.GiveFeaturesForPreviousLevels = false;
+            });
+
+            var MysticTheurgeRavenerHunterLevelSelection1 = Resources.GetModBlueprint<BlueprintFeatureSelection>("MysticTheurgeRavenerHunterLevelSelection1");
+            var MysticTheurgeRavenerHunterLevelSelection2 = Resources.GetModBlueprint<BlueprintFeatureSelection>("MysticTheurgeRavenerHunterLevelSelection2");
+            var MysticTheurgeRavenerHunterLevelSelection3 = Resources.GetModBlueprint<BlueprintFeatureSelection>("MysticTheurgeRavenerHunterLevelSelection3");
+            var MysticTheurgeRavenerHunterLevelSelection4 = Resources.GetModBlueprint<BlueprintFeatureSelection>("MysticTheurgeRavenerHunterLevelSelection4");
+            var MysticTheurgeRavenerHunterLevelSelection5 = Resources.GetModBlueprint<BlueprintFeatureSelection>("MysticTheurgeRavenerHunterLevelSelection5");
+            var MysticTheurgeRavenerHunterLevelSelection6 = Resources.GetModBlueprint<BlueprintFeatureSelection>("MysticTheurgeRavenerHunterLevelSelection6");
+            var RavenerHunterSpellbook = Resources.GetModBlueprint<BlueprintSpellbook>("RavenerHunterSpellbook");
+            var StargazerRavenerHunterLevelUp = Helpers.CreateBlueprint<BlueprintFeature>("StargazerRavenerHunterLevelUp", bp => {
+                bp.SetName("Ravener Hunter");
+                bp.SetDescription("At 1st level, and at every level thereafter, a Stargazer gains new {g|Encyclopedia:Spell}spells{/g} per day as if he had also gained a level in a spellcasting class " +
+                    "he belonged to before adding the prestige class. He does not, however, gain any other benefit a character of that class would have gained, except for additional spells per day, " +
+                    "spells known, and an increased effective level of spellcasting. If a character had more than one spellcasting class before becoming a Stargazer, he must decide to which class " +
+                    "he adds the new level for purposes of determining spells per day.");
+                bp.AddComponent<AddSpellbookLevel>(c => {
+                    c.m_Spellbook = RavenerHunterSpellbook.ToReference<BlueprintSpellbookReference>();
+                });
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = false;
+                bp.HideNotAvailibleInUI = false;
+                bp.IsClassFeature = true;
+                bp.m_AllowNonContextActions = false;
+                bp.Ranks = 10;
+            });
+            var StargazerRavenerHunterProgression = Helpers.CreateBlueprint<BlueprintProgression>("StargazerRavenerHunterProgression", bp => {
+                bp.SetName("Ravener Hunter");
+                bp.SetDescription("At 1st level, and at every level thereafter, a Stargazer gains new {g|Encyclopedia:Spell}spells{/g} per day as if he had also gained a level in a spellcasting class " +
+                    "he belonged to before adding the prestige class. He does not, however, gain any other benefit a character of that class would have gained, except for additional spells per day, " +
+                    "spells known, and an increased effective level of spellcasting. If a character had more than one spellcasting class before becoming a Stargazer, he must decide to which class " +
+                    "he adds the new level for purposes of determining spells per day.");
+                bp.AddComponent<PrerequisiteClassSpellLevel>(c => {
+                    c.m_CharacterClass = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
+                    c.RequiredSpellLevel = 3;
+                    c.HideInUI = false;
+                });
+                bp.AddComponent<PrerequisiteArchetypeLevel>(c => {
+                    c.m_CharacterClass = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.Level = 1;
+                    c.HideInUI = false;
+                });
+                bp.AddComponent<PrerequisiteNoArchetype>(c => {
+                    c.m_CharacterClass = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = LivingScriptureArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.HideInUI = false;
+                });
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = false;
+                bp.HideNotAvailibleInUI = true;
+                bp.IsClassFeature = true;
+                bp.m_AllowNonContextActions = false;
+                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
+                    new BlueprintProgression.ClassWithLevel() { AdditionalLevel = 0, m_Class = StargazerClass.ToReference<BlueprintCharacterClassReference>() },
+                    new BlueprintProgression.ClassWithLevel() { AdditionalLevel = 0, m_Class = InquisitorClass.ToReference<BlueprintCharacterClassReference>() }
+                };
+                bp.LevelEntries = new LevelEntry[] {
+                    Helpers.LevelEntry(5, StargazerRavenerHunterLevelUp, MysticTheurgeRavenerHunterLevelSelection2),
+                    Helpers.LevelEntry(6, StargazerRavenerHunterLevelUp, MysticTheurgeRavenerHunterLevelSelection2),
+                    Helpers.LevelEntry(7, StargazerRavenerHunterLevelUp, MysticTheurgeRavenerHunterLevelSelection1, MysticTheurgeRavenerHunterLevelSelection3, MysticTheurgeRavenerHunterLevelSelection3),
+                    Helpers.LevelEntry(8, StargazerRavenerHunterLevelUp, MysticTheurgeRavenerHunterLevelSelection3),
+                    Helpers.LevelEntry(9, StargazerRavenerHunterLevelUp, MysticTheurgeRavenerHunterLevelSelection3),
+                    Helpers.LevelEntry(10, StargazerRavenerHunterLevelUp, MysticTheurgeRavenerHunterLevelSelection2, MysticTheurgeRavenerHunterLevelSelection4, MysticTheurgeRavenerHunterLevelSelection4),
+                    Helpers.LevelEntry(11, StargazerRavenerHunterLevelUp, MysticTheurgeRavenerHunterLevelSelection1, MysticTheurgeRavenerHunterLevelSelection4),
+                    Helpers.LevelEntry(12, StargazerRavenerHunterLevelUp, MysticTheurgeRavenerHunterLevelSelection4),
+                    Helpers.LevelEntry(13, StargazerRavenerHunterLevelUp, MysticTheurgeRavenerHunterLevelSelection3, MysticTheurgeRavenerHunterLevelSelection5, MysticTheurgeRavenerHunterLevelSelection5),
+                    Helpers.LevelEntry(14, StargazerRavenerHunterLevelUp, MysticTheurgeRavenerHunterLevelSelection2, MysticTheurgeRavenerHunterLevelSelection5),
+                    Helpers.LevelEntry(15, StargazerRavenerHunterLevelUp, MysticTheurgeRavenerHunterLevelSelection5),
+                    Helpers.LevelEntry(16, StargazerRavenerHunterLevelUp, MysticTheurgeRavenerHunterLevelSelection4, MysticTheurgeRavenerHunterLevelSelection6, MysticTheurgeRavenerHunterLevelSelection6),
+                    Helpers.LevelEntry(17, StargazerRavenerHunterLevelUp, MysticTheurgeRavenerHunterLevelSelection3, MysticTheurgeRavenerHunterLevelSelection6),
+                    Helpers.LevelEntry(18, StargazerRavenerHunterLevelUp, MysticTheurgeRavenerHunterLevelSelection6),
+                    Helpers.LevelEntry(19, StargazerRavenerHunterLevelUp, MysticTheurgeRavenerHunterLevelSelection5),
+                    Helpers.LevelEntry(20, StargazerRavenerHunterLevelUp, MysticTheurgeRavenerHunterLevelSelection4, MysticTheurgeRavenerHunterLevelSelection6)
+                };
+                bp.GiveFeaturesForPreviousLevels = false;
+                bp.m_ExclusiveProgression = StargazerClass.ToReference<BlueprintCharacterClassReference>();
+            });
+
+
+
             //Spellbook Selection
             var StargazerSpellbook = Helpers.CreateBlueprint<BlueprintFeatureSelection>("StargazerSpellbook", bp => {
                 bp.SetName("Stargazer spellcasting");
@@ -13525,6 +13679,8 @@ namespace ExpandedContent.Tweaks.Classes {
                     StargazerShamanProgression.ToReference<BlueprintFeatureReference>(),
                     StargazerHunterProgression.ToReference<BlueprintFeatureReference>(),
                     StargazerWarpriestProgression.ToReference<BlueprintFeatureReference>(),
+                    StargazerLivingScriptureProgression.ToReference<BlueprintFeatureReference>(),
+                    StargazerRavenerHunterProgression.ToReference<BlueprintFeatureReference>(),
                 };
                 bp.m_AllowNonContextActions = false;
                 bp.HideInUI = false;

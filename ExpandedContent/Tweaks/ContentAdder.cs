@@ -76,6 +76,8 @@ namespace ExpandedContent.Tweaks {
                 Archetypes.Conqueror.AddConqueror();
                 Archetypes.ClawOfTheFalseWyrm.AddClawOfTheFalseWyrm();
 
+                Archetypes.PrestigeClassSpellbooks.AddPrestigeClassSpellbooks();
+
                 Classes.StargazerClass.AddStargazerClass();
 
 

@@ -8,178 +8,11 @@
       "zhCN": "召唤灰熊"
     },
     {
-      "Key": "a17ca893a04545bc9753dd2fbebd28ba",
+      "Key": "8f96e34f12844530bd724473590d754a",
       "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
       "ProcessTemplates": false,
-      "enGB": "Giant Fly",
-      "zhCN": "巨苍蝇"
-    },
-    {
-      "Key": "a48ac449e70d4b81a5f04bc68cd5e0ad",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Brass Drake",
-      "zhCN": "黄铜龙兽"
-    },
-    {
-      "Key": "f749a9876e8646db9c98bd8f5f216379",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Blue Drake",
-      "zhCN": "蓝龙兽"
-    },
-    {
-      "Key": "7ea8613fb3634779b2d30ac481e9ffac",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Red Drake",
-      "zhCN": "红龙兽"
-    },
-    {
-      "Key": "134dae07c9ca419bbb8780fe64952aea",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Wolverine",
-      "zhCN": "狼獾"
-    },
-    {
-      "Key": "def2d25c45fb4ce99b9fb5307fb8eda6",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Green Drake",
-      "zhCN": "绿龙兽"
-    },
-    {
-      "Key": "397646f788464ad8b8887c8ca6f61183",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Bronze Drake",
-      "zhCN": "青铜龙兽"
-    },
-    {
-      "Key": "dbe201e8d03947028000ff87f2712ef4",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Umbral Drake",
-      "zhCN": "影龙兽"
-    },
-    {
-      "Key": "3bfa12fd3f624f0bb59b43abbf8c4476",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "White Drake",
-      "zhCN": "白龙兽"
-    },
-    {
-      "Key": "6990af2dec8c425ea2b9970d0ab46bd5",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Copper Drake",
-      "zhCN": "赤铜龙兽"
-    },
-    {
-      "Key": "215e9f56e8054610b339d75ffa4f9ee0",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Summoned Giant Grizzly",
-      "zhCN": "召唤巨型灰熊"
-    },
-    {
-      "Key": "65097a09e1de4602837be487d50ad681",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Black Drake",
-      "zhCN": "黑龙兽"
-    },
-    {
-      "Key": "6eafdf9201084d4984570d387657970a",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Advanced Wood Golum"
-    },
-    {
-      "Key": "d78cef6333094acfb027c9ea446537e5",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Silver Drake",
-      "zhCN": "银龙兽"
-    },
-    {
-      "Key": "1822845d85d245e1a4e78cc8210b900a",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Summoned Advanced Smilodon",
-      "zhCN": "召唤高等剑齿虎"
-    },
-    {
-      "Key": "aaefd539a796487d8cfe66d5e51916c8",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Summoned Giant Advanced Grizzly",
-      "zhCN": "召唤巨型高等灰熊"
-    },
-    {
-      "Key": "86617a56e6504b9ba986affcddd9cc45",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Gold Drake",
-      "zhCN": "金龙兽"
-    },
-    {
-      "Key": "8ab1da2e175249818cd9529bd3459995",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Summoned Giant Leopard",
-      "zhCN": "召唤巨型花豹"
-    },
-    {
-      "Key": "1cfda936bc994277bf04f013b1461281",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Summoned Young Grizzly",
-      "zhCN": "召唤幼年灰熊"
-    },
-    {
-      "Key": "4b5d4a135ee04c448c736039821cf216",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Summoned Giant Advanced Leopard",
-      "zhCN": "召唤巨型高等花豹"
-    },
-    {
-      "Key": "c6cfbb7f5f6f47a1bc266d8b6c94396e",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Summoned Advanced Leopard",
-      "zhCN": "召唤高等花豹"
-    },
-    {
-      "Key": "0f2cf0a97d3f45c1bd348e117a3efbf1",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Summoned Giant Advanced Smilodon",
-      "zhCN": "召唤巨型高等剑齿虎"
-    },
-    {
-      "Key": "ee9a9d2f31844be2b7cb124b144bc809",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Summoned Giant Smilodon",
-      "zhCN": "召唤巨型剑齿虎"
-    },
-    {
-      "Key": "ed20a45c798a49fd83b19b7b9f0d845c",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Summoned Advanced Grizzly",
-      "zhCN": "召唤高等灰熊"
-    },
-    {
-      "Key": "30bd172ba71146508718a328a7fadc71",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Summoned Young Smilodon",
-      "zhCN": "召唤幼年剑齿虎"
+      "enGB": "Web Tyrant Spider",
+      "zhCN": "暴君蜘蛛"
     },
     {
       "Key": "cceb9f3a49784ef6afab7bdd568637ba",
@@ -189,11 +22,178 @@
       "zhCN": "召唤幼年花豹"
     },
     {
-      "Key": "8f96e34f12844530bd724473590d754a",
+      "Key": "30bd172ba71146508718a328a7fadc71",
       "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
       "ProcessTemplates": false,
-      "enGB": "Web Tyrant Spider",
-      "zhCN": "暴君蜘蛛"
+      "enGB": "Summoned Young Smilodon",
+      "zhCN": "召唤幼年剑齿虎"
+    },
+    {
+      "Key": "ed20a45c798a49fd83b19b7b9f0d845c",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Summoned Advanced Grizzly",
+      "zhCN": "召唤高等灰熊"
+    },
+    {
+      "Key": "ee9a9d2f31844be2b7cb124b144bc809",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Summoned Giant Smilodon",
+      "zhCN": "召唤巨型剑齿虎"
+    },
+    {
+      "Key": "0f2cf0a97d3f45c1bd348e117a3efbf1",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Summoned Giant Advanced Smilodon",
+      "zhCN": "召唤巨型高等剑齿虎"
+    },
+    {
+      "Key": "c6cfbb7f5f6f47a1bc266d8b6c94396e",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Summoned Advanced Leopard",
+      "zhCN": "召唤高等花豹"
+    },
+    {
+      "Key": "4b5d4a135ee04c448c736039821cf216",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Summoned Giant Advanced Leopard",
+      "zhCN": "召唤巨型高等花豹"
+    },
+    {
+      "Key": "1cfda936bc994277bf04f013b1461281",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Summoned Young Grizzly",
+      "zhCN": "召唤幼年灰熊"
+    },
+    {
+      "Key": "8ab1da2e175249818cd9529bd3459995",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Summoned Giant Leopard",
+      "zhCN": "召唤巨型花豹"
+    },
+    {
+      "Key": "86617a56e6504b9ba986affcddd9cc45",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Gold Drake",
+      "zhCN": "金龙兽"
+    },
+    {
+      "Key": "aaefd539a796487d8cfe66d5e51916c8",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Summoned Giant Advanced Grizzly",
+      "zhCN": "召唤巨型高等灰熊"
+    },
+    {
+      "Key": "1822845d85d245e1a4e78cc8210b900a",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Summoned Advanced Smilodon",
+      "zhCN": "召唤高等剑齿虎"
+    },
+    {
+      "Key": "d78cef6333094acfb027c9ea446537e5",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Silver Drake",
+      "zhCN": "银龙兽"
+    },
+    {
+      "Key": "6eafdf9201084d4984570d387657970a",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Advanced Wood Golum"
+    },
+    {
+      "Key": "65097a09e1de4602837be487d50ad681",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Black Drake",
+      "zhCN": "黑龙兽"
+    },
+    {
+      "Key": "215e9f56e8054610b339d75ffa4f9ee0",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Summoned Giant Grizzly",
+      "zhCN": "召唤巨型灰熊"
+    },
+    {
+      "Key": "6990af2dec8c425ea2b9970d0ab46bd5",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Copper Drake",
+      "zhCN": "赤铜龙兽"
+    },
+    {
+      "Key": "3bfa12fd3f624f0bb59b43abbf8c4476",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "White Drake",
+      "zhCN": "白龙兽"
+    },
+    {
+      "Key": "dbe201e8d03947028000ff87f2712ef4",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Umbral Drake",
+      "zhCN": "影龙兽"
+    },
+    {
+      "Key": "397646f788464ad8b8887c8ca6f61183",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Bronze Drake",
+      "zhCN": "青铜龙兽"
+    },
+    {
+      "Key": "def2d25c45fb4ce99b9fb5307fb8eda6",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Green Drake",
+      "zhCN": "绿龙兽"
+    },
+    {
+      "Key": "134dae07c9ca419bbb8780fe64952aea",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Wolverine",
+      "zhCN": "狼獾"
+    },
+    {
+      "Key": "7ea8613fb3634779b2d30ac481e9ffac",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Red Drake",
+      "zhCN": "红龙兽"
+    },
+    {
+      "Key": "f749a9876e8646db9c98bd8f5f216379",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Blue Drake",
+      "zhCN": "蓝龙兽"
+    },
+    {
+      "Key": "a48ac449e70d4b81a5f04bc68cd5e0ad",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Brass Drake",
+      "zhCN": "黄铜龙兽"
+    },
+    {
+      "Key": "a17ca893a04545bc9753dd2fbebd28ba",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Giant Fly",
+      "zhCN": "巨苍蝇"
     },
     {
       "Key": "72649485145f43a1b53eb14219424047",
@@ -210,18 +210,18 @@
       "zhCN": "在第3级以及之后的每3级，恐惧骑士可以选择一种残虐。每一次残虐都会为恐惧骑士的亵渎之炎能力增加一个效果。每当恐惧骑士使用亵渎之炎对一个目标造成伤害时，该目标也会受到该恐惧骑士所拥有的残虐之一的额外效果。"
     },
     {
+      "Key": "64882fdb8b55420fa95c43fa4ffa1f97",
+      "SimpleName": "$DreadKnightChannelNegativeEnergyAbility.DescriptionShort",
+      "ProcessTemplates": false,
+      "enGB": "Channeling negative energy causes a burst that damages every creature in a 30-foot radius centered on the Dread Knight. The amount of damage inflicted is equal to 1d6 points of damage plus 1d6 points of damage for every two Dread Knight levels beyond 1st (2d6 at 3rd, 3d6 at 5th, and so on). Creatures that take damage from channeled energy receive a Will save to halve the damage.",
+      "zhCN": "引导负能量致其爆发，对以恐惧骑士为中心的30英尺半径内的所有生物造成伤害。造成的伤害量等于1d6点伤害加上1级之后每两个恐惧骑士等级1d6点伤害（3级2d6，5级3d6，依此类推）。受到引导能量伤害的生物可以通过一次成功的意志豁免将伤害减半。"
+    },
+    {
       "Key": "9790ac745aaa44ed97d1207857a5442c",
       "SimpleName": "$DreadKnightChannelNegativeEnergyAbility.DescriptionShort",
       "ProcessTemplates": false,
       "IsUsed": false,
       "enGB": "Channeling negative energy causes a burst that heals every undead creature in a 30-foot radius centered on the Dread Knight. The amount of damage healed is equal to 1d6 points of damage plus 1d6 points of damage for every two Dread Knight levels beyond 1st (2d6 at 3rd, 3d6 at 5th, and so on).",
-      "zhCN": "引导负能量致其爆发，对以恐惧骑士为中心的30英尺半径内的所有生物造成伤害。造成的伤害量等于1d6点伤害加上1级之后每两个恐惧骑士等级1d6点伤害（3级2d6，5级3d6，依此类推）。受到引导能量伤害的生物可以通过一次成功的意志豁免将伤害减半。"
-    },
-    {
-      "Key": "64882fdb8b55420fa95c43fa4ffa1f97",
-      "SimpleName": "$DreadKnightChannelNegativeEnergyAbility.DescriptionShort",
-      "ProcessTemplates": false,
-      "enGB": "Channeling negative energy causes a burst that damages every creature in a 30-foot radius centered on the Dread Knight. The amount of damage inflicted is equal to 1d6 points of damage plus 1d6 points of damage for every two Dread Knight levels beyond 1st (2d6 at 3rd, 3d6 at 5th, and so on). Creatures that take damage from channeled energy receive a Will save to halve the damage.",
       "zhCN": "引导负能量致其爆发，对以恐惧骑士为中心的30英尺半径内的所有生物造成伤害。造成的伤害量等于1d6点伤害加上1级之后每两个恐惧骑士等级1d6点伤害（3级2d6，5级3d6，依此类推）。受到引导能量伤害的生物可以通过一次成功的意志豁免将伤害减半。"
     },
     {
@@ -325,18 +325,18 @@
       "zhCN": "一小束由植物物质制成的魔法浆果，带有德鲁伊魔法。"
     },
     {
-      "Key": "1f339f9d31594459b1ef3b5d57e8aca2",
-      "SimpleName": "<null>Introduction",
-      "ProcessTemplates": false,
-      "enGB": "Bonus Spells:",
-      "zhCN": "奖励法术："
-    },
-    {
       "Key": "dd5dab8b8404404e86d0e6371eb206a9",
       "SimpleName": "<null>Introduction",
       "ProcessTemplates": false,
       "enGB": "Additional Hexes:",
       "zhCN": "额外巫术："
+    },
+    {
+      "Key": "1f339f9d31594459b1ef3b5d57e8aca2",
+      "SimpleName": "<null>Introduction",
+      "ProcessTemplates": false,
+      "enGB": "Bonus Spells:",
+      "zhCN": "奖励法术："
     },
     {
       "Key": "9d48e03819b44541a35e8cd517094a44",
@@ -1380,13 +1380,6 @@
       "zhCN": "熊图腾动物伙伴"
     },
     {
-      "Key": "a09c02ba158445c1867ca3c4283143d7",
-      "SimpleName": "BearShamanDomainSelection.Description",
-      "ProcessTemplates": true,
-      "enGB": "A bear totem druid who chooses an animal companion must select a bear or wolverine. If choosing a domain, the bear totem druid must choose from the Animal, Earth, Protection, and Strength domains.",
-      "zhCN": "巨熊德鲁伊动物伙伴必须是熊，如果他选择了领域能力的话，他必须以从下几个领域中挑选：动物、大地、保护和力量。"
-    },
-    {
       "Key": "c6b3ce75f0f44737b69e1b6d456609fc",
       "SimpleName": "BearShamanDomainSelection.Description",
       "ProcessTemplates": true,
@@ -1400,6 +1393,13 @@
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "A bear totem druid who chooses an animal companion must select a bear. If choosing a domain, the bear totem druid must choose from the Animal, Earth, Protection, and Strength domains.",
+      "zhCN": "巨熊德鲁伊动物伙伴必须是熊，如果他选择了领域能力的话，他必须以从下几个领域中挑选：动物、大地、保护和力量。"
+    },
+    {
+      "Key": "a09c02ba158445c1867ca3c4283143d7",
+      "SimpleName": "BearShamanDomainSelection.Description",
+      "ProcessTemplates": true,
+      "enGB": "A bear totem druid who chooses an animal companion must select a bear or wolverine. If choosing a domain, the bear totem druid must choose from the Animal, Earth, Protection, and Strength domains.",
       "zhCN": "巨熊德鲁伊动物伙伴必须是熊，如果他选择了领域能力的话，他必须以从下几个领域中挑选：动物、大地、保护和力量。"
     },
     {
@@ -4431,18 +4431,18 @@
       "zhCN": "龙兽寒冷吐息"
     },
     {
-      "Key": "1ffacbc9846a4e318f7a858b69a49d1a",
-      "SimpleName": "DrakeBreathWeaponCold1Feature.Description",
-      "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 4d6 points of cold damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day.",
-      "zhCN": "这种喷吐武器在 15 英尺锥形范围内造成 4d6 点寒冷伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮才能恢复。在升级之前，您可以每天使用两次。"
-    },
-    {
       "Key": "52d5d2df88c441e2b22e5a93b9a1248e",
       "SimpleName": "DrakeBreathWeaponCold1Feature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "This breath weapon deals 4d6 points of cold damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day.",
+      "zhCN": "这种喷吐武器在 15 英尺锥形范围内造成 4d6 点寒冷伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮才能恢复。在升级之前，您可以每天使用两次。"
+    },
+    {
+      "Key": "1ffacbc9846a4e318f7a858b69a49d1a",
+      "SimpleName": "DrakeBreathWeaponCold1Feature.Description",
+      "ProcessTemplates": true,
+      "enGB": "This breath weapon deals 4d6 points of cold damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day.",
       "zhCN": "这种喷吐武器在 15 英尺锥形范围内造成 4d6 点寒冷伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮才能恢复。在升级之前，您可以每天使用两次。"
     },
     {
@@ -4559,18 +4559,18 @@
       "zhCN": "这种喷吐武器在 15 英尺锥形范围内造成 4d6 点电击伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮才能恢复。在升级之前，您可以每天使用两次。"
     },
     {
+      "Key": "d95aedb2f0034114859ddb7acee786e7",
+      "SimpleName": "DrakeBreathWeaponElectricity2.Description",
+      "ProcessTemplates": true,
+      "enGB": "This breath weapon deals 8d6 points of electricity damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day.",
+      "zhCN": "这种喷吐武器在 30 英尺锥形范围内造成 8d6 点电击伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮才能恢复。在升级之前，您可以每天使用 5 次。"
+    },
+    {
       "Key": "7d216a2e346f42339211e5c4e1b11892",
       "SimpleName": "DrakeBreathWeaponElectricity2.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "This breath weapon deals 8d6 points of electricity damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day.",
-      "zhCN": "这种喷吐武器在 30 英尺锥形范围内造成 8d6 点电击伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮才能恢复。在升级之前，您可以每天使用 5 次。"
-    },
-    {
-      "Key": "d95aedb2f0034114859ddb7acee786e7",
-      "SimpleName": "DrakeBreathWeaponElectricity2.Description",
-      "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 8d6 points of electricity damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day.",
       "zhCN": "这种喷吐武器在 30 英尺锥形范围内造成 8d6 点电击伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮才能恢复。在升级之前，您可以每天使用 5 次。"
     },
     {
@@ -4807,18 +4807,18 @@
       "zhCN": "高等龙兽负能量吐息"
     },
     {
+      "Key": "e9dc69d808f34e2885d082cf807db6d8",
+      "SimpleName": "DrakeBreathWeaponUmbral2Feature.Description",
+      "ProcessTemplates": true,
+      "enGB": "This breath weapon deals 8d6 points of negative damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day. \nTargets with an affinity to negative energy (such as undead) are not healed by this ability and are treated as if the ability did not hit them.\nUnlocking this allows you to use your lesser breath weapon without spending any resources, however you must wait 1d4 rounds to recharge.",
+      "zhCN": "这种喷吐武器在 30 英尺的锥形范围内造成 8d6 点负能量伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮来重新充能。在升级之前，您每天可以使用 5 次。对负能量有亲和力的目标（例如不死生物）不会被该能力治疗，并且被视为该能力没有击中他们。解锁它可以让你在不花费任何资源的情况下使用你的次级喷吐武器，但是你必须等待 1d4 轮才能充能。"
+    },
+    {
       "Key": "73f5183bb1c24c45992400a39e4f1ba6",
       "SimpleName": "DrakeBreathWeaponUmbral2Feature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "This breath weapon deals 8d6 points of negative damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day. \nTargets with an affinity to negativeenergy (such as undead) are not healed by this ability and are treated as if the ability did not hit them.\nUnlocking this allows you to use your lesser breath weapon without spending any resources, however you must wait 1d4 rounds to recharge.",
-      "zhCN": "这种喷吐武器在 30 英尺的锥形范围内造成 8d6 点负能量伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮来重新充能。在升级之前，您每天可以使用 5 次。对负能量有亲和力的目标（例如不死生物）不会被该能力治疗，并且被视为该能力没有击中他们。解锁它可以让你在不花费任何资源的情况下使用你的次级喷吐武器，但是你必须等待 1d4 轮才能充能。"
-    },
-    {
-      "Key": "e9dc69d808f34e2885d082cf807db6d8",
-      "SimpleName": "DrakeBreathWeaponUmbral2Feature.Description",
-      "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 8d6 points of negative damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day. \nTargets with an affinity to negative energy (such as undead) are not healed by this ability and are treated as if the ability did not hit them.\nUnlocking this allows you to use your lesser breath weapon without spending any resources, however you must wait 1d4 rounds to recharge.",
       "zhCN": "这种喷吐武器在 30 英尺的锥形范围内造成 8d6 点负能量伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮来重新充能。在升级之前，您每天可以使用 5 次。对负能量有亲和力的目标（例如不死生物）不会被该能力治疗，并且被视为该能力没有击中他们。解锁它可以让你在不花费任何资源的情况下使用你的次级喷吐武器，但是你必须等待 1d4 轮才能充能。"
     },
     {
@@ -6399,6 +6399,12 @@
       "zhCN": "1级时，以及之后每个等级，地狱骑士持节士都能够获得新的每日法术量，如同他在进阶之前已有的施法职业上也获得了一个等级。但是除了额外的每日法术量、已知法术、有效施法者等级之外，他无法获得该职业角色升级之际本应获得的其他好处。若角色在进阶成为地狱骑士持节士之前拥有多个施法职业，那么他必须决定将新的一级追加在哪个职业上，以用于判断每日法术量。"
     },
     {
+      "Key": "e7b5ea5983494dd197f4cc24617a83b9",
+      "SimpleName": "HellknightSigniferDreadKnightLevelUp.Description",
+      "ProcessTemplates": true,
+      "enGB": "At 1st level, the hellknight signifer selects a divine spellcasting class she belonged to before adding the prestige class. When a new hellknight signifer level is gained, the character gains new spells per day and new spells known as if she had also gained a level in that spellcasting class."
+    },
+    {
       "Key": "a8e2551648be4203a358f43eb5963429",
       "SimpleName": "HellknightSigniferDreadknightLevelUp.Name",
       "ProcessTemplates": false,
@@ -6411,6 +6417,24 @@
       "ProcessTemplates": true,
       "enGB": "At 1st level, and at every level thereafter, a Hellknight signifer gains new spells per day as if he had also gained a level in a spellcasting class he belonged to before adding the prestige class. He does not, however, gain any other benefit a character of that class would have gained, except for additional spells per day, spells known, and an increased effective level of spellcasting. If a character had more than one spellcasting class before becoming a Hellknight signifer, he must decide to which class he adds the new level for purposes of determining spells per day.",
       "zhCN": "1级时，以及之后每个等级，地狱骑士持节士都能够获得新的每日法术量，如同他在进阶之前已有的施法职业上也获得了一个等级。但是除了额外的每日法术量、已知法术、有效施法者等级之外，他无法获得该职业角色升级之际本应获得的其他好处。若角色在进阶成为地狱骑士持节士之前拥有多个施法职业，那么他必须决定将新的一级追加在哪个职业上，以用于判断每日法术量。"
+    },
+    {
+      "Key": "d677a957dbeb4c50ab3cda8e349c0a20",
+      "SimpleName": "HellknightSigniferLivingScriptureLevelUp.Description",
+      "ProcessTemplates": true,
+      "enGB": "At 1st level, the mystic theurge selects a divine spellcasting class she belonged to before adding the prestige class. When a new mystic theurge level is gained, the character gains new spells per day and new spells known as if she had also gained a level in that spellcasting class."
+    },
+    {
+      "Key": "7ee5da9d5d9f43238cf74d31f39991ac",
+      "SimpleName": "HellknightSigniferRavenerHunterLevelUp.Description",
+      "ProcessTemplates": true,
+      "enGB": "At 1st level, the hellknight signifer selects a divine spellcasting class she belonged to before adding the prestige class. When a new hellknight signifer level is gained, the character gains new spells per day and new spells known as if she had also gained a level in that spellcasting class."
+    },
+    {
+      "Key": "59fc972afdec4cbcb7098d5a36cbf48b",
+      "SimpleName": "HellknightSigniferSilverChampionLevelUp.Description",
+      "ProcessTemplates": true,
+      "enGB": "At 1st level, the mystic theurge selects a divine spellcasting class she belonged to before adding the prestige class. When a new mystic theurge level is gained, the character gains new spells per day and new spells known as if she had also gained a level in that spellcasting class."
     },
     {
       "Key": "c2a8c29a8ac8495e9fc9750c627ffd32",
@@ -6733,18 +6757,18 @@
       "zhCN": "你以心灵感应方式破坏目标的身心，让其在攻击检定、技能检定和战技检定上受到–4 减值的剧痛。成功的意志豁免将持续时间缩短至 1 轮。"
     },
     {
-      "Key": "91e15ae8e1f04d0f9f8855c0afdf3f28",
-      "SimpleName": "InflictPainAbility.SavingThrow",
-      "ProcessTemplates": false,
-      "enGB": "Will partial",
-      "zhCN": "意志 部分"
-    },
-    {
       "Key": "cf9477eb02794180aeab229cc05c4e5e",
       "SimpleName": "InflictPainAbility.SavingThrow",
       "ProcessTemplates": false,
       "enGB": "Will disbelief, then Fortitude partial",
       "zhCN": "意志以识破，然后强韧以部分生效"
+    },
+    {
+      "Key": "91e15ae8e1f04d0f9f8855c0afdf3f28",
+      "SimpleName": "InflictPainAbility.SavingThrow",
+      "ProcessTemplates": false,
+      "enGB": "Will partial",
+      "zhCN": "意志 部分"
     },
     {
       "Key": "ce3735ec762040b4a44ce9dcc374f3fd",
@@ -6867,18 +6891,18 @@
       "zhCN": "杰兹"
     },
     {
+      "Key": "92a4e62f50d7416aae1becc807e61aa3",
+      "SimpleName": "JalaijataliFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nTitles: Rillsong   \nAlignment: Chaotic Good   \nAreas of Concern: Natural music, Rapids, Waterfalls   \nDomains: Chaos, Good, Scalykind , Water   \nSubdomains: Azata, Flotsam, Revelry, Rivers   \nFavoured Weapon: Whip (Trident)   \nHoly Symbol: Water from wood pipe   \nSacred Animal: Water lizard   \nJalaijatali is a free-spirited empyreal lord who sings with the voice of a rushing creek. Her presence can be felt in the rapids of a flowing river or beneath the misty cascade of a waterfall. Jalaijatali appears as a beautiful Mwangi woman with skin formed of tiny, iridescent scales. Her pointed ears peek through short black hair, and her body is garbed in a robe of living water that continually splashes and rushes over her form. At a moment's notice, the empyreal lord can pluck a stream of water from her robe to wield as a whip. Rillsong loves to teach mortals the beauty of natural music, from the patter of a summer rain to the sawing of katydids. While Jalaijatali much prefers making music to making war, she can be roused to anger by fiends and evil creatures that corrupt her waters, particularly river drakes or water oni. On Elysium, Jalaijatali lives in a pool fed by a waterfall that falls continually from the sky with no apparent source. Around the pool stands a gazebo of acacia wood and crystal, with raised wooden platforms covered in soft mats of greenery where guests can recline.",
+      "zhCN": "\n称号：溪流之歌\n阵营：混乱善良 \n神职：自然之音，湍流，瀑布\n领域：混乱、善良、鳞类、流水\n子领域：爱塔、漂浮、狂欢、河流\n偏好武器：鞭子（三叉戟）\n圣徽：从木管流下的水\n圣兽：水蜥蜴\n贾莱佳塔莉是一位自由奔放的至高天领主，她唱歌的声音像湍急的小溪。在流动的河流的激流中，或在薄雾缭绕的瀑布下，都能感觉到她的存在。\n贾莱佳塔莉是一个美丽的芒吉女人，皮肤由微小的虹彩鳞片组成。她的尖耳朵从黑色的短发中探出头来，她的身体披着一件活水长袍，不断地在她的身体上飞溅和奔流。她可以从她的长袍中拔出一股水流，作为鞭子挥舞。溪流之歌喜欢向凡人传授自然音乐之美，从夏雨的淅淅沥沥到螽斯的锯切。虽然贾莱佳塔莉更喜欢创作音乐而不是发动战争，但她可能会被恶魔和邪恶生物激怒，这些生物会腐蚀她的水域，尤其是水亚龙和水恶鬼。\n在极乐境，奔放之野有条从天上落下的无源瀑布，瀑布下面的水池就是贾莱佳塔莉的家。池旁有座相思树和水晶构成的露台，上面遍布芳草以供客人休憩。"
+    },
+    {
       "Key": "59e3ebed3bae4b69abecb4091f48ee1c",
       "SimpleName": "JalaijataliFeature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "\nTitles: Rillsong   \nAlignment: Chaotic Good   \nAreas of Concern: Natural music, Rapids, Waterfalls   \nDomains: Chaos, Good, Scalykind , Water   \nSubdomains: Azata, Flotsam, Revelry, Rivers   \nFavoured Weapon: Whip (Trident)   \nHoly Symbol: Water from wood pipe   \nSacred Animal: Water lizard   \nJalaijatali is a free-spirited empyreal lord who sings with the voice of a rushing creek. Her presence can be felt in the rapids of a flowing river or beneath the misty cascade of a waterfall. Jalaijatali appears as a beautiful Mwangi woman with skin formed of tiny, iridescent scales . Her pointed ears peek through short black hair, and her body is garbed in a robe of living water that continually splashes and rushes over her form. At a moment's notice, the empyreal lord can pluck a stream of water from her robe to wield as a whip. Rillsong loves to teach mortals the beauty of natural music, from the patter of a summer rain to the sawing of katydids. While Jalaijatali much prefers making music to making war, she can be roused to anger by fiends and evil creatures that corrupt her waters, particularly river drakes or water oni. On Elysium, Jalaijatali lives in a pool fed by a waterfall that falls continually from the sky with no apparent source. Around the pool stands a gazebo of acacia wood and crystal, with raised wooden platforms covered in soft mats of greenery where guests can recline.",
-      "zhCN": "\n称号：溪流之歌\n阵营：混乱善良 \n神职：自然之音，湍流，瀑布\n领域：混乱、善良、鳞类、流水\n子领域：爱塔、漂浮、狂欢、河流\n偏好武器：鞭子（三叉戟）\n圣徽：从木管流下的水\n圣兽：水蜥蜴\n贾莱佳塔莉是一位自由奔放的至高天领主，她唱歌的声音像湍急的小溪。在流动的河流的激流中，或在薄雾缭绕的瀑布下，都能感觉到她的存在。\n贾莱佳塔莉是一个美丽的芒吉女人，皮肤由微小的虹彩鳞片组成。她的尖耳朵从黑色的短发中探出头来，她的身体披着一件活水长袍，不断地在她的身体上飞溅和奔流。她可以从她的长袍中拔出一股水流，作为鞭子挥舞。溪流之歌喜欢向凡人传授自然音乐之美，从夏雨的淅淅沥沥到螽斯的锯切。虽然贾莱佳塔莉更喜欢创作音乐而不是发动战争，但她可能会被恶魔和邪恶生物激怒，这些生物会腐蚀她的水域，尤其是水亚龙和水恶鬼。\n在极乐境，奔放之野有条从天上落下的无源瀑布，瀑布下面的水池就是贾莱佳塔莉的家。池旁有座相思树和水晶构成的露台，上面遍布芳草以供客人休憩。"
-    },
-    {
-      "Key": "92a4e62f50d7416aae1becc807e61aa3",
-      "SimpleName": "JalaijataliFeature.Description",
-      "ProcessTemplates": true,
-      "enGB": "\nTitles: Rillsong   \nAlignment: Chaotic Good   \nAreas of Concern: Natural music, Rapids, Waterfalls   \nDomains: Chaos, Good, Scalykind , Water   \nSubdomains: Azata, Flotsam, Revelry, Rivers   \nFavoured Weapon: Whip (Trident)   \nHoly Symbol: Water from wood pipe   \nSacred Animal: Water lizard   \nJalaijatali is a free-spirited empyreal lord who sings with the voice of a rushing creek. Her presence can be felt in the rapids of a flowing river or beneath the misty cascade of a waterfall. Jalaijatali appears as a beautiful Mwangi woman with skin formed of tiny, iridescent scales. Her pointed ears peek through short black hair, and her body is garbed in a robe of living water that continually splashes and rushes over her form. At a moment's notice, the empyreal lord can pluck a stream of water from her robe to wield as a whip. Rillsong loves to teach mortals the beauty of natural music, from the patter of a summer rain to the sawing of katydids. While Jalaijatali much prefers making music to making war, she can be roused to anger by fiends and evil creatures that corrupt her waters, particularly river drakes or water oni. On Elysium, Jalaijatali lives in a pool fed by a waterfall that falls continually from the sky with no apparent source. Around the pool stands a gazebo of acacia wood and crystal, with raised wooden platforms covered in soft mats of greenery where guests can recline.",
       "zhCN": "\n称号：溪流之歌\n阵营：混乱善良 \n神职：自然之音，湍流，瀑布\n领域：混乱、善良、鳞类、流水\n子领域：爱塔、漂浮、狂欢、河流\n偏好武器：鞭子（三叉戟）\n圣徽：从木管流下的水\n圣兽：水蜥蜴\n贾莱佳塔莉是一位自由奔放的至高天领主，她唱歌的声音像湍急的小溪。在流动的河流的激流中，或在薄雾缭绕的瀑布下，都能感觉到她的存在。\n贾莱佳塔莉是一个美丽的芒吉女人，皮肤由微小的虹彩鳞片组成。她的尖耳朵从黑色的短发中探出头来，她的身体披着一件活水长袍，不断地在她的身体上飞溅和奔流。她可以从她的长袍中拔出一股水流，作为鞭子挥舞。溪流之歌喜欢向凡人传授自然音乐之美，从夏雨的淅淅沥沥到螽斯的锯切。虽然贾莱佳塔莉更喜欢创作音乐而不是发动战争，但她可能会被恶魔和邪恶生物激怒，这些生物会腐蚀她的水域，尤其是水亚龙和水恶鬼。\n在极乐境，奔放之野有条从天上落下的无源瀑布，瀑布下面的水池就是贾莱佳塔莉的家。池旁有座相思树和水晶构成的露台，上面遍布芳草以供客人休憩。"
     },
     {
@@ -7080,18 +7104,18 @@
       "zhCN": "病难母"
     },
     {
+      "Key": "44cfe3bd69c84e1b9f07ca7fde904b3d",
+      "SimpleName": "LalaciFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nTitles: He of Motley Repose   \nAlignment: Chaotic Good   \nAreas of Concern: Rainbows, Relaxation, Shade   \nDomains: Chaos, Good, Luck, Sun   \nSubdomains: Azata, Fate, Light, Whimsy   \nFavoured Weapon: Sling (Slingstaff)   \nHoly Symbol: Rainbow with shadow   \nSacred Animal: Lacewing   \nLalaci sees the beauty in conflict. The sun wars with the rain and creates a rainbow, and He of Motley Repose believes that everyone's inner nature should be a similar mix of action and restraint, placid adoration and righteous scorn. He offers rest and relaxation to those who meet each day with excitement and vigor and who may be tired from the chaotic beauty that is their life. To mortal eyes, Lalaci appears to be fair-skinned with white-blonde hair and yellow-white eyes. He tucks the two prismatic wings that curve from his shoulders down so that he appears to wear a beautiful multicolored cloak, though among his own kind he walks in his true naked form, with crystalline flesh that refracts light as golden rays. He of Motley Repose provides rest to the hardworking and shade to those exhausted from the sun. Glassblowers and illusionists often find creative inspiration in Lalaci's rainbows; particularly gifted glass artists and lightweavers who lead worthy lives sometimes find small prisms at their workstations-tokens of Lalaci's favor. His devotees claim that the reflections of rainbows in natural bodies of water create portals to his celestial domain: an enormous, warped glass palace that floats on a cloud across the surface of Elysium.",
+      "zhCN": "\n称号：七彩长眠者\n阵营：混乱善良 \n神职：彩虹、休闲、阴影 \n领域：混乱、善良、幸运、太阳\n子领域：爱塔、天命、光明、滑稽\n偏好武器：吊索（投石杖） \n圣徽：带阴影的彩虹\n圣兽：草蜻蛉\n拉剌奇看到了冲突中的美。太阳与雨交相辉映，创造出彩虹，七彩长眠者认为，每个人的内在本性都应该是类似的混合行动和克制，平静的崇拜和正义的蔑视。他为那些每天都充满兴奋和活力的人提供休息和放松，他们可能会因生活中混乱的美丽而感到疲倦。\n在凡人眼中，拉剌奇似乎皮肤白皙，有着白金色的头发和黄白色的眼睛。他把从肩膀上弯曲的两个棱柱形翅膀掖好，这样他看起来就穿着一件漂亮的彩色斗篷，尽管在他自己的同类中，他以真正赤裸的形式行走，水晶般的肉体折射出金色的光芒。\n七彩长眠者为辛勤工作的人提供休息，为那些因太阳而疲劳的人提供阴凉。吹玻璃工和魔术师经常在拉剌奇的彩虹中找到创意灵感；特别有天赋的玻璃艺术家和过着有价值生活的织光师有时会在他们的工作站上找到小棱镜——这是拉剌奇青睐的象征。他的信徒声称，自然水体中彩虹的反射创造了通往他的天界的门户：奔放之野云端一座巨大扭曲的玻璃城堡，漂浮在极乐境表面的云层上。"
+    },
+    {
       "Key": "21eaf4d1d6474217a066392160e8dd15",
       "SimpleName": "LalaciFeature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "\nTitles: He of Motley Repose   \nAlignment: Chaotic Good   \nAreas of Concern: Rainbows, Relaxation, Shade   \nDomains: Chaos, Good, Luck, Sun   \nSubdomains: Azata, Fate, Light, Whimsy   \nFavoured Weapon: Sling (Slingstaff)   \nHoly Symbol: Rainbow with shadow   \nSacred Animal: Lacewing   \nLalaci sees the beauty in conflict. The sun wars with the rain and creates a rainbow, and He of Motley Repose believes that everyone's inner nature should be a similar mix of action and restraint, placid adoration and righteous scorn. He offers rest and relaxation to those who meet each day with excitement and vigor and who may be tired from the chaotic beauty that is their life. To mortal eyes, Lalaci appears to be fair-skinned with white-blonde hair and yellow-white eyes. He tucks the two prismatic wings that curve from his shoulders down so that he appears to wear a beautiful multicolored cloak, though among his own kind he walks in his true naked form, with crystalline flesh that refracts light as golden rays. He of Motley Repose provides rest to the hardworking and shade to those exhausted from the sun. Glassblowers and illusionists often find creative inspiration in Lalaci's rainbows; particularly gifted glass artists and lightweavers who lead worthy lives sometimes find small prisms at their workstations-tokens of Lalaci's favor. His devotees claim that the reflections of rainbows in natural bodies of water create portals to his celestial domain: an enormous, warped gla s s palace that floats on a cloud across the surface of Elysium.",
-      "zhCN": "\n称号：七彩长眠者\n阵营：混乱善良 \n神职：彩虹、休闲、阴影 \n领域：混乱、善良、幸运、太阳\n子领域：爱塔、天命、光明、滑稽\n偏好武器：吊索（投石杖） \n圣徽：带阴影的彩虹\n圣兽：草蜻蛉\n拉剌奇看到了冲突中的美。太阳与雨交相辉映，创造出彩虹，七彩长眠者认为，每个人的内在本性都应该是类似的混合行动和克制，平静的崇拜和正义的蔑视。他为那些每天都充满兴奋和活力的人提供休息和放松，他们可能会因生活中混乱的美丽而感到疲倦。\n在凡人眼中，拉剌奇似乎皮肤白皙，有着白金色的头发和黄白色的眼睛。他把从肩膀上弯曲的两个棱柱形翅膀掖好，这样他看起来就穿着一件漂亮的彩色斗篷，尽管在他自己的同类中，他以真正赤裸的形式行走，水晶般的肉体折射出金色的光芒。\n七彩长眠者为辛勤工作的人提供休息，为那些因太阳而疲劳的人提供阴凉。吹玻璃工和魔术师经常在拉剌奇的彩虹中找到创意灵感；特别有天赋的玻璃艺术家和过着有价值生活的织光师有时会在他们的工作站上找到小棱镜——这是拉剌奇青睐的象征。他的信徒声称，自然水体中彩虹的反射创造了通往他的天界的门户：奔放之野云端一座巨大扭曲的玻璃城堡，漂浮在极乐境表面的云层上。"
-    },
-    {
-      "Key": "44cfe3bd69c84e1b9f07ca7fde904b3d",
-      "SimpleName": "LalaciFeature.Description",
-      "ProcessTemplates": true,
-      "enGB": "\nTitles: He of Motley Repose   \nAlignment: Chaotic Good   \nAreas of Concern: Rainbows, Relaxation, Shade   \nDomains: Chaos, Good, Luck, Sun   \nSubdomains: Azata, Fate, Light, Whimsy   \nFavoured Weapon: Sling (Slingstaff)   \nHoly Symbol: Rainbow with shadow   \nSacred Animal: Lacewing   \nLalaci sees the beauty in conflict. The sun wars with the rain and creates a rainbow, and He of Motley Repose believes that everyone's inner nature should be a similar mix of action and restraint, placid adoration and righteous scorn. He offers rest and relaxation to those who meet each day with excitement and vigor and who may be tired from the chaotic beauty that is their life. To mortal eyes, Lalaci appears to be fair-skinned with white-blonde hair and yellow-white eyes. He tucks the two prismatic wings that curve from his shoulders down so that he appears to wear a beautiful multicolored cloak, though among his own kind he walks in his true naked form, with crystalline flesh that refracts light as golden rays. He of Motley Repose provides rest to the hardworking and shade to those exhausted from the sun. Glassblowers and illusionists often find creative inspiration in Lalaci's rainbows; particularly gifted glass artists and lightweavers who lead worthy lives sometimes find small prisms at their workstations-tokens of Lalaci's favor. His devotees claim that the reflections of rainbows in natural bodies of water create portals to his celestial domain: an enormous, warped glass palace that floats on a cloud across the surface of Elysium.",
       "zhCN": "\n称号：七彩长眠者\n阵营：混乱善良 \n神职：彩虹、休闲、阴影 \n领域：混乱、善良、幸运、太阳\n子领域：爱塔、天命、光明、滑稽\n偏好武器：吊索（投石杖） \n圣徽：带阴影的彩虹\n圣兽：草蜻蛉\n拉剌奇看到了冲突中的美。太阳与雨交相辉映，创造出彩虹，七彩长眠者认为，每个人的内在本性都应该是类似的混合行动和克制，平静的崇拜和正义的蔑视。他为那些每天都充满兴奋和活力的人提供休息和放松，他们可能会因生活中混乱的美丽而感到疲倦。\n在凡人眼中，拉剌奇似乎皮肤白皙，有着白金色的头发和黄白色的眼睛。他把从肩膀上弯曲的两个棱柱形翅膀掖好，这样他看起来就穿着一件漂亮的彩色斗篷，尽管在他自己的同类中，他以真正赤裸的形式行走，水晶般的肉体折射出金色的光芒。\n七彩长眠者为辛勤工作的人提供休息，为那些因太阳而疲劳的人提供阴凉。吹玻璃工和魔术师经常在拉剌奇的彩虹中找到创意灵感；特别有天赋的玻璃艺术家和过着有价值生活的织光师有时会在他们的工作站上找到小棱镜——这是拉剌奇青睐的象征。他的信徒声称，自然水体中彩虹的反射创造了通往他的天界的门户：奔放之野云端一座巨大扭曲的玻璃城堡，漂浮在极乐境表面的云层上。"
     },
     {
@@ -7436,6 +7460,66 @@
       "ProcessTemplates": false,
       "enGB": "Intelligent Longsword",
       "zhCN": "智能长剑"
+    },
+    {
+      "Key": "f9824e8ba16d4d5db3ecb4776c558ac2",
+      "SimpleName": "LoremasterClawOfTheFalseWyrmLevelUp.Description",
+      "ProcessTemplates": true,
+      "enGB": "At 1st level, the mystic theurge selects a divine spellcasting class she belonged to before adding the prestige class. When a new mystic theurge level is gained, the character gains new spells per day and new spells known as if she had also gained a level in that spellcasting class."
+    },
+    {
+      "Key": "3d19566c4af54bdc8f61bbf5d3fcdcef",
+      "SimpleName": "LoremasterClawOfTheFalseWyrmProgression.Description",
+      "ProcessTemplates": true,
+      "enGB": "When a new loremaster level is gained, the character gains new spells per day as if he had also gained a level in a spellcasting class he belonged to before adding the prestige class. He does not, however, gain other benefits a character of that class would have gained, except for additional spells per day, spells known (if he is a spontaneous spellcaster), and an increased effective level of spellcasting. If a character had more than one spellcasting class before becoming a loremaster, he must decide to which class he adds the new level for purposes of determining the number of spells per day."
+    },
+    {
+      "Key": "e9f6d742b9304a6ba63779a87881a911",
+      "SimpleName": "LoremasterDreadKnightLevelUp.Description",
+      "ProcessTemplates": true,
+      "enGB": "At 1st level, the loremaster selects a divine spellcasting class she belonged to before adding the prestige class. When a new loremaster level is gained, the character gains new spells per day and new spells known as if she had also gained a level in that spellcasting class."
+    },
+    {
+      "Key": "ca2c7e8ce7174935a01d37b5db82dbbd",
+      "SimpleName": "LoremasterDreadKnightProgression.Description",
+      "ProcessTemplates": true,
+      "enGB": "When a new loremaster level is gained, the character gains new spells per day as if he had also gained a level in a spellcasting class he belonged to before adding the prestige class. He does not, however, gain other benefits a character of that class would have gained, except for additional spells per day, spells known (if he is a spontaneous spellcaster), and an increased effective level of spellcasting. If a character had more than one spellcasting class before becoming a loremaster, he must decide to which class he adds the new level for purposes of determining the number of spells per day."
+    },
+    {
+      "Key": "4ef129fc82204145bac2c5829fd1fce5",
+      "SimpleName": "LoremasterLivingScriptureLevelUp.Description",
+      "ProcessTemplates": true,
+      "enGB": "At 1st level, the mystic theurge selects a divine spellcasting class she belonged to before adding the prestige class. When a new mystic theurge level is gained, the character gains new spells per day and new spells known as if she had also gained a level in that spellcasting class."
+    },
+    {
+      "Key": "d443f399b9e14e6daaafa9d2cf85d27a",
+      "SimpleName": "LoremasterLivingScriptureProgression.Description",
+      "ProcessTemplates": true,
+      "enGB": "When a new loremaster level is gained, the character gains new spells per day as if he had also gained a level in a spellcasting class he belonged to before adding the prestige class. He does not, however, gain other benefits a character of that class would have gained, except for additional spells per day, spells known (if he is a spontaneous spellcaster), and an increased effective level of spellcasting. If a character had more than one spellcasting class before becoming a loremaster, he must decide to which class he adds the new level for purposes of determining the number of spells per day."
+    },
+    {
+      "Key": "dc017dedb9af42c1a7f5e038a24840f4",
+      "SimpleName": "LoremasterRavenerHunterLevelUp.Description",
+      "ProcessTemplates": true,
+      "enGB": "At 1st level, the loremaster selects a divine spellcasting class she belonged to before adding the prestige class. When a new loremaster level is gained, the character gains new spells per day and new spells known as if she had also gained a level in that spellcasting class."
+    },
+    {
+      "Key": "daa289fc9fa54fb88acfa81ba2f39c67",
+      "SimpleName": "LoremasterRavenerHunterProgression.Description",
+      "ProcessTemplates": true,
+      "enGB": "When a new loremaster level is gained, the character gains new spells per day as if he had also gained a level in a spellcasting class he belonged to before adding the prestige class. He does not, however, gain other benefits a character of that class would have gained, except for additional spells per day, spells known (if he is a spontaneous spellcaster), and an increased effective level of spellcasting. If a character had more than one spellcasting class before becoming a loremaster, he must decide to which class he adds the new level for purposes of determining the number of spells per day."
+    },
+    {
+      "Key": "cfc96b1a901b47fdb74c905a3bde0cc4",
+      "SimpleName": "LoremasterSilverChampionLevelUp.Description",
+      "ProcessTemplates": true,
+      "enGB": "At 1st level, the mystic theurge selects a divine spellcasting class she belonged to before adding the prestige class. When a new mystic theurge level is gained, the character gains new spells per day and new spells known as if she had also gained a level in that spellcasting class."
+    },
+    {
+      "Key": "2993620ee9cc453cbce216a8f52c7a65",
+      "SimpleName": "LoremasterSilverChampionProgression.Description",
+      "ProcessTemplates": true,
+      "enGB": "When a new loremaster level is gained, the character gains new spells per day as if he had also gained a level in a spellcasting class he belonged to before adding the prestige class. He does not, however, gain other benefits a character of that class would have gained, except for additional spells per day, spells known (if he is a spontaneous spellcaster), and an increased effective level of spellcasting. If a character had more than one spellcasting class before becoming a loremaster, he must decide to which class he adds the new level for purposes of determining the number of spells per day."
     },
     {
       "Key": "8893093462ae4cb4bb75b39fb52a524b",
@@ -7878,6 +7962,246 @@
       "zhCN": "玛缇"
     },
     {
+      "Key": "85b70ba21b734970a301ff318912d78c",
+      "SimpleName": "MysticTheurgeClawOfTheFalseWyrmLevelUp.Description",
+      "ProcessTemplates": true,
+      "enGB": "At 1st level, the mystic theurge selects a divine spellcasting class she belonged to before adding the prestige class. When a new mystic theurge level is gained, the character gains new spells per day and new spells known as if she had also gained a level in that spellcasting class."
+    },
+    {
+      "Key": "4e2f89ad97b445979ceaee7b578e9eab",
+      "SimpleName": "MysticTheurgeClawOfTheFalseWyrmProgression.Description",
+      "ProcessTemplates": true,
+      "enGB": "At 1st level, the mystic theurge selects a divine spellcasting class she belonged to before adding the prestige class. When a new mystic theurge level is gained, the character gains new spells per day and new spells known as if she had also gained a level in that spellcasting class."
+    },
+    {
+      "Key": "902b2c8287a6417faca887399015e606",
+      "SimpleName": "MysticTheurgeDreadKnightLevelParametrized1.Description",
+      "ProcessTemplates": true,
+      "enGB": "You can select new known dread knight spells when you gain a new level in this class."
+    },
+    {
+      "Key": "27fb2e4913654f5ba2f8144717e5a9a0",
+      "SimpleName": "MysticTheurgeDreadKnightLevelParametrized1.Name",
+      "ProcessTemplates": false,
+      "enGB": "Dread Knight Spell (1st Level)"
+    },
+    {
+      "Key": "92493f19ad0649f8b779873037fc5fee",
+      "SimpleName": "MysticTheurgeDreadKnightLevelParametrized2.Description",
+      "ProcessTemplates": true,
+      "enGB": "You can select new known dread knight spells when you gain a new level in this class."
+    },
+    {
+      "Key": "2b745419ede9413886eb0d67831b20b4",
+      "SimpleName": "MysticTheurgeDreadKnightLevelParametrized2.Name",
+      "ProcessTemplates": false,
+      "enGB": "Dread Knight Spell (2nd Level)"
+    },
+    {
+      "Key": "42445c13bf3940409457c561f12c8ad1",
+      "SimpleName": "MysticTheurgeDreadKnightLevelParametrized3.Description",
+      "ProcessTemplates": true,
+      "enGB": "You can select new known dread knight spells when you gain a new level in this class."
+    },
+    {
+      "Key": "68f4fd55e1ae4c0e80f80d977d295aba",
+      "SimpleName": "MysticTheurgeDreadKnightLevelParametrized3.Name",
+      "ProcessTemplates": false,
+      "enGB": "Dread Knight Spell (3rd Level)"
+    },
+    {
+      "Key": "7fdb7e6a9f4e470994a2894342a2867e",
+      "SimpleName": "MysticTheurgeDreadKnightLevelParametrized4.Description",
+      "ProcessTemplates": true,
+      "enGB": "You can select new known dread knight spells when you gain a new level in this class."
+    },
+    {
+      "Key": "2c32ec8130a348f4afd7c8c69a506985",
+      "SimpleName": "MysticTheurgeDreadKnightLevelParametrized4.Name",
+      "ProcessTemplates": false,
+      "enGB": "Dread Knight Spell (4th Level)"
+    },
+    {
+      "Key": "8fd6b8700a8e4d81b2be0576863c939b",
+      "SimpleName": "MysticTheurgeDreadKnightLevelSelection1.Description",
+      "ProcessTemplates": true,
+      "enGB": "You can select new known dread knight spells when you gain a new level in this class."
+    },
+    {
+      "Key": "103b65dec23e460991b77c6553a7aaf8",
+      "SimpleName": "MysticTheurgeDreadKnightLevelSelection2.Description",
+      "ProcessTemplates": true,
+      "enGB": "You can select new known dread knight spells when you gain a new level in this class."
+    },
+    {
+      "Key": "de0e4db1368e42eb9db5827359fd6957",
+      "SimpleName": "MysticTheurgeDreadKnightLevelSelection3.Description",
+      "ProcessTemplates": true,
+      "enGB": "You can select new known dread knight spells when you gain a new level in this class."
+    },
+    {
+      "Key": "082fefc5331c499f83647a107bfdbe90",
+      "SimpleName": "MysticTheurgeDreadKnightLevelSelection4.Description",
+      "ProcessTemplates": true,
+      "enGB": "You can select new known dread knight spells when you gain a new level in this class."
+    },
+    {
+      "Key": "ca1192bdd4ef47f083787e7838100edd",
+      "SimpleName": "MysticTheurgeDreadKnightLevelUp.Description",
+      "ProcessTemplates": true,
+      "enGB": "At 1st level, the mystic theurge selects a divine spellcasting class she belonged to before adding the prestige class. When a new mystic theurge level is gained, the character gains new spells per day and new spells known as if she had also gained a level in that spellcasting class."
+    },
+    {
+      "Key": "e7c9b80946df4c36a9e247401f76c4c8",
+      "SimpleName": "MysticTheurgeDreadKnightProgression.Description",
+      "ProcessTemplates": true,
+      "enGB": "At 1st level, the mystic theurge selects a divine spellcasting class she belonged to before adding the prestige class. When a new mystic theurge level is gained, the character gains new spells per day and new spells known as if she had also gained a level in that spellcasting class."
+    },
+    {
+      "Key": "c918cc9835f740859a086504d46c54c0",
+      "SimpleName": "MysticTheurgeLivingScriptureLevelUp.Description",
+      "ProcessTemplates": true,
+      "enGB": "At 1st level, the mystic theurge selects a divine spellcasting class she belonged to before adding the prestige class. When a new mystic theurge level is gained, the character gains new spells per day and new spells known as if she had also gained a level in that spellcasting class."
+    },
+    {
+      "Key": "b303607b82e644de844a7dcf0936115f",
+      "SimpleName": "MysticTheurgeLivingScriptureProgression.Description",
+      "ProcessTemplates": true,
+      "enGB": "At 1st level, the mystic theurge selects a divine spellcasting class she belonged to before adding the prestige class. When a new mystic theurge level is gained, the character gains new spells per day and new spells known as if she had also gained a level in that spellcasting class."
+    },
+    {
+      "Key": "96bc40e8bdfb42348be42849f81095e3",
+      "SimpleName": "MysticTheurgeRavenerHunterLevelParametrized1.Description",
+      "ProcessTemplates": true,
+      "enGB": "You can select new known ravener hunter spells when you gain a new level in this class."
+    },
+    {
+      "Key": "b5b61ebe4136493ba40075f65921effc",
+      "SimpleName": "MysticTheurgeRavenerHunterLevelParametrized1.Name",
+      "ProcessTemplates": false,
+      "enGB": "Ravener Hunter Spell (1st Level)"
+    },
+    {
+      "Key": "7858769b807141a4845e2ac02bceee63",
+      "SimpleName": "MysticTheurgeRavenerHunterLevelParametrized2.Description",
+      "ProcessTemplates": true,
+      "enGB": "You can select new known ravener hunter spells when you gain a new level in this class."
+    },
+    {
+      "Key": "260c846f47014ca38544dedade982e38",
+      "SimpleName": "MysticTheurgeRavenerHunterLevelParametrized2.Name",
+      "ProcessTemplates": false,
+      "enGB": "Ravener Hunter Spell (2nd Level)"
+    },
+    {
+      "Key": "b692ac16f658479dbce1287d5820b4f1",
+      "SimpleName": "MysticTheurgeRavenerHunterLevelParametrized3.Description",
+      "ProcessTemplates": true,
+      "enGB": "You can select new known ravener hunter spells when you gain a new level in this class."
+    },
+    {
+      "Key": "fe97c6d374b84d1482383514f4fa01f8",
+      "SimpleName": "MysticTheurgeRavenerHunterLevelParametrized3.Name",
+      "ProcessTemplates": false,
+      "enGB": "Ravener Hunter Spell (3rd Level)"
+    },
+    {
+      "Key": "08d4e3704e574a7eb2b9d67b0feae99a",
+      "SimpleName": "MysticTheurgeRavenerHunterLevelParametrized4.Description",
+      "ProcessTemplates": true,
+      "enGB": "You can select new known ravener hunter spells when you gain a new level in this class."
+    },
+    {
+      "Key": "bdb6cd2149ea4bb1b380c6b95a86f2e1",
+      "SimpleName": "MysticTheurgeRavenerHunterLevelParametrized4.Name",
+      "ProcessTemplates": false,
+      "enGB": "Ravener Hunter Spell (4th Level)"
+    },
+    {
+      "Key": "03e245bfe0134974a9a5a8d10e477215",
+      "SimpleName": "MysticTheurgeRavenerHunterLevelParametrized5.Description",
+      "ProcessTemplates": true,
+      "enGB": "You can select new known ravener hunter spells when you gain a new level in this class."
+    },
+    {
+      "Key": "4459ac559daa448aa38e4b6b1e99cb7e",
+      "SimpleName": "MysticTheurgeRavenerHunterLevelParametrized5.Name",
+      "ProcessTemplates": false,
+      "enGB": "Ravener Hunter Spell (5th Level)"
+    },
+    {
+      "Key": "4276a3fdadac48988b7a57db543e7cd0",
+      "SimpleName": "MysticTheurgeRavenerHunterLevelParametrized6.Description",
+      "ProcessTemplates": true,
+      "enGB": "You can select new known ravener hunter spells when you gain a new level in this class."
+    },
+    {
+      "Key": "eaaab56d39634b68bffed9076fb9e4ef",
+      "SimpleName": "MysticTheurgeRavenerHunterLevelParametrized6.Name",
+      "ProcessTemplates": false,
+      "enGB": "Ravener Hunter Spell (6th Level)"
+    },
+    {
+      "Key": "a4a3fdd35812449c8b7f31d49b21064a",
+      "SimpleName": "MysticTheurgeRavenerHunterLevelSelection1.Description",
+      "ProcessTemplates": true,
+      "enGB": "You can select new known ravener hunter spells when you gain a new level in this class."
+    },
+    {
+      "Key": "a8122d0ffecb4927b7dc4706709f254b",
+      "SimpleName": "MysticTheurgeRavenerHunterLevelSelection2.Description",
+      "ProcessTemplates": true,
+      "enGB": "You can select new known ravener hunter spells when you gain a new level in this class."
+    },
+    {
+      "Key": "b5751a0a6f7c4eb08dd9242ec766ff77",
+      "SimpleName": "MysticTheurgeRavenerHunterLevelSelection3.Description",
+      "ProcessTemplates": true,
+      "enGB": "You can select new known ravener hunter spells when you gain a new level in this class."
+    },
+    {
+      "Key": "e6ba450e686c4019974e4fb192cf8b69",
+      "SimpleName": "MysticTheurgeRavenerHunterLevelSelection4.Description",
+      "ProcessTemplates": true,
+      "enGB": "You can select new known ravener hunter spells when you gain a new level in this class."
+    },
+    {
+      "Key": "63cee4ba8bad4a908593e224dfeb5201",
+      "SimpleName": "MysticTheurgeRavenerHunterLevelSelection5.Description",
+      "ProcessTemplates": true,
+      "enGB": "You can select new known ravener hunter spells when you gain a new level in this class."
+    },
+    {
+      "Key": "25bc96769b554afe80dc4a62fe198fe2",
+      "SimpleName": "MysticTheurgeRavenerHunterLevelSelection6.Description",
+      "ProcessTemplates": true,
+      "enGB": "You can select new known ravener hunter spells when you gain a new level in this class."
+    },
+    {
+      "Key": "0779291c70314a49a1647578db04cb36",
+      "SimpleName": "MysticTheurgeRavenerHunterLevelUp.Description",
+      "ProcessTemplates": true,
+      "enGB": "At 1st level, the mystic theurge selects a divine spellcasting class she belonged to before adding the prestige class. When a new mystic theurge level is gained, the character gains new spells per day and new spells known as if she had also gained a level in that spellcasting class."
+    },
+    {
+      "Key": "a104d9e0c6ef48d2a17b1ea28893e765",
+      "SimpleName": "MysticTheurgeRavenerHunterProgression.Description",
+      "ProcessTemplates": true,
+      "enGB": "At 1st level, the mystic theurge selects a divine spellcasting class she belonged to before adding the prestige class. When a new mystic theurge level is gained, the character gains new spells per day and new spells known as if she had also gained a level in that spellcasting class."
+    },
+    {
+      "Key": "bf1940956a5f43629ae6661d275cbb01",
+      "SimpleName": "MysticTheurgeSilverChampionLevelUp.Description",
+      "ProcessTemplates": true,
+      "enGB": "At 1st level, the mystic theurge selects a divine spellcasting class she belonged to before adding the prestige class. When a new mystic theurge level is gained, the character gains new spells per day and new spells known as if she had also gained a level in that spellcasting class."
+    },
+    {
+      "Key": "10b314c9c6f24327894bc5a0ea9a96b5",
+      "SimpleName": "MysticTheurgeSilverChampionProgression.Description",
+      "ProcessTemplates": true,
+      "enGB": "At 1st level, the mystic theurge selects a divine spellcasting class she belonged to before adding the prestige class. When a new mystic theurge level is gained, the character gains new spells per day and new spells known as if she had also gained a level in that spellcasting class."
+    },
+    {
       "Key": "c16170f82cf14a09a477d2d772b15a2e",
       "SimpleName": "MythicalDrakeMaster.Description",
       "ProcessTemplates": true,
@@ -7892,17 +8216,17 @@
       "zhCN": "神话龙兽"
     },
     {
-      "Key": "bb5ce5209f504b5b90eca79c5655eb06",
+      "Key": "71a9616b02404f8d997ef4ee6385e3a9",
       "SimpleName": "NaderiFeature.Description",
       "ProcessTemplates": true,
-      "IsUsed": false,
       "enGB": "\nTitles: The Lost Maiden   \nAlignment: Neutral   \nAreas of Concern: Drowning, Romantic Tragedy, Suicide\nDomains: Charm, Nobility, Repose, Water   \nSubdomains: Love, Lust, Martyr, Souls   \nFavoured Weapon: Dagger   \nHoly Symbol: Ornate golden dagger   \nSacred Animal: Swan   \nThe goddess Naderi was a divine assistant to Shelyn and was tasked with overseeing forbidden relationships among couples. She ascended to divinity when a young couple under her gaze decided to kill themselves instead of fighting the circumstances that forbade their love. Shocked by her apotheosis and afraid of how Shelyn would react, Naderi fled her mistress and finally became the goddess of suicides, particularly romantic tragedies. Shelyn has tried to fix this strange divide between the two of them, but has been unsuccessful due to unusual circumstances. Unlike the adherents of other neutral divinities, few people worship Naderi openly, or for a lifetime. Most of her faithful turn to her only as a last resort when they feel their love is doomed.Those left behind by a loved one’s suicide may supplicate Naderi to care for the departed one—or, in anger at the abandonment, may beseech the goddess to bar the gates of her realm to the deceased, though such prayers are likely to be answered with signs of the goddess’s displeasure.Naderi’s secondary aspect as a goddess of drowning sometimes leads the parents of drowned children to beg her to shepherd their children’s souls safely into the afterlife.",
       "zhCN": "\n称号：迷失少女\n阵营：绝对中立\n神职：溺水、爱情悲剧、自杀\n领域：魅惑、崇高、宁静、流水 \n子领域：爱慕、情欲、殉难、灵魂\n偏好武器：匕首 \n圣徽：华丽的金色匕首 \n圣兽：天鹅\n女神奈德丽曾是纱林的神仆之一，奈德丽得知塔尔多的一对恋人长期以来一直祈求永恒玫瑰的保护，却很快就失去了希望。爱超越了凡间的阻隔，她在一片大瀑布的薄雾中亲自现身于他们面前。为了鼓舞这对恋人，她解释到，爱是少有的有时能超越生命终结，将灵魂聚集在一起的纽带之一。令她震惊的是，年轻的恋人们完全按字面理解了她的话；他们拥抱在一起，跳进了瀑布，感谢她在生命的最后为他们展示了真正在一起的道路。\n她本不打算把这对恋人带到死亡之地，这一牺牲推动惊愕的奈德丽成为了自杀，特别是殉情的庇护主。她的晋升烧尽了本性中那些与这领域无关的元素。大多数形式的美无法再触动她，只有爱情的美和悲剧浪漫的诱惑仍在召唤着她。她获得真正快乐的大多数能力也被抛在了身后，只剩下了苦中作乐。奈德丽对自己内心的变化感到恐惧，她认为自己背叛了莎琳，不小心把两位信徒变成了自己的，同时又把他们逼到了自杀的境地，因此逃离了纱林的领域。\n莎琳追了过去，不是出于愤怒，而是担心，但奈德丽躲开了她。几个世纪以来，永恒玫瑰多次试图找到奈德丽，因为她感觉到迷失少女的本性正逐渐变得更加黑暗，并决心不再像失去哥哥宗·库山那样失去另一位所爱。与此同时，黑暗之神厄加图雅和泽弗斯也向奈德丽示好，希望鼓励她绽放出人格中更虚无主义的一面。奈德丽本人处在不稳定的平衡中，她执着于作为莎琳的仆人所经历的光明、爱情和美好的记忆，同时也在与一种越来越强烈的信念即爱只有在死亡中才能实现，以及对自杀美学的迷恋进行斗争。她的外观是一位黑发的年轻女子，有着阴魂萦绕的一双大眼睛，穿着浸透了水的白色衣服，手里拿着一把匕首。"
     },
     {
-      "Key": "71a9616b02404f8d997ef4ee6385e3a9",
+      "Key": "bb5ce5209f504b5b90eca79c5655eb06",
       "SimpleName": "NaderiFeature.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "\nTitles: The Lost Maiden   \nAlignment: Neutral   \nAreas of Concern: Drowning, Romantic Tragedy, Suicide\nDomains: Charm, Nobility, Repose, Water   \nSubdomains: Love, Lust, Martyr, Souls   \nFavoured Weapon: Dagger   \nHoly Symbol: Ornate golden dagger   \nSacred Animal: Swan   \nThe goddess Naderi was a divine assistant to Shelyn and was tasked with overseeing forbidden relationships among couples. She ascended to divinity when a young couple under her gaze decided to kill themselves instead of fighting the circumstances that forbade their love. Shocked by her apotheosis and afraid of how Shelyn would react, Naderi fled her mistress and finally became the goddess of suicides, particularly romantic tragedies. Shelyn has tried to fix this strange divide between the two of them, but has been unsuccessful due to unusual circumstances. Unlike the adherents of other neutral divinities, few people worship Naderi openly, or for a lifetime. Most of her faithful turn to her only as a last resort when they feel their love is doomed.Those left behind by a loved one’s suicide may supplicate Naderi to care for the departed one—or, in anger at the abandonment, may beseech the goddess to bar the gates of her realm to the deceased, though such prayers are likely to be answered with signs of the goddess’s displeasure.Naderi’s secondary aspect as a goddess of drowning sometimes leads the parents of drowned children to beg her to shepherd their children’s souls safely into the afterlife.",
       "zhCN": "\n称号：迷失少女\n阵营：绝对中立\n神职：溺水、爱情悲剧、自杀\n领域：魅惑、崇高、宁静、流水 \n子领域：爱慕、情欲、殉难、灵魂\n偏好武器：匕首 \n圣徽：华丽的金色匕首 \n圣兽：天鹅\n女神奈德丽曾是纱林的神仆之一，奈德丽得知塔尔多的一对恋人长期以来一直祈求永恒玫瑰的保护，却很快就失去了希望。爱超越了凡间的阻隔，她在一片大瀑布的薄雾中亲自现身于他们面前。为了鼓舞这对恋人，她解释到，爱是少有的有时能超越生命终结，将灵魂聚集在一起的纽带之一。令她震惊的是，年轻的恋人们完全按字面理解了她的话；他们拥抱在一起，跳进了瀑布，感谢她在生命的最后为他们展示了真正在一起的道路。\n她本不打算把这对恋人带到死亡之地，这一牺牲推动惊愕的奈德丽成为了自杀，特别是殉情的庇护主。她的晋升烧尽了本性中那些与这领域无关的元素。大多数形式的美无法再触动她，只有爱情的美和悲剧浪漫的诱惑仍在召唤着她。她获得真正快乐的大多数能力也被抛在了身后，只剩下了苦中作乐。奈德丽对自己内心的变化感到恐惧，她认为自己背叛了莎琳，不小心把两位信徒变成了自己的，同时又把他们逼到了自杀的境地，因此逃离了纱林的领域。\n莎琳追了过去，不是出于愤怒，而是担心，但奈德丽躲开了她。几个世纪以来，永恒玫瑰多次试图找到奈德丽，因为她感觉到迷失少女的本性正逐渐变得更加黑暗，并决心不再像失去哥哥宗·库山那样失去另一位所爱。与此同时，黑暗之神厄加图雅和泽弗斯也向奈德丽示好，希望鼓励她绽放出人格中更虚无主义的一面。奈德丽本人处在不稳定的平衡中，她执着于作为莎琳的仆人所经历的光明、爱情和美好的记忆，同时也在与一种越来越强烈的信念即爱只有在死亡中才能实现，以及对自杀美学的迷恋进行斗争。她的外观是一位黑发的年轻女子，有着阴魂萦绕的一双大眼睛，穿着浸透了水的白色衣服，手里拿着一把匕首。"
     },
@@ -8404,18 +8728,18 @@
       "zhCN": "骸骨"
     },
     {
-      "Key": "652e3f84a2804e83b5bc11a0934f7453",
-      "SimpleName": "OceansEchoDragonMysteryFeature.Description",
-      "ProcessTemplates": true,
-      "enGB": "Gain access to the spells and revelations of the dragon mystery. \nDue to the ocean's echo archetype the class skills gained from this archtypeare changed to Persuasion, Knowledge (world) and Lore (nature)",
-      "zhCN": "具有巨龙秘示域的先知将灵巧、沟通、感知和知识（世界）添加到她的本职技能列表中。"
-    },
-    {
       "Key": "98f88456e0f44c4b816a7118f3d98e27",
       "SimpleName": "OceansEchoDragonMysteryFeature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "An oracle with the dragon mystery adds Mobility, Persuasion, Perception and Knowledge (world)  to her list of class skills.",
+      "zhCN": "具有巨龙秘示域的先知将灵巧、沟通、感知和知识（世界）添加到她的本职技能列表中。"
+    },
+    {
+      "Key": "652e3f84a2804e83b5bc11a0934f7453",
+      "SimpleName": "OceansEchoDragonMysteryFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "Gain access to the spells and revelations of the dragon mystery. \nDue to the ocean's echo archetype the class skills gained from this archtypeare changed to Persuasion, Knowledge (world) and Lore (nature)",
       "zhCN": "具有巨龙秘示域的先知将灵巧、沟通、感知和知识（世界）添加到她的本职技能列表中。"
     },
     {
@@ -10598,18 +10922,18 @@
       "zhCN": "你可以毫不费力地为你的盟友提供帮助，无论是帮助他们在激烈的战斗中攻击还是保卫他们。每当你使用援助动作对你的一个盟友带来攻击检定或 AC 加值时，你造成的加值增加 1。此加值在第 4 级和此后每 5 个先知等级增加 1（最多-5 在 19 级）。它不与其他专长或职业特性叠加，这些专长或职业特性可以提高您在使用援助其他动作时提供的加值。"
     },
     {
-      "Key": "22d57920ce524fa3851b1583bf513fa8",
-      "SimpleName": "PerfectAidAnotherOffenceBuff.Name",
-      "ProcessTemplates": false,
-      "enGB": "Perfect Aid Another - Distracted Defending",
-      "zhCN": "完美助人 - 分心防守"
-    },
-    {
       "Key": "6dca0ae196dd4a5ab6dad37062a7180b",
       "SimpleName": "PerfectAidAnotherOffenceBuff.Name",
       "ProcessTemplates": false,
       "IsUsed": false,
       "enGB": "Perfect Aid Another - Offence",
+      "zhCN": "完美助人 - 分心防守"
+    },
+    {
+      "Key": "22d57920ce524fa3851b1583bf513fa8",
+      "SimpleName": "PerfectAidAnotherOffenceBuff.Name",
+      "ProcessTemplates": false,
+      "enGB": "Perfect Aid Another - Distracted Defending",
       "zhCN": "完美助人 - 分心防守"
     },
     {
@@ -11191,18 +11515,18 @@
       "zhCN": "\n称号：复仇战将\n阵营：守序善良\n神职：破坏，善良，秩序，崇高\n子领域：亚空，领导，殉难，狂暴\n偏好武器：重剑\n圣徽：交叉的剑与翼\n圣兽：獒犬\n复仇战将象征骑士精神，责任与复仇，他是骑士的典范。作为魔鬼大公迪斯帕特和原生的火之半神费洛尼娅的子嗣，他艰辛的克服他父母的名誉对他的影响。因此，他深切了解寻求接纳和信任，为了正义与良善，与自身的本性时刻斗争是多么艰辛难苦。他代表战斗中的力量，面对邪恶时的愤怒，对冤屈者的容赦，或是为之复仇。他代表在危难时领军的责任，守护无辜之人的美德与义务。他期望他的追随者消灭他们发现的邪恶异界生物，并努力去赢取周围之人的信赖与尊重。追随复仇战将之人将他视为光辉的榜样，身先士卒地冲锋在战斗与对抗邪恶的最前线。\n复仇战将的化身是一个高大的巨型人类，身高超过20呎，身着闪耀光芒的黄金板甲，手持燃烧着熊熊圣火的剑刃。五个燃烧的火翼从他的背后伸展开来，三翼在左，二翼在右——而缺失的第六翼被他的父亲在暴怒之中撕扯了下来。拉贾瑟尔的追随者包括十字军战士，骑士，士兵，被诬陷之人，被边缘化之人和被冤屈者。"
     },
     {
-      "Key": "312f5f125aa545abb3fa1104c97d040a",
-      "SimpleName": "RagathielFeature.Description",
-      "ProcessTemplates": true,
-      "enGB": "\nTitles: General of Vengeance   \nAlignment: Lawful Good   \nDomains: Destruction, Good, Law, Nobility   \nSubdomains: Archon, Leadership, Martyr, Rage   \nFavoured Weapon: Bastard Sword   \nHoly Symbol: Sword, crossed with Wing   \nSacred Animal: Mastiff   \nSacred Colours: Crimson, Gold   \nRagathiel is an empyreal lord—a good servant of the gods who through transcendence has achieved some small measure of divine power—known as the General of Vengeance. His portfolio includes chivalry, duty, and vengeance, and his holy symbol is a bastard sword crossed with a crimson wing. He makes his home at the base of the mountain of Heaven, in his eponymous fortress, a magnificent steel structure designed to withstand a thousand-year siege if need be. Ragathiel takes an active role in the battle against Hell's fiendish legions. He shines at the head of his army, a figure of golden light cleaving through the ranks of devils that face him. Soldiers of all kinds, but particularly knights, pay homage to Ragathiel and pray for his virtue and wrathful strength in battle. Those who have taken vows, especially those of duty or vengeance, hold Ragathiel as their ideal, and his agents sometimes assist those who have been grievously wronged and now seek righteous vengeance. As strange as it may seem, Ragathiel is the son of Feronia, a demigoddess of the Plane of Fire, and Dispater, the Father of Dis. He was conceived in a brief tryst (lasting only a few centuries), after which his mother took him out of Hell. Ragathiel's tainted heritage has left him with a wrathful heart, and the angel struggles constantly to master his baser impulses in service to the light. For thousands of years he strove to prove himself to the angelic choirs of Heaven. In the Maelstrom he wrestled for 16 years with a monstrous evil serpent whose scales wept acidic blood until he was able to choke the life out of it. He led an entire army against one of the iron fortresses of Avernus and burned the castle to the ground with holy fire, single-handedly maiming Infernal Duke Deumus in the process. Finally the other empyreal lords agreed to admit Ragathiel into their ranks, and now they appear to trust the angel completely—though that trust took centuries to develop. At some point in history, Ragathiel destroyed Typhon, the original ruler of the first layer of Hell. He may have been manipulated into doing so by the schemes of Asmodeus to punish Typhon for his indiscretions. Ragathiel was once served by the Hand of the Inheritor, an angel who now acts as the goddess Iomedae's herald. Then known as the Hand of Vengeance, this angel asked to be reassigned to Iomedae after the death of Aroden. \nAppearance: Ragathiel is a tower of glorious might. He stands almost 20 feet tall, and five lofty burning wings stretch from his back. The General of Vengeance once had six wings, but one was severed, torn from his body by the archdevil Dispater—Ragathiel's father.   \nWorship: Ragathiel is commonly worshiped by the avowed, knights, soldiers, the wronged, and the empyreal lord employs aasimar, paladins, blink dogs, and kirin as his most common servants. The holiest time for Ragathiel's followers is the brief moments before and after a battle. The faithful ask Ragathiel's eyes to fall upon them and for his wings to shield them. This is also a standard greeting and farewell among worshipers. Followers of Ragathiel commonly wear red and silver clothing. Many also don an ornament or sigil the color of flames, typically on the helmet. Ragathiel has a small but old cult in Magnimar, a city known for its many mystery cults revering various empyreal lords.   \nPaladin Code:   \n*I will avenge evil wrought upon the innocent.   \n*I will not give my word lightly, but once it is given, I will uphold a promise until my last breath.   \n*Those proven guilty must be punished for their crimes. I will not turn a blind eye to wrongdoing.   \n*Rage is a virtue and a strength only when focused against the deserving. I will never seek disproportionate retribution.   \n*Redemption finds hearts from even the cruelest origins. I will strive not to act upon prejudice against fellow mortals based on race or origin.",
-      "zhCN": "\n称号：复仇战将\n阵营：守序善良\n神职：破坏，善良，秩序，崇高\n子领域：亚空，领导，殉难，狂暴\n偏好武器：重剑\n圣徽：交叉的剑与翼\n圣兽：獒犬\n复仇战将象征骑士精神，责任与复仇，他是骑士的典范。作为魔鬼大公迪斯帕特和原生的火之半神费洛尼娅的子嗣，他艰辛的克服他父母的名誉对他的影响。因此，他深切了解寻求接纳和信任，为了正义与良善，与自身的本性时刻斗争是多么艰辛难苦。他代表战斗中的力量，面对邪恶时的愤怒，对冤屈者的容赦，或是为之复仇。他代表在危难时领军的责任，守护无辜之人的美德与义务。他期望他的追随者消灭他们发现的邪恶异界生物，并努力去赢取周围之人的信赖与尊重。追随复仇战将之人将他视为光辉的榜样，身先士卒地冲锋在战斗与对抗邪恶的最前线。\n复仇战将的化身是一个高大的巨型人类，身高超过20呎，身着闪耀光芒的黄金板甲，手持燃烧着熊熊圣火的剑刃。五个燃烧的火翼从他的背后伸展开来，三翼在左，二翼在右——而缺失的第六翼被他的父亲在暴怒之中撕扯了下来。拉贾瑟尔的追随者包括十字军战士，骑士，士兵，被诬陷之人，被边缘化之人和被冤屈者。"
-    },
-    {
       "Key": "5b9a07c6f2a94019bbfaf7e9e6d4fb6d",
       "SimpleName": "RagathielFeature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "\nTitles: General of Vengeance   \nAlignment: Lawful Good   \nDomains: Destruction, Good, Law, Nobility   \nSubdomains: Archon, Leadership, Martyr, Rage   \nFavoured Weapon: Bastard Sword   \nHoly Symbol: Sword, crossed with Wing   \nSacred Animal: Mastiff   \nSacred Colours: Crimson, Gold   \nRagathiel is an empyreal lord—a good servant of the gods who through transcendence has achieved some small measure of divine power—known as the General of Vengeance. His portfolio includes chivalry, duty, and vengeance, and his holy symbol is a bastard sword crossed with a crimson wing. He makes his home at the base of the mountain of Heaven, in his eponymous fortress, a magnificent steel structure designed to withstand a thousand-year siege if need be. Ragathiel takes an active role in the battle against Hell's fiendish legions. He shines at the head of his army, a figure of golden light cleaving through the ranks of devils that face him. Soldiers of all kinds, but particularly knights, pay homage to Ragathiel and pray for his virtue and wrathful strength in battle. Those who have taken vows, especially those of duty or vengeance, hold Ragathiel as their ideal, and his agents sometimes assist those who have been grievously wronged and now seek righteous vengeance. As strange as it may seem, Ragathiel is the son of Feronia, a demigoddess of the Plane of Fire, and Dispater, the Father of Dis. He was conceived in a brief tryst (lasting only a few centuries), after which his mother took him out of Hell. Ragathiel's tainted heritage has left him with a wrathful heart, and the angel struggles constantly to master his baser impulses in service to the light. For thousands of years he strove to prove himself to the angelic choirs of Heaven. In the Maelstrom he wrestled for 16 years with a monstrous evil serpent whose scales wept acidic blood until he was able to choke the life out of it. He led an entire army against one of the iron fortresses of Avernus and burned the castle to the ground with holy fire, single-handedly maiming Infernal Duke Deumus in the process. Finally the other empyreal lords agreed to admit Ragathiel into their ranks, and now they appear to trust the angel completely—though that trust took centuries to develop. At some point in history, Ragathiel destroyed Typhon, the original ruler of the first layer of Hell.He may have been manipulated into doing so by the schemes of Asmodeus to punish Typhon for his indiscretions.[9] Ragathiel was once served by the Hand of the Inheritor, an angel who now acts as the goddess Iomedae's herald. Then known as the Hand of Vengeance, this angel asked to be reassigned to Iomedae after the death of Aroden. \nAppearance: Ragathiel is a tower of glorious might. He stands almost 20 feet tall, and five lofty burning wings stretch from his back. The General of Vengeance once had six wings, but one was severed, torn from his body by the archdevil Dispater—Ragathiel's father.   \nWorship: Ragathiel is commonly worshiped by the avowed, knights, soldiers, the wronged, and the empyreal lord employs aasimar, paladins, blink dogs, and kirin as his most common servants.[4] The holiest time for Ragathiel's followers is the brief moments before and after a battle. The faithful ask Ragathiel's eyes to fall upon them and for his wings to shield them.This is also a standard greeting and farewell among worshipers. Followers of Ragathiel commonly wear red and silver clothing.Many also don an ornament or sigil the color of flames, typically on the helmet. Ragathiel has a small but old cult in Magnimar, a city known for its many mystery cults revering various empyreal lords.   \nPaladin Code:   \n*I will avenge evil wrought upon the innocent.   \n*I will not give my word lightly, but once it is given, I will uphold a promise until my last breath.   \n*Those proven guilty must be punished for their crimes. I will not turn a blind eye to wrongdoing.   \n*Rage is a virtue and a strength only when focused against the deserving. I will never seek disproportionate retribution.   \n*Redemption finds hearts from even the cruelest origins. I will strive not to act upon prejudice against fellow mortals based on race or origin.",
+      "zhCN": "\n称号：复仇战将\n阵营：守序善良\n神职：破坏，善良，秩序，崇高\n子领域：亚空，领导，殉难，狂暴\n偏好武器：重剑\n圣徽：交叉的剑与翼\n圣兽：獒犬\n复仇战将象征骑士精神，责任与复仇，他是骑士的典范。作为魔鬼大公迪斯帕特和原生的火之半神费洛尼娅的子嗣，他艰辛的克服他父母的名誉对他的影响。因此，他深切了解寻求接纳和信任，为了正义与良善，与自身的本性时刻斗争是多么艰辛难苦。他代表战斗中的力量，面对邪恶时的愤怒，对冤屈者的容赦，或是为之复仇。他代表在危难时领军的责任，守护无辜之人的美德与义务。他期望他的追随者消灭他们发现的邪恶异界生物，并努力去赢取周围之人的信赖与尊重。追随复仇战将之人将他视为光辉的榜样，身先士卒地冲锋在战斗与对抗邪恶的最前线。\n复仇战将的化身是一个高大的巨型人类，身高超过20呎，身着闪耀光芒的黄金板甲，手持燃烧着熊熊圣火的剑刃。五个燃烧的火翼从他的背后伸展开来，三翼在左，二翼在右——而缺失的第六翼被他的父亲在暴怒之中撕扯了下来。拉贾瑟尔的追随者包括十字军战士，骑士，士兵，被诬陷之人，被边缘化之人和被冤屈者。"
+    },
+    {
+      "Key": "312f5f125aa545abb3fa1104c97d040a",
+      "SimpleName": "RagathielFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nTitles: General of Vengeance   \nAlignment: Lawful Good   \nDomains: Destruction, Good, Law, Nobility   \nSubdomains: Archon, Leadership, Martyr, Rage   \nFavoured Weapon: Bastard Sword   \nHoly Symbol: Sword, crossed with Wing   \nSacred Animal: Mastiff   \nSacred Colours: Crimson, Gold   \nRagathiel is an empyreal lord—a good servant of the gods who through transcendence has achieved some small measure of divine power—known as the General of Vengeance. His portfolio includes chivalry, duty, and vengeance, and his holy symbol is a bastard sword crossed with a crimson wing. He makes his home at the base of the mountain of Heaven, in his eponymous fortress, a magnificent steel structure designed to withstand a thousand-year siege if need be. Ragathiel takes an active role in the battle against Hell's fiendish legions. He shines at the head of his army, a figure of golden light cleaving through the ranks of devils that face him. Soldiers of all kinds, but particularly knights, pay homage to Ragathiel and pray for his virtue and wrathful strength in battle. Those who have taken vows, especially those of duty or vengeance, hold Ragathiel as their ideal, and his agents sometimes assist those who have been grievously wronged and now seek righteous vengeance. As strange as it may seem, Ragathiel is the son of Feronia, a demigoddess of the Plane of Fire, and Dispater, the Father of Dis. He was conceived in a brief tryst (lasting only a few centuries), after which his mother took him out of Hell. Ragathiel's tainted heritage has left him with a wrathful heart, and the angel struggles constantly to master his baser impulses in service to the light. For thousands of years he strove to prove himself to the angelic choirs of Heaven. In the Maelstrom he wrestled for 16 years with a monstrous evil serpent whose scales wept acidic blood until he was able to choke the life out of it. He led an entire army against one of the iron fortresses of Avernus and burned the castle to the ground with holy fire, single-handedly maiming Infernal Duke Deumus in the process. Finally the other empyreal lords agreed to admit Ragathiel into their ranks, and now they appear to trust the angel completely—though that trust took centuries to develop. At some point in history, Ragathiel destroyed Typhon, the original ruler of the first layer of Hell. He may have been manipulated into doing so by the schemes of Asmodeus to punish Typhon for his indiscretions. Ragathiel was once served by the Hand of the Inheritor, an angel who now acts as the goddess Iomedae's herald. Then known as the Hand of Vengeance, this angel asked to be reassigned to Iomedae after the death of Aroden. \nAppearance: Ragathiel is a tower of glorious might. He stands almost 20 feet tall, and five lofty burning wings stretch from his back. The General of Vengeance once had six wings, but one was severed, torn from his body by the archdevil Dispater—Ragathiel's father.   \nWorship: Ragathiel is commonly worshiped by the avowed, knights, soldiers, the wronged, and the empyreal lord employs aasimar, paladins, blink dogs, and kirin as his most common servants. The holiest time for Ragathiel's followers is the brief moments before and after a battle. The faithful ask Ragathiel's eyes to fall upon them and for his wings to shield them. This is also a standard greeting and farewell among worshipers. Followers of Ragathiel commonly wear red and silver clothing. Many also don an ornament or sigil the color of flames, typically on the helmet. Ragathiel has a small but old cult in Magnimar, a city known for its many mystery cults revering various empyreal lords.   \nPaladin Code:   \n*I will avenge evil wrought upon the innocent.   \n*I will not give my word lightly, but once it is given, I will uphold a promise until my last breath.   \n*Those proven guilty must be punished for their crimes. I will not turn a blind eye to wrongdoing.   \n*Rage is a virtue and a strength only when focused against the deserving. I will never seek disproportionate retribution.   \n*Redemption finds hearts from even the cruelest origins. I will strive not to act upon prejudice against fellow mortals based on race or origin.",
       "zhCN": "\n称号：复仇战将\n阵营：守序善良\n神职：破坏，善良，秩序，崇高\n子领域：亚空，领导，殉难，狂暴\n偏好武器：重剑\n圣徽：交叉的剑与翼\n圣兽：獒犬\n复仇战将象征骑士精神，责任与复仇，他是骑士的典范。作为魔鬼大公迪斯帕特和原生的火之半神费洛尼娅的子嗣，他艰辛的克服他父母的名誉对他的影响。因此，他深切了解寻求接纳和信任，为了正义与良善，与自身的本性时刻斗争是多么艰辛难苦。他代表战斗中的力量，面对邪恶时的愤怒，对冤屈者的容赦，或是为之复仇。他代表在危难时领军的责任，守护无辜之人的美德与义务。他期望他的追随者消灭他们发现的邪恶异界生物，并努力去赢取周围之人的信赖与尊重。追随复仇战将之人将他视为光辉的榜样，身先士卒地冲锋在战斗与对抗邪恶的最前线。\n复仇战将的化身是一个高大的巨型人类，身高超过20呎，身着闪耀光芒的黄金板甲，手持燃烧着熊熊圣火的剑刃。五个燃烧的火翼从他的背后伸展开来，三翼在左，二翼在右——而缺失的第六翼被他的父亲在暴怒之中撕扯了下来。拉贾瑟尔的追随者包括十字军战士，骑士，士兵，被诬陷之人，被边缘化之人和被冤屈者。"
     },
     {
@@ -11425,6 +11749,7 @@
       "Key": "ae0173af307b4cbc8c7c9b1dc0608a52",
       "SimpleName": "RavenerHunterSpellbook.Name",
       "ProcessTemplates": false,
+      "IsUsed": false,
       "enGB": "RavenerHunter"
     },
     {
@@ -12796,6 +13121,7 @@
       "Key": "96ac5395a9054d339832829bc004945d",
       "SimpleName": "SilverChampionSpellbook.Name",
       "ProcessTemplates": false,
+      "IsUsed": false,
       "enGB": "SilverChampion",
       "zhCN": "银冠勇士"
     },
@@ -17926,18 +18252,18 @@
       "zhCN": "托特"
     },
     {
+      "Key": "80d49c8ff8ce404c9e453380c6dae5fa",
+      "SimpleName": "TolcFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nTitles: Snow-Strider   \nAlignment: Chaotic Good   \nAreas of Concern: Cold, Frozen wilds, Survival   \nDomains: Chaos, Good, Travel, Water   \nSubdomains: Azata, Exploration, Ice, Storms   \nFavoured Weapon: Javelin   \nHoly Symbol: Antlers and ice javelin   \nSacred Animal: Caribou   \nTole is master of the frozen lands, where people struggle daily to survive the harsh elements. He gazes favorably upon those who learn to live within this wild domain and appreciate its fierce beauty. Tole stands 7 feet tall and has a stout but muscular figure. His light brown skin always holds a rosy flush, as though the empyreal lord had just stepped in from the cold. Numerous scars mar his broad face, which constantly sports a stern expression, though a kind light occasionally warms his hardened gaze. From his back stretch two arching tusks carved from celestial ice. Snow-Strider and his agents help worthy individuals struggling to live in cold, inhospitable climes. Many northern cultures credit Tole with teaching their people to build shelters from ice. Tole is a sworn enemy of Kostchtchie, and Tole's champions hone their skills in battle to best combat frost giants and white dragons. On occasion, a mortal champion catches Tole's attention long enough for the empyreal lord to grant this mortal divine strength and tactical knowledge with which to defend her kinsfolk. Tole can sometimes be found in the coldest reaches of Elysium's mountains, but his followers on the Material Plane claim to see Snow-Strider in their temple-longhouses with some frequency. Many believe he assumes the guise of a wanderer in need of respite and leaves flecks of gold in the bedding of those who provide him hospitality.",
+      "zhCN": "\n称号：踏雪者\n阵营：混乱善良 \n神职：寒冷、冰封荒野、生存\n领域：混乱、善良、旅行、流水 \n子领域：爱塔、探索、冰、风暴\n偏好武器：标枪 \n圣徽：鹿角和冰标枪\n圣兽: 驯鹿\n托克是冰冻土地的主人，人们每天都在为在严酷的环境中生存而奋斗。他看好那些学会在这片荒野中生活并欣赏其凶猛美丽的人。\n托克身高 7 英尺，身材结实但肌肉发达。浅褐色的皮肤上，总是带着红润的红晕，仿佛天帝刚刚从寒风中踏来。他宽阔的脸上布满了伤痕，脸上始终带着严厉的表情，尽管偶尔有一丝善意的光芒温暖了他僵硬的目光。从他的背部伸出两根由天冰雕刻而成的拱形獠牙。\n踏雪者和他的代理人帮助那些在寒冷、荒凉地区挣扎的有价值的人。许多北方文化认为托尔教他们的人民用冰建造避难所。\n托克是阔什提克提凯的死敌，托克的勇士们在战斗中磨练他们的技能，以最好地对抗霜巨人和白龙。有时，一位凡人勇士会引起托尔的注意足够长的时间，让这位至高无上的领主给予这种凡人神圣的力量和战术知识来保护她的亲属。\n托克有时会在极乐境山脉最寒冷的地方，但他在物质位面的追随者声称在他们的神殿长屋中经常看到雪行者。许多人认为他伪装成一个需要喘息的流浪者，并在为他提供住所的好客人的床上留下金色的斑点。"
+    },
+    {
       "Key": "93ebaf3a3b3d4250983f2ce4b250bc6a",
       "SimpleName": "TolcFeature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "\nTitles: Snow-Strider   \nAlignment: Chaotic Good   \nAreas of Concern: Cold, Frozen wilds, Survival   \nDomains: Chaos, Good, Travel, Water   \nSubdomains: Azata, Exploration, Ice, Storms   \nFavoured Weapon: Javelin   \nHoly Symbol: Antlers and ice javelin   \nSacred Animal: Caribou   \nTole is master of the frozen lands, where people struggle daily to survive the harsh elements . He gazes favorably upon those who learn to live within this wild domain and appreciate its fierce beauty. Tole stands 7 feet tall and has a stout but muscular figure. His light brown skin always holds a rosy flush, as though the empyreal lord had just stepped in from the cold. Numerous scars mar his broad face, which constantly sports a stern expression, though a kind light occasionally warms his hardened gaze. From his back stretch two arching tusks carved from celestial ice. Snow-Strider and his agents help worthy individuals struggling to live in cold, inhospitable climes. Many northern cultures credit Tole with teaching their people to build shelters from ice. Tole is a sworn enemy of Kostchtchie, and Tole's champions hone their skills in battle to best combat frost giants and white dragons. On occasion, a mortal champion catches Tole's attention long enough for the empyreal lord to grant this mortal divine strength and tactical knowledge with which to defend her kinsfolk. Tole can sometimes be found in the coldest reaches of Elysium's mountains, but his followers on the Material Plane claim to see Snow-Strider in their temple-longhouses with some frequency. Many believe he assumes the guise of a wanderer in need of respite and leaves flecks of gold in the bedding of those who provide him hospitality.",
-      "zhCN": "\n称号：踏雪者\n阵营：混乱善良 \n神职：寒冷、冰封荒野、生存\n领域：混乱、善良、旅行、流水 \n子领域：爱塔、探索、冰、风暴\n偏好武器：标枪 \n圣徽：鹿角和冰标枪\n圣兽: 驯鹿\n托克是冰冻土地的主人，人们每天都在为在严酷的环境中生存而奋斗。他看好那些学会在这片荒野中生活并欣赏其凶猛美丽的人。\n托克身高 7 英尺，身材结实但肌肉发达。浅褐色的皮肤上，总是带着红润的红晕，仿佛天帝刚刚从寒风中踏来。他宽阔的脸上布满了伤痕，脸上始终带着严厉的表情，尽管偶尔有一丝善意的光芒温暖了他僵硬的目光。从他的背部伸出两根由天冰雕刻而成的拱形獠牙。\n踏雪者和他的代理人帮助那些在寒冷、荒凉地区挣扎的有价值的人。许多北方文化认为托尔教他们的人民用冰建造避难所。\n托克是阔什提克提凯的死敌，托克的勇士们在战斗中磨练他们的技能，以最好地对抗霜巨人和白龙。有时，一位凡人勇士会引起托尔的注意足够长的时间，让这位至高无上的领主给予这种凡人神圣的力量和战术知识来保护她的亲属。\n托克有时会在极乐境山脉最寒冷的地方，但他在物质位面的追随者声称在他们的神殿长屋中经常看到雪行者。许多人认为他伪装成一个需要喘息的流浪者，并在为他提供住所的好客人的床上留下金色的斑点。"
-    },
-    {
-      "Key": "80d49c8ff8ce404c9e453380c6dae5fa",
-      "SimpleName": "TolcFeature.Description",
-      "ProcessTemplates": true,
-      "enGB": "\nTitles: Snow-Strider   \nAlignment: Chaotic Good   \nAreas of Concern: Cold, Frozen wilds, Survival   \nDomains: Chaos, Good, Travel, Water   \nSubdomains: Azata, Exploration, Ice, Storms   \nFavoured Weapon: Javelin   \nHoly Symbol: Antlers and ice javelin   \nSacred Animal: Caribou   \nTole is master of the frozen lands, where people struggle daily to survive the harsh elements. He gazes favorably upon those who learn to live within this wild domain and appreciate its fierce beauty. Tole stands 7 feet tall and has a stout but muscular figure. His light brown skin always holds a rosy flush, as though the empyreal lord had just stepped in from the cold. Numerous scars mar his broad face, which constantly sports a stern expression, though a kind light occasionally warms his hardened gaze. From his back stretch two arching tusks carved from celestial ice. Snow-Strider and his agents help worthy individuals struggling to live in cold, inhospitable climes. Many northern cultures credit Tole with teaching their people to build shelters from ice. Tole is a sworn enemy of Kostchtchie, and Tole's champions hone their skills in battle to best combat frost giants and white dragons. On occasion, a mortal champion catches Tole's attention long enough for the empyreal lord to grant this mortal divine strength and tactical knowledge with which to defend her kinsfolk. Tole can sometimes be found in the coldest reaches of Elysium's mountains, but his followers on the Material Plane claim to see Snow-Strider in their temple-longhouses with some frequency. Many believe he assumes the guise of a wanderer in need of respite and leaves flecks of gold in the bedding of those who provide him hospitality.",
       "zhCN": "\n称号：踏雪者\n阵营：混乱善良 \n神职：寒冷、冰封荒野、生存\n领域：混乱、善良、旅行、流水 \n子领域：爱塔、探索、冰、风暴\n偏好武器：标枪 \n圣徽：鹿角和冰标枪\n圣兽: 驯鹿\n托克是冰冻土地的主人，人们每天都在为在严酷的环境中生存而奋斗。他看好那些学会在这片荒野中生活并欣赏其凶猛美丽的人。\n托克身高 7 英尺，身材结实但肌肉发达。浅褐色的皮肤上，总是带着红润的红晕，仿佛天帝刚刚从寒风中踏来。他宽阔的脸上布满了伤痕，脸上始终带着严厉的表情，尽管偶尔有一丝善意的光芒温暖了他僵硬的目光。从他的背部伸出两根由天冰雕刻而成的拱形獠牙。\n踏雪者和他的代理人帮助那些在寒冷、荒凉地区挣扎的有价值的人。许多北方文化认为托尔教他们的人民用冰建造避难所。\n托克是阔什提克提凯的死敌，托克的勇士们在战斗中磨练他们的技能，以最好地对抗霜巨人和白龙。有时，一位凡人勇士会引起托尔的注意足够长的时间，让这位至高无上的领主给予这种凡人神圣的力量和战术知识来保护她的亲属。\n托克有时会在极乐境山脉最寒冷的地方，但他在物质位面的追随者声称在他们的神殿长屋中经常看到雪行者。许多人认为他伪装成一个需要喘息的流浪者，并在为他提供住所的好客人的床上留下金色的斑点。"
     },
     {
@@ -18165,18 +18491,18 @@
       "zhCN": "选择残虐——震慑"
     },
     {
-      "Key": "28586109096d4d11b28234cfcc72c328",
-      "SimpleName": "TouchOfProfaneCorruptionFeature.Description",
-      "ProcessTemplates": true,
-      "enGB": "Beginning at 2nd level, a dreadknight surrounds her hand with a profane flame, causing terrible wounds to open on those she touches. Each day she can use this ability a number of times equal to 1/2 his Dread Knight level + her Charisma modifier. As a touch attack, a dreadknight can cause 1d6 points of damage plus an additional 1d6 points of damage for every two Dread Knight levels she possesses. Using this ability is a standard action that does not provoke attacks of opportunity. \nAlternatively, a dreadknight can use this power to heal undead creatures, restoring 1d6 hit points plus an additional 1d6 hit points for every two levels the dreadknight possesses.This ability is modified by any feat, spell, or effect that specifically works with the lay on hands paladin class feature. For example, the Extra Lay On Hands feat grants a dreadknight 2 additional uses of the touch of corruption class feature.",
-      "zhCN": "从第 2 级开始，恐惧骑士使用包裹着腐蚀性火焰的手碰触目标造成可怕的溃烂。\n每天他可以使用此能力的次数等于他的恐惧骑士等级的 1/2 + 他的魅力调整值。恐惧骑士进行接触攻击，造成 1d6 + 额外1d6/每2个恐惧骑士等级的伤害。\n使用此能力是一个标准动作，不会引发借机攻击。\n此外，恐惧骑士也可以使用此能力来治疗不死生物，恢复等同于伤害数值的生命值。\n此能力会受益于任何影响圣武士圣疗能力的专长、法术或效果。例如，额外圣疗专长使恐惧骑士获得 2 次额外使用次数亵渎之炎次数。"
-    },
-    {
       "Key": "58d1e5003272489ba9ae2119aed45aeb",
       "SimpleName": "TouchOfProfaneCorruptionFeature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "Beginning at 2nd level, a dreadknight surrounds her hand with a profane flame, causing terrible wounds to open on those she touches. Each day she can use this ability a number of times equal to 1/2 his Dread Knight level + her Charisma modifier. As a touch attack, a dreadknight ca炎n cause 1d6 points of damage plus an additional 1d6 points of damage for every two Dread Knight levels she possesses. Using this ability is a standard action that does not provoke attacks of opportunity. \nAlternatively, a dreadknight can use this power to heal undead creatures, restoring 1d6 hit points plus an additional 1d6 hit points for every two levels the dreadknight possesses.This ability is modified by any feat, spell, or effect that specifically works with the lay on hands paladin class feature. For example, the Extra Lay On Hands feat grants a dreadknight 2 additional uses of the touch of corruption class feature.",
+      "zhCN": "从第 2 级开始，恐惧骑士使用包裹着腐蚀性火焰的手碰触目标造成可怕的溃烂。\n每天他可以使用此能力的次数等于他的恐惧骑士等级的 1/2 + 他的魅力调整值。恐惧骑士进行接触攻击，造成 1d6 + 额外1d6/每2个恐惧骑士等级的伤害。\n使用此能力是一个标准动作，不会引发借机攻击。\n此外，恐惧骑士也可以使用此能力来治疗不死生物，恢复等同于伤害数值的生命值。\n此能力会受益于任何影响圣武士圣疗能力的专长、法术或效果。例如，额外圣疗专长使恐惧骑士获得 2 次额外使用次数亵渎之炎次数。"
+    },
+    {
+      "Key": "28586109096d4d11b28234cfcc72c328",
+      "SimpleName": "TouchOfProfaneCorruptionFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "Beginning at 2nd level, a dreadknight surrounds her hand with a profane flame, causing terrible wounds to open on those she touches. Each day she can use this ability a number of times equal to 1/2 his Dread Knight level + her Charisma modifier. As a touch attack, a dreadknight can cause 1d6 points of damage plus an additional 1d6 points of damage for every two Dread Knight levels she possesses. Using this ability is a standard action that does not provoke attacks of opportunity. \nAlternatively, a dreadknight can use this power to heal undead creatures, restoring 1d6 hit points plus an additional 1d6 hit points for every two levels the dreadknight possesses.This ability is modified by any feat, spell, or effect that specifically works with the lay on hands paladin class feature. For example, the Extra Lay On Hands feat grants a dreadknight 2 additional uses of the touch of corruption class feature.",
       "zhCN": "从第 2 级开始，恐惧骑士使用包裹着腐蚀性火焰的手碰触目标造成可怕的溃烂。\n每天他可以使用此能力的次数等于他的恐惧骑士等级的 1/2 + 他的魅力调整值。恐惧骑士进行接触攻击，造成 1d6 + 额外1d6/每2个恐惧骑士等级的伤害。\n使用此能力是一个标准动作，不会引发借机攻击。\n此外，恐惧骑士也可以使用此能力来治疗不死生物，恢复等同于伤害数值的生命值。\n此能力会受益于任何影响圣武士圣疗能力的专长、法术或效果。例如，额外圣疗专长使恐惧骑士获得 2 次额外使用次数亵渎之炎次数。"
     },
     {
