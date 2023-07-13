@@ -53,6 +53,15 @@ namespace ExpandedContent.Config {
                 var RavenerHunterSpelllist = Resources.GetModBlueprint<BlueprintSpellList>("RavenerHunterSpelllist");
                 SpellWithDesriptorAdders.RavenerHunterSpellAdder(ClericSpelllist, RavenerHunterSpelllist);
 
+                //Skulking Hunter spelllist patch
+                //This is done after other mods have loaded to also grab any spells they may add
+                var RangerSpelllist = Resources.GetBlueprint<BlueprintSpellList>("29f3c338532390546bc5347826a655c4");
+                var DruidSpelllist = Resources.GetBlueprint<BlueprintSpellList>("bad8638d40639d04fa2f80a1cac67d6b");
+                var WizardSpelllist = Resources.GetBlueprint<BlueprintSpellList>("ba0401fdeb4062f40a7aa95b6f07fe89");
+                var SkulkingHunterSpelllist = Resources.GetModBlueprint<BlueprintSpellList>("SkulkingHunterSpelllist");
+                SpellWithDesriptorAdders.SkulkingHunterSpellAdder(RangerSpelllist, DruidSpelllist, WizardSpelllist, SkulkingHunterSpelllist);
+
+
                 if (IsMysticalMayhemEnabled()) {
 
                     var OracleClass = Resources.GetBlueprint<BlueprintCharacterClass>("20ce9bf8af32bee4c8557a045ab499b1");

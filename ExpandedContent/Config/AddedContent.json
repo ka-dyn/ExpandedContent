@@ -188,7 +188,12 @@
       "Ravener Hunter": {
         "Enabled": true,
         "Homebrew": false,
-        "Description": "aaaaahhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh"
+        "Description": "A inquisitor archetype with access to minor oracle powers."
+      },
+      "Skulking Hunter": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "A hunter archetype with a combination spell-list and a shared study target feature."
       }
     },
     "IsExpanded": false

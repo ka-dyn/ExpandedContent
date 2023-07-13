@@ -68,6 +68,7 @@ namespace ExpandedContent.Tweaks {
                 Archetypes.Archer.AddArcher();
                 Archetypes.SpearFighter.AddSpearFighter();
                 Archetypes.RavenerHunter.AddRavenerHunter();
+                Archetypes.SkulkingHunter.AddSkulkingHunter();
 
                 Classes.OathbreakerClass.AddOathbreakerClass();
                 Archetypes.Castigator.AddCastigator();

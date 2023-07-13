@@ -2284,7 +2284,15 @@
     "StargazerLivingScriptureLevelUp": "a5eda202-b998-41f9-b705-03bbf62bdf9e",
     "StargazerLivingScriptureProgression": "a3dc144f-18a3-4d7d-afa8-a472d0227274",
     "StargazerRavenerHunterLevelUp": "b2cf913e-6ff3-4ac8-8868-c31f06c6a6b6",
-    "StargazerRavenerHunterProgression": "46e7b393-14b2-4bd8-a636-f0188878bd51"
+    "StargazerRavenerHunterProgression": "46e7b393-14b2-4bd8-a636-f0188878bd51",
+
+    "SkulkingHunterArchetype": "3fab3c0e-1b74-49a0-8a51-83e9a837567c",
+    "SkulkingHunterSpellbook": "c59579dd-addf-4590-95a4-45eacb0a6d7e",
+    "SkulkingHunterSpelllist": "15e181c2-ce1b-40a4-81b7-e5808cba7833",
+    "SkulkingHunterStudyTargetFeature": "30ba6cfc-ceab-4683-a0fa-bd24e04f8234",
+    "SkulkingPetFeature": "1d9657b0-ec81-4e6e-81b0-3675da9fea39",
+    "SkulkingSpellsFeature": "501e2ea7-a319-4490-b8cc-02088b8aef84",
+    "StudyTargetPetRank": "41b6f2bf-a5b6-45f1-8da1-a33d5254f1a6"
 
 
 
