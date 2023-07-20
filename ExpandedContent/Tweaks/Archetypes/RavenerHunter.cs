@@ -39,6 +39,7 @@ using Kingmaker.UI.GenericSlot;
 using Kingmaker.Blueprints.Items.Ecnchantments;
 using static ExpandedContent.Utilities.SpellTools;
 using ExpandedContent.Tweaks.Classes;
+using Kingmaker.Designers.Mechanics.Buffs;
 
 namespace ExpandedContent.Tweaks.Archetypes {
     internal class RavenerHunter {
@@ -133,7 +134,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.SpellsByLevel = InquisitorSpelllist.SpellsByLevel;
             });
             var RavenerHunterSpellbook = Helpers.CreateBlueprint<BlueprintSpellbook>("RavenerHunterSpellbook", bp => {
-                bp.Name = Helpers.CreateString($"RavenerHunterSpellbook.Name", "RavenerHunter");
+                bp.Name = Helpers.CreateString($"RavenerHunterSpellbook.Name", "Ravener Hunter");
                 bp.m_SpellsPerDay = InquisitorSpellSlotsTable.ToReference<BlueprintSpellsTableReference>();
                 bp.m_SpellsKnown = InquisitorSpellsKnownTable.ToReference<BlueprintSpellsTableReference>();
                 bp.m_SpellList = RavenerHunterSpelllist.ToReference<BlueprintSpellListReference>();
@@ -906,6 +907,8 @@ namespace ExpandedContent.Tweaks.Archetypes {
             MysteryTools.ConfigureRavenerHunterRevelation(WeaponMastery, RavenerHunterBattleMysteryProgression);
             MysteryTools.ConfigureRavenerHunterRevelation(WintryTouch, RavenerHunterWavesMysteryProgression);
             #endregion
+
+
 
             RavenerHunterArchetype.RemoveFeatures = new LevelEntry[] {
                     Helpers.LevelEntry(1, DomainSelectionFeature),

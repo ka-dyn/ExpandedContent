@@ -1,17 +1,34 @@
-﻿using Kingmaker.Blueprints;
+﻿using ExpandedContent.Extensions;
+using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
+using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.UnitLogic.Abilities.Blueprints;
+using Kingmaker.UnitLogic.FactLogic;
+using Kingmaker.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using ExpandedContent.Extensions;
 
 namespace ExpandedContent.Utilities {
-    static class SpellTools {
+    /// <summary>
+    /// Collection of tools for adding or interacting with spells.
+    /// </summary>
+    public static class SpellTools {
+        /// <summary>
+        /// Adds the spell to the specified spelllist at the target level. This also applies the assosiated SpellListComponents to the spell.
+        /// </summary>
+        /// <param name="spell"></param>
+        /// <param name="spellList">
+        /// Spelllist to add the spell to.
+        /// </param>
+        /// <param name="level">
+        /// Level to add the spell to the spelllist at.
+        /// </param>
         public static void AddToSpellList(this BlueprintAbility spell, BlueprintSpellList spellList, int level) {
             AddComponentIfMissing(spellList);
             AddToListIfMissing(spellList);
+            AddToSpellSpecializationIfMissing(spell);
             if (spellList == SpellList.WizardSpellList) {
                 var school = spell.School;
                 AddComponentIfMissing(specialistSchoolList.Value[(int)school]);
@@ -46,13 +63,39 @@ namespace ExpandedContent.Utilities {
                     list.SpellsByLevel[level].m_Spells.Sort((x, y) => x.Get().Name.CompareTo(y.Get().Name));
                 }
             }
+            void AddToSpellSpecializationIfMissing(BlueprintAbility spell) {
+                foreach (var specialization in SpellSpecializations) {
+                    if (specialization.BlueprintParameterVariants.Any(bp => bp.deserializedGuid == spell.AssetGuid)) {
+                        continue;
+                    }
+                    specialization.BlueprintParameterVariants = specialization.BlueprintParameterVariants.AppendToArray(spell.ToReference<AnyBlueprintReference>());
+                }
+            }
+        }
+        /// <summary>
+        /// Collects all spells from all spell lists and special spells not on any spell list.
+        /// </summary>
+        /// <param name="excludeMythic">
+        /// Determines on if mythic spells are included or not.
+        /// </param>
+        /// <returns>
+        /// A list of all spells in the game from all spell lists.
+        /// </returns>
+        public static List<BlueprintAbility> GetAllSpells(bool excludeMythic = false) {
+            return SpellTools.SpellList.AllSpellLists
+                .Where(list => excludeMythic ? !list.IsMythic : true)
+                .SelectMany(list => list.SpellsByLevel)
+                .Where(spellList => spellList.SpellLevel != 0)
+                .SelectMany(level => level.Spells)
+                .Concat(SpellTools.ElementalBloodlineSpells.AllSpells)
+                .Concat(AzataBonusSpells.AllSpells)
+                .Distinct()
+                .Where(spell => spell is not null)
+                .OrderBy(spell => spell.name)
+                .ToList();
         }
 
-        internal static object CreateSpellLevelEntry(object count) {
-            throw new NotImplementedException();
-        }
-
-        static readonly Lazy<BlueprintSpellList[]> specialistSchoolList = new Lazy<BlueprintSpellList[]>(() => {
+        private static readonly Lazy<BlueprintSpellList[]> specialistSchoolList = new Lazy<BlueprintSpellList[]>(() => {
             var result = new BlueprintSpellList[(int)SpellSchool.Universalist + 1];
             result[(int)SpellSchool.Abjuration] = SpellList.WizardAbjurationSpellList;
             result[(int)SpellSchool.Conjuration] = SpellList.WizardConjurationSpellList;
@@ -64,7 +107,7 @@ namespace ExpandedContent.Utilities {
             result[(int)SpellSchool.Transmutation] = SpellList.WizardTransmutationSpellList;
             return result;
         });
-        static readonly Lazy<BlueprintSpellList[]> thassilonianSchoolList = new Lazy<BlueprintSpellList[]>(() => {
+        private static readonly Lazy<BlueprintSpellList[]> thassilonianSchoolList = new Lazy<BlueprintSpellList[]>(() => {
             var result = new BlueprintSpellList[(int)SpellSchool.Universalist + 1];
             result[(int)SpellSchool.Abjuration] = SpellList.ThassilonianAbjurationSpellList;
             result[(int)SpellSchool.Conjuration] = SpellList.ThassilonianConjurationSpellList;
@@ -75,7 +118,7 @@ namespace ExpandedContent.Utilities {
             result[(int)SpellSchool.Transmutation] = SpellList.ThassilonianTransmutationSpellList;
             return result;
         });
-        static readonly Lazy<SpellSchool[][]> thassilonianOpposedSchools = new Lazy<SpellSchool[][]>(() => {
+        private static readonly Lazy<SpellSchool[][]> thassilonianOpposedSchools = new Lazy<SpellSchool[][]>(() => {
             var result = new SpellSchool[(int)SpellSchool.Universalist + 1][];
 
             result[(int)SpellSchool.Abjuration] = new SpellSchool[] { SpellSchool.Evocation, SpellSchool.Necromancy };
@@ -87,11 +130,32 @@ namespace ExpandedContent.Utilities {
             result[(int)SpellSchool.Transmutation] = new SpellSchool[] { SpellSchool.Enchantment, SpellSchool.Illusion };
             return result;
         });
+        private static readonly BlueprintFeatureSelection SpellSpecializationSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("fe67bc3b04f1cd542b4df6e28b6e0ff5");
+        private static readonly BlueprintParametrizedFeature[] SpellSpecializations = SpellSpecializationSelection.AllFeatures
+            .Concat(SpellSpecializationSelection.Features)
+            .Append(Resources.GetBlueprint<BlueprintParametrizedFeature>("f327a765a4353d04f872482ef3e48c35") /*SpellSpecializationFirst*/)
+            .Distinct()
+            .OfType<BlueprintParametrizedFeature>()
+            .ToArray();
+
+        /// <summary>
+        /// Generates a new spell level entry with the speicified quantity.
+        /// </summary>
+        /// <param name="count">
+        /// Number of spells at a given spell level.
+        /// </param>
+        /// <returns>
+        /// A new SpellsLevelEntry with the specified counts.
+        /// </returns>
         public static SpellsLevelEntry CreateSpellLevelEntry(params int[] count) {
-            var entry = new SpellsLevelEntry();
-            entry.Count = count;
+            var entry = new SpellsLevelEntry {
+                Count = count
+            };
             return entry;
         }
+        /// <summary>
+        /// Data class of all spellbooks.
+        /// </summary>
         public static class Spellbook {
             public static BlueprintSpellbook AccursedWitchSpellbook => Resources.GetBlueprint<BlueprintSpellbook>("b897fe0947e4b804082b1a687c21e6e2");
             public static BlueprintSpellbook AeonSpellbook => Resources.GetBlueprint<BlueprintSpellbook>("6091d66a2a9876b4891b989804cfbcb6");
@@ -207,6 +271,9 @@ namespace ExpandedContent.Utilities {
                 WizardSpellbook,
             };
         }
+        /// <summary>
+        /// Data class of all spelllists.
+        /// </summary>
         public static class SpellList {
             public static BlueprintSpellList AeonSpellList => Resources.GetBlueprint<BlueprintSpellList>("24b0c796f723a144e9891b6c4794c595");
             public static BlueprintSpellList AeonSpellMythicList => Resources.GetBlueprint<BlueprintSpellList>("ca8c6024bd2519f4b97162a3ad286920");
@@ -390,6 +457,9 @@ namespace ExpandedContent.Utilities {
                 WizardTransmutationSpellList,
             };
         }
+        /// <summary>
+        /// Data class of all classes that have spellcasting.
+        /// </summary>
         public static class SpellCastingClasses {
             public static BlueprintCharacterClass ArcanistClass => Resources.GetBlueprint<BlueprintCharacterClass>("52dbfd8505e22f84fad8d702611f60b7");
             public static BlueprintCharacterClass BardClass => Resources.GetBlueprint<BlueprintCharacterClass>("772c83a25e2268e448e841dcd548235f");
@@ -430,6 +500,53 @@ namespace ExpandedContent.Utilities {
                 WitchClass,
                 WizardClass,
             };
+        }
+        /// <summary>
+        /// Data class of spells from sorcerer elemental bloodlines.
+        /// </summary>
+        public static class ElementalBloodlineSpells {
+            public static BlueprintAbility BurningHandsCold => Resources.GetBlueprint<BlueprintAbility>("83ed16546af22bb43bd08734a8b51941");
+            public static BlueprintAbility ScorchingRayCold => Resources.GetBlueprint<BlueprintAbility>("7ef096fdc8394e149a9e8dced7576fee");
+            public static BlueprintAbility BurningHandsAcid => Resources.GetBlueprint<BlueprintAbility>("97d0a51ca60053047afb9aca900fb71b");
+            public static BlueprintAbility ScorchingRayAcid => Resources.GetBlueprint<BlueprintAbility>("435222be97067a447b2b40d3c58a058e");
+            public static BlueprintAbility BurningHandsElecricity => Resources.GetBlueprint<BlueprintAbility>("728b3daffb1d9fd45958c6e60876b7a9");
+            public static BlueprintAbility ScorchingRayElecricity => Resources.GetBlueprint<BlueprintAbility>("96ca3143601d6b242802655336620d91");
+
+            public static BlueprintAbility[] AllSpells => new BlueprintAbility[] {
+                BurningHandsCold,
+                ScorchingRayCold,
+                BurningHandsAcid,
+                ScorchingRayAcid,
+                BurningHandsElecricity,
+                ScorchingRayElecricity,
+            };
+        }
+        /// <summary>
+        /// Data class of all Azata bonus spells that are not in the Azata spell list.
+        /// </summary>
+        public static class AzataBonusSpells {
+            private static BlueprintAbility[] ChaoticSpells {
+                get {
+                    var AzataForSpellsCollateralFeature = Resources.GetBlueprint<BlueprintFeature>("a7a4ae18dc57b8c4791221323812899a");
+                    return AzataForSpellsCollateralFeature.GetComponent<AddFacts>()?
+                        .Facts.Select(f => f.GetComponent<AddKnownSpell>().Spell).ToArray() ?? new BlueprintAbility[0];
+                }
+            }
+            private static BlueprintAbility[] EvilSpells {
+                get {
+                    var AzataForSpellsDevilFeature = Resources.GetBlueprint<BlueprintFeature>("6d330ba4e39fdb647bd34df9810d0a4c");
+                    return AzataForSpellsDevilFeature.GetComponent<AddFacts>()?
+                        .Facts.Select(f => f.GetComponent<AddKnownSpell>().Spell).ToArray() ?? new BlueprintAbility[0];
+                }
+            }
+            private static BlueprintAbility[] GoodSpells {
+                get {
+                    var AzataForSpellsGoodFeature = Resources.GetBlueprint<BlueprintFeature>("8155b3b3692a2b04089a19349579f8af");
+                    return AzataForSpellsGoodFeature.GetComponent<AddFacts>()?
+                        .Facts.Select(f => f.GetComponent<AddKnownSpell>().Spell).ToArray() ?? new BlueprintAbility[0];
+                }
+            }
+            public static BlueprintAbility[] AllSpells => ChaoticSpells.Concat(EvilSpells).Concat(GoodSpells).ToArray();
         }
     }
 }

@@ -197,6 +197,8 @@
     <Compile Include="Tweaks\Archdevils\Mammon.cs" />
     <Compile Include="Tweaks\Archdevils\Mephistopheles.cs" />
     <Compile Include="Tweaks\Archdevils\Moloch.cs" />
+    <Compile Include="Tweaks\Archetypes\SkulkingHunter.cs" />
+    <Compile Include="Tweaks\Archetypes\PrestigeClassSpellbooks.cs" />
     <Compile Include="Tweaks\Archetypes\RavenerHunter.cs" />
     <Compile Include="Tweaks\Archetypes\SpearFighter.cs" />
     <Compile Include="Tweaks\Archetypes\LionShaman.cs" />

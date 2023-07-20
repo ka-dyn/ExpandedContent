@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace ExpandedContent.Utilities {
     internal class SpellWithDesriptorAdders {
-        //Test thing to add spells with descriptor from one spellbook to another
+
         public static void RavenerHunterSpellAdder(BlueprintSpellList spelllist, BlueprintSpellList newspelllist) {
             var Level1Spells = spelllist.SpellsByLevel[1].Spells.SelectMany(spellandsubspell => spellandsubspell.AbilityAndVariants());
             var Level2Spells = spelllist.SpellsByLevel[2].Spells.SelectMany(spellandsubspell => spellandsubspell.AbilityAndVariants());
@@ -81,5 +81,235 @@ namespace ExpandedContent.Utilities {
                 }
             }
         }
+
+        public static void SkulkingHunterSpellAdder(BlueprintSpellList rangerspelllist, BlueprintSpellList druidspelllist, BlueprintSpellList wizardspelllist, BlueprintSpellList newspelllist) {
+            var NewLevel0Spells = newspelllist.SpellsByLevel[0].m_Spells;
+            var NewLevel1Spells = newspelllist.SpellsByLevel[1].m_Spells;
+            var NewLevel2Spells = newspelllist.SpellsByLevel[2].m_Spells;
+            var NewLevel3Spells = newspelllist.SpellsByLevel[3].m_Spells;
+            var NewLevel4Spells = newspelllist.SpellsByLevel[4].m_Spells;
+            var NewLevel5Spells = newspelllist.SpellsByLevel[5].m_Spells;
+            var NewLevel6Spells = newspelllist.SpellsByLevel[6].m_Spells;
+            var RangerLevel0Spells = rangerspelllist.SpellsByLevel[0].Spells;
+            var RangerLevel1Spells = rangerspelllist.SpellsByLevel[1].Spells;
+            var RangerLevel2Spells = rangerspelllist.SpellsByLevel[2].Spells;
+            var RangerLevel3Spells = rangerspelllist.SpellsByLevel[3].Spells;
+            var RangerLevel4Spells = rangerspelllist.SpellsByLevel[4].Spells;
+            var RangerLevel5Spells = rangerspelllist.SpellsByLevel[5].Spells;
+            var RangerLevel6Spells = rangerspelllist.SpellsByLevel[6].Spells;
+            var DruidLevel0Spells = druidspelllist.SpellsByLevel[0].Spells;
+            var DruidLevel1Spells = druidspelllist.SpellsByLevel[1].Spells;
+            var DruidLevel2Spells = druidspelllist.SpellsByLevel[2].Spells;
+            var DruidLevel3Spells = druidspelllist.SpellsByLevel[3].Spells;
+            var DruidLevel4Spells = druidspelllist.SpellsByLevel[4].Spells;
+            var DruidLevel5Spells = druidspelllist.SpellsByLevel[5].Spells;
+            var DruidLevel6Spells = druidspelllist.SpellsByLevel[6].Spells;
+            var WizardLevel0Spells = wizardspelllist.SpellsByLevel[0].Spells;
+            var WizardLevel1Spells = wizardspelllist.SpellsByLevel[1].Spells;
+            var WizardLevel2Spells = wizardspelllist.SpellsByLevel[2].Spells;
+            var WizardLevel3Spells = wizardspelllist.SpellsByLevel[3].Spells;
+            var WizardLevel4Spells = wizardspelllist.SpellsByLevel[4].Spells;
+            var WizardLevel5Spells = wizardspelllist.SpellsByLevel[5].Spells;
+            var WizardLevel6Spells = wizardspelllist.SpellsByLevel[6].Spells;
+            foreach (var spell in RangerLevel0Spells) {
+                if (spell.School == SpellSchool.Enchantment || spell.School == SpellSchool.Illusion || spell.School == SpellSchool.Transmutation) {
+                    if (!NewLevel0Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) {
+                        NewLevel0Spells.Add(spell.ToReference<BlueprintAbilityReference>());
+                    }
+                }
+            }
+            foreach (var spell in DruidLevel0Spells) {
+                if (spell.School == SpellSchool.Enchantment || spell.School == SpellSchool.Illusion || spell.School == SpellSchool.Transmutation) {
+                    if (!NewLevel0Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) {
+                        NewLevel0Spells.Add(spell.ToReference<BlueprintAbilityReference>());
+                    }
+                }
+            }
+            foreach (var spell in WizardLevel0Spells) {
+                if (spell.School == SpellSchool.Enchantment || spell.School == SpellSchool.Illusion || spell.School == SpellSchool.Transmutation) {
+                    if (!NewLevel0Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) {
+                        NewLevel0Spells.Add(spell.ToReference<BlueprintAbilityReference>());
+                    }
+                }
+            }
+            foreach (var spell in RangerLevel1Spells) {
+                if (spell.School == SpellSchool.Enchantment || spell.School == SpellSchool.Illusion || spell.School == SpellSchool.Transmutation) {
+                    if (!NewLevel1Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) {
+                        NewLevel1Spells.Add(spell.ToReference<BlueprintAbilityReference>());
+                    }
+                }
+            }
+            foreach (var spell in DruidLevel1Spells) {
+                if (spell.School == SpellSchool.Enchantment || spell.School == SpellSchool.Illusion || spell.School == SpellSchool.Transmutation) {
+                    if (!NewLevel1Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) {
+                        NewLevel1Spells.Add(spell.ToReference<BlueprintAbilityReference>());
+                    }
+                }
+            }
+            foreach (var spell in WizardLevel1Spells) {
+                if (spell.School == SpellSchool.Enchantment || spell.School == SpellSchool.Illusion || spell.School == SpellSchool.Transmutation) {
+                    if (!NewLevel1Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) {
+                        NewLevel1Spells.Add(spell.ToReference<BlueprintAbilityReference>());
+                    }
+                }
+            }
+            foreach (var spell in RangerLevel2Spells) {
+                if (spell.School == SpellSchool.Enchantment || spell.School == SpellSchool.Illusion || spell.School == SpellSchool.Transmutation) {
+                    if ((!NewLevel1Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                        (!NewLevel2Spells.Contains(spell.ToReference<BlueprintAbilityReference>()))) {
+                        NewLevel2Spells.Add(spell.ToReference<BlueprintAbilityReference>());
+                    }
+                }
+            }
+            foreach (var spell in DruidLevel2Spells) {
+                if (spell.School == SpellSchool.Enchantment || spell.School == SpellSchool.Illusion || spell.School == SpellSchool.Transmutation) {
+                    if ((!NewLevel1Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                        (!NewLevel2Spells.Contains(spell.ToReference<BlueprintAbilityReference>()))) {
+                        NewLevel2Spells.Add(spell.ToReference<BlueprintAbilityReference>());
+                    }
+                }
+            }
+            foreach (var spell in WizardLevel2Spells) {
+                if (spell.School == SpellSchool.Enchantment || spell.School == SpellSchool.Illusion || spell.School == SpellSchool.Transmutation) {
+                    if ((!NewLevel1Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                        (!NewLevel2Spells.Contains(spell.ToReference<BlueprintAbilityReference>()))) {
+                        NewLevel2Spells.Add(spell.ToReference<BlueprintAbilityReference>());
+                    }
+                }
+            }
+            foreach (var spell in RangerLevel3Spells) {
+                if (spell.School == SpellSchool.Enchantment || spell.School == SpellSchool.Illusion || spell.School == SpellSchool.Transmutation) {
+                    if ((!NewLevel1Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                        (!NewLevel2Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                        (!NewLevel3Spells.Contains(spell.ToReference<BlueprintAbilityReference>()))) {
+                        NewLevel3Spells.Add(spell.ToReference<BlueprintAbilityReference>());
+                    }
+                }
+            }
+            foreach (var spell in DruidLevel3Spells) {
+                if (spell.School == SpellSchool.Enchantment || spell.School == SpellSchool.Illusion || spell.School == SpellSchool.Transmutation) {
+                    if ((!NewLevel1Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                        (!NewLevel2Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                        (!NewLevel3Spells.Contains(spell.ToReference<BlueprintAbilityReference>()))) {
+                        NewLevel3Spells.Add(spell.ToReference<BlueprintAbilityReference>());
+                    }
+                }
+            }
+            foreach (var spell in WizardLevel3Spells) {
+                if (spell.School == SpellSchool.Enchantment || spell.School == SpellSchool.Illusion || spell.School == SpellSchool.Transmutation) {
+                    if ((!NewLevel1Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                        (!NewLevel2Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                        (!NewLevel3Spells.Contains(spell.ToReference<BlueprintAbilityReference>()))) {
+                        NewLevel3Spells.Add(spell.ToReference<BlueprintAbilityReference>());
+                    }
+                }
+            }
+            foreach (var spell in RangerLevel4Spells) {
+                if (spell.School == SpellSchool.Enchantment || spell.School == SpellSchool.Illusion || spell.School == SpellSchool.Transmutation) {
+                    if ((!NewLevel1Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                        (!NewLevel2Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                        (!NewLevel3Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                        (!NewLevel4Spells.Contains(spell.ToReference<BlueprintAbilityReference>()))) {
+                        NewLevel4Spells.Add(spell.ToReference<BlueprintAbilityReference>());
+                    }
+                }
+            }
+            foreach (var spell in DruidLevel4Spells) {
+                if (spell.School == SpellSchool.Enchantment || spell.School == SpellSchool.Illusion || spell.School == SpellSchool.Transmutation) {
+                    if ((!NewLevel1Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                        (!NewLevel2Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                        (!NewLevel3Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                        (!NewLevel4Spells.Contains(spell.ToReference<BlueprintAbilityReference>()))) {
+                        NewLevel4Spells.Add(spell.ToReference<BlueprintAbilityReference>());
+                    }
+                }
+            }
+            foreach (var spell in WizardLevel4Spells) {
+                if (spell.School == SpellSchool.Enchantment || spell.School == SpellSchool.Illusion || spell.School == SpellSchool.Transmutation) {
+                    if ((!NewLevel1Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                        (!NewLevel2Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                        (!NewLevel3Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                        (!NewLevel4Spells.Contains(spell.ToReference<BlueprintAbilityReference>()))) {
+                        NewLevel4Spells.Add(spell.ToReference<BlueprintAbilityReference>());
+                    }
+                }
+            }
+            foreach (var spell in RangerLevel5Spells) {
+                if (spell.School == SpellSchool.Enchantment || spell.School == SpellSchool.Illusion || spell.School == SpellSchool.Transmutation) {
+                    if ((!NewLevel1Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                        (!NewLevel2Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                        (!NewLevel3Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                        (!NewLevel4Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                        (!NewLevel5Spells.Contains(spell.ToReference<BlueprintAbilityReference>()))) {
+                        NewLevel5Spells.Add(spell.ToReference<BlueprintAbilityReference>());
+                    }
+                }
+            }
+            foreach (var spell in DruidLevel5Spells) {
+                if (spell.School == SpellSchool.Enchantment || spell.School == SpellSchool.Illusion || spell.School == SpellSchool.Transmutation) {
+                    if ((!NewLevel1Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                        (!NewLevel2Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                        (!NewLevel3Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                        (!NewLevel4Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                        (!NewLevel5Spells.Contains(spell.ToReference<BlueprintAbilityReference>()))) {
+                        NewLevel5Spells.Add(spell.ToReference<BlueprintAbilityReference>());
+                    }
+                }
+            }
+            foreach (var spell in WizardLevel5Spells) {
+                if (spell.School == SpellSchool.Enchantment || spell.School == SpellSchool.Illusion || spell.School == SpellSchool.Transmutation) {
+                    if ((!NewLevel1Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                        (!NewLevel2Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                        (!NewLevel3Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                        (!NewLevel4Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                        (!NewLevel5Spells.Contains(spell.ToReference<BlueprintAbilityReference>()))) {
+                        NewLevel5Spells.Add(spell.ToReference<BlueprintAbilityReference>());
+                    }
+                }
+            }
+            foreach (var spell in RangerLevel6Spells) {
+                if (spell.School == SpellSchool.Enchantment || spell.School == SpellSchool.Illusion || spell.School == SpellSchool.Transmutation) {
+                    if ((!NewLevel1Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                        (!NewLevel2Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                        (!NewLevel3Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                        (!NewLevel4Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                        (!NewLevel5Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                        (!NewLevel6Spells.Contains(spell.ToReference<BlueprintAbilityReference>()))) {
+                        NewLevel6Spells.Add(spell.ToReference<BlueprintAbilityReference>());
+                    }
+                }
+            }
+            foreach (var spell in DruidLevel6Spells) {
+                if (spell.School == SpellSchool.Enchantment || spell.School == SpellSchool.Illusion || spell.School == SpellSchool.Transmutation) {
+                    if ((!NewLevel1Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                        (!NewLevel2Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                        (!NewLevel3Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                        (!NewLevel4Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                        (!NewLevel5Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                        (!NewLevel6Spells.Contains(spell.ToReference<BlueprintAbilityReference>()))) {
+                        NewLevel6Spells.Add(spell.ToReference<BlueprintAbilityReference>());
+                    }
+                }
+            }
+            foreach (var spell in WizardLevel6Spells) {
+                if (spell.School == SpellSchool.Enchantment || spell.School == SpellSchool.Illusion || spell.School == SpellSchool.Transmutation) {
+                    if ((!NewLevel1Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                        (!NewLevel2Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                        (!NewLevel3Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                        (!NewLevel4Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                        (!NewLevel5Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                        (!NewLevel6Spells.Contains(spell.ToReference<BlueprintAbilityReference>()))) {
+                        NewLevel6Spells.Add(spell.ToReference<BlueprintAbilityReference>());
+                    }
+                }
+            }
+
+
+
+
+
+        }
+
+
     }
 }

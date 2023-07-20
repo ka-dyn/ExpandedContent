@@ -218,7 +218,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     "modifier.[LONGEND]\nAura of Menace: At 8th level, you can emit a 30-foot aura of menace as a standard action. Enemies in this aura take a –2 penalty to " +
                     "AC and on attacks and saves as long as they remain inside the aura. You can use this ability for a number of rounds per day equal " +
                     "to your cleric level. These rounds do not need to be consecutive.\nDomain {g|Encyclopedia:Spell}Spells{/g}: divine favor, communal protection " +
-                    "from chaos, prayer, holy smite, dominate person, blade barrier, dictum, sheild of law, dominate monster.");
+                    "from chaos, prayer, holy smite, dominate person, blade barrier, dictum, shield of law, dominate monster.");
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Domain };
                 bp.IsClassFeature = true;
                 bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
@@ -284,7 +284,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     "modifier.[LONGEND]\nAura of Menace: At 8th level, you can emit a 30-foot aura of menace as a standard action. Enemies in this aura take a –2 penalty to " +
                     "AC and on attacks and saves as long as they remain inside the aura. You can use this ability for a number of rounds per day equal " +
                     "to your cleric level. These rounds do not need to be consecutive.\nDomain {g|Encyclopedia:Spell}Spells{/g}: divine favor, communal protection " +
-                    "from chaos, prayer, holy smite, dominate person, blade barrier, dictum, sheild of law, dominate monster.");
+                    "from chaos, prayer, holy smite, dominate person, blade barrier, dictum, shield of law, dominate monster.");
                 bp.Groups = new FeatureGroup[] { FeatureGroup.ClericSecondaryDomain };
                 bp.IsClassFeature = true;
                 bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {

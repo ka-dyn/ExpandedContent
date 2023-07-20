@@ -29,6 +29,8 @@ New Archetypes
 
 - Archer, Spear Fighter, Fighter
 
+- Skulking Hunter, Hunter
+
 New Prestige Class
 
 - Stargazer

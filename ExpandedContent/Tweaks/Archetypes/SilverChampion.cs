@@ -45,7 +45,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             });
             
             var SilverChampionSpellbook = Helpers.CreateBlueprint<BlueprintSpellbook>("SilverChampionSpellbook", bp => {
-                bp.Name = Helpers.CreateString($"SilverChampionSpellbook.Name", "SilverChampion");
+                bp.Name = Helpers.CreateString($"SilverChampionSpellbook.Name", "Silver Champion");
                 bp.m_SpellsPerDay = PaladinSpellLevels.ToReference<BlueprintSpellsTableReference>();
                 bp.m_SpellList = PaladinSpelllist.ToReference<BlueprintSpellListReference>();
                 bp.m_CharacterClass = PaladinClass.ToReference<BlueprintCharacterClassReference>();
@@ -55,7 +55,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.CasterLevelModifier = -3;
                 bp.IsArcane = false;
             });
-
+            SilverChampionArchetype.m_ReplaceSpellbook = SilverChampionSpellbook.ToReference<BlueprintSpellbookReference>();
             var SilverDrakeCompanion = Helpers.CreateBlueprint<BlueprintFeature>("SilverDrakeCompanion", bp => {
                 bp.SetName("Silver Drake Companion");
                 bp.SetDescription("At 5th Level Apsu grants their champion with a silver drake companion. The Silver Champion treats their paladin level as their effective " +

@@ -120,7 +120,10 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.Value = 1;
                     c.Descriptor = ModifierDescriptor.NaturalArmorEnhancement;
                 });
-                bp.m_Flags = BlueprintBuff.Flags.StayOnDeath | BlueprintBuff.Flags.HiddenInUi;
+                bp.AddComponent<SpellDescriptorComponent>(c => {
+                    c.Descriptor = SpellDescriptor.Polymorph;
+                });
+                bp.m_Flags = BlueprintBuff.Flags.StayOnDeath;
                 bp.Stacking = StackingType.Replace;
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = true;
@@ -191,7 +194,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.Range = AbilityRange.Personal;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.SelfTouch;
                 bp.ActionType = UnitCommand.CommandType.Standard;
-                bp.AvailableMetamagic = Metamagic.Quicken | Metamagic.Extend | Metamagic.Heighten;
+                bp.AvailableMetamagic = 0;
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });

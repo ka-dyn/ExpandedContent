@@ -5,6 +5,7 @@ using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.Blueprints.Classes.Spells;
+using Kingmaker.EntitySystem.Stats;
 using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.UnitLogic.FactLogic;
 using System;
@@ -62,10 +63,19 @@ namespace ExpandedContent.Tweaks.Archetypes {
              
             });
 
-              
-          
 
 
+            var LivingScriptureSpellbook = Helpers.CreateBlueprint<BlueprintSpellbook>("LivingScriptureSpellbook", bp => {
+                bp.Name = Helpers.CreateString($"LivingScriptureSpellbook.Name", "Living Scripture");
+                bp.m_SpellsPerDay = ClericSpellbook.m_SpellsPerDay;
+                bp.m_SpellList = ClericSpellbook.m_SpellList;
+                bp.m_CharacterClass = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
+                bp.CastingAttribute = StatType.Wisdom;
+                bp.AllSpellsKnown = true;
+                bp.CantripsType = CantripsType.Orisions;
+                bp.CasterLevelModifier = 0;
+                bp.IsArcane = false;
+            });
 
             var LivingScriptureArchetype = Helpers.CreateBlueprint<BlueprintArchetype>("LivingScriptureArchetype", bp => {
                 bp.LocalizedName = Helpers.CreateString($"LivingScriptureArchetype.Name", "Living Scripture");
@@ -75,7 +85,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.LocalizedDescriptionShort = Helpers.CreateString($"LivingScriptureArchetype.Description", "The living scripture literally wields the sacred " +
                     "word of his deity, memorizing scripture to smite the foes of his god with divine might. Unlike most inquisitors, a living scripture " +
                     "focuses on careful study of divine scripture, valuing knowledge over intuition.");
-                bp.m_ReplaceSpellbook = ClericSpellbook.ToReference<BlueprintSpellbookReference>();               
+                bp.m_ReplaceSpellbook = LivingScriptureSpellbook.ToReference<BlueprintSpellbookReference>();               
                 bp.RemoveFeatures = new LevelEntry[] {
 
 
