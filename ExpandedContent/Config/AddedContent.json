@@ -199,6 +199,11 @@
         "Enabled": true,
         "Homebrew": false,
         "Description": "A druid archetype with plant companions and plant based wild shapes."
+      },
+      "Sworn of the Eldest": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Charisma based inquisitor archetype serving the Eldest."
       }
     },
     "IsExpanded": false
