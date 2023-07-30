@@ -11,7 +11,7 @@ New Archetypes
 
 - Mantis Zealot, Warpriest
 
-- Mooncaller, Draconic Druid, Storm Druid, Urban Druid, Bear Shaman, Lion Shaman, Druid
+- Mooncaller, Draconic Druid, Storm Druid, Urban Druid, Bear Shaman, Lion Shaman, Treesinger, Druid
 
 - Temple Champion, Silver Champion, Paladin
 
@@ -47,6 +47,8 @@ New Features
 
 - Drake Companions - Limited to certain archetypes. Reworked from tabletop to work in a CRPG setting.
 
+- Plant Companions - Limited to certain archetypes.
+
 - Aid Another
 
 New Animal Companions
@@ -54,6 +56,11 @@ New Animal Companions
 - Wolverine
 - Web Tyrant Spider
 - Giant Fly (Uses Giant Mosquito stats)
+
+New Plant Companions
+
+- Sapling Treant
+- Crawling Mound (Crawling Vine from the tabletop, but using a small Shambling Mound model)
 
 New Animal Archetype
 
@@ -115,6 +122,7 @@ New Domains / Subdomains
   - Dragon
   - Ferocity
   - Fur
+  - Growth
   - Heroism
   - Ice
   - Lust
@@ -163,6 +171,7 @@ New Spells
 - Plant Shape (I, II, III)
 - Shillelagh
 - Wooden Phalanx
+- Shambler
 
 I'd like to give a huge thank you to Vek17, as much of the coding in this repository is his; I simply repurposed it or learned from it. I wouldn't be able to release
 anything without it. Check out his mod, TableTopTweaks if you haven't already!
