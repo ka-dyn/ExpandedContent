@@ -124,14 +124,6 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.AddFeatures(AnimalCompanionFeatureBear, CompanionWolverineFeature);
             });
 
-
-
-
-
-
-
-
-
             var BearShamanDomainSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("BearShamanDomainSelection", bp => {
                 bp.SetName("Bear Totem Druids Bond");
                 bp.SetDescription("A bear totem druid who chooses an animal companion must select a bear or wolverine. If choosing a domain, the bear totem druid must choose from the Animal, Earth, Protection, and Strength domains.");

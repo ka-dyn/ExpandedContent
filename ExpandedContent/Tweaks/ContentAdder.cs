@@ -42,6 +42,8 @@ namespace ExpandedContent.Tweaks {
                 AnimalCompanions.CompanionWolverine.AddCompanionWolverine();
                 AnimalCompanions.CompanionGiantFly.AddCompanionGiantFly();
                 AnimalCompanions.CompanionWebSpider.AddCompanionWebSpider();
+                AnimalCompanions.CompanionSaplingTreant.AddCompanionSaplingTreant();
+                AnimalCompanions.CompanionCrawlingMound.AddCompanionCrawlingMound();
                 AnimalCompanions.ArchetypeDraconic.AddArchetypeDraconic();
 
                 Miscellaneous.AlignmentTemplates.AddFiendishTemplate();
@@ -129,6 +131,7 @@ namespace ExpandedContent.Tweaks {
                 Spells.Shillelagh.AddShillelagh();
                 Spells.PlantShape.AddPlantShape();
                 Spells.WoodenPhalanx.AddWoodenPhalanx();
+                Spells.Shambler.AddShambler();
 
                 Domains.ImpossibleSubdomainSelection.AddImpossibleSubdomainSelection();
                 Domains.ScalykindDomain.AddScalykindDomain();
@@ -161,9 +164,12 @@ namespace ExpandedContent.Tweaks {
                 Domains.FurDomain.AddFurDomain();
                 Domains.DefenseDomain.AddDefenseDomain();
                 Domains.HeroismDomain.AddHeroismDomain();
+                Domains.GrowthDomain.AddGrowthDomain();
+                Domains.PlantDomainPatch.PatchPlantDomain();
                 Domains.BaseDeityPatch.AddBaseDeityPatch();
 
                 Archetypes.StormDruid.AddStormDruid();
+                Archetypes.Treesinger.AddTreesinger();
 
                 Mysteries.DragonMystery.AddDragonMystery();
                 Mysteries.HeavensMystery.AddHeavensMystery();
@@ -377,6 +383,8 @@ namespace ExpandedContent.Tweaks {
             public static void PatchAfter() {
                 Miscellaneous.HavocDragonPet.AddHavocDragonPet();
                 Miscellaneous.ShapechangeFeatsPatch.AddShapechangeFeatsPatch();
+
+                Miscellaneous.BugFixes.ShamblingMoundGrabDamage();
             }
         }
     }

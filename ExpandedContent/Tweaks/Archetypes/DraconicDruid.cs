@@ -123,6 +123,10 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.AddComponent<SpellDescriptorComponent>(c => {
                     c.Descriptor = SpellDescriptor.Polymorph;
                 });
+                bp.AddComponent<PolymorphBonuses>(c => {
+                    c.m_Flags = 0;
+                    c.masterShifterBonus = 4;
+                });
                 bp.m_Flags = BlueprintBuff.Flags.StayOnDeath;
                 bp.Stacking = StackingType.Replace;
                 bp.m_AllowNonContextActions = false;
@@ -216,6 +220,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.IsClassFeature = true;
                 bp.IsPrerequisiteFor = WildShapeIWolfFeature.IsPrerequisiteFor;
             });
+
             var FormOfTheDragonGreenBuff = Resources.GetBlueprint<BlueprintBuff>("02611a12f38bed340920d1d427865917");
             var WildShapeDragonShapeGreenBuff = Helpers.CreateBuff("WildShapeDragonShapeGreenBuff", bp => {
                 bp.SetName("Dragon Shape - Green Dragon");

@@ -8,11 +8,113 @@
       "zhCN": "召唤灰熊"
     },
     {
-      "Key": "a17ca893a04545bc9753dd2fbebd28ba",
+      "Key": "9fec9602c34c4fffa07d78e1f46219e4",
       "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
       "ProcessTemplates": false,
-      "enGB": "Giant Fly",
-      "zhCN": "巨苍蝇"
+      "enGB": "Advanced Shambling Mound"
+    },
+    {
+      "Key": "7654a5eb9541443da42ae4c9eabccf8d",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Crawling Mound"
+    },
+    {
+      "Key": "1822845d85d245e1a4e78cc8210b900a",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Summoned Advanced Smilodon",
+      "zhCN": "召唤高等剑齿虎"
+    },
+    {
+      "Key": "8f96e34f12844530bd724473590d754a",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Web Tyrant Spider",
+      "zhCN": "暴君蜘蛛"
+    },
+    {
+      "Key": "cceb9f3a49784ef6afab7bdd568637ba",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Summoned Young Leopard",
+      "zhCN": "召唤幼年花豹"
+    },
+    {
+      "Key": "30bd172ba71146508718a328a7fadc71",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Summoned Young Smilodon",
+      "zhCN": "召唤幼年剑齿虎"
+    },
+    {
+      "Key": "ed20a45c798a49fd83b19b7b9f0d845c",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Summoned Advanced Grizzly",
+      "zhCN": "召唤高等灰熊"
+    },
+    {
+      "Key": "ee9a9d2f31844be2b7cb124b144bc809",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Summoned Giant Smilodon",
+      "zhCN": "召唤巨型剑齿虎"
+    },
+    {
+      "Key": "0f2cf0a97d3f45c1bd348e117a3efbf1",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Summoned Giant Advanced Smilodon",
+      "zhCN": "召唤巨型高等剑齿虎"
+    },
+    {
+      "Key": "c6cfbb7f5f6f47a1bc266d8b6c94396e",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Summoned Advanced Leopard",
+      "zhCN": "召唤高等花豹"
+    },
+    {
+      "Key": "4b5d4a135ee04c448c736039821cf216",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Summoned Giant Advanced Leopard",
+      "zhCN": "召唤巨型高等花豹"
+    },
+    {
+      "Key": "1cfda936bc994277bf04f013b1461281",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Summoned Young Grizzly",
+      "zhCN": "召唤幼年灰熊"
+    },
+    {
+      "Key": "8ab1da2e175249818cd9529bd3459995",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Summoned Giant Leopard",
+      "zhCN": "召唤巨型花豹"
+    },
+    {
+      "Key": "86617a56e6504b9ba986affcddd9cc45",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Gold Drake",
+      "zhCN": "金龙兽"
+    },
+    {
+      "Key": "f8965a40cdce4b03840f3403362aa277",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Sapling Treant"
+    },
+    {
+      "Key": "134dae07c9ca419bbb8780fe64952aea",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Wolverine",
+      "zhCN": "狼獾"
     },
     {
       "Key": "a48ac449e70d4b81a5f04bc68cd5e0ad",
@@ -20,6 +122,13 @@
       "ProcessTemplates": false,
       "enGB": "Brass Drake",
       "zhCN": "黄铜龙兽"
+    },
+    {
+      "Key": "a17ca893a04545bc9753dd2fbebd28ba",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Giant Fly",
+      "zhCN": "巨苍蝇"
     },
     {
       "Key": "f749a9876e8646db9c98bd8f5f216379",
@@ -50,11 +159,11 @@
       "zhCN": "青铜龙兽"
     },
     {
-      "Key": "dbe201e8d03947028000ff87f2712ef4",
+      "Key": "aaefd539a796487d8cfe66d5e51916c8",
       "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
       "ProcessTemplates": false,
-      "enGB": "Umbral Drake",
-      "zhCN": "影龙兽"
+      "enGB": "Summoned Giant Advanced Grizzly",
+      "zhCN": "召唤巨型高等灰熊"
     },
     {
       "Key": "3bfa12fd3f624f0bb59b43abbf8c4476",
@@ -62,6 +171,26 @@
       "ProcessTemplates": false,
       "enGB": "White Drake",
       "zhCN": "白龙兽"
+    },
+    {
+      "Key": "6eafdf9201084d4984570d387657970a",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Advanced Wood Golum"
+    },
+    {
+      "Key": "d78cef6333094acfb027c9ea446537e5",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Silver Drake",
+      "zhCN": "银龙兽"
+    },
+    {
+      "Key": "dbe201e8d03947028000ff87f2712ef4",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Umbral Drake",
+      "zhCN": "影龙兽"
     },
     {
       "Key": "6990af2dec8c425ea2b9970d0ab46bd5",
@@ -83,117 +212,6 @@
       "ProcessTemplates": false,
       "enGB": "Black Drake",
       "zhCN": "黑龙兽"
-    },
-    {
-      "Key": "6eafdf9201084d4984570d387657970a",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Advanced Wood Golum"
-    },
-    {
-      "Key": "d78cef6333094acfb027c9ea446537e5",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Silver Drake",
-      "zhCN": "银龙兽"
-    },
-    {
-      "Key": "134dae07c9ca419bbb8780fe64952aea",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Wolverine",
-      "zhCN": "狼獾"
-    },
-    {
-      "Key": "aaefd539a796487d8cfe66d5e51916c8",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Summoned Giant Advanced Grizzly",
-      "zhCN": "召唤巨型高等灰熊"
-    },
-    {
-      "Key": "86617a56e6504b9ba986affcddd9cc45",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Gold Drake",
-      "zhCN": "金龙兽"
-    },
-    {
-      "Key": "8ab1da2e175249818cd9529bd3459995",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Summoned Giant Leopard",
-      "zhCN": "召唤巨型花豹"
-    },
-    {
-      "Key": "1cfda936bc994277bf04f013b1461281",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Summoned Young Grizzly",
-      "zhCN": "召唤幼年灰熊"
-    },
-    {
-      "Key": "4b5d4a135ee04c448c736039821cf216",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Summoned Giant Advanced Leopard",
-      "zhCN": "召唤巨型高等花豹"
-    },
-    {
-      "Key": "c6cfbb7f5f6f47a1bc266d8b6c94396e",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Summoned Advanced Leopard",
-      "zhCN": "召唤高等花豹"
-    },
-    {
-      "Key": "0f2cf0a97d3f45c1bd348e117a3efbf1",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Summoned Giant Advanced Smilodon",
-      "zhCN": "召唤巨型高等剑齿虎"
-    },
-    {
-      "Key": "ee9a9d2f31844be2b7cb124b144bc809",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Summoned Giant Smilodon",
-      "zhCN": "召唤巨型剑齿虎"
-    },
-    {
-      "Key": "ed20a45c798a49fd83b19b7b9f0d845c",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Summoned Advanced Grizzly",
-      "zhCN": "召唤高等灰熊"
-    },
-    {
-      "Key": "30bd172ba71146508718a328a7fadc71",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Summoned Young Smilodon",
-      "zhCN": "召唤幼年剑齿虎"
-    },
-    {
-      "Key": "cceb9f3a49784ef6afab7bdd568637ba",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Summoned Young Leopard",
-      "zhCN": "召唤幼年花豹"
-    },
-    {
-      "Key": "8f96e34f12844530bd724473590d754a",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Web Tyrant Spider",
-      "zhCN": "暴君蜘蛛"
-    },
-    {
-      "Key": "1822845d85d245e1a4e78cc8210b900a",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Summoned Advanced Smilodon",
-      "zhCN": "召唤高等剑齿虎"
     },
     {
       "Key": "72649485145f43a1b53eb14219424047",
@@ -268,18 +286,18 @@
       "zhCN": "每天一次，恐惧骑士可以链接亵渎领主，以对抗对他们不利的势力。以一个迅捷动作，恐惧骑士选择一个视野内的目标进行粉碎。恐惧骑士在他们的攻击检定上加上他们的魅力调整值（如果有的话），并把他们的恐惧骑士等级加到对他们邪恶惩戒目标的所有伤害检定上。无论目标是什么，原罪斩攻击都会自动绕过该生物可能拥有的任何DR。此外，当原罪斩生效时，恐惧骑士在对抗原罪斩目标的攻击时获得等于其魅力调整值（如果有的话）的偏斜加值。"
     },
     {
-      "Key": "caa10bd594a24eb192670bf6289cab8a",
-      "SimpleName": "$TouchOfProfaneCorruptionFeature.DescriptionShort",
-      "ProcessTemplates": false,
-      "enGB": "Beginning at 7th level as a swift action, a dreadknight can spend two uses of their touch of profane corruption to surround their weapon with a profane flame, causing terrible wounds to open on those they attacks. This ability works with any weapon.",
-      "zhCN": "7级开始，以一个迅捷动作，恐惧骑士可以消耗两次亵渎之炎使用亵渎之炎围绕他们的武器，对他们攻击的人造成可怕的伤口。此能力适用于任何武器。"
-    },
-    {
       "Key": "a21570d8a87645adbcc9b95ed420216d",
       "SimpleName": "$TouchOfProfaneCorruptionFeature.DescriptionShort",
       "ProcessTemplates": false,
       "enGB": "Beginning at 2nd level, a dreadknight can surround her hand with a profane flame, causing terrible wounds to open on those she touches. Alternatively, a dreadknight can use this power to heal undead creatures.",
       "zhCN": "2级开始，恐惧骑士可以用亵渎之炎围绕她的双手，对遭受他们攻击的人造成可怕的伤口。此能力适用于任何武器。或者，恐惧骑士可以使用这个力量来治疗不死生物。"
+    },
+    {
+      "Key": "caa10bd594a24eb192670bf6289cab8a",
+      "SimpleName": "$TouchOfProfaneCorruptionFeature.DescriptionShort",
+      "ProcessTemplates": false,
+      "enGB": "Beginning at 7th level as a swift action, a dreadknight can spend two uses of their touch of profane corruption to surround their weapon with a profane flame, causing terrible wounds to open on those they attacks. This ability works with any weapon.",
+      "zhCN": "7级开始，以一个迅捷动作，恐惧骑士可以消耗两次亵渎之炎使用亵渎之炎围绕他们的武器，对他们攻击的人造成可怕的伤口。此能力适用于任何武器。"
     },
     {
       "Key": "dd8c0bee59ea466b9f9a584af23aa32e",
@@ -842,14 +860,6 @@
       "zhCN": "到了8级，你能用标准动作发动30尺的防护灵光，敌人的命中、AC、豁免受到-2惩罚。你每天能使用的轮数等于牧师等级，不必连续。"
     },
     {
-      "Key": "ab5422bb10d34d39b6cb701f99b9fd3e",
-      "SimpleName": "ArchonDomainLawBaseFeature.Description",
-      "ProcessTemplates": true,
-      "IsUsed": false,
-      "enGB": "\nYou follow the archons path of righteousness.\nTouch of Law: You can touch a willing creature as a standard action, infusing it with the power of divine order and allowing it to treat all attack rolls, skill checks, ability checks, and saving throws for 1 round as if the natural d20 roll resulted in an 11. You can use this ability a number of times per day equal to 3 + your Wisdom modifier.[LONGEND]\nAura of Menace: At 8th level, you can emit a 30-foot aura of menace as a standard action. Enemies in this aura take a –2 penalty to AC and on attacks and saves as long as they remain inside the aura. You can use this ability for a number of rounds per day equal to your cleric level. These rounds do not need to be consecutive.",
-      "zhCN": "\n你遵循正义的亚空之路。\n秩序之触：你能够以{g|Encyclopedia:Standard_Actions}标准动作{/g}{g|Encyclopedia:TouchAttack}接触{/g}一个自愿生物，向其注入圣洁秩序之力，使其在1{g|Encyclopedia:Combat_Round}轮{/g}内，可将所有{g|Encyclopedia:Attack}攻击检定{/g}、{g|Encyclopedia:Skills}技能检定{/g}、{g|Encyclopedia:Ability_Scores}属性检定{/g}和{g|Encyclopedia:Saving_Throw}豁免检定{/g}视为在{g|Encyclopedia:Dice}d20{/g}的投骰中获得了11的骰面值。每天可使用次数为{g|Encyclopedia:Wisdom}感知{/g}调整值+3。\n威胁灵光：到了8级，你能用标准动作发动30尺的防护灵光，敌人的命中、AC、豁免受到-2惩罚。你每天能使用的轮数等于牧师等级，不必连续。"
-    },
-    {
       "Key": "3a9ae1feec7241b292fe7d9a91f815b1",
       "SimpleName": "ArchonDomainLawBaseFeature.Description",
       "ProcessTemplates": true,
@@ -858,6 +868,14 @@
     },
     {
       "Key": "65eaa77407ea49f58fba80be8d061fb0",
+      "SimpleName": "ArchonDomainLawBaseFeature.Description",
+      "ProcessTemplates": true,
+      "IsUsed": false,
+      "enGB": "\nYou follow the archons path of righteousness.\nTouch of Law: You can touch a willing creature as a standard action, infusing it with the power of divine order and allowing it to treat all attack rolls, skill checks, ability checks, and saving throws for 1 round as if the natural d20 roll resulted in an 11. You can use this ability a number of times per day equal to 3 + your Wisdom modifier.[LONGEND]\nAura of Menace: At 8th level, you can emit a 30-foot aura of menace as a standard action. Enemies in this aura take a –2 penalty to AC and on attacks and saves as long as they remain inside the aura. You can use this ability for a number of rounds per day equal to your cleric level. These rounds do not need to be consecutive.",
+      "zhCN": "\n你遵循正义的亚空之路。\n秩序之触：你能够以{g|Encyclopedia:Standard_Actions}标准动作{/g}{g|Encyclopedia:TouchAttack}接触{/g}一个自愿生物，向其注入圣洁秩序之力，使其在1{g|Encyclopedia:Combat_Round}轮{/g}内，可将所有{g|Encyclopedia:Attack}攻击检定{/g}、{g|Encyclopedia:Skills}技能检定{/g}、{g|Encyclopedia:Ability_Scores}属性检定{/g}和{g|Encyclopedia:Saving_Throw}豁免检定{/g}视为在{g|Encyclopedia:Dice}d20{/g}的投骰中获得了11的骰面值。每天可使用次数为{g|Encyclopedia:Wisdom}感知{/g}调整值+3。\n威胁灵光：到了8级，你能用标准动作发动30尺的防护灵光，敌人的命中、AC、豁免受到-2惩罚。你每天能使用的轮数等于牧师等级，不必连续。"
+    },
+    {
+      "Key": "ab5422bb10d34d39b6cb701f99b9fd3e",
       "SimpleName": "ArchonDomainLawBaseFeature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
@@ -1327,14 +1345,6 @@
       "zhCN": "巨熊德鲁伊"
     },
     {
-      "Key": "c586a0fe0d834cae86f271ee10363691",
-      "SimpleName": "BearShamanBondSelection.Description",
-      "ProcessTemplates": true,
-      "IsUsed": false,
-      "enGB": "A bear totem druid who chooses an animal companion must select a bear or wolverine. If choosing a domain, the bear totem druid must choose from the Animal, Earth, Protection, and Strength domains.",
-      "zhCN": "巨熊德鲁伊动物伙伴必须是熊，如果他选择了领域能力的话，他必须以从下几个领域中挑选：动物、大地、保护和力量。"
-    },
-    {
       "Key": "67668a3a8fc54692b2c3bcd80ee859cf",
       "SimpleName": "BearShamanBondSelection.Description",
       "ProcessTemplates": true,
@@ -1348,6 +1358,14 @@
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "A bear totem druid who chooses an animal companion must select a bear. If choosing a domain, the bear totem druid must choose from the Animal, Earth, Protection, and Strength domains.",
+      "zhCN": "巨熊德鲁伊动物伙伴必须是熊，如果他选择了领域能力的话，他必须以从下几个领域中挑选：动物、大地、保护和力量。"
+    },
+    {
+      "Key": "c586a0fe0d834cae86f271ee10363691",
+      "SimpleName": "BearShamanBondSelection.Description",
+      "ProcessTemplates": true,
+      "IsUsed": false,
+      "enGB": "A bear totem druid who chooses an animal companion must select a bear or wolverine. If choosing a domain, the bear totem druid must choose from the Animal, Earth, Protection, and Strength domains.",
       "zhCN": "巨熊德鲁伊动物伙伴必须是熊，如果他选择了领域能力的话，他必须以从下几个领域中挑选：动物、大地、保护和力量。"
     },
     {
@@ -1709,18 +1727,18 @@
       "zhCN": "鲜血子域"
     },
     {
+      "Key": "28c9c690cca54668b290e26c0443cdc8",
+      "SimpleName": "BloodDomainGreaterAbility.Description",
+      "ProcessTemplates": true,
+      "enGB": "You may give a weapon that you touch the wounding special weapon quality for a number of rounds equal to 1/2 your cleric level. You can use this ability once per day at 8th level, and an additional time per day for every four levels beyond 8th. \nWounded: Creatures hit by this weapon take 1 hit point damage each turn for each stack of this status. This can be stopped through the application of any spell that cures hit point damage.",
+      "zhCN": "到了8级，你能通过触碰令武器变成血光武器，持续轮数为牧师等级一半。你8级能每天使用1次，以后每比8级高4级多1次。"
+    },
+    {
       "Key": "ee51b50bd47943d481d41494583cfbe1",
       "SimpleName": "BloodDomainGreaterAbility.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "At 8th level, you can give a weapon that you touch the wounding special weapon quality for a number of rounds equal to 1/2 your cleric level. You can use this ability once per day at 8th level, and an additional time per day for every four levels beyond 8th.",
-      "zhCN": "到了8级，你能通过触碰令武器变成血光武器，持续轮数为牧师等级一半。你8级能每天使用1次，以后每比8级高4级多1次。"
-    },
-    {
-      "Key": "28c9c690cca54668b290e26c0443cdc8",
-      "SimpleName": "BloodDomainGreaterAbility.Description",
-      "ProcessTemplates": true,
-      "enGB": "You may give a weapon that you touch the wounding special weapon quality for a number of rounds equal to 1/2 your cleric level. You can use this ability once per day at 8th level, and an additional time per day for every four levels beyond 8th. \nWounded: Creatures hit by this weapon take 1 hit point damage each turn for each stack of this status. This can be stopped through the application of any spell that cures hit point damage.",
       "zhCN": "到了8级，你能通过触碰令武器变成血光武器，持续轮数为牧师等级一半。你8级能每天使用1次，以后每比8级高4级多1次。"
     },
     {
@@ -2299,6 +2317,66 @@
       "zhCN": "缩小龙兽-大型"
     },
     {
+      "Key": "fed965a6b4cf49e6a70e230fa0c27ea6",
+      "SimpleName": "CompanionCrawlingMoundConstrictFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "Whenever the crawling mound's vines coil successfully grapples a creature, they take 1d6 damage. Everyround the grappled creature fails to escape the grapple they take 1d6 damage."
+    },
+    {
+      "Key": "5a780b78fdd5432688e9149394c19d53",
+      "SimpleName": "CompanionCrawlingMoundConstrictFeature.Name",
+      "ProcessTemplates": false,
+      "enGB": "Constrict"
+    },
+    {
+      "Key": "e2dcbe09fb7e44ba9cce8ff36a91bb0a",
+      "SimpleName": "CompanionCrawlingMoundFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "Size: Medium\nSpeed: 20 ft.\nAC: +6 natural armor\nAttack: slam (1d4) + grab\nAbility scores: Str 13, Dex 17, Con 13, Int 1, Wis 12, Cha 2\nAt 4th level size becomes Large, Str +8, Dex -2, Con +4, +1 natural armor, iterative attacks, and grab now deals 1d6 damage on successful grapple and each round.\nThis animal companion can't be used as a mount."
+    },
+    {
+      "Key": "dded5b19fe914f9bbaf66e3d147f8a31",
+      "SimpleName": "CompanionCrawlingMoundFeature.Name",
+      "ProcessTemplates": false,
+      "enGB": "Animal Companion — Crawling Mound"
+    },
+    {
+      "Key": "e87b6024fdf14082aac5ccd0f5fe72a8",
+      "SimpleName": "CompanionCrawlingMoundGrabActivatableAbility.Description",
+      "ProcessTemplates": true,
+      "enGB": "A crawling mound's vines coil around any creature it hits with a slam attack. The crawling mound attempts a grapple maneuver check against its target, on a successful check the foe is grappled. \nGrappled characters cannot move, and take a -2 penalty on all attack rolls and a -4 penalty to Dexterity. Grappled characters attempt to escape every round by making a successful combat maneuver, Strength, Athletics, or Mobility check. The DC of this check is the crawling mound's CMD."
+    },
+    {
+      "Key": "5176d5c4ca3e48b4b9cbe227ca8ad826",
+      "SimpleName": "CompanionCrawlingMoundGrabFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "A crawling mound's vines coil around any creature it hits with a slam attack. The crawling mound attempts a grapple maneuver check against its target, on a successful check the foe is grappled. \nGrappled characters cannot move, and take a -2 penalty on all attack rolls and a -4 penalty to Dexterity. Grappled characters attempt to escape every round by making a successful combat maneuver, Strength, Athletics, or Mobility check. The DC of this check is the crawling mound's CMD."
+    },
+    {
+      "Key": "57454e0473084edfab063a4065f62820",
+      "SimpleName": "CompanionCrawlingMoundGrappleBuff.Description",
+      "ProcessTemplates": true,
+      "enGB": "A crawling mound's vines coil around any creature it hits with a slam attack. The crawling mound attempts a grapple maneuver check against its target, on a successful check the foe is grappled. \nGrappled characters cannot move, and take a -2 penalty on all attack rolls and a -4 penalty to Dexterity. Grappled characters attempt to escape every round by making a successful combat maneuver, Strength, Athletics, or Mobility check. The DC of this check is the crawling mound's CMD."
+    },
+    {
+      "Key": "8609e03984ad408aadff5be97db5fbe2",
+      "SimpleName": "CompanionCrawlingMoundGrappleTargetBuff.Description",
+      "ProcessTemplates": true,
+      "enGB": "A crawling mound's vines coil around any creature it hits with a slam attack. The crawling mound attempts a grapple maneuver check against its target, on a successful check the foe is grappled. \nGrappled characters cannot move, and take a -2 penalty on all attack rolls and a -4 penalty to Dexterity. Grappled characters attempt to escape every round by making a successful combat maneuver, Strength, Athletics, or Mobility check. The DC of this check is the crawling mound's CMD."
+    },
+    {
+      "Key": "5288ac6cc05d41a8b63785c096d9098f",
+      "SimpleName": "CompanionCrawlingMoundGrappleTargetBuff.Name",
+      "ProcessTemplates": false,
+      "enGB": "Constricting Vines"
+    },
+    {
+      "Key": "41266817a6ed46c4bda6bad87158ec35",
+      "SimpleName": "CompanionCrawlingMoundGrappleTargetBuffUpgraded.Description",
+      "ProcessTemplates": true,
+      "enGB": "A crawling mound's vines coil around any creature it hits with a slam attack. The crawling mound attempts a grapple maneuver check against its target, on a successful check the foe is grappled. \nGrappled characters cannot move, and take a -2 penalty on all attack rolls and a -4 penalty to Dexterity. Grappled characters attempt to escape every round by making a successful combat maneuver, Strength, Athletics, or Mobility check. The DC of this check is the crawling mound's CMD. \nWhen a creature is successfully grappled or spends a whole round failing to escape the grapple, they are dealt 1d6 damage."
+    },
+    {
       "Key": "fcf939ddd7904373a62d6f0219142ec7",
       "SimpleName": "CompanionGiantFlyBleed1d6Feature.Name",
       "ProcessTemplates": false,
@@ -2349,6 +2427,30 @@
       "zhCN": "动物伙伴（巨苍蝇）"
     },
     {
+      "Key": "b7f9af718b1c4e5f9896839bb5f3e5c4",
+      "SimpleName": "CompanionSaplingTreantConstructFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "The sapling treat deals double damage to constructs and objects."
+    },
+    {
+      "Key": "31577f6e144f44b9a89a7598203c23a0",
+      "SimpleName": "CompanionSaplingTreantConstructFeature.Name",
+      "ProcessTemplates": false,
+      "enGB": "Construct Smasher"
+    },
+    {
+      "Key": "d2a56a6e6f4c4421b99bb55a8bf41dc9",
+      "SimpleName": "CompanionSaplingTreantFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "Size: Medium\nSpeed: 30 ft.\nAC: +5 natural armor\nAttack: 2 slams (1d6) \nAbility scores: Str 15, Dex 10, Con 12, Int 2, Wis 12, Cha 7\nSpecial Attacks: The sapling treat deals double damage to constructs and objects.\nAt 4th level size becomes Large, Str +8, Dex -2, Con +4, +2 natural armor, and also gains an additional slam attack.\nThis animal companion can't be used as a mount."
+    },
+    {
+      "Key": "3afa9628bbdc440b8337f7197f737946",
+      "SimpleName": "CompanionSaplingTreantFeature.Name",
+      "ProcessTemplates": false,
+      "enGB": "Animal Companion — Sapling Treant"
+    },
+    {
       "Key": "00bbac5a852647758f824921e84967a6",
       "SimpleName": "CompanionWebSpiderFeature.Description",
       "ProcessTemplates": true,
@@ -2392,6 +2494,13 @@
       "zhCN": "制造出一团由强韧而有黏性的丝构成的多层网状结构。  这些丝将牢牢缠住里面的人。  被蛛网捆住的生物将被黏性纤维擒抱。  \n在{g|Encyclopedia:Spell}施法{/g}时，效果区域内的所有生物都必须进行反射{g|Encyclopedia:Saving_Throw}豁免检定{/g}。 如果豁免成功，生物位于网中，但不受任何影响。 如果豁免失败，生物陷入擒抱状态，但可以花费{g|Encyclopedia:Standard_Actions}标准动作{/g}进行{g|Encyclopedia:Combat_Maneuvers}战技{/g}{g|Encyclopedia:Check}检定{/g}、{g|Encyclopedia:Athletics}运动检定{/g}或{g|Encyclopedia:Mobility}灵巧检定{/g}以脱身，检定难度等于此法术的{g|Encyclopedia:DC}DC{/g}。 受蛛网影响的整个区域视作困难地形。 任何在网中移动的生物每{g|Encyclopedia:Combat_Round}轮{/g}都必须进行反射豁免检定，若失败则失去移动，并在进入的第一个方格被擒抱。蜘蛛免疫该能力。\n你可以每天使用这个能力3 +你的体质调整值的次数。"
     },
     {
+      "Key": "837bb37abf06444b8137874fbd9e5513",
+      "SimpleName": "CompanionWolverineFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "Size: Small\nSpeed: 30 ft.\nAC: +6 natural armor\nAttack: bite (1d4), 2 claws (1d3)\nAbility scores: Str 10, Dex 17, Con 15, Int 2, Wis 12, Cha 10\nSpecial Attacks: rage (as a barbarian for 6 rounds per day)\nAt 4th level size becomes Medium, Str +4, Dex -2, Con +4, +2 natural armor.\nThis animal companion can't be used as a mount.",
+      "zhCN": "体型：小型 速度：30 英尺 AC：+6 天生防御攻击：啮咬 (1d4)、2 爪抓 (1d3) 能力值：力量 10、敏捷 17、体质 15、智力 2、感知 12、魅力 10 特殊攻击：狂暴（作为野蛮人，每天 6 轮）在 4 级时，体型变为中型，力量 +4，敏捷 -2，体质 +4，天生防御 +2。该动物伙伴不能用作坐骑。"
+    },
+    {
       "Key": "641bbfb533224f76baf62c07a008942f",
       "SimpleName": "CompanionWolverineFeature.Description",
       "ProcessTemplates": true,
@@ -2400,11 +2509,11 @@
       "zhCN": "体型:中型\n移动速度: 30英尺\nAC: +6天生防御\n攻击: 啮咬 (1d4)\n属性:力量 10, 敏捷 17, 体质 15, 智力 2, 感知 12, 魅力 10\n特殊能力:狂暴(等同于野蛮人，每天6回合)\n在4级时体型变成中型，力量 +4, 敏捷 -2, 体质 +4，+2天生防御。\n这个动物伙伴不能用作坐骑。"
     },
     {
-      "Key": "837bb37abf06444b8137874fbd9e5513",
-      "SimpleName": "CompanionWolverineFeature.Description",
-      "ProcessTemplates": true,
-      "enGB": "Size: Small\nSpeed: 30 ft.\nAC: +6 natural armor\nAttack: bite (1d4), 2 claws (1d3)\nAbility scores: Str 10, Dex 17, Con 15, Int 2, Wis 12, Cha 10\nSpecial Attacks: rage (as a barbarian for 6 rounds per day)\nAt 4th level size becomes Medium, Str +4, Dex -2, Con +4, +2 natural armor.\nThis animal companion can't be used as a mount.",
-      "zhCN": "体型：小型 速度：30 英尺 AC：+6 天生防御攻击：啮咬 (1d4)、2 爪抓 (1d3) 能力值：力量 10、敏捷 17、体质 15、智力 2、感知 12、魅力 10 特殊攻击：狂暴（作为野蛮人，每天 6 轮）在 4 级时，体型变为中型，力量 +4，敏捷 -2，体质 +4，天生防御 +2。该动物伙伴不能用作坐骑。"
+      "Key": "0d9d9f90e8444c6fb359793e05c7839f",
+      "SimpleName": "CompanionWolverineFeature.Name",
+      "ProcessTemplates": false,
+      "enGB": "Animal Companion — Wolverine",
+      "zhCN": "动物伙伴（狼獾）"
     },
     {
       "Key": "21f2c1b2dd26495ab70c377191226381",
@@ -2412,13 +2521,6 @@
       "ProcessTemplates": false,
       "IsUsed": false,
       "enGB": "Animal Companion - Wolverine",
-      "zhCN": "动物伙伴（狼獾）"
-    },
-    {
-      "Key": "0d9d9f90e8444c6fb359793e05c7839f",
-      "SimpleName": "CompanionWolverineFeature.Name",
-      "ProcessTemplates": false,
-      "enGB": "Animal Companion — Wolverine",
       "zhCN": "动物伙伴（狼獾）"
     },
     {
@@ -2979,18 +3081,18 @@
       "zhCN": "达哈克的赠礼"
     },
     {
+      "Key": "e66bee3ebe334bfe83034c74d1815150",
+      "SimpleName": "DaikitsuFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nTitles: Lady of Foxes   \nAlignment: Neutral   \nAreas of Concern: Agriculture, Craftsmanship, Kitsune, Rice\nEdict: Ensure the health of crops and vegetation, perfect a craft or trade, leave offerings for foxes, celebrate the turning of the seasons   \nDomains: Animal, Artifice, Community, Plant, Weather   \nSubdomains: Construct, Family, Fur, Growth, Home, Industry, Seasons   \nFavoured Weapon: Flail   \nHoly Symbol: Nine-tailed fox   \nSacred Animal: Fox \nDaikitsu is widely worshiped in Tian Xia, as she is the goddess of rice, a staple food in those lands, as well as of agriculture and craftsmanship. Farmers pray to Daikitsu for good harvests, smiths and craftsmen seek her blessing for their creations, and families ask for her protection for their homes and families. Known as the Lady of Foxes, Daikitsu usually appears as beautiful kitsune woman with snow-white fur and nine tails. She is also the patron of kitsune, who venerate her as the mother of their race.",
+      "zhCN": "\n称号：狐狸女士 \n阵营：绝对中立 \n神职：农业、技艺、狐妖、稻米\n信条：确保作物和植被的健康，完美的手工艺或贸易，为狐狸送上祭品，庆祝季节的转变 \n领域：动物、工匠、联盟、植物、天气 \n子领域：构装、家族、毛兽、滋长、家园、工业、季节\n偏好武器：连枷\n圣徽：九尾狐\n圣兽：狐狸\n大狐女在天洲信者众多，因为她是稻米之神，掌管田地的丰饶，也关照工匠们的手艺。农民向大狐女祈祷自己的庄稼丰收，匠人向大狐女祈祷自己的作品完美，而每家每户都会向大狐女祈祷保佑家宅平安。就像她的尊号所称的那样，大狐女喜欢化身为一个皮毛光洁雪白，长有九条大尾的狐妖美女出现，因为她也正是狐妖一族的保护者，被狐妖们奉为主母。"
+    },
+    {
       "Key": "8f10a004ffff4573baa853a794d256e9",
       "SimpleName": "DaikitsuFeature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "\nTitles: Lady of Foxes   \nAlignment: Neutral   \nAreas of Concern: Agriculture, Craftsmanship, Kitsune, Rice\nEdict: Ensure the health of crops and vegetation, perfect a craft or trade, leave offerings for foxes, celebrate the turning of the seasons   \nDomains: Animal, Artifice, Community, Plant, Weather   \nSubdomains: Construct, Family, Fur, Growth, Home, Industry, Seasons   \nFavoured Weapon: Flail   \nHoly Symbol: Nine-tailed fox   \nSacred Animal: Fox   Daikitsu is widely worshiped in Tian Xia, as she is the goddess of rice, a staple food in those lands, as well as of agriculture and craftsmanship. Farmers pray to Daikitsu for good harvests, smiths and craftsmen seek her blessing for their creations, and families ask for her protection for their homes and families. Known as the Lady of Foxes, Daikitsu usually appears as beautiful kitsune woman with snow-white fur and nine tails. She is also the patron of kitsune, who venerate her as the mother of their race.",
-      "zhCN": "\n称号：狐狸女士 \n阵营：绝对中立 \n神职：农业、技艺、狐妖、稻米\n信条：确保作物和植被的健康，完美的手工艺或贸易，为狐狸送上祭品，庆祝季节的转变 \n领域：动物、工匠、联盟、植物、天气 \n子领域：构装、家族、毛兽、滋长、家园、工业、季节\n偏好武器：连枷\n圣徽：九尾狐\n圣兽：狐狸\n大狐女在天洲信者众多，因为她是稻米之神，掌管田地的丰饶，也关照工匠们的手艺。农民向大狐女祈祷自己的庄稼丰收，匠人向大狐女祈祷自己的作品完美，而每家每户都会向大狐女祈祷保佑家宅平安。就像她的尊号所称的那样，大狐女喜欢化身为一个皮毛光洁雪白，长有九条大尾的狐妖美女出现，因为她也正是狐妖一族的保护者，被狐妖们奉为主母。"
-    },
-    {
-      "Key": "e66bee3ebe334bfe83034c74d1815150",
-      "SimpleName": "DaikitsuFeature.Description",
-      "ProcessTemplates": true,
-      "enGB": "\nTitles: Lady of Foxes   \nAlignment: Neutral   \nAreas of Concern: Agriculture, Craftsmanship, Kitsune, Rice\nEdict: Ensure the health of crops and vegetation, perfect a craft or trade, leave offerings for foxes, celebrate the turning of the seasons   \nDomains: Animal, Artifice, Community, Plant, Weather   \nSubdomains: Construct, Family, Fur, Growth, Home, Industry, Seasons   \nFavoured Weapon: Flail   \nHoly Symbol: Nine-tailed fox   \nSacred Animal: Fox \nDaikitsu is widely worshiped in Tian Xia, as she is the goddess of rice, a staple food in those lands, as well as of agriculture and craftsmanship. Farmers pray to Daikitsu for good harvests, smiths and craftsmen seek her blessing for their creations, and families ask for her protection for their homes and families. Known as the Lady of Foxes, Daikitsu usually appears as beautiful kitsune woman with snow-white fur and nine tails. She is also the patron of kitsune, who venerate her as the mother of their race.",
       "zhCN": "\n称号：狐狸女士 \n阵营：绝对中立 \n神职：农业、技艺、狐妖、稻米\n信条：确保作物和植被的健康，完美的手工艺或贸易，为狐狸送上祭品，庆祝季节的转变 \n领域：动物、工匠、联盟、植物、天气 \n子领域：构装、家族、毛兽、滋长、家园、工业、季节\n偏好武器：连枷\n圣徽：九尾狐\n圣兽：狐狸\n大狐女在天洲信者众多，因为她是稻米之神，掌管田地的丰饶，也关照工匠们的手艺。农民向大狐女祈祷自己的庄稼丰收，匠人向大狐女祈祷自己的作品完美，而每家每户都会向大狐女祈祷保佑家宅平安。就像她的尊号所称的那样，大狐女喜欢化身为一个皮毛光洁雪白，长有九条大尾的狐妖美女出现，因为她也正是狐妖一族的保护者，被狐妖们奉为主母。"
     },
     {
@@ -3713,19 +3815,19 @@
       "zhCN": "奥能师可以从他们的奥法池中消耗 3 点来移除龙息武器的冷却时间。所有的龙类专研只对盟友的龙兽生效，并且一旦一只龙兽被强化，它在 1 分钟内无法接受另一种强化。"
     },
     {
-      "Key": "5ae0ffde6bbe4ac680183aecb14a2dbb",
-      "SimpleName": "DraconicExploitCooldown.Description",
-      "ProcessTemplates": true,
-      "enGB": "Targeted by draconic exploits within 1 minute.",
-      "zhCN": "以 1 分钟内使用的龙类专研为目标。"
-    },
-    {
       "Key": "64b983e112ca43afa13d0aa2beeb779d",
       "SimpleName": "DraconicExploitCooldown.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "Targeted by draconic exploits used within 1 minute.",
       "zhCN": "以 1 分钟内使用的龙类专研为目标"
+    },
+    {
+      "Key": "5ae0ffde6bbe4ac680183aecb14a2dbb",
+      "SimpleName": "DraconicExploitCooldown.Description",
+      "ProcessTemplates": true,
+      "enGB": "Targeted by draconic exploits within 1 minute.",
+      "zhCN": "以 1 分钟内使用的龙类专研为目标。"
     },
     {
       "Key": "089db77d8c014fd2a1c1476ece2f2ab4",
@@ -4295,19 +4397,19 @@
       "zhCN": "喷吐武器——冷却中"
     },
     {
-      "Key": "55fbdda3aa6d4d05b429855f3a6c0403",
-      "SimpleName": "DrakeBreathWeaponAcid1.Description",
-      "ProcessTemplates": true,
-      "IsUsed": false,
-      "enGB": "This breath weapon deals 4d6 points of acid damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day.",
-      "zhCN": "这种喷吐武器在 15 英尺锥形范围内造成 4d6 点酸蚀伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮才能恢复。在升级之前，您可以每天使用两次。"
-    },
-    {
       "Key": "e7c2ccd10b274883b65d4ba27368d3f0",
       "SimpleName": "DrakeBreathWeaponAcid1.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "This breath weapon deals 4d6 points of acid damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day.",
+      "zhCN": "这种喷吐武器在 15 英尺锥形范围内造成 4d6 点酸蚀伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮才能恢复。在升级之前，您可以每天使用两次。"
+    },
+    {
+      "Key": "55fbdda3aa6d4d05b429855f3a6c0403",
+      "SimpleName": "DrakeBreathWeaponAcid1.Description",
+      "ProcessTemplates": true,
+      "IsUsed": false,
+      "enGB": "This breath weapon deals 4d6 points of acid damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day.",
       "zhCN": "这种喷吐武器在 15 英尺锥形范围内造成 4d6 点酸蚀伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮才能恢复。在升级之前，您可以每天使用两次。"
     },
     {
@@ -4318,13 +4420,6 @@
       "zhCN": "龙兽酸蚀吐息"
     },
     {
-      "Key": "c9243b63bf01462db1c4c04fe50be4f3",
-      "SimpleName": "DrakeBreathWeaponAcid1Feature.Description",
-      "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 4d6 points of acid damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day.",
-      "zhCN": "这种喷吐武器在 15 英尺锥形范围内造成 4d6 点酸蚀伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮才能恢复。在升级之前，您可以每天使用两次。"
-    },
-    {
       "Key": "ebc705b901f5406d9285e6bb351cc811",
       "SimpleName": "DrakeBreathWeaponAcid1Feature.Description",
       "ProcessTemplates": true,
@@ -4333,18 +4428,25 @@
       "zhCN": "这种喷吐武器在 15 英尺锥形范围内造成 4d6 点酸蚀伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮才能恢复。在升级之前，您可以每天使用两次。"
     },
     {
-      "Key": "54c86ff112d44b6d9878ade81198c1b7",
-      "SimpleName": "DrakeBreathWeaponAcid2.Description",
+      "Key": "c9243b63bf01462db1c4c04fe50be4f3",
+      "SimpleName": "DrakeBreathWeaponAcid1Feature.Description",
       "ProcessTemplates": true,
-      "IsUsed": false,
-      "enGB": "This breath weapon deals 8d6 points of acid damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day.",
-      "zhCN": "这种喷吐武器在 30 英尺锥形范围内造成 8d6 点酸蚀伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮才能恢复。在升级之前，您可以每天使用 5 次。"
+      "enGB": "This breath weapon deals 4d6 points of acid damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day.",
+      "zhCN": "这种喷吐武器在 15 英尺锥形范围内造成 4d6 点酸蚀伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮才能恢复。在升级之前，您可以每天使用两次。"
     },
     {
       "Key": "37a378dd8b8a488495109c35c06cc102",
       "SimpleName": "DrakeBreathWeaponAcid2.Description",
       "ProcessTemplates": true,
       "enGB": "This breath weapon deals 8d6 points of acid damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day.",
+      "zhCN": "这种喷吐武器在 30 英尺锥形范围内造成 8d6 点酸蚀伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮才能恢复。在升级之前，您可以每天使用 5 次。"
+    },
+    {
+      "Key": "54c86ff112d44b6d9878ade81198c1b7",
+      "SimpleName": "DrakeBreathWeaponAcid2.Description",
+      "ProcessTemplates": true,
+      "IsUsed": false,
+      "enGB": "This breath weapon deals 8d6 points of acid damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day.",
       "zhCN": "这种喷吐武器在 30 英尺锥形范围内造成 8d6 点酸蚀伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮才能恢复。在升级之前，您可以每天使用 5 次。"
     },
     {
@@ -4393,18 +4495,18 @@
       "zhCN": "神话龙龙兽酸蚀吐息"
     },
     {
-      "Key": "c3397a5fd99c4a1c88e4b1ce4a91d3e3",
-      "SimpleName": "DrakeBreathWeaponAcid3Feature.Description",
-      "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 1d6 points of acid damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies.",
-      "zhCN": "这种喷吐武器在 50 英尺锥形范围内造成每龙兽伙伴等级 1d6 点酸蚀伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮才能恢复。您可以每天使用 5 次。解锁它可以让你在不消耗任何资源的情况下使用高等喷吐武器，但是你必须等待 1d4 轮才能充能。与非神话的吐息攻击不同，这不会伤害盟友。"
-    },
-    {
       "Key": "be45de1db0684f2f8e3ffa5e462b2cc2",
       "SimpleName": "DrakeBreathWeaponAcid3Feature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "This breath weapon deals 1d6 points of acid damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies.",
+      "zhCN": "这种喷吐武器在 50 英尺锥形范围内造成每龙兽伙伴等级 1d6 点酸蚀伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮才能恢复。您可以每天使用 5 次。解锁它可以让你在不消耗任何资源的情况下使用高等喷吐武器，但是你必须等待 1d4 轮才能充能。与非神话的吐息攻击不同，这不会伤害盟友。"
+    },
+    {
+      "Key": "c3397a5fd99c4a1c88e4b1ce4a91d3e3",
+      "SimpleName": "DrakeBreathWeaponAcid3Feature.Description",
+      "ProcessTemplates": true,
+      "enGB": "This breath weapon deals 1d6 points of acid damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies.",
       "zhCN": "这种喷吐武器在 50 英尺锥形范围内造成每龙兽伙伴等级 1d6 点酸蚀伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮才能恢复。您可以每天使用 5 次。解锁它可以让你在不消耗任何资源的情况下使用高等喷吐武器，但是你必须等待 1d4 轮才能充能。与非神话的吐息攻击不同，这不会伤害盟友。"
     },
     {
@@ -4431,14 +4533,6 @@
       "zhCN": "龙兽寒冷吐息"
     },
     {
-      "Key": "52d5d2df88c441e2b22e5a93b9a1248e",
-      "SimpleName": "DrakeBreathWeaponCold1Feature.Description",
-      "ProcessTemplates": true,
-      "IsUsed": false,
-      "enGB": "This breath weapon deals 4d6 points of cold damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day.",
-      "zhCN": "这种喷吐武器在 15 英尺锥形范围内造成 4d6 点寒冷伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮才能恢复。在升级之前，您可以每天使用两次。"
-    },
-    {
       "Key": "1ffacbc9846a4e318f7a858b69a49d1a",
       "SimpleName": "DrakeBreathWeaponCold1Feature.Description",
       "ProcessTemplates": true,
@@ -4446,11 +4540,12 @@
       "zhCN": "这种喷吐武器在 15 英尺锥形范围内造成 4d6 点寒冷伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮才能恢复。在升级之前，您可以每天使用两次。"
     },
     {
-      "Key": "0ef9c57e42be40f68560acfccc9ccfcc",
-      "SimpleName": "DrakeBreathWeaponCold2.Description",
+      "Key": "52d5d2df88c441e2b22e5a93b9a1248e",
+      "SimpleName": "DrakeBreathWeaponCold1Feature.Description",
       "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 8d6 points of cold damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day.",
-      "zhCN": "这种喷吐武器在 30 英尺锥形范围内造成 8d6 点寒冷伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮才能恢复。在升级之前，您可以每天使用 5 次。"
+      "IsUsed": false,
+      "enGB": "This breath weapon deals 4d6 points of cold damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day.",
+      "zhCN": "这种喷吐武器在 15 英尺锥形范围内造成 4d6 点寒冷伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮才能恢复。在升级之前，您可以每天使用两次。"
     },
     {
       "Key": "656c5f75a55b4485b4f3535f7638d9b1",
@@ -4461,6 +4556,13 @@
       "zhCN": "这种喷吐武器在 30 英尺锥形范围内造成 8d6 点寒冷伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮才能恢复。在升级之前，您可以每天使用 5 次。"
     },
     {
+      "Key": "0ef9c57e42be40f68560acfccc9ccfcc",
+      "SimpleName": "DrakeBreathWeaponCold2.Description",
+      "ProcessTemplates": true,
+      "enGB": "This breath weapon deals 8d6 points of cold damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day.",
+      "zhCN": "这种喷吐武器在 30 英尺锥形范围内造成 8d6 点寒冷伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮才能恢复。在升级之前，您可以每天使用 5 次。"
+    },
+    {
       "Key": "9c86cabb319c4a30b03298a4e352f8da",
       "SimpleName": "DrakeBreathWeaponCold2.Name",
       "ProcessTemplates": false,
@@ -4468,18 +4570,18 @@
       "zhCN": "高等龙兽寒冷吐息"
     },
     {
-      "Key": "eac364b4a1f74c5bb51bbaab82a2f9de",
-      "SimpleName": "DrakeBreathWeaponCold2Feature.Description",
-      "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 8d6 points of cold damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day. \nUnlocking this allows you to use your lesser breath weapon without spending any resources, however you must wait 1d4 rounds to recharge.",
-      "zhCN": "这种喷吐武器在 30 英尺锥形范围内造成 8d6 点寒冷伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮才能恢复。在升级之前，您可以每天使用 5 次。\n解锁它可以让你在不消耗任何资源的情况下使用你的次级喷吐武器，但是你必须等待 1d4 轮才能充能。"
-    },
-    {
       "Key": "59eb9da5ea3d4ed7a82984a1dd1ef00b",
       "SimpleName": "DrakeBreathWeaponCold2Feature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "This breath weapon deals 8d6 points of cold damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day. \nUnlocking this allows you to use your lesser breath weapon without spending any resources, however you must wait 1d4 rounds to recharge.",
+      "zhCN": "这种喷吐武器在 30 英尺锥形范围内造成 8d6 点寒冷伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮才能恢复。在升级之前，您可以每天使用 5 次。\n解锁它可以让你在不消耗任何资源的情况下使用你的次级喷吐武器，但是你必须等待 1d4 轮才能充能。"
+    },
+    {
+      "Key": "eac364b4a1f74c5bb51bbaab82a2f9de",
+      "SimpleName": "DrakeBreathWeaponCold2Feature.Description",
+      "ProcessTemplates": true,
+      "enGB": "This breath weapon deals 8d6 points of cold damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day. \nUnlocking this allows you to use your lesser breath weapon without spending any resources, however you must wait 1d4 rounds to recharge.",
       "zhCN": "这种喷吐武器在 30 英尺锥形范围内造成 8d6 点寒冷伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮才能恢复。在升级之前，您可以每天使用 5 次。\n解锁它可以让你在不消耗任何资源的情况下使用你的次级喷吐武器，但是你必须等待 1d4 轮才能充能。"
     },
     {
@@ -4619,13 +4721,6 @@
       "zhCN": "神话龙兽雷电吐息"
     },
     {
-      "Key": "03a189f47d674d1da2b17480f05287be",
-      "SimpleName": "DrakeBreathWeaponElectricity3Feature.Description",
-      "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 1d6 points of electricity damage per drake companion level in a 40-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies.",
-      "zhCN": "这种喷吐武器在 40 英尺锥形范围内造成每龙兽伙伴等级 1d6 点电击伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮才能恢复。您可以每天使用 5 次。解锁它可以让你在不消耗任何资源的情况下使用高等喷吐武器，但是你必须等待 1d4 轮才能充能。与非神话的吐息攻击不同，这不会伤害盟友。"
-    },
-    {
       "Key": "17a94d9f4f0546b7b390112d8c7ea24b",
       "SimpleName": "DrakeBreathWeaponElectricity3Feature.Description",
       "ProcessTemplates": true,
@@ -4634,7 +4729,14 @@
       "zhCN": "这种喷吐武器在 40 英尺锥形范围内造成每龙兽伙伴等级 1d6 点电击伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮才能恢复。您可以每天使用 5 次。解锁它可以让你在不消耗任何资源的情况下使用高等喷吐武器，但是你必须等待 1d4 轮才能充能。与非神话的吐息攻击不同，这不会伤害盟友。"
     },
     {
-      "Key": "6edadd64875d41a09c8ec96297578b1b",
+      "Key": "03a189f47d674d1da2b17480f05287be",
+      "SimpleName": "DrakeBreathWeaponElectricity3Feature.Description",
+      "ProcessTemplates": true,
+      "enGB": "This breath weapon deals 1d6 points of electricity damage per drake companion level in a 40-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies.",
+      "zhCN": "这种喷吐武器在 40 英尺锥形范围内造成每龙兽伙伴等级 1d6 点电击伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮才能恢复。您可以每天使用 5 次。解锁它可以让你在不消耗任何资源的情况下使用高等喷吐武器，但是你必须等待 1d4 轮才能充能。与非神话的吐息攻击不同，这不会伤害盟友。"
+    },
+    {
+      "Key": "175585e969b64296a6580facaf078dd8",
       "SimpleName": "DrakeBreathWeaponFire1.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
@@ -4642,7 +4744,7 @@
       "zhCN": "这种喷吐武器在 15 英尺锥形范围内造成 4d6 点火焰伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮才能恢复。在升级之前，您可以每天使用两次。"
     },
     {
-      "Key": "175585e969b64296a6580facaf078dd8",
+      "Key": "6edadd64875d41a09c8ec96297578b1b",
       "SimpleName": "DrakeBreathWeaponFire1.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
@@ -4657,6 +4759,13 @@
       "zhCN": "龙兽火焰吐息"
     },
     {
+      "Key": "0827546fa62746dd97219bc4d7f3ee9a",
+      "SimpleName": "DrakeBreathWeaponFire1Feature.Description",
+      "ProcessTemplates": true,
+      "enGB": "This breath weapon deals 4d6 points of fire damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day.",
+      "zhCN": "这种喷吐武器在 15 英尺锥形范围内造成 4d6 点火焰伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮才能恢复。在升级之前，您可以每天使用两次。"
+    },
+    {
       "Key": "d946e7ff645642c3b95b57be864b62fe",
       "SimpleName": "DrakeBreathWeaponFire1Feature.Description",
       "ProcessTemplates": true,
@@ -4665,11 +4774,11 @@
       "zhCN": "这种喷吐武器在 15 英尺锥形范围内造成 4d6 点火焰伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮才能恢复。在升级之前，您可以每天使用两次。"
     },
     {
-      "Key": "0827546fa62746dd97219bc4d7f3ee9a",
-      "SimpleName": "DrakeBreathWeaponFire1Feature.Description",
+      "Key": "ef73223c5cdd426ca205f1e9dedbabe6",
+      "SimpleName": "DrakeBreathWeaponFire2.Description",
       "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 4d6 points of fire damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day.",
-      "zhCN": "这种喷吐武器在 15 英尺锥形范围内造成 4d6 点火焰伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮才能恢复。在升级之前，您可以每天使用两次。"
+      "enGB": "This breath weapon deals 8d6 points of fire damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day.",
+      "zhCN": "这种喷吐武器在 30 英尺锥形范围内造成 8d6 点火焰伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮才能恢复。在升级之前，您可以每天使用 5 次。"
     },
     {
       "Key": "cd719c4bed694ad6b238072340ba27a2",
@@ -4680,25 +4789,11 @@
       "zhCN": "这种喷吐武器在 30 英尺锥形范围内造成 8d6 点火焰伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮才能恢复。在升级之前，您可以每天使用 5 次。"
     },
     {
-      "Key": "ef73223c5cdd426ca205f1e9dedbabe6",
-      "SimpleName": "DrakeBreathWeaponFire2.Description",
-      "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 8d6 points of fire damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day.",
-      "zhCN": "这种喷吐武器在 30 英尺锥形范围内造成 8d6 点火焰伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮才能恢复。在升级之前，您可以每天使用 5 次。"
-    },
-    {
       "Key": "d3a050edc2964fc1915041fb45ea96b8",
       "SimpleName": "DrakeBreathWeaponFire2.Name",
       "ProcessTemplates": false,
       "enGB": "Greater Drake Fire Breath",
       "zhCN": "高等龙兽火焰吐息"
-    },
-    {
-      "Key": "3bf5c19d82e74eafbedde6ed3e02e16e",
-      "SimpleName": "DrakeBreathWeaponFire2Feature.Description",
-      "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 8d6 points of fire damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day. \nUnlocking this allows you to use your lesser breath weapon without spending any resources, however you must wait 1d4 rounds to recharge.",
-      "zhCN": "这种喷吐武器在 30 英尺锥形范围内造成 8d6 点火焰伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮才能恢复。在升级之前，您可以每天使用 5 次。解锁它可以让你在不消耗任何资源的情况下使用你的次级喷吐武器，但是你必须等待 1d4 轮才能充能。"
     },
     {
       "Key": "a5154a942bf147e4b472d048c9fbc804",
@@ -4709,12 +4804,11 @@
       "zhCN": "这种喷吐武器在 30 英尺锥形范围内造成 8d6 点火焰伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮才能恢复。在升级之前，您可以每天使用 5 次。解锁它可以让你在不消耗任何资源的情况下使用你的次级喷吐武器，但是你必须等待 1d4 轮才能充能。"
     },
     {
-      "Key": "8c788890645148329f0c9962114d729b",
-      "SimpleName": "DrakeBreathWeaponFire3.Description",
+      "Key": "3bf5c19d82e74eafbedde6ed3e02e16e",
+      "SimpleName": "DrakeBreathWeaponFire2Feature.Description",
       "ProcessTemplates": true,
-      "IsUsed": false,
-      "enGB": "This breath weapon deals 1d6 points of fire damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies.",
-      "zhCN": "这种喷吐武器在 50 英尺锥形范围内造成每龙兽伙伴等级 1d6 点火焰伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮才能恢复。您可以每天使用 5 次。解锁它可以让你在不消耗任何资源的情况下使用高等喷吐武器，但是你必须等待 1d4 轮才能充能。与非神话般的吐息攻击不同，这不会伤害盟友。"
+      "enGB": "This breath weapon deals 8d6 points of fire damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day. \nUnlocking this allows you to use your lesser breath weapon without spending any resources, however you must wait 1d4 rounds to recharge.",
+      "zhCN": "这种喷吐武器在 30 英尺锥形范围内造成 8d6 点火焰伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮才能恢复。在升级之前，您可以每天使用 5 次。解锁它可以让你在不消耗任何资源的情况下使用你的次级喷吐武器，但是你必须等待 1d4 轮才能充能。"
     },
     {
       "Key": "033f8e7260db4b54bbe04989414075a9",
@@ -4725,6 +4819,14 @@
       "zhCN": "这种喷吐武器在 50 英尺锥形范围内造成每龙兽伙伴等级 1d6 点火焰伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮才能恢复。您可以每天使用 5 次。解锁它可以让你在不消耗任何资源的情况下使用高等喷吐武器，但是你必须等待 1d4 轮才能充能。与非神话般的吐息攻击不同，这不会伤害盟友。"
     },
     {
+      "Key": "8c788890645148329f0c9962114d729b",
+      "SimpleName": "DrakeBreathWeaponFire3.Description",
+      "ProcessTemplates": true,
+      "IsUsed": false,
+      "enGB": "This breath weapon deals 1d6 points of fire damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies.",
+      "zhCN": "这种喷吐武器在 50 英尺锥形范围内造成每龙兽伙伴等级 1d6 点火焰伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮才能恢复。您可以每天使用 5 次。解锁它可以让你在不消耗任何资源的情况下使用高等喷吐武器，但是你必须等待 1d4 轮才能充能。与非神话般的吐息攻击不同，这不会伤害盟友。"
+    },
+    {
       "Key": "aac59d807b0449b084b7cb13655e9491",
       "SimpleName": "DrakeBreathWeaponFire3.Name",
       "ProcessTemplates": false,
@@ -4732,18 +4834,18 @@
       "zhCN": "神话龙兽火焰吐息"
     },
     {
+      "Key": "a6783db42f2947e89c919949a0d5971c",
+      "SimpleName": "DrakeBreathWeaponFire3Feature.Description",
+      "ProcessTemplates": true,
+      "enGB": "This breath weapon deals 1d6 points of fire damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies.",
+      "zhCN": "这种喷吐武器在 50 英尺锥形范围内造成每龙兽伙伴等级 1d6 点火焰伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮才能恢复。您可以每天使用 5 次。解锁它可以让你在不消耗任何资源的情况下使用高等喷吐武器，但是你必须等待 1d4 轮才能充能。与非神话的吐息攻击不同，这不会伤害盟友。"
+    },
+    {
       "Key": "43fa93a4701f4f85961ddeea0bcade9b",
       "SimpleName": "DrakeBreathWeaponFire3Feature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "This breath weapon deals 1d6 points of fire damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies.",
-      "zhCN": "这种喷吐武器在 50 英尺锥形范围内造成每龙兽伙伴等级 1d6 点火焰伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮才能恢复。您可以每天使用 5 次。解锁它可以让你在不消耗任何资源的情况下使用高等喷吐武器，但是你必须等待 1d4 轮才能充能。与非神话的吐息攻击不同，这不会伤害盟友。"
-    },
-    {
-      "Key": "a6783db42f2947e89c919949a0d5971c",
-      "SimpleName": "DrakeBreathWeaponFire3Feature.Description",
-      "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 1d6 points of fire damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies.",
       "zhCN": "这种喷吐武器在 50 英尺锥形范围内造成每龙兽伙伴等级 1d6 点火焰伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮才能恢复。您可以每天使用 5 次。解锁它可以让你在不消耗任何资源的情况下使用高等喷吐武器，但是你必须等待 1d4 轮才能充能。与非神话的吐息攻击不同，这不会伤害盟友。"
     },
     {
@@ -4785,18 +4887,18 @@
       "zhCN": "这种喷吐武器在 15 英尺的锥形范围内造成 4d6 点负能量伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。此豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮来重新充能。在升级之前，您可以每天使用两次。具有负能量亲和力的目标（例如不死生物）不会被该能力治疗，并且被视为该能力没有击中他们。"
     },
     {
-      "Key": "adba855a5963462aa50ccb1f2b3015ff",
-      "SimpleName": "DrakeBreathWeaponUmbral2.Description",
-      "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 8d6 points of negative damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day.\nTargets with an affinity to negative energy (such as undead) are not healed by this ability and are treated as if the ability did not hit them.",
-      "zhCN": "这种喷吐武器在 30 英尺的锥形范围内造成 8d6 点负能量伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮来重新充能。在升级之前，您每天可以使用 5 次。对负能量有亲和力的目标（例如不死生物）不会被该能力治疗，并且被视为该能力没有击中他们。"
-    },
-    {
       "Key": "0d2d69b7f16a46b9947d3f18fba771df",
       "SimpleName": "DrakeBreathWeaponUmbral2.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "This breath weapon deals 8d6 points of negative damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day.\nTargets with an affinity to negativeenergy (such as undead) are not healed by this ability and are treated as if the ability did not hit them.",
+      "zhCN": "这种喷吐武器在 30 英尺的锥形范围内造成 8d6 点负能量伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮来重新充能。在升级之前，您每天可以使用 5 次。对负能量有亲和力的目标（例如不死生物）不会被该能力治疗，并且被视为该能力没有击中他们。"
+    },
+    {
+      "Key": "adba855a5963462aa50ccb1f2b3015ff",
+      "SimpleName": "DrakeBreathWeaponUmbral2.Description",
+      "ProcessTemplates": true,
+      "enGB": "This breath weapon deals 8d6 points of negative damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day.\nTargets with an affinity to negative energy (such as undead) are not healed by this ability and are treated as if the ability did not hit them.",
       "zhCN": "这种喷吐武器在 30 英尺的锥形范围内造成 8d6 点负能量伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮来重新充能。在升级之前，您每天可以使用 5 次。对负能量有亲和力的目标（例如不死生物）不会被该能力治疗，并且被视为该能力没有击中他们。"
     },
     {
@@ -4807,18 +4909,18 @@
       "zhCN": "高等龙兽负能量吐息"
     },
     {
-      "Key": "e9dc69d808f34e2885d082cf807db6d8",
-      "SimpleName": "DrakeBreathWeaponUmbral2Feature.Description",
-      "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 8d6 points of negative damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day. \nTargets with an affinity to negative energy (such as undead) are not healed by this ability and are treated as if the ability did not hit them.\nUnlocking this allows you to use your lesser breath weapon without spending any resources, however you must wait 1d4 rounds to recharge.",
-      "zhCN": "这种喷吐武器在 30 英尺的锥形范围内造成 8d6 点负能量伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮来重新充能。在升级之前，您每天可以使用 5 次。对负能量有亲和力的目标（例如不死生物）不会被该能力治疗，并且被视为该能力没有击中他们。解锁它可以让你在不花费任何资源的情况下使用你的次级喷吐武器，但是你必须等待 1d4 轮才能充能。"
-    },
-    {
       "Key": "73f5183bb1c24c45992400a39e4f1ba6",
       "SimpleName": "DrakeBreathWeaponUmbral2Feature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "This breath weapon deals 8d6 points of negative damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day. \nTargets with an affinity to negativeenergy (such as undead) are not healed by this ability and are treated as if the ability did not hit them.\nUnlocking this allows you to use your lesser breath weapon without spending any resources, however you must wait 1d4 rounds to recharge.",
+      "zhCN": "这种喷吐武器在 30 英尺的锥形范围内造成 8d6 点负能量伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮来重新充能。在升级之前，您每天可以使用 5 次。对负能量有亲和力的目标（例如不死生物）不会被该能力治疗，并且被视为该能力没有击中他们。解锁它可以让你在不花费任何资源的情况下使用你的次级喷吐武器，但是你必须等待 1d4 轮才能充能。"
+    },
+    {
+      "Key": "e9dc69d808f34e2885d082cf807db6d8",
+      "SimpleName": "DrakeBreathWeaponUmbral2Feature.Description",
+      "ProcessTemplates": true,
+      "enGB": "This breath weapon deals 8d6 points of negative damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day. \nTargets with an affinity to negative energy (such as undead) are not healed by this ability and are treated as if the ability did not hit them.\nUnlocking this allows you to use your lesser breath weapon without spending any resources, however you must wait 1d4 rounds to recharge.",
       "zhCN": "这种喷吐武器在 30 英尺的锥形范围内造成 8d6 点负能量伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮来重新充能。在升级之前，您每天可以使用 5 次。对负能量有亲和力的目标（例如不死生物）不会被该能力治疗，并且被视为该能力没有击中他们。解锁它可以让你在不花费任何资源的情况下使用你的次级喷吐武器，但是你必须等待 1d4 轮才能充能。"
     },
     {
@@ -5414,19 +5516,19 @@
       "zhCN": "恐惧骑士动物伙伴进度"
     },
     {
+      "Key": "d670b365e6b04ae4a3877948f2caebed",
+      "SimpleName": "DreadKnightChannelNegativeEnergyAbility.Description",
+      "ProcessTemplates": true,
+      "enGB": "Channeling negative energy causes a burst that damages every living creature in a 30-foot radius centered on the Dread Knight. The amount of damage inflicted is equal to 1d6 points of damage plus 1d6 points of damage for every two Dread Knight levels beyond 1st (2d6 at 3rd, 3d6 at 5th, and so on). Creatures that take damage from channeled energy receive a Will save to halve the damage. The DC of this save is equal to 10 + 1/2 the Dread Knight's level + the Dread Knight's Charisma modifier.",
+      "zhCN": "引导负能量致其爆发，对以恐惧骑士为中心的 30 英尺半径内的所有生物造成伤害。造成的伤害量等于 1d6 点伤害加上 1 级后每两个恐惧骑士等级 1d6 点伤害（3 级 2d6，5 级 3d6，依此类推）。受到引导能量伤害的生物可以通过意志豁免将伤害减半。该豁免的 DC 等于 10 + 1/2 恐惧骑士的等级 + 恐惧骑士的魅力调整值。"
+    },
+    {
       "Key": "c693dad056614f1ead3e49b0ca8d3119",
       "SimpleName": "DreadKnightChannelNegativeEnergyAbility.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "Channeling negative energy causes a burst that damages every creature in a 30-foot radius centered on the Dread Knight. The amount of damage inflicted is equal to 1d6 points of damage plus 1d6 points of damage for every two Dread Knight levels beyond 1st (2d6 at 3rd, 3d6 at 5th, and so on). Creatures that take damage from channeled energy receive a Will save to halve the damage. The DC of this save is equal to 10 + 1/2 the Dread Knight's level + the Dread Knight's Charisma modifier.",
       "zhCN": "引导负能量致其爆发，对以恐惧骑士为中心的30英尺半径内的所有生物造成伤害。造成的伤害量等于1d6点伤害加上1级后每两个恐惧骑士等级1d6点伤害（3级2d6，5级3d6，依此类推）。受到引导能量伤害的生物可以通过意志豁免将伤害减半。该豁免的DC等于10+1/2恐惧骑士的等级+恐惧骑士的魅力调整值。"
-    },
-    {
-      "Key": "d670b365e6b04ae4a3877948f2caebed",
-      "SimpleName": "DreadKnightChannelNegativeEnergyAbility.Description",
-      "ProcessTemplates": true,
-      "enGB": "Channeling negative energy causes a burst that damages every living creature in a 30-foot radius centered on the Dread Knight. The amount of damage inflicted is equal to 1d6 points of damage plus 1d6 points of damage for every two Dread Knight levels beyond 1st (2d6 at 3rd, 3d6 at 5th, and so on). Creatures that take damage from channeled energy receive a Will save to halve the damage. The DC of this save is equal to 10 + 1/2 the Dread Knight's level + the Dread Knight's Charisma modifier.",
-      "zhCN": "引导负能量致其爆发，对以恐惧骑士为中心的 30 英尺半径内的所有生物造成伤害。造成的伤害量等于 1d6 点伤害加上 1 级后每两个恐惧骑士等级 1d6 点伤害（3 级 2d6，5 级 3d6，依此类推）。受到引导能量伤害的生物可以通过意志豁免将伤害减半。该豁免的 DC 等于 10 + 1/2 恐惧骑士的等级 + 恐惧骑士的魅力调整值。"
     },
     {
       "Key": "e1a0f9b3f21e45aaaba53aff7d45b1ad",
@@ -5584,13 +5686,6 @@
       "zhCN": "至高天领主"
     },
     {
-      "Key": "033bd1b1f0a443feb217e7b4b78c65a2",
-      "SimpleName": "EnlightnedPhilosopherDragonMysteryFeature.Description",
-      "ProcessTemplates": true,
-      "enGB": "An oracle with the dragon mystery adds Mobility, Persuasion, Perception and Knowledge (Arcana)  to her list of class skills.",
-      "zhCN": "具有巨龙秘示域的先知将灵巧、沟通、察觉和知识（世界）添加到她的本职技能列表中。"
-    },
-    {
       "Key": "8706d70824cc44be8eeeebcbc251cc0b",
       "SimpleName": "EnlightnedPhilosopherDragonMysteryFeature.Description",
       "ProcessTemplates": true,
@@ -5599,12 +5694,11 @@
       "zhCN": "具有巨龙秘示域的先知将灵巧、沟通、察觉和知识（世界）添加到她的本职技能列表中。"
     },
     {
-      "Key": "87a3a668a0744c2395e62368807b469d",
-      "SimpleName": "EnlightnedPhilosopherHeavensMysteryFeature.Description",
+      "Key": "033bd1b1f0a443feb217e7b4b78c65a2",
+      "SimpleName": "EnlightnedPhilosopherDragonMysteryFeature.Description",
       "ProcessTemplates": true,
-      "IsUsed": false,
-      "enGB": "An oracle with the heavens mystery adds Perception and Knowledge (world)  to her list of class skills.",
-      "zhCN": "具有苍天秘示域的先知将察觉和知识（世界）添加到她的本职技能列表中。"
+      "enGB": "An oracle with the dragon mystery adds Mobility, Persuasion, Perception and Knowledge (Arcana)  to her list of class skills.",
+      "zhCN": "具有巨龙秘示域的先知将灵巧、沟通、察觉和知识（世界）添加到她的本职技能列表中。"
     },
     {
       "Key": "ca0109695d76452e9e35dbada994a096",
@@ -5613,6 +5707,14 @@
       "IsUsed": false,
       "enGB": "An oracle with the heavens mystery adds Perception and Knowledge (Arcana)  to her list of class skills.",
       "zhCN": "具有苍天秘示域的先知将察觉和知识（神秘）添加到她的本职技能列表中。"
+    },
+    {
+      "Key": "87a3a668a0744c2395e62368807b469d",
+      "SimpleName": "EnlightnedPhilosopherHeavensMysteryFeature.Description",
+      "ProcessTemplates": true,
+      "IsUsed": false,
+      "enGB": "An oracle with the heavens mystery adds Perception and Knowledge (world)  to her list of class skills.",
+      "zhCN": "具有苍天秘示域的先知将察觉和知识（世界）添加到她的本职技能列表中。"
     },
     {
       "Key": "e3979b1a0365444ca72eecd17dbbefbf",
@@ -6266,6 +6368,36 @@
       "zhCN": "苍翠誓约是一种自然主义哲学，其基础是坚信自然力量值得关注和尊重。苍翠誓约的追随者每天进行冥想，与力量的各种自然形式进行交流，并对自然界的一切事物表示尊重。\n领域：动物，大地，火焰，植物，流水。\n偏好武器：镰刀"
     },
     {
+      "Key": "f94559b5194e4371ba7b67dee5e1430e",
+      "SimpleName": "GrowthDomainBaseFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nYou are gifted the power to expand life, can gain defensive thorns, and can communicate with plants. \nEnlarge: As a swift action you can enlarge yourself for 1 round, as if you were the target of the enlarge person spell. You can use this power a number of times per day equal to 3 + your Wisdom modifier. \nBramble Armor: At 6th level, you can cause a host of wooden thorns to burst from your skin as a free action. While bramble armor is in effect, any foe striking you with a melee weapon without reach takes 1d6 points of piercing damage + 1 point per two levels you possess in the class that gave you access to this domain. You can use this ability for a number of rounds per day equal to your level in the class that gave you access to this domain. These rounds do not need to be consecutive."
+    },
+    {
+      "Key": "fdf385047c0546729aaa74229982ef81",
+      "SimpleName": "GrowthDomainBaseFeature.Name",
+      "ProcessTemplates": false,
+      "enGB": "Growth Subdomain"
+    },
+    {
+      "Key": "4640384af5fc461bb68366b09504fe4a",
+      "SimpleName": "GrowthDomainProgression.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nYou are gifted the power to expand life, can gain defensive thorns, and can communicate with plants. \nEnlarge: As a swift action you can enlarge yourself for 1 round, as if you were the target of the enlarge person spell. You can use this power a number of times per day equal to 3 + your Wisdom modifier. \nBramble Armor: At 6th level, you can cause a host of wooden thorns to burst from your skin as a free action. While bramble armor is in effect, any foe striking you with a melee weapon without reach takes 1d6 points of piercing damage + 1 point per two levels you possess in the class that gave you access to this domain. You can use this ability for a number of rounds per day equal to your level in the class that gave you access to this domain. These rounds do not need to be consecutive. \nDomain Spells: enlarge person, barkskin, contagion, thorn body, righteous might, plant shape II (shambling mound), changestaff, mind blank, shambler."
+    },
+    {
+      "Key": "5a047d4be66b4974a3dbfcdb4c0cc22d",
+      "SimpleName": "GrowthDomainProgressionDruid.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nYou are gifted the power to expand life, can gain defensive thorns, and can communicate with plants. \nEnlarge: As a swift action you can enlarge yourself for 1 round, as if you were the target of the enlarge person spell. You can use this power a number of times per day equal to 3 + your Wisdom modifier. \nBramble Armor: At 6th level, you can cause a host of wooden thorns to burst from your skin as a free action. While bramble armor is in effect, any foe striking you with a melee weapon without reach takes 1d6 points of piercing damage + 1 point per two levels you possess in the class that gave you access to this domain. You can use this ability for a number of rounds per day equal to your level in the class that gave you access to this domain. These rounds do not need to be consecutive. \nDomain Spells: enlarge person, barkskin, contagion, thorn body, righteous might, plant shape II (shambling mound), changestaff, mind blank, shambler."
+    },
+    {
+      "Key": "d030c97ca735432ab1f1602c5af2e538",
+      "SimpleName": "GrowthDomainProgressionSecondary.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nYou are gifted the power to expand life, can gain defensive thorns, and can communicate with plants. \nEnlarge: As a swift action you can enlarge yourself for 1 round, as if you were the target of the enlarge person spell. You can use this power a number of times per day equal to 3 + your Wisdom modifier. \nBramble Armor: At 6th level, you can cause a host of wooden thorns to burst from your skin as a free action. While bramble armor is in effect, any foe striking you with a melee weapon without reach takes 1d6 points of piercing damage + 1 point per two levels you possess in the class that gave you access to this domain. You can use this ability for a number of rounds per day equal to your level in the class that gave you access to this domain. These rounds do not need to be consecutive. \nDomain Spells: enlarge person, barkskin, contagion, thorn body, righteous might, plant shape II (shambling mound), changestaff, mind blank, shambler."
+    },
+    {
       "Key": "82aa1c078858494da05e109a3a801234",
       "SimpleName": "HalcamoraFeature.Description",
       "ProcessTemplates": true,
@@ -6589,6 +6721,12 @@
       "zhCN": "冰子域"
     },
     {
+      "Key": "8f1f7daa74dc497eb3e90affef107cc8",
+      "SimpleName": "IceDomainGreaterAbility.Description",
+      "ProcessTemplates": true,
+      "enGB": "At 8th level, you can transmute your body and equipment to ice for a period of time. It takes a standard action to take on the form of ice, and you can end the transmutation with a free action on your turn. When you take on the form of ice, you are immune to cold and have DR 5/—, but you take twice the normal amount of damage from fire. You can take on the form of ice for a number of rounds per day equal to your cleric level. The rounds need not be consecutive."
+    },
+    {
       "Key": "29f8711ab45d4e7f8c823438a1aea0d8",
       "SimpleName": "IceDomainGreaterAbility.Description",
       "ProcessTemplates": true,
@@ -6614,8 +6752,15 @@
       "Key": "64e4c22e3aaf4c67948fa173176d63f9",
       "SimpleName": "IceDomainGreaterFeature.Description",
       "ProcessTemplates": true,
+      "IsUsed": false,
       "enGB": "At 8th level, you can transmute your body and equipment to ice for a period of time. It takes a standard action to take on the form of ice, and you can end the transmutation with a free action on your turn. When you take on the form of ice, you are immune to cold and have DR 5/—, but you take twice the normal amount of damage from fire. You can take on the form of ice for a number of rounds per day equal to your cleric level. The rounds need not be consecutive",
       "zhCN": "到了8级，就可用标准动作令自己身心像冰川一样玉洁冰清。此时你免疫寒冷伤害，并与获得伤害减免5/-，但是会受到双倍的火伤害。每天变成冰的轮数等于牧师等级，自由动作解除，无需连续。"
+    },
+    {
+      "Key": "ee2ec3047988477e939322560caad5cb",
+      "SimpleName": "IceDomainGreaterFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "At 8th level, you can transmute your body and equipment to ice for a period of time. It takes a standard action to take on the form of ice, and you can end the transmutation with a free action on your turn. When you take on the form of ice, you are immune to cold and have DR 5/—, but you take twice the normal amount of damage from fire. You can take on the form of ice for a number of rounds per day equal to your cleric level. The rounds need not be consecutive."
     },
     {
       "Key": "fd67d83c63e04b31baa4acd6c4702309",
@@ -6872,18 +7017,18 @@
       "zhCN": "伊塔库亚"
     },
     {
-      "Key": "ba4c336f3f6f4e51a34ec9af86a15ae2",
-      "SimpleName": "JaidzFeature.Description",
-      "ProcessTemplates": true,
-      "enGB": "\nTitles: Fearless Claw   \nAlignment: Neutral Good   \nAreas of Concern: Cowards, The Untested, Youths   \nDomains: Glory, Good, Protection, Travel   \nSubdomains: Agathion, Defense, Exploration, Purity   \nFavoured Weapon: Short sword   \nHoly Symbol: Winding path between two trees   \nSacred Animal: Black tiger   \nJaidz believes cowards can be turned to a life of bravery with compassion and firm guidance. He steps softly so as not to frighten those who need to hear his wisdom, and helps those he visits to find the strength within themselves. Jaidz appears as a giant black tiger with ghostly white spots. While in the mortal realm, he often takes the shape of a dark-skinned man with thick black hair streaked with white. His catlike golden eyes gleam in the shadows, and curved golden claws sprout from his hands. Even in his human form he boasts a long black tail tipped with white. The cowardly, the anxious, and the untested pay homage to Jaidz. Youths are especially drawn to Fearless Claw, hoping that when adulthood comes, it will find them brave enough to face the challenges of maturity. Jaidz teaches that the cowardly are not to be scorned, but to be helped, and his agents often provide tests of courage to those who underestimate their own potential. Jaidz dwells in a pavilion of black walnut with gold lattice walls and floor-length faille curtains of emerald green, magenta, and indigo. His pavilion stands on the topmost of three stone tiers cut into one of the Dragonmane Mountains on Nirvana.",
-      "zhCN": "\n称号：无畏之爪\n阵营：绝对中立 \n神职：懦夫，未经试炼者，年轻人\n领域：荣耀、善良、保护、旅行\n子领域：盖森、防御、探索、纯净\n偏好武器：短剑\n圣徽：蜿蜒至两棵树之间的小路\n圣兽：黑虎\n杰兹是帮助怯懦者找到勇气的至高天神使。他脚步轻柔，以免吓到需要聆听他智慧的人，并帮助他拜访的人找到自己的力量。\n杰兹的形象是一只巨大的黑虎，身上带有幽灵般的白斑。在凡间，他经常化身为一个黑人，有着浓密的黑白相间的头发。金色的猫眼在阴影中闪烁，弯曲的金色爪子从他的手中长出。即使处在人形，他也拥有一条长长的黑色尾巴，末端是白色的。懦弱、焦虑和未经试炼者向杰兹致敬。\n幼童尤其喜欢无畏之爪，希望成年后，他们会勇敢地面对成熟的挑战。 杰兹教导说，胆小者不应该被鄙视，而是应该得到帮助，他的代理人经常为那些低估自己潜力的人提供勇气的考验。\n杰兹住在极乐境龙鬃山脉三重巨石顶上一间黑胡桃木的楼阁，墙壁勾金，围绕着墨绿，紫红和靛青色绸缎的及地幕帘。"
-    },
-    {
       "Key": "08764f1156ef47d683746ea68a8bb71a",
       "SimpleName": "JaidzFeature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "\nTitles: Fearless Claw   \nAlignment: Neutral Good   \nAreas of Concern: Cowards, The Untested, Youths   \nDomains: Glory, Good, Protection, Travel   \nSubdomains: Agathion, Defense, Exploration, Purity   \nFavoured Weapon: Short sword   \nHoly Symbol: Winding path between two trees   \nSacred Animal: Black tiger   \nJaidz believes cowards can be turned to a life of bravery with compassion and firm guidance. He steps softly so as not to frighten those who need to hear his wisdom, and helps those he visits to find the strength within themselves. Jaidz appears as a giant black tiger with ghostly white spots. While in the mortal realm, he often takes the shape of a dark-skinned man with thick black hair streaked with white. His catlike golden eyes gleam in the shadows, and curved golden claws sprout from his hands. Even in his human form he boasts a long black tail tipped with white. The cowardly, the anxious, and the untested pay homage to Jaidz. Youths are especially drawn to Fearless Claw, hoping that when adulthood comes, it will find them brave enough to face the challenges of maturity. Jaidz teaches that the cowardly are not to be scorned, but to be helped,and his agents often provide tests of courage to those who underestimate their own potential.Jaidz dwells in a pavilion of black walnut with gold lattice walls and floor-length faille curtains of emerald green, magenta, and indigo. His pavilion stands on the topmost of three stone tiers cut into one of the Dragonmane Mountains on Nirvana.",
+      "zhCN": "\n称号：无畏之爪\n阵营：绝对中立 \n神职：懦夫，未经试炼者，年轻人\n领域：荣耀、善良、保护、旅行\n子领域：盖森、防御、探索、纯净\n偏好武器：短剑\n圣徽：蜿蜒至两棵树之间的小路\n圣兽：黑虎\n杰兹是帮助怯懦者找到勇气的至高天神使。他脚步轻柔，以免吓到需要聆听他智慧的人，并帮助他拜访的人找到自己的力量。\n杰兹的形象是一只巨大的黑虎，身上带有幽灵般的白斑。在凡间，他经常化身为一个黑人，有着浓密的黑白相间的头发。金色的猫眼在阴影中闪烁，弯曲的金色爪子从他的手中长出。即使处在人形，他也拥有一条长长的黑色尾巴，末端是白色的。懦弱、焦虑和未经试炼者向杰兹致敬。\n幼童尤其喜欢无畏之爪，希望成年后，他们会勇敢地面对成熟的挑战。 杰兹教导说，胆小者不应该被鄙视，而是应该得到帮助，他的代理人经常为那些低估自己潜力的人提供勇气的考验。\n杰兹住在极乐境龙鬃山脉三重巨石顶上一间黑胡桃木的楼阁，墙壁勾金，围绕着墨绿，紫红和靛青色绸缎的及地幕帘。"
+    },
+    {
+      "Key": "ba4c336f3f6f4e51a34ec9af86a15ae2",
+      "SimpleName": "JaidzFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nTitles: Fearless Claw   \nAlignment: Neutral Good   \nAreas of Concern: Cowards, The Untested, Youths   \nDomains: Glory, Good, Protection, Travel   \nSubdomains: Agathion, Defense, Exploration, Purity   \nFavoured Weapon: Short sword   \nHoly Symbol: Winding path between two trees   \nSacred Animal: Black tiger   \nJaidz believes cowards can be turned to a life of bravery with compassion and firm guidance. He steps softly so as not to frighten those who need to hear his wisdom, and helps those he visits to find the strength within themselves. Jaidz appears as a giant black tiger with ghostly white spots. While in the mortal realm, he often takes the shape of a dark-skinned man with thick black hair streaked with white. His catlike golden eyes gleam in the shadows, and curved golden claws sprout from his hands. Even in his human form he boasts a long black tail tipped with white. The cowardly, the anxious, and the untested pay homage to Jaidz. Youths are especially drawn to Fearless Claw, hoping that when adulthood comes, it will find them brave enough to face the challenges of maturity. Jaidz teaches that the cowardly are not to be scorned, but to be helped, and his agents often provide tests of courage to those who underestimate their own potential. Jaidz dwells in a pavilion of black walnut with gold lattice walls and floor-length faille curtains of emerald green, magenta, and indigo. His pavilion stands on the topmost of three stone tiers cut into one of the Dragonmane Mountains on Nirvana.",
       "zhCN": "\n称号：无畏之爪\n阵营：绝对中立 \n神职：懦夫，未经试炼者，年轻人\n领域：荣耀、善良、保护、旅行\n子领域：盖森、防御、探索、纯净\n偏好武器：短剑\n圣徽：蜿蜒至两棵树之间的小路\n圣兽：黑虎\n杰兹是帮助怯懦者找到勇气的至高天神使。他脚步轻柔，以免吓到需要聆听他智慧的人，并帮助他拜访的人找到自己的力量。\n杰兹的形象是一只巨大的黑虎，身上带有幽灵般的白斑。在凡间，他经常化身为一个黑人，有着浓密的黑白相间的头发。金色的猫眼在阴影中闪烁，弯曲的金色爪子从他的手中长出。即使处在人形，他也拥有一条长长的黑色尾巴，末端是白色的。懦弱、焦虑和未经试炼者向杰兹致敬。\n幼童尤其喜欢无畏之爪，希望成年后，他们会勇敢地面对成熟的挑战。 杰兹教导说，胆小者不应该被鄙视，而是应该得到帮助，他的代理人经常为那些低估自己潜力的人提供勇气的考验。\n杰兹住在极乐境龙鬃山脉三重巨石顶上一间黑胡桃木的楼阁，墙壁勾金，围绕着墨绿，紫红和靛青色绸缎的及地幕帘。"
     },
     {
@@ -7107,18 +7252,18 @@
       "zhCN": "病难母"
     },
     {
-      "Key": "44cfe3bd69c84e1b9f07ca7fde904b3d",
-      "SimpleName": "LalaciFeature.Description",
-      "ProcessTemplates": true,
-      "enGB": "\nTitles: He of Motley Repose   \nAlignment: Chaotic Good   \nAreas of Concern: Rainbows, Relaxation, Shade   \nDomains: Chaos, Good, Luck, Sun   \nSubdomains: Azata, Fate, Light, Whimsy   \nFavoured Weapon: Sling (Slingstaff)   \nHoly Symbol: Rainbow with shadow   \nSacred Animal: Lacewing   \nLalaci sees the beauty in conflict. The sun wars with the rain and creates a rainbow, and He of Motley Repose believes that everyone's inner nature should be a similar mix of action and restraint, placid adoration and righteous scorn. He offers rest and relaxation to those who meet each day with excitement and vigor and who may be tired from the chaotic beauty that is their life. To mortal eyes, Lalaci appears to be fair-skinned with white-blonde hair and yellow-white eyes. He tucks the two prismatic wings that curve from his shoulders down so that he appears to wear a beautiful multicolored cloak, though among his own kind he walks in his true naked form, with crystalline flesh that refracts light as golden rays. He of Motley Repose provides rest to the hardworking and shade to those exhausted from the sun. Glassblowers and illusionists often find creative inspiration in Lalaci's rainbows; particularly gifted glass artists and lightweavers who lead worthy lives sometimes find small prisms at their workstations-tokens of Lalaci's favor. His devotees claim that the reflections of rainbows in natural bodies of water create portals to his celestial domain: an enormous, warped glass palace that floats on a cloud across the surface of Elysium.",
-      "zhCN": "\n称号：七彩长眠者\n阵营：混乱善良 \n神职：彩虹、休闲、阴影 \n领域：混乱、善良、幸运、太阳\n子领域：爱塔、天命、光明、滑稽\n偏好武器：吊索（投石杖） \n圣徽：带阴影的彩虹\n圣兽：草蜻蛉\n拉剌奇看到了冲突中的美。太阳与雨交相辉映，创造出彩虹，七彩长眠者认为，每个人的内在本性都应该是类似的混合行动和克制，平静的崇拜和正义的蔑视。他为那些每天都充满兴奋和活力的人提供休息和放松，他们可能会因生活中混乱的美丽而感到疲倦。\n在凡人眼中，拉剌奇似乎皮肤白皙，有着白金色的头发和黄白色的眼睛。他把从肩膀上弯曲的两个棱柱形翅膀掖好，这样他看起来就穿着一件漂亮的彩色斗篷，尽管在他自己的同类中，他以真正赤裸的形式行走，水晶般的肉体折射出金色的光芒。\n七彩长眠者为辛勤工作的人提供休息，为那些因太阳而疲劳的人提供阴凉。吹玻璃工和魔术师经常在拉剌奇的彩虹中找到创意灵感；特别有天赋的玻璃艺术家和过着有价值生活的织光师有时会在他们的工作站上找到小棱镜——这是拉剌奇青睐的象征。他的信徒声称，自然水体中彩虹的反射创造了通往他的天界的门户：奔放之野云端一座巨大扭曲的玻璃城堡，漂浮在极乐境表面的云层上。"
-    },
-    {
       "Key": "21eaf4d1d6474217a066392160e8dd15",
       "SimpleName": "LalaciFeature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "\nTitles: He of Motley Repose   \nAlignment: Chaotic Good   \nAreas of Concern: Rainbows, Relaxation, Shade   \nDomains: Chaos, Good, Luck, Sun   \nSubdomains: Azata, Fate, Light, Whimsy   \nFavoured Weapon: Sling (Slingstaff)   \nHoly Symbol: Rainbow with shadow   \nSacred Animal: Lacewing   \nLalaci sees the beauty in conflict. The sun wars with the rain and creates a rainbow, and He of Motley Repose believes that everyone's inner nature should be a similar mix of action and restraint, placid adoration and righteous scorn. He offers rest and relaxation to those who meet each day with excitement and vigor and who may be tired from the chaotic beauty that is their life. To mortal eyes, Lalaci appears to be fair-skinned with white-blonde hair and yellow-white eyes. He tucks the two prismatic wings that curve from his shoulders down so that he appears to wear a beautiful multicolored cloak, though among his own kind he walks in his true naked form, with crystalline flesh that refracts light as golden rays. He of Motley Repose provides rest to the hardworking and shade to those exhausted from the sun. Glassblowers and illusionists often find creative inspiration in Lalaci's rainbows; particularly gifted glass artists and lightweavers who lead worthy lives sometimes find small prisms at their workstations-tokens of Lalaci's favor. His devotees claim that the reflections of rainbows in natural bodies of water create portals to his celestial domain: an enormous, warped gla s s palace that floats on a cloud across the surface of Elysium.",
+      "zhCN": "\n称号：七彩长眠者\n阵营：混乱善良 \n神职：彩虹、休闲、阴影 \n领域：混乱、善良、幸运、太阳\n子领域：爱塔、天命、光明、滑稽\n偏好武器：吊索（投石杖） \n圣徽：带阴影的彩虹\n圣兽：草蜻蛉\n拉剌奇看到了冲突中的美。太阳与雨交相辉映，创造出彩虹，七彩长眠者认为，每个人的内在本性都应该是类似的混合行动和克制，平静的崇拜和正义的蔑视。他为那些每天都充满兴奋和活力的人提供休息和放松，他们可能会因生活中混乱的美丽而感到疲倦。\n在凡人眼中，拉剌奇似乎皮肤白皙，有着白金色的头发和黄白色的眼睛。他把从肩膀上弯曲的两个棱柱形翅膀掖好，这样他看起来就穿着一件漂亮的彩色斗篷，尽管在他自己的同类中，他以真正赤裸的形式行走，水晶般的肉体折射出金色的光芒。\n七彩长眠者为辛勤工作的人提供休息，为那些因太阳而疲劳的人提供阴凉。吹玻璃工和魔术师经常在拉剌奇的彩虹中找到创意灵感；特别有天赋的玻璃艺术家和过着有价值生活的织光师有时会在他们的工作站上找到小棱镜——这是拉剌奇青睐的象征。他的信徒声称，自然水体中彩虹的反射创造了通往他的天界的门户：奔放之野云端一座巨大扭曲的玻璃城堡，漂浮在极乐境表面的云层上。"
+    },
+    {
+      "Key": "44cfe3bd69c84e1b9f07ca7fde904b3d",
+      "SimpleName": "LalaciFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nTitles: He of Motley Repose   \nAlignment: Chaotic Good   \nAreas of Concern: Rainbows, Relaxation, Shade   \nDomains: Chaos, Good, Luck, Sun   \nSubdomains: Azata, Fate, Light, Whimsy   \nFavoured Weapon: Sling (Slingstaff)   \nHoly Symbol: Rainbow with shadow   \nSacred Animal: Lacewing   \nLalaci sees the beauty in conflict. The sun wars with the rain and creates a rainbow, and He of Motley Repose believes that everyone's inner nature should be a similar mix of action and restraint, placid adoration and righteous scorn. He offers rest and relaxation to those who meet each day with excitement and vigor and who may be tired from the chaotic beauty that is their life. To mortal eyes, Lalaci appears to be fair-skinned with white-blonde hair and yellow-white eyes. He tucks the two prismatic wings that curve from his shoulders down so that he appears to wear a beautiful multicolored cloak, though among his own kind he walks in his true naked form, with crystalline flesh that refracts light as golden rays. He of Motley Repose provides rest to the hardworking and shade to those exhausted from the sun. Glassblowers and illusionists often find creative inspiration in Lalaci's rainbows; particularly gifted glass artists and lightweavers who lead worthy lives sometimes find small prisms at their workstations-tokens of Lalaci's favor. His devotees claim that the reflections of rainbows in natural bodies of water create portals to his celestial domain: an enormous, warped glass palace that floats on a cloud across the surface of Elysium.",
       "zhCN": "\n称号：七彩长眠者\n阵营：混乱善良 \n神职：彩虹、休闲、阴影 \n领域：混乱、善良、幸运、太阳\n子领域：爱塔、天命、光明、滑稽\n偏好武器：吊索（投石杖） \n圣徽：带阴影的彩虹\n圣兽：草蜻蛉\n拉剌奇看到了冲突中的美。太阳与雨交相辉映，创造出彩虹，七彩长眠者认为，每个人的内在本性都应该是类似的混合行动和克制，平静的崇拜和正义的蔑视。他为那些每天都充满兴奋和活力的人提供休息和放松，他们可能会因生活中混乱的美丽而感到疲倦。\n在凡人眼中，拉剌奇似乎皮肤白皙，有着白金色的头发和黄白色的眼睛。他把从肩膀上弯曲的两个棱柱形翅膀掖好，这样他看起来就穿着一件漂亮的彩色斗篷，尽管在他自己的同类中，他以真正赤裸的形式行走，水晶般的肉体折射出金色的光芒。\n七彩长眠者为辛勤工作的人提供休息，为那些因太阳而疲劳的人提供阴凉。吹玻璃工和魔术师经常在拉剌奇的彩虹中找到创意灵感；特别有天赋的玻璃艺术家和过着有价值生活的织光师有时会在他们的工作站上找到小棱镜——这是拉剌奇青睐的象征。他的信徒声称，自然水体中彩虹的反射创造了通往他的天界的门户：奔放之野云端一座巨大扭曲的玻璃城堡，漂浮在极乐境表面的云层上。"
     },
     {
@@ -11083,6 +11228,48 @@
       "zhCN": "瘟疫使者"
     },
     {
+      "Key": "a2182097dc7f4acb85b3f738a8bfa7eb",
+      "SimpleName": "PlantDomainBaseFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "You find solace in the green, can grow defensive thorns, and can communicate with plants.\nWooden Fist: As a free action, your hands can become as hard as wood, covered in tiny thorns. While you have wooden fists, your unarmed strikes do not provoke attacks of opportunity, and gain a bonus on damage rolls equal to 1/2 your cleric level (minimum +1). You can use this ability for a number of rounds per day equal to 3 + your Wisdom modifier. These rounds do not need to be consecutive.\nBramble Armor: At 6th level, you can cause a host of wooden thorns to burst from your skin as a free action. While bramble armor is in effect, any foe striking you with a melee weapon without reach takes 1d6 points of piercing damage + 1 point per two levels you possess in the class that gave you access to this domain. You can use this ability for a number of rounds per day equal to your level in the class that gave you access to this domain. These rounds do not need to be consecutive."
+    },
+    {
+      "Key": "8bfb8a7e5030467992c4b22dc2ca76c7",
+      "SimpleName": "PlantDomainNewBaseAbility.Description",
+      "ProcessTemplates": true,
+      "enGB": "As a free action, your hands can become as hard as wood, covered in tiny thorns. While you have wooden fists, your unarmed strikes do not provoke attacks of opportunity, and gain a bonus on damage rolls equal to 1/2 your cleric level (minimum +1). You can use this ability for a number of rounds per day equal to 3 + your Wisdom modifier. These rounds do not need to be consecutive."
+    },
+    {
+      "Key": "ea6d05268ce54e45943aa806943f1b20",
+      "SimpleName": "PlantDomainNewBaseBuff.Description",
+      "ProcessTemplates": true,
+      "enGB": "As a free action, your hands can become as hard as wood, covered in tiny thorns. While you have wooden fists, your unarmed strikes do not provoke attacks of opportunity, and gain a bonus on damage rolls equal to 1/2 your cleric level (minimum +1). You can use this ability for a number of rounds per day equal to 3 + your Wisdom modifier. These rounds do not need to be consecutive."
+    },
+    {
+      "Key": "2ea0effd9b8a4987986712e69cf4991f",
+      "SimpleName": "PlantDomainNewBaseBuff.Name",
+      "ProcessTemplates": false,
+      "enGB": "Wooden Fist"
+    },
+    {
+      "Key": "6473f9c166684e5ab9ef3094d730b932",
+      "SimpleName": "PlantDomainProgression.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nYou find solace in the green, can grow defensive thorns, and can communicate with plants.\nWooden Fist: As a free action, your hands can become as hard as wood, covered in tiny thorns. While you have wooden fists, your unarmed strikes do not provoke attacks of opportunity, and gain a bonus on damage rolls equal to 1/2 your cleric level (minimum +1). You can use this ability for a number of rounds per day equal to 3 + your Wisdom modifier. These rounds do not need to be consecutive.\nBramble Armor: At 6th level, you can cause a host of wooden thorns to burst from your skin as a free action. While bramble armor is in effect, any foe striking you with a melee weapon without reach takes 1d6 points of piercing damage + 1 point per two levels you possess in the class that gave you access to this domain. You can use this ability for a number of rounds per day equal to your level in the class that gave you access to this domain. These rounds do not need to be consecutive.\nDomain Spells: entangle, barkskin, contagion, thorn body, vinetrap, plant shape II (shambling mound), changestaff, mind blank, shambler."
+    },
+    {
+      "Key": "42d65d16a4874bb1bf5c4d96c0830716",
+      "SimpleName": "PlantDomainProgressionDruid.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nYou find solace in the green, can grow defensive thorns, and can communicate with plants.\nWooden Fist: As a free action, your hands can become as hard as wood, covered in tiny thorns. While you have wooden fists, your unarmed strikes do not provoke attacks of opportunity, and gain a bonus on damage rolls equal to 1/2 your cleric level (minimum +1). You can use this ability for a number of rounds per day equal to 3 + your Wisdom modifier. These rounds do not need to be consecutive.\nBramble Armor: At 6th level, you can cause a host of wooden thorns to burst from your skin as a free action. While bramble armor is in effect, any foe striking you with a melee weapon without reach takes 1d6 points of piercing damage + 1 point per two levels you possess in the class that gave you access to this domain. You can use this ability for a number of rounds per day equal to your level in the class that gave you access to this domain. These rounds do not need to be consecutive.\nDomain Spells: entangle, barkskin, contagion, thorn body, vinetrap, plant shape II (shambling mound), changestaff, mind blank, shambler."
+    },
+    {
+      "Key": "1bcb2f004bca4bdabbeba269b0059105",
+      "SimpleName": "PlantDomainProgressionSecondary.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nYou find solace in the green, can grow defensive thorns, and can communicate with plants.\nWooden Fist: As a free action, your hands can become as hard as wood, covered in tiny thorns. While you have wooden fists, your unarmed strikes do not provoke attacks of opportunity, and gain a bonus on damage rolls equal to 1/2 your cleric level (minimum +1). You can use this ability for a number of rounds per day equal to 3 + your Wisdom modifier. These rounds do not need to be consecutive.\nBramble Armor: At 6th level, you can cause a host of wooden thorns to burst from your skin as a free action. While bramble armor is in effect, any foe striking you with a melee weapon without reach takes 1d6 points of piercing damage + 1 point per two levels you possess in the class that gave you access to this domain. You can use this ability for a number of rounds per day equal to your level in the class that gave you access to this domain. These rounds do not need to be consecutive.\nDomain Spells: entangle, barkskin, contagion, thorn body, vinetrap, plant shape II (shambling mound), changestaff, mind blank, shambler."
+    },
+    {
       "Key": "55a8428c938543c6ab59f08d5545e2ea",
       "SimpleName": "PlantInvokeDeityAbility.Description",
       "ProcessTemplates": true,
@@ -11143,6 +11330,12 @@
       "enGB": "Plant Shape II"
     },
     {
+      "Key": "868f622ed6ed47b682f6442da2e0aaf5",
+      "SimpleName": "PlantShapeIIAbility.Name",
+      "ProcessTemplates": false,
+      "enGB": "Plant Shape II (Shambling Mound)"
+    },
+    {
       "Key": "4c5b838e83a44f23aa03f623d638e6dd",
       "SimpleName": "PlantShapeIIBuff.Name",
       "ProcessTemplates": false,
@@ -11153,6 +11346,12 @@
       "SimpleName": "PlantShapeIIIAbility.Description",
       "ProcessTemplates": true,
       "enGB": "You become a Huge Treant or a Huge Giant Flytrap."
+    },
+    {
+      "Key": "066c47348ce84bfe8c8164fb6bbd4d4e",
+      "SimpleName": "PlantShapeIIIAbility.Description",
+      "ProcessTemplates": true,
+      "enGB": "You become a huge treant or a huge giant flytrap."
     },
     {
       "Key": "40f2795f415840d0a612bfddf8b3d741",
@@ -11209,6 +11408,36 @@
       "SimpleName": "PlantShapeIIITreantBuff.Name",
       "ProcessTemplates": false,
       "enGB": "Plant Shape (Treant)"
+    },
+    {
+      "Key": "c547e46a5a774b1e8da1c97ed7350fc4",
+      "SimpleName": "PlantShapeIIParentAbility.Description",
+      "ProcessTemplates": true,
+      "enGB": "You become a large shambling mound or a huge quickwood."
+    },
+    {
+      "Key": "e54269d78596451182110bfbac430f35",
+      "SimpleName": "PlantShapeIIQuickwoodAbility.Description",
+      "ProcessTemplates": true,
+      "enGB": "You become a huge quickwood. You gain a +4 size bonus to your Strength, a +2 size bonus to your Constitution, +4 natural armor bonus, resist fire 20, resist electricity 20, and spell resistance equal to 10 + half your caster level. Your movement speed is reduced by 10 feet. You also have one 2d6 bite attack and two 1d4 root (tentacle) attacks."
+    },
+    {
+      "Key": "7fb9f9b2bfb0406db24eba5deb780eda",
+      "SimpleName": "PlantShapeIIQuickwoodAbility.Name",
+      "ProcessTemplates": false,
+      "enGB": "Plant Shape II (Quickwood)"
+    },
+    {
+      "Key": "ca4606ac6b6d44f0a511fcc8db268c50",
+      "SimpleName": "PlantShapeIIQuickwoodBuff.Description",
+      "ProcessTemplates": true,
+      "enGB": "You become a huge quickwood. You gain a +4 size bonus to your Strength, a +2 size bonus to your Constitution, +4 natural armor bonus, resist fire 20, resist electricity 20, and spell resistance equal to 10 + half your caster level. Your movement speed is reduced by 10 feet. You also have one 2d6 bite attack and two 1d4 root (tentacle) attacks."
+    },
+    {
+      "Key": "816242ba2c424ec7bb23b0a134bdf62f",
+      "SimpleName": "PlantShapeIIQuickwoodBuff.Name",
+      "ProcessTemplates": false,
+      "enGB": "Plant Shape (Quickwood)"
     },
     {
       "Key": "ae09ec9496904bf4bdfc833e8a15c54b",
@@ -11404,18 +11633,18 @@
       "zhCN": "卜塔"
     },
     {
+      "Key": "da43197674cd494792e4798302bd608a",
+      "SimpleName": "PuluraFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nTitles: The Shimmering Maiden, The North Star, Mistress of the Stars, Light of the Aurora  \nAlignment: Chaotic Good   \nAreas of Concern: Constellations, Homesickness, Northern Lights\nDomains: Air, Chaos, Good, Weather   \nSubdomains: Azata, Cloud, Seasons, Stars   \nFavoured Weapon: Sling\nHoly Symbol: Face in Northern Lights   \nSacred Animal: Firefly   \nSacred Colour: Midnight Blue   \nPulura, the mistress of the stars and the aurora, is an angel empyreal lord, the patron of those travellers that become homesick, lost, or injured in the snowy wastes of the far north.Pulura was worshiped as a major deity in the lost Kellid realm of Sarkoris. The Sarkorians saw her and the demon lord Kostchtchie as dualistic gods of cold. She was honoured by a mighty ring of idols in the city of Dyinglight but, in common with the rest of Sarkoris, the city fell to the demons of the Worldwound. A cascade named for her, Pulura's Fall, once flowed to the northeast of Iz; it has since been swallowed by the Worldwound, but its namesake, a temple to Pulura, remains, and has been withstanding a demonic siege for more than a century. An idol to Pulura stands on the Walk of Lost Gods in the ravaged town of Gundrun.\nAppearance: Pulura appears as a lovely, alluring Tian woman with the grace of a dancer, a gravity about her expression, and black, flowing hair gleaming with the light of stars. Her robes appear to be made from green and pink light, and flicker with every one of her movements. She often appears dancing amid the aurora borealis in the skies of far northern lands, and legend has it that her extraordinary beauty will burn any mortals who dare approach her too closely. She wields a sling made from sighs that fires bullets of starlight.",
+      "zhCN": "\n称号:微光少女\n阵营: 混乱善良\n神职:星座，思乡，北极光\n领域: 空气, 混乱, 善良, 天气\n子领域: 爱塔, 云, 季节, 星辰\n偏好武器：投石索（投石杖）\n圣徽：幻化成人脸的北极光\n圣兽：萤火虫\n微光少女舞动于北天之上，代表着星座，思乡与北极光。璞露拉明白星座是凡人在世界中行走时的指引，群星照亮地上的道路，让那些旅行探索之人总能找到回家的方向。星座的故事不但提供给人们娱乐，讲述关于良善，光明与力量的故事，也是帮助人们学习记忆星辰的工具。它们确保星图总是能够易读难忘。微光少女呼唤她的信徒学习星图，为那些迷失者和需求向导之人提供帮助，并且比这更重要的是，信徒要自行学会在旅途中解读天穹，为自己导航。\n通常，凡人很难看到微光少女，她出现在凡人面前时，就像一颗遥远而明亮的炽热星辰。当人们能够看到她时，她的外表看起来就像是一个天洲女性，漆黑的长发中闪动着星光。她身着嫩绿桃粉的长袍——袍子的材料不似任何人间的织物，而像是由纯粹的光编织而成。璞露拉的追随者包括旅行者，向导，游牧民，探险家，水手，观星者和猎人。"
+    },
+    {
       "Key": "f773898dd6204d04a69be8d798b026d9",
       "SimpleName": "PuluraFeature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "\n: The Shimmering Maiden, The North Star, Mistress of the Stars, Light of the Aurora  \nAlignment: Chaotic Good   \nAreas of Concern: Constellations, Homesickness, Northern Lights\nDomains: Air, Chaos, Good, Weather   \nSubdomains: Azata, Cloud, Seasons, Stars   \nFavoured Weapon: Sling\nHoly Symbol: Face in Northern Lights   \nSacred Animal: Firefly   \nSacred Colour: Midnight Blue   \nPulura, the mistress of the stars and the aurora, is an angel empyreal lord, the patron of those travellers that become homesick, lost, or injured in the snowy wastes of the far north.   Pulura was worshiped as a major deity in the lost Kellid realm of Sarkoris. The Sarkorians saw her and the demon lord Kostchtchie as dualistic gods of cold. She was honoured by a mighty ring of idols in the city of Dyinglight but, in common with the rest of Sarkoris, the city fell to the demons of the Worldwound. A cascade named for her, Pulura's Fall, once flowed to the northeast of Iz; it has since been swallowed by the Worldwound, but its namesake, a temple to Pulura, remains, and has been withstanding a demonic siege for more than a century. An idol to Pulura stands on the Walk of Lost Gods in the ravaged town of Gundrun.   \nAppearance: Pulura appears as a lovely, alluring Tian woman with the grace of a dancer, a gravity about her expression, and black, flowing hair gleaming with the light of stars. Her robes appear to be made from green and pink light, and flicker with every one of her movements. She often appears dancing amid the aurora borealis in the skies of far northern lands, and legend has it that her extraordinary beauty will burn any mortals who dare approach her too closely. She wields a sling made from sighs that fires bullets of starlight.",
-      "zhCN": "\n称号:微光少女\n阵营: 混乱善良\n神职:星座，思乡，北极光\n领域: 空气, 混乱, 善良, 天气\n子领域: 爱塔, 云, 季节, 星辰\n偏好武器：投石索（投石杖）\n圣徽：幻化成人脸的北极光\n圣兽：萤火虫\n微光少女舞动于北天之上，代表着星座，思乡与北极光。璞露拉明白星座是凡人在世界中行走时的指引，群星照亮地上的道路，让那些旅行探索之人总能找到回家的方向。星座的故事不但提供给人们娱乐，讲述关于良善，光明与力量的故事，也是帮助人们学习记忆星辰的工具。它们确保星图总是能够易读难忘。微光少女呼唤她的信徒学习星图，为那些迷失者和需求向导之人提供帮助，并且比这更重要的是，信徒要自行学会在旅途中解读天穹，为自己导航。\n通常，凡人很难看到微光少女，她出现在凡人面前时，就像一颗遥远而明亮的炽热星辰。当人们能够看到她时，她的外表看起来就像是一个天洲女性，漆黑的长发中闪动着星光。她身着嫩绿桃粉的长袍——袍子的材料不似任何人间的织物，而像是由纯粹的光编织而成。璞露拉的追随者包括旅行者，向导，游牧民，探险家，水手，观星者和猎人。"
-    },
-    {
-      "Key": "da43197674cd494792e4798302bd608a",
-      "SimpleName": "PuluraFeature.Description",
-      "ProcessTemplates": true,
-      "enGB": "\nTitles: The Shimmering Maiden, The North Star, Mistress of the Stars, Light of the Aurora  \nAlignment: Chaotic Good   \nAreas of Concern: Constellations, Homesickness, Northern Lights\nDomains: Air, Chaos, Good, Weather   \nSubdomains: Azata, Cloud, Seasons, Stars   \nFavoured Weapon: Sling\nHoly Symbol: Face in Northern Lights   \nSacred Animal: Firefly   \nSacred Colour: Midnight Blue   \nPulura, the mistress of the stars and the aurora, is an angel empyreal lord, the patron of those travellers that become homesick, lost, or injured in the snowy wastes of the far north.Pulura was worshiped as a major deity in the lost Kellid realm of Sarkoris. The Sarkorians saw her and the demon lord Kostchtchie as dualistic gods of cold. She was honoured by a mighty ring of idols in the city of Dyinglight but, in common with the rest of Sarkoris, the city fell to the demons of the Worldwound. A cascade named for her, Pulura's Fall, once flowed to the northeast of Iz; it has since been swallowed by the Worldwound, but its namesake, a temple to Pulura, remains, and has been withstanding a demonic siege for more than a century. An idol to Pulura stands on the Walk of Lost Gods in the ravaged town of Gundrun.\nAppearance: Pulura appears as a lovely, alluring Tian woman with the grace of a dancer, a gravity about her expression, and black, flowing hair gleaming with the light of stars. Her robes appear to be made from green and pink light, and flicker with every one of her movements. She often appears dancing amid the aurora borealis in the skies of far northern lands, and legend has it that her extraordinary beauty will burn any mortals who dare approach her too closely. She wields a sling made from sighs that fires bullets of starlight.",
       "zhCN": "\n称号:微光少女\n阵营: 混乱善良\n神职:星座，思乡，北极光\n领域: 空气, 混乱, 善良, 天气\n子领域: 爱塔, 云, 季节, 星辰\n偏好武器：投石索（投石杖）\n圣徽：幻化成人脸的北极光\n圣兽：萤火虫\n微光少女舞动于北天之上，代表着星座，思乡与北极光。璞露拉明白星座是凡人在世界中行走时的指引，群星照亮地上的道路，让那些旅行探索之人总能找到回家的方向。星座的故事不但提供给人们娱乐，讲述关于良善，光明与力量的故事，也是帮助人们学习记忆星辰的工具。它们确保星图总是能够易读难忘。微光少女呼唤她的信徒学习星图，为那些迷失者和需求向导之人提供帮助，并且比这更重要的是，信徒要自行学会在旅途中解读天穹，为自己导航。\n通常，凡人很难看到微光少女，她出现在凡人面前时，就像一颗遥远而明亮的炽热星辰。当人们能够看到她时，她的外表看起来就像是一个天洲女性，漆黑的长发中闪动着星光。她身着嫩绿桃粉的长袍——袍子的材料不似任何人间的织物，而像是由纯粹的光编织而成。璞露拉的追随者包括旅行者，向导，游牧民，探险家，水手，观星者和猎人。"
     },
     {
@@ -11553,14 +11782,14 @@
       "zhCN": "\n称号：复仇战将\n阵营：守序善良\n神职：破坏，善良，秩序，崇高\n子领域：亚空，领导，殉难，狂暴\n偏好武器：重剑\n圣徽：交叉的剑与翼\n圣兽：獒犬\n复仇战将象征骑士精神，责任与复仇，他是骑士的典范。作为魔鬼大公迪斯帕特和原生的火之半神费洛尼娅的子嗣，他艰辛的克服他父母的名誉对他的影响。因此，他深切了解寻求接纳和信任，为了正义与良善，与自身的本性时刻斗争是多么艰辛难苦。他代表战斗中的力量，面对邪恶时的愤怒，对冤屈者的容赦，或是为之复仇。他代表在危难时领军的责任，守护无辜之人的美德与义务。他期望他的追随者消灭他们发现的邪恶异界生物，并努力去赢取周围之人的信赖与尊重。追随复仇战将之人将他视为光辉的榜样，身先士卒地冲锋在战斗与对抗邪恶的最前线。\n复仇战将的化身是一个高大的巨型人类，身高超过20呎，身着闪耀光芒的黄金板甲，手持燃烧着熊熊圣火的剑刃。五个燃烧的火翼从他的背后伸展开来，三翼在左，二翼在右——而缺失的第六翼被他的父亲在暴怒之中撕扯了下来。拉贾瑟尔的追随者包括十字军战士，骑士，士兵，被诬陷之人，被边缘化之人和被冤屈者。"
     },
     {
-      "Key": "312f5f125aa545abb3fa1104c97d040a",
+      "Key": "a25bd1eabfbf4b04bd0c91e5c1ae1ba4",
       "SimpleName": "RagathielFeature.Description",
       "ProcessTemplates": true,
       "enGB": "\nTitles: General of Vengeance   \nAlignment: Lawful Good   \nDomains: Destruction, Good, Law, Nobility   \nSubdomains: Archon, Leadership, Martyr, Rage   \nFavoured Weapon: Bastard Sword   \nHoly Symbol: Sword, crossed with Wing   \nSacred Animal: Mastiff   \nSacred Colours: Crimson, Gold   \nRagathiel is an empyreal lord—a good servant of the gods who through transcendence has achieved some small measure of divine power—known as the General of Vengeance. His portfolio includes chivalry, duty, and vengeance, and his holy symbol is a bastard sword crossed with a crimson wing. He makes his home at the base of the mountain of Heaven, in his eponymous fortress, a magnificent steel structure designed to withstand a thousand-year siege if need be. Ragathiel takes an active role in the battle against Hell's fiendish legions. He shines at the head of his army, a figure of golden light cleaving through the ranks of devils that face him. Soldiers of all kinds, but particularly knights, pay homage to Ragathiel and pray for his virtue and wrathful strength in battle. Those who have taken vows, especially those of duty or vengeance, hold Ragathiel as their ideal, and his agents sometimes assist those who have been grievously wronged and now seek righteous vengeance. As strange as it may seem, Ragathiel is the son of Feronia, a demigoddess of the Plane of Fire, and Dispater, the Father of Dis. He was conceived in a brief tryst (lasting only a few centuries), after which his mother took him out of Hell. Ragathiel's tainted heritage has left him with a wrathful heart, and the angel struggles constantly to master his baser impulses in service to the light. For thousands of years he strove to prove himself to the angelic choirs of Heaven. In the Maelstrom he wrestled for 16 years with a monstrous evil serpent whose scales wept acidic blood until he was able to choke the life out of it. He led an entire army against one of the iron fortresses of Avernus and burned the castle to the ground with holy fire, single-handedly maiming Infernal Duke Deumus in the process. Finally the other empyreal lords agreed to admit Ragathiel into their ranks, and now they appear to trust the angel completely—though that trust took centuries to develop. At some point in history, Ragathiel destroyed Typhon, the original ruler of the first layer of Hell. He may have been manipulated into doing so by the schemes of Asmodeus to punish Typhon for his indiscretions. Ragathiel was once served by the Hand of the Inheritor, an angel who now acts as the goddess Iomedae's herald. Then known as the Hand of Vengeance, this angel asked to be reassigned to Iomedae after the death of Aroden. \nAppearance: Ragathiel is a tower of glorious might. He stands almost 20 feet tall, and five lofty burning wings stretch from his back. The General of Vengeance once had six wings, but one was severed, torn from his body by the archdevil Dispater—Ragathiel's father.   \nWorship: Ragathiel is commonly worshiped by the avowed, knights, soldiers, the wronged, and the empyreal lord employs aasimar, paladins, blink dogs, and kirin as his most common servants. The holiest time for Ragathiel's followers is the brief moments before and after a battle. The faithful ask Ragathiel's eyes to fall upon them and for his wings to shield them. This is also a standard greeting and farewell among worshipers. Followers of Ragathiel commonly wear red and silver clothing. Many also don an ornament or sigil the color of flames, typically on the helmet. Ragathiel has a small but old cult in Magnimar, a city known for its many mystery cults revering various empyreal lords.   \nPaladin Code:   \n*I will avenge evil wrought upon the innocent.   \n*I will not give my word lightly, but once it is given, I will uphold a promise until my last breath.   \n*Those proven guilty must be punished for their crimes. I will not turn a blind eye to wrongdoing.   \n*Rage is a virtue and a strength only when focused against the deserving. I will never seek disproportionate retribution.   \n*Redemption finds hearts from even the cruelest origins. I will strive not to act upon prejudice against fellow mortals based on race or origin.",
       "zhCN": "\n称号：复仇战将\n阵营：守序善良\n神职：破坏，善良，秩序，崇高\n子领域：亚空，领导，殉难，狂暴\n偏好武器：重剑\n圣徽：交叉的剑与翼\n圣兽：獒犬\n复仇战将象征骑士精神，责任与复仇，他是骑士的典范。作为魔鬼大公迪斯帕特和原生的火之半神费洛尼娅的子嗣，他艰辛的克服他父母的名誉对他的影响。因此，他深切了解寻求接纳和信任，为了正义与良善，与自身的本性时刻斗争是多么艰辛难苦。他代表战斗中的力量，面对邪恶时的愤怒，对冤屈者的容赦，或是为之复仇。他代表在危难时领军的责任，守护无辜之人的美德与义务。他期望他的追随者消灭他们发现的邪恶异界生物，并努力去赢取周围之人的信赖与尊重。追随复仇战将之人将他视为光辉的榜样，身先士卒地冲锋在战斗与对抗邪恶的最前线。\n复仇战将的化身是一个高大的巨型人类，身高超过20呎，身着闪耀光芒的黄金板甲，手持燃烧着熊熊圣火的剑刃。五个燃烧的火翼从他的背后伸展开来，三翼在左，二翼在右——而缺失的第六翼被他的父亲在暴怒之中撕扯了下来。拉贾瑟尔的追随者包括十字军战士，骑士，士兵，被诬陷之人，被边缘化之人和被冤屈者。"
     },
     {
-      "Key": "a25bd1eabfbf4b04bd0c91e5c1ae1ba4",
+      "Key": "312f5f125aa545abb3fa1104c97d040a",
       "SimpleName": "RagathielFeature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
@@ -12745,17 +12974,17 @@
       "zhCN": "充满生动色彩的交缠图纹在空中汇集，对身在其中的生物造成影响。此{g|Encyclopedia:Spell}法术{/g}可影响生物的总生命骰数等于你的{g|Encyclopedia:Caster_Level}施法者等级{/g}（最高20级）。生命骰数最低的生物首先受到影响，相同生命骰数的生物当中则是最靠近法术源点的首先受到影响。不足以影响一个生物的生命骰数将被浪费。法术将根据受术生物的生命骰数造成不同效果。\n6或更低：{g|Encyclopedia:Injury_Death}昏迷{/g}{g|Encyclopedia:Dice}1d4{/g}轮，然后震慑相同的{g|Encyclopedia:Combat_Round}轮数{/g}，然后困惑相同的轮数。（对于非活物，将昏迷按震慑判定）\n7到12：震慑1d4轮，然后困惑相同的轮数。\n13或更高：困惑1d4轮。\n无视觉的生物不受迷幻图纹影响。"
     },
     {
-      "Key": "0cc0feda6fce4ff1bb465ff05b82baa4",
-      "SimpleName": "ShamanHeavensScintillatingPatternAbility.Name",
-      "ProcessTemplates": false,
-      "enGB": "Phantasmagoric Display - Scintillating Pattern"
-    },
-    {
       "Key": "b40a591f0d1b4494b7fe66174870832b",
       "SimpleName": "ShamanHeavensScintillatingPatternAbility.Name",
       "ProcessTemplates": false,
       "IsUsed": false,
       "enGB": "虹彩使徒 - 迷幻图纹"
+    },
+    {
+      "Key": "0cc0feda6fce4ff1bb465ff05b82baa4",
+      "SimpleName": "ShamanHeavensScintillatingPatternAbility.Name",
+      "ProcessTemplates": false,
+      "enGB": "Phantasmagoric Display - Scintillating Pattern"
     },
     {
       "Key": "2cb06b96a01149ddbc206cabc6fae89f",
@@ -12836,19 +13065,19 @@
       "zhCN": "虹彩使徒"
     },
     {
+      "Key": "a3a898748c0f4750b0d0355acb6611ae",
+      "SimpleName": "ShamanHexGuidingStarFeature.Description",
+      "ProcessTemplates": true,
+      "IsUsed": false,
+      "enGB": "The stars themselves hold many answers, you may add your Charisma modifier to your Wisdom modifier on all Wisdom-based checks. In addition, once per day you can cast one spell as if it were modified by the Empower Spell or Extend Spell feat without increasing the spell’s casting time or level."
+    },
+    {
       "Key": "2f46ccf119464d638855831a6114776b",
       "SimpleName": "ShamanHexGuidingStarFeature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "The stars themselves hold many answers, you may add your Charisma modifier to your Wisdom modifier on all Wisdom-based checks. In addition, once per day you can cast one spell from the shaman spellbook as if it were modified by the Empower Spell or Extend Spell feat without increasing the spell’s casting time or level.",
       "zhCN": "星辰蕴含着许多奥秘，你可以在所有基于感知的检查中将您的魅力调整值添加到你的感知调整值。此外，每天一次，你可以从先知法术书中施展一个法术，就好像它应用了法术强效或法术延时专长，但不会增加法术的施法时间或等级。"
-    },
-    {
-      "Key": "a3a898748c0f4750b0d0355acb6611ae",
-      "SimpleName": "ShamanHexGuidingStarFeature.Description",
-      "ProcessTemplates": true,
-      "IsUsed": false,
-      "enGB": "The stars themselves hold many answers, you may add your Charisma modifier to your Wisdom modifier on all Wisdom-based checks. In addition, once per day you can cast one spell as if it were modified by the Empower Spell or Extend Spell feat without increasing the spell’s casting time or level."
     },
     {
       "Key": "8191d6f029b742c6bd4995850a1e3a7d",
@@ -12985,6 +13214,24 @@
       "ProcessTemplates": true,
       "enGB": "As a standard action, the shaman causes one creature within 30 feet to burn like a star. The creature takes 1d6 points of fire damage for every 2 levels the shaman possesses and emits bright light for 1 round. A successful Fortitude saving throw halves the damage and negates the emission of bright light. The shaman can use this hex a number of times per day equal to her Charisma modifier (minimum 1), but must wait 1d4 rounds between uses.",
       "zhCN": "以一个标准动作，萨满可以使30尺内一个单位燃起星光。目标受到每2萨满等级1d6点火焰伤害，并散发出强光１轮。成功的强韧豁免可以减半伤害并不会发光。该巫术每日使用次数为萨满的魅力调整值，连续使用之间至少间距1d4轮。"
+    },
+    {
+      "Key": "c9fb40aed58744d7b1f36375ab426ba1",
+      "SimpleName": "ShamblerAbility.Description",
+      "ProcessTemplates": true,
+      "enGB": "The shambler spell creates 1d4+2 shambling mounds with the advanced template. The creatures willingly aid you in combat or battle, perform a specific mission, or serve as bodyguards. The creatures remain with you for 7 days. You can only have one shambler spell in effect at one time. If you cast this spell while another casting is still in effect, the previous casting is dispelled."
+    },
+    {
+      "Key": "231a7ed382174adf8c4b49348f3d815a",
+      "SimpleName": "ShamblerAbility.Duration",
+      "ProcessTemplates": false,
+      "enGB": "7 days"
+    },
+    {
+      "Key": "2d4b060a9a72495aac3cd235a0b05b3d",
+      "SimpleName": "ShamblerAbility.Name",
+      "ProcessTemplates": false,
+      "enGB": "Shambler"
     },
     {
       "Key": "45f0b8710285465a9d435b571a14e270",
@@ -13156,19 +13403,19 @@
       "zhCN": "银冠勇士"
     },
     {
+      "Key": "c8220270704a44c79e2d4ef6bf6ddce6",
+      "SimpleName": "SilverChampionSpellbook.Name",
+      "ProcessTemplates": false,
+      "enGB": "Claw of the False Wyrm",
+      "zhCN": "虚龙之爪"
+    },
+    {
       "Key": "96ac5395a9054d339832829bc004945d",
       "SimpleName": "SilverChampionSpellbook.Name",
       "ProcessTemplates": false,
       "IsUsed": false,
       "enGB": "SilverChampion",
       "zhCN": "银冠勇士"
-    },
-    {
-      "Key": "c8220270704a44c79e2d4ef6bf6ddce6",
-      "SimpleName": "SilverChampionSpellbook.Name",
-      "ProcessTemplates": false,
-      "enGB": "Claw of the False Wyrm",
-      "zhCN": "虚龙之爪"
     },
     {
       "Key": "8847cba8444f4ce29366a7d71760800c",
@@ -18038,18 +18285,18 @@
       "zhCN": "在近战中，您可以通过分散或干扰对手来帮助您的盟友进攻或防御。如果你处于对对手进行近战攻击的位置，你可以尝试以一个迅捷动作帮助你的盟友对抗该敌人。分心的敌人在下次攻击你的盟友时受到 -1 惩罚。此惩罚仅适用于第一次攻击检定，并在 1 轮后移除。"
     },
     {
-      "Key": "b532bcb68bcf4aa59d696fdff82b944a",
-      "SimpleName": "SwiftAidAnotherDefenceBuff.Name",
-      "ProcessTemplates": false,
-      "enGB": "Swift Aid Another - Distracted Attacks",
-      "zhCN": "迅速援助 - 分心攻击"
-    },
-    {
       "Key": "837abb229abf457db821014341b7f858",
       "SimpleName": "SwiftAidAnotherDefenceBuff.Name",
       "ProcessTemplates": false,
       "IsUsed": false,
       "enGB": "Swift Aid Another - Defence",
+      "zhCN": "迅速援助 - 分心攻击"
+    },
+    {
+      "Key": "b532bcb68bcf4aa59d696fdff82b944a",
+      "SimpleName": "SwiftAidAnotherDefenceBuff.Name",
+      "ProcessTemplates": false,
+      "enGB": "Swift Aid Another - Distracted Attacks",
       "zhCN": "迅速援助 - 分心攻击"
     },
     {
@@ -18707,6 +18954,114 @@
       "ProcessTemplates": false,
       "enGB": "Treerazer",
       "zhCN": "泰拉泽尔"
+    },
+    {
+      "Key": "09e38ab3691c4e0eafbc191540c3344f",
+      "SimpleName": "TreesingerArchetype.Description",
+      "ProcessTemplates": false,
+      "enGB": "Elves live far longer than other common races, and a single elf may see whole empires rise and fall. Given the impermanence of the cultures around them, it’s small wonder that some elves turn to the timeless growth of nature for solace, finding allies among the great trees themselves, and even leading the forest’s plants into combat."
+    },
+    {
+      "Key": "ba5baef21a0547279b8f7ac6e47470f0",
+      "SimpleName": "TreesingerArchetype.Name",
+      "ProcessTemplates": false,
+      "enGB": "Treesinger"
+    },
+    {
+      "Key": "b8f7f965f46f43e09b2e6b0419c56fc5",
+      "SimpleName": "TreesingerCompanionSelection.Description",
+      "ProcessTemplates": true,
+      "enGB": "A treesinger may begin play with a plant companion. This plant is a loyal companion that accompanies the treesinger on her adventures. Except for the companion being a creature of the plant type, drawn from the list of plant companions, this ability otherwise works like the standard druid’s animal companion ability."
+    },
+    {
+      "Key": "9fbb70f1f4034e9b9b7fb01e8e740aac",
+      "SimpleName": "TreesingerCompanionSelection.Name",
+      "ProcessTemplates": false,
+      "enGB": "Plant Companion"
+    },
+    {
+      "Key": "937bac4f383a4d0b91a5b7456fdcad98",
+      "SimpleName": "TreesingerDomainSelection.Description",
+      "ProcessTemplates": true,
+      "enGB": "A treesinger may begin play with a plant companion. This plant is a loyal companion that accompanies the treesinger on her adventures. Except for the companion being a creature of the plant type, drawn from the list of plant companions, this ability otherwise works like the standard druid’s animal companion ability. \nA treesinger may instead may choose the plant or growth domain."
+    },
+    {
+      "Key": "ed661f51e837449980183a358a297d0c",
+      "SimpleName": "TreesingerDomainSelection.Name",
+      "ProcessTemplates": false,
+      "enGB": "Treesingers Domain"
+    },
+    {
+      "Key": "8ba6bc47247843989ce3b074dce7efc4",
+      "SimpleName": "TreesingerPlantBondSelection.Name",
+      "ProcessTemplates": false,
+      "enGB": "Treesingers Bond"
+    },
+    {
+      "Key": "e512eeb607ad4cd28f430dcce7faf925",
+      "SimpleName": "TreesingerWildShapeGiantFlytrapBuff.Name",
+      "ProcessTemplates": false,
+      "enGB": "Wild Shape (Giant Flytrap)"
+    },
+    {
+      "Key": "456ad6d9f6c245d0a10aa19619b25621",
+      "SimpleName": "TreesingerWildShapeGiantFlytrapFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "At 6th level, a treesinger can use wildshape to change into a mandragora and back twice a day. The effect lasts for 1 hour per druid level, or until she changes back. \nChanging form is a standard action and doesn't provoke an attack of opportunity. A druid can use this ability an additional time per day at 8th level and every two levels thereafter, for a total of eight times at 18th level. At 9th level, a treesinger can use wild shape to change into a shambling mound ro a quickwood. At 12th level, a treesinger can use wild shape to change into a giant flytrap or a treant."
+    },
+    {
+      "Key": "7cb0c597b14743caa2737dee04b93031",
+      "SimpleName": "TreesingerWildShapeMandragoraBuff.Name",
+      "ProcessTemplates": false,
+      "enGB": "Wild Shape (Mandragora)"
+    },
+    {
+      "Key": "a213d1972a7a476d85be6a17236aef68",
+      "SimpleName": "TreesingerWildShapeMandragoraFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "At 6th level, a treesinger can use wildshape to change into a mandragora and back twice a day. The effect lasts for 1 hour per druid level, or until she changes back. \nChanging form is a standard action and doesn't provoke an attack of opportunity. A druid can use this ability an additional time per day at 8th level and every two levels thereafter, for a total of eight times at 18th level. At 9th level, a treesinger can use wild shape to change into a shambling mound ro a quickwood. At 12th level, a treesinger can use wild shape to change into a giant flytrap or a treant."
+    },
+    {
+      "Key": "f568d4dbc9004c21a2ac58255ff2f283",
+      "SimpleName": "TreesingerWildShapeQuickwoodAbility.Description",
+      "ProcessTemplates": true,
+      "enGB": "You become a huge quickwood. You gain a +4 size bonus to your Strength, a +2 size bonus to your Constitution, +4 natural armor bonus, resist fire 20, resist electricity 20, and spell resistance equal to 10 + half your caster level. Your movement speed is reduced by 10 feet. You also have one 2d6 bite attack and two 1d4 root (tentacle) attacks."
+    },
+    {
+      "Key": "e285a59da3fd49769b7900d9e7fb8db6",
+      "SimpleName": "TreesingerWildShapeQuickwoodBuff.Name",
+      "ProcessTemplates": false,
+      "enGB": "Wild Shape (Quickwood)"
+    },
+    {
+      "Key": "c96e0c83f5834c5d806987db5c74b8f7",
+      "SimpleName": "TreesingerWildShapeQuickwoodFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "At 6th level, a treesinger can use wildshape to change into a mandragora and back twice a day. The effect lasts for 1 hour per druid level, or until she changes back. \nChanging form is a standard action and doesn't provoke an attack of opportunity. A druid can use this ability an additional time per day at 8th level and every two levels thereafter, for a total of eight times at 18th level. At 9th level, a treesinger can use wild shape to change into a shambling mound ro a quickwood. At 12th level, a treesinger can use wild shape to change into a giant flytrap or a treant."
+    },
+    {
+      "Key": "2835d82e2471419d88ab9b61433aaf10",
+      "SimpleName": "TreesingerWildShapeShamblingMoundBuff.Name",
+      "ProcessTemplates": false,
+      "enGB": "Wild Shape (Shambling Mound)"
+    },
+    {
+      "Key": "3c9f91ee0b14480dad0823f6ff500ece",
+      "SimpleName": "TreesingerWildShapeShamblingMoundFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "At 6th level, a treesinger can use wildshape to change into a mandragora and back twice a day. The effect lasts for 1 hour per druid level, or until she changes back. \nChanging form is a standard action and doesn't provoke an attack of opportunity. A druid can use this ability an additional time per day at 8th level and every two levels thereafter, for a total of eight times at 18th level. At 9th level, a treesinger can use wild shape to change into a shambling mound ro a quickwood. At 12th level, a treesinger can use wild shape to change into a giant flytrap or a treant."
+    },
+    {
+      "Key": "0ac2fdeaac374a1ab9bd5895b85dccd3",
+      "SimpleName": "TreesingerWildShapeTreantBuff.Name",
+      "ProcessTemplates": false,
+      "enGB": "Wild Shape (Treant)"
+    },
+    {
+      "Key": "cf8d79745f7d4cc7ba2c1bf1ef0b4621",
+      "SimpleName": "TreesingerWildShapeTreantFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "At 6th level, a treesinger can use wildshape to change into a mandragora and back twice a day. The effect lasts for 1 hour per druid level, or until she changes back. \nChanging form is a standard action and doesn't provoke an attack of opportunity. A druid can use this ability an additional time per day at 8th level and every two levels thereafter, for a total of eight times at 18th level. At 9th level, a treesinger can use wild shape to change into a shambling mound ro a quickwood. At 12th level, a treesinger can use wild shape to change into a giant flytrap or a treant."
     },
     {
       "Key": "bd973f152b0648e8bda23307c0a61baf",

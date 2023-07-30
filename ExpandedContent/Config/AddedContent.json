@@ -91,9 +91,9 @@
     "DisableAll": false,
     "Settings": {
       "Living Scripture": {
-        "Enabled": true,
+        "Enabled": false,
         "Homebrew": true,
-        "Description": "A requested inquisitor archetype that focuses on divine spellcasting, buffed from tabletop to be a full caster."
+        "Description": "A requested  homebrew inquisitor archetype that focuses on divine spellcasting, buffed from tabletop to be a full caster."
       },
       "Temple Champion": {
         "Enabled": true,
@@ -194,6 +194,11 @@
         "Enabled": true,
         "Homebrew": false,
         "Description": "A hunter archetype with a combination spell-list and a shared study target feature."
+      },
+      "Treesinger": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "A druid archetype with plant companions and plant based wild shapes."
       }
     },
     "IsExpanded": false
@@ -335,6 +340,16 @@
         "Enabled": true,
         "Homebrew": false,
         "Description": "Adds the heroism subdomain, a subdomain to the glory domain."
+      },
+      "Growth Subdomain": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds the growth subdomain, a subdomain to the plant domain."
+      },
+      "Plant Domain Patch": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Patches the plant domain to use the ability and spells from the tabletop game."
       }
     },
     "IsExpanded": false
@@ -437,17 +452,6 @@
     },
     "IsExpanded": false
   },
-  "AivuPet": {
-    "DisableAll": false,
-    "Settings": {
-      "AivuPet": {
-        "Enabled": false,
-        "Homebrew": true,
-        "Description": "Allows you to select Aivu as a normal animal companion."
-      }
-    },
-    "IsExpanded": false
-  },
   "Miscellaneous": {
     "DisableAll": false,
     "Settings": {
@@ -455,6 +459,17 @@
         "Enabled": true,
         "Homebrew": false,
         "Description": "Adds the Aid Another feature from the tabletop, this toggle will also disable features and feats relating to the Aid Another feature."
+      }
+    },
+    "IsExpanded": false
+  },
+  "RetiredFeatures": {
+    "DisableAll": false,
+    "Settings": {
+      "AivuPet": {
+        "Enabled": false,
+        "Homebrew": true,
+        "Description": "Allows you to select Aivu as a normal animal companion."
       }
     },
     "IsExpanded": false

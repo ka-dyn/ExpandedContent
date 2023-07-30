@@ -232,7 +232,7 @@ namespace ExpandedContent.Config {
                             c.m_Spellbooks = new BlueprintSpellbookReference[] { };
                             c.ForOneSpell = true;
                             c.m_Ability = MeteorSwarmAbility;
-                            c.ForMultipleSpells = true;
+                            c.ForMultipleSpells = false;
                             c.Abilities = new List<BlueprintAbilityReference>();
                             c.MinSpellLevel = false;
                             c.MinSpellLevelLimit = 0;

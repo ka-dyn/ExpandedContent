@@ -40,9 +40,9 @@ namespace ExpandedContent.Tweaks.Spells {
             var DanceOfAThousandCutsIcon = AssetLoader.LoadInternal("Skills", "Icon_DanceOfAThousandCuts.jpg");
             var Icon_ScrollOfDanceOfAThousandCuts = AssetLoader.LoadInternal("Items", "Icon_ScrollOfDanceOfAThousandCuts.png");
 
-
             var SlowBuff = Resources.GetBlueprintReference<BlueprintBuffReference>("0bc608c3f2b548b44b7146b7530613ac");
             var DanceOfAHundredCutsBuff = Resources.GetModBlueprint<BlueprintBuff>("DanceOfAHundredCutsBuff");
+            var DanceOfAHundredCutsAbility = Resources.GetModBlueprint<BlueprintAbility>("DanceOfAHundredCutsAbility").GetComponent<AbilityEffectRunAction>();
             var DanceOfAThousandCutsToken = Helpers.CreateBuff("DanceOfAThousandCutsToken", bp => {
                 bp.SetName("Token");
                 bp.SetDescription("");
@@ -254,6 +254,9 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.SavingThrowType = SavingThrowType.Unknown;
                     c.Actions = Helpers.CreateActionList(
+                        new ContextActionRemoveBuff() {
+                            m_Buff = DanceOfAHundredCutsBuff.ToReference<BlueprintBuffReference>() 
+                        },
                         new Conditional() {
                             ConditionsChecker = new ConditionsChecker() {
                                 Operation = Operation.And,
@@ -330,6 +333,11 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.LocalizedDuration = Helpers.CreateString("DanceOfAThousandCutsAbility.Duration", "1 round/level");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
+
+            DanceOfAHundredCutsAbility.Actions.Actions = DanceOfAHundredCutsAbility.Actions.Actions.AppendToArray(new ContextActionRemoveBuff() {
+                m_Buff = DanceOfAHundredCutsBuff.ToReference<BlueprintBuffReference>()
+            });
+
             var DanceOfAThousandCutsScroll = ItemTools.CreateScroll("ScrollOfDanceOfAThousandCuts", Icon_ScrollOfDanceOfAThousandCuts, DanceOfAThousandCutsAbility, 6, 16);
             VenderTools.AddScrollToLeveledVenders(DanceOfAThousandCutsScroll);
             DanceOfAThousandCutsAbility.AddToSpellList(SpellTools.SpellList.BardSpellList, 6);

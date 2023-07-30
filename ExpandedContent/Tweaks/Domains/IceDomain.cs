@@ -108,7 +108,7 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.SetDescription("At 8th level, you can transmute your body and equipment to ice for a period of time. It takes a standard action to take on " +
                     "the form of ice, and you can end the transmutation with a free action on your turn. When you take on the form of ice, you are immune to " +
                     "cold and have DR 5/—, but you take twice the normal amount of damage from fire. You can take on the form of ice for a number of rounds per " +
-                    "day equal to your cleric level. The rounds need not be consecutive");
+                    "day equal to your cleric level. The rounds need not be consecutive.");
                 bp.m_Icon = IceBodySpell.Icon;
                 bp.AddComponent<ActivatableAbilityResourceLogic>(c => {
                     c.SpendType = ActivatableAbilityResourceLogic.ResourceSpendType.NewRound;
@@ -127,7 +127,7 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.SetDescription("At 8th level, you can transmute your body and equipment to ice for a period of time. It takes a standard action to take on " +
                     "the form of ice, and you can end the transmutation with a free action on your turn. When you take on the form of ice, you are immune to " +
                     "cold and have DR 5/—, but you take twice the normal amount of damage from fire. You can take on the form of ice for a number of rounds per " +
-                    "day equal to your cleric level. The rounds need not be consecutive");
+                    "day equal to your cleric level. The rounds need not be consecutive.");
                 bp.m_Icon = IceBodySpell.Icon;
                 bp.AddComponent<AddAbilityResources>(c => {
                     c.m_Resource = IceDomainGreaterResource.ToReference<BlueprintAbilityResourceReference>();

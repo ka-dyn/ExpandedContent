@@ -2118,9 +2118,9 @@ namespace ExpandedContent.Tweaks.Classes {
                 bp.SetDescription("The stargazer channels the nurturing heart of the Caravan. Whenever the stargazer casts a cure spell, casts breath of life, or uses the healing hex, " +
                     "he adds twice his class level to the hit points restored.");
                 bp.AddComponent<AddAbilityUseTrigger>(c => {
-                    c.ActionsOnAllTargets = false;
+                    c.ActionsOnAllTargets = true;
                     c.AfterCast = true;
-                    c.ActionsOnTarget = true;
+                    c.ActionsOnTarget = false;
                     c.FromSpellbook = false;
                     c.m_Spellbooks = new BlueprintSpellbookReference[] { };
                     c.ForOneSpell = false;
@@ -2136,6 +2136,39 @@ namespace ExpandedContent.Tweaks.Classes {
                     c.ExactSpellLevel = false;
                     c.ExactSpellLevelLimit = 0;
                     c.CheckAbilityType = false;
+                    c.Type = AbilityType.Spell;
+                    c.CheckDescriptor = false;
+                    c.SpellDescriptor = SpellDescriptor.Cure;
+                    c.CheckRange = false;
+                    c.Range = AbilityRange.Touch;
+                    c.Action = Helpers.CreateActionList(
+                        new ContextActionHealTarget() {
+                            Value = new ContextDiceValue() {
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Shared,
+                                    ValueShared = AbilitySharedValue.Heal
+                                }
+                            }
+                        }
+                        );
+                });
+                bp.AddComponent<AddAbilityUseTrigger>(c => {
+                    c.ActionsOnAllTargets = true;
+                    c.AfterCast = true;
+                    c.ActionsOnTarget = false;
+                    c.FromSpellbook = false;
+                    c.m_Spellbooks = new BlueprintSpellbookReference[] { };
+                    c.ForOneSpell = false;
+                    c.m_Ability = new BlueprintAbilityReference();
+                    c.ForMultipleSpells = false;
+                    c.Abilities = new List<BlueprintAbilityReference>() { };
+                    c.MinSpellLevel = false;
+                    c.MinSpellLevelLimit = 0;
+                    c.ExactSpellLevel = false;
+                    c.ExactSpellLevelLimit = 0;
+                    c.CheckAbilityType = true;
                     c.Type = AbilityType.Spell;
                     c.CheckDescriptor = true;
                     c.SpellDescriptor = SpellDescriptor.Cure;

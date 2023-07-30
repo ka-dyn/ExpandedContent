@@ -79,7 +79,7 @@ namespace ExpandedContent.Tweaks.Domains {
                 });
                 bp.AddComponent<ContextRankConfig>(c => {
                     c.m_Type = AbilityRankType.Default;
-                    c.m_BaseValueType = ContextRankBaseValueType.MaxClassLevelWithArchetype;
+                    c.m_BaseValueType = ContextRankBaseValueType.SummClassLevelWithArchetype;
                     c.m_Stat = StatType.Unknown;
                     c.m_Progression = ContextRankProgression.Div2;
                     c.Archetype = DivineHunterArchetype.ToReference<BlueprintArchetypeReference>();
