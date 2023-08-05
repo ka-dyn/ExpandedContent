@@ -121,10 +121,12 @@ New Domains / Subdomains
   - Demon
   - Dragon
   - Ferocity
+  - Fist
   - Fur
   - Growth
   - Heroism
   - Ice
+  - Loyalty
   - Lust
   - Psychopomp
   - Rage
