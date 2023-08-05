@@ -349,6 +349,7 @@
     <Compile Include="Tweaks\Deities\Pulura.cs" />
     <Compile Include="Tweaks\Deities\Ragathiel.cs" />
     <Compile Include="Tweaks\DemonLords\Zura.cs" />
+    <Compile Include="Tweaks\Domains\LoyaltyDomain.cs" />
     <Compile Include="Tweaks\Domains\DefenseDomain.cs" />
     <Compile Include="Tweaks\Domains\HeroismDomain.cs" />
     <Compile Include="Tweaks\Domains\LustDomain.cs" />
@@ -378,6 +379,7 @@
     <Compile Include="Tweaks\Domains\RiversDomain.cs" />
     <Compile Include="Tweaks\Domains\FurDomain.cs" />
     <Compile Include="Tweaks\Domains\GrowthDomain.cs" />
+    <Compile Include="Tweaks\Domains\FistDomain.cs" />
     <Compile Include="Tweaks\Domains\WindDomain.cs" />
     <Compile Include="Tweaks\Domains\IceDomain.cs" />
     <Compile Include="Tweaks\Domains\CavesDomain.cs" />

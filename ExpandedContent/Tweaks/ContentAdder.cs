@@ -166,6 +166,8 @@ namespace ExpandedContent.Tweaks {
                 Domains.HeroismDomain.AddHeroismDomain();
                 Domains.GrowthDomain.AddGrowthDomain();
                 Domains.PlantDomainPatch.PatchPlantDomain();
+                Domains.FistDomain.AddFistDomain();
+                Domains.LoyaltyDomain.AddLoyaltyDomain();
                 Domains.BaseDeityPatch.AddBaseDeityPatch();
 
                 Archetypes.StormDruid.AddStormDruid();

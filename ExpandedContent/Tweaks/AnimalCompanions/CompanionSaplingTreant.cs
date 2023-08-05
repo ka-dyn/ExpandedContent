@@ -221,7 +221,7 @@ namespace ExpandedContent.Tweaks.AnimalCompanions {
                 bp.Wisdom = 12;
                 bp.Intelligence = 2;
                 bp.Charisma = 7;
-                bp.Speed = new Feet(20);
+                bp.Speed = new Feet(30);
                 bp.Skills = new BlueprintUnit.UnitSkills() {
                     Acrobatics = 0,
                     Physique = 0,

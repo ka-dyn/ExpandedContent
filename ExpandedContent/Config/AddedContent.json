@@ -350,6 +350,16 @@
         "Enabled": true,
         "Homebrew": false,
         "Description": "Patches the plant domain to use the ability and spells from the tabletop game."
+      },
+      "Fist Subdomain": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds the fist subdomain, a subdomain to the strength domain."
+      },
+      "Loyalty Subdomain": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds the loyalty subdomain, a subdomain to the law domain."
       }
     },
     "IsExpanded": false

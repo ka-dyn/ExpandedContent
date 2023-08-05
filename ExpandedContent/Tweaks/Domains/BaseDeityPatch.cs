@@ -48,9 +48,10 @@ namespace ExpandedContent.Tweaks.Domains {
             var DemonDomainChaosAllowed = Resources.GetModBlueprint<BlueprintFeature>("DemonDomainChaosAllowed");
             var DemonDomainEvilAllowed = Resources.GetModBlueprint<BlueprintFeature>("DemonDomainEvilAllowed");
             var FerocityDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("FerocityDomainAllowed");
+            var FistDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("FistDomainAllowed");
+            var FurDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("FurDomainAllowed");
             var GrowthDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("GrowthDomainAllowed");
             var HeroismDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("HeroismDomainAllowed");
-            var FurDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("FurDomainAllowed");
             var IceDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("IceDomainAllowed");
             var LustDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("LustDomainAllowed");
             var PsychopompDomainDeathAllowed = Resources.GetModBlueprint<BlueprintFeature>("PsychopompDomainDeathAllowed");
@@ -111,6 +112,9 @@ namespace ExpandedContent.Tweaks.Domains {
                 c.m_Facts = new BlueprintUnitFactReference[1] { FerocityDomainAllowed.ToReference<BlueprintUnitFactReference>() };
             });
             GorumFeature.AddComponent<AddFacts>(c => {
+                c.m_Facts = new BlueprintUnitFactReference[1] { FistDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+            });
+            GorumFeature.AddComponent<AddFacts>(c => {
                 c.m_Facts = new BlueprintUnitFactReference[1] { RageDomainAllowed.ToReference<BlueprintUnitFactReference>() };
             });
             GorumFeature.AddComponent<AddFacts>(c => {
@@ -142,6 +146,9 @@ namespace ExpandedContent.Tweaks.Domains {
             });
             IomedaeFeature.AddComponent<AddFacts>(c => {
                 c.m_Facts = new BlueprintUnitFactReference[1] { RevelationDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+            });
+            IroriFeature.AddComponent<AddFacts>(c => {
+                c.m_Facts = new BlueprintUnitFactReference[1] { FistDomainAllowed.ToReference<BlueprintUnitFactReference>() };
             });
             IroriFeature.AddComponent<AddFacts>(c => {
                 c.m_Facts = new BlueprintUnitFactReference[1] { ResolveDomainAllowed.ToReference<BlueprintUnitFactReference>() };

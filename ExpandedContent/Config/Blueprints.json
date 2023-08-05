@@ -2349,7 +2349,25 @@
     "TreesingerWildShapeShamblingMoundFeature": "99b4be7e-dc02-4153-916f-e48fa06ee38e",
     "TreesingerWildShapeTreantAbility": "d7ea65e0-c12d-4301-ab41-fc02e83721e1",
     "TreesingerWildShapeTreantBuff": "b8570c16-0d1b-4a20-8402-99aeb57c01f6",
-    "TreesingerWildShapeTreantFeature": "b0964ee7-e44c-4d66-8c0b-5c7943d0a59b"
+    "TreesingerWildShapeTreantFeature": "b0964ee7-e44c-4d66-8c0b-5c7943d0a59b",
+
+    "FistDomainAllowed": "b767d23d-ceaf-4b23-82b4-ab9acb329e5c",
+    "FistDomainBaseAbility": "54386076-b084-48e9-937f-1e8979a9e01f",
+    "FistDomainBaseFeature": "52519a01-6543-4f79-9f1f-dee142c3366f",
+    "FistDomainBaseResource": "f36a2aa0-8cbf-426a-bc3c-85141e85e964",
+    "FistDomainProgression": "32061500-61de-492a-af89-d3e012fbbd36",
+    "FistDomainProgressionSecondary": "1995739e-5890-4663-b6af-292adb33dbd8",
+    "FistDomainSpellList": "0e1aa7a6-a7c3-4f30-8f6e-f07be0a49be4",
+    "FistDomainSpellListFeature": "e48476f1-65fa-4418-8333-db0d05f80ef1",
+    "LoyaltyDomainAllowed": "af4a04d7-5fda-4ac0-9845-6acb41b6ce10",
+    "LoyaltyDomainBaseAbility": "adb7bc1c-ac15-42e0-8a81-ebfd417c5ee7",
+    "LoyaltyDomainBaseBuff": "8a6ef26e-f097-4dc5-b94c-8ffbd65ee802",
+    "LoyaltyDomainBaseFeature": "8a3ea039-aa82-4cee-a112-ae185f8e723b",
+    "LoyaltyDomainBaseResource": "37cea71a-ea37-4452-9d9f-55bca66a3141",
+    "LoyaltyDomainProgression": "8aa8a97c-0a44-4656-9cf0-13227966fa04",
+    "LoyaltyDomainProgressionSecondary": "41cd6ec0-bc91-4d48-89c4-fc42113394c4",
+    "LoyaltyDomainSpellList": "73d71dbf-0090-48fd-ac10-a1aab4d0e3e7",
+    "LoyaltyDomainSpellListFeature": "ab5910e7-e365-485d-9ced-a16a2630d065"
 
 
 

@@ -35,11 +35,13 @@ using Kingmaker.Visual.Animation.Kingmaker.Actions;
 using Kingmaker.Blueprints.Items.Ecnchantments;
 using Kingmaker.RuleSystem.Rules.Damage;
 using ExpandedContent.Config;
+using ExpandedContent.Tweaks.Components;
+using Kingmaker.UnitLogic.Abilities.Components.Base;
 
 namespace ExpandedContent.Tweaks.Domains {
-    internal class FerocityDomain {
+    internal class LoyaltyDomain {
 
-        public static void AddFerocityDomain() {
+        public static void AddLoyaltyDomain() {
 
             var StargazerClass = Resources.GetModBlueprint<BlueprintCharacterClass>("StargazerClass");
             var ClericClass = Resources.GetBlueprint<BlueprintCharacterClass>("67819271767a9dd4fbfd4ae700befea0");
@@ -49,10 +51,10 @@ namespace ExpandedContent.Tweaks.Domains {
             var DivineHunterArchetype = Resources.GetBlueprint<BlueprintArchetype>("f996f0a18e5d945459e710ee3a6dd485");
             var PaladinClass = Resources.GetBlueprint<BlueprintCharacterClass>("bfa11238e7ae3544bbeb4d0b92e897ec");
             var TempleChampionArchetype = Resources.GetModBlueprint<BlueprintArchetype>("TempleChampionArchetype");
-            var StrengthDomainGreaterFeature = Resources.GetBlueprint<BlueprintFeature>("3298fd30e221ef74189a06acbf376d29");
-            var LeadBlades = Resources.GetBlueprint<BlueprintAbility>("779179912e6c6fe458fa4cfb90d96e10");
+            var LawDomainGreaterFeature = Resources.GetBlueprint<BlueprintFeature>("3dc5e2b315ff07f438582a2468beb1fb");
+            var RemoveFear = Resources.GetBlueprint<BlueprintAbility>("55a037e514c0ee14a8e3ed14b47061de");
 
-            var FerocityDomainBaseResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("FerocityDomainBaseResource", bp => {
+            var LoyaltyDomainBaseResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("LoyaltyDomainBaseResource", bp => {
                 bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
                     BaseValue = 3,
                     IncreasedByLevel = false,
@@ -61,54 +63,31 @@ namespace ExpandedContent.Tweaks.Domains {
                 };
             });
 
-            var FerocityDomainBaseBuff = Helpers.CreateBuff("FerocityDomainBaseBuff", bp => {
-                bp.SetName("Ferocious Strikes");
-                bp.SetDescription("As a swift action, you can imbue attacks you make this round to be ferocious strikes. If these attacks hit, they deal additional damage equal to 1/2 your cleric " +
-                    "level (minimum +1). You can use this ability a number of times per day equal to 3 + your Wisdom modifier.");
-                bp.m_Icon = LeadBlades.m_Icon;
-                bp.AddComponent<AddContextStatBonus>(c => {
-                    c.Descriptor = ModifierDescriptor.UntypedStackable;
-                    c.Stat = StatType.AdditionalDamage;
-                    c.Value = new ContextValue() {
-                        ValueType = ContextValueType.Rank,
-                        Value = 0,
-                        ValueRank = AbilityRankType.Default,
-                        ValueShared = AbilitySharedValue.Damage,
-                        Property = UnitProperty.None,
-                    };
+            var LoyaltyDomainBaseBuff = Helpers.CreateBuff("LoyaltyDomainBaseBuff", bp => {
+                bp.SetName("Touch of Loyalty");
+                bp.SetDescription("You have been granted a +4 sacred bonus on saving throws to resist charm, compulsion, and fear effects.");
+                bp.m_Icon = RemoveFear.m_Icon;
+                bp.AddComponent<SavingThrowBonusAgainstDescriptor>(c => {
+                    c.Value = 4;
+                    c.ModifierDescriptor = ModifierDescriptor.Sacred;
+                    c.SpellDescriptor = SpellDescriptor.Fear | SpellDescriptor.Charm | SpellDescriptor.Compulsion;
                 });
-                bp.AddComponent<ContextRankConfig>(c => {
-                    c.m_Type = AbilityRankType.Default;
-                    c.m_BaseValueType = ContextRankBaseValueType.SummClassLevelWithArchetype;
-                    c.m_Stat = StatType.Unknown;
-                    c.m_Progression = ContextRankProgression.Div2;
-                    c.Archetype = DivineHunterArchetype.ToReference<BlueprintArchetypeReference>();
-                    c.m_AdditionalArchetypes = new BlueprintArchetypeReference[] { TempleChampionArchetype.ToReference<BlueprintArchetypeReference>() };
-                    c.m_Class = new BlueprintCharacterClassReference[] {
-                        ClericClass.ToReference<BlueprintCharacterClassReference>(),
-                        InquisitorClass.ToReference<BlueprintCharacterClassReference>(),
-                        HunterClass.ToReference<BlueprintCharacterClassReference>(),
-                        PaladinClass.ToReference<BlueprintCharacterClassReference>(),
-                        StargazerClass.ToReference<BlueprintCharacterClassReference>(),
-                    };
-                    c.m_UseMin = true;
-                    c.m_Min = 1;
-                });
+                bp.IsClassFeature = true;
             });
 
-            var FerocityDomainBaseAbility = Helpers.CreateBlueprint<BlueprintAbility>("FerocityDomainBaseAbility", bp => {
-                bp.SetName("Ferocious Strikes");
-                bp.SetDescription("As a swift action, you can imbue attacks you make this round to be ferocious strikes. If these attacks hit, they deal additional damage equal to 1/2 your cleric " +
-                    "level (minimum +1). You can use this ability a number of times per day equal to 3 + your Wisdom modifier.");
-                bp.m_Icon = LeadBlades.m_Icon;
+            var LoyaltyDomainBaseAbility = Helpers.CreateBlueprint<BlueprintAbility>("LoyaltyDomainBaseAbility", bp => {
+                bp.SetName("Touch of Loyalty");
+                bp.SetDescription("As a standard action, you can touch a willing creature, granting it a +4 sacred bonus on saving throws to resist charm, compulsion, and fear " +
+                    "effects for 1 hour. You can use this ability a number of times per day equal to 3 + your Wisdom modifier.");
+                bp.m_Icon = RemoveFear.m_Icon;
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.SavingThrowType = SavingThrowType.Unknown;
                     c.Actions = Helpers.CreateActionList(
                         new ContextActionApplyBuff() {
-                            m_Buff = FerocityDomainBaseBuff.ToReference<BlueprintBuffReference>(),
+                            m_Buff = LoyaltyDomainBaseBuff.ToReference<BlueprintBuffReference>(),
                             UseDurationSeconds = false,
                             DurationValue = new ContextDurationValue() {
-                                Rate = DurationRate.Rounds,
+                                Rate = DurationRate.Hours,
                                 DiceType = DiceType.Zero,
                                 DiceCountValue = 0,
                                 BonusValue = 1,
@@ -117,32 +96,47 @@ namespace ExpandedContent.Tweaks.Domains {
                             DurationSeconds = 0
                         });
                 });
+                bp.AddComponent<AbilitySpawnFx>(c => {
+                    c.PrefabLink = new Kingmaker.ResourceLinks.PrefabLink() { AssetId = "c4d861e816edd6f4eab73c55a18fdadd" };
+                    c.Time = AbilitySpawnFxTime.OnApplyEffect;
+                    c.Anchor = AbilitySpawnFxAnchor.SelectedTarget;
+                    c.WeaponTarget = AbilitySpawnFxWeaponTarget.None;
+                    c.DestroyOnCast = false;
+                    c.Delay = 0;
+                    c.PositionAnchor = AbilitySpawnFxAnchor.None;
+                    c.OrientationAnchor = AbilitySpawnFxAnchor.None;
+                    c.OrientationMode = AbilitySpawnFxOrientation.Copy;
+                });
                 bp.AddComponent<AbilityResourceLogic>(c => {
-                    c.m_RequiredResource = FerocityDomainBaseResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_RequiredResource = LoyaltyDomainBaseResource.ToReference<BlueprintAbilityResourceReference>();
                     c.m_IsSpendResource = true;
                 });
                 bp.m_AllowNonContextActions = false;
                 bp.Type = AbilityType.Supernatural;
-                bp.Range = AbilityRange.Personal;
-                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.Range = AbilityRange.Touch;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = true;
+                bp.CanTargetSelf = true;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Touch;
                 bp.HasFastAnimation = false;
-                bp.ActionType = UnitCommand.CommandType.Swift;
+                bp.ActionType = UnitCommand.CommandType.Standard;
                 bp.AvailableMetamagic = 0;
-                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedDuration = Helpers.CreateString("LoyaltyDomainBaseAbility.Duration", "1 hour");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
 
             //Spelllist
-            var EnlargePersonSpell = Resources.GetBlueprint<BlueprintAbility>("c60969e7f264e6d4b84a1499fdcf9039");
-            var BullsStrengthSpell = Resources.GetBlueprint<BlueprintAbility>("4c3d08935262b6544ae97599b3a9556d");
-            var RageSpell = Resources.GetBlueprint<BlueprintAbility>("97b991256e43bb140b263c326f690ce2");
-            var EnlargePersonMassSpell = Resources.GetBlueprint<BlueprintAbility>("66dc49bf154863148bd217287079245e");
-            var RighteousMightSpell = Resources.GetBlueprint<BlueprintAbility>("90810e5cf53bf854293cbd5ea1066252");
-            var BullsStrengthMassSpell = Resources.GetBlueprint<BlueprintAbility>("6a234c6dcde7ae94e94e9c36fd1163a7");
-            var LegendaryProportionsSpell = Resources.GetBlueprint<BlueprintAbility>("da1b292d91ba37948893cdbe9ea89e28");
-            var FrightfulAspectSpell = Resources.GetBlueprint<BlueprintAbility>("e788b02f8d21014488067bdd3ba7b325");
-            var TransformationSpell = Resources.GetBlueprint<BlueprintAbility>("27203d62eb3d4184c9aced94f22e1806");
-            var FerocityDomainSpellList = Helpers.CreateBlueprint<BlueprintSpellList>("FerocityDomainSpellList", bp => {
+            var RemoveFearSpell = Resources.GetBlueprint<BlueprintAbility>("55a037e514c0ee14a8e3ed14b47061de");
+            var ProtectionFromChaosCommunalSpell = Resources.GetBlueprint<BlueprintAbility>("0ec75ec95d9e39d47a23610123ba1bad");
+            var PrayerSpell = Resources.GetBlueprint<BlueprintAbility>("faabd2cc67efa4646ac58c7bb3e40fcc");
+            var ProtectionFromEnergyCommunalSpell = Resources.GetBlueprint<BlueprintAbility>("76a629d019275b94184a1a8733cac45e");
+            var CommandGreaterSpell = Resources.GetBlueprint<BlueprintAbility>("cb15cc8d7a5480648855a23b3ba3f93d");
+            var BladeBarrierSpell = Resources.GetBlueprint<BlueprintAbility>("36c8971e91f1745418cc3ffdfac17b74");
+            var DictumSpell = Resources.GetBlueprint<BlueprintAbility>("302ab5e241931a94881d323a7844ae8f");
+            var ShieldOfLawSpell = Resources.GetBlueprint<BlueprintAbility>("73e7728808865094b8892613ddfaf7f5");
+            var DominateMonsterSpell = Resources.GetBlueprint<BlueprintAbility>("3c17035ec4717674cae2e841a190e757");
+            var LoyaltyDomainSpellList = Helpers.CreateBlueprint<BlueprintSpellList>("LoyaltyDomainSpellList", bp => {
                 bp.SpellsByLevel = new SpellLevelList[10] {
                     new SpellLevelList(0) {
                         SpellLevel = 0,
@@ -151,99 +145,100 @@ namespace ExpandedContent.Tweaks.Domains {
                     new SpellLevelList(1) {
                         SpellLevel = 1,
                         m_Spells = new List<BlueprintAbilityReference>() {
-                            EnlargePersonSpell.ToReference<BlueprintAbilityReference>()
+                            RemoveFearSpell.ToReference<BlueprintAbilityReference>()
                         }
                     },
                     new SpellLevelList(2) {
                         SpellLevel = 2,
                         m_Spells = new List<BlueprintAbilityReference>() {
-                            BullsStrengthSpell.ToReference<BlueprintAbilityReference>()
+                            ProtectionFromChaosCommunalSpell.ToReference<BlueprintAbilityReference>()
                         }
                     },
                     new SpellLevelList(3) {
                         SpellLevel = 3,
                         m_Spells = new List<BlueprintAbilityReference>() {
-                            RageSpell.ToReference<BlueprintAbilityReference>()
+                            PrayerSpell.ToReference<BlueprintAbilityReference>()
                         }
                     },
                     new SpellLevelList(4) {
                         SpellLevel = 4,
                         m_Spells = new List<BlueprintAbilityReference>() {
-                            EnlargePersonMassSpell.ToReference<BlueprintAbilityReference>()
+                            ProtectionFromEnergyCommunalSpell.ToReference<BlueprintAbilityReference>()
                         }
                     },
                     new SpellLevelList(5) {
                         SpellLevel = 5,
                         m_Spells = new List<BlueprintAbilityReference>() {
-                            RighteousMightSpell.ToReference<BlueprintAbilityReference>()
+                            CommandGreaterSpell.ToReference<BlueprintAbilityReference>()
                         }
                     },
                     new SpellLevelList(6) {
                         SpellLevel = 6,
                         m_Spells = new List<BlueprintAbilityReference>() {
-                            BullsStrengthMassSpell.ToReference<BlueprintAbilityReference>()
+                            BladeBarrierSpell.ToReference<BlueprintAbilityReference>()
                         }
                     },
                     new SpellLevelList(7) {
                         SpellLevel = 7,
                         m_Spells = new List<BlueprintAbilityReference>() {
-                            LegendaryProportionsSpell.ToReference<BlueprintAbilityReference>()
+                            DictumSpell.ToReference<BlueprintAbilityReference>()
                         }
                     },
                     new SpellLevelList(8) {
                         SpellLevel = 8,
                         m_Spells = new List<BlueprintAbilityReference>() {
-                            FrightfulAspectSpell.ToReference<BlueprintAbilityReference>()
+                            ShieldOfLawSpell.ToReference<BlueprintAbilityReference>()
                         }
                     },
                     new SpellLevelList(9) {
                         SpellLevel = 9,
                         m_Spells = new List<BlueprintAbilityReference>() {
-                            TransformationSpell.ToReference<BlueprintAbilityReference>()
+                            DominateMonsterSpell.ToReference<BlueprintAbilityReference>()
                         }
                     },
                 };
             });     
-            var FerocityDomainSpellListFeature = Helpers.CreateBlueprint<BlueprintFeature>("FerocityDomainSpellListFeature", bp => {
+            var LoyaltyDomainSpellListFeature = Helpers.CreateBlueprint<BlueprintFeature>("LoyaltyDomainSpellListFeature", bp => {
                 bp.AddComponent<AddSpecialSpellList>(c => {
                     c.m_CharacterClass = ClericClass.ToReference<BlueprintCharacterClassReference>();
-                    c.m_SpellList = FerocityDomainSpellList.ToReference<BlueprintSpellListReference>();
+                    c.m_SpellList = LoyaltyDomainSpellList.ToReference<BlueprintSpellListReference>();
                 });
                 bp.m_AllowNonContextActions = false;
                 bp.HideInUI = true;
                 bp.IsClassFeature = true;
             });            
-            var FerocityDomainBaseFeature = Helpers.CreateBlueprint<BlueprintFeature>("FerocityDomainBaseFeature", bp => {
+            var LoyaltyDomainBaseFeature = Helpers.CreateBlueprint<BlueprintFeature>("LoyaltyDomainBaseFeature", bp => {
                 bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[] { FerocityDomainBaseAbility.ToReference<BlueprintUnitFactReference>() };
+                    c.m_Facts = new BlueprintUnitFactReference[] { LoyaltyDomainBaseAbility.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<AddAbilityResources>(c => { 
-                    c.m_Resource = FerocityDomainBaseResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_Resource = LoyaltyDomainBaseResource.ToReference<BlueprintAbilityResourceReference>();
                     c.RestoreAmount = true;
                 });
                 bp.AddComponent<ReplaceAbilitiesStat>(c => {
-                    c.m_Ability = new BlueprintAbilityReference[] { FerocityDomainBaseAbility.ToReference<BlueprintAbilityReference>() };
+                    c.m_Ability = new BlueprintAbilityReference[] { LoyaltyDomainBaseAbility.ToReference<BlueprintAbilityReference>() };
                     c.Stat = StatType.Wisdom;
                 });
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>();
                     c.Level = 1;
-                    c.m_Feature = FerocityDomainSpellListFeature.ToReference<BlueprintFeatureReference>();
+                    c.m_Feature = LoyaltyDomainSpellListFeature.ToReference<BlueprintFeatureReference>();
                 });
                 bp.m_AllowNonContextActions = false;
-                bp.SetName("Ferocity Subdomain");
-                bp.SetDescription("\nThe will of your deitiy must be delivered with conviction and ferocity — your faith gives you incredible might and fury.\nFerocious Strikes: " +
-                    "As a swift action, you can imbue attacks you make this round to be ferocious strikes. If these attacks hit, they deal additional damage equal to 1/2 your cleric " +
-                    "level (minimum +1). You can use this ability a number of times per day equal to 3 + your Wisdom modifier.\nMight of the Gods: At 8th level, you add 1/2 of " +
-                    "your level in the class that gave you access to this domain as an enhancement bonus to your Athletics {g|Encyclopedia:Check}checks{/g}.");
+                bp.SetName("Loyalty Subdomain");
+                bp.SetDescription("\nYou value loyalty above other virtues, both between allies and towards ones holy patron. \nTouch of Loyalty: As a standard action, you can " +
+                    "touch a willing creature, granting it a +4 sacred bonus on saving throws to resist charm, compulsion, and fear effects for 1 hour. You can use this ability " +
+                    "a number of times per day equal to 3 + your Wisdom modifier.\nStaff of Order: At 8th level, you can give a weapon you touch the axiomatic special weapon " +
+                    "quality for a number of rounds equal to 1/2 your level in the class that gave you access to this domain. You can use this ability once per day at 8th level, " +
+                    "and an additional time per day for every four levels beyond 8th.");
                 bp.IsClassFeature = true;
             });
             //Deity plug
-            var FerocityDomainAllowed = Helpers.CreateBlueprint<BlueprintFeature>("FerocityDomainAllowed", bp => {
+            var LoyaltyDomainAllowed = Helpers.CreateBlueprint<BlueprintFeature>("LoyaltyDomainAllowed", bp => {
                 // This may buff Ecclest when it shouldn't, needs test
                 //bp.AddComponent<AddSpecialSpellListForArchetype>(c => {
                 //    c.m_CharacterClass = ClericClass.ToReference<BlueprintCharacterClassReference>();
-                //    c.m_SpellList = FerocityDomainSpellList.ToReference<BlueprintSpellListReference>();
+                //    c.m_SpellList = LoyaltyDomainSpellList.ToReference<BlueprintSpellListReference>();
                 //    c.m_Archetype = EcclesitheurgeArchetype.ToReference<BlueprintArchetypeReference>();
                 //});
                 bp.m_AllowNonContextActions = false;
@@ -251,30 +246,30 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.IsClassFeature = true;                
             });            
             // Main Blueprint
-            var FerocityDomainProgression = Helpers.CreateBlueprint<BlueprintProgression>("FerocityDomainProgression", bp => {
+            var LoyaltyDomainProgression = Helpers.CreateBlueprint<BlueprintProgression>("LoyaltyDomainProgression", bp => {
                 bp.AddComponent<PrerequisiteFeature>(c => {
                     c.Group = Prerequisite.GroupType.All;
                     c.HideInUI = true;
-                    c.m_Feature = FerocityDomainAllowed.ToReference<BlueprintFeatureReference>();
+                    c.m_Feature = LoyaltyDomainAllowed.ToReference<BlueprintFeatureReference>();
                 });
                 bp.AddComponent<LearnSpellList>(c => {
                     c.m_CharacterClass = ClericClass.ToReference<BlueprintCharacterClassReference>();
-                    c.m_SpellList = FerocityDomainSpellList.ToReference<BlueprintSpellListReference>();
+                    c.m_SpellList = LoyaltyDomainSpellList.ToReference<BlueprintSpellListReference>();
                     c.m_Archetype = EcclesitheurgeArchetype.ToReference<BlueprintArchetypeReference>();
                 });
                 bp.AddComponent<LearnSpellList>(c => {
                     c.m_CharacterClass = HunterClass.ToReference<BlueprintCharacterClassReference>();
-                    c.m_SpellList = FerocityDomainSpellList.ToReference<BlueprintSpellListReference>();
+                    c.m_SpellList = LoyaltyDomainSpellList.ToReference<BlueprintSpellListReference>();
                     c.m_Archetype = DivineHunterArchetype.ToReference<BlueprintArchetypeReference>();
                 });
                 bp.m_AllowNonContextActions = false;
-                bp.SetName("Ferocity Subdomain");
-                bp.SetDescription("\nThe will of your deitiy must be delivered with conviction and ferocity — your faith gives you incredible might and fury.\nFerocious Strikes: " +
-                    "As a swift action, you can imbue attacks you make this round to be ferocious strikes. If these attacks hit, they deal additional damage equal to 1/2 your cleric " +
-                    "level (minimum +1). You can use this ability a number of times per day equal to 3 + your Wisdom modifier.\nMight of the Gods: At 8th level, you add 1/2 of " +
-                    "your level in the class that gave you access to this domain as an enhancement bonus to your Athletics {g|Encyclopedia:Check}checks{/g}.\nDomain " +
-                    "{g|Encyclopedia:Spell}Spells{/g}: enlarge person, bull's strength, rage, mass enlarge person, righteous might, mass bull's strength, legendary proportions, " +
-                    "frightful aspect, transformation.");
+                bp.SetName("Loyalty Subdomain");
+                bp.SetDescription("\nYou value loyalty above other virtues, both between allies and towards ones holy patron. \nTouch of Loyalty: As a standard action, you can " +
+                    "touch a willing creature, granting it a +4 sacred bonus on saving throws to resist charm, compulsion, and fear effects for 1 hour. You can use this ability " +
+                    "a number of times per day equal to 3 + your Wisdom modifier.\nStaff of Order: At 8th level, you can give a weapon you touch the axiomatic special weapon " +
+                    "quality for a number of rounds equal to 1/2 your level in the class that gave you access to this domain. You can use this ability once per day at 8th level, " +
+                    "and an additional time per day for every four levels beyond 8th.\nDomain {g|Encyclopedia:Spell}Spells{/g}: remove fear, communal protection from chaos, " +
+                    "prayer, communal protection from energy, greater command, blade barrier, dictum, shield of law, dominate monster.");
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Domain };
                 bp.IsClassFeature = true;
                 bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
@@ -310,34 +305,34 @@ namespace ExpandedContent.Tweaks.Domains {
                     }
                 };                
                 bp.LevelEntries = new LevelEntry[] {
-                    Helpers.LevelEntry(1, FerocityDomainBaseFeature),
-                    Helpers.LevelEntry(8, StrengthDomainGreaterFeature)
+                    Helpers.LevelEntry(1, LoyaltyDomainBaseFeature),
+                    Helpers.LevelEntry(8, LawDomainGreaterFeature)
                 };
                 bp.UIGroups = new UIGroup[] {
-                    Helpers.CreateUIGroup(FerocityDomainBaseFeature, StrengthDomainGreaterFeature)
+                    Helpers.CreateUIGroup(LoyaltyDomainBaseFeature, LawDomainGreaterFeature)
                 };
                 bp.GiveFeaturesForPreviousLevels = true;
             });
             // Secondary Domain Progression
-            var FerocityDomainProgressionSecondary = Helpers.CreateBlueprint<BlueprintProgression>("FerocityDomainProgressionSecondary", bp => {
+            var LoyaltyDomainProgressionSecondary = Helpers.CreateBlueprint<BlueprintProgression>("LoyaltyDomainProgressionSecondary", bp => {
                 bp.AddComponent<PrerequisiteFeature>(c => {
                     c.Group = Prerequisite.GroupType.All;
                     c.HideInUI = true;
-                    c.m_Feature = FerocityDomainAllowed.ToReference<BlueprintFeatureReference>();
+                    c.m_Feature = LoyaltyDomainAllowed.ToReference<BlueprintFeatureReference>();
                 });
                 bp.AddComponent<PrerequisiteNoFeature>(c => {
                     c.Group = Prerequisite.GroupType.All;
                     c.HideInUI = true;
-                    c.m_Feature = FerocityDomainProgression.ToReference<BlueprintFeatureReference>();
+                    c.m_Feature = LoyaltyDomainProgression.ToReference<BlueprintFeatureReference>();
                 });                
                 bp.m_AllowNonContextActions = false;
-                bp.SetName("Ferocity Subdomain");
-                bp.SetDescription("\nThe will of your deitiy must be delivered with conviction and ferocity — your faith gives you incredible might and fury.\nFerocious Strikes: " +
-                    "As a swift action, you can imbue attacks you make this round to be ferocious strikes. If these attacks hit, they deal additional damage equal to 1/2 your cleric " +
-                    "level (minimum +1). You can use this ability a number of times per day equal to 3 + your Wisdom modifier.\nMight of the Gods: At 8th level, you add 1/2 of " +
-                    "your level in the class that gave you access to this domain as an enhancement bonus to your Athletics {g|Encyclopedia:Check}checks{/g}.\nDomain " +
-                    "{g|Encyclopedia:Spell}Spells{/g}: enlarge person, bull's strength, rage, mass enlarge person, righteous might, mass bull's strength, legendary proportions, " +
-                    "frightful aspect, transformation.");
+                bp.SetName("Loyalty Subdomain");
+                bp.SetDescription("\nYou value loyalty above other virtues, both between allies and towards ones holy patron. \nTouch of Loyalty: As a standard action, you can " +
+                    "touch a willing creature, granting it a +4 sacred bonus on saving throws to resist charm, compulsion, and fear effects for 1 hour. You can use this ability " +
+                    "a number of times per day equal to 3 + your Wisdom modifier.\nStaff of Order: At 8th level, you can give a weapon you touch the axiomatic special weapon " +
+                    "quality for a number of rounds equal to 1/2 your level in the class that gave you access to this domain. You can use this ability once per day at 8th level, " +
+                    "and an additional time per day for every four levels beyond 8th.\nDomain {g|Encyclopedia:Spell}Spells{/g}: remove fear, communal protection from chaos, " +
+                    "prayer, communal protection from energy, greater command, blade barrier, dictum, shield of law, dominate monster.");
                 bp.Groups = new FeatureGroup[] { FeatureGroup.ClericSecondaryDomain };
                 bp.IsClassFeature = true;
                 bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
@@ -361,35 +356,37 @@ namespace ExpandedContent.Tweaks.Domains {
                     }
                 };
                 bp.LevelEntries = new LevelEntry[] {
-                    Helpers.LevelEntry(1, FerocityDomainBaseFeature),
-                    Helpers.LevelEntry(8, StrengthDomainGreaterFeature)
+                    Helpers.LevelEntry(1, LoyaltyDomainBaseFeature),
+                    Helpers.LevelEntry(8, LawDomainGreaterFeature)
                 };
                 bp.UIGroups = new UIGroup[] {
-                    Helpers.CreateUIGroup(FerocityDomainBaseFeature, StrengthDomainGreaterFeature)
+                    Helpers.CreateUIGroup(LoyaltyDomainBaseFeature, LawDomainGreaterFeature)
                 };
                 bp.GiveFeaturesForPreviousLevels = true;
             });            
-            FerocityDomainAllowed.IsPrerequisiteFor = new List<BlueprintFeatureReference>() { 
-                FerocityDomainProgression.ToReference<BlueprintFeatureReference>(),
-                FerocityDomainProgressionSecondary.ToReference<BlueprintFeatureReference>()
+            LoyaltyDomainAllowed.IsPrerequisiteFor = new List<BlueprintFeatureReference>() { 
+                LoyaltyDomainProgression.ToReference<BlueprintFeatureReference>(),
+                LoyaltyDomainProgressionSecondary.ToReference<BlueprintFeatureReference>()
             };
-            FerocityDomainProgression.AddComponent<PrerequisiteNoFeature>(c => {
+            LoyaltyDomainProgression.AddComponent<PrerequisiteNoFeature>(c => {
                     c.Group = Prerequisite.GroupType.All;
                     c.HideInUI = true;
-                    c.m_Feature = FerocityDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+                    c.m_Feature = LoyaltyDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
             }); 
-            FerocityDomainProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
+            LoyaltyDomainProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
                     c.Group = Prerequisite.GroupType.All;
                     c.HideInUI = true;
-                    c.m_Feature = FerocityDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+                    c.m_Feature = LoyaltyDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
             });
-            if (ModSettings.AddedContent.Domains.IsDisabled("Ferocity Subdomain")) { return; }
-            DomainTools.RegisterDomain(FerocityDomainProgression);
-            DomainTools.RegisterSecondaryDomain(FerocityDomainProgressionSecondary);
-            DomainTools.RegisterDivineHunterDomain(FerocityDomainProgression);
-            DomainTools.RegisterTempleDomain(FerocityDomainProgression);
-            DomainTools.RegisterSecondaryTempleDomain(FerocityDomainProgressionSecondary);
-            DomainTools.RegisterImpossibleSubdomain(FerocityDomainProgression, FerocityDomainProgressionSecondary);
+            var DomainMastery = Resources.GetBlueprint<BlueprintFeature>("2de64f6a1f2baee4f9b7e52e3f046ec5").GetComponent<AutoMetamagic>();
+            DomainMastery.Abilities.Add(LoyaltyDomainBaseAbility.ToReference<BlueprintAbilityReference>());
+            if (ModSettings.AddedContent.Domains.IsDisabled("Loyalty Subdomain")) { return; }
+            DomainTools.RegisterDomain(LoyaltyDomainProgression);
+            DomainTools.RegisterSecondaryDomain(LoyaltyDomainProgressionSecondary);
+            DomainTools.RegisterDivineHunterDomain(LoyaltyDomainProgression);
+            DomainTools.RegisterTempleDomain(LoyaltyDomainProgression);
+            DomainTools.RegisterSecondaryTempleDomain(LoyaltyDomainProgressionSecondary);
+            DomainTools.RegisterImpossibleSubdomain(LoyaltyDomainProgression, LoyaltyDomainProgressionSecondary);
         }
     }
 }

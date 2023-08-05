@@ -131,9 +131,11 @@ namespace ExpandedContent.Tweaks.Domains {
                     c.m_RequiredResource = PlantDomainNewBaseResource.ToReference<BlueprintAbilityResourceReference>();
                 });
                 bp.m_Buff = PlantDomainNewBaseBuff.ToReference<BlueprintBuffReference>();
+                bp.IsOnByDefault = false;
+                bp.DeactivateIfCombatEnded = true;
                 bp.DeactivateIfOwnerDisabled = true;
-                bp.ActivationType = AbilityActivationType.WithUnitCommand;
-                bp.m_ActivateWithUnitCommand = UnitCommand.CommandType.Standard;
+                bp.ActivationType = AbilityActivationType.Immediately;
+                bp.m_ActivateWithUnitCommand = UnitCommand.CommandType.Free;
                 bp.DeactivateIfCombatEnded = false;
             });
             var PlantDomainBaseFeature = Resources.GetBlueprint<BlueprintFeature>("e433267d36089d049b34900fde38032b");
