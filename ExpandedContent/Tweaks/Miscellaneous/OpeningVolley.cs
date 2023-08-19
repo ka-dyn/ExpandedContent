@@ -1,8 +1,5 @@
-﻿using BlueprintCore.Abilities.Restrictions.New;
-using ExpandedContent.Config;
+﻿using ExpandedContent.Config;
 using ExpandedContent.Extensions;
-using ExpandedContent.Tweaks.Deities;
-using ExpandedContent.Tweaks.DemonLords;
 using ExpandedContent.Utilities;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
@@ -13,7 +10,6 @@ using Kingmaker.Designers.Mechanics.Recommendations;
 using Kingmaker.ElementsSystem;
 using Kingmaker.Enums;
 using Kingmaker.RuleSystem;
-using Kingmaker.RuleSystem.Rules;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.Buffs.Components;
 using Kingmaker.UnitLogic.Mechanics;
@@ -21,12 +17,6 @@ using Kingmaker.UnitLogic.Mechanics.Actions;
 using Kingmaker.UnitLogic.Mechanics.Components;
 using Kingmaker.UnitLogic.Mechanics.Conditions;
 using Kingmaker.Utility;
-using Kingmaker.Visual.Decals;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExpandedContent.Tweaks.Miscellaneous {
     internal class OpeningVolley {

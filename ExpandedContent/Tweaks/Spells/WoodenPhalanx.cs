@@ -4,11 +4,8 @@ using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Facts;
-using Kingmaker.Blueprints.Items.Ecnchantments;
 using Kingmaker.Blueprints.Items.Weapons;
 using Kingmaker.Craft;
-using Kingmaker.Designers.EventConditionActionSystem.Actions;
-using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.Designers.TempMapCode.Ambush;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
@@ -19,7 +16,6 @@ using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.UnitLogic.Abilities.Components;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.Commands.Base;
-using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Mechanics.Actions;
 using Kingmaker.UnitLogic.Mechanics.Components;
@@ -27,11 +23,6 @@ using Kingmaker.Utility;
 using Kingmaker.Visual.Animation.Kingmaker.Actions;
 using Kingmaker.Visual.HitSystem;
 using Kingmaker.Visual.Sound;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExpandedContent.Tweaks.Spells {
     internal class WoodenPhalanx {

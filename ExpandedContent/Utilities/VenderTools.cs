@@ -1,5 +1,4 @@
-﻿using ExpandedContent.Config;
-using ExpandedContent.Extensions;
+﻿using ExpandedContent.Extensions;
 using JetBrains.Annotations;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Items;

@@ -199,6 +199,11 @@
         "Enabled": true,
         "Homebrew": false,
         "Description": "A druid archetype with plant companions and plant based wild shapes."
+      },
+      "Divine Scourge": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "A cleric archetype that gives up wide domain selection for cursing and debuffing."
       }
     },
     "IsExpanded": false

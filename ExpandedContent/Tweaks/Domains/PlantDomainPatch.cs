@@ -6,23 +6,15 @@ using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.EntitySystem.Stats;
-using Kingmaker.Enums.Damage;
 using Kingmaker.Enums;
-using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.UnitLogic.ActivatableAbilities;
 using Kingmaker.UnitLogic.Commands.Base;
 using Kingmaker.UnitLogic.FactLogic;
-using Kingmaker.UnitLogic.Mechanics.Properties;
 using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.Utility;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ExpandedContent.Tweaks.Components;
-using ExpandedContent.Tweaks.Classes;
 using Kingmaker.UnitLogic.Mechanics.Components;
 
 namespace ExpandedContent.Tweaks.Domains {

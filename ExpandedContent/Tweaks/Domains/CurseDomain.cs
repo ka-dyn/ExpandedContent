@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using ExpandedContent.Utilities;
 using ExpandedContent.Extensions;
 using Kingmaker.Blueprints.Classes;
@@ -13,27 +9,13 @@ using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.EntitySystem.Stats;
-using Kingmaker.UnitLogic.ActivatableAbilities;
-using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.Commands.Base;
-using Kingmaker.UnitLogic.Buffs.Components;
-using Kingmaker.UnitLogic.Abilities.Components.AreaEffects;
-using Kingmaker.ElementsSystem;
-using Kingmaker.Designers.EventConditionActionSystem.Actions;
-using Kingmaker.UnitLogic.Mechanics.Conditions;
 using Kingmaker.UnitLogic.Mechanics.Actions;
-using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.RuleSystem;
-using Kingmaker.Utility;
 using Kingmaker.UnitLogic.Abilities.Components;
 using Kingmaker.Enums;
-using Kingmaker.UnitLogic.Abilities;
-using Kingmaker.UnitLogic.Mechanics.Properties;
-using Kingmaker.UnitLogic.Mechanics.Components;
 using Kingmaker.Visual.Animation.Kingmaker.Actions;
-using Kingmaker.Blueprints.Items.Ecnchantments;
-using Kingmaker.RuleSystem.Rules.Damage;
 using ExpandedContent.Config;
 using ExpandedContent.Tweaks.Components;
 using Kingmaker.UnitLogic.Abilities.Components.Base;
@@ -230,8 +212,10 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.SetName("Curse Subdomain");
                 bp.SetDescription("\nYou are infused with fate, spreading ill omens to foes while granting fortune to yourself.\nMalign Eye: " +
                     "As a standard action, you can afflict one target within 30 feet with your malign eye, causing it to take a –2 penalty on all saving throws against your spells. " +
-                    "The effect lasts for 1 minute. You can use this ability for a number of times per day equal to 3 + your Wisdom modifier.\nMight of the Gods: At 8th level, you add 1/2 of " +
-                    "your level in the class that gave you access to this domain as an enhancement bonus to your Athletics {g|Encyclopedia:Check}checks{/g}.");
+                    "The effect lasts for 1 minute. You can use this ability for a number of times per day equal to 3 + your Wisdom modifier.\nDivine Fortune: At 6th level, as a standard " +
+                    "{g|Encyclopedia:CA_Types}action{/g}, you can bless yourself with divine luck. For the next half your level in the class that gave you access to this domain rounds you " +
+                    "roll two times on every d20 roll and take the best result. You can use this ability once per day at 6th level, and one additional time per day for every 6 levels in the " +
+                    "class that gave you access to this domain beyond 6th.");
                 bp.IsClassFeature = true;
             });
             //Deity plug
@@ -267,10 +251,11 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.SetName("Curse Subdomain");
                 bp.SetDescription("\nYou are infused with fate, spreading ill omens to foes while granting fortune to yourself.\nMalign Eye: " +
                     "As a standard action, you can afflict one target within 30 feet with your malign eye, causing it to take a –2 penalty on all saving throws against your spells. " +
-                    "The effect lasts for 1 minute. You can use this ability for a number of times per day equal to 3 + your Wisdom modifier.\nMight of the Gods: At 8th level, you add 1/2 of " +
-                    "your level in the class that gave you access to this domain as an enhancement bonus to your Athletics {g|Encyclopedia:Check}checks{/g}.\nDomain " +
-                    "{g|Encyclopedia:Spell}Spells{/g}: bane, aid, bestow curse, communal protection from energy, break enchantment, eyebite, restoration greater, " +
-                    "euphoric tranquility, mass heal.");
+                    "The effect lasts for 1 minute. You can use this ability for a number of times per day equal to 3 + your Wisdom modifier.\nDivine Fortune: At 6th level, as a standard " +
+                    "{g|Encyclopedia:CA_Types}action{/g}, you can bless yourself with divine luck. For the next half your level in the class that gave you access to this domain rounds you " +
+                    "roll two times on every d20 roll and take the best result. You can use this ability once per day at 6th level, and one additional time per day for every 6 levels in the " +
+                    "class that gave you access to this domain beyond 6th.\nDomain {g|Encyclopedia:Spell}Spells{/g}: bane, aid, bestow curse, communal protection from energy, break enchantment, " +
+                    "eyebite, restoration greater, euphoric tranquility, mass heal.");
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Domain };
                 bp.IsClassFeature = true;
                 bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
@@ -307,7 +292,7 @@ namespace ExpandedContent.Tweaks.Domains {
                 };                
                 bp.LevelEntries = new LevelEntry[] {
                     Helpers.LevelEntry(1, CurseDomainBaseFeature),
-                    Helpers.LevelEntry(8, LuckDomainGreaterFeature)
+                    Helpers.LevelEntry(6, LuckDomainGreaterFeature)
                 };
                 bp.UIGroups = new UIGroup[] {
                     Helpers.CreateUIGroup(CurseDomainBaseFeature, LuckDomainGreaterFeature)
@@ -317,7 +302,7 @@ namespace ExpandedContent.Tweaks.Domains {
             // Secondary Domain Progression
             var CurseDomainProgressionSecondary = Helpers.CreateBlueprint<BlueprintProgression>("CurseDomainProgressionSecondary", bp => {
                 bp.AddComponent<PrerequisiteFeature>(c => {
-                    c.Group = Prerequisite.GroupType.All;
+                    c.Group = Prerequisite.GroupType.Any; //to work with divine scourge
                     c.HideInUI = true;
                     c.m_Feature = CurseDomainAllowed.ToReference<BlueprintFeatureReference>();
                 });
@@ -330,10 +315,11 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.SetName("Curse Subdomain");
                 bp.SetDescription("\nYou are infused with fate, spreading ill omens to foes while granting fortune to yourself.\nMalign Eye: " +
                     "As a standard action, you can afflict one target within 30 feet with your malign eye, causing it to take a –2 penalty on all saving throws against your spells. " +
-                    "The effect lasts for 1 minute. You can use this ability for a number of times per day equal to 3 + your Wisdom modifier.\nMight of the Gods: At 8th level, you add 1/2 of " +
-                    "your level in the class that gave you access to this domain as an enhancement bonus to your Athletics {g|Encyclopedia:Check}checks{/g}.\nDomain " +
-                    "{g|Encyclopedia:Spell}Spells{/g}: bane, aid, bestow curse, communal protection from energy, break enchantment, eyebite, restoration greater, " +
-                    "euphoric tranquility, mass heal.");
+                    "The effect lasts for 1 minute. You can use this ability for a number of times per day equal to 3 + your Wisdom modifier.\nDivine Fortune: At 6th level, as a standard " +
+                    "{g|Encyclopedia:CA_Types}action{/g}, you can bless yourself with divine luck. For the next half your level in the class that gave you access to this domain rounds you " +
+                    "roll two times on every d20 roll and take the best result. You can use this ability once per day at 6th level, and one additional time per day for every 6 levels in the " +
+                    "class that gave you access to this domain beyond 6th.\nDomain {g|Encyclopedia:Spell}Spells{/g}: bane, aid, bestow curse, communal protection from energy, break enchantment, " +
+                    "eyebite, restoration greater, euphoric tranquility, mass heal.");
                 bp.Groups = new FeatureGroup[] { FeatureGroup.ClericSecondaryDomain };
                 bp.IsClassFeature = true;
                 bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
@@ -358,7 +344,7 @@ namespace ExpandedContent.Tweaks.Domains {
                 };
                 bp.LevelEntries = new LevelEntry[] {
                     Helpers.LevelEntry(1, CurseDomainBaseFeature),
-                    Helpers.LevelEntry(8, LuckDomainGreaterFeature)
+                    Helpers.LevelEntry(6, LuckDomainGreaterFeature)
                 };
                 bp.UIGroups = new UIGroup[] {
                     Helpers.CreateUIGroup(CurseDomainBaseFeature, LuckDomainGreaterFeature)

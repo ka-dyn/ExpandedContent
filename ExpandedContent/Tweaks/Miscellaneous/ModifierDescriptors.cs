@@ -6,9 +6,6 @@ using Kingmaker.Enums;
 using Kingmaker.Utility;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExpandedContent.Tweaks.Miscellaneous {
     public class NewModifierDescriptors {

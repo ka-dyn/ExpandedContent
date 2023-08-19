@@ -9,7 +9,6 @@ using Kingmaker.Blueprints.Root.Fx;
 using Kingmaker.Craft;
 using Kingmaker.Designers.Mechanics.Buffs;
 using Kingmaker.Designers.Mechanics.Facts;
-using Kingmaker.ElementsSystem;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
 using Kingmaker.Enums.Damage;
@@ -30,11 +29,6 @@ using Kingmaker.UnitLogic.Mechanics.Components;
 using Kingmaker.UnitLogic.Parts;
 using Kingmaker.Visual.Animation.Kingmaker.Actions;
 using Kingmaker.Visual.Sound;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExpandedContent.Tweaks.Spells {
     internal class PlantShape {

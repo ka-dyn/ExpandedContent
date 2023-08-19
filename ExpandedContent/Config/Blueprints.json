@@ -2367,7 +2367,15 @@
     "LoyaltyDomainProgression": "8aa8a97c-0a44-4656-9cf0-13227966fa04",
     "LoyaltyDomainProgressionSecondary": "41cd6ec0-bc91-4d48-89c4-fc42113394c4",
     "LoyaltyDomainSpellList": "73d71dbf-0090-48fd-ac10-a1aab4d0e3e7",
-    "LoyaltyDomainSpellListFeature": "ab5910e7-e365-485d-9ced-a16a2630d065"
+    "LoyaltyDomainSpellListFeature": "ab5910e7-e365-485d-9ced-a16a2630d065",
+
+    "DivineScourgeArchetype": "99f4301a-eced-47f6-ba9d-bd1da3f73683",
+    "DivineScourgeCurserBackupDomainSelection": "11ae53dd-0fae-4414-9409-189cf1840859",
+    "DivineScourgeCurserFeature": "5aa7204e-c258-4d51-8550-c6e4ec874cd6",
+    "DivineScourgeDivineHexesFeature": "a221bc51-6b13-4e9a-bd91-c0248892b797",
+    "DivineScourgeDivineHexesImprovedFeature": "e51b0861-370f-4ede-a9ff-4df728af74e6",
+    "DivineScourgeHexFlag": "a5c135ad-102f-4ef5-881f-537306567f15",
+    "FakeDivineScourgeCastingStatProperty": "a22bc0e8-c8e6-4229-8a2e-aa503c067224"
 
 
 

@@ -5,11 +5,8 @@ using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Facts;
-using Kingmaker.Blueprints.Items.Ecnchantments;
 using Kingmaker.Blueprints.Items.Weapons;
 using Kingmaker.Craft;
-using Kingmaker.Designers.EventConditionActionSystem.Actions;
-using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.Designers.TempMapCode.Ambush;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
@@ -28,11 +25,6 @@ using Kingmaker.Utility;
 using Kingmaker.Visual.Animation.Kingmaker.Actions;
 using Kingmaker.Visual.HitSystem;
 using Kingmaker.Visual.Sound;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExpandedContent.Tweaks.Spells {
     internal class Shambler {

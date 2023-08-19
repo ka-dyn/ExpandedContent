@@ -1,5 +1,4 @@
-﻿using ExpandedContent.Config;
-using ExpandedContent.Extensions;
+﻿using ExpandedContent.Extensions;
 using ExpandedContent.Utilities;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
@@ -9,11 +8,6 @@ using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExpandedContent.Tweaks.Archdevils {
     internal class Mephistopheles {
