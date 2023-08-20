@@ -90,11 +90,6 @@
   "Archetypes": {
     "DisableAll": false,
     "Settings": {
-      "Living Scripture": {
-        "Enabled": false,
-        "Homebrew": true,
-        "Description": "A requested  homebrew inquisitor archetype that focuses on divine spellcasting, buffed from tabletop to be a full caster."
-      },
       "Temple Champion": {
         "Enabled": true,
         "Homebrew": true,
@@ -481,6 +476,11 @@
   "RetiredFeatures": {
     "DisableAll": false,
     "Settings": {
+      "Living Scripture": {
+        "Enabled": false,
+        "Homebrew": true,
+        "Description": "A requested  homebrew inquisitor archetype that focuses on divine spellcasting, buffed from tabletop to be a full caster."
+      },
       "AivuPet": {
         "Enabled": false,
         "Homebrew": true,
