@@ -7,7 +7,7 @@ While this mod is not dependant on https://github.com/Vek17/TabletopTweaks-Base 
 
 New Archetypes
 
-- Ravener Hunter, Living Scripture, Inquisitor
+- Ravener Hunter, Inquisitor
 
 - Mantis Zealot, Warpriest
 
@@ -30,6 +30,8 @@ New Archetypes
 - Archer, Spear Fighter, Fighter
 
 - Skulking Hunter, Hunter
+
+- Divine Scourge, Cleric
 
 New Prestige Class
 
@@ -117,7 +119,7 @@ New Domains / Subdomains
   - Blood
   - Caves
   - Curse
-  - Defense
+  - Defence
   - Demon
   - Dragon
   - Ferocity
