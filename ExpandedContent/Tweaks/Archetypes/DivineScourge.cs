@@ -25,6 +25,8 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var ChannelEnergySelection = Resources.GetBlueprint<BlueprintFeatureSelection>("d332c1748445e8f4f9e92763123e31bd");
             var DomainsSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("48525e5da45c9c243a343fc6545dbdb9");
             var SecondDomainsSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("43281c3d7fe18cc4d91928395837cd1e");
+            var WitchHexSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("9846043cf51251a4897728ed6e24e76f");
+            var WitchHexEvilEyeSavesAbility = Resources.GetBlueprint<BlueprintAbility>("ba52aed3017521a4abafcbae4ee06d10");
 
             var DivineScourgeArchetype = Helpers.CreateBlueprint<BlueprintArchetype>("DivineScourgeArchetype", bp => {
                 bp.LocalizedName = Helpers.CreateString($"DivineScourgeArchetype.Name", "Divine Scourge");
@@ -73,6 +75,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.SetName("Curser");
                 bp.SetDescription("A divine scourge must take the curse subdomain as a domain, regardless of the actual domains offered by her deity. The divine scourge does not receive a second domain." +
                     "\nIf the divine scourge already the curse subdomain from another class, they may select another domain or subdomain granted by their deity.");
+                bp.m_Icon = WitchHexEvilEyeSavesAbility.m_Icon;
                 bp.HideInCharacterSheetAndLevelUp = false;
                 bp.HideInUI = false;
                 bp.HideNotAvailibleInUI = false;
@@ -109,6 +112,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     "level: cackle, evil eye, misfortune, slumber, and vulnerability. \nAt 11th level, a divine scourge can instead select from the following list of major hexes: agony, delicious fright, " +
                     "hoarfrost, and restless slumber. \nThe divine scourge uses her Wisdom modifier instead of her Intelligence modifier to determine the save DCs of her hexes.Any hex that refers to " +
                     "using her Intelligence modifier to determine its duration or effect instead uses her Charisma modifier for that purpose.");
+                bp.m_Icon = WitchHexSelection.m_Icon;
                 bp.HideInCharacterSheetAndLevelUp = false;
                 bp.HideInUI = false;
                 bp.HideNotAvailibleInUI = false;
@@ -123,6 +127,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     "level: cackle, evil eye, misfortune, slumber, and vulnerability. \nAt 11th level, a divine scourge can instead select from the following list of major hexes: agony, delicious fright, " +
                     "hoarfrost, and restless slumber. \nThe divine scourge uses her Wisdom modifier instead of her Intelligence modifier to determine the save DCs of her hexes.Any hex that refers to " +
                     "using her Intelligence modifier to determine its duration or effect instead uses her Charisma modifier for that purpose.");
+                bp.m_Icon = WitchHexSelection.m_Icon;
                 bp.HideInCharacterSheetAndLevelUp = false;
                 bp.HideInUI = false;
                 bp.HideNotAvailibleInUI = false;
