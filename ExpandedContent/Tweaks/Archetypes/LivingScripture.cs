@@ -110,7 +110,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             });
             InquisitorClass.Progression.UIGroups = InquisitorClass.Progression.UIGroups.AppendToArray(
                 Helpers.CreateUIGroup(SpellFocus, SpellSpecializationSelection, SpellFocusGreater, ImpenetrableScriptureFeature, WizardFeatSelection, WizardFeatSelection, WizardFeatSelection));
-            if (ModSettings.AddedContent.Archetypes.IsDisabled("Living Scripture")) { return; }
+            if (ModSettings.AddedContent.RetiredFeatures.IsDisabled("Living Scripture")) { return; }
             InquisitorClass.m_Archetypes = InquisitorClass.m_Archetypes.AppendToArray(LivingScriptureArchetype.ToReference<BlueprintArchetypeReference>());
             
 
