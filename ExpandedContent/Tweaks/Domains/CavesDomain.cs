@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using ExpandedContent.Utilities;
 using ExpandedContent.Extensions;
 using Kingmaker.Blueprints.Classes;
@@ -14,18 +10,8 @@ using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.UnitLogic.ActivatableAbilities;
-using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.Commands.Base;
-using Kingmaker.UnitLogic.Buffs.Components;
-using Kingmaker.UnitLogic.Abilities.Components.AreaEffects;
-using Kingmaker.ElementsSystem;
-using Kingmaker.Designers.EventConditionActionSystem.Actions;
-using Kingmaker.UnitLogic.Mechanics.Conditions;
-using Kingmaker.UnitLogic.Mechanics.Actions;
-using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Mechanics;
-using Kingmaker.RuleSystem;
-using Kingmaker.Utility;
 using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.UnitLogic.Mechanics.Properties;
@@ -292,10 +278,10 @@ namespace ExpandedContent.Tweaks.Domains {
                     "{g|Encyclopedia:Standard_Actions}standard action{/g}, you can unleash an acid dart targeting any foe within 30 feet as a ranged " +
                     "{g|Encyclopedia:TouchAttack}touch attack{/g}. This acid dart deals {g|Encyclopedia:Dice}1d6{/g} points of {g|Encyclopedia:Energy_Damage}acid damage{/g}" +
                     "+ 1 point for every two levels you possess in the class that gave you access to this domain. You can use this ability a number of " +
-                    "times per day equal to 3 + your {g|Encyclopedia:Wisdom}Wisdom{/g} modifier.\nTunnel Runner (Su): At 6th level, as a standard action, " +
-                    "you can create a 30-foot aura of gale-like winds that slows the progress of enemies. Creatures in the aura cannot take a 5-foot step " +
-                    "and treat it as as difficult terrain. You can use this ability for a number of rounds per day equal to your cleric level. The rounds " +
-                    "do not need to be consecutive.");
+                    "times per day equal to 3 + your {g|Encyclopedia:Wisdom}Wisdom{/g} modifier.\nTunnel Runner: At 8th level, while underground you may gain an insight " +
+                    "bonus equal to your cleric level on Stealth and Perception skill checks and an insight bonus equal to your Wisdom modifier on initiative checks. " +
+                    "You can use this ability for 1 minute per day per cleric level you possess. These minutes do not need to be consecutive, but they must be spent in " +
+                    "1-minute increments.");
                 bp.IsClassFeature = true;
             });
             //Deity plug
@@ -333,10 +319,10 @@ namespace ExpandedContent.Tweaks.Domains {
                     "{g|Encyclopedia:Standard_Actions}standard action{/g}, you can unleash an acid dart targeting any foe within 30 feet as a ranged " +
                     "{g|Encyclopedia:TouchAttack}touch attack{/g}. This acid dart deals {g|Encyclopedia:Dice}1d6{/g} points of {g|Encyclopedia:Energy_Damage}acid damage{/g}" +
                     "+ 1 point for every two levels you possess in the class that gave you access to this domain. You can use this ability a number of " +
-                    "times per day equal to 3 + your {g|Encyclopedia:Wisdom}Wisdom{/g} modifier.\nTunnel Runner (Su): At 6th level, as a standard action, " +
-                    "you can create a 30-foot aura of gale-like winds that slows the progress of enemies. Creatures in the aura cannot take a 5-foot step " +
-                    "and treat it as as difficult terrain. You can use this ability for a number of rounds per day equal to your cleric level. The rounds " +
-                    "do not need to be consecutive.\nDomain Spells: stone fist, createpit, spiked pit, spike stones, acidic spray, hungry pit, elemental body IV (earth), " +
+                    "times per day equal to 3 + your {g|Encyclopedia:Wisdom}Wisdom{/g} modifier.\nTunnel Runner: At 8th level, while underground you may gain an insight " +
+                    "bonus equal to your cleric level on Stealth and Perception skill checks and an insight bonus equal to your Wisdom modifier on initiative checks. " +
+                    "You can use this ability for 1 minute per day per cleric level you possess. These minutes do not need to be consecutive, but they must be spent in " +
+                    "1-minute increments.\nDomain Spells: stone fist, createpit, spiked pit, spike stones, acidic spray, hungry pit, elemental body IV (earth), " +
                     "iron body, elemental swarm (earth).");
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Domain };
                 bp.IsClassFeature = true;
@@ -399,10 +385,10 @@ namespace ExpandedContent.Tweaks.Domains {
                     "{g|Encyclopedia:Standard_Actions}standard action{/g}, you can unleash an acid dart targeting any foe within 30 feet as a ranged " +
                     "{g|Encyclopedia:TouchAttack}touch attack{/g}. This acid dart deals {g|Encyclopedia:Dice}1d6{/g} points of {g|Encyclopedia:Energy_Damage}acid damage{/g}" +
                     "+ 1 point for every two levels you possess in the class that gave you access to this domain. You can use this ability a number of " +
-                    "times per day equal to 3 + your {g|Encyclopedia:Wisdom}Wisdom{/g} modifier.\nTunnel Runner (Su): At 6th level, as a standard action, " +
-                    "you can create a 30-foot aura of gale-like winds that slows the progress of enemies. Creatures in the aura cannot take a 5-foot step " +
-                    "and treat it as as difficult terrain. You can use this ability for a number of rounds per day equal to your cleric level. The rounds " +
-                    "do not need to be consecutive.\nDomain Spells: stone fist, createpit, spiked pit, spike stones, acidic spray, hungry pit, elemental body IV (earth), " +
+                    "times per day equal to 3 + your {g|Encyclopedia:Wisdom}Wisdom{/g} modifier.\nTunnel Runner: At 8th level, while underground you may gain an insight " +
+                    "bonus equal to your cleric level on Stealth and Perception skill checks and an insight bonus equal to your Wisdom modifier on initiative checks. " +
+                    "You can use this ability for 1 minute per day per cleric level you possess. These minutes do not need to be consecutive, but they must be spent in " +
+                    "1-minute increments.\nDomain Spells: stone fist, createpit, spiked pit, spike stones, acidic spray, hungry pit, elemental body IV (earth), " +
                     "iron body, elemental swarm (earth).");
                 bp.Groups = new FeatureGroup[] { FeatureGroup.ClericSecondaryDomain };
                 bp.IsClassFeature = true;

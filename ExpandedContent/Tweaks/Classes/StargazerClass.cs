@@ -23,29 +23,21 @@ using Kingmaker.UnitLogic.Mechanics.Components;
 using Kingmaker.UnitLogic.Mechanics.Properties;
 using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.Visual.Animation.Kingmaker.Actions;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Kingmaker.Formations.Facts;
 using Kingmaker.UnitLogic.ActivatableAbilities;
 using Kingmaker.UnitLogic;
-using Kingmaker.Assets.UnitLogic.Mechanics.Properties;
 using Kingmaker.Enums.Damage;
 using Kingmaker.ResourceLinks;
 using Kingmaker.RuleSystem.Rules.Damage;
 using Kingmaker.RuleSystem.Rules;
-using UnityEngine.Rendering;
 using Kingmaker.Designers.Mechanics.Buffs;
 using Kingmaker.Utility;
 using Kingmaker.UnitLogic.Buffs.Components;
 using Kingmaker.UnitLogic.Abilities.Components.AreaEffects;
 using Kingmaker.ElementsSystem;
 using Kingmaker.UnitLogic.Mechanics.Conditions;
-using Kingmaker.Designers.EventConditionActionSystem.Actions;
 using Kingmaker.Craft;
-using Kingmaker.UnitLogic.Abilities.Components.TargetCheckers;
 
 namespace ExpandedContent.Tweaks.Classes {
     internal class StargazerClass {

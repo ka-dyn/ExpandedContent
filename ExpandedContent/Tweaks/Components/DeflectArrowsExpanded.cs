@@ -1,15 +1,11 @@
 ﻿using System;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Facts;
-using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.Enums;
-using Kingmaker.Enums.Damage;
 using Kingmaker.Items;
 using Kingmaker.Items.Slots;
 using Kingmaker.PubSubSystem;
-using Kingmaker.RuleSystem.Rules.Damage;
 using Kingmaker.UnitLogic;
-using Kingmaker.UnitLogic.FactLogic;
 using UnityEngine;
 
 namespace ExpandedContent.Tweaks.Components {

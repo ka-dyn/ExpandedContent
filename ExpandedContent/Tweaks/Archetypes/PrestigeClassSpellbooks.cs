@@ -2,18 +2,12 @@
 using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.Blueprints.Classes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Kingmaker.Blueprints;
 using ExpandedContent.Extensions;
 using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.Enums;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Designers.Mechanics.Buffs;
-using ExpandedContent.Tweaks.Classes;
 
 namespace ExpandedContent.Tweaks.Archetypes {
     internal class PrestigeClassSpellbooks {

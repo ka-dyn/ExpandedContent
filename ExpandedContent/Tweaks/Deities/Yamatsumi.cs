@@ -1,20 +1,13 @@
-﻿using ExpandedContent.Config;
-using ExpandedContent.Extensions;
+﻿using ExpandedContent.Extensions;
 using ExpandedContent.Utilities;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Prerequisites;
-using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExpandedContent.Tweaks.Deities {
     internal class Yamatsumi {
@@ -27,6 +20,7 @@ namespace ExpandedContent.Tweaks.Deities {
         private static readonly BlueprintFeature DefenseDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("DefenseDomainAllowed");
         private static readonly BlueprintFeature IceDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("IceDomainAllowed");
         private static readonly BlueprintFeature ResolveDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("ResolveDomainAllowed");
+        private static readonly BlueprintFeature FistDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("FistDomainAllowed");
         private static readonly BlueprintSpellbook CrusaderSpellbook = Resources.GetBlueprint<BlueprintSpellbook>("673d39f7da699aa408cdda6282e7dcc0");
         private static readonly BlueprintSpellbook ClericSpellbook = Resources.GetBlueprint<BlueprintSpellbook>("4673d19a0cf2fab4f885cc4d1353da33");
         private static readonly BlueprintSpellbook InquisitorSpellbook = Resources.GetBlueprint<BlueprintSpellbook>("57fab75111f377248810ece84193a5a5");
@@ -55,7 +49,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     "\nAlignment: Neutral   " +
                     "\nAreas of Concern: Mountains, Volcanoes, Winter   " +
                     "\nDomains: Earth, Fire, Protection, Strength, Water   " +
-                    "\nSubdomains: Ash, Caves, Defense, Ice, Resolve, Smoke   " +
+                    "\nSubdomains: Ash, Caves, Defense, Fist, Flowing, Ice, Resolve, Smoke, Solitude   " +
                     "\nFavoured Weapon: Tetsubo (Greatclub)   " +
                     "\nHoly Symbol: Erupting, snow-capped volcano   " +
                     "\nSacred Animal: Ram   " +
@@ -114,6 +108,9 @@ namespace ExpandedContent.Tweaks.Deities {
                 });
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[1] { DefenseDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[1] { FistDomainAllowed.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<ForbidSpellbookOnAlignmentDeviation>(c => {
                     c.m_Spellbooks = new BlueprintSpellbookReference[1] { CrusaderSpellbook.ToReference<BlueprintSpellbookReference>() };

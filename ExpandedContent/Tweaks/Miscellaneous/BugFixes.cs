@@ -1,22 +1,26 @@
 ﻿using ExpandedContent.Extensions;
+using ExpandedContent.Tweaks.Components;
 using ExpandedContent.Utilities;
+using HarmonyLib;
+using Kingmaker.Assets.UnitLogic.Mechanics.Properties;
+using Kingmaker.Blueprints;
+using Kingmaker.Blueprints.Classes;
+using Kingmaker.EntitySystem.Entities;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
 using Kingmaker.Enums.Damage;
 using Kingmaker.RuleSystem;
 using Kingmaker.RuleSystem.Rules;
 using Kingmaker.RuleSystem.Rules.Damage;
+using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Mechanics.Actions;
 using Kingmaker.UnitLogic.Mechanics.Components;
 using Kingmaker.UnitLogic.Mechanics.Properties;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.Remoting.Contexts;
 
 namespace ExpandedContent.Tweaks.Miscellaneous {
     internal class BugFixes {
@@ -156,6 +160,48 @@ namespace ExpandedContent.Tweaks.Miscellaneous {
                     }
                     );
             });
+
+
+            //Divine Scourge Hex DC patch
+            //Needs to be loaded after to not break any mods that edit the MaxCastingAttributeGetter of WitchHexDCProperty
+            var ClericClass = Resources.GetBlueprint<BlueprintCharacterClass>("67819271767a9dd4fbfd4ae700befea0");
+            var DivineScourgeArchetype = Resources.GetModBlueprint<BlueprintArchetype>("DivineScourgeArchetype");
+            var WitchHexDCProperty = Resources.GetBlueprint<BlueprintUnitProperty>("bdc230ce338f427ba74de65597b0d57a");
+            WitchHexDCProperty.AddComponent<MaxCastingAttributeWithArchetypeGetter>(c => {
+                c.AttributeBonus = true;
+                c.DefaultStat = StatType.Intelligence;
+                c.m_Classes = WitchHexDCProperty.GetComponent<MaxCastingAttributeGetter>().m_Classes;
+                c.m_Archetypes = new BlueprintArchetypeReference[] { DivineScourgeArchetype.ToReference<BlueprintArchetypeReference>() };
+            });
+            WitchHexDCProperty.GetComponent<MaxCastingAttributeWithArchetypeGetter>().TemporaryContext(c => {
+                c.m_Classes = c.m_Classes.AppendToArray(ClericClass.ToReference<BlueprintCharacterClassReference>());
+            });
+            WitchHexDCProperty.RemoveComponents<MaxCastingAttributeGetter>();
+        }
+
+
+        [HarmonyPatch(typeof(SummClassLevelGetter), nameof(SummClassLevelGetter.GetBaseValue))]
+        static class SummClassGetterArchetypeFix {
+            static void Postfix(SummClassLevelGetter __instance, UnitEntityData unit, ref int __result) {
+                int num = 0;
+                var archetypes = new BlueprintArchetypeReference[0];
+                archetypes = archetypes.AppendToArray(__instance.m_Archetypes);
+                archetypes = archetypes.AppendToArray(__instance.Archetype);
+                foreach (ClassData data in unit.Descriptor.Progression.Classes) {//For each class you have
+                    if (archetypes.Length > 0) {
+                        if (archetypes.Any(archetype => data.CharacterClass.Archetypes.HasReference(archetype))) {//Is the choosen archetype in the BlueprintArchetypeReference list?
+                            if (archetypes.Any(archetype => data.Archetypes.Contains(archetype))) {//If archetype matches add level, if not then ignore
+                                num += data.Level;
+                            } 
+                        } else {
+                            num += data.Level;
+                        }
+                    } else {
+                        num += data.Level;
+                    }
+                }
+                __result = num;
+            }
         }
     }
 }

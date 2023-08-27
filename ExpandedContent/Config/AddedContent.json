@@ -90,11 +90,6 @@
   "Archetypes": {
     "DisableAll": false,
     "Settings": {
-      "Living Scripture": {
-        "Enabled": false,
-        "Homebrew": true,
-        "Description": "A requested  homebrew inquisitor archetype that focuses on divine spellcasting, buffed from tabletop to be a full caster."
-      },
       "Temple Champion": {
         "Enabled": true,
         "Homebrew": true,
@@ -200,11 +195,16 @@
         "Homebrew": false,
         "Description": "A druid archetype with plant companions and plant based wild shapes."
       },
+      "Divine Scourge": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "A cleric archetype that gives up wide domain selection for cursing and debuffing."
+      },
       "Sworn of the Eldest": {
         "Enabled": true,
         "Homebrew": false,
         "Description": "Charisma based inquisitor archetype serving the Eldest."
-      }
+      }      
     },
     "IsExpanded": false
   },
@@ -355,6 +355,16 @@
         "Enabled": true,
         "Homebrew": false,
         "Description": "Patches the plant domain to use the ability and spells from the tabletop game."
+      },
+      "Fist Subdomain": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds the fist subdomain, a subdomain to the strength domain."
+      },
+      "Loyalty Subdomain": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds the loyalty subdomain, a subdomain to the law domain."
       }
     },
     "IsExpanded": false
@@ -471,6 +481,11 @@
   "RetiredFeatures": {
     "DisableAll": false,
     "Settings": {
+      "Living Scripture": {
+        "Enabled": false,
+        "Homebrew": true,
+        "Description": "A requested  homebrew inquisitor archetype that focuses on divine spellcasting, buffed from tabletop to be a full caster."
+      },
       "AivuPet": {
         "Enabled": false,
         "Homebrew": true,

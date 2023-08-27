@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using ExpandedContent.Utilities;
 using ExpandedContent.Extensions;
 using Kingmaker.Blueprints.Classes;
@@ -13,28 +9,6 @@ using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.EntitySystem.Stats;
-using Kingmaker.UnitLogic.ActivatableAbilities;
-using Kingmaker.UnitLogic.Buffs.Blueprints;
-using Kingmaker.UnitLogic.Commands.Base;
-using Kingmaker.UnitLogic.Buffs.Components;
-using Kingmaker.UnitLogic.Abilities.Components.AreaEffects;
-using Kingmaker.ElementsSystem;
-using Kingmaker.Designers.EventConditionActionSystem.Actions;
-using Kingmaker.UnitLogic.Mechanics.Conditions;
-using Kingmaker.UnitLogic.Mechanics.Actions;
-using Kingmaker.UnitLogic;
-using Kingmaker.UnitLogic.Mechanics;
-using Kingmaker.RuleSystem;
-using Kingmaker.Utility;
-using Kingmaker.Enums;
-using Kingmaker.UnitLogic.Abilities;
-using Kingmaker.UnitLogic.Mechanics.Properties;
-using Kingmaker.UnitLogic.Mechanics.Components;
-using Kingmaker.Enums.Damage;
-using Kingmaker.UnitLogic.Abilities.Components;
-using Kingmaker.RuleSystem.Rules;
-using Kingmaker.Visual.Animation.Kingmaker.Actions;
-using Kingmaker.Craft;
 using ExpandedContent.Config;
 
 namespace ExpandedContent.Tweaks.Domains {
@@ -51,7 +25,7 @@ namespace ExpandedContent.Tweaks.Domains {
             var DivineHunterArchetype = Resources.GetBlueprint<BlueprintArchetype>("f996f0a18e5d945459e710ee3a6dd485");
             var PaladinClass = Resources.GetBlueprint<BlueprintCharacterClass>("bfa11238e7ae3544bbeb4d0b92e897ec");
             var TempleChampionArchetype = Resources.GetModBlueprint<BlueprintArchetype>("TempleChampionArchetype");
-            var PlantDomainGreaterFeature = Resources.GetBlueprint<BlueprintFeature>("8a8e3f80abc04c34b98324823d14b057");
+            var PlantDomainGreaterFeature = Resources.GetBlueprint<BlueprintFeature>("24ec8901c8092264f864c7626ec3677e");
             //var PlantBlessingFeature = Resources.GetBlueprint<BlueprintFeature>("e1ff99dc3aeaa064e8eecde51c1c4773");
 
             var PlantDomainBaseResource = Resources.GetBlueprint<BlueprintAbilityResource>("8942e816a533a4a40b04745c516d085a");

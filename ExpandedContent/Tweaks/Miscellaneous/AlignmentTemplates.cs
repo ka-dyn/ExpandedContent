@@ -1,5 +1,4 @@
-﻿using ExpandedContent;
-using ExpandedContent.Extensions;
+﻿using ExpandedContent.Extensions;
 using ExpandedContent.Utilities;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;

@@ -1,17 +1,10 @@
-﻿using ExpandedContent.Extensions;
-using ExpandedContent.Utilities;
-using HarmonyLib;
-using Kingmaker.Blueprints.Root.Strings;
+﻿using HarmonyLib;
 using Kingmaker.EntitySystem;
 using Kingmaker.Enums;
 using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.Utility;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace ExpandedContent.Tweaks.Miscellaneous {

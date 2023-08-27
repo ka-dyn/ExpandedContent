@@ -1,11 +1,5 @@
 ﻿using HarmonyLib;
-using ExpandedContent.Extensions;
-using ExpandedContent.Tweaks;
-using ExpandedContent.Utilities;
-using Kingmaker.Blueprints;
-using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.JsonSystem;
-using Kingmaker.Blueprints.Root;
 
 namespace ExpandedContent.Tweaks {
     class ContentAdder {
@@ -166,10 +160,13 @@ namespace ExpandedContent.Tweaks {
                 Domains.HeroismDomain.AddHeroismDomain();
                 Domains.GrowthDomain.AddGrowthDomain();
                 Domains.PlantDomainPatch.PatchPlantDomain();
+                Domains.FistDomain.AddFistDomain();
+                Domains.LoyaltyDomain.AddLoyaltyDomain();
                 Domains.BaseDeityPatch.AddBaseDeityPatch();
 
                 Archetypes.StormDruid.AddStormDruid();
                 Archetypes.Treesinger.AddTreesinger();
+                Archetypes.DivineScourge.AddDivineScourge();
 
                 Mysteries.DragonMystery.AddDragonMystery();
                 Mysteries.HeavensMystery.AddHeavensMystery();

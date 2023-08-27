@@ -178,6 +178,7 @@
     <Compile Include="Tweaks\Archdevils\Mammon.cs" />
     <Compile Include="Tweaks\Archdevils\Mephistopheles.cs" />
     <Compile Include="Tweaks\Archdevils\Moloch.cs" />
+    <Compile Include="Tweaks\Archetypes\DivineScourge.cs" />
     <Compile Include="Tweaks\Archetypes\Treesinger.cs" />
     <Compile Include="Tweaks\Archetypes\SwornOfTheEldest.cs" />
     <Compile Include="Tweaks\Archetypes\SkulkingHunter.cs" />
@@ -226,8 +227,9 @@
     <Compile Include="Tweaks\Classes\Oathbreaker.cs" />
     <Compile Include="Tweaks\Classes\DreadKnight.cs" />
     <Compile Include="Tweaks\Components\AbilityCasterOffHandWeaponCheck.cs" />
+    <Compile Include="Tweaks\Components\MaxCastingAttributeWithArchetypeGetter.cs" />
     <Compile Include="Tweaks\Components\LearnDomainSpell.cs" />
-    <Compile Include="Tweaks\Components\ReplaceAbilitiesStatFromArchetype.cs" />
+    <Compile Include="Tweaks\Components\ReplaceAbilitiesStatFromArchetype.cs" />    
     <Compile Include="Tweaks\Components\SpearParry.cs" />
     <Compile Include="Tweaks\Components\DeflectArrowsExpanded.cs" />
     <Compile Include="Tweaks\Components\ACBonusAgainstNotCaster.cs" />
@@ -352,6 +354,7 @@
     <Compile Include="Tweaks\Deities\Pulura.cs" />
     <Compile Include="Tweaks\Deities\Ragathiel.cs" />
     <Compile Include="Tweaks\DemonLords\Zura.cs" />
+    <Compile Include="Tweaks\Domains\LoyaltyDomain.cs" />
     <Compile Include="Tweaks\Domains\DefenseDomain.cs" />
     <Compile Include="Tweaks\Domains\HeroismDomain.cs" />
     <Compile Include="Tweaks\Domains\LustDomain.cs" />
@@ -381,6 +384,7 @@
     <Compile Include="Tweaks\Domains\RiversDomain.cs" />
     <Compile Include="Tweaks\Domains\FurDomain.cs" />
     <Compile Include="Tweaks\Domains\GrowthDomain.cs" />
+    <Compile Include="Tweaks\Domains\FistDomain.cs" />
     <Compile Include="Tweaks\Domains\WindDomain.cs" />
     <Compile Include="Tweaks\Domains\IceDomain.cs" />
     <Compile Include="Tweaks\Domains\CavesDomain.cs" />

@@ -1,9 +1,5 @@
-﻿using HarmonyLib;
-using ExpandedContent;
-using Kingmaker.Blueprints.Classes;
+﻿using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Prerequisites;
-using Kingmaker.Blueprints.JsonSystem;
-using System;
 using ExpandedContent.Extensions;
 using ExpandedContent.Config;
 

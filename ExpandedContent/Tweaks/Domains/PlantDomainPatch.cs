@@ -6,23 +6,15 @@ using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.EntitySystem.Stats;
-using Kingmaker.Enums.Damage;
 using Kingmaker.Enums;
-using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.UnitLogic.ActivatableAbilities;
 using Kingmaker.UnitLogic.Commands.Base;
 using Kingmaker.UnitLogic.FactLogic;
-using Kingmaker.UnitLogic.Mechanics.Properties;
 using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.Utility;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ExpandedContent.Tweaks.Components;
-using ExpandedContent.Tweaks.Classes;
 using Kingmaker.UnitLogic.Mechanics.Components;
 
 namespace ExpandedContent.Tweaks.Domains {
@@ -131,9 +123,11 @@ namespace ExpandedContent.Tweaks.Domains {
                     c.m_RequiredResource = PlantDomainNewBaseResource.ToReference<BlueprintAbilityResourceReference>();
                 });
                 bp.m_Buff = PlantDomainNewBaseBuff.ToReference<BlueprintBuffReference>();
+                bp.IsOnByDefault = false;
+                bp.DeactivateIfCombatEnded = true;
                 bp.DeactivateIfOwnerDisabled = true;
-                bp.ActivationType = AbilityActivationType.WithUnitCommand;
-                bp.m_ActivateWithUnitCommand = UnitCommand.CommandType.Standard;
+                bp.ActivationType = AbilityActivationType.Immediately;
+                bp.m_ActivateWithUnitCommand = UnitCommand.CommandType.Free;
                 bp.DeactivateIfCombatEnded = false;
             });
             var PlantDomainBaseFeature = Resources.GetBlueprint<BlueprintFeature>("e433267d36089d049b34900fde38032b");

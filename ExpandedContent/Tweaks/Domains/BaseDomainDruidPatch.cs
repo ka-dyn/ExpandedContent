@@ -8,11 +8,6 @@ using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.UnitLogic.FactLogic;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExpandedContent.Tweaks.Domains {
     //Adding Druid versions of normal domains for any archetypes that would need them. Adding archetypes to abilities contextrankconfigs must be done after the archetypes are loaded.

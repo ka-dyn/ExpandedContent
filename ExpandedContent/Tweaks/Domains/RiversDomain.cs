@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using ExpandedContent.Utilities;
 using ExpandedContent.Extensions;
 using Kingmaker.Blueprints.Classes;
@@ -13,28 +9,15 @@ using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.EntitySystem.Stats;
-using Kingmaker.UnitLogic.ActivatableAbilities;
-using Kingmaker.UnitLogic.Buffs.Blueprints;
-using Kingmaker.UnitLogic.Commands.Base;
-using Kingmaker.UnitLogic.Buffs.Components;
-using Kingmaker.UnitLogic.Abilities.Components.AreaEffects;
-using Kingmaker.ElementsSystem;
-using Kingmaker.Designers.EventConditionActionSystem.Actions;
-using Kingmaker.UnitLogic.Mechanics.Conditions;
 using Kingmaker.UnitLogic.Mechanics.Actions;
-using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.RuleSystem;
-using Kingmaker.Utility;
 using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.UnitLogic.Mechanics.Properties;
 using Kingmaker.UnitLogic.Mechanics.Components;
-using Kingmaker.Enums.Damage;
 using Kingmaker.UnitLogic.Abilities.Components;
-using Kingmaker.RuleSystem.Rules;
 using Kingmaker.Visual.Animation.Kingmaker.Actions;
-using Kingmaker.Craft;
 using ExpandedContent.Config;
 
 namespace ExpandedContent.Tweaks.Domains {

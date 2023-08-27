@@ -1,18 +1,13 @@
-﻿using BlueprintCore.Blueprints;
-using ExpandedContent.Config;
+﻿using ExpandedContent.Config;
 using ExpandedContent.Extensions;
 using ExpandedContent.Utilities;
-using HarmonyLib;
 using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Facts;
 using Kingmaker.Blueprints.Items.Ecnchantments;
-using Kingmaker.Blueprints.Items.Equipment;
 using Kingmaker.Blueprints.Items.Weapons;
-using Kingmaker.Blueprints.JsonSystem;
-using Kingmaker.Blueprints.Root;
 using Kingmaker.Blueprints;
 using Kingmaker.Designers.EventConditionActionSystem.Actions;
 using Kingmaker.Designers.Mechanics.Buffs;
@@ -45,9 +40,6 @@ using Kingmaker.Utility;
 using Kingmaker.Visual.Animation.Kingmaker.Actions;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System;
 
 namespace ExpandedContent.Tweaks.Classes {
 
