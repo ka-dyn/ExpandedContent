@@ -37,6 +37,7 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintArchetype MantisZealotArchetype = Resources.GetModBlueprint<BlueprintArchetype>("MantisZealotArchetype");
             BlueprintArchetype SilverChampionArchetype = Resources.GetModBlueprint<BlueprintArchetype>("SilverChampionArchetype");
             BlueprintArchetype ClawOfTheFalseWyrmArchetype = Resources.GetModBlueprint<BlueprintArchetype>("ClawOfTheFalseWyrmArchetype");
+            BlueprintArchetype SwornOfTheEldestArchetype = Resources.GetModBlueprint<BlueprintArchetype>("SwornOfTheEldestArchetype");
 
 
             BlueprintFeature DaggerProficiency = Resources.GetBlueprint<BlueprintFeature>("b776c19291928cf4184d4dc65f09f3a6");
@@ -79,6 +80,11 @@ namespace ExpandedContent.Tweaks.Deities {
                     c.HideInUI = true;
                     c.m_CharacterClass = DreadKnightClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_Archetype = ClawOfTheFalseWyrmArchetype.ToReference<BlueprintArchetypeReference>();
+                });
+                bp.AddComponent<PrerequisiteNoArchetype>(c => {
+                    c.HideInUI = true;
+                    c.m_CharacterClass = InquistorClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = SwornOfTheEldestArchetype.ToReference<BlueprintArchetypeReference>();
                 });
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
                 bp.AddComponent<PrerequisiteAlignment>(c => {

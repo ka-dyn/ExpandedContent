@@ -32,6 +32,7 @@ namespace ExpandedContent.Tweaks.Deities {
 
             BlueprintArchetype FeralChampionArchetype = Resources.GetBlueprint<BlueprintArchetype>("f68ca492c9c15e241ab73735fbd0fb9f");
             BlueprintArchetype PriestOfBalance = Resources.GetBlueprint<BlueprintArchetype>("a4560e3fb5d247d68fb1a2738fcc0855");
+            BlueprintArchetype SwornOfTheEldestArchetype = Resources.GetModBlueprint<BlueprintArchetype>("SwornOfTheEldestArchetype");
 
             BlueprintFeature ShortswordProficiency = Resources.GetBlueprint<BlueprintFeature>("9e828934974f0fc4bbf7542eb0446e45");
             var HathorIcon = AssetLoader.LoadInternal("Deities", "Icon_Hathor.jpg");
@@ -69,6 +70,11 @@ namespace ExpandedContent.Tweaks.Deities {
                 bp.AddComponent<PrerequisiteNoArchetype>(c => {
                     c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_Archetype = FeralChampionArchetype.ToReference<BlueprintArchetypeReference>();
+                });
+                bp.AddComponent<PrerequisiteNoArchetype>(c => {
+                    c.HideInUI = true;
+                    c.m_CharacterClass = InquistorClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = SwornOfTheEldestArchetype.ToReference<BlueprintArchetypeReference>();
                 });
 
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };

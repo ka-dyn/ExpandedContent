@@ -30,6 +30,7 @@ namespace ExpandedContent.Tweaks.Monitors {
             BlueprintItem StandardQuarterstaff = Resources.GetBlueprint<BlueprintItem>("ada85dae8d12eda4bbe6747bb8b5883c");
 
             BlueprintArchetype ClawOfTheFalseWyrmArchetype = Resources.GetModBlueprint<BlueprintArchetype>("ClawOfTheFalseWyrmArchetype");
+            BlueprintArchetype SwornOfTheEldestArchetype = Resources.GetModBlueprint<BlueprintArchetype>("SwornOfTheEldestArchetype");
 
             BlueprintFeature ImprovedUnarmedStrike = Resources.GetBlueprint<BlueprintFeature>("7812ad3672a4b9a4fb894ea402095167");
             var IlsurrishIcon = AssetLoader.LoadInternal("Deities", "Icon_Ilsurrish.jpg");
@@ -58,6 +59,11 @@ namespace ExpandedContent.Tweaks.Monitors {
                     c.HideInUI = true;
                     c.m_CharacterClass = DreadKnightClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_Archetype = ClawOfTheFalseWyrmArchetype.ToReference<BlueprintArchetypeReference>();
+                });
+                bp.AddComponent<PrerequisiteNoArchetype>(c => {
+                    c.HideInUI = true;
+                    c.m_CharacterClass = InquistorClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = SwornOfTheEldestArchetype.ToReference<BlueprintArchetypeReference>();
                 });
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
                 bp.AddComponent<PrerequisiteAlignment>(c => {

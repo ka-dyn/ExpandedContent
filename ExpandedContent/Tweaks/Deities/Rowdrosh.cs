@@ -35,6 +35,7 @@ namespace ExpandedContent.Tweaks.Deities {
 
             BlueprintArchetype PriestOfBalance = Resources.GetBlueprint<BlueprintArchetype>("a4560e3fb5d247d68fb1a2738fcc0855");
             BlueprintArchetype SilverChampionArchetype = Resources.GetModBlueprint<BlueprintArchetype>("SilverChampionArchetype");
+            BlueprintArchetype SwornOfTheEldestArchetype = Resources.GetModBlueprint<BlueprintArchetype>("SwornOfTheEldestArchetype");
 
             BlueprintFeature QuarterstaffProficiency = Resources.GetBlueprint<BlueprintFeature>("aed4f88b52ae0fb468895f90da854ad4");
             var RowdroshIcon = AssetLoader.LoadInternal("Deities", "Icon_Rowdrosh.jpg");
@@ -71,6 +72,11 @@ namespace ExpandedContent.Tweaks.Deities {
                     c.HideInUI = true;
                     c.m_CharacterClass = PaladinClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_Archetype = SilverChampionArchetype.ToReference<BlueprintArchetypeReference>();
+                });
+                bp.AddComponent<PrerequisiteNoArchetype>(c => {
+                    c.HideInUI = true;
+                    c.m_CharacterClass = InquistorClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = SwornOfTheEldestArchetype.ToReference<BlueprintArchetypeReference>();
                 });
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
                 bp.AddComponent<PrerequisiteAlignment>(c => {

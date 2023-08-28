@@ -20,6 +20,8 @@ namespace ExpandedContent.Tweaks.DemonLords {
             var UndeadDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("UndeadDomainAllowed");
             var DreadKnightClass = Resources.GetModBlueprint<BlueprintCharacterClass>("DreadKnightClass");
             var ClawOfTheFalseWyrmArchetype = Resources.GetModBlueprint<BlueprintArchetype>("ClawOfTheFalseWyrmArchetype");
+            var InquistorClass = Resources.GetBlueprint<BlueprintCharacterClass>("f1a70d9e1b0b41e49874e1fa9052a1ce");
+            var SwornOfTheEldestArchetype = Resources.GetModBlueprint<BlueprintArchetype>("SwornOfTheEldestArchetype");
 
             KabririFeature.m_Icon = KabririIcon;
                     KabririFeature.RemoveComponents<PrerequisiteNoFeature>();
@@ -27,6 +29,11 @@ namespace ExpandedContent.Tweaks.DemonLords {
                 c.HideInUI = true;
                 c.m_CharacterClass = DreadKnightClass.ToReference<BlueprintCharacterClassReference>();
                 c.m_Archetype = ClawOfTheFalseWyrmArchetype.ToReference<BlueprintArchetypeReference>();
+            });
+            KabririFeature.AddComponent<PrerequisiteNoArchetype>(c => {
+                c.HideInUI = true;
+                c.m_CharacterClass = InquistorClass.ToReference<BlueprintCharacterClassReference>();
+                c.m_Archetype = SwornOfTheEldestArchetype.ToReference<BlueprintArchetypeReference>();
             });
             KabririFeature.AddComponent<AddFacts>(c => {
                 c.m_Facts = new BlueprintUnitFactReference[1] { DemonDomainChaosAllowed.ToReference<BlueprintUnitFactReference>() };

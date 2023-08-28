@@ -533,6 +533,11 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.m_Archetype = LivingScriptureArchetype.ToReference<BlueprintArchetypeReference>();
                     c.HideInUI = false;
                 });
+                bp.AddComponent<PrerequisiteNoArchetype>(c => {
+                    c.m_CharacterClass = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = SwornOfTheEldestArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.HideInUI = false;
+                });
                 bp.AddComponent<MysticTheurgeSpellbook>(c => {
                     c.m_CharacterClass = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_MysticTheurge = MysticTheurgeClass.ToReference<BlueprintCharacterClassReference>();
@@ -611,6 +616,11 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.m_Archetype = LivingScriptureArchetype.ToReference<BlueprintArchetypeReference>();
                     c.HideInUI = false;
                 });
+                bp.AddComponent<PrerequisiteNoArchetype>(c => {
+                    c.m_CharacterClass = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = SwornOfTheEldestArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.HideInUI = false;
+                });
                 bp.Groups = new FeatureGroup[] { FeatureGroup.ReplaceSpellbook };
                 bp.HideInUI = true;
                 bp.HideInCharacterSheetAndLevelUp = false;
@@ -682,6 +692,11 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.AddComponent<PrerequisiteNoArchetype>(c => {
                     c.m_CharacterClass = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_Archetype = LivingScriptureArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.HideInUI = false;
+                });
+                bp.AddComponent<PrerequisiteNoArchetype>(c => {
+                    c.m_CharacterClass = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = SwornOfTheEldestArchetype.ToReference<BlueprintArchetypeReference>();
                     c.HideInUI = false;
                 });
                 bp.Groups = new FeatureGroup[] { FeatureGroup.HellknightSigniferSpellbook };
@@ -943,6 +958,494 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.m_ExclusiveProgression = HellknightSigniferClass.ToReference<BlueprintCharacterClassReference>();
             });
             HellknightSigniferSpellbookSelection.m_AllFeatures = HellknightSigniferSpellbookSelection.m_AllFeatures.AppendToArray(HellknightSigniferSwornOfTheEldestProgression.ToReference<BlueprintFeatureReference>());
+
+            #endregion
+
+            #endregion
+
+            #region Hunter
+            var HunterClass = Resources.GetBlueprint<BlueprintCharacterClass>("34ecd1b5e1b90b9498795791b0855239");
+            var SkulkingHunterArchetype = Resources.GetModBlueprint<BlueprintArchetype>("SkulkingHunterArchetype");
+            var MysticTheurgeHunterProgression = Resources.GetBlueprint<BlueprintProgression>("e104a28a4bcf4e3aa4271c6e53e2f2f4");
+            var LoremasterHunterProgression = Resources.GetBlueprint<BlueprintProgression>("e9be08cf2e3b4586b11f42d6b45b50aa");
+            var HellknightSigniferHunterProgression = Resources.GetBlueprint<BlueprintProgression>("5df19d27ed0243bf8f4dd5b39f922fcc");
+
+            #region Skulking Hunter            
+            var SkulkingHunterSpellbook = Resources.GetModBlueprint<BlueprintSpellbook>("SkulkingHunterSpellbook");
+            var SkulkingHunterSpelllist = Resources.GetModBlueprint<BlueprintSpellList>("SkulkingHunterSpelllist");
+
+            var MysticTheurgeSkulkingHunterLevelParametrized1 = Helpers.CreateBlueprint<BlueprintParametrizedFeature>("MysticTheurgeSkulkingHunterLevelParametrized1", bp => {
+                bp.SetName("Skulking Hunter Spell (1st Level)");
+                bp.SetDescription("You can select new known skulking hunter {g|Encyclopedia:Spell}spells{/g} when you gain a new level in this class.");
+                bp.AddComponent<LearnSpellParametrized>(c => {
+                    c.m_SpellcasterClass = HunterClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_SpellList = SkulkingHunterSpelllist.ToReference<BlueprintSpellListReference>();
+                    c.SpecificSpellLevel = true;
+                    c.SpellLevelPenalty = 0;
+                    c.SpellLevel = 1;
+                });
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = false;
+                bp.HideNotAvailibleInUI = false;
+                bp.Ranks = 20;
+                bp.ReapplyOnLevelUp = false;
+                bp.IsClassFeature = true;
+                bp.ParameterType = FeatureParameterType.LearnSpell;
+                bp.WeaponSubCategory = WeaponSubCategory.None;
+                bp.SelectionFeatureGroup = FeatureGroup.None;
+                bp.RequireProficiency = false;
+                bp.m_SpellList = SkulkingHunterSpelllist.ToReference<BlueprintSpellListReference>();
+                bp.m_SpellcasterClass = HunterClass.ToReference<BlueprintCharacterClassReference>();
+                bp.SpecificSpellLevel = true;
+                bp.SpellLevelPenalty = 1; //????
+                bp.SpellLevel = 1;
+                bp.DisallowSpellsInSpellList = false;
+                //bp.BlueprintParameterVariants = MysticTheurgeHunterLevelParametrized1.BlueprintParameterVariants;
+            });
+            var MysticTheurgeSkulkingHunterLevelParametrized2 = Helpers.CreateBlueprint<BlueprintParametrizedFeature>("MysticTheurgeSkulkingHunterLevelParametrized2", bp => {
+                bp.SetName("Skulking Hunter Spell (2nd Level)");
+                bp.SetDescription("You can select new known skulking hunter {g|Encyclopedia:Spell}spells{/g} when you gain a new level in this class.");
+                bp.AddComponent<LearnSpellParametrized>(c => {
+                    c.m_SpellcasterClass = HunterClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_SpellList = SkulkingHunterSpelllist.ToReference<BlueprintSpellListReference>();
+                    c.SpecificSpellLevel = true;
+                    c.SpellLevelPenalty = 0;
+                    c.SpellLevel = 2;
+                });
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = false;
+                bp.HideNotAvailibleInUI = false;
+                bp.Ranks = 20;
+                bp.ReapplyOnLevelUp = false;
+                bp.IsClassFeature = true;
+                bp.ParameterType = FeatureParameterType.LearnSpell;
+                bp.WeaponSubCategory = WeaponSubCategory.None;
+                bp.SelectionFeatureGroup = FeatureGroup.None;
+                bp.RequireProficiency = false;
+                bp.m_SpellList = SkulkingHunterSpelllist.ToReference<BlueprintSpellListReference>();
+                bp.m_SpellcasterClass = HunterClass.ToReference<BlueprintCharacterClassReference>();
+                bp.SpecificSpellLevel = true;
+                bp.SpellLevelPenalty = 1; //????
+                bp.SpellLevel = 2;
+                bp.DisallowSpellsInSpellList = false;
+                //bp.BlueprintParameterVariants = MysticTheurgeHunterLevelParametrized1.BlueprintParameterVariants;
+            });
+            var MysticTheurgeSkulkingHunterLevelParametrized3 = Helpers.CreateBlueprint<BlueprintParametrizedFeature>("MysticTheurgeSkulkingHunterLevelParametrized3", bp => {
+                bp.SetName("Skulking Hunter Spell (3rd Level)");
+                bp.SetDescription("You can select new known skulking hunter {g|Encyclopedia:Spell}spells{/g} when you gain a new level in this class.");
+                bp.AddComponent<LearnSpellParametrized>(c => {
+                    c.m_SpellcasterClass = HunterClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_SpellList = SkulkingHunterSpelllist.ToReference<BlueprintSpellListReference>();
+                    c.SpecificSpellLevel = true;
+                    c.SpellLevelPenalty = 0;
+                    c.SpellLevel = 3;
+                });
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = false;
+                bp.HideNotAvailibleInUI = false;
+                bp.Ranks = 20;
+                bp.ReapplyOnLevelUp = false;
+                bp.IsClassFeature = true;
+                bp.ParameterType = FeatureParameterType.LearnSpell;
+                bp.WeaponSubCategory = WeaponSubCategory.None;
+                bp.SelectionFeatureGroup = FeatureGroup.None;
+                bp.RequireProficiency = false;
+                bp.m_SpellList = SkulkingHunterSpelllist.ToReference<BlueprintSpellListReference>();
+                bp.m_SpellcasterClass = HunterClass.ToReference<BlueprintCharacterClassReference>();
+                bp.SpecificSpellLevel = true;
+                bp.SpellLevelPenalty = 1; //????
+                bp.SpellLevel = 3;
+                bp.DisallowSpellsInSpellList = false;
+                //bp.BlueprintParameterVariants = MysticTheurgeHunterLevelParametrized1.BlueprintParameterVariants;
+            });
+            var MysticTheurgeSkulkingHunterLevelParametrized4 = Helpers.CreateBlueprint<BlueprintParametrizedFeature>("MysticTheurgeSkulkingHunterLevelParametrized4", bp => {
+                bp.SetName("Skulking Hunter Spell (4th Level)");
+                bp.SetDescription("You can select new known skulking hunter {g|Encyclopedia:Spell}spells{/g} when you gain a new level in this class.");
+                bp.AddComponent<LearnSpellParametrized>(c => {
+                    c.m_SpellcasterClass = HunterClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_SpellList = SkulkingHunterSpelllist.ToReference<BlueprintSpellListReference>();
+                    c.SpecificSpellLevel = true;
+                    c.SpellLevelPenalty = 0;
+                    c.SpellLevel = 4;
+                });
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = false;
+                bp.HideNotAvailibleInUI = false;
+                bp.Ranks = 20;
+                bp.ReapplyOnLevelUp = false;
+                bp.IsClassFeature = true;
+                bp.ParameterType = FeatureParameterType.LearnSpell;
+                bp.WeaponSubCategory = WeaponSubCategory.None;
+                bp.SelectionFeatureGroup = FeatureGroup.None;
+                bp.RequireProficiency = false;
+                bp.m_SpellList = SkulkingHunterSpelllist.ToReference<BlueprintSpellListReference>();
+                bp.m_SpellcasterClass = HunterClass.ToReference<BlueprintCharacterClassReference>();
+                bp.SpecificSpellLevel = true;
+                bp.SpellLevelPenalty = 1; //????
+                bp.SpellLevel = 4;
+                bp.DisallowSpellsInSpellList = false;
+                //bp.BlueprintParameterVariants = MysticTheurgeHunterLevelParametrized1.BlueprintParameterVariants;
+            });
+            var MysticTheurgeSkulkingHunterLevelParametrized5 = Helpers.CreateBlueprint<BlueprintParametrizedFeature>("MysticTheurgeSkulkingHunterLevelParametrized5", bp => {
+                bp.SetName("Skulking Hunter Spell (5th Level)");
+                bp.SetDescription("You can select new known skulking hunter {g|Encyclopedia:Spell}spells{/g} when you gain a new level in this class.");
+                bp.AddComponent<LearnSpellParametrized>(c => {
+                    c.m_SpellcasterClass = HunterClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_SpellList = SkulkingHunterSpelllist.ToReference<BlueprintSpellListReference>();
+                    c.SpecificSpellLevel = true;
+                    c.SpellLevelPenalty = 0;
+                    c.SpellLevel = 5;
+                });
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = false;
+                bp.HideNotAvailibleInUI = false;
+                bp.Ranks = 20;
+                bp.ReapplyOnLevelUp = false;
+                bp.IsClassFeature = true;
+                bp.ParameterType = FeatureParameterType.LearnSpell;
+                bp.WeaponSubCategory = WeaponSubCategory.None;
+                bp.SelectionFeatureGroup = FeatureGroup.None;
+                bp.RequireProficiency = false;
+                bp.m_SpellList = SkulkingHunterSpelllist.ToReference<BlueprintSpellListReference>();
+                bp.m_SpellcasterClass = HunterClass.ToReference<BlueprintCharacterClassReference>();
+                bp.SpecificSpellLevel = true;
+                bp.SpellLevelPenalty = 1; //????
+                bp.SpellLevel = 5;
+                bp.DisallowSpellsInSpellList = false;
+                //bp.BlueprintParameterVariants = MysticTheurgeHunterLevelParametrized1.BlueprintParameterVariants;
+            });
+            var MysticTheurgeSkulkingHunterLevelParametrized6 = Helpers.CreateBlueprint<BlueprintParametrizedFeature>("MysticTheurgeSkulkingHunterLevelParametrized6", bp => {
+                bp.SetName("Skulking Hunter Spell (6th Level)");
+                bp.SetDescription("You can select new known skulking hunter {g|Encyclopedia:Spell}spells{/g} when you gain a new level in this class.");
+                bp.AddComponent<LearnSpellParametrized>(c => {
+                    c.m_SpellcasterClass = HunterClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_SpellList = SkulkingHunterSpelllist.ToReference<BlueprintSpellListReference>();
+                    c.SpecificSpellLevel = true;
+                    c.SpellLevelPenalty = 0;
+                    c.SpellLevel = 6;
+                });
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = false;
+                bp.HideNotAvailibleInUI = false;
+                bp.Ranks = 20;
+                bp.ReapplyOnLevelUp = false;
+                bp.IsClassFeature = true;
+                bp.ParameterType = FeatureParameterType.LearnSpell;
+                bp.WeaponSubCategory = WeaponSubCategory.None;
+                bp.SelectionFeatureGroup = FeatureGroup.None;
+                bp.RequireProficiency = false;
+                bp.m_SpellList = SkulkingHunterSpelllist.ToReference<BlueprintSpellListReference>();
+                bp.m_SpellcasterClass = HunterClass.ToReference<BlueprintCharacterClassReference>();
+                bp.SpecificSpellLevel = true;
+                bp.SpellLevelPenalty = 1; //????
+                bp.SpellLevel = 6;
+                bp.DisallowSpellsInSpellList = false;
+                //bp.BlueprintParameterVariants = MysticTheurgeHunterLevelParametrized1.BlueprintParameterVariants;
+            });
+
+            var MysticTheurgeSkulkingHunterLevelSelection1 = Helpers.CreateBlueprint<BlueprintFeatureSelection>("MysticTheurgeSkulkingHunterLevelSelection1", bp => {
+                bp.SetName("Skulking Hunter Spell (1st Level)");
+                bp.SetDescription("You can select new known skulking hunter {g|Encyclopedia:Spell}spells{/g} when you gain a new level in this class.");
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = false;
+                bp.HideNotAvailibleInUI = true;
+                bp.ReapplyOnLevelUp = false;
+                bp.IsClassFeature = true;
+                bp.Mode = SelectionMode.Default;
+                bp.m_AllFeatures = new BlueprintFeatureReference[] {
+                    MysticTheurgeSkulkingHunterLevelParametrized1.ToReference<BlueprintFeatureReference>()
+                };
+                bp.m_Features = new BlueprintFeatureReference[] {
+                    MysticTheurgeSkulkingHunterLevelParametrized1.ToReference<BlueprintFeatureReference>()
+                };
+            });
+            var MysticTheurgeSkulkingHunterLevelSelection2 = Helpers.CreateBlueprint<BlueprintFeatureSelection>("MysticTheurgeSkulkingHunterLevelSelection2", bp => {
+                bp.SetName("Skulking Hunter Spell (2nd Level)");
+                bp.SetDescription("You can select new known skulking hunter {g|Encyclopedia:Spell}spells{/g} when you gain a new level in this class.");
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = false;
+                bp.HideNotAvailibleInUI = true;
+                bp.ReapplyOnLevelUp = false;
+                bp.IsClassFeature = true;
+                bp.Mode = SelectionMode.Default;
+                bp.m_AllFeatures = new BlueprintFeatureReference[] {
+                    MysticTheurgeSkulkingHunterLevelParametrized2.ToReference<BlueprintFeatureReference>()
+                };
+                bp.m_Features = new BlueprintFeatureReference[] {
+                    MysticTheurgeSkulkingHunterLevelParametrized2.ToReference<BlueprintFeatureReference>()
+                };
+            });
+            var MysticTheurgeSkulkingHunterLevelSelection3 = Helpers.CreateBlueprint<BlueprintFeatureSelection>("MysticTheurgeSkulkingHunterLevelSelection3", bp => {
+                bp.SetName("Skulking Hunter Spell (3rd Level)");
+                bp.SetDescription("You can select new known skulking hunter {g|Encyclopedia:Spell}spells{/g} when you gain a new level in this class.");
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = false;
+                bp.HideNotAvailibleInUI = true;
+                bp.ReapplyOnLevelUp = false;
+                bp.IsClassFeature = true;
+                bp.Mode = SelectionMode.Default;
+                bp.m_AllFeatures = new BlueprintFeatureReference[] {
+                    MysticTheurgeSkulkingHunterLevelParametrized3.ToReference<BlueprintFeatureReference>()
+                };
+                bp.m_Features = new BlueprintFeatureReference[] {
+                    MysticTheurgeSkulkingHunterLevelParametrized3.ToReference<BlueprintFeatureReference>()
+                };
+            });
+            var MysticTheurgeSkulkingHunterLevelSelection4 = Helpers.CreateBlueprint<BlueprintFeatureSelection>("MysticTheurgeSkulkingHunterLevelSelection4", bp => {
+                bp.SetName("Skulking Hunter Spell (4th Level)");
+                bp.SetDescription("You can select new known skulking hunter {g|Encyclopedia:Spell}spells{/g} when you gain a new level in this class.");
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = false;
+                bp.HideNotAvailibleInUI = true;
+                bp.ReapplyOnLevelUp = false;
+                bp.IsClassFeature = true;
+                bp.Mode = SelectionMode.Default;
+                bp.m_AllFeatures = new BlueprintFeatureReference[] {
+                    MysticTheurgeSkulkingHunterLevelParametrized4.ToReference<BlueprintFeatureReference>()
+                };
+                bp.m_Features = new BlueprintFeatureReference[] {
+                    MysticTheurgeSkulkingHunterLevelParametrized4.ToReference<BlueprintFeatureReference>()
+                };
+            });
+            var MysticTheurgeSkulkingHunterLevelSelection5 = Helpers.CreateBlueprint<BlueprintFeatureSelection>("MysticTheurgeSkulkingHunterLevelSelection5", bp => {
+                bp.SetName("Skulking Hunter Spell (5th Level)");
+                bp.SetDescription("You can select new known skulking hunter {g|Encyclopedia:Spell}spells{/g} when you gain a new level in this class.");
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = false;
+                bp.HideNotAvailibleInUI = true;
+                bp.ReapplyOnLevelUp = false;
+                bp.IsClassFeature = true;
+                bp.Mode = SelectionMode.Default;
+                bp.m_AllFeatures = new BlueprintFeatureReference[] {
+                    MysticTheurgeSkulkingHunterLevelParametrized5.ToReference<BlueprintFeatureReference>()
+                };
+                bp.m_Features = new BlueprintFeatureReference[] {
+                    MysticTheurgeSkulkingHunterLevelParametrized5.ToReference<BlueprintFeatureReference>()
+                };
+            });
+            var MysticTheurgeSkulkingHunterLevelSelection6 = Helpers.CreateBlueprint<BlueprintFeatureSelection>("MysticTheurgeSkulkingHunterLevelSelection6", bp => {
+                bp.SetName("Skulking Hunter Spell (6th Level)");
+                bp.SetDescription("You can select new known skulking hunter {g|Encyclopedia:Spell}spells{/g} when you gain a new level in this class.");
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = false;
+                bp.HideNotAvailibleInUI = true;
+                bp.ReapplyOnLevelUp = false;
+                bp.IsClassFeature = true;
+                bp.Mode = SelectionMode.Default;
+                bp.m_AllFeatures = new BlueprintFeatureReference[] {
+                    MysticTheurgeSkulkingHunterLevelParametrized6.ToReference<BlueprintFeatureReference>()
+                };
+                bp.m_Features = new BlueprintFeatureReference[] {
+                    MysticTheurgeSkulkingHunterLevelParametrized6.ToReference<BlueprintFeatureReference>()
+                };
+            });
+
+            MysticTheurgeHunterProgression.AddComponent<PrerequisiteNoArchetype>(c => {
+                c.m_CharacterClass = HunterClass.ToReference<BlueprintCharacterClassReference>();
+                c.m_Archetype = SkulkingHunterArchetype.ToReference<BlueprintArchetypeReference>();
+            });
+            var MysticTheurgeSkulkingHunterLevelUp = Helpers.CreateBlueprint<BlueprintFeature>("MysticTheurgeSkulkingHunterLevelUp", bp => {
+                bp.SetName("Skulking Hunter");
+                bp.SetDescription("At 1st level, the mystic theurge selects a divine {g|Encyclopedia:Spell}spellcasting{/g} class she belonged to before adding the prestige class. When a " +
+                    "new mystic theurge level is gained, the character gains new spells per day and new spells known as if she had also gained a level in that spellcasting class.");
+                bp.AddComponent<AddSpellbookLevel>(c => {
+                    c.m_Spellbook = SkulkingHunterSpellbook.ToReference<BlueprintSpellbookReference>();
+                });
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = false;
+                bp.HideNotAvailibleInUI = false;
+                bp.IsClassFeature = true;
+                bp.m_AllowNonContextActions = false;
+                bp.Ranks = 10;
+            });
+            var MysticTheurgeSkulkingHunterProgression = Helpers.CreateBlueprint<BlueprintProgression>("MysticTheurgeSkulkingHunterProgression", bp => {
+                bp.SetName("Skulking Hunter");
+                bp.SetDescription("At 1st level, the mystic theurge selects a divine {g|Encyclopedia:Spell}spellcasting{/g} class she belonged to before adding the prestige class. When a " +
+                    "new mystic theurge level is gained, the character gains new spells per day and new spells known as if she had also gained a level in that spellcasting class.");
+                bp.AddComponent<PrerequisiteClassSpellLevel>(c => {
+                    c.m_CharacterClass = HunterClass.ToReference<BlueprintCharacterClassReference>();
+                    c.RequiredSpellLevel = 2;
+                    c.HideInUI = false;
+                });
+                bp.AddComponent<PrerequisiteArchetypeLevel>(c => {
+                    c.m_CharacterClass = HunterClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = SkulkingHunterArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.Level = 1;
+                    c.HideInUI = false;
+                });
+                bp.AddComponent<MysticTheurgeSpellbook>(c => {
+                    c.m_CharacterClass = HunterClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_MysticTheurge = MysticTheurgeClass.ToReference<BlueprintCharacterClassReference>();
+                });
+                bp.Groups = new FeatureGroup[] { FeatureGroup.MysticTheurgeDivineSpellbook };
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = false;
+                bp.HideNotAvailibleInUI = true;
+                bp.IsClassFeature = true;
+                bp.m_AllowNonContextActions = false;
+                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
+                    new BlueprintProgression.ClassWithLevel() { AdditionalLevel = 0, m_Class = MysticTheurgeClass.ToReference<BlueprintCharacterClassReference>() },
+                    new BlueprintProgression.ClassWithLevel() { AdditionalLevel = 0, m_Class = HunterClass.ToReference<BlueprintCharacterClassReference>() }
+                };
+                bp.LevelEntries = new LevelEntry[] {
+                    Helpers.LevelEntry(5, MysticTheurgeSkulkingHunterLevelUp, MysticTheurgeSkulkingHunterLevelSelection2),
+                    Helpers.LevelEntry(6, MysticTheurgeSkulkingHunterLevelUp, MysticTheurgeSkulkingHunterLevelSelection2),
+                    Helpers.LevelEntry(7, MysticTheurgeSkulkingHunterLevelUp, MysticTheurgeSkulkingHunterLevelSelection1, MysticTheurgeSkulkingHunterLevelSelection3, MysticTheurgeSkulkingHunterLevelSelection3),
+                    Helpers.LevelEntry(8, MysticTheurgeSkulkingHunterLevelUp, MysticTheurgeSkulkingHunterLevelSelection3),
+                    Helpers.LevelEntry(9, MysticTheurgeSkulkingHunterLevelUp, MysticTheurgeSkulkingHunterLevelSelection3),
+                    Helpers.LevelEntry(10, MysticTheurgeSkulkingHunterLevelUp, MysticTheurgeSkulkingHunterLevelSelection2, MysticTheurgeSkulkingHunterLevelSelection4, MysticTheurgeSkulkingHunterLevelSelection4),
+                    Helpers.LevelEntry(11, MysticTheurgeSkulkingHunterLevelUp, MysticTheurgeSkulkingHunterLevelSelection1, MysticTheurgeSkulkingHunterLevelSelection4),
+                    Helpers.LevelEntry(12, MysticTheurgeSkulkingHunterLevelUp, MysticTheurgeSkulkingHunterLevelSelection4),
+                    Helpers.LevelEntry(13, MysticTheurgeSkulkingHunterLevelUp, MysticTheurgeSkulkingHunterLevelSelection3, MysticTheurgeSkulkingHunterLevelSelection5, MysticTheurgeSkulkingHunterLevelSelection5),
+                    Helpers.LevelEntry(14, MysticTheurgeSkulkingHunterLevelUp, MysticTheurgeSkulkingHunterLevelSelection2, MysticTheurgeSkulkingHunterLevelSelection5),
+                    Helpers.LevelEntry(15, MysticTheurgeSkulkingHunterLevelUp, MysticTheurgeSkulkingHunterLevelSelection5),
+                    Helpers.LevelEntry(16, MysticTheurgeSkulkingHunterLevelUp, MysticTheurgeSkulkingHunterLevelSelection4, MysticTheurgeSkulkingHunterLevelSelection6, MysticTheurgeSkulkingHunterLevelSelection6),
+                    Helpers.LevelEntry(17, MysticTheurgeSkulkingHunterLevelUp, MysticTheurgeSkulkingHunterLevelSelection3, MysticTheurgeSkulkingHunterLevelSelection6),
+                    Helpers.LevelEntry(18, MysticTheurgeSkulkingHunterLevelUp, MysticTheurgeSkulkingHunterLevelSelection6),
+                    Helpers.LevelEntry(19, MysticTheurgeSkulkingHunterLevelUp, MysticTheurgeSkulkingHunterLevelSelection5),
+                    Helpers.LevelEntry(20, MysticTheurgeSkulkingHunterLevelUp, MysticTheurgeSkulkingHunterLevelSelection4, MysticTheurgeSkulkingHunterLevelSelection6)
+                };
+                bp.GiveFeaturesForPreviousLevels = false;
+                bp.m_ExclusiveProgression = MysticTheurgeClass.ToReference<BlueprintCharacterClassReference>();
+            });
+            MysticTheurgeDivineSpellbookSelection.m_AllFeatures = MysticTheurgeDivineSpellbookSelection.m_AllFeatures.AppendToArray(MysticTheurgeSkulkingHunterProgression.ToReference<BlueprintFeatureReference>());
+
+            LoremasterHunterProgression.AddComponent<PrerequisiteNoArchetype>(c => {
+                c.m_CharacterClass = HunterClass.ToReference<BlueprintCharacterClassReference>();
+                c.m_Archetype = SkulkingHunterArchetype.ToReference<BlueprintArchetypeReference>();
+            });
+            var LoremasterSkulkingHunterLevelUp = Helpers.CreateBlueprint<BlueprintFeature>("LoremasterSkulkingHunterLevelUp", bp => {
+                bp.SetName("Skulking Hunter");
+                bp.SetDescription("At 1st level, the loremaster selects a divine {g|Encyclopedia:Spell}spellcasting{/g} class she belonged to before adding the prestige class. When a " +
+                    "new loremaster level is gained, the character gains new spells per day and new spells known as if she had also gained a level in that spellcasting class.");
+                bp.AddComponent<AddSpellbookLevel>(c => {
+                    c.m_Spellbook = SkulkingHunterSpellbook.ToReference<BlueprintSpellbookReference>();
+                });
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = false;
+                bp.HideNotAvailibleInUI = false;
+                bp.IsClassFeature = true;
+                bp.m_AllowNonContextActions = false;
+                bp.Ranks = 10;
+            });
+            var LoremasterSkulkingHunterProgression = Helpers.CreateBlueprint<BlueprintProgression>("LoremasterSkulkingHunterProgression", bp => {
+                bp.SetName("Skulking Hunter");
+                bp.SetDescription("When a new loremaster level is gained, the character gains new {g|Encyclopedia:Spell}spells{/g} per day as if he had also gained a level in a " +
+                    "spellcasting class he belonged to before adding the prestige class. He does not, however, gain other benefits a character of that class would have gained, " +
+                    "except for additional spells per day, spells known (if he is a spontaneous spellcaster), and an increased effective level of spellcasting. If a character " +
+                    "had more than one spellcasting class before becoming a loremaster, he must decide to which class he adds the new level for purposes of determining the " +
+                    "number of spells per day.");
+                bp.AddComponent<PrerequisiteClassSpellLevel>(c => {
+                    c.m_CharacterClass = HunterClass.ToReference<BlueprintCharacterClassReference>();
+                    c.RequiredSpellLevel = 3;
+                    c.HideInUI = false;
+                });
+                bp.AddComponent<PrerequisiteArchetypeLevel>(c => {
+                    c.m_CharacterClass = HunterClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = SkulkingHunterArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.Level = 1;
+                    c.HideInUI = false;
+                });
+                bp.Groups = new FeatureGroup[] { FeatureGroup.ReplaceSpellbook };
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = false;
+                bp.HideNotAvailibleInUI = true;
+                bp.IsClassFeature = true;
+                bp.m_AllowNonContextActions = false;
+                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
+                    new BlueprintProgression.ClassWithLevel() { AdditionalLevel = 0, m_Class = LoremasterClass.ToReference<BlueprintCharacterClassReference>() },
+                    new BlueprintProgression.ClassWithLevel() { AdditionalLevel = 0, m_Class = HunterClass.ToReference<BlueprintCharacterClassReference>() }
+                };
+                bp.LevelEntries = new LevelEntry[] {
+                    Helpers.LevelEntry(5, LoremasterSkulkingHunterLevelUp, MysticTheurgeSkulkingHunterLevelSelection2),
+                    Helpers.LevelEntry(6, LoremasterSkulkingHunterLevelUp, MysticTheurgeSkulkingHunterLevelSelection2),
+                    Helpers.LevelEntry(7, LoremasterSkulkingHunterLevelUp, MysticTheurgeSkulkingHunterLevelSelection1, MysticTheurgeSkulkingHunterLevelSelection3, MysticTheurgeSkulkingHunterLevelSelection3),
+                    Helpers.LevelEntry(8, LoremasterSkulkingHunterLevelUp, MysticTheurgeSkulkingHunterLevelSelection3),
+                    Helpers.LevelEntry(9, LoremasterSkulkingHunterLevelUp, MysticTheurgeSkulkingHunterLevelSelection3),
+                    Helpers.LevelEntry(10, LoremasterSkulkingHunterLevelUp, MysticTheurgeSkulkingHunterLevelSelection2, MysticTheurgeSkulkingHunterLevelSelection4, MysticTheurgeSkulkingHunterLevelSelection4),
+                    Helpers.LevelEntry(11, LoremasterSkulkingHunterLevelUp, MysticTheurgeSkulkingHunterLevelSelection1, MysticTheurgeSkulkingHunterLevelSelection4),
+                    Helpers.LevelEntry(12, LoremasterSkulkingHunterLevelUp, MysticTheurgeSkulkingHunterLevelSelection4),
+                    Helpers.LevelEntry(13, LoremasterSkulkingHunterLevelUp, MysticTheurgeSkulkingHunterLevelSelection3, MysticTheurgeSkulkingHunterLevelSelection5, MysticTheurgeSkulkingHunterLevelSelection5),
+                    Helpers.LevelEntry(14, LoremasterSkulkingHunterLevelUp, MysticTheurgeSkulkingHunterLevelSelection2, MysticTheurgeSkulkingHunterLevelSelection5),
+                    Helpers.LevelEntry(15, LoremasterSkulkingHunterLevelUp, MysticTheurgeSkulkingHunterLevelSelection5),
+                    Helpers.LevelEntry(16, LoremasterSkulkingHunterLevelUp, MysticTheurgeSkulkingHunterLevelSelection4, MysticTheurgeSkulkingHunterLevelSelection6, MysticTheurgeSkulkingHunterLevelSelection6),
+                    Helpers.LevelEntry(17, LoremasterSkulkingHunterLevelUp, MysticTheurgeSkulkingHunterLevelSelection3, MysticTheurgeSkulkingHunterLevelSelection6),
+                    Helpers.LevelEntry(18, LoremasterSkulkingHunterLevelUp, MysticTheurgeSkulkingHunterLevelSelection6),
+                    Helpers.LevelEntry(19, LoremasterSkulkingHunterLevelUp, MysticTheurgeSkulkingHunterLevelSelection5),
+                    Helpers.LevelEntry(20, LoremasterSkulkingHunterLevelUp, MysticTheurgeSkulkingHunterLevelSelection4, MysticTheurgeSkulkingHunterLevelSelection6)
+                };
+                bp.GiveFeaturesForPreviousLevels = false;
+                bp.m_ExclusiveProgression = LoremasterClass.ToReference<BlueprintCharacterClassReference>();
+            });
+            LoremasterSpellbookSelection.m_AllFeatures = LoremasterSpellbookSelection.m_AllFeatures.AppendToArray(LoremasterSkulkingHunterProgression.ToReference<BlueprintFeatureReference>());
+
+            HellknightSigniferHunterProgression.AddComponent<PrerequisiteNoArchetype>(c => {
+                c.m_CharacterClass = HunterClass.ToReference<BlueprintCharacterClassReference>();
+                c.m_Archetype = SkulkingHunterArchetype.ToReference<BlueprintArchetypeReference>();
+            });
+            var HellknightSigniferSkulkingHunterLevelUp = Helpers.CreateBlueprint<BlueprintFeature>("HellknightSigniferSkulkingHunterLevelUp", bp => {
+                bp.SetName("Skulking Hunter");
+                bp.SetDescription("At 1st level, the hellknight signifer selects a divine {g|Encyclopedia:Spell}spellcasting{/g} class she belonged to before adding the prestige class. When a " +
+                    "new hellknight signifer level is gained, the character gains new spells per day and new spells known as if she had also gained a level in that spellcasting class.");
+                bp.AddComponent<AddSpellbookLevel>(c => {
+                    c.m_Spellbook = SkulkingHunterSpellbook.ToReference<BlueprintSpellbookReference>();
+                });
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = false;
+                bp.HideNotAvailibleInUI = false;
+                bp.IsClassFeature = true;
+                bp.m_AllowNonContextActions = false;
+                bp.Ranks = 10;
+            });
+            var HellknightSigniferSkulkingHunterProgression = Helpers.CreateBlueprint<BlueprintProgression>("HellknightSigniferSkulkingHunterProgression", bp => {
+                bp.SetName("Skulking Hunter");
+                bp.SetDescription("At 1st level, and at every level thereafter, a Hellknight signifer gains new {g|Encyclopedia:Spell}spells{/g} per day as if he had also gained a level " +
+                    "in a spellcasting class he belonged to before adding the prestige class. He does not, however, gain any other benefit a character of that class would have gained, " +
+                    "except for additional spells per day, spells known, and an increased effective level of spellcasting. If a character had more than one spellcasting class before " +
+                    "becoming a Hellknight signifer, he must decide to which class he adds the new level for purposes of determining spells per day.");
+                bp.AddComponent<PrerequisiteClassSpellLevel>(c => {
+                    c.m_CharacterClass = HunterClass.ToReference<BlueprintCharacterClassReference>();
+                    c.RequiredSpellLevel = 3;
+                    c.HideInUI = false;
+                });
+                bp.AddComponent<PrerequisiteArchetypeLevel>(c => {
+                    c.m_CharacterClass = HunterClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = SkulkingHunterArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.Level = 1;
+                    c.HideInUI = false;
+                });
+                bp.Groups = new FeatureGroup[] { FeatureGroup.HellknightSigniferSpellbook };
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = false;
+                bp.HideNotAvailibleInUI = true;
+                bp.IsClassFeature = true;
+                bp.m_AllowNonContextActions = false;
+                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
+                    new BlueprintProgression.ClassWithLevel() { AdditionalLevel = 0, m_Class = HellknightSigniferClass.ToReference<BlueprintCharacterClassReference>() },
+                    new BlueprintProgression.ClassWithLevel() { AdditionalLevel = 0, m_Class = HunterClass.ToReference<BlueprintCharacterClassReference>() }
+                };
+                bp.LevelEntries = new LevelEntry[] {
+                    Helpers.LevelEntry(5, HellknightSigniferSkulkingHunterLevelUp, MysticTheurgeSkulkingHunterLevelSelection2),
+                    Helpers.LevelEntry(6, HellknightSigniferSkulkingHunterLevelUp, MysticTheurgeSkulkingHunterLevelSelection2),
+                    Helpers.LevelEntry(7, HellknightSigniferSkulkingHunterLevelUp, MysticTheurgeSkulkingHunterLevelSelection1, MysticTheurgeSkulkingHunterLevelSelection3, MysticTheurgeSkulkingHunterLevelSelection3),
+                    Helpers.LevelEntry(8, HellknightSigniferSkulkingHunterLevelUp, MysticTheurgeSkulkingHunterLevelSelection3),
+                    Helpers.LevelEntry(9, HellknightSigniferSkulkingHunterLevelUp, MysticTheurgeSkulkingHunterLevelSelection3),
+                    Helpers.LevelEntry(10, HellknightSigniferSkulkingHunterLevelUp, MysticTheurgeSkulkingHunterLevelSelection2, MysticTheurgeSkulkingHunterLevelSelection4, MysticTheurgeSkulkingHunterLevelSelection4),
+                    Helpers.LevelEntry(11, HellknightSigniferSkulkingHunterLevelUp, MysticTheurgeSkulkingHunterLevelSelection1, MysticTheurgeSkulkingHunterLevelSelection4),
+                    Helpers.LevelEntry(12, HellknightSigniferSkulkingHunterLevelUp, MysticTheurgeSkulkingHunterLevelSelection4),
+                    Helpers.LevelEntry(13, HellknightSigniferSkulkingHunterLevelUp, MysticTheurgeSkulkingHunterLevelSelection3, MysticTheurgeSkulkingHunterLevelSelection5, MysticTheurgeSkulkingHunterLevelSelection5),
+                    Helpers.LevelEntry(14, HellknightSigniferSkulkingHunterLevelUp, MysticTheurgeSkulkingHunterLevelSelection2, MysticTheurgeSkulkingHunterLevelSelection5),
+                    Helpers.LevelEntry(15, HellknightSigniferSkulkingHunterLevelUp, MysticTheurgeSkulkingHunterLevelSelection5),
+                    Helpers.LevelEntry(16, HellknightSigniferSkulkingHunterLevelUp, MysticTheurgeSkulkingHunterLevelSelection4, MysticTheurgeSkulkingHunterLevelSelection6, MysticTheurgeSkulkingHunterLevelSelection6),
+                    Helpers.LevelEntry(17, HellknightSigniferSkulkingHunterLevelUp, MysticTheurgeSkulkingHunterLevelSelection3, MysticTheurgeSkulkingHunterLevelSelection6),
+                    Helpers.LevelEntry(18, HellknightSigniferSkulkingHunterLevelUp, MysticTheurgeSkulkingHunterLevelSelection6),
+                    Helpers.LevelEntry(19, HellknightSigniferSkulkingHunterLevelUp, MysticTheurgeSkulkingHunterLevelSelection5),
+                    Helpers.LevelEntry(20, HellknightSigniferSkulkingHunterLevelUp, MysticTheurgeSkulkingHunterLevelSelection4, MysticTheurgeSkulkingHunterLevelSelection6)
+                };
+                bp.GiveFeaturesForPreviousLevels = false;
+                bp.m_ExclusiveProgression = HellknightSigniferClass.ToReference<BlueprintCharacterClassReference>();
+            });
+            HellknightSigniferSpellbookSelection.m_AllFeatures = HellknightSigniferSpellbookSelection.m_AllFeatures.AppendToArray(HellknightSigniferSkulkingHunterProgression.ToReference<BlueprintFeatureReference>());
 
             #endregion
 

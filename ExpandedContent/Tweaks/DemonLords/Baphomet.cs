@@ -24,6 +24,8 @@ namespace ExpandedContent.Tweaks.DemonLords {
             var FurDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("FurDomainAllowed");
             var DreadKnightClass = Resources.GetModBlueprint<BlueprintCharacterClass>("DreadKnightClass");
             var ClawOfTheFalseWyrmArchetype = Resources.GetModBlueprint<BlueprintArchetype>("ClawOfTheFalseWyrmArchetype");
+            var InquistorClass = Resources.GetBlueprint<BlueprintCharacterClass>("f1a70d9e1b0b41e49874e1fa9052a1ce");
+            var SwornOfTheEldestArchetype = Resources.GetModBlueprint<BlueprintArchetype>("SwornOfTheEldestArchetype");
 
             BaphometFeature.m_Icon = BaphometIcon;
             BaphometFeature.RemoveComponents<PrerequisiteNoFeature>();
@@ -31,6 +33,11 @@ namespace ExpandedContent.Tweaks.DemonLords {
                 c.HideInUI = true;
                 c.m_CharacterClass = DreadKnightClass.ToReference<BlueprintCharacterClassReference>();
                 c.m_Archetype = ClawOfTheFalseWyrmArchetype.ToReference<BlueprintArchetypeReference>();
+            });
+            BaphometFeature.AddComponent<PrerequisiteNoArchetype>(c => {
+                c.HideInUI = true;
+                c.m_CharacterClass = InquistorClass.ToReference<BlueprintCharacterClassReference>();
+                c.m_Archetype = SwornOfTheEldestArchetype.ToReference<BlueprintArchetypeReference>();
             });
             BaphometFeature.AddComponent<AddFacts>(c => {
                 c.m_Facts = new BlueprintUnitFactReference[1] { DemonDomainChaosAllowed.ToReference<BlueprintUnitFactReference>() };

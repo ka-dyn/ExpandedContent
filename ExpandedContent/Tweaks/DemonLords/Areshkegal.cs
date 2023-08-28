@@ -22,6 +22,8 @@ namespace ExpandedContent.Tweaks.DemonLords {
             var ThieveryDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("ThieveryDomainAllowed");
             var DreadKnightClass = Resources.GetModBlueprint<BlueprintCharacterClass>("DreadKnightClass");
             var ClawOfTheFalseWyrmArchetype = Resources.GetModBlueprint<BlueprintArchetype>("ClawOfTheFalseWyrmArchetype");
+            var InquistorClass = Resources.GetBlueprint<BlueprintCharacterClass>("f1a70d9e1b0b41e49874e1fa9052a1ce");
+            var SwornOfTheEldestArchetype = Resources.GetModBlueprint<BlueprintArchetype>("SwornOfTheEldestArchetype");
 
             AreshkegalFeature.m_Icon = AreshkagalIcon;
             AreshkegalFeature.RemoveComponents<PrerequisiteNoFeature>();
@@ -29,6 +31,11 @@ namespace ExpandedContent.Tweaks.DemonLords {
                 c.HideInUI = true;
                 c.m_CharacterClass = DreadKnightClass.ToReference<BlueprintCharacterClassReference>();
                 c.m_Archetype = ClawOfTheFalseWyrmArchetype.ToReference<BlueprintArchetypeReference>();
+            });
+            AreshkegalFeature.AddComponent<PrerequisiteNoArchetype>(c => {
+                c.HideInUI = true;
+                c.m_CharacterClass = InquistorClass.ToReference<BlueprintCharacterClassReference>();
+                c.m_Archetype = SwornOfTheEldestArchetype.ToReference<BlueprintArchetypeReference>();
             });
             AreshkegalFeature.AddComponent<AddFacts>(c => {
                 c.m_Facts = new BlueprintUnitFactReference[1] { DemonDomainChaosAllowed.ToReference<BlueprintUnitFactReference>() };

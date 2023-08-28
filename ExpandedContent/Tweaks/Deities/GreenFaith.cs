@@ -18,6 +18,8 @@ namespace ExpandedContent.Tweaks.Deities {
             var MantisZealotArchetype = Resources.GetModBlueprint<BlueprintArchetype>("MantisZealotArchetype");
             var DreadKnightClass = Resources.GetModBlueprint<BlueprintCharacterClass>("DreadKnightClass");
             var ClawOfTheFalseWyrmArchetype = Resources.GetModBlueprint<BlueprintArchetype>("ClawOfTheFalseWyrmArchetype");
+            var InquisitorClass = Resources.GetBlueprint<BlueprintCharacterClass>("f1a70d9e1b0b41e49874e1fa9052a1ce");
+            var SwornOfTheEldestArchetype = Resources.GetModBlueprint<BlueprintArchetype>("SwornOfTheEldestArchetype");
 
             GreenFaithFeature.AddComponent<PrerequisiteNoArchetype>(c => {
                 c.HideInUI = true;
@@ -29,9 +31,14 @@ namespace ExpandedContent.Tweaks.Deities {
                 c.m_CharacterClass = DreadKnightClass.ToReference<BlueprintCharacterClassReference>();
                 c.m_Archetype = ClawOfTheFalseWyrmArchetype.ToReference<BlueprintArchetypeReference>();
             });
+            GreenFaithFeature.AddComponent<PrerequisiteNoArchetype>(c => {
+                c.HideInUI = true;
+                c.m_CharacterClass = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
+                c.m_Archetype = SwornOfTheEldestArchetype.ToReference<BlueprintArchetypeReference>();
+            });
             GreenFaithFeature.SetDescription("\nType: Druidic  " +
                         "\nLeader: \bThe Archdruid   " +
-                        "\nDomains: Air, Earth, Animal, Fire, Plant. " +
+                        "\nDomains: Animal, Earth, Fire, Plant, Water. " +
                         "\nFavoured Weapons: Sickle, Quarterstaff" +
                         "\nThe Green Faith (also known as the Old Faith, the Great Eld, or the Wyrd) is a naturalistic philosophy based on " +
                         "the belief that natural forces are worthy of attention and respect. Followers of the Green Faith meditate daily, commune " +

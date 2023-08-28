@@ -33,6 +33,7 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintItem MasterworkLongbow = Resources.GetBlueprint<BlueprintItem>("8e89a5d3c1a9dae44b967fb4fd7e5117");
 
             BlueprintArchetype PriestOfBalance = Resources.GetBlueprint<BlueprintArchetype>("a4560e3fb5d247d68fb1a2738fcc0855");
+            BlueprintArchetype SwornOfTheEldestArchetype = Resources.GetModBlueprint<BlueprintArchetype>("SwornOfTheEldestArchetype");
 
             BlueprintFeature LongbowProficiency = Resources.GetBlueprint<BlueprintFeature>("0978f630fc5d6a6409ac641137bf6659");
             var KetephysIcon = AssetLoader.LoadInternal("Deities", "Icon_Ketephys.jpg");
@@ -62,6 +63,11 @@ namespace ExpandedContent.Tweaks.Deities {
                 bp.AddComponent<PrerequisiteNoArchetype>(c => {
                     c.m_CharacterClass = ClericClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_Archetype = PriestOfBalance.ToReference<BlueprintArchetypeReference>();
+                });
+                bp.AddComponent<PrerequisiteNoArchetype>(c => {
+                    c.HideInUI = true;
+                    c.m_CharacterClass = InquistorClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = SwornOfTheEldestArchetype.ToReference<BlueprintArchetypeReference>();
                 });
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
                 bp.AddComponent<PrerequisiteAlignment>(c => {

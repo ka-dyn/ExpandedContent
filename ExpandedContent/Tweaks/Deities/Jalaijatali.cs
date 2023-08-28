@@ -31,6 +31,7 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintItem MasterworkTrident = Resources.GetBlueprint<BlueprintItem>("cd1b1365e098ca44aab3f8974c7d5a39");
 
             BlueprintArchetype PriestOfBalance = Resources.GetBlueprint<BlueprintArchetype>("a4560e3fb5d247d68fb1a2738fcc0855");
+            BlueprintArchetype SwornOfTheEldestArchetype = Resources.GetModBlueprint<BlueprintArchetype>("SwornOfTheEldestArchetype");
 
             BlueprintFeature TridentProficiency = Resources.GetBlueprint<BlueprintFeature>("f9565a97342ac594e9b6a495368c1a57");
             var JalaijataliIcon = AssetLoader.LoadInternal("Deities", "Icon_Jalaijatali.jpg");
@@ -61,6 +62,11 @@ namespace ExpandedContent.Tweaks.Deities {
                 bp.AddComponent<PrerequisiteNoArchetype>(c => {
                     c.m_CharacterClass = ClericClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_Archetype = PriestOfBalance.ToReference<BlueprintArchetypeReference>();
+                });
+                bp.AddComponent<PrerequisiteNoArchetype>(c => {
+                    c.HideInUI = true;
+                    c.m_CharacterClass = InquistorClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = SwornOfTheEldestArchetype.ToReference<BlueprintArchetypeReference>();
                 });
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
                 bp.AddComponent<PrerequisiteAlignment>(c => {

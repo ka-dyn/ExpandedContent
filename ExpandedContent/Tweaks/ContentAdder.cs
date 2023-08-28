@@ -65,6 +65,8 @@ namespace ExpandedContent.Tweaks {
                 Archetypes.SpearFighter.AddSpearFighter();
                 Archetypes.RavenerHunter.AddRavenerHunter();
                 Archetypes.SkulkingHunter.AddSkulkingHunter();
+                Archetypes.SwornOfTheEldest.AddSwornOfTheEldest();
+
 
                 Classes.OathbreakerClass.AddOathbreakerClass();
                 Archetypes.Castigator.AddCastigator();
@@ -373,7 +375,6 @@ namespace ExpandedContent.Tweaks {
                 Deities.DeitySelectionFeature.TheElderMythosToggle();
                 Deities.DeitySelectionFeature.OrcPantheonToggle();
 
-                Archetypes.SwornOfTheEldest.AddSwornOfTheEldest();
             }
             [HarmonyPriority(Priority.Last)]
             [HarmonyPostfix]
