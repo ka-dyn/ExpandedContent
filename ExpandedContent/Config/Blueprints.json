@@ -2376,7 +2376,7 @@
     "DivineScourgeDivineHexesImprovedFeature": "e51b0861-370f-4ede-a9ff-4df728af74e6",
     "DivineScourgeHexFlag": "a5c135ad-102f-4ef5-881f-537306567f15",
     "FakeDivineScourgeCastingStatProperty": "a22bc0e8-c8e6-4229-8a2e-aa503c067224",
-    
+
     "CunningInitiativeFeatureSwornOfTheEldest": "034d3d37-0cce-4df5-b391-f0c190e4cce8",
     "FeytongueFeatureSwornOfTheEldest": "ea0b3b9b-068c-4a85-a0b1-9ad882d624b5",
     "MagicoftheEldestSwornOfTheEldest1": "3a9caf3c-5c58-4d50-a468-0322cc685855",
@@ -2388,7 +2388,35 @@
     "SwornOfTheEldestArchetype": "bb2956ea-071f-46bd-844e-cd6383d5f906",
     "SwornOfTheEldestFeywatcher": "e01d0053-fdf2-4277-9e28-66aea2becd25",
     "SwornOfTheEldestSpellbook": "a241cf18-fca0-47a3-a98d-8a1befd781cf",
-    "WhimsicalWorshipFeatureSwornOfTheEldest": "d342d6d1-241e-4d51-ac5f-2c264110b0ef"
+    "WhimsicalWorshipFeatureSwornOfTheEldest": "d342d6d1-241e-4d51-ac5f-2c264110b0ef",
+    "HellknightSigniferSkulkingHunterLevelUp": "05db0e04-696f-4279-a31c-77accf30d4d2",
+    "HellknightSigniferSkulkingHunterProgression": "d190e8fb-6a9b-45bf-b0f5-6c4b7e22701b",
+    "HellknightSigniferSwornOfTheEldestLevelUp": "5ed1e77f-50a3-4116-9ef1-456784b387df",
+    "HellknightSigniferSwornOfTheEldestProgression": "33c8016f-bf66-462e-966a-3826dc1a6529",
+    "LoremasterSkulkingHunterLevelUp": "22f40521-dcb1-4a8b-9a36-7a9477070585",
+    "LoremasterSkulkingHunterProgression": "8b3a1168-be44-4ec3-8ff1-723ae37cb234",
+    "LoremasterSwornOfTheEldestLevelUp": "8a890827-1b98-407d-bfa7-cc15fea0c3d6",
+    "LoremasterSwornOfTheEldestProgression": "e948863b-6569-4f2d-af46-ff21ee0aefb9",
+    "MysticTheurgeSkulkingHunterLevelParametrized1": "72ec6f6c-8ed1-4f93-94c2-a6864afb70d5",
+    "MysticTheurgeSkulkingHunterLevelParametrized2": "f58e3b45-377c-4fc5-8f4a-ec6e0be8cc73",
+    "MysticTheurgeSkulkingHunterLevelParametrized3": "a5ce8656-1638-46f7-9835-ad82781c60ab",
+    "MysticTheurgeSkulkingHunterLevelParametrized4": "217ab1b0-27e8-42d8-b772-03e83eb886a5",
+    "MysticTheurgeSkulkingHunterLevelParametrized5": "80371b27-1b6a-4e3e-a740-71e6c1a5e863",
+    "MysticTheurgeSkulkingHunterLevelParametrized6": "d0edb44d-fe59-4b74-8b0c-13e40bb63f39",
+    "MysticTheurgeSkulkingHunterLevelSelection1": "2ac233b4-b3fd-4e16-8b54-4dc2f8a0d564",
+    "MysticTheurgeSkulkingHunterLevelSelection2": "029963ac-9a87-496a-ae97-f68a5a2975e5",
+    "MysticTheurgeSkulkingHunterLevelSelection3": "08a96d08-5fac-4874-9848-016daf544152",
+    "MysticTheurgeSkulkingHunterLevelSelection4": "6001e87d-9770-49ee-a5ac-a3ea056b7208",
+    "MysticTheurgeSkulkingHunterLevelSelection5": "db9b134f-be4d-4577-8088-7eafc9dc4074",
+    "MysticTheurgeSkulkingHunterLevelSelection6": "5e32551d-1442-4c49-9bd7-2d25040d8ee7",
+    "MysticTheurgeSkulkingHunterLevelUp": "78c7f294-ec71-4c8f-a7cd-11c4f7ebfc06",
+    "MysticTheurgeSkulkingHunterProgression": "58fec5cc-02ea-4fd5-9b2b-8c51aebd1206",
+    "MysticTheurgeSwornOfTheEldestLevelUp": "679c05e1-dc21-46e8-96ae-f2397fc60633",
+    "MysticTheurgeSwornOfTheEldestProgression": "a198431c-7c6b-4578-8206-0fcd9b9244db",
+    "StargazerSkulkingHunterLevelUp": "03fec2dd-8489-4f81-8c18-6b40066b27fb",
+    "StargazerSkulkingHunterProgression": "052a02d4-00dc-4958-98ab-e2d24297dccc",
+    "StargazerSwornOfTheEldestLevelUp": "3f3c279f-450e-42cd-9f8a-dc89650af303",
+    "StargazerSwornOfTheEldestProgression": "70836651-24dd-4bcc-a6ff-e70ee5a0e91d"
 
 
 
