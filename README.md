@@ -184,6 +184,6 @@ Compatible with all mods as fair as I am aware, extra features are unlocked if u
 
 
 I'd like to give a huge thank you to Vek17, as much of the coding in this repository is his; I simply repurposed it or learned from it. I wouldn't be able to release anything without it.
-Thanks to Alter Asc for the creation of the Sworn of the Eldest Archetype.
+Thanks to AlterAsc for the creation of the Sworn of the Eldest Archetype.
 Many of the icons and art stuff in the mod are thanks to xTekek
 Mandarin Chinese Localisation - by @WFQ & HerryZheng8
