@@ -45,7 +45,7 @@ namespace ExpandedContent.Tweaks {
 
                 Domains.BaseDomainDruidPatch.AddBaseDomainDruidPatch();
              
-                Archetypes.LivingScripture.AddLivingScripture();
+                Archetypes.LivingScripture.AddLivingScripture();                
                 Archetypes.PriestOfBalance.PatchPriestOfBalanceArchetype();
                 Archetypes.TempleChampion.AddTempleChampion();
                 Archetypes.MantisZealot.AddMantisZealot();
@@ -373,7 +373,7 @@ namespace ExpandedContent.Tweaks {
                 Deities.DeitySelectionFeature.TheElderMythosToggle();
                 Deities.DeitySelectionFeature.OrcPantheonToggle();
 
-                
+                Archetypes.SwornOfTheEldest.AddSwornOfTheEldest();
             }
             [HarmonyPriority(Priority.Last)]
             [HarmonyPostfix]

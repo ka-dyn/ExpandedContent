@@ -77,7 +77,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Owlcat.Runtime.Validation">
-      <HintPath>D:\Games\PathfinderModing\lib\1.2\Owlcat.Runtime.Validation.dll</HintPath>
+      <HintPath>$(WrathPath)\Wrath_Data\Managed\Owlcat.Runtime.Validation.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -180,6 +180,7 @@
     <Compile Include="Tweaks\Archdevils\Moloch.cs" />
     <Compile Include="Tweaks\Archetypes\DivineScourge.cs" />
     <Compile Include="Tweaks\Archetypes\Treesinger.cs" />
+    <Compile Include="Tweaks\Archetypes\SwornOfTheEldest.cs" />
     <Compile Include="Tweaks\Archetypes\SkulkingHunter.cs" />
     <Compile Include="Tweaks\Archetypes\PrestigeClassSpellbooks.cs" />
     <Compile Include="Tweaks\Archetypes\RavenerHunter.cs" />
@@ -227,6 +228,8 @@
     <Compile Include="Tweaks\Classes\DreadKnight.cs" />
     <Compile Include="Tweaks\Components\AbilityCasterOffHandWeaponCheck.cs" />
     <Compile Include="Tweaks\Components\MaxCastingAttributeWithArchetypeGetter.cs" />
+    <Compile Include="Tweaks\Components\LearnDomainSpell.cs" />
+    <Compile Include="Tweaks\Components\ReplaceAbilitiesStatFromArchetype.cs" />    
     <Compile Include="Tweaks\Components\SpearParry.cs" />
     <Compile Include="Tweaks\Components\DeflectArrowsExpanded.cs" />
     <Compile Include="Tweaks\Components\ACBonusAgainstNotCaster.cs" />

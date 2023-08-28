@@ -199,7 +199,12 @@
         "Enabled": true,
         "Homebrew": false,
         "Description": "A cleric archetype that gives up wide domain selection for cursing and debuffing."
-      }
+      },
+      "Sworn of the Eldest": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Charisma based inquisitor archetype serving the Eldest."
+      }      
     },
     "IsExpanded": false
   },
