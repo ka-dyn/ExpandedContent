@@ -27,10 +27,12 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var MysticTheurgeInquisitorLevelSelection3 = Resources.GetBlueprint<BlueprintFeatureSelection>("5f6c7b84edc68a146955be0600de4095");
             var MysticTheurgeInquisitorLevelSelection4 = Resources.GetBlueprint<BlueprintFeatureSelection>("b93df7bf0405a974cafcda21cbd070f1");
             var MysticTheurgeInquisitorLevelSelection5 = Resources.GetBlueprint<BlueprintFeatureSelection>("b7ed1fc44730bd1459c57763378a5a97");
-            var MysticTheurgeInquisitorLevelSelection6 = Resources.GetBlueprint<BlueprintFeatureSelection>("200dec6712442e74c85803a1af72397a");            
+            var MysticTheurgeInquisitorLevelSelection6 = Resources.GetBlueprint<BlueprintFeatureSelection>("200dec6712442e74c85803a1af72397a");     
+            var InquisitorSpelllist = Resources.GetBlueprint<BlueprintSpellList>("57c894665b7895c499b3dce058c284b3");
             var InquisitorClass = Resources.GetBlueprint<BlueprintCharacterClass>("f1a70d9e1b0b41e49874e1fa9052a1ce");
             var LivingScriptureArchetype = Resources.GetModBlueprint<BlueprintArchetype>("LivingScriptureArchetype");
             var RavenerHunterArchetype = Resources.GetModBlueprint<BlueprintArchetype>("RavenerHunterArchetype");            
+            var SwornOfTheEldestArchetype = Resources.GetModBlueprint<BlueprintArchetype>("SwornOfTheEldestArchetype");            
             var MysticTheurgeInquisitorProgression = Resources.GetBlueprint<BlueprintProgression>("d21a104c204ed7348a51405e68387013");
             var LoremasterInquisitorProgression = Resources.GetBlueprint<BlueprintProgression>("3528ad685de3e7d4ca03199a5e47a673");
             var HellknightSigniferInquisitorProgression = Resources.GetBlueprint<BlueprintProgression>("68f5313d09541fd48af0189a4d366e21");
@@ -716,6 +718,234 @@ namespace ExpandedContent.Tweaks.Archetypes {
             HellknightSigniferSpellbookSelection.m_AllFeatures = HellknightSigniferSpellbookSelection.m_AllFeatures.AppendToArray(HellknightSigniferRavenerHunterProgression.ToReference<BlueprintFeatureReference>());
 
             #endregion
+
+            #region Sworn of the Eldest            
+            var SwornOfTheEldestSpellbook = Resources.GetModBlueprint<BlueprintSpellbook>("SwornOfTheEldestSpellbook");            
+
+            MysticTheurgeInquisitorProgression.AddComponent<PrerequisiteNoArchetype>(c => {
+                c.m_CharacterClass = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
+                c.m_Archetype = SwornOfTheEldestArchetype.ToReference<BlueprintArchetypeReference>();
+            });
+            var MysticTheurgeSwornOfTheEldestLevelUp = Helpers.CreateBlueprint<BlueprintFeature>("MysticTheurgeSwornOfTheEldestLevelUp", bp => {
+                bp.SetName("Sworn of the Eldest");
+                bp.SetDescription("At 1st level, the mystic theurge selects a divine {g|Encyclopedia:Spell}spellcasting{/g} class she belonged to before adding the prestige class. When a " +
+                    "new mystic theurge level is gained, the character gains new spells per day and new spells known as if she had also gained a level in that spellcasting class.");
+                bp.AddComponent<AddSpellbookLevel>(c => {
+                    c.m_Spellbook = SwornOfTheEldestSpellbook.ToReference<BlueprintSpellbookReference>();
+                });
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = false;
+                bp.HideNotAvailibleInUI = false;
+                bp.IsClassFeature = true;
+                bp.m_AllowNonContextActions = false;
+                bp.Ranks = 10;
+            });
+            var MysticTheurgeSwornOfTheEldestProgression = Helpers.CreateBlueprint<BlueprintProgression>("MysticTheurgeSwornOfTheEldestProgression", bp => {
+                bp.SetName("Sworn of the Eldest");
+                bp.SetDescription("At 1st level, the mystic theurge selects a divine {g|Encyclopedia:Spell}spellcasting{/g} class she belonged to before adding the prestige class. When a " +
+                    "new mystic theurge level is gained, the character gains new spells per day and new spells known as if she had also gained a level in that spellcasting class.");
+                bp.AddComponent<PrerequisiteClassSpellLevel>(c => {
+                    c.m_CharacterClass = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
+                    c.RequiredSpellLevel = 2;
+                    c.HideInUI = false;
+                });
+                bp.AddComponent<PrerequisiteArchetypeLevel>(c => {
+                    c.m_CharacterClass = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = SwornOfTheEldestArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.Level = 1;
+                    c.HideInUI = false;
+                });
+                bp.AddComponent<PrerequisiteNoArchetype>(c => {
+                    c.m_CharacterClass = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = LivingScriptureArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.HideInUI = false;
+                });
+                bp.AddComponent<MysticTheurgeSpellbook>(c => {
+                    c.m_CharacterClass = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_MysticTheurge = MysticTheurgeClass.ToReference<BlueprintCharacterClassReference>();
+                });
+                bp.Groups = new FeatureGroup[] { FeatureGroup.MysticTheurgeDivineSpellbook };
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = false;
+                bp.HideNotAvailibleInUI = true;
+                bp.IsClassFeature = true;
+                bp.m_AllowNonContextActions = false;
+                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
+                    new BlueprintProgression.ClassWithLevel() { AdditionalLevel = 0, m_Class = MysticTheurgeClass.ToReference<BlueprintCharacterClassReference>() },
+                    new BlueprintProgression.ClassWithLevel() { AdditionalLevel = 0, m_Class = InquisitorClass.ToReference<BlueprintCharacterClassReference>() }
+                };
+                bp.LevelEntries = new LevelEntry[] {
+                    Helpers.LevelEntry(5, MysticTheurgeSwornOfTheEldestLevelUp, MysticTheurgeInquisitorLevelSelection2),
+                    Helpers.LevelEntry(6, MysticTheurgeSwornOfTheEldestLevelUp, MysticTheurgeInquisitorLevelSelection2),
+                    Helpers.LevelEntry(7, MysticTheurgeSwornOfTheEldestLevelUp, MysticTheurgeInquisitorLevelSelection1, MysticTheurgeInquisitorLevelSelection3, MysticTheurgeInquisitorLevelSelection3),
+                    Helpers.LevelEntry(8, MysticTheurgeSwornOfTheEldestLevelUp, MysticTheurgeInquisitorLevelSelection3),
+                    Helpers.LevelEntry(9, MysticTheurgeSwornOfTheEldestLevelUp, MysticTheurgeInquisitorLevelSelection3),
+                    Helpers.LevelEntry(10, MysticTheurgeSwornOfTheEldestLevelUp, MysticTheurgeInquisitorLevelSelection2, MysticTheurgeInquisitorLevelSelection4, MysticTheurgeInquisitorLevelSelection4),
+                    Helpers.LevelEntry(11, MysticTheurgeSwornOfTheEldestLevelUp, MysticTheurgeInquisitorLevelSelection1, MysticTheurgeInquisitorLevelSelection4),
+                    Helpers.LevelEntry(12, MysticTheurgeSwornOfTheEldestLevelUp, MysticTheurgeInquisitorLevelSelection4),
+                    Helpers.LevelEntry(13, MysticTheurgeSwornOfTheEldestLevelUp, MysticTheurgeInquisitorLevelSelection3, MysticTheurgeInquisitorLevelSelection5, MysticTheurgeInquisitorLevelSelection5),
+                    Helpers.LevelEntry(14, MysticTheurgeSwornOfTheEldestLevelUp, MysticTheurgeInquisitorLevelSelection2, MysticTheurgeInquisitorLevelSelection5),
+                    Helpers.LevelEntry(15, MysticTheurgeSwornOfTheEldestLevelUp, MysticTheurgeInquisitorLevelSelection5),
+                    Helpers.LevelEntry(16, MysticTheurgeSwornOfTheEldestLevelUp, MysticTheurgeInquisitorLevelSelection4, MysticTheurgeInquisitorLevelSelection6, MysticTheurgeInquisitorLevelSelection6),
+                    Helpers.LevelEntry(17, MysticTheurgeSwornOfTheEldestLevelUp, MysticTheurgeInquisitorLevelSelection3, MysticTheurgeInquisitorLevelSelection6),
+                    Helpers.LevelEntry(18, MysticTheurgeSwornOfTheEldestLevelUp, MysticTheurgeInquisitorLevelSelection6),
+                    Helpers.LevelEntry(19, MysticTheurgeSwornOfTheEldestLevelUp, MysticTheurgeInquisitorLevelSelection5),
+                    Helpers.LevelEntry(20, MysticTheurgeSwornOfTheEldestLevelUp, MysticTheurgeInquisitorLevelSelection4, MysticTheurgeInquisitorLevelSelection6)
+                };
+                bp.GiveFeaturesForPreviousLevels = false;
+                bp.m_ExclusiveProgression = MysticTheurgeClass.ToReference<BlueprintCharacterClassReference>();
+            });
+            MysticTheurgeDivineSpellbookSelection.m_AllFeatures = MysticTheurgeDivineSpellbookSelection.m_AllFeatures.AppendToArray(MysticTheurgeSwornOfTheEldestProgression.ToReference<BlueprintFeatureReference>());
+
+            LoremasterInquisitorProgression.AddComponent<PrerequisiteNoArchetype>(c => {
+                c.m_CharacterClass = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
+                c.m_Archetype = SwornOfTheEldestArchetype.ToReference<BlueprintArchetypeReference>();
+            });
+            var LoremasterSwornOfTheEldestLevelUp = Helpers.CreateBlueprint<BlueprintFeature>("LoremasterSwornOfTheEldestLevelUp", bp => {
+                bp.SetName("Sworn of the Eldest");
+                bp.SetDescription("At 1st level, the loremaster selects a divine {g|Encyclopedia:Spell}spellcasting{/g} class she belonged to before adding the prestige class. When a " +
+                    "new loremaster level is gained, the character gains new spells per day and new spells known as if she had also gained a level in that spellcasting class.");
+                bp.AddComponent<AddSpellbookLevel>(c => {
+                    c.m_Spellbook = SwornOfTheEldestSpellbook.ToReference<BlueprintSpellbookReference>();
+                });
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = false;
+                bp.HideNotAvailibleInUI = false;
+                bp.IsClassFeature = true;
+                bp.m_AllowNonContextActions = false;
+                bp.Ranks = 10;
+            });
+            var LoremasterSwornOfTheEldestProgression = Helpers.CreateBlueprint<BlueprintProgression>("LoremasterSwornOfTheEldestProgression", bp => {
+                bp.SetName("Sworn of the Eldest");
+                bp.SetDescription("When a new loremaster level is gained, the character gains new {g|Encyclopedia:Spell}spells{/g} per day as if he had also gained a level in a " +
+                    "spellcasting class he belonged to before adding the prestige class. He does not, however, gain other benefits a character of that class would have gained, " +
+                    "except for additional spells per day, spells known (if he is a spontaneous spellcaster), and an increased effective level of spellcasting. If a character " +
+                    "had more than one spellcasting class before becoming a loremaster, he must decide to which class he adds the new level for purposes of determining the " +
+                    "number of spells per day.");
+                bp.AddComponent<PrerequisiteClassSpellLevel>(c => {
+                    c.m_CharacterClass = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
+                    c.RequiredSpellLevel = 3;
+                    c.HideInUI = false;
+                });
+                bp.AddComponent<PrerequisiteArchetypeLevel>(c => {
+                    c.m_CharacterClass = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = SwornOfTheEldestArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.Level = 1;
+                    c.HideInUI = false;
+                });
+                bp.AddComponent<PrerequisiteNoArchetype>(c => {
+                    c.m_CharacterClass = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = LivingScriptureArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.HideInUI = false;
+                });
+                bp.Groups = new FeatureGroup[] { FeatureGroup.ReplaceSpellbook };
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = false;
+                bp.HideNotAvailibleInUI = true;
+                bp.IsClassFeature = true;
+                bp.m_AllowNonContextActions = false;
+                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
+                    new BlueprintProgression.ClassWithLevel() { AdditionalLevel = 0, m_Class = LoremasterClass.ToReference<BlueprintCharacterClassReference>() },
+                    new BlueprintProgression.ClassWithLevel() { AdditionalLevel = 0, m_Class = InquisitorClass.ToReference<BlueprintCharacterClassReference>() }
+                };
+                bp.LevelEntries = new LevelEntry[] {
+                    Helpers.LevelEntry(5, LoremasterSwornOfTheEldestLevelUp, MysticTheurgeInquisitorLevelSelection2),
+                    Helpers.LevelEntry(6, LoremasterSwornOfTheEldestLevelUp, MysticTheurgeInquisitorLevelSelection2),
+                    Helpers.LevelEntry(7, LoremasterSwornOfTheEldestLevelUp, MysticTheurgeInquisitorLevelSelection1, MysticTheurgeInquisitorLevelSelection3, MysticTheurgeInquisitorLevelSelection3),
+                    Helpers.LevelEntry(8, LoremasterSwornOfTheEldestLevelUp, MysticTheurgeInquisitorLevelSelection3),
+                    Helpers.LevelEntry(9, LoremasterSwornOfTheEldestLevelUp, MysticTheurgeInquisitorLevelSelection3),
+                    Helpers.LevelEntry(10, LoremasterSwornOfTheEldestLevelUp, MysticTheurgeInquisitorLevelSelection2, MysticTheurgeInquisitorLevelSelection4, MysticTheurgeInquisitorLevelSelection4),
+                    Helpers.LevelEntry(11, LoremasterSwornOfTheEldestLevelUp, MysticTheurgeInquisitorLevelSelection1, MysticTheurgeInquisitorLevelSelection4),
+                    Helpers.LevelEntry(12, LoremasterSwornOfTheEldestLevelUp, MysticTheurgeInquisitorLevelSelection4),
+                    Helpers.LevelEntry(13, LoremasterSwornOfTheEldestLevelUp, MysticTheurgeInquisitorLevelSelection3, MysticTheurgeInquisitorLevelSelection5, MysticTheurgeInquisitorLevelSelection5),
+                    Helpers.LevelEntry(14, LoremasterSwornOfTheEldestLevelUp, MysticTheurgeInquisitorLevelSelection2, MysticTheurgeInquisitorLevelSelection5),
+                    Helpers.LevelEntry(15, LoremasterSwornOfTheEldestLevelUp, MysticTheurgeInquisitorLevelSelection5),
+                    Helpers.LevelEntry(16, LoremasterSwornOfTheEldestLevelUp, MysticTheurgeInquisitorLevelSelection4, MysticTheurgeInquisitorLevelSelection6, MysticTheurgeInquisitorLevelSelection6),
+                    Helpers.LevelEntry(17, LoremasterSwornOfTheEldestLevelUp, MysticTheurgeInquisitorLevelSelection3, MysticTheurgeInquisitorLevelSelection6),
+                    Helpers.LevelEntry(18, LoremasterSwornOfTheEldestLevelUp, MysticTheurgeInquisitorLevelSelection6),
+                    Helpers.LevelEntry(19, LoremasterSwornOfTheEldestLevelUp, MysticTheurgeInquisitorLevelSelection5),
+                    Helpers.LevelEntry(20, LoremasterSwornOfTheEldestLevelUp, MysticTheurgeInquisitorLevelSelection4, MysticTheurgeInquisitorLevelSelection6)
+                };
+                bp.GiveFeaturesForPreviousLevels = false;
+                bp.m_ExclusiveProgression = LoremasterClass.ToReference<BlueprintCharacterClassReference>();
+            });
+            LoremasterSpellbookSelection.m_AllFeatures = LoremasterSpellbookSelection.m_AllFeatures.AppendToArray(LoremasterSwornOfTheEldestProgression.ToReference<BlueprintFeatureReference>());
+
+            HellknightSigniferInquisitorProgression.AddComponent<PrerequisiteNoArchetype>(c => {
+                c.m_CharacterClass = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
+                c.m_Archetype = SwornOfTheEldestArchetype.ToReference<BlueprintArchetypeReference>();
+            });
+            var HellknightSigniferSwornOfTheEldestLevelUp = Helpers.CreateBlueprint<BlueprintFeature>("HellknightSigniferSwornOfTheEldestLevelUp", bp => {
+                bp.SetName("Sworn of the Eldest");
+                bp.SetDescription("At 1st level, the hellknight signifer selects a divine {g|Encyclopedia:Spell}spellcasting{/g} class she belonged to before adding the prestige class. When a " +
+                    "new hellknight signifer level is gained, the character gains new spells per day and new spells known as if she had also gained a level in that spellcasting class.");
+                bp.AddComponent<AddSpellbookLevel>(c => {
+                    c.m_Spellbook = SwornOfTheEldestSpellbook.ToReference<BlueprintSpellbookReference>();
+                });
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = false;
+                bp.HideNotAvailibleInUI = false;
+                bp.IsClassFeature = true;
+                bp.m_AllowNonContextActions = false;
+                bp.Ranks = 10;
+            });
+            var HellknightSigniferSwornOfTheEldestProgression = Helpers.CreateBlueprint<BlueprintProgression>("HellknightSigniferSwornOfTheEldestProgression", bp => {
+                bp.SetName("Sworn of the Eldest");
+                bp.SetDescription("At 1st level, and at every level thereafter, a Hellknight signifer gains new {g|Encyclopedia:Spell}spells{/g} per day as if he had also gained a level " +
+                    "in a spellcasting class he belonged to before adding the prestige class. He does not, however, gain any other benefit a character of that class would have gained, " +
+                    "except for additional spells per day, spells known, and an increased effective level of spellcasting. If a character had more than one spellcasting class before " +
+                    "becoming a Hellknight signifer, he must decide to which class he adds the new level for purposes of determining spells per day.");
+                bp.AddComponent<PrerequisiteClassSpellLevel>(c => {
+                    c.m_CharacterClass = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
+                    c.RequiredSpellLevel = 3;
+                    c.HideInUI = false;
+                });
+                bp.AddComponent<PrerequisiteArchetypeLevel>(c => {
+                    c.m_CharacterClass = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = SwornOfTheEldestArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.Level = 1;
+                    c.HideInUI = false;
+                });
+                bp.AddComponent<PrerequisiteNoArchetype>(c => {
+                    c.m_CharacterClass = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = LivingScriptureArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.HideInUI = false;
+                });
+                bp.Groups = new FeatureGroup[] { FeatureGroup.HellknightSigniferSpellbook };
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = false;
+                bp.HideNotAvailibleInUI = true;
+                bp.IsClassFeature = true;
+                bp.m_AllowNonContextActions = false;
+                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
+                    new BlueprintProgression.ClassWithLevel() { AdditionalLevel = 0, m_Class = HellknightSigniferClass.ToReference<BlueprintCharacterClassReference>() },
+                    new BlueprintProgression.ClassWithLevel() { AdditionalLevel = 0, m_Class = InquisitorClass.ToReference<BlueprintCharacterClassReference>() }
+                };
+                bp.LevelEntries = new LevelEntry[] {
+                    Helpers.LevelEntry(5, HellknightSigniferSwornOfTheEldestLevelUp, MysticTheurgeInquisitorLevelSelection2),
+                    Helpers.LevelEntry(6, HellknightSigniferSwornOfTheEldestLevelUp, MysticTheurgeInquisitorLevelSelection2),
+                    Helpers.LevelEntry(7, HellknightSigniferSwornOfTheEldestLevelUp, MysticTheurgeInquisitorLevelSelection1, MysticTheurgeInquisitorLevelSelection3, MysticTheurgeInquisitorLevelSelection3),
+                    Helpers.LevelEntry(8, HellknightSigniferSwornOfTheEldestLevelUp, MysticTheurgeInquisitorLevelSelection3),
+                    Helpers.LevelEntry(9, HellknightSigniferSwornOfTheEldestLevelUp, MysticTheurgeInquisitorLevelSelection3),
+                    Helpers.LevelEntry(10, HellknightSigniferSwornOfTheEldestLevelUp, MysticTheurgeInquisitorLevelSelection2, MysticTheurgeInquisitorLevelSelection4, MysticTheurgeInquisitorLevelSelection4),
+                    Helpers.LevelEntry(11, HellknightSigniferSwornOfTheEldestLevelUp, MysticTheurgeInquisitorLevelSelection1, MysticTheurgeInquisitorLevelSelection4),
+                    Helpers.LevelEntry(12, HellknightSigniferSwornOfTheEldestLevelUp, MysticTheurgeInquisitorLevelSelection4),
+                    Helpers.LevelEntry(13, HellknightSigniferSwornOfTheEldestLevelUp, MysticTheurgeInquisitorLevelSelection3, MysticTheurgeInquisitorLevelSelection5, MysticTheurgeInquisitorLevelSelection5),
+                    Helpers.LevelEntry(14, HellknightSigniferSwornOfTheEldestLevelUp, MysticTheurgeInquisitorLevelSelection2, MysticTheurgeInquisitorLevelSelection5),
+                    Helpers.LevelEntry(15, HellknightSigniferSwornOfTheEldestLevelUp, MysticTheurgeInquisitorLevelSelection5),
+                    Helpers.LevelEntry(16, HellknightSigniferSwornOfTheEldestLevelUp, MysticTheurgeInquisitorLevelSelection4, MysticTheurgeInquisitorLevelSelection6, MysticTheurgeInquisitorLevelSelection6),
+                    Helpers.LevelEntry(17, HellknightSigniferSwornOfTheEldestLevelUp, MysticTheurgeInquisitorLevelSelection3, MysticTheurgeInquisitorLevelSelection6),
+                    Helpers.LevelEntry(18, HellknightSigniferSwornOfTheEldestLevelUp, MysticTheurgeInquisitorLevelSelection6),
+                    Helpers.LevelEntry(19, HellknightSigniferSwornOfTheEldestLevelUp, MysticTheurgeInquisitorLevelSelection5),
+                    Helpers.LevelEntry(20, HellknightSigniferSwornOfTheEldestLevelUp, MysticTheurgeInquisitorLevelSelection4, MysticTheurgeInquisitorLevelSelection6)
+                };
+                bp.GiveFeaturesForPreviousLevels = false;
+                bp.m_ExclusiveProgression = HellknightSigniferClass.ToReference<BlueprintCharacterClassReference>();
+            });
+            HellknightSigniferSpellbookSelection.m_AllFeatures = HellknightSigniferSpellbookSelection.m_AllFeatures.AppendToArray(HellknightSigniferSwornOfTheEldestProgression.ToReference<BlueprintFeatureReference>());
+
+            #endregion
+
             #endregion
 
             #region Paladin
