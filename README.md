@@ -1,13 +1,13 @@
 *Install VIA UMM*
 -Drag and drop the zip file onto the UMM "Install" button. Most features can be disabled in the UMM menu if not wanted
 
-While this mod is not dependant on https://github.com/Vek17/TabletopTweaks-Base it is recommended as all testing is done with it installed and it fixes several base game issues.
+While this mod is not dependant on [TabletopTweaks-Base](https://github.com/Vek17/TabletopTweaks-Base "TabletopTweaks-Base") it is recommended as all testing is done with it installed and it fixes several base game issues.
 
 *Contents*
 
 New Archetypes
 
-- Ravener Hunter, Inquisitor
+- Ravener Hunter, Sworn of the Eldest, Inquisitor
 
 - Mantis Zealot, Warpriest
 
@@ -177,10 +177,12 @@ New Spells
 - Wooden Phalanx
 - Shambler
 
-I'd like to give a huge thank you to Vek17, as much of the coding in this repository is his; I simply repurposed it or learned from it. I wouldn't be able to release
-anything without it. Check out his mod, TableTopTweaks if you haven't already!
-- https://github.com/Vek17/TabletopTweaks-Base
 
+Compatible with all mods as fair as I am aware, extra features are unlocked if used with these mods
+- [TabletopTweaks-Base](https://github.com/Vek17/TabletopTweaks-Base "TabletopTweaks-Base") - New TabletopTweaks spells are added to this mods domains and mysteries - all new wildshape forms support TTT added feats
+- [Mystical Mayhem](https://github.com/kreaddy/MysticalMayhem "Mystical Mayhem") - New Mystical Mayhem spells are added to this mods domains and mysteries
+
+
+I'd like to give a huge thank you to Vek17, as much of the coding in this repository is his; I simply repurposed it or learned from it. I wouldn't be able to release anything without it.
 Many of the icons and art stuff in the mod are thanks to xTekek
 Mandarin Chinese Localisation - by @WFQ & HerryZheng8
-
