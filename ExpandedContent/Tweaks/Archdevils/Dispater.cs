@@ -16,6 +16,7 @@ namespace ExpandedContent.Tweaks.Archdevils {
         private static readonly BlueprintFeature EvilDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("351235ac5fc2b7e47801f63d117b656c");
         private static readonly BlueprintFeature NobilityDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("e0471d01e73254a4ca23278705b75e57");
         private static readonly BlueprintFeature LawDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("092714336606cfc45a37d2ab39fabfa8");
+        private static readonly BlueprintFeature ThieveryDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("ThieveryDomainAllowed");
         private static readonly BlueprintSpellbook CrusaderSpellbook = Resources.GetBlueprint<BlueprintSpellbook>("673d39f7da699aa408cdda6282e7dcc0");
         private static readonly BlueprintSpellbook ClericSpellbook = Resources.GetBlueprint<BlueprintSpellbook>("4673d19a0cf2fab4f885cc4d1353da33");
         private static readonly BlueprintSpellbook InquisitorSpellbook = Resources.GetBlueprint<BlueprintSpellbook>("57fab75111f377248810ece84193a5a5");
@@ -24,6 +25,7 @@ namespace ExpandedContent.Tweaks.Archdevils {
         private static readonly BlueprintCharacterClass InquistorClass = Resources.GetBlueprint<BlueprintCharacterClass>("f1a70d9e1b0b41e49874e1fa9052a1ce");
         private static readonly BlueprintCharacterClass WarpriestClass = Resources.GetBlueprint<BlueprintCharacterClass>("30b5e47d47a0e37438cc5a80c96cfb99");
         private static readonly BlueprintCharacterClass DreadKnightClass = Resources.GetModBlueprint<BlueprintCharacterClass>("DreadKnightClass");
+        private static readonly BlueprintFeature MythicIgnoreAlignmentRestrictions = Resources.GetBlueprint<BlueprintFeature>("24e78475f0a243e1a810452d14d0a1bd");
 
 
 
@@ -44,31 +46,28 @@ namespace ExpandedContent.Tweaks.Archdevils {
 
                 bp.SetName("Dispater");
                 bp.SetDescription("\nTitles: Iron Lord, Father of Dis, First King, King of Iron, Asmodeus' Eye, Master of the Tower, Lord of the Second   " +
-                    "\nRealm: Dis, Hell   " +
+                    "\nRealm: Dis " +
                     "\nAlignment: Lawful Evil   " +
                     "\nAreas of Concern: Cities, Prisons, Rulership   " +
                     "\nDomains: Evil, Law, Nobility, Trickery   " +
                     "\nSubdomains: Deception, Devil, Leadership, Legislation, Thievery   " +
-                    "\nProfane Symbol: Iron Nail, Crown and Ring   " +
-                    "\nFavoured Weapon: Heavy Mace   " +
+                    "\nFavoured Weapon: Heavy mace   " +
+                    "\nProfane Symbol: Iron Nail, Crown and Ring   " +                    
                     "\nProfane Animal: Hound   " +
-                    "\nProfane Colours: Iron gray, Red" +
-                    "\nThe archdevil Dispater is Hell's greatest jailer and politician and " +
-                    "rules its second layer, Dis. Also known as the Iron Lord, Father of Dis and First King, Dispater is one " +
-                    "of the more active rulers of Hell and one of Asmodeus's closest and longest-standing allies. His unholy symbol " +
-                    "is an iron spike driven into a golden ring with a red and purple crown. His symbol of office is an artefact " +
-                    "known as The Eclipsing Eye. Alone among the lords of Hell, Dispater believes in the virtues of courtly love, " +
-                    "and has taken three wives over the course of his eons-long existence. The first is forgotten, even by the Iron Lord " +
-                    "himself, the only token of her existence a shattered statue in Dispater's throne room. The second was Feronia, " +
-                    "an elemental demigoddess with whom Dispater shared a brief, tempestuous relationship that led to the birth of his son, " +
-                    "the empyreal lord Ragathiel. Dispater's third and current wife is Erecura, a once-mortal demigoddess who was condemned " +
-                    "to Hell for stealing the secret of eternal life from Pharasma. Dispater has allied with the archdevil Mephistopheles as " +
-                    "they both enjoy the art of ruling, and is married to Erecura.   " +
-                    "\nAppearance: Dispater appears as a majestic, seven-foot-tall figure with rust-red skin, four horns, and a burning crown " +
-                    "that hovers above his head. His skin bears dozens of scars and piercings, each of them a past wound turned into a mark of " +
-                    "pride. He retains his angelic wings, though they are now black, and he keeps them retracted within his body at almost all times. " +
-                    "The First King's staff of office is The Eclipsing Eye, a bladed staff with a great ruby through which Asmodeus constantly " +
-                    "watches him.");
+                    "\nThe outcast, the forlorn, the forsaken—all need but to call upon Dispater to have the path home revealed. Known as the Iron Lord, the Father of Dis, " +
+                    "and the First King, Dispater welcomes all to his perfect city. Among the most active and cunning of Hell’s rulers, he directly oversees the administration " +
+                    "and constant expansion of his vast metropolis, entertains dispossessed souls and the envoys of powerful lords from throughout the planes, and judges those " +
+                    "who would f lout infernal law. One of Asmodeus’s oldest and most loyal allies, Dispater holds a favored place in the hierarchy of Hell and serves his lord " +
+                    "by creating a city of such dark perfection as to surpass all godly imagining. Calm, creative, and wise, Dispater is also unforgiving, manipulative, and " +
+                    "arrogant, blending the traits of the perfect ruler with those of the archfiend he is. He places great value on the concepts of rank and station, as well " +
+                    "as the intricacies of courtly manners and lordly right. Despite his interest in conduct and enjoyment of deriding the uncouth, the Lord of the Second " +
+                    "quickly dismisses such decorum to further his schemes, often confessing his boredom with Hell’s formalities to those he seeks to influence. Dispater " +
+                    "stands out among the archfiends by holding respect for the concept of courtly love. Thrice during his rule has the Iron Lord taken a queen. His first " +
+                    "bride was a fallen angel, though none, not even Dispater, can recall her face, name, or fate—a condition that greatly vexes the archfiend. His second, " +
+                    "Feronia, was a demigoddess from the Plane of Fire, and after a tryst lasting but a few centuries, she left the First King—somewhat congenially—taking " +
+                    "with her the babe who would become the empyreal lord Ragathiel. His current wife, the beauteous Erecura, was once mortal, but her gift of fateful " +
+                    "visions allowed her to slip the bonds of death. The pair share a cordial romance, and she is one of Dispater’s closest advisors, revealing her visions " +
+                    "to him in exchange for mysterious gifts.");
                 bp.m_Icon = DispaterIcon;
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;
@@ -98,29 +97,27 @@ namespace ExpandedContent.Tweaks.Archdevils {
                 });
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
                 bp.AddComponent<PrerequisiteAlignment>(c => {
-                    c.Alignment = AlignmentMaskType.LawfulEvil | AlignmentMaskType.NeutralEvil | AlignmentMaskType.LawfulNeutral | AlignmentMaskType.TrueNeutral;
+                    c.Alignment = AlignmentMaskType.LawfulEvil | AlignmentMaskType.NeutralEvil | AlignmentMaskType.LawfulNeutral;
                 });
                 bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[1] { ChannelNegativeAllowed.ToReference<BlueprintUnitFactReference>() };
-                });
-                bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[1] { EvilDomainAllowed.ToReference<BlueprintUnitFactReference>() };
-                });
-                bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[1] { LawDomainAllowed.ToReference<BlueprintUnitFactReference>() };
-                });
-                bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[1] { TrickeryDomainAllowed.ToReference<BlueprintUnitFactReference>() };
-                });
-                bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[1] { NobilityDomainAllowed.ToReference<BlueprintUnitFactReference>() };
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        ChannelNegativeAllowed.ToReference<BlueprintUnitFactReference>(),
+                        EvilDomainAllowed.ToReference<BlueprintUnitFactReference>(),
+                        LawDomainAllowed.ToReference<BlueprintUnitFactReference>(),
+                        NobilityDomainAllowed.ToReference<BlueprintUnitFactReference>(),
+                        TrickeryDomainAllowed.ToReference<BlueprintUnitFactReference>(),
+                        ThieveryDomainAllowed.ToReference<BlueprintUnitFactReference>()
+                    };
                 });
                 bp.AddComponent<ForbidSpellbookOnAlignmentDeviation>(c => {
-                    c.m_Spellbooks = new BlueprintSpellbookReference[1] { CrusaderSpellbook.ToReference<BlueprintSpellbookReference>() };
-                    c.m_Spellbooks = new BlueprintSpellbookReference[1] { ClericSpellbook.ToReference<BlueprintSpellbookReference>() };
-                    c.m_Spellbooks = new BlueprintSpellbookReference[1] { InquisitorSpellbook.ToReference<BlueprintSpellbookReference>() };
+                    c.m_Spellbooks = new BlueprintSpellbookReference[] {
+                        CrusaderSpellbook.ToReference<BlueprintSpellbookReference>(),
+                        ClericSpellbook.ToReference<BlueprintSpellbookReference>(),
+                        InquisitorSpellbook.ToReference<BlueprintSpellbookReference>()
+                    };
+                    c.m_IgnoreFact = MythicIgnoreAlignmentRestrictions.ToReference<BlueprintUnitFactReference>();
+                    c.Alignment = AlignmentMaskType.LawfulEvil | AlignmentMaskType.NeutralEvil | AlignmentMaskType.LawfulNeutral;
                 });
-
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>();
 

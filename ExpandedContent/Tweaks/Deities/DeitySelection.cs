@@ -161,8 +161,15 @@ namespace ExpandedContent.Tweaks.Deities {
             var DahakFeature = Resources.GetModBlueprint<BlueprintFeature>("DahakFeature");
 
             //Archdevils
-            var MephistophelesFeature = Resources.GetModBlueprint<BlueprintFeature>("MephistophelesFeature");
+            var BaalzebulFeature = Resources.GetModBlueprint<BlueprintFeature>("BaalzebulFeature");
+            var BarbatosFeature = Resources.GetModBlueprint<BlueprintFeature>("BarbatosFeature");
+            var BelialFeature = Resources.GetModBlueprint<BlueprintFeature>("BelialFeature");
             var DispaterFeature = Resources.GetModBlueprint<BlueprintFeature>("DispaterFeature");
+            var GeryonFeature = Resources.GetModBlueprint<BlueprintFeature>("GeryonFeature");
+            var MammonFeature = Resources.GetModBlueprint<BlueprintFeature>("MammonFeature");
+            var MephistophelesFeature = Resources.GetModBlueprint<BlueprintFeature>("MephistophelesFeature");
+            var MolochFeature = Resources.GetModBlueprint<BlueprintFeature>("MolochFeature");
+
 
             //The Eldest
             var CountRanalcFeature = Resources.GetModBlueprint<BlueprintFeature>("CountRanalcFeature");
@@ -328,7 +335,6 @@ namespace ExpandedContent.Tweaks.Deities {
                 TreerazerFeature.ToReference<BlueprintFeatureReference>(),
                 ZuraFeature.ToReference<BlueprintFeatureReference>(),
                 };
-
                 bp.IsClassFeature = true;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
                 bp.Group = FeatureGroup.Deities;
@@ -343,8 +349,15 @@ namespace ExpandedContent.Tweaks.Deities {
                     "for sinful mortals.");
                 bp.m_Icon = ArchdevilIcon;
                 bp.m_AllFeatures = new BlueprintFeatureReference[] {
+                BaalzebulFeature.ToReference<BlueprintFeatureReference>(),
+                BarbatosFeature.ToReference<BlueprintFeatureReference>(),
+                BelialFeature.ToReference<BlueprintFeatureReference>(),
                 DispaterFeature.ToReference<BlueprintFeatureReference>(),
-                MephistophelesFeature.ToReference<BlueprintFeatureReference>() };
+                GeryonFeature.ToReference<BlueprintFeatureReference>(),
+                MammonFeature.ToReference<BlueprintFeatureReference>(),
+                MephistophelesFeature.ToReference<BlueprintFeatureReference>(),
+                MolochFeature.ToReference<BlueprintFeatureReference>()
+                };
                 bp.IsClassFeature = true;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
                 bp.Group = FeatureGroup.Deities;

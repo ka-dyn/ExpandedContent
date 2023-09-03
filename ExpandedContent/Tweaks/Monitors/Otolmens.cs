@@ -48,7 +48,7 @@ namespace ExpandedContent.Tweaks.Monitors {
                     "\nForm: Primordial Inevitable   " +
                     "\nAreas of Concern: Machinery, Mathematics, Physics   " +
                     "\nDomains: Artifice, Fire, Knowledge, Law   " +
-                    "\nFavoured Weapon: Heavy Mace   " +
+                    "\nFavoured Weapon: Heavy mace   " +
                     "\nHoly Symbol: Planet held within a geometrical compass  " +
                     "\nPhysics is at the heart of the cosmos, spawning nebulae, destroying stars, maintaining orbits, and more. Yet supernatural forces like magic, souls, outsiders, " +
                     "and deities introduce variations that both warp a logical universe and even gnaw at the foundation of mathematics itself. Otolmens watches the universe from Axis " +

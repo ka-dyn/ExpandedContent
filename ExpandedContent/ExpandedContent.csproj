@@ -229,7 +229,7 @@
     <Compile Include="Tweaks\Components\AbilityCasterOffHandWeaponCheck.cs" />
     <Compile Include="Tweaks\Components\MaxCastingAttributeWithArchetypeGetter.cs" />
     <Compile Include="Tweaks\Components\LearnDomainSpell.cs" />
-    <Compile Include="Tweaks\Components\ReplaceAbilitiesStatFromArchetype.cs" />    
+    <Compile Include="Tweaks\Components\ReplaceAbilitiesStatFromArchetype.cs" />
     <Compile Include="Tweaks\Components\SpearParry.cs" />
     <Compile Include="Tweaks\Components\DeflectArrowsExpanded.cs" />
     <Compile Include="Tweaks\Components\ACBonusAgainstNotCaster.cs" />
@@ -613,13 +613,22 @@
     <Content Include="Assets\Deities\Icon_Azathoth.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Deities\Icon_Baalzebul.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Deities\Icon_Baphomet.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Barbatos.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Barzahk.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Bastet.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Belial.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Bes.jpg">
@@ -716,6 +725,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_GeneralSusumu.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Geryon.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Ghatanothoa.jpg">
@@ -823,6 +835,9 @@
     <Content Include="Assets\Deities\Icon_Magdh.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Deities\Icon_Mammon.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Deities\Icon_Mazmezz.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -836,6 +851,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Milani.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Moloch.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Monad.jpg">

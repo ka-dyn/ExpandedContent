@@ -46,7 +46,7 @@ namespace ExpandedContent.Tweaks.DemonLords {
                     "\nAreas of Concern: Death, Necromancy, Wrath, Undeath   " +
                     "\nDomains: Chaos, Death, Evil, Magic   " +
                     "\nSubdomains: Demon, Divine, Murder, Undead   " +
-                    "\nFavoured Weapon: Heavy Mace   " +
+                    "\nFavoured Weapon: Heavy mace   " +
                     "\nHoly Symbol: Four-horned goat head   " +
                     "\nSacred Animal: Goat   " +
                     "\nAlthough Orcus doesn’t have a strong following on Golarion (his worship is mostly restricted to the nation of Geb and certain backwater regions in Nidal), he has " +
