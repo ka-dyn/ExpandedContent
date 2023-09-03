@@ -181,8 +181,14 @@ namespace ExpandedContent.Tweaks {
 
                 Miscellaneous.AidAnother.AddAidAnother();
 
+                Archdevils.Baalzebul.AddBaalzebul();
+                Archdevils.Barbatos.AddBarbatos();
+                Archdevils.Belial.AddBelial();
                 Archdevils.Dispater.AddDispater();
+                Archdevils.Geryon.AddGeryon();
+                Archdevils.Mammon.AddMammon();
                 Archdevils.Mephistopheles.AddMephistopheles();
+                Archdevils.Moloch.AddMoloch();
 
                 DemonLords.Areshkegal.AddAreshkegal();
                 DemonLords.Deskari.AddDeskari();
