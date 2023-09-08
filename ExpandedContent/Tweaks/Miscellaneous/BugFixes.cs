@@ -29,7 +29,9 @@ namespace ExpandedContent.Tweaks.Miscellaneous {
         //
         //Please delete fixes after Owlcat fixes them
 
-        public static void ShamblingMoundGrabDamage() {
+        public static void AddBugFixes() {
+
+
             var ShamblingMoundGrappledTargetBuff = Resources.GetBlueprint<BlueprintBuff>("2b5743ae1c3e478ab99defebcc881019");
             ShamblingMoundGrappledTargetBuff.AddComponent<AddFactContextActions>(c => {
                 c.Activated = Helpers.CreateActionList(
@@ -177,6 +179,18 @@ namespace ExpandedContent.Tweaks.Miscellaneous {
                 c.m_Classes = c.m_Classes.AppendToArray(ClericClass.ToReference<BlueprintCharacterClassReference>());
             });
             WitchHexDCProperty.RemoveComponents<MaxCastingAttributeGetter>();
+
+
+            //Spontaneous Healing Discovery Resource patch
+            //Looks like Owlcat changed from using m_Class to m_ClassDiv, but only put in the alchemist class
+            var SpontaneousHealingResource = Resources.GetBlueprint<BlueprintAbilityResource>("0b417a7292b2e924782ef2aab9451816").m_MaxAmount;
+            var RogueClass = Resources.GetBlueprintReference<BlueprintCharacterClassReference>("299aa766dee3cbf4790da4efb8c72484");
+            var FighterClass = Resources.GetBlueprintReference<BlueprintCharacterClassReference>("48ac8db94d5de7645906c7d0ad3bcfbd");
+            var UndergroundChemistArchetype = Resources.GetBlueprintReference<BlueprintArchetypeReference>("b4f5741d42c4cb04abf5ab3fe33f6fc5");
+            var MutationWarriorArchetype = Resources.GetBlueprintReference<BlueprintArchetypeReference>("758e0061a077e54409a3bf0eb51511e5");
+            SpontaneousHealingResource.m_ClassDiv = SpontaneousHealingResource.m_ClassDiv.AppendToArray(RogueClass, FighterClass);
+            SpontaneousHealingResource.m_ArchetypesDiv = SpontaneousHealingResource.m_ArchetypesDiv.AppendToArray(UndergroundChemistArchetype, MutationWarriorArchetype);
+
         }
 
 

@@ -179,6 +179,7 @@
     <Compile Include="Tweaks\Archdevils\Mephistopheles.cs" />
     <Compile Include="Tweaks\Archdevils\Moloch.cs" />
     <Compile Include="Tweaks\Archetypes\DivineScourge.cs" />
+    <Compile Include="Tweaks\Archetypes\Mindchemist.cs" />
     <Compile Include="Tweaks\Archetypes\Treesinger.cs" />
     <Compile Include="Tweaks\Archetypes\SwornOfTheEldest.cs" />
     <Compile Include="Tweaks\Archetypes\SkulkingHunter.cs" />
@@ -395,6 +396,10 @@
     <Compile Include="Tweaks\FourHorsemen\Charon.cs" />
     <Compile Include="Tweaks\FourHorsemen\Szuriel.cs" />
     <Compile Include="Tweaks\FourHorsemen\Terlmarixian.cs" />
+    <Compile Include="Tweaks\Miscellaneous\AlchemistDiscoveries\PheromonesDiscovery.cs" />
+    <Compile Include="Tweaks\Miscellaneous\AlchemistDiscoveries\HealingTouchDiscovery.cs" />
+    <Compile Include="Tweaks\Miscellaneous\AlchemistDiscoveries\MindchemistSkillDiscovery.cs" />
+    <Compile Include="Tweaks\Miscellaneous\AlchemistDiscoveries\MutagenDiscovery.cs" />
     <Compile Include="Tweaks\Miscellaneous\BugFixes.cs" />
     <Compile Include="Tweaks\Miscellaneous\DrakePetTypeAdder.cs" />
     <Compile Include="Tweaks\Miscellaneous\DemonHunter.cs" />
@@ -1895,6 +1900,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>(robocopy "$(TargetDir) " "%WrathPath%\Mods\ExpandedContent\ " /s /e )^&amp; IF %25ERRORLEVEL%25 LEQ 1 exit 0</PostBuildEvent>

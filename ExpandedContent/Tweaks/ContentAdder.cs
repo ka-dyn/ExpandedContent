@@ -66,7 +66,7 @@ namespace ExpandedContent.Tweaks {
                 Archetypes.RavenerHunter.AddRavenerHunter();
                 Archetypes.SkulkingHunter.AddSkulkingHunter();
                 Archetypes.SwornOfTheEldest.AddSwornOfTheEldest();
-
+                Archetypes.Mindchemist.AddMindchemist();
 
                 Classes.OathbreakerClass.AddOathbreakerClass();
                 Archetypes.Castigator.AddCastigator();
@@ -128,6 +128,11 @@ namespace ExpandedContent.Tweaks {
                 Spells.PlantShape.AddPlantShape();
                 Spells.WoodenPhalanx.AddWoodenPhalanx();
                 Spells.Shambler.AddShambler();
+
+                Miscellaneous.AlchemistDiscoveries.MutagenDiscovery.AddMutagenDiscovery();
+                Miscellaneous.AlchemistDiscoveries.MindchemistSkillDiscovery.AddMindchemistSkillDiscovery();
+                Miscellaneous.AlchemistDiscoveries.HealingTouchDiscovery.AddHealingTouchDiscovery();
+                Miscellaneous.AlchemistDiscoveries.PheromonesDiscovery.AddPheromonesDiccovery();
 
                 Domains.ImpossibleSubdomainSelection.AddImpossibleSubdomainSelection();
                 Domains.ScalykindDomain.AddScalykindDomain();
@@ -388,7 +393,7 @@ namespace ExpandedContent.Tweaks {
                 Miscellaneous.HavocDragonPet.AddHavocDragonPet();
                 Miscellaneous.ShapechangeFeatsPatch.AddShapechangeFeatsPatch();
 
-                Miscellaneous.BugFixes.ShamblingMoundGrabDamage();
+                Miscellaneous.BugFixes.AddBugFixes();
             }
         }
     }

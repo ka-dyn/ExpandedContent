@@ -204,7 +204,12 @@
         "Enabled": true,
         "Homebrew": false,
         "Description": "Charisma based inquisitor archetype serving the Eldest."
-      }      
+      },
+      "Mindchemist": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "A alchemist archetype that gives up poisons and basic mutagens for mental acuity."
+      }
     },
     "IsExpanded": false
   },
