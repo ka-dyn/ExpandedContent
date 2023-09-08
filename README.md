@@ -33,6 +33,8 @@ New Archetypes
 
 - Divine Scourge, Cleric
 
+- Mindchemist, Alchemist
+
 New Prestige Class
 
 - Stargazer
@@ -143,6 +145,13 @@ New Domains / Subdomains
   - Undead
   - Whimsy
   - Wind
+
+New Alchemist Discoveries
+
+- Healer's Touch
+- Pheromones
+
+
 
 New Spells
 
