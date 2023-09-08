@@ -2423,7 +2423,16 @@
     "BelialFeature": "884d5889-1e2f-473b-8476-1f290f30e187",
     "GeryonFeature": "e16da533-ad22-47bc-a0a5-c09802e756ce",
     "MammonFeature": "8cc8a3fc-0545-4152-8166-df14aac6b2b6",
-    "MolochFeature": "7ec46fdd-3893-46d9-8c42-c982b0c3c9fc"
+    "MolochFeature": "7ec46fdd-3893-46d9-8c42-c982b0c3c9fc",
+
+    "HealingTouchDiscoveryAbility": "72253d43-1c5d-42d5-b240-e4e4e86e1193",
+    "HealingTouchDiscoveryFeature": "2b172774-fefc-40fd-a465-c85499c5f53f",
+    "MindchemistArchetype": "166f9123-0129-46f9-97f7-272d08ad3a6e",
+    "MindchemistBonusFeats": "f3fc86e6-5326-461e-b4da-f1d4af5cda98",
+    "MindchemistSkillDiscoverySelection": "841164e8-83cf-46fc-a892-138c1212ac10",
+    "MutagenDiscoveryFeature": "dd705193-fa2b-476f-85d8-dd36319b6740",
+    "PerfectRecallFeature": "eba454ca-05e6-4ed1-850e-929ba2b91ea7",
+    "PheromonesDiscoveryFeature": "e3e8b679-1245-4c5d-8174-2f48fa315732"
 
 
 
