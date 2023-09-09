@@ -48,7 +48,8 @@ namespace ExpandedContent.Tweaks.Components {
             return hand.MaybeWeapon != null && (
                 hand.MaybeWeapon.Blueprint.Category == WeaponCategory.Shortspear || 
                 hand.MaybeWeapon.Blueprint.Category == WeaponCategory.Spear || 
-                hand.MaybeWeapon.Blueprint.Category == WeaponCategory.Longspear
+                hand.MaybeWeapon.Blueprint.Category == WeaponCategory.Longspear ||
+                hand.MaybeWeapon.Blueprint.Category == WeaponCategory.Trident
                 );
         }
         public ActionList ActionOnSelf;
