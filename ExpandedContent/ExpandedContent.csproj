@@ -180,6 +180,7 @@
     <Compile Include="Tweaks\Archdevils\Moloch.cs" />
     <Compile Include="Tweaks\Archetypes\DivineScourge.cs" />
     <Compile Include="Tweaks\Archetypes\Mindchemist.cs" />
+    <Compile Include="Tweaks\Archetypes\ChildOfAcavnaAndAmaznen.cs" />
     <Compile Include="Tweaks\Archetypes\Treesinger.cs" />
     <Compile Include="Tweaks\Archetypes\SwornOfTheEldest.cs" />
     <Compile Include="Tweaks\Archetypes\SkulkingHunter.cs" />

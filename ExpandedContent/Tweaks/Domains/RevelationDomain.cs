@@ -35,7 +35,7 @@ namespace ExpandedContent.Tweaks.Domains {
             var SeeInvisibilitySpell = Resources.GetBlueprint<BlueprintAbility>("30e5dc243f937fc4b95d2f8f4e1b7ff3");
             var DispelMagicSpell = Resources.GetBlueprint<BlueprintAbility>("92681f181b507b34ea87018e8f7a528a");
             var ShieldOfDawnSpell = Resources.GetBlueprint<BlueprintAbility>("62888999171921e4dafb46de83f4d67d");
-            var TrueSeeingSpell = Resources.GetBlueprint<BlueprintAbility>("b3da3fbee6a751d4197e446c7e852bcb");
+            var TrueSeeingSpell = Resources.GetBlueprint<BlueprintAbility>("4cf3d0fae3239ec478f51e86f49161cb");
             var ChainsOfLightSpell = Resources.GetBlueprint<BlueprintAbility>("f8cea58227f59c64399044a82c9735c4");
             var SunbeamSpell = Resources.GetBlueprint<BlueprintAbility>("1fca0ba2fdfe2994a8c8bc1f0f2fc5b1");
             var SunburstSpell = Resources.GetBlueprint<BlueprintAbility>("e96424f70ff884947b06f41a765b7658");

@@ -134,6 +134,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.ReapplyOnLevelUp = false;
                 bp.Mode = SelectionMode.Default;
                 bp.Group = FeatureGroup.WitchHex;
+                bp.IgnorePrerequisites = true;
                 bp.AddFeatures(WitchHexAgony, WitchHexCackle, WitchHexDeliciousFright, WitchHexEvilEye, WitchHexHoarfrost, WitchHexMisfortune, WitchHexRestlessSlumber, WitchHexSlumber, WitchHexVulnerability);
             });
 

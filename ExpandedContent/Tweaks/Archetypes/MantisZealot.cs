@@ -65,11 +65,11 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var MantisZealotArchetype = Helpers.CreateBlueprint<BlueprintArchetype>("MantisZealotArchetype", bp => {
                 bp.LocalizedName = Helpers.CreateString($"MantisZealotArchetype.Name", "Mantis Zealot");
                 bp.LocalizedDescription = Helpers.CreateString($"MantisZealotArchetype.Description", "Among the Red Mantis worshipers of Achaekek, some hold such strong faith in their " +
-                    "assassin god that they gain divine power.They forge themselves into perfect killers in honor of He Who Walks in Blood.These warpriests are a relatively recent addition " +
+                    "assassin god that they gain divine power. They forge themselves into perfect killers in honor of He Who Walks in Blood.These warpriests are a relatively recent addition " +
                     "to the Red Mantis arsenal, but in the few short decades they have served the assassins, they have quickly built a reputation for themselves as particularly fanatical " +
                     "devotees of the Mantis God.");
                 bp.LocalizedDescriptionShort = Helpers.CreateString($"MantisZealotArchetype.Description", "Among the Red Mantis worshipers of Achaekek, some hold such strong faith in their " +
-                    "assassin god that they gain divine power.They forge themselves into perfect killers in honor of He Who Walks in Blood.These warpriests are a relatively recent addition " +
+                    "assassin god that they gain divine power. They forge themselves into perfect killers in honor of He Who Walks in Blood.These warpriests are a relatively recent addition " +
                     "to the Red Mantis arsenal, but in the few short decades they have served the assassins, they have quickly built a reputation for themselves as particularly fanatical " +
                     "devotees of the Mantis God.");
                 bp.AddComponent<PrerequisiteAlignment>(c => {
