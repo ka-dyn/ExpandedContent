@@ -209,6 +209,11 @@
         "Enabled": true,
         "Homebrew": false,
         "Description": "A alchemist archetype that gives up poisons and basic mutagens for mental acuity."
+      },
+      "Child of Acavna and Amaznen": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "A fighter archetype with low level spellcasting."
       }
     },
     "IsExpanded": false

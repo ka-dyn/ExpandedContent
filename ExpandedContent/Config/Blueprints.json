@@ -2432,7 +2432,23 @@
     "MindchemistSkillDiscoverySelection": "841164e8-83cf-46fc-a892-138c1212ac10",
     "MutagenDiscoveryFeature": "dd705193-fa2b-476f-85d8-dd36319b6740",
     "PerfectRecallFeature": "eba454ca-05e6-4ed1-850e-929ba2b91ea7",
-    "PheromonesDiscoveryFeature": "e3e8b679-1245-4c5d-8174-2f48fa315732"
+    "PheromonesDiscoveryFeature": "e3e8b679-1245-4c5d-8174-2f48fa315732",
+
+    "ChildOfAcavnaAndAmaznenArchetype": "037a4461-5ac6-4786-87a9-2218c3c0e3dc",
+    "ChildOfAcavnaAndAmaznenDailyTable": "832ab816-e079-4176-9f4b-30c8e949e3ef",
+    "ChildOfAcavnaAndAmaznenProficiencies": "44691b41-5364-423c-8448-e3f09887a6e2",
+    "ChildOfAcavnaAndAmaznenSpellbook": "cd60cdfc-fc88-425b-980a-a247f28dfea4",
+    "EldritchArmorTrainingAbility": "ba9635e3-52b9-4cfc-8102-e73f837e7c23",
+    "EldritchArmorTrainingBuff15": "9f9ac131-8224-4c9b-a157-c8d70a3e8f53",
+    "EldritchArmorTrainingBuff20": "11703f21-824d-4ad4-9c53-5c0fb6568f29",
+    "EldritchArmorTrainingBuff25": "8611f210-539c-457e-86e5-46ad5048ee91",
+    "EldritchArmorTrainingBuff30": "0f6f075b-d395-480e-8373-dbb1c8095710",
+    "EldritchArmorTrainingFeature": "87dcc2be-9b94-4eec-aabb-0fe688ff354c",
+    "EldritchArmorTrainingRank20": "a3cc9a45-2449-45f7-a754-ea24d2ab6cfb",
+    "EldritchArmorTrainingRank25": "a12945f2-5d3f-416d-81f9-04902b929cee",
+    "EldritchArmorTrainingRank30": "5f97fb97-d321-4103-9c52-808a1c892732",
+    "LoreOfAcavnaAndAmaznenFeature": "2de64d07-c714-47db-87ca-0386419afbfb",
+    "OneHandedMartialWeaponProficiency": "c72e34e4-372e-4011-8bb5-648b3953a751"
 
 
 

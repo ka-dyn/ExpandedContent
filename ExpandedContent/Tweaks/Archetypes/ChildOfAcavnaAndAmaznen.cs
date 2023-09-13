@@ -49,11 +49,9 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var ScribingScrollsFeature = Resources.GetBlueprint<BlueprintFeature>("a8a385bf53ee3454593ce9054375a2ec");
 
 
-            var ArmorTrainingFeature = Resources.GetBlueprint<BlueprintFeature>("3c380607706f209499d951b29d3c44f3");
+            var ArcaneArmorMasteryFeature = Resources.GetBlueprint<BlueprintFeature>("453f5181a5ed3a445abfa3bcd3f4ac0c");
             var WeaponTrainingSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("b8cecf4e5e464ad41b79d5b42b76b399");
             var WeaponTrainingRankUpSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("5f3cc7b9a46b880448275763fe70c0b0");
-            var ArmorMasteryFeature = Resources.GetBlueprint<BlueprintFeature>("ae177f17cfb45264291d4d7c2cb64671");
-            var DefensiveSpinBuff = Resources.GetBlueprint<BlueprintBuff>("3e0146b786c064441834fc025d09a67c");
 
             var DwarfRace = Resources.GetBlueprint<BlueprintRace>("c4faf439f0e70bd40b5e36ee80d06be7");
 
@@ -286,7 +284,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.SetDescription("At 3rd level, a child of Acavna and Amaznen gains eldritch armor training. As a swift action she can also reduce the arcane spell failure " +
                     "chance due to armor she is wearing by 15% for any spells she casts this round. This reduction increases to 20% at 7th level, 25% at 11th level, and 30% at 15th level." +
                     "\nThis ability stacks with the arcane spell failure chance from the arcane armor training and arcane armor mastery feats.");
-                bp.m_Icon = EldritchArmorTrainingIcon;                
+                bp.m_Icon = ArcaneArmorMasteryFeature.m_Icon;                
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;
             });
@@ -295,7 +293,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.SetDescription("At 3rd level, a child of Acavna and Amaznen gains eldritch armor training. As a swift action she can also reduce the arcane spell failure " +
                     "chance due to armor she is wearing by 15% for any spells she casts this round. This reduction increases to 20% at 7th level, 25% at 11th level, and 30% at 15th level." +
                     "\nThis ability stacks with the arcane spell failure chance from the arcane armor training and arcane armor mastery feats.");
-                bp.m_Icon = EldritchArmorTrainingIcon;
+                bp.m_Icon = ArcaneArmorMasteryFeature.m_Icon;
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;
             });
@@ -304,7 +302,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.SetDescription("At 3rd level, a child of Acavna and Amaznen gains eldritch armor training. As a swift action she can also reduce the arcane spell failure " +
                     "chance due to armor she is wearing by 15% for any spells she casts this round. This reduction increases to 20% at 7th level, 25% at 11th level, and 30% at 15th level." +
                     "\nThis ability stacks with the arcane spell failure chance from the arcane armor training and arcane armor mastery feats.");
-                bp.m_Icon = EldritchArmorTrainingIcon;
+                bp.m_Icon = ArcaneArmorMasteryFeature.m_Icon;
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;
             });
@@ -313,7 +311,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.SetName("Eldritch Armor Training");
                 bp.SetDescription("Arcane spell failure chance due to armor she is wearing is reduced by 30% for any spells she casts this round." +
                     "\nThis ability stacks with the arcane spell failure chance from the arcane armor training and arcane armor mastery feats.");
-                bp.m_Icon = EldritchArmorTrainingIcon;
+                bp.m_Icon = ArcaneArmorMasteryFeature.m_Icon;
                 bp.AddComponent<ArcaneSpellFailureIncrease>(c => {
                     c.Bonus = -30;
                     c.ToShield = false;
@@ -327,7 +325,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.SetName("Eldritch Armor Training");
                 bp.SetDescription("Arcane spell failure chance due to armor she is wearing is reduced by 25% for any spells she casts this round." +
                     "\nThis ability stacks with the arcane spell failure chance from the arcane armor training and arcane armor mastery feats.");
-                bp.m_Icon = EldritchArmorTrainingIcon;
+                bp.m_Icon = ArcaneArmorMasteryFeature.m_Icon;
                 bp.AddComponent<ArcaneSpellFailureIncrease>(c => {
                     c.Bonus = -25;
                     c.ToShield = false;
@@ -341,7 +339,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.SetName("Eldritch Armor Training");
                 bp.SetDescription("Arcane spell failure chance due to armor she is wearing is reduced by 20% for any spells she casts this round." +
                     "\nThis ability stacks with the arcane spell failure chance from the arcane armor training and arcane armor mastery feats.");
-                bp.m_Icon = EldritchArmorTrainingIcon;
+                bp.m_Icon = ArcaneArmorMasteryFeature.m_Icon;
                 bp.AddComponent<ArcaneSpellFailureIncrease>(c => {
                     c.Bonus = -20;
                     c.ToShield = false;
@@ -355,7 +353,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.SetName("Eldritch Armor Training");
                 bp.SetDescription("Arcane spell failure chance due to armor she is wearing is reduced by 15% for any spells she casts this round." +
                     "\nThis ability stacks with the arcane spell failure chance from the arcane armor training and arcane armor mastery feats.");
-                bp.m_Icon = EldritchArmorTrainingIcon;
+                bp.m_Icon = ArcaneArmorMasteryFeature.m_Icon;
                 bp.AddComponent<ArcaneSpellFailureIncrease>(c => {
                     c.Bonus = -15;
                     c.ToShield = false;
@@ -469,7 +467,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                         }
                         );
                 });
-                bp.m_Icon = EldritchArmorTrainingIcon;
+                bp.m_Icon = ArcaneArmorMasteryFeature.m_Icon;
                 bp.Type = AbilityType.Extraordinary;
                 bp.Range = AbilityRange.Touch;
                 bp.CanTargetPoint = false;
@@ -491,7 +489,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.SetDescription("At 3rd level, a child of Acavna and Amaznen gains eldritch armor training. As a swift action she can also reduce the arcane spell failure " +
                     "chance due to armor she is wearing by 15% for any spells she casts this round. This reduction increases to 20% at 7th level, 25% at 11th level, and 30% at 15th level." +
                     "\nThis ability stacks with the arcane spell failure chance from the arcane armor training and arcane armor mastery feats.");
-                bp.m_Icon = EldritchArmorTrainingIcon;
+                bp.m_Icon = ArcaneArmorMasteryFeature.m_Icon;
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] {
                         EldritchArmorTrainingAbility.ToReference<BlueprintUnitFactReference>(),
@@ -506,10 +504,8 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     Helpers.LevelEntry(2, FighterFeatSelection),
                     Helpers.LevelEntry(5, WeaponTrainingSelection),
                     Helpers.LevelEntry(8, FighterFeatSelection),
-                    Helpers.LevelEntry(9, WeaponTrainingSelection, WeaponTrainingRankUpSelection),
-                    Helpers.LevelEntry(13, WeaponTrainingSelection, WeaponTrainingRankUpSelection),
+                    Helpers.LevelEntry(9, WeaponTrainingRankUpSelection),
                     Helpers.LevelEntry(14, FighterFeatSelection),
-                    Helpers.LevelEntry(17, WeaponTrainingSelection, WeaponTrainingRankUpSelection),
                     Helpers.LevelEntry(20, FighterFeatSelection)
             };
             ChildOfAcavnaAndAmaznenArchetype.AddFeatures = new LevelEntry[] {
@@ -519,7 +515,6 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     Helpers.LevelEntry(7, EldritchArmorTrainingRank20),
                     Helpers.LevelEntry(11, EldritchArmorTrainingRank25),
                     Helpers.LevelEntry(15, EldritchArmorTrainingRank30)
-
             };
             
             if (ModSettings.AddedContent.Archetypes.IsDisabled("Child of Acavna and Amaznen")) { return; }
