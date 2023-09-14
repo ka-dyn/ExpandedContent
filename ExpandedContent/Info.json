@@ -8,6 +8,6 @@
   "Id": "ExpandedContent",
   "ManagerVersion": "0.23.0",
   "Repository": "https://raw.githubusercontent.com/ka-dyn/ExpandedContent/master/Repository.json",
-  "Requirements": [],
+  "Requirements": [ "TabletopTweaks-Core-0.6.7" ],
   "Version": "0.7.30"
 }

@@ -40,6 +40,7 @@ using Kingmaker.Utility;
 using Kingmaker.Visual.Animation.Kingmaker.Actions;
 using System.Collections.Generic;
 using System.Linq;
+using TabletopTweaks.Core.NewComponents;
 
 namespace ExpandedContent.Tweaks.Classes {
 
@@ -2224,11 +2225,12 @@ namespace ExpandedContent.Tweaks.Classes {
                         }
                     };
                 });
-                bp.AddComponent<AbilityAreaEffectRunAction>(c => {
-                    c.Round = Helpers.CreateActionList(
-                        new ContextActionRemoveBuffsByDescriptor() {
-                            SpellDescriptor = SpellDescriptor.FearImmunity
-                        });
+                bp.AddComponent<SpellDescriptorImmunityIgnore>(c => {
+                    c.Descriptor = SpellDescriptor.Fear | SpellDescriptor.Shaken | SpellDescriptor.Frightened;
+                });
+
+                bp.AddComponent<BuffDescriptorImmunityIgnore>(c => {
+                    c.Descriptor = SpellDescriptor.Fear | SpellDescriptor.Shaken | SpellDescriptor.Frightened;
                 });
             });
             var AuraOfCowardiceArea = Helpers.CreateBlueprint<BlueprintAbilityAreaEffect>("AuraOfCowardiceArea", bp => {
