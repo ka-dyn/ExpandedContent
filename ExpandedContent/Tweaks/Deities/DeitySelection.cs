@@ -151,6 +151,7 @@ namespace ExpandedContent.Tweaks.Deities {
 
             //Philosophies
             var GreenFaithFeature = Resources.GetBlueprint<BlueprintFeature>("99a7a8f13c1300c42878558fa9471e2f");
+            var GreenFaithCameliaFeature = Resources.GetBlueprint<BlueprintFeature>("ca763809e01f4247a3639965364c26cb");
             var AtheismFeature = Resources.GetBlueprint<BlueprintFeature>("92c0d2da0a836ce418a267093c09ca54");
 
             //Pantheons
@@ -739,7 +740,7 @@ namespace ExpandedContent.Tweaks.Deities {
             });
             var Camelia = Resources.GetBlueprint<BlueprintUnit>("397b090721c41044ea3220445300e1b8");
             Camelia.AddComponent<AddFacts>(c => {
-                c.m_Facts = new BlueprintUnitFactReference[] { GreenFaithFeature.ToReference<BlueprintUnitFactReference>() };
+                c.m_Facts = new BlueprintUnitFactReference[] { GreenFaithCameliaFeature.ToReference<BlueprintUnitFactReference>() };
             });
             var Arueshalae = Resources.GetBlueprint<BlueprintUnit>("a352873d37ec6c54c9fa8f6da3a6b3e1");
             Arueshalae.AddComponent<AddFacts>(c => {
