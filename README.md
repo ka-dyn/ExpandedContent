@@ -195,4 +195,4 @@ Compatible with all mods as far as I am aware, extra features are unlocked if us
 I'd like to give a huge thank you to Vek17, as much of the coding in this repository is his; I simply repurposed it or learned from it. I wouldn't be able to release anything without it.
 Thanks to AlterAsc for the creation of the Sworn of the Eldest Archetype.
 Many of the icons and art stuff in the mod are thanks to xTekek
-Mandarin Chinese Localisation - by @WFQ & HerryZheng8
+Mandarin Chinese Localisation is updated and maintained [Here](https://github.com/nixgnot/WOTR-CONTENTS-MODS-CN "Mandarin Chinese Localisation") 
