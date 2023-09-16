@@ -8,7 +8,6 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Designers.EventConditionActionSystem.Actions;
 using Kingmaker.ElementsSystem;
-using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.UnitLogic.Abilities.Components;
 using Kingmaker.UnitLogic.FactLogic;
@@ -18,25 +17,13 @@ using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.Mechanics.Components;
 using Kingmaker.UnitLogic.Commands.Base;
 using Kingmaker.UnitLogic.Abilities;
-using Kingmaker.UnitLogic;
 using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.EntitySystem.Stats;
-using Kingmaker.Enums.Damage;
-using Kingmaker.Utility;
 using Kingmaker.RuleSystem;
-using Kingmaker.RuleSystem.Rules.Damage;
 using Kingmaker.Enums;
-using Kingmaker.UnitLogic.Mechanics.Properties;
-using Kingmaker.UnitLogic.ActivatableAbilities;
 using Kingmaker.Visual.Animation.Kingmaker.Actions;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Kingmaker.UnitLogic.Mechanics.Actions;
-using Kingmaker.UI.GenericSlot;
-using Kingmaker.Blueprints.Items.Ecnchantments;
 using Kingmaker.UnitLogic.Abilities.Components.TargetCheckers;
 using Kingmaker.UnitLogic.Buffs;
 using Kingmaker.Blueprints.Items.Weapons;
@@ -122,6 +109,10 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 });
                 bp.AddComponent<SpellDescriptorComponent>(c => {
                     c.Descriptor = SpellDescriptor.Polymorph;
+                });
+                bp.AddComponent<PolymorphBonuses>(c => {
+                    c.m_Flags = 0;
+                    c.masterShifterBonus = 4;
                 });
                 bp.m_Flags = BlueprintBuff.Flags.StayOnDeath;
                 bp.Stacking = StackingType.Replace;
@@ -216,6 +207,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.IsClassFeature = true;
                 bp.IsPrerequisiteFor = WildShapeIWolfFeature.IsPrerequisiteFor;
             });
+
             var FormOfTheDragonGreenBuff = Resources.GetBlueprint<BlueprintBuff>("02611a12f38bed340920d1d427865917");
             var WildShapeDragonShapeGreenBuff = Helpers.CreateBuff("WildShapeDragonShapeGreenBuff", bp => {
                 bp.SetName("Dragon Shape - Green Dragon");

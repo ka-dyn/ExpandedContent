@@ -90,11 +90,6 @@
   "Archetypes": {
     "DisableAll": false,
     "Settings": {
-      "Living Scripture": {
-        "Enabled": true,
-        "Homebrew": true,
-        "Description": "A requested inquisitor archetype that focuses on divine spellcasting, buffed from tabletop to be a full caster."
-      },
       "Temple Champion": {
         "Enabled": true,
         "Homebrew": true,
@@ -194,6 +189,31 @@
         "Enabled": true,
         "Homebrew": false,
         "Description": "A hunter archetype with a combination spell-list and a shared study target feature."
+      },
+      "Treesinger": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "A druid archetype with plant companions and plant based wild shapes."
+      },
+      "Divine Scourge": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "A cleric archetype that gives up wide domain selection for cursing and debuffing."
+      },
+      "Sworn of the Eldest": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Charisma based inquisitor archetype serving the Eldest."
+      },
+      "Mindchemist": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "A alchemist archetype that gives up poisons and basic mutagens for mental acuity."
+      },
+      "Child of Acavna and Amaznen": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "A fighter archetype with low level spellcasting."
       }
     },
     "IsExpanded": false
@@ -335,6 +355,26 @@
         "Enabled": true,
         "Homebrew": false,
         "Description": "Adds the heroism subdomain, a subdomain to the glory domain."
+      },
+      "Growth Subdomain": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds the growth subdomain, a subdomain to the plant domain."
+      },
+      "Plant Domain Patch": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Patches the plant domain to use the ability and spells from the tabletop game."
+      },
+      "Fist Subdomain": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds the fist subdomain, a subdomain to the strength domain."
+      },
+      "Loyalty Subdomain": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds the loyalty subdomain, a subdomain to the law domain."
       }
     },
     "IsExpanded": false
@@ -437,17 +477,6 @@
     },
     "IsExpanded": false
   },
-  "AivuPet": {
-    "DisableAll": false,
-    "Settings": {
-      "AivuPet": {
-        "Enabled": false,
-        "Homebrew": true,
-        "Description": "Allows you to select Aivu as a normal animal companion."
-      }
-    },
-    "IsExpanded": false
-  },
   "Miscellaneous": {
     "DisableAll": false,
     "Settings": {
@@ -455,6 +484,22 @@
         "Enabled": true,
         "Homebrew": false,
         "Description": "Adds the Aid Another feature from the tabletop, this toggle will also disable features and feats relating to the Aid Another feature."
+      }
+    },
+    "IsExpanded": false
+  },
+  "RetiredFeatures": {
+    "DisableAll": false,
+    "Settings": {
+      "Living Scripture": {
+        "Enabled": false,
+        "Homebrew": true,
+        "Description": "A requested  homebrew inquisitor archetype that focuses on divine spellcasting, buffed from tabletop to be a full caster."
+      },
+      "AivuPet": {
+        "Enabled": false,
+        "Homebrew": true,
+        "Description": "Allows you to select Aivu as a normal animal companion."
       }
     },
     "IsExpanded": false

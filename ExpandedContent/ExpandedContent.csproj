@@ -89,7 +89,6 @@
     </Reference>
     <Reference Include="Owlcat.Runtime.Validation">
       <HintPath>$(WrathPath)\Wrath_Data\Managed\Owlcat.Runtime.Validation.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -134,6 +133,9 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="TabletopTweaks-Core">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Pathfinder Second Adventure\Mods\TabletopTweaks-Core\TabletopTweaks-Core.dll</HintPath>
+    </Reference>
     <Reference Include="UniRx, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>$(WrathPath)\Wrath_Data\Managed\UniRx.dll</HintPath>
@@ -186,8 +188,10 @@
     <Compile Include="Config\SettingGroup.cs" />
     <Compile Include="Localization\MultiLocalizationPack.cs" />
     <Compile Include="Tweaks\AnimalCompanions\ArchetypeDraconic.cs" />
+    <Compile Include="Tweaks\AnimalCompanions\CompanionCrawlingMound.cs" />
     <Compile Include="Tweaks\AnimalCompanions\CompanionWebSpider.cs" />
     <Compile Include="Tweaks\AnimalCompanions\CompanionGiantFly.cs" />
+    <Compile Include="Tweaks\AnimalCompanions\CompanionSaplingTreant.cs" />
     <Compile Include="Tweaks\AnimalCompanions\CompanionWolverine.cs" />
     <Compile Include="Tweaks\Archdevils\Baalzebul.cs" />
     <Compile Include="Tweaks\Archdevils\Barbatos.cs" />
@@ -197,6 +201,11 @@
     <Compile Include="Tweaks\Archdevils\Mammon.cs" />
     <Compile Include="Tweaks\Archdevils\Mephistopheles.cs" />
     <Compile Include="Tweaks\Archdevils\Moloch.cs" />
+    <Compile Include="Tweaks\Archetypes\DivineScourge.cs" />
+    <Compile Include="Tweaks\Archetypes\Mindchemist.cs" />
+    <Compile Include="Tweaks\Archetypes\ChildOfAcavnaAndAmaznen.cs" />
+    <Compile Include="Tweaks\Archetypes\Treesinger.cs" />
+    <Compile Include="Tweaks\Archetypes\SwornOfTheEldest.cs" />
     <Compile Include="Tweaks\Archetypes\SkulkingHunter.cs" />
     <Compile Include="Tweaks\Archetypes\PrestigeClassSpellbooks.cs" />
     <Compile Include="Tweaks\Archetypes\RavenerHunter.cs" />
@@ -243,12 +252,16 @@
     <Compile Include="Tweaks\Classes\Oathbreaker.cs" />
     <Compile Include="Tweaks\Classes\DreadKnight.cs" />
     <Compile Include="Tweaks\Components\AbilityCasterOffHandWeaponCheck.cs" />
+    <Compile Include="Tweaks\Components\MaxCastingAttributeWithArchetypeGetter.cs" />
+    <Compile Include="Tweaks\Components\LearnDomainSpell.cs" />
+    <Compile Include="Tweaks\Components\ReplaceAbilitiesStatFromArchetype.cs" />
     <Compile Include="Tweaks\Components\SpearParry.cs" />
     <Compile Include="Tweaks\Components\DeflectArrowsExpanded.cs" />
     <Compile Include="Tweaks\Components\ACBonusAgainstNotCaster.cs" />
     <Compile Include="Tweaks\Components\AttackBonusAgainstNotCaster.cs" />
     <Compile Include="Tweaks\Components\SavingThrowAgainstCaster.cs" />
     <Compile Include="Tweaks\Components\WeaponMultipleCategoriesContextAttackBonus.cs" />
+    <Compile Include="Tweaks\Components\WeaponTypeContextDamageBonus.cs" />
     <Compile Include="Tweaks\ContentAdder.cs" />
     <Compile Include="Tweaks\Curses\Vampirism.cs" />
     <Compile Include="Tweaks\Deities\Naderi.cs" />
@@ -366,11 +379,13 @@
     <Compile Include="Tweaks\Deities\Pulura.cs" />
     <Compile Include="Tweaks\Deities\Ragathiel.cs" />
     <Compile Include="Tweaks\DemonLords\Zura.cs" />
+    <Compile Include="Tweaks\Domains\LoyaltyDomain.cs" />
     <Compile Include="Tweaks\Domains\DefenseDomain.cs" />
     <Compile Include="Tweaks\Domains\HeroismDomain.cs" />
     <Compile Include="Tweaks\Domains\LustDomain.cs" />
     <Compile Include="Tweaks\Domains\AgathionDomain.cs" />
     <Compile Include="Tweaks\Domains\BaseDomainDruidPatch.cs" />
+    <Compile Include="Tweaks\Domains\PlantDomainPatch.cs" />
     <Compile Include="Tweaks\Domains\ResolveDomain.cs" />
     <Compile Include="Tweaks\Domains\CurseDomain.cs" />
     <Compile Include="Tweaks\Domains\StarsDomain.cs" />
@@ -393,6 +408,8 @@
     <Compile Include="Tweaks\Domains\UndeadDomain.cs" />
     <Compile Include="Tweaks\Domains\RiversDomain.cs" />
     <Compile Include="Tweaks\Domains\FurDomain.cs" />
+    <Compile Include="Tweaks\Domains\GrowthDomain.cs" />
+    <Compile Include="Tweaks\Domains\FistDomain.cs" />
     <Compile Include="Tweaks\Domains\WindDomain.cs" />
     <Compile Include="Tweaks\Domains\IceDomain.cs" />
     <Compile Include="Tweaks\Domains\CavesDomain.cs" />
@@ -403,6 +420,11 @@
     <Compile Include="Tweaks\FourHorsemen\Charon.cs" />
     <Compile Include="Tweaks\FourHorsemen\Szuriel.cs" />
     <Compile Include="Tweaks\FourHorsemen\Terlmarixian.cs" />
+    <Compile Include="Tweaks\Miscellaneous\AlchemistDiscoveries\PheromonesDiscovery.cs" />
+    <Compile Include="Tweaks\Miscellaneous\AlchemistDiscoveries\HealingTouchDiscovery.cs" />
+    <Compile Include="Tweaks\Miscellaneous\AlchemistDiscoveries\MindchemistSkillDiscovery.cs" />
+    <Compile Include="Tweaks\Miscellaneous\AlchemistDiscoveries\MutagenDiscovery.cs" />
+    <Compile Include="Tweaks\Miscellaneous\BugFixes.cs" />
     <Compile Include="Tweaks\Miscellaneous\DrakePetTypeAdder.cs" />
     <Compile Include="Tweaks\Miscellaneous\DemonHunter.cs" />
     <Compile Include="Tweaks\Miscellaneous\Pinpoint Targeting.cs" />
@@ -463,6 +485,7 @@
     <Compile Include="Tweaks\Spells\DanceOfAHundredCuts.cs" />
     <Compile Include="Tweaks\Spells\ClaySkin.cs" />
     <Compile Include="Tweaks\Spells\PlantShape.cs" />
+    <Compile Include="Tweaks\Spells\Shambler.cs" />
     <Compile Include="Tweaks\Spells\WoodenPhalanx.cs" />
     <Compile Include="Tweaks\Spells\Shillelagh.cs" />
     <Compile Include="Tweaks\Spells\ShieldOfFortificationGreater.cs" />
@@ -619,13 +642,22 @@
     <Content Include="Assets\Deities\Icon_Azathoth.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Deities\Icon_Baalzebul.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Deities\Icon_Baphomet.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Barbatos.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Barzahk.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Bastet.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Belial.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Bes.jpg">
@@ -722,6 +754,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_GeneralSusumu.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Geryon.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Ghatanothoa.jpg">
@@ -829,6 +864,9 @@
     <Content Include="Assets\Deities\Icon_Magdh.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Deities\Icon_Mammon.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Deities\Icon_Mazmezz.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -842,6 +880,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Milani.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Moloch.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Monad.jpg">
@@ -1171,6 +1212,9 @@
     <Content Include="Assets\Items\Icon_ScrollOfScourgeOfTheHorsemen.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Items\Icon_ScrollOfShambler.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Items\Icon_ScrollOfShieldOfFortification.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -1252,6 +1296,18 @@
     <Content Include="Assets\Portraits\CopperSmall.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Portraits\CrawlingMoundFulllength.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Portraits\CrawlingMoundMedium.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Portraits\CrawlingMoundPetEye.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Portraits\CrawlingMoundSmall.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Portraits\GiantFlyFulllength.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -1298,6 +1354,18 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Portraits\RedSmall.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Portraits\SaplingTreantFulllength.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Portraits\SaplingTreantMedium.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Portraits\SaplingTreantPetEye.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Portraits\SaplingTreantSmall.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Portraits\SilverFulllength.png">
@@ -1675,6 +1743,9 @@
     <Content Include="Assets\Skills\Icon_Servant.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Skills\Icon_Shambler.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Skills\Icon_ShieldOfFortification.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -1837,6 +1908,9 @@
     <Content Include="Assets\Skills\Icon_WallOfFire.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Skills\Icon_WoodenFist.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Skills\Icon_WoodenPhalanx.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -1850,6 +1924,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>(robocopy "$(TargetDir) " "%WrathPath%\Mods\ExpandedContent\ " /s /e )^&amp; IF %25ERRORLEVEL%25 LEQ 1 exit 0</PostBuildEvent>

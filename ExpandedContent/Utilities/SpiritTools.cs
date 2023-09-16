@@ -1,11 +1,6 @@
 ﻿using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ExpandedContent.Extensions;
 using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.UnitLogic.Abilities.Components;

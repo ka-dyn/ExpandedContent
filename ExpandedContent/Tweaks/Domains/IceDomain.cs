@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using ExpandedContent.Utilities;
 using ExpandedContent.Extensions;
 using Kingmaker.Blueprints.Classes;
@@ -16,20 +12,10 @@ using Kingmaker.EntitySystem.Stats;
 using Kingmaker.UnitLogic.ActivatableAbilities;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.Commands.Base;
-using Kingmaker.UnitLogic.Buffs.Components;
-using Kingmaker.UnitLogic.Abilities.Components.AreaEffects;
-using Kingmaker.ElementsSystem;
-using Kingmaker.Designers.EventConditionActionSystem.Actions;
-using Kingmaker.UnitLogic.Mechanics.Conditions;
-using Kingmaker.UnitLogic.Mechanics.Actions;
-using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Mechanics;
-using Kingmaker.RuleSystem;
-using Kingmaker.Utility;
 using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.UnitLogic.Mechanics.Properties;
-using Kingmaker.UnitLogic.Mechanics.Components;
 using Kingmaker.Enums.Damage;
 using ExpandedContent.Config;
 
@@ -108,7 +94,7 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.SetDescription("At 8th level, you can transmute your body and equipment to ice for a period of time. It takes a standard action to take on " +
                     "the form of ice, and you can end the transmutation with a free action on your turn. When you take on the form of ice, you are immune to " +
                     "cold and have DR 5/—, but you take twice the normal amount of damage from fire. You can take on the form of ice for a number of rounds per " +
-                    "day equal to your cleric level. The rounds need not be consecutive");
+                    "day equal to your cleric level. The rounds need not be consecutive.");
                 bp.m_Icon = IceBodySpell.Icon;
                 bp.AddComponent<ActivatableAbilityResourceLogic>(c => {
                     c.SpendType = ActivatableAbilityResourceLogic.ResourceSpendType.NewRound;
@@ -127,7 +113,7 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.SetDescription("At 8th level, you can transmute your body and equipment to ice for a period of time. It takes a standard action to take on " +
                     "the form of ice, and you can end the transmutation with a free action on your turn. When you take on the form of ice, you are immune to " +
                     "cold and have DR 5/—, but you take twice the normal amount of damage from fire. You can take on the form of ice for a number of rounds per " +
-                    "day equal to your cleric level. The rounds need not be consecutive");
+                    "day equal to your cleric level. The rounds need not be consecutive.");
                 bp.m_Icon = IceBodySpell.Icon;
                 bp.AddComponent<AddAbilityResources>(c => {
                     c.m_Resource = IceDomainGreaterResource.ToReference<BlueprintAbilityResourceReference>();

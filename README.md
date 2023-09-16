@@ -1,17 +1,17 @@
 *Install VIA UMM*
 -Drag and drop the zip file onto the UMM "Install" button. Most features can be disabled in the UMM menu if not wanted
 
-While this mod is not dependant on https://github.com/Vek17/TabletopTweaks-Base it is recommended as all testing is done with it installed and it fixes several base game issues.
+While this mod is not dependant on [TabletopTweaks-Base](https://github.com/Vek17/TabletopTweaks-Base "TabletopTweaks-Base") it is recommended as all testing is done with it installed and it fixes several base game issues.
 
 *Contents*
 
 New Archetypes
 
-- Ravener Hunter, Living Scripture, Inquisitor
+- Ravener Hunter, Sworn of the Eldest, Inquisitor
 
 - Mantis Zealot, Warpriest
 
-- Mooncaller, Draconic Druid, Storm Druid, Urban Druid, Bear Shaman, Lion Shaman, Druid
+- Mooncaller, Draconic Druid, Storm Druid, Urban Druid, Bear Shaman, Lion Shaman, Treesinger, Druid
 
 - Temple Champion, Silver Champion, Paladin
 
@@ -31,6 +31,10 @@ New Archetypes
 
 - Skulking Hunter, Hunter
 
+- Divine Scourge, Cleric
+
+- Mindchemist, Alchemist
+
 New Prestige Class
 
 - Stargazer
@@ -47,6 +51,8 @@ New Features
 
 - Drake Companions - Limited to certain archetypes. Reworked from tabletop to work in a CRPG setting.
 
+- Plant Companions - Limited to certain archetypes.
+
 - Aid Another
 
 New Animal Companions
@@ -54,6 +60,11 @@ New Animal Companions
 - Wolverine
 - Web Tyrant Spider
 - Giant Fly (Uses Giant Mosquito stats)
+
+New Plant Companions
+
+- Sapling Treant
+- Crawling Mound (Crawling Vine from the tabletop, but using a small Shambling Mound model)
 
 New Animal Archetype
 
@@ -110,13 +121,16 @@ New Domains / Subdomains
   - Blood
   - Caves
   - Curse
-  - Defense
+  - Defence
   - Demon
   - Dragon
   - Ferocity
+  - Fist
   - Fur
+  - Growth
   - Heroism
   - Ice
+  - Loyalty
   - Lust
   - Psychopomp
   - Rage
@@ -131,6 +145,13 @@ New Domains / Subdomains
   - Undead
   - Whimsy
   - Wind
+
+New Alchemist Discoveries
+
+- Healer's Touch
+- Pheromones
+
+
 
 New Spells
 
@@ -163,11 +184,18 @@ New Spells
 - Plant Shape (I, II, III)
 - Shillelagh
 - Wooden Phalanx
+- Shambler
 
-I'd like to give a huge thank you to Vek17, as much of the coding in this repository is his; I simply repurposed it or learned from it. I wouldn't be able to release
-anything without it. Check out his mod, TableTopTweaks if you haven't already!
-- https://github.com/Vek17/TabletopTweaks-Base
 
-Many of the icons and art stuff in the mod are thanks to xTekek
-Mandarin Chinese Localisation - by @WFQ & HerryZheng8
+Compatible with all mods as far as I am aware, extra features are unlocked if used with these mods
+- [TabletopTweaks-Base](https://github.com/Vek17/TabletopTweaks-Base "TabletopTweaks-Base") - New TabletopTweaks spells are added to this mods domains and mysteries - all new wildshape forms support TTT added feats
+- [Mystical Mayhem](https://github.com/kreaddy/MysticalMayhem "Mystical Mayhem") - New Mystical Mayhem spells are added to this mods domains and mysteries
 
+
+I'd like to give a huge thank you to Vek17, as much of the coding in this repository is his; I simply repurposed it or learned from it. I wouldn't be able to release anything without it.
+
+Thanks to AlterAsc for the creation of the Sworn of the Eldest Archetype.
+
+Many of the icons and art stuff in the mod are thanks to xTekek.
+
+Mandarin Chinese Localisation is updated and maintained [Here](https://github.com/nixgnot/WOTR-CONTENTS-MODS-CN "Mandarin Chinese Localisation") 

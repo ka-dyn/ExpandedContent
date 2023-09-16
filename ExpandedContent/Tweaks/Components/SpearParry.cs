@@ -5,14 +5,8 @@ using Kingmaker.Items.Slots;
 using Kingmaker.PubSubSystem;
 using Kingmaker.RuleSystem;
 using Kingmaker.RuleSystem.Rules;
-using Kingmaker.RuleSystem.Rules.Damage;
 using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Mechanics.Components;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExpandedContent.Tweaks.Components {
     internal class SpearParry : UnitFactComponentDelegate, ITargetRulebookHandler<RuleAttackRoll>, ITargetRulebookSubscriber {
@@ -54,7 +48,8 @@ namespace ExpandedContent.Tweaks.Components {
             return hand.MaybeWeapon != null && (
                 hand.MaybeWeapon.Blueprint.Category == WeaponCategory.Shortspear || 
                 hand.MaybeWeapon.Blueprint.Category == WeaponCategory.Spear || 
-                hand.MaybeWeapon.Blueprint.Category == WeaponCategory.Longspear
+                hand.MaybeWeapon.Blueprint.Category == WeaponCategory.Longspear ||
+                hand.MaybeWeapon.Blueprint.Category == WeaponCategory.Trident
                 );
         }
         public ActionList ActionOnSelf;

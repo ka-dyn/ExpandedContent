@@ -1,9 +1,5 @@
-﻿using System;
-using System.IO;
-using ExpandedContent.Config;
-using Newtonsoft.Json.Linq;
+﻿using System.IO;
 using UnityEngine;
-using static UnityModManagerNet.UnityModManager;
 
 namespace ExpandedContent.Utilities {
     class AssetLoader {

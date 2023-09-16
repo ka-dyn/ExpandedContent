@@ -1,18 +1,10 @@
-﻿using HarmonyLib;
-using ExpandedContent.Config;
-using ExpandedContent.Extensions;
+﻿using ExpandedContent.Extensions;
 using ExpandedContent.Utilities;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Prerequisites;
-using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Kingmaker.Blueprints.Classes.Selection;
 
 namespace ExpandedContent.Tweaks.Deities {
@@ -21,12 +13,14 @@ namespace ExpandedContent.Tweaks.Deities {
 
         private static readonly BlueprintFeature GoodDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("882521af8012fc749930b03dc18a69de");
         private static readonly BlueprintFeature StarsDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("StarsDomainAllowed");
+        private static readonly BlueprintCharacterClass InquistorClass = Resources.GetBlueprint<BlueprintCharacterClass>("f1a70d9e1b0b41e49874e1fa9052a1ce");
 
 
 
         public static void AddPulura() {
 
                     var PuluraIcon = AssetLoader.LoadInternal("Deities", "Icon_Pulura.jpg");
+            BlueprintArchetype SwornOfTheEldestArchetype = Resources.GetModBlueprint<BlueprintArchetype>("SwornOfTheEldestArchetype");
 
 
             var PuluraFeature = Resources.GetBlueprint<BlueprintFeature>("ebb0b46f95dbac74681c78aae895dbd0");
@@ -51,24 +45,24 @@ namespace ExpandedContent.Tweaks.Deities {
                             "She often appears dancing amid the aurora borealis in the skies of far northern lands, and legend has it that her extraordinary beauty will burn " +
                             "any mortals who dare approach her too closely. She wields a sling made from sighs that fires bullets of starlight.");
 
-                    
-                    
 
-                     
+            PuluraFeature.AddComponent<PrerequisiteNoArchetype>(c => {
+                c.HideInUI = true;
+                c.m_CharacterClass = InquistorClass.ToReference<BlueprintCharacterClassReference>();
+                c.m_Archetype = SwornOfTheEldestArchetype.ToReference<BlueprintArchetypeReference>();
+            });
+
+
+
             PuluraFeature.RemoveComponents<PrerequisiteAlignment>();
 
-                    
-            PuluraFeature.AddComponent<PrerequisiteAlignment>(bp => {
-                        
-                bp.Alignment = AlignmentMaskType.Good | AlignmentMaskType.ChaoticNeutral;
 
-                    
+            PuluraFeature.AddComponent<PrerequisiteAlignment>(c => {
+                c.Alignment = AlignmentMaskType.NeutralGood | AlignmentMaskType.ChaoticGood | AlignmentMaskType.ChaoticNeutral;
             });
-                    
-            PuluraFeature.AddComponent<AddFacts>(bp => {
-                        
-                bp.m_Facts = new BlueprintUnitFactReference[] { GoodDomainAllowed.ToReference<BlueprintUnitFactReference>() };
-                    
+
+            PuluraFeature.AddComponent<AddFacts>(bp => {                        
+                bp.m_Facts = new BlueprintUnitFactReference[] { GoodDomainAllowed.ToReference<BlueprintUnitFactReference>() };                    
             });
             PuluraFeature.AddComponent<AddFacts>(bp => {
                 bp.m_Facts = new BlueprintUnitFactReference[1] { StarsDomainAllowed.ToReference<BlueprintUnitFactReference>() };

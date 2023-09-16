@@ -41,7 +41,7 @@ namespace ExpandedContent {
                 SetttingUI.SettingGroup("Feats", TabLevel, AddedContent.Feats);
                 SetttingUI.SettingGroup("Backgrounds", TabLevel, AddedContent.Backgrounds);
                 SetttingUI.SettingGroup("Miscellaneous", TabLevel, AddedContent.Miscellaneous);
-                SetttingUI.SettingGroup("AivuPet", TabLevel, AddedContent.AivuPet);
+                SetttingUI.SettingGroup("Retired Features", TabLevel, AddedContent.RetiredFeatures);
 
 
 

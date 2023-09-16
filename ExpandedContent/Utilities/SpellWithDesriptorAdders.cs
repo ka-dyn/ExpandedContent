@@ -1,10 +1,6 @@
 ﻿using ExpandedContent.Extensions;
 using Kingmaker.Blueprints;
-using Kingmaker.Blueprints.Classes;
-using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.Blueprints.Classes.Spells;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace ExpandedContent.Utilities {

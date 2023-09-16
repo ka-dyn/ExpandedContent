@@ -5,7 +5,6 @@ using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.Blueprints.Classes.Prerequisites;
-using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Designers.EventConditionActionSystem.Actions;
 using Kingmaker.ElementsSystem;
 using Kingmaker.UnitLogic.Alignments;
@@ -21,18 +20,12 @@ using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.UnitLogic;
 using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.EntitySystem.Stats;
-using Kingmaker.Utility;
 using Kingmaker.RuleSystem;
 using Kingmaker.RuleSystem.Rules.Damage;
 using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Mechanics.Properties;
 using Kingmaker.UnitLogic.ActivatableAbilities;
 using Kingmaker.Visual.Animation.Kingmaker.Actions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Kingmaker.UnitLogic.Mechanics.Actions;
 using Kingmaker.UI.GenericSlot;
 using Kingmaker.Blueprints.Items.Ecnchantments;
@@ -72,11 +65,11 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var MantisZealotArchetype = Helpers.CreateBlueprint<BlueprintArchetype>("MantisZealotArchetype", bp => {
                 bp.LocalizedName = Helpers.CreateString($"MantisZealotArchetype.Name", "Mantis Zealot");
                 bp.LocalizedDescription = Helpers.CreateString($"MantisZealotArchetype.Description", "Among the Red Mantis worshipers of Achaekek, some hold such strong faith in their " +
-                    "assassin god that they gain divine power.They forge themselves into perfect killers in honor of He Who Walks in Blood.These warpriests are a relatively recent addition " +
+                    "assassin god that they gain divine power. They forge themselves into perfect killers in honor of He Who Walks in Blood.These warpriests are a relatively recent addition " +
                     "to the Red Mantis arsenal, but in the few short decades they have served the assassins, they have quickly built a reputation for themselves as particularly fanatical " +
                     "devotees of the Mantis God.");
                 bp.LocalizedDescriptionShort = Helpers.CreateString($"MantisZealotArchetype.Description", "Among the Red Mantis worshipers of Achaekek, some hold such strong faith in their " +
-                    "assassin god that they gain divine power.They forge themselves into perfect killers in honor of He Who Walks in Blood.These warpriests are a relatively recent addition " +
+                    "assassin god that they gain divine power. They forge themselves into perfect killers in honor of He Who Walks in Blood.These warpriests are a relatively recent addition " +
                     "to the Red Mantis arsenal, but in the few short decades they have served the assassins, they have quickly built a reputation for themselves as particularly fanatical " +
                     "devotees of the Mantis God.");
                 bp.AddComponent<PrerequisiteAlignment>(c => {

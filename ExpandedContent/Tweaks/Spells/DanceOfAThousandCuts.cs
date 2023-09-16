@@ -10,14 +10,11 @@ using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.ElementsSystem;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
-using Kingmaker.Enums.Damage;
 using Kingmaker.ResourceLinks;
 using Kingmaker.RuleSystem;
 using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.UnitLogic.Abilities.Components;
-using Kingmaker.UnitLogic.Abilities.Components.Base;
-using Kingmaker.UnitLogic.Abilities.Components.TargetCheckers;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.Buffs.Components;
 using Kingmaker.UnitLogic.Commands.Base;
@@ -28,11 +25,6 @@ using Kingmaker.UnitLogic.Mechanics.Components;
 using Kingmaker.UnitLogic.Mechanics.Conditions;
 using Kingmaker.Utility;
 using Kingmaker.Visual.Animation.Kingmaker.Actions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExpandedContent.Tweaks.Spells {
     internal class DanceOfAThousandCuts {
@@ -40,9 +32,9 @@ namespace ExpandedContent.Tweaks.Spells {
             var DanceOfAThousandCutsIcon = AssetLoader.LoadInternal("Skills", "Icon_DanceOfAThousandCuts.jpg");
             var Icon_ScrollOfDanceOfAThousandCuts = AssetLoader.LoadInternal("Items", "Icon_ScrollOfDanceOfAThousandCuts.png");
 
-
             var SlowBuff = Resources.GetBlueprintReference<BlueprintBuffReference>("0bc608c3f2b548b44b7146b7530613ac");
             var DanceOfAHundredCutsBuff = Resources.GetModBlueprint<BlueprintBuff>("DanceOfAHundredCutsBuff");
+            var DanceOfAHundredCutsAbility = Resources.GetModBlueprint<BlueprintAbility>("DanceOfAHundredCutsAbility").GetComponent<AbilityEffectRunAction>();
             var DanceOfAThousandCutsToken = Helpers.CreateBuff("DanceOfAThousandCutsToken", bp => {
                 bp.SetName("Token");
                 bp.SetDescription("");
@@ -254,6 +246,9 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.SavingThrowType = SavingThrowType.Unknown;
                     c.Actions = Helpers.CreateActionList(
+                        new ContextActionRemoveBuff() {
+                            m_Buff = DanceOfAHundredCutsBuff.ToReference<BlueprintBuffReference>() 
+                        },
                         new Conditional() {
                             ConditionsChecker = new ConditionsChecker() {
                                 Operation = Operation.And,
@@ -330,6 +325,11 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.LocalizedDuration = Helpers.CreateString("DanceOfAThousandCutsAbility.Duration", "1 round/level");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
+
+            DanceOfAHundredCutsAbility.Actions.Actions = DanceOfAHundredCutsAbility.Actions.Actions.AppendToArray(new ContextActionRemoveBuff() {
+                m_Buff = DanceOfAHundredCutsBuff.ToReference<BlueprintBuffReference>()
+            });
+
             var DanceOfAThousandCutsScroll = ItemTools.CreateScroll("ScrollOfDanceOfAThousandCuts", Icon_ScrollOfDanceOfAThousandCuts, DanceOfAThousandCutsAbility, 6, 16);
             VenderTools.AddScrollToLeveledVenders(DanceOfAThousandCutsScroll);
             DanceOfAThousandCutsAbility.AddToSpellList(SpellTools.SpellList.BardSpellList, 6);

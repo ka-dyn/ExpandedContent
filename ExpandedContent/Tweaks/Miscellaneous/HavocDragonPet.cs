@@ -8,11 +8,6 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.Enums;
 using Kingmaker.UnitLogic.FactLogic;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExpandedContent.Tweaks.Miscellaneous {
     internal class HavocDragonPet {
@@ -139,7 +134,7 @@ namespace ExpandedContent.Tweaks.Miscellaneous {
             //Seems to work
             //var CleaveMythicFeature = Resources.GetBlueprint<BlueprintFeature>("2ced576e-5eb4-48f2-93cf-502f338ee5d0");
 
-            if (ModSettings.AddedContent.AivuPet.IsDisabled("AivuPet")) { return; }
+            if (ModSettings.AddedContent.RetiredFeatures.IsDisabled("AivuPet")) { return; }
             AnimalCompanionSelectionBase.m_AllFeatures = AnimalCompanionSelectionBase.m_AllFeatures.AppendToArray(HavocDragonPetMedium.ToReference<BlueprintFeatureReference>(), HavocDragonPetLarge.ToReference<BlueprintFeatureReference>());
             DreadKnightCompanionSelection.m_AllFeatures = DreadKnightCompanionSelection.m_AllFeatures.AppendToArray(HavocDragonPetMedium.ToReference<BlueprintFeatureReference>(), HavocDragonPetLarge.ToReference<BlueprintFeatureReference>());
             AnimalCompanionSelectionDomain.m_AllFeatures = AnimalCompanionSelectionDomain.m_AllFeatures.AppendToArray(HavocDragonPetMedium.ToReference<BlueprintFeatureReference>(), HavocDragonPetLarge.ToReference<BlueprintFeatureReference>());

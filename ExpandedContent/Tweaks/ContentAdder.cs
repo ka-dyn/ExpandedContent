@@ -1,11 +1,5 @@
 ﻿using HarmonyLib;
-using ExpandedContent.Extensions;
-using ExpandedContent.Tweaks;
-using ExpandedContent.Utilities;
-using Kingmaker.Blueprints;
-using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.JsonSystem;
-using Kingmaker.Blueprints.Root;
 
 namespace ExpandedContent.Tweaks {
     class ContentAdder {
@@ -42,6 +36,8 @@ namespace ExpandedContent.Tweaks {
                 AnimalCompanions.CompanionWolverine.AddCompanionWolverine();
                 AnimalCompanions.CompanionGiantFly.AddCompanionGiantFly();
                 AnimalCompanions.CompanionWebSpider.AddCompanionWebSpider();
+                AnimalCompanions.CompanionSaplingTreant.AddCompanionSaplingTreant();
+                AnimalCompanions.CompanionCrawlingMound.AddCompanionCrawlingMound();
                 AnimalCompanions.ArchetypeDraconic.AddArchetypeDraconic();
 
                 Miscellaneous.AlignmentTemplates.AddFiendishTemplate();
@@ -49,7 +45,7 @@ namespace ExpandedContent.Tweaks {
 
                 Domains.BaseDomainDruidPatch.AddBaseDomainDruidPatch();
              
-                Archetypes.LivingScripture.AddLivingScripture();
+                Archetypes.LivingScripture.AddLivingScripture();                
                 Archetypes.PriestOfBalance.PatchPriestOfBalanceArchetype();
                 Archetypes.TempleChampion.AddTempleChampion();
                 Archetypes.MantisZealot.AddMantisZealot();
@@ -69,6 +65,9 @@ namespace ExpandedContent.Tweaks {
                 Archetypes.SpearFighter.AddSpearFighter();
                 Archetypes.RavenerHunter.AddRavenerHunter();
                 Archetypes.SkulkingHunter.AddSkulkingHunter();
+                Archetypes.SwornOfTheEldest.AddSwornOfTheEldest();
+                Archetypes.Mindchemist.AddMindchemist();
+                Archetypes.ChildOfAcavnaAndAmaznen.AddChildOfAcavnaAndAmaznen();
 
                 Classes.OathbreakerClass.AddOathbreakerClass();
                 Archetypes.Castigator.AddCastigator();
@@ -129,6 +128,12 @@ namespace ExpandedContent.Tweaks {
                 Spells.Shillelagh.AddShillelagh();
                 Spells.PlantShape.AddPlantShape();
                 Spells.WoodenPhalanx.AddWoodenPhalanx();
+                Spells.Shambler.AddShambler();
+
+                Miscellaneous.AlchemistDiscoveries.MutagenDiscovery.AddMutagenDiscovery();
+                Miscellaneous.AlchemistDiscoveries.MindchemistSkillDiscovery.AddMindchemistSkillDiscovery();
+                Miscellaneous.AlchemistDiscoveries.HealingTouchDiscovery.AddHealingTouchDiscovery();
+                Miscellaneous.AlchemistDiscoveries.PheromonesDiscovery.AddPheromonesDiccovery();
 
                 Domains.ImpossibleSubdomainSelection.AddImpossibleSubdomainSelection();
                 Domains.ScalykindDomain.AddScalykindDomain();
@@ -161,9 +166,15 @@ namespace ExpandedContent.Tweaks {
                 Domains.FurDomain.AddFurDomain();
                 Domains.DefenseDomain.AddDefenseDomain();
                 Domains.HeroismDomain.AddHeroismDomain();
+                Domains.GrowthDomain.AddGrowthDomain();
+                Domains.PlantDomainPatch.PatchPlantDomain();
+                Domains.FistDomain.AddFistDomain();
+                Domains.LoyaltyDomain.AddLoyaltyDomain();
                 Domains.BaseDeityPatch.AddBaseDeityPatch();
 
                 Archetypes.StormDruid.AddStormDruid();
+                Archetypes.Treesinger.AddTreesinger();
+                Archetypes.DivineScourge.AddDivineScourge();
 
                 Mysteries.DragonMystery.AddDragonMystery();
                 Mysteries.HeavensMystery.AddHeavensMystery();
@@ -176,8 +187,14 @@ namespace ExpandedContent.Tweaks {
 
                 Miscellaneous.AidAnother.AddAidAnother();
 
+                Archdevils.Baalzebul.AddBaalzebul();
+                Archdevils.Barbatos.AddBarbatos();
+                Archdevils.Belial.AddBelial();
                 Archdevils.Dispater.AddDispater();
+                Archdevils.Geryon.AddGeryon();
+                Archdevils.Mammon.AddMammon();
                 Archdevils.Mephistopheles.AddMephistopheles();
+                Archdevils.Moloch.AddMoloch();
 
                 DemonLords.Areshkegal.AddAreshkegal();
                 DemonLords.Deskari.AddDeskari();
@@ -370,13 +387,14 @@ namespace ExpandedContent.Tweaks {
                 Deities.DeitySelectionFeature.TheElderMythosToggle();
                 Deities.DeitySelectionFeature.OrcPantheonToggle();
 
-                
             }
             [HarmonyPriority(Priority.Last)]
             [HarmonyPostfix]
             public static void PatchAfter() {
                 Miscellaneous.HavocDragonPet.AddHavocDragonPet();
                 Miscellaneous.ShapechangeFeatsPatch.AddShapechangeFeatsPatch();
+
+                Miscellaneous.BugFixes.AddBugFixes();
             }
         }
     }

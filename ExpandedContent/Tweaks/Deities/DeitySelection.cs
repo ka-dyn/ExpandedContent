@@ -1,18 +1,11 @@
-﻿using BlueprintCore.Blueprints;
-using ExpandedContent.Config;
+﻿using ExpandedContent.Config;
 using ExpandedContent.Extensions;
 using ExpandedContent.Utilities;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Selection;
-using Kingmaker.Designers.EventConditionActionSystem.Actions;
 using Kingmaker.UnitLogic.FactLogic;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExpandedContent.Tweaks.Deities {
     internal class DeitySelectionFeature {
@@ -158,6 +151,7 @@ namespace ExpandedContent.Tweaks.Deities {
 
             //Philosophies
             var GreenFaithFeature = Resources.GetBlueprint<BlueprintFeature>("99a7a8f13c1300c42878558fa9471e2f");
+            var GreenFaithCameliaFeature = Resources.GetBlueprint<BlueprintFeature>("ca763809e01f4247a3639965364c26cb");
             var AtheismFeature = Resources.GetBlueprint<BlueprintFeature>("92c0d2da0a836ce418a267093c09ca54");
 
             //Pantheons
@@ -168,8 +162,15 @@ namespace ExpandedContent.Tweaks.Deities {
             var DahakFeature = Resources.GetModBlueprint<BlueprintFeature>("DahakFeature");
 
             //Archdevils
-            var MephistophelesFeature = Resources.GetModBlueprint<BlueprintFeature>("MephistophelesFeature");
+            var BaalzebulFeature = Resources.GetModBlueprint<BlueprintFeature>("BaalzebulFeature");
+            var BarbatosFeature = Resources.GetModBlueprint<BlueprintFeature>("BarbatosFeature");
+            var BelialFeature = Resources.GetModBlueprint<BlueprintFeature>("BelialFeature");
             var DispaterFeature = Resources.GetModBlueprint<BlueprintFeature>("DispaterFeature");
+            var GeryonFeature = Resources.GetModBlueprint<BlueprintFeature>("GeryonFeature");
+            var MammonFeature = Resources.GetModBlueprint<BlueprintFeature>("MammonFeature");
+            var MephistophelesFeature = Resources.GetModBlueprint<BlueprintFeature>("MephistophelesFeature");
+            var MolochFeature = Resources.GetModBlueprint<BlueprintFeature>("MolochFeature");
+
 
             //The Eldest
             var CountRanalcFeature = Resources.GetModBlueprint<BlueprintFeature>("CountRanalcFeature");
@@ -335,7 +336,6 @@ namespace ExpandedContent.Tweaks.Deities {
                 TreerazerFeature.ToReference<BlueprintFeatureReference>(),
                 ZuraFeature.ToReference<BlueprintFeatureReference>(),
                 };
-
                 bp.IsClassFeature = true;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
                 bp.Group = FeatureGroup.Deities;
@@ -350,8 +350,15 @@ namespace ExpandedContent.Tweaks.Deities {
                     "for sinful mortals.");
                 bp.m_Icon = ArchdevilIcon;
                 bp.m_AllFeatures = new BlueprintFeatureReference[] {
+                BaalzebulFeature.ToReference<BlueprintFeatureReference>(),
+                BarbatosFeature.ToReference<BlueprintFeatureReference>(),
+                BelialFeature.ToReference<BlueprintFeatureReference>(),
                 DispaterFeature.ToReference<BlueprintFeatureReference>(),
-                MephistophelesFeature.ToReference<BlueprintFeatureReference>() };
+                GeryonFeature.ToReference<BlueprintFeatureReference>(),
+                MammonFeature.ToReference<BlueprintFeatureReference>(),
+                MephistophelesFeature.ToReference<BlueprintFeatureReference>(),
+                MolochFeature.ToReference<BlueprintFeatureReference>()
+                };
                 bp.IsClassFeature = true;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
                 bp.Group = FeatureGroup.Deities;
@@ -733,7 +740,7 @@ namespace ExpandedContent.Tweaks.Deities {
             });
             var Camelia = Resources.GetBlueprint<BlueprintUnit>("397b090721c41044ea3220445300e1b8");
             Camelia.AddComponent<AddFacts>(c => {
-                c.m_Facts = new BlueprintUnitFactReference[] { GreenFaithFeature.ToReference<BlueprintUnitFactReference>() };
+                c.m_Facts = new BlueprintUnitFactReference[] { GreenFaithCameliaFeature.ToReference<BlueprintUnitFactReference>() };
             });
             var Arueshalae = Resources.GetBlueprint<BlueprintUnit>("a352873d37ec6c54c9fa8f6da3a6b3e1");
             Arueshalae.AddComponent<AddFacts>(c => {
