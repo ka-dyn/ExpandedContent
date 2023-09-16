@@ -27,10 +27,7 @@ namespace ExpandedContent.Tweaks.Deities {
         private static readonly BlueprintCharacterClass DreadKnightClass = Resources.GetModBlueprint<BlueprintCharacterClass>("DreadKnightClass");
         private static readonly BlueprintFeature MythicIgnoreAlignmentRestrictions = Resources.GetBlueprint<BlueprintFeature>("24e78475f0a243e1a810452d14d0a1bd");
 
-
-
         public static void AddNaderiFeature() {
-
 
             BlueprintItem MasterworkDagger = Resources.GetBlueprint<BlueprintItem>("dfc92affae244554e8745a9ee9b7c520");
 
@@ -85,16 +82,13 @@ namespace ExpandedContent.Tweaks.Deities {
                 });
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] {
-                        ChfannelNegativeAllowed.ToReference<BlueprintUnitFactReference>(),
-                        EviflDomainAllowed.ToReference<BlueprintUnitFactReference>(),
-                        LawDfomainAllowed.ToReference<BlueprintUnitFactReference>(),
-                        AirDofmainAllowed.ToReference<BlueprintUnitFactReference>(),
-                        DeathDfomainAllowed.ToReference<BlueprintUnitFactReference>(),
-                        DeathDfomainAllowed.ToReference<BlueprintUnitFactReference>(),
-                        DeathDfomainAllowed.ToReference<BlueprintUnitFactReference>(),
-                        DeathDfomainAllowed.ToReference<BlueprintUnitFactReference>(),
-                        WindDomfainAllowed.ToReference<BlueprintUnitFactReference>(),
-                        UndeadDofmainAllowed.ToReference<BlueprintUnitFactReference>()
+                        ChannelNegativeAllowed.ToReference<BlueprintUnitFactReference>(),
+                        ChannelPositiveAllowed.ToReference<BlueprintUnitFactReference>(),
+                        CharmDomainAllowed.ToReference<BlueprintUnitFactReference>(),
+                        NobilityDomainAllowed.ToReference<BlueprintUnitFactReference>(),
+                        ReposeDomainAllowed.ToReference<BlueprintUnitFactReference>(),
+                        WaterDomainAllowed.ToReference<BlueprintUnitFactReference>(),
+                        LustDomainAllowed.ToReference<BlueprintUnitFactReference>()
                     };
                 });
                 bp.AddComponent<ForbidSpellbookOnAlignmentDeviation>(c => {
@@ -104,14 +98,11 @@ namespace ExpandedContent.Tweaks.Deities {
                         InquisitorSpellbook.ToReference<BlueprintSpellbookReference>()
                     };
                     c.m_IgnoreFact = MythicIgnoreAlignmentRestrictions.ToReference<BlueprintUnitFactReference>();
-                    c.Alignment = gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg;
+                    c.Alignment = AlignmentMaskType.NeutralGood | AlignmentMaskType.LawfulNeutral | AlignmentMaskType.TrueNeutral | AlignmentMaskType.ChaoticNeutral | AlignmentMaskType.NeutralEvil;
                 });
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>();
-
-
                     c.m_Feature = DaggerProficiency.ToReference<BlueprintFeatureReference>();
-
                     c.Level = 1;
                     c.m_Archetypes = null;
                     c.m_AdditionalClasses = new BlueprintCharacterClassReference[2] {

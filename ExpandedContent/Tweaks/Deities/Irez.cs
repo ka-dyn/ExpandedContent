@@ -84,16 +84,12 @@ namespace ExpandedContent.Tweaks.Deities {
                 });
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] {
-                        ChfannelNegativeAllowed.ToReference<BlueprintUnitFactReference>(),
-                        EviflDomainAllowed.ToReference<BlueprintUnitFactReference>(),
-                        LawDfomainAllowed.ToReference<BlueprintUnitFactReference>(),
-                        AirDofmainAllowed.ToReference<BlueprintUnitFactReference>(),
-                        DeathDfomainAllowed.ToReference<BlueprintUnitFactReference>(),
-                        DeathDfomainAllowed.ToReference<BlueprintUnitFactReference>(),
-                        DeathDfomainAllowed.ToReference<BlueprintUnitFactReference>(),
-                        DeathDfomainAllowed.ToReference<BlueprintUnitFactReference>(),
-                        WindDomfainAllowed.ToReference<BlueprintUnitFactReference>(),
-                        UndeadDofmainAllowed.ToReference<BlueprintUnitFactReference>()
+                        ChannelPositiveAllowed.ToReference<BlueprintUnitFactReference>(),
+                        GoodDomainAllowed.ToReference<BlueprintUnitFactReference>(),
+                        LuckDomainAllowed.ToReference<BlueprintUnitFactReference>(),
+                        MagicDomainAllowed.ToReference<BlueprintUnitFactReference>(),
+                        RuneDomainAllowed.ToReference<BlueprintUnitFactReference>(),
+                        AgathionDomainAllowed.ToReference<BlueprintUnitFactReference>()
                     };
                 });
                 bp.AddComponent<ForbidSpellbookOnAlignmentDeviation>(c => {
@@ -103,7 +99,7 @@ namespace ExpandedContent.Tweaks.Deities {
                         InquisitorSpellbook.ToReference<BlueprintSpellbookReference>()
                     };
                     c.m_IgnoreFact = MythicIgnoreAlignmentRestrictions.ToReference<BlueprintUnitFactReference>();
-                    c.Alignment = gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg;
+                    c.Alignment = AlignmentMaskType.LawfulGood | AlignmentMaskType.NeutralGood | AlignmentMaskType.ChaoticGood | AlignmentMaskType.TrueNeutral;
                 });
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>();

@@ -82,20 +82,18 @@ namespace ExpandedContent.Tweaks.Deities {
                 });
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
                 bp.AddComponent<PrerequisiteAlignment>(c => {
-                    c.Alignment = AlignmentMaskType.LawfulGood | AlignmentMaskType.NeutralGood | AlignmentMaskType.LawfulNeutral;
+                    c.Alignment = AlignmentMaskType.LawfulGood | AlignmentMaskType.NeutralGood | AlignmentMaskType.ChaoticGood | AlignmentMaskType.TrueNeutral;
                 });
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] {
-                        ChfannelNegativeAllowed.ToReference<BlueprintUnitFactReference>(),
-                        EviflDomainAllowed.ToReference<BlueprintUnitFactReference>(),
-                        LawDfomainAllowed.ToReference<BlueprintUnitFactReference>(),
-                        AirDofmainAllowed.ToReference<BlueprintUnitFactReference>(),
-                        DeathDfomainAllowed.ToReference<BlueprintUnitFactReference>(),
-                        DeathDfomainAllowed.ToReference<BlueprintUnitFactReference>(),
-                        DeathDfomainAllowed.ToReference<BlueprintUnitFactReference>(),
-                        DeathDfomainAllowed.ToReference<BlueprintUnitFactReference>(),
-                        WindDomfainAllowed.ToReference<BlueprintUnitFactReference>(),
-                        UndeadDofmainAllowed.ToReference<BlueprintUnitFactReference>()
+                        ChannelPositiveAllowed.ToReference<BlueprintUnitFactReference>(),
+                        CommunityDomainAllowed.ToReference<BlueprintUnitFactReference>(),
+                        GoodDomainAllowed.ToReference<BlueprintUnitFactReference>(),
+                        LuckDomainAllowed.ToReference<BlueprintUnitFactReference>(),
+                        StrengthDomainAllowed.ToReference<BlueprintUnitFactReference>(),
+                        TravelDomainAllowed.ToReference<BlueprintUnitFactReference>(),
+                        ResolveDomainAllowed.ToReference<BlueprintUnitFactReference>(),
+                        AgathionDomainAllowed.ToReference<BlueprintUnitFactReference>()
                     };
                 });
                 bp.AddComponent<ForbidSpellbookOnAlignmentDeviation>(c => {
@@ -105,19 +103,17 @@ namespace ExpandedContent.Tweaks.Deities {
                         InquisitorSpellbook.ToReference<BlueprintSpellbookReference>()
                     };
                     c.m_IgnoreFact = MythicIgnoreAlignmentRestrictions.ToReference<BlueprintUnitFactReference>();
-                    c.Alignment = gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg;
+                    c.Alignment = AlignmentMaskType.LawfulGood | AlignmentMaskType.NeutralGood | AlignmentMaskType.ChaoticGood | AlignmentMaskType.TrueNeutral;
                 });
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>();
-
-
                     c.m_Feature = JavelinProficiency.ToReference<BlueprintFeatureReference>();
-
                     c.Level = 1;
                     c.m_Archetypes = null;
                     c.m_AdditionalClasses = new BlueprintCharacterClassReference[2] {
                                InquistorClass.ToReference<BlueprintCharacterClassReference>(),
-                               WarpriestClass.ToReference<BlueprintCharacterClassReference>() };
+                               WarpriestClass.ToReference<BlueprintCharacterClassReference>() 
+                    };
                 });
                 bp.AddComponent<AddStartingEquipment>(c => {
                     c.m_BasicItems = new BlueprintItemReference[1] { MasterworkJavelin.ToReference<BlueprintItemReference>() };
