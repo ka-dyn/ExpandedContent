@@ -7,7 +7,6 @@ using Kingmaker.UnitLogic.FactLogic;
 namespace ExpandedContent.Tweaks.Deities {
     internal class PatchLichDeity {
 
-        private static readonly BlueprintFeature MythicIgnoreAlignmentRestrictions = Resources.GetBlueprintReference<BlueprintFeatureReference>("24e78475f0a243e1a810452d14d0a1bd");
 
         public static void AddLichDeity() {
 
