@@ -45,7 +45,6 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintFeature ImprovedUnarmedStrike = Resources.GetBlueprint<BlueprintFeature>("7812ad3672a4b9a4fb894ea402095167");
             var DahakIcon = AssetLoader.LoadInternal("Deities", "Icon_Dahak.jpg");
             var DahakFeature = Helpers.CreateBlueprint<BlueprintFeature>("DahakFeature", (bp => {
-
                 bp.SetName("Dahak");
                 bp.SetDescription("\nTitles: The False Wyrm, Sorrowmaker, The Endless Destruction, The Great Darkness   " +
                     "\nAlignment: Chaotic Evil   " +
@@ -88,16 +87,17 @@ namespace ExpandedContent.Tweaks.Deities {
                 });
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] {
-                        ChfannelNegativeAllowed.ToReference<BlueprintUnitFactReference>(),
-                        EviflDomainAllowed.ToReference<BlueprintUnitFactReference>(),
-                        LawDfomainAllowed.ToReference<BlueprintUnitFactReference>(),
-                        AirDofmainAllowed.ToReference<BlueprintUnitFactReference>(),
-                        DeathDfomainAllowed.ToReference<BlueprintUnitFactReference>(),
-                        DeathDfomainAllowed.ToReference<BlueprintUnitFactReference>(),
-                        DeathDfomainAllowed.ToReference<BlueprintUnitFactReference>(),
-                        DeathDfomainAllowed.ToReference<BlueprintUnitFactReference>(),
-                        WindDomfainAllowed.ToReference<BlueprintUnitFactReference>(),
-                        UndeadDofmainAllowed.ToReference<BlueprintUnitFactReference>()
+                        ChannelNegativeAllowed.ToReference<BlueprintUnitFactReference>(),
+                        ChaosDomainAllowed.ToReference<BlueprintUnitFactReference>(),
+                        DestructionDomainAllowed.ToReference<BlueprintUnitFactReference>(),
+                        EvilDomainAllowed.ToReference<BlueprintUnitFactReference>(),
+                        ScalykindDomainAllowed.ToReference<BlueprintUnitFactReference>(),
+                        DragonDomainAllowed.ToReference<BlueprintUnitFactReference>(),
+                        DemonDomainChaosAllowed.ToReference<BlueprintUnitFactReference>(),
+                        DemonDomainEvilAllowed.ToReference<BlueprintUnitFactReference>(),
+                        ThieveryDomainAllowed.ToReference<BlueprintUnitFactReference>(),
+                        TrickeryDomainAllowed.ToReference<BlueprintUnitFactReference>(),
+                        RageDomainAllowed.ToReference<BlueprintUnitFactReference>()
                     };
                 });
                 bp.AddComponent<ForbidSpellbookOnAlignmentDeviation>(c => {
@@ -107,7 +107,7 @@ namespace ExpandedContent.Tweaks.Deities {
                         InquisitorSpellbook.ToReference<BlueprintSpellbookReference>()
                     };
                     c.m_IgnoreFact = MythicIgnoreAlignmentRestrictions.ToReference<BlueprintUnitFactReference>();
-                    c.Alignment = gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg;
+                    c.Alignment = AlignmentMaskType.ChaoticNeutral | AlignmentMaskType.NeutralEvil | AlignmentMaskType.ChaoticEvil;
                 });
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>();
