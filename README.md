@@ -1,6 +1,8 @@
 *Install VIA UMM*
 -Drag and drop the zip file onto the UMM "Install" button. Most features can be disabled in the UMM menu if not wanted
 
+This mod Is dependant on [TabletopTweaks-Core](https://github.com/Vek17/TabletopTweaks-Core "TabletopTweaks-Core") !!!
+
 While this mod is not dependant on [TabletopTweaks-Base](https://github.com/Vek17/TabletopTweaks-Base "TabletopTweaks-Base") it is recommended as all testing is done with it installed and it fixes several base game issues.
 
 *Contents*
@@ -27,7 +29,7 @@ New Archetypes
 
 - Wyrm Singer, Skald
 
-- Archer, Spear Fighter, Fighter
+- Archer, Spear Fighter, Child of Acavna and Amaznen, Fighter
 
 - Skulking Hunter, Hunter
 
