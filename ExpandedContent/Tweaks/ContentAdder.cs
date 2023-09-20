@@ -68,6 +68,7 @@ namespace ExpandedContent.Tweaks {
                 Archetypes.SwornOfTheEldest.AddSwornOfTheEldest();
                 Archetypes.Mindchemist.AddMindchemist();
                 Archetypes.ChildOfAcavnaAndAmaznen.AddChildOfAcavnaAndAmaznen();
+                Archetypes.DivineTracker.AddDivineTracker();
 
                 Classes.OathbreakerClass.AddOathbreakerClass();
                 Archetypes.Castigator.AddCastigator();

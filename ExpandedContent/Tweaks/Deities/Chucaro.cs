@@ -103,10 +103,7 @@ namespace ExpandedContent.Tweaks.Deities {
                 });
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>();
-
-
                     c.m_Feature = HeavyMaceProficiency.ToReference<BlueprintFeatureReference>();
-
                     c.Level = 1;
                     c.m_Archetypes = null;
                     c.m_AdditionalClasses = new BlueprintCharacterClassReference[2] {
