@@ -27,6 +27,7 @@ namespace ExpandedContent.Tweaks.Deities {
         private static readonly BlueprintCharacterClass ClericClass = Resources.GetBlueprint<BlueprintCharacterClass>("67819271767a9dd4fbfd4ae700befea0");
         private static readonly BlueprintCharacterClass InquistorClass = Resources.GetBlueprint<BlueprintCharacterClass>("f1a70d9e1b0b41e49874e1fa9052a1ce");
         private static readonly BlueprintCharacterClass WarpriestClass = Resources.GetBlueprint<BlueprintCharacterClass>("30b5e47d47a0e37438cc5a80c96cfb99");
+        private static readonly BlueprintCharacterClass RangerClass = Resources.GetBlueprint<BlueprintCharacterClass>("cda0615668a6df14eb36ba19ee881af6");
         private static readonly BlueprintCharacterClass DreadKnightClass = Resources.GetModBlueprint<BlueprintCharacterClass>("DreadKnightClass");
         private static readonly BlueprintFeature MythicIgnoreAlignmentRestrictions = Resources.GetBlueprint<BlueprintFeature>("24e78475f0a243e1a810452d14d0a1bd");
 
@@ -39,6 +40,7 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintArchetype MantisZealotArchetype = Resources.GetModBlueprint<BlueprintArchetype>("MantisZealotArchetype");
             BlueprintArchetype ClawOfTheFalseWyrmArchetype = Resources.GetModBlueprint<BlueprintArchetype>("ClawOfTheFalseWyrmArchetype");
             BlueprintArchetype SwornOfTheEldestArchetype = Resources.GetModBlueprint<BlueprintArchetype>("SwornOfTheEldestArchetype");
+            BlueprintArchetype DivineTrackerArchetype = Resources.GetModBlueprint<BlueprintArchetype>("DivineTrackerArchetype");
 
 
             BlueprintFeature DoubleAxeProficiency = Resources.GetBlueprint<BlueprintFeature>("0ea5cf20b69aea44793043e1926e9057");
@@ -119,15 +121,16 @@ namespace ExpandedContent.Tweaks.Deities {
                 });
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>();
-
-
                     c.m_Feature = DoubleAxeProficiency.ToReference<BlueprintFeatureReference>();
-
                     c.Level = 1;
-                    c.m_Archetypes = null;
-                    c.m_AdditionalClasses = new BlueprintCharacterClassReference[2] {
-                               InquistorClass.ToReference<BlueprintCharacterClassReference>(),
-                               WarpriestClass.ToReference<BlueprintCharacterClassReference>() };
+                    c.m_Archetypes = new BlueprintArchetypeReference[] {
+                        DivineTrackerArchetype.ToReference<BlueprintArchetypeReference>()
+                    };
+                    c.m_AdditionalClasses = new BlueprintCharacterClassReference[] {
+                        InquistorClass.ToReference<BlueprintCharacterClassReference>(),
+                        WarpriestClass.ToReference<BlueprintCharacterClassReference>(),
+                        RangerClass.ToReference<BlueprintCharacterClassReference>()
+                    };
                 });
                 bp.AddComponent<AddStartingEquipment>(c => {
                     c.m_BasicItems = new BlueprintItemReference[1] { MasterworkDoubleAxe.ToReference<BlueprintItemReference>() };

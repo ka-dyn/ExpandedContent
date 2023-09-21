@@ -2448,7 +2448,37 @@
     "EldritchArmorTrainingRank25": "a12945f2-5d3f-416d-81f9-04902b929cee",
     "EldritchArmorTrainingRank30": "5f97fb97-d321-4103-9c52-808a1c892732",
     "LoreOfAcavnaAndAmaznenFeature": "2de64d07-c714-47db-87ca-0386419afbfb",
-    "OneHandedMartialWeaponProficiency": "c72e34e4-372e-4011-8bb5-648b3953a751"
+    "OneHandedMartialWeaponProficiency": "c72e34e4-372e-4011-8bb5-648b3953a751",
+
+    "DivineTrackerAirBlessingFeature": "028faaec-83aa-4527-9f30-7e61a9956a88",
+    "DivineTrackerAnimalBlessingFeature": "66fd9f79-510c-4a1b-801b-04db1b0c8c99",
+    "DivineTrackerArchetype": "f580c918-0f64-4a22-8f63-3396b1536838",
+    "DivineTrackerBlessingSelectionFirst": "8773de79-25d5-4792-947c-e418977ceebe",
+    "DivineTrackerBlessingSelectionSecond": "3a720c71-0758-478e-94d3-6c12fa0f47ee",
+    "DivineTrackerChaosBlessingFeature": "f28428d4-3db1-40e0-848a-fc4a5498fb29",
+    "DivineTrackerDarknessBlessingFeature": "49c5d81e-047d-40e5-96fc-b25ec177ee4b",
+    "DivineTrackerDeathBlessingFeature": "e2bd9ce6-ed7e-43e7-9b59-319335f28b4d",
+    "DivineTrackerDestructionBlessingFeature": "db78d127-ffb9-4526-b328-3894ea5e5c8a",
+    "DivineTrackerEarthBlessingFeature": "a25006a9-7c6d-4c7c-bf50-cd236b434cd8",
+    "DivineTrackerEvilBlessingFeature": "32189971-57b8-4f3a-80b7-e269995b9922",
+    "DivineTrackerFireBlessingFeature": "fe9e62de-b956-4cc7-9985-6c6157eea4aa",
+    "DivineTrackerGoodBlessingFeature": "a13ade83-328c-42d7-ac91-c14ddfb56f5f",
+    "DivineTrackerHealingBlessingFeature": "6bb4b8ab-893a-4782-9a8f-99d541dcbe79",
+    "DivineTrackerLawBlessingFeature": "03210f2b-a8ce-4658-a95b-6fa0d0a9d1b8",
+    "DivineTrackerLiberationBlessingFeature": "f1f2908a-a1da-4a28-bda9-7fcc8f607b4b",
+    "DivineTrackerLuckBlessingFeature": "ec838011-7f86-46b6-b6df-af49006598c3",
+    "DivineTrackerMadnessBlessingFeature": "c5ba84c0-07a7-4248-9dff-55a51d753723",
+    "DivineTrackerMagicBlessingFeature": "36f9712a-7d65-4204-be48-dd87dc85a3da",
+    "DivineTrackerNobilityBlessingFeature": "9e0f53ad-c3ee-497a-9899-d82533f29c24",
+    "DivineTrackerProtectionBlessingFeature": "fdb14dfa-eb87-4f85-851f-46eb099bd5a5",
+    "DivineTrackerReposeBlessingFeature": "cafe5970-14c5-47da-89d7-837a3f00813e",
+    "DivineTrackerStrengthBlessingFeature": "35353ac8-c88a-4565-b359-268cb97fe346",
+    "DivineTrackerSunBlessingFeature": "9f69f686-d00e-4533-84ff-c27a77004019",
+    "DivineTrackerTravelBlessingFeature": "f1e7bea9-d872-430c-9827-4dc6bd90c333",
+    "DivineTrackerTrickeryBlessingFeature": "347c7ea5-5403-4e73-a0ae-92f651c73b60",
+    "DivineTrackerWaterBlessingFeature": "fd605fa9-1327-40c7-8ae4-69607446e5bb",
+    "DivineTrackerWeatherBlessingFeature": "902a9b72-1336-4afa-9059-e7ff7a643b3f",
+    "DivineTrackerFavoredWeapon": "74bf5749-73a6-4d9b-9413-d2cd29346acd"
 
 
 

@@ -21,6 +21,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var RangerClass = Resources.GetBlueprint<BlueprintCharacterClass>("cda0615668a6df14eb36ba19ee881af6");
             var HuntersBondSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("b705c5184a96a84428eeb35ae2517a14");
             var BlessingSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("6d9dcc2a59210a14891aeedb09d406aa");
+            var MartialWeaponProficiency = Resources.GetBlueprint<BlueprintFeature>("203992ef5b35c864390b4e4a1e200629");
 
             var DivineTrackerArchetype = Helpers.CreateBlueprint<BlueprintArchetype>("DivineTrackerArchetype", bp => {
                 bp.LocalizedName = Helpers.CreateString($"DivineTrackerArchetype.Name", "Divine Tracker");
@@ -30,6 +31,18 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     "his retribution. His weapon is likely to find purchase in his favored enemy.");
                 
             });
+
+            var DivineTrackerFavoredWeapon = Helpers.CreateBlueprint<BlueprintFeature>("DivineTrackerFavoredWeapon", bp => {
+                bp.SetName("Favored Weapon");
+                bp.SetDescription("At 1st level, a divine tracker becomes proficient with the favored weapon of his deity if not already proficient. If his deity’s favored weapon is unarmed " +
+                    "strike, he instead gains Improved Unarmed Strike as a bonus feat.");
+                bp.m_Icon = MartialWeaponProficiency.Icon;
+                bp.IsClassFeature = true;
+            });
+            var IroriFeatureAddFeatureOnClassLevel = Resources.GetBlueprint<BlueprintFeature>("23a77a5985de08349820429ce1b5a234").GetComponent<AddFeatureOnClassLevel>();
+            IroriFeatureAddFeatureOnClassLevel.m_AdditionalClasses = IroriFeatureAddFeatureOnClassLevel.m_AdditionalClasses.AppendToArray(RangerClass.ToReference<BlueprintCharacterClassReference>());
+            IroriFeatureAddFeatureOnClassLevel.m_Archetypes = IroriFeatureAddFeatureOnClassLevel.m_Archetypes.AppendToArray(DivineTrackerArchetype.ToReference<BlueprintArchetypeReference>());
+
 
             var AirBlessingFeature = Resources.GetBlueprint<BlueprintFeature>("e1ff99dc3aeaa064e8eecde51c1c4773");
             var AnimalBlessingFeature = Resources.GetBlueprint<BlueprintFeature>("9d991f8374c3def4cb4a6287f370814d");
@@ -122,10 +135,11 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     Helpers.LevelEntry(4, HuntersBondSelection)
             };
             DivineTrackerArchetype.AddFeatures = new LevelEntry[] {
+                    Helpers.LevelEntry(1, DivineTrackerFavoredWeapon),
                     Helpers.LevelEntry(4, DivineTrackerBlessingSelectionFirst, DivineTrackerBlessingSelectionSecond)
 
             };
-            //if (ModSettings.AddedContent.Archetypes.IsDisabled("Divine Tracker")) { return; }
+            if (ModSettings.AddedContent.Archetypes.IsDisabled("Divine Tracker")) { return; }
             RangerClass.m_Archetypes = RangerClass.m_Archetypes.AppendToArray(DivineTrackerArchetype.ToReference<BlueprintArchetypeReference>());
 
         }
