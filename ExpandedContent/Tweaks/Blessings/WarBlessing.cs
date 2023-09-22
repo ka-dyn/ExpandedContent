@@ -22,6 +22,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.Designers.Mechanics.Buffs;
+using Kingmaker.Blueprints.Items.Ecnchantments;
+using Kingmaker.UI.ServiceWindow;
+using Kingmaker.UI.GenericSlot;
 
 namespace ExpandedContent.Tweaks.Blessings {
     internal class WarBlessing {
@@ -30,9 +33,76 @@ namespace ExpandedContent.Tweaks.Blessings {
             var WarDomainAllowed = Resources.GetBlueprintReference<BlueprintFeatureReference>("3795653d6d3b291418164b27be88cb43");
             var WarpriestClass = Resources.GetBlueprintReference<BlueprintCharacterClassReference>("30b5e47d47a0e37438cc5a80c96cfb99");
             var BlessingResource = Resources.GetBlueprintReference<BlueprintAbilityResourceReference>("d128a6332e4ea7c4a9862b9fdb358cca");
+            var ViciousEnchantment = Resources.GetBlueprintReference<BlueprintItemEnchantmentReference>("a1455a289da208144981e4b1ef92cc56");
 
 
 
+            var WarBlessingMajorBuff = Helpers.CreateBuff("WarBlessingMajorBuff", bp => {
+                bp.SetName("Battle Lust");
+                bp.SetDescription("All attacks are treated as if you had the vicious weapon special ability. In addition, you receive a +4 insight bonus on attack rolls made to " +
+                    "confirm critical hits. These benefits last for 1 minute.");
+                bp.m_Icon = sdasd;
+                bp.AddComponent<CriticalConfirmationBonus>(c => {
+                    c.Value = 4;
+                    c.CheckWeaponRangeType = false;
+                    c.Type = WeaponRangeType.Melee;
+                });
+                bp.AddComponent<BuffEnchantAnyWeapon>(c => {
+                    c.m_EnchantmentBlueprint = ViciousEnchantment;
+                    c.Slot = EquipSlotBase.SlotType.PrimaryHand;
+                });
+                bp.AddComponent<BuffEnchantAnyWeapon>(c => {
+                    c.m_EnchantmentBlueprint = ViciousEnchantment;
+                    c.Slot = EquipSlotBase.SlotType.SecondaryHand;
+                });
+                bp.m_Flags = BlueprintBuff.Flags.RemoveOnRest;
+                bp.Stacking = StackingType.Replace;
+            });
+            var WarBlessingMajorAbility = Helpers.CreateBlueprint<BlueprintAbility>("WarBlessingMajorAbility", bp => {
+                bp.SetName("Battle Lust");
+                bp.SetDescription("At 10th level, you can touch an ally and grant it a thirst for battle. All of the ally’s melee attacks are treated as if they had the " +
+                    "vicious weapon special ability. In addition, the ally receives a +4 insight bonus on attack rolls made to confirm critical hits. These benefits last " +
+                    "for 1 minute.");
+                bp.m_Icon = sdasd;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = WarBlessingMajorBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = false,
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Minutes,
+                                DiceType = DiceType.One,
+                                DiceCountValue = 0,
+                                BonusValue = 1
+                            },
+                            DurationSeconds = 0
+                        });
+                });
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Touch;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = true;
+                bp.CanTargetSelf = true;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Touch;
+                bp.ActionType = UnitCommand.CommandType.Standard;
+                bp.LocalizedDuration = Helpers.CreateString("WarBlessingMajorAbility.Duration", "1 minute");
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var WarBlessingMajorFeature = Helpers.CreateBlueprint<BlueprintFeature>("WarBlessingMajorFeature", bp => {
+                bp.SetName("Battle Lust");
+                bp.SetDescription("At 10th level, you can touch an ally and grant it a thirst for battle. All of the ally’s melee attacks are treated as if they had the " +
+                    "vicious weapon special ability. In addition, the ally receives a +4 insight bonus on attack rolls made to confirm critical hits. These benefits last " +
+                    "for 1 minute.");
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { WarBlessingMajorAbility.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.HideInCharacterSheetAndLevelUp = true;
+            });
 
             var WarBlessingMinorBuffSpeed = Helpers.CreateBuff("WarBlessingMinorBuffSpeed", bp => {
                 bp.SetName("War Mind - Speed");
