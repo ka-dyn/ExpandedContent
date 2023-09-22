@@ -23,6 +23,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var HuntersBondSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("b705c5184a96a84428eeb35ae2517a14");
             var BlessingSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("6d9dcc2a59210a14891aeedb09d406aa");
             var MartialWeaponProficiency = Resources.GetBlueprint<BlueprintFeature>("203992ef5b35c864390b4e4a1e200629");
+            var BlessingResource = Resources.GetBlueprint<BlueprintAbilityResource>("d128a6332e4ea7c4a9862b9fdb358cca");
 
             var DivineTrackerArchetype = Helpers.CreateBlueprint<BlueprintArchetype>("DivineTrackerArchetype", bp => {
                 bp.LocalizedName = Helpers.CreateString($"DivineTrackerArchetype.Name", "Divine Tracker");
@@ -70,6 +71,11 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var TrickeryBlessingFeature = Resources.GetBlueprint<BlueprintFeature>("a8e7abcad0cf8384b9f12c3b075b5cae");
             var WaterBlessingFeature = Resources.GetBlueprint<BlueprintFeature>("0f457943bb99f9b48b709c90bfc0467e");
             var WeatherBlessingFeature = Resources.GetBlueprint<BlueprintFeature>("4172d92c598de1d47aa2c0dd51c05e24");
+
+            BlessingResource.m_MaxAmount.m_Class = BlessingResource.m_MaxAmount.m_Class.AppendToArray(RangerClass.ToReference<BlueprintCharacterClassReference>());
+            BlessingResource.m_MaxAmount.m_ClassDiv = BlessingResource.m_MaxAmount.m_ClassDiv.AppendToArray(RangerClass.ToReference<BlueprintCharacterClassReference>());
+            BlessingResource.m_MaxAmount.m_Archetypes = BlessingResource.m_MaxAmount.m_Archetypes.AppendToArray(DivineTrackerArchetype.ToReference<BlueprintArchetypeReference>());
+            BlessingResource.m_MaxAmount.m_ArchetypesDiv = BlessingResource.m_MaxAmount.m_ArchetypesDiv.AppendToArray(DivineTrackerArchetype.ToReference<BlueprintArchetypeReference>());
 
             var DivineTrackerBlessingSelectionFirst = Helpers.CreateBlueprint<BlueprintFeatureSelection>("DivineTrackerBlessingSelectionFirst", bp => {
                 bp.SetName("Trackers Blessings");
