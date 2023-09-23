@@ -8,7 +8,7 @@ using Kingmaker.Designers.Mechanics.Facts;
 
 namespace ExpandedContent.Utilities {
     public static class BlessingTools {
-        public static void RegisterBlessing(BlueprintProgression blessing) {
+        public static void RegisterBlessing(BlueprintFeature blessing) {
             BlueprintFeatureSelection BlessingSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("6d9dcc2a59210a14891aeedb09d406aa");
             BlueprintFeatureSelection SecondBlessingSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("b7ce4a67287cda746a59b31c042305cf");
             BlessingSelection.m_AllFeatures = BlessingSelection.m_AllFeatures.AddToArray(blessing.ToReference<BlueprintFeatureReference>());

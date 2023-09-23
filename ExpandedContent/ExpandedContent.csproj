@@ -214,6 +214,7 @@
     <Compile Include="Tweaks\Archetypes\PriestOfBalance.cs" />
     <Compile Include="Tweaks\Archetypes\LivingScripture.cs" />
     <Compile Include="Tweaks\Backgrounds\ArchdukeOfCheliax.cs" />
+    <Compile Include="Tweaks\Blessings\ArtificeBlessing.cs" />
     <Compile Include="Tweaks\Blessings\WarBlessing.cs" />
     <Compile Include="Tweaks\Classes\StargazerClass.cs" />
     <Compile Include="Tweaks\Classes\DrakeClass\DrakeCompanionCopper.cs" />
@@ -233,6 +234,7 @@
     <Compile Include="Tweaks\Classes\DrakeClass\DrakeCompanionSelection.cs" />
     <Compile Include="Tweaks\Classes\Oathbreaker.cs" />
     <Compile Include="Tweaks\Classes\DreadKnight.cs" />
+    <Compile Include="Tweaks\Components\CheckWeaponEnchant.cs" />
     <Compile Include="Tweaks\Components\AbilityCasterOffHandWeaponCheck.cs" />
     <Compile Include="Tweaks\Components\MaxCastingAttributeWithArchetypeGetter.cs" />
     <Compile Include="Tweaks\Components\LearnDomainSpell.cs" />
