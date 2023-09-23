@@ -173,6 +173,9 @@ namespace ExpandedContent.Tweaks {
                 Domains.LoyaltyDomain.AddLoyaltyDomain();
                 Domains.BaseDeityPatch.AddBaseDeityPatch();
 
+                Blessings.ArtificeBlessing.AddArtificeBlessing();
+                Blessings.WarBlessing.AddWarBlessing();
+
                 Archetypes.StormDruid.AddStormDruid();
                 Archetypes.Treesinger.AddTreesinger();
                 Archetypes.DivineScourge.AddDivineScourge();

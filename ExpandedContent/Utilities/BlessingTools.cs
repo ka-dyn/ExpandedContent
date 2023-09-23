@@ -4,7 +4,7 @@ using Kingmaker.Blueprints.Classes.Selection;
 using ExpandedContent.Extensions;
 using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Designers.Mechanics.Facts;
-
+using Kingmaker.UnitLogic.FactLogic;
 
 namespace ExpandedContent.Utilities {
     public static class BlessingTools {
@@ -24,17 +24,20 @@ namespace ExpandedContent.Utilities {
             var blueprintfeature = Helpers.CreateBlueprint<BlueprintFeature>($"{blueprintoutputname}", bp => {
                 bp.m_DisplayName = warpriestblessing.m_DisplayName;
                 bp.SetDescription(description);
-                bp.Components = warpriestblessing.Components;
+                bp.AddComponent(warpriestblessing.GetComponent<AddFacts>());
+                bp.AddComponent(warpriestblessing.GetComponent<PrerequisiteFeature>());
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = RangerClass;
+                    c.Level = 13;
+                    c.BeforeThisLevel = false;
+                    c.m_Feature = warpriestblessing.GetComponent<AddFeatureOnClassLevel>().m_Feature;
+                });
                 bp.IsClassFeature = false;
                 bp.AddComponent<PrerequisiteNoFeature>(c => {
                     c.HideInUI = true;
                     c.m_Feature = warpriestblessing.ToReference<BlueprintFeatureReference>();
                 });
             });
-
-            var AddFeatureOnClassLevel = blueprintfeature.GetComponent<AddFeatureOnClassLevel>();
-            AddFeatureOnClassLevel.m_Class = RangerClass;
-            AddFeatureOnClassLevel.Level = 13;
 
             warpriestblessing.AddComponent<PrerequisiteNoFeature>(c => {
                 c.HideInUI = true;

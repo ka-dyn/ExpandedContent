@@ -26,43 +26,54 @@ using Kingmaker.Blueprints.Items.Ecnchantments;
 using Kingmaker.UI.ServiceWindow;
 using Kingmaker.UI.GenericSlot;
 using ExpandedContent.Tweaks.Components;
+using Kingmaker.UnitLogic.ActivatableAbilities;
 
 namespace ExpandedContent.Tweaks.Blessings {
     internal class ArtificeBlessing {
         public static void AddArtificeBlessing() {
 
             var ArtificeDomainAllowed = Resources.GetBlueprintReference<BlueprintFeatureReference>("3795653d6d3b291418164b27be88cb43");
-            var ArtificepriestClass = Resources.GetBlueprintReference<BlueprintCharacterClassReference>("30b5e47d47a0e37438cc5a80c96cfb99");
+            var WarpriestClass = Resources.GetBlueprintReference<BlueprintCharacterClassReference>("30b5e47d47a0e37438cc5a80c96cfb99");
             var BlessingResource = Resources.GetBlueprintReference<BlueprintAbilityResourceReference>("d128a6332e4ea7c4a9862b9fdb358cca");
-            var ViciousEnchantment = Resources.GetBlueprintReference<BlueprintItemEnchantmentReference>("a1455a289da208144981e4b1ef92cc56");
+            var MasterStrikeToggleAbility = Resources.GetBlueprint<BlueprintActivatableAbility>("926bff1386d58824688363a3eeb98260");
+
+            var Frost = Resources.GetBlueprint<BlueprintWeaponEnchantment>("421e54078b7719d40915ce0672511d0b");
+
+            var DestructionJudgementBuff = Resources.GetBlueprint<BlueprintBuff>("a8e7e315b5a241b47ad526771eee19b7");
 
 
             var ArtificeBlessingMajorBuff = Helpers.CreateBuff("ArtificeBlessingMajorBuff", bp => {
-                bp.SetName("Battle Lust");
-                bp.SetDescription("All attacks are treated as if you had the vicious weapon special ability. In addition, you receive a +4 insight bonus on attack rolls made to " +
-                    "confirm critical hits. These benefits last for 1 minute.");
-                bp.m_Icon = sdasd;
+                bp.SetName("Transfer Magic");
+                bp.SetDescription("At 10th level, you can temporarily copy a weapon enchantment from one weapon to another. You may copy any permanent enchant with " +
+                    "a base price modifier of +1 or +2. If you are using this ability on a double weapon, only one end of the double weapon is affected. The copy " +
+                    "lasts for 1 minute. You can use this ability multiple times on the same weapon or weapons. Alternatively, you can use transfer magic to move " +
+                    "a +1 or +2 armor special ability from armor you are wearing to another. \nYou may copy enchantments from weapons you are carrying in unused " +
+                    "equiptment slots.");
+                bp.m_Icon = MasterStrikeToggleAbility.Icon;
                 bp.AddComponent<CriticalConfirmationBonus>(c => {
                     c.Value = 4;
                     c.CheckWeaponRangeType = false;
                     c.Type = WeaponRangeType.Melee;
                 });
                 bp.AddComponent<BuffEnchantAnyWeapon>(c => {
-                    c.m_EnchantmentBlueprint = ViciousEnchantment;
+                    c.m_EnchantmentBlueprint = Frost.ToReference<BlueprintItemEnchantmentReference>();
                     c.Slot = EquipSlotBase.SlotType.PrimaryHand;
                 });
                 bp.AddComponent<BuffEnchantAnyWeapon>(c => {
-                    c.m_EnchantmentBlueprint = ViciousEnchantment;
+                    c.m_EnchantmentBlueprint = Frost.ToReference<BlueprintItemEnchantmentReference>();
                     c.Slot = EquipSlotBase.SlotType.SecondaryHand;
                 });
                 bp.m_Flags = BlueprintBuff.Flags.RemoveOnRest;
                 bp.Stacking = StackingType.Replace;
             });
             var ArtificeBlessingMajorAbility = Helpers.CreateBlueprint<BlueprintAbility>("ArtificeBlessingMajorAbility", bp => {
-                bp.SetName("Crafter’s Wrath");
-                bp.SetDescription("At 1st level, you can touch one melee weapon and grant it greater power to harm and destroy crafted objects. For 1 minute, whenever this " +
-                    "weapon deals damage to constructs or objects, it bypasses hardness and damage reduction.");
-                bp.m_Icon = sdasd;
+                bp.SetName("Transfer Magic");
+                bp.SetDescription("At 10th level, you can temporarily copy a weapon enchantment from one weapon to another. You may copy any permanent enchant with " +
+                    "a base price modifier of +1 or +2. If you are using this ability on a double weapon, only one end of the double weapon is affected. The copy " +
+                    "lasts for 1 minute. You can use this ability multiple times on the same weapon or weapons. Alternatively, you can use transfer magic to move " +
+                    "a +1 or +2 armor special ability from armor you are wearing to another. \nYou may copy enchantments from weapons you are carrying in unused " +
+                    "equiptment slots.");
+                bp.m_Icon = MasterStrikeToggleAbility.Icon;
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.SavingThrowType = SavingThrowType.Unknown;
                     c.Actions = Helpers.CreateActionList(
@@ -79,6 +90,10 @@ namespace ExpandedContent.Tweaks.Blessings {
                             DurationSeconds = 0
                         });
                 });
+                bp.AddComponent<CheckWeaponEnchant>(c => {
+                    c.IncludeStowedWeapons = true;
+                    c.m_Enchantment = Frost.ToReference<BlueprintItemEnchantmentReference>();
+                });
                 bp.Type = AbilityType.Supernatural;
                 bp.Range = AbilityRange.Touch;
                 bp.CanTargetPoint = false;
@@ -93,9 +108,12 @@ namespace ExpandedContent.Tweaks.Blessings {
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
             var ArtificeBlessingMajorFeature = Helpers.CreateBlueprint<BlueprintFeature>("ArtificeBlessingMajorFeature", bp => {
-                bp.SetName("Crafter’s Wrath");
-                bp.SetDescription("At 1st level, you can touch one melee weapon and grant it greater power to harm and destroy crafted objects. For 1 minute, whenever this " +
-                    "weapon deals damage to constructs or objects, it bypasses hardness and damage reduction.");
+                bp.SetName("Transfer Magic");
+                bp.SetDescription("At 10th level, you can temporarily copy a weapon enchantment from one weapon to another. You may copy any permanent enchant with " +
+                    "a base price modifier of +1 or +2. If you are using this ability on a double weapon, only one end of the double weapon is affected. The copy " +
+                    "lasts for 1 minute. You can use this ability multiple times on the same weapon or weapons. Alternatively, you can use transfer magic to move " +
+                    "a +1 or +2 armor special ability from armor you are wearing to another. \nYou may copy enchantments from weapons you are carrying in unused " +
+                    "equiptment slots.");
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] { ArtificeBlessingMajorAbility.ToReference<BlueprintUnitFactReference>() };
                 });
@@ -132,7 +150,7 @@ namespace ExpandedContent.Tweaks.Blessings {
                 bp.SetName("Crafter’s Wrath");
                 bp.SetDescription("At 1st level, you can touch an ally and grant them greater power to harm and destroy crafted objects. For 1 minute, whenever " +
                     "this ally deals damage to constructs or objects with melee weapons, they bypasses hardness and damage reduction.");
-                bp.m_Icon = edrghbe;
+                bp.m_Icon = DestructionJudgementBuff.Icon;
                 bp.AddComponent<IgnoreDamageReductionOnAttackRangeType>(c => {
                     c.OnlyOnFirstAttack = false;
                     c.OnlyOnFullAttack = false;
@@ -150,8 +168,12 @@ namespace ExpandedContent.Tweaks.Blessings {
             var ArtificeBlessingMinorAbility = Helpers.CreateBlueprint<BlueprintAbility>("ArtificeBlessingMinorAbility", bp => {
                 bp.SetName("Crafter’s Wrath");
                 bp.SetDescription("At 1st level, you can touch an ally and grant them greater power to harm and destroy crafted objects. For 1 minute, whenever " +
-                    "this ally deals damage to constructs or objects with melee weapons, they bypasses hardness and damage reduction.");
-                bp.m_Icon = edrghbe;
+                    "this ally deals damage to constructs or objects with melee weapons, they bypasses hardness and damage reduction. \nAt 10th level, you can " +
+                    "temporarily copy a weapon enchantment from one weapon to another. You may copy any permanent enchant with a base price modifier of +1 or +2. " +
+                    "If you are using this ability on a double weapon, only one end of the double weapon is affected. The copy lasts for 1 minute. You can use " +
+                    "this ability multiple times on the same weapon or weapons. Alternatively, you can use transfer magic to move a +1 or +2 armor special ability " +
+                    "from armor you are wearing to another. \\nYou may copy enchantments from weapons you are carrying in unused equiptment slots.");
+                bp.m_Icon = DestructionJudgementBuff.Icon;
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.SavingThrowType = SavingThrowType.Unknown;
                     c.Actions = Helpers.CreateActionList(
@@ -184,12 +206,17 @@ namespace ExpandedContent.Tweaks.Blessings {
             
             var ArtificeBlessingFeature = Helpers.CreateBlueprint<BlueprintFeature>("ArtificeBlessingFeature", bp => {
                 bp.SetName("Artifice");
-                bp.SetDescription("");
+                bp.SetDescription("At 1st level, you can touch an ally and grant them greater power to harm and destroy crafted objects. For 1 minute, whenever this " +
+                    "ally deals damage to constructs or objects with melee weapons, they bypasses hardness and damage reduction. \nAt 10th level, you can temporarily " +
+                    "copy a weapon enchantment from one weapon to another. You may copy any permanent enchant with a base price modifier of +1 or +2. If you are using " +
+                    "this ability on a double weapon, only one end of the double weapon is affected. The copy lasts for 1 minute. You can use this ability multiple " +
+                    "times on the same weapon or weapons. Alternatively, you can use transfer magic to move a +1 or +2 armor special ability from armor you are " +
+                    "wearing to another. \nYou may copy enchantments from weapons you are carrying in unused equiptment slots.");
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] { ArtificeBlessingMinorAbility.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
-                    c.m_Class = ArtificepriestClass;
+                    c.m_Class = WarpriestClass;
                     c.Level = 10;
                     c.m_Feature = ArtificeBlessingMajorFeature.ToReference<BlueprintFeatureReference>();
                     c.BeforeThisLevel = false;
@@ -202,8 +229,8 @@ namespace ExpandedContent.Tweaks.Blessings {
                 bp.Groups = new FeatureGroup[] { FeatureGroup.WarpriestBlessing };
             });
 
-            //BlessingTools.RegisterBlessing(ArtificeBlessingFeature);
-            //BlessingTools.CreateDivineTrackerBlessing("DivineTrackerArtificeBlessingFeature", ArtificeBlessingFeature, "");
+            BlessingTools.RegisterBlessing(ArtificeBlessingFeature);
+            BlessingTools.CreateDivineTrackerBlessing("DivineTrackerArtificeBlessingFeature", ArtificeBlessingFeature, "At 1st level, you can touch an ally and grant them greater power to harm and destroy crafted objects. For 1 minute, whenever this ally deals damage to constructs or objects with melee weapons, they bypasses hardness and damage reduction. \nAt 13th level, you can temporarily copy a weapon enchantment from one weapon to another. You may copy any permanent enchant with a base price modifier of +1 or +2. If you are using this ability on a double weapon, only one end of the double weapon is affected. The copy lasts for 1 minute. You can use this ability multiple times on the same weapon or weapons. Alternatively, you can use transfer magic to move a +1 or +2 armor special ability from armor you are wearing to another. \nYou may copy enchantments from weapons you are carrying in unused equiptment slots.");
 
         }
     }
