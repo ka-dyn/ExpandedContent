@@ -18,8 +18,6 @@ namespace ExpandedContent.Tweaks.Components {
     public class CheckWeaponEnchant : BlueprintComponent, IAbilityCasterRestriction {
 
         public bool IncludeStowedWeapons = false;
-
-
         public BlueprintItemEnchantmentReference m_Enchantment;
         public bool IsCasterRestrictionPassed(UnitEntityData caster) {
             if (!IncludeStowedWeapons) {
@@ -28,23 +26,13 @@ namespace ExpandedContent.Tweaks.Components {
                 }
                 return false;
             }
-            return caster.Body.m_HandsEquipmentSets.Any(
-                HandsEquipmentSet => HandsEquipmentSet.PrimaryHand.Weapon.Blueprint.Enchantments.Contains(m_Enchantment) || 
+            return caster.Body.m_HandsEquipmentSets.Any(HandsEquipmentSet => //Weapon in any equipment set must have m_Enchantment
+                HandsEquipmentSet.PrimaryHand.Weapon.Blueprint.Enchantments.Contains(m_Enchantment) || 
                 HandsEquipmentSet.SecondaryHand.Weapon.Blueprint.Enchantments.Contains(m_Enchantment)
-                );
-            
-            
-            //for (int i = 0; i < caster.Body.m_HandsEquipmentSets.Length; i++) {
-            //    HandsEquipmentSet handsEquipmentSet = caster.Body.m_HandsEquipmentSets[i];
-            //    if (handsEquipmentSet.PrimaryHand.Weapon.Blueprint.Enchantments.Contains(m_Enchantment) || handsEquipmentSet.SecondaryHand.Weapon.Blueprint.Enchantments.Contains(m_Enchantment) ) {
-            //        return true;
-            //    }                
-            //}
-            //return false;
+                );            
         }
-
         public string GetAbilityCasterRestrictionUIText() {
-            if (IncludeStowedWeapons == true) {
+            if (IncludeStowedWeapons) {
                 return $"You must have a weapon on your person with this enchant to transfer.";
             }
             return $"You must have a weapon in hand with this enchant to transfer.";

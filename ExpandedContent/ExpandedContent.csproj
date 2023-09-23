@@ -234,6 +234,7 @@
     <Compile Include="Tweaks\Classes\DrakeClass\DrakeCompanionSelection.cs" />
     <Compile Include="Tweaks\Classes\Oathbreaker.cs" />
     <Compile Include="Tweaks\Classes\DreadKnight.cs" />
+    <Compile Include="Tweaks\Components\IgnoreDamageReductionOnAttackRangeType.cs" />
     <Compile Include="Tweaks\Components\CheckWeaponEnchant.cs" />
     <Compile Include="Tweaks\Components\AbilityCasterOffHandWeaponCheck.cs" />
     <Compile Include="Tweaks\Components\MaxCastingAttributeWithArchetypeGetter.cs" />
