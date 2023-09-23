@@ -11,6 +11,7 @@ using Kingmaker.UnitLogic.Abilities.Components.Base;
 using Kingmaker.Utility;
 using static Kingmaker.EntitySystem.EntityDataBase;
 using Kingmaker.Blueprints.Items.Weapons;
+using Kingmaker.Designers;
 
 namespace ExpandedContent.Tweaks.Components {
     [AllowedOn(typeof(BlueprintAbility))]
@@ -19,22 +20,15 @@ namespace ExpandedContent.Tweaks.Components {
 
         public bool IncludeStowedWeapons = false;
         public BlueprintItemEnchantmentReference m_Enchantment;
+
+
         public bool IsCasterRestrictionPassed(UnitEntityData caster) {
-            if (!IncludeStowedWeapons) {
-                if (caster.Body.PrimaryHand.HasWeapon || caster.Body.SecondaryHand.HasWeapon) { //Must have weapon in hand
-                    return caster.Body.PrimaryHand.Weapon.Blueprint.Enchantments.Contains(m_Enchantment) || caster.Body.SecondaryHand.Weapon.Blueprint.Enchantments.Contains(m_Enchantment); //Weapon in hand must have m_Enchantment
-                }
-                return false;
+            if (caster.Body.PrimaryHand.HasWeapon || caster.Body.SecondaryHand.HasWeapon) { //Must have weapon in hand
+                return caster.Body.PrimaryHand.Weapon.Blueprint.Enchantments.Contains(m_Enchantment) || caster.Body.SecondaryHand.Weapon.Blueprint.Enchantments.Contains(m_Enchantment); //Weapon in hand must have m_Enchantment
             }
-            return caster.Body.m_HandsEquipmentSets.Any(HandsEquipmentSet => //Weapon in any equipment set must have m_Enchantment
-                HandsEquipmentSet.PrimaryHand.Weapon.Blueprint.Enchantments.Contains(m_Enchantment) || 
-                HandsEquipmentSet.SecondaryHand.Weapon.Blueprint.Enchantments.Contains(m_Enchantment)
-                );            
+            return false;
         }
-        public string GetAbilityCasterRestrictionUIText() {
-            if (IncludeStowedWeapons) {
-                return $"You must have a weapon on your person with this enchant to transfer.";
-            }
+        public string GetAbilityCasterRestrictionUIText() {            
             return $"You must have a weapon in hand with this enchant to transfer.";
         }
     }
