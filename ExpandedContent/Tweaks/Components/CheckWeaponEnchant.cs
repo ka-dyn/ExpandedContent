@@ -28,13 +28,19 @@ namespace ExpandedContent.Tweaks.Components {
                 }
                 return false;
             }
-            for (int i = 0; i < caster.Body.m_HandsEquipmentSets.Length; i++) {
-                HandsEquipmentSet handsEquipmentSet = caster.Body.m_HandsEquipmentSets[i];
-                if (handsEquipmentSet.PrimaryHand.Weapon.Blueprint.Enchantments.Contains(m_Enchantment) || handsEquipmentSet.SecondaryHand.Weapon.Blueprint.Enchantments.Contains(m_Enchantment) ) {
-                    return true;
-                }                
-            }
-            return false;
+            return caster.Body.m_HandsEquipmentSets.Any(
+                HandsEquipmentSet => HandsEquipmentSet.PrimaryHand.Weapon.Blueprint.Enchantments.Contains(m_Enchantment) || 
+                HandsEquipmentSet.SecondaryHand.Weapon.Blueprint.Enchantments.Contains(m_Enchantment)
+                );
+            
+            
+            //for (int i = 0; i < caster.Body.m_HandsEquipmentSets.Length; i++) {
+            //    HandsEquipmentSet handsEquipmentSet = caster.Body.m_HandsEquipmentSets[i];
+            //    if (handsEquipmentSet.PrimaryHand.Weapon.Blueprint.Enchantments.Contains(m_Enchantment) || handsEquipmentSet.SecondaryHand.Weapon.Blueprint.Enchantments.Contains(m_Enchantment) ) {
+            //        return true;
+            //    }                
+            //}
+            //return false;
         }
 
         public string GetAbilityCasterRestrictionUIText() {
