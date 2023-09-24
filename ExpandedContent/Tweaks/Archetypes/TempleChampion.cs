@@ -1270,6 +1270,8 @@ namespace ExpandedContent.Tweaks.Archetypes {
             BlessingResource.m_MaxAmount.m_Class = BlessingResource.m_MaxAmount.m_Class.AppendToArray(PaladinClass.ToReference<BlueprintCharacterClassReference>());
             BlessingResource.m_MaxAmount.m_Archetypes = BlessingResource.m_MaxAmount.m_Archetypes.AppendToArray(TempleChampionArchetype.ToReference<BlueprintArchetypeReference>());
             BlessingResource.m_MaxAmount.m_ClassDiv = BlessingResource.m_MaxAmount.m_ClassDiv.AppendToArray(PaladinClass.ToReference<BlueprintCharacterClassReference>());
+            BlessingResource.m_MaxAmount.m_ArchetypesDiv = BlessingResource.m_MaxAmount.m_ArchetypesDiv.AppendToArray(TempleChampionArchetype.ToReference<BlueprintArchetypeReference>());
+
             //Air
             var AirBlessingFeatureConfig = Resources.GetBlueprint<BlueprintFeature>("e1ff99dc3aeaa064e8eecde51c1c4773").GetComponent<AddFeatureOnClassLevel>();
             AirBlessingFeatureConfig.m_AdditionalClasses = AirBlessingFeatureConfig.m_AdditionalClasses.AppendToArray(PaladinClass.ToReference<BlueprintCharacterClassReference>());

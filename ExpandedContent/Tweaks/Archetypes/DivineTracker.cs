@@ -23,7 +23,6 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var HuntersBondSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("b705c5184a96a84428eeb35ae2517a14");
             var BlessingSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("6d9dcc2a59210a14891aeedb09d406aa");
             var MartialWeaponProficiency = Resources.GetBlueprint<BlueprintFeature>("203992ef5b35c864390b4e4a1e200629");
-            var BlessingResource = Resources.GetBlueprint<BlueprintAbilityResource>("d128a6332e4ea7c4a9862b9fdb358cca");
 
             var DivineTrackerArchetype = Helpers.CreateBlueprint<BlueprintArchetype>("DivineTrackerArchetype", bp => {
                 bp.LocalizedName = Helpers.CreateString($"DivineTrackerArchetype.Name", "Divine Tracker");
@@ -72,9 +71,10 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var WaterBlessingFeature = Resources.GetBlueprint<BlueprintFeature>("0f457943bb99f9b48b709c90bfc0467e");
             var WeatherBlessingFeature = Resources.GetBlueprint<BlueprintFeature>("4172d92c598de1d47aa2c0dd51c05e24");
 
+            var BlessingResource = Resources.GetBlueprint<BlueprintAbilityResource>("d128a6332e4ea7c4a9862b9fdb358cca");
             BlessingResource.m_MaxAmount.m_Class = BlessingResource.m_MaxAmount.m_Class.AppendToArray(RangerClass.ToReference<BlueprintCharacterClassReference>());
-            BlessingResource.m_MaxAmount.m_ClassDiv = BlessingResource.m_MaxAmount.m_ClassDiv.AppendToArray(RangerClass.ToReference<BlueprintCharacterClassReference>());
             BlessingResource.m_MaxAmount.m_Archetypes = BlessingResource.m_MaxAmount.m_Archetypes.AppendToArray(DivineTrackerArchetype.ToReference<BlueprintArchetypeReference>());
+            BlessingResource.m_MaxAmount.m_ClassDiv = BlessingResource.m_MaxAmount.m_ClassDiv.AppendToArray(RangerClass.ToReference<BlueprintCharacterClassReference>());
             BlessingResource.m_MaxAmount.m_ArchetypesDiv = BlessingResource.m_MaxAmount.m_ArchetypesDiv.AppendToArray(DivineTrackerArchetype.ToReference<BlueprintArchetypeReference>());
 
             var DivineTrackerBlessingSelectionFirst = Helpers.CreateBlueprint<BlueprintFeatureSelection>("DivineTrackerBlessingSelectionFirst", bp => {
@@ -83,6 +83,11 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     "minor blessings of those domains. A divine tracker can select an alignment domain (Chaos, Evil, Good, or Law) only if his alignment matches that domain. A divine tracker uses his " +
                     "ranger level as his warpriest level to determine the effect of the blessing. At 13th level, a divine tracker gains the major blessing from both of his domains.");
                 bp.m_Icon = BlessingSelection.m_Icon;
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = BlessingResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.Amount = 0;
+                    c.RestoreAmount = true;
+                });
                 bp.Groups = new FeatureGroup[0];
                 bp.Mode = SelectionMode.OnlyNew;
                 bp.IsClassFeature = true;

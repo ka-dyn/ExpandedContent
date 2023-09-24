@@ -27,6 +27,7 @@ using Kingmaker.UI.ServiceWindow;
 using Kingmaker.UI.GenericSlot;
 using ExpandedContent.Tweaks.Components;
 using Kingmaker.UnitLogic.ActivatableAbilities;
+using TabletopTweaks.Core.NewComponents;
 
 namespace ExpandedContent.Tweaks.Blessings {
     internal class ArtificeBlessing {
@@ -34,6 +35,7 @@ namespace ExpandedContent.Tweaks.Blessings {
 
             var ArtificeDomainAllowed = Resources.GetBlueprintReference<BlueprintFeatureReference>("3795653d6d3b291418164b27be88cb43");
             var WarpriestClass = Resources.GetBlueprintReference<BlueprintCharacterClassReference>("30b5e47d47a0e37438cc5a80c96cfb99");
+            var WarpriestAspectOfWarBuff = Resources.GetBlueprint<BlueprintBuff>("27d14b07b52c2df42a4dcd6bfb840425");
             var BlessingResource = Resources.GetBlueprintReference<BlueprintAbilityResourceReference>("d128a6332e4ea7c4a9862b9fdb358cca");
             var MasterStrikeToggleAbility = Resources.GetBlueprint<BlueprintActivatableAbility>("926bff1386d58824688363a3eeb98260");
             var ExploitWeakness = Resources.GetBlueprint<BlueprintFeature>("374a73288a36e2d4f9e54c75d2e6e573");
@@ -48,6 +50,12 @@ namespace ExpandedContent.Tweaks.Blessings {
                     c.m_Variants = new BlueprintAbilityReference[] {
 
                     };
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = BlessingResource;
+                    c.m_IsSpendResource = true;
+                    c.Amount = 1;
+                    c.ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>() { WarpriestAspectOfWarBuff.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.Type = AbilityType.Supernatural;
                 bp.Range = AbilityRange.Touch;
@@ -73,6 +81,12 @@ namespace ExpandedContent.Tweaks.Blessings {
 
                     };
                 });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = BlessingResource;
+                    c.m_IsSpendResource = true;
+                    c.Amount = 1;
+                    c.ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>() { WarpriestAspectOfWarBuff.ToReference<BlueprintUnitFactReference>() };
+                });
                 bp.Type = AbilityType.Supernatural;
                 bp.Range = AbilityRange.Touch;
                 bp.CanTargetPoint = false;
@@ -87,6 +101,139 @@ namespace ExpandedContent.Tweaks.Blessings {
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
 
+            
+
+
+            var ArtificeBlessingMajorFeature = Helpers.CreateBlueprint<BlueprintFeature>("ArtificeBlessingMajorFeature", bp => {
+                bp.SetName("Transfer Magic");
+                bp.SetDescription("At 10th level, you can temporarily copy a weapon enchantment from one weapon to another. You may copy any simple permanent " +
+                    "enchant from a weapon you have currently equipped. If you are using this ability on a double weapon, only one end of the double weapon is " +
+                    "affected. The copy lasts for 1 minute. You can use this ability multiple times on the same weapon. \nSome examples of simple enchants are, " +
+                    "Icy Burst, Holy, Keen, Speed.");
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        ArtificeBlessingMajorMHBaseAbility.ToReference<BlueprintUnitFactReference>(),
+                        ArtificeBlessingMajorOHBaseAbility.ToReference<BlueprintUnitFactReference>()
+                        
+                    };
+                });
+                bp.HideInCharacterSheetAndLevelUp = true;
+            });
+                        
+            var ConstructType = Resources.GetBlueprint<BlueprintFeature>("fd389783027d63343b4a5634bd81645f");
+            var ArtificeBlessingMinorBuff = Helpers.CreateBuff("ArtificeBlessingMinorBuff", bp => {
+                bp.SetName("Crafter’s Wrath");
+                bp.SetDescription("For 1 minute, whenever you deal damage to constructs or objects with melee weapons, you bypasses hardness and damage reduction.");
+                bp.m_Icon = ExploitWeakness.Icon;
+                bp.AddComponent<IgnoreDamageReductionOnAttackRangeType>(c => {
+                    c.OnlyOnFirstAttack = false;
+                    c.OnlyOnFullAttack = false;
+                    c.OnlyNaturalAttacks = false;
+                    c.CriticalHit = false;
+                    c.m_WeaponType = null;
+                    c.CheckEnemyFact = true;
+                    c.m_CheckedFact = ConstructType.ToReference<BlueprintUnitFactReference>();
+                    c.CheckWeaponRangeType = true;
+                    c.RangeType = WeaponRangeType.Melee;
+                });
+                bp.m_Flags = BlueprintBuff.Flags.RemoveOnRest;
+                bp.Stacking = StackingType.Replace;
+            });            
+            var ArtificeBlessingMinorAbility = Helpers.CreateBlueprint<BlueprintAbility>("ArtificeBlessingMinorAbility", bp => {
+                bp.SetName("Crafter’s Wrath");
+                bp.SetDescription("You may touch an ally and grant them greater power to harm and destroy crafted objects. For 1 minute, whenever " +
+                    "this ally deals damage to constructs or objects with melee weapons, they bypasses hardness and damage reduction.");
+                bp.m_Icon = ExploitWeakness.Icon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = ArtificeBlessingMinorBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = false,
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Minutes,
+                                DiceType = DiceType.One,
+                                DiceCountValue = 0,
+                                BonusValue = 1
+                            },
+                            DurationSeconds = 0
+                        });
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = BlessingResource;
+                    c.m_IsSpendResource = true;
+                    c.Amount = 1;
+                    c.ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>() { WarpriestAspectOfWarBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Touch;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = true;
+                bp.CanTargetSelf = true;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Touch;
+                bp.ActionType = UnitCommand.CommandType.Standard;
+                bp.LocalizedDuration = Helpers.CreateString("ArtificeBlessingMinorAbility.Duration", "1 minute");
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            
+            var ArtificeBlessingFeature = Helpers.CreateBlueprint<BlueprintFeature>("ArtificeBlessingFeature", bp => {
+                bp.SetName("Artifice");
+                bp.SetDescription("At 1st level, you can touch an ally and grant them greater power to harm and destroy crafted objects. For 1 minute, whenever this " +
+                    "ally deals damage to constructs or objects with melee weapons, they bypasses hardness and damage reduction. \nAt 10th level, you can temporarily " +
+                    "copy a weapon enchantment from one weapon to another. You may copy any simple permanent enchant from a weapon you have currently equipped. If you " +
+                    "are using this ability on a double weapon, only one end of the double weapon is affected. The copy lasts for 1 minute. You can use this ability " +
+                    "multiple times on the same weapon. \nSome examples of simple enchants are, Icy Burst, Holy, Keen, Speed.");
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { ArtificeBlessingMinorAbility.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = WarpriestClass;
+                    c.Level = 10;
+                    c.m_Feature = ArtificeBlessingMajorFeature.ToReference<BlueprintFeatureReference>();
+                    c.BeforeThisLevel = false;
+                });
+                bp.AddComponent<PrerequisiteFeature>(c => {
+                    c.CheckInProgression = true;
+                    c.HideInUI = true;
+                    c.m_Feature = ArtificeDomainAllowed;
+                });
+                bp.Groups = new FeatureGroup[] { FeatureGroup.WarpriestBlessing };
+            });
+            BlessingTools.RegisterBlessing(ArtificeBlessingFeature);
+            BlessingTools.CreateDivineTrackerBlessing("DivineTrackerArtificeBlessingFeature", ArtificeBlessingFeature, "At 1st level, you can touch an ally and grant them greater power to harm and destroy crafted objects. For 1 minute, whenever this ally deals damage to constructs or objects with melee weapons, they bypasses hardness and damage reduction. \nAt 13th level, you can temporarily copy a weapon enchantment from one weapon to another. You may copy any simple permanent enchant from a weapon you have currently equipped. If you are using this ability on a double weapon, only one end of the double weapon is affected. The copy lasts for 1 minute. You can use this ability multiple times on the same weapon. \nSome examples of simple enchants are, Icy Burst, Holy, Keen, Speed.");
+
+            //Added in ModSupport
+            var DivineTrackerArtificeBlessingFeature = Resources.GetModBlueprint<BlueprintFeature>("DivineTrackerArtificeBlessingFeature");
+            var QuickenBlessingArtificeFeature = Helpers.CreateBlueprint<BlueprintFeature>("QuickenBlessingArtificeFeature", bp => {
+                bp.SetName("Quicken Blessing — Artifice");
+                bp.SetDescription("Choose one of your blessings that normally requires a standard action to use. You can expend two of your daily uses of blessings " +
+                    "to deliver that blessing (regardless of whether it’s a minor or major effect) as a swift action instead.");
+                bp.Ranks = 1;
+                bp.ReapplyOnLevelUp = true;
+                bp.IsClassFeature = true;
+                bp.Groups = new FeatureGroup[] { FeatureGroup.Feat };
+                bp.AddComponent<AbilityActionTypeConversion>(c => {
+                    c.m_Abilities = new BlueprintAbilityReference[] {                        
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMinorAbility").ToReference<BlueprintAbilityReference>()
+                    };
+                    c.ResourceMultiplier = 2;
+                    c.ActionType = UnitCommand.CommandType.Swift;
+                });
+                bp.AddComponent<PrerequisiteFeaturesFromList>(c => {
+                    c.Amount = 1;
+                    c.m_Features = new BlueprintFeatureReference[] {
+                        ArtificeBlessingFeature.ToReference<BlueprintFeatureReference>(),
+                        DivineTrackerArtificeBlessingFeature.ToReference<BlueprintFeatureReference>()
+                    };
+                });
+            });
+
+
+
             #region Major Varients
             //var BaneMonstriusHumanoid = Resources.GetBlueprint<BlueprintWeaponEnchantment>("c5f84a79ad154c84e8d2e9fe0dd49350"); Not used
             //var BaneNonHuman = Resources.GetBlueprint<BlueprintWeaponEnchantment>("eb2b2e9f741e4cc18edc47cbb1387e02"); Not used
@@ -94,7 +241,7 @@ namespace ExpandedContent.Tweaks.Blessings {
             //var BaneReptilian= Resources.GetBlueprint<BlueprintWeaponEnchantment>("c4b9cce255d1d6641a6105a255934e2e"); Not used
             //var Deteriorative = Resources.GetBlueprint<BlueprintWeaponEnchantment>("bbe55d6e76b973d41bf5abeed643861d"); Might be unique
             var Agile = Resources.GetBlueprint<BlueprintWeaponEnchantment>("a36ad92c51789b44fa8a1c5c116a1328");
-            CreateTrasferMagicWeaponEnchant("Agile",Agile);
+            CreateTrasferMagicWeaponEnchant("Agile", Agile);
             var Anarchic = Resources.GetBlueprint<BlueprintWeaponEnchantment>("57315bc1e1f62a741be0efde688087e9");
             CreateTrasferMagicWeaponEnchant("Anarchic", Anarchic);
             var Axiomatic = Resources.GetBlueprint<BlueprintWeaponEnchantment>("0ca43051edefcad4b9b2240aa36dc8d4");
@@ -180,110 +327,23 @@ namespace ExpandedContent.Tweaks.Blessings {
             #endregion
 
 
-            var ArtificeBlessingMajorFeature = Helpers.CreateBlueprint<BlueprintFeature>("ArtificeBlessingMajorFeature", bp => {
-                bp.SetName("Transfer Magic");
-                bp.SetDescription("At 10th level, you can temporarily copy a weapon enchantment from one weapon to another. You may copy any simple permanent " +
-                    "enchant from a weapon you have currently equipped. If you are using this ability on a double weapon, only one end of the double weapon is " +
-                    "affected. The copy lasts for 1 minute. You can use this ability multiple times on the same weapon. \nSome examples of simple enchants are, " +
-                    "Icy Burst, Holy, Keen, Speed.");
-                bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[] {
-                        ArtificeBlessingMajorMHBaseAbility.ToReference<BlueprintUnitFactReference>(),
-                        ArtificeBlessingMajorOHBaseAbility.ToReference<BlueprintUnitFactReference>()
-                        
-                    };
-                });
-                bp.HideInCharacterSheetAndLevelUp = true;
-            });
-                        
-            var ConstructType = Resources.GetBlueprint<BlueprintFeature>("fd389783027d63343b4a5634bd81645f");
-            var ArtificeBlessingMinorBuff = Helpers.CreateBuff("ArtificeBlessingMinorBuff", bp => {
-                bp.SetName("Crafter’s Wrath");
-                bp.SetDescription("For 1 minute, whenever you deal damage to constructs or objects with melee weapons, you bypasses hardness and damage reduction.");
-                bp.m_Icon = ExploitWeakness.Icon;
-                bp.AddComponent<IgnoreDamageReductionOnAttackRangeType>(c => {
-                    c.OnlyOnFirstAttack = false;
-                    c.OnlyOnFullAttack = false;
-                    c.OnlyNaturalAttacks = false;
-                    c.CriticalHit = false;
-                    c.m_WeaponType = null;
-                    c.CheckEnemyFact = true;
-                    c.m_CheckedFact = ConstructType.ToReference<BlueprintUnitFactReference>();
-                    c.CheckWeaponRangeType = true;
-                    c.RangeType = WeaponRangeType.Melee;
-                });
-                bp.m_Flags = BlueprintBuff.Flags.RemoveOnRest;
-                bp.Stacking = StackingType.Replace;
-            });            
-            var ArtificeBlessingMinorAbility = Helpers.CreateBlueprint<BlueprintAbility>("ArtificeBlessingMinorAbility", bp => {
-                bp.SetName("Crafter’s Wrath");
-                bp.SetDescription("You may touch an ally and grant them greater power to harm and destroy crafted objects. For 1 minute, whenever " +
-                    "this ally deals damage to constructs or objects with melee weapons, they bypasses hardness and damage reduction.");
-                bp.m_Icon = ExploitWeakness.Icon;
-                bp.AddComponent<AbilityEffectRunAction>(c => {
-                    c.SavingThrowType = SavingThrowType.Unknown;
-                    c.Actions = Helpers.CreateActionList(
-                        new ContextActionApplyBuff() {
-                            m_Buff = ArtificeBlessingMinorBuff.ToReference<BlueprintBuffReference>(),
-                            Permanent = false,
-                            UseDurationSeconds = false,
-                            DurationValue = new ContextDurationValue() {
-                                Rate = DurationRate.Minutes,
-                                DiceType = DiceType.One,
-                                DiceCountValue = 0,
-                                BonusValue = 1
-                            },
-                            DurationSeconds = 0
-                        });
-                });
-                bp.Type = AbilityType.Supernatural;
-                bp.Range = AbilityRange.Touch;
-                bp.CanTargetPoint = false;
-                bp.CanTargetEnemies = false;
-                bp.CanTargetFriends = true;
-                bp.CanTargetSelf = true;
-                bp.EffectOnAlly = AbilityEffectOnUnit.None;
-                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
-                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Touch;
-                bp.ActionType = UnitCommand.CommandType.Standard;
-                bp.LocalizedDuration = Helpers.CreateString("ArtificeBlessingMinorAbility.Duration", "1 minute");
-                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
-            });
-            
-            var ArtificeBlessingFeature = Helpers.CreateBlueprint<BlueprintFeature>("ArtificeBlessingFeature", bp => {
-                bp.SetName("Artifice");
-                bp.SetDescription("At 1st level, you can touch an ally and grant them greater power to harm and destroy crafted objects. For 1 minute, whenever this " +
-                    "ally deals damage to constructs or objects with melee weapons, they bypasses hardness and damage reduction. \nAt 10th level, you can temporarily " +
-                    "copy a weapon enchantment from one weapon to another. You may copy any simple permanent enchant from a weapon you have currently equipped. If you " +
-                    "are using this ability on a double weapon, only one end of the double weapon is affected. The copy lasts for 1 minute. You can use this ability " +
-                    "multiple times on the same weapon. \nSome examples of simple enchants are, Icy Burst, Holy, Keen, Speed.");
-                bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[] { ArtificeBlessingMinorAbility.ToReference<BlueprintUnitFactReference>() };
-                });
-                bp.AddComponent<AddFeatureOnClassLevel>(c => {
-                    c.m_Class = WarpriestClass;
-                    c.Level = 10;
-                    c.m_Feature = ArtificeBlessingMajorFeature.ToReference<BlueprintFeatureReference>();
-                    c.BeforeThisLevel = false;
-                });
-                bp.AddComponent<PrerequisiteFeature>(c => {
-                    c.CheckInProgression = true;
-                    c.HideInUI = true;
-                    c.m_Feature = ArtificeDomainAllowed;
-                });
-                bp.Groups = new FeatureGroup[] { FeatureGroup.WarpriestBlessing };
-            });
 
-            BlessingTools.RegisterBlessing(ArtificeBlessingFeature);
-            BlessingTools.CreateDivineTrackerBlessing("DivineTrackerArtificeBlessingFeature", ArtificeBlessingFeature, "At 1st level, you can touch an ally and grant them greater power to harm and destroy crafted objects. For 1 minute, whenever this ally deals damage to constructs or objects with melee weapons, they bypasses hardness and damage reduction. \nAt 10th level, you can temporarily copy a weapon enchantment from one weapon to another. You may copy any simple permanent enchant from a weapon you have currently equipped. If you are using this ability on a double weapon, only one end of the double weapon is affected. The copy lasts for 1 minute. You can use this ability multiple times on the same weapon. \nSome examples of simple enchants are, Icy Burst, Holy, Keen, Speed.");
+
+            
+
+
+
 
         }
 
         private static void CreateTrasferMagicWeaponEnchant(string enchantname, BlueprintWeaponEnchantment weaponEnchant) {
 
             var MasterStrikeToggleAbility = Resources.GetBlueprint<BlueprintActivatableAbility>("926bff1386d58824688363a3eeb98260");
+            var WarpriestAspectOfWarBuff = Resources.GetBlueprint<BlueprintBuff>("27d14b07b52c2df42a4dcd6bfb840425");
+            var BlessingResource = Resources.GetBlueprintReference<BlueprintAbilityResourceReference>("d128a6332e4ea7c4a9862b9fdb358cca");
             var ArtificeBlessingMajorMHBaseAbility = Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMajorMHBaseAbility").GetComponent<AbilityVariants>();
             var ArtificeBlessingMajorOHBaseAbility = Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMajorOHBaseAbility").GetComponent<AbilityVariants>();
+            var QuickenBlessingArtificeFeature = Resources.GetModBlueprint<BlueprintFeature>("QuickenBlessingArtificeFeature");
 
             string enchantnameWithNoSpaces = enchantname.Replace(" ","");
 
@@ -338,6 +398,12 @@ namespace ExpandedContent.Tweaks.Blessings {
                 bp.AddComponent<CheckWeaponEnchant>(c => {
                     c.m_Enchantment = weaponEnchant.ToReference<BlueprintItemEnchantmentReference>();
                 });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = BlessingResource;
+                    c.m_IsSpendResource = true;
+                    c.Amount = 1;
+                    c.ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>() { WarpriestAspectOfWarBuff.ToReference<BlueprintUnitFactReference>() };
+                });
                 bp.Type = AbilityType.Supernatural;
                 bp.Range = AbilityRange.Touch;
                 bp.CanTargetPoint = false;
@@ -352,7 +418,7 @@ namespace ExpandedContent.Tweaks.Blessings {
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
             var offhandability = Helpers.CreateBlueprint<BlueprintAbility>($"ArtificeBlessingOH{enchantnameWithNoSpaces}Ability", bp => {
-                bp.SetName($"Transfer Magic - Main Hand - {enchantname}");
+                bp.SetName($"Transfer Magic - Off Hand - {enchantname}");
                 bp.SetDescription($"You can temporarily copy the {enchantname} weapon enchantment to another weapon. If you are using this ability on " +
                     $"a double weapon, only one end of the double weapon is affected. The copy lasts for 1 minute. You can use this ability multiple times " +
                     $"on the same weapon.");
@@ -376,6 +442,12 @@ namespace ExpandedContent.Tweaks.Blessings {
                 bp.AddComponent<CheckWeaponEnchant>(c => {
                     c.m_Enchantment = weaponEnchant.ToReference<BlueprintItemEnchantmentReference>();
                 });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = BlessingResource;
+                    c.m_IsSpendResource = true;
+                    c.Amount = 1;
+                    c.ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>() { WarpriestAspectOfWarBuff.ToReference<BlueprintUnitFactReference>() };
+                });
                 bp.Type = AbilityType.Supernatural;
                 bp.Range = AbilityRange.Touch;
                 bp.CanTargetPoint = false;
@@ -389,9 +461,111 @@ namespace ExpandedContent.Tweaks.Blessings {
                 bp.LocalizedDuration = Helpers.CreateString($"ArtificeBlessingOH{enchantnameWithNoSpaces}Ability.Duration", "1 minute");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
+            var mainhandabilityswift = Helpers.CreateBlueprint<BlueprintAbility>($"ArtificeBlessingMH{enchantnameWithNoSpaces}AbilitySwift", bp => {
+                bp.SetName($"Transfer Magic - Main Hand - {enchantname}");
+                bp.SetDescription($"You can temporarily copy the {enchantname} weapon enchantment to another weapon. If you are using this ability on " +
+                    $"a double weapon, only one end of the double weapon is affected. The copy lasts for 1 minute. You can use this ability multiple times " +
+                    $"on the same weapon.");
+                bp.m_Icon = MasterStrikeToggleAbility.Icon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = mainhandbuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = false,
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Minutes,
+                                DiceType = DiceType.One,
+                                DiceCountValue = 0,
+                                BonusValue = 1
+                            },
+                            DurationSeconds = 0
+                        });
+                });
+                bp.AddComponent<CheckWeaponEnchant>(c => {
+                    c.m_Enchantment = weaponEnchant.ToReference<BlueprintItemEnchantmentReference>();
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = BlessingResource;
+                    c.m_IsSpendResource = true;
+                    c.Amount = 2;
+                    c.ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>() { 
+                        WarpriestAspectOfWarBuff.ToReference<BlueprintUnitFactReference>(),
+                        WarpriestAspectOfWarBuff.ToReference<BlueprintUnitFactReference>()
+                    };
+                });
+                bp.AddComponent<AbilityShowIfCasterHasFact>(c => {
+                    c.m_UnitFact = QuickenBlessingArtificeFeature.ToReference<BlueprintUnitFactReference>();
+                    c.Not = false;
+                });
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Touch;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = true;
+                bp.CanTargetSelf = true;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Touch;
+                bp.ActionType = UnitCommand.CommandType.Swift;
+                bp.LocalizedDuration = Helpers.CreateString($"ArtificeBlessingMH{enchantnameWithNoSpaces}AbilitySwift.Duration", "1 minute");
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var offhandabilityswift = Helpers.CreateBlueprint<BlueprintAbility>($"ArtificeBlessingOH{enchantnameWithNoSpaces}AbilitySwift", bp => {
+                bp.SetName($"Transfer Magic - Off Hand - {enchantname}");
+                bp.SetDescription($"You can temporarily copy the {enchantname} weapon enchantment to another weapon. If you are using this ability on " +
+                    $"a double weapon, only one end of the double weapon is affected. The copy lasts for 1 minute. You can use this ability multiple times " +
+                    $"on the same weapon.");
+                bp.m_Icon = MasterStrikeToggleAbility.Icon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = offhandbuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = false,
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Minutes,
+                                DiceType = DiceType.One,
+                                DiceCountValue = 0,
+                                BonusValue = 1
+                            },
+                            DurationSeconds = 0
+                        });
+                });
+                bp.AddComponent<CheckWeaponEnchant>(c => {
+                    c.m_Enchantment = weaponEnchant.ToReference<BlueprintItemEnchantmentReference>();
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = BlessingResource;
+                    c.m_IsSpendResource = true;
+                    c.Amount = 2;
+                    c.ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>() {
+                        WarpriestAspectOfWarBuff.ToReference<BlueprintUnitFactReference>(),
+                        WarpriestAspectOfWarBuff.ToReference<BlueprintUnitFactReference>()
+                    };
+                });
+                bp.AddComponent<AbilityShowIfCasterHasFact>(c => {
+                    c.m_UnitFact = QuickenBlessingArtificeFeature.ToReference<BlueprintUnitFactReference>();
+                    c.Not = false;
+                });
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Touch;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = true;
+                bp.CanTargetSelf = true;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Touch;
+                bp.ActionType = UnitCommand.CommandType.Swift;
+                bp.LocalizedDuration = Helpers.CreateString($"ArtificeBlessingOH{enchantnameWithNoSpaces}AbilitySwift.Duration", "1 minute");
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
 
-            ArtificeBlessingMajorMHBaseAbility.m_Variants = ArtificeBlessingMajorMHBaseAbility.m_Variants.AppendToArray(mainhandability.ToReference<BlueprintAbilityReference>());
-            ArtificeBlessingMajorOHBaseAbility.m_Variants = ArtificeBlessingMajorOHBaseAbility.m_Variants.AppendToArray(offhandability.ToReference<BlueprintAbilityReference>());
+            ArtificeBlessingMajorMHBaseAbility.m_Variants = ArtificeBlessingMajorMHBaseAbility.m_Variants.AppendToArray(mainhandability.ToReference<BlueprintAbilityReference>(), mainhandabilityswift.ToReference<BlueprintAbilityReference>());
+            ArtificeBlessingMajorOHBaseAbility.m_Variants = ArtificeBlessingMajorOHBaseAbility.m_Variants.AppendToArray(offhandability.ToReference<BlueprintAbilityReference>(), offhandabilityswift.ToReference<BlueprintAbilityReference>());
 
         }
     }
