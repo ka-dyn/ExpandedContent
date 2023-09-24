@@ -35,7 +35,7 @@ namespace ExpandedContent.Tweaks.Blessings {
             var WarpriestClass = Resources.GetBlueprintReference<BlueprintCharacterClassReference>("30b5e47d47a0e37438cc5a80c96cfb99");
             var BlessingResource = Resources.GetBlueprintReference<BlueprintAbilityResourceReference>("d128a6332e4ea7c4a9862b9fdb358cca");
             var ViciousEnchantment = Resources.GetBlueprintReference<BlueprintItemEnchantmentReference>("a1455a289da208144981e4b1ef92cc56");
-            var ShamanBattleSpiritAbility = Resources.GetBlueprint<BlueprintActivatableAbility>("7eda685d53423de4281d8bc0f1197442");
+            var DivineFavor = Resources.GetBlueprint<BlueprintAbility>("9d5d2d3ffdd73c648af3eb3e585b1113");
             var ViciousIcon = AssetLoader.LoadInternal("Skills", "Icon_Vicious.png");
 
             var WarBlessingMajorBuff = Helpers.CreateBuff("WarBlessingMajorBuff", bp => {
@@ -108,7 +108,7 @@ namespace ExpandedContent.Tweaks.Blessings {
             var WarBlessingMinorBuffSpeed = Helpers.CreateBuff("WarBlessingMinorBuffSpeed", bp => {
                 bp.SetName("War Mind - Speed");
                 bp.SetDescription("At 1st level, you can touch an ally and grant it +10 feet to base speed for 1 minute.");
-                bp.m_Icon = ShamanBattleSpiritAbility.Icon;
+                bp.m_Icon = DivineFavor.Icon;
                 bp.AddComponent<AddStatBonus>(c => {
                     c.Descriptor = ModifierDescriptor.None;
                     c.Stat = StatType.Speed;
@@ -120,7 +120,7 @@ namespace ExpandedContent.Tweaks.Blessings {
             var WarBlessingMinorBuffAC = Helpers.CreateBuff("WarBlessingMinorBuffAC", bp => {
                 bp.SetName("War Mind - AC");
                 bp.SetDescription("At 1st level, you can touch an ally and grant it +1 dodge bonus to AC for 1 minute.");
-                bp.m_Icon = ShamanBattleSpiritAbility.Icon;
+                bp.m_Icon = DivineFavor.Icon;
                 bp.AddComponent<AddStatBonus>(c => {
                     c.Descriptor = ModifierDescriptor.Dodge;
                     c.Stat = StatType.AC;
@@ -132,7 +132,7 @@ namespace ExpandedContent.Tweaks.Blessings {
             var WarBlessingMinorBuffAttack = Helpers.CreateBuff("WarBlessingMinorBuffAttack", bp => {
                 bp.SetName("War Mind - Attack");
                 bp.SetDescription("At 1st level, you can touch an ally and grant it +1 insight bonus on attack rolls for 1 minute.");
-                bp.m_Icon = ShamanBattleSpiritAbility.Icon;
+                bp.m_Icon = DivineFavor.Icon;
                 bp.AddComponent<AddStatBonus>(c => {
                     c.Descriptor = ModifierDescriptor.Insight;
                     c.Stat = StatType.AdditionalAttackBonus;
@@ -144,7 +144,7 @@ namespace ExpandedContent.Tweaks.Blessings {
             var WarBlessingMinorBuffSaves = Helpers.CreateBuff("WarBlessingMinorBuffSaves", bp => {
                 bp.SetName("War Mind - Saves");
                 bp.SetDescription("At 1st level, you can touch an ally and grant it +1 luck bonus on saving throws for 1 minute.");
-                bp.m_Icon = ShamanBattleSpiritAbility.Icon;
+                bp.m_Icon = DivineFavor.Icon;
                 bp.AddComponent<BuffAllSavesBonus>(c => {
                     c.Descriptor = ModifierDescriptor.Luck;
                     c.Value = 1;
@@ -156,7 +156,7 @@ namespace ExpandedContent.Tweaks.Blessings {
                 bp.SetName("War Mind");
                 bp.SetDescription("At 1st level, you can touch an ally and grant it a tactical advantage for 1 minute. The ally gets one of the following bonuses: +10 feet to base speed, +1 " +
                     "dodge bonus to AC, +1 insight bonus on attack rolls, or a +1 luck bonus on saving throws.");
-                bp.m_Icon = ShamanBattleSpiritAbility.Icon;
+                bp.m_Icon = DivineFavor.Icon;
                 //Variants added later
                 bp.Type = AbilityType.Supernatural;
                 bp.Range = AbilityRange.Touch;
@@ -174,7 +174,7 @@ namespace ExpandedContent.Tweaks.Blessings {
             var WarBlessingMinorAbilitySpeed = Helpers.CreateBlueprint<BlueprintAbility>("WarBlessingMinorAbilitySpeed", bp => {
                 bp.SetName("War Mind - Speed");
                 bp.SetDescription("At 1st level, you can touch an ally and grant it +10 feet to base speed for 1 minute.");
-                bp.m_Icon = ShamanBattleSpiritAbility.Icon;
+                bp.m_Icon = DivineFavor.Icon;
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.SavingThrowType = SavingThrowType.Unknown;
                     c.Actions = Helpers.CreateActionList(
@@ -211,7 +211,7 @@ namespace ExpandedContent.Tweaks.Blessings {
             var WarBlessingMinorAbilityAC = Helpers.CreateBlueprint<BlueprintAbility>("WarBlessingMinorAbilityAC", bp => {
                 bp.SetName("War Mind - AC");
                 bp.SetDescription("At 1st level, you can touch an ally and grant it +1 dodge bonus to AC for 1 minute.");
-                bp.m_Icon = ShamanBattleSpiritAbility.Icon;
+                bp.m_Icon = DivineFavor.Icon;
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.SavingThrowType = SavingThrowType.Unknown;
                     c.Actions = Helpers.CreateActionList(
@@ -248,7 +248,7 @@ namespace ExpandedContent.Tweaks.Blessings {
             var WarBlessingMinorAbilityAttack = Helpers.CreateBlueprint<BlueprintAbility>("WarBlessingMinorAbilityAttack", bp => {
                 bp.SetName("War Mind - Attack");
                 bp.SetDescription("At 1st level, you can touch an ally and grant it +1 insight bonus on attack rolls for 1 minute.");
-                bp.m_Icon = ShamanBattleSpiritAbility.Icon;
+                bp.m_Icon = DivineFavor.Icon;
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.SavingThrowType = SavingThrowType.Unknown;
                     c.Actions = Helpers.CreateActionList(
@@ -285,7 +285,7 @@ namespace ExpandedContent.Tweaks.Blessings {
             var WarBlessingMinorAbilitySaves = Helpers.CreateBlueprint<BlueprintAbility>("WarBlessingMinorAbilitySaves", bp => {
                 bp.SetName("War Mind - Saves");
                 bp.SetDescription("At 1st level, you can touch an ally and grant it +1 luck bonus on saving throws for 1 minute.");
-                bp.m_Icon = ShamanBattleSpiritAbility.Icon;
+                bp.m_Icon = DivineFavor.Icon;
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.SavingThrowType = SavingThrowType.Unknown;
                     c.Actions = Helpers.CreateActionList(

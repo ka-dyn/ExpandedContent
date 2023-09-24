@@ -18,7 +18,6 @@ namespace ExpandedContent.Tweaks.Components {
     [ComponentName("Check if weapon has enchant.")]
     public class CheckWeaponEnchant : BlueprintComponent, IAbilityCasterRestriction {
 
-        public bool IncludeStowedWeapons = false;
         public BlueprintItemEnchantmentReference m_Enchantment;
 
 
