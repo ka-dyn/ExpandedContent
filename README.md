@@ -17,7 +17,7 @@ New Archetypes
 
 - Temple Champion, Silver Champion, Paladin
 
-- Drake Warden, Ranger
+- Divine Tracker, Drake Warden, Ranger
 
 - Clutch Thief, Rogue
 
@@ -148,6 +148,10 @@ New Domains / Subdomains
   - Whimsy
   - Wind
 
+New Blessings
+- Artifice
+- War
+
 New Alchemist Discoveries
 
 - Healer's Touch
@@ -190,8 +194,9 @@ New Spells
 
 
 Compatible with all mods as far as I am aware, extra features are unlocked if used with these mods
-- [TabletopTweaks-Base](https://github.com/Vek17/TabletopTweaks-Base "TabletopTweaks-Base") - New TabletopTweaks spells are added to this mods domains and mysteries - all new wildshape forms support TTT added feats
-- [Mystical Mayhem](https://github.com/kreaddy/MysticalMayhem "Mystical Mayhem") - New Mystical Mayhem spells are added to this mods domains and mysteries
+- [TabletopTweaks-Base](https://github.com/Vek17/TabletopTweaks-Base "TabletopTweaks-Base") - New TabletopTweaks spells are added to this mods domains and mysteries - all new wildshape forms support TTT added feats.
+- [Mystical Mayhem](https://github.com/kreaddy/MysticalMayhem "Mystical Mayhem") - New Mystical Mayhem spells are added to this mods domains and mysteries.
+- [PrestigePlus](https://github.com/YLMstring/PrestigePlus) - Adds Aid Another related features to the Asavir Prestige Class.
 
 
 I'd like to give a huge thank you to Vek17, as much of the coding in this repository is his; I simply repurposed it or learned from it. I wouldn't be able to release anything without it.
