@@ -43,7 +43,11 @@ namespace ExpandedContent.Tweaks.Miscellaneous {
             var EnlightnedPhilosopherSuccorMysteryFeature = Resources.GetModBlueprint<BlueprintFeature>("EnlightnedPhilosopherSuccorMysteryFeature");
             var DivineHerbalistSuccorMysteryFeature = Resources.GetModBlueprint<BlueprintFeature>("DivineHerbalistSuccorMysteryFeature");
             var OceansEchoSuccorMysteryFeature = Resources.GetModBlueprint<BlueprintFeature>("OceansEchoSuccorMysteryFeature");
+            var OracleClass = Resources.GetBlueprint<BlueprintCharacterClass>("20ce9bf8af32bee4c8557a045ab499b1");
 
+
+
+            //Oracle Perfect Aid
             var OracleRevelationPerfectAid = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationPerfectAid", bp => {
                 bp.SetName("Perfect Aid");
                 bp.SetDescription("You can effortlessly give aid to your allies, whether that means providing them with help attacking or defending them in the heat of combat. Whenever you use the aid another action " +
@@ -62,8 +66,52 @@ namespace ExpandedContent.Tweaks.Miscellaneous {
                 bp.Groups = new FeatureGroup[] { FeatureGroup.OracleRevelation };
                 bp.IsClassFeature = true;
             });
+            var OracleRevelationPerfectAidProperty = Helpers.CreateBlueprint<BlueprintUnitProperty>("OracleRevelationPerfectAidProperty", bp => {
+                bp.AddComponent<ClassLevelGetter>(c => {
+                    c.Settings = new PropertySettings() {
+                        m_Progression = PropertySettings.Progression.StartPlusDivStep,
+                        m_StartLevel = -1,
+                        m_StepLevel = 5,
+                        m_Negate = false,
+                        m_LimitType = PropertySettings.LimitType.Max,
+                        m_Min = 0,
+                        m_Max = 5,
+                    };
+                    c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                });
+                bp.AddComponent<FactRankGetter>(c => {
+                    c.Settings = new PropertySettings() {
+                        m_Progression = PropertySettings.Progression.AsIs
+                    };
+                    c.m_Fact = OracleRevelationPerfectAid.ToReference<BlueprintUnitFactReference>();
+                });
+                bp.BaseValue = 1;
+                bp.OperationOnComponents = BlueprintUnitProperty.MathOperation.Multiply;
+            });
+            //Asavir Camaraderie Added to Asavir in ModSupport
+            var AsavirCamaraderieFeature = Helpers.CreateBlueprint<BlueprintFeature>("AsavirCamaraderieFeature", bp => {
+                bp.SetName("Camaraderie");
+                bp.SetDescription("An asavir is skilled at forging those who battle by her side into a loyal and well-coordinated team and exhorting them to fight bravely. " +
+                    "The bonus she grants to any allies when she takes the aid another action in combat increases by 1. At 5th level, the bonus instead increases " +
+                    "by 2, and at 9th level, it instead increases by 3. These bonuses do not stack with other abilities that enhance the aid another action.");                
+                bp.IsClassFeature = true;
+                bp.m_AllowNonContextActions = false;
+            });
+            var AsavirCamaraderieProperty = Helpers.CreateBlueprint<BlueprintUnitProperty>("AsavirCamaraderieProperty", bp => {
+                //ClassLevelGetter added in mod support
+                bp.AddComponent<FactRankGetter>(c => {
+                    c.Settings = new PropertySettings() {
+                        m_Progression = PropertySettings.Progression.AsIs
+                    };
+                    c.m_Fact = AsavirCamaraderieFeature.ToReference<BlueprintUnitFactReference>();
+                });
+                bp.BaseValue = 1;
+                bp.OperationOnComponents = BlueprintUnitProperty.MathOperation.Multiply;
+            });
 
-            var OracleClass = Resources.GetBlueprint<BlueprintCharacterClass>("20ce9bf8af32bee4c8557a045ab499b1");
+
+
+
             var AidAnotherDefenceBuff = Helpers.CreateBuff("AidAnotherDefenceBuff", bp => {
                 bp.SetName("Aid Another - Distracted Attacks");
                 bp.SetDescription("In melee combat, you can help your allies attack or defend by distracting or interfering with an opponent. If you’re in position to make a melee attack on an opponent you can attempt to " +
@@ -130,11 +178,11 @@ namespace ExpandedContent.Tweaks.Miscellaneous {
                 bp.IsClassFeature = false;
                 bp.Stacking = StackingType.Replace;
             });
+            //The perfect aid another buffs are now set to invisible, and will be used for every feature that increases aid another.
             var PerfectAidAnotherDefenceBuff = Helpers.CreateBuff("PerfectAidAnotherDefenceBuff", bp => {
-                bp.SetName("Perfect Aid Another - Distracted Attacks");
-                bp.SetDescription("You can effortlessly give aid to your allies, whether that means providing them with help attacking or defending them in the heat of combat. Whenever you use the aid another action " +
-                    "to inflict a penalty on attack rolls or to AC against one of your allies, the penalty you inflict increases by 1. This bonus increases by 1 at 4th level and every 5 oracle levels thereafter (to a " +
-                    "maximum of -5 at 19th level). It doesn’t stack with other feats or class features that improve the bonus you provide when using the aid another action.");
+                bp.SetName("Aid Another Bonus - Distracted Attacks");
+                bp.SetDescription("");
+                bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
                 bp.m_Icon = PerfectAidAnotherDefenceIcon;
                 bp.AddComponent<AttackBonusAgainstNotCaster>(c => {
                     c.Descriptor = ModifierDescriptor.UntypedStackable;
@@ -147,16 +195,17 @@ namespace ExpandedContent.Tweaks.Miscellaneous {
                 });
                 bp.AddComponent<ContextRankConfig>(c => {
                     c.m_Type = AbilityRankType.Default;
-                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
+                    c.m_BaseValueType = ContextRankBaseValueType.MaxCustomProperty;
                     c.m_Stat = StatType.Unknown;
                     c.m_SpecificModifier = ModifierDescriptor.None;
-                    c.m_Progression = ContextRankProgression.StartPlusDivStep;
-                    c.m_StartLevel = 4;
-                    c.m_StepLevel = 5;
-                    c.m_UseMax = true;
-                    c.m_Max = 4;
-                    c.m_Class = new BlueprintCharacterClassReference[] {
-                        OracleClass.ToReference<BlueprintCharacterClassReference>()
+                    c.m_Progression = ContextRankProgression.AsIs;
+                    c.m_StartLevel = 0;
+                    c.m_StepLevel = 0;
+                    c.m_UseMax = false;
+                    c.m_CustomProperty = OracleRevelationPerfectAidProperty.ToReference<BlueprintUnitPropertyReference>();
+                    c.m_CustomPropertyList = new BlueprintUnitPropertyReference[] {
+                        OracleRevelationPerfectAidProperty.ToReference<BlueprintUnitPropertyReference>(),
+                        AsavirCamaraderieProperty.ToReference<BlueprintUnitPropertyReference>()
                     };
                 });
                 bp.AddComponent<ContextCalculateSharedValue>(c => {
@@ -165,7 +214,7 @@ namespace ExpandedContent.Tweaks.Miscellaneous {
                         DiceType = DiceType.One,
                         DiceCountValue = new ContextValue() {
                             ValueType = ContextValueType.Simple,
-                            Value = 1,
+                            Value = 0,
                             ValueRank = AbilityRankType.Default,
                             ValueShared = AbilitySharedValue.Damage
                         },
@@ -195,10 +244,9 @@ namespace ExpandedContent.Tweaks.Miscellaneous {
                 bp.Stacking = StackingType.Replace;
             });
             var PerfectAidAnotherOffenceBuff = Helpers.CreateBuff("PerfectAidAnotherOffenceBuff", bp => {
-                bp.SetName("Perfect Aid Another - Distracted Defending");
-                bp.SetDescription("You can effortlessly give aid to your allies, whether that means providing them with help attacking or defending them in the heat of combat. Whenever you use the aid another action " +
-                    "to inflict a penalty on attack rolls or to AC against one of your allies, the penalty you inflict increases by 1. This bonus increases by 1 at 4th level and every 5 oracle levels thereafter (to a " +
-                    "maximum of -5 at 19th level). It doesn’t stack with other feats or class features that improve the bonus you provide when using the aid another action.");
+                bp.SetName("Aid Another Bonus - Distracted Defending");
+                bp.SetDescription("");
+                bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
                 bp.m_Icon = PerfectAidAnotherOffenceIcon;
                 bp.AddComponent<ACBonusAgainstNotCaster>(c => {
                     c.Descriptor = ModifierDescriptor.UntypedStackable;
@@ -211,16 +259,17 @@ namespace ExpandedContent.Tweaks.Miscellaneous {
                 });
                 bp.AddComponent<ContextRankConfig>(c => {
                     c.m_Type = AbilityRankType.Default;
-                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
+                    c.m_BaseValueType = ContextRankBaseValueType.MaxCustomProperty;
                     c.m_Stat = StatType.Unknown;
                     c.m_SpecificModifier = ModifierDescriptor.None;
-                    c.m_Progression = ContextRankProgression.StartPlusDivStep;
-                    c.m_StartLevel = 4;
-                    c.m_StepLevel = 5;
-                    c.m_UseMax = true;
-                    c.m_Max = 4;
-                    c.m_Class = new BlueprintCharacterClassReference[] {
-                        OracleClass.ToReference<BlueprintCharacterClassReference>()
+                    c.m_Progression = ContextRankProgression.AsIs;
+                    c.m_StartLevel = 0;
+                    c.m_StepLevel = 0;
+                    c.m_UseMax = false;
+                    c.m_CustomProperty = OracleRevelationPerfectAidProperty.ToReference<BlueprintUnitPropertyReference>();
+                    c.m_CustomPropertyList = new BlueprintUnitPropertyReference[] {
+                        OracleRevelationPerfectAidProperty.ToReference<BlueprintUnitPropertyReference>(),
+                        AsavirCamaraderieProperty.ToReference<BlueprintUnitPropertyReference>()
                     };
                 });
                 bp.AddComponent<ContextCalculateSharedValue>(c => {
@@ -229,7 +278,7 @@ namespace ExpandedContent.Tweaks.Miscellaneous {
                         DiceType = DiceType.One,
                         DiceCountValue = new ContextValue() {
                             ValueType = ContextValueType.Simple,
-                            Value = 1,
+                            Value = 0,
                             ValueRank = AbilityRankType.Default,
                             ValueShared = AbilitySharedValue.Damage
                         },
@@ -367,11 +416,15 @@ namespace ExpandedContent.Tweaks.Miscellaneous {
                         },
                         new Conditional() {
                             ConditionsChecker = new ConditionsChecker() {
-                                Operation = Operation.And,
+                                Operation = Operation.Or,
                                 Conditions = new Condition[] {
                                     new ContextConditionCasterHasFact() {
                                         Not = false,
                                         m_Fact = OracleRevelationPerfectAid.ToReference<BlueprintUnitFactReference>()
+                                    },
+                                    new ContextConditionCasterHasFact() {
+                                        Not = false,
+                                        m_Fact = AsavirCamaraderieFeature.ToReference<BlueprintUnitFactReference>()
                                     }
                                 }
                             },
@@ -440,11 +493,15 @@ namespace ExpandedContent.Tweaks.Miscellaneous {
                         },
                         new Conditional() {
                             ConditionsChecker = new ConditionsChecker() {
-                                Operation = Operation.And,
+                                Operation = Operation.Or,
                                 Conditions = new Condition[] {
                                     new ContextConditionCasterHasFact() {
                                         Not = false,
                                         m_Fact = OracleRevelationPerfectAid.ToReference<BlueprintUnitFactReference>()
+                                    },
+                                    new ContextConditionCasterHasFact() {
+                                        Not = false,
+                                        m_Fact = AsavirCamaraderieFeature.ToReference<BlueprintUnitFactReference>()
                                     }
                                 }
                             },
@@ -551,11 +608,15 @@ namespace ExpandedContent.Tweaks.Miscellaneous {
                         },
                         new Conditional() {
                             ConditionsChecker = new ConditionsChecker() {
-                                Operation = Operation.And,
+                                Operation = Operation.Or,
                                 Conditions = new Condition[] {
                                     new ContextConditionCasterHasFact() {
                                         Not = false,
                                         m_Fact = OracleRevelationPerfectAid.ToReference<BlueprintUnitFactReference>()
+                                    },
+                                    new ContextConditionCasterHasFact() {
+                                        Not = false,
+                                        m_Fact = AsavirCamaraderieFeature.ToReference<BlueprintUnitFactReference>()
                                     }
                                 }
                             },
@@ -634,11 +695,15 @@ namespace ExpandedContent.Tweaks.Miscellaneous {
                         },
                         new Conditional() {
                             ConditionsChecker = new ConditionsChecker() {
-                                Operation = Operation.And,
+                                Operation = Operation.Or,
                                 Conditions = new Condition[] {
                                     new ContextConditionCasterHasFact() {
                                         Not = false,
                                         m_Fact = OracleRevelationPerfectAid.ToReference<BlueprintUnitFactReference>()
+                                    },
+                                    new ContextConditionCasterHasFact() {
+                                        Not = false,
+                                        m_Fact = AsavirCamaraderieFeature.ToReference<BlueprintUnitFactReference>()
                                     }
                                 }
                             },

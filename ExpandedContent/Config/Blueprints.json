@@ -2753,7 +2753,11 @@
     "WarBlessingMinorAbilityACSwift": "9c0acede-2078-4667-af2b-b76b45d5b343",
     "WarBlessingMinorAbilityAttackSwift": "38c0edf4-dda6-4a99-98ac-370e03f5a03c",
     "WarBlessingMinorAbilitySavesSwift": "9672e5a0-02f8-4aec-b37e-49c72c0563bf",
-    "WarBlessingMinorAbilitySpeedSwift": "b4a8b3c0-06c8-4296-ae7e-001176eb2e2b"
+    "WarBlessingMinorAbilitySpeedSwift": "b4a8b3c0-06c8-4296-ae7e-001176eb2e2b",
+
+    "AsavirCamaraderieFeature": "27b8c4b5-4a08-4d80-a038-a9da892f0c68",
+    "AsavirCamaraderieProperty": "7060fc31-2cb4-443c-96a7-8fc3fcbfa4e0",
+    "OracleRevelationPerfectAidProperty": "b5827653-2f5c-4bc7-80e7-b462d5972ae6"
 
 
 

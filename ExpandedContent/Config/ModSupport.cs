@@ -33,7 +33,7 @@ namespace ExpandedContent.Config {
 
         protected static bool IsMysticalMayhemEnabled() { return IsModEnabled("MysticalMayhem"); }
         protected static bool IsTabletopTweaksBaseEnabled() { return IsModEnabled("TabletopTweaks-Base"); }
-
+        protected static bool IsPrestigePlusEnabled() { return IsModEnabled("PrestigePlus"); }
 
 
 
@@ -691,6 +691,27 @@ namespace ExpandedContent.Config {
 
 
                     #endregion
+
+                }
+
+                if (IsPrestigePlusEnabled()) {
+                    var AsavirCamaraderieProperty = Resources.GetModBlueprint<BlueprintUnitProperty>("AsavirCamaraderieProperty");
+                    var AsavirCamaraderieFeature = Resources.GetModBlueprint<BlueprintFeature>("AsavirCamaraderieFeature");
+                    var AsavirClass = Resources.GetBlueprintReference<BlueprintCharacterClassReference>("A29AE95EADB4469DA996FA9B913165CC");
+                    var AsavirProgression = Resources.GetBlueprint<BlueprintProgression>("C45A4085D218439A8695BCB2D8CBCB14");
+                    AsavirProgression.LevelEntries.Where(entry => entry.Level == 1).FirstOrDefault()?.m_Features.Add(AsavirCamaraderieFeature.ToReference<BlueprintFeatureBaseReference>());
+                    AsavirCamaraderieProperty.AddComponent<ClassLevelGetter>(c => {
+                        c.Settings = new PropertySettings() {
+                            m_Progression = PropertySettings.Progression.StartPlusDivStep,
+                            m_StartLevel = 1,
+                            m_StepLevel = 4,
+                            m_Negate = false,
+                            m_LimitType = PropertySettings.LimitType.Max,
+                            m_Min = 0,
+                            m_Max = 3,
+                        };
+                        c.m_Class = AsavirClass;
+                    });
 
                 }
             }
