@@ -102,7 +102,62 @@ namespace ExpandedContent.Tweaks.Miscellaneous {
                                 ),
                             IfFalse = Helpers.CreateActionList()
                         }
-                        
+
+                        );
+                });
+                bp.AddComponent<AddInitiatorAttackWithWeaponTrigger>(c => {
+                    c.TriggerBeforeAttack = false;
+                    c.OnlyHit = true;
+                    c.OnMiss = false;
+                    c.OnlyOnFullAttack = false;
+                    c.OnlyOnFirstAttack = false;
+                    c.OnlyOnFirstHit = false;
+                    c.CriticalHit = false;
+                    c.OnAttackOfOpportunity = false;
+                    c.NotCriticalHit = false;
+                    c.OnlySneakAttack = false;
+                    c.NotSneakAttack = false;
+                    c.m_WeaponType = new BlueprintWeaponTypeReference();
+                    c.CheckWeaponCategory = false;
+                    c.Category = WeaponCategory.UnarmedStrike;
+                    c.CheckWeaponGroup = false;
+                    c.Group = WeaponFighterGroup.Bows;
+                    c.CheckWeaponRangeType = true;
+                    c.RangeType = WeaponRangeType.RangedTouch;
+                    c.ActionsOnInitiator = false;
+                    c.ReduceHPToZero = false;
+                    c.DamageMoreTargetMaxHP = false;
+                    c.CheckDistance = false;
+                    c.DistanceLessEqual = new Feet(); //?
+                    c.AllNaturalAndUnarmed = false;
+                    c.DuelistWeapon = false;
+                    c.NotExtraAttack = false;
+                    c.OnCharge = false;
+                    c.Action = Helpers.CreateActionList(
+                        new Conditional() {
+                            ConditionsChecker = new ConditionsChecker() {
+                                Operation = Operation.And,
+                                Conditions = new Condition[] {
+                                    new ContextConditionHasBuffFromCaster() {
+                                        m_Buff = OpeningVolleyTargetBuff.ToReference<BlueprintBuffReference>(),
+                                        Not = true
+                                    }
+                                }
+                            },
+                            IfTrue = Helpers.CreateActionList(
+                                new ContextActionApplyBuff() {
+                                    m_Buff = OpeningVolleyTargetBuff.ToReference<BlueprintBuffReference>(),
+                                    DurationValue = new ContextDurationValue() {
+                                        Rate = DurationRate.Rounds,
+                                        DiceCountValue = 0,
+                                        DiceType = DiceType.Zero,
+                                        BonusValue = 2,
+                                    }
+                                }
+                                ),
+                            IfFalse = Helpers.CreateActionList()
+                        }
+
                         );
                 });
                 bp.AddComponent<AddInitiatorAttackWithWeaponTrigger>(c => {
