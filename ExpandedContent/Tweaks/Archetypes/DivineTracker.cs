@@ -41,12 +41,6 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.IsClassFeature = true;
             });
 
-            Main.Log("If loading stops here, you are most likely loading TTT-Base before EC. Uninstall TTT-Base and EC and delete the files, then redownload and reinstall them.");
-            var IroriFeatureAddFeatureOnClassLevel = Resources.GetBlueprint<BlueprintFeature>("23a77a5985de08349820429ce1b5a234").GetComponent<AddFeatureOnClassLevel>();
-            IroriFeatureAddFeatureOnClassLevel.m_AdditionalClasses = IroriFeatureAddFeatureOnClassLevel.m_AdditionalClasses.AppendToArray(RangerClass.ToReference<BlueprintCharacterClassReference>());
-            IroriFeatureAddFeatureOnClassLevel.m_Archetypes = IroriFeatureAddFeatureOnClassLevel.m_Archetypes.AppendToArray(DivineTrackerArchetype.ToReference<BlueprintArchetypeReference>());
-            Main.Log("Patched Irori");
-
             var AirBlessingFeature = Resources.GetBlueprint<BlueprintFeature>("e1ff99dc3aeaa064e8eecde51c1c4773");
             var AnimalBlessingFeature = Resources.GetBlueprint<BlueprintFeature>("9d991f8374c3def4cb4a6287f370814d");
             var ChaosBlessingFeature = Resources.GetBlueprint<BlueprintFeature>("528e316f9f092954b9e38d3a82b1634a");
@@ -72,14 +66,12 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var TrickeryBlessingFeature = Resources.GetBlueprint<BlueprintFeature>("a8e7abcad0cf8384b9f12c3b075b5cae");
             var WaterBlessingFeature = Resources.GetBlueprint<BlueprintFeature>("0f457943bb99f9b48b709c90bfc0467e");
             var WeatherBlessingFeature = Resources.GetBlueprint<BlueprintFeature>("4172d92c598de1d47aa2c0dd51c05e24");
-            Main.Log("Grabbed blessings");
 
             var BlessingResource = Resources.GetBlueprint<BlueprintAbilityResource>("d128a6332e4ea7c4a9862b9fdb358cca");
             BlessingResource.m_MaxAmount.m_Class = BlessingResource.m_MaxAmount.m_Class.AppendToArray(RangerClass.ToReference<BlueprintCharacterClassReference>());
             BlessingResource.m_MaxAmount.m_Archetypes = BlessingResource.m_MaxAmount.m_Archetypes.AppendToArray(DivineTrackerArchetype.ToReference<BlueprintArchetypeReference>());
             BlessingResource.m_MaxAmount.m_ClassDiv = BlessingResource.m_MaxAmount.m_ClassDiv.AppendToArray(RangerClass.ToReference<BlueprintCharacterClassReference>());
             BlessingResource.m_MaxAmount.m_ArchetypesDiv = BlessingResource.m_MaxAmount.m_ArchetypesDiv.AppendToArray(DivineTrackerArchetype.ToReference<BlueprintArchetypeReference>());
-            Main.Log("Patched blessing resource");
 
             var DivineTrackerBlessingSelectionFirst = Helpers.CreateBlueprint<BlueprintFeatureSelection>("DivineTrackerBlessingSelectionFirst", bp => {
                 bp.SetName("Trackers Blessings");
