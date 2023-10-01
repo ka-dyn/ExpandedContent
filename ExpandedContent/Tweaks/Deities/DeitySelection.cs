@@ -156,6 +156,8 @@ namespace ExpandedContent.Tweaks.Deities {
 
             //Pantheons
             var GodclawFeature = Resources.GetBlueprint<BlueprintFeature>("583a26e88031d0a4a94c8180105692a5");
+            var GodclawIcon = AssetLoader.LoadInternal("Deities", "Icon_Godclaw.jpg");
+            GodclawFeature.m_Icon = GodclawIcon;
 
             //Dragon Gods/Aspects
             var ApsuFeature = Resources.GetModBlueprint<BlueprintFeature>("ApsuFeature");

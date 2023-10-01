@@ -751,6 +751,9 @@
     <Content Include="Assets\Deities\Icon_Ghenshau.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Deities\Icon_Godclaw.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Deities\Icon_Gogunta.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
