@@ -29,7 +29,6 @@ namespace ExpandedContent.Tweaks.Deities {
         private static readonly BlueprintFeature MythicIgnoreAlignmentRestrictions = Resources.GetBlueprint<BlueprintFeature>("24e78475f0a243e1a810452d14d0a1bd");
 
 
-
         public static void AddLanishraFeature() {
 
             BlueprintItem MasterworkHeavyFlail = Resources.GetBlueprint<BlueprintItem>("0198b7e5e662ce54d82d6a53c30c3173");
@@ -96,16 +95,14 @@ namespace ExpandedContent.Tweaks.Deities {
                 });
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] {
-                        ChfannelNegativeAllowed.ToReference<BlueprintUnitFactReference>(),
-                        EviflDomainAllowed.ToReference<BlueprintUnitFactReference>(),
-                        LawDfomainAllowed.ToReference<BlueprintUnitFactReference>(),
-                        AirDofmainAllowed.ToReference<BlueprintUnitFactReference>(),
-                        DeathDfomainAllowed.ToReference<BlueprintUnitFactReference>(),
-                        DeathDfomainAllowed.ToReference<BlueprintUnitFactReference>(),
-                        DeathDfomainAllowed.ToReference<BlueprintUnitFactReference>(),
-                        DeathDfomainAllowed.ToReference<BlueprintUnitFactReference>(),
-                        WindDomfainAllowed.ToReference<BlueprintUnitFactReference>(),
-                        UndeadDofmainAllowed.ToReference<BlueprintUnitFactReference>()
+                        ChannelNegativeAllowed.ToReference<BlueprintUnitFactReference>(),
+                        ChaosDomainAllowed.ToReference<BlueprintUnitFactReference>(),
+                        EvilDomainAllowed.ToReference<BlueprintUnitFactReference>(),
+                        NobilityDomainAllowed.ToReference<BlueprintUnitFactReference>(),
+                        StrengthDomainAllowed.ToReference<BlueprintUnitFactReference>(),
+                        DemonDomainChaosAllowed.ToReference<BlueprintUnitFactReference>(),
+                        DemonDomainEvilAllowed.ToReference<BlueprintUnitFactReference>(),
+                        ResolveDomainAllowed.ToReference<BlueprintUnitFactReference>()
                     };
                 });
                 bp.AddComponent<ForbidSpellbookOnAlignmentDeviation>(c => {
@@ -115,19 +112,17 @@ namespace ExpandedContent.Tweaks.Deities {
                         InquisitorSpellbook.ToReference<BlueprintSpellbookReference>()
                     };
                     c.m_IgnoreFact = MythicIgnoreAlignmentRestrictions.ToReference<BlueprintUnitFactReference>();
-                    c.Alignment = gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg;
+                    c.Alignment = AlignmentMaskType.ChaoticNeutral | AlignmentMaskType.NeutralEvil | AlignmentMaskType.ChaoticEvil;
                 });
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>();
-
-
                     c.m_Feature = HeavyFlailProficiency.ToReference<BlueprintFeatureReference>();
-
                     c.Level = 1;
                     c.m_Archetypes = null;
                     c.m_AdditionalClasses = new BlueprintCharacterClassReference[2] {
                                InquistorClass.ToReference<BlueprintCharacterClassReference>(),
-                               WarpriestClass.ToReference<BlueprintCharacterClassReference>() };
+                               WarpriestClass.ToReference<BlueprintCharacterClassReference>() 
+                    };
                 });
                 bp.AddComponent<AddStartingEquipment>(c => {
                     c.m_BasicItems = new BlueprintItemReference[1] { MasterworkHeavyFlail.ToReference<BlueprintItemReference>() };

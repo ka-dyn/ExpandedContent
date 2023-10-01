@@ -2236,7 +2236,7 @@ namespace ExpandedContent.Tweaks.Classes {
             var AuraOfCowardiceArea = Helpers.CreateBlueprint<BlueprintAbilityAreaEffect>("AuraOfCowardiceArea", bp => {
                 bp.m_TargetType = BlueprintAbilityAreaEffect.TargetType.Enemy;
                 bp.SpellResistance = false;
-                bp.AggroEnemies = true;
+                bp.AggroEnemies = true;                
                 bp.AffectEnemies = true;
                 bp.Shape = AreaEffectShape.Cylinder;
                 bp.Size = 13.Feet();

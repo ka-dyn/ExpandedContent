@@ -204,6 +204,7 @@
     <Compile Include="Tweaks\Archetypes\DivineScourge.cs" />
     <Compile Include="Tweaks\Archetypes\Mindchemist.cs" />
     <Compile Include="Tweaks\Archetypes\ChildOfAcavnaAndAmaznen.cs" />
+    <Compile Include="Tweaks\Archetypes\DivineTracker.cs" />
     <Compile Include="Tweaks\Archetypes\Treesinger.cs" />
     <Compile Include="Tweaks\Archetypes\SwornOfTheEldest.cs" />
     <Compile Include="Tweaks\Archetypes\SkulkingHunter.cs" />
@@ -233,6 +234,8 @@
     <Compile Include="Tweaks\Archetypes\PriestOfBalance.cs" />
     <Compile Include="Tweaks\Archetypes\LivingScripture.cs" />
     <Compile Include="Tweaks\Backgrounds\ArchdukeOfCheliax.cs" />
+    <Compile Include="Tweaks\Blessings\ArtificeBlessing.cs" />
+    <Compile Include="Tweaks\Blessings\WarBlessing.cs" />
     <Compile Include="Tweaks\Classes\StargazerClass.cs" />
     <Compile Include="Tweaks\Classes\DrakeClass\DrakeCompanionCopper.cs" />
     <Compile Include="Tweaks\Classes\DrakeClass\DrakeCompanionBlack.cs" />
@@ -251,6 +254,8 @@
     <Compile Include="Tweaks\Classes\DrakeClass\DrakeCompanionSelection.cs" />
     <Compile Include="Tweaks\Classes\Oathbreaker.cs" />
     <Compile Include="Tweaks\Classes\DreadKnight.cs" />
+    <Compile Include="Tweaks\Components\IgnoreDamageReductionOnAttackRangeType.cs" />
+    <Compile Include="Tweaks\Components\CheckWeaponEnchant.cs" />
     <Compile Include="Tweaks\Components\AbilityCasterOffHandWeaponCheck.cs" />
     <Compile Include="Tweaks\Components\MaxCastingAttributeWithArchetypeGetter.cs" />
     <Compile Include="Tweaks\Components\LearnDomainSpell.cs" />
@@ -550,6 +555,7 @@
     <Compile Include="Tweaks\Miscellaneous\Cavalier.cs" />
     <Compile Include="Utilities\ActionFlow.cs" />
     <Compile Include="Utilities\AuraUtils.cs" />
+    <Compile Include="Utilities\BlessingTools.cs" />
     <Compile Include="Utilities\DynamicAsset.cs" />
     <Compile Include="Utilities\SpellWithDesriptorAdders.cs" />
     <Compile Include="Utilities\WitchTools.cs" />

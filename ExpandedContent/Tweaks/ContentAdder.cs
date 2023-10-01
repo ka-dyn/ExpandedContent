@@ -68,6 +68,7 @@ namespace ExpandedContent.Tweaks {
                 Archetypes.SwornOfTheEldest.AddSwornOfTheEldest();
                 Archetypes.Mindchemist.AddMindchemist();
                 Archetypes.ChildOfAcavnaAndAmaznen.AddChildOfAcavnaAndAmaznen();
+                Archetypes.DivineTracker.AddDivineTracker();
 
                 Classes.OathbreakerClass.AddOathbreakerClass();
                 Archetypes.Castigator.AddCastigator();
@@ -171,6 +172,9 @@ namespace ExpandedContent.Tweaks {
                 Domains.FistDomain.AddFistDomain();
                 Domains.LoyaltyDomain.AddLoyaltyDomain();
                 Domains.BaseDeityPatch.AddBaseDeityPatch();
+
+                Blessings.ArtificeBlessing.AddArtificeBlessing();
+                Blessings.WarBlessing.AddWarBlessing();
 
                 Archetypes.StormDruid.AddStormDruid();
                 Archetypes.Treesinger.AddTreesinger();

@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.Blueprints.Classes.Selection;
+using Kingmaker.Designers.Mechanics.Facts;
 
 namespace ExpandedContent.Tweaks.Deities {
     internal class PatchPulura {
@@ -14,6 +15,7 @@ namespace ExpandedContent.Tweaks.Deities {
         private static readonly BlueprintFeature GoodDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("882521af8012fc749930b03dc18a69de");
         private static readonly BlueprintFeature StarsDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("StarsDomainAllowed");
         private static readonly BlueprintCharacterClass InquistorClass = Resources.GetBlueprint<BlueprintCharacterClass>("f1a70d9e1b0b41e49874e1fa9052a1ce");
+        private static readonly BlueprintCharacterClass RangerClass = Resources.GetBlueprint<BlueprintCharacterClass>("cda0615668a6df14eb36ba19ee881af6");
 
 
 
@@ -21,6 +23,7 @@ namespace ExpandedContent.Tweaks.Deities {
 
                     var PuluraIcon = AssetLoader.LoadInternal("Deities", "Icon_Pulura.jpg");
             BlueprintArchetype SwornOfTheEldestArchetype = Resources.GetModBlueprint<BlueprintArchetype>("SwornOfTheEldestArchetype");
+            BlueprintArchetype DivineTrackerArchetype = Resources.GetModBlueprint<BlueprintArchetype>("DivineTrackerArchetype");
 
 
             var PuluraFeature = Resources.GetBlueprint<BlueprintFeature>("ebb0b46f95dbac74681c78aae895dbd0");
@@ -68,9 +71,11 @@ namespace ExpandedContent.Tweaks.Deities {
                 bp.m_Facts = new BlueprintUnitFactReference[1] { StarsDomainAllowed.ToReference<BlueprintUnitFactReference>() };
             });
             PuluraFeature.m_Icon = PuluraIcon;
-                    
-                    
-                    
+
+            var AddfeatureOnClassLevel = PuluraFeature.GetComponent<AddFeatureOnClassLevel>();
+            AddfeatureOnClassLevel.m_AdditionalClasses = AddfeatureOnClassLevel.m_AdditionalClasses.AppendToArray(RangerClass.ToReference<BlueprintCharacterClassReference>());
+            AddfeatureOnClassLevel.m_Archetypes = AddfeatureOnClassLevel.m_Archetypes.AppendToArray(DivineTrackerArchetype.ToReference<BlueprintArchetypeReference>());
+
             PuluraFeature.RemoveComponents<PrerequisiteNoFeature>();
             var EmpyrealLordSelection = Resources.GetModBlueprint<BlueprintFeatureSelection>("EmpyrealLordSelection");
             

@@ -205,7 +205,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     Helpers.LevelEntry(15, WisdomOfTheTempleFeature)
                 };
             });
-
+            #region Domain
             //Allowing Progression on normal Domains
 
             AirDomainProgression.m_Classes = AirDomainProgression.m_Classes.AppendToArray(
@@ -1263,12 +1263,15 @@ namespace ExpandedContent.Tweaks.Archetypes {
             WeatherDomainGreaterResource.m_MaxAmount.m_Class = WeatherDomainGreaterResource.m_MaxAmount.m_Class.AppendToArray(PaladinClass.ToReference<BlueprintCharacterClassReference>());
             WeatherDomainGreaterResource.m_MaxAmount.m_Archetypes = WeatherDomainGreaterResource.m_MaxAmount.m_Archetypes.AppendToArray(TempleChampionArchetype.ToReference<BlueprintArchetypeReference>());
             WeatherDomainGreaterResource.m_MaxAmount.m_ClassDiv = WeatherDomainGreaterResource.m_MaxAmount.m_ClassDiv.AppendToArray(PaladinClass.ToReference<BlueprintCharacterClassReference>());
+            #endregion
 
             //Blessings
             var BlessingResource = Resources.GetBlueprint<BlueprintAbilityResource>("d128a6332e4ea7c4a9862b9fdb358cca");
             BlessingResource.m_MaxAmount.m_Class = BlessingResource.m_MaxAmount.m_Class.AppendToArray(PaladinClass.ToReference<BlueprintCharacterClassReference>());
             BlessingResource.m_MaxAmount.m_Archetypes = BlessingResource.m_MaxAmount.m_Archetypes.AppendToArray(TempleChampionArchetype.ToReference<BlueprintArchetypeReference>());
             BlessingResource.m_MaxAmount.m_ClassDiv = BlessingResource.m_MaxAmount.m_ClassDiv.AppendToArray(PaladinClass.ToReference<BlueprintCharacterClassReference>());
+            BlessingResource.m_MaxAmount.m_ArchetypesDiv = BlessingResource.m_MaxAmount.m_ArchetypesDiv.AppendToArray(TempleChampionArchetype.ToReference<BlueprintArchetypeReference>());
+
             //Air
             var AirBlessingFeatureConfig = Resources.GetBlueprint<BlueprintFeature>("e1ff99dc3aeaa064e8eecde51c1c4773").GetComponent<AddFeatureOnClassLevel>();
             AirBlessingFeatureConfig.m_AdditionalClasses = AirBlessingFeatureConfig.m_AdditionalClasses.AppendToArray(PaladinClass.ToReference<BlueprintCharacterClassReference>());
@@ -1279,6 +1282,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             AnimalBlessingFeatureConfig.m_Archetypes = AnimalBlessingFeatureConfig.m_Archetypes.AppendToArray(TempleChampionArchetype.ToReference<BlueprintArchetypeReference>());
             var AnimalBlessingMajorAbilityConfig = Resources.GetBlueprint<BlueprintAbility>("93f0098fe08b94f41a351a4fbb00518a").GetComponent<ContextRankConfig>();
             AnimalBlessingMajorAbilityConfig.m_Class = AnimalBlessingMajorAbilityConfig.m_Class.AppendToArray(PaladinClass.ToReference<BlueprintCharacterClassReference>());
+            AnimalBlessingMajorAbilityConfig.Archetype = TempleChampionArchetype.ToReference<BlueprintArchetypeReference>();
             //Darkness
             var DarknessBlessingFeatureConfig = Resources.GetBlueprint<BlueprintFeature>("3ed6cd88caecec944b837f57b9be176f").GetComponent<AddFeatureOnClassLevel>();
             DarknessBlessingFeatureConfig.m_AdditionalClasses = DarknessBlessingFeatureConfig.m_AdditionalClasses.AppendToArray(PaladinClass.ToReference<BlueprintCharacterClassReference>());

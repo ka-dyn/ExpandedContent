@@ -28,6 +28,7 @@ namespace ExpandedContent.Tweaks.Deities {
         private static readonly BlueprintCharacterClass InquistorClass = Resources.GetBlueprint<BlueprintCharacterClass>("f1a70d9e1b0b41e49874e1fa9052a1ce");
         private static readonly BlueprintCharacterClass WarpriestClass = Resources.GetBlueprint<BlueprintCharacterClass>("30b5e47d47a0e37438cc5a80c96cfb99");
         private static readonly BlueprintCharacterClass PaladinClass = Resources.GetBlueprint<BlueprintCharacterClass>("bfa11238e7ae3544bbeb4d0b92e897ec");
+        private static readonly BlueprintCharacterClass RangerClass = Resources.GetBlueprint<BlueprintCharacterClass>("cda0615668a6df14eb36ba19ee881af6");
         private static readonly BlueprintFeature MythicIgnoreAlignmentRestrictions = Resources.GetBlueprint<BlueprintFeature>("24e78475f0a243e1a810452d14d0a1bd");
 
 
@@ -41,6 +42,7 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintArchetype PriestOfBalance = Resources.GetBlueprint<BlueprintArchetype>("a4560e3fb5d247d68fb1a2738fcc0855");
             BlueprintArchetype SilverChampionArchetype = Resources.GetModBlueprint<BlueprintArchetype>("SilverChampionArchetype");
             BlueprintArchetype SwornOfTheEldestArchetype = Resources.GetModBlueprint<BlueprintArchetype>("SwornOfTheEldestArchetype");
+            BlueprintArchetype DivineTrackerArchetype = Resources.GetModBlueprint<BlueprintArchetype>("DivineTrackerArchetype");
 
             BlueprintFeature LongswordProficiency = Resources.GetBlueprint<BlueprintFeature>("62e27ffd9d53e14479f73da29760f64e");
             BlueprintFeature DuelingswordProficiency = Resources.GetBlueprint<BlueprintFeature>("9c37279588fd9e34e9c4cb234857492c");
@@ -91,16 +93,16 @@ namespace ExpandedContent.Tweaks.Deities {
                 });
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] {
-                        ChfannelNegativeAllowed.ToReference<BlueprintUnitFactReference>(),
-                        EviflDomainAllowed.ToReference<BlueprintUnitFactReference>(),
-                        LawDfomainAllowed.ToReference<BlueprintUnitFactReference>(),
-                        AirDofmainAllowed.ToReference<BlueprintUnitFactReference>(),
-                        DeathDfomainAllowed.ToReference<BlueprintUnitFactReference>(),
-                        DeathDfomainAllowed.ToReference<BlueprintUnitFactReference>(),
-                        DeathDfomainAllowed.ToReference<BlueprintUnitFactReference>(),
-                        DeathDfomainAllowed.ToReference<BlueprintUnitFactReference>(),
-                        WindDomfainAllowed.ToReference<BlueprintUnitFactReference>(),
-                        UndeadDofmainAllowed.ToReference<BlueprintUnitFactReference>()
+                        ChannelPositiveAllowed.ToReference<BlueprintUnitFactReference>(),
+                        GloryDomainAllowed.ToReference<BlueprintUnitFactReference>(),
+                        GoodDomainAllowed.ToReference<BlueprintUnitFactReference>(),
+                        LawDomainAllowed.ToReference<BlueprintUnitFactReference>(),
+                        ReposeDomainAllowed.ToReference<BlueprintUnitFactReference>(),
+                        SunDomainAllowed.ToReference<BlueprintUnitFactReference>(),
+                        ArchonDomainGoodAllowed.ToReference<BlueprintUnitFactReference>(),
+                        ArchonDomainLawAllowed.ToReference<BlueprintUnitFactReference>(),
+                        HeroismDomainAllowed.ToReference<BlueprintUnitFactReference>(),
+                        RevelationDomainAllowed.ToReference<BlueprintUnitFactReference>()
                     };
                 });
                 bp.AddComponent<ForbidSpellbookOnAlignmentDeviation>(c => {
@@ -110,7 +112,7 @@ namespace ExpandedContent.Tweaks.Deities {
                         InquisitorSpellbook.ToReference<BlueprintSpellbookReference>()
                     };
                     c.m_IgnoreFact = MythicIgnoreAlignmentRestrictions.ToReference<BlueprintUnitFactReference>();
-                    c.Alignment = gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg;
+                    c.Alignment = AlignmentMaskType.LawfulGood | AlignmentMaskType.NeutralGood | AlignmentMaskType.LawfulNeutral;
                 });
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>();
@@ -126,9 +128,14 @@ namespace ExpandedContent.Tweaks.Deities {
                     c.m_Feature = DuelingswordProficiency.ToReference<BlueprintFeatureReference>();
                     c.Level = 1;
                     c.m_Archetypes = null;
-                    c.m_AdditionalClasses = new BlueprintCharacterClassReference[2] {
-                               InquistorClass.ToReference<BlueprintCharacterClassReference>(),
-                               WarpriestClass.ToReference<BlueprintCharacterClassReference>() };
+                    c.m_Archetypes = new BlueprintArchetypeReference[] {
+                        DivineTrackerArchetype.ToReference<BlueprintArchetypeReference>()
+                    };
+                    c.m_AdditionalClasses = new BlueprintCharacterClassReference[] {
+                        InquistorClass.ToReference<BlueprintCharacterClassReference>(),
+                        WarpriestClass.ToReference<BlueprintCharacterClassReference>(),
+                        RangerClass.ToReference<BlueprintCharacterClassReference>()
+                    };
                 });
                 bp.AddComponent<AddStartingEquipment>(c => {
                     c.m_BasicItems = new BlueprintItemReference[2] { 

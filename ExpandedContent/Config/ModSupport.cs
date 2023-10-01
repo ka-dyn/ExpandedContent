@@ -6,8 +6,10 @@ using Kingmaker.Assets.UnitLogic.Mechanics.Properties;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Prerequisites;
+using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.JsonSystem;
+using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
 using Kingmaker.RuleSystem;
@@ -22,6 +24,7 @@ using Kingmaker.UnitLogic.Mechanics.Properties;
 using Kingmaker.Utility;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using static UnityModManagerNet.UnityModManager;
 
 
@@ -30,7 +33,7 @@ namespace ExpandedContent.Config {
 
         protected static bool IsMysticalMayhemEnabled() { return IsModEnabled("MysticalMayhem"); }
         protected static bool IsTabletopTweaksBaseEnabled() { return IsModEnabled("TabletopTweaks-Base"); }
-
+        protected static bool IsPrestigePlusEnabled() { return IsModEnabled("PrestigePlus"); }
 
 
 
@@ -295,7 +298,7 @@ namespace ExpandedContent.Config {
                 }
 
                 if (IsTabletopTweaksBaseEnabled()) {
-
+                    #region Oracle Stuff
                     var OracleClass = Resources.GetBlueprint<BlueprintCharacterClass>("20ce9bf8af32bee4c8557a045ab499b1");
                     var RayOfEnfeeblementSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("450af0402422b0b4980d9c2175869612");
                     var ShieldOfFortificationAbility = Resources.GetModBlueprint<BlueprintAbility>("ShieldOfFortificationAbility");
@@ -409,8 +412,8 @@ namespace ExpandedContent.Config {
                             c.SpellLevel = 9;
                         });
                     });
-
-
+                    #endregion
+                    #region Wild Shape Stuff
                     var WildShapeDragonShapeBiteFeature = Resources.GetModBlueprint<BlueprintFeature>("WildShapeDragonShapeBiteFeature");
                     var MutatedShapeFeaturePrerequisite = Resources.GetBlueprint<BlueprintFeature>("82cb6efb4e3f48cbaf2ea59a3dd1a5cc").GetComponent<PrerequisiteFeaturesFromList>();
                     MutatedShapeFeaturePrerequisite.m_Features = MutatedShapeFeaturePrerequisite.m_Features.AppendToArray(WildShapeDragonShapeBiteFeature.ToReference<BlueprintFeatureReference>());
@@ -437,6 +440,278 @@ namespace ExpandedContent.Config {
                             c.m_Facts = c.m_Facts.AppendToArray(MutatedShapeEffect.ToReference<BlueprintUnitFactReference>());
                         });
                     }
+                    #endregion
+                    #region Blessing Stuff
+                    var newblessingabilities = new BlueprintAbilityReference[] {
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMajorMHBaseAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMajorOHBaseAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHAberrationBaneAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHAgileAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHAnarchicAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHAnimalBaneAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHAxiomaticAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHBaneAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHBleedAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHBrilliantEnergyAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHChaoticOutsiderBaneAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHConstructBaneAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHCorrosiveAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHDisruptionAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHDragonBaneAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHEvilOutsiderBaneAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHFeyBaneAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHFlamingAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHFlamingBurstAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHFrostAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHFuriousAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHGhostTouchAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHGiantBaneAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHGoodOutsiderBaneAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHHeartseekerAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHHolyAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHIcyBurstAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHKeenAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHLawfulOutsiderBaneAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHLivingBaneAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHLycanthropeBaneAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHMagicalBeastBaneAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHNecroticAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHNeutralOutsiderBaneAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHPlantBaneAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHRadiantAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHShockAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHShockingBurstAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHSpeedAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHThunderingAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHUndeadBaneAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHUnholyAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHVerminBaneAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMinorAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHAberrationBaneAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHAgileAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHAnarchicAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHAnimalBaneAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHAxiomaticAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHBaneAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHBleedAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHBrilliantEnergyAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHChaoticOutsiderBaneAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHConstructBaneAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHCorrosiveAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHDisruptionAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHDragonBaneAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHEvilOutsiderBaneAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHFeyBaneAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHFlamingAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHFlamingBurstAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHFrostAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHFuriousAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHGhostTouchAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHGiantBaneAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHGoodOutsiderBaneAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHHeartseekerAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHHolyAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHIcyBurstAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHKeenAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHLawfulOutsiderBaneAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHLivingBaneAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHLycanthropeBaneAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHMagicalBeastBaneAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHNecroticAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHNeutralOutsiderBaneAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHPlantBaneAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHRadiantAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHShockAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHShockingBurstAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHSpeedAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHThunderingAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHUndeadBaneAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHUnholyAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHVerminBaneAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("WarBlessingMajorAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("WarBlessingMinorAbilityAC").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("WarBlessingMinorAbilityAttack").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("WarBlessingMinorAbilityBase").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("WarBlessingMinorAbilitySaves").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("WarBlessingMinorAbilitySpeed").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHAberrationBaneAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHAgileAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHAnarchicAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHAnimalBaneAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHAxiomaticAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHBaneAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHBleedAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHChaoticOutsiderBaneAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHConstructBaneAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHCorrosiveAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHDisruptionAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHDragonBaneAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHEvilOutsiderBaneAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHFeyBaneAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHFlamingAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHFlamingBurstAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHFrostAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHFuriousAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHGhostTouchAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHGiantBaneAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHGoodOutsiderBaneAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHHeartseekerAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHHolyAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHIcyBurstAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHKeenAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHLawfulOutsiderBaneAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHLivingBaneAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHLycanthropeBaneAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHMagicalBeastBaneAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHNecroticAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHNeutralOutsiderBaneAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHPlantBaneAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHRadiantAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHShockAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHShockingBurstAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHSpeedAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHThunderingAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHUndeadBaneAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHUnholyAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMHVerminBaneAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHAberrationBaneAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHAgileAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHAnarchicAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHAnimalBaneAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHAxiomaticAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHBaneAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHBleedAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHChaoticOutsiderBaneAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHConstructBaneAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHCorrosiveAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHDisruptionAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHDragonBaneAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHEvilOutsiderBaneAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHFeyBaneAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHFlamingAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHFlamingBurstAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHFrostAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHFuriousAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHGhostTouchAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHGiantBaneAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHGoodOutsiderBaneAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHHeartseekerAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHHolyAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHIcyBurstAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHKeenAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHLawfulOutsiderBaneAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHLivingBaneAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHLycanthropeBaneAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHMagicalBeastBaneAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHNecroticAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHNeutralOutsiderBaneAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHPlantBaneAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHRadiantAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHShockAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHShockingBurstAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHSpeedAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHThunderingAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHUndeadBaneAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHUnholyAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingOHVerminBaneAbilitySwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("WarBlessingMinorAbilityACSwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("WarBlessingMinorAbilityAttackSwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("WarBlessingMinorAbilitySavesSwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("WarBlessingMinorAbilitySpeedSwift").ToReference<BlueprintAbilityReference>(),
+                    };
+                    var DivineTrackerBlessingSelectionFirst = Resources.GetModBlueprint<BlueprintFeatureSelection>("DivineTrackerBlessingSelectionFirst");
+                    var BlessingSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("6d9dcc2a59210a14891aeedb09d406aa");
+                    var EnhancedBlessingsFeature = Resources.GetBlueprint<BlueprintFeature>("99700c820ee64463806a41d3015d3a38");
+                    EnhancedBlessingsFeature.RemoveComponents<PrerequisiteFeature>();
+                    EnhancedBlessingsFeature.AddComponent<PrerequisiteFeaturesFromList>(c => {
+                        c.Amount = 1;
+                        c.m_Features = new BlueprintFeatureReference[] {
+                            DivineTrackerBlessingSelectionFirst.ToReference<BlueprintFeatureReference>(),
+                            BlessingSelection.ToReference<BlueprintFeatureReference>()
+                        };
+                    });
+                    EnhancedBlessingsFeature.GetComponent<AutoMetamagic>().Abilities.AddRange(newblessingabilities.ToList()); //Needs testing
+
+                    var QuickenBlessing = Resources.GetBlueprint<BlueprintFeatureSelection>("094d657008ac413f8198a351b573791a");
+                    var PaladinClass = Resources.GetBlueprintReference<BlueprintCharacterClassReference>("bfa11238e7ae3544bbeb4d0b92e897ec");
+                    var TempleChampionArchetype = Resources.GetModBlueprint<BlueprintArchetype>("TempleChampionArchetype");
+                    var RangerClass = Resources.GetBlueprintReference<BlueprintCharacterClassReference>("cda0615668a6df14eb36ba19ee881af6");
+                    var DivineTrackerArchetype = Resources.GetModBlueprint<BlueprintArchetype>("DivineTrackerArchetype");
+                    QuickenBlessing.GetComponent<PrerequisiteClassLevel>().TemporaryContext(c => {
+                        c.Group = Prerequisite.GroupType.Any;
+                    });
+                    QuickenBlessing.AddComponent<PrerequisiteArchetypeLevel>(c => {
+                        c.Group = Prerequisite.GroupType.Any;
+                        c.Level = 13;
+                        c.m_CharacterClass = RangerClass;
+                        c.m_Archetype = DivineTrackerArchetype.ToReference<BlueprintArchetypeReference>();
+                    });
+                    QuickenBlessing.AddComponent<PrerequisiteArchetypeLevel>(c => {
+                        c.Group = Prerequisite.GroupType.Any;
+                        c.Level = 10;
+                        c.m_CharacterClass = PaladinClass;
+                        c.m_Archetype = TempleChampionArchetype.ToReference<BlueprintArchetypeReference>();
+                    });
+
+
+                    PatchTTTQuickenBlessingPrerequisites("73084f37bd1244098851720dabfdd7b0", "e1ff99dc3aeaa064e8eecde51c1c4773", "DivineTrackerAirBlessingFeature");
+                    PatchTTTQuickenBlessingPrerequisites("094c4c32d8ed4c849fb23f2069455cc0", "9d991f8374c3def4cb4a6287f370814d", "DivineTrackerAnimalBlessingFeature");
+                    PatchTTTQuickenBlessingPrerequisites("73fecdcb8db94ed79404672b8bccdcb2", "528e316f9f092954b9e38d3a82b1634a", "DivineTrackerChaosBlessingFeature");
+                    PatchTTTQuickenBlessingPrerequisites("f570b791de834d41977940f761261ed1", "3ed6cd88caecec944b837f57b9be176f", "DivineTrackerDarknessBlessingFeature");
+                    PatchTTTQuickenBlessingPrerequisites("bc7687b1d9d94008a2c5fce3af0469e3", "6d11e8b00add90c4f93c2ad6d12885f7", "DivineTrackerDeathBlessingFeature");
+                    PatchTTTQuickenBlessingPrerequisites("6897283b0b9641c9b92dbad935aa1b90", "dd5e75a02e4563e44a0931c6f46fb0a7", "DivineTrackerDestructionBlessingFeature");
+                    PatchTTTQuickenBlessingPrerequisites("e59e8b336fc644f4aeaaf2730116fcf3", "73c37a22bc9a523409a47218d507acf6", "DivineTrackerEarthBlessingFeature");
+                    PatchTTTQuickenBlessingPrerequisites("3766b9b32e0e470daac9f0f4bd606de7", "f38f3abf6ca3a07499a61f96e342bb16", "DivineTrackerEvilBlessingFeature");
+                    PatchTTTQuickenBlessingPrerequisites("3beac8ab95da46e28b2f388070e3e630", "2368212fa3856d74589e924d3e2074d8", "DivineTrackerFireBlessingFeature");
+                    PatchTTTQuickenBlessingPrerequisites("af1f351820df43ca86f1351ab2947838", "60a85144ed37e3a45b343d291dc48079", "DivineTrackerGoodBlessingFeature");
+                    PatchTTTQuickenBlessingPrerequisites("4a0340ec743f4a589e6c23f397372bfc", "f3881a1a7b44dc74c9d76907c94e49f2", "DivineTrackerHealingBlessingFeature");
+                    PatchTTTQuickenBlessingPrerequisites("42a5ad56fe3b48219732541fe375b67f", "9c49504e2e4c66d4aa341348356b47a8", "DivineTrackerLawBlessingFeature");
+                    PatchTTTQuickenBlessingPrerequisites("f1683878346449a3a52709c3605e4c62", "70654ee784fffa74489933a0d2047bbd", "DivineTrackerLuckBlessingFeature");
+                    PatchTTTQuickenBlessingPrerequisites("2f73ce5c332045bdacfebefcc43c9f85", "1754ff61a0805714fa2b89c8c1bb87ad", "DivineTrackerMagicBlessingFeature");
+                    PatchTTTQuickenBlessingPrerequisites("d9ed761ef2484d3d89761a9e1da72e11", "f52af97d05e5de34ea6e0d1b0af740ea", "DivineTrackerNobilityBlessingFeature");
+                    PatchTTTQuickenBlessingPrerequisites("b1c084e9f5574c10a8883dbf04d12691", "c6a3fa9d8d7f942499e4909cd01ca22d", "DivineTrackerProtectionBlessingFeature");
+                    PatchTTTQuickenBlessingPrerequisites("b244a14194154c8cab3bf44b4b0ff9cc", "64a416082927673409deb330af04d6d2", "DivineTrackerReposeBlessingFeature");
+                    PatchTTTQuickenBlessingPrerequisites("260f1c977e4144f0b5a29b0973990af7", "ba825e3c77acaec4386e00f691f8f3be", "DivineTrackerSunBlessingFeature");
+                    PatchTTTQuickenBlessingPrerequisites("4d93dc80eb32405a86ee2abb3cf94f8f", "87641a8efec53d64d853ecc436234dce", "DivineTrackerTravelBlessingFeature");
+                    PatchTTTQuickenBlessingPrerequisites("f5ffcbdc36384c44b6e795fc77b63639", "a8e7abcad0cf8384b9f12c3b075b5cae", "DivineTrackerTrickeryBlessingFeature");
+                    PatchTTTQuickenBlessingPrerequisites("3a68affde38845c08b255a3c571f3777", "0f457943bb99f9b48b709c90bfc0467e", "DivineTrackerWaterBlessingFeature");
+                    PatchTTTQuickenBlessingPrerequisites("2dc4120954184ba49d142e2ed29c9b55", "4172d92c598de1d47aa2c0dd51c05e24", "DivineTrackerWeatherBlessingFeature");
+
+
+
+
+                    var newquickenblessings = new BlueprintFeature[] {
+                        Resources.GetModBlueprint<BlueprintFeature>("QuickenBlessingArtificeFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("QuickenBlessingWarFeature")
+                    };
+                    foreach (var newquickenblessing in newquickenblessings) {
+                        QuickenBlessing.m_AllFeatures = QuickenBlessing.m_AllFeatures.AppendToArray(newquickenblessing.ToReference<BlueprintFeatureReference>());
+                        QuickenBlessing.m_Features = QuickenBlessing.m_Features.AppendToArray(newquickenblessing.ToReference<BlueprintFeatureReference>());
+                    }
+
+
+                    #endregion
+
+                }
+
+                if (IsPrestigePlusEnabled()) {
+                    var AsavirCamaraderieProperty = Resources.GetModBlueprint<BlueprintUnitProperty>("AsavirCamaraderieProperty");
+                    var AsavirCamaraderieFeature = Resources.GetModBlueprint<BlueprintFeature>("AsavirCamaraderieFeature");
+                    var AsavirClass = Resources.GetBlueprintReference<BlueprintCharacterClassReference>("A29AE95EADB4469DA996FA9B913165CC");
+                    var AsavirProgression = Resources.GetBlueprint<BlueprintProgression>("C45A4085D218439A8695BCB2D8CBCB14");
+                    AsavirProgression.LevelEntries.Where(entry => entry.Level == 1).FirstOrDefault()?.m_Features.Add(AsavirCamaraderieFeature.ToReference<BlueprintFeatureBaseReference>());
+                    AsavirCamaraderieProperty.AddComponent<ClassLevelGetter>(c => {
+                        c.Settings = new PropertySettings() {
+                            m_Progression = PropertySettings.Progression.StartPlusDivStep,
+                            m_StartLevel = 1,
+                            m_StepLevel = 4,
+                            m_Negate = false,
+                            m_LimitType = PropertySettings.LimitType.Max,
+                            m_Min = 0,
+                            m_Max = 3,
+                        };
+                        c.m_Class = AsavirClass;
+                    });
 
                 }
             }
@@ -444,6 +719,22 @@ namespace ExpandedContent.Config {
 
         protected static bool IsModEnabled(string modName) {
             return modEntries.Where(mod => mod.Info.Id.Equals(modName) && mod.Enabled && !mod.ErrorOnLoading).Any();
+        }
+
+        private static void PatchTTTQuickenBlessingPrerequisites(string tttquickenfeatureguid, string warpriestblessingguid, string rangerblessingguid) {
+
+            var quickenBlessingFeature = Resources.GetBlueprint<BlueprintFeature>(tttquickenfeatureguid);
+            var warpriestBlessingFeature = Resources.GetBlueprint<BlueprintFeature>(warpriestblessingguid);
+            var rangerBlessingFeature = Resources.GetModBlueprint<BlueprintFeature>(rangerblessingguid);
+
+            quickenBlessingFeature.RemoveComponents<PrerequisiteFeature>();
+            quickenBlessingFeature.AddComponent<PrerequisiteFeaturesFromList>(c => {
+                c.Amount = 1;
+                c.m_Features = new BlueprintFeatureReference[] {
+                    warpriestBlessingFeature.ToReference<BlueprintFeatureReference>(),
+                    rangerBlessingFeature.ToReference<BlueprintFeatureReference>()
+                };
+            });
         }
     }
 }

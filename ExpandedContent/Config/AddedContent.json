@@ -214,6 +214,11 @@
         "Enabled": true,
         "Homebrew": false,
         "Description": "A fighter archetype with low level spellcasting."
+      },
+      "Divine Tracker": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "A ranger archetype that gives up hunters bond for warpriest blessings."
       }
     },
     "IsExpanded": false

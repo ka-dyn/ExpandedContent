@@ -29,7 +29,6 @@ namespace ExpandedContent.Tweaks.Deities {
         private static readonly BlueprintFeature MythicIgnoreAlignmentRestrictions = Resources.GetBlueprint<BlueprintFeature>("24e78475f0a243e1a810452d14d0a1bd");
 
 
-
         public static void AddLymnierisFeature() {
 
             BlueprintItem MasterworkLongsword = Resources.GetBlueprint<BlueprintItem>("571c56d11dafbb04094cbaae659974b5");
@@ -60,7 +59,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     "into marriage or threatened with being deflowered against their will, as well as those devotees who wish to fulfill their sexual desires " +
                     "but who are restrained by culture or tradition. Any individual on the threshold of a major personal change may call on Lymnieris for aid. " +
                     "Prostitutes who work lawfully and willingly out of love for their profession also worship Lymnieris, and those forced into carnal service " +
-                    "pray to him for salvation. Lymnieris lives in a palace made ofblue agate in Heaven, where he often entertains the visiting Arshea.");
+                    "pray to him for salvation. Lymnieris lives in a palace made of blue agate in Heaven, where he often entertains the visiting Arshea.");
                 bp.m_Icon = LymnierisIcon;
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;
@@ -89,16 +88,14 @@ namespace ExpandedContent.Tweaks.Deities {
                 });
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] {
-                        ChfannelNegativeAllowed.ToReference<BlueprintUnitFactReference>(),
-                        EviflDomainAllowed.ToReference<BlueprintUnitFactReference>(),
-                        LawDfomainAllowed.ToReference<BlueprintUnitFactReference>(),
-                        AirDofmainAllowed.ToReference<BlueprintUnitFactReference>(),
-                        DeathDfomainAllowed.ToReference<BlueprintUnitFactReference>(),
-                        DeathDfomainAllowed.ToReference<BlueprintUnitFactReference>(),
-                        DeathDfomainAllowed.ToReference<BlueprintUnitFactReference>(),
-                        DeathDfomainAllowed.ToReference<BlueprintUnitFactReference>(),
-                        WindDomfainAllowed.ToReference<BlueprintUnitFactReference>(),
-                        UndeadDofmainAllowed.ToReference<BlueprintUnitFactReference>()
+                        ChannelPositiveAllowed.ToReference<BlueprintUnitFactReference>(),
+                        CommunityDomainAllowed.ToReference<BlueprintUnitFactReference>(),
+                        GoodDomainAllowed.ToReference<BlueprintUnitFactReference>(),
+                        LawDomainAllowed.ToReference<BlueprintUnitFactReference>(),
+                        ProtectionDomainAllowed.ToReference<BlueprintUnitFactReference>(),
+                        ArchonDomainGoodAllowed.ToReference<BlueprintUnitFactReference>(),
+                        ArchonDomainLawAllowed.ToReference<BlueprintUnitFactReference>(),
+                        LustDomainAllowed.ToReference<BlueprintUnitFactReference>()
                     };
                 });
                 bp.AddComponent<ForbidSpellbookOnAlignmentDeviation>(c => {
@@ -108,7 +105,7 @@ namespace ExpandedContent.Tweaks.Deities {
                         InquisitorSpellbook.ToReference<BlueprintSpellbookReference>()
                     };
                     c.m_IgnoreFact = MythicIgnoreAlignmentRestrictions.ToReference<BlueprintUnitFactReference>();
-                    c.Alignment = gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg;
+                    c.Alignment = AlignmentMaskType.LawfulGood | AlignmentMaskType.NeutralGood | AlignmentMaskType.LawfulNeutral;
                 });
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>();
