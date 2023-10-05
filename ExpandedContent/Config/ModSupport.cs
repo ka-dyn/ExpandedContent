@@ -20,6 +20,7 @@ using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Mechanics.Actions;
+using Kingmaker.UnitLogic.Mechanics.Components;
 using Kingmaker.UnitLogic.Mechanics.Properties;
 using Kingmaker.Utility;
 using System.Collections.Generic;
@@ -709,6 +710,7 @@ namespace ExpandedContent.Config {
                 }
 
                 if (IsPrestigePlusEnabled()) {
+                    #region Asavir
                     var AsavirCamaraderieProperty = Resources.GetModBlueprint<BlueprintUnitProperty>("AsavirCamaraderieProperty");
                     var AsavirCamaraderieFeature = Resources.GetModBlueprint<BlueprintFeature>("AsavirCamaraderieFeature");
                     var AsavirClass = Resources.GetBlueprintReference<BlueprintCharacterClassReference>("A29AE95EADB4469DA996FA9B913165CC");
@@ -726,7 +728,21 @@ namespace ExpandedContent.Config {
                         };
                         c.m_Class = AsavirClass;
                     });
-
+                    #endregion
+                    #region Halfling Opportunist
+                    var HalflingOpportunistExcellentAidFeature = Resources.GetModBlueprint<BlueprintFeature>("HalflingOpportunistExcellentAidFeature");
+                    var HalflingOpportunistClass = Resources.GetBlueprintReference<BlueprintCharacterClassReference>("AEA57FFB36F043AB9BA6BFB3B0D9AFF9");
+                    var HalflingOpportunistProgression = Resources.GetBlueprint<BlueprintProgression>("BB330A5A194946D3B34D662876F43011");
+                    HalflingOpportunistProgression.LevelEntries.Where(entry => entry.Level == 1).FirstOrDefault()?.m_Features.Add(HalflingOpportunistExcellentAidFeature.ToReference<BlueprintFeatureBaseReference>());
+                    HalflingOpportunistExcellentAidFeature.AddComponent<ContextRankConfig>(c => {
+                        c.m_Type = AbilityRankType.Default;
+                        c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
+                        c.m_Stat = StatType.Unknown;
+                        c.m_SpecificModifier = ModifierDescriptor.None;
+                        c.m_Progression = ContextRankProgression.OnePlusDiv2;
+                        c.m_Class = new BlueprintCharacterClassReference[] { HalflingOpportunistClass };
+                    });
+                    #endregion
                 }
             }
         }

@@ -8,10 +8,12 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.Craft;
 using Kingmaker.Designers.EventConditionActionSystem.Actions;
+using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.ElementsSystem;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
 using Kingmaker.RuleSystem;
+using Kingmaker.UI.ServiceWindow.CharacterScreen;
 using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.UnitLogic.Abilities.Components;
@@ -108,6 +110,7 @@ namespace ExpandedContent.Tweaks.Miscellaneous {
                 bp.BaseValue = 1;
                 bp.OperationOnComponents = BlueprintUnitProperty.MathOperation.Multiply;
             });
+            
 
 
 
@@ -789,6 +792,37 @@ namespace ExpandedContent.Tweaks.Miscellaneous {
                 bp.ReapplyOnLevelUp = true;
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = true;
+            });
+
+            //Excellent Aid Added to Halfling Opportunist in ModSupport
+            var HalflingOpportunistExcellentAidFeature = Helpers.CreateBlueprint<BlueprintFeature>("HalflingOpportunistExcellentAidFeature", bp => {
+                bp.SetName("Excellent Aid");
+                bp.SetDescription("A halfling opportunist has an amazing talent for getting the most out of those who assist her. Increase the bonus she gets from " +
+                    "aid another by +1. This increases by another +1 at 3rd level and again at 5th level. This increase does not apply to when she uses aid another " +
+                    "to help others, only when others aid her.");
+                //ContextRankConfig added in ModSupport
+                bp.AddComponent<AttackBonusAgainstFactOwner>(c => {
+                    c.m_CheckedFact = AidAnotherOffenceBuff.ToReference<BlueprintUnitFactReference>();
+                    c.AttackBonus = 0;
+                    c.Bonus = new ContextValue() {
+                        ValueType = ContextValueType.Rank,
+                        ValueRank = AbilityRankType.Default
+                    };
+                    c.Descriptor = ModifierDescriptor.None;
+                    c.Not = false;
+                });
+                bp.AddComponent<AttackBonusAgainstFactOwner>(c => {
+                    c.m_CheckedFact = SwiftAidAnotherOffenceBuff.ToReference<BlueprintUnitFactReference>();
+                    c.AttackBonus = 0;
+                    c.Bonus = new ContextValue() {
+                        ValueType = ContextValueType.Rank,
+                        ValueRank = AbilityRankType.Default
+                    };
+                    c.Descriptor = ModifierDescriptor.None;
+                    c.Not = false;
+                });
+                bp.IsClassFeature = true;
+                bp.m_AllowNonContextActions = false;
             });
 
 
