@@ -69,7 +69,7 @@ namespace ExpandedContent.Config {
 
 
                 if (IsMysticalMayhemEnabled()) {
-
+                    Main.Log("Starting Mystical Mayhem Compat Patch.");
                     var OracleClass = Resources.GetBlueprint<BlueprintCharacterClass>("20ce9bf8af32bee4c8557a045ab499b1");
                     var ClericClass = Resources.GetBlueprint<BlueprintCharacterClass>("67819271767a9dd4fbfd4ae700befea0");
                     var InquisitorClass = Resources.GetBlueprint<BlueprintCharacterClass>("f1a70d9e1b0b41e49874e1fa9052a1ce");
@@ -297,6 +297,7 @@ namespace ExpandedContent.Config {
                     var ShamanHeavensSpiritManifestationFeature = Resources.GetModBlueprint<BlueprintFeature>("ShamanHeavensSpiritManifestationFeature");
                     var ShamanHeavensSpiritProgression = Resources.GetModBlueprint<BlueprintProgression>("ShamanHeavensSpiritProgression");
                     ShamanHeavensSpiritProgression.LevelEntries = ShamanHeavensSpiritProgression.LevelEntries.AppendToArray(Helpers.LevelEntry(20, ShamanHeavensSpiritManifestationFeature));
+                    Main.Log("Finished Mystical Mayhem Compat Patch.");
                 }
 
                 if (!IsTabletopTweaksBaseEnabled()) {
@@ -309,6 +310,7 @@ namespace ExpandedContent.Config {
                 }
 
                 if (IsTabletopTweaksBaseEnabled()) {
+                    Main.Log("Starting TTT-Base Compat Patch.");
                     #region Oracle Stuff
                     var OracleClass = Resources.GetBlueprint<BlueprintCharacterClass>("20ce9bf8af32bee4c8557a045ab499b1");
                     var RayOfEnfeeblementSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("450af0402422b0b4980d9c2175869612");
@@ -707,9 +709,11 @@ namespace ExpandedContent.Config {
                     IroriFeatureAddFeatureOnClassLevel.m_AdditionalClasses = IroriFeatureAddFeatureOnClassLevel.m_AdditionalClasses.AppendToArray(RangerClass);
                     IroriFeatureAddFeatureOnClassLevel.m_Archetypes = IroriFeatureAddFeatureOnClassLevel.m_Archetypes.AppendToArray(DivineTrackerArchetype.ToReference<BlueprintArchetypeReference>());
                     #endregion
+                    Main.Log("Finishing TTT-Base Compat Patch.");
                 }
 
                 if (IsPrestigePlusEnabled()) {
+                    Main.Log("Starting Prestige Plus Compat Patch.");
                     #region Asavir
                     var AsavirCamaraderieProperty = Resources.GetModBlueprint<BlueprintUnitProperty>("AsavirCamaraderieProperty");
                     var AsavirCamaraderieFeature = Resources.GetModBlueprint<BlueprintFeature>("AsavirCamaraderieFeature");
@@ -743,6 +747,7 @@ namespace ExpandedContent.Config {
                         c.m_Class = new BlueprintCharacterClassReference[] { HalflingOpportunistClass };
                     });
                     #endregion
+                    Main.Log("Finished Prestige Plus Compat Patch.");
                 }
             }
         }
