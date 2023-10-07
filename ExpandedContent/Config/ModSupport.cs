@@ -41,11 +41,14 @@ namespace ExpandedContent.Config {
 
 
 
-        [HarmonyLib.HarmonyPatch(typeof(BlueprintsCache), "Init")]
+        [HarmonyPatch(typeof(BlueprintsCache), "Init")]
         static class BlueprintsCache_Init_Patch {
             static bool Initialized;
 
             [HarmonyAfter()]
+            [HarmonyPostfix]
+            [HarmonyPriority(Priority.Last)]
+
             public static void Postfix() {
                 if (Initialized) return;
                 Initialized = true;
