@@ -27,6 +27,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using TabletopTweaks.Core.NewComponents;
+using static Kingmaker.Kingdom.Buffs.KingdomTacticalArmyFeature;
 using static UnityModManagerNet.UnityModManager;
 
 
@@ -310,6 +311,10 @@ namespace ExpandedContent.Config {
                     var IroriFeatureAddFeatureOnClassLevel = Resources.GetBlueprint<BlueprintFeature>("23a77a5985de08349820429ce1b5a234").GetComponent<AddFeatureOnClassLevel>();
                     IroriFeatureAddFeatureOnClassLevel.m_AdditionalClasses = IroriFeatureAddFeatureOnClassLevel.m_AdditionalClasses.AppendToArray(RangerClass);
                     IroriFeatureAddFeatureOnClassLevel.m_Archetypes = IroriFeatureAddFeatureOnClassLevel.m_Archetypes.AppendToArray(DivineTrackerArchetype.ToReference<BlueprintArchetypeReference>());
+                    var PuluraFeatureAddFeatureOnClassLevel = Resources.GetBlueprint<BlueprintFeature>("ebb0b46f95dbac74681c78aae895dbd0").GetComponent<AddFeatureOnClassLevel>();
+                    PuluraFeatureAddFeatureOnClassLevel.m_AdditionalClasses = PuluraFeatureAddFeatureOnClassLevel.m_AdditionalClasses.AppendToArray(RangerClass);
+                    PuluraFeatureAddFeatureOnClassLevel.m_Archetypes = PuluraFeatureAddFeatureOnClassLevel.m_Archetypes.AppendToArray(DivineTrackerArchetype.ToReference<BlueprintArchetypeReference>());
+
                 }
 
                 if (IsTabletopTweaksBaseEnabled()) {
@@ -456,6 +461,14 @@ namespace ExpandedContent.Config {
                             c.m_Facts = c.m_Facts.AppendToArray(MutatedShapeEffect.ToReference<BlueprintUnitFactReference>());
                         });
                     }
+                    #endregion
+                    #region Natural Spell
+                    var NaturalSpellPrerequisiteFeaturesFromList = Resources.GetBlueprint<BlueprintFeature>("c806103e27cce6f429e5bf47067966cf").GetComponent<PrerequisiteFeaturesFromList>();
+                    var TreesingerWildShapeMandragoraFeature = Resources.GetModBlueprint<BlueprintFeature>("TreesingerWildShapeMandragoraFeature");
+                    NaturalSpellPrerequisiteFeaturesFromList.m_Features = NaturalSpellPrerequisiteFeaturesFromList.m_Features.AppendToArray(
+                        WildShapeDragonShapeBiteFeature.ToReference<BlueprintFeatureReference>(), 
+                        TreesingerWildShapeMandragoraFeature.ToReference<BlueprintFeatureReference>()
+                        );
                     #endregion
                     #region Blessing Stuff
                     var newblessingabilities = new BlueprintAbilityReference[] {
@@ -707,10 +720,24 @@ namespace ExpandedContent.Config {
 
 
                     #endregion
-                    #region Irori
+                    #region God load order stuff
+                    //I sohuld not need to do this but for some users TTT always loads first
                     var IroriFeatureAddFeatureOnClassLevel = Resources.GetBlueprint<BlueprintFeature>("23a77a5985de08349820429ce1b5a234").GetComponent<AddFeatureOnClassLevelExclude>();
                     IroriFeatureAddFeatureOnClassLevel.m_AdditionalClasses = IroriFeatureAddFeatureOnClassLevel.m_AdditionalClasses.AppendToArray(RangerClass);
                     IroriFeatureAddFeatureOnClassLevel.m_Archetypes = IroriFeatureAddFeatureOnClassLevel.m_Archetypes.AppendToArray(DivineTrackerArchetype.ToReference<BlueprintArchetypeReference>());
+                    var PuluraFeature = Resources.GetBlueprint<BlueprintFeature>("ebb0b46f95dbac74681c78aae895dbd0");
+                    var SlingStaffProficiency = Resources.GetBlueprint<BlueprintFeature>("a0be067e11f4d8345a8b57a92e52a301");
+                    PuluraFeature.AddComponent<AddFeatureOnClassLevelExclude>(c => {
+                        c.m_Class = IroriFeatureAddFeatureOnClassLevel.m_Class;
+                        c.m_AdditionalClasses = IroriFeatureAddFeatureOnClassLevel.m_AdditionalClasses;
+                        c.m_Archetypes = IroriFeatureAddFeatureOnClassLevel.m_Archetypes;
+                        c.m_ExcludeClass = IroriFeatureAddFeatureOnClassLevel.m_Class;
+                        c.m_AdditionalExcludeClasses = new BlueprintCharacterClassReference[0];
+                        c.m_ExcludeArchetypes = IroriFeatureAddFeatureOnClassLevel.m_ExcludeArchetypes;
+                        c.m_Feature = SlingStaffProficiency.ToReference<BlueprintFeatureReference>();
+                        c.Level = IroriFeatureAddFeatureOnClassLevel.Level;
+                        c.BeforeThisLevel = IroriFeatureAddFeatureOnClassLevel.BeforeThisLevel;
+                    });
                     #endregion
                     Main.Log("Finishing TTT-Base Compat Patch.");
                 }

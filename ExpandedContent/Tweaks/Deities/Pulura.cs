@@ -72,9 +72,7 @@ namespace ExpandedContent.Tweaks.Deities {
             });
             PuluraFeature.m_Icon = PuluraIcon;
 
-            var AddfeatureOnClassLevel = PuluraFeature.GetComponent<AddFeatureOnClassLevel>();
-            AddfeatureOnClassLevel.m_AdditionalClasses = AddfeatureOnClassLevel.m_AdditionalClasses.AppendToArray(RangerClass.ToReference<BlueprintCharacterClassReference>());
-            AddfeatureOnClassLevel.m_Archetypes = AddfeatureOnClassLevel.m_Archetypes.AppendToArray(DivineTrackerArchetype.ToReference<BlueprintArchetypeReference>());
+            
 
             PuluraFeature.RemoveComponents<PrerequisiteNoFeature>();
             var EmpyrealLordSelection = Resources.GetModBlueprint<BlueprintFeatureSelection>("EmpyrealLordSelection");
