@@ -390,7 +390,7 @@ namespace ExpandedContent.Tweaks {
                 Deities.DeitySelectionFeature.MonitorsToggle();
                 Deities.DeitySelectionFeature.TheElderMythosToggle();
                 Deities.DeitySelectionFeature.OrcPantheonToggle();
-
+                Deities.DeitySelectionFeature.InnerSeaDeitiesregionToggle();
             }
             [HarmonyPriority(Priority.Last)]
             [HarmonyPostfix]
