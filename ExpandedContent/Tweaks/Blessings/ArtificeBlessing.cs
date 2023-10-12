@@ -33,7 +33,7 @@ namespace ExpandedContent.Tweaks.Blessings {
     internal class ArtificeBlessing {
         public static void AddArtificeBlessing() {
 
-            var ArtificeDomainAllowed = Resources.GetBlueprintReference<BlueprintFeatureReference>("3795653d6d3b291418164b27be88cb43");
+            var ArtificeDomainAllowed = Resources.GetBlueprintReference<BlueprintFeatureReference>("9656b1c7214180f4b9a6ab56f83b92fb");
             var WarpriestClass = Resources.GetBlueprintReference<BlueprintCharacterClassReference>("30b5e47d47a0e37438cc5a80c96cfb99");
             var WarpriestAspectOfWarBuff = Resources.GetBlueprint<BlueprintBuff>("27d14b07b52c2df42a4dcd6bfb840425");
             var BlessingResource = Resources.GetBlueprintReference<BlueprintAbilityResourceReference>("d128a6332e4ea7c4a9862b9fdb358cca");
