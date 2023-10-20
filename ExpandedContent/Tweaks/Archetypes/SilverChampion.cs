@@ -30,11 +30,11 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var SilverChampionArchetype = Helpers.CreateBlueprint<BlueprintArchetype>("SilverChampionArchetype", bp => {
                 bp.LocalizedName = Helpers.CreateString($"SilverChampionArchetype.Name", "Silver Champion");
                 bp.LocalizedDescription = Helpers.CreateString($"SilverChampionArchetype.Description", "Paladins who serve as priests of Apsu are almost always on the move, wandering from " +
-                    "place to place and trying to show their dedication to the Waybringer in their deeds rather than depending on mere words.More rarely a drake is so inspired by a paladin " +
+                    "place to place and trying to show their dedication to the Waybringer in their deeds rather than depending on mere words. More rarely a drake is so inspired by a paladin " +
                     "of Apsu that it chooses to assist the paladin in all her actions. These drake allies see the benefit of a silver champion remaining mobile and understand the powerful " +
                     "threats the champion must face, and in time even consent to serve their chosen paladins as a companion.");
                 bp.LocalizedDescriptionShort = Helpers.CreateString($"SilverChampionArchetype.Description", "Paladins who serve as priests of Apsu are almost always on the move, wandering from " +
-                    "place to place and trying to show their dedication to the Waybringer in their deeds rather than depending on mere words.More rarely a drake is so inspired by a paladin " +
+                    "place to place and trying to show their dedication to the Waybringer in their deeds rather than depending on mere words. More rarely a drake is so inspired by a paladin " +
                     "of Apsu that it chooses to assist the paladin in all her actions. These drake allies see the benefit of a silver champion remaining mobile and understand the powerful " +
                     "threats the champion must face, and in time even consent to serve their chosen paladins as a companion.");                
             });
