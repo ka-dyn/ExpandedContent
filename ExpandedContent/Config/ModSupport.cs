@@ -647,6 +647,7 @@ namespace ExpandedContent.Config {
                         Resources.GetModBlueprint<BlueprintAbility>("WarBlessingMinorAbilityAttackSwift").ToReference<BlueprintAbilityReference>(),
                         Resources.GetModBlueprint<BlueprintAbility>("WarBlessingMinorAbilitySavesSwift").ToReference<BlueprintAbilityReference>(),
                         Resources.GetModBlueprint<BlueprintAbility>("WarBlessingMinorAbilitySpeedSwift").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("PlantBlessingMinorAbility").ToReference<BlueprintAbilityReference>(),
                     };
                     var DivineTrackerBlessingSelectionFirst = Resources.GetModBlueprint<BlueprintFeatureSelection>("DivineTrackerBlessingSelectionFirst");
                     var BlessingSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("6d9dcc2a59210a14891aeedb09d406aa");
@@ -711,7 +712,8 @@ namespace ExpandedContent.Config {
 
                     var newquickenblessings = new BlueprintFeature[] {
                         Resources.GetModBlueprint<BlueprintFeature>("QuickenBlessingArtificeFeature"),
-                        Resources.GetModBlueprint<BlueprintFeature>("QuickenBlessingWarFeature")
+                        Resources.GetModBlueprint<BlueprintFeature>("QuickenBlessingWarFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("QuickenBlessingPlantFeature")
                     };
                     foreach (var newquickenblessing in newquickenblessings) {
                         QuickenBlessing.m_AllFeatures = QuickenBlessing.m_AllFeatures.AppendToArray(newquickenblessing.ToReference<BlueprintFeatureReference>());

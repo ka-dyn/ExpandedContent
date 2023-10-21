@@ -215,6 +215,7 @@
     <Compile Include="Tweaks\Archetypes\LivingScripture.cs" />
     <Compile Include="Tweaks\Backgrounds\ArchdukeOfCheliax.cs" />
     <Compile Include="Tweaks\Blessings\ArtificeBlessing.cs" />
+    <Compile Include="Tweaks\Blessings\PlantBlessing.cs" />
     <Compile Include="Tweaks\Blessings\WarBlessing.cs" />
     <Compile Include="Tweaks\Classes\StargazerClass.cs" />
     <Compile Include="Tweaks\Classes\DrakeClass\DrakeCompanionCopper.cs" />

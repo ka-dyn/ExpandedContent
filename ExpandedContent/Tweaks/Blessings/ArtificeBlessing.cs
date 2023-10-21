@@ -327,13 +327,6 @@ namespace ExpandedContent.Tweaks.Blessings {
             #endregion
 
 
-
-
-            
-
-
-
-
         }
 
         private static void CreateTrasferMagicWeaponEnchant(string enchantname, BlueprintWeaponEnchantment weaponEnchant) {
