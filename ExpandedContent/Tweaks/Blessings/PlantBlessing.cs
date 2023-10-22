@@ -30,6 +30,9 @@ using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.Visual.Animation.Kingmaker.Actions;
 using Kingmaker.ResourceLinks;
 using Kingmaker.UnitLogic.Buffs.Components;
+using Kingmaker.Designers.EventConditionActionSystem.Actions;
+using Kingmaker.ElementsSystem;
+using Kingmaker.UnitLogic.Mechanics.Conditions;
 
 namespace ExpandedContent.Tweaks.Blessings {
     internal class PlantBlessing {
@@ -149,7 +152,8 @@ namespace ExpandedContent.Tweaks.Blessings {
                 bp.AddComponent<AbilityResourceLogic>(c => {
                     c.m_RequiredResource = BlessingResource;
                     c.m_IsSpendResource = true;
-
+                    c.Amount = 1;
+                    c.ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>() { WarpriestAspectOfWarBuff.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.SavingThrowType = SavingThrowType.Unknown;
@@ -189,7 +193,394 @@ namespace ExpandedContent.Tweaks.Blessings {
 
             });
 
+            var PlantType = Resources.GetBlueprint<BlueprintFeature>("706e61781d692a042b35941f14bc41c5");
+            var SummonedDireBoar = Resources.GetBlueprintReference<BlueprintUnitReference>("6ec9c63c41a1e754ea4dcd85557625b4");
+            var SummonedManticore = Resources.GetBlueprintReference<BlueprintUnitReference>("7b7701ffc8f335a47a9ed97516531b71");
+            var SummonedSmilodon = Resources.GetBlueprintReference<BlueprintUnitReference>("beae4985629a6f64eb98081e3171e4c1");
+            var SummonedMastodon = Resources.GetBlueprintReference<BlueprintUnitReference>("028cc6f46e7998f46855a33ffde89567");
+            var SummonedNereid = Resources.GetBlueprintReference<BlueprintUnitReference>("1618961b217a446459c6a91481065d2c");
+            var SummonedHamadryad = Resources.GetBlueprintReference<BlueprintUnitReference>("32a7776fb5bb9fa408b97757c04d4247");
+            var SummonNaturesAllyIcon = Resources.GetBlueprint<BlueprintAbility>("c83db50513abdf74ca103651931fac4b").Icon;
 
+            var PlantBlessingMajorSummonsBuff = Helpers.CreateBuff("PlantBlessingMajorSummonsBuff", bp => {
+                bp.SetName("Plant Type");
+                bp.SetDescription("Creatures summoned by the plant battle companion ability are granted the plant type. Plant type creatures " +
+                    "are granted immunity to paralysis, sleep, mind affecting, poison, polymorph, and stun effects.");
+                bp.m_Icon = SummonNaturesAllyIcon;
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { PlantType.ToReference<BlueprintUnitFactReference>() };
+                });
+            });
+
+            var PlantBlessingMajorAbility = Helpers.CreateBlueprint<BlueprintAbility>("PlantBlessingMajorAbility", bp => {
+                bp.SetName("Plant Battle Companion");
+                bp.SetDescription("At 10th level, you can summon a battle companion. This ability functions " +
+                    "as summon nature's ally IV with a duration of 1 minute. This ability can summon only one animal, regardless of the list used, and the creature’s " +
+                    "type changes to plant instead of animal. For every 2 levels beyond 10th, the level of the summon nature's ally {g|Encyclopedia:Spell}spell{/g} " +
+                    "increases by 1 (to a maximum of summon nature's ally IX at 20th level).");
+                bp.m_Icon = SummonNaturesAllyIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new Conditional() {
+                            ConditionsChecker = new ConditionsChecker() {
+                                Operation = Operation.And,
+                                Conditions = new Condition[] { 
+                                    new ContextConditionSharedValueHigher() {
+                                        Not = false,
+                                        SharedValue = AbilitySharedValue.Damage,
+                                        HigherOrEqual = 5,
+                                        Inverted = true
+                                    }
+                                }
+                            },
+                            IfTrue = Helpers.CreateActionList(
+                                new ContextActionSpawnMonster() {
+                                    m_Blueprint = SummonedDireBoar,
+                                    AfterSpawn = Helpers.CreateActionList(
+                                        new ContextActionApplyBuff() {
+                                            m_Buff = PlantBlessingMajorSummonsBuff.ToReference<BlueprintBuffReference>(),
+                                            Permanent = true,
+                                            UseDurationSeconds = false,
+                                            DurationValue = new ContextDurationValue() {
+                                                Rate = DurationRate.Rounds,
+                                                DiceType = DiceType.Zero,
+                                                DiceCountValue = 0,
+                                                BonusValue = 0
+                                            },
+                                            IsNotDispelable = true
+                                        }
+                                        ),
+                                    m_SummonPool = null,
+                                    DurationValue = new ContextDurationValue() {
+                                        Rate = DurationRate.Minutes,
+                                        DiceType = DiceType.Zero,
+                                        DiceCountValue = 0,
+                                        BonusValue = 1,
+                                        m_IsExtendable = true
+                                    },
+                                    CountValue = new ContextDiceValue() {
+                                        DiceType = DiceType.Zero,
+                                        DiceCountValue = 0,
+                                        BonusValue = 1
+                                    },
+                                    LevelValue = 0,
+                                    DoNotLinkToCaster = false,
+                                    IsDirectlyControllable = false
+
+                                }
+                                ),
+                            IfFalse = Helpers.CreateActionList(
+                                new Conditional() {
+                                    ConditionsChecker = new ConditionsChecker() {
+                                        Operation = Operation.And,
+                                        Conditions = new Condition[] {
+                                            new ContextConditionSharedValueHigher() {
+                                                Not = false,
+                                                SharedValue = AbilitySharedValue.Damage,
+                                                HigherOrEqual = 6,
+                                                Inverted = true
+                                            }
+                                        }
+                                    },
+                                    IfTrue = Helpers.CreateActionList(
+                                        new ContextActionSpawnMonster() {
+                                            m_Blueprint = SummonedManticore,
+                                            AfterSpawn = Helpers.CreateActionList(
+                                                new ContextActionApplyBuff() {
+                                                    m_Buff = PlantBlessingMajorSummonsBuff.ToReference<BlueprintBuffReference>(),
+                                                    Permanent = true,
+                                                    UseDurationSeconds = false,
+                                                    DurationValue = new ContextDurationValue() {
+                                                        Rate = DurationRate.Rounds,
+                                                        DiceType = DiceType.Zero,
+                                                        DiceCountValue = 0,
+                                                        BonusValue = 0
+                                                    },
+                                                    IsNotDispelable = true
+                                                }
+                                                ),
+                                            m_SummonPool = null,
+                                            DurationValue = new ContextDurationValue() {
+                                                Rate = DurationRate.Minutes,
+                                                DiceType = DiceType.Zero,
+                                                DiceCountValue = 0,
+                                                BonusValue = 1,
+                                                m_IsExtendable = true
+                                            },
+                                            CountValue = new ContextDiceValue() {
+                                                DiceType = DiceType.Zero,
+                                                DiceCountValue = 0,
+                                                BonusValue = 1
+                                            },
+                                            LevelValue = 0,
+                                            DoNotLinkToCaster = false,
+                                            IsDirectlyControllable = false
+
+                                        }
+                                        ),
+                                    IfFalse = Helpers.CreateActionList(
+                                        new Conditional() {
+                                            ConditionsChecker = new ConditionsChecker() {
+                                                Operation = Operation.And,
+                                                Conditions = new Condition[] {
+                                                    new ContextConditionSharedValueHigher() {
+                                                        Not = false,
+                                                        SharedValue = AbilitySharedValue.Damage,
+                                                        HigherOrEqual = 7,
+                                                        Inverted = true
+                                                    }
+                                                }
+                                            },
+                                            IfTrue = Helpers.CreateActionList(
+                                                new ContextActionSpawnMonster() {
+                                                    m_Blueprint = SummonedSmilodon,
+                                                    AfterSpawn = Helpers.CreateActionList(
+                                                        new ContextActionApplyBuff() {
+                                                            m_Buff = PlantBlessingMajorSummonsBuff.ToReference<BlueprintBuffReference>(),
+                                                            Permanent = true,
+                                                            UseDurationSeconds = false,
+                                                            DurationValue = new ContextDurationValue() {
+                                                                Rate = DurationRate.Rounds,
+                                                                DiceType = DiceType.Zero,
+                                                                DiceCountValue = 0,
+                                                                BonusValue = 0
+                                                            },
+                                                            IsNotDispelable = true
+                                                        }
+                                                        ),
+                                                    m_SummonPool = null,
+                                                    DurationValue = new ContextDurationValue() {
+                                                        Rate = DurationRate.Minutes,
+                                                        DiceType = DiceType.Zero,
+                                                        DiceCountValue = 0,
+                                                        BonusValue = 1,
+                                                        m_IsExtendable = true
+                                                    },
+                                                    CountValue = new ContextDiceValue() {
+                                                        DiceType = DiceType.Zero,
+                                                        DiceCountValue = 0,
+                                                        BonusValue = 1
+                                                    },
+                                                    LevelValue = 0,
+                                                    DoNotLinkToCaster = false,
+                                                    IsDirectlyControllable = false
+
+                                                }
+                                                ),
+                                            IfFalse = Helpers.CreateActionList(
+                                                new Conditional() {
+                                                    ConditionsChecker = new ConditionsChecker() {
+                                                        Operation = Operation.And,
+                                                        Conditions = new Condition[] {
+                                                            new ContextConditionSharedValueHigher() {
+                                                                Not = false,
+                                                                SharedValue = AbilitySharedValue.Damage,
+                                                                HigherOrEqual = 8,
+                                                                Inverted = true
+                                                            }
+                                                        }
+                                                    },
+                                                    IfTrue = Helpers.CreateActionList(
+                                                        new ContextActionSpawnMonster() {
+                                                            m_Blueprint = SummonedMastodon,
+                                                            AfterSpawn = Helpers.CreateActionList(
+                                                                new ContextActionApplyBuff() {
+                                                                    m_Buff = PlantBlessingMajorSummonsBuff.ToReference<BlueprintBuffReference>(),
+                                                                    Permanent = true,
+                                                                    UseDurationSeconds = false,
+                                                                    DurationValue = new ContextDurationValue() {
+                                                                        Rate = DurationRate.Rounds,
+                                                                        DiceType = DiceType.Zero,
+                                                                        DiceCountValue = 0,
+                                                                        BonusValue = 0
+                                                                    },
+                                                                    IsNotDispelable = true
+                                                                }
+                                                                ),
+                                                            m_SummonPool = null,
+                                                            DurationValue = new ContextDurationValue() {
+                                                                Rate = DurationRate.Minutes,
+                                                                DiceType = DiceType.Zero,
+                                                                DiceCountValue = 0,
+                                                                BonusValue = 1,
+                                                                m_IsExtendable = true
+                                                            },
+                                                            CountValue = new ContextDiceValue() {
+                                                                DiceType = DiceType.Zero,
+                                                                DiceCountValue = 0,
+                                                                BonusValue = 1
+                                                            },
+                                                            LevelValue = 0,
+                                                            DoNotLinkToCaster = false,
+                                                            IsDirectlyControllable = false
+
+                                                        }
+                                                        ),
+                                                    IfFalse = Helpers.CreateActionList(
+                                                        new Conditional() {
+                                                            ConditionsChecker = new ConditionsChecker() {
+                                                                Operation = Operation.And,
+                                                                Conditions = new Condition[] {
+                                                                    new ContextConditionSharedValueHigher() {
+                                                                        Not = false,
+                                                                        SharedValue = AbilitySharedValue.Damage,
+                                                                        HigherOrEqual = 9,
+                                                                        Inverted = true
+                                                                    }
+                                                                }
+                                                            },
+                                                            IfTrue = Helpers.CreateActionList(
+                                                                new ContextActionSpawnMonster() {
+                                                                    m_Blueprint = SummonedNereid,
+                                                                    AfterSpawn = Helpers.CreateActionList(
+                                                                        new ContextActionApplyBuff() {
+                                                                            m_Buff = PlantBlessingMajorSummonsBuff.ToReference<BlueprintBuffReference>(),
+                                                                            Permanent = true,
+                                                                            UseDurationSeconds = false,
+                                                                            DurationValue = new ContextDurationValue() {
+                                                                                Rate = DurationRate.Rounds,
+                                                                                DiceType = DiceType.Zero,
+                                                                                DiceCountValue = 0,
+                                                                                BonusValue = 0
+                                                                            },
+                                                                            IsNotDispelable = true
+                                                                        }
+                                                                        ),
+                                                                    m_SummonPool = null,
+                                                                    DurationValue = new ContextDurationValue() {
+                                                                        Rate = DurationRate.Minutes,
+                                                                        DiceType = DiceType.Zero,
+                                                                        DiceCountValue = 0,
+                                                                        BonusValue = 1,
+                                                                        m_IsExtendable = true
+                                                                    },
+                                                                    CountValue = new ContextDiceValue() {
+                                                                        DiceType = DiceType.Zero,
+                                                                        DiceCountValue = 0,
+                                                                        BonusValue = 1
+                                                                    },
+                                                                    LevelValue = 0,
+                                                                    DoNotLinkToCaster = false,
+                                                                    IsDirectlyControllable = false
+
+                                                                }
+                                                                ),
+                                                            IfFalse = Helpers.CreateActionList(
+                                                                new ContextActionSpawnMonster() {
+                                                                    m_Blueprint = SummonedHamadryad,
+                                                                    AfterSpawn = Helpers.CreateActionList(
+                                                                        new ContextActionApplyBuff() {
+                                                                            m_Buff = PlantBlessingMajorSummonsBuff.ToReference<BlueprintBuffReference>(),
+                                                                            Permanent = true,
+                                                                            UseDurationSeconds = false,
+                                                                            DurationValue = new ContextDurationValue() {
+                                                                                Rate = DurationRate.Rounds,
+                                                                                DiceType = DiceType.Zero,
+                                                                                DiceCountValue = 0,
+                                                                                BonusValue = 0
+                                                                            },
+                                                                            IsNotDispelable = true
+                                                                        }
+                                                                        ),
+                                                                    m_SummonPool = null,
+                                                                    DurationValue = new ContextDurationValue() {
+                                                                        Rate = DurationRate.Minutes,
+                                                                        DiceType = DiceType.Zero,
+                                                                        DiceCountValue = 0,
+                                                                        BonusValue = 1,
+                                                                        m_IsExtendable = true
+                                                                    },
+                                                                    CountValue = new ContextDiceValue() {
+                                                                        DiceType = DiceType.Zero,
+                                                                        DiceCountValue = 0,
+                                                                        BonusValue = 1
+                                                                    },
+                                                                    LevelValue = 0,
+                                                                    DoNotLinkToCaster = false,
+                                                                    IsDirectlyControllable = false
+
+                                                                }
+                                                                )
+                                                        }
+                                                        )
+                                                }
+                                                )
+                                        }
+                                        )
+                                }
+                                )
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = BlessingResource;
+                    c.m_IsSpendResource = true;
+                    c.Amount = 1;
+                    c.ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>() { WarpriestAspectOfWarBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.DamageDice;
+                    c.m_BaseValueType = ContextRankBaseValueType.SummClassLevelWithArchetype;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.Div2;
+                    c.Archetype = DivineTrackerArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.m_AdditionalArchetypes = new BlueprintArchetypeReference[] { TempleChampionArchetype.ToReference<BlueprintArchetypeReference>() };
+                    c.m_Class = new BlueprintCharacterClassReference[] {
+                        WarpriestClass,
+                        RangerClass,
+                        PaladinClass
+                    };
+                });
+                bp.AddComponent<ContextCalculateSharedValue>(c => {
+                    c.ValueType = AbilitySharedValue.Damage;
+                    c.Value = new ContextDiceValue() {
+                        DiceType = DiceType.Zero,
+                        DiceCountValue = new ContextValue() {
+                            ValueType = ContextValueType.Simple,
+                            Value = 0,
+                            ValueRank = AbilityRankType.DamageDice,
+                            ValueShared = AbilitySharedValue.Damage
+                        },
+                        BonusValue = new ContextValue() {
+                            ValueType = ContextValueType.Rank,
+                            Value = 0,
+                            ValueRank = AbilityRankType.StatBonus,
+                            ValueShared = AbilitySharedValue.StatBonus
+                        }
+                    };
+                    c.Modifier = 1;
+                });
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Touch;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = true;
+                bp.CanTargetSelf = true;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Standard;
+                bp.LocalizedDuration = Helpers.CreateString("PlantBlessingMajorAbility.Duration", "1 minute");
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+
+
+            var PlantBlessingMajorFeature = Helpers.CreateBlueprint<BlueprintFeature>("PlantBlessingMajorFeature", bp => {
+                bp.SetName("Plant Battle Companion");
+                bp.SetDescription("At 10th level, you can summon a battle companion. This ability functions " +
+                    "as summon nature's ally IV with a duration of 1 minute. This ability can summon only one animal, regardless of the list used, and the creature’s " +
+                    "type changes to plant instead of animal. For every 2 levels beyond 10th, the level of the summon nature's ally {g|Encyclopedia:Spell}spell{/g} " +
+                    "increases by 1 (to a maximum of summon nature's ally IX at 20th level).");
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        PlantBlessingMajorAbility.ToReference<BlueprintUnitFactReference>()
+
+                    };
+                });
+                bp.HideInCharacterSheetAndLevelUp = true;
+            });
 
             var PlantBlessingFeature = Helpers.CreateBlueprint<BlueprintFeature>("PlantBlessingFeature", bp => {
                 bp.SetName("Plant");

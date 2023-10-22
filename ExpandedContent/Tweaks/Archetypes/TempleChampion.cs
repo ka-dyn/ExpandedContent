@@ -1281,6 +1281,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             AnimalBlessingFeatureConfig.m_AdditionalClasses = AnimalBlessingFeatureConfig.m_AdditionalClasses.AppendToArray(PaladinClass.ToReference<BlueprintCharacterClassReference>());
             AnimalBlessingFeatureConfig.m_Archetypes = AnimalBlessingFeatureConfig.m_Archetypes.AppendToArray(TempleChampionArchetype.ToReference<BlueprintArchetypeReference>());
             var AnimalBlessingMajorAbilityConfig = Resources.GetBlueprint<BlueprintAbility>("93f0098fe08b94f41a351a4fbb00518a").GetComponent<ContextRankConfig>();
+            AnimalBlessingMajorAbilityConfig.m_BaseValueType = ContextRankBaseValueType.SummClassLevelWithArchetype;
             AnimalBlessingMajorAbilityConfig.m_Class = AnimalBlessingMajorAbilityConfig.m_Class.AppendToArray(PaladinClass.ToReference<BlueprintCharacterClassReference>());
             AnimalBlessingMajorAbilityConfig.Archetype = TempleChampionArchetype.ToReference<BlueprintArchetypeReference>();
             //Darkness
