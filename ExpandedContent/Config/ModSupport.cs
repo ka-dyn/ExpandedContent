@@ -649,6 +649,9 @@ namespace ExpandedContent.Config {
                         Resources.GetModBlueprint<BlueprintAbility>("WarBlessingMinorAbilitySpeedSwift").ToReference<BlueprintAbilityReference>(),
                         Resources.GetModBlueprint<BlueprintAbility>("PlantBlessingMinorAbility").ToReference<BlueprintAbilityReference>(),
                         Resources.GetModBlueprint<BlueprintAbility>("PlantBlessingMajorAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("CommunityBlessingMinorAbilitySelf").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("CommunityBlessingMinorAbilityOthers").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("CommunityBlessingMajorAbility").ToReference<BlueprintAbilityReference>(),
                     };
                     var DivineTrackerBlessingSelectionFirst = Resources.GetModBlueprint<BlueprintFeatureSelection>("DivineTrackerBlessingSelectionFirst");
                     var BlessingSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("6d9dcc2a59210a14891aeedb09d406aa");
@@ -714,7 +717,8 @@ namespace ExpandedContent.Config {
                     var newquickenblessings = new BlueprintFeature[] {
                         Resources.GetModBlueprint<BlueprintFeature>("QuickenBlessingArtificeFeature"),
                         Resources.GetModBlueprint<BlueprintFeature>("QuickenBlessingWarFeature"),
-                        Resources.GetModBlueprint<BlueprintFeature>("QuickenBlessingPlantFeature")
+                        Resources.GetModBlueprint<BlueprintFeature>("QuickenBlessingPlantFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("QuickenBlessingCommunityFeature")
                     };
                     foreach (var newquickenblessing in newquickenblessings) {
                         QuickenBlessing.m_AllFeatures = QuickenBlessing.m_AllFeatures.AppendToArray(newquickenblessing.ToReference<BlueprintFeatureReference>());

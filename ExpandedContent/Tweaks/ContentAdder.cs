@@ -175,6 +175,8 @@ namespace ExpandedContent.Tweaks {
 
                 Blessings.ArtificeBlessing.AddArtificeBlessing();
                 Blessings.WarBlessing.AddWarBlessing();
+                Blessings.PlantBlessing.AddPlantBlessing();
+                Blessings.CommunityBlessing.AddCommunityBlessing();
 
                 Archetypes.StormDruid.AddStormDruid();
                 Archetypes.Treesinger.AddTreesinger();
