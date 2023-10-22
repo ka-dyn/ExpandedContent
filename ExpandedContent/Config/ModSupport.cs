@@ -648,6 +648,7 @@ namespace ExpandedContent.Config {
                         Resources.GetModBlueprint<BlueprintAbility>("WarBlessingMinorAbilitySavesSwift").ToReference<BlueprintAbilityReference>(),
                         Resources.GetModBlueprint<BlueprintAbility>("WarBlessingMinorAbilitySpeedSwift").ToReference<BlueprintAbilityReference>(),
                         Resources.GetModBlueprint<BlueprintAbility>("PlantBlessingMinorAbility").ToReference<BlueprintAbilityReference>(),
+                        Resources.GetModBlueprint<BlueprintAbility>("PlantBlessingMajorAbility").ToReference<BlueprintAbilityReference>(),
                     };
                     var DivineTrackerBlessingSelectionFirst = Resources.GetModBlueprint<BlueprintFeatureSelection>("DivineTrackerBlessingSelectionFirst");
                     var BlessingSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("6d9dcc2a59210a14891aeedb09d406aa");
@@ -660,7 +661,7 @@ namespace ExpandedContent.Config {
                             BlessingSelection.ToReference<BlueprintFeatureReference>()
                         };
                     });
-                    EnhancedBlessingsFeature.GetComponent<AutoMetamagic>().Abilities.AddRange(newblessingabilities.ToList()); //Needs testing
+                    EnhancedBlessingsFeature.GetComponent<AutoMetamagic>().Abilities.AddRange(newblessingabilities.ToList());
 
                     var QuickenBlessing = Resources.GetBlueprint<BlueprintFeatureSelection>("094d657008ac413f8198a351b573791a");
                     var PaladinClass = Resources.GetBlueprintReference<BlueprintCharacterClassReference>("bfa11238e7ae3544bbeb4d0b92e897ec");
