@@ -49,9 +49,6 @@ namespace ExpandedContent.Tweaks.Blessings {
             var CommunityRangedCritIcon = AssetLoader.LoadInternal("Skills", "Icon_CommunityRangedCrit.jpg");
             var CommunityMeleeCritIcon = AssetLoader.LoadInternal("Skills", "Icon_CommunityMeleeCrit.jpg");
 
-
-
-
             var CommunityBlessingMinorBuff = Helpers.CreateBuff("CommunityBlessingMinorBuff", bp => {//Empty, used as a flag in AidAnother
                 bp.SetName("Communal Aid");
                 bp.SetDescription("For the next minute, whenever you use the aid another action, the bonus granted increases by 2.");
@@ -61,8 +58,6 @@ namespace ExpandedContent.Tweaks.Blessings {
                 bp.m_Flags = BlueprintBuff.Flags.RemoveOnRest;
                 bp.Stacking = StackingType.Replace;
             });
-
-
             var CommunityBlessingMinorAbilitySelf = Helpers.CreateBlueprint<BlueprintAbility>("CommunityBlessingMinorAbilitySelf", bp => {
                 bp.SetName("Communal Aid - Self");
                 bp.SetDescription("As a swift action, grant yourself the blessing of community. For the next minute, whenever you use the aid another action, the bonus granted increases by 2.");
@@ -156,11 +151,9 @@ namespace ExpandedContent.Tweaks.Blessings {
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
 
-
             var CommunityBlessingMajorMeleeCrit = Helpers.CreateBuff("CommunityBlessingMajorMeleeCrit", bp => {
-                bp.SetName("Creeping Vines");
-                bp.SetDescription("At 1st level, as a swift action you can cause any creature you hit this round with a melee attackto sprout entangling vines that " +
-                    "attempt to hold it in place, entangling it for 1 round (Reflex negates).");
+                bp.SetName("Fight as One - Melee Crit");
+                bp.SetDescription("The insight bonus to hit against this foe is increased to +4 for one round.");
                 bp.m_Icon = CommunityMeleeCritIcon;
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = false;
@@ -168,9 +161,8 @@ namespace ExpandedContent.Tweaks.Blessings {
                 bp.Stacking = StackingType.Replace;
             });
             var CommunityBlessingMajorMeleeNormal = Helpers.CreateBuff("CommunityBlessingMajorMeleeNormal", bp => { //Needs Testing!!!
-                bp.SetName("Creeping Vines");
-                bp.SetDescription("At 1st level, as a swift action you can cause any creature you hit this round with a melee attackto sprout entangling vines that " +
-                    "attempt to hold it in place, entangling it for 1 round (Reflex negates).");
+                bp.SetName("Fight as One - Melee");
+                bp.SetDescription("Melee attacks against this foe have a +2 insight bonus to hit.");
                 bp.m_Icon = CommunityMeleeNormalIcon;
                 bp.AddComponent<AttackBonusAgainstTarget>(c => {
                     c.Value = new ContextValue() {
@@ -202,9 +194,8 @@ namespace ExpandedContent.Tweaks.Blessings {
             });
 
             var CommunityBlessingMajorRangedCrit = Helpers.CreateBuff("CommunityBlessingMajorRangedCrit", bp => {
-                bp.SetName("Creeping Vines");
-                bp.SetDescription("At 1st level, as a swift action you can cause any creature you hit this round with a melee attackto sprout entangling vines that " +
-                    "attempt to hold it in place, entangling it for 1 round (Reflex negates).");
+                bp.SetName("Fight as One - Ranged Crit");
+                bp.SetDescription("The insight bonus to hit against this foe is increased to +4 for one round.");
                 bp.m_Icon = CommunityRangedCritIcon;
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = false;
@@ -212,9 +203,8 @@ namespace ExpandedContent.Tweaks.Blessings {
                 bp.Stacking = StackingType.Replace;
             });
             var CommunityBlessingMajorRangedNormal = Helpers.CreateBuff("CommunityBlessingMajorRangedNormal", bp => { //Needs Testing!!!
-                bp.SetName("Creeping Vines");
-                bp.SetDescription("At 1st level, as a swift action you can cause any creature you hit this round with a melee attackto sprout entangling vines that " +
-                    "attempt to hold it in place, entangling it for 1 round (Reflex negates).");
+                bp.SetName("Fight as One - Ranged");
+                bp.SetDescription("Ranged attacks against this foe have a +2 insight bonus to hit.");
                 bp.m_Icon = CommunityRangedNormalIcon;
                 bp.AddComponent<AttackBonusAgainstTarget>(c => {
                     c.Value = new ContextValue() {
@@ -248,9 +238,10 @@ namespace ExpandedContent.Tweaks.Blessings {
 
 
             var CommunityBlessingMajorBuff = Helpers.CreateBuff("CommunityBlessingMajorBuff", bp => {
-                bp.SetName("Community Type");
-                bp.SetDescription("Creatures summoned by the plant battle companion ability are granted the plant type. Community type creatures " +
-                    "are granted immunity to paralysis, sleep, mind affecting, poison, polymorph, and stun effects.");
+                bp.SetName("Fight as One");
+                bp.SetDescription("Whenever you make a successful melee or ranged attack against a foe, allies " +
+                    "gain a +2 insight bonus on attacks of the same type you made against that foe—melee attacks if you made a melee attack, or ranged " +
+                    "attacks if you made a ranged attack. If you score a critical hit, this bonus increases to +4 until the start of your next turn.");
                 bp.m_Icon = ImprovedFiendishQuarryIcon;
                 bp.AddComponent<AddInitiatorAttackWithWeaponTrigger>(c => {//Normal Melee
                     c.TriggerBeforeAttack = false;
