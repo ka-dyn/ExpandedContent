@@ -635,6 +635,7 @@ namespace ExpandedContent.Tweaks.Blessings {
                     };
                 });
             });
+            PlantBlessingFeature.IsPrerequisiteFor = new List<BlueprintFeatureReference>() { QuickenBlessingPlantFeature.ToReference<BlueprintFeatureReference>() };
 
 
         }

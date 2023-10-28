@@ -415,6 +415,7 @@ namespace ExpandedContent.Tweaks.Blessings {
                     };
                 });
             });
+            WarBlessingFeature.IsPrerequisiteFor = new List<BlueprintFeatureReference>() { QuickenBlessingWarFeature.ToReference<BlueprintFeatureReference>() };
 
             var WarBlessingMinorAbilitySpeedSwift = Helpers.CreateBlueprint<BlueprintAbility>("WarBlessingMinorAbilitySpeedSwift", bp => {
                 bp.SetName("War Mind - Speed");

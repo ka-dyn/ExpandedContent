@@ -231,6 +231,7 @@ namespace ExpandedContent.Tweaks.Blessings {
                     };
                 });
             });
+            ArtificeBlessingFeature.IsPrerequisiteFor = new List<BlueprintFeatureReference>() { QuickenBlessingArtificeFeature.ToReference<BlueprintFeatureReference>() };
 
 
 

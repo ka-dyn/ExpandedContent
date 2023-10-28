@@ -107,7 +107,7 @@ namespace ExpandedContent.Tweaks.Blessings {
             var CommunityBlessingMinorAbilityOthers = Helpers.CreateBlueprint<BlueprintAbility>("CommunityBlessingMinorAbilityOthers", bp => {
                 bp.SetName("Communal Aid - Allies");
                 bp.SetDescription("Grant an ally the blessing of community. For the next minute, whenever the ally uses the aid another action, the bonus granted increases by 2.");
-                bp.m_Icon = ImprovedFiendishQuarryIcon;
+                bp.m_Icon = FiendishQuarryIcon;
                 bp.AddComponent<AbilityResourceLogic>(c => {
                     c.m_RequiredResource = BlessingResource;
                     c.m_IsSpendResource = true;
@@ -566,9 +566,9 @@ namespace ExpandedContent.Tweaks.Blessings {
                         CommunityBlessingFeature.ToReference<BlueprintFeatureReference>(),
                         DivineTrackerCommunityBlessingFeature.ToReference<BlueprintFeatureReference>()
                     };
-                });
+                });                
             });
-
+            CommunityBlessingFeature.IsPrerequisiteFor = new List<BlueprintFeatureReference>() { QuickenBlessingCommunityFeature.ToReference<BlueprintFeatureReference>() };
         }
     }
 }
