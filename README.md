@@ -150,6 +150,8 @@ New Domains / Subdomains
 
 New Blessings
 - Artifice
+- Community
+- Plant
 - War
 
 New Alchemist Discoveries
