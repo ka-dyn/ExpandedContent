@@ -2632,6 +2632,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                     c.m_Feature = DrakeNaturalArmor8Applied.ToReference<BlueprintFeatureReference>();
                     c.BeforeThisLevel = true;
                 });
+                bp.HideInUI = true;
             });            
             var DrakeNaturalArmor9 = Helpers.CreateBlueprint<BlueprintFeature>("DrakeNaturalArmor9", bp => {
                 bp.SetName("Drake Natural Armor");

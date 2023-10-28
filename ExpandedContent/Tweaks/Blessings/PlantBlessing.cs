@@ -167,7 +167,7 @@ namespace ExpandedContent.Tweaks.Blessings {
                                 DiceCountValue = new ContextValue(),
                                 BonusValue = new ContextValue() {
                                     ValueType = ContextValueType.Simple,
-                                    Value = 3,
+                                    Value = 1,
                                     ValueRank = AbilityRankType.Default,
                                     ValueShared = AbilitySharedValue.Damage,
                                     Property = UnitProperty.None
