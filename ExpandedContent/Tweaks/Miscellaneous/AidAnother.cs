@@ -48,6 +48,36 @@ namespace ExpandedContent.Tweaks.Miscellaneous {
             var OracleClass = Resources.GetBlueprint<BlueprintCharacterClass>("20ce9bf8af32bee4c8557a045ab499b1");
 
 
+            //Stackable bonuses
+                //Community Blessing
+            var CommunityBlessingMinorBuff = Resources.GetModBlueprint<BlueprintBuff>("CommunityBlessingMinorBuff");
+            var CommunityBlessingMinorProperty = Helpers.CreateBlueprint<BlueprintUnitProperty>("CommunityBlessingMinorProperty", bp => {
+                bp.AddComponent<FactRankGetter>(c => {
+                    c.Settings = new PropertySettings() {
+                        m_Progression = PropertySettings.Progression.AsIs
+                    };
+                    c.m_Fact = CommunityBlessingMinorBuff.ToReference<BlueprintUnitFactReference>();
+                });
+                bp.BaseValue = 2;
+                bp.OperationOnComponents = BlueprintUnitProperty.MathOperation.Multiply;
+            });
+
+            var StackableBonusesProperty = Helpers.CreateBlueprint<BlueprintUnitProperty>("StackableBonusesProperty", bp => {
+                bp.AddComponent<CustomPropertyGetter>(c => {
+                    c.Settings = new PropertySettings() {
+                        m_Progression = PropertySettings.Progression.AsIs,
+                        m_StartLevel = 0,
+                        m_StepLevel = 0,
+                        m_Negate = false,
+                        m_LimitType = PropertySettings.LimitType.None,
+                        m_Min = 0,
+                        m_Max = 5,
+                    };
+                    c.m_Property = CommunityBlessingMinorProperty.ToReference<BlueprintUnitPropertyReference>();
+                });
+                bp.BaseValue = 0;
+                bp.OperationOnComponents = BlueprintUnitProperty.MathOperation.Sum;
+            });
 
             //Oracle Perfect Aid
             var OracleRevelationPerfectAid = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationPerfectAid", bp => {
@@ -208,7 +238,8 @@ namespace ExpandedContent.Tweaks.Miscellaneous {
                     c.m_CustomProperty = OracleRevelationPerfectAidProperty.ToReference<BlueprintUnitPropertyReference>();
                     c.m_CustomPropertyList = new BlueprintUnitPropertyReference[] {
                         OracleRevelationPerfectAidProperty.ToReference<BlueprintUnitPropertyReference>(),
-                        AsavirCamaraderieProperty.ToReference<BlueprintUnitPropertyReference>()
+                        AsavirCamaraderieProperty.ToReference<BlueprintUnitPropertyReference>(),
+                        StackableBonusesProperty.ToReference<BlueprintUnitPropertyReference>()
                     };
                 });
                 bp.AddComponent<ContextCalculateSharedValue>(c => {
@@ -272,7 +303,8 @@ namespace ExpandedContent.Tweaks.Miscellaneous {
                     c.m_CustomProperty = OracleRevelationPerfectAidProperty.ToReference<BlueprintUnitPropertyReference>();
                     c.m_CustomPropertyList = new BlueprintUnitPropertyReference[] {
                         OracleRevelationPerfectAidProperty.ToReference<BlueprintUnitPropertyReference>(),
-                        AsavirCamaraderieProperty.ToReference<BlueprintUnitPropertyReference>()
+                        AsavirCamaraderieProperty.ToReference<BlueprintUnitPropertyReference>(),
+                        StackableBonusesProperty.ToReference<BlueprintUnitPropertyReference>()
                     };
                 });
                 bp.AddComponent<ContextCalculateSharedValue>(c => {
@@ -428,6 +460,10 @@ namespace ExpandedContent.Tweaks.Miscellaneous {
                                     new ContextConditionCasterHasFact() {
                                         Not = false,
                                         m_Fact = AsavirCamaraderieFeature.ToReference<BlueprintUnitFactReference>()
+                                    },
+                                    new ContextConditionCasterHasFact() {
+                                        Not = false,
+                                        m_Fact = CommunityBlessingMinorBuff.ToReference<BlueprintUnitFactReference>()
                                     }
                                 }
                             },
@@ -505,6 +541,10 @@ namespace ExpandedContent.Tweaks.Miscellaneous {
                                     new ContextConditionCasterHasFact() {
                                         Not = false,
                                         m_Fact = AsavirCamaraderieFeature.ToReference<BlueprintUnitFactReference>()
+                                    },
+                                    new ContextConditionCasterHasFact() {
+                                        Not = false,
+                                        m_Fact = CommunityBlessingMinorBuff.ToReference<BlueprintUnitFactReference>()
                                     }
                                 }
                             },
@@ -620,6 +660,10 @@ namespace ExpandedContent.Tweaks.Miscellaneous {
                                     new ContextConditionCasterHasFact() {
                                         Not = false,
                                         m_Fact = AsavirCamaraderieFeature.ToReference<BlueprintUnitFactReference>()
+                                    },
+                                    new ContextConditionCasterHasFact() {
+                                        Not = false,
+                                        m_Fact = CommunityBlessingMinorBuff.ToReference<BlueprintUnitFactReference>()
                                     }
                                 }
                             },
@@ -707,6 +751,10 @@ namespace ExpandedContent.Tweaks.Miscellaneous {
                                     new ContextConditionCasterHasFact() {
                                         Not = false,
                                         m_Fact = AsavirCamaraderieFeature.ToReference<BlueprintUnitFactReference>()
+                                    },
+                                    new ContextConditionCasterHasFact() {
+                                        Not = false,
+                                        m_Fact = CommunityBlessingMinorBuff.ToReference<BlueprintUnitFactReference>()
                                     }
                                 }
                             },

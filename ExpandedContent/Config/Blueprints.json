@@ -2759,7 +2759,31 @@
     "AsavirCamaraderieProperty": "7060fc31-2cb4-443c-96a7-8fc3fcbfa4e0",
     "OracleRevelationPerfectAidProperty": "b5827653-2f5c-4bc7-80e7-b462d5972ae6",
 
-    "HalflingOpportunistExcellentAidFeature": "c3492001-bdfa-48b4-ac8c-7489f63c13c9"
+    "HalflingOpportunistExcellentAidFeature": "c3492001-bdfa-48b4-ac8c-7489f63c13c9",
+
+    "CommunityBlessingFeature": "473104da-4617-4a29-9be7-b1b07ffb78c0",
+    "CommunityBlessingMajorAbility": "5e6fa310-47b1-40cc-bc33-89c85bf1ab83",
+    "CommunityBlessingMajorBuff": "3645d8a8-5df5-4499-8702-0b2188bb7653",
+    "CommunityBlessingMajorFeature": "6ac76404-f7fd-472f-97cb-11b522d1bf1e",
+    "CommunityBlessingMajorMeleeCrit": "f39448ea-6dbf-4828-8fd9-08ff97efd49a",
+    "CommunityBlessingMajorMeleeNormal": "bff839b9-1dc5-4704-ab56-1780b466f47f",
+    "CommunityBlessingMajorRangedCrit": "006baed7-0d6a-49d3-8f62-15005d553bfb",
+    "CommunityBlessingMajorRangedNormal": "d9dd9e6c-aa20-4bc3-b753-9d581a8bf32f",
+    "CommunityBlessingMinorAbilityOthers": "a9d50fe6-3496-4c0d-9955-b3a8a12842d3",
+    "CommunityBlessingMinorAbilitySelf": "1aaa18df-fadf-4362-bbd1-8fa980209efa",
+    "CommunityBlessingMinorBuff": "643f76f4-7ee2-4f3f-8cb9-d9a794c069c1",
+    "CommunityBlessingMinorProperty": "8739ee40-fc1b-4e3d-bdff-6dd6f8808e67",
+    "DivineTrackerCommunityBlessingFeature": "862c337f-2e87-41ad-96b9-ba37b4722fe5",
+    "DivineTrackerPlantBlessingFeature": "9246c544-ce01-41e9-844e-26d81f462190",
+    "PlantBlessingFeature": "5d8e2bf9-e381-46bc-b542-84c97323f7e0",
+    "PlantBlessingMajorAbility": "ece2efd3-16fd-4bfc-87f8-e20b2f2e2a07",
+    "PlantBlessingMajorFeature": "0bc80739-9f2f-4961-bc36-c5d07f087c8f",
+    "PlantBlessingMajorSummonsBuff": "68c43314-a2d8-4747-bbc4-7fd679fb8267",
+    "PlantBlessingMinorAbility": "726d7965-b47c-46a0-8251-53fd47fb4eca",
+    "PlantBlessingMinorBuff": "287f884d-8897-4962-bd70-cb93a9fec9e9",
+    "QuickenBlessingCommunityFeature": "82dbe005-f710-4049-98d6-83869a132ffd",
+    "QuickenBlessingPlantFeature": "aad9edb5-d4ef-4d14-8d0c-b43b8f6a4ef4",
+    "StackableBonusesProperty": "11898599-da44-403e-9c80-4e89f4fa6d8b"
 
 
   },
