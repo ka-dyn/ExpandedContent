@@ -1938,7 +1938,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 bp.SetName("Drake Intellect");
                 bp.SetDescription("The drake’s Intelligence score increases by 4.");
                 bp.AddComponent<AddStatBonus>(c => {
-                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+                    c.Descriptor = ModifierDescriptor.Racial;
                     c.Stat = StatType.Intelligence;
                     c.Value = 4;
                 });
@@ -1951,17 +1951,17 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                     c.m_Feature = DrakeIntellectFeature.ToReference<BlueprintFeatureReference>();
                 });
                 bp.AddComponent<AddStatBonus>(c => {
-                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+                    c.Descriptor = ModifierDescriptor.Racial;
                     c.Stat = StatType.Intelligence;
                     c.Value = 2;
                 });
                 bp.AddComponent<AddStatBonus>(c => {
-                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+                    c.Descriptor = ModifierDescriptor.Racial;
                     c.Stat = StatType.Wisdom;
                     c.Value = 2;
                 });
                 bp.AddComponent<AddStatBonus>(c => {
-                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+                    c.Descriptor = ModifierDescriptor.Racial;
                     c.Stat = StatType.Charisma;
                     c.Value = 2;
                 });
