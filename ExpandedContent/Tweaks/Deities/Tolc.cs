@@ -49,14 +49,14 @@ namespace ExpandedContent.Tweaks.Deities {
                     "\nFavoured Weapon: Javelin   " +
                     "\nHoly Symbol: Antlers and ice javelin   " +
                     "\nSacred Animal: Caribou   " +
-                    "\nTole is master of the frozen lands, where people struggle daily to survive the harsh elements. He gazes favorably upon those who learn to " +
-                    "live within this wild domain and appreciate its fierce beauty. Tole stands 7 feet tall and has a stout but muscular figure. His light brown " +
+                    "\nTolc is master of the frozen lands, where people struggle daily to survive the harsh elements. He gazes favorably upon those who learn to " +
+                    "live within this wild domain and appreciate its fierce beauty. Tolc stands 7 feet tall and has a stout but muscular figure. His light brown " +
                     "skin always holds a rosy flush, as though the empyreal lord had just stepped in from the cold. Numerous scars mar his broad face, which constantly " +
                     "sports a stern expression, though a kind light occasionally warms his hardened gaze. From his back stretch two arching tusks carved from celestial " +
-                    "ice. Snow-Strider and his agents help worthy individuals struggling to live in cold, inhospitable climes. Many northern cultures credit Tole with " +
-                    "teaching their people to build shelters from ice. Tole is a sworn enemy of Kostchtchie, and Tole's champions hone their skills in battle to best " +
-                    "combat frost giants and white dragons. On occasion, a mortal champion catches Tole's attention long enough for the empyreal lord to grant this " +
-                    "mortal divine strength and tactical knowledge with which to defend her kinsfolk. Tole can sometimes be found in the coldest reaches of Elysium's " +
+                    "ice. Snow-Strider and his agents help worthy individuals struggling to live in cold, inhospitable climes. Many northern cultures credit Tolc with " +
+                    "teaching their people to build shelters from ice. Tolc is a sworn enemy of Kostchtchie, and Tolc's champions hone their skills in battle to best " +
+                    "combat frost giants and white dragons. On occasion, a mortal champion catches Tolc's attention long enough for the empyreal lord to grant this " +
+                    "mortal divine strength and tactical knowledge with which to defend her kinsfolk. Tolc can sometimes be found in the coldest reaches of Elysium's " +
                     "mountains, but his followers on the Material Plane claim to see Snow-Strider in their temple-longhouses with some frequency. Many believe he assumes " +
                     "the guise of a wanderer in need of respite and leaves flecks of gold in the bedding of those who provide him hospitality.");
                 bp.m_Icon = TolcIcon;

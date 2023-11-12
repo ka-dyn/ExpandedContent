@@ -2783,7 +2783,9 @@
     "PlantBlessingMinorBuff": "287f884d-8897-4962-bd70-cb93a9fec9e9",
     "QuickenBlessingCommunityFeature": "82dbe005-f710-4049-98d6-83869a132ffd",
     "QuickenBlessingPlantFeature": "aad9edb5-d4ef-4d14-8d0c-b43b8f6a4ef4",
-    "StackableBonusesProperty": "11898599-da44-403e-9c80-4e89f4fa6d8b"
+    "StackableBonusesProperty": "11898599-da44-403e-9c80-4e89f4fa6d8b",
+
+    "MindchemistMutagenResourceBackup": "097db6f8-bc26-43d3-aab3-3c6fefbcabed"
 
 
   },

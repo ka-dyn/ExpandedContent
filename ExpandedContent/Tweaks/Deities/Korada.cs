@@ -60,7 +60,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     "the viewer's region and the local ideals of enlightenment and peace, though the most common representation is that of two kneeling figures before a lotus. " +
                     "Many who are weary from a lifetime of imbalance or violence turn to Korada in search of peace. Retired soldiers, their hands stained with blood, lay down " +
                     "their weapons forever in the name of this empyreal lord. Likewise, diplomats in strange lands, individuals facing difficult moral choices, and champions of " +
-                    "evil who long for absolution all find comfort in the teachings of the OpenHand of Harmony. While true repentance is necessary for evil to turn to good, " +
+                    "evil who long for absolution all find comfort in the teachings of the Open Hand of Harmony. While true repentance is necessary for evil to turn to good, " +
                     "Korada believes that no mortals are beyond redemption. Korada is said to possess the gift of foresight, but he rarely acts on these strange visions. He " +
                     "believes the struggle to change is always worthwhile, even if such a journey does not always end in success. It is the process, not the result, that matters " +
                     "most to Korada and his followers. When he is not teaching lessons of harmony to his devotees, Korada resides in Nirvana, in the heart of the Dream Lotus-an " +
