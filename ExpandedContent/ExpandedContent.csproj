@@ -538,6 +538,7 @@
     <Compile Include="Utilities\ActionFlow.cs" />
     <Compile Include="Utilities\AuraUtils.cs" />
     <Compile Include="Utilities\BlessingTools.cs" />
+    <Compile Include="Utilities\DeityTools.cs" />
     <Compile Include="Utilities\DynamicAsset.cs" />
     <Compile Include="Utilities\SpellWithDesriptorAdders.cs" />
     <Compile Include="Utilities\WitchTools.cs" />

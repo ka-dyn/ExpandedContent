@@ -1236,9 +1236,10 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var WarDomainBaseBuffConfig = Resources.GetBlueprint<BlueprintBuff>("aefec65136058694ab20cd71941eec81").GetComponent<ContextRankConfig>();
             WarDomainBaseBuffConfig.m_AdditionalArchetypes = WarDomainBaseBuffConfig.m_AdditionalArchetypes.AppendToArray(TempleChampionArchetype.ToReference<BlueprintArchetypeReference>());
             WarDomainBaseBuffConfig.m_Class = WarDomainBaseBuffConfig.m_Class.AppendToArray(PaladinClass.ToReference<BlueprintCharacterClassReference>());
-            var WarDomainBaseAbilityConfig = Resources.GetBlueprint<BlueprintAbility>("fbef6b2053ab6634a82df06f76c260e3").GetComponent<ContextRankConfig>();
-            WarDomainBaseAbilityConfig.m_AdditionalArchetypes = WarDomainBaseAbilityConfig.m_AdditionalArchetypes.AppendToArray(TempleChampionArchetype.ToReference<BlueprintArchetypeReference>());
-            WarDomainBaseAbilityConfig.m_Class = WarDomainBaseAbilityConfig.m_Class.AppendToArray(PaladinClass.ToReference<BlueprintCharacterClassReference>());
+                //Removed in update
+                //var WarDomainBaseAbilityConfig = Resources.GetBlueprint<BlueprintAbility>("fbef6b2053ab6634a82df06f76c260e3").GetComponent<ContextRankConfig>();
+                //WarDomainBaseAbilityConfig.m_AdditionalArchetypes = WarDomainBaseAbilityConfig.m_AdditionalArchetypes.AppendToArray(TempleChampionArchetype.ToReference<BlueprintArchetypeReference>());
+                //WarDomainBaseAbilityConfig.m_Class = WarDomainBaseAbilityConfig.m_Class.AppendToArray(PaladinClass.ToReference<BlueprintCharacterClassReference>());
             var WarDomainBaseFeatureConfig = Resources.GetBlueprint<BlueprintFeature>("640c20da7d6fcbc43b0d30a0a762f122").GetComponent<AddFeatureOnClassLevel>();
             WarDomainBaseFeatureConfig.m_AdditionalClasses = WarDomainBaseFeatureConfig.m_AdditionalClasses.AppendToArray(PaladinClass.ToReference<BlueprintCharacterClassReference>());
             WarDomainBaseFeatureConfig.m_Archetypes = WarDomainBaseFeatureConfig.m_Archetypes.AppendToArray(TempleChampionArchetype.ToReference<BlueprintArchetypeReference>());

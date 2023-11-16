@@ -92,16 +92,20 @@ namespace ExpandedContent.Tweaks.Deities {
                 });
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] {
-                        ChannelNegativeAllowed.ToReference<BlueprintUnitFactReference>(),
-                        DeathDomainAllowed.ToReference<BlueprintUnitFactReference>(),
-                        EvilDomainAllowed.ToReference<BlueprintUnitFactReference>(),
-                        LawDomainAllowed.ToReference<BlueprintUnitFactReference>(),
-                        TrickeryDomainAllowed.ToReference<BlueprintUnitFactReference>(),
-                        WarDomainAllowed.ToReference<BlueprintUnitFactReference>(),
-                        BloodDomainAllowed.ToReference<BlueprintUnitFactReference>(),
-                        ThieveryDomainAllowed.ToReference<BlueprintUnitFactReference>()
+                        ChannelNegativeAllowed.ToReference<BlueprintUnitFactReference>()
                     };
                 });
+
+                bp.SetAllowedDomains(
+                    DeityTools.DomainAllowed.DeathDomainAllowed,
+                    DeityTools.DomainAllowed.EvilDomainAllowed,
+                    DeityTools.DomainAllowed.LawDomainAllowed,
+                    DeityTools.DomainAllowed.TravelDomainAllowed,
+                    DeityTools.DomainAllowed.WarDomainAllowed,
+                    DeityTools.DomainAllowed.BloodDomainAllowed,
+                    DeityTools.DomainAllowed.ThieveryDomainAllowed
+                    );
+
                 bp.AddComponent<ForbidSpellbookOnAlignmentDeviation>(c => {
                     c.m_Spellbooks = new BlueprintSpellbookReference[] {
                         CrusaderSpellbook.ToReference<BlueprintSpellbookReference>(),
