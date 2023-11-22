@@ -43,10 +43,13 @@ namespace ExpandedContent.Config {
 
         private static readonly BlueprintDlc Dlc5 = Resources.GetBlueprint<BlueprintDlc>("95a25ca16bd54ce3b3ea56f83538fa0d");
 
+
+
+
         protected static bool IsDLCEnabled(BlueprintDlc dlcname) {
             IEnumerable<BlueprintDlc> dlcs = BlueprintRoot.Instance.DlcSettings.Dlcs;
             return dlcs.Contains(dlcname);
-            
+            //return dlcname.IsAvailable.Equals(true);
         }
 
 
