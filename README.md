@@ -197,7 +197,6 @@ New Spells
 
 Compatible with all mods as far as I am aware, extra features are unlocked if used with these mods
 - [TabletopTweaks-Base](https://github.com/Vek17/TabletopTweaks-Base "TabletopTweaks-Base") - New TabletopTweaks spells are added to this mods domains and mysteries - all new wildshape forms support TTT added feats.
-- [Mystical Mayhem](https://github.com/kreaddy/MysticalMayhem "Mystical Mayhem") - New Mystical Mayhem spells are added to this mods domains and mysteries.
 - [PrestigePlus](https://github.com/YLMstring/PrestigePlus) - Adds Aid Another related features to the Asavir Prestige Class.
 
 
