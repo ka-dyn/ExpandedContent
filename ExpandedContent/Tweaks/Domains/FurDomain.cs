@@ -23,6 +23,7 @@ using ExpandedContent.Config;
 using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.Designers.Mechanics.Buffs;
 using Kingmaker.ResourceLinks;
+using Kingmaker.UnitLogic.Mechanics.Properties;
 
 namespace ExpandedContent.Tweaks.Domains {
     internal class FurDomain {
@@ -120,7 +121,7 @@ namespace ExpandedContent.Tweaks.Domains {
                 });                
                 bp.AddComponent<ContextRankConfig>(c => {
                     c.m_Type = AbilityRankType.StatBonus;
-                    c.m_BaseValueType = ContextRankBaseValueType.MaxClassLevelWithArchetype;
+                    c.m_BaseValueType = ContextRankBaseValueType.SummClassLevelWithArchetype;
                     c.m_Stat = StatType.Unknown;
                     c.m_SpecificModifier = ModifierDescriptor.None;
                     c.m_Progression = ContextRankProgression.Custom;
@@ -581,22 +582,250 @@ namespace ExpandedContent.Tweaks.Domains {
                 };
                 bp.GiveFeaturesForPreviousLevels = true;
             });
-            FurDomainAllowed.IsPrerequisiteFor = new List<BlueprintFeatureReference>() { 
-                AnimalBlessingFeature.ToReference<BlueprintFeatureReference>(),
+
+            //Separatist versions
+            var ProtectionDomainGreaterFeatureSeparatist = Resources.GetBlueprint<BlueprintFeature>("7eb39ba8115a422bb69c702cc20ca58a");
+
+            var FurDomainAllowedSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("FurDomainAllowedSeparatist", bp => {
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.IsClassFeature = true;
+            });
+            var FurDomainBaseResourceSeparatist = Helpers.CreateBlueprint<BlueprintAbilityResource>("FurDomainBaseResourceSeparatist", bp => {
+                bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
+                    BaseValue = 2,
+                    IncreasedByLevel = false,
+                    IncreasedByStat = true,
+                    ResourceBonusStat = StatType.Wisdom,
+                };
+            });
+
+            var SeparatistWithDruidAsIsProperty = Resources.GetModBlueprint<BlueprintUnitProperty>("SeparatistWithDruidAsIsProperty");
+
+            var FurDomainBaseBuffSeparatist = Helpers.CreateBuff("FurDomainBaseBuffSeparatist", bp => {
+                bp.SetName("Predator’s Grace");
+                bp.SetDescription("You can, as a swift action, grant yourself a +10-foot bonus to your base speed for 1 round. This bonus increases by 5 feet for every 5 cleric " +
+                    "levels you possess. You can use this ability a number of times per day equal to 3 + your Wisdom modifier.");
+                bp.m_Icon = CheetahSprintIcon;
+                bp.AddComponent<BuffMovementSpeed>(c => {
+                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+                    c.Value = 0;
+                    c.ContextBonus = new ContextValue() {
+                        ValueType = ContextValueType.Rank,
+                        ValueRank = AbilityRankType.StatBonus
+                    };
+                    c.CappedOnMultiplier = false;
+                    c.CappedMinimum = false;
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.StatBonus;
+                    c.m_BaseValueType = ContextRankBaseValueType.CustomProperty;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.Custom;
+                    c.m_CustomProgression = new ContextRankConfig.CustomProgressionItem[] {
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 4, ProgressionValue = 10 },
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 9, ProgressionValue = 15 },
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 14, ProgressionValue = 20 },
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 19, ProgressionValue = 25 },
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 24, ProgressionValue = 30 },
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 29, ProgressionValue = 35 },
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 34, ProgressionValue = 40 },
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 39, ProgressionValue = 45 },
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 100, ProgressionValue = 50 }
+                    };
+                    c.m_CustomProperty = SeparatistWithDruidAsIsProperty.ToReference<BlueprintUnitPropertyReference>();
+                });
+                bp.FxOnStart = new PrefabLink() { AssetId = "91ef30ab58fa0d3449d4d2ccc20cb0f8" }; //Haste FX
+            });
+
+            var FurDomainBaseAbilitySeparatist = Helpers.CreateBlueprint<BlueprintAbility>("FurDomainBaseAbilitySeparatist", bp => {
+                bp.SetName("Predator’s Grace");
+                bp.SetDescription("You can, as a swift action, grant yourself a +10-foot bonus to your base speed for 1 round. This bonus increases by 5 feet for every 5 cleric " +
+                    "levels you possess. You can use this ability a number of times per day equal to 3 + your Wisdom modifier.");
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = FurDomainBaseResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = FurDomainBaseBuffSeparatist.ToReference<BlueprintBuffReference>(),
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 1
+                                },
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                m_IsExtendable = true
+                            },
+                            DurationSeconds = 0
+                        });
+                });
+                bp.m_Icon = WildShapeWolfBuff.m_Icon;
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Self;
+                bp.ActionType = UnitCommand.CommandType.Swift;
+                bp.AvailableMetamagic = Metamagic.Extend;
+                bp.LocalizedDuration = Helpers.CreateString("FurDomainBaseAbilitySeparatist.Duration", "1 round");
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+
+            var FurDomainBaseFeatureSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("FurDomainBaseFeatureSeparatist", bp => {
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { FurDomainBaseAbilitySeparatist.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = FurDomainBaseResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.AddComponent<ReplaceAbilitiesStat>(c => {
+                    c.m_Ability = new BlueprintAbilityReference[] { FurDomainBaseAbilitySeparatist.ToReference<BlueprintAbilityReference>() };
+                    c.Stat = StatType.Wisdom;
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = FurDomainSpellListFeature.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<AddClassSkill>(c => {
+                    c.Skill = StatType.SkillLoreNature;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.SetName("Fur Subdomain");
+                bp.SetDescription("You share a bond with your furred allies. You treat {g|Encyclopedia:Lore_Nature}Lore (nature){/g} as a class {g|Encyclopedia:Skills}skill{/g}.\nPredator’s Grace: " +
+                    "You can, as a swift action, grant yourself a +10-foot bonus to your base speed for 1 round. This bonus increases by 5 feet for every 5 cleric levels you possess. You can use this " +
+                    "ability a number of times per day equal to 3 + your Wisdom modifier.\nAnimal Companion: At 4th level, you gain the service of an mammal animal companion. Your effective druid level " +
+                    "for this animal companion is equal to your level in the class that gave you access to this domain – 3. (Druids who take this ability through their nature bond class feature use " +
+                    "their druid level – 3 to determine the abilities of their animal companions.)");
+                bp.IsClassFeature = true;
+            });
+
+            var DomainAnimalCompanionProgressionSeparatist = Resources.GetBlueprint<BlueprintProgression>("c7a3ed56f239433fb50dfed4c07e8845");
+            var FurDomainAnimalCompanionSelectionSeparatist = Helpers.CreateBlueprint<BlueprintFeatureSelection>("FurDomainAnimalCompanionSelectionSeparatist", bp => {
+                bp.SetName("Fur Subdomain Animal Companion");
+                bp.SetDescription("At 4th level, you gain the service of an mammal animal companion. Your effective druid level for this animal companion is equal to your level in the class " +
+                    "that gave you access to this domain – 3. (Druids who take this ability through their nature bond class feature use their druid level – 3 to determine the abilities of " +
+                    "their animal companions.)");
+                bp.AddComponent<AddFeatureOnApply>(c => {
+                    c.m_Feature = DomainAnimalCompanionProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<AddFeatureOnApply>(c => {
+                    c.m_Feature = AnimalCompanionRank.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<AddFeatureOnApply>(c => {
+                    c.m_Feature = AnimalCompanionArchetypeSelection.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<AddFeatureOnApply>(c => {
+                    c.m_Feature = MountTargetFeature.ToReference<BlueprintFeatureReference>();
+                });
+                bp.HideInCharacterSheetAndLevelUp = false;
+                bp.HideInUI = false;
+                bp.HideNotAvailibleInUI = false;
+                bp.ReapplyOnLevelUp = false;
+                bp.Mode = SelectionMode.Default;
+                bp.Group = FeatureGroup.AnimalCompanion;
+                bp.Ranks = 1;
+                bp.IsClassFeature = true;
+                bp.AddFeatures(AnimalCompanionFeatureBear, AnimalCompanionFeatureBoar, AnimalCompanionFeatureDog, AnimalCompanionFeatureElk, AnimalCompanionFeatureHorse,
+                    AnimalCompanionFeatureLeopard, AnimalCompanionFeatureMammoth, AnimalCompanionFeatureSmilodon, AnimalCompanionFeatureWolf, AnimalCompanionFeaturePreorderHorse,
+                    AnimalCompanionFeaturePreorderSmilodon, CompanionWolverineFeature, AnimalCompanionEmpty);
+            });
+
+            var FurDomainProgressionSeparatist = Helpers.CreateBlueprint<BlueprintProgression>("FurDomainProgressionSeparatist", bp => {
+                bp.AddComponent<PrerequisiteFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = FurDomainAllowedSeparatist.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = FurDomainProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = FurDomainAllowed.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = FurDomainProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = FurDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.SetName("Fur Subdomain");
+                bp.SetDescription("You share a bond with your furred allies. You treat {g|Encyclopedia:Lore_Nature}Lore (nature){/g} as a class {g|Encyclopedia:Skills}skill{/g}.\nPredator’s Grace: " +
+                    "You can, as a swift action, grant yourself a +10-foot bonus to your base speed for 1 round. This bonus increases by 5 feet for every 5 cleric levels you possess. You can use this " +
+                    "ability a number of times per day equal to 3 + your Wisdom modifier.\nAnimal Companion: At 4th level, you gain the service of an mammal animal companion. Your effective druid level " +
+                    "for this animal companion is equal to your level in the class that gave you access to this domain – 3. (Druids who take this ability through their nature bond class feature use " +
+                    "their druid level – 3 to determine the abilities of their animal companions.)\nDomain {g|Encyclopedia:Spell}Spells{/g}: magic fang, hold animal, beast shape I, summon nature's " +
+                    "ally IV, beast shape III, summon nature's ally VI, summon nature's ally VII, summon nature's ally VIII, summon nature's ally IX.");
+                bp.Groups = new FeatureGroup[] { FeatureGroup.SeparatistSecondaryDomain };
+                bp.IsClassFeature = true;
+                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    }
+                };
+                bp.m_Archetypes = new BlueprintProgression.ArchetypeWithLevel[] { };
+                bp.LevelEntries = new LevelEntry[] {
+                    Helpers.LevelEntry(1, FurDomainBaseFeatureSeparatist),
+                    Helpers.LevelEntry(6, FurDomainAnimalCompanionSelectionSeparatist)
+                };
+                bp.UIGroups = new UIGroup[] {
+                    Helpers.CreateUIGroup(FurDomainBaseFeatureSeparatist, FurDomainAnimalCompanionSelectionSeparatist)
+                };
+                bp.GiveFeaturesForPreviousLevels = true;
+            });
+
+            FurDomainAllowed.IsPrerequisiteFor = new List<BlueprintFeatureReference>() {
                 FurDomainProgression.ToReference<BlueprintFeatureReference>(),
                 FurDomainProgressionSecondary.ToReference<BlueprintFeatureReference>()
             };
             FurDomainProgression.AddComponent<PrerequisiteNoFeature>(c => {
-                    c.Group = Prerequisite.GroupType.All;
-                    c.HideInUI = true;
-                    c.m_Feature = FurDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
-            }); 
-            FurDomainProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
-                    c.Group = Prerequisite.GroupType.All;
-                    c.HideInUI = true;
-                    c.m_Feature = FurDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = FurDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
             });
-            
+            FurDomainProgression.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = FurDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
+            FurDomainProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = FurDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+            });
+            FurDomainProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = FurDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
+            FurDomainProgressionSeparatist.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = FurDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
+
             if (ModSettings.AddedContent.Domains.IsDisabled("Fur Subdomain")) { return; }
             DomainTools.RegisterDomain(FurDomainProgression);
             DomainTools.RegisterSecondaryDomain(FurDomainProgressionSecondary);
@@ -605,6 +834,8 @@ namespace ExpandedContent.Tweaks.Domains {
             DomainTools.RegisterTempleDomain(FurDomainProgression);
             DomainTools.RegisterSecondaryTempleDomain(FurDomainProgressionSecondary);
             DomainTools.RegisterImpossibleSubdomain(FurDomainProgression, FurDomainProgressionSecondary);
+            DomainTools.RegisterSeparatistDomain(FurDomainProgressionSeparatist);
+
         }
     }
 }

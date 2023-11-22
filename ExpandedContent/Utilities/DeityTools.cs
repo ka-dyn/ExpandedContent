@@ -1,7 +1,9 @@
 ﻿using BlueprintCore.Blueprints.Configurators.AI;
 using ExpandedContent.Extensions;
+using ExpandedContent.Tweaks.Classes;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
+using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.UnitLogic.FactLogic;
 using System;
 using System.Collections.Generic;
@@ -14,7 +16,7 @@ namespace ExpandedContent.Utilities {
         public static class DomainAllowed {
             public static BlueprintFeature AirDomainAllowed => Resources.GetBlueprint<BlueprintFeature>("6e5f4ff5a7010754ca78708ce1a9b233");
             public static BlueprintFeature AnimalDomainAllowed => Resources.GetBlueprint<BlueprintFeature>("9f05f9da2ea5ae44eac47d407a0000e5");
-            public static BlueprintFeature ArtifaceDomainAllowed => Resources.GetBlueprint<BlueprintFeature>("9656b1c7214180f4b9a6ab56f83b92fb");
+            public static BlueprintFeature ArtificeDomainAllowed => Resources.GetBlueprint<BlueprintFeature>("9656b1c7214180f4b9a6ab56f83b92fb");
             public static BlueprintFeature ChaosDomainAllowed => Resources.GetBlueprint<BlueprintFeature>("8c7d778bc39fec642befc1435b00f613");
             public static BlueprintFeature CharmDomainAllowed => Resources.GetBlueprint<BlueprintFeature>("f1ceba79ee123cc479cece27bc994ff2");
             public static BlueprintFeature CommunityDomainAllowed => Resources.GetBlueprint<BlueprintFeature>("c87004460f3328c408d22c5ead05291f");
@@ -85,7 +87,7 @@ namespace ExpandedContent.Utilities {
         public static class SeparatistDomainAllowed {
             public static BlueprintFeature AirDomainAllowedSeparatist => Resources.GetBlueprint<BlueprintFeature>("fa67965152634a16bf619ad0e72d57ff");
             public static BlueprintFeature AnimalDomainAllowedSeparatist => Resources.GetBlueprint<BlueprintFeature>("617b8a3d83bc45e391b53ebc13f9e5b1");
-            public static BlueprintFeature ArtifaceDomainAllowedSeparatist => Resources.GetBlueprint<BlueprintFeature>("2ab5269971064d37bb26a89ab0dd7c08");
+            public static BlueprintFeature ArtificeDomainAllowedSeparatist => Resources.GetBlueprint<BlueprintFeature>("2ab5269971064d37bb26a89ab0dd7c08");
             public static BlueprintFeature ChaosDomainAllowedSeparatist => Resources.GetBlueprint<BlueprintFeature>("da3be0f595ab46e29a010afdc8f6c858");
             public static BlueprintFeature CharmDomainAllowedSeparatist => Resources.GetBlueprint<BlueprintFeature>("473a037df8ed4919ab4ccb605f884f54");
             public static BlueprintFeature CommunityDomainAllowedSeparatist => Resources.GetBlueprint<BlueprintFeature>("c91daec2470c4e87a2833631d2eee347");
@@ -119,11 +121,52 @@ namespace ExpandedContent.Utilities {
             public static BlueprintFeature WaterDomainAllowedSeparatist => Resources.GetBlueprint<BlueprintFeature>("87b27e3d011f4caea0e2679cbd90e7f7");
             public static BlueprintFeature WeatherDomainAllowedSeparatist => Resources.GetBlueprint<BlueprintFeature>("8bc3629d677f48798235b94cc9ba0f36");
             //Modded domains
+            public static BlueprintFeature AgathionDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("AgathionDomainAllowedSeparatist");
+            public static BlueprintFeature ArchonDomainGoodAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("ArchonDomainGoodAllowedSeparatist");
+            public static BlueprintFeature ArchonDomainLawAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("ArchonDomainLawAllowedSeparatist");
+            public static BlueprintFeature BloodDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("BloodDomainAllowedSeparatist");
+            public static BlueprintFeature CavesDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("CavesDomainAllowedSeparatist");
+            public static BlueprintFeature CurseDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("CurseDomainAllowedSeparatist");
+            public static BlueprintFeature DefenseDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("DefenseDomainAllowedSeparatist");
+            public static BlueprintFeature DemonDomainChaosAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("DemonDomainChaosAllowedSeparatist");
+            public static BlueprintFeature DemonDomainEvilAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("DemonDomainEvilAllowedSeparatist");
+            public static BlueprintFeature DragonDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("DragonDomainAllowedSeparatist");
+            public static BlueprintFeature FerocityDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("FerocityDomainAllowedSeparatist");
+            public static BlueprintFeature FistDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("FistDomainAllowedSeparatist");
+            public static BlueprintFeature FurDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("FurDomainAllowedSeparatist");
+            public static BlueprintFeature GrowthDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("GrowthDomainAllowedSeparatist");
+            public static BlueprintFeature HeroismDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("HeroismDomainAllowedSeparatist");
+            //public static BlueprintFeature IceDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("IceDomainAllowedSeparatist");
+            public static BlueprintFeature LoyaltyDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("LoyaltyDomainAllowedSeparatist");
+            public static BlueprintFeature LustDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("LustDomainAllowedSeparatist");
+            public static BlueprintFeature PsychopompDomainDeathAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("PsychopompDomainDeathAllowedSeparatist");
+            public static BlueprintFeature PsychopompDomainReposeAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("PsychopompDomainReposeAllowedSeparatist");
+            public static BlueprintFeature RageDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("RageDomainAllowedSeparatist");
+            public static BlueprintFeature ResolveDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("ResolveDomainAllowedSeparatist");
+            public static BlueprintFeature RestorationDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("RestorationDomainAllowedSeparatist");
+            public static BlueprintFeature RevelationDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("RevelationDomainAllowedSeparatist");
+            public static BlueprintFeature RevolutionDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("RevolutionDomainAllowedSeparatist");
+            public static BlueprintFeature RiversDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("RiversDomainAllowedSeparatist");
+            public static BlueprintFeature ScalykindDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("ScalykindDomainAllowedSeparatist");
+            public static BlueprintFeature StarsDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("StarsDomainAllowedSeparatist");
+            public static BlueprintFeature StormDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("StormDomainAllowedSeparatist");
+            public static BlueprintFeature ThieveryDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("ThieveryDomainAllowedSeparatist");
+            //public static BlueprintFeature UndeadDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("UndeadDomainAllowedSeparatist");
+            public static BlueprintFeature WhimsyDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("WhimsyDomainAllowedSeparatist");
+            public static BlueprintFeature WindDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("WindDomainAllowedSeparatist");
 
-    }
+
+        }
         public static void SetAllowedDomains(this BlueprintFeature deity, params BlueprintFeature[] domains) {
             deity.AddComponent<AddFacts>(c => {
                 c.m_Facts = domains.Select(f => f.ToReference<BlueprintUnitFactReference>()).ToArray();
+            });
+        }
+        public static void SetDisallowedArchetype(this BlueprintFeature deity, BlueprintCharacterClass characterClass, BlueprintArchetype archetype) {
+            deity.AddComponent<PrerequisiteNoArchetype>(c => {
+                c.HideInUI = true;
+                c.m_CharacterClass = characterClass.ToReference<BlueprintCharacterClassReference>();
+                c.m_Archetype = archetype.ToReference<BlueprintArchetypeReference>();
             });
         }
     }

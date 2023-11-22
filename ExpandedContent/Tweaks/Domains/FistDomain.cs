@@ -58,7 +58,6 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.DeactivateIfOwnerDisabled = true;
                 bp.ActivationType = AbilityActivationType.Immediately;
                 bp.m_ActivateWithUnitCommand = UnitCommand.CommandType.Free;
-                bp.DeactivateIfCombatEnded = false;
             });
 
             //Spelllist
@@ -301,20 +300,152 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.GiveFeaturesForPreviousLevels = true;
             });
 
-            FistDomainAllowed.IsPrerequisiteFor = new List<BlueprintFeatureReference>() { 
-                StrengthBlessingFeature.ToReference<BlueprintFeatureReference>(),
+            //Separatist versions
+            var StrengthDomainGreaterFeatureSeparatist = Resources.GetBlueprint<BlueprintFeature>("fb3d1b1ff65441fa9413cda1d107c1ea");
+
+            var FistDomainAllowedSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("FistDomainAllowedSeparatist", bp => {
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.IsClassFeature = true;
+            });
+
+            var FistDomainBaseResourceSeparatist = Helpers.CreateBlueprint<BlueprintAbilityResource>("FistDomainBaseResourceSeparatist", bp => {
+                bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
+                    BaseValue = 2,
+                    IncreasedByLevel = false,
+                    IncreasedByStat = true,
+                    ResourceBonusStat = StatType.Wisdom,
+                };
+            });
+
+            var PlantDomainNewBaseBuffSeparatist = Resources.GetModBlueprint<BlueprintBuff>("PlantDomainNewBaseBuffSeparatist");
+
+            var FistDomainBaseAbilitySeparatist = Helpers.CreateBlueprint<BlueprintActivatableAbility>("FistDomainBaseAbilitySeparatist", bp => {
+                bp.SetName("Wooden Fist");
+                bp.SetDescription("As a free action, your hands can become as hard as wood, covered in tiny thorns. While you have wooden fists, your unarmed strikes do not provoke " +
+                    "attacks of opportunity, and gain a bonus on damage rolls equal to 1/2 your cleric level (minimum +1). You can use this ability for a number of rounds per day " +
+                    "equal to 3 + your Wisdom modifier. These rounds do not need to be consecutive.");
+                bp.m_Icon = WoodenFistIcon;
+                bp.AddComponent<ActivatableAbilityResourceLogic>(c => {
+                    c.SpendType = ActivatableAbilityResourceLogic.ResourceSpendType.NewRound;
+                    c.m_RequiredResource = FistDomainBaseResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                });
+                bp.m_Buff = PlantDomainNewBaseBuffSeparatist.ToReference<BlueprintBuffReference>();
+                bp.IsOnByDefault = false;
+                bp.DeactivateIfCombatEnded = true;
+                bp.DeactivateIfOwnerDisabled = true;
+                bp.ActivationType = AbilityActivationType.Immediately;
+                bp.m_ActivateWithUnitCommand = UnitCommand.CommandType.Free;
+            });
+
+            var FistDomainBaseFeatureSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("FistDomainBaseFeatureSeparatist", bp => {
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { FistDomainBaseAbilitySeparatist.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = FistDomainBaseResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.AddComponent<ReplaceAbilitiesStat>(c => {
+                    c.m_Ability = new BlueprintAbilityReference[] { FistDomainBaseAbilitySeparatist.ToReference<BlueprintAbilityReference>() };
+                    c.Stat = StatType.Wisdom;
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = FistDomainSpellListFeature.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.SetName("Fist Subdomain");
+                bp.SetDescription("\nTrue strength frees believers for the need of weaponry, as with training the faithful become weapons themselves. \nWooden Fist: As a " +
+                    "free action, your hands can become as hard as wood, covered in tiny thorns. While you have wooden fists, your unarmed strikes do not provoke attacks of opportunity, " +
+                    "and gain a bonus on damage rolls equal to 1/2 your cleric level (minimum +1). You can use this ability for a number of rounds per day equal to 3 + your Wisdom " +
+                    "modifier. These rounds do not need to be consecutive.\nMight of the Gods: At 8th level, you add 1/2 of your level in the class that gave you access to this domain " +
+                    "as an enhancement bonus to your Athletics {g|Encyclopedia:Check}checks{/g}.");
+                bp.IsClassFeature = true;
+            });
+
+            var FistDomainProgressionSeparatist = Helpers.CreateBlueprint<BlueprintProgression>("FistDomainProgressionSeparatist", bp => {
+                bp.AddComponent<PrerequisiteFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = FistDomainAllowedSeparatist.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = FistDomainProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = FistDomainAllowed.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = FistDomainProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = FistDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.SetName("Fist Subdomain");
+                bp.SetDescription("\nTrue strength frees believers for the need of weaponry, as with training the faithful become weapons themselves. \nWooden Fist: As a " +
+                    "free action, your hands can become as hard as wood, covered in tiny thorns. While you have wooden fists, your unarmed strikes do not provoke attacks of opportunity, " +
+                    "and gain a bonus on damage rolls equal to 1/2 your cleric level (minimum +1). You can use this ability for a number of rounds per day equal to 3 + your Wisdom " +
+                    "modifier. These rounds do not need to be consecutive.\nMight of the Gods: At 8th level, you add 1/2 of your level in the class that gave you access to this domain " +
+                    "as an enhancement bonus to your Athletics {g|Encyclopedia:Check}checks{/g}.\nDomain {g|Encyclopedia:Spell}Spells{/g}: true strike, bull's strength, greater magic fang, " +
+                    "force punch, righteous might, stoneskin, legendary proportions, frightful aspect, transformation.");
+                bp.Groups = new FeatureGroup[] { FeatureGroup.SeparatistSecondaryDomain };
+                bp.IsClassFeature = true;
+                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    }
+                };
+                bp.m_Archetypes = new BlueprintProgression.ArchetypeWithLevel[] {  };
+                bp.LevelEntries = new LevelEntry[] {
+                    Helpers.LevelEntry(1, FistDomainBaseFeatureSeparatist),
+                    Helpers.LevelEntry(10, StrengthDomainGreaterFeatureSeparatist)
+                };
+                bp.UIGroups = new UIGroup[] {
+                    Helpers.CreateUIGroup(FistDomainBaseFeatureSeparatist, StrengthDomainGreaterFeatureSeparatist)
+                };
+                bp.GiveFeaturesForPreviousLevels = true;
+            });
+
+            FistDomainAllowed.IsPrerequisiteFor = new List<BlueprintFeatureReference>() {
                 FistDomainProgression.ToReference<BlueprintFeatureReference>(),
                 FistDomainProgressionSecondary.ToReference<BlueprintFeatureReference>()
             };
             FistDomainProgression.AddComponent<PrerequisiteNoFeature>(c => {
-                    c.Group = Prerequisite.GroupType.All;
-                    c.HideInUI = true;
-                    c.m_Feature = FistDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
-            }); 
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = FistDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+            });
+            FistDomainProgression.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = FistDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
             FistDomainProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
-                    c.Group = Prerequisite.GroupType.All;
-                    c.HideInUI = true;
-                    c.m_Feature = FistDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = FistDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+            });
+            FistDomainProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = FistDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
+            FistDomainProgressionSeparatist.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = FistDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
             });
 
             if (ModSettings.AddedContent.Domains.IsDisabled("Fist Subdomain")) { return; }
@@ -324,6 +455,8 @@ namespace ExpandedContent.Tweaks.Domains {
             DomainTools.RegisterTempleDomain(FistDomainProgression);
             DomainTools.RegisterSecondaryTempleDomain(FistDomainProgressionSecondary);
             DomainTools.RegisterImpossibleSubdomain(FistDomainProgression, FistDomainProgressionSecondary);
+            DomainTools.RegisterSeparatistDomain(FistDomainProgressionSeparatist);
+
         }
     }
 }

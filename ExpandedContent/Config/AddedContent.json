@@ -515,6 +515,16 @@
         "Enabled": false,
         "Homebrew": true,
         "Description": "Allows you to select Aivu as a normal animal companion."
+      },
+      "Old Ice Subdomain": {
+        "Enabled": false,
+        "Homebrew": false,
+        "Description": "The EC version of Ice Subdomain, no longer updated due to the in-game version releasing with DLC5."
+      },
+      "Old Undead Subdomain": {
+        "Enabled": false,
+        "Homebrew": false,
+        "Description": "The EC version of Undead Subdomain, no longer updated due to the in-game version releasing with DLC5."
       }
     },
     "IsExpanded": false

@@ -353,20 +353,229 @@ namespace ExpandedContent.Tweaks.Domains {
                     Helpers.CreateUIGroup(FerocityDomainBaseFeature, StrengthDomainGreaterFeature)
                 };
                 bp.GiveFeaturesForPreviousLevels = true;
-            });            
-            FerocityDomainAllowed.IsPrerequisiteFor = new List<BlueprintFeatureReference>() { 
+            });
+
+            //Separatist versions
+            var StrengthDomainGreaterFeatureSeparatist = Resources.GetBlueprint<BlueprintFeature>("fb3d1b1ff65441fa9413cda1d107c1ea");
+
+            var FerocityDomainAllowedSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("FerocityDomainAllowedSeparatist", bp => {
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.IsClassFeature = true;
+            });
+            var FerocityDomainBaseResourceSeparatist = Helpers.CreateBlueprint<BlueprintAbilityResource>("FerocityDomainBaseResourceSeparatist", bp => {
+                bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
+                    BaseValue = 2,
+                    IncreasedByLevel = false,
+                    IncreasedByStat = true,
+                    ResourceBonusStat = StatType.Wisdom,
+                };
+            });
+
+            var FerocityDomainBaseBuffSeparatist = Helpers.CreateBuff("FerocityDomainBaseBuffSeparatist", bp => {
+                bp.SetName("Ferocious Strikes");
+                bp.SetDescription("As a swift action, you can imbue attacks you make this round to be ferocious strikes. If these attacks hit, they deal additional damage equal to 1/2 your cleric " +
+                    "level (minimum +1). You can use this ability a number of times per day equal to 3 + your Wisdom modifier.");
+                bp.m_Icon = LeadBlades.m_Icon;
+                bp.AddComponent<AddContextStatBonus>(c => {
+                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+                    c.Stat = StatType.AdditionalDamage;
+                    c.Value = new ContextValue() {
+                        ValueType = ContextValueType.Shared,
+                        Value = 0,
+                        ValueRank = AbilityRankType.Default,
+                        ValueShared = AbilitySharedValue.Damage,
+                        Property = UnitProperty.None,
+                    };
+                });
+                bp.AddComponent<ContextCalculateSharedValue>(c => {
+                    c.ValueType = AbilitySharedValue.Damage;
+                    c.Value = new ContextDiceValue() {
+                        DiceType = DiceType.One,
+                        DiceCountValue = new ContextValue() {
+                            ValueType = ContextValueType.Rank,
+                            Value = 0,
+                            ValueRank = AbilityRankType.DamageDice
+                        },
+                        BonusValue = new ContextValue() {
+                            ValueType = ContextValueType.Rank,
+                            Value = 0,
+                            ValueRank = AbilityRankType.Default
+                        }
+                    };
+                    c.Modifier = 1;
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.SummClassLevelWithArchetype;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_Progression = ContextRankProgression.Div2;
+                    c.Archetype = DivineHunterArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.m_AdditionalArchetypes = new BlueprintArchetypeReference[] { TempleChampionArchetype.ToReference<BlueprintArchetypeReference>() };
+                    c.m_Class = new BlueprintCharacterClassReference[] {
+                        InquisitorClass.ToReference<BlueprintCharacterClassReference>(),
+                        HunterClass.ToReference<BlueprintCharacterClassReference>(),
+                        PaladinClass.ToReference<BlueprintCharacterClassReference>(),
+                        StargazerClass.ToReference<BlueprintCharacterClassReference>(),
+                    };
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.DamageDice;
+                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_Progression = ContextRankProgression.DelayedStartPlusDivStep;
+                    c.m_Class = new BlueprintCharacterClassReference[] {
+                        ClericClass.ToReference<BlueprintCharacterClassReference>()
+                    };
+                    c.m_StartLevel = 3;
+                    c.m_StepLevel = 2;
+                    c.m_UseMin = true;
+                    c.m_Min = 1;
+                });
+            });
+            var FerocityDomainBaseAbilitySeparatist = Helpers.CreateBlueprint<BlueprintAbility>("FerocityDomainBaseAbilitySeparatist", bp => {
+                bp.SetName("Ferocious Strikes");
+                bp.SetDescription("As a swift action, you can imbue attacks you make this round to be ferocious strikes. If these attacks hit, they deal additional damage equal to 1/2 your cleric " +
+                    "level (minimum +1). You can use this ability a number of times per day equal to 3 + your Wisdom modifier.");
+                bp.m_Icon = LeadBlades.m_Icon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = FerocityDomainBaseBuffSeparatist.ToReference<BlueprintBuffReference>(),
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 1,
+                                m_IsExtendable = true
+                            },
+                            DurationSeconds = 0
+                        });
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = FerocityDomainBaseResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.HasFastAnimation = false;
+                bp.ActionType = UnitCommand.CommandType.Swift;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+
+            var FerocityDomainBaseFeatureSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("FerocityDomainBaseFeatureSeparatist", bp => {
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { FerocityDomainBaseAbilitySeparatist.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = FerocityDomainBaseResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.AddComponent<ReplaceAbilitiesStat>(c => {
+                    c.m_Ability = new BlueprintAbilityReference[] { FerocityDomainBaseAbilitySeparatist.ToReference<BlueprintAbilityReference>() };
+                    c.Stat = StatType.Wisdom;
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = FerocityDomainSpellListFeature.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.SetName("Ferocity Subdomain");
+                bp.SetDescription("\nThe will of your deitiy must be delivered with conviction and ferocity — your faith gives you incredible might and fury.\nFerocious Strikes: " +
+                    "As a swift action, you can imbue attacks you make this round to be ferocious strikes. If these attacks hit, they deal additional damage equal to 1/2 your cleric " +
+                    "level (minimum +1). You can use this ability a number of times per day equal to 3 + your Wisdom modifier.\nMight of the Gods: At 8th level, you add 1/2 of " +
+                    "your level in the class that gave you access to this domain as an enhancement bonus to your Athletics {g|Encyclopedia:Check}checks{/g}.");
+                bp.IsClassFeature = true;
+            });
+
+            var FerocityDomainProgressionSeparatist = Helpers.CreateBlueprint<BlueprintProgression>("FerocityDomainProgressionSeparatist", bp => {
+                bp.AddComponent<PrerequisiteFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = FerocityDomainAllowedSeparatist.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = FerocityDomainProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = FerocityDomainAllowed.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = FerocityDomainProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = FerocityDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.SetName("Ferocity Subdomain");
+                bp.SetDescription("\nThe will of your deitiy must be delivered with conviction and ferocity — your faith gives you incredible might and fury.\nFerocious Strikes: " +
+                    "As a swift action, you can imbue attacks you make this round to be ferocious strikes. If these attacks hit, they deal additional damage equal to 1/2 your cleric " +
+                    "level (minimum +1). You can use this ability a number of times per day equal to 3 + your Wisdom modifier.\nMight of the Gods: At 8th level, you add 1/2 of " +
+                    "your level in the class that gave you access to this domain as an enhancement bonus to your Athletics {g|Encyclopedia:Check}checks{/g}.\nDomain " +
+                    "{g|Encyclopedia:Spell}Spells{/g}: enlarge person, bull's strength, rage, mass enlarge person, righteous might, mass bull's strength, legendary proportions, " +
+                    "frightful aspect, transformation.");
+                bp.Groups = new FeatureGroup[] { FeatureGroup.SeparatistSecondaryDomain };
+                bp.IsClassFeature = true;
+                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    }
+                };
+                bp.m_Archetypes = new BlueprintProgression.ArchetypeWithLevel[] {  };
+                bp.LevelEntries = new LevelEntry[] {
+                    Helpers.LevelEntry(1, FerocityDomainBaseFeatureSeparatist),
+                    Helpers.LevelEntry(10, StrengthDomainGreaterFeatureSeparatist)
+                };
+                bp.UIGroups = new UIGroup[] {
+                    Helpers.CreateUIGroup(FerocityDomainBaseFeatureSeparatist, StrengthDomainGreaterFeatureSeparatist)
+                };
+                bp.GiveFeaturesForPreviousLevels = true;
+            });
+
+            FerocityDomainAllowed.IsPrerequisiteFor = new List<BlueprintFeatureReference>() {
                 FerocityDomainProgression.ToReference<BlueprintFeatureReference>(),
                 FerocityDomainProgressionSecondary.ToReference<BlueprintFeatureReference>()
             };
             FerocityDomainProgression.AddComponent<PrerequisiteNoFeature>(c => {
-                    c.Group = Prerequisite.GroupType.All;
-                    c.HideInUI = true;
-                    c.m_Feature = FerocityDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
-            }); 
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = FerocityDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+            });
+            FerocityDomainProgression.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = FerocityDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
             FerocityDomainProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
-                    c.Group = Prerequisite.GroupType.All;
-                    c.HideInUI = true;
-                    c.m_Feature = FerocityDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = FerocityDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+            });
+            FerocityDomainProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = FerocityDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
+            FerocityDomainProgressionSeparatist.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = FerocityDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
             });
             if (ModSettings.AddedContent.Domains.IsDisabled("Ferocity Subdomain")) { return; }
             DomainTools.RegisterDomain(FerocityDomainProgression);
@@ -375,6 +584,7 @@ namespace ExpandedContent.Tweaks.Domains {
             DomainTools.RegisterTempleDomain(FerocityDomainProgression);
             DomainTools.RegisterSecondaryTempleDomain(FerocityDomainProgressionSecondary);
             DomainTools.RegisterImpossibleSubdomain(FerocityDomainProgression, FerocityDomainProgressionSecondary);
+            DomainTools.RegisterSeparatistDomain(FerocityDomainProgressionSeparatist);
         }
     }
 }

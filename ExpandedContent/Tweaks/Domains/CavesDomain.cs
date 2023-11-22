@@ -17,6 +17,7 @@ using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.UnitLogic.Mechanics.Properties;
 using Kingmaker.UnitLogic.Mechanics.Components;
 using ExpandedContent.Config;
+using Kingmaker.RuleSystem;
 
 namespace ExpandedContent.Tweaks.Domains {
     internal class CavesDomain {
@@ -69,7 +70,7 @@ namespace ExpandedContent.Tweaks.Domains {
                 // Config for Stealth and Perception
                 bp.AddComponent<ContextRankConfig>(c => {
                     c.m_Type = AbilityRankType.StatBonus;
-                    c.m_BaseValueType = ContextRankBaseValueType.MaxClassLevelWithArchetype;
+                    c.m_BaseValueType = ContextRankBaseValueType.SummClassLevelWithArchetype;
                     c.m_Stat = StatType.Unknown;
                     c.m_Progression = ContextRankProgression.AsIs;
                     c.Archetype = DivineHunterArchetype.ToReference<BlueprintArchetypeReference>();
@@ -461,23 +462,319 @@ namespace ExpandedContent.Tweaks.Domains {
                 };
                 bp.GiveFeaturesForPreviousLevels = true;
             });
-            CavesDomainAllowed.IsPrerequisiteFor = new List<BlueprintFeatureReference>() { 
-                EarthBlessingFeature.ToReference<BlueprintFeatureReference>(),
+
+            //Separatist versions
+            var EarthDomainBaseAbilitySeparatist = Resources.GetBlueprint<BlueprintAbility>("80b9520ca51a45dabda33063b4536533");
+            var EarthDomainBaseResourceSeparatist = Resources.GetBlueprint<BlueprintAbilityResource>("a039cb04bce34432826ad1c70eaf38ed");
+
+            var CavesDomainAllowedSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("CavesDomainAllowedSeparatist", bp => {
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.IsClassFeature = true;
+            });
+            var CavesDomainGreaterResourceSeparatist = Helpers.CreateBlueprint<BlueprintAbilityResource>("CavesDomainGreaterResourceSeparatist", bp => {
+                bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
+                    BaseValue = 0,
+                    IncreasedByLevel = false,
+                    m_Class = new BlueprintCharacterClassReference[] {
+                        InquisitorClass.ToReference<BlueprintCharacterClassReference>(),
+                        HunterClass.ToReference<BlueprintCharacterClassReference>(),
+                        PaladinClass.ToReference<BlueprintCharacterClassReference>(),
+                        StargazerClass.ToReference<BlueprintCharacterClassReference>(),
+                        DruidClass.ToReference<BlueprintCharacterClassReference>()
+                    },
+                    m_Archetypes = new BlueprintArchetypeReference[] {
+                        DivineHunterArchetype.ToReference<BlueprintArchetypeReference>(),
+                        TempleChampionArchetype.ToReference<BlueprintArchetypeReference>(),
+                    },
+                    IncreasedByLevelStartPlusDivStep = true,
+                    m_ClassDiv = new BlueprintCharacterClassReference[] {
+                        ClericClass.ToReference<BlueprintCharacterClassReference>()
+                    },
+                    LevelIncrease = 1,
+                    StartingLevel = 3,
+                    StartingIncrease = 1,
+                    LevelStep = 1,
+                    PerStepIncrease = 1,
+                };
+                bp.m_Min = 1;
+            });
+
+            var CavesDomainGreaterBuffSeparatist = Helpers.CreateBuff("CavesDomainGreaterBuffSeparatist", bp => {//needs redoing
+                bp.SetName("Tunnel Runner");
+                bp.SetDescription("While underground you gain an insight bonus equal to your cleric level on Stealth and Perception skill checks and an " +
+                    "insight bonus equal to your Wisdom modifier on initiative checks. You can use this ability for 1 minute per day per cleric level you " +
+                    "possess. These minutes do not need to be consecutive, but they must be spent in " +
+                    "1-minute increments.");
+                bp.m_Icon = Tremorsence.Icon;
+                bp.AddComponent<AddContextStatBonus>(c => {
+                    c.Descriptor = ModifierDescriptor.Insight;
+                    c.Stat = StatType.SkillStealth;
+                    c.Value = new ContextValue() {
+                        ValueType = ContextValueType.Shared,
+                        Value = 0,
+                        ValueRank = AbilityRankType.StatBonus,
+                        ValueShared = AbilitySharedValue.Damage,
+                        Property = UnitProperty.None,
+                    };
+                });
+                bp.AddComponent<AddContextStatBonus>(c => {
+                    c.Descriptor = ModifierDescriptor.Insight;
+                    c.Stat = StatType.SkillPerception;
+                    c.Value = new ContextValue() {
+                        ValueType = ContextValueType.Shared,
+                        Value = 0,
+                        ValueRank = AbilityRankType.StatBonus,
+                        ValueShared = AbilitySharedValue.Damage,
+                        Property = UnitProperty.None,
+                    };
+                });
+                // Config for Stealth and Perception
+                bp.AddComponent<ContextCalculateSharedValue>(c => {
+                    c.ValueType = AbilitySharedValue.Damage;
+                    c.Value = new ContextDiceValue() {
+                        DiceType = DiceType.One,
+                        DiceCountValue = new ContextValue() {
+                            ValueType = ContextValueType.Rank,
+                            Value = 0,
+                            ValueRank = AbilityRankType.DamageDice
+                        },
+                        BonusValue = new ContextValue() {
+                            ValueType = ContextValueType.Rank,
+                            Value = 0,
+                            ValueRank = AbilityRankType.Default
+                        }
+                    };
+                    c.Modifier = 1;
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.SummClassLevelWithArchetype;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_Progression = ContextRankProgression.AsIs;
+                    c.Archetype = DivineHunterArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.m_AdditionalArchetypes = new BlueprintArchetypeReference[] { TempleChampionArchetype.ToReference<BlueprintArchetypeReference>() };
+                    c.m_Class = new BlueprintCharacterClassReference[] {
+                        InquisitorClass.ToReference<BlueprintCharacterClassReference>(),
+                        DruidClass.ToReference<BlueprintCharacterClassReference>(),
+                        HunterClass.ToReference<BlueprintCharacterClassReference>(),
+                        PaladinClass.ToReference<BlueprintCharacterClassReference>(),
+                        StargazerClass.ToReference<BlueprintCharacterClassReference>(),
+                    };
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.DamageDice;
+                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_Progression = ContextRankProgression.DelayedStartPlusDivStep;
+                    c.m_Class = new BlueprintCharacterClassReference[] {
+                        ClericClass.ToReference<BlueprintCharacterClassReference>()
+                    };
+                    c.m_StartLevel = 3;
+                    c.m_StepLevel = 1;
+                    c.m_UseMin = true;
+                    c.m_Min = 1;
+                });
+
+                bp.AddComponent<AddContextStatBonus>(c => {
+                    c.Descriptor = ModifierDescriptor.Insight;
+                    c.Stat = StatType.Initiative;
+                    c.Value = new ContextValue() {
+                        ValueType = ContextValueType.Shared,
+                        Value = 0,
+                        ValueRank = AbilityRankType.Default,
+                        ValueShared = AbilitySharedValue.StatBonus,
+                        Property = UnitProperty.None,
+                    };
+                });
+                // Config for Initiative
+                bp.AddComponent<ContextCalculateSharedValue>(c => {
+                    c.ValueType = AbilitySharedValue.StatBonus;
+                    c.Value = new ContextDiceValue() {
+                        DiceType = DiceType.One,
+                        DiceCountValue = new ContextValue() {
+                            ValueType = ContextValueType.Rank,
+                            Value = 0,
+                            ValueRank = AbilityRankType.DamageBonus
+                        },
+                        BonusValue = new ContextValue() {
+                            ValueType = ContextValueType.Simple,
+                            Value = -1
+                        }
+                    };
+                    c.Modifier = 1;
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.DamageBonus;
+                    c.m_BaseValueType = ContextRankBaseValueType.StatBonus;
+                    c.m_Stat = StatType.Wisdom;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.AsIs;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.AddComponent<FavoredTerrain>(c => {
+                    c.Setting = AreaSetting.Underground;
+                });
+                bp.AddComponent<FavoredTerrainExpertise>(c => {
+                    c.Setting = AreaSetting.Underground;
+                });
+            });
+
+            var CavesDomainGreaterAbilitySeparatist = Helpers.CreateBlueprint<BlueprintActivatableAbility>("CavesDomainGreaterAbilitySeparatist", bp => {
+                bp.SetName("Tunnel Runner");
+                bp.SetDescription("While underground you gain an insight bonus equal to your cleric level on Stealth and Perception skill checks and an " +
+                    "insight bonus equal to your Wisdom modifier on initiative checks. You can use this ability for 1 minute per day per cleric level you " +
+                    "possess. These minutes do not need to be consecutive, but they must be spent in " +
+                    "1-minute increments.");
+                bp.m_Icon = Tremorsence.Icon;
+                bp.AddComponent<ActivatableAbilityResourceLogic>(c => {
+                    c.SpendType = ActivatableAbilityResourceLogic.ResourceSpendType.OncePerMinute;
+                    c.m_RequiredResource = CavesDomainGreaterResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                });
+                bp.m_Buff = CavesDomainGreaterBuffSeparatist.ToReference<BlueprintBuffReference>();
+                bp.DeactivateIfOwnerDisabled = true;
+                bp.ActivationType = AbilityActivationType.WithUnitCommand;
+                bp.m_ActivateWithUnitCommand = UnitCommand.CommandType.Standard;
+                bp.DeactivateIfCombatEnded = false;
+
+            });
+
+            var CavesDomainGreaterFeatureSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("CavesDomainGreaterFeatureSeparatist", bp => {
+                bp.SetName("Tunnel Runner");
+                bp.SetDescription("At 8th level, while underground you may gain an insight bonus equal to your cleric level on Stealth and Perception skill checks and an " +
+                    "insight bonus equal to your Wisdom modifier on initiative checks. You can use this ability for 1 minute per day per cleric level you " +
+                    "possess. These minutes do not need to be consecutive, but they must be spent in " +
+                    "1-minute increments.");
+                bp.m_Icon = Tremorsence.Icon;
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = CavesDomainGreaterResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { CavesDomainGreaterAbilitySeparatist.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+
+            var CavesDomainBaseFeatureSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("CavesDomainBaseFeatureSeparatist", bp => {
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { EarthDomainBaseAbilitySeparatist.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = EarthDomainBaseResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.AddComponent<ReplaceAbilitiesStat>(c => {
+                    c.m_Ability = new BlueprintAbilityReference[] { EarthDomainBaseAbilitySeparatist.ToReference<BlueprintAbilityReference>() };
+                    c.Stat = StatType.Wisdom;
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = CavesDomainSpellListFeature.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.SetName("Caves Subdomain");
+                bp.SetDescription("\nYou have mastery over rock and stone, can manifest vast pits, and command earth creatures.\nAcid Dart: As a " +
+                    "{g|Encyclopedia:Standard_Actions}standard action{/g}, you can unleash an acid dart targeting any foe within 30 feet as a ranged " +
+                    "{g|Encyclopedia:TouchAttack}touch attack{/g}. This acid dart deals {g|Encyclopedia:Dice}1d6{/g} points of {g|Encyclopedia:Energy_Damage}acid damage{/g}" +
+                    "+ 1 point for every two levels you possess in the class that gave you access to this domain. You can use this ability a number of " +
+                    "times per day equal to 3 + your {g|Encyclopedia:Wisdom}Wisdom{/g} modifier.\nTunnel Runner: At 8th level, while underground you may gain an insight " +
+                    "bonus equal to your cleric level on Stealth and Perception skill checks and an insight bonus equal to your Wisdom modifier on initiative checks. " +
+                    "You can use this ability for 1 minute per day per cleric level you possess. These minutes do not need to be consecutive, but they must be spent in " +
+                    "1-minute increments.");
+                bp.IsClassFeature = true;
+            });
+
+            var CavesDomainProgressionSeparatist = Helpers.CreateBlueprint<BlueprintProgression>("CavesDomainProgressionSeparatist", bp => {
+                bp.AddComponent<PrerequisiteFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = CavesDomainAllowedSeparatist.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = CavesDomainProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = CavesDomainAllowed.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = CavesDomainProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = CavesDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.SetName("Caves Subdomain");
+                bp.SetDescription("\nYou have mastery over rock and stone, can manifest vast pits, and command earth creatures.\nAcid Dart: As a " +
+                    "{g|Encyclopedia:Standard_Actions}standard action{/g}, you can unleash an acid dart targeting any foe within 30 feet as a ranged " +
+                    "{g|Encyclopedia:TouchAttack}touch attack{/g}. This acid dart deals {g|Encyclopedia:Dice}1d6{/g} points of {g|Encyclopedia:Energy_Damage}acid damage{/g}" +
+                    "+ 1 point for every two levels you possess in the class that gave you access to this domain. You can use this ability a number of " +
+                    "times per day equal to 3 + your {g|Encyclopedia:Wisdom}Wisdom{/g} modifier.\nTunnel Runner: At 8th level, while underground you may gain an insight " +
+                    "bonus equal to your cleric level on Stealth and Perception skill checks and an insight bonus equal to your Wisdom modifier on initiative checks. " +
+                    "You can use this ability for 1 minute per day per cleric level you possess. These minutes do not need to be consecutive, but they must be spent in " +
+                    "1-minute increments.\nDomain Spells: stone fist, createpit, spiked pit, spike stones, acidic spray, hungry pit, elemental body IV (earth), " +
+                    "iron body, elemental swarm (earth).");
+                bp.Groups = new FeatureGroup[] { FeatureGroup.SeparatistSecondaryDomain };
+                bp.IsClassFeature = true;
+                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    }
+                };
+                bp.m_Archetypes = new BlueprintProgression.ArchetypeWithLevel[] { };
+                bp.LevelEntries = new LevelEntry[] {
+                    Helpers.LevelEntry(1, CavesDomainBaseFeatureSeparatist),
+                    Helpers.LevelEntry(10, CavesDomainGreaterFeatureSeparatist)
+                };
+                bp.UIGroups = new UIGroup[] {
+                    Helpers.CreateUIGroup(CavesDomainBaseFeatureSeparatist, CavesDomainGreaterFeatureSeparatist)
+                };
+                bp.GiveFeaturesForPreviousLevels = true;
+            });
+
+            CavesDomainAllowed.IsPrerequisiteFor = new List<BlueprintFeatureReference>() {
                 CavesDomainProgression.ToReference<BlueprintFeatureReference>(),
                 CavesDomainProgressionSecondary.ToReference<BlueprintFeatureReference>()
             };
             CavesDomainProgression.AddComponent<PrerequisiteNoFeature>(c => {
-                    c.Group = Prerequisite.GroupType.All;
-                    c.HideInUI = true;
-                    c.m_Feature = CavesDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
-            }); 
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = CavesDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+            });
+            CavesDomainProgression.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = CavesDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
             CavesDomainProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
-                    c.Group = Prerequisite.GroupType.All;
-                    c.HideInUI = true;
-                    c.m_Feature = CavesDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = CavesDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+            });
+            CavesDomainProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = CavesDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
+            CavesDomainProgressionSeparatist.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = CavesDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
             });
             var DomainMastery = Resources.GetBlueprint<BlueprintFeature>("2de64f6a1f2baee4f9b7e52e3f046ec5").GetComponent<AutoMetamagic>();
             DomainMastery.Abilities.Add(CavesDomainGreaterAbility.ToReference<BlueprintAbilityReference>());
+            DomainMastery.Abilities.Add(CavesDomainGreaterAbilitySeparatist.ToReference<BlueprintAbilityReference>());
             if (ModSettings.AddedContent.Domains.IsDisabled("Caves Subdomain")) { return; }
             DomainTools.RegisterDomain(CavesDomainProgression);
             DomainTools.RegisterSecondaryDomain(CavesDomainProgressionSecondary);
@@ -487,6 +784,7 @@ namespace ExpandedContent.Tweaks.Domains {
             DomainTools.RegisterTempleDomain(CavesDomainProgression);
             DomainTools.RegisterSecondaryTempleDomain(CavesDomainProgressionSecondary);
             DomainTools.RegisterImpossibleSubdomain(CavesDomainProgression, CavesDomainProgressionSecondary);
+            DomainTools.RegisterSeparatistDomain(CavesDomainProgressionSeparatist);
 
         }
     }

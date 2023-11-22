@@ -13,6 +13,7 @@ using Kingmaker.UnitLogic.ActivatableAbilities;
 using Kingmaker.UnitLogic.Commands.Base;
 using Kingmaker.Blueprints.Items.Ecnchantments;
 using ExpandedContent.Config;
+using Kingmaker.UnitLogic.Mechanics.Properties;
 
 namespace ExpandedContent.Tweaks.Domains {
     internal class PsychopompDomainDeath {
@@ -352,20 +353,194 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.GiveFeaturesForPreviousLevels = true;
             });
 
+            //Separatist versions
+            var DeathDomainBaseAbilitySeparatist = Resources.GetBlueprint<BlueprintAbility>("3c32538833e94314b5a6efb43fa83924");
+            var DeathDomainBaseResourceSeparatist = Resources.GetBlueprint<BlueprintAbilityResource>("eebd3c80b7494aa3bae76148984a0269");
+            var SeparatistAsIsProperty = Resources.GetModBlueprint<BlueprintUnitProperty>("SeparatistAsIsProperty");
+
+
+            var PsychopompDomainDeathAllowedSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("PsychopompDomainDeathAllowedSeparatist", bp => {
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.IsClassFeature = true;
+            });
+
+            var PsychopompDomainGreaterResourceSeparatist = Helpers.CreateBlueprint<BlueprintAbilityResource>("PsychopompDomainGreaterResourceSeparatist", bp => {
+                bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
+                    BaseValue = 0,
+                    IncreasedByLevel = false,
+                    m_Class = new BlueprintCharacterClassReference[] {
+                        InquisitorClass.ToReference<BlueprintCharacterClassReference>(),
+                        HunterClass.ToReference<BlueprintCharacterClassReference>(),
+                        PaladinClass.ToReference<BlueprintCharacterClassReference>(),
+                        StargazerClass.ToReference<BlueprintCharacterClassReference>(),
+                    },
+                    m_Archetypes = new BlueprintArchetypeReference[] {
+                        DivineHunterArchetype.ToReference<BlueprintArchetypeReference>(),
+                        TempleChampionArchetype.ToReference<BlueprintArchetypeReference>(),
+                    },
+                    IncreasedByLevelStartPlusDivStep = true,
+                    m_ClassDiv = new BlueprintCharacterClassReference[] {
+                        ClericClass.ToReference<BlueprintCharacterClassReference>()
+                    },
+                    LevelIncrease = 1,
+                    StartingLevel = 6,
+                    StartingIncrease = 1,
+                    LevelStep = 1,
+                    PerStepIncrease = 1,
+                };
+                bp.m_Min = 1;
+            });
+
+            var PsychopompDomainGreaterAbilitySeparatist = Helpers.CreateBlueprint<BlueprintActivatableAbility>("PsychopompDomainGreaterAbilitySeparatist", bp => {
+                bp.SetName("Spirit Touch");
+                bp.SetDescription("At 6th level, as a swift action, you can give your natural weapons or any weapons you wield the ghost touch weapon special ability. " +
+                    "You can use this power a number of rounds per day equal to your cleric level. These rounds need not be consecutive.\nA ghost touch weapon deals " +
+                    "{g|Encyclopedia:Damage}damage{/g} normally against {g|Encyclopedia:Incorporeal_Touch_Attack}incorporeal{/g} creatures, regardless of its " +
+                    "{g|Encyclopedia:Bonus}bonus{/g}. An incorporeal creature's 50% reduction in damage from corporeal sources does not apply to " +
+                    "{g|Encyclopedia:Attack}attacks{/g} made against it with ghost touch weapons.");
+                bp.m_Icon = ShamanWeaponGhostTouchChoice.m_Icon;
+                bp.AddComponent<ActivatableAbilityResourceLogic>(c => {
+                    c.SpendType = ActivatableAbilityResourceLogic.ResourceSpendType.NewRound;
+                    c.m_RequiredResource = PsychopompDomainGreaterResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                });
+                bp.m_Buff = PsychopompDomainGreaterBuff.ToReference<BlueprintBuffReference>();
+                bp.DeactivateIfOwnerDisabled = true;
+                bp.ActivationType = AbilityActivationType.WithUnitCommand;
+                bp.m_ActivateWithUnitCommand = UnitCommand.CommandType.Swift;
+                bp.DeactivateIfCombatEnded = false;
+
+            });
+
+            var PsychopompDomainGreaterFeatureSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("PsychopompDomainGreaterFeatureSeparatist", bp => {
+                bp.SetName("Spirit Touch");
+                bp.SetDescription("At 6th level, as a swift action, you can give your natural weapons or any weapons you wield the ghost touch weapon special ability. " +
+                    "You can use this power a number of rounds per day equal to your cleric level. These rounds need not be consecutive.\nA ghost touch weapon deals " +
+                    "{g|Encyclopedia:Damage}damage{/g} normally against {g|Encyclopedia:Incorporeal_Touch_Attack}incorporeal{/g} creatures, regardless of its " +
+                    "{g|Encyclopedia:Bonus}bonus{/g}. An incorporeal creature's 50% reduction in damage from corporeal sources does not apply to " +
+                    "{g|Encyclopedia:Attack}attacks{/g} made against it with ghost touch weapons.");
+                bp.m_Icon = ShamanWeaponGhostTouchChoice.m_Icon;
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = PsychopompDomainGreaterResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { PsychopompDomainGreaterAbilitySeparatist.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+
+            var PsychopompDomainDeathBaseFeatureSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("PsychopompDomainDeathBaseFeatureSeparatist", bp => {
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { DeathDomainBaseAbilitySeparatist.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = DeathDomainBaseResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.AddComponent<ReplaceAbilitiesStat>(c => {
+                    c.m_Ability = new BlueprintAbilityReference[] { DeathDomainBaseAbilitySeparatist.ToReference<BlueprintAbilityReference>() };
+                    c.Stat = StatType.Wisdom;
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = PsychopompDomainDeathSpellListFeature.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.SetName("Psychopomp Subdomain - Death");
+                bp.SetDescription("\nYou channel the power of the Boneyard, the place of judgement for all souls, your touch can move foes to an early rest.\nBleeding Touch: " +
+                    "As a melee touch {g|Encyclopedia:Attack}attack{/g}, you can cause a living creature to take {g|Encyclopedia:Dice}1d6{/g} points of {g|Encyclopedia:Damage}damage{/g} " +
+                    "per {g|Encyclopedia:Combat_Round}round{/g}. This effect persists for a number of rounds equal to 1/2 your level in the class that gave you access to this domain " +
+                    "(minimum 1). You can use this ability a number of times per day equal to 3 + your {g|Encyclopedia:Wisdom}Wisdom{/g} modifier.\nSpirit Touch: At 6th level, as a " +
+                    "swift action, you can give your natural weapons or any weapons you wield the ghost touch weapon special ability. You can use this power a number of rounds per " +
+                    "day equal to your cleric level. These rounds need not be consecutive.");
+                bp.IsClassFeature = true;
+            });
+
+            var PsychopompDomainDeathProgressionSeparatist = Helpers.CreateBlueprint<BlueprintProgression>("PsychopompDomainDeathProgressionSeparatist", bp => {
+                bp.AddComponent<PrerequisiteFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = PsychopompDomainDeathAllowedSeparatist.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = PsychopompDomainDeathProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = PsychopompDomainDeathAllowed.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = PsychopompDomainDeathProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = PsychopompDomainDeathProgressionSecondary.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.SetName("Psychopomp Subdomain - Death");
+                bp.SetDescription("\nYou channel the power of the Boneyard, the place of judgement for all souls, your touch can move foes to an early rest.\nBleeding Touch: " +
+                    "As a melee touch {g|Encyclopedia:Attack}attack{/g}, you can cause a living creature to take {g|Encyclopedia:Dice}1d6{/g} points of {g|Encyclopedia:Damage}damage{/g} " +
+                    "per {g|Encyclopedia:Combat_Round}round{/g}. This effect persists for a number of rounds equal to 1/2 your level in the class that gave you access to this domain " +
+                    "(minimum 1). You can use this ability a number of times per day equal to 3 + your {g|Encyclopedia:Wisdom}Wisdom{/g} modifier.\nSpirit Touch: At 6th level, as a " +
+                    "swift action, you can give your natural weapons or any weapons you wield the ghost touch weapon special ability. You can use this power a number of rounds per " +
+                    "day equal to your cleric level. These rounds need not be consecutive.\nDomain {g|Encyclopedia:Spell}Spells{/g}: cause fear, boneshaker, ray of exhaustion, " +
+                    "enervation, slay living, summon monster VI, destruction, horrid wilting, wail of the banshee.");
+                bp.Groups = new FeatureGroup[] { FeatureGroup.SeparatistSecondaryDomain };
+                bp.IsClassFeature = true;
+                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    }
+                };
+                bp.LevelEntries = new LevelEntry[] {
+                    Helpers.LevelEntry(1, PsychopompDomainDeathBaseFeatureSeparatist),
+                    Helpers.LevelEntry(8, PsychopompDomainGreaterFeatureSeparatist)
+                };
+                bp.UIGroups = new UIGroup[] {
+                    Helpers.CreateUIGroup(PsychopompDomainDeathBaseFeatureSeparatist, PsychopompDomainGreaterFeatureSeparatist)
+                };
+                bp.GiveFeaturesForPreviousLevels = true;
+            });
+
             PsychopompDomainDeathAllowed.IsPrerequisiteFor = new List<BlueprintFeatureReference>() {
                 PsychopompDomainDeathProgression.ToReference<BlueprintFeatureReference>(),
                 PsychopompDomainDeathProgressionSecondary.ToReference<BlueprintFeatureReference>()
             };
             PsychopompDomainDeathProgression.AddComponent<PrerequisiteNoFeature>(c => {
-                    c.Group = Prerequisite.GroupType.All;
-                    c.HideInUI = true;
-                    c.m_Feature = PsychopompDomainDeathProgressionSecondary.ToReference<BlueprintFeatureReference>();
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = PsychopompDomainDeathProgressionSecondary.ToReference<BlueprintFeatureReference>();
+            });
+            PsychopompDomainDeathProgression.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = PsychopompDomainDeathProgressionSeparatist.ToReference<BlueprintFeatureReference>();
             });
             PsychopompDomainDeathProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
-                    c.Group = Prerequisite.GroupType.All;
-                    c.HideInUI = true;
-                    c.m_Feature = PsychopompDomainDeathProgressionSecondary.ToReference<BlueprintFeatureReference>();
-            });            
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = PsychopompDomainDeathProgressionSecondary.ToReference<BlueprintFeatureReference>();
+            });
+            PsychopompDomainDeathProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = PsychopompDomainDeathProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
+            PsychopompDomainDeathProgressionSeparatist.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = PsychopompDomainDeathProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
             if (ModSettings.AddedContent.Domains.IsDisabled("Psychopomp Subdomain")) { return; }
             DomainTools.RegisterDomain(PsychopompDomainDeathProgression);
             DomainTools.RegisterSecondaryDomain(PsychopompDomainDeathProgressionSecondary);
@@ -373,6 +548,7 @@ namespace ExpandedContent.Tweaks.Domains {
             DomainTools.RegisterTempleDomain(PsychopompDomainDeathProgression);
             DomainTools.RegisterSecondaryTempleDomain(PsychopompDomainDeathProgressionSecondary);
             DomainTools.RegisterImpossibleSubdomain(PsychopompDomainDeathProgression, PsychopompDomainDeathProgressionSecondary);
+            DomainTools.RegisterSeparatistDomain(PsychopompDomainDeathProgressionSeparatist);
         }
     }
 }

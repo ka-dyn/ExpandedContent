@@ -19,6 +19,7 @@ using Kingmaker.Visual.Animation.Kingmaker.Actions;
 using ExpandedContent.Config;
 using Kingmaker.RuleSystem.Rules;
 using Kingmaker.UnitLogic.Abilities.Components.TargetCheckers;
+using Kingmaker.UnitLogic.Mechanics.Properties;
 
 namespace ExpandedContent.Tweaks.Domains {
     internal class ThieveryDomain {
@@ -403,22 +404,220 @@ namespace ExpandedContent.Tweaks.Domains {
                 };
                 bp.GiveFeaturesForPreviousLevels = true;
             });
-            
-            ThieveryDomainAllowed.IsPrerequisiteFor = new List<BlueprintFeatureReference>() { 
+
+            //Separatist versions
+            var TrickeryDomainBaseAbilitySeparatist = Resources.GetBlueprint<BlueprintAbility>("74eae22022cd4f619e889abae9f5e8de");
+            var TrickeryDomainBaseResourceSeparatist = Resources.GetBlueprint<BlueprintAbilityResource>("0274f198633c4891b5007f294bf1de1b");
+            var SeparatistAsIsProperty = Resources.GetModBlueprint<BlueprintUnitProperty>("SeparatistAsIsProperty");
+
+
+            var ThieveryDomainAllowedSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("ThieveryDomainAllowedSeparatist", bp => {
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.IsClassFeature = true;
+            });
+
+            var ThieveryDomainGreaterResourceSeparatist = Helpers.CreateBlueprint<BlueprintAbilityResource>("ThieveryDomainGreaterResourceSeparatist", bp => {
+                bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
+                    BaseValue = 1,
+                    IncreasedByLevel = false,
+                    IncreasedByLevelStartPlusDivStep = true,
+                    m_Class = new BlueprintCharacterClassReference[0],
+                    m_ClassDiv = new BlueprintCharacterClassReference[] {
+                        ClericClass.ToReference<BlueprintCharacterClassReference>(),
+                        InquisitorClass.ToReference<BlueprintCharacterClassReference>(),
+                        HunterClass.ToReference<BlueprintCharacterClassReference>(),
+                        PaladinClass.ToReference<BlueprintCharacterClassReference>(),
+                        StargazerClass.ToReference<BlueprintCharacterClassReference>(),
+                    },
+                    m_Archetypes = new BlueprintArchetypeReference[0],
+                    m_ArchetypesDiv = new BlueprintArchetypeReference[] {
+                        DivineHunterArchetype.ToReference<BlueprintArchetypeReference>(),
+                        TempleChampionArchetype.ToReference<BlueprintArchetypeReference>(),
+                    },
+                    StartingLevel = 10,
+                    LevelStep = 2,
+                    StartingIncrease = 1,
+                    PerStepIncrease = 1,
+                };
+            });
+
+            var ThieveryDomainGreaterAbilitySeparatist = Helpers.CreateBlueprint<BlueprintAbility>("ThieveryDomainGreaterAbilitySeparatist", bp => {
+                bp.SetName("Thief of the Gods");
+                bp.SetDescription("At 8th level, you can make grant yourself the ability to roll twice on any {g|Encyclopedia:Trickery}trickery{/g} skill check, this abilities effect lasts until used " +
+                    "then dispels itself. You can use this ability once per day at 8th level, plus one additional time per day for every 2 levels beyond 8th.");
+                bp.m_Icon = SkillFocusThievery.Icon;
+                bp.AddComponent<SpellComponent>(c => {
+                    c.m_Flags = 0;
+                    c.School = SpellSchool.None;
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = ThieveryDomainGreaterResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityTargetHasFact>(c => {
+                    c.m_CheckedFacts = new BlueprintUnitFactReference[] { ThieveryDomainGreaterBuff.ToReference<BlueprintUnitFactReference>() };
+                    c.Inverted = true;
+                });
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            Permanent = true,
+                            m_Buff = ThieveryDomainGreaterBuff.ToReference<BlueprintBuffReference>(),
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue(),
+                            DurationSeconds = 0
+                        });
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = Metamagic.Quicken | Metamagic.Extend | Metamagic.Heighten | Metamagic.Reach;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+
+            var ThieveryDomainGreaterFeatureSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("ThieveryDomainGreaterFeatureSeparatist", bp => {
+                bp.SetName("Thief of the Gods");
+                bp.SetDescription("At 8th level, you can make grant yourself the ability to roll twice on any {g|Encyclopedia:Trickery}trickery{/g} skill check, this abilities effect lasts until used " +
+                    "then dispels itself. You can use this ability once per day at 8th level, plus one additional time per day for every 2 levels beyond 8th.");
+                bp.m_Icon = SkillFocusThievery.Icon;
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = ThieveryDomainGreaterResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { ThieveryDomainGreaterAbilitySeparatist.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+
+            var ThieveryDomainBaseFeatureSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("ThieveryDomainBaseFeatureSeparatist", bp => {
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { TrickeryDomainBaseAbilitySeparatist.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = TrickeryDomainBaseResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.AddComponent<ReplaceAbilitiesStat>(c => {
+                    c.m_Ability = new BlueprintAbilityReference[] { TrickeryDomainBaseAbilitySeparatist.ToReference<BlueprintAbilityReference>() };
+                    c.Stat = StatType.Wisdom;
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = ThieveryDomainSpellListFeature.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<AddClassSkill>(c => {
+                    c.Skill = StatType.SkillThievery;
+                });
+                bp.AddComponent<AddClassSkill>(c => {
+                    c.Skill = StatType.SkillStealth;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.SetName("Thievery Subdomain");
+                bp.SetDescription("\nYou are a master of thievery, both in the name of your god and yourself. {g|Encyclopedia:Trickery}Trickery{/g} and {g|Encyclopedia:Stealth}Stealth{/g} are class " +
+                    "{g|Encyclopedia:Skills}skills{/g}.\nCopycat: You can create an illusory double of yourself as a {g|Encyclopedia:Move_Action}move action{/g}. This double functions as a single mirror " +
+                    "image, and lasts for a number of {g|Encyclopedia:Combat_Round}rounds{/g} equal to your level in the class that gave you access to this domain, or until the illusory duplicate is " +
+                    "dispelled or destroyed. You can have no more than one copycat at a time. This ability does not stack with the mirror image {g|Encyclopedia:Spell}spell{/g}. You can use this ability " +
+                    "a number of times per day equal to 3 + your {g|Encyclopedia:Wisdom}Wisdom{/g} modifier.\nThief of the Gods: At 8th level, you can make grant yourself the ability to roll twice on any " +
+                    "{g|Encyclopedia:Trickery}trickery{/g} skill check, this abilities effect lasts until used then dispels itself. You can use this ability once per day at 8th level, plus one additional " +
+                    "time per day for every 2 levels beyond 8th.");
+                bp.IsClassFeature = true;
+            });
+
+            var ThieveryDomainProgressionSeparatist = Helpers.CreateBlueprint<BlueprintProgression>("ThieveryDomainProgressionSeparatist", bp => {
+                bp.AddComponent<PrerequisiteFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = ThieveryDomainAllowedSeparatist.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = ThieveryDomainProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = ThieveryDomainAllowed.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = ThieveryDomainProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = ThieveryDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.SetName("Thievery Subdomain");
+                bp.SetDescription("\nYou are a master of thievery, both in the name of your god and yourself. {g|Encyclopedia:Trickery}Trickery{/g} and {g|Encyclopedia:Stealth}Stealth{/g} are class " +
+                    "{g|Encyclopedia:Skills}skills{/g}.\nCopycat: You can create an illusory double of yourself as a {g|Encyclopedia:Move_Action}move action{/g}. This double functions as a single mirror " +
+                    "image, and lasts for a number of {g|Encyclopedia:Combat_Round}rounds{/g} equal to your level in the class that gave you access to this domain, or until the illusory duplicate is " +
+                    "dispelled or destroyed. You can have no more than one copycat at a time. This ability does not stack with the mirror image {g|Encyclopedia:Spell}spell{/g}. You can use this ability " +
+                    "a number of times per day equal to 3 + your {g|Encyclopedia:Wisdom}Wisdom{/g} modifier.\nThief of the Gods: At 8th level, you can make grant yourself the ability to roll twice on any " +
+                    "{g|Encyclopedia:Trickery}trickery{/g} skill check, this abilities effect lasts until used then dispels itself. You can use this ability once per day at 8th level, plus one additional " +
+                    "time per day for every 2 levels beyond 8th.\nDomain Spells: sleep, invisibility, see invisibility, confusion, mind fog, cloak of dreams, walk through space, mass invisibility, weird.");
+                bp.Groups = new FeatureGroup[] { FeatureGroup.SeparatistSecondaryDomain };
+                bp.IsClassFeature = true;
+                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    }
+                };
+                bp.LevelEntries = new LevelEntry[] {
+                    Helpers.LevelEntry(1, ThieveryDomainBaseFeatureSeparatist),
+                    Helpers.LevelEntry(10, ThieveryDomainGreaterFeatureSeparatist)
+                };
+                bp.UIGroups = new UIGroup[] {
+                    Helpers.CreateUIGroup(ThieveryDomainBaseFeatureSeparatist, ThieveryDomainGreaterFeatureSeparatist)
+                };
+                bp.GiveFeaturesForPreviousLevels = true;
+            });
+
+            ThieveryDomainAllowed.IsPrerequisiteFor = new List<BlueprintFeatureReference>() {
                 ThieveryDomainProgression.ToReference<BlueprintFeatureReference>(),
                 ThieveryDomainProgressionSecondary.ToReference<BlueprintFeatureReference>()
             };
             ThieveryDomainProgression.AddComponent<PrerequisiteNoFeature>(c => {
-                    c.Group = Prerequisite.GroupType.All;
-                    c.HideInUI = true;
-                    c.m_Feature = ThieveryDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
-            }); 
-            ThieveryDomainProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
-                    c.Group = Prerequisite.GroupType.All;
-                    c.HideInUI = true;
-                    c.m_Feature = ThieveryDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = ThieveryDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
             });
-            
+            ThieveryDomainProgression.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = ThieveryDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
+            ThieveryDomainProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = ThieveryDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+            });
+            ThieveryDomainProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = ThieveryDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
+            ThieveryDomainProgressionSeparatist.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = ThieveryDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
+
             if (ModSettings.AddedContent.Domains.IsDisabled("Thievery Subdomain")) { return; }
             DomainTools.RegisterDomain(ThieveryDomainProgression);
             DomainTools.RegisterSecondaryDomain(ThieveryDomainProgressionSecondary);
@@ -426,6 +625,8 @@ namespace ExpandedContent.Tweaks.Domains {
             DomainTools.RegisterTempleDomain(ThieveryDomainProgression);
             DomainTools.RegisterSecondaryTempleDomain(ThieveryDomainProgressionSecondary);
             DomainTools.RegisterImpossibleSubdomain(ThieveryDomainProgression, ThieveryDomainProgressionSecondary);
+            DomainTools.RegisterSeparatistDomain(ThieveryDomainProgressionSeparatist);
+
         }
     }
 }

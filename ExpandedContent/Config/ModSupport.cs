@@ -9,7 +9,9 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.JsonSystem;
+using Kingmaker.Blueprints.Root;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.DLC;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
 using Kingmaker.RuleSystem;
@@ -38,8 +40,12 @@ namespace ExpandedContent.Config {
         protected static bool IsTabletopTweaksBaseEnabled() { return IsModEnabled("TabletopTweaks-Base"); }
         protected static bool IsPrestigePlusEnabled() { return IsModEnabled("PrestigePlus"); }
 
+        private static readonly BlueprintDlc Dlc5 = Resources.GetBlueprint<BlueprintDlc>("95a25ca16bd54ce3b3ea56f83538fa0d");
 
-
+        protected static bool IsDLCEnabled(BlueprintDlc dlcname) {
+            IEnumerable<BlueprintDlc> dlcs = BlueprintRoot.Instance.DlcSettings.Dlcs;
+            return dlcs.Contains(dlcname);
+        }
 
 
         [HarmonyPatch(typeof(BlueprintsCache), "Init")]
@@ -70,7 +76,9 @@ namespace ExpandedContent.Config {
 
 
                 
-
+                if (IsDLCEnabled(Dlc5)) {
+                    Main.Log("If you can see this DLC5 is installed");
+                }
 
                 if (IsMysticalMayhemEnabled()) {
                     Main.Log("Starting Mystical Mayhem Compat Patch.");
@@ -793,6 +801,7 @@ namespace ExpandedContent.Config {
             return modEntries.Where(mod => mod.Info.Id.Equals(modName) && mod.Enabled && !mod.ErrorOnLoading).Any();
         }
 
+        
         private static void PatchTTTQuickenBlessingPrerequisites(string tttquickenfeatureguid, string warpriestblessingguid, string rangerblessingguid) {
 
             var quickenBlessingFeature = Resources.GetBlueprint<BlueprintFeature>(tttquickenfeatureguid);

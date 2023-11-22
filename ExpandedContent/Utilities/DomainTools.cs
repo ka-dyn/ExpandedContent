@@ -53,7 +53,10 @@ namespace ExpandedContent.Utilities {
             BlueprintFeatureSelection ImpossibleSubdomainSelection = Resources.GetModBlueprint<BlueprintFeatureSelection>("ImpossibleSubdomainSelection");
             ImpossibleSubdomainSelection.m_AllFeatures = ImpossibleSubdomainSelection.m_AllFeatures.AddToArray(subdomain.ToReference<BlueprintFeatureReference>());
             ImpossibleSubdomainSelection.m_Features = ImpossibleSubdomainSelection.m_Features.AddToArray(secondarysubdomain.ToReference<BlueprintFeatureReference>());
-
+        }
+        public static void RegisterSeparatistDomain(BlueprintProgression separatistdomain) {
+            BlueprintFeatureSelection SeparatistDomainSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("42b781e4375d499383b2602d90661283");
+            SeparatistDomainSelection.m_AllFeatures = SeparatistDomainSelection.m_AllFeatures.AddToArray(separatistdomain.ToReference<BlueprintFeatureReference>());
         }
     }
 }

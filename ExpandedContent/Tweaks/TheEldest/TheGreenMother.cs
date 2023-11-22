@@ -11,13 +11,6 @@ using Kingmaker.UnitLogic.FactLogic;
 
 namespace ExpandedContent.Tweaks.TheEldest {
     internal class TheGreenMother {
-        private static readonly BlueprintFeature CharmDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("f1ceba79ee123cc479cece27bc994ff2");
-        private static readonly BlueprintFeature EarthDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("5ca99a6ae118feb449dbbd165a8fe7c4");
-        private static readonly BlueprintFeature EvilDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("351235ac5fc2b7e47801f63d117b656c");
-        private static readonly BlueprintFeature PlantDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("0e03c2a03222b0b42acf96096b286327");
-        private static readonly BlueprintFeature CavesDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("CavesDomainAllowed");
-        private static readonly BlueprintFeature LustDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("LustDomainAllowed");
-        private static readonly BlueprintFeature GrowthDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("GrowthDomainAllowed");
         private static readonly BlueprintSpellbook CrusaderSpellbook = Resources.GetBlueprint<BlueprintSpellbook>("673d39f7da699aa408cdda6282e7dcc0");
         private static readonly BlueprintSpellbook ClericSpellbook = Resources.GetBlueprint<BlueprintSpellbook>("4673d19a0cf2fab4f885cc4d1353da33");
         private static readonly BlueprintSpellbook InquisitorSpellbook = Resources.GetBlueprint<BlueprintSpellbook>("57fab75111f377248810ece84193a5a5");
@@ -68,52 +61,84 @@ namespace ExpandedContent.Tweaks.TheEldest {
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;
                 bp.HideInCharacterSheetAndLevelUp = false;
-                bp.AddComponent<PrerequisiteNoArchetype>(c => {
-                    c.m_CharacterClass = ClericClass.ToReference<BlueprintCharacterClassReference>();
-                    c.m_Archetype = PriestOfBalance.ToReference<BlueprintArchetypeReference>();
-                });
-                bp.AddComponent<PrerequisiteNoArchetype>(c => {
-                    c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
-                    c.m_Archetype = FeralChampionArchetype.ToReference<BlueprintArchetypeReference>();
-                });
-                bp.AddComponent<PrerequisiteNoArchetype>(c => {
-                    c.HideInUI = true;
-                    c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
-                    c.m_Archetype = MantisZealotArchetype.ToReference<BlueprintArchetypeReference>();
-                });
-                bp.AddComponent<PrerequisiteNoArchetype>(c => {
-                    c.HideInUI = true;
-                    c.m_CharacterClass = DreadKnightClass.ToReference<BlueprintCharacterClassReference>();
-                    c.m_Archetype = ClawOfTheFalseWyrmArchetype.ToReference<BlueprintArchetypeReference>();
-                });
+                bp.SetDisallowedArchetype(ClericClass, PriestOfBalance);
+                bp.SetDisallowedArchetype(WarpriestClass, FeralChampionArchetype);
+                bp.SetDisallowedArchetype(WarpriestClass, MantisZealotArchetype);
+                bp.SetDisallowedArchetype(DreadKnightClass, ClawOfTheFalseWyrmArchetype);
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
                 bp.AddComponent<PrerequisiteAlignment>(c => {
                     c.Alignment = AlignmentMaskType.TrueNeutral | AlignmentMaskType.LawfulEvil | AlignmentMaskType.NeutralEvil | AlignmentMaskType.ChaoticEvil;
                 });
                 bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[1] { ChannelNegativeAllowed.ToReference<BlueprintUnitFactReference>() };
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        ChannelNegativeAllowed.ToReference<BlueprintUnitFactReference>()
+                    };
                 });
-                bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[1] { CharmDomainAllowed.ToReference<BlueprintUnitFactReference>() };
-                });
-                bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[1] { EarthDomainAllowed.ToReference<BlueprintUnitFactReference>() };
-                });
-                bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[1] { EvilDomainAllowed.ToReference<BlueprintUnitFactReference>() };
-                });
-                bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[1] { PlantDomainAllowed.ToReference<BlueprintUnitFactReference>() };
-                });
-                bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[1] { CavesDomainAllowed.ToReference<BlueprintUnitFactReference>() };
-                });
-                bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[1] { LustDomainAllowed.ToReference<BlueprintUnitFactReference>() };
-                });
-                bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[1] { GrowthDomainAllowed.ToReference<BlueprintUnitFactReference>() };
-                });
+                bp.SetAllowedDomains(
+                    DeityTools.DomainAllowed.CharmDomainAllowed,
+                    DeityTools.DomainAllowed.EarthDomainAllowed,
+                    DeityTools.DomainAllowed.EvilDomainAllowed,
+                    DeityTools.DomainAllowed.PlantDomainAllowed,
+                    DeityTools.DomainAllowed.CavesDomainAllowed,
+                    DeityTools.DomainAllowed.GrowthDomainAllowed,
+                    DeityTools.DomainAllowed.LustDomainAllowed,
+                    DeityTools.SeparatistDomainAllowed.AirDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.AnimalDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.ArtificeDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.ChaosDomainAllowedSeparatist,//Chaos
+                    DeityTools.SeparatistDomainAllowed.CommunityDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.DarknessDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.DeathDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.DestructionDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.FireDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.GloryDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.HealingDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.IceDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.KnowledgeDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.LawDomainAllowedSeparatist,//Lawful
+                    DeityTools.SeparatistDomainAllowed.LiberationDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.LuckDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.MadnessDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.MagicDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.NobilityDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.ProtectionDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.ReposeDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.RuneDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.StrengthDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.SunDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.TravelDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.TrickeryDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.UndeadDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.WarDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.WaterDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.WeatherDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.ArchonDomainLawAllowedSeparatist,//Lawful
+                    DeityTools.SeparatistDomainAllowed.BloodDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.CurseDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.DefenseDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.DemonDomainChaosAllowedSeparatist,//Chaos
+                    DeityTools.SeparatistDomainAllowed.DemonDomainEvilAllowedSeparatist,//Evil
+                    DeityTools.SeparatistDomainAllowed.DragonDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.FerocityDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.FistDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.FurDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.HeroismDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.LoyaltyDomainAllowedSeparatist,//Lawful
+                    DeityTools.SeparatistDomainAllowed.PsychopompDomainDeathAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.PsychopompDomainReposeAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.RageDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.ResolveDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.RestorationDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.RevelationDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.RevolutionDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.RiversDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.ScalykindDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.StarsDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.StormDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.ThieveryDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.WhimsyDomainAllowedSeparatist,//Chaos
+                    DeityTools.SeparatistDomainAllowed.WindDomainAllowedSeparatist
+                );
                 bp.AddComponent<ForbidSpellbookOnAlignmentDeviation>(c => {
                     c.m_Spellbooks = new BlueprintSpellbookReference[1] { CrusaderSpellbook.ToReference<BlueprintSpellbookReference>() };
                     c.m_Spellbooks = new BlueprintSpellbookReference[1] { ClericSpellbook.ToReference<BlueprintSpellbookReference>() };

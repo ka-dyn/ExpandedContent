@@ -12,6 +12,7 @@ using Kingmaker.EntitySystem.Stats;
 using Kingmaker.UnitLogic.ActivatableAbilities;
 using ExpandedContent.Config;
 using Kingmaker.Blueprints.Classes.Selection;
+using Kingmaker.UnitLogic.Mechanics.Properties;
 
 namespace ExpandedContent.Tweaks.Domains {
     internal class RageDomain {
@@ -239,7 +240,6 @@ namespace ExpandedContent.Tweaks.Domains {
                     Helpers.LevelEntry(14, RageDomainExtraRage),
                     Helpers.LevelEntry(15, RageDomainExtraRage),
                     Helpers.LevelEntry(16, RagePowerSelection, RageDomainExtraRage),
-                    Helpers.LevelEntry(16, RageDomainExtraRage),
                     Helpers.LevelEntry(17, RageDomainExtraRage),
                     Helpers.LevelEntry(18, RageDomainExtraRage),
                     Helpers.LevelEntry(19, RageDomainExtraRage),
@@ -303,7 +303,6 @@ namespace ExpandedContent.Tweaks.Domains {
                     Helpers.LevelEntry(14, RageDomainExtraRage),
                     Helpers.LevelEntry(15, RageDomainExtraRage),
                     Helpers.LevelEntry(16, RagePowerSelection, RageDomainExtraRage),
-                    Helpers.LevelEntry(16, RageDomainExtraRage),
                     Helpers.LevelEntry(17, RageDomainExtraRage),
                     Helpers.LevelEntry(18, RageDomainExtraRage),
                     Helpers.LevelEntry(19, RageDomainExtraRage),
@@ -367,19 +366,135 @@ namespace ExpandedContent.Tweaks.Domains {
                 };
                 bp.GiveFeaturesForPreviousLevels = true;
             });
-            RageDomainAllowed.IsPrerequisiteFor = new List<BlueprintFeatureReference>() { 
+
+            //Separatist versions
+            var DestructionDomainBaseAbilitySeparatist = Resources.GetBlueprint<BlueprintActivatableAbility>("eab6430eefd84d6c8374d83c18b16a6f");
+            var DestructionDomainBaseResourceSeparatist = Resources.GetBlueprint<BlueprintAbilityResource>("07aade2cc29a42e085e3f8721a085d87");
+
+
+            var RageDomainAllowedSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("RageDomainAllowedSeparatist", bp => {
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.IsClassFeature = true;
+            });
+
+            var RageDomainBaseFeatureSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("RageDomainBaseFeatureSeparatist", bp => {
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { DestructionDomainBaseAbilitySeparatist.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = DestructionDomainBaseResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.AddComponent<ReplaceAbilitiesStat>(c => {
+                    c.m_Ability = new BlueprintAbilityReference[] { DestructionDomainBaseAbilitySeparatist.ToReference<BlueprintAbilityReference>() };
+                    c.Stat = StatType.Wisdom;
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = RageDomainSpellListFeature.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.SetName("Rage Subdomain");
+                bp.SetDescription("\nYou are granted a fraction of the pure divine rage of your deity.\nDestructive Smite: You gain the the {g|Encyclopedia:Special_Abilities}supernatural ability{/g} " +
+                    "to make a {g|Encyclopedia:MeleeAttack}melee attack{/g} with a morale {g|Encyclopedia:Bonus}bonus{/g} on {g|Encyclopedia:Damage}damage rolls{/g} equal to 1/2 your level in the class " +
+                    "that gave you access to this domain (minimum 1).\nRage: At 8th level, you can enter a fearsome rage, like a barbarian, for a number of rounds per day equal to your cleric level + your " +
+                    "constitution modifier. At 12th and 16th level, you can select one rage power. You cannot select any rage power that possesses a level requirement, but otherwise your barbarian " +
+                    "level is equal to 1/2 your cleric level. These rounds of rage stack with any rounds of rage you might have from levels of barbarian.");
+                bp.IsClassFeature = true;
+            });
+
+            var RageDomainProgressionSeparatist = Helpers.CreateBlueprint<BlueprintProgression>("RageDomainProgressionSeparatist", bp => {
+                bp.AddComponent<PrerequisiteFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = RageDomainAllowedSeparatist.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = RageDomainProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = RageDomainAllowed.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = RageDomainProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = RageDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.SetName("Rage Subdomain");
+                bp.SetDescription("\nYou are granted a fraction of the pure divine rage of your deity.\nDestructive Smite: You gain the the {g|Encyclopedia:Special_Abilities}supernatural ability{/g} " +
+                    "to make a {g|Encyclopedia:MeleeAttack}melee attack{/g} with a morale {g|Encyclopedia:Bonus}bonus{/g} on {g|Encyclopedia:Damage}damage rolls{/g} equal to 1/2 your level in the class " +
+                    "that gave you access to this domain (minimum 1).\nRage: At 8th level, you can enter a fearsome rage, like a barbarian, for a number of rounds per day equal to your cleric level + your " +
+                    "constitution modifier. At 12th and 16th level, you can select one rage power. You cannot select any rage power that possesses a level requirement, but otherwise your barbarian " +
+                    "level is equal to 1/2 your cleric level. These rounds of rage stack with any rounds of rage you might have from levels of barbarian.\nDomain {g|Encyclopedia:Spell}Spells{/g}: " +
+                    "true strike, bulls strength, rage, fear, boneshatter, harm, disintegrate, horrid wilting, tsunami.");
+                bp.Groups = new FeatureGroup[] { FeatureGroup.SeparatistSecondaryDomain };
+                bp.IsClassFeature = true;
+                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    }
+                };
+                bp.LevelEntries = new LevelEntry[] {
+                    Helpers.LevelEntry(1, RageDomainBaseFeatureSeparatist),
+                    Helpers.LevelEntry(10, RageFeature, RageDomainExtraRage, RageDomainExtraRage, RageDomainExtraRage, RageDomainExtraRage, RageDomainExtraRage, RageDomainExtraRage),
+                    Helpers.LevelEntry(11, RageDomainExtraRage),
+                    Helpers.LevelEntry(12, RageDomainExtraRage),
+                    Helpers.LevelEntry(13, RageDomainExtraRage),
+                    Helpers.LevelEntry(14, RagePowerSelection, RageDomainExtraRage),
+                    Helpers.LevelEntry(15, RageDomainExtraRage),
+                    Helpers.LevelEntry(16, RageDomainExtraRage),
+                    Helpers.LevelEntry(17, RageDomainExtraRage),
+                    Helpers.LevelEntry(18, RagePowerSelection, RageDomainExtraRage),
+                    Helpers.LevelEntry(19, RageDomainExtraRage),
+                    Helpers.LevelEntry(20, RageDomainExtraRage)
+                };
+                bp.UIGroups = new UIGroup[] {
+                    Helpers.CreateUIGroup(RageDomainBaseFeatureSeparatist, RageFeature, RagePowerSelection, RagePowerSelection)
+                };
+                bp.GiveFeaturesForPreviousLevels = true;
+            });
+
+            RageDomainAllowed.IsPrerequisiteFor = new List<BlueprintFeatureReference>() {
                 RageDomainProgression.ToReference<BlueprintFeatureReference>(),
                 RageDomainProgressionSecondary.ToReference<BlueprintFeatureReference>()
             };
             RageDomainProgression.AddComponent<PrerequisiteNoFeature>(c => {
-                    c.Group = Prerequisite.GroupType.All;
-                    c.HideInUI = true;
-                    c.m_Feature = RageDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
-            }); 
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = RageDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+            });
+            RageDomainProgression.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = RageDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
             RageDomainProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
-                    c.Group = Prerequisite.GroupType.All;
-                    c.HideInUI = true;
-                    c.m_Feature = RageDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = RageDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+            });
+            RageDomainProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = RageDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
+            RageDomainProgressionSeparatist.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = RageDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
             });
             if (ModSettings.AddedContent.Domains.IsDisabled("Rage Subdomain")) { return; }
             DomainTools.RegisterDomain(RageDomainProgression);
@@ -389,6 +504,8 @@ namespace ExpandedContent.Tweaks.Domains {
             DomainTools.RegisterTempleDomain(RageDomainProgression);
             DomainTools.RegisterSecondaryTempleDomain(RageDomainProgressionSecondary);
             DomainTools.RegisterImpossibleSubdomain(RageDomainProgression, RageDomainProgressionSecondary);
+            DomainTools.RegisterSeparatistDomain(RageDomainProgressionSeparatist);
+
         }
     }
 }

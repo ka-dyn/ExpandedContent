@@ -2639,6 +2639,97 @@ namespace ExpandedContent.Tweaks.Domains {
                     c.m_Feature = StarsDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
             });
 
+
+            //Separatist versions
+            var StarsDomainAllowedSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("StarsDomainAllowedSeparatist", bp => {
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.IsClassFeature = true;
+            });
+
+
+
+
+            var StarsDomainProgressionSeparatist = Helpers.CreateBlueprint<BlueprintProgression>("StarsDomainProgressionSeparatist", bp => {
+                bp.AddComponent<PrerequisiteFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = StarsDomainAllowedSeparatist.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = StarsDomainProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = StarsDomainAllowed.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = StarsDomainProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = StarsDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.SetName("Stars Subdomain");
+                bp.SetDescription("\nThe firmament provides you inspiration, and you draw power from the stars’ distant light.\nGuarded Mind: You gain a +2 insight bonus on saving throws " +
+                    "against all mind-affecting effects.\nThe Stars Are Right: At 8th level, you may spontaneously cast any of your Stars subdomain spells by swapping out a spell of an equal " +
+                    "spell level. Any Stars subdomain spell that you cast heals you an amount of hit point damage equal to the spell’s level; this effect happens as you cast the spell.\nDomain " +
+                    "{g|Encyclopedia:Spell}Spells{/g}: entropic shield, hypnotic pattern, blink, dimension door, summon monster V, overwhelming presence, sunbeam, sunburst, polar midnight.");
+                bp.Groups = new FeatureGroup[] { FeatureGroup.SeparatistSecondaryDomain };
+                bp.IsClassFeature = true;
+                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    }
+                };
+                bp.LevelEntries = new LevelEntry[] {
+                    Helpers.LevelEntry(1, StarsDomainBaseFeature),
+                    Helpers.LevelEntry(10, StarsDomainGreaterFeature1, StarsDomainGreaterFeature2, StargazerStarsDomainGreaterFeatureCheck)
+                };
+                bp.UIGroups = new UIGroup[] {
+                    Helpers.CreateUIGroup(StarsDomainBaseFeature, StarsDomainGreaterFeature1)
+                };
+                bp.GiveFeaturesForPreviousLevels = true;
+            });
+
+            StarsDomainAllowed.IsPrerequisiteFor = new List<BlueprintFeatureReference>() {
+                StarsDomainProgression.ToReference<BlueprintFeatureReference>(),
+                StarsDomainProgressionSecondary.ToReference<BlueprintFeatureReference>()
+            };
+            StarsDomainProgression.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = StarsDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+            });
+            StarsDomainProgression.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = StarsDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
+            StarsDomainProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = StarsDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+            });
+            StarsDomainProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = StarsDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
+            StarsDomainProgressionSeparatist.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = StarsDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
+
             //Adding to stargazer
             StargazerMysteryMagicStarsDomainFeatureSelection.m_AllFeatures = StargazerMysteryMagicStarsDomainFeatureSelection.m_AllFeatures.AppendToArray(
                 StarsDomainProgressionSecondary.ToReference<BlueprintFeatureReference>()
@@ -2659,6 +2750,8 @@ namespace ExpandedContent.Tweaks.Domains {
             DomainTools.RegisterTempleDomain(StarsDomainProgression);
             DomainTools.RegisterSecondaryTempleDomain(StarsDomainProgressionSecondary);
             DomainTools.RegisterImpossibleSubdomain(StarsDomainProgression, StarsDomainProgressionSecondary);
+            DomainTools.RegisterSeparatistDomain(StarsDomainProgressionSeparatist);
+
         }
     }
 }

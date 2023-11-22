@@ -366,6 +366,7 @@
     <Compile Include="Tweaks\Deities\Pulura.cs" />
     <Compile Include="Tweaks\Deities\Ragathiel.cs" />
     <Compile Include="Tweaks\DemonLords\Zura.cs" />
+    <Compile Include="Tweaks\Domains\DomainProperties.cs" />
     <Compile Include="Tweaks\Domains\LoyaltyDomain.cs" />
     <Compile Include="Tweaks\Domains\DefenseDomain.cs" />
     <Compile Include="Tweaks\Domains\HeroismDomain.cs" />

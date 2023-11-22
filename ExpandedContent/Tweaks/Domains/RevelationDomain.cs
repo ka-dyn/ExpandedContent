@@ -11,6 +11,7 @@ using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
 using ExpandedContent.Config;
+using Kingmaker.UnitLogic.Mechanics.Properties;
 
 namespace ExpandedContent.Tweaks.Domains {
     internal class RevelationDomain {
@@ -285,20 +286,105 @@ namespace ExpandedContent.Tweaks.Domains {
                 };
                 bp.GiveFeaturesForPreviousLevels = true;
             });
-            
-            RevelationDomainAllowed.IsPrerequisiteFor = new List<BlueprintFeatureReference>() { 
+
+            //Separatist versions
+            var SunDomainGreaterFeatureSeparatist = Resources.GetBlueprint<BlueprintFeature>("fe7e6703cd62470da842a5402949846a");
+            var SeparatistAsIsProperty = Resources.GetModBlueprint<BlueprintUnitProperty>("SeparatistAsIsProperty");
+
+
+            var RevelationDomainAllowedSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("RevelationDomainAllowedSeparatist", bp => {
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.IsClassFeature = true;
+            });
+
+
+
+
+
+            var RevelationDomainProgressionSeparatist = Helpers.CreateBlueprint<BlueprintProgression>("RevelationDomainProgressionSeparatist", bp => {
+                bp.AddComponent<PrerequisiteFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = RevelationDomainAllowedSeparatist.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = RevelationDomainProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = RevelationDomainAllowed.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = RevelationDomainProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = RevelationDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.SetName("Revelation Subdomain");
+                bp.SetDescription("\nYour deity grants you the power to see all as divine revelation, and punish those who do harm with their light.\nGuided Eyes: Perception " +
+                    "is always a class skill for you. In addition, whenever you make a skill check to see through a disguise or find something that is hidden or concealed, " +
+                    "you gain a +4 sacred bonus on the check.\nNimbus of Light: At 8th level, you can emit a 30-foot nimbus of light for a number of " +
+                    "{g|Encyclopedia:Combat_Round}rounds{/g} per day equal to your level in the class that gave you access to this domain. Any hostile creature within this " +
+                    "radius must succeed at a Fortitude save to resist the effects of this aura. If the creature fails, it is blinded until it leaves the area of the " +
+                    "{g|Encyclopedia:Spell}spell{/g}. A creature that has resisted the effect cannot be affected again by this particular aura. In addition, undead within " +
+                    "this radius take an amount of damage equal to your level in the class that gave you access to this domain each round that they remain inside the nimbus. " +
+                    "These rounds do not need to be consecutive.\nDomain Spells: faerie fire, see invisibility, dispel magic, shield of dawn, true seeing, chains of light, " +
+                    "sunbeam, sunburst, elemental swarm (fire).");
+                bp.Groups = new FeatureGroup[] { FeatureGroup.SeparatistSecondaryDomain };
+                bp.IsClassFeature = true;
+                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    }
+                };
+                bp.LevelEntries = new LevelEntry[] {
+                    Helpers.LevelEntry(1, RevelationDomainBaseFeature),
+                    Helpers.LevelEntry(10, SunDomainGreaterFeatureSeparatist)
+                };
+                bp.UIGroups = new UIGroup[] {
+                    Helpers.CreateUIGroup(RevelationDomainBaseFeature, SunDomainGreaterFeatureSeparatist)
+                };
+                bp.GiveFeaturesForPreviousLevels = true;
+            });
+
+            RevelationDomainAllowed.IsPrerequisiteFor = new List<BlueprintFeatureReference>() {
                 RevelationDomainProgression.ToReference<BlueprintFeatureReference>(),
                 RevelationDomainProgressionSecondary.ToReference<BlueprintFeatureReference>()
             };
             RevelationDomainProgression.AddComponent<PrerequisiteNoFeature>(c => {
-                    c.Group = Prerequisite.GroupType.All;
-                    c.HideInUI = true;
-                    c.m_Feature = RevelationDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
-            }); 
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = RevelationDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+            });
+            RevelationDomainProgression.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = RevelationDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
             RevelationDomainProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
-                    c.Group = Prerequisite.GroupType.All;
-                    c.HideInUI = true;
-                    c.m_Feature = RevelationDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = RevelationDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+            });
+            RevelationDomainProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = RevelationDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
+            RevelationDomainProgressionSeparatist.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = RevelationDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
             });
             if (ModSettings.AddedContent.Domains.IsDisabled("Revelation Subdomain")) { return; }
             DomainTools.RegisterDomain(RevelationDomainProgression);
@@ -307,6 +393,8 @@ namespace ExpandedContent.Tweaks.Domains {
             DomainTools.RegisterTempleDomain(RevelationDomainProgression);
             DomainTools.RegisterSecondaryTempleDomain(RevelationDomainProgressionSecondary);
             DomainTools.RegisterImpossibleSubdomain(RevelationDomainProgression, RevelationDomainProgressionSecondary);
+            DomainTools.RegisterSeparatistDomain(RevelationDomainProgressionSeparatist);
+
         }
     }
 }

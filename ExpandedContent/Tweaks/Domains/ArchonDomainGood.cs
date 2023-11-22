@@ -16,6 +16,7 @@ using Kingmaker.Utility;
 using Kingmaker.Enums;
 using Kingmaker.Designers.Mechanics.Buffs;
 using ExpandedContent.Config;
+using Kingmaker.UnitLogic.Alignments;
 
 namespace ExpandedContent.Tweaks.Domains {
     internal class ArchonDomainGood {
@@ -265,6 +266,11 @@ namespace ExpandedContent.Tweaks.Domains {
             });            
             // Main Blueprint
             var ArchonDomainGoodProgression = Helpers.CreateBlueprint<BlueprintProgression>("ArchonDomainGoodProgression", bp => {
+                bp.AddComponent<PrerequisiteAlignment>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = false;
+                    c.Alignment = AlignmentMaskType.Good;
+                });
                 bp.AddComponent<PrerequisiteFeature>(c => {
                     c.Group = Prerequisite.GroupType.All;
                     c.HideInUI = true;
@@ -336,6 +342,11 @@ namespace ExpandedContent.Tweaks.Domains {
             });
             // Secondary Domain Progression
             var ArchonDomainGoodProgressionSecondary = Helpers.CreateBlueprint<BlueprintProgression>("ArchonDomainGoodProgressionSecondary", bp => {
+                bp.AddComponent<PrerequisiteAlignment>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = false;
+                    c.Alignment = AlignmentMaskType.Good;
+                });
                 bp.AddComponent<PrerequisiteFeature>(c => {
                     c.Group = Prerequisite.GroupType.All;
                     c.HideInUI = true;
@@ -388,23 +399,194 @@ namespace ExpandedContent.Tweaks.Domains {
                 };
                 bp.GiveFeaturesForPreviousLevels = true;
             });
-            
+
+            //Separatist versions
+            var GoodDomainBaseAbilitySeparatist = Resources.GetBlueprint<BlueprintAbility>("024d68367e6440a792d83dc1fa7481aa");
+            var GoodDomainBaseResourceSeparatist = Resources.GetBlueprint<BlueprintAbilityResource>("abc674f0ced54ddfa6555c7f82b02bfa");
+
+            var ArchonDomainGoodAllowedSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("ArchonDomainGoodAllowedSeparatist", bp => {
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.IsClassFeature = true;
+            });
+
+            var ArchonDomainGreaterResourceSeparatist = Helpers.CreateBlueprint<BlueprintAbilityResource>("ArchonDomainGreaterResourceSeparatist", bp => {
+                bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
+                    BaseValue = 0,
+                    IncreasedByLevel = false,
+                    m_Class = new BlueprintCharacterClassReference[] {
+                        InquisitorClass.ToReference<BlueprintCharacterClassReference>(),
+                        HunterClass.ToReference<BlueprintCharacterClassReference>(),
+                        PaladinClass.ToReference<BlueprintCharacterClassReference>(),
+                        StargazerClass.ToReference<BlueprintCharacterClassReference>(),
+                    },
+                    m_Archetypes = new BlueprintArchetypeReference[] {
+                        DivineHunterArchetype.ToReference<BlueprintArchetypeReference>(),
+                        TempleChampionArchetype.ToReference<BlueprintArchetypeReference>(),
+                    },
+                    IncreasedByLevelStartPlusDivStep = true,
+                    m_ClassDiv = new BlueprintCharacterClassReference[] {
+                        ClericClass.ToReference<BlueprintCharacterClassReference>()
+                    },
+                    LevelIncrease = 1,
+                    StartingLevel = 3,
+                    StartingIncrease = 1,
+                    LevelStep = 1,
+                    PerStepIncrease = 1,
+                };
+                bp.m_Min = 1;
+            });
+
+            var ArchonDomainGreaterAbilitySeparatist = Helpers.CreateBlueprint<BlueprintActivatableAbility>("ArchonDomainGreaterAbilitySeparatist", bp => {
+                bp.SetName("Aura of Menace");
+                bp.SetDescription("At 8th level, you can emit a 30-foot aura of menace as a standard action. Enemies in this aura take a –2 penalty to " +
+                    "AC and on attacks and saves as long as they remain inside the aura. You can use this ability for a number of rounds per day equal " +
+                    "to your cleric level. These rounds do not need to be consecutive.");
+                bp.m_Icon = HolyAura.m_Icon;
+                bp.m_Buff = ArchonDomainGreaterBuff.ToReference<BlueprintBuffReference>();
+                bp.AddComponent<ActivatableAbilityResourceLogic>(c => {
+                    c.SpendType = ActivatableAbilityResourceLogic.ResourceSpendType.NewRound;
+                    c.m_RequiredResource = ArchonDomainGreaterResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                });
+                bp.ActivationType = AbilityActivationType.WithUnitCommand;
+                bp.m_ActivateWithUnitCommand = UnitCommand.CommandType.Standard;
+            });
+            var ArchonDomainGreaterFeatureSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("ArchonDomainGreaterFeatureSeparatist", bp => {
+                bp.SetName("Aura of Menace");
+                bp.SetDescription("At 8th level, you can emit a 30-foot aura of menace as a standard action. Enemies in this aura take a –2 penalty to " +
+                    "AC and on attacks and saves as long as they remain inside the aura. You can use this ability for a number of rounds per day equal " +
+                    "to your cleric level. These rounds do not need to be consecutive.");
+                bp.m_Icon = HolyAura.m_Icon;
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = ArchonDomainGreaterResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { ArchonDomainGreaterAbilitySeparatist.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+
+            var ArchonDomainGoodBaseFeatureSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("ArchonDomainGoodBaseFeatureSeparatist", bp => {
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { GoodDomainBaseAbilitySeparatist.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = GoodDomainBaseResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.AddComponent<ReplaceAbilitiesStat>(c => {
+                    c.m_Ability = new BlueprintAbilityReference[] { GoodDomainBaseAbilitySeparatist.ToReference<BlueprintAbilityReference>() };
+                    c.Stat = StatType.Wisdom;
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = ArchonDomainGoodSpellListFeature.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.SetName("Archon Subdomain - Good");
+                bp.SetDescription("\nYou follow the archons path of righteousness.\n{g|Encyclopedia:TouchAttack}Touch{/g} of Good: You can " +
+                    "touch a creature as a {g|Encyclopedia:Standard_Actions}standard action{/g}, granting a sacred {g|Encyclopedia:Bonus}bonus{/g} on " +
+                    "{g|Encyclopedia:Attack}attack rolls{/g}, {g|Encyclopedia:Skills}skill checks{/g}, {g|Encyclopedia:Ability_Scores}ability checks{/g}, " +
+                    "and {g|Encyclopedia:Saving_Throw}saving throws{/g} equal to half your level in the class that gave you access to this domain (minimum 1) " +
+                    "for 1 {g|Encyclopedia:Combat_Round}round{/g}. You can use this ability a number of times per day equal to 3 + your {g|Encyclopedia:Wisdom}Wisdom{/g} " +
+                    "modifier.\nAura of Menace: At 8th level, you can emit a 30-foot aura of menace as a standard action. Enemies in this aura take a –2 penalty to " +
+                    "AC and on attacks and saves as long as they remain inside the aura. You can use this ability for a number of rounds per day equal " +
+                    "to your cleric level. These rounds do not need to be consecutive.");
+                bp.IsClassFeature = true;
+            });
+
+            var ArchonDomainGoodProgressionSeparatist = Helpers.CreateBlueprint<BlueprintProgression>("ArchonDomainGoodProgressionSeparatist", bp => {
+                bp.AddComponent<PrerequisiteAlignment>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = false;
+                    c.Alignment = AlignmentMaskType.Good;
+                });
+                bp.AddComponent<PrerequisiteFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = ArchonDomainGoodAllowedSeparatist.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = ArchonDomainGoodAllowed.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = ArchonDomainGoodProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = ArchonDomainGoodProgressionSecondary.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.SetName("Archon Subdomain - Good");
+                bp.SetDescription("\nYou follow the archons path of righteousness.\n{g|Encyclopedia:TouchAttack}Touch{/g} of Good: You can " +
+                    "touch a creature as a {g|Encyclopedia:Standard_Actions}standard action{/g}, granting a sacred {g|Encyclopedia:Bonus}bonus{/g} on " +
+                    "{g|Encyclopedia:Attack}attack rolls{/g}, {g|Encyclopedia:Skills}skill checks{/g}, {g|Encyclopedia:Ability_Scores}ability checks{/g}, " +
+                    "and {g|Encyclopedia:Saving_Throw}saving throws{/g} equal to half your level in the class that gave you access to this domain (minimum 1) " +
+                    "for 1 {g|Encyclopedia:Combat_Round}round{/g}. You can use this ability a number of times per day equal to 3 + your {g|Encyclopedia:Wisdom}Wisdom{/g} " +
+                    "modifier.\nAura of Menace: At 8th level, you can emit a 30-foot aura of menace as a standard action. Enemies in this aura take a –2 penalty to " +
+                    "AC and on attacks and saves as long as they remain inside the aura. You can use this ability for a number of rounds per day equal " +
+                    "to your cleric level. These rounds do not need to be consecutive.\nDomain {g|Encyclopedia:Spell}Spells{/g}: divine favor, communal protection " +
+                    "from evil, prayer, holy smite, burst of glory, summon monster VI, holy word, holy aura, summon monster IX.");
+                bp.Groups = new FeatureGroup[] { FeatureGroup.SeparatistSecondaryDomain };
+                bp.IsClassFeature = true;
+                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    }
+                };
+                bp.m_Archetypes = new BlueprintProgression.ArchetypeWithLevel[] { };
+                bp.LevelEntries = new LevelEntry[] {
+                    Helpers.LevelEntry(1, ArchonDomainGoodBaseFeatureSeparatist),
+                    Helpers.LevelEntry(10, ArchonDomainGreaterFeatureSeparatist)
+                };
+                bp.UIGroups = new UIGroup[] {
+                    Helpers.CreateUIGroup(ArchonDomainGoodBaseFeatureSeparatist, ArchonDomainGreaterFeatureSeparatist)
+                };
+                bp.GiveFeaturesForPreviousLevels = true;
+            });
+
+
             ArchonDomainGoodAllowed.IsPrerequisiteFor = new List<BlueprintFeatureReference>() { 
                 ArchonDomainGoodProgression.ToReference<BlueprintFeatureReference>(),
                 ArchonDomainGoodProgressionSecondary.ToReference<BlueprintFeatureReference>()
             };
             ArchonDomainGoodProgression.AddComponent<PrerequisiteNoFeature>(c => {
-                    c.Group = Prerequisite.GroupType.All;
-                    c.HideInUI = true;
-                    c.m_Feature = ArchonDomainGoodProgressionSecondary.ToReference<BlueprintFeatureReference>();
-            }); 
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = ArchonDomainGoodProgressionSecondary.ToReference<BlueprintFeatureReference>();
+            });
+            ArchonDomainGoodProgression.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = ArchonDomainGoodProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
             ArchonDomainGoodProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
-                    c.Group = Prerequisite.GroupType.All;
-                    c.HideInUI = true;
-                    c.m_Feature = ArchonDomainGoodProgressionSecondary.ToReference<BlueprintFeatureReference>();
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = ArchonDomainGoodProgressionSecondary.ToReference<BlueprintFeatureReference>();
+            });
+            ArchonDomainGoodProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = ArchonDomainGoodProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
+            ArchonDomainGoodProgressionSeparatist.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = ArchonDomainGoodProgressionSeparatist.ToReference<BlueprintFeatureReference>();
             });
             var DomainMastery = Resources.GetBlueprint<BlueprintFeature>("2de64f6a1f2baee4f9b7e52e3f046ec5").GetComponent<AutoMetamagic>();
             DomainMastery.Abilities.Add(ArchonDomainGreaterAbility.ToReference<BlueprintAbilityReference>());
+            DomainMastery.Abilities.Add(ArchonDomainGreaterAbilitySeparatist.ToReference<BlueprintAbilityReference>());
             if (ModSettings.AddedContent.Domains.IsDisabled("Archon Subdomain")) { return; }
             DomainTools.RegisterDomain(ArchonDomainGoodProgression);
             DomainTools.RegisterSecondaryDomain(ArchonDomainGoodProgressionSecondary);
@@ -412,7 +594,8 @@ namespace ExpandedContent.Tweaks.Domains {
             DomainTools.RegisterTempleDomain(ArchonDomainGoodProgression);
             DomainTools.RegisterSecondaryTempleDomain(ArchonDomainGoodProgressionSecondary);
             DomainTools.RegisterImpossibleSubdomain(ArchonDomainGoodProgression, ArchonDomainGoodProgressionSecondary);
-           
+            DomainTools.RegisterSeparatistDomain(ArchonDomainGoodProgressionSeparatist);
+
         }
 
     }

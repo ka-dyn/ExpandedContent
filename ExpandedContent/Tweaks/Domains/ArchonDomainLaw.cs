@@ -12,6 +12,7 @@ using Kingmaker.EntitySystem.Stats;
 using Kingmaker.UnitLogic.ActivatableAbilities;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using ExpandedContent.Config;
+using Kingmaker.UnitLogic.Alignments;
 
 namespace ExpandedContent.Tweaks.Domains {
     internal class ArchonDomainLaw {
@@ -168,6 +169,11 @@ namespace ExpandedContent.Tweaks.Domains {
             });            
             // Main Blueprint
             var ArchonDomainLawProgression = Helpers.CreateBlueprint<BlueprintProgression>("ArchonDomainLawProgression", bp => {
+                bp.AddComponent<PrerequisiteAlignment>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = false;
+                    c.Alignment = AlignmentMaskType.Lawful;
+                });
                 bp.AddComponent<PrerequisiteFeature>(c => {
                     c.Group = Prerequisite.GroupType.All;
                     c.HideInUI = true;
@@ -239,6 +245,11 @@ namespace ExpandedContent.Tweaks.Domains {
             });
             // Secondary Domain Progression
             var ArchonDomainLawProgressionSecondary = Helpers.CreateBlueprint<BlueprintProgression>("ArchonDomainLawProgressionSecondary", bp => {
+                bp.AddComponent<PrerequisiteAlignment>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = false;
+                    c.Alignment = AlignmentMaskType.Lawful;
+                });
                 bp.AddComponent<PrerequisiteFeature>(c => {
                     c.Group = Prerequisite.GroupType.All;
                     c.HideInUI = true;
@@ -291,23 +302,138 @@ namespace ExpandedContent.Tweaks.Domains {
                 };
                 bp.GiveFeaturesForPreviousLevels = true;
             });
-            
-            ArchonDomainLawAllowed.IsPrerequisiteFor = new List<BlueprintFeatureReference>() { 
+
+            //Separatist versions
+            var LawDomainBaseAbilitySeparatist = Resources.GetBlueprint<BlueprintAbility>("bc28a358ba6441cc93bbb12099cc2eb8");
+            var LawDomainBaseResourceSeparatist = Resources.GetBlueprint<BlueprintAbilityResource>("82f9a89cb0bd47db8d76e2f28f617030");
+
+            var ArchonDomainLawAllowedSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("ArchonDomainLawAllowedSeparatist", bp => {
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.IsClassFeature = true;
+            });
+
+            var ArchonDomainGreaterAbilitySeparatist = Resources.GetModBlueprint<BlueprintActivatableAbility>("ArchonDomainGreaterAbilitySeparatist");
+            var ArchonDomainGreaterFeatureSeparatist = Resources.GetModBlueprint<BlueprintFeature>("ArchonDomainGreaterFeatureSeparatist");
+
+            var ArchonDomainLawBaseFeatureSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("ArchonDomainLawBaseFeatureSeparatist", bp => {
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { LawDomainBaseAbilitySeparatist.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = LawDomainBaseResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.AddComponent<ReplaceAbilitiesStat>(c => {
+                    c.m_Ability = new BlueprintAbilityReference[] { LawDomainBaseAbilitySeparatist.ToReference<BlueprintAbilityReference>() };
+                    c.Stat = StatType.Wisdom;
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = ArchonDomainLawSpellListFeature.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.SetName("Archon Subdomain - Law");
+                bp.SetDescription("\nYou follow the archons path of righteousness.\n{g|Encyclopedia:TouchAttack}Touch{/g} of Law: You can {g|Encyclopedia:TouchAttack}touch{/g} " +
+                    "a willing creature as a {g|Encyclopedia:Standard_Actions}standard action{/g}, infusing it with the power of divine order and allowing it to treat all " +
+                    "{g|Encyclopedia:Attack}attack rolls{/g}, {g|Encyclopedia:Skills}skill checks{/g}, {g|Encyclopedia:Ability_Scores}ability checks{/g}, and " +
+                    "{g|Encyclopedia:Saving_Throw}saving throws{/g} for 1 {g|Encyclopedia:Combat_Round}round{/g} as if the natural {g|Encyclopedia:Dice}d20{/g} " +
+                    "roll resulted in an 11.[LONGSTART] You can use this ability a number of times per day equal to 3 + your {g|Encyclopedia:Wisdom}Wisdom{/g} " +
+                    "modifier.[LONGEND]\nAura of Menace: At 8th level, you can emit a 30-foot aura of menace as a standard action. Enemies in this aura take a –2 penalty to " +
+                    "AC and on attacks and saves as long as they remain inside the aura. You can use this ability for a number of rounds per day equal " +
+                    "to your cleric level. These rounds do not need to be consecutive.");
+                bp.IsClassFeature = true;
+            });
+
+            var ArchonDomainLawProgressionSeparatist = Helpers.CreateBlueprint<BlueprintProgression>("ArchonDomainLawProgressionSeparatist", bp => {
+                bp.AddComponent<PrerequisiteAlignment>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = false;
+                    c.Alignment = AlignmentMaskType.Lawful;
+                });
+                bp.AddComponent<PrerequisiteFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = ArchonDomainLawAllowedSeparatist.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = ArchonDomainLawAllowed.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = ArchonDomainLawProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = ArchonDomainLawProgressionSecondary.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.SetName("Archon Subdomain - Law");
+                bp.SetDescription("\nYou follow the archons path of righteousness.\n{g|Encyclopedia:TouchAttack}Touch{/g} of Law: You can {g|Encyclopedia:TouchAttack}touch{/g} " +
+                    "a willing creature as a {g|Encyclopedia:Standard_Actions}standard action{/g}, infusing it with the power of divine order and allowing it to treat all " +
+                    "{g|Encyclopedia:Attack}attack rolls{/g}, {g|Encyclopedia:Skills}skill checks{/g}, {g|Encyclopedia:Ability_Scores}ability checks{/g}, and " +
+                    "{g|Encyclopedia:Saving_Throw}saving throws{/g} for 1 {g|Encyclopedia:Combat_Round}round{/g} as if the natural {g|Encyclopedia:Dice}d20{/g} " +
+                    "roll resulted in an 11.[LONGSTART] You can use this ability a number of times per day equal to 3 + your {g|Encyclopedia:Wisdom}Wisdom{/g} " +
+                    "modifier.[LONGEND]\nAura of Menace: At 8th level, you can emit a 30-foot aura of menace as a standard action. Enemies in this aura take a –2 penalty to " +
+                    "AC and on attacks and saves as long as they remain inside the aura. You can use this ability for a number of rounds per day equal " +
+                    "to your cleric level. These rounds do not need to be consecutive.\nDomain {g|Encyclopedia:Spell}Spells{/g}: divine favor, communal protection " +
+                    "from chaos, prayer, holy smite, dominate person, blade barrier, dictum, shield of law, dominate monster.");
+                bp.Groups = new FeatureGroup[] { FeatureGroup.SeparatistSecondaryDomain };
+                bp.IsClassFeature = true;
+                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    }
+                };
+                bp.m_Archetypes = new BlueprintProgression.ArchetypeWithLevel[] { };
+                bp.LevelEntries = new LevelEntry[] {
+                    Helpers.LevelEntry(1, ArchonDomainLawBaseFeatureSeparatist),
+                    Helpers.LevelEntry(10, ArchonDomainGreaterFeatureSeparatist)
+                };
+                bp.UIGroups = new UIGroup[] {
+                    Helpers.CreateUIGroup(ArchonDomainLawBaseFeatureSeparatist, ArchonDomainGreaterFeatureSeparatist)
+                };
+                bp.GiveFeaturesForPreviousLevels = true;
+            });
+
+            ArchonDomainLawAllowed.IsPrerequisiteFor = new List<BlueprintFeatureReference>() {
                 ArchonDomainLawProgression.ToReference<BlueprintFeatureReference>(),
                 ArchonDomainLawProgressionSecondary.ToReference<BlueprintFeatureReference>()
             };
             ArchonDomainLawProgression.AddComponent<PrerequisiteNoFeature>(c => {
-                    c.Group = Prerequisite.GroupType.All;
-                    c.HideInUI = true;
-                    c.m_Feature = ArchonDomainLawProgressionSecondary.ToReference<BlueprintFeatureReference>();
-            }); 
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = ArchonDomainLawProgressionSecondary.ToReference<BlueprintFeatureReference>();
+            });
+            ArchonDomainLawProgression.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = ArchonDomainLawProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
             ArchonDomainLawProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
-                    c.Group = Prerequisite.GroupType.All;
-                    c.HideInUI = true;
-                    c.m_Feature = ArchonDomainLawProgressionSecondary.ToReference<BlueprintFeatureReference>();
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = ArchonDomainLawProgressionSecondary.ToReference<BlueprintFeatureReference>();
+            });
+            ArchonDomainLawProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = ArchonDomainLawProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
+            ArchonDomainLawProgressionSeparatist.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = ArchonDomainLawProgressionSeparatist.ToReference<BlueprintFeatureReference>();
             });
             var DomainMastery = Resources.GetBlueprint<BlueprintFeature>("2de64f6a1f2baee4f9b7e52e3f046ec5").GetComponent<AutoMetamagic>();
             DomainMastery.Abilities.Add(ArchonDomainGreaterAbility.ToReference<BlueprintAbilityReference>());
+            DomainMastery.Abilities.Add(ArchonDomainGreaterAbilitySeparatist.ToReference<BlueprintAbilityReference>());
             if (ModSettings.AddedContent.Domains.IsDisabled("Archon Subdomain")) { return; }
             DomainTools.RegisterDomain(ArchonDomainLawProgression);
             DomainTools.RegisterSecondaryDomain(ArchonDomainLawProgressionSecondary);
@@ -315,6 +441,7 @@ namespace ExpandedContent.Tweaks.Domains {
             DomainTools.RegisterTempleDomain(ArchonDomainLawProgression);
             DomainTools.RegisterSecondaryTempleDomain(ArchonDomainLawProgressionSecondary);
             DomainTools.RegisterImpossibleSubdomain(ArchonDomainLawProgression, ArchonDomainLawProgressionSecondary);
+            DomainTools.RegisterSeparatistDomain(ArchonDomainLawProgressionSeparatist);
 
         }
 

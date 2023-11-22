@@ -136,6 +136,7 @@ namespace ExpandedContent.Tweaks {
                 Miscellaneous.AlchemistDiscoveries.HealingTouchDiscovery.AddHealingTouchDiscovery();
                 Miscellaneous.AlchemistDiscoveries.PheromonesDiscovery.AddPheromonesDiccovery();
 
+                Domains.DomainProperties.AddDomainProperties();
                 Domains.ImpossibleSubdomainSelection.AddImpossibleSubdomainSelection();
                 Domains.ScalykindDomain.AddScalykindDomain();
                 Domains.ArchonDomainGood.AddArchonDomainGood();

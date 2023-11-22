@@ -10,6 +10,7 @@ using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.EntitySystem.Stats;
 using ExpandedContent.Config;
+using Kingmaker.UnitLogic.Alignments;
 
 namespace ExpandedContent.Tweaks.Domains {
     internal class DemonDomainEvil {
@@ -152,6 +153,11 @@ namespace ExpandedContent.Tweaks.Domains {
             });            
             // Main Blueprint
             var DemonDomainEvilProgression = Helpers.CreateBlueprint<BlueprintProgression>("DemonDomainEvilProgression", bp => {
+                bp.AddComponent<PrerequisiteAlignment>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = false;
+                    c.Alignment = AlignmentMaskType.Evil;
+                });
                 bp.AddComponent<PrerequisiteFeature>(c => {
                     c.Group = Prerequisite.GroupType.All;
                     c.HideInUI = true;
@@ -221,6 +227,11 @@ namespace ExpandedContent.Tweaks.Domains {
             });
             // Secondary Domain Progression
             var DemonDomainEvilProgressionSecondary = Helpers.CreateBlueprint<BlueprintProgression>("DemonDomainEvilProgressionSecondary", bp => {
+                bp.AddComponent<PrerequisiteAlignment>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = false;
+                    c.Alignment = AlignmentMaskType.Evil;
+                });
                 bp.AddComponent<PrerequisiteFeature>(c => {
                     c.Group = Prerequisite.GroupType.All;
                     c.HideInUI = true;
@@ -271,20 +282,133 @@ namespace ExpandedContent.Tweaks.Domains {
                 };
                 bp.GiveFeaturesForPreviousLevels = true;
             });
-            
-            DemonDomainEvilAllowed.IsPrerequisiteFor = new List<BlueprintFeatureReference>() { 
+
+            //Separatist versions
+            var EvilDomainGreaterFeatureSeparatist = Resources.GetBlueprint<BlueprintFeature>("8c08db2d70574310b42da1a6b65ed977");
+
+            var DemonDomainEvilAllowedSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("DemonDomainEvilAllowedSeparatist", bp => {
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.IsClassFeature = true;
+            });
+
+            var DemonDomainBaseResourceSeparatist = Resources.GetModBlueprint<BlueprintAbilityResource>("DemonDomainBaseResourceSeparatist");
+            var DemonDomainBaseAbilitySeparatist = Resources.GetModBlueprint<BlueprintAbility>("DemonDomainBaseAbilitySeparatist");
+
+            var DemonDomainEvilBaseFeatureSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("DemonDomainEvilBaseFeatureSeparatist", bp => {
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { DemonDomainBaseAbilitySeparatist.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = DemonDomainBaseResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.AddComponent<ReplaceAbilitiesStat>(c => {
+                    c.m_Ability = new BlueprintAbilityReference[] { DemonDomainBaseAbilitySeparatist.ToReference<BlueprintAbilityReference>() };
+                    c.Stat = StatType.Wisdom;
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = DemonDomainEvilSpellListFeature.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.SetName("Demon Subdomain - Evil");
+                bp.SetDescription("\nYour soul embodies the anarchic and evil nature of demonkind, your master grants you the power of the Abyss.\nFury of the Abyss: As a swift action, " +
+                    "you can give yourself an enhancement bonus equal to 1/2 your cleric level (minimum +1) on melee attacks, melee damage rolls, and combat maneuver checks. This bonus " +
+                    "lasts for 1 round. During this round, you take a –2 penalty to AC. You can use this ability for a number of times per day equal to 3 + your Wisdom modifier.\nScythe " +
+                    "of Evil: At 8th level, you can give a weapon touched the unholy special weapon quality for a number of rounds equal to 1/2 your level in the class that gave you access" +
+                    "to this domain. You can use this ability once per day at 8th level, and an additional time per day for every four levels beyond 8th.");
+                bp.IsClassFeature = true;
+            });
+
+            var DemonDomainEvilProgressionSeparatist = Helpers.CreateBlueprint<BlueprintProgression>("DemonDomainEvilProgressionSeparatist", bp => {
+                bp.AddComponent<PrerequisiteAlignment>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = false;
+                    c.Alignment = AlignmentMaskType.Evil;
+                });
+                bp.AddComponent<PrerequisiteFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = DemonDomainEvilAllowedSeparatist.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = DemonDomainEvilProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = DemonDomainEvilAllowed.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = DemonDomainEvilProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = DemonDomainEvilProgressionSecondary.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.SetName("Demon Subdomain - Evil");
+                bp.SetDescription("\nYour soul embodies the anarchic and evil nature of demonkind, your master grants you the power of the Abyss.\nFury of the Abyss: As a swift action, " +
+                    "you can give yourself an enhancement bonus equal to 1/2 your cleric level (minimum +1) on melee attacks, melee damage rolls, and combat maneuver checks. This bonus " +
+                    "lasts for 1 round. During this round, you take a –2 penalty to AC. You can use this ability for a number of times per day equal to 3 + your Wisdom modifier.\nScythe " +
+                    "of Evil: At 8th level, you can give a weapon touched the unholy special weapon quality for a number of rounds equal to 1/2 your level in the class that gave you access" +
+                    "to this domain. You can use this ability once per day at 8th level, and an additional time per day for every four levels beyond 8th.\nDomain " +
+                    "{g|Encyclopedia:Spell}Spells{/g}: doom, communal protection from law, rage, freedom of movement, acidic spray, summon monster VI, word of chaos, " +
+                    "cloak of chaos, summon monster IX.");
+                bp.Groups = new FeatureGroup[] { FeatureGroup.SeparatistSecondaryDomain };
+                bp.IsClassFeature = true;
+                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    }
+                };
+                bp.m_Archetypes = new BlueprintProgression.ArchetypeWithLevel[] {  };
+                bp.LevelEntries = new LevelEntry[] {
+                    Helpers.LevelEntry(1, DemonDomainEvilBaseFeatureSeparatist),
+                    Helpers.LevelEntry(10, EvilDomainGreaterFeatureSeparatist)
+                };
+                bp.UIGroups = new UIGroup[] {
+                    Helpers.CreateUIGroup(DemonDomainEvilBaseFeatureSeparatist, EvilDomainGreaterFeatureSeparatist)
+                };
+                bp.GiveFeaturesForPreviousLevels = true;
+            });
+
+            DemonDomainEvilAllowed.IsPrerequisiteFor = new List<BlueprintFeatureReference>() {
                 DemonDomainEvilProgression.ToReference<BlueprintFeatureReference>(),
                 DemonDomainEvilProgressionSecondary.ToReference<BlueprintFeatureReference>()
             };
             DemonDomainEvilProgression.AddComponent<PrerequisiteNoFeature>(c => {
-                    c.Group = Prerequisite.GroupType.All;
-                    c.HideInUI = true;
-                    c.m_Feature = DemonDomainEvilProgressionSecondary.ToReference<BlueprintFeatureReference>();
-            }); 
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = DemonDomainEvilProgressionSecondary.ToReference<BlueprintFeatureReference>();
+            });
+            DemonDomainEvilProgression.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = DemonDomainEvilProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
             DemonDomainEvilProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
-                    c.Group = Prerequisite.GroupType.All;
-                    c.HideInUI = true;
-                    c.m_Feature = DemonDomainEvilProgressionSecondary.ToReference<BlueprintFeatureReference>();
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = DemonDomainEvilProgressionSecondary.ToReference<BlueprintFeatureReference>();
+            });
+            DemonDomainEvilProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = DemonDomainEvilProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
+            DemonDomainEvilProgressionSeparatist.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = DemonDomainEvilProgressionSeparatist.ToReference<BlueprintFeatureReference>();
             });
             if (ModSettings.AddedContent.Domains.IsDisabled("Demon Subdomain")) { return; }
             DomainTools.RegisterDomain(DemonDomainEvilProgression);
@@ -293,6 +417,7 @@ namespace ExpandedContent.Tweaks.Domains {
             DomainTools.RegisterTempleDomain(DemonDomainEvilProgression);
             DomainTools.RegisterSecondaryTempleDomain(DemonDomainEvilProgressionSecondary);
             DomainTools.RegisterImpossibleSubdomain(DemonDomainEvilProgression, DemonDomainEvilProgressionSecondary);
+            DomainTools.RegisterSeparatistDomain(DemonDomainEvilProgressionSeparatist);
 
         }
     }

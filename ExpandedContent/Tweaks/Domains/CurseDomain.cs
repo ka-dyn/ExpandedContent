@@ -350,23 +350,192 @@ namespace ExpandedContent.Tweaks.Domains {
                     Helpers.CreateUIGroup(CurseDomainBaseFeature, LuckDomainGreaterFeature)
                 };
                 bp.GiveFeaturesForPreviousLevels = true;
-            });            
-            CurseDomainAllowed.IsPrerequisiteFor = new List<BlueprintFeatureReference>() { 
+            });
+
+            //Separatist versions
+            var LuckDomainGreaterFeatureSeparatist = Resources.GetBlueprint<BlueprintFeature>("58db10a0b5a143e2a4867793ca869225");
+
+            var CurseDomainAllowedSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("CurseDomainAllowedSeparatist", bp => {
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.IsClassFeature = true;
+            });
+
+            var CurseDomainBaseResourceSeparatist = Helpers.CreateBlueprint<BlueprintAbilityResource>("CurseDomainBaseResourceSeparatist", bp => {
+                bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
+                    BaseValue = 2,
+                    IncreasedByLevel = false,
+                    IncreasedByStat = true,
+                    ResourceBonusStat = StatType.Wisdom,
+                };
+            });
+
+
+            var CurseDomainBaseAbilitySeparatist = Helpers.CreateBlueprint<BlueprintAbility>("CurseDomainBaseAbilitySeparatist", bp => {
+                bp.SetName("Malign Eye");
+                bp.SetDescription("As a standard action, you can afflict one target within 30 feet with your malign eye, causing it to take a –2 penalty on all saving throws against your spells. " +
+                    "The effect lasts for 1 minute. You can use this ability for a number of times per day equal to 3 + your Wisdom modifier.");
+                bp.m_Icon = WitchHexEvilEyeSavesAbility.m_Icon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = CurseDomainBaseBuff.ToReference<BlueprintBuffReference>(),
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Minutes,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 1,
+                                m_IsExtendable = true
+                            },
+                            DurationSeconds = 0
+                        });
+                });
+                bp.AddComponent<AbilitySpawnFx>(c => {
+                    c.PrefabLink = new Kingmaker.ResourceLinks.PrefabLink() { AssetId = "cbfe312cb8e63e240a859efaad8e467c" };
+                    c.Time = AbilitySpawnFxTime.OnApplyEffect;
+                    c.Anchor = AbilitySpawnFxAnchor.SelectedTarget;
+                    c.WeaponTarget = AbilitySpawnFxWeaponTarget.None;
+                    c.DestroyOnCast = false;
+                    c.Delay = 0;
+                    c.PositionAnchor = AbilitySpawnFxAnchor.None;
+                    c.OrientationAnchor = AbilitySpawnFxAnchor.None;
+                    c.OrientationMode = AbilitySpawnFxOrientation.Copy;
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = CurseDomainBaseResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Medium;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = true;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = false;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Point;
+                bp.HasFastAnimation = false;
+                bp.ActionType = UnitCommand.CommandType.Standard;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+
+            var CurseDomainBaseFeatureSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("CurseDomainBaseFeatureSeparatist", bp => {
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { CurseDomainBaseAbilitySeparatist.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = CurseDomainBaseResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.AddComponent<ReplaceAbilitiesStat>(c => {
+                    c.m_Ability = new BlueprintAbilityReference[] { CurseDomainBaseAbilitySeparatist.ToReference<BlueprintAbilityReference>() };
+                    c.Stat = StatType.Wisdom;
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = CurseDomainSpellListFeature.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.SetName("Curse Subdomain");
+                bp.SetDescription("\nYou are infused with fate, spreading ill omens to foes while granting fortune to yourself.\nMalign Eye: " +
+                    "As a standard action, you can afflict one target within 30 feet with your malign eye, causing it to take a –2 penalty on all saving throws against your spells. " +
+                    "The effect lasts for 1 minute. You can use this ability for a number of times per day equal to 3 + your Wisdom modifier.\nDivine Fortune: At 6th level, as a standard " +
+                    "{g|Encyclopedia:CA_Types}action{/g}, you can bless yourself with divine luck. For the next half your level in the class that gave you access to this domain rounds you " +
+                    "roll two times on every d20 roll and take the best result. You can use this ability once per day at 6th level, and one additional time per day for every 6 levels in the " +
+                    "class that gave you access to this domain beyond 6th.");
+                bp.IsClassFeature = true;
+            });
+
+            var CurseDomainProgressionSeparatist = Helpers.CreateBlueprint<BlueprintProgression>("CurseDomainProgressionSeparatist", bp => {
+                bp.AddComponent<PrerequisiteFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = CurseDomainAllowedSeparatist.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = CurseDomainProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = CurseDomainAllowed.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = CurseDomainProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = CurseDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.SetName("Curse Subdomain");
+                bp.SetDescription("\nYou are infused with fate, spreading ill omens to foes while granting fortune to yourself.\nMalign Eye: " +
+                    "As a standard action, you can afflict one target within 30 feet with your malign eye, causing it to take a –2 penalty on all saving throws against your spells. " +
+                    "The effect lasts for 1 minute. You can use this ability for a number of times per day equal to 3 + your Wisdom modifier.\nDivine Fortune: At 6th level, as a standard " +
+                    "{g|Encyclopedia:CA_Types}action{/g}, you can bless yourself with divine luck. For the next half your level in the class that gave you access to this domain rounds you " +
+                    "roll two times on every d20 roll and take the best result. You can use this ability once per day at 6th level, and one additional time per day for every 6 levels in the " +
+                    "class that gave you access to this domain beyond 6th.\nDomain {g|Encyclopedia:Spell}Spells{/g}: bane, aid, bestow curse, communal protection from energy, break enchantment, " +
+                    "eyebite, restoration greater, euphoric tranquility, mass heal.");
+                bp.Groups = new FeatureGroup[] { FeatureGroup.SeparatistSecondaryDomain };
+                bp.IsClassFeature = true;
+                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    }
+                };
+                bp.m_Archetypes = new BlueprintProgression.ArchetypeWithLevel[] {  };
+                bp.LevelEntries = new LevelEntry[] {
+                    Helpers.LevelEntry(1, CurseDomainBaseFeatureSeparatist),
+                    Helpers.LevelEntry(8, LuckDomainGreaterFeatureSeparatist)
+                };
+                bp.UIGroups = new UIGroup[] {
+                    Helpers.CreateUIGroup(CurseDomainBaseFeatureSeparatist, LuckDomainGreaterFeatureSeparatist)
+                };
+                bp.GiveFeaturesForPreviousLevels = true;
+            });
+
+            CurseDomainAllowed.IsPrerequisiteFor = new List<BlueprintFeatureReference>() {
                 CurseDomainProgression.ToReference<BlueprintFeatureReference>(),
                 CurseDomainProgressionSecondary.ToReference<BlueprintFeatureReference>()
             };
             CurseDomainProgression.AddComponent<PrerequisiteNoFeature>(c => {
-                    c.Group = Prerequisite.GroupType.All;
-                    c.HideInUI = true;
-                    c.m_Feature = CurseDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
-            }); 
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = CurseDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+            });
+            CurseDomainProgression.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = CurseDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
             CurseDomainProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
-                    c.Group = Prerequisite.GroupType.All;
-                    c.HideInUI = true;
-                    c.m_Feature = CurseDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = CurseDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+            });
+            CurseDomainProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = CurseDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
+            CurseDomainProgressionSeparatist.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = CurseDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
             });
             var DomainMastery = Resources.GetBlueprint<BlueprintFeature>("2de64f6a1f2baee4f9b7e52e3f046ec5").GetComponent<AutoMetamagic>();
             DomainMastery.Abilities.Add(CurseDomainBaseAbility.ToReference<BlueprintAbilityReference>());
+            DomainMastery.Abilities.Add(CurseDomainBaseAbilitySeparatist.ToReference<BlueprintAbilityReference>());
             if (ModSettings.AddedContent.Domains.IsDisabled("Curse Subdomain")) { return; }
             DomainTools.RegisterDomain(CurseDomainProgression);
             DomainTools.RegisterSecondaryDomain(CurseDomainProgressionSecondary);
@@ -374,6 +543,8 @@ namespace ExpandedContent.Tweaks.Domains {
             DomainTools.RegisterTempleDomain(CurseDomainProgression);
             DomainTools.RegisterSecondaryTempleDomain(CurseDomainProgressionSecondary);
             DomainTools.RegisterImpossibleSubdomain(CurseDomainProgression, CurseDomainProgressionSecondary);
+            DomainTools.RegisterSeparatistDomain(CurseDomainProgressionSeparatist);
+
         }
     }
 }

@@ -225,7 +225,7 @@ namespace ExpandedContent.Tweaks.Domains {
                             Value = new ContextDiceValue() {
                                 DiceType = DiceType.D6,
                                 DiceCountValue = new ContextValue() {
-                                    ValueType = ContextValueType.Rank,
+                                    ValueType = ContextValueType.Shared,
                                     Value = 0,
                                     ValueRank = AbilityRankType.Default,
                                     ValueShared = AbilitySharedValue.Damage,
@@ -246,31 +246,28 @@ namespace ExpandedContent.Tweaks.Domains {
                         }
                         );
                 });
+                bp.AddComponent<ContextCalculateSharedValue>(c => {
+                    c.ValueType = AbilitySharedValue.Damage;
+                    c.Value = new ContextDiceValue() {
+                        DiceType = DiceType.One,
+                        DiceCountValue = new ContextValue() {
+                            ValueType = ContextValueType.Simple,
+                            Value = 3
+                        },
+                        BonusValue = new ContextValue() {
+                            ValueType = ContextValueType.Rank,
+                            Value = 0,
+                            ValueRank = AbilityRankType.Default
+                        }
+                    };
+                    c.Modifier = 1;
+                });
                 bp.AddComponent<ContextRankConfig>(c => {
                     c.m_Type = AbilityRankType.Default;
-                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
+                    c.m_BaseValueType = ContextRankBaseValueType.SummClassLevelWithArchetype;
                     c.m_Stat = StatType.Unknown;
                     c.m_SpecificModifier = ModifierDescriptor.None;
-                    c.m_Progression = ContextRankProgression.Custom;
-                    c.m_CustomProgression = new ContextRankConfig.CustomProgressionItem[] {
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 4, ProgressionValue = 3 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 5, ProgressionValue = 3 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 6, ProgressionValue = 4 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 7, ProgressionValue = 4 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 8, ProgressionValue = 5 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 9, ProgressionValue = 5 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 10, ProgressionValue = 6 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 11, ProgressionValue = 6 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 12, ProgressionValue = 7 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 13, ProgressionValue = 7 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 14, ProgressionValue = 8 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 15, ProgressionValue = 8 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 16, ProgressionValue = 9 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 17, ProgressionValue = 9 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 18, ProgressionValue = 10 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 19, ProgressionValue = 10 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 20, ProgressionValue = 11 }
-                    };
+                    c.m_Progression = ContextRankProgression.DelayedStartPlusDivStep;
                     c.Archetype = DivineHunterArchetype.ToReference<BlueprintArchetypeReference>();
                     c.m_AdditionalArchetypes = new BlueprintArchetypeReference[] { TempleChampionArchetype.ToReference<BlueprintArchetypeReference>() };
                     c.m_Class = new BlueprintCharacterClassReference[] {
@@ -280,6 +277,8 @@ namespace ExpandedContent.Tweaks.Domains {
                         PaladinClass.ToReference<BlueprintCharacterClassReference>(),
                         StargazerClass.ToReference<BlueprintCharacterClassReference>(),
                     };
+                    c.m_StartLevel = 6;
+                    c.m_StepLevel = 2;
                 });                
                 bp.AddComponent<AbilityResourceLogic>(c => {
                     c.m_RequiredResource = DragonDomainGreaterResource.ToReference<BlueprintAbilityResourceReference>();
@@ -380,7 +379,7 @@ namespace ExpandedContent.Tweaks.Domains {
                             Value = new ContextDiceValue() {
                                 DiceType = DiceType.D6,
                                 DiceCountValue = new ContextValue() {
-                                    ValueType = ContextValueType.Rank,
+                                    ValueType = ContextValueType.Shared,
                                     Value = 0,
                                     ValueRank = AbilityRankType.Default,
                                     ValueShared = AbilitySharedValue.Damage,
@@ -401,31 +400,28 @@ namespace ExpandedContent.Tweaks.Domains {
                         }
                         );
                 });
+                bp.AddComponent<ContextCalculateSharedValue>(c => {
+                    c.ValueType = AbilitySharedValue.Damage;
+                    c.Value = new ContextDiceValue() {
+                        DiceType = DiceType.One,
+                        DiceCountValue = new ContextValue() {
+                            ValueType = ContextValueType.Simple,
+                            Value = 3
+                        },
+                        BonusValue = new ContextValue() {
+                            ValueType = ContextValueType.Rank,
+                            Value = 0,
+                            ValueRank = AbilityRankType.Default
+                        }
+                    };
+                    c.Modifier = 1;
+                });
                 bp.AddComponent<ContextRankConfig>(c => {
                     c.m_Type = AbilityRankType.Default;
-                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
+                    c.m_BaseValueType = ContextRankBaseValueType.SummClassLevelWithArchetype;
                     c.m_Stat = StatType.Unknown;
                     c.m_SpecificModifier = ModifierDescriptor.None;
-                    c.m_Progression = ContextRankProgression.Custom;
-                    c.m_CustomProgression = new ContextRankConfig.CustomProgressionItem[] {
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 4, ProgressionValue = 3 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 5, ProgressionValue = 3 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 6, ProgressionValue = 4 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 7, ProgressionValue = 4 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 8, ProgressionValue = 5 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 9, ProgressionValue = 5 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 10, ProgressionValue = 6 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 11, ProgressionValue = 6 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 12, ProgressionValue = 7 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 13, ProgressionValue = 7 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 14, ProgressionValue = 8 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 15, ProgressionValue = 8 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 16, ProgressionValue = 9 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 17, ProgressionValue = 9 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 18, ProgressionValue = 10 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 19, ProgressionValue = 10 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 20, ProgressionValue = 11 }
-                    };
+                    c.m_Progression = ContextRankProgression.DelayedStartPlusDivStep;
                     c.Archetype = DivineHunterArchetype.ToReference<BlueprintArchetypeReference>();
                     c.m_AdditionalArchetypes = new BlueprintArchetypeReference[] { TempleChampionArchetype.ToReference<BlueprintArchetypeReference>() };
                     c.m_Class = new BlueprintCharacterClassReference[] {
@@ -435,6 +431,8 @@ namespace ExpandedContent.Tweaks.Domains {
                         PaladinClass.ToReference<BlueprintCharacterClassReference>(),
                         StargazerClass.ToReference<BlueprintCharacterClassReference>(),
                     };
+                    c.m_StartLevel = 6;
+                    c.m_StepLevel = 2;
                 });
                 bp.AddComponent<AbilityResourceLogic>(c => {
                     c.m_RequiredResource = DragonDomainGreaterResource.ToReference<BlueprintAbilityResourceReference>();
@@ -535,7 +533,7 @@ namespace ExpandedContent.Tweaks.Domains {
                             Value = new ContextDiceValue() {
                                 DiceType = DiceType.D6,
                                 DiceCountValue = new ContextValue() {
-                                    ValueType = ContextValueType.Rank,
+                                    ValueType = ContextValueType.Shared,
                                     Value = 0,
                                     ValueRank = AbilityRankType.Default,
                                     ValueShared = AbilitySharedValue.Damage,
@@ -556,31 +554,28 @@ namespace ExpandedContent.Tweaks.Domains {
                         }
                         );
                 });
+                bp.AddComponent<ContextCalculateSharedValue>(c => {
+                    c.ValueType = AbilitySharedValue.Damage;
+                    c.Value = new ContextDiceValue() {
+                        DiceType = DiceType.One,
+                        DiceCountValue = new ContextValue() {
+                            ValueType = ContextValueType.Simple,
+                            Value = 3
+                        },
+                        BonusValue = new ContextValue() {
+                            ValueType = ContextValueType.Rank,
+                            Value = 0,
+                            ValueRank = AbilityRankType.Default
+                        }
+                    };
+                    c.Modifier = 1;
+                });
                 bp.AddComponent<ContextRankConfig>(c => {
                     c.m_Type = AbilityRankType.Default;
-                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
+                    c.m_BaseValueType = ContextRankBaseValueType.SummClassLevelWithArchetype;
                     c.m_Stat = StatType.Unknown;
                     c.m_SpecificModifier = ModifierDescriptor.None;
-                    c.m_Progression = ContextRankProgression.Custom;
-                    c.m_CustomProgression = new ContextRankConfig.CustomProgressionItem[] {
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 4, ProgressionValue = 3 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 5, ProgressionValue = 3 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 6, ProgressionValue = 4 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 7, ProgressionValue = 4 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 8, ProgressionValue = 5 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 9, ProgressionValue = 5 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 10, ProgressionValue = 6 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 11, ProgressionValue = 6 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 12, ProgressionValue = 7 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 13, ProgressionValue = 7 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 14, ProgressionValue = 8 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 15, ProgressionValue = 8 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 16, ProgressionValue = 9 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 17, ProgressionValue = 9 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 18, ProgressionValue = 10 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 19, ProgressionValue = 10 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 20, ProgressionValue = 11 }
-                    };
+                    c.m_Progression = ContextRankProgression.DelayedStartPlusDivStep;
                     c.Archetype = DivineHunterArchetype.ToReference<BlueprintArchetypeReference>();
                     c.m_AdditionalArchetypes = new BlueprintArchetypeReference[] { TempleChampionArchetype.ToReference<BlueprintArchetypeReference>() };
                     c.m_Class = new BlueprintCharacterClassReference[] {
@@ -590,6 +585,8 @@ namespace ExpandedContent.Tweaks.Domains {
                         PaladinClass.ToReference<BlueprintCharacterClassReference>(),
                         StargazerClass.ToReference<BlueprintCharacterClassReference>(),
                     };
+                    c.m_StartLevel = 6;
+                    c.m_StepLevel = 2;
                 });
                 bp.AddComponent<AbilityResourceLogic>(c => {
                     c.m_RequiredResource = DragonDomainGreaterResource.ToReference<BlueprintAbilityResourceReference>();
@@ -690,7 +687,7 @@ namespace ExpandedContent.Tweaks.Domains {
                             Value = new ContextDiceValue() {
                                 DiceType = DiceType.D6,
                                 DiceCountValue = new ContextValue() {
-                                    ValueType = ContextValueType.Rank,
+                                    ValueType = ContextValueType.Shared,
                                     Value = 0,
                                     ValueRank = AbilityRankType.Default,
                                     ValueShared = AbilitySharedValue.Damage,
@@ -711,31 +708,28 @@ namespace ExpandedContent.Tweaks.Domains {
                         }
                         );
                 });
+                bp.AddComponent<ContextCalculateSharedValue>(c => {
+                    c.ValueType = AbilitySharedValue.Damage;
+                    c.Value = new ContextDiceValue() {
+                        DiceType = DiceType.One,
+                        DiceCountValue = new ContextValue() {
+                            ValueType = ContextValueType.Simple,
+                            Value = 3
+                        },
+                        BonusValue = new ContextValue() {
+                            ValueType = ContextValueType.Rank,
+                            Value = 0,
+                            ValueRank = AbilityRankType.Default
+                        }
+                    };
+                    c.Modifier = 1;
+                });
                 bp.AddComponent<ContextRankConfig>(c => {
                     c.m_Type = AbilityRankType.Default;
-                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
+                    c.m_BaseValueType = ContextRankBaseValueType.SummClassLevelWithArchetype;
                     c.m_Stat = StatType.Unknown;
                     c.m_SpecificModifier = ModifierDescriptor.None;
-                    c.m_Progression = ContextRankProgression.Custom;
-                    c.m_CustomProgression = new ContextRankConfig.CustomProgressionItem[] {
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 4, ProgressionValue = 3 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 5, ProgressionValue = 3 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 6, ProgressionValue = 4 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 7, ProgressionValue = 4 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 8, ProgressionValue = 5 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 9, ProgressionValue = 5 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 10, ProgressionValue = 6 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 11, ProgressionValue = 6 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 12, ProgressionValue = 7 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 13, ProgressionValue = 7 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 14, ProgressionValue = 8 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 15, ProgressionValue = 8 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 16, ProgressionValue = 9 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 17, ProgressionValue = 9 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 18, ProgressionValue = 10 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 19, ProgressionValue = 10 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 20, ProgressionValue = 11 }
-                    };
+                    c.m_Progression = ContextRankProgression.DelayedStartPlusDivStep;
                     c.Archetype = DivineHunterArchetype.ToReference<BlueprintArchetypeReference>();
                     c.m_AdditionalArchetypes = new BlueprintArchetypeReference[] { TempleChampionArchetype.ToReference<BlueprintArchetypeReference>() };
                     c.m_Class = new BlueprintCharacterClassReference[] {
@@ -745,6 +739,8 @@ namespace ExpandedContent.Tweaks.Domains {
                         PaladinClass.ToReference<BlueprintCharacterClassReference>(),
                         StargazerClass.ToReference<BlueprintCharacterClassReference>(),
                     };
+                    c.m_StartLevel = 6;
+                    c.m_StepLevel = 2;
                 });
                 bp.AddComponent<AbilityResourceLogic>(c => {
                     c.m_RequiredResource = DragonDomainGreaterResource.ToReference<BlueprintAbilityResourceReference>();
@@ -1065,27 +1061,883 @@ namespace ExpandedContent.Tweaks.Domains {
                 };
                 bp.GiveFeaturesForPreviousLevels = true;
             });
-            
-            
-            DragonDomainAllowed.IsPrerequisiteFor = new List<BlueprintFeatureReference>() { 
+
+            //Separatist versions
+            var ScalykindDomainBaseResourceSeparatist = Resources.GetModBlueprint<BlueprintAbilityResource>("ScalykindDomainBaseResourceSeparatist");
+            var SeparatistAsIsProperty = Resources.GetModBlueprint<BlueprintUnitProperty>("SeparatistAsIsProperty");
+
+            var DragonDomainAllowedSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("DragonDomainAllowedSeparatist", bp => {
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.IsClassFeature = true;
+            });
+
+            var DragonDomainGreaterResourceSeparatist = Helpers.CreateBlueprint<BlueprintAbilityResource>("DragonDomainGreaterResourceSeparatist", bp => {
+                bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
+                    BaseValue = 0,
+                    IncreasedByLevel = false,
+                    IncreasedByLevelStartPlusDivStep = true,
+                    m_ClassDiv = new BlueprintCharacterClassReference[] {
+                        ClericClass.ToReference<BlueprintCharacterClassReference>(),
+                        InquisitorClass.ToReference<BlueprintCharacterClassReference>(),
+                        HunterClass.ToReference<BlueprintCharacterClassReference>(),
+                        PaladinClass.ToReference<BlueprintCharacterClassReference>(),
+                        StargazerClass.ToReference<BlueprintCharacterClassReference>(),
+                    },
+                    m_ArchetypesDiv = new BlueprintArchetypeReference[] {
+                        DivineHunterArchetype.ToReference<BlueprintArchetypeReference>(),
+                        TempleChampionArchetype.ToReference<BlueprintArchetypeReference>(),
+                    },
+                    StartingLevel = 6,
+                    LevelStep = 5,
+                    StartingIncrease = 1,
+                    PerStepIncrease = 1
+                };
+                bp.m_UseMax = true;
+                bp.m_Max = 3;
+            });
+
+
+            var DragonDomainGreaterFireAbilitySeparatist = Helpers.CreateBlueprint<BlueprintAbility>("DragonDomainGreaterFireAbilitySeparatist", bp => {
+                bp.SetName("Dragonbreath - Fire");
+                bp.SetDescription("At 4th level, you may use a fire breath weapon once per day as a standard action. Your breath weapon fills a 15-foot cone, and " +
+                    "deals 3d6 points of fire damage—this damage increases by 1d6 points at every even-numbered level you gain beyond 4th level. A creature hit by " +
+                    "your dragonbreath attack can attempt a Reflex save (DC 10 + 1/2 your cleric level + your Wisdom modifier) to take half damage. At 9th level, " +
+                    "you can use this ability two times per day, and at 14th level you can use it three times per day.");
+                bp.m_Icon = BloodlineDraconicRedBreathWeaponAbility.m_Icon;
+                bp.AddComponent<AbilityDeliverProjectile>(c => {
+                    c.m_Projectiles = new BlueprintProjectileReference[] {
+                        FireCone15Feet00.ToReference<BlueprintProjectileReference>()
+                    };
+                    c.Type = AbilityProjectileType.Cone;
+                    c.m_Length = new Feet() { m_Value = 15 };
+                    c.m_LineWidth = new Feet() { m_Value = 5 };
+                    c.AttackRollBonusStat = StatType.Unknown;
+                });
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Reflex;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionDealDamage() {
+                            m_Type = ContextActionDealDamage.Type.Damage,
+                            DamageType = new DamageTypeDescription() {
+                                Type = DamageType.Energy,
+                                Common = new DamageTypeDescription.CommomData() {
+                                    Reality = 0,
+                                    Alignment = 0,
+                                    Precision = false
+                                },
+                                Physical = new DamageTypeDescription.PhysicalData() {
+                                    Material = 0,
+                                    Form = 0,
+                                    Enhancement = 0,
+                                    EnhancementTotal = 0
+                                },
+                                Energy = DamageEnergyType.Fire
+                            },
+                            AbilityType = StatType.Unknown,
+                            EnergyDrainType = EnergyDrainType.Temporary,
+                            Duration = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                m_IsExtendable = true,
+                            },
+                            PreRolledSharedValue = AbilitySharedValue.Damage,
+                            Value = new ContextDiceValue() {
+                                DiceType = DiceType.D6,
+                                DiceCountValue = new ContextValue() {
+                                    ValueType = ContextValueType.Shared,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                            },
+                            IsAoE = true,
+                            HalfIfSaved = true,
+                            ResultSharedValue = AbilitySharedValue.Damage,
+                            CriticalSharedValue = AbilitySharedValue.Damage
+                        }
+                        );
+                });
+                bp.AddComponent<ContextCalculateSharedValue>(c => {
+                    c.ValueType = AbilitySharedValue.Damage;
+                    c.Value = new ContextDiceValue() {
+                        DiceType = DiceType.One,
+                        DiceCountValue = new ContextValue() {
+                            ValueType = ContextValueType.Simple,
+                            Value = 3
+                        },
+                        BonusValue = new ContextValue() {
+                            ValueType = ContextValueType.Rank,
+                            Value = 0,
+                            ValueRank = AbilityRankType.Default
+                        }
+                    };
+                    c.Modifier = 1;
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.SummClassLevelWithArchetype;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.DelayedStartPlusDivStep;
+                    c.Archetype = DivineHunterArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.m_AdditionalArchetypes = new BlueprintArchetypeReference[] { TempleChampionArchetype.ToReference<BlueprintArchetypeReference>() };
+                    c.m_Class = new BlueprintCharacterClassReference[] {
+                        ClericClass.ToReference<BlueprintCharacterClassReference>(),
+                        InquisitorClass.ToReference<BlueprintCharacterClassReference>(),
+                        HunterClass.ToReference<BlueprintCharacterClassReference>(),
+                        PaladinClass.ToReference<BlueprintCharacterClassReference>(),
+                        StargazerClass.ToReference<BlueprintCharacterClassReference>(),
+                    };
+                    c.m_StartLevel = 8;
+                    c.m_StepLevel = 2;
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = DragonDomainGreaterResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.Type = AbilityType.Special;
+                bp.Range = AbilityRange.Projectile;
+                bp.CanTargetPoint = true;
+                bp.CanTargetEnemies = true;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.BreathWeapon;
+                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Extend | Metamagic.Heighten | Metamagic.Selective | Metamagic.Bolstered;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var DragonDomainGreaterFireFeatureSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("DragonDomainGreaterFireFeatureSeparatist", bp => {
+                bp.SetName("Dragonbreath - Fire");
+                bp.SetDescription("At 4th level, you may use a fire breath weapon once per day as a standard action. Your breath weapon fills a 15-foot cone, and " +
+                    "deals 3d6 points of fire damage—this damage increases by 1d6 points at every even-numbered level you gain beyond 4th level. A creature hit by " +
+                    "your dragonbreath attack can attempt a Reflex save (DC 10 + 1/2 your cleric level + your Wisdom modifier) to take half damage. At 9th level, " +
+                    "you can use this ability two times per day, and at 14th level you can use it three times per day.");
+                bp.m_Icon = BloodlineDraconicRedBreathWeaponAbility.m_Icon;
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = DragonDomainGreaterResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { DragonDomainGreaterFireAbilitySeparatist.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<ReplaceAbilitiesStat>(c => {
+                    c.m_Ability = new BlueprintAbilityReference[] { DragonDomainGreaterFireAbilitySeparatist.ToReference<BlueprintAbilityReference>() };
+                    c.Stat = StatType.Wisdom;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+            var DragonDomainGreaterColdAbilitySeparatist = Helpers.CreateBlueprint<BlueprintAbility>("DragonDomainGreaterColdAbilitySeparatist", bp => {
+                bp.SetName("Dragonbreath - Cold");
+                bp.SetDescription("At 4th level, you may use a ice breath weapon once per day as a standard action. Your breath weapon fills a 15-foot cone, and " +
+                    "deals 3d6 points of cold damage—this damage increases by 1d6 points at every even-numbered level you gain beyond 4th level. A creature hit by " +
+                    "your dragonbreath attack can attempt a Reflex save (DC 10 + 1/2 your cleric level + your Wisdom modifier) to take half damage. At 9th level, " +
+                    "you can use this ability two times per day, and at 14th level you can use it three times per day.");
+                bp.m_Icon = BloodlineDraconicWhiteBreathWeaponAbility.m_Icon;
+                bp.AddComponent<AbilityDeliverProjectile>(c => {
+                    c.m_Projectiles = new BlueprintProjectileReference[] {
+                        ColdCone15Feet00.ToReference<BlueprintProjectileReference>()
+                    };
+                    c.Type = AbilityProjectileType.Cone;
+                    c.m_Length = new Feet() { m_Value = 15 };
+                    c.m_LineWidth = new Feet() { m_Value = 5 };
+                    c.AttackRollBonusStat = StatType.Unknown;
+                });
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Reflex;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionDealDamage() {
+                            m_Type = ContextActionDealDamage.Type.Damage,
+                            DamageType = new DamageTypeDescription() {
+                                Type = DamageType.Energy,
+                                Common = new DamageTypeDescription.CommomData() {
+                                    Reality = 0,
+                                    Alignment = 0,
+                                    Precision = false
+                                },
+                                Physical = new DamageTypeDescription.PhysicalData() {
+                                    Material = 0,
+                                    Form = 0,
+                                    Enhancement = 0,
+                                    EnhancementTotal = 0
+                                },
+                                Energy = DamageEnergyType.Cold
+                            },
+                            AbilityType = StatType.Unknown,
+                            EnergyDrainType = EnergyDrainType.Temporary,
+                            Duration = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                m_IsExtendable = true,
+                            },
+                            PreRolledSharedValue = AbilitySharedValue.Damage,
+                            Value = new ContextDiceValue() {
+                                DiceType = DiceType.D6,
+                                DiceCountValue = new ContextValue() {
+                                    ValueType = ContextValueType.Shared,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                            },
+                            IsAoE = true,
+                            HalfIfSaved = true,
+                            ResultSharedValue = AbilitySharedValue.Damage,
+                            CriticalSharedValue = AbilitySharedValue.Damage
+                        }
+                        );
+                });
+                bp.AddComponent<ContextCalculateSharedValue>(c => {
+                    c.ValueType = AbilitySharedValue.Damage;
+                    c.Value = new ContextDiceValue() {
+                        DiceType = DiceType.One,
+                        DiceCountValue = new ContextValue() {
+                            ValueType = ContextValueType.Simple,
+                            Value = 3
+                        },
+                        BonusValue = new ContextValue() {
+                            ValueType = ContextValueType.Rank,
+                            Value = 0,
+                            ValueRank = AbilityRankType.Default
+                        }
+                    };
+                    c.Modifier = 1;
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.SummClassLevelWithArchetype;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.DelayedStartPlusDivStep;
+                    c.Archetype = DivineHunterArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.m_AdditionalArchetypes = new BlueprintArchetypeReference[] { TempleChampionArchetype.ToReference<BlueprintArchetypeReference>() };
+                    c.m_Class = new BlueprintCharacterClassReference[] {
+                        ClericClass.ToReference<BlueprintCharacterClassReference>(),
+                        InquisitorClass.ToReference<BlueprintCharacterClassReference>(),
+                        HunterClass.ToReference<BlueprintCharacterClassReference>(),
+                        PaladinClass.ToReference<BlueprintCharacterClassReference>(),
+                        StargazerClass.ToReference<BlueprintCharacterClassReference>(),
+                    };
+                    c.m_StartLevel = 8;
+                    c.m_StepLevel = 2;
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = DragonDomainGreaterResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.Type = AbilityType.Special;
+                bp.Range = AbilityRange.Projectile;
+                bp.CanTargetPoint = true;
+                bp.CanTargetEnemies = true;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.BreathWeapon;
+                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Extend | Metamagic.Heighten | Metamagic.Selective | Metamagic.Bolstered;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var DragonDomainGreaterColdFeatureSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("DragonDomainGreaterColdFeatureSeparatist", bp => {
+                bp.SetName("Dragonbreath - Cold");
+                bp.SetDescription("At 4th level, you may use a ice breath weapon once per day as a standard action. Your breath weapon fills a 15-foot cone, and " +
+                    "deals 3d6 points of cold damage—this damage increases by 1d6 points at every even-numbered level you gain beyond 4th level. A creature hit by " +
+                    "your dragonbreath attack can attempt a Reflex save (DC 10 + 1/2 your cleric level + your Wisdom modifier) to take half damage. At 9th level, " +
+                    "you can use this ability two times per day, and at 14th level you can use it three times per day.");
+                bp.m_Icon = BloodlineDraconicWhiteBreathWeaponAbility.m_Icon;
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = DragonDomainGreaterResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { DragonDomainGreaterColdAbilitySeparatist.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<ReplaceAbilitiesStat>(c => {
+                    c.m_Ability = new BlueprintAbilityReference[] { DragonDomainGreaterColdAbilitySeparatist.ToReference<BlueprintAbilityReference>() };
+                    c.Stat = StatType.Wisdom;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+            var DragonDomainGreaterElectricityAbilitySeparatist = Helpers.CreateBlueprint<BlueprintAbility>("DragonDomainGreaterElectricityAbilitySeparatist", bp => {
+                bp.SetName("Dragonbreath - Electricity");
+                bp.SetDescription("At 4th level, you may use a electricity breath weapon once per day as a standard action. Your breath weapon fills a 15-foot cone, and " +
+                    "deals 3d6 points of electricity damage—this damage increases by 1d6 points at every even-numbered level you gain beyond 4th level. A creature hit by " +
+                    "your dragonbreath attack can attempt a Reflex save (DC 10 + 1/2 your cleric level + your Wisdom modifier) to take half damage. At 9th level, " +
+                    "you can use this ability two times per day, and at 14th level you can use it three times per day.");
+                bp.m_Icon = BloodlineDraconicBlueBreathWeaponAbility.m_Icon;
+                bp.AddComponent<AbilityDeliverProjectile>(c => {
+                    c.m_Projectiles = new BlueprintProjectileReference[] {
+                        SonicCone15Feet00.ToReference<BlueprintProjectileReference>()
+                    };
+                    c.Type = AbilityProjectileType.Cone;
+                    c.m_Length = new Feet() { m_Value = 15 };
+                    c.m_LineWidth = new Feet() { m_Value = 5 };
+                    c.AttackRollBonusStat = StatType.Unknown;
+                });
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Reflex;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionDealDamage() {
+                            m_Type = ContextActionDealDamage.Type.Damage,
+                            DamageType = new DamageTypeDescription() {
+                                Type = DamageType.Energy,
+                                Common = new DamageTypeDescription.CommomData() {
+                                    Reality = 0,
+                                    Alignment = 0,
+                                    Precision = false
+                                },
+                                Physical = new DamageTypeDescription.PhysicalData() {
+                                    Material = 0,
+                                    Form = 0,
+                                    Enhancement = 0,
+                                    EnhancementTotal = 0
+                                },
+                                Energy = DamageEnergyType.Electricity
+                            },
+                            AbilityType = StatType.Unknown,
+                            EnergyDrainType = EnergyDrainType.Temporary,
+                            Duration = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                m_IsExtendable = true,
+                            },
+                            PreRolledSharedValue = AbilitySharedValue.Damage,
+                            Value = new ContextDiceValue() {
+                                DiceType = DiceType.D6,
+                                DiceCountValue = new ContextValue() {
+                                    ValueType = ContextValueType.Shared,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                            },
+                            IsAoE = true,
+                            HalfIfSaved = true,
+                            ResultSharedValue = AbilitySharedValue.Damage,
+                            CriticalSharedValue = AbilitySharedValue.Damage
+                        }
+                        );
+                });
+                bp.AddComponent<ContextCalculateSharedValue>(c => {
+                    c.ValueType = AbilitySharedValue.Damage;
+                    c.Value = new ContextDiceValue() {
+                        DiceType = DiceType.One,
+                        DiceCountValue = new ContextValue() {
+                            ValueType = ContextValueType.Simple,
+                            Value = 3
+                        },
+                        BonusValue = new ContextValue() {
+                            ValueType = ContextValueType.Rank,
+                            Value = 0,
+                            ValueRank = AbilityRankType.Default
+                        }
+                    };
+                    c.Modifier = 1;
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.SummClassLevelWithArchetype;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.DelayedStartPlusDivStep;
+                    c.Archetype = DivineHunterArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.m_AdditionalArchetypes = new BlueprintArchetypeReference[] { TempleChampionArchetype.ToReference<BlueprintArchetypeReference>() };
+                    c.m_Class = new BlueprintCharacterClassReference[] {
+                        ClericClass.ToReference<BlueprintCharacterClassReference>(),
+                        InquisitorClass.ToReference<BlueprintCharacterClassReference>(),
+                        HunterClass.ToReference<BlueprintCharacterClassReference>(),
+                        PaladinClass.ToReference<BlueprintCharacterClassReference>(),
+                        StargazerClass.ToReference<BlueprintCharacterClassReference>(),
+                    };
+                    c.m_StartLevel = 8;
+                    c.m_StepLevel = 2;
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = DragonDomainGreaterResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.Type = AbilityType.Special;
+                bp.Range = AbilityRange.Projectile;
+                bp.CanTargetPoint = true;
+                bp.CanTargetEnemies = true;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.BreathWeapon;
+                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Extend | Metamagic.Heighten | Metamagic.Selective | Metamagic.Bolstered;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var DragonDomainGreaterElectricityFeatureSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("DragonDomainGreaterElectricityFeatureSeparatist", bp => {
+                bp.SetName("Dragonbreath - Electricity");
+                bp.SetDescription("At 4th level, you may use a electricity breath weapon once per day as a standard action. Your breath weapon fills a 15-foot cone, and " +
+                    "deals 3d6 points of electricity damage—this damage increases by 1d6 points at every even-numbered level you gain beyond 4th level. A creature hit by " +
+                    "your dragonbreath attack can attempt a Reflex save (DC 10 + 1/2 your cleric level + your Wisdom modifier) to take half damage. At 9th level, " +
+                    "you can use this ability two times per day, and at 14th level you can use it three times per day.");
+                bp.m_Icon = BloodlineDraconicBlueBreathWeaponAbility.m_Icon;
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = DragonDomainGreaterResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { DragonDomainGreaterElectricityAbilitySeparatist.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<ReplaceAbilitiesStat>(c => {
+                    c.m_Ability = new BlueprintAbilityReference[] { DragonDomainGreaterElectricityAbilitySeparatist.ToReference<BlueprintAbilityReference>() };
+                    c.Stat = StatType.Wisdom;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+            var DragonDomainGreaterAcidAbilitySeparatist = Helpers.CreateBlueprint<BlueprintAbility>("DragonDomainGreaterAcidAbilitySeparatist", bp => {
+                bp.SetName("Dragonbreath - Acid");
+                bp.SetDescription("At 4th level, you may use a acid breath weapon once per day as a standard action. Your breath weapon fills a 15-foot cone, and " +
+                    "deals 3d6 points of acid damage—this damage increases by 1d6 points at every even-numbered level you gain beyond 4th level. A creature hit by " +
+                    "your dragonbreath attack can attempt a Reflex save (DC 10 + 1/2 your cleric level + your Wisdom modifier) to take half damage. At 9th level, " +
+                    "you can use this ability two times per day, and at 14th level you can use it three times per day.");
+                bp.m_Icon = BloodlineDraconicBlackBreathWeaponAbility.m_Icon;
+                bp.AddComponent<AbilityDeliverProjectile>(c => {
+                    c.m_Projectiles = new BlueprintProjectileReference[] {
+                        AcidCone15Feet00.ToReference<BlueprintProjectileReference>()
+                    };
+                    c.Type = AbilityProjectileType.Cone;
+                    c.m_Length = new Feet() { m_Value = 15 };
+                    c.m_LineWidth = new Feet() { m_Value = 5 };
+                    c.AttackRollBonusStat = StatType.Unknown;
+                });
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Reflex;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionDealDamage() {
+                            m_Type = ContextActionDealDamage.Type.Damage,
+                            DamageType = new DamageTypeDescription() {
+                                Type = DamageType.Energy,
+                                Common = new DamageTypeDescription.CommomData() {
+                                    Reality = 0,
+                                    Alignment = 0,
+                                    Precision = false
+                                },
+                                Physical = new DamageTypeDescription.PhysicalData() {
+                                    Material = 0,
+                                    Form = 0,
+                                    Enhancement = 0,
+                                    EnhancementTotal = 0
+                                },
+                                Energy = DamageEnergyType.Acid
+                            },
+                            AbilityType = StatType.Unknown,
+                            EnergyDrainType = EnergyDrainType.Temporary,
+                            Duration = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                m_IsExtendable = true,
+                            },
+                            PreRolledSharedValue = AbilitySharedValue.Damage,
+                            Value = new ContextDiceValue() {
+                                DiceType = DiceType.D6,
+                                DiceCountValue = new ContextValue() {
+                                    ValueType = ContextValueType.Shared,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                            },
+                            IsAoE = true,
+                            HalfIfSaved = true,
+                            ResultSharedValue = AbilitySharedValue.Damage,
+                            CriticalSharedValue = AbilitySharedValue.Damage
+                        }
+                        );
+                });
+                bp.AddComponent<ContextCalculateSharedValue>(c => {
+                    c.ValueType = AbilitySharedValue.Damage;
+                    c.Value = new ContextDiceValue() {
+                        DiceType = DiceType.One,
+                        DiceCountValue = new ContextValue() {
+                            ValueType = ContextValueType.Simple,
+                            Value = 3
+                        },
+                        BonusValue = new ContextValue() {
+                            ValueType = ContextValueType.Rank,
+                            Value = 0,
+                            ValueRank = AbilityRankType.Default
+                        }
+                    };
+                    c.Modifier = 1;
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.SummClassLevelWithArchetype;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.DelayedStartPlusDivStep;
+                    c.Archetype = DivineHunterArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.m_AdditionalArchetypes = new BlueprintArchetypeReference[] { TempleChampionArchetype.ToReference<BlueprintArchetypeReference>() };
+                    c.m_Class = new BlueprintCharacterClassReference[] {
+                        ClericClass.ToReference<BlueprintCharacterClassReference>(),
+                        InquisitorClass.ToReference<BlueprintCharacterClassReference>(),
+                        HunterClass.ToReference<BlueprintCharacterClassReference>(),
+                        PaladinClass.ToReference<BlueprintCharacterClassReference>(),
+                        StargazerClass.ToReference<BlueprintCharacterClassReference>(),
+                    };
+                    c.m_StartLevel = 8;
+                    c.m_StepLevel = 2;
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = DragonDomainGreaterResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.Type = AbilityType.Special;
+                bp.Range = AbilityRange.Projectile;
+                bp.CanTargetPoint = true;
+                bp.CanTargetEnemies = true;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.BreathWeapon;
+                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Extend | Metamagic.Heighten | Metamagic.Selective | Metamagic.Bolstered;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var DragonDomainGreaterAcidFeatureSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("DragonDomainGreaterAcidFeatureSeparatist", bp => {
+                bp.SetName("Dragonbreath - Acid");
+                bp.SetDescription("At 4th level, you may use a acid breath weapon once per day as a standard action. Your breath weapon fills a 15-foot cone, and " +
+                    "deals 3d6 points of acid damage—this damage increases by 1d6 points at every even-numbered level you gain beyond 4th level. A creature hit by " +
+                    "your dragonbreath attack can attempt a Reflex save (DC 10 + 1/2 your cleric level + your Wisdom modifier) to take half damage. At 9th level, " +
+                    "you can use this ability two times per day, and at 14th level you can use it three times per day.");
+                bp.m_Icon = BloodlineDraconicBlackBreathWeaponAbility.m_Icon;
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = DragonDomainGreaterResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { DragonDomainGreaterAcidAbilitySeparatist.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<ReplaceAbilitiesStat>(c => {
+                    c.m_Ability = new BlueprintAbilityReference[] { DragonDomainGreaterAcidAbilitySeparatist.ToReference<BlueprintAbilityReference>() };
+                    c.Stat = StatType.Wisdom;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+
+            var DragonDomainGreaterFeatureSeparatist = Helpers.CreateBlueprint<BlueprintFeatureSelection>("DragonDomainGreaterFeatureSeparatist", bp => {
+                bp.SetName("Dragonbreath");
+                bp.SetDescription("At 4th level, you may use a breath weapon once per day as a standard action. When you gain this ability, choose acid, cold, fire, " +
+                    "or electricity—this determines what kind of damage your breath weapon deals. Your breath weapon fills a 15-foot cone, and deals 3d6 points of " +
+                    "damage—this damage increases by 1d6 points at every even-numbered level you gain beyond 4th level. A creature hit by your dragonbreath attack " +
+                    "can attempt a Reflex save (DC 10 + 1/2 your cleric level + your Wisdom modifier) to take half damage. At 9th level, you can use this ability " +
+                    "two times per day, and at 14th level you can use it three times per day.");
+                bp.IsClassFeature = true;
+                bp.m_AllowNonContextActions = false;
+                bp.Group = FeatureGroup.None;
+                bp.m_AllFeatures = new BlueprintFeatureReference[] {
+                    DragonDomainGreaterFireFeatureSeparatist.ToReference<BlueprintFeatureReference>(),
+                    DragonDomainGreaterColdFeatureSeparatist.ToReference<BlueprintFeatureReference>(),
+                    DragonDomainGreaterElectricityFeatureSeparatist.ToReference<BlueprintFeatureReference>(),
+                    DragonDomainGreaterAcidFeatureSeparatist.ToReference<BlueprintFeatureReference>()
+                };
+            });
+
+            var DragonDomainBaseAbilitySeparatist = Helpers.CreateBlueprint<BlueprintAbility>("DragonBaseAbilitySeparatist", bp => {
+                bp.SetName("Venomous Stare");
+                bp.SetDescription("This gaze attack can target a single creature within meduim range. The target must make a Will save (DC = 10 + 1/2 your cleric level + your Wisdom " +
+                    "modifier). Those who fail take 1d6 points of nonlethal damage + 1 point for every two cleric levels you possess and are fascinated until the " +
+                    "beginning of your next turn. You can use this ability a number of times per day equal to 3 + your Wisdom modifier. This is a mind-affecting " +
+                    "effect.");
+                bp.m_Icon = Hypnotism.Icon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Will;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionConditionalSaved() {
+                            Succeed = Helpers.CreateActionList(),
+                            Failed = Helpers.CreateActionList(
+                                new ContextActionDealDamage() {
+                                    m_Type = ContextActionDealDamage.Type.Damage,
+                                    DamageType = new DamageTypeDescription() {
+                                        Type = DamageType.Untyped
+                                    },
+                                    AbilityType = StatType.Unknown,
+                                    Duration = new ContextDurationValue() {
+                                        Rate = DurationRate.Rounds,
+                                        DiceType = DiceType.Zero
+                                    },
+                                    Value = new ContextDiceValue() {
+                                        DiceType = DiceType.D6,
+                                        DiceCountValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 1
+                                        },
+                                        BonusValue = new ContextValue() {
+                                            ValueType = ContextValueType.Rank,
+                                            ValueRank = AbilityRankType.Default
+                                        }
+                                    }
+                                },
+                                new ContextActionApplyBuff() {
+                                    m_Buff = FascinateEffectBuff.ToReference<BlueprintBuffReference>(),
+                                    UseDurationSeconds = true,
+                                    DurationSeconds = 6
+                                }
+                            )
+                        }
+                    );
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.CustomProperty;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.DelayedStartPlusDivStep;
+                    c.m_StartLevel = 4;
+                    c.m_StepLevel = 2;
+                    c.m_CustomProperty = SeparatistAsIsProperty.ToReference<BlueprintUnitPropertyReference>();
+                });                
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = ScalykindDomainBaseResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<SpellComponent>(c => {
+                    c.School = SpellSchool.Enchantment;
+                });
+                bp.Type = AbilityType.SpellLike;
+                bp.Range = AbilityRange.Medium;
+                bp.CanTargetEnemies = true;
+                bp.CanTargetFriends = true;
+                bp.CanTargetSelf = true;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.BreathWeapon;
+                bp.ActionType = UnitCommand.CommandType.Standard;
+                bp.AvailableMetamagic = Metamagic.Quicken;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+
+            var DragonDomainBaseFeatureSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("DragonDomainBaseFeatureSeparatist", bp => {
+                bp.SetName("Dragon Subdomain");
+                bp.SetDescription("\nYou are a true lord of reptiles, and your gaze can drive weak creatures into unconsciousness. \nVenomous Stare: This " +
+                    "gaze attack can target a single creature within meduim range. The target must make a Will save (DC = 10 + 1/2 your cleric level + your Wisdom " +
+                    "modifier). Those who fail take 1d6 points of nonlethal damage + 1 point for every two cleric levels you possess and are fascinated until the " +
+                    "beginning of your next turn. You can use this ability a number of times per day equal to 3 + your Wisdom modifier. This is a mind-affecting " +
+                    "effect. \nDragonbreath: At 4th level, you may use a breath weapon once per day as a standard action. When you gain this ability, choose acid, cold, fire, " +
+                    "or electricity—this determines what kind of damage your breath weapon deals. Your breath weapon fills a 15-foot cone, and deals 3d6 points of " +
+                    "damage—this damage increases by 1d6 points at every even-numbered level you gain beyond 4th level. A creature hit by your dragonbreath attack " +
+                    "can attempt a Reflex save (DC 10 + 1/2 your cleric level + your Wisdom modifier) to take half damage. At 9th level, you can use this ability " +
+                    "two times per day, and at 14th level you can use it three times per day.");
+                bp.m_Icon = Hypnotism.Icon;
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { DragonDomainBaseAbilitySeparatist.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = ScalykindDomainBaseResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.AddComponent<ReplaceAbilitiesStat>(c => {
+                    c.m_Ability = new BlueprintAbilityReference[] { DragonDomainBaseAbilitySeparatist.ToReference<BlueprintAbilityReference>() };
+                    c.Stat = StatType.Wisdom;
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = DragonDomainSpellListFeature.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+
+                bp.IsClassFeature = true;
+            });
+
+            var DragonDomainProgressionSeparatist = Helpers.CreateBlueprint<BlueprintProgression>("DragonDomainProgressionSeparatist", bp => {
+                bp.SetName("Dragon Subdomain");
+                bp.SetDescription("\nYou are a true lord of reptiles, and your gaze can drive weak creatures into unconsciousness. \nVenomous Stare: This " +
+                    "gaze attack can target a single creature within meduim range. The target must make a Will save (DC = 10 + 1/2 your cleric level + your Wisdom " +
+                    "modifier). Those who fail take 1d6 points of nonlethal damage + 1 point for every two cleric levels you possess and are fascinated until the " +
+                    "beginning of your next turn. You can use this ability a number of times per day equal to 3 + your Wisdom modifier. This is a mind-affecting " +
+                    "effect. \nDragonbreath: At 4th level, you may use a breath weapon once per day as a standard action. When you gain this ability, choose acid, cold, fire, " +
+                    "or electricity—this determines what kind of damage your breath weapon deals. Your breath weapon fills a 15-foot cone, and deals 3d6 points of " +
+                    "damage—this damage increases by 1d6 points at every even-numbered level you gain beyond 4th level. A creature hit by your dragonbreath attack " +
+                    "can attempt a Reflex save (DC 10 + 1/2 your cleric level + your Wisdom modifier) to take half damage. At 9th level, you can use this ability " +
+                    "two times per day, and at 14th level you can use it three times per day.\nDomain Spells: magic fang, pernicious poison, greater magic fang, " +
+                    "dragon breath, animal growth, form of the dragon, creeping doom, animal shapes, shapechange.");
+                bp.AddComponent<PrerequisiteFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = DragonDomainAllowedSeparatist.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = DragonDomainProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = DragonDomainAllowed.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = DragonDomainProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = DragonDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.Groups = new FeatureGroup[] { FeatureGroup.SeparatistSecondaryDomain };
+                bp.IsClassFeature = true;
+                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    }
+                };
+                bp.m_Archetypes = new BlueprintProgression.ArchetypeWithLevel[] {  };
+                bp.LevelEntries = new LevelEntry[] {
+                    Helpers.LevelEntry(1, DragonDomainBaseFeatureSeparatist),
+                    Helpers.LevelEntry(6, DragonDomainGreaterFeatureSeparatist)
+                };
+                bp.UIGroups = new UIGroup[] {
+                    Helpers.CreateUIGroup(DragonDomainBaseFeatureSeparatist, DragonDomainGreaterFeatureSeparatist)
+                };
+                bp.GiveFeaturesForPreviousLevels = true;
+            });
+
+            DragonDomainAllowed.IsPrerequisiteFor = new List<BlueprintFeatureReference>() {
                 DragonDomainProgression.ToReference<BlueprintFeatureReference>(),
                 DragonDomainProgressionSecondary.ToReference<BlueprintFeatureReference>()
             };
             DragonDomainProgression.AddComponent<PrerequisiteNoFeature>(c => {
-                    c.Group = Prerequisite.GroupType.All;
-                    c.HideInUI = true;
-                    c.m_Feature = DragonDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
-            }); 
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = DragonDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+            });
+            DragonDomainProgression.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = DragonDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
             DragonDomainProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
-                    c.Group = Prerequisite.GroupType.All;
-                    c.HideInUI = true;
-                    c.m_Feature = DragonDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = DragonDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+            });
+            DragonDomainProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = DragonDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
+            DragonDomainProgressionSeparatist.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = DragonDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
             });
             var DomainMastery = Resources.GetBlueprint<BlueprintFeature>("2de64f6a1f2baee4f9b7e52e3f046ec5").GetComponent<AutoMetamagic>();
+            DomainMastery.Abilities.Add(DragonDomainBaseAbility.ToReference<BlueprintAbilityReference>());
             DomainMastery.Abilities.Add(DragonDomainGreaterFireAbility.ToReference<BlueprintAbilityReference>());
             DomainMastery.Abilities.Add(DragonDomainGreaterColdAbility.ToReference<BlueprintAbilityReference>());
             DomainMastery.Abilities.Add(DragonDomainGreaterElectricityAbility.ToReference<BlueprintAbilityReference>());
-            DomainMastery.Abilities.Add(DragonDomainGreaterAcidAbility.ToReference<BlueprintAbilityReference>());
+            DomainMastery.Abilities.Add(DragonDomainGreaterAcidAbility.ToReference<BlueprintAbilityReference>()); 
+            DomainMastery.Abilities.Add(DragonDomainGreaterAcidAbility.ToReference<BlueprintAbilityReference>()); 
+            DomainMastery.Abilities.Add(DragonDomainBaseAbilitySeparatist.ToReference<BlueprintAbilityReference>());
+            DomainMastery.Abilities.Add(DragonDomainGreaterFireAbilitySeparatist.ToReference<BlueprintAbilityReference>());
+            DomainMastery.Abilities.Add(DragonDomainGreaterColdAbilitySeparatist.ToReference<BlueprintAbilityReference>());
+            DomainMastery.Abilities.Add(DragonDomainGreaterElectricityAbilitySeparatist.ToReference<BlueprintAbilityReference>());
+            DomainMastery.Abilities.Add(DragonDomainGreaterAcidAbilitySeparatist.ToReference<BlueprintAbilityReference>());
             if (ModSettings.AddedContent.Domains.IsDisabled("Dragon Subdomain")) { return; }
             DomainTools.RegisterDomain(DragonDomainProgression);
             DomainTools.RegisterSecondaryDomain(DragonDomainProgressionSecondary);
@@ -1093,6 +1945,7 @@ namespace ExpandedContent.Tweaks.Domains {
             DomainTools.RegisterTempleDomain(DragonDomainProgression);
             DomainTools.RegisterSecondaryTempleDomain(DragonDomainProgressionSecondary);
             DomainTools.RegisterImpossibleSubdomain(DragonDomainProgression, DragonDomainProgressionSecondary);
+            DomainTools.RegisterSeparatistDomain(DragonDomainProgressionSeparatist);
 
         }
     }

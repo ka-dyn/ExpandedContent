@@ -18,6 +18,8 @@ using Kingmaker.Enums;
 using Kingmaker.Visual.Animation.Kingmaker.Actions;
 using ExpandedContent.Config;
 using Kingmaker.UnitLogic.Abilities.Components.Base;
+using Kingmaker.UnitLogic.Mechanics.Properties;
+using Kingmaker.UnitLogic.Alignments;
 
 namespace ExpandedContent.Tweaks.Domains {
     internal class LoyaltyDomain {
@@ -228,6 +230,11 @@ namespace ExpandedContent.Tweaks.Domains {
             });            
             // Main Blueprint
             var LoyaltyDomainProgression = Helpers.CreateBlueprint<BlueprintProgression>("LoyaltyDomainProgression", bp => {
+                bp.AddComponent<PrerequisiteAlignment>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = false;
+                    c.Alignment = AlignmentMaskType.Lawful;
+                });
                 bp.AddComponent<PrerequisiteFeature>(c => {
                     c.Group = Prerequisite.GroupType.All;
                     c.HideInUI = true;
@@ -296,6 +303,11 @@ namespace ExpandedContent.Tweaks.Domains {
             });
             // Secondary Domain Progression
             var LoyaltyDomainProgressionSecondary = Helpers.CreateBlueprint<BlueprintProgression>("LoyaltyDomainProgressionSecondary", bp => {
+                bp.AddComponent<PrerequisiteAlignment>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = false;
+                    c.Alignment = AlignmentMaskType.Lawful;
+                });
                 bp.AddComponent<PrerequisiteFeature>(c => {
                     c.Group = Prerequisite.GroupType.All;
                     c.HideInUI = true;
@@ -344,23 +356,196 @@ namespace ExpandedContent.Tweaks.Domains {
                     Helpers.CreateUIGroup(LoyaltyDomainBaseFeature, LawDomainGreaterFeature)
                 };
                 bp.GiveFeaturesForPreviousLevels = true;
-            });            
-            LoyaltyDomainAllowed.IsPrerequisiteFor = new List<BlueprintFeatureReference>() { 
+            });
+
+            //Separatist versions
+            var LawDomainGreaterFeatureSeparatist = Resources.GetBlueprint<BlueprintFeature>("e1ac3d1b6f8a4a18b18f61f49a40722e");
+
+
+            var LoyaltyDomainAllowedSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("LoyaltyDomainAllowedSeparatist", bp => {
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.IsClassFeature = true;
+            });
+
+
+            var LoyaltyDomainBaseResourceSeparatist = Helpers.CreateBlueprint<BlueprintAbilityResource>("LoyaltyDomainBaseResourceSeparatist", bp => {
+                bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
+                    BaseValue = 2,
+                    IncreasedByLevel = false,
+                    IncreasedByStat = true,
+                    ResourceBonusStat = StatType.Wisdom,
+                };
+            });
+
+            var LoyaltyDomainBaseAbilitySeparatist = Helpers.CreateBlueprint<BlueprintAbility>("LoyaltyDomainBaseAbilitySeparatist", bp => {
+                bp.SetName("Touch of Loyalty");
+                bp.SetDescription("As a standard action, you can touch a willing creature, granting it a +4 sacred bonus on saving throws to resist charm, compulsion, and fear " +
+                    "effects for 1 hour. You can use this ability a number of times per day equal to 3 + your Wisdom modifier.");
+                bp.m_Icon = RemoveFear.m_Icon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = LoyaltyDomainBaseBuff.ToReference<BlueprintBuffReference>(),
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Hours,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 1,
+                                m_IsExtendable = true
+                            },
+                            DurationSeconds = 0
+                        });
+                });
+                bp.AddComponent<AbilitySpawnFx>(c => {
+                    c.PrefabLink = new Kingmaker.ResourceLinks.PrefabLink() { AssetId = "c4d861e816edd6f4eab73c55a18fdadd" };
+                    c.Time = AbilitySpawnFxTime.OnApplyEffect;
+                    c.Anchor = AbilitySpawnFxAnchor.SelectedTarget;
+                    c.WeaponTarget = AbilitySpawnFxWeaponTarget.None;
+                    c.DestroyOnCast = false;
+                    c.Delay = 0;
+                    c.PositionAnchor = AbilitySpawnFxAnchor.None;
+                    c.OrientationAnchor = AbilitySpawnFxAnchor.None;
+                    c.OrientationMode = AbilitySpawnFxOrientation.Copy;
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = LoyaltyDomainBaseResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Touch;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = true;
+                bp.CanTargetSelf = true;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Touch;
+                bp.HasFastAnimation = false;
+                bp.ActionType = UnitCommand.CommandType.Standard;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = Helpers.CreateString("LoyaltyDomainBaseAbilitySeparatist.Duration", "1 hour");
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+
+            var LoyaltyDomainBaseFeatureSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("LoyaltyDomainBaseFeatureSeparatist", bp => {
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { LoyaltyDomainBaseAbilitySeparatist.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = LoyaltyDomainBaseResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.AddComponent<ReplaceAbilitiesStat>(c => {
+                    c.m_Ability = new BlueprintAbilityReference[] { LoyaltyDomainBaseAbilitySeparatist.ToReference<BlueprintAbilityReference>() };
+                    c.Stat = StatType.Wisdom;
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = LoyaltyDomainSpellListFeature.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.SetName("Loyalty Subdomain");
+                bp.SetDescription("\nYou value loyalty above other virtues, both between allies and towards ones holy patron. \nTouch of Loyalty: As a standard action, you can " +
+                    "touch a willing creature, granting it a +4 sacred bonus on saving throws to resist charm, compulsion, and fear effects for 1 hour. You can use this ability " +
+                    "a number of times per day equal to 3 + your Wisdom modifier.\nStaff of Order: At 8th level, you can give a weapon you touch the axiomatic special weapon " +
+                    "quality for a number of rounds equal to 1/2 your level in the class that gave you access to this domain. You can use this ability once per day at 8th level, " +
+                    "and an additional time per day for every four levels beyond 8th.");
+                bp.IsClassFeature = true;
+            });
+
+            var LoyaltyDomainProgressionSeparatist = Helpers.CreateBlueprint<BlueprintProgression>("LoyaltyDomainProgressionSeparatist", bp => {
+                bp.AddComponent<PrerequisiteAlignment>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = false;
+                    c.Alignment = AlignmentMaskType.Lawful;
+                });
+                bp.AddComponent<PrerequisiteFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = LoyaltyDomainAllowedSeparatist.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = LoyaltyDomainProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = LoyaltyDomainAllowed.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = LoyaltyDomainProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = LoyaltyDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.SetName("Loyalty Subdomain");
+                bp.SetDescription("\nYou value loyalty above other virtues, both between allies and towards ones holy patron. \nTouch of Loyalty: As a standard action, you can " +
+                    "touch a willing creature, granting it a +4 sacred bonus on saving throws to resist charm, compulsion, and fear effects for 1 hour. You can use this ability " +
+                    "a number of times per day equal to 3 + your Wisdom modifier.\nStaff of Order: At 8th level, you can give a weapon you touch the axiomatic special weapon " +
+                    "quality for a number of rounds equal to 1/2 your level in the class that gave you access to this domain. You can use this ability once per day at 8th level, " +
+                    "and an additional time per day for every four levels beyond 8th.\nDomain {g|Encyclopedia:Spell}Spells{/g}: remove fear, communal protection from chaos, " +
+                    "prayer, communal protection from energy, greater command, blade barrier, dictum, shield of law, dominate monster.");
+                bp.Groups = new FeatureGroup[] { FeatureGroup.SeparatistSecondaryDomain };
+                bp.IsClassFeature = true;
+                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    }
+                };
+                bp.LevelEntries = new LevelEntry[] {
+                    Helpers.LevelEntry(1, LoyaltyDomainBaseFeatureSeparatist),
+                    Helpers.LevelEntry(10, LawDomainGreaterFeatureSeparatist)
+                };
+                bp.UIGroups = new UIGroup[] {
+                    Helpers.CreateUIGroup(LoyaltyDomainBaseFeatureSeparatist, LawDomainGreaterFeatureSeparatist)
+                };
+                bp.GiveFeaturesForPreviousLevels = true;
+            });
+
+
+            LoyaltyDomainAllowed.IsPrerequisiteFor = new List<BlueprintFeatureReference>() {
                 LoyaltyDomainProgression.ToReference<BlueprintFeatureReference>(),
                 LoyaltyDomainProgressionSecondary.ToReference<BlueprintFeatureReference>()
             };
             LoyaltyDomainProgression.AddComponent<PrerequisiteNoFeature>(c => {
-                    c.Group = Prerequisite.GroupType.All;
-                    c.HideInUI = true;
-                    c.m_Feature = LoyaltyDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
-            }); 
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = LoyaltyDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+            });
+            LoyaltyDomainProgression.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = LoyaltyDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
             LoyaltyDomainProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
-                    c.Group = Prerequisite.GroupType.All;
-                    c.HideInUI = true;
-                    c.m_Feature = LoyaltyDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = LoyaltyDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+            });
+            LoyaltyDomainProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = LoyaltyDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
+            LoyaltyDomainProgressionSeparatist.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = LoyaltyDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
             });
             var DomainMastery = Resources.GetBlueprint<BlueprintFeature>("2de64f6a1f2baee4f9b7e52e3f046ec5").GetComponent<AutoMetamagic>();
             DomainMastery.Abilities.Add(LoyaltyDomainBaseAbility.ToReference<BlueprintAbilityReference>());
+            DomainMastery.Abilities.Add(LoyaltyDomainBaseAbilitySeparatist.ToReference<BlueprintAbilityReference>());
             if (ModSettings.AddedContent.Domains.IsDisabled("Loyalty Subdomain")) { return; }
             DomainTools.RegisterDomain(LoyaltyDomainProgression);
             DomainTools.RegisterSecondaryDomain(LoyaltyDomainProgressionSecondary);
@@ -368,6 +553,8 @@ namespace ExpandedContent.Tweaks.Domains {
             DomainTools.RegisterTempleDomain(LoyaltyDomainProgression);
             DomainTools.RegisterSecondaryTempleDomain(LoyaltyDomainProgressionSecondary);
             DomainTools.RegisterImpossibleSubdomain(LoyaltyDomainProgression, LoyaltyDomainProgressionSecondary);
+            DomainTools.RegisterSeparatistDomain(LoyaltyDomainProgressionSeparatist);
+
         }
     }
 }

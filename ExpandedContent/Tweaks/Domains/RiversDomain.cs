@@ -435,21 +435,228 @@ namespace ExpandedContent.Tweaks.Domains {
                 };
                 bp.GiveFeaturesForPreviousLevels = true;
             });
-            RiversDomainAllowed.IsPrerequisiteFor = new List<BlueprintFeatureReference>() { 
-                AirBlessingFeature.ToReference<BlueprintFeatureReference>(),
+
+            //Separatist versions
+            var ProtectionDomainGreaterFeatureSeparatist = Resources.GetBlueprint<BlueprintFeature>("7eb39ba8115a422bb69c702cc20ca58a");
+            var SeparatistAsIsProperty = Resources.GetModBlueprint<BlueprintUnitProperty>("SeparatistAsIsProperty");
+
+
+            var RiversDomainAllowedSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("RiversDomainAllowedSeparatist", bp => {
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.IsClassFeature = true;
+            });
+
+            var RiversDomainBaseResourceSeparatist = Helpers.CreateBlueprint<BlueprintAbilityResource>("RiversDomainBaseResourceSeparatist", bp => {
+                bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
+                    BaseValue = 2,
+                    IncreasedByLevel = false,
+                    IncreasedByStat = true,
+                    ResourceBonusStat = StatType.Wisdom,
+                };
+            });
+            var RiversDomainBaseBuffSeparatist = Helpers.CreateBuff("RiversDomainBaseBuffSeparatist", bp => {
+                bp.SetName("Current Flow");
+                bp.SetDescription("As a free action, you can increase your speed by 10 feet. Gain a bonus on Mobility checks equal to your 1/2 your cleric level " +
+                    "(minimum 1). These effects last for a number of rounds equal to your Wisdom modifier (minimum 1). You can use this ability a number of times " +
+                    "per day equal to 3 + your Wisdom modifier.");
+                bp.m_Icon = Icon_RiversDomainBaseAbility;
+                bp.AddComponent<AddStatBonus>(c => {
+                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+                    c.Stat = StatType.Speed;
+                    c.Value = 10;
+                });
+                bp.AddComponent<AddContextStatBonus>(c => {
+                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+                    c.Stat = StatType.SkillMobility;
+                    c.Value = new ContextValue() {
+                        ValueType = ContextValueType.Rank,
+                        Value = 0,
+                        ValueRank = AbilityRankType.StatBonus,
+                        ValueShared = AbilitySharedValue.Damage,
+                        Property = UnitProperty.None,
+                    };
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.CustomProperty;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.Div2;
+                    c.m_CustomProperty = SeparatistAsIsProperty.ToReference<BlueprintUnitPropertyReference>();
+                });
+            });
+
+            var RiversDomainBaseAbilitySeparatist = Helpers.CreateBlueprint<BlueprintAbility>("RiversDomainBaseAbilitySeparatist", bp => {
+                bp.SetName("Current Flow");
+                bp.SetDescription("As a free action, you can increase your speed by 10 feet. Gain a bonus on Mobility checks equal to your 1/2 your cleric level " +
+                    "(minimum 1). These effects last for a number of rounds equal to your Wisdom modifier (minimum 1). You can use this ability a number of times " +
+                    "per day equal to 3 + your Wisdom modifier.");
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = RiversDomainBaseResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = RiversDomainBaseBuffSeparatist.ToReference<BlueprintBuffReference>(),
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Rank,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                m_IsExtendable = true
+                            },
+                            DurationSeconds = 0
+                        });
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.StatBonus;
+                    c.m_Stat = StatType.Wisdom;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.DelayedStartPlusDivStep;
+                    c.m_StartLevel = 2;
+                    c.m_StepLevel = 1;
+                    c.m_UseMin = true;
+                    c.m_Min = 1;
+                });
+                bp.m_Icon = Icon_RiversDomainBaseAbility;
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.EffectOnAlly = AbilityEffectOnUnit.Helpful;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Extend | Metamagic.Heighten | Metamagic.Selective | Metamagic.Bolstered;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+
+            var RiversDomainBaseFeatureSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("RiversDomainBaseFeatureSeparatist", bp => {
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { RiversDomainBaseAbilitySeparatist.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = RiversDomainBaseResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.AddComponent<ReplaceAbilitiesStat>(c => {
+                    c.m_Ability = new BlueprintAbilityReference[] { RiversDomainBaseAbilitySeparatist.ToReference<BlueprintAbilityReference>() };
+                    c.Stat = StatType.Wisdom;
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = RiversDomainSpellListFeature.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.SetName("Rivers Subdomain");
+                bp.SetDescription("\nFreshwater rivers and streams are the lifeblood of both the land and your life.\nCurrent Flow: As a free action, you can increase your speed by 10 feet. " +
+                    "Gain a bonus on Mobility checks equal to your 1/2 your cleric level (minimum 1). These effects last for a number of rounds equal to your Wisdom modifier (minimum 1). You can " +
+                    "use this ability a number of times per day equal to 3 + your Wisdom modifier.\nCold Resistance: At 6th level, you gain resist cold 10. This resistance increases to 20 at 12th " +
+                    "level. At 20th level, you gain immunity to cold.");
+                bp.IsClassFeature = true;
+            });
+
+            var RiversDomainProgressionSeparatist = Helpers.CreateBlueprint<BlueprintProgression>("RiversDomainProgressionSeparatist", bp => {
+                bp.AddComponent<PrerequisiteFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = RiversDomainAllowedSeparatist.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = RiversDomainProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = RiversDomainAllowed.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = RiversDomainProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = RiversDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.SetName("Rivers Subdomain");
+                bp.SetDescription("\nFreshwater rivers and streams are the lifeblood of both the land and your life.\nCurrent Flow: As a free action, you can increase your speed by 10 feet. " +
+                    "Gain a bonus on Mobility checks equal to your 1/2 your cleric level (minimum 1). These effects last for a number of rounds equal to your Wisdom modifier (minimum 1). You can " +
+                    "use this ability a number of times per day equal to 3 + your Wisdom modifier.\nCold Resistance: At 6th level, you gain resist cold 10. This resistance increases to 20 at 12th " +
+                    "level. At 20th level, you gain immunity to cold.\nDomain {g|Encyclopedia:Spell}Spells{/g}: hydraulic push, slipstream, stinking cloud, freedom of movement, elemental body IV " +
+                    "(water), cone of cold, elemental body IV (water), horrid wilting, tsunami.");
+                bp.Groups = new FeatureGroup[] { FeatureGroup.SeparatistSecondaryDomain };
+                bp.IsClassFeature = true;
+                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    }
+                };
+                bp.LevelEntries = new LevelEntry[] {
+                    Helpers.LevelEntry(1, RiversDomainBaseFeatureSeparatist),
+                    Helpers.LevelEntry(8, WaterDomainGreaterFeature),
+                    Helpers.LevelEntry(14, WaterDomainGreaterFeature),
+                };
+                bp.UIGroups = new UIGroup[] {
+                    Helpers.CreateUIGroup(RiversDomainBaseFeatureSeparatist, WaterDomainGreaterFeature, WaterDomainGreaterFeature)
+                };
+                bp.GiveFeaturesForPreviousLevels = true;
+            });
+
+            RiversDomainAllowed.IsPrerequisiteFor = new List<BlueprintFeatureReference>() {
                 RiversDomainProgression.ToReference<BlueprintFeatureReference>(),
                 RiversDomainProgressionSecondary.ToReference<BlueprintFeatureReference>()
             };
             RiversDomainProgression.AddComponent<PrerequisiteNoFeature>(c => {
-                    c.Group = Prerequisite.GroupType.All;
-                    c.HideInUI = true;
-                    c.m_Feature = RiversDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
-            }); 
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = RiversDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+            });
+            RiversDomainProgression.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = RiversDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
             RiversDomainProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
-                    c.Group = Prerequisite.GroupType.All;
-                    c.HideInUI = true;
-                    c.m_Feature = RiversDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
-            });            
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = RiversDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+            });
+            RiversDomainProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = RiversDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
+            RiversDomainProgressionSeparatist.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = RiversDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
             if (ModSettings.AddedContent.Domains.IsDisabled("Rivers Subdomain")) { return; }
             DomainTools.RegisterDomain(RiversDomainProgression);
             DomainTools.RegisterSecondaryDomain(RiversDomainProgressionSecondary);
@@ -459,6 +666,8 @@ namespace ExpandedContent.Tweaks.Domains {
             DomainTools.RegisterTempleDomain(RiversDomainProgression);
             DomainTools.RegisterSecondaryTempleDomain(RiversDomainProgressionSecondary);
             DomainTools.RegisterImpossibleSubdomain(RiversDomainProgression, RiversDomainProgressionSecondary);
+            DomainTools.RegisterSeparatistDomain(RiversDomainProgressionSeparatist);
+
         }
     }
 }

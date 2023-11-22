@@ -25,6 +25,8 @@ using Kingmaker.UnitLogic.Mechanics.Components;
 using Kingmaker.Visual.Animation.Kingmaker.Actions;
 using ExpandedContent.Config;
 using Kingmaker.Designers.Mechanics.Buffs;
+using Kingmaker.UnitLogic.Abilities;
+using Kingmaker.UnitLogic.Mechanics.Properties;
 
 namespace ExpandedContent.Tweaks.Domains {
     internal class DefenseDomain {
@@ -43,13 +45,6 @@ namespace ExpandedContent.Tweaks.Domains {
             var ShieldOfFortificationIcon = AssetLoader.LoadInternal("Skills", "Icon_ShieldOfFortification.jpg");
             var MadnessDomainGreaterArea = Resources.GetBlueprint<BlueprintAbilityAreaEffect>("19ee79b1da25ea049ba4fea92c2a4025");
             var ProtectionDomainBaseSelfBuff = Resources.GetBlueprint<BlueprintBuff>("74a4fb45f23705d4db2784d16eb93138");
-
-
-
-
-
-
-
 
 
 
@@ -429,6 +424,149 @@ namespace ExpandedContent.Tweaks.Domains {
                 };
                 bp.GiveFeaturesForPreviousLevels = true;
             });
+
+            //Separatist versions
+            var ProtectionDomainGreaterFeatureSeparatist = Resources.GetBlueprint<BlueprintFeature>("7eb39ba8115a422bb69c702cc20ca58a");
+            var SeparatistAsIsProperty = Resources.GetModBlueprint<BlueprintUnitProperty>("SeparatistAsIsProperty");
+
+
+            var DefenseDomainAllowedSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("DefenseDomainAllowedSeparatist", bp => {
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.IsClassFeature = true;
+            });
+
+            var DefenseDomainBaseAbilitySeparatist = Helpers.CreateBlueprint<BlueprintAbility>("DefenseDomainBaseAbilitySeparatist", bp => {
+                bp.SetName("Deflection Aura");
+                bp.SetDescription("Once each day, you can emit a 30-foot aura for a number of rounds equal to your cleric level. Allies within the aura gain a +2 deflection bonus to AC and combat maneuver defense.");
+                bp.m_Icon = ShieldOfFortificationIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = DefenseDomainBaseBuff.ToReference<BlueprintBuffReference>(),
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = new ContextValue() {
+                                    Value = 0,
+                                    ValueType = ContextValueType.Rank,
+                                    ValueRank = AbilityRankType.Default
+                                },
+                                m_IsExtendable = true
+                            },
+                            DurationSeconds = 0
+                        });
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = DefenseDomainBaseResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.CustomProperty;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_Progression = ContextRankProgression.AsIs;
+                    c.m_CustomProperty = SeparatistAsIsProperty.ToReference<BlueprintUnitPropertyReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.HasFastAnimation = false;
+                bp.ActionType = UnitCommand.CommandType.Standard;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = Helpers.CreateString("DefenseDomainBaseAbilitySeparatist.Duration", "1 round/level");
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+
+            var DefenseDomainBaseFeatureSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("DefenseDomainBaseFeature", bp => {
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { DefenseDomainBaseAbilitySeparatist.ToReference<BlueprintUnitFactReference>(), DefenseDomainBaseClassFeature.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = DefenseDomainBaseResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.AddComponent<ReplaceAbilitiesStat>(c => {
+                    c.m_Ability = new BlueprintAbilityReference[] { DefenseDomainBaseAbilitySeparatist.ToReference<BlueprintAbilityReference>() };
+                    c.Stat = StatType.Wisdom;
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = DefenseDomainSpellListFeature.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.SetName("Defense Subdomain");
+                bp.SetDescription("\nYour faith is your fortitude, inspiring all with the strength to defend aginst any blow. In addition, you receive a +1 resistance {g|Encyclopedia:Bonus}bonus{/g} " +
+                    "on {g|Encyclopedia:Saving_Throw}saving throws{/g}. This bonus increases by 1 for every 5 levels you possess in the class that gave you access to this domain.\nDeflection Aura: " +
+                    "Once each day, you can emit a 30-foot aura for a number of rounds equal to your cleric level. Allies within the aura gain a +2 deflection bonus to AC and combat maneuver defense." +
+                    "\nAura of Protection: At 8th level, you can emit a 30-foot aura of protection for a number of {g|Encyclopedia:Combat_Round}rounds{/g} per day equal to your level in the class " +
+                    "that gave you access to this domain. You and your allies within this aura gain a +1 deflection bonus to {g|Encyclopedia:Armor_Class}AC{/g} and resistance 5 against all elements " +
+                    "(acid, cold, electricity, fire, and sonic). The deflection bonus increases by +1 for every four levels you possess in the class that gave you access to this domain beyond 8th. " +
+                    "At 14th level, the resistance against all elements increases to 10. These rounds do not need to be consecutive.");
+                bp.IsClassFeature = true;
+            });
+
+            var DefenseDomainProgressionSeparatist = Helpers.CreateBlueprint<BlueprintProgression>("DefenseDomainProgressionSeparatist", bp => {
+                bp.AddComponent<PrerequisiteFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = DefenseDomainAllowedSeparatist.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = DefenseDomainProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = DefenseDomainAllowed.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = DefenseDomainProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = DefenseDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.SetName("Defense Subdomain");
+                bp.SetDescription("\nYour faith is your fortitude, inspiring all with the strength to defend aginst any blow. In addition, you receive a +1 resistance {g|Encyclopedia:Bonus}bonus{/g} " +
+                    "on {g|Encyclopedia:Saving_Throw}saving throws{/g}. This bonus increases by 1 for every 5 levels you possess in the class that gave you access to this domain.\nDeflection Aura: " +
+                    "Once each day, you can emit a 30-foot aura for a number of rounds equal to your cleric level. Allies within the aura gain a +2 deflection bonus to AC and combat maneuver defense." +
+                    "\nAura of Protection: At 8th level, you can emit a 30-foot aura of protection for a number of {g|Encyclopedia:Combat_Round}rounds{/g} per day equal to your level in the class " +
+                    "that gave you access to this domain. You and your allies within this aura gain a +1 deflection bonus to {g|Encyclopedia:Armor_Class}AC{/g} and resistance 5 against all elements " +
+                    "(acid, cold, electricity, fire, and sonic). The deflection bonus increases by +1 for every four levels you possess in the class that gave you access to this domain beyond 8th. " +
+                    "At 14th level, the resistance against all elements increases to 10. These rounds do not need to be consecutive.\nDomain {g|Encyclopedia:Spell}Spells{/g}: shield, " +
+                    "barkskin, protection from energy, communal protection from energy, {g|Encyclopedia:Spell_Resistance}spell resistance{/g}, communal stoneskin, " +
+                    "particulate form, protection from spells, seamantle.");
+                bp.Groups = new FeatureGroup[] { FeatureGroup.SeparatistSecondaryDomain };
+                bp.IsClassFeature = true;
+                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    }
+                };
+                bp.m_Archetypes = new BlueprintProgression.ArchetypeWithLevel[] {  };
+                bp.LevelEntries = new LevelEntry[] {
+                    Helpers.LevelEntry(1, DefenseDomainBaseFeatureSeparatist),
+                    Helpers.LevelEntry(10, ProtectionDomainGreaterFeatureSeparatist)
+                };
+                bp.UIGroups = new UIGroup[] {
+                    Helpers.CreateUIGroup(DefenseDomainBaseFeatureSeparatist, ProtectionDomainGreaterFeatureSeparatist)
+                };
+                bp.GiveFeaturesForPreviousLevels = true;
+            });
+
             DefenseDomainAllowed.IsPrerequisiteFor = new List<BlueprintFeatureReference>() {
                 DefenseDomainProgression.ToReference<BlueprintFeatureReference>(),
                 DefenseDomainProgressionSecondary.ToReference<BlueprintFeatureReference>()
@@ -438,13 +576,29 @@ namespace ExpandedContent.Tweaks.Domains {
                 c.HideInUI = true;
                 c.m_Feature = DefenseDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
             });
+            DefenseDomainProgression.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = DefenseDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
             DefenseDomainProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
                 c.Group = Prerequisite.GroupType.All;
                 c.HideInUI = true;
                 c.m_Feature = DefenseDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
             });
+            DefenseDomainProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = DefenseDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
+            DefenseDomainProgressionSeparatist.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = DefenseDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
             var DomainMastery = Resources.GetBlueprint<BlueprintFeature>("2de64f6a1f2baee4f9b7e52e3f046ec5").GetComponent<AutoMetamagic>();
             DomainMastery.Abilities.Add(DefenseDomainBaseAbility.ToReference<BlueprintAbilityReference>());
+            DomainMastery.Abilities.Add(DefenseDomainBaseAbilitySeparatist.ToReference<BlueprintAbilityReference>());
             if (ModSettings.AddedContent.Domains.IsDisabled("Defense Subdomain")) { return; }
             DomainTools.RegisterDomain(DefenseDomainProgression);
             DomainTools.RegisterSecondaryDomain(DefenseDomainProgressionSecondary);
@@ -452,6 +606,8 @@ namespace ExpandedContent.Tweaks.Domains {
             DomainTools.RegisterTempleDomain(DefenseDomainProgression);
             DomainTools.RegisterSecondaryTempleDomain(DefenseDomainProgressionSecondary);
             DomainTools.RegisterImpossibleSubdomain(DefenseDomainProgression, DefenseDomainProgressionSecondary);
+            DomainTools.RegisterSeparatistDomain(DefenseDomainProgressionSeparatist);
+
         }
     }
 }

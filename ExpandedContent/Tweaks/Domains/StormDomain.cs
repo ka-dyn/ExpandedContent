@@ -16,6 +16,7 @@ using Kingmaker.UnitLogic;
 using Kingmaker.Utility;
 using Kingmaker.ResourceLinks;
 using ExpandedContent.Config;
+using Kingmaker.UnitLogic.Mechanics.Properties;
 
 namespace ExpandedContent.Tweaks.Domains {
     internal class StormDomain {
@@ -415,23 +416,196 @@ namespace ExpandedContent.Tweaks.Domains {
                 };
                 bp.GiveFeaturesForPreviousLevels = true;
             });
-            StormDomainAllowed.IsPrerequisiteFor = new List<BlueprintFeatureReference>() { 
-                WeatherBlessingFeature.ToReference<BlueprintFeatureReference>(),
+
+            //Separatist versions
+            var WeatherDomainBaseAbilitySeparatist = Resources.GetBlueprint<BlueprintAbility>("deea159d0ab8445fa8f9098f73ef348c");
+            var WeatherDomainBaseResourceSeparatist = Resources.GetBlueprint<BlueprintAbilityResource>("4df120899535443e977d50f35717be09");
+            var SeparatistAsIsProperty = Resources.GetModBlueprint<BlueprintUnitProperty>("SeparatistAsIsProperty");
+
+
+            var StormDomainAllowedSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("StormDomainAllowedSeparatist", bp => {
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.IsClassFeature = true;
+            });
+
+            var StormDomainGreaterResourceSeparatist = Helpers.CreateBlueprint<BlueprintAbilityResource>("StormDomainGreaterResourceSeparatist", bp => {
+                bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
+                    BaseValue = 0,
+                    IncreasedByLevelStartPlusDivStep = true,
+                    m_ClassDiv = new BlueprintCharacterClassReference[] {
+                        ClericClass.ToReference<BlueprintCharacterClassReference>(),
+                        InquisitorClass.ToReference<BlueprintCharacterClassReference>(),
+                        DruidClass.ToReference<BlueprintCharacterClassReference>(),
+                        HunterClass.ToReference<BlueprintCharacterClassReference>(),
+                        PaladinClass.ToReference<BlueprintCharacterClassReference>(),
+                        StargazerClass.ToReference<BlueprintCharacterClassReference>(),
+                    },
+                    m_ArchetypesDiv = new BlueprintArchetypeReference[] {
+                        DivineHunterArchetype.ToReference<BlueprintArchetypeReference>(),
+                        TempleChampionArchetype.ToReference<BlueprintArchetypeReference>(),
+                    },
+                    LevelIncrease = 1,
+                    StartingLevel = 3,
+                    StartingIncrease = 1,
+                    LevelStep = 1,
+                    PerStepIncrease = 1,
+                };
+                bp.m_Min = 1;
+            });
+
+
+            var StormDomainGreaterAbilitySeparatist = Helpers.CreateBlueprint<BlueprintActivatableAbility>("StormDomainGreaterAbilitySeparatist", bp => {
+                bp.SetName("Gale Aura");
+                bp.SetDescription("At 6th level, as a standard action, you can create a 30-foot aura of gale-like winds that slows the " +
+                    "progress of enemies. Enemies in the aura cannot take a 5-foot step and treat it as as difficult terrain. You can use this ability " +
+                    "for a number of rounds per day equal to your cleric level. The rounds do not need to be consecutive.");
+                bp.m_Icon = GaleAura;
+                bp.m_Buff = StormDomainGreaterBuff.ToReference<BlueprintBuffReference>();
+                bp.AddComponent<ActivatableAbilityResourceLogic>(c => {
+                    c.SpendType = ActivatableAbilityResourceLogic.ResourceSpendType.NewRound;
+                    c.m_RequiredResource = StormDomainGreaterResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                });
+                bp.ActivationType = AbilityActivationType.WithUnitCommand;
+                bp.m_ActivateWithUnitCommand = UnitCommand.CommandType.Standard;
+            });
+
+            var StormDomainGreaterFeatureSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("StormDomainGreaterFeatureSeparatist", bp => {
+                bp.SetName("Gale Aura");
+                bp.SetDescription("At 6th level, as a standard action, you can create a 30-foot aura of gale-like winds that slows the " +
+                    "progress of enemies. Enemies in the aura cannot take a 5-foot step and treat it as as difficult terrain. You can use this ability " +
+                    "for a number of rounds per day equal to your cleric level. The rounds do not need to be consecutive.");
+                bp.m_Icon = GaleAura;
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = StormDomainGreaterResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StormDomainGreaterAbilitySeparatist.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+
+            var StormDomainBaseFeatureSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("StormDomainBaseFeatureSeparatist", bp => {
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { WeatherDomainBaseAbilitySeparatist.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = WeatherDomainBaseResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.AddComponent<ReplaceAbilitiesStat>(c => {
+                    c.m_Ability = new BlueprintAbilityReference[] { WeatherDomainBaseAbilitySeparatist.ToReference<BlueprintAbilityReference>() };
+                    c.Stat = StatType.Wisdom;
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = StormDomainSpellListFeature.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.SetName("Storm Subdomain");
+                bp.SetDescription("\nWith power over storm and sky, you can call down the wrath of the gods upon the world below.\nStorm Burst: As " +
+                "a {g|Encyclopedia:Standard_Actions}standard action{/g}, you can create a storm burst targeting any foe within 30 feet as a ranged " +
+                "{g|Encyclopedia:TouchAttack}touch attack{/g}. The storm burst deals {g|Encyclopedia:Dice}1d6{/g} points of {g|Encyclopedia:Damage}damage{/g} + " +
+                "1 point for every two levels you possess in the class that gave you access to this domain. In addition, the target is buffeted by winds and rain, " +
+                "causing it to take a –2 {g|Encyclopedia:Penalty}penalty{/g} on {g|Encyclopedia:Attack}attack rolls{/g} for 1 {g|Encyclopedia:Combat_Round}round{/g}. " +
+                "You can use this ability a number of times per day equal to 3 + your {g|Encyclopedia:Wisdom}Wisdom{/g} modifier." +
+                "\nGale Aura (Su): At 6th level, as a standard action, you can create a 30-foot aura of gale-like winds that slows the progress of enemies. Creatures " +
+                "in the aura cannot take a 5-foot step and treat it as as difficult terrain. You can use this ability for a number of rounds per " +
+                "day equal to your cleric level. The rounds do not need to be consecutive.");
+                bp.IsClassFeature = true;
+            });
+
+            var StormDomainProgressionSeparatist = Helpers.CreateBlueprint<BlueprintProgression>("StormDomainProgressionSeparatist", bp => {
+                bp.AddComponent<PrerequisiteFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = StormDomainAllowedSeparatist.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = StormDomainProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = StormDomainAllowed.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = StormDomainProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = StormDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.SetName("Storm Subdomain");
+                bp.SetDescription("\nWith power over storm and sky, you can call down the wrath of the gods upon the world below.\nStorm Burst: As " +
+                "a {g|Encyclopedia:Standard_Actions}standard action{/g}, you can create a storm burst targeting any foe within 30 feet as a ranged " +
+                "{g|Encyclopedia:TouchAttack}touch attack{/g}. The storm burst deals {g|Encyclopedia:Dice}1d6{/g} points of {g|Encyclopedia:Damage}damage{/g} + " +
+                "1 point for every two levels you possess in the class that gave you access to this domain. In addition, the target is buffeted by winds and rain, " +
+                "causing it to take a –2 {g|Encyclopedia:Penalty}penalty{/g} on {g|Encyclopedia:Attack}attack rolls{/g} for 1 {g|Encyclopedia:Combat_Round}round{/g}. " +
+                "You can use this ability a number of times per day equal to 3 + your {g|Encyclopedia:Wisdom}Wisdom{/g} modifier." +
+                "\nGale Aura (Su): At 6th level, as a standard action, you can create a 30-foot aura of gale-like winds that slows the progress of enemies. Creatures " +
+                "in the aura cannot take a 5-foot step and treat it as as difficult terrain. You can use this ability for a number of rounds per " +
+                "day equal to your cleric level. The rounds do not need to be consecutive.\nDomain Spells: snowball, summon small elemental, call lightning, slowing mud, " +
+                "call lightning storm, sirocco, sunburst, fire storm, tsunami.");
+                bp.Groups = new FeatureGroup[] { FeatureGroup.SeparatistSecondaryDomain };
+                bp.IsClassFeature = true;
+                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    }
+                };
+                bp.LevelEntries = new LevelEntry[] {
+                    Helpers.LevelEntry(1, StormDomainBaseFeatureSeparatist),
+                    Helpers.LevelEntry(8, StormDomainGreaterFeatureSeparatist)
+                };
+                bp.UIGroups = new UIGroup[] {
+                    Helpers.CreateUIGroup(StormDomainBaseFeatureSeparatist, StormDomainGreaterFeatureSeparatist)
+                };
+                bp.GiveFeaturesForPreviousLevels = true;
+            });
+
+            StormDomainAllowed.IsPrerequisiteFor = new List<BlueprintFeatureReference>() {
                 StormDomainProgression.ToReference<BlueprintFeatureReference>(),
                 StormDomainProgressionSecondary.ToReference<BlueprintFeatureReference>()
             };
             StormDomainProgression.AddComponent<PrerequisiteNoFeature>(c => {
-                    c.Group = Prerequisite.GroupType.All;
-                    c.HideInUI = true;
-                    c.m_Feature = StormDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
-            }); 
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = StormDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+            });
+            StormDomainProgression.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = StormDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
             StormDomainProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
-                    c.Group = Prerequisite.GroupType.All;
-                    c.HideInUI = true;
-                    c.m_Feature = StormDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = StormDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+            });
+            StormDomainProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = StormDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
+            StormDomainProgressionSeparatist.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = StormDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
             });
             var DomainMastery = Resources.GetBlueprint<BlueprintFeature>("2de64f6a1f2baee4f9b7e52e3f046ec5").GetComponent<AutoMetamagic>();
             DomainMastery.Abilities.Add(StormDomainGreaterAbility.ToReference<BlueprintAbilityReference>());
+            DomainMastery.Abilities.Add(StormDomainGreaterAbilitySeparatist.ToReference<BlueprintAbilityReference>());
             if (ModSettings.AddedContent.Domains.IsDisabled("Storm Subdomain")) { return; }
             DomainTools.RegisterDomain(StormDomainProgression);
             DomainTools.RegisterSecondaryDomain(StormDomainProgressionSecondary);
@@ -441,6 +615,8 @@ namespace ExpandedContent.Tweaks.Domains {
             DomainTools.RegisterTempleDomain(StormDomainProgression);
             DomainTools.RegisterSecondaryTempleDomain(StormDomainProgressionSecondary);
             DomainTools.RegisterImpossibleSubdomain(StormDomainProgression, StormDomainProgressionSecondary);
+            DomainTools.RegisterSeparatistDomain(StormDomainProgressionSeparatist);
+
         }
     }
 }

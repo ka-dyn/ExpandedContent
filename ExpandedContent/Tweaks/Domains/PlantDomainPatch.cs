@@ -16,6 +16,8 @@ using Kingmaker.Utility;
 using System.Linq;
 using ExpandedContent.Tweaks.Components;
 using Kingmaker.UnitLogic.Mechanics.Components;
+using Kingmaker.RuleSystem;
+using Kingmaker.UnitLogic.Abilities;
 
 namespace ExpandedContent.Tweaks.Domains {
     internal class PlantDomainPatch {
@@ -38,10 +40,12 @@ namespace ExpandedContent.Tweaks.Domains {
             var PlantDomainProgression = Resources.GetBlueprint<BlueprintProgression>("467d2a1d2107da64395b591393baad17");
             var PlantDomainProgressionSecondary = Resources.GetBlueprint<BlueprintProgression>("22f3a592849c06e4c8869e2132e11597");
             var PlantDomainProgressionDruid = Resources.GetBlueprint<BlueprintProgression>("ee77836d10835fd49a8831adb3a14640");
+            var PlantDomainProgressionSeparatist = Resources.GetBlueprint<BlueprintProgression>("ad7f2170334642fabf6adae5c36e04f4");
             var PlantDomainProgressions = new BlueprintProgression[] { 
                 PlantDomainProgression,
                 PlantDomainProgressionSecondary,
-                PlantDomainProgressionDruid
+                PlantDomainProgressionDruid,
+                PlantDomainProgressionSeparatist
             };
             foreach (var DomainPrgression in PlantDomainProgressions) {
                 DomainPrgression.SetDescription("\nYou find solace in the green, can grow defensive thorns, and can communicate with plants.\nWooden Fist: As a free action, your hands can " +
@@ -68,6 +72,14 @@ namespace ExpandedContent.Tweaks.Domains {
             var PlantDomainNewBaseResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("PlantDomainNewBaseResource", bp => {
                 bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
                     BaseValue = 3,
+                    IncreasedByLevel = false,
+                    IncreasedByStat = true,
+                    ResourceBonusStat = StatType.Wisdom,
+                };
+            });
+            var PlantDomainNewBaseResourceSeparatist = Helpers.CreateBlueprint<BlueprintAbilityResource>("PlantDomainNewBaseResourceSeparatist", bp => {
+                bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
+                    BaseValue = 2,
                     IncreasedByLevel = false,
                     IncreasedByStat = true,
                     ResourceBonusStat = StatType.Wisdom,
@@ -110,6 +122,69 @@ namespace ExpandedContent.Tweaks.Domains {
                     c.m_Min = 1;
                 });
             });
+            var PlantDomainNewBaseBuffSeparatist = Helpers.CreateBuff("PlantDomainNewBaseBuffSeparatist", bp => {
+                bp.SetName("Wooden Fist");
+                bp.SetDescription("As a free action, your hands can become as hard as wood, covered in tiny thorns. While you have wooden fists, your unarmed strikes do not provoke " +
+                    "attacks of opportunity, and gain a bonus on damage rolls equal to 1/2 your cleric level (minimum +1). You can use this ability for a number of rounds per day " +
+                    "equal to 3 + your Wisdom modifier. These rounds do not need to be consecutive.");
+                bp.m_Icon = WoodenFistIcon;
+                bp.AddComponent<AddMechanicsFeature>(c => {
+                    c.m_Feature = AddMechanicsFeature.MechanicsFeatureType.ImprovedUnarmedStrike;
+                });
+                bp.AddComponent<WeaponTypeContextDamageBonus>(c => {
+                    c.Value = new ContextValue() {
+                        ValueType = ContextValueType.Shared,
+                        ValueShared = AbilitySharedValue.Damage,
+                    };
+                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+                    c.Categories = new WeaponCategory[] { WeaponCategory.UnarmedStrike };
+                    c.ExceptForCategories = false;
+                });
+                bp.AddComponent<ContextCalculateSharedValue>(c => {
+                    c.ValueType = AbilitySharedValue.Damage;
+                    c.Value = new ContextDiceValue() {
+                        DiceType = DiceType.One,
+                        DiceCountValue = new ContextValue() {
+                            ValueType = ContextValueType.Rank,
+                            Value = 0,
+                            ValueRank = AbilityRankType.DamageDice
+                        },
+                        BonusValue = new ContextValue() {
+                            ValueType = ContextValueType.Rank,
+                            Value = 0,
+                            ValueRank = AbilityRankType.Default
+                        }
+                    };
+                    c.Modifier = 1;
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.SummClassLevelWithArchetype;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_Progression = ContextRankProgression.Div2;
+                    c.Archetype = DivineHunterArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.m_AdditionalArchetypes = new BlueprintArchetypeReference[] { TempleChampionArchetype.ToReference<BlueprintArchetypeReference>() };
+                    c.m_Class = new BlueprintCharacterClassReference[] {
+                        InquisitorClass.ToReference<BlueprintCharacterClassReference>(),
+                        HunterClass.ToReference<BlueprintCharacterClassReference>(),
+                        PaladinClass.ToReference<BlueprintCharacterClassReference>(),
+                        StargazerClass.ToReference<BlueprintCharacterClassReference>(),
+                    };
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.DamageDice;
+                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_Progression = ContextRankProgression.DelayedStartPlusDivStep;
+                    c.m_Class = new BlueprintCharacterClassReference[] {
+                        ClericClass.ToReference<BlueprintCharacterClassReference>()
+                    };
+                    c.m_StartLevel = 4;
+                    c.m_StepLevel = 2;
+                    c.m_UseMin = true;
+                    c.m_Min = 1;
+                });
+            });
 
 
             var PlantDomainNewBaseAbility = Helpers.CreateBlueprint<BlueprintActivatableAbility>("PlantDomainNewBaseAbility", bp => {
@@ -128,7 +203,23 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.DeactivateIfOwnerDisabled = true;
                 bp.ActivationType = AbilityActivationType.Immediately;
                 bp.m_ActivateWithUnitCommand = UnitCommand.CommandType.Free;
-                bp.DeactivateIfCombatEnded = false;
+            });
+            var PlantDomainNewBaseAbilitySeparatist = Helpers.CreateBlueprint<BlueprintActivatableAbility>("PlantDomainNewBaseAbilitySeparatist", bp => {
+                bp.SetName("Wooden Fist");
+                bp.SetDescription("As a free action, your hands can become as hard as wood, covered in tiny thorns. While you have wooden fists, your unarmed strikes do not provoke " +
+                    "attacks of opportunity, and gain a bonus on damage rolls equal to 1/2 your cleric level (minimum +1). You can use this ability for a number of rounds per day " +
+                    "equal to 3 + your Wisdom modifier. These rounds do not need to be consecutive.");
+                bp.m_Icon = WoodenFistIcon;
+                bp.AddComponent<ActivatableAbilityResourceLogic>(c => {
+                    c.SpendType = ActivatableAbilityResourceLogic.ResourceSpendType.NewRound;
+                    c.m_RequiredResource = PlantDomainNewBaseResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                });
+                bp.m_Buff = PlantDomainNewBaseBuffSeparatist.ToReference<BlueprintBuffReference>();
+                bp.IsOnByDefault = false;
+                bp.DeactivateIfCombatEnded = true;
+                bp.DeactivateIfOwnerDisabled = true;
+                bp.ActivationType = AbilityActivationType.Immediately;
+                bp.m_ActivateWithUnitCommand = UnitCommand.CommandType.Free;
             });
             var PlantDomainBaseFeature = Resources.GetBlueprint<BlueprintFeature>("e433267d36089d049b34900fde38032b");
             PlantDomainBaseFeature.m_Icon = WoodenFistIcon;
@@ -153,6 +244,32 @@ namespace ExpandedContent.Tweaks.Domains {
             });
             PlantDomainBaseFeature.AddComponent<ReplaceAbilitiesStat>(c => {
                 c.m_Ability = new BlueprintAbilityReference[] { PlantDomainNewBaseAbility.ToReference<BlueprintAbilityReference>() };
+                c.Stat = StatType.Wisdom;
+            });
+
+            var PlantDomainBaseFeatureSeparatist = Resources.GetBlueprint<BlueprintFeature>("7c61c1b3ab5a41b6b24b7fcce0810a9d");
+            PlantDomainBaseFeatureSeparatist.m_Icon = WoodenFistIcon;
+            PlantDomainBaseFeatureSeparatist.SetDescription("You find solace in the green, can grow defensive thorns, and can communicate with plants.\nWooden Fist: As a free action, your hands can " +
+                    "become as hard as wood, covered in tiny thorns. While you have wooden fists, your unarmed strikes do not provoke attacks of opportunity, and gain a bonus on damage rolls " +
+                    "equal to 1/2 your cleric level (minimum +1). You can use this ability for a number of rounds per day equal to 3 + your Wisdom modifier. These rounds do not need to be " +
+                    "consecutive.\nBramble Armor: At 6th level, you can cause a host of wooden thorns to burst from your skin as a {g|Encyclopedia:Free_Action}free action{/g}. While bramble " +
+                    "armor is in effect, any foe striking you with a melee weapon without {g|Encyclopedia:Reach}reach{/g} takes {g|Encyclopedia:Dice}1d6{/g} points of " +
+                    "{g|Encyclopedia:Damage_Type}piercing damage{/g} + 1 point per two levels you possess in the class that gave you access to this domain. You can use this ability for a " +
+                    "number of rounds per day equal to your level in the class that gave you access to this domain. These rounds do not need to be consecutive.");
+            PlantDomainBaseFeatureSeparatist.RemoveComponents<AddFacts>();
+            PlantDomainBaseFeatureSeparatist.RemoveComponents<AddAbilityResources>();
+            PlantDomainBaseFeatureSeparatist.RemoveComponents<ReplaceAbilitiesStat>();
+            PlantDomainBaseFeatureSeparatist.AddComponent<AddFacts>(c => {
+                c.m_Facts = new BlueprintUnitFactReference[] {
+                    PlantDomainNewBaseAbilitySeparatist.ToReference<BlueprintUnitFactReference>()
+                };
+            });
+            PlantDomainBaseFeatureSeparatist.AddComponent<AddAbilityResources>(c => {
+                c.m_Resource = PlantDomainNewBaseResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                c.RestoreAmount = true;
+            });
+            PlantDomainBaseFeatureSeparatist.AddComponent<ReplaceAbilitiesStat>(c => {
+                c.m_Ability = new BlueprintAbilityReference[] { PlantDomainNewBaseAbilitySeparatist.ToReference<BlueprintAbilityReference>() };
                 c.Stat = StatType.Wisdom;
             });
         }

@@ -12,10 +12,7 @@ namespace ExpandedContent.Tweaks.Deities {
     internal class PatchPulura {
 
 
-        private static readonly BlueprintFeature GoodDomainAllowed = Resources.GetBlueprint<BlueprintFeature>("882521af8012fc749930b03dc18a69de");
-        private static readonly BlueprintFeature StarsDomainAllowed = Resources.GetModBlueprint<BlueprintFeature>("StarsDomainAllowed");
         private static readonly BlueprintCharacterClass InquistorClass = Resources.GetBlueprint<BlueprintCharacterClass>("f1a70d9e1b0b41e49874e1fa9052a1ce");
-        private static readonly BlueprintCharacterClass RangerClass = Resources.GetBlueprint<BlueprintCharacterClass>("cda0615668a6df14eb36ba19ee881af6");
 
 
 
@@ -23,7 +20,6 @@ namespace ExpandedContent.Tweaks.Deities {
 
                     var PuluraIcon = AssetLoader.LoadInternal("Deities", "Icon_Pulura.jpg");
             BlueprintArchetype SwornOfTheEldestArchetype = Resources.GetModBlueprint<BlueprintArchetype>("SwornOfTheEldestArchetype");
-            BlueprintArchetype DivineTrackerArchetype = Resources.GetModBlueprint<BlueprintArchetype>("DivineTrackerArchetype");
 
 
             var PuluraFeature = Resources.GetBlueprint<BlueprintFeature>("ebb0b46f95dbac74681c78aae895dbd0");
@@ -49,30 +45,42 @@ namespace ExpandedContent.Tweaks.Deities {
                             "any mortals who dare approach her too closely. She wields a sling made from sighs that fires bullets of starlight.");
 
 
-            PuluraFeature.AddComponent<PrerequisiteNoArchetype>(c => {
-                c.HideInUI = true;
-                c.m_CharacterClass = InquistorClass.ToReference<BlueprintCharacterClassReference>();
-                c.m_Archetype = SwornOfTheEldestArchetype.ToReference<BlueprintArchetypeReference>();
-            });
-
-
-
+            PuluraFeature.SetDisallowedArchetype(InquistorClass, SwornOfTheEldestArchetype);
             PuluraFeature.RemoveComponents<PrerequisiteAlignment>();
-
-
             PuluraFeature.AddComponent<PrerequisiteAlignment>(c => {
                 c.Alignment = AlignmentMaskType.NeutralGood | AlignmentMaskType.ChaoticGood | AlignmentMaskType.ChaoticNeutral;
             });
-
-            PuluraFeature.AddComponent<AddFacts>(bp => {                        
-                bp.m_Facts = new BlueprintUnitFactReference[] { GoodDomainAllowed.ToReference<BlueprintUnitFactReference>() };                    
-            });
-            PuluraFeature.AddComponent<AddFacts>(bp => {
-                bp.m_Facts = new BlueprintUnitFactReference[1] { StarsDomainAllowed.ToReference<BlueprintUnitFactReference>() };
-            });
-            PuluraFeature.m_Icon = PuluraIcon;
-
-            
+            PuluraFeature.SetAllowedDomains(
+                    DeityTools.DomainAllowed.StarsDomainAllowed,
+                    DeityTools.SeparatistDomainAllowed.AgathionDomainAllowedSeparatist,//Good
+                    DeityTools.SeparatistDomainAllowed.ArchonDomainGoodAllowedSeparatist,//Good
+                    DeityTools.SeparatistDomainAllowed.BloodDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.CavesDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.CurseDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.DefenseDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.DemonDomainChaosAllowedSeparatist,//Chaos
+                    DeityTools.SeparatistDomainAllowed.DragonDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.FerocityDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.FistDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.FurDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.GrowthDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.HeroismDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.LustDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.PsychopompDomainDeathAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.PsychopompDomainReposeAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.RageDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.ResolveDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.RestorationDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.RevelationDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.RevolutionDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.RiversDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.ScalykindDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.StormDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.ThieveryDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.WhimsyDomainAllowedSeparatist,//Chaos
+                    DeityTools.SeparatistDomainAllowed.WindDomainAllowedSeparatist
+                );
+            PuluraFeature.m_Icon = PuluraIcon;            
 
             PuluraFeature.RemoveComponents<PrerequisiteNoFeature>();
             var EmpyrealLordSelection = Resources.GetModBlueprint<BlueprintFeatureSelection>("EmpyrealLordSelection");
