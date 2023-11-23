@@ -106,7 +106,8 @@ namespace ExpandedContent.Tweaks.Domains {
                     new SpellLevelList(9) {
                         SpellLevel = 9,
                         m_Spells = new List<BlueprintAbilityReference>() {
-                            PolarMidnightSpell.ToReference<BlueprintAbilityReference>()
+                            PolarMidnightSpell.ToReference<BlueprintAbilityReference>(),
+                            MeteorSwarmSpell.ToReference<BlueprintAbilityReference>()
                         }
                     },
                 };
