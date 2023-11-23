@@ -18,7 +18,7 @@ namespace ExpandedContent.Tweaks.Deities {
 
             GroetusFeature.SetDisallowedArchetype(DreadKnightClass, ClawOfTheFalseWyrmArchetype);
             GroetusFeature.SetDisallowedArchetype(InquistorClass, SwornOfTheEldestArchetype);
-            
+            GroetusFeature.DisallowDarkSister();
             GroetusFeature.SetAllowedDomains(
                     DeityTools.DomainAllowed.StarsDomainAllowed,
                     DeityTools.SeparatistDomainAllowed.AgathionDomainAllowedSeparatist,//Good

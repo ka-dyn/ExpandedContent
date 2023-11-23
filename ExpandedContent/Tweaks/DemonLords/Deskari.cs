@@ -30,7 +30,9 @@ namespace ExpandedContent.Tweaks.DemonLords {
             DeskariFeature.SetDisallowedArchetype(PaladinClass, SilverChampionArchetype);
             DeskariFeature.SetDisallowedArchetype(DreadKnightClass, ClawOfTheFalseWyrmArchetype);
             DeskariFeature.SetDisallowedArchetype(InquistorClass, SwornOfTheEldestArchetype);
-            
+            DeskariFeature.DisallowAngelfireApostle();
+            DeskariFeature.DisallowDarkSister();
+
             DeskariFeature.SetAllowedDomains(
                     DeityTools.DomainAllowed.BloodDomainAllowed,
                     DeityTools.DomainAllowed.DemonDomainChaosAllowed,

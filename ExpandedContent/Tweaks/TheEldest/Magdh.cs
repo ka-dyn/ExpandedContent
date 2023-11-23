@@ -65,6 +65,9 @@ namespace ExpandedContent.Tweaks.TheEldest {
                 bp.SetDisallowedArchetype(WarpriestClass, MantisZealotArchetype);
                 bp.SetDisallowedArchetype(PaladinClass, SilverChampionArchetype);
                 bp.SetDisallowedArchetype(DreadKnightClass, ClawOfTheFalseWyrmArchetype);
+                bp.DisallowAngelfireApostle();
+                bp.DisallowDarkSister();
+                bp.DisallowProphetOfPestilence();
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
                 bp.AddComponent<PrerequisiteAlignment>(c => {
                     c.Alignment = AlignmentMaskType.LawfulGood | AlignmentMaskType.LawfulNeutral | AlignmentMaskType.TrueNeutral | AlignmentMaskType.LawfulEvil;

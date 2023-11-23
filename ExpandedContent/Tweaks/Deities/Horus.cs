@@ -72,6 +72,9 @@ namespace ExpandedContent.Tweaks.Deities {
                 bp.SetDisallowedArchetype(PaladinClass, SilverChampionArchetype);
                 bp.SetDisallowedArchetype(DreadKnightClass, ClawOfTheFalseWyrmArchetype);
                 bp.SetDisallowedArchetype(InquistorClass, SwornOfTheEldestArchetype);
+                bp.DisallowAngelfireApostle();
+                bp.DisallowDarkSister();
+                bp.DisallowProphetOfPestilence();
                 bp.AddComponent<PrerequisiteAlignment>(c => {
                     c.Alignment = AlignmentMaskType.LawfulGood | AlignmentMaskType.LawfulNeutral | AlignmentMaskType.TrueNeutral | AlignmentMaskType.LawfulEvil;
                 });

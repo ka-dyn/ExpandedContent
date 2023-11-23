@@ -63,6 +63,9 @@ namespace ExpandedContent.Tweaks.DemonLords {
                 bp.SetDisallowedArchetype(ClericClass, PriestOfBalance);
                 bp.SetDisallowedArchetype(DreadKnightClass, ClawOfTheFalseWyrmArchetype);
                 bp.SetDisallowedArchetype(InquistorClass, SwornOfTheEldestArchetype);
+                bp.DisallowAngelfireApostle();
+                bp.DisallowDarkSister();
+
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
                 bp.AddComponent<PrerequisiteAlignment>(c => {
                     c.Alignment = AlignmentMaskType.ChaoticNeutral | AlignmentMaskType.NeutralEvil | AlignmentMaskType.ChaoticEvil;

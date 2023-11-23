@@ -60,6 +60,9 @@ namespace ExpandedContent.Tweaks.Deities {
                 bp.SetDisallowedArchetype(ClericClass, PriestOfBalance);
                 bp.SetDisallowedArchetype(WarpriestClass, FeralChampionArchetype);
                 bp.SetDisallowedArchetype(InquistorClass, SwornOfTheEldestArchetype);
+                bp.DisallowAngelfireApostle();
+                bp.DisallowDarkSister();
+
 
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
                 bp.AddComponent<PrerequisiteAlignment>(c => {

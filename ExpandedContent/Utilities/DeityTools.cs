@@ -8,6 +8,7 @@ using Kingmaker.UnitLogic.FactLogic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -167,6 +168,33 @@ namespace ExpandedContent.Utilities {
                 c.HideInUI = true;
                 c.m_CharacterClass = characterClass.ToReference<BlueprintCharacterClassReference>();
                 c.m_Archetype = archetype.ToReference<BlueprintArchetypeReference>();
+            });
+        }
+        public static void DisallowAngelfireApostle(this BlueprintFeature deity) {
+            BlueprintCharacterClassReference ClericClass = Resources.GetBlueprintReference<BlueprintCharacterClassReference>("67819271767a9dd4fbfd4ae700befea0");
+            BlueprintArchetypeReference AngelfireApostleArchetype = Resources.GetBlueprintReference<BlueprintArchetypeReference>("857bc9fadf70f294795a9cba974a48b8");
+            deity.AddComponent<PrerequisiteNoArchetype>(c => {
+                c.HideInUI = true;
+                c.m_CharacterClass = ClericClass;
+                c.m_Archetype = AngelfireApostleArchetype;
+            });
+        }
+        public static void DisallowDarkSister(this BlueprintFeature deity) {
+            BlueprintCharacterClassReference WitchClass = Resources.GetBlueprintReference<BlueprintCharacterClassReference>("1b9873f1e7bfe5449bc84d03e9c8e3cc");
+            BlueprintArchetypeReference DarkSisterArchetype = Resources.GetBlueprintReference<BlueprintArchetypeReference>("411fa458481e44f0855d47a19358874b");
+            deity.AddComponent<PrerequisiteNoArchetype>(c => {
+                c.HideInUI = true;
+                c.m_CharacterClass = WitchClass;
+                c.m_Archetype = DarkSisterArchetype;
+            });
+        }
+        public static void DisallowProphetOfPestilence(this BlueprintFeature deity) {
+            BlueprintCharacterClassReference ShamanClass = Resources.GetBlueprintReference<BlueprintCharacterClassReference>("145f1d3d360a7ad48bd95d392c81b38e");
+            BlueprintArchetypeReference ProphetOfPestilenceArchetype = Resources.GetBlueprintReference<BlueprintArchetypeReference>("bcd758a75fb54651a7f668fe2661a307");
+            deity.AddComponent<PrerequisiteNoArchetype>(c => {
+                c.HideInUI = true;
+                c.m_CharacterClass = ShamanClass;
+                c.m_Archetype = ProphetOfPestilenceArchetype;
             });
         }
     }

@@ -59,6 +59,9 @@ namespace ExpandedContent.Tweaks.Deities {
                 bp.SetDisallowedArchetype(WarpriestClass, FeralChampionArchetype);
                 bp.SetDisallowedArchetype(DreadKnightClass, ClawOfTheFalseWyrmArchetype);
                 bp.SetDisallowedArchetype(InquistorClass, SwornOfTheEldestArchetype);
+                bp.DisallowAngelfireApostle();
+                bp.DisallowDarkSister();
+
 
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] {

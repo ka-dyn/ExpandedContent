@@ -60,6 +60,9 @@ namespace ExpandedContent.Tweaks.TheEldest {
                 bp.HideInCharacterSheetAndLevelUp = false;
                 bp.SetDisallowedArchetype(WarpriestClass, FeralChampionArchetype);
                 bp.SetDisallowedArchetype(DreadKnightClass, ClawOfTheFalseWyrmArchetype);
+                bp.DisallowAngelfireApostle();
+                bp.DisallowDarkSister();
+
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
                 bp.AddComponent<PrerequisiteAlignment>(c => {
                     c.Alignment = AlignmentMaskType.NeutralGood | AlignmentMaskType.LawfulNeutral | AlignmentMaskType.TrueNeutral | AlignmentMaskType.ChaoticNeutral | AlignmentMaskType.NeutralEvil;

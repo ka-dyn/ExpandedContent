@@ -26,7 +26,9 @@ namespace ExpandedContent.Tweaks.DemonLords {
             AreshkegalFeature.RemoveComponents<PrerequisiteNoFeature>();
             AreshkegalFeature.SetDisallowedArchetype(DreadKnightClass, ClawOfTheFalseWyrmArchetype);
             AreshkegalFeature.SetDisallowedArchetype(InquistorClass, SwornOfTheEldestArchetype);
-            
+            AreshkegalFeature.DisallowAngelfireApostle();
+            AreshkegalFeature.DisallowDarkSister();
+
             AreshkegalFeature.SetAllowedDomains(
                     DeityTools.DomainAllowed.DemonDomainChaosAllowed,
                     DeityTools.DomainAllowed.DemonDomainEvilAllowed,

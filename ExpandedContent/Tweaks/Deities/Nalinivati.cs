@@ -58,6 +58,9 @@ namespace ExpandedContent.Tweaks.Deities {
                 bp.HideInCharacterSheetAndLevelUp = false;
                 bp.SetDisallowedArchetype(DreadKnightClass, ClawOfTheFalseWyrmArchetype);
                 bp.SetDisallowedArchetype(InquistorClass, SwornOfTheEldestArchetype);
+                bp.DisallowAngelfireApostle();
+                bp.DisallowDarkSister();
+
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
                 bp.AddComponent<PrerequisiteAlignment>(c => {
                     c.Alignment = AlignmentMaskType.NeutralGood | AlignmentMaskType.LawfulNeutral | AlignmentMaskType.TrueNeutral | AlignmentMaskType.ChaoticNeutral | AlignmentMaskType.NeutralEvil;

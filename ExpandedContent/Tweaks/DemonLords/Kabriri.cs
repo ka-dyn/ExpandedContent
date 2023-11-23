@@ -25,7 +25,9 @@ namespace ExpandedContent.Tweaks.DemonLords {
                     KabririFeature.RemoveComponents<PrerequisiteNoFeature>();
             KabririFeature.SetDisallowedArchetype(DreadKnightClass, ClawOfTheFalseWyrmArchetype);
             KabririFeature.SetDisallowedArchetype(InquistorClass, SwornOfTheEldestArchetype);
-            
+            KabririFeature.DisallowAngelfireApostle();
+            KabririFeature.DisallowDarkSister();
+
             KabririFeature.SetAllowedDomains(
                     DeityTools.DomainAllowed.DemonDomainEvilAllowed,
                     DeityTools.DomainAllowed.DemonDomainChaosAllowed,

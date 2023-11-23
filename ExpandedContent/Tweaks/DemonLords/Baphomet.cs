@@ -27,6 +27,8 @@ namespace ExpandedContent.Tweaks.DemonLords {
             BaphometFeature.RemoveComponents<PrerequisiteNoFeature>();
             BaphometFeature.SetDisallowedArchetype(DreadKnightClass, ClawOfTheFalseWyrmArchetype);
             BaphometFeature.SetDisallowedArchetype(InquistorClass, SwornOfTheEldestArchetype);
+            BaphometFeature.DisallowAngelfireApostle();
+            BaphometFeature.DisallowDarkSister();
 
             BaphometFeature.SetAllowedDomains(
                     DeityTools.DomainAllowed.DemonDomainEvilAllowed,
