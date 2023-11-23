@@ -48,6 +48,7 @@ namespace ExpandedContent.Tweaks.Domains {
             var SunbeamSpell = Resources.GetBlueprint<BlueprintAbility>("1fca0ba2fdfe2994a8c8bc1f0f2fc5b1");
             var SunburstSpell = Resources.GetBlueprint<BlueprintAbility>("e96424f70ff884947b06f41a765b7658");
             var PolarMidnightSpell = Resources.GetBlueprint<BlueprintAbility>("ba48abb52b142164eba309fd09898856");
+            var MeteorSwarmSpell = Resources.GetBlueprint<BlueprintAbility>("5e36df08c71748f7936bce310181fb71");
             var StarsDomainSpellList = Helpers.CreateBlueprint<BlueprintSpellList>("StarsDomainSpellList", bp => {
                 bp.SpellsByLevel = new SpellLevelList[10] {
                     new SpellLevelList(0) {
@@ -153,7 +154,7 @@ namespace ExpandedContent.Tweaks.Domains {
                         OverwhelmingPresenceSpell.ToReference<BlueprintAbilityReference>(),
                         SunbeamSpell.ToReference<BlueprintAbilityReference>(),
                         SunburstSpell.ToReference<BlueprintAbilityReference>(),
-                        new BlueprintAbilityReference()
+                        MeteorSwarmSpell.ToReference<BlueprintAbilityReference>()
                     };
                 });
                 bp.AddComponent<SpontaneousSpellConversion>(c => {
@@ -209,7 +210,7 @@ namespace ExpandedContent.Tweaks.Domains {
                         OverwhelmingPresenceSpell.ToReference<BlueprintAbilityReference>(),
                         SunbeamSpell.ToReference<BlueprintAbilityReference>(),
                         SunburstSpell.ToReference<BlueprintAbilityReference>(),
-                        new BlueprintAbilityReference()
+                        MeteorSwarmSpell.ToReference<BlueprintAbilityReference>()
                     };
                 });
                 bp.AddComponent<SpontaneousSpellConversion>(c => {
@@ -265,7 +266,7 @@ namespace ExpandedContent.Tweaks.Domains {
                         OverwhelmingPresenceSpell.ToReference<BlueprintAbilityReference>(),
                         SunbeamSpell.ToReference<BlueprintAbilityReference>(),
                         SunburstSpell.ToReference<BlueprintAbilityReference>(),
-                        new BlueprintAbilityReference()
+                        MeteorSwarmSpell.ToReference<BlueprintAbilityReference>()
                     };
                 });
                 bp.AddComponent<SpontaneousSpellConversion>(c => {
@@ -321,7 +322,7 @@ namespace ExpandedContent.Tweaks.Domains {
                         OverwhelmingPresenceSpell.ToReference<BlueprintAbilityReference>(),
                         SunbeamSpell.ToReference<BlueprintAbilityReference>(),
                         SunburstSpell.ToReference<BlueprintAbilityReference>(),
-                        new BlueprintAbilityReference()
+                        MeteorSwarmSpell.ToReference<BlueprintAbilityReference>()
                     };
                 });
                 bp.AddComponent<SpontaneousSpellConversion>(c => {
@@ -870,6 +871,50 @@ namespace ExpandedContent.Tweaks.Domains {
                                 })
                         });
                 });
+                bp.AddComponent<AddAbilityUseTrigger>(c => {
+                    c.ActionsOnAllTargets = false;
+                    c.AfterCast = false;
+                    c.ActionsOnTarget = false;
+                    c.FromSpellbook = false;
+                    c.m_Spellbooks = new BlueprintSpellbookReference[] { };
+                    c.ForOneSpell = true;
+                    c.m_Ability = MeteorSwarmSpell.ToReference<BlueprintAbilityReference>();
+                    c.ForMultipleSpells = false;
+                    c.Abilities = new List<BlueprintAbilityReference>();
+                    c.MinSpellLevel = false;
+                    c.MinSpellLevelLimit = 0;
+                    c.ExactSpellLevel = false;
+                    c.ExactSpellLevelLimit = 0;
+                    c.CheckAbilityType = false;
+                    c.Type = AbilityType.Spell;
+                    c.CheckDescriptor = false;
+                    c.SpellDescriptor = new SpellDescriptor();
+                    c.CheckRange = false;
+                    c.Range = AbilityRange.Touch;
+                    c.Action = Helpers.CreateActionList(
+                        new ContextActionOnContextCaster() {
+                            Actions = Helpers.CreateActionList(
+                                new ContextActionHealTarget() {
+                                    Value = new ContextDiceValue() {
+                                        DiceType = DiceType.Zero,
+                                        DiceCountValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                        BonusValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 9,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                    }
+                                })
+                        });
+                });
                 bp.m_AllowNonContextActions = false;
                 bp.HideInUI = false;
                 bp.HideNotAvailibleInUI = false;
@@ -1091,7 +1136,7 @@ namespace ExpandedContent.Tweaks.Domains {
                         OverwhelmingPresenceSpell.ToReference<BlueprintAbilityReference>(),
                         SunbeamSpell.ToReference<BlueprintAbilityReference>(),
                         SunburstSpell.ToReference<BlueprintAbilityReference>(),
-                        new BlueprintAbilityReference()
+                        MeteorSwarmSpell.ToReference<BlueprintAbilityReference>()
                     };
                 });
                 bp.AddComponent<SpontaneousSpellConversion>(c => {
@@ -1147,7 +1192,7 @@ namespace ExpandedContent.Tweaks.Domains {
                         OverwhelmingPresenceSpell.ToReference<BlueprintAbilityReference>(),
                         SunbeamSpell.ToReference<BlueprintAbilityReference>(),
                         SunburstSpell.ToReference<BlueprintAbilityReference>(),
-                        new BlueprintAbilityReference()
+                        MeteorSwarmSpell.ToReference<BlueprintAbilityReference>()
                     };
                 });
                 bp.AddComponent<SpontaneousSpellConversion>(c => {
@@ -1203,7 +1248,7 @@ namespace ExpandedContent.Tweaks.Domains {
                         OverwhelmingPresenceSpell.ToReference<BlueprintAbilityReference>(),
                         SunbeamSpell.ToReference<BlueprintAbilityReference>(),
                         SunburstSpell.ToReference<BlueprintAbilityReference>(),
-                        new BlueprintAbilityReference()
+                        MeteorSwarmSpell.ToReference<BlueprintAbilityReference>()
                     };
                 });
                 bp.AddComponent<SpontaneousSpellConversion>(c => {
@@ -1259,7 +1304,7 @@ namespace ExpandedContent.Tweaks.Domains {
                         OverwhelmingPresenceSpell.ToReference<BlueprintAbilityReference>(),
                         SunbeamSpell.ToReference<BlueprintAbilityReference>(),
                         SunburstSpell.ToReference<BlueprintAbilityReference>(),
-                        new BlueprintAbilityReference()
+                        MeteorSwarmSpell.ToReference<BlueprintAbilityReference>()
                     };
                 });
                 bp.AddComponent<SpontaneousSpellConversion>(c => {
@@ -1315,7 +1360,7 @@ namespace ExpandedContent.Tweaks.Domains {
                         OverwhelmingPresenceSpell.ToReference<BlueprintAbilityReference>(),
                         SunbeamSpell.ToReference<BlueprintAbilityReference>(),
                         SunburstSpell.ToReference<BlueprintAbilityReference>(),
-                        new BlueprintAbilityReference()
+                        MeteorSwarmSpell.ToReference<BlueprintAbilityReference>()
                     };
                 });
                 bp.AddComponent<SpontaneousSpellConversion>(c => {
@@ -1371,7 +1416,7 @@ namespace ExpandedContent.Tweaks.Domains {
                         OverwhelmingPresenceSpell.ToReference<BlueprintAbilityReference>(),
                         SunbeamSpell.ToReference<BlueprintAbilityReference>(),
                         SunburstSpell.ToReference<BlueprintAbilityReference>(),
-                        new BlueprintAbilityReference()
+                        MeteorSwarmSpell.ToReference<BlueprintAbilityReference>()
                     };
                 });
                 bp.AddComponent<SpontaneousSpellConversion>(c => {
@@ -1427,7 +1472,7 @@ namespace ExpandedContent.Tweaks.Domains {
                         OverwhelmingPresenceSpell.ToReference<BlueprintAbilityReference>(),
                         SunbeamSpell.ToReference<BlueprintAbilityReference>(),
                         SunburstSpell.ToReference<BlueprintAbilityReference>(),
-                        new BlueprintAbilityReference()
+                        MeteorSwarmSpell.ToReference<BlueprintAbilityReference>()
                     };
                 });
                 bp.AddComponent<SpontaneousSpellConversion>(c => {
@@ -1483,7 +1528,7 @@ namespace ExpandedContent.Tweaks.Domains {
                         OverwhelmingPresenceSpell.ToReference<BlueprintAbilityReference>(),
                         SunbeamSpell.ToReference<BlueprintAbilityReference>(),
                         SunburstSpell.ToReference<BlueprintAbilityReference>(),
-                        new BlueprintAbilityReference()
+                        MeteorSwarmSpell.ToReference<BlueprintAbilityReference>()
                     };
                 });
                 bp.AddComponent<SpontaneousSpellConversion>(c => {
@@ -1539,7 +1584,7 @@ namespace ExpandedContent.Tweaks.Domains {
                         OverwhelmingPresenceSpell.ToReference<BlueprintAbilityReference>(),
                         SunbeamSpell.ToReference<BlueprintAbilityReference>(),
                         SunburstSpell.ToReference<BlueprintAbilityReference>(),
-                        new BlueprintAbilityReference()
+                        MeteorSwarmSpell.ToReference<BlueprintAbilityReference>()
                     };
                 });
                 bp.AddComponent<SpontaneousSpellConversion>(c => {
@@ -1595,7 +1640,7 @@ namespace ExpandedContent.Tweaks.Domains {
                         OverwhelmingPresenceSpell.ToReference<BlueprintAbilityReference>(),
                         SunbeamSpell.ToReference<BlueprintAbilityReference>(),
                         SunburstSpell.ToReference<BlueprintAbilityReference>(),
-                        new BlueprintAbilityReference()
+                        MeteorSwarmSpell.ToReference<BlueprintAbilityReference>()
                     };
                 });
                 bp.AddComponent<SpontaneousSpellConversion>(c => {
@@ -1651,7 +1696,7 @@ namespace ExpandedContent.Tweaks.Domains {
                         OverwhelmingPresenceSpell.ToReference<BlueprintAbilityReference>(),
                         SunbeamSpell.ToReference<BlueprintAbilityReference>(),
                         SunburstSpell.ToReference<BlueprintAbilityReference>(),
-                        new BlueprintAbilityReference()
+                        MeteorSwarmSpell.ToReference<BlueprintAbilityReference>()
                     };
                 });
                 bp.AddComponent<SpontaneousSpellConversion>(c => {
@@ -1707,7 +1752,7 @@ namespace ExpandedContent.Tweaks.Domains {
                         OverwhelmingPresenceSpell.ToReference<BlueprintAbilityReference>(),
                         SunbeamSpell.ToReference<BlueprintAbilityReference>(),
                         SunburstSpell.ToReference<BlueprintAbilityReference>(),
-                        new BlueprintAbilityReference()
+                        MeteorSwarmSpell.ToReference<BlueprintAbilityReference>()
                     };
                 });
                 bp.AddComponent<SpontaneousSpellConversion>(c => {
@@ -1763,7 +1808,7 @@ namespace ExpandedContent.Tweaks.Domains {
                         OverwhelmingPresenceSpell.ToReference<BlueprintAbilityReference>(),
                         SunbeamSpell.ToReference<BlueprintAbilityReference>(),
                         SunburstSpell.ToReference<BlueprintAbilityReference>(),
-                        new BlueprintAbilityReference()
+                        MeteorSwarmSpell.ToReference<BlueprintAbilityReference>()
                     };
                 });
                 bp.AddComponent<SpontaneousSpellConversion>(c => {
@@ -1819,7 +1864,7 @@ namespace ExpandedContent.Tweaks.Domains {
                         OverwhelmingPresenceSpell.ToReference<BlueprintAbilityReference>(),
                         SunbeamSpell.ToReference<BlueprintAbilityReference>(),
                         SunburstSpell.ToReference<BlueprintAbilityReference>(),
-                        new BlueprintAbilityReference()
+                        MeteorSwarmSpell.ToReference<BlueprintAbilityReference>()
                     };
                 });
                 bp.AddComponent<SpontaneousSpellConversion>(c => {
@@ -1875,7 +1920,7 @@ namespace ExpandedContent.Tweaks.Domains {
                         OverwhelmingPresenceSpell.ToReference<BlueprintAbilityReference>(),
                         SunbeamSpell.ToReference<BlueprintAbilityReference>(),
                         SunburstSpell.ToReference<BlueprintAbilityReference>(),
-                        new BlueprintAbilityReference()
+                        MeteorSwarmSpell.ToReference<BlueprintAbilityReference>()
                     };
                 });
                 bp.AddComponent<SpontaneousSpellConversion>(c => {
@@ -2531,7 +2576,7 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.SetDescription("\nThe firmament provides you inspiration, and you draw power from the stars’ distant light.\nGuarded Mind: You gain a +2 insight bonus on saving throws " +
                     "against all mind-affecting effects.\nThe Stars Are Right: At 8th level, you may spontaneously cast any of your Stars subdomain spells by swapping out a spell of an equal " +
                     "spell level. Any Stars subdomain spell that you cast heals you an amount of hit point damage equal to the spell’s level; this effect happens as you cast the spell.\nDomain " +
-                    "{g|Encyclopedia:Spell}Spells{/g}: entropic shield, hypnotic pattern, blink, dimension door, summon monster V, overwhelming presence, sunbeam, sunburst, polar midnight.");
+                    "{g|Encyclopedia:Spell}Spells{/g}: entropic shield, hypnotic pattern, blink, dimension door, summon monster V, overwhelming presence, sunbeam, sunburst, polar midnight/meteor swarm.");
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Domain };
                 bp.IsClassFeature = true;
                 bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
@@ -2592,7 +2637,7 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.SetDescription("\nThe firmament provides you inspiration, and you draw power from the stars’ distant light.\nGuarded Mind: You gain a +2 insight bonus on saving throws " +
                     "against all mind-affecting effects.\nThe Stars Are Right: At 8th level, you may spontaneously cast any of your Stars subdomain spells by swapping out a spell of an equal " +
                     "spell level. Any Stars subdomain spell that you cast heals you an amount of hit point damage equal to the spell’s level; this effect happens as you cast the spell.\nDomain " +
-                    "{g|Encyclopedia:Spell}Spells{/g}: entropic shield, hypnotic pattern, blink, dimension door, summon monster V, overwhelming presence, sunbeam, sunburst, polar midnight.");
+                    "{g|Encyclopedia:Spell}Spells{/g}: entropic shield, hypnotic pattern, blink, dimension door, summon monster V, overwhelming presence, sunbeam, sunburst, polar midnight/meteor swarm.");
                 bp.Groups = new FeatureGroup[] { FeatureGroup.ClericSecondaryDomain };
                 bp.IsClassFeature = true;
                 bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
@@ -2681,7 +2726,7 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.SetDescription("\nThe firmament provides you inspiration, and you draw power from the stars’ distant light.\nGuarded Mind: You gain a +2 insight bonus on saving throws " +
                     "against all mind-affecting effects.\nThe Stars Are Right: At 8th level, you may spontaneously cast any of your Stars subdomain spells by swapping out a spell of an equal " +
                     "spell level. Any Stars subdomain spell that you cast heals you an amount of hit point damage equal to the spell’s level; this effect happens as you cast the spell.\nDomain " +
-                    "{g|Encyclopedia:Spell}Spells{/g}: entropic shield, hypnotic pattern, blink, dimension door, summon monster V, overwhelming presence, sunbeam, sunburst, polar midnight.");
+                    "{g|Encyclopedia:Spell}Spells{/g}: entropic shield, hypnotic pattern, blink, dimension door, summon monster V, overwhelming presence, sunbeam, sunburst, polar midnight/meteor swarm.");
                 bp.Groups = new FeatureGroup[] { FeatureGroup.SeparatistSecondaryDomain };
                 bp.IsClassFeature = true;
                 bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
