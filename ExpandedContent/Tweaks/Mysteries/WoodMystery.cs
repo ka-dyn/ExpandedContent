@@ -262,7 +262,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.HideInUI = false;
                 bp.HideInCharacterSheetAndLevelUp = false;
                 bp.IsClassFeature = true;
-            }); //Finish please 
+            });
             //Main Mystery Feature
             var OracleWoodMysteryFeature = Helpers.CreateBlueprint<BlueprintFeature>("OracleWoodMysteryFeature", bp => {
                 bp.m_Icon = WoodMysteryIcon;

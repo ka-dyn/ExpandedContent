@@ -446,6 +446,7 @@
     <Compile Include="Tweaks\Monitors\Kerkamoth.cs" />
     <Compile Include="Tweaks\Monitors\Ssilameshnik.cs" />
     <Compile Include="Tweaks\Monitors\Monad.cs" />
+    <Compile Include="Tweaks\Mysteries\WinterMystery.cs" />
     <Compile Include="Tweaks\Mysteries\WoodMystery.cs" />
     <Compile Include="Tweaks\Mysteries\SuccorMystery.cs" />
     <Compile Include="Tweaks\Mysteries\HeavensMystery.cs" />
