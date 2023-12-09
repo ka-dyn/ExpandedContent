@@ -58,6 +58,7 @@ namespace ExpandedContent.Tweaks.Spirits {
             var SunburstSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("e96424f70ff884947b06f41a765b7658");
             var PolarMidnightSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("ba48abb52b142164eba309fd09898856");
             var BreakEnchantmentSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("7792da00c85b9e042a0fdfc2b66ec9a8");
+            var MeteorSwarmSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("5e36df08c71748f7936bce310181fb71");
 
             var HeavensSpiritSpellList = Helpers.CreateBlueprint<BlueprintSpellList>("HeavensSpiritSpellList", bp => {
                 bp.IsMythic = false;
@@ -117,7 +118,8 @@ namespace ExpandedContent.Tweaks.Spirits {
                     new SpellLevelList(9) {
                         SpellLevel = 9,
                         m_Spells = new List<BlueprintAbilityReference>() {
-                            PolarMidnightSpell
+                            PolarMidnightSpell,
+                            MeteorSwarmSpell
                         }
                     },
                 };

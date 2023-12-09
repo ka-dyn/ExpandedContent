@@ -520,7 +520,7 @@ namespace ExpandedContent.Tweaks.Blessings {
                     c.ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>() { WarpriestAspectOfWarBuff.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<ContextRankConfig>(c => {
-                    c.m_Type = AbilityRankType.DamageDice;
+                    c.m_Type = AbilityRankType.Default;
                     c.m_BaseValueType = ContextRankBaseValueType.SummClassLevelWithArchetype;
                     c.m_Stat = StatType.Unknown;
                     c.m_SpecificModifier = ModifierDescriptor.None;
@@ -540,24 +540,25 @@ namespace ExpandedContent.Tweaks.Blessings {
                         DiceCountValue = new ContextValue() {
                             ValueType = ContextValueType.Simple,
                             Value = 0,
-                            ValueRank = AbilityRankType.DamageDice,
+                            ValueRank = AbilityRankType.Default,
                             ValueShared = AbilitySharedValue.Damage
                         },
                         BonusValue = new ContextValue() {
                             ValueType = ContextValueType.Rank,
                             Value = 0,
-                            ValueRank = AbilityRankType.StatBonus,
+                            ValueRank = AbilityRankType.Default,
                             ValueShared = AbilitySharedValue.StatBonus
                         }
                     };
                     c.Modifier = 1;
                 });
                 bp.Type = AbilityType.Supernatural;
-                bp.Range = AbilityRange.Touch;
-                bp.CanTargetPoint = false;
+                bp.Range = AbilityRange.Close;
+                bp.CanTargetPoint = true;
                 bp.CanTargetEnemies = false;
-                bp.CanTargetFriends = true;
-                bp.CanTargetSelf = true;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = false;
+                bp.ShouldTurnToTarget = true;
                 bp.EffectOnAlly = AbilityEffectOnUnit.None;
                 bp.EffectOnEnemy = AbilityEffectOnUnit.None;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
