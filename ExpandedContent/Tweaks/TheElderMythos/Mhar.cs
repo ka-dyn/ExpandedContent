@@ -7,6 +7,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -168,6 +169,7 @@ namespace ExpandedContent.Tweaks.TheElderMythos {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Mhar", MharFeature, WeaponCategory.HeavyPick);
 
         }
     }

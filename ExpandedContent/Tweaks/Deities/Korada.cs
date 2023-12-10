@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -37,7 +38,6 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintFeature ImprovedUnarmedStrike = Resources.GetBlueprint<BlueprintFeature>("7812ad3672a4b9a4fb894ea402095167");
             var KoradaIcon = AssetLoader.LoadInternal("Deities", "Icon_Korada.jpg");
             var KoradaFeature = Helpers.CreateBlueprint<BlueprintFeature>("KoradaFeature", (bp => {
-
                 bp.SetName("Korada");
                 bp.SetDescription("\nTitles: The Open Hand of Harmony   " +
                     "\nAlignment: Neutral Good   " +
@@ -174,6 +174,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Korada", KoradaFeature, WeaponCategory.Quarterstaff);
 
         }
     }

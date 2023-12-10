@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -32,7 +33,6 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintFeature TridentProficiency = Resources.GetBlueprint<BlueprintFeature>("f9565a97342ac594e9b6a495368c1a57");
             var JalaijataliIcon = AssetLoader.LoadInternal("Deities", "Icon_Jalaijatali.jpg");
             var JalaijataliFeature = Helpers.CreateBlueprint<BlueprintFeature>("JalaijataliFeature", (bp => {
-
                 bp.SetName("Jalaijatali");
                 bp.SetDescription("\nTitles: Rillsong   " +
                     "\nAlignment: Chaotic Good   " +
@@ -161,6 +161,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Jalaijatali", JalaijataliFeature, WeaponCategory.Trident);
 
         }
     }

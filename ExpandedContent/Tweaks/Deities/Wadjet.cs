@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -35,7 +36,6 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintFeature LightMaceProficiency = Resources.GetBlueprint<BlueprintFeature>("d0a788c77b0eae948944fa424125c120");
             var WadjetIcon = AssetLoader.LoadInternal("Deities", "Icon_Wadjet.jpg");
             var WadjetFeature = Helpers.CreateBlueprint<BlueprintFeature>("WadjetFeature", (bp => {
-
                 bp.SetName("Wadjet");
                 bp.SetDescription("\nTitles: The Green Empress   " +
                     "\nAlignment: Lawful Good   " +
@@ -167,6 +167,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Wadjet", WadjetFeature, WeaponCategory.LightMace);
 
         }
     }

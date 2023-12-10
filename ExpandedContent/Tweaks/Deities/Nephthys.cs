@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -33,7 +34,6 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintFeature LightMaceProficiency = Resources.GetBlueprint<BlueprintFeature>("d0a788c77b0eae948944fa424125c120");
             var NephthysIcon = AssetLoader.LoadInternal("Deities", "Icon_Nephthys.jpg");
             var NephthysFeature = Helpers.CreateBlueprint<BlueprintFeature>("NephthysFeature", (bp => {
-
                 bp.SetName("Nephthys");
                 bp.SetDescription("\nTitles: Mistress of the Mansion   " +
                     "\nAlignment: Chaotic Neutral   " +
@@ -170,6 +170,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Nephthys", NephthysFeature, WeaponCategory.LightMace);
 
         }
     }

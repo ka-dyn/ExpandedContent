@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -36,7 +37,6 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintFeature LongSpearProficiency = Resources.GetBlueprint<BlueprintFeature>("9c7b33404dc0ac1449ee2732657b722a");
             var SetIcon = AssetLoader.LoadInternal("Deities", "Icon_Set.jpg");
             var SetFeature = Helpers.CreateBlueprint<BlueprintFeature>("SetFeature", (bp => {
-
                 bp.SetName("Set");
                 bp.SetDescription("\nTitles: Lord of the Dark Desert   " +
                     "\nAlignment: Neutral Evil   " +
@@ -171,6 +171,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Set", SetFeature, WeaponCategory.Spear, WeaponCategory.Longspear, WeaponCategory.Shortspear);
 
         }
     }

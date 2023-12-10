@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -34,7 +35,6 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintFeature SaiProficiency = Resources.GetBlueprint<BlueprintFeature>("aed4f88b52ae0fb468895f90da854ad4");
             var NalinivatiIcon = AssetLoader.LoadInternal("Deities", "Icon_Nalinivati.jpg");
             var NalinivatiFeature = Helpers.CreateBlueprint<BlueprintFeature>("NalinivatiFeature", (bp => {
-
                 bp.SetName("Nalinivati");
                 bp.SetDescription("\nTitles: The Serpent's Kiss, First Mother, Queen of Nagas   " +
                     "\nAlignment: Neutral   " +
@@ -170,6 +170,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Nalinivati", NalinivatiFeature, WeaponCategory.Sai);
 
         }
     }

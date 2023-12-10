@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -38,7 +39,6 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintFeature LongSpearProficiency = Resources.GetBlueprint<BlueprintFeature>("9c7b33404dc0ac1449ee2732657b722a");
             var RaIcon = AssetLoader.LoadInternal("Deities", "Icon_Ra.jpg");
             var RaFeature = Helpers.CreateBlueprint<BlueprintFeature>("RaFeature", (bp => {
-
                 bp.SetName("Ra");
                 bp.SetDescription("\nTitles: King of the Heavens   " +
                     "\nAlignment: Lawful Neutral   " +
@@ -172,6 +172,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Ra", RaFeature, WeaponCategory.Spear, WeaponCategory.Longspear, WeaponCategory.Shortspear);
 
         }
     }

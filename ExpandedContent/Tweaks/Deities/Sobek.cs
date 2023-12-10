@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -34,7 +35,6 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintFeature FalchionProficiency = Resources.GetBlueprint<BlueprintFeature>("caff2f50d06e4069ab18dc05cc97a966");
             var SobekIcon = AssetLoader.LoadInternal("Deities", "Icon_Sobek.jpg");
             var SobekFeature = Helpers.CreateBlueprint<BlueprintFeature>("SobekFeature", (bp => {
-
                 bp.SetName("Sobek");
                 bp.SetDescription("\nTitles: The Raging Torrent   " +
                     "\nAlignment: Chaotic Neutral   " +
@@ -168,6 +168,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Sobek", SobekFeature, WeaponCategory.Falchion); ;
 
         }
     }

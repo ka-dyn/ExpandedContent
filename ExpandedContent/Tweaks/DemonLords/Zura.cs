@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -34,7 +35,6 @@ namespace ExpandedContent.Tweaks.DemonLords {
 
 			var ZuraIcon = AssetLoader.LoadInternal("Deities", "Icon_Zura.jpg");
 			var ZuraFeature = Helpers.CreateBlueprint<BlueprintFeature>("ZuraFeature", (bp => {
-
 				bp.SetName("Zura");
 				bp.SetDescription("\nTitles: The Vampire Queen, Demon Lord of Cannibalism and Vampires   " +
 					"\nRealm: Nesh, The Abyss   " +
@@ -173,9 +173,10 @@ namespace ExpandedContent.Tweaks.DemonLords {
 					};
 				});
 			}));
-			
-		}
-	}
+            DeityTools.LazySacredWeaponMaker("Zura", ZuraFeature, WeaponCategory.Rapier);
+
+        }
+    }
 }
 	
 

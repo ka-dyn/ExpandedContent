@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -34,7 +35,6 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintFeature ShortbowProficiency = Resources.GetBlueprint<BlueprintFeature>("e8096942d950c8843857c2545f8dc18f");
             var NeithIcon = AssetLoader.LoadInternal("Deities", "Icon_Neith.jpg");
             var NeithFeature = Helpers.CreateBlueprint<BlueprintFeature>("NeithFeature", (bp => {
-
                 bp.SetName("Neith");
                 bp.SetDescription("\nTitles: Ruler of Arrows   " +
                     "\nAlignment: Neutral Good   " +
@@ -166,6 +166,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Neith", NeithFeature, WeaponCategory.Shortbow);
 
         }
     }

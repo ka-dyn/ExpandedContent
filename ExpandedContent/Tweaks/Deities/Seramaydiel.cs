@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -35,7 +36,6 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintFeature DartProficiency = Resources.GetBlueprint<BlueprintFeature>("f029268a6639a0745a849e5147734088");
             var SeramaydielIcon = AssetLoader.LoadInternal("Deities", "Icon_Seramaydiel.jpg");
             var SeramaydielFeature = Helpers.CreateBlueprint<BlueprintFeature>("SeramaydielFeature", (bp => {
-
                 bp.SetName("Seramaydiel");
                 bp.SetDescription("\nTitles: Lady of Inspired Notes   " +
                     "\nAlignment: Neutral Good   " +
@@ -166,6 +166,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Seramaydiel", SeramaydielFeature, WeaponCategory.Dart);
 
         }
     }

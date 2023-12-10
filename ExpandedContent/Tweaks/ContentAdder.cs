@@ -278,7 +278,6 @@ namespace ExpandedContent.Tweaks {
                 Deities.Naderi.AddNaderiFeature();
                
                 Deities.PatchPulura.AddPulura();
-                Deities.MilaniSacredWeaponFeature.AddMilaniSacredWeaponFeature();
                 Deities.Ragathiel.AddRagathielFeature();
                 Deities.Arshea.AddArsheaFeature();
                 Deities.Milani.AddMilaniFeature();

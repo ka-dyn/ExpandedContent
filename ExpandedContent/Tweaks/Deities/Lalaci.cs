@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -35,7 +36,6 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintFeature SlingStaffProficiency = Resources.GetBlueprint<BlueprintFeature>("a0be067e11f4d8345a8b57a92e52a301");
             var LalaciIcon = AssetLoader.LoadInternal("Deities", "Icon_Lalaci.jpg");
             var LalaciFeature = Helpers.CreateBlueprint<BlueprintFeature>("LalaciFeature", (bp => {
-
                 bp.SetName("Lalaci");
                 bp.SetDescription("\nTitles: He of Motley Repose   " +
                     "\nAlignment: Chaotic Good   " +
@@ -169,6 +169,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Lalaci", LalaciFeature, WeaponCategory.SlingStaff);
 
         }
     }

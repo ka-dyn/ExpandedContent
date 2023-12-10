@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -37,7 +38,6 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintFeature SaiProficiency = Resources.GetBlueprint<BlueprintFeature>("a9a692792f6668d4dbe32c9c4f023800");
             var BastetIcon = AssetLoader.LoadInternal("Deities", "Icon_Bastet.jpg");
             var BastetFeature = Helpers.CreateBlueprint<BlueprintFeature>("BastetFeature", (bp => {
-
                 bp.SetName("Bastet");
                 bp.SetDescription("\nTitles: The Sly Enchantress   " +
                     "\nAlignment: Chaotic Neutral   " +
@@ -168,6 +168,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Bastet", BastetFeature, WeaponCategory.Sai);
 
         }
     }

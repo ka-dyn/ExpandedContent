@@ -7,6 +7,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -36,7 +37,6 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintFeature QuarterstaffProficiency = Resources.GetBlueprint<BlueprintFeature>("aed4f88b52ae0fb468895f90da854ad4");
             var WukongIcon = AssetLoader.LoadInternal("Deities", "Icon_Wukong.jpg");
             var WukongFeature = Helpers.CreateBlueprint<BlueprintFeature>("WukongFeature", (bp => {
-
                 bp.SetName("Wukong");
                 bp.SetDescription("\nTitles: The Monkey King, Aware of Vacuity   " +
                     "\nAlignment: Chaotic Neutral   " +
@@ -163,6 +163,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Wukong", WukongFeature, WeaponCategory.Quarterstaff);
 
         }
     }

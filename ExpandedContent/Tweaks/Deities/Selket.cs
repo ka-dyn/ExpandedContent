@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -35,7 +36,6 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintFeature KamaProficiency = Resources.GetBlueprint<BlueprintFeature>("403740e8112651141a12f0d73d793dbc");
             var SelketIcon = AssetLoader.LoadInternal("Deities", "Icon_Selket.jpg");
             var SelketFeature = Helpers.CreateBlueprint<BlueprintFeature>("SelketFeature", (bp => {
-
                 bp.SetName("Selket");
                 bp.SetDescription("\nTitles: Mistress of the Beautiful House   " +
                     "\nAlignment: Chaotic Good   " +
@@ -169,6 +169,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Selket", SelketFeature, WeaponCategory.Kama);
 
         }
     }

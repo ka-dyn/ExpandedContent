@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -33,7 +34,6 @@ namespace ExpandedContent.Tweaks.DemonLords {
             BlueprintFeature HeavyFlailProficiency = Resources.GetBlueprint<BlueprintFeature>("a22e30bd35fbb704cab2d7e3c00717c1");
             var ShivaskaIcon = AssetLoader.LoadInternal("Deities", "Icon_Shivaska.jpg");
             var ShivaskaFeature = Helpers.CreateBlueprint<BlueprintFeature>("ShivaskaFeature", (bp => {
-
                 bp.SetName("Shivaska");
                 bp.SetDescription("\nTitles: The Chained Maiden, Lord of Prisons" +
                     "\nAlignment: Chaotic Evil   " +
@@ -160,6 +160,7 @@ namespace ExpandedContent.Tweaks.DemonLords {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Shivaska", ShivaskaFeature, WeaponCategory.HeavyFlail);
 
         }
     }

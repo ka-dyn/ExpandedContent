@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -36,7 +37,6 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintFeature BattleaxeProficiency = Resources.GetBlueprint<BlueprintFeature>("5d1fb7b0c7a8b634b9d7903d9264895d");
             var SekhmetIcon = AssetLoader.LoadInternal("Deities", "Icon_Sekhmet.jpg");
             var SekhmetFeature = Helpers.CreateBlueprint<BlueprintFeature>("SekhmetFeature", (bp => {
-
                 bp.SetName("Sekhmet");
                 bp.SetDescription("\nTitles: Lady of Slaughter   " +
                     "\nAlignment: Chaotic Neutral   " +
@@ -167,6 +167,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Sekhmet", SekhmetFeature, WeaponCategory.Battleaxe);
 
         }
     }

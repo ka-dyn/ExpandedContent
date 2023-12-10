@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -33,7 +34,6 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintFeature JavelinProficiency = Resources.GetBlueprint<BlueprintFeature>("8e85b6347caa4e84fa67d71f65a6a990");
             var TolcIcon = AssetLoader.LoadInternal("Deities", "Icon_Tolc.jpg");
             var TolcFeature = Helpers.CreateBlueprint<BlueprintFeature>("TolcFeature", (bp => {
-
                 bp.SetName("Tolc");
                 bp.SetDescription("\nTitles: Snow-Strider   " +
                     "\nAlignment: Chaotic Good   " +
@@ -166,6 +166,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Tolc", TolcFeature, WeaponCategory.Javelin);
 
         }
     }

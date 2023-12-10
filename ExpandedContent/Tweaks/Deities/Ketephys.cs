@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -32,7 +33,6 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintFeature LongbowProficiency = Resources.GetBlueprint<BlueprintFeature>("0978f630fc5d6a6409ac641137bf6659");
             var KetephysIcon = AssetLoader.LoadInternal("Deities", "Icon_Ketephys.jpg");
             var KetephysFeature = Helpers.CreateBlueprint<BlueprintFeature>("KetephysFeature", (bp => {
-
                 bp.SetName("Ketephys");
                 bp.SetDescription("\nTitles: The Hunter   " +
                     "\nAlignment: Chaotic Good   " +
@@ -157,6 +157,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Ketephys", KetephysFeature, WeaponCategory.Longbow);
 
         }
     }

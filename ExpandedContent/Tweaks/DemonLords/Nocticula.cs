@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -33,7 +34,6 @@ namespace ExpandedContent.Tweaks.DemonLords {
             BlueprintFeature DaggerProficiency = Resources.GetBlueprint<BlueprintFeature>("b776c19291928cf4184d4dc65f09f3a6");
             var NocticulaIcon = AssetLoader.LoadInternal("Deities", "Icon_Nocticula.jpg");
             var NocticulaFeature = Helpers.CreateBlueprint<BlueprintFeature>("NocticulaFeature", (bp => {
-
                 bp.SetName("Nocticula");
                 bp.SetDescription("\nTitles: Our Lady in Shadow, Demon Lord of Darkness and Lust   " +
                     "\nAlignment: Chaotic Evil   " +
@@ -159,6 +159,7 @@ namespace ExpandedContent.Tweaks.DemonLords {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Nocticula", NocticulaFeature, WeaponCategory.Dagger);
 
         }
     }

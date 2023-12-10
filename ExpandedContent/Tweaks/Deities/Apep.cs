@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -35,7 +36,6 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintFeature DaggerProficiency = Resources.GetBlueprint<BlueprintFeature>("b776c19291928cf4184d4dc65f09f3a6");
             var ApepIcon = AssetLoader.LoadInternal("Deities", "Icon_Apep.jpg");
             var ApepFeature = Helpers.CreateBlueprint<BlueprintFeature>("ApepFeature", (bp => {
-
                 bp.SetName("Apep");
                 bp.SetDescription("\nTitles: Devourer of the Dawn   " +
                     "\nAlignment: Chaotic Evil   " +
@@ -166,6 +166,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Apep", ApepFeature, WeaponCategory.Dagger);
 
         }
     }

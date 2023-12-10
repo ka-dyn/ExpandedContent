@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -34,7 +35,6 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintFeature WeaponSpecializationHeavyCrossbow = Resources.GetBlueprint<BlueprintFeature>("f9129b3edcbe39948a27d4f7c125defa");
             var ZohlsIcon = AssetLoader.LoadInternal("Deities", "Icon_Zohls.jpg");
             var ZohlsFeature = Helpers.CreateBlueprint<BlueprintFeature>("ZohlsFeature", (bp => {
-
                 bp.SetName("Zohls");
                 bp.SetDescription("\nTitles: Verity   " +
                     "\nAlignment: Lawful Good   " +
@@ -166,6 +166,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Zohls", ZohlsFeature, WeaponCategory.HeavyCrossbow, WeaponCategory.LightCrossbow);
 
         }
     }

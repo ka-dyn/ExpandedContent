@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -35,7 +36,6 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintFeature DaggerProficiency = Resources.GetBlueprint<BlueprintFeature>("b776c19291928cf4184d4dc65f09f3a6");
             var VildeisIcon = AssetLoader.LoadInternal("Deities", "Icon_Vildeis.jpg");
             var VildeisFeature = Helpers.CreateBlueprint<BlueprintFeature>("VildeisFeature", (bp => {
-
                 bp.SetName("Vildeis");
                 bp.SetDescription("\nTitles: The Cardinal Martyr   " +
                     "\nAlignment: Lawful Good   " +
@@ -171,6 +171,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Vildeis", VildeisFeature, WeaponCategory.Dagger);
 
         }
     }

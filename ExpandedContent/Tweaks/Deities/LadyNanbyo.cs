@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -35,7 +36,6 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintFeature WarhammerProficiency = Resources.GetBlueprint<BlueprintFeature>("aed4f88b52ae0fb468895f90da854ad4");
             var LadyNanbyoIcon = AssetLoader.LoadInternal("Deities", "Icon_LadyNanbyo.jpg");
             var LadyNanbyoFeature = Helpers.CreateBlueprint<BlueprintFeature>("LadyNanbyoFeature", (bp => {
-
                 bp.SetName("Lady Nanbyo");
                 bp.SetDescription("\nTitles: The Widow of Suffering   " +
                     "\nAlignment: Chaotic Evil   " +
@@ -160,6 +160,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("LadyNanbyo", LadyNanbyoFeature, WeaponCategory.Warhammer);
 
         }
     }

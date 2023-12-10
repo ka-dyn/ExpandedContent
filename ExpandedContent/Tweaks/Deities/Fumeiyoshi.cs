@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -37,7 +38,6 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintFeature GlaiveProficiency = Resources.GetBlueprint<BlueprintFeature>("38d4d143e7f293249b72694ddb1e0a32");
             var FumeiyoshiIcon = AssetLoader.LoadInternal("Deities", "Icon_Fumeiyoshi.jpg");
             var FumeiyoshiFeature = Helpers.CreateBlueprint<BlueprintFeature>("FumeiyoshiFeature", (bp => {
-
                 bp.SetName("Fumeiyoshi");
                 bp.SetDescription("\nTitles: Lord of Envy   " +
                     "\nAlignment: Neutral Evil   " +
@@ -171,6 +171,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Fumeiyoshi", FumeiyoshiFeature, WeaponCategory.Glaive);
 
         }
     }

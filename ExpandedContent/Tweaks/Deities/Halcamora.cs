@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -35,7 +36,6 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintFeature ClubProficiency = Resources.GetBlueprint<BlueprintFeature>("2c343b1606bc68248891bd53d38a3d18");
             var HalcamoraIcon = AssetLoader.LoadInternal("Deities", "Icon_Halcamora.jpg");
             var HalcamoraFeature = Helpers.CreateBlueprint<BlueprintFeature>("HalcamoraFeature", (bp => {
-
                 bp.SetName("Halcamora");
                 bp.SetDescription("\nTitles: Lady of Ripe Bounty   " +
                     "\nAlignment: Neutral Good   " +
@@ -170,6 +170,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Halcamora", HalcamoraFeature, WeaponCategory.Club);
 
         }
     }

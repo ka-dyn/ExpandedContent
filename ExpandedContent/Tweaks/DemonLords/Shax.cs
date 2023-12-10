@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -33,7 +34,6 @@ namespace ExpandedContent.Tweaks.DemonLords {
             BlueprintFeature DaggerProficiency = Resources.GetBlueprint<BlueprintFeature>("b776c19291928cf4184d4dc65f09f3a6");
             var ShaxIcon = AssetLoader.LoadInternal("Deities", "Icon_Shax.jpg");
             var ShaxFeature = Helpers.CreateBlueprint<BlueprintFeature>("ShaxFeature", (bp => {
-
                 bp.SetName("Shax");
                 bp.SetDescription("\nTitles: The Blood Marquis, Demon Lord of Lies and Murder" +
                     "\nAlignment: Chaotic Evil   " +
@@ -161,6 +161,7 @@ namespace ExpandedContent.Tweaks.DemonLords {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Shax", ShaxFeature, WeaponCategory.Dagger);
 
         }
     }

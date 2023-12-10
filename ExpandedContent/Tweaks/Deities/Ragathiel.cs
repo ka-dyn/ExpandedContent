@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -36,7 +37,6 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintFeature BastardSwordProficiency = Resources.GetBlueprint<BlueprintFeature>("57299a78b2256604dadf1ab9a42e2873");
             var RagathielIcon = AssetLoader.LoadInternal("Deities", "Icon_Ragathiel.jpg");
             var RagathielFeature = Helpers.CreateBlueprint<BlueprintFeature>("RagathielFeature", (bp => {
-
                 bp.SetName("Ragathiel");
                 bp.SetDescription("\nTitles: General of Vengeance   " +
                     "\nAlignment: Lawful Good   " +
@@ -191,6 +191,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Ragathiel", RagathielFeature, WeaponCategory.BastardSword);
 
         }
     }

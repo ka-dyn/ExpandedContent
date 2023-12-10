@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -33,7 +34,6 @@ namespace ExpandedContent.Tweaks.DemonLords {
             BlueprintFeature LongswordProficiency = Resources.GetBlueprint<BlueprintFeature>("62e27ffd9d53e14479f73da29760f64e");
             var PazuzuIcon = AssetLoader.LoadInternal("Deities", "Icon_Pazuzu.jpg");
             var PazuzuFeature = Helpers.CreateBlueprint<BlueprintFeature>("PazuzuFeature", (bp => {
-
                 bp.SetName("Pazuzu");
                 bp.SetDescription("\nTitles: King of the Wind Demons, Demon Lord of the Sky and Winged Creatures   " +
                     "\nAlignment: Chaotic Evil   " +
@@ -163,6 +163,7 @@ namespace ExpandedContent.Tweaks.DemonLords {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Pazuzu", PazuzuFeature, WeaponCategory.Longsword);
 
         }
     }

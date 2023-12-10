@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -35,7 +36,6 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintFeature DaggerProficiency = Resources.GetBlueprint<BlueprintFeature>("b776c19291928cf4184d4dc65f09f3a6");
             var YuelralIcon = AssetLoader.LoadInternal("Deities", "Icon_Yuelral.jpg");
             var YuelralFeature = Helpers.CreateBlueprint<BlueprintFeature>("YuelralFeature", (bp => {
-
                 bp.SetName("Yuelral");
                 bp.SetDescription("\nTitles: The Wise   " +
                     "\nAlignment: Neutral Good   " +
@@ -163,6 +163,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Yuelral", YuelralFeature, WeaponCategory.Dagger);
 
         }
     }

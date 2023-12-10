@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -35,7 +36,6 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintFeature HeavyMaceProficiency = Resources.GetBlueprint<BlueprintFeature>("3f18330d717ea0148b496ee8cc291a60");
             var WinlasIcon = AssetLoader.LoadInternal("Deities", "Icon_Winlas.jpg");
             var WinlasFeature = Helpers.CreateBlueprint<BlueprintFeature>("WinlasFeature", (bp => {
-
                 bp.SetName("Winlas");
                 bp.SetDescription("\nTitles: The Elder of Divinity   " +
                     "\nAlignment: Lawful Good   " +
@@ -166,6 +166,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Winlas", WinlasFeature, WeaponCategory.HeavyMace);
 
         }
     }

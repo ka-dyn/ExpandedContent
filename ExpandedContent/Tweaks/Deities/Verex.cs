@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -37,7 +38,6 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintFeature BattleaxeProficiency = Resources.GetBlueprint<BlueprintFeature>("5d1fb7b0c7a8b634b9d7903d9264895d");
             var VerexIcon = AssetLoader.LoadInternal("Deities", "Icon_Verex.jpg");
             var VerexFeature = Helpers.CreateBlueprint<BlueprintFeature>("VerexFeature", (bp => {
-
                 bp.SetName("Verex");
                 bp.SetDescription("\nTitles: The Despoiler   " +
                     "\nAlignment: Chaotic Evil   " +
@@ -170,6 +170,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Verex", VerexFeature, WeaponCategory.Battleaxe);
 
         }
     }

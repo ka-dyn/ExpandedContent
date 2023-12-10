@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -33,7 +34,6 @@ namespace ExpandedContent.Tweaks.DemonLords {
             BlueprintFeature HeavyMaceProficiency = Resources.GetBlueprint<BlueprintFeature>("3f18330d717ea0148b496ee8cc291a60");
             var OrcusIcon = AssetLoader.LoadInternal("Deities", "Icon_Orcus.jpg");
             var OrcusFeature = Helpers.CreateBlueprint<BlueprintFeature>("OrcusFeature", (bp => {
-
                 bp.SetName("Orcus");
                 bp.SetDescription("\nTitles: Prince of Undeath, Demon Lord of Necromancy and the Undead " +
                     "\nAlignment: Chaotic Evil   " +
@@ -162,6 +162,7 @@ namespace ExpandedContent.Tweaks.DemonLords {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Orcus", OrcusFeature, WeaponCategory.HeavyMace);
 
         }
     }

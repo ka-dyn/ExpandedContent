@@ -362,7 +362,6 @@
     <Compile Include="Tweaks\DemonLords\Kabriri.cs" />
     <Compile Include="Tweaks\Deities\LichDeity.cs" />
     <Compile Include="Tweaks\Deities\Milani.cs" />
-    <Compile Include="Tweaks\Deities\MilaniSacredWeaponFeature.cs" />
     <Compile Include="Tweaks\Deities\Pulura.cs" />
     <Compile Include="Tweaks\Deities\Ragathiel.cs" />
     <Compile Include="Tweaks\DemonLords\Zura.cs" />

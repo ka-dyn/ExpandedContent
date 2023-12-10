@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -33,7 +34,6 @@ namespace ExpandedContent.Tweaks.DemonLords {
             BlueprintFeature KukriProficiency = Resources.GetBlueprint<BlueprintFeature>("a7e822a8507e44b0a981ca55586dfad9");
             var MazmezzIcon = AssetLoader.LoadInternal("Deities", "Icon_Mazmezz.jpg");
             var MazmezzFeature = Helpers.CreateBlueprint<BlueprintFeature>("MazmezzFeature", (bp => {
-
                 bp.SetName("Mazmezz");
                 bp.SetDescription("\nTitles: The Creeping Queen, Lord of Vermin, Demon Lord of Vermin and Bindings " +
                     "\nAlignment: Chaotic Evil   " +
@@ -160,6 +160,7 @@ namespace ExpandedContent.Tweaks.DemonLords {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Mazmezz", MazmezzFeature, WeaponCategory.Kukri);
 
         }
     }

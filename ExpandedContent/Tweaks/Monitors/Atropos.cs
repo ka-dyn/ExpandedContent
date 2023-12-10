@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -37,7 +38,6 @@ namespace ExpandedContent.Tweaks.Monitors {
             BlueprintFeature DaggerProficiency = Resources.GetBlueprint<BlueprintFeature>("b776c19291928cf4184d4dc65f09f3a6");
             var AtroposIcon = AssetLoader.LoadInternal("Deities", "Icon_Atropos.jpg");
             var AtroposFeature = Helpers.CreateBlueprint<BlueprintFeature>("AtroposFeature", (bp => {
-
                 bp.SetName("Atropos");
                 bp.SetDescription("\nTitles: The Last Sister, Judge of Judges   " +
                     "\nAlignment: Neutral   " +
@@ -169,6 +169,7 @@ namespace ExpandedContent.Tweaks.Monitors {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Atropos", AtroposFeature, WeaponCategory.Dagger);
 
         }
     }

@@ -7,6 +7,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 using UniRx;
@@ -35,7 +36,6 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintFeature ClubProficiency = Resources.GetBlueprint<BlueprintFeature>("2c343b1606bc68248891bd53d38a3d18");
             var ValaniIcon = AssetLoader.LoadInternal("Deities", "Icon_Valani.jpg");
             var ValaniFeature = Helpers.CreateBlueprint<BlueprintFeature>("ValaniFeature", (bp => {
-
                 bp.SetName("Valani");
                 bp.SetDescription("\nTitles: Fireshaker, The Father of Islands   " +
                     "\nAlignment: Chaotic Good   " +
@@ -166,6 +166,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Valani", ValaniFeature, WeaponCategory.Club);
 
         }
     }

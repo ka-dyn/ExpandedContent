@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -37,7 +38,6 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintFeature GreataxeProficiency = Resources.GetBlueprint<BlueprintFeature>("70ab8880eaf6c0640887ae586556a652");
             var VargIcon = AssetLoader.LoadInternal("Deities", "Icon_Varg.jpg");
             var VargFeature = Helpers.CreateBlueprint<BlueprintFeature>("VargFeature", (bp => {
-
                 bp.SetName("Varg");
                 bp.SetDescription("\nTitles: The Iron Warrior   " +
                     "\nAlignment: Chaotic Evil   " +
@@ -168,6 +168,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Varg", VargFeature, WeaponCategory.Greataxe);
 
         }
     }

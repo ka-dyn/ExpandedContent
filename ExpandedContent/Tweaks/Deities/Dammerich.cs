@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -35,7 +36,6 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintFeature GreataxeProficiency = Resources.GetBlueprint<BlueprintFeature>("70ab8880eaf6c0640887ae586556a652");
             var DammerichIcon = AssetLoader.LoadInternal("Deities", "Icon_Dammerich.jpg");
             var DammerichFeature = Helpers.CreateBlueprint<BlueprintFeature>("DammerichFeature", (bp => {
-
                 bp.SetName("Dammerich");
                 bp.SetDescription("\nTitles: The Weighted Swing  " +
                     "\nAlignment: Lawful Good   " +
@@ -171,6 +171,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Dammerich", DammerichFeature, WeaponCategory.Greataxe);
 
         }
     }

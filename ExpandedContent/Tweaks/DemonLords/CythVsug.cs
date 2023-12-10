@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -41,7 +42,6 @@ namespace ExpandedContent.Tweaks.DemonLords {
             BlueprintFeature ScimitarProficiency = Resources.GetBlueprint<BlueprintFeature>("75146ee0b32e5424ab77902bf86f91ee");
             var CythVsugIcon = AssetLoader.LoadInternal("Deities", "Icon_CythVsug.jpg");
             var CythVsugFeature = Helpers.CreateBlueprint<BlueprintFeature>("CythVsugFeature", (bp => {
-
                 bp.SetName("Cyth-V'sug");
                 bp.SetDescription("\nTitles: Prince of the Blasted Heath, Demon Lord of Fungus and Parasites, Lord of Filth and Pollution" +
                     "\nAlignment: Chaotic Evil   " +
@@ -168,6 +168,7 @@ namespace ExpandedContent.Tweaks.DemonLords {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("CythVsug", CythVsugFeature, WeaponCategory.Scimitar);
 
         }
     }

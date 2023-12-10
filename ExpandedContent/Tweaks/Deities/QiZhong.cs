@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -35,7 +36,6 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintFeature HeavyMaceProficiency = Resources.GetBlueprint<BlueprintFeature>("3f18330d717ea0148b496ee8cc291a60");
             var QiZhongIcon = AssetLoader.LoadInternal("Deities", "Icon_QiZhong.jpg");
             var QiZhongFeature = Helpers.CreateBlueprint<BlueprintFeature>("QiZhongFeature", (bp => {
-
                 bp.SetName("Qi Zhong");
                 bp.SetDescription("\nTitles: Master of Medicine   " +
                     "\nAlignment: Neutral Good   " +
@@ -164,6 +164,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("QiZhong", QiZhongFeature, WeaponCategory.HeavyMace);
 
         }
     }

@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -36,7 +37,6 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintFeature HeavyPickProficiency = Resources.GetBlueprint<BlueprintFeature>("aeac272bf357c1247a51e9c56af7193b");
             var ZyphusIcon = AssetLoader.LoadInternal("Deities", "Icon_Zyphus.jpg");
             var ZyphusFeature = Helpers.CreateBlueprint<BlueprintFeature>("ZyphusFeature", (bp => {
-
                 bp.SetName("Zyphus");
                 bp.SetDescription("\nTitles: Grim Harvestman   " +
                     "\nAlignment: Neutral Evil   " +
@@ -166,6 +166,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Zyphus", ZyphusFeature, WeaponCategory.HeavyPick);
 
         }
     }

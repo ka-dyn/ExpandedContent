@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -33,7 +34,6 @@ namespace ExpandedContent.Tweaks.DemonLords {
             BlueprintFeature PunchingDaggerProficiency = Resources.GetBlueprint<BlueprintFeature>("a13839f75ac30cc48945c96ef1c98e1c");
             var MestamaIcon = AssetLoader.LoadInternal("Deities", "Icon_Mestama.jpg");
             var MestamaFeature = Helpers.CreateBlueprint<BlueprintFeature>("MestamaFeature", (bp => {
-
                 bp.SetName("Mestama");
                 bp.SetDescription("\nTitles: The Mother of Witches, Lord of Deception, Demon Lord of Hags and Deception" +
                     "\nAlignment: Chaotic Evil   " +
@@ -161,6 +161,7 @@ namespace ExpandedContent.Tweaks.DemonLords {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Mestama", MestamaFeature, WeaponCategory.PunchingDagger);
 
         }
     }

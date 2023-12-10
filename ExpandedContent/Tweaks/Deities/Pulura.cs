@@ -7,6 +7,7 @@ using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 
 namespace ExpandedContent.Tweaks.Deities {
     internal class PatchPulura {
@@ -84,12 +85,13 @@ namespace ExpandedContent.Tweaks.Deities {
 
             PuluraFeature.RemoveComponents<PrerequisiteNoFeature>();
             var EmpyrealLordSelection = Resources.GetModBlueprint<BlueprintFeatureSelection>("EmpyrealLordSelection");
-            
+
+            DeityTools.LazySacredWeaponMaker("Pulura", PuluraFeature, WeaponCategory.SlingStaff);
 
 
         }
-                
-            
+
+
     }
         
 }

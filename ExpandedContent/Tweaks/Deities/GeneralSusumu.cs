@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -37,7 +38,6 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintFeature LongbowProficiency = Resources.GetBlueprint<BlueprintFeature>("0978f630fc5d6a6409ac641137bf6659");
             var GeneralSusumuIcon = AssetLoader.LoadInternal("Deities", "Icon_GeneralSusumu.jpg");
             var GeneralSusumuFeature = Helpers.CreateBlueprint<BlueprintFeature>("GeneralSusumuFeature", (bp => {
-
                 bp.SetName("General Susumu");
                 bp.SetDescription("\nTitles: The Black Daimyo   " +
                     "\nAlignment: Lawful Evil   " +
@@ -163,6 +163,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("GeneralSusumu", GeneralSusumuFeature, WeaponCategory.Longbow);
 
         }
     }

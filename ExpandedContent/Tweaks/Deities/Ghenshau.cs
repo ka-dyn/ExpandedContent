@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -35,7 +36,6 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintFeature HandaxeProficiency = Resources.GetBlueprint<BlueprintFeature>("c59205a5d18930d4b88b74d2acda2f49");
             var GhenshauIcon = AssetLoader.LoadInternal("Deities", "Icon_Ghenshau.jpg");
             var GhenshauFeature = Helpers.CreateBlueprint<BlueprintFeature>("GhenshauFeature", (bp => {
-
                 bp.SetName("Ghenshau");
                 bp.SetDescription("\nTitles: Breezes-Still-and-Ripples-Cease   " +
                     "\nAlignment: Lawful Good   " +
@@ -169,6 +169,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Ghenshau", GhenshauFeature, WeaponCategory.Handaxe);
 
         }
     }

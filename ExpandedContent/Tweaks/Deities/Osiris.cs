@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -35,7 +36,6 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintFeature FlailProficiency = Resources.GetBlueprint<BlueprintFeature>("6d273f46bce2e0f47a0958810dc4c7d9");
             var OsirisIcon = AssetLoader.LoadInternal("Deities", "Icon_Osiris.jpg");
             var OsirisFeature = Helpers.CreateBlueprint<BlueprintFeature>("OsirisFeature", (bp => {
-
                 bp.SetName("Osiris");
                 bp.SetDescription("\nTitles: The Monkey King, Aware of Vacuity   " +
                     "\nAlignment: Lawful Good   " +
@@ -166,6 +166,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Osiris", OsirisFeature, WeaponCategory.Flail);
 
         }
     }

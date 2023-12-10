@@ -7,6 +7,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -36,7 +37,6 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintFeature GreatclubProficiency = Resources.GetBlueprint<BlueprintFeature>("28ccd31b222f6954490f4c19c5c5576b");
             var YamatsumiIcon = AssetLoader.LoadInternal("Deities", "Icon_Yamatsumi.jpg");
             var YamatsumiFeature = Helpers.CreateBlueprint<BlueprintFeature>("YamatsumiFeature", (bp => {
-
                 bp.SetName("Yamatsumi");
                 bp.SetDescription("\nTitles: The Mountain Lord   " +
                     "\nAlignment: Neutral   " +
@@ -168,6 +168,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Yamatsumi", YamatsumiFeature, WeaponCategory.Greatclub);
 
         }
     }

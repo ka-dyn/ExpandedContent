@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -172,6 +173,8 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Achaekek", AchaekekFeature, WeaponCategory.Falcata);
+
             var MantisZealotArchetype = Resources.GetModBlueprint<BlueprintArchetype>("MantisZealotArchetype");
             MantisZealotArchetype.AddComponent<PrerequisiteFeaturesFromList>(c => {
                 c.m_Features = new BlueprintFeatureReference[1] { AchaekekFeature.ToReference<BlueprintFeatureReference>() };

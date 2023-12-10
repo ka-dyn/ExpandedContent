@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -36,7 +37,6 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintFeature LongswordProficiency = Resources.GetBlueprint<BlueprintFeature>("62e27ffd9d53e14479f73da29760f64e");
             var HeiFengIcon = AssetLoader.LoadInternal("Deities", "Icon_HeiFeng.jpg");
             var HeiFengFeature = Helpers.CreateBlueprint<BlueprintFeature>("HeiFengFeature", (bp => {
-
                 bp.SetName("Hei Feng");
                 bp.SetDescription("\nTitles: Duke of Thunder   " +
                     "\nAlignment: Chaotic Neutral   " +
@@ -167,6 +167,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("HeiFeng", HeiFengFeature, WeaponCategory.Longsword);
 
         }
     }

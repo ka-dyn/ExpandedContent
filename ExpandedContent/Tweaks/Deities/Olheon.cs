@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -35,7 +36,6 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintFeature GlaiveProficiency = Resources.GetBlueprint<BlueprintFeature>("38d4d143e7f293249b72694ddb1e0a32");
             var OlheonIcon = AssetLoader.LoadInternal("Deities", "Icon_Olheon.jpg");
             var OlheonFeature = Helpers.CreateBlueprint<BlueprintFeature>("OlheonFeature", (bp => {
-
                 bp.SetName("Olheon");
                 bp.SetDescription("\nTitles: The Just Arbiter   " +
                     "\nAlignment: Lawful Good   " +
@@ -165,6 +165,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Olheon", OlheonFeature, WeaponCategory.Glaive);
 
         }
     }

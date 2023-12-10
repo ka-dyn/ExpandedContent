@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -33,7 +34,6 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintFeature StarknifeProficiency = Resources.GetBlueprint<BlueprintFeature>("7818ba3db79ac064e88fa14a2478b24b");
             var ChadaliIcon = AssetLoader.LoadInternal("Deities", "Icon_Chadali.jpg");
             var ChadaliFeature = Helpers.CreateBlueprint<BlueprintFeature>("ChadaliFeature", (bp => {
-
                 bp.SetName("Chadali");
                 bp.SetDescription("\nTitles: The Serendipitous Path   " +
                     "\nAlignment: Chaotic Good   " +
@@ -165,6 +165,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Chadali", ChadaliFeature, WeaponCategory.Starknife);
 
         }
     }

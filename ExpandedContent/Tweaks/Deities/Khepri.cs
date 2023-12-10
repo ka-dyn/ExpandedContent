@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -37,7 +38,6 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintFeature SlingStaffProficiency = Resources.GetBlueprint<BlueprintFeature>("a0be067e11f4d8345a8b57a92e52a301");
             var KhepriIcon = AssetLoader.LoadInternal("Deities", "Icon_Khepri.jpg");
             var KhepriFeature = Helpers.CreateBlueprint<BlueprintFeature>("KhepriFeature", (bp => {
-
                 bp.SetName("Khepri");
                 bp.SetDescription("\nTitles: The Humble Hand   " +
                     "\nAlignment: Neutral Good   " +
@@ -174,6 +174,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Khepri", KhepriFeature, WeaponCategory.SlingStaff);
 
         }
     }

@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -35,7 +36,6 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintFeature DartProficiency = Resources.GetBlueprint<BlueprintFeature>("f029268a6639a0745a849e5147734088");
             var IrezIcon = AssetLoader.LoadInternal("Deities", "Icon_Irez.jpg");
             var IrezFeature = Helpers.CreateBlueprint<BlueprintFeature>("IrezFeature", (bp => {
-
                 bp.SetName("Irez");
                 bp.SetDescription("\nTitles: Lady of Inscribed Wonder   " +
                     "\nAlignment: Neutral Good   " +
@@ -167,6 +167,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Irez", IrezFeature, WeaponCategory.Dart);
 
         }
     }

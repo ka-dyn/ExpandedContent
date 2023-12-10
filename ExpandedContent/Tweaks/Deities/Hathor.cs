@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -33,7 +34,6 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintFeature ShortswordProficiency = Resources.GetBlueprint<BlueprintFeature>("9e828934974f0fc4bbf7542eb0446e45");
             var HathorIcon = AssetLoader.LoadInternal("Deities", "Icon_Hathor.jpg");
             var HathorFeature = Helpers.CreateBlueprint<BlueprintFeature>("HathorFeature", (bp => {
-
                 bp.SetName("Hathor");
                 bp.SetDescription("\nTitles: Mistress of Jubilation   " +
                     "\nAlignment: Chaotic Good   " +
@@ -167,6 +167,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Hathor", HathorFeature, WeaponCategory.Shortsword);
 
         }
     }

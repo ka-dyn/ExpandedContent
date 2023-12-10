@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -35,7 +36,6 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintFeature HeavyPickProficiency = Resources.GetBlueprint<BlueprintFeature>("aeac272bf357c1247a51e9c56af7193b");
             var SoralyonIcon = AssetLoader.LoadInternal("Deities", "Icon_Soralyon.jpg");
             var SoralyonFeature = Helpers.CreateBlueprint<BlueprintFeature>("SoralyonFeature", (bp => {
-
                 bp.SetName("Soralyon");
                 bp.SetDescription("\nTitles: The Mystic Angel   " +
                     "\nAlignment: Neutral Good   " +
@@ -164,6 +164,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Soralyon", SoralyonFeature, WeaponCategory.HeavyPick);
 
         }
     }

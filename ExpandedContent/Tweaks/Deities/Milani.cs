@@ -9,6 +9,7 @@ using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.Blueprints.Classes.Spells;
+using Kingmaker.Enums;
 
 namespace ExpandedContent.Tweaks.Deities {
     static class Milani {
@@ -27,11 +28,6 @@ namespace ExpandedContent.Tweaks.Deities {
 
         public static void AddMilaniFeature() {
 
-
-
-
-
-            var MilaniSacredWeaponFeature = Resources.GetModBlueprint<BlueprintFeature>("MilaniSacredWeaponFeature");
             var DeitySelection = Resources.GetBlueprint<BlueprintFeatureSelection>("59e7a76987fe3b547b9cce045f4db3e4");
             BlueprintFeature LightMaceProficiency = Resources.GetBlueprint<BlueprintFeature>("d0a788c77b0eae948944fa424125c120");
             BlueprintFeature HeavyMaceProficiency = Resources.GetBlueprint<BlueprintFeature>("3f18330d717ea0148b496ee8cc291a60");
@@ -43,7 +39,6 @@ namespace ExpandedContent.Tweaks.Deities {
 
             var MilaniIcon = AssetLoader.LoadInternal("Deities", "Icon_Milani.jpg");
             var MilaniFeature = Helpers.CreateBlueprint<BlueprintFeature>("MilaniFeature", (bp => {
-
                 bp.SetName("Milani");
                 bp.SetDescription("\n<b>Titles</b>: The Everbloom   " +
                 "\nRealm(s): Refuge of the Red Rose, Axis/ Milani's Garden, Elysium   " +
@@ -69,7 +64,6 @@ namespace ExpandedContent.Tweaks.Deities {
                 "sits near the center of her former patron's realm. From here she gives aid to all those fighting oppression and evil, strives to mitigate " +
                 "the institutionalised inequality in Axis, and seeks to relocate the downtrodden to " +
                 "friendlier places.");
-
                 bp.m_Icon = MilaniIcon;
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;
@@ -182,11 +176,8 @@ namespace ExpandedContent.Tweaks.Deities {
                                 WarpriestClass.ToReference<BlueprintCharacterClassReference>()
                     };
                 });
-                bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[1] { MilaniSacredWeaponFeature.ToReference<BlueprintUnitFactReference>() };
-                });
             }));
-
+            DeityTools.LazySacredWeaponMaker("Milani", MilaniFeature, WeaponCategory.HeavyMace, WeaponCategory.LightMace);
         }
     }
 }

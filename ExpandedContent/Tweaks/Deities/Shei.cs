@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -35,7 +36,6 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintFeature SickleProficiency = Resources.GetBlueprint<BlueprintFeature>("7b4c0488057fa2e42b8a92bac3304eb9");
             var SheiIcon = AssetLoader.LoadInternal("Deities", "Icon_Shei.jpg");
             var SheiFeature = Helpers.CreateBlueprint<BlueprintFeature>("SheiFeature", (bp => {
-
                 bp.SetName("Shei");
                 bp.SetDescription("\nTitles: The Ibis Matron   " +
                     "\nAlignment: Neutral Good   " +
@@ -174,6 +174,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Shei", SheiFeature, WeaponCategory.Sickle);
 
         }
     }

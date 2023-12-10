@@ -7,6 +7,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -38,7 +39,6 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintFeature FlailProficiency = Resources.GetBlueprint<BlueprintFeature>("6d273f46bce2e0f47a0958810dc4c7d9");
             var AnubisIcon = AssetLoader.LoadInternal("Deities", "Icon_Anubis.jpg");
             var AnubisFeature = Helpers.CreateBlueprint<BlueprintFeature>("AnubisFeature", (bp => {
-
                 bp.SetName("Anubis");
                 bp.SetDescription("\nTitles: Guardian of the Tomb   " +
                     "\nAlignment: Lawful Neutral   " +
@@ -175,6 +175,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Anubis", AnubisFeature, WeaponCategory.Flail);
 
         }
     }

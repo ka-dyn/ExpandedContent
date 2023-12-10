@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -38,7 +39,6 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintFeature SickleProficiency = Resources.GetBlueprint<BlueprintFeature>("7b4c0488057fa2e42b8a92bac3304eb9");
             var ThothIcon = AssetLoader.LoadInternal("Deities", "Icon_Thoth.jpg");
             var ThothFeature = Helpers.CreateBlueprint<BlueprintFeature>("ThothFeature", (bp => {
-
                 bp.SetName("Thoth");
                 bp.SetDescription("\nTitles: Lord of Divine Words   " +
                     "\nAlignment: Lawful Neutral   " +
@@ -172,6 +172,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Thoth", ThothFeature, WeaponCategory.Sickle);
 
         }
     }

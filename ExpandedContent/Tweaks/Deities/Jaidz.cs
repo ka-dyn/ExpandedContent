@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -35,7 +36,6 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintFeature ShortswordProficiency = Resources.GetBlueprint<BlueprintFeature>("9e828934974f0fc4bbf7542eb0446e45");
             var JaidzIcon = AssetLoader.LoadInternal("Deities", "Icon_Jaidz.jpg");
             var JaidzFeature = Helpers.CreateBlueprint<BlueprintFeature>("JaidzFeature", (bp => {
-
                 bp.SetName("Jaidz");
                 bp.SetDescription("\nTitles: Fearless Claw   " +
                     "\nAlignment: Neutral Good   " +
@@ -169,6 +169,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Jaidz", JaidzFeature, WeaponCategory.Shortsword);
 
         }
     }

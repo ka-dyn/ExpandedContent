@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -34,7 +35,6 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintFeature LongswordProficiency = Resources.GetBlueprint<BlueprintFeature>("62e27ffd9d53e14479f73da29760f64e");
             var LymnierisIcon = AssetLoader.LoadInternal("Deities", "Icon_Lymnieris.jpg");
             var LymnierisFeature = Helpers.CreateBlueprint<BlueprintFeature>("LymnierisFeature", (bp => {
-
                 bp.SetName("Lymnieris");
                 bp.SetDescription("\nTitles: The Auroral Tower   " +
                     "\nAlignment: Lawful Good   " +
@@ -165,6 +165,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Lymnieris", LymnierisFeature, WeaponCategory.Longsword);
 
         }
     }

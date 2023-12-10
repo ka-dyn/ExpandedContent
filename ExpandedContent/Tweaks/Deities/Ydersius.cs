@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -34,7 +35,6 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintFeature DaggerProficiency = Resources.GetBlueprint<BlueprintFeature>("b776c19291928cf4184d4dc65f09f3a6");
             var YdersiusIcon = AssetLoader.LoadInternal("Deities", "Icon_Ydersius.jpg");
             var YdersiusFeature = Helpers.CreateBlueprint<BlueprintFeature>("YdersiusFeature", (bp => {
-
                 bp.SetName("Ydersius");
                 bp.SetDescription("\nTitles: The Headless King, Lord of Coiling Poison, the Father of Serpents   " +
                     "\nAlignment: Chaotic Evil   " +
@@ -157,6 +157,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Ydersius", YdersiusFeature, WeaponCategory.Dagger);
 
         }
     }

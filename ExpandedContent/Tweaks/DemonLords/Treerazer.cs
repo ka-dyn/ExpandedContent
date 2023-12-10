@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -33,7 +34,6 @@ namespace ExpandedContent.Tweaks.DemonLords {
             BlueprintFeature GreataxeProficiency = Resources.GetBlueprint<BlueprintFeature>("70ab8880eaf6c0640887ae586556a652");
             var TreerazerIcon = AssetLoader.LoadInternal("Deities", "Icon_Treerazer.jpg");
             var TreerazerFeature = Helpers.CreateBlueprint<BlueprintFeature>("TreerazerFeature", (bp => {
-
                 bp.SetName("Treerazer");
                 bp.SetDescription("\nTitles: Lord of the Blasted Tarn   " +
                     "\nAlignment: Chaotic Evil   " +
@@ -167,6 +167,7 @@ namespace ExpandedContent.Tweaks.DemonLords {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Treerazer", TreerazerFeature, WeaponCategory.Greataxe);
 
         }
     }

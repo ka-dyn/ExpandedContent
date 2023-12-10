@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -33,7 +34,6 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintFeature DartProficiency = Resources.GetBlueprint<BlueprintFeature>("f029268a6639a0745a849e5147734088");
             var PicoperiIcon = AssetLoader.LoadInternal("Deities", "Icon_Picoperi.jpg");
             var PicoperiFeature = Helpers.CreateBlueprint<BlueprintFeature>("PicoperiFeature", (bp => {
-
                 bp.SetName("Picoperi");
                 bp.SetDescription("\nTitles: Merrygleam   " +
                     "\nAlignment: Chaotic Good   " +
@@ -164,6 +164,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Picoperi", PicoperiFeature, WeaponCategory.Dart);
 
         }
     }

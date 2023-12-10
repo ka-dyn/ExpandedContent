@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -36,7 +37,6 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintFeature DartProficiency = Resources.GetBlueprint<BlueprintFeature>("f029268a6639a0745a849e5147734088");
             var YaezhingIcon = AssetLoader.LoadInternal("Deities", "Icon_Yaezhing.jpg");
             var YaezhingFeature = Helpers.CreateBlueprint<BlueprintFeature>("YaezhingFeature", (bp => {
-
                 bp.SetName("Yaezhing");
                 bp.SetDescription("\nTitles: Minister of Blood   " +
                     "\nAlignment: Lawful Evil   " +
@@ -167,6 +167,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Yaezhing", YaezhingFeature, WeaponCategory.Dart);
 
         }
     }

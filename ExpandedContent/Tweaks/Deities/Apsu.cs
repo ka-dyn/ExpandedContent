@@ -8,6 +8,7 @@ using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.Blueprints.Classes.Spells;
+using Kingmaker.Enums;
 
 namespace ExpandedContent.Tweaks.Deities {
     internal class Apsu {
@@ -36,7 +37,6 @@ namespace ExpandedContent.Tweaks.Deities {
 
             var ApsuIcon = AssetLoader.LoadInternal("Deities", "Icon_Apsu.jpg");
             var ApsuFeature = Helpers.CreateBlueprint<BlueprintFeature>("ApsuFeature", (bp => {
-
                 bp.SetName("Apsu");
                 bp.SetDescription("\nTitles: Waybringer, The Exiled Wyrm, Maker of All   " +
                 "\nRealm: Immortal Ambulatory, a traveling demi-plane   " +
@@ -177,8 +177,9 @@ namespace ExpandedContent.Tweaks.Deities {
                 });
 
             }));
+            DeityTools.LazySacredWeaponMaker("Apsu", ApsuFeature, WeaponCategory.Bite, WeaponCategory.Quarterstaff, WeaponCategory.UnarmedStrike);
 
- 
+
         }
     }
 }

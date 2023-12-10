@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -36,7 +37,6 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintFeature StarknifeProficiency = Resources.GetBlueprint<BlueprintFeature>("7818ba3db79ac064e88fa14a2478b24b");
             var MaatIcon = AssetLoader.LoadInternal("Deities", "Icon_Maat.jpg");
             var MaatFeature = Helpers.CreateBlueprint<BlueprintFeature>("MaatFeature", (bp => {
-
                 bp.SetName("Maat");
                 bp.SetDescription("\nTitles: The Feather of Truth   " +
                     "\nAlignment: Lawful Neutral   " +
@@ -174,6 +174,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Maat", MaatFeature, WeaponCategory.Starknife);
 
         }
     }

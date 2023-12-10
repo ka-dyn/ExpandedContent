@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -34,7 +35,6 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintFeature KukriProficiency = Resources.GetBlueprint<BlueprintFeature>("a7e822a8507e44b0a981ca55586dfad9");
             var TanagaarIcon = AssetLoader.LoadInternal("Deities", "Icon_Tanagaar.jpg");
             var TanagaarFeature = Helpers.CreateBlueprint<BlueprintFeature>("TanagaarFeature", (bp => {
-
                 bp.SetName("Tanagaar");
                 bp.SetDescription("\nTitles: The Aurulent Eye   " +
                     "\nAlignment: Lawful Good   " +
@@ -164,6 +164,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Tanagaar", TanagaarFeature, WeaponCategory.Kukri);
 
         }
     }

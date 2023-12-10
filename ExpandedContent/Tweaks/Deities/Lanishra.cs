@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -36,7 +37,6 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintFeature HeavyFlailProficiency = Resources.GetBlueprint<BlueprintFeature>("a22e30bd35fbb704cab2d7e3c00717c1");
             var LanishraIcon = AssetLoader.LoadInternal("Deities", "Icon_Lanishra.jpg");
             var LanishraFeature = Helpers.CreateBlueprint<BlueprintFeature>("LanishraFeature", (bp => {
-
                 bp.SetName("Lanishra");
                 bp.SetDescription("\nTitles: The Slavelord   " +
                     "\nAlignment: Chaotic Neutral   " +
@@ -167,6 +167,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Lanishra", LanishraFeature, WeaponCategory.HeavyFlail);
 
         }
     }

@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -35,7 +36,6 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintFeature SickleProficiency = Resources.GetBlueprint<BlueprintFeature>("7b4c0488057fa2e42b8a92bac3304eb9");
             var BharnarolIcon = AssetLoader.LoadInternal("Deities", "Icon_Bharnarol.jpg");
             var BharnarolFeature = Helpers.CreateBlueprint<BlueprintFeature>("BharnarolFeature", (bp => {
-
                 bp.SetName("Bharnarol");
                 bp.SetDescription("\nTitles: The Tempered Inventor   " +
                     "\nAlignment: Neutral Good   " +
@@ -168,6 +168,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Bharnarol", BharnarolFeature, WeaponCategory.Sickle);
 
         }
     }

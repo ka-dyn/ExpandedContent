@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -37,7 +38,6 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintFeature DoubleAxeProficiency = Resources.GetBlueprint<BlueprintFeature>("0ea5cf20b69aea44793043e1926e9057");
             var NulgrethIcon = AssetLoader.LoadInternal("Deities", "Icon_Nulgreth.jpg");
             var NulgrethFeature = Helpers.CreateBlueprint<BlueprintFeature>("NulgrethFeature", (bp => {
-
                 bp.SetName("Nulgreth");
                 bp.SetDescription("\nTitles: The Blood God   " +
                     "\nAlignment: Chaotic Evil   " +
@@ -171,6 +171,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Nulgreth", NulgrethFeature, WeaponCategory.DoubleAxe);
 
         }
     }

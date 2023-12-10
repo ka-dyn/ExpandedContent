@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -37,7 +38,6 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintFeature RapierProficiency = Resources.GetBlueprint<BlueprintFeature>("292d51f3d6a331644a8c29be0614f671");
             var BesmaraIcon = AssetLoader.LoadInternal("Deities", "Icon_Besmara.jpg");
             var BesmaraFeature = Helpers.CreateBlueprint<BlueprintFeature>("BesmaraFeature", (bp => {
-
                 bp.SetName("Besmara");
                 bp.SetDescription("\nTitles: The Pirate Queen   " +
                     "\nAlignment: Chaotic Neutral   " +
@@ -169,6 +169,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Besmara", BesmaraFeature, WeaponCategory.Rapier);
 
         }
     }

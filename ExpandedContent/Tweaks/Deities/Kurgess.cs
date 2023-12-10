@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -35,7 +36,6 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintFeature JavelinProficiency = Resources.GetBlueprint<BlueprintFeature>("8e85b6347caa4e84fa67d71f65a6a990");
             var KurgessIcon = AssetLoader.LoadInternal("Deities", "Icon_Kurgess.jpg");
             var KurgessFeature = Helpers.CreateBlueprint<BlueprintFeature>("KurgessFeature", (bp => {
-
                 bp.SetName("Kurgess");
                 bp.SetDescription("\nTitles: The Strong Man   " +
                     "\nAlignment: Neutral Good   " +
@@ -164,6 +164,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Kurgess", KurgessFeature, WeaponCategory.Javelin);
 
         }
     }

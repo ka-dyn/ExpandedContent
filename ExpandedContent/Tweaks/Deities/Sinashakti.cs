@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -33,7 +34,6 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintFeature ShortbowProficiency = Resources.GetBlueprint<BlueprintFeature>("e8096942d950c8843857c2545f8dc18f");
             var SinashaktiIcon = AssetLoader.LoadInternal("Deities", "Icon_Sinashakti.jpg");
             var SinashaktiFeature = Helpers.CreateBlueprint<BlueprintFeature>("SinashaktiFeature", (bp => {
-
                 bp.SetName("Sinashakti");
                 bp.SetDescription("\nTitles: Immaculate Joy, Walker of Worlds   " +
                     "\nAlignment: Chaotic Good   " +
@@ -164,6 +164,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Sinashakti", SinashaktiFeature, WeaponCategory.Shortbow);
 
         }
     }

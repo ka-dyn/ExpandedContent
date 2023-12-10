@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -39,7 +40,6 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintFeature DuelingswordProficiency = Resources.GetBlueprint<BlueprintFeature>("9c37279588fd9e34e9c4cb234857492c");
             var ShizuruIcon = AssetLoader.LoadInternal("Deities", "Icon_Shizuru.jpg");
             var ShizuruFeature = Helpers.CreateBlueprint<BlueprintFeature>("ShizuruFeature", (bp => {
-
                 bp.SetName("Shizuru");
                 bp.SetDescription("\nTitles: Empress of Heaven   " +
                     "\nAlignment: Lawful Good   " +
@@ -182,6 +182,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Shizuru", ShizuruFeature, WeaponCategory.Longsword, WeaponCategory.DuelingSword);
 
         }
     }

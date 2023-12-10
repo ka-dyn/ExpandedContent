@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -37,7 +38,6 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintFeature HeavyMaceProficiency = Resources.GetBlueprint<BlueprintFeature>("3f18330d717ea0148b496ee8cc291a60");
             var SezelrianIcon = AssetLoader.LoadInternal("Deities", "Icon_Sezelrian.jpg");
             var SezelrianFeature = Helpers.CreateBlueprint<BlueprintFeature>("SezelrianFeature", (bp => {
-
                 bp.SetName("Sezelrian");
                 bp.SetDescription("\nTitles: The Fire God   " +
                     "\nAlignment: Chaotic Evil   " +
@@ -168,6 +168,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Sezelrian", SezelrianFeature, WeaponCategory.HeavyMace);
 
         }
     }

@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -39,7 +40,6 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintFeature FalcataProficiency = Resources.GetBlueprint<BlueprintFeature>("91fe4440ac82dbf4383c872c065c6661");
             var HorusIcon = AssetLoader.LoadInternal("Deities", "Icon_Horus.jpg");
             var HorusFeature = Helpers.CreateBlueprint<BlueprintFeature>("HorusFeature", (bp => {
-
                 bp.SetName("Horus");
                 bp.SetDescription("\nTitles: The Distant Falcon, Horakhty   " +
                     "\nAlignment: Lawful Neutral   " +
@@ -181,6 +181,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Horus", HorusFeature, WeaponCategory.Falcata);
 
         }
     }

@@ -4,7 +4,10 @@ using ExpandedContent.Tweaks.Classes;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Prerequisites;
+using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.FactLogic;
+using Kingmaker.UnitLogic.Mechanics.Components;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -195,6 +198,41 @@ namespace ExpandedContent.Utilities {
                 c.HideInUI = true;
                 c.m_CharacterClass = ShamanClass;
                 c.m_Archetype = ProphetOfPestilenceArchetype;
+            });
+        }
+        public static void AddSacredWeapon(this BlueprintFeature feature, WeaponCategory weapon) {
+            BlueprintFeatureReference WeaponFeature = Resources.GetBlueprintReference<BlueprintFeatureReference>("bae328694ee21bc4587c5ffd0035b6a2");
+            BlueprintBuffReference Buff1d6 = Resources.GetBlueprintReference<BlueprintBuffReference>("75a3eaf9cff6acd4a8385ba91ffa329a");
+            BlueprintBuffReference Buff1d8 = Resources.GetBlueprintReference<BlueprintBuffReference>("06ad6a85cfd5b694c88bdc0eabf8ba16");
+            BlueprintBuffReference Buff1d10 = Resources.GetBlueprintReference<BlueprintBuffReference>("e62b125c9f49b084b95a487a6bfb1b7c");
+            BlueprintBuffReference Buff2d6 = Resources.GetBlueprintReference<BlueprintBuffReference>("2ffb1848e52e6144d8bb3536c024366e");
+            BlueprintBuffReference Buff2d8 = Resources.GetBlueprintReference<BlueprintBuffReference>("a3a655c948afb674882577674644e816");
+            feature.AddComponent<SacredWeaponFavoriteDamageOverride>(c => {
+                c.Category = weapon;
+                c.m_DeaitySacredWeaponFeature = WeaponFeature;
+                c.m_Buff1d6 = Buff1d6;
+                c.m_Buff1d8 = Buff1d8;
+                c.m_Buff1d10 = Buff1d10;
+                c.m_Buff2d6 = Buff2d6;
+                c.m_Buff2d8 = Buff2d8;
+            });
+        }
+        public static void LazySacredWeaponMaker(string deityname, BlueprintFeature deity, params WeaponCategory[] weapon) {
+            BlueprintFeature WeaponFeature = Resources.GetBlueprint<BlueprintFeature>("bae328694ee21bc4587c5ffd0035b6a2");
+            var sacredweaponsfeature = Helpers.CreateBlueprint<BlueprintFeature>($"{deityname}SacredWeaponFeature", bp => {
+                foreach (var weaponcategory in weapon) { bp.AddSacredWeapon(weaponcategory); }
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.HideInUI = true;
+            });
+            deity.AddComponent<AddFeatureIfHasFact>(c => {
+                c.m_CheckedFact = WeaponFeature.ToReference<BlueprintUnitFactReference>();
+                c.m_Feature = sacredweaponsfeature.ToReference<BlueprintUnitFactReference>();
+                c.Not = false;
+            });
+            WeaponFeature.AddComponent<AddFeatureIfHasFact>(c => {
+                c.m_CheckedFact = deity.ToReference<BlueprintUnitFactReference>();
+                c.m_Feature = sacredweaponsfeature.ToReference<BlueprintUnitFactReference>();
+                c.Not = false;
             });
         }
     }

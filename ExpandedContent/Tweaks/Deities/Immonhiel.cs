@@ -6,6 +6,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
@@ -33,7 +34,6 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintFeature HandaxeProficiency = Resources.GetBlueprint<BlueprintFeature>("c59205a5d18930d4b88b74d2acda2f49");
             var ImmonhielIcon = AssetLoader.LoadInternal("Deities", "Icon_Immonhiel.jpg");
             var ImmonhielFeature = Helpers.CreateBlueprint<BlueprintFeature>("ImmonhielFeature", (bp => {
-
                 bp.SetName("Immonhiel");
                 bp.SetDescription("\nTitles: Balm-Bringer   " +
                     "\nAlignment: Chaotic Good   " +
@@ -166,6 +166,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
             }));
+            DeityTools.LazySacredWeaponMaker("Immonhiel", ImmonhielFeature, WeaponCategory.Handaxe);
 
         }
     }
