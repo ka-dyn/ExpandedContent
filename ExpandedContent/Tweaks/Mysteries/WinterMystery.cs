@@ -598,7 +598,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.EffectOnAlly = AbilityEffectOnUnit.None;
                 bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
-                bp.ActionType = UnitCommand.CommandType.Standard;
+                bp.ActionType = UnitCommand.CommandType.Swift;
                 bp.AvailableMetamagic = 0;
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
