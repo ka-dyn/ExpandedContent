@@ -1680,6 +1680,9 @@
     <Content Include="Assets\Skills\Icon_OracleSuccorMystery.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Skills\Icon_OracleWinterMystery.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Skills\Icon_OracleWoodMystery.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

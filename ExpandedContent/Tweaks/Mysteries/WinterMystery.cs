@@ -443,6 +443,18 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.IsClassFeature = false;
                 bp.m_Flags = 0;
                 bp.Stacking = StackingType.Replace;
+                bp.FxOnStart = new PrefabLink() { AssetId = "4828572a4d3cd3547bf5ff2e9e62ee1d" };
+            });
+            OracleRevelationColdAuraBuff.FxOnStart = OracleRevelationColdAuraBuff.FxOnStart.CreateDynamicProxy(pfl => {
+                Main.Log($"Editing: {pfl}");
+                pfl.name = "ColdAura_10feetAoE";
+                Main.Log($"{FxDebug.DumpGameObject(pfl.gameObject)}");
+                Object.DestroyImmediate(pfl.transform.Find("Ring (1)/GameObject/Ring1/Rotator/FireTrailParticles (1)").gameObject);
+                Object.DestroyImmediate(pfl.transform.Find("Ring (1)/GameObject/Ring1/Rotator/Glow (2)").gameObject);
+                Object.DestroyImmediate(pfl.transform.Find("Ring (1)/GameObject/Ring1/Rotator/Warhead (1)").gameObject);
+                Object.DestroyImmediate(pfl.transform.Find("Ring (1)/GameObject/Ring2/Rotator (1)/FireTrailParticles (2)").gameObject);
+                Object.DestroyImmediate(pfl.transform.Find("Ring (1)/GameObject/Ring2/Rotator (1)/Glow (3)").gameObject);
+                Object.DestroyImmediate(pfl.transform.Find("Ring (1)/GameObject/Ring2/Rotator (1)/Warhead (2)").gameObject);
             });
             var OracleRevelationColdAuraAbility = Helpers.CreateBlueprint<BlueprintAbility>("OracleRevelationColdAuraAbility", bp => {
                 bp.SetName("Cold Aura");
@@ -576,7 +588,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     c.OrientationMode = AbilitySpawnFxOrientation.Copy;
                 });
                 bp.m_Icon = CycloneBlizzardBlastAbility.Icon;
-                bp.Type = AbilityType.Spell;
+                bp.Type = AbilityType.Supernatural;
                 bp.Range = AbilityRange.Personal;
                 bp.CanTargetPoint = false;
                 bp.CanTargetEnemies = false;
@@ -586,18 +598,11 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.EffectOnAlly = AbilityEffectOnUnit.None;
                 bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
-                bp.ActionType = UnitCommand.CommandType.Swift;
+                bp.ActionType = UnitCommand.CommandType.Standard;
                 bp.AvailableMetamagic = 0;
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
-            });
-            var OracleRevelationColdAuraAbilitySpawnFx = OracleRevelationColdAuraAbility.GetComponent<AbilitySpawnFx>();
-            OracleRevelationColdAuraAbilitySpawnFx.PrefabLink = OracleRevelationColdAuraAbilitySpawnFx.PrefabLink.CreateDynamicProxy(pfl => {
-                Main.Log($"Editing: {pfl}");
-                pfl.name = "ColdAura_10feetAoE";
-                Main.Log($"{FxDebug.DumpGameObject(pfl.gameObject)}");
-                pfl.transform.localScale = new(0.55f, 1.0f, 0.55f); // Scale from 20ft to 10ft
-            });
+            });            
             var OracleRevelationColdAuraFeature = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationColdAuraFeature", bp => {
                 bp.SetName("Cold Aura");
                 bp.SetDescription("As a swift action, you can cause waves of cold to radiate from your body. This cold deals 1d6 points of cold damage " +
@@ -665,15 +670,12 @@ namespace ExpandedContent.Tweaks.Mysteries {
             var NaturalArmor3 = Resources.GetBlueprint<BlueprintUnitFact>("f6e106931f95fec4eb995f0d0629fb84");
             var NaturalArmor4 = Resources.GetBlueprint<BlueprintUnitFact>("16fc201a83edcde4cbd64c291ebe0d07");
             var NaturalArmor8 = Resources.GetBlueprint<BlueprintUnitFact>("b9342e2a6dc5165489ba3412c50ca3d1");
-
             var AttackAiAction = Resources.GetBlueprint<BlueprintAiAttack>("866ffa6c34000cd4a86fb1671f86c7d8");
             var AirElementalFollowEnemyAiAction = Resources.GetBlueprint<BlueprintAiFollow>("565c49da5aa97274a9e93bb7c2a6868e");
-
             var ServantOfWinterSummonPool = Helpers.CreateBlueprint<BlueprintSummonPool>("ServantOfWinterSummonPool", bp => {
                 bp.Limit = 0;
                 bp.DoNotRemoveDeadUnits = false;
             });
-
             var BlizzardServantSpike1d6 = Resources.GetBlueprintReference<BlueprintItemWeaponReference>("a5563e20044d40118c41707485780432");
             var BlizzardElementalSpike2d6 = Resources.GetBlueprint<BlueprintItemWeapon>("821e2a36aef04627b7a21e4a42fe477e");
             var BlizzardElementalSpike3d6 = Helpers.CreateBlueprint<BlueprintItemWeapon>("BlizzardElementalSpike3d6", bp => {
@@ -724,10 +726,8 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.m_IsCanChangeVisualOverriden = false;
                 bp.m_CanChangeVisual = false;
             });
-
             var AirElementalInWhirlind = Resources.GetBlueprintReference<BlueprintBuffReference>("8b1b723a20f644c469b99bd541a13a3b");
             var AirElementalMediumWhirlwindAbility = Resources.GetBlueprint<BlueprintAbility>("1e6e67c961c493243a2077a0dc9a73df");
-
             var SummonedBlizzardElementalWhirlwindDebuff = Helpers.CreateBuff("SummonedBlizzardElementalWhirlwindDebuff", bp => {
                 bp.SetName("Whirlwind of Hail");
                 bp.SetDescription("Some creatures can transform themselves into whirlwinds and remain in that form for up to 1 {g|Encyclopedia:Combat_Round}round{/g} " +
@@ -760,7 +760,6 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.TickEachSecond = false;
                 bp.Frequency = DurationRate.Rounds;
             });
-
             var SummonedBlizzardElementalMediumWhirlwindArea = Helpers.CreateBlueprint<BlueprintAbilityAreaEffect>("SummonedBlizzardElementalMediumWhirlwindArea", bp => {
                 bp.AddComponent<AbilityAreaEffectRunAction>(c => {
                     c.UnitEnter = Helpers.CreateActionList(
@@ -1412,7 +1411,6 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.Size = new Feet() { m_Value = 20 };
                 bp.Fx = new PrefabLink() { AssetId = "ce1b2aff16a040145bc24cfc388783d3" };
             });
-
             var NumbingColdFeature = Resources.GetBlueprint<BlueprintFeature>("3c91012b5a084c8c833a3afb6a138d92");
             var Staggered = Resources.GetBlueprintReference<BlueprintBuffReference>("df3950af5a783bd4d91ab73eb8fa0fd3");
             var SummonedNumbingColdDCProperty = Helpers.CreateBlueprint<BlueprintUnitProperty>("SummonedNumbingColdDCProperty", bp => {
@@ -2302,14 +2300,14 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     SummonedBlizzardElementalNumbingColdFeature.ToReference<BlueprintUnitFactReference>()
                 };
             });
-
+            var SummonElementalElderAir = Resources.GetBlueprint<BlueprintAbility>("333efbf776ab61c4da53e9622751d95f");
             var OracleRevelationServantOfWinterAbility = Helpers.CreateBlueprint<BlueprintAbility>("OracleRevelationServantOfWinterAbility", bp => {
                 bp.SetName("Servant of Winter");
                 bp.SetDescription("As a full-round action, you can summon a single blizzard elemental to serve you. At 7th level, you can summon a Medium blizzard elemental. " +
                     "At 11th level, you can summon a Huge blizzard elemental. At 15th level, you can summon an elder blizzard elemental. You can use this ability once per day, " +
                     "plus one additional time per day at 15th level. The blizzard elemental serves you for one full day, unless dismissed or another is summoned. You must be at " +
                     "least 7th level before selecting this revelation.");
-                bp.m_Icon = SummonNaturesAllyIcon;
+                bp.m_Icon = SummonElementalElderAir.Icon;
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.SavingThrowType = SavingThrowType.Unknown;
                     c.Actions = Helpers.CreateActionList(
@@ -2492,6 +2490,15 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.IsClassFeature = true;
             });
             OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationServantOfWinterFeature.ToReference<BlueprintFeatureReference>());
+
+            MysteryTools.RegisterMystery(OracleWinterMysteryFeature);
+            MysteryTools.RegisterSecondMystery(OracleWinterMysteryFeature);
+            MysteryTools.RegisterEnlightendPhilosopherMystery(EnlightnedPhilosopherWinterMysteryFeature);
+            MysteryTools.RegisterSecondEnlightendPhilosopherMystery(EnlightnedPhilosopherWinterMysteryFeature);
+            MysteryTools.RegisterHerbalistMystery(DivineHerbalistWinterMysteryFeature);
+            MysteryTools.RegisterSecondHerbalistMystery(DivineHerbalistWinterMysteryFeature);
+            MysteryTools.RegisterOceansEchoMystery(OceansEchoWinterMysteryFeature);
+            MysteryTools.RegisterSecondOceansEchoMystery(OceansEchoWinterMysteryFeature);
 
         }
     }
