@@ -46,7 +46,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     "\nSubdomains: Archon, Cooperation, Defense, Fortifications, Tactics   " +
                     "\nFavoured Weapon: Longspear   " +
                     "\nHoly Symbol: Gauntlet and briars   " +
-                    "\nSacred Animal: Gloden eagle   " +
+                    "\nSacred Animal: Golden eagle   " +
                     "\nArqueros protects his charges against corruption and evil, providing a testament to what the stalwart can accomplish. " +
                     "Many seek the protection of the Golden Bulwark, but only a chosen few earn his measured attention. It's not " +
                     "always clear why the Golden Bulwark takes on a particular charge, but when he does, he protects this chosen individual " +
