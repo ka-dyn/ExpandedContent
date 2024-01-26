@@ -931,7 +931,7 @@ namespace ExpandedContent.Tweaks.Spirits {
                 bp.AddComponent<ContextRankConfig>(c => {
                     c.m_Type = AbilityRankType.DamageDice;
                     c.m_BaseValueType = ContextRankBaseValueType.StatBonus;
-                    c.m_Stat = StatType.Charisma;
+                    c.m_Stat = StatType.Wisdom;
                     c.m_SpecificModifier = ModifierDescriptor.None;
                     c.m_Progression = ContextRankProgression.AsIs;
                     c.m_StartLevel = 0;
@@ -941,7 +941,7 @@ namespace ExpandedContent.Tweaks.Spirits {
                 });
                 bp.AddComponent<AddContextStatBonus>(c => {
                     c.Descriptor = ModifierDescriptor.UntypedStackable;
-                    c.Stat = StatType.SkillLoreNature;
+                    c.Stat = StatType.SkillUseMagicDevice;
                     c.Multiplier = 1;
                     c.Value = new ContextValue() {
                         ValueType = ContextValueType.Rank,
@@ -955,21 +955,7 @@ namespace ExpandedContent.Tweaks.Spirits {
                 });
                 bp.AddComponent<AddContextStatBonus>(c => {
                     c.Descriptor = ModifierDescriptor.UntypedStackable;
-                    c.Stat = StatType.SkillLoreReligion;
-                    c.Multiplier = 1;
-                    c.Value = new ContextValue() {
-                        ValueType = ContextValueType.Rank,
-                        Value = 0,
-                        ValueRank = AbilityRankType.DamageDice,
-                        ValueShared = AbilitySharedValue.Damage,
-                        Property = UnitProperty.None
-                    };
-                    c.HasMinimal = false;
-                    c.Minimal = 0;
-                });
-                bp.AddComponent<AddContextStatBonus>(c => {
-                    c.Descriptor = ModifierDescriptor.UntypedStackable;
-                    c.Stat = StatType.SkillPerception;
+                    c.Stat = StatType.SkillPersuasion;
                     c.Multiplier = 1;
                     c.Value = new ContextValue() {
                         ValueType = ContextValueType.Rank,
@@ -983,7 +969,7 @@ namespace ExpandedContent.Tweaks.Spirits {
                 });
                 bp.AddComponent<RecalculateOnStatChange>(c => {
                     c.UseKineticistMainStat = false;
-                    c.Stat = StatType.Charisma;
+                    c.Stat = StatType.Wisdom;
                 });
                 bp.m_Flags = BlueprintBuff.Flags.StayOnDeath | BlueprintBuff.Flags.HiddenInUi;
                 bp.Stacking = StackingType.Replace;
@@ -992,7 +978,7 @@ namespace ExpandedContent.Tweaks.Spirits {
             });
             var ShamanHexGuidingStarSkillFeature = Helpers.CreateBlueprint<BlueprintFeature>("ShamanHexGuidingStarSkillFeature", bp => {
                 bp.SetName("Guiding Star - Skill Bonus");
-                bp.SetDescription("The stars themselves hold many answers, you may add your Charisma modifier to your Wisdom modifier on all Wisdom-based checks.");
+                bp.SetDescription("The stars themselves hold many answers, you may add your Wisdom modifier to your Charisma modifier on all Charisma-based skill checks.");
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] { ShamanHexGuidingStarSkillBuff.ToReference<BlueprintUnitFactReference>() };
                 });
@@ -1244,7 +1230,7 @@ namespace ExpandedContent.Tweaks.Spirits {
             });
             var ShamanHexGuidingStarFeature = Helpers.CreateBlueprint<BlueprintFeature>("ShamanHexGuidingStarFeature", bp => {
                 bp.SetName("Guiding Star");
-                bp.SetDescription("The stars themselves hold many answers, you may add your Charisma modifier to your Wisdom modifier on all Wisdom-based checks. In addition, once per day you can " +
+                bp.SetDescription("The stars themselves hold many answers, you may add your Wisdom modifier to your Charisma modifier on all Charisma-based skill checks. In addition, once per day you can " +
                     "cast one spell as if it were modified by the Empower Spell or Extend Spell feat without increasing the spell’s casting time or level.");
                 bp.m_Icon = GuidingStarIcon;
                 bp.AddComponent<AddFacts>(c => {
