@@ -406,7 +406,7 @@
     <Compile Include="Tweaks\FourHorsemen\Apollyon.cs" />
     <Compile Include="Tweaks\FourHorsemen\Charon.cs" />
     <Compile Include="Tweaks\FourHorsemen\Szuriel.cs" />
-    <Compile Include="Tweaks\FourHorsemen\Terlmarixian.cs" />
+    <Compile Include="Tweaks\FourHorsemen\Trelmarixian.cs" />
     <Compile Include="Tweaks\Miscellaneous\AlchemistDiscoveries\PheromonesDiscovery.cs" />
     <Compile Include="Tweaks\Miscellaneous\AlchemistDiscoveries\HealingTouchDiscovery.cs" />
     <Compile Include="Tweaks\Miscellaneous\AlchemistDiscoveries\MindchemistSkillDiscovery.cs" />
@@ -605,6 +605,9 @@
     <Content Include="Assets\Deities\Icon_Apep.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Deities\Icon_Apollyon.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Deities\Icon_Apsu.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -669,6 +672,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Chadali.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Charon.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_ChaugnarFaugn.jpg">
@@ -1040,6 +1046,9 @@
     <Content Include="Assets\Deities\Icon_Ssilameshnik.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Deities\Icon_Szuriel.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Deities\Icon_Tanagaar.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -1071,6 +1080,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Treerazer.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Trelmarixian.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Tsathoggua.jpg">

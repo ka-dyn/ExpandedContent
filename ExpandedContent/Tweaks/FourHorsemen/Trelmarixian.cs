@@ -11,7 +11,7 @@ using Kingmaker.Blueprints;
 using Kingmaker.Designers.Mechanics.Facts;
 
 namespace ExpandedContent.Tweaks.FourHorsemen {
-    internal class Apollyon {
+    internal class Trelmarixian {
         private static readonly BlueprintSpellbook CrusaderSpellbook = Resources.GetBlueprint<BlueprintSpellbook>("673d39f7da699aa408cdda6282e7dcc0");
         private static readonly BlueprintSpellbook ClericSpellbook = Resources.GetBlueprint<BlueprintSpellbook>("4673d19a0cf2fab4f885cc4d1353da33");
         private static readonly BlueprintSpellbook InquisitorSpellbook = Resources.GetBlueprint<BlueprintSpellbook>("57fab75111f377248810ece84193a5a5");
@@ -23,20 +23,20 @@ namespace ExpandedContent.Tweaks.FourHorsemen {
         private static readonly BlueprintFeature MythicIgnoreAlignmentRestrictions = Resources.GetBlueprint<BlueprintFeature>("24e78475f0a243e1a810452d14d0a1bd");
 
 
-        public static void AddApollyonFeature() {
+        public static void AddTrelmarixianFeature() {
 
 
             BlueprintArchetype FeralChampionArchetype = Resources.GetBlueprint<BlueprintArchetype>("f68ca492c9c15e241ab73735fbd0fb9f");
             BlueprintArchetype PriestOfBalance = Resources.GetBlueprint<BlueprintArchetype>("a4560e3fb5d247d68fb1a2738fcc0855");
             BlueprintArchetype MantisZealotArchetype = Resources.GetModBlueprint<BlueprintArchetype>("MantisZealotArchetype");
             BlueprintArchetype ClawOfTheFalseWyrmArchetype = Resources.GetModBlueprint<BlueprintArchetype>("ClawOfTheFalseWyrmArchetype");
-            BlueprintItem MasterworkScythe = Resources.GetBlueprint<BlueprintItem>("4546c8236b5e9b74c8d692a923ab3f9a");
-            BlueprintFeature ScytheProficiency = Resources.GetBlueprint<BlueprintFeature>("96c174b0ebca7b246b82d4bc4aac4574");
-            var ApollyonIcon = AssetLoader.LoadInternal("Deities", "Icon_Apollyon.jpg");
-            var ApollyonFeature = Helpers.CreateBlueprint<BlueprintFeature>("ApollyonFeature", bp => {
-                bp.SetName("Apollyon");
+            BlueprintItem MasterworkPunchingdagger = Resources.GetBlueprint<BlueprintItem>("4eadc3edae4500a4c972b61cad66add8");
+            BlueprintFeature PunchingdaggerProficiency = Resources.GetBlueprint<BlueprintFeature>("a13839f75ac30cc48945c96ef1c98e1c");
+            var TrelmarixianIcon = AssetLoader.LoadInternal("Deities", "Icon_Trelmarixian.jpg");
+            var TrelmarixianFeature = Helpers.CreateBlueprint<BlueprintFeature>("TrelmarixianFeature", bp => {
+                bp.SetName("Trelmarixian");
                 bp.SetDescription("");
-                bp.m_Icon = ApollyonIcon;
+                bp.m_Icon = TrelmarixianIcon;
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;
                 bp.HideInCharacterSheetAndLevelUp = false;
@@ -56,17 +56,19 @@ namespace ExpandedContent.Tweaks.FourHorsemen {
                     };
                 });
                 bp.SetAllowedDomains(
-                    DeityTools.DomainAllowed.AirDomainAllowed,
-                    DeityTools.DomainAllowed.DarknessDomainAllowed,
-                    DeityTools.DomainAllowed.DestructionDomainAllowed,
+                    DeityTools.DomainAllowed.EarthDomainAllowed,
                     DeityTools.DomainAllowed.EvilDomainAllowed,
+                    DeityTools.DomainAllowed.MadnessDomainAllowed,
+                    DeityTools.DomainAllowed.WeatherDomainAllowed,
+                    DeityTools.SeparatistDomainAllowed.AirDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.AnimalDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.ArtificeDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.ChaosDomainAllowedSeparatist,//Chaos
                     DeityTools.SeparatistDomainAllowed.CharmDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.CommunityDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.DarknessDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.DeathDomainAllowedSeparatist,
-                    DeityTools.SeparatistDomainAllowed.EarthDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.DestructionDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.FireDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.GloryDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.HealingDomainAllowedSeparatist,
@@ -75,7 +77,6 @@ namespace ExpandedContent.Tweaks.FourHorsemen {
                     DeityTools.SeparatistDomainAllowed.LawDomainAllowedSeparatist,//Lawful
                     DeityTools.SeparatistDomainAllowed.LiberationDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.LuckDomainAllowedSeparatist,
-                    DeityTools.SeparatistDomainAllowed.MadnessDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.MagicDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.NobilityDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.PlantDomainAllowedSeparatist,
@@ -89,7 +90,6 @@ namespace ExpandedContent.Tweaks.FourHorsemen {
                     DeityTools.SeparatistDomainAllowed.UndeadDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.WarDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.WaterDomainAllowedSeparatist,
-                    DeityTools.SeparatistDomainAllowed.WeatherDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.ArchonDomainLawAllowedSeparatist,//Lawful
                     DeityTools.SeparatistDomainAllowed.BloodDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.CavesDomainAllowedSeparatist,
@@ -131,7 +131,7 @@ namespace ExpandedContent.Tweaks.FourHorsemen {
                 });
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>();
-                    c.m_Feature = ScytheProficiency.ToReference<BlueprintFeatureReference>();
+                    c.m_Feature = PunchingdaggerProficiency.ToReference<BlueprintFeatureReference>();
                     c.Level = 1;
                     c.m_Archetypes = null;
                     c.m_AdditionalClasses = new BlueprintCharacterClassReference[2] {
@@ -139,7 +139,7 @@ namespace ExpandedContent.Tweaks.FourHorsemen {
                                WarpriestClass.ToReference<BlueprintCharacterClassReference>() };
                 });
                 bp.AddComponent<AddStartingEquipment>(c => {
-                    c.m_BasicItems = new BlueprintItemReference[1] { MasterworkScythe.ToReference<BlueprintItemReference>() };
+                    c.m_BasicItems = new BlueprintItemReference[1] { MasterworkPunchingdagger.ToReference<BlueprintItemReference>() };
                     c.m_RestrictedByClass = new BlueprintCharacterClassReference[3] {
                                 ClericClass.ToReference<BlueprintCharacterClassReference>(),
                                 InquistorClass.ToReference<BlueprintCharacterClassReference>(),
@@ -147,7 +147,7 @@ namespace ExpandedContent.Tweaks.FourHorsemen {
                     };
                 });
             });
-            DeityTools.LazySacredWeaponMaker("Apollyon", ApollyonFeature, WeaponCategory.Scythe);
+            DeityTools.LazySacredWeaponMaker("Trelmarixian", TrelmarixianFeature, WeaponCategory.PunchingDagger);
 
         }
     }
