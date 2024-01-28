@@ -35,7 +35,18 @@ namespace ExpandedContent.Tweaks.FourHorsemen {
             var ApollyonIcon = AssetLoader.LoadInternal("Deities", "Icon_Apollyon.jpg");
             var ApollyonFeature = Helpers.CreateBlueprint<BlueprintFeature>("ApollyonFeature", bp => {
                 bp.SetName("Apollyon");
-                bp.SetDescription("");
+                bp.SetDescription("\nTitles: Horseman of Pestilence, Prince of Locusts, Prince of Plagues" +
+                    "\nAlignment: Neutral Evil " +
+                    "\nAreas of Concern: Pestilence " +
+                    "\nDomains: Air, Darkness, Destruction, Evil " +
+                    "\nSubdomains: Catastrophe, Daemon, Loss, Night, Plague " +
+                    "\nFavoured Weapon: Scythe " +
+                    "\nHoly Symbol: Diseased yellow scythe " +
+                    "\nSacred Animal: Horse, rat   " +
+                    "\nApollyon, the Horseman of Pestilence, takes the form of a pockmarked giant with the head of a diseased ram. " +
+                    "His pustule-covered body is wrapped in a cloak made from the stitched-together skins of angels, and his bow spreads " +
+                    "disease wherever its arrows fall. Whether from his throne of bone and flesh or atop his bleeding, ulcerated mount, " +
+                    "the Horseman of Pestilence and his skull-headed deacons spread disease like wildfire across the worlds of the Material Plane.");
                 bp.m_Icon = ApollyonIcon;
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;

@@ -147,8 +147,6 @@ namespace ExpandedContent.Tweaks.Deities {
             var GroetusFeature = Resources.GetBlueprint<BlueprintFeature>("c3e4d5681906d5246ab8b0637b98cbfe");
             var NaderiFeature = Resources.GetModBlueprint<BlueprintFeature>("NaderiFeature");
 
-
-
             //Philosophies
             var GreenFaithFeature = Resources.GetBlueprint<BlueprintFeature>("99a7a8f13c1300c42878558fa9471e2f");
             var GreenFaithCameliaFeature = Resources.GetBlueprint<BlueprintFeature>("ca763809e01f4247a3639965364c26cb");
@@ -172,7 +170,6 @@ namespace ExpandedContent.Tweaks.Deities {
             var MammonFeature = Resources.GetModBlueprint<BlueprintFeature>("MammonFeature");
             var MephistophelesFeature = Resources.GetModBlueprint<BlueprintFeature>("MephistophelesFeature");
             var MolochFeature = Resources.GetModBlueprint<BlueprintFeature>("MolochFeature");
-
 
             //The Eldest
             var CountRanalcFeature = Resources.GetModBlueprint<BlueprintFeature>("CountRanalcFeature");
@@ -242,6 +239,12 @@ namespace ExpandedContent.Tweaks.Deities {
             var VargFeature = Resources.GetModBlueprint<BlueprintFeature>("VargFeature");
             var VerexFeature = Resources.GetModBlueprint<BlueprintFeature>("VerexFeature");
             var ZagreshFeature = Resources.GetModBlueprint<BlueprintFeature>("ZagreshFeature");
+
+            //Four Horsemen
+            var ApollyonFeature = Resources.GetModBlueprint<BlueprintFeature>("ApollyonFeature");
+            var CharonFeature = Resources.GetModBlueprint<BlueprintFeature>("CharonFeature");
+            var SzurielFeature = Resources.GetModBlueprint<BlueprintFeature>("SzurielFeature");
+            var TrelmarixianFeature = Resources.GetModBlueprint<BlueprintFeature>("TrelmarixianFeature");
 
 
             var DeitySelection = Resources.GetBlueprint<BlueprintFeatureSelection>("59e7a76987fe3b547b9cce045f4db3e4");
@@ -623,9 +626,28 @@ namespace ExpandedContent.Tweaks.Deities {
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
                 bp.Group = FeatureGroup.Deities;
             });
-
-
-
+            var FourHorsemenIcon = AssetLoader.LoadInternal("Deities", "Icon_FourHorsemen.jpg");
+            var FourHorsemenSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("FourHorsemenSelection", bp => {
+                bp.SetName("The Four Horsemen");
+                bp.SetDescription("At the end of the River Styx await the rulers of Abaddon: the Four Horsemen of the Apocalypse " +
+                    "and their daemonic brood. Hatred for living things fuels all of daemonkind, who see existence as a great mistake. " +
+                    "Though all of the Horsemen began their lives as mortals, they are completely devoted to the eradication of reality " +
+                    "itself. Riding atop their dreaded steeds, they strive for true apocalypse. Only when all life has been snuffed " +
+                    "out does their mission end, and they can then consign themselves to the waiting oblivion. \nOnly the truly nihilistic " +
+                    "worship the Horsemen. Those who seek vengeance on all the world or lust for power are drawn to the Horsemen's easy " +
+                    "promises, thinking they will be spared from their masters' cataclysmic mission. They never are. To the Horsemen, " +
+                    "their followers are entirely disposable, tools with a purpose until they too are devoured.");
+                bp.m_Icon = FourHorsemenIcon;
+                bp.m_AllFeatures = new BlueprintFeatureReference[] {
+                    ApollyonFeature.ToReference<BlueprintFeatureReference>(),
+                    CharonFeature.ToReference<BlueprintFeatureReference>(),
+                    SzurielFeature.ToReference<BlueprintFeatureReference>(),
+                    TrelmarixianFeature.ToReference<BlueprintFeatureReference>()
+                };
+                bp.IsClassFeature = true;
+                bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
+                bp.Group = FeatureGroup.Deities;
+            });
 
             var DeitySelectionIcon = AssetLoader.LoadInternal("Deities", "Icon_DeitySelection.jpg");
             DeitySelection.m_Icon = DeitySelectionIcon;
@@ -723,6 +745,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     ValmallosFeature.ToReference<BlueprintFeatureReference>(),
                 };
             });
+            #region Stuff no longer needed but kept in case I need to add a toggle
             //var Seelah = Resources.GetBlueprint<BlueprintUnit>("54be53f0b35bf3c4592a97ae335fe765");
             //Seelah.AddComponent<AddFacts>(c => {
             //    c.m_Facts = new BlueprintUnitFactReference[] { IomedaeFeature.ToReference<BlueprintUnitFactReference>() };
@@ -783,6 +806,7 @@ namespace ExpandedContent.Tweaks.Deities {
             //Rekarth.AddComponent<AddFacts>(c => {
             //    c.m_Facts = new BlueprintUnitFactReference[] { CalistriaFeature.ToReference<BlueprintUnitFactReference>() };
             //});
+            #endregion
         }
         public static void ArchdevilsToggle() {
             if (ModSettings.AddedContent.Deities.IsDisabled("Archdevils")) { return; }
@@ -855,6 +879,12 @@ namespace ExpandedContent.Tweaks.Deities {
             var DeitySelection = Resources.GetBlueprint<BlueprintFeatureSelection>("59e7a76987fe3b547b9cce045f4db3e4");
             var DeitiesSelection = Resources.GetModBlueprint<BlueprintFeatureSelection>("DeitiesSelection");
             DeitySelection.m_AllFeatures = DeitySelection.m_AllFeatures.AddToArray(DeitiesSelection.ToReference<BlueprintFeatureReference>());
+        }
+        public static void FourHorsemenToggle() {
+            if (ModSettings.AddedContent.Deities.IsDisabled("The Four Horsemen")) { return; }
+            var DeitySelection = Resources.GetBlueprint<BlueprintFeatureSelection>("59e7a76987fe3b547b9cce045f4db3e4");
+            var FourHorsemenSelection = Resources.GetModBlueprint<BlueprintFeatureSelection>("FourHorsemenSelection");
+            DeitySelection.m_AllFeatures = DeitySelection.m_AllFeatures.AddToArray(FourHorsemenSelection.ToReference<BlueprintFeatureReference>());
         }
     }
 }

@@ -35,7 +35,18 @@ namespace ExpandedContent.Tweaks.FourHorsemen {
             var TrelmarixianIcon = AssetLoader.LoadInternal("Deities", "Icon_Trelmarixian.jpg");
             var TrelmarixianFeature = Helpers.CreateBlueprint<BlueprintFeature>("TrelmarixianFeature", bp => {
                 bp.SetName("Trelmarixian");
-                bp.SetDescription("");
+                bp.SetDescription("\nTitles: Horseman of Famine, The Black, Archdaemon of Wasting, The Lysogenic Prince" +
+                    "\nAlignment: Neutral Evil " +
+                    "\nAreas of Concern: Famine " +
+                    "\nDomains: Earth, Evil, Madness, Weather " +
+                    "\nSubdomains: Daemon, Decay, Insanity, Seasons " +
+                    "\nFavoured Weapon: Spiked gauntlet (punching dagger) " +
+                    "\nHoly Symbol: Black jackal skull eating an eclipsed sun " +
+                    "\nSacred Animal: Horse, jackal   " +
+                    "\nThe youngest and most ambitious of the Four, Trelmarixian the Black is the Horseman of Famine, devoted to seeing all " +
+                    "mortal life waste away before his eyes. Jackal-headed, with the emaciated body of a starving man and thin, fluid flesh " +
+                    "with no shape of its own, Trelmarixian specializes in cancers and other forms of selfconsumption, helping to infect " +
+                    "mortal life with his essence and other maladies that turn the body against itself, causing famine from within."); 
                 bp.m_Icon = TrelmarixianIcon;
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;

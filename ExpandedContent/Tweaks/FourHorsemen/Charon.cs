@@ -35,7 +35,19 @@ namespace ExpandedContent.Tweaks.FourHorsemen {
             var CharonIcon = AssetLoader.LoadInternal("Deities", "Icon_Charon.jpg");
             var CharonFeature = Helpers.CreateBlueprint<BlueprintFeature>("CharonFeature", bp => {
                 bp.SetName("Charon");
-                bp.SetDescription("");
+                bp.SetDescription("\nTitles: Horseman of Death, The Boatman, The Boatman of the Styx, Lord of Death" +
+                    "\nAlignment: Neutral Evil " +
+                    "\nAreas of Concern: Death " +
+                    "\nDomains: Death, Evil, Knowledge, Water " +
+                    "\nSubdomains: Daemon, Ice, Memory, Undead " +
+                    "\nFavoured Weapon: Quarterstaff " +
+                    "\nHoly Symbol: Skull with coins on eyes " +
+                    "\nSacred Animal: Horse, raven   " +
+                    "\nThe Horseman of Death plies the River Styx in his skiff, offering souls passage—for a price. Representing " +
+                    "death by old ageand natural causes, Charon can afford to be the most patient and cunning of the Four, as " +
+                    "he knows that, in the end, all those evil souls untouched by other gods and creeds will end up on the banks " +
+                    "of his river, waiting for him to consume them. The origins of Charon, the oldest of the Horsemen, are shrouded " +
+                    "in mystery, and he’s happy to keep them that way.");
                 bp.m_Icon = CharonIcon;
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;

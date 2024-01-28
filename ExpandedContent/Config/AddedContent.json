@@ -451,6 +451,11 @@
         "Enabled": false,
         "Homebrew": false,
         "Description": "Adds the lich commander as a deity option."
+      },
+      "The Four Horsemen": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds The Four Horsemen of Abaddon as deity options."
       }
     },
     "IsExpanded": false

@@ -379,6 +379,11 @@ namespace ExpandedContent.Tweaks {
                 Deities.Varg.AddVargFeature();
                 Deities.Verex.AddVerexFeature();
                 Deities.Zagresh.AddZagreshFeature();
+
+                FourHorsemen.Apollyon.AddApollyonFeature();
+                FourHorsemen.Charon.AddCharonFeature();
+                FourHorsemen.Szuriel.AddSzurielFeature();
+                FourHorsemen.Trelmarixian.AddTrelmarixianFeature();
                 
                 Deities.PatchLichDeity.AddLichDeity();
                 Deities.DeitySelectionFeature.PatchDeitySelection();
@@ -394,6 +399,7 @@ namespace ExpandedContent.Tweaks {
                 Deities.DeitySelectionFeature.TheElderMythosToggle();
                 Deities.DeitySelectionFeature.OrcPantheonToggle();
                 Deities.DeitySelectionFeature.InnerSeaDeitiesregionToggle();
+                Deities.DeitySelectionFeature.FourHorsemenToggle();
             }
             [HarmonyPriority(Priority.Last)]
             [HarmonyPostfix]

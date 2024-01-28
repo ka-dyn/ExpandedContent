@@ -746,6 +746,9 @@
     <Content Include="Assets\Deities\Icon_Findeladlara.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Deities\Icon_FourHorsemen.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Deities\Icon_Fumeiyoshi.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

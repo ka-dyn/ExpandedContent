@@ -35,7 +35,19 @@ namespace ExpandedContent.Tweaks.FourHorsemen {
             var SzurielIcon = AssetLoader.LoadInternal("Deities", "Icon_Szuriel.jpg");
             var SzurielFeature = Helpers.CreateBlueprint<BlueprintFeature>("SzurielFeature", bp => {
                 bp.SetName("Szuriel");
-                bp.SetDescription("");
+                bp.SetDescription("\nTitles: Horseman of War, Angel of Desolation, Seraph of Devastation" +
+                    "\nAlignment: Neutral Evil " +
+                    "\nAreas of Concern: War " +
+                    "\nDomains: Evil, Fire, Strength, War " +
+                    "\nSubdomains: Blood, Daemon, Ferocity, Tactics " +
+                    "\nFavoured Weapon: Greatsword " +
+                    "\nHoly Symbol: Pale hand and black sword " +
+                    "\nSacred Animal: Horse, vulture   " +
+                    "\nLike an enormous weeping angel, the Horseman of War stands triumphant over the battlefield, blood running in " +
+                    "rivers down the black blade of her terrible sword. She is no leader of the righteous, but a warrior for the sake " +
+                    "of making war. Under her banner, the vulture-headed purrodaemons lead great crusades against existence itself, " +
+                    "laying waste to entire worlds, bound to their grim campaign until the cosmos finally heaves its last convulsive " +
+                    "breath and expires into nothingness."); 
                 bp.m_Icon = SzurielIcon;
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;
