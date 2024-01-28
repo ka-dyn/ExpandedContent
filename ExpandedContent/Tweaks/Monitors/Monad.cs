@@ -145,11 +145,14 @@ namespace ExpandedContent.Tweaks.Monitors {
                     DeityTools.SeparatistDomainAllowed.WindDomainAllowedSeparatist
                 );
                 bp.AddComponent<ForbidSpellbookOnAlignmentDeviation>(c => {
-                    c.m_Spellbooks = new BlueprintSpellbookReference[1] { CrusaderSpellbook.ToReference<BlueprintSpellbookReference>() };
-                    c.m_Spellbooks = new BlueprintSpellbookReference[1] { ClericSpellbook.ToReference<BlueprintSpellbookReference>() };
-                    c.m_Spellbooks = new BlueprintSpellbookReference[1] { InquisitorSpellbook.ToReference<BlueprintSpellbookReference>() };
+                    c.m_Spellbooks = new BlueprintSpellbookReference[] {
+                        CrusaderSpellbook.ToReference<BlueprintSpellbookReference>(),
+                        ClericSpellbook.ToReference<BlueprintSpellbookReference>(),
+                        InquisitorSpellbook.ToReference<BlueprintSpellbookReference>()
+                    };
+                    c.m_IgnoreFact = MythicIgnoreAlignmentRestrictions.ToReference<BlueprintUnitFactReference>();
+                    c.Alignment = AlignmentMaskType.NeutralGood | AlignmentMaskType.LawfulNeutral | AlignmentMaskType.TrueNeutral | AlignmentMaskType.ChaoticNeutral | AlignmentMaskType.NeutralEvil;
                 });
-
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_Feature = ImprovedUnarmedStrike.ToReference<BlueprintFeatureReference>();

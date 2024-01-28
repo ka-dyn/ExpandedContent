@@ -147,12 +147,15 @@ namespace ExpandedContent.Tweaks.DemonLords {
                     DeityTools.SeparatistDomainAllowed.WindDomainAllowedSeparatist
                 );
                 bp.AddComponent<ForbidSpellbookOnAlignmentDeviation>(c => {
-					c.m_Spellbooks = new BlueprintSpellbookReference[1] { CrusaderSpellbook.ToReference<BlueprintSpellbookReference>() };
-					c.m_Spellbooks = new BlueprintSpellbookReference[1] { ClericSpellbook.ToReference<BlueprintSpellbookReference>() };
-					c.m_Spellbooks = new BlueprintSpellbookReference[1] { InquisitorSpellbook.ToReference<BlueprintSpellbookReference>() };
-				});
-
-				bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Spellbooks = new BlueprintSpellbookReference[] {
+                        CrusaderSpellbook.ToReference<BlueprintSpellbookReference>(),
+                        ClericSpellbook.ToReference<BlueprintSpellbookReference>(),
+                        InquisitorSpellbook.ToReference<BlueprintSpellbookReference>()
+                    };
+                    c.m_IgnoreFact = MythicIgnoreAlignmentRestrictions.ToReference<BlueprintUnitFactReference>();
+                    c.Alignment = AlignmentMaskType.ChaoticEvil | AlignmentMaskType.NeutralEvil | AlignmentMaskType.ChaoticNeutral | AlignmentMaskType.TrueNeutral;
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
 					c.m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>();
 
 
