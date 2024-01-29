@@ -33,6 +33,8 @@ using Kingmaker.Designers.EventConditionActionSystem.Actions;
 using Kingmaker.ElementsSystem;
 using Kingmaker.UnitLogic.Mechanics.Conditions;
 using Kingmaker.Designers.Mechanics.Buffs;
+using ExpandedContent.Tweaks.Classes.DrakeClass;
+using Kingmaker.UI.UnitSettings.Blueprints;
 
 namespace ExpandedContent.Tweaks.Archetypes {
     internal class ChildOfAcavnaAndAmaznen {
@@ -54,6 +56,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var WeaponTrainingRankUpSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("5f3cc7b9a46b880448275763fe70c0b0");
 
             var DwarfRace = Resources.GetBlueprint<BlueprintRace>("c4faf439f0e70bd40b5e36ee80d06be7");
+            var IconSR = AssetLoader.LoadInternal("Skills", "Icon_SR.png");
 
 
 
@@ -70,11 +73,11 @@ namespace ExpandedContent.Tweaks.Archetypes {
 
             var ChildOfAcavnaAndAmaznenDailyTable = Helpers.CreateBlueprint<BlueprintSpellsTable>("ChildOfAcavnaAndAmaznenDailyTable", bp => {
                 bp.Levels = new SpellsLevelEntry[] {
-                        SpellTools.CreateSpellLevelEntry(0),//0
-                        SpellTools.CreateSpellLevelEntry(0),//1
-                        SpellTools.CreateSpellLevelEntry(0),//2
-                        SpellTools.CreateSpellLevelEntry(0),//3
-                        SpellTools.CreateSpellLevelEntry(0),
+                        SpellTools.CreateSpellLevelEntry(),//0
+                        SpellTools.CreateSpellLevelEntry(0,0),//1
+                        SpellTools.CreateSpellLevelEntry(0,0),//2
+                        SpellTools.CreateSpellLevelEntry(0,0),//3
+                        SpellTools.CreateSpellLevelEntry(0,0),
                         SpellTools.CreateSpellLevelEntry(0,1),//5
                         SpellTools.CreateSpellLevelEntry(0,1),
                         SpellTools.CreateSpellLevelEntry(0,1,0),//7
@@ -91,10 +94,11 @@ namespace ExpandedContent.Tweaks.Archetypes {
                         SpellTools.CreateSpellLevelEntry(0,4,3,2,2),//18
                         SpellTools.CreateSpellLevelEntry(0,4,3,3,2),
                         SpellTools.CreateSpellLevelEntry(0,4,4,3,3)//20
-                    };
+                };
             });
             var ChildOfAcavnaAndAmaznenSpellbook = Helpers.CreateBlueprint<BlueprintSpellbook>("ChildOfAcavnaAndAmaznenSpellbook", bp => {
                 bp.Name = Helpers.CreateString($"ChildOfAcavnaAndAmaznenSpellbook.Name", "Child of Acavna and Amaznen");
+                bp.IsMythic = false;
                 bp.m_SpellsPerDay = ChildOfAcavnaAndAmaznenDailyTable.ToReference<BlueprintSpellsTableReference>();
                 bp.m_SpellList = BloodragerSpellList;
                 bp.m_CharacterClass = FighterClass.ToReference<BlueprintCharacterClassReference>();
@@ -175,9 +179,23 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = true;
             });
+
+
+            var ChildOfAcavnaAndAmaznenSpellLock = Helpers.CreateBlueprint<BlueprintFeature>("ChildOfAcavnaAndAmaznenSpellLock", bp => {
+                bp.SetName("Spell lock before lvl 5");
+                bp.SetDescription("");
+                bp.AddComponent<ForbidSpellbook>(c => {
+                    c.m_Spellbook = ChildOfAcavnaAndAmaznenSpellbook.ToReference<BlueprintSpellbookReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.HideInUI = true;
+            });
             var ChildOfAcavnaAndAmaznenProficiencies = Helpers.CreateBlueprint<BlueprintFeature>("ChildOfAcavnaAndAmaznenProficiencies", bp => {
                 bp.SetName("Child of Acavna and Amaznen Proficiencies");
-                bp.SetDescription("A child of Acavna and Amaznen is proficient with all simple weapons, one-handed martial weapons, all armor (heavy, light, and medium) and shields (excluding tower shields).");
+                bp.SetDescription("A child of Acavna and Amaznen is proficient with all simple weapons, one-handed martial weapons, all armor (heavy, light, " +
+                    "and medium) and shields (excluding tower shields).");
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] {
                         LightArmorProficiency.ToReference<BlueprintUnitFactReference>(),
@@ -190,6 +208,23 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = true;
             });
+            var ChildOfAcavnaAndAmaznenDelayedCasting = Helpers.CreateBlueprint<BlueprintFeature>("ChildOfAcavnaAndAmaznenDelayedCasting", bp => {
+                bp.SetName("Student of Spellcasting");
+                bp.SetDescription("The child of Acavna and Amaznen gains a spellbook starting with spells from the bloodrager spelllist equal to 3 + their Intelligence modifier. " +
+                    "\nWhile they are unable to cast these spells before 5th level, they may add one additional per level and copy spells from scrolls into the spellbook until then.");                
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.BeforeThisLevel = true;
+                    c.Level = 5;
+                    c.m_Class = FighterClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetypes = new BlueprintArchetypeReference[] { ChildOfAcavnaAndAmaznenArchetype.ToReference<BlueprintArchetypeReference>() };
+                    c.m_Feature = ChildOfAcavnaAndAmaznenSpellLock.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_Icon = IconSR;
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+
+            var DismissAreaEffectSpell = Resources.GetBlueprint<BlueprintAbility>("97a23111df7547fd8f6417f9ba9b9775");
 
             var AcidSplashSpell = Resources.GetBlueprint<BlueprintAbility>("0c852a2405dd9f14a8bbcfaf245ff823");
             var RayOfFrostSpell = Resources.GetBlueprint<BlueprintAbility>("9af2ab69df6538f4793b2f9c3cc85603");
@@ -201,13 +236,10 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var MageLightSpell = Resources.GetBlueprint<BlueprintAbility>("95f206566c5261c42aa5b3e7e0d1e36c");
             var DisruptUndeadSpell = Resources.GetBlueprint<BlueprintAbility>("652739779aa05504a9ad5db1db6d02ae");
             var FlareSpell = Resources.GetBlueprint<BlueprintAbility>("f0f8e5b9808f44e4eadd22b138131d52");
-            var DismissAreaEffectSpell = Resources.GetBlueprint<BlueprintAbility>("97a23111df7547fd8f6417f9ba9b9775");
 
-            var LoreOfAcavnaAndAmaznenFeature = Helpers.CreateBlueprint<BlueprintFeature>("LoreOfAcavnaAndAmaznenFeature", bp => {
-                bp.SetName("Lore of Acavna and Amaznen");
-                bp.SetDescription("At 2nd level, a child of Acavna and Amaznen is further initiated into the arcane secrets passed down from Azlant. This gives her minor spellcasting abilities and access " +
-                    "to lore collected to give her an edge against the enemies of humanity.\nThe child of Acavna and Amaznen gains a spellbook containing wizard cantrips. She can prepare and cast these " +
-                    "spells as a wizard, using her fighter level as her caster level.\nShe also gains a +2 bonus on Knowledge checks.");
+            var LoreOfAcavnaAndAmaznenHiddenCantrips = Helpers.CreateBlueprint<BlueprintFeature>("LoreOfAcavnaAndAmaznenHiddenCantrips", bp => {
+                bp.SetName("Lore of Acavna and Amaznen Hidden");
+                bp.SetDescription("");
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] {
                         AcidSplashSpell.ToReference<BlueprintUnitFactReference>(),
@@ -221,6 +253,8 @@ namespace ExpandedContent.Tweaks.Archetypes {
                         FlareSpell.ToReference<BlueprintUnitFactReference>(),
                         DismissAreaEffectSpell.ToReference<BlueprintUnitFactReference>()
                     };
+                    c.CasterLevel = 0;
+                    c.DoNotRestoreMissingFacts = false;
                 });
                 bp.AddComponent<LearnSpells>(c => {
                     c.m_CharacterClass = FighterClass.ToReference<BlueprintCharacterClassReference>();
@@ -233,7 +267,8 @@ namespace ExpandedContent.Tweaks.Archetypes {
                         TouchOfFatigueSpell.ToReference<BlueprintAbilityReference>(),
                         MageLightSpell.ToReference<BlueprintAbilityReference>(),
                         DisruptUndeadSpell.ToReference<BlueprintAbilityReference>(),
-                        FlareSpell.ToReference<BlueprintAbilityReference>()
+                        FlareSpell.ToReference<BlueprintAbilityReference>(),
+                        DismissAreaEffectSpell.ToReference<BlueprintAbilityReference>()
                     };
                 });
                 bp.AddComponent<BindAbilitiesToClass>(c => {
@@ -256,12 +291,70 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.Odd = false;
                     c.FullCasterChecks = true;
                 });
-                bp.AddComponent<LearnSpells>(c => {
+                bp.AddComponent<AddKnownSpell>(c => {
                     c.m_CharacterClass = FighterClass.ToReference<BlueprintCharacterClassReference>();
-                    c.m_Spells = new BlueprintAbilityReference[] {
-                        DismissAreaEffectSpell.ToReference<BlueprintAbilityReference>()
-                    };
+                    c.m_Archetype = ChildOfAcavnaAndAmaznenArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.SpellLevel = 0;
+                    c.m_Spell = AcidSplashSpell.ToReference<BlueprintAbilityReference>();
                 });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = FighterClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = ChildOfAcavnaAndAmaznenArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.SpellLevel = 0;
+                    c.m_Spell = FlareSpell.ToReference<BlueprintAbilityReference>();
+                });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = FighterClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = ChildOfAcavnaAndAmaznenArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.SpellLevel = 0;
+                    c.m_Spell = RayOfFrostSpell.ToReference<BlueprintAbilityReference>();
+                });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = FighterClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = ChildOfAcavnaAndAmaznenArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.SpellLevel = 0;
+                    c.m_Spell = JoltSpell.ToReference<BlueprintAbilityReference>();
+                });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = FighterClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = ChildOfAcavnaAndAmaznenArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.SpellLevel = 0;
+                    c.m_Spell = DazeSpell.ToReference<BlueprintAbilityReference>();
+                });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = FighterClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = ChildOfAcavnaAndAmaznenArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.SpellLevel = 0;
+                    c.m_Spell = ResistanceSpell.ToReference<BlueprintAbilityReference>();
+                });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = FighterClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = ChildOfAcavnaAndAmaznenArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.SpellLevel = 0;
+                    c.m_Spell = TouchOfFatigueSpell.ToReference<BlueprintAbilityReference>();
+                });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = FighterClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = ChildOfAcavnaAndAmaznenArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.SpellLevel = 0;
+                    c.m_Spell = MageLightSpell.ToReference<BlueprintAbilityReference>();
+                });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = FighterClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = ChildOfAcavnaAndAmaznenArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.SpellLevel = 0;
+                    c.m_Spell = DisruptUndeadSpell.ToReference<BlueprintAbilityReference>();
+                });
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+            var LoreOfAcavnaAndAmaznenFeature = Helpers.CreateBlueprint<BlueprintFeature>("LoreOfAcavnaAndAmaznenFeature", bp => {
+                bp.SetName("Lore of Acavna and Amaznen");
+                bp.SetDescription("At 2nd level, a child of Acavna and Amaznen is further initiated into the arcane secrets passed down from Azlant. This gives her minor spellcasting abilities and access " +
+                    "to lore collected to give her an edge against the enemies of humanity.\nThe child of Acavna and Amaznen gains the ability to cast 4 cantrips as spell-like abilities, bypassing their " + 
+                    "normal inability to cast spells. \nShe also gains a +2 bonus on Knowledge checks.");                
                 bp.AddComponent<AddStatBonus>(c => {
                     c.Descriptor = ModifierDescriptor.UntypedStackable;
                     c.Stat = StatType.SkillKnowledgeArcana;
@@ -274,10 +367,514 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 });
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;
-                
-
             });
 
+            var SpelllikeAcidSplashAbility = Helpers.CreateBlueprint<BlueprintAbility>("SpelllikeAcidSplashAbility", bp => {
+                bp.m_DisplayName = AcidSplashSpell.m_DisplayName;
+                bp.m_Description = AcidSplashSpell.m_Description;
+                bp.m_Icon = AcidSplashSpell.m_Icon;
+                bp.Type = AbilityType.SpellLike;
+                bp.Range = AbilityRange.Close;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = true;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Directional;
+                bp.HasFastAnimation = false;
+                bp.m_TargetMapObjects = true;
+                bp.ActionType = UnitCommand.CommandType.Standard;
+                bp.AvailableMetamagic = 0;
+                bp.m_IsFullRoundAction = false;
+                bp.LocalizedDuration = AcidSplashSpell.LocalizedDuration;
+                bp.LocalizedSavingThrow = AcidSplashSpell.LocalizedSavingThrow;
+                bp.Components = AcidSplashSpell.Components;
+                bp.RemoveComponents<SpellListComponent>();
+                bp.RemoveComponents<CantripComponent>();
+                bp.RemoveComponents<ActionPanelLogic>();
+            });
+            var SpelllikeRayOfFrostAbility = Helpers.CreateBlueprint<BlueprintAbility>("SpelllikeRayOfFrostAbility", bp => {
+                bp.m_DisplayName = RayOfFrostSpell.m_DisplayName;
+                bp.m_Description = RayOfFrostSpell.m_Description;
+                bp.m_Icon = RayOfFrostSpell.m_Icon;
+                bp.Type = AbilityType.SpellLike;
+                bp.Range = AbilityRange.Close;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = true;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = true;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Directional;
+                bp.HasFastAnimation = false;
+                bp.m_TargetMapObjects = true;
+                bp.ActionType = UnitCommand.CommandType.Standard;
+                bp.AvailableMetamagic = 0;
+                bp.m_IsFullRoundAction = false;
+                bp.LocalizedDuration = RayOfFrostSpell.LocalizedDuration;
+                bp.LocalizedSavingThrow = RayOfFrostSpell.LocalizedSavingThrow;
+                bp.Components = RayOfFrostSpell.Components;
+                bp.RemoveComponents<SpellListComponent>();
+                bp.RemoveComponents<CantripComponent>();
+                bp.RemoveComponents<ActionPanelLogic>();
+            });
+            var SpelllikeJoltAbility = Helpers.CreateBlueprint<BlueprintAbility>("SpelllikeJoltAbility", bp => {
+                bp.m_DisplayName = JoltSpell.m_DisplayName;
+                bp.m_Description = JoltSpell.m_Description;
+                bp.m_Icon = JoltSpell.m_Icon;
+                bp.Type = AbilityType.SpellLike;
+                bp.Range = AbilityRange.Close;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = true;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = true;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Directional;
+                bp.HasFastAnimation = false;
+                bp.m_TargetMapObjects = true;
+                bp.ActionType = UnitCommand.CommandType.Standard;
+                bp.AvailableMetamagic = 0;
+                bp.m_IsFullRoundAction = false;
+                bp.LocalizedDuration = JoltSpell.LocalizedDuration;
+                bp.LocalizedSavingThrow = JoltSpell.LocalizedSavingThrow;
+                bp.Components = JoltSpell.Components;
+                bp.RemoveComponents<SpellListComponent>();
+                bp.RemoveComponents<CantripComponent>();
+            });
+            var SpelllikeDazeAbility = Helpers.CreateBlueprint<BlueprintAbility>("SpelllikeDazeAbility", bp => {
+                bp.m_DisplayName = DazeSpell.m_DisplayName;
+                bp.m_Description = DazeSpell.m_Description;
+                bp.m_Icon = DazeSpell.m_Icon;
+                bp.Type = AbilityType.SpellLike;
+                bp.Range = AbilityRange.Close;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = true;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.ShouldTurnToTarget = true;
+                bp.SpellResistance = true;
+                bp.IgnoreSpellResistanceForAlly = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Point;
+                bp.HasFastAnimation = false;
+                bp.m_TargetMapObjects = false;
+                bp.ActionType = UnitCommand.CommandType.Standard;
+                bp.AvailableMetamagic = 0;
+                bp.m_IsFullRoundAction = false;
+                bp.LocalizedDuration = DazeSpell.LocalizedDuration;
+                bp.LocalizedSavingThrow = DazeSpell.LocalizedSavingThrow;
+                bp.Components = DazeSpell.Components;
+                bp.RemoveComponents<SpellListComponent>();
+                bp.RemoveComponents<CantripComponent>();
+            });
+            var SpelllikeResistanceAbility = Helpers.CreateBlueprint<BlueprintAbility>("SpelllikeResistanceAbility", bp => {
+                bp.m_DisplayName = ResistanceSpell.m_DisplayName;
+                bp.m_Description = ResistanceSpell.m_Description;
+                bp.m_Icon = ResistanceSpell.m_Icon;
+                bp.Type = AbilityType.SpellLike;
+                bp.Range = AbilityRange.Touch;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = true;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Touch;
+                bp.HasFastAnimation = false;
+                bp.m_TargetMapObjects = false;
+                bp.ActionType = UnitCommand.CommandType.Standard;
+                bp.AvailableMetamagic = 0;
+                bp.m_IsFullRoundAction = false;
+                bp.LocalizedDuration = ResistanceSpell.LocalizedDuration;
+                bp.LocalizedSavingThrow = ResistanceSpell.LocalizedSavingThrow;
+                bp.Components = ResistanceSpell.Components;
+                bp.RemoveComponents<SpellListComponent>();
+                bp.RemoveComponents<CantripComponent>();
+            });
+            var SpelllikeTouchOfFatigueAbility = Helpers.CreateBlueprint<BlueprintAbility>("SpelllikeTouchOfFatigueAbility", bp => {
+                bp.m_DisplayName = TouchOfFatigueSpell.m_DisplayName;
+                bp.m_Description = TouchOfFatigueSpell.m_Description;
+                bp.m_Icon = TouchOfFatigueSpell.m_Icon;
+                bp.Type = AbilityType.SpellLike;
+                bp.Range = AbilityRange.Touch;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = true;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = true;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Self;
+                bp.HasFastAnimation = false;
+                bp.m_TargetMapObjects = false;
+                bp.ActionType = UnitCommand.CommandType.Standard;
+                bp.AvailableMetamagic = 0;
+                bp.m_IsFullRoundAction = false;
+                bp.LocalizedDuration = TouchOfFatigueSpell.LocalizedDuration;
+                bp.LocalizedSavingThrow = TouchOfFatigueSpell.LocalizedSavingThrow;
+                bp.Components = TouchOfFatigueSpell.Components;
+                bp.RemoveComponents<SpellListComponent>();
+                bp.RemoveComponents<CantripComponent>();
+                bp.RemoveComponents<ActionPanelLogic>();
+            });
+            var SpelllikeMageLightAbility = Helpers.CreateBlueprint<BlueprintAbility>("SpelllikeMageLightAbility", bp => {
+                bp.m_DisplayName = MageLightSpell.m_DisplayName;
+                bp.m_Description = MageLightSpell.m_Description;
+                bp.m_Icon = MageLightSpell.m_Icon;
+                bp.Type = AbilityType.SpellLike;
+                bp.Range = AbilityRange.Touch;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = true;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Touch;
+                bp.HasFastAnimation = false;
+                bp.m_TargetMapObjects = false;
+                bp.ActionType = UnitCommand.CommandType.Standard;
+                bp.AvailableMetamagic = 0;
+                bp.m_IsFullRoundAction = false;
+                bp.LocalizedDuration = MageLightSpell.LocalizedDuration;
+                bp.LocalizedSavingThrow = MageLightSpell.LocalizedSavingThrow;
+                bp.Components = MageLightSpell.Components;
+                bp.RemoveComponents<SpellListComponent>();
+                bp.RemoveComponents<CantripComponent>();
+            });
+            var SpelllikeDisruptUndeadAbility = Helpers.CreateBlueprint<BlueprintAbility>("SpelllikeDisruptUndeadAbility", bp => {
+                bp.m_DisplayName = DisruptUndeadSpell.m_DisplayName;
+                bp.m_Description = DisruptUndeadSpell.m_Description;
+                bp.m_Icon = DisruptUndeadSpell.m_Icon;
+                bp.Type = AbilityType.SpellLike;
+                bp.Range = AbilityRange.Close;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = true;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = true;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Directional;
+                bp.HasFastAnimation = false;
+                bp.m_TargetMapObjects = true;
+                bp.ActionType = UnitCommand.CommandType.Standard;
+                bp.AvailableMetamagic = 0;
+                bp.m_IsFullRoundAction = false;
+                bp.LocalizedDuration = DisruptUndeadSpell.LocalizedDuration;
+                bp.LocalizedSavingThrow = DisruptUndeadSpell.LocalizedSavingThrow;
+                bp.Components = DisruptUndeadSpell.Components;
+                bp.RemoveComponents<SpellListComponent>();
+                bp.RemoveComponents<CantripComponent>();
+            });
+            var SpelllikeFlareAbility = Helpers.CreateBlueprint<BlueprintAbility>("SpelllikeFlareAbility", bp => {
+                bp.m_DisplayName = FlareSpell.m_DisplayName;
+                bp.m_Description = FlareSpell.m_Description;
+                bp.m_Icon = FlareSpell.m_Icon;
+                bp.Type = AbilityType.SpellLike;
+                bp.Range = AbilityRange.Close;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = true;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = true;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Point;
+                bp.HasFastAnimation = false;
+                bp.m_TargetMapObjects = false;
+                bp.ActionType = UnitCommand.CommandType.Standard;
+                bp.AvailableMetamagic = 0;
+                bp.m_IsFullRoundAction = false;
+                bp.LocalizedDuration = FlareSpell.LocalizedDuration;
+                bp.LocalizedSavingThrow = FlareSpell.LocalizedSavingThrow;
+                bp.Components = FlareSpell.Components;
+                bp.RemoveComponents<SpellListComponent>();
+                bp.RemoveComponents<CantripComponent>();
+            });            
+
+            var SpelllikeAcidSplashFeature = Helpers.CreateBlueprint<BlueprintFeature>("SpelllikeAcidSplashFeature", bp => {
+                bp.SetName("SpelllikeAcidSplashFeature");
+                bp.SetDescription("");
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        SpelllikeAcidSplashAbility.ToReference<BlueprintUnitFactReference>(),
+                    };
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+            });
+            var SpelllikeAcidSplashFeatureDisabler = Helpers.CreateBlueprint<BlueprintFeature>("SpelllikeAcidSplashFeatureDisabler", bp => {
+                bp.m_DisplayName = AcidSplashSpell.m_DisplayName;
+                bp.m_Description = AcidSplashSpell.m_Description;
+                bp.m_Icon = AcidSplashSpell.m_Icon;
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.BeforeThisLevel = true;
+                    c.Level = 5;
+                    c.m_Class = FighterClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetypes = new BlueprintArchetypeReference[] { ChildOfAcavnaAndAmaznenArchetype.ToReference<BlueprintArchetypeReference>() };
+                    c.m_Feature = SpelllikeAcidSplashFeature.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+            var SpelllikeRayOfFrostFeature = Helpers.CreateBlueprint<BlueprintFeature>("SpelllikeRayOfFrostFeature", bp => {
+                bp.SetName("SpelllikeRayOfFrostFeature");
+                bp.SetDescription("");
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        SpelllikeRayOfFrostAbility.ToReference<BlueprintUnitFactReference>(),
+                    };
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+            });
+            var SpelllikeRayOfFrostFeatureDisabler = Helpers.CreateBlueprint<BlueprintFeature>("SpelllikeRayOfFrostFeatureDisabler", bp => {
+                bp.m_DisplayName = RayOfFrostSpell.m_DisplayName;
+                bp.m_Description = RayOfFrostSpell.m_Description;
+                bp.m_Icon = RayOfFrostSpell.m_Icon;
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.BeforeThisLevel = true;
+                    c.Level = 5;
+                    c.m_Class = FighterClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetypes = new BlueprintArchetypeReference[] { ChildOfAcavnaAndAmaznenArchetype.ToReference<BlueprintArchetypeReference>() };
+                    c.m_Feature = SpelllikeRayOfFrostFeature.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+            var SpelllikeJoltFeature = Helpers.CreateBlueprint<BlueprintFeature>("SpelllikeJoltFeature", bp => {
+                bp.SetName("SpelllikeJoltFeature");
+                bp.SetDescription("");
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        SpelllikeJoltAbility.ToReference<BlueprintUnitFactReference>(),
+                    };
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+            });
+            var SpelllikeJoltFeatureDisabler = Helpers.CreateBlueprint<BlueprintFeature>("SpelllikeJoltFeatureDisabler", bp => {
+                bp.m_DisplayName = JoltSpell.m_DisplayName;
+                bp.m_Description = JoltSpell.m_Description;
+                bp.m_Icon = JoltSpell.m_Icon;
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.BeforeThisLevel = true;
+                    c.Level = 5;
+                    c.m_Class = FighterClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetypes = new BlueprintArchetypeReference[] { ChildOfAcavnaAndAmaznenArchetype.ToReference<BlueprintArchetypeReference>() };
+                    c.m_Feature = SpelllikeJoltFeature.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+            var SpelllikeDazeFeature = Helpers.CreateBlueprint<BlueprintFeature>("SpelllikeDazeFeature", bp => {
+                bp.SetName("SpelllikeDazeFeature");
+                bp.SetDescription("");
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        SpelllikeDazeAbility.ToReference<BlueprintUnitFactReference>(),
+                    };
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+            });
+            var SpelllikeDazeFeatureDisabler = Helpers.CreateBlueprint<BlueprintFeature>("SpelllikeDazeFeatureDisabler", bp => {
+                bp.m_DisplayName = DazeSpell.m_DisplayName;
+                bp.m_Description = DazeSpell.m_Description;
+                bp.m_Icon = DazeSpell.m_Icon;
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.BeforeThisLevel = true;
+                    c.Level = 5;
+                    c.m_Class = FighterClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetypes = new BlueprintArchetypeReference[] { ChildOfAcavnaAndAmaznenArchetype.ToReference<BlueprintArchetypeReference>() };
+                    c.m_Feature = SpelllikeDazeFeature.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+            var SpelllikeResistanceFeature = Helpers.CreateBlueprint<BlueprintFeature>("SpelllikeResistanceFeature", bp => {
+                bp.SetName("SpelllikeResistanceFeature");
+                bp.SetDescription("");
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        SpelllikeResistanceAbility.ToReference<BlueprintUnitFactReference>(),
+                    };
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+            });
+            var SpelllikeResistanceFeatureDisabler = Helpers.CreateBlueprint<BlueprintFeature>("SpelllikeResistanceFeatureDisabler", bp => {
+                bp.m_DisplayName = ResistanceSpell.m_DisplayName;
+                bp.m_Description = ResistanceSpell.m_Description;
+                bp.m_Icon = ResistanceSpell.m_Icon;
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.BeforeThisLevel = true;
+                    c.Level = 5;
+                    c.m_Class = FighterClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetypes = new BlueprintArchetypeReference[] { ChildOfAcavnaAndAmaznenArchetype.ToReference<BlueprintArchetypeReference>() };
+                    c.m_Feature = SpelllikeResistanceFeature.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+            var SpelllikeTouchOfFatigueFeature = Helpers.CreateBlueprint<BlueprintFeature>("SpelllikeTouchOfFatigueFeature", bp => {
+                bp.SetName("SpelllikeTouchOfFatigueFeature");
+                bp.SetDescription("");
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        SpelllikeTouchOfFatigueAbility.ToReference<BlueprintUnitFactReference>(),
+                    };
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+            });
+            var SpelllikeTouchOfFatigueFeatureDisabler = Helpers.CreateBlueprint<BlueprintFeature>("SpelllikeTouchOfFatigueFeatureDisabler", bp => {
+                bp.m_DisplayName = TouchOfFatigueSpell.m_DisplayName;
+                bp.m_Description = TouchOfFatigueSpell.m_Description;
+                bp.m_Icon = TouchOfFatigueSpell.m_Icon;
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.BeforeThisLevel = true;
+                    c.Level = 5;
+                    c.m_Class = FighterClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetypes = new BlueprintArchetypeReference[] { ChildOfAcavnaAndAmaznenArchetype.ToReference<BlueprintArchetypeReference>() };
+                    c.m_Feature = SpelllikeTouchOfFatigueFeature.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+            var SpelllikeMageLightFeature = Helpers.CreateBlueprint<BlueprintFeature>("SpelllikeMageLightFeature", bp => {
+                bp.SetName("SpelllikeMageLightFeature");
+                bp.SetDescription("");
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        SpelllikeMageLightAbility.ToReference<BlueprintUnitFactReference>(),
+                    };
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+            });
+            var SpelllikeMageLightFeatureDisabler = Helpers.CreateBlueprint<BlueprintFeature>("SpelllikeMageLightFeatureDisabler", bp => {
+                bp.m_DisplayName = MageLightSpell.m_DisplayName;
+                bp.m_Description = MageLightSpell.m_Description;
+                bp.m_Icon = MageLightSpell.m_Icon;
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.BeforeThisLevel = true;
+                    c.Level = 5;
+                    c.m_Class = FighterClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetypes = new BlueprintArchetypeReference[] { ChildOfAcavnaAndAmaznenArchetype.ToReference<BlueprintArchetypeReference>() };
+                    c.m_Feature = SpelllikeMageLightFeature.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+            var SpelllikeDisruptUndeadFeature = Helpers.CreateBlueprint<BlueprintFeature>("SpelllikeDisruptUndeadFeature", bp => {
+                bp.SetName("SpelllikeDisruptUndeadFeature");
+                bp.SetDescription("");
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        SpelllikeDisruptUndeadAbility.ToReference<BlueprintUnitFactReference>(),
+                    };
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+            });
+            var SpelllikeDisruptUndeadFeatureDisabler = Helpers.CreateBlueprint<BlueprintFeature>("SpelllikeDisruptUndeadFeatureDisabler", bp => {
+                bp.m_DisplayName = DisruptUndeadSpell.m_DisplayName;
+                bp.m_Description = DisruptUndeadSpell.m_Description;
+                bp.m_Icon = DisruptUndeadSpell.m_Icon;
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.BeforeThisLevel = true;
+                    c.Level = 5;
+                    c.m_Class = FighterClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetypes = new BlueprintArchetypeReference[] { ChildOfAcavnaAndAmaznenArchetype.ToReference<BlueprintArchetypeReference>() };
+                    c.m_Feature = SpelllikeDisruptUndeadFeature.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+            var SpelllikeFlareFeature = Helpers.CreateBlueprint<BlueprintFeature>("SpelllikeFlareFeature", bp => {
+                bp.SetName("SpelllikeFlareFeature");
+                bp.SetDescription("");
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        SpelllikeFlareAbility.ToReference<BlueprintUnitFactReference>(),
+                    };
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+            });
+            var SpelllikeFlareFeatureDisabler = Helpers.CreateBlueprint<BlueprintFeature>("SpelllikeFlareFeatureDisabler", bp => {
+                bp.m_DisplayName = FlareSpell.m_DisplayName;
+                bp.m_Description = FlareSpell.m_Description;
+                bp.m_Icon = FlareSpell.m_Icon;
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.BeforeThisLevel = true;
+                    c.Level = 5;
+                    c.m_Class = FighterClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetypes = new BlueprintArchetypeReference[] { ChildOfAcavnaAndAmaznenArchetype.ToReference<BlueprintArchetypeReference>() };
+                    c.m_Feature = SpelllikeFlareFeature.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+            var LoreOfAcavnaAndAmaznenCantripSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("LoreOfAcavnaAndAmaznenCantripSelection", bp => {
+                bp.SetName("Lore of Acavna and Amaznen");
+                bp.SetDescription("The child of Acavna and Amaznen gains the ability to cast 4 cantrips as spell-like abilities, bypassing their " +
+                    "normal inability to cast spells.");
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.HideInUI = true;
+                bp.Group = FeatureGroup.None;
+                bp.Mode = SelectionMode.OnlyNew;
+                bp.m_AllFeatures = new BlueprintFeatureReference[] {                    
+                    SpelllikeAcidSplashFeatureDisabler.ToReference<BlueprintFeatureReference>(),
+                    SpelllikeRayOfFrostFeatureDisabler.ToReference<BlueprintFeatureReference>(),
+                    SpelllikeJoltFeatureDisabler.ToReference<BlueprintFeatureReference>(),
+                    SpelllikeDazeFeatureDisabler.ToReference<BlueprintFeatureReference>(),
+                    SpelllikeResistanceFeatureDisabler.ToReference<BlueprintFeatureReference>(),
+                    SpelllikeTouchOfFatigueFeatureDisabler.ToReference<BlueprintFeatureReference>(),
+                    SpelllikeMageLightFeatureDisabler.ToReference<BlueprintFeatureReference>(),
+                    SpelllikeDisruptUndeadFeatureDisabler.ToReference<BlueprintFeatureReference>(),
+                    SpelllikeFlareFeatureDisabler.ToReference<BlueprintFeatureReference>(),
+                };
+            });
+
+            var ChildOfAcavnaAndAmaznenCastingUnlock = Helpers.CreateBlueprint<BlueprintFeature>("ChildOfAcavnaAndAmaznenCastingUnlock", bp => {
+                bp.SetName("Martial Wizardry");
+                bp.SetDescription("The child of Acavna and Amaznen completes their initial studies, unlocking the ability to cast all cantrips and all learnt 1st level spells. The " +
+                    "caster level for these spells is equal to their fighter level. \nThe spell-like cantrips gained from Lore of Acavna and Amaznen are removed in favour of the unlocked " +
+                    "cantrips.");
+                bp.m_Icon = FlareSpell.m_Icon;                
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
 
             var EldritchArmorTrainingRank30 = Helpers.CreateBlueprint<BlueprintFeature>("EldritchArmorTrainingRank30", bp => {
                 bp.SetName("Eldritch Armor Training");
@@ -509,9 +1106,10 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     Helpers.LevelEntry(20, FighterFeatSelection)
             };
             ChildOfAcavnaAndAmaznenArchetype.AddFeatures = new LevelEntry[] {
-                    Helpers.LevelEntry(1, ChildOfAcavnaAndAmaznenProficiencies, RayCalculateFeature, TouchCalculateFeature, DetectMagic),
-                    Helpers.LevelEntry(2, LoreOfAcavnaAndAmaznenFeature),
+                    Helpers.LevelEntry(1, ChildOfAcavnaAndAmaznenDelayedCasting, ChildOfAcavnaAndAmaznenProficiencies, RayCalculateFeature, TouchCalculateFeature, DetectMagic),
+                    Helpers.LevelEntry(2, LoreOfAcavnaAndAmaznenFeature, LoreOfAcavnaAndAmaznenHiddenCantrips, LoreOfAcavnaAndAmaznenCantripSelection, LoreOfAcavnaAndAmaznenCantripSelection, LoreOfAcavnaAndAmaznenCantripSelection, LoreOfAcavnaAndAmaznenCantripSelection),
                     Helpers.LevelEntry(3, EldritchArmorTrainingFeature),
+                    Helpers.LevelEntry(5, ChildOfAcavnaAndAmaznenCastingUnlock),
                     Helpers.LevelEntry(7, EldritchArmorTrainingRank20),
                     Helpers.LevelEntry(11, EldritchArmorTrainingRank25),
                     Helpers.LevelEntry(15, EldritchArmorTrainingRank30)
