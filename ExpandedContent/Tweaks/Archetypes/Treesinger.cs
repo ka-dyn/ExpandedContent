@@ -764,7 +764,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.m_Icon = WildShapeIVShamblingMoundFeature.Icon;
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] {
-                        TreesingerWildShapeShamblingMoundAbility.ToReference<BlueprintUnitFactReference>()
+                        TreesingerWildShapeQuickwoodAbility.ToReference<BlueprintUnitFactReference>()
                     };
                 });
                 bp.m_AllowNonContextActions = false;

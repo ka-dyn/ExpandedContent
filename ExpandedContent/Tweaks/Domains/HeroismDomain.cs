@@ -367,23 +367,241 @@ namespace ExpandedContent.Tweaks.Domains {
                     Helpers.CreateUIGroup(HeroismDomainBaseFeature, GloryDomainGreaterFeature)
                 };
                 bp.GiveFeaturesForPreviousLevels = true;
-            });            
-            HeroismDomainAllowed.IsPrerequisiteFor = new List<BlueprintFeatureReference>() { 
+            });
+
+            //Separatist versions
+            var GloryDomainGreaterFeatureSeparatist = Resources.GetBlueprint<BlueprintFeature>("ee3c843eac344176b565611a3df09e32");
+
+            var HeroismDomainAllowedSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("HeroismDomainAllowedSeparatist", bp => {
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.IsClassFeature = true;
+            });
+
+            var HeroismDomainBaseResourceSeparatist = Helpers.CreateBlueprint<BlueprintAbilityResource>("HeroismDomainBaseResourceSeparatist", bp => {
+                bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
+                    BaseValue = 3,
+                    IncreasedByLevel = false,
+                    IncreasedByStat = true,
+                    ResourceBonusStat = StatType.Wisdom,
+                };
+            });
+
+            var HeroismDomainBaseAbilitySeparatist = Helpers.CreateBlueprint<BlueprintAbility>("HeroismDomainBaseAbilitySeparatist", bp => {
+                bp.SetName("Touch of Glory");
+                bp.SetDescription("As a {g|Encyclopedia:Standard_Actions}standard action{/g}, you can {g|Encyclopedia:TouchAttack}touch{/g} an ally to grant him heroism as if the heroism spell " +
+                    "had been cast on him for a number of rounds equal to half the level of the class that gave you access to this domain (min 1). You can use this ability a number of times per " +
+                    "day equal to 3 + your {g|Encyclopedia:Wisdom}Wisdom{/g} modifier.");
+                bp.m_Icon = TouchofGloryIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = HeroismBuff.ToReference<BlueprintBuffReference>(),
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Shared,
+                                    ValueShared = AbilitySharedValue.Damage
+                                },
+                                m_IsExtendable = true
+                            },
+                            DurationSeconds = 0
+                        });
+                });
+                bp.AddComponent<ContextCalculateSharedValue>(c => {
+                    c.ValueType = AbilitySharedValue.Damage;
+                    c.Value = new ContextDiceValue() {
+                        DiceType = DiceType.One,
+                        DiceCountValue = new ContextValue() {
+                            ValueType = ContextValueType.Rank,
+                            Value = 0,
+                            ValueRank = AbilityRankType.DamageDice
+                        },
+                        BonusValue = new ContextValue() {
+                            ValueType = ContextValueType.Rank,
+                            Value = 0,
+                            ValueRank = AbilityRankType.Default
+                        }
+                    };
+                    c.Modifier = 1;
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.SummClassLevelWithArchetype;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.DivStep;
+                    c.m_StartLevel = 0;
+                    c.m_StepLevel = 2;
+                    c.Archetype = DivineHunterArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.m_AdditionalArchetypes = new BlueprintArchetypeReference[] { TempleChampionArchetype.ToReference<BlueprintArchetypeReference>() };
+                    c.m_Class = new BlueprintCharacterClassReference[] {
+                        InquisitorClass.ToReference<BlueprintCharacterClassReference>(),
+                        HunterClass.ToReference<BlueprintCharacterClassReference>(),
+                        PaladinClass.ToReference<BlueprintCharacterClassReference>(),
+                        StargazerClass.ToReference<BlueprintCharacterClassReference>(),
+                    };
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.DamageDice;
+                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_Progression = ContextRankProgression.DelayedStartPlusDivStep;
+                    c.m_Class = new BlueprintCharacterClassReference[] {
+                        ClericClass.ToReference<BlueprintCharacterClassReference>()
+                    };
+                    c.m_StartLevel = 4;
+                    c.m_StepLevel = 2;
+                    c.m_UseMin = true;
+                    c.m_Min = 1;
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = HeroismDomainBaseResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Touch;
+                bp.CanTargetFriends = true;
+                bp.CanTargetSelf = true;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Touch;
+                bp.ActionType = UnitCommand.CommandType.Standard;
+                bp.AvailableMetamagic |= Metamagic.Quicken | Metamagic.Extend | Metamagic.Heighten | Metamagic.Reach;
+                bp.LocalizedDuration = Helpers.CreateString("HeroismDomainBaseAbilitySeparatist.Duration", "1 round/2 levels");
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+
+            var HeroismDomainBaseFeatureSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("HeroismDomainBaseFeatureSeparatist", bp => {
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { HeroismDomainBaseAbilitySeparatist.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = HeroismDomainBaseResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.AddComponent<ReplaceAbilitiesStat>(c => {
+                    c.m_Ability = new BlueprintAbilityReference[] { HeroismDomainBaseAbilitySeparatist.ToReference<BlueprintAbilityReference>() };
+                    c.Stat = StatType.Wisdom;
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = HeroismDomainSpellListFeature.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<IncreaseSpellDC>(c => {
+                    c.m_Spell = ChannelPositiveHarm.ToReference<BlueprintAbilityReference>();
+                    c.HalfMythicRank = false;
+                    c.UseContextBonus = false;
+                    c.Value = 0;
+                    c.BonusDC = 2;
+                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.SetName("Heroism Subdomain");
+                bp.SetDescription("\nYou are a true example of the heroic nature of your deity. In addition, when you channel positive energy to harm undead creatures, the " +
+                    "{g|Encyclopedia:Saving_Throw}save{/g} {g|Encyclopedia:DC}DC{/g} to halve the {g|Encyclopedia:Damage}damage{/g} is increased by 2.\n{g|Encyclopedia:TouchAttack}Touch{/g} " +
+                    "of Glory: As a {g|Encyclopedia:Standard_Actions}standard action{/g}, you can {g|Encyclopedia:TouchAttack}touch{/g} an ally to grant him heroism as if the heroism spell " +
+                    "had been cast on him for a number of rounds equal to half the level of the class that gave you access to this domain (min 1). You " +
+                    "can use this ability a number of times per day equal to 3 + your {g|Encyclopedia:Wisdom}Wisdom{/g} modifier.\nAura of Heroism: At 8th level, you can emit " +
+                    "a 30-foot aura of heroism for a number of {g|Encyclopedia:Combat_Round}rounds{/g} per day equal to your level in the class that gave you access to this " +
+                    "domain. Using this ability is a {g|Encyclopedia:Swift_Action}swift action{/g}. Allies in the area are treated as if they were under the effects of heroism " +
+                    "{g|Encyclopedia:Spell}spell{/g}.");
+                bp.IsClassFeature = true;
+            });
+
+            var HeroismDomainProgressionSeparatist = Helpers.CreateBlueprint<BlueprintProgression>("HeroismDomainProgressionSeparatist", bp => {
+                bp.AddComponent<PrerequisiteFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = HeroismDomainAllowedSeparatist.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = HeroismDomainProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = HeroismDomainAllowed.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = HeroismDomainProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = HeroismDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.SetName("Heroism Subdomain");
+                bp.SetDescription("\nYou are a true example of the heroic nature of your deity. In addition, when you channel positive energy to harm undead creatures, the " +
+                    "{g|Encyclopedia:Saving_Throw}save{/g} {g|Encyclopedia:DC}DC{/g} to halve the {g|Encyclopedia:Damage}damage{/g} is increased by 2.\n{g|Encyclopedia:TouchAttack}Touch{/g} " +
+                    "of Glory: As a {g|Encyclopedia:Standard_Actions}standard action{/g}, you can {g|Encyclopedia:TouchAttack}touch{/g} an ally to grant him heroism as if the heroism spell " +
+                    "had been cast on him for a number of rounds equal to half the level of the class that gave you access to this domain (min 1). You " +
+                    "can use this ability a number of times per day equal to 3 + your {g|Encyclopedia:Wisdom}Wisdom{/g} modifier.\nAura of Heroism: At 8th level, you can emit " +
+                    "a 30-foot aura of heroism for a number of {g|Encyclopedia:Combat_Round}rounds{/g} per day equal to your level in the class that gave you access to this " +
+                    "domain. Using this ability is a {g|Encyclopedia:Swift_Action}swift action{/g}. Allies in the area are treated as if they were under the effects of heroism " +
+                    "{g|Encyclopedia:Spell}spell{/g}.\nDomain Spells: shield of faith, bless weapon, heroism, divine power, burst of glory, greater heroism, " +
+                    "holy sword, holy aura, overwhelming presence.");
+                bp.Groups = new FeatureGroup[] { FeatureGroup.SeparatistSecondaryDomain };
+                bp.IsClassFeature = true;
+                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    }
+                };
+                bp.LevelEntries = new LevelEntry[] {
+                    Helpers.LevelEntry(1, HeroismDomainBaseFeatureSeparatist),
+                    Helpers.LevelEntry(8, GloryDomainGreaterFeatureSeparatist)
+                };
+                bp.UIGroups = new UIGroup[] {
+                    Helpers.CreateUIGroup(HeroismDomainBaseFeatureSeparatist, GloryDomainGreaterFeatureSeparatist)
+                };
+                bp.GiveFeaturesForPreviousLevels = true;
+            });
+
+            HeroismDomainAllowed.IsPrerequisiteFor = new List<BlueprintFeatureReference>() {
                 HeroismDomainProgression.ToReference<BlueprintFeatureReference>(),
                 HeroismDomainProgressionSecondary.ToReference<BlueprintFeatureReference>()
             };
             HeroismDomainProgression.AddComponent<PrerequisiteNoFeature>(c => {
-                    c.Group = Prerequisite.GroupType.All;
-                    c.HideInUI = true;
-                    c.m_Feature = HeroismDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
-            }); 
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = HeroismDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+            });
+            HeroismDomainProgression.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = HeroismDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
             HeroismDomainProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
-                    c.Group = Prerequisite.GroupType.All;
-                    c.HideInUI = true;
-                    c.m_Feature = HeroismDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = HeroismDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+            });
+            HeroismDomainProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = HeroismDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
+            HeroismDomainProgressionSeparatist.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = HeroismDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
             });
             var DomainMastery = Resources.GetBlueprint<BlueprintFeature>("2de64f6a1f2baee4f9b7e52e3f046ec5").GetComponent<AutoMetamagic>();
             DomainMastery.Abilities.Add(HeroismDomainBaseAbility.ToReference<BlueprintAbilityReference>());
+            DomainMastery.Abilities.Add(HeroismDomainBaseAbilitySeparatist.ToReference<BlueprintAbilityReference>());
             if (ModSettings.AddedContent.Domains.IsDisabled("Heroism Subdomain")) { return; }
             DomainTools.RegisterDomain(HeroismDomainProgression);
             DomainTools.RegisterSecondaryDomain(HeroismDomainProgressionSecondary);
@@ -391,6 +609,8 @@ namespace ExpandedContent.Tweaks.Domains {
             DomainTools.RegisterTempleDomain(HeroismDomainProgression);
             DomainTools.RegisterSecondaryTempleDomain(HeroismDomainProgressionSecondary);
             DomainTools.RegisterImpossibleSubdomain(HeroismDomainProgression, HeroismDomainProgressionSecondary);
+            DomainTools.RegisterSeparatistDomain(HeroismDomainProgressionSeparatist);
+
         }
     }
 }

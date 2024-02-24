@@ -39,6 +39,13 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.IsClassFeature = true;
                 //The selection for these skills is in Miscellaneous/AlchemistDiscoveries
             });
+            var MindchemistMutagenResourceBackup = Helpers.CreateBlueprint<BlueprintFeature>("MindchemistMutagenResourceBackup", bp => {
+                bp.SetName("MindchemistMutagenResourceBackup");
+                bp.SetDescription("");
+                bp.AddComponent(MutagenFeature.GetComponent<AddAbilityResources>());
+                bp.Ranks = 1;
+                bp.IsClassFeature = true;
+            });
             var PerfectRecallFeature = Helpers.CreateBlueprint<BlueprintFeature>("PerfectRecallFeature", bp => {
                 bp.SetName("Perfect Recall");
                 bp.SetDescription("At 2nd level, a mindchemist has honed his memory. When making a Knowledge check, he may add his Intelligence bonus on the check a second time. Thus, a " +
@@ -67,7 +74,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     Helpers.LevelEntry(10, PoisonImmunityFeature)
             };
             MindchemistArchetype.AddFeatures = new LevelEntry[] {
-                    Helpers.LevelEntry(1, CognatogenFeature, MindchemistBonusFeats),
+                    Helpers.LevelEntry(1, CognatogenFeature, MindchemistBonusFeats, MindchemistMutagenResourceBackup),
                     Helpers.LevelEntry(2, PerfectRecallFeature)
 
             };

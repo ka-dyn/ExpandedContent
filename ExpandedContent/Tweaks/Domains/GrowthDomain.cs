@@ -314,20 +314,130 @@ namespace ExpandedContent.Tweaks.Domains {
                 };
                 bp.GiveFeaturesForPreviousLevels = true;
             });
-            GrowthDomainAllowed.IsPrerequisiteFor = new List<BlueprintFeatureReference>() { 
-                //PlantBlessingFeature.ToReference<BlueprintFeatureReference>(),
+
+            //Separatist versions
+            var PlantDomainGreaterFeatureSeparatist = Resources.GetBlueprint<BlueprintFeature>("d9077523b71643c39f6e3a5209e6ee5a");
+
+            var GrowthDomainAllowedSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("GrowthDomainAllowedSeparatist", bp => {
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.IsClassFeature = true;
+            });
+
+            var PlantDomainBaseResourceSeparatist = Resources.GetBlueprint<BlueprintAbilityResource>("078367dacc3a4c629c2569a488e1ee1c");
+            var PlantDomainBaseAbilitySeparatist = Resources.GetBlueprint<BlueprintAbility>("e0e990b63ff44bec92152b2ce8d229ca");
+
+            var GrowthDomainBaseFeatureSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("GrowthDomainBaseFeatureSeparatist", bp => {
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { PlantDomainBaseAbilitySeparatist.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = PlantDomainBaseResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.AddComponent<ReplaceAbilitiesStat>(c => {
+                    c.m_Ability = new BlueprintAbilityReference[] { PlantDomainBaseAbilitySeparatist.ToReference<BlueprintAbilityReference>() };
+                    c.Stat = StatType.Wisdom;
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = GrowthDomainSpellListFeature.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.SetName("Growth Subdomain");
+                bp.SetDescription("\nYou are gifted the power to expand life, can gain defensive thorns, and can communicate with plants. \nEnlarge: As a {g|Encyclopedia:Swift_Action}swift action{/g} " +
+                    "you can enlarge yourself for 1 {g|Encyclopedia:Combat_Round}round{/g}, as if you were the target of the enlarge person {g|Encyclopedia:Spell}spell{/g}. You can use this power a " +
+                    "number of times per day equal to 3 + your {g|Encyclopedia:Wisdom}Wisdom{/g} modifier. \nBramble Armor: At 6th level, you can cause a host of wooden thorns to burst from your skin " +
+                    "as a {g|Encyclopedia:Free_Action}free action{/g}. While bramble armor is in effect, any foe striking you with a melee weapon without {g|Encyclopedia:Reach}reach{/g} takes " +
+                    "{g|Encyclopedia:Dice}1d6{/g} points of {g|Encyclopedia:Damage_Type}piercing damage{/g} + 1 point per two levels you possess in the class that gave you access to this domain. " +
+                    "You can use this ability for a number of rounds per day equal to your level in the class that gave you access to this domain. These rounds do not need to be consecutive.");
+                bp.IsClassFeature = true;
+            });
+
+            var GrowthDomainProgressionSeparatist = Helpers.CreateBlueprint<BlueprintProgression>("GrowthDomainProgressionSeparatist", bp => {
+                bp.AddComponent<PrerequisiteFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = GrowthDomainAllowedSeparatist.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = GrowthDomainProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = GrowthDomainAllowed.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = GrowthDomainProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = GrowthDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.SetName("Growth Subdomain");
+                bp.SetDescription("\nYou are gifted the power to expand life, can gain defensive thorns, and can communicate with plants. \nEnlarge: As a {g|Encyclopedia:Swift_Action}swift action{/g} " +
+                    "you can enlarge yourself for 1 {g|Encyclopedia:Combat_Round}round{/g}, as if you were the target of the enlarge person {g|Encyclopedia:Spell}spell{/g}. You can use this power a " +
+                    "number of times per day equal to 3 + your {g|Encyclopedia:Wisdom}Wisdom{/g} modifier. \nBramble Armor: At 6th level, you can cause a host of wooden thorns to burst from your skin " +
+                    "as a {g|Encyclopedia:Free_Action}free action{/g}. While bramble armor is in effect, any foe striking you with a melee weapon without {g|Encyclopedia:Reach}reach{/g} takes " +
+                    "{g|Encyclopedia:Dice}1d6{/g} points of {g|Encyclopedia:Damage_Type}piercing damage{/g} + 1 point per two levels you possess in the class that gave you access to this domain. " +
+                    "You can use this ability for a number of rounds per day equal to your level in the class that gave you access to this domain. These rounds do not need to be consecutive. \nDomain " +
+                    "Spells: enlarge person, barkskin, contagion, thorn body, righteous might, plant shape II (shambling mound), changestaff, mind blank, shambler.");
+                bp.Groups = new FeatureGroup[] { FeatureGroup.SeparatistSecondaryDomain };
+                bp.IsClassFeature = true;
+                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    }
+                };
+                bp.m_Archetypes = new BlueprintProgression.ArchetypeWithLevel[] {  };
+                bp.LevelEntries = new LevelEntry[] {
+                    Helpers.LevelEntry(1, GrowthDomainBaseFeatureSeparatist),
+                    Helpers.LevelEntry(8, PlantDomainGreaterFeatureSeparatist)
+                };
+                bp.UIGroups = new UIGroup[] {
+                    Helpers.CreateUIGroup(GrowthDomainBaseFeatureSeparatist, PlantDomainGreaterFeatureSeparatist)
+                };
+                bp.GiveFeaturesForPreviousLevels = true;
+            });
+
+
+            GrowthDomainAllowed.IsPrerequisiteFor = new List<BlueprintFeatureReference>() {
                 GrowthDomainProgression.ToReference<BlueprintFeatureReference>(),
                 GrowthDomainProgressionSecondary.ToReference<BlueprintFeatureReference>()
             };
             GrowthDomainProgression.AddComponent<PrerequisiteNoFeature>(c => {
-                    c.Group = Prerequisite.GroupType.All;
-                    c.HideInUI = true;
-                    c.m_Feature = GrowthDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
-            }); 
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = GrowthDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+            });
+            GrowthDomainProgression.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = GrowthDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
             GrowthDomainProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
-                    c.Group = Prerequisite.GroupType.All;
-                    c.HideInUI = true;
-                    c.m_Feature = GrowthDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = GrowthDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+            });
+            GrowthDomainProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = GrowthDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
+            GrowthDomainProgressionSeparatist.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = GrowthDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
             });
 
             if (ModSettings.AddedContent.Domains.IsDisabled("Growth Subdomain")) { return; }
@@ -339,6 +449,8 @@ namespace ExpandedContent.Tweaks.Domains {
             DomainTools.RegisterTempleDomain(GrowthDomainProgression);
             DomainTools.RegisterSecondaryTempleDomain(GrowthDomainProgressionSecondary);
             DomainTools.RegisterImpossibleSubdomain(GrowthDomainProgression, GrowthDomainProgressionSecondary);
+            DomainTools.RegisterSeparatistDomain(GrowthDomainProgressionSeparatist);
+
         }
     }
 }

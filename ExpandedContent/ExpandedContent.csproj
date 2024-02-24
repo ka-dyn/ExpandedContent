@@ -204,6 +204,7 @@
     <Compile Include="Tweaks\Archetypes\DivineScourge.cs" />
     <Compile Include="Tweaks\Archetypes\Mindchemist.cs" />
     <Compile Include="Tweaks\Archetypes\ChildOfAcavnaAndAmaznen.cs" />
+    <Compile Include="Tweaks\Archetypes\DivineTracker.cs" />
     <Compile Include="Tweaks\Archetypes\Treesinger.cs" />
     <Compile Include="Tweaks\Archetypes\SwornOfTheEldest.cs" />
     <Compile Include="Tweaks\Archetypes\SkulkingHunter.cs" />
@@ -233,6 +234,10 @@
     <Compile Include="Tweaks\Archetypes\PriestOfBalance.cs" />
     <Compile Include="Tweaks\Archetypes\LivingScripture.cs" />
     <Compile Include="Tweaks\Backgrounds\ArchdukeOfCheliax.cs" />
+    <Compile Include="Tweaks\Blessings\ArtificeBlessing.cs" />
+    <Compile Include="Tweaks\Blessings\CommunityBlessing.cs" />
+    <Compile Include="Tweaks\Blessings\PlantBlessing.cs" />
+    <Compile Include="Tweaks\Blessings\WarBlessing.cs" />
     <Compile Include="Tweaks\Classes\StargazerClass.cs" />
     <Compile Include="Tweaks\Classes\DrakeClass\DrakeCompanionCopper.cs" />
     <Compile Include="Tweaks\Classes\DrakeClass\DrakeCompanionBlack.cs" />
@@ -251,6 +256,8 @@
     <Compile Include="Tweaks\Classes\DrakeClass\DrakeCompanionSelection.cs" />
     <Compile Include="Tweaks\Classes\Oathbreaker.cs" />
     <Compile Include="Tweaks\Classes\DreadKnight.cs" />
+    <Compile Include="Tweaks\Components\IgnoreDamageReductionOnAttackRangeType.cs" />
+    <Compile Include="Tweaks\Components\CheckWeaponEnchant.cs" />
     <Compile Include="Tweaks\Components\AbilityCasterOffHandWeaponCheck.cs" />
     <Compile Include="Tweaks\Components\MaxCastingAttributeWithArchetypeGetter.cs" />
     <Compile Include="Tweaks\Components\LearnDomainSpell.cs" />
@@ -375,10 +382,10 @@
     <Compile Include="Tweaks\DemonLords\Kabriri.cs" />
     <Compile Include="Tweaks\Deities\LichDeity.cs" />
     <Compile Include="Tweaks\Deities\Milani.cs" />
-    <Compile Include="Tweaks\Deities\MilaniSacredWeaponFeature.cs" />
     <Compile Include="Tweaks\Deities\Pulura.cs" />
     <Compile Include="Tweaks\Deities\Ragathiel.cs" />
     <Compile Include="Tweaks\DemonLords\Zura.cs" />
+    <Compile Include="Tweaks\Domains\DomainProperties.cs" />
     <Compile Include="Tweaks\Domains\LoyaltyDomain.cs" />
     <Compile Include="Tweaks\Domains\DefenseDomain.cs" />
     <Compile Include="Tweaks\Domains\HeroismDomain.cs" />
@@ -419,7 +426,7 @@
     <Compile Include="Tweaks\FourHorsemen\Apollyon.cs" />
     <Compile Include="Tweaks\FourHorsemen\Charon.cs" />
     <Compile Include="Tweaks\FourHorsemen\Szuriel.cs" />
-    <Compile Include="Tweaks\FourHorsemen\Terlmarixian.cs" />
+    <Compile Include="Tweaks\FourHorsemen\Trelmarixian.cs" />
     <Compile Include="Tweaks\Miscellaneous\AlchemistDiscoveries\PheromonesDiscovery.cs" />
     <Compile Include="Tweaks\Miscellaneous\AlchemistDiscoveries\HealingTouchDiscovery.cs" />
     <Compile Include="Tweaks\Miscellaneous\AlchemistDiscoveries\MindchemistSkillDiscovery.cs" />
@@ -458,6 +465,7 @@
     <Compile Include="Tweaks\Monitors\Kerkamoth.cs" />
     <Compile Include="Tweaks\Monitors\Ssilameshnik.cs" />
     <Compile Include="Tweaks\Monitors\Monad.cs" />
+    <Compile Include="Tweaks\Mysteries\WinterMystery.cs" />
     <Compile Include="Tweaks\Mysteries\WoodMystery.cs" />
     <Compile Include="Tweaks\Mysteries\SuccorMystery.cs" />
     <Compile Include="Tweaks\Mysteries\HeavensMystery.cs" />
@@ -550,6 +558,8 @@
     <Compile Include="Tweaks\Miscellaneous\Cavalier.cs" />
     <Compile Include="Utilities\ActionFlow.cs" />
     <Compile Include="Utilities\AuraUtils.cs" />
+    <Compile Include="Utilities\BlessingTools.cs" />
+    <Compile Include="Utilities\DeityTools.cs" />
     <Compile Include="Utilities\DynamicAsset.cs" />
     <Compile Include="Utilities\SpellWithDesriptorAdders.cs" />
     <Compile Include="Utilities\WitchTools.cs" />
@@ -613,6 +623,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Apep.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Apollyon.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Apsu.jpg">
@@ -679,6 +692,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Chadali.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Charon.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_ChaugnarFaugn.jpg">
@@ -750,6 +766,9 @@
     <Content Include="Assets\Deities\Icon_Findeladlara.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Deities\Icon_FourHorsemen.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Deities\Icon_Fumeiyoshi.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -763,6 +782,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Ghenshau.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Godclaw.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Gogunta.jpg">
@@ -1047,6 +1069,9 @@
     <Content Include="Assets\Deities\Icon_Ssilameshnik.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Deities\Icon_Szuriel.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Deities\Icon_Tanagaar.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -1078,6 +1103,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Treerazer.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Trelmarixian.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Tsathoggua.jpg">
@@ -1557,6 +1585,18 @@
     <Content Include="Assets\Skills\Icon_Command.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Skills\Icon_CommunityMeleeCrit.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_CommunityMeleeNormal.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_CommunityRangedCrit.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_CommunityRangedNormal.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Skills\Icon_Counter.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -1672,6 +1712,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_OracleSuccorMystery.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_OracleWinterMystery.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_OracleWoodMystery.png">

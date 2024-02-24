@@ -24,6 +24,8 @@ namespace ExpandedContent.Tweaks.Domains {
 
         public static void AddIceDomain() {
 
+            //This Domain will not be updated due to Owlcat adding their own version
+
             var StargazerClass = Resources.GetModBlueprint<BlueprintCharacterClass>("StargazerClass");
             var ClericClass = Resources.GetBlueprint<BlueprintCharacterClass>("67819271767a9dd4fbfd4ae700befea0");
             var EcclesitheurgeArchetype = Resources.GetBlueprint<BlueprintArchetype>("472af8cb3de628f4a805dc4a038971bc");
@@ -432,7 +434,7 @@ namespace ExpandedContent.Tweaks.Domains {
             });
             var DomainMastery = Resources.GetBlueprint<BlueprintFeature>("2de64f6a1f2baee4f9b7e52e3f046ec5").GetComponent<AutoMetamagic>();
             DomainMastery.Abilities.Add(IceDomainGreaterAbility.ToReference<BlueprintAbilityReference>());
-            if (ModSettings.AddedContent.Domains.IsDisabled("Ice Subdomain")) { return; }
+            if (ModSettings.AddedContent.RetiredFeatures.IsDisabled("Old Ice Subdomain")) { return; }
             DomainTools.RegisterDomain(IceDomainProgression);
             DomainTools.RegisterSecondaryDomain(IceDomainProgressionSecondary);
             DomainTools.RegisterDruidDomain(IceDomainProgressionDruid);

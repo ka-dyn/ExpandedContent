@@ -29,7 +29,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
             var ArmyDragonCopper = Resources.GetBlueprint<BlueprintUnit>("dcdbc80e8fd6430c8608ab1477d8ca9f"); //Model is Brass
             var BloodlineDraconicCopperProgression = Resources.GetBlueprint<BlueprintProgression>("b522759a265897b4f8f7a1a180a692e4"); //Pic is Brass
             var BloodlineDraconicBrassProgression = Resources.GetBlueprint<BlueprintProgression>("5f9ecbee67db8364985e9d0500eb25f1");
-            var FormOfTheDragonGoldBuff = Resources.GetBlueprint<BlueprintBuff>("89669cfba3d9c15448c23b79dd604c41").GetComponent<Polymorph>();
+            var FormOfTheDragonIIIGoldBuff = Resources.GetBlueprint<BlueprintBuff>("ec6ad3612c4f0e340b54a11a0e78793d").GetComponent<Polymorph>();
             var BlackDragonBarks = Resources.GetBlueprint<BlueprintUnitAsksList>("3c0924a80e504f04c94de6ec2a28f9aa");
             var CharacterBrain = Resources.GetBlueprint<BlueprintBrain>("cf986dd7ba9d4ec46ad8a3a0406d02ae");
             var Neutrals = Resources.GetBlueprint<BlueprintFaction>("d8de50cc80eb4dc409a983991e0b77ad");
@@ -83,7 +83,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 bp.Color = AzataDragonUnit.Color;
                 bp.Alignment = Alignment.ChaoticGood;
                 bp.m_Portrait = DrakeBrassPortrait.ToReference<BlueprintPortraitReference>();
-                bp.Prefab = FormOfTheDragonGoldBuff.m_Prefab;
+                bp.Prefab = FormOfTheDragonIIIGoldBuff.m_Prefab;
                 //bp.Visual = RedDragon.Visual;
                 bp.Visual = new UnitVisualParams() {
                     BloodType = BloodType.Common,

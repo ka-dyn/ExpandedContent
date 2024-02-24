@@ -551,23 +551,250 @@ namespace ExpandedContent.Tweaks.Domains {
                 };
                 bp.GiveFeaturesForPreviousLevels = true;
             });
-            
-            BloodDomainAllowed.IsPrerequisiteFor = new List<BlueprintFeatureReference>() { 
+
+            //Separatist versions
+            var WarDomainBaseAbilitySeparatist = Resources.GetBlueprint<BlueprintAbility>("294cef74b96446d69b008dba8ebcfb11");
+            var WarDomainBaseResourceSeparatist = Resources.GetBlueprint<BlueprintAbilityResource>("77e5cc411c984ab1962cb5033ee8a23c");
+
+            var BloodDomainAllowedSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("BloodDomainAllowedSeparatist", bp => {
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.IsClassFeature = true;
+            });
+
+            var BloodDomainGreaterResourceSeparatist = Helpers.CreateBlueprint<BlueprintAbilityResource>("BloodDomainGreaterResourceSeparatist", bp => {
+                bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
+                    BaseValue = 1,
+                    IncreasedByLevel = false,
+                    IncreasedByLevelStartPlusDivStep = true,
+                    m_Class = new BlueprintCharacterClassReference[0],
+                    m_ClassDiv = new BlueprintCharacterClassReference[] {
+                        ClericClass.ToReference<BlueprintCharacterClassReference>(),
+                        InquisitorClass.ToReference<BlueprintCharacterClassReference>(),
+                        HunterClass.ToReference<BlueprintCharacterClassReference>(),
+                        PaladinClass.ToReference<BlueprintCharacterClassReference>(),
+                        StargazerClass.ToReference<BlueprintCharacterClassReference>(),
+                    },
+                    m_Archetypes = new BlueprintArchetypeReference[0],
+                    m_ArchetypesDiv = new BlueprintArchetypeReference[] {
+                        DivineHunterArchetype.ToReference<BlueprintArchetypeReference>(),
+                        TempleChampionArchetype.ToReference<BlueprintArchetypeReference>(),
+                    },
+                    StartingLevel = 10,
+                    LevelStep = 4,
+                    StartingIncrease = 1,
+                    PerStepIncrease = 1,
+                };
+            });
+            var BloodDomainGreaterAbilitySeparatist = Helpers.CreateBlueprint<BlueprintAbility>("BloodDomainGreaterAbilitySeparatist", bp => {
+                bp.SetName("Wounding Blade");
+                bp.SetDescription("You may give a weapon that you touch the wounding special weapon quality for a number of rounds equal " +
+                    "to 1/2 your cleric level. You can use this ability once per day at 8th level, and an additional time per day for every four levels " +
+                    "beyond 8th. \nWounded: Creatures hit by this weapon take 1 hit point {g|Encyclopedia:Damage}damage{/g} each turn for each stack of this status. " +
+                    "This can be stopped through the application of any {g|Encyclopedia:Spell}spell{/g} that cures hit point damage.");
+                bp.m_Icon = SacredWeaponEnchantAnarchicChoice.Icon;
+                bp.AddComponent<SpellComponent>(c => {
+                    c.m_Flags = 0;
+                    c.School = SpellSchool.Enchantment;
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = BloodDomainGreaterResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+
+                });
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionEnchantWornItem() {
+                            m_Enchantment = WoundingEnchantment.ToReference<BlueprintItemEnchantmentReference>(),
+                            Slot = Kingmaker.UI.GenericSlot.EquipSlotBase.SlotType.PrimaryHand,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Rank,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                m_IsExtendable = true
+                            }
+                        });
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.SummClassLevelWithArchetype;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.DelayedStartPlusDivStep;
+                    c.m_StartLevel = 3;
+                    c.m_StepLevel = 2;
+                    c.m_UseMin = true;
+                    c.m_Min = 1;
+                    c.Archetype = DivineHunterArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.m_AdditionalArchetypes = new BlueprintArchetypeReference[] { TempleChampionArchetype.ToReference<BlueprintArchetypeReference>() };
+                    c.m_Class = new BlueprintCharacterClassReference[] {
+                        ClericClass.ToReference<BlueprintCharacterClassReference>(),
+                        InquisitorClass.ToReference<BlueprintCharacterClassReference>(),
+                        HunterClass.ToReference<BlueprintCharacterClassReference>(),
+                        PaladinClass.ToReference<BlueprintCharacterClassReference>(),
+                        StargazerClass.ToReference<BlueprintCharacterClassReference>(),
+                    };
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Touch;
+                bp.CanTargetFriends = true;
+                bp.CanTargetSelf = true;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Touch;
+                bp.ActionType = UnitCommand.CommandType.Standard;
+                bp.AvailableMetamagic |= Metamagic.Quicken | Metamagic.Extend | Metamagic.Heighten | Metamagic.Reach;
+                bp.LocalizedDuration = Helpers.CreateString("BloodDomainGreaterAbilitySeparatist.Duration", "1 round/2 levels");
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+
+            });
+
+            var BloodDomainGreaterFeatureSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("BloodDomainGreaterFeatureSeparatist", bp => {
+                bp.SetName("Wounding Blade");
+                bp.SetDescription("At 8th level, you can give a weapon that you touch the wounding special weapon quality for a number of rounds equal " +
+                    "to 1/2 your cleric level. You can use this ability once per day at 8th level, and an additional time per day for every four levels " +
+                    "beyond 8th. \nWounded: Creatures hit by this weapon take 1 hit point {g|Encyclopedia:Damage}damage{/g} each turn for each stack of this status. " +
+                    "This can be stopped through the application of any {g|Encyclopedia:Spell}spell{/g} that cures hit point damage.");
+                bp.m_Icon = SacredWeaponEnchantAnarchicChoice.Icon;
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = BloodDomainGreaterResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { BloodDomainGreaterAbilitySeparatist.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+
+            var BloodDomainBaseFeatureSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("BloodDomainBaseFeatureSeparatist", bp => {
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { WarDomainBaseAbilitySeparatist.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = WarDomainBaseResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.AddComponent<ReplaceAbilitiesStat>(c => {
+                    c.m_Ability = new BlueprintAbilityReference[] { WarDomainBaseAbilitySeparatist.ToReference<BlueprintAbilityReference>() };
+                    c.Stat = StatType.Wisdom;
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = BloodDomainSpellListFeature.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.SetName("Blood Subdomain");
+                bp.SetDescription("\nYou are a crusader for your god, always ready and willing to fight to defend your faith.\nBattle Rage: You can {g|Encyclopedia:TouchAttack}touch{/g} " +
+                    "a creature as a {g|Encyclopedia:Standard_Actions}standard action{/g} to give it a {g|Encyclopedia:Bonus}bonus{/g} on melee {g|Encyclopedia:Damage}damage rolls{/g} " +
+                    "equal to 1/2 your level in the class that gave you access to this domain for 1 {g|Encyclopedia:Combat_Round}round{/g} (minimum +1). You can do so a number of times " +
+                    "per day equal to 3 + your {g|Encyclopedia:Wisdom}Wisdom{/g} modifier.\nWounding Blade (Su): At 8th level, you can give a weapon that you touch the wounding special " +
+                    "weapon quality for a number of rounds equal to 1/2 your cleric level. You can use this ability once per day at 8th level, and an additional time per day for every " +
+                    "four levels beyond 8th.");
+                bp.IsClassFeature = true;
+            });
+
+            var BloodDomainProgressionSeparatist = Helpers.CreateBlueprint<BlueprintProgression>("BloodDomainProgressionSeparatist", bp => {
+                bp.AddComponent<PrerequisiteFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = BloodDomainAllowedSeparatist.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = BloodDomainProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = BloodDomainAllowed.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = BloodDomainProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = BloodDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.SetName("Blood Subdomain");
+                bp.SetDescription("\nYou are a crusader for your god, always ready and willing to fight to defend your faith.\nBattle Rage: You can {g|Encyclopedia:TouchAttack}touch{/g} " +
+                    "a creature as a {g|Encyclopedia:Standard_Actions}standard action{/g} to give it a {g|Encyclopedia:Bonus}bonus{/g} on melee {g|Encyclopedia:Damage}damage rolls{/g} " +
+                    "equal to 1/2 your level in the class that gave you access to this domain for 1 {g|Encyclopedia:Combat_Round}round{/g} (minimum +1). You can do so a number of times " +
+                    "per day equal to 3 + your {g|Encyclopedia:Wisdom}Wisdom{/g} modifier.\nWounding Blade (Su): At 8th level, you can give a weapon that you touch the wounding special " +
+                    "weapon quality for a number of rounds equal to 1/2 your cleric level. You can use this ability once per day at 8th level, and an additional time per day for every " +
+                    "four levels beyond 8th.\nDomain Spells: magic weapon, aid, vampiric touch, diving power, vinetrap, blade barrier, inflict serious wounds, power word stun, power word kill.");
+                bp.Groups = new FeatureGroup[] { FeatureGroup.SeparatistSecondaryDomain };
+                bp.IsClassFeature = true;
+                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    }
+                };
+                bp.m_Archetypes = new BlueprintProgression.ArchetypeWithLevel[] {  };
+                bp.LevelEntries = new LevelEntry[] {
+                    Helpers.LevelEntry(1, BloodDomainBaseFeatureSeparatist),
+                    Helpers.LevelEntry(10, BloodDomainGreaterFeatureSeparatist)
+                };
+                bp.UIGroups = new UIGroup[] {
+                    Helpers.CreateUIGroup(BloodDomainBaseFeatureSeparatist, BloodDomainGreaterFeatureSeparatist)
+                };
+                bp.GiveFeaturesForPreviousLevels = true;
+            });
+
+            BloodDomainAllowed.IsPrerequisiteFor = new List<BlueprintFeatureReference>() {
                 BloodDomainProgression.ToReference<BlueprintFeatureReference>(),
                 BloodDomainProgressionSecondary.ToReference<BlueprintFeatureReference>()
             };
             BloodDomainProgression.AddComponent<PrerequisiteNoFeature>(c => {
-                    c.Group = Prerequisite.GroupType.All;
-                    c.HideInUI = true;
-                    c.m_Feature = BloodDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
-            }); 
-            BloodDomainProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
-                    c.Group = Prerequisite.GroupType.All;
-                    c.HideInUI = true;
-                    c.m_Feature = BloodDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = BloodDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
             });
+            BloodDomainProgression.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = BloodDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
+            BloodDomainProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = BloodDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+            });
+            BloodDomainProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = BloodDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
+            BloodDomainProgressionSeparatist.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = BloodDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            }); 
             var DomainMastery = Resources.GetBlueprint<BlueprintFeature>("2de64f6a1f2baee4f9b7e52e3f046ec5").GetComponent<AutoMetamagic>();
             DomainMastery.Abilities.Add(BloodDomainGreaterAbility.ToReference<BlueprintAbilityReference>());
+            DomainMastery.Abilities.Add(BloodDomainGreaterAbilitySeparatist.ToReference<BlueprintAbilityReference>());
             if (ModSettings.AddedContent.Domains.IsDisabled("Blood Subdomain")) { return; }
             DomainTools.RegisterDomain(BloodDomainProgression);
             DomainTools.RegisterSecondaryDomain(BloodDomainProgressionSecondary);
@@ -575,6 +802,7 @@ namespace ExpandedContent.Tweaks.Domains {
             DomainTools.RegisterTempleDomain(BloodDomainProgression);
             DomainTools.RegisterSecondaryTempleDomain(BloodDomainProgressionSecondary);
             DomainTools.RegisterImpossibleSubdomain(BloodDomainProgression, BloodDomainProgressionSecondary);
+            DomainTools.RegisterSeparatistDomain(BloodDomainProgressionSeparatist);
 
         }
 

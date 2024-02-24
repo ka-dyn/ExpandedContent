@@ -22,6 +22,7 @@ using Kingmaker.Enums;
 using Kingmaker.Visual.Animation.Kingmaker.Actions;
 using Kingmaker.UnitLogic.Abilities;
 using ExpandedContent.Config;
+using Kingmaker.UnitLogic.Mechanics.Properties;
 
 namespace ExpandedContent.Tweaks.Domains {
     internal class ScalykindDomain {
@@ -124,12 +125,16 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.IsClassFeature = true;
             });
             //ScalykindCompanionSelectionDomain
+            var AnimalCompanionRank = Resources.GetBlueprint<BlueprintFeature>("1670990255e4fe948a863bafd5dbda5d");
+            var DomainAnimalCompanionProgression = Resources.GetBlueprint<BlueprintProgression>("125af359f8bc9a145968b5d8fd8159b8");
+            var AnimalCompanionArchetypeSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("65af7290b4efd5f418132141aaa36c1b");
+            var MountTargetFeature = Resources.GetBlueprint<BlueprintFeature>("cb06f0e72ffb5c640a156bd9f8000c1d");
+
             var AnimalCompanionFeatureCentipede = Resources.GetBlueprint<BlueprintFeature>("f9ef7717531f5914a9b6ecacfad63f46");
             var AnimalCompanionFeatureMonitor = Resources.GetBlueprint<BlueprintFeature>("ece6bde3dfc76ba4791376428e70621a");
             var AnimalCompanionFeatureTriceratops = Resources.GetBlueprint<BlueprintFeature>("2d3f409bb0956d44187e9ec8340163f8");
             var AnimalCompanionFeatureVelociaptor = Resources.GetBlueprint<BlueprintFeature>("89420de28b6bb9443b62ce489ae5423b");
             var AnimalCompanionFeatureTriceratops_PreorderBonus = Resources.GetBlueprint<BlueprintFeature>("52c854f77105445a9457572ab5826c00");
-            var AnimalCompanionSelectionDomain = Resources.GetBlueprint<BlueprintFeature>("2ecd6c64683b59944a7fe544033bb533");
             var ScalykindCompanionSelectionDomain = Helpers.CreateBlueprint<BlueprintFeatureSelection>("ScalykindCompanionSelectionDomain", bp => {
                 bp.SetName("Scalykind Animal Companion");
                 bp.SetDescription("At 4th level, you gain the service of an scaled animal companion. Your effective druid level for this animal companion is equal to your cleric level –2");
@@ -139,8 +144,17 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.IsClassFeature = true;
                 bp.IgnorePrerequisites = true;
                 bp.AddFeatures(AnimalCompanionFeatureCentipede, AnimalCompanionFeatureMonitor, AnimalCompanionFeatureTriceratops, AnimalCompanionFeatureVelociaptor, AnimalCompanionFeatureTriceratops_PreorderBonus);
-                bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[] { AnimalCompanionSelectionDomain.ToReference<BlueprintUnitFactReference>() };
+                bp.AddComponent<AddFeatureOnApply>(c => {
+                    c.m_Feature = DomainAnimalCompanionProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<AddFeatureOnApply>(c => {
+                    c.m_Feature = AnimalCompanionRank.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<AddFeatureOnApply>(c => {
+                    c.m_Feature = AnimalCompanionArchetypeSelection.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<AddFeatureOnApply>(c => {
+                    c.m_Feature = MountTargetFeature.ToReference<BlueprintFeatureReference>();
                 });
             });
             // ScalykindDomainBaseResource
@@ -406,24 +420,244 @@ namespace ExpandedContent.Tweaks.Domains {
                 };
                 bp.GiveFeaturesForPreviousLevels = true;
             });
-            
-            
-            ScalykindDomainAllowed.IsPrerequisiteFor = new List<BlueprintFeatureReference>() { 
+
+            //Separatist versions
+            var DomainAnimalCompanionProgressionSeparatist = Resources.GetBlueprint<BlueprintProgression>("c7a3ed56f239433fb50dfed4c07e8845");
+            var SeparatistAsIsProperty = Resources.GetModBlueprint<BlueprintUnitProperty>("SeparatistAsIsProperty");
+
+
+            var ScalykindDomainAllowedSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("ScalykindDomainAllowedSeparatist", bp => {
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.IsClassFeature = true;
+            });
+
+            var ScalykindCompanionSelectionDomainSeparatist = Helpers.CreateBlueprint<BlueprintFeatureSelection>("ScalykindCompanionSelectionDomainSeparatist", bp => {
+                bp.SetName("Scalykind Animal Companion");
+                bp.SetDescription("At 4th level, you gain the service of an scaled animal companion. Your effective druid level for this animal companion is equal to your cleric level –2");
+                bp.m_Icon = MagicFangGreaterSpell.Icon;
+                bp.Group = FeatureGroup.AnimalCompanion;
+                bp.Groups = new FeatureGroup[0];
+                bp.IsClassFeature = true;
+                bp.IgnorePrerequisites = true;
+                bp.AddFeatures(AnimalCompanionFeatureCentipede, AnimalCompanionFeatureMonitor, AnimalCompanionFeatureTriceratops, AnimalCompanionFeatureVelociaptor, AnimalCompanionFeatureTriceratops_PreorderBonus);
+                bp.AddComponent<AddFeatureOnApply>(c => {
+                    c.m_Feature = DomainAnimalCompanionProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<AddFeatureOnApply>(c => {
+                    c.m_Feature = AnimalCompanionRank.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<AddFeatureOnApply>(c => {
+                    c.m_Feature = AnimalCompanionArchetypeSelection.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<AddFeatureOnApply>(c => {
+                    c.m_Feature = MountTargetFeature.ToReference<BlueprintFeatureReference>();
+                });
+            });
+            var ScalykindDomainBaseResourceSeparatist = Helpers.CreateBlueprint<BlueprintAbilityResource>("ScalykindDomainBaseResourceSeparatist", bp => {
+                bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
+                    BaseValue = 2,
+                    IncreasedByLevel = false,
+                    IncreasedByStat = true,
+                    ResourceBonusStat = StatType.Wisdom,
+                };
+            });
+
+            var ScalykindDomainBaseAbilitySeparatist = Helpers.CreateBlueprint<BlueprintAbility>("ScalykindBaseAbilitySeparatist", bp => {
+                bp.SetName("Venomous Stare");
+                bp.SetDescription("This gaze attack can target a single creature within meduim range. The target must make a Will save (DC = 10 + 1/2 your cleric level + your Wisdom " +
+                    "modifier). Those who fail take 1d6 points of nonlethal damage + 1 point for every two cleric levels you possess and are fascinated until the " +
+                    "beginning of your next turn. You can use this ability a number of times per day equal to 3 + your Wisdom modifier. This is a mind-affecting " +
+                    "effect.");
+                bp.m_Icon = Hypnotism.Icon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Will;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionConditionalSaved() {
+                            Succeed = Helpers.CreateActionList(),
+                            Failed = Helpers.CreateActionList(
+                                new ContextActionDealDamage() {
+                                    m_Type = ContextActionDealDamage.Type.Damage,
+                                    DamageType = new DamageTypeDescription() {
+                                        Type = DamageType.Untyped
+                                    },
+                                    AbilityType = StatType.Unknown,
+                                    Duration = new ContextDurationValue() {
+                                        Rate = DurationRate.Rounds,
+                                        DiceType = DiceType.Zero
+                                    },
+                                    Value = new ContextDiceValue() {
+                                        DiceType = DiceType.D6,
+                                        DiceCountValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 1
+                                        },
+                                        BonusValue = new ContextValue() {
+                                            ValueType = ContextValueType.Rank,
+                                            ValueRank = AbilityRankType.Default
+                                        }
+                                    }
+                                },
+                                new ContextActionApplyBuff() {
+                                    m_Buff = FascinateEffectBuff.ToReference<BlueprintBuffReference>(),
+                                    UseDurationSeconds = true,
+                                    DurationSeconds = 6
+                                }
+                            )
+                        }
+                    );
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.CustomProperty;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.DelayedStartPlusDivStep;
+                    c.m_StartLevel = 4;
+                    c.m_StepLevel = 2;
+                    c.m_CustomProperty = SeparatistAsIsProperty.ToReference<BlueprintUnitPropertyReference>();
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = ScalykindDomainBaseResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<SpellComponent>(c => {
+                    c.School = SpellSchool.Enchantment;
+                });
+                bp.Type = AbilityType.SpellLike;
+                bp.Range = AbilityRange.Medium;
+                bp.CanTargetEnemies = true;
+                bp.CanTargetFriends = true;
+                bp.CanTargetSelf = true;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.BreathWeapon;
+                bp.ActionType = UnitCommand.CommandType.Standard;
+                bp.AvailableMetamagic = Metamagic.Quicken;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+
+            var ScalykindDomainBaseFeatureSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("ScalykindDomainBaseFeatureSeparatist", bp => {
+                bp.SetName("Scalykind Domain");
+                bp.SetDescription("\nYou are a true lord of reptiles, and your gaze can drive weak creatures into unconsciousness. \nVenomous Stare: This " +
+                    "gaze attack can target a single creature within meduim range. The target must make a Will save (DC = 10 + 1/2 your cleric level + your Wisdom " +
+                    "modifier). Those who fail take 1d6 points of nonlethal damage + 1 point for every two cleric levels you possess and are fascinated until the " +
+                    "beginning of your next turn. You can use this ability a number of times per day equal to 3 + your Wisdom modifier. This is a mind-affecting " +
+                    "effect. \nScaled Companion: At 4th level, you gain the service of an animal companion. Your effective druid level for this animal " +
+                    "companion is equal to your cleric level –2.");
+                bp.m_Icon = Hypnotism.Icon;
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { ScalykindDomainBaseAbilitySeparatist.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = ScalykindDomainBaseResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.AddComponent<ReplaceAbilitiesStat>(c => {
+                    c.m_Ability = new BlueprintAbilityReference[] { ScalykindDomainBaseAbilitySeparatist.ToReference<BlueprintAbilityReference>() };
+                    c.Stat = StatType.Wisdom;
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = ScalykindDomainSpellListFeature.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+
+                bp.IsClassFeature = true;
+            });
+
+            var ScalykindDomainProgressionSeparatist = Helpers.CreateBlueprint<BlueprintProgression>("ScalykindDomainProgressionSeparatist", bp => {
+                bp.SetName("Scalykind Domain");
+                bp.SetDescription("\nYou are a true lord of reptiles, and your gaze can drive weak creatures into unconsciousness. \nVenomous Stare: This " +
+                    "gaze attack can target a single creature within meduim range. The target must make a Will save (DC = 10 + 1/2 your cleric level + your Wisdom " +
+                    "modifier). Those who fail take 1d6 points of nonlethal damage + 1 point for every two cleric levels you possess and are fascinated until the " +
+                    "beginning of your next turn. You can use this ability a number of times per day equal to 3 + your Wisdom modifier. This is a mind-affecting " +
+                    "effect. \nScaled Companion: At 4th level, you gain the service of an animal companion. Your effective druid level for this animal " +
+                    "companion is equal to your cleric level –2.\nDomain Spells: magic fang, pernicious poison, greater magic fang, poison, animal growth, eyebite, " +
+                    "creeping doom, animal shapes, shapechange.");
+                bp.AddComponent<PrerequisiteNoArchetype>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = false;
+                    c.m_CharacterClass = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = SacredHuntsmasterArchetype.ToReference<BlueprintArchetypeReference>();
+                });
+                bp.AddComponent<PrerequisiteFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = ScalykindDomainAllowedSeparatist.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = ScalykindDomainProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = ScalykindDomainAllowed.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = ScalykindDomainProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = ScalykindDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.Groups = new FeatureGroup[] { FeatureGroup.ClericSecondaryDomain };
+                bp.IsClassFeature = true;
+                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    }
+                };
+                bp.LevelEntries = new LevelEntry[] {
+                    Helpers.LevelEntry(1, ScalykindDomainBaseFeatureSeparatist),
+                    Helpers.LevelEntry(6, ScalykindCompanionSelectionDomainSeparatist)
+                };
+                bp.UIGroups = new UIGroup[] {
+                    Helpers.CreateUIGroup(ScalykindDomainBaseFeatureSeparatist, ScalykindCompanionSelectionDomainSeparatist)
+                };
+                bp.GiveFeaturesForPreviousLevels = true;
+            });
+
+            ScalykindDomainAllowed.IsPrerequisiteFor = new List<BlueprintFeatureReference>() {
                 ScalykindDomainProgression.ToReference<BlueprintFeatureReference>(),
                 ScalykindDomainProgressionSecondary.ToReference<BlueprintFeatureReference>()
             };
             ScalykindDomainProgression.AddComponent<PrerequisiteNoFeature>(c => {
-                    c.Group = Prerequisite.GroupType.All;
-                    c.HideInUI = true;
-                    c.m_Feature = ScalykindDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
-            }); 
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = ScalykindDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+            });
+            ScalykindDomainProgression.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = ScalykindDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
             ScalykindDomainProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
-                    c.Group = Prerequisite.GroupType.All;
-                    c.HideInUI = true;
-                    c.m_Feature = ScalykindDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = ScalykindDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+            });
+            ScalykindDomainProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = ScalykindDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
+            ScalykindDomainProgressionSeparatist.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = ScalykindDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
             });
             var DomainMastery = Resources.GetBlueprint<BlueprintFeature>("2de64f6a1f2baee4f9b7e52e3f046ec5").GetComponent<AutoMetamagic>();
             DomainMastery.Abilities.Add(ScalykindDomainBaseAbility.ToReference<BlueprintAbilityReference>());
+            DomainMastery.Abilities.Add(ScalykindDomainBaseAbilitySeparatist.ToReference<BlueprintAbilityReference>());
             if (ModSettings.AddedContent.Domains.IsDisabled("Scalykind Domain")) { return; }
             DomainTools.RegisterDomain(ScalykindDomainProgression);
             DomainTools.RegisterSecondaryDomain(ScalykindDomainProgressionSecondary);
@@ -431,6 +665,7 @@ namespace ExpandedContent.Tweaks.Domains {
             DomainTools.RegisterTempleDomain(ScalykindDomainProgression);
             DomainTools.RegisterSecondaryTempleDomain(ScalykindDomainProgressionSecondary);
             DomainTools.RegisterImpossibleDomain(ScalykindDomainProgression, ScalykindDomainProgressionSecondary);
+            DomainTools.RegisterSeparatistDomain(ScalykindDomainProgressionSeparatist);
 
         }
 

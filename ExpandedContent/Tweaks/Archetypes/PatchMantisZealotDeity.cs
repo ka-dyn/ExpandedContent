@@ -42,7 +42,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var GodClawFeature = Resources.GetBlueprint<BlueprintFeature>("583a26e88031d0a4a94c8180105692a5");
             var AtheismFeature = Resources.GetBlueprint<BlueprintFeature>("92c0d2da0a836ce418a267093c09ca54");
 
-            //Mantis Zealot
+            #region Mantis Zealot
             AbadarFeature.AddComponent<PrerequisiteNoArchetype>(c => {
                 c.HideInUI = true;
                 c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
@@ -78,7 +78,8 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
                 c.m_Archetype = MantisZealotArchetype.ToReference<BlueprintArchetypeReference>();
             });
-            //Silver Champion
+            #endregion
+            #region Silver Champion
             AbadarFeature.AddComponent<PrerequisiteNoArchetype>(c => {
                 c.HideInUI = true;
                 c.m_CharacterClass = PaladinClass.ToReference<BlueprintCharacterClassReference>();
@@ -114,7 +115,8 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 c.m_CharacterClass = PaladinClass.ToReference<BlueprintCharacterClassReference>();
                 c.m_Archetype = SilverChampionArchetype.ToReference<BlueprintArchetypeReference>();
             });
-            // ClawOfTheFalseWyrmArchetype
+            #endregion
+            #region ClawOfTheFalseWyrmArchetype
             AbadarFeature.AddComponent<PrerequisiteNoArchetype>(c => {
                 c.HideInUI = true;
                 c.m_CharacterClass = DreadKnightClass.ToReference<BlueprintCharacterClassReference>();
@@ -195,8 +197,8 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 c.m_CharacterClass = DreadKnightClass.ToReference<BlueprintCharacterClassReference>();
                 c.m_Archetype = ClawOfTheFalseWyrmArchetype.ToReference<BlueprintArchetypeReference>();
             });
-
-            //Sworn of the Eldest
+            #endregion
+            #region Sworn of the Eldest
             AbadarFeature.AddComponent<PrerequisiteNoArchetype>(c => {
                 c.HideInUI = true;
                 c.m_CharacterClass = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
@@ -307,6 +309,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 c.m_CharacterClass = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
                 c.m_Archetype = SwornOfTheEldestArchetype.ToReference<BlueprintArchetypeReference>();
             });
+            #endregion
         }
     }
 }

@@ -21,6 +21,7 @@ using Kingmaker.Enums;
 using Kingmaker.Designers.Mechanics.Buffs;
 using ExpandedContent.Config;
 using Kingmaker.UnitLogic.Parts;
+using Kingmaker.UnitLogic.Alignments;
 
 namespace ExpandedContent.Tweaks.Domains {
     internal class AgathionDomain {
@@ -295,6 +296,11 @@ namespace ExpandedContent.Tweaks.Domains {
             });            
             // Main Blueprint
             var AgathionDomainProgression = Helpers.CreateBlueprint<BlueprintProgression>("AgathionDomainProgression", bp => {
+                bp.AddComponent<PrerequisiteAlignment>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = false;
+                    c.Alignment = AlignmentMaskType.Good;
+                });
                 bp.AddComponent<PrerequisiteFeature>(c => {
                     c.Group = Prerequisite.GroupType.All;
                     c.HideInUI = true;
@@ -367,6 +373,11 @@ namespace ExpandedContent.Tweaks.Domains {
             });
             // Secondary Domain Progression
             var AgathionDomainProgressionSecondary = Helpers.CreateBlueprint<BlueprintProgression>("AgathionDomainProgressionSecondary", bp => {
+                bp.AddComponent<PrerequisiteAlignment>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = false;
+                    c.Alignment = AlignmentMaskType.Good;
+                });
                 bp.AddComponent<PrerequisiteFeature>(c => {
                     c.Group = Prerequisite.GroupType.All;
                     c.HideInUI = true;
@@ -420,23 +431,193 @@ namespace ExpandedContent.Tweaks.Domains {
                 };
                 bp.GiveFeaturesForPreviousLevels = true;
             });
-            
+
+            //Separatist versions
+            var GoodDomainBaseAbilitySeparatist = Resources.GetBlueprint<BlueprintAbility>("024d68367e6440a792d83dc1fa7481aa");
+            var GoodDomainBaseResourceSeparatist = Resources.GetBlueprint<BlueprintAbilityResource>("abc674f0ced54ddfa6555c7f82b02bfa");
+
+            var AgathionDomainAllowedSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("AgathionDomainAllowedSeparatist", bp => {
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.IsClassFeature = true;
+            });
+
+            var AgathionDomainGreaterResourceSeparatist = Helpers.CreateBlueprint<BlueprintAbilityResource>("AgathionDomainGreaterResourceSeparatist", bp => {
+                bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
+                    BaseValue = 0,
+                    IncreasedByLevel = false,
+                    m_Class = new BlueprintCharacterClassReference[] {
+                        InquisitorClass.ToReference<BlueprintCharacterClassReference>(),
+                        HunterClass.ToReference<BlueprintCharacterClassReference>(),
+                        PaladinClass.ToReference<BlueprintCharacterClassReference>(),
+                        StargazerClass.ToReference<BlueprintCharacterClassReference>(),
+                    },
+                    m_Archetypes = new BlueprintArchetypeReference[] {
+                        DivineHunterArchetype.ToReference<BlueprintArchetypeReference>(),
+                        TempleChampionArchetype.ToReference<BlueprintArchetypeReference>(),
+                    },
+                    IncreasedByLevelStartPlusDivStep = true,
+                    m_ClassDiv = new BlueprintCharacterClassReference[] {
+                        ClericClass.ToReference<BlueprintCharacterClassReference>()
+                    },
+                    LevelIncrease = 1,
+                    StartingLevel = 3,
+                    StartingIncrease = 1,
+                    LevelStep = 1,
+                    PerStepIncrease = 1,
+                };
+                bp.m_Min = 1;
+            });
+            var AgathionDomainGreaterAbilitySeparatist = Helpers.CreateBlueprint<BlueprintActivatableAbility>("AgathionDomainGreaterAbilitySeparatist", bp => {
+                bp.SetName("Protective Aura");
+                bp.SetDescription("At 8th level, you can emit a 30-foot protective aura as a standard action. Allies in this aura receive a +2 deflection " +
+                    "bonus to AC and a +2 resistance bonus on all saving throws. Additionally, the aura protects from attempts to dominate or charm the subject made by evil " +
+                    "creatures. You can use this ability for a number of rounds per day equal to your cleric level. These rounds do not need to be consecutive.");
+                bp.m_Icon = ProtectiveAuraIcon;
+                bp.m_Buff = AgathionDomainGreaterBuff.ToReference<BlueprintBuffReference>();
+                bp.AddComponent<ActivatableAbilityResourceLogic>(c => {
+                    c.SpendType = ActivatableAbilityResourceLogic.ResourceSpendType.NewRound;
+                    c.m_RequiredResource = AgathionDomainGreaterResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                });
+                bp.ActivationType = AbilityActivationType.WithUnitCommand;
+                bp.m_ActivateWithUnitCommand = UnitCommand.CommandType.Standard;
+            });
+            var AgathionDomainGreaterFeatureSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("AgathionDomainGreaterFeatureSeparatist", bp => {
+                bp.SetName("Protective Aura");
+                bp.SetDescription("At 8th level, you can emit a 30-foot protective aura as a standard action. Allies in this aura receive a +2 deflection " +
+                    "bonus to AC and a +2 resistance bonus on all saving throws. Additionally, the aura protects from attempts to dominate or charm the subject made by evil " +
+                    "creatures. You can use this ability for a number of rounds per day equal to your cleric level. These rounds do not need to be consecutive.");
+                bp.m_Icon = ProtectiveAuraIcon;
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = AgathionDomainGreaterResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { AgathionDomainGreaterAbilitySeparatist.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+
+            var AgathionDomainBaseFeatureSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("AgathionDomainBaseFeatureSeparatist", bp => {
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { GoodDomainBaseAbilitySeparatist.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = GoodDomainBaseResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.AddComponent<ReplaceAbilitiesStat>(c => {
+                    c.m_Ability = new BlueprintAbilityReference[] { GoodDomainBaseAbilitySeparatist.ToReference<BlueprintAbilityReference>() };
+                    c.Stat = StatType.Wisdom;
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = AgathionDomainSpellListFeature.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.SetName("Agathion Subdomain");
+                bp.SetDescription("\nYou channel the pure and uncorrupted energy of Nirvana.\n{g|Encyclopedia:TouchAttack}Touch{/g} of Good: You can " +
+                    "touch a creature as a {g|Encyclopedia:Standard_Actions}standard action{/g}, granting a sacred {g|Encyclopedia:Bonus}bonus{/g} on " +
+                    "{g|Encyclopedia:Attack}attack rolls{/g}, {g|Encyclopedia:Skills}skill checks{/g}, {g|Encyclopedia:Ability_Scores}ability checks{/g}, " +
+                    "and {g|Encyclopedia:Saving_Throw}saving throws{/g} equal to half your level in the class that gave you access to this domain (minimum 1) " +
+                    "for 1 {g|Encyclopedia:Combat_Round}round{/g}. You can use this ability a number of times per day equal to 3 + your {g|Encyclopedia:Wisdom}Wisdom{/g} " +
+                    "modifier.\nProtective Aura: At 8th level, you can emit a 30-foot protective aura as a standard action. Allies in this aura receive a +2 deflection " +
+                    "bonus to AC and a +2 resistance bonus on all saving throws. Additionally, the aura protects from attempts to dominate or charm the subject made by evil " +
+                    "creatures. You can use this ability for a number of rounds per day equal to your cleric level. These rounds do not need to be consecutive.");
+                bp.IsClassFeature = true;
+            });
+            var AgathionDomainProgressionSeparatist = Helpers.CreateBlueprint<BlueprintProgression>("AgathionDomainProgressionSeparatist", bp => {
+                bp.AddComponent<PrerequisiteAlignment>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = false;
+                    c.Alignment = AlignmentMaskType.Good;
+                });
+                bp.AddComponent<PrerequisiteFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = AgathionDomainAllowedSeparatist.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = AgathionDomainAllowed.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = AgathionDomainProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = AgathionDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.SetName("Agathion Subdomain");
+                bp.SetDescription("\nYou follow the Agathions path of righteousness.\n{g|Encyclopedia:TouchAttack}Touch{/g} of Good: You can " +
+                    "touch a creature as a {g|Encyclopedia:Standard_Actions}standard action{/g}, granting a sacred {g|Encyclopedia:Bonus}bonus{/g} on " +
+                    "{g|Encyclopedia:Attack}attack rolls{/g}, {g|Encyclopedia:Skills}skill checks{/g}, {g|Encyclopedia:Ability_Scores}ability checks{/g}, " +
+                    "and {g|Encyclopedia:Saving_Throw}saving throws{/g} equal to half your level in the class that gave you access to this domain (minimum 1) " +
+                    "for 1 {g|Encyclopedia:Combat_Round}round{/g}. You can use this ability a number of times per day equal to 3 + your {g|Encyclopedia:Wisdom}Wisdom{/g} " +
+                    "modifier.\nProtective Aura: At 8th level, you can emit a 30-foot protective aura as a standard action. Allies in this aura receive a +2 deflection " +
+                    "bonus to AC and a +2 resistance bonus on all saving throws. Additionally, the aura protects from attempts to dominate or charm the subject made by evil " +
+                    "creatures. You can use this ability for a number of rounds per day equal to your cleric level. These rounds do not need to be consecutive.\nDomain " +
+                    "{g|Encyclopedia:Spell}Spells{/g}: divine favor, communal protection from evil, prayer, forced repentance, burst of glory, summon monster VI, holy word, " +
+                    "holy aura, summon monster IX.");
+                bp.Groups = new FeatureGroup[] { FeatureGroup.SeparatistSecondaryDomain };
+                bp.IsClassFeature = true;
+                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    }
+                };
+                bp.m_Archetypes = new BlueprintProgression.ArchetypeWithLevel[] {  };
+                bp.LevelEntries = new LevelEntry[] {
+                    Helpers.LevelEntry(1, AgathionDomainBaseFeatureSeparatist),
+                    Helpers.LevelEntry(10, AgathionDomainGreaterFeatureSeparatist)
+                };
+                bp.UIGroups = new UIGroup[] {
+                    Helpers.CreateUIGroup(AgathionDomainBaseFeatureSeparatist, AgathionDomainGreaterFeatureSeparatist)
+                };
+                bp.GiveFeaturesForPreviousLevels = true;
+            });
+
             AgathionDomainAllowed.IsPrerequisiteFor = new List<BlueprintFeatureReference>() { 
                 AgathionDomainProgression.ToReference<BlueprintFeatureReference>(),
                 AgathionDomainProgressionSecondary.ToReference<BlueprintFeatureReference>()
             };
             AgathionDomainProgression.AddComponent<PrerequisiteNoFeature>(c => {
-                    c.Group = Prerequisite.GroupType.All;
-                    c.HideInUI = true;
-                    c.m_Feature = AgathionDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
-            }); 
-            AgathionDomainProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
-                    c.Group = Prerequisite.GroupType.All;
-                    c.HideInUI = true;
-                    c.m_Feature = AgathionDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = AgathionDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
             });
+            AgathionDomainProgression.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = AgathionDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
+            AgathionDomainProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = AgathionDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+            });
+            AgathionDomainProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = AgathionDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
+            AgathionDomainProgressionSeparatist.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = AgathionDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
+
             var DomainMastery = Resources.GetBlueprint<BlueprintFeature>("2de64f6a1f2baee4f9b7e52e3f046ec5").GetComponent<AutoMetamagic>();
             DomainMastery.Abilities.Add(AgathionDomainGreaterAbility.ToReference<BlueprintAbilityReference>());
+            DomainMastery.Abilities.Add(AgathionDomainGreaterAbilitySeparatist.ToReference<BlueprintAbilityReference>());
             if (ModSettings.AddedContent.Domains.IsDisabled("Agathion Subdomain")) { return; }
             DomainTools.RegisterDomain(AgathionDomainProgression);
             DomainTools.RegisterSecondaryDomain(AgathionDomainProgressionSecondary);
@@ -444,7 +625,7 @@ namespace ExpandedContent.Tweaks.Domains {
             DomainTools.RegisterTempleDomain(AgathionDomainProgression);
             DomainTools.RegisterSecondaryTempleDomain(AgathionDomainProgressionSecondary);
             DomainTools.RegisterImpossibleSubdomain(AgathionDomainProgression, AgathionDomainProgressionSecondary);
-           
+            DomainTools.RegisterSeparatistDomain(AgathionDomainProgressionSeparatist);
         }
 
     }

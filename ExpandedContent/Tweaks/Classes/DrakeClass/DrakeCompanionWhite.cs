@@ -25,7 +25,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
             var AnimalCompanionRank = Resources.GetBlueprint<BlueprintFeature>("1670990255e4fe948a863bafd5dbda5d");
             var DrakeCompanionClass = Resources.GetModBlueprint<BlueprintCharacterClass>("DrakeCompanionClass");
             var DrakeSubtypeCold = Resources.GetModBlueprint<BlueprintFeature>("DrakeSubtypeCold");
-            var FormOfTheDragonWhiteBuff = Resources.GetBlueprint<BlueprintBuff>("a6acd3ad1e9fa6c45998d43fd5dcd86d").GetComponent<Polymorph>();
+            var FormOfTheDragonIIIWhiteBuff = Resources.GetBlueprint<BlueprintBuff>("8dae421e48035a044a4b1a7b9208c5db").GetComponent<Polymorph>();
             var BloodlineDraconicWhiteProgression = Resources.GetBlueprint<BlueprintProgression>("b0f79497a0d1f4f4b8293e82c8f8fa0c");
             var BlackDragonBarks = Resources.GetBlueprint<BlueprintUnitAsksList>("3c0924a80e504f04c94de6ec2a28f9aa");
             var CharacterBrain = Resources.GetBlueprint<BlueprintBrain>("cf986dd7ba9d4ec46ad8a3a0406d02ae");
@@ -77,7 +77,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 bp.Color = AzataDragonUnit.Color;
                 bp.Alignment = Alignment.ChaoticEvil;
                 bp.m_Portrait = DrakeWhitePortrait.ToReference<BlueprintPortraitReference>();
-                bp.Prefab = FormOfTheDragonWhiteBuff.m_Prefab;
+                bp.Prefab = FormOfTheDragonIIIWhiteBuff.m_Prefab;
                 //bp.Visual = RedDragon.Visual;
                 bp.Visual = new UnitVisualParams() {
                     BloodType = BloodType.Common,

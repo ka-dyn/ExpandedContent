@@ -718,23 +718,574 @@ namespace ExpandedContent.Tweaks.Domains {
                     Helpers.CreateUIGroup(RestorationDomainBaseFeature, HealingDomainGreaterFeature)
                 };
                 bp.GiveFeaturesForPreviousLevels = true;
-            });            
-            RestorationDomainAllowed.IsPrerequisiteFor = new List<BlueprintFeatureReference>() { 
+            });
+
+            //Separatist versions
+            var HealingDomainGreaterFeatureSeparatist = Resources.GetBlueprint<BlueprintFeature>("eb5452358666414bbe0f505ce1f0225b");
+            var SeparatistAsIsProperty = Resources.GetModBlueprint<BlueprintUnitProperty>("SeparatistAsIsProperty");
+
+
+            var RestorationDomainAllowedSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("RestorationDomainAllowedSeparatist", bp => {
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.IsClassFeature = true;
+            });
+
+            var RestorationDomainBaseResourceSeparatist = Helpers.CreateBlueprint<BlueprintAbilityResource>("RestorationDomainBaseResourceSeparatist", bp => {
+                bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
+                    BaseValue = 2,
+                    IncreasedByLevel = false,
+                    IncreasedByStat = true,
+                    ResourceBonusStat = StatType.Wisdom,
+                };
+            });
+
+            var RestorationDomainBaseAbilitySeparatist = Helpers.CreateBlueprint<BlueprintAbility>("RestorationDomainBaseAbilitySeparatist", bp => {
+                bp.SetName("Restorative Touch");
+                bp.SetDescription("You can touch a creature, letting the healing power of your deity flow through you to relieve the creature of a minor condition. Your touch can remove the dazed, " +
+                    "fatigued, shaken, sickened, or staggered condition. You choose which condition is removed. You can use this ability a number of times per day equal to 3 + your Wisdom modifier.");
+                bp.m_Icon = Stabilize.m_Icon;
+
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = RestorationDomainBaseResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Touch;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = true;
+                bp.CanTargetFriends = true;
+                bp.CanTargetSelf = true;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Touch;
+                bp.HasFastAnimation = false;
+                bp.ActionType = UnitCommand.CommandType.Standard;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var RestorationDomainBaseAbilityDazedSeparatist = Helpers.CreateBlueprint<BlueprintAbility>("RestorationDomainBaseAbilityDazedSeparatist", bp => {
+                bp.SetName("Restorative Touch - Dazed");
+                bp.SetDescription("You can touch a creature, letting the healing power of your deity flow through you to relieve the creature of a minor condition. Your touch can remove the dazed, " +
+                    "fatigued, shaken, sickened, or staggered condition. You choose which condition is removed. You can use this ability a number of times per day equal to 3 + your Wisdom modifier.");
+                bp.m_Icon = Stabilize.m_Icon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionDispelMagic() {
+                            m_StopAfterCountRemoved = false,
+                            m_CountToRemove = new ContextValue() {
+                                ValueType = ContextValueType.Simple,
+                                Value = 1,
+                                ValueRank = AbilityRankType.Default,
+                                ValueShared = AbilitySharedValue.Damage,
+                                Property = UnitProperty.None
+                            },
+                            m_BuffType = ContextActionDispelMagic.BuffType.All,
+                            m_MaxSpellLevel = new ContextValue() {
+                                ValueType = ContextValueType.Simple,
+                                Value = 0,
+                                ValueRank = AbilityRankType.Default,
+                                ValueShared = AbilitySharedValue.Damage,
+                                Property = UnitProperty.None
+                            },
+                            m_UseMaxCasterLevel = false,
+                            m_MaxCasterLevel = new ContextValue() {
+                                ValueType = ContextValueType.Simple,
+                                Value = 0,
+                                ValueRank = AbilityRankType.Default,
+                                ValueShared = AbilitySharedValue.Damage,
+                                Property = UnitProperty.None
+                            },
+                            m_CheckType = RuleDispelMagic.CheckType.None,
+                            m_Skill = StatType.Unknown,
+                            CheckBonus = 0,
+                            ContextBonus = new ContextValue() {
+                                ValueType = ContextValueType.Simple,
+                                Value = 0,
+                                ValueRank = AbilityRankType.Default,
+                                ValueShared = AbilitySharedValue.Damage,
+                                Property = UnitProperty.None
+                            },
+                            Descriptor = SpellDescriptor.Daze,
+                            OnSuccess = Helpers.CreateActionList(),
+                            OnFail = Helpers.CreateActionList(),
+                            OnlyTargetEnemyBuffs = false,
+                            CheckSchoolOrDescriptor = false
+                        }
+                        );
+                });
+                bp.AddComponent<AbilitySpawnFx>(c => {
+                    c.PrefabLink = RestorationLesserFX.PrefabLink;
+                    c.Time = AbilitySpawnFxTime.OnApplyEffect;
+                    c.Anchor = AbilitySpawnFxAnchor.SelectedTarget;
+                    c.WeaponTarget = AbilitySpawnFxWeaponTarget.None;
+                    c.DestroyOnCast = false;
+                    c.Delay = 0;
+                    c.PositionAnchor = AbilitySpawnFxAnchor.None;
+                    c.OrientationAnchor = AbilitySpawnFxAnchor.None;
+                    c.OrientationMode = AbilitySpawnFxOrientation.Copy;
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = RestorationDomainBaseResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Touch;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = true;
+                bp.CanTargetFriends = true;
+                bp.CanTargetSelf = true;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Touch;
+                bp.HasFastAnimation = false;
+                bp.ActionType = UnitCommand.CommandType.Standard;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var RestorationDomainBaseAbilityFatiguedSeparatist = Helpers.CreateBlueprint<BlueprintAbility>("RestorationDomainBaseAbilityFatiguedSeparatist", bp => {
+                bp.SetName("Restorative Touch - Fatigued");
+                bp.SetDescription("You can touch a creature, letting the healing power of your deity flow through you to relieve the creature of a minor condition. Your touch can remove the dazed, " +
+                    "fatigued, shaken, sickened, or staggered condition. You choose which condition is removed. You can use this ability a number of times per day equal to 3 + your Wisdom modifier.");
+                bp.m_Icon = Stabilize.m_Icon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionDispelMagic() {
+                            m_StopAfterCountRemoved = false,
+                            m_CountToRemove = new ContextValue() {
+                                ValueType = ContextValueType.Simple,
+                                Value = 1,
+                                ValueRank = AbilityRankType.Default,
+                                ValueShared = AbilitySharedValue.Damage,
+                                Property = UnitProperty.None
+                            },
+                            m_BuffType = ContextActionDispelMagic.BuffType.All,
+                            m_MaxSpellLevel = new ContextValue() {
+                                ValueType = ContextValueType.Simple,
+                                Value = 0,
+                                ValueRank = AbilityRankType.Default,
+                                ValueShared = AbilitySharedValue.Damage,
+                                Property = UnitProperty.None
+                            },
+                            m_UseMaxCasterLevel = false,
+                            m_MaxCasterLevel = new ContextValue() {
+                                ValueType = ContextValueType.Simple,
+                                Value = 0,
+                                ValueRank = AbilityRankType.Default,
+                                ValueShared = AbilitySharedValue.Damage,
+                                Property = UnitProperty.None
+                            },
+                            m_CheckType = RuleDispelMagic.CheckType.None,
+                            m_Skill = StatType.Unknown,
+                            CheckBonus = 0,
+                            ContextBonus = new ContextValue() {
+                                ValueType = ContextValueType.Simple,
+                                Value = 0,
+                                ValueRank = AbilityRankType.Default,
+                                ValueShared = AbilitySharedValue.Damage,
+                                Property = UnitProperty.None
+                            },
+                            Descriptor = SpellDescriptor.Fatigue,
+                            OnSuccess = Helpers.CreateActionList(),
+                            OnFail = Helpers.CreateActionList(),
+                            OnlyTargetEnemyBuffs = false,
+                            CheckSchoolOrDescriptor = false
+                        }
+                        );
+                });
+                bp.AddComponent<AbilitySpawnFx>(c => {
+                    c.PrefabLink = RestorationLesserFX.PrefabLink;
+                    c.Time = AbilitySpawnFxTime.OnApplyEffect;
+                    c.Anchor = AbilitySpawnFxAnchor.SelectedTarget;
+                    c.WeaponTarget = AbilitySpawnFxWeaponTarget.None;
+                    c.DestroyOnCast = false;
+                    c.Delay = 0;
+                    c.PositionAnchor = AbilitySpawnFxAnchor.None;
+                    c.OrientationAnchor = AbilitySpawnFxAnchor.None;
+                    c.OrientationMode = AbilitySpawnFxOrientation.Copy;
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = RestorationDomainBaseResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Touch;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = true;
+                bp.CanTargetFriends = true;
+                bp.CanTargetSelf = true;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Touch;
+                bp.HasFastAnimation = false;
+                bp.ActionType = UnitCommand.CommandType.Standard;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var RestorationDomainBaseAbilityShakenSeparatist = Helpers.CreateBlueprint<BlueprintAbility>("RestorationDomainBaseAbilityShakenSeparatist", bp => {
+                bp.SetName("Restorative Touch - Shaken");
+                bp.SetDescription("You can touch a creature, letting the healing power of your deity flow through you to relieve the creature of a minor condition. Your touch can remove the dazed, " +
+                    "fatigued, shaken, sickened, or staggered condition. You choose which condition is removed. You can use this ability a number of times per day equal to 3 + your Wisdom modifier.");
+                bp.m_Icon = Stabilize.m_Icon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionDispelMagic() {
+                            m_StopAfterCountRemoved = false,
+                            m_CountToRemove = new ContextValue() {
+                                ValueType = ContextValueType.Simple,
+                                Value = 1,
+                                ValueRank = AbilityRankType.Default,
+                                ValueShared = AbilitySharedValue.Damage,
+                                Property = UnitProperty.None
+                            },
+                            m_BuffType = ContextActionDispelMagic.BuffType.All,
+                            m_MaxSpellLevel = new ContextValue() {
+                                ValueType = ContextValueType.Simple,
+                                Value = 0,
+                                ValueRank = AbilityRankType.Default,
+                                ValueShared = AbilitySharedValue.Damage,
+                                Property = UnitProperty.None
+                            },
+                            m_UseMaxCasterLevel = false,
+                            m_MaxCasterLevel = new ContextValue() {
+                                ValueType = ContextValueType.Simple,
+                                Value = 0,
+                                ValueRank = AbilityRankType.Default,
+                                ValueShared = AbilitySharedValue.Damage,
+                                Property = UnitProperty.None
+                            },
+                            m_CheckType = RuleDispelMagic.CheckType.None,
+                            m_Skill = StatType.Unknown,
+                            CheckBonus = 0,
+                            ContextBonus = new ContextValue() {
+                                ValueType = ContextValueType.Simple,
+                                Value = 0,
+                                ValueRank = AbilityRankType.Default,
+                                ValueShared = AbilitySharedValue.Damage,
+                                Property = UnitProperty.None
+                            },
+                            Descriptor = SpellDescriptor.Shaken,
+                            OnSuccess = Helpers.CreateActionList(),
+                            OnFail = Helpers.CreateActionList(),
+                            OnlyTargetEnemyBuffs = false,
+                            CheckSchoolOrDescriptor = false
+                        }
+                        );
+                });
+                bp.AddComponent<AbilitySpawnFx>(c => {
+                    c.PrefabLink = RestorationLesserFX.PrefabLink;
+                    c.Time = AbilitySpawnFxTime.OnApplyEffect;
+                    c.Anchor = AbilitySpawnFxAnchor.SelectedTarget;
+                    c.WeaponTarget = AbilitySpawnFxWeaponTarget.None;
+                    c.DestroyOnCast = false;
+                    c.Delay = 0;
+                    c.PositionAnchor = AbilitySpawnFxAnchor.None;
+                    c.OrientationAnchor = AbilitySpawnFxAnchor.None;
+                    c.OrientationMode = AbilitySpawnFxOrientation.Copy;
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = RestorationDomainBaseResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Touch;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = true;
+                bp.CanTargetFriends = true;
+                bp.CanTargetSelf = true;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Touch;
+                bp.HasFastAnimation = false;
+                bp.ActionType = UnitCommand.CommandType.Standard;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var RestorationDomainBaseAbilitySickenedSeparatist = Helpers.CreateBlueprint<BlueprintAbility>("RestorationDomainBaseAbilitySickenedSeparatist", bp => {
+                bp.SetName("Restorative Touch - Sickened");
+                bp.SetDescription("You can touch a creature, letting the healing power of your deity flow through you to relieve the creature of a minor condition. Your touch can remove the dazed, " +
+                    "fatigued, shaken, sickened, or staggered condition. You choose which condition is removed. You can use this ability a number of times per day equal to 3 + your Wisdom modifier.");
+                bp.m_Icon = Stabilize.m_Icon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionDispelMagic() {
+                            m_StopAfterCountRemoved = false,
+                            m_CountToRemove = new ContextValue() {
+                                ValueType = ContextValueType.Simple,
+                                Value = 1,
+                                ValueRank = AbilityRankType.Default,
+                                ValueShared = AbilitySharedValue.Damage,
+                                Property = UnitProperty.None
+                            },
+                            m_BuffType = ContextActionDispelMagic.BuffType.All,
+                            m_MaxSpellLevel = new ContextValue() {
+                                ValueType = ContextValueType.Simple,
+                                Value = 0,
+                                ValueRank = AbilityRankType.Default,
+                                ValueShared = AbilitySharedValue.Damage,
+                                Property = UnitProperty.None
+                            },
+                            m_UseMaxCasterLevel = false,
+                            m_MaxCasterLevel = new ContextValue() {
+                                ValueType = ContextValueType.Simple,
+                                Value = 0,
+                                ValueRank = AbilityRankType.Default,
+                                ValueShared = AbilitySharedValue.Damage,
+                                Property = UnitProperty.None
+                            },
+                            m_CheckType = RuleDispelMagic.CheckType.None,
+                            m_Skill = StatType.Unknown,
+                            CheckBonus = 0,
+                            ContextBonus = new ContextValue() {
+                                ValueType = ContextValueType.Simple,
+                                Value = 0,
+                                ValueRank = AbilityRankType.Default,
+                                ValueShared = AbilitySharedValue.Damage,
+                                Property = UnitProperty.None
+                            },
+                            Descriptor = SpellDescriptor.Sickened,
+                            OnSuccess = Helpers.CreateActionList(),
+                            OnFail = Helpers.CreateActionList(),
+                            OnlyTargetEnemyBuffs = false,
+                            CheckSchoolOrDescriptor = false
+                        }
+                        );
+                });
+                bp.AddComponent<AbilitySpawnFx>(c => {
+                    c.PrefabLink = RestorationLesserFX.PrefabLink;
+                    c.Time = AbilitySpawnFxTime.OnApplyEffect;
+                    c.Anchor = AbilitySpawnFxAnchor.SelectedTarget;
+                    c.WeaponTarget = AbilitySpawnFxWeaponTarget.None;
+                    c.DestroyOnCast = false;
+                    c.Delay = 0;
+                    c.PositionAnchor = AbilitySpawnFxAnchor.None;
+                    c.OrientationAnchor = AbilitySpawnFxAnchor.None;
+                    c.OrientationMode = AbilitySpawnFxOrientation.Copy;
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = RestorationDomainBaseResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Touch;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = true;
+                bp.CanTargetFriends = true;
+                bp.CanTargetSelf = true;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Touch;
+                bp.HasFastAnimation = false;
+                bp.ActionType = UnitCommand.CommandType.Standard;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var RestorationDomainBaseAbilityStaggeredSeparatist = Helpers.CreateBlueprint<BlueprintAbility>("RestorationDomainBaseAbilityStaggeredSeparatist", bp => {
+                bp.SetName("Restorative Touch - Staggered");
+                bp.SetDescription("You can touch a creature, letting the healing power of your deity flow through you to relieve the creature of a minor condition. Your touch can remove the dazed, " +
+                    "fatigued, shaken, sickened, or staggered condition. You choose which condition is removed. You can use this ability a number of times per day equal to 3 + your Wisdom modifier.");
+                bp.m_Icon = Stabilize.m_Icon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionDispelMagic() {
+                            m_StopAfterCountRemoved = false,
+                            m_CountToRemove = new ContextValue() {
+                                ValueType = ContextValueType.Simple,
+                                Value = 1,
+                                ValueRank = AbilityRankType.Default,
+                                ValueShared = AbilitySharedValue.Damage,
+                                Property = UnitProperty.None
+                            },
+                            m_BuffType = ContextActionDispelMagic.BuffType.All,
+                            m_MaxSpellLevel = new ContextValue() {
+                                ValueType = ContextValueType.Simple,
+                                Value = 0,
+                                ValueRank = AbilityRankType.Default,
+                                ValueShared = AbilitySharedValue.Damage,
+                                Property = UnitProperty.None
+                            },
+                            m_UseMaxCasterLevel = false,
+                            m_MaxCasterLevel = new ContextValue() {
+                                ValueType = ContextValueType.Simple,
+                                Value = 0,
+                                ValueRank = AbilityRankType.Default,
+                                ValueShared = AbilitySharedValue.Damage,
+                                Property = UnitProperty.None
+                            },
+                            m_CheckType = RuleDispelMagic.CheckType.None,
+                            m_Skill = StatType.Unknown,
+                            CheckBonus = 0,
+                            ContextBonus = new ContextValue() {
+                                ValueType = ContextValueType.Simple,
+                                Value = 0,
+                                ValueRank = AbilityRankType.Default,
+                                ValueShared = AbilitySharedValue.Damage,
+                                Property = UnitProperty.None
+                            },
+                            Descriptor = SpellDescriptor.Staggered,
+                            OnSuccess = Helpers.CreateActionList(),
+                            OnFail = Helpers.CreateActionList(),
+                            OnlyTargetEnemyBuffs = false,
+                            CheckSchoolOrDescriptor = false
+                        }
+                        );
+                });
+                bp.AddComponent<AbilitySpawnFx>(c => {
+                    c.PrefabLink = RestorationLesserFX.PrefabLink;
+                    c.Time = AbilitySpawnFxTime.OnApplyEffect;
+                    c.Anchor = AbilitySpawnFxAnchor.SelectedTarget;
+                    c.WeaponTarget = AbilitySpawnFxWeaponTarget.None;
+                    c.DestroyOnCast = false;
+                    c.Delay = 0;
+                    c.PositionAnchor = AbilitySpawnFxAnchor.None;
+                    c.OrientationAnchor = AbilitySpawnFxAnchor.None;
+                    c.OrientationMode = AbilitySpawnFxOrientation.Copy;
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = RestorationDomainBaseResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Touch;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = true;
+                bp.CanTargetFriends = true;
+                bp.CanTargetSelf = true;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Touch;
+                bp.HasFastAnimation = false;
+                bp.ActionType = UnitCommand.CommandType.Standard;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+
+            RestorationDomainBaseAbilitySeparatist.AddComponent<AbilityVariants>(c => {
+                c.m_Variants = new BlueprintAbilityReference[] {
+                    RestorationDomainBaseAbilityDazedSeparatist.ToReference<BlueprintAbilityReference>(),
+                    RestorationDomainBaseAbilityFatiguedSeparatist.ToReference<BlueprintAbilityReference>(),
+                    RestorationDomainBaseAbilityShakenSeparatist.ToReference<BlueprintAbilityReference>(),
+                    RestorationDomainBaseAbilitySickenedSeparatist.ToReference<BlueprintAbilityReference>(),
+                    RestorationDomainBaseAbilityStaggeredSeparatist.ToReference<BlueprintAbilityReference>()
+                };
+            });
+
+            var RestorationDomainBaseFeatureSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("RestorationDomainBaseFeatureSeparatist", bp => {
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { RestorationDomainBaseAbilitySeparatist.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = RestorationDomainBaseResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.AddComponent<ReplaceAbilitiesStat>(c => {
+                    c.m_Ability = new BlueprintAbilityReference[] { RestorationDomainBaseAbilitySeparatist.ToReference<BlueprintAbilityReference>() };
+                    c.Stat = StatType.Wisdom;
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = RestorationDomainSpellListFeature.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.SetName("Restoration Subdomain");
+                bp.SetDescription("\nYour {g|Encyclopedia:TouchAttack}touch{/g} restores vigor, protecting against ailments, and your {g|Encyclopedia:Healing}healing{/g} magic is particularly " +
+                    "vital and potent.\nRestorative Touch: You can touch a creature, letting the healing power of your deity flow through you to relieve the creature of a minor condition. Your touch " +
+                    "can remove the dazed, fatigued, shaken, sickened, or staggered condition. You choose which condition is removed. You can use this ability a number of times per day equal to 3 " +
+                    "+ your Wisdom modifier.\nHealer's Blessing: At 6th level, all of your cure {g|Encyclopedia:Spell}spells{/g} are treated as if they were empowered, increasing the amount of damage " +
+                    "healed by half (+50%). This does not apply to damage dealt to undead with a cure spell. This does not stack with the Empower Spell metamagic {g|Encyclopedia:Feat}feat{/g}.");
+                bp.IsClassFeature = true;
+            });
+
+            var RestorationDomainProgressionSeparatist = Helpers.CreateBlueprint<BlueprintProgression>("RestorationDomainProgressionSeparatist", bp => {
+                bp.AddComponent<PrerequisiteFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = RestorationDomainAllowedSeparatist.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = RestorationDomainProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = RestorationDomainAllowed.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = RestorationDomainProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = RestorationDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.SetName("Restoration Subdomain");
+                bp.SetDescription("\nYour {g|Encyclopedia:TouchAttack}touch{/g} restores vigor, protecting against ailments, and your {g|Encyclopedia:Healing}healing{/g} magic is particularly " +
+                    "vital and potent.\nRestorative Touch: You can touch a creature, letting the healing power of your deity flow through you to relieve the creature of a minor condition. Your touch " +
+                    "can remove the dazed, fatigued, shaken, sickened, or staggered condition. You choose which condition is removed. You can use this ability a number of times per day equal to 3 " +
+                    "+ your Wisdom modifier.\nHealer's Blessing: At 6th level, all of your cure {g|Encyclopedia:Spell}spells{/g} are treated as if they were empowered, increasing the amount of damage " +
+                    "healed by half (+50%). This does not apply to damage dealt to undead with a cure spell. This does not stack with the Empower Spell metamagic {g|Encyclopedia:Feat}feat{/g}.\nDomain " +
+                    "Spells: remove sickness, remove disease, cure serious wounds, neutralize poison, break enchantment, heal, greater restoration, protection from spells, mass heal.");
+                bp.Groups = new FeatureGroup[] { FeatureGroup.SeparatistSecondaryDomain };
+                bp.IsClassFeature = true;
+                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    }
+                };
+                bp.LevelEntries = new LevelEntry[] {
+                    Helpers.LevelEntry(1, RestorationDomainBaseFeatureSeparatist),
+                    Helpers.LevelEntry(8, HealingDomainGreaterFeatureSeparatist)
+                };
+                bp.UIGroups = new UIGroup[] {
+                    Helpers.CreateUIGroup(RestorationDomainBaseFeatureSeparatist, HealingDomainGreaterFeatureSeparatist)
+                };
+                bp.GiveFeaturesForPreviousLevels = true;
+            });
+
+            RestorationDomainAllowed.IsPrerequisiteFor = new List<BlueprintFeatureReference>() {
                 RestorationDomainProgression.ToReference<BlueprintFeatureReference>(),
                 RestorationDomainProgressionSecondary.ToReference<BlueprintFeatureReference>()
             };
             RestorationDomainProgression.AddComponent<PrerequisiteNoFeature>(c => {
-                    c.Group = Prerequisite.GroupType.All;
-                    c.HideInUI = true;
-                    c.m_Feature = RestorationDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
-            }); 
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = RestorationDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+            });
+            RestorationDomainProgression.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = RestorationDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
             RestorationDomainProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
-                    c.Group = Prerequisite.GroupType.All;
-                    c.HideInUI = true;
-                    c.m_Feature = RestorationDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = RestorationDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+            });
+            RestorationDomainProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = RestorationDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
+            RestorationDomainProgressionSeparatist.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = RestorationDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
             });
             var DomainMastery = Resources.GetBlueprint<BlueprintFeature>("2de64f6a1f2baee4f9b7e52e3f046ec5").GetComponent<AutoMetamagic>();
             DomainMastery.Abilities.Add(RestorationDomainBaseAbility.ToReference<BlueprintAbilityReference>());
+            DomainMastery.Abilities.Add(RestorationDomainBaseAbilitySeparatist.ToReference<BlueprintAbilityReference>());
             if (ModSettings.AddedContent.Domains.IsDisabled("Restoration Subdomain")) { return; }
             DomainTools.RegisterDomain(RestorationDomainProgression);
             DomainTools.RegisterSecondaryDomain(RestorationDomainProgressionSecondary);
@@ -742,6 +1293,8 @@ namespace ExpandedContent.Tweaks.Domains {
             DomainTools.RegisterTempleDomain(RestorationDomainProgression);
             DomainTools.RegisterSecondaryTempleDomain(RestorationDomainProgressionSecondary);
             DomainTools.RegisterImpossibleSubdomain(RestorationDomainProgression, RestorationDomainProgressionSecondary);
+            DomainTools.RegisterSeparatistDomain(RestorationDomainProgressionSeparatist);
+
         }
     }
 }

@@ -427,7 +427,7 @@ namespace ExpandedContent.Tweaks.Classes {
                 //    c.m_Buff = AuraOfEvilBuff.ToReference<BlueprintBuffReference>();
                 //});
             });
-            // Profane Resilience
+            #region Profane Resilience
             var ProfaneResIcon = AssetLoader.LoadInternal("Skills", "Icon_UnholyRes.png");
             var ProfaneResilience = Helpers.CreateBlueprint<BlueprintFeature>("ProfaneResilience", bp => {
                 bp.SetName("Profane Resilience");
@@ -452,7 +452,8 @@ namespace ExpandedContent.Tweaks.Classes {
                     c.Stat = StatType.Charisma;
                 });
             });
-            // Touch of Profane Corruption
+            #endregion
+            #region Touch of Profane Corruption
             var TOCIcon = AssetLoader.LoadInternal("Skills", "Icon_TouchCorrupt.png");
             var ChannelTOCIcon = AssetLoader.LoadInternal("Skills", "Icon_ChannelTOC.png");
             var AbsoluteDeathAbility = Resources.GetBlueprint<BlueprintAbility>("7d721be6d74f07f4d952ee8d6f8f44a0");            
@@ -2236,7 +2237,7 @@ namespace ExpandedContent.Tweaks.Classes {
             var AuraOfCowardiceArea = Helpers.CreateBlueprint<BlueprintAbilityAreaEffect>("AuraOfCowardiceArea", bp => {
                 bp.m_TargetType = BlueprintAbilityAreaEffect.TargetType.Enemy;
                 bp.SpellResistance = false;
-                bp.AggroEnemies = true;
+                bp.AggroEnemies = true;                
                 bp.AffectEnemies = true;
                 bp.Shape = AreaEffectShape.Cylinder;
                 bp.Size = 13.Feet();
@@ -2780,7 +2781,8 @@ namespace ExpandedContent.Tweaks.Classes {
             });
             SelectiveChannel.AddPrerequisiteFeature(DreadKnightChannelNegativeEnergyFeature, Prerequisite.GroupType.Any);
             ExtraChannel.AddPrerequisiteFeature(DreadKnightChannelNegativeEnergyFeature, Prerequisite.GroupType.Any);
-            //Profane Bond
+            #endregion
+            #region Profane Bond
             var WeaponBondProgression = Resources.GetBlueprint<BlueprintProgression>("e08a817f475c8794aa56fdd904f43a57");
             WeaponBondProgression.m_DisplayName = Helpers.CreateString("$WeaponBondSwitchAbility.DisplayName", "Divine/Profane Weapon Bond");
             WeaponBondProgression.m_Description = Helpers.CreateString("$WeaponBondSwitchAbility.Description", "Upon reaching 5th level, a paladin/dreadknight forms a divine/profane bond with her weapon. " +
@@ -3263,7 +3265,8 @@ namespace ExpandedContent.Tweaks.Classes {
                     c.m_Feature = DreadKnightProfaneMountFiendish.ToReference<BlueprintFeatureReference>();
                 });
             });
-            // Aura of Despair
+            #endregion
+            #region Aura of Despair
             var AODespIcon = AssetLoader.LoadInternal("Skills", "Icon_AODespair.png");
             var AuraOfDespairEffectBuff = Helpers.CreateBlueprint<BlueprintBuff>("AuraOfDespairEffectBuff", bp => {
                 bp.SetName("Aura of Despair");
@@ -3308,18 +3311,18 @@ namespace ExpandedContent.Tweaks.Classes {
                     c.m_Buff = AuraOfDespairBuff.ToReference<BlueprintBuffReference>();
                 });
             });
-            // Aura of Absolution - NEEDS TESTING 
+            #endregion
+            #region Aura of Absolution
             var AOAIcon = AssetLoader.LoadInternal("Skills", "Icon_AOAbsolution.png");
             var OBBaneIcon = AssetLoader.LoadInternal("Skills", "Icon_OBBane.png");
             var AuraOfAbsolutionBuff = Helpers.CreateBlueprint<BlueprintBuff>("AuraOfAbsolutionBuff", bp => {
                 bp.SetName("Aura of Absolution");
-                bp.SetDescription("Once per day, a dreadknight can reach out to the profane lords to grant sinful absolution to the forces arrayed against them. As a swift action, " +
-                    "the dreadknight chooses one target within sight to crush. The dreadknight adds their Charisma bonus (if any) on " +
-                    "their attack rolls and adds their Dread Knight level on all damage rolls made against the target of their unholy smite. Regardless of the target, sinful absolution " +
-                    "attacks automatically bypass any DR the creature might possess. In addition, while Sinful Absolution is in effect, the dreadknight gains a deflection " +
-                    "bonus equal to their Charisma modifier(if any) to their AC against attacks made by the target of sinful absolution. The sinful absolution effect remains until the " +
-                    "target of sinful absolution is dead or the next time the dreadknight rests and regains their uses of this ability. At 4th level, " +
-                    "and at every three levels thereafter, the dreadknight may grant sinful absoltion one additional time per day.");
+                bp.SetDescription("At 11th level, a dreadknight can expend two uses of his sinful absolution ability to grant the " +
+                    "effect to all allies for 1 minute, using his bonuses. As a {g|Encyclopedia:Swift_Action}swift action{/g}, the dreadknight chooses one target within sight to smite. " +
+                    "The dreadknight's allies add his {g|Encyclopedia:Charisma}Charisma{/g} bonus (if any) to their {g|Encyclopedia:Attack}attack rolls{/g} and add his dreadknight level to " +
+                    "all {g|Encyclopedia:Damage}damage rolls{/g} made against the target of his smite. Attacks automatically bypass any {g|Encyclopedia:Damage_Reduction}DR{/g} the creature " +
+                    "might possess. In addition, while aura of absolution is in effect, the dreadknight's allies gain a deflection {g|Encyclopedia:Bonus}bonus{/g} equal to his Charisma bonus " +
+                    "(if any) to their {g|Encyclopedia:Armor_Class}AC{/g} against attacks made by the target of this ability.");
                 bp.IsClassFeature = true;
                 bp.Stacking = StackingType.Stack;
                 bp.m_Icon = AOAIcon;
@@ -3334,6 +3337,7 @@ namespace ExpandedContent.Tweaks.Classes {
                     c.CheckCasterFriend = true;
                 });
                 bp.AddComponent<DamageBonusAgainstTarget>(c => {
+                    c.CheckCaster = false;
                     c.CheckCasterFriend = true;
                     c.ApplyToSpellDamage = true;
                     c.Value = new ContextValue() {
@@ -3350,6 +3354,7 @@ namespace ExpandedContent.Tweaks.Classes {
                     c.CheckCasterFriend = true;
                 });
                 bp.AddComponent<IgnoreTargetDR>(c => {
+                    c.CheckCaster = false;
                     c.CheckCasterFriend = true;
                 });
                 bp.AddComponent<UniqueBuff>();
@@ -3357,9 +3362,12 @@ namespace ExpandedContent.Tweaks.Classes {
             var AuraOfAbsolutionAbility = Helpers.CreateBlueprint<BlueprintAbility>("AuraOfAbsolutionAbility", bp => {
                 bp.SetName("Aura of Absolution");
                 bp.SetDescription("At 11th level, a dreadknight can expend two uses of his sinful absolution ability to grant the " +
-                    "ability to all allies within 10 feet, using his bonuses. Allies must use this ability " +
-                    "by the start of the dreadknight’s next turn and the bonuses last for 1 minute. Using this ability is a free action.");
-                bp.LocalizedDuration = Helpers.CreateString($"{bp.name}.Duration", "Until the target of Sinful Absolution is dead");
+                    "effect to all allies for 1 minute, using his bonuses. As a {g|Encyclopedia:Swift_Action}swift action{/g}, the dreadknight chooses one target within sight to smite. " +
+                    "The dreadknight's allies add his {g|Encyclopedia:Charisma}Charisma{/g} bonus (if any) to their {g|Encyclopedia:Attack}attack rolls{/g} and add his dreadknight level to " +
+                    "all {g|Encyclopedia:Damage}damage rolls{/g} made against the target of his smite. Attacks automatically bypass any {g|Encyclopedia:Damage_Reduction}DR{/g} the creature " +
+                    "might possess. In addition, while aura of absolution is in effect, the dreadknight's allies gain a deflection {g|Encyclopedia:Bonus}bonus{/g} equal to his Charisma bonus " +
+                    "(if any) to their {g|Encyclopedia:Armor_Class}AC{/g} against attacks made by the target of this ability.");
+                bp.LocalizedDuration = Helpers.CreateString($"{bp.name}.Duration", "1 minute");
                 bp.LocalizedSavingThrow = Helpers.CreateString($"{bp.name}.SavingThrow", "None");
                 bp.m_Icon = AOAIcon;
                 bp.Type = AbilityType.Supernatural;
@@ -3369,7 +3377,7 @@ namespace ExpandedContent.Tweaks.Classes {
                 bp.CanTargetFriends = true;
                 bp.CanTargetSelf = false;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Point;
-                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.ActionType = UnitCommand.CommandType.Swift;
                 bp.AvailableMetamagic = Metamagic.Heighten | Metamagic.Reach;
                 bp.AddComponent<AbilityResourceLogic>(c => {
                     c.m_RequiredResource = SinfulAbsolutionResource.ToReference<BlueprintAbilityResourceReference>();
@@ -3380,15 +3388,17 @@ namespace ExpandedContent.Tweaks.Classes {
                 });
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.Actions = Helpers.CreateActionList(
-                                new ContextActionApplyBuff() {
-                                    m_Buff = AuraOfAbsolutionBuff.ToReference<BlueprintBuffReference>(),
-                                    Permanent = true,
-                                    DurationValue = new ContextDurationValue() {
-                                        m_IsExtendable = true,
-                                        DiceCountValue = new ContextValue(),
-                                        BonusValue = new ContextValue()
-                                    }
-                                });
+                        new ContextActionApplyBuff() {
+                            m_Buff = AuraOfAbsolutionBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = false,
+                            DurationValue = new ContextDurationValue() {
+                                DiceType = DiceType.One,
+                                m_IsExtendable = true,
+                                DiceCountValue = new ContextValue(),
+                                BonusValue = 1
+                            }
+                        }
+                    );
                 });
                 bp.AddComponent<ContextCalculateSharedValue>(c => {
                     c.ValueType = AbilitySharedValue.StatBonus;
@@ -3434,8 +3444,11 @@ namespace ExpandedContent.Tweaks.Classes {
             var AuraOfAbsolutionFeature = Helpers.CreateBlueprint<BlueprintFeature>("AuraOfAbsolutionFeature", bp => {
                 bp.SetName("Aura of Absolution");
                 bp.SetDescription("At 11th level, a dreadknight can expend two uses of his sinful absolution ability to grant the " +
-                    "ability to all allies within 10 feet, using his bonuses. Allies must use this ability " +
-                    "by the start of the dreadknight’s next turn and the bonuses last for 1 minute. Using this ability is a free action.");
+                    "effect to all allies for 1 minute, using his bonuses. As a {g|Encyclopedia:Swift_Action}swift action{/g}, the dreadknight chooses one target within sight to smite. " +
+                    "The dreadknight's allies add his {g|Encyclopedia:Charisma}Charisma{/g} bonus (if any) to their {g|Encyclopedia:Attack}attack rolls{/g} and add his dreadknight level to " +
+                    "all {g|Encyclopedia:Damage}damage rolls{/g} made against the target of his smite. Attacks automatically bypass any {g|Encyclopedia:Damage_Reduction}DR{/g} the creature " +
+                    "might possess. In addition, while aura of absolution is in effect, the dreadknight's allies gain a deflection {g|Encyclopedia:Bonus}bonus{/g} equal to his Charisma bonus " +
+                    "(if any) to their {g|Encyclopedia:Armor_Class}AC{/g} against attacks made by the target of this ability.");
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;
                 bp.m_Icon = AOAIcon;
@@ -3445,6 +3458,7 @@ namespace ExpandedContent.Tweaks.Classes {
                         };
                 });
             });
+            #endregion
             // Aura of Sin
             var AOSIcon = AssetLoader.LoadInternal("Skills", "Icon_AOS.png");
             var AuraOfSinEffectBuff = Helpers.CreateBlueprint<BlueprintBuff>("AuraOfSinEffectBuff", bp => {

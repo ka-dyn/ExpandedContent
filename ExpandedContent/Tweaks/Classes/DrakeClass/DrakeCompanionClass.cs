@@ -49,6 +49,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
             var ArcanistClass = Resources.GetBlueprint<BlueprintCharacterClass>("52dbfd8505e22f84fad8d702611f60b7");
             var AnimalCompanionRank = Resources.GetBlueprint<BlueprintFeature>("1670990255e4fe948a863bafd5dbda5d");
             var NegativeEnergyAffinity = Resources.GetBlueprint<BlueprintFeature>("d5ee498e19722854198439629c1841a5");
+            #region Main Drake
             var DrakeCompanionProgression = Helpers.CreateBlueprint<BlueprintProgression>("DrakeCompanionProgression", bp => {
                 bp.m_AllowNonContextActions = false;
                 bp.SetName("");
@@ -259,7 +260,8 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 bp.SetName("Drake Natural Armor");
                 bp.SetDescription("The drake’s natural armor bonus to its AC increases by 2 when the charge reaches 3rd level and every 3 levels thereafter.");
             });
-            //Drake Powers
+            #endregion
+            #region Drake Powers
             var DrakeBreathCooldown = Helpers.CreateBuff("DrakeBreathCooldown", bp => {
                 bp.m_AllowNonContextActions = false;
                 bp.SetName("Breath Weapon - Ability is not ready yet");
@@ -1936,7 +1938,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 bp.SetName("Drake Intellect");
                 bp.SetDescription("The drake’s Intelligence score increases by 4.");
                 bp.AddComponent<AddStatBonus>(c => {
-                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+                    c.Descriptor = ModifierDescriptor.Racial;
                     c.Stat = StatType.Intelligence;
                     c.Value = 4;
                 });
@@ -1949,17 +1951,17 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                     c.m_Feature = DrakeIntellectFeature.ToReference<BlueprintFeatureReference>();
                 });
                 bp.AddComponent<AddStatBonus>(c => {
-                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+                    c.Descriptor = ModifierDescriptor.Racial;
                     c.Stat = StatType.Intelligence;
                     c.Value = 2;
                 });
                 bp.AddComponent<AddStatBonus>(c => {
-                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+                    c.Descriptor = ModifierDescriptor.Racial;
                     c.Stat = StatType.Wisdom;
                     c.Value = 2;
                 });
                 bp.AddComponent<AddStatBonus>(c => {
-                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+                    c.Descriptor = ModifierDescriptor.Racial;
                     c.Stat = StatType.Charisma;
                     c.Value = 2;
                 });
@@ -2269,7 +2271,8 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                     DrakenScalesFeature.ToReference<BlueprintFeatureReference>()
                 };
             });
-            //Size stuff
+            #endregion
+            #region Size stuff
             ///Tiny
             var DrakeSizeTinyBuff = Helpers.CreateBuff("DrakeSizeTinyBuff", bp => {
                 bp.SetName("Drake Size - Tiny");
@@ -2477,7 +2480,8 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                     c.Value = 2;
                 });                
             });
-            //Natural Armor
+            #endregion
+            #region Natural Armor
             var DrakeNaturalArmor1Applied = Helpers.CreateBlueprint<BlueprintFeature>("DrakeNaturalArmor1Applied", bp => {
                 bp.SetName("Drake Natural Armor");
                 bp.AddComponent<AddStatBonus>(c => {
@@ -2628,6 +2632,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                     c.m_Feature = DrakeNaturalArmor8Applied.ToReference<BlueprintFeatureReference>();
                     c.BeforeThisLevel = true;
                 });
+                bp.HideInUI = true;
             });            
             var DrakeNaturalArmor9 = Helpers.CreateBlueprint<BlueprintFeature>("DrakeNaturalArmor9", bp => {
                 bp.SetName("Drake Natural Armor");
@@ -2638,7 +2643,8 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 });
                 bp.HideInUI = true;
             });
-            //Copact Drake Stuff
+            #endregion
+            #region Copact Drake Stuff
             var ReducePerson = Resources.GetBlueprint<BlueprintAbility>("4e0e9aba6447d514f88eff1464cc4763");
             var CompactDrakeBuff = Helpers.CreateBuff("CompactDrakeBuff", bp => {
                 bp.SetName("Compact Drake");
@@ -2719,15 +2725,15 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                     c.m_Facts = new BlueprintUnitFactReference[] { CompactDrake2.ToReference<BlueprintUnitFactReference>() };
                 });
             });
-
-            //Feat Lock
+            #endregion
+            #region Feat Lock
             var LightArmorProficiency = Resources.GetBlueprint<BlueprintFeature>("6d3728d4e9c9898458fe5e9532951132");
             var MediumArmorProficiency = Resources.GetBlueprint<BlueprintFeature>("46f4fb320f35704488ba3d513397789d");
             var HeavyArmorProficiency = Resources.GetBlueprint<BlueprintFeature>("1b0f68188dcc435429fb87a022239681");
             LightArmorProficiency.AddComponent<PrerequisiteNoFeature>(c => { c.m_Feature = DrakeCompanionSlotFeature.ToReference<BlueprintFeatureReference>(); c.HideInUI = true; });
             MediumArmorProficiency.AddComponent<PrerequisiteNoFeature>(c => { c.m_Feature = DrakeCompanionSlotFeature.ToReference<BlueprintFeatureReference>(); c.HideInUI = true; });
             HeavyArmorProficiency.AddComponent<PrerequisiteNoFeature>(c => { c.m_Feature = DrakeCompanionSlotFeature.ToReference<BlueprintFeatureReference>(); c.HideInUI = true; });
-
+            #endregion
 
             DrakeCompanionClassProgression.m_Classes = new BlueprintProgression.ClassWithLevel[] {
                 new BlueprintProgression.ClassWithLevel {

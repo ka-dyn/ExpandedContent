@@ -16,6 +16,7 @@ using Kingmaker.UnitLogic.Abilities.Components;
 using Kingmaker.RuleSystem.Rules;
 using Kingmaker.Visual.Animation.Kingmaker.Actions;
 using ExpandedContent.Config;
+using Kingmaker.UnitLogic.Mechanics.Properties;
 
 namespace ExpandedContent.Tweaks.Domains {
     internal class WindDomain {
@@ -376,23 +377,185 @@ namespace ExpandedContent.Tweaks.Domains {
                 };
                 bp.GiveFeaturesForPreviousLevels = true;
             });
-            WindDomainAllowed.IsPrerequisiteFor = new List<BlueprintFeatureReference>() { 
-                AirBlessingFeature.ToReference<BlueprintFeatureReference>(),
+
+            //Separatist versions
+            var ProtectionDomainGreaterFeatureSeparatist = Resources.GetBlueprint<BlueprintFeature>("7eb39ba8115a422bb69c702cc20ca58a");
+            var SeparatistAsIsProperty = Resources.GetModBlueprint<BlueprintUnitProperty>("SeparatistAsIsProperty");
+
+
+            var WindDomainAllowedSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("WindDomainAllowedSeparatist", bp => {
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.IsClassFeature = true;
+            });
+
+
+
+            var WindDomainBaseResourceSeparatist = Helpers.CreateBlueprint<BlueprintAbilityResource>("WindDomainBaseResourceSeparatist", bp => {
+                bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
+                    BaseValue = 2,
+                    IncreasedByLevel = false,
+                    IncreasedByStat = true,
+                    ResourceBonusStat = StatType.Wisdom,
+                };
+            });
+            var WindDomainBaseAbilitySeparatist = Helpers.CreateBlueprint<BlueprintAbility>("WindDomainBaseAbilitySeparatist", bp => {
+                bp.SetName("Wind Blast");
+                bp.SetDescription("As a standard action, you can unleash a blast of air in a 30-foot line. Make a combat maneuver check against each creature in the line, " +
+                    "using your caster level as your base attack bonus and your Wisdom modifier in place of your Strength modifier. Treat the results as a bull rush attempt. " +
+                    "You can use this ability a number of times per day equal to 3 + your Wisdom modifier.");
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = WindDomainBaseResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityDeliverProjectile>(c => {
+                    c.m_Projectiles = new BlueprintProjectileReference[] {
+                        Kinetic_AirBlastLine00.ToReference<BlueprintProjectileReference>()
+                    };
+                    c.Type = AbilityProjectileType.Line;
+                    c.m_Length = new Feet() { m_Value = 30 };
+                    c.m_LineWidth = new Feet() { m_Value = 5 };
+                    c.AttackRollBonusStat = StatType.Unknown;
+                });
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionCombatManeuver() {
+                            Type = CombatManeuver.BullRush,
+                            ReplaceStat = true,
+                            NewStat = StatType.Wisdom,
+                            UseCasterLevelAsBaseAttack = true,
+                            OnSuccess = Helpers.CreateActionList()
+                        }
+                        );
+                });
+                bp.m_Icon = TorrentAirBlastAbility.m_Icon;
+                bp.Type = AbilityType.Special;
+                bp.Range = AbilityRange.Projectile;
+                bp.CanTargetPoint = true;
+                bp.CanTargetEnemies = true;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Kineticist;
+                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Extend | Metamagic.Heighten | Metamagic.Selective | Metamagic.Bolstered;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+
+            var WindDomainBaseFeatureSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("WindDomainBaseFeatureSeparatist", bp => {
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { WindDomainBaseAbilitySeparatist.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = WindDomainBaseResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.AddComponent<ReplaceAbilitiesStat>(c => {
+                    c.m_Ability = new BlueprintAbilityReference[] { WindDomainBaseAbilitySeparatist.ToReference<BlueprintAbilityReference>() };
+                    c.Stat = StatType.Wisdom;
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = WindDomainSpellListFeature.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.SetName("Wind Subdomain");
+                bp.SetDescription("\nYou can manipulate wind, mist, and lightning, and are resistant to {g|Encyclopedia:Energy_Damage}electricity damage{/g}.\nWind Blast: " +
+                    "As a standard action, you can unleash a blast of air in a 30-foot line. Make a combat maneuver check to push back each creature in the line, " +
+                    "using your caster level as your base attack bonus and your Wisdom modifier in place of your Strength modifier. Treat the results as a bull rush attempt. " +
+                    "You can use this ability a number of times per day equal to 3 + your Wisdom modifier.\nElectricity Resistance: At 6th level, you gain resist electricity " +
+                    "10. This resistance increases to 20 at 12th level. At 20th level, you gain immunity to electricity.");
+                bp.IsClassFeature = true;
+            });
+
+            var WindDomainProgressionSeparatist = Helpers.CreateBlueprint<BlueprintProgression>("WindDomainProgressionSeparatist", bp => {
+                bp.AddComponent<PrerequisiteFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = WindDomainAllowedSeparatist.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = WindDomainProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = WindDomainAllowed.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = WindDomainProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = WindDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.SetName("Wind Subdomain");
+                bp.SetDescription("\nYou can manipulate wind, mist, and lightning, and are resistant to {g|Encyclopedia:Energy_Damage}electricity damage{/g}.\nWind Blast: " +
+                    "As a standard action, you can unleash a blast of air in a 30-foot line. Make a combat maneuver check to push back each creature in the line, " +
+                    "using your caster level as your base attack bonus and your Wisdom modifier in place of your Strength modifier. Treat the results as a bull rush attempt. " +
+                    "You can use this ability a number of times per day equal to 3 + your Wisdom modifier.\nElectricity Resistance: At 6th level, you gain resist electricity " +
+                    "10. This resistance increases to 20 at 12th level. At 20th level, you gain immunity to electricity.\nDomain {g|Encyclopedia:Spell}Spells{/g}: ear piercing scream, " +
+                    "protection from arrows, lightning bolt, shout, cloudkill, sirocco, elemental body IV (air), greater shout, winds of vengeance.");
+                bp.Groups = new FeatureGroup[] { FeatureGroup.SeparatistSecondaryDomain };
+                bp.IsClassFeature = true;
+                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    }
+                };
+                bp.LevelEntries = new LevelEntry[] {
+                    Helpers.LevelEntry(1, WindDomainBaseFeatureSeparatist),
+                    Helpers.LevelEntry(8, AirDomainGreaterFeature),
+                    Helpers.LevelEntry(14, AirDomainGreaterFeature)
+                };
+                bp.UIGroups = new UIGroup[] {
+                    Helpers.CreateUIGroup(WindDomainBaseFeatureSeparatist, AirDomainGreaterFeature, AirDomainGreaterFeature)
+                };
+                bp.GiveFeaturesForPreviousLevels = true;
+            });
+
+            WindDomainAllowed.IsPrerequisiteFor = new List<BlueprintFeatureReference>() {
                 WindDomainProgression.ToReference<BlueprintFeatureReference>(),
                 WindDomainProgressionSecondary.ToReference<BlueprintFeatureReference>()
             };
             WindDomainProgression.AddComponent<PrerequisiteNoFeature>(c => {
-                    c.Group = Prerequisite.GroupType.All;
-                    c.HideInUI = true;
-                    c.m_Feature = WindDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
-            }); 
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = WindDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+            });
+            WindDomainProgression.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = WindDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
             WindDomainProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
-                    c.Group = Prerequisite.GroupType.All;
-                    c.HideInUI = true;
-                    c.m_Feature = WindDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = WindDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+            });
+            WindDomainProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = WindDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
+            WindDomainProgressionSeparatist.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = WindDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
             });
             var DomainMastery = Resources.GetBlueprint<BlueprintFeature>("2de64f6a1f2baee4f9b7e52e3f046ec5").GetComponent<AutoMetamagic>();
             DomainMastery.Abilities.Add(WindDomainBaseAbility.ToReference<BlueprintAbilityReference>());
+            DomainMastery.Abilities.Add(WindDomainBaseAbilitySeparatist.ToReference<BlueprintAbilityReference>());
             if (ModSettings.AddedContent.Domains.IsDisabled("Wind Subdomain")) { return; }
             DomainTools.RegisterDomain(WindDomainProgression);
             DomainTools.RegisterSecondaryDomain(WindDomainProgressionSecondary);
@@ -402,6 +565,8 @@ namespace ExpandedContent.Tweaks.Domains {
             DomainTools.RegisterTempleDomain(WindDomainProgression);
             DomainTools.RegisterSecondaryTempleDomain(WindDomainProgressionSecondary);
             DomainTools.RegisterImpossibleSubdomain(WindDomainProgression, WindDomainProgressionSecondary);
+            DomainTools.RegisterSeparatistDomain(WindDomainProgressionSeparatist);
+
         }
     }
 }

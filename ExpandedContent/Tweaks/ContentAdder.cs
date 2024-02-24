@@ -68,6 +68,7 @@ namespace ExpandedContent.Tweaks {
                 Archetypes.SwornOfTheEldest.AddSwornOfTheEldest();
                 Archetypes.Mindchemist.AddMindchemist();
                 Archetypes.ChildOfAcavnaAndAmaznen.AddChildOfAcavnaAndAmaznen();
+                Archetypes.DivineTracker.AddDivineTracker();
 
                 Classes.OathbreakerClass.AddOathbreakerClass();
                 Archetypes.Castigator.AddCastigator();
@@ -135,6 +136,7 @@ namespace ExpandedContent.Tweaks {
                 Miscellaneous.AlchemistDiscoveries.HealingTouchDiscovery.AddHealingTouchDiscovery();
                 Miscellaneous.AlchemistDiscoveries.PheromonesDiscovery.AddPheromonesDiccovery();
 
+                Domains.DomainProperties.AddDomainProperties();
                 Domains.ImpossibleSubdomainSelection.AddImpossibleSubdomainSelection();
                 Domains.ScalykindDomain.AddScalykindDomain();
                 Domains.ArchonDomainGood.AddArchonDomainGood();
@@ -172,6 +174,11 @@ namespace ExpandedContent.Tweaks {
                 Domains.LoyaltyDomain.AddLoyaltyDomain();
                 Domains.BaseDeityPatch.AddBaseDeityPatch();
 
+                Blessings.ArtificeBlessing.AddArtificeBlessing();
+                Blessings.WarBlessing.AddWarBlessing();
+                Blessings.PlantBlessing.AddPlantBlessing();
+                Blessings.CommunityBlessing.AddCommunityBlessing();
+
                 Archetypes.StormDruid.AddStormDruid();
                 Archetypes.Treesinger.AddTreesinger();
                 Archetypes.DivineScourge.AddDivineScourge();
@@ -180,6 +187,7 @@ namespace ExpandedContent.Tweaks {
                 Mysteries.HeavensMystery.AddHeavensMystery();
                 Mysteries.SuccorMystery.AddSuccorMystery();
                 Mysteries.WoodMystery.AddWoodMystery();
+                Mysteries.WinterMystery.AddWinterMystery();
 
                 Spirits.HeavensSpirit.AddHeavensSprit();
 
@@ -270,7 +278,6 @@ namespace ExpandedContent.Tweaks {
                 Deities.Naderi.AddNaderiFeature();
                
                 Deities.PatchPulura.AddPulura();
-                Deities.MilaniSacredWeaponFeature.AddMilaniSacredWeaponFeature();
                 Deities.Ragathiel.AddRagathielFeature();
                 Deities.Arshea.AddArsheaFeature();
                 Deities.Milani.AddMilaniFeature();
@@ -372,6 +379,11 @@ namespace ExpandedContent.Tweaks {
                 Deities.Varg.AddVargFeature();
                 Deities.Verex.AddVerexFeature();
                 Deities.Zagresh.AddZagreshFeature();
+
+                FourHorsemen.Apollyon.AddApollyonFeature();
+                FourHorsemen.Charon.AddCharonFeature();
+                FourHorsemen.Szuriel.AddSzurielFeature();
+                FourHorsemen.Trelmarixian.AddTrelmarixianFeature();
                 
                 Deities.PatchLichDeity.AddLichDeity();
                 Deities.DeitySelectionFeature.PatchDeitySelection();
@@ -386,7 +398,8 @@ namespace ExpandedContent.Tweaks {
                 Deities.DeitySelectionFeature.MonitorsToggle();
                 Deities.DeitySelectionFeature.TheElderMythosToggle();
                 Deities.DeitySelectionFeature.OrcPantheonToggle();
-
+                Deities.DeitySelectionFeature.InnerSeaDeitiesregionToggle();
+                Deities.DeitySelectionFeature.FourHorsemenToggle();
             }
             [HarmonyPriority(Priority.Last)]
             [HarmonyPostfix]

@@ -20,6 +20,7 @@ using Kingmaker.Visual.Animation.Kingmaker.Actions;
 using ExpandedContent.Config;
 using Kingmaker.RuleSystem.Rules;
 using Kingmaker.UnitLogic.Abilities.Components.TargetCheckers;
+using Kingmaker.UnitLogic.Mechanics.Properties;
 
 namespace ExpandedContent.Tweaks.Domains {
     internal class RevolutionDomain {
@@ -398,22 +399,216 @@ namespace ExpandedContent.Tweaks.Domains {
                 };
                 bp.GiveFeaturesForPreviousLevels = true;
             });
-            
-            RevolutionDomainAllowed.IsPrerequisiteFor = new List<BlueprintFeatureReference>() { 
+
+            //Separatist versions
+            var LiberationDomainBaseAbilitySeparatist = Resources.GetBlueprint<BlueprintActivatableAbility>("a978ae4de4aa4387bf1c2901e44588aa");
+            var LiberationDomainBaseResourceSeparatist = Resources.GetBlueprint<BlueprintAbilityResource>("e3002cf70dd64efd9eb8a29ac954ec0e");
+            var SeparatistAsIsProperty = Resources.GetModBlueprint<BlueprintUnitProperty>("SeparatistAsIsProperty");
+
+
+            var RevolutionDomainAllowedSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("RevolutionDomainAllowedSeparatist", bp => {
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.IsClassFeature = true;
+            });
+
+            var RevolutionDomainGreaterResourceSeparatist = Helpers.CreateBlueprint<BlueprintAbilityResource>("RevolutionDomainGreaterResourceSeparatist", bp => {
+                bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
+                    BaseValue = 1,
+                    IncreasedByLevel = false,
+                    IncreasedByLevelStartPlusDivStep = true,
+                    m_Class = new BlueprintCharacterClassReference[0],
+                    m_ClassDiv = new BlueprintCharacterClassReference[] {
+                        ClericClass.ToReference<BlueprintCharacterClassReference>(),
+                        InquisitorClass.ToReference<BlueprintCharacterClassReference>(),
+                        HunterClass.ToReference<BlueprintCharacterClassReference>(),
+                        PaladinClass.ToReference<BlueprintCharacterClassReference>(),
+                        StargazerClass.ToReference<BlueprintCharacterClassReference>(),
+                    },
+                    m_Archetypes = new BlueprintArchetypeReference[0],
+                    m_ArchetypesDiv = new BlueprintArchetypeReference[] {
+                        DivineHunterArchetype.ToReference<BlueprintArchetypeReference>(),
+                        TempleChampionArchetype.ToReference<BlueprintArchetypeReference>(),
+                    },
+                    StartingLevel = 10,
+                    LevelStep = 2,
+                    StartingIncrease = 1,
+                    PerStepIncrease = 1,
+                };
+            });
+
+            var RevolutionDomainGreaterAbilitySeparatist = Helpers.CreateBlueprint<BlueprintAbility>("RevolutionDomainGreaterAbilitySeparatist", bp => {
+                bp.SetName("Powerful Persuader");
+                bp.SetDescription("At 8th level, you can make grant yourself the ability to roll twice on any {g|Encyclopedia:Persuasion}persuasion{/g} or intimidate  skill check, this abilities effect lasts until used " +
+                    "then dispels itself. You can use this ability once per day at 8th level, plus one additional time per day for every 2 levels beyond 8th.");
+                bp.m_Icon = SkillFocusDiplomacy.Icon;
+                bp.AddComponent<SpellComponent>(c => {
+                    c.m_Flags = 0;
+                    c.School = SpellSchool.None;
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = RevolutionDomainGreaterResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityTargetHasFact>(c => {
+                    c.m_CheckedFacts = new BlueprintUnitFactReference[] { RevolutionDomainGreaterBuff.ToReference<BlueprintUnitFactReference>() };
+                    c.Inverted = true;
+                });
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            Permanent = true,
+                            m_Buff = RevolutionDomainGreaterBuff.ToReference<BlueprintBuffReference>(),
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue(),
+                            DurationSeconds = 0
+                        });
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = Metamagic.Quicken | Metamagic.Extend | Metamagic.Heighten | Metamagic.Reach;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+
+            });
+
+            var RevolutionDomainGreaterFeatureSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("RevolutionDomainGreaterFeatureSeparatist", bp => {
+                bp.SetName("Powerful Persuader");
+                bp.SetDescription("At 8th level, you can make grant yourself the ability to roll twice on any {g|Encyclopedia:Persuasion}persuasion{/g} or intimidate  skill check, this abilities effect lasts until used " +
+                    "then dispels itself. You can use this ability once per day at 8th level, plus one additional time per day for every 2 levels beyond 8th.");
+                bp.m_Icon = SkillFocusDiplomacy.Icon;
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = RevolutionDomainGreaterResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { RevolutionDomainGreaterAbilitySeparatist.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+
+            var RevolutionDomainBaseFeatureSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("RevolutionDomainBaseFeatureSeparatist", bp => {
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { LiberationDomainBaseAbilitySeparatist.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = LiberationDomainBaseResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.AddComponent<ReplaceAbilitiesStat>(c => {
+                    c.m_Ability = new BlueprintAbilityReference[] { LiberationDomainBaseAbilitySeparatist.ToReference<BlueprintAbilityReference>() };
+                    c.Stat = StatType.Wisdom;
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = RevolutionDomainSpellListFeature.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<AddClassSkill>(c => {
+                    c.Skill = StatType.SkillPersuasion;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.SetName("Revolution Subdomain");
+                bp.SetName("Revolution Subdomain");
+                bp.SetDescription("\nYou are a beacon of revolution inspiring your allies to fight well and all foes to relent.\nYou have the ability to ignore impediments to your {g|Encyclopedia:Mobility}mobility{/g}. " +
+                    "For a number of {g|Encyclopedia:Combat_Round}rounds{/g} per day equal to your level in the class that gave you access to this domain, you can move normally regardless of magical effects that " +
+                    "impede movement, as if you were affected by freedom of movement. This effect occurs automatically as soon as it applies. These rounds do not need to be consecutive.\nPowerful Persuader: " +
+                    "At 8th level, you can make grant yourself the ability to roll twice on any {g|Encyclopedia:Persuasion}persuasion{/g} or intimidate  skill check, this abilities effect lasts until used " +
+                    "then dispels itself. You can use this ability once per day at 8th level, plus one additional time per day for every 2 levels beyond 8th.");
+                bp.IsClassFeature = true;
+            });
+
+            var RevolutionDomainProgressionSeparatist = Helpers.CreateBlueprint<BlueprintProgression>("RevolutionDomainProgressionSeparatist", bp => {
+                bp.AddComponent<PrerequisiteFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = RevolutionDomainAllowedSeparatist.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = RevolutionDomainProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = RevolutionDomainAllowed.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = RevolutionDomainProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = RevolutionDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.SetName("Revolution Subdomain");
+                bp.SetDescription("\nYou are a beacon of revolution inspiring your allies to fight well and all foes to relent.\nYou have the ability to ignore impediments to your {g|Encyclopedia:Mobility}mobility{/g}. " +
+                    "For a number of {g|Encyclopedia:Combat_Round}rounds{/g} per day equal to your level in the class that gave you access to this domain, you can move normally regardless of magical effects that " +
+                    "impede movement, as if you were affected by freedom of movement. This effect occurs automatically as soon as it applies. These rounds do not need to be consecutive.\nPowerful Persuader: " +
+                    "At 8th level, you can make grant yourself the ability to roll twice on any {g|Encyclopedia:Persuasion}persuasion{/g} or intimidate  skill check, this abilities effect lasts until used " +
+                    "then dispels itself. You can use this ability once per day at 8th level, plus one additional time per day for every 2 levels beyond 8th.\nDomain {g|Encyclopedia:Spell}Spells{/g}: remove fear, scare, " +
+                    "remove curse, freedom of movement, break enchantment, greater heroism, elemental body IV, mind blank, communal mind blank.");
+                bp.Groups = new FeatureGroup[] { FeatureGroup.SeparatistSecondaryDomain };
+                bp.IsClassFeature = true;
+                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    }
+                };
+                bp.LevelEntries = new LevelEntry[] {
+                    Helpers.LevelEntry(1, RevolutionDomainBaseFeatureSeparatist),
+                    Helpers.LevelEntry(10, RevolutionDomainGreaterFeatureSeparatist)
+                };
+                bp.UIGroups = new UIGroup[] {
+                    Helpers.CreateUIGroup(RevolutionDomainBaseFeatureSeparatist, RevolutionDomainGreaterFeatureSeparatist)
+                };
+                bp.GiveFeaturesForPreviousLevels = true;
+            });
+
+            RevolutionDomainAllowed.IsPrerequisiteFor = new List<BlueprintFeatureReference>() {
                 RevolutionDomainProgression.ToReference<BlueprintFeatureReference>(),
                 RevolutionDomainProgressionSecondary.ToReference<BlueprintFeatureReference>()
             };
             RevolutionDomainProgression.AddComponent<PrerequisiteNoFeature>(c => {
-                    c.Group = Prerequisite.GroupType.All;
-                    c.HideInUI = true;
-                    c.m_Feature = RevolutionDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
-            }); 
-            RevolutionDomainProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
-                    c.Group = Prerequisite.GroupType.All;
-                    c.HideInUI = true;
-                    c.m_Feature = RevolutionDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = RevolutionDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
             });
-            
+            RevolutionDomainProgression.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = RevolutionDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
+            RevolutionDomainProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = RevolutionDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+            });
+            RevolutionDomainProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = RevolutionDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
+            RevolutionDomainProgressionSeparatist.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = RevolutionDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
+
             if (ModSettings.AddedContent.Domains.IsDisabled("Revolution Subdomain")) { return; }
             DomainTools.RegisterDomain(RevolutionDomainProgression);
             DomainTools.RegisterSecondaryDomain(RevolutionDomainProgressionSecondary);
@@ -421,6 +616,8 @@ namespace ExpandedContent.Tweaks.Domains {
             DomainTools.RegisterTempleDomain(RevolutionDomainProgression);
             DomainTools.RegisterSecondaryTempleDomain(RevolutionDomainProgressionSecondary);
             DomainTools.RegisterImpossibleSubdomain(RevolutionDomainProgression, RevolutionDomainProgressionSecondary);
+            DomainTools.RegisterSeparatistDomain(RevolutionDomainProgressionSeparatist);
+
         }
     }
 }

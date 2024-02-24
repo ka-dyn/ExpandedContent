@@ -214,6 +214,11 @@
         "Enabled": true,
         "Homebrew": false,
         "Description": "A fighter archetype with low level spellcasting."
+      },
+      "Divine Tracker": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "A ranger archetype that gives up hunters bond for warpriest blessings."
       }
     },
     "IsExpanded": false
@@ -385,57 +390,72 @@
       "Archdevils": {
         "Enabled": true,
         "Homebrew": false,
-        "Description": "Adds the Archdevils of hell as deity options"
+        "Description": "Adds the Archdevils of hell as deity options."
       },
       "Deities of Ancient Osirion": {
         "Enabled": true,
         "Homebrew": false,
-        "Description": "Adds the deities of Ancient Oririon as deity options"
+        "Description": "Adds the deities of Ancient Oririon as deity options."
       },
       "Deities of Tian Xia": {
         "Enabled": true,
         "Homebrew": false,
-        "Description": "Adds the deities of Tian Xia as deity options"
+        "Description": "Adds the deities of Tian Xia as deity options."
       },
       "Demon Lords": {
         "Enabled": true,
         "Homebrew": false,
-        "Description": "Adds the Demon Lords of the Abyss as deity options"
+        "Description": "Adds the Demon Lords of the Abyss as deity options."
       },
       "Empyreal Lords": {
         "Enabled": true,
         "Homebrew": false,
-        "Description": "Adds the Empyral Lords of the positive planes as deity options"
+        "Description": "Adds the Empyral Lords of the positive planes as deity options."
       },
       "Elven Pantheon": {
         "Enabled": true,
         "Homebrew": false,
-        "Description": "Adds the deities of the Elven Pantheon as deity options"
+        "Description": "Adds the deities of the Elven Pantheon as deity options."
       },
       "Draconic Deities": {
         "Enabled": true,
         "Homebrew": false,
-        "Description": "Adds the Draconic Deities as deity options"
+        "Description": "Adds the Draconic Deities as deity options."
       },
       "The Eldest": {
         "Enabled": true,
         "Homebrew": false,
-        "Description": "Adds the Eldest of The First World as deity options"
+        "Description": "Adds the Eldest of The First World as deity options."
       },
       "Monitors": {
         "Enabled": true,
         "Homebrew": false,
-        "Description": "Adds the Monitors of the neutral planes as deity options"
+        "Description": "Adds the Monitors of the neutral planes as deity options."
       },
       "The Elder Mythos": {
         "Enabled": true,
         "Homebrew": false,
-        "Description": "Adds the Elder Mythos of the Dark Tapestry as deity options"
+        "Description": "Adds the Elder Mythos of the Dark Tapestry as deity options."
       },
       "Orc Pantheon": {
         "Enabled": true,
         "Homebrew": false,
-        "Description": "Adds the deities of the Orc Pantheon as deity options"
+        "Description": "Adds the deities of the Orc Pantheon as deity options."
+      },
+      "Inner Sea Deities": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds some of the lesser known deities of the Inner Sea Region as deity options."
+      },
+      "Lich Deity": {
+        "Enabled": false,
+        "Homebrew": false,
+        "Description": "Adds the lich commander as a deity option."
+      },
+      "The Four Horsemen": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds The Four Horsemen of Abaddon as deity options."
       }
     },
     "IsExpanded": false
@@ -500,6 +520,16 @@
         "Enabled": false,
         "Homebrew": true,
         "Description": "Allows you to select Aivu as a normal animal companion."
+      },
+      "Old Ice Subdomain": {
+        "Enabled": false,
+        "Homebrew": false,
+        "Description": "The EC version of Ice Subdomain, no longer updated due to the in-game version releasing with DLC5."
+      },
+      "Old Undead Subdomain": {
+        "Enabled": false,
+        "Homebrew": false,
+        "Description": "The EC version of Undead Subdomain, no longer updated due to the in-game version releasing with DLC5."
       }
     },
     "IsExpanded": false

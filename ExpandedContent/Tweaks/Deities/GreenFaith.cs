@@ -20,21 +20,9 @@ namespace ExpandedContent.Tweaks.Deities {
             var InquisitorClass = Resources.GetBlueprint<BlueprintCharacterClass>("f1a70d9e1b0b41e49874e1fa9052a1ce");
             var SwornOfTheEldestArchetype = Resources.GetModBlueprint<BlueprintArchetype>("SwornOfTheEldestArchetype");
 
-            GreenFaithFeature.AddComponent<PrerequisiteNoArchetype>(c => {
-                c.HideInUI = true;
-                c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
-                c.m_Archetype = MantisZealotArchetype.ToReference<BlueprintArchetypeReference>();
-            });
-            GreenFaithFeature.AddComponent<PrerequisiteNoArchetype>(c => {
-                c.HideInUI = true;
-                c.m_CharacterClass = DreadKnightClass.ToReference<BlueprintCharacterClassReference>();
-                c.m_Archetype = ClawOfTheFalseWyrmArchetype.ToReference<BlueprintArchetypeReference>();
-            });
-            GreenFaithFeature.AddComponent<PrerequisiteNoArchetype>(c => {
-                c.HideInUI = true;
-                c.m_CharacterClass = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
-                c.m_Archetype = SwornOfTheEldestArchetype.ToReference<BlueprintArchetypeReference>();
-            });
+            GreenFaithFeature.SetDisallowedArchetype(WarpriestClass, MantisZealotArchetype);
+            GreenFaithFeature.SetDisallowedArchetype(DreadKnightClass, ClawOfTheFalseWyrmArchetype);
+            GreenFaithFeature.SetDisallowedArchetype(InquisitorClass, SwornOfTheEldestArchetype);
             GreenFaithFeature.SetDescription("\nType: Druidic  " +
                         "\nLeader: \bThe Archdruid   " +
                         "\nDomains: Animal, Earth, Fire, Plant, Water. " +
@@ -58,10 +46,41 @@ namespace ExpandedContent.Tweaks.Deities {
                         "could be more important than another, and that ultimately, the four factions shared the same basic philosophy.");
                     GreenFaithFeature.m_Icon = GreenFaithIcon;
                     GreenFaithFeature.RemoveComponents<PrerequisiteNoFeature>();
-                
-        }
-                
-            
+            GreenFaithFeature.SetAllowedDomains(
+                    DeityTools.SeparatistDomainAllowed.AgathionDomainAllowedSeparatist,//Good
+                    DeityTools.SeparatistDomainAllowed.ArchonDomainGoodAllowedSeparatist,//Good
+                    DeityTools.SeparatistDomainAllowed.ArchonDomainLawAllowedSeparatist,//Lawful
+                    DeityTools.SeparatistDomainAllowed.BloodDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.CavesDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.CurseDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.DefenseDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.DemonDomainChaosAllowedSeparatist,//Chaos
+                    DeityTools.SeparatistDomainAllowed.DemonDomainEvilAllowedSeparatist,//Evil
+                    DeityTools.SeparatistDomainAllowed.DragonDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.FerocityDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.FistDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.FurDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.GrowthDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.HeroismDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.LoyaltyDomainAllowedSeparatist,//Lawful
+                    DeityTools.SeparatistDomainAllowed.LustDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.PsychopompDomainDeathAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.PsychopompDomainReposeAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.RageDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.ResolveDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.RestorationDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.RevelationDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.RevolutionDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.RiversDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.ScalykindDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.StarsDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.StormDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.ThieveryDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.WhimsyDomainAllowedSeparatist,//Chaos
+                    DeityTools.SeparatistDomainAllowed.WindDomainAllowedSeparatist
+                );
+
+        }            
     }
         
 }

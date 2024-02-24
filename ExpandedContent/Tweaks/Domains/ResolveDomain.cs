@@ -25,6 +25,7 @@ using Kingmaker.Visual.Animation.Kingmaker.Actions;
 using ExpandedContent.Config;
 using Kingmaker.Designers.Mechanics.Buffs;
 using Kingmaker.UnitLogic.Abilities.Components.Base;
+using Kingmaker.UnitLogic.Mechanics.Properties;
 
 namespace ExpandedContent.Tweaks.Domains {
     internal class ResolveDomain {
@@ -452,23 +453,286 @@ namespace ExpandedContent.Tweaks.Domains {
                 };
                 bp.GiveFeaturesForPreviousLevels = true;
             });
-            
-            ResolveDomainAllowed.IsPrerequisiteFor = new List<BlueprintFeatureReference>() { 
+
+            //Separatist versions
+            var StrengthDomainBaseAbilitySeparatist = Resources.GetBlueprint<BlueprintAbility>("de9beaa7a8e34e7189c9d23ff0c565ea");
+            var StrengthDomainBaseResourceSeparatist = Resources.GetBlueprint<BlueprintAbilityResource>("edc48ef3a5364f8ba6998724df15dce3");
+            var SeparatistAsIsProperty = Resources.GetModBlueprint<BlueprintUnitProperty>("SeparatistAsIsProperty");
+
+
+            var ResolveDomainAllowedSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("ResolveDomainAllowedSeparatist", bp => {
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.IsClassFeature = true;
+            });
+
+            var ResolveDomainGreaterResourceSeparatist = Helpers.CreateBlueprint<BlueprintAbilityResource>("ResolveDomainGreaterResourceSeparatist", bp => {
+                bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
+                    BaseValue = 0,                    
+                    IncreasedByLevelStartPlusDivStep = true,
+                    m_ClassDiv = new BlueprintCharacterClassReference[] {
+                        InquisitorClass.ToReference<BlueprintCharacterClassReference>(),
+                        HunterClass.ToReference<BlueprintCharacterClassReference>(),
+                        PaladinClass.ToReference<BlueprintCharacterClassReference>(),
+                        StargazerClass.ToReference<BlueprintCharacterClassReference>(),
+                        ClericClass.ToReference<BlueprintCharacterClassReference>()
+                    },
+                    m_ArchetypesDiv = new BlueprintArchetypeReference[] {
+                        DivineHunterArchetype.ToReference<BlueprintArchetypeReference>(),
+                        TempleChampionArchetype.ToReference<BlueprintArchetypeReference>(),
+                    },
+                    LevelIncrease = 1,
+                    StartingLevel = 10,
+                    StartingIncrease = 1,
+                    LevelStep = 4,
+                    PerStepIncrease = 1,
+                };
+                bp.m_Min = 1;
+            });
+
+            var ResolveDomainGreaterBuffSeparatist = Helpers.CreateBuff("ResolveDomainGreaterBuffSeparatist", bp => {
+                bp.SetName("Bestow Resolve");
+                bp.SetDescription("At 8th level, you can bless creatures with the boldness of your deity. You can bestow a number of temporary hit points equal to your level + your Wisdom " +
+                    "modifier to all allies within 20 feet. The temporary hit points remain for 1 minute. You can use this ability once per day at 8th level, plus one additional time per day " +
+                    "for every 4 levels you possess beyond 8th.");
+                bp.m_Icon = ResiliencyJudgmentAbilityGood.Icon;
+                bp.AddComponent<TemporaryHitPointsFromAbilityValue>(c => {
+                    c.Descriptor = ModifierDescriptor.None;
+                    c.Value = new ContextValue() {
+                        ValueType = ContextValueType.Shared,
+                        Value = 0,
+                        ValueRank = AbilityRankType.Default,
+                        ValueShared = AbilitySharedValue.Heal
+                    };
+                    c.RemoveWhenHitPointsEnd = true;
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.CustomProperty;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.AsIs;
+                    c.m_CustomProperty = SeparatistAsIsProperty.ToReference<BlueprintUnitPropertyReference>();
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.StatBonus;
+                    c.m_BaseValueType = ContextRankBaseValueType.StatBonus;
+                    c.m_Stat = StatType.Wisdom;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.AsIs;
+                });
+                bp.AddComponent<ContextCalculateSharedValue>(c => {
+                    c.ValueType = AbilitySharedValue.Heal;
+                    c.Value = new ContextDiceValue() {
+                        DiceType = DiceType.One,
+                        DiceCountValue = new ContextValue() {
+                            ValueType = ContextValueType.Rank,
+                            Value = 0,
+                            ValueRank = AbilityRankType.Default,
+                            ValueShared = AbilitySharedValue.Damage
+                        },
+                        BonusValue = new ContextValue() {
+                            ValueType = ContextValueType.Rank,
+                            Value = 0,
+                            ValueRank = AbilityRankType.StatBonus,
+                            ValueShared = AbilitySharedValue.StatBonus
+                        }
+                    };
+                    c.Modifier = 1;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+                bp.Stacking = StackingType.Replace;
+            });
+
+            var ResolveDomainGreaterAbilitySeparatist = Helpers.CreateBlueprint<BlueprintAbility>("ResolveDomainGreaterAbilitySeparatist", bp => {
+                bp.SetName("Bestow Resolve");
+                bp.SetDescription("At 8th level, you can bless creatures with the boldness of your deity. You can bestow a number of temporary hit points equal to your level + your Wisdom " +
+                    "modifier to all allies within 20 feet. The temporary hit points remain for 1 minute. You can use this ability once per day at 8th level, plus one additional time per day " +
+                    "for every 4 levels you possess beyond 8th.");
+                bp.m_Icon = ResiliencyJudgmentAbilityGood.Icon;
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = ResolveDomainGreaterResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+
+                });
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = ResolveDomainGreaterBuffSeparatist.ToReference<BlueprintBuffReference>(),
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Minutes,
+                                BonusValue = 1,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                m_IsExtendable = true
+                            },
+                            DurationSeconds = 0,
+                            AsChild = true
+                        });
+                });
+                bp.AddComponent<AbilityTargetsAround>(c => {
+                    c.m_Radius = 20.Feet();
+                    c.m_TargetType = TargetType.Ally;
+                    c.m_IncludeDead = false;
+                    c.m_Condition = new ConditionsChecker();
+                    c.m_SpreadSpeed = 0.Feet();
+                });
+                bp.AddComponent<AbilitySpawnFx>(c => {
+                    c.PrefabLink = new Kingmaker.ResourceLinks.PrefabLink() { AssetId = "352469f228a3b1f4cb269c7ab0409b8e" }; //Enlarge Person
+                    c.Time = AbilitySpawnFxTime.OnApplyEffect;
+                    c.Anchor = AbilitySpawnFxAnchor.Caster;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.SelfTouch;
+                bp.ActionType = UnitCommand.CommandType.Standard;
+                bp.AvailableMetamagic |= Metamagic.Quicken | Metamagic.Extend | Metamagic.Heighten | Metamagic.Reach;
+                bp.LocalizedDuration = Helpers.CreateString("ResolveDomainGreaterAbilitySeparatist.Duration", "1 minute");
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+
+            });
+
+            var ResolveDomainGreaterFeatureSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("ResolveDomainGreaterFeatureSeparatist", bp => {
+                bp.SetName("Bestow Resolve");
+                bp.SetDescription("At 8th level, you can bless creatures with the boldness of your deity. You can bestow a number of temporary hit points equal to your level + your Wisdom " +
+                    "modifier to all allies within 20 feet. The temporary hit points remain for 1 minute. You can use this ability once per day at 8th level, plus one additional time per day " +
+                    "for every 4 levels you possess beyond 8th.");
+                bp.m_Icon = ResiliencyJudgmentAbilityGood.Icon;
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = ResolveDomainGreaterResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { ResolveDomainGreaterAbilitySeparatist.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+
+            var ResolveDomainBaseFeatureSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("ResolveDomainBaseFeatureSeparatist", bp => {
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { StrengthDomainBaseAbilitySeparatist.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = StrengthDomainBaseResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.AddComponent<ReplaceAbilitiesStat>(c => {
+                    c.m_Ability = new BlueprintAbilityReference[] { StrengthDomainBaseAbilitySeparatist.ToReference<BlueprintAbilityReference>() };
+                    c.Stat = StatType.Wisdom;
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = ResolveDomainSpellListFeature.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.SetName("Resolve Subdomain");
+                bp.SetDescription("\nFaith grants resolve — resolve grants strength and fortitude.\nStrength Surge: As a {g|Encyclopedia:Standard_Actions}standard action{/g}, you can " +
+                    "{g|Encyclopedia:TouchAttack}touch{/g} a creature to give it great strength. For 1 {g|Encyclopedia:Combat_Round}round{/g}, the target gains an enhancement " +
+                    "{g|Encyclopedia:Bonus}bonus{/g} equal to 1/2 your level in the class that gave you access to this domain (minimum +1) to {g|Encyclopedia:MeleeAttack}melee attacks{/g} " +
+                    "and {g|Encyclopedia:Athletics}Athletics checks{/g}. You can use this ability a number of times per day equal to 3 + your {g|Encyclopedia:Wisdom}Wisdom{/g} modifier. " +
+                    "\nBestow Resolve: At 8th level, you can bless creatures with the boldness of your deity. You can bestow a number of temporary hit points equal to your level + your Wisdom " +
+                    "modifier to all allies within 20 feet. The temporary hit points remain for 1 minute. You can use this ability once per day at 8th level, plus one additional time per day " +
+                    "for every 4 levels you possess beyond 8th.");
+                bp.IsClassFeature = true;
+            });
+
+            var ResolveDomainProgressionSeparatist = Helpers.CreateBlueprint<BlueprintProgression>("ResolveDomainProgressionSeparatist", bp => {
+                bp.AddComponent<PrerequisiteFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = ResolveDomainAllowedSeparatist.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = ResolveDomainProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = ResolveDomainAllowed.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = ResolveDomainProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = ResolveDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.SetName("Resolve Subdomain");
+                bp.SetDescription("\nFaith grants resolve — resolve grants strength and fortitude.\nStrength Surge: As a {g|Encyclopedia:Standard_Actions}standard action{/g}, you can " +
+                    "{g|Encyclopedia:TouchAttack}touch{/g} a creature to give it great strength. For 1 {g|Encyclopedia:Combat_Round}round{/g}, the target gains an enhancement " +
+                    "{g|Encyclopedia:Bonus}bonus{/g} equal to 1/2 your level in the class that gave you access to this domain (minimum +1) to {g|Encyclopedia:MeleeAttack}melee attacks{/g} " +
+                    "and {g|Encyclopedia:Athletics}Athletics checks{/g}. You can use this ability a number of times per day equal to 3 + your {g|Encyclopedia:Wisdom}Wisdom{/g} modifier. " +
+                    "\nBestow Resolve: At 8th level, you can bless creatures with the boldness of your deity. You can bestow a number of temporary hit points equal to your level + your Wisdom " +
+                    "modifier to all allies within 20 feet. The temporary hit points remain for 1 minute. You can use this ability once per day at 8th level, plus one additional time per day " +
+                    "for every 4 levels you possess beyond 8th." +
+                    "\nDomain Spells: bless, bull's strength, magical vestment, mass enlarge person, righteous might, stoneskin, legendary proportions, frightful aspect, transformation.");
+                bp.Groups = new FeatureGroup[] { FeatureGroup.SeparatistSecondaryDomain };
+                bp.IsClassFeature = true;
+                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    }
+                };
+                bp.LevelEntries = new LevelEntry[] {
+                    Helpers.LevelEntry(1, ResolveDomainBaseFeatureSeparatist),
+                    Helpers.LevelEntry(10, ResolveDomainGreaterFeatureSeparatist)
+                };
+                bp.UIGroups = new UIGroup[] {
+                    Helpers.CreateUIGroup(ResolveDomainBaseFeatureSeparatist, ResolveDomainGreaterFeatureSeparatist)
+                };
+                bp.GiveFeaturesForPreviousLevels = true;
+            });
+
+
+            ResolveDomainAllowed.IsPrerequisiteFor = new List<BlueprintFeatureReference>() {
                 ResolveDomainProgression.ToReference<BlueprintFeatureReference>(),
                 ResolveDomainProgressionSecondary.ToReference<BlueprintFeatureReference>()
             };
             ResolveDomainProgression.AddComponent<PrerequisiteNoFeature>(c => {
-                    c.Group = Prerequisite.GroupType.All;
-                    c.HideInUI = true;
-                    c.m_Feature = ResolveDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
-            }); 
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = ResolveDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+            });
+            ResolveDomainProgression.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = ResolveDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
             ResolveDomainProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
-                    c.Group = Prerequisite.GroupType.All;
-                    c.HideInUI = true;
-                    c.m_Feature = ResolveDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = ResolveDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+            });
+            ResolveDomainProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = ResolveDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
+            ResolveDomainProgressionSeparatist.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = ResolveDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
             });
             var DomainMastery = Resources.GetBlueprint<BlueprintFeature>("2de64f6a1f2baee4f9b7e52e3f046ec5").GetComponent<AutoMetamagic>();
             DomainMastery.Abilities.Add(ResolveDomainGreaterAbility.ToReference<BlueprintAbilityReference>());
+            DomainMastery.Abilities.Add(ResolveDomainGreaterAbilitySeparatist.ToReference<BlueprintAbilityReference>());
             if (ModSettings.AddedContent.Domains.IsDisabled("Resolve Subdomain")) { return; }
             DomainTools.RegisterDomain(ResolveDomainProgression);
             DomainTools.RegisterSecondaryDomain(ResolveDomainProgressionSecondary);
@@ -476,6 +740,7 @@ namespace ExpandedContent.Tweaks.Domains {
             DomainTools.RegisterTempleDomain(ResolveDomainProgression);
             DomainTools.RegisterSecondaryTempleDomain(ResolveDomainProgressionSecondary);
             DomainTools.RegisterImpossibleSubdomain(ResolveDomainProgression, ResolveDomainProgressionSecondary);
+            DomainTools.RegisterSeparatistDomain(ResolveDomainProgressionSeparatist);
 
         }
 

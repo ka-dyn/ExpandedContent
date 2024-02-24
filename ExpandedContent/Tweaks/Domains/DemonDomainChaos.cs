@@ -21,6 +21,7 @@ using Kingmaker.UnitLogic.Mechanics.Properties;
 using Kingmaker.UnitLogic.Mechanics.Components;
 using Kingmaker.Visual.Animation.Kingmaker.Actions;
 using ExpandedContent.Config;
+using Kingmaker.UnitLogic.Alignments;
 
 namespace ExpandedContent.Tweaks.Domains {
     internal class DemonDomainChaos {
@@ -105,7 +106,7 @@ namespace ExpandedContent.Tweaks.Domains {
                 });
                 bp.AddComponent<ContextRankConfig>(c => {
                     c.m_Type = AbilityRankType.Default;
-                    c.m_BaseValueType = ContextRankBaseValueType.MaxClassLevelWithArchetype;
+                    c.m_BaseValueType = ContextRankBaseValueType.SummClassLevelWithArchetype;
                     c.m_Stat = StatType.Unknown;
                     c.m_Progression = ContextRankProgression.Div2;
                     c.Archetype = DivineHunterArchetype.ToReference<BlueprintArchetypeReference>();
@@ -280,6 +281,11 @@ namespace ExpandedContent.Tweaks.Domains {
             });            
             // Main Blueprint
             var DemonDomainChaosProgression = Helpers.CreateBlueprint<BlueprintProgression>("DemonDomainChaosProgression", bp => {
+                bp.AddComponent<PrerequisiteAlignment>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = false;
+                    c.Alignment = AlignmentMaskType.Chaotic;
+                });
                 bp.AddComponent<PrerequisiteFeature>(c => {
                     c.Group = Prerequisite.GroupType.All;
                     c.HideInUI = true;
@@ -349,6 +355,11 @@ namespace ExpandedContent.Tweaks.Domains {
             });
             // Secondary Domain Progression
             var DemonDomainChaosProgressionSecondary = Helpers.CreateBlueprint<BlueprintProgression>("DemonDomainChaosProgressionSecondary", bp => {
+                bp.AddComponent<PrerequisiteAlignment>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = false;
+                    c.Alignment = AlignmentMaskType.Chaotic;
+                });
                 bp.AddComponent<PrerequisiteFeature>(c => {
                     c.Group = Prerequisite.GroupType.All;
                     c.HideInUI = true;
@@ -399,20 +410,278 @@ namespace ExpandedContent.Tweaks.Domains {
                 };
                 bp.GiveFeaturesForPreviousLevels = true;
             });
-            
-            DemonDomainChaosAllowed.IsPrerequisiteFor = new List<BlueprintFeatureReference>() { 
+
+            //Separatist versions
+            var ChaosDomainGreaterFeatureSeparatist = Resources.GetBlueprint<BlueprintFeature>("6f22f294a7ab467d8e4e9cec807e139e");
+
+            var DemonDomainChaosAllowedSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("DemonDomainChaosAllowedSeparatist", bp => {
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.IsClassFeature = true;
+            });
+
+            var DemonDomainBaseResourceSeparatist = Helpers.CreateBlueprint<BlueprintAbilityResource>("DemonDomainBaseResourceSeparatist", bp => {
+                bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
+                    BaseValue = 2,
+                    IncreasedByLevel = false,
+                    IncreasedByStat = true,
+                    ResourceBonusStat = StatType.Wisdom,
+                };
+            });
+
+            var DemonDomainBaseBuffSeparatist = Helpers.CreateBuff("DemonDomainBaseBuffSeparatist", bp => {
+                bp.SetName("Fury of the Abyss");
+                bp.SetDescription("As a swift action, you can give yourself an enhancement bonus equal to 1/2 your cleric level (minimum +1) on melee attacks, melee damage rolls, " +
+                    "and combat maneuver checks. This bonus lasts for 1 round. During this round, you take a –2 penalty to AC. You can use this ability for a number of times per " +
+                    "day equal to 3 + your Wisdom modifier.");
+                bp.m_Icon = BloodlineAbyssalProgression.m_Icon;
+                bp.AddComponent<AddStatBonus>(c => {
+                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+                    c.Stat = StatType.AC;
+                    c.Value = -2;
+                });
+                bp.AddComponent<AddContextStatBonus>(c => {
+                    c.Descriptor = ModifierDescriptor.Enhancement;
+                    c.Stat = StatType.AdditionalAttackBonus;
+                    c.Value = new ContextValue() {
+                        ValueType = ContextValueType.Shared,
+                        Value = 0,
+                        ValueRank = AbilityRankType.Default,
+                        ValueShared = AbilitySharedValue.Damage,
+                        Property = UnitProperty.None,
+                    };
+                });
+                bp.AddComponent<AddContextStatBonus>(c => {
+                    c.Descriptor = ModifierDescriptor.Enhancement;
+                    c.Stat = StatType.AdditionalDamage;
+                    c.Value = new ContextValue() {
+                        ValueType = ContextValueType.Shared,
+                        Value = 0,
+                        ValueRank = AbilityRankType.Default,
+                        ValueShared = AbilitySharedValue.Damage,
+                        Property = UnitProperty.None,
+                    };
+                });
+                bp.AddComponent<AddContextStatBonus>(c => {
+                    c.Descriptor = ModifierDescriptor.Enhancement;
+                    c.Stat = StatType.AdditionalCMB;
+                    c.Value = new ContextValue() {
+                        ValueType = ContextValueType.Shared,
+                        Value = 0,
+                        ValueRank = AbilityRankType.Default,
+                        ValueShared = AbilitySharedValue.Damage,
+                        Property = UnitProperty.None,
+                    };
+                });
+                bp.AddComponent<AddContextStatBonus>(c => {
+                    c.Descriptor = ModifierDescriptor.Enhancement;
+                    c.Stat = StatType.AdditionalCMD;
+                    c.Value = new ContextValue() {
+                        ValueType = ContextValueType.Shared,
+                        Value = 0,
+                        ValueRank = AbilityRankType.Default,
+                        ValueShared = AbilitySharedValue.Damage,
+                        Property = UnitProperty.None,
+                    };
+                });
+                bp.AddComponent<ContextCalculateSharedValue>(c => {
+                    c.ValueType = AbilitySharedValue.Damage;
+                    c.Value = new ContextDiceValue() {
+                        DiceType = DiceType.One,
+                        DiceCountValue = new ContextValue() {
+                            ValueType = ContextValueType.Rank,
+                            Value = 0,
+                            ValueRank = AbilityRankType.DamageDice
+                        },
+                        BonusValue = new ContextValue() {
+                            ValueType = ContextValueType.Rank,
+                            Value = 0,
+                            ValueRank = AbilityRankType.Default
+                        }
+                    };
+                    c.Modifier = 1;
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.SummClassLevelWithArchetype;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_Progression = ContextRankProgression.Div2;
+                    c.Archetype = DivineHunterArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.m_AdditionalArchetypes = new BlueprintArchetypeReference[] { TempleChampionArchetype.ToReference<BlueprintArchetypeReference>() };
+                    c.m_Class = new BlueprintCharacterClassReference[] {
+                        InquisitorClass.ToReference<BlueprintCharacterClassReference>(),
+                        HunterClass.ToReference<BlueprintCharacterClassReference>(),
+                        PaladinClass.ToReference<BlueprintCharacterClassReference>(),
+                        StargazerClass.ToReference<BlueprintCharacterClassReference>(),
+                    };
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.DamageDice;
+                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_Progression = ContextRankProgression.DelayedStartPlusDivStep;
+                    c.m_Class = new BlueprintCharacterClassReference[] {
+                        ClericClass.ToReference<BlueprintCharacterClassReference>()
+                    };
+                    c.m_StartLevel = 3;
+                    c.m_StepLevel = 2;
+                    c.m_UseMin = true;
+                    c.m_Min = 1;
+                });
+                bp.FxOnStart = StandartRageBuff.FxOnStart;
+            });
+
+            var DemonDomainBaseAbilitySeparatist = Helpers.CreateBlueprint<BlueprintAbility>("DemonDomainBaseAbilitySeparatist", bp => {
+                bp.SetName("Fury of the Abyss");
+                bp.SetDescription("As a swift action, you can give yourself an enhancement bonus equal to 1/2 your cleric level (minimum +1) on melee attacks, melee damage rolls, " +
+                    "and combat maneuver checks. This bonus lasts for 1 round. During this round, you take a –2 penalty to AC. You can use this ability for a number of times per " +
+                    "day equal to 3 + your Wisdom modifier.");
+                bp.m_Icon = BloodlineAbyssalProgression.m_Icon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = DemonDomainBaseBuffSeparatist.ToReference<BlueprintBuffReference>(),
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 1,
+                                m_IsExtendable = true
+                            },
+                            DurationSeconds = 0
+                        });
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = DemonDomainBaseResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.HasFastAnimation = false;
+                bp.ActionType = UnitCommand.CommandType.Swift;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+
+            var DemonDomainChaosBaseFeatureSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("DemonDomainChaosBaseFeatureSeparatist", bp => {
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { DemonDomainBaseAbilitySeparatist.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = DemonDomainBaseResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.AddComponent<ReplaceAbilitiesStat>(c => {
+                    c.m_Ability = new BlueprintAbilityReference[] { DemonDomainBaseAbilitySeparatist.ToReference<BlueprintAbilityReference>() };
+                    c.Stat = StatType.Wisdom;
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = DemonDomainChaosSpellListFeature.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.SetName("Demon Subdomain - Chaos");
+                bp.SetDescription("\nYour soul embodies the anarchic and evil nature of demonkind, your master grants you the power of the Abyss.\nFury of the Abyss: As a swift action, " +
+                    "you can give yourself an enhancement bonus equal to 1/2 your cleric level (minimum +1) on melee attacks, melee damage rolls, and combat maneuver checks. This bonus " +
+                    "lasts for 1 round. During this round, you take a –2 penalty to AC. You can use this ability for a number of times per day equal to 3 + your Wisdom modifier.\nChaos " +
+                    "Blade: At 8th level, you can give a weapon you touch the anarchic special weapon quality for a number of rounds equal to 1/2 your level in the class that gave you " +
+                    "access to this domain. You can use this ability once per day at 8th level, and an additional time per day for every four levels beyond 8th.");
+                bp.IsClassFeature = true;
+            });
+
+            var DemonDomainChaosProgressionSeparatist = Helpers.CreateBlueprint<BlueprintProgression>("DemonDomainChaosProgressionSeparatist", bp => {
+                bp.AddComponent<PrerequisiteAlignment>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = false;
+                    c.Alignment = AlignmentMaskType.Chaotic;
+                });
+                bp.AddComponent<PrerequisiteFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = DemonDomainChaosAllowedSeparatist.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = DemonDomainChaosProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = DemonDomainChaosAllowed.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = DemonDomainChaosProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = DemonDomainChaosProgressionSecondary.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.SetName("Demon Subdomain - Chaos");
+                bp.SetDescription("\nYour soul embodies the anarchic and evil nature of demonkind, your master grants you the power of the Abyss.\nFury of the Abyss: As a swift action, " +
+                    "you can give yourself an enhancement bonus equal to 1/2 your cleric level (minimum +1) on melee attacks, melee damage rolls, and combat maneuver checks. This bonus " +
+                    "lasts for 1 round. During this round, you take a –2 penalty to AC. You can use this ability for a number of times per day equal to 3 + your Wisdom modifier.\nChaos " +
+                    "Blade: At 8th level, you can give a weapon you touch the anarchic special weapon quality for a number of rounds equal to 1/2 your level in the class that gave you " +
+                    "access to this domain. You can use this ability once per day at 8th level, and an additional time per day for every four levels beyond 8th.\nDomain " +
+                    "{g|Encyclopedia:Spell}Spells{/g}: doom, communal protection from law, rage, freedom of movement, acidic spray, summon monster VI, word of chaos, " +
+                    "cloak of chaos, summon monster IX.");
+                bp.Groups = new FeatureGroup[] { FeatureGroup.SeparatistSecondaryDomain };
+                bp.IsClassFeature = true;
+                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    }
+                };
+                bp.m_Archetypes = new BlueprintProgression.ArchetypeWithLevel[] {  };
+                bp.LevelEntries = new LevelEntry[] {
+                    Helpers.LevelEntry(1, DemonDomainChaosBaseFeatureSeparatist),
+                    Helpers.LevelEntry(10, ChaosDomainGreaterFeatureSeparatist)
+                };
+                bp.UIGroups = new UIGroup[] {
+                    Helpers.CreateUIGroup(DemonDomainChaosBaseFeatureSeparatist, ChaosDomainGreaterFeatureSeparatist)
+                };
+                bp.GiveFeaturesForPreviousLevels = true;
+            });
+
+            DemonDomainChaosAllowed.IsPrerequisiteFor = new List<BlueprintFeatureReference>() {
                 DemonDomainChaosProgression.ToReference<BlueprintFeatureReference>(),
                 DemonDomainChaosProgressionSecondary.ToReference<BlueprintFeatureReference>()
             };
             DemonDomainChaosProgression.AddComponent<PrerequisiteNoFeature>(c => {
-                    c.Group = Prerequisite.GroupType.All;
-                    c.HideInUI = true;
-                    c.m_Feature = DemonDomainChaosProgressionSecondary.ToReference<BlueprintFeatureReference>();
-            }); 
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = DemonDomainChaosProgressionSecondary.ToReference<BlueprintFeatureReference>();
+            });
+            DemonDomainChaosProgression.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = DemonDomainChaosProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
             DemonDomainChaosProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
-                    c.Group = Prerequisite.GroupType.All;
-                    c.HideInUI = true;
-                    c.m_Feature = DemonDomainChaosProgressionSecondary.ToReference<BlueprintFeatureReference>();
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = DemonDomainChaosProgressionSecondary.ToReference<BlueprintFeatureReference>();
+            });
+            DemonDomainChaosProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = DemonDomainChaosProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
+            DemonDomainChaosProgressionSeparatist.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = DemonDomainChaosProgressionSeparatist.ToReference<BlueprintFeatureReference>();
             });
             if (ModSettings.AddedContent.Domains.IsDisabled("Demon Subdomain")) { return; }
             DomainTools.RegisterDomain(DemonDomainChaosProgression);
@@ -421,6 +690,7 @@ namespace ExpandedContent.Tweaks.Domains {
             DomainTools.RegisterTempleDomain(DemonDomainChaosProgression);
             DomainTools.RegisterSecondaryTempleDomain(DemonDomainChaosProgressionSecondary);
             DomainTools.RegisterImpossibleSubdomain(DemonDomainChaosProgression, DemonDomainChaosProgressionSecondary);
+            DomainTools.RegisterSeparatistDomain(DemonDomainChaosProgressionSeparatist);
 
         }
     }

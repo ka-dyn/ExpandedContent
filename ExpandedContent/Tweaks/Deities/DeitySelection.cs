@@ -147,8 +147,6 @@ namespace ExpandedContent.Tweaks.Deities {
             var GroetusFeature = Resources.GetBlueprint<BlueprintFeature>("c3e4d5681906d5246ab8b0637b98cbfe");
             var NaderiFeature = Resources.GetModBlueprint<BlueprintFeature>("NaderiFeature");
 
-
-
             //Philosophies
             var GreenFaithFeature = Resources.GetBlueprint<BlueprintFeature>("99a7a8f13c1300c42878558fa9471e2f");
             var GreenFaithCameliaFeature = Resources.GetBlueprint<BlueprintFeature>("ca763809e01f4247a3639965364c26cb");
@@ -156,6 +154,8 @@ namespace ExpandedContent.Tweaks.Deities {
 
             //Pantheons
             var GodclawFeature = Resources.GetBlueprint<BlueprintFeature>("583a26e88031d0a4a94c8180105692a5");
+            var GodclawIcon = AssetLoader.LoadInternal("Deities", "Icon_Godclaw.jpg");
+            GodclawFeature.m_Icon = GodclawIcon;
 
             //Dragon Gods/Aspects
             var ApsuFeature = Resources.GetModBlueprint<BlueprintFeature>("ApsuFeature");
@@ -170,7 +170,6 @@ namespace ExpandedContent.Tweaks.Deities {
             var MammonFeature = Resources.GetModBlueprint<BlueprintFeature>("MammonFeature");
             var MephistophelesFeature = Resources.GetModBlueprint<BlueprintFeature>("MephistophelesFeature");
             var MolochFeature = Resources.GetModBlueprint<BlueprintFeature>("MolochFeature");
-
 
             //The Eldest
             var CountRanalcFeature = Resources.GetModBlueprint<BlueprintFeature>("CountRanalcFeature");
@@ -240,6 +239,12 @@ namespace ExpandedContent.Tweaks.Deities {
             var VargFeature = Resources.GetModBlueprint<BlueprintFeature>("VargFeature");
             var VerexFeature = Resources.GetModBlueprint<BlueprintFeature>("VerexFeature");
             var ZagreshFeature = Resources.GetModBlueprint<BlueprintFeature>("ZagreshFeature");
+
+            //Four Horsemen
+            var ApollyonFeature = Resources.GetModBlueprint<BlueprintFeature>("ApollyonFeature");
+            var CharonFeature = Resources.GetModBlueprint<BlueprintFeature>("CharonFeature");
+            var SzurielFeature = Resources.GetModBlueprint<BlueprintFeature>("SzurielFeature");
+            var TrelmarixianFeature = Resources.GetModBlueprint<BlueprintFeature>("TrelmarixianFeature");
 
 
             var DeitySelection = Resources.GetBlueprint<BlueprintFeatureSelection>("59e7a76987fe3b547b9cce045f4db3e4");
@@ -434,43 +439,18 @@ namespace ExpandedContent.Tweaks.Deities {
             });
             var DeitiesSelectionIcon = AssetLoader.LoadInternal("Deities", "Icon_DeitiesSelection.jpg");
             var DeitiesSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("DeitiesSelection", bp => {
-                bp.SetName("Gods and Goddesses");
-                bp.SetDescription("A deity, also known as a god or goddess, is a being or force of incredible power capable " +
-                    "of granting its power to mortal beings through divine magic. These are the only beings that can claim full Divinity. " +
-                    "A deity is strongly associated with a specific alignment, " +
-                    "several domains, and a plane (typically an Outer Sphere plane).");
+                bp.SetName("Deities of the Inner Sea region");
+                bp.SetDescription("There are hundreds of gods and demigods that are worshiped in the Inner Sea Regions. Ranging from unknown minor deities without a pantheon, " +
+                    "to just as powerful as more commonly worshipped gods.");
                 bp.m_Icon = DeitiesSelectionIcon;
                 bp.m_AllFeatures = new BlueprintFeatureReference[] {
-                AbadarFeature.ToReference<BlueprintFeatureReference>(),
                 AchaekekFeature.ToReference<BlueprintFeatureReference>(),
                 AlsetaFeature.ToReference<BlueprintFeatureReference>(),
-                AsmodeusFeature.ToReference<BlueprintFeatureReference>(),
                 BesmaraFeature.ToReference<BlueprintFeatureReference>(),
-                CalistriaFeature.ToReference<BlueprintFeatureReference>(),
-                CaydenCaileanFeature.ToReference<BlueprintFeatureReference>(),
-                DesnaFeature.ToReference<BlueprintFeatureReference>(),
-                ErastilFeature.ToReference<BlueprintFeatureReference>(),
-                GorumFeature.ToReference<BlueprintFeatureReference>(),
-                GozrehFeature.ToReference<BlueprintFeatureReference>(),
-                GyronnaFeature.ToReference<BlueprintFeatureReference>(),
-                IomedaeFeature.ToReference<BlueprintFeatureReference>(),
-                IroriFeature.ToReference<BlueprintFeatureReference>(),
                 KurgessFeature.ToReference<BlueprintFeatureReference>(),
-                LamashtuFeature.ToReference<BlueprintFeatureReference>(),
-                LichDeityFeature.ToReference<BlueprintFeatureReference>(),
                 MilaniFeature.ToReference<BlueprintFeatureReference>(),
-                NethysFeature.ToReference<BlueprintFeatureReference>(),
-                NorgorberFeature.ToReference<BlueprintFeatureReference>(),
-                PharasmaFeature.ToReference<BlueprintFeatureReference>(),
-                RovagugFeature.ToReference<BlueprintFeatureReference>(),
-                SarenraeFeature.ToReference<BlueprintFeatureReference>(),
-                ShelynFeature.ToReference<BlueprintFeatureReference>(),
-                ToragFeature.ToReference<BlueprintFeatureReference>(),
-                UrgathoaFeature.ToReference<BlueprintFeatureReference>(),
                 YdersiusFeature.ToReference<BlueprintFeatureReference>(),
-                ZonKuthonFeature.ToReference<BlueprintFeatureReference>(),
                 ZyphusFeature.ToReference<BlueprintFeatureReference>(),
-                GroetusFeature.ToReference<BlueprintFeatureReference>(),
                 NaderiFeature.ToReference<BlueprintFeatureReference>(),
                 };
                 bp.IsClassFeature = true;
@@ -490,7 +470,7 @@ namespace ExpandedContent.Tweaks.Deities {
                 bp.Group = FeatureGroup.Deities;
             });
             var PhilosophiesIcon = AssetLoader.LoadInternal("Deities", "Icon_Philosophies.jpg");
-            var PhilosophiesSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("PhilosophiesSelection", bp => {
+            var PhilosophiesSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("PhilosophiesSelection", bp => {//not in use
                 bp.SetName("Philosophies");
                 bp.SetDescription("Philosophies of Golarion differ from religions in that they are teachings and ways of " +
                     "thinking that are propounded by a mortal founder who, usually, does not become a deity. By assenting to a " +
@@ -507,7 +487,7 @@ namespace ExpandedContent.Tweaks.Deities {
                 bp.Group = FeatureGroup.Deities;
             });
             var PantheonIcon = AssetLoader.LoadInternal("Deities", "Icon_Pantheon.jpg");
-            var PantheonSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("PantheonSelection", bp => {
+            var PantheonSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("PantheonSelection", bp => {//not in use
                 bp.SetName("Pantheons");
                 bp.SetDescription("A pantheon is a group of related gods worshipped either individually or together. " +
                     "Most pantheons are associated with a specific ancestry or geopolitical region, but rarely, a pantheon " +
@@ -646,16 +626,59 @@ namespace ExpandedContent.Tweaks.Deities {
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
                 bp.Group = FeatureGroup.Deities;
             });
-
-
-
+            var FourHorsemenIcon = AssetLoader.LoadInternal("Deities", "Icon_FourHorsemen.jpg");
+            var FourHorsemenSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("FourHorsemenSelection", bp => {
+                bp.SetName("The Four Horsemen");
+                bp.SetDescription("At the end of the River Styx await the rulers of Abaddon: the Four Horsemen of the Apocalypse " +
+                    "and their daemonic brood. Hatred for living things fuels all of daemonkind, who see existence as a great mistake. " +
+                    "Though all of the Horsemen began their lives as mortals, they are completely devoted to the eradication of reality " +
+                    "itself. Riding atop their dreaded steeds, they strive for true apocalypse. Only when all life has been snuffed " +
+                    "out does their mission end, and they can then consign themselves to the waiting oblivion. \nOnly the truly nihilistic " +
+                    "worship the Horsemen. Those who seek vengeance on all the world or lust for power are drawn to the Horsemen's easy " +
+                    "promises, thinking they will be spared from their masters' cataclysmic mission. They never are. To the Horsemen, " +
+                    "their followers are entirely disposable, tools with a purpose until they too are devoured.");
+                bp.m_Icon = FourHorsemenIcon;
+                bp.m_AllFeatures = new BlueprintFeatureReference[] {
+                    ApollyonFeature.ToReference<BlueprintFeatureReference>(),
+                    CharonFeature.ToReference<BlueprintFeatureReference>(),
+                    SzurielFeature.ToReference<BlueprintFeatureReference>(),
+                    TrelmarixianFeature.ToReference<BlueprintFeatureReference>()
+                };
+                bp.IsClassFeature = true;
+                bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
+                bp.Group = FeatureGroup.Deities;
+            });
 
             var DeitySelectionIcon = AssetLoader.LoadInternal("Deities", "Icon_DeitySelection.jpg");
             DeitySelection.m_Icon = DeitySelectionIcon;
             DeitySelection.m_AllFeatures = new BlueprintFeatureReference[] {
-                DeitiesSelection.ToReference<BlueprintFeatureReference>(),
-                PhilosophiesSelection.ToReference<BlueprintFeatureReference>(),
-                PantheonSelection.ToReference<BlueprintFeatureReference>()
+                AbadarFeature.ToReference<BlueprintFeatureReference>(),
+                AsmodeusFeature.ToReference<BlueprintFeatureReference>(),
+                CalistriaFeature.ToReference<BlueprintFeatureReference>(),
+                CaydenCaileanFeature.ToReference<BlueprintFeatureReference>(),
+                DesnaFeature.ToReference<BlueprintFeatureReference>(),
+                ErastilFeature.ToReference<BlueprintFeatureReference>(),
+                GorumFeature.ToReference<BlueprintFeatureReference>(),
+                GozrehFeature.ToReference<BlueprintFeatureReference>(),
+                GyronnaFeature.ToReference<BlueprintFeatureReference>(),
+                IomedaeFeature.ToReference<BlueprintFeatureReference>(),
+                IroriFeature.ToReference<BlueprintFeatureReference>(),
+                LamashtuFeature.ToReference<BlueprintFeatureReference>(),
+                NethysFeature.ToReference<BlueprintFeatureReference>(),
+                NorgorberFeature.ToReference<BlueprintFeatureReference>(),
+                PharasmaFeature.ToReference<BlueprintFeatureReference>(),
+                RovagugFeature.ToReference<BlueprintFeatureReference>(),
+                SarenraeFeature.ToReference<BlueprintFeatureReference>(),
+                ShelynFeature.ToReference<BlueprintFeatureReference>(),
+                ToragFeature.ToReference<BlueprintFeatureReference>(),
+                UrgathoaFeature.ToReference<BlueprintFeatureReference>(),
+                ZonKuthonFeature.ToReference<BlueprintFeatureReference>(),
+                GroetusFeature.ToReference<BlueprintFeatureReference>(),
+                GreenFaithFeature.ToReference<BlueprintFeatureReference>(),
+                AtheismFeature.ToReference<BlueprintFeatureReference>(),
+                GodclawFeature.ToReference<BlueprintFeatureReference>(),
+                LichDeityFeature.ToReference<BlueprintFeatureReference>(),
+
             };
             DeitySelection.Groups = new FeatureGroup[] { FeatureGroup.Deities };
             DeitySelection.Group = FeatureGroup.Deities;
@@ -722,66 +745,68 @@ namespace ExpandedContent.Tweaks.Deities {
                     ValmallosFeature.ToReference<BlueprintFeatureReference>(),
                 };
             });
-            var Seelah = Resources.GetBlueprint<BlueprintUnit>("54be53f0b35bf3c4592a97ae335fe765");
-            Seelah.AddComponent<AddFacts>(c => {
-                c.m_Facts = new BlueprintUnitFactReference[] { IomedaeFeature.ToReference<BlueprintUnitFactReference>() };
-            });
-            var Lann = Resources.GetBlueprint<BlueprintUnit>("cb29621d99b902e4da6f5d232352fbda");
-            Lann.AddComponent<AddFacts>(c => {
-                c.m_Facts = new BlueprintUnitFactReference[] { IomedaeFeature.ToReference<BlueprintUnitFactReference>() };
-            });
-            var Wenduag = Resources.GetBlueprint<BlueprintUnit>("ae766624c03058440a036de90a7f2009");
-            Wenduag.AddComponent<AddFacts>(c => {
-                c.m_Facts = new BlueprintUnitFactReference[] { LamashtuFeature.ToReference<BlueprintUnitFactReference>() };
-            });
-            var Woljif = Resources.GetBlueprint<BlueprintUnit>("766435873b1361c4287c351de194e5f9");
-            Woljif.AddComponent<AddFacts>(c => {
-                c.m_Facts = new BlueprintUnitFactReference[] { CalistriaFeature.ToReference<BlueprintUnitFactReference>() };
-            });
-            var Camelia = Resources.GetBlueprint<BlueprintUnit>("397b090721c41044ea3220445300e1b8");
-            Camelia.AddComponent<AddFacts>(c => {
-                c.m_Facts = new BlueprintUnitFactReference[] { GreenFaithCameliaFeature.ToReference<BlueprintUnitFactReference>() };
-            });
-            var Arueshalae = Resources.GetBlueprint<BlueprintUnit>("a352873d37ec6c54c9fa8f6da3a6b3e1");
-            Arueshalae.AddComponent<AddFacts>(c => {
-                c.m_Facts = new BlueprintUnitFactReference[] { DesnaFeature.ToReference<BlueprintUnitFactReference>() };
-            });
-            var Sosiel = Resources.GetBlueprint<BlueprintUnit>("1cbbbb892f93c3d439f8417ad7cbb6aa");
-            Sosiel.AddComponent<AddFacts>(c => {
-                c.m_Facts = new BlueprintUnitFactReference[] { ShelynFeature.ToReference<BlueprintUnitFactReference>() };
-            });
-            var Greybor = Resources.GetBlueprint<BlueprintUnit>("f72bb7c48bb3e45458f866045448fb58");
-            Greybor.AddComponent<AddFacts>(c => {
-                c.m_Facts = new BlueprintUnitFactReference[] { NorgorberFeature.ToReference<BlueprintUnitFactReference>() };
-            });
-            var Nenio = Resources.GetBlueprint<BlueprintUnit>("1b893f7cf2b150e4f8bc2b3c389ba71d");
-            Nenio.AddComponent<AddFacts>(c => {
-                c.m_Facts = new BlueprintUnitFactReference[] { NethysFeature.ToReference<BlueprintUnitFactReference>() };
-            });
-            var Ember = Resources.GetBlueprint<BlueprintUnit>("2779754eecffd044fbd4842dba55312c");
-            Ember.AddComponent<AddFacts>(c => {
-                c.m_Facts = new BlueprintUnitFactReference[] { AtheismFeature.ToReference<BlueprintUnitFactReference>() };
-            });
-            var Sendri = Resources.GetBlueprint<BlueprintUnit>("561036c882a640089b1d42f03ebe3a6c");
-            Sendri.AddComponent<AddFacts>(c => {
-                c.m_Facts = new BlueprintUnitFactReference[] { DesnaFeature.ToReference<BlueprintUnitFactReference>() };
-            });
-            var Daeran = Resources.GetBlueprint<BlueprintUnit>("096fc4a96d675bb45a0396bcaa7aa993");
-            Daeran.AddComponent<AddFacts>(c => {
-                c.m_Facts = new BlueprintUnitFactReference[] { AtheismFeature.ToReference<BlueprintUnitFactReference>() };
-            });
-            var Regill = Resources.GetBlueprint<BlueprintUnit>("0d37024170b172346b3769df92a971f5");
-            Regill.AddComponent<AddFacts>(c => {
-                c.m_Facts = new BlueprintUnitFactReference[] { GodclawFeature.ToReference<BlueprintUnitFactReference>() };
-            });
-            var Trever = Resources.GetBlueprint<BlueprintUnit>("0bb1c03b9f7bbcf42bb74478af2c6258");
-            Trever.AddComponent<AddFacts>(c => {
-                c.m_Facts = new BlueprintUnitFactReference[] { ShelynFeature.ToReference<BlueprintUnitFactReference>() };
-            });
-            var Rekarth = Resources.GetBlueprint<BlueprintUnit>("3e0014e4be454482a2797fd81123d7b4");
-            Rekarth.AddComponent<AddFacts>(c => {
-                c.m_Facts = new BlueprintUnitFactReference[] { CalistriaFeature.ToReference<BlueprintUnitFactReference>() };
-            });
+            #region Stuff no longer needed but kept in case I need to add a toggle
+            //var Seelah = Resources.GetBlueprint<BlueprintUnit>("54be53f0b35bf3c4592a97ae335fe765");
+            //Seelah.AddComponent<AddFacts>(c => {
+            //    c.m_Facts = new BlueprintUnitFactReference[] { IomedaeFeature.ToReference<BlueprintUnitFactReference>() };
+            //});
+            //var Lann = Resources.GetBlueprint<BlueprintUnit>("cb29621d99b902e4da6f5d232352fbda");
+            //Lann.AddComponent<AddFacts>(c => {
+            //    c.m_Facts = new BlueprintUnitFactReference[] { IomedaeFeature.ToReference<BlueprintUnitFactReference>() };
+            //});
+            //var Wenduag = Resources.GetBlueprint<BlueprintUnit>("ae766624c03058440a036de90a7f2009");
+            //Wenduag.AddComponent<AddFacts>(c => {
+            //    c.m_Facts = new BlueprintUnitFactReference[] { LamashtuFeature.ToReference<BlueprintUnitFactReference>() };
+            //});
+            //var Woljif = Resources.GetBlueprint<BlueprintUnit>("766435873b1361c4287c351de194e5f9");
+            //Woljif.AddComponent<AddFacts>(c => {
+            //    c.m_Facts = new BlueprintUnitFactReference[] { CalistriaFeature.ToReference<BlueprintUnitFactReference>() };
+            //});
+            //var Camelia = Resources.GetBlueprint<BlueprintUnit>("397b090721c41044ea3220445300e1b8");
+            //Camelia.AddComponent<AddFacts>(c => {
+            //    c.m_Facts = new BlueprintUnitFactReference[] { GreenFaithCameliaFeature.ToReference<BlueprintUnitFactReference>() };
+            //});
+            //var Arueshalae = Resources.GetBlueprint<BlueprintUnit>("a352873d37ec6c54c9fa8f6da3a6b3e1");
+            //Arueshalae.AddComponent<AddFacts>(c => {
+            //    c.m_Facts = new BlueprintUnitFactReference[] { DesnaFeature.ToReference<BlueprintUnitFactReference>() };
+            //});
+            //var Sosiel = Resources.GetBlueprint<BlueprintUnit>("1cbbbb892f93c3d439f8417ad7cbb6aa");
+            //Sosiel.AddComponent<AddFacts>(c => {
+            //    c.m_Facts = new BlueprintUnitFactReference[] { ShelynFeature.ToReference<BlueprintUnitFactReference>() };
+            //});
+            //var Greybor = Resources.GetBlueprint<BlueprintUnit>("f72bb7c48bb3e45458f866045448fb58");
+            //Greybor.AddComponent<AddFacts>(c => {
+            //    c.m_Facts = new BlueprintUnitFactReference[] { NorgorberFeature.ToReference<BlueprintUnitFactReference>() };
+            //});
+            //var Nenio = Resources.GetBlueprint<BlueprintUnit>("1b893f7cf2b150e4f8bc2b3c389ba71d");
+            //Nenio.AddComponent<AddFacts>(c => {
+            //    c.m_Facts = new BlueprintUnitFactReference[] { NethysFeature.ToReference<BlueprintUnitFactReference>() };
+            //});
+            //var Ember = Resources.GetBlueprint<BlueprintUnit>("2779754eecffd044fbd4842dba55312c");
+            //Ember.AddComponent<AddFacts>(c => {
+            //    c.m_Facts = new BlueprintUnitFactReference[] { AtheismFeature.ToReference<BlueprintUnitFactReference>() };
+            //});
+            //var Sendri = Resources.GetBlueprint<BlueprintUnit>("561036c882a640089b1d42f03ebe3a6c");
+            //Sendri.AddComponent<AddFacts>(c => {
+            //    c.m_Facts = new BlueprintUnitFactReference[] { DesnaFeature.ToReference<BlueprintUnitFactReference>() };
+            //});
+            //var Daeran = Resources.GetBlueprint<BlueprintUnit>("096fc4a96d675bb45a0396bcaa7aa993");
+            //Daeran.AddComponent<AddFacts>(c => {
+            //    c.m_Facts = new BlueprintUnitFactReference[] { AtheismFeature.ToReference<BlueprintUnitFactReference>() };
+            //});
+            //var Regill = Resources.GetBlueprint<BlueprintUnit>("0d37024170b172346b3769df92a971f5");
+            //Regill.AddComponent<AddFacts>(c => {
+            //    c.m_Facts = new BlueprintUnitFactReference[] { GodclawFeature.ToReference<BlueprintUnitFactReference>() };
+            //});
+            //var Trever = Resources.GetBlueprint<BlueprintUnit>("0bb1c03b9f7bbcf42bb74478af2c6258");
+            //Trever.AddComponent<AddFacts>(c => {
+            //    c.m_Facts = new BlueprintUnitFactReference[] { ShelynFeature.ToReference<BlueprintUnitFactReference>() };
+            //});
+            //var Rekarth = Resources.GetBlueprint<BlueprintUnit>("3e0014e4be454482a2797fd81123d7b4");
+            //Rekarth.AddComponent<AddFacts>(c => {
+            //    c.m_Facts = new BlueprintUnitFactReference[] { CalistriaFeature.ToReference<BlueprintUnitFactReference>() };
+            //});
+            #endregion
         }
         public static void ArchdevilsToggle() {
             if (ModSettings.AddedContent.Deities.IsDisabled("Archdevils")) { return; }
@@ -848,6 +873,18 @@ namespace ExpandedContent.Tweaks.Deities {
             var DeitySelection = Resources.GetBlueprint<BlueprintFeatureSelection>("59e7a76987fe3b547b9cce045f4db3e4");
             var OrcPantheonSelection = Resources.GetModBlueprint<BlueprintFeatureSelection>("OrcPantheonSelection");
             DeitySelection.m_AllFeatures = DeitySelection.m_AllFeatures.AddToArray(OrcPantheonSelection.ToReference<BlueprintFeatureReference>());
+        }
+        public static void  InnerSeaDeitiesregionToggle() {
+            if (ModSettings.AddedContent.Deities.IsDisabled("Inner Sea Deities")) { return; }
+            var DeitySelection = Resources.GetBlueprint<BlueprintFeatureSelection>("59e7a76987fe3b547b9cce045f4db3e4");
+            var DeitiesSelection = Resources.GetModBlueprint<BlueprintFeatureSelection>("DeitiesSelection");
+            DeitySelection.m_AllFeatures = DeitySelection.m_AllFeatures.AddToArray(DeitiesSelection.ToReference<BlueprintFeatureReference>());
+        }
+        public static void FourHorsemenToggle() {
+            if (ModSettings.AddedContent.Deities.IsDisabled("The Four Horsemen")) { return; }
+            var DeitySelection = Resources.GetBlueprint<BlueprintFeatureSelection>("59e7a76987fe3b547b9cce045f4db3e4");
+            var FourHorsemenSelection = Resources.GetModBlueprint<BlueprintFeatureSelection>("FourHorsemenSelection");
+            DeitySelection.m_AllFeatures = DeitySelection.m_AllFeatures.AddToArray(FourHorsemenSelection.ToReference<BlueprintFeatureReference>());
         }
     }
 }

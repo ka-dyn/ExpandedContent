@@ -57,6 +57,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
             var HypnoticPatternAbility = Resources.GetModBlueprint<BlueprintAbility>("HypnoticPatternAbility");
             var SunburstSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("e96424f70ff884947b06f41a765b7658");
             var PolarMidnightSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("ba48abb52b142164eba309fd09898856");
+            var MeteorSwarmSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("5e36df08c71748f7936bce310181fb71");
             var BreakEnchantmentSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("7792da00c85b9e042a0fdfc2b66ec9a8");
             var OwlsWisdomMassSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("9f5ada581af3db4419b54db77f44e430");
             var OwlsWisdomSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("f0455c9295b53904f9e02fc571dd2ce1");
@@ -117,6 +118,11 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.AddComponent<AddKnownSpell>(c => {
                     c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_Spell = PolarMidnightSpell;
+                    c.SpellLevel = 9;
+                });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Spell = MeteorSwarmSpell;
                     c.SpellLevel = 9;
                 });
             });
@@ -215,6 +221,11 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.AddComponent<AddKnownSpell>(c => {
                     c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_Spell = PolarMidnightSpell;
+                    c.SpellLevel = 9;
+                });
+                bp.AddComponent<AddKnownSpell>(c => {
+                    c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Spell = MeteorSwarmSpell;
                     c.SpellLevel = 9;
                 });
             });

@@ -13,6 +13,7 @@ using Kingmaker.UnitLogic.ActivatableAbilities;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.Blueprints.Items.Ecnchantments;
 using ExpandedContent.Config;
+using Kingmaker.UnitLogic.Mechanics.Properties;
 
 namespace ExpandedContent.Tweaks.Domains {
     internal class PsychopompDomainRepose {
@@ -284,20 +285,130 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.GiveFeaturesForPreviousLevels = true;
             });
 
+            //Separatist versions
+            var ReposeDomainBaseAbilitySeparatist = Resources.GetBlueprint<BlueprintAbility>("810dff5abeca46a4ad86b3dbaa84a323");
+            var ReposeDomainBaseResourceSeparatist = Resources.GetBlueprint<BlueprintAbilityResource>("ee0b2e101454484d8c260efb4dad45c2");
+            var SeparatistAsIsProperty = Resources.GetModBlueprint<BlueprintUnitProperty>("SeparatistAsIsProperty");
+
+
+            var PsychopompDomainReposeAllowedSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("PsychopompDomainReposeAllowedSeparatist", bp => {
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.IsClassFeature = true;
+            });
+
+            var PsychopompDomainGreaterFeatureSeparatist = Resources.GetModBlueprint<BlueprintFeature>("PsychopompDomainGreaterFeatureSeparatist");
+
+            var PsychopompDomainReposeBaseFeatureSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("PsychopompDomainReposeBaseFeatureSeparatist", bp => {
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { ReposeDomainBaseAbilitySeparatist.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = ReposeDomainBaseResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.AddComponent<ReplaceAbilitiesStat>(c => {
+                    c.m_Ability = new BlueprintAbilityReference[] { ReposeDomainBaseAbilitySeparatist.ToReference<BlueprintAbilityReference>() };
+                    c.Stat = StatType.Wisdom;
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = PsychopompDomainReposeSpellListFeature.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.SetName("Psychopomp Subdomain - Repose");
+                bp.SetDescription("\nYou channel the power of the Boneyard, the place of judgement for all souls, your touch can move foes to an early rest.\nGentle Rest: Your " +
+                    "{g|Encyclopedia:TouchAttack}touch{/g} can fill a creature with lethargy, causing a living creature to become staggered for 1 {g|Encyclopedia:Combat_Round}round{/g} " +
+                    "as a melee touch {g|Encyclopedia:Attack}attack{/g}. If you touch a staggered living creature, that creature falls asleep for 1 round instead. Undead creatures " +
+                    "touched are staggered for a number of rounds equal to your {g|Encyclopedia:Wisdom}Wisdom{/g} modifier. You can use this ability a number of times per day equal " +
+                    "to 3 + your Wisdom modifier.\nSpirit Touch: At 6th level, as a swift action, you can give your natural weapons or any weapons you wield the ghost touch weapon " +
+                    "special ability. You can use this power a number of rounds per day equal to your cleric level. These rounds need not be consecutive.");
+                bp.IsClassFeature = true;
+            });
+
+            var PsychopompDomainReposeProgressionSeparatist = Helpers.CreateBlueprint<BlueprintProgression>("PsychopompDomainReposeProgressionSeparatist", bp => {
+                bp.AddComponent<PrerequisiteFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = PsychopompDomainReposeAllowedSeparatist.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = PsychopompDomainReposeProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = PsychopompDomainReposeAllowed.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = PsychopompDomainReposeProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = PsychopompDomainReposeProgressionSecondary.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.SetName("Psychopomp Subdomain - Repose");
+                bp.SetDescription("\nYou channel the power of the Boneyard, the place of judgement for all souls, your touch can move foes to an early rest.\nGentle Rest: Your " +
+                    "{g|Encyclopedia:TouchAttack}touch{/g} can fill a creature with lethargy, causing a living creature to become staggered for 1 {g|Encyclopedia:Combat_Round}round{/g} " +
+                    "as a melee touch {g|Encyclopedia:Attack}attack{/g}. If you touch a staggered living creature, that creature falls asleep for 1 round instead. Undead creatures " +
+                    "touched are staggered for a number of rounds equal to your {g|Encyclopedia:Wisdom}Wisdom{/g} modifier. You can use this ability a number of times per day equal " +
+                    "to 3 + your Wisdom modifier.\nSpirit Touch: At 6th level, as a swift action, you can give your natural weapons or any weapons you wield the ghost touch weapon " +
+                    "special ability. You can use this power a number of rounds per day equal to your cleric level. These rounds need not be consecutive.\nDomain " +
+                    "{g|Encyclopedia:Spell}Spells{/g}: doom, scare, ray of exhaustion, death ward, slay living, summon monster VI, destruction, horrid wilting, wail of the banshee.");
+                bp.Groups = new FeatureGroup[] { FeatureGroup.SeparatistSecondaryDomain };
+                bp.IsClassFeature = true;
+                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    }
+                };
+                bp.LevelEntries = new LevelEntry[] {
+                    Helpers.LevelEntry(1, PsychopompDomainReposeBaseFeatureSeparatist),
+                    Helpers.LevelEntry(8, PsychopompDomainGreaterFeatureSeparatist)
+                };
+                bp.UIGroups = new UIGroup[] {
+                    Helpers.CreateUIGroup(PsychopompDomainReposeBaseFeatureSeparatist, PsychopompDomainGreaterFeatureSeparatist)
+                };
+                bp.GiveFeaturesForPreviousLevels = true;
+            });
+
             PsychopompDomainReposeAllowed.IsPrerequisiteFor = new List<BlueprintFeatureReference>() {
                 PsychopompDomainReposeProgression.ToReference<BlueprintFeatureReference>(),
                 PsychopompDomainReposeProgressionSecondary.ToReference<BlueprintFeatureReference>()
             };
             PsychopompDomainReposeProgression.AddComponent<PrerequisiteNoFeature>(c => {
-                    c.Group = Prerequisite.GroupType.All;
-                    c.HideInUI = true;
-                    c.m_Feature = PsychopompDomainReposeProgressionSecondary.ToReference<BlueprintFeatureReference>();
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = PsychopompDomainReposeProgressionSecondary.ToReference<BlueprintFeatureReference>();
+            });
+            PsychopompDomainReposeProgression.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = PsychopompDomainReposeProgressionSeparatist.ToReference<BlueprintFeatureReference>();
             });
             PsychopompDomainReposeProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
-                    c.Group = Prerequisite.GroupType.All;
-                    c.HideInUI = true;
-                    c.m_Feature = PsychopompDomainReposeProgressionSecondary.ToReference<BlueprintFeatureReference>();
-            });            
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = PsychopompDomainReposeProgressionSecondary.ToReference<BlueprintFeatureReference>();
+            });
+            PsychopompDomainReposeProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = PsychopompDomainReposeProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
+            PsychopompDomainReposeProgressionSeparatist.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = PsychopompDomainReposeProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
             if (ModSettings.AddedContent.Domains.IsDisabled("Psychopomp Subdomain")) { return; }
             DomainTools.RegisterDomain(PsychopompDomainReposeProgression);
             DomainTools.RegisterSecondaryDomain(PsychopompDomainReposeProgressionSecondary);
@@ -305,6 +416,8 @@ namespace ExpandedContent.Tweaks.Domains {
             DomainTools.RegisterTempleDomain(PsychopompDomainReposeProgression);
             DomainTools.RegisterSecondaryTempleDomain(PsychopompDomainReposeProgressionSecondary);
             DomainTools.RegisterImpossibleSubdomain(PsychopompDomainReposeProgression, PsychopompDomainReposeProgressionSecondary);
+            DomainTools.RegisterSeparatistDomain(PsychopompDomainReposeProgressionSeparatist);
+
         }
     }
 }

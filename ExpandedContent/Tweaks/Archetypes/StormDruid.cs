@@ -17,7 +17,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
 
             var DruidClass = Resources.GetBlueprint<BlueprintCharacterClass>("610d836f3a3a9ed42a4349b62f002e96");
             var DruidBondSelection = Resources.GetBlueprintReference<BlueprintFeatureReference>("3830f3630a33eba49b60f511b4c8f2a8");
-            var WoodlandStrideFeature = Resources.GetBlueprintReference<BlueprintFeatureReference>("11f4072ea766a5840a46e6660894527d");
+            var WoodlandStrideFeature = Resources.GetBlueprintReference<BlueprintFeatureReference>("4c1419ef6cfc430a9071405788da4a73");
             var DruidSpontaneousSummonFeature = Resources.GetBlueprintReference<BlueprintFeatureReference>("b296531ffe013c8499ad712f8ae97f6b");
             var VenomImmunityFeature = Resources.GetBlueprintReference<BlueprintFeatureReference>("5078622eb5cecaf4683fa16a9b948c2c");
             var ResistNaturesLureFeature = Resources.GetBlueprintReference<BlueprintFeatureReference>("ad6a5b0e1a65c3540986cf9a7b006388");

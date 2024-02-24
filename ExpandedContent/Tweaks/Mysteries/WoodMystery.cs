@@ -262,7 +262,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.HideInUI = false;
                 bp.HideInCharacterSheetAndLevelUp = false;
                 bp.IsClassFeature = true;
-            }); //Finish please 
+            });
             //Main Mystery Feature
             var OracleWoodMysteryFeature = Helpers.CreateBlueprint<BlueprintFeature>("OracleWoodMysteryFeature", bp => {
                 bp.m_Icon = WoodMysteryIcon;
@@ -2187,7 +2187,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.IsClassFeature = true;
             });
             OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationLignificationFeature.ToReference<BlueprintFeatureReference>());
-            //ThornBurst Needs FX change
+            //ThornBurst
             var OracleRevelationThornBurstResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("OracleRevelationThornBurstResource", bp => {
                 bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
                     BaseValue = 1,

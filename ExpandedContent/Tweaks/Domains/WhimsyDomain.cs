@@ -25,6 +25,7 @@ using Kingmaker.Visual.Animation.Kingmaker.Actions;
 using ExpandedContent.Config;
 using Kingmaker.Craft;
 using Kingmaker.ResourceLinks;
+using Kingmaker.UnitLogic.Alignments;
 
 namespace ExpandedContent.Tweaks.Domains {
     internal class WhimsyDomain {
@@ -294,6 +295,11 @@ namespace ExpandedContent.Tweaks.Domains {
             });            
             // Main Blueprint
             var WhimsyDomainProgression = Helpers.CreateBlueprint<BlueprintProgression>("WhimsyDomainProgression", bp => {
+                bp.AddComponent<PrerequisiteAlignment>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = false;
+                    c.Alignment = AlignmentMaskType.Chaotic;
+                });
                 bp.AddComponent<PrerequisiteFeature>(c => {
                     c.Group = Prerequisite.GroupType.All;
                     c.HideInUI = true;
@@ -363,6 +369,11 @@ namespace ExpandedContent.Tweaks.Domains {
             });
             // Secondary Domain Progression
             var WhimsyDomainProgressionSecondary = Helpers.CreateBlueprint<BlueprintProgression>("WhimsyDomainProgressionSecondary", bp => {
+                bp.AddComponent<PrerequisiteAlignment>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = false;
+                    c.Alignment = AlignmentMaskType.Chaotic;
+                });
                 bp.AddComponent<PrerequisiteFeature>(c => {
                     c.Group = Prerequisite.GroupType.All;
                     c.HideInUI = true;
@@ -414,22 +425,247 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.GiveFeaturesForPreviousLevels = true;
             });
 
+            //Separatist versions
+            var ChaosDomainBaseAbilitySeparatist = Resources.GetBlueprint<BlueprintAbility>("9700647ec08b43c980260815bf48aea4");
+            var ChaosDomainBaseResourceSeparatist = Resources.GetBlueprint<BlueprintAbilityResource>("28a4e928a0ff46fdb07c37576f280a87");
+            var SeparatistAsIsProperty = Resources.GetModBlueprint<BlueprintUnitProperty>("SeparatistAsIsProperty");
+
+
+            var WhimsyDomainAllowedSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("WhimsyDomainAllowedSeparatist", bp => {
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.IsClassFeature = true;
+            });
+
+            var WhimsyDomainGreaterResourceSeparatist = Helpers.CreateBlueprint<BlueprintAbilityResource>("WhimsyDomainGreaterResourceSeparatist", bp => {
+                bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
+                    BaseValue = 1,
+                    IncreasedByLevel = false,
+                    IncreasedByLevelStartPlusDivStep = true,
+                    m_Class = new BlueprintCharacterClassReference[0],
+                    m_ClassDiv = new BlueprintCharacterClassReference[] {
+                        ClericClass.ToReference<BlueprintCharacterClassReference>(),
+                        InquisitorClass.ToReference<BlueprintCharacterClassReference>(),
+                        HunterClass.ToReference<BlueprintCharacterClassReference>(),
+                        PaladinClass.ToReference<BlueprintCharacterClassReference>(),
+                    },
+                    m_Archetypes = new BlueprintArchetypeReference[0],
+                    m_ArchetypesDiv = new BlueprintArchetypeReference[] {
+                        DivineHunterArchetype.ToReference<BlueprintArchetypeReference>(),
+                        TempleChampionArchetype.ToReference<BlueprintArchetypeReference>(),
+                    },
+                    StartingLevel = 10,
+                    LevelStep = 4,
+                    StartingIncrease = 1,
+                    PerStepIncrease = 1,
+                };
+            });
+
+            var WhimsyDomainGreaterAbilitySeparatist = Helpers.CreateBlueprint<BlueprintAbility>("WhimsyDomainGreaterAbilitySeparatist", bp => {
+                bp.SetName("Unexpected Whimsy");
+                bp.SetDescription("All enemies within 30 feet of you that can see and hear you must succeed a Will saving throw or they collapse into gales of manic laughter, " +
+                    "falling prone. Those who fail their saving throws can take no actions other than laughing for 1 round, but are not considered helpless. You can use this " +
+                    "ability once per day at 8th level and one additional time for every 4 levels you possess beyond 8th.");
+                bp.m_Icon = HideousLaughterSpell.m_Icon;
+                bp.AddComponent<ActivatableAbilityResourceLogic>(c => {
+                    c.SpendType = ActivatableAbilityResourceLogic.ResourceSpendType.NewRound;
+                    c.m_RequiredResource = WhimsyDomainGreaterResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                });
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Will;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionConditionalSaved() {
+                            Succeed = Helpers.CreateActionList(),
+                            Failed = Helpers.CreateActionList(
+                                new ContextActionApplyBuff() {
+                                    m_Buff = WhimsyDomainGreaterBuff.ToReference<BlueprintBuffReference>(),
+                                    DurationValue = new ContextDurationValue() {
+                                        Rate = DurationRate.Rounds,
+                                        DiceType = DiceType.Zero,
+                                        DiceCountValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                        BonusValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 1,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                        m_IsExtendable = true,
+                                    },
+                                    ToCaster = false,
+                                }
+                                )
+                        });
+                });
+                bp.AddComponent<AbilityTargetsAround>(c => {
+                    c.m_Radius = 30.Feet();
+                    c.m_TargetType = TargetType.Enemy;
+                    c.m_IncludeDead = false;
+                    c.m_Condition = new ConditionsChecker();
+                    c.m_SpreadSpeed = 0.Feet();
+                });
+                bp.AddComponent<CraftInfoComponent>(c => {
+                    c.SpellType = CraftSpellType.Damage;
+                    c.SavingThrow = CraftSavingThrow.Will;
+                    c.AOEType = CraftAOE.AOE;
+                });
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Standard;
+                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Extend | Metamagic.Heighten | Metamagic.Selective | Metamagic.Bolstered;
+                bp.LocalizedDuration = Helpers.CreateString("WhimsyDomainGreaterAbilitySeparatist.Duration", "1 round");
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+
+            var WhimsyDomainGreaterFeatureSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("WhimsyDomainGreaterFeatureSeparatist", bp => {
+                bp.SetName("Unexpected Whimsy");
+                bp.SetDescription("All enemies within 30 feet of you that can see and hear you must succeed a Will saving throw or they collapse into gales of manic laughter, " +
+                    "falling prone. Those who fail their saving throws can take no actions other than laughing for 1 round, but are not considered helpless. You can use this " +
+                    "ability once per day at 8th level and one additional time for every 4 levels you possess beyond 8th.");
+                bp.m_Icon = HideousLaughterSpell.m_Icon;
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = WhimsyDomainGreaterResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { WhimsyDomainGreaterAbilitySeparatist.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+
+            var WhimsyDomainBaseFeatureSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("WhimsyDomainBaseFeatureSeparatist", bp => {
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { ChaosDomainBaseAbilitySeparatist.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = ChaosDomainBaseResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.AddComponent<ReplaceAbilitiesStat>(c => {
+                    c.m_Ability = new BlueprintAbilityReference[] { ChaosDomainBaseAbilitySeparatist.ToReference<BlueprintAbilityReference>() };
+                    c.Stat = StatType.Wisdom;
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.m_Feature = WhimsyDomainSpellListFeature.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.SetName("Whimsy Subdomain");
+                bp.SetDescription("\nYour {g|Encyclopedia:TouchAttack}touch{/g} infuses life and weapons with chaos, and you carry a divine whimsy wherever you go.\nTouch of Chaos: " +
+                    "You can imbue a target with chaos as a melee touch {g|Encyclopedia:Attack}attack{/g}. For the next {g|Encyclopedia:Combat_Round}round{/g}, anytime the target " +
+                    "{g|Encyclopedia:Dice}rolls{/g} a d20, he must roll twice and take the less favorable result. You can use this ability a number of times per day equal to 3 + your " +
+                    "{g|Encyclopedia:Wisdom}Wisdom{/g} modifier.\nUnexpected Whimsy: All enemies within 30 feet of you that can see and hear you must succeed a Will saving throw or they " +
+                    "collapse into gales of manic laughter, falling prone. Those who fail their saving throws can take no actions other than laughing for 1 round, but are not considered " +
+                    "helpless. You can use this ability once per day at 8th level and one additional time for every 4 levels you possess beyond 8th.");
+                bp.IsClassFeature = true;
+            });
+
+            var WhimsyDomainProgressionSeparatist = Helpers.CreateBlueprint<BlueprintProgression>("WhimsyDomainProgressionSeparatist", bp => {
+                bp.AddComponent<PrerequisiteAlignment>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = false;
+                    c.Alignment = AlignmentMaskType.Chaotic;
+                });
+                bp.AddComponent<PrerequisiteFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = WhimsyDomainAllowedSeparatist.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = WhimsyDomainProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = WhimsyDomainAllowed.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = WhimsyDomainProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.HideInUI = true;
+                    c.m_Feature = WhimsyDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.SetName("Whimsy Subdomain");
+                bp.SetDescription("\nYour {g|Encyclopedia:TouchAttack}touch{/g} infuses life and weapons with chaos, and you carry a divine whimsy wherever you go.\nTouch of Chaos: " +
+                    "You can imbue a target with chaos as a melee touch {g|Encyclopedia:Attack}attack{/g}. For the next {g|Encyclopedia:Combat_Round}round{/g}, anytime the target " +
+                    "{g|Encyclopedia:Dice}rolls{/g} a d20, he must roll twice and take the less favorable result. You can use this ability a number of times per day equal to 3 + your " +
+                    "{g|Encyclopedia:Wisdom}Wisdom{/g} modifier.\nUnexpected Whimsy: All enemies within 30 feet of you that can see and hear you must succeed a Will saving throw or they " +
+                    "collapse into gales of manic laughter, falling prone. Those who fail their saving throws can take no actions other than laughing for 1 round, but are not considered " +
+                    "helpless. You can use this ability once per day at 8th level and one additional time for every 4 levels you possess beyond 8th.\nDomain {g|Encyclopedia:Spell}Spells{/g}: " +
+                    "hideous laughter, communal protection from law, dispel magic, confusion, acidic spray, cloak of dreams, word of chaos, cloak of chaos, summon monster IX.");
+                bp.Groups = new FeatureGroup[] { FeatureGroup.SeparatistSecondaryDomain };
+                bp.IsClassFeature = true;
+                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    }
+                };
+                bp.LevelEntries = new LevelEntry[] {
+                    Helpers.LevelEntry(1, WhimsyDomainBaseFeatureSeparatist),
+                    Helpers.LevelEntry(8, WhimsyDomainGreaterFeatureSeparatist)
+                };
+                bp.UIGroups = new UIGroup[] {
+                    Helpers.CreateUIGroup(WhimsyDomainBaseFeatureSeparatist, WhimsyDomainGreaterFeatureSeparatist)
+                };
+                bp.GiveFeaturesForPreviousLevels = true;
+            });
+
             WhimsyDomainAllowed.IsPrerequisiteFor = new List<BlueprintFeatureReference>() {
                 WhimsyDomainProgression.ToReference<BlueprintFeatureReference>(),
                 WhimsyDomainProgressionSecondary.ToReference<BlueprintFeatureReference>()
             };
             WhimsyDomainProgression.AddComponent<PrerequisiteNoFeature>(c => {
-                    c.Group = Prerequisite.GroupType.All;
-                    c.HideInUI = true;
-                    c.m_Feature = WhimsyDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = WhimsyDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+            });
+            WhimsyDomainProgression.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = WhimsyDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
             });
             WhimsyDomainProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
-                    c.Group = Prerequisite.GroupType.All;
-                    c.HideInUI = true;
-                    c.m_Feature = WhimsyDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = WhimsyDomainProgressionSecondary.ToReference<BlueprintFeatureReference>();
+            });
+            WhimsyDomainProgressionSecondary.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = WhimsyDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
+            });
+            WhimsyDomainProgressionSeparatist.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.HideInUI = true;
+                c.m_Feature = WhimsyDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
             });
             var DomainMastery = Resources.GetBlueprint<BlueprintFeature>("2de64f6a1f2baee4f9b7e52e3f046ec5").GetComponent<AutoMetamagic>();
             DomainMastery.Abilities.Add(WhimsyDomainGreaterAbility.ToReference<BlueprintAbilityReference>());
+            DomainMastery.Abilities.Add(WhimsyDomainGreaterAbilitySeparatist.ToReference<BlueprintAbilityReference>());
             if (ModSettings.AddedContent.Domains.IsDisabled("Whimsy Subdomain")) { return; }
             DomainTools.RegisterDomain(WhimsyDomainProgression);
             DomainTools.RegisterSecondaryDomain(WhimsyDomainProgressionSecondary);
@@ -437,6 +673,8 @@ namespace ExpandedContent.Tweaks.Domains {
             DomainTools.RegisterTempleDomain(WhimsyDomainProgression);
             DomainTools.RegisterSecondaryTempleDomain(WhimsyDomainProgressionSecondary);
             DomainTools.RegisterImpossibleSubdomain(WhimsyDomainProgression, WhimsyDomainProgressionSecondary);
+            DomainTools.RegisterSeparatistDomain(WhimsyDomainProgressionSeparatist);
+
         }
     }
 }
