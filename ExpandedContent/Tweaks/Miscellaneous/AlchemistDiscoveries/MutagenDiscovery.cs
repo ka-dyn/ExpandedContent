@@ -16,6 +16,8 @@ namespace ExpandedContent.Tweaks.Miscellaneous.AlchemistDiscoveries {
         public static void AddMutagenDiscovery() {
 
             var DicoverySelection = Resources.GetBlueprint<BlueprintFeatureSelection>("cd86c437488386f438dcc9ae727ea2a6");
+            var ExtraDicoverySelection = Resources.GetBlueprint<BlueprintFeatureSelection>("537965879fc24ad3948aaffa7a1a3a66");
+
             var AlchemistClass = Resources.GetBlueprint<BlueprintCharacterClass>("0937bec61c0dabc468428f496580c721");
             var IncenseSynthesizer = Resources.GetBlueprint<BlueprintArchetype>("6faf49766d8156c419d08f556a40374f");
 
@@ -57,6 +59,7 @@ namespace ExpandedContent.Tweaks.Miscellaneous.AlchemistDiscoveries {
             });
 
             DicoverySelection.m_AllFeatures = DicoverySelection.m_AllFeatures.AppendToArray(MutagenDiscoveryFeature.ToReference<BlueprintFeatureReference>());
+            ExtraDicoverySelection.m_AllFeatures = ExtraDicoverySelection.m_AllFeatures.AppendToArray(MutagenDiscoveryFeature.ToReference<BlueprintFeatureReference>());
         }
     }
 }

@@ -34,6 +34,8 @@ namespace ExpandedContent.Tweaks.Miscellaneous.AlchemistDiscoveries {
         public static void AddHealingTouchDiscovery() {
 
             var DicoverySelection = Resources.GetBlueprint<BlueprintFeatureSelection>("cd86c437488386f438dcc9ae727ea2a6");
+            var ExtraDicoverySelection = Resources.GetBlueprint<BlueprintFeatureSelection>("537965879fc24ad3948aaffa7a1a3a66");
+
             var AlchemistClass = Resources.GetBlueprintReference<BlueprintCharacterClassReference>("0937bec61c0dabc468428f496580c721");
             var RogueClass = Resources.GetBlueprintReference<BlueprintCharacterClassReference>("299aa766dee3cbf4790da4efb8c72484");
             var FighterClass = Resources.GetBlueprintReference<BlueprintCharacterClassReference>("48ac8db94d5de7645906c7d0ad3bcfbd");
@@ -136,13 +138,8 @@ namespace ExpandedContent.Tweaks.Miscellaneous.AlchemistDiscoveries {
 
 
 
-
-
-
-
-
-
             DicoverySelection.m_AllFeatures = DicoverySelection.m_AllFeatures.AppendToArray(HealingTouchDiscoveryFeature.ToReference<BlueprintFeatureReference>());
+            ExtraDicoverySelection.m_AllFeatures = ExtraDicoverySelection.m_AllFeatures.AppendToArray(HealingTouchDiscoveryFeature.ToReference<BlueprintFeatureReference>());
 
         }
     }

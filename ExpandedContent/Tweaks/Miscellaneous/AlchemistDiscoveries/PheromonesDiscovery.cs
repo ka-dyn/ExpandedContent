@@ -17,6 +17,8 @@ namespace ExpandedContent.Tweaks.Miscellaneous.AlchemistDiscoveries {
         public static void AddPheromonesDiccovery() {
 
             var DicoverySelection = Resources.GetBlueprint<BlueprintFeatureSelection>("cd86c437488386f438dcc9ae727ea2a6");
+            var ExtraDicoverySelection = Resources.GetBlueprint<BlueprintFeatureSelection>("537965879fc24ad3948aaffa7a1a3a66");
+            var ExtraVivisectionistSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("10287e7b8cee479e82ea88bd6d2d4dae");
 
 
             var PheromonesDiscoveryFeature = Helpers.CreateBlueprint<BlueprintFeature>("PheromonesDiscoveryFeature", bp => {
@@ -42,6 +44,8 @@ namespace ExpandedContent.Tweaks.Miscellaneous.AlchemistDiscoveries {
 
 
             DicoverySelection.m_AllFeatures = DicoverySelection.m_AllFeatures.AppendToArray(PheromonesDiscoveryFeature.ToReference<BlueprintFeatureReference>());
+            ExtraDicoverySelection.m_AllFeatures = ExtraDicoverySelection.m_AllFeatures.AppendToArray(PheromonesDiscoveryFeature.ToReference<BlueprintFeatureReference>());
+            ExtraVivisectionistSelection.m_AllFeatures = ExtraVivisectionistSelection.m_AllFeatures.AppendToArray(PheromonesDiscoveryFeature.ToReference<BlueprintFeatureReference>());
         }
     }
 }

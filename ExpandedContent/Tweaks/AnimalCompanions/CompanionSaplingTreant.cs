@@ -47,7 +47,7 @@ namespace ExpandedContent.Tweaks.AnimalCompanions {
 
             var CompanionSaplingTreantConstructFeature = Helpers.CreateBlueprint<BlueprintFeature>("CompanionSaplingTreantConstructFeature", bp => {
                 bp.SetName("Construct Smasher");
-                bp.SetDescription("The sapling treat deals double damage to constructs and objects.");
+                bp.SetDescription("The sapling treant deals double damage to constructs and objects.");
                 bp.AddComponent<AddOutgoingDamageBonus>(c => {
                     c.DamageType = new DamageTypeDescription() {
                         Type = DamageType.Physical,
@@ -244,7 +244,7 @@ namespace ExpandedContent.Tweaks.AnimalCompanions {
                     "\n{g|Encyclopedia:Armor_Class}AC{/g}: +5 natural armor" +
                     "\n{g|Encyclopedia:Attack}Attack{/g}: 2 slams ({g|Encyclopedia:Dice}1d6{/g}) " +
                     "\n{g|Encyclopedia:Ability_Scores}Ability scores{/g}: {g|Encyclopedia:Strength}Str{/g} 15, {g|Encyclopedia:Dexterity}Dex{/g} 10, {g|Encyclopedia:Constitution}Con{/g} 12, {g|Encyclopedia:Intelligence}Int{/g} 2, {g|Encyclopedia:Wisdom}Wis{/g} 12, {g|Encyclopedia:Charisma}Cha{/g} 7" +
-                    "\nSpecial Attacks: The sapling treat deals double damage to constructs and objects." +
+                    "\nSpecial Attacks: The sapling treant deals double damage to constructs and objects." +
                     "\nAt 4th level size becomes Large, Str +8, Dex -2, Con +4, +2 natural armor, and also gains an additional slam attack." +
                     "\nThis animal companion can't be used as a mount.");
                 bp.m_Icon = EntangleSpell.m_Icon;

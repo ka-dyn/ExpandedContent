@@ -16,6 +16,7 @@ namespace ExpandedContent.Tweaks.Miscellaneous.AlchemistDiscoveries {
         public static void AddMindchemistSkillDiscovery() {
 
             var DicoverySelection = Resources.GetBlueprint<BlueprintFeatureSelection>("cd86c437488386f438dcc9ae727ea2a6");
+            var ExtraDicoverySelection = Resources.GetBlueprint<BlueprintFeatureSelection>("537965879fc24ad3948aaffa7a1a3a66");
             var AlchemistClass = Resources.GetBlueprint<BlueprintCharacterClass>("0937bec61c0dabc468428f496580c721");
             var MindchemistArchetype = Resources.GetModBlueprint<BlueprintArchetype>("MindchemistArchetype");
             var SkillFocusSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("c9629ef9eebb88b479b2fbc5e836656a");
@@ -50,6 +51,8 @@ namespace ExpandedContent.Tweaks.Miscellaneous.AlchemistDiscoveries {
             });
 
             DicoverySelection.m_AllFeatures = DicoverySelection.m_AllFeatures.AppendToArray(MindchemistSkillDiscoverySelection.ToReference<BlueprintFeatureReference>());
+            ExtraDicoverySelection.m_AllFeatures = ExtraDicoverySelection.m_AllFeatures.AppendToArray(MindchemistSkillDiscoverySelection.ToReference<BlueprintFeatureReference>());
+
         }
     }
 }
