@@ -219,6 +219,11 @@
         "Enabled": true,
         "Homebrew": false,
         "Description": "A ranger archetype that gives up hunters bond for warpriest blessings."
+      },
+      "Plant Master": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "A hunter archetype that focuses on plants instead of animals."
       }
     },
     "IsExpanded": false

@@ -22,8 +22,10 @@ namespace ExpandedContent.Tweaks.Backgrounds {
             var BackgroundNobleSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("7b11f589e81617a46b3e5eda3632508d");
             var BackgroundArchdukeOfCheliax = Helpers.CreateBlueprint<BlueprintFeature>("BackgroundArchdukeOfCheliax", bp => {
                 bp.SetName("Archduke of Cheliax");
-                bp.SetDescription("An Archduke of Cheliax adds {g|Encyclopedia:Lore_Nature}Lore (Nature){/g}, {g|Encyclopedia:Lore_Religion}Lore (Religion){/g}, {g|Encyclopedia:Knowledge_World}Knowledge (World){/g} and {g|Encyclopedia:Knowledge_Arcana}Knowledge (Arcana){/g} " +
-                    "to the list of her class {g|Encyclopedia:Skills}skills{/g}. She can also use her {g|Encyclopedia:Intelligence}Intelligence{/g} instead of {g|Encyclopedia:Wisdom}Wisdom{/g} while attempting Lore (Nature) or Lore (Religion) " +
+                bp.SetDescription("An Archduke of Cheliax adds {g|Encyclopedia:Lore_Nature}Lore (Nature){/g}, {g|Encyclopedia:Lore_Religion}Lore (Religion){/g}, " +
+                    "{g|Encyclopedia:Knowledge_World}Knowledge (World){/g} and {g|Encyclopedia:Knowledge_Arcana}Knowledge (Arcana){/g} " +
+                    "to the list of her class {g|Encyclopedia:Skills}skills{/g}. She can also use her {g|Encyclopedia:Intelligence}Intelligence{/g} instead " +
+                    "of {g|Encyclopedia:Wisdom}Wisdom{/g} while attempting Lore (Nature) or Lore (Religion) " +
                     "{g|Encyclopedia:Check}checks{/g}. " +
                     "\nShe also gains a +2 bonus to initiative and can use her Intelligence modifier to determine initiative. " +
                     "\nThe highest rank of the standard nobility are the Archdukes, which are fixed at six members, each of whom rule one of the " +
@@ -86,14 +88,13 @@ namespace ExpandedContent.Tweaks.Backgrounds {
                     c.TargetStat = StatType.SkillLoreReligion;
                     c.BaseAttributeReplacement = StatType.Intelligence;
                 });
+                bp.AddComponent<ReplaceStatBaseAttribute>(c => {
+                    c.TargetStat = StatType.Initiative;
+                    c.BaseAttributeReplacement = StatType.Intelligence;
+                });
                 bp.AddComponent<AddStatBonus>(c => {
                     c.Stat = StatType.Initiative;
                     c.Value = 2;
-                });
-                bp.AddComponent<DerivativeStatBonus>(c => {
-                    c.BaseStat = StatType.Intelligence;
-                    c.DerivativeStat = StatType.Initiative;
-                    c.Descriptor = ModifierDescriptor.None;
                 });
                 bp.AddComponent<RecalculateOnStatChange>(c => {
                     c.UseKineticistMainStat = false;

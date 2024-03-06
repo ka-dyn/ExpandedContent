@@ -182,7 +182,7 @@ namespace ExpandedContent.Tweaks.AnimalCompanions {
             });
             var ExtraRageWolverineFeat = Helpers.CreateBlueprint<BlueprintFeature>("ExtraRageWolverineFeat", bp => {
                 bp.SetName("Extra Rage (Wolverine)");
-                bp.SetDescription("Benefit: You can rage for 6 additional {g|Encyclopedia:Combat_Round}rounds{/g} per day.\\nSpecial: You can gain Extra Rage multiple times. Its effects stack.");
+                bp.SetDescription("Benefit: You can rage for 6 additional {g|Encyclopedia:Combat_Round}rounds{/g} per day.\nSpecial: You can gain Extra Rage multiple times. Its effects stack.");
                 bp.AddComponent<PrerequisiteFeature>(c => {
                     c.m_Feature = CompanionWolverineRageFeature.ToReference<BlueprintFeatureReference>();
                     c.HideInUI = true;
