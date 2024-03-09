@@ -1,5 +1,6 @@
 ﻿using ExpandedContent.Config;
 using ExpandedContent.Extensions;
+using ExpandedContent.Tweaks.Components;
 using ExpandedContent.Utilities;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
@@ -29,6 +30,7 @@ using Kingmaker.UnitLogic.Buffs;
 using Kingmaker.UnitLogic.ActivatableAbilities;
 using Kingmaker.UI.UnitSettings.Blueprints;
 using Kingmaker.Designers.EventConditionActionSystem.Evaluators;
+using Kingmaker.RuleSystem.Rules;
 
 namespace ExpandedContent.Tweaks.Archetypes {
     internal class PlantMaster {
@@ -87,6 +89,284 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.AddFeatures(CompanionSaplingTreantFeature, CompanionCrawlingMoundFeature);
             });
 
+            var PlantFocusAssassinVineEffect = Helpers.CreateBlueprint<BlueprintFeature>("PlantFocusAssassinVineEffect", bp => {
+                bp.SetName("Plant Focus - AssassinVine");
+                bp.AddComponent<ManeuverContextBonus>(c => {
+                    c.Type = CombatManeuver.Grapple;
+                    c.Descriptor = ModifierDescriptor.Inherent;
+                    c.Value = new ContextValue() {
+                        ValueType = ContextValueType.Rank,
+                        ValueRank = AbilityRankType.Default
+                    };
+                });
+                //ContextRankConfig added after as this feature uses itself as a FeatureRank
+                bp.AddComponent<AddFactContextActions>(c => {
+                    c.Activated = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = PlantFocusAssassinVineVisibleBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0,
+                                m_IsExtendable = true
+                            },
+                            AsChild = true
+                        }
+                        );
+                    c.Deactivated = Helpers.CreateActionList(
+                        new ContextActionRemoveBuff() {
+                            m_Buff = PlantFocusAssassinVineVisibleBuff.ToReference<BlueprintBuffReference>(),
+                            RemoveRank = false,
+                            ToCaster = false,
+                            OnlyFromCaster = false
+                        }
+                        );
+                    c.NewRound = Helpers.CreateActionList();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.Ranks = 3;
+                bp.ReapplyOnLevelUp = true;
+                bp.IsClassFeature = true;
+            });
+            PlantFocusAssassinVineEffect.AddComponent<ContextRankConfig>(c => {
+                c.m_Type = AbilityRankType.Default;
+                c.m_BaseValueType = ContextRankBaseValueType.FeatureRank;
+                c.m_Feature = PlantFocusAssassinVineEffect.ToReference<BlueprintFeatureReference>();
+                c.m_Stat = StatType.Unknown;
+                c.m_Progression = ContextRankProgression.Custom;
+                c.m_CustomProgression = new ContextRankConfig.CustomProgressionItem[] {
+                    new ContextRankConfig.CustomProgressionItem(){ BaseValue = 1, ProgressionValue = 2 },
+                    new ContextRankConfig.CustomProgressionItem(){ BaseValue = 2, ProgressionValue = 3 },
+                    new ContextRankConfig.CustomProgressionItem(){ BaseValue = 3, ProgressionValue = 4 }
+                };
+            });
+            //Brambles
+            var PlantFocusCreepingVineEffect = Helpers.CreateBlueprint<BlueprintFeature>("PlantFocusCreepingVineEffect", bp => {
+                bp.SetName("Plant Focus - CreepingVine");
+                bp.AddComponent<AddContextStatBonus>(c => {
+                    c.Stat = StatType.SkillAthletics;
+                    c.Descriptor = ModifierDescriptor.Competence;
+                    c.Value = new ContextValue() {
+                        ValueType = ContextValueType.Rank,
+                        ValueRank = AbilityRankType.Default
+                    };
+                });
+                //ContextRankConfig added after as this feature uses itself as a FeatureRank
+                bp.AddComponent<AddFactContextActions>(c => {
+                    c.Activated = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = PlantFocusCreepingVineVisibleBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0,
+                                m_IsExtendable = true
+                            },
+                            AsChild = true
+                        }
+                        );
+                    c.Deactivated = Helpers.CreateActionList(
+                        new ContextActionRemoveBuff() {
+                            m_Buff = PlantFocusCreepingVineVisibleBuff.ToReference<BlueprintBuffReference>(),
+                            RemoveRank = false,
+                            ToCaster = false,
+                            OnlyFromCaster = false
+                        }
+                        );
+                    c.NewRound = Helpers.CreateActionList();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.Ranks = 3;
+                bp.ReapplyOnLevelUp = true;
+                bp.IsClassFeature = true;
+            });
+            PlantFocusCreepingVineEffect.AddComponent<ContextRankConfig>(c => {
+                c.m_Type = AbilityRankType.Default;
+                c.m_BaseValueType = ContextRankBaseValueType.FeatureRank;
+                c.m_Feature = PlantFocusCreepingVineEffect.ToReference<BlueprintFeatureReference>();
+                c.m_Stat = StatType.Unknown;
+                c.m_Progression = ContextRankProgression.Custom;
+                c.m_CustomProgression = new ContextRankConfig.CustomProgressionItem[] {
+                    new ContextRankConfig.CustomProgressionItem(){ BaseValue = 1, ProgressionValue = 4 },
+                    new ContextRankConfig.CustomProgressionItem(){ BaseValue = 2, ProgressionValue = 6 },
+                    new ContextRankConfig.CustomProgressionItem(){ BaseValue = 3, ProgressionValue = 8 }
+                };
+            });
+            var PlantFocusGiantFlytrapEffect = Helpers.CreateBlueprint<BlueprintFeature>("PlantFocusGiantFlytrapEffect", bp => {
+                bp.SetName("Plant Focus - GiantFlytrap");
+                bp.AddComponent<AddContextStatBonus>(c => {
+                    c.Stat = StatType.SkillStealth;
+                    c.Descriptor = ModifierDescriptor.Competence;
+                    c.Value = new ContextValue() {
+                        ValueType = ContextValueType.Rank,
+                        ValueRank = AbilityRankType.Default
+                    };
+                });
+                //ContextRankConfig added after as this feature uses itself as a FeatureRank
+                bp.AddComponent<AddFactContextActions>(c => {
+                    c.Activated = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = PlantFocusGiantFlytrapVisibleBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0,
+                                m_IsExtendable = true
+                            },
+                            AsChild = true
+                        }
+                        );
+                    c.Deactivated = Helpers.CreateActionList(
+                        new ContextActionRemoveBuff() {
+                            m_Buff = PlantFocusGiantFlytrapVisibleBuff.ToReference<BlueprintBuffReference>(),
+                            RemoveRank = false,
+                            ToCaster = false,
+                            OnlyFromCaster = false
+                        }
+                        );
+                    c.NewRound = Helpers.CreateActionList();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.Ranks = 3;
+                bp.ReapplyOnLevelUp = true;
+                bp.IsClassFeature = true;
+            });
+            PlantFocusGiantFlytrapEffect.AddComponent<ContextRankConfig>(c => {
+                c.m_Type = AbilityRankType.Default;
+                c.m_BaseValueType = ContextRankBaseValueType.FeatureRank;
+                c.m_Feature = PlantFocusGiantFlytrapEffect.ToReference<BlueprintFeatureReference>();
+                c.m_Stat = StatType.Unknown;
+                c.m_Progression = ContextRankProgression.Custom;
+                c.m_CustomProgression = new ContextRankConfig.CustomProgressionItem[] {
+                    new ContextRankConfig.CustomProgressionItem(){ BaseValue = 1, ProgressionValue = 4 },
+                    new ContextRankConfig.CustomProgressionItem(){ BaseValue = 2, ProgressionValue = 6 },
+                    new ContextRankConfig.CustomProgressionItem(){ BaseValue = 3, ProgressionValue = 8 }
+                };
+            });
+            //Mushroom
+            var PlantFocusOakEffect = Helpers.CreateBlueprint<BlueprintFeature>("PlantFocusOakEffect", bp => {
+                bp.SetName("Plant Focus - Oak");
+                bp.AddComponent<AddContextStatBonus>(c => {
+                    c.Stat = StatType.AdditionalCMD;
+                    c.Descriptor = ModifierDescriptor.Inherent;
+                    c.Value = new ContextValue() {
+                        ValueType = ContextValueType.Rank,
+                        ValueRank = AbilityRankType.Default
+                    };
+                });
+                //ContextRankConfig added after as this feature uses itself as a FeatureRank
+                bp.AddComponent<AddFactContextActions>(c => {
+                    c.Activated = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = PlantFocusOakVisibleBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0,
+                                m_IsExtendable = true
+                            },
+                            AsChild = true
+                        }
+                        );
+                    c.Deactivated = Helpers.CreateActionList(
+                        new ContextActionRemoveBuff() {
+                            m_Buff = PlantFocusOakVisibleBuff.ToReference<BlueprintBuffReference>(),
+                            RemoveRank = false,
+                            ToCaster = false,
+                            OnlyFromCaster = false
+                        }
+                        );
+                    c.NewRound = Helpers.CreateActionList();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.Ranks = 3;
+                bp.ReapplyOnLevelUp = true;
+                bp.IsClassFeature = true;
+            });
+            PlantFocusOakEffect.AddComponent<ContextRankConfig>(c => {
+                c.m_Type = AbilityRankType.Default;
+                c.m_BaseValueType = ContextRankBaseValueType.FeatureRank;
+                c.m_Feature = PlantFocusOakEffect.ToReference<BlueprintFeatureReference>();
+                c.m_Stat = StatType.Unknown;
+                c.m_Progression = ContextRankProgression.Custom;
+                c.m_CustomProgression = new ContextRankConfig.CustomProgressionItem[] {
+                    new ContextRankConfig.CustomProgressionItem(){ BaseValue = 1, ProgressionValue = 2 },
+                    new ContextRankConfig.CustomProgressionItem(){ BaseValue = 2, ProgressionValue = 4 },
+                    new ContextRankConfig.CustomProgressionItem(){ BaseValue = 3, ProgressionValue = 6 }
+                };
+            });
+            //Shrieker
+            var PlantFocusSporeEffect = Helpers.CreateBlueprint<BlueprintFeature>("PlantFocusSporeEffect", bp => {
+                bp.SetName("Plant Focus - Spore");
+                bp.AddComponent<AddContextStatBonus>(c => {
+                    c.Stat = StatType.SkillMobility;
+                    c.Descriptor = ModifierDescriptor.Competence;
+                    c.Value = new ContextValue() {
+                        ValueType = ContextValueType.Rank,
+                        ValueRank = AbilityRankType.Default
+                    };
+                });
+                //ContextRankConfig added after as this feature uses itself as a FeatureRank
+                bp.AddComponent<AddFactContextActions>(c => {
+                    c.Activated = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = PlantFocusSporeVisibleBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0,
+                                m_IsExtendable = true
+                            },
+                            AsChild = true
+                        }
+                        );
+                    c.Deactivated = Helpers.CreateActionList(
+                        new ContextActionRemoveBuff() {
+                            m_Buff = PlantFocusSporeVisibleBuff.ToReference<BlueprintBuffReference>(),
+                            RemoveRank = false,
+                            ToCaster = false,
+                            OnlyFromCaster = false
+                        }
+                        );
+                    c.NewRound = Helpers.CreateActionList();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.Ranks = 3;
+                bp.ReapplyOnLevelUp = true;
+                bp.IsClassFeature = true;
+            });
+            PlantFocusSporeEffect.AddComponent<ContextRankConfig>(c => {
+                c.m_Type = AbilityRankType.Default;
+                c.m_BaseValueType = ContextRankBaseValueType.FeatureRank;
+                c.m_Feature = PlantFocusSporeEffect.ToReference<BlueprintFeatureReference>();
+                c.m_Stat = StatType.Unknown;
+                c.m_Progression = ContextRankProgression.Custom;
+                c.m_CustomProgression = new ContextRankConfig.CustomProgressionItem[] {
+                    new ContextRankConfig.CustomProgressionItem(){ BaseValue = 1, ProgressionValue = 4 },
+                    new ContextRankConfig.CustomProgressionItem(){ BaseValue = 2, ProgressionValue = 6 },
+                    new ContextRankConfig.CustomProgressionItem(){ BaseValue = 3, ProgressionValue = 8 }
+                };
+            });
 
 
 
@@ -94,7 +374,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var PlantFocusAssassinVineBuffEffect = Helpers.CreateBuff("PlantFocusAssassinVineBuffEffect", bp => {
                 bp.SetName("Plant Focus - AssassinVine");
                 bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[] { PlantFocusAssassinVineEffect.ToReference<BlueprintFeatureReference>() };
+                    c.m_Facts = new BlueprintUnitFactReference[] { PlantFocusAssassinVineEffect.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = false;
@@ -105,7 +385,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var PlantFocusBramblesBuffEffect = Helpers.CreateBuff("PlantFocusBramblesBuffEffect", bp => {
                 bp.SetName("Plant Focus - Brambles");
                 bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[] { PlantFocusBramblesEffect.ToReference<BlueprintFeatureReference>() };
+                    c.m_Facts = new BlueprintUnitFactReference[] { PlantFocusBramblesEffect.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = false;
@@ -116,7 +396,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var PlantFocusCreepingVineBuffEffect = Helpers.CreateBuff("PlantFocusCreepingVineBuffEffect", bp => {
                 bp.SetName("Plant Focus - CreepingVine");
                 bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[] { PlantFocusCreepingVineEffect.ToReference<BlueprintFeatureReference>() };
+                    c.m_Facts = new BlueprintUnitFactReference[] { PlantFocusCreepingVineEffect.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = false;
@@ -127,7 +407,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var PlantFocusGiantFlytrapBuffEffect = Helpers.CreateBuff("PlantFocusGiantFlytrapBuffEffect", bp => {
                 bp.SetName("Plant Focus - GiantFlytrap");
                 bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[] { PlantFocusGiantFlytrapEffect.ToReference<BlueprintFeatureReference>() };
+                    c.m_Facts = new BlueprintUnitFactReference[] { PlantFocusGiantFlytrapEffect.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = false;
@@ -138,7 +418,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var PlantFocusMushroomBuffEffect = Helpers.CreateBuff("PlantFocusMushroomBuffEffect", bp => {
                 bp.SetName("Plant Focus - Mushroom");
                 bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[] { PlantFocusMushroomEffect.ToReference<BlueprintFeatureReference>() };
+                    c.m_Facts = new BlueprintUnitFactReference[] { PlantFocusMushroomEffect.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = false;
@@ -149,7 +429,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var PlantFocusOakBuffEffect = Helpers.CreateBuff("PlantFocusOakBuffEffect", bp => {
                 bp.SetName("Plant Focus - Oak");
                 bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[] { PlantFocusOakEffect.ToReference<BlueprintFeatureReference>() };
+                    c.m_Facts = new BlueprintUnitFactReference[] { PlantFocusOakEffect.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = false;
@@ -160,7 +440,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var PlantFocusShriekerBuffEffect = Helpers.CreateBuff("PlantFocusShriekerBuffEffect", bp => {
                 bp.SetName("Plant Focus - Shrieker");
                 bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[] { PlantFocusShriekerEffect.ToReference<BlueprintFeatureReference>() };
+                    c.m_Facts = new BlueprintUnitFactReference[] { PlantFocusShriekerEffect.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = false;
@@ -171,7 +451,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var PlantFocusSporeBuffEffect = Helpers.CreateBuff("PlantFocusSporeBuffEffect", bp => {
                 bp.SetName("Plant Focus - Spore");
                 bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[] { PlantFocusSporeEffect.ToReference<BlueprintFeatureReference>() };
+                    c.m_Facts = new BlueprintUnitFactReference[] { PlantFocusSporeEffect.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = false;
