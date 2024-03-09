@@ -31,6 +31,11 @@ using Kingmaker.UnitLogic.ActivatableAbilities;
 using Kingmaker.UI.UnitSettings.Blueprints;
 using Kingmaker.Designers.EventConditionActionSystem.Evaluators;
 using Kingmaker.RuleSystem.Rules;
+using Kingmaker.RuleSystem.Rules.Damage;
+using Kingmaker.Enums.Damage;
+using Kingmaker.UnitLogic.Mechanics.Properties;
+using Kingmaker.Utility;
+using Kingmaker.UnitLogic.Buffs.Components;
 
 namespace ExpandedContent.Tweaks.Archetypes {
     internal class PlantMaster {
@@ -44,6 +49,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var AnimalCompanionSelectionHunter = Resources.GetBlueprint<BlueprintFeatureSelection>("715ac15eb8bd5e342bc8a0a3c9e3e38f");
             var HunterAnimalFocusFeature = Resources.GetBlueprint<BlueprintFeature>("443365823b7d6d14b8d12f4e7bce1077");
             var HunterOneWithTheWildFeature = Resources.GetBlueprint<BlueprintFeature>("c1e0f4ada7c673e4f8e5c57d1eea13d0");
+            var MasterHunter = Resources.GetBlueprint<BlueprintFeature>("d8a126a3ed3b62943a597c937a4bf840");
             var HunterAnimalFocusResource = Resources.GetBlueprintReference<BlueprintAbilityResourceReference>("72c9cd6d5a1464447a882590715d2b23");
             var PlantShapeIIIIcon = AssetLoader.LoadInternal("Skills", "Icon_PlantShapeIII.jpg");
 
@@ -87,6 +93,186 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;
                 bp.AddFeatures(CompanionSaplingTreantFeature, CompanionCrawlingMoundFeature);
+            });
+
+
+            var PlantFocusAssassinVineVisibleBuff = Helpers.CreateBuff("PlantFocusAssassinVineVisibleBuff", bp => {
+                bp.SetName("Plant Focus - Assassin Vine");
+                bp.SetDescription("The creature gains a +2 inherent bonus to combat maneuver checks to grapple. This bonus increases to +4 at 8th level and +6 at 15th level.");
+                bp.m_Icon = ??;
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = false;
+                bp.m_Flags = BlueprintBuff.Flags.StayOnDeath;
+                bp.Stacking = StackingType.Replace;
+            });
+            var PlantFocusBramblesVisibleBuff = Helpers.CreateBuff("PlantFocusBramblesVisibleBuff", bp => {
+                bp.SetName("Plant Focus - Brambles");
+                bp.SetDescription("When the creature is hit by an unarmed strike or natural attack, the attacker takes 1 point of piercing damage. " +
+                    "\nThis damage increases to 2 points at 8th level and 3 points at 15th level");
+                bp.m_Icon = ??;
+                bp.AddComponent<AddTargetAttackRollTrigger>(c => {
+                    c.OnlyHit = true;
+                    c.CriticalHit = false;
+                    c.OnlyMelee = true;
+                    c.NotReach = false;
+                    c.CheckCategory = true;
+                    c.Not = false;
+                    c.Categories = new WeaponCategory[] {
+                        WeaponCategory.UnarmedStrike |
+                        WeaponCategory.OtherNaturalWeapons |
+                        WeaponCategory.Bite |
+                        WeaponCategory.Claw |
+                        WeaponCategory.Gore |
+                        WeaponCategory.Tail |
+                        WeaponCategory.Hoof |
+                        WeaponCategory.Talon |
+                        WeaponCategory.Tentacle |
+                        WeaponCategory.Sting |
+                        WeaponCategory.Slam |
+                        WeaponCategory.Spike |
+                        WeaponCategory.Wing
+                    };
+                    c.AffectFriendlyTouchSpells = false;
+                    c.ActionsOnAttacker = Helpers.CreateActionList(
+                        new ContextActionDealDamage() {
+                            m_Type = ContextActionDealDamage.Type.Damage,
+                            DamageType = new DamageTypeDescription() {
+                                Type = DamageType.Physical,
+                                Common = new DamageTypeDescription.CommomData() {
+                                    Reality = 0,
+                                    Alignment = 0,
+                                    Precision = false
+                                },
+                                Physical = new DamageTypeDescription.PhysicalData() {
+                                    Material = 0,
+                                    Form = PhysicalDamageForm.Piercing,
+                                    Enhancement = 0,
+                                    EnhancementTotal = 0
+                                },
+                                Energy = DamageEnergyType.Fire
+                            },
+                            Drain = false,
+                            AbilityType = StatType.Unknown,
+                            EnergyDrainType = EnergyDrainType.Temporary,
+                            Duration = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                m_IsExtendable = true,
+                            },
+                            PreRolledSharedValue = AbilitySharedValue.Damage,
+                            Value = new ContextDiceValue() {
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Rank,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                            },
+                            IgnoreCritical = true,
+                        }
+                        );
+                    c.ActionOnSelf = Helpers.CreateActionList();
+                    c.DoNotPassAttackRoll = true;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = false;
+                bp.m_Flags = BlueprintBuff.Flags.StayOnDeath;
+                bp.Stacking = StackingType.Replace;
+            });
+            var PlantFocusCreepingVineVisibleBuff = Helpers.CreateBuff("PlantFocusCreepingVineVisibleBuff", bp => {
+                bp.SetName("Plant Focus - Creeping Vine");
+                bp.SetDescription("The creature gains a +4 competence {g|Encyclopedia:Bonus}bonus{/g} on {g|Encyclopedia:Athletics}Athletics checks{/g}. " +
+                    "This bonus increases to +6 at 8th level and +8 at 15th level.");
+                bp.m_Icon = ??;
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = false;
+                bp.m_Flags = BlueprintBuff.Flags.StayOnDeath;
+                bp.Stacking = StackingType.Replace;
+            });
+            var PlantFocusGiantFlytrapVisibleBuff = Helpers.CreateBuff("PlantFocusGiantFlytrapVisibleBuff", bp => {
+                bp.SetName("Plant Focus - Giant Flytrap");
+                bp.SetDescription("The creature gains a +4 competence {g|Encyclopedia:Bonus}bonus{/g} on {g|Encyclopedia:Stealth}Stealth checks{/g}. " +
+                    "This bonus increases to +6 at 8th level and +8 at 15th level.");
+                bp.m_Icon = ??;
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = false;
+                bp.m_Flags = BlueprintBuff.Flags.StayOnDeath;
+                bp.Stacking = StackingType.Replace;
+            });
+            var PlantFocusMushroomVisibleBuff = Helpers.CreateBuff("PlantFocusMushroomVisibleBuff", bp => {
+                bp.SetName("Plant Focus - Mushroom");
+                bp.SetDescription("The creature gains a +4 inherent bonus on saves against poison. This bonus increases to +6 at 8th level and +8 at 15th level." +
+                    "\nWhile plant companions are already immune to posion, this inherent bonus can be shared with the hunter.");
+                bp.m_Icon = ??;
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = false;
+                bp.m_Flags = BlueprintBuff.Flags.StayOnDeath;
+                bp.Stacking = StackingType.Replace;
+            });
+            var PlantFocusOakVisibleBuff = Helpers.CreateBuff("PlantFocusOakVisibleBuff", bp => {
+                bp.SetName("Plant Focus - Oak");
+                bp.SetDescription("The creature gains a +2 inherent bonus to {g|Encyclopedia:CMD}CMD{/g}. This bonus increases to +4 at 8th level and +6 at 15th level.");
+                bp.m_Icon = ??;
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = false;
+                bp.m_Flags = BlueprintBuff.Flags.StayOnDeath;
+                bp.Stacking = StackingType.Replace;
+            });
+            var PlantFocusShriekerVisibleBuff = Helpers.CreateBuff("PlantFocusShriekerVisibleBuff", bp => {
+                bp.SetName("Plant Focus - Shrieker");
+                bp.SetDescription("The creature gains a +4 competence {g|Encyclopedia:Bonus}bonus{/g} on {g|Encyclopedia:Perception}Perception checks{/g}, increasing to +6 at 8th level. " +
+                    "At 15th level, the creature also gains blindsense with a range of 10 feet, making invisibility and {g|Encyclopedia:Concealment}concealment{/g} (even magical darkness) " +
+                    "irrelevant to this creature.");
+                bp.m_Icon = ??;
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = false;
+                bp.m_Flags = BlueprintBuff.Flags.StayOnDeath;
+                bp.Stacking = StackingType.Replace;
+            });
+            var PlantFocusSporeVisibleBuff = Helpers.CreateBuff("PlantFocusSporeVisibleBuff", bp => {
+                bp.SetName("Plant Focus - Spore");
+                bp.SetDescription("The creature gains a +4 competence {g|Encyclopedia:Bonus}bonus{/g} on {g|Encyclopedia:Mobility}Mobility checks{/g}. " +
+                    "This bonus increases to +6 at 8th level and +8 at 15th level.");
+                bp.m_Icon = ??;
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = false;
+                bp.m_Flags = BlueprintBuff.Flags.StayOnDeath;
+                bp.Stacking = StackingType.Replace;
+            });
+
+            var PlantFocusShriekerBlindsenseBuff = Helpers.CreateBuff("PlantFocusShriekerBlindsenseBuff", bp => {
+                bp.SetName("PlantFocusShriekerBlindsenseBuff");
+                bp.AddComponent<Blindsense>(c => {
+                    c.Range = 10.Feet();
+                    c.Blindsight = false;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = false;
+                bp.m_Flags = BlueprintBuff.Flags.HiddenInUi | BlueprintBuff.Flags.StayOnDeath;
+                bp.Stacking = StackingType.Replace;
             });
 
             var PlantFocusAssassinVineEffect = Helpers.CreateBlueprint<BlueprintFeature>("PlantFocusAssassinVineEffect", bp => {
@@ -144,7 +330,47 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     new ContextRankConfig.CustomProgressionItem(){ BaseValue = 3, ProgressionValue = 4 }
                 };
             });
-            //Brambles
+            var PlantFocusBramblesEffect = Helpers.CreateBlueprint<BlueprintFeature>("PlantFocusBramblesEffect", bp => {
+                bp.SetName("Plant Focus - Brambles");
+                bp.AddComponent<AddFactContextActions>(c => {
+                    c.Activated = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = PlantFocusBramblesVisibleBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0,
+                                m_IsExtendable = true
+                            },
+                            AsChild = true
+                        }
+                        );
+                    c.Deactivated = Helpers.CreateActionList(
+                        new ContextActionRemoveBuff() {
+                            m_Buff = PlantFocusBramblesVisibleBuff.ToReference<BlueprintBuffReference>(),
+                            RemoveRank = false,
+                            ToCaster = false,
+                            OnlyFromCaster = false
+                        }
+                        );
+                    c.NewRound = Helpers.CreateActionList();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.Ranks = 3;
+                bp.ReapplyOnLevelUp = true;
+                bp.IsClassFeature = true;
+            });
+            PlantFocusBramblesVisibleBuff.AddComponent<ContextRankConfig>(c => {
+                c.m_Type = AbilityRankType.Default;
+                c.m_BaseValueType = ContextRankBaseValueType.FeatureRank;
+                c.m_Feature = PlantFocusBramblesEffect.ToReference<BlueprintFeatureReference>();
+                c.m_Stat = StatType.Unknown;
+                c.m_Progression = ContextRankProgression.AsIs;
+            });
             var PlantFocusCreepingVineEffect = Helpers.CreateBlueprint<BlueprintFeature>("PlantFocusCreepingVineEffect", bp => {
                 bp.SetName("Plant Focus - CreepingVine");
                 bp.AddComponent<AddContextStatBonus>(c => {
@@ -255,7 +481,62 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     new ContextRankConfig.CustomProgressionItem(){ BaseValue = 3, ProgressionValue = 8 }
                 };
             });
-            //Mushroom
+            var PlantFocusMushroomEffect = Helpers.CreateBlueprint<BlueprintFeature>("PlantFocusMushroomEffect", bp => {
+                bp.SetName("Plant Focus - Mushroom");
+                bp.AddComponent<SavingThrowBonusAgainstDescriptor>(c => {
+                    c.SpellDescriptor = SpellDescriptor.Poison;
+                    c.ModifierDescriptor = ModifierDescriptor.Inherent;
+                    c.Value = 0;
+                    c.Bonus = new ContextValue() {
+                        ValueType = ContextValueType.Rank,
+                        ValueRank = AbilityRankType.Default
+                    };
+                });
+                //ContextRankConfig added after as this feature uses itself as a FeatureRank
+                bp.AddComponent<AddFactContextActions>(c => {
+                    c.Activated = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = PlantFocusMushroomVisibleBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0,
+                                m_IsExtendable = true
+                            },
+                            AsChild = true
+                        }
+                        );
+                    c.Deactivated = Helpers.CreateActionList(
+                        new ContextActionRemoveBuff() {
+                            m_Buff = PlantFocusMushroomVisibleBuff.ToReference<BlueprintBuffReference>(),
+                            RemoveRank = false,
+                            ToCaster = false,
+                            OnlyFromCaster = false
+                        }
+                        );
+                    c.NewRound = Helpers.CreateActionList();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.Ranks = 3;
+                bp.ReapplyOnLevelUp = true;
+                bp.IsClassFeature = true;
+            });
+            PlantFocusMushroomEffect.AddComponent<ContextRankConfig>(c => {
+                c.m_Type = AbilityRankType.Default;
+                c.m_BaseValueType = ContextRankBaseValueType.FeatureRank;
+                c.m_Feature = PlantFocusMushroomEffect.ToReference<BlueprintFeatureReference>();
+                c.m_Stat = StatType.Unknown;
+                c.m_Progression = ContextRankProgression.Custom;
+                c.m_CustomProgression = new ContextRankConfig.CustomProgressionItem[] {
+                    new ContextRankConfig.CustomProgressionItem(){ BaseValue = 1, ProgressionValue = 4 },
+                    new ContextRankConfig.CustomProgressionItem(){ BaseValue = 2, ProgressionValue = 6 },
+                    new ContextRankConfig.CustomProgressionItem(){ BaseValue = 3, ProgressionValue = 8 }
+                };
+            });
             var PlantFocusOakEffect = Helpers.CreateBlueprint<BlueprintFeature>("PlantFocusOakEffect", bp => {
                 bp.SetName("Plant Focus - Oak");
                 bp.AddComponent<AddContextStatBonus>(c => {
@@ -311,7 +592,129 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     new ContextRankConfig.CustomProgressionItem(){ BaseValue = 3, ProgressionValue = 6 }
                 };
             });
-            //Shrieker
+            var PlantFocusShriekerEffect = Helpers.CreateBlueprint<BlueprintFeature>("PlantFocusShriekerEffect", bp => {
+                bp.SetName("Plant Focus - Shrieker");
+                bp.AddComponent<AddContextStatBonus>(c => {
+                    c.Stat = StatType.SkillPerception;
+                    c.Descriptor = ModifierDescriptor.Competence;
+                    c.Value = new ContextValue() {
+                        ValueType = ContextValueType.Rank,
+                        ValueRank = AbilityRankType.Default
+                    };
+                });
+                //ContextRankConfig added after as this feature uses itself as a FeatureRank
+                bp.AddComponent<ContextCalculateSharedValue>(c => {
+                    c.ValueType = AbilitySharedValue.Damage;
+                    c.Value = new ContextDiceValue() {
+                        DiceType = DiceType.Zero,
+                        DiceCountValue = 0,
+                        BonusValue = new ContextValue() {
+                            ValueType = ContextValueType.Rank,
+                            ValueRank = AbilityRankType.DamageDice
+                        }                        
+                    };
+                    c.Modifier = 1;
+                });
+                bp.AddComponent<AddFactContextActions>(c => {
+                    c.Activated = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = PlantFocusShriekerVisibleBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0,
+                                m_IsExtendable = true
+                            },
+                            AsChild = true
+                        },
+                        new Conditional() {
+                            ConditionsChecker = new ConditionsChecker() {
+                                Operation = Operation.And,
+                                Conditions = new Condition[] {
+                                    new ContextConditionSharedValueHigher() {
+                                        Not = false,
+                                        SharedValue = AbilitySharedValue.Damage,
+                                        HigherOrEqual = 3,
+                                        Inverted = false
+                                    }
+                                }
+                            },
+                            IfTrue = Helpers.CreateActionList(
+                                new ContextActionApplyBuff() {
+                                    m_Buff = PlantFocusShriekerBlindsenseBuff.ToReference<BlueprintBuffReference>(),
+                                    Permanent = true,
+                                    DurationValue = new ContextDurationValue() {
+                                        Rate = DurationRate.Rounds,
+                                        DiceType = DiceType.Zero,
+                                        DiceCountValue = 0,
+                                        BonusValue = 0,
+                                        m_IsExtendable = true
+                                    },
+                                    AsChild = true
+                                }
+                                ),
+                            IfFalse = Helpers.CreateActionList()
+                        }
+                        );
+                    c.Deactivated = Helpers.CreateActionList(
+                        new ContextActionRemoveBuff() {
+                            m_Buff = PlantFocusShriekerVisibleBuff.ToReference<BlueprintBuffReference>(),
+                            RemoveRank = false,
+                            ToCaster = false,
+                            OnlyFromCaster = false
+                        },
+                        new Conditional() {
+                            ConditionsChecker = new ConditionsChecker() {
+                                Operation = Operation.And,
+                                Conditions = new Condition[] {
+                                    new ContextConditionSharedValueHigher() {
+                                        Not = false,
+                                        SharedValue = AbilitySharedValue.Damage,
+                                        HigherOrEqual = 3,
+                                        Inverted = false
+                                    }
+                                }
+                            },
+                            IfTrue = Helpers.CreateActionList(
+                                new ContextActionRemoveBuff() {
+                                    m_Buff = PlantFocusShriekerBlindsenseBuff.ToReference<BlueprintBuffReference>(),
+                                    RemoveRank = false,
+                                    ToCaster = false,
+                                    OnlyFromCaster = false
+                                }
+                                ),
+                            IfFalse = Helpers.CreateActionList()
+                        }
+                        );
+                    c.NewRound = Helpers.CreateActionList();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.Ranks = 3;
+                bp.ReapplyOnLevelUp = true;
+                bp.IsClassFeature = true;
+            });
+            PlantFocusShriekerEffect.AddComponent<ContextRankConfig>(c => {
+                c.m_Type = AbilityRankType.Default;
+                c.m_BaseValueType = ContextRankBaseValueType.FeatureRank;
+                c.m_Feature = PlantFocusShriekerEffect.ToReference<BlueprintFeatureReference>();
+                c.m_Stat = StatType.Unknown;
+                c.m_Progression = ContextRankProgression.Custom;
+                c.m_CustomProgression = new ContextRankConfig.CustomProgressionItem[] {
+                    new ContextRankConfig.CustomProgressionItem(){ BaseValue = 1, ProgressionValue = 4 },
+                    new ContextRankConfig.CustomProgressionItem(){ BaseValue = 2, ProgressionValue = 6 }
+                };
+            });
+            PlantFocusShriekerEffect.AddComponent<ContextRankConfig>(c => {
+                c.m_Type = AbilityRankType.DamageDice;
+                c.m_BaseValueType = ContextRankBaseValueType.FeatureRank;
+                c.m_Feature = PlantFocusShriekerEffect.ToReference<BlueprintFeatureReference>();
+                c.m_Stat = StatType.Unknown;
+                c.m_Progression = ContextRankProgression.AsIs;
+            });
             var PlantFocusSporeEffect = Helpers.CreateBlueprint<BlueprintFeature>("PlantFocusSporeEffect", bp => {
                 bp.SetName("Plant Focus - Spore");
                 bp.AddComponent<AddContextStatBonus>(c => {
@@ -614,7 +1017,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                                             ValueRank = AbilityRankType.Default
                                         }
                                     }
-                                }
+                                }                                
                                 ),
                             IfFalse = Helpers.CreateActionList(
                                 new ContextActionRepeatedActions() {
@@ -1633,6 +2036,399 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.HiddenInUI = true;
                 bp.ActivationType = AbilityActivationType.Immediately;
                 bp.m_ActivateWithUnitCommand = UnitCommand.CommandType.Free;
+                bp.m_ActivateOnUnitAction = AbilityActivateOnUnitActionType.Attack;
+            });
+
+            var HunterPlantFocusForHimselfBuff = Helpers.CreateBuff("HunterPlantFocusForHimselfBuff", bp => {
+                bp.AddComponent<AddBuffActions>(c => {
+                    c.Activated = Helpers.CreateActionList(
+                        new Conditional() {
+                            ConditionsChecker = new ConditionsChecker() {
+                                Operation = Operation.And,
+                                Conditions = new Condition[] {
+                                    new ContextConditionCasterHasFact() {
+                                        Not = false,
+                                        m_Fact = PlantFocusAssassinVineBuff.ToReference<BlueprintUnitFactReference>()
+                                    }
+                                }
+                            },
+                            IfTrue = Helpers.CreateActionList(
+                                new ContextActionRepeatedActions() {
+                                    Actions = Helpers.CreateActionList(
+                                        new ContextActionApplyBuff() {
+                                            m_Buff = PlantFocusAssassinVineBuffEffect.ToReference<BlueprintBuffReference>(),
+                                            Permanent = false,
+                                            UseDurationSeconds = false,
+                                            DurationValue = new ContextDurationValue() {
+                                                Rate = DurationRate.Rounds,
+                                                DiceType = DiceType.Zero,
+                                                DiceCountValue = 0,
+                                                BonusValue = 0,
+                                                m_IsExtendable = true
+                                            },
+                                            AsChild = true,
+                                            SameDuration = true
+                                        }
+                                        ),
+                                    Value = new ContextDiceValue() {
+                                        DiceType = DiceType.Zero,
+                                        DiceCountValue = 0,
+                                        BonusValue = new ContextValue() {
+                                            ValueType = ContextValueType.Rank,
+                                            ValueRank = AbilityRankType.Default
+                                        }
+                                    }
+                                }
+                                ),
+                            IfFalse = Helpers.CreateActionList()
+                        },
+                        new Conditional() {
+                            ConditionsChecker = new ConditionsChecker() {
+                                Operation = Operation.And,
+                                Conditions = new Condition[] {
+                                    new ContextConditionCasterHasFact() {
+                                        Not = false,
+                                        m_Fact = PlantFocusBramblesBuff.ToReference<BlueprintUnitFactReference>()
+                                    }
+                                }
+                            },
+                            IfTrue = Helpers.CreateActionList(
+                                new ContextActionRepeatedActions() {
+                                    Actions = Helpers.CreateActionList(
+                                        new ContextActionApplyBuff() {
+                                            m_Buff = PlantFocusBramblesBuffEffect.ToReference<BlueprintBuffReference>(),
+                                            Permanent = false,
+                                            UseDurationSeconds = false,
+                                            DurationValue = new ContextDurationValue() {
+                                                Rate = DurationRate.Rounds,
+                                                DiceType = DiceType.Zero,
+                                                DiceCountValue = 0,
+                                                BonusValue = 0,
+                                                m_IsExtendable = true
+                                            },
+                                            AsChild = true,
+                                            SameDuration = true
+                                        }
+                                        ),
+                                    Value = new ContextDiceValue() {
+                                        DiceType = DiceType.Zero,
+                                        DiceCountValue = 0,
+                                        BonusValue = new ContextValue() {
+                                            ValueType = ContextValueType.Rank,
+                                            ValueRank = AbilityRankType.Default
+                                        }
+                                    }
+                                }
+                                ),
+                            IfFalse = Helpers.CreateActionList()
+                        },
+                        new Conditional() {
+                            ConditionsChecker = new ConditionsChecker() {
+                                Operation = Operation.And,
+                                Conditions = new Condition[] {
+                                    new ContextConditionCasterHasFact() {
+                                        Not = false,
+                                        m_Fact = PlantFocusCreepingVineBuff.ToReference<BlueprintUnitFactReference>()
+                                    }
+                                }
+                            },
+                            IfTrue = Helpers.CreateActionList(
+                                new ContextActionRepeatedActions() {
+                                    Actions = Helpers.CreateActionList(
+                                        new ContextActionApplyBuff() {
+                                            m_Buff = PlantFocusCreepingVineBuffEffect.ToReference<BlueprintBuffReference>(),
+                                            Permanent = false,
+                                            UseDurationSeconds = false,
+                                            DurationValue = new ContextDurationValue() {
+                                                Rate = DurationRate.Rounds,
+                                                DiceType = DiceType.Zero,
+                                                DiceCountValue = 0,
+                                                BonusValue = 0,
+                                                m_IsExtendable = true
+                                            },
+                                            AsChild = true,
+                                            SameDuration = true
+                                        }
+                                        ),
+                                    Value = new ContextDiceValue() {
+                                        DiceType = DiceType.Zero,
+                                        DiceCountValue = 0,
+                                        BonusValue = new ContextValue() {
+                                            ValueType = ContextValueType.Rank,
+                                            ValueRank = AbilityRankType.Default
+                                        }
+                                    }
+                                }
+                                ),
+                            IfFalse = Helpers.CreateActionList()
+                        },
+                        new Conditional() {
+                            ConditionsChecker = new ConditionsChecker() {
+                                Operation = Operation.And,
+                                Conditions = new Condition[] {
+                                    new ContextConditionCasterHasFact() {
+                                        Not = false,
+                                        m_Fact = PlantFocusGiantFlytrapBuff.ToReference<BlueprintUnitFactReference>()
+                                    }
+                                }
+                            },
+                            IfTrue = Helpers.CreateActionList(
+                                new ContextActionRepeatedActions() {
+                                    Actions = Helpers.CreateActionList(
+                                        new ContextActionApplyBuff() {
+                                            m_Buff = PlantFocusGiantFlytrapBuffEffect.ToReference<BlueprintBuffReference>(),
+                                            Permanent = false,
+                                            UseDurationSeconds = false,
+                                            DurationValue = new ContextDurationValue() {
+                                                Rate = DurationRate.Rounds,
+                                                DiceType = DiceType.Zero,
+                                                DiceCountValue = 0,
+                                                BonusValue = 0,
+                                                m_IsExtendable = true
+                                            },
+                                            AsChild = true,
+                                            SameDuration = true
+                                        }
+                                        ),
+                                    Value = new ContextDiceValue() {
+                                        DiceType = DiceType.Zero,
+                                        DiceCountValue = 0,
+                                        BonusValue = new ContextValue() {
+                                            ValueType = ContextValueType.Rank,
+                                            ValueRank = AbilityRankType.Default
+                                        }
+                                    }
+                                }
+                                ),
+                            IfFalse = Helpers.CreateActionList()
+                        },
+                        new Conditional() {
+                            ConditionsChecker = new ConditionsChecker() {
+                                Operation = Operation.And,
+                                Conditions = new Condition[] {
+                                    new ContextConditionCasterHasFact() {
+                                        Not = false,
+                                        m_Fact = PlantFocusMushroomBuff.ToReference<BlueprintUnitFactReference>()
+                                    }
+                                }
+                            },
+                            IfTrue = Helpers.CreateActionList(
+                                new ContextActionRepeatedActions() {
+                                    Actions = Helpers.CreateActionList(
+                                        new ContextActionApplyBuff() {
+                                            m_Buff = PlantFocusMushroomBuffEffect.ToReference<BlueprintBuffReference>(),
+                                            Permanent = false,
+                                            UseDurationSeconds = false,
+                                            DurationValue = new ContextDurationValue() {
+                                                Rate = DurationRate.Rounds,
+                                                DiceType = DiceType.Zero,
+                                                DiceCountValue = 0,
+                                                BonusValue = 0,
+                                                m_IsExtendable = true
+                                            },
+                                            AsChild = true,
+                                            SameDuration = true
+                                        }
+                                        ),
+                                    Value = new ContextDiceValue() {
+                                        DiceType = DiceType.Zero,
+                                        DiceCountValue = 0,
+                                        BonusValue = new ContextValue() {
+                                            ValueType = ContextValueType.Rank,
+                                            ValueRank = AbilityRankType.Default
+                                        }
+                                    }
+                                }
+                                ),
+                            IfFalse = Helpers.CreateActionList()
+                        },
+                        new Conditional() {
+                            ConditionsChecker = new ConditionsChecker() {
+                                Operation = Operation.And,
+                                Conditions = new Condition[] {
+                                    new ContextConditionCasterHasFact() {
+                                        Not = false,
+                                        m_Fact = PlantFocusOakBuff.ToReference<BlueprintUnitFactReference>()
+                                    }
+                                }
+                            },
+                            IfTrue = Helpers.CreateActionList(
+                                new ContextActionRepeatedActions() {
+                                    Actions = Helpers.CreateActionList(
+                                        new ContextActionApplyBuff() {
+                                            m_Buff = PlantFocusOakBuffEffect.ToReference<BlueprintBuffReference>(),
+                                            Permanent = false,
+                                            UseDurationSeconds = false,
+                                            DurationValue = new ContextDurationValue() {
+                                                Rate = DurationRate.Rounds,
+                                                DiceType = DiceType.Zero,
+                                                DiceCountValue = 0,
+                                                BonusValue = 0,
+                                                m_IsExtendable = true
+                                            },
+                                            AsChild = true,
+                                            SameDuration = true
+                                        }
+                                        ),
+                                    Value = new ContextDiceValue() {
+                                        DiceType = DiceType.Zero,
+                                        DiceCountValue = 0,
+                                        BonusValue = new ContextValue() {
+                                            ValueType = ContextValueType.Rank,
+                                            ValueRank = AbilityRankType.Default
+                                        }
+                                    }
+                                }
+                                ),
+                            IfFalse = Helpers.CreateActionList()
+                        },
+                        new Conditional() {
+                            ConditionsChecker = new ConditionsChecker() {
+                                Operation = Operation.And,
+                                Conditions = new Condition[] {
+                                    new ContextConditionCasterHasFact() {
+                                        Not = false,
+                                        m_Fact = PlantFocusShriekerBuff.ToReference<BlueprintUnitFactReference>()
+                                    }
+                                }
+                            },
+                            IfTrue = Helpers.CreateActionList(
+                                new ContextActionRepeatedActions() {
+                                    Actions = Helpers.CreateActionList(
+                                        new ContextActionApplyBuff() {
+                                            m_Buff = PlantFocusShriekerBuffEffect.ToReference<BlueprintBuffReference>(),
+                                            Permanent = false,
+                                            UseDurationSeconds = false,
+                                            DurationValue = new ContextDurationValue() {
+                                                Rate = DurationRate.Rounds,
+                                                DiceType = DiceType.Zero,
+                                                DiceCountValue = 0,
+                                                BonusValue = 0,
+                                                m_IsExtendable = true
+                                            },
+                                            AsChild = true,
+                                            SameDuration = true
+                                        }
+                                        ),
+                                    Value = new ContextDiceValue() {
+                                        DiceType = DiceType.Zero,
+                                        DiceCountValue = 0,
+                                        BonusValue = new ContextValue() {
+                                            ValueType = ContextValueType.Rank,
+                                            ValueRank = AbilityRankType.Default
+                                        }
+                                    }
+                                }
+                                ),
+                            IfFalse = Helpers.CreateActionList()
+                        },
+                        new Conditional() {
+                            ConditionsChecker = new ConditionsChecker() {
+                                Operation = Operation.And,
+                                Conditions = new Condition[] {
+                                    new ContextConditionCasterHasFact() {
+                                        Not = false,
+                                        m_Fact = PlantFocusSporeBuff.ToReference<BlueprintUnitFactReference>()
+                                    }
+                                }
+                            },
+                            IfTrue = Helpers.CreateActionList(
+                                new ContextActionRepeatedActions() {
+                                    Actions = Helpers.CreateActionList(
+                                        new ContextActionApplyBuff() {
+                                            m_Buff = PlantFocusSporeBuffEffect.ToReference<BlueprintBuffReference>(),
+                                            Permanent = false,
+                                            UseDurationSeconds = false,
+                                            DurationValue = new ContextDurationValue() {
+                                                Rate = DurationRate.Rounds,
+                                                DiceType = DiceType.Zero,
+                                                DiceCountValue = 0,
+                                                BonusValue = 0,
+                                                m_IsExtendable = true
+                                            },
+                                            AsChild = true,
+                                            SameDuration = true
+                                        }
+                                        ),
+                                    Value = new ContextDiceValue() {
+                                        DiceType = DiceType.Zero,
+                                        DiceCountValue = 0,
+                                        BonusValue = new ContextValue() {
+                                            ValueType = ContextValueType.Rank,
+                                            ValueRank = AbilityRankType.Default
+                                        }
+                                    }
+                                }
+                                ),
+                            IfFalse = Helpers.CreateActionList()
+                        }                        
+                        );
+                    c.Deactivated = Helpers.CreateActionList();
+                    c.NewRound = Helpers.CreateActionList();
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.Custom;
+                    c.m_Class = new BlueprintCharacterClassReference[] {
+                        HunterClass.ToReference<BlueprintCharacterClassReference>()
+                    };
+                    c.m_CustomProgression = new ContextRankConfig.CustomProgressionItem[] {
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 7, ProgressionValue = 1 },
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 14, ProgressionValue = 2 },
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 20, ProgressionValue = 3 }
+                    };
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = false;
+                bp.m_Flags = BlueprintBuff.Flags.HiddenInUi | BlueprintBuff.Flags.StayOnDeath;
+                bp.Stacking = StackingType.Replace;
+            });
+            var HunterPlantFocusForHimself = Helpers.CreateBlueprint<BlueprintActivatableAbility>("HunterPlantFocusForHimself", bp => {
+                bp.SetName("Plant Focus - Plant Master");
+                bp.SetDescription("At 1st level, the hunter can grant an plant aspect to her plant companion. " +
+                    "Unlike with the hunter herself, there is no duration on the plant aspect applied to her plant companion. " +
+                    "An aspect applied in this way remains in effect until the hunter changes it. If the hunter's plant companion is dead, " +
+                    "the hunter can apply her companion's plant focus to herself instead of her plant companion. Additionally, a hunter " +
+                    "can take on the aspect of an plant as a {g|Encyclopedia:Swift_Action}swift action{/g}. She gets the same benefits " +
+                    "as the current plant companion focus. The hunter can use this ability for a number of minutes per day equal to her " +
+                    "level. This duration does not need to be consecutive, but must be spent in 1-minute increments. For the purposes " +
+                    "of features and abilities that interact with animal focus, plant focuses are animal focuses.");
+                bp.m_Icon = ??;
+                bp.m_Buff = HunterPlantFocusForHimselfBuff.ToReference<BlueprintBuffReference>();
+                bp.AddComponent<ActivatableAbilityResourceLogic>(c => {
+                    c.SpendType = ActivatableAbilityResourceLogic.ResourceSpendType.OncePerMinute;
+                    c.m_RequiredResource = HunterAnimalFocusResource;
+                    c.m_FreeBlueprint = MasterHunter.ToReference<BlueprintUnitFactReference>();
+                });
+                bp.AddComponent<ActionPanelLogic>(c => {
+                    c.Priority = 0;
+                    c.AutoFillConditions = new ConditionsChecker() {
+                        Operation = Operation.And,
+                        Conditions = new Condition[] {
+                            new ContextConditionCharacterClass() {
+                                Not = true,
+                                m_Class = HunterClass.ToReference<BlueprintCharacterClassReference>(),
+                                MinLevel = 0,
+                            }
+                        }
+                    };
+                    c.AutoCastConditions = new ConditionsChecker() {
+                        Operation = Operation.And,
+                        Conditions = new Condition[] { }
+                    };
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.Group = ActivatableAbilityGroup.None;
+                bp.WeightInGroup = 1;
+                bp.IsOnByDefault = false;
+                bp.DeactivateImmediately = true;
+                //bp.DoNotTurnOffOnRest = true; This is false on the animal focuses, need to test
+                bp.HiddenInUI = true;
+                bp.ActivationType = AbilityActivationType.WithUnitCommand;
+                bp.m_ActivateWithUnitCommand = UnitCommand.CommandType.Swift;
                 bp.m_ActivateOnUnitAction = AbilityActivateOnUnitActionType.Attack;
             });
 
