@@ -52,11 +52,20 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var MasterHunter = Resources.GetBlueprint<BlueprintFeature>("d8a126a3ed3b62943a597c937a4bf840");
             var HunterAnimalFocusResource = Resources.GetBlueprintReference<BlueprintAbilityResourceReference>("72c9cd6d5a1464447a882590715d2b23");
             var PlantShapeIIIIcon = AssetLoader.LoadInternal("Skills", "Icon_PlantShapeIII.jpg");
+            var CheetahSprintIcon = AssetLoader.LoadInternal("Skills", "Icon_CheetahSprint.jpg");
+            var ClaySkinIcon = AssetLoader.LoadInternal("Skills", "Icon_ClaySkin.jpg");
+            var ShamblerIcon = AssetLoader.LoadInternal("Skills", "Icon_Shambler.jpg");
+            var ThornBody = Resources.GetBlueprint<BlueprintAbility>("2daf9c5112f16d54ab3cd6904c705c59");
+            var Poison = Resources.GetBlueprint<BlueprintAbility>("d797007a142a6c0409a74b064065a15e");
+            var Tremorsense = Resources.GetBlueprint<BlueprintFeature>("6e668702fdc53c343a0363813683346e");
+            var AnimalFocusOwlBuff = Resources.GetBlueprint<BlueprintBuff>("225598fb42782a848ae8880969482591");
+            var AnimalFocusMonkeyBuff = Resources.GetBlueprint<BlueprintBuff>("036764a2ff5768f4babee534e3424e32");
+            var HunterAnimalFocusForHimself = Resources.GetBlueprint<BlueprintActivatableAbility>("2b36d5d875eb6f041ab51bbb0365282c");
+            var CommandHaltAbility = Resources.GetBlueprint<BlueprintAbility>("a43abe1819699894c94a7cec3ccd3765");
 
             var CompanionSaplingTreantFeature = Resources.GetModBlueprint<BlueprintFeature>("CompanionSaplingTreantFeature");
             var CompanionCrawlingMoundFeature = Resources.GetModBlueprint<BlueprintFeature>("CompanionCrawlingMoundFeature");
             
-
             var PlantMasterArchetype = Helpers.CreateBlueprint<BlueprintArchetype>("PlantMasterArchetype", bp => {
                 bp.LocalizedName = Helpers.CreateString($"PlantMasterArchetype.Name", "Plant Master");
                 bp.LocalizedDescription = Helpers.CreateString($"PlantMasterArchetype.Description", "Some hunters form a bond with plant life instead of an animal " +
@@ -95,11 +104,10 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.AddFeatures(CompanionSaplingTreantFeature, CompanionCrawlingMoundFeature);
             });
 
-
             var PlantFocusAssassinVineVisibleBuff = Helpers.CreateBuff("PlantFocusAssassinVineVisibleBuff", bp => {
                 bp.SetName("Plant Focus - Assassin Vine");
                 bp.SetDescription("The creature gains a +2 inherent bonus to combat maneuver checks to grapple. This bonus increases to +4 at 8th level and +6 at 15th level.");
-                bp.m_Icon = ??;
+                bp.m_Icon = ShamblerIcon;
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = false;
                 bp.m_Flags = BlueprintBuff.Flags.StayOnDeath;
@@ -109,7 +117,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.SetName("Plant Focus - Brambles");
                 bp.SetDescription("When the creature is hit by an unarmed strike or natural attack, the attacker takes 1 point of piercing damage. " +
                     "\nThis damage increases to 2 points at 8th level and 3 points at 15th level");
-                bp.m_Icon = ??;
+                bp.m_Icon = ThornBody.Icon;
                 bp.AddComponent<AddTargetAttackRollTrigger>(c => {
                     c.OnlyHit = true;
                     c.CriticalHit = false;
@@ -206,7 +214,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.SetName("Plant Focus - Creeping Vine");
                 bp.SetDescription("The creature gains a +4 competence {g|Encyclopedia:Bonus}bonus{/g} on {g|Encyclopedia:Athletics}Athletics checks{/g}. " +
                     "This bonus increases to +6 at 8th level and +8 at 15th level.");
-                bp.m_Icon = ??;
+                bp.m_Icon = AnimalFocusMonkeyBuff.Icon;
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = false;
                 bp.m_Flags = BlueprintBuff.Flags.StayOnDeath;
@@ -216,7 +224,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.SetName("Plant Focus - Giant Flytrap");
                 bp.SetDescription("The creature gains a +4 competence {g|Encyclopedia:Bonus}bonus{/g} on {g|Encyclopedia:Stealth}Stealth checks{/g}. " +
                     "This bonus increases to +6 at 8th level and +8 at 15th level.");
-                bp.m_Icon = ??;
+                bp.m_Icon = AnimalFocusOwlBuff.Icon;
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = false;
                 bp.m_Flags = BlueprintBuff.Flags.StayOnDeath;
@@ -226,7 +234,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.SetName("Plant Focus - Mushroom");
                 bp.SetDescription("The creature gains a +4 inherent bonus on saves against poison. This bonus increases to +6 at 8th level and +8 at 15th level." +
                     "\nWhile plant companions are already immune to posion, this inherent bonus can be shared with the hunter.");
-                bp.m_Icon = ??;
+                bp.m_Icon = Poison.Icon;
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = false;
                 bp.m_Flags = BlueprintBuff.Flags.StayOnDeath;
@@ -235,7 +243,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var PlantFocusOakVisibleBuff = Helpers.CreateBuff("PlantFocusOakVisibleBuff", bp => {
                 bp.SetName("Plant Focus - Oak");
                 bp.SetDescription("The creature gains a +2 inherent bonus to {g|Encyclopedia:CMD}CMD{/g}. This bonus increases to +4 at 8th level and +6 at 15th level.");
-                bp.m_Icon = ??;
+                bp.m_Icon = ClaySkinIcon;
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = false;
                 bp.m_Flags = BlueprintBuff.Flags.StayOnDeath;
@@ -246,7 +254,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.SetDescription("The creature gains a +4 competence {g|Encyclopedia:Bonus}bonus{/g} on {g|Encyclopedia:Perception}Perception checks{/g}, increasing to +6 at 8th level. " +
                     "At 15th level, the creature also gains blindsense with a range of 10 feet, making invisibility and {g|Encyclopedia:Concealment}concealment{/g} (even magical darkness) " +
                     "irrelevant to this creature.");
-                bp.m_Icon = ??;
+                bp.m_Icon = Tremorsense.Icon;
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = false;
                 bp.m_Flags = BlueprintBuff.Flags.StayOnDeath;
@@ -256,7 +264,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.SetName("Plant Focus - Spore");
                 bp.SetDescription("The creature gains a +4 competence {g|Encyclopedia:Bonus}bonus{/g} on {g|Encyclopedia:Mobility}Mobility checks{/g}. " +
                     "This bonus increases to +6 at 8th level and +8 at 15th level.");
-                bp.m_Icon = ??;
+                bp.m_Icon = CheetahSprintIcon;
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = false;
                 bp.m_Flags = BlueprintBuff.Flags.StayOnDeath;
@@ -771,9 +779,6 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 };
             });
 
-
-
-
             var PlantFocusAssassinVineBuffEffect = Helpers.CreateBuff("PlantFocusAssassinVineBuffEffect", bp => {
                 bp.SetName("Plant Focus - AssassinVine");
                 bp.AddComponent<AddFacts>(c => {
@@ -866,7 +871,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var PlantFocusAssassinVineBuff = Helpers.CreateBuff("PlantFocusAssassinVineBuff", bp => {
                 bp.SetName("Plant Focus - Assassin Vine");
                 bp.SetDescription("The creature gains a +2 inherent bonus to combat maneuver checks to grapple. This bonus increases to +4 at 8th level and +6 at 15th level.");
-                bp.m_Icon = ??;
+                bp.m_Icon = ShamblerIcon;
                 bp.AddComponent<AddFactContextActions>(c => {
                     c.Activated = Helpers.CreateActionList(
                         new Conditional() {
@@ -979,7 +984,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.SetName("Plant Focus - Brambles");
                 bp.SetDescription("When the creature is hit by an unarmed strike or natural attack, the attacker takes 1 point of piercing damage. " +
                     "\nThis damage increases to 2 points at 8th level and 3 points at 15th level");
-                bp.m_Icon = ??;
+                bp.m_Icon = ThornBody.Icon;
                 bp.AddComponent<AddFactContextActions>(c => {
                     c.Activated = Helpers.CreateActionList(
                         new Conditional() {
@@ -1092,7 +1097,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.SetName("Plant Focus - Creeping Vine");
                 bp.SetDescription("The creature gains a +4 competence {g|Encyclopedia:Bonus}bonus{/g} on {g|Encyclopedia:Athletics}Athletics checks{/g}. " +
                     "This bonus increases to +6 at 8th level and +8 at 15th level.");
-                bp.m_Icon = ??;
+                bp.m_Icon = AnimalFocusMonkeyBuff.Icon;
                 bp.AddComponent<AddFactContextActions>(c => {
                     c.Activated = Helpers.CreateActionList(
                         new Conditional() {
@@ -1205,7 +1210,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.SetName("Plant Focus - Giant Flytrap");
                 bp.SetDescription("The creature gains a +4 competence {g|Encyclopedia:Bonus}bonus{/g} on {g|Encyclopedia:Stealth}Stealth checks{/g}. " +
                     "This bonus increases to +6 at 8th level and +8 at 15th level.");
-                bp.m_Icon = ??;
+                bp.m_Icon = AnimalFocusOwlBuff.Icon;
                 bp.AddComponent<AddFactContextActions>(c => {
                     c.Activated = Helpers.CreateActionList(
                         new Conditional() {
@@ -1318,7 +1323,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.SetName("Plant Focus - Mushroom");
                 bp.SetDescription("The creature gains a +4 inherent bonus on saves against poison. This bonus increases to +6 at 8th level and +8 at 15th level." +
                     "\nWhile plant companions are already immune to posion, this inherent bonus can be shared with the hunter.");
-                bp.m_Icon = ??;
+                bp.m_Icon = Poison.Icon;
                 bp.AddComponent<AddFactContextActions>(c => {
                     c.Activated = Helpers.CreateActionList(
                         new Conditional() {
@@ -1430,7 +1435,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var PlantFocusOakBuff = Helpers.CreateBuff("PlantFocusOakBuff", bp => {
                 bp.SetName("Plant Focus - Oak");
                 bp.SetDescription("The creature gains a +2 inherent bonus to {g|Encyclopedia:CMD}CMD{/g}. This bonus increases to +4 at 8th level and +6 at 15th level.");
-                bp.m_Icon = ??;
+                bp.m_Icon = ClaySkinIcon;
                 bp.AddComponent<AddFactContextActions>(c => {
                     c.Activated = Helpers.CreateActionList(
                         new Conditional() {
@@ -1544,7 +1549,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.SetDescription("The creature gains a +4 competence {g|Encyclopedia:Bonus}bonus{/g} on {g|Encyclopedia:Perception}Perception checks{/g}, increasing to +6 at 8th level. " +
                     "At 15th level, the creature also gains blindsense with a range of 10 feet, making invisibility and {g|Encyclopedia:Concealment}concealment{/g} (even magical darkness) " +
                     "irrelevant to this creature.");
-                bp.m_Icon = ??;
+                bp.m_Icon = Tremorsense.Icon;
                 bp.AddComponent<AddFactContextActions>(c => {
                     c.Activated = Helpers.CreateActionList(
                         new Conditional() {
@@ -1657,7 +1662,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.SetName("Plant Focus - Spore");
                 bp.SetDescription("The creature gains a +4 competence {g|Encyclopedia:Bonus}bonus{/g} on {g|Encyclopedia:Mobility}Mobility checks{/g}. " +
                     "This bonus increases to +6 at 8th level and +8 at 15th level.");
-                bp.m_Icon = ??;
+                bp.m_Icon = CheetahSprintIcon;
                 bp.AddComponent<AddFactContextActions>(c => {
                     c.Activated = Helpers.CreateActionList(
                         new Conditional() {
@@ -1770,7 +1775,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var PlantFocusAssassinVine = Helpers.CreateBlueprint<BlueprintActivatableAbility>("PlantFocusAssassinVine", bp => {
                 bp.SetName("Plant Focus - Assassin Vine");
                 bp.SetDescription("The creature gains a +2 inherent bonus to combat maneuver checks to grapple. This bonus increases to +4 at 8th level and +6 at 15th level.");
-                bp.m_Icon = ??;
+                bp.m_Icon = ShamblerIcon;
                 bp.m_Buff = PlantFocusAssassinVineBuff.ToReference<BlueprintBuffReference>();
                 bp.AddComponent<ActionPanelLogic>(c => {
                     c.Priority = 0;
@@ -1804,7 +1809,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.SetName("Plant Focus - Brambles");
                 bp.SetDescription("When the creature is hit by an unarmed strike or natural attack, the attacker takes 1 point of piercing damage. " +
                     "\nThis damage increases to 2 points at 8th level and 3 points at 15th level");
-                bp.m_Icon = ??;
+                bp.m_Icon = ThornBody.Icon;
                 bp.m_Buff = PlantFocusBramblesBuff.ToReference<BlueprintBuffReference>();
                 bp.AddComponent<ActionPanelLogic>(c => {
                     c.Priority = 0;
@@ -1838,7 +1843,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.SetName("Plant Focus - Creeping Vine");
                 bp.SetDescription("The creature gains a +4 competence {g|Encyclopedia:Bonus}bonus{/g} on {g|Encyclopedia:Athletics}Athletics checks{/g}. " +
                     "This bonus increases to +6 at 8th level and +8 at 15th level.");
-                bp.m_Icon = ??;
+                bp.m_Icon = AnimalFocusMonkeyBuff.Icon;
                 bp.m_Buff = PlantFocusCreepingVineBuff.ToReference<BlueprintBuffReference>();
                 bp.AddComponent<ActionPanelLogic>(c => {
                     c.Priority = 0;
@@ -1872,7 +1877,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.SetName("Plant Focus - Giant Flytrap");
                 bp.SetDescription("The creature gains a +4 competence {g|Encyclopedia:Bonus}bonus{/g} on {g|Encyclopedia:Stealth}Stealth checks{/g}. " +
                     "This bonus increases to +6 at 8th level and +8 at 15th level.");
-                bp.m_Icon = ??;
+                bp.m_Icon = AnimalFocusOwlBuff.Icon;
                 bp.m_Buff = PlantFocusGiantFlytrapBuff.ToReference<BlueprintBuffReference>();
                 bp.AddComponent<ActionPanelLogic>(c => {
                     c.Priority = 0;
@@ -1906,7 +1911,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.SetName("Plant Focus - Mushroom");
                 bp.SetDescription("The creature gains a +4 inherent bonus on saves against poison. This bonus increases to +6 at 8th level and +8 at 15th level." +
                     "\nWhile plant companions are already immune to posion, this inherent bonus can be shared with the hunter.");
-                bp.m_Icon = ??;
+                bp.m_Icon = Poison.Icon;
                 bp.m_Buff = PlantFocusMushroomBuff.ToReference<BlueprintBuffReference>();
                 bp.AddComponent<ActionPanelLogic>(c => {
                     c.Priority = 0;
@@ -1939,7 +1944,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var PlantFocusOak = Helpers.CreateBlueprint<BlueprintActivatableAbility>("PlantFocusOak", bp => {
                 bp.SetName("Plant Focus - Oak");
                 bp.SetDescription("The creature gains a +2 inherent bonus to {g|Encyclopedia:CMD}CMD{/g}. This bonus increases to +4 at 8th level and +6 at 15th level.");
-                bp.m_Icon = ??;
+                bp.m_Icon = ClaySkinIcon;
                 bp.m_Buff = PlantFocusOakBuff.ToReference<BlueprintBuffReference>();
                 bp.AddComponent<ActionPanelLogic>(c => {
                     c.Priority = 0;
@@ -1974,7 +1979,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.SetDescription("The creature gains a +4 competence {g|Encyclopedia:Bonus}bonus{/g} on {g|Encyclopedia:Perception}Perception checks{/g}, increasing to +6 at 8th level. " +
                     "At 15th level, the creature also gains blindsense with a range of 10 feet, making invisibility and {g|Encyclopedia:Concealment}concealment{/g} (even magical darkness) " +
                     "irrelevant to this creature.");
-                bp.m_Icon = ??;
+                bp.m_Icon = Tremorsense.Icon;
                 bp.m_Buff = PlantFocusShriekerBuff.ToReference<BlueprintBuffReference>();
                 bp.AddComponent<ActionPanelLogic>(c => {
                     c.Priority = 0;
@@ -2008,7 +2013,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.SetName("Plant Focus - Spore");
                 bp.SetDescription("The creature gains a +4 competence {g|Encyclopedia:Bonus}bonus{/g} on {g|Encyclopedia:Mobility}Mobility checks{/g}. " +
                     "This bonus increases to +6 at 8th level and +8 at 15th level.");
-                bp.m_Icon = ??;
+                bp.m_Icon = CheetahSprintIcon;
                 bp.m_Buff = PlantFocusSporeBuff.ToReference<BlueprintBuffReference>();
                 bp.AddComponent<ActionPanelLogic>(c => {
                     c.Priority = 0;
@@ -2396,7 +2401,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     "as the current plant companion focus. The hunter can use this ability for a number of minutes per day equal to her " +
                     "level. This duration does not need to be consecutive, but must be spent in 1-minute increments. For the purposes " +
                     "of features and abilities that interact with animal focus, plant focuses are animal focuses.");
-                bp.m_Icon = ??;
+                bp.m_Icon = HunterAnimalFocusForHimself.Icon;
                 bp.m_Buff = HunterPlantFocusForHimselfBuff.ToReference<BlueprintBuffReference>();
                 bp.AddComponent<ActivatableAbilityResourceLogic>(c => {
                     c.SpendType = ActivatableAbilityResourceLogic.ResourceSpendType.OncePerMinute;
@@ -2500,6 +2505,47 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.IsClassFeature = true;
             });
 
+
+            var PlantMasterPlantShieldFeaturePet = Helpers.CreateBlueprint<BlueprintFeature>("PlantMasterPlantShieldFeaturePet", bp => {
+                bp.SetName("Plant Shield");
+                bp.SetDescription("At 17th level, a plant master and their companion are able to pacify plant creatures. Both master and companion can exude an aura " +
+                    "of command over hostile plant ceatures within 30 feet, causing them to not move, attack, or use abilities until they are damaged. Once a creature " +
+                    "has been freed from this effect, they are immune for 24 hours.");
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        PlantMasterPlantShieldAbility.ToReference<BlueprintUnitFactReference>()
+                    };
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.m_Icon = CommandHaltAbility.Icon;
+                bp.HideInUI = false;
+                bp.HideInCharacterSheetAndLevelUp = false;
+                bp.HideNotAvailibleInUI = false;
+                bp.IsClassFeature = true;
+            });
+
+            var PlantMasterPlantShieldFeature = Helpers.CreateBlueprint<BlueprintFeature>("PlantMasterPlantShieldFeature", bp => {
+                bp.SetName("Plant Shield");
+                bp.SetDescription("At 17th level, a plant master and their companion are able to pacify plant creatures. Both master and companion can exude an aura " +
+                    "of command over hostile plant ceatures within 30 feet, causing them to not move, attack, or use abilities until they are damaged. Once a creature " +
+                    "has been freed from this effect, they are immune for 24 hours.");
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        PlantMasterPlantShieldAbility.ToReference<BlueprintUnitFactReference>()
+                    };
+                });
+                bp.AddComponent<AddFeatureToPet>(c => {
+                    c.m_PetType = PetType.AnimalCompanion;
+                    c.m_Feature = PlantMasterPlantShieldFeaturePet.ToReference<BlueprintUnitFactReference>();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.m_Icon = CommandHaltAbility.Icon;
+                bp.HideInUI = false;
+                bp.HideInCharacterSheetAndLevelUp = false;
+                bp.HideNotAvailibleInUI = false;
+                bp.IsClassFeature = true;
+            });
+
             PlantMasterArchetype.RemoveFeatures = new LevelEntry[] {
                     Helpers.LevelEntry(1, AnimalCompanionSelectionHunter, HunterAnimalFocusFeature),
                     Helpers.LevelEntry(17, HunterOneWithTheWildFeature)
@@ -2507,7 +2553,6 @@ namespace ExpandedContent.Tweaks.Archetypes {
             PlantMasterArchetype.AddFeatures = new LevelEntry[] {
                     Helpers.LevelEntry(1, PlantMasterCompanionSelection, PlantMasterPlantFocusFeature),
                     Helpers.LevelEntry(17, PlantMasterPlantShieldFeature)
-
             };
             if (ModSettings.AddedContent.Archetypes.IsDisabled("Plant Master")) { return; }
             HunterClass.m_Archetypes = HunterClass.m_Archetypes.AppendToArray(PlantMasterArchetype.ToReference<BlueprintArchetypeReference>());
