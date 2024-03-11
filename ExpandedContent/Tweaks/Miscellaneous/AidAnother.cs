@@ -61,6 +61,25 @@ namespace ExpandedContent.Tweaks.Miscellaneous {
                 bp.BaseValue = 2;
                 bp.OperationOnComponents = BlueprintUnitProperty.MathOperation.Multiply;
             });
+            //Golden Legionnarire
+            var GoldenLegionnarireImprovedAidFeature = Helpers.CreateBlueprint<BlueprintFeature>("GoldenLegionnarireImprovedAidFeature", bp => {
+                bp.SetName("Improved Aid");
+                bp.SetDescription("At 4th level, when a Golden Legionnaire successfully uses the aid another action in Combat, the bonus on the ally’s attack roll or to its " +
+                    "Armor Class increases by 1. At 9th level, the bonus increases by an additional 1.");
+                bp.IsClassFeature = true;
+                bp.m_AllowNonContextActions = false;
+            });
+            var GoldenLegionnarireImprovedAidProperty = Helpers.CreateBlueprint<BlueprintUnitProperty>("GoldenLegionnarireImprovedAidProperty", bp => {
+                //ClassLevelGetter added in mod support
+                bp.AddComponent<FactRankGetter>(c => {
+                    c.Settings = new PropertySettings() {
+                        m_Progression = PropertySettings.Progression.AsIs
+                    };
+                    c.m_Fact = GoldenLegionnarireImprovedAidFeature.ToReference<BlueprintUnitFactReference>();
+                });
+                bp.BaseValue = 1;
+                bp.OperationOnComponents = BlueprintUnitProperty.MathOperation.Multiply;
+            });
 
             var StackableBonusesProperty = Helpers.CreateBlueprint<BlueprintUnitProperty>("StackableBonusesProperty", bp => {
                 bp.AddComponent<CustomPropertyGetter>(c => {
@@ -74,6 +93,18 @@ namespace ExpandedContent.Tweaks.Miscellaneous {
                         m_Max = 5,
                     };
                     c.m_Property = CommunityBlessingMinorProperty.ToReference<BlueprintUnitPropertyReference>();
+                });
+                bp.AddComponent<CustomPropertyGetter>(c => {
+                    c.Settings = new PropertySettings() {
+                        m_Progression = PropertySettings.Progression.AsIs,
+                        m_StartLevel = 0,
+                        m_StepLevel = 0,
+                        m_Negate = false,
+                        m_LimitType = PropertySettings.LimitType.None,
+                        m_Min = 0,
+                        m_Max = 5,
+                    };
+                    c.m_Property = GoldenLegionnarireImprovedAidProperty.ToReference<BlueprintUnitPropertyReference>();
                 });
                 bp.BaseValue = 0;
                 bp.OperationOnComponents = BlueprintUnitProperty.MathOperation.Sum;
@@ -464,6 +495,10 @@ namespace ExpandedContent.Tweaks.Miscellaneous {
                                     new ContextConditionCasterHasFact() {
                                         Not = false,
                                         m_Fact = CommunityBlessingMinorBuff.ToReference<BlueprintUnitFactReference>()
+                                    },
+                                    new ContextConditionCasterHasFact() {
+                                        Not = false,
+                                        m_Fact = GoldenLegionnarireImprovedAidFeature.ToReference<BlueprintUnitFactReference>()
                                     }
                                 }
                             },
@@ -545,6 +580,10 @@ namespace ExpandedContent.Tweaks.Miscellaneous {
                                     new ContextConditionCasterHasFact() {
                                         Not = false,
                                         m_Fact = CommunityBlessingMinorBuff.ToReference<BlueprintUnitFactReference>()
+                                    },
+                                    new ContextConditionCasterHasFact() {
+                                        Not = false,
+                                        m_Fact = GoldenLegionnarireImprovedAidFeature.ToReference<BlueprintUnitFactReference>()
                                     }
                                 }
                             },
@@ -664,6 +703,10 @@ namespace ExpandedContent.Tweaks.Miscellaneous {
                                     new ContextConditionCasterHasFact() {
                                         Not = false,
                                         m_Fact = CommunityBlessingMinorBuff.ToReference<BlueprintUnitFactReference>()
+                                    },
+                                    new ContextConditionCasterHasFact() {
+                                        Not = false,
+                                        m_Fact = GoldenLegionnarireImprovedAidFeature.ToReference<BlueprintUnitFactReference>()
                                     }
                                 }
                             },
@@ -755,6 +798,10 @@ namespace ExpandedContent.Tweaks.Miscellaneous {
                                     new ContextConditionCasterHasFact() {
                                         Not = false,
                                         m_Fact = CommunityBlessingMinorBuff.ToReference<BlueprintUnitFactReference>()
+                                    },
+                                    new ContextConditionCasterHasFact() {
+                                        Not = false,
+                                        m_Fact = GoldenLegionnarireImprovedAidFeature.ToReference<BlueprintUnitFactReference>()
                                     }
                                 }
                             },

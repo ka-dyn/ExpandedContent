@@ -783,6 +783,25 @@ namespace ExpandedContent.Config {
                         c.m_Class = AsavirClass;
                     });
                     #endregion
+                    #region Golden Legionnaire
+                    var GoldenLegionnarireImprovedAidProperty = Resources.GetModBlueprint<BlueprintUnitProperty>("GoldenLegionnarireImprovedAidProperty");
+                    var GoldenLegionnarireImprovedAidFeature = Resources.GetModBlueprint<BlueprintFeature>("GoldenLegionnarireImprovedAidFeature");
+                    var GoldenLegionnaireClass = Resources.GetBlueprintReference<BlueprintCharacterClassReference>("8DFFB0E03A0E4FC7B1187CC1DC6B832F");
+                    var GoldenLegionnaireProgression = Resources.GetBlueprint<BlueprintProgression>("FC85D290971B41488F6FF747E9C70399");
+                    GoldenLegionnaireProgression.LevelEntries.Where(entry => entry.Level == 4).FirstOrDefault()?.m_Features.Add(GoldenLegionnarireImprovedAidFeature.ToReference<BlueprintFeatureBaseReference>());
+                    GoldenLegionnarireImprovedAidProperty.AddComponent<ClassLevelGetter>(c => {
+                        c.Settings = new PropertySettings() {
+                            m_Progression = PropertySettings.Progression.StartPlusDivStep,
+                            m_StartLevel = 4,
+                            m_StepLevel = 5,
+                            m_Negate = false,
+                            m_LimitType = PropertySettings.LimitType.Max,
+                            m_Min = 0,
+                            m_Max = 2,
+                        };
+                        c.m_Class = GoldenLegionnaireClass;
+                    });
+                    #endregion
                     #region Halfling Opportunist
                     var HalflingOpportunistExcellentAidFeature = Resources.GetModBlueprint<BlueprintFeature>("HalflingOpportunistExcellentAidFeature");
                     var HalflingOpportunistClass = Resources.GetBlueprintReference<BlueprintCharacterClassReference>("AEA57FFB36F043AB9BA6BFB3B0D9AFF9");
