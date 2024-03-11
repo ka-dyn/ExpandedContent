@@ -36,6 +36,8 @@ using Kingmaker.Enums.Damage;
 using Kingmaker.UnitLogic.Mechanics.Properties;
 using Kingmaker.Utility;
 using Kingmaker.UnitLogic.Buffs.Components;
+using Kingmaker.Craft;
+using Kingmaker.UnitLogic.Abilities.Components.Base;
 
 namespace ExpandedContent.Tweaks.Archetypes {
     internal class PlantMaster {
@@ -62,6 +64,8 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var AnimalFocusMonkeyBuff = Resources.GetBlueprint<BlueprintBuff>("036764a2ff5768f4babee534e3424e32");
             var HunterAnimalFocusForHimself = Resources.GetBlueprint<BlueprintActivatableAbility>("2b36d5d875eb6f041ab51bbb0365282c");
             var CommandHaltAbility = Resources.GetBlueprint<BlueprintAbility>("a43abe1819699894c94a7cec3ccd3765");
+            var DazzlingDisplayFX = Resources.GetBlueprint<BlueprintAbility>("5f3126d4120b2b244a95cb2ec23d69fb").GetComponent<AbilitySpawnFx>();
+            var PlantType = Resources.GetBlueprint<BlueprintFeature>("706e61781d692a042b35941f14bc41c5");
 
             var CompanionSaplingTreantFeature = Resources.GetModBlueprint<BlueprintFeature>("CompanionSaplingTreantFeature");
             var CompanionCrawlingMoundFeature = Resources.GetModBlueprint<BlueprintFeature>("CompanionCrawlingMoundFeature");
@@ -2506,6 +2510,136 @@ namespace ExpandedContent.Tweaks.Archetypes {
             });
 
 
+            var PlantMasterPlantShieldImmunityBuff = Helpers.CreateBuff("PlantMasterPlantShieldImmunityBuff", bp => {
+                bp.SetName("Plant Shield - Immune");
+                bp.SetDescription("This creature is immune to the effects of the plant shield ability.");
+                bp.m_Icon = CommandHaltAbility.Icon;
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = false;
+                bp.Stacking = StackingType.Ignore;
+            });
+            var PlantMasterPlantShieldHaltBuff = Helpers.CreateBuff("PlantMasterPlantShieldHaltBuff", bp => {
+                bp.SetName("Plant Shield - Halted");
+                bp.SetDescription("This creature may not move, attack, or use abilities until they are damaged. Once a creature has been freed from this " +
+                    "effect, they are immune for 24 hours.");
+                bp.m_Icon = CommandHaltAbility.Icon;
+                bp.AddComponent<AddCondition>(c => {
+                    c.Condition = Kingmaker.UnitLogic.UnitCondition.CantAct;
+                });
+                bp.AddComponent<AddIncomingDamageTrigger>(c => {
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionRemoveSelf(),
+                        new ContextActionApplyBuff() {
+                            m_Buff = PlantMasterPlantShieldImmunityBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Days,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 1,
+                                m_IsExtendable = true
+                            }
+                        }                        
+                        );
+                    c.TriggerOnStatDamageOrEnergyDrain = true;
+                    c.IgnoreDamageFromThisFact = false;
+                    c.ReduceBelowZero = false;
+                    c.CheckDamageDealt = false;
+                    c.CompareType = CompareOperation.Type.Equal;
+                    c.TargetValue = 0; //?
+                    c.CheckWeaponAttackType = false;
+                    c.AttackType = 0;
+                    c.CheckEnergyDamageType = false;
+                    c.EnergyType = Kingmaker.Enums.Damage.DamageEnergyType.Fire;
+                    c.CheckDamagePhysicalTypeNot = false;
+                    c.DamagePhysicalTypeNot = 0;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = false;
+                bp.m_Flags = BlueprintBuff.Flags.Harmful;
+                bp.Stacking = StackingType.Ignore;
+            });
+
+            var PlantMasterPlantShieldAbility = Helpers.CreateBlueprint<BlueprintAbility>("PlantMasterPlantShieldAbility", bp => {
+                bp.SetName("Plant Shield");
+                bp.SetDescription("Exude an aura of command over hostile plant ceatures within 30 feet, causing them to not move, " +
+                    "attack, or use abilities until they are damaged. Once a creature has been freed from this effect, they are immune for 24 hours.");
+                bp.m_Icon = CommandHaltAbility.Icon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new Conditional() {
+                            ConditionsChecker = new ConditionsChecker() {
+                                Operation = Operation.And,
+                                Conditions = new Condition[] {
+                                    new ContextConditionHasFact() {
+                                        Not = false,
+                                        m_Fact = PlantType.ToReference<BlueprintUnitFactReference>(),
+                                    },
+                                    new ContextConditionHasFact() {
+                                        Not = true,
+                                        m_Fact = PlantMasterPlantShieldImmunityBuff.ToReference<BlueprintUnitFactReference>(),
+                                    }
+                                }
+                            },
+                            IfTrue = Helpers.CreateActionList(
+                                new ContextActionApplyBuff() {
+                                    m_Buff = PlantMasterPlantShieldHaltBuff.ToReference<BlueprintBuffReference>(),
+                                    Permanent = true,
+                                    DurationValue = new ContextDurationValue() {
+                                        Rate = DurationRate.Rounds,
+                                        DiceType = DiceType.Zero,
+                                        DiceCountValue = new ContextValue(),
+                                        BonusValue = new ContextValue(),
+                                        m_IsExtendable = true
+                                    },
+                                    IsFromSpell = false,
+                                }
+                                ),
+                            IfFalse = Helpers.CreateActionList()
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityTargetsAround>(c => {
+                    c.m_Radius = 30.Feet();
+                    c.m_TargetType = TargetType.Enemy;
+                    c.m_IncludeDead = false;
+                    c.m_Condition = new ConditionsChecker();
+                    c.m_SpreadSpeed = 0.Feet();
+                });
+                bp.AddComponent<AbilitySpawnFx>(c => {
+                    c.PrefabLink = DazzlingDisplayFX.PrefabLink;
+                    c.Time = AbilitySpawnFxTime.OnApplyEffect;
+                    c.Anchor = AbilitySpawnFxAnchor.ClickedTarget;
+                    c.WeaponTarget = AbilitySpawnFxWeaponTarget.None;
+                    c.DestroyOnCast = false;
+                    c.Delay = 0;
+                    c.PositionAnchor = AbilitySpawnFxAnchor.None;
+                    c.OrientationAnchor = AbilitySpawnFxAnchor.None;
+                    c.OrientationMode = AbilitySpawnFxOrientation.Copy;
+                });
+                bp.AddComponent<CraftInfoComponent>(c => {
+                    c.SpellType = CraftSpellType.Other;
+                    c.SavingThrow = CraftSavingThrow.None;
+                    c.AOEType = CraftAOE.AOE;
+                });
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = true;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Standard;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+
+
             var PlantMasterPlantShieldFeaturePet = Helpers.CreateBlueprint<BlueprintFeature>("PlantMasterPlantShieldFeaturePet", bp => {
                 bp.SetName("Plant Shield");
                 bp.SetDescription("At 17th level, a plant master and their companion are able to pacify plant creatures. Both master and companion can exude an aura " +
@@ -2536,7 +2670,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 });
                 bp.AddComponent<AddFeatureToPet>(c => {
                     c.m_PetType = PetType.AnimalCompanion;
-                    c.m_Feature = PlantMasterPlantShieldFeaturePet.ToReference<BlueprintUnitFactReference>();
+                    c.m_Feature = PlantMasterPlantShieldFeaturePet.ToReference<BlueprintFeatureReference>();
                 });
                 bp.m_AllowNonContextActions = false;
                 bp.m_Icon = CommandHaltAbility.Icon;
