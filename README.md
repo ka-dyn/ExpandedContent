@@ -31,7 +31,7 @@ New Archetypes
 
 - Archer, Spear Fighter, Child of Acavna and Amaznen, Fighter
 
-- Skulking Hunter, Hunter
+- Plant Master, Skulking Hunter, Hunter
 
 - Divine Scourge, Cleric
 
