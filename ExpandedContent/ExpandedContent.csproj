@@ -152,8 +152,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityModManager">
-      <HintPath>$(WrathPath)\Wrath_Data\Managed\UnityModManager\UnityModManager.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>D:\Games\PathfinderModing\lib\UnityModManager.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -416,6 +415,7 @@
     <Compile Include="Tweaks\Miscellaneous\BugFixes.cs" />
     <Compile Include="Tweaks\Miscellaneous\DrakePetTypeAdder.cs" />
     <Compile Include="Tweaks\Miscellaneous\DemonHunter.cs" />
+    <Compile Include="Tweaks\Miscellaneous\MountPatches\WolverineMountPatch.cs" />
     <Compile Include="Tweaks\Miscellaneous\Pinpoint Targeting.cs" />
     <Compile Include="Tweaks\Miscellaneous\BullseyeShot.cs" />
     <Compile Include="Tweaks\Miscellaneous\OpeningVolley.cs" />
@@ -541,6 +541,7 @@
     <Compile Include="Utilities\ActionFlow.cs" />
     <Compile Include="Utilities\AuraUtils.cs" />
     <Compile Include="Utilities\BlessingTools.cs" />
+    <Compile Include="Utilities\MountTools.cs" />
     <Compile Include="Utilities\DeityTools.cs" />
     <Compile Include="Utilities\DynamicAsset.cs" />
     <Compile Include="Utilities\SpellWithDesriptorAdders.cs" />

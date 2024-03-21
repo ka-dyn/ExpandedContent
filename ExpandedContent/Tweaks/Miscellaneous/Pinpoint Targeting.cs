@@ -83,7 +83,14 @@ namespace ExpandedContent.Tweaks.Miscellaneous {
             var PinpointTargetingDisabledFlag = Helpers.CreateBuff("PinpointTargetingDisabledFlag", bp => {
                 bp.SetName("Pinpoint Targeting Disabled flag");
                 bp.SetDescription("");
-                bp.m_Icon = PinpointTargetingIcon;
+                bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
+                bp.Stacking = StackingType.Replace;
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+            var PinpointTargetingMovementDisabledFlag = Helpers.CreateBuff("PinpointTargetingMovementDisabledFlag", bp => {
+                bp.SetName("Pinpoint Targeting Movement Disabled flag");
+                bp.SetDescription("");
                 bp.AddComponent<AddCondition>(c => {
                     c.Condition = Kingmaker.UnitLogic.UnitCondition.CantMove;
                 });
@@ -161,6 +168,20 @@ namespace ExpandedContent.Tweaks.Miscellaneous {
                     c.Actions = Helpers.CreateActionList(
                         new ContextActionApplyBuff() {
                             m_Buff = PinpointTargetingBuff.ToReference<BlueprintBuffReference>(),
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                BonusValue = 1,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                m_IsExtendable = true
+                            },
+                            DurationSeconds = 0,
+                            IsNotDispelable = true,
+                            ToCaster = true
+                        },
+                        new ContextActionApplyBuff() {
+                            m_Buff = PinpointTargetingMovementDisabledFlag.ToReference<BlueprintBuffReference>(),
                             UseDurationSeconds = false,
                             DurationValue = new ContextDurationValue() {
                                 Rate = DurationRate.Rounds,

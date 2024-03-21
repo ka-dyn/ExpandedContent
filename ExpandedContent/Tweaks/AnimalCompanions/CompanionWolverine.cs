@@ -288,7 +288,7 @@ namespace ExpandedContent.Tweaks.AnimalCompanions {
                 bp.m_AddFacts = new BlueprintUnitFactReference[] {
                     CompanionUpdateWolverineFeature.ToReference<BlueprintUnitFactReference>(),
                     TripDefenceFourLegs.ToReference<BlueprintUnitFactReference>(),
-                    UnmountableFeature.ToReference<BlueprintUnitFactReference>(),
+                    //UnmountableFeature.ToReference<BlueprintUnitFactReference>(),
                     CompanionWolverineRageFeature.ToReference<BlueprintUnitFactReference>(),
                     AnimalCompanionSlotFeature.ToReference<BlueprintUnitFactReference>()
                 };
