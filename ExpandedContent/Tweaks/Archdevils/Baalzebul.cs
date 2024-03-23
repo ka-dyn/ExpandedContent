@@ -56,7 +56,7 @@ namespace ExpandedContent.Tweaks.Archdevils {
                     "revels in hollow victories, enviously eyeing the gifts of others as he seeks a birthright that was never his. As Asmodeus’s champion, he won his lord " +
                     "countless victories and, when the time came for Exodus, he led those who followed in the Prince of Darkness’s path. In Hell, he expected to rule at his " +
                     "creator’s side, but such was not to be. The creation of Mephistopheles and distribution of Hell’s rule among all the archfiends infuriated Baalzebul, who " +
-                    "had long awaited a far greater reward for his service. Forgetting himself, the Lord of That Which Flies railed a ainst his maker, demanding a realm far " +
+                    "had long awaited a far greater reward for his service. Forgetting himself, the Lord of That Which Flies railed against his maker, demanding a realm far " +
                     "greater than those who were created after him. Offended, Asmodeus stripped Baalzebul of his magnificent form, fusing him instead with millions of biting " +
                     "flies. Horrified but cowed, Baalzebul fled back to his newly granted realm of Cocytus, taking his throne as Lord of the Flies. Baalzebul rules Cocytus not " +
                     "as the realm it is but as the realm he believes it should be, his every gesture and edict surrounded by mock ceremony and magniloquence. As Baalzebul " +
