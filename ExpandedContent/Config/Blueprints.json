@@ -3263,7 +3263,9 @@
     "PlantMasterPlantShieldFeature": "ea4bb178-f63c-4e7a-a9c5-bd70f11cffd3",
     "PlantMasterPlantShieldFeaturePet": "7b5793bc-9fe8-45ce-8707-db939866bd1a",
     "PlantMasterPlantShieldHaltBuff": "32341e29-8ef1-4aee-8e1c-14c7e94b26db",
-    "PlantMasterPlantShieldImmunityBuff": "8acabade-c04a-4c2a-8720-f7e3bbb779df"
+    "PlantMasterPlantShieldImmunityBuff": "8acabade-c04a-4c2a-8720-f7e3bbb779df",
+
+    "PinpointTargetingMovementDisabledFlag": "1fdfe18f-8ba3-465c-aff3-4e148c5be8f7"
 
 
 

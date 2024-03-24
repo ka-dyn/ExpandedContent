@@ -304,8 +304,7 @@ namespace ExpandedContent.Tweaks.AnimalCompanions {
                     "\n{g|Encyclopedia:Attack}Attack{/g}: bite ({g|Encyclopedia:Dice}1d4{/g}), 2 claws ({g|Encyclopedia:Dice}1d3{/g})" +
                     "\n{g|Encyclopedia:Ability_Scores}Ability scores{/g}: {g|Encyclopedia:Strength}Str{/g} 10, {g|Encyclopedia:Dexterity}Dex{/g} 17, {g|Encyclopedia:Constitution}Con{/g} 15, {g|Encyclopedia:Intelligence}Int{/g} 2, {g|Encyclopedia:Wisdom}Wis{/g} 12, {g|Encyclopedia:Charisma}Cha{/g} 10" +
                     "\nSpecial Attacks: rage (as a barbarian for 6 rounds per day)" +
-                    "\nAt 4th level size becomes Medium, Str +4, Dex -2, Con +4, +2 natural armor." +
-                    "\nThis animal companion can't be used as a mount.");
+                    "\nAt 4th level size becomes Medium, Str +4, Dex -2, Con +4, +2 natural armor.");
                 bp.m_Icon = AnimalCompanionFeatureBear.m_Icon;
                 bp.AddComponent<AddPet>(c => {
                     c.Type = PetType.AnimalCompanion;

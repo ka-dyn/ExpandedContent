@@ -43,6 +43,5 @@ namespace ExpandedContent.Utilities {
             return target.transform;
         }
 
-
     }
 }
