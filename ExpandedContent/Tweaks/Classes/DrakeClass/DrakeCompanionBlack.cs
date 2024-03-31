@@ -44,8 +44,6 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
             var UmbralDragonBarks = Resources.GetBlueprint<BlueprintUnitAsksList>("a526fcf667234d4e8bb2ba5376a0f91a");
 
 
-            //var BlackLarge = AssetLoader.LoadInternal("Portraits", "BlackLarge.png");
-            //var BlackSmall = AssetLoader.LoadInternal("Portraits", "BlackSmall.png");
 
             var DrakeBlackPortrait = Helpers.CreateBlueprint<BlueprintPortrait>("DrakeBlackPortrait", bp => {
                 bp.Data = PortraitLoader.LoadPortraitData("Black");

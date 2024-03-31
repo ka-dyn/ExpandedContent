@@ -16,7 +16,7 @@ using UnityEngine;
 namespace ExpandedContent.Tweaks.Miscellaneous.MountPatches {
     
     [HarmonyPatch(typeof(OwlcatModificationsManager), nameof(OwlcatModificationsManager.OnResourceLoaded))]
-    public static class PatchResourcesOnLoad {
+    public static class PatchWolverineOnLoad {
 
         [HarmonyPrefix]
         public static void Prefix(object resource, string guid) {

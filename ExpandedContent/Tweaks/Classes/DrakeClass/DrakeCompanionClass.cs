@@ -249,13 +249,13 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 bp.HideNotAvailibleInUI = true;
                 bp.IsClassFeature = true;
             });
-            var MountTargetAbility = Resources.GetBlueprint<BlueprintAbility>("9f8c0f4fcabdb3145b449826d17da18d");
-            MountTargetAbility.AddComponent<AbilityTargetHasFact>(c => {
-                c.m_CheckedFacts = new BlueprintUnitFactReference[] {
-                    DrakeCompanionSlotFeature.ToReference<BlueprintUnitFactReference>()
-                };
-                c.Inverted = true;
-            });
+            //var MountTargetAbility = Resources.GetBlueprint<BlueprintAbility>("9f8c0f4fcabdb3145b449826d17da18d");
+            //MountTargetAbility.AddComponent<AbilityTargetHasFact>(c => {
+            //    c.m_CheckedFacts = new BlueprintUnitFactReference[] {
+            //        DrakeCompanionSlotFeature.ToReference<BlueprintUnitFactReference>()
+            //    };
+            //    c.Inverted = true;
+            //});
             var DrakeNaturalArmorFeature = Helpers.CreateBlueprint<BlueprintFeature>("DrakeNaturalArmor", bp => {
                 bp.SetName("Drake Natural Armor");
                 bp.SetDescription("The drake’s natural armor bonus to its AC increases by 2 when the charge reaches 3rd level and every 3 levels thereafter.");

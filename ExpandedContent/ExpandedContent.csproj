@@ -415,6 +415,15 @@
     <Compile Include="Tweaks\Miscellaneous\BugFixes.cs" />
     <Compile Include="Tweaks\Miscellaneous\DrakePetTypeAdder.cs" />
     <Compile Include="Tweaks\Miscellaneous\DemonHunter.cs" />
+    <Compile Include="Tweaks\Miscellaneous\MountPatches\SilverDragonMountPatch.cs" />
+    <Compile Include="Tweaks\Miscellaneous\MountPatches\CopperDragonMountPatch.cs" />
+    <Compile Include="Tweaks\Miscellaneous\MountPatches\BronzeDragonMountPatch.cs" />
+    <Compile Include="Tweaks\Miscellaneous\MountPatches\BrassDragonMountPatch.cs" />
+    <Compile Include="Tweaks\Miscellaneous\MountPatches\WhiteDragonMountPatch.cs" />
+    <Compile Include="Tweaks\Miscellaneous\MountPatches\RedDragonMountPatch .cs" />
+    <Compile Include="Tweaks\Miscellaneous\MountPatches\GreenDragonMountPatch.cs" />
+    <Compile Include="Tweaks\Miscellaneous\MountPatches\BlueDragonMountPatch.cs" />
+    <Compile Include="Tweaks\Miscellaneous\MountPatches\BlackDragonMountPatch.cs" />
     <Compile Include="Tweaks\Miscellaneous\MountPatches\WolverineMountPatch.cs" />
     <Compile Include="Tweaks\Miscellaneous\Pinpoint Targeting.cs" />
     <Compile Include="Tweaks\Miscellaneous\BullseyeShot.cs" />
