@@ -37,6 +37,8 @@ New Archetypes
 
 - Mindchemist, Alchemist
 
+- Cavalier, Drake Rider
+
 New Prestige Class
 
 - Stargazer
