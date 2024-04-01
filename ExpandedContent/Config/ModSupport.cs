@@ -327,7 +327,7 @@ namespace ExpandedContent.Config {
                     var PuluraFeatureAddFeatureOnClassLevel = Resources.GetBlueprint<BlueprintFeature>("ebb0b46f95dbac74681c78aae895dbd0").GetComponent<AddFeatureOnClassLevel>();
                     PuluraFeatureAddFeatureOnClassLevel.m_AdditionalClasses = PuluraFeatureAddFeatureOnClassLevel.m_AdditionalClasses.AppendToArray(RangerClass);
                     PuluraFeatureAddFeatureOnClassLevel.m_Archetypes = PuluraFeatureAddFeatureOnClassLevel.m_Archetypes.AppendToArray(DivineTrackerArchetype.ToReference<BlueprintArchetypeReference>());
-
+                                        
                 }
 
                 if (IsTabletopTweaksBaseEnabled()) {
@@ -759,6 +759,14 @@ namespace ExpandedContent.Config {
                         c.BeforeThisLevel = IroriFeatureAddFeatureOnClassLevel.BeforeThisLevel;
                     });
                     #endregion
+
+                    var ExpertTrainer = Resources.GetBlueprint<BlueprintFeature>("ae97a4eb750d499c837988f62a24e0de");
+                    var DrakeRiderArchetype = Resources.GetModBlueprint<BlueprintArchetype>("DrakeRiderArchetype");
+
+                    DrakeRiderArchetype.RemoveFeatures = DrakeRiderArchetype.RemoveFeatures.AppendToArray(new LevelEntry() { 
+                        Level = 4,
+                        m_Features =  new List<BlueprintFeatureBaseReference>() { ExpertTrainer.ToReference<BlueprintFeatureBaseReference>() }
+                    });
                     Main.Log("Finishing TTT-Base Compat Patch.");
                 }
 

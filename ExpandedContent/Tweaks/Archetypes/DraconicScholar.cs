@@ -76,8 +76,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             // Companion
             var ArcanistDrakeCompanionFeature = Helpers.CreateBlueprint<BlueprintFeatureSelection>("ArcanistDrakeCompanionFeature", bp => {
                 bp.SetName("Drake Companion");
-                bp.SetDescription("A draconic scholar gains a drake companion, the drake commpanion levels along with the draconic scholar as if they where a draconic druid of the same level." +
-                    "\nThis ability replaces spirit, spirit animal, and the hexes gained at 4th and 10th levels and alters spirit magic.");
+                bp.SetDescription("A draconic scholar gains a drake companion, the drake commpanion levels along with the draconic scholar as if they where a draconic druid of the same level.");
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = true;
                 bp.Group = FeatureGroup.None;
