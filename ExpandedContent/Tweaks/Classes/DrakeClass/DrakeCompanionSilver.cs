@@ -153,8 +153,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 bp.SetName("Drake Companion - Silver");
                 bp.SetDescription("Drakes are brutish lesser kindred of true dragons. Though they aren’t particularly intelligent, drakes’ significantly faster breeding allows their kind to survive in harsh environments. While a " +
                     "young drake is weaker than a standard animal companion, as they grow they will start to resemble their draconic cousins more and more until they rival them in power. " +
-                    "\nThis drake is descended from metallic silver dragons, giving it the cold subtype and granting it potential to wield ice breath attacks" +
-                    "\nDrake companions cannot be used as a mount.");
+                    "\nThis drake is descended from metallic silver dragons, giving it the cold subtype and granting it potential to wield ice breath attacks.");
                 bp.m_Icon = BloodlineDraconicSilverProgression.m_Icon;
                 bp.AddComponent<AddPet>(c => {
                     c.Type = PetType.AnimalCompanion;

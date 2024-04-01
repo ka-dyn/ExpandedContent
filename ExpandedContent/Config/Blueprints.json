@@ -3265,7 +3265,16 @@
     "PlantMasterPlantShieldHaltBuff": "32341e29-8ef1-4aee-8e1c-14c7e94b26db",
     "PlantMasterPlantShieldImmunityBuff": "8acabade-c04a-4c2a-8720-f7e3bbb779df",
 
-    "PinpointTargetingMovementDisabledFlag": "1fdfe18f-8ba3-465c-aff3-4e148c5be8f7"
+    "PinpointTargetingMovementDisabledFlag": "1fdfe18f-8ba3-465c-aff3-4e148c5be8f7",
+
+    "AmuletEarlyRider": "555d88c7-06b8-45d7-a04a-c3f34742e402",
+    "DrakeCompanionMountLock1Feature": "1145cc78-5f1b-4dfb-b553-dd1c8db87717",
+    "DrakeCompanionMountLock2Feature": "3b0e6c41-d32e-4750-be5c-e6dfbc9a1e69",
+    "DrakenMountFeature": "1e2c628c-2181-4557-a002-7ca3dff63d81",
+    "DrakeRiderArchetype": "02f874ba-90b3-4712-b20c-6e4c8a19257b",
+    "DrakeRiderBondFeature": "e7817c7d-813e-46a4-959f-35cfa5d1c53d",
+    "DrakeRiderMountTrainingFeature": "2f74db96-5930-42cd-b3d0-b5272fac8410",
+    "DrakeRiderShakeItOffFeature": "2509fa20-af2f-47ef-b7e0-690aede515f7"
 
 
 

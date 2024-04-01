@@ -277,7 +277,12 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
             var MountTargetAbility = Resources.GetBlueprint<BlueprintAbility>("9f8c0f4fcabdb3145b449826d17da18d");
             MountTargetAbility.AddComponent<AbilityTargetHasFact>(c => {
                 c.m_CheckedFacts = new BlueprintUnitFactReference[] {
-                    DrakeCompanionMountLock1Feature.ToReference<BlueprintUnitFactReference>(),
+                    DrakeCompanionMountLock1Feature.ToReference<BlueprintUnitFactReference>()
+                };
+                c.Inverted = true;
+            });
+            MountTargetAbility.AddComponent<AbilityTargetHasFact>(c => {
+                c.m_CheckedFacts = new BlueprintUnitFactReference[] {
                     DrakeCompanionMountLock2Feature.ToReference<BlueprintUnitFactReference>()
                 };
                 c.Inverted = true;

@@ -37,20 +37,17 @@ namespace ExpandedContent.Tweaks.Archetypes {
 
             var DrakeRiderArchetype = Helpers.CreateBlueprint<BlueprintArchetype>("DrakeRiderArchetype", bp => {
                 bp.LocalizedName = Helpers.CreateString($"DrakeRiderArchetype.Name", "Drake Rider");
-                bp.LocalizedDescription = Helpers.CreateString($"DrakeRiderArchetype.Description", "While many cavaliers dream of riding a dragon into battle, drakeriders come to " +
-                    "learn that the reality involves far more effort than they had expected. Unlike other cavaliers, drakeriders must train their mounts from hatchlings, fighting " +
-                    "and toiling alongside their drakes through countless struggles before the proud dragons are willing to accept them as riders. Some are envious of the close " +
-                    "connection between dragonriders and dragons, and so attempt to emulate this relationship by raising drake hatchlings. These efforts aren’t always successful, " +
-                    "sometimes leaving the would-be drakeriders dead or maimed.");
-                bp.LocalizedDescriptionShort = Helpers.CreateString($"DrakeRiderArchetype.Description", "While many cavaliers dream of riding a dragon into battle, drakeriders come " +
-                    "to learn that the reality involves far more effort than they had expected. Unlike other cavaliers, drakeriders must train their mounts from hatchlings, fighting " +
-                    "and toiling alongside their drakes through countless struggles before the proud dragons are willing to accept them as riders. Some are envious of the close " +
-                    "connection between dragonriders and dragons, and so attempt to emulate this relationship by raising drake hatchlings. These efforts aren’t always successful, " +
-                    "sometimes leaving the would-be drakeriders dead or maimed.");
+                bp.LocalizedDescription = Helpers.CreateString($"DrakeRiderArchetype.Description", "While many cavaliers dream of riding a dragon into battle, drake riders come to " +
+                    "learn that the reality involves far more effort than they had expected. Unlike other cavaliers, drake riders must train their mounts from hatchlings, fighting " +
+                    "and toiling alongside their drakes through countless struggles before the proud dragons are willing to accept them as riders.");
+                bp.LocalizedDescriptionShort = Helpers.CreateString($"DrakeRiderArchetype.Description", "While many cavaliers dream of riding a dragon into battle, drake riders come " +
+                    "to learn that the reality involves far more effort than they had expected. Unlike other cavaliers, drake riders must train their mounts from hatchlings, fighting " +
+                    "and toiling alongside their drakes through countless struggles before the proud dragons are willing to accept them as riders.");
             });
             var DrakeRiderBondFeature = Helpers.CreateBlueprint<BlueprintFeatureSelection>("DrakeRiderBondFeature", bp => {
-                bp.SetName("Clutch Thieves Bond");
-                bp.SetDescription("At 4th level, the clutch thieves drake companion is finally strong enough to help as a animal companion, but his drake’s level is equal to his rogue level – 3.");
+                bp.SetName("Drake Selection");
+                bp.SetDescription("Instead of an animal companion, the drake rider receives a drake companion to train into a suitable mount. \nThe drake riders levels are treated as " +
+                    "druid levels for determining the level and abilities of the drake companion.");
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = true;
                 bp.Group = FeatureGroup.None;
@@ -88,7 +85,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             });
             var DrakenMountFeature = Resources.GetModBlueprint<BlueprintFeature>("DrakenMountFeature");
             var DrakeRiderMountTrainingFeature = Helpers.CreateBlueprint<BlueprintFeature>("DrakeRiderMountTrainingFeature", bp => {
-                bp.SetName("Shared Back to Back Feat");
+                bp.SetName("Completed Training");
                 bp.SetDescription("By level 7 the drake rider successfully completes their drakes mount training, allowing them to be riden as soon as they reach medium size.");
                 bp.IsClassFeature = true;
                 bp.AddComponent<AddFeatureToPet>(c => {

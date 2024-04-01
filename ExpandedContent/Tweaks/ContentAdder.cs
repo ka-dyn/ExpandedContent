@@ -402,6 +402,9 @@ namespace ExpandedContent.Tweaks {
                 Deities.DeitySelectionFeature.OrcPantheonToggle();
                 Deities.DeitySelectionFeature.InnerSeaDeitiesregionToggle();
                 Deities.DeitySelectionFeature.FourHorsemenToggle();
+
+                Items.AmuletEarlyRider.AddAmuletEarlyRider();
+
             }
             [HarmonyPriority(Priority.Last)]
             [HarmonyPostfix]

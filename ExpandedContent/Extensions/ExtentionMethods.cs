@@ -22,6 +22,7 @@ using static Kingmaker.Blueprints.Classes.Prerequisites.Prerequisite;
 using static ExpandedContent.Utilities.Helpers;
 using Kingmaker.Blueprints.Items.Ecnchantments;
 using Kingmaker.Blueprints.Items.Equipment;
+using Kingmaker.Blueprints.Items;
 
 namespace ExpandedContent.Extensions {
     static class ExtentionMethods {
@@ -433,6 +434,15 @@ namespace ExpandedContent.Extensions {
             Item.m_DescriptionText = Helpers.CreateString(Item.Description + "Description", description);
         }
         public static void SetFlavorText(this BlueprintItemEquipmentUsable Item, string description) {
+            Item.m_FlavorText = Helpers.CreateString(Item.FlavorText + "FlavorText", description);
+        }
+        public static void SetName(this BlueprintItem Item, string name) {
+            Item.m_DisplayNameText = Helpers.CreateString(Item.name + ".Name", name);
+        }
+        public static void SetDescription(this BlueprintItem Item, string description) {
+            Item.m_DescriptionText = Helpers.CreateString(Item.Description + "Description", description);
+        }
+        public static void SetFlavorText(this BlueprintItem Item, string description) {
             Item.m_FlavorText = Helpers.CreateString(Item.FlavorText + "FlavorText", description);
         }
         public static void SetLocalisedName(this BlueprintUnit Unit, string name) {

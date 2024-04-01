@@ -410,6 +410,7 @@
     <Compile Include="Tweaks\FourHorsemen\Charon.cs" />
     <Compile Include="Tweaks\FourHorsemen\Szuriel.cs" />
     <Compile Include="Tweaks\FourHorsemen\Trelmarixian.cs" />
+    <Compile Include="Tweaks\Items\AmuletEarlyRider.cs" />
     <Compile Include="Tweaks\Miscellaneous\AlchemistDiscoveries\PheromonesDiscovery.cs" />
     <Compile Include="Tweaks\Miscellaneous\AlchemistDiscoveries\HealingTouchDiscovery.cs" />
     <Compile Include="Tweaks\Miscellaneous\AlchemistDiscoveries\MindchemistSkillDiscovery.cs" />
