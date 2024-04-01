@@ -53,7 +53,7 @@ New Classes
 
 New Features
 
-- Drake Companions - Limited to certain archetypes. Reworked from tabletop to work in a CRPG setting.
+- Drake Companions - Limited to certain archetypes. Reworked from tabletop to work in a CRPG setting. (Rideable)
 
 - Plant Companions - Limited to certain archetypes.
 
