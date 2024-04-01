@@ -180,6 +180,7 @@
     <Compile Include="Tweaks\Archdevils\Mammon.cs" />
     <Compile Include="Tweaks\Archdevils\Mephistopheles.cs" />
     <Compile Include="Tweaks\Archdevils\Moloch.cs" />
+    <Compile Include="Tweaks\Archetypes\DrakeRider.cs" />
     <Compile Include="Tweaks\Archetypes\DivineScourge.cs" />
     <Compile Include="Tweaks\Archetypes\Mindchemist.cs" />
     <Compile Include="Tweaks\Archetypes\ChildOfAcavnaAndAmaznen.cs" />
@@ -236,6 +237,7 @@
     <Compile Include="Tweaks\Classes\DrakeClass\DrakeCompanionSelection.cs" />
     <Compile Include="Tweaks\Classes\Oathbreaker.cs" />
     <Compile Include="Tweaks\Classes\DreadKnight.cs" />
+    <Compile Include="Tweaks\Components\ContextConditionIsPetOwner.cs" />
     <Compile Include="Tweaks\Components\IgnoreDamageReductionOnAttackRangeType.cs" />
     <Compile Include="Tweaks\Components\CheckWeaponEnchant.cs" />
     <Compile Include="Tweaks\Components\AbilityCasterOffHandWeaponCheck.cs" />

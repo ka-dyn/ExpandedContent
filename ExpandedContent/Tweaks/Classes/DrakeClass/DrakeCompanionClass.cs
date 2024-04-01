@@ -1,4 +1,5 @@
 ﻿using ExpandedContent.Extensions;
+using ExpandedContent.Tweaks.Components;
 using ExpandedContent.Utilities;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
@@ -47,8 +48,10 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
             var RogueClass = Resources.GetBlueprint<BlueprintCharacterClass>("299aa766dee3cbf4790da4efb8c72484");
             var ShamanClass = Resources.GetBlueprint<BlueprintCharacterClass>("145f1d3d360a7ad48bd95d392c81b38e");
             var ArcanistClass = Resources.GetBlueprint<BlueprintCharacterClass>("52dbfd8505e22f84fad8d702611f60b7");
+            var CavalierClass = Resources.GetBlueprint<BlueprintCharacterClass>("3adc3439f98cb534ba98df59838f02c7");
             var AnimalCompanionRank = Resources.GetBlueprint<BlueprintFeature>("1670990255e4fe948a863bafd5dbda5d");
             var NegativeEnergyAffinity = Resources.GetBlueprint<BlueprintFeature>("d5ee498e19722854198439629c1841a5");
+            var MountedBuff = Resources.GetBlueprintReference<BlueprintBuffReference>("b2d13e8f3bb0f1d4c891d71b4d983cf7");
             #region Main Drake
             var DrakeCompanionProgression = Helpers.CreateBlueprint<BlueprintProgression>("DrakeCompanionProgression", bp => {
                 bp.m_AllowNonContextActions = false;
@@ -78,6 +81,10 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                     },
                     new BlueprintProgression.ClassWithLevel {
                         m_Class = ArcanistClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    },
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = CavalierClass.ToReference<BlueprintCharacterClassReference>(),
                         AdditionalLevel = 0
                     }
                 };
@@ -249,19 +256,39 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 bp.HideNotAvailibleInUI = true;
                 bp.IsClassFeature = true;
             });
-            //var MountTargetAbility = Resources.GetBlueprint<BlueprintAbility>("9f8c0f4fcabdb3145b449826d17da18d");
-            //MountTargetAbility.AddComponent<AbilityTargetHasFact>(c => {
-            //    c.m_CheckedFacts = new BlueprintUnitFactReference[] {
-            //        DrakeCompanionSlotFeature.ToReference<BlueprintUnitFactReference>()
-            //    };
-            //    c.Inverted = true;
-            //});
+            var DrakeCompanionMountLock1Feature = Helpers.CreateBlueprint<BlueprintFeature>("DrakeCompanionMountLock1Feature", bp => {
+                bp.SetName("Feature not available");
+                //Removed by Drake Power
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.HideNotAvailibleInUI = true;
+                bp.IsClassFeature = true;
+            });
+            var DrakeCompanionMountLock2Feature = Helpers.CreateBlueprint<BlueprintFeature>("DrakeCompanionMountLock2Feature", bp => {
+                bp.SetName("Feature not available");
+                //Removed by Medium Size upgrade
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.HideNotAvailibleInUI = true;
+                bp.IsClassFeature = true;
+            });
+            var MountTargetAbility = Resources.GetBlueprint<BlueprintAbility>("9f8c0f4fcabdb3145b449826d17da18d");
+            MountTargetAbility.AddComponent<AbilityTargetHasFact>(c => {
+                c.m_CheckedFacts = new BlueprintUnitFactReference[] {
+                    DrakeCompanionMountLock1Feature.ToReference<BlueprintUnitFactReference>(),
+                    DrakeCompanionMountLock2Feature.ToReference<BlueprintUnitFactReference>()
+                };
+                c.Inverted = true;
+            });
             var DrakeNaturalArmorFeature = Helpers.CreateBlueprint<BlueprintFeature>("DrakeNaturalArmor", bp => {
                 bp.SetName("Drake Natural Armor");
                 bp.SetDescription("The drake’s natural armor bonus to its AC increases by 2 when the charge reaches 3rd level and every 3 levels thereafter.");
             });
             #endregion
             #region Drake Powers
+            #region Breath Attacks
             var DrakeBreathCooldown = Helpers.CreateBuff("DrakeBreathCooldown", bp => {
                 bp.m_AllowNonContextActions = false;
                 bp.SetName("Breath Weapon - Ability is not ready yet");
@@ -314,67 +341,81 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.SavingThrowType = SavingThrowType.Reflex;
                     c.Actions = Helpers.CreateActionList(
-                        new ContextActionDealDamage() {
-                            m_Type = ContextActionDealDamage.Type.Damage,
-                            DamageType = new DamageTypeDescription() {
-                                Type = DamageType.Energy,
-                                Common = new DamageTypeDescription.CommomData() {
-                                    Reality = 0,
-                                    Alignment = 0,
-                                    Precision = false
-                                },
-                                Physical = new DamageTypeDescription.PhysicalData() {
-                                    Material = 0,
-                                    Form = 0,
-                                    Enhancement = 0,
-                                    EnhancementTotal = 0
-                                },
-                                Energy = DamageEnergyType.Fire
+                        new Conditional() {
+                            ConditionsChecker = new ConditionsChecker() {
+                                Operation = Operation.And,
+                                Conditions = new Condition[] {
+                                    new ContextConditionIsPetOwner(),
+                                    new ContextConditionHasBuff() {
+                                        m_Buff = MountedBuff
+                                    }
+                                }
                             },
-                            AbilityType = StatType.Unknown,
-                            EnergyDrainType = EnergyDrainType.Temporary,
-                            Duration = new ContextDurationValue() {
-                                Rate = DurationRate.Rounds,
-                                DiceType = DiceType.Zero,
-                                DiceCountValue = new ContextValue() {
-                                    ValueType = ContextValueType.Simple,
-                                    Value = 0,
-                                    ValueRank = AbilityRankType.Default,
-                                    ValueShared = AbilitySharedValue.Damage,
-                                    Property = UnitProperty.None
-                                },
-                                BonusValue = new ContextValue() {
-                                    ValueType = ContextValueType.Simple,
-                                    Value = 0,
-                                    ValueRank = AbilityRankType.Default,
-                                    ValueShared = AbilitySharedValue.Damage,
-                                    Property = UnitProperty.None
-                                },
-                                m_IsExtendable = true,
-                            },
-                            PreRolledSharedValue = AbilitySharedValue.Damage,
-                            Value = new ContextDiceValue() {
-                                DiceType = DiceType.D6,
-                                DiceCountValue = new ContextValue() {
-                                    ValueType = ContextValueType.Simple,
-                                    Value = 4,
-                                    ValueRank = AbilityRankType.Default,
-                                    ValueShared = AbilitySharedValue.Damage,
-                                    Property = UnitProperty.None
-                                },
-                                BonusValue = new ContextValue() {
-                                    ValueType = ContextValueType.Simple,
-                                    Value = 0,
-                                    ValueRank = AbilityRankType.Default,
-                                    ValueShared = AbilitySharedValue.Damage,
-                                    Property = UnitProperty.None
-                                },                                
-                            },
-                            IsAoE = true,
-                            HalfIfSaved = true,
-                            ResultSharedValue = AbilitySharedValue.Damage,
-                            CriticalSharedValue = AbilitySharedValue.Damage
-                        },
+                            IfTrue = Helpers.CreateActionList(),
+                            IfFalse = Helpers.CreateActionList(
+                                new ContextActionDealDamage() {
+                                    m_Type = ContextActionDealDamage.Type.Damage,
+                                    DamageType = new DamageTypeDescription() {
+                                        Type = DamageType.Energy,
+                                        Common = new DamageTypeDescription.CommomData() {
+                                            Reality = 0,
+                                            Alignment = 0,
+                                            Precision = false
+                                        },
+                                        Physical = new DamageTypeDescription.PhysicalData() {
+                                            Material = 0,
+                                            Form = 0,
+                                            Enhancement = 0,
+                                            EnhancementTotal = 0
+                                        },
+                                        Energy = DamageEnergyType.Fire
+                                    },
+                                    AbilityType = StatType.Unknown,
+                                    EnergyDrainType = EnergyDrainType.Temporary,
+                                    Duration = new ContextDurationValue() {
+                                        Rate = DurationRate.Rounds,
+                                        DiceType = DiceType.Zero,
+                                        DiceCountValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                        BonusValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                        m_IsExtendable = true,
+                                    },
+                                    PreRolledSharedValue = AbilitySharedValue.Damage,
+                                    Value = new ContextDiceValue() {
+                                        DiceType = DiceType.D6,
+                                        DiceCountValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 4,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                        BonusValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                    },
+                                    IsAoE = true,
+                                    HalfIfSaved = true,
+                                    ResultSharedValue = AbilitySharedValue.Damage,
+                                    CriticalSharedValue = AbilitySharedValue.Damage
+                                }
+                                )
+                        },                        
                         new ContextActionOnContextCaster() {
                             Actions = Helpers.CreateActionList(
                                 new ContextActionApplyBuff() {
@@ -466,67 +507,81 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.SavingThrowType = SavingThrowType.Reflex;
                     c.Actions = Helpers.CreateActionList(
-                        new ContextActionDealDamage() {
-                            m_Type = ContextActionDealDamage.Type.Damage,
-                            DamageType = new DamageTypeDescription() {
-                                Type = DamageType.Energy,
-                                Common = new DamageTypeDescription.CommomData() {
-                                    Reality = 0,
-                                    Alignment = 0,
-                                    Precision = false
-                                },
-                                Physical = new DamageTypeDescription.PhysicalData() {
-                                    Material = 0,
-                                    Form = 0,
-                                    Enhancement = 0,
-                                    EnhancementTotal = 0
-                                },
-                                Energy = DamageEnergyType.Cold
+                        new Conditional() {
+                            ConditionsChecker = new ConditionsChecker() {
+                                Operation = Operation.And,
+                                Conditions = new Condition[] {
+                                    new ContextConditionIsPetOwner(),
+                                    new ContextConditionHasBuff() {
+                                        m_Buff = MountedBuff
+                                    }
+                                }
                             },
-                            AbilityType = StatType.Unknown,
-                            EnergyDrainType = EnergyDrainType.Temporary,
-                            Duration = new ContextDurationValue() {
-                                Rate = DurationRate.Rounds,
-                                DiceType = DiceType.Zero,
-                                DiceCountValue = new ContextValue() {
-                                    ValueType = ContextValueType.Simple,
-                                    Value = 0,
-                                    ValueRank = AbilityRankType.Default,
-                                    ValueShared = AbilitySharedValue.Damage,
-                                    Property = UnitProperty.None
-                                },
-                                BonusValue = new ContextValue() {
-                                    ValueType = ContextValueType.Simple,
-                                    Value = 0,
-                                    ValueRank = AbilityRankType.Default,
-                                    ValueShared = AbilitySharedValue.Damage,
-                                    Property = UnitProperty.None
-                                },
-                                m_IsExtendable = true,
-                            },
-                            PreRolledSharedValue = AbilitySharedValue.Damage,
-                            Value = new ContextDiceValue() {
-                                DiceType = DiceType.D6,
-                                DiceCountValue = new ContextValue() {
-                                    ValueType = ContextValueType.Simple,
-                                    Value = 4,
-                                    ValueRank = AbilityRankType.Default,
-                                    ValueShared = AbilitySharedValue.Damage,
-                                    Property = UnitProperty.None
-                                },
-                                BonusValue = new ContextValue() {
-                                    ValueType = ContextValueType.Simple,
-                                    Value = 0,
-                                    ValueRank = AbilityRankType.Default,
-                                    ValueShared = AbilitySharedValue.Damage,
-                                    Property = UnitProperty.None
-                                },
-                            },
-                            IsAoE = true,
-                            HalfIfSaved = true,
-                            ResultSharedValue = AbilitySharedValue.Damage,
-                            CriticalSharedValue = AbilitySharedValue.Damage
-                        },
+                            IfTrue = Helpers.CreateActionList(),
+                            IfFalse = Helpers.CreateActionList(
+                                new ContextActionDealDamage() {
+                                    m_Type = ContextActionDealDamage.Type.Damage,
+                                    DamageType = new DamageTypeDescription() {
+                                        Type = DamageType.Energy,
+                                        Common = new DamageTypeDescription.CommomData() {
+                                            Reality = 0,
+                                            Alignment = 0,
+                                            Precision = false
+                                        },
+                                        Physical = new DamageTypeDescription.PhysicalData() {
+                                            Material = 0,
+                                            Form = 0,
+                                            Enhancement = 0,
+                                            EnhancementTotal = 0
+                                        },
+                                        Energy = DamageEnergyType.Cold
+                                    },
+                                    AbilityType = StatType.Unknown,
+                                    EnergyDrainType = EnergyDrainType.Temporary,
+                                    Duration = new ContextDurationValue() {
+                                        Rate = DurationRate.Rounds,
+                                        DiceType = DiceType.Zero,
+                                        DiceCountValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                        BonusValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                        m_IsExtendable = true,
+                                    },
+                                    PreRolledSharedValue = AbilitySharedValue.Damage,
+                                    Value = new ContextDiceValue() {
+                                        DiceType = DiceType.D6,
+                                        DiceCountValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 4,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                        BonusValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                    },
+                                    IsAoE = true,
+                                    HalfIfSaved = true,
+                                    ResultSharedValue = AbilitySharedValue.Damage,
+                                    CriticalSharedValue = AbilitySharedValue.Damage
+                                }
+                                )
+                        },                        
                         new ContextActionOnContextCaster() {
                             Actions = Helpers.CreateActionList(
                                 new ContextActionApplyBuff() {
@@ -618,67 +673,81 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.SavingThrowType = SavingThrowType.Reflex;
                     c.Actions = Helpers.CreateActionList(
-                        new ContextActionDealDamage() {
-                            m_Type = ContextActionDealDamage.Type.Damage,
-                            DamageType = new DamageTypeDescription() {
-                                Type = DamageType.Energy,
-                                Common = new DamageTypeDescription.CommomData() {
-                                    Reality = 0,
-                                    Alignment = 0,
-                                    Precision = false
-                                },
-                                Physical = new DamageTypeDescription.PhysicalData() {
-                                    Material = 0,
-                                    Form = 0,
-                                    Enhancement = 0,
-                                    EnhancementTotal = 0
-                                },
-                                Energy = DamageEnergyType.Electricity
+                        new Conditional() {
+                            ConditionsChecker = new ConditionsChecker() {
+                                Operation = Operation.And,
+                                Conditions = new Condition[] {
+                                    new ContextConditionIsPetOwner(),
+                                    new ContextConditionHasBuff() {
+                                        m_Buff = MountedBuff
+                                    }
+                                }
                             },
-                            AbilityType = StatType.Unknown,
-                            EnergyDrainType = EnergyDrainType.Temporary,
-                            Duration = new ContextDurationValue() {
-                                Rate = DurationRate.Rounds,
-                                DiceType = DiceType.Zero,
-                                DiceCountValue = new ContextValue() {
-                                    ValueType = ContextValueType.Simple,
-                                    Value = 0,
-                                    ValueRank = AbilityRankType.Default,
-                                    ValueShared = AbilitySharedValue.Damage,
-                                    Property = UnitProperty.None
-                                },
-                                BonusValue = new ContextValue() {
-                                    ValueType = ContextValueType.Simple,
-                                    Value = 0,
-                                    ValueRank = AbilityRankType.Default,
-                                    ValueShared = AbilitySharedValue.Damage,
-                                    Property = UnitProperty.None
-                                },
-                                m_IsExtendable = true,
-                            },
-                            PreRolledSharedValue = AbilitySharedValue.Damage,
-                            Value = new ContextDiceValue() {
-                                DiceType = DiceType.D6,
-                                DiceCountValue = new ContextValue() {
-                                    ValueType = ContextValueType.Simple,
-                                    Value = 4,
-                                    ValueRank = AbilityRankType.Default,
-                                    ValueShared = AbilitySharedValue.Damage,
-                                    Property = UnitProperty.None
-                                },
-                                BonusValue = new ContextValue() {
-                                    ValueType = ContextValueType.Simple,
-                                    Value = 0,
-                                    ValueRank = AbilityRankType.Default,
-                                    ValueShared = AbilitySharedValue.Damage,
-                                    Property = UnitProperty.None
-                                },
-                            },
-                            IsAoE = true,
-                            HalfIfSaved = true,
-                            ResultSharedValue = AbilitySharedValue.Damage,
-                            CriticalSharedValue = AbilitySharedValue.Damage
-                        },
+                            IfTrue = Helpers.CreateActionList(),
+                            IfFalse = Helpers.CreateActionList(
+                                new ContextActionDealDamage() {
+                                    m_Type = ContextActionDealDamage.Type.Damage,
+                                    DamageType = new DamageTypeDescription() {
+                                        Type = DamageType.Energy,
+                                        Common = new DamageTypeDescription.CommomData() {
+                                            Reality = 0,
+                                            Alignment = 0,
+                                            Precision = false
+                                        },
+                                        Physical = new DamageTypeDescription.PhysicalData() {
+                                            Material = 0,
+                                            Form = 0,
+                                            Enhancement = 0,
+                                            EnhancementTotal = 0
+                                        },
+                                        Energy = DamageEnergyType.Electricity
+                                    },
+                                    AbilityType = StatType.Unknown,
+                                    EnergyDrainType = EnergyDrainType.Temporary,
+                                    Duration = new ContextDurationValue() {
+                                        Rate = DurationRate.Rounds,
+                                        DiceType = DiceType.Zero,
+                                        DiceCountValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                        BonusValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                        m_IsExtendable = true,
+                                    },
+                                    PreRolledSharedValue = AbilitySharedValue.Damage,
+                                    Value = new ContextDiceValue() {
+                                        DiceType = DiceType.D6,
+                                        DiceCountValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 4,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                        BonusValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                    },
+                                    IsAoE = true,
+                                    HalfIfSaved = true,
+                                    ResultSharedValue = AbilitySharedValue.Damage,
+                                    CriticalSharedValue = AbilitySharedValue.Damage
+                                    }
+                                    )
+                        },                        
                         new ContextActionOnContextCaster() {
                             Actions = Helpers.CreateActionList(
                                 new ContextActionApplyBuff() {
@@ -770,67 +839,81 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.SavingThrowType = SavingThrowType.Reflex;
                     c.Actions = Helpers.CreateActionList(
-                        new ContextActionDealDamage() {
-                            m_Type = ContextActionDealDamage.Type.Damage,
-                            DamageType = new DamageTypeDescription() {
-                                Type = DamageType.Energy,
-                                Common = new DamageTypeDescription.CommomData() {
-                                    Reality = 0,
-                                    Alignment = 0,
-                                    Precision = false
-                                },
-                                Physical = new DamageTypeDescription.PhysicalData() {
-                                    Material = 0,
-                                    Form = 0,
-                                    Enhancement = 0,
-                                    EnhancementTotal = 0
-                                },
-                                Energy = DamageEnergyType.Acid
+                        new Conditional() {
+                            ConditionsChecker = new ConditionsChecker() {
+                                Operation = Operation.And,
+                                Conditions = new Condition[] {
+                                    new ContextConditionIsPetOwner(),
+                                    new ContextConditionHasBuff() {
+                                        m_Buff = MountedBuff
+                                    }
+                                }
                             },
-                            AbilityType = StatType.Unknown,
-                            EnergyDrainType = EnergyDrainType.Temporary,
-                            Duration = new ContextDurationValue() {
-                                Rate = DurationRate.Rounds,
-                                DiceType = DiceType.Zero,
-                                DiceCountValue = new ContextValue() {
-                                    ValueType = ContextValueType.Simple,
-                                    Value = 0,
-                                    ValueRank = AbilityRankType.Default,
-                                    ValueShared = AbilitySharedValue.Damage,
-                                    Property = UnitProperty.None
-                                },
-                                BonusValue = new ContextValue() {
-                                    ValueType = ContextValueType.Simple,
-                                    Value = 0,
-                                    ValueRank = AbilityRankType.Default,
-                                    ValueShared = AbilitySharedValue.Damage,
-                                    Property = UnitProperty.None
-                                },
-                                m_IsExtendable = true,
-                            },
-                            PreRolledSharedValue = AbilitySharedValue.Damage,
-                            Value = new ContextDiceValue() {
-                                DiceType = DiceType.D6,
-                                DiceCountValue = new ContextValue() {
-                                    ValueType = ContextValueType.Simple,
-                                    Value = 4,
-                                    ValueRank = AbilityRankType.Default,
-                                    ValueShared = AbilitySharedValue.Damage,
-                                    Property = UnitProperty.None
-                                },
-                                BonusValue = new ContextValue() {
-                                    ValueType = ContextValueType.Simple,
-                                    Value = 0,
-                                    ValueRank = AbilityRankType.Default,
-                                    ValueShared = AbilitySharedValue.Damage,
-                                    Property = UnitProperty.None
-                                },
-                            },
-                            IsAoE = true,
-                            HalfIfSaved = true,
-                            ResultSharedValue = AbilitySharedValue.Damage,
-                            CriticalSharedValue = AbilitySharedValue.Damage
-                        },
+                            IfTrue = Helpers.CreateActionList(),
+                            IfFalse = Helpers.CreateActionList(
+                                new ContextActionDealDamage() {
+                                    m_Type = ContextActionDealDamage.Type.Damage,
+                                    DamageType = new DamageTypeDescription() {
+                                        Type = DamageType.Energy,
+                                        Common = new DamageTypeDescription.CommomData() {
+                                            Reality = 0,
+                                            Alignment = 0,
+                                            Precision = false
+                                        },
+                                        Physical = new DamageTypeDescription.PhysicalData() {
+                                            Material = 0,
+                                            Form = 0,
+                                            Enhancement = 0,
+                                            EnhancementTotal = 0
+                                        },
+                                        Energy = DamageEnergyType.Acid
+                                    },
+                                    AbilityType = StatType.Unknown,
+                                    EnergyDrainType = EnergyDrainType.Temporary,
+                                    Duration = new ContextDurationValue() {
+                                        Rate = DurationRate.Rounds,
+                                        DiceType = DiceType.Zero,
+                                        DiceCountValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                        BonusValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                        m_IsExtendable = true,
+                                    },
+                                    PreRolledSharedValue = AbilitySharedValue.Damage,
+                                    Value = new ContextDiceValue() {
+                                        DiceType = DiceType.D6,
+                                        DiceCountValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 4,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                        BonusValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                    },
+                                    IsAoE = true,
+                                    HalfIfSaved = true,
+                                    ResultSharedValue = AbilitySharedValue.Damage,
+                                    CriticalSharedValue = AbilitySharedValue.Damage
+                                }
+                                )
+                        },                        
                         new ContextActionOnContextCaster() {
                             Actions = Helpers.CreateActionList(
                                 new ContextActionApplyBuff() {
@@ -935,66 +1018,80 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                             },
                             IfTrue = Helpers.CreateActionList(),
                             IfFalse = Helpers.CreateActionList(
-                                new ContextActionDealDamage() {
-                                    m_Type = ContextActionDealDamage.Type.Damage,
-                                    DamageType = new DamageTypeDescription() {
-                                        Type = DamageType.Energy,
-                                        Common = new DamageTypeDescription.CommomData() {
-                                            Reality = 0,
-                                            Alignment = 0,
-                                            Precision = false
-                                        },
-                                        Physical = new DamageTypeDescription.PhysicalData() {
-                                            Material = 0,
-                                            Form = 0,
-                                            Enhancement = 0,
-                                            EnhancementTotal = 0
-                                        },
-                                        Energy = DamageEnergyType.NegativeEnergy
+                                new Conditional() {
+                                    ConditionsChecker = new ConditionsChecker() {
+                                        Operation = Operation.And,
+                                        Conditions = new Condition[] {
+                                            new ContextConditionIsPetOwner(),
+                                            new ContextConditionHasBuff() {
+                                                m_Buff = MountedBuff
+                                            }
+                                        }
                                     },
-                                    AbilityType = StatType.Unknown,
-                                    EnergyDrainType = EnergyDrainType.Temporary,
-                                    Duration = new ContextDurationValue() {
-                                        Rate = DurationRate.Rounds,
-                                        DiceType = DiceType.Zero,
-                                        DiceCountValue = new ContextValue() {
-                                            ValueType = ContextValueType.Simple,
-                                            Value = 0,
-                                            ValueRank = AbilityRankType.Default,
-                                            ValueShared = AbilitySharedValue.Damage,
-                                            Property = UnitProperty.None
-                                        },
-                                        BonusValue = new ContextValue() {
-                                            ValueType = ContextValueType.Simple,
-                                            Value = 0,
-                                            ValueRank = AbilityRankType.Default,
-                                            ValueShared = AbilitySharedValue.Damage,
-                                            Property = UnitProperty.None
-                                        },
-                                        m_IsExtendable = true,
-                                    },
-                                    PreRolledSharedValue = AbilitySharedValue.Damage,
-                                    Value = new ContextDiceValue() {
-                                        DiceType = DiceType.D6,
-                                        DiceCountValue = new ContextValue() {
-                                            ValueType = ContextValueType.Simple,
-                                            Value = 4,
-                                            ValueRank = AbilityRankType.Default,
-                                            ValueShared = AbilitySharedValue.Damage,
-                                            Property = UnitProperty.None
-                                        },
-                                        BonusValue = new ContextValue() {
-                                            ValueType = ContextValueType.Simple,
-                                            Value = 0,
-                                            ValueRank = AbilityRankType.Default,
-                                            ValueShared = AbilitySharedValue.Damage,
-                                            Property = UnitProperty.None
-                                        },
-                                    },
-                                    IsAoE = true,
-                                    HalfIfSaved = true,
-                                    ResultSharedValue = AbilitySharedValue.Damage,
-                                    CriticalSharedValue = AbilitySharedValue.Damage
+                                    IfTrue = Helpers.CreateActionList(),
+                                    IfFalse = Helpers.CreateActionList(
+                                        new ContextActionDealDamage() { //move
+                                            m_Type = ContextActionDealDamage.Type.Damage,
+                                            DamageType = new DamageTypeDescription() {
+                                                Type = DamageType.Energy,
+                                                Common = new DamageTypeDescription.CommomData() {
+                                                    Reality = 0,
+                                                    Alignment = 0,
+                                                    Precision = false
+                                                },
+                                                Physical = new DamageTypeDescription.PhysicalData() {
+                                                    Material = 0,
+                                                    Form = 0,
+                                                    Enhancement = 0,
+                                                    EnhancementTotal = 0
+                                                },
+                                                Energy = DamageEnergyType.NegativeEnergy
+                                            },
+                                            AbilityType = StatType.Unknown,
+                                            EnergyDrainType = EnergyDrainType.Temporary,
+                                            Duration = new ContextDurationValue() {
+                                                Rate = DurationRate.Rounds,
+                                                DiceType = DiceType.Zero,
+                                                DiceCountValue = new ContextValue() {
+                                                    ValueType = ContextValueType.Simple,
+                                                    Value = 0,
+                                                    ValueRank = AbilityRankType.Default,
+                                                    ValueShared = AbilitySharedValue.Damage,
+                                                    Property = UnitProperty.None
+                                                },
+                                                BonusValue = new ContextValue() {
+                                                    ValueType = ContextValueType.Simple,
+                                                    Value = 0,
+                                                    ValueRank = AbilityRankType.Default,
+                                                    ValueShared = AbilitySharedValue.Damage,
+                                                    Property = UnitProperty.None
+                                                },
+                                                m_IsExtendable = true,
+                                            },
+                                            PreRolledSharedValue = AbilitySharedValue.Damage,
+                                            Value = new ContextDiceValue() {
+                                                DiceType = DiceType.D6,
+                                                DiceCountValue = new ContextValue() {
+                                                    ValueType = ContextValueType.Simple,
+                                                    Value = 4,
+                                                    ValueRank = AbilityRankType.Default,
+                                                    ValueShared = AbilitySharedValue.Damage,
+                                                    Property = UnitProperty.None
+                                                },
+                                                BonusValue = new ContextValue() {
+                                                    ValueType = ContextValueType.Simple,
+                                                    Value = 0,
+                                                    ValueRank = AbilityRankType.Default,
+                                                    ValueShared = AbilitySharedValue.Damage,
+                                                    Property = UnitProperty.None
+                                                },
+                                            },
+                                            IsAoE = true,
+                                            HalfIfSaved = true,
+                                            ResultSharedValue = AbilitySharedValue.Damage,
+                                            CriticalSharedValue = AbilitySharedValue.Damage
+                                        }
+                                        )
                                 }
                                 )
                         },
@@ -1095,67 +1192,81 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.SavingThrowType = SavingThrowType.Reflex;
                     c.Actions = Helpers.CreateActionList(
-                        new ContextActionDealDamage() {
-                            m_Type = ContextActionDealDamage.Type.Damage,
-                            DamageType = new DamageTypeDescription() {
-                                Type = DamageType.Energy,
-                                Common = new DamageTypeDescription.CommomData() {
-                                    Reality = 0,
-                                    Alignment = 0,
-                                    Precision = false
-                                },
-                                Physical = new DamageTypeDescription.PhysicalData() {
-                                    Material = 0,
-                                    Form = 0,
-                                    Enhancement = 0,
-                                    EnhancementTotal = 0
-                                },
-                                Energy = DamageEnergyType.Fire
+                        new Conditional() {
+                            ConditionsChecker = new ConditionsChecker() {
+                                Operation = Operation.And,
+                                Conditions = new Condition[] {
+                                            new ContextConditionIsPetOwner(),
+                                            new ContextConditionHasBuff() {
+                                                m_Buff = MountedBuff
+                                            }
+                                        }
                             },
-                            AbilityType = StatType.Unknown,
-                            EnergyDrainType = EnergyDrainType.Temporary,
-                            Duration = new ContextDurationValue() {
-                                Rate = DurationRate.Rounds,
-                                DiceType = DiceType.Zero,
-                                DiceCountValue = new ContextValue() {
-                                    ValueType = ContextValueType.Simple,
-                                    Value = 0,
-                                    ValueRank = AbilityRankType.Default,
-                                    ValueShared = AbilitySharedValue.Damage,
-                                    Property = UnitProperty.None
-                                },
-                                BonusValue = new ContextValue() {
-                                    ValueType = ContextValueType.Simple,
-                                    Value = 0,
-                                    ValueRank = AbilityRankType.Default,
-                                    ValueShared = AbilitySharedValue.Damage,
-                                    Property = UnitProperty.None
-                                },
-                                m_IsExtendable = true,
-                            },
-                            PreRolledSharedValue = AbilitySharedValue.Damage,
-                            Value = new ContextDiceValue() {
-                                DiceType = DiceType.D6,
-                                DiceCountValue = new ContextValue() {
-                                    ValueType = ContextValueType.Simple,
-                                    Value = 8,
-                                    ValueRank = AbilityRankType.Default,
-                                    ValueShared = AbilitySharedValue.Damage,
-                                    Property = UnitProperty.None
-                                },
-                                BonusValue = new ContextValue() {
-                                    ValueType = ContextValueType.Simple,
-                                    Value = 0,
-                                    ValueRank = AbilityRankType.Default,
-                                    ValueShared = AbilitySharedValue.Damage,
-                                    Property = UnitProperty.None
-                                },
-                            },
-                            IsAoE = true,
-                            HalfIfSaved = true,
-                            ResultSharedValue = AbilitySharedValue.Damage,
-                            CriticalSharedValue = AbilitySharedValue.Damage
-                        },
+                            IfTrue = Helpers.CreateActionList(),
+                            IfFalse = Helpers.CreateActionList(
+                                new ContextActionDealDamage() {
+                                    m_Type = ContextActionDealDamage.Type.Damage,
+                                    DamageType = new DamageTypeDescription() {
+                                        Type = DamageType.Energy,
+                                        Common = new DamageTypeDescription.CommomData() {
+                                            Reality = 0,
+                                            Alignment = 0,
+                                            Precision = false
+                                        },
+                                        Physical = new DamageTypeDescription.PhysicalData() {
+                                            Material = 0,
+                                            Form = 0,
+                                            Enhancement = 0,
+                                            EnhancementTotal = 0
+                                        },
+                                        Energy = DamageEnergyType.Fire
+                                    },
+                                    AbilityType = StatType.Unknown,
+                                    EnergyDrainType = EnergyDrainType.Temporary,
+                                    Duration = new ContextDurationValue() {
+                                        Rate = DurationRate.Rounds,
+                                        DiceType = DiceType.Zero,
+                                        DiceCountValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                        BonusValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                        m_IsExtendable = true,
+                                    },
+                                    PreRolledSharedValue = AbilitySharedValue.Damage,
+                                    Value = new ContextDiceValue() {
+                                        DiceType = DiceType.D6,
+                                        DiceCountValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 8,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                        BonusValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                    },
+                                    IsAoE = true,
+                                    HalfIfSaved = true,
+                                    ResultSharedValue = AbilitySharedValue.Damage,
+                                    CriticalSharedValue = AbilitySharedValue.Damage
+                                }
+                                )
+                        },                        
                         new ContextActionOnContextCaster() {
                             Actions = Helpers.CreateActionList(
                                 new ContextActionApplyBuff() {
@@ -1263,67 +1374,81 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.SavingThrowType = SavingThrowType.Reflex;
                     c.Actions = Helpers.CreateActionList(
-                        new ContextActionDealDamage() {
-                            m_Type = ContextActionDealDamage.Type.Damage,
-                            DamageType = new DamageTypeDescription() {
-                                Type = DamageType.Energy,
-                                Common = new DamageTypeDescription.CommomData() {
-                                    Reality = 0,
-                                    Alignment = 0,
-                                    Precision = false
-                                },
-                                Physical = new DamageTypeDescription.PhysicalData() {
-                                    Material = 0,
-                                    Form = 0,
-                                    Enhancement = 0,
-                                    EnhancementTotal = 0
-                                },
-                                Energy = DamageEnergyType.Cold
+                        new Conditional() {
+                            ConditionsChecker = new ConditionsChecker() {
+                                Operation = Operation.And,
+                                Conditions = new Condition[] {
+                                            new ContextConditionIsPetOwner(),
+                                            new ContextConditionHasBuff() {
+                                                m_Buff = MountedBuff
+                                            }
+                                        }
                             },
-                            AbilityType = StatType.Unknown,
-                            EnergyDrainType = EnergyDrainType.Temporary,
-                            Duration = new ContextDurationValue() {
-                                Rate = DurationRate.Rounds,
-                                DiceType = DiceType.Zero,
-                                DiceCountValue = new ContextValue() {
-                                    ValueType = ContextValueType.Simple,
-                                    Value = 0,
-                                    ValueRank = AbilityRankType.Default,
-                                    ValueShared = AbilitySharedValue.Damage,
-                                    Property = UnitProperty.None
-                                },
-                                BonusValue = new ContextValue() {
-                                    ValueType = ContextValueType.Simple,
-                                    Value = 0,
-                                    ValueRank = AbilityRankType.Default,
-                                    ValueShared = AbilitySharedValue.Damage,
-                                    Property = UnitProperty.None
-                                },
-                                m_IsExtendable = true,
-                            },
-                            PreRolledSharedValue = AbilitySharedValue.Damage,
-                            Value = new ContextDiceValue() {
-                                DiceType = DiceType.D6,
-                                DiceCountValue = new ContextValue() {
-                                    ValueType = ContextValueType.Simple,
-                                    Value = 8,
-                                    ValueRank = AbilityRankType.Default,
-                                    ValueShared = AbilitySharedValue.Damage,
-                                    Property = UnitProperty.None
-                                },
-                                BonusValue = new ContextValue() {
-                                    ValueType = ContextValueType.Simple,
-                                    Value = 0,
-                                    ValueRank = AbilityRankType.Default,
-                                    ValueShared = AbilitySharedValue.Damage,
-                                    Property = UnitProperty.None
-                                },
-                            },
-                            IsAoE = true,
-                            HalfIfSaved = true,
-                            ResultSharedValue = AbilitySharedValue.Damage,
-                            CriticalSharedValue = AbilitySharedValue.Damage
-                        },
+                            IfTrue = Helpers.CreateActionList(),
+                            IfFalse = Helpers.CreateActionList(
+                                new ContextActionDealDamage() {
+                                    m_Type = ContextActionDealDamage.Type.Damage,
+                                    DamageType = new DamageTypeDescription() {
+                                        Type = DamageType.Energy,
+                                        Common = new DamageTypeDescription.CommomData() {
+                                            Reality = 0,
+                                            Alignment = 0,
+                                            Precision = false
+                                        },
+                                        Physical = new DamageTypeDescription.PhysicalData() {
+                                            Material = 0,
+                                            Form = 0,
+                                            Enhancement = 0,
+                                            EnhancementTotal = 0
+                                        },
+                                        Energy = DamageEnergyType.Cold
+                                    },
+                                    AbilityType = StatType.Unknown,
+                                    EnergyDrainType = EnergyDrainType.Temporary,
+                                    Duration = new ContextDurationValue() {
+                                        Rate = DurationRate.Rounds,
+                                        DiceType = DiceType.Zero,
+                                        DiceCountValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                        BonusValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                        m_IsExtendable = true,
+                                    },
+                                    PreRolledSharedValue = AbilitySharedValue.Damage,
+                                    Value = new ContextDiceValue() {
+                                        DiceType = DiceType.D6,
+                                        DiceCountValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 8,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                        BonusValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                    },
+                                    IsAoE = true,
+                                    HalfIfSaved = true,
+                                    ResultSharedValue = AbilitySharedValue.Damage,
+                                    CriticalSharedValue = AbilitySharedValue.Damage
+                                }
+                                )
+                        },                        
                         new ContextActionOnContextCaster() {
                             Actions = Helpers.CreateActionList(
                                 new ContextActionApplyBuff() {
@@ -1431,67 +1556,81 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.SavingThrowType = SavingThrowType.Reflex;
                     c.Actions = Helpers.CreateActionList(
-                        new ContextActionDealDamage() {
-                            m_Type = ContextActionDealDamage.Type.Damage,
-                            DamageType = new DamageTypeDescription() {
-                                Type = DamageType.Energy,
-                                Common = new DamageTypeDescription.CommomData() {
-                                    Reality = 0,
-                                    Alignment = 0,
-                                    Precision = false
-                                },
-                                Physical = new DamageTypeDescription.PhysicalData() {
-                                    Material = 0,
-                                    Form = 0,
-                                    Enhancement = 0,
-                                    EnhancementTotal = 0
-                                },
-                                Energy = DamageEnergyType.Electricity
+                        new Conditional() {
+                            ConditionsChecker = new ConditionsChecker() {
+                                Operation = Operation.And,
+                                Conditions = new Condition[] {
+                                            new ContextConditionIsPetOwner(),
+                                            new ContextConditionHasBuff() {
+                                                m_Buff = MountedBuff
+                                            }
+                                        }
                             },
-                            AbilityType = StatType.Unknown,
-                            EnergyDrainType = EnergyDrainType.Temporary,
-                            Duration = new ContextDurationValue() {
-                                Rate = DurationRate.Rounds,
-                                DiceType = DiceType.Zero,
-                                DiceCountValue = new ContextValue() {
-                                    ValueType = ContextValueType.Simple,
-                                    Value = 0,
-                                    ValueRank = AbilityRankType.Default,
-                                    ValueShared = AbilitySharedValue.Damage,
-                                    Property = UnitProperty.None
-                                },
-                                BonusValue = new ContextValue() {
-                                    ValueType = ContextValueType.Simple,
-                                    Value = 0,
-                                    ValueRank = AbilityRankType.Default,
-                                    ValueShared = AbilitySharedValue.Damage,
-                                    Property = UnitProperty.None
-                                },
-                                m_IsExtendable = true,
-                            },
-                            PreRolledSharedValue = AbilitySharedValue.Damage,
-                            Value = new ContextDiceValue() {
-                                DiceType = DiceType.D6,
-                                DiceCountValue = new ContextValue() {
-                                    ValueType = ContextValueType.Simple,
-                                    Value = 8,
-                                    ValueRank = AbilityRankType.Default,
-                                    ValueShared = AbilitySharedValue.Damage,
-                                    Property = UnitProperty.None
-                                },
-                                BonusValue = new ContextValue() {
-                                    ValueType = ContextValueType.Simple,
-                                    Value = 0,
-                                    ValueRank = AbilityRankType.Default,
-                                    ValueShared = AbilitySharedValue.Damage,
-                                    Property = UnitProperty.None
-                                },
-                            },
-                            IsAoE = true,
-                            HalfIfSaved = true,
-                            ResultSharedValue = AbilitySharedValue.Damage,
-                            CriticalSharedValue = AbilitySharedValue.Damage
-                        },
+                            IfTrue = Helpers.CreateActionList(),
+                            IfFalse = Helpers.CreateActionList(
+                                new ContextActionDealDamage() {
+                                    m_Type = ContextActionDealDamage.Type.Damage,
+                                    DamageType = new DamageTypeDescription() {
+                                        Type = DamageType.Energy,
+                                        Common = new DamageTypeDescription.CommomData() {
+                                            Reality = 0,
+                                            Alignment = 0,
+                                            Precision = false
+                                        },
+                                        Physical = new DamageTypeDescription.PhysicalData() {
+                                            Material = 0,
+                                            Form = 0,
+                                            Enhancement = 0,
+                                            EnhancementTotal = 0
+                                        },
+                                        Energy = DamageEnergyType.Electricity
+                                    },
+                                    AbilityType = StatType.Unknown,
+                                    EnergyDrainType = EnergyDrainType.Temporary,
+                                    Duration = new ContextDurationValue() {
+                                        Rate = DurationRate.Rounds,
+                                        DiceType = DiceType.Zero,
+                                        DiceCountValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                        BonusValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                        m_IsExtendable = true,
+                                    },
+                                    PreRolledSharedValue = AbilitySharedValue.Damage,
+                                    Value = new ContextDiceValue() {
+                                        DiceType = DiceType.D6,
+                                        DiceCountValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 8,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                        BonusValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                    },
+                                    IsAoE = true,
+                                    HalfIfSaved = true,
+                                    ResultSharedValue = AbilitySharedValue.Damage,
+                                    CriticalSharedValue = AbilitySharedValue.Damage
+                                }
+                                )
+                        },                        
                         new ContextActionOnContextCaster() {
                             Actions = Helpers.CreateActionList(
                                 new ContextActionApplyBuff() {
@@ -1599,67 +1738,81 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.SavingThrowType = SavingThrowType.Reflex;
                     c.Actions = Helpers.CreateActionList(
-                        new ContextActionDealDamage() {
-                            m_Type = ContextActionDealDamage.Type.Damage,
-                            DamageType = new DamageTypeDescription() {
-                                Type = DamageType.Energy,
-                                Common = new DamageTypeDescription.CommomData() {
-                                    Reality = 0,
-                                    Alignment = 0,
-                                    Precision = false
-                                },
-                                Physical = new DamageTypeDescription.PhysicalData() {
-                                    Material = 0,
-                                    Form = 0,
-                                    Enhancement = 0,
-                                    EnhancementTotal = 0
-                                },
-                                Energy = DamageEnergyType.Acid
+                        new Conditional() {
+                            ConditionsChecker = new ConditionsChecker() {
+                                Operation = Operation.And,
+                                Conditions = new Condition[] {
+                                            new ContextConditionIsPetOwner(),
+                                            new ContextConditionHasBuff() {
+                                                m_Buff = MountedBuff
+                                            }
+                                        }
                             },
-                            AbilityType = StatType.Unknown,
-                            EnergyDrainType = EnergyDrainType.Temporary,
-                            Duration = new ContextDurationValue() {
-                                Rate = DurationRate.Rounds,
-                                DiceType = DiceType.Zero,
-                                DiceCountValue = new ContextValue() {
-                                    ValueType = ContextValueType.Simple,
-                                    Value = 0,
-                                    ValueRank = AbilityRankType.Default,
-                                    ValueShared = AbilitySharedValue.Damage,
-                                    Property = UnitProperty.None
-                                },
-                                BonusValue = new ContextValue() {
-                                    ValueType = ContextValueType.Simple,
-                                    Value = 0,
-                                    ValueRank = AbilityRankType.Default,
-                                    ValueShared = AbilitySharedValue.Damage,
-                                    Property = UnitProperty.None
-                                },
-                                m_IsExtendable = true,
-                            },
-                            PreRolledSharedValue = AbilitySharedValue.Damage,
-                            Value = new ContextDiceValue() {
-                                DiceType = DiceType.D6,
-                                DiceCountValue = new ContextValue() {
-                                    ValueType = ContextValueType.Simple,
-                                    Value = 8,
-                                    ValueRank = AbilityRankType.Default,
-                                    ValueShared = AbilitySharedValue.Damage,
-                                    Property = UnitProperty.None
-                                },
-                                BonusValue = new ContextValue() {
-                                    ValueType = ContextValueType.Simple,
-                                    Value = 0,
-                                    ValueRank = AbilityRankType.Default,
-                                    ValueShared = AbilitySharedValue.Damage,
-                                    Property = UnitProperty.None
-                                },
-                            },
-                            IsAoE = true,
-                            HalfIfSaved = true,
-                            ResultSharedValue = AbilitySharedValue.Damage,
-                            CriticalSharedValue = AbilitySharedValue.Damage
-                        },
+                            IfTrue = Helpers.CreateActionList(),
+                            IfFalse = Helpers.CreateActionList(
+                                new ContextActionDealDamage() {
+                                    m_Type = ContextActionDealDamage.Type.Damage,
+                                    DamageType = new DamageTypeDescription() {
+                                        Type = DamageType.Energy,
+                                        Common = new DamageTypeDescription.CommomData() {
+                                            Reality = 0,
+                                            Alignment = 0,
+                                            Precision = false
+                                        },
+                                        Physical = new DamageTypeDescription.PhysicalData() {
+                                            Material = 0,
+                                            Form = 0,
+                                            Enhancement = 0,
+                                            EnhancementTotal = 0
+                                        },
+                                        Energy = DamageEnergyType.Acid
+                                    },
+                                    AbilityType = StatType.Unknown,
+                                    EnergyDrainType = EnergyDrainType.Temporary,
+                                    Duration = new ContextDurationValue() {
+                                        Rate = DurationRate.Rounds,
+                                        DiceType = DiceType.Zero,
+                                        DiceCountValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                        BonusValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                        m_IsExtendable = true,
+                                    },
+                                    PreRolledSharedValue = AbilitySharedValue.Damage,
+                                    Value = new ContextDiceValue() {
+                                        DiceType = DiceType.D6,
+                                        DiceCountValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 8,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                        BonusValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                    },
+                                    IsAoE = true,
+                                    HalfIfSaved = true,
+                                    ResultSharedValue = AbilitySharedValue.Damage,
+                                    CriticalSharedValue = AbilitySharedValue.Damage
+                                }
+                                )
+                        },                        
                         new ContextActionOnContextCaster() {
                             Actions = Helpers.CreateActionList(
                                 new ContextActionApplyBuff() {
@@ -1781,66 +1934,80 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                             },
                             IfTrue = Helpers.CreateActionList(),
                             IfFalse = Helpers.CreateActionList(
-                                new ContextActionDealDamage() {
-                                    m_Type = ContextActionDealDamage.Type.Damage,
-                                    DamageType = new DamageTypeDescription() {
-                                        Type = DamageType.Energy,
-                                        Common = new DamageTypeDescription.CommomData() {
-                                            Reality = 0,
-                                            Alignment = 0,
-                                            Precision = false
-                                        },
-                                        Physical = new DamageTypeDescription.PhysicalData() {
-                                            Material = 0,
-                                            Form = 0,
-                                            Enhancement = 0,
-                                            EnhancementTotal = 0
-                                        },
-                                        Energy = DamageEnergyType.Fire
+                                new Conditional() {
+                                    ConditionsChecker = new ConditionsChecker() {
+                                        Operation = Operation.And,
+                                        Conditions = new Condition[] {
+                                            new ContextConditionIsPetOwner(),
+                                            new ContextConditionHasBuff() {
+                                                m_Buff = MountedBuff
+                                            }
+                                        }
                                     },
-                                    AbilityType = StatType.Unknown,
-                                    EnergyDrainType = EnergyDrainType.Temporary,
-                                    Duration = new ContextDurationValue() {
-                                        Rate = DurationRate.Rounds,
-                                        DiceType = DiceType.Zero,
-                                        DiceCountValue = new ContextValue() {
-                                            ValueType = ContextValueType.Simple,
-                                            Value = 0,
-                                            ValueRank = AbilityRankType.Default,
-                                            ValueShared = AbilitySharedValue.Damage,
-                                            Property = UnitProperty.None
-                                        },
-                                        BonusValue = new ContextValue() {
-                                            ValueType = ContextValueType.Simple,
-                                            Value = 0,
-                                            ValueRank = AbilityRankType.Default,
-                                            ValueShared = AbilitySharedValue.Damage,
-                                            Property = UnitProperty.None
-                                        },
-                                        m_IsExtendable = true,
-                                    },
-                                    PreRolledSharedValue = AbilitySharedValue.Damage,
-                                    Value = new ContextDiceValue() {
-                                        DiceType = DiceType.D6,
-                                        DiceCountValue = new ContextValue() {
-                                            ValueType = ContextValueType.Simple,
-                                            Value = 8,
-                                            ValueRank = AbilityRankType.Default,
-                                            ValueShared = AbilitySharedValue.Damage,
-                                            Property = UnitProperty.None
-                                        },
-                                        BonusValue = new ContextValue() {
-                                            ValueType = ContextValueType.Simple,
-                                            Value = 0,
-                                            ValueRank = AbilityRankType.Default,
-                                            ValueShared = AbilitySharedValue.Damage,
-                                            Property = UnitProperty.None
-                                        },
-                                    },
-                                    IsAoE = true,
-                                    HalfIfSaved = true,
-                                    ResultSharedValue = AbilitySharedValue.Damage,
-                                    CriticalSharedValue = AbilitySharedValue.Damage
+                                    IfTrue = Helpers.CreateActionList(),
+                                    IfFalse = Helpers.CreateActionList(
+                                        new ContextActionDealDamage() {
+                                            m_Type = ContextActionDealDamage.Type.Damage,
+                                            DamageType = new DamageTypeDescription() {
+                                                Type = DamageType.Energy,
+                                                Common = new DamageTypeDescription.CommomData() {
+                                                    Reality = 0,
+                                                    Alignment = 0,
+                                                    Precision = false
+                                                },
+                                                Physical = new DamageTypeDescription.PhysicalData() {
+                                                    Material = 0,
+                                                    Form = 0,
+                                                    Enhancement = 0,
+                                                    EnhancementTotal = 0
+                                                },
+                                                Energy = DamageEnergyType.Fire
+                                            },
+                                            AbilityType = StatType.Unknown,
+                                            EnergyDrainType = EnergyDrainType.Temporary,
+                                            Duration = new ContextDurationValue() {
+                                                Rate = DurationRate.Rounds,
+                                                DiceType = DiceType.Zero,
+                                                DiceCountValue = new ContextValue() {
+                                                    ValueType = ContextValueType.Simple,
+                                                    Value = 0,
+                                                    ValueRank = AbilityRankType.Default,
+                                                    ValueShared = AbilitySharedValue.Damage,
+                                                    Property = UnitProperty.None
+                                                },
+                                                BonusValue = new ContextValue() {
+                                                    ValueType = ContextValueType.Simple,
+                                                    Value = 0,
+                                                    ValueRank = AbilityRankType.Default,
+                                                    ValueShared = AbilitySharedValue.Damage,
+                                                    Property = UnitProperty.None
+                                                },
+                                                m_IsExtendable = true,
+                                            },
+                                            PreRolledSharedValue = AbilitySharedValue.Damage,
+                                            Value = new ContextDiceValue() {
+                                                DiceType = DiceType.D6,
+                                                DiceCountValue = new ContextValue() {
+                                                    ValueType = ContextValueType.Simple,
+                                                    Value = 8,
+                                                    ValueRank = AbilityRankType.Default,
+                                                    ValueShared = AbilitySharedValue.Damage,
+                                                    Property = UnitProperty.None
+                                                },
+                                                BonusValue = new ContextValue() {
+                                                    ValueType = ContextValueType.Simple,
+                                                    Value = 0,
+                                                    ValueRank = AbilityRankType.Default,
+                                                    ValueShared = AbilitySharedValue.Damage,
+                                                    Property = UnitProperty.None
+                                                },
+                                            },
+                                            IsAoE = true,
+                                            HalfIfSaved = true,
+                                            ResultSharedValue = AbilitySharedValue.Damage,
+                                            CriticalSharedValue = AbilitySharedValue.Damage
+                                        }
+                                        )
                                 }
                                 )
                         },
@@ -1933,7 +2100,8 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 DrakeBreathWeaponUmbral2Feature.ToReference<BlueprintUnitFactReference>()
             };
             DrakeBreathWeaponUmbral1Feature.IsPrerequisiteFor = new List<BlueprintFeatureReference>() { DrakeBreathWeaponUmbral2Feature.ToReference<BlueprintFeatureReference>() };
-
+            #endregion
+            #region Everything Else
             var DrakeIntellectFeature = Helpers.CreateBlueprint<BlueprintFeature>("DrakeIntellectFeature", bp => {
                 bp.SetName("Drake Intellect");
                 bp.SetDescription("The drake’s Intelligence score increases by 4.");
@@ -2245,7 +2413,19 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                     c.m_Feature = DrakenScalesOutsider.ToReference<BlueprintUnitFactReference>();
                 });
             });
+            var DrakenMountFeature = Helpers.CreateBlueprint<BlueprintFeature>("DrakenMountFeature", bp => {
+                bp.SetName("Mounted Combat Training");
+                bp.SetDescription("The drake allows its owner to ride it, however the drake cannot support a rider until it is a medium size (without the use of spells).");
+                bp.AddComponent<RemoveFeatureOnApply>(c => {
+                    c.m_Feature = DrakeCompanionMountLock1Feature.ToReference<BlueprintUnitFactReference>();
+                });
+                bp.AddComponent<PrerequisiteClassLevel>(c => {
+                    c.Level = 7;
+                    c.m_CharacterClass = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
+                });
+            });
 
+            #endregion
             var DrakePowersSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("DrakePowersSelection", bp => {
                 bp.SetName("Drake Powers Selection");
                 bp.SetDescription("Drake companions can select from the following drake powers. First at 3rd level and then every 4th level after.");
@@ -2268,7 +2448,8 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                     DrakeBreathWeaponAcid2Feature.ToReference<BlueprintFeatureReference>(),
                     DrakeBreathWeaponUmbral2Feature.ToReference<BlueprintFeatureReference>(),
                     DrakenClawsFeature.ToReference<BlueprintFeatureReference>(),
-                    DrakenScalesFeature.ToReference<BlueprintFeatureReference>()
+                    DrakenScalesFeature.ToReference<BlueprintFeatureReference>(),
+                    DrakenMountFeature.ToReference<BlueprintFeatureReference>()
                 };
             });
             #endregion
@@ -2381,12 +2562,16 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 bp.SetDescription("The drake matures further and advances a size category when the charge reaches 5th level and every 4 levels thereafter. Each " +
                     "time this occurs, the drake’s natural armor bonus to its AC increases by 2, its natural attacks increase in damage based on the new size " +
                     "category, and it gains the following ability scores adjustments: Str +4, Dex –2, Con +2. When the drake reaches Medium size, its speed " +
-                    "increases from 20 feet to 30 feet");
+                    "increases from 20 feet to 30 feet" +
+                    "\nIf the drake has been trained for mounted combat, it will be mountable from this size onwards.");
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
                     c.Level = 13;
                     c.m_Feature = DrakeSizeMedium.ToReference<BlueprintFeatureReference>();
                     c.BeforeThisLevel = true;
+                });
+                bp.AddComponent<RemoveFeatureOnApply>(c => {
+                    c.m_Feature = DrakeCompanionMountLock2Feature.ToReference<BlueprintUnitFactReference>();
                 });
                 bp.AddComponent<AddStatBonus>(c => {
                     c.Descriptor = ModifierDescriptor.Racial;
@@ -2742,7 +2927,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 }
             };
             DrakeCompanionClassProgression.LevelEntries = new LevelEntry[] {
-                    Helpers.LevelEntry(1, DrakeVisionFeature, DrakeImmunitiesFeature, DrakeCompanionSlotFeature, DrakeSizeTinyFeature),///Subtype handled in DrakeCompanionSelection
+                    Helpers.LevelEntry(1, DrakeVisionFeature, DrakeImmunitiesFeature, DrakeCompanionSlotFeature, DrakeSizeTinyFeature, DrakeCompanionMountLock1Feature, DrakeCompanionMountLock2Feature),///Subtype handled in DrakeCompanionSelection
                     Helpers.LevelEntry(3, DrakeNaturalArmorFeature, DrakeNaturalArmor1, DrakePowersSelection),
                     Helpers.LevelEntry(5, DrakeSizeSmallFeature, DrakeNaturalArmor2),
                     Helpers.LevelEntry(6, DrakeNaturalArmorFeature, DrakeNaturalArmor3),

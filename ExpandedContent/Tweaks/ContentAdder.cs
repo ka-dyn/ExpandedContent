@@ -70,6 +70,7 @@ namespace ExpandedContent.Tweaks {
                 Archetypes.ChildOfAcavnaAndAmaznen.AddChildOfAcavnaAndAmaznen();
                 Archetypes.DivineTracker.AddDivineTracker();
                 Archetypes.PlantMaster.AddPlantMaster();
+                Archetypes.DrakeRider.AddDrakeRider();
 
                 Classes.OathbreakerClass.AddOathbreakerClass();
                 Archetypes.Castigator.AddCastigator();

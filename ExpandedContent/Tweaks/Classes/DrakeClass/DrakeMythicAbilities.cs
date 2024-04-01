@@ -57,7 +57,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
             var BloodlineSilverDraconicProgression = Resources.GetBlueprint<BlueprintProgression>("c7d2f393e6574874bb3fc728a69cc73a");
             var DrakenClawsFeature = Resources.GetModBlueprint<BlueprintFeature>("DrakenClawsFeature");
             var Multiattack = Resources.GetBlueprint<BlueprintFeature>("8ac319e47057e2741b42229210eb43ed");
-            //Spell Support
+            #region Spell Support
             var DrakeKeenMindFeature = Resources.GetModBlueprint<BlueprintFeature>("DrakeKeenMindFeature");
             var DrakeBloodGreen = Resources.GetModBlueprint<BlueprintFeature>("DrakeBloodGreen");
             var DrakeBloodGreenSpelllist = Resources.GetModBlueprint<BlueprintFeature>("DrakeBloodGreenSpelllist");
@@ -81,7 +81,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
             var DrakeBloodCopperSpelllist = Resources.GetModBlueprint<BlueprintFeature>("DrakeBloodCopperSpelllist");
             var DrakeBloodUmbral = Resources.GetModBlueprint<BlueprintFeature>("DrakeBloodUmbral");
             var DrakeBloodUmbralSpelllist = Resources.GetModBlueprint<BlueprintFeature>("DrakeBloodUmbralSpelllist");
-
+            #endregion
 
             var DrakeBreathWeaponFire3 = Helpers.CreateBlueprint<BlueprintAbility>("DrakeBreathWeaponFire3", bp => {
                 bp.SetName("Mythic Drake Fire Breath");
