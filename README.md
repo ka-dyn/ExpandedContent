@@ -37,7 +37,7 @@ New Archetypes
 
 - Mindchemist, Alchemist
 
-- Cavalier, Drake Rider
+- Drake Rider, Cavalier
 
 New Prestige Class
 
