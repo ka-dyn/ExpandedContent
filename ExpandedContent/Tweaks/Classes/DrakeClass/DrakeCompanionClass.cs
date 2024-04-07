@@ -257,7 +257,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 bp.IsClassFeature = true;
             });
             var DrakeCompanionMountLock1Feature = Helpers.CreateBlueprint<BlueprintFeature>("DrakeCompanionMountLock1Feature", bp => {
-                bp.SetName("Feature not available");
+                bp.SetName("Mounting locked - Drake Power not chosen");
                 //Removed by Drake Power
                 bp.m_AllowNonContextActions = false;
                 bp.HideInUI = true;
@@ -266,7 +266,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 bp.IsClassFeature = true;
             });
             var DrakeCompanionMountLock2Feature = Helpers.CreateBlueprint<BlueprintFeature>("DrakeCompanionMountLock2Feature", bp => {
-                bp.SetName("Feature not available");
+                bp.SetName("Mounting locked - Drake does not meet natural size requirement");
                 //Removed by Medium Size upgrade
                 bp.m_AllowNonContextActions = false;
                 bp.HideInUI = true;
@@ -2428,6 +2428,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                     c.Level = 7;
                     c.m_CharacterClass = DrakeCompanionClass.ToReference<BlueprintCharacterClassReference>();
                 });
+                bp.ReapplyOnLevelUp = true;
             });
 
             #endregion
