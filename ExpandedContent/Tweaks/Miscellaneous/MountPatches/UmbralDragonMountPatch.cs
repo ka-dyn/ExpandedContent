@@ -177,7 +177,7 @@ namespace ExpandedContent.Tweaks.Miscellaneous.MountPatches {
                     HandsPositionWeight = 0.98f,
                     HandsMappingWeight = 0.7f,
                 },
-                //Gnome
+                //Gnome -DONE
                 new RaceMountOffsetsConfig.MountOffsetData() {
                     Races = new List<BlueprintRaceReference>() {
                         MountTools.RaceOptions.Gnome
@@ -212,7 +212,7 @@ namespace ExpandedContent.Tweaks.Miscellaneous.MountPatches {
                     HandsPositionWeight = 1.0f,
                     HandsMappingWeight = 0.7f,
                 },
-                //Halfling
+                //Halfling -DONE
                 new RaceMountOffsetsConfig.MountOffsetData() {
                     Races = new List<BlueprintRaceReference>() {
                         MountTools.RaceOptions.Halfling
@@ -224,7 +224,7 @@ namespace ExpandedContent.Tweaks.Miscellaneous.MountPatches {
                     SaddleRootScale = Vector3.one,
                     SaddleRootRotation = new Vector4(0, 0, 0, 1),
 
-                    PelvisPosition = new Vector3(0f, 0f, 0f),
+                    PelvisPosition = new Vector3(-0.08f, 0f, 0f),
                     PelvisRotation = new Vector4(0, 0, 0, 1),
 
                     LeftFootPosition = new Vector3(0f, 0f, 0f),
@@ -237,7 +237,7 @@ namespace ExpandedContent.Tweaks.Miscellaneous.MountPatches {
 
                     RightKneePosition = new Vector3(0f, 0f, 0f),
 
-                    HandsPosition = new Vector3(0f, 0f, 0f),
+                    HandsPosition = new Vector3(-0.25f, 0.21f, 0f),
 
                     PelvisPositionWeight = 1f,
                     PelvisRotationWeight = 1.0f,
@@ -247,7 +247,7 @@ namespace ExpandedContent.Tweaks.Miscellaneous.MountPatches {
                     HandsPositionWeight = 1.0f,
                     HandsMappingWeight = 0.7f,
                 },
-                //Half Orc
+                //Half Orc -DONE
                 new RaceMountOffsetsConfig.MountOffsetData() {
                     Races = new List<BlueprintRaceReference>() {
                         MountTools.RaceOptions.HalfOrc
@@ -259,10 +259,10 @@ namespace ExpandedContent.Tweaks.Miscellaneous.MountPatches {
                     SaddleRootScale = Vector3.one,
                     SaddleRootRotation = new Vector4(0, 0, 0, 1),
 
-                    PelvisPosition = new Vector3(0f, 0f, 0f),
+                    PelvisPosition = new Vector3(0.05f, 0f, 0f),
                     PelvisRotation = new Vector4(0, 0, 0, 1),
 
-                    LeftFootPosition = new Vector3(0.15f, -0.15f, 0f),
+                    LeftFootPosition = new Vector3(-0.15f, 0.15f, 0f),
                     LeftFootRotation = new Vector4(0, 0, 0, 1),
 
                     RightFootPosition = new Vector3(-0.15f, 0.15f, 0f),
@@ -272,17 +272,17 @@ namespace ExpandedContent.Tweaks.Miscellaneous.MountPatches {
 
                     RightKneePosition = new Vector3(0f, 0f, 0f),
 
-                    HandsPosition = new Vector3(-0.15f, 0f, 0f),
+                    HandsPosition = new Vector3(-0.18f, -0.05f, 0f),
 
                     PelvisPositionWeight = 1f,
                     PelvisRotationWeight = 1.0f,
                     FootsPositionWeight = 1.0f,
-                    FootsRotationWeight = 1f,
+                    FootsRotationWeight = 0f,
                     KneesBendWeight = 1.0f,
                     HandsPositionWeight = 0.95f,
                     HandsMappingWeight = 0.7f,
                 },
-                //Oread
+                //Oread -DONE
                 new RaceMountOffsetsConfig.MountOffsetData() {
                     Races = new List<BlueprintRaceReference>() {
                         MountTools.RaceOptions.Oread
@@ -307,7 +307,7 @@ namespace ExpandedContent.Tweaks.Miscellaneous.MountPatches {
 
                     RightKneePosition = new Vector3(0f, 0f, 0f),
 
-                    HandsPosition = new Vector3(0f, 0.1f, 0f),
+                    HandsPosition = new Vector3(-0.14f, 0.16f, 0f),
 
                     PelvisPositionWeight = 1f,
                     PelvisRotationWeight = 1.0f,
@@ -437,7 +437,7 @@ namespace ExpandedContent.Tweaks.Miscellaneous.MountPatches {
                     HandsPositionWeight = 0.98f,
                     HandsMappingWeight = 0.7f,
                 },
-                //Gnome 
+                //Gnome -DONE
                 new RaceMountOffsetsConfig.MountOffsetData() {
                     Races = new List<BlueprintRaceReference>() {
                         MountTools.RaceOptions.Gnome
@@ -449,20 +449,20 @@ namespace ExpandedContent.Tweaks.Miscellaneous.MountPatches {
                     SaddleRootScale = Vector3.one,
                     SaddleRootRotation = new Vector4(0, 0, 0, 1),
 
-                    PelvisPosition = new Vector3(-0.1f, 0f, 0f),
+                    PelvisPosition = new Vector3(-0.14f, 0f, 0f),
                     PelvisRotation = new Vector4(0, 0, 0, 1),
 
-                    LeftFootPosition = new Vector3(-0.1f, 0.35f, 0.05f),
+                    LeftFootPosition = new Vector3(0.05f, -0.3f, -0.22f),
                     LeftFootRotation = new Vector4(0, 0, 0, 1),
 
-                    RightFootPosition = new Vector3(0.1f, -0.35f, -0.05f),
+                    RightFootPosition = new Vector3(0.05f, -0.3f, 0.22f),
                     RightFootRotation = new Vector4(0, 0, 0, 1),
 
                     LeftKneePosition = new Vector3(0f, 0f, 0f),
 
                     RightKneePosition = new Vector3(0f, 0f, 0f),
 
-                    HandsPosition = new Vector3(0f, 0.1f, 0f),
+                    HandsPosition = new Vector3(-0.28f, 022f, 0f),
 
                     PelvisPositionWeight = 0.8f,
                     PelvisRotationWeight = 1.0f,
@@ -490,7 +490,7 @@ namespace ExpandedContent.Tweaks.Miscellaneous.MountPatches {
                     LeftFootPosition = new Vector3(-0.05f, 0.42f, 0.15f),
                     LeftFootRotation = new Vector4(0, 0, 0, 1),
 
-                    RightFootPosition = new Vector3(0.05f, -0.42f, -0.15f),
+                    RightFootPosition = new Vector3(-0.05f, 0.42f, -0.15f),
                     RightFootRotation = new Vector4(0, 0, 0, 1),
 
                     LeftKneePosition = new Vector3(0f, 0f, 0.02f),
@@ -507,7 +507,7 @@ namespace ExpandedContent.Tweaks.Miscellaneous.MountPatches {
                     HandsPositionWeight = 1.0f,
                     HandsMappingWeight = 0.7f,
                 },
-                //Half Orc 
+                //Half Orc -DONE
                 new RaceMountOffsetsConfig.MountOffsetData() {
                     Races = new List<BlueprintRaceReference>() {
                         MountTools.RaceOptions.HalfOrc
@@ -519,10 +519,10 @@ namespace ExpandedContent.Tweaks.Miscellaneous.MountPatches {
                     SaddleRootScale = Vector3.one,
                     SaddleRootRotation = new Vector4(0, 0, 0, 1),
 
-                    PelvisPosition = new Vector3(0f, 0f, 0f),
+                    PelvisPosition = new Vector3(0.05f, 0f, 0f),
                     PelvisRotation = new Vector4(0, 0, 0, 1),
 
-                    LeftFootPosition = new Vector3(0.15f, -0.15f, 0f),
+                    LeftFootPosition = new Vector3(-0.15f, 0.15f, 0f),
                     LeftFootRotation = new Vector4(0, 0, 0, 1),
 
                     RightFootPosition = new Vector3(-0.15f, 0.15f, 0f),
@@ -532,17 +532,17 @@ namespace ExpandedContent.Tweaks.Miscellaneous.MountPatches {
 
                     RightKneePosition = new Vector3(0f, 0f, 0f),
 
-                    HandsPosition = new Vector3(-0.15f, 0f, 0f),
+                    HandsPosition = new Vector3(-0.18f, -0.05f, 0f),
 
                     PelvisPositionWeight = 1f,
                     PelvisRotationWeight = 1.0f,
                     FootsPositionWeight = 1.0f,
-                    FootsRotationWeight = 1f,
+                    FootsRotationWeight = 0f,
                     KneesBendWeight = 1.0f,
                     HandsPositionWeight = 0.95f,
                     HandsMappingWeight = 0.7f,
                 },
-                //Oread 
+                //Oread -DONE
                 new RaceMountOffsetsConfig.MountOffsetData() {
                     Races = new List<BlueprintRaceReference>() {
                         MountTools.RaceOptions.Oread
@@ -567,7 +567,7 @@ namespace ExpandedContent.Tweaks.Miscellaneous.MountPatches {
 
                     RightKneePosition = new Vector3(0f, 0f, 0f),
 
-                    HandsPosition = new Vector3(0f, 0.1f, 0f),
+                    HandsPosition = new Vector3(-0.14f, 0.16f, 0f),
 
                     PelvisPositionWeight = 1f,
                     PelvisRotationWeight = 1.0f,
@@ -645,7 +645,7 @@ namespace ExpandedContent.Tweaks.Miscellaneous.MountPatches {
                     LeftFootPosition = new Vector3(-0.05f, 0.39f, 0.3f),
                     LeftFootRotation = new Vector4(0, 0, 0, 1),
 
-                    RightFootPosition = new Vector3(0.05f, -0.39f, -0.3f),
+                    RightFootPosition = new Vector3(-0.05f, 0.39f, -0.3f),
                     RightFootRotation = new Vector4(0, 0, 0, 1),
 
                     LeftKneePosition = new Vector3(-0.1f, 0f, 0.15f),
@@ -680,7 +680,7 @@ namespace ExpandedContent.Tweaks.Miscellaneous.MountPatches {
                     LeftFootPosition = new Vector3(-0.09f, 0.35f, 0.05f),
                     LeftFootRotation = new Vector4(0, 0, 0, 1),
 
-                    RightFootPosition = new Vector3(0.09f, -0.35f, -0.05f),
+                    RightFootPosition = new Vector3(-0.09f, 0.35f, -0.05f),
                     RightFootRotation = new Vector4(0, 0, 0, 1),
 
                     LeftKneePosition = new Vector3(-0.1f, -0.09f, -0.09f),
@@ -715,7 +715,7 @@ namespace ExpandedContent.Tweaks.Miscellaneous.MountPatches {
                     LeftFootPosition = new Vector3(-0.45f, 0.75f, 0.1f),
                     LeftFootRotation = new Vector4(0, 0, 0, 1),
 
-                    RightFootPosition = new Vector3(0.45f, -0.75f, -0.1f),
+                    RightFootPosition = new Vector3(-0.45f, 0.75f, -0.1f),
                     RightFootRotation = new Vector4(0, 0, 0, 1),
 
                     LeftKneePosition = new Vector3(-1.5f, -0.1f, 0f),
@@ -750,7 +750,7 @@ namespace ExpandedContent.Tweaks.Miscellaneous.MountPatches {
                     LeftFootPosition = new Vector3(-0.4f, 0.75f, 0.1f),
                     LeftFootRotation = new Vector4(0, 0, 0, 1),
 
-                    RightFootPosition = new Vector3(0.4f, -0.75f, -0.1f),
+                    RightFootPosition = new Vector3(-0.4f, 0.75f, -0.1f),
                     RightFootRotation = new Vector4(0, 0, 0, 1),
 
                     LeftKneePosition = new Vector3(-1.5f, 0f, 1.5f),
@@ -785,7 +785,7 @@ namespace ExpandedContent.Tweaks.Miscellaneous.MountPatches {
                     LeftFootPosition = new Vector3(0.07f, 0.33f, 0.1f),
                     LeftFootRotation = new Vector4(0, 0, 0, 1),
 
-                    RightFootPosition = new Vector3(-0.07f, -0.33f, -0.1f),
+                    RightFootPosition = new Vector3(0.07f, 0.33f, -0.1f),
                     RightFootRotation = new Vector4(0, 0, 0, 1),
 
                     LeftKneePosition = new Vector3(0f, 0f, 0f),
@@ -797,12 +797,12 @@ namespace ExpandedContent.Tweaks.Miscellaneous.MountPatches {
                     PelvisPositionWeight = 1f,
                     PelvisRotationWeight = 1.0f,
                     FootsPositionWeight = 1.0f,
-                    FootsRotationWeight = 1f,
+                    FootsRotationWeight = 0f,
                     KneesBendWeight = 1.0f,
                     HandsPositionWeight = 0.95f,
                     HandsMappingWeight = 0.7f,
                 },
-                //Oread 
+                //Oread -DONE
                 new RaceMountOffsetsConfig.MountOffsetData() {
                     Races = new List<BlueprintRaceReference>() {
                         MountTools.RaceOptions.Oread
@@ -814,20 +814,20 @@ namespace ExpandedContent.Tweaks.Miscellaneous.MountPatches {
                     SaddleRootScale = Vector3.one,
                     SaddleRootRotation = new Vector4(0, 0, 0, 1),
 
-                    PelvisPosition = new Vector3(-0.16f, 0.08f, 0f),
+                    PelvisPosition = new Vector3(-0.09f, 0.16f, 0f),
                     PelvisRotation = new Vector4(0, 0, 0, 1),
 
-                    LeftFootPosition = new Vector3(-0.04f, 0.39f, 0.07f),
+                    LeftFootPosition = new Vector3(-0.11f, 0f, 0.11f),
                     LeftFootRotation = new Vector4(0, 0, 0, 1),
 
-                    RightFootPosition = new Vector3(0.04f, -0.39f, -0.07f),
+                    RightFootPosition = new Vector3(-0.11f, 0f, -0.11f),
                     RightFootRotation = new Vector4(0, 0, 0, 1),
 
                     LeftKneePosition = new Vector3(0f, 0f, 0.01f),
 
                     RightKneePosition = new Vector3(0f, 0f, -0.01f),
 
-                    HandsPosition = new Vector3(0f, 0.19f, 0f),
+                    HandsPosition = new Vector3(-0.21f, -0.28f, -0.04f),
 
                     PelvisPositionWeight = 1f,
                     PelvisRotationWeight = 1.0f,
