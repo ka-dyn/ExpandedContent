@@ -43,7 +43,6 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
             var DrakeSizeTiny = Resources.GetModBlueprint<BlueprintFeature>("DrakeSizeTiny");
             var UmbralDragonBarks = Resources.GetBlueprint<BlueprintUnitAsksList>("a526fcf667234d4e8bb2ba5376a0f91a");
 
-            var Melazmera = Resources.GetBlueprint<BlueprintUnit>("85c7a3fd80f93db43a3e588ba5f5f9bc");
 
 
             var DrakeBlackPortrait = Helpers.CreateBlueprint<BlueprintPortrait>("DrakeBlackPortrait", bp => {
@@ -82,7 +81,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                 bp.Color = AzataDragonUnit.Color;
                 bp.Alignment = Alignment.ChaoticEvil;
                 bp.m_Portrait = DrakeBlackPortrait.ToReference<BlueprintPortraitReference>();
-                bp.Prefab = Melazmera.Prefab;
+                bp.Prefab = FormOfTheDragonIIIBlackBuff.m_Prefab;
                 //bp.Visual = RedDragon.Visual;
                 bp.Visual = new UnitVisualParams() {
                     BloodType = BloodType.Common,
