@@ -3634,6 +3634,7 @@ namespace ExpandedContent.Tweaks.Spells {
 
             InvokeDeityAbility.AddToSpellList(SpellTools.SpellList.ClericSpellList, 6);
             InvokeDeityAbility.AddToSpellList(SpellTools.SpellList.HunterSpelllist, 4);
+            InvokeDeityAbility.AddToSpellList(SpellTools.SpellList.RangerSpellList, 4);
             InvokeDeityAbility.AddToSpellList(SpellTools.SpellList.InquisitorSpellList, 6);
             InvokeDeityAbility.AddToSpellList(SpellTools.SpellList.PaladinSpellList, 4);
             InvokeDeityAbility.AddToSpellList(SpellTools.SpellList.WarpriestSpelllist, 6);

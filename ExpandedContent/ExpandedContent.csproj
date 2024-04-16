@@ -237,6 +237,7 @@
     <Compile Include="Tweaks\Classes\DrakeClass\DrakeCompanionSelection.cs" />
     <Compile Include="Tweaks\Classes\Oathbreaker.cs" />
     <Compile Include="Tweaks\Classes\DreadKnight.cs" />
+    <Compile Include="Tweaks\Components\AutoMetamagicMagicSourceOnly.cs" />
     <Compile Include="Tweaks\Components\ContextConditionIsPetOwner.cs" />
     <Compile Include="Tweaks\Components\IgnoreDamageReductionOnAttackRangeType.cs" />
     <Compile Include="Tweaks\Components\CheckWeaponEnchant.cs" />
@@ -487,6 +488,9 @@
     <Compile Include="Tweaks\Spells\DanceOfAThousandCuts.cs" />
     <Compile Include="Tweaks\Spells\DanceOfAHundredCuts.cs" />
     <Compile Include="Tweaks\Spells\ClaySkin.cs" />
+    <Compile Include="Tweaks\Spells\BloodMist.cs" />
+    <Compile Include="Tweaks\Spells\DustOfTwilight.cs" />
+    <Compile Include="Tweaks\Spells\ArcaneConcordance.cs" />
     <Compile Include="Tweaks\Spells\PlantShape.cs" />
     <Compile Include="Tweaks\Spells\Shambler.cs" />
     <Compile Include="Tweaks\Spells\WoodenPhalanx.cs" />
