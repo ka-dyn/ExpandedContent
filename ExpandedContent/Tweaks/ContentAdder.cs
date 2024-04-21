@@ -132,6 +132,9 @@ namespace ExpandedContent.Tweaks {
                 Spells.PlantShape.AddPlantShape();
                 Spells.WoodenPhalanx.AddWoodenPhalanx();
                 Spells.Shambler.AddShambler();
+                Spells.ArcaneConcordance.AddArcaneConcordance();
+                Spells.DustOfTwilight.AddDustOfTwilight();
+                Spells.BloodMist.AddBloodMist();
 
                 Miscellaneous.AlchemistDiscoveries.MutagenDiscovery.AddMutagenDiscovery();
                 Miscellaneous.AlchemistDiscoveries.MindchemistSkillDiscovery.AddMindchemistSkillDiscovery();

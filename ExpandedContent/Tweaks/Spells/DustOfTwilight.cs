@@ -25,8 +25,9 @@ namespace ExpandedContent.Tweaks.Spells {
     internal class DustOfTwilight {
         public static void AddDustOfTwilight() {
 
-            var DustOfTwilightIcon = AssetLoader.LoadInternal("Skills", "Icon_DustOfTwilight.jpg");
-            var Icon_ScrollOfDustOfTwilight = AssetLoader.LoadInternal("Items", "Icon_ScrollOfDustOfTwilight.png");
+            //var DustOfTwilightIcon = AssetLoader.LoadInternal("Skills", "Icon_DustOfTwilight.jpg");
+            var DustOfTwilightIcon = AssetLoader.LoadInternal("Skills", "Icon_ArcherVolley.jpg");//Temp
+            //var Icon_ScrollOfDustOfTwilight = AssetLoader.LoadInternal("Items", "Icon_ScrollOfDustOfTwilight.png");
             var FatiguedBuff = Resources.GetBlueprintReference<BlueprintBuffReference>("e6f2fc5d73d88064583cb828801212f4");
             var GlitterdustBuff = Resources.GetBlueprintReference<BlueprintBuffReference>("03457e519288aad4085eae91918a76bf");
 
@@ -108,18 +109,33 @@ namespace ExpandedContent.Tweaks.Spells {
             var DustOfTwilightAbilitySpawnFx = DustOfTwilightAbility.GetComponent<AbilitySpawnFx>();
             DustOfTwilightAbilitySpawnFx.PrefabLink = DustOfTwilightAbilitySpawnFx.PrefabLink.CreateDynamicProxy(pfl => {
                 Main.Log($"Editing: {pfl}");
-                pfl.name = "DustOfTwilight_20feetAoE";
+                pfl.name = "DustOfTwilight_10feetAoE";
                 Main.Log($"{FxDebug.DumpGameObject(pfl.gameObject)}");
-                //Object.DestroyImmediate(pfl.transform.Find("Root /stone_cast").gameObject);
-                //Object.DestroyImmediate(pfl.transform.Find("Root /SnowFlakes").gameObject);
-                //Object.DestroyImmediate(pfl.transform.Find("Root /StonesBig").gameObject);
-                //Object.DestroyImmediate(pfl.transform.Find("Root /big_stones").gameObject);
-                //Object.DestroyImmediate(pfl.transform.Find("Root /DropsWithTrail (1)").gameObject);
-                //Object.DestroyImmediate(pfl.transform.Find("Root /flash").gameObject);
+                var pointlightnormal = pfl.transform.Find("Root/Point Light").GetComponent<Light>();
+                pointlightnormal.color = new Color(0.1448f, 0f, 0.1132f, 1f);
+                var pointlightAnimated = pfl.transform.Find("Root/Point Light").GetComponent<AnimatedLight>();
+                pointlightAnimated.m_Color = new Color(0.1448f, 0f, 0.1132f, 1f);
+                var Sparks_Start = pfl.transform.Find("Root/Sparks_Start").GetComponent<ParticleSystem>();
+                Sparks_Start.startColor = new Color(0.0566f, 0f, 0.2144f, 1f);
+                var StartSmoke_Particles = pfl.transform.Find("Root/StartSmoke_Particles").GetComponent<ParticleSystem>();
+                StartSmoke_Particles.startColor = new Color(0.0566f, 0f, 0.2144f, 1f);
+                var Smoke_Particles_Loop = pfl.transform.Find("Root/Smoke_Particles_Loop").GetComponent<ParticleSystem>();
+                Smoke_Particles_Loop.startColor = new Color(0.0566f, 0f, 0.2144f, 1f);
+                var Flash_Sparks = pfl.transform.Find("Root/Flash_Sparks").GetComponent<ParticleSystem>();
+                Flash_Sparks.startColor = new Color(0.0566f, 0f, 0.2144f, 1f);
+                var Sparks_Loop = pfl.transform.Find("Root/Sparks_Loop").GetComponent<ParticleSystem>();
+                Sparks_Loop.startColor = new Color(0.0566f, 0f, 0.2144f, 1f);
+                var Golden_Dust = pfl.transform.Find("Root/Golden_Dust").GetComponent<ParticleSystem>();
+                Golden_Dust.startColor = new Color(0.0566f, 0f, 0.2144f, 1f);
+                var Sparks_Geom_Loop = pfl.transform.Find("Root/Sparks_Geom_Loop").GetComponent<ParticleSystem>();
+                Sparks_Geom_Loop.startColor = new Color(0.0566f, 0f, 0.2144f, 1f);
+                var Sparks_Geom_Loop2 = pfl.transform.Find("Root/Sparks_Geom_Loop (2)").GetComponent<ParticleSystem>();
+                Sparks_Geom_Loop2.startColor = new Color(0.0566f, 0f, 0.2144f, 1f);
+
             });
 
-            var DustOfTwilightScroll = ItemTools.CreateScroll("ScrollOfDustOfTwilight", Icon_ScrollOfDustOfTwilight, DustOfTwilightAbility, 2, 3);
-            VenderTools.AddScrollToLeveledVenders(DustOfTwilightScroll);
+            //var DustOfTwilightScroll = ItemTools.CreateScroll("ScrollOfDustOfTwilight", Icon_ScrollOfDustOfTwilight, DustOfTwilightAbility, 2, 3);
+            //VenderTools.AddScrollToLeveledVenders(DustOfTwilightScroll);
             DustOfTwilightAbility.AddToSpellList(SpellTools.SpellList.BardSpellList, 2);
             DustOfTwilightAbility.AddToSpellList(SpellTools.SpellList.BloodragerSpellList, 2);
             DustOfTwilightAbility.AddToSpellList(SpellTools.SpellList.WizardSpellList, 2);

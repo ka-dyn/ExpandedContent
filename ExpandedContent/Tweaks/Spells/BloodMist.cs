@@ -32,10 +32,11 @@ using Kingmaker.Visual.Animation.Kingmaker.Actions;
 namespace ExpandedContent.Tweaks.Spells {
     internal class BloodMist {
         public static void AddBloodMist() {
-            var BloodMistIcon = AssetLoader.LoadInternal("Skills", "Icon_BloodMist.jpg");
-            var Icon_ScrollOfBloodMist = AssetLoader.LoadInternal("Items", "Icon_ScrollOfBloodMist.png");
+            //var BloodMistIcon = AssetLoader.LoadInternal("Skills", "Icon_BloodMist.jpg");
+            var BloodMistIcon = AssetLoader.LoadInternal("Skills", "Icon_DraconicExploitType.jpg");
+            //var Icon_ScrollOfBloodMist = AssetLoader.LoadInternal("Items", "Icon_ScrollOfBloodMist.png");
 
-            var BlurBuff = Resources.GetBlueprint<BlueprintBuff>("07054bad6d27989428f90df1dd21d155");
+            var BlurBuff = Resources.GetBlueprint<BlueprintBuff>("dd3ad347240624d46a11a092b4dd4674");
 
 
             var BloodMistConcealmentBuff = Helpers.CreateBuff("BloodMistConcealmentBuff", bp => {
@@ -57,17 +58,12 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.m_Flags = BlueprintBuff.Flags.IsFromSpell;
                 bp.Stacking = StackingType.Replace;
             });
-            BloodMistConcealmentBuff.FxOnStart = BloodMistConcealmentBuff.FxOnStart.CreateDynamicProxy(pfl => {
-                Main.Log($"Editing: {pfl}");
-                pfl.name = "BloodMistConcealmentFX";
-                Main.Log($"{FxDebug.DumpGameObject(pfl.gameObject)}");
-                //Object.DestroyImmediate(pfl.transform.Find("Root /stone_cast").gameObject);
-                //Object.DestroyImmediate(pfl.transform.Find("Root /SnowFlakes").gameObject);
-                //Object.DestroyImmediate(pfl.transform.Find("Root /StonesBig").gameObject);
-                //Object.DestroyImmediate(pfl.transform.Find("Root /big_stones").gameObject);
-                //Object.DestroyImmediate(pfl.transform.Find("Root /DropsWithTrail (1)").gameObject);
-                //Object.DestroyImmediate(pfl.transform.Find("Root /flash").gameObject);
-            });
+            //BloodMistConcealmentBuff.FxOnStart = BloodMistConcealmentBuff.FxOnStart.CreateDynamicProxy(pfl => {
+            //    Main.Log($"Editing: {pfl}");
+            //    pfl.name = "BloodMistConcealmentFX";
+            //    Main.Log($"{FxDebug.DumpGameObject(pfl.gameObject)}");
+                
+            //});
 
             var BloodMistAttackBuff = Helpers.CreateBuff("BloodMistAttackBuff", bp => {
                 bp.SetName("Blood Mist Concealment");
@@ -234,17 +230,12 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.CanBeUsedInTacticalCombat = false;
                 bp.m_TickRoundAfterSpawn = false;
             });
-            BloodMistArea.Fx = BloodMistArea.Fx.CreateDynamicProxy(pfl => {
-                Main.Log($"Editing: {pfl}");
-                pfl.name = "BloodMist_40feetAoE";
-                Main.Log($"{FxDebug.DumpGameObject(pfl.gameObject)}");
-                //Object.DestroyImmediate(pfl.transform.Find("Root /stone_cast").gameObject);
-                //Object.DestroyImmediate(pfl.transform.Find("Root /SnowFlakes").gameObject);
-                //Object.DestroyImmediate(pfl.transform.Find("Root /StonesBig").gameObject);
-                //Object.DestroyImmediate(pfl.transform.Find("Root /big_stones").gameObject);
-                //Object.DestroyImmediate(pfl.transform.Find("Root /DropsWithTrail (1)").gameObject);
-                //Object.DestroyImmediate(pfl.transform.Find("Root /flash").gameObject);
-            });
+            //BloodMistArea.Fx = BloodMistArea.Fx.CreateDynamicProxy(pfl => {
+            //    Main.Log($"Editing: {pfl}");
+            //    pfl.name = "BloodMist_40feetAoE";
+            //    Main.Log($"{FxDebug.DumpGameObject(pfl.gameObject)}");
+                
+            //});
 
             var BloodMistAbility = Helpers.CreateBlueprint<BlueprintAbility>("BloodMistAbility", bp => {
                 bp.SetName("Blood Mist");
@@ -317,8 +308,8 @@ namespace ExpandedContent.Tweaks.Spells {
             
 
 
-            var BloodMistScroll = ItemTools.CreateScroll("ScrollOfBloodMist", Icon_ScrollOfBloodMist, BloodMistAbility, 8, 15);
-            VenderTools.AddScrollToLeveledVenders(BloodMistScroll);
+            //var BloodMistScroll = ItemTools.CreateScroll("ScrollOfBloodMist", Icon_ScrollOfBloodMist, BloodMistAbility, 8, 15);
+            //VenderTools.AddScrollToLeveledVenders(BloodMistScroll);
             BloodMistAbility.AddToSpellList(SpellTools.SpellList.DruidSpellList, 8);
             BloodMistAbility.AddToSpellList(SpellTools.SpellList.ShamanSpelllist, 8);
         }
