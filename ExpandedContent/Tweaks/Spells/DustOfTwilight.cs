@@ -110,7 +110,7 @@ namespace ExpandedContent.Tweaks.Spells {
             DustOfTwilightAbilitySpawnFx.PrefabLink = DustOfTwilightAbilitySpawnFx.PrefabLink.CreateDynamicProxy(pfl => {
                 Main.Log($"Editing: {pfl}");
                 pfl.name = "DustOfTwilight_10feetAoE";
-                Main.Log($"{FxDebug.DumpGameObject(pfl.gameObject)}");
+                //Main.Log($"{FxDebug.DumpGameObject(pfl.gameObject)}");
                 var pointlightnormal = pfl.transform.Find("Root/Point Light").GetComponent<Light>();
                 pointlightnormal.color = new Color(0.1448f, 0f, 0.1132f, 1f);
                 var pointlightAnimated = pfl.transform.Find("Root/Point Light").GetComponent<AnimatedLight>();

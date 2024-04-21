@@ -3274,7 +3274,22 @@
     "DrakeRiderArchetype": "02f874ba-90b3-4712-b20c-6e4c8a19257b",
     "DrakeRiderBondFeature": "e7817c7d-813e-46a4-959f-35cfa5d1c53d",
     "DrakeRiderMountTrainingFeature": "2f74db96-5930-42cd-b3d0-b5272fac8410",
-    "DrakeRiderShakeItOffFeature": "2509fa20-af2f-47ef-b7e0-690aede515f7"
+    "DrakeRiderShakeItOffFeature": "2509fa20-af2f-47ef-b7e0-690aede515f7",
+
+    "ArcaneConcordanceAbility": "135c98e1-a50e-42eb-8b6c-e3ff8c776d19",
+    "BloodMistAbility": "90f174a2-7acf-4dbd-a6e1-98a0cc0e59e3",
+    "BloodMistArea": "158ccdce-e3fb-4a34-b163-0f07a20be8a6",
+    "BloodMistAttackBuff": "a560aa7e-9209-46e4-ab24-78e2d54563eb",
+    "BloodMistConcealmentBuff": "61e9f530-94f1-4be0-8c68-cf1d9b483b88",
+    "DustOfTwilightAbility": "cc055016-ef11-4931-aee2-463200814e53",
+    "ExtendArcaneConcordanceAbility": "24181e98-99c0-410a-bf6a-0d86e544f915",
+    "ExtendArcaneConcordanceArea": "8325037e-016c-4a26-81b7-9f65bdea58ed",
+    "ExtendArcaneConcordanceEffectBuff": "8c494a7e-1bb6-480c-a3fb-4a7e78987908",
+    "ExtendArcaneConcordanceSelfBuff": "9620a999-10fe-4721-a3bc-ddfe0525d5b9",
+    "ReachArcaneConcordanceAbility": "ee566df8-edd1-4488-a167-d4df815fdf6a",
+    "ReachArcaneConcordanceArea": "88735a0c-3f88-41ff-8e35-6856fefb93d9",
+    "ReachArcaneConcordanceEffectBuff": "360d62e2-6c32-4990-89f8-f8ac71eba6ca",
+    "ReachArcaneConcordanceSelfBuff": "54c34dee-0e1f-4d07-a131-042d738eeb2a"
 
 
 

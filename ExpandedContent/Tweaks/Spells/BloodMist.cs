@@ -28,6 +28,7 @@ using Kingmaker.UnitLogic.Mechanics.Conditions;
 using Kingmaker.UnitLogic.Mechanics.Properties;
 using Kingmaker.Utility;
 using Kingmaker.Visual.Animation.Kingmaker.Actions;
+using UnityEngine;
 
 namespace ExpandedContent.Tweaks.Spells {
     internal class BloodMist {
@@ -52,7 +53,7 @@ namespace ExpandedContent.Tweaks.Spells {
                     c.DistanceGreater = 0.Feet();
                     c.OnlyForAttacks = false;
                 });
-                bp.FxOnStart = new PrefabLink() { AssetId = "3cf209e5299921349a1c159f35cfa369" }; //Glitterdust particle coating
+                bp.FxOnStart = BlurBuff.FxOnStart; //blur
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = false;
                 bp.m_Flags = BlueprintBuff.Flags.IsFromSpell;
@@ -66,7 +67,7 @@ namespace ExpandedContent.Tweaks.Spells {
             //});
 
             var BloodMistAttackBuff = Helpers.CreateBuff("BloodMistAttackBuff", bp => {
-                bp.SetName("Blood Mist Concealment");
+                bp.SetName("Blood Mist");
                 bp.SetDescription("Any creature within the mist that fails it's save take 1d4 points of Wisdom damage and become enraged, attacking any " +
                     "creatures it detects nearby (as the “attack nearest creature” result of the confused condition). An enraged creature remains so " +
                     "for one minute per caster level. A creature only needs to save once each time it is within the mist (though leaving and returning " +
@@ -230,12 +231,29 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.CanBeUsedInTacticalCombat = false;
                 bp.m_TickRoundAfterSpawn = false;
             });
-            //BloodMistArea.Fx = BloodMistArea.Fx.CreateDynamicProxy(pfl => {
-            //    Main.Log($"Editing: {pfl}");
-            //    pfl.name = "BloodMist_40feetAoE";
-            //    Main.Log($"{FxDebug.DumpGameObject(pfl.gameObject)}");
-                
-            //});
+            BloodMistArea.Fx = BloodMistArea.Fx.CreateDynamicProxy(pfl => {
+                Main.Log($"Editing: {pfl}");
+                pfl.name = "BloodMist_40feetAoE";
+                //Main.Log($"{FxDebug.DumpGameObject(pfl.gameObject)}");
+                pfl.transform.localScale = new(1.75f, 1.0f, 1.75f);
+                var Fog_Loop = pfl.transform.Find("Root/Fog_Loop (1)/Fog_Loop").GetComponent<ParticleSystem>();
+                Fog_Loop.startColor = new Color(1f, 0f, 0f, 1f);
+                Fog_Loop.scalingMode = ParticleSystemScalingMode.Hierarchy;
+                var Fog_Loop_1 = pfl.transform.Find("Root/Fog_Loop (1)").GetComponent<ParticleSystem>();
+                Fog_Loop_1.startColor = new Color(1f, 0f, 0f, 1f);
+                Fog_Loop_1.scalingMode = ParticleSystemScalingMode.Hierarchy;
+                var Smoke_Particles_Loop = pfl.transform.Find("Root/Smoke_Particles_Loop").GetComponent<ParticleSystem>();
+                Smoke_Particles_Loop.startColor = new Color(1f, 0f, 0f, 1f);
+                var StartSmoke_Fill = pfl.transform.Find("Root/StartSmoke_Fill").GetComponent<ParticleSystem>();
+                StartSmoke_Fill.startColor = new Color(1f, 0f, 0f, 0.8f);
+                StartSmoke_Fill.scalingMode = ParticleSystemScalingMode.Hierarchy;
+                var StartSmoke_Fill_1 = pfl.transform.Find("Root/StartSmoke_Fill (1)").GetComponent<ParticleSystem>();
+                StartSmoke_Fill_1.startColor = new Color(1f, 0f, 0f, 0.8f);
+                StartSmoke_Fill_1.scalingMode = ParticleSystemScalingMode.Hierarchy;
+                var StartSmoke_Particles = pfl.transform.Find("Root/StartSmoke_Particles").GetComponent<ParticleSystem>();
+                StartSmoke_Particles.startColor = new Color(1f, 0f, 0f, 0.8f);
+                StartSmoke_Particles.scalingMode = ParticleSystemScalingMode.Hierarchy;
+            });
 
             var BloodMistAbility = Helpers.CreateBlueprint<BlueprintAbility>("BloodMistAbility", bp => {
                 bp.SetName("Blood Mist");
@@ -271,12 +289,9 @@ namespace ExpandedContent.Tweaks.Spells {
                             OnUnit = false
                         });
                 });
-                bp.AddComponent<AbilityTargetsAround>(c => {
+                bp.AddComponent<AbilityAoERadius>(c => {
                     c.m_Radius = 40.Feet();
                     c.m_TargetType = TargetType.Any;
-                    c.m_IncludeDead = false;
-                    c.m_Condition = new ConditionsChecker();
-                    c.m_SpreadSpeed = 0.Feet();
                 });
                 bp.AddComponent<SpellComponent>(c => {
                     c.School = SpellSchool.Conjuration;

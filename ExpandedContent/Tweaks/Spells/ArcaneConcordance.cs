@@ -204,14 +204,14 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.AggroEnemies = false;
                 bp.AffectEnemies = true;
                 bp.Shape = AreaEffectShape.Cylinder;
-                bp.Size = 13.Feet();
+                bp.Size = 10.Feet();
                 bp.Fx = new PrefabLink() { AssetId = "6b75812d8c3b0d34f9bc204d6babc2a1" }; //Enchantment00_Alignment_Aoe_30Feet
                 bp.AddComponent(AuraUtils.CreateUnconditionalAuraEffect(ReachArcaneConcordanceEffectBuff.ToReference<BlueprintBuffReference>()));
             });
             ReachArcaneConcordanceArea.Fx = ReachArcaneConcordanceArea.Fx.CreateDynamicProxy(pfl => {
                 Main.Log($"Editing: {pfl}");
                 pfl.name = "ArcaneConcordanceReach_10feetAoE";
-                Main.Log($"{FxDebug.DumpGameObject(pfl.gameObject)}");
+                //Main.Log($"{FxDebug.DumpGameObject(pfl.gameObject)}");
                 pfl.transform.localScale = new(0.37f, 1.0f, 0.37f);
                 Object.DestroyImmediate(pfl.transform.Find("Ground (1)/StartWave/Waves").gameObject);
                 Object.DestroyImmediate(pfl.transform.Find("Ground (1)/StartWave/BigWave_mid").gameObject);

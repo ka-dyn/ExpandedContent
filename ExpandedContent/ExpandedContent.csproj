@@ -495,6 +495,7 @@
     <Compile Include="Tweaks\Spells\DustOfTwilight.cs" />
     <Compile Include="Tweaks\Spells\ArcaneConcordance.cs" />
     <Compile Include="Tweaks\Spells\PlantShape.cs" />
+    <Compile Include="Tweaks\Spells\KingsCastle.cs" />
     <Compile Include="Tweaks\Spells\Shambler.cs" />
     <Compile Include="Tweaks\Spells\WoodenPhalanx.cs" />
     <Compile Include="Tweaks\Spells\Shillelagh.cs" />
