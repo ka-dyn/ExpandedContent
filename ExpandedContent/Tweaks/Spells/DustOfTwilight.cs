@@ -25,9 +25,8 @@ namespace ExpandedContent.Tweaks.Spells {
     internal class DustOfTwilight {
         public static void AddDustOfTwilight() {
 
-            //var DustOfTwilightIcon = AssetLoader.LoadInternal("Skills", "Icon_DustOfTwilight.jpg");
-            var DustOfTwilightIcon = AssetLoader.LoadInternal("Skills", "Icon_ArcherVolley.jpg");//Temp
-            //var Icon_ScrollOfDustOfTwilight = AssetLoader.LoadInternal("Items", "Icon_ScrollOfDustOfTwilight.png");
+            var DustOfTwilightIcon = AssetLoader.LoadInternal("Skills", "Icon_DustOfTwilight.jpg");
+            var Icon_ScrollOfDustOfTwilight = AssetLoader.LoadInternal("Items", "Icon_ScrollOfDustOfTwilight.png");
             var FatiguedBuff = Resources.GetBlueprintReference<BlueprintBuffReference>("e6f2fc5d73d88064583cb828801212f4");
             var GlitterdustBuff = Resources.GetBlueprintReference<BlueprintBuffReference>("03457e519288aad4085eae91918a76bf");
 
@@ -134,8 +133,8 @@ namespace ExpandedContent.Tweaks.Spells {
 
             });
 
-            //var DustOfTwilightScroll = ItemTools.CreateScroll("ScrollOfDustOfTwilight", Icon_ScrollOfDustOfTwilight, DustOfTwilightAbility, 2, 3);
-            //VenderTools.AddScrollToLeveledVenders(DustOfTwilightScroll);
+            var DustOfTwilightScroll = ItemTools.CreateScroll("ScrollOfDustOfTwilight", Icon_ScrollOfDustOfTwilight, DustOfTwilightAbility, 2, 3);
+            VenderTools.AddScrollToLeveledVenders(DustOfTwilightScroll);
             DustOfTwilightAbility.AddToSpellList(SpellTools.SpellList.BardSpellList, 2);
             DustOfTwilightAbility.AddToSpellList(SpellTools.SpellList.BloodragerSpellList, 2);
             DustOfTwilightAbility.AddToSpellList(SpellTools.SpellList.WizardSpellList, 2);

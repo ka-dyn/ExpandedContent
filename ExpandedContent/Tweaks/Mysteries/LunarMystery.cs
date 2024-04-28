@@ -961,7 +961,6 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 //LevelEntry added later                
                 bp.GiveFeaturesForPreviousLevels = true;
             });
-
             //FormOfTheBeast
 
             //EyeOfTheMoon
@@ -974,8 +973,71 @@ namespace ExpandedContent.Tweaks.Mysteries {
 
             //PrimalCompanion
 
-            //PropheticArmor (Natures Whispers)
-
+            //PropheticArmor
+            var OracleRevelationNatureWhispers = Resources.GetBlueprint<BlueprintFeature>("3d2cd23869f0d98458169b88738f3c32");
+            var OracleRevelationPropheticArmorBuff = Helpers.CreateBuff("OracleRevelationPropheticArmorBuff", bp => {
+                bp.AddComponent<ReplaceStatBaseAttribute>(c => {
+                    c.TargetStat = StatType.AC;
+                    c.BaseAttributeReplacement = StatType.Charisma;
+                    c.ReplaceIfHigher = true;
+                });
+                bp.AddComponent<ReplaceStatBaseAttribute>(c => {
+                    c.TargetStat = StatType.SaveReflex;
+                    c.BaseAttributeReplacement = StatType.Charisma;
+                    c.ReplaceIfHigher = true;
+                });
+                bp.IsClassFeature = true;
+                bp.m_Flags = BlueprintBuff.Flags.HiddenInUi | BlueprintBuff.Flags.StayOnDeath;
+            });
+            var OracleRevelationPropheticArmorFeature = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationPropheticArmorFeature", bp => {
+                bp.SetName("Prophetic Armor");
+                bp.SetDescription("You are so in tune with your primal nature that your instincts often act to save you from danger that your civilized mind isn’t even aware of. " +
+                    "You may use your Charisma modifier (instead of your Dexterity modifier) as part of your Armor Class and all Reflex saving throws. Your armor’s maximum " +
+                    "Dexterity bonus applies to your Charisma, instead.");
+                bp.AddComponent<AddFactContextActions>(c => {
+                    c.Activated = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = OracleRevelationPropheticArmorBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                m_IsExtendable = true,
+                            },
+                            AsChild = true,
+                            SameDuration = true
+                        }
+                        );
+                    c.NewRound = Helpers.CreateActionList();
+                    c.Deactivated = Helpers.CreateActionList();
+                });
+                bp.AddComponent<PrerequisiteFeaturesFromList>(c => {
+                    c.m_Features = new BlueprintFeatureReference[] {
+                        OracleLunarMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        EnlightnedPhilosopherLunarMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        DivineHerbalistLunarMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        OceansEchoLunarMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        RavenerHunterLunarMysteryProgression.ToReference<BlueprintFeatureReference>()
+                    };
+                    c.Amount = 1;
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.CheckInProgression = false;
+                    c.HideInUI = true;
+                    c.m_Feature = OracleRevelationNatureWhispers.ToReference<BlueprintFeatureReference>();
+                });
+                bp.Groups = new FeatureGroup[] { FeatureGroup.OracleRevelation };
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+            OracleRevelationNatureWhispers.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.CheckInProgression = false;
+                c.HideInUI = true;
+                c.m_Feature = OracleRevelationPropheticArmorFeature.ToReference<BlueprintFeatureReference>();
+            });
+            OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationPropheticArmorFeature.ToReference<BlueprintFeatureReference>());
             //TouchOfTheMoon
 
 
@@ -992,7 +1054,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.Group = FeatureGroup.None;
                 bp.Groups = new FeatureGroup[0];
                 bp.IsClassFeature = true;
-                //bp.AddFeatures();
+                bp.AddFeatures(OracleRevelationPropheticArmorFeature);
             });
             RavenerHunterLunarMysteryProgression.LevelEntries = new LevelEntry[] {
                  Helpers.LevelEntry(1, RavenerHunterLunarRevelationSelection),
