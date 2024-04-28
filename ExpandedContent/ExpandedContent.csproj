@@ -1540,7 +1540,6 @@
     <Content Include="Assets\Potions\Form06_Yellow_Simple.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\Skills\Disintegrate.png" />
     <Content Include="Assets\Skills\DismentiomDoor.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
