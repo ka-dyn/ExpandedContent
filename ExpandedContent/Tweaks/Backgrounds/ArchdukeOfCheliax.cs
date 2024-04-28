@@ -83,14 +83,17 @@ namespace ExpandedContent.Tweaks.Backgrounds {
                 bp.AddComponent<ReplaceStatBaseAttribute>(c => {
                     c.TargetStat = StatType.SkillLoreNature;
                     c.BaseAttributeReplacement = StatType.Intelligence;
+                    c.ReplaceIfHigher = true;
                 });
                 bp.AddComponent<ReplaceStatBaseAttribute>(c => {
                     c.TargetStat = StatType.SkillLoreReligion;
                     c.BaseAttributeReplacement = StatType.Intelligence;
+                    c.ReplaceIfHigher = true;
                 });
                 bp.AddComponent<ReplaceStatBaseAttribute>(c => {
                     c.TargetStat = StatType.Initiative;
                     c.BaseAttributeReplacement = StatType.Intelligence;
+                    c.ReplaceIfHigher = true;
                 });
                 bp.AddComponent<AddStatBonus>(c => {
                     c.Stat = StatType.Initiative;

@@ -192,8 +192,8 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     "blessings and granted powers.");
                 bp.RemoveSpellbook = true;
                 bp.OverrideAttributeRecommendations = true;
-                bp.RecommendedAttributes = bp.RecommendedAttributes.AppendToArray(StatType.Strength, StatType.Constitution, StatType.Wisdom, StatType.Charisma);
-                bp.NotRecommendedAttributes = bp.NotRecommendedAttributes.AppendToArray(StatType.Dexterity, StatType.Intelligence);
+                bp.RecommendedAttributes = new StatType[] { StatType.Strength, StatType.Constitution, StatType.Wisdom, StatType.Charisma };
+                bp.NotRecommendedAttributes = new StatType[] { StatType.Intelligence };
                 bp.RemoveFeatures = new LevelEntry[] {
                     Helpers.LevelEntry(5, PaladinDivineBondSelection)
                 };

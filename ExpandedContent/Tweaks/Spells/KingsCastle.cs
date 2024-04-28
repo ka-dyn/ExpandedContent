@@ -56,7 +56,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.EffectOnEnemy = AbilityEffectOnUnit.None;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Point;
                 bp.ActionType = UnitCommand.CommandType.Standard;
-                bp.AvailableMetamagic = Metamagic.CompletelyNormal;
+                bp.AvailableMetamagic = Metamagic.CompletelyNormal | Metamagic.Quicken;
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });

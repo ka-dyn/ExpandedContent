@@ -44,8 +44,8 @@ using UnityEngine;
 namespace ExpandedContent.Tweaks.Spells {
     internal class ArcaneConcordance {
         public static void AddArcaneConcordance() {
-            //var ArcaneConcordanceIcon = AssetLoader.LoadInternal("Skills", "Icon_ArcaneConcordance.jpg");
-            var ArcaneConcordanceIcon = AssetLoader.LoadInternal("Skills", "Icon_DruidClaws.jpg"); //temp
+            var ArcaneConcordanceIcon = AssetLoader.LoadInternal("Skills", "Icon_ArcaneConcordance.jpg");
+            var Icon_ScrollOfArcaneConcordance = AssetLoader.LoadInternal("Items", "Icon_ScrollOfArcaneConcordance.png");
 
             //Main ability
             var ArcaneConcordanceAbility = Helpers.CreateBlueprint<BlueprintAbility>("ArcaneConcordanceAbility", bp => {
@@ -289,6 +289,10 @@ namespace ExpandedContent.Tweaks.Spells {
             });
             ArcaneConcordanceAbility.GetComponent<AbilityVariants>().m_Variants = ArcaneConcordanceAbility.GetComponent<AbilityVariants>().m_Variants.AppendToArray(ReachArcaneConcordanceAbility.ToReference<BlueprintAbilityReference>());
             #endregion
+
+            var ArcaneConcordanceScroll = ItemTools.CreateScroll("ScrollOfArcaneConcordance", Icon_ScrollOfArcaneConcordance, ArcaneConcordanceAbility, 3, 7);
+            VenderTools.AddScrollToLeveledVenders(ArcaneConcordanceScroll);
+
             ArcaneConcordanceAbility.AddToSpellList(SpellTools.SpellList.BardSpellList, 3);
             ArcaneConcordanceAbility.AddToSpellList(SpellTools.SpellList.AzataMythicSpelllist, 3);
             ArcaneConcordanceAbility.AddToSpellList(SpellTools.SpellList.AeonSpellList, 3);

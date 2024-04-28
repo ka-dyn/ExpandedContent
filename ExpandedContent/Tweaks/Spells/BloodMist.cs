@@ -33,9 +33,8 @@ using UnityEngine;
 namespace ExpandedContent.Tweaks.Spells {
     internal class BloodMist {
         public static void AddBloodMist() {
-            //var BloodMistIcon = AssetLoader.LoadInternal("Skills", "Icon_BloodMist.jpg");
-            var BloodMistIcon = AssetLoader.LoadInternal("Skills", "Icon_DraconicExploitType.jpg");
-            //var Icon_ScrollOfBloodMist = AssetLoader.LoadInternal("Items", "Icon_ScrollOfBloodMist.png");
+            var BloodMistIcon = AssetLoader.LoadInternal("Skills", "Icon_BloodMist.jpg");
+            var Icon_ScrollOfBloodMist = AssetLoader.LoadInternal("Items", "Icon_ScrollOfBloodMist.png");
 
             var BlurBuff = Resources.GetBlueprint<BlueprintBuff>("dd3ad347240624d46a11a092b4dd4674");
 
@@ -319,12 +318,9 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = Helpers.CreateString("BloodMist.SavingThrow", "Fortitude partial");
             });
-
             
-
-
-            //var BloodMistScroll = ItemTools.CreateScroll("ScrollOfBloodMist", Icon_ScrollOfBloodMist, BloodMistAbility, 8, 15);
-            //VenderTools.AddScrollToLeveledVenders(BloodMistScroll);
+            var BloodMistScroll = ItemTools.CreateScroll("ScrollOfBloodMist", Icon_ScrollOfBloodMist, BloodMistAbility, 8, 15);
+            VenderTools.AddScrollToLeveledVenders(BloodMistScroll);
             BloodMistAbility.AddToSpellList(SpellTools.SpellList.DruidSpellList, 8);
             BloodMistAbility.AddToSpellList(SpellTools.SpellList.ShamanSpelllist, 8);
         }

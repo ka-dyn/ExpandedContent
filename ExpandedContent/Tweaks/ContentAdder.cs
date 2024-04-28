@@ -135,6 +135,9 @@ namespace ExpandedContent.Tweaks {
                 Spells.ArcaneConcordance.AddArcaneConcordance();
                 Spells.DustOfTwilight.AddDustOfTwilight();
                 Spells.BloodMist.AddBloodMist();
+                Spells.KingsCastle.AddKingsCastle();
+                Spells.Moonstruck.AddMoonstruck();
+
 
                 Miscellaneous.AlchemistDiscoveries.MutagenDiscovery.AddMutagenDiscovery();
                 Miscellaneous.AlchemistDiscoveries.MindchemistSkillDiscovery.AddMindchemistSkillDiscovery();
