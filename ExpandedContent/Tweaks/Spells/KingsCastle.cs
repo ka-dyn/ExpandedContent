@@ -27,7 +27,8 @@ namespace ExpandedContent.Tweaks.Spells {
         public static void AddKingsCastle() {
 
             var EmergencySwapAbility = Resources.GetBlueprint<BlueprintAbility>("b50ca9b5d6292fb42b8eab8e5d64842d");
-            var Icon_ScrollOfKingsCastle = AssetLoader.LoadInternal("Items", "Icon_ScrollOfKingsCastle.png");
+            var KingsCastleIcon = AssetLoader.LoadInternal("Skills", "DismentiomDoor.png");
+            var Icon_ScrollOfKingsCastle = AssetLoader.LoadInternal("Items", "dism_door_scroll.png");
 
 
             

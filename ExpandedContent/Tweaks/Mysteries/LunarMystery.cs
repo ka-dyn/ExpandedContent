@@ -8,8 +8,10 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items.Ecnchantments;
+using Kingmaker.Blueprints.Items.Weapons;
 using Kingmaker.Craft;
 using Kingmaker.Designers.EventConditionActionSystem.Actions;
+using Kingmaker.Designers.Mechanics.Buffs;
 using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.ElementsSystem;
 using Kingmaker.EntitySystem.Stats;
@@ -28,6 +30,7 @@ using Kingmaker.UnitLogic.Abilities.Components.Base;
 using Kingmaker.UnitLogic.Abilities.Components.CasterCheckers;
 using Kingmaker.UnitLogic.Abilities.Components.TargetCheckers;
 using Kingmaker.UnitLogic.ActivatableAbilities;
+using Kingmaker.UnitLogic.Buffs;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.Commands.Base;
 using Kingmaker.UnitLogic.FactLogic;
@@ -55,13 +58,11 @@ namespace ExpandedContent.Tweaks.Mysteries {
             var RavenerHunterArchetype = Resources.GetModBlueprint<BlueprintArchetype>("RavenerHunterArchetype");
             var PlantType = Resources.GetBlueprint<BlueprintFeature>("706e61781d692a042b35941f14bc41c5");
             var LunarMysteryIcon = AssetLoader.LoadInternal("Skills", "Icon_OracleLunarMystery.png");
-            var ThornBurstIcon = AssetLoader.LoadInternal("Skills", "Icon_ThornBurst.jpg"); //May change this as it looks rubbish
-            var LignificationIcon = AssetLoader.LoadInternal("Skills", "Icon_Lignification.jpg");
-            var LunarenWeaponEnchantIcon = AssetLoader.LoadInternal("Skills", "Icon_LunarenWeaponEnchant.jpg"); //May change this as it looks rubbish
-            var OracleRevelationLunarArmorIcon = AssetLoader.LoadInternal("Skills", "Icon_OracleRevelationLunarArmor.jpg");
+
             var ImmunityToMindAffecting = Resources.GetBlueprint<BlueprintFeature>("3eb606c0564d0814ea01a824dbe42fb0");
             var MasterShapeshifter = Resources.GetBlueprint<BlueprintFeature>("934670ef88b281b4da5596db8b00df2f");
-
+            var BestialHowlFeature = Resources.GetBlueprintReference<BlueprintFeatureReference>("87ab3793abc347d5a47fc6b7fec8dfcb");
+            var WerewolfBleedFeature = Resources.GetBlueprintReference<BlueprintFeatureReference>("502d36f8b703420397ca35d5f523b8f0");
             var ShiftersRush = Resources.GetBlueprintReference<BlueprintBuffReference>("c3365d5a75294b9b879c587668620bd4");
             var ShifterWildShapeWereRatBuff = Resources.GetBlueprint<BlueprintBuff>("9261713e33624de599d6183d6b7cf2e4");
             var ShifterWildShapeWereTigerBuff = Resources.GetBlueprint<BlueprintBuff>("1bc5f96600c74a079c8a0c6dafeb3320");
@@ -257,9 +258,244 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     ResourceBonusStat = StatType.Unknown
                 };
             });
-
-
-
+            var OracleLunarFinalRevelationWolfBleed = Helpers.CreateBlueprint<BlueprintBuff>("OracleLunarFinalRevelationWolfBleed", bp => {
+                bp.SetName("Wolves Wounds");
+                bp.SetDescription("Claw wounds cause the target to bleed for 5 damage each round, stacking up to 5 times. Bleeding can be stopped through the application " +
+                    "of any {g|Encyclopedia:Spell}spell{/g} that cures hit point damage.");
+                bp.m_Icon = LunarMysteryIcon;
+                bp.AddComponent<AddFactContextActions>(c => {
+                    c.Activated = Helpers.CreateActionList();
+                    c.Deactivated = Helpers.CreateActionList();
+                    c.NewRound = Helpers.CreateActionList(
+                        new ContextActionDealDamage() {
+                            m_Type = ContextActionDealDamage.Type.Damage,
+                            DamageType = new DamageTypeDescription() {
+                                Common = new DamageTypeDescription.CommomData() {
+                                    Reality = 0,
+                                    Alignment = 0,
+                                    Precision = false
+                                },
+                                Physical = new DamageTypeDescription.PhysicalData() {
+                                    Material = 0,
+                                    Form = PhysicalDamageForm.Slashing,
+                                    Enhancement = 0,
+                                    EnhancementTotal = 0
+                                },
+                                Energy = DamageEnergyType.Fire,
+                                Type = DamageType.Direct
+                            },
+                            Drain = false,
+                            AbilityType = StatType.Unknown,
+                            Duration = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                m_IsExtendable = true,
+                            },
+                            PreRolledSharedValue = AbilitySharedValue.Damage,
+                            Value = new ContextDiceValue() {
+                                DiceType = DiceType.One,
+                                DiceCountValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 5,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                            },
+                            ResultSharedValue = AbilitySharedValue.Damage,
+                            CriticalSharedValue = AbilitySharedValue.Damage
+                        },
+                        new Conditional() {
+                            ConditionsChecker = new ConditionsChecker() {
+                                Operation = Operation.And,
+                                Conditions = new Condition[] {
+                                    new ContextConditionIsInCombat() {
+                                        Not = false
+                                    }
+                                }
+                            },
+                            IfTrue = Helpers.CreateActionList(),
+                            IfFalse = Helpers.CreateActionList(
+                                new Conditional() {
+                                    ConditionsChecker = new ConditionsChecker() {
+                                        Operation = Operation.And,
+                                        Conditions = new Condition[] {
+                                            new ContextConditionIsPartyMember() {
+                                                Not = false
+                                            }
+                                        }
+                                    },
+                                    IfTrue = Helpers.CreateActionList(),
+                                    IfFalse = Helpers.CreateActionList(
+                                        new ContextActionRemoveSelf()
+                                        )
+                                }
+                                )
+                        }
+                        );
+                });
+                bp.AddComponent<AddHealTrigger>(c => {
+                    c.Action = Helpers.CreateActionList(
+                        new ContextActionRemoveSelf()
+                        );
+                    c.OnHealDamage = true;
+                });
+                bp.AddComponent<CombatStateTrigger>(c => {
+                    c.CombatEndActions = Helpers.CreateActionList(
+                        new ContextActionRemoveSelf()
+                        );
+                });
+                bp.Stacking = StackingType.Stack;
+                bp.Ranks = 5;
+                bp.Frequency = DurationRate.Rounds;
+            });
+            var OracleLunarFinalRevelationRatBuff = Helpers.CreateBuff("OracleLunarFinalRevelationRatBuff", bp => {
+                bp.SetName("Lycan Shape - Wererat");
+                bp.SetDescription("Once per day, you can transform into a wererat for a number of hours equal to your Charisma modifier. " +
+                    "\nWererats gain: Two claw attacks (1d4) a bite attack (1d6) and free disarm attempts on bite attacks. " +
+                    "\nJump up, weakening wound, crippling strike and opportunist rogue talents." +
+                    "\n3d6 sneak attack dice, stacking with other sneak attack dice. " +
+                    "\n{g|Encyclopedia:Damage_Reduction}DR{/g} 5/silver.");
+                bp.m_Icon = LunarMysteryIcon;
+                bp.AddComponent(ShifterWildShapeWereRatBuff.GetComponent<Polymorph>());
+                bp.AddComponent<SpellDescriptorComponent>(c => { c.Descriptor = SpellDescriptor.Polymorph; });
+                bp.AddComponent(ShifterWildShapeWereRatBuff.GetComponent<ReplaceAsksList>());
+                bp.AddComponent(ShifterWildShapeWereRatBuff.GetComponent<ReplaceSourceBone>());
+                bp.AddComponent(ShifterWildShapeWereRatBuff.GetComponent<ReplaceCastSource>());
+                bp.AddComponent<ManeuverOnAttack>(c => { c.Category = WeaponCategory.Bite; c.Maneuver = CombatManeuver.Disarm; });
+                bp.AddComponent<AddStatBonus>(c => {
+                    c.Descriptor = ModifierDescriptor.Feat;
+                    c.Stat = StatType.SneakAttack;
+                    c.Value = 3;
+                });
+                bp.AddComponent<AddDamageResistancePhysical>(c => {
+                    c.Value = 5;
+                    c.BypassedByMaterial = true;
+                    c.Material = PhysicalDamageMaterial.Silver;
+                });
+                bp.IsClassFeature = true;
+                bp.Stacking = StackingType.Replace;
+            });
+            var OracleLunarFinalRevelationTigerBuff = Helpers.CreateBuff("OracleLunarFinalRevelationTigerBuff", bp => {
+                bp.SetName("Lycan Shape - Weretiger");
+                bp.SetDescription("Once per day, you can transform into a weretiger for a number of hours equal to your Charisma modifier. " +
+                    "\nWeretigers gain: Two claw attacks (2d8) a bite attack (1d10). " +
+                    "\nCombat expertise, pounce and lunge as bonus feats." +
+                    "\nA +5 racial bonus to AC and {g|Encyclopedia:Fast_Healing}fast healing{/g} 5." +
+                    "\n{g|Encyclopedia:Damage_Reduction}DR{/g} 15/silver.");
+                bp.m_Icon = LunarMysteryIcon;
+                bp.AddComponent(ShifterWildShapeWereTigerBuff.GetComponent<Polymorph>());
+                bp.AddComponent<SpellDescriptorComponent>(c => { c.Descriptor = SpellDescriptor.Polymorph; });
+                bp.AddComponent(ShifterWildShapeWereTigerBuff.GetComponent<ReplaceAsksList>());
+                bp.AddComponent(ShifterWildShapeWereTigerBuff.GetComponent<ReplaceSourceBone>());
+                bp.AddComponent(ShifterWildShapeWereTigerBuff.GetComponent<ReplaceCastSource>());
+                bp.AddComponent<AddStatBonus>(c => {
+                    c.Descriptor = ModifierDescriptor.Racial;
+                    c.Stat = StatType.AC;
+                    c.Value = 5;
+                });
+                bp.AddComponent<AddDamageResistancePhysical>(c => {
+                    c.Value = 15;
+                    c.BypassedByMaterial = true;
+                    c.Material = PhysicalDamageMaterial.Silver;
+                });
+                bp.IsClassFeature = true;
+                bp.Stacking = StackingType.Replace;
+            });
+            var OracleLunarFinalRevelationWolfBuff = Helpers.CreateBuff("OracleLunarFinalRevelationWolfBuff", bp => {
+                bp.SetName("Lycan Shape - Werewolf");
+                bp.SetDescription("Once per day, you can transform into a werewolf for a number of hours equal to your Charisma modifier. " +
+                    "\nWerewolves gain: Two claw attacks (1d4) a bite attack (1d6) and free trip attempts on bite attacks. " +
+                    "\nTrip and greater trip as bonus feats." +
+                    "\nClaw attacks cause the target to bleed for 5 damage each round, stacking up to 5 times." +
+                    "\n{g|Encyclopedia:Damage_Reduction}DR{/g} 10/silver.");
+                bp.m_Icon = LunarMysteryIcon;
+                bp.AddComponent(ShifterWildShapeWereWolfBuff.GetComponent<Polymorph>());
+                bp.AddComponent<SpellDescriptorComponent>(c => { c.Descriptor = SpellDescriptor.Polymorph; });
+                bp.AddComponent(ShifterWildShapeWereWolfBuff.GetComponent<ReplaceAsksList>());
+                bp.AddComponent(ShifterWildShapeWereWolfBuff.GetComponent<ReplaceSourceBone>());
+                bp.AddComponent(ShifterWildShapeWereWolfBuff.GetComponent<ReplaceCastSource>());
+                bp.AddComponent<ManeuverOnAttack>(c => { c.Category = WeaponCategory.Bite; c.Maneuver = CombatManeuver.Trip; });
+                bp.AddComponent<AddInitiatorAttackWithWeaponTrigger>(c => {
+                    c.TriggerBeforeAttack = false;
+                    c.OnlyHit = true;
+                    c.OnMiss = false;
+                    c.OnlyOnFullAttack = false;
+                    c.OnlyOnFirstAttack = false;
+                    c.OnlyOnFirstHit = false;
+                    c.CriticalHit = false;
+                    c.OnAttackOfOpportunity = false;
+                    c.NotCriticalHit = false;
+                    c.OnlySneakAttack = false;
+                    c.NotSneakAttack = false;
+                    c.m_WeaponType = new BlueprintWeaponTypeReference();
+                    c.CheckWeaponCategory = true;
+                    c.Category = WeaponCategory.Claw;
+                    c.CheckWeaponGroup = true;
+                    c.Group = WeaponFighterGroup.Natural;
+                    c.CheckWeaponRangeType = false;
+                    c.RangeType = WeaponRangeType.Melee;
+                    c.CheckPhysicalDamageForm = true;
+                    c.DamageForm = PhysicalDamageForm.Piercing | PhysicalDamageForm.Slashing;
+                    c.ActionsOnInitiator = false;
+                    c.ReduceHPToZero = false;
+                    c.DamageMoreTargetMaxHP = false;
+                    c.CheckDistance = false;
+                    c.DistanceLessEqual = new Feet(); //?
+                    c.AllNaturalAndUnarmed = false;
+                    c.DuelistWeapon = false;
+                    c.NotExtraAttack = false;
+                    c.OnCharge = false;
+                    c.Action = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = OracleLunarFinalRevelationWolfBleed.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                m_IsExtendable = true,
+                            }
+                        }
+                        );
+                });
+                bp.AddComponent<AddDamageResistancePhysical>(c => {
+                    c.Value = 10;
+                    c.BypassedByMaterial = true;
+                    c.Material = PhysicalDamageMaterial.Silver;
+                });
+                bp.IsClassFeature = true;
+                bp.Stacking = StackingType.Replace;
+            });
+            OracleLunarFinalRevelationWolfBuff.GetComponent<Polymorph>().m_Facts.RemoveAll(f => f.deserializedGuid == WerewolfBleedFeature.deserializedGuid);
+            var PolymorphCleanup = new Polymorph[] {
+                OracleLunarFinalRevelationRatBuff.GetComponent<Polymorph>(),
+                OracleLunarFinalRevelationTigerBuff.GetComponent<Polymorph>(),
+                OracleLunarFinalRevelationWolfBuff.GetComponent<Polymorph>()
+            };
+            foreach (var polymorph in PolymorphCleanup) {
+                polymorph.m_Facts.RemoveAll(f => f.deserializedGuid == BestialHowlFeature.deserializedGuid);
+            }
             var OracleLunarFinalRevelationAbility = Helpers.CreateBlueprint<BlueprintAbility>("OracleLunarFinalRevelationAbility", bp => {
                 bp.SetName("Lycan Shape");
                 bp.SetDescription("Once per day, you can transform into a lycanthrope of your choice for a number of hours equal to your Charisma modifier, " +
@@ -476,11 +712,10 @@ namespace ExpandedContent.Tweaks.Mysteries {
             var OracleLunarFinalRevelationWolfAbility = Helpers.CreateBlueprint<BlueprintAbility>("OracleLunarFinalRevelationWolfAbility", bp => {
                 bp.SetName("Lycan Shape - Werewolf");
                 bp.SetDescription("Once per day, you can transform into a werewolf for a number of hours equal to your Charisma modifier. " +
-                    "\nWerewolves gain: Two claw attacks (2d8) a bite attack (1d6) and free trip attempts on bite attacks. " +
+                    "\nWerewolves gain: Two claw attacks (1d4) a bite attack (1d6) and free trip attempts on bite attacks. " +
                     "\nTrip and greater trip as bonus feats." +
-                    "\nClaw attacks cause the target to bleed for 5 damage each round, stacking up to 5 times. Each round, the target makes a Fortitude save to stop the bleeding. (DC = 10 + oracle level " +
-                    "+ Strength modifier)" +
-                    "\n{g|Encyclopedia:Damage_Reduction}DR{/g} 7/silver.");
+                    "\nClaw attacks cause the target to bleed for 5 damage each round, stacking up to 5 times." +
+                    "\n{g|Encyclopedia:Damage_Reduction}DR{/g} 10/silver.");
                 bp.m_Icon = LunarMysteryIcon;
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.SavingThrowType = SavingThrowType.Unknown;
@@ -757,7 +992,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.Group = FeatureGroup.None;
                 bp.Groups = new FeatureGroup[0];
                 bp.IsClassFeature = true;
-                bp.AddFeatures();
+                //bp.AddFeatures();
             });
             RavenerHunterLunarMysteryProgression.LevelEntries = new LevelEntry[] {
                  Helpers.LevelEntry(1, RavenerHunterLunarRevelationSelection),

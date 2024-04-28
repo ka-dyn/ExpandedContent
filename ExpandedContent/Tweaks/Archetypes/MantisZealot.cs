@@ -354,6 +354,8 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.m_Icon = MantisAspectIcon;
                 bp.AddComponent<AddFactContextActions>(c => {
                     //Dex bleed damage or just 25 depending on time
+                    c.Activated = Helpers.CreateActionList();
+                    c.Deactivated = Helpers.CreateActionList();
                     c.NewRound = Helpers.CreateActionList(
                         new ContextActionDealDamage() {
                             m_Type = ContextActionDealDamage.Type.Damage,
@@ -413,7 +415,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                             },
                             ResultSharedValue = AbilitySharedValue.Damage,
                             CriticalSharedValue = AbilitySharedValue.Damage
-                        });
+                        },
                         new Conditional() {
                             ConditionsChecker = new ConditionsChecker() {
                                 Operation = Operation.And,
@@ -426,7 +428,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                             IfTrue = Helpers.CreateActionList(),
                             IfFalse = Helpers.CreateActionList(
                                 new Conditional() {
-                                    ConditionsChecker = new ConditionsChecker() { 
+                                    ConditionsChecker = new ConditionsChecker() {
                                         Operation = Operation.And,
                                         Conditions = new Condition[] {
                                             new ContextConditionIsPartyMember() {
@@ -435,12 +437,13 @@ namespace ExpandedContent.Tweaks.Archetypes {
                                         }
                                     },
                                     IfTrue = Helpers.CreateActionList(),
-                                    IfFalse= Helpers.CreateActionList(
+                                    IfFalse = Helpers.CreateActionList(
                                         new ContextActionRemoveSelf()
                                         )
-                                    }
+                                }
                                 )
-                        };
+                        }
+                        );
                 });
                 bp.AddComponent<AddHealTrigger>(c => {
                     c.Action = Helpers.CreateActionList(
