@@ -196,6 +196,11 @@ New Spells
 - Shillelagh
 - Wooden Phalanx
 - Shambler
+- Arcane Concordance
+- Bloodmist
+- Dust of Twilight
+- Kings Castle
+- Moonstruck
 
 
 Compatible with all mods as far as I am aware, extra features are unlocked if used with these mods
