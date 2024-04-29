@@ -3289,7 +3289,17 @@
     "ReachArcaneConcordanceAbility": "ee566df8-edd1-4488-a167-d4df815fdf6a",
     "ReachArcaneConcordanceArea": "88735a0c-3f88-41ff-8e35-6856fefb93d9",
     "ReachArcaneConcordanceEffectBuff": "360d62e2-6c32-4990-89f8-f8ac71eba6ca",
-    "ReachArcaneConcordanceSelfBuff": "54c34dee-0e1f-4d07-a131-042d738eeb2a"
+    "ReachArcaneConcordanceSelfBuff": "54c34dee-0e1f-4d07-a131-042d738eeb2a",
+    "KingsCastleAbility": "5c0c3a8e-3ba3-4da2-9fd5-4a3750fc22b6",
+    "MoonstruckAbility": "3bd430ba-3d59-4fdd-a997-51c34fda9c01",
+    "MoonstruckBuff": "34d96114-0372-4ebd-87ce-8ce417f1a4a4",
+    "MoonstruckDazeBuff": "fb4ac4ac-e95c-4e88-997d-1e102b2a13a1",
+    "ScrollOfArcaneConcordance": "bf8502ca-e2ec-4d88-b900-a7d11e545456",
+    "ScrollOfBloodMist": "2f24cb47-1063-4d3a-960c-5dde4b32d4f0",
+    "ScrollOfDustOfTwilight": "8eced4ac-2764-415c-a8af-739ac3192faa",
+    "ScrollOfKingsCastle": "43c4c7f6-9b5c-4d6a-85a2-080e53a90fa2",
+    "ScrollOfMoonstruck": "2785c898-b044-4328-bac0-dcd7d8df9355"
+
 
 
 

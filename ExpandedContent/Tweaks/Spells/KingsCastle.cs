@@ -3,6 +3,7 @@ using ExpandedContent.Utilities;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Spells;
+using Kingmaker.Blueprints.Items.Equipment;
 using Kingmaker.Craft;
 using Kingmaker.Designers.Mechanics.Buffs;
 using Kingmaker.EntitySystem.Stats;
@@ -27,11 +28,10 @@ namespace ExpandedContent.Tweaks.Spells {
         public static void AddKingsCastle() {
 
             var EmergencySwapAbility = Resources.GetBlueprint<BlueprintAbility>("b50ca9b5d6292fb42b8eab8e5d64842d");
-            var KingsCastleIcon = AssetLoader.LoadInternal("Skills", "DismentiomDoor.png");
-            var Icon_ScrollOfKingsCastle = AssetLoader.LoadInternal("Items", "dism_door_scroll.png");
+            var DimensionDoorAbility = Resources.GetBlueprint<BlueprintAbility>("5bdc37e4acfa209408334326076a43bc");
+            var DimensionDoorScroll = Resources.GetBlueprint<BlueprintItemEquipmentUsable>("a7f61c7d07a8d9945a891c9a8c75d0cb");
 
-
-            
+           
 
             var KingsCastleAbility = Helpers.CreateBlueprint<BlueprintAbility>("KingsCastleAbility", bp => {
                 bp.SetName("King's Castle");
@@ -45,7 +45,7 @@ namespace ExpandedContent.Tweaks.Spells {
                     c.AOEType = CraftAOE.None;
                     c.SpellType = CraftSpellType.Other;
                 });
-                bp.m_Icon = EmergencySwapAbility.m_Icon;
+                bp.m_Icon = DimensionDoorAbility.Icon;
                 bp.Type = AbilityType.Spell;
                 bp.Range = AbilityRange.Long;
                 bp.CanTargetPoint = false;
@@ -61,7 +61,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
-            var KingsCastleScroll = ItemTools.CreateScroll("ScrollOfKingsCastle", Icon_ScrollOfKingsCastle, KingsCastleAbility, 4, 7);
+            var KingsCastleScroll = ItemTools.CreateScroll("ScrollOfKingsCastle", DimensionDoorScroll.Icon, KingsCastleAbility, 4, 7);
             VenderTools.AddScrollToLeveledVenders(KingsCastleScroll);
             KingsCastleAbility.AddToSpellList(SpellTools.SpellList.PaladinSpellList, 4);
 

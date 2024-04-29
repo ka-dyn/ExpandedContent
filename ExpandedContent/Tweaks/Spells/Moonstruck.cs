@@ -61,8 +61,7 @@ namespace ExpandedContent.Tweaks.Spells {
                     "\nConfusion: This {g|Encyclopedia:Spell}spell{/g} causes {g|ConditionConfusion}confusion{/g} in the targets, making them unable to determine their actions. " +
                     "{g|Encyclopedia:Dice}Roll{/g} d100 and consult the following table at the start of each subject's turn each {g|Encyclopedia:Combat_Round}round{/g} to see what " +
                     "it does in that round.\n01–25: Acts normally\n26–50: Does nothing but babble incoherently\n51–75: Deals (1d8 points of {g|Encyclopedia:Damage}damage{/g} + " +
-                    "{g|Encyclopedia:Strength}Strength{/g} modifier) to self with item in hand\n76–100: {g|Encyclopedia:Attack}Attacks{/g} nearest creature (for this purpose, a " +
-                    "familiar counts as part of the subject's self)");
+                    "{g|Encyclopedia:Strength}Strength{/g} modifier) to self with item in hand\n76–100: {g|Encyclopedia:Attack}Attacks{/g} nearest creature");
                 //Dazes and start fx
                 bp.AddComponent<AddFactContextActions>(c => {
                     c.Activated = Helpers.CreateActionList(
@@ -162,8 +161,7 @@ namespace ExpandedContent.Tweaks.Spells {
                     "\nConfusion: This {g|Encyclopedia:Spell}spell{/g} causes {g|ConditionConfusion}confusion{/g} in the targets, making them unable to determine their actions. " +
                     "{g|Encyclopedia:Dice}Roll{/g} d100 and consult the following table at the start of each subject's turn each {g|Encyclopedia:Combat_Round}round{/g} to see what " +
                     "it does in that round.\n01–25: Acts normally\n26–50: Does nothing but babble incoherently\n51–75: Deals (1d8 points of {g|Encyclopedia:Damage}damage{/g} + " +
-                    "{g|Encyclopedia:Strength}Strength{/g} modifier) to self with item in hand\n76–100: {g|Encyclopedia:Attack}Attacks{/g} nearest creature (for this purpose, a " +
-                    "familiar counts as part of the subject's self)");
+                    "{g|Encyclopedia:Strength}Strength{/g} modifier) to self with item in hand\n76–100: {g|Encyclopedia:Attack}Attacks{/g} nearest creature");
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.SavingThrowType = SavingThrowType.Will;
                     c.Actions = Helpers.CreateActionList(
