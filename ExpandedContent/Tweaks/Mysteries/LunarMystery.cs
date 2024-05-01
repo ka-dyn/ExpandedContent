@@ -1,5 +1,6 @@
 ﻿using BlueprintCore.Utils.Assets;
 using ExpandedContent.Extensions;
+using ExpandedContent.Tweaks.Classes;
 using ExpandedContent.Tweaks.Components;
 using ExpandedContent.Utilities;
 using Kingmaker.Blueprints;
@@ -1604,7 +1605,209 @@ namespace ExpandedContent.Tweaks.Mysteries {
             //MantleOfMoonlight ????
 
             //Moonbeam
-
+            var OracleRevelationMoonbeamResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("OracleRevelationMoonbeamResource", bp => {
+                bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
+                    BaseValue = 0,
+                    IncreasedByLevel = false,
+                    IncreasedByStat = true,
+                    ResourceBonusStat = StatType.Charisma,
+                };
+            });
+            var RayOfExhaustion00 = Resources.GetBlueprint<BlueprintProjectile>("8e38d2cfc358e124e93c792dea56ff9a");
+            var RayWeapon = Resources.GetBlueprint<BlueprintItemWeapon>("f6ef95b1f7bb52b408a5b345a330ffe8");
+            var Blind = Resources.GetBlueprint<BlueprintBuff>("0ec36e7596a4928489d2049e1e1c76a7");
+            var GloomblindBoltsIcon = AssetLoader.LoadInternal("Skills", "Icon_GloomblindBolts.jpg");
+            var OracleRevelationMoonbeamAbility = Helpers.CreateBlueprint<BlueprintAbility>("OracleRevelationMoonbeamAbility", bp => {
+                bp.SetName("Moonbeam");
+                bp.SetDescription("You can fire a ray of moonlight as a ranged touch attack at any creature within 30 feet. This ray deals 1d6 points of damage + 1 for every 2 oracle levels you possess. " +
+                    "In addition, the target must succeed at a Fortitude save or become blinded for 1 round. You can use this ability a number of times per day equal to your Charisma modifier (minimum 1).");
+                bp.AddComponent<AbilityDeliverProjectile>(c => {
+                    c.m_Projectiles = new BlueprintProjectileReference[] {
+                        RayOfExhaustion00.ToReference<BlueprintProjectileReference>()
+                    };
+                    c.Type = AbilityProjectileType.Simple;
+                    c.IsHandOfTheApprentice = false;
+                    c.m_Length = 0.Feet();
+                    c.m_LineWidth = 5.Feet();
+                    c.NeedAttackRoll = true;
+                    c.m_Weapon = RayWeapon.ToReference<BlueprintItemWeaponReference>();
+                    c.ReplaceAttackRollBonusStat = false;
+                    c.AttackRollBonusStat = StatType.Unknown;
+                    c.UseMaxProjectilesCount = true;
+                    c.MaxProjectilesCountRank = AbilityRankType.ProjectilesCount;
+                    c.DelayBetweenProjectiles = 0.0f;
+                    c.m_ControlledProjectileHolderBuff = null; //?
+                });
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionDealDamage() {
+                            m_Type = ContextActionDealDamage.Type.Damage,
+                            DamageType = new DamageTypeDescription() {
+                                Type = DamageType.Energy,
+                                Common = new DamageTypeDescription.CommomData() {
+                                    Reality = 0,
+                                    Alignment = 0,
+                                    Precision = false
+                                },
+                                Physical = new DamageTypeDescription.PhysicalData() {
+                                    Material = 0,
+                                    Form = 0,
+                                    Enhancement = 0,
+                                    EnhancementTotal = 0
+                                },
+                                Energy = DamageEnergyType.Divine
+                            },
+                            Drain = false,
+                            AbilityType = StatType.Unknown,
+                            EnergyDrainType = EnergyDrainType.Temporary,
+                            Duration = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                m_IsExtendable = true,
+                            },
+                            PreRolledSharedValue = AbilitySharedValue.Damage,
+                            Value = new ContextDiceValue() {
+                                DiceType = DiceType.D6,
+                                DiceCountValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 1,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Rank,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                            },
+                            IsAoE = false,
+                            HalfIfSaved = false,
+                            UseMinHPAfterDamage = false,
+                            MinHPAfterDamage = 0,
+                            ResultSharedValue = AbilitySharedValue.Damage,
+                            CriticalSharedValue = AbilitySharedValue.Damage
+                        },
+                        new ContextActionSavingThrow() {
+                            Type = SavingThrowType.Fortitude,
+                            m_ConditionalDCIncrease = new ContextActionSavingThrow.ConditionalDCIncrease[0],
+                            UseDCFromContextSavingThrow = false,
+                            HasCustomDC = false,
+                            CustomDC = new ContextValue(),
+                            Actions = Helpers.CreateActionList(
+                                new ContextActionConditionalSaved() {
+                                    Succeed = Helpers.CreateActionList(),
+                                    Failed = Helpers.CreateActionList(
+                                        new ContextActionApplyBuff() {
+                                            m_Buff = Blind.ToReference<BlueprintBuffReference>(),
+                                            Permanent = false,
+                                            UseDurationSeconds = false,
+                                            DurationValue = new ContextDurationValue() {
+                                                Rate = DurationRate.Rounds,
+                                                DiceType = DiceType.Zero,
+                                                DiceCountValue = new ContextValue() {
+                                                    ValueType = ContextValueType.Simple,
+                                                    Value = 0,
+                                                    ValueRank = AbilityRankType.Default,
+                                                    ValueShared = AbilitySharedValue.Damage
+                                                },
+                                                BonusValue = new ContextValue() {
+                                                    ValueType = ContextValueType.Simple,
+                                                    Value = 1,
+                                                    ValueRank = AbilityRankType.Default,
+                                                    ValueShared = AbilitySharedValue.Damage
+                                                }
+                                            },
+                                            DurationSeconds = 0
+                                        }
+                                        ),
+                                }
+                                )
+                        }
+                        );
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.SummClassLevelWithArchetype;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.Div2;
+                    c.m_UseMin = true;
+                    c.m_Min = 1;
+                    c.Archetype = RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.m_Class = new BlueprintCharacterClassReference[] {
+                        OracleClass.ToReference<BlueprintCharacterClassReference>(),
+                        InquisitorClass.ToReference<BlueprintCharacterClassReference>()
+                    };
+                });
+                bp.AddComponent<CraftInfoComponent>(c => {
+                    c.SavingThrow = CraftSavingThrow.None;
+                    c.AOEType = CraftAOE.None;
+                    c.SpellType = CraftSpellType.Damage;
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = OracleRevelationMoonbeamResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.m_Icon = GloomblindBoltsIcon;
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Medium;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = true;
+                bp.CanTargetFriends = true;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Directional;
+                bp.ActionType = UnitCommand.CommandType.Standard;
+                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten | Metamagic.Reach | Metamagic.CompletelyNormal;
+                bp.LocalizedDuration = Helpers.CreateString("OracleRevelationMoonbeamAbility.Duration", "1 round");
+                bp.LocalizedSavingThrow = Helpers.CreateString("OracleRevelationMoonbeamAbility.SavingThrow", "Fortitude negates (blindness)");
+            });
+            var OracleRevelationMoonbeamFeature = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationMoonbeamFeature", bp => {
+                bp.SetName("Moonbeam");
+                bp.SetDescription("You can fire a ray of moonlight as a ranged touch attack at any creature within 30 feet. This ray deals 1d6 points of damage + 1 for every 2 oracle levels you possess. " +
+                    "In addition, the target must succeed at a Fortitude save or become blinded for 1 round. You can use this ability a number of times per day equal to your Charisma modifier (minimum 1).");
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { OracleRevelationMoonbeamAbility.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<PrerequisiteFeaturesFromList>(c => {
+                    c.m_Features = new BlueprintFeatureReference[] {
+                        OracleLunarMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        EnlightnedPhilosopherLunarMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        DivineHerbalistLunarMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        OceansEchoLunarMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        RavenerHunterLunarMysteryProgression.ToReference<BlueprintFeatureReference>()
+                    };
+                    c.Amount = 1;
+                });
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = OracleRevelationMoonbeamResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.Groups = new FeatureGroup[] { FeatureGroup.OracleRevelation };
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+            OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationMoonbeamFeature.ToReference<BlueprintFeatureReference>());
             //PrimalCompanion
             var OracleBondedMountProgression = Resources.GetBlueprint<BlueprintProgression>("7d1c29c3101dd7643a625448fbbaa919");
             var AnimalCompanionRank = Resources.GetBlueprint<BlueprintFeature>("1670990255e4fe948a863bafd5dbda5d");
