@@ -962,7 +962,641 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.GiveFeaturesForPreviousLevels = true;
             });
             //FormOfTheBeast
-
+            var OracleRevelationBeastFormResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("OracleRevelationBeastFormResource", bp => {
+                bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
+                    BaseValue = 1,
+                    IncreasedByLevel = false,
+                    LevelIncrease = 0,
+                    IncreasedByLevelStartPlusDivStep = false,
+                    StartingLevel = 0,
+                    StartingIncrease = 0,
+                    LevelStep = 0,
+                    PerStepIncrease = 0,
+                    MinClassLevelIncrease = 0,
+                    OtherClassesModifier = 0,
+                    IncreasedByStat = false,
+                    ResourceBonusStat = StatType.Unknown,
+                };
+            });
+            var BeastShapeAbilityI = Resources.GetBlueprint<BlueprintAbility>("61a7ed778dd93f344a5dacdbad324cc9");
+            var BeastShapeAbilityII = Resources.GetBlueprint<BlueprintAbility>("5d4028eb28a106d4691ed1b92bbb1915");
+            var BeastShapeAbilityIII = Resources.GetBlueprint<BlueprintAbility>("9b93040dad242eb43ac7de6bb6547030");
+            var BeastShapeAbilityIVS = Resources.GetBlueprint<BlueprintAbility>("502cd7fd8953ac74bb3a3df7e84818ae");
+            var BeastShapeAbilityIVW = Resources.GetBlueprint<BlueprintAbility>("3fa892e5e3efa364fb3d2692738a7c15");
+            var BeastShapeIBuff = Resources.GetBlueprint<BlueprintBuff>("00d8fbe9cf61dc24298be8d95500c84b");
+            var BeastShapeIIBuff = Resources.GetBlueprint<BlueprintBuff>("200bd9b179ee660489fe88663115bcbc");
+            var BeastShapeIIIBuff = Resources.GetBlueprint<BlueprintBuff>("0c0afabcfddeecc40a1545a282f2bec8");
+            var BeastShapeIVSmilodonBuff = Resources.GetBlueprint<BlueprintBuff>("c38def68f6ce13b4b8f5e5e0c6e68d08");
+            var BeastShapeIVWyvernBuff = Resources.GetBlueprint<BlueprintBuff>("dae2d173d9bd5b14dbeb4a1d9d9b0edc");
+            var OracleRevelationBeastFormIAbility = Helpers.CreateBlueprint<BlueprintAbility>("OracleRevelationBeastFormIAbility", bp => {
+                bp.SetName("Beast Form (Wolf)");
+                bp.m_Description = BeastShapeAbilityI.m_Description;
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = OracleRevelationBeastFormResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = BeastShapeIBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = false,
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Hours,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Rank,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage
+                                }
+                            },
+                            DurationSeconds = 0
+                        });
+                });
+                bp.AddComponent<AbilityTargetHasFact>(c => {
+                    c.m_CheckedFacts = new BlueprintUnitFactReference[] { BeastShapeIBuff.ToReference<BlueprintUnitFactReference>() };
+                    c.Inverted = true;
+                });
+                bp.AddComponent<AbilityExecuteActionOnCast>(c => {
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionRemoveBuffsByDescriptor() {
+                            NotSelf = true,
+                            SpellDescriptor = SpellDescriptor.Polymorph,
+                        }
+                        );
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.SummClassLevelWithArchetype;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.AsIs;
+                    c.m_StartLevel = 0;
+                    c.m_StepLevel = 0;
+                    c.m_UseMax = false;
+                    c.m_Max = 0;
+                    c.m_Class = new BlueprintCharacterClassReference[] {
+                        OracleClass.ToReference<BlueprintCharacterClassReference>(),
+                        InquisitorClass.ToReference<BlueprintCharacterClassReference>()
+                    };
+                    c.Archetype = RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>();
+                });
+                bp.AddComponent<AbilitySpawnFx>(c => {
+                    c.PrefabLink = new PrefabLink() { AssetId = "352469f228a3b1f4cb269c7ab0409b8e" };
+                    c.Time = AbilitySpawnFxTime.OnApplyEffect;
+                    c.Anchor = AbilitySpawnFxAnchor.Caster;
+                    c.DestroyOnCast = false;
+                    c.Delay = 0;
+                    c.PositionAnchor = AbilitySpawnFxAnchor.None;
+                    c.OrientationAnchor = AbilitySpawnFxAnchor.None;
+                    c.OrientationMode = AbilitySpawnFxOrientation.Copy;
+                });
+                bp.AddComponent<SpellDescriptorComponent>(c => {
+                    c.Descriptor = SpellDescriptor.Polymorph;
+                });
+                bp.AddComponent<SpellComponent>(c => {
+                    c.School = SpellSchool.Transmutation;
+                });
+                bp.AddComponent<CraftInfoComponent>(c => {
+                    c.SavingThrow = CraftSavingThrow.None;
+                    c.AOEType = CraftAOE.None;
+                    c.SpellType = CraftSpellType.Buff;
+                });
+                bp.m_Icon = BeastShapeIBuff.Icon;
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.SelfTouch;
+                bp.ActionType = UnitCommand.CommandType.Standard;
+                bp.AvailableMetamagic = Metamagic.Quicken | Metamagic.Heighten | Metamagic.CompletelyNormal | Metamagic.Extend;
+                bp.LocalizedDuration = Helpers.CreateString("OracleRevelationBeastFormIAbility.Duration", "1 hour/level");
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var OracleRevelationBeastFormIIAbility = Helpers.CreateBlueprint<BlueprintAbility>("OracleRevelationBeastFormIIAbility", bp => {
+                bp.SetName("Beast Form (Leopard)");
+                bp.m_Description = BeastShapeAbilityII.m_Description;
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = OracleRevelationBeastFormResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = BeastShapeIIBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = false,
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Hours,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Rank,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage
+                                }
+                            },
+                            DurationSeconds = 0
+                        });
+                });
+                bp.AddComponent<AbilityTargetHasFact>(c => {
+                    c.m_CheckedFacts = new BlueprintUnitFactReference[] { BeastShapeIIBuff.ToReference<BlueprintUnitFactReference>() };
+                    c.Inverted = true;
+                });
+                bp.AddComponent<AbilityExecuteActionOnCast>(c => {
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionRemoveBuffsByDescriptor() {
+                            NotSelf = true,
+                            SpellDescriptor = SpellDescriptor.Polymorph,
+                        }
+                        );
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.SummClassLevelWithArchetype;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.AsIs;
+                    c.m_StartLevel = 0;
+                    c.m_StepLevel = 0;
+                    c.m_UseMax = false;
+                    c.m_Max = 0;
+                    c.m_Class = new BlueprintCharacterClassReference[] {
+                        OracleClass.ToReference<BlueprintCharacterClassReference>(),
+                        InquisitorClass.ToReference<BlueprintCharacterClassReference>()
+                    };
+                    c.Archetype = RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>();
+                });
+                bp.AddComponent<AbilitySpawnFx>(c => {
+                    c.PrefabLink = new PrefabLink() { AssetId = "352469f228a3b1f4cb269c7ab0409b8e" };
+                    c.Time = AbilitySpawnFxTime.OnApplyEffect;
+                    c.Anchor = AbilitySpawnFxAnchor.Caster;
+                    c.DestroyOnCast = false;
+                    c.Delay = 0;
+                    c.PositionAnchor = AbilitySpawnFxAnchor.None;
+                    c.OrientationAnchor = AbilitySpawnFxAnchor.None;
+                    c.OrientationMode = AbilitySpawnFxOrientation.Copy;
+                });
+                bp.AddComponent<SpellDescriptorComponent>(c => {
+                    c.Descriptor = SpellDescriptor.Polymorph;
+                });
+                bp.AddComponent<SpellComponent>(c => {
+                    c.School = SpellSchool.Transmutation;
+                });
+                bp.AddComponent<CraftInfoComponent>(c => {
+                    c.SavingThrow = CraftSavingThrow.None;
+                    c.AOEType = CraftAOE.None;
+                    c.SpellType = CraftSpellType.Buff;
+                });
+                bp.m_Icon = BeastShapeIIBuff.Icon;
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.SelfTouch;
+                bp.ActionType = UnitCommand.CommandType.Standard;
+                bp.AvailableMetamagic = Metamagic.Quicken | Metamagic.Heighten | Metamagic.CompletelyNormal | Metamagic.Extend;
+                bp.LocalizedDuration = Helpers.CreateString("OracleRevelationBeastFormIIAbility.Duration", "1 hour/level");
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var OracleRevelationBeastFormIIIAbility = Helpers.CreateBlueprint<BlueprintAbility>("OracleRevelationBeastFormIIIAbility", bp => {
+                bp.SetName("Beast Form (Bear)");
+                bp.m_Description = BeastShapeAbilityIII.m_Description;
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = OracleRevelationBeastFormResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = BeastShapeIIIBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = false,
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Hours,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Rank,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage
+                                }
+                            },
+                            DurationSeconds = 0
+                        });
+                });
+                bp.AddComponent<AbilityTargetHasFact>(c => {
+                    c.m_CheckedFacts = new BlueprintUnitFactReference[] { BeastShapeIIIBuff.ToReference<BlueprintUnitFactReference>() };
+                    c.Inverted = true;
+                });
+                bp.AddComponent<AbilityExecuteActionOnCast>(c => {
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionRemoveBuffsByDescriptor() {
+                            NotSelf = true,
+                            SpellDescriptor = SpellDescriptor.Polymorph,
+                        }
+                        );
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.SummClassLevelWithArchetype;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.AsIs;
+                    c.m_StartLevel = 0;
+                    c.m_StepLevel = 0;
+                    c.m_UseMax = false;
+                    c.m_Max = 0;
+                    c.m_Class = new BlueprintCharacterClassReference[] {
+                        OracleClass.ToReference<BlueprintCharacterClassReference>(),
+                        InquisitorClass.ToReference<BlueprintCharacterClassReference>()
+                    };
+                    c.Archetype = RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>();
+                });
+                bp.AddComponent<AbilitySpawnFx>(c => {
+                    c.PrefabLink = new PrefabLink() { AssetId = "352469f228a3b1f4cb269c7ab0409b8e" };
+                    c.Time = AbilitySpawnFxTime.OnApplyEffect;
+                    c.Anchor = AbilitySpawnFxAnchor.Caster;
+                    c.DestroyOnCast = false;
+                    c.Delay = 0;
+                    c.PositionAnchor = AbilitySpawnFxAnchor.None;
+                    c.OrientationAnchor = AbilitySpawnFxAnchor.None;
+                    c.OrientationMode = AbilitySpawnFxOrientation.Copy;
+                });
+                bp.AddComponent<SpellDescriptorComponent>(c => {
+                    c.Descriptor = SpellDescriptor.Polymorph;
+                });
+                bp.AddComponent<SpellComponent>(c => {
+                    c.School = SpellSchool.Transmutation;
+                });
+                bp.AddComponent<CraftInfoComponent>(c => {
+                    c.SavingThrow = CraftSavingThrow.None;
+                    c.AOEType = CraftAOE.None;
+                    c.SpellType = CraftSpellType.Buff;
+                });
+                bp.m_Icon = BeastShapeIIIBuff.Icon;
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.SelfTouch;
+                bp.ActionType = UnitCommand.CommandType.Standard;
+                bp.AvailableMetamagic = Metamagic.Quicken | Metamagic.Heighten | Metamagic.CompletelyNormal | Metamagic.Extend;
+                bp.LocalizedDuration = Helpers.CreateString("OracleRevelationBeastFormIIIAbility.Duration", "1 hour/level");
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var OracleRevelationBeastFormIVBaseAbility = Helpers.CreateBlueprint<BlueprintAbility>("OracleRevelationBeastFormIVBaseAbility", bp => {
+                bp.SetName("Beast Form (Final)");
+                bp.SetDescription("You become a large smilodon or a large wyvern.");                
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = OracleRevelationBeastFormResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<SpellDescriptorComponent>(c => {
+                    c.Descriptor = SpellDescriptor.Polymorph;
+                });
+                bp.AddComponent<SpellComponent>(c => {
+                    c.School = SpellSchool.Transmutation;
+                });
+                bp.AddComponent<CraftInfoComponent>(c => {
+                    c.SavingThrow = CraftSavingThrow.None;
+                    c.AOEType = CraftAOE.None;
+                    c.SpellType = CraftSpellType.Buff;
+                });
+                bp.m_Icon = BeastShapeIVWyvernBuff.Icon;
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.SelfTouch;
+                bp.ActionType = UnitCommand.CommandType.Standard;
+                bp.AvailableMetamagic = Metamagic.Quicken | Metamagic.Heighten | Metamagic.CompletelyNormal | Metamagic.Extend;
+                bp.LocalizedDuration = Helpers.CreateString("OracleRevelationBeastFormIVBaseAbility.Duration", "1 hour/level");
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var OracleRevelationBeastFormIVSAbility = Helpers.CreateBlueprint<BlueprintAbility>("OracleRevelationBeastFormIVSAbility", bp => {
+                bp.SetName("Beast Form (Smilodon)");
+                bp.m_Description = BeastShapeAbilityIVS.m_Description;
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = OracleRevelationBeastFormResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = BeastShapeIVSmilodonBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = false,
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Hours,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Rank,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage
+                                }
+                            },
+                            DurationSeconds = 0
+                        });
+                });
+                bp.AddComponent<AbilityTargetHasFact>(c => {
+                    c.m_CheckedFacts = new BlueprintUnitFactReference[] { BeastShapeIVSmilodonBuff.ToReference<BlueprintUnitFactReference>() };
+                    c.Inverted = true;
+                });
+                bp.AddComponent<AbilityExecuteActionOnCast>(c => {
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionRemoveBuffsByDescriptor() {
+                            NotSelf = true,
+                            SpellDescriptor = SpellDescriptor.Polymorph,
+                        }
+                        );
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.SummClassLevelWithArchetype;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.AsIs;
+                    c.m_StartLevel = 0;
+                    c.m_StepLevel = 0;
+                    c.m_UseMax = false;
+                    c.m_Max = 0;
+                    c.m_Class = new BlueprintCharacterClassReference[] {
+                        OracleClass.ToReference<BlueprintCharacterClassReference>(),
+                        InquisitorClass.ToReference<BlueprintCharacterClassReference>()
+                    };
+                    c.Archetype = RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>();
+                });
+                bp.AddComponent<AbilitySpawnFx>(c => {
+                    c.PrefabLink = new PrefabLink() { AssetId = "352469f228a3b1f4cb269c7ab0409b8e" };
+                    c.Time = AbilitySpawnFxTime.OnApplyEffect;
+                    c.Anchor = AbilitySpawnFxAnchor.Caster;
+                    c.DestroyOnCast = false;
+                    c.Delay = 0;
+                    c.PositionAnchor = AbilitySpawnFxAnchor.None;
+                    c.OrientationAnchor = AbilitySpawnFxAnchor.None;
+                    c.OrientationMode = AbilitySpawnFxOrientation.Copy;
+                });
+                bp.AddComponent<SpellDescriptorComponent>(c => {
+                    c.Descriptor = SpellDescriptor.Polymorph;
+                });
+                bp.AddComponent<SpellComponent>(c => {
+                    c.School = SpellSchool.Transmutation;
+                });
+                bp.AddComponent<CraftInfoComponent>(c => {
+                    c.SavingThrow = CraftSavingThrow.None;
+                    c.AOEType = CraftAOE.None;
+                    c.SpellType = CraftSpellType.Buff;
+                });
+                bp.m_Icon = BeastShapeIVSmilodonBuff.Icon;
+                bp.m_Parent = OracleRevelationBeastFormIVBaseAbility.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.SelfTouch;
+                bp.ActionType = UnitCommand.CommandType.Standard;
+                bp.AvailableMetamagic = Metamagic.Quicken | Metamagic.Heighten | Metamagic.CompletelyNormal | Metamagic.Extend;
+                bp.LocalizedDuration = Helpers.CreateString("OracleRevelationBeastFormIVSAbility.Duration", "1 hour/level");
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var OracleRevelationBeastFormIVWAbility = Helpers.CreateBlueprint<BlueprintAbility>("OracleRevelationBeastFormIVWAbility", bp => {
+                bp.SetName("Beast Form (Wyvern)");
+                bp.m_Description = BeastShapeAbilityIVW.m_Description;
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = OracleRevelationBeastFormResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = BeastShapeIVWyvernBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = false,
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Hours,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Rank,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage
+                                }
+                            },
+                            DurationSeconds = 0
+                        });
+                });
+                bp.AddComponent<AbilityTargetHasFact>(c => {
+                    c.m_CheckedFacts = new BlueprintUnitFactReference[] { BeastShapeIVWyvernBuff.ToReference<BlueprintUnitFactReference>() };
+                    c.Inverted = true;
+                });
+                bp.AddComponent<AbilityExecuteActionOnCast>(c => {
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionRemoveBuffsByDescriptor() {
+                            NotSelf = true,
+                            SpellDescriptor = SpellDescriptor.Polymorph,
+                        }
+                        );
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.SummClassLevelWithArchetype;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.AsIs;
+                    c.m_StartLevel = 0;
+                    c.m_StepLevel = 0;
+                    c.m_UseMax = false;
+                    c.m_Max = 0;
+                    c.m_Class = new BlueprintCharacterClassReference[] {
+                        OracleClass.ToReference<BlueprintCharacterClassReference>(),
+                        InquisitorClass.ToReference<BlueprintCharacterClassReference>()
+                    };
+                    c.Archetype = RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>();
+                });
+                bp.AddComponent<AbilitySpawnFx>(c => {
+                    c.PrefabLink = new PrefabLink() { AssetId = "352469f228a3b1f4cb269c7ab0409b8e" };
+                    c.Time = AbilitySpawnFxTime.OnApplyEffect;
+                    c.Anchor = AbilitySpawnFxAnchor.Caster;
+                    c.DestroyOnCast = false;
+                    c.Delay = 0;
+                    c.PositionAnchor = AbilitySpawnFxAnchor.None;
+                    c.OrientationAnchor = AbilitySpawnFxAnchor.None;
+                    c.OrientationMode = AbilitySpawnFxOrientation.Copy;
+                });
+                bp.AddComponent<SpellDescriptorComponent>(c => {
+                    c.Descriptor = SpellDescriptor.Polymorph;
+                });
+                bp.AddComponent<SpellComponent>(c => {
+                    c.School = SpellSchool.Transmutation;
+                });
+                bp.AddComponent<CraftInfoComponent>(c => {
+                    c.SavingThrow = CraftSavingThrow.None;
+                    c.AOEType = CraftAOE.None;
+                    c.SpellType = CraftSpellType.Buff;
+                });
+                bp.m_Icon = BeastShapeIVWyvernBuff.Icon;
+                bp.m_Parent = OracleRevelationBeastFormIVBaseAbility.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.SelfTouch;
+                bp.ActionType = UnitCommand.CommandType.Standard;
+                bp.AvailableMetamagic = Metamagic.Quicken | Metamagic.Heighten | Metamagic.CompletelyNormal | Metamagic.Extend;
+                bp.LocalizedDuration = Helpers.CreateString("OracleRevelationBeastFormIVWAbility.Duration", "1 hour/level");
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            OracleRevelationBeastFormIVBaseAbility.AddComponent<AbilityVariants>(c => {
+                c.m_Variants = new BlueprintAbilityReference[] {
+                    OracleRevelationBeastFormIVSAbility.ToReference<BlueprintAbilityReference>(),
+                    OracleRevelationBeastFormIVWAbility.ToReference<BlueprintAbilityReference>()
+                };
+            });
+            var OracleRevelationBeastFormFeature1 = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationBeastFormFeature1", bp => {
+                bp.SetName("");
+                bp.SetDescription("");
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { OracleRevelationBeastFormIAbility.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.HideInUI = true;
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+            var OracleRevelationBeastFormFeature2 = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationBeastFormFeature2", bp => {
+                bp.SetName("");
+                bp.SetDescription("");
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { OracleRevelationBeastFormIIAbility.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.HideInUI = true;
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+            var OracleRevelationBeastFormFeature3 = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationBeastFormFeature3", bp => {
+                bp.SetName("");
+                bp.SetDescription("");
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { OracleRevelationBeastFormIIIAbility.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.HideInUI = true;
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+            var OracleRevelationBeastFormFeature4 = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationBeastFormFeature4", bp => {
+                bp.SetName("");
+                bp.SetDescription("");
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { OracleRevelationBeastFormIVBaseAbility.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.HideInUI = true;
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+            var OracleRevelationBeastFormProgression = Helpers.CreateBlueprint<BlueprintProgression>("OracleRevelationBeastFormProgression", bp => {
+                bp.SetName("Form of the Beast");
+                bp.SetDescription("You can assume the form of a medium wolf, as beast shape I. " +
+                    "At 9th level, you can assume the form of a medium leopard, as beast shape II. " +
+                    "At 11th level, you can assume the form of a large bear, as beast shape II." +
+                    "At 13th level, you can assume the form of a large smilodon or a large wyvern, as beast shape IV. You can use this ability once per day, but the duration is 1 " +
+                    "hour/level. You must be at least 7th level to select this revelation.");
+                bp.m_Icon = BeastShapeIVWyvernBuff.Icon;
+                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    },
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = InquisitorClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    }
+                };
+                bp.m_Archetypes = new BlueprintProgression.ArchetypeWithLevel[] {
+                    new BlueprintProgression.ArchetypeWithLevel {
+                        m_Archetype = RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>(),
+                        AdditionalLevel = 0
+                    }
+                };
+                bp.LevelEntries = new LevelEntry[] {
+                    Helpers.LevelEntry(7, OracleRevelationBeastFormFeature1),
+                    Helpers.LevelEntry(9, OracleRevelationBeastFormFeature2),
+                    Helpers.LevelEntry(11, OracleRevelationBeastFormFeature3),
+                    Helpers.LevelEntry(13, OracleRevelationBeastFormFeature4)
+                };
+                bp.GiveFeaturesForPreviousLevels = true;
+                bp.AddComponent<PrerequisiteFeaturesFromList>(c => {
+                    c.m_Features = new BlueprintFeatureReference[] {
+                        OracleLunarMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        EnlightnedPhilosopherLunarMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        DivineHerbalistLunarMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        OceansEchoLunarMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        RavenerHunterLunarMysteryProgression.ToReference<BlueprintFeatureReference>()
+                    };
+                    c.Amount = 1;
+                });
+                bp.AddComponent<PrerequisiteClassLevel>(c => {
+                    c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Group = Prerequisite.GroupType.Any;
+                    c.Level = 7;
+                });
+                bp.AddComponent<PrerequisiteArchetypeLevel>(c => {
+                    c.Group = Prerequisite.GroupType.Any;
+                    c.CheckInProgression = false;
+                    c.HideInUI = false;
+                    c.m_CharacterClass = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.Level = 7;
+                });
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = OracleRevelationBeastFormResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.Groups = new FeatureGroup[] { FeatureGroup.OracleRevelation };
+                bp.IsClassFeature = true;
+            });
+            OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationBeastFormProgression.ToReference<BlueprintFeatureReference>());
             //EyeOfTheMoon
 
             //GiftOfClawAndHorn
@@ -972,7 +1606,75 @@ namespace ExpandedContent.Tweaks.Mysteries {
             //Moonbeam
 
             //PrimalCompanion
-
+            var OracleBondedMountProgression = Resources.GetBlueprint<BlueprintProgression>("7d1c29c3101dd7643a625448fbbaa919");
+            var AnimalCompanionRank = Resources.GetBlueprint<BlueprintFeature>("1670990255e4fe948a863bafd5dbda5d");
+            var AnimalCompanionArchetypeSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("65af7290b4efd5f418132141aaa36c1b");
+            var MountTargetFeature = Resources.GetBlueprint<BlueprintFeature>("cb06f0e72ffb5c640a156bd9f8000c1d");
+            var OracleRevalationBondedMountSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("0234d0dd1cead22428e71a2500afa2e1");
+            var AnimalCompanionEmptyCompanion = Resources.GetBlueprintReference<BlueprintFeatureReference>("472091361cf118049a2b4339c4ea836a");
+            var AnimalCompanionFeatureBear = Resources.GetBlueprintReference<BlueprintFeatureReference>("f6f1cdcc404f10c4493dc1e51208fd6f");
+            var AnimalCompanionFeatureBoar = Resources.GetBlueprintReference<BlueprintFeatureReference>("afb817d80b843cc4fa7b12289e6ebe3d");
+            var AnimalCompanionFeatureSmilodon = Resources.GetBlueprintReference<BlueprintFeatureReference>("126712ef923ab204983d6f107629c895");
+            var AnimalCompanionFeatureVelociraptor = Resources.GetBlueprintReference<BlueprintFeatureReference>("89420de28b6bb9443b62ce489ae5423b");
+            var AnimalCompanionFeatureWolf = Resources.GetBlueprintReference<BlueprintFeatureReference>("67a9dc42b15d0954ca4689b13e8dedea");
+            var AnimalCompanionFeatureSmilodonPreorder = Resources.GetBlueprintReference<BlueprintFeatureReference>("44f4d77689434e07a5a44dcb65b25f71");
+            var CompanionWebSpiderFeature = Resources.GetModBlueprint<BlueprintFeature>("CompanionWebSpiderFeature");
+            var OracleRevelationPrimalCompanion = Helpers.CreateBlueprint<BlueprintFeatureSelection>("OracleRevelationPrimalCompanion", bp => {
+                bp.SetName("Primal Companion");
+                bp.SetDescription("You gain the service of a faithful animal of the night. You can select from a bear, boar, smilodon, spider, velociraptor, or wolf. This animal functions as a " +
+                    "druid’s animal companion, using your oracle level as your effective druid level.");
+                bp.AddComponent<AddFeatureOnApply>(c => {
+                    c.m_Feature = OracleBondedMountProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<AddFeatureOnApply>(c => {
+                    c.m_Feature = AnimalCompanionRank.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<AddFeatureOnApply>(c => {
+                    c.m_Feature = AnimalCompanionArchetypeSelection.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<AddFeatureOnApply>(c => {
+                    c.m_Feature = MountTargetFeature.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteFeaturesFromList>(c => {
+                    c.m_Features = new BlueprintFeatureReference[] {
+                        OracleLunarMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        EnlightnedPhilosopherLunarMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        DivineHerbalistLunarMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        OceansEchoLunarMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        RavenerHunterLunarMysteryProgression.ToReference<BlueprintFeatureReference>()
+                    };
+                    c.Amount = 1;
+                });
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.Group = Prerequisite.GroupType.All;
+                    c.CheckInProgression = false;
+                    c.HideInUI = true;
+                    c.m_Feature = OracleRevalationBondedMountSelection.ToReference<BlueprintFeatureReference>();
+                });
+                bp.HideInCharacterSheetAndLevelUp = false;
+                bp.HideInUI = false;
+                bp.HideNotAvailibleInUI = false;
+                bp.ReapplyOnLevelUp = false;
+                bp.Mode = SelectionMode.Default;
+                bp.Group = FeatureGroup.OracleRevelation;
+                bp.Ranks = 1;
+                bp.IsClassFeature = true;
+                bp.AddFeatures(AnimalCompanionFeatureBear, AnimalCompanionFeatureBoar, AnimalCompanionFeatureSmilodon, AnimalCompanionFeatureVelociraptor, AnimalCompanionFeatureWolf,
+                    AnimalCompanionFeatureSmilodonPreorder, CompanionWebSpiderFeature, AnimalCompanionEmptyCompanion);
+            });
+            OracleRevelationPrimalCompanion.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.CheckInProgression = false;
+                c.HideInUI = true;
+                c.m_Feature = OracleRevelationPrimalCompanion.ToReference<BlueprintFeatureReference>();
+            });
+            OracleRevalationBondedMountSelection.AddComponent<PrerequisiteNoFeature>(c => {
+                c.Group = Prerequisite.GroupType.All;
+                c.CheckInProgression = false;
+                c.HideInUI = true;
+                c.m_Feature = OracleRevelationPrimalCompanion.ToReference<BlueprintFeatureReference>();
+            });
+            OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationPrimalCompanion.ToReference<BlueprintFeatureReference>());
             //PropheticArmor
             var OracleRevelationNatureWhispers = Resources.GetBlueprint<BlueprintFeature>("3d2cd23869f0d98458169b88738f3c32");
             var OracleRevelationPropheticArmorBuff = Helpers.CreateBuff("OracleRevelationPropheticArmorBuff", bp => {
@@ -1054,7 +1756,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.Group = FeatureGroup.None;
                 bp.Groups = new FeatureGroup[0];
                 bp.IsClassFeature = true;
-                bp.AddFeatures(OracleRevelationPropheticArmorFeature);
+                bp.AddFeatures();
             });
             RavenerHunterLunarMysteryProgression.LevelEntries = new LevelEntry[] {
                  Helpers.LevelEntry(1, RavenerHunterLunarRevelationSelection),
