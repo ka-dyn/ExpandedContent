@@ -103,6 +103,7 @@ New Oracle Mysteries / Curses
 - Mysteries: 
   - Dragon
   - Heavens
+  - Lunar
   - Succor
   - Winter
   - Wood
