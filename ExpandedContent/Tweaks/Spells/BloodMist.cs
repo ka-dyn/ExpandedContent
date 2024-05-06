@@ -76,7 +76,7 @@ namespace ExpandedContent.Tweaks.Spells {
                     c.Condition = Kingmaker.UnitLogic.UnitCondition.AttackNearest;
                 });
                 bp.AddComponent<SpellDescriptorComponent>(c => {
-                    c.Descriptor = SpellDescriptor.MindAffecting;
+                    c.Descriptor = SpellDescriptor.MindAffecting | SpellDescriptor.Confusion;
                 });
                 bp.FxOnStart = new PrefabLink() { AssetId = "602fa850c4a94d84eb8aa1bcc0d008c7" }; //Might change this
                 bp.m_AllowNonContextActions = false;

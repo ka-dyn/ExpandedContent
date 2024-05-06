@@ -23,6 +23,7 @@ using Kingmaker.RuleSystem;
 using Kingmaker.RuleSystem.Rules;
 using Kingmaker.RuleSystem.Rules.Damage;
 using Kingmaker.UI.GenericSlot;
+using Kingmaker.UI.UnitSettings.Blueprints;
 using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.UnitLogic.Abilities.Blueprints;
@@ -44,12 +45,10 @@ using Kingmaker.Utility;
 using Kingmaker.Visual.Animation.Kingmaker.Actions;
 using System.Collections.Generic;
 using UnityEngine;
+using static ExpandedContent.Tweaks.Miscellaneous.NewActivatableAbilityGroups.NewActivatableAbilityGroupAdder;
 
 namespace ExpandedContent.Tweaks.Mysteries {
     internal class LunarMystery {
-
-
-
 
         public static void AddLunarMystery() {
 
@@ -62,12 +61,13 @@ namespace ExpandedContent.Tweaks.Mysteries {
 
             var ImmunityToMindAffecting = Resources.GetBlueprint<BlueprintFeature>("3eb606c0564d0814ea01a824dbe42fb0");
             var MasterShapeshifter = Resources.GetBlueprint<BlueprintFeature>("934670ef88b281b4da5596db8b00df2f");
-            var BestialHowlFeature = Resources.GetBlueprintReference<BlueprintFeatureReference>("87ab3793abc347d5a47fc6b7fec8dfcb");
-            var WerewolfBleedFeature = Resources.GetBlueprintReference<BlueprintFeatureReference>("502d36f8b703420397ca35d5f523b8f0");
+            var BestialHowlFeature = Resources.GetBlueprint<BlueprintFeature>("87ab3793abc347d5a47fc6b7fec8dfcb");
+            var WerewolfBleedFeature = Resources.GetBlueprint<BlueprintFeature>("502d36f8b703420397ca35d5f523b8f0");
             var ShiftersRush = Resources.GetBlueprintReference<BlueprintBuffReference>("c3365d5a75294b9b879c587668620bd4");
             var ShifterWildShapeWereRatBuff = Resources.GetBlueprint<BlueprintBuff>("9261713e33624de599d6183d6b7cf2e4");
             var ShifterWildShapeWereTigerBuff = Resources.GetBlueprint<BlueprintBuff>("1bc5f96600c74a079c8a0c6dafeb3320");
             var ShifterWildShapeWereWolfBuff = Resources.GetBlueprint<BlueprintBuff>("34273feba56448bc968dd5482cdfffc7");
+            var AnimalShapesSpell = Resources.GetBlueprint<BlueprintAbility>("cf689244b2c7e904eb85f26fd6e81552");
 
             //Spelllist
             var HypnotismSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("88367310478c10b47903463c5d0152b0");
@@ -488,14 +488,15 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.IsClassFeature = true;
                 bp.Stacking = StackingType.Replace;
             });
-            OracleLunarFinalRevelationWolfBuff.GetComponent<Polymorph>().m_Facts.RemoveAll(f => f.deserializedGuid == WerewolfBleedFeature.deserializedGuid);
+            OracleLunarFinalRevelationWolfBuff.GetComponent<Polymorph>().m_Facts = OracleLunarFinalRevelationWolfBuff.GetComponent<Polymorph>().m_Facts
+                .RemoveFromArray(WerewolfBleedFeature.ToReference<BlueprintUnitFactReference>());
             var PolymorphCleanup = new Polymorph[] {
                 OracleLunarFinalRevelationRatBuff.GetComponent<Polymorph>(),
                 OracleLunarFinalRevelationTigerBuff.GetComponent<Polymorph>(),
                 OracleLunarFinalRevelationWolfBuff.GetComponent<Polymorph>()
             };
             foreach (var polymorph in PolymorphCleanup) {
-                polymorph.m_Facts.RemoveAll(f => f.deserializedGuid == BestialHowlFeature.deserializedGuid);
+                polymorph.m_Facts = polymorph.m_Facts.RemoveFromArray(BestialHowlFeature.ToReference<BlueprintUnitFactReference>());
             }
             var OracleLunarFinalRevelationAbility = Helpers.CreateBlueprint<BlueprintAbility>("OracleLunarFinalRevelationAbility", bp => {
                 bp.SetName("Lycan Shape");
@@ -1566,7 +1567,6 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     Helpers.LevelEntry(11, OracleRevelationBeastFormFeature3),
                     Helpers.LevelEntry(13, OracleRevelationBeastFormFeature4)
                 };
-                bp.GiveFeaturesForPreviousLevels = true;
                 bp.AddComponent<PrerequisiteFeaturesFromList>(c => {
                     c.m_Features = new BlueprintFeatureReference[] {
                         OracleLunarMysteryFeature.ToReference<BlueprintFeatureReference>(),
@@ -1594,6 +1594,8 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     c.m_Resource = OracleRevelationBeastFormResource.ToReference<BlueprintAbilityResourceReference>();
                     c.RestoreAmount = true;
                 });
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.GiveFeaturesForPreviousLevels = true;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.OracleRevelation };
                 bp.IsClassFeature = true;
             });
@@ -1601,7 +1603,1968 @@ namespace ExpandedContent.Tweaks.Mysteries {
             //EyeOfTheMoon
 
             //GiftOfClawAndHorn
-
+            var BearShamanTotemTransformationIcon = AssetLoader.LoadInternal("Skills", "Icon_BearShamanTotemTransformation.jpg");
+            var OracleRevelationGiftOfClawAndHornResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("OracleRevelationGiftOfClawAndHornResource", bp => {
+                bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
+                    BaseValue = 3,
+                    IncreasedByLevel = false,
+                    IncreasedByStat = true,
+                    ResourceBonusStat = StatType.Charisma,
+                };
+            });
+            var OracleRevelationGiftOfClawAndHornToggleIncreaseFeature = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationGiftOfClawAndHornToggleIncreaseFeature", bp => {
+                bp.SetName("Double Natural Weapon");
+                bp.SetDescription("At 11th level, you may select two natural weapons at a time.");
+                bp.AddComponent<IncreaseActivatableAbilityGroupSize>(c => {
+                    c.Group = (ActivatableAbilityGroup)ECActivatableAbilityGroup.GiftOfClawAndHorn;
+                });
+                bp.HideInUI = true;
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+            var OracleRevelationGiftOfClawAndHornToggleBiteBuff = Helpers.CreateBuff("OracleRevelationGiftOfClawAndHornToggleBiteBuff", bp => {
+                bp.SetName("Giftof CandH - Bite buff");
+                bp.SetDescription("");
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+                bp.m_Flags = BlueprintBuff.Flags.StayOnDeath | BlueprintBuff.Flags.HiddenInUi;
+                bp.Stacking = StackingType.Replace;
+            });
+            var OracleRevelationGiftOfClawAndHornToggleClawBuff = Helpers.CreateBuff("OracleRevelationGiftOfClawAndHornToggleClawBuff", bp => {
+                bp.SetName("Giftof CandH - Claws buff");
+                bp.SetDescription("");
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+                bp.m_Flags = BlueprintBuff.Flags.StayOnDeath | BlueprintBuff.Flags.HiddenInUi;
+                bp.Stacking = StackingType.Replace;
+            });
+            var OracleRevelationGiftOfClawAndHornToggleGoreBuff = Helpers.CreateBuff("OracleRevelationGiftOfClawAndHornToggleGoreBuff", bp => {
+                bp.SetName("Giftof CandH - Gore buff");
+                bp.SetDescription("");
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+                bp.m_Flags = BlueprintBuff.Flags.StayOnDeath | BlueprintBuff.Flags.HiddenInUi;
+                bp.Stacking = StackingType.Replace;
+            });
+            var OracleRevelationGiftOfClawAndHornToggleBite = Helpers.CreateBlueprint<BlueprintActivatableAbility>("OracleRevelationGiftOfClawAndHornToggleBite", bp => {
+                bp.SetName("Gift of Claw and Horn - Bite");
+                bp.SetDescription("With this activated, the gift of claw and horn ability will grant a bite attack.");
+                bp.m_Icon = AnimalShapesSpell.Icon;
+                bp.m_Buff = OracleRevelationGiftOfClawAndHornToggleBiteBuff.ToReference<BlueprintBuffReference>();
+                bp.m_AllowNonContextActions = false;
+                bp.Group = (ActivatableAbilityGroup)ECActivatableAbilityGroup.GiftOfClawAndHorn;
+                bp.AddComponent<ActionPanelLogic>(c => {
+                    c.Priority = 0;
+                    c.AutoFillConditions = new ConditionsChecker() {
+                        Operation = Operation.And,
+                        Conditions = new Condition[] {
+                            new ContextConditionCharacterClass() {
+                                Not = true,
+                                m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>(),
+                                MinLevel = 0,
+                            },
+                            new ContextConditionCharacterClass() {
+                                Not = true,
+                                m_Class = InquisitorClass.ToReference<BlueprintCharacterClassReference>(),
+                                MinLevel = 0,
+                            }
+                        }
+                    };
+                    c.AutoCastConditions = new ConditionsChecker() {
+                        Operation = Operation.And,
+                        Conditions = new Condition[] { }
+                    };
+                });
+                bp.WeightInGroup = 1;
+                bp.IsOnByDefault = false;
+                bp.DeactivateImmediately = true;
+                bp.HiddenInUI = true;
+                bp.ActivationType = AbilityActivationType.Immediately;
+                bp.m_ActivateWithUnitCommand = UnitCommand.CommandType.Free;
+                bp.m_ActivateOnUnitAction = AbilityActivateOnUnitActionType.Attack;
+            });
+            var OracleRevelationGiftOfClawAndHornToggleClaw = Helpers.CreateBlueprint<BlueprintActivatableAbility>("OracleRevelationGiftOfClawAndHornToggleClaw", bp => {
+                bp.SetName("Gift of Claw and Horn - Claws");
+                bp.SetDescription("With this activated, the gift of claw and horn ability will grant claw attacks while unarmed.");
+                bp.m_Icon = AnimalShapesSpell.Icon;
+                bp.m_Buff = OracleRevelationGiftOfClawAndHornToggleClawBuff.ToReference<BlueprintBuffReference>();
+                bp.m_AllowNonContextActions = false;
+                bp.Group = (ActivatableAbilityGroup)ECActivatableAbilityGroup.GiftOfClawAndHorn;
+                bp.AddComponent<ActionPanelLogic>(c => {
+                    c.Priority = 0;
+                    c.AutoFillConditions = new ConditionsChecker() {
+                        Operation = Operation.And,
+                        Conditions = new Condition[] {
+                            new ContextConditionCharacterClass() {
+                                Not = true,
+                                m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>(),
+                                MinLevel = 0,
+                            },
+                            new ContextConditionCharacterClass() {
+                                Not = true,
+                                m_Class = InquisitorClass.ToReference<BlueprintCharacterClassReference>(),
+                                MinLevel = 0,
+                            }
+                        }
+                    };
+                    c.AutoCastConditions = new ConditionsChecker() {
+                        Operation = Operation.And,
+                        Conditions = new Condition[] { }
+                    };
+                });
+                bp.WeightInGroup = 1;
+                bp.IsOnByDefault = false;
+                bp.DeactivateImmediately = true;
+                bp.HiddenInUI = true;
+                bp.ActivationType = AbilityActivationType.Immediately;
+                bp.m_ActivateWithUnitCommand = UnitCommand.CommandType.Free;
+                bp.m_ActivateOnUnitAction = AbilityActivateOnUnitActionType.Attack;
+            });
+            var OracleRevelationGiftOfClawAndHornToggleGore = Helpers.CreateBlueprint<BlueprintActivatableAbility>("OracleRevelationGiftOfClawAndHornToggleGore", bp => {
+                bp.SetName("Gift of Claw and Horn - Gore");
+                bp.SetDescription("With this activated, the gift of claw and horn ability will grant a gore attack.");
+                bp.m_Icon = AnimalShapesSpell.Icon;
+                bp.m_Buff = OracleRevelationGiftOfClawAndHornToggleGoreBuff.ToReference<BlueprintBuffReference>();
+                bp.m_AllowNonContextActions = false;
+                bp.Group = (ActivatableAbilityGroup)ECActivatableAbilityGroup.GiftOfClawAndHorn;
+                bp.AddComponent<ActionPanelLogic>(c => {
+                    c.Priority = 0;
+                    c.AutoFillConditions = new ConditionsChecker() {
+                        Operation = Operation.And,
+                        Conditions = new Condition[] {
+                            new ContextConditionCharacterClass() {
+                                Not = true,
+                                m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>(),
+                                MinLevel = 0,
+                            },
+                            new ContextConditionCharacterClass() {
+                                Not = true,
+                                m_Class = InquisitorClass.ToReference<BlueprintCharacterClassReference>(),
+                                MinLevel = 0,
+                            }
+                        }
+                    };
+                    c.AutoCastConditions = new ConditionsChecker() {
+                        Operation = Operation.And,
+                        Conditions = new Condition[] { }
+                    };
+                });
+                bp.WeightInGroup = 1;
+                bp.IsOnByDefault = false;
+                bp.DeactivateImmediately = true;
+                bp.HiddenInUI = true;
+                bp.ActivationType = AbilityActivationType.Immediately;
+                bp.m_ActivateWithUnitCommand = UnitCommand.CommandType.Free;
+                bp.m_ActivateOnUnitAction = AbilityActivateOnUnitActionType.Attack;
+            });
+            var OracleRevelationGiftOfClawAndHornToggleBase = Helpers.CreateBlueprint<BlueprintActivatableAbility>("OracleRevelationGiftOfClawAndHornToggleBase", bp => {
+                bp.SetName("Gift of Claw and Horn - Weapon Selection");
+                bp.SetDescription("Choose which weapon to receive when using the gift of claw and horn ability. This cannot be changed while gift of claw and horn is active. \nAt 11th level the number of weapons " +
+                    "able to be selected increases by 1.");
+                bp.m_Icon = AnimalShapesSpell.Icon;
+                bp.m_Buff = new BlueprintBuffReference();
+                bp.m_AllowNonContextActions = false;
+                bp.AddComponent<ActivatableAbilityVariants>(c => {
+                    c.m_Variants = new BlueprintActivatableAbilityReference[] {
+                        OracleRevelationGiftOfClawAndHornToggleBite.ToReference<BlueprintActivatableAbilityReference>(),
+                        OracleRevelationGiftOfClawAndHornToggleClaw.ToReference<BlueprintActivatableAbilityReference>(),
+                        OracleRevelationGiftOfClawAndHornToggleGore.ToReference<BlueprintActivatableAbilityReference>()
+                    };
+                });
+                bp.AddComponent<ActivationDisable>();
+                bp.WeightInGroup = 1;
+                bp.IsOnByDefault = false;
+                bp.ActivationType = AbilityActivationType.Immediately;
+                bp.m_ActivateWithUnitCommand = UnitCommand.CommandType.Free;
+                bp.m_ActivateOnUnitAction = AbilityActivateOnUnitActionType.Attack;
+            });
+            var OracleRevelationGiftOfClawAndHornTogglesFeature = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationGiftOfClawAndHornTogglesFeature", bp => {
+                bp.SetName("");
+                bp.SetDescription("");
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        OracleRevelationGiftOfClawAndHornToggleBite.ToReference<BlueprintUnitFactReference>(),
+                        OracleRevelationGiftOfClawAndHornToggleClaw.ToReference<BlueprintUnitFactReference>(),
+                        OracleRevelationGiftOfClawAndHornToggleGore.ToReference<BlueprintUnitFactReference>(),
+                        OracleRevelationGiftOfClawAndHornToggleBase.ToReference<BlueprintUnitFactReference>()
+                    };
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.HideInUI = true;
+                bp.HideNotAvailibleInUI = true;
+            });
+            var GiftOfClawAndHornFeatureLvl1 = Helpers.CreateBlueprint<BlueprintFeature>("GiftOfClawAndHornFeatureLvl1", bp => {
+                bp.SetName("");
+                bp.SetDescription("");
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.HideInUI = true;
+                bp.HideNotAvailibleInUI = true;
+            });
+            var GiftOfClawAndHornFeatureLvl2 = Helpers.CreateBlueprint<BlueprintFeature>("GiftOfClawAndHornFeatureLvl2", bp => {
+                bp.SetName("");
+                bp.SetDescription("");
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.HideInUI = true;
+                bp.HideNotAvailibleInUI = true;
+            });
+            var GiftOfClawAndHornFeatureLvl3 = Helpers.CreateBlueprint<BlueprintFeature>("GiftOfClawAndHornFeatureLvl3", bp => {
+                bp.SetName("");
+                bp.SetDescription("");
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.HideInUI = true;
+                bp.HideNotAvailibleInUI = true;
+            });
+            var GiftOfClawAndHornFeatureLvl4 = Helpers.CreateBlueprint<BlueprintFeature>("GiftOfClawAndHornFeatureLvl4", bp => {
+                bp.SetName("");
+                bp.SetDescription("");
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.HideInUI = true;
+                bp.HideNotAvailibleInUI = true;
+            });
+            var GiftOfClawAndHornFeatureLvl5 = Helpers.CreateBlueprint<BlueprintFeature>("GiftOfClawAndHornFeatureLvl5", bp => {
+                bp.SetName("");
+                bp.SetDescription("");
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.HideInUI = true;
+                bp.HideNotAvailibleInUI = true;
+            });
+            var Bite1d6 = Resources.GetBlueprint<BlueprintItemWeapon>("a000716f88c969c499a535dadcf09286");
+            var Claw1d4 = Resources.GetBlueprint<BlueprintItemWeapon>("118fdd03e569a66459ab01a20af6811a");
+            var Gore1d6 = Resources.GetBlueprint<BlueprintItemWeapon>("daf4ab765feba8548b244e174e7af5be");
+            var Enhancement1 = Resources.GetBlueprintReference<BlueprintWeaponEnchantmentReference>("d42fc23b92c640846ac137dc26e000d4");
+            var Enhancement2 = Resources.GetBlueprintReference<BlueprintWeaponEnchantmentReference>("eb2faccc4c9487d43b3575d7e77ff3f5");
+            var Enhancement3 = Resources.GetBlueprintReference<BlueprintWeaponEnchantmentReference>("80bb8a737579e35498177e1e3c75899b");
+            var Enhancement4 = Resources.GetBlueprintReference<BlueprintWeaponEnchantmentReference>("783d7d496da6ac44f9511011fc5f1979");
+            var ClawAndHornWeaponBite0 = Helpers.CreateBlueprint<BlueprintItemWeapon>("ClawAndHornWeaponBite0", bp => {
+                bp.m_DisplayNameText = Bite1d6.m_DisplayNameText;
+                bp.m_DescriptionText = Bite1d6.m_DescriptionText;
+                bp.m_FlavorText = Bite1d6.m_FlavorText;
+                bp.m_NonIdentifiedNameText = Bite1d6.m_NonIdentifiedNameText;
+                bp.m_NonIdentifiedDescriptionText = Bite1d6.m_NonIdentifiedDescriptionText;
+                bp.m_Icon = Bite1d6.m_Icon;
+                bp.m_Cost = 0;
+                bp.m_Weight = 0;
+                bp.m_IsNotable = false;
+                bp.m_IsJunk = false;
+                bp.m_ForceStackable = false;
+                bp.m_Destructible = false;
+                bp.m_ShardItem = null;
+                bp.m_MiscellaneousType = Kingmaker.Blueprints.Items.BlueprintItem.MiscellaneousItemType.None;
+                bp.m_InventoryPutSound = Bite1d6.m_InventoryPutSound;
+                bp.m_InventoryTakeSound = Bite1d6.m_InventoryTakeSound;
+                bp.NeedSkinningForCollect = false;
+                bp.TrashLootTypes = Bite1d6.TrashLootTypes;
+                bp.CR = 0;
+                bp.SpendCharges = true;
+                bp.Charges = 1;
+                bp.RestoreChargesOnRest = false;
+                bp.CasterLevel = 1;
+                bp.SpellLevel = 1;
+                bp.DC = 11;
+                bp.HideAbilityInfo = false;
+                bp.IsNonRemovable = false;
+                bp.m_EquipmentEntity = new KingmakerEquipmentEntityReference();
+                bp.m_EquipmentEntityAlternatives = new KingmakerEquipmentEntityReference[0];
+                bp.m_ForcedRampColorPresetIndex = 0;
+                bp.m_VisualParameters = Bite1d6.m_VisualParameters;
+                bp.m_Type = Bite1d6.m_Type;
+                bp.m_Size = Size.Medium;
+                bp.m_Enchantments = new BlueprintWeaponEnchantmentReference[] { };
+                bp.m_OverrideDamageDice = false;
+                bp.m_DamageDice = new DiceFormula() {
+                    m_Rolls = 0,
+                    m_Dice = DiceType.Zero
+                };
+                bp.m_OverrideDamageType = false;
+                bp.m_DamageType = Bite1d6.m_DamageType;
+                bp.CountAsDouble = false;
+                bp.Double = false;
+                bp.m_SecondWeapon = null;
+                bp.KeepInPolymorph = false;
+                bp.m_OverrideShardItem = false;
+                bp.m_OverrideDestructible = false;
+                bp.m_AlwaysPrimary = false;
+                bp.m_IsCanChangeVisualOverriden = false;
+                bp.m_CanChangeVisual = false;
+            });
+            var ClawAndHornWeaponBite1 = Helpers.CreateBlueprint<BlueprintItemWeapon>("ClawAndHornWeaponBite1", bp => {
+                bp.m_DisplayNameText = Bite1d6.m_DisplayNameText;
+                bp.m_DescriptionText = Bite1d6.m_DescriptionText;
+                bp.m_FlavorText = Bite1d6.m_FlavorText;
+                bp.m_NonIdentifiedNameText = Bite1d6.m_NonIdentifiedNameText;
+                bp.m_NonIdentifiedDescriptionText = Bite1d6.m_NonIdentifiedDescriptionText;
+                bp.m_Icon = Bite1d6.m_Icon;
+                bp.m_Cost = 0;
+                bp.m_Weight = 0;
+                bp.m_IsNotable = false;
+                bp.m_IsJunk = false;
+                bp.m_ForceStackable = false;
+                bp.m_Destructible = false;
+                bp.m_ShardItem = null;
+                bp.m_MiscellaneousType = Kingmaker.Blueprints.Items.BlueprintItem.MiscellaneousItemType.None;
+                bp.m_InventoryPutSound = Bite1d6.m_InventoryPutSound;
+                bp.m_InventoryTakeSound = Bite1d6.m_InventoryTakeSound;
+                bp.NeedSkinningForCollect = false;
+                bp.TrashLootTypes = Bite1d6.TrashLootTypes;
+                bp.CR = 0;
+                bp.SpendCharges = true;
+                bp.Charges = 1;
+                bp.RestoreChargesOnRest = false;
+                bp.CasterLevel = 1;
+                bp.SpellLevel = 1;
+                bp.DC = 11;
+                bp.HideAbilityInfo = false;
+                bp.IsNonRemovable = false;
+                bp.m_EquipmentEntity = new KingmakerEquipmentEntityReference();
+                bp.m_EquipmentEntityAlternatives = new KingmakerEquipmentEntityReference[0];
+                bp.m_ForcedRampColorPresetIndex = 0;
+                bp.m_VisualParameters = Bite1d6.m_VisualParameters;
+                bp.m_Type = Bite1d6.m_Type;
+                bp.m_Size = Size.Medium;
+                bp.m_Enchantments = new BlueprintWeaponEnchantmentReference[] { Enhancement1 };
+                bp.m_OverrideDamageDice = false;
+                bp.m_DamageDice = new DiceFormula() {
+                    m_Rolls = 0,
+                    m_Dice = DiceType.Zero
+                };
+                bp.m_OverrideDamageType = false;
+                bp.m_DamageType = Bite1d6.m_DamageType;
+                bp.CountAsDouble = false;
+                bp.Double = false;
+                bp.m_SecondWeapon = null;
+                bp.KeepInPolymorph = false;
+                bp.m_OverrideShardItem = false;
+                bp.m_OverrideDestructible = false;
+                bp.m_AlwaysPrimary = false;
+                bp.m_IsCanChangeVisualOverriden = false;
+                bp.m_CanChangeVisual = false;
+            });
+            var ClawAndHornWeaponBite2 = Helpers.CreateBlueprint<BlueprintItemWeapon>("ClawAndHornWeaponBite2", bp => {
+                bp.m_DisplayNameText = Bite1d6.m_DisplayNameText;
+                bp.m_DescriptionText = Bite1d6.m_DescriptionText;
+                bp.m_FlavorText = Bite1d6.m_FlavorText;
+                bp.m_NonIdentifiedNameText = Bite1d6.m_NonIdentifiedNameText;
+                bp.m_NonIdentifiedDescriptionText = Bite1d6.m_NonIdentifiedDescriptionText;
+                bp.m_Icon = Bite1d6.m_Icon;
+                bp.m_Cost = 0;
+                bp.m_Weight = 0;
+                bp.m_IsNotable = false;
+                bp.m_IsJunk = false;
+                bp.m_ForceStackable = false;
+                bp.m_Destructible = false;
+                bp.m_ShardItem = null;
+                bp.m_MiscellaneousType = Kingmaker.Blueprints.Items.BlueprintItem.MiscellaneousItemType.None;
+                bp.m_InventoryPutSound = Bite1d6.m_InventoryPutSound;
+                bp.m_InventoryTakeSound = Bite1d6.m_InventoryTakeSound;
+                bp.NeedSkinningForCollect = false;
+                bp.TrashLootTypes = Bite1d6.TrashLootTypes;
+                bp.CR = 0;
+                bp.SpendCharges = true;
+                bp.Charges = 1;
+                bp.RestoreChargesOnRest = false;
+                bp.CasterLevel = 1;
+                bp.SpellLevel = 1;
+                bp.DC = 11;
+                bp.HideAbilityInfo = false;
+                bp.IsNonRemovable = false;
+                bp.m_EquipmentEntity = new KingmakerEquipmentEntityReference();
+                bp.m_EquipmentEntityAlternatives = new KingmakerEquipmentEntityReference[0];
+                bp.m_ForcedRampColorPresetIndex = 0;
+                bp.m_VisualParameters = Bite1d6.m_VisualParameters;
+                bp.m_Type = Bite1d6.m_Type;
+                bp.m_Size = Size.Medium;
+                bp.m_Enchantments = new BlueprintWeaponEnchantmentReference[] { Enhancement2 };
+                bp.m_OverrideDamageDice = false;
+                bp.m_DamageDice = new DiceFormula() {
+                    m_Rolls = 0,
+                    m_Dice = DiceType.Zero
+                };
+                bp.m_OverrideDamageType = false;
+                bp.m_DamageType = Bite1d6.m_DamageType;
+                bp.CountAsDouble = false;
+                bp.Double = false;
+                bp.m_SecondWeapon = null;
+                bp.KeepInPolymorph = false;
+                bp.m_OverrideShardItem = false;
+                bp.m_OverrideDestructible = false;
+                bp.m_AlwaysPrimary = false;
+                bp.m_IsCanChangeVisualOverriden = false;
+                bp.m_CanChangeVisual = false;
+            });
+            var ClawAndHornWeaponBite3 = Helpers.CreateBlueprint<BlueprintItemWeapon>("ClawAndHornWeaponBite3", bp => {
+                bp.m_DisplayNameText = Bite1d6.m_DisplayNameText;
+                bp.m_DescriptionText = Bite1d6.m_DescriptionText;
+                bp.m_FlavorText = Bite1d6.m_FlavorText;
+                bp.m_NonIdentifiedNameText = Bite1d6.m_NonIdentifiedNameText;
+                bp.m_NonIdentifiedDescriptionText = Bite1d6.m_NonIdentifiedDescriptionText;
+                bp.m_Icon = Bite1d6.m_Icon;
+                bp.m_Cost = 0;
+                bp.m_Weight = 0;
+                bp.m_IsNotable = false;
+                bp.m_IsJunk = false;
+                bp.m_ForceStackable = false;
+                bp.m_Destructible = false;
+                bp.m_ShardItem = null;
+                bp.m_MiscellaneousType = Kingmaker.Blueprints.Items.BlueprintItem.MiscellaneousItemType.None;
+                bp.m_InventoryPutSound = Bite1d6.m_InventoryPutSound;
+                bp.m_InventoryTakeSound = Bite1d6.m_InventoryTakeSound;
+                bp.NeedSkinningForCollect = false;
+                bp.TrashLootTypes = Bite1d6.TrashLootTypes;
+                bp.CR = 0;
+                bp.SpendCharges = true;
+                bp.Charges = 1;
+                bp.RestoreChargesOnRest = false;
+                bp.CasterLevel = 1;
+                bp.SpellLevel = 1;
+                bp.DC = 11;
+                bp.HideAbilityInfo = false;
+                bp.IsNonRemovable = false;
+                bp.m_EquipmentEntity = new KingmakerEquipmentEntityReference();
+                bp.m_EquipmentEntityAlternatives = new KingmakerEquipmentEntityReference[0];
+                bp.m_ForcedRampColorPresetIndex = 0;
+                bp.m_VisualParameters = Bite1d6.m_VisualParameters;
+                bp.m_Type = Bite1d6.m_Type;
+                bp.m_Size = Size.Medium;
+                bp.m_Enchantments = new BlueprintWeaponEnchantmentReference[] { Enhancement3 };
+                bp.m_OverrideDamageDice = false;
+                bp.m_DamageDice = new DiceFormula() {
+                    m_Rolls = 0,
+                    m_Dice = DiceType.Zero
+                };
+                bp.m_OverrideDamageType = false;
+                bp.m_DamageType = Bite1d6.m_DamageType;
+                bp.CountAsDouble = false;
+                bp.Double = false;
+                bp.m_SecondWeapon = null;
+                bp.KeepInPolymorph = false;
+                bp.m_OverrideShardItem = false;
+                bp.m_OverrideDestructible = false;
+                bp.m_AlwaysPrimary = false;
+                bp.m_IsCanChangeVisualOverriden = false;
+                bp.m_CanChangeVisual = false;
+            });
+            var ClawAndHornWeaponBite4 = Helpers.CreateBlueprint<BlueprintItemWeapon>("ClawAndHornWeaponBite4", bp => {
+                bp.m_DisplayNameText = Bite1d6.m_DisplayNameText;
+                bp.m_DescriptionText = Bite1d6.m_DescriptionText;
+                bp.m_FlavorText = Bite1d6.m_FlavorText;
+                bp.m_NonIdentifiedNameText = Bite1d6.m_NonIdentifiedNameText;
+                bp.m_NonIdentifiedDescriptionText = Bite1d6.m_NonIdentifiedDescriptionText;
+                bp.m_Icon = Bite1d6.m_Icon;
+                bp.m_Cost = 0;
+                bp.m_Weight = 0;
+                bp.m_IsNotable = false;
+                bp.m_IsJunk = false;
+                bp.m_ForceStackable = false;
+                bp.m_Destructible = false;
+                bp.m_ShardItem = null;
+                bp.m_MiscellaneousType = Kingmaker.Blueprints.Items.BlueprintItem.MiscellaneousItemType.None;
+                bp.m_InventoryPutSound = Bite1d6.m_InventoryPutSound;
+                bp.m_InventoryTakeSound = Bite1d6.m_InventoryTakeSound;
+                bp.NeedSkinningForCollect = false;
+                bp.TrashLootTypes = Bite1d6.TrashLootTypes;
+                bp.CR = 0;
+                bp.SpendCharges = true;
+                bp.Charges = 1;
+                bp.RestoreChargesOnRest = false;
+                bp.CasterLevel = 1;
+                bp.SpellLevel = 1;
+                bp.DC = 11;
+                bp.HideAbilityInfo = false;
+                bp.IsNonRemovable = false;
+                bp.m_EquipmentEntity = new KingmakerEquipmentEntityReference();
+                bp.m_EquipmentEntityAlternatives = new KingmakerEquipmentEntityReference[0];
+                bp.m_ForcedRampColorPresetIndex = 0;
+                bp.m_VisualParameters = Bite1d6.m_VisualParameters;
+                bp.m_Type = Bite1d6.m_Type;
+                bp.m_Size = Size.Medium;
+                bp.m_Enchantments = new BlueprintWeaponEnchantmentReference[] { Enhancement4 };
+                bp.m_OverrideDamageDice = false;
+                bp.m_DamageDice = new DiceFormula() {
+                    m_Rolls = 0,
+                    m_Dice = DiceType.Zero
+                };
+                bp.m_OverrideDamageType = false;
+                bp.m_DamageType = Bite1d6.m_DamageType;
+                bp.CountAsDouble = false;
+                bp.Double = false;
+                bp.m_SecondWeapon = null;
+                bp.KeepInPolymorph = false;
+                bp.m_OverrideShardItem = false;
+                bp.m_OverrideDestructible = false;
+                bp.m_AlwaysPrimary = false;
+                bp.m_IsCanChangeVisualOverriden = false;
+                bp.m_CanChangeVisual = false;
+            });
+            var ClawAndHornWeaponClaw0 = Helpers.CreateBlueprint<BlueprintItemWeapon>("ClawAndHornWeaponClaw0", bp => {
+                bp.m_DisplayNameText = Claw1d4.m_DisplayNameText;
+                bp.m_DescriptionText = Claw1d4.m_DescriptionText;
+                bp.m_FlavorText = Claw1d4.m_FlavorText;
+                bp.m_NonIdentifiedNameText = Claw1d4.m_NonIdentifiedNameText;
+                bp.m_NonIdentifiedDescriptionText = Claw1d4.m_NonIdentifiedDescriptionText;
+                bp.m_Icon = Claw1d4.m_Icon;
+                bp.m_Cost = 0;
+                bp.m_Weight = 0;
+                bp.m_IsNotable = false;
+                bp.m_IsJunk = false;
+                bp.m_ForceStackable = false;
+                bp.m_Destructible = false;
+                bp.m_ShardItem = null;
+                bp.m_MiscellaneousType = Kingmaker.Blueprints.Items.BlueprintItem.MiscellaneousItemType.None;
+                bp.m_InventoryPutSound = Claw1d4.m_InventoryPutSound;
+                bp.m_InventoryTakeSound = Claw1d4.m_InventoryTakeSound;
+                bp.NeedSkinningForCollect = false;
+                bp.TrashLootTypes = Claw1d4.TrashLootTypes;
+                bp.CR = 0;
+                bp.SpendCharges = true;
+                bp.Charges = 1;
+                bp.RestoreChargesOnRest = false;
+                bp.CasterLevel = 1;
+                bp.SpellLevel = 1;
+                bp.DC = 11;
+                bp.HideAbilityInfo = false;
+                bp.IsNonRemovable = false;
+                bp.m_EquipmentEntity = new KingmakerEquipmentEntityReference();
+                bp.m_EquipmentEntityAlternatives = new KingmakerEquipmentEntityReference[0];
+                bp.m_ForcedRampColorPresetIndex = 0;
+                bp.m_VisualParameters = Claw1d4.m_VisualParameters;
+                bp.m_Type = Claw1d4.m_Type;
+                bp.m_Size = Size.Medium;
+                bp.m_Enchantments = new BlueprintWeaponEnchantmentReference[] { };
+                bp.m_OverrideDamageDice = false;
+                bp.m_DamageDice = new DiceFormula() {
+                    m_Rolls = 0,
+                    m_Dice = DiceType.Zero
+                };
+                bp.m_OverrideDamageType = false;
+                bp.m_DamageType = Claw1d4.m_DamageType;
+                bp.CountAsDouble = true;
+                bp.Double = false;
+                bp.m_SecondWeapon = null;
+                bp.KeepInPolymorph = false;
+                bp.m_OverrideShardItem = false;
+                bp.m_OverrideDestructible = false;
+                bp.m_AlwaysPrimary = false;
+                bp.m_IsCanChangeVisualOverriden = false;
+                bp.m_CanChangeVisual = false;
+            });
+            var ClawAndHornWeaponClaw1 = Helpers.CreateBlueprint<BlueprintItemWeapon>("ClawAndHornWeaponClaw1", bp => {
+                bp.m_DisplayNameText = Claw1d4.m_DisplayNameText;
+                bp.m_DescriptionText = Claw1d4.m_DescriptionText;
+                bp.m_FlavorText = Claw1d4.m_FlavorText;
+                bp.m_NonIdentifiedNameText = Claw1d4.m_NonIdentifiedNameText;
+                bp.m_NonIdentifiedDescriptionText = Claw1d4.m_NonIdentifiedDescriptionText;
+                bp.m_Icon = Claw1d4.m_Icon;
+                bp.m_Cost = 0;
+                bp.m_Weight = 0;
+                bp.m_IsNotable = false;
+                bp.m_IsJunk = false;
+                bp.m_ForceStackable = false;
+                bp.m_Destructible = false;
+                bp.m_ShardItem = null;
+                bp.m_MiscellaneousType = Kingmaker.Blueprints.Items.BlueprintItem.MiscellaneousItemType.None;
+                bp.m_InventoryPutSound = Claw1d4.m_InventoryPutSound;
+                bp.m_InventoryTakeSound = Claw1d4.m_InventoryTakeSound;
+                bp.NeedSkinningForCollect = false;
+                bp.TrashLootTypes = Claw1d4.TrashLootTypes;
+                bp.CR = 0;
+                bp.SpendCharges = true;
+                bp.Charges = 1;
+                bp.RestoreChargesOnRest = false;
+                bp.CasterLevel = 1;
+                bp.SpellLevel = 1;
+                bp.DC = 11;
+                bp.HideAbilityInfo = false;
+                bp.IsNonRemovable = false;
+                bp.m_EquipmentEntity = new KingmakerEquipmentEntityReference();
+                bp.m_EquipmentEntityAlternatives = new KingmakerEquipmentEntityReference[0];
+                bp.m_ForcedRampColorPresetIndex = 0;
+                bp.m_VisualParameters = Claw1d4.m_VisualParameters;
+                bp.m_Type = Claw1d4.m_Type;
+                bp.m_Size = Size.Medium;
+                bp.m_Enchantments = new BlueprintWeaponEnchantmentReference[] { Enhancement1 };
+                bp.m_OverrideDamageDice = false;
+                bp.m_DamageDice = new DiceFormula() {
+                    m_Rolls = 0,
+                    m_Dice = DiceType.Zero
+                };
+                bp.m_OverrideDamageType = false;
+                bp.m_DamageType = Claw1d4.m_DamageType;
+                bp.CountAsDouble = true;
+                bp.Double = false;
+                bp.m_SecondWeapon = null;
+                bp.KeepInPolymorph = false;
+                bp.m_OverrideShardItem = false;
+                bp.m_OverrideDestructible = false;
+                bp.m_AlwaysPrimary = false;
+                bp.m_IsCanChangeVisualOverriden = false;
+                bp.m_CanChangeVisual = false;
+            });
+            var ClawAndHornWeaponClaw2 = Helpers.CreateBlueprint<BlueprintItemWeapon>("ClawAndHornWeaponClaw2", bp => {
+                bp.m_DisplayNameText = Claw1d4.m_DisplayNameText;
+                bp.m_DescriptionText = Claw1d4.m_DescriptionText;
+                bp.m_FlavorText = Claw1d4.m_FlavorText;
+                bp.m_NonIdentifiedNameText = Claw1d4.m_NonIdentifiedNameText;
+                bp.m_NonIdentifiedDescriptionText = Claw1d4.m_NonIdentifiedDescriptionText;
+                bp.m_Icon = Claw1d4.m_Icon;
+                bp.m_Cost = 0;
+                bp.m_Weight = 0;
+                bp.m_IsNotable = false;
+                bp.m_IsJunk = false;
+                bp.m_ForceStackable = false;
+                bp.m_Destructible = false;
+                bp.m_ShardItem = null;
+                bp.m_MiscellaneousType = Kingmaker.Blueprints.Items.BlueprintItem.MiscellaneousItemType.None;
+                bp.m_InventoryPutSound = Claw1d4.m_InventoryPutSound;
+                bp.m_InventoryTakeSound = Claw1d4.m_InventoryTakeSound;
+                bp.NeedSkinningForCollect = false;
+                bp.TrashLootTypes = Claw1d4.TrashLootTypes;
+                bp.CR = 0;
+                bp.SpendCharges = true;
+                bp.Charges = 1;
+                bp.RestoreChargesOnRest = false;
+                bp.CasterLevel = 1;
+                bp.SpellLevel = 1;
+                bp.DC = 11;
+                bp.HideAbilityInfo = false;
+                bp.IsNonRemovable = false;
+                bp.m_EquipmentEntity = new KingmakerEquipmentEntityReference();
+                bp.m_EquipmentEntityAlternatives = new KingmakerEquipmentEntityReference[0];
+                bp.m_ForcedRampColorPresetIndex = 0;
+                bp.m_VisualParameters = Claw1d4.m_VisualParameters;
+                bp.m_Type = Claw1d4.m_Type;
+                bp.m_Size = Size.Medium;
+                bp.m_Enchantments = new BlueprintWeaponEnchantmentReference[] { Enhancement2 };
+                bp.m_OverrideDamageDice = false;
+                bp.m_DamageDice = new DiceFormula() {
+                    m_Rolls = 0,
+                    m_Dice = DiceType.Zero
+                };
+                bp.m_OverrideDamageType = false;
+                bp.m_DamageType = Claw1d4.m_DamageType;
+                bp.CountAsDouble = true;
+                bp.Double = false;
+                bp.m_SecondWeapon = null;
+                bp.KeepInPolymorph = false;
+                bp.m_OverrideShardItem = false;
+                bp.m_OverrideDestructible = false;
+                bp.m_AlwaysPrimary = false;
+                bp.m_IsCanChangeVisualOverriden = false;
+                bp.m_CanChangeVisual = false;
+            });
+            var ClawAndHornWeaponClaw3 = Helpers.CreateBlueprint<BlueprintItemWeapon>("ClawAndHornWeaponClaw3", bp => {
+                bp.m_DisplayNameText = Claw1d4.m_DisplayNameText;
+                bp.m_DescriptionText = Claw1d4.m_DescriptionText;
+                bp.m_FlavorText = Claw1d4.m_FlavorText;
+                bp.m_NonIdentifiedNameText = Claw1d4.m_NonIdentifiedNameText;
+                bp.m_NonIdentifiedDescriptionText = Claw1d4.m_NonIdentifiedDescriptionText;
+                bp.m_Icon = Claw1d4.m_Icon;
+                bp.m_Cost = 0;
+                bp.m_Weight = 0;
+                bp.m_IsNotable = false;
+                bp.m_IsJunk = false;
+                bp.m_ForceStackable = false;
+                bp.m_Destructible = false;
+                bp.m_ShardItem = null;
+                bp.m_MiscellaneousType = Kingmaker.Blueprints.Items.BlueprintItem.MiscellaneousItemType.None;
+                bp.m_InventoryPutSound = Claw1d4.m_InventoryPutSound;
+                bp.m_InventoryTakeSound = Claw1d4.m_InventoryTakeSound;
+                bp.NeedSkinningForCollect = false;
+                bp.TrashLootTypes = Claw1d4.TrashLootTypes;
+                bp.CR = 0;
+                bp.SpendCharges = true;
+                bp.Charges = 1;
+                bp.RestoreChargesOnRest = false;
+                bp.CasterLevel = 1;
+                bp.SpellLevel = 1;
+                bp.DC = 11;
+                bp.HideAbilityInfo = false;
+                bp.IsNonRemovable = false;
+                bp.m_EquipmentEntity = new KingmakerEquipmentEntityReference();
+                bp.m_EquipmentEntityAlternatives = new KingmakerEquipmentEntityReference[0];
+                bp.m_ForcedRampColorPresetIndex = 0;
+                bp.m_VisualParameters = Claw1d4.m_VisualParameters;
+                bp.m_Type = Claw1d4.m_Type;
+                bp.m_Size = Size.Medium;
+                bp.m_Enchantments = new BlueprintWeaponEnchantmentReference[] { Enhancement3 };
+                bp.m_OverrideDamageDice = false;
+                bp.m_DamageDice = new DiceFormula() {
+                    m_Rolls = 0,
+                    m_Dice = DiceType.Zero
+                };
+                bp.m_OverrideDamageType = false;
+                bp.m_DamageType = Claw1d4.m_DamageType;
+                bp.CountAsDouble = true;
+                bp.Double = false;
+                bp.m_SecondWeapon = null;
+                bp.KeepInPolymorph = false;
+                bp.m_OverrideShardItem = false;
+                bp.m_OverrideDestructible = false;
+                bp.m_AlwaysPrimary = false;
+                bp.m_IsCanChangeVisualOverriden = false;
+                bp.m_CanChangeVisual = false;
+            });
+            var ClawAndHornWeaponClaw4 = Helpers.CreateBlueprint<BlueprintItemWeapon>("ClawAndHornWeaponClaw4", bp => {
+                bp.m_DisplayNameText = Claw1d4.m_DisplayNameText;
+                bp.m_DescriptionText = Claw1d4.m_DescriptionText;
+                bp.m_FlavorText = Claw1d4.m_FlavorText;
+                bp.m_NonIdentifiedNameText = Claw1d4.m_NonIdentifiedNameText;
+                bp.m_NonIdentifiedDescriptionText = Claw1d4.m_NonIdentifiedDescriptionText;
+                bp.m_Icon = Claw1d4.m_Icon;
+                bp.m_Cost = 0;
+                bp.m_Weight = 0;
+                bp.m_IsNotable = false;
+                bp.m_IsJunk = false;
+                bp.m_ForceStackable = false;
+                bp.m_Destructible = false;
+                bp.m_ShardItem = null;
+                bp.m_MiscellaneousType = Kingmaker.Blueprints.Items.BlueprintItem.MiscellaneousItemType.None;
+                bp.m_InventoryPutSound = Claw1d4.m_InventoryPutSound;
+                bp.m_InventoryTakeSound = Claw1d4.m_InventoryTakeSound;
+                bp.NeedSkinningForCollect = false;
+                bp.TrashLootTypes = Claw1d4.TrashLootTypes;
+                bp.CR = 0;
+                bp.SpendCharges = true;
+                bp.Charges = 1;
+                bp.RestoreChargesOnRest = false;
+                bp.CasterLevel = 1;
+                bp.SpellLevel = 1;
+                bp.DC = 11;
+                bp.HideAbilityInfo = false;
+                bp.IsNonRemovable = false;
+                bp.m_EquipmentEntity = new KingmakerEquipmentEntityReference();
+                bp.m_EquipmentEntityAlternatives = new KingmakerEquipmentEntityReference[0];
+                bp.m_ForcedRampColorPresetIndex = 0;
+                bp.m_VisualParameters = Claw1d4.m_VisualParameters;
+                bp.m_Type = Claw1d4.m_Type;
+                bp.m_Size = Size.Medium;
+                bp.m_Enchantments = new BlueprintWeaponEnchantmentReference[] { Enhancement4 };
+                bp.m_OverrideDamageDice = false;
+                bp.m_DamageDice = new DiceFormula() {
+                    m_Rolls = 0,
+                    m_Dice = DiceType.Zero
+                };
+                bp.m_OverrideDamageType = false;
+                bp.m_DamageType = Claw1d4.m_DamageType;
+                bp.CountAsDouble = true;
+                bp.Double = false;
+                bp.m_SecondWeapon = null;
+                bp.KeepInPolymorph = false;
+                bp.m_OverrideShardItem = false;
+                bp.m_OverrideDestructible = false;
+                bp.m_AlwaysPrimary = false;
+                bp.m_IsCanChangeVisualOverriden = false;
+                bp.m_CanChangeVisual = false;
+            });
+            var ClawAndHornWeaponGore0 = Helpers.CreateBlueprint<BlueprintItemWeapon>("ClawAndHornWeaponGore0", bp => {
+                bp.m_DisplayNameText = Gore1d6.m_DisplayNameText;
+                bp.m_DescriptionText = Gore1d6.m_DescriptionText;
+                bp.m_FlavorText = Gore1d6.m_FlavorText;
+                bp.m_NonIdentifiedNameText = Gore1d6.m_NonIdentifiedNameText;
+                bp.m_NonIdentifiedDescriptionText = Gore1d6.m_NonIdentifiedDescriptionText;
+                bp.m_Icon = Gore1d6.m_Icon;
+                bp.m_Cost = 0;
+                bp.m_Weight = 0;
+                bp.m_IsNotable = false;
+                bp.m_IsJunk = false;
+                bp.m_ForceStackable = false;
+                bp.m_Destructible = false;
+                bp.m_ShardItem = null;
+                bp.m_MiscellaneousType = Kingmaker.Blueprints.Items.BlueprintItem.MiscellaneousItemType.None;
+                bp.m_InventoryPutSound = Gore1d6.m_InventoryPutSound;
+                bp.m_InventoryTakeSound = Gore1d6.m_InventoryTakeSound;
+                bp.NeedSkinningForCollect = false;
+                bp.TrashLootTypes = Gore1d6.TrashLootTypes;
+                bp.CR = 0;
+                bp.SpendCharges = true;
+                bp.Charges = 1;
+                bp.RestoreChargesOnRest = false;
+                bp.CasterLevel = 1;
+                bp.SpellLevel = 1;
+                bp.DC = 11;
+                bp.HideAbilityInfo = false;
+                bp.IsNonRemovable = false;
+                bp.m_EquipmentEntity = new KingmakerEquipmentEntityReference();
+                bp.m_EquipmentEntityAlternatives = new KingmakerEquipmentEntityReference[0];
+                bp.m_ForcedRampColorPresetIndex = 0;
+                bp.m_VisualParameters = Gore1d6.m_VisualParameters;
+                bp.m_Type = Gore1d6.m_Type;
+                bp.m_Size = Size.Medium;
+                bp.m_Enchantments = new BlueprintWeaponEnchantmentReference[] { };
+                bp.m_OverrideDamageDice = false;
+                bp.m_DamageDice = new DiceFormula() {
+                    m_Rolls = 0,
+                    m_Dice = DiceType.Zero
+                };
+                bp.m_OverrideDamageType = false;
+                bp.m_DamageType = Gore1d6.m_DamageType;
+                bp.CountAsDouble = false;
+                bp.Double = false;
+                bp.m_SecondWeapon = null;
+                bp.KeepInPolymorph = false;
+                bp.m_OverrideShardItem = false;
+                bp.m_OverrideDestructible = false;
+                bp.m_AlwaysPrimary = false;
+                bp.m_IsCanChangeVisualOverriden = false;
+                bp.m_CanChangeVisual = false;
+            });
+            var ClawAndHornWeaponGore1 = Helpers.CreateBlueprint<BlueprintItemWeapon>("ClawAndHornWeaponGore1", bp => {
+                bp.m_DisplayNameText = Gore1d6.m_DisplayNameText;
+                bp.m_DescriptionText = Gore1d6.m_DescriptionText;
+                bp.m_FlavorText = Gore1d6.m_FlavorText;
+                bp.m_NonIdentifiedNameText = Gore1d6.m_NonIdentifiedNameText;
+                bp.m_NonIdentifiedDescriptionText = Gore1d6.m_NonIdentifiedDescriptionText;
+                bp.m_Icon = Gore1d6.m_Icon;
+                bp.m_Cost = 0;
+                bp.m_Weight = 0;
+                bp.m_IsNotable = false;
+                bp.m_IsJunk = false;
+                bp.m_ForceStackable = false;
+                bp.m_Destructible = false;
+                bp.m_ShardItem = null;
+                bp.m_MiscellaneousType = Kingmaker.Blueprints.Items.BlueprintItem.MiscellaneousItemType.None;
+                bp.m_InventoryPutSound = Gore1d6.m_InventoryPutSound;
+                bp.m_InventoryTakeSound = Gore1d6.m_InventoryTakeSound;
+                bp.NeedSkinningForCollect = false;
+                bp.TrashLootTypes = Gore1d6.TrashLootTypes;
+                bp.CR = 0;
+                bp.SpendCharges = true;
+                bp.Charges = 1;
+                bp.RestoreChargesOnRest = false;
+                bp.CasterLevel = 1;
+                bp.SpellLevel = 1;
+                bp.DC = 11;
+                bp.HideAbilityInfo = false;
+                bp.IsNonRemovable = false;
+                bp.m_EquipmentEntity = new KingmakerEquipmentEntityReference();
+                bp.m_EquipmentEntityAlternatives = new KingmakerEquipmentEntityReference[0];
+                bp.m_ForcedRampColorPresetIndex = 0;
+                bp.m_VisualParameters = Gore1d6.m_VisualParameters;
+                bp.m_Type = Gore1d6.m_Type;
+                bp.m_Size = Size.Medium;
+                bp.m_Enchantments = new BlueprintWeaponEnchantmentReference[] { Enhancement1 };
+                bp.m_OverrideDamageDice = false;
+                bp.m_DamageDice = new DiceFormula() {
+                    m_Rolls = 0,
+                    m_Dice = DiceType.Zero
+                };
+                bp.m_OverrideDamageType = false;
+                bp.m_DamageType = Gore1d6.m_DamageType;
+                bp.CountAsDouble = false;
+                bp.Double = false;
+                bp.m_SecondWeapon = null;
+                bp.KeepInPolymorph = false;
+                bp.m_OverrideShardItem = false;
+                bp.m_OverrideDestructible = false;
+                bp.m_AlwaysPrimary = false;
+                bp.m_IsCanChangeVisualOverriden = false;
+                bp.m_CanChangeVisual = false;
+            });
+            var ClawAndHornWeaponGore2 = Helpers.CreateBlueprint<BlueprintItemWeapon>("ClawAndHornWeaponGore2", bp => {
+                bp.m_DisplayNameText = Gore1d6.m_DisplayNameText;
+                bp.m_DescriptionText = Gore1d6.m_DescriptionText;
+                bp.m_FlavorText = Gore1d6.m_FlavorText;
+                bp.m_NonIdentifiedNameText = Gore1d6.m_NonIdentifiedNameText;
+                bp.m_NonIdentifiedDescriptionText = Gore1d6.m_NonIdentifiedDescriptionText;
+                bp.m_Icon = Gore1d6.m_Icon;
+                bp.m_Cost = 0;
+                bp.m_Weight = 0;
+                bp.m_IsNotable = false;
+                bp.m_IsJunk = false;
+                bp.m_ForceStackable = false;
+                bp.m_Destructible = false;
+                bp.m_ShardItem = null;
+                bp.m_MiscellaneousType = Kingmaker.Blueprints.Items.BlueprintItem.MiscellaneousItemType.None;
+                bp.m_InventoryPutSound = Gore1d6.m_InventoryPutSound;
+                bp.m_InventoryTakeSound = Gore1d6.m_InventoryTakeSound;
+                bp.NeedSkinningForCollect = false;
+                bp.TrashLootTypes = Gore1d6.TrashLootTypes;
+                bp.CR = 0;
+                bp.SpendCharges = true;
+                bp.Charges = 1;
+                bp.RestoreChargesOnRest = false;
+                bp.CasterLevel = 1;
+                bp.SpellLevel = 1;
+                bp.DC = 11;
+                bp.HideAbilityInfo = false;
+                bp.IsNonRemovable = false;
+                bp.m_EquipmentEntity = new KingmakerEquipmentEntityReference();
+                bp.m_EquipmentEntityAlternatives = new KingmakerEquipmentEntityReference[0];
+                bp.m_ForcedRampColorPresetIndex = 0;
+                bp.m_VisualParameters = Gore1d6.m_VisualParameters;
+                bp.m_Type = Gore1d6.m_Type;
+                bp.m_Size = Size.Medium;
+                bp.m_Enchantments = new BlueprintWeaponEnchantmentReference[] { Enhancement2 };
+                bp.m_OverrideDamageDice = false;
+                bp.m_DamageDice = new DiceFormula() {
+                    m_Rolls = 0,
+                    m_Dice = DiceType.Zero
+                };
+                bp.m_OverrideDamageType = false;
+                bp.m_DamageType = Gore1d6.m_DamageType;
+                bp.CountAsDouble = false;
+                bp.Double = false;
+                bp.m_SecondWeapon = null;
+                bp.KeepInPolymorph = false;
+                bp.m_OverrideShardItem = false;
+                bp.m_OverrideDestructible = false;
+                bp.m_AlwaysPrimary = false;
+                bp.m_IsCanChangeVisualOverriden = false;
+                bp.m_CanChangeVisual = false;
+            });
+            var ClawAndHornWeaponGore3 = Helpers.CreateBlueprint<BlueprintItemWeapon>("ClawAndHornWeaponGore3", bp => {
+                bp.m_DisplayNameText = Gore1d6.m_DisplayNameText;
+                bp.m_DescriptionText = Gore1d6.m_DescriptionText;
+                bp.m_FlavorText = Gore1d6.m_FlavorText;
+                bp.m_NonIdentifiedNameText = Gore1d6.m_NonIdentifiedNameText;
+                bp.m_NonIdentifiedDescriptionText = Gore1d6.m_NonIdentifiedDescriptionText;
+                bp.m_Icon = Gore1d6.m_Icon;
+                bp.m_Cost = 0;
+                bp.m_Weight = 0;
+                bp.m_IsNotable = false;
+                bp.m_IsJunk = false;
+                bp.m_ForceStackable = false;
+                bp.m_Destructible = false;
+                bp.m_ShardItem = null;
+                bp.m_MiscellaneousType = Kingmaker.Blueprints.Items.BlueprintItem.MiscellaneousItemType.None;
+                bp.m_InventoryPutSound = Gore1d6.m_InventoryPutSound;
+                bp.m_InventoryTakeSound = Gore1d6.m_InventoryTakeSound;
+                bp.NeedSkinningForCollect = false;
+                bp.TrashLootTypes = Gore1d6.TrashLootTypes;
+                bp.CR = 0;
+                bp.SpendCharges = true;
+                bp.Charges = 1;
+                bp.RestoreChargesOnRest = false;
+                bp.CasterLevel = 1;
+                bp.SpellLevel = 1;
+                bp.DC = 11;
+                bp.HideAbilityInfo = false;
+                bp.IsNonRemovable = false;
+                bp.m_EquipmentEntity = new KingmakerEquipmentEntityReference();
+                bp.m_EquipmentEntityAlternatives = new KingmakerEquipmentEntityReference[0];
+                bp.m_ForcedRampColorPresetIndex = 0;
+                bp.m_VisualParameters = Gore1d6.m_VisualParameters;
+                bp.m_Type = Gore1d6.m_Type;
+                bp.m_Size = Size.Medium;
+                bp.m_Enchantments = new BlueprintWeaponEnchantmentReference[] { Enhancement3 };
+                bp.m_OverrideDamageDice = false;
+                bp.m_DamageDice = new DiceFormula() {
+                    m_Rolls = 0,
+                    m_Dice = DiceType.Zero
+                };
+                bp.m_OverrideDamageType = false;
+                bp.m_DamageType = Gore1d6.m_DamageType;
+                bp.CountAsDouble = false;
+                bp.Double = false;
+                bp.m_SecondWeapon = null;
+                bp.KeepInPolymorph = false;
+                bp.m_OverrideShardItem = false;
+                bp.m_OverrideDestructible = false;
+                bp.m_AlwaysPrimary = false;
+                bp.m_IsCanChangeVisualOverriden = false;
+                bp.m_CanChangeVisual = false;
+            });
+            var ClawAndHornWeaponGore4 = Helpers.CreateBlueprint<BlueprintItemWeapon>("ClawAndHornWeaponGore4", bp => {
+                bp.m_DisplayNameText = Gore1d6.m_DisplayNameText;
+                bp.m_DescriptionText = Gore1d6.m_DescriptionText;
+                bp.m_FlavorText = Gore1d6.m_FlavorText;
+                bp.m_NonIdentifiedNameText = Gore1d6.m_NonIdentifiedNameText;
+                bp.m_NonIdentifiedDescriptionText = Gore1d6.m_NonIdentifiedDescriptionText;
+                bp.m_Icon = Gore1d6.m_Icon;
+                bp.m_Cost = 0;
+                bp.m_Weight = 0;
+                bp.m_IsNotable = false;
+                bp.m_IsJunk = false;
+                bp.m_ForceStackable = false;
+                bp.m_Destructible = false;
+                bp.m_ShardItem = null;
+                bp.m_MiscellaneousType = Kingmaker.Blueprints.Items.BlueprintItem.MiscellaneousItemType.None;
+                bp.m_InventoryPutSound = Gore1d6.m_InventoryPutSound;
+                bp.m_InventoryTakeSound = Gore1d6.m_InventoryTakeSound;
+                bp.NeedSkinningForCollect = false;
+                bp.TrashLootTypes = Gore1d6.TrashLootTypes;
+                bp.CR = 0;
+                bp.SpendCharges = true;
+                bp.Charges = 1;
+                bp.RestoreChargesOnRest = false;
+                bp.CasterLevel = 1;
+                bp.SpellLevel = 1;
+                bp.DC = 11;
+                bp.HideAbilityInfo = false;
+                bp.IsNonRemovable = false;
+                bp.m_EquipmentEntity = new KingmakerEquipmentEntityReference();
+                bp.m_EquipmentEntityAlternatives = new KingmakerEquipmentEntityReference[0];
+                bp.m_ForcedRampColorPresetIndex = 0;
+                bp.m_VisualParameters = Gore1d6.m_VisualParameters;
+                bp.m_Type = Gore1d6.m_Type;
+                bp.m_Size = Size.Medium;
+                bp.m_Enchantments = new BlueprintWeaponEnchantmentReference[] { Enhancement4 };
+                bp.m_OverrideDamageDice = false;
+                bp.m_DamageDice = new DiceFormula() {
+                    m_Rolls = 0,
+                    m_Dice = DiceType.Zero
+                };
+                bp.m_OverrideDamageType = false;
+                bp.m_DamageType = Gore1d6.m_DamageType;
+                bp.CountAsDouble = false;
+                bp.Double = false;
+                bp.m_SecondWeapon = null;
+                bp.KeepInPolymorph = false;
+                bp.m_OverrideShardItem = false;
+                bp.m_OverrideDestructible = false;
+                bp.m_AlwaysPrimary = false;
+                bp.m_IsCanChangeVisualOverriden = false;
+                bp.m_CanChangeVisual = false;
+            });
+            var GiftOfClawAndHornBitePlus0 = Helpers.CreateBuff("GiftOfClawAndHornBitePlus0", bp => {
+                bp.SetName("Gift of Claw and Horn - Bite");
+                bp.SetDescription("As a swift action, you gain a natural weapon. The natural weapon lasts for a number of rounds equal to half your oracle level (minimum 1). You must choose a bite, claws, " +
+                    "or gore attack. These attacks deal the normal damage for a creature of your size. At 5th level, your natural weapon gains a +1 enhancement bonus. This bonus increases by +1 at 10th, " +
+                    "15th, and 20th level. At 11th level, you gain two natural weapons at a time. You can use this ability a number of times per day equal to 3 + your Charisma modifier.");
+                bp.m_Icon = AnimalShapesSpell.Icon;
+                bp.AddComponent<AddAdditionalLimb>(c => {
+                    c.m_Weapon = ClawAndHornWeaponBite0.ToReference<BlueprintItemWeaponReference>();
+                });
+                bp.IsClassFeature = true;
+                bp.m_Flags = 0;
+                bp.Stacking = StackingType.Replace;
+            });
+            var GiftOfClawAndHornBitePlus1 = Helpers.CreateBuff("GiftOfClawAndHornBitePlus1", bp => {
+                bp.SetName("Gift of Claw and Horn - Bite");
+                bp.SetDescription("As a swift action, you gain a natural weapon. The natural weapon lasts for a number of rounds equal to half your oracle level (minimum 1). You must choose a bite, claws, " +
+                    "or gore attack. These attacks deal the normal damage for a creature of your size. At 5th level, your natural weapon gains a +1 enhancement bonus. This bonus increases by +1 at 10th, " +
+                    "15th, and 20th level. At 11th level, you gain two natural weapons at a time. You can use this ability a number of times per day equal to 3 + your Charisma modifier.");
+                bp.m_Icon = AnimalShapesSpell.Icon;
+                bp.AddComponent<AddAdditionalLimb>(c => {
+                    c.m_Weapon = ClawAndHornWeaponBite1.ToReference<BlueprintItemWeaponReference>();
+                });
+                bp.IsClassFeature = true;
+                bp.m_Flags = 0;
+                bp.Stacking = StackingType.Replace;
+            });
+            var GiftOfClawAndHornBitePlus2 = Helpers.CreateBuff("GiftOfClawAndHornBitePlus2", bp => {
+                bp.SetName("Gift of Claw and Horn - Bite");
+                bp.SetDescription("As a swift action, you gain a natural weapon. The natural weapon lasts for a number of rounds equal to half your oracle level (minimum 1). You must choose a bite, claws, " +
+                    "or gore attack. These attacks deal the normal damage for a creature of your size. At 5th level, your natural weapon gains a +1 enhancement bonus. This bonus increases by +1 at 10th, " +
+                    "15th, and 20th level. At 11th level, you gain two natural weapons at a time. You can use this ability a number of times per day equal to 3 + your Charisma modifier.");
+                bp.m_Icon = AnimalShapesSpell.Icon;
+                bp.AddComponent<AddAdditionalLimb>(c => {
+                    c.m_Weapon = ClawAndHornWeaponBite2.ToReference<BlueprintItemWeaponReference>();
+                });
+                bp.IsClassFeature = true;
+                bp.m_Flags = 0;
+                bp.Stacking = StackingType.Replace;
+            });
+            var GiftOfClawAndHornBitePlus3 = Helpers.CreateBuff("GiftOfClawAndHornBitePlus3", bp => {
+                bp.SetName("Gift of Claw and Horn - Bite");
+                bp.SetDescription("As a swift action, you gain a natural weapon. The natural weapon lasts for a number of rounds equal to half your oracle level (minimum 1). You must choose a bite, claws, " +
+                    "or gore attack. These attacks deal the normal damage for a creature of your size. At 5th level, your natural weapon gains a +1 enhancement bonus. This bonus increases by +1 at 10th, " +
+                    "15th, and 20th level. At 11th level, you gain two natural weapons at a time. You can use this ability a number of times per day equal to 3 + your Charisma modifier.");
+                bp.m_Icon = AnimalShapesSpell.Icon;
+                bp.AddComponent<AddAdditionalLimb>(c => {
+                    c.m_Weapon = ClawAndHornWeaponBite3.ToReference<BlueprintItemWeaponReference>();
+                });
+                bp.IsClassFeature = true;
+                bp.m_Flags = 0;
+                bp.Stacking = StackingType.Replace;
+            });
+            var GiftOfClawAndHornBitePlus4 = Helpers.CreateBuff("GiftOfClawAndHornBitePlus4", bp => {
+                bp.SetName("Gift of Claw and Horn - Bite");
+                bp.SetDescription("As a swift action, you gain a natural weapon. The natural weapon lasts for a number of rounds equal to half your oracle level (minimum 1). You must choose a bite, claws, " +
+                    "or gore attack. These attacks deal the normal damage for a creature of your size. At 5th level, your natural weapon gains a +1 enhancement bonus. This bonus increases by +1 at 10th, " +
+                    "15th, and 20th level. At 11th level, you gain two natural weapons at a time. You can use this ability a number of times per day equal to 3 + your Charisma modifier.");
+                bp.m_Icon = AnimalShapesSpell.Icon;
+                bp.AddComponent<AddAdditionalLimb>(c => {
+                    c.m_Weapon = ClawAndHornWeaponBite4.ToReference<BlueprintItemWeaponReference>();
+                });
+                bp.IsClassFeature = true;
+                bp.m_Flags = 0;
+                bp.Stacking = StackingType.Replace;
+            });
+            var GiftOfClawAndHornClawPlus0 = Helpers.CreateBuff("GiftOfClawAndHornClawPlus0", bp => {
+                bp.SetName("Gift of Claw and Horn - Claws");
+                bp.SetDescription("As a swift action, you gain a natural weapon. The natural weapon lasts for a number of rounds equal to half your oracle level (minimum 1). You must choose a bite, claws, " +
+                    "or gore attack. These attacks deal the normal damage for a creature of your size. At 5th level, your natural weapon gains a +1 enhancement bonus. This bonus increases by +1 at 10th, " +
+                    "15th, and 20th level. At 11th level, you gain two natural weapons at a time. You can use this ability a number of times per day equal to 3 + your Charisma modifier.");
+                bp.m_Icon = AnimalShapesSpell.Icon;
+                bp.AddComponent<EmptyHandWeaponOverride>(c => {
+                    c.m_Weapon = ClawAndHornWeaponClaw0.ToReference<BlueprintItemWeaponReference>();
+                    c.IsPermanent = false;
+                    c.IsMonkUnarmedStrike = false;
+                });
+                bp.IsClassFeature = true;
+                bp.m_Flags = 0;
+                bp.Stacking = StackingType.Replace;
+            });
+            var GiftOfClawAndHornClawPlus1 = Helpers.CreateBuff("GiftOfClawAndHornClawPlus1", bp => {
+                bp.SetName("Gift of Claw and Horn - Claws");
+                bp.SetDescription("As a swift action, you gain a natural weapon. The natural weapon lasts for a number of rounds equal to half your oracle level (minimum 1). You must choose a bite, claws, " +
+                    "or gore attack. These attacks deal the normal damage for a creature of your size. At 5th level, your natural weapon gains a +1 enhancement bonus. This bonus increases by +1 at 10th, " +
+                    "15th, and 20th level. At 11th level, you gain two natural weapons at a time. You can use this ability a number of times per day equal to 3 + your Charisma modifier.");
+                bp.m_Icon = AnimalShapesSpell.Icon;
+                bp.AddComponent<EmptyHandWeaponOverride>(c => {
+                    c.m_Weapon = ClawAndHornWeaponClaw1.ToReference<BlueprintItemWeaponReference>();
+                    c.IsPermanent = false;
+                    c.IsMonkUnarmedStrike = false;
+                });
+                bp.IsClassFeature = true;
+                bp.m_Flags = 0;
+                bp.Stacking = StackingType.Replace;
+            });
+            var GiftOfClawAndHornClawPlus2 = Helpers.CreateBuff("GiftOfClawAndHornClawPlus2", bp => {
+                bp.SetName("Gift of Claw and Horn - Claws");
+                bp.SetDescription("As a swift action, you gain a natural weapon. The natural weapon lasts for a number of rounds equal to half your oracle level (minimum 1). You must choose a bite, claws, " +
+                    "or gore attack. These attacks deal the normal damage for a creature of your size. At 5th level, your natural weapon gains a +1 enhancement bonus. This bonus increases by +1 at 10th, " +
+                    "15th, and 20th level. At 11th level, you gain two natural weapons at a time. You can use this ability a number of times per day equal to 3 + your Charisma modifier.");
+                bp.m_Icon = AnimalShapesSpell.Icon;
+                bp.AddComponent<EmptyHandWeaponOverride>(c => {
+                    c.m_Weapon = ClawAndHornWeaponClaw2.ToReference<BlueprintItemWeaponReference>();
+                    c.IsPermanent = false;
+                    c.IsMonkUnarmedStrike = false;
+                });
+                bp.IsClassFeature = true;
+                bp.m_Flags = 0;
+                bp.Stacking = StackingType.Replace;
+            });
+            var GiftOfClawAndHornClawPlus3 = Helpers.CreateBuff("GiftOfClawAndHornClawPlus3", bp => {
+                bp.SetName("Gift of Claw and Horn - Claws");
+                bp.SetDescription("As a swift action, you gain a natural weapon. The natural weapon lasts for a number of rounds equal to half your oracle level (minimum 1). You must choose a bite, claws, " +
+                    "or gore attack. These attacks deal the normal damage for a creature of your size. At 5th level, your natural weapon gains a +1 enhancement bonus. This bonus increases by +1 at 10th, " +
+                    "15th, and 20th level. At 11th level, you gain two natural weapons at a time. You can use this ability a number of times per day equal to 3 + your Charisma modifier.");
+                bp.m_Icon = AnimalShapesSpell.Icon;
+                bp.AddComponent<EmptyHandWeaponOverride>(c => {
+                    c.m_Weapon = ClawAndHornWeaponClaw3.ToReference<BlueprintItemWeaponReference>();
+                    c.IsPermanent = false;
+                    c.IsMonkUnarmedStrike = false;
+                });
+                bp.IsClassFeature = true;
+                bp.m_Flags = 0;
+                bp.Stacking = StackingType.Replace;
+            });
+            var GiftOfClawAndHornClawPlus4 = Helpers.CreateBuff("GiftOfClawAndHornClawPlus4", bp => {
+                bp.SetName("Gift of Claw and Horn - Claws");
+                bp.SetDescription("As a swift action, you gain a natural weapon. The natural weapon lasts for a number of rounds equal to half your oracle level (minimum 1). You must choose a bite, claws, " +
+                    "or gore attack. These attacks deal the normal damage for a creature of your size. At 5th level, your natural weapon gains a +1 enhancement bonus. This bonus increases by +1 at 10th, " +
+                    "15th, and 20th level. At 11th level, you gain two natural weapons at a time. You can use this ability a number of times per day equal to 3 + your Charisma modifier.");
+                bp.m_Icon = AnimalShapesSpell.Icon;
+                bp.AddComponent<EmptyHandWeaponOverride>(c => {
+                    c.m_Weapon = ClawAndHornWeaponClaw4.ToReference<BlueprintItemWeaponReference>();
+                    c.IsPermanent = false;
+                    c.IsMonkUnarmedStrike = false;
+                });
+                bp.IsClassFeature = true;
+                bp.m_Flags = 0;
+                bp.Stacking = StackingType.Replace;
+            });
+            var GiftOfClawAndHornGorePlus0 = Helpers.CreateBuff("GiftOfClawAndHornGorePlus0", bp => {
+                bp.SetName("Gift of Claw and Horn - Gore");
+                bp.SetDescription("As a swift action, you gain a natural weapon. The natural weapon lasts for a number of rounds equal to half your oracle level (minimum 1). You must choose a bite, claws, " +
+                    "or gore attack. These attacks deal the normal damage for a creature of your size. At 5th level, your natural weapon gains a +1 enhancement bonus. This bonus increases by +1 at 10th, " +
+                    "15th, and 20th level. At 11th level, you gain two natural weapons at a time. You can use this ability a number of times per day equal to 3 + your Charisma modifier.");
+                bp.m_Icon = AnimalShapesSpell.Icon;
+                bp.AddComponent<AddAdditionalLimb>(c => {
+                    c.m_Weapon = ClawAndHornWeaponGore0.ToReference<BlueprintItemWeaponReference>();
+                });
+                bp.IsClassFeature = true;
+                bp.m_Flags = 0;
+                bp.Stacking = StackingType.Replace;
+            });
+            var GiftOfClawAndHornGorePlus1 = Helpers.CreateBuff("GiftOfClawAndHornGorePlus1", bp => {
+                bp.SetName("Gift of Claw and Horn - Gore");
+                bp.SetDescription("As a swift action, you gain a natural weapon. The natural weapon lasts for a number of rounds equal to half your oracle level (minimum 1). You must choose a bite, claws, " +
+                    "or gore attack. These attacks deal the normal damage for a creature of your size. At 5th level, your natural weapon gains a +1 enhancement bonus. This bonus increases by +1 at 10th, " +
+                    "15th, and 20th level. At 11th level, you gain two natural weapons at a time. You can use this ability a number of times per day equal to 3 + your Charisma modifier.");
+                bp.m_Icon = AnimalShapesSpell.Icon;
+                bp.AddComponent<AddAdditionalLimb>(c => {
+                    c.m_Weapon = ClawAndHornWeaponGore1.ToReference<BlueprintItemWeaponReference>();
+                });
+                bp.IsClassFeature = true;
+                bp.m_Flags = 0;
+                bp.Stacking = StackingType.Replace;
+            });
+            var GiftOfClawAndHornGorePlus2 = Helpers.CreateBuff("GiftOfClawAndHornGorePlus2", bp => {
+                bp.SetName("Gift of Claw and Horn - Gore");
+                bp.SetDescription("As a swift action, you gain a natural weapon. The natural weapon lasts for a number of rounds equal to half your oracle level (minimum 1). You must choose a bite, claws, " +
+                    "or gore attack. These attacks deal the normal damage for a creature of your size. At 5th level, your natural weapon gains a +1 enhancement bonus. This bonus increases by +1 at 10th, " +
+                    "15th, and 20th level. At 11th level, you gain two natural weapons at a time. You can use this ability a number of times per day equal to 3 + your Charisma modifier.");
+                bp.m_Icon = AnimalShapesSpell.Icon;
+                bp.AddComponent<AddAdditionalLimb>(c => {
+                    c.m_Weapon = ClawAndHornWeaponGore2.ToReference<BlueprintItemWeaponReference>();
+                });
+                bp.IsClassFeature = true;
+                bp.m_Flags = 0;
+                bp.Stacking = StackingType.Replace;
+            });
+            var GiftOfClawAndHornGorePlus3 = Helpers.CreateBuff("GiftOfClawAndHornGorePlus3", bp => {
+                bp.SetName("Gift of Claw and Horn - Gore");
+                bp.SetDescription("As a swift action, you gain a natural weapon. The natural weapon lasts for a number of rounds equal to half your oracle level (minimum 1). You must choose a bite, claws, " +
+                    "or gore attack. These attacks deal the normal damage for a creature of your size. At 5th level, your natural weapon gains a +1 enhancement bonus. This bonus increases by +1 at 10th, " +
+                    "15th, and 20th level. At 11th level, you gain two natural weapons at a time. You can use this ability a number of times per day equal to 3 + your Charisma modifier.");
+                bp.m_Icon = AnimalShapesSpell.Icon;
+                bp.AddComponent<AddAdditionalLimb>(c => {
+                    c.m_Weapon = ClawAndHornWeaponGore3.ToReference<BlueprintItemWeaponReference>();
+                });
+                bp.IsClassFeature = true;
+                bp.m_Flags = 0;
+                bp.Stacking = StackingType.Replace;
+            });
+            var GiftOfClawAndHornGorePlus4 = Helpers.CreateBuff("GiftOfClawAndHornGorePlus4", bp => {
+                bp.SetName("Gift of Claw and Horn - Gore");
+                bp.SetDescription("As a swift action, you gain a natural weapon. The natural weapon lasts for a number of rounds equal to half your oracle level (minimum 1). You must choose a bite, claws, " +
+                    "or gore attack. These attacks deal the normal damage for a creature of your size. At 5th level, your natural weapon gains a +1 enhancement bonus. This bonus increases by +1 at 10th, " +
+                    "15th, and 20th level. At 11th level, you gain two natural weapons at a time. You can use this ability a number of times per day equal to 3 + your Charisma modifier.");
+                bp.m_Icon = AnimalShapesSpell.Icon;
+                bp.AddComponent<AddAdditionalLimb>(c => {
+                    c.m_Weapon = ClawAndHornWeaponGore4.ToReference<BlueprintItemWeaponReference>();
+                });
+                bp.IsClassFeature = true;
+                bp.m_Flags = 0;
+                bp.Stacking = StackingType.Replace;
+            });
+            var OracleRevelationGiftOfClawAndHornAbility = Helpers.CreateBlueprint<BlueprintAbility>("OracleRevelationGiftOfClawAndHornAbility", bp => {
+                bp.SetName("Gift of Claw and Horn");
+                bp.SetDescription("As a swift action, you gain a natural weapon. The natural weapon lasts for a number of rounds equal to half your oracle level (minimum 1). You must choose a bite, claws, " +
+                    "or gore attack. These attacks deal the normal damage for a creature of your size. At 5th level, your natural weapon gains a +1 enhancement bonus. This bonus increases by +1 at 10th, " +
+                    "15th, and 20th level. At 11th level, you gain two natural weapons at a time. You can use this ability a number of times per day equal to 3 + your Charisma modifier.");
+                bp.m_Icon = BearShamanTotemTransformationIcon;
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = OracleRevelationGiftOfClawAndHornResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionRemoveBuff() {
+                            m_Buff = GiftOfClawAndHornBitePlus0.ToReference<BlueprintBuffReference>()
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = GiftOfClawAndHornBitePlus1.ToReference<BlueprintBuffReference>()
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = GiftOfClawAndHornBitePlus2.ToReference<BlueprintBuffReference>()
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = GiftOfClawAndHornBitePlus3.ToReference<BlueprintBuffReference>()
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = GiftOfClawAndHornBitePlus4.ToReference<BlueprintBuffReference>()
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = GiftOfClawAndHornClawPlus0.ToReference<BlueprintBuffReference>()
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = GiftOfClawAndHornClawPlus1.ToReference<BlueprintBuffReference>()
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = GiftOfClawAndHornClawPlus2.ToReference<BlueprintBuffReference>()
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = GiftOfClawAndHornClawPlus3.ToReference<BlueprintBuffReference>()
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = GiftOfClawAndHornClawPlus4.ToReference<BlueprintBuffReference>()
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = GiftOfClawAndHornGorePlus0.ToReference<BlueprintBuffReference>()
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = GiftOfClawAndHornGorePlus1.ToReference<BlueprintBuffReference>()
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = GiftOfClawAndHornGorePlus2.ToReference<BlueprintBuffReference>()
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = GiftOfClawAndHornGorePlus3.ToReference<BlueprintBuffReference>()
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = GiftOfClawAndHornGorePlus4.ToReference<BlueprintBuffReference>()
+                        },
+                        new Conditional() {
+                            ConditionsChecker = new ConditionsChecker() {
+                                Operation = Operation.And,
+                                Conditions = new Condition[] {
+                                    new ContextConditionCasterHasFact() {
+                                        m_Fact = OracleRevelationGiftOfClawAndHornToggleBiteBuff.ToReference<BlueprintUnitFactReference>(),
+                                        Not = false
+                                    }
+                                }
+                            },
+                            IfTrue = Helpers.CreateActionList(
+                                new Conditional() {
+                                    ConditionsChecker = new ConditionsChecker() {
+                                        Operation = Operation.And,
+                                        Conditions = new Condition[] {
+                                            new ContextConditionCasterHasFact() {
+                                                m_Fact = GiftOfClawAndHornFeatureLvl1.ToReference<BlueprintUnitFactReference>(),
+                                                Not = false
+                                            }
+                                        }
+                                    },
+                                    IfTrue = Helpers.CreateActionList(
+                                        new ContextActionApplyBuff() {
+                                            m_Buff = GiftOfClawAndHornBitePlus0.ToReference<BlueprintBuffReference>(),
+                                            DurationValue = new ContextDurationValue() {
+                                                Rate = DurationRate.Rounds,
+                                                DiceType = DiceType.Zero,
+                                                DiceCountValue = 0,
+                                                BonusValue = new ContextValue() {
+                                                    ValueType = ContextValueType.Rank,
+                                                    Value = 0,
+                                                    ValueRank = AbilityRankType.Default,
+                                                    ValueShared = AbilitySharedValue.Damage,
+                                                    Property = UnitProperty.None
+                                                },
+                                                m_IsExtendable = false,
+                                            }
+                                        }
+                                        ),
+                                    IfFalse = Helpers.CreateActionList()
+                                },
+                                new Conditional() {
+                                    ConditionsChecker = new ConditionsChecker() {
+                                        Operation = Operation.And,
+                                        Conditions = new Condition[] {
+                                            new ContextConditionCasterHasFact() {
+                                                m_Fact = GiftOfClawAndHornFeatureLvl2.ToReference<BlueprintUnitFactReference>(),
+                                                Not = false
+                                            }
+                                        }
+                                    },
+                                    IfTrue = Helpers.CreateActionList(
+                                        new ContextActionApplyBuff() {
+                                            m_Buff = GiftOfClawAndHornBitePlus1.ToReference<BlueprintBuffReference>(),
+                                            DurationValue = new ContextDurationValue() {
+                                                Rate = DurationRate.Rounds,
+                                                DiceType = DiceType.Zero,
+                                                DiceCountValue = 0,
+                                                BonusValue = new ContextValue() {
+                                                    ValueType = ContextValueType.Rank,
+                                                    Value = 0,
+                                                    ValueRank = AbilityRankType.Default,
+                                                    ValueShared = AbilitySharedValue.Damage,
+                                                    Property = UnitProperty.None
+                                                },
+                                                m_IsExtendable = false,
+                                            }
+                                        }
+                                        ),
+                                    IfFalse = Helpers.CreateActionList()
+                                },
+                                new Conditional() {
+                                    ConditionsChecker = new ConditionsChecker() {
+                                        Operation = Operation.And,
+                                        Conditions = new Condition[] {
+                                            new ContextConditionCasterHasFact() {
+                                                m_Fact = GiftOfClawAndHornFeatureLvl3.ToReference<BlueprintUnitFactReference>(),
+                                                Not = false
+                                            }
+                                        }
+                                    },
+                                    IfTrue = Helpers.CreateActionList(
+                                        new ContextActionApplyBuff() {
+                                            m_Buff = GiftOfClawAndHornBitePlus2.ToReference<BlueprintBuffReference>(),
+                                            DurationValue = new ContextDurationValue() {
+                                                Rate = DurationRate.Rounds,
+                                                DiceType = DiceType.Zero,
+                                                DiceCountValue = 0,
+                                                BonusValue = new ContextValue() {
+                                                    ValueType = ContextValueType.Rank,
+                                                    Value = 0,
+                                                    ValueRank = AbilityRankType.Default,
+                                                    ValueShared = AbilitySharedValue.Damage,
+                                                    Property = UnitProperty.None
+                                                },
+                                                m_IsExtendable = false,
+                                            }
+                                        }
+                                        ),
+                                    IfFalse = Helpers.CreateActionList()
+                                },
+                                new Conditional() {
+                                    ConditionsChecker = new ConditionsChecker() {
+                                        Operation = Operation.And,
+                                        Conditions = new Condition[] {
+                                            new ContextConditionCasterHasFact() {
+                                                m_Fact = GiftOfClawAndHornFeatureLvl4.ToReference<BlueprintUnitFactReference>(),
+                                                Not = false
+                                            }
+                                        }
+                                    },
+                                    IfTrue = Helpers.CreateActionList(
+                                        new ContextActionApplyBuff() {
+                                            m_Buff = GiftOfClawAndHornBitePlus3.ToReference<BlueprintBuffReference>(),
+                                            DurationValue = new ContextDurationValue() {
+                                                Rate = DurationRate.Rounds,
+                                                DiceType = DiceType.Zero,
+                                                DiceCountValue = 0,
+                                                BonusValue = new ContextValue() {
+                                                    ValueType = ContextValueType.Rank,
+                                                    Value = 0,
+                                                    ValueRank = AbilityRankType.Default,
+                                                    ValueShared = AbilitySharedValue.Damage,
+                                                    Property = UnitProperty.None
+                                                },
+                                                m_IsExtendable = false,
+                                            }
+                                        }
+                                        ),
+                                    IfFalse = Helpers.CreateActionList()
+                                },
+                                new Conditional() {
+                                    ConditionsChecker = new ConditionsChecker() {
+                                        Operation = Operation.And,
+                                        Conditions = new Condition[] {
+                                            new ContextConditionCasterHasFact() {
+                                                m_Fact = GiftOfClawAndHornFeatureLvl5.ToReference<BlueprintUnitFactReference>(),
+                                                Not = false
+                                            }
+                                        }
+                                    },
+                                    IfTrue = Helpers.CreateActionList(
+                                        new ContextActionApplyBuff() {
+                                            m_Buff = GiftOfClawAndHornBitePlus4.ToReference<BlueprintBuffReference>(),
+                                            DurationValue = new ContextDurationValue() {
+                                                Rate = DurationRate.Rounds,
+                                                DiceType = DiceType.Zero,
+                                                DiceCountValue = 0,
+                                                BonusValue = new ContextValue() {
+                                                    ValueType = ContextValueType.Rank,
+                                                    Value = 0,
+                                                    ValueRank = AbilityRankType.Default,
+                                                    ValueShared = AbilitySharedValue.Damage,
+                                                    Property = UnitProperty.None
+                                                },
+                                                m_IsExtendable = false,
+                                            }
+                                        }
+                                        ),
+                                    IfFalse = Helpers.CreateActionList()
+                                }
+                                ),
+                            IfFalse = Helpers.CreateActionList()
+                        },
+                        new Conditional() {
+                            ConditionsChecker = new ConditionsChecker() {
+                                Operation = Operation.And,
+                                Conditions = new Condition[] {
+                                    new ContextConditionCasterHasFact() {
+                                        m_Fact = OracleRevelationGiftOfClawAndHornToggleClawBuff.ToReference<BlueprintUnitFactReference>(),
+                                        Not = false
+                                    }
+                                }
+                            },
+                            IfTrue = Helpers.CreateActionList(
+                                new Conditional() {
+                                    ConditionsChecker = new ConditionsChecker() {
+                                        Operation = Operation.And,
+                                        Conditions = new Condition[] {
+                                            new ContextConditionCasterHasFact() {
+                                                m_Fact = GiftOfClawAndHornFeatureLvl1.ToReference<BlueprintUnitFactReference>(),
+                                                Not = false
+                                            }
+                                        }
+                                    },
+                                    IfTrue = Helpers.CreateActionList(
+                                        new ContextActionApplyBuff() {
+                                            m_Buff = GiftOfClawAndHornClawPlus0.ToReference<BlueprintBuffReference>(),
+                                            DurationValue = new ContextDurationValue() {
+                                                Rate = DurationRate.Rounds,
+                                                DiceType = DiceType.Zero,
+                                                DiceCountValue = 0,
+                                                BonusValue = new ContextValue() {
+                                                    ValueType = ContextValueType.Rank,
+                                                    Value = 0,
+                                                    ValueRank = AbilityRankType.Default,
+                                                    ValueShared = AbilitySharedValue.Damage,
+                                                    Property = UnitProperty.None
+                                                },
+                                                m_IsExtendable = false,
+                                            }
+                                        }
+                                        ),
+                                    IfFalse = Helpers.CreateActionList()
+                                },
+                                new Conditional() {
+                                    ConditionsChecker = new ConditionsChecker() {
+                                        Operation = Operation.And,
+                                        Conditions = new Condition[] {
+                                            new ContextConditionCasterHasFact() {
+                                                m_Fact = GiftOfClawAndHornFeatureLvl2.ToReference<BlueprintUnitFactReference>(),
+                                                Not = false
+                                            }
+                                        }
+                                    },
+                                    IfTrue = Helpers.CreateActionList(
+                                        new ContextActionApplyBuff() {
+                                            m_Buff = GiftOfClawAndHornClawPlus1.ToReference<BlueprintBuffReference>(),
+                                            DurationValue = new ContextDurationValue() {
+                                                Rate = DurationRate.Rounds,
+                                                DiceType = DiceType.Zero,
+                                                DiceCountValue = 0,
+                                                BonusValue = new ContextValue() {
+                                                    ValueType = ContextValueType.Rank,
+                                                    Value = 0,
+                                                    ValueRank = AbilityRankType.Default,
+                                                    ValueShared = AbilitySharedValue.Damage,
+                                                    Property = UnitProperty.None
+                                                },
+                                                m_IsExtendable = false,
+                                            }
+                                        }
+                                        ),
+                                    IfFalse = Helpers.CreateActionList()
+                                },
+                                new Conditional() {
+                                    ConditionsChecker = new ConditionsChecker() {
+                                        Operation = Operation.And,
+                                        Conditions = new Condition[] {
+                                            new ContextConditionCasterHasFact() {
+                                                m_Fact = GiftOfClawAndHornFeatureLvl3.ToReference<BlueprintUnitFactReference>(),
+                                                Not = false
+                                            }
+                                        }
+                                    },
+                                    IfTrue = Helpers.CreateActionList(
+                                        new ContextActionApplyBuff() {
+                                            m_Buff = GiftOfClawAndHornClawPlus2.ToReference<BlueprintBuffReference>(),
+                                            DurationValue = new ContextDurationValue() {
+                                                Rate = DurationRate.Rounds,
+                                                DiceType = DiceType.Zero,
+                                                DiceCountValue = 0,
+                                                BonusValue = new ContextValue() {
+                                                    ValueType = ContextValueType.Rank,
+                                                    Value = 0,
+                                                    ValueRank = AbilityRankType.Default,
+                                                    ValueShared = AbilitySharedValue.Damage,
+                                                    Property = UnitProperty.None
+                                                },
+                                                m_IsExtendable = false,
+                                            }
+                                        }
+                                        ),
+                                    IfFalse = Helpers.CreateActionList()
+                                },
+                                new Conditional() {
+                                    ConditionsChecker = new ConditionsChecker() {
+                                        Operation = Operation.And,
+                                        Conditions = new Condition[] {
+                                            new ContextConditionCasterHasFact() {
+                                                m_Fact = GiftOfClawAndHornFeatureLvl4.ToReference<BlueprintUnitFactReference>(),
+                                                Not = false
+                                            }
+                                        }
+                                    },
+                                    IfTrue = Helpers.CreateActionList(
+                                        new ContextActionApplyBuff() {
+                                            m_Buff = GiftOfClawAndHornClawPlus3.ToReference<BlueprintBuffReference>(),
+                                            DurationValue = new ContextDurationValue() {
+                                                Rate = DurationRate.Rounds,
+                                                DiceType = DiceType.Zero,
+                                                DiceCountValue = 0,
+                                                BonusValue = new ContextValue() {
+                                                    ValueType = ContextValueType.Rank,
+                                                    Value = 0,
+                                                    ValueRank = AbilityRankType.Default,
+                                                    ValueShared = AbilitySharedValue.Damage,
+                                                    Property = UnitProperty.None
+                                                },
+                                                m_IsExtendable = false,
+                                            }
+                                        }
+                                        ),
+                                    IfFalse = Helpers.CreateActionList()
+                                },
+                                new Conditional() {
+                                    ConditionsChecker = new ConditionsChecker() {
+                                        Operation = Operation.And,
+                                        Conditions = new Condition[] {
+                                            new ContextConditionCasterHasFact() {
+                                                m_Fact = GiftOfClawAndHornFeatureLvl5.ToReference<BlueprintUnitFactReference>(),
+                                                Not = false
+                                            }
+                                        }
+                                    },
+                                    IfTrue = Helpers.CreateActionList(
+                                        new ContextActionApplyBuff() {
+                                            m_Buff = GiftOfClawAndHornClawPlus4.ToReference<BlueprintBuffReference>(),
+                                            DurationValue = new ContextDurationValue() {
+                                                Rate = DurationRate.Rounds,
+                                                DiceType = DiceType.Zero,
+                                                DiceCountValue = 0,
+                                                BonusValue = new ContextValue() {
+                                                    ValueType = ContextValueType.Rank,
+                                                    Value = 0,
+                                                    ValueRank = AbilityRankType.Default,
+                                                    ValueShared = AbilitySharedValue.Damage,
+                                                    Property = UnitProperty.None
+                                                },
+                                                m_IsExtendable = false,
+                                            }
+                                        }
+                                        ),
+                                    IfFalse = Helpers.CreateActionList()
+                                }
+                                ),
+                            IfFalse = Helpers.CreateActionList()
+                        },
+                        new Conditional() {
+                            ConditionsChecker = new ConditionsChecker() {
+                                Operation = Operation.And,
+                                Conditions = new Condition[] {
+                                    new ContextConditionCasterHasFact() {
+                                        m_Fact = OracleRevelationGiftOfClawAndHornToggleGoreBuff.ToReference<BlueprintUnitFactReference>(),
+                                        Not = false
+                                    }
+                                }
+                            },
+                            IfTrue = Helpers.CreateActionList(
+                                new Conditional() {
+                                    ConditionsChecker = new ConditionsChecker() {
+                                        Operation = Operation.And,
+                                        Conditions = new Condition[] {
+                                            new ContextConditionCasterHasFact() {
+                                                m_Fact = GiftOfClawAndHornFeatureLvl1.ToReference<BlueprintUnitFactReference>(),
+                                                Not = false
+                                            }
+                                        }
+                                    },
+                                    IfTrue = Helpers.CreateActionList(
+                                        new ContextActionApplyBuff() {
+                                            m_Buff = GiftOfClawAndHornGorePlus0.ToReference<BlueprintBuffReference>(),
+                                            DurationValue = new ContextDurationValue() {
+                                                Rate = DurationRate.Rounds,
+                                                DiceType = DiceType.Zero,
+                                                DiceCountValue = 0,
+                                                BonusValue = new ContextValue() {
+                                                    ValueType = ContextValueType.Rank,
+                                                    Value = 0,
+                                                    ValueRank = AbilityRankType.Default,
+                                                    ValueShared = AbilitySharedValue.Damage,
+                                                    Property = UnitProperty.None
+                                                },
+                                                m_IsExtendable = false,
+                                            }
+                                        }
+                                        ),
+                                    IfFalse = Helpers.CreateActionList()
+                                },
+                                new Conditional() {
+                                    ConditionsChecker = new ConditionsChecker() {
+                                        Operation = Operation.And,
+                                        Conditions = new Condition[] {
+                                            new ContextConditionCasterHasFact() {
+                                                m_Fact = GiftOfClawAndHornFeatureLvl2.ToReference<BlueprintUnitFactReference>(),
+                                                Not = false
+                                            }
+                                        }
+                                    },
+                                    IfTrue = Helpers.CreateActionList(
+                                        new ContextActionApplyBuff() {
+                                            m_Buff = GiftOfClawAndHornGorePlus1.ToReference<BlueprintBuffReference>(),
+                                            DurationValue = new ContextDurationValue() {
+                                                Rate = DurationRate.Rounds,
+                                                DiceType = DiceType.Zero,
+                                                DiceCountValue = 0,
+                                                BonusValue = new ContextValue() {
+                                                    ValueType = ContextValueType.Rank,
+                                                    Value = 0,
+                                                    ValueRank = AbilityRankType.Default,
+                                                    ValueShared = AbilitySharedValue.Damage,
+                                                    Property = UnitProperty.None
+                                                },
+                                                m_IsExtendable = false,
+                                            }
+                                        }
+                                        ),
+                                    IfFalse = Helpers.CreateActionList()
+                                },
+                                new Conditional() {
+                                    ConditionsChecker = new ConditionsChecker() {
+                                        Operation = Operation.And,
+                                        Conditions = new Condition[] {
+                                            new ContextConditionCasterHasFact() {
+                                                m_Fact = GiftOfClawAndHornFeatureLvl3.ToReference<BlueprintUnitFactReference>(),
+                                                Not = false
+                                            }
+                                        }
+                                    },
+                                    IfTrue = Helpers.CreateActionList(
+                                        new ContextActionApplyBuff() {
+                                            m_Buff = GiftOfClawAndHornGorePlus2.ToReference<BlueprintBuffReference>(),
+                                            DurationValue = new ContextDurationValue() {
+                                                Rate = DurationRate.Rounds,
+                                                DiceType = DiceType.Zero,
+                                                DiceCountValue = 0,
+                                                BonusValue = new ContextValue() {
+                                                    ValueType = ContextValueType.Rank,
+                                                    Value = 0,
+                                                    ValueRank = AbilityRankType.Default,
+                                                    ValueShared = AbilitySharedValue.Damage,
+                                                    Property = UnitProperty.None
+                                                },
+                                                m_IsExtendable = false,
+                                            }
+                                        }
+                                        ),
+                                    IfFalse = Helpers.CreateActionList()
+                                },
+                                new Conditional() {
+                                    ConditionsChecker = new ConditionsChecker() {
+                                        Operation = Operation.And,
+                                        Conditions = new Condition[] {
+                                            new ContextConditionCasterHasFact() {
+                                                m_Fact = GiftOfClawAndHornFeatureLvl4.ToReference<BlueprintUnitFactReference>(),
+                                                Not = false
+                                            }
+                                        }
+                                    },
+                                    IfTrue = Helpers.CreateActionList(
+                                        new ContextActionApplyBuff() {
+                                            m_Buff = GiftOfClawAndHornGorePlus3.ToReference<BlueprintBuffReference>(),
+                                            DurationValue = new ContextDurationValue() {
+                                                Rate = DurationRate.Rounds,
+                                                DiceType = DiceType.Zero,
+                                                DiceCountValue = 0,
+                                                BonusValue = new ContextValue() {
+                                                    ValueType = ContextValueType.Rank,
+                                                    Value = 0,
+                                                    ValueRank = AbilityRankType.Default,
+                                                    ValueShared = AbilitySharedValue.Damage,
+                                                    Property = UnitProperty.None
+                                                },
+                                                m_IsExtendable = false,
+                                            }
+                                        }
+                                        ),
+                                    IfFalse = Helpers.CreateActionList()
+                                },
+                                new Conditional() {
+                                    ConditionsChecker = new ConditionsChecker() {
+                                        Operation = Operation.And,
+                                        Conditions = new Condition[] {
+                                            new ContextConditionCasterHasFact() {
+                                                m_Fact = GiftOfClawAndHornFeatureLvl5.ToReference<BlueprintUnitFactReference>(),
+                                                Not = false
+                                            }
+                                        }
+                                    },
+                                    IfTrue = Helpers.CreateActionList(
+                                        new ContextActionApplyBuff() {
+                                            m_Buff = GiftOfClawAndHornGorePlus4.ToReference<BlueprintBuffReference>(),
+                                            DurationValue = new ContextDurationValue() {
+                                                Rate = DurationRate.Rounds,
+                                                DiceType = DiceType.Zero,
+                                                DiceCountValue = 0,
+                                                BonusValue = new ContextValue() {
+                                                    ValueType = ContextValueType.Rank,
+                                                    Value = 0,
+                                                    ValueRank = AbilityRankType.Default,
+                                                    ValueShared = AbilitySharedValue.Damage,
+                                                    Property = UnitProperty.None
+                                                },
+                                                m_IsExtendable = false,
+                                            }
+                                        }
+                                        ),
+                                    IfFalse = Helpers.CreateActionList()
+                                }
+                                ),
+                            IfFalse = Helpers.CreateActionList()
+                        }
+                        );
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.SummClassLevelWithArchetype;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.Div2;
+                    c.Archetype = RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.m_Class = new BlueprintCharacterClassReference[] {
+                        OracleClass.ToReference<BlueprintCharacterClassReference>(),
+                        InquisitorClass.ToReference<BlueprintCharacterClassReference>()
+                    };
+                    c.m_UseMin = true;
+                    c.m_Min = 1;
+                });
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.SelfTouch;
+                bp.ActionType = UnitCommand.CommandType.Swift;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();            
+            });
+            var OracleRevelationGiftOfClawAndHornFeature1 = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationGiftOfClawAndHornFeature1", bp => {
+                bp.SetName("");
+                bp.SetDescription("");
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        OracleRevelationGiftOfClawAndHornAbility.ToReference<BlueprintUnitFactReference>()
+                    };
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.Level = 5;
+                    c.BeforeThisLevel = true;
+                    c.m_Feature = GiftOfClawAndHornFeatureLvl1.ToReference<BlueprintFeatureReference>();
+                    c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_AdditionalClasses = new BlueprintCharacterClassReference[] {
+                        InquisitorClass.ToReference<BlueprintCharacterClassReference>()
+                    };
+                    c.m_Archetypes = new BlueprintArchetypeReference[] {
+                        RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>()
+                    };
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.HideInUI = true;
+                bp.HideNotAvailibleInUI = true;
+            });
+            var OracleRevelationGiftOfClawAndHornFeature2 = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationGiftOfClawAndHornFeature2", bp => {
+                bp.SetName("");
+                bp.SetDescription("");
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.Level = 10;
+                    c.BeforeThisLevel = true;
+                    c.m_Feature = GiftOfClawAndHornFeatureLvl2.ToReference<BlueprintFeatureReference>();
+                    c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_AdditionalClasses = new BlueprintCharacterClassReference[] {
+                        InquisitorClass.ToReference<BlueprintCharacterClassReference>()
+                    };
+                    c.m_Archetypes = new BlueprintArchetypeReference[] {
+                        RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>()
+                    };
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.HideInUI = true;
+                bp.HideNotAvailibleInUI = true;
+            });
+            var OracleRevelationGiftOfClawAndHornFeature3 = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationGiftOfClawAndHornFeature3", bp => {
+                bp.SetName("");
+                bp.SetDescription("");
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.Level = 15;
+                    c.BeforeThisLevel = true;
+                    c.m_Feature = GiftOfClawAndHornFeatureLvl3.ToReference<BlueprintFeatureReference>();
+                    c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_AdditionalClasses = new BlueprintCharacterClassReference[] {
+                        InquisitorClass.ToReference<BlueprintCharacterClassReference>()
+                    };
+                    c.m_Archetypes = new BlueprintArchetypeReference[] {
+                        RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>()
+                    };
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.HideInUI = true;
+                bp.HideNotAvailibleInUI = true;
+            });
+            var OracleRevelationGiftOfClawAndHornFeature4 = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationGiftOfClawAndHornFeature4", bp => {
+                bp.SetName("");
+                bp.SetDescription("");
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.Level = 20;
+                    c.BeforeThisLevel = true;
+                    c.m_Feature = GiftOfClawAndHornFeatureLvl4.ToReference<BlueprintFeatureReference>();
+                    c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_AdditionalClasses = new BlueprintCharacterClassReference[] {
+                        InquisitorClass.ToReference<BlueprintCharacterClassReference>()
+                    };
+                    c.m_Archetypes = new BlueprintArchetypeReference[] {
+                        RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>()
+                    };
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.HideInUI = true;
+                bp.HideNotAvailibleInUI = true;
+            });
+            var OracleRevelationGiftOfClawAndHornFeature5 = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationGiftOfClawAndHornFeature5", bp => {
+                bp.SetName("");
+                bp.SetDescription("");
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        GiftOfClawAndHornFeatureLvl5.ToReference<BlueprintUnitFactReference>()
+                    };
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.HideInUI = true;
+                bp.HideNotAvailibleInUI = true;
+            });
+            var OracleRevelationGiftOfClawAndHornProgression = Helpers.CreateBlueprint<BlueprintProgression>("OracleRevelationGiftOfClawAndHornProgression", bp => {
+                bp.SetName("Gift of Claw and Horn");
+                bp.SetDescription("As a swift action, you gain a natural weapon. The natural weapon lasts for a number of rounds equal to half your oracle level (minimum 1). You must choose a bite, claws, " +
+                    "or gore attack. These attacks deal the normal damage for a creature of your size. At 5th level, your natural weapon gains a +1 enhancement bonus. This bonus increases by +1 at 10th, " +
+                    "15th, and 20th level. At 11th level, you gain two natural weapons at a time. You can use this ability a number of times per day equal to 3 + your Charisma modifier.");
+                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    },
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = InquisitorClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    }
+                };
+                bp.m_Archetypes = new BlueprintProgression.ArchetypeWithLevel[] {
+                    new BlueprintProgression.ArchetypeWithLevel {
+                        m_Archetype = RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>(),
+                        AdditionalLevel = 0
+                    }
+                };
+                bp.LevelEntries = new LevelEntry[] {
+                    Helpers.LevelEntry(1, OracleRevelationGiftOfClawAndHornFeature1, OracleRevelationGiftOfClawAndHornTogglesFeature),
+                    Helpers.LevelEntry(5, OracleRevelationGiftOfClawAndHornFeature2),
+                    Helpers.LevelEntry(10, OracleRevelationGiftOfClawAndHornFeature3),
+                    Helpers.LevelEntry(11, OracleRevelationGiftOfClawAndHornToggleIncreaseFeature),
+                    Helpers.LevelEntry(15, OracleRevelationGiftOfClawAndHornFeature4),
+                    Helpers.LevelEntry(20, OracleRevelationGiftOfClawAndHornFeature5)
+                };
+                bp.AddComponent<PrerequisiteFeaturesFromList>(c => {
+                    c.m_Features = new BlueprintFeatureReference[] {
+                        OracleLunarMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        EnlightnedPhilosopherLunarMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        DivineHerbalistLunarMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        OceansEchoLunarMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        RavenerHunterLunarMysteryProgression.ToReference<BlueprintFeatureReference>()
+                    };
+                    c.Amount = 1;
+                });
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = OracleRevelationGiftOfClawAndHornResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.GiveFeaturesForPreviousLevels = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.Groups = new FeatureGroup[] { FeatureGroup.OracleRevelation };
+                bp.IsClassFeature = true;
+            });
+            OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationGiftOfClawAndHornProgression.ToReference<BlueprintFeatureReference>());
             //MantleOfMoonlight ????
 
             //Moonbeam
@@ -1944,11 +3907,662 @@ namespace ExpandedContent.Tweaks.Mysteries {
             });
             OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationPropheticArmorFeature.ToReference<BlueprintFeatureReference>());
             //TouchOfTheMoon
-
-
-
-
-
+            var OracleRevelationProperty = Helpers.CreateBlueprint<BlueprintUnitProperty>("OracleRevelationProperty", bp => {
+                bp.AddComponent<SummClassLevelGetter>(c => {
+                    c.Settings = new PropertySettings() {
+                        m_Progression = PropertySettings.Progression.Div2,
+                        m_Negate = false
+                    };
+                    c.m_Class = new BlueprintCharacterClassReference[] {
+                        OracleClass.ToReference<BlueprintCharacterClassReference>(),
+                        InquisitorClass.ToReference<BlueprintCharacterClassReference>()
+                    };
+                    c.Archetype = RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>();
+                });
+                bp.AddComponent<StatValueGetter>(c => {
+                    c.Settings = new PropertySettings() {
+                        m_Progression = PropertySettings.Progression.AsIs,
+                        m_Negate = false,
+                        m_LimitType = PropertySettings.LimitType.None
+                    };
+                    c.Stat = StatType.Charisma;
+                    c.ValueType = StatValueGetter.ReturnType.Bonus;
+                });
+                bp.BaseValue = 10;
+                bp.OperationOnComponents = BlueprintUnitProperty.MathOperation.Sum;
+            }); //Maybe move this
+            var OracleCureSpells = Resources.GetBlueprintReference<BlueprintFeatureReference>("0f7fb23d8f97b024388a433c5a8d493f");
+            var OracleInflictSpells = Resources.GetBlueprintReference<BlueprintFeatureReference>("60b6566ca96b11549bd86a90d79b92f3");
+            var TouchOfTheMoonCureIcon = AssetLoader.LoadInternal("Skills", "Icon_TouchOfTheMoonCure.jpg");
+            var TouchoftheMoonLightWoundsBuff = Helpers.CreateBuff("TouchoftheMoonLightWoundsBuff", bp => {
+                bp.SetName("Touch of the Moon - Temporary Health");
+                bp.SetDescription("You have been granted temporary health from a allied touch of the moon cure spell. \nThis temporary health will be replaced if affected by another " +
+                    "instance of touch of the moon.");
+                bp.m_Icon = TouchOfTheMoonCureIcon;
+                bp.AddComponent<TemporaryHitPointsFromAbilityValue>(c => {
+                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+                    c.Value = new ContextValue() {
+                        ValueType = ContextValueType.Shared,
+                        ValueShared = AbilitySharedValue.Heal
+                    };
+                    c.RemoveWhenHitPointsEnd = true;
+                });
+                bp.AddComponent<ContextCalculateSharedValue>(c => {
+                    c.ValueType = AbilitySharedValue.Heal;
+                    c.Value = new ContextDiceValue() {
+                        DiceType = DiceType.D4,
+                        DiceCountValue = 1,
+                        BonusValue = 1,
+                    };
+                    c.Modifier = 1;
+                });
+                bp.AddComponent<SpellDescriptorComponent>(c => { c.Descriptor = SpellDescriptor.TemporaryHP; });
+                bp.Stacking = StackingType.Replace;
+            });
+            var TouchoftheMoonModerateWoundsBuff = Helpers.CreateBuff("TouchoftheMoonModerateWoundsBuff", bp => {
+                bp.SetName("Touch of the Moon - Temporary Health");
+                bp.SetDescription("You have been granted temporary health from a allied touch of the moon cure spell. \nThis temporary health will be replaced if affected by another " +
+                    "instance of touch of the moon.");
+                bp.m_Icon = TouchOfTheMoonCureIcon;
+                bp.AddComponent<TemporaryHitPointsFromAbilityValue>(c => {
+                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+                    c.Value = new ContextValue() {
+                        ValueType = ContextValueType.Shared,
+                        ValueShared = AbilitySharedValue.Heal
+                    };
+                    c.RemoveWhenHitPointsEnd = true;
+                });
+                bp.AddComponent<ContextCalculateSharedValue>(c => {
+                    c.ValueType = AbilitySharedValue.Heal;
+                    c.Value = new ContextDiceValue() {
+                        DiceType = DiceType.D4,
+                        DiceCountValue = 2,
+                        BonusValue = 2,
+                    };
+                    c.Modifier = 1;
+                });
+                bp.AddComponent<SpellDescriptorComponent>(c => { c.Descriptor = SpellDescriptor.TemporaryHP; });
+                bp.Stacking = StackingType.Replace;
+            });
+            var TouchoftheMoonSeriousWoundsBuff = Helpers.CreateBuff("TouchoftheMoonSeriousWoundsBuff", bp => {
+                bp.SetName("Touch of the Moon - Temporary Health");
+                bp.SetDescription("You have been granted temporary health from a allied touch of the moon cure spell. \nThis temporary health will be replaced if affected by another " +
+                    "instance of touch of the moon.");
+                bp.m_Icon = TouchOfTheMoonCureIcon;
+                bp.AddComponent<TemporaryHitPointsFromAbilityValue>(c => {
+                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+                    c.Value = new ContextValue() {
+                        ValueType = ContextValueType.Shared,
+                        ValueShared = AbilitySharedValue.Heal
+                    };
+                    c.RemoveWhenHitPointsEnd = true;
+                });
+                bp.AddComponent<ContextCalculateSharedValue>(c => {
+                    c.ValueType = AbilitySharedValue.Heal;
+                    c.Value = new ContextDiceValue() {
+                        DiceType = DiceType.D4,
+                        DiceCountValue = 3,
+                        BonusValue = 3,
+                    };
+                    c.Modifier = 1;
+                });
+                bp.AddComponent<SpellDescriptorComponent>(c => { c.Descriptor = SpellDescriptor.TemporaryHP; });
+                bp.Stacking = StackingType.Replace;
+            });
+            var TouchoftheMoonCriticalWoundsBuff = Helpers.CreateBuff("TouchoftheMoonCriticalWoundsBuff", bp => {
+                bp.SetName("Touch of the Moon - Temporary Health");
+                bp.SetDescription("You have been granted temporary health from a allied touch of the moon cure spell. \nThis temporary health will be replaced if affected by another " +
+                    "instance of touch of the moon.");
+                bp.m_Icon = TouchOfTheMoonCureIcon;
+                bp.AddComponent<TemporaryHitPointsFromAbilityValue>(c => {
+                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+                    c.Value = new ContextValue() {
+                        ValueType = ContextValueType.Shared,
+                        ValueShared = AbilitySharedValue.Heal
+                    };
+                    c.RemoveWhenHitPointsEnd = true;
+                });
+                bp.AddComponent<ContextCalculateSharedValue>(c => {
+                    c.ValueType = AbilitySharedValue.Heal;
+                    c.Value = new ContextDiceValue() {
+                        DiceType = DiceType.D4,
+                        DiceCountValue = 4,
+                        BonusValue = 4,
+                    };
+                    c.Modifier = 1;
+                });
+                bp.AddComponent<SpellDescriptorComponent>(c => { c.Descriptor = SpellDescriptor.TemporaryHP; });
+                bp.Stacking = StackingType.Replace;
+            });
+            var TouchOfTheMoonCureBuffCure1 = Helpers.CreateBuff("TouchOfTheMoonCureBuffCure1", bp => {
+                bp.SetName("Touch of the Moon - Cure Level 1");
+                bp.SetDescription("The next level 1 cure spell you cast this round will also grant temporary hit points equal to 1d4 + 1 for each d8 that would normally be healed by the spell to all targets. " +
+                    "Hit points healed this way expire after a number of minutes equal to half your oracle level.");
+                bp.m_Icon = TouchOfTheMoonCureIcon;
+                bp.Stacking = StackingType.Replace;
+            });
+            var TouchOfTheMoonCureBuffCure2 = Helpers.CreateBuff("TouchOfTheMoonCureBuffCure2", bp => {
+                bp.SetName("Touch of the Moon - Cure Level 2");
+                bp.SetDescription("The next level 2 cure spell you cast this round will also grant temporary hit points equal to 1d4 + 1 for each d8 that would normally be healed by the spell to all targets. " +
+                    "Hit points healed this way expire after a number of minutes equal to half your oracle level.");
+                bp.m_Icon = TouchOfTheMoonCureIcon;
+                bp.Stacking = StackingType.Replace;
+            });
+            var TouchOfTheMoonCureBuffCure3 = Helpers.CreateBuff("TouchOfTheMoonCureBuffCure3", bp => {
+                bp.SetName("Touch of the Moon - Cure Level 3");
+                bp.SetDescription("The next level 3 cure spell you cast this round will also grant temporary hit points equal to 1d4 + 1 for each d8 that would normally be healed by the spell to all targets. " +
+                    "Hit points healed this way expire after a number of minutes equal to half your oracle level.");
+                bp.m_Icon = TouchOfTheMoonCureIcon;
+                bp.Stacking = StackingType.Replace;
+            });
+            var TouchOfTheMoonCureBuffCure4 = Helpers.CreateBuff("TouchOfTheMoonCureBuffCure4", bp => {
+                bp.SetName("Touch of the Moon - Cure Level 4");
+                bp.SetDescription("The next level 4 cure spell you cast this round will also grant temporary hit points equal to 1d4 + 1 for each d8 that would normally be healed by the spell to all targets. " +
+                    "Hit points healed this way expire after a number of minutes equal to half your oracle level.");
+                bp.m_Icon = TouchOfTheMoonCureIcon;
+                bp.Stacking = StackingType.Replace;
+            });
+            var TouchOfTheMoonCureBuffCure5 = Helpers.CreateBuff("TouchOfTheMoonCureBuffCure5", bp => {
+                bp.SetName("Touch of the Moon - Cure Level 5");
+                bp.SetDescription("The next level 5 cure spell you cast this round will also grant temporary hit points equal to 1d4 + 1 for each d8 that would normally be healed by the spell to all targets. " +
+                    "Hit points healed this way expire after a number of minutes equal to half your oracle level.");
+                bp.m_Icon = TouchOfTheMoonCureIcon;
+                bp.Stacking = StackingType.Replace;
+            });
+            var TouchOfTheMoonCureBuffCure6 = Helpers.CreateBuff("TouchOfTheMoonCureBuffCure6", bp => {
+                bp.SetName("Touch of the Moon - Cure Level 6");
+                bp.SetDescription("The next level 6 cure spell you cast this round will also grant temporary hit points equal to 1d4 + 1 for each d8 that would normally be healed by the spell to all targets. " +
+                    "Hit points healed this way expire after a number of minutes equal to half your oracle level.");
+                bp.m_Icon = TouchOfTheMoonCureIcon;
+                bp.Stacking = StackingType.Replace;
+            });
+            var TouchOfTheMoonCureBuffCure7 = Helpers.CreateBuff("TouchOfTheMoonCureBuffCure7", bp => {
+                bp.SetName("Touch of the Moon - Cure Level 7");
+                bp.SetDescription("The next level 7 cure spell you cast this round will also grant temporary hit points equal to 1d4 + 1 for each d8 that would normally be healed by the spell to all targets. " +
+                    "Hit points healed this way expire after a number of minutes equal to half your oracle level.");
+                bp.m_Icon = TouchOfTheMoonCureIcon;
+                bp.Stacking = StackingType.Replace;
+            });
+            var TouchOfTheMoonCureBuffCure8 = Helpers.CreateBuff("TouchOfTheMoonCureBuffCure8", bp => {
+                bp.SetName("Touch of the Moon - Cure Level 8");
+                bp.SetDescription("The next level 8 cure spell you cast this round will also grant temporary hit points equal to 1d4 + 1 for each d8 that would normally be healed by the spell to all targets. " +
+                    "Hit points healed this way expire after a number of minutes equal to half your oracle level.");
+                bp.m_Icon = TouchOfTheMoonCureIcon;
+                bp.Stacking = StackingType.Replace;
+            });
+            var TouchOfTheMoonCureBuffCure9 = Helpers.CreateBuff("TouchOfTheMoonCureBuffCure9", bp => {
+                bp.SetName("Touch of the Moon - Cure Level 9");
+                bp.SetDescription("The next level 9 cure spell you cast this round will also grant temporary hit points equal to 1d4 + 1 for each d8 that would normally be healed by the spell to all targets. " +
+                    "Hit points healed this way expire after a number of minutes equal to half your oracle level.");
+                bp.m_Icon = TouchOfTheMoonCureIcon;
+                bp.Stacking = StackingType.Replace;
+            });
+            CreateTouchoftheMoonCureActions(TouchOfTheMoonCureBuffCure1, 1);
+            CreateTouchoftheMoonCureActions(TouchOfTheMoonCureBuffCure2, 2);
+            CreateTouchoftheMoonCureActions(TouchOfTheMoonCureBuffCure3, 3);
+            CreateTouchoftheMoonCureActions(TouchOfTheMoonCureBuffCure4, 4);
+            CreateTouchoftheMoonCureActions(TouchOfTheMoonCureBuffCure5, 5);
+            CreateTouchoftheMoonCureActions(TouchOfTheMoonCureBuffCure6, 6);
+            CreateTouchoftheMoonCureActions(TouchOfTheMoonCureBuffCure7, 7);
+            CreateTouchoftheMoonCureActions(TouchOfTheMoonCureBuffCure8, 8);
+            CreateTouchoftheMoonCureActions(TouchOfTheMoonCureBuffCure9, 9);
+            var TouchOfTheMoonCureAbilityCure1 = Helpers.CreateBlueprint<BlueprintAbility>("TouchOfTheMoonCureAbilityCure1", bp => {
+                bp.SetName("Touch of the Moon - Cure Level 1");
+                bp.SetDescription("Cure spells are potentially more effective but entirely in the target’s mind. As a free action you may spend a spell slot, the next cure spell " +
+                    "you cast this round of the same level will also grant temporary hit points equal to 1d4 + 1 for each d8 that would normally be healed by the spell. Hit points " +
+                    "healed this way expire after a number of minutes equal to half your oracle level.");
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = TouchOfTheMoonCureBuffCure1.ToReference<BlueprintBuffReference>(),
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                BonusValue = 1,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                m_IsExtendable = true
+                            },
+                            DurationSeconds = 0
+                        });
+                });
+                bp.m_Icon = TouchOfTheMoonCureIcon;
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = true;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Self;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var TouchOfTheMoonCureAbilityCure2 = Helpers.CreateBlueprint<BlueprintAbility>("TouchOfTheMoonCureAbilityCure2", bp => {
+                bp.SetName("Touch of the Moon - Cure Level 2");
+                bp.SetDescription("Cure spells are potentially more effective but entirely in the target’s mind. As a free action you may spend a spell slot, the next cure spell " +
+                    "you cast this round of the same level will also grant temporary hit points equal to 1d4 + 1 for each d8 that would normally be healed by the spell. Hit points " +
+                    "healed this way expire after a number of minutes equal to half your oracle level.");
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = TouchOfTheMoonCureBuffCure2.ToReference<BlueprintBuffReference>(),
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                BonusValue = 1,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                m_IsExtendable = true
+                            },
+                            DurationSeconds = 0
+                        });
+                });
+                bp.m_Icon = TouchOfTheMoonCureIcon;
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = true;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Self;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var TouchOfTheMoonCureAbilityCure3 = Helpers.CreateBlueprint<BlueprintAbility>("TouchOfTheMoonCureAbilityCure3", bp => {
+                bp.SetName("Touch of the Moon - Cure Level 3");
+                bp.SetDescription("Cure spells are potentially more effective but entirely in the target’s mind. As a free action you may spend a spell slot, the next cure spell " +
+                    "you cast this round of the same level will also grant temporary hit points equal to 1d4 + 1 for each d8 that would normally be healed by the spell. Hit points " +
+                    "healed this way expire after a number of minutes equal to half your oracle level.");
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = TouchOfTheMoonCureBuffCure3.ToReference<BlueprintBuffReference>(),
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                BonusValue = 1,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                m_IsExtendable = true
+                            },
+                            DurationSeconds = 0
+                        });
+                });
+                bp.m_Icon = TouchOfTheMoonCureIcon;
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = true;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Self;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var TouchOfTheMoonCureAbilityCure4 = Helpers.CreateBlueprint<BlueprintAbility>("TouchOfTheMoonCureAbilityCure4", bp => {
+                bp.SetName("Touch of the Moon - Cure Level 4");
+                bp.SetDescription("Cure spells are potentially more effective but entirely in the target’s mind. As a free action you may spend a spell slot, the next cure spell " +
+                    "you cast this round of the same level will also grant temporary hit points equal to 1d4 + 1 for each d8 that would normally be healed by the spell. Hit points " +
+                    "healed this way expire after a number of minutes equal to half your oracle level.");
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = TouchOfTheMoonCureBuffCure4.ToReference<BlueprintBuffReference>(),
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                BonusValue = 1,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                m_IsExtendable = true
+                            },
+                            DurationSeconds = 0
+                        });
+                });
+                bp.m_Icon = TouchOfTheMoonCureIcon;
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = true;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Self;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var TouchOfTheMoonCureAbilityCure5 = Helpers.CreateBlueprint<BlueprintAbility>("TouchOfTheMoonCureAbilityCure5", bp => {
+                bp.SetName("Touch of the Moon - Cure Level 5");
+                bp.SetDescription("Cure spells are potentially more effective but entirely in the target’s mind. As a free action you may spend a spell slot, the next cure spell " +
+                    "you cast this round of the same level will also grant temporary hit points equal to 1d4 + 1 for each d8 that would normally be healed by the spell. Hit points " +
+                    "healed this way expire after a number of minutes equal to half your oracle level.");
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = TouchOfTheMoonCureBuffCure5.ToReference<BlueprintBuffReference>(),
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                BonusValue = 1,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                m_IsExtendable = true
+                            },
+                            DurationSeconds = 0
+                        });
+                });
+                bp.m_Icon = TouchOfTheMoonCureIcon;
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = true;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Self;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var TouchOfTheMoonCureAbilityCure6 = Helpers.CreateBlueprint<BlueprintAbility>("TouchOfTheMoonCureAbilityCure6", bp => {
+                bp.SetName("Touch of the Moon - Cure Level 6");
+                bp.SetDescription("Cure spells are potentially more effective but entirely in the target’s mind. As a free action you may spend a spell slot, the next cure spell " +
+                    "you cast this round of the same level will also grant temporary hit points equal to 1d4 + 1 for each d8 that would normally be healed by the spell. Hit points " +
+                    "healed this way expire after a number of minutes equal to half your oracle level.");
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = TouchOfTheMoonCureBuffCure6.ToReference<BlueprintBuffReference>(),
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                BonusValue = 1,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                m_IsExtendable = true
+                            },
+                            DurationSeconds = 0
+                        });
+                });
+                bp.m_Icon = TouchOfTheMoonCureIcon;
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = true;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Self;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var TouchOfTheMoonCureAbilityCure7 = Helpers.CreateBlueprint<BlueprintAbility>("TouchOfTheMoonCureAbilityCure7", bp => {
+                bp.SetName("Touch of the Moon - Cure Level 7");
+                bp.SetDescription("Cure spells are potentially more effective but entirely in the target’s mind. As a free action you may spend a spell slot, the next cure spell " +
+                    "you cast this round of the same level will also grant temporary hit points equal to 1d4 + 1 for each d8 that would normally be healed by the spell. Hit points " +
+                    "healed this way expire after a number of minutes equal to half your oracle level.");
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = TouchOfTheMoonCureBuffCure7.ToReference<BlueprintBuffReference>(),
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                BonusValue = 1,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                m_IsExtendable = true
+                            },
+                            DurationSeconds = 0
+                        });
+                });
+                bp.m_Icon = TouchOfTheMoonCureIcon;
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = true;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Self;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var TouchOfTheMoonCureAbilityCure8 = Helpers.CreateBlueprint<BlueprintAbility>("TouchOfTheMoonCureAbilityCure8", bp => {
+                bp.SetName("Touch of the Moon - Cure Level 8");
+                bp.SetDescription("Cure spells are potentially more effective but entirely in the target’s mind. As a free action you may spend a spell slot, the next cure spell " +
+                    "you cast this round of the same level will also grant temporary hit points equal to 1d4 + 1 for each d8 that would normally be healed by the spell. Hit points " +
+                    "healed this way expire after a number of minutes equal to half your oracle level.");
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = TouchOfTheMoonCureBuffCure8.ToReference<BlueprintBuffReference>(),
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                BonusValue = 1,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                m_IsExtendable = true
+                            },
+                            DurationSeconds = 0
+                        });
+                });
+                bp.m_Icon = TouchOfTheMoonCureIcon;
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = true;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Self;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var TouchOfTheMoonCureAbilityCure9 = Helpers.CreateBlueprint<BlueprintAbility>("TouchOfTheMoonCureAbilityCure9", bp => {
+                bp.SetName("Touch of the Moon - Cure Level 9");
+                bp.SetDescription("Cure spells are potentially more effective but entirely in the target’s mind. As a free action you may spend a spell slot, the next cure spell " +
+                    "you cast this round of the same level will also grant temporary hit points equal to 1d4 + 1 for each d8 that would normally be healed by the spell. Hit points " +
+                    "healed this way expire after a number of minutes equal to half your oracle level.");
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = TouchOfTheMoonCureBuffCure9.ToReference<BlueprintBuffReference>(),
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                BonusValue = 1,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                m_IsExtendable = true
+                            },
+                            DurationSeconds = 0
+                        });
+                });
+                bp.m_Icon = TouchOfTheMoonCureIcon;
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = true;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Self;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var OracleRevelationTouchOfTheMoonCureFeature = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationTouchOfTheMoonCureFeature", bp => {
+                bp.SetName("Touch of the Moon - Cure");
+                bp.SetDescription("Cure spells are potentially more effective but entirely in the target’s mind. As a free action you may spend a spell slot, the next cure spell " +
+                    "you cast this round of the same level will also grant temporary hit points equal to 1d4 + 1 for each d8 that would normally be healed by the spell. Hit points " +
+                    "healed this way expire after a number of minutes equal to half your oracle level.");
+                bp.AddComponent<SpontaneousSpellConversion>(c => {
+                    c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
+                        new BlueprintAbilityReference(),
+                        TouchOfTheMoonCureAbilityCure1.ToReference<BlueprintAbilityReference>(),
+                        TouchOfTheMoonCureAbilityCure2.ToReference<BlueprintAbilityReference>(),
+                        TouchOfTheMoonCureAbilityCure3.ToReference<BlueprintAbilityReference>(),
+                        TouchOfTheMoonCureAbilityCure4.ToReference<BlueprintAbilityReference>(),
+                        TouchOfTheMoonCureAbilityCure5.ToReference<BlueprintAbilityReference>(),
+                        TouchOfTheMoonCureAbilityCure6.ToReference<BlueprintAbilityReference>(),
+                        TouchOfTheMoonCureAbilityCure7.ToReference<BlueprintAbilityReference>(),
+                        TouchOfTheMoonCureAbilityCure8.ToReference<BlueprintAbilityReference>(),
+                        TouchOfTheMoonCureAbilityCure9.ToReference<BlueprintAbilityReference>()
+                    };
+                });
+                bp.AddComponent<SpontaneousSpellConversion>(c => {
+                    c.m_CharacterClass = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
+                        new BlueprintAbilityReference(),
+                        TouchOfTheMoonCureAbilityCure1.ToReference<BlueprintAbilityReference>(),
+                        TouchOfTheMoonCureAbilityCure2.ToReference<BlueprintAbilityReference>(),
+                        TouchOfTheMoonCureAbilityCure3.ToReference<BlueprintAbilityReference>(),
+                        TouchOfTheMoonCureAbilityCure4.ToReference<BlueprintAbilityReference>(),
+                        TouchOfTheMoonCureAbilityCure5.ToReference<BlueprintAbilityReference>(),
+                        TouchOfTheMoonCureAbilityCure6.ToReference<BlueprintAbilityReference>(),
+                        TouchOfTheMoonCureAbilityCure7.ToReference<BlueprintAbilityReference>(),
+                        TouchOfTheMoonCureAbilityCure8.ToReference<BlueprintAbilityReference>(),
+                        TouchOfTheMoonCureAbilityCure9.ToReference<BlueprintAbilityReference>()
+                    };
+                });
+                bp.AddComponent<PrerequisiteFeature>(c => {
+                    c.Group = Prerequisite.GroupType.Any;
+                    c.CheckInProgression = false;
+                    c.HideInUI = true;
+                    c.m_Feature = OracleCureSpells;
+                });
+                bp.AddComponent<PrerequisiteArchetypeLevel>(c => {
+                    c.Group = Prerequisite.GroupType.Any;
+                    c.CheckInProgression = false;
+                    c.HideInUI = true;
+                    c.m_CharacterClass = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.Level = 7;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+            var OracleRevelationTouchOfTheMoonInflictFeature = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationTouchOfTheMoonInflictFeature", bp => {
+                bp.SetName("Touch of the Moon - Inflict");
+                bp.SetDescription("When you cast inflict spells, these spells carry with them the taint of madness. Subjects who take damage from your inflict spells are also subject to confusion, as the spell, " +
+                    "except the duration of this effect is a number of rounds equal to the level of the inflict spell. The save DC against this effect is 10 + 1/2 your oracle level + your Charisma modifier.");
+                bp.AddComponent<PrerequisiteFeature>(c => {
+                    c.Group = Prerequisite.GroupType.Any;
+                    c.CheckInProgression = false;
+                    c.HideInUI = true;
+                    c.m_Feature = OracleInflictSpells;
+                });
+                bp.AddComponent<PrerequisiteArchetypeLevel>(c => {
+                    c.Group = Prerequisite.GroupType.Any;
+                    c.CheckInProgression = false;
+                    c.HideInUI = true;
+                    c.m_CharacterClass = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.Level = 7;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+            CreateTouchoftheMoonInflictActions(OracleRevelationTouchOfTheMoonInflictFeature, 1);
+            CreateTouchoftheMoonInflictActions(OracleRevelationTouchOfTheMoonInflictFeature, 2);
+            CreateTouchoftheMoonInflictActions(OracleRevelationTouchOfTheMoonInflictFeature, 3);
+            CreateTouchoftheMoonInflictActions(OracleRevelationTouchOfTheMoonInflictFeature, 4);
+            CreateTouchoftheMoonInflictActions(OracleRevelationTouchOfTheMoonInflictFeature, 5);
+            CreateTouchoftheMoonInflictActions(OracleRevelationTouchOfTheMoonInflictFeature, 6);
+            CreateTouchoftheMoonInflictActions(OracleRevelationTouchOfTheMoonInflictFeature, 7);
+            CreateTouchoftheMoonInflictActions(OracleRevelationTouchOfTheMoonInflictFeature, 8);
+            CreateTouchoftheMoonInflictActions(OracleRevelationTouchOfTheMoonInflictFeature, 9);
+            var OracleRevelationTouchOfTheMoonSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("OracleRevelationTouchOfTheMoonSelection", bp => {
+                bp.SetName("Touch of the Moon");
+                bp.SetDescription("The exact effects of this revelation depend on whether you cast inflict or cure spells. " +
+                    "\nIf you cast inflict spells, these spells carry with them the taint of madness. Subjects who take damage from your inflict spells are also subject to confusion, as the spell, " +
+                    "except the duration of this effect is a number of rounds equal to the level of the inflict spell. The save DC against this effect is 10 + 1/2 your oracle level + your Charisma modifier. " +
+                    "\nAlternatively, if you cast cure spells, these spells are potentially more effective but entirely in the target’s mind. As a free action you may spend a spell slot, the next cure spell " +
+                    "you cast this round of the same level will also grant temporary hit points equal to 1d4 + 1 for each d8 that would normally be healed by the spell. Hit points " +
+                    "healed this way expire after a number of minutes equal to half your oracle level. \nYou must be at least 7th level to select this revelation.");
+                bp.AddComponent<PrerequisiteFeaturesFromList>(c => {
+                    c.m_Features = new BlueprintFeatureReference[] {
+                        OracleLunarMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        EnlightnedPhilosopherLunarMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        DivineHerbalistLunarMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        OceansEchoLunarMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        RavenerHunterLunarMysteryProgression.ToReference<BlueprintFeatureReference>()
+                    };
+                    c.Amount = 1;
+                });
+                bp.AddComponent<PrerequisiteClassLevel>(c => {
+                    c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Group = Prerequisite.GroupType.Any;
+                    c.Level = 7;
+                });
+                bp.AddComponent<PrerequisiteArchetypeLevel>(c => {
+                    c.Group = Prerequisite.GroupType.Any;
+                    c.CheckInProgression = false;
+                    c.HideInUI = false;
+                    c.m_CharacterClass = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.Level = 7;
+                });
+                bp.HideInCharacterSheetAndLevelUp = false;
+                bp.HideInUI = false;
+                bp.HideNotAvailibleInUI = false;
+                bp.ReapplyOnLevelUp = false;
+                bp.Mode = SelectionMode.Default;
+                bp.Group = FeatureGroup.OracleRevelation;
+                bp.Ranks = 1;
+                bp.IsClassFeature = true;
+                bp.AddFeatures(OracleRevelationTouchOfTheMoonCureFeature, OracleRevelationTouchOfTheMoonInflictFeature);
+            });
+            OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationTouchOfTheMoonSelection.ToReference<BlueprintFeatureReference>());
             //Ravener Hunter Cont.
             var RavenerHunterLunarRevelationSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("RavenerHunterLunarRevelationSelection", bp => {
                 bp.SetName("Lunar Revelation");
@@ -1959,7 +4573,8 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.Group = FeatureGroup.None;
                 bp.Groups = new FeatureGroup[0];
                 bp.IsClassFeature = true;
-                bp.AddFeatures();
+                bp.AddFeatures(OracleRevelationBeastFormProgression, OracleRevelationGiftOfClawAndHornProgression, OracleRevelationMoonbeamFeature, 
+                    OracleRevelationPrimalCompanion, OracleRevelationPropheticArmorFeature, OracleRevelationTouchOfTheMoonSelection);
             });
             RavenerHunterLunarMysteryProgression.LevelEntries = new LevelEntry[] {
                  Helpers.LevelEntry(1, RavenerHunterLunarRevelationSelection),
@@ -1981,6 +4596,286 @@ namespace ExpandedContent.Tweaks.Mysteries {
             MysteryTools.RegisterSecondHerbalistMystery(DivineHerbalistLunarMysteryFeature);
             MysteryTools.RegisterOceansEchoMystery(OceansEchoLunarMysteryFeature);
             MysteryTools.RegisterSecondOceansEchoMystery(OceansEchoLunarMysteryFeature);
+        }
+
+        private static void CreateTouchoftheMoonCureActions(BlueprintBuff buff, int spelllevel) {
+
+            var TouchoftheMoonLightWoundsBuff = Resources.GetModBlueprint<BlueprintBuff>("TouchoftheMoonLightWoundsBuff");
+            var TouchoftheMoonModerateWoundsBuff = Resources.GetModBlueprint<BlueprintBuff>("TouchoftheMoonModerateWoundsBuff");
+            var TouchoftheMoonSeriousWoundsBuff = Resources.GetModBlueprint<BlueprintBuff>("TouchoftheMoonSeriousWoundsBuff");
+            var TouchoftheMoonCriticalWoundsBuff = Resources.GetModBlueprint<BlueprintBuff>("TouchoftheMoonCriticalWoundsBuff");
+
+            var curelight = Resources.GetBlueprintReference<BlueprintAbilityReference>("5590652e1c2225c4ca30c4a699ab3649");
+            var curemoderate = Resources.GetBlueprintReference<BlueprintAbilityReference>("6b90c773a6543dc49b2505858ce33db5");
+            var cureserious = Resources.GetBlueprintReference<BlueprintAbilityReference>("3361c5df793b4c8448756146a88026ad");
+            var curecritical = Resources.GetBlueprintReference<BlueprintAbilityReference>("41c9016596fe1de4faf67425ed691203");
+            var curelightmass = Resources.GetBlueprintReference<BlueprintAbilityReference>("5d3d689392e4ff740a761ef346815074");
+            var curemoderatemass = Resources.GetBlueprintReference<BlueprintAbilityReference>("571221cc141bc21449ae96b3944652aa");
+            var cureseriousmass = Resources.GetBlueprintReference<BlueprintAbilityReference>("0cea35de4d553cc439ae80b3a8724397");
+            var curecriticalmass = Resources.GetBlueprintReference<BlueprintAbilityReference>("1f173a16120359e41a20fc75bb53d449");
+
+            var OracleClass = Resources.GetBlueprintReference<BlueprintCharacterClassReference>("20ce9bf8af32bee4c8557a045ab499b1");
+            var InquisitorClass = Resources.GetBlueprintReference<BlueprintCharacterClassReference>("f1a70d9e1b0b41e49874e1fa9052a1ce");
+            var RavenerHunterArchetype = Resources.GetModBlueprint<BlueprintArchetype>("RavenerHunterArchetype");
+
+
+            buff.AddComponent<AddAbilityUseTrigger>(c => {
+                c.ActionsOnAllTargets = true;
+                c.AfterCast = true;
+                c.ForMultipleSpells = true;
+                c.Abilities = new List<BlueprintAbilityReference>() {
+                    curelight, curelightmass
+                };
+                c.ExactSpellLevel = true;
+                c.ExactSpellLevelLimit = spelllevel;
+                c.Action = Helpers.CreateActionList(
+                    new Conditional() {
+                        ConditionsChecker = new ConditionsChecker() {
+                            Operation = Operation.And,
+                            Conditions = new Condition[] {
+                                new ContextConditionIsAlly() { Not = false }
+                            }
+                        },
+                        IfTrue = Helpers.CreateActionList (
+                            new ContextActionApplyBuff() {
+                                m_Buff = TouchoftheMoonLightWoundsBuff.ToReference<BlueprintBuffReference>(),
+                                DurationValue = new ContextDurationValue() {
+                                    m_IsExtendable = true,
+                                    Rate = DurationRate.Minutes,
+                                    DiceCountValue = new ContextValue(),
+                                    BonusValue = new ContextValue() {
+                                        ValueType = ContextValueType.Rank,
+                                        ValueRank = AbilityRankType.Default
+                                    }
+                                },
+                                AsChild = false
+                            }
+                            ),
+                        IfFalse = Helpers.CreateActionList()
+                    },
+                    new ContextActionRemoveBuff() {
+                        m_Buff = TouchoftheMoonModerateWoundsBuff.ToReference<BlueprintBuffReference>()
+                    },
+                    new ContextActionRemoveBuff() {
+                        m_Buff = TouchoftheMoonSeriousWoundsBuff.ToReference<BlueprintBuffReference>()
+                    },
+                    new ContextActionRemoveBuff() {
+                        m_Buff = TouchoftheMoonCriticalWoundsBuff.ToReference<BlueprintBuffReference>()
+                    },
+                    new ContextActionRemoveSelf()
+                    );
+            });
+            buff.AddComponent<AddAbilityUseTrigger>(c => {
+                c.ActionsOnAllTargets = true;
+                c.AfterCast = true;
+                c.ForMultipleSpells = true;
+                c.Abilities = new List<BlueprintAbilityReference>() {
+                    curemoderate, curemoderatemass,
+                };
+                c.ExactSpellLevel = true;
+                c.ExactSpellLevelLimit = spelllevel;
+                c.Action = Helpers.CreateActionList(
+                    new Conditional() {
+                        ConditionsChecker = new ConditionsChecker() {
+                            Operation = Operation.And,
+                            Conditions = new Condition[] {
+                                new ContextConditionIsAlly() { Not = false }
+                            }
+                        },
+                        IfTrue = Helpers.CreateActionList(
+                            new ContextActionApplyBuff() {
+                                m_Buff = TouchoftheMoonModerateWoundsBuff.ToReference<BlueprintBuffReference>(),
+                                DurationValue = new ContextDurationValue() {
+                                    m_IsExtendable = true,
+                                    Rate = DurationRate.Minutes,
+                                    DiceCountValue = new ContextValue(),
+                                    BonusValue = new ContextValue() {
+                                        ValueType = ContextValueType.Rank,
+                                        ValueRank = AbilityRankType.Default
+                                    }
+                                },
+                                AsChild = false
+                            }
+                            ),
+                        IfFalse = Helpers.CreateActionList()
+                    },
+                    new ContextActionRemoveBuff() {
+                        m_Buff = TouchoftheMoonLightWoundsBuff.ToReference<BlueprintBuffReference>()
+                    },
+                    new ContextActionRemoveBuff() {
+                        m_Buff = TouchoftheMoonSeriousWoundsBuff.ToReference<BlueprintBuffReference>()
+                    },
+                    new ContextActionRemoveBuff() {
+                        m_Buff = TouchoftheMoonCriticalWoundsBuff.ToReference<BlueprintBuffReference>()
+                    },
+                    new ContextActionRemoveSelf()
+                    );
+            });
+            buff.AddComponent<AddAbilityUseTrigger>(c => {
+                c.ActionsOnAllTargets = true;
+                c.AfterCast = true;
+                c.ForMultipleSpells = true;
+                c.Abilities = new List<BlueprintAbilityReference>() {
+                    cureserious, cureseriousmass,
+                };
+                c.ExactSpellLevel = true;
+                c.ExactSpellLevelLimit = spelllevel;
+                c.Action = Helpers.CreateActionList(
+                    new Conditional() {
+                        ConditionsChecker = new ConditionsChecker() {
+                            Operation = Operation.And,
+                            Conditions = new Condition[] {
+                                new ContextConditionIsAlly() { Not = false }
+                            }
+                        },
+                        IfTrue = Helpers.CreateActionList(
+                            new ContextActionApplyBuff() {
+                                m_Buff = TouchoftheMoonSeriousWoundsBuff.ToReference<BlueprintBuffReference>(),
+                                DurationValue = new ContextDurationValue() {
+                                    m_IsExtendable = true,
+                                    Rate = DurationRate.Minutes,
+                                    DiceCountValue = new ContextValue(),
+                                    BonusValue = new ContextValue() {
+                                        ValueType = ContextValueType.Rank,
+                                        ValueRank = AbilityRankType.Default
+                                    }
+                                },
+                                AsChild = false
+                            }
+                            ),
+                        IfFalse = Helpers.CreateActionList()
+                    },
+                    new ContextActionRemoveBuff() {
+                        m_Buff = TouchoftheMoonLightWoundsBuff.ToReference<BlueprintBuffReference>()
+                    },
+                    new ContextActionRemoveBuff() {
+                        m_Buff = TouchoftheMoonModerateWoundsBuff.ToReference<BlueprintBuffReference>()
+                    },
+                    new ContextActionRemoveBuff() {
+                        m_Buff = TouchoftheMoonCriticalWoundsBuff.ToReference<BlueprintBuffReference>()
+                    },
+                    new ContextActionRemoveSelf()
+                    );
+            });
+            buff.AddComponent<AddAbilityUseTrigger>(c => {
+                c.ActionsOnAllTargets = true;
+                c.AfterCast = true;
+                c.ForMultipleSpells = true;
+                c.Abilities = new List<BlueprintAbilityReference>() {
+                    curecritical, curecriticalmass,
+                };
+                c.ExactSpellLevel = true;
+                c.ExactSpellLevelLimit = spelllevel;
+                c.Action = Helpers.CreateActionList(
+                    new Conditional() {
+                        ConditionsChecker = new ConditionsChecker() {
+                            Operation = Operation.And,
+                            Conditions = new Condition[] {
+                                new ContextConditionIsAlly() { Not = false }
+                            }
+                        },
+                        IfTrue = Helpers.CreateActionList(
+                            new ContextActionApplyBuff() {
+                                m_Buff = TouchoftheMoonCriticalWoundsBuff.ToReference<BlueprintBuffReference>(),
+                                DurationValue = new ContextDurationValue() {
+                                    m_IsExtendable = true,
+                                    Rate = DurationRate.Minutes,
+                                    DiceCountValue = new ContextValue(),
+                                    BonusValue = new ContextValue() {
+                                        ValueType = ContextValueType.Rank,
+                                        ValueRank = AbilityRankType.Default
+                                    }
+                                },
+                                AsChild = false
+                            }
+                            ),
+                        IfFalse = Helpers.CreateActionList()
+                    },
+                    new ContextActionRemoveBuff() {
+                        m_Buff = TouchoftheMoonLightWoundsBuff.ToReference<BlueprintBuffReference>()
+                    },
+                    new ContextActionRemoveBuff() {
+                        m_Buff = TouchoftheMoonModerateWoundsBuff.ToReference<BlueprintBuffReference>()
+                    },
+                    new ContextActionRemoveBuff() {
+                        m_Buff = TouchoftheMoonSeriousWoundsBuff.ToReference<BlueprintBuffReference>()
+                    },
+                    new ContextActionRemoveSelf()
+                    );
+            });
+            buff.AddComponent<ContextRankConfig>(c => {
+                c.m_Type = AbilityRankType.Default;
+                c.m_BaseValueType = ContextRankBaseValueType.SummClassLevelWithArchetype;
+                c.m_Stat = StatType.Unknown;
+                c.m_SpecificModifier = ModifierDescriptor.None;
+                c.m_Progression = ContextRankProgression.Div2;
+                c.m_UseMin = true;
+                c.m_Min = 1;
+                c.Archetype = RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>();
+                c.m_Class = new BlueprintCharacterClassReference[] {
+                        OracleClass,
+                        InquisitorClass
+                    };
+            });
+        }
+
+        private static void CreateTouchoftheMoonInflictActions(BlueprintFeature feature, int spelllevel) {
+            var inflictlight = Resources.GetBlueprintReference<BlueprintAbilityReference>("e5af3674bb241f14b9a9f6b0c7dc3d27");
+            var inflictmoderate = Resources.GetBlueprintReference<BlueprintAbilityReference>("65f0b63c45ea82a4f8b8325768a3832d");
+            var inflictserious = Resources.GetBlueprintReference<BlueprintAbilityReference>("bd5da98859cf2b3418f6d68ea66cabbe");
+            var inflictcritical = Resources.GetBlueprintReference<BlueprintAbilityReference>("651110ed4f117a948b41c05c5c7624c0");
+            var inflictlightmass = Resources.GetBlueprintReference<BlueprintAbilityReference>("9da37873d79ef0a468f969e4e5116ad2");
+            var inflictmoderatemass = Resources.GetBlueprintReference<BlueprintAbilityReference>("03944622fbe04824684ec29ff2cec6a7");
+            var inflictseriousmass = Resources.GetBlueprintReference<BlueprintAbilityReference>("820170444d4d2a14abc480fcbdb49535");
+            var inflictcriticalmass = Resources.GetBlueprintReference<BlueprintAbilityReference>("5ee395a2423808c4baf342a4f8395b19");
+            var confusionbuff = Resources.GetBlueprintReference<BlueprintBuffReference>("886c7407dc629dc499b9f1465ff382df");
+            var OracleRevelationProperty = Resources.GetModBlueprint<BlueprintUnitProperty>("OracleRevelationProperty");
+            feature.AddComponent<AddAbilityUseTrigger>(c => {
+                c.ActionsOnAllTargets = true;
+                c.AfterCast = true;
+                c.ForMultipleSpells = true;
+                c.Abilities = new List<BlueprintAbilityReference>() {
+                    inflictlight, inflictmoderate, inflictserious, inflictcritical, inflictlightmass, inflictmoderatemass, inflictseriousmass, inflictcriticalmass
+                };
+                c.ExactSpellLevel = true;
+                c.ExactSpellLevelLimit = spelllevel;
+                c.Action = Helpers.CreateActionList(
+                    new Conditional {
+                        ConditionsChecker = new ConditionsChecker {
+                            Conditions = new Condition[] {
+                                    new ContextConditionIsAlly() { Not = true }
+                                }
+                        },
+                        IfTrue = Helpers.CreateActionList(
+                            new ContextActionSavingThrow() {
+                                m_ConditionalDCIncrease = new ContextActionSavingThrow.ConditionalDCIncrease[0],
+                                Type = SavingThrowType.Fortitude,
+                                HasCustomDC = true,
+                                CustomDC = new ContextValue() { ValueType = ContextValueType.CasterCustomProperty, m_CustomProperty = OracleRevelationProperty.ToReference<BlueprintUnitPropertyReference>() },
+                                Actions = Helpers.CreateActionList(
+                                    new ContextActionConditionalSaved() {
+                                        Succeed = new ActionList(),
+                                        Failed = Helpers.CreateActionList(
+                                            new ContextActionApplyBuff() {
+                                                m_Buff = confusionbuff,
+                                                Permanent = false,                                                
+                                                DurationValue = new ContextDurationValue() {
+                                                    Rate = DurationRate.Rounds,
+                                                    m_IsExtendable = true,
+                                                    DiceCountValue = new ContextValue(),
+                                                    BonusValue = spelllevel
+                                                },
+                                                IsFromSpell = true,
+                                            }),
+                                    }),
+                            }),
+                        IfFalse = Helpers.CreateActionList(),
+                    }
+                    );
+            });
+
+
+
         }
     }
 }

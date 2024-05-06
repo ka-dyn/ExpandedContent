@@ -196,6 +196,7 @@ namespace ExpandedContent.Tweaks {
                 Mysteries.SuccorMystery.AddSuccorMystery();
                 Mysteries.WoodMystery.AddWoodMystery();
                 Mysteries.WinterMystery.AddWinterMystery();
+                Mysteries.LunarMystery.AddLunarMystery();
 
                 Spirits.HeavensSpirit.AddHeavensSprit();
 

@@ -18,6 +18,7 @@ namespace ExpandedContent.Tweaks.Miscellaneous.AlchemistDiscoveries {
 
             var DicoverySelection = Resources.GetBlueprint<BlueprintFeatureSelection>("cd86c437488386f438dcc9ae727ea2a6");
             var ExtraDicoverySelection = Resources.GetBlueprint<BlueprintFeatureSelection>("537965879fc24ad3948aaffa7a1a3a66");
+            var VivisectionistDicoverySelection = Resources.GetBlueprint<BlueprintFeatureSelection>("67f499218a0e22944abab6fe1c9eaeee");
             var ExtraVivisectionistSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("10287e7b8cee479e82ea88bd6d2d4dae");
 
 
@@ -45,6 +46,7 @@ namespace ExpandedContent.Tweaks.Miscellaneous.AlchemistDiscoveries {
 
             DicoverySelection.m_AllFeatures = DicoverySelection.m_AllFeatures.AppendToArray(PheromonesDiscoveryFeature.ToReference<BlueprintFeatureReference>());
             ExtraDicoverySelection.m_AllFeatures = ExtraDicoverySelection.m_AllFeatures.AppendToArray(PheromonesDiscoveryFeature.ToReference<BlueprintFeatureReference>());
+            VivisectionistDicoverySelection.m_AllFeatures = VivisectionistDicoverySelection.m_AllFeatures.AppendToArray(PheromonesDiscoveryFeature.ToReference<BlueprintFeatureReference>());
             ExtraVivisectionistSelection.m_AllFeatures = ExtraVivisectionistSelection.m_AllFeatures.AppendToArray(PheromonesDiscoveryFeature.ToReference<BlueprintFeatureReference>());
         }
     }

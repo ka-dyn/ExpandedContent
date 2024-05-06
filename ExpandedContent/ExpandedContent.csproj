@@ -433,6 +433,8 @@
     <Compile Include="Tweaks\Miscellaneous\MountPatches\BlueDragonMountPatch.cs" />
     <Compile Include="Tweaks\Miscellaneous\MountPatches\BlackDragonMountPatch.cs" />
     <Compile Include="Tweaks\Miscellaneous\MountPatches\WolverineMountPatch.cs" />
+    <Compile Include="Tweaks\Miscellaneous\NewActivatableAbilityGroups\NewActivatableAbilityGroupAdder.cs" />
+    <Compile Include="Tweaks\Miscellaneous\NewActivatableAbilityGroups\UnitPartActivatableAbilityGroupEC.cs" />
     <Compile Include="Tweaks\Miscellaneous\Pinpoint Targeting.cs" />
     <Compile Include="Tweaks\Miscellaneous\BullseyeShot.cs" />
     <Compile Include="Tweaks\Miscellaneous\OpeningVolley.cs" />
@@ -1964,6 +1966,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_TouchofGlory.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_TouchOfTheMoonCure.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_Trip.jpg">

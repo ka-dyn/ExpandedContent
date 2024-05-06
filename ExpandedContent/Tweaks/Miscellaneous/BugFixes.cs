@@ -191,6 +191,7 @@ namespace ExpandedContent.Tweaks.Miscellaneous {
             SpontaneousHealingResource.m_ClassDiv = SpontaneousHealingResource.m_ClassDiv.AppendToArray(RogueClass, FighterClass);
             SpontaneousHealingResource.m_ArchetypesDiv = SpontaneousHealingResource.m_ArchetypesDiv.AppendToArray(UndergroundChemistArchetype, MutationWarriorArchetype);
 
+
         }
 
 

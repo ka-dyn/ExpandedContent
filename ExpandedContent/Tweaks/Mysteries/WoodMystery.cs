@@ -1291,6 +1291,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     c.m_Resource = OracleRevelationTreeFormResource.ToReference<BlueprintAbilityResourceReference>();
                     c.RestoreAmount = true;
                 });
+                bp.HideInCharacterSheetAndLevelUp = true;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.OracleRevelation };
                 bp.IsClassFeature = true;
             });
