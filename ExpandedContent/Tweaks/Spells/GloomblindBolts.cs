@@ -164,6 +164,12 @@ namespace ExpandedContent.Tweaks.Spells {
                                     MinHPAfterDamage = 0,
                                     ResultSharedValue = AbilitySharedValue.Damage,
                                     CriticalSharedValue = AbilitySharedValue.Damage
+                                },
+                                new ContextActionDisableBonusForDamage() {
+                                    DisableSneak = true,
+                                    DisableAdditionalDamage = true,
+                                    DisableFavoredEnemyDamage = true,
+                                    DisableAdditionalDice = false
                                 }
                                 )
                         },

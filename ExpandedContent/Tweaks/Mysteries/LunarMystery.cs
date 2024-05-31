@@ -3844,15 +3844,75 @@ namespace ExpandedContent.Tweaks.Mysteries {
             //PropheticArmor
             var OracleRevelationNatureWhispers = Resources.GetBlueprint<BlueprintFeature>("3d2cd23869f0d98458169b88738f3c32");
             var OracleRevelationPropheticArmorBuff = Helpers.CreateBuff("OracleRevelationPropheticArmorBuff", bp => {
+                bp.SetName("Prophetic Armor");
                 bp.AddComponent<ReplaceStatBaseAttribute>(c => {
                     c.TargetStat = StatType.AC;
                     c.BaseAttributeReplacement = StatType.Charisma;
                     c.ReplaceIfHigher = true;
                 });
-                bp.AddComponent<ReplaceStatBaseAttribute>(c => {
-                    c.TargetStat = StatType.SaveReflex;
-                    c.BaseAttributeReplacement = StatType.Charisma;
-                    c.ReplaceIfHigher = true;
+                //Turns out ReplaceStatBaseAttribute does not work on saves
+                //bp.AddComponent<ReplaceStatBaseAttribute>(c => {
+                //    c.TargetStat = StatType.SaveReflex;
+                //    c.BaseAttributeReplacement = StatType.Charisma;
+                //    c.ReplaceIfHigher = true;
+                //});
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.DamageDice;
+                    c.m_BaseValueType = ContextRankBaseValueType.StatBonus;
+                    c.m_Stat = StatType.Dexterity;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.AsIs;
+                    c.m_StartLevel = 0;
+                    c.m_StepLevel = 0;
+                    c.m_UseMin = false;
+                    c.m_Min = 0;
+                });
+                bp.AddComponent<AddContextStatBonus>(c => {
+                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+                    c.Stat = StatType.SaveReflex;
+                    c.Multiplier = -1;
+                    c.Value = new ContextValue() {
+                        ValueType = ContextValueType.Rank,
+                        Value = 0,
+                        ValueRank = AbilityRankType.DamageDice,
+                        ValueShared = AbilitySharedValue.Damage,
+                        Property = UnitProperty.None
+                    };
+                    c.HasMinimal = false;
+                    c.Minimal = 0;
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.DamageDiceAlternative;
+                    c.m_BaseValueType = ContextRankBaseValueType.StatBonus;
+                    c.m_Stat = StatType.Charisma;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.AsIs;
+                    c.m_StartLevel = 0;
+                    c.m_StepLevel = 0;
+                    c.m_UseMin = true;
+                    c.m_Min = 0;
+                });
+                bp.AddComponent<AddContextStatBonus>(c => {
+                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+                    c.Stat = StatType.SaveReflex;
+                    c.Multiplier = 1;
+                    c.Value = new ContextValue() {
+                        ValueType = ContextValueType.Rank,
+                        Value = 0,
+                        ValueRank = AbilityRankType.DamageDiceAlternative,
+                        ValueShared = AbilitySharedValue.Damage,
+                        Property = UnitProperty.None
+                    };
+                    c.HasMinimal = false;
+                    c.Minimal = 0;
+                });
+                bp.AddComponent<RecalculateOnStatChange>(c => {
+                    c.UseKineticistMainStat = false;
+                    c.Stat = StatType.Dexterity;
+                });
+                bp.AddComponent<RecalculateOnStatChange>(c => {
+                    c.UseKineticistMainStat = false;
+                    c.Stat = StatType.Charisma;
                 });
                 bp.IsClassFeature = true;
                 bp.m_Flags = BlueprintBuff.Flags.HiddenInUi | BlueprintBuff.Flags.StayOnDeath;
