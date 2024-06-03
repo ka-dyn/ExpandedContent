@@ -40,6 +40,7 @@ namespace ExpandedContent.Utilities {
             public static BlueprintFeature LuckDomainAllowed => Resources.GetBlueprint<BlueprintFeature>("d4e192475bb1a1045859c7664addd461");
             public static BlueprintFeature MadnessDomainAllowed => Resources.GetBlueprint<BlueprintFeature>("c346bcc77a6613040b3aa915b1ceddec");
             public static BlueprintFeature MagicDomainAllowed => Resources.GetBlueprint<BlueprintFeature>("08a5686378a87b64399d329ba4ef71b8");
+            public static BlueprintFeature MurderDomainAllowed => Resources.GetBlueprint<BlueprintFeature>("366b00b9fcc54b188768b2dd91e3643d");
             public static BlueprintFeature NobilityDomainAllowed => Resources.GetBlueprint<BlueprintFeature>("e0471d01e73254a4ca23278705b75e57");
             public static BlueprintFeature PlantDomainAllowed => Resources.GetBlueprint<BlueprintFeature>("0e03c2a03222b0b42acf96096b286327");
             public static BlueprintFeature ProtectionDomainAllowed => Resources.GetBlueprint<BlueprintFeature>("d4ce7592bd12d63439907ad64e986e59");
@@ -111,6 +112,7 @@ namespace ExpandedContent.Utilities {
             public static BlueprintFeature LuckDomainAllowedSeparatist => Resources.GetBlueprint<BlueprintFeature>("b99c38f89c014eaeab5543c00d795721");
             public static BlueprintFeature MadnessDomainAllowedSeparatist => Resources.GetBlueprint<BlueprintFeature>("bfbc42a8c94a4d4b9f424565ec97c755");
             public static BlueprintFeature MagicDomainAllowedSeparatist => Resources.GetBlueprint<BlueprintFeature>("0cdeca405da848d49f922a9422fefa3c");
+            public static BlueprintFeature MurderDomainAllowedSeparatist => Resources.GetBlueprint<BlueprintFeature>("662cf0a1c4654e44b9dad4d8c2faefd3");
             public static BlueprintFeature NobilityDomainAllowedSeparatist => Resources.GetBlueprint<BlueprintFeature>("c3543d3da9774e81808a2bbe721a2174");
             public static BlueprintFeature PlantDomainAllowedSeparatist => Resources.GetBlueprint<BlueprintFeature>("71dcf73a8ca0457da97e66ac0d663c42");
             public static BlueprintFeature ProtectionDomainAllowedSeparatist => Resources.GetBlueprint<BlueprintFeature>("5d8dc80eb8714ad2a14353a0e3cbd20c");

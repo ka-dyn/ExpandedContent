@@ -31,6 +31,8 @@ namespace ExpandedContent.Tweaks.Mysteries {
             var OracleClass = Resources.GetBlueprint<BlueprintCharacterClass>("20ce9bf8af32bee4c8557a045ab499b1");
             var OracleRevelationSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("60008a10ad7ad6543b1f63016741a5d2");
             var SuccorMysteryIcon = AssetLoader.LoadInternal("Skills", "Icon_OracleSuccorMystery.png");
+            var ArcanistClass = Resources.GetBlueprint<BlueprintCharacterClass>("52dbfd8505e22f84fad8d702611f60b7");
+            var MagicDeceiverArchetype = Resources.GetBlueprint<BlueprintArchetype>("5c77110cd0414e7eb4c2e485659c9a46");
 
             //Spelllist
             var RayOfEnfeeblementSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("450af0402422b0b4980d9c2175869612");
@@ -225,6 +227,12 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     "her list of class {g|Encyclopedia:Skills}skills{/g}.");
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_AdditionalClasses = new BlueprintCharacterClassReference[] {
+                        ArcanistClass.ToReference<BlueprintCharacterClassReference>()
+                    };
+                    c.m_Archetypes = new BlueprintArchetypeReference[] {
+                        MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>()
+                    };
                     c.Level = 20;
                     c.m_Feature = OracleSuccorFinalRevelation.ToReference<BlueprintFeatureReference>();
                 });
@@ -408,7 +416,11 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     IncreasedByLevel = false,
                     IncreasedByLevelStartPlusDivStep = true,
                     m_ClassDiv = new BlueprintCharacterClassReference[] {
-                        OracleClass.ToReference<BlueprintCharacterClassReference>()
+                        OracleClass.ToReference<BlueprintCharacterClassReference>(),
+                        ArcanistClass.ToReference<BlueprintCharacterClassReference>()
+                    },
+                    m_ArchetypesDiv = new BlueprintArchetypeReference[] {
+                        MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>()
                     },
                     StartingLevel = 3,
                     LevelStep = 8,
@@ -446,7 +458,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 });
                 bp.AddComponent<ContextRankConfig>(c => {
                     c.m_Type = AbilityRankType.Default;
-                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
+                    c.m_BaseValueType = ContextRankBaseValueType.SummClassLevelWithArchetype;
                     c.m_Stat = StatType.Unknown;
                     c.m_SpecificModifier = ModifierDescriptor.None;
                     c.m_Progression = ContextRankProgression.Div2;
@@ -455,8 +467,10 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     c.m_UseMax = true;
                     c.m_Max = 10;
                     c.m_Class = new BlueprintCharacterClassReference[] {
-                        OracleClass.ToReference<BlueprintCharacterClassReference>()
+                        OracleClass.ToReference<BlueprintCharacterClassReference>(),
+                        ArcanistClass.ToReference<BlueprintCharacterClassReference>()
                     };
+                    c.Archetype = MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>();
                 });
                 bp.AddComponent<ContextCalculateSharedValue>(c => {
                     c.ValueType = AbilitySharedValue.Heal;
@@ -519,8 +533,10 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     c.m_UseMax = false;
                     c.m_Max = 0;
                     c.m_Class = new BlueprintCharacterClassReference[] {
-                        OracleClass.ToReference<BlueprintCharacterClassReference>()
+                        OracleClass.ToReference<BlueprintCharacterClassReference>(),
+                        ArcanistClass.ToReference<BlueprintCharacterClassReference>()
                     };
+                    c.Archetype = MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>();
                 });
                 bp.AddComponent<AbilityResourceLogic>(c => {
                     c.m_RequiredResource = OracleRevelationShellOfSuccorResource.ToReference<BlueprintAbilityResourceReference>();
@@ -566,6 +582,13 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.AddComponent<PrerequisiteClassLevel>(c => {
                     c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
                     c.Level = 3;
+                    c.Group = Prerequisite.GroupType.Any;
+                });
+                bp.AddComponent<PrerequisiteArchetypeLevel>(c => {
+                    c.m_CharacterClass = ArcanistClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.Level = 3;
+                    c.Group = Prerequisite.GroupType.Any;
                 });
                 bp.AddComponent<AddAbilityResources>(c => {
                     c.m_Resource = OracleRevelationShellOfSuccorResource.ToReference<BlueprintAbilityResourceReference>();
@@ -660,8 +683,10 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     c.m_UseMax = false;
                     c.m_Max = 0;
                     c.m_Class = new BlueprintCharacterClassReference[] {
-                        OracleClass.ToReference<BlueprintCharacterClassReference>()
+                        OracleClass.ToReference<BlueprintCharacterClassReference>(),
+                        ArcanistClass.ToReference<BlueprintCharacterClassReference>()
                     };
+                    c.Archetype = MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>();
                 });
                 bp.AddComponent<AbilityResourceLogic>(c => {
                     c.m_RequiredResource = OracleRevelationTeamworkMasteryResource.ToReference<BlueprintAbilityResourceReference>();
@@ -745,6 +770,9 @@ namespace ExpandedContent.Tweaks.Mysteries {
             MysteryTools.RegisterSecondHerbalistMystery(DivineHerbalistSuccorMysteryFeature);
             MysteryTools.RegisterOceansEchoMystery(OceansEchoSuccorMysteryFeature);
             MysteryTools.RegisterSecondOceansEchoMystery(OceansEchoSuccorMysteryFeature);
+            MysteryTools.RegisterHermitMystery(OracleSuccorMysteryFeature);
+            MysteryTools.RegisterSecondHermitMystery(OracleSuccorMysteryFeature);
+            MysteryTools.RegisterMysteryGiftSelection(OracleSuccorMysteryFeature);
         }
     }
 }

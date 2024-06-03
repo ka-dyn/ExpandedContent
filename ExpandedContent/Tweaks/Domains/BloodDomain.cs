@@ -41,6 +41,8 @@ namespace ExpandedContent.Tweaks.Domains {
             var DivineHunterArchetype = Resources.GetBlueprint<BlueprintArchetype>("f996f0a18e5d945459e710ee3a6dd485");
             var PaladinClass = Resources.GetBlueprint<BlueprintCharacterClass>("bfa11238e7ae3544bbeb4d0b92e897ec");
             var TempleChampionArchetype = Resources.GetModBlueprint<BlueprintArchetype>("TempleChampionArchetype");
+            var ArcanistClass = Resources.GetBlueprint<BlueprintCharacterClass>("52dbfd8505e22f84fad8d702611f60b7");
+            var MagicDeceiverArchetype = Resources.GetBlueprint<BlueprintArchetype>("5c77110cd0414e7eb4c2e485659c9a46");
             var WarDomainBaseAbility = Resources.GetBlueprint<BlueprintAbility>("fbef6b2053ab6634a82df06f76c260e3");
             var WarDomainBaseResource = Resources.GetBlueprint<BlueprintAbilityResource>("27f08408c3e237f43a6ca56d4236b8fe");
             var SacredWeaponEnchantAnarchicChoice = Resources.GetBlueprint<BlueprintActivatableAbility>("6fdc32d0af41ffb42b8285dbac9a050a");
@@ -202,11 +204,13 @@ namespace ExpandedContent.Tweaks.Domains {
                         HunterClass.ToReference<BlueprintCharacterClassReference>(),
                         PaladinClass.ToReference<BlueprintCharacterClassReference>(),
                         StargazerClass.ToReference<BlueprintCharacterClassReference>(),
+                        ArcanistClass.ToReference<BlueprintCharacterClassReference>(),
                     },
                     m_Archetypes = new BlueprintArchetypeReference[0],
                     m_ArchetypesDiv = new BlueprintArchetypeReference[] {
                         DivineHunterArchetype.ToReference<BlueprintArchetypeReference>(),
                         TempleChampionArchetype.ToReference<BlueprintArchetypeReference>(),
+                        MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>(),
                     },
                     StartingLevel = 8,
                     LevelStep = 4,
@@ -269,13 +273,17 @@ namespace ExpandedContent.Tweaks.Domains {
                     c.m_UseMin = true;
                     c.m_Min = 1;
                     c.Archetype = DivineHunterArchetype.ToReference<BlueprintArchetypeReference>();
-                    c.m_AdditionalArchetypes = new BlueprintArchetypeReference[] { TempleChampionArchetype.ToReference<BlueprintArchetypeReference>() };
+                    c.m_AdditionalArchetypes = new BlueprintArchetypeReference[] { 
+                        TempleChampionArchetype.ToReference<BlueprintArchetypeReference>(),
+                        MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>(),
+                    };
                     c.m_Class = new BlueprintCharacterClassReference[] { 
                         ClericClass.ToReference<BlueprintCharacterClassReference>(),
                         InquisitorClass.ToReference<BlueprintCharacterClassReference>(),
                         HunterClass.ToReference<BlueprintCharacterClassReference>(),
                         PaladinClass.ToReference<BlueprintCharacterClassReference>(),
                         StargazerClass.ToReference<BlueprintCharacterClassReference>(),
+                        ArcanistClass.ToReference<BlueprintCharacterClassReference>(),
                     };
                 });
                 bp.m_AllowNonContextActions = false;
@@ -480,6 +488,10 @@ namespace ExpandedContent.Tweaks.Domains {
                         m_Class = StargazerClass.ToReference<BlueprintCharacterClassReference>(),
                         AdditionalLevel = 0
                     },
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = ArcanistClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    },
                 };
                 bp.m_Archetypes = new BlueprintProgression.ArchetypeWithLevel[] {
                     new BlueprintProgression.ArchetypeWithLevel {
@@ -488,6 +500,10 @@ namespace ExpandedContent.Tweaks.Domains {
                     },
                     new BlueprintProgression.ArchetypeWithLevel {
                         m_Archetype = TempleChampionArchetype.ToReference<BlueprintArchetypeReference>(),
+                        AdditionalLevel = 0
+                    },
+                    new BlueprintProgression.ArchetypeWithLevel {
+                        m_Archetype = MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>(),
                         AdditionalLevel = 0
                     }
                 };                
@@ -535,10 +551,18 @@ namespace ExpandedContent.Tweaks.Domains {
                         m_Class = StargazerClass.ToReference<BlueprintCharacterClassReference>(),
                         AdditionalLevel = 0
                     },
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = ArcanistClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    },
                 };
                 bp.m_Archetypes = new BlueprintProgression.ArchetypeWithLevel[] {
                     new BlueprintProgression.ArchetypeWithLevel {
                         m_Archetype = TempleChampionArchetype.ToReference<BlueprintArchetypeReference>(),
+                        AdditionalLevel = 0
+                    },
+                    new BlueprintProgression.ArchetypeWithLevel {
+                        m_Archetype = MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>(),
                         AdditionalLevel = 0
                     }
                 };
@@ -574,11 +598,13 @@ namespace ExpandedContent.Tweaks.Domains {
                         HunterClass.ToReference<BlueprintCharacterClassReference>(),
                         PaladinClass.ToReference<BlueprintCharacterClassReference>(),
                         StargazerClass.ToReference<BlueprintCharacterClassReference>(),
+                        ArcanistClass.ToReference<BlueprintCharacterClassReference>(),
                     },
                     m_Archetypes = new BlueprintArchetypeReference[0],
                     m_ArchetypesDiv = new BlueprintArchetypeReference[] {
                         DivineHunterArchetype.ToReference<BlueprintArchetypeReference>(),
                         TempleChampionArchetype.ToReference<BlueprintArchetypeReference>(),
+                        MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>(),
                     },
                     StartingLevel = 10,
                     LevelStep = 4,
@@ -640,13 +666,17 @@ namespace ExpandedContent.Tweaks.Domains {
                     c.m_UseMin = true;
                     c.m_Min = 1;
                     c.Archetype = DivineHunterArchetype.ToReference<BlueprintArchetypeReference>();
-                    c.m_AdditionalArchetypes = new BlueprintArchetypeReference[] { TempleChampionArchetype.ToReference<BlueprintArchetypeReference>() };
+                    c.m_AdditionalArchetypes = new BlueprintArchetypeReference[] { 
+                        TempleChampionArchetype.ToReference<BlueprintArchetypeReference>(),
+                        MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>()
+                    };
                     c.m_Class = new BlueprintCharacterClassReference[] {
                         ClericClass.ToReference<BlueprintCharacterClassReference>(),
                         InquisitorClass.ToReference<BlueprintCharacterClassReference>(),
                         HunterClass.ToReference<BlueprintCharacterClassReference>(),
                         PaladinClass.ToReference<BlueprintCharacterClassReference>(),
                         StargazerClass.ToReference<BlueprintCharacterClassReference>(),
+                        ArcanistClass.ToReference<BlueprintCharacterClassReference>(),
                     };
                 });
                 bp.m_AllowNonContextActions = false;

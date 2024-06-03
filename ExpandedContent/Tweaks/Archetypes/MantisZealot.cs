@@ -590,8 +590,9 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     Helpers.LevelEntry(19, SacredReflexesFeature4),
                     Helpers.LevelEntry(20, MantisZealotSneakAttackFeature, AspectOfTheMantisFeature),
             };
-            if (ModSettings.AddedContent.Archetypes.IsDisabled("Mantis Zealot")) { return; }
-            WarpriestClass.m_Archetypes = WarpriestClass.m_Archetypes.AppendToArray(MantisZealotArchetype.ToReference<BlueprintArchetypeReference>());
+            if (ModSettings.AddedContent.RetiredFeatures.IsDisabled("Mantis Zealot and Achaekek deity")) {
+                MantisZealotArchetype.m_HiddenInUI = true;
+            }
 
         }
     }

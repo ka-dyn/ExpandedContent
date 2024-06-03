@@ -1,4 +1,5 @@
-﻿using ExpandedContent.Extensions;
+﻿using ExpandedContent.Config;
+using ExpandedContent.Extensions;
 using ExpandedContent.Utilities;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes.Spells;
@@ -131,6 +132,14 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
             var RevivingFinaleScroll = ItemTools.CreateScroll("ScrollOfRevivingFinale", Icon_ScrollOfRevivingFinale, RevivingFinale, 3, 7);
+
+
+
+
+
+
+            if (ModSettings.AddedContent.RetiredFeatures.IsDisabled("Purging and Reviving Finale Spells")) { return; }
+
             VenderTools.AddScrollToLeveledVenders(RevivingFinaleScroll);
             RevivingFinale.AddToSpellList(SpellTools.SpellList.BardSpellList, 3);
         }

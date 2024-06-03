@@ -51,6 +51,11 @@ namespace ExpandedContent.Utilities {
             BlueprintFeatureSelection SecondMysteryOceansEcho = Resources.GetModBlueprint<BlueprintFeatureSelection>("SecondMysteryOceansEcho");
             SecondMysteryOceansEcho.m_AllFeatures = SecondMysteryOceansEcho.m_AllFeatures.AddToArray(secondmystery.ToReference<BlueprintFeatureReference>());
         }
+        public static void RegisterMysteryGiftSelection(BlueprintFeature mystery) {
+            BlueprintFeatureSelection MysteryGiftSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("e9629fc4de4c4b3ea1c26e9c13c2402d");
+            MysteryGiftSelection.m_AllFeatures = MysteryGiftSelection.m_AllFeatures.AddToArray(mystery.ToReference<BlueprintFeatureReference>());
+            MysteryGiftSelection.m_Features = MysteryGiftSelection.m_Features.AddToArray(mystery.ToReference<BlueprintFeatureReference>());
+        }
         //Ravener Hunter lazy prereq thing
         public static void ConfigureRavenerHunterRevelation(BlueprintFeature revelation, BlueprintProgression mystery) {
             revelation.TemporaryContext(bp => {

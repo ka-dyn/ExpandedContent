@@ -133,7 +133,9 @@ namespace ExpandedContent.Tweaks.Monitors {
                     DeityTools.SeparatistDomainAllowed.StormDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.ThieveryDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.WhimsyDomainAllowedSeparatist,//Chaos
-                    DeityTools.SeparatistDomainAllowed.WindDomainAllowedSeparatist
+                    DeityTools.SeparatistDomainAllowed.WindDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.MurderDomainAllowedSeparatist
+
                 );
                 bp.AddComponent<ForbidSpellbookOnAlignmentDeviation>(c => {
                     c.m_Spellbooks = new BlueprintSpellbookReference[] {

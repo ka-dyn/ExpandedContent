@@ -422,6 +422,7 @@
     <Compile Include="Tweaks\Miscellaneous\BugFixes.cs" />
     <Compile Include="Tweaks\Miscellaneous\DrakePetTypeAdder.cs" />
     <Compile Include="Tweaks\Miscellaneous\DemonHunter.cs" />
+    <Compile Include="Tweaks\Miscellaneous\LazyLocker.cs" />
     <Compile Include="Tweaks\Miscellaneous\MountPatches\UmbralDragonMountPatch.cs" />
     <Compile Include="Tweaks\Miscellaneous\MountPatches\SilverDragonMountPatch.cs" />
     <Compile Include="Tweaks\Miscellaneous\MountPatches\CopperDragonMountPatch.cs" />
@@ -566,6 +567,7 @@
     <Compile Include="Utilities\ActionFlow.cs" />
     <Compile Include="Utilities\AuraUtils.cs" />
     <Compile Include="Utilities\BlessingTools.cs" />
+    <Compile Include="Utilities\LazyLockUtility.cs" />
     <Compile Include="Utilities\MountTools.cs" />
     <Compile Include="Utilities\DeityTools.cs" />
     <Compile Include="Utilities\DynamicAsset.cs" />

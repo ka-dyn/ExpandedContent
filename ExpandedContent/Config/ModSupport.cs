@@ -311,9 +311,9 @@ namespace ExpandedContent.Config {
                     //    .Where(level => level.SpellLevel == 9)
                     //    .ForEach(level => level.Spells.Clear());
                     //HeavensSpiritSpellList.SpellsByLevel[9].m_Spells.Add(MeteorSwarmAbility);
-                    var ShamanHeavensSpiritManifestationFeature = Resources.GetModBlueprint<BlueprintFeature>("ShamanHeavensSpiritManifestationFeature");
-                    var ShamanHeavensSpiritProgression = Resources.GetModBlueprint<BlueprintProgression>("ShamanHeavensSpiritProgression");
-                    ShamanHeavensSpiritProgression.LevelEntries = ShamanHeavensSpiritProgression.LevelEntries.AppendToArray(Helpers.LevelEntry(20, ShamanHeavensSpiritManifestationFeature));
+                    //var ShamanHeavensSpiritManifestationFeature = Resources.GetModBlueprint<BlueprintFeature>("ShamanHeavensSpiritManifestationFeature");
+                    //var ShamanHeavensSpiritProgression = Resources.GetModBlueprint<BlueprintProgression>("ShamanHeavensSpiritProgression");
+                    //ShamanHeavensSpiritProgression.LevelEntries = ShamanHeavensSpiritProgression.LevelEntries.AppendToArray(Helpers.LevelEntry(20, ShamanHeavensSpiritManifestationFeature));
                     Main.Log("Finished Mystical Mayhem Compat Patch.");
                 }
 
@@ -723,21 +723,22 @@ namespace ExpandedContent.Config {
                     PatchTTTQuickenBlessingPrerequisites("f5ffcbdc36384c44b6e795fc77b63639", "a8e7abcad0cf8384b9f12c3b075b5cae", "DivineTrackerTrickeryBlessingFeature");
                     PatchTTTQuickenBlessingPrerequisites("3a68affde38845c08b255a3c571f3777", "0f457943bb99f9b48b709c90bfc0467e", "DivineTrackerWaterBlessingFeature");
                     PatchTTTQuickenBlessingPrerequisites("2dc4120954184ba49d142e2ed29c9b55", "4172d92c598de1d47aa2c0dd51c05e24", "DivineTrackerWeatherBlessingFeature");
+                    //NEED TO ADD THE NEW ONES AFTER TTT DOES
+                    //War
+                    //Plant
 
 
-
-
-                    var newquickenblessings = new BlueprintFeature[] {
+                    var newquickenblessings = new BlueprintFeature[] {//These were added by Owlcat, keeping Artifice and Community though
                         Resources.GetModBlueprint<BlueprintFeature>("QuickenBlessingArtificeFeature"),
-                        Resources.GetModBlueprint<BlueprintFeature>("QuickenBlessingWarFeature"),
-                        Resources.GetModBlueprint<BlueprintFeature>("QuickenBlessingPlantFeature"),
+                        //Resources.GetModBlueprint<BlueprintFeature>("QuickenBlessingWarFeature"),
+                        //Resources.GetModBlueprint<BlueprintFeature>("QuickenBlessingPlantFeature"),
                         Resources.GetModBlueprint<BlueprintFeature>("QuickenBlessingCommunityFeature")
                     };
                     foreach (var newquickenblessing in newquickenblessings) {
                         QuickenBlessing.m_AllFeatures = QuickenBlessing.m_AllFeatures.AppendToArray(newquickenblessing.ToReference<BlueprintFeatureReference>());
                         QuickenBlessing.m_Features = QuickenBlessing.m_Features.AppendToArray(newquickenblessing.ToReference<BlueprintFeatureReference>());
                     }
-
+                    //Remove the TTT Artifice and Community options from quicken
 
                     #endregion
                     #region God load order stuff

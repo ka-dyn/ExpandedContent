@@ -707,7 +707,9 @@ namespace ExpandedContent.Tweaks.Archetypes {
             };
             foreach (var contextrankconfig in RavenerHunterContextRankConfigOnAbility) {
                 contextrankconfig.GetComponents<ContextRankConfig>().ForEach(c => { c.m_Class = c.m_Class.AppendToArray(InquisitorClass.ToReference<BlueprintCharacterClassReference>()); });
-                contextrankconfig.GetComponents<ContextRankConfig>().ForEach(c => { c.Archetype = RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>(); });
+                contextrankconfig.GetComponents<ContextRankConfig>().ForEach(c => { 
+                    c.m_AdditionalArchetypes = c.m_AdditionalArchetypes.AppendToArray(RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>());
+                });
             }
             ///ContextRankConfig on buff
             var RavenerHunterContextRankConfigOnBuff = new BlueprintBuff[] {
@@ -726,7 +728,9 @@ namespace ExpandedContent.Tweaks.Archetypes {
             };
             foreach (var contextrankconfig in RavenerHunterContextRankConfigOnBuff) {
                 contextrankconfig.GetComponents<ContextRankConfig>().ForEach(c => { c.m_Class = c.m_Class.AppendToArray(InquisitorClass.ToReference<BlueprintCharacterClassReference>()); });
-                contextrankconfig.GetComponents<ContextRankConfig>().ForEach(c => { c.Archetype = RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>(); });
+                contextrankconfig.GetComponents<ContextRankConfig>().ForEach(c => {
+                    c.m_AdditionalArchetypes = c.m_AdditionalArchetypes.AppendToArray(RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>());
+                });
             }
             ///ContextRankConfig on feature
             var RavenerHunterContextRankConfigOnFeature = new BlueprintFeature[] {
@@ -739,7 +743,9 @@ namespace ExpandedContent.Tweaks.Archetypes {
             };
             foreach (var contextrankconfig in RavenerHunterContextRankConfigOnFeature) {
                 contextrankconfig.GetComponents<ContextRankConfig>().ForEach(c => { c.m_Class = c.m_Class.AppendToArray(InquisitorClass.ToReference<BlueprintCharacterClassReference>()); });
-                contextrankconfig.GetComponents<ContextRankConfig>().ForEach(c => { c.Archetype = RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>(); });
+                contextrankconfig.GetComponents<ContextRankConfig>().ForEach(c => {
+                    c.m_AdditionalArchetypes = c.m_AdditionalArchetypes.AppendToArray(RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>());
+                });
             }            
             ///classlevels on progression
             var RavenerHunterRevelationProgressions = new BlueprintProgression[] {

@@ -45,6 +45,8 @@ namespace ExpandedContent.Tweaks.Mysteries {
             var OracleRevelationSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("60008a10ad7ad6543b1f63016741a5d2");
             var InquisitorClass = Resources.GetBlueprint<BlueprintCharacterClass>("f1a70d9e1b0b41e49874e1fa9052a1ce");
             var RavenerHunterArchetype = Resources.GetModBlueprint<BlueprintArchetype>("RavenerHunterArchetype");
+            var ArcanistClass = Resources.GetBlueprint<BlueprintCharacterClass>("52dbfd8505e22f84fad8d702611f60b7");
+            var MagicDeceiverArchetype = Resources.GetBlueprint<BlueprintArchetype>("5c77110cd0414e7eb4c2e485659c9a46");
 
             var HeavensMysteryIcon = AssetLoader.LoadInternal("Skills", "Icon_OracleHeavensMystery.png");
 
@@ -292,6 +294,12 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     "her list of class {g|Encyclopedia:Skills}skills{/g}.");
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_AdditionalClasses = new BlueprintCharacterClassReference[] {
+                        ArcanistClass.ToReference<BlueprintCharacterClassReference>()
+                    };
+                    c.m_Archetypes = new BlueprintArchetypeReference[] {
+                        MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>()
+                    };
                     c.Level = 20;
                     c.m_Feature = OracleHeavensFinalRevelation.ToReference<BlueprintFeatureReference>();
                 });
@@ -471,10 +479,12 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     IncreasedByLevel = true,
                     m_Class = new BlueprintCharacterClassReference[] {                        
                         OracleClass.ToReference<BlueprintCharacterClassReference>(),
-                        InquisitorClass.ToReference<BlueprintCharacterClassReference>()
+                        InquisitorClass.ToReference<BlueprintCharacterClassReference>(),
+                        ArcanistClass.ToReference<BlueprintCharacterClassReference>()
                     },
                     m_Archetypes = new BlueprintArchetypeReference[] {
-                        RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>()
+                        RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>(),
+                        MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>()
                     },
                     LevelIncrease = 1,
                     StartingIncrease = 1,
@@ -496,9 +506,11 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     c.m_StepLevel = 4;
                     c.m_Class = new BlueprintCharacterClassReference[] { 
                         OracleClass.ToReference<BlueprintCharacterClassReference>(),
-                        InquisitorClass.ToReference<BlueprintCharacterClassReference>()
+                        InquisitorClass.ToReference<BlueprintCharacterClassReference>(),
+                        ArcanistClass.ToReference<BlueprintCharacterClassReference>(),
                     };
                     c.Archetype = RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.m_AdditionalArchetypes = new BlueprintArchetypeReference[] { MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>() };
                 });
                 bp.AddComponent<ContextCalculateSharedValue>(c => {
                     c.ValueType = AbilitySharedValue.Heal;
@@ -576,9 +588,11 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     c.m_StepLevel = 4;
                     c.m_Class = new BlueprintCharacterClassReference[] { 
                         OracleClass.ToReference<BlueprintCharacterClassReference>(),
-                        InquisitorClass.ToReference<BlueprintCharacterClassReference>()
+                        InquisitorClass.ToReference<BlueprintCharacterClassReference>(),
+                        ArcanistClass.ToReference<BlueprintCharacterClassReference>(),
                     };
                     c.Archetype = RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.m_AdditionalArchetypes = new BlueprintArchetypeReference[] { MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>() };
                 });
                 bp.AddComponent<ContextCalculateSharedValue>(c => {
                     c.ValueType = AbilitySharedValue.Heal;
@@ -728,10 +742,12 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_AdditionalClasses = new BlueprintCharacterClassReference[] {
-                        InquisitorClass.ToReference<BlueprintCharacterClassReference>()
+                        InquisitorClass.ToReference<BlueprintCharacterClassReference>(),
+                        ArcanistClass.ToReference<BlueprintCharacterClassReference>()
                     };
                     c.m_Archetypes = new BlueprintArchetypeReference[] {
-                        RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>()
+                        RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>(),
+                        MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>()
                     };
                     c.Level = 13;
                     c.m_Feature = OracleRevelationCoatOfManyStarsDC.ToReference<BlueprintFeatureReference>();
@@ -740,11 +756,14 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_AdditionalClasses = new BlueprintCharacterClassReference[] {
-                        InquisitorClass.ToReference<BlueprintCharacterClassReference>()
+                        InquisitorClass.ToReference<BlueprintCharacterClassReference>(),
+                        ArcanistClass.ToReference<BlueprintCharacterClassReference>()
                     };
                     c.m_Archetypes = new BlueprintArchetypeReference[] {
-                        RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>()
-                    }; c.Level = 13;
+                        RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>(),
+                        MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>()
+                    }; 
+                    c.Level = 13;
                     c.m_Feature = OracleRevelationCoatOfManyStarsDR.ToReference<BlueprintFeatureReference>();
                     c.BeforeThisLevel = false;
                 });
@@ -1190,6 +1209,12 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 });
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_AdditionalClasses = new BlueprintCharacterClassReference[] {
+                        ArcanistClass.ToReference<BlueprintCharacterClassReference>()
+                    };
+                    c.m_Archetypes = new BlueprintArchetypeReference[] {
+                        MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>()
+                    };
                     c.Level = 17;
                     c.m_Feature = OracleRevelationDwellerInTheDarknessUpgrade.ToReference<BlueprintFeatureReference>();
                     c.BeforeThisLevel = false;
@@ -1210,6 +1235,13 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.AddComponent<PrerequisiteClassLevel>(c => {
                     c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
                     c.Level = 11;
+                    c.Group = Prerequisite.GroupType.Any;
+                });
+                bp.AddComponent<PrerequisiteArchetypeLevel>(c => {
+                    c.m_CharacterClass = ArcanistClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.Level = 11;
+                    c.Group = Prerequisite.GroupType.Any;
                 });
                 bp.Groups = new FeatureGroup[] { FeatureGroup.OracleRevelation };
                 bp.m_AllowNonContextActions = false;
@@ -1603,11 +1635,13 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     m_Class = new BlueprintCharacterClassReference[0],
                     m_ClassDiv = new BlueprintCharacterClassReference[] {
                         OracleClass.ToReference<BlueprintCharacterClassReference>(),
-                        InquisitorClass.ToReference<BlueprintCharacterClassReference>()
+                        InquisitorClass.ToReference<BlueprintCharacterClassReference>(),
+                        ArcanistClass.ToReference<BlueprintCharacterClassReference>()
                     },
                     m_Archetypes = new BlueprintArchetypeReference[0],
                     m_ArchetypesDiv = new BlueprintArchetypeReference[] {
-                        RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>()
+                        RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>(),
+                        MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>()
                     },
                     StartingLevel = 1,
                     LevelStep = 9,
@@ -2038,16 +2072,28 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.SetDescription("");
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
-                    c.m_AdditionalClasses = new BlueprintCharacterClassReference[] { InquisitorClass.ToReference<BlueprintCharacterClassReference>() };
-                    c.m_Archetypes = new BlueprintArchetypeReference[] { RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>() };
+                    c.m_AdditionalClasses = new BlueprintCharacterClassReference[] { 
+                        InquisitorClass.ToReference<BlueprintCharacterClassReference>(),
+                        ArcanistClass.ToReference<BlueprintCharacterClassReference>()
+                    };
+                    c.m_Archetypes = new BlueprintArchetypeReference[] { 
+                        RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>(),
+                        MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>()
+                    };
                     c.Level = 10;
                     c.m_Feature = OracleRevelationInterstallarVoidFeature1.ToReference<BlueprintFeatureReference>();
                     c.BeforeThisLevel = true;
                 });
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
-                    c.m_AdditionalClasses = new BlueprintCharacterClassReference[] { InquisitorClass.ToReference<BlueprintCharacterClassReference>() };
-                    c.m_Archetypes = new BlueprintArchetypeReference[] { RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>() };
+                    c.m_AdditionalClasses = new BlueprintCharacterClassReference[] { 
+                        InquisitorClass.ToReference<BlueprintCharacterClassReference>(),
+                        ArcanistClass.ToReference<BlueprintCharacterClassReference>()
+                    };
+                    c.m_Archetypes = new BlueprintArchetypeReference[] { 
+                        RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>(),
+                        MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>()
+                    };
                     c.Level = 10;
                     c.m_Feature = OracleRevelationInterstallarVoidFeature2.ToReference<BlueprintFeatureReference>();
                     c.BeforeThisLevel = false;
@@ -2064,16 +2110,28 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     "per day at 10th level.");
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
-                    c.m_AdditionalClasses = new BlueprintCharacterClassReference[] { InquisitorClass.ToReference<BlueprintCharacterClassReference>() };
-                    c.m_Archetypes = new BlueprintArchetypeReference[] { RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>() };
+                    c.m_AdditionalClasses = new BlueprintCharacterClassReference[] { 
+                        InquisitorClass.ToReference<BlueprintCharacterClassReference>(),
+                        ArcanistClass.ToReference<BlueprintCharacterClassReference>()
+                    };
+                    c.m_Archetypes = new BlueprintArchetypeReference[] {
+                        RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>(),
+                        MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>() 
+                    };
                     c.Level = 15;
                     c.m_Feature = OracleRevelationInterstallarVoidFeature12.ToReference<BlueprintFeatureReference>();
                     c.BeforeThisLevel = true;
                 });
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
-                    c.m_AdditionalClasses = new BlueprintCharacterClassReference[] { InquisitorClass.ToReference<BlueprintCharacterClassReference>() };
-                    c.m_Archetypes = new BlueprintArchetypeReference[] { RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>() };
+                    c.m_AdditionalClasses = new BlueprintCharacterClassReference[] {
+                        InquisitorClass.ToReference<BlueprintCharacterClassReference>(),
+                        ArcanistClass.ToReference<BlueprintCharacterClassReference>()
+                    };
+                    c.m_Archetypes = new BlueprintArchetypeReference[] {
+                        RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>(),
+                        MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>()
+                    };
                     c.Level = 15;
                     c.m_Feature = OracleRevelationInterstallarVoidFeature3.ToReference<BlueprintFeatureReference>();
                     c.BeforeThisLevel = false;
@@ -2115,10 +2173,12 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     ResourceBonusStat = StatType.Unknown,
                     m_Class = new BlueprintCharacterClassReference[] {
                         OracleClass.ToReference<BlueprintCharacterClassReference>(),
-                        InquisitorClass.ToReference<BlueprintCharacterClassReference>()
+                        InquisitorClass.ToReference<BlueprintCharacterClassReference>(),
+                        ArcanistClass.ToReference<BlueprintCharacterClassReference>(),
                     },
                     m_Archetypes = new BlueprintArchetypeReference[] {
-                        RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>()
+                        RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>(),
+                        MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>(),
                     }
                 };
                 bp.m_UseMax = true;
@@ -2206,16 +2266,28 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 });
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
-                    c.m_AdditionalClasses = new BlueprintCharacterClassReference[] { InquisitorClass.ToReference<BlueprintCharacterClassReference>() };
-                    c.m_Archetypes = new BlueprintArchetypeReference[] { RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>() };
+                    c.m_AdditionalClasses = new BlueprintCharacterClassReference[] {
+                        InquisitorClass.ToReference<BlueprintCharacterClassReference>(),
+                        ArcanistClass.ToReference<BlueprintCharacterClassReference>()
+                    };
+                    c.m_Archetypes = new BlueprintArchetypeReference[] {
+                        RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>(),
+                        MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>()
+                    };
                     c.Level = 5;
                     c.m_Feature = OracleRevelationLureOfTheHeavensHoverFeature.ToReference<BlueprintFeatureReference>();
                     c.BeforeThisLevel = false;
                 });
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
-                    c.m_AdditionalClasses = new BlueprintCharacterClassReference[] { InquisitorClass.ToReference<BlueprintCharacterClassReference>() };
-                    c.m_Archetypes = new BlueprintArchetypeReference[] { RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>() };
+                    c.m_AdditionalClasses = new BlueprintCharacterClassReference[] {
+                        InquisitorClass.ToReference<BlueprintCharacterClassReference>(),
+                        ArcanistClass.ToReference<BlueprintCharacterClassReference>()
+                    };
+                    c.m_Archetypes = new BlueprintArchetypeReference[] {
+                        RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>(),
+                        MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>()
+                    };
                     c.Level = 10;
                     c.m_Feature = OracleRevelationLureOfTheHeavensFlyFeature.ToReference<BlueprintFeatureReference>();
                     c.BeforeThisLevel = false;
@@ -2258,10 +2330,12 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     ResourceBonusStat = StatType.Unknown,
                     m_ClassDiv = new BlueprintCharacterClassReference[] {
                         OracleClass.ToReference<BlueprintCharacterClassReference>(),
-                        InquisitorClass.ToReference<BlueprintCharacterClassReference>()
+                        InquisitorClass.ToReference<BlueprintCharacterClassReference>(),
+                        ArcanistClass.ToReference<BlueprintCharacterClassReference>(),
                     },
                     m_ArchetypesDiv = new BlueprintArchetypeReference[] {
-                        RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>()
+                        RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>(),
+                        MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>(),
                     }
                 };
                 bp.m_UseMax = true;
@@ -2432,7 +2506,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 });
                 bp.AddComponent<ContextRankConfig>(c => {
                     c.m_Type = AbilityRankType.DamageDice;
-                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
+                    c.m_BaseValueType = ContextRankBaseValueType.SummClassLevelWithArchetype;
                     c.m_Stat = StatType.Unknown;
                     c.m_SpecificModifier = ModifierDescriptor.None;
                     c.m_Progression = ContextRankProgression.Div2;
@@ -2441,9 +2515,11 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     c.m_Min = 1;
                     c.m_Class = new BlueprintCharacterClassReference[] {
                         OracleClass.ToReference<BlueprintCharacterClassReference>(),
-                        InquisitorClass.ToReference<BlueprintCharacterClassReference>()
+                        InquisitorClass.ToReference<BlueprintCharacterClassReference>(),
+                        ArcanistClass.ToReference<BlueprintCharacterClassReference>(),
                     };
                     c.Archetype = RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.m_AdditionalArchetypes = new BlueprintArchetypeReference[] { MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>() };
                 });
                 bp.AddComponent<CraftInfoComponent>(c => {
                     c.SavingThrow = CraftSavingThrow.Reflex;
@@ -2593,7 +2669,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 });
                 bp.AddComponent<ContextRankConfig>(c => {
                     c.m_Type = AbilityRankType.DamageDice;
-                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
+                    c.m_BaseValueType = ContextRankBaseValueType.SummClassLevelWithArchetype;
                     c.m_Stat = StatType.Unknown;
                     c.m_SpecificModifier = ModifierDescriptor.None;
                     c.m_Progression = ContextRankProgression.Div2;
@@ -2602,9 +2678,11 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     c.m_Min = 1;
                     c.m_Class = new BlueprintCharacterClassReference[] {
                         OracleClass.ToReference<BlueprintCharacterClassReference>(),
-                        InquisitorClass.ToReference<BlueprintCharacterClassReference>()
+                        InquisitorClass.ToReference<BlueprintCharacterClassReference>(),
+                        ArcanistClass.ToReference<BlueprintCharacterClassReference>(),
                     };
                     c.Archetype = RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.m_AdditionalArchetypes = new BlueprintArchetypeReference[] { MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>() };
                 });
                 bp.AddComponent<CraftInfoComponent>(c => {
                     c.SavingThrow = CraftSavingThrow.Reflex;
@@ -2708,6 +2786,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
             MysteryTools.RegisterSecondHerbalistMystery(DivineHerbalistHeavensMysteryFeature);
             MysteryTools.RegisterOceansEchoMystery(OceansEchoHeavensMysteryFeature);
             MysteryTools.RegisterSecondOceansEchoMystery(OceansEchoHeavensMysteryFeature);
+            MysteryTools.RegisterMysteryGiftSelection(OracleHeavensMysteryFeature);
         }
     }
 }

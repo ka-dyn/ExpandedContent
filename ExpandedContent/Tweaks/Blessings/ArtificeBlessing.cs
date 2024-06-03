@@ -28,6 +28,7 @@ using Kingmaker.UI.GenericSlot;
 using ExpandedContent.Tweaks.Components;
 using Kingmaker.UnitLogic.ActivatableAbilities;
 using TabletopTweaks.Core.NewComponents;
+using Kingmaker.UnitLogic.Mechanics.Properties;
 
 namespace ExpandedContent.Tweaks.Blessings {
     internal class ArtificeBlessing {
@@ -39,6 +40,40 @@ namespace ExpandedContent.Tweaks.Blessings {
             var BlessingResource = Resources.GetBlueprintReference<BlueprintAbilityResourceReference>("d128a6332e4ea7c4a9862b9fdb358cca");
             var MasterStrikeToggleAbility = Resources.GetBlueprint<BlueprintActivatableAbility>("926bff1386d58824688363a3eeb98260");
             var ExploitWeakness = Resources.GetBlueprint<BlueprintFeature>("374a73288a36e2d4f9e54c75d2e6e573");
+
+
+            //DC Property, putting this here as it is the first Blessing, it is unlikely I will need to use it much
+            var PaladinClass = Resources.GetBlueprintReference<BlueprintCharacterClassReference>("bfa11238e7ae3544bbeb4d0b92e897ec");
+            var TempleChampionArchetype = Resources.GetModBlueprint<BlueprintArchetype>("TempleChampionArchetype");
+            var RangerClass = Resources.GetBlueprintReference<BlueprintCharacterClassReference>("cda0615668a6df14eb36ba19ee881af6");
+            var DivineTrackerArchetype = Resources.GetModBlueprint<BlueprintArchetype>("DivineTrackerArchetype");
+            var BlessingDCProperty = Helpers.CreateBlueprint<BlueprintUnitProperty>("BlessingDCProperty", bp => {
+                bp.AddComponent<SummClassLevelGetter>(c => {
+                    c.Settings = new PropertySettings() {
+                        m_Progression = PropertySettings.Progression.Div2,
+                        m_Negate = false
+                    };
+                    c.m_Class = new BlueprintCharacterClassReference[] {
+                        WarpriestClass,
+                        RangerClass,
+                        PaladinClass
+                    };
+                    c.Archetype = DivineTrackerArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.m_Archetypes = new BlueprintArchetypeReference[] { TempleChampionArchetype.ToReference<BlueprintArchetypeReference>() };
+                });
+                bp.AddComponent<StatValueGetter>(c => {
+                    c.Settings = new PropertySettings() {
+                        m_Progression = PropertySettings.Progression.AsIs,
+                        m_Negate = false,
+                        m_LimitType = PropertySettings.LimitType.None
+                    };
+                    c.Stat = StatType.Wisdom;
+                    c.ValueType = StatValueGetter.ReturnType.Bonus;
+                });
+                bp.BaseValue = 10;
+                bp.OperationOnComponents = BlueprintUnitProperty.MathOperation.Sum;
+            });
+
 
             var ArtificeBlessingMajorMHBaseAbility = Helpers.CreateBlueprint<BlueprintAbility>("ArtificeBlessingMajorMHBaseAbility", bp => {
                 bp.SetName("Transfer Magic - Main Hand");

@@ -136,7 +136,9 @@ namespace ExpandedContent.Tweaks.Deities {
                     DeityTools.SeparatistDomainAllowed.StarsDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.StormDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.ThieveryDomainAllowedSeparatist,
-                    DeityTools.SeparatistDomainAllowed.WindDomainAllowedSeparatist
+                    DeityTools.SeparatistDomainAllowed.WindDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.MurderDomainAllowedSeparatist
+
                 );
                 bp.AddComponent<ForbidSpellbookOnAlignmentDeviation>(c => {
                     c.m_Spellbooks = new BlueprintSpellbookReference[] {

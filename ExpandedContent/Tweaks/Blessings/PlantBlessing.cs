@@ -35,7 +35,7 @@ using Kingmaker.ElementsSystem;
 using Kingmaker.UnitLogic.Mechanics.Conditions;
 
 namespace ExpandedContent.Tweaks.Blessings {
-    internal class PlantBlessing {
+    internal class PlantBlessing {//Retired post DLC6
 
         public static void AddPlantBlessing() {
 
@@ -584,6 +584,9 @@ namespace ExpandedContent.Tweaks.Blessings {
             });
 
             var PlantBlessingFeature = Helpers.CreateBlueprint<BlueprintFeature>("PlantBlessingFeature", bp => {
+
+                bp.LazyLock();
+
                 bp.SetName("Plant");
                 bp.SetDescription("At 1st level, as a swift action you can cause any creature you hit this round with a melee attack to sprout entangling vines that " +
                     "attempt to hold it in place, entangling it for 1 round (Reflex negates). \nAt 10th level, you can summon a battle companion. This ability functions " +
@@ -613,7 +616,13 @@ namespace ExpandedContent.Tweaks.Blessings {
 
             //Added in ModSupport
             var DivineTrackerPlantBlessingFeature = Resources.GetModBlueprint<BlueprintFeature>("DivineTrackerPlantBlessingFeature");
+
+            DivineTrackerPlantBlessingFeature.LazyLock();
+
             var QuickenBlessingPlantFeature = Helpers.CreateBlueprint<BlueprintFeature>("QuickenBlessingPlantFeature", bp => {
+
+                bp.LazyLock();
+
                 bp.SetName("Quicken Blessing — Plant");
                 bp.SetDescription("Choose one of your blessings that normally requires a standard action to use. You can expend two of your daily uses of blessings " +
                     "to deliver that blessing (regardless of whether it’s a minor or major effect) as a swift action instead.");
@@ -639,6 +648,16 @@ namespace ExpandedContent.Tweaks.Blessings {
             PlantBlessingFeature.IsPrerequisiteFor = new List<BlueprintFeatureReference>() { QuickenBlessingPlantFeature.ToReference<BlueprintFeatureReference>() };
 
 
+
+            //Fixing the DLC6 version to work with my other archetpyes
+            var NewPlantBlessingMinorAbility = Resources.GetBlueprint<BlueprintAbility>("6fc1515260d247fc9383888092496679");
+            var BlessingDCProperty = Resources.GetModBlueprint<BlueprintUnitProperty>("BlessingDCProperty");
+            NewPlantBlessingMinorAbility.RemoveComponents<ContextCalculateAbilityParamsBasedOnClass>();
+            NewPlantBlessingMinorAbility.GetComponent<AbilityEffectRunAction>().Actions.Actions.OfType<ContextActionSavingThrow>().First().HasCustomDC = true;
+            NewPlantBlessingMinorAbility.GetComponent<AbilityEffectRunAction>().Actions.Actions.OfType<ContextActionSavingThrow>().First().CustomDC = new ContextValue() {
+                ValueType = ContextValueType.CasterProperty,
+                m_CustomProperty = BlessingDCProperty.ToReference<BlueprintUnitPropertyReference>()
+            };
         }
 
     }

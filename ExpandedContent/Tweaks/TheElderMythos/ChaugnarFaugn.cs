@@ -83,6 +83,7 @@ namespace ExpandedContent.Tweaks.TheElderMythos {
                     DeityTools.DomainAllowed.EvilDomainAllowed,
                     DeityTools.DomainAllowed.WarDomainAllowed,
                     DeityTools.DomainAllowed.BloodDomainAllowed,
+                    DeityTools.DomainAllowed.MurderDomainAllowed,
                     DeityTools.SeparatistDomainAllowed.AirDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.AnimalDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.ArtificeDomainAllowedSeparatist,

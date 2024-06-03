@@ -139,7 +139,9 @@ namespace ExpandedContent.Tweaks.TheElderMythos {
                     DeityTools.SeparatistDomainAllowed.ScalykindDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.StarsDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.ThieveryDomainAllowedSeparatist,
-                    DeityTools.SeparatistDomainAllowed.WhimsyDomainAllowedSeparatist//Chaos
+                    DeityTools.SeparatistDomainAllowed.WhimsyDomainAllowedSeparatist,//Chaos
+                    DeityTools.SeparatistDomainAllowed.MurderDomainAllowedSeparatist
+
                 );
                 bp.AddComponent<ForbidSpellbookOnAlignmentDeviation>(c => {
                     c.m_Spellbooks = new BlueprintSpellbookReference[] {

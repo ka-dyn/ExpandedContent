@@ -1,4 +1,5 @@
-﻿using ExpandedContent.Extensions;
+﻿using ExpandedContent.Config;
+using ExpandedContent.Extensions;
 using ExpandedContent.Utilities;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
@@ -88,6 +89,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     DeityTools.DomainAllowed.WarDomainAllowed,
                     DeityTools.DomainAllowed.BloodDomainAllowed,
                     DeityTools.DomainAllowed.ThieveryDomainAllowed,
+                    DeityTools.DomainAllowed.MurderDomainAllowed,
                     DeityTools.SeparatistDomainAllowed.AirDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.AnimalDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.ArtificeDomainAllowedSeparatist,
@@ -183,6 +185,11 @@ namespace ExpandedContent.Tweaks.Deities {
                 c.CheckInProgression = false;
                 c.HideInUI = false;
             });
+
+            if (ModSettings.AddedContent.RetiredFeatures.IsDisabled("Mantis Zealot and Achaekek deity")) {
+                AchaekekFeature.LazyLock();
+            }
+
         }
     }
 

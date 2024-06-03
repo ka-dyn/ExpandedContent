@@ -95,11 +95,6 @@
         "Homebrew": true,
         "Description": "A paladin archetype with access to domain powers at the cost of their spellcasting, slightly buffed as archetype underperforms on tabletop."
       },
-      "Mantis Zealot": {
-        "Enabled": true,
-        "Homebrew": false,
-        "Description": "A warpriest archetype focusing on assassination and dual wielding, must worship Achaekek."
-      },
       "Mooncaller": {
         "Enabled": true,
         "Homebrew": false,
@@ -540,6 +535,16 @@
         "Enabled": false,
         "Homebrew": false,
         "Description": "The EC version of Undead Subdomain, no longer updated due to the in-game version releasing with DLC5."
+      },
+      "Mantis Zealot and Achaekek deity": {
+        "Enabled": false,
+        "Homebrew": false,
+        "Description": "A warpriest archetype focusing on assassination and dual wielding, must worship Achaekek. DLC6 added an improved version of this archetype."
+      },
+      "Purging and Reviving Finale Spells": {
+        "Enabled": false,
+        "Homebrew": false,
+        "Description": "These 2 spells have been added in DLC6 and will now be disabled by default."
       }
     },
     "IsExpanded": false

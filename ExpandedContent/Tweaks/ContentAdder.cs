@@ -12,6 +12,8 @@ namespace ExpandedContent.Tweaks {
                 if (Initialized) return;
                 Initialized = true;
 
+                Miscellaneous.LazyLocker.AddLazyLocker();
+
                 Miscellaneous.OpeningVolley.AddOpeningVolley();
                 Miscellaneous.BullseyeShot.AddBullseyeShot();
                 Miscellaneous.PinpointTargeting.AddPinpointTargeting();

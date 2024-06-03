@@ -422,39 +422,9 @@ namespace ExpandedContent.Tweaks.Spirits {
                 });
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = true;
-            });            
-            //Progression
-            var ShamanHeavensSpiritProgression = Helpers.CreateBlueprint<BlueprintProgression>("ShamanHeavensSpiritProgression", bp => {
-                bp.SetName("Heavens");
-                bp.SetDescription("A shaman who selects the heavens spirit has eyes that sparkle like starlight, exuding an aura of otherworldliness to those she is around. " +
-                    "When she calls upon one of this spirit’s abilities, her eyes turn pitch black and the colors around her drain for a brief moment.");
-                bp.AddComponent<AddFeaturesFromSelectionToDescription>(c => {
-                    c.SetIntroduction("Additional Hexes:");
-                    c.m_FeatureSelection = ShamanHexSelection.ToReference<BlueprintFeatureSelectionReference>();
-                    c.OnlyIfRequiresThisFeature = true;
-                });
-                bp.AddComponent<AddSpellsToDescription>(c => {
-                    c.SetIntroduction("Bonus Spells:");
-                    c.m_SpellLists = new BlueprintSpellListReference[] { HeavensSpiritSpellList.ToReference<BlueprintSpellListReference>() };
-                });
-                bp.m_AllowNonContextActions = false;                
-                bp.Groups = new FeatureGroup[] { FeatureGroup.ShamanSpirit };
-                bp.IsClassFeature = true;
-                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
-                    new BlueprintProgression.ClassWithLevel {
-                        m_Class = ShamanClass.ToReference<BlueprintCharacterClassReference>(),
-                        AdditionalLevel = 0
-                    }
-                };
-                bp.m_Archetypes = new BlueprintProgression.ArchetypeWithLevel[] {};
-                bp.LevelEntries = new LevelEntry[] {
-                    Helpers.LevelEntry(1, ShamanHeavensSpiritBaseFeature, HeavensSpiritSpellListFeature),
-                    Helpers.LevelEntry(8, ShamanHeavensSpiritGreaterFeature),
-                    Helpers.LevelEntry(16, ShamanHeavensSpiritTrueFeature)
-                };
-                bp.GiveFeaturesForPreviousLevels = true;
             });
-            // Manifestation -- Added in ModSupport if Mystical Mayhem is installed
+
+            // Manifestation 
             var ShamanHeavensSpiritManifestationResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("ShamanHeavensSpiritManifestationResource", bp => {
                 bp.m_MaxAmount = new BlueprintAbilityResource.Amount() {
                     BaseValue = 1,
@@ -514,6 +484,40 @@ namespace ExpandedContent.Tweaks.Spirits {
                 bp.HideInUI = false;
                 bp.HideInCharacterSheetAndLevelUp = false;
                 bp.IsClassFeature = true;
+            });
+
+
+            //Progression
+            var ShamanHeavensSpiritProgression = Helpers.CreateBlueprint<BlueprintProgression>("ShamanHeavensSpiritProgression", bp => {
+                bp.SetName("Heavens");
+                bp.SetDescription("A shaman who selects the heavens spirit has eyes that sparkle like starlight, exuding an aura of otherworldliness to those she is around. " +
+                    "When she calls upon one of this spirit’s abilities, her eyes turn pitch black and the colors around her drain for a brief moment.");
+                bp.AddComponent<AddFeaturesFromSelectionToDescription>(c => {
+                    c.SetIntroduction("Additional Hexes:");
+                    c.m_FeatureSelection = ShamanHexSelection.ToReference<BlueprintFeatureSelectionReference>();
+                    c.OnlyIfRequiresThisFeature = true;
+                });
+                bp.AddComponent<AddSpellsToDescription>(c => {
+                    c.SetIntroduction("Bonus Spells:");
+                    c.m_SpellLists = new BlueprintSpellListReference[] { HeavensSpiritSpellList.ToReference<BlueprintSpellListReference>() };
+                });
+                bp.m_AllowNonContextActions = false;                
+                bp.Groups = new FeatureGroup[] { FeatureGroup.ShamanSpirit };
+                bp.IsClassFeature = true;
+                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = ShamanClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    }
+                };
+                bp.m_Archetypes = new BlueprintProgression.ArchetypeWithLevel[] {};
+                bp.LevelEntries = new LevelEntry[] {
+                    Helpers.LevelEntry(1, ShamanHeavensSpiritBaseFeature, HeavensSpiritSpellListFeature),
+                    Helpers.LevelEntry(8, ShamanHeavensSpiritGreaterFeature),
+                    Helpers.LevelEntry(16, ShamanHeavensSpiritTrueFeature),
+                    Helpers.LevelEntry(20, ShamanHeavensSpiritManifestationFeature)
+                };
+                bp.GiveFeaturesForPreviousLevels = true;
             });
             
 

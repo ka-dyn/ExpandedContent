@@ -360,6 +360,9 @@ namespace ExpandedContent.Tweaks.Blessings {
             
 
             var WarBlessingFeature = Helpers.CreateBlueprint<BlueprintFeature>("WarBlessingFeature", bp => {
+
+                bp.LazyLock();
+
                 bp.SetName("War");
                 bp.SetDescription("At 1st level, you can touch an ally and grant it a tactical advantage for 1 minute. The ally gets one of the following bonuses: +10 feet to base speed, +1 " +
                     "dodge bonus to AC, +1 insight bonus on attack rolls, or a +1 luck bonus on saving throws. \nAt 10th level, you can touch an ally and grant it a thirst for battle. All of " +
@@ -387,7 +390,11 @@ namespace ExpandedContent.Tweaks.Blessings {
 
             //Added in ModSupport
             var DivineTrackerWarBlessingFeature = Resources.GetModBlueprint<BlueprintFeature>("DivineTrackerWarBlessingFeature");
+            DivineTrackerWarBlessingFeature.LazyLock();
             var QuickenBlessingWarFeature = Helpers.CreateBlueprint<BlueprintFeature>("QuickenBlessingWarFeature", bp => {
+
+                bp.LazyLock();
+
                 bp.SetName("Quicken Blessing — War");
                 bp.SetDescription("Choose one of your blessings that normally requires a standard action to use. You can expend two of your daily uses of blessings " +
                     "to deliver that blessing (regardless of whether it’s a minor or major effect) as a swift action instead.");

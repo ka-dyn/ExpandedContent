@@ -79,7 +79,9 @@ namespace ExpandedContent.Tweaks.Deities {
                     DeityTools.SeparatistDomainAllowed.StormDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.ThieveryDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.WhimsyDomainAllowedSeparatist,//Chaos
-                    DeityTools.SeparatistDomainAllowed.WindDomainAllowedSeparatist
+                    DeityTools.SeparatistDomainAllowed.WindDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.MurderDomainAllowedSeparatist
+
                 );
             PuluraFeature.m_Icon = PuluraIcon;            
 

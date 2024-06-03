@@ -1365,6 +1365,15 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var WeatherBlessingFeatureConfig = Resources.GetBlueprint<BlueprintFeature>("4172d92c598de1d47aa2c0dd51c05e24").GetComponent<AddFeatureOnClassLevel>();
             WeatherBlessingFeatureConfig.m_AdditionalClasses = WeatherBlessingFeatureConfig.m_AdditionalClasses.AppendToArray(PaladinClass.ToReference<BlueprintCharacterClassReference>());
             WeatherBlessingFeatureConfig.m_Archetypes = WeatherBlessingFeatureConfig.m_Archetypes.AppendToArray(TempleChampionArchetype.ToReference<BlueprintArchetypeReference>());
+            //DLC6
+            //Plant
+            var PlantBlessingFeatureConfig = Resources.GetBlueprint<BlueprintFeature>("4cd28bbb761f490fa418d471383e38c7").GetComponent<AddFeatureOnClassLevel>();
+            PlantBlessingFeatureConfig.m_AdditionalClasses = PlantBlessingFeatureConfig.m_AdditionalClasses.AppendToArray(PaladinClass.ToReference<BlueprintCharacterClassReference>());
+            PlantBlessingFeatureConfig.m_Archetypes = PlantBlessingFeatureConfig.m_Archetypes.AppendToArray(TempleChampionArchetype.ToReference<BlueprintArchetypeReference>());
+            //War
+            var WarBlessingFeatureConfig = Resources.GetBlueprint<BlueprintFeature>("2097edd687ff4cdeb33872c048599fc1").GetComponent<AddFeatureOnClassLevel>();
+            WarBlessingFeatureConfig.m_AdditionalClasses = WarBlessingFeatureConfig.m_AdditionalClasses.AppendToArray(PaladinClass.ToReference<BlueprintCharacterClassReference>());
+            WarBlessingFeatureConfig.m_Archetypes = WarBlessingFeatureConfig.m_Archetypes.AppendToArray(TempleChampionArchetype.ToReference<BlueprintArchetypeReference>());
 
             if (ModSettings.AddedContent.Archetypes.IsDisabled("Temple Champion")) { return; }
             PaladinClass.m_Archetypes = PaladinClass.m_Archetypes.AppendToArray(TempleChampionArchetype.ToReference<BlueprintArchetypeReference>());

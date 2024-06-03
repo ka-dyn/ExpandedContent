@@ -91,6 +91,7 @@ namespace ExpandedContent.Tweaks.Archdevils {
                     DeityTools.DomainAllowed.WindDomainAllowed,
                     DeityTools.DomainAllowed.OldUndeadDomainAllowed,
                     DeityTools.DomainAllowed.UndeadDomainAllowed,
+                    DeityTools.DomainAllowed.MurderDomainAllowed,
                     DeityTools.SeparatistDomainAllowed.AnimalDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.ArtificeDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.CharmDomainAllowedSeparatist,

@@ -30,8 +30,8 @@ namespace ExpandedContent.Tweaks.Domains {
             var DivineHunterArchetype = Resources.GetBlueprint<BlueprintArchetype>("f996f0a18e5d945459e710ee3a6dd485");
             var PaladinClass = Resources.GetBlueprint<BlueprintCharacterClass>("bfa11238e7ae3544bbeb4d0b92e897ec");
             var TempleChampionArchetype = Resources.GetModBlueprint<BlueprintArchetype>("TempleChampionArchetype");
+            //I don't think this domain will work with Magic Deceiver, so I am leaving it for now
 
-            
 
             //Spelllist
             var EntropicShieldSpell = Resources.GetModBlueprint<BlueprintAbility>("EntropicShieldAbility");

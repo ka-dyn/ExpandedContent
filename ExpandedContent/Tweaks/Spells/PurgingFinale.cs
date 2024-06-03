@@ -1,4 +1,5 @@
-﻿using ExpandedContent.Extensions;
+﻿using ExpandedContent.Config;
+using ExpandedContent.Extensions;
 using ExpandedContent.Utilities;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes.Spells;
@@ -630,6 +631,10 @@ namespace ExpandedContent.Tweaks.Spells {
                 };
             });
             var PurgingFinaleScroll = ItemTools.CreateScroll("ScrollOfPurgingFinale", Icon_ScrollOfPurgingFinale, PurgingFinale, 3, 7);
+
+            if (ModSettings.AddedContent.RetiredFeatures.IsDisabled("Purging and Reviving Finale Spells")) { return; }
+
+
             VenderTools.AddScrollToLeveledVenders(PurgingFinaleScroll);
             PurgingFinale.AddToSpellList(SpellTools.SpellList.BardSpellList, 3);
         }

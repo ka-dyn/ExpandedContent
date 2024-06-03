@@ -14,6 +14,7 @@ namespace ExpandedContent.Tweaks.Curses {
 
             var OracleCurseSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("b0a5118b4fb793241bc7042464b23fab");
             var BeneficialCurse = Resources.GetBlueprint<BlueprintFeatureSelection>("2dda67424ee8e0b4d83ef01a73ca6bff");
+            var MysteryGiftFeatureCurseSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("4e7265c0ae1345db90d3375f4ced94cc");
             var OracleClass = Resources.GetBlueprint<BlueprintCharacterClass>("20ce9bf8af32bee4c8557a045ab499b1");
             var WitchClass = Resources.GetBlueprint<BlueprintCharacterClass>("1b9873f1e7bfe5449bc84d03e9c8e3cc");
             var AccursedWitchArchetype = Resources.GetBlueprint<BlueprintArchetype>("c5f6e53e71059fb4d802ce81a277a12d");
@@ -138,9 +139,47 @@ namespace ExpandedContent.Tweaks.Curses {
                 };
                 bp.GiveFeaturesForPreviousLevels = true;
             });
+            var VampirismCurseNoProgression = Helpers.CreateBlueprint<BlueprintProgression>("VampirismCurseNoProgression", bp => {
+                bp.SetName("Vampirism");
+                bp.SetDescription("You crave the taste of fresh, warm blood. \nYou take damage from positive energy and heal from negative energy as if you were " +
+                    "undead. \nAt 5th level, you gain channel resistance +4. \nAt 10th level, you add vampiric touch to your list of 3rd-level oracle spells known " +
+                    "and create undead to your list of 5th-level oracle spells known. \nAt 15th level, you gain damage reduction 5/magic.");
+                bp.m_Icon = VampirismIcon;
+                bp.Groups = new FeatureGroup[] { FeatureGroup.OracleCurse };
+                bp.IsClassFeature = true;
+                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    },
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = WitchClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    }
+                };
+                bp.m_Archetypes = new BlueprintProgression.ArchetypeWithLevel[] {
+                    new BlueprintProgression.ArchetypeWithLevel {
+                        m_Archetype = AccursedWitchArchetype.ToReference<BlueprintArchetypeReference>(),
+                        AdditionalLevel = 0
+                    }
+                };
+                bp.LevelEntries = new LevelEntry[] {
+                    Helpers.LevelEntry(1, NegativeEnergyAffinity)
+                };
+                bp.GiveFeaturesForPreviousLevels = true;
+                bp.AddComponent<PrerequisiteNoFeature>(c => {
+                    c.CheckInProgression = true;
+                    c.m_Feature = VampirismCurseProgression.ToReference<BlueprintFeatureReference>();
+                    c.HideInUI = true;
+                });
+            });
+
             OracleCurseSelection.m_AllFeatures = OracleCurseSelection.m_AllFeatures.AppendToArray(VampirismCurseProgression.ToReference<BlueprintFeatureReference>());
             BeneficialCurse.m_AllFeatures = BeneficialCurse.m_AllFeatures.AppendToArray(BeneficialVampirismCurseProgression.ToReference<BlueprintFeatureReference>());
             BeneficialCurse.m_Features = BeneficialCurse.m_Features.AppendToArray(BeneficialVampirismCurseProgression.ToReference<BlueprintFeatureReference>());
+            MysteryGiftFeatureCurseSelection.m_AllFeatures = MysteryGiftFeatureCurseSelection.m_AllFeatures.AppendToArray(VampirismCurseNoProgression.ToReference<BlueprintFeatureReference>());
+            MysteryGiftFeatureCurseSelection.m_Features = MysteryGiftFeatureCurseSelection.m_Features.AppendToArray(VampirismCurseNoProgression.ToReference<BlueprintFeatureReference>());
+
         }
     }
 }

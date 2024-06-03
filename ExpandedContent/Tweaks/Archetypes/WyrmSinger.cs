@@ -35,6 +35,7 @@ using Kingmaker.RuleSystem.Rules;
 using Kingmaker.UnitLogic.Abilities.Components.CasterCheckers;
 using Kingmaker.Settings;
 using Kingmaker.ResourceLinks;
+using Kingmaker.Designers.EventConditionActionSystem.Evaluators;
 
 namespace ExpandedContent.Tweaks.Archetypes {
     internal class WyrmSinger {
@@ -2840,6 +2841,58 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     Helpers.LevelEntry(12, WyrmSingerBreathWeaponFeature),
                     Helpers.LevelEntry(14, WyrmSingerWyrmSagaFeature)
             };
+
+
+            //Adding new songs to Owlcats Finale checkers
+            var FinaleBuffExtraEffects = new BuffExtraEffects[] {
+                Resources.GetBlueprint<BlueprintFeature>("4f422e8490ec7d94592a8069cce47f98").GetComponent<BuffExtraEffects>(), //Bard
+                Resources.GetBlueprint<BlueprintFeature>("aea30d43abf590142a750e72db08df7b").GetComponent<BuffExtraEffects>() //Skald
+            };
+            foreach (var effect in FinaleBuffExtraEffects) {
+                effect.m_CheckedBuffList = effect.m_CheckedBuffList.AppendToArray(WyrmSingerDraconicRageBuff.ToReference<BlueprintBuffReference>());
+                effect.m_CheckedBuffList = effect.m_CheckedBuffList.AppendToArray(WyrmSingerWyrmSagaBuff.ToReference<BlueprintBuffReference>());
+            }
+
+            //Adding new songs to Owlcat Finale spells
+            var FinaleSpells = new BlueprintAbility[] {
+                Resources.GetBlueprint<BlueprintAbility>("a896760c975d4f3b96f279aa3cdf2292"), //Reviving
+                Resources.GetBlueprint<BlueprintAbility>("1ccf2217b2cf4150a3bf08ef3840854e"), //PurgingDazzled
+                Resources.GetBlueprint<BlueprintAbility>("a0ec8e8c892948db99ae559309b0d3fc"), //PurgingExhausted
+                Resources.GetBlueprint<BlueprintAbility>("dc6a6484613a4cddba73b645de3f68b5"), //PurgingParalyzed
+                Resources.GetBlueprint<BlueprintAbility>("074f7ae375ef4255b0f35d47ca8d5112"), //PurgingShaken
+                Resources.GetBlueprint<BlueprintAbility>("0aa8456baeec4327b33776ff323cce4c") //PurgingStunned
+            };
+            foreach (var spell in FinaleSpells) {
+                spell.GetComponents<ContextActionOnContextCaster>()
+                    .Where(c => c.Actions.Actions.Any(x => x is SwitchActivatableAbility))
+                    .ForEach(result => {
+                        result.Actions.Actions = result.Actions.Actions.AppendToArray(
+                            new SwitchActivatableAbility() {
+                                Unit = new ContextTargetUnit(),
+                                m_Ability = WyrmSingerDraconicRageAbility.ToReference<BlueprintActivatableAbilityReference>(),
+                                IsOn = false
+                            },
+                            new SwitchActivatableAbility() {
+                                Unit = new ContextTargetUnit(),
+                                m_Ability = WyrmSingerWyrmSagaAbility.ToReference<BlueprintActivatableAbilityReference>(),
+                                IsOn = false
+                            }
+                            );                        
+                    });
+                spell.GetComponents<ContextActionOnContextCaster>()
+                    .Where(c => c.Actions.Actions.Any(x => x is ContextActionRemoveBuff))
+                    .ForEach(result => {
+                        result.Actions.Actions = result.Actions.Actions.AppendToArray(
+                            new ContextActionRemoveBuff() {
+                                m_Buff = WyrmSingerDraconicRageBuff.ToReference<BlueprintBuffReference>()
+                            },
+                            new ContextActionRemoveBuff() {
+                                m_Buff = WyrmSingerWyrmSagaBuff.ToReference<BlueprintBuffReference>()
+                            }
+                            );
+                    });
+            }
+
             if (ModSettings.AddedContent.Archetypes.IsDisabled("Wyrm Singer")) { return; }
             SkaldClass.m_Archetypes = SkaldClass.m_Archetypes.AppendToArray(WyrmSingerArchetype.ToReference<BlueprintArchetypeReference>());
 

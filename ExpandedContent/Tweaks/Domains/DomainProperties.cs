@@ -22,6 +22,8 @@ namespace ExpandedContent.Tweaks.Domains {
             var TempleChampionArchetype = Resources.GetModBlueprint<BlueprintArchetype>("TempleChampionArchetype");
             var StargazerClass = Resources.GetModBlueprint<BlueprintCharacterClass>("StargazerClass");
             var DruidClass = Resources.GetBlueprint<BlueprintCharacterClass>("610d836f3a3a9ed42a4349b62f002e96");
+            var ArcanistClass = Resources.GetBlueprint<BlueprintCharacterClass>("52dbfd8505e22f84fad8d702611f60b7");
+            var MagicDeceiverArchetype = Resources.GetBlueprint<BlueprintArchetype>("5c77110cd0414e7eb4c2e485659c9a46");
 
             var SeparatistAsIsProperty = Helpers.CreateBlueprint<BlueprintUnitProperty>("SeparatistAsIsProperty", bp => {
                 bp.AddComponent<ClassLevelGetter>(c => {
@@ -60,6 +62,14 @@ namespace ExpandedContent.Tweaks.Domains {
                         m_LimitType = PropertySettings.LimitType.None
                     };
                     c.m_Class = StargazerClass.ToReference<BlueprintCharacterClassReference>();
+                });
+                bp.AddComponent<ClassLevelGetter>(c => {
+                    c.Settings = new PropertySettings() {
+                        m_Progression = PropertySettings.Progression.AsIs,
+                        m_LimitType = PropertySettings.LimitType.None
+                    };
+                    c.m_Class = ArcanistClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>();
                 });
                 bp.BaseValue = 0;
                 bp.OperationOnComponents = BlueprintUnitProperty.MathOperation.Sum;
@@ -108,6 +118,14 @@ namespace ExpandedContent.Tweaks.Domains {
                         m_LimitType = PropertySettings.LimitType.None
                     };
                     c.m_Class = StargazerClass.ToReference<BlueprintCharacterClassReference>();
+                });
+                bp.AddComponent<ClassLevelGetter>(c => {
+                    c.Settings = new PropertySettings() {
+                        m_Progression = PropertySettings.Progression.AsIs,
+                        m_LimitType = PropertySettings.LimitType.None
+                    };
+                    c.m_Class = ArcanistClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>();
                 });
                 bp.BaseValue = 0;
                 bp.OperationOnComponents = BlueprintUnitProperty.MathOperation.Sum;
