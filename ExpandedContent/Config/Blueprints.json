@@ -3414,7 +3414,10 @@
     "TouchOfTheMoonCureBuffCure9": "9a8e5d53-c84a-4e63-b3e6-0a299ab67300",
     "TouchoftheMoonLightWoundsBuff": "c4ff9cbd-8cb4-4f08-9df3-e699a277c714",
     "TouchoftheMoonModerateWoundsBuff": "f2d1642d-f57f-4912-a677-a7087bba35a5",
-    "TouchoftheMoonSeriousWoundsBuff": "2639f791-df36-4e70-b3ae-0fba2b6d73f7"
+    "TouchoftheMoonSeriousWoundsBuff": "2639f791-df36-4e70-b3ae-0fba2b6d73f7",
+
+    "BlessingDCProperty": "f70ad426-7491-4654-bf2d-edbcb7885c23",
+    "LazyLockerFeature": "62b23344-6e5f-4540-bd56-0e13d3b20480"
 
 
 
