@@ -32,10 +32,16 @@ using Kingmaker.RuleSystem.Rules;
 using Kingmaker.UnitLogic.Mechanics.Components;
 using Kingmaker.Utility;
 using Kingmaker.Designers.Mechanics.Buffs;
+using Kingmaker.Blueprints.Classes.Selection;
+using ExpandedContent.Config;
 
 namespace ExpandedContent.Tweaks.Blessings {
     internal class CommunityBlessing {
         public static void AddCommunityBlessing() {
+
+            var BlessingSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("6d9dcc2a59210a14891aeedb09d406aa");
+            var SecondBlessingSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("b7ce4a67287cda746a59b31c042305cf");
+            var OwlcatCommunityBlessing = Resources.GetBlueprintReference<BlueprintFeatureReference>("36fcd6ca7e279874d9197f38501f0e93");
 
             var CommunityDomainAllowed = Resources.GetBlueprintReference<BlueprintFeatureReference>("c87004460f3328c408d22c5ead05291f");
             var WarpriestClass = Resources.GetBlueprintReference<BlueprintCharacterClassReference>("30b5e47d47a0e37438cc5a80c96cfb99");
@@ -539,7 +545,6 @@ namespace ExpandedContent.Tweaks.Blessings {
                 });
                 bp.Groups = new FeatureGroup[] { FeatureGroup.WarpriestBlessing };
             });
-            BlessingTools.RegisterBlessing(CommunityBlessingFeature);
             BlessingTools.CreateDivineTrackerBlessing("DivineTrackerCommunityBlessingFeature", CommunityBlessingFeature, "At 1st level, you can touch an ally and grant it the blessing of community. For the next minute, whenever that ally uses the aid another action, the bonus granted increases by 2. You can instead use this ability on yourself as a swift action. \nAt 13th level, you can rally your allies to fight together. For 1 minute, whenever you make a successful melee or ranged attack against a foe, allies within 10 feet of you gain a +2 insight bonus on attacks of the same type you made against that foe—melee attacks if you made a melee attack, or ranged attacks if you made a ranged attack. If you score a critical hit, this bonus increases to +4 until the start of your next turn.");
 
             //Added in ModSupport
@@ -569,6 +574,13 @@ namespace ExpandedContent.Tweaks.Blessings {
                 });                
             });
             CommunityBlessingFeature.IsPrerequisiteFor = new List<BlueprintFeatureReference>() { QuickenBlessingCommunityFeature.ToReference<BlueprintFeatureReference>() };
+
+            if (ModSettings.AddedContent.Miscellaneous.IsDisabled("Community Blessing Rework")) { return; }
+
+            BlessingSelection.m_AllFeatures = BlessingSelection.m_AllFeatures.RemoveFromArray(OwlcatCommunityBlessing);
+            SecondBlessingSelection.m_AllFeatures = SecondBlessingSelection.m_AllFeatures.RemoveFromArray(OwlcatCommunityBlessing);
+            BlessingTools.RegisterBlessing(CommunityBlessingFeature);
+
         }
     }
 }

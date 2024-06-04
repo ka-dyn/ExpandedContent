@@ -58,6 +58,7 @@ namespace ExpandedContent.Tweaks.FourHorsemen {
                 bp.SetDisallowedArchetype(DreadKnightClass, ClawOfTheFalseWyrmArchetype);
                 bp.DisallowAngelfireApostle();
                 bp.DisallowDarkSister();
+                bp.MagicDeceiverLock();
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
                 bp.AddComponent<PrerequisiteAlignment>(c => {
                     c.Alignment = AlignmentMaskType.TrueNeutral | AlignmentMaskType.LawfulEvil | AlignmentMaskType.NeutralEvil | AlignmentMaskType.ChaoticEvil;

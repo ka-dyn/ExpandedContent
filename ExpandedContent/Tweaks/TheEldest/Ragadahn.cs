@@ -64,6 +64,7 @@ namespace ExpandedContent.Tweaks.TheEldest {
                 bp.SetDisallowedArchetype(DreadKnightClass, ClawOfTheFalseWyrmArchetype);
                 bp.DisallowAngelfireApostle();
                 bp.DisallowDarkSister();
+                bp.MagicDeceiverLock();
 
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
                 bp.AddComponent<PrerequisiteAlignment>(c => {

@@ -237,5 +237,15 @@ namespace ExpandedContent.Utilities {
                 c.Not = false;
             });
         }
+        public static void MagicDeceiverLock(this BlueprintFeature deity) {
+            BlueprintProgression LivingGodProgression = Resources.GetBlueprint<BlueprintProgression>("464ffaf88140474a949618bec7955e78");
+            BlueprintProgression RazmiriInfiltratorProgression = Resources.GetBlueprint<BlueprintProgression>("cd96109ca30b45dcb6d7390945c8487d");
+            deity.AddComponent<PrerequisiteNoFeature>(c => {
+                c.m_Feature = LivingGodProgression.ToReference<BlueprintFeatureReference>();
+            });
+            deity.AddComponent<PrerequisiteNoFeature>(c => {
+                c.m_Feature = RazmiriInfiltratorProgression.ToReference<BlueprintFeatureReference>();
+            });
+        }
     }
 }

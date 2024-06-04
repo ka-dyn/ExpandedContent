@@ -66,6 +66,7 @@ namespace ExpandedContent.Tweaks.Deities {
                 bp.SetDisallowedArchetype(InquistorClass, SwornOfTheEldestArchetype);
                 bp.DisallowAngelfireApostle();
                 bp.DisallowDarkSister();
+                bp.MagicDeceiverLock();
 
 
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };

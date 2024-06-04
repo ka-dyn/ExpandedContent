@@ -29,10 +29,16 @@ using ExpandedContent.Tweaks.Components;
 using Kingmaker.UnitLogic.ActivatableAbilities;
 using TabletopTweaks.Core.NewComponents;
 using Kingmaker.UnitLogic.Mechanics.Properties;
+using Kingmaker.Blueprints.Classes.Selection;
+using ExpandedContent.Config;
 
 namespace ExpandedContent.Tweaks.Blessings {
     internal class ArtificeBlessing {
         public static void AddArtificeBlessing() {
+
+            var BlessingSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("6d9dcc2a59210a14891aeedb09d406aa");
+            var SecondBlessingSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("b7ce4a67287cda746a59b31c042305cf");
+            var OwlcatArtificeBlessing = Resources.GetBlueprintReference<BlueprintFeatureReference>("04e5d412a7b94f809a28607618b71619");
 
             var ArtificeDomainAllowed = Resources.GetBlueprintReference<BlueprintFeatureReference>("9656b1c7214180f4b9a6ab56f83b92fb");
             var WarpriestClass = Resources.GetBlueprintReference<BlueprintCharacterClassReference>("30b5e47d47a0e37438cc5a80c96cfb99");
@@ -238,7 +244,6 @@ namespace ExpandedContent.Tweaks.Blessings {
                 });
                 bp.Groups = new FeatureGroup[] { FeatureGroup.WarpriestBlessing };
             });
-            BlessingTools.RegisterBlessing(ArtificeBlessingFeature);
             BlessingTools.CreateDivineTrackerBlessing("DivineTrackerArtificeBlessingFeature", ArtificeBlessingFeature, "At 1st level, you can touch an ally and grant them greater power to harm and destroy crafted objects. For 1 minute, whenever this ally deals damage to constructs or objects with melee weapons, they bypasses hardness and damage reduction. \nAt 13th level, you can temporarily copy a weapon enchantment from one weapon to another. You may copy any simple permanent enchant from a weapon you have currently equipped. If you are using this ability on a double weapon, only one end of the double weapon is affected. The copy lasts for 1 minute. You can use this ability multiple times on the same weapon. \nSome examples of simple enchants are, Icy Burst, Holy, Keen, Speed.");
 
             //Added in ModSupport
@@ -362,6 +367,11 @@ namespace ExpandedContent.Tweaks.Blessings {
 
             #endregion
 
+            if (ModSettings.AddedContent.Miscellaneous.IsDisabled("Atifice Blessing Rework")) { return; }
+
+            BlessingSelection.m_AllFeatures = BlessingSelection.m_AllFeatures.RemoveFromArray(OwlcatArtificeBlessing);
+            SecondBlessingSelection.m_AllFeatures = SecondBlessingSelection.m_AllFeatures.RemoveFromArray(OwlcatArtificeBlessing);
+            BlessingTools.RegisterBlessing(ArtificeBlessingFeature);
 
         }
 

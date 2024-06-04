@@ -59,6 +59,7 @@ namespace ExpandedContent.Tweaks.Deities {
                 bp.SetDisallowedArchetype(InquistorClass, SwornOfTheEldestArchetype);
                 bp.DisallowDarkSister();
                 bp.DisallowProphetOfPestilence();
+                bp.MagicDeceiverLock();
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
                 bp.AddComponent<PrerequisiteAlignment>(c => {
                     c.Alignment = AlignmentMaskType.NeutralGood | AlignmentMaskType.ChaoticGood | AlignmentMaskType.ChaoticNeutral;

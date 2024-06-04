@@ -60,6 +60,7 @@ namespace ExpandedContent.Tweaks.Monitors {
                 bp.DisallowAngelfireApostle();
                 bp.DisallowDarkSister();
                 bp.DisallowProphetOfPestilence();
+                bp.MagicDeceiverLock();
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
                 bp.AddComponent<PrerequisiteAlignment>(c => {
                     c.Alignment = AlignmentMaskType.ChaoticGood | AlignmentMaskType.TrueNeutral | AlignmentMaskType.ChaoticNeutral | AlignmentMaskType.ChaoticEvil;

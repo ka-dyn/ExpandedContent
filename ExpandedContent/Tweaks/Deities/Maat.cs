@@ -69,6 +69,7 @@ namespace ExpandedContent.Tweaks.Deities {
                 bp.DisallowAngelfireApostle();
                 bp.DisallowDarkSister();
                 bp.DisallowProphetOfPestilence();
+                bp.MagicDeceiverLock();
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
                 bp.AddComponent<PrerequisiteAlignment>(c => {
                     c.Alignment = AlignmentMaskType.LawfulGood | AlignmentMaskType.LawfulNeutral | AlignmentMaskType.TrueNeutral | AlignmentMaskType.LawfulEvil;

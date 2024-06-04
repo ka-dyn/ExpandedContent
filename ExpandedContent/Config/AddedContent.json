@@ -509,6 +509,16 @@
         "Enabled": true,
         "Homebrew": false,
         "Description": "Adds the Aid Another feature from the tabletop, this toggle will also disable features and feats relating to the Aid Another feature."
+      },
+      "Artifice Blessing Rework": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Replaces the Artifice Blessing added by Owlcat with the Blessing from the tabletop game."
+      },
+      "Community Blessing Rework": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Replaces the Community Blessing added by Owlcat with the Blessing from the tabletop game."
       }
     },
     "IsExpanded": false

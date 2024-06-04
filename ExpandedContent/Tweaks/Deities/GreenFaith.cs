@@ -45,7 +45,6 @@ namespace ExpandedContent.Tweaks.Deities {
                         "multicolored birds, which flew off in all directions. The faction leaders saw this as a clear sign from nature that no one element " +
                         "could be more important than another, and that ultimately, the four factions shared the same basic philosophy.");
                     GreenFaithFeature.m_Icon = GreenFaithIcon;
-                    GreenFaithFeature.RemoveComponents<PrerequisiteNoFeature>();
             GreenFaithFeature.SetAllowedDomains(
                     DeityTools.SeparatistDomainAllowed.AgathionDomainAllowedSeparatist,//Good
                     DeityTools.SeparatistDomainAllowed.ArchonDomainGoodAllowedSeparatist,//Good
