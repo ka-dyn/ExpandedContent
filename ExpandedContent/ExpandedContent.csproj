@@ -245,6 +245,7 @@
     <Compile Include="Tweaks\Components\IgnoreDamageReductionOnAttackRangeType.cs" />
     <Compile Include="Tweaks\Components\CheckWeaponEnchant.cs" />
     <Compile Include="Tweaks\Components\AbilityCasterOffHandWeaponCheck.cs" />
+    <Compile Include="Tweaks\Components\IncomingSpellResistanceSkip.cs" />
     <Compile Include="Tweaks\Components\ManeuverContextBonus.cs" />
     <Compile Include="Tweaks\Components\MaxCastingAttributeWithArchetypeGetter.cs" />
     <Compile Include="Tweaks\Components\LearnDomainSpell.cs" />
@@ -254,6 +255,7 @@
     <Compile Include="Tweaks\Components\ACBonusAgainstNotCaster.cs" />
     <Compile Include="Tweaks\Components\AttackBonusAgainstNotCaster.cs" />
     <Compile Include="Tweaks\Components\SavingThrowAgainstCaster.cs" />
+    <Compile Include="Tweaks\Components\SpellResistanceCheckResponse.cs" />
     <Compile Include="Tweaks\Components\WeaponMultipleCategoriesContextAttackBonus.cs" />
     <Compile Include="Tweaks\Components\WeaponTypeContextDamageBonus.cs" />
     <Compile Include="Tweaks\ContentAdder.cs" />
@@ -423,6 +425,7 @@
     <Compile Include="Tweaks\Miscellaneous\DrakePetTypeAdder.cs" />
     <Compile Include="Tweaks\Miscellaneous\DemonHunter.cs" />
     <Compile Include="Tweaks\Miscellaneous\LazyLocker.cs" />
+    <Compile Include="Tweaks\Miscellaneous\MountPatches\GoldDragonMountPatch .cs" />
     <Compile Include="Tweaks\Miscellaneous\MountPatches\UmbralDragonMountPatch.cs" />
     <Compile Include="Tweaks\Miscellaneous\MountPatches\SilverDragonMountPatch.cs" />
     <Compile Include="Tweaks\Miscellaneous\MountPatches\CopperDragonMountPatch.cs" />

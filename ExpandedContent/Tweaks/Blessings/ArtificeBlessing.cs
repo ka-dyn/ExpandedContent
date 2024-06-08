@@ -367,7 +367,7 @@ namespace ExpandedContent.Tweaks.Blessings {
 
             #endregion
 
-            if (ModSettings.AddedContent.Miscellaneous.IsDisabled("Atifice Blessing Rework")) { return; }
+            if (ModSettings.AddedContent.Miscellaneous.IsDisabled("Artifice Blessing Rework")) { return; }
 
             BlessingSelection.m_AllFeatures = BlessingSelection.m_AllFeatures.RemoveFromArray(OwlcatArtificeBlessing);
             SecondBlessingSelection.m_AllFeatures = SecondBlessingSelection.m_AllFeatures.RemoveFromArray(OwlcatArtificeBlessing);

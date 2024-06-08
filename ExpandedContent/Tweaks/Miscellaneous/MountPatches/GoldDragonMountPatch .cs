@@ -16,19 +16,19 @@ using UnityEngine;
 namespace ExpandedContent.Tweaks.Miscellaneous.MountPatches {
     
     [HarmonyPatch(typeof(OwlcatModificationsManager), nameof(OwlcatModificationsManager.OnResourceLoaded))]
-    public static class PatchBrassDragonOnLoad {
+    public static class PatchGoldDragonOnLoad {
 
         [HarmonyPrefix]
         public static void Prefix(object resource, string guid) {
-            if (guid != "a761d5a5b6b439645b99ca6da4ae26d6")  //Brass Dragon
+            if (guid != "54b46b9ae1e75cd42a40342fc2e753b5")  //Gold Dragons
                 return;
             if (resource is UnitEntityView view) {
-                Main.Log("Starting Brass Drake Mount Patch");
-                PatchBrassDragonAsset(view);
-                Main.Log("Finished Brass Drake Mount Patch");
+                Main.Log("Starting Gold Drake Mount Patch");
+                PatchGoldDragonAsset(view);
+                Main.Log("Finished Gold Drake Mount Patch");
             }
         }
-        public static void PatchBrassDragonAsset(UnitEntityView view) {
+        public static void PatchGoldDragonAsset(UnitEntityView view) {
             var offsets = view.gameObject.AddComponent<MountOffsets>();
             #region Base Config
             offsets.Root = view.Pelvis.FindChildRecursive("Locator_Torso_Upper_01");
@@ -62,7 +62,7 @@ namespace ExpandedContent.Tweaks.Miscellaneous.MountPatches {
             #endregion
             #region Medium Config
             var MediumOffsetConfig = ScriptableObject.CreateInstance<RaceMountOffsetsConfig>();
-            MediumOffsetConfig.name = "MediumBrassDragon_MountConfig";
+            MediumOffsetConfig.name = "MediumGoldDragon_MountConfig";
             MediumOffsetConfig.offsets = new RaceMountOffsetsConfig.MountOffsetData[] {
                 //Normal
                 new RaceMountOffsetsConfig.MountOffsetData() {
@@ -322,7 +322,7 @@ namespace ExpandedContent.Tweaks.Miscellaneous.MountPatches {
             #endregion
             #region Large Config
             var LargeOffsetConfig = ScriptableObject.CreateInstance<RaceMountOffsetsConfig>();
-            LargeOffsetConfig.name = "LargeBrassDragon_MountConfig";
+            LargeOffsetConfig.name = "LargeGoldDragon_MountConfig";
             LargeOffsetConfig.offsets = new RaceMountOffsetsConfig.MountOffsetData[] {
                 //Normal -DONE
                 new RaceMountOffsetsConfig.MountOffsetData() {
@@ -582,7 +582,7 @@ namespace ExpandedContent.Tweaks.Miscellaneous.MountPatches {
             #endregion
             #region Huge Config
             var HugeOffsetConfig = ScriptableObject.CreateInstance<RaceMountOffsetsConfig>();
-            HugeOffsetConfig.name = "HugeBrassDragon_MountConfig";
+            HugeOffsetConfig.name = "HugeGoldDragon_MountConfig";
             HugeOffsetConfig.offsets = new RaceMountOffsetsConfig.MountOffsetData[] {
                 //Normal -DONE
                 new RaceMountOffsetsConfig.MountOffsetData() {
