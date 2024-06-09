@@ -139,7 +139,7 @@ namespace ExpandedContent.Tweaks {
                 Spells.BloodMist.AddBloodMist();
                 Spells.KingsCastle.AddKingsCastle();
                 Spells.Moonstruck.AddMoonstruck();
-
+                Spells.UmbralWeapon.AddUmbralWeapon();
 
                 Miscellaneous.AlchemistDiscoveries.MutagenDiscovery.AddMutagenDiscovery();
                 Miscellaneous.AlchemistDiscoveries.MindchemistSkillDiscovery.AddMindchemistSkillDiscovery();
