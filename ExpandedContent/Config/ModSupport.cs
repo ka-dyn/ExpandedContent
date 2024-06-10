@@ -723,15 +723,19 @@ namespace ExpandedContent.Config {
                     PatchTTTQuickenBlessingPrerequisites("f5ffcbdc36384c44b6e795fc77b63639", "a8e7abcad0cf8384b9f12c3b075b5cae", "DivineTrackerTrickeryBlessingFeature");
                     PatchTTTQuickenBlessingPrerequisites("3a68affde38845c08b255a3c571f3777", "0f457943bb99f9b48b709c90bfc0467e", "DivineTrackerWaterBlessingFeature");
                     PatchTTTQuickenBlessingPrerequisites("2dc4120954184ba49d142e2ed29c9b55", "4172d92c598de1d47aa2c0dd51c05e24", "DivineTrackerWeatherBlessingFeature");
-                    //NEED TO ADD THE NEW ONES AFTER TTT DOES
-                    //War
-                    //Plant
+                    //new ones
+                    PatchTTTQuickenBlessingPrerequisites("7edeb0ae9dee4320b5d6bfdca526cf55", "4cd28bbb761f490fa418d471383e38c7", "DivineTrackerPlantBlessingFeature");
+                    PatchTTTQuickenBlessingPrerequisites("874c472db4684f3bab936aac86a30643", "2097edd687ff4cdeb33872c048599fc1", "DivineTrackerWarBlessingFeature");
+                    PatchTTTQuickenBlessingPrerequisites("cfce7f2de08a47b99bd1daff0364d408", "516bc13e0e76a834bb3a4c3e3d01c0cf", "DivineTrackerCharmBlessingFeature");
+                    PatchTTTQuickenBlessingPrerequisites("82917a02493c4ca5aef86eb0750782bc", "d082055b649b44c1880442a98f384556", "DivineTrackerGloryBlessingFeature");
+                    PatchTTTQuickenBlessingPrerequisites("fd11c9155cbc489691c96e07b8f845ae", "1585a2eec1984d1496ce03021cfa9738", "DivineTrackerKnowledgeBlessingFeature");
+                    PatchTTTQuickenBlessingPrerequisites("40b743a82ccc47a189eea8e0638e236b", "f76713cc1768432cab0d6352f030519d", "DivineTrackerRuneBlessingFeature");
 
 
-                    var newquickenblessings = new BlueprintFeature[] {//These were added by Owlcat, keeping Artifice and Community though
+                    var newquickenblessings = new BlueprintFeature[] {//*These were added by Owlcat, keeping Artifice and Community though
                         Resources.GetModBlueprint<BlueprintFeature>("QuickenBlessingArtificeFeature"),
-                        //Resources.GetModBlueprint<BlueprintFeature>("QuickenBlessingWarFeature"),
-                        //Resources.GetModBlueprint<BlueprintFeature>("QuickenBlessingPlantFeature"),
+                        //*Resources.GetModBlueprint<BlueprintFeature>("QuickenBlessingWarFeature"),
+                        //*Resources.GetModBlueprint<BlueprintFeature>("QuickenBlessingPlantFeature"),
                         Resources.GetModBlueprint<BlueprintFeature>("QuickenBlessingCommunityFeature")
                     };
                     foreach (var newquickenblessing in newquickenblessings) {
@@ -739,6 +743,13 @@ namespace ExpandedContent.Config {
                         QuickenBlessing.m_Features = QuickenBlessing.m_Features.AppendToArray(newquickenblessing.ToReference<BlueprintFeatureReference>());
                     }
                     //Remove the TTT Artifice and Community options from quicken
+                    var TTTQuickenBlessingArtificeFeature = Resources.GetBlueprintReference<BlueprintFeatureReference>("");
+                    var TTTQuickenBlessingCommunityFeature = Resources.GetBlueprintReference<BlueprintFeatureReference>("");
+
+                    QuickenBlessing.m_AllFeatures = QuickenBlessing.m_AllFeatures.RemoveFromArray(TTTQuickenBlessingArtificeFeature);
+                    QuickenBlessing.m_Features = QuickenBlessing.m_Features.RemoveFromArray(TTTQuickenBlessingArtificeFeature);
+                    QuickenBlessing.m_AllFeatures = QuickenBlessing.m_AllFeatures.RemoveFromArray(TTTQuickenBlessingCommunityFeature);
+                    QuickenBlessing.m_Features = QuickenBlessing.m_Features.RemoveFromArray(TTTQuickenBlessingCommunityFeature);
 
                     #endregion
                     #region God load order stuff

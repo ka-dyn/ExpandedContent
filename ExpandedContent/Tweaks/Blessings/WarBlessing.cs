@@ -29,7 +29,7 @@ using Kingmaker.UnitLogic.ActivatableAbilities;
 using TabletopTweaks.Core.NewComponents;
 
 namespace ExpandedContent.Tweaks.Blessings {
-    internal class WarBlessing {
+    internal class WarBlessing {//Retired post DLC6
         public static void AddWarBlessing() {
 
             var WarDomainAllowed = Resources.GetBlueprintReference<BlueprintFeatureReference>("3795653d6d3b291418164b27be88cb43");
