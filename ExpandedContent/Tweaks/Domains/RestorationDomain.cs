@@ -47,6 +47,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     IncreasedByStat = true,
                     ResourceBonusStat = StatType.Wisdom,
                 };
+                bp.IsDomainAbility = true;
             });
             
             var RestorationDomainBaseAbility = Helpers.CreateBlueprint<BlueprintAbility>("RestorationDomainBaseAbility", bp => {
@@ -70,6 +71,7 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.HasFastAnimation = false;
                 bp.ActionType = UnitCommand.CommandType.Standard;
                 bp.AvailableMetamagic = 0;
+                bp.IsDomainAbility = true;
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
@@ -150,6 +152,7 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.HasFastAnimation = false;
                 bp.ActionType = UnitCommand.CommandType.Standard;
                 bp.AvailableMetamagic = 0;
+                bp.IsDomainAbility = true;
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
@@ -230,6 +233,7 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.HasFastAnimation = false;
                 bp.ActionType = UnitCommand.CommandType.Standard;
                 bp.AvailableMetamagic = 0;
+                bp.IsDomainAbility = true;
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
@@ -310,6 +314,7 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.HasFastAnimation = false;
                 bp.ActionType = UnitCommand.CommandType.Standard;
                 bp.AvailableMetamagic = 0;
+                bp.IsDomainAbility = true;
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
@@ -390,6 +395,7 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.HasFastAnimation = false;
                 bp.ActionType = UnitCommand.CommandType.Standard;
                 bp.AvailableMetamagic = 0;
+                bp.IsDomainAbility = true;
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
@@ -470,6 +476,7 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.HasFastAnimation = false;
                 bp.ActionType = UnitCommand.CommandType.Standard;
                 bp.AvailableMetamagic = 0;
+                bp.IsDomainAbility = true;
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
@@ -756,6 +763,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     IncreasedByStat = true,
                     ResourceBonusStat = StatType.Wisdom,
                 };
+                bp.IsDomainAbility = true;
             });
 
             var RestorationDomainBaseAbilitySeparatist = Helpers.CreateBlueprint<BlueprintAbility>("RestorationDomainBaseAbilitySeparatist", bp => {
@@ -779,6 +787,7 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.HasFastAnimation = false;
                 bp.ActionType = UnitCommand.CommandType.Standard;
                 bp.AvailableMetamagic = 0;
+                bp.IsDomainAbility = true;
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
@@ -859,6 +868,7 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.HasFastAnimation = false;
                 bp.ActionType = UnitCommand.CommandType.Standard;
                 bp.AvailableMetamagic = 0;
+                bp.IsDomainAbility = true;
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
@@ -939,6 +949,7 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.HasFastAnimation = false;
                 bp.ActionType = UnitCommand.CommandType.Standard;
                 bp.AvailableMetamagic = 0;
+                bp.IsDomainAbility = true;
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
@@ -1019,6 +1030,7 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.HasFastAnimation = false;
                 bp.ActionType = UnitCommand.CommandType.Standard;
                 bp.AvailableMetamagic = 0;
+                bp.IsDomainAbility = true;
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
@@ -1099,6 +1111,7 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.HasFastAnimation = false;
                 bp.ActionType = UnitCommand.CommandType.Standard;
                 bp.AvailableMetamagic = 0;
+                bp.IsDomainAbility = true;
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
@@ -1179,6 +1192,7 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.HasFastAnimation = false;
                 bp.ActionType = UnitCommand.CommandType.Standard;
                 bp.AvailableMetamagic = 0;
+                bp.IsDomainAbility = true;
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });

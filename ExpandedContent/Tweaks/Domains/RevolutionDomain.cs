@@ -139,6 +139,7 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
                 bp.ActionType = UnitCommand.CommandType.Free;
                 bp.AvailableMetamagic = Metamagic.Quicken | Metamagic.Extend | Metamagic.Heighten | Metamagic.Reach;
+                bp.IsDomainAbility = true;
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
                 
@@ -263,7 +264,6 @@ namespace ExpandedContent.Tweaks.Domains {
                     c.Skill = StatType.SkillPersuasion;
                 });
                 bp.m_AllowNonContextActions = false;
-                bp.SetName("Revolution Subdomain");
                 bp.SetName("Revolution Subdomain");
                 bp.SetDescription("\nYou are a beacon of revolution inspiring your allies to fight well and all foes to relent.\nYou have the ability to ignore impediments to your {g|Encyclopedia:Mobility}mobility{/g}. " +
                     "For a number of {g|Encyclopedia:Combat_Round}rounds{/g} per day equal to your level in the class that gave you access to this domain, you can move normally regardless of magical effects that " +
@@ -497,6 +497,7 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
                 bp.ActionType = UnitCommand.CommandType.Free;
                 bp.AvailableMetamagic = Metamagic.Quicken | Metamagic.Extend | Metamagic.Heighten | Metamagic.Reach;
+                bp.IsDomainAbility = true;
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
 

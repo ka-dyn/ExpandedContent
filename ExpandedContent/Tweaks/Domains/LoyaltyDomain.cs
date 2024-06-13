@@ -46,6 +46,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     IncreasedByStat = true,
                     ResourceBonusStat = StatType.Wisdom,
                 };
+                bp.IsDomainAbility = true;
             });
 
             var LoyaltyDomainBaseBuff = Helpers.CreateBuff("LoyaltyDomainBaseBuff", bp => {
@@ -107,6 +108,7 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.HasFastAnimation = false;
                 bp.ActionType = UnitCommand.CommandType.Standard;
                 bp.AvailableMetamagic = 0;
+                bp.IsDomainAbility = true;
                 bp.LocalizedDuration = Helpers.CreateString("LoyaltyDomainBaseAbility.Duration", "1 hour");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
@@ -394,6 +396,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     IncreasedByStat = true,
                     ResourceBonusStat = StatType.Wisdom,
                 };
+                bp.IsDomainAbility = true;
             });
 
             var LoyaltyDomainBaseAbilitySeparatist = Helpers.CreateBlueprint<BlueprintAbility>("LoyaltyDomainBaseAbilitySeparatist", bp => {
@@ -443,6 +446,7 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.HasFastAnimation = false;
                 bp.ActionType = UnitCommand.CommandType.Standard;
                 bp.AvailableMetamagic = 0;
+                bp.IsDomainAbility = true;
                 bp.LocalizedDuration = Helpers.CreateString("LoyaltyDomainBaseAbilitySeparatist.Duration", "1 hour");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });

@@ -78,6 +78,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     IncreasedByStat = true,
                     ResourceBonusStat = StatType.Wisdom,
                 };
+                bp.IsDomainAbility = true;
             });
             var PlantDomainNewBaseResourceSeparatist = Helpers.CreateBlueprint<BlueprintAbilityResource>("PlantDomainNewBaseResourceSeparatist", bp => {
                 bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
@@ -86,6 +87,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     IncreasedByStat = true,
                     ResourceBonusStat = StatType.Wisdom,
                 };
+                bp.IsDomainAbility = true;
             });
 
             var PlantDomainNewBaseBuff = Helpers.CreateBuff("PlantDomainNewBaseBuff", bp => {

@@ -43,7 +43,7 @@ namespace ExpandedContent.Tweaks.Domains {
             //ThieveryDomainGreaterBuff
             var ThieveryDomainGreaterBuff = Helpers.CreateBuff("ThieveryDomainGreaterBuff", bp => {
                 bp.SetName("Thief of the Gods");
-                bp.SetDescription("At 8th level, you can make grant yourself the ability to roll twice on any {g|Encyclopedia:Trickery}trickery{/g} skill check, this abilities effect lasts until used " +
+                bp.SetDescription("At 8th level, you can grant yourself the ability to roll twice on any {g|Encyclopedia:Trickery}trickery{/g} skill check, this abilities effect lasts until used " +
                     "then dispels itself. You can use this ability once per day at 8th level, plus one additional time per day for every 2 levels beyond 8th.");
                 bp.m_Icon = SkillFocusThievery.m_Icon;
                 bp.AddComponent<ModifyD20>(c => {
@@ -102,7 +102,7 @@ namespace ExpandedContent.Tweaks.Domains {
             //ThieveryDomainGreaterAbility
             var ThieveryDomainGreaterAbility = Helpers.CreateBlueprint<BlueprintAbility>("ThieveryDomainGreaterAbility", bp => {
                 bp.SetName("Thief of the Gods");
-                bp.SetDescription("At 8th level, you can make grant yourself the ability to roll twice on any {g|Encyclopedia:Trickery}trickery{/g} skill check, this abilities effect lasts until used " +
+                bp.SetDescription("At 8th level, you can grant yourself the ability to roll twice on any {g|Encyclopedia:Trickery}trickery{/g} skill check, this abilities effect lasts until used " +
                     "then dispels itself. You can use this ability once per day at 8th level, plus one additional time per day for every 2 levels beyond 8th.");
                 bp.m_Icon = SkillFocusThievery.Icon;
                 bp.AddComponent<SpellComponent>(c => {
@@ -138,6 +138,7 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
                 bp.ActionType = UnitCommand.CommandType.Free;
                 bp.AvailableMetamagic = Metamagic.Quicken | Metamagic.Extend | Metamagic.Heighten | Metamagic.Reach;
+                bp.IsDomainAbility = true;
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
                 
@@ -145,7 +146,7 @@ namespace ExpandedContent.Tweaks.Domains {
             //ThieveryDomainGreaterFeature
             var ThieveryDomainGreaterFeature = Helpers.CreateBlueprint<BlueprintFeature>("ThieveryDomainGreaterFeature", bp => {
                 bp.SetName("Thief of the Gods");
-                bp.SetDescription("At 8th level, you can make grant yourself the ability to roll twice on any {g|Encyclopedia:Trickery}trickery{/g} skill check, this abilities effect lasts until used " +
+                bp.SetDescription("At 8th level, you can grant yourself the ability to roll twice on any {g|Encyclopedia:Trickery}trickery{/g} skill check, this abilities effect lasts until used " +
                     "then dispels itself. You can use this ability once per day at 8th level, plus one additional time per day for every 2 levels beyond 8th.");
                 bp.m_Icon = SkillFocusThievery.Icon;
                 bp.AddComponent<AddAbilityResources>(c => {
@@ -466,7 +467,7 @@ namespace ExpandedContent.Tweaks.Domains {
 
             var ThieveryDomainGreaterAbilitySeparatist = Helpers.CreateBlueprint<BlueprintAbility>("ThieveryDomainGreaterAbilitySeparatist", bp => {
                 bp.SetName("Thief of the Gods");
-                bp.SetDescription("At 8th level, you can make grant yourself the ability to roll twice on any {g|Encyclopedia:Trickery}trickery{/g} skill check, this abilities effect lasts until used " +
+                bp.SetDescription("At 8th level, you can grant yourself the ability to roll twice on any {g|Encyclopedia:Trickery}trickery{/g} skill check, this abilities effect lasts until used " +
                     "then dispels itself. You can use this ability once per day at 8th level, plus one additional time per day for every 2 levels beyond 8th.");
                 bp.m_Icon = SkillFocusThievery.Icon;
                 bp.AddComponent<SpellComponent>(c => {
@@ -502,6 +503,7 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
                 bp.ActionType = UnitCommand.CommandType.Free;
                 bp.AvailableMetamagic = Metamagic.Quicken | Metamagic.Extend | Metamagic.Heighten | Metamagic.Reach;
+                bp.IsDomainAbility = true;
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
