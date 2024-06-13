@@ -46,6 +46,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     IncreasedByStat = true,
                     ResourceBonusStat = StatType.Wisdom,
                 };
+                bp.IsDomainAbility = true;
             });
 
             var FerocityDomainBaseBuff = Helpers.CreateBuff("FerocityDomainBaseBuff", bp => {
@@ -119,6 +120,7 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.HasFastAnimation = false;
                 bp.ActionType = UnitCommand.CommandType.Swift;
                 bp.AvailableMetamagic = 0;
+                bp.IsDomainAbility = true;
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
@@ -392,6 +394,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     IncreasedByStat = true,
                     ResourceBonusStat = StatType.Wisdom,
                 };
+                bp.IsDomainAbility = true;
             });
 
             var FerocityDomainBaseBuffSeparatist = Helpers.CreateBuff("FerocityDomainBaseBuffSeparatist", bp => {
@@ -491,6 +494,7 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.HasFastAnimation = false;
                 bp.ActionType = UnitCommand.CommandType.Swift;
                 bp.AvailableMetamagic = 0;
+                bp.IsDomainAbility = true;
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });

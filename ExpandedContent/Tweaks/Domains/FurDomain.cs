@@ -163,6 +163,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     IncreasedByStat = true,
                     ResourceBonusStat = StatType.Wisdom,
                 };
+                bp.IsDomainAbility = true;
             });
 
 
@@ -205,6 +206,7 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Self;
                 bp.ActionType = UnitCommand.CommandType.Swift;
                 bp.AvailableMetamagic = Metamagic.Extend;
+                bp.IsDomainAbility = true;
                 bp.LocalizedDuration = Helpers.CreateString("FurDomainBaseAbility.Duration", "1 round");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
@@ -620,6 +622,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     IncreasedByStat = true,
                     ResourceBonusStat = StatType.Wisdom,
                 };
+                bp.IsDomainAbility = true;
             });
 
             var SeparatistWithDruidAsIsProperty = Resources.GetModBlueprint<BlueprintUnitProperty>("SeparatistWithDruidAsIsProperty");
@@ -700,6 +703,7 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Self;
                 bp.ActionType = UnitCommand.CommandType.Swift;
                 bp.AvailableMetamagic = Metamagic.Extend;
+                bp.IsDomainAbility = true;
                 bp.LocalizedDuration = Helpers.CreateString("FurDomainBaseAbilitySeparatist.Duration", "1 round");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });

@@ -302,6 +302,7 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.BreathWeapon;
                 bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Extend | Metamagic.Heighten | Metamagic.Selective | Metamagic.Bolstered;
+                bp.IsDomainAbility = true;
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
@@ -460,6 +461,7 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.BreathWeapon;
                 bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Extend | Metamagic.Heighten | Metamagic.Selective | Metamagic.Bolstered;
+                bp.IsDomainAbility = true;
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
@@ -618,6 +620,7 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.BreathWeapon;
                 bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Extend | Metamagic.Heighten | Metamagic.Selective | Metamagic.Bolstered;
+                bp.IsDomainAbility = true;
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
@@ -776,6 +779,7 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.BreathWeapon;
                 bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Extend | Metamagic.Heighten | Metamagic.Selective | Metamagic.Bolstered;
+                bp.IsDomainAbility = true;
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
@@ -899,6 +903,7 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.BreathWeapon;
                 bp.ActionType = UnitCommand.CommandType.Standard;
                 bp.AvailableMetamagic = Metamagic.Quicken;
+                bp.IsDomainAbility = true;
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             }); 
@@ -1274,6 +1279,7 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.BreathWeapon;
                 bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Extend | Metamagic.Heighten | Metamagic.Selective | Metamagic.Bolstered;
+                bp.IsDomainAbility = true;
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
@@ -1432,6 +1438,7 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.BreathWeapon;
                 bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Extend | Metamagic.Heighten | Metamagic.Selective | Metamagic.Bolstered;
+                bp.IsDomainAbility = true;
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
@@ -1590,6 +1597,7 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.BreathWeapon;
                 bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Extend | Metamagic.Heighten | Metamagic.Selective | Metamagic.Bolstered;
+                bp.IsDomainAbility = true;
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
@@ -1748,6 +1756,7 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.BreathWeapon;
                 bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Extend | Metamagic.Heighten | Metamagic.Selective | Metamagic.Bolstered;
+                bp.IsDomainAbility = true;
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
@@ -1861,6 +1870,7 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.BreathWeapon;
                 bp.ActionType = UnitCommand.CommandType.Standard;
                 bp.AvailableMetamagic = Metamagic.Quicken;
+                bp.IsDomainAbility = true;
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });

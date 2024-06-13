@@ -3417,7 +3417,19 @@
     "TouchoftheMoonSeriousWoundsBuff": "2639f791-df36-4e70-b3ae-0fba2b6d73f7",
 
     "BlessingDCProperty": "f70ad426-7491-4654-bf2d-edbcb7885c23",
-    "LazyLockerFeature": "62b23344-6e5f-4540-bd56-0e13d3b20480"
+    "DivineTrackerCharmBlessingFeature": "b6167a9f-1de7-4a8e-8d10-47850d36a425",
+    "DivineTrackerGloryBlessingFeature": "6eb3a69a-4f1b-4291-b176-15935c4871bc",
+    "DivineTrackerKnowledgeBlessingFeature": "2a6077ad-9260-406a-9334-13395e718e65",
+    "DivineTrackerRuneBlessingFeature": "6c4582c4-b34a-4740-8c62-40abe591331b",
+    "FormOfTheExoticDragonAbility": "93ab15fa-626c-4d2e-b111-a9b0def805b6",
+    "FormOfTheExoticDragonAbilityCragLinnorm": "7c09448e-c7d5-43e0-96cd-c66e1ee2c1b1",
+    "FormOfTheExoticDragonAbilityHavoc": "ed23af63-fe85-4e72-88e8-7b594d141ba2",
+    "FormOfTheExoticDragonAbilityUmbral": "a62956dd-029f-4b81-86a9-d5584c818534",
+    "FormOfTheExoticDragonBuffCragLinnorm": "5b31921e-c4e7-4c35-ac2e-017217b3c31b",
+    "FormOfTheExoticDragonBuffHavoc": "8d32249d-8e8f-4eae-b645-114656a5bc09",
+    "FormOfTheExoticDragonBuffUmbral": "1fee2431-0355-49a6-92b1-242ce790dcdd",
+    "LazyLockerFeature": "62b23344-6e5f-4540-bd56-0e13d3b20480",
+    "VampirismCurseNoProgression": "a9b2f7ef-4a70-447d-8a33-e73499104077"
 
 
 

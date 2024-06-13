@@ -503,6 +503,7 @@
     <Compile Include="Tweaks\Spells\BloodMist.cs" />
     <Compile Include="Tweaks\Spells\DustOfTwilight.cs" />
     <Compile Include="Tweaks\Spells\ArcaneConcordance.cs" />
+    <Compile Include="Tweaks\Spells\FormOfTheExoticDragon.cs" />
     <Compile Include="Tweaks\Spells\Moonstruck.cs" />
     <Compile Include="Tweaks\Spells\PlantShape.cs" />
     <Compile Include="Tweaks\Spells\KingsCastle.cs" />
@@ -1682,6 +1683,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_FeatSelection.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_FormOfTheExoticDragon.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_FuryOfTheSun.jpg">

@@ -42,6 +42,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     IncreasedByStat = true,
                     ResourceBonusStat = StatType.Wisdom,
                 };
+                bp.IsDomainAbility = true;
             });
             var PlantDomainNewBaseBuff = Resources.GetModBlueprint<BlueprintBuff>("PlantDomainNewBaseBuff");
             var FistDomainBaseAbility = Helpers.CreateBlueprint<BlueprintActivatableAbility>("FistDomainBaseAbility", bp => {
@@ -334,6 +335,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     IncreasedByStat = true,
                     ResourceBonusStat = StatType.Wisdom,
                 };
+                bp.IsDomainAbility = true;
             });
 
             var PlantDomainNewBaseBuffSeparatist = Resources.GetModBlueprint<BlueprintBuff>("PlantDomainNewBaseBuffSeparatist");

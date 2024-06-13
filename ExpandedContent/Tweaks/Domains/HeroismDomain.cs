@@ -48,6 +48,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     IncreasedByStat = true,
                     ResourceBonusStat = StatType.Wisdom,
                 };
+                bp.IsDomainAbility = true;
             });
 
             var HeroismBuff = Resources.GetBlueprint<BlueprintBuff>("87ab2fed7feaaff47b62a3320a57ad8d");
@@ -115,6 +116,7 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Touch;
                 bp.ActionType = UnitCommand.CommandType.Standard;
                 bp.AvailableMetamagic |= Metamagic.Quicken | Metamagic.Extend | Metamagic.Heighten | Metamagic.Reach;
+                bp.IsDomainAbility = true;
                 bp.LocalizedDuration = Helpers.CreateString("HeroismDomainBaseAbility.Duration", "1 round/2 levels");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
@@ -407,6 +409,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     IncreasedByStat = true,
                     ResourceBonusStat = StatType.Wisdom,
                 };
+                bp.IsDomainAbility = true;
             });
 
             var HeroismDomainBaseAbilitySeparatist = Helpers.CreateBlueprint<BlueprintAbility>("HeroismDomainBaseAbilitySeparatist", bp => {
@@ -499,6 +502,7 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Touch;
                 bp.ActionType = UnitCommand.CommandType.Standard;
                 bp.AvailableMetamagic |= Metamagic.Quicken | Metamagic.Extend | Metamagic.Heighten | Metamagic.Reach;
+                bp.IsDomainAbility = true;
                 bp.LocalizedDuration = Helpers.CreateString("HeroismDomainBaseAbilitySeparatist.Duration", "1 round/2 levels");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });

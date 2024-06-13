@@ -49,6 +49,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     IncreasedByStat = true,
                     ResourceBonusStat = StatType.Wisdom,
                 };
+                bp.IsDomainAbility = true;
             });
 
             var DemonDomainBaseBuff = Helpers.CreateBuff("DemonDomainBaseBuff", bp => {
@@ -161,6 +162,7 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.HasFastAnimation = false;
                 bp.ActionType = UnitCommand.CommandType.Swift;
                 bp.AvailableMetamagic = 0;
+                bp.IsDomainAbility = true;
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
@@ -449,6 +451,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     IncreasedByStat = true,
                     ResourceBonusStat = StatType.Wisdom,
                 };
+                bp.IsDomainAbility = true;
             });
 
             var DemonDomainBaseBuffSeparatist = Helpers.CreateBuff("DemonDomainBaseBuffSeparatist", bp => {
@@ -590,6 +593,7 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.HasFastAnimation = false;
                 bp.ActionType = UnitCommand.CommandType.Swift;
                 bp.AvailableMetamagic = 0;
+                bp.IsDomainAbility = true;
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });

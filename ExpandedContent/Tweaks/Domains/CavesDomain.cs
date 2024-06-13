@@ -158,8 +158,7 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.DeactivateIfOwnerDisabled = true;
                 bp.ActivationType = AbilityActivationType.WithUnitCommand;
                 bp.m_ActivateWithUnitCommand = UnitCommand.CommandType.Standard;
-                bp.DeactivateIfCombatEnded = false;
-                
+                bp.DeactivateIfCombatEnded = false;                
             });
             //CavesDomainGreaterFeature
             var CavesDomainGreaterFeature = Helpers.CreateBlueprint<BlueprintFeature>("CavesDomainGreaterFeature", bp => {

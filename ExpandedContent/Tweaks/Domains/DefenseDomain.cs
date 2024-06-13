@@ -179,6 +179,7 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.HasFastAnimation = false;
                 bp.ActionType = UnitCommand.CommandType.Standard;
                 bp.AvailableMetamagic = 0;
+                bp.IsDomainAbility = true;
                 bp.LocalizedDuration = Helpers.CreateString("DefenseDomainBaseAbility.Duration", "1 round/level");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
@@ -500,6 +501,7 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.HasFastAnimation = false;
                 bp.ActionType = UnitCommand.CommandType.Standard;
                 bp.AvailableMetamagic = 0;
+                bp.IsDomainAbility = true;
                 bp.LocalizedDuration = Helpers.CreateString("DefenseDomainBaseAbilitySeparatist.Duration", "1 round/level");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
