@@ -30,6 +30,7 @@ namespace ExpandedContent.Tweaks.FourHorsemen {
             BlueprintArchetype PriestOfBalance = Resources.GetBlueprint<BlueprintArchetype>("a4560e3fb5d247d68fb1a2738fcc0855");
             BlueprintArchetype MantisZealotArchetype = Resources.GetModBlueprint<BlueprintArchetype>("MantisZealotArchetype");
             BlueprintArchetype ClawOfTheFalseWyrmArchetype = Resources.GetModBlueprint<BlueprintArchetype>("ClawOfTheFalseWyrmArchetype");
+            BlueprintArchetype SwornOfTheEldestArchetype = Resources.GetModBlueprint<BlueprintArchetype>("SwornOfTheEldestArchetype");
             BlueprintItem MasterworkPunchingdagger = Resources.GetBlueprint<BlueprintItem>("4eadc3edae4500a4c972b61cad66add8");
             BlueprintFeature PunchingdaggerProficiency = Resources.GetBlueprint<BlueprintFeature>("a13839f75ac30cc48945c96ef1c98e1c");
             var TrelmarixianIcon = AssetLoader.LoadInternal("Deities", "Icon_Trelmarixian.jpg");
@@ -55,6 +56,7 @@ namespace ExpandedContent.Tweaks.FourHorsemen {
                 bp.SetDisallowedArchetype(WarpriestClass, FeralChampionArchetype);
                 bp.SetDisallowedArchetype(WarpriestClass, MantisZealotArchetype);
                 bp.SetDisallowedArchetype(DreadKnightClass, ClawOfTheFalseWyrmArchetype);
+                bp.SetDisallowedArchetype(InquistorClass, SwornOfTheEldestArchetype);
                 bp.DisallowAngelfireApostle();
                 bp.DisallowDarkSister();
                 bp.MagicDeceiverLock();

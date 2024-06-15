@@ -30,6 +30,7 @@ namespace ExpandedContent.Tweaks.FourHorsemen {
             BlueprintArchetype PriestOfBalance = Resources.GetBlueprint<BlueprintArchetype>("a4560e3fb5d247d68fb1a2738fcc0855");
             BlueprintArchetype MantisZealotArchetype = Resources.GetModBlueprint<BlueprintArchetype>("MantisZealotArchetype");
             BlueprintArchetype ClawOfTheFalseWyrmArchetype = Resources.GetModBlueprint<BlueprintArchetype>("ClawOfTheFalseWyrmArchetype");
+            BlueprintArchetype SwornOfTheEldestArchetype = Resources.GetModBlueprint<BlueprintArchetype>("SwornOfTheEldestArchetype");
             BlueprintItem MasterworkScythe = Resources.GetBlueprint<BlueprintItem>("4546c8236b5e9b74c8d692a923ab3f9a");
             BlueprintFeature ScytheProficiency = Resources.GetBlueprint<BlueprintFeature>("96c174b0ebca7b246b82d4bc4aac4574");
             var ApollyonIcon = AssetLoader.LoadInternal("Deities", "Icon_Apollyon.jpg");
@@ -55,6 +56,7 @@ namespace ExpandedContent.Tweaks.FourHorsemen {
                 bp.SetDisallowedArchetype(WarpriestClass, FeralChampionArchetype);
                 bp.SetDisallowedArchetype(WarpriestClass, MantisZealotArchetype);
                 bp.SetDisallowedArchetype(DreadKnightClass, ClawOfTheFalseWyrmArchetype);
+                bp.SetDisallowedArchetype(InquistorClass, SwornOfTheEldestArchetype);
                 bp.DisallowAngelfireApostle();
                 bp.DisallowDarkSister();
                 bp.MagicDeceiverLock();

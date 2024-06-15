@@ -30,6 +30,7 @@ namespace ExpandedContent.Tweaks.FourHorsemen {
             BlueprintArchetype PriestOfBalance = Resources.GetBlueprint<BlueprintArchetype>("a4560e3fb5d247d68fb1a2738fcc0855");
             BlueprintArchetype MantisZealotArchetype = Resources.GetModBlueprint<BlueprintArchetype>("MantisZealotArchetype");
             BlueprintArchetype ClawOfTheFalseWyrmArchetype = Resources.GetModBlueprint<BlueprintArchetype>("ClawOfTheFalseWyrmArchetype");
+            BlueprintArchetype SwornOfTheEldestArchetype = Resources.GetModBlueprint<BlueprintArchetype>("SwornOfTheEldestArchetype");
             BlueprintItem MasterworkGreatsword = Resources.GetBlueprint<BlueprintItem>("13b519f8573403f4da841b29f99c6987");
             BlueprintFeature GreatswordProficiency = Resources.GetBlueprint<BlueprintFeature>("f35e15b1fdff0c54087746c2da80a053");
             var SzurielIcon = AssetLoader.LoadInternal("Deities", "Icon_Szuriel.jpg");
@@ -56,6 +57,7 @@ namespace ExpandedContent.Tweaks.FourHorsemen {
                 bp.SetDisallowedArchetype(WarpriestClass, FeralChampionArchetype);
                 bp.SetDisallowedArchetype(WarpriestClass, MantisZealotArchetype);
                 bp.SetDisallowedArchetype(DreadKnightClass, ClawOfTheFalseWyrmArchetype);
+                bp.SetDisallowedArchetype(InquistorClass, SwornOfTheEldestArchetype);
                 bp.DisallowAngelfireApostle();
                 bp.DisallowDarkSister();
                 bp.MagicDeceiverLock();

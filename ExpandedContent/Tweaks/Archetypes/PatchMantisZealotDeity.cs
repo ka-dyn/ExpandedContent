@@ -2,6 +2,7 @@
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Prerequisites;
 using ExpandedContent.Extensions;
+using ExpandedContent.Utilities;
 
 namespace ExpandedContent.Tweaks.Archetypes {
     //Locking base gods from Archetypes
@@ -41,6 +42,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var ZonKuthonFeature = Resources.GetBlueprint<BlueprintFeature>("f7eed400baa66a744ad361d4df0e6f1b");
             var GodClawFeature = Resources.GetBlueprint<BlueprintFeature>("583a26e88031d0a4a94c8180105692a5");
             var AtheismFeature = Resources.GetBlueprint<BlueprintFeature>("92c0d2da0a836ce418a267093c09ca54");
+            var NewAchaekekFeature = Resources.GetBlueprint<BlueprintFeature>("a3189d5b7c4d4d91beaa8bfffac3e38e");
 
             #region Mantis Zealot
             AbadarFeature.AddComponent<PrerequisiteNoArchetype>(c => {
@@ -117,198 +119,54 @@ namespace ExpandedContent.Tweaks.Archetypes {
             });
             #endregion
             #region ClawOfTheFalseWyrmArchetype
-            AbadarFeature.AddComponent<PrerequisiteNoArchetype>(c => {
-                c.HideInUI = true;
-                c.m_CharacterClass = DreadKnightClass.ToReference<BlueprintCharacterClassReference>();
-                c.m_Archetype = ClawOfTheFalseWyrmArchetype.ToReference<BlueprintArchetypeReference>();
-            });
-            AsmodeusFeature.AddComponent<PrerequisiteNoArchetype>(c => {
-                c.HideInUI = true;
-                c.m_CharacterClass = DreadKnightClass.ToReference<BlueprintCharacterClassReference>();
-                c.m_Archetype = ClawOfTheFalseWyrmArchetype.ToReference<BlueprintArchetypeReference>();
-            });
-            CalistriaFeature.AddComponent<PrerequisiteNoArchetype>(c => {
-                c.HideInUI = true;
-                c.m_CharacterClass = DreadKnightClass.ToReference<BlueprintCharacterClassReference>();
-                c.m_Archetype = ClawOfTheFalseWyrmArchetype.ToReference<BlueprintArchetypeReference>();
-            });
-            GorumFeature.AddComponent<PrerequisiteNoArchetype>(c => {
-                c.HideInUI = true;
-                c.m_CharacterClass = DreadKnightClass.ToReference<BlueprintCharacterClassReference>();
-                c.m_Archetype = ClawOfTheFalseWyrmArchetype.ToReference<BlueprintArchetypeReference>();
-            });
-            GozrehFeature.AddComponent<PrerequisiteNoArchetype>(c => {
-                c.HideInUI = true;
-                c.m_CharacterClass = DreadKnightClass.ToReference<BlueprintCharacterClassReference>();
-                c.m_Archetype = ClawOfTheFalseWyrmArchetype.ToReference<BlueprintArchetypeReference>();
-            });
-            IroriFeature.AddComponent<PrerequisiteNoArchetype>(c => {
-                c.HideInUI = true;
-                c.m_CharacterClass = DreadKnightClass.ToReference<BlueprintCharacterClassReference>();
-                c.m_Archetype = ClawOfTheFalseWyrmArchetype.ToReference<BlueprintArchetypeReference>();
-            });
-            LamashtuFeature.AddComponent<PrerequisiteNoArchetype>(c => {
-                c.HideInUI = true;
-                c.m_CharacterClass = DreadKnightClass.ToReference<BlueprintCharacterClassReference>();
-                c.m_Archetype = ClawOfTheFalseWyrmArchetype.ToReference<BlueprintArchetypeReference>();
-            });
-            NethysFeature.AddComponent<PrerequisiteNoArchetype>(c => {
-                c.HideInUI = true;
-                c.m_CharacterClass = DreadKnightClass.ToReference<BlueprintCharacterClassReference>();
-                c.m_Archetype = ClawOfTheFalseWyrmArchetype.ToReference<BlueprintArchetypeReference>();
-            });
-            NorgorberFeature.AddComponent<PrerequisiteNoArchetype>(c => {
-                c.HideInUI = true;
-                c.m_CharacterClass = DreadKnightClass.ToReference<BlueprintCharacterClassReference>();
-                c.m_Archetype = ClawOfTheFalseWyrmArchetype.ToReference<BlueprintArchetypeReference>();
-            });
-            PharasmaFeature.AddComponent<PrerequisiteNoArchetype>(c => {
-                c.HideInUI = true;
-                c.m_CharacterClass = DreadKnightClass.ToReference<BlueprintCharacterClassReference>();
-                c.m_Archetype = ClawOfTheFalseWyrmArchetype.ToReference<BlueprintArchetypeReference>();
-            });
-            RovagugFeature.AddComponent<PrerequisiteNoArchetype>(c => {
-                c.HideInUI = true;
-                c.m_CharacterClass = DreadKnightClass.ToReference<BlueprintCharacterClassReference>();
-                c.m_Archetype = ClawOfTheFalseWyrmArchetype.ToReference<BlueprintArchetypeReference>();
-            });
-            UrgathoaFeature.AddComponent<PrerequisiteNoArchetype>(c => {
-                c.HideInUI = true;
-                c.m_CharacterClass = DreadKnightClass.ToReference<BlueprintCharacterClassReference>();
-                c.m_Archetype = ClawOfTheFalseWyrmArchetype.ToReference<BlueprintArchetypeReference>();
-            });
-            ZonKuthonFeature.AddComponent<PrerequisiteNoArchetype>(c => {
-                c.HideInUI = true;
-                c.m_CharacterClass = DreadKnightClass.ToReference<BlueprintCharacterClassReference>();
-                c.m_Archetype = ClawOfTheFalseWyrmArchetype.ToReference<BlueprintArchetypeReference>();
-            });
-            GodClawFeature.AddComponent<PrerequisiteNoArchetype>(c => {
-                c.HideInUI = true;
-                c.m_CharacterClass = DreadKnightClass.ToReference<BlueprintCharacterClassReference>();
-                c.m_Archetype = ClawOfTheFalseWyrmArchetype.ToReference<BlueprintArchetypeReference>();
-            });
-            AtheismFeature.AddComponent<PrerequisiteNoArchetype>(c => {
-                c.HideInUI = true;
-                c.m_CharacterClass = DreadKnightClass.ToReference<BlueprintCharacterClassReference>();
-                c.m_Archetype = ClawOfTheFalseWyrmArchetype.ToReference<BlueprintArchetypeReference>();
-            });
-            GyronnaFeature.AddComponent<PrerequisiteNoArchetype>(c => {
-                c.HideInUI = true;
-                c.m_CharacterClass = DreadKnightClass.ToReference<BlueprintCharacterClassReference>();
-                c.m_Archetype = ClawOfTheFalseWyrmArchetype.ToReference<BlueprintArchetypeReference>();
-            });
+            AbadarFeature.SetDisallowedArchetype(DreadKnightClass, ClawOfTheFalseWyrmArchetype);
+            AsmodeusFeature.SetDisallowedArchetype(DreadKnightClass, ClawOfTheFalseWyrmArchetype);
+            CalistriaFeature.SetDisallowedArchetype(DreadKnightClass, ClawOfTheFalseWyrmArchetype);
+            GorumFeature.SetDisallowedArchetype(DreadKnightClass, ClawOfTheFalseWyrmArchetype);
+            GozrehFeature.SetDisallowedArchetype(DreadKnightClass, ClawOfTheFalseWyrmArchetype);
+            IroriFeature.SetDisallowedArchetype(DreadKnightClass, ClawOfTheFalseWyrmArchetype);
+            LamashtuFeature.SetDisallowedArchetype(DreadKnightClass, ClawOfTheFalseWyrmArchetype);
+            NethysFeature.SetDisallowedArchetype(DreadKnightClass, ClawOfTheFalseWyrmArchetype);
+            PharasmaFeature.SetDisallowedArchetype(DreadKnightClass, ClawOfTheFalseWyrmArchetype);
+            RovagugFeature.SetDisallowedArchetype(DreadKnightClass, ClawOfTheFalseWyrmArchetype);
+            UrgathoaFeature.SetDisallowedArchetype(DreadKnightClass, ClawOfTheFalseWyrmArchetype);
+            ZonKuthonFeature.SetDisallowedArchetype(DreadKnightClass, ClawOfTheFalseWyrmArchetype);
+            GodClawFeature.SetDisallowedArchetype(DreadKnightClass, ClawOfTheFalseWyrmArchetype);
+            AtheismFeature.SetDisallowedArchetype(DreadKnightClass, ClawOfTheFalseWyrmArchetype);
+            GyronnaFeature.SetDisallowedArchetype(DreadKnightClass, ClawOfTheFalseWyrmArchetype);
+            ToragFeature.SetDisallowedArchetype(DreadKnightClass, ClawOfTheFalseWyrmArchetype);
+            ShelynFeature.SetDisallowedArchetype(DreadKnightClass, ClawOfTheFalseWyrmArchetype);
+            SarenraeFeature.SetDisallowedArchetype(DreadKnightClass, ClawOfTheFalseWyrmArchetype);
+            IomedaeFeature.SetDisallowedArchetype(DreadKnightClass, ClawOfTheFalseWyrmArchetype);
+            ErastilFeature.SetDisallowedArchetype(DreadKnightClass, ClawOfTheFalseWyrmArchetype);
+            DesnaFeature.SetDisallowedArchetype(DreadKnightClass, ClawOfTheFalseWyrmArchetype);
+            CaydenCaileanFeature.SetDisallowedArchetype(DreadKnightClass, ClawOfTheFalseWyrmArchetype);
+            NewAchaekekFeature.SetDisallowedArchetype(DreadKnightClass, ClawOfTheFalseWyrmArchetype);
             #endregion
             #region Sworn of the Eldest
-            AbadarFeature.AddComponent<PrerequisiteNoArchetype>(c => {
-                c.HideInUI = true;
-                c.m_CharacterClass = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
-                c.m_Archetype = SwornOfTheEldestArchetype.ToReference<BlueprintArchetypeReference>();
-            });
-            AsmodeusFeature.AddComponent<PrerequisiteNoArchetype>(c => {
-                c.HideInUI = true;
-                c.m_CharacterClass = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
-                c.m_Archetype = SwornOfTheEldestArchetype.ToReference<BlueprintArchetypeReference>();
-            });
-            CalistriaFeature.AddComponent<PrerequisiteNoArchetype>(c => {
-                c.HideInUI = true;
-                c.m_CharacterClass = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
-                c.m_Archetype = SwornOfTheEldestArchetype.ToReference<BlueprintArchetypeReference>();
-            });
-            CaydenCaileanFeature.AddComponent<PrerequisiteNoArchetype>(c => {
-                c.HideInUI = true;
-                c.m_CharacterClass = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
-                c.m_Archetype = SwornOfTheEldestArchetype.ToReference<BlueprintArchetypeReference>();
-            });
-            DesnaFeature.AddComponent<PrerequisiteNoArchetype>(c => {
-                c.HideInUI = true;
-                c.m_CharacterClass = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
-                c.m_Archetype = SwornOfTheEldestArchetype.ToReference<BlueprintArchetypeReference>();
-            });
-            ErastilFeature.AddComponent<PrerequisiteNoArchetype>(c => {
-                c.HideInUI = true;
-                c.m_CharacterClass = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
-                c.m_Archetype = SwornOfTheEldestArchetype.ToReference<BlueprintArchetypeReference>();
-            });
-            GorumFeature.AddComponent<PrerequisiteNoArchetype>(c => {
-                c.HideInUI = true;
-                c.m_CharacterClass = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
-                c.m_Archetype = SwornOfTheEldestArchetype.ToReference<BlueprintArchetypeReference>();
-            });
-            GozrehFeature.AddComponent<PrerequisiteNoArchetype>(c => {
-                c.HideInUI = true;
-                c.m_CharacterClass = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
-                c.m_Archetype = SwornOfTheEldestArchetype.ToReference<BlueprintArchetypeReference>();
-            });
-            GyronnaFeature.AddComponent<PrerequisiteNoArchetype>(c => {
-                c.HideInUI = true;
-                c.m_CharacterClass = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
-                c.m_Archetype = SwornOfTheEldestArchetype.ToReference<BlueprintArchetypeReference>();
-            });
-            IomedaeFeature.AddComponent<PrerequisiteNoArchetype>(c => {
-                c.HideInUI = true;
-                c.m_CharacterClass = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
-                c.m_Archetype = SwornOfTheEldestArchetype.ToReference<BlueprintArchetypeReference>();
-            });
-            IroriFeature.AddComponent<PrerequisiteNoArchetype>(c => {
-                c.HideInUI = true;
-                c.m_CharacterClass = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
-                c.m_Archetype = SwornOfTheEldestArchetype.ToReference<BlueprintArchetypeReference>();
-            });
-            LamashtuFeature.AddComponent<PrerequisiteNoArchetype>(c => {
-                c.HideInUI = true;
-                c.m_CharacterClass = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
-                c.m_Archetype = SwornOfTheEldestArchetype.ToReference<BlueprintArchetypeReference>();
-            });
-            NethysFeature.AddComponent<PrerequisiteNoArchetype>(c => {
-                c.HideInUI = true;
-                c.m_CharacterClass = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
-                c.m_Archetype = SwornOfTheEldestArchetype.ToReference<BlueprintArchetypeReference>();
-            });
-            NorgorberFeature.AddComponent<PrerequisiteNoArchetype>(c => {
-                c.HideInUI = true;
-                c.m_CharacterClass = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
-                c.m_Archetype = SwornOfTheEldestArchetype.ToReference<BlueprintArchetypeReference>();
-            });
-            PharasmaFeature.AddComponent<PrerequisiteNoArchetype>(c => {
-                c.HideInUI = true;
-                c.m_CharacterClass = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
-                c.m_Archetype = SwornOfTheEldestArchetype.ToReference<BlueprintArchetypeReference>();
-            });
-            RovagugFeature.AddComponent<PrerequisiteNoArchetype>(c => {
-                c.HideInUI = true;
-                c.m_CharacterClass = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
-                c.m_Archetype = SwornOfTheEldestArchetype.ToReference<BlueprintArchetypeReference>();
-            });
-            SarenraeFeature.AddComponent<PrerequisiteNoArchetype>(c => {
-                c.HideInUI = true;
-                c.m_CharacterClass = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
-                c.m_Archetype = SwornOfTheEldestArchetype.ToReference<BlueprintArchetypeReference>();
-            });
-            ShelynFeature.AddComponent<PrerequisiteNoArchetype>(c => {
-                c.HideInUI = true;
-                c.m_CharacterClass = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
-                c.m_Archetype = SwornOfTheEldestArchetype.ToReference<BlueprintArchetypeReference>();
-            });
-            ToragFeature.AddComponent<PrerequisiteNoArchetype>(c => {
-                c.HideInUI = true;
-                c.m_CharacterClass = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
-                c.m_Archetype = SwornOfTheEldestArchetype.ToReference<BlueprintArchetypeReference>();
-            });
-            UrgathoaFeature.AddComponent<PrerequisiteNoArchetype>(c => {
-                c.HideInUI = true;
-                c.m_CharacterClass = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
-                c.m_Archetype = SwornOfTheEldestArchetype.ToReference<BlueprintArchetypeReference>();
-            });
-            ZonKuthonFeature.AddComponent<PrerequisiteNoArchetype>(c => {
-                c.HideInUI = true;
-                c.m_CharacterClass = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
-                c.m_Archetype = SwornOfTheEldestArchetype.ToReference<BlueprintArchetypeReference>();
-            });
-            GodClawFeature.AddComponent<PrerequisiteNoArchetype>(c => {
-                c.HideInUI = true;
-                c.m_CharacterClass = InquisitorClass.ToReference<BlueprintCharacterClassReference>();
-                c.m_Archetype = SwornOfTheEldestArchetype.ToReference<BlueprintArchetypeReference>();
-            });
+            AbadarFeature.SetDisallowedArchetype(InquisitorClass, SwornOfTheEldestArchetype);
+            AsmodeusFeature.SetDisallowedArchetype(InquisitorClass, SwornOfTheEldestArchetype);
+            CalistriaFeature.SetDisallowedArchetype(InquisitorClass, SwornOfTheEldestArchetype);
+            CaydenCaileanFeature.SetDisallowedArchetype(InquisitorClass, SwornOfTheEldestArchetype);
+            DesnaFeature.SetDisallowedArchetype(InquisitorClass, SwornOfTheEldestArchetype);
+            ErastilFeature.SetDisallowedArchetype(InquisitorClass, SwornOfTheEldestArchetype);
+            GorumFeature.SetDisallowedArchetype(InquisitorClass, SwornOfTheEldestArchetype);
+            GozrehFeature.SetDisallowedArchetype(InquisitorClass, SwornOfTheEldestArchetype);
+            GyronnaFeature.SetDisallowedArchetype(InquisitorClass, SwornOfTheEldestArchetype);
+            IomedaeFeature.SetDisallowedArchetype(InquisitorClass, SwornOfTheEldestArchetype);
+            IroriFeature.SetDisallowedArchetype(InquisitorClass, SwornOfTheEldestArchetype);
+            LamashtuFeature.SetDisallowedArchetype(InquisitorClass, SwornOfTheEldestArchetype);
+            NethysFeature.SetDisallowedArchetype(InquisitorClass, SwornOfTheEldestArchetype);
+            NorgorberFeature.SetDisallowedArchetype(InquisitorClass, SwornOfTheEldestArchetype);
+            PharasmaFeature.SetDisallowedArchetype(InquisitorClass, SwornOfTheEldestArchetype);
+            RovagugFeature.SetDisallowedArchetype(InquisitorClass, SwornOfTheEldestArchetype);
+            SarenraeFeature.SetDisallowedArchetype(InquisitorClass, SwornOfTheEldestArchetype);
+            ShelynFeature.SetDisallowedArchetype(InquisitorClass, SwornOfTheEldestArchetype);
+            ToragFeature.SetDisallowedArchetype(InquisitorClass, SwornOfTheEldestArchetype);
+            UrgathoaFeature.SetDisallowedArchetype(InquisitorClass, SwornOfTheEldestArchetype);
+            ZonKuthonFeature.SetDisallowedArchetype(InquisitorClass, SwornOfTheEldestArchetype);
+            GodClawFeature.SetDisallowedArchetype(InquisitorClass, SwornOfTheEldestArchetype);
+            NewAchaekekFeature.SetDisallowedArchetype(InquisitorClass, SwornOfTheEldestArchetype);
             #endregion
         }
     }

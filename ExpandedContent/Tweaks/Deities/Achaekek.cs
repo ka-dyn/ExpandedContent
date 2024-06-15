@@ -187,6 +187,44 @@ namespace ExpandedContent.Tweaks.Deities {
                 c.HideInUI = false;
             });
 
+
+
+            var NewAcheakek = Resources.GetBlueprint<BlueprintFeature>("a3189d5b7c4d4d91beaa8bfffac3e38e");
+            NewAcheakek.TemporaryContext(bp => {
+                bp.SetDisallowedArchetype(DreadKnightClass, ClawOfTheFalseWyrmArchetype);
+                bp.SetDisallowedArchetype(InquistorClass, SwornOfTheEldestArchetype);
+                bp.SetAllowedDomains(                    
+                    DeityTools.DomainAllowed.BloodDomainAllowed,
+                    DeityTools.DomainAllowed.ThieveryDomainAllowed,
+                    DeityTools.SeparatistDomainAllowed.ArchonDomainLawAllowedSeparatist,//Lawful
+                    DeityTools.SeparatistDomainAllowed.CavesDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.CurseDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.DefenseDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.DemonDomainEvilAllowedSeparatist,//Evil
+                    DeityTools.SeparatistDomainAllowed.DragonDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.FerocityDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.FistDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.FurDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.GrowthDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.HeroismDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.LoyaltyDomainAllowedSeparatist,//Lawful
+                    DeityTools.SeparatistDomainAllowed.LustDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.PsychopompDomainDeathAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.PsychopompDomainReposeAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.RageDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.ResolveDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.RestorationDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.RevelationDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.RevolutionDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.RiversDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.ScalykindDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.StarsDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.StormDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.WindDomainAllowedSeparatist
+                );
+            });
+
+
             if (ModSettings.AddedContent.RetiredFeatures.IsDisabled("Mantis Zealot and Achaekek deity")) {
                 AchaekekFeature.LazyLock();
             }
