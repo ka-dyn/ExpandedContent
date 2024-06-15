@@ -16,6 +16,7 @@ namespace ExpandedContent.Tweaks.Deities {
             var ClawOfTheFalseWyrmArchetype = Resources.GetModBlueprint<BlueprintArchetype>("ClawOfTheFalseWyrmArchetype");
             var SwornOfTheEldestArchetype = Resources.GetModBlueprint<BlueprintArchetype>("SwornOfTheEldestArchetype");
 
+            GroetusFeature.DisallowNewMantisZealot();
             GroetusFeature.SetDisallowedArchetype(DreadKnightClass, ClawOfTheFalseWyrmArchetype);
             GroetusFeature.SetDisallowedArchetype(InquistorClass, SwornOfTheEldestArchetype);
             GroetusFeature.DisallowDarkSister();

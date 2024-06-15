@@ -146,6 +146,8 @@ namespace ExpandedContent.Tweaks.Deities {
             var YdersiusFeature = Resources.GetModBlueprint<BlueprintFeature>("YdersiusFeature");
             var GroetusFeature = Resources.GetBlueprint<BlueprintFeature>("c3e4d5681906d5246ab8b0637b98cbfe");
             var NaderiFeature = Resources.GetModBlueprint<BlueprintFeature>("NaderiFeature");
+            var NewAchaekekFeature = Resources.GetBlueprint<BlueprintFeature>("a3189d5b7c4d4d91beaa8bfffac3e38e");
+
 
             //Philosophies
             var GreenFaithFeature = Resources.GetBlueprint<BlueprintFeature>("99a7a8f13c1300c42878558fa9471e2f");
@@ -678,6 +680,7 @@ namespace ExpandedContent.Tweaks.Deities {
                 AtheismFeature.ToReference<BlueprintFeatureReference>(),
                 GodclawFeature.ToReference<BlueprintFeatureReference>(),
                 LichDeityFeature.ToReference<BlueprintFeatureReference>(),
+                NewAchaekekFeature.ToReference<BlueprintFeatureReference>()
 
             };
             DeitySelection.Groups = new FeatureGroup[] { FeatureGroup.Deities };

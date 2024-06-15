@@ -62,6 +62,7 @@ namespace ExpandedContent.Tweaks.Deities {
                 bp.DisallowAngelfireApostle();
                 bp.DisallowDarkSister();
                 bp.MagicDeceiverLock();
+                bp.DisallowNewMantisZealot();
 
 
                 bp.AddComponent<AddFacts>(c => {

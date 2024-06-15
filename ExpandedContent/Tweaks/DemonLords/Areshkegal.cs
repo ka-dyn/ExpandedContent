@@ -28,6 +28,7 @@ namespace ExpandedContent.Tweaks.DemonLords {
             AreshkegalFeature.SetDisallowedArchetype(InquistorClass, SwornOfTheEldestArchetype);
             AreshkegalFeature.DisallowAngelfireApostle();
             AreshkegalFeature.DisallowDarkSister();
+            AreshkegalFeature.DisallowNewMantisZealot();
 
             AreshkegalFeature.SetAllowedDomains(
                     DeityTools.DomainAllowed.DemonDomainChaosAllowed,

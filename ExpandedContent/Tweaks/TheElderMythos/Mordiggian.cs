@@ -71,6 +71,7 @@ namespace ExpandedContent.Tweaks.TheElderMythos {
                 bp.DisallowAngelfireApostle();
                 bp.DisallowDarkSister();
                 bp.MagicDeceiverLock();
+                bp.DisallowNewMantisZealot();
 
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
                 bp.AddComponent<PrerequisiteAlignment>(c => {

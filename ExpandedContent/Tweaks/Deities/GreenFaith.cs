@@ -20,6 +20,7 @@ namespace ExpandedContent.Tweaks.Deities {
             var InquisitorClass = Resources.GetBlueprint<BlueprintCharacterClass>("f1a70d9e1b0b41e49874e1fa9052a1ce");
             var SwornOfTheEldestArchetype = Resources.GetModBlueprint<BlueprintArchetype>("SwornOfTheEldestArchetype");
 
+            GreenFaithFeature.DisallowNewMantisZealot();
             GreenFaithFeature.SetDisallowedArchetype(WarpriestClass, MantisZealotArchetype);
             GreenFaithFeature.SetDisallowedArchetype(DreadKnightClass, ClawOfTheFalseWyrmArchetype);
             GreenFaithFeature.SetDisallowedArchetype(InquisitorClass, SwornOfTheEldestArchetype);

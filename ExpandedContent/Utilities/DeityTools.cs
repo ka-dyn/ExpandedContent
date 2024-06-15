@@ -202,6 +202,15 @@ namespace ExpandedContent.Utilities {
                 c.m_Archetype = ProphetOfPestilenceArchetype;
             });
         }
+        public static void DisallowNewMantisZealot(this BlueprintFeature deity) {
+            BlueprintCharacterClassReference WarpriestClass = Resources.GetBlueprintReference<BlueprintCharacterClassReference>("30b5e47d47a0e37438cc5a80c96cfb99");
+            BlueprintArchetypeReference NewMantisZealotArchetype = Resources.GetBlueprintReference<BlueprintArchetypeReference>("fc403240fdca4a52a413578169ea7117");
+            deity.AddComponent<PrerequisiteNoArchetype>(c => {
+                c.HideInUI = true;
+                c.m_CharacterClass = WarpriestClass;
+                c.m_Archetype = NewMantisZealotArchetype;
+            });
+        }
         public static void AddSacredWeapon(this BlueprintFeature feature, WeaponCategory weapon) {
             BlueprintFeatureReference WeaponFeature = Resources.GetBlueprintReference<BlueprintFeatureReference>("bae328694ee21bc4587c5ffd0035b6a2");
             BlueprintBuffReference Buff1d6 = Resources.GetBlueprintReference<BlueprintBuffReference>("75a3eaf9cff6acd4a8385ba91ffa329a");

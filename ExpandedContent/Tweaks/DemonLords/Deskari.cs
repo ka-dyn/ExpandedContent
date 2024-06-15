@@ -32,6 +32,7 @@ namespace ExpandedContent.Tweaks.DemonLords {
             DeskariFeature.SetDisallowedArchetype(InquistorClass, SwornOfTheEldestArchetype);
             DeskariFeature.DisallowAngelfireApostle();
             DeskariFeature.DisallowDarkSister();
+            DeskariFeature.DisallowNewMantisZealot();
 
             DeskariFeature.SetAllowedDomains(
                     DeityTools.DomainAllowed.BloodDomainAllowed,

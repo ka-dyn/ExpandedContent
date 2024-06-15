@@ -83,8 +83,9 @@ namespace ExpandedContent.Tweaks.Deities {
                     DeityTools.SeparatistDomainAllowed.MurderDomainAllowedSeparatist
 
                 );
-            PuluraFeature.m_Icon = PuluraIcon;            
+            PuluraFeature.m_Icon = PuluraIcon;
 
+            PuluraFeature.DisallowNewMantisZealot();
             PuluraFeature.RemoveComponents<PrerequisiteNoFeature>();
             var EmpyrealLordSelection = Resources.GetModBlueprint<BlueprintFeatureSelection>("EmpyrealLordSelection");
 

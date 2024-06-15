@@ -27,6 +27,7 @@ namespace ExpandedContent.Tweaks.DemonLords {
             KabririFeature.SetDisallowedArchetype(InquistorClass, SwornOfTheEldestArchetype);
             KabririFeature.DisallowAngelfireApostle();
             KabririFeature.DisallowDarkSister();
+            KabririFeature.DisallowNewMantisZealot();
 
             KabririFeature.SetAllowedDomains(
                     DeityTools.DomainAllowed.DemonDomainEvilAllowed,

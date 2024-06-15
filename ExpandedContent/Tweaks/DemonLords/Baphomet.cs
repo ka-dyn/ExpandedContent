@@ -29,6 +29,7 @@ namespace ExpandedContent.Tweaks.DemonLords {
             BaphometFeature.SetDisallowedArchetype(InquistorClass, SwornOfTheEldestArchetype);
             BaphometFeature.DisallowAngelfireApostle();
             BaphometFeature.DisallowDarkSister();
+            BaphometFeature.DisallowNewMantisZealot();
 
             BaphometFeature.SetAllowedDomains(
                     DeityTools.DomainAllowed.DemonDomainEvilAllowed,
