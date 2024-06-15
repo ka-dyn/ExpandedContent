@@ -11,8 +11,6 @@ New Archetypes
 
 - Ravener Hunter, Sworn of the Eldest, Inquisitor
 
-- Mantis Zealot, Warpriest
-
 - Mooncaller, Draconic Druid, Storm Druid, Urban Druid, Bear Shaman, Lion Shaman, Treesinger, Druid
 
 - Temple Champion, Silver Champion, Paladin
