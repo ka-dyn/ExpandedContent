@@ -200,6 +200,7 @@ New Spells
 - Dust of Twilight
 - Kings Castle
 - Moonstruck
+- Form of the Exotic Dragon
 
 
 Compatible with all mods as far as I am aware, extra features are unlocked if used with these mods
