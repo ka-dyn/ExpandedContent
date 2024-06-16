@@ -192,7 +192,7 @@ namespace ExpandedContent.Tweaks.Deities {
             var JerishallFeature = Resources.GetModBlueprint<BlueprintFeature>("JerishallFeature");
             var KerkamothFeature = Resources.GetModBlueprint<BlueprintFeature>("KerkamothFeature");
             var MonadFeature = Resources.GetModBlueprint<BlueprintFeature>("MonadFeature");
-            var NarrisemineFeature = Resources.GetModBlueprint<BlueprintFeature>("NarrisemineFeature");
+            var NarriseminekFeature = Resources.GetModBlueprint<BlueprintFeature>("NarriseminekFeature");
             var OtolmensFeature = Resources.GetModBlueprint<BlueprintFeature>("OtolmensFeature");
             var SsilameshnikFeature = Resources.GetModBlueprint<BlueprintFeature>("SsilameshnikFeature");
             var ValmallosFeature = Resources.GetModBlueprint<BlueprintFeature>("ValmallosFeature");
@@ -214,7 +214,7 @@ namespace ExpandedContent.Tweaks.Deities {
             var AbhothFeature = Resources.GetModBlueprint<BlueprintFeature>("AbhothFeature");
             var AtlachNachaFeature = Resources.GetModBlueprint<BlueprintFeature>("AtlachNachaFeature");
             var AzathothFeature = Resources.GetModBlueprint<BlueprintFeature>("AzathothFeature");
-            var BokugFeature = Resources.GetModBlueprint<BlueprintFeature>("BokugFeature");
+            var BokrugFeature = Resources.GetModBlueprint<BlueprintFeature>("BokrugFeature");
             var ChaugnarFaugnFeature = Resources.GetModBlueprint<BlueprintFeature>("ChaugnarFaugnFeature");
             var CthulhuFeature = Resources.GetModBlueprint<BlueprintFeature>("CthulhuFeature");
             var GhatanothoaFeature = Resources.GetModBlueprint<BlueprintFeature>("GhatanothoaFeature");
@@ -539,31 +539,31 @@ namespace ExpandedContent.Tweaks.Deities {
                     "simply corrupted Proteans. Monitors seem born from the multiverse itself—fractured pieces of a mind that finds equilibrium only in the " +
                     "conflict of its component parts.");
                 bp.m_Icon = MonitorsIcon;
-                bp.m_AllFeatures = new BlueprintFeatureReference[] {                
-                AtroposFeature.ToReference<BlueprintFeatureReference>(),
-                BarzahkFeature.ToReference<BlueprintFeatureReference>(),
-                CeyannanFeature.ToReference<BlueprintFeatureReference>(),
-                DammarFeature.ToReference<BlueprintFeatureReference>(),
-                IlsurrishFeature.ToReference<BlueprintFeatureReference>(),
-                ImotFeature.ToReference<BlueprintFeatureReference>(),
-                JerishallFeature.ToReference<BlueprintFeatureReference>(),
-                KerkamothFeature.ToReference<BlueprintFeatureReference>(),
-                MonadFeature.ToReference<BlueprintFeatureReference>(),
-                MotherVultureFeature.ToReference<BlueprintFeatureReference>(),
-                MrtyuFeature.ToReference<BlueprintFeatureReference>(),
-                NarakaasFeature.ToReference<BlueprintFeatureReference>(),
-                NarrisemineFeature.ToReference<BlueprintFeatureReference>(),
-                OtolmensFeature.ToReference<BlueprintFeatureReference>(),
-                PhlegyasFeature.ToReference<BlueprintFeatureReference>(),
-                SalocFeature.ToReference<BlueprintFeatureReference>(),
-                SsilameshnikFeature.ToReference<BlueprintFeatureReference>(),
-                TeshallasFeature.ToReference<BlueprintFeatureReference>(),
-                ThePaleHorseFeature.ToReference<BlueprintFeatureReference>(),
-                ValeFeature.ToReference<BlueprintFeatureReference>(),
-                ValmallosFeature.ToReference<BlueprintFeatureReference>(),
-                VavaalravFeature.ToReference<BlueprintFeatureReference>(),
-                VonymosFeature.ToReference<BlueprintFeatureReference>(),
-                YdajiskFeature.ToReference<BlueprintFeatureReference>(),
+                bp.m_AllFeatures = new BlueprintFeatureReference[] {
+                    AtroposFeature.ToReference<BlueprintFeatureReference>(),
+                    BarzahkFeature.ToReference<BlueprintFeatureReference>(),
+                    CeyannanFeature.ToReference<BlueprintFeatureReference>(),
+                    DammarFeature.ToReference<BlueprintFeatureReference>(),
+                    IlsurrishFeature.ToReference<BlueprintFeatureReference>(),
+                    ImotFeature.ToReference<BlueprintFeatureReference>(),
+                    JerishallFeature.ToReference<BlueprintFeatureReference>(),
+                    KerkamothFeature.ToReference<BlueprintFeatureReference>(),
+                    MonadFeature.ToReference<BlueprintFeatureReference>(),
+                    MotherVultureFeature.ToReference<BlueprintFeatureReference>(),
+                    MrtyuFeature.ToReference<BlueprintFeatureReference>(),
+                    NarakaasFeature.ToReference<BlueprintFeatureReference>(),
+                    NarriseminekFeature.ToReference<BlueprintFeatureReference>(),
+                    OtolmensFeature.ToReference<BlueprintFeatureReference>(),
+                    PhlegyasFeature.ToReference<BlueprintFeatureReference>(),
+                    SalocFeature.ToReference<BlueprintFeatureReference>(),
+                    SsilameshnikFeature.ToReference<BlueprintFeatureReference>(),
+                    TeshallasFeature.ToReference<BlueprintFeatureReference>(),
+                    ThePaleHorseFeature.ToReference<BlueprintFeatureReference>(),
+                    ValeFeature.ToReference<BlueprintFeatureReference>(),
+                    ValmallosFeature.ToReference<BlueprintFeatureReference>(),
+                    VavaalravFeature.ToReference<BlueprintFeatureReference>(),
+                    VonymosFeature.ToReference<BlueprintFeatureReference>(),
+                    YdajiskFeature.ToReference<BlueprintFeatureReference>(),
                 };
                 bp.IsClassFeature = true;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
@@ -582,7 +582,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     AbhothFeature.ToReference<BlueprintFeatureReference>(),
                     AtlachNachaFeature.ToReference<BlueprintFeatureReference>(),
                     AzathothFeature.ToReference<BlueprintFeatureReference>(),
-                    BokugFeature.ToReference<BlueprintFeatureReference>(),
+                    BokrugFeature.ToReference<BlueprintFeatureReference>(),
                     ChaugnarFaugnFeature.ToReference<BlueprintFeatureReference>(),
                     CthulhuFeature.ToReference<BlueprintFeatureReference>(),
                     GhatanothoaFeature.ToReference<BlueprintFeatureReference>(),
