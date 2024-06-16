@@ -458,7 +458,7 @@ namespace ExpandedContent.Tweaks.Spells {
 
 
 
-            //Not ready yet
+            //No scroll
             FormOfTheExoticDragonAbility.AddToSpellList(SpellTools.SpellList.WizardSpellList, 9);
             FormOfTheExoticDragonAbility.AddToSpellList(SpellTools.SpellList.DruidSpellList, 9);
 
