@@ -69,10 +69,12 @@ namespace ExpandedContent.Tweaks.Spells {
             var WingHuge1d8 = Resources.GetBlueprint<BlueprintItemWeapon>("78984ad70667084469ca7587465d4609");
             var TailHuge2d6 = Resources.GetBlueprint<BlueprintItemWeapon>("c36359e00abf82b40b5df9e5394207dd");
             //Linnorm
-            var Gore4d6 = Resources.GetBlueprint<BlueprintItemWeapon>("76bf1dc3698c4d81a8bed80021dac511");
+            var Bite4d10 = Resources.GetBlueprint<BlueprintItemWeapon>("06e1cd5de4274553ae2cbcddc8b21a36");
             var Tail4d6 = Resources.GetBlueprint<BlueprintItemWeapon>("efe700e7e536e7942bccd585b49e8861");
 
-            var Testbreath = Resources.GetBlueprint<BlueprintAbility>("d9b42ef06ae4f6b4d865554b4cb22d38");
+            var NegativeEnergyAffinity = Resources.GetBlueprint<BlueprintFeature>("d5ee498e19722854198439629c1841a5");
+
+            var FireBreath = Resources.GetBlueprint<BlueprintAbility>("6722219d5c8205c4d8ee4c2f41c31e4e");
             var BreathWeaponCooldownBuff = Resources.GetBlueprint<BlueprintBuff>("b78d21189e7f6e943920236f009d30e3");
 
             var SonicCone30 = Resources.GetBlueprintReference<BlueprintProjectileReference>("c7fd792125b79904881530dbc2ff83de");
@@ -81,7 +83,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.SetDescription("Your breath weapon deals {g|Encyclopedia:Dice}12d8{/g} points of {g|Encyclopedia:Energy_Damage}sonic damage{/g} in a 30-foot cone " +
                     "and allows a {g|Encyclopedia:Saving_Throw}Reflex save{/g} for half {g|Encyclopedia:Damage}damage{/g}. You can use it as often as you like, but " +
                     "you must wait 1d4 {g|Encyclopedia:Combat_Round}rounds{/g} between uses. \nOnly enemies are affected by this attack. ");
-                bp.m_Icon = Testbreath.m_Icon;
+                bp.m_Icon = FireBreath.m_Icon;
                 bp.AddComponent<AbilityDeliverProjectile>(c => {
                     c.m_Projectiles = new BlueprintProjectileReference[] { SonicCone30 };
                     c.Type = AbilityProjectileType.Cone;
@@ -210,6 +212,156 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
+            var NecromancyCone50 = Resources.GetBlueprintReference<BlueprintProjectileReference>("d07c1c64e5f087e4a919688db7059f0e");
+            var BlindBuff = Resources.GetBlueprintReference<BlueprintBuffReference>("0ec36e7596a4928489d2049e1e1c76a7");
+            var FormOfTheExoticDragonBreathUmbral = Helpers.CreateBlueprint<BlueprintAbility>("FormOfTheExoticDragonBreathUmbral", bp => {
+                bp.SetName("Umbral Breath Weapon");
+                bp.SetDescription("Your breath weapon deals {g|Encyclopedia:Dice}12d8{/g} points of {g|Encyclopedia:Energy_Damage}negative energy damage{/g} in a 50-foot cone " +
+                    "and allows a {g|Encyclopedia:Saving_Throw}Reflex save{/g} for half {g|Encyclopedia:Damage}damage{/g}. If the saving throw is failed, the target is blinded for 1d4 rounds. " +
+                    "You can use it as often as you like, but you must wait 1d4 {g|Encyclopedia:Combat_Round}rounds{/g} between uses.");
+                bp.m_Icon = FireBreath.m_Icon;
+                bp.AddComponent<AbilityDeliverProjectile>(c => {
+                    c.m_Projectiles = new BlueprintProjectileReference[] { NecromancyCone50 };
+                    c.Type = AbilityProjectileType.Cone;
+                    c.m_Length = new Feet() { m_Value = 50 };
+                    c.m_LineWidth = new Feet() { m_Value = 5 };
+                    c.AttackRollBonusStat = StatType.Unknown;
+                });
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Reflex;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionDealDamage() {
+                            m_Type = ContextActionDealDamage.Type.Damage,
+                            DamageType = new DamageTypeDescription() {
+                                Type = DamageType.Energy,
+                                Common = new DamageTypeDescription.CommomData() {
+                                    Reality = 0,
+                                    Alignment = 0,
+                                    Precision = false
+                                },
+                                Physical = new DamageTypeDescription.PhysicalData() {
+                                    Material = 0,
+                                    Form = 0,
+                                    Enhancement = 0,
+                                    EnhancementTotal = 0
+                                },
+                                Energy = DamageEnergyType.NegativeEnergy
+                            },
+                            AbilityType = StatType.Unknown,
+                            EnergyDrainType = EnergyDrainType.Temporary,
+                            Duration = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                m_IsExtendable = true,
+                            },
+                            PreRolledSharedValue = AbilitySharedValue.Damage,
+                            Value = new ContextDiceValue() {
+                                DiceType = DiceType.D8,
+                                DiceCountValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 12,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                            },
+                            IsAoE = true,
+                            HalfIfSaved = true,
+                            ResultSharedValue = AbilitySharedValue.Damage,
+                            CriticalSharedValue = AbilitySharedValue.Damage
+                        },
+                        new ContextActionConditionalSaved() {
+                            Succeed = Helpers.CreateActionList(),
+                            Failed = Helpers.CreateActionList(
+                                new ContextActionApplyBuff() {
+                                    m_Buff = BlindBuff,
+                                    DurationValue = new ContextDurationValue() {
+                                        Rate = DurationRate.Rounds,
+                                        DiceType = DiceType.D4,
+                                        DiceCountValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 1,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                        BonusValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                    },
+                                }
+                                )
+                        },
+                        new ContextActionOnContextCaster() {
+                            Actions = Helpers.CreateActionList(
+                                new ContextActionApplyBuff() {
+                                    m_Buff = BreathWeaponCooldownBuff.ToReference<BlueprintBuffReference>(),
+                                    DurationValue = new ContextDurationValue() {
+                                        Rate = DurationRate.Rounds,
+                                        DiceType = DiceType.D4,
+                                        DiceCountValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 1,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                        BonusValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                    },
+                                    IsNotDispelable = true
+                                }
+                                )
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { BreathWeaponCooldownBuff.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Projectile;
+                bp.CanTargetPoint = true;
+                bp.CanTargetEnemies = true;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.BreathWeapon;
+                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Extend | Metamagic.Heighten | Metamagic.Selective | Metamagic.Bolstered;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
 
 
 
@@ -221,9 +373,7 @@ namespace ExpandedContent.Tweaks.Spells {
                     "a +8 polymorph bonus to {g|Encyclopedia:Constitution}Constitution{/g}, a +8 natural armor bonus to {g|Encyclopedia:Armor_Class}AC{/g}, immunity to " +
                     "difficult terrain, {g|Encyclopedia:Blindsense}blindsense{/g} with a range of 60 feet, a breath weapon, {g|Encyclopedia:Damage_Reduction}damage reduction{/g} 10/magic, " +
                     "frightful presence ({g|Encyclopedia:DC}DC{/g} equal to the DC for this spell), and elemental resistances. Your movement {g|Encyclopedia:Speed}speed{/g} is increased " +
-                    "by 10 feet. You also gain one bite ({g|Encyclopedia:Dice}2d8{/g}), two claws (2d6), two wing {g|Encyclopedia:Attack}attacks{/g} (1d8), and one tail slap attack (2d6). " +
-                    "You can use the breath weapon as often as you like, but you must wait 1d4 {g|Encyclopedia:Combat_Round}rounds{/g} between uses. All breath weapons deal 12d8 points " +
-                    "of {g|Encyclopedia:Damage}damage{/g} and allow a {g|Encyclopedia:Saving_Throw}Reflex save{/g} for half damage.");
+                    "by 10 feet. \nThe weapons and abilities granted by this spell vary depending on form taken.");
                 bp.AddComponent<AbilityVariants>(c => {
                     c.m_Variants = new BlueprintAbilityReference[] {
 
@@ -263,24 +413,47 @@ namespace ExpandedContent.Tweaks.Spells {
             //81ee7affc01ade84e9646a8f0862d708
 
 
-            CreateFormAbilityVariant("Havoc", 
-                "Test text", 
-                HavocDragonLargeBarks, FormOfTheExoticDragonBreathHavoc, Size.Medium, "50a55eca7295aa7428bb1e068bd9ef11", Bite1d8, Claw1d6, Tail1d8);
+            CreateFormAbilityVariant("Havoc",
+                "This form also grants sonic damage immunity, a sonic breath attack that only damages enemies, and the following natural attacks, one bite ({g|Encyclopedia:Dice}1d8{/g}), two claws (1d6), and one tail slap attack (1d8). \nUnlike other forms of this spell, size is set to medium.", 
+                HavocDragonLargeBarks, FormOfTheExoticDragonBreathHavoc, Size.Medium, DamageEnergyType.Sonic, "50a55eca7295aa7428bb1e068bd9ef11", Bite1d8, Claw1d6, Tail1d8);
 
 
 
-            //19f52bbfe67ce304ebfb5ff6c7f98af7
             CreateFormAbilityVariant("Umbral",
-                "Test text",
-                UmbralDragonBarks, Testbreath, Size.Huge, "81ee7affc01ade84e9646a8f0862d708", BiteHuge2d8, ClawHuge2d6, WingHuge1d8, WingHuge1d8, TailHuge2d6);
+                "This form also grants negative energy damage immunity, a negative energy breath attack that also blinds for 1d4 rounds on a failed save, negaive energy affinity, and the following natural attacks, one bite ({g|Encyclopedia:Dice}2d8{/g}), two claws (2d6), two wing {g|Encyclopedia:Attack}attacks{/g} (1d8), and one tail slap attack (2d6).",
+                UmbralDragonBarks, FormOfTheExoticDragonBreathUmbral, Size.Huge, DamageEnergyType.NegativeEnergy, "19f52bbfe67ce304ebfb5ff6c7f98af7", BiteHuge2d8, ClawHuge2d6, WingHuge1d8, WingHuge1d8, TailHuge2d6);
+            var FormOfTheExoticDragonBuffUmbral = Resources.GetModBlueprint<BlueprintBuff>("FormOfTheExoticDragonBuffUmbral");
+            FormOfTheExoticDragonBuffUmbral.TemporaryContext(bp => {
+                bp.AddComponent<AddFeatureIfHasFact>(c => {
+                    c.m_CheckedFact = NegativeEnergyAffinity.ToReference<BlueprintUnitFactReference>();
+                    c.m_Feature = NegativeEnergyAffinity.ToReference<BlueprintUnitFactReference>();
+                    c.Not = true;
+                });
+            });
 
-
-
-            //fde8f314998429842ad66fa78433d5c0
+            //fde8f314998429842ad66fa78433d5c0 to big
             CreateFormAbilityVariant("Crag Linnorm",
-                "Test text",
-                CragLinnormBarks, Testbreath, Size.Huge, "fde8f314998429842ad66fa78433d5c0", Gore4d6, ClawHuge2d6, BiteHuge2d8, Tail4d6);
-
+                "This form also grants fire damage immunity, a fire breath attack, fast healing 5, and the following natural attacks, one large bite ({g|Encyclopedia:Dice}4d6{/g}), two claw attacks (2d6), and one tail slap attack (4d6).",
+                CragLinnormBarks, FireBreath, Size.Huge, DamageEnergyType.Fire,"fde8f314998429842ad66fa78433d5c0", Bite4d10, ClawHuge2d6, Tail4d6);
+            var FormOfTheExoticDragonBuffCragLinnorm = Resources.GetModBlueprint<BlueprintBuff>("FormOfTheExoticDragonBuffCragLinnorm");
+            FormOfTheExoticDragonBuffCragLinnorm.TemporaryContext(bp => {
+                bp.AddComponent<AddEffectFastHealing>(c => {
+                    c.Heal = 5;
+                    c.Bonus = new ContextValue() {
+                        ValueType = ContextValueType.Simple,
+                        Value = 0,
+                        ValueRank = AbilityRankType.Default,
+                        ValueShared = AbilitySharedValue.Damage,
+                        Property = UnitProperty.None
+                    };
+                });
+                //This did not work :(
+                //bp.AddComponent<ChangeUnitSize>(c => {
+                //    c.Size = Size.Fine;
+                //    c.m_Type = ChangeUnitSize.ChangeType.Delta;
+                //    c.SizeDelta = -1;
+                //});
+            });
 
 
 
@@ -293,7 +466,7 @@ namespace ExpandedContent.Tweaks.Spells {
 
 
         }
-        private static void CreateFormAbilityVariant(string variantName, string descriptionSecondHalf, BlueprintUnitAsksListReference unitAsksList, BlueprintAbility breathWeapon, Size size ,string prefab, BlueprintItemWeapon headAttack, BlueprintItemWeapon clawAttack, params BlueprintItemWeapon[] otherWeapons) {
+        private static void CreateFormAbilityVariant(string variantName, string descriptionSecondHalf, BlueprintUnitAsksListReference unitAsksList, BlueprintAbility breathWeapon, Size size , DamageEnergyType energyimmunity, string prefab, BlueprintItemWeapon headAttack, BlueprintItemWeapon clawAttack, params BlueprintItemWeapon[] otherWeapons) {
             var FormOfTheExoticDragonAbility = Resources.GetModBlueprint<BlueprintAbility>("FormOfTheExoticDragonAbility");
             var FormOfTheDragonIIIBlackBuff = Resources.GetBlueprint<BlueprintBuff>("c231e0cf7c203644d81e665d6115ae69");
             var FormOfTheDragonIIIBlackPolymorph = Resources.GetBlueprint<BlueprintBuff>("c231e0cf7c203644d81e665d6115ae69").GetComponent<Polymorph>();
@@ -312,7 +485,9 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.AddComponent<SpellDescriptorComponent>(c => { c.Descriptor = SpellDescriptor.Polymorph; });
                 bp.AddComponent(FormOfTheDragonIIIBlackBuff.GetComponent<AddDamageResistancePhysical>());
                 bp.AddComponent<Blindsense>(c => { c.Range = new Feet(60); c.Blindsight = false; });
-                //Energy stuff
+                bp.AddComponent<AddEnergyImmunity>(c => {
+                    c.Type = energyimmunity;
+                });
                 bp.AddComponent(FormOfTheDragonIIIBlackBuff.GetComponent<BuffMovementSpeed>());
                 bp.AddComponent<ReplaceAsksList>(c => { c.m_Asks = unitAsksList; });
                 bp.AddComponent(FormOfTheDragonIIIBlackBuff.GetComponent<ReplaceSourceBone>());

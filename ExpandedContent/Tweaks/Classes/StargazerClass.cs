@@ -12153,6 +12153,7 @@ namespace ExpandedContent.Tweaks.Classes {
             var UnletteredArcanistArchetype = Resources.GetBlueprint<BlueprintArchetype>("44f3ba33839a87f48a66b2b9b2f7c69b");
             var EldritchFontArchetype = Resources.GetBlueprint<BlueprintArchetype>("2f35608fc073c04448a9c162a20852ce");
             var NatureMageArchetype = Resources.GetBlueprint<BlueprintArchetype>("26185cfb81b34e778ad370407300de9a");
+            var MagicDeceiverArchetype = Resources.GetBlueprint<BlueprintArchetype>("5c77110cd0414e7eb4c2e485659c9a46");
             var CrossbloodedArchetype = Resources.GetBlueprint<BlueprintArchetype>("e66a112ab57f69e418f1f11d5d2f3248");
             var EldritchScionArchetype = Resources.GetBlueprint<BlueprintArchetype>("d078b2ef073f2814c9e338a789d97b73");
             var EldritchScoundrelArchetype = Resources.GetBlueprint<BlueprintArchetype>("57f93dd8423c97c49989501281296c4a");
@@ -12178,6 +12179,7 @@ namespace ExpandedContent.Tweaks.Classes {
             var UnletteredArcanistSpellbook = Resources.GetBlueprint<BlueprintSpellbook>("b242f991107095d41ae129f46ed5d97a");
             var EldritchFontSpellbook = Resources.GetBlueprint<BlueprintSpellbook>("67b574abd845f3e42983ea6eb53a6f90");
             var NatureMageSpellbook = Resources.GetBlueprint<BlueprintSpellbook>("3ed7e38dc8134af28e1a2b105f74fb7b");
+            var MagicDeceiverSpellbook = Resources.GetBlueprint<BlueprintSpellbook>("587066af76a74f47a904bb017697ba08");
             var BardSpellbook = Resources.GetBlueprint<BlueprintSpellbook>("bc04fc157a8801d41b877ad0d9af03dd");
             var BloodragerSpellbook = Resources.GetBlueprint<BlueprintSpellbook>("e19484252c2f80e4a9439b3681b20f00");
             var CrossbloodedSpellbook = Resources.GetBlueprint<BlueprintSpellbook>("cb0be5988031ebe4c947086a1170eacc");
@@ -12265,6 +12267,11 @@ namespace ExpandedContent.Tweaks.Classes {
                     c.m_Archetype = NatureMageArchetype.ToReference<BlueprintArchetypeReference>();
                     c.HideInUI = false;
                 });
+                bp.AddComponent<PrerequisiteNoArchetype>(c => {
+                    c.m_CharacterClass = ArcanistClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.HideInUI = false;
+                });
                 bp.HideInUI = true;
                 bp.HideInCharacterSheetAndLevelUp = false;
                 bp.HideNotAvailibleInUI = true;
@@ -12339,6 +12346,29 @@ namespace ExpandedContent.Tweaks.Classes {
                 bp.HideNotAvailibleInUI = true;
                 bp.IsClassFeature = true;
                 bp.m_Spellbook = UnletteredArcanistSpellbook.ToReference<BlueprintSpellbookReference>();
+            });
+            var StargazerArcanistMagicDeceiver = Helpers.CreateBlueprint<BlueprintFeatureReplaceSpellbook>("StargazerArcanistMagicDeceiver", bp => {
+                bp.SetName("Arcanist");
+                bp.SetDescription("At 1st level, and at every level thereafter, a Stargazer gains new {g|Encyclopedia:Spell}spells{/g} per day as if he had also gained a level in a spellcasting class " +
+                    "he belonged to before adding the prestige class. He does not, however, gain any other benefit a character of that class would have gained, except for additional spells per day, " +
+                    "spells known, and an increased effective level of spellcasting. If a character had more than one spellcasting class before becoming a Stargazer, he must decide to which class " +
+                    "he adds the new level for purposes of determining spells per day.");
+                bp.AddComponent<PrerequisiteClassSpellLevel>(c => {
+                    c.m_CharacterClass = ArcanistClass.ToReference<BlueprintCharacterClassReference>();
+                    c.RequiredSpellLevel = 3;
+                    c.HideInUI = false;
+                });
+                bp.AddComponent<PrerequisiteArchetypeLevel>(c => {
+                    c.m_CharacterClass = ArcanistClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.Level = 1;
+                    c.HideInUI = false;
+                });
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = false;
+                bp.HideNotAvailibleInUI = true;
+                bp.IsClassFeature = true;
+                bp.m_Spellbook = MagicDeceiverSpellbook.ToReference<BlueprintSpellbookReference>();
             });
             var StargazerBard = Helpers.CreateBlueprint<BlueprintFeatureReplaceSpellbook>("StargazerBard", bp => {
                 bp.SetName("Bard");
