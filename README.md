@@ -201,6 +201,7 @@ New Spells
 - Kings Castle
 - Moonstruck
 - Form of the Exotic Dragon
+- Moment of Prescience
 
 
 Compatible with all mods as far as I am aware, extra features are unlocked if used with these mods
