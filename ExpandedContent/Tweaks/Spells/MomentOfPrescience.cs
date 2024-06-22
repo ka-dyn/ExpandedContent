@@ -566,6 +566,25 @@ namespace ExpandedContent.Tweaks.Spells {
                 .Where(level => level.SpellLevel == 8)
                 .ForEach(level => level.Spells.Clear());
             LuckDomainSpellList.SpellsByLevel[8].m_Spells.Add(MomentOfPrescienceAbility.ToReference<BlueprintAbilityReference>());
+            var luckdomainstochangetext = new BlueprintProgression[] {
+                Resources.GetBlueprint<BlueprintProgression>("8bd8cfad69085654b9118534e4aa215e"),
+                Resources.GetBlueprint<BlueprintProgression>("1ba7fc652568a524db218ccff2f9ed90"),
+                Resources.GetBlueprint<BlueprintProgression>("1f26551e7e61436c8ee188064038a896"),
+            };
+            foreach(var domain in luckdomainstochangetext) {
+                domain.SetDescription("You are infused with luck, and your mere presence can spread good fortune.\r\nBit of Luck: You can touch a willing creature " +
+                    "as a {g|Encyclopedia:Standard_Actions}standard action{/g}, giving it a bit of luck. For the next {g|Encyclopedia:Combat_Round}round{/g}, any time " +
+                    "the target {g|Encyclopedia:Dice}rolls{/g} a d20, she may roll twice and take the more favorable result. You can use this ability a number of times " +
+                    "per day equal to 3 + your {g|Encyclopedia:Wisdom}Wisdom{/g} modifier.\r\nDivine Fortune: At 6th level, as a standard {g|Encyclopedia:CA_Types}action{/g}, " +
+                    "you can bless yourself with divine luck. For the next half your level in the class that gave you access to this domain rounds you roll two times on " +
+                    "every d20 roll and take the best result. You can use this ability once per day at 6th level, and one additional time per day for every 6 levels in " +
+                    "the class that gave you access to this domain beyond 6th.\r\nDomain {g|Encyclopedia:Spell}Spells{/g}: {g|SpellsTrueStrike}true strike{/g}, " +
+                    "{g|SpellsAid}aid{/g}, {g|SpellsProtectionFromEnergy}protection from energy{/g}, {g|SpellsCommunalProtectionFromEnergy}protection from energy, communal{/g}, " +
+                    "{g|SpellsBreakEnchantment}break enchantment{/g}, {g|SpellsMassCatsGrace}cat's grace, mass{/g}, {g|SpellsRestorationGreater}restoration, greater{/g}, " +
+                    "moment of prescience, {g|SpellsMassHeal}heal, mass{/g}.");
+            }
+
+
         }
     }
 }
