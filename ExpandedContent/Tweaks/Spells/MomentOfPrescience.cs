@@ -39,7 +39,6 @@ namespace ExpandedContent.Tweaks.Spells {
             var DivinationSchool = Resources.GetBlueprint<BlueprintProgression>("d7d18ce5c24bd324d96173fdc3309646");
             var MomentOfPrescienceBuffIcon = DivinationSchool.Icon;
 
-            //Might need to replace ContextActionRemoveSelf with ContextActionRemoveBuff???
             var MomentOfPrescienceAttackRollBuff = Helpers.CreateBuff("MomentOfPrescienceAttackRollBuff", bp => {
                 bp.SetName("Moment of Prescience - Attack Roll");
                 bp.SetDescription("Your next attack roll gains an insight bonus equal to your caster level (maximum +25). if you apply another moment of prescience, this will be removed without effect.");
