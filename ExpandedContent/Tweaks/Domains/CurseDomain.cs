@@ -122,7 +122,7 @@ namespace ExpandedContent.Tweaks.Domains {
             var BreakEnchantmentSpell = Resources.GetBlueprint<BlueprintAbility>("7792da00c85b9e042a0fdfc2b66ec9a8");
             var EyebiteSpell = Resources.GetBlueprint<BlueprintAbility>("3167d30dd3c622c46b0c0cb242061642");
             var RestorationGreaterSpell = Resources.GetBlueprint<BlueprintAbility>("fafd77c6bfa85c04ba31fdc1c962c914");
-            var EuphoricTranquilitySpell = Resources.GetBlueprint<BlueprintAbility>("740d943e42b60f64a8de74926ba6ddf7");
+            var MomentOfPrescienceAbility = Resources.GetModBlueprint<BlueprintAbility>("MomentOfPrescienceAbility");
             var HealMassSpell = Resources.GetBlueprint<BlueprintAbility>("867524328b54f25488d371214eea0d90");
             var CurseDomainSpellList = Helpers.CreateBlueprint<BlueprintSpellList>("CurseDomainSpellList", bp => {
                 bp.SpellsByLevel = new SpellLevelList[10] {
@@ -175,7 +175,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     new SpellLevelList(8) {
                         SpellLevel = 8,
                         m_Spells = new List<BlueprintAbilityReference>() {
-                            EuphoricTranquilitySpell.ToReference<BlueprintAbilityReference>()
+                            MomentOfPrescienceAbility.ToReference<BlueprintAbilityReference>()
                         }
                     },
                     new SpellLevelList(9) {
@@ -259,7 +259,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     "{g|Encyclopedia:CA_Types}action{/g}, you can bless yourself with divine luck. For the next half your level in the class that gave you access to this domain rounds you " +
                     "roll two times on every d20 roll and take the best result. You can use this ability once per day at 6th level, and one additional time per day for every 6 levels in the " +
                     "class that gave you access to this domain beyond 6th.\nDomain {g|Encyclopedia:Spell}Spells{/g}: bane, aid, bestow curse, communal protection from energy, break enchantment, " +
-                    "eyebite, restoration greater, euphoric tranquility, mass heal.");
+                    "eyebite, restoration greater, moment of prescience, mass heal.");
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Domain };
                 bp.IsClassFeature = true;
                 bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
@@ -331,7 +331,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     "{g|Encyclopedia:CA_Types}action{/g}, you can bless yourself with divine luck. For the next half your level in the class that gave you access to this domain rounds you " +
                     "roll two times on every d20 roll and take the best result. You can use this ability once per day at 6th level, and one additional time per day for every 6 levels in the " +
                     "class that gave you access to this domain beyond 6th.\nDomain {g|Encyclopedia:Spell}Spells{/g}: bane, aid, bestow curse, communal protection from energy, break enchantment, " +
-                    "eyebite, restoration greater, euphoric tranquility, mass heal.");
+                    "eyebite, restoration greater, moment of prescience, mass heal.");
                 bp.Groups = new FeatureGroup[] { FeatureGroup.ClericSecondaryDomain };
                 bp.IsClassFeature = true;
                 bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
@@ -506,7 +506,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     "{g|Encyclopedia:CA_Types}action{/g}, you can bless yourself with divine luck. For the next half your level in the class that gave you access to this domain rounds you " +
                     "roll two times on every d20 roll and take the best result. You can use this ability once per day at 6th level, and one additional time per day for every 6 levels in the " +
                     "class that gave you access to this domain beyond 6th.\nDomain {g|Encyclopedia:Spell}Spells{/g}: bane, aid, bestow curse, communal protection from energy, break enchantment, " +
-                    "eyebite, restoration greater, euphoric tranquility, mass heal.");
+                    "eyebite, restoration greater, moment of prescience, mass heal.");
                 bp.Groups = new FeatureGroup[] { FeatureGroup.SeparatistSecondaryDomain };
                 bp.IsClassFeature = true;
                 bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
