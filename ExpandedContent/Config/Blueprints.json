@@ -3433,7 +3433,19 @@
 
     "FormOfTheExoticDragonBreathHavoc": "1ae1a745-ed2b-42a6-b081-6b7fff7ed1c4",
     "FormOfTheExoticDragonBreathUmbral": "52d7900f-732c-45eb-adb7-e7d260d851a8",
-    "StargazerArcanistMagicDeceiver": "0cf42996-ca65-4f48-9d5b-4d02b2c7d574"
+    "StargazerArcanistMagicDeceiver": "0cf42996-ca65-4f48-9d5b-4d02b2c7d574",
+
+    "MomentOfPrescienceAbility": "baef741f-5a94-4d69-ad8b-f15fd87cb4a7",
+    "MomentOfPrescienceACAbility": "b4044e04-23a9-4d57-b326-1fd6d6530c94",
+    "MomentOfPrescienceACBuff": "05a0bed5-aeb6-44d1-8e33-035d25574127",
+    "MomentOfPrescienceAttackRollAbility": "506564f4-34fc-4a9a-b8b6-6d083ac24258",
+    "MomentOfPrescienceAttackRollBuff": "66f517bb-9ae2-44dc-a7b7-99594b83d016",
+    "MomentOfPrescienceBaseBuff": "102c9492-2c5d-42cb-9456-6d182e42d5fe",
+    "MomentOfPrescienceBuffAbility": "45b2163b-48ab-4d6c-8d10-30def3c66730",
+    "MomentOfPrescienceSavingThrowAbility": "f7c558d8-d2a9-446b-876f-e016db7eeb37",
+    "MomentOfPrescienceSavingThrowBuff": "297b1807-5656-4879-901e-6b898b9663f1",
+    "MomentOfPrescienceSkillCheckAbility": "98107e94-9afe-43df-8c3c-964e051c7807",
+    "MomentOfPrescienceSkillCheckBuff": "a1485d01-0172-4ee8-97b7-894430a3d92a"
 
 
 
