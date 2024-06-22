@@ -140,6 +140,7 @@ namespace ExpandedContent.Tweaks {
                 Spells.KingsCastle.AddKingsCastle();
                 Spells.Moonstruck.AddMoonstruck();
                 Spells.FormOfTheExoticDragon.AddFormOfTheExoticDragon();
+                Spells.MomentOfPrescience.AddMomentOfPrescience();
 
                 Miscellaneous.AlchemistDiscoveries.MutagenDiscovery.AddMutagenDiscovery();
                 Miscellaneous.AlchemistDiscoveries.MindchemistSkillDiscovery.AddMindchemistSkillDiscovery();

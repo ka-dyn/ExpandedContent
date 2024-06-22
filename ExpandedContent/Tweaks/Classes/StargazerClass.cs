@@ -13867,6 +13867,7 @@ namespace ExpandedContent.Tweaks.Classes {
                     StargazerArcanistEldritchFont.ToReference<BlueprintFeatureReference>(),
                     StargazerArcanistNatureMage.ToReference<BlueprintFeatureReference>(),
                     StargazerArcanistUnletteredArcanist.ToReference<BlueprintFeatureReference>(),
+                    StargazerArcanistMagicDeceiver.ToReference<BlueprintFeatureReference>(),
                     StargazerBard.ToReference<BlueprintFeatureReference>(),
                     StargazerBloodrager.ToReference<BlueprintFeatureReference>(),
                     StargazerCrossblooded.ToReference<BlueprintFeatureReference>(),
