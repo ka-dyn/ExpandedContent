@@ -74,8 +74,10 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                     new SpellLevelList(7){ },
                     new SpellLevelList(8){ },
                     new SpellLevelList(9){ },
-
+                    new SpellLevelList(10){ }
                 };
+                bp.IsMythic = false;
+                bp.m_MaxLevel = 7;
             });
             var DrakeSpellbook = Helpers.CreateBlueprint<BlueprintSpellbook>("DrakeSpellbook", bp => {
                 bp.Name = Helpers.CreateString($"DrakeSpellbook.Name", "Drake");
