@@ -20,14 +20,14 @@ namespace ExpandedContent.Utilities {
             var NewLevel5Spells = newspelllist.SpellsByLevel[5].m_Spells;
             var NewLevel6Spells = newspelllist.SpellsByLevel[6].m_Spells;
             foreach (var spell in Level1Spells) {
-                if ((spell.SpellDescriptor & (SpellDescriptor.Good)) != 0) {
+                if (spell.SpellDescriptor.HasFlag(SpellDescriptor.Good) && !spell.SpellDescriptor.HasAnyFlag(SpellDescriptor.Chaos | SpellDescriptor.Law)) {
                     if (!NewLevel1Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) {
                         NewLevel1Spells.Add(spell.ToReference<BlueprintAbilityReference>());
                     }
                 }
             }
             foreach (var spell in Level2Spells) {
-                if ((spell.SpellDescriptor & (SpellDescriptor.Good)) != 0) {
+                if (spell.SpellDescriptor.HasFlag(SpellDescriptor.Good) && !spell.SpellDescriptor.HasAnyFlag(SpellDescriptor.Chaos | SpellDescriptor.Law)) {
                     if ((!NewLevel1Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) && 
                         (!NewLevel2Spells.Contains(spell.ToReference<BlueprintAbilityReference>()))) {
                         NewLevel2Spells.Add(spell.ToReference<BlueprintAbilityReference>());
@@ -35,7 +35,7 @@ namespace ExpandedContent.Utilities {
                 }
             }
             foreach (var spell in Level3Spells) {
-                if ((spell.SpellDescriptor & (SpellDescriptor.Good)) != 0) {
+                if (spell.SpellDescriptor.HasFlag(SpellDescriptor.Good) && !spell.SpellDescriptor.HasAnyFlag(SpellDescriptor.Chaos | SpellDescriptor.Law)) {
                     if ((!NewLevel1Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
                         (!NewLevel2Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
                         (!NewLevel3Spells.Contains(spell.ToReference<BlueprintAbilityReference>()))) {
@@ -44,7 +44,7 @@ namespace ExpandedContent.Utilities {
                 }
             }
             foreach (var spell in Level4Spells) {
-                if ((spell.SpellDescriptor & (SpellDescriptor.Good)) != 0) {
+                if (spell.SpellDescriptor.HasFlag(SpellDescriptor.Good) && !spell.SpellDescriptor.HasAnyFlag(SpellDescriptor.Chaos | SpellDescriptor.Law)) {
                     if ((!NewLevel1Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
                         (!NewLevel2Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
                         (!NewLevel3Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
@@ -54,7 +54,7 @@ namespace ExpandedContent.Utilities {
                 }
             }
             foreach (var spell in Level5Spells) {
-                if ((spell.SpellDescriptor & (SpellDescriptor.Good)) != 0) {
+                if (spell.SpellDescriptor.HasFlag(SpellDescriptor.Good) && !spell.SpellDescriptor.HasAnyFlag(SpellDescriptor.Chaos | SpellDescriptor.Law)) {
                     if ((!NewLevel1Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
                         (!NewLevel2Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
                         (!NewLevel3Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
@@ -65,7 +65,7 @@ namespace ExpandedContent.Utilities {
                 }
             }
             foreach (var spell in Level6Spells) {
-                if ((spell.SpellDescriptor & (SpellDescriptor.Good)) != 0) {
+                if (spell.SpellDescriptor.HasFlag(SpellDescriptor.Good) && !spell.SpellDescriptor.HasAnyFlag(SpellDescriptor.Chaos | SpellDescriptor.Law)) {
                     if ((!NewLevel1Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
                         (!NewLevel2Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
                         (!NewLevel3Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
