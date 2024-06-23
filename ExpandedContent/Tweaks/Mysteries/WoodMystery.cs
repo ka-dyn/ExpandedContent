@@ -722,7 +722,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     "wielding a weapon made of or mostly consisting of wood (such as a bow, club, quarterstaff, or spear). This bonus increases by +1 at 5th level and every five " +
                     "levels thereafter.");
                 bp.AddComponent<WeaponMultipleCategoriesContextAttackBonus>(c => {                    
-                    c.Descriptor = ModifierDescriptor.Circumstance;
+                    c.Descriptor = ModifierDescriptor.Competence;
                     c.Categories = new WeaponCategory[] { 
                         WeaponCategory.Greatclub, 
                         WeaponCategory.Club, 
