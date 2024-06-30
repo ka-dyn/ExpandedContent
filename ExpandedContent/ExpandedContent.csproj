@@ -505,6 +505,7 @@
     <Compile Include="Tweaks\Spells\DustOfTwilight.cs" />
     <Compile Include="Tweaks\Spells\ArcaneConcordance.cs" />
     <Compile Include="Tweaks\Spells\FormOfTheExoticDragon.cs" />
+    <Compile Include="Tweaks\Spells\ShadowStep.cs" />
     <Compile Include="Tweaks\Spells\MomentOfPrescience.cs" />
     <Compile Include="Tweaks\Spells\Moonstruck.cs" />
     <Compile Include="Tweaks\Spells\PlantShape.cs" />

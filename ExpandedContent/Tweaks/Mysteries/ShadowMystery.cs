@@ -45,6 +45,7 @@ using Kingmaker.AI.Blueprints.Considerations;
 using Kingmaker.Craft;
 using Kingmaker.UnitLogic.Buffs.Components;
 using Kingmaker.UnitLogic.Abilities.Components.AreaEffects;
+using Kingmaker.UnitLogic.ActivatableAbilities.Restrictions;
 
 
 
@@ -57,12 +58,14 @@ namespace ExpandedContent.Tweaks.Mysteries {
             var ArcanistClass = Resources.GetBlueprint<BlueprintCharacterClass>("52dbfd8505e22f84fad8d702611f60b7");
             var MagicDeceiverArchetype = Resources.GetBlueprint<BlueprintArchetype>("5c77110cd0414e7eb4c2e485659c9a46");
             var ShadowMysteryIcon = AssetLoader.LoadInternal("Skills", "Icon_OracleShadowMystery.png");
+            var OracleRevelationCloakOfDarknessIcon = AssetLoader.LoadInternal("Skills", "Icon_OracleRevelationCloakOfDarkness.jpg");
+
 
             //Spelllist
             var VanishSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("f001c73999fb5a543a199f890108d936");
             var InvisibilitySpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("89940cde01689fb46946b2f8cd7b66b7");
             var SeeInvisibilityCommuninalSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("1a045f845778dc54db1c2be33a8c3c0a");
-            //var ShadowStepSpell = Resources.GetBlueprint<BlueprintAbility>("");//Need to make this
+            var ShadowStepAbility = Resources.GetBlueprint<BlueprintAbility>("ShadowStepAbility");
             var VampiricShadowShieldSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("a34921035f2a6714e9be5ca76c5e34b5");
             var DispelMagicGreaterSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("f0f761b808dc4b149b08eaf44b99f633");
             var InvisibilityMassSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("98310a099009bbd4dbdf66bcef58b4cd");
@@ -91,7 +94,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 });
                 bp.AddComponent<AddKnownSpell>(c => {
                     c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
-                    c.m_Spell = InvisibilitySpell;//Replace is CO+ is installed
+                    c.m_Spell = InvisibilitySpell;
                     c.SpellLevel = 2;
                 });
                 bp.AddComponent<AddKnownSpell>(c => {
@@ -101,7 +104,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 });
                 bp.AddComponent<AddKnownSpell>(c => {
                     c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
-                    c.m_Spell = ShadowStepSpell;
+                    c.m_Spell = ShadowStepAbility.ToReference<BlueprintAbilityReference>();
                     c.SpellLevel = 4;
                 });
                 bp.AddComponent<AddKnownSpell>(c => {
@@ -464,6 +467,538 @@ namespace ExpandedContent.Tweaks.Mysteries {
             });
             OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationArmyOfDarknessFeature.ToReference<BlueprintFeatureReference>());
 
+            //Cloak of Darkness
+            var OracleRevelationCloakOfDarknessResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("OracleRevelationCloakOfDarknessResource", bp => {
+                bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
+                    BaseValue = 0,
+                    IncreasedByLevel = true,
+                    m_Class = new BlueprintCharacterClassReference[] {
+                        OracleClass.ToReference<BlueprintCharacterClassReference>(),
+                        ArcanistClass.ToReference<BlueprintCharacterClassReference>()
+                    },
+                    m_Archetypes = new BlueprintArchetypeReference[] {
+                        MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>()
+                    },
+                    LevelIncrease = 1,
+                    StartingIncrease = 1,
+                };
+            });
+            var OracleRevelationCloakOfDarknessBuff = Helpers.CreateBuff("OracleRevelationCloakOfDarknessBuff", bp => {
+                bp.SetName("Coat of Darkness");
+                bp.SetDescription("You conjure a cloak of shadowy darkness that grants you a +4 armor bonus and a +2 circumstance bonus on Stealth checks. " +
+                    "At 7th level, and every four levels thereafter, these bonuses increase by +2. You can use this cloak for 1 hour per day per oracle level. " +
+                    "The duration does not need to be consecutive, but it must be spent in 1-hour increments.");
+                bp.m_Icon = OracleRevelationCloakOfDarknessIcon;
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.DelayedStartPlusDivStep;
+                    c.m_StartLevel = 7;
+                    c.m_StepLevel = 4;
+                    c.m_Class = new BlueprintCharacterClassReference[] {
+                        OracleClass.ToReference<BlueprintCharacterClassReference>(),
+                        ArcanistClass.ToReference<BlueprintCharacterClassReference>(),
+                    };
+                    c.Archetype = MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>();
+                });
+                bp.AddComponent<ContextCalculateSharedValue>(c => {//X2
+                    c.ValueType = AbilitySharedValue.Heal;
+                    c.Value = new ContextDiceValue() {
+                        DiceType = DiceType.Zero,
+                        DiceCountValue = new ContextValue() {
+                            ValueType = ContextValueType.Simple,
+                            Value = 0,
+                            ValueRank = AbilityRankType.Default,
+                            ValueShared = AbilitySharedValue.Damage,
+                            Property = UnitProperty.None
+                        },
+                        BonusValue = new ContextValue() {
+                            ValueType = ContextValueType.Rank,
+                            Value = 0,
+                            ValueRank = AbilityRankType.Default,
+                            ValueShared = AbilitySharedValue.Damage,
+                            Property = UnitProperty.None
+                        }
+                    };
+                    c.Modifier = 2;
+                });
+                bp.AddComponent<ContextCalculateSharedValue>(c => {//AC
+                    c.ValueType = AbilitySharedValue.StatBonus;
+                    c.Value = new ContextDiceValue() {
+                        DiceType = DiceType.One,
+                        DiceCountValue = new ContextValue() {
+                            ValueType = ContextValueType.Simple,
+                            Value = 4,
+                            ValueRank = AbilityRankType.Default,
+                            ValueShared = AbilitySharedValue.Damage,
+                            Property = UnitProperty.None
+                        },
+                        BonusValue = new ContextValue() {
+                            ValueType = ContextValueType.Shared,
+                            Value = 0,
+                            ValueRank = AbilityRankType.Default,
+                            ValueShared = AbilitySharedValue.Heal,
+                            Property = UnitProperty.None
+                        }
+                    };
+                    c.Modifier = 1;
+                });
+                bp.AddComponent<ContextCalculateSharedValue>(c => {//Stealth
+                    c.ValueType = AbilitySharedValue.DurationSecond;
+                    c.Value = new ContextDiceValue() {
+                        DiceType = DiceType.One,
+                        DiceCountValue = new ContextValue() {
+                            ValueType = ContextValueType.Simple,
+                            Value = 2,
+                            ValueRank = AbilityRankType.Default,
+                            ValueShared = AbilitySharedValue.Damage,
+                            Property = UnitProperty.None
+                        },
+                        BonusValue = new ContextValue() {
+                            ValueType = ContextValueType.Shared,
+                            Value = 0,
+                            ValueRank = AbilityRankType.Default,
+                            ValueShared = AbilitySharedValue.Heal,
+                            Property = UnitProperty.None
+                        }
+                    };
+                    c.Modifier = 1;
+                });
+                bp.AddComponent<AddContextStatBonus>(c => {
+                    c.Descriptor = ModifierDescriptor.Armor;
+                    c.Stat = StatType.AC;
+                    c.Multiplier = 1;
+                    c.Value = new ContextValue() {
+                        ValueType = ContextValueType.Shared,
+                        Value = 0,
+                        ValueRank = AbilityRankType.Default,
+                        ValueShared = AbilitySharedValue.StatBonus,
+                        Property = UnitProperty.None
+                    };
+                    c.HasMinimal = false;
+                    c.Minimal = 0;
+                });
+                bp.AddComponent<AddContextStatBonus>(c => {
+                    c.Descriptor = ModifierDescriptor.Circumstance;
+                    c.Stat = StatType.SkillStealth;
+                    c.Multiplier = 1;
+                    c.Value = new ContextValue() {
+                        ValueType = ContextValueType.Shared,
+                        Value = 0,
+                        ValueRank = AbilityRankType.Default,
+                        ValueShared = AbilitySharedValue.DurationSecond,
+                        Property = UnitProperty.None
+                    };
+                    c.HasMinimal = false;
+                    c.Minimal = 0;
+                });
+                bp.m_Flags = BlueprintBuff.Flags.StayOnDeath;
+                bp.Stacking = StackingType.Replace;
+                bp.m_AllowNonContextActions = false;
+            });
+            var OracleRevelationCloakOfDarknessAbility = Helpers.CreateBlueprint<BlueprintActivatableAbility>("OracleRevelationCloakOfDarknessAbility", bp => {
+                bp.SetName("Coat of Darkness");
+                bp.SetDescription("You conjure a cloak of shadowy darkness that grants you a +4 armor bonus and a +2 circumstance bonus on Stealth checks. " +
+                    "At 7th level, and every four levels thereafter, these bonuses increase by +2. You can use this cloak for 1 hour per day per oracle level. " +
+                    "The duration does not need to be consecutive, but it must be spent in 1-hour increments.");
+                bp.m_Icon = OracleRevelationCloakOfDarknessIcon;
+                bp.AddComponent<ActivatableAbilityResourceLogic>(c => {
+                    c.SpendType = ActivatableAbilityResourceLogic.ResourceSpendType.OncePerHour;
+                    c.m_RequiredResource = OracleRevelationCloakOfDarknessResource.ToReference<BlueprintAbilityResourceReference>();
+                });
+                bp.m_Buff = OracleRevelationCloakOfDarknessBuff.ToReference<BlueprintBuffReference>();
+                bp.DeactivateIfOwnerDisabled = false;
+                bp.ActivationType = AbilityActivationType.WithUnitCommand;
+                bp.m_ActivateWithUnitCommand = UnitCommand.CommandType.Standard;
+                bp.DeactivateIfCombatEnded = false;
+            });
+            var OracleRevelationCloakOfDarknessFeature = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationCloakOfDarknessFeature", bp => {
+                bp.SetName("Coat of Darkness");
+                bp.SetDescription("You conjure a cloak of shadowy darkness that grants you a +4 armor bonus and a +2 circumstance bonus on Stealth checks. " +
+                    "At 7th level, and every four levels thereafter, these bonuses increase by +2. You can use this cloak for 1 hour per day per oracle level. " +
+                    "The duration does not need to be consecutive, but it must be spent in 1-hour increments.");
+                bp.m_Icon = OracleRevelationCloakOfDarknessIcon;
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { OracleRevelationCloakOfDarknessAbility.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = OracleRevelationCloakOfDarknessResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.AddComponent<PrerequisiteFeaturesFromList>(c => {
+                    c.m_Features = new BlueprintFeatureReference[] {
+                        OracleShadowMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        EnlightnedPhilosopherShadowMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        DivineHerbalistShadowMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        OceansEchoShadowMysteryFeature.ToReference<BlueprintFeatureReference>()
+                    };
+                    c.Amount = 1;
+                });
+                bp.Groups = new FeatureGroup[] { FeatureGroup.OracleRevelation };
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+            OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationCloakOfDarknessFeature.ToReference<BlueprintFeatureReference>());
+
+            //Dark Secrets
+
+
+            var OracleRevelationDarkSecretsSpellList = Helpers.CreateBlueprint<BlueprintSpellList>("OracleRevelationDarkSecretsSpellList", bp => {
+                bp.SpellsByLevel = new SpellLevelList[10] {
+                    new SpellLevelList(0) {
+                        SpellLevel = 0,
+                        m_Spells = new List<BlueprintAbilityReference>()
+                    },
+                    new SpellLevelList(1) {
+                        SpellLevel = 1,
+                        m_Spells = new List<BlueprintAbilityReference>() {
+                            ShieldOfFaithSpell.ToReference<BlueprintAbilityReference>()
+                        }
+                    },
+                    new SpellLevelList(2) {
+                        SpellLevel = 2,
+                        m_Spells = new List<BlueprintAbilityReference>() {
+                            ProtectionFromEvilCommunalSpell.ToReference<BlueprintAbilityReference>()
+                        }
+                    },
+                    new SpellLevelList(3) {
+                        SpellLevel = 3,
+                        m_Spells = new List<BlueprintAbilityReference>() {
+                            PrayerSpell.ToReference<BlueprintAbilityReference>()
+                        }
+                    },
+                    new SpellLevelList(4) {
+                        SpellLevel = 4,
+                        m_Spells = new List<BlueprintAbilityReference>() {
+                            ForcedRpentanceSpell.ToReference<BlueprintAbilityReference>()
+                        }
+                    },
+                    new SpellLevelList(5) {
+                        SpellLevel = 5,
+                        m_Spells = new List<BlueprintAbilityReference>() {
+                            BurstOfGlorySpell.ToReference<BlueprintAbilityReference>()
+                        }
+                    },
+                    new SpellLevelList(6) {
+                        SpellLevel = 6,
+                        m_Spells = new List<BlueprintAbilityReference>() {
+                            SummonMonsterVIBaseSpell.ToReference<BlueprintAbilityReference>()
+                        }
+                    },
+                    new SpellLevelList(7) {
+                        SpellLevel = 7,
+                        m_Spells = new List<BlueprintAbilityReference>() {
+                            HolyWordSpell.ToReference<BlueprintAbilityReference>()
+                        }
+                    },
+                    new SpellLevelList(8) {
+                        SpellLevel = 8,
+                        m_Spells = new List<BlueprintAbilityReference>() {
+                            HolyAuraSpell.ToReference<BlueprintAbilityReference>()
+                        }
+                    },
+                    new SpellLevelList(9) {
+                        SpellLevel = 9,
+                        m_Spells = new List<BlueprintAbilityReference>() {
+                            SummonMonsterIXBaseSpell.ToReference<BlueprintAbilityReference>()
+                        }
+                    },
+                };
+            });
+
+
+
+
+            //Pierce the Shadows??
+
+            //Shadow Mastery
+            var OracleRevelationShadowMasteryFeature = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationShadowMasteryFeature", bp => {
+                bp.SetName("Shadow Mastery");
+                bp.SetDescription("Whenever you cast an illusion spell from the shadow subschool, increase the strength of such spells by 1% per oracle " +
+                    "level you have. You must be at least 7th level to choose this revelation.");
+                bp.m_Icon = OracleRevelationCloakOfDarknessIcon;
+                bp.AddComponent<PrerequisiteFeaturesFromList>(c => {
+                    c.m_Features = new BlueprintFeatureReference[] {
+                        OracleShadowMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        EnlightnedPhilosopherShadowMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        DivineHerbalistShadowMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        OceansEchoShadowMysteryFeature.ToReference<BlueprintFeatureReference>()
+                    };
+                    c.Amount = 1;
+                });
+                bp.AddComponent<PrerequisiteClassLevel>(c => {
+                    c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 7;
+                    c.Group = Prerequisite.GroupType.Any;
+                });
+                bp.AddComponent<PrerequisiteArchetypeLevel>(c => {
+                    c.m_CharacterClass = ArcanistClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.Level = 7;
+                    c.Group = Prerequisite.GroupType.Any;
+                });
+                bp.Groups = new FeatureGroup[] { FeatureGroup.OracleRevelation };
+                bp.Ranks = 1;
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+            var OracleRevelationShadowMasteryCustomProperty = Helpers.CreateBlueprint<BlueprintUnitProperty>("OracleRevelationShadowMasteryCustomProperty", bp => {
+                bp.AddComponent<FactRankGetter>(c => {
+                    c.Settings = new PropertySettings() {
+                        m_Progression = PropertySettings.Progression.AsIs
+                    };
+                    c.m_Fact = OracleRevelationShadowMasteryFeature.ToReference<BlueprintUnitFactReference>();
+                });
+                bp.AddComponent<SummClassLevelGetter>(c => {
+                    c.Settings = new PropertySettings() {
+                        m_Progression = PropertySettings.Progression.AsIs,
+                        m_Negate = false
+                    };
+                    c.m_Class = new BlueprintCharacterClassReference[] {                        
+                        OracleClass.ToReference<BlueprintCharacterClassReference>(),
+                        ArcanistClass.ToReference<BlueprintCharacterClassReference>()
+                    };
+                    c.Archetype = MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>();
+                });
+                bp.BaseValue = 0;
+                bp.OperationOnComponents = BlueprintUnitProperty.MathOperation.Multiply;
+            });
+            var ShadowUnitProperties = new BlueprintUnitProperty[] {
+                Resources.GetBlueprint<BlueprintUnitProperty>("a6500531899940c2803695f26f513caa"),//ShadowEvo
+                Resources.GetBlueprint<BlueprintUnitProperty>("0f813eb338594c5bb840c5583fd29c3d"),//ShadowEvo Greater
+                Resources.GetBlueprint<BlueprintUnitProperty>("fd0106a7d062420f8b3e5bcf03f099db")//Shades
+            };
+            foreach (var prop in ShadowUnitProperties) {
+                prop.AddComponent<CustomPropertyGetter>(c => {
+                    c.Settings = new PropertySettings() {
+                        m_Progression = PropertySettings.Progression.AsIs,
+                        m_StartLevel = 0,
+                        m_StepLevel = 0,
+                        m_Negate = false,
+                        m_LimitType = PropertySettings.LimitType.None,
+                        m_Min = 0,
+                        m_Max = 0,
+                    };
+                    c.m_Property = OracleRevelationShadowMasteryCustomProperty.ToReference<BlueprintUnitPropertyReference>();
+                });
+            }
+            OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationShadowMasteryFeature.ToReference<BlueprintFeatureReference>());
+
+            //Stealth Mastery
+            var SkillFocusStealth = Resources.GetBlueprintReference<BlueprintFeatureReference>("3a8d34905eae4a74892aae37df3352b9");
+            var FastStealth = Resources.GetBlueprintReference<BlueprintFeatureReference>("97a6aa2b64dd21a4fac67658a91067d7");
+            var AssassinHideInPlainSight = Resources.GetBlueprintReference<BlueprintFeatureReference>("fa113a54bc69daf4485ad89315c6cfb6");
+            var OracleRevelationStealthMasteryProgression = Helpers.CreateBlueprint<BlueprintProgression>("OracleRevelationStealthMasteryProgression", bp => {
+                bp.SetName("Stealth Mastery");
+                bp.SetDescription("You gain Skill Focus (Stealth). \nAt 8th level, you gain the fast stealth talent, allowing you to move at full speed while stealthed. " +
+                    "\nAt 16th level, you gain the hide in plain sight assassin class feature. \n An assassin can use the " +
+                    "{g|Encyclopedia:Stealth}Stealth{/g} {g|Encyclopedia:Skills}skill{/g} even while being observed. An assassin can hide himself from view in the open " +
+                    "without having anything to actually hide behind.");
+                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    },
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = ArcanistClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    }
+                };
+                bp.m_Archetypes = new BlueprintProgression.ArchetypeWithLevel[] {
+                    new BlueprintProgression.ArchetypeWithLevel {
+                        m_Archetype = MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>(),
+                        AdditionalLevel = 0
+                    }
+                };
+                bp.LevelEntries = new LevelEntry[] {
+                    Helpers.LevelEntry(1, SkillFocusStealth),
+                    Helpers.LevelEntry(8, FastStealth),
+                    Helpers.LevelEntry(16, AssassinHideInPlainSight)
+                };
+                bp.AddComponent<PrerequisiteFeaturesFromList>(c => {
+                    c.m_Features = new BlueprintFeatureReference[] {
+                        OracleShadowMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        EnlightnedPhilosopherShadowMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        DivineHerbalistShadowMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        OceansEchoShadowMysteryFeature.ToReference<BlueprintFeatureReference>()
+                    };
+                    c.Amount = 1;
+                });
+                bp.GiveFeaturesForPreviousLevels = true;
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = false;
+                bp.IsClassFeature = true;
+                bp.Groups = new FeatureGroup[] { FeatureGroup.OracleRevelation };
+                bp.IsClassFeature = true;
+            });
+            OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationStealthMasteryProgression.ToReference<BlueprintFeatureReference>());
+
+            //Wings of Darkness
+            var BuffWingsDraconicBlack = Resources.GetBlueprint<BlueprintBuff>("ddfe6e85e1eed7a40aa911280373c228");
+            var OracleRevelationWingsOfDarknessBuff = Helpers.CreateBuff("OracleRevelationWingsOfDarknessBuff", bp => {
+                bp.SetName("Wings of Darkness");
+                bp.SetDescription("As a swift action, you can manifest a set of wings that grant you a speed of 60 feet. You can use these wings for 1 minute " +
+                    "per day for each oracle level you have. This duration does not need to be consecutive, but it must be spent in 1-minute increments. At 11th level you can " +
+                    "use these wings for 10 minutes per day for each oracle level you have. At 15th level, you can use the wings indefinitely. You must be at least 7th level to " +
+                    "select this revelation.");
+                bp.m_Icon = BuffWingsDraconicBlack.m_Icon;
+                bp.AddComponent<AddConditionImmunity>(c => {
+                    c.Condition = Kingmaker.UnitLogic.UnitCondition.DifficultTerrain;
+                });
+                bp.AddComponent<BuffDescriptorImmunity>(c => {
+                    c.Descriptor = SpellDescriptor.Ground;
+                });
+                bp.AddComponent<AddEquipmentEntity>(c => {
+                    c.EquipmentEntity = new EquipmentEntityLink() { AssetId = "7cd58db91c36cae46b25efdba2a23f24" };
+                });
+                bp.IsClassFeature = true;
+                bp.m_Flags = BlueprintBuff.Flags.StayOnDeath;
+            });
+            var OracleRevelationWingsOfDarknessResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("OracleRevelationWingsOfDarknessResource", bp => {
+                bp.m_Min = 7;
+                bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
+                    BaseValue = 0,
+                    IncreasedByStat = false,
+                    m_Class = new BlueprintCharacterClassReference[] {
+                        OracleClass.ToReference<BlueprintCharacterClassReference>(),
+                        ArcanistClass.ToReference<BlueprintCharacterClassReference>()
+                    },
+                    m_Archetypes = new BlueprintArchetypeReference[] {
+                        MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>()
+                    },
+                    IncreasedByLevel = true,
+                    StartingLevel = 7,
+                    LevelIncrease = 1,
+                    StartingIncrease = 1,
+                    LevelStep = 1,
+                    PerStepIncrease = 1,
+                };
+            });
+            var OracleRevelationWingsOfDarknessExtraUse99 = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationWingsOfDarknessExtraUse99", bp => {
+                bp.SetName("");
+                bp.SetDescription("");
+                bp.AddComponent<IncreaseResourceAmount>(c => {
+                    c.m_Resource = OracleRevelationWingsOfDarknessResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.Value = 99;
+                });
+                bp.HideInUI = true;
+                bp.HideNotAvailibleInUI = true;
+                bp.IsClassFeature = true;
+            });
+            var OracleRevelationWingsOfDarknessExtraUse9 = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationWingsOfDarknessExtraUse9", bp => {
+                bp.SetName("");
+                bp.SetDescription("");
+                bp.AddComponent<IncreaseResourceAmount>(c => {
+                    c.m_Resource = OracleRevelationWingsOfDarknessResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.Value = 9;
+                });
+                bp.HideInUI = true;
+                bp.HideNotAvailibleInUI = true;
+                bp.IsClassFeature = true;
+                bp.Ranks = 3;
+            });
+            var OracleRevelationWingsOfDarknessUnlimited = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationWingsOfDarknessUnlimited", bp => {
+                bp.SetName("");
+                bp.SetDescription("");
+                bp.HideInUI = true;
+                bp.HideNotAvailibleInUI = true;
+                bp.IsClassFeature = true;
+            });
+            var OracleRevelationWingsOfDarknessAbility = Helpers.CreateBlueprint<BlueprintActivatableAbility>("OracleRevelationWingsOfDarknessAbility", bp => {
+                bp.SetName("Wings of Darkness");
+                bp.SetDescription("As a swift action, you can manifest a set of wings that grant you a speed of 60 feet. You can use these wings for 1 minute " +
+                    "per day for each oracle level you have. This duration does not need to be consecutive, but it must be spent in 1-minute increments. At 11th level you can " +
+                    "use these wings for 10 minutes per day for each oracle level you have. At 15th level, you can use the wings indefinitely. You must be at least 7th level to " +
+                    "select this revelation.");
+                bp.m_Icon = BuffWingsDraconicBlack.m_Icon;                
+                bp.m_Buff = OracleRevelationWingsOfDarknessBuff.ToReference<BlueprintBuffReference>();
+                bp.AddComponent<ActivatableAbilityResourceLogic>(c => {
+                    c.SpendType = ActivatableAbilityResourceLogic.ResourceSpendType.OncePerMinute;
+                    c.m_RequiredResource = OracleRevelationWingsOfDarknessResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_FreeBlueprint = OracleRevelationWingsOfDarknessUnlimited.ToReference<BlueprintUnitFactReference>();
+                });
+                bp.Group = ActivatableAbilityGroup.Wings;
+                bp.IsOnByDefault = false;
+                bp.DeactivateImmediately = true;
+                bp.ActivationType = AbilityActivationType.WithUnitCommand;
+                bp.m_ActivateWithUnitCommand = UnitCommand.CommandType.Swift;
+            });
+            var OracleRevelationWingsOfDarknessFeature = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationWingsOfDarknessFeature", bp => {
+                bp.SetName("Wings of Darkness");
+                bp.SetDescription("As a swift action, you can manifest a set of wings that grant you a speed of 60 feet. You can use these wings for 1 minute " +
+                    "per day for each oracle level you have. This duration does not need to be consecutive, but it must be spent in 1-minute increments. At 11th level you can " +
+                    "use these wings for 10 minutes per day for each oracle level you have. At 15th level, you can use the wings indefinitely. You must be at least 7th level to " +
+                    "select this revelation.");
+                bp.m_Icon = BuffWingsDraconicBlack.m_Icon;
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = OracleRevelationWingsOfDarknessResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { OracleRevelationWingsOfDarknessAbility.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.IsClassFeature = true;
+            });
+            var OracleRevelationWingsOfDarknessProgression = Helpers.CreateBlueprint<BlueprintProgression>("OracleRevelationWingsOfDarknessProgression", bp => {
+                bp.SetName("Wings of Darkness");
+                bp.SetDescription("As a swift action, you can manifest a set of wings that grant you a speed of 60 feet. You can use these wings for 1 minute " +
+                    "per day for each oracle level you have. This duration does not need to be consecutive, but it must be spent in 1-minute increments. At 11th level you can " +
+                    "use these wings for 10 minutes per day for each oracle level you have. At 15th level, you can use the wings indefinitely. You must be at least 7th level to " +
+                    "select this revelation.");
+                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    },
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = ArcanistClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    }
+                };
+                bp.m_Archetypes = new BlueprintProgression.ArchetypeWithLevel[] {
+                    new BlueprintProgression.ArchetypeWithLevel {
+                        m_Archetype = MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>(),
+                        AdditionalLevel = 0
+                    }
+                };
+                bp.LevelEntries = new LevelEntry[] {
+                    Helpers.LevelEntry(7, OracleRevelationWingsOfDarknessFeature),
+                    Helpers.LevelEntry(11, OracleRevelationWingsOfDarknessExtraUse99),
+                    Helpers.LevelEntry(12, OracleRevelationWingsOfDarknessExtraUse9),
+                    Helpers.LevelEntry(13, OracleRevelationWingsOfDarknessExtraUse9),
+                    Helpers.LevelEntry(14, OracleRevelationWingsOfDarknessExtraUse9),
+                    Helpers.LevelEntry(15, OracleRevelationWingsOfDarknessUnlimited)
+                };
+                bp.AddComponent<PrerequisiteFeaturesFromList>(c => {
+                    c.m_Features = new BlueprintFeatureReference[] {
+                        OracleShadowMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        EnlightnedPhilosopherShadowMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        DivineHerbalistShadowMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        OceansEchoShadowMysteryFeature.ToReference<BlueprintFeatureReference>()
+                    };
+                    c.Amount = 1;
+                });
+                bp.AddComponent<PrerequisiteClassLevel>(c => {
+                    c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 7;
+                    c.Group = Prerequisite.GroupType.Any;
+                });
+                bp.AddComponent<PrerequisiteArchetypeLevel>(c => {
+                    c.m_CharacterClass = ArcanistClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.Level = 7;
+                    c.Group = Prerequisite.GroupType.Any;
+                });
+                bp.GiveFeaturesForPreviousLevels = true;
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = false;
+                bp.IsClassFeature = true;
+                bp.Groups = new FeatureGroup[] { FeatureGroup.OracleRevelation };
+                bp.IsClassFeature = true;
+            });
+            OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationWingsOfDarknessProgression.ToReference<BlueprintFeatureReference>());
 
 
             MysteryTools.RegisterMystery(OracleShadowMysteryFeature);
