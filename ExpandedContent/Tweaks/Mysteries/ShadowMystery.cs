@@ -241,7 +241,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
             var BlurSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("14ec7a4e52e90fa47a4c8d63c69fd5c1");
             var DustOfTwilightAbility = Resources.GetModBlueprint<BlueprintAbility>("DustOfTwilightAbility");
             var HauntingMistsSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("ed22aa8751c049fa915dabfa29712c08");
-            //ShadowClawsAbility (If I add it)
+            var ShadowClawsAbility = Resources.GetModBlueprint<BlueprintAbility>("ShadowClawsAbility");
             //3
             var DisplacementSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("903092f6488f9ce45a80943923576ab3");
             var ShadowStepAbility = Resources.GetModBlueprint<BlueprintAbility>("ShadowStepAbility");
@@ -307,7 +307,10 @@ namespace ExpandedContent.Tweaks.Mysteries {
                         ShadowEvocationGreaterSpell,
                         ShadesSpell,
                         DustOfTwilightAbility.ToReference<BlueprintAbilityReference>(),
-                        FormOfTheExoticDragonAbilityUmbral.ToReference<BlueprintAbilityReference>()
+                        FormOfTheExoticDragonAbilityUmbral.ToReference<BlueprintAbilityReference>(),
+                        ShadowStepAbility.ToReference<BlueprintAbilityReference>(),
+                        ShadowJauntAbility.ToReference<BlueprintAbilityReference>(),
+                        ShadowClawsAbility.ToReference<BlueprintAbilityReference>(),
                     };
                     c.Descriptor = SpellDescriptor.None;
                     c.Once = false;
@@ -711,7 +714,8 @@ namespace ExpandedContent.Tweaks.Mysteries {
                         m_Spells = new List<BlueprintAbilityReference>() {
                             BlurSpell,
                             HauntingMistsSpell,
-                            DustOfTwilightAbility.ToReference<BlueprintAbilityReference>()
+                            DustOfTwilightAbility.ToReference<BlueprintAbilityReference>(),
+                            ShadowClawsAbility.ToReference<BlueprintAbilityReference>()
                         }
                     },
                     new SpellLevelList(3) {
