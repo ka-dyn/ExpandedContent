@@ -1,6 +1,7 @@
 ﻿using ExpandedContent.Extensions;
 using ExpandedContent.Utilities;
 using Kingmaker.Blueprints;
+using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Craft;
 using Kingmaker.Designers.Mechanics.Buffs;
@@ -10,6 +11,7 @@ using Kingmaker.RuleSystem;
 using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.UnitLogic.Abilities.Components;
+using Kingmaker.UnitLogic.Abilities.Components.TargetCheckers;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.Commands.Base;
 using Kingmaker.UnitLogic.FactLogic;
@@ -20,70 +22,41 @@ using Kingmaker.UnitLogic.Mechanics.Properties;
 using Kingmaker.Visual.Animation.Kingmaker.Actions;
 
 namespace ExpandedContent.Tweaks.Spells {
-    internal class InflictPain {
-        public static void AddInflictPain() {
-            var InflictPainIcon = AssetLoader.LoadInternal("Skills", "Icon_InflictPain.jpg");
-            var Icon_ScrollOfInflictPain = AssetLoader.LoadInternal("Items", "Icon_ScrollOfInflictPain.png");
+    internal class MydriaticSpontaneity {
+        public static void AddMydriaticSpontaneity() {
+            var MydriaticSpontaneityIcon = AssetLoader.LoadInternal("Skills", "Icon_MydriaticSpontaneity.jpg");
+            var Icon_ScrollOfMydriaticSpontaneity = AssetLoader.LoadInternal("Items", "Icon_ScrollOfMydriaticSpontaneity.png");
 
-            var InflictPainBuff = Helpers.CreateBuff("InflictPainBuff", bp => {
+            var ConstructType = Resources.GetBlueprint<BlueprintFeature>("fd389783027d63343b4a5634bd81645f");
+            var PlantType = Resources.GetBlueprint<BlueprintFeature>("706e61781d692a042b35941f14bc41c5");
+            var UndeadType = Resources.GetBlueprint<BlueprintFeature>("734a29b693e9ec346ba2951b27987e33");
+
+            var MydriaticSpontaneityBuff = Helpers.CreateBuff("MydriaticSpontaneityBuff", bp => {
                 bp.SetName("Inflict Pain");
                 bp.SetDescription("The target’s mind and body are wracked with agonizing pain that imposes a –4 penalty on attack rolls, skill checks, and combat maneuver checks.");
-                bp.m_Icon = InflictPainIcon;
-                bp.AddComponent<AddStatBonus>(c => {
-                    c.Stat = StatType.AdditionalAttackBonus;
-                    c.Descriptor = ModifierDescriptor.UntypedStackable;
-                    c.Value = -4;
-                });
-                bp.AddComponent<AddStatBonus>(c => {
-                    c.Stat = StatType.AdditionalCMB;
-                    c.Descriptor = ModifierDescriptor.UntypedStackable;
-                    c.Value = -4;
-                });
-                bp.AddComponent<BuffAllSkillsBonus>(c => {
-                    c.Descriptor = ModifierDescriptor.UntypedStackable;
-                    c.Value = -4;
-                    c.Multiplier = new ContextValue() {
-                        ValueType = ContextValueType.Simple,
-                        Value = 1,
-                        ValueRank = AbilityRankType.Default,
-                        ValueShared = AbilitySharedValue.Damage,
-                        Property = UnitProperty.None,
-                    };
-                });
+                bp.m_Icon = MydriaticSpontaneityIcon;
+                
+
+
+
+
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = false;
                 bp.m_Flags = BlueprintBuff.Flags.IsFromSpell;
                 bp.Stacking = StackingType.Replace;
             });
-            var InflictPainAbility = Helpers.CreateBlueprint<BlueprintAbility>("InflictPainAbility", bp => {
-                bp.SetName("Inflict Pain");
+            var MydriaticSpontaneityAbility = Helpers.CreateBlueprint<BlueprintAbility>("MydriaticSpontaneityAbility", bp => {
+                bp.SetName("Mydriatic Spontaneity");
                 bp.SetDescription("You telepathically wrack the target’s mind and body with agonizing pain that imposes a –4 penalty on attack rolls, skill checks, and combat maneuver checks. " +
                     "A successful Will save reduces the duration to 1 round.");
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.SavingThrowType = SavingThrowType.Will;
                     c.Actions = Helpers.CreateActionList(                        
                         new ContextActionConditionalSaved() {
-                            Succeed = Helpers.CreateActionList(
-                                new ContextActionApplyBuff() {
-                                    m_Buff = InflictPainBuff.ToReference<BlueprintBuffReference>(),
-                                    Permanent = false,
-                                    UseDurationSeconds = false,
-                                    DurationValue = new ContextDurationValue() {
-                                        Rate = DurationRate.Rounds,
-                                        DiceType = DiceType.Zero,
-                                        DiceCountValue = 0,
-                                        BonusValue = new ContextValue() {
-                                            ValueType = ContextValueType.Simple,
-                                            Value = 1,
-                                            ValueRank = AbilityRankType.Default,
-                                            ValueShared = AbilitySharedValue.Damage
-                                        }
-                                    },
-                                    DurationSeconds = 0
-                                }),
+                            Succeed = Helpers.CreateActionList(),
                             Failed = Helpers.CreateActionList(
                                 new ContextActionApplyBuff() {
-                                    m_Buff = InflictPainBuff.ToReference<BlueprintBuffReference>(),
+                                    m_Buff = MydriaticSpontaneityBuff.ToReference<BlueprintBuffReference>(),
                                     Permanent = false,
                                     UseDurationSeconds = false,
                                     DurationValue = new ContextDurationValue() {
@@ -114,17 +87,21 @@ namespace ExpandedContent.Tweaks.Spells {
                     c.m_Max = 20;
                 });
                 bp.AddComponent<SpellComponent>(c => {
-                    c.School = SpellSchool.Enchantment;
+                    c.School = SpellSchool.Evocation;
                 });
-                bp.AddComponent<SpellDescriptorComponent>(c => {
-                    c.Descriptor = SpellDescriptor.MindAffecting;
+                bp.AddComponent<AbilityTargetHasFact>(c => {
+                    c.m_CheckedFacts = new BlueprintUnitFactReference[] {
+                        ConstructType.ToReference<BlueprintUnitFactReference>(),
+                        PlantType.ToReference<BlueprintUnitFactReference>(),
+                        UndeadType.ToReference<BlueprintUnitFactReference>()
+                    };
                 });
                 bp.AddComponent<CraftInfoComponent>(c => {
                     c.SavingThrow = CraftSavingThrow.Will;
                     c.AOEType = CraftAOE.None;
                     c.SpellType = CraftSpellType.Debuff;
                 });
-                bp.m_Icon = InflictPainIcon;
+                bp.m_Icon = MydriaticSpontaneityIcon;
                 bp.Type = AbilityType.Spell;
                 bp.Range = AbilityRange.Close;
                 bp.CanTargetPoint = false;
@@ -137,14 +114,14 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Point;
                 bp.ActionType = UnitCommand.CommandType.Standard;
                 bp.AvailableMetamagic =  Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten | Metamagic.Reach | Metamagic.CompletelyNormal | Metamagic.Extend;
-                bp.LocalizedDuration = Helpers.CreateString("InflictPainAbility.Duration", "1 round/level");
-                bp.LocalizedSavingThrow = Helpers.CreateString("InflictPainAbility.SavingThrow", "Will partial");
+                bp.LocalizedDuration = Helpers.CreateString("MydriaticSpontaneityAbility.Duration", "1 round/level");
+                bp.LocalizedSavingThrow = Helpers.CreateString("MydriaticSpontaneityAbility.SavingThrow", "Will negates");
             });
-            var InflictPainScroll = ItemTools.CreateScroll("ScrollOfInflictPain", Icon_ScrollOfInflictPain, InflictPainAbility, 3, 5);
-            VenderTools.AddScrollToLeveledVenders(InflictPainScroll);
-            InflictPainAbility.AddToSpellList(SpellTools.SpellList.InquisitorSpellList, 2);
-            InflictPainAbility.AddToSpellList(SpellTools.SpellList.WizardSpellList, 3);
-            InflictPainAbility.AddToSpellList(SpellTools.SpellList.WitchSpellList, 3);
+            var MydriaticSpontaneityScroll = ItemTools.CreateScroll("ScrollOfMydriaticSpontaneity", Icon_ScrollOfMydriaticSpontaneity, MydriaticSpontaneityAbility, 4, 7);
+            VenderTools.AddScrollToLeveledVenders(MydriaticSpontaneityScroll);
+            MydriaticSpontaneityAbility.AddToSpellList(SpellTools.SpellList.BardSpellList, 3);
+            MydriaticSpontaneityAbility.AddToSpellList(SpellTools.SpellList.WizardSpellList, 4);
+            MydriaticSpontaneityAbility.AddToSpellList(SpellTools.SpellList.WitchSpellList, 4);
         }
     }
 }
