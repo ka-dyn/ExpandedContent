@@ -191,7 +191,6 @@ namespace ExpandedContent.Localization {
     [HarmonyPatch(typeof(StartGameLoader), nameof(StartGameLoader.LoadPackTOC))]
     public static class StartGameLoader_LocalizationPatch {
         static void Postfix() {
-            ModSettings.ModLocalizationPack.ApplyToCurrentPack();
             ModSettings.SaveLocalization("LocalizationPack.Json", ModSettings.ModLocalizationPack);
         }
     }
