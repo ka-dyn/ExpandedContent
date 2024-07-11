@@ -33,7 +33,7 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintArchetype ClawOfTheFalseWyrmArchetype = Resources.GetModBlueprint<BlueprintArchetype>("ClawOfTheFalseWyrmArchetype");
             BlueprintArchetype SwornOfTheEldestArchetype = Resources.GetModBlueprint<BlueprintArchetype>("SwornOfTheEldestArchetype");
 
-            BlueprintFeature WarhammerProficiency = Resources.GetBlueprint<BlueprintFeature>("aed4f88b52ae0fb468895f90da854ad4");
+            BlueprintFeature WarhammerProficiency = Resources.GetBlueprint<BlueprintFeature>("aba1be1d113ea4049b99ea92165e91dc");
             var LadyNanbyoIcon = AssetLoader.LoadInternal("Deities", "Icon_LadyNanbyo.jpg");
             var LadyNanbyoFeature = Helpers.CreateBlueprint<BlueprintFeature>("LadyNanbyoFeature", (bp => {
                 bp.SetName("Lady Nanbyo");

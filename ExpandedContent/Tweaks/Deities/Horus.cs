@@ -57,10 +57,10 @@ namespace ExpandedContent.Tweaks.Deities {
                     "with the head of a falcon wearing the traditional double crown of pharaohs called the pschent. He is also sometimes represented as a " +
                     "great celestial falcon. His symbol, the eye of Horus, is used to ward off evil, and the symbol commonly appears on protective amulets " +
                     "and trinkets. As a sun deity and god of kings, Horus lends his support to Ra, and aids him in his continuous battles against Apep. An ally " +
-                    "of Osiris and Isis , Horus is a steadfast enemy of Set, and the two have fought countless battles over the ages. Horus is worshiped by " +
+                    "of Osiris and Isis, Horus is a steadfast enemy of Set, and the two have fought countless battles over the ages. Horus is worshiped by " +
                     "kings and pharaohs, as well as by hunters, paladins, rangers, and warriors. He is sometimes venerated as part of a triad with Osiris and " +
                     "Isis, or as one-half of a royal couple with his consort Hathor, but there are temples dedicated solely to Horus as well. Though rare in " +
-                    "this age, Horus' clergy gets along well with the faithful of Abadar, as both churche s value leadership and law. Temples to Horus are still " +
+                    "this age, Horus' clergy gets along well with the faithful of Abadar, as both churches value leadership and law. Temples to Horus are still " +
                     "found in the larger cities of Osirion.");
                 bp.m_Icon = HorusIcon;
                 bp.Ranks = 1;

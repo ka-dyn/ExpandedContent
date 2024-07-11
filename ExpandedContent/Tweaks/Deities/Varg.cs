@@ -44,7 +44,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     "\nAreas of Concern: Iron, Siege Engines, War   " +
                     "\nDomains: Chaos, Earth, Evil, War   " +
                     "\nSubdomains: Demon, Fear, Metal, Tactics   " +
-                    "\nFavoured Weapon: Greataxw   " +
+                    "\nFavoured Weapon: Greataxe  " +
                     "\nHoly Symbol: Crumbling, smoking tower   " +
                     "\nSacred Animal: Woolly rhinoceros   " +
                     "\nVarg is the orc god of innovation, tactics, and technology. He taught the orcs how to forge blades and to build complex siege engines. While all orc gods are war " +

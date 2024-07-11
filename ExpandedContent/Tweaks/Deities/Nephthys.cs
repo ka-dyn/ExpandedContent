@@ -46,12 +46,12 @@ namespace ExpandedContent.Tweaks.Deities {
                     "\nThe ancient Osirians placed great importance on the safety of their deceased loved ones, and Nephthys was a funerary deity who " +
                     "protected the dead and mourned their loss. In particular, Nephthys is the guardian of the lungs and the canopic jar that contains " +
                     "them. As her husband and brother Set is the god of darkness and deserts, Nephthys is the goddess of night and the edge of the desert, " +
-                    "the border between civilization and wilderness. Nephthys is the sister oflsis and Osiris and the sister-wife of Set. Following Osiris's " +
+                    "the border between civilization and wilderness. Nephthys is the sister of lsis and Osiris and the sister-wife of Set. Following Osiris's " +
                     "murder at the hands of Set, Nephthys grieved along with Isis, and helped her sister gather the scattered pieces of Osiris's dismembered body. " +
                     "She also nursed and protected the young Horus. Although she is Set's wife, Nephthys does not normally support her husband, instead siding with " +
-                    "Isis and Osiris in most conflicts . Having conceived no children with Set, Nephthys plied Osiris with wine and seduced him, later giving birth " +
+                    "Isis and Osiris in most conflicts. Having conceived no children with Set, Nephthys plied Osiris with wine and seduced him, later giving birth " +
                     "to a son, Anubis. Nephthys appears as a woman with winged arms wearing a headdress in the shape of a basket atop a tower-a representation of the " +
-                    "hieroglyphic symbol ofher name, and also her holy symbol. Nephthys does not usually have temples of her own, though she is often repre sented in " +
+                    "hieroglyphic symbol of her name, and also her holy symbol. Nephthys does not usually have temples of her own, though she is often represented in " +
                     "churches of Anubis, Isis, and Osiris, or more rarely, alongside her husband Set in his temples. These small shrines are available for worshipers " +
                     "to leave their goddess small offerings and offer her prayers. Clerics of Nephthys assist other priests at funerals and work as professional mourners, " +
                     "even working closely with the church of Pharasma when needed.");

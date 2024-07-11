@@ -44,7 +44,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     "\nAreas of Concern: Lust, Pillage, Plunder   " +
                     "\nDomains: Chaos, Charm, Evil, Trickery   " +
                     "\nSubdomains: Deception, Lust, Thievery   " +
-                    "\nFavoured Weapon: Battleaxw   " +
+                    "\nFavoured Weapon: Battleaxe   " +
                     "\nHoly Symbol: Rat with gold coin   " +
                     "\nSacred Animal: Dire rat   " +
                     "\nIn other cultures, the gods of avarice might lurk in shadows, and their worshipers would do the same, practicing their faith in secret, but not among orcs, for whom greed and " +

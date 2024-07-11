@@ -126,6 +126,8 @@ namespace ExpandedContent.Tweaks.Spells {
                         ValueRank = AbilityRankType.StatBonus,
                         ValueShared = AbilitySharedValue.Damage
                     };
+                    c.CheckFact = false;
+                    c.m_RequiredFact = null;
                 });
                 bp.AddComponent<ContextRankConfig>(c => {
                     c.m_Type = AbilityRankType.StatBonus;
@@ -327,7 +329,7 @@ namespace ExpandedContent.Tweaks.Spells {
             });
 
             DanceOfAHundredCutsAbility.Actions.Actions = DanceOfAHundredCutsAbility.Actions.Actions.AppendToArray(new ContextActionRemoveBuff() {
-                m_Buff = DanceOfAHundredCutsBuff.ToReference<BlueprintBuffReference>()
+                m_Buff = DanceOfAThousandCutsBuff.ToReference<BlueprintBuffReference>()
             });
 
             var DanceOfAThousandCutsScroll = ItemTools.CreateScroll("ScrollOfDanceOfAThousandCuts", Icon_ScrollOfDanceOfAThousandCuts, DanceOfAThousandCutsAbility, 6, 16);

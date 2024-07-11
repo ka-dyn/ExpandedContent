@@ -52,7 +52,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     "where bodies are prepared for burial. Along with Isis, Neith, and Nephthys, Selket assists Anubis in protecting the dead. She is " +
                     "often paired with Neith, as Isis is with Nephthys, and in the form of seven scorpions, she guarded Isis when Isis was pregnant with Horus. " +
                     "When a woman later refused the expectant mother shelter, it was Selket who punished the woman for turning Isis away. Selket also guards " +
-                    "the other ancient O sirian gods against the poisonous bite of Apep, and has assisted Ra on numerous occasions in his battles against the Devourer " +
+                    "the other ancient Osirian gods against the poisonous bite of Apep, and has assisted Ra on numerous occasions in his battles against the Devourer " +
                     "of the Dawn. Selket normally appears as a woman wearing a scorpion with a raised tail on her head, or more rarely, as a lustrous black scorpion " +
                     "with the head of a woman.");
                 bp.m_Icon = SelketIcon;

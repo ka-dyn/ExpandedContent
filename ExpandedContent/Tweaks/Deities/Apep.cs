@@ -46,7 +46,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     "\nHoly Symbol: Coiled Serpent   " +
                     "\nSacred Animal: Snake   " +
                     "\nBorn in the waters of primeval chaos before creation, the malevolent serpent Apep stands in sharp contrast to the " +
-                    "more benevolent serpent goddess Wadjet. Apep is the personification of chaos and darkness , the hidden dangers that lurk " +
+                    "more benevolent serpent goddess Wadjet. Apep is the personification of chaos and darkness, the hidden dangers that lurk " +
                     "just beneath the surface, the deadly whorls and eddies that drown and swallow, and the hungry river snakes that prey on those " +
                     "who venture too near the water's edge. Apep is the raging rapids, the boundless flood that inundates and sweeps away all that " +
                     "mortals seek to build. He is the darkness in the water's depths that swallows light and life, devouring the sun and plunging " +
@@ -54,7 +54,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     "Osirians believed each sunrise was but a temporary victory, for the Devourer of the Dawn always waits to seize and consume the " +
                     "sun again and again, until one day the sun shall rise no more and all shall be ended. Apep is a great golden serpent miles long, " +
                     "and his crushing coils encircle the world. He also appears as a fearsome dragon with night-black scales, and evil dragons of " +
-                    "Osirion venerate him in this form. Apep's human cults are secretive , usually meeting at night or under the cloak of darkness. " +
+                    "Osirion venerate him in this form. Apep's human cults are secretive, usually meeting at night or under the cloak of darkness. " +
                     "These evil sects keep themselves hidden from the public eye lest they attract the wrath of those who follow the more benevolent " +
                     "and helpful gods.");
                 bp.m_Icon = ApepIcon;

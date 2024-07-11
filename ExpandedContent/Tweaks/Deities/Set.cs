@@ -53,7 +53,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     "also his consort. With Neith, Set is the father of Sobek. Set murdered Osiris, mutilated the body and scattered the pieces, and tried " +
                     "to steal his brother's throne, ushering in the Age of Darkness. Set is the enemy of both his brother Osiris and his nephew Horus. Set " +
                     "is opposed to Anubis as well, and the two war over the souls of the Osirian dead, with Anubis seeking to guide them safely to the Boneyard, " +
-                    "and Set vying tosteal their souls or turn them into undead abominations. Set appears as a lean Osirian man with the head of a sha, also " +
+                    "and Set vying to steal their souls or turn them into undead abominations. Set appears as a lean Osirian man with the head of a sha, also " +
                     "known as a Set-beast. Kinslayers, murderers, and usurpers all pay homage to Set, but he is also venerated by kings and pharaohs who value " +
                     "the god's cunning, strength, and power. Set is a patron of assassins, rogues, and necromancers, and he is worshiped by barbarians, " +
                     "warriors, and evil druids as well.");

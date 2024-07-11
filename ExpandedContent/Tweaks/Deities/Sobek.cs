@@ -52,7 +52,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     "and he is worshiped by barbarians, druids, fighters, rangers, and warriors as well. Farmers often give offerings to Sobek so that he will enrich " +
                     "their fields and protect their livelihood. Sobek's temples are almost always situated on riverbanks, and are rarely found more than a few miles from " +
                     "a river. The crocodiles living in the neighboring rivers are exalted by the priesthood and the faithful as the direct offspring of the god, or are " +
-                    "even seen as living incarnations of Sobek himself Most of his temples contain pools holding crocodiles sacred to Sobek, and their regular feeding is " +
+                    "even seen as living incarnations of Sobek himself. Most of his temples contain pools holding crocodiles sacred to Sobek, and their regular feeding is " +
                     "incorporated into worship. These honored reptiles are mummified and interred upon their deaths with all the respect and esteem that marks human funerals.");
                 bp.m_Icon = SobekIcon;
                 bp.Ranks = 1;

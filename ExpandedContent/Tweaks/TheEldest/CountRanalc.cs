@@ -31,7 +31,7 @@ namespace ExpandedContent.Tweaks.TheEldest {
             BlueprintArchetype FeralChampionArchetype = Resources.GetBlueprint<BlueprintArchetype>("f68ca492c9c15e241ab73735fbd0fb9f");
             BlueprintArchetype ClawOfTheFalseWyrmArchetype = Resources.GetModBlueprint<BlueprintArchetype>("ClawOfTheFalseWyrmArchetype");
 
-            BlueprintFeature RapierProficiency = Resources.GetBlueprint<BlueprintFeature>("aed4f88b52ae0fb468895f90da854ad4");
+            BlueprintFeature RapierProficiency = Resources.GetBlueprint<BlueprintFeature>("292d51f3d6a331644a8c29be0614f671");
             var CountRanalcIcon = AssetLoader.LoadInternal("Deities", "Icon_CountRanalc.jpg");
             var CountRanalcFeature = Helpers.CreateBlueprint<BlueprintFeature>("CountRanalcFeature", (bp => {
 

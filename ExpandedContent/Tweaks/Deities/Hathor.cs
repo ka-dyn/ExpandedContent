@@ -49,9 +49,9 @@ namespace ExpandedContent.Tweaks.Deities {
                     "goddess of fertility, sexuality, and motherhood. She is also a goddess of trade and goods that bring wealth from foreign lands. " +
                     "Hathor is the daughter of Ra, and sister to Bastet, Maat, and Sekhmet. She is the consort of Horus, and as he is a god of kings, so " +
                     "is she a goddess of queens, though she is venerated by royalty and commoners alike. Hathor appears as a voluptuous cow-headed woman " +
-                    "with the solar disk ofher father Ra between her horns and carrying a sistrum. Sometimes she is depicted as a human woman with a horned " +
+                    "with the solar disk of her father Ra between her horns and carrying a sistrum. Sometimes she is depicted as a human woman with a horned " +
                     "headdress. More rarely, she is depicted as a great wild cow whose milk nourishes the living. Hathor is a patron and protector of women, " +
-                    "and is worshiped by mothers, wives, and lovers of all ages. She also serves as a patron ofbards, dancers, musicians, and performers, which " +
+                    "and is worshiped by mothers, wives, and lovers of all ages. She also serves as a patron of bards, dancers, musicians, and performers, which " +
                     "makes her a popular deity in thriving cities and their playhouses. In her role as a goddess of trade, Hathor is also a patron of miners, " +
                     "particularly those who mine for precious stones. Hathor's priesthood is predominantly female, and her temples hold great festivals full of " +
                     "music and dance where worshipers consume large amounts of beer and wine and revel for days on end.");

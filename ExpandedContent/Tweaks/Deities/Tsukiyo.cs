@@ -44,7 +44,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     "\nFavoured Weapon: Longspear   " +
                     "\nHoly Symbol: Jade Crescent Moon   " +
                     "\nSacred Animal: Hare   " +
-                    "\nTsukiyo is the god of jade, the moon, and spirits. He is the brother of Fumeiyoshi, the god of envy, and lover of the" +
+                    "\nTsukiyo is the god of jade, the moon, and spirits. He is the brother of Fumeiyoshi, the god of envy, and lover of the " +
                     "sun goddess Shizuru. Called the Prince of the Moon, Tsukiyo was slain by his jealous brother, and it is said that Shizuru’s " +
                     "tears, mingled with Tsukiyo’s blood, formed the first stones of jade, which remains sacred to the moon god’s faith. Tsukiyo was " +
                     "returned to life by Shizuru, and upon his rebirth, he acquired the portfolio of spirits and became patron of the reincarnated " +

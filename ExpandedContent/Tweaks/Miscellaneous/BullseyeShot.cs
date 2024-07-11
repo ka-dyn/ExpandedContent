@@ -38,6 +38,8 @@ namespace ExpandedContent.Tweaks.Miscellaneous {
                     c.AttackBonus = 4;
                     c.Descriptor = ModifierDescriptor.UntypedStackable;
                     c.Value = 1;
+                    c.CheckFact = false;
+                    c.m_RequiredFact = null;
                 });
                 bp.AddComponent<AddInitiatorAttackWithWeaponTrigger>(c => {
                     c.TriggerBeforeAttack = false;

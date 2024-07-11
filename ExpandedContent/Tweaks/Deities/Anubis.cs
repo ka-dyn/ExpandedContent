@@ -56,7 +56,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     "with Set, particularly regarding that god's association with undeath. As a guardian of the dead and " +
                     "their tombs, Anubis frequently works with Isis, Neith, Nephthys, and Selket, who protect the canopic jars " +
                     "containing the organs of the deceased. Anubis usually appears as a man with jet-black skin and the head of a " +
-                    "jackal, though he sometimes takes the entire form of a jackal. Clerics and paladins of Anubis dedicated to " +
+                    "jackal, though he sometimes takes the entire form of a jackal. Clerics and paladins of Anubis are dedicated to " +
                     "destroying undead creatures wherever they find them.");
                 bp.m_Icon = AnubisIcon;
                 bp.Ranks = 1;

@@ -30,10 +30,10 @@ namespace ExpandedContent.Tweaks.Spells {
     internal class ShadowClaws {
         public static void AddShadowClaws() {
             var ShadowClawsIcon = AssetLoader.LoadInternal("Skills", "Icon_ShadowClaws.jpg");
-            var Icon_ScrollOfShadowClaws = AssetLoader.LoadInternal("Items", "Icon_ScrollOfShadowClaws.png");
+            //var Icon_ScrollOfShadowClaws = AssetLoader.LoadInternal("Items", "Icon_ScrollOfShadowClaws.png");
 
 
-            var BloodlineClaws1d4 = Resources.GetBlueprintReference<BlueprintItemWeaponReference>("fe712a5237d918342936c0761cdc2d3e");
+            var BloodlineClaws1d4 = Resources.GetBlueprintReference<BlueprintItemWeaponReference>("8700c7fd098671b438f51d11568c2c94");
 
             var ShadowClawsBuff = Helpers.CreateBuff("ShadowClawsBuff", bp => {
                 bp.SetName("Shadow Claws");
@@ -206,8 +206,8 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.LocalizedDuration = Helpers.CreateString("ShadowClawsAbility.Duration", "1 minute/level");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
-            var ShadowClawsScroll = ItemTools.CreateScroll("ScrollOfShadowClaws", Icon_ScrollOfShadowClaws, ShadowClawsAbility, 2, 3);
-            VenderTools.AddScrollToLeveledVenders(ShadowClawsScroll);
+            //var ShadowClawsScroll = ItemTools.CreateScroll("ScrollOfShadowClaws", Icon_ScrollOfShadowClaws, ShadowClawsAbility, 2, 3);
+            //VenderTools.AddScrollToLeveledVenders(ShadowClawsScroll);
             ShadowClawsAbility.AddToSpellList(SpellTools.SpellList.BardSpellList, 2);
             ShadowClawsAbility.AddToSpellList(SpellTools.SpellList.BloodragerSpellList, 2);
             ShadowClawsAbility.AddToSpellList(SpellTools.SpellList.MagusSpellList, 2);

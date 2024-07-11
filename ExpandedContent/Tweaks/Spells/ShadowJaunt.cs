@@ -34,10 +34,10 @@ using Kingmaker.AI.Blueprints;
 
 namespace ExpandedContent.Tweaks.Spells {
     internal class ShadowJaunt {
-        public static void AddShadowJaunt() {//Untested
+        public static void AddShadowJaunt() {
 
             var ShadowJauntIcon = AssetLoader.LoadInternal("Skills", "Icon_ShadowJaunt.jpg");
-            var Icon_ScrollOfShadowJaunt = AssetLoader.LoadInternal("Items", "Icon_ScrollOfShadowJaunt.png");
+            //var Icon_ScrollOfShadowJaunt = AssetLoader.LoadInternal("Items", "Icon_ScrollOfShadowJaunt.png");
 
             var MountedBuff = Resources.GetBlueprintReference<BlueprintBuffReference>("b2d13e8f3bb0f1d4c891d71b4d983cf7");
             var ShadowProjectile = Resources.GetBlueprintReference<BlueprintProjectileReference>("f8daba62ae5f454aae7bcd280d924e74");
@@ -137,7 +137,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.SetName("Shadow Jaunt");
                 bp.SetDescription("You instantly travel between shadows to a point within range. You leave a shadowy decoy in your former location and are wrapped in shadow at your destination; " +
                     "you attempt a Stealth check as a free action to hide in your new location. In addition, for 1 round, the envelope of shadow around you grants you concealment (20% miss chance). " +
-                    "\nThe shadow decoy is fragile and will not survive more than a single attack.");
+                    "\nThe shadow decoy is fragile and will not survive more than a single attack / one round.");
                 bp.m_Icon = ShadowJauntIcon;
                 bp.AddComponent<AddConcealment>(c => {
                     c.Descriptor = ConcealmentDescriptor.Blur;
@@ -149,26 +149,8 @@ namespace ExpandedContent.Tweaks.Spells {
                     c.OnlyForAttacks = false;
                 });
                 bp.AddComponent<AddFactContextActions>(c => {
-                    c.Activated = Helpers.CreateActionList( new ContextActionHideInPlainSight() );
-                    c.Deactivated = Helpers.CreateActionList();
-                    c.NewRound = Helpers.CreateActionList();
-                });
-                bp.m_AllowNonContextActions = false;
-                bp.IsClassFeature = false;
-                bp.Stacking = StackingType.Replace;
-            });
-
-            var ShadowJauntAbility = Helpers.CreateBlueprint<BlueprintAbility>("ShadowJauntAbility", bp => {
-                bp.SetName("Shadow Jaunt");
-                bp.SetDescription("You instantly travel between shadows to a point within range. You leave a shadowy decoy in your former location and are wrapped in shadow at your destination; " +
-                    "you attempt a Stealth check as a free action to hide in your new location. In addition, for 1 round, the envelope of shadow around you grants you concealment (20% miss chance). " +
-                    "\nThe shadow decoy is fragile and will not survive more than a single attack.");
-                bp.AddComponent<AbilityExecuteActionOnCast>(c => {
-                    c.Actions = Helpers.CreateActionList(
-                        new ContextActionRemoveBuff() {
-                            ToCaster = true,
-                            m_Buff = MountedBuff
-                        },
+                    c.Activated = Helpers.CreateActionList( 
+                        //new ContextActionHideInPlainSight(),
                         new ContextActionSpawnMonster() {
                             m_Blueprint = ShadowJauntDecoyUnit.ToReference<BlueprintUnitReference>(),
                             AfterSpawn = Helpers.CreateActionList(
@@ -190,10 +172,7 @@ namespace ExpandedContent.Tweaks.Spells {
                                 Rate = DurationRate.Rounds,
                                 DiceType = DiceType.Zero,
                                 DiceCountValue = 0,
-                                BonusValue = new ContextValue() {
-                                    ValueType = ContextValueType.Rank,
-                                    ValueRank = AbilityRankType.Default
-                                },
+                                BonusValue = 1,
                                 m_IsExtendable = true
                             },
                             CountValue = new ContextDiceValue() {
@@ -205,6 +184,58 @@ namespace ExpandedContent.Tweaks.Spells {
                             DoNotLinkToCaster = false,
                             IsDirectlyControllable = false
                         },
+                        new ContextActionHideInPlainSight()
+                        );
+                    c.Deactivated = Helpers.CreateActionList();
+                    c.NewRound = Helpers.CreateActionList();
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = false;
+                bp.Stacking = StackingType.Replace;
+            });
+
+            var ShadowJauntSubspell = Helpers.CreateBlueprint<BlueprintAbility>("ShadowJauntSubspell", bp => {
+                bp.DisableLog = true;
+                bp.SetName("Shadow Jaunt Subspell");
+                bp.SetDescription("");
+                bp.AddComponent<AbilityCustomTeleportation>(c => {
+                    c.m_Projectile = ShadowProjectile;
+                    c.DisappearFx = new PrefabLink() { AssetId = "f1f41fef03cb5734e95db1342f0c605e" };
+                    c.DisappearDuration = 0.25f;
+                    c.AppearFx = new PrefabLink();
+                    c.AppearDuration = 0;
+                    c.AlongPath = false;
+                    c.AlongPathDistanceMuliplier = 1;
+                });
+                bp.m_Icon = ShadowJauntIcon;
+                bp.Type = AbilityType.Extraordinary;
+                bp.Range = AbilityRange.Close;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = true;
+                bp.CanTargetFriends = true;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Point;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+
+            var ShadowJauntAbility = Helpers.CreateBlueprint<BlueprintAbility>("ShadowJauntAbility", bp => {
+                bp.SetName("Shadow Jaunt");
+                bp.SetDescription("You instantly travel between shadows to a point within range. You leave a shadowy decoy in your former location and are wrapped in shadow at your destination; " +
+                    "you attempt a Stealth check as a free action to hide in your new location. In addition, for 1 round, the envelope of shadow around you grants you concealment (20% miss chance). " +
+                    "\nThe shadow decoy is fragile and will not survive more than a single attack / one round.");
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionRemoveBuff() {
+                            ToCaster = true,
+                            m_Buff = MountedBuff
+                        },
                         new ContextActionApplyBuff() {
                             m_Buff = ShadowJauntBuff.ToReference<BlueprintBuffReference>(),
                             DurationValue = new ContextDurationValue() {
@@ -214,19 +245,19 @@ namespace ExpandedContent.Tweaks.Spells {
                                 BonusValue = 1
                             },
                             ToCaster = true
+                        },
+                        new ContextActionCastSpell() {
+                            m_Spell = ShadowJauntSubspell.ToReference<BlueprintAbilityReference>(),
+                            OverrideDC = false,
+                            DC = 0,
+                            OverrideSpellLevel = false,
+                            SpellLevel = 0,
+                            CastByTarget = false,
+                            LogIfCanNotTarget = false,
+                            MarkAsChild = false
                         }
                         );
-                });
-                bp.AddComponent<AbilityCustomTeleportation>(c => {
-                    c.m_Projectile = ShadowProjectile;
-                    c.DisappearFx = new PrefabLink() { AssetId = "f1f41fef03cb5734e95db1342f0c605e" };
-                    c.DisappearDuration = 0.25f;
-                    c.AppearFx = new PrefabLink();
-                    c.AppearDuration = 0;
-                    c.AlongPath = false;
-                    c.AlongPathDistanceMuliplier = 1;
-
-                });
+                });                
                 bp.AddComponent<SpellComponent>(c => {
                     c.School = SpellSchool.Illusion;
                 });
@@ -251,8 +282,8 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
-            var ShadowJauntScroll = ItemTools.CreateScroll("ScrollOfShadowJaunt", Icon_ScrollOfShadowJaunt, ShadowJauntAbility, 4, 7);
-            VenderTools.AddScrollToLeveledVenders(ShadowJauntScroll);
+            //var ShadowJauntScroll = ItemTools.CreateScroll("ScrollOfShadowJaunt", Icon_ScrollOfShadowJaunt, ShadowJauntAbility, 4, 7);
+            //VenderTools.AddScrollToLeveledVenders(ShadowJauntScroll);
             ShadowJauntAbility.AddToSpellList(SpellTools.SpellList.BardSpellList, 4);
             ShadowJauntAbility.AddToSpellList(SpellTools.SpellList.WizardSpellList, 4);
 

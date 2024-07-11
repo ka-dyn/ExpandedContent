@@ -51,7 +51,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     "\nRa is the god of the sun, particularly the midday sun, and travels on a great solar barge through the heavens. He created most " +
                     "of the ancient Osirian gods and ruled as their king during the Age of Creation. The ancient Osirians believed they were created from " +
                     "Ra's tears, and like the sun, Ra watches over all the earth and his creations. Ra is the ruler of the heavens, a deity of kings and " +
-                    "royalty. He represents fair and just rule in accordance with the principles ofhonor and truth. Ra is depicted as a powerful man with the " +
+                    "royalty. He represents fair and just rule in accordance with the principles of honor and truth. Ra is depicted as a powerful man with the " +
                     "head of a falcon and a blazing solar disk above his head. He is the father of Bastet, Hathor, Maat, and Sekhmet, though he created many of " +
                     "the other Osirian gods as well. His archenemy is Apep, and every night Ra must defend the sun against the great serpent who seeks to consume " +
                     "it. That the sun rises in the morning is seen as proof of Ra's victory over the Devourer of the Dawn. Kings and pharaohs worship Ra as their " +

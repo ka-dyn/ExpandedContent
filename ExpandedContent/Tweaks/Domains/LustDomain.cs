@@ -94,7 +94,7 @@ namespace ExpandedContent.Tweaks.Domains {
                                 new ContextActionRandomize() {
                                     m_Actions = new ContextActionRandomize.ActionWrapper[3] {
                                         new ContextActionRandomize.ActionWrapper{ 
-                                            Weight = 0,
+                                            Weight = 1,
                                             Action = Helpers.CreateActionList(
                                                 new ContextActionApplyBuff() {
                                                     m_Buff = DominateMonsterBuff,
@@ -116,7 +116,7 @@ namespace ExpandedContent.Tweaks.Domains {
                                                 )
                                         },
                                         new ContextActionRandomize.ActionWrapper{
-                                            Weight = 0,
+                                            Weight = 1,
                                             Action = Helpers.CreateActionList(
                                                 new ContextActionApplyBuff() {
                                                     m_Buff = ProneBuff,
@@ -138,7 +138,7 @@ namespace ExpandedContent.Tweaks.Domains {
                                                 )
                                         },
                                         new ContextActionRandomize.ActionWrapper{
-                                            Weight = 0,
+                                            Weight = 1,
                                             Action = Helpers.CreateActionList(
                                                 new ContextActionApplyBuff() {
                                                     m_Buff = StunnedBuff,
@@ -529,7 +529,7 @@ namespace ExpandedContent.Tweaks.Domains {
                                 new ContextActionRandomize() {
                                     m_Actions = new ContextActionRandomize.ActionWrapper[3] {
                                         new ContextActionRandomize.ActionWrapper{
-                                            Weight = 0,
+                                            Weight = 1,
                                             Action = Helpers.CreateActionList(
                                                 new ContextActionApplyBuff() {
                                                     m_Buff = DominateMonsterBuff,
@@ -551,7 +551,7 @@ namespace ExpandedContent.Tweaks.Domains {
                                                 )
                                         },
                                         new ContextActionRandomize.ActionWrapper{
-                                            Weight = 0,
+                                            Weight = 1,
                                             Action = Helpers.CreateActionList(
                                                 new ContextActionApplyBuff() {
                                                     m_Buff = ProneBuff,
@@ -573,7 +573,7 @@ namespace ExpandedContent.Tweaks.Domains {
                                                 )
                                         },
                                         new ContextActionRandomize.ActionWrapper{
-                                            Weight = 0,
+                                            Weight = 1,
                                             Action = Helpers.CreateActionList(
                                                 new ContextActionApplyBuff() {
                                                     m_Buff = StunnedBuff,

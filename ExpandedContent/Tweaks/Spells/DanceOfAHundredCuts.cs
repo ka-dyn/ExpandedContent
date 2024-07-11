@@ -92,6 +92,8 @@ namespace ExpandedContent.Tweaks.Spells {
                         ValueRank = AbilityRankType.StatBonus,
                         ValueShared = AbilitySharedValue.Damage
                     };
+                    c.CheckFact = false;
+                    c.m_RequiredFact = null;
                 });
                 bp.AddComponent<ContextRankConfig>(c => {
                     c.m_Type = AbilityRankType.StatBonus;

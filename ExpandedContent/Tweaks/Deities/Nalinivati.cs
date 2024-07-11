@@ -32,7 +32,7 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintArchetype SwornOfTheEldestArchetype = Resources.GetModBlueprint<BlueprintArchetype>("SwornOfTheEldestArchetype");
             BlueprintArchetype DivineTrackerArchetype = Resources.GetModBlueprint<BlueprintArchetype>("DivineTrackerArchetype");
 
-            BlueprintFeature SaiProficiency = Resources.GetBlueprint<BlueprintFeature>("aed4f88b52ae0fb468895f90da854ad4");
+            BlueprintFeature SaiProficiency = Resources.GetBlueprint<BlueprintFeature>("a9a692792f6668d4dbe32c9c4f023800");
             var NalinivatiIcon = AssetLoader.LoadInternal("Deities", "Icon_Nalinivati.jpg");
             var NalinivatiFeature = Helpers.CreateBlueprint<BlueprintFeature>("NalinivatiFeature", (bp => {
                 bp.SetName("Nalinivati");

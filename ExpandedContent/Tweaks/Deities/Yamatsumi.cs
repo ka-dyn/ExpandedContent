@@ -49,7 +49,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     "\nYamatsumi is the god of mountains, volcanoes, and winter. Every snow-capped mountain peak is a temple to him, and " +
                     "every volcanic eruption a sign of his wrath. Yet Yamatsumi is also a god of renewal, for his winter snows feed the rivers " +
                     "running through green valleys, and ash from his volcanoes fertilizes the fields of farmers. Ascetic mountain monks, or yamabushi, " +
-                    "ake up a majority of his faithful, but people from all walks of life pray to Yamatsumi to avert his wrath when the first winds of " +
+                    "make up a majority of his faithful, but people from all walks of life pray to Yamatsumi to avert his wrath when the first winds of " +
                     "winter blow, or the nearby volcano belches smoke. Yamatsumi appears as a giant man with ice for skin, lava for hair and a beard, " +
                     "and two pairs of ram’s horns on his head.");
                 bp.m_Icon = YamatsumiIcon;

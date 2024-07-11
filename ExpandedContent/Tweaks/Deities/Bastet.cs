@@ -47,11 +47,11 @@ namespace ExpandedContent.Tweaks.Deities {
                     "\nFavoured Weapon: Cat's Claws (Sai)   " +
                     "\nHoly Symbol: Golden Cat   " +
                     "\nSacred Animal: Cat   " +
-                    "\nBastet was a popular deity in Ancient Osirion,worshiped as a goddess of cats and a deity of celebration, " +
+                    "\nBastet was a popular deity in Ancient Osirion, worshiped as a goddess of cats and a deity of celebration, " +
                     "pleasure, and secrets. While her sister Hathor is a goddess of love, Bastet is one of desire and sensuality. " +
                     "She also guards against contagious diseases, evil spirits, and snakes, and is associated with protective ointments " +
                     "and perfumes. A beautiful woman with the head of a cat, Bastet is often depicted holding a rattle-like sistrum, a " +
-                    "musical instrument associated with her worship-and a small shield called an aegis, usually decorated with the head of a " +
+                    "musical instrument associated with her worship and a small shield called an aegis, usually decorated with the head of a " +
                     "lion, as a symbol of her protective role. Bastet is the daughter of Ra, and the sister of Hathor, Maat, and Sekhmet. " +
                     "Normally indolent and relaxed, Bastet can be fierce when roused to anger, and she has often faced off against the great " +
                     "serpent Apep on behalf of Ra. A promiscuous goddess, Bastet has no mate, but numerous stories detail her liaisons with " +

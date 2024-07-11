@@ -26,10 +26,11 @@ using Kingmaker.ResourceLinks;
 
 namespace ExpandedContent.Tweaks.Spells {
     internal class ShadowStep {
-        public static void AddShadowStep() {//Untested
+        public static void AddShadowStep() {
 
             var ShadowStepIcon = AssetLoader.LoadInternal("Skills", "Icon_ShadowStep.jpg");
-            var Icon_ScrollOfShadowStep = AssetLoader.LoadInternal("Items", "Icon_ScrollOfShadowStep.png");
+
+            //var Icon_ScrollOfShadowStep = AssetLoader.LoadInternal("Items", "Icon_ScrollOfShadowStep.png");
 
             var MountedBuff = Resources.GetBlueprintReference<BlueprintBuffReference>("b2d13e8f3bb0f1d4c891d71b4d983cf7");
             var ShadowProjectile = Resources.GetBlueprintReference<BlueprintProjectileReference>("f8daba62ae5f454aae7bcd280d924e74");
@@ -80,8 +81,8 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
-            var ShadowStepScroll = ItemTools.CreateScroll("ScrollOfShadowStep", Icon_ScrollOfShadowStep, ShadowStepAbility, 3, 5);
-            VenderTools.AddScrollToLeveledVenders(ShadowStepScroll);
+            //var ShadowStepScroll = ItemTools.CreateScroll("ScrollOfShadowStep", Icon_ScrollOfShadowStep, ShadowStepAbility, 3, 5);
+            //VenderTools.AddScrollToLeveledVenders(ShadowStepScroll);
             ShadowStepAbility.AddToSpellList(SpellTools.SpellList.BardSpellList, 3);
             ShadowStepAbility.AddToSpellList(SpellTools.SpellList.WizardSpellList, 3);
             ShadowStepAbility.AddToSpellList(SpellTools.SpellList.WitchSpellList, 3);

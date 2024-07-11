@@ -58,7 +58,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
             var ArcanistClass = Resources.GetBlueprint<BlueprintCharacterClass>("52dbfd8505e22f84fad8d702611f60b7");
             var MagicDeceiverArchetype = Resources.GetBlueprint<BlueprintArchetype>("5c77110cd0414e7eb4c2e485659c9a46");
             var ShadowMysteryIcon = AssetLoader.LoadInternal("Skills", "Icon_OracleShadowMystery.png");
-            var OracleRevelationCloakOfDarknessIcon = AssetLoader.LoadInternal("Skills", "Icon_OracleRevelationCloakOfDarkness.jpg");
+            //var OracleRevelationCloakOfDarknessIcon = AssetLoader.LoadInternal("Skills", "Icon_OracleRevelationCloakOfDarkness.jpg");
 
 
             //Spelllist
@@ -248,8 +248,8 @@ namespace ExpandedContent.Tweaks.Mysteries {
             //ShadowEnchantment
             //4
             var ShadowConjurationSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("caac251ca7601324bbe000372a0a1005");
-            //ShadowJaunt
-            //MydriaticSpontaneity
+            //ShadowJaunt already referenced
+            var MydriaticSpontaneityAbility = Resources.GetModBlueprint<BlueprintAbility>("MydriaticSpontaneityAbility");
             //5
             var ShadowEvocationSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("237427308e48c3341b3d532b9d3a001f");
             //Vamp Shadow Shield
@@ -261,8 +261,9 @@ namespace ExpandedContent.Tweaks.Mysteries {
             var ShadowConjurationGreaterSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("08255ea4cdd812341af93f9cd113acb9");
             var UmbrallStrikeSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("474ed0aa656cc38499cc9a073d113716");
             //HungryDarkness (If I add it)
-            //MydriaticSpontaneityMass
+            var MydriaticSpontaneityMassAbility = Resources.GetModBlueprint<BlueprintAbility>("MydriaticSpontaneityMassAbility");
             //8
+            var CreateUndeadSummonGreaterShadowSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("b8fdf9d9e84c490d8a57d49ed344571e");
             //ShadowEvocationGreaterSpell
             //9
             //Shades
@@ -305,12 +306,15 @@ namespace ExpandedContent.Tweaks.Mysteries {
                         ShadowConjurationGreaterSpell,
                         UmbrallStrikeSpell,
                         ShadowEvocationGreaterSpell,
+                        CreateUndeadSummonGreaterShadowSpell,
                         ShadesSpell,
                         DustOfTwilightAbility.ToReference<BlueprintAbilityReference>(),
                         FormOfTheExoticDragonAbilityUmbral.ToReference<BlueprintAbilityReference>(),
                         ShadowStepAbility.ToReference<BlueprintAbilityReference>(),
                         ShadowJauntAbility.ToReference<BlueprintAbilityReference>(),
                         ShadowClawsAbility.ToReference<BlueprintAbilityReference>(),
+                        MydriaticSpontaneityAbility.ToReference<BlueprintAbilityReference>(),
+                        MydriaticSpontaneityMassAbility.ToReference<BlueprintAbilityReference>(),
                     };
                     c.Descriptor = SpellDescriptor.None;
                     c.Once = false;
@@ -522,6 +526,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
             OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationArmyOfDarknessFeature.ToReference<BlueprintFeatureReference>());
             #endregion
             #region Cloak of Darkness
+            var ShamanAirBarrierAbility = Resources.GetBlueprint<BlueprintAbility>("3e14f46a35228b946af0c1fe79870e54");
             var OracleRevelationCloakOfDarknessResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("OracleRevelationCloakOfDarknessResource", bp => {
                 bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
                     BaseValue = 0,
@@ -542,7 +547,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.SetDescription("You conjure a cloak of shadowy darkness that grants you a +4 armor bonus and a +2 circumstance bonus on Stealth checks. " +
                     "At 7th level, and every four levels thereafter, these bonuses increase by +2. You can use this cloak for 1 hour per day per oracle level. " +
                     "The duration does not need to be consecutive, but it must be spent in 1-hour increments.");
-                bp.m_Icon = OracleRevelationCloakOfDarknessIcon;
+                bp.m_Icon = ShamanAirBarrierAbility.Icon;
                 bp.AddComponent<ContextRankConfig>(c => {
                     c.m_Type = AbilityRankType.Default;
                     c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
@@ -657,7 +662,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.SetDescription("You conjure a cloak of shadowy darkness that grants you a +4 armor bonus and a +2 circumstance bonus on Stealth checks. " +
                     "At 7th level, and every four levels thereafter, these bonuses increase by +2. You can use this cloak for 1 hour per day per oracle level. " +
                     "The duration does not need to be consecutive, but it must be spent in 1-hour increments.");
-                bp.m_Icon = OracleRevelationCloakOfDarknessIcon;
+                bp.m_Icon = ShamanAirBarrierAbility.Icon;
                 bp.AddComponent<ActivatableAbilityResourceLogic>(c => {
                     c.SpendType = ActivatableAbilityResourceLogic.ResourceSpendType.OncePerHour;
                     c.m_RequiredResource = OracleRevelationCloakOfDarknessResource.ToReference<BlueprintAbilityResourceReference>();
@@ -673,7 +678,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.SetDescription("You conjure a cloak of shadowy darkness that grants you a +4 armor bonus and a +2 circumstance bonus on Stealth checks. " +
                     "At 7th level, and every four levels thereafter, these bonuses increase by +2. You can use this cloak for 1 hour per day per oracle level. " +
                     "The duration does not need to be consecutive, but it must be spent in 1-hour increments.");
-                bp.m_Icon = OracleRevelationCloakOfDarknessIcon;
+                bp.m_Icon = ShamanAirBarrierAbility.Icon;
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] { OracleRevelationCloakOfDarknessAbility.ToReference<BlueprintUnitFactReference>() };
                 });
@@ -697,7 +702,159 @@ namespace ExpandedContent.Tweaks.Mysteries {
             OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationCloakOfDarknessFeature.ToReference<BlueprintFeatureReference>());
             #endregion
             #region Dark Secrets
-            var OracleRevelationDarkSecretsSpellList = Helpers.CreateBlueprint<BlueprintSpellList>("OracleRevelationDarkSecretsSpellList", bp => {
+
+            var OracleRevelationDarkSecretsSpellList1 = Helpers.CreateBlueprint<BlueprintSpellList>("OracleRevelationDarkSecretsSpellList1", bp => {
+                bp.SpellsByLevel = new SpellLevelList[10] {
+                    new SpellLevelList(0) {
+                        SpellLevel = 0,
+                        m_Spells = new List<BlueprintAbilityReference>()
+                    },
+                    new SpellLevelList(1) {
+                        SpellLevel = 1,
+                        m_Spells = new List<BlueprintAbilityReference>() {
+                            VanishSpell
+                        }
+                    },
+                    new SpellLevelList(2) {
+                        SpellLevel = 2,
+                        m_Spells = new List<BlueprintAbilityReference>()
+                    },
+                    new SpellLevelList(3) {
+                        SpellLevel = 3,
+                        m_Spells = new List<BlueprintAbilityReference>()
+                    },
+                    new SpellLevelList(4) {
+                        SpellLevel = 4,
+                        m_Spells = new List<BlueprintAbilityReference>()
+                    },
+                    new SpellLevelList(5) {
+                        SpellLevel = 5,
+                        m_Spells = new List<BlueprintAbilityReference>()
+                    },
+                    new SpellLevelList(6) {
+                        SpellLevel = 6,
+                        m_Spells = new List<BlueprintAbilityReference>() 
+                    },
+                    new SpellLevelList(7) {
+                        SpellLevel = 7,
+                        m_Spells = new List<BlueprintAbilityReference>() 
+                    },
+                    new SpellLevelList(8) {
+                        SpellLevel = 8,
+                        m_Spells = new List<BlueprintAbilityReference>() 
+                    },
+                    new SpellLevelList(9) {
+                        SpellLevel = 9,
+                        m_Spells = new List<BlueprintAbilityReference>()
+                    },
+                };
+            });
+            var OracleRevelationDarkSecretsSpellList2 = Helpers.CreateBlueprint<BlueprintSpellList>("OracleRevelationDarkSecretsSpellList2", bp => {
+                bp.SpellsByLevel = new SpellLevelList[10] {
+                    new SpellLevelList(0) {
+                        SpellLevel = 0,
+                        m_Spells = new List<BlueprintAbilityReference>()
+                    },
+                    new SpellLevelList(1) {
+                        SpellLevel = 1,
+                        m_Spells = new List<BlueprintAbilityReference>() {
+                            VanishSpell
+                        }
+                    },
+                    new SpellLevelList(2) {
+                        SpellLevel = 2,
+                        m_Spells = new List<BlueprintAbilityReference>() {
+                            BlurSpell,
+                            HauntingMistsSpell,
+                            DustOfTwilightAbility.ToReference<BlueprintAbilityReference>(),
+                            ShadowClawsAbility.ToReference<BlueprintAbilityReference>()
+                        }
+                    },
+                    new SpellLevelList(3) {
+                        SpellLevel = 3,
+                        m_Spells = new List<BlueprintAbilityReference>() 
+                    },
+                    new SpellLevelList(4) {
+                        SpellLevel = 4,
+                        m_Spells = new List<BlueprintAbilityReference>()
+                    },
+                    new SpellLevelList(5) {
+                        SpellLevel = 5,
+                        m_Spells = new List<BlueprintAbilityReference>() 
+                    },
+                    new SpellLevelList(6) {
+                        SpellLevel = 6,
+                        m_Spells = new List<BlueprintAbilityReference>()
+                    },
+                    new SpellLevelList(7) {
+                        SpellLevel = 7,
+                        m_Spells = new List<BlueprintAbilityReference>() 
+                    },
+                    new SpellLevelList(8) {
+                        SpellLevel = 8,
+                        m_Spells = new List<BlueprintAbilityReference>()
+                    },
+                    new SpellLevelList(9) {
+                        SpellLevel = 9,
+                        m_Spells = new List<BlueprintAbilityReference>() 
+                    },
+                };
+            });
+            var OracleRevelationDarkSecretsSpellList3 = Helpers.CreateBlueprint<BlueprintSpellList>("OracleRevelationDarkSecretsSpellList3", bp => {
+                bp.SpellsByLevel = new SpellLevelList[10] {
+                    new SpellLevelList(0) {
+                        SpellLevel = 0,
+                        m_Spells = new List<BlueprintAbilityReference>()
+                    },
+                    new SpellLevelList(1) {
+                        SpellLevel = 1,
+                        m_Spells = new List<BlueprintAbilityReference>() {
+                            VanishSpell
+                        }
+                    },
+                    new SpellLevelList(2) {
+                        SpellLevel = 2,
+                        m_Spells = new List<BlueprintAbilityReference>() {
+                            BlurSpell,
+                            HauntingMistsSpell,
+                            DustOfTwilightAbility.ToReference<BlueprintAbilityReference>(),
+                            ShadowClawsAbility.ToReference<BlueprintAbilityReference>()
+                        }
+                    },
+                    new SpellLevelList(3) {
+                        SpellLevel = 3,
+                        m_Spells = new List<BlueprintAbilityReference>() {
+                            DisplacementSpell,
+                            ShadowStepAbility.ToReference<BlueprintAbilityReference>()
+                        }
+                    },
+                    new SpellLevelList(4) {
+                        SpellLevel = 4,
+                        m_Spells = new List<BlueprintAbilityReference>() 
+                    },
+                    new SpellLevelList(5) {
+                        SpellLevel = 5,
+                        m_Spells = new List<BlueprintAbilityReference>()
+                    },
+                    new SpellLevelList(6) {
+                        SpellLevel = 6,
+                        m_Spells = new List<BlueprintAbilityReference>() 
+                    },
+                    new SpellLevelList(7) {
+                        SpellLevel = 7,
+                        m_Spells = new List<BlueprintAbilityReference>() 
+                    },
+                    new SpellLevelList(8) {
+                        SpellLevel = 8,
+                        m_Spells = new List<BlueprintAbilityReference>() 
+                    },
+                    new SpellLevelList(9) {
+                        SpellLevel = 9,
+                        m_Spells = new List<BlueprintAbilityReference>() 
+                    },
+                };
+            });
+            var OracleRevelationDarkSecretsSpellList4 = Helpers.CreateBlueprint<BlueprintSpellList>("OracleRevelationDarkSecretsSpellList4", bp => {
                 bp.SpellsByLevel = new SpellLevelList[10] {
                     new SpellLevelList(0) {
                         SpellLevel = 0,
@@ -729,7 +886,190 @@ namespace ExpandedContent.Tweaks.Mysteries {
                         SpellLevel = 4,
                         m_Spells = new List<BlueprintAbilityReference>() {
                             ShadowConjurationSpell,
-                            ShadowJauntAbility.ToReference<BlueprintAbilityReference>()
+                            ShadowJauntAbility.ToReference<BlueprintAbilityReference>(),
+                            MydriaticSpontaneityAbility.ToReference<BlueprintAbilityReference>()
+                        }
+                    },
+                    new SpellLevelList(5) {
+                        SpellLevel = 5,
+                        m_Spells = new List<BlueprintAbilityReference>() 
+                    },
+                    new SpellLevelList(6) {
+                        SpellLevel = 6,
+                        m_Spells = new List<BlueprintAbilityReference>() 
+                    },
+                    new SpellLevelList(7) {
+                        SpellLevel = 7,
+                        m_Spells = new List<BlueprintAbilityReference>()
+                    },
+                    new SpellLevelList(8) {
+                        SpellLevel = 8,
+                        m_Spells = new List<BlueprintAbilityReference>() 
+                    },
+                    new SpellLevelList(9) {
+                        SpellLevel = 9,
+                        m_Spells = new List<BlueprintAbilityReference>() 
+                    },
+                };
+            });
+            var OracleRevelationDarkSecretsSpellList5 = Helpers.CreateBlueprint<BlueprintSpellList>("OracleRevelationDarkSecretsSpellList5", bp => {
+                bp.SpellsByLevel = new SpellLevelList[10] {
+                    new SpellLevelList(0) {
+                        SpellLevel = 0,
+                        m_Spells = new List<BlueprintAbilityReference>()
+                    },
+                    new SpellLevelList(1) {
+                        SpellLevel = 1,
+                        m_Spells = new List<BlueprintAbilityReference>() {
+                            VanishSpell
+                        }
+                    },
+                    new SpellLevelList(2) {
+                        SpellLevel = 2,
+                        m_Spells = new List<BlueprintAbilityReference>() {
+                            BlurSpell,
+                            HauntingMistsSpell,
+                            DustOfTwilightAbility.ToReference<BlueprintAbilityReference>(),
+                            ShadowClawsAbility.ToReference<BlueprintAbilityReference>()
+                        }
+                    },
+                    new SpellLevelList(3) {
+                        SpellLevel = 3,
+                        m_Spells = new List<BlueprintAbilityReference>() {
+                            DisplacementSpell,
+                            ShadowStepAbility.ToReference<BlueprintAbilityReference>()
+                        }
+                    },
+                    new SpellLevelList(4) {
+                        SpellLevel = 4,
+                        m_Spells = new List<BlueprintAbilityReference>() {
+                            ShadowConjurationSpell,
+                            ShadowJauntAbility.ToReference<BlueprintAbilityReference>(),
+                            MydriaticSpontaneityAbility.ToReference<BlueprintAbilityReference>()
+                        }
+                    },
+                    new SpellLevelList(5) {
+                        SpellLevel = 5,
+                        m_Spells = new List<BlueprintAbilityReference>() {
+                            ShadowEvocationSpell,
+                            VampiricShadowShieldSpell
+                        }
+                    },
+                    new SpellLevelList(6) {
+                        SpellLevel = 6,
+                        m_Spells = new List<BlueprintAbilityReference>() 
+                    },
+                    new SpellLevelList(7) {
+                        SpellLevel = 7,
+                        m_Spells = new List<BlueprintAbilityReference>() 
+                    },
+                    new SpellLevelList(8) {
+                        SpellLevel = 8,
+                        m_Spells = new List<BlueprintAbilityReference>()
+                    },
+                    new SpellLevelList(9) {
+                        SpellLevel = 9,
+                        m_Spells = new List<BlueprintAbilityReference>() 
+                    },
+                };
+            });
+            var OracleRevelationDarkSecretsSpellList6 = Helpers.CreateBlueprint<BlueprintSpellList>("OracleRevelationDarkSecretsSpellList6", bp => {
+                bp.SpellsByLevel = new SpellLevelList[10] {
+                    new SpellLevelList(0) {
+                        SpellLevel = 0,
+                        m_Spells = new List<BlueprintAbilityReference>()
+                    },
+                    new SpellLevelList(1) {
+                        SpellLevel = 1,
+                        m_Spells = new List<BlueprintAbilityReference>() {
+                            VanishSpell
+                        }
+                    },
+                    new SpellLevelList(2) {
+                        SpellLevel = 2,
+                        m_Spells = new List<BlueprintAbilityReference>() {
+                            BlurSpell,
+                            HauntingMistsSpell,
+                            DustOfTwilightAbility.ToReference<BlueprintAbilityReference>(),
+                            ShadowClawsAbility.ToReference<BlueprintAbilityReference>()
+                        }
+                    },
+                    new SpellLevelList(3) {
+                        SpellLevel = 3,
+                        m_Spells = new List<BlueprintAbilityReference>() {
+                            DisplacementSpell,
+                            ShadowStepAbility.ToReference<BlueprintAbilityReference>()
+                        }
+                    },
+                    new SpellLevelList(4) {
+                        SpellLevel = 4,
+                        m_Spells = new List<BlueprintAbilityReference>() {
+                            ShadowConjurationSpell,
+                            ShadowJauntAbility.ToReference<BlueprintAbilityReference>(),
+                            MydriaticSpontaneityAbility.ToReference<BlueprintAbilityReference>()
+                        }
+                    },
+                    new SpellLevelList(5) {
+                        SpellLevel = 5,
+                        m_Spells = new List<BlueprintAbilityReference>() {
+                            ShadowEvocationSpell,
+                            VampiricShadowShieldSpell
+                        }
+                    },
+                    new SpellLevelList(6) {
+                        SpellLevel = 6,
+                        m_Spells = new List<BlueprintAbilityReference>() {
+                            PhantasmalPutrefactionSpell
+                        }
+                    },
+                    new SpellLevelList(7) {
+                        SpellLevel = 7,
+                        m_Spells = new List<BlueprintAbilityReference>() 
+                    },
+                    new SpellLevelList(8) {
+                        SpellLevel = 8,
+                        m_Spells = new List<BlueprintAbilityReference>() 
+                    },
+                    new SpellLevelList(9) {
+                        SpellLevel = 9,
+                        m_Spells = new List<BlueprintAbilityReference>() 
+                    },
+                };
+            });
+            var OracleRevelationDarkSecretsSpellList7 = Helpers.CreateBlueprint<BlueprintSpellList>("OracleRevelationDarkSecretsSpellList7", bp => {
+                bp.SpellsByLevel = new SpellLevelList[10] {
+                    new SpellLevelList(0) {
+                        SpellLevel = 0,
+                        m_Spells = new List<BlueprintAbilityReference>()
+                    },
+                    new SpellLevelList(1) {
+                        SpellLevel = 1,
+                        m_Spells = new List<BlueprintAbilityReference>() {
+                            VanishSpell
+                        }
+                    },
+                    new SpellLevelList(2) {
+                        SpellLevel = 2,
+                        m_Spells = new List<BlueprintAbilityReference>() {
+                            BlurSpell,
+                            HauntingMistsSpell,
+                            DustOfTwilightAbility.ToReference<BlueprintAbilityReference>(),
+                            ShadowClawsAbility.ToReference<BlueprintAbilityReference>()
+                        }
+                    },
+                    new SpellLevelList(3) {
+                        SpellLevel = 3,
+                        m_Spells = new List<BlueprintAbilityReference>() {
+                            DisplacementSpell,
+                            ShadowStepAbility.ToReference<BlueprintAbilityReference>()
+                        }
+                    },
+                    new SpellLevelList(4) {
+                        SpellLevel = 4,
+                        m_Spells = new List<BlueprintAbilityReference>() {
+                            ShadowConjurationSpell,
+                            ShadowJauntAbility.ToReference<BlueprintAbilityReference>(),
+                            MydriaticSpontaneityAbility.ToReference<BlueprintAbilityReference>()
                         }
                     },
                     new SpellLevelList(5) {
@@ -749,20 +1089,159 @@ namespace ExpandedContent.Tweaks.Mysteries {
                         SpellLevel = 7,
                         m_Spells = new List<BlueprintAbilityReference>() {
                             ShadowConjurationGreaterSpell,
-                            UmbrallStrikeSpell
+                            UmbrallStrikeSpell,
+                            MydriaticSpontaneityMassAbility.ToReference<BlueprintAbilityReference>()
+                        }
+                    },
+                    new SpellLevelList(8) {
+                        SpellLevel = 8,
+                        m_Spells = new List<BlueprintAbilityReference>() 
+                    },
+                    new SpellLevelList(9) {
+                        SpellLevel = 9,
+                        m_Spells = new List<BlueprintAbilityReference>() 
+                    },
+                };
+            });
+            var OracleRevelationDarkSecretsSpellList8 = Helpers.CreateBlueprint<BlueprintSpellList>("OracleRevelationDarkSecretsSpellList8", bp => {
+                bp.SpellsByLevel = new SpellLevelList[10] {
+                    new SpellLevelList(0) {
+                        SpellLevel = 0,
+                        m_Spells = new List<BlueprintAbilityReference>()
+                    },
+                    new SpellLevelList(1) {
+                        SpellLevel = 1,
+                        m_Spells = new List<BlueprintAbilityReference>() {
+                            VanishSpell
+                        }
+                    },
+                    new SpellLevelList(2) {
+                        SpellLevel = 2,
+                        m_Spells = new List<BlueprintAbilityReference>() {
+                            BlurSpell,
+                            HauntingMistsSpell,
+                            DustOfTwilightAbility.ToReference<BlueprintAbilityReference>(),
+                            ShadowClawsAbility.ToReference<BlueprintAbilityReference>()
+                        }
+                    },
+                    new SpellLevelList(3) {
+                        SpellLevel = 3,
+                        m_Spells = new List<BlueprintAbilityReference>() {
+                            DisplacementSpell,
+                            ShadowStepAbility.ToReference<BlueprintAbilityReference>()
+                        }
+                    },
+                    new SpellLevelList(4) {
+                        SpellLevel = 4,
+                        m_Spells = new List<BlueprintAbilityReference>() {
+                            ShadowConjurationSpell,
+                            ShadowJauntAbility.ToReference<BlueprintAbilityReference>(),
+                            MydriaticSpontaneityAbility.ToReference<BlueprintAbilityReference>()
+                        }
+                    },
+                    new SpellLevelList(5) {
+                        SpellLevel = 5,
+                        m_Spells = new List<BlueprintAbilityReference>() {
+                            ShadowEvocationSpell,
+                            VampiricShadowShieldSpell
+                        }
+                    },
+                    new SpellLevelList(6) {
+                        SpellLevel = 6,
+                        m_Spells = new List<BlueprintAbilityReference>() {
+                            PhantasmalPutrefactionSpell
+                        }
+                    },
+                    new SpellLevelList(7) {
+                        SpellLevel = 7,
+                        m_Spells = new List<BlueprintAbilityReference>() {
+                            ShadowConjurationGreaterSpell,
+                            UmbrallStrikeSpell,
+                            MydriaticSpontaneityMassAbility.ToReference<BlueprintAbilityReference>()
                         }
                     },
                     new SpellLevelList(8) {
                         SpellLevel = 8,
                         m_Spells = new List<BlueprintAbilityReference>() {
-                            ShadowEvocationGreaterSpell
+                            ShadowEvocationGreaterSpell,
+                            CreateUndeadSummonGreaterShadowSpell
+                        }
+                    },
+                    new SpellLevelList(9) {
+                        SpellLevel = 9,
+                        m_Spells = new List<BlueprintAbilityReference>() 
+                    },
+                };
+            });
+            var OracleRevelationDarkSecretsSpellList9 = Helpers.CreateBlueprint<BlueprintSpellList>("OracleRevelationDarkSecretsSpellList9", bp => {
+                bp.SpellsByLevel = new SpellLevelList[10] {
+                    new SpellLevelList(0) {
+                        SpellLevel = 0,
+                        m_Spells = new List<BlueprintAbilityReference>()
+                    },
+                    new SpellLevelList(1) {
+                        SpellLevel = 1,
+                        m_Spells = new List<BlueprintAbilityReference>() {
+                            VanishSpell
+                        }
+                    },
+                    new SpellLevelList(2) {
+                        SpellLevel = 2,
+                        m_Spells = new List<BlueprintAbilityReference>() {
+                            BlurSpell,
+                            HauntingMistsSpell,
+                            DustOfTwilightAbility.ToReference<BlueprintAbilityReference>(),
+                            ShadowClawsAbility.ToReference<BlueprintAbilityReference>()
+                        }
+                    },
+                    new SpellLevelList(3) {
+                        SpellLevel = 3,
+                        m_Spells = new List<BlueprintAbilityReference>() {
+                            DisplacementSpell,
+                            ShadowStepAbility.ToReference<BlueprintAbilityReference>()
+                        }
+                    },
+                    new SpellLevelList(4) {
+                        SpellLevel = 4,
+                        m_Spells = new List<BlueprintAbilityReference>() {
+                            ShadowConjurationSpell,
+                            ShadowJauntAbility.ToReference<BlueprintAbilityReference>(),
+                            MydriaticSpontaneityAbility.ToReference<BlueprintAbilityReference>()
+                        }
+                    },
+                    new SpellLevelList(5) {
+                        SpellLevel = 5,
+                        m_Spells = new List<BlueprintAbilityReference>() {
+                            ShadowEvocationSpell,
+                            VampiricShadowShieldSpell
+                        }
+                    },
+                    new SpellLevelList(6) {
+                        SpellLevel = 6,
+                        m_Spells = new List<BlueprintAbilityReference>() {
+                            PhantasmalPutrefactionSpell
+                        }
+                    },
+                    new SpellLevelList(7) {
+                        SpellLevel = 7,
+                        m_Spells = new List<BlueprintAbilityReference>() {
+                            ShadowConjurationGreaterSpell,
+                            UmbrallStrikeSpell,
+                            MydriaticSpontaneityMassAbility.ToReference<BlueprintAbilityReference>()
+                        }
+                    },
+                    new SpellLevelList(8) {
+                        SpellLevel = 8,
+                        m_Spells = new List<BlueprintAbilityReference>() {
+                            ShadowEvocationGreaterSpell,
+                            CreateUndeadSummonGreaterShadowSpell
                         }
                     },
                     new SpellLevelList(9) {
                         SpellLevel = 9,
                         m_Spells = new List<BlueprintAbilityReference>() {
                             ShadesSpell,
-                            FormOfTheExoticDragonAbilityUmbral.ToReference<BlueprintAbilityReference>()
+                            FormOfTheExoticDragonAbilityUmbral.ToReference<BlueprintAbilityReference>() 
                         }
                     },
                 };
@@ -773,7 +1252,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.SetDescription("Choose a shadow or darkness spell.");
                 bp.AddComponent<LearnSpellParametrized>(c => {
                     c.m_SpellcasterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
-                    c.m_SpellList = OracleRevelationDarkSecretsSpellList.ToReference<BlueprintSpellListReference>();
+                    c.m_SpellList = OracleRevelationDarkSecretsSpellList1.ToReference<BlueprintSpellListReference>();
                     c.SpecificSpellLevel = true;
                     c.SpellLevelPenalty = 0;
                     c.SpellLevel = 1;
@@ -788,10 +1267,10 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.WeaponSubCategory = WeaponSubCategory.None;
                 bp.SelectionFeatureGroup = FeatureGroup.None;
                 bp.RequireProficiency = false;
-                bp.m_SpellList = OracleRevelationDarkSecretsSpellList.ToReference<BlueprintSpellListReference>();
+                bp.m_SpellList = OracleRevelationDarkSecretsSpellList1.ToReference<BlueprintSpellListReference>();
                 bp.m_SpellcasterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
                 bp.SpecificSpellLevel = true;
-                bp.SpellLevelPenalty = 1; //????
+                bp.SpellLevelPenalty = 0; //????
                 bp.SpellLevel = 1;
                 bp.DisallowSpellsInSpellList = false;
             });
@@ -800,7 +1279,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.SetDescription("Choose a shadow or darkness spell.");
                 bp.AddComponent<LearnSpellParametrized>(c => {
                     c.m_SpellcasterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
-                    c.m_SpellList = OracleRevelationDarkSecretsSpellList.ToReference<BlueprintSpellListReference>();
+                    c.m_SpellList = OracleRevelationDarkSecretsSpellList2.ToReference<BlueprintSpellListReference>();
                     c.SpecificSpellLevel = true;
                     c.SpellLevelPenalty = 0;
                     c.SpellLevel = 2;
@@ -815,10 +1294,10 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.WeaponSubCategory = WeaponSubCategory.None;
                 bp.SelectionFeatureGroup = FeatureGroup.None;
                 bp.RequireProficiency = false;
-                bp.m_SpellList = OracleRevelationDarkSecretsSpellList.ToReference<BlueprintSpellListReference>();
+                bp.m_SpellList = OracleRevelationDarkSecretsSpellList2.ToReference<BlueprintSpellListReference>();
                 bp.m_SpellcasterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
                 bp.SpecificSpellLevel = true;
-                bp.SpellLevelPenalty = 1; //????
+                bp.SpellLevelPenalty = 0; //????
                 bp.SpellLevel = 2;
                 bp.DisallowSpellsInSpellList = false;
             });
@@ -827,7 +1306,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.SetDescription("Choose a shadow or darkness spell.");
                 bp.AddComponent<LearnSpellParametrized>(c => {
                     c.m_SpellcasterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
-                    c.m_SpellList = OracleRevelationDarkSecretsSpellList.ToReference<BlueprintSpellListReference>();
+                    c.m_SpellList = OracleRevelationDarkSecretsSpellList3.ToReference<BlueprintSpellListReference>();
                     c.SpecificSpellLevel = true;
                     c.SpellLevelPenalty = 0;
                     c.SpellLevel = 3;
@@ -842,10 +1321,10 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.WeaponSubCategory = WeaponSubCategory.None;
                 bp.SelectionFeatureGroup = FeatureGroup.None;
                 bp.RequireProficiency = false;
-                bp.m_SpellList = OracleRevelationDarkSecretsSpellList.ToReference<BlueprintSpellListReference>();
+                bp.m_SpellList = OracleRevelationDarkSecretsSpellList3.ToReference<BlueprintSpellListReference>();
                 bp.m_SpellcasterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
                 bp.SpecificSpellLevel = true;
-                bp.SpellLevelPenalty = 1; //????
+                bp.SpellLevelPenalty = 0; //????
                 bp.SpellLevel = 3;
                 bp.DisallowSpellsInSpellList = false;
             });
@@ -854,7 +1333,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.SetDescription("Choose a shadow or darkness spell.");
                 bp.AddComponent<LearnSpellParametrized>(c => {
                     c.m_SpellcasterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
-                    c.m_SpellList = OracleRevelationDarkSecretsSpellList.ToReference<BlueprintSpellListReference>();
+                    c.m_SpellList = OracleRevelationDarkSecretsSpellList4.ToReference<BlueprintSpellListReference>();
                     c.SpecificSpellLevel = true;
                     c.SpellLevelPenalty = 0;
                     c.SpellLevel = 4;
@@ -869,10 +1348,10 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.WeaponSubCategory = WeaponSubCategory.None;
                 bp.SelectionFeatureGroup = FeatureGroup.None;
                 bp.RequireProficiency = false;
-                bp.m_SpellList = OracleRevelationDarkSecretsSpellList.ToReference<BlueprintSpellListReference>();
+                bp.m_SpellList = OracleRevelationDarkSecretsSpellList4.ToReference<BlueprintSpellListReference>();
                 bp.m_SpellcasterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
                 bp.SpecificSpellLevel = true;
-                bp.SpellLevelPenalty = 1; //????
+                bp.SpellLevelPenalty = 0; //????
                 bp.SpellLevel = 4;
                 bp.DisallowSpellsInSpellList = false;
             });
@@ -881,7 +1360,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.SetDescription("Choose a shadow or darkness spell.");
                 bp.AddComponent<LearnSpellParametrized>(c => {
                     c.m_SpellcasterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
-                    c.m_SpellList = OracleRevelationDarkSecretsSpellList.ToReference<BlueprintSpellListReference>();
+                    c.m_SpellList = OracleRevelationDarkSecretsSpellList5.ToReference<BlueprintSpellListReference>();
                     c.SpecificSpellLevel = true;
                     c.SpellLevelPenalty = 0;
                     c.SpellLevel = 5;
@@ -896,10 +1375,10 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.WeaponSubCategory = WeaponSubCategory.None;
                 bp.SelectionFeatureGroup = FeatureGroup.None;
                 bp.RequireProficiency = false;
-                bp.m_SpellList = OracleRevelationDarkSecretsSpellList.ToReference<BlueprintSpellListReference>();
+                bp.m_SpellList = OracleRevelationDarkSecretsSpellList5.ToReference<BlueprintSpellListReference>();
                 bp.m_SpellcasterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
                 bp.SpecificSpellLevel = true;
-                bp.SpellLevelPenalty = 1; //????
+                bp.SpellLevelPenalty = 0; //????
                 bp.SpellLevel = 5;
                 bp.DisallowSpellsInSpellList = false;
             });
@@ -908,7 +1387,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.SetDescription("Choose a shadow or darkness spell.");
                 bp.AddComponent<LearnSpellParametrized>(c => {
                     c.m_SpellcasterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
-                    c.m_SpellList = OracleRevelationDarkSecretsSpellList.ToReference<BlueprintSpellListReference>();
+                    c.m_SpellList = OracleRevelationDarkSecretsSpellList6.ToReference<BlueprintSpellListReference>();
                     c.SpecificSpellLevel = true;
                     c.SpellLevelPenalty = 0;
                     c.SpellLevel = 6;
@@ -923,10 +1402,10 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.WeaponSubCategory = WeaponSubCategory.None;
                 bp.SelectionFeatureGroup = FeatureGroup.None;
                 bp.RequireProficiency = false;
-                bp.m_SpellList = OracleRevelationDarkSecretsSpellList.ToReference<BlueprintSpellListReference>();
+                bp.m_SpellList = OracleRevelationDarkSecretsSpellList6.ToReference<BlueprintSpellListReference>();
                 bp.m_SpellcasterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
                 bp.SpecificSpellLevel = true;
-                bp.SpellLevelPenalty = 1; //????
+                bp.SpellLevelPenalty = 0; //????
                 bp.SpellLevel = 6;
                 bp.DisallowSpellsInSpellList = false;
             });
@@ -935,7 +1414,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.SetDescription("Choose a shadow or darkness spell.");
                 bp.AddComponent<LearnSpellParametrized>(c => {
                     c.m_SpellcasterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
-                    c.m_SpellList = OracleRevelationDarkSecretsSpellList.ToReference<BlueprintSpellListReference>();
+                    c.m_SpellList = OracleRevelationDarkSecretsSpellList7.ToReference<BlueprintSpellListReference>();
                     c.SpecificSpellLevel = true;
                     c.SpellLevelPenalty = 0;
                     c.SpellLevel = 7;
@@ -950,10 +1429,10 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.WeaponSubCategory = WeaponSubCategory.None;
                 bp.SelectionFeatureGroup = FeatureGroup.None;
                 bp.RequireProficiency = false;
-                bp.m_SpellList = OracleRevelationDarkSecretsSpellList.ToReference<BlueprintSpellListReference>();
+                bp.m_SpellList = OracleRevelationDarkSecretsSpellList7.ToReference<BlueprintSpellListReference>();
                 bp.m_SpellcasterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
                 bp.SpecificSpellLevel = true;
-                bp.SpellLevelPenalty = 1; //????
+                bp.SpellLevelPenalty = 0; //????
                 bp.SpellLevel = 7;
                 bp.DisallowSpellsInSpellList = false;
             });
@@ -962,7 +1441,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.SetDescription("Choose a shadow or darkness spell.");
                 bp.AddComponent<LearnSpellParametrized>(c => {
                     c.m_SpellcasterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
-                    c.m_SpellList = OracleRevelationDarkSecretsSpellList.ToReference<BlueprintSpellListReference>();
+                    c.m_SpellList = OracleRevelationDarkSecretsSpellList8.ToReference<BlueprintSpellListReference>();
                     c.SpecificSpellLevel = true;
                     c.SpellLevelPenalty = 0;
                     c.SpellLevel = 8;
@@ -977,10 +1456,10 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.WeaponSubCategory = WeaponSubCategory.None;
                 bp.SelectionFeatureGroup = FeatureGroup.None;
                 bp.RequireProficiency = false;
-                bp.m_SpellList = OracleRevelationDarkSecretsSpellList.ToReference<BlueprintSpellListReference>();
+                bp.m_SpellList = OracleRevelationDarkSecretsSpellList8.ToReference<BlueprintSpellListReference>();
                 bp.m_SpellcasterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
                 bp.SpecificSpellLevel = true;
-                bp.SpellLevelPenalty = 1; //????
+                bp.SpellLevelPenalty = 0; //????
                 bp.SpellLevel = 8;
                 bp.DisallowSpellsInSpellList = false;
             });
@@ -989,7 +1468,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.SetDescription("Choose a shadow or darkness spell.");
                 bp.AddComponent<LearnSpellParametrized>(c => {
                     c.m_SpellcasterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
-                    c.m_SpellList = OracleRevelationDarkSecretsSpellList.ToReference<BlueprintSpellListReference>();
+                    c.m_SpellList = OracleRevelationDarkSecretsSpellList9.ToReference<BlueprintSpellListReference>();
                     c.SpecificSpellLevel = true;
                     c.SpellLevelPenalty = 0;
                     c.SpellLevel = 9;
@@ -1004,13 +1483,180 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.WeaponSubCategory = WeaponSubCategory.None;
                 bp.SelectionFeatureGroup = FeatureGroup.None;
                 bp.RequireProficiency = false;
-                bp.m_SpellList = OracleRevelationDarkSecretsSpellList.ToReference<BlueprintSpellListReference>();
+                bp.m_SpellList = OracleRevelationDarkSecretsSpellList9.ToReference<BlueprintSpellListReference>();
                 bp.m_SpellcasterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
                 bp.SpecificSpellLevel = true;
-                bp.SpellLevelPenalty = 1; //????
+                bp.SpellLevelPenalty = 0; //????
                 bp.SpellLevel = 9;
                 bp.DisallowSpellsInSpellList = false;
             });
+
+            var OracleRevelationDarkSecretsSpellSkip = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationDarkSecretsSpellSkip", bp => {
+                bp.SetName("Skip Spell Selection");
+                bp.SetDescription("Skip selecting a new spell if you have all available spells.");
+                bp.Ranks = 10;
+                bp.Groups = new FeatureGroup[] { FeatureGroup.None };
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.HideInUI = true;
+                bp.HideNotAvailibleInUI = true;
+            });
+
+            var OracleRevelationDarkSecretsLevel1Selection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("OracleRevelationDarkSecretsLevel1Selection", bp => {
+                bp.SetName("Dark Secrets");
+                bp.SetDescription("You learn the hidden secrets surrounding the casting of shadow spells. This revelation grants a 1st level shadow spell from the wizard spell list, at level 4 and every even level after, " +
+                    "you may select another shadow spell that you are the appropriate level to cast (at level 4 you may pick up to 2nd level spells, level 6 3rd level spells, ect...). \nIf this revelation is taken at a " +
+                    "later level, spells are granted retroactively, with spells selected still being level appropriate.");
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+                bp.Group = FeatureGroup.None;
+                bp.m_AllFeatures = new BlueprintFeatureReference[] {
+                    OracleRevelationDarkSecretsSpellLevel1.ToReference<BlueprintFeatureReference>(),
+                    OracleRevelationDarkSecretsSpellSkip.ToReference<BlueprintFeatureReference>()
+                };
+            });
+            var OracleRevelationDarkSecretsLevel2Selection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("OracleRevelationDarkSecretsLevel2Selection", bp => {
+                bp.SetName("Dark Secrets");
+                bp.SetDescription("You learn the hidden secrets surrounding the casting of shadow spells. This revelation grants a 1st level shadow spell from the wizard spell list, at level 4 and every even level after, " +
+                    "you may select another shadow spell that you are the appropriate level to cast (at level 4 you may pick up to 2nd level spells, level 6 3rd level spells, ect...). \nIf this revelation is taken at a " +
+                    "later level, spells are granted retroactively, with spells selected still being level appropriate.");
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+                bp.Group = FeatureGroup.None;
+                bp.m_AllFeatures = new BlueprintFeatureReference[] {
+                    OracleRevelationDarkSecretsSpellLevel1.ToReference<BlueprintFeatureReference>(),
+                    OracleRevelationDarkSecretsSpellLevel2.ToReference<BlueprintFeatureReference>(),
+                    OracleRevelationDarkSecretsSpellSkip.ToReference<BlueprintFeatureReference>()
+                };
+            });
+            var OracleRevelationDarkSecretsLevel3Selection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("OracleRevelationDarkSecretsLevel3Selection", bp => {
+                bp.SetName("Dark Secrets");
+                bp.SetDescription("You learn the hidden secrets surrounding the casting of shadow spells. This revelation grants a 1st level shadow spell from the wizard spell list, at level 4 and every even level after, " +
+                    "you may select another shadow spell that you are the appropriate level to cast (at level 4 you may pick up to 2nd level spells, level 6 3rd level spells, ect...). \nIf this revelation is taken at a " +
+                    "later level, spells are granted retroactively, with spells selected still being level appropriate.");
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+                bp.Group = FeatureGroup.None;
+                bp.m_AllFeatures = new BlueprintFeatureReference[] {
+                    OracleRevelationDarkSecretsSpellLevel1.ToReference<BlueprintFeatureReference>(),
+                    OracleRevelationDarkSecretsSpellLevel2.ToReference<BlueprintFeatureReference>(),
+                    OracleRevelationDarkSecretsSpellLevel3.ToReference<BlueprintFeatureReference>(),
+                    OracleRevelationDarkSecretsSpellSkip.ToReference<BlueprintFeatureReference>()
+                };
+            });
+            var OracleRevelationDarkSecretsLevel4Selection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("OracleRevelationDarkSecretsLevel4Selection", bp => {
+                bp.SetName("Dark Secrets");
+                bp.SetDescription("You learn the hidden secrets surrounding the casting of shadow spells. This revelation grants a 1st level shadow spell from the wizard spell list, at level 4 and every even level after, " +
+                    "you may select another shadow spell that you are the appropriate level to cast (at level 4 you may pick up to 2nd level spells, level 6 3rd level spells, ect...). \nIf this revelation is taken at a " +
+                    "later level, spells are granted retroactively, with spells selected still being level appropriate.");
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+                bp.Group = FeatureGroup.None;
+                bp.m_AllFeatures = new BlueprintFeatureReference[] {
+                    OracleRevelationDarkSecretsSpellLevel1.ToReference<BlueprintFeatureReference>(),
+                    OracleRevelationDarkSecretsSpellLevel2.ToReference<BlueprintFeatureReference>(),
+                    OracleRevelationDarkSecretsSpellLevel3.ToReference<BlueprintFeatureReference>(),
+                    OracleRevelationDarkSecretsSpellLevel4.ToReference<BlueprintFeatureReference>(),
+                    OracleRevelationDarkSecretsSpellSkip.ToReference<BlueprintFeatureReference>()
+                };
+            });
+            var OracleRevelationDarkSecretsLevel5Selection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("OracleRevelationDarkSecretsLevel5Selection", bp => {
+                bp.SetName("Dark Secrets");
+                bp.SetDescription("You learn the hidden secrets surrounding the casting of shadow spells. This revelation grants a 1st level shadow spell from the wizard spell list, at level 4 and every even level after, " +
+                    "you may select another shadow spell that you are the appropriate level to cast (at level 4 you may pick up to 2nd level spells, level 6 3rd level spells, ect...). \nIf this revelation is taken at a " +
+                    "later level, spells are granted retroactively, with spells selected still being level appropriate.");
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+                bp.Group = FeatureGroup.None;
+                bp.m_AllFeatures = new BlueprintFeatureReference[] {
+                    OracleRevelationDarkSecretsSpellLevel1.ToReference<BlueprintFeatureReference>(),
+                    OracleRevelationDarkSecretsSpellLevel2.ToReference<BlueprintFeatureReference>(),
+                    OracleRevelationDarkSecretsSpellLevel3.ToReference<BlueprintFeatureReference>(),
+                    OracleRevelationDarkSecretsSpellLevel4.ToReference<BlueprintFeatureReference>(),
+                    OracleRevelationDarkSecretsSpellLevel5.ToReference<BlueprintFeatureReference>(),
+                    OracleRevelationDarkSecretsSpellSkip.ToReference<BlueprintFeatureReference>()
+                };
+            });
+            var OracleRevelationDarkSecretsLevel6Selection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("OracleRevelationDarkSecretsLevel6Selection", bp => {
+                bp.SetName("Dark Secrets");
+                bp.SetDescription("You learn the hidden secrets surrounding the casting of shadow spells. This revelation grants a 1st level shadow spell from the wizard spell list, at level 4 and every even level after, " +
+                    "you may select another shadow spell that you are the appropriate level to cast (at level 4 you may pick up to 2nd level spells, level 6 3rd level spells, ect...). \nIf this revelation is taken at a " +
+                    "later level, spells are granted retroactively, with spells selected still being level appropriate.");
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+                bp.Group = FeatureGroup.None;
+                bp.m_AllFeatures = new BlueprintFeatureReference[] {
+                    OracleRevelationDarkSecretsSpellLevel1.ToReference<BlueprintFeatureReference>(),
+                    OracleRevelationDarkSecretsSpellLevel2.ToReference<BlueprintFeatureReference>(),
+                    OracleRevelationDarkSecretsSpellLevel3.ToReference<BlueprintFeatureReference>(),
+                    OracleRevelationDarkSecretsSpellLevel4.ToReference<BlueprintFeatureReference>(),
+                    OracleRevelationDarkSecretsSpellLevel5.ToReference<BlueprintFeatureReference>(),
+                    OracleRevelationDarkSecretsSpellLevel6.ToReference<BlueprintFeatureReference>(),
+                    OracleRevelationDarkSecretsSpellSkip.ToReference<BlueprintFeatureReference>()
+                };
+            });
+            var OracleRevelationDarkSecretsLevel7Selection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("OracleRevelationDarkSecretsLevel7Selection", bp => {
+                bp.SetName("Dark Secrets");
+                bp.SetDescription("You learn the hidden secrets surrounding the casting of shadow spells. This revelation grants a 1st level shadow spell from the wizard spell list, at level 4 and every even level after, " +
+                    "you may select another shadow spell that you are the appropriate level to cast (at level 4 you may pick up to 2nd level spells, level 6 3rd level spells, ect...). \nIf this revelation is taken at a " +
+                    "later level, spells are granted retroactively, with spells selected still being level appropriate.");
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+                bp.Group = FeatureGroup.None;
+                bp.m_AllFeatures = new BlueprintFeatureReference[] {
+                    OracleRevelationDarkSecretsSpellLevel1.ToReference<BlueprintFeatureReference>(),
+                    OracleRevelationDarkSecretsSpellLevel2.ToReference<BlueprintFeatureReference>(),
+                    OracleRevelationDarkSecretsSpellLevel3.ToReference<BlueprintFeatureReference>(),
+                    OracleRevelationDarkSecretsSpellLevel4.ToReference<BlueprintFeatureReference>(),
+                    OracleRevelationDarkSecretsSpellLevel5.ToReference<BlueprintFeatureReference>(),
+                    OracleRevelationDarkSecretsSpellLevel6.ToReference<BlueprintFeatureReference>(),
+                    OracleRevelationDarkSecretsSpellLevel7.ToReference<BlueprintFeatureReference>(),
+                    OracleRevelationDarkSecretsSpellSkip.ToReference<BlueprintFeatureReference>()
+                };
+            });
+            var OracleRevelationDarkSecretsLevel8Selection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("OracleRevelationDarkSecretsLevel8Selection", bp => {
+                bp.SetName("Dark Secrets");
+                bp.SetDescription("You learn the hidden secrets surrounding the casting of shadow spells. This revelation grants a 1st level shadow spell from the wizard spell list, at level 4 and every even level after, " +
+                    "you may select another shadow spell that you are the appropriate level to cast (at level 4 you may pick up to 2nd level spells, level 6 3rd level spells, ect...). \nIf this revelation is taken at a " +
+                    "later level, spells are granted retroactively, with spells selected still being level appropriate.");
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+                bp.Group = FeatureGroup.None;
+                bp.m_AllFeatures = new BlueprintFeatureReference[] {
+                    OracleRevelationDarkSecretsSpellLevel1.ToReference<BlueprintFeatureReference>(),
+                    OracleRevelationDarkSecretsSpellLevel2.ToReference<BlueprintFeatureReference>(),
+                    OracleRevelationDarkSecretsSpellLevel3.ToReference<BlueprintFeatureReference>(),
+                    OracleRevelationDarkSecretsSpellLevel4.ToReference<BlueprintFeatureReference>(),
+                    OracleRevelationDarkSecretsSpellLevel5.ToReference<BlueprintFeatureReference>(),
+                    OracleRevelationDarkSecretsSpellLevel6.ToReference<BlueprintFeatureReference>(),
+                    OracleRevelationDarkSecretsSpellLevel7.ToReference<BlueprintFeatureReference>(),
+                    OracleRevelationDarkSecretsSpellLevel8.ToReference<BlueprintFeatureReference>(),
+                    OracleRevelationDarkSecretsSpellSkip.ToReference<BlueprintFeatureReference>()
+                };
+            });
+            var OracleRevelationDarkSecretsLevel9Selection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("OracleRevelationDarkSecretsLevel9Selection", bp => {
+                bp.SetName("Dark Secrets");
+                bp.SetDescription("You learn the hidden secrets surrounding the casting of shadow spells. This revelation grants a 1st level shadow spell from the wizard spell list, at level 4 and every even level after, " +
+                    "you may select another shadow spell that you are the appropriate level to cast (at level 4 you may pick up to 2nd level spells, level 6 3rd level spells, ect...). \nIf this revelation is taken at a " +
+                    "later level, spells are granted retroactively, with spells selected still being level appropriate.");
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+                bp.Group = FeatureGroup.None;
+                bp.m_AllFeatures = new BlueprintFeatureReference[] {
+                    OracleRevelationDarkSecretsSpellLevel1.ToReference<BlueprintFeatureReference>(),
+                    OracleRevelationDarkSecretsSpellLevel2.ToReference<BlueprintFeatureReference>(),
+                    OracleRevelationDarkSecretsSpellLevel3.ToReference<BlueprintFeatureReference>(),
+                    OracleRevelationDarkSecretsSpellLevel4.ToReference<BlueprintFeatureReference>(),
+                    OracleRevelationDarkSecretsSpellLevel5.ToReference<BlueprintFeatureReference>(),
+                    OracleRevelationDarkSecretsSpellLevel6.ToReference<BlueprintFeatureReference>(),
+                    OracleRevelationDarkSecretsSpellLevel7.ToReference<BlueprintFeatureReference>(),
+                    OracleRevelationDarkSecretsSpellLevel8.ToReference<BlueprintFeatureReference>(),
+                    OracleRevelationDarkSecretsSpellLevel9.ToReference<BlueprintFeatureReference>(),
+                    OracleRevelationDarkSecretsSpellSkip.ToReference<BlueprintFeatureReference>()
+                };
+            });
+
             var OracleRevelationDarkSecretsProgression = Helpers.CreateBlueprint<BlueprintProgression>("OracleRevelationDarkSecretsProgression", bp => {
                 bp.SetName("Dark Secrets");
                 bp.SetDescription("You learn the hidden secrets surrounding the casting of shadow spells. This revelation grants a 1st level shadow spell from the wizard spell list, at level 4 and every even level after, " +
@@ -1023,16 +1669,16 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     }
                 };
                 bp.LevelEntries = new LevelEntry[] {
-                    Helpers.LevelEntry(1, OracleRevelationDarkSecretsSpellLevel1),
-                    Helpers.LevelEntry(4, OracleRevelationDarkSecretsSpellLevel2),
-                    Helpers.LevelEntry(6, OracleRevelationDarkSecretsSpellLevel3),
-                    Helpers.LevelEntry(8, OracleRevelationDarkSecretsSpellLevel4),
-                    Helpers.LevelEntry(10, OracleRevelationDarkSecretsSpellLevel5),
-                    Helpers.LevelEntry(12, OracleRevelationDarkSecretsSpellLevel6),
-                    Helpers.LevelEntry(14, OracleRevelationDarkSecretsSpellLevel7),
-                    Helpers.LevelEntry(16, OracleRevelationDarkSecretsSpellLevel8),
-                    Helpers.LevelEntry(18, OracleRevelationDarkSecretsSpellLevel9),
-                    Helpers.LevelEntry(20, OracleRevelationDarkSecretsSpellLevel9)
+                    Helpers.LevelEntry(1, OracleRevelationDarkSecretsLevel1Selection),
+                    Helpers.LevelEntry(4, OracleRevelationDarkSecretsLevel2Selection),
+                    Helpers.LevelEntry(6, OracleRevelationDarkSecretsLevel3Selection),
+                    Helpers.LevelEntry(8, OracleRevelationDarkSecretsLevel4Selection),
+                    Helpers.LevelEntry(10, OracleRevelationDarkSecretsLevel5Selection),
+                    Helpers.LevelEntry(12, OracleRevelationDarkSecretsLevel6Selection),
+                    Helpers.LevelEntry(14, OracleRevelationDarkSecretsLevel7Selection),
+                    Helpers.LevelEntry(16, OracleRevelationDarkSecretsLevel8Selection),
+                    Helpers.LevelEntry(18, OracleRevelationDarkSecretsLevel9Selection),
+                    Helpers.LevelEntry(20, OracleRevelationDarkSecretsLevel9Selection)
                 };
                 bp.AddComponent<PrerequisiteFeaturesFromList>(c => {
                     c.m_Features = new BlueprintFeatureReference[] {
@@ -1042,6 +1688,11 @@ namespace ExpandedContent.Tweaks.Mysteries {
                         OceansEchoShadowMysteryFeature.ToReference<BlueprintFeatureReference>()
                     };
                     c.Amount = 1;
+                });
+                bp.AddComponent<PrerequisiteClassLevel>(c => {
+                    c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 1;
+                    c.Group = Prerequisite.GroupType.Any;
                 });
                 bp.GiveFeaturesForPreviousLevels = true;
                 bp.HideInUI = true;
@@ -1053,13 +1704,71 @@ namespace ExpandedContent.Tweaks.Mysteries {
             OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationDarkSecretsProgression.ToReference<BlueprintFeatureReference>());
 
             #endregion
-            //Pierce the Shadows??
+            #region Pierce the Shadows
+            var OracleRevelationPierceTheShadows30Feet = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationPierceTheShadows30Feet", bp => {
+                bp.SetName("Pierce the Shadows");
+                bp.SetDescription("The shadows step aside from your baleful gaze, affording you sight in even the deepest darkness. Gain blindsight with a range of 30 feet.\nAt " +
+                    "11th level the range increases to 60 feet.");
+                bp.AddComponent<Blindsense>(c => {
+                    c.Range = 30.Feet();
+                    c.Blindsight = true;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+                bp.HideInUI = true;
+            });
+            var OracleRevelationPierceTheShadows60Feet = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationPierceTheShadows60Feet", bp => {
+                bp.SetName("Pierce the Shadows");
+                bp.SetDescription("The shadows step aside from your baleful gaze, affording you sight in even the deepest darkness. Gain blindsight with a range of 30 feet.\nAt " +
+                    "11th level the range increases to 60 feet.");
+                bp.AddComponent<Blindsense>(c => {
+                    c.Range = 60.Feet();
+                    c.Blindsight = true;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+                bp.HideInUI = true;
+            });
+            var OracleRevelationPierceTheShadowsFeature = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationPierceTheShadowsFeature", bp => {
+                bp.SetName("Pierce the Shadows");
+                bp.SetDescription("The shadows step aside from your baleful gaze, affording you sight in even the deepest darkness. Gain blindsight with a range of 30 feet.\nAt " +
+                    "11th level the range increases to 60 feet.");
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.Level = 11;
+                    c.BeforeThisLevel = true;
+                    c.m_Feature = OracleRevelationPierceTheShadows30Feet.ToReference<BlueprintFeatureReference>();
+                    c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_AdditionalClasses = new BlueprintCharacterClassReference[] { ArcanistClass.ToReference<BlueprintCharacterClassReference>() };
+                    c.m_Archetypes = new BlueprintArchetypeReference[] { MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>() };
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.Level = 11;
+                    c.BeforeThisLevel = false;
+                    c.m_Feature = OracleRevelationPierceTheShadows60Feet.ToReference<BlueprintFeatureReference>();
+                    c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_AdditionalClasses = new BlueprintCharacterClassReference[] { ArcanistClass.ToReference<BlueprintCharacterClassReference>() };
+                    c.m_Archetypes = new BlueprintArchetypeReference[] { MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>() };
+                });
+                bp.AddComponent<PrerequisiteFeaturesFromList>(c => {
+                    c.m_Features = new BlueprintFeatureReference[] {
+                        OracleShadowMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        EnlightnedPhilosopherShadowMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        DivineHerbalistShadowMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        OceansEchoShadowMysteryFeature.ToReference<BlueprintFeatureReference>()
+                    };
+                    c.Amount = 1;
+                });
+                bp.Groups = new FeatureGroup[] { FeatureGroup.OracleRevelation };
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+            OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationPierceTheShadowsFeature.ToReference<BlueprintFeatureReference>());
+            #endregion
             #region Shadow Mastery
             var OracleRevelationShadowMasteryFeature = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationShadowMasteryFeature", bp => {
                 bp.SetName("Shadow Mastery");
                 bp.SetDescription("Whenever you cast an illusion spell from the shadow subschool, increase the strength of such spells by 1% per oracle " +
                     "level you have. You must be at least 7th level to choose this revelation.");
-                bp.m_Icon = OracleRevelationCloakOfDarknessIcon;
                 bp.AddComponent<PrerequisiteFeaturesFromList>(c => {
                     c.m_Features = new BlueprintFeatureReference[] {
                         OracleShadowMysteryFeature.ToReference<BlueprintFeatureReference>(),
@@ -1168,7 +1877,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     c.Amount = 1;
                 });
                 bp.GiveFeaturesForPreviousLevels = true;
-                bp.HideInUI = true;
+                bp.HideInUI = false;
                 bp.HideInCharacterSheetAndLevelUp = false;
                 bp.IsClassFeature = true;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.OracleRevelation };
@@ -1180,11 +1889,18 @@ namespace ExpandedContent.Tweaks.Mysteries {
             var BuffWingsDraconicBlack = Resources.GetBlueprint<BlueprintBuff>("ddfe6e85e1eed7a40aa911280373c228");
             var OracleRevelationWingsOfDarknessBuff = Helpers.CreateBuff("OracleRevelationWingsOfDarknessBuff", bp => {
                 bp.SetName("Wings of Darkness");
-                bp.SetDescription("As a swift action, you can manifest a set of wings that grant you a speed of 60 feet. You can use these wings for 1 minute " +
+                bp.SetDescription("As a swift action, you can manifest a set of wings that grant you a speed bonus of 30. You can use these wings for 1 minute " +
                     "per day for each oracle level you have. This duration does not need to be consecutive, but it must be spent in 1-minute increments. At 11th level you can " +
                     "use these wings for 10 minutes per day for each oracle level you have. At 15th level, you can use the wings indefinitely. You must be at least 7th level to " +
                     "select this revelation.");
                 bp.m_Icon = BuffWingsDraconicBlack.m_Icon;
+                bp.AddComponent<BuffMovementSpeed>(c => {
+                    c.Descriptor = ModifierDescriptor.None;
+                    c.Value = 30;
+                    c.ContextBonus = new ContextValue();
+                    c.CappedOnMultiplier = false;
+                    c.CappedMinimum = false;
+                });
                 bp.AddComponent<AddConditionImmunity>(c => {
                     c.Condition = Kingmaker.UnitLogic.UnitCondition.DifficultTerrain;
                 });
@@ -1284,7 +2000,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
             });
             var OracleRevelationWingsOfDarknessProgression = Helpers.CreateBlueprint<BlueprintProgression>("OracleRevelationWingsOfDarknessProgression", bp => {
                 bp.SetName("Wings of Darkness");
-                bp.SetDescription("As a swift action, you can manifest a set of wings that grant you a speed of 60 feet. You can use these wings for 1 minute " +
+                bp.SetDescription("As a swift action, you can manifest a set of wings that grant you a speed bonus of 30. You can use these wings for 1 minute " +
                     "per day for each oracle level you have. This duration does not need to be consecutive, but it must be spent in 1-minute increments. At 11th level you can " +
                     "use these wings for 10 minutes per day for each oracle level you have. At 15th level, you can use the wings indefinitely. You must be at least 7th level to " +
                     "select this revelation.");

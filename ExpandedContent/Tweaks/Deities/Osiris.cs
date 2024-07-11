@@ -37,7 +37,7 @@ namespace ExpandedContent.Tweaks.Deities {
             var OsirisIcon = AssetLoader.LoadInternal("Deities", "Icon_Osiris.jpg");
             var OsirisFeature = Helpers.CreateBlueprint<BlueprintFeature>("OsirisFeature", (bp => {
                 bp.SetName("Osiris");
-                bp.SetDescription("\nTitles: The Monkey King, Aware of Vacuity   " +
+                bp.SetDescription("\nTitles: Lord of the Living   " +
                     "\nAlignment: Lawful Good   " +
                     "\nAreas of Concern: Afterlife, Fertility, Rebirth, Resurrection   " +
                     "\nDomains: Good, Healing, Law, Plant, Repose   " +

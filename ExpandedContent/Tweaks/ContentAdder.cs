@@ -141,6 +141,11 @@ namespace ExpandedContent.Tweaks {
                 Spells.Moonstruck.AddMoonstruck();
                 Spells.FormOfTheExoticDragon.AddFormOfTheExoticDragon();
                 Spells.MomentOfPrescience.AddMomentOfPrescience();
+                Spells.ShadowStep.AddShadowStep();
+                Spells.ShadowJaunt.AddShadowJaunt();
+                Spells.ShadowClaws.AddShadowClaws();
+                Spells.MydriaticSpontaneity.AddMydriaticSpontaneity();
+                Spells.MydriaticSpontaneityMass.AddMydriaticSpontaneityMass();
 
                 Miscellaneous.AlchemistDiscoveries.MutagenDiscovery.AddMutagenDiscovery();
                 Miscellaneous.AlchemistDiscoveries.MindchemistSkillDiscovery.AddMindchemistSkillDiscovery();
@@ -200,6 +205,7 @@ namespace ExpandedContent.Tweaks {
                 Mysteries.WoodMystery.AddWoodMystery();
                 Mysteries.WinterMystery.AddWinterMystery();
                 Mysteries.LunarMystery.AddLunarMystery();
+                Mysteries.ShadowMystery.AddShadowMystery();
 
                 Spirits.HeavensSpirit.AddHeavensSprit();
 
