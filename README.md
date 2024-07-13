@@ -102,6 +102,7 @@ New Oracle Mysteries / Curses
   - Dragon
   - Heavens
   - Lunar
+  - Shadow
   - Succor
   - Winter
   - Wood
@@ -202,6 +203,11 @@ New Spells
 - Moonstruck
 - Form of the Exotic Dragon
 - Moment of Prescience
+- Shadow Jaunt
+- Shadow Step
+- Shadow Claws
+- Mydriatic Spontaneity
+- Mass Mydriatic Spontaneity
 
 
 Compatible with all mods as far as I am aware, extra features are unlocked if used with these mods
