@@ -40,6 +40,7 @@ namespace ExpandedContent.Config {
         protected static bool IsMysticalMayhemEnabled() { return IsModEnabled("MysticalMayhem"); }
         protected static bool IsTabletopTweaksBaseEnabled() { return IsModEnabled("TabletopTweaks-Base"); }
         protected static bool IsPrestigePlusEnabled() { return IsModEnabled("PrestigePlus"); }
+        protected static bool IsCharacterOptionsPlusEnabled() { return IsModEnabled("CharacterOptionsPlus"); }
 
         private static readonly BlueprintDlc Dlc5 = Resources.GetBlueprint<BlueprintDlc>("95a25ca16bd54ce3b3ea56f83538fa0d");
 
@@ -771,7 +772,7 @@ namespace ExpandedContent.Config {
                         c.BeforeThisLevel = IroriFeatureAddFeatureOnClassLevel.BeforeThisLevel;
                     });
                     #endregion
-
+                    #region Drake Rider stuff
                     var ExpertTrainer = Resources.GetBlueprint<BlueprintFeature>("ae97a4eb750d499c837988f62a24e0de");
                     var DrakeRiderArchetype = Resources.GetModBlueprint<BlueprintArchetype>("DrakeRiderArchetype");
 
@@ -779,6 +780,26 @@ namespace ExpandedContent.Config {
                         Level = 4,
                         m_Features =  new List<BlueprintFeatureBaseReference>() { ExpertTrainer.ToReference<BlueprintFeatureBaseReference>() }
                     });
+                    #endregion
+                    #region Shadow Mystery stuff
+                    var ShadowEnchantmentSpell = Resources.GetBlueprint<BlueprintAbility>("d934f706a12b40ec87a9c8baf221b8a9");
+                    var ShadowEnchantmentGreaterSpell = Resources.GetBlueprint<BlueprintAbility>("ba07962827484eb38bf0b6aadd9f5f22");
+                    var OracleShadowFinalRevelationMetamagic = Resources.GetModBlueprint<BlueprintFeature>("OracleShadowFinalRevelation").GetComponent<AutoMetamagic>();
+                    OracleShadowFinalRevelationMetamagic.Abilities.Add(ShadowEnchantmentSpell.ToReference<BlueprintAbilityReference>());
+                    OracleShadowFinalRevelationMetamagic.Abilities.Add(ShadowEnchantmentGreaterSpell.ToReference<BlueprintAbilityReference>());
+
+                    var OracleRevelationDarkSecretsSpellList3 = Resources.GetModBlueprint<BlueprintSpellList>("OracleRevelationDarkSecretsSpellList3");
+                    var OracleRevelationDarkSecretsSpellList6 = Resources.GetModBlueprint<BlueprintSpellList>("OracleRevelationDarkSecretsSpellList6");
+                    OracleRevelationDarkSecretsSpellList3.SpellsByLevel
+                        .Where(level => level.SpellLevel == 3)
+                        .ForEach(level => level.m_Spells.Add(ShadowEnchantmentSpell.ToReference<BlueprintAbilityReference>()
+                        ));
+                    OracleRevelationDarkSecretsSpellList6.SpellsByLevel
+                        .Where(level => level.SpellLevel == 6)
+                        .ForEach(level => level.m_Spells.Add(ShadowEnchantmentGreaterSpell.ToReference<BlueprintAbilityReference>()
+                        ));
+
+                    #endregion
                     Main.Log("Finishing TTT-Base Compat Patch.");
                 }
 
@@ -837,6 +858,27 @@ namespace ExpandedContent.Config {
                     });
                     #endregion
                     Main.Log("Finished Prestige Plus Compat Patch.");
+                }
+
+                if (IsCharacterOptionsPlusEnabled()) {
+                    Main.Log("Starting Character Options Plus Compat Patch.");
+                    var ShadowTrapSpell = Resources.GetBlueprint<BlueprintAbility>("a3a7e60e786646c499b8ad685e625c06");
+                    var TouchofBlindnessSpell = Resources.GetBlueprint<BlueprintAbility>("6177af1ba0964f58a0a0c02778e95483");
+                    var OracleShadowFinalRevelationMetamagic = Resources.GetModBlueprint<BlueprintFeature>("OracleShadowFinalRevelation").GetComponent<AutoMetamagic>();
+                    OracleShadowFinalRevelationMetamagic.Abilities.Add(ShadowTrapSpell.ToReference<BlueprintAbilityReference>());
+                    OracleShadowFinalRevelationMetamagic.Abilities.Add(TouchofBlindnessSpell.ToReference<BlueprintAbilityReference>());
+
+                    var OracleRevelationDarkSecretsSpellList1 = Resources.GetModBlueprint<BlueprintSpellList>("OracleRevelationDarkSecretsSpellList1");
+                    OracleRevelationDarkSecretsSpellList1.SpellsByLevel
+                        .Where(level =>  level.SpellLevel == 1)
+                        .ForEach(level => level.m_Spells.Add(ShadowTrapSpell.ToReference<BlueprintAbilityReference>() 
+                        ));
+                    OracleRevelationDarkSecretsSpellList1.SpellsByLevel
+                        .Where(level => level.SpellLevel == 1)
+                        .ForEach(level => level.m_Spells.Add(TouchofBlindnessSpell.ToReference<BlueprintAbilityReference>()
+                        ));
+
+                    Main.Log("Finished Character Options Plus Compat Patch.");
                 }
             }
         }

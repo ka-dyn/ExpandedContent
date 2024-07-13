@@ -44,7 +44,8 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.SetDescription("This spell functions as mydriatic spontaneity, except it can affect multiple creatures." +
                     "\nYou overstimulate the target with alternating flashes of light and shadow within its eyes, causing its pupils to rapidly dilate and contract. " +
                     "While under the effects of this spell, the target is racked by splitting headaches and unable to see clearly, becoming nauseated for the spell’s duration. " +
-                    "Each round, the target’s pupils randomly become dilated or contracted for 1 round, causing them to become either blinded or dazzled until next round.");
+                    "Each round, the target’s pupils randomly become dilated or contracted for 1 round, causing them to become either blinded or dazzled until next round." +
+                    "\nEach new round, the target may make a will save to remove the nauseated condition.");
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.SavingThrowType = SavingThrowType.Will;
                     c.Actions = Helpers.CreateActionList(                        

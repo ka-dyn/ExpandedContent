@@ -235,8 +235,8 @@ namespace ExpandedContent.Tweaks.Mysteries {
             //Spelllist for Dark Secrets
             //1
             var VanishSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("f001c73999fb5a543a199f890108d936");
-            //ShadowTrapSpell
-            //TouchOfBlindness
+            //ShadowTrapSpell CO+
+            //TouchOfBlindness CO+
             //2
             var BlurSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("14ec7a4e52e90fa47a4c8d63c69fd5c1");
             var DustOfTwilightAbility = Resources.GetModBlueprint<BlueprintAbility>("DustOfTwilightAbility");
@@ -245,18 +245,18 @@ namespace ExpandedContent.Tweaks.Mysteries {
             //3
             var DisplacementSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("903092f6488f9ce45a80943923576ab3");
             var ShadowStepAbility = Resources.GetModBlueprint<BlueprintAbility>("ShadowStepAbility");
-            //ShadowEnchantment
+            //ShadowEnchantment TTT
             //4
             var ShadowConjurationSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("caac251ca7601324bbe000372a0a1005");
             //ShadowJaunt already referenced
             var MydriaticSpontaneityAbility = Resources.GetModBlueprint<BlueprintAbility>("MydriaticSpontaneityAbility");
             //5
             var ShadowEvocationSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("237427308e48c3341b3d532b9d3a001f");
-            //Vamp Shadow Shield
+            //Vamp Shadow Shield already referenced
             //CloakOfShadows (If I add it)
             //6
             var PhantasmalPutrefactionSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("1f2e6019ece86d64baa5effa15e81ecc");
-            //ShadowEnchantmentGreater
+            //ShadowEnchantmentGreater TTT
             //7
             var ShadowConjurationGreaterSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("08255ea4cdd812341af93f9cd113acb9");
             var UmbrallStrikeSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("474ed0aa656cc38499cc9a073d113716");
@@ -264,9 +264,9 @@ namespace ExpandedContent.Tweaks.Mysteries {
             var MydriaticSpontaneityMassAbility = Resources.GetModBlueprint<BlueprintAbility>("MydriaticSpontaneityMassAbility");
             //8
             var CreateUndeadSummonGreaterShadowSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("b8fdf9d9e84c490d8a57d49ed344571e");
-            //ShadowEvocationGreaterSpell
+            //ShadowEvocationGreaterSpell already referenced
             //9
-            //Shades
+            //Shades already referenced
             var FormOfTheExoticDragonAbilityUmbral = Resources.GetModBlueprint<BlueprintAbility>("FormOfTheExoticDragonAbilityUmbral");
 
 
@@ -1705,10 +1705,22 @@ namespace ExpandedContent.Tweaks.Mysteries {
 
             #endregion
             #region Pierce the Shadows
+            var OracleRevelationPierceTheShadows15Feet = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationPierceTheShadows15Feet", bp => {
+                bp.SetName("Pierce the Shadows");
+                bp.SetDescription("The shadows step aside from your baleful gaze, affording you sight in even the deepest darkness. Gain blindsight with a range of 15 feet.\nAt " +
+                    "11th level the range increases to 30 feet.");
+                bp.AddComponent<Blindsense>(c => {
+                    c.Range = 15.Feet();
+                    c.Blindsight = true;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+                bp.HideInUI = true;
+            });
             var OracleRevelationPierceTheShadows30Feet = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationPierceTheShadows30Feet", bp => {
                 bp.SetName("Pierce the Shadows");
-                bp.SetDescription("The shadows step aside from your baleful gaze, affording you sight in even the deepest darkness. Gain blindsight with a range of 30 feet.\nAt " +
-                    "11th level the range increases to 60 feet.");
+                bp.SetDescription("The shadows step aside from your baleful gaze, affording you sight in even the deepest darkness. Gain blindsight with a range of 15 feet.\nAt " +
+                    "11th level the range increases to 30 feet.");
                 bp.AddComponent<Blindsense>(c => {
                     c.Range = 30.Feet();
                     c.Blindsight = true;
@@ -1717,26 +1729,14 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.IsClassFeature = true;
                 bp.HideInUI = true;
             });
-            var OracleRevelationPierceTheShadows60Feet = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationPierceTheShadows60Feet", bp => {
-                bp.SetName("Pierce the Shadows");
-                bp.SetDescription("The shadows step aside from your baleful gaze, affording you sight in even the deepest darkness. Gain blindsight with a range of 30 feet.\nAt " +
-                    "11th level the range increases to 60 feet.");
-                bp.AddComponent<Blindsense>(c => {
-                    c.Range = 60.Feet();
-                    c.Blindsight = true;
-                });
-                bp.m_AllowNonContextActions = false;
-                bp.IsClassFeature = true;
-                bp.HideInUI = true;
-            });
             var OracleRevelationPierceTheShadowsFeature = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationPierceTheShadowsFeature", bp => {
                 bp.SetName("Pierce the Shadows");
-                bp.SetDescription("The shadows step aside from your baleful gaze, affording you sight in even the deepest darkness. Gain blindsight with a range of 30 feet.\nAt " +
-                    "11th level the range increases to 60 feet.");
+                bp.SetDescription("The shadows step aside from your baleful gaze, affording you sight in even the deepest darkness. Gain blindsight with a range of 15 feet.\nAt " +
+                    "11th level the range increases to 30 feet.");
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.Level = 11;
                     c.BeforeThisLevel = true;
-                    c.m_Feature = OracleRevelationPierceTheShadows30Feet.ToReference<BlueprintFeatureReference>();
+                    c.m_Feature = OracleRevelationPierceTheShadows15Feet.ToReference<BlueprintFeatureReference>();
                     c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_AdditionalClasses = new BlueprintCharacterClassReference[] { ArcanistClass.ToReference<BlueprintCharacterClassReference>() };
                     c.m_Archetypes = new BlueprintArchetypeReference[] { MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>() };
@@ -1744,7 +1744,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.Level = 11;
                     c.BeforeThisLevel = false;
-                    c.m_Feature = OracleRevelationPierceTheShadows60Feet.ToReference<BlueprintFeatureReference>();
+                    c.m_Feature = OracleRevelationPierceTheShadows30Feet.ToReference<BlueprintFeatureReference>();
                     c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_AdditionalClasses = new BlueprintCharacterClassReference[] { ArcanistClass.ToReference<BlueprintCharacterClassReference>() };
                     c.m_Archetypes = new BlueprintArchetypeReference[] { MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>() };

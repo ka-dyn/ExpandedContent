@@ -51,6 +51,26 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.AddComponent<SpellDescriptorComponent>(c => {
                     c.Descriptor = SpellDescriptor.Nauseated;
                 });
+                bp.AddComponent<AddFactContextActions>(c => {
+                    c.Activated = Helpers.CreateActionList();
+                    c.Deactivated = Helpers.CreateActionList();
+                    c.NewRound = Helpers.CreateActionList(
+                        new ContextActionSavingThrow() {
+                            Type = SavingThrowType.Will,
+                            FromBuff = false,
+                            HasCustomDC = false,
+                            CustomDC = new ContextValue() { },
+                            Actions = Helpers.CreateActionList(
+                                new ContextActionConditionalSaved() {
+                                    Succeed = Helpers.CreateActionList(
+                                        new ContextActionRemoveSelf()
+                                        ),
+                                    Failed = Helpers.CreateActionList()
+                                }
+                        )
+                        }
+                    );
+                });
                 bp.AddComponent(NauseatedBuff.GetComponent<CombatStateTrigger>());
                 bp.AddComponent(NauseatedBuff.GetComponent<RemoveWhenCombatEnded>());
                 bp.m_AllowNonContextActions = false;
@@ -100,7 +120,8 @@ namespace ExpandedContent.Tweaks.Spells {
             var MydriaticSpontaneityBuff = Helpers.CreateBuff("MydriaticSpontaneityBuff", bp => {
                 bp.SetName("Mydriatic Spontaneity");
                 bp.SetDescription("While under the effects of this spell, the target is racked by splitting headaches and unable to see clearly, becoming nauseated for the spell’s duration. " +
-                    "Each round, the target’s pupils randomly become dilated or contracted for 1 round, causing them to become either blinded or dazzled until next round.");
+                    "Each round, the target’s pupils randomly become dilated or contracted for 1 round, causing them to become either blinded or dazzled until next round. " +
+                    "\nEach new round, the target may make a will save to remove the nauseated condition.");
                 bp.m_Icon = MydriaticSpontaneityIcon;
                 bp.AddComponent<AddFactContextActions>(c => {
                     c.Activated = Helpers.CreateActionList(
@@ -161,14 +182,14 @@ namespace ExpandedContent.Tweaks.Spells {
                                             UseDurationSeconds = false,
                                             DurationValue = new ContextDurationValue() {
                                                 Rate = DurationRate.Rounds,
-                                                DiceType = DiceType.D4,
-                                                DiceCountValue = new ContextValue() {
+                                                DiceType = DiceType.Zero,
+                                                DiceCountValue = 0,
+                                                BonusValue = new ContextValue() {
                                                     ValueType = ContextValueType.Simple,
                                                     Value = 1,
                                                     ValueRank = AbilityRankType.Default,
                                                     ValueShared = AbilitySharedValue.Damage
-                                                },
-                                                BonusValue = 0
+                                                }
                                             },
                                             DurationSeconds = 0,
                                             AsChild = true,
@@ -189,7 +210,8 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.SetName("Mydriatic Spontaneity");
                 bp.SetDescription("You overstimulate the target with alternating flashes of light and shadow within its eyes, causing its pupils to rapidly dilate and contract. " +
                     "While under the effects of this spell, the target is racked by splitting headaches and unable to see clearly, becoming nauseated for the spell’s duration. " +
-                    "Each round, the target’s pupils randomly become dilated or contracted for 1 round, causing them to become either blinded or dazzled until next round.");
+                    "Each round, the target’s pupils randomly become dilated or contracted for 1 round, causing them to become either blinded or dazzled until next round. " +
+                    "\nEach new round, the target may make a will save to remove the nauseated condition.");
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.SavingThrowType = SavingThrowType.Will;
                     c.Actions = Helpers.CreateActionList(                        
