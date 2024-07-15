@@ -258,6 +258,7 @@
     <Compile Include="Tweaks\Components\ACBonusAgainstNotCaster.cs" />
     <Compile Include="Tweaks\Components\AttackBonusAgainstNotCaster.cs" />
     <Compile Include="Tweaks\Components\SavingThrowAgainstCaster.cs" />
+    <Compile Include="Tweaks\Components\SpellPenetrationBonusAgainstFact.cs" />
     <Compile Include="Tweaks\Components\WeaponMultipleCategoriesContextAttackBonus.cs" />
     <Compile Include="Tweaks\Components\WeaponTypeContextDamageBonus.cs" />
     <Compile Include="Tweaks\ContentAdder.cs" />

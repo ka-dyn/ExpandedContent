@@ -15,6 +15,7 @@ using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Utility;
 using Kingmaker.Enums;
+using ExpandedContent.Tweaks.Components;
 
 namespace ExpandedContent.Tweaks.Archetypes {
     internal class RavenerHunter {
@@ -506,35 +507,30 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] { DemonHunterFeature.ToReference<BlueprintUnitFactReference>() };
                 });
-                bp.AddComponent<SpellPenetrationBonus>(c => {
+                bp.AddComponent<SpellPenetrationBonusAgainstFact>(c => {
                     c.Value = 2;
                     c.Descriptor = ModifierDescriptor.Morale;
-                    c.CheckFact = true;
-                    c.m_RequiredFact = AreshkagalFeature.ToReference<BlueprintUnitFactReference>();
+                    c.m_CheckedFact = AreshkagalFeature.ToReference<BlueprintUnitFactReference>();
                 });
-                bp.AddComponent<SpellPenetrationBonus>(c => {
+                bp.AddComponent<SpellPenetrationBonusAgainstFact>(c => {
                     c.Value = 2;
                     c.Descriptor = ModifierDescriptor.Morale;
-                    c.CheckFact = true;
-                    c.m_RequiredFact = BaphometFeature.ToReference<BlueprintUnitFactReference>();
+                    c.m_CheckedFact = BaphometFeature.ToReference<BlueprintUnitFactReference>();
                 });
-                bp.AddComponent<SpellPenetrationBonus>(c => {
+                bp.AddComponent<SpellPenetrationBonusAgainstFact>(c => {
                     c.Value = 2;
                     c.Descriptor = ModifierDescriptor.Morale;
-                    c.CheckFact = true;
-                    c.m_RequiredFact = DeskariFeature.ToReference<BlueprintUnitFactReference>();
+                    c.m_CheckedFact = DeskariFeature.ToReference<BlueprintUnitFactReference>();
                 });
-                bp.AddComponent<SpellPenetrationBonus>(c => {
+                bp.AddComponent<SpellPenetrationBonusAgainstFact>(c => {
                     c.Value = 2;
                     c.Descriptor = ModifierDescriptor.Morale;
-                    c.CheckFact = true;
-                    c.m_RequiredFact = KabririFeature.ToReference<BlueprintUnitFactReference>();
+                    c.m_CheckedFact = KabririFeature.ToReference<BlueprintUnitFactReference>();
                 });
-                bp.AddComponent<SpellPenetrationBonus>(c => {
+                bp.AddComponent<SpellPenetrationBonusAgainstFact>(c => {
                     c.Value = 2;
                     c.Descriptor = ModifierDescriptor.Morale;
-                    c.CheckFact = true;
-                    c.m_RequiredFact = LamashtuFeature.ToReference<BlueprintUnitFactReference>();
+                    c.m_CheckedFact = LamashtuFeature.ToReference<BlueprintUnitFactReference>();
                 });
                 bp.AddComponent<AttackBonusAgainstFactOwner>(c => {
                     c.AttackBonus = 2;

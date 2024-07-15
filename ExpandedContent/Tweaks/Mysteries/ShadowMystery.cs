@@ -1811,6 +1811,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                         ArcanistClass.ToReference<BlueprintCharacterClassReference>()
                     };
                     c.Archetype = MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.m_Archetypes = new BlueprintArchetypeReference[] { };
                 });
                 bp.BaseValue = 0;
                 bp.OperationOnComponents = BlueprintUnitProperty.MathOperation.Multiply;

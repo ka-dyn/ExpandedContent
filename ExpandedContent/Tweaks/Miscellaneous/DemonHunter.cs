@@ -7,6 +7,7 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
 using Kingmaker.Designers.Mechanics.Facts;
+using ExpandedContent.Tweaks.Components;
 
 namespace ExpandedContent.Tweaks.Miscellaneous {
     internal class DemonHunter {
@@ -26,11 +27,10 @@ namespace ExpandedContent.Tweaks.Miscellaneous {
                     c.Stat = StatType.SkillKnowledgeWorld;
                     c.Value = 6;
                 });
-                bp.AddComponent<SpellPenetrationBonus>(c => {
+                bp.AddComponent<SpellPenetrationBonusAgainstFact>(c => {
                     c.Value = 2;
                     c.Descriptor = ModifierDescriptor.Morale;
-                    c.CheckFact = true;
-                    c.m_RequiredFact = SubtypeDemon.ToReference<BlueprintUnitFactReference>();
+                    c.m_CheckedFact = SubtypeDemon.ToReference<BlueprintUnitFactReference>();
                 });
                 bp.AddComponent<AttackBonusAgainstFactOwner>(c => {
                     c.AttackBonus = 2;
