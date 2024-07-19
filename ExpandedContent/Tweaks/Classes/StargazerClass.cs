@@ -13853,7 +13853,63 @@ namespace ExpandedContent.Tweaks.Classes {
             });
 
             #endregion
-
+            #region Spellbooks added by TTT (commented components added in ModSupport.cs)
+            var StargazerChannelerOfTheUnknownLevelUp = Helpers.CreateBlueprint<BlueprintFeature>("StargazerChannelerOfTheUnknownLevelUp", bp => {
+                bp.SetName("Channeler Of The Unknown");
+                bp.SetDescription("At 1st level, and at every level thereafter, a Stargazer gains new {g|Encyclopedia:Spell}spells{/g} per day as if he had also gained a level in a spellcasting class " +
+                    "he belonged to before adding the prestige class. He does not, however, gain any other benefit a character of that class would have gained, except for additional spells per day, " +
+                    "spells known, and an increased effective level of spellcasting. If a character had more than one spellcasting class before becoming a Stargazer, he must decide to which class " +
+                    "he adds the new level for purposes of determining spells per day.");
+                //bp.AddComponent<AddSpellbookLevel>(c => {
+                //    c.m_Spellbook = ChannelerOfTheUnknownSpellbook.ToReference<BlueprintSpellbookReference>();
+                //});
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = false;
+                bp.HideNotAvailibleInUI = false;
+                bp.IsClassFeature = true;
+                bp.m_AllowNonContextActions = false;
+                bp.Ranks = 10;
+            });
+            var StargazerChannelerOfTheUnknownProgression = Helpers.CreateBlueprint<BlueprintProgression>("StargazerChannelerOfTheUnknownProgression", bp => {
+                bp.SetName("Channeler Of The Unknown");
+                bp.SetDescription("At 1st level, and at every level thereafter, a Stargazer gains new {g|Encyclopedia:Spell}spells{/g} per day as if he had also gained a level in a spellcasting class " +
+                    "he belonged to before adding the prestige class. He does not, however, gain any other benefit a character of that class would have gained, except for additional spells per day, " +
+                    "spells known, and an increased effective level of spellcasting. If a character had more than one spellcasting class before becoming a Stargazer, he must decide to which class " +
+                    "he adds the new level for purposes of determining spells per day.");
+                bp.AddComponent<PrerequisiteClassSpellLevel>(c => {
+                    c.m_CharacterClass = ClericClass.ToReference<BlueprintCharacterClassReference>();
+                    c.RequiredSpellLevel = 3;
+                    c.HideInUI = false;
+                });
+                //bp.AddComponent<PrerequisiteArchetypeLevel>(c => {
+                //    c.m_CharacterClass = ClericClass.ToReference<BlueprintCharacterClassReference>();
+                //    c.m_Archetype = ChannelerOfTheUnknownArchetype.ToReference<BlueprintArchetypeReference>();
+                //    c.Level = 1;
+                //    c.HideInUI = false;
+                //});
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = false;
+                bp.HideNotAvailibleInUI = true;
+                bp.IsClassFeature = true;
+                bp.m_AllowNonContextActions = false;
+                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
+                    new BlueprintProgression.ClassWithLevel() { AdditionalLevel = 0, m_Class = StargazerClass.ToReference<BlueprintCharacterClassReference>() }
+                };
+                bp.LevelEntries = new LevelEntry[] {
+                    Helpers.LevelEntry(1, StargazerChannelerOfTheUnknownLevelUp),
+                    Helpers.LevelEntry(2, StargazerChannelerOfTheUnknownLevelUp),
+                    Helpers.LevelEntry(3, StargazerChannelerOfTheUnknownLevelUp),
+                    Helpers.LevelEntry(4, StargazerChannelerOfTheUnknownLevelUp),
+                    Helpers.LevelEntry(5, StargazerChannelerOfTheUnknownLevelUp),
+                    Helpers.LevelEntry(6, StargazerChannelerOfTheUnknownLevelUp),
+                    Helpers.LevelEntry(7, StargazerChannelerOfTheUnknownLevelUp),
+                    Helpers.LevelEntry(8, StargazerChannelerOfTheUnknownLevelUp),
+                    Helpers.LevelEntry(9, StargazerChannelerOfTheUnknownLevelUp),
+                    Helpers.LevelEntry(10, StargazerChannelerOfTheUnknownLevelUp)
+                };
+                bp.GiveFeaturesForPreviousLevels = false;
+            });
+            #endregion
 
             //Spellbook Selection
             var StargazerSpellbook = Helpers.CreateBlueprint<BlueprintFeatureSelection>("StargazerSpellbook", bp => {
@@ -13861,7 +13917,7 @@ namespace ExpandedContent.Tweaks.Classes {
                 bp.SetDescription("At 1st level, and at every level thereafter, a Stargazer gains new {g|Encyclopedia:Spell}spells{/g} per day as if he had also gained a level in a spellcasting class " +
                     "he belonged to before adding the prestige class. He does not, however, gain any other benefit a character of that class would have gained, except for additional spells per day, " +
                     "spells known, and an increased effective level of spellcasting. If a character had more than one spellcasting class before becoming a Stargazer, he must decide to which class " +
-                    "he adds the new level for purposes of determining spells per day.");
+                    "he adds the new level for purposes of determining spells per day.");//Spellbooks from other mods will be added in ModSupport.cs
                 bp.m_AllFeatures = new BlueprintFeatureReference[] {
                     StargazerArcanist.ToReference<BlueprintFeatureReference>(),
                     StargazerArcanistEldritchFont.ToReference<BlueprintFeatureReference>(),

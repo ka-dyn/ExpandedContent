@@ -800,6 +800,31 @@ namespace ExpandedContent.Config {
                         ));
 
                     #endregion
+                    #region Stargazer Spellbooks
+                    var StargazerChannelerOfTheUnknownLevelUp = Resources.GetModBlueprint<BlueprintFeature>("StargazerChannelerOfTheUnknownLevelUp");
+                    var StargazerChannelerOfTheUnknownProgression = Resources.GetModBlueprint<BlueprintProgression>("StargazerChannelerOfTheUnknownProgression");
+                    var StargazerClericProgression = Resources.GetModBlueprint<BlueprintProgression>("StargazerClericProgression");
+                    var ClericClass = Resources.GetBlueprintReference<BlueprintCharacterClassReference>("67819271767a9dd4fbfd4ae700befea0");
+                    var ChannelerOfTheUnknownArchetype = Resources.GetBlueprintReference<BlueprintArchetypeReference>("5cf66f5c604d4c8087fa0c86c712b8d3");
+                    var ChannelerOfTheUnknownSpellbook = Resources.GetBlueprint<BlueprintSpellbook>("00aef73f0e574d5ba30ec30e69165fee");
+
+                    StargazerChannelerOfTheUnknownLevelUp.AddComponent<AddSpellbookLevel>(c => {
+                        c.m_Spellbook = ChannelerOfTheUnknownSpellbook.ToReference<BlueprintSpellbookReference>();
+                    });
+                    StargazerChannelerOfTheUnknownProgression.AddComponent<PrerequisiteArchetypeLevel>(c => {
+                        c.m_CharacterClass = ClericClass;
+                        c.m_Archetype = ChannelerOfTheUnknownArchetype;
+                        c.Level = 1;
+                        c.HideInUI = false;
+                    });
+                    StargazerClericProgression.AddComponent<PrerequisiteNoArchetype>(c => {
+                        c.m_CharacterClass = ClericClass;
+                        c.m_Archetype = ChannelerOfTheUnknownArchetype;
+                        c.HideInUI = false;
+                    });
+                    var StargazerSpellbook = Resources.GetModBlueprint<BlueprintFeatureSelection>("StargazerSpellbook");
+                    StargazerSpellbook.m_AllFeatures = StargazerSpellbook.m_AllFeatures.AppendToArray(StargazerChannelerOfTheUnknownProgression.ToReference<BlueprintFeatureReference>());
+                    #endregion
                     Main.Log("Finishing TTT-Base Compat Patch.");
                 }
 
