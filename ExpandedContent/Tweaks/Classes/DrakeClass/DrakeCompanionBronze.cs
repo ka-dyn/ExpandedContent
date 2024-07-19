@@ -25,7 +25,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
             var AnimalCompanionRank = Resources.GetBlueprint<BlueprintFeature>("1670990255e4fe948a863bafd5dbda5d");
             var DrakeCompanionClass = Resources.GetModBlueprint<BlueprintCharacterClass>("DrakeCompanionClass");
             var DrakeSubtypeAir = Resources.GetModBlueprint<BlueprintFeature>("DrakeSubtypeAir");
-            var FormOfTheDragonBrassBuff = Resources.GetBlueprint<BlueprintBuff>("17d330af03f5b3042a4417ab1d45e484").GetComponent<Polymorph>(); //Model is Bronze
+            var FormOfTheDragonBrassBuff = Resources.GetBlueprint<BlueprintBuff>("1d3d388fd7b740842bde43dfb0aa56bb").GetComponent<Polymorph>(); //Model is Bronze
             var ArmyDragonCopper = Resources.GetBlueprint<BlueprintUnit>("dcdbc80e8fd6430c8608ab1477d8ca9f"); //Model is Brass
             var BloodlineDraconicCopperProgression = Resources.GetBlueprint<BlueprintProgression>("b522759a265897b4f8f7a1a180a692e4"); //Pic is Brass
             var BloodlineDraconicBronzeProgression = Resources.GetBlueprint<BlueprintProgression>("7e0f57d8d00464441974e303b84238ac");
