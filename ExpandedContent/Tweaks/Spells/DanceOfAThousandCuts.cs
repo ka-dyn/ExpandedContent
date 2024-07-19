@@ -151,7 +151,7 @@ namespace ExpandedContent.Tweaks.Spells {
                     c.TiggerCountMaximumInOneRound = 1;
                 });
                 bp.AddComponent<AddInitiatorAttackWithWeaponTrigger>(c => {
-                    c.TriggerBeforeAttack = false;
+                    c.TriggerBeforeAttack = true;
                     c.OnlyHit = false;
                     c.OnMiss = false;
                     c.OnlyOnFullAttack = false;
@@ -174,7 +174,7 @@ namespace ExpandedContent.Tweaks.Spells {
                     c.DamageMoreTargetMaxHP = false;
                     c.CheckDistance = false;
                     c.DistanceLessEqual = new Feet(); //?
-                    c.AllNaturalAndUnarmed = true;
+                    c.AllNaturalAndUnarmed = false;
                     c.DuelistWeapon = false;
                     c.NotExtraAttack = false;
                     c.OnCharge = false;
