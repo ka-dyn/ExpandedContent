@@ -1,4 +1,5 @@
 ﻿using ExpandedContent.Extensions;
+using ExpandedContent.Tweaks.Classes;
 using ExpandedContent.Utilities;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
@@ -9,12 +10,14 @@ using Kingmaker.Craft;
 using Kingmaker.Designers.Mechanics.Buffs;
 using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.Designers.Mechanics.Recommendations;
+using Kingmaker.ElementsSystem;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
 using Kingmaker.RuleSystem;
 using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.UnitLogic.Abilities.Components;
+using Kingmaker.UnitLogic.Abilities.Components.CasterCheckers;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.Commands.Base;
 using Kingmaker.UnitLogic.FactLogic;
@@ -24,6 +27,13 @@ using Kingmaker.UnitLogic.Mechanics.Components;
 using Kingmaker.UnitLogic.Mechanics.Properties;
 using Kingmaker.Visual.Animation.Kingmaker.Actions;
 using System.Collections.Generic;
+using Kingmaker.Designers.EventConditionActionSystem.Actions;
+using Kingmaker.UnitLogic.Mechanics.Conditions;
+using Kingmaker.Enums.Damage;
+using Kingmaker.RuleSystem.Rules.Damage;
+using Kingmaker.UnitLogic.Abilities.Components.TargetCheckers;
+using TabletopTweaks.Core.NewComponents;
+using Kingmaker.UnitLogic;
 
 namespace ExpandedContent.Tweaks.Mysteries {
     internal class DarkTapestryMystery {
@@ -379,9 +389,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.IsClassFeature = true;
             });
 
-            #region Brain Drain????
-
-            #endregion
+            
             #region Cloak of Darkness
             var OracleRevelationCloakOfDarknessFeature = Resources.GetModBlueprint<BlueprintFeature>("OracleRevelationCloakOfDarknessFeature").GetComponent<PrerequisiteFeaturesFromList>();
             OracleRevelationCloakOfDarknessFeature.m_Features = OracleRevelationCloakOfDarknessFeature.m_Features.AppendToArray(OracleDarkTapestryMysteryFeature.ToReference<BlueprintFeatureReference>());
@@ -417,7 +425,216 @@ namespace ExpandedContent.Tweaks.Mysteries {
             OracleRevelationPierceTheShadowsFeature.m_Features = OracleRevelationPierceTheShadowsFeature.m_Features.AppendToArray(OceansEchoDarkTapestryMysteryFeature.ToReference<BlueprintFeatureReference>());
             #endregion
             #region Touch of the Void
+            var FrigidTouchCast = Resources.GetBlueprint<BlueprintAbility>("b6010dda6333bcf4093ce20f0063cd41");
+            var TouchItem = Resources.GetBlueprintReference<BlueprintItemWeaponReference>("bb337517547de1a4189518d404ec49d4");
+            var FatiguedBuff = Resources.GetBlueprintReference<BlueprintBuffReference>("e6f2fc5d73d88064583cb828801212f4");
+            var OracleRevelationProperty = Resources.GetModBlueprint<BlueprintUnitProperty>("OracleRevelationProperty");
+            var OracleRevelationTouchOfTheVoidResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("OracleRevelationTouchOfTheVoidResource", bp => {
+                bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
+                    BaseValue = 3,
+                    IncreasedByLevel = false,
+                    IncreasedByStat = true,
+                    ResourceBonusStat = StatType.Charisma,
+                };
+            });
+            var OracleRevelationTouchOfTheVoidUpgrade = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationTouchOfTheVoidUpgrade", bp => {
+                bp.SetName("Touch of the Void Upgrade");
+                bp.SetDescription("As a standard action, you can perform a melee touch attack that deals 1d6 points of cold damage + 1 point for every two oracle levels you possess. " +
+                    "At 7th level, the touched creature must also make a Fortitude saving throw or be fatigued for a number of rounds equal to 1/2 your oracle level. " +
+                    "This has no effect on a creature that is already fatigued. You can use this ability a number of times per day equal to 3 + your Charisma modifier.");                
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = false;
+                bp.HideNotAvailibleInUI = true;
+                bp.IsClassFeature = true;
+            });
+            var OracleRevelationTouchOfTheVoidAbility = Helpers.CreateBlueprint<BlueprintAbility>("OracleRevelationTouchOfTheVoidAbility", bp => {
+                bp.SetName("Touch of the Void");
+                bp.SetDescription("As a standard action, you can perform a melee touch attack that deals 1d6 points of cold damage + 1 point for every two oracle levels you possess. " +
+                    "At 7th level, the touched creature must also make a Fortitude saving throw or be fatigued for a number of rounds equal to 1/2 your oracle level. " +
+                    "This has no effect on a creature that is already fatigued. You can use this ability a number of times per day equal to 3 + your Charisma modifier.");
+                bp.m_Icon = FrigidTouchCast.Icon;
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = OracleRevelationTouchOfTheVoidResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new Conditional() {
+                            ConditionsChecker = new ConditionsChecker() { 
+                                Operation = Operation.Or,
+                                Conditions = new Condition[] {
+                                    new ContextConditionCasterHasFact() { m_Fact = OracleRevelationTouchOfTheVoidUpgrade.ToReference<BlueprintUnitFactReference>(), Not = false }
+                                }
+                            },
+                            IfFalse = Helpers.CreateActionList(//Pre level 7
+                                new ContextActionDealDamage() {
+                                    DamageType = new DamageTypeDescription() {
+                                        Type = DamageType.Energy,
+                                        Common = new DamageTypeDescription.CommomData(),
+                                        Physical = new DamageTypeDescription.PhysicalData(),
+                                        Energy = DamageEnergyType.Cold,
+                                    },
+                                    Duration = new ContextDurationValue() {
+                                        m_IsExtendable = true,
+                                        DiceCountValue = new ContextValue(),
+                                        BonusValue = new ContextValue(),
+                                    },
+                                    Value = new ContextDiceValue() {
+                                        DiceType = DiceType.D6,
+                                        DiceCountValue = 1,
+                                        BonusValue = new ContextValue() {
+                                            ValueType = ContextValueType.Rank,
+                                            ValueRank = AbilityRankType.Default
+                                        },
+                                    }
+                                }
+                                ),
+                            IfTrue = Helpers.CreateActionList(
+                                new ContextActionDealDamage() {
+                                    DamageType = new DamageTypeDescription() {
+                                        Type = DamageType.Energy,
+                                        Common = new DamageTypeDescription.CommomData(),
+                                        Physical = new DamageTypeDescription.PhysicalData(),
+                                        Energy = DamageEnergyType.Cold,
+                                    },
+                                    Duration = new ContextDurationValue() {
+                                        m_IsExtendable = true,
+                                        DiceCountValue = new ContextValue(),
+                                        BonusValue = new ContextValue(),
+                                    },
+                                    Value = new ContextDiceValue() {
+                                        DiceType = DiceType.D6,
+                                        DiceCountValue = 1,
+                                        BonusValue = new ContextValue() {
+                                            ValueType = ContextValueType.Rank,
+                                            ValueRank = AbilityRankType.Default
+                                        },
+                                    }
+                                },
+                                new Conditional() {
+                                    ConditionsChecker = new ConditionsChecker() {
+                                        Operation = Operation.Or,
+                                        Conditions = new Condition[] { 
+                                            new ContextConditionHasCondition() {
+                                                Conditions = new UnitCondition[] {
+                                                    UnitCondition.Fatigued
+                                                }
+                                            }
+                                        }
+                                    },
+                                    IfTrue = Helpers.CreateActionList(),
+                                    IfFalse = Helpers.CreateActionList(
+                                        new ContextActionSavingThrow() {
+                                            m_ConditionalDCIncrease = new ContextActionSavingThrow.ConditionalDCIncrease[0],
+                                            Type = SavingThrowType.Fortitude,
+                                            HasCustomDC = true,
+                                            CustomDC = new ContextValue() { 
+                                                ValueType = ContextValueType.CasterCustomProperty, 
+                                                m_CustomProperty = OracleRevelationProperty.ToReference<BlueprintUnitPropertyReference>() //This also scales with Ravener Hunter levels but I care enough to write this and not enough to fix it unless someone complains, I've made this comment long to annoy the next person to work on this with the weird sideways scroll.
+                                            },
+                                            Actions = Helpers.CreateActionList(
+                                            new ContextActionConditionalSaved() {
+                                                Succeed = new ActionList(),
+                                                Failed = Helpers.CreateActionList(
+                                                    new ContextActionApplyBuff() {
+                                                        m_Buff = FatiguedBuff,
+                                                        Permanent = false,
+                                                        DurationValue = new ContextDurationValue() {
+                                                            Rate = DurationRate.Rounds,
+                                                            m_IsExtendable = true,
+                                                            DiceCountValue = new ContextValue(),
+                                                            BonusValue = new ContextValue() {
+                                                                ValueType = ContextValueType.Rank,
+                                                                ValueRank = AbilityRankType.Default
+                                                            }
+                                                        },
+                                                        IsFromSpell = false,
+                                                    }),
+                                            }),
+                                        }
+                                        )
+                                }
+                                )
+                            
+                        }
+                        );
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.SummClassLevelWithArchetype;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.Div2;
+                    c.m_StartLevel = 0;
+                    c.m_StepLevel = 0;
+                    c.m_UseMin = false;
+                    c.Archetype = MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.m_AdditionalArchetypes = new BlueprintArchetypeReference[] {};
+                    c.m_Class = new BlueprintCharacterClassReference[] {
+                        OracleClass.ToReference<BlueprintCharacterClassReference>(),
+                        ArcanistClass.ToReference<BlueprintCharacterClassReference>(),
+                    };
+                });
+                bp.AddComponent<AbilityDeliverTouch>(c => {
+                    c.m_TouchWeapon = TouchItem;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Touch;
+                bp.CanTargetEnemies = true;
+                bp.CanTargetFriends = true;
+                bp.CanTargetSelf = true;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Touch;
+                bp.ActionType = UnitCommand.CommandType.Standard;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
 
+            });
+            var OracleRevelationTouchOfTheVoidFeature = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationTouchOfTheVoidFeature", bp => {
+                bp.SetName("Touch of the Void");
+                bp.SetDescription("As a standard action, you can perform a melee touch attack that deals 1d6 points of cold damage + 1 point for every two oracle levels you possess. " +
+                    "At 7th level, the touched creature must also make a Fortitude saving throw or be fatigued for a number of rounds equal to 1/2 your oracle level. " +
+                    "This has no effect on a creature that is already fatigued. You can use this ability a number of times per day equal to 3 + your Charisma modifier.");
+                bp.m_Icon = FrigidTouchCast.Icon;
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        OracleRevelationTouchOfTheVoidAbility.ToReference<BlueprintUnitFactReference>()
+                    };
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_AdditionalClasses = new BlueprintCharacterClassReference[] {
+                        ArcanistClass.ToReference<BlueprintCharacterClassReference>()
+                    };
+                    c.m_Archetypes = new BlueprintArchetypeReference[] {
+                        MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>()
+                    };
+                    c.Level = 7;
+                    c.m_Feature = OracleRevelationTouchOfTheVoidUpgrade.ToReference<BlueprintFeatureReference>();
+                    c.BeforeThisLevel = false;
+                });
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = OracleRevelationTouchOfTheVoidResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.AddComponent<PrerequisiteFeaturesFromList>(c => {
+                    c.m_Features = new BlueprintFeatureReference[] {
+                        OracleDarkTapestryMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        EnlightnedPhilosopherDarkTapestryMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        DivineHerbalistDarkTapestryMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        OceansEchoDarkTapestryMysteryFeature.ToReference<BlueprintFeatureReference>()
+                    };
+                    c.Amount = 1;
+                });
+                bp.Groups = new FeatureGroup[] { FeatureGroup.OracleRevelation };
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+            OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationTouchOfTheVoidFeature.ToReference<BlueprintFeatureReference>());
             #endregion
             #region Wings of Darkness
             var OracleRevelationWingsOfDarknessProgression = Resources.GetModBlueprint<BlueprintProgression>("OracleRevelationWingsOfDarknessProgression").GetComponent<PrerequisiteFeaturesFromList>();
