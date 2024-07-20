@@ -41,6 +41,7 @@ namespace ExpandedContent.Config {
         protected static bool IsTabletopTweaksBaseEnabled() { return IsModEnabled("TabletopTweaks-Base"); }
         protected static bool IsPrestigePlusEnabled() { return IsModEnabled("PrestigePlus"); }
         protected static bool IsCharacterOptionsPlusEnabled() { return IsModEnabled("CharacterOptionsPlus"); }
+        protected static bool IsMakingFriendsEnabled() { return IsModEnabled("WOTR_MAKING_FRIENDS"); }
 
         private static readonly BlueprintDlc Dlc5 = Resources.GetBlueprint<BlueprintDlc>("95a25ca16bd54ce3b3ea56f83538fa0d");
 
@@ -904,6 +905,18 @@ namespace ExpandedContent.Config {
                         ));
 
                     Main.Log("Finished Character Options Plus Compat Patch.");
+                }
+
+                if (IsMakingFriendsEnabled()) {
+                    Main.Log("Starting Making Friends Compat Patch.");
+                    var BlackTentaclesSpell = Resources.GetBlueprint<BlueprintAbility>("b3c05fb405964aba827dbb7eed6b5f0a");
+                    var OracleDarkTapestrySpellsConfig = Resources.GetModBlueprint<BlueprintFeature>("OracleDarkTapestrySpells")
+                        .GetComponents<AddKnownSpell>()
+                        .Where(c => c.SpellLevel == 4);
+                    OracleDarkTapestrySpellsConfig.ForEach(c => {
+                        c.m_Spell = BlackTentaclesSpell.ToReference<BlueprintAbilityReference>();
+                    });
+                    Main.Log("Finished Making Friends Plus Compat Patch.");
                 }
             }
         }
