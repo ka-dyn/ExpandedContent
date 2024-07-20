@@ -8,6 +8,7 @@ using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Craft;
 using Kingmaker.Designers.Mechanics.Buffs;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.Designers.Mechanics.Recommendations;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
 using Kingmaker.RuleSystem;
@@ -30,7 +31,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
 
             var OracleClass = Resources.GetBlueprint<BlueprintCharacterClass>("20ce9bf8af32bee4c8557a045ab499b1");
             var OracleRevelationSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("60008a10ad7ad6543b1f63016741a5d2");
-            //var DarkTapestryMysteryIcon = AssetLoader.LoadInternal("Skills", "Icon_OracleDarkTapestryMystery.png");
+            var DarkTapestryMysteryIcon = AssetLoader.LoadInternal("Skills", "Icon_OracleDarkTapestryMystery.png");
             var ArcanistClass = Resources.GetBlueprint<BlueprintCharacterClass>("52dbfd8505e22f84fad8d702611f60b7");
             var MagicDeceiverArchetype = Resources.GetBlueprint<BlueprintArchetype>("5c77110cd0414e7eb4c2e485659c9a46");
 
@@ -205,14 +206,64 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 });
             });
             //Final Revelation
+            var ShapeChangeSpell = Resources.GetBlueprint<BlueprintAbility>("22b9044aa229815429d57d0a30e4b739");
+            var OracleRevelationShapeChangeFreeResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("OracleRevelationShapeChangeFreeResource", bp => {
+                bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
+                    BaseValue = 1,
+                    IncreasedByLevel = false,
+                    LevelIncrease = 0,
+                    IncreasedByLevelStartPlusDivStep = false,
+                    StartingLevel = 0,
+                    StartingIncrease = 0,
+                    LevelStep = 0,
+                    PerStepIncrease = 0,
+                    MinClassLevelIncrease = 0,
+                    OtherClassesModifier = 0,
+                    IncreasedByStat = false,
+                    ResourceBonusStat = StatType.Unknown,
+                };
+            });
+            var OracleRevelationShapeChangeFreeAbility = Helpers.CreateBlueprint<BlueprintAbility>("OracleRevelationShapeChangeFreeAbility", bp => {
+                bp.m_DisplayName = ShapeChangeSpell.m_DisplayName;
+                bp.m_Description = ShapeChangeSpell.m_Description;
+                bp.m_DescriptionShort = ShapeChangeSpell.m_DescriptionShort;
+                bp.m_Icon = ShapeChangeSpell.m_Icon;
+                bp.Type = AbilityType.SpellLike;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.SelfTouch;
+                bp.ActionType = UnitCommand.CommandType.Standard;
+                bp.LocalizedDuration = ShapeChangeSpell.LocalizedDuration;
+                bp.LocalizedSavingThrow = ShapeChangeSpell.LocalizedSavingThrow;
+                bp.Components = ShapeChangeSpell.Components;
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = OracleRevelationShapeChangeFreeResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+            });
+            OracleRevelationShapeChangeFreeAbility.RemoveComponents<SpellListComponent>();
+            OracleRevelationShapeChangeFreeAbility.RemoveComponents<RecommendationNoFeatFromGroup>();            
             var OracleDarkTapestryFinalRevelation = Helpers.CreateBlueprint<BlueprintFeature>("OracleDarkTapestryFinalRevelation", bp => {
                 bp.SetName("Final Revelation");
-                bp.SetDescription("At 20th level, all {g|Encyclopedia:Spell}spells{/g} with cure, restore hp, or temporary hp descriptors cast by the oracle are always empowered, as though using the Empower Spell {g|Encyclopedia:Feat}feat{/g}.");
-                bp.AddComponent<AutoMetamagic>(c => {
-                    c.m_AllowedAbilities = AutoMetamagic.AllowedType.SpellOnly;
-                    c.Metamagic = Metamagic.Empower;
-                    c.Abilities = new List<BlueprintAbilityReference>();
-                    c.Descriptor = SpellDescriptor.Cure | SpellDescriptor.RestoreHP | SpellDescriptor.TemporaryHP;
+                bp.SetDescription("Upon reaching 20th level, you become a truly alien and unnatural creature. You gain damage reduction 5/— and immunity to acid, critical hits, " +
+                    "and sneak attacks. Once per day, you can cast shapechange as a spell-like ability without requiring a material component.");
+                bp.AddComponent<AddImmunityToCriticalHits>();
+                bp.AddComponent<AddImmunityToPrecisionDamage>();
+                bp.AddComponent<AddEnergyImmunity>(c => {
+                    c.Type = Kingmaker.Enums.Damage.DamageEnergyType.Acid;
+                });
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { OracleRevelationShapeChangeFreeAbility.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = OracleRevelationShapeChangeFreeResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
                 });
                 bp.m_AllowNonContextActions = false;
                 bp.HideInUI = false;
