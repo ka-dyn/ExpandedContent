@@ -44,6 +44,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
             var DarkTapestryMysteryIcon = AssetLoader.LoadInternal("Skills", "Icon_OracleDarkTapestryMystery.png");
             var ArcanistClass = Resources.GetBlueprint<BlueprintCharacterClass>("52dbfd8505e22f84fad8d702611f60b7");
             var MagicDeceiverArchetype = Resources.GetBlueprint<BlueprintArchetype>("5c77110cd0414e7eb4c2e485659c9a46");
+            var OracleRevelationProperty = Resources.GetModBlueprint<BlueprintUnitProperty>("OracleRevelationProperty");
 
             //Spelllist
             var EntropicShieldAbility = Resources.GetModBlueprint<BlueprintAbility>("EntropicShieldAbility");
@@ -405,7 +406,158 @@ namespace ExpandedContent.Tweaks.Mysteries {
             OracleRevelationDwellerInTheDarknessFeature.m_Features = OracleRevelationDwellerInTheDarknessFeature.m_Features.AppendToArray(OceansEchoDarkTapestryMysteryFeature.ToReference<BlueprintFeatureReference>());
             #endregion
             #region Gift of Madness
+            var Confusionbuff = Resources.GetBlueprint<BlueprintBuff>("886c7407dc629dc499b9f1465ff382df");
+            var OracleRevelationGiftOfMadnessResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("OracleRevelationGiftOfMadnessResource", bp => {
+                bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
+                    BaseValue = 3,
+                    IncreasedByLevel = false,
+                    IncreasedByStat = true,
+                    ResourceBonusStat = StatType.Charisma,
+                };
+            });
+            var OracleRevelationGiftOfMadnessUpgrade = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationGiftOfMadnessUpgrade", bp => {
+                bp.SetName("");
+                bp.SetDescription("");
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.HideNotAvailibleInUI = true;
+                bp.IsClassFeature = true;
+            });
+            var OracleRevelationGiftOfMadnessAbility = Helpers.CreateBlueprint<BlueprintAbility>("OracleRevelationGiftOfMadnessAbility", bp => {
+                bp.SetName("Gift of Madness");
+                bp.SetDescription("You tap into the unthinkable void between the stars and cause a single living creature within 30 feet to become confused for 1 round. " +
+                    "A successful Will save negates the effect. This is a mind-affecting compulsion effect. At 7th level, the confusion lasts for a number of rounds equal to your oracle level. " +
+                    "You can use this ability a number of times per day equal to 3 + your Charisma modifier.");
+                bp.m_Icon = Confusionbuff.Icon;
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = OracleRevelationGiftOfMadnessResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Will;
+                    c.Actions = Helpers.CreateActionList(
+                        new Conditional() {
+                            ConditionsChecker = new ConditionsChecker() {
+                                Operation = Operation.Or,
+                                Conditions = new Condition[] {
+                                    new ContextConditionCasterHasFact() { m_Fact = OracleRevelationGiftOfMadnessUpgrade.ToReference<BlueprintUnitFactReference>(), Not = false }
+                                }
+                            },
+                            IfFalse = Helpers.CreateActionList(//Pre level 7
+                                new ContextActionApplyBuff() {
+                                    m_Buff = Confusionbuff.ToReference<BlueprintBuffReference>(),
+                                    Permanent = false,
+                                    DurationValue = new ContextDurationValue() {
+                                        Rate = DurationRate.Rounds,
+                                        m_IsExtendable = true,
+                                        DiceCountValue = new ContextValue(),
+                                        BonusValue = 1
+                                    },
+                                }
+                                ),
+                            IfTrue = Helpers.CreateActionList(
+                                new ContextActionApplyBuff() {
+                                    m_Buff = Confusionbuff.ToReference<BlueprintBuffReference>(),
+                                    Permanent = false,
+                                    DurationValue = new ContextDurationValue() {
+                                        Rate = DurationRate.Rounds,
+                                        m_IsExtendable = true,
+                                        DiceCountValue = new ContextValue(),
+                                        BonusValue = new ContextValue() {
+                                            ValueType = ContextValueType.Rank,
+                                            ValueRank = AbilityRankType.Default
+                                        }
+                                    },
+                                }
+                                )
 
+                        }
+                        );
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.SummClassLevelWithArchetype;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.AsIs;
+                    c.m_StartLevel = 0;
+                    c.m_StepLevel = 0;
+                    c.m_UseMin = false;
+                    c.Archetype = MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.m_AdditionalArchetypes = new BlueprintArchetypeReference[] { };
+                    c.m_Class = new BlueprintCharacterClassReference[] {
+                        OracleClass.ToReference<BlueprintCharacterClassReference>(),
+                        ArcanistClass.ToReference<BlueprintCharacterClassReference>(),
+                    };
+                });
+                bp.AddComponent<SpellDescriptorComponent>(c => {
+                    c.Descriptor = SpellDescriptor.MindAffecting;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Medium;
+                bp.CanTargetEnemies = true;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Standard;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+
+            });
+            var OracleRevelationGiftOfMadnessFeature = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationGiftOfMadnessFeature", bp => {
+                bp.SetName("Gift of Madness");
+                bp.SetDescription("You tap into the unthinkable void between the stars and cause a single living creature within 30 feet to become confused for 1 round. " +
+                    "A successful Will save negates the effect. This is a mind-affecting compulsion effect. At 7th level, the confusion lasts for a number of rounds equal to your oracle level. " +
+                    "You can use this ability a number of times per day equal to 3 + your Charisma modifier.");
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        OracleRevelationGiftOfMadnessAbility.ToReference<BlueprintUnitFactReference>()
+                    };
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_AdditionalClasses = new BlueprintCharacterClassReference[] {
+                        ArcanistClass.ToReference<BlueprintCharacterClassReference>()
+                    };
+                    c.m_Archetypes = new BlueprintArchetypeReference[] {
+                        MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>()
+                    };
+                    c.Level = 7;
+                    c.m_Feature = OracleRevelationGiftOfMadnessUpgrade.ToReference<BlueprintFeatureReference>();
+                    c.BeforeThisLevel = false;
+                });
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = OracleRevelationGiftOfMadnessResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.AddComponent<BindAbilitiesToClass>(c => {
+                    c.m_Abilites = new BlueprintAbilityReference[] { OracleRevelationGiftOfMadnessAbility.ToReference<BlueprintAbilityReference>() };
+                    c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_AdditionalClasses = new BlueprintCharacterClassReference[] { ArcanistClass.ToReference<BlueprintCharacterClassReference>() };
+                    c.m_Archetypes = new BlueprintArchetypeReference[] { MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>() };
+                    c.Stat = StatType.Charisma;
+                    c.LevelStep = 2;
+                    c.Odd = false;
+                    c.FullCasterChecks = false;
+                });
+                bp.AddComponent<PrerequisiteFeaturesFromList>(c => {
+                    c.m_Features = new BlueprintFeatureReference[] {
+                        OracleDarkTapestryMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        EnlightnedPhilosopherDarkTapestryMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        DivineHerbalistDarkTapestryMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        OceansEchoDarkTapestryMysteryFeature.ToReference<BlueprintFeatureReference>()
+                    };
+                    c.Amount = 1;
+                });
+                bp.Groups = new FeatureGroup[] { FeatureGroup.OracleRevelation };
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+            OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationGiftOfMadnessFeature.ToReference<BlueprintFeatureReference>());
             #endregion
             #region Interstellar Void
             var OracleRevelationInterstallarVoidFeature = Resources.GetModBlueprint<BlueprintFeature>("OracleRevelationInterstallarVoidFeature").GetComponent<PrerequisiteFeaturesFromList>();
@@ -428,7 +580,6 @@ namespace ExpandedContent.Tweaks.Mysteries {
             var FrigidTouchCast = Resources.GetBlueprint<BlueprintAbility>("b6010dda6333bcf4093ce20f0063cd41");
             var TouchItem = Resources.GetBlueprintReference<BlueprintItemWeaponReference>("bb337517547de1a4189518d404ec49d4");
             var FatiguedBuff = Resources.GetBlueprintReference<BlueprintBuffReference>("e6f2fc5d73d88064583cb828801212f4");
-            var OracleRevelationProperty = Resources.GetModBlueprint<BlueprintUnitProperty>("OracleRevelationProperty");
             var OracleRevelationTouchOfTheVoidResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("OracleRevelationTouchOfTheVoidResource", bp => {
                 bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
                     BaseValue = 3,
