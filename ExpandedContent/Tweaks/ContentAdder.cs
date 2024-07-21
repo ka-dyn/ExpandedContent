@@ -296,6 +296,7 @@ namespace ExpandedContent.Tweaks {
                 Deities.Ydersius.AddYdersiusFeature();
                 Deities.Groetus.AddGroetus();
                 Deities.Naderi.AddNaderiFeature();
+                Deities.Sivanah.AddSivanahFeature();
                
                 Deities.PatchPulura.AddPulura();
                 Deities.Ragathiel.AddRagathielFeature();

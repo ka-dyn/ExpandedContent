@@ -147,6 +147,7 @@ namespace ExpandedContent.Tweaks.Deities {
             var GroetusFeature = Resources.GetBlueprint<BlueprintFeature>("c3e4d5681906d5246ab8b0637b98cbfe");
             var NaderiFeature = Resources.GetModBlueprint<BlueprintFeature>("NaderiFeature");
             var NewAchaekekFeature = Resources.GetBlueprint<BlueprintFeature>("a3189d5b7c4d4d91beaa8bfffac3e38e");
+            var SivanahFeature = Resources.GetModBlueprint<BlueprintFeature>("SivanahFeature");
 
 
             //Philosophies
@@ -454,6 +455,7 @@ namespace ExpandedContent.Tweaks.Deities {
                 YdersiusFeature.ToReference<BlueprintFeatureReference>(),
                 ZyphusFeature.ToReference<BlueprintFeatureReference>(),
                 NaderiFeature.ToReference<BlueprintFeatureReference>(),
+                SivanahFeature.ToReference<BlueprintFeatureReference>()
                 };
                 bp.IsClassFeature = true;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
@@ -681,7 +683,6 @@ namespace ExpandedContent.Tweaks.Deities {
                 GodclawFeature.ToReference<BlueprintFeatureReference>(),
                 LichDeityFeature.ToReference<BlueprintFeatureReference>(),
                 NewAchaekekFeature.ToReference<BlueprintFeatureReference>()
-
             };
             DeitySelection.Groups = new FeatureGroup[] { FeatureGroup.Deities };
             DeitySelection.Group = FeatureGroup.Deities;

@@ -267,6 +267,7 @@
     <Compile Include="Tweaks\Deities\Groetus.cs" />
     <Compile Include="Tweaks\Deities\Dretha.cs" />
     <Compile Include="Tweaks\Deities\Lanishra.cs" />
+    <Compile Include="Tweaks\Deities\Sivanah.cs" />
     <Compile Include="Tweaks\Deities\Nulgreth.cs" />
     <Compile Include="Tweaks\Deities\Rull.cs" />
     <Compile Include="Tweaks\Deities\Sezelrian.cs" />
@@ -1081,6 +1082,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Sinashakti.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Sivanah.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Sobek.jpg">
