@@ -99,6 +99,7 @@ Most of the deities from the tabletop game are included, split into categories b
 New Oracle Mysteries / Curses
 
 - Mysteries: 
+  - Dark Tapestry
   - Dragon
   - Heavens
   - Lunar
