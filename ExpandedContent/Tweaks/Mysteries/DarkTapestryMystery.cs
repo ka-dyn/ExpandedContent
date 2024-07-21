@@ -44,7 +44,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
             var DarkTapestryMysteryIcon = AssetLoader.LoadInternal("Skills", "Icon_OracleDarkTapestryMystery.png");
             var ArcanistClass = Resources.GetBlueprint<BlueprintCharacterClass>("52dbfd8505e22f84fad8d702611f60b7");
             var MagicDeceiverArchetype = Resources.GetBlueprint<BlueprintArchetype>("5c77110cd0414e7eb4c2e485659c9a46");
-            var OracleRevelationProperty = Resources.GetModBlueprint<BlueprintUnitProperty>("OracleRevelationProperty");
+            var OracleRevelationNoRavenerProperty = Resources.GetModBlueprint<BlueprintUnitProperty>("OracleRevelationNoRavenerProperty");
 
             //Spelllist
             var EntropicShieldAbility = Resources.GetModBlueprint<BlueprintAbility>("EntropicShieldAbility");
@@ -683,7 +683,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                                             HasCustomDC = true,
                                             CustomDC = new ContextValue() { 
                                                 ValueType = ContextValueType.CasterCustomProperty, 
-                                                m_CustomProperty = OracleRevelationProperty.ToReference<BlueprintUnitPropertyReference>() //This also scales with Ravener Hunter levels but I care enough to write this and not enough to fix it unless someone complains, I've made this comment long to annoy the next person to work on this with the weird sideways scroll.
+                                                m_CustomProperty = OracleRevelationNoRavenerProperty.ToReference<BlueprintUnitPropertyReference>()
                                             },
                                             Actions = Helpers.CreateActionList(
                                             new ContextActionConditionalSaved() {

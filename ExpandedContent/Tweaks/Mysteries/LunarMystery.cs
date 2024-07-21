@@ -4034,32 +4034,6 @@ namespace ExpandedContent.Tweaks.Mysteries {
             });
             OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationPropheticArmorFeature.ToReference<BlueprintFeatureReference>());
             //TouchOfTheMoon
-            var OracleRevelationProperty = Helpers.CreateBlueprint<BlueprintUnitProperty>("OracleRevelationProperty", bp => {
-                bp.AddComponent<SummClassLevelGetter>(c => {
-                    c.Settings = new PropertySettings() {
-                        m_Progression = PropertySettings.Progression.Div2,
-                        m_Negate = false
-                    };
-                    c.m_Class = new BlueprintCharacterClassReference[] {
-                        OracleClass.ToReference<BlueprintCharacterClassReference>(),
-                        InquisitorClass.ToReference<BlueprintCharacterClassReference>(),
-                        ArcanistClass.ToReference<BlueprintCharacterClassReference>(),
-                    };
-                    c.Archetype = RavenerHunterArchetype.ToReference<BlueprintArchetypeReference>();
-                    c.m_Archetypes = new BlueprintArchetypeReference[] { MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>() };
-                });
-                bp.AddComponent<StatValueGetter>(c => {
-                    c.Settings = new PropertySettings() {
-                        m_Progression = PropertySettings.Progression.AsIs,
-                        m_Negate = false,
-                        m_LimitType = PropertySettings.LimitType.None
-                    };
-                    c.Stat = StatType.Charisma;
-                    c.ValueType = StatValueGetter.ReturnType.Bonus;
-                });
-                bp.BaseValue = 10;
-                bp.OperationOnComponents = BlueprintUnitProperty.MathOperation.Sum;
-            }); //Maybe move this
             var OracleCureSpells = Resources.GetBlueprintReference<BlueprintFeatureReference>("0f7fb23d8f97b024388a433c5a8d493f");
             var OracleInflictSpells = Resources.GetBlueprintReference<BlueprintFeatureReference>("60b6566ca96b11549bd86a90d79b92f3");
             var TouchOfTheMoonCureIcon = AssetLoader.LoadInternal("Skills", "Icon_TouchOfTheMoonCure.jpg");

@@ -199,6 +199,7 @@ namespace ExpandedContent.Tweaks {
                 Archetypes.Treesinger.AddTreesinger();
                 Archetypes.DivineScourge.AddDivineScourge();
 
+                Mysteries.MysteryProperties.AddMysteryProperties();
                 Mysteries.DragonMystery.AddDragonMystery();
                 Mysteries.HeavensMystery.AddHeavensMystery();
                 Mysteries.SuccorMystery.AddSuccorMystery();
@@ -206,6 +207,7 @@ namespace ExpandedContent.Tweaks {
                 Mysteries.WinterMystery.AddWinterMystery();
                 Mysteries.LunarMystery.AddLunarMystery();
                 Mysteries.ShadowMystery.AddShadowMystery();
+                Mysteries.DarkTapestryMystery.AddDarkTapestryMystery();
 
                 Spirits.HeavensSpirit.AddHeavensSprit();
 

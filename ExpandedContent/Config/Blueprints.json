@@ -3520,7 +3520,29 @@
     "ShadowJauntBuff": "bf75a5aa-b6c6-4a80-afbd-f764eba48f0a",
     "ShadowJauntDecoyUnit": "d07c4d22-70a5-4f0a-a434-b2ff3b62429e",
     "ShadowJauntSubspell": "9da215a5-3be3-449c-ad94-e31344891ccf",
-    "ShadowStepAbility": "f5145138-5b15-45be-bfcb-bb36b7da0220"
+    "ShadowStepAbility": "f5145138-5b15-45be-bfcb-bb36b7da0220",
+
+    "DivineHerbalistDarkTapestryMysteryFeature": "235237c5-199c-48b0-a8a8-d3974b0a8ed7",
+    "EnlightnedPhilosopherDarkTapestryMysteryFeature": "44e54624-7f42-49c2-b5d2-6058ec328dbc",
+    "EnlightnedPhilosopherDarkTapestrySpells": "62b2d296-b816-4508-9b3c-601df1416370",
+    "OceansEchoDarkTapestryMysteryFeature": "9f9e504d-d115-4054-91ef-fdada4820a4a",
+    "OceansEchoDarkTapestrySpells": "9af074e7-a875-4884-9038-3f6eba4a5ad5",
+    "OracleDarkTapestryFinalRevelation": "d0cf0cfa-5cf7-44a6-a4d7-4fd878b83d45",
+    "OracleDarkTapestryMysteryFeature": "a7fd19cc-84bc-41f5-946d-3a5791805249",
+    "OracleDarkTapestrySpells": "3932447a-e7bb-4181-9164-54efc90d5f80",
+    "OracleRevelationGiftOfMadnessAbility": "e831af6e-71ab-49af-b607-642613d320d8",
+    "OracleRevelationGiftOfMadnessFeature": "535b1b99-91d2-4b42-a4a2-ed8021ac32d2",
+    "OracleRevelationGiftOfMadnessResource": "bd1e7ad3-c8b0-47ba-a129-a6629fd40db5",
+    "OracleRevelationGiftOfMadnessUpgrade": "fb73113e-d826-479c-9e1d-5b47fc797cd5",
+    "OracleRevelationNoRavenerProperty": "4e5ebc74-2175-44e5-8ce0-0303f45a1835",
+    "OracleRevelationShapeChangeFreeAbility": "335c9fc6-cc75-47c5-a42f-fce4cd5f1e66",
+    "OracleRevelationShapeChangeFreeResource": "acd66ee8-dc9b-4609-9544-7de98181b4c1",
+    "OracleRevelationTouchOfTheVoidAbility": "8c8db203-4dac-4ab1-b469-8ca839278ff3",
+    "OracleRevelationTouchOfTheVoidFeature": "d5d6e322-6b25-48cd-a463-da93c9868084",
+    "OracleRevelationTouchOfTheVoidResource": "b7a97fe8-f99a-4e8e-b9db-561b7beec325",
+    "OracleRevelationTouchOfTheVoidUpgrade": "b1f979e6-3e4a-4bd9-b262-bc1c54c946ba",
+    "StargazerChannelerOfTheUnknownLevelUp": "31ad246f-3c16-4864-a726-8ac8af9cb07a",
+    "StargazerChannelerOfTheUnknownProgression": "808565e8-2608-4214-8f36-36e5f4cbd627"
 
 
 
