@@ -146,11 +146,9 @@ namespace ExpandedContent.Tweaks.Spells {
                     c.NotExtraAttack = false;
                     c.OnCharge = false;
                     c.Action = Helpers.CreateActionList(
-                        new ContextActionOnContextCaster() {
-                            Actions = Helpers.CreateActionList(
-                                new ContextActionRemoveBuff() {
-                                    m_Buff = DanceOfAHundredCutsToken.ToReference<BlueprintBuffReference>()
-                                })
+                        new ContextActionRemoveBuff() {
+                            m_Buff = DanceOfAHundredCutsToken.ToReference<BlueprintBuffReference>(),
+                            ToCaster = true
                         });
                 });
                 bp.AddComponent<AddFactContextActions>(c => {
