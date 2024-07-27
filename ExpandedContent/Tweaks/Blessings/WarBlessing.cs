@@ -386,11 +386,11 @@ namespace ExpandedContent.Tweaks.Blessings {
             });
 
             BlessingTools.RegisterBlessing(WarBlessingFeature);
-            BlessingTools.CreateDivineTrackerBlessing("DivineTrackerWarBlessingFeature", WarBlessingFeature, "At 1st level, you can touch an ally and grant it a tactical advantage for 1 minute. The ally gets one of the following bonuses: +10 feet to base speed, +1 dodge bonus to AC, +1 insight bonus on attack rolls, or a +1 luck bonus on saving throws. \nAt 13th level, you can touch an ally and grant it a thirst for battle. All of the ally’s melee attacks are treated as if they had the vicious weapon special ability. In addition, the ally receives a +4 insight bonus on attack rolls made to confirm critical hits. These benefits last for 1 minute.");
+            //BlessingTools.CreateDivineTrackerBlessing("DivineTrackerWarBlessingFeature", WarBlessingFeature, "At 1st level, you can touch an ally and grant it a tactical advantage for 1 minute. The ally gets one of the following bonuses: +10 feet to base speed, +1 dodge bonus to AC, +1 insight bonus on attack rolls, or a +1 luck bonus on saving throws. \nAt 13th level, you can touch an ally and grant it a thirst for battle. All of the ally’s melee attacks are treated as if they had the vicious weapon special ability. In addition, the ally receives a +4 insight bonus on attack rolls made to confirm critical hits. These benefits last for 1 minute.");
 
             //Added in ModSupport
             var DivineTrackerWarBlessingFeature = Resources.GetModBlueprint<BlueprintFeature>("DivineTrackerWarBlessingFeature");
-            DivineTrackerWarBlessingFeature.LazyLock();
+            //DivineTrackerWarBlessingFeature.LazyLock();
             var QuickenBlessingWarFeature = Helpers.CreateBlueprint<BlueprintFeature>("QuickenBlessingWarFeature", bp => {
 
                 bp.LazyLock();

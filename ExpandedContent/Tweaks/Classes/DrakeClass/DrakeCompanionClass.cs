@@ -178,7 +178,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
 
             var DrakeVisionFeature = Helpers.CreateBlueprint<BlueprintFeature>("DrakeVisionFeature", bp => {
                 bp.SetName("Drake Vision");
-                bp.SetDescription("Drakes have both natraly clear eye sight, and near perfect night vision. This gives drakes a +4 to all " +
+                bp.SetDescription("Drakes have both naturally clear eye sight, and near perfect night vision. This gives drakes a +4 to all " +
                     "Perception rolls");
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;
@@ -289,7 +289,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
             });
             var DrakeNaturalArmorFeature = Helpers.CreateBlueprint<BlueprintFeature>("DrakeNaturalArmor", bp => {
                 bp.SetName("Drake Natural Armor");
-                bp.SetDescription("The drake’s natural armor bonus to its AC increases by 2 when the charge reaches 3rd level and every 3 levels thereafter.");
+                bp.SetDescription("The drake’s natural armor bonus to its AC increases by 2 when it reaches 3rd level and every 3 levels thereafter.");
             });
             #endregion
             #region Drake Powers
@@ -2118,7 +2118,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
             });
             var DrakeKeenMindFeature = Helpers.CreateBlueprint<BlueprintFeature>("DrakeKeenMindFeature", bp => {
                 bp.SetName("Drake Keen Mind");
-                bp.SetDescription("The drake’s Intelligence, Wisdom, and Charisma scores each increase by 2. A drake must have intellect to select keen mind." +
+                bp.SetDescription("The drake’s Intelligence, Wisdom, and Charisma scores each increase by 2. A drake must have the intellect drake power to select keen mind." +
                     "\nUnlocks the Spellcasting component of the Mythic Drake Ability.");
                 bp.AddComponent<PrerequisiteFeature>(c => {
                     c.m_Feature = DrakeIntellectFeature.ToReference<BlueprintFeatureReference>();

@@ -612,12 +612,12 @@ namespace ExpandedContent.Tweaks.Blessings {
                 bp.Groups = new FeatureGroup[] { FeatureGroup.WarpriestBlessing };
             });
             BlessingTools.RegisterBlessing(PlantBlessingFeature);
-            BlessingTools.CreateDivineTrackerBlessing("DivineTrackerPlantBlessingFeature", PlantBlessingFeature, "At 1st level, as a swift action you can cause any creature you hit this round with a melee attack to sprout entangling vines that attempt to hold it in place, entangling it for 1 round (Reflex negates). \nAt 13th level, you can summon a battle companion. This ability functions as summon nature's ally V with a duration of 1 minute. This ability can summon only one animal, regardless of the list used, and the creature’s type changes to plant instead of animal. For every 2 levels beyond 12th, the level of the summon nature's ally {g|Encyclopedia:Spell}spell{/g} increases by 1 (to a maximum of summon nature's ally IX at 20th level).");
+            //BlessingTools.CreateDivineTrackerBlessing("DivineTrackerPlantBlessingFeature", PlantBlessingFeature, "At 1st level, as a swift action you can cause any creature you hit this round with a melee attack to sprout entangling vines that attempt to hold it in place, entangling it for 1 round (Reflex negates). \nAt 13th level, you can summon a battle companion. This ability functions as summon nature's ally V with a duration of 1 minute. This ability can summon only one animal, regardless of the list used, and the creature’s type changes to plant instead of animal. For every 2 levels beyond 12th, the level of the summon nature's ally {g|Encyclopedia:Spell}spell{/g} increases by 1 (to a maximum of summon nature's ally IX at 20th level).");
 
             //Added in ModSupport
             var DivineTrackerPlantBlessingFeature = Resources.GetModBlueprint<BlueprintFeature>("DivineTrackerPlantBlessingFeature");
 
-            DivineTrackerPlantBlessingFeature.LazyLock();
+            //DivineTrackerPlantBlessingFeature.LazyLock();
 
             var QuickenBlessingPlantFeature = Helpers.CreateBlueprint<BlueprintFeature>("QuickenBlessingPlantFeature", bp => {
 
