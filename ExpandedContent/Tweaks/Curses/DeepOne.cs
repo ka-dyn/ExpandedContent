@@ -40,12 +40,12 @@ namespace ExpandedContent.Tweaks.Curses {
             var ElementalBodyWater3Buff = Resources.GetBlueprintReference<BlueprintBuffReference>("e24ea1f5005649846b798318b5238e34");
             var ElementalBodyWater4Buff = Resources.GetBlueprintReference<BlueprintBuffReference>("f0abf98bb3bce4f4e877a8e8c2eccf41");
             var FreedomOfMovementBuff = Resources.GetBlueprintReference<BlueprintBuffReference>("1533e782fca42b84ea370fc1dcbf4fc1");
-            var DeepOneIcon = AssetLoader.LoadInternal("Skills", "Icon_VampireCurse.png");
+            var DeepOneIcon = AssetLoader.LoadInternal("Skills", "Icon_DeepOneCurse.png");
 
 
             var DeepOneCurseFeatureLevel1 = Helpers.CreateBlueprint<BlueprintFeature>("DeepOneCurseFeatureLevel1", bp => {
                 bp.SetName("Deep One");
-                bp.SetDescription("");
+                bp.SetDescription("The lure of the ocean tugs at your soul. \nYou reduce your base land speed by 5 feet.");
                 bp.AddComponent<BuffMovementSpeed>(c => {
                     c.Descriptor = ModifierDescriptor.UntypedStackable;
                     c.Value = -5;
@@ -54,39 +54,40 @@ namespace ExpandedContent.Tweaks.Curses {
                     c.CappedMinimum = false;
                 });
                 bp.m_AllowNonContextActions = false;
-                bp.HideInUI = true;
+                bp.HideInUI = false;
                 bp.HideInCharacterSheetAndLevelUp = true;
                 bp.IsClassFeature = true;
             });
             var DeepOneCurseFeatureLevel5 = Helpers.CreateBlueprint<BlueprintFeature>("DeepOneCurseFeatureLevel5", bp => {
                 bp.SetName("Deep One");
-                bp.SetDescription("");
+                bp.SetDescription("Your natural armor bonus increases by 1 as your skin thickens.");
                 bp.AddComponent<AddStatBonus>(c => {
                     c.Stat = StatType.AC;
                     c.Descriptor = (ModifierDescriptor)NaturalArmor.Stackable;
                     c.Value = 1;
                 });
                 bp.m_AllowNonContextActions = false;
-                bp.HideInUI = true;
+                bp.HideInUI = false;
                 bp.HideInCharacterSheetAndLevelUp = true;
                 bp.IsClassFeature = true;
             });
             var DeepOneCurseFeatureLevel10 = Helpers.CreateBlueprint<BlueprintFeature>("DeepOneCurseFeatureLevel10", bp => {
                 bp.SetName("Deep One");
-                bp.SetDescription("");
+                bp.SetDescription("You gain a +1 bonus to your caster level when casting spells with the cold descriptor.");
                 bp.AddComponent<IncreaseSpellDescriptorCasterLevel>(c => {
                     c.BonusCasterLevel = 1;
                     c.Descriptor = SpellDescriptor.Cold;
                     c.ModifierDescriptor = ModifierDescriptor.UntypedStackable;
                 });
                 bp.m_AllowNonContextActions = false;
-                bp.HideInUI = true;
+                bp.HideInUI = false;
                 bp.HideInCharacterSheetAndLevelUp = true;
                 bp.IsClassFeature = true;
             });
             var DeepOneCurseFeatureLevel15 = Helpers.CreateBlueprint<BlueprintFeature>("DeepOneCurseFeatureLevel15", bp => {
                 bp.SetName("Deep One");
-                bp.SetDescription("");
+                bp.SetDescription("At 15th level, add elemental body - water (I,II,III,IV) to your list of oracle spells known. " +
+                    "While under the effects of these spells or the seamantle spell, gain the benefits of the freedom of movement spell.");
                 bp.AddComponent<AddKnownSpell>(c => {
                     c.m_Spell = ElementalBodyWater1Spell;
                     c.SpellLevel = 4;
@@ -128,17 +129,6 @@ namespace ExpandedContent.Tweaks.Curses {
                 bp.AddComponent<AddKnownSpell>(c => {
                     c.m_Spell = ElementalBodyWater4Spell;
                     c.SpellLevel = 7;
-                    c.m_CharacterClass = WitchClass.ToReference<BlueprintCharacterClassReference>();
-                    c.m_Archetype = AccursedWitchArchetype.ToReference<BlueprintArchetypeReference>();
-                });
-                bp.AddComponent<AddKnownSpell>(c => {
-                    c.m_Spell = SeamantleSpell;
-                    c.SpellLevel = 8;
-                    c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
-                });
-                bp.AddComponent<AddKnownSpell>(c => {
-                    c.m_Spell = SeamantleSpell;
-                    c.SpellLevel = 8;
                     c.m_CharacterClass = WitchClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_Archetype = AccursedWitchArchetype.ToReference<BlueprintArchetypeReference>();
                 });
@@ -153,7 +143,7 @@ namespace ExpandedContent.Tweaks.Curses {
                     c.m_ExtraEffectBuff = FreedomOfMovementBuff;
                 });
                 bp.m_AllowNonContextActions = false;
-                bp.HideInUI = true;
+                bp.HideInUI = false;
                 bp.HideInCharacterSheetAndLevelUp = true;
                 bp.IsClassFeature = true;
             });
@@ -162,8 +152,8 @@ namespace ExpandedContent.Tweaks.Curses {
                 bp.SetDescription("The lure of the ocean tugs at your soul. \nYou reduce your base land speed by 5 feet. " +
                     "\nAt 5th level, your natural armor bonus increases by 1 as your skin thickens. " +
                     "\nAt 10th level, you gain a +1 bonus to your caster level when casting spells with the cold descriptor. " +
-                    "\nAt 15th level, you gain the following spells, along with the benefits of freedom of movement while under their effects. " +
-                    "\nSpells: elemental body - water (I,II,III,IV), seamantle");
+                    "\nAt 15th level, add elemental body - water (I,II,III,IV) to your list of oracle spells known. " +
+                    "While under the effects of these spells or the seamantle spell, gain the benefits of the freedom of movement spell.");
                 bp.m_Icon = DeepOneIcon;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.OracleCurse };
                 bp.IsClassFeature = true;
@@ -198,11 +188,11 @@ namespace ExpandedContent.Tweaks.Curses {
             });
             var BeneficialDeepOneCurseProgression = Helpers.CreateBlueprint<BlueprintProgression>("BeneficialDeepOneCurseProgression", bp => {
                 bp.SetName("Deep One");
-                bp.SetDescription("The lure of the ocean tugs at your soul. " +
+                bp.SetDescription("The lure of the ocean tugs at your soul. \nYou reduce your base land speed by 5 feet. " +
                     "\nAt 5th level, your natural armor bonus increases by 1 as your skin thickens. " +
                     "\nAt 10th level, you gain a +1 bonus to your caster level when casting spells with the cold descriptor. " +
-                    "\nAt 15th level, you gain the following spells, along with the benefits of freedom of movement while under their effects. " +
-                    "\nSpells: elemental body - water (I,II,III,IV), seamantle");
+                    "\nAt 15th level, add elemental body - water (I,II,III,IV) to your list of oracle spells known. " +
+                    "\nWhile under the effects of these spells or the seamantle spell, gain the benefits of the freedom of movement spell.");
                 bp.m_Icon = DeepOneIcon;
                 bp.IsClassFeature = true;
                 bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
@@ -238,8 +228,8 @@ namespace ExpandedContent.Tweaks.Curses {
                 bp.SetDescription("The lure of the ocean tugs at your soul. \nYou reduce your base land speed by 5 feet. " +
                     "\nAt 5th level, your natural armor bonus increases by 1 as your skin thickens. " +
                     "\nAt 10th level, you gain a +1 bonus to your caster level when casting spells with the cold descriptor. " +
-                    "\nAt 15th level, you gain the following spells, along with the benefits of freedom of movement while under their effects. " +
-                    "\nSpells: elemental body - water (I,II,III,IV), seamantle");
+                    "\nAt 15th level, add elemental body - water (I,II,III,IV) to your list of oracle spells known. " +
+                    "\nWhile under the effects of these spells or the seamantle spell, gain the benefits of the freedom of movement spell.");
                 bp.m_Icon = DeepOneIcon;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.OracleCurse };
                 bp.IsClassFeature = true;

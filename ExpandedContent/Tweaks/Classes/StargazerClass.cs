@@ -38,6 +38,8 @@ using Kingmaker.UnitLogic.Abilities.Components.AreaEffects;
 using Kingmaker.ElementsSystem;
 using Kingmaker.UnitLogic.Mechanics.Conditions;
 using Kingmaker.Craft;
+using ExpandedContent.Tweaks.Components;
+using System.Linq;
 
 namespace ExpandedContent.Tweaks.Classes {
     internal class StargazerClass {
@@ -2082,6 +2084,9 @@ namespace ExpandedContent.Tweaks.Classes {
                 bp.SetName("Sidereal Arcana - The Follower");
                 bp.SetDescription("The specter of death follows the stargazer, shielding him from doom. The stargazer gains a +4 bonus on saves against death effects. In addition, he is immune " +
                     "to all death effects, negative energy effects, and negative levels created by demons.");
+                bp.AddComponent<AddImmunityToEnergyDrainFromFact>(c => {
+                    c.m_CheckedFact = SubtypeDemon.ToReference<BlueprintUnitFactReference>();
+                });
                 bp.AddComponent<BuffDescriptorImmunity>(c => {
                     c.Descriptor = SpellDescriptor.Death | SpellDescriptor.NegativeLevel | SpellDescriptor.ChannelNegativeHarm;
                     c.CheckFact = true;
@@ -10969,6 +10974,9 @@ namespace ExpandedContent.Tweaks.Classes {
                 bp.SetName("Sidereal Arcana - The Follower");
                 bp.SetDescription("The specter of death follows the stargazer, shielding him from doom. The stargazer gains a +4 bonus on saves against death effects. In addition, he is immune " +
                     "to all death effects, negative energy effects, and negative levels created by demons.");
+                bp.AddComponent<AddImmunityToEnergyDrainFromFact>(c => {
+                    c.m_CheckedFact = SubtypeDemon.ToReference<BlueprintUnitFactReference>();
+                });
                 bp.AddComponent<BuffDescriptorImmunity>(c => {
                     c.Descriptor = SpellDescriptor.Death | SpellDescriptor.NegativeLevel | SpellDescriptor.ChannelNegativeHarm;
                     c.CheckFact = true;
@@ -12130,6 +12138,68 @@ namespace ExpandedContent.Tweaks.Classes {
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = true;
             });
+            #endregion
+            #region The Pack Spell Patching
+            var animalSummoningSpells = new BlueprintAbility[] {
+                Resources.GetBlueprint<BlueprintAbility>("06d11dfa15e63bd41b01e09d5464ee8f"), //NaturesAlly 3 d3
+                Resources.GetBlueprint<BlueprintAbility>("eb259941d7c2c5144844a31e72810642"), //NaturesAlly 4 d3
+                Resources.GetBlueprint<BlueprintAbility>("3050599c1ca9a9b40940a9426d4f861b"), //NaturesAlly 4 d4+1
+                Resources.GetBlueprint<BlueprintAbility>("03e8e9605925b7140bdd331232b78d25"), //NaturesAlly 5 d3
+                Resources.GetBlueprint<BlueprintAbility>("87c64591b0e6f7542807429d14bb1723"), //NaturesAlly 5 d4+1
+                Resources.GetBlueprint<BlueprintAbility>("7aefdbd7e0933b744b9c85566d16e504"), //NaturesAlly 6 d4+1
+                Resources.GetBlueprint<BlueprintAbility>("533f8cee65aa2fc448d6d2a7e5d28bb6"), //NaturesAlly 7 d3
+                Resources.GetBlueprint<BlueprintAbility>("256739c1e61e3f64eaf71734d271f4be"), //NaturesAlly 8 d3
+                Resources.GetBlueprint<BlueprintAbility>("86f4287572bef49449b9d06c66adf456"), //NaturesAlly 8 d4+1
+                Resources.GetBlueprint<BlueprintAbility>("9bd8cb6180842f44e9302c58e47b91f0"), //NaturesAlly 9 d4+1
+                Resources.GetBlueprint<BlueprintAbility>("6223958f3615eeb4d91e52ba57820878"), //SummonMonster 2 d3
+                Resources.GetBlueprint<BlueprintAbility>("28f49845fad6a534b95a65b6cea8f8d6"), //SummonMonster 3 d3
+                Resources.GetBlueprint<BlueprintAbility>("7b531828b885e8b47a7b06a6f1a34805"), //SummonMonster 3 d4+1
+                Resources.GetBlueprint<BlueprintAbility>("e73c4562e99c7764a9207710facc61d2"), //SummonMonster 4 d3
+                Resources.GetBlueprint<BlueprintAbility>("24ed31f7b42eb5f4ab461be90d479066"), //SummonMonster 4 d4+1
+                Resources.GetBlueprint<BlueprintAbility>("715f208d545be2f4aa2d3693e6347a5a"), //SummonMonster 5 d3
+                Resources.GetBlueprint<BlueprintAbility>("e331ef5f6b235f54aaab5f2bf7a64eb6"), //SummonMonster 5 d4+1
+                Resources.GetBlueprint<BlueprintAbility>("59d28e07b948d4e45a7477ec0065ccb3"), //SummonMonster 6 d4+1
+                Resources.GetModBlueprint<BlueprintAbility>("SummonBearStandardD3"),
+                Resources.GetModBlueprint<BlueprintAbility>("SummonBearYoungD3"),
+                Resources.GetModBlueprint<BlueprintAbility>("SummonBearGiantD3"),
+                Resources.GetModBlueprint<BlueprintAbility>("SummonBearAdvancedD3"),
+                Resources.GetModBlueprint<BlueprintAbility>("SummonBearFinalD3"),
+                Resources.GetModBlueprint<BlueprintAbility>("SummonBearStandardD4plus1"),
+                Resources.GetModBlueprint<BlueprintAbility>("SummonBearYoungD4plus1"),
+                Resources.GetModBlueprint<BlueprintAbility>("SummonBearGiantD4plus1"),
+                Resources.GetModBlueprint<BlueprintAbility>("SummonBearAdvancedD4plus1"),
+                Resources.GetModBlueprint<BlueprintAbility>("SummonBearFinalD4plus1"),
+                Resources.GetModBlueprint<BlueprintAbility>("SummonLeopardStandardD3"),
+                Resources.GetModBlueprint<BlueprintAbility>("SummonLeopardYoungD3"),
+                Resources.GetModBlueprint<BlueprintAbility>("SummonLeopardGiantD3"),
+                Resources.GetModBlueprint<BlueprintAbility>("SummonLeopardAdvancedD3"),
+                Resources.GetModBlueprint<BlueprintAbility>("SummonLeopardFinalD3"),
+                Resources.GetModBlueprint<BlueprintAbility>("SummonLeopardStandardD4plus1"),
+                Resources.GetModBlueprint<BlueprintAbility>("SummonLeopardYoungD4plus1"),
+                Resources.GetModBlueprint<BlueprintAbility>("SummonLeopardGiantD4plus1"),
+                Resources.GetModBlueprint<BlueprintAbility>("SummonLeopardAdvancedD4plus1"),
+                Resources.GetModBlueprint<BlueprintAbility>("SummonLeopardFinalD4plus1"),
+                Resources.GetModBlueprint<BlueprintAbility>("SummonSmilodonStandardD3"),
+                Resources.GetModBlueprint<BlueprintAbility>("SummonSmilodonYoungD3"),
+                Resources.GetModBlueprint<BlueprintAbility>("SummonSmilodonGiantD3"),
+                Resources.GetModBlueprint<BlueprintAbility>("SummonSmilodonAdvancedD3"),
+                Resources.GetModBlueprint<BlueprintAbility>("SummonSmilodonFinalD3"),
+                Resources.GetModBlueprint<BlueprintAbility>("SummonSmilodonStandardD4plus1"),
+                Resources.GetModBlueprint<BlueprintAbility>("SummonSmilodonYoungD4plus1"),
+                Resources.GetModBlueprint<BlueprintAbility>("SummonSmilodonGiantD4plus1"),
+                Resources.GetModBlueprint<BlueprintAbility>("SummonSmilodonAdvancedD4plus1"),
+            };
+            foreach (var spell in animalSummoningSpells) {
+                spell.GetComponents<ContextRankConfig>()
+                    .Where(c => c.m_Type is AbilityRankType.ProjectilesCount)
+                    .ForEach(result => {
+                        result.m_FeatureList = result.m_FeatureList.AppendToArray(
+                            StargazerSiderealThePackEffect.ToReference<BlueprintFeatureReference>(), 
+                            StargazerStarsDancePackFeature.ToReference<BlueprintFeatureReference>()
+                            );
+                    });
+            }
+
             #endregion
             #region Spellbook Progression
 

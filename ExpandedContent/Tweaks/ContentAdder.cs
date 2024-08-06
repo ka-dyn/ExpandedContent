@@ -212,6 +212,7 @@ namespace ExpandedContent.Tweaks {
                 Spirits.HeavensSpirit.AddHeavensSprit();
 
                 Curses.Vampirism.AddVampirismCurse();
+                Curses.DeepOne.AddDeepOneCurse();
 
                 Miscellaneous.AidAnother.AddAidAnother();
 

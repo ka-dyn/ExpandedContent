@@ -266,8 +266,18 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     "and sneak attacks. Once per day, you can cast shapechange as a spell-like ability without requiring a material component.");
                 bp.AddComponent<AddImmunityToCriticalHits>();
                 bp.AddComponent<AddImmunityToPrecisionDamage>();
+                bp.AddComponent<AddDamageResistancePhysical>(c => {
+                    c.Value = new ContextValue() {
+                        ValueType = ContextValueType.Simple,
+                        Value = 5,
+                        ValueRank = AbilityRankType.Default,
+                        ValueShared = AbilitySharedValue.Damage,
+                        Property = UnitProperty.None
+                    };
+                    c.m_IsStackable = true;
+                }); 
                 bp.AddComponent<AddEnergyImmunity>(c => {
-                    c.Type = Kingmaker.Enums.Damage.DamageEnergyType.Acid;
+                    c.Type = DamageEnergyType.Acid;
                 });
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] { OracleRevelationShapeChangeFreeAbility.ToReference<BlueprintUnitFactReference>() };

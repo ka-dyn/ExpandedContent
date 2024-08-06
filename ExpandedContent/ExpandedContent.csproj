@@ -243,6 +243,7 @@
     <Compile Include="Tweaks\Classes\DrakeClass\DrakeCompanionSelection.cs" />
     <Compile Include="Tweaks\Classes\Oathbreaker.cs" />
     <Compile Include="Tweaks\Classes\DreadKnight.cs" />
+    <Compile Include="Tweaks\Components\AddImmunityToEnergyDrainFromFact.cs" />
     <Compile Include="Tweaks\Components\AutoMetamagicMagicSourceOnly.cs" />
     <Compile Include="Tweaks\Components\ContextConditionIsPetOwner.cs" />
     <Compile Include="Tweaks\Components\IgnoreDamageReductionOnAttackRangeType.cs" />
@@ -1665,6 +1666,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_DeadlyFinale.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_DeepOneCurse.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_DefensivePowers.png">
