@@ -109,6 +109,7 @@ New Oracle Mysteries / Curses
   - Wood
 
 - Curses: 
+  - Deep One
   - Vampirism
 
 
