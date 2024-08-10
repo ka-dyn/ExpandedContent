@@ -680,6 +680,15 @@ namespace ExpandedContent.Config {
                         };
                     });
                     EnhancedBlessingsFeature.GetComponent<AutoMetamagic>().Abilities.AddRange(newblessingabilities.ToList());
+                    var AbundantBlessingFeature = Resources.GetBlueprint<BlueprintFeature>("c6b0c4208ec246b3a7cce66e75a0c3fb");
+                    AbundantBlessingFeature.RemoveComponents<PrerequisiteFeature>();
+                    AbundantBlessingFeature.AddComponent<PrerequisiteFeaturesFromList>(c => {
+                        c.Amount = 1;
+                        c.m_Features = new BlueprintFeatureReference[] {
+                            DivineTrackerBlessingSelectionFirst.ToReference<BlueprintFeatureReference>(),
+                            BlessingSelection.ToReference<BlueprintFeatureReference>()
+                        };
+                    });
 
                     var QuickenBlessing = Resources.GetBlueprint<BlueprintFeatureSelection>("094d657008ac413f8198a351b573791a");
                     var PaladinClass = Resources.GetBlueprintReference<BlueprintCharacterClassReference>("bfa11238e7ae3544bbeb4d0b92e897ec");
