@@ -30,6 +30,7 @@ namespace ExpandedContent.Tweaks.DemonLords {
             BaphometFeature.DisallowAngelfireApostle();
             BaphometFeature.DisallowDarkSister();
             BaphometFeature.DisallowNewMantisZealot();
+            BaphometFeature.MagicDeceiverLock();
 
             BaphometFeature.SetAllowedDomains(
                     DeityTools.DomainAllowed.DemonDomainEvilAllowed,

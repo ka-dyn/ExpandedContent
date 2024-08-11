@@ -689,6 +689,10 @@ namespace ExpandedContent.Config {
                             BlessingSelection.ToReference<BlueprintFeatureReference>()
                         };
                     });
+                    var DTImpossibleBlessingSelection = Resources.GetModBlueprint<BlueprintFeatureSelection>("DTImpossibleBlessingSelection");
+                    DTImpossibleBlessingSelection.AddFeatures(DivineTrackerBlessingSelectionFirst.m_AllFeatures);
+                    FeatTools.AddAsMythicAbility(DTImpossibleBlessingSelection);
+
 
                     var QuickenBlessing = Resources.GetBlueprint<BlueprintFeatureSelection>("094d657008ac413f8198a351b573791a");
                     var PaladinClass = Resources.GetBlueprintReference<BlueprintCharacterClassReference>("bfa11238e7ae3544bbeb4d0b92e897ec");

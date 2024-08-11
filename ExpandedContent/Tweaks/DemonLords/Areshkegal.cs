@@ -29,6 +29,7 @@ namespace ExpandedContent.Tweaks.DemonLords {
             AreshkegalFeature.DisallowAngelfireApostle();
             AreshkegalFeature.DisallowDarkSister();
             AreshkegalFeature.DisallowNewMantisZealot();
+            AreshkegalFeature.MagicDeceiverLock();
 
             AreshkegalFeature.SetAllowedDomains(
                     DeityTools.DomainAllowed.DemonDomainChaosAllowed,

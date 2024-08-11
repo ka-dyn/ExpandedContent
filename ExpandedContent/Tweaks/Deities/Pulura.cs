@@ -86,6 +86,8 @@ namespace ExpandedContent.Tweaks.Deities {
             PuluraFeature.m_Icon = PuluraIcon;
 
             PuluraFeature.DisallowNewMantisZealot();
+            PuluraFeature.MagicDeceiverLock();
+
             PuluraFeature.RemoveComponents<PrerequisiteNoFeature>();
             var EmpyrealLordSelection = Resources.GetModBlueprint<BlueprintFeatureSelection>("EmpyrealLordSelection");
 

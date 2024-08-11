@@ -158,6 +158,22 @@ namespace ExpandedContent.Tweaks.Archetypes {
 
 
             #endregion
+            //DTImpossibleBlessingSelection is added in TTT compat
+            var DTImpossibleBlessingSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("DTImpossibleBlessingSelection", bp => {
+                bp.SetName("Impossible Blessing (Divine Tracker)");
+                bp.SetDescription("You feel a closer connection to your deity you serve.\n" +
+                    "You gain one more blessing, ignoring all blessing prerequisites.");
+                bp.m_Icon = BlessingSelection.m_Icon;
+                bp.Ranks = 1;
+                bp.IsClassFeature = true;
+                bp.ReapplyOnLevelUp = true;
+                bp.Mode = SelectionMode.OnlyNew;
+                bp.Groups = new FeatureGroup[] { FeatureGroup.MythicAbility };
+                bp.IgnorePrerequisites = true;
+                bp.AddComponent<PrerequisiteFeature>(c => {
+                    c.m_Feature = DivineTrackerBlessingSelectionFirst.ToReference<BlueprintFeatureReference>();
+                });                
+            });
 
             DivineTrackerArchetype.RemoveFeatures = new LevelEntry[] {
                     Helpers.LevelEntry(4, HuntersBondSelection)
