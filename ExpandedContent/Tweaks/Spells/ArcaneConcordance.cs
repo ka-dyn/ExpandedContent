@@ -93,6 +93,11 @@ namespace ExpandedContent.Tweaks.Spells {
                     c.Metamagic = Metamagic.Extend;
                     c.Once = false;
                 });
+                bp.AddComponent<IncreaseSpellDCMagicSourceOnly>(c => {
+                    c.BonusDC = 1;
+                    c.Descriptor = ModifierDescriptor.Enhancement;
+                    c.m_AffectedSpellSource = IncreaseSpellDCMagicSourceOnly.AffectedSpellSource.Arcane;
+                });
                 bp.m_Icon = ArcaneConcordanceIcon;
                 bp.m_Flags = BlueprintBuff.Flags.IsFromSpell;
                 bp.Stacking = StackingType.Replace;
@@ -193,6 +198,11 @@ namespace ExpandedContent.Tweaks.Spells {
                     c.m_AffectedSpellSource = AutoMetamagicMagicSourceOnly.AffectedSpellSource.Arcane;
                     c.Metamagic = Metamagic.Reach;
                     c.Once = false;
+                });
+                bp.AddComponent<IncreaseSpellDCMagicSourceOnly>(c => {
+                    c.BonusDC = 1;
+                    c.Descriptor = ModifierDescriptor.Enhancement;
+                    c.m_AffectedSpellSource = IncreaseSpellDCMagicSourceOnly.AffectedSpellSource.Arcane;
                 });
                 bp.m_Icon = ArcaneConcordanceIcon;
                 bp.m_Flags = BlueprintBuff.Flags.IsFromSpell;
