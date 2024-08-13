@@ -839,6 +839,29 @@ namespace ExpandedContent.Config {
                     var StargazerSpellbook = Resources.GetModBlueprint<BlueprintFeatureSelection>("StargazerSpellbook");
                     StargazerSpellbook.m_AllFeatures = StargazerSpellbook.m_AllFeatures.AppendToArray(StargazerChannelerOfTheUnknownProgression.ToReference<BlueprintFeatureReference>());
                     #endregion
+                    #region Subdomain stuff
+                    var ArcaneDomainSpellList = Resources.GetModBlueprint<BlueprintSpellList>("ArcaneDomainSpellList");
+                    ArcaneDomainSpellList.SpellsByLevel
+                        .Where(level => level.SpellLevel == 9)
+                        .ForEach(level => level.Spells.Clear());
+                    ArcaneDomainSpellList.SpellsByLevel[9].m_Spells.Add(MagesDisjunctionAbility);
+                    var arcaneDomainProgressions = new BlueprintProgression[] {
+                        Resources.GetModBlueprint<BlueprintProgression>("ArcaneDomainProgression"),
+                        Resources.GetModBlueprint<BlueprintProgression>("ArcaneDomainProgressionSecondary"),
+                        Resources.GetModBlueprint<BlueprintProgression>("ArcaneDomainProgressionSeparatist")
+                    };
+                    foreach(var progression in arcaneDomainProgressions) {
+                        progression.SetDescription("\nYou are a true scholar of the mystic arts, harnessing the fusion of arcane and divine. " +
+                            "\nArcane Beacon: As a standard action you can become a beacon of arcane energy for 2 {g|Encyclopedia:Combat_Round}rounds{/g}. The aura emanates 15 feet from you. " +
+                            "All arcane spells cast within the aura either gain a +1 bonus to their caster level or increase their saving throw DC by +1. " +
+                            "The caster chooses the benefit when she casts the spell. You can use this ability a number of times per day equal to 3 + your Wisdom modifier. " +
+                            "\nDispelling Touch: At 8th level, you can use a {g|SpellsDispelMagicTarget}targeted dispel magic{/g} effect as a melee {g|Encyclopedia:TouchAttack}touch attack{/g}. " +
+                            "You can use this ability once per day at 8th level and one additional time per day for every four levels in the class that gave you access to this domain beyond 8th. " +
+                            "\nDomain {g|Encyclopedia:Spell}Spells{/g}: magic missile, {g|SpellsResistEnergy}resist energy{/g}, {g|SpellsDispelMagic}dispel magic{/g}, arcane concordance, " +
+                            "{g|SpellsSpellResistance}spell resistance{/g}, {g|SpellsGreaterDispelMagic}dispel magic, greater{/g}, {g|SpellsPowerWordBlind}power word blind{/g}, " +
+                            "{g|SpellsProtectionFromSpells}protection from spells{/g}, mages disjunction.");
+                    }
+                    #endregion
                     Main.Log("Finishing TTT-Base Compat Patch.");
                 }
 

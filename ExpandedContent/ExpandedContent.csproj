@@ -413,6 +413,7 @@
     <Compile Include="Tweaks\Domains\FurDomain.cs" />
     <Compile Include="Tweaks\Domains\GrowthDomain.cs" />
     <Compile Include="Tweaks\Domains\FistDomain.cs" />
+    <Compile Include="Tweaks\Domains\ArcaneDomain.cs" />
     <Compile Include="Tweaks\Domains\WindDomain.cs" />
     <Compile Include="Tweaks\Domains\IceDomain.cs" />
     <Compile Include="Tweaks\Domains\CavesDomain.cs" />

@@ -4,6 +4,7 @@ using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Craft;
+using Kingmaker.Designers.EventConditionActionSystem.Actions;
 using Kingmaker.Designers.Mechanics.Buffs;
 using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.ElementsSystem;
@@ -23,6 +24,7 @@ using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Mechanics.Actions;
 using Kingmaker.UnitLogic.Mechanics.Components;
+using Kingmaker.UnitLogic.Mechanics.Conditions;
 using Kingmaker.UnitLogic.Mechanics.Properties;
 using Kingmaker.Utility;
 using Kingmaker.Visual.Animation.Kingmaker.Actions;
@@ -48,29 +50,58 @@ namespace ExpandedContent.Tweaks.Spells {
                     "\nEach new round, the target may make a will save to remove the nauseated condition.");
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.SavingThrowType = SavingThrowType.Will;
-                    c.Actions = Helpers.CreateActionList(                        
+                    c.Actions = Helpers.CreateActionList(
                         new ContextActionConditionalSaved() {
                             Succeed = Helpers.CreateActionList(),
                             Failed = Helpers.CreateActionList(
-                                new ContextActionApplyBuff() {
-                                    m_Buff = MydriaticSpontaneityBuff.ToReference<BlueprintBuffReference>(),
-                                    Permanent = false,
-                                    UseDurationSeconds = false,
-                                    DurationValue = new ContextDurationValue() {
-                                        Rate = DurationRate.Rounds,
-                                        DiceType = DiceType.Zero,
-                                        DiceCountValue = 0,
-                                        BonusValue = new ContextValue() {
-                                            ValueType = ContextValueType.Rank,
-                                            Value = 0,
-                                            ValueRank = AbilityRankType.Default,
-                                            ValueShared = AbilitySharedValue.Damage
+                                new Conditional() {
+                                    ConditionsChecker = new ConditionsChecker() {
+                                        Operation = Operation.Or,
+                                        Conditions = new Condition[] {
+                                            new ContextConditionHasFact() {
+                                                Not = false,
+                                                m_Fact = ConstructType.ToReference<BlueprintUnitFactReference>(),
+                                            },
+                                            new ContextConditionHasFact() {
+                                                Not = false,
+                                                m_Fact = PlantType.ToReference<BlueprintUnitFactReference>(),
+                                            },
+                                            new ContextConditionHasFact() {
+                                                Not = false,
+                                                m_Fact = UndeadType.ToReference<BlueprintUnitFactReference>(),
+                                            }
                                         }
                                     },
-                                    DurationSeconds = 0
+                                    IfTrue = Helpers.CreateActionList(),
+                                    IfFalse = Helpers.CreateActionList(
+                                        new ContextActionConditionalSaved() {
+                                            Succeed = Helpers.CreateActionList(),
+                                            Failed = Helpers.CreateActionList(
+                                                new ContextActionApplyBuff() {
+                                                    m_Buff = MydriaticSpontaneityBuff.ToReference<BlueprintBuffReference>(),
+                                                    Permanent = false,
+                                                    UseDurationSeconds = false,
+                                                    DurationValue = new ContextDurationValue() {
+                                                        Rate = DurationRate.Rounds,
+                                                        DiceType = DiceType.Zero,
+                                                        DiceCountValue = 0,
+                                                        BonusValue = new ContextValue() {
+                                                            ValueType = ContextValueType.Rank,
+                                                            Value = 0,
+                                                            ValueRank = AbilityRankType.Default,
+                                                            ValueShared = AbilitySharedValue.Damage
+                                                        }
+                                                    },
+                                                    DurationSeconds = 0
+                                                }
+                                            )
+                                        }
+                                    )
                                 }
+
                             )
-                        });
+                        }
+                    );
                 });
                 bp.AddComponent<ContextRankConfig>(c => {
                     c.m_Type = AbilityRankType.Default;

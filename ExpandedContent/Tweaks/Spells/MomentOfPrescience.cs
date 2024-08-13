@@ -550,13 +550,6 @@ namespace ExpandedContent.Tweaks.Spells {
 
 
 
-
-
-
-
-
-
-
             //var MomentOfPrescienceScroll = ItemTools.CreateScroll("ScrollOfMomentOfPrescience", Icon_ScrollOfMomentOfPrescience, MomentOfPrescienceAbility, 8, 15);
             //VenderTools.AddScrollToLeveledVenders(MomentOfPrescienceScroll);
             MomentOfPrescienceAbility.AddToSpellList(SpellTools.SpellList.WizardSpellList, 8);
