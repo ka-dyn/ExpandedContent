@@ -3552,7 +3552,30 @@
     "DeepOneCurseFeatureLevel15": "685df251-88b4-491e-a361-b518a64760a3",
     "DeepOneCurseFeatureLevel5": "60bbb206-fc37-44a6-8350-2e91be5433d3",
     "DeepOneCurseNoProgression": "5f870b59-6798-4822-974e-972275fc14f7",
-    "DeepOneCurseProgression": "133e9bbb-5654-485d-ab11-9a6c8bf7a75b"
+    "DeepOneCurseProgression": "133e9bbb-5654-485d-ab11-9a6c8bf7a75b",
+
+    "ArcaneDomainAllowed": "7b039ded-3217-406d-b402-ff777ef8f497",
+    "ArcaneDomainAllowedSeparatist": "b8f436cc-b647-4cd3-8cf1-f8d8e934488d",
+    "ArcaneDomainBaseCLAbility": "88890490-a6b6-4d72-9409-b1b71620eb81",
+    "ArcaneDomainBaseCLAbilitySeparatist": "690ff7b7-1185-4cda-932c-2808fc12dc56",
+    "ArcaneDomainBaseCLArea": "f9f39e91-be1c-4587-befa-d51f5ed8d754",
+    "ArcaneDomainBaseCLEffectBuff": "b01c87b8-fec6-4196-a48d-b5e141d94658",
+    "ArcaneDomainBaseCLSelfBuff": "18100456-ce87-46b1-a1b8-f1dffc84edc5",
+    "ArcaneDomainBaseDCAbility": "64d4ec9a-19b3-469b-b435-e74b50c09051",
+    "ArcaneDomainBaseDCAbilitySeparatist": "3fcd443c-acef-4b80-a607-8c7678a85ef1",
+    "ArcaneDomainBaseDCArea": "d85cf416-7d4f-4784-bfbc-51686a764736",
+    "ArcaneDomainBaseDCEffectBuff": "a44f66bb-7989-46bd-a9ee-d60fc5f027a3",
+    "ArcaneDomainBaseDCSelfBuff": "4e21df43-c801-4825-a365-04b9cde4916e",
+    "ArcaneDomainBaseFeature": "fb0fd11e-a310-477a-8474-da51cffdcc8b",
+    "ArcaneDomainBaseFeatureSeparatist": "9902b0f9-dbd8-4ee0-b28d-3f792bd6dc2f",
+    "ArcaneDomainBaseResource": "0cee2b2f-75a9-455d-be01-74460d43b8e0",
+    "ArcaneDomainBaseResourceSeparatist": "512c55fd-c9ce-4b18-b0be-971cb6281d53",
+    "ArcaneDomainProgression": "c0a52e60-c4c2-4a33-8188-3d3acb6f2d98",
+    "ArcaneDomainProgressionSecondary": "4cbd231c-f77c-4bbb-8da3-36039cc80823",
+    "ArcaneDomainProgressionSeparatist": "5254866a-ba90-4927-81b0-d540ad544078",
+    "ArcaneDomainSpellList": "7c72e27b-1dfd-484d-81f3-7b557ef79e75",
+    "ArcaneDomainSpellListFeature": "38847a08-413b-4982-9e21-ceee4584c50f",
+    "DTImpossibleBlessingSelection": "8304acc5-a282-4b0a-a02d-98d821a44422"
 
 
 

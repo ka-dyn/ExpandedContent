@@ -188,6 +188,7 @@ namespace ExpandedContent.Tweaks {
                 Domains.PlantDomainPatch.PatchPlantDomain();
                 Domains.FistDomain.AddFistDomain();
                 Domains.LoyaltyDomain.AddLoyaltyDomain();
+                Domains.ArcaneDomain.AddArcaneDomain();
                 Domains.BaseDeityPatch.AddBaseDeityPatch();
 
                 Blessings.ArtificeBlessing.AddArtificeBlessing();

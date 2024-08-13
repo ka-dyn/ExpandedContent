@@ -385,6 +385,11 @@
         "Enabled": true,
         "Homebrew": false,
         "Description": "Adds the loyalty subdomain, a subdomain to the law domain."
+      },
+      "Arcane Subdomain": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds the arcane subdomain, a subdomain to the magic domain."
       }
     },
     "IsExpanded": false

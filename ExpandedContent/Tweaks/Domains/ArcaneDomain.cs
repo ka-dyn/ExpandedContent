@@ -150,7 +150,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     c.m_AreaEffect = ArcaneDomainBaseDCArea.ToReference<BlueprintAbilityAreaEffectReference>();
                 });
                 //bp.m_Icon = ArcaneBeaconIcon;
-                bp.m_Flags = BlueprintBuff.Flags.RemoveOnRest;
+                bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
                 bp.Stacking = StackingType.Replace;
             });
             var ArcaneDomainBaseCLSelfBuff = Helpers.CreateBuff("ArcaneDomainBaseCLSelfBuff", bp => {
@@ -160,7 +160,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     c.m_AreaEffect = ArcaneDomainBaseCLArea.ToReference<BlueprintAbilityAreaEffectReference>();
                 });
                 //bp.m_Icon = ArcaneBeaconIcon;
-                bp.m_Flags = BlueprintBuff.Flags.RemoveOnRest;
+                bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
                 bp.Stacking = StackingType.Replace;
             });
 

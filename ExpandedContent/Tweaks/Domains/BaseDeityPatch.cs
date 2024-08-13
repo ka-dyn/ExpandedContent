@@ -36,6 +36,7 @@ namespace ExpandedContent.Tweaks.Domains {
             AbadarFeature.SetAllowedDomains(
                     DeityTools.DomainAllowed.DefenseDomainAllowed,
                     DeityTools.SeparatistDomainAllowed.AgathionDomainAllowedSeparatist,//Good
+                    DeityTools.SeparatistDomainAllowed.ArcaneDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.ArchonDomainGoodAllowedSeparatist,//Good
                     DeityTools.SeparatistDomainAllowed.ArchonDomainLawAllowedSeparatist,//Lawful
                     DeityTools.SeparatistDomainAllowed.BloodDomainAllowedSeparatist,
@@ -65,6 +66,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     DeityTools.SeparatistDomainAllowed.WindDomainAllowedSeparatist
                 );
             AsmodeusFeature.SetAllowedDomains(
+                    DeityTools.DomainAllowed.ArcaneDomainAllowed,
                     DeityTools.SeparatistDomainAllowed.ArchonDomainLawAllowedSeparatist,//Lawful
                     DeityTools.SeparatistDomainAllowed.BloodDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.CavesDomainAllowedSeparatist,
@@ -98,6 +100,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     DeityTools.DomainAllowed.LustDomainAllowed,
                     DeityTools.DomainAllowed.ResolveDomainAllowed,
                     DeityTools.SeparatistDomainAllowed.AgathionDomainAllowedSeparatist,//Good
+                    DeityTools.SeparatistDomainAllowed.ArcaneDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.ArchonDomainGoodAllowedSeparatist,//Good
                     DeityTools.SeparatistDomainAllowed.BloodDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.CavesDomainAllowedSeparatist,
@@ -128,6 +131,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     DeityTools.DomainAllowed.LustDomainAllowed,
                     DeityTools.DomainAllowed.ThieveryDomainAllowed,
                     DeityTools.SeparatistDomainAllowed.AgathionDomainAllowedSeparatist,//Good
+                    DeityTools.SeparatistDomainAllowed.ArcaneDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.ArchonDomainGoodAllowedSeparatist,//Good
                     DeityTools.SeparatistDomainAllowed.BloodDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.CavesDomainAllowedSeparatist,
@@ -158,6 +162,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     DeityTools.DomainAllowed.CurseDomainAllowed,
                     DeityTools.DomainAllowed.RevolutionDomainAllowed,
                     DeityTools.SeparatistDomainAllowed.AgathionDomainAllowedSeparatist,//Good
+                    DeityTools.SeparatistDomainAllowed.ArcaneDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.ArchonDomainGoodAllowedSeparatist,//Good
                     DeityTools.SeparatistDomainAllowed.BloodDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.CavesDomainAllowedSeparatist,
@@ -190,6 +195,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     DeityTools.DomainAllowed.FurDomainAllowed,
                     DeityTools.DomainAllowed.GrowthDomainAllowed,
                     DeityTools.SeparatistDomainAllowed.AgathionDomainAllowedSeparatist,//Good
+                    DeityTools.SeparatistDomainAllowed.ArcaneDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.BloodDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.CavesDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.CurseDomainAllowedSeparatist,
@@ -221,6 +227,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     DeityTools.DomainAllowed.RageDomainAllowed,
                     DeityTools.DomainAllowed.ResolveDomainAllowed,
                     DeityTools.SeparatistDomainAllowed.AgathionDomainAllowedSeparatist,//Good
+                    DeityTools.SeparatistDomainAllowed.ArcaneDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.ArchonDomainGoodAllowedSeparatist,//Good
                     DeityTools.SeparatistDomainAllowed.CavesDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.CurseDomainAllowedSeparatist,
@@ -249,6 +256,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     DeityTools.DomainAllowed.GrowthDomainAllowed,
                     DeityTools.DomainAllowed.WindDomainAllowed,
                     DeityTools.SeparatistDomainAllowed.AgathionDomainAllowedSeparatist,//Good
+                    DeityTools.SeparatistDomainAllowed.ArcaneDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.ArchonDomainGoodAllowedSeparatist,//Good
                     DeityTools.SeparatistDomainAllowed.ArchonDomainLawAllowedSeparatist,//Lawful
                     DeityTools.SeparatistDomainAllowed.BloodDomainAllowedSeparatist,
@@ -282,6 +290,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     DeityTools.DomainAllowed.DemonDomainChaosAllowed,
                     DeityTools.DomainAllowed.DemonDomainEvilAllowed,
                     DeityTools.DomainAllowed.RageDomainAllowed,
+                    DeityTools.SeparatistDomainAllowed.ArcaneDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.BloodDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.CavesDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.CurseDomainAllowedSeparatist,
@@ -314,6 +323,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     DeityTools.DomainAllowed.HeroismDomainAllowed,
                     DeityTools.DomainAllowed.RevelationDomainAllowed,
                     DeityTools.SeparatistDomainAllowed.AgathionDomainAllowedSeparatist,//Good
+                    DeityTools.SeparatistDomainAllowed.ArcaneDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.BloodDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.CavesDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.CurseDomainAllowedSeparatist,
@@ -343,6 +353,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     DeityTools.DomainAllowed.RestorationDomainAllowed,
                     DeityTools.DomainAllowed.ResolveDomainAllowed,
                     DeityTools.SeparatistDomainAllowed.AgathionDomainAllowedSeparatist,//Good
+                    DeityTools.SeparatistDomainAllowed.ArcaneDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.ArchonDomainGoodAllowedSeparatist,//Good
                     DeityTools.SeparatistDomainAllowed.ArchonDomainLawAllowedSeparatist,//Lawful
                     DeityTools.SeparatistDomainAllowed.BloodDomainAllowedSeparatist,
@@ -374,6 +385,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     DeityTools.DomainAllowed.DemonDomainChaosAllowed,
                     DeityTools.DomainAllowed.FerocityDomainAllowed,
                     DeityTools.DomainAllowed.ThieveryDomainAllowed,
+                    DeityTools.SeparatistDomainAllowed.ArcaneDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.BloodDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.CavesDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.CurseDomainAllowedSeparatist,
@@ -399,6 +411,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     DeityTools.SeparatistDomainAllowed.WindDomainAllowedSeparatist
                 );
             NethysFeature.SetAllowedDomains(
+                    DeityTools.DomainAllowed.ArcaneDomainAllowed,
                     DeityTools.DomainAllowed.DefenseDomainAllowed,
                     DeityTools.SeparatistDomainAllowed.AgathionDomainAllowedSeparatist,//Good
                     DeityTools.SeparatistDomainAllowed.ArchonDomainGoodAllowedSeparatist,//Good
@@ -433,6 +446,7 @@ namespace ExpandedContent.Tweaks.Domains {
                 );
             NorgorberFeature.SetAllowedDomains(
                     DeityTools.DomainAllowed.ThieveryDomainAllowed,
+                    DeityTools.SeparatistDomainAllowed.ArcaneDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.ArchonDomainLawAllowedSeparatist,//Lawful
                     DeityTools.SeparatistDomainAllowed.BloodDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.CavesDomainAllowedSeparatist,
@@ -468,6 +482,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     DeityTools.DomainAllowed.PsychopompDomainDeathAllowed,
                     DeityTools.DomainAllowed.PsychopompDomainReposeAllowed,
                     DeityTools.SeparatistDomainAllowed.AgathionDomainAllowedSeparatist,//Good
+                    DeityTools.SeparatistDomainAllowed.ArcaneDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.ArchonDomainGoodAllowedSeparatist,//Good
                     DeityTools.SeparatistDomainAllowed.ArchonDomainLawAllowedSeparatist,//Lawful
                     DeityTools.SeparatistDomainAllowed.BloodDomainAllowedSeparatist,
@@ -503,6 +518,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     DeityTools.DomainAllowed.DemonDomainEvilAllowed,
                     DeityTools.DomainAllowed.RageDomainAllowed,
                     DeityTools.DomainAllowed.StormDomainAllowed,
+                    DeityTools.SeparatistDomainAllowed.ArcaneDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.CavesDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.CurseDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.DefenseDomainAllowedSeparatist,
@@ -532,6 +548,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     DeityTools.DomainAllowed.RestorationDomainAllowed,
                     DeityTools.DomainAllowed.RevelationDomainAllowed,
                     DeityTools.SeparatistDomainAllowed.ArchonDomainGoodAllowedSeparatist,//Good
+                    DeityTools.SeparatistDomainAllowed.ArcaneDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.ArchonDomainLawAllowedSeparatist,//Lawful
                     DeityTools.SeparatistDomainAllowed.BloodDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.CavesDomainAllowedSeparatist,
@@ -564,6 +581,7 @@ namespace ExpandedContent.Tweaks.Domains {
             ShelynFeature.SetAllowedDomains(
                     DeityTools.DomainAllowed.AgathionDomainAllowed,
                     DeityTools.DomainAllowed.DefenseDomainAllowed,
+                    DeityTools.SeparatistDomainAllowed.ArcaneDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.ArchonDomainGoodAllowedSeparatist,//Good
                     DeityTools.SeparatistDomainAllowed.ArchonDomainLawAllowedSeparatist,//Lawful
                     DeityTools.SeparatistDomainAllowed.BloodDomainAllowedSeparatist,
@@ -599,6 +617,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     DeityTools.DomainAllowed.CavesDomainAllowed,
                     DeityTools.DomainAllowed.DefenseDomainAllowed,
                     DeityTools.SeparatistDomainAllowed.AgathionDomainAllowedSeparatist,//Good
+                    DeityTools.SeparatistDomainAllowed.ArcaneDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.BloodDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.CurseDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.DragonDomainAllowedSeparatist,
@@ -628,6 +647,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     DeityTools.DomainAllowed.BloodDomainAllowed,
                     DeityTools.DomainAllowed.FerocityDomainAllowed,
                     DeityTools.DomainAllowed.OldUndeadDomainAllowed,
+                    DeityTools.SeparatistDomainAllowed.ArcaneDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.ArchonDomainLawAllowedSeparatist,//Lawful
                     DeityTools.SeparatistDomainAllowed.CavesDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.CurseDomainAllowedSeparatist,
@@ -659,6 +679,7 @@ namespace ExpandedContent.Tweaks.Domains {
             
             ZonKuthonFeature.SetAllowedDomains(
                     DeityTools.DomainAllowed.OldUndeadDomainAllowed,
+                    DeityTools.SeparatistDomainAllowed.ArcaneDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.ArchonDomainLawAllowedSeparatist,//Lawful
                     DeityTools.SeparatistDomainAllowed.BloodDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.CavesDomainAllowedSeparatist,

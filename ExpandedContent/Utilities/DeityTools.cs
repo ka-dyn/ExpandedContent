@@ -56,6 +56,7 @@ namespace ExpandedContent.Utilities {
             public static BlueprintFeature WeatherDomainAllowed => Resources.GetBlueprint<BlueprintFeature>("9dfdfd4904e98fa48b80c8f63ec2cf11");
             //Modded domains
             public static BlueprintFeature AgathionDomainAllowed => Resources.GetModBlueprint<BlueprintFeature>("AgathionDomainAllowed");
+            public static BlueprintFeature ArcaneDomainAllowed => Resources.GetModBlueprint<BlueprintFeature>("ArcaneDomainAllowed");
             public static BlueprintFeature ArchonDomainGoodAllowed => Resources.GetModBlueprint<BlueprintFeature>("ArchonDomainGoodAllowed");
             public static BlueprintFeature ArchonDomainLawAllowed => Resources.GetModBlueprint<BlueprintFeature>("ArchonDomainLawAllowed");
             public static BlueprintFeature BloodDomainAllowed => Resources.GetModBlueprint<BlueprintFeature>("BloodDomainAllowed");
@@ -128,6 +129,7 @@ namespace ExpandedContent.Utilities {
             public static BlueprintFeature WeatherDomainAllowedSeparatist => Resources.GetBlueprint<BlueprintFeature>("8bc3629d677f48798235b94cc9ba0f36");
             //Modded domains
             public static BlueprintFeature AgathionDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("AgathionDomainAllowedSeparatist");
+            public static BlueprintFeature ArcaneDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("ArcaneDomainAllowedSeparatist");
             public static BlueprintFeature ArchonDomainGoodAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("ArchonDomainGoodAllowedSeparatist");
             public static BlueprintFeature ArchonDomainLawAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("ArchonDomainLawAllowedSeparatist");
             public static BlueprintFeature BloodDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("BloodDomainAllowedSeparatist");

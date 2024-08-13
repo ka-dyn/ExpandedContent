@@ -42,7 +42,7 @@ namespace ExpandedContent.Tweaks.Spells {
             var MydriaticSpontaneityBuff = Resources.GetModBlueprint<BlueprintBuff>("MydriaticSpontaneityBuff");
 
             var MydriaticSpontaneityMassAbility = Helpers.CreateBlueprint<BlueprintAbility>("MydriaticSpontaneityMassAbility", bp => {
-                bp.SetName("Mass Mydriatic Spontaneity");
+                bp.SetName("Mydriatic Spontaneity, Mass");
                 bp.SetDescription("This spell functions as mydriatic spontaneity, except it can affect multiple creatures." +
                     "\nYou overstimulate the target with alternating flashes of light and shadow within its eyes, causing its pupils to rapidly dilate and contract. " +
                     "While under the effects of this spell, the target is racked by splitting headaches and unable to see clearly, becoming nauseated for the spell’s duration. " +
