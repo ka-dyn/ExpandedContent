@@ -49,31 +49,35 @@ namespace ExpandedContent.Tweaks.Spells {
                     "Each round, the target’s pupils randomly become dilated or contracted for 1 round, causing them to become either blinded or dazzled until next round." +
                     "\nEach new round, the target may make a will save to remove the nauseated condition.");
                 bp.AddComponent<AbilityEffectRunAction>(c => {
-                    c.SavingThrowType = SavingThrowType.Will;
+                    c.SavingThrowType = SavingThrowType.Unknown;
                     c.Actions = Helpers.CreateActionList(
-                        new ContextActionConditionalSaved() {
-                            Succeed = Helpers.CreateActionList(),
-                            Failed = Helpers.CreateActionList(
-                                new Conditional() {
-                                    ConditionsChecker = new ConditionsChecker() {
-                                        Operation = Operation.Or,
-                                        Conditions = new Condition[] {
-                                            new ContextConditionHasFact() {
-                                                Not = false,
-                                                m_Fact = ConstructType.ToReference<BlueprintUnitFactReference>(),
-                                            },
-                                            new ContextConditionHasFact() {
-                                                Not = false,
-                                                m_Fact = PlantType.ToReference<BlueprintUnitFactReference>(),
-                                            },
-                                            new ContextConditionHasFact() {
-                                                Not = false,
-                                                m_Fact = UndeadType.ToReference<BlueprintUnitFactReference>(),
-                                            }
-                                        }
+                        new Conditional() {
+                            ConditionsChecker = new ConditionsChecker() {
+                                Operation = Operation.Or,
+                                Conditions = new Condition[] {
+                                    new ContextConditionHasFact() {
+                                        Not = false,
+                                        m_Fact = ConstructType.ToReference<BlueprintUnitFactReference>(),
                                     },
-                                    IfTrue = Helpers.CreateActionList(),
-                                    IfFalse = Helpers.CreateActionList(
+                                    new ContextConditionHasFact() {
+                                        Not = false,
+                                        m_Fact = PlantType.ToReference<BlueprintUnitFactReference>(),
+                                    },
+                                    new ContextConditionHasFact() {
+                                        Not = false,
+                                        m_Fact = UndeadType.ToReference<BlueprintUnitFactReference>(),
+                                    }
+                                }
+                            },
+                            IfTrue = Helpers.CreateActionList(),
+                            IfFalse = Helpers.CreateActionList(
+                                new ContextActionSavingThrow() {
+                                    Type = SavingThrowType.Will,
+                                    FromBuff = false,
+                                    m_ConditionalDCIncrease = new ContextActionSavingThrow.ConditionalDCIncrease[0],
+                                    HasCustomDC = false,
+                                    CustomDC = new ContextValue(),
+                                    Actions = Helpers.CreateActionList(
                                         new ContextActionConditionalSaved() {
                                             Succeed = Helpers.CreateActionList(),
                                             Failed = Helpers.CreateActionList(
@@ -95,10 +99,10 @@ namespace ExpandedContent.Tweaks.Spells {
                                                     DurationSeconds = 0
                                                 }
                                             )
-                                        }
+                                         }
                                     )
                                 }
-
+                                
                             )
                         }
                     );
@@ -120,14 +124,14 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.AddComponent<SpellDescriptorComponent>(c => {
                     c.Descriptor = SpellDescriptor.SightBased;
                 });
-                bp.AddComponent<AbilityTargetHasFact>(c => {
-                    c.m_CheckedFacts = new BlueprintUnitFactReference[] {
-                        ConstructType.ToReference<BlueprintUnitFactReference>(),
-                        PlantType.ToReference<BlueprintUnitFactReference>(),
-                        UndeadType.ToReference<BlueprintUnitFactReference>()
-                    };
-                    c.Inverted = true;
-                });
+                //bp.AddComponent<AbilityTargetHasFact>(c => {
+                //    c.m_CheckedFacts = new BlueprintUnitFactReference[] {
+                //        ConstructType.ToReference<BlueprintUnitFactReference>(),
+                //        PlantType.ToReference<BlueprintUnitFactReference>(),
+                //        UndeadType.ToReference<BlueprintUnitFactReference>()
+                //    };
+                //    c.Inverted = true;
+                //});
                 bp.AddComponent<AbilityTargetsAround>(c => {
                     c.m_Radius = 15.Feet();
                     c.m_TargetType = TargetType.Enemy;

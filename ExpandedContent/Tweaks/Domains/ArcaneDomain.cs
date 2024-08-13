@@ -66,7 +66,7 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.Stacking = StackingType.Replace;
             });
             var ArcaneDomainBaseCLSelfBuff = Helpers.CreateBuff("ArcaneDomainBaseCLSelfBuff", bp => {
-                bp.SetName("Arcane Beacon - DC");
+                bp.SetName("Arcane Beacon - Caster Level");
                 bp.SetDescription("An aura emanates 15 feet from you. All arcane spells cast within the aura gain a +1 bonus to their caster level.");
                 bp.AddComponent<AddAreaEffect>(c => {
                     c.m_AreaEffect = ArcaneDomainBaseCLArea.ToReference<BlueprintAbilityAreaEffectReference>();
@@ -90,7 +90,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     c.SavingThrowType = SavingThrowType.Unknown;
                     c.Actions = Helpers.CreateActionList(
                         new ContextActionApplyBuff() {
-                            m_Buff = ArcaneDomainBaseDCBuff.ToReference<BlueprintBuffReference>(),
+                            m_Buff = ArcaneDomainBaseDCSelfBuff.ToReference<BlueprintBuffReference>(),
                             UseDurationSeconds = false,
                             DurationValue = new ContextDurationValue() {
                                 Rate = DurationRate.Rounds,
@@ -130,7 +130,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     c.SavingThrowType = SavingThrowType.Unknown;
                     c.Actions = Helpers.CreateActionList(
                         new ContextActionApplyBuff() {
-                            m_Buff = ArcaneDomainBaseCLBuff.ToReference<BlueprintBuffReference>(),
+                            m_Buff = ArcaneDomainBaseCLSelfBuff.ToReference<BlueprintBuffReference>(),
                             UseDurationSeconds = false,
                             DurationValue = new ContextDurationValue() {
                                 Rate = DurationRate.Rounds,
@@ -637,8 +637,10 @@ namespace ExpandedContent.Tweaks.Domains {
                 c.m_Feature = ArcaneDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
             });
             var DomainMastery = Resources.GetBlueprint<BlueprintFeature>("2de64f6a1f2baee4f9b7e52e3f046ec5").GetComponent<AutoMetamagic>();
-            DomainMastery.Abilities.Add(ArcaneDomainBaseAbility.ToReference<BlueprintAbilityReference>());
-            DomainMastery.Abilities.Add(ArcaneDomainBaseAbilitySeparatist.ToReference<BlueprintAbilityReference>());
+            DomainMastery.Abilities.Add(ArcaneDomainBaseDCAbility.ToReference<BlueprintAbilityReference>());
+            DomainMastery.Abilities.Add(ArcaneDomainBaseCLAbility.ToReference<BlueprintAbilityReference>());
+            DomainMastery.Abilities.Add(ArcaneDomainBaseDCAbilitySeparatist.ToReference<BlueprintAbilityReference>());
+            DomainMastery.Abilities.Add(ArcaneDomainBaseCLAbilitySeparatist.ToReference<BlueprintAbilityReference>());
             if (ModSettings.AddedContent.Domains.IsDisabled("Arcane Subdomain")) { return; }
             DomainTools.RegisterDomain(ArcaneDomainProgression);
             DomainTools.RegisterSecondaryDomain(ArcaneDomainProgressionSecondary);
