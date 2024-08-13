@@ -21,6 +21,10 @@ using Kingmaker.RuleSystem;
 using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.Buffs.Components;
+using Kingmaker.ResourceLinks;
+using UnityEngine;
+using ExpandedContent.Tweaks.Components;
+using Kingmaker.Enums;
 
 namespace ExpandedContent.Tweaks.Domains {
     internal class ArcaneDomain {
@@ -42,6 +46,7 @@ namespace ExpandedContent.Tweaks.Domains {
             var MagicDomainGreaterFeatureSeparatist = Resources.GetBlueprint<BlueprintFeature>("724216a6124d486fa55d7476db26bf1a");
             var AirBlessingFeature = Resources.GetBlueprint<BlueprintFeature>("e1ff99dc3aeaa064e8eecde51c1c4773");
             var Kinetic_AirBlastLine00 = Resources.GetBlueprint<BlueprintProjectile>("03689858955c6bf409be06f35f09946a");
+            var ArcaneBeaconIcon = AssetLoader.LoadInternal("Skills", "Icon_ArcaneBeacon.jpg");
 
 
             var ArcaneDomainBaseResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("ArcaneDomainBaseResource", bp => {
@@ -55,13 +60,96 @@ namespace ExpandedContent.Tweaks.Domains {
             });
 
 
+            var ArcaneDomainBaseDCEffectBuff = Helpers.CreateBuff("ArcaneDomainBaseDCEffectBuff", bp => {
+                bp.SetName("Arcane Beacon - DC");
+                bp.SetDescription("You are affected by a arcane aura. All arcane spells you cast increase their saving throw DC by 1.");
+                bp.AddComponent<IncreaseSpellDCMagicSourceOnly>(c => {
+                    c.BonusDC = 1;
+                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+                    c.m_AffectedSpellSource = IncreaseSpellDCMagicSourceOnly.AffectedSpellSource.Arcane;
+                });
+                bp.m_Icon = ArcaneBeaconIcon;
+                bp.m_Flags = BlueprintBuff.Flags.IsFromSpell;
+                bp.Stacking = StackingType.Replace;
+            });
+            var ArcaneDomainBaseCLEffectBuff = Helpers.CreateBuff("ArcaneDomainBaseCLEffectBuff", bp => {
+                bp.SetName("Arcane Beacon - Caster Level");
+                bp.SetDescription("You are affected by a arcane aura. All arcane spells you cast increase their caster level by 1.");
+                bp.AddComponent<IncreaseSpellCasterLevelMagicSourceOnly>(c => {
+                    c.BonusDC = 1;
+                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+                    c.m_AffectedSpellSource = IncreaseSpellCasterLevelMagicSourceOnly.AffectedSpellSource.Arcane;
+                });
+                bp.m_Icon = ArcaneBeaconIcon;
+                bp.m_Flags = BlueprintBuff.Flags.IsFromSpell;
+                bp.Stacking = StackingType.Replace;
+            });
+
+
+
+            var ArcaneDomainBaseDCArea = Helpers.CreateBlueprint<BlueprintAbilityAreaEffect>("ArcaneDomainBaseDCArea", bp => {
+                bp.m_TargetType = BlueprintAbilityAreaEffect.TargetType.Any;
+                bp.SpellResistance = false;
+                bp.AggroEnemies = false;
+                bp.AffectEnemies = false;
+                bp.Shape = AreaEffectShape.Cylinder;
+                bp.Size = 15.Feet();
+                bp.Fx = new PrefabLink() { AssetId = "6b75812d8c3b0d34f9bc204d6babc2a1" }; //Enchantment00_Alignment_Aoe_30Feet
+                bp.AddComponent(AuraUtils.CreateUnconditionalAuraEffect(ArcaneDomainBaseDCEffectBuff.ToReference<BlueprintBuffReference>()));
+            });
+            ArcaneDomainBaseDCArea.Fx = ArcaneDomainBaseDCArea.Fx.CreateDynamicProxy(pfl => {
+                //Main.Log($"Editing: {pfl}");
+                pfl.name = "ArcaneConcordanceExtend_10feetAoE";
+                //Main.Log($"{FxDebug.DumpGameObject(pfl.gameObject)}");
+                pfl.transform.localScale = new(0.52f, 1.0f, 0.52f);
+                Object.DestroyImmediate(pfl.transform.Find("Ground (1)/StartWave/Waves").gameObject);
+                Object.DestroyImmediate(pfl.transform.Find("Ground (1)/StartWave/BigWave_mid").gameObject);
+                Object.DestroyImmediate(pfl.transform.Find("Ground (1)/StartWave/Bottom_wave").gameObject);
+                var sparks = pfl.transform.Find("Ground (1)/sparks (2)").GetComponent<ParticleSystem>();
+                sparks.startColor = new Color(0.14f, 0.25f, 0.78f, 0.67f);
+                var Border_particleEnergy = pfl.transform.Find("Ground (1)/Border_particleEnergy").GetComponent<ParticleSystem>();
+                Border_particleEnergy.startColor = new Color(0f, 0.3578f, 1f, 1f);
+                var Bottom_dark = pfl.transform.Find("Ground (1)/StartWave/Bottom_dark").GetComponent<ParticleSystem>();
+                Bottom_dark.startColor = new Color(0.14f, 0.25f, 0.78f, 0.67f);
+            });
+
+            var ArcaneDomainBaseCLArea = Helpers.CreateBlueprint<BlueprintAbilityAreaEffect>("ArcaneDomainBaseCLArea", bp => {
+                bp.m_TargetType = BlueprintAbilityAreaEffect.TargetType.Any;
+                bp.SpellResistance = false;
+                bp.AggroEnemies = false;
+                bp.AffectEnemies = false;
+                bp.Shape = AreaEffectShape.Cylinder;
+                bp.Size = 15.Feet();
+                bp.Fx = new PrefabLink() { AssetId = "6b75812d8c3b0d34f9bc204d6babc2a1" }; //Enchantment00_Alignment_Aoe_30Feet
+                bp.AddComponent(AuraUtils.CreateUnconditionalAuraEffect(ArcaneDomainBaseCLEffectBuff.ToReference<BlueprintBuffReference>()));
+            });
+            ArcaneDomainBaseCLArea.Fx = ArcaneDomainBaseCLArea.Fx.CreateDynamicProxy(pfl => {
+                //Main.Log($"Editing: {pfl}");
+                pfl.name = "ArcaneConcordanceReach_10feetAoE";
+                //Main.Log($"{FxDebug.DumpGameObject(pfl.gameObject)}");
+                pfl.transform.localScale = new(0.52f, 1.0f, 0.52f);
+                Object.DestroyImmediate(pfl.transform.Find("Ground (1)/StartWave/Waves").gameObject);
+                Object.DestroyImmediate(pfl.transform.Find("Ground (1)/StartWave/BigWave_mid").gameObject);
+                Object.DestroyImmediate(pfl.transform.Find("Ground (1)/StartWave/Bottom_wave").gameObject);
+                var sparks = pfl.transform.Find("Ground (1)/sparks (2)").GetComponent<ParticleSystem>();
+                sparks.startColor = new Color(0.992f, 0.884f, 0.066f, 1f);
+                var Border = pfl.transform.Find("Ground (1)/Border").GetComponent<ParticleSystem>();
+                Border.startColor = new Color(0f, 0.25f, 1f, 1f);
+                var BorderWaves = pfl.transform.Find("Ground (1)/BorderWaves").GetComponent<ParticleSystem>();
+                BorderWaves.startColor = new Color(0f, 0.25f, 1f, 1f);
+                var EnergyWave_Start = pfl.transform.Find("Ground (1)/StartWave/EnergyWave_Start").GetComponent<ParticleSystem>();
+                EnergyWave_Start.startColor = new Color(0f, 0.16f, 1f, 1f);
+                var BigWave_trail = pfl.transform.Find("Ground (1)/StartWave/BigWave_trail").GetComponent<ParticleSystem>();
+                BigWave_trail.startColor = new Color(0f, 0.253f, 1f, 1f);
+            });
+
             var ArcaneDomainBaseDCSelfBuff = Helpers.CreateBuff("ArcaneDomainBaseDCSelfBuff", bp => {
                 bp.SetName("Arcane Beacon - DC");
                 bp.SetDescription("An aura emanates 15 feet from you. All arcane spells cast within the aura increase their saving throw DC by +1.");
                 bp.AddComponent<AddAreaEffect>(c => {
                     c.m_AreaEffect = ArcaneDomainBaseDCArea.ToReference<BlueprintAbilityAreaEffectReference>();
                 });
-                bp.m_Icon = ArcaneConcordanceIcon;
+                //bp.m_Icon = ArcaneBeaconIcon;
                 bp.m_Flags = BlueprintBuff.Flags.RemoveOnRest;
                 bp.Stacking = StackingType.Replace;
             });
@@ -71,11 +159,10 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.AddComponent<AddAreaEffect>(c => {
                     c.m_AreaEffect = ArcaneDomainBaseCLArea.ToReference<BlueprintAbilityAreaEffectReference>();
                 });
-                bp.m_Icon = ArcaneConcordanceIcon;
+                //bp.m_Icon = ArcaneBeaconIcon;
                 bp.m_Flags = BlueprintBuff.Flags.RemoveOnRest;
                 bp.Stacking = StackingType.Replace;
             });
-
 
             var ArcaneDomainBaseDCAbility = Helpers.CreateBlueprint<BlueprintAbility>("ArcaneDomainBaseDCAbility", bp => {
                 bp.SetName("Arcane Beacon - DC");
@@ -102,7 +189,7 @@ namespace ExpandedContent.Tweaks.Domains {
                             DurationSeconds = 0
                         });
                 });
-                bp.m_Icon = TorrentAirBlastAbility.m_Icon;
+                bp.m_Icon = ArcaneBeaconIcon;
                 bp.Type = AbilityType.Supernatural;
                 bp.Range = AbilityRange.Personal;
                 bp.CanTargetPoint = false;
@@ -142,7 +229,7 @@ namespace ExpandedContent.Tweaks.Domains {
                             DurationSeconds = 0
                         });
                 });
-                bp.m_Icon = TorrentAirBlastAbility.m_Icon;
+                bp.m_Icon = ArcaneBeaconIcon;
                 bp.Type = AbilityType.Supernatural;
                 bp.Range = AbilityRange.Personal;
                 bp.CanTargetPoint = false;
@@ -157,7 +244,6 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
-
 
             //Spelllist
             var MagicMissileSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("4ac47ddb9fa1eaf43a1b6809980cfbd2");
@@ -243,15 +329,14 @@ namespace ExpandedContent.Tweaks.Domains {
             
             var ArcaneDomainBaseFeature = Helpers.CreateBlueprint<BlueprintFeature>("ArcaneDomainBaseFeature", bp => {
                 bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[] { ArcaneDomainBaseAbility.ToReference<BlueprintUnitFactReference>() };
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        ArcaneDomainBaseDCAbility.ToReference<BlueprintUnitFactReference>(),
+                        ArcaneDomainBaseCLAbility.ToReference<BlueprintUnitFactReference>()
+                    };
                 });
                 bp.AddComponent<AddAbilityResources>(c => { 
                     c.m_Resource = ArcaneDomainBaseResource.ToReference<BlueprintAbilityResourceReference>();
                     c.RestoreAmount = true;
-                });
-                bp.AddComponent<ReplaceAbilitiesStat>(c => {
-                    c.m_Ability = new BlueprintAbilityReference[] { ArcaneDomainBaseAbility.ToReference<BlueprintAbilityReference>() };
-                    c.Stat = StatType.Wisdom;
                 });
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>();
@@ -439,9 +524,6 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.IsDomainAbility = true;
             });
 
-
-
-
             var ArcaneDomainBaseDCAbilitySeparatist = Helpers.CreateBlueprint<BlueprintAbility>("ArcaneDomainBaseDCAbilitySeparatist", bp => {
                 bp.SetName("Arcane Beacon - DC");
                 bp.SetDescription("As a standard action you can become a beacon of arcane energy for 2 {g|Encyclopedia:Combat_Round}rounds{/g}. " +
@@ -467,7 +549,7 @@ namespace ExpandedContent.Tweaks.Domains {
                             DurationSeconds = 0
                         });
                 });
-                bp.m_Icon = TorrentAirBlastAbility.m_Icon;
+                bp.m_Icon = ArcaneBeaconIcon;
                 bp.Type = AbilityType.Supernatural;
                 bp.Range = AbilityRange.Personal;
                 bp.CanTargetPoint = false;
@@ -507,7 +589,7 @@ namespace ExpandedContent.Tweaks.Domains {
                             DurationSeconds = 0
                         });
                 });
-                bp.m_Icon = TorrentAirBlastAbility.m_Icon;
+                bp.m_Icon = ArcaneBeaconIcon;
                 bp.Type = AbilityType.Supernatural;
                 bp.Range = AbilityRange.Personal;
                 bp.CanTargetPoint = false;
@@ -523,18 +605,16 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
 
-
             var ArcaneDomainBaseFeatureSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("ArcaneDomainBaseFeatureSeparatist", bp => {
                 bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[] { ArcaneDomainBaseAbilitySeparatist.ToReference<BlueprintUnitFactReference>() };
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        ArcaneDomainBaseDCAbilitySeparatist.ToReference<BlueprintUnitFactReference>(),
+                        ArcaneDomainBaseCLAbilitySeparatist.ToReference<BlueprintUnitFactReference>()
+                    };
                 });
                 bp.AddComponent<AddAbilityResources>(c => {
                     c.m_Resource = ArcaneDomainBaseResourceSeparatist.ToReference<BlueprintAbilityResourceReference>();
                     c.RestoreAmount = true;
-                });
-                bp.AddComponent<ReplaceAbilitiesStat>(c => {
-                    c.m_Ability = new BlueprintAbilityReference[] { ArcaneDomainBaseAbilitySeparatist.ToReference<BlueprintAbilityReference>() };
-                    c.Stat = StatType.Wisdom;
                 });
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>();

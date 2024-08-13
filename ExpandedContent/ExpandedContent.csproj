@@ -250,6 +250,7 @@
     <Compile Include="Tweaks\Components\CheckWeaponEnchant.cs" />
     <Compile Include="Tweaks\Components\AbilityCasterOffHandWeaponCheck.cs" />
     <Compile Include="Tweaks\Components\IncomingSpellResistanceSkip.cs" />
+    <Compile Include="Tweaks\Components\IncreaseSpellCasterLevelMagicSourceOnly.cs" />
     <Compile Include="Tweaks\Components\IncreaseSpellDCMagicSourceOnly.cs" />
     <Compile Include="Tweaks\Components\ManeuverContextBonus.cs" />
     <Compile Include="Tweaks\Components\MaxCastingAttributeWithArchetypeGetter.cs" />
@@ -1605,6 +1606,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_AOSR.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_ArcaneBeacon.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_ArcaneConcordance.jpg">
