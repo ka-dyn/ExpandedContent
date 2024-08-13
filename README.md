@@ -124,6 +124,7 @@ New Domains / Subdomains
 
 - Subdomains: 
   - Agathion
+  - Arcane
   - Archon
   - Blood
   - Caves
