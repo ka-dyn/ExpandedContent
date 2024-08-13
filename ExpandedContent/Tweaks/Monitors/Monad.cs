@@ -83,8 +83,13 @@ namespace ExpandedContent.Tweaks.Monitors {
                     };
                 });
                 bp.SetAllowedDomains(
+                    DeityTools.DomainAllowed.ArtificeDomainAllowed,
+                    DeityTools.DomainAllowed.DarknessDomainAllowed,
+                    DeityTools.DomainAllowed.TravelDomainAllowed,
+                    DeityTools.DomainAllowed.KnowledgeDomainAllowed,
                     DeityTools.SeparatistDomainAllowed.AirDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.AnimalDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.ArcaneDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.ChaosDomainAllowedSeparatist,//Chaos
                     DeityTools.SeparatistDomainAllowed.CharmDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.CommunityDomainAllowedSeparatist,

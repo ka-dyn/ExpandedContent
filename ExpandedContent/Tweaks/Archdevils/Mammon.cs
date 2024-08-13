@@ -115,6 +115,7 @@ namespace ExpandedContent.Tweaks.Archdevils {
                     DeityTools.SeparatistDomainAllowed.TrickeryDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.UndeadDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.WarDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.ArcaneDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.WaterDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.WeatherDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.ArchonDomainLawAllowedSeparatist,//Lawful
