@@ -106,6 +106,7 @@ namespace ExpandedContent.Tweaks.Archdevils {
                     DeityTools.SeparatistDomainAllowed.KnowledgeDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.LiberationDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.LuckDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.LightningDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.MadnessDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.ArcaneDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.MagicDomainAllowedSeparatist,

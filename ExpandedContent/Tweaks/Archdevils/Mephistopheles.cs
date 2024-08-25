@@ -104,6 +104,7 @@ namespace ExpandedContent.Tweaks.Archdevils {
                     DeityTools.SeparatistDomainAllowed.GloryDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.HealingDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.IceDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.LightningDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.LiberationDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.LuckDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.MadnessDomainAllowedSeparatist,

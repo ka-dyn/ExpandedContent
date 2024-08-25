@@ -97,6 +97,7 @@ namespace ExpandedContent.Tweaks.DemonLords {
                     DeityTools.DomainAllowed.OldUndeadDomainAllowed,
                     DeityTools.DomainAllowed.MurderDomainAllowed,
                     DeityTools.SeparatistDomainAllowed.AirDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.LightningDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.AnimalDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.ArcaneDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.ArtificeDomainAllowedSeparatist,

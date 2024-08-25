@@ -109,6 +109,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     DeityTools.SeparatistDomainAllowed.UndeadDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.WarDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.WaterDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.LightningDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.WeatherDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.AgathionDomainAllowedSeparatist,//Good
                     DeityTools.SeparatistDomainAllowed.ArchonDomainGoodAllowedSeparatist,//Good

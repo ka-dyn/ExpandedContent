@@ -111,6 +111,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     DeityTools.SeparatistDomainAllowed.NobilityDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.PlantDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.ReposeDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.LightningDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.RuneDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.StrengthDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.SunDomainAllowedSeparatist,

@@ -96,6 +96,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     DeityTools.SeparatistDomainAllowed.GoodDomainAllowedSeparatist,//Good
                     DeityTools.SeparatistDomainAllowed.HealingDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.IceDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.LightningDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.KnowledgeDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.LawDomainAllowedSeparatist,//Lawful
                     DeityTools.SeparatistDomainAllowed.LiberationDomainAllowedSeparatist,

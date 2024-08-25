@@ -102,6 +102,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     DeityTools.SeparatistDomainAllowed.LawDomainAllowedSeparatist,//Lawful
                     DeityTools.SeparatistDomainAllowed.LiberationDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.MadnessDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.LightningDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.MagicDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.NobilityDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.ProtectionDomainAllowedSeparatist,
