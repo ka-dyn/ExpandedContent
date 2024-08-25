@@ -12,6 +12,8 @@ namespace ExpandedContent.Tweaks {
                 if (Initialized) return;
                 Initialized = true;
 
+                //Miscellaneous.DumbTestStuff.LightningTest.AddLightningTest();
+
                 Miscellaneous.LazyLocker.AddLazyLocker();
 
                 Miscellaneous.OpeningVolley.AddOpeningVolley();
@@ -189,6 +191,7 @@ namespace ExpandedContent.Tweaks {
                 Domains.FistDomain.AddFistDomain();
                 Domains.LoyaltyDomain.AddLoyaltyDomain();
                 Domains.ArcaneDomain.AddArcaneDomain();
+                Domains.LightningDomain.AddLightningDomain();
                 Domains.BaseDeityPatch.AddBaseDeityPatch();
 
                 Blessings.ArtificeBlessing.AddArtificeBlessing();

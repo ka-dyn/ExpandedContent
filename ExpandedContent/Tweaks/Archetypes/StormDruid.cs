@@ -24,6 +24,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var AirDomainProgressionDruid = Resources.GetBlueprint<BlueprintProgression>("3aef017b78329db4fa53fe8560069886");
             var WeatherDomainProgressionDruid = Resources.GetBlueprint<BlueprintProgression>("4a3516fdc4cda764ebd1279b22d10205");
             var StormDomainProgressionDruid = Resources.GetModBlueprint<BlueprintProgression>("StormDomainProgressionDruid");
+            var LightningDomainProgressionDruid = Resources.GetModBlueprint<BlueprintProgression>("LightningDomainProgressionDruid");
             var WindDomainProgressionDruid = Resources.GetModBlueprint<BlueprintProgression>("WindDomainProgressionDruid");
             var RainModerate = Resources.GetBlueprint<BlueprintBuff>("f37b708de9eeb2c4ab248d79bb5b5aa7");
             var SnowModerateBuff = Resources.GetBlueprint<BlueprintBuff>("845332298344c6447972dc9b131add08");
@@ -70,6 +71,33 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.SetName("Spontaneous Air Domain Spellcasting");
                 bp.SetDescription("A storm druid can channel stored {g|Encyclopedia:Spell}spell{/g} energy into air domain spells that she hasn't prepared ahead of time. She can " +
                     "\"lose\" a prepared spell in order to cast any air domain spell of the same level.");
+                bp.AddComponent<SpontaneousSpellConversion>(c => {
+                    c.m_CharacterClass = DruidClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
+                        new BlueprintAbilityReference(),
+                        ShockingGraspCast,
+                        ProtectionFromArrowsSpell,
+                        LightningBoltSpell,
+                        ShoutSpell,
+                        CloudkillSpell,
+                        ChainLightningSpell,
+                        ElementalBodyIVAirSpell,
+                        ShoutGreaterSpell,
+                        ElementalSwarmAir
+                    };
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.HideInUI = false;
+                bp.HideNotAvailibleInUI = false;
+                bp.HideInCharacterSheetAndLevelUp = false;
+                bp.Ranks = 1;
+                bp.ReapplyOnLevelUp = false;
+                bp.IsClassFeature = true;
+            });
+            var StormDruidSpontaneousLightningDomain = Helpers.CreateBlueprint<BlueprintFeature>("StormDruidSpontaneousLightningDomain", bp => {
+                bp.SetName("Spontaneous Lightning Domain Spellcasting");
+                bp.SetDescription("A storm druid can channel stored {g|Encyclopedia:Spell}spell{/g} energy into air domain spells that she hasn't prepared ahead of time. She can " +
+                    "\"lose\" a prepared spell in order to cast any lightning domain spell of the same level.");
                 bp.AddComponent<SpontaneousSpellConversion>(c => {
                     c.m_CharacterClass = DruidClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_SpellsByLevel = new BlueprintAbilityReference[10] {
@@ -194,13 +222,17 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.m_CheckedFact = WindDomainProgressionDruid.ToReference<BlueprintUnitFactReference>();
                     c.m_Feature = StormDruidSpontaneousWindDomain.ToReference<BlueprintUnitFactReference>();
                 });
+                bp.AddComponent<AddFeatureIfHasFact>(c => {
+                    c.m_CheckedFact = LightningDomainProgressionDruid.ToReference<BlueprintUnitFactReference>();
+                    c.m_Feature = StormDruidSpontaneousLightningDomain.ToReference<BlueprintUnitFactReference>();
+                });
                 bp.ReapplyOnLevelUp = true;
                 bp.HideInUI = false;
                 bp.IsClassFeature = true;
             });
             var StormDruidBondSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("StormDruidBondSelection", bp => {
                 bp.SetName("Storm Druids Bond");
-                bp.SetDescription("A storm druid may not choose an animal companion. A storm druid must choose the Air or Weather domain, or the Storm or Wind subdomain.");
+                bp.SetDescription("A storm druid may not choose an animal companion. A storm druid must choose the Air or Weather domain; or the Lightning, Storm or Wind subdomain.");
                 bp.HideInCharacterSheetAndLevelUp = false;
                 bp.HideInUI = false;
                 bp.HideNotAvailibleInUI = false;
@@ -208,7 +240,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.Mode = SelectionMode.OnlyNew;
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;
-                bp.AddFeatures(AirDomainProgressionDruid, WeatherDomainProgressionDruid, StormDomainProgressionDruid, WindDomainProgressionDruid);
+                bp.AddFeatures(AirDomainProgressionDruid, WeatherDomainProgressionDruid, LightningDomainProgressionDruid, StormDomainProgressionDruid, WindDomainProgressionDruid);
             });
             var WindwalkerFeature = Helpers.CreateBlueprint<BlueprintFeature>("WindwalkerFeature", bp => {
                 bp.SetName("Windwalker");
@@ -244,7 +276,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.Mode = SelectionMode.OnlyNew;
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;
-                bp.AddFeatures(AirDomainProgressionDruid, WeatherDomainProgressionDruid, StormDomainProgressionDruid, WindDomainProgressionDruid);
+                bp.AddFeatures(AirDomainProgressionDruid, WeatherDomainProgressionDruid, LightningDomainProgressionDruid, StormDomainProgressionDruid, WindDomainProgressionDruid);
             });
             var StormLordFeature = Helpers.CreateBlueprint<BlueprintFeature>("StormLordFeature", bp => {
                 bp.SetName("Storm Lord");

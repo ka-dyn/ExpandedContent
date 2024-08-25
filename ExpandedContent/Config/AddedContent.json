@@ -390,6 +390,11 @@
         "Enabled": true,
         "Homebrew": false,
         "Description": "Adds the arcane subdomain, a subdomain to the magic domain."
+      },
+      "Lightning Subdomain": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds the lightning subdomain, a subdomain to the air domain."
       }
     },
     "IsExpanded": false

@@ -72,6 +72,7 @@ namespace ExpandedContent.Utilities {
             public static BlueprintFeature GrowthDomainAllowed => Resources.GetModBlueprint<BlueprintFeature>("GrowthDomainAllowed");
             public static BlueprintFeature HeroismDomainAllowed => Resources.GetModBlueprint<BlueprintFeature>("HeroismDomainAllowed");
             public static BlueprintFeature OldIceDomainAllowed => Resources.GetModBlueprint<BlueprintFeature>("IceDomainAllowed");
+            public static BlueprintFeature LightningDomainAllowed => Resources.GetModBlueprint<BlueprintFeature>("LightningDomainAllowed");
             public static BlueprintFeature LoyaltyDomainAllowed => Resources.GetModBlueprint<BlueprintFeature>("LoyaltyDomainAllowed");
             public static BlueprintFeature LustDomainAllowed => Resources.GetModBlueprint<BlueprintFeature>("LustDomainAllowed");
             public static BlueprintFeature PsychopompDomainDeathAllowed => Resources.GetModBlueprint<BlueprintFeature>("PsychopompDomainDeathAllowed");
@@ -145,6 +146,7 @@ namespace ExpandedContent.Utilities {
             public static BlueprintFeature GrowthDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("GrowthDomainAllowedSeparatist");
             public static BlueprintFeature HeroismDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("HeroismDomainAllowedSeparatist");
             //public static BlueprintFeature IceDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("IceDomainAllowedSeparatist");
+            public static BlueprintFeature LightningDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("LightningDomainAllowedSeparatist");
             public static BlueprintFeature LoyaltyDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("LoyaltyDomainAllowedSeparatist");
             public static BlueprintFeature LustDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("LustDomainAllowedSeparatist");
             public static BlueprintFeature PsychopompDomainDeathAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("PsychopompDomainDeathAllowedSeparatist");

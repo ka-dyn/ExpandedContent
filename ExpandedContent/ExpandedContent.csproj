@@ -261,6 +261,7 @@
     <Compile Include="Tweaks\Components\ACBonusAgainstNotCaster.cs" />
     <Compile Include="Tweaks\Components\AttackBonusAgainstNotCaster.cs" />
     <Compile Include="Tweaks\Components\SavingThrowAgainstCaster.cs" />
+    <Compile Include="Tweaks\Components\SpellDamageBonusWithRelect.cs" />
     <Compile Include="Tweaks\Components\SpellPenetrationBonusAgainstFact.cs" />
     <Compile Include="Tweaks\Components\WeaponMultipleCategoriesContextAttackBonus.cs" />
     <Compile Include="Tweaks\Components\WeaponTypeContextDamageBonus.cs" />
@@ -395,6 +396,7 @@
     <Compile Include="Tweaks\Domains\StarsDomain.cs" />
     <Compile Include="Tweaks\Domains\RestorationDomain.cs" />
     <Compile Include="Tweaks\Domains\ImpossibleSubdomainSelection.cs" />
+    <Compile Include="Tweaks\Domains\LightningDomain.cs" />
     <Compile Include="Tweaks\Domains\WhimsyDomain.cs" />
     <Compile Include="Tweaks\Domains\RevolutionDomain.cs" />
     <Compile Include="Tweaks\Domains\ThieveryDomain.cs" />
@@ -433,6 +435,7 @@
     <Compile Include="Tweaks\Miscellaneous\BugFixes.cs" />
     <Compile Include="Tweaks\Miscellaneous\DrakePetTypeAdder.cs" />
     <Compile Include="Tweaks\Miscellaneous\DemonHunter.cs" />
+    <Compile Include="Tweaks\Miscellaneous\DumbTestStuff\LightningTest.cs" />
     <Compile Include="Tweaks\Miscellaneous\LazyLocker.cs" />
     <Compile Include="Tweaks\Miscellaneous\MountPatches\GoldDragonMountPatch .cs" />
     <Compile Include="Tweaks\Miscellaneous\MountPatches\UmbralDragonMountPatch.cs" />
@@ -1744,6 +1747,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_InvokeDeity.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_LightningRod.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_Lignification.jpg">

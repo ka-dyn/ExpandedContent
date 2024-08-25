@@ -199,10 +199,17 @@ namespace ExpandedContent.Tweaks.Miscellaneous {
         static class SummClassGetterArchetypeFix {
             static void Postfix(SummClassLevelGetter __instance, UnitEntityData unit, ref int __result) {
                 int num = 0;
+                var classes = new BlueprintCharacterClassReference[0];
+                classes = classes.AppendToArray(__instance.m_Class);
                 var archetypes = new BlueprintArchetypeReference[0];
                 archetypes = archetypes.AppendToArray(__instance.m_Archetypes);
                 archetypes = archetypes.AppendToArray(__instance.Archetype);
                 foreach (ClassData data in unit.Descriptor.Progression.Classes) {//For each class you have
+
+                    if (!classes.HasReference(data.CharacterClass)) {//Is it in the list
+                        continue;//If not, skip to next class
+                    }
+
                     if (archetypes.Length > 0) {
                         if (archetypes.Any(archetype => data.CharacterClass.Archetypes.HasReference(archetype))) {//Is the choosen archetype in the BlueprintArchetypeReference list?
                             if (archetypes.Any(archetype => data.Archetypes.Contains(archetype))) {//If archetype matches add level, if not then ignore

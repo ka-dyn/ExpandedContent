@@ -17,6 +17,12 @@ using Kingmaker.Utility;
 using Kingmaker.ResourceLinks;
 using ExpandedContent.Config;
 using Kingmaker.UnitLogic.Mechanics.Properties;
+using Kingmaker.UnitLogic.Buffs.Blueprints;
+using Kingmaker.UnitLogic.Abilities.Components;
+using Kingmaker.Enums;
+using Kingmaker.RuleSystem;
+using Kingmaker.UnitLogic.Mechanics.Actions;
+using Kingmaker.UnitLogic.Mechanics;
 
 namespace ExpandedContent.Tweaks.Domains {
     internal class StormDomain {
@@ -38,6 +44,11 @@ namespace ExpandedContent.Tweaks.Domains {
             var WeatherDomainBaseResource = Resources.GetBlueprint<BlueprintAbilityResource>("53dd76c7053469541b99e01cb25711d6");
             var GaleAura = AssetLoader.LoadInternal("Skills", "Icon_GaleAura.jpg");
             var WeatherBlessingFeature = Resources.GetBlueprint<BlueprintFeature>("4172d92c598de1d47aa2c0dd51c05e24");
+
+
+
+
+
             //StormDomainDifficultTerrainBuff
             var StormDomainDifficultTerrainBuff = Helpers.CreateBuff("StormDomainDifficultTerrainBuff", bp => {
                 bp.SetName("Gale Aura");
