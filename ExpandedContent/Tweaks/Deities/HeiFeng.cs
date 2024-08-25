@@ -82,6 +82,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     DeityTools.DomainAllowed.WeatherDomainAllowed,
                     DeityTools.DomainAllowed.StormDomainAllowed,
                     DeityTools.DomainAllowed.WindDomainAllowed,
+                    DeityTools.DomainAllowed.LightningDomainAllowed,
                     DeityTools.SeparatistDomainAllowed.AnimalDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.ArtificeDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.CharmDomainAllowedSeparatist,

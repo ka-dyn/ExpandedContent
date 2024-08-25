@@ -49,6 +49,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     DeityTools.SeparatistDomainAllowed.FurDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.GrowthDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.HeroismDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.LightningDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.LoyaltyDomainAllowedSeparatist,//Lawful
                     DeityTools.SeparatistDomainAllowed.LustDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.PsychopompDomainDeathAllowedSeparatist,
@@ -79,6 +80,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     DeityTools.SeparatistDomainAllowed.FurDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.GrowthDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.HeroismDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.LightningDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.LoyaltyDomainAllowedSeparatist,//Lawful
                     DeityTools.SeparatistDomainAllowed.LustDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.PsychopompDomainDeathAllowedSeparatist,
@@ -112,6 +114,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     DeityTools.SeparatistDomainAllowed.FurDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.GrowthDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.HeroismDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.LightningDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.PsychopompDomainDeathAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.PsychopompDomainReposeAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.RageDomainAllowedSeparatist,
@@ -144,6 +147,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     DeityTools.SeparatistDomainAllowed.FurDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.GrowthDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.HeroismDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.LightningDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.PsychopompDomainDeathAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.PsychopompDomainReposeAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.RageDomainAllowedSeparatist,
@@ -174,6 +178,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     DeityTools.SeparatistDomainAllowed.FurDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.GrowthDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.HeroismDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.LightningDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.LustDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.PsychopompDomainDeathAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.PsychopompDomainReposeAllowedSeparatist,
@@ -204,6 +209,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     DeityTools.SeparatistDomainAllowed.FerocityDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.FistDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.HeroismDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.LightningDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.LoyaltyDomainAllowedSeparatist,//Lawful
                     DeityTools.SeparatistDomainAllowed.LustDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.PsychopompDomainDeathAllowedSeparatist,
@@ -238,6 +244,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     DeityTools.SeparatistDomainAllowed.FurDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.GrowthDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.HeroismDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.LightningDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.LustDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.PsychopompDomainDeathAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.PsychopompDomainReposeAllowedSeparatist,
@@ -254,6 +261,7 @@ namespace ExpandedContent.Tweaks.Domains {
                 );
             GozrehFeature.SetAllowedDomains(
                     DeityTools.DomainAllowed.GrowthDomainAllowed,
+                    DeityTools.DomainAllowed.LightningDomainAllowed,
                     DeityTools.DomainAllowed.WindDomainAllowed,
                     DeityTools.SeparatistDomainAllowed.AgathionDomainAllowedSeparatist,//Good
                     DeityTools.SeparatistDomainAllowed.ArcaneDomainAllowedSeparatist,
@@ -301,6 +309,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     DeityTools.SeparatistDomainAllowed.FurDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.GrowthDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.HeroismDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.LightningDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.LoyaltyDomainAllowedSeparatist,//Lawful
                     DeityTools.SeparatistDomainAllowed.LustDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.PsychopompDomainDeathAllowedSeparatist,
@@ -333,6 +342,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     DeityTools.SeparatistDomainAllowed.FistDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.FurDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.GrowthDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.LightningDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.LoyaltyDomainAllowedSeparatist,//Lawful
                     DeityTools.SeparatistDomainAllowed.LustDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.PsychopompDomainDeathAllowedSeparatist,
@@ -366,6 +376,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     DeityTools.SeparatistDomainAllowed.FurDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.GrowthDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.HeroismDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.LightningDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.LoyaltyDomainAllowedSeparatist,//Lawful
                     DeityTools.SeparatistDomainAllowed.LustDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.PsychopompDomainDeathAllowedSeparatist,
@@ -395,6 +406,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     DeityTools.SeparatistDomainAllowed.FurDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.GrowthDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.HeroismDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.LightningDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.LustDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.PsychopompDomainDeathAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.PsychopompDomainReposeAllowedSeparatist,
@@ -427,6 +439,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     DeityTools.SeparatistDomainAllowed.FurDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.GrowthDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.HeroismDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.LightningDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.LoyaltyDomainAllowedSeparatist,//Lawful
                     DeityTools.SeparatistDomainAllowed.LustDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.PsychopompDomainDeathAllowedSeparatist,
@@ -460,6 +473,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     DeityTools.SeparatistDomainAllowed.FurDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.GrowthDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.HeroismDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.LightningDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.LoyaltyDomainAllowedSeparatist,//Lawful
                     DeityTools.SeparatistDomainAllowed.LustDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.PsychopompDomainDeathAllowedSeparatist,
@@ -497,6 +511,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     DeityTools.SeparatistDomainAllowed.FurDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.GrowthDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.HeroismDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.LightningDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.LoyaltyDomainAllowedSeparatist,//Lawful
                     DeityTools.SeparatistDomainAllowed.LustDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.RageDomainAllowedSeparatist,
@@ -518,6 +533,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     DeityTools.DomainAllowed.DemonDomainEvilAllowed,
                     DeityTools.DomainAllowed.RageDomainAllowed,
                     DeityTools.DomainAllowed.StormDomainAllowed,
+                    DeityTools.DomainAllowed.LightningDomainAllowed,
                     DeityTools.SeparatistDomainAllowed.ArcaneDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.CavesDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.CurseDomainAllowedSeparatist,
@@ -561,6 +577,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     DeityTools.SeparatistDomainAllowed.FurDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.GrowthDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.HeroismDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.LightningDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.LoyaltyDomainAllowedSeparatist,//Lawful
                     DeityTools.SeparatistDomainAllowed.LustDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.PsychopompDomainDeathAllowedSeparatist,
@@ -595,6 +612,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     DeityTools.SeparatistDomainAllowed.GrowthDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.HeroismDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.LoyaltyDomainAllowedSeparatist,//Lawful
+                    DeityTools.SeparatistDomainAllowed.LightningDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.LustDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.PsychopompDomainDeathAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.PsychopompDomainReposeAllowedSeparatist,
@@ -624,6 +642,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     DeityTools.SeparatistDomainAllowed.FerocityDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.FistDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.FurDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.LightningDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.GrowthDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.HeroismDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.LoyaltyDomainAllowedSeparatist,//Lawful
@@ -659,6 +678,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     DeityTools.SeparatistDomainAllowed.FurDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.GrowthDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.HeroismDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.LightningDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.LoyaltyDomainAllowedSeparatist,//Lawful
                     DeityTools.SeparatistDomainAllowed.LustDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.PsychopompDomainDeathAllowedSeparatist,
@@ -694,6 +714,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     DeityTools.SeparatistDomainAllowed.HeroismDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.LoyaltyDomainAllowedSeparatist,//Lawful
                     DeityTools.SeparatistDomainAllowed.LustDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.LightningDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.PsychopompDomainDeathAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.PsychopompDomainReposeAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.RageDomainAllowedSeparatist,
