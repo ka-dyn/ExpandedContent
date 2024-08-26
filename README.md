@@ -138,6 +138,7 @@ New Domains / Subdomains
   - Growth
   - Heroism
   - Ice
+  - Lightning
   - Loyalty
   - Lust
   - Psychopomp
