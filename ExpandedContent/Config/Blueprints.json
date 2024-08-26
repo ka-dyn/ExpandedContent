@@ -3575,7 +3575,27 @@
     "ArcaneDomainProgressionSeparatist": "5254866a-ba90-4927-81b0-d540ad544078",
     "ArcaneDomainSpellList": "7c72e27b-1dfd-484d-81f3-7b557ef79e75",
     "ArcaneDomainSpellListFeature": "38847a08-413b-4982-9e21-ceee4584c50f",
-    "DTImpossibleBlessingSelection": "8304acc5-a282-4b0a-a02d-98d821a44422"
+    "DTImpossibleBlessingSelection": "8304acc5-a282-4b0a-a02d-98d821a44422",
+
+    "LightningDomainAllowed": "ffe47848-7f01-4587-b629-3f9716b3037e",
+    "LightningDomainAllowedSeparatist": "f24216f8-28e5-42ff-b4fe-a9f0e53fb7bd",
+    "LightningDomainBaseFeature": "b751760d-43cc-47aa-9a8a-8ec01b2ceea4",
+    "LightningDomainBaseFeatureSeparatist": "25ef7ca5-8b1f-4bde-a8ef-f168d724548f",
+    "LightningDomainGreaterAbility": "c50ff9cd-cd2f-49d8-a465-ea32977441a3",
+    "LightningDomainGreaterAbilitySeparatist": "5f473e3a-2859-4cf5-bbec-c14a77ef092f",
+    "LightningDomainGreaterBuff": "39f228d3-4338-499a-90f5-87286e899f2e",
+    "LightningDomainGreaterFeature": "44a0ecc8-9c70-4b10-9de2-eddd3d45f501",
+    "LightningDomainGreaterFeatureSeparatist": "7b47f792-bca5-4e11-8656-bf1ea482140b",
+    "LightningDomainGreaterResource": "7ac46653-02fa-4ad9-b5a5-a68daee54a25",
+    "LightningDomainGreaterResourceSeparatist": "e290b489-02a9-4c68-8d61-70b6b6b71ca3",
+    "LightningDomainProgression": "908e0c80-073b-4243-9968-a990bb4109a3",
+    "LightningDomainProgressionDruid": "61b1f547-bbde-40c9-a742-52e09475f71e",
+    "LightningDomainProgressionSecondary": "c680f51f-a434-4628-9ac2-1c7ba7bfeb0e",
+    "LightningDomainProgressionSeparatist": "f0d935a2-2b7f-4650-b948-fcb31c2b7e71",
+    "LightningDomainSpellList": "c1256ba5-5b3f-4db6-baa2-20b23ed6f54b",
+    "LightningDomainSpellListFeature": "a665456c-c14d-4cd8-8a12-722ee976a434",
+    "LightningDomainSpellListFeatureDruid": "0ddf6efa-c2a7-4db4-8fc4-1a649c93a8f2",
+    "StormDruidSpontaneousLightningDomain": "866c3168-ff2c-454c-8951-a8127b41b848"
 
 
 
