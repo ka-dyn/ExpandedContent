@@ -390,7 +390,8 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.m_IsFullRoundAction = false;
                 bp.LocalizedDuration = AcidSplashSpell.LocalizedDuration;
                 bp.LocalizedSavingThrow = AcidSplashSpell.LocalizedSavingThrow;
-                bp.Components = AcidSplashSpell.Components;
+                //bp.Components = AcidSplashSpell.Components;
+                bp.CopyComponentArray(AcidSplashSpell);
                 bp.RemoveComponents<SpellListComponent>();
                 bp.RemoveComponents<CantripComponent>();
                 bp.RemoveComponents<ActionPanelLogic>();
@@ -416,7 +417,8 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.m_IsFullRoundAction = false;
                 bp.LocalizedDuration = RayOfFrostSpell.LocalizedDuration;
                 bp.LocalizedSavingThrow = RayOfFrostSpell.LocalizedSavingThrow;
-                bp.Components = RayOfFrostSpell.Components;
+                //bp.Components = RayOfFrostSpell.Components;
+                bp.CopyComponentArray(RayOfFrostSpell);//???????
                 bp.RemoveComponents<SpellListComponent>();
                 bp.RemoveComponents<CantripComponent>();
                 bp.RemoveComponents<ActionPanelLogic>();
@@ -442,7 +444,8 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.m_IsFullRoundAction = false;
                 bp.LocalizedDuration = JoltSpell.LocalizedDuration;
                 bp.LocalizedSavingThrow = JoltSpell.LocalizedSavingThrow;
-                bp.Components = JoltSpell.Components;
+                //bp.Components = JoltSpell.Components;
+                bp.CopyComponentArray(JoltSpell);
                 bp.RemoveComponents<SpellListComponent>();
                 bp.RemoveComponents<CantripComponent>();
             });
@@ -469,7 +472,8 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.m_IsFullRoundAction = false;
                 bp.LocalizedDuration = DazeSpell.LocalizedDuration;
                 bp.LocalizedSavingThrow = DazeSpell.LocalizedSavingThrow;
-                bp.Components = DazeSpell.Components;
+                //bp.Components = DazeSpell.Components;
+                bp.CopyComponentArray(DazeSpell);
                 bp.RemoveComponents<SpellListComponent>();
                 bp.RemoveComponents<CantripComponent>();
             });
@@ -494,7 +498,8 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.m_IsFullRoundAction = false;
                 bp.LocalizedDuration = ResistanceSpell.LocalizedDuration;
                 bp.LocalizedSavingThrow = ResistanceSpell.LocalizedSavingThrow;
-                bp.Components = ResistanceSpell.Components;
+                //bp.Components = ResistanceSpell.Components;
+                bp.CopyComponentArray(ResistanceSpell);
                 bp.RemoveComponents<SpellListComponent>();
                 bp.RemoveComponents<CantripComponent>();
             });
@@ -519,7 +524,8 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.m_IsFullRoundAction = false;
                 bp.LocalizedDuration = TouchOfFatigueSpell.LocalizedDuration;
                 bp.LocalizedSavingThrow = TouchOfFatigueSpell.LocalizedSavingThrow;
-                bp.Components = TouchOfFatigueSpell.Components;
+                //bp.Components = TouchOfFatigueSpell.Components;
+                bp.CopyComponentArray(TouchOfFatigueSpell);
                 bp.RemoveComponents<SpellListComponent>();
                 bp.RemoveComponents<CantripComponent>();
                 bp.RemoveComponents<ActionPanelLogic>();
@@ -545,7 +551,8 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.m_IsFullRoundAction = false;
                 bp.LocalizedDuration = MageLightSpell.LocalizedDuration;
                 bp.LocalizedSavingThrow = MageLightSpell.LocalizedSavingThrow;
-                bp.Components = MageLightSpell.Components;
+                //bp.Components = MageLightSpell.Components;
+                bp.CopyComponentArray(MageLightSpell);
                 bp.RemoveComponents<SpellListComponent>();
                 bp.RemoveComponents<CantripComponent>();
             });
@@ -570,7 +577,8 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.m_IsFullRoundAction = false;
                 bp.LocalizedDuration = DisruptUndeadSpell.LocalizedDuration;
                 bp.LocalizedSavingThrow = DisruptUndeadSpell.LocalizedSavingThrow;
-                bp.Components = DisruptUndeadSpell.Components;
+                //bp.Components = DisruptUndeadSpell.Components;
+                bp.CopyComponentArray(DisruptUndeadSpell);
                 bp.RemoveComponents<SpellListComponent>();
                 bp.RemoveComponents<CantripComponent>();
             });
@@ -595,7 +603,8 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.m_IsFullRoundAction = false;
                 bp.LocalizedDuration = FlareSpell.LocalizedDuration;
                 bp.LocalizedSavingThrow = FlareSpell.LocalizedSavingThrow;
-                bp.Components = FlareSpell.Components;
+                //bp.Components = FlareSpell.Components;
+                bp.CopyComponentArray(FlareSpell);
                 bp.RemoveComponents<SpellListComponent>();
                 bp.RemoveComponents<CantripComponent>();
             });            

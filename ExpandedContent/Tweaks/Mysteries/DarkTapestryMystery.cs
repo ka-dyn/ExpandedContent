@@ -252,7 +252,8 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.ActionType = UnitCommand.CommandType.Standard;
                 bp.LocalizedDuration = ShapeChangeSpell.LocalizedDuration;
                 bp.LocalizedSavingThrow = ShapeChangeSpell.LocalizedSavingThrow;
-                bp.Components = ShapeChangeSpell.Components;
+                //bp.Components = ShapeChangeSpell.Components;
+                bp.CopyComponentArray(ShapeChangeSpell);
                 bp.AddComponent<AbilityResourceLogic>(c => {
                     c.m_RequiredResource = OracleRevelationShapeChangeFreeResource.ToReference<BlueprintAbilityResourceReference>();
                     c.m_IsSpendResource = true;
