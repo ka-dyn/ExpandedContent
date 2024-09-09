@@ -455,13 +455,13 @@ namespace ExpandedContent.Extensions {
         public static void SetIntroduction(this AddSpellsToDescription Intro, string description) {
             Intro.Introduction = Helpers.CreateString(Intro.Introduction + "Introduction", description);
         }
-        //BIG Test, I wrote this shit in Sticky notes
+        // Test, I wrote this shit in Sticky notes
         public static void CopyComponentArray(this BlueprintScriptableObject blueprint, BlueprintScriptableObject sourceBlueprint) {
             foreach (var component in sourceBlueprint.ComponentsArray) {
                 blueprint.AddComponent(Helpers.CreateCopy(component));
             }
         }
-        //big test end
+        // test end
         //Faff bitter wrote end
         //Bubbles start
         public static void AppendInPlace<T>(ref T[] arr, params T[] newValue) {

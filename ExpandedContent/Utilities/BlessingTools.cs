@@ -24,8 +24,10 @@ namespace ExpandedContent.Utilities {
             var blueprintfeature = Helpers.CreateBlueprint<BlueprintFeature>($"{blueprintoutputname}", bp => {
                 bp.m_DisplayName = warpriestblessing.m_DisplayName;
                 bp.SetDescription(description);
-                bp.AddComponent(warpriestblessing.GetComponent<AddFacts>());
-                bp.AddComponent(warpriestblessing.GetComponent<PrerequisiteFeature>());
+                //bp.AddComponent(warpriestblessing.GetComponent<AddFacts>());
+                bp.AddComponent(Helpers.CreateCopy(warpriestblessing.GetComponent<AddFacts>()));
+                //bp.AddComponent(warpriestblessing.GetComponent<PrerequisiteFeature>());
+                bp.AddComponent(Helpers.CreateCopy(warpriestblessing.GetComponent<PrerequisiteFeature>()));
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = RangerClass;
                     c.Level = 13;
