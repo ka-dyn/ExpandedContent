@@ -63,7 +63,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             });
             var LionShamanWildShape = Helpers.CreateBlueprint<BlueprintFeature>("LionShamanWildShape", bp => {
                 bp.SetName("Wild Shape - Lion Totem Druid");
-                bp.SetDescription("A lion totem druid wild shape is effected by their dedication to feline sprits. All wild shape forms gained from level 6 onwards are gained 2 levels later than a standard druid, however " +
+                bp.SetDescription("A lion totem druid wild shape is effected by their dedication to feline spirits. All wild shape forms gained from level 6 onwards are gained 2 levels later than a standard druid, however " +
                     "feline forms are gained 2 levels earlier.");
                 bp.IsClassFeature = true;
             });

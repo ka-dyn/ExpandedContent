@@ -1652,7 +1652,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.m_Max = 2;
             });
             var OracleRevelationInterstallarVoidAbility1 = Helpers.CreateBlueprint<BlueprintAbility>("OracleRevelationInterstallarVoidAbility1", bp => {
-                bp.SetName("Interstallar Void");
+                bp.SetName("Interstellar Void");
                 bp.SetDescription("You call upon the frigid depths of outer space to bring a terrible chill to your enemies. As a standard action, one target within 30 feet is cloaked in the void " +
                     "and takes 1d6 points of cold damage per level. A successful Fortitude save halves this damage. At 10th level, the interstellar void is so extreme that enemies who fail their " +
                     "saving throw are fatigued. At 15th level, creatures who fail their save are exhausted and stunned for 1 round. You can use this ability once per day plus one additional time " +
@@ -1762,7 +1762,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.LocalizedSavingThrow = Helpers.CreateString("OracleRevelationInterstallarVoidAbility1.SavingThrow", "Fortitude partial");
             });
             var OracleRevelationInterstallarVoidAbility2 = Helpers.CreateBlueprint<BlueprintAbility>("OracleRevelationInterstallarVoidAbility2", bp => {
-                bp.SetName("Interstallar Void");
+                bp.SetName("Interstellar Void");
                 bp.SetDescription("You call upon the frigid depths of outer space to bring a terrible chill to your enemies. As a standard action, one target within 30 feet is cloaked in the void " +
                     "and takes 1d6 points of cold damage per level. A successful Fortitude save halves this damage. At 10th level, the interstellar void is so extreme that enemies who fail their " +
                     "saving throw are fatigued. At 15th level, creatures who fail their save are exhausted and stunned for 1 round. You can use this ability once per day plus one additional time " +
@@ -1884,7 +1884,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.LocalizedSavingThrow = Helpers.CreateString("OracleRevelationInterstallarVoidAbility2.SavingThrow", "Fortitude partial");
             });
             var OracleRevelationInterstallarVoidAbility3 = Helpers.CreateBlueprint<BlueprintAbility>("OracleRevelationInterstallarVoidAbility3", bp => {
-                bp.SetName("Interstallar Void");
+                bp.SetName("Interstellar Void");
                 bp.SetDescription("You call upon the frigid depths of outer space to bring a terrible chill to your enemies. As a standard action, one target within 30 feet is cloaked in the void " +
                     "and takes 1d6 points of cold damage per level. A successful Fortitude save halves this damage. At 10th level, the interstellar void is so extreme that enemies who fail their " +
                     "saving throw are fatigued. At 15th level, creatures who fail their save are exhausted and stunned for 1 round. You can use this ability once per day plus one additional time " +
@@ -2023,7 +2023,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.LocalizedSavingThrow = Helpers.CreateString("OracleRevelationInterstallarVoidAbility3.SavingThrow", "Fortitude partial");
             });
             var OracleRevelationInterstallarVoidFeature1 = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationInterstallarVoidFeature1", bp => {
-                bp.SetName("Interstallar Void");
+                bp.SetName("Interstellar Void");
                 bp.SetDescription("");
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] { OracleRevelationInterstallarVoidAbility1.ToReference<BlueprintUnitFactReference>() };
@@ -2038,7 +2038,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.IsClassFeature = true;
             });
             var OracleRevelationInterstallarVoidFeature2 = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationInterstallarVoidFeature2", bp => {
-                bp.SetName("Interstallar Void");
+                bp.SetName("Interstellar Void");
                 bp.SetDescription("");
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] { OracleRevelationInterstallarVoidAbility2.ToReference<BlueprintUnitFactReference>() };
@@ -2053,7 +2053,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.IsClassFeature = true;
             });
             var OracleRevelationInterstallarVoidFeature3 = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationInterstallarVoidFeature3", bp => {
-                bp.SetName("Interstallar Void");
+                bp.SetName("Interstellar Void");
                 bp.SetDescription("");
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] { OracleRevelationInterstallarVoidAbility3.ToReference<BlueprintUnitFactReference>() };
@@ -2068,7 +2068,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.IsClassFeature = true;
             });
             var OracleRevelationInterstallarVoidFeature12 = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationInterstallarVoidFeature12", bp => {
-                bp.SetName("Interstallar Void");
+                bp.SetName("Interstellar Void");
                 bp.SetDescription("");
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
@@ -2103,7 +2103,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.IsClassFeature = true;
             });
             var OracleRevelationInterstallarVoidFeature = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationInterstallarVoidFeature", bp => {
-                bp.SetName("Interstallar Void");
+                bp.SetName("Interstellar Void");
                 bp.SetDescription("You call upon the frigid depths of outer space to bring a terrible chill to your enemies. As a standard action, one target within 30 feet is cloaked in the void " +
                     "and takes 1d6 points of cold damage per level. A successful Fortitude save halves this damage. At 10th level, the interstellar void is so extreme that enemies who fail their " +
                     "saving throw are fatigued. At 15th level, creatures who fail their save are exhausted and stunned for 1 round. You can use this ability once per day plus one additional time " +

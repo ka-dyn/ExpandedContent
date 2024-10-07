@@ -448,6 +448,7 @@
     <Compile Include="Tweaks\Miscellaneous\MountPatches\GreenDragonMountPatch.cs" />
     <Compile Include="Tweaks\Miscellaneous\MountPatches\BlueDragonMountPatch.cs" />
     <Compile Include="Tweaks\Miscellaneous\MountPatches\BlackDragonMountPatch.cs" />
+    <Compile Include="Tweaks\Miscellaneous\MountPatches\TreantMountPatch .cs" />
     <Compile Include="Tweaks\Miscellaneous\MountPatches\WolverineMountPatch.cs" />
     <Compile Include="Tweaks\Miscellaneous\NewActivatableAbilityGroups\NewActivatableAbilityGroupAdder.cs" />
     <Compile Include="Tweaks\Miscellaneous\NewActivatableAbilityGroups\UnitPartActivatableAbilityGroupEC.cs" />

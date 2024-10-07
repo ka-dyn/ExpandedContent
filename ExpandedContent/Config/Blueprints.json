@@ -3595,7 +3595,9 @@
     "LightningDomainSpellList": "c1256ba5-5b3f-4db6-baa2-20b23ed6f54b",
     "LightningDomainSpellListFeature": "a665456c-c14d-4cd8-8a12-722ee976a434",
     "LightningDomainSpellListFeatureDruid": "0ddf6efa-c2a7-4db4-8fc4-1a649c93a8f2",
-    "StormDruidSpontaneousLightningDomain": "866c3168-ff2c-454c-8951-a8127b41b848"
+    "StormDruidSpontaneousLightningDomain": "866c3168-ff2c-454c-8951-a8127b41b848",
+
+    "SpearWeaponTrainingSelectionProxy": "5db98fc5-f640-41cb-9aad-8109c4a478ce"
 
 
 

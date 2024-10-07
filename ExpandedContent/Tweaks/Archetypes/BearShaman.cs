@@ -66,7 +66,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             });
             var BearShamanWildShape = Helpers.CreateBlueprint<BlueprintFeature>("BearShamanWildShape", bp => {
                 bp.SetName("Wild Shape - Bear Totem Druid");
-                bp.SetDescription("A bear totem druid wild shape is effected by their dedication to the bear sprits. All wild shape forms gained from level 6 onwards are gained 2 levels later than a standard druid, however " +
+                bp.SetDescription("A bear totem druid wild shape is effected by their dedication to the bear spirits. All wild shape forms gained from level 6 onwards are gained 2 levels later than a standard druid, however " +
                     "bear form is gained 2 levels earlier.");
                 bp.IsClassFeature = true;
             });

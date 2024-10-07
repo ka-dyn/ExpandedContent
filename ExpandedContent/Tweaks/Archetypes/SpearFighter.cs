@@ -220,6 +220,22 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.IsClassFeature = true;
             });
 
+
+            var SpearWeaponTrainingSelectionProxy = Helpers.CreateBlueprint<BlueprintFeature>("SpearWeaponTrainingSelectionProxy", bp => {
+                bp.SetName("SpearWeaponTrainingSelectionProxy");
+                bp.SetDescription("To support all features that check for weapon training.");
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        WeaponTrainingSelection.ToReference<BlueprintUnitFactReference>(),
+                    };
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.HideInUI = true;
+                bp.HideNotAvailibleInUI = true;
+            });
+
             SpearFighterArchetype.RemoveFeatures = new LevelEntry[] {
                     Helpers.LevelEntry(1, FighterProficiencies),
                     Helpers.LevelEntry(2, BraveryFeature),
@@ -238,7 +254,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     Helpers.LevelEntry(1, SpearFighterProficiencies),
                     Helpers.LevelEntry(2, BalancedStrideFeature),
                     Helpers.LevelEntry(3, SpearParryFeature),
-                    Helpers.LevelEntry(5, WeaponTrainingSpears),
+                    Helpers.LevelEntry(5, WeaponTrainingSpears, SpearWeaponTrainingSelectionProxy),
                     Helpers.LevelEntry(7, SpearParryRankMarker),
                     Helpers.LevelEntry(11, SpearParryRankMarker),
                     Helpers.LevelEntry(15, SpearParryRankMarker),
