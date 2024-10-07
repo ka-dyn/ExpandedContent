@@ -24,6 +24,7 @@ namespace ExpandedContent.Tweaks.Curses {
             var OracleCurseSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("b0a5118b4fb793241bc7042464b23fab");
             var BeneficialCurse = Resources.GetBlueprint<BlueprintFeatureSelection>("2dda67424ee8e0b4d83ef01a73ca6bff");
             var MysteryGiftFeatureCurseSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("4e7265c0ae1345db90d3375f4ced94cc");
+            var DualCursedSecondCurseSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("cc6fda79e8c340b88c84689414a9abbe");
             var OracleClass = Resources.GetBlueprint<BlueprintCharacterClass>("20ce9bf8af32bee4c8557a045ab499b1");
             var WitchClass = Resources.GetBlueprint<BlueprintCharacterClass>("1b9873f1e7bfe5449bc84d03e9c8e3cc");
             var AccursedWitchArchetype = Resources.GetBlueprint<BlueprintArchetype>("c5f6e53e71059fb4d802ce81a277a12d");
@@ -273,6 +274,8 @@ namespace ExpandedContent.Tweaks.Curses {
             BeneficialCurse.m_Features = BeneficialCurse.m_Features.AppendToArray(BeneficialDeepOneCurseProgression.ToReference<BlueprintFeatureReference>());
             MysteryGiftFeatureCurseSelection.m_AllFeatures = MysteryGiftFeatureCurseSelection.m_AllFeatures.AppendToArray(DeepOneCurseNoProgression.ToReference<BlueprintFeatureReference>());
             MysteryGiftFeatureCurseSelection.m_Features = MysteryGiftFeatureCurseSelection.m_Features.AppendToArray(DeepOneCurseNoProgression.ToReference<BlueprintFeatureReference>());
+            DualCursedSecondCurseSelection.m_AllFeatures = DualCursedSecondCurseSelection.m_AllFeatures.AppendToArray(DeepOneCurseNoProgression.ToReference<BlueprintFeatureReference>());
+            DualCursedSecondCurseSelection.m_Features = DualCursedSecondCurseSelection.m_Features.AppendToArray(DeepOneCurseNoProgression.ToReference<BlueprintFeatureReference>());
 
         }
     }
