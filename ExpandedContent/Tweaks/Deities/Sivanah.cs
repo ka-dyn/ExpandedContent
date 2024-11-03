@@ -44,7 +44,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     "\nDomains: Knowledge, Madness, Magic, Rune, Trickery  " +
                     "\nSubdomains: Deception, Insanity, Memory, Protean, Thought, Wards   " +
                     "\nFavoured Weapon: Bladed scarf (glaive)  " +
-                    "\nHoly Symbol: Veils tied in circle\r\n   " +
+                    "\nHoly Symbol: Veils tied in circle   " +
                     "\nSacred Animal: Coyote   " +
                     "\nSivanah is a mysterious goddess of illusion magic. Legends tell of her mystical veils, each of the first six being the face of a different race-first human, " +
                     "then elf, halfling, gnome, aranea, and naga-but the seventh is never removed, masking her true form. Sivanah works her deeds through reflections in mirrors and " +

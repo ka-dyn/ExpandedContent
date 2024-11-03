@@ -144,7 +144,7 @@ namespace ExpandedContent.Tweaks.Spells {
 
             var GoodberryAbility = Helpers.CreateBlueprint<BlueprintAbility>("GoodberryAbility", bp => {
                 bp.SetName("Goodberry");
-                bp.SetDescription("Casting Goodberry creates a Bunch of Goodberries and stores them in the party inventeory. When eaten the goodberries heal " +
+                bp.SetDescription("Casting Goodberry creates a Bunch of Goodberries and stores them in the party inventory. When eaten the goodberries heal " +
                     "2d4 point of damage, however if they are eaten more than once a day they can make the creature that ate them sick for a short time.");
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.SavingThrowType = SavingThrowType.Unknown;

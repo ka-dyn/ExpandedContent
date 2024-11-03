@@ -371,9 +371,9 @@ namespace ExpandedContent.Tweaks.Spells {
 
             var WallOfFireAbility = Helpers.CreateBlueprint<BlueprintAbility>("WallOfFireAbility", bp => {
                 bp.SetName("Wall of Fire");
-                bp.SetDescription("An immobile, blazing curtain of the shimmering fire springs into existence. The wall deals fire {g|Encyclopedia:Damage}damage{/g} " +
+                bp.SetDescription("An immobile, blazing curtain of shimmering fire springs into existence. The wall deals fire {g|Encyclopedia:Damage}damage{/g} " +
                     "when it appears, to all creatures in the area on your turn each {g|Encyclopedia:Combat_Round}round{/g}, and also to any creature that passes through " +
-                    "it. The damage delt is {g|Encyclopedia:Dice}2d6{/g} points of damage +1 point of damage per {g|Encyclopedia:Caster_Level}caster level{/g} (maximum +20). " +
+                    "it. The damage dealt is {g|Encyclopedia:Dice}2d6{/g} points of damage +1 point of damage per {g|Encyclopedia:Caster_Level}caster level{/g} (maximum +20). " +
                     "The wall deals double damage to undead creatures.");
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.SavingThrowType = SavingThrowType.Unknown;

@@ -45,6 +45,9 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.AddComponent(MutagenFeature.GetComponent<AddAbilityResources>());
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.HideInUI = true;
+                bp.HideNotAvailibleInUI = true;
             });
             var PerfectRecallFeature = Helpers.CreateBlueprint<BlueprintFeature>("PerfectRecallFeature", bp => {
                 bp.SetName("Perfect Recall");

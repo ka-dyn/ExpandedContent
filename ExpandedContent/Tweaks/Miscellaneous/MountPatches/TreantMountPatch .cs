@@ -36,36 +36,35 @@ namespace ExpandedContent.Tweaks.Miscellaneous.MountPatches {
 
             offsets.PelvisIkTarget = MountTools.CreateMountBone(view.Pelvis.FindChildRecursive("Locator_Arm_LeftUpper_00"),
                 "Pelvis",
-                //new Vector3(-0.39f, -1.12f, 0f),
-                new Vector3(0f, 0f, 0f),
+                new Vector3(-35f, 0f, 35f),
                 new Vector3(0f, 0f, 0f));
             offsets.LeftFootIkTarget = MountTools.CreateMountBone(view.Pelvis.FindChildRecursive("Locator_Arm_LeftUpper_00"),
                 "LeftFoot",
-                new Vector3(-1f, -0.25f, 0.7f),
+                new Vector3(-78f, -70f, -29f),
                 new Vector3(0f, 0f, 0f));
             offsets.RightFootIkTarget = MountTools.CreateMountBone(view.Pelvis.FindChildRecursive("Locator_Arm_LeftUpper_00"),
                 "RightFoot",
-                new Vector3(-1f, -0.25f, -0.7f),
+                new Vector3(-28f, -70f, -29f),
                 new Vector3(0f, 0f, 0f));
             offsets.LeftKneeIkTarget = MountTools.CreateMountBone(view.Pelvis.FindChildRecursive("Locator_Arm_LeftUpper_00"),
                 "LeftKnee",
-                new Vector3(-1f, -1f, 0.2f),
+                new Vector3(0f, -2000f, 0f),
                 new Vector3(0f, 0f, 0f));
             offsets.RightKneeIkTarget = MountTools.CreateMountBone(view.Pelvis.FindChildRecursive("Locator_Arm_LeftUpper_00"),
                 "RightKnee",
-                new Vector3(-1f, -1f, -0.2f),
+                new Vector3(0f, -2000f, 0f),
                 new Vector3(0f, 0f, 0f));
 
-            offsets.Hands = MountTools.CreateMountBone(view.Pelvis.FindChildRecursive("Locator_Arm_LeftUpper_00"),
+            offsets.Hands = MountTools.CreateMountBone(view.Pelvis.FindChildRecursive("Locator_Arm_LeftUpper_00"),//Fails - Locator_Arm_LeftUpper_00 - L_Arm_Clavicle - Locator_Torso_Upper_04
                 "Hands",
-                new Vector3(-0.8f, -1.15f, 0f),
+                new Vector3(-38f, -22f, 65f),
                 new Vector3(0f, 0f, 0f));
             #endregion
             #region Medium Config
             var MediumOffsetConfig = ScriptableObject.CreateInstance<RaceMountOffsetsConfig>();
             MediumOffsetConfig.name = "MediumTreant_MountConfig";
             MediumOffsetConfig.offsets = new RaceMountOffsetsConfig.MountOffsetData[] {
-                //Normal -
+                //Normal - Done
                 new RaceMountOffsetsConfig.MountOffsetData() {
                     Races = new List<BlueprintRaceReference>() {
                         MountTools.RaceOptions.Aasimar,
@@ -100,7 +99,7 @@ namespace ExpandedContent.Tweaks.Miscellaneous.MountPatches {
 
                     HandsPosition = new Vector3(0f, 0f, 0f),
 
-                    PelvisPositionWeight = 1f,
+                    PelvisPositionWeight = 0.9f,
                     PelvisRotationWeight = 1.0f,
                     FootsPositionWeight = 1.0f,
                     FootsRotationWeight = 0f,
@@ -325,7 +324,7 @@ namespace ExpandedContent.Tweaks.Miscellaneous.MountPatches {
             var LargeOffsetConfig = ScriptableObject.CreateInstance<RaceMountOffsetsConfig>();
             LargeOffsetConfig.name = "LargeTreant_MountConfig";
             LargeOffsetConfig.offsets = new RaceMountOffsetsConfig.MountOffsetData[] {
-                //Normal -
+                //Normal - Done
                 new RaceMountOffsetsConfig.MountOffsetData() {
                     Races = new List<BlueprintRaceReference>() {
                         MountTools.RaceOptions.Aasimar,

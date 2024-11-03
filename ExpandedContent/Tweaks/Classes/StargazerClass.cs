@@ -150,6 +150,20 @@ namespace ExpandedContent.Tweaks.Classes {
                     AdditionalLevel = 0
                 }
             };
+            //Adding Stargazer to some ability scaling so I can play guilwdars yea
+            var ClericAbilities = new BlueprintAbility[] {
+                Resources.GetBlueprint<BlueprintAbility>("f5fc9a1a2a3c1a946a31b320d1dd31b2"),//ClericChannelEnergyPositiveHeal
+                Resources.GetBlueprint<BlueprintAbility>("279447a6bf2d3544d93a0a39c3b8e91d"),//ClericChannelEnergyPositveHarm
+                Resources.GetBlueprint<BlueprintAbility>("3ef665bb337d96946bcf98a11103f32f")//EcclesitherurgeLongBlessing
+            };
+            foreach (var ability in ClericAbilities) {
+                ability.GetComponents<ContextRankConfig>()
+                    .Where(c => c.m_BaseValueType == ContextRankBaseValueType.ClassLevel)
+                    .ForEach(c => c.m_Class = c.m_Class.AppendToArray(StargazerClass.ToReference<BlueprintCharacterClassReference>()));            
+            };
+            
+
+
             //Guiding Light
             var WitchFamiliarSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("29a333b7ccad3214ea3a51943fa0d8e9");
             var StargazerGuidingLightFeatureSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("StargazerGuidingLightFeatureSelection", bp => {

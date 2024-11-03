@@ -45,7 +45,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.SetDescription("You create one or more bolts of negative energy infused with shadow pulled from the Shadow Plane. You can fire one bolt, plus one " +
                     "for every four levels beyond 5th (to a maximum of three bolts at 13th level) at the same target, each requiring a ranged touch attack to hit. Each " +
                     "bolt deals 4d6 points of damage to a living creature or heals 4d6 points of damage to an undead creature. Furthermore, the bolt’s energy spreads " +
-                    "over the skin of creature, possibly blinding it for a short time. Any creature struck by a bolt must succeed at a Reflex saving throw or become " +
+                    "over the skin of the creature, possibly blinding it for a short time. Any creature struck by a bolt must succeed at a Reflex saving throw or become " +
                     "blinded for 1 round.");
                 bp.AddComponent<AbilityDeliverProjectile>(c => {
                     c.m_Projectiles = new BlueprintProjectileReference[3] {
@@ -244,7 +244,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.ActionType = UnitCommand.CommandType.Standard;
                 bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten | Metamagic.Reach | Metamagic.CompletelyNormal;
                 bp.LocalizedDuration = Helpers.CreateString("GloomblindBoltsAbility.Duration", "1 round");
-                bp.LocalizedSavingThrow = Helpers.CreateString("GloomblindBoltsAbility.SavingThrow", "Relex partial");
+                bp.LocalizedSavingThrow = Helpers.CreateString("GloomblindBoltsAbility.SavingThrow", "Reflex partial");
             });
             var GloomblindBoltsScroll = ItemTools.CreateScroll("ScrollOfGloomblindBolts", Icon_ScrollOfGloomblindBolts, GloomblindBoltsAbility, 3, 5);
             VenderTools.AddScrollToLeveledVenders(GloomblindBoltsScroll);
