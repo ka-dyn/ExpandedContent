@@ -43,8 +43,6 @@ namespace ExpandedContent.Tweaks.AnimalCompanions {
             var EntangleSpell = Resources.GetBlueprint<BlueprintAbility>("0fd00984a2c0e0a429cf1a911b4ec5ca");
 
 
-            var UnmountableFeature = Resources.GetModBlueprint<BlueprintFeature>("UnmountableFeature");
-
             var CompanionSaplingTreantConstructFeature = Helpers.CreateBlueprint<BlueprintFeature>("CompanionSaplingTreantConstructFeature", bp => {
                 bp.SetName("Construct Smasher");
                 bp.SetDescription("The sapling treant deals double damage to constructs and objects.");
@@ -229,7 +227,6 @@ namespace ExpandedContent.Tweaks.AnimalCompanions {
                 bp.m_AddFacts = new BlueprintUnitFactReference[] {
                     CompanionUpdateSaplingTreantFeature.ToReference<BlueprintUnitFactReference>(),
                     PlantType.ToReference<BlueprintUnitFactReference>(),
-                    UnmountableFeature.ToReference<BlueprintUnitFactReference>(),
                     CompanionSaplingTreantConstructFeature.ToReference<BlueprintUnitFactReference>(),
                     AnimalCompanionSlotFeature.ToReference<BlueprintUnitFactReference>()
                 };
@@ -245,8 +242,7 @@ namespace ExpandedContent.Tweaks.AnimalCompanions {
                     "\n{g|Encyclopedia:Attack}Attack{/g}: 2 slams ({g|Encyclopedia:Dice}1d6{/g}) " +
                     "\n{g|Encyclopedia:Ability_Scores}Ability scores{/g}: {g|Encyclopedia:Strength}Str{/g} 15, {g|Encyclopedia:Dexterity}Dex{/g} 10, {g|Encyclopedia:Constitution}Con{/g} 12, {g|Encyclopedia:Intelligence}Int{/g} 2, {g|Encyclopedia:Wisdom}Wis{/g} 12, {g|Encyclopedia:Charisma}Cha{/g} 7" +
                     "\nSpecial Attacks: The sapling treant deals double damage to constructs and objects." +
-                    "\nAt 4th level size becomes Large, Str +8, Dex -2, Con +4, +2 natural armor, and also gains an additional slam attack." +
-                    "\nThis animal companion can't be used as a mount.");
+                    "\nAt 4th level size becomes Large, Str +8, Dex -2, Con +4, +2 natural armor, and also gains an additional slam attack.");
                 bp.m_Icon = EntangleSpell.m_Icon;
                 bp.AddComponent<AddPet>(c => {
                     c.Type = PetType.AnimalCompanion;

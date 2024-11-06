@@ -1807,7 +1807,7 @@ namespace ExpandedContent.Tweaks.Classes {
             var MountedBuff = Resources.GetBlueprint<BlueprintBuff>("b2d13e8f3bb0f1d4c891d71b4d983cf7");
             var VanishBuff = Resources.GetBlueprint<BlueprintBuff>("e5b7ef8d49215314daaf0404349d42a6");
             var FreedomofMovementBuff = Resources.GetBlueprint<BlueprintBuff>("1533e782fca42b84ea370fc1dcbf4fc1");
-            //Stuff for Abilities
+            #region Stuff for Abilities
             var StargazerSiderealTheDaughterAuraEffect = Helpers.CreateBuff("StargazerSiderealTheDaughterAuraEffect", bp => {
                 bp.SetName("The Daughter Aura Effect");
                 bp.SetDescription("The Daughter emboldens hearts with the promise of springtime and new life. The stargazer and allies within 10 feet gain a +4 morale bonus on saving " +
@@ -2033,6 +2033,7 @@ namespace ExpandedContent.Tweaks.Classes {
                 bp.LocalizedDuration = Helpers.CreateString("StargazerSiderealTheWagonAbility.Duration", "1 round");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
+            #endregion
             #region Stars Dance
             var StarsDanceBridgeIcon = AssetLoader.LoadInternal("Skills", "Icon_StarsDanceBridge.jpg");
             var StarsDanceDaughterIcon = AssetLoader.LoadInternal("Skills", "Icon_StarsDanceDaughter.jpg");
@@ -2077,7 +2078,7 @@ namespace ExpandedContent.Tweaks.Classes {
                     c.Value = 5;
                 });
                 bp.HideInUI = false;
-                bp.IsClassFeature = false;
+                bp.IsClassFeature = true;
             });
             var StargazerStarsDanceDaughterFeature = Helpers.CreateBlueprint<BlueprintFeature>("StargazerStarsDanceDaughterFeature", bp => {
                 bp.SetName("Sidereal Arcana - The Daughter");
@@ -2092,7 +2093,7 @@ namespace ExpandedContent.Tweaks.Classes {
                     c.m_Buff = StargazerSiderealTheDaughterAura.ToReference<BlueprintBuffReference>();
                 });
                 bp.HideInUI = false;
-                bp.IsClassFeature = false;
+                bp.IsClassFeature = true;
             });
             var StargazerStarsDanceFollowerFeature = Helpers.CreateBlueprint<BlueprintFeature>("StargazerStarsDanceFollowerFeature", bp => {
                 bp.SetName("Sidereal Arcana - The Follower");
@@ -2112,7 +2113,7 @@ namespace ExpandedContent.Tweaks.Classes {
                     c.Value = 4;
                 });
                 bp.HideInUI = false;
-                bp.IsClassFeature = false;
+                bp.IsClassFeature = true;
             });
             var StargazerStarsDanceLanternBearerFeature = Helpers.CreateBlueprint<BlueprintFeature>("StargazerStarsDanceLanternBearerFeature", bp => {
                 bp.SetName("Sidereal Arcana - The Lantern Bearer");
@@ -2123,7 +2124,7 @@ namespace ExpandedContent.Tweaks.Classes {
                     c.BonusCasterLevel = 2;
                 });
                 bp.HideInUI = false;
-                bp.IsClassFeature = false;
+                bp.IsClassFeature = true;
             });
             var StargazerStarsDanceMotherFeature = Helpers.CreateBlueprint<BlueprintFeature>("StargazerStarsDanceMotherFeature", bp => {
                 bp.SetName("Sidereal Arcana - The Mother");
@@ -2229,7 +2230,7 @@ namespace ExpandedContent.Tweaks.Classes {
                     c.Modifier = 2;
                 });
                 bp.HideInUI = false;
-                bp.IsClassFeature = false;
+                bp.IsClassFeature = true;
             });
             var StargazerStarsDanceNewlywedsFeature = Helpers.CreateBlueprint<BlueprintFeature>("StargazerStarsDanceNewlywedsFeature", bp => {
                 bp.SetName("Sidereal Arcana - The Newlyweds");
@@ -2246,7 +2247,7 @@ namespace ExpandedContent.Tweaks.Classes {
                     c.Value = 2;
                 });
                 bp.HideInUI = false;
-                bp.IsClassFeature = false;
+                bp.IsClassFeature = true;
             });
             var StargazerStarsDancePackFeature = Helpers.CreateBlueprint<BlueprintFeature>("StargazerStarsDancePackFeature", bp => {
                 bp.SetName("Sidereal Arcana - The Pack");
@@ -2258,7 +2259,7 @@ namespace ExpandedContent.Tweaks.Classes {
                     c.Descriptor = ModifierDescriptor.UntypedStackable;
                 });
                 bp.HideInUI = false;
-                bp.IsClassFeature = false;
+                bp.IsClassFeature = true;
             });
             var StargazerStarsDancePatriarchFeature = Helpers.CreateBlueprint<BlueprintFeature>("StargazerStarsDancePatriarchFeature", bp => {
                 bp.SetName("Sidereal Arcana - The Patriarch");
@@ -2275,7 +2276,7 @@ namespace ExpandedContent.Tweaks.Classes {
                     c.Descriptor = ModifierDescriptor.UntypedStackable;
                 });
                 bp.HideInUI = false;
-                bp.IsClassFeature = false;
+                bp.IsClassFeature = true;
             });
             var StargazerStarsDanceRiderFeature = Helpers.CreateBlueprint<BlueprintFeature>("StargazerStarsDanceRiderFeature", bp => {
                 bp.SetName("Sidereal Arcana - The Rider");
@@ -2285,7 +2286,7 @@ namespace ExpandedContent.Tweaks.Classes {
                     c.m_ExtraEffectBuff = StargazerSiderealTheRiderMountedEffect.ToReference<BlueprintBuffReference>();
                 });
                 bp.HideInUI = false;
-                bp.IsClassFeature = false;
+                bp.IsClassFeature = true;
             });
             var StargazerStarsDanceStargazerFeature = Helpers.CreateBlueprint<BlueprintFeature>("StargazerStarsDanceStargazerFeature", bp => {
                 bp.SetName("Sidereal Arcana - The Stargazer");
@@ -2301,7 +2302,7 @@ namespace ExpandedContent.Tweaks.Classes {
                     c.Value = 2;
                 });
                 bp.HideInUI = false;
-                bp.IsClassFeature = false;
+                bp.IsClassFeature = true;
             });
             var StargazerStarsDanceStrangerFeature = Helpers.CreateBlueprint<BlueprintFeature>("StargazerStarsDanceStrangerFeature", bp => {
                 bp.SetName("Sidereal Arcana - The Stranger");
@@ -2318,7 +2319,7 @@ namespace ExpandedContent.Tweaks.Classes {
                     };
                 });                
                 bp.HideInUI = false;
-                bp.IsClassFeature = false;
+                bp.IsClassFeature = true;
             });
             var StargazerStarsDanceThrushFeature = Helpers.CreateBlueprint<BlueprintFeature>("StargazerStarsDanceThrushFeature", bp => {
                 bp.SetName("Sidereal Arcana - The Thrush");
@@ -2352,7 +2353,7 @@ namespace ExpandedContent.Tweaks.Classes {
                     };
                 });
                 bp.HideInUI = false;
-                bp.IsClassFeature = false;
+                bp.IsClassFeature = true;
             });
             var StargazerStarsDanceWagonFeature = Helpers.CreateBlueprint<BlueprintFeature>("StargazerStarsDanceWagonFeature", bp => {
                 bp.SetName("Sidereal Arcana - The Wagon");
@@ -2376,9 +2377,9 @@ namespace ExpandedContent.Tweaks.Classes {
                     c.CappedMinimum = false;
                 });
                 bp.HideInUI = false;
-                bp.IsClassFeature = false;
+                bp.IsClassFeature = true;
             });
-            //Stars Dance Ability Parents - Variants added after buffs
+            #region Stars Dance Ability Parents - Variants added after buffs
             var StargazerStarsDanceBridgeSwapParent = Helpers.CreateBlueprint<BlueprintAbility>("StargazerStarsDanceBridgeSwapParent", bp => {
                 bp.SetName("Stars’ Dance - The Bridge");
                 bp.SetDescription("Once per day, the stargazer can replace one of his sidereal arcana with any other one. " +
@@ -2765,6 +2766,7 @@ namespace ExpandedContent.Tweaks.Classes {
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
+            #endregion
             //Stars Dance Buffs
             var StargazerStarsDanceBridgeBuff = Helpers.CreateBuff("StargazerStarsDanceBridgeBuff", bp => {
                 bp.SetName("Sidereal Arcana - The Bridge");
