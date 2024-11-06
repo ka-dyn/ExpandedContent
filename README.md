@@ -65,7 +65,7 @@ New Animal Companions
 
 New Plant Companions
 
-- Sapling Treant
+- Sapling Treant (Rideable)
 - Crawling Mound (Crawling Vine from the tabletop, but using a small Shambling Mound model)
 
 New Animal Archetype
