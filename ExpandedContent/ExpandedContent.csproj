@@ -362,6 +362,7 @@
     <Compile Include="Tweaks\Deities\Dahak.cs" />
     <Compile Include="Tweaks\Deities\DeitySelection.cs" />
     <Compile Include="Tweaks\DemonLords\CythVsug.cs" />
+    <Compile Include="Tweaks\DemonLords\Abraxas.cs" />
     <Compile Include="Tweaks\DemonLords\Shax.cs" />
     <Compile Include="Tweaks\DemonLords\Jezelda.cs" />
     <Compile Include="Tweaks\DemonLords\Gogunta.cs" />
@@ -644,6 +645,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Abhoth.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Abraxas.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Achaekek.jpg">

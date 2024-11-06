@@ -51,6 +51,7 @@ namespace ExpandedContent.Tweaks.Deities {
             var YamatsumiFeature = Resources.GetModBlueprint<BlueprintFeature>("YamatsumiFeature");
 
             //Demon Lords
+            var AbraxasFeature = Resources.GetModBlueprint<BlueprintFeature>("AbraxasFeature");
             var AreshkegalFeature = Resources.GetBlueprint<BlueprintFeature>("d714ecb5d5bb89a42957de0304e459c9");
             var BaphometFeature = Resources.GetBlueprint<BlueprintFeature>("bd72ca8ffcfec5745899ac56c93f12c5");
             var CythVsugFeature = Resources.GetModBlueprint<BlueprintFeature>("CythVsugFeature");
@@ -324,6 +325,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     "the number of demon lords.");
                 bp.m_Icon = DemonLordsIcon;
                 bp.m_AllFeatures = new BlueprintFeatureReference[] {
+                AbraxasFeature.ToReference<BlueprintFeatureReference>(),
                 AreshkegalFeature.ToReference<BlueprintFeatureReference>(),
                 BaphometFeature.ToReference<BlueprintFeatureReference>(),
                 CythVsugFeature.ToReference<BlueprintFeatureReference>(),
