@@ -35,8 +35,6 @@ namespace ExpandedContent.Tweaks.Spells {
             var BurstOfNettlesIcon = AssetLoader.LoadInternal("Skills", "Icon_BurstOfNettles.jpg");
             var Icon_ScrollOfBurstOfNettles = AssetLoader.LoadInternal("Items", "Icon_ScrollOfBurstOfNettles.png");
 
-            var CausticEruptionFx = Resources.GetBlueprint<BlueprintAbility>("8c29e953190cc67429dc9c701b16b7c2").GetComponent<AbilitySpawnFx>();
-            var WailOfBansheeFx = Resources.GetBlueprint<BlueprintAbility>("b24583190f36a8442b212e45226c54fc").GetComponent<AbilitySpawnFx>();
 
             var BurstOfNettlesBuff = Helpers.CreateBuff("BurstOfNettlesBuff", bp => {
                 bp.SetName("Burst of Nettles");
