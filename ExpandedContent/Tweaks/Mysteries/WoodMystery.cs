@@ -2405,7 +2405,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     c.OrientationMode = AbilitySpawnFxOrientation.Copy;
                 });
                 bp.m_Icon = ThornBurstIcon;
-                bp.Type = AbilityType.Spell;
+                bp.Type = AbilityType.Supernatural;
                 bp.Range = AbilityRange.Personal;
                 bp.CanTargetPoint = false;
                 bp.CanTargetEnemies = false;

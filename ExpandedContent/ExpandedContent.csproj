@@ -512,6 +512,7 @@
     <Compile Include="Extensions\ExtentionMethods.cs" />
     <Compile Include="Resources.cs" />
     <Compile Include="SaveGamePatch.cs" />
+    <Compile Include="Tweaks\Spells\BurstOfNettles.cs" />
     <Compile Include="Tweaks\Spells\DanceOfAThousandCuts.cs" />
     <Compile Include="Tweaks\Spells\DanceOfAHundredCuts.cs" />
     <Compile Include="Tweaks\Spells\ClaySkin.cs" />
