@@ -92,7 +92,7 @@ New Deities
 
 Most of the deities from the tabletop game are included, split into categories based on group and hooked up with the correct Domains and features
 
-- All deities of Ancient Osirion, All deities of Tian Xia, The Eldest, The Empyreal Lords, Draconic Deities and many more.
+- All deities of Ancient Osirion, All deities of Tian Xia, The Eldest, The Empyreal Lords, and many more.
 
 - Treerazer
 
@@ -117,43 +117,38 @@ New Shaman Spirits
 
 - Heavens
 
-New Domains / Subdomains
-
-- Domains: 
-  - Scalykind
-
-- Subdomains: 
-  - Agathion
-  - Arcane
-  - Archon
-  - Blood
-  - Caves
-  - Curse
-  - Defence
-  - Demon
-  - Dragon
-  - Ferocity
-  - Fist
-  - Fur
-  - Growth
-  - Heroism
-  - Ice
-  - Lightning
-  - Loyalty
-  - Lust
-  - Psychopomp
-  - Rage
-  - Resolve
-  - Restoration
-  - Revelation
-  - Revolution
-  - Rivers
-  - Stars
-  - Storm
-  - Thievery
-  - Undead
-  - Whimsy
-  - Wind
+New Subdomains
+- Agathion
+- Arcane
+- Archon
+- Blood
+- Caves
+- Curse
+- Defence
+- Demon
+- Dragon
+- Ferocity
+- Fist
+- Fur
+- Growth
+- Heroism
+- Ice
+- Lightning
+- Loyalty
+- Lust
+- Psychopomp
+- Rage
+- Resolve
+- Restoration
+- Revelation
+- Revolution
+- Rivers
+- Stars
+- Storm
+- Thievery
+- Undead
+- Whimsy
+- Wind
 
 New Blessings
 - Artifice
