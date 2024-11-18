@@ -1,4 +1,5 @@
 ﻿using ExpandedContent.Extensions;
+using ExpandedContent.Tweaks.Classes;
 using ExpandedContent.Utilities;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
@@ -66,6 +67,7 @@ namespace ExpandedContent.Tweaks.Deities {
                 bp.MagicDeceiverLock();
                 bp.DisallowNewMantisZealot();
 
+                bp.LazyLock();
 
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
                 bp.AddComponent<PrerequisiteAlignment>(c => {
@@ -80,6 +82,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     DeityTools.DomainAllowed.ChaosDomainAllowed,
                     DeityTools.DomainAllowed.DestructionDomainAllowed,
                     DeityTools.DomainAllowed.EvilDomainAllowed,
+                    DeityTools.DomainAllowed.OldScalykindDomainAllowed,
                     DeityTools.DomainAllowed.ScalykindDomainAllowed,
                     DeityTools.DomainAllowed.DragonDomainAllowed,
                     DeityTools.DomainAllowed.DemonDomainEvilAllowed,
@@ -184,10 +187,52 @@ namespace ExpandedContent.Tweaks.Deities {
             }));
             DeityTools.LazySacredWeaponMaker("Dahak", DahakFeature, WeaponCategory.Quarterstaff, WeaponCategory.Bite);
 
+
+            var NewDahak = Resources.GetBlueprint<BlueprintFeature>("8f7118d68f6e44dea94dddb51f38cbdd");
+            NewDahak.TemporaryContext(bp => {
+                bp.SetDisallowedArchetype(InquistorClass, SwornOfTheEldestArchetype);
+                bp.SetAllowedDomains(
+                    DeityTools.DomainAllowed.OldScalykindDomainAllowed,
+                    DeityTools.DomainAllowed.DragonDomainAllowed,
+                    DeityTools.DomainAllowed.DemonDomainEvilAllowed,
+                    DeityTools.DomainAllowed.DemonDomainChaosAllowed,
+                    DeityTools.DomainAllowed.ThieveryDomainAllowed,
+                    DeityTools.DomainAllowed.RageDomainAllowed,
+                    DeityTools.SeparatistDomainAllowed.ArcaneDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.LightningDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.BloodDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.CavesDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.CurseDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.DefenseDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.FerocityDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.FistDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.FurDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.GrowthDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.HeroismDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.LustDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.PsychopompDomainDeathAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.PsychopompDomainReposeAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.ResolveDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.RestorationDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.RevelationDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.RevolutionDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.RiversDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.StarsDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.StormDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.WhimsyDomainAllowedSeparatist,//Chaos
+                    DeityTools.SeparatistDomainAllowed.WindDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.MurderDomainAllowedSeparatist);
+            });
+
+
+
             var ClawOfTheFalseWyrmArchetype = Resources.GetModBlueprint<BlueprintArchetype>("ClawOfTheFalseWyrmArchetype");
             ClawOfTheFalseWyrmArchetype.AddComponent<PrerequisiteFeaturesFromList>(c => {
-                c.m_Features = new BlueprintFeatureReference[1] { DahakFeature.ToReference<BlueprintFeatureReference>() };
-                c.Amount = 0;
+                c.m_Features = new BlueprintFeatureReference[] { 
+                    DahakFeature.ToReference<BlueprintFeatureReference>(),
+                    NewDahak.ToReference<BlueprintFeatureReference>() 
+                };
+                c.Amount = 1;
                 c.Group = Prerequisite.GroupType.All;
                 c.CheckInProgression = false;
                 c.HideInUI = false;

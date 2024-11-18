@@ -84,6 +84,7 @@ namespace ExpandedContent.Tweaks.TheElderMythos {
                     DeityTools.DomainAllowed.ChaosDomainAllowed,
                     DeityTools.DomainAllowed.CommunityDomainAllowed,
                     DeityTools.DomainAllowed.ProtectionDomainAllowed,
+                    DeityTools.DomainAllowed.OldScalykindDomainAllowed,
                     DeityTools.DomainAllowed.ScalykindDomainAllowed,
                     DeityTools.DomainAllowed.DragonDomainAllowed,
                     DeityTools.DomainAllowed.DefenseDomainAllowed,

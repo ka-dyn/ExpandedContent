@@ -46,6 +46,7 @@ namespace ExpandedContent.Utilities {
             public static BlueprintFeature ProtectionDomainAllowed => Resources.GetBlueprint<BlueprintFeature>("d4ce7592bd12d63439907ad64e986e59");
             public static BlueprintFeature ReposeDomainAllowed => Resources.GetBlueprint<BlueprintFeature>("076ba1e3a05fac146acfc956a9f41e95");
             public static BlueprintFeature RuneDomainAllowed => Resources.GetBlueprint<BlueprintFeature>("77637f81d6aa33b4f82873d7934e8c4b");
+            public static BlueprintFeature ScalykindDomainAllowed => Resources.GetBlueprint<BlueprintFeature>("c8326083da8e40c4931f473bfa70f9f0");
             public static BlueprintFeature StrengthDomainAllowed => Resources.GetBlueprint<BlueprintFeature>("58d2867520de17247ac6988a31f9e397");
             public static BlueprintFeature SunDomainAllowed => Resources.GetBlueprint<BlueprintFeature>("e28412c548ff21a49ac5b8b792b0aa9b");
             public static BlueprintFeature TravelDomainAllowed => Resources.GetBlueprint<BlueprintFeature>("c008853fe044bd442ae8bd22260592b7");
@@ -83,7 +84,7 @@ namespace ExpandedContent.Utilities {
             public static BlueprintFeature RevelationDomainAllowed => Resources.GetModBlueprint<BlueprintFeature>("RevelationDomainAllowed");
             public static BlueprintFeature RevolutionDomainAllowed => Resources.GetModBlueprint<BlueprintFeature>("RevolutionDomainAllowed");
             public static BlueprintFeature RiversDomainAllowed => Resources.GetModBlueprint<BlueprintFeature>("RiversDomainAllowed");
-            public static BlueprintFeature ScalykindDomainAllowed => Resources.GetModBlueprint<BlueprintFeature>("ScalykindDomainAllowed");
+            public static BlueprintFeature OldScalykindDomainAllowed => Resources.GetModBlueprint<BlueprintFeature>("ScalykindDomainAllowed");
             public static BlueprintFeature StarsDomainAllowed => Resources.GetModBlueprint<BlueprintFeature>("StarsDomainAllowed");
             public static BlueprintFeature StormDomainAllowed => Resources.GetModBlueprint<BlueprintFeature>("StormDomainAllowed");
             public static BlueprintFeature ThieveryDomainAllowed => Resources.GetModBlueprint<BlueprintFeature>("ThieveryDomainAllowed");
@@ -120,6 +121,7 @@ namespace ExpandedContent.Utilities {
             public static BlueprintFeature ProtectionDomainAllowedSeparatist => Resources.GetBlueprint<BlueprintFeature>("5d8dc80eb8714ad2a14353a0e3cbd20c");
             public static BlueprintFeature ReposeDomainAllowedSeparatist => Resources.GetBlueprint<BlueprintFeature>("928ec21e21fd471cac25bec3ea3dfaa9");
             public static BlueprintFeature RuneDomainAllowedSeparatist => Resources.GetBlueprint<BlueprintFeature>("5cf9bc2be3ba4a56a1e17c10f1b5d693");
+            public static BlueprintFeature ScalykindDomainAllowedSeparatist => Resources.GetBlueprint<BlueprintFeature>("4448c8005c854a72a0853319171f29e6");
             public static BlueprintFeature StrengthDomainAllowedSeparatist => Resources.GetBlueprint<BlueprintFeature>("f07500d237ac4ac9b10860b72a25e8f1");
             public static BlueprintFeature SunDomainAllowedSeparatist => Resources.GetBlueprint<BlueprintFeature>("10958fa969f84b6486271b9559016058");
             public static BlueprintFeature TravelDomainAllowedSeparatist => Resources.GetBlueprint<BlueprintFeature>("deb547decbf845b6aaa176c2717723c8");
@@ -157,7 +159,7 @@ namespace ExpandedContent.Utilities {
             public static BlueprintFeature RevelationDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("RevelationDomainAllowedSeparatist");
             public static BlueprintFeature RevolutionDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("RevolutionDomainAllowedSeparatist");
             public static BlueprintFeature RiversDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("RiversDomainAllowedSeparatist");
-            public static BlueprintFeature ScalykindDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("ScalykindDomainAllowedSeparatist");
+            //public static BlueprintFeature ScalykindDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("ScalykindDomainAllowedSeparatist");
             public static BlueprintFeature StarsDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("StarsDomainAllowedSeparatist");
             public static BlueprintFeature StormDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("StormDomainAllowedSeparatist");
             public static BlueprintFeature ThieveryDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("ThieveryDomainAllowedSeparatist");

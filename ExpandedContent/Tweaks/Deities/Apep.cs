@@ -84,6 +84,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     DeityTools.DomainAllowed.DarknessDomainAllowed,
                     DeityTools.DomainAllowed.DestructionDomainAllowed,
                     DeityTools.DomainAllowed.EvilDomainAllowed,
+                    DeityTools.DomainAllowed.OldScalykindDomainAllowed,
                     DeityTools.DomainAllowed.ScalykindDomainAllowed,
                     DeityTools.DomainAllowed.DragonDomainAllowed,
                     DeityTools.DomainAllowed.DemonDomainChaosAllowed,

@@ -3599,7 +3599,11 @@
 
     "SpearWeaponTrainingSelectionProxy": "5db98fc5-f640-41cb-9aad-8109c4a478ce",
 
-    "AbraxasFeature": "ae08a4ec-ad47-4f65-8788-c1f302764da8"
+    "AbraxasFeature": "ae08a4ec-ad47-4f65-8788-c1f302764da8",
+
+    "BurstOfNettlesAbility": "60185484-0f50-4063-a251-2d341524a3c9",
+    "BurstOfNettlesBuff": "beceee1e-54a1-45cf-8c6d-fa2ae65a8dd4",
+    "ScrollOfBurstOfNettles": "255f2478-c5fb-4e30-af44-57255527ee50"
 
 
 

@@ -71,6 +71,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     };
                 });
                 bp.SetAllowedDomains(
+                    DeityTools.DomainAllowed.OldScalykindDomainAllowed,
                     DeityTools.DomainAllowed.ScalykindDomainAllowed,
                     DeityTools.DomainAllowed.ChaosDomainAllowed,
                     DeityTools.DomainAllowed.GoodDomainAllowed,

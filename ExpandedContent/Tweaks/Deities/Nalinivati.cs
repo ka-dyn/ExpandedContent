@@ -78,6 +78,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     DeityTools.DomainAllowed.MagicDomainAllowed,
                     DeityTools.DomainAllowed.NobilityDomainAllowed,
                     DeityTools.DomainAllowed.RuneDomainAllowed,
+                    DeityTools.DomainAllowed.OldScalykindDomainAllowed,
                     DeityTools.DomainAllowed.ScalykindDomainAllowed,
                     DeityTools.DomainAllowed.ArcaneDomainAllowed,
                     DeityTools.DomainAllowed.LustDomainAllowed,

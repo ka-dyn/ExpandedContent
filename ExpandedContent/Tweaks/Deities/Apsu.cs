@@ -9,6 +9,7 @@ using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Enums;
+using ExpandedContent.Tweaks.Classes;
 
 namespace ExpandedContent.Tweaks.Deities {
     internal class Apsu {
@@ -67,6 +68,7 @@ namespace ExpandedContent.Tweaks.Deities {
                 bp.MagicDeceiverLock();
                 bp.DisallowNewMantisZealot();
 
+                bp.LazyLock();
 
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
                 bp.AddComponent<PrerequisiteAlignment>(c => {
@@ -82,6 +84,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     DeityTools.DomainAllowed.LawDomainAllowed,
                     DeityTools.DomainAllowed.TravelDomainAllowed,
                     DeityTools.DomainAllowed.ArtificeDomainAllowed,
+                    DeityTools.DomainAllowed.OldScalykindDomainAllowed,
                     DeityTools.DomainAllowed.ScalykindDomainAllowed,
                     DeityTools.DomainAllowed.ArchonDomainGoodAllowed,
                     DeityTools.DomainAllowed.ArchonDomainLawAllowed,
@@ -184,6 +187,45 @@ namespace ExpandedContent.Tweaks.Deities {
 
             }));
             DeityTools.LazySacredWeaponMaker("Apsu", ApsuFeature, WeaponCategory.Bite, WeaponCategory.Quarterstaff, WeaponCategory.UnarmedStrike);
+
+            var NewApsu = Resources.GetBlueprint<BlueprintFeature>("772e2673945e4583a804ae01f67efea0");
+            NewApsu.TemporaryContext(bp => {
+                bp.SetDisallowedArchetype(InquistorClass, SwornOfTheEldestArchetype);
+                bp.SetAllowedDomains(
+                    DeityTools.DomainAllowed.OldScalykindDomainAllowed,
+                    DeityTools.DomainAllowed.ArchonDomainGoodAllowed,
+                    DeityTools.DomainAllowed.ArchonDomainLawAllowed,
+                    DeityTools.DomainAllowed.DragonDomainAllowed,
+                    DeityTools.SeparatistDomainAllowed.ArcaneDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.LightningDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.AgathionDomainAllowedSeparatist,//Good
+                    DeityTools.SeparatistDomainAllowed.BloodDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.CavesDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.CurseDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.DefenseDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.FerocityDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.FistDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.FurDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.GrowthDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.HeroismDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.LoyaltyDomainAllowedSeparatist,//Lawful
+                    DeityTools.SeparatistDomainAllowed.LustDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.PsychopompDomainDeathAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.PsychopompDomainReposeAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.RageDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.ResolveDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.RestorationDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.RevelationDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.RevolutionDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.RiversDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.StarsDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.StormDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.ThieveryDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.WindDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.MurderDomainAllowedSeparatist
+                );
+            });
+
 
 
         }

@@ -149,6 +149,8 @@ namespace ExpandedContent.Tweaks.Deities {
             var NaderiFeature = Resources.GetModBlueprint<BlueprintFeature>("NaderiFeature");
             var NewAchaekekFeature = Resources.GetBlueprint<BlueprintFeature>("a3189d5b7c4d4d91beaa8bfffac3e38e");
             var SivanahFeature = Resources.GetModBlueprint<BlueprintFeature>("SivanahFeature");
+            var NewApsuFeature = Resources.GetBlueprint<BlueprintFeature>("772e2673945e4583a804ae01f67efea0");
+            var NewDahakFeature = Resources.GetBlueprint<BlueprintFeature>("8f7118d68f6e44dea94dddb51f38cbdd");
 
 
             //Philosophies
@@ -684,7 +686,9 @@ namespace ExpandedContent.Tweaks.Deities {
                 AtheismFeature.ToReference<BlueprintFeatureReference>(),
                 GodclawFeature.ToReference<BlueprintFeatureReference>(),
                 LichDeityFeature.ToReference<BlueprintFeatureReference>(),
-                NewAchaekekFeature.ToReference<BlueprintFeatureReference>()
+                NewAchaekekFeature.ToReference<BlueprintFeatureReference>(),
+                NewApsuFeature.ToReference<BlueprintFeatureReference>(),
+                NewDahakFeature.ToReference<BlueprintFeatureReference>()
             };
             DeitySelection.Groups = new FeatureGroup[] { FeatureGroup.Deities };
             DeitySelection.Group = FeatureGroup.Deities;
@@ -850,12 +854,12 @@ namespace ExpandedContent.Tweaks.Deities {
             var ElvenPantheonSelection = Resources.GetModBlueprint<BlueprintFeatureSelection>("ElvenPantheonSelection");
             DeitySelection.m_AllFeatures = DeitySelection.m_AllFeatures.AddToArray(ElvenPantheonSelection.ToReference<BlueprintFeatureReference>());
         }
-        public static void DraconicDeityToggle() {
-            if (ModSettings.AddedContent.Deities.IsDisabled("Draconic Deities")) { return; }
-            var DeitySelection = Resources.GetBlueprint<BlueprintFeatureSelection>("59e7a76987fe3b547b9cce045f4db3e4");
-            var DraconicDeitySelection = Resources.GetModBlueprint<BlueprintFeatureSelection>("DraconicDeitySelection");
-            DeitySelection.m_AllFeatures = DeitySelection.m_AllFeatures.AddToArray(DraconicDeitySelection.ToReference<BlueprintFeatureReference>());
-        }
+        //public static void DraconicDeityToggle() {
+        //    if (ModSettings.AddedContent.Deities.IsDisabled("Draconic Deities")) { return; }
+        //    var DeitySelection = Resources.GetBlueprint<BlueprintFeatureSelection>("59e7a76987fe3b547b9cce045f4db3e4");
+        //    var DraconicDeitySelection = Resources.GetModBlueprint<BlueprintFeatureSelection>("DraconicDeitySelection");
+        //    DeitySelection.m_AllFeatures = DeitySelection.m_AllFeatures.AddToArray(DraconicDeitySelection.ToReference<BlueprintFeatureReference>());
+        //}
         public static void TheEldestToggle() {
             if (ModSettings.AddedContent.Deities.IsDisabled("The Eldest")) { return; }
             var DeitySelection = Resources.GetBlueprint<BlueprintFeatureSelection>("59e7a76987fe3b547b9cce045f4db3e4");

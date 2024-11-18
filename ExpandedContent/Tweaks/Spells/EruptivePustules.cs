@@ -382,7 +382,6 @@ namespace ExpandedContent.Tweaks.Spells {
                     c.ActionOnSelf = Helpers.CreateActionList();
                     c.DoNotPassAttackRoll = true;
                 });
-                bp.FxOnStart = new PrefabLink() { AssetId = "eec87237ed7b61149a952f56da85bbb1" };
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = false;
                 bp.m_Flags = BlueprintBuff.Flags.IsFromSpell;

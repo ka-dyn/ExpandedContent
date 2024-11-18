@@ -432,11 +432,6 @@
         "Homebrew": false,
         "Description": "Adds the deities of the Elven Pantheon as deity options."
       },
-      "Draconic Deities": {
-        "Enabled": true,
-        "Homebrew": false,
-        "Description": "Adds the Draconic Deities as deity options."
-      },
       "The Eldest": {
         "Enabled": true,
         "Homebrew": false,

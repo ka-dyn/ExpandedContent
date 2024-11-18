@@ -81,6 +81,7 @@ namespace ExpandedContent.Tweaks.Monitors {
                     DeityTools.DomainAllowed.HealingDomainAllowed,
                     DeityTools.DomainAllowed.MagicDomainAllowed,
                     DeityTools.DomainAllowed.ReposeDomainAllowed,
+                    DeityTools.DomainAllowed.OldScalykindDomainAllowed,
                     DeityTools.DomainAllowed.ScalykindDomainAllowed,
                     DeityTools.DomainAllowed.PsychopompDomainReposeAllowed,
                     DeityTools.SeparatistDomainAllowed.AirDomainAllowedSeparatist,

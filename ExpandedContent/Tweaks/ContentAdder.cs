@@ -148,6 +148,7 @@ namespace ExpandedContent.Tweaks {
                 Spells.ShadowClaws.AddShadowClaws();
                 Spells.MydriaticSpontaneity.AddMydriaticSpontaneity();
                 Spells.MydriaticSpontaneityMass.AddMydriaticSpontaneityMass();
+                Spells.BurstOfNettles.AddBurstOfNettles();
 
                 Miscellaneous.AlchemistDiscoveries.MutagenDiscovery.AddMutagenDiscovery();
                 Miscellaneous.AlchemistDiscoveries.MindchemistSkillDiscovery.AddMindchemistSkillDiscovery();
@@ -419,7 +420,7 @@ namespace ExpandedContent.Tweaks {
                 Deities.DeitySelectionFeature.DemonLordToggle();
                 Deities.DeitySelectionFeature.EmpyrealLordsToggle();
                 Deities.DeitySelectionFeature.ElvenPantheonToggle();
-                Deities.DeitySelectionFeature.DraconicDeityToggle();
+                //Deities.DeitySelectionFeature.DraconicDeityToggle();
                 Deities.DeitySelectionFeature.TheEldestToggle();
                 Deities.DeitySelectionFeature.MonitorsToggle();
                 Deities.DeitySelectionFeature.TheElderMythosToggle();
