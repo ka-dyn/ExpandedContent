@@ -753,6 +753,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     JerishallFeature.ToReference<BlueprintFeatureReference>(),
                     OtolmensFeature.ToReference<BlueprintFeatureReference>(),
                     ValmallosFeature.ToReference<BlueprintFeatureReference>(),
+                    NewApsuFeature.ToReference<BlueprintFeatureReference>(),
                 };
             });
             #region Stuff no longer needed but kept in case I need to add a toggle
