@@ -208,6 +208,8 @@ New Spells
 - Mydriatic Spontaneity
 - Mass Mydriatic Spontaneity
 - Burst of Nettles
+- Transmute Blood To Acid
+- Eruptive Pustules
 
 
 Compatible with all mods as far as I am aware, extra features are unlocked if used with these mods
