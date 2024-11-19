@@ -149,6 +149,8 @@ namespace ExpandedContent.Tweaks {
                 Spells.MydriaticSpontaneity.AddMydriaticSpontaneity();
                 Spells.MydriaticSpontaneityMass.AddMydriaticSpontaneityMass();
                 Spells.BurstOfNettles.AddBurstOfNettles();
+                Spells.EruptivePustules.AddEruptivePustules();
+                Spells.TransmuteBloodToAcid.AddTransmuteBloodToAcid();
 
                 Miscellaneous.AlchemistDiscoveries.MutagenDiscovery.AddMutagenDiscovery();
                 Miscellaneous.AlchemistDiscoveries.MindchemistSkillDiscovery.AddMindchemistSkillDiscovery();

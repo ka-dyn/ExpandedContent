@@ -3603,7 +3603,14 @@
 
     "BurstOfNettlesAbility": "60185484-0f50-4063-a251-2d341524a3c9",
     "BurstOfNettlesBuff": "beceee1e-54a1-45cf-8c6d-fa2ae65a8dd4",
-    "ScrollOfBurstOfNettles": "255f2478-c5fb-4e30-af44-57255527ee50"
+    "ScrollOfBurstOfNettles": "255f2478-c5fb-4e30-af44-57255527ee50",
+
+    "EruptivePustulesAbility": "27effebb-41e5-465a-9e17-57a479959b1b",
+    "EruptivePustulesBuff": "d551a44d-19ac-4c87-918f-4e0c73a3fcf2",
+    "ScrollOfEruptivePustules": "00844fb2-0569-475d-bc27-a1791b8a50ac",
+    "ScrollOfTransmuteBloodToAcid": "7af2b241-cdd8-4a75-bd42-f918d218e8b7",
+    "TransmuteBloodToAcidAbility": "0d33465b-a731-42b7-8b28-4140247d9481",
+    "TransmuteBloodToAcidBuff": "b6acd0be-dd89-4e3a-aa26-226acc9ed6bf"
 
 
 
