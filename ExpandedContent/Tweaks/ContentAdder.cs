@@ -12,8 +12,6 @@ namespace ExpandedContent.Tweaks {
                 if (Initialized) return;
                 Initialized = true;
 
-                //Miscellaneous.DumbTestStuff.LightningTest.AddLightningTest();
-
                 Miscellaneous.LazyLocker.AddLazyLocker();
 
                 Miscellaneous.OpeningVolley.AddOpeningVolley();
@@ -75,6 +73,8 @@ namespace ExpandedContent.Tweaks {
                 Archetypes.DivineTracker.AddDivineTracker();
                 Archetypes.PlantMaster.AddPlantMaster();
                 Archetypes.DrakeRider.AddDrakeRider();
+
+                Archetypes.WaterDancer.AddWaterDancer();
 
                 Classes.OathbreakerClass.AddOathbreakerClass();
                 Archetypes.Castigator.AddCastigator();

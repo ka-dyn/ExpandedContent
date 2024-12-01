@@ -202,6 +202,7 @@
     <Compile Include="Tweaks\Archetypes\Castigator.cs" />
     <Compile Include="Tweaks\Archetypes\BearShaman.cs" />
     <Compile Include="Tweaks\Archetypes\Archer.cs" />
+    <Compile Include="Tweaks\Archetypes\WaterDancer.cs" />
     <Compile Include="Tweaks\Archetypes\WyrmSinger.cs" />
     <Compile Include="Tweaks\Archetypes\UrbanDruid.cs" />
     <Compile Include="Tweaks\Archetypes\DraconicScholar.cs" />
@@ -246,6 +247,7 @@
     <Compile Include="Tweaks\Components\AddImmunityToEnergyDrainFromFact.cs" />
     <Compile Include="Tweaks\Components\AddTargetAttackRollTriggerExpanded.cs" />
     <Compile Include="Tweaks\Components\AutoMetamagicMagicSourceOnly.cs" />
+    <Compile Include="Tweaks\Components\ContextCalculateAbilityParamsBasedOnHigherClass.cs" />
     <Compile Include="Tweaks\Components\ContextConditionIsPetOwner.cs" />
     <Compile Include="Tweaks\Components\IgnoreDamageReductionOnAttackRangeType.cs" />
     <Compile Include="Tweaks\Components\CheckWeaponEnchant.cs" />

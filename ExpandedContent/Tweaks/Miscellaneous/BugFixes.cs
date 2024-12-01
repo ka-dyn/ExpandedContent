@@ -206,20 +206,24 @@ namespace ExpandedContent.Tweaks.Miscellaneous {
                 archetypes = archetypes.AppendToArray(__instance.Archetype);
                 foreach (ClassData data in unit.Descriptor.Progression.Classes) {//For each class you have
 
-                    if (!classes.HasReference(data.CharacterClass)) {//Is it in the list
-                        continue;//If not, skip to next class
+                    if (!classes.HasReference(data.CharacterClass)) {//Is it in the list go to next if
+                        continue;//If not, end this loop and skip to next class
                     }
 
                     if (archetypes.Length > 0) {
-                        if (archetypes.Any(archetype => data.CharacterClass.Archetypes.HasReference(archetype))) {//Is the choosen archetype in the BlueprintArchetypeReference list?
+
+                        if (archetypes.Any(archetype => data.CharacterClass.Archetypes.HasReference(archetype))) {//Does the characterclass have any of the archetypes on the list?
+
                             if (archetypes.Any(archetype => data.Archetypes.Contains(archetype))) {//If archetype matches add level, if not then ignore
                                 num += data.Level;
-                            } 
+                            } //no bonus from this class
+
                         } else {
-                            num += data.Level;
+                            num += data.Level;//as none of the archetypes where part of the class you get the bonus
                         }
+
                     } else {
-                        num += data.Level;
+                        num += data.Level;//archetype list was 0
                     }
                 }
                 __result = num;

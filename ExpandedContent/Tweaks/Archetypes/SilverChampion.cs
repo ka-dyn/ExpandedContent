@@ -139,6 +139,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.SpellLevel = 4;
                 });
                 bp.ReapplyOnLevelUp = true;
+                bp.IsClassFeature = true;
             });
             SilverChampionArchetype.RemoveFeatures = new LevelEntry[] {
                     Helpers.LevelEntry(4, SmiteEvilAdditionalUse, ChannelEnergyPaladinFeature),
