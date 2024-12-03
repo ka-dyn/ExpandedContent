@@ -9,11 +9,16 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items.Armors;
+using Kingmaker.Blueprints.Items.Weapons;
 using Kingmaker.Designers.Mechanics.Buffs;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.ElementsSystem;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
+using Kingmaker.Enums.Damage;
 using Kingmaker.RuleSystem;
+using Kingmaker.RuleSystem.Rules;
+using Kingmaker.RuleSystem.Rules.Damage;
 using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.UnitLogic.Abilities.Components;
@@ -25,6 +30,7 @@ using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Mechanics.Actions;
 using Kingmaker.UnitLogic.Mechanics.Components;
 using Kingmaker.UnitLogic.Mechanics.Properties;
+using Kingmaker.Utility;
 using Kingmaker.Visual.Animation.Kingmaker.Actions;
 using TabletopTweaks.Core.NewComponents.Properties;
 
@@ -49,6 +55,8 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var ElementalFocusWater = Resources.GetBlueprint<BlueprintProgression>("7ab8947ce2e19c44a9edcf5fd1466686");
             var ElementalFocusSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("1f3a15a3ae8a5524ab8b97f469bf4e3d");
             var KineticBlastProgression = Resources.GetBlueprint<BlueprintProgression>("30a5b8cf728bd4a4d8d90fc4953e322e");
+            var KineticBlastFeature = Resources.GetBlueprintReference<BlueprintFeatureReference>("93efbde2764b5504e98e6824cab3d27c");
+            var KineticistMainStatProperty = Resources.GetBlueprintReference<BlueprintUnitPropertyReference>("f897845bbbc008d4f9c1c4a03e22357a");
             var ColdBlastProgression = Resources.GetBlueprint<BlueprintProgression>("dbb1159b0e8137c4ea20434a854ae6a8");
             var MetakinsisEmpowerBuff = Resources.GetBlueprintReference<BlueprintBuffReference>("f5f3aa17dd579ff49879923fb7bc2adb");
             var MonkWeaponProficiency = Resources.GetBlueprintReference<BlueprintFeatureReference>("c7d6f5244c617734a8a76b6785a752b4");
@@ -73,6 +81,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var MonkUnarmedSrikeLevel16 = Resources.GetBlueprintReference<BlueprintFeatureReference>("078636a2ce835e44394bb49a930da230");
             var MonkUnarmedSrikeLevel20 = Resources.GetBlueprintReference<BlueprintFeatureReference>("df38e56fa8b3f0f469d55f9aa26b3f5c");
             var Unarmed1d6 = Resources.GetBlueprintReference<BlueprintItemWeaponReference>("f60c5a820b69fb243a4cce5d1d07d06e");
+            var UnarmedWeaponType = Resources.GetBlueprintReference<BlueprintWeaponTypeReference>("fcca8e6b85d19b14786ba1ab553e23ad");
 
             var KiPowerFeature = Resources.GetBlueprint<BlueprintFeature>("e9590244effb4be4f830b1e3fffced13");
             var ScaledFistPowerFeature = Resources.GetBlueprint<BlueprintFeature>("ae98ab7bda409ef4bb39149a212d6732");
@@ -460,6 +469,522 @@ namespace ExpandedContent.Tweaks.Archetypes {
             #endregion
 
             #region Water Style Strikes
+            #region Style Buffs
+            var WaterStyleGeyserCalmBuff = Helpers.CreateBuff("WaterStyleGeyserCalmBuff", bp => {
+                bp.SetName("Geyser Style - Calm");
+                bp.SetDescription("Spend 1 point from your ki pool as a swift action, your first unarmed strike each round ignores damage reduction for one minute.");
+                bp.m_Icon = ;
+                bp.AddComponent<IgnoreDamageReductionOnAttack>(c => {
+                    c.OnlyOnFullAttack = false;
+                    c.OnlyOnFirstAttack = true;
+                    c.CriticalHit = false;
+                    c.m_WeaponType = UnarmedWeaponType;
+                    c.CheckEnemyFact = false;
+                    c.m_CheckedFact = null;
+                    c.OnlyNaturalAttacks = false;
+                });
+                bp.IsClassFeature = true;
+                bp.m_Flags = 0;
+                bp.Stacking = StackingType.Replace;
+            });
+            var WaterStyleGeyserRapidBuff = Helpers.CreateBuff("WaterStyleGeyserRapidBuff", bp => {
+                bp.SetName("Geyser Style - Rapid");
+                bp.SetDescription("Accept 1 point of burn as a swift action, the next unarmed strike that hits deals extra damage equal to your blast damage, " +
+                    "unarmed strikes this round ignore damage reduction.");
+                bp.m_Icon = ;
+                bp.AddComponent<IgnoreDamageReductionOnAttack>(c => {
+                    c.OnlyOnFullAttack = false;
+                    c.OnlyOnFirstAttack = false;
+                    c.CriticalHit = false;
+                    c.m_WeaponType = UnarmedWeaponType;
+                    c.CheckEnemyFact = false;
+                    c.m_CheckedFact = null;
+                    c.OnlyNaturalAttacks = false;
+                });
+
+                bp.AddComponent<AdditionalDiceOnAttack>(c => {
+                    c.OnlyOnFullAttack = false;
+                    c.OnlyOnFirstAttack = false;
+                    c.OnHit = false;
+                    c.OnlyOnFirstHit = true;
+                    c.CriticalHit = false;
+                    c.OnAttackOfOpportunity = false;
+                    c.NotCriticalHit = false;
+                    c.OnlySneakAttack = false;
+                    c.NotSneakAttack = false;
+                    c.m_WeaponType = null;
+                    c.CheckWeaponCategory = true;
+                    c.Category = WeaponCategory.UnarmedStrike;
+                    c.CheckWeaponGroup = false;
+                    c.Group = WeaponFighterGroup.None;
+                    c.CheckWeaponRangeType = false;
+                    c.RangeType = WeaponRangeType.Melee;
+                    c.ReduceHPToZero = false;
+                    c.CheckDistance = false;
+                    c.DistanceLessEqual = new Feet();
+                    c.AllNaturalAndUnarmed = false;
+                    c.DuelistWeapon = false;
+                    c.NotExtraAttack = false;
+                    c.OnCharge = false;
+                    c.InitiatorConditions = new ConditionsChecker() {
+                        Operation = Operation.And,
+                        Conditions = new Condition[0] { }
+                    };
+                    c.TargetConditions = new ConditionsChecker() {
+                        Operation = Operation.And,
+                        Conditions = new Condition[0] { }
+                    };
+                    c.m_RandomizeDamage = false;//Maybe needs this
+                    c.Value = new ContextDiceValue() {
+                        DiceType = DiceType.D6,
+                        DiceCountValue = new ContextValue() {
+                            ValueType = ContextValueType.Rank,
+                            ValueRank = AbilityRankType.DamageDice
+                        },
+                        BonusValue = new ContextValue() {
+                            ValueType = ContextValueType.Shared,
+                            ValueShared = AbilitySharedValue.Damage
+                        }
+                    };
+                    c.DamageType = new DamageTypeDescription() {
+                        Type = DamageType.Physical,
+                        Common = new DamageTypeDescription.CommomData() {
+                            Reality = 0,
+                            Alignment = 0,
+                            Precision = false
+                        },
+                        Physical = new DamageTypeDescription.PhysicalData() {
+                            Material = 0,
+                            Form = PhysicalDamageForm.Bludgeoning,
+                            Enhancement = 0,
+                            EnhancementTotal = 0
+                        },
+                        Energy = DamageEnergyType.Fire
+                    };
+                    c.m_DamageEntries = null;
+                });
+                
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.DamageDice;
+                    c.m_BaseValueType = ContextRankBaseValueType.FeatureRank;
+                    c.m_Feature = KineticBlastFeature;
+                    c.m_Progression = ContextRankProgression.AsIs;
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.DamageBonus;
+                    c.m_BaseValueType = ContextRankBaseValueType.CustomProperty;
+                    c.m_Progression = ContextRankProgression.AsIs;
+                    c.m_CustomProperty = KineticistMainStatProperty;
+                });
+                bp.AddComponent<ContextCalculateSharedValue>(c => {
+                    c.ValueType = AbilitySharedValue.Damage;
+                    c.Value = new ContextDiceValue() {
+                        DiceType = DiceType.One,
+                        DiceCountValue = new ContextValue() {
+                            ValueType = ContextValueType.Rank,
+                            ValueRank = AbilityRankType.DamageDice
+                        },
+                        BonusValue = new ContextValue() {
+                            ValueType = ContextValueType.Rank,
+                            ValueRank = AbilityRankType.DamageBonus
+                        }
+                    };
+                    c.Modifier = 1;
+                });
+                //bp.AddComponent<ContextCalculateSharedValue>(c => {//Might not need this one, if dice are rolled in the AdditionalDiceOnAttack component, needs testing | ElementalFistAcidBuff |
+                //    c.ValueType = AbilitySharedValue.Duration;//Final damage
+                //    c.Value = new ContextDiceValue() {
+                //        DiceType = DiceType.D6,
+                //        DiceCountValue = new ContextValue() {
+                //            ValueType = ContextValueType.Rank,
+                //            ValueRank = AbilityRankType.DamageDice
+                //        },
+                //        BonusValue = new ContextValue() {
+                //            ValueType = ContextValueType.Shared,
+                //            ValueShared = AbilitySharedValue.Damage
+                //        }
+                //    };
+                //    c.Modifier = 1;
+                //});
+                bp.IsClassFeature = true;
+                bp.m_Flags = 0;
+                bp.Stacking = StackingType.Replace;
+            });
+            var WaterStyleRiverCalmBuff = Helpers.CreateBuff("WaterStyleRiverCalmBuff", bp => {
+                bp.SetName("River Style - Calm");
+                bp.SetDescription("Spend 1 point from your ki pool as a swift action, for one minute your first unarmed strike each round deals an extra 2d6 bludgeoning damage, increasing by 1d6 at levels 11 and 17.");
+                bp.m_Icon = ;
+                bp.AddComponent<AdditionalDiceOnAttack>(c => {
+                    c.OnlyOnFullAttack = false;
+                    c.OnlyOnFirstAttack = false;
+                    c.OnHit = false;
+                    c.OnlyOnFirstHit = true;
+                    c.CriticalHit = false;
+                    c.OnAttackOfOpportunity = false;
+                    c.NotCriticalHit = false;
+                    c.OnlySneakAttack = false;
+                    c.NotSneakAttack = false;
+                    c.m_WeaponType = null;
+                    c.CheckWeaponCategory = true;
+                    c.Category = WeaponCategory.UnarmedStrike;
+                    c.CheckWeaponGroup = false;
+                    c.Group = WeaponFighterGroup.None;
+                    c.CheckWeaponRangeType = false;
+                    c.RangeType = WeaponRangeType.Melee;
+                    c.ReduceHPToZero = false;
+                    c.CheckDistance = false;
+                    c.DistanceLessEqual = new Feet();
+                    c.AllNaturalAndUnarmed = false;
+                    c.DuelistWeapon = false;
+                    c.NotExtraAttack = false;
+                    c.OnCharge = false;
+                    c.InitiatorConditions = new ConditionsChecker() {
+                        Operation = Operation.And,
+                        Conditions = new Condition[0] { }
+                    };
+                    c.TargetConditions = new ConditionsChecker() {
+                        Operation = Operation.And,
+                        Conditions = new Condition[0] { }
+                    };
+                    c.m_RandomizeDamage = false;//Maybe needs this
+                    c.Value = new ContextDiceValue() {
+                        DiceType = DiceType.D6,
+                        DiceCountValue = new ContextValue() {
+                            ValueType = ContextValueType.Rank,
+                            ValueRank = AbilityRankType.DamageDice
+                        },
+                        BonusValue = new ContextValue() {
+                            ValueType = ContextValueType.Simple,
+                            Value = 0
+                        }
+                    };
+                    c.DamageType = new DamageTypeDescription() {
+                        Type = DamageType.Physical,
+                        Common = new DamageTypeDescription.CommomData() {
+                            Reality = 0,
+                            Alignment = 0,
+                            Precision = false
+                        },
+                        Physical = new DamageTypeDescription.PhysicalData() {
+                            Material = 0,
+                            Form = PhysicalDamageForm.Bludgeoning,
+                            Enhancement = 0,
+                            EnhancementTotal = 0
+                        },
+                        Energy = DamageEnergyType.Fire
+                    };
+                    c.m_DamageEntries = null;
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.DamageDice;
+                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
+                    c.m_Class = new BlueprintCharacterClassReference[] { MonkClass.ToReference<BlueprintCharacterClassReference>() };
+                    c.m_Progression = ContextRankProgression.StartPlusDivStep;
+                    c.m_StartLevel = -1;
+                    c.m_StepLevel = 6;
+                });
+                bp.IsClassFeature = true;
+                bp.m_Flags = 0;
+                bp.Stacking = StackingType.Replace;
+            });
+            var WaterStyleRiverRapidBuff = Helpers.CreateBuff("WaterStyleRiverRapidBuff", bp => {
+                bp.SetName("River Style - Rapid");
+                bp.SetDescription("Accept 1 point of burn as a swift action, for one round your unarmed strikes deal an extra 2d8 bludgeoning damage, increasing by 1d8 at levels 11 and 17.");
+                bp.m_Icon = ;
+                bp.AddComponent<AdditionalDiceOnAttack>(c => {
+                    c.OnlyOnFullAttack = false;
+                    c.OnlyOnFirstAttack = false;
+                    c.OnHit = true;
+                    c.OnlyOnFirstHit = false;
+                    c.CriticalHit = false;
+                    c.OnAttackOfOpportunity = false;
+                    c.NotCriticalHit = false;
+                    c.OnlySneakAttack = false;
+                    c.NotSneakAttack = false;
+                    c.m_WeaponType = null;
+                    c.CheckWeaponCategory = true;
+                    c.Category = WeaponCategory.UnarmedStrike;
+                    c.CheckWeaponGroup = false;
+                    c.Group = WeaponFighterGroup.None;
+                    c.CheckWeaponRangeType = false;
+                    c.RangeType = WeaponRangeType.Melee;
+                    c.ReduceHPToZero = false;
+                    c.CheckDistance = false;
+                    c.DistanceLessEqual = new Feet();
+                    c.AllNaturalAndUnarmed = false;
+                    c.DuelistWeapon = false;
+                    c.NotExtraAttack = false;
+                    c.OnCharge = false;
+                    c.InitiatorConditions = new ConditionsChecker() {
+                        Operation = Operation.And,
+                        Conditions = new Condition[0] { }
+                    };
+                    c.TargetConditions = new ConditionsChecker() {
+                        Operation = Operation.And,
+                        Conditions = new Condition[0] { }
+                    };
+                    c.m_RandomizeDamage = false;//Maybe needs this
+                    c.Value = new ContextDiceValue() {
+                        DiceType = DiceType.D8,
+                        DiceCountValue = new ContextValue() {
+                            ValueType = ContextValueType.Rank,
+                            ValueRank = AbilityRankType.DamageDice
+                        },
+                        BonusValue = new ContextValue() {
+                            ValueType = ContextValueType.Simple,
+                            Value = 0
+                        }
+                    };
+                    c.DamageType = new DamageTypeDescription() {
+                        Type = DamageType.Physical,
+                        Common = new DamageTypeDescription.CommomData() {
+                            Reality = 0,
+                            Alignment = 0,
+                            Precision = false
+                        },
+                        Physical = new DamageTypeDescription.PhysicalData() {
+                            Material = 0,
+                            Form = PhysicalDamageForm.Bludgeoning,
+                            Enhancement = 0,
+                            EnhancementTotal = 0
+                        },
+                        Energy = DamageEnergyType.Fire
+                    };
+                    c.m_DamageEntries = null;
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.DamageDice;
+                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
+                    c.m_Class = new BlueprintCharacterClassReference[] { MonkClass.ToReference<BlueprintCharacterClassReference>() };
+                    c.m_Progression = ContextRankProgression.StartPlusDivStep;
+                    c.m_StartLevel = -1;
+                    c.m_StepLevel = 6;
+                });
+                bp.IsClassFeature = true;
+                bp.m_Flags = 0;
+                bp.Stacking = StackingType.Replace;
+            });
+            var WaterStyleWaterfallCalmBuff = Helpers.CreateBuff("WaterStyleWaterfallCalmBuff", bp => {
+                bp.SetName("Waterfall Style - Calm");
+                bp.SetDescription("Spend 1 point from your ki pool as a swift action, make a free trip attempt on critical unarmed hits for one minute. " +
+                    "\nThese trip attempts use the {g|Encyclopedia:BAB}base attack bonus{/g} of the attack used to hit the foe and do not provoke an " +
+                    "{g|Encyclopedia:Attack_Of_Opportunity}attack of opportunity{/g}.");
+                bp.m_Icon = ;
+                bp.AddComponent<AddInitiatorAttackWithWeaponTrigger>(c => {
+                    c.TriggerBeforeAttack = false;
+                    c.OnlyHit = true;
+                    c.OnMiss = false;
+                    c.OnlyOnFullAttack = false;
+                    c.OnlyOnFirstAttack = false;
+                    c.OnlyOnFirstHit = false;
+                    c.CriticalHit = true;
+                    c.OnAttackOfOpportunity = false;
+                    c.NotCriticalHit = false;
+                    c.OnlySneakAttack = false;
+                    c.NotSneakAttack = false;
+                    c.m_WeaponType = new BlueprintWeaponTypeReference();
+                    c.CheckWeaponCategory = true;
+                    c.Category = WeaponCategory.UnarmedStrike;
+                    c.CheckWeaponGroup = false;
+                    c.Group = WeaponFighterGroup.None;
+                    c.CheckWeaponRangeType = false;
+                    c.RangeType = WeaponRangeType.Melee;
+                    c.ActionsOnInitiator = false;
+                    c.ReduceHPToZero = false;
+                    c.DamageMoreTargetMaxHP = false;
+                    c.CheckDistance = false;
+                    c.DistanceLessEqual = new Feet(); //?
+                    c.AllNaturalAndUnarmed = false;
+                    c.DuelistWeapon = false;
+                    c.NotExtraAttack = false;
+                    c.OnCharge = false;
+                    c.Action = Helpers.CreateActionList(
+                        new ContextActionCombatManeuver() {
+                            Type = CombatManeuver.Trip,
+                            OnSuccess = Helpers.CreateActionList(),
+                            ReplaceStat = false,
+                            NewStat = StatType.Unknown,
+                            UseKineticistMainStat = false,
+                            UseCastingStat = false,
+                            UseCasterLevelAsBaseAttack = false,
+                            UseBestMentalStat = false,
+                            BatteringBlast = false
+                        }
+                        );
+                });
+                bp.IsClassFeature = true;
+                bp.m_Flags = 0;
+                bp.Stacking = StackingType.Replace;
+            });
+            var WaterStyleWaterfallRapidBuff = Helpers.CreateBuff("WaterStyleWaterfallRapidBuff", bp => {
+                bp.SetName("Waterfall Style - Rapid");
+                bp.SetDescription("Accept 1 point of burn as a swift action, the next unarmed strike that hits deals extra damage equal to half your blast damage, in addition to making a free trip attempt. " +
+                    "\nThis trip attempt uses the {g|Encyclopedia:BAB}base attack bonus{/g} of the attack used to hit the foe and does not provoke an " +
+                    "{g|Encyclopedia:Attack_Of_Opportunity}attack of opportunity{/g}.");
+                bp.m_Icon = ;
+
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.DamageDice;
+                    c.m_BaseValueType = ContextRankBaseValueType.FeatureRank;
+                    c.m_Feature = KineticBlastFeature;
+                    c.m_Progression = ContextRankProgression.AsIs;
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.DamageBonus;
+                    c.m_BaseValueType = ContextRankBaseValueType.CustomProperty;
+                    c.m_Progression = ContextRankProgression.AsIs;
+                    c.m_CustomProperty = KineticistMainStatProperty;
+                });
+                bp.AddComponent<ContextCalculateSharedValue>(c => {
+                    c.ValueType = AbilitySharedValue.Damage;
+                    c.Value = new ContextDiceValue() {
+                        DiceType = DiceType.One,
+                        DiceCountValue = new ContextValue() {
+                            ValueType = ContextValueType.Rank,
+                            ValueRank = AbilityRankType.DamageDice
+                        },
+                        BonusValue = new ContextValue() {
+                            ValueType = ContextValueType.Rank,
+                            ValueRank = AbilityRankType.DamageBonus
+                        }
+                    };
+                    c.Modifier = 1;
+                });
+                bp.AddComponent<ContextCalculateSharedValue>(c => {
+                    c.ValueType = AbilitySharedValue.Duration;//Final damage
+                    c.Value = new ContextDiceValue() {
+                        DiceType = DiceType.D6,
+                        DiceCountValue = new ContextValue() {
+                            ValueType = ContextValueType.Rank,
+                            ValueRank = AbilityRankType.DamageDice
+                        },
+                        BonusValue = new ContextValue() {
+                            ValueType = ContextValueType.Shared,
+                            ValueShared = AbilitySharedValue.Damage
+                        }
+                    };
+                    c.Modifier = 0.5f;
+                });
+                bp.AddComponent<AddInitiatorAttackWithWeaponTrigger>(c => {
+                    c.TriggerBeforeAttack = false;
+                    c.OnlyHit = false;
+                    c.OnMiss = false;
+                    c.OnlyOnFullAttack = false;
+                    c.OnlyOnFirstAttack = false;
+                    c.OnlyOnFirstHit = true;
+                    c.CriticalHit = false;
+                    c.OnAttackOfOpportunity = false;
+                    c.NotCriticalHit = false;
+                    c.OnlySneakAttack = false;
+                    c.NotSneakAttack = false;
+                    c.m_WeaponType = new BlueprintWeaponTypeReference();
+                    c.CheckWeaponCategory = true;
+                    c.Category = WeaponCategory.UnarmedStrike;
+                    c.CheckWeaponGroup = false;
+                    c.Group = WeaponFighterGroup.None;
+                    c.CheckWeaponRangeType = false;
+                    c.RangeType = WeaponRangeType.Melee;
+                    c.ActionsOnInitiator = false;
+                    c.ReduceHPToZero = false;
+                    c.DamageMoreTargetMaxHP = false;
+                    c.CheckDistance = false;
+                    c.DistanceLessEqual = new Feet(); //?
+                    c.AllNaturalAndUnarmed = false;
+                    c.DuelistWeapon = false;
+                    c.NotExtraAttack = false;
+                    c.OnCharge = false;
+                    c.Action = Helpers.CreateActionList(
+                        new ContextActionCombatManeuver() {
+                            Type = CombatManeuver.Trip,
+                            OnSuccess = Helpers.CreateActionList(),
+                            ReplaceStat = false,
+                            NewStat = StatType.Unknown,
+                            UseKineticistMainStat = false,
+                            UseCastingStat = false,
+                            UseCasterLevelAsBaseAttack = false,
+                            UseBestMentalStat = false,
+                            BatteringBlast = false
+                        },
+                        new ContextActionDealDamage() {
+                            m_Type = ContextActionDealDamage.Type.Damage,
+                            DamageType = new DamageTypeDescription() {
+                                Type = DamageType.Physical,
+                                Common = new DamageTypeDescription.CommomData() {
+                                    Reality = 0,
+                                    Alignment = 0,
+                                    Precision = false
+                                },
+                                Physical = new DamageTypeDescription.PhysicalData() {
+                                    Material = 0,
+                                    Form = PhysicalDamageForm.Bludgeoning,
+                                    Enhancement = 0,
+                                    EnhancementTotal = 0
+                                },
+                                Energy = DamageEnergyType.Fire
+                            },
+                            AbilityType = StatType.Unknown,
+                            EnergyDrainType = EnergyDrainType.Temporary,
+                            Duration = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                m_IsExtendable = true,
+                            },
+                            PreRolledSharedValue = AbilitySharedValue.Damage,
+                            Value = new ContextDiceValue() {
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.DamageDice,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Shared,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Duration,
+                                    Property = UnitProperty.None
+                                },
+                            },
+                            IsAoE = false,
+                            HalfIfSaved = false,
+                        }
+                        );
+                });
+                bp.IsClassFeature = true;
+                bp.m_Flags = 0;
+                bp.Stacking = StackingType.Replace;
+            });
+            var WaterStyleWaveCalmBuff = Helpers.CreateBuff("WaterStyleWaveCalmBuff", bp => {
+                bp.SetName("Wave Style - Calm");
+                bp.SetDescription("Spend 1 point from your ki pool to enter a braced stance for 1 minute. This stance grants a +2 bonus to {g|Encyclopedia:CMD}CMD{/g} " +
+                    "against all {g|Encyclopedia:Combat_Maneuvers}combat maneuvers{/g}.");
+                bp.m_Icon = ;
+                bp.AddComponent<AddStatBonus>(c => {
+                    c.Stat = StatType.AdditionalCMD;
+                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+                    c.Value = 2;
+                });
+                bp.IsClassFeature = true;
+                bp.m_Flags = 0;
+                bp.Stacking = StackingType.Replace;
+            });
+            #endregion
             #region Geyser
             var WaterStyleGeyserBaseAbility = Helpers.CreateBlueprint<BlueprintAbility>("WaterStyleGeyserBaseAbility", bp => {
                 bp.SetName("Geyser Style");
@@ -481,13 +1006,122 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
 
+            var WaterStyleGeyserCalmAbility = Helpers.CreateBlueprint<BlueprintAbility>("WaterStyleGeyserCalmAbility", bp => {
+                bp.SetName("Geyser Style - Calm");
+                bp.SetDescription("Spend 1 point from your ki pool as a swift action, your first unarmed strike each round ignores damage reduction for one minute.");
+                bp.m_Icon = Stabilize.m_Icon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = WaterStyleGeyserCalmBuff.ToReference<BlueprintBuffReference>(),
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Minutes,
+                                BonusValue = 1,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                m_IsExtendable = true
+                            },
+                            DurationSeconds = 0
+                        },
+                        new ContextActionRemoveBuff() { m_Buff = WaterStyleRiverCalmBuff.ToReference<BlueprintBuffReference>() },
+                        new ContextActionRemoveBuff() { m_Buff = WaterStyleWaterfallCalmBuff.ToReference<BlueprintBuffReference>() },
+                        new ContextActionRemoveBuff() { m_Buff = WaterStyleWaveCalmBuff.ToReference<BlueprintBuffReference>() }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = ScaledFistPowerResource;
+                    c.m_IsSpendResource = true;
+                    c.Amount = 1;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.HasFastAnimation = false;
+                bp.ActionType = UnitCommand.CommandType.Swift;
+                bp.AvailableMetamagic = 0;
+                bp.m_Parent = WaterStyleGeyserBaseAbility.ToReference<BlueprintAbilityReference>();
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+
+            var WaterStyleGeyserRapidAbility = Helpers.CreateBlueprint<BlueprintAbility>("WaterStyleGeyserRapidAbility", bp => {
+                bp.SetName("Geyser Style - Rapid");
+                bp.SetDescription("Accept 1 point of burn as a swift action, the next unarmed strike that hits deals extra damage equal to your blast damage, " +
+                    "unarmed strikes this round ignore damage reduction.");
+                bp.m_Icon = Stabilize.m_Icon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = WaterStyleGeyserRapidBuff.ToReference<BlueprintBuffReference>(),
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                BonusValue = 1,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                m_IsExtendable = true
+                            },
+                            DurationSeconds = 0
+                        },
+                        new ContextActionApplyBuff() {
+                            m_Buff = WaterStyleSuppressCalmBuff.ToReference<BlueprintBuffReference>(),
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                BonusValue = 1,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                m_IsExtendable = true
+                            },
+                            DurationSeconds = 0
+                        },
+                        new ContextActionRemoveBuff() { m_Buff = WaterStyleRiverRapidBuff.ToReference<BlueprintBuffReference>() },
+                        new ContextActionRemoveBuff() { m_Buff = WaterStyleWaterfallRapidBuff.ToReference<BlueprintBuffReference>() },
+                        new ContextActionRemoveBuff() { m_Buff = WaterStyleWaveRapidBuff.ToReference<BlueprintBuffReference>() }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = BurnResource;
+                    c.m_IsSpendResource = true;
+                    c.Amount = 1;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.HasFastAnimation = false;
+                bp.ActionType = UnitCommand.CommandType.Swift;
+                bp.AvailableMetamagic = 0;
+                bp.m_Parent = WaterStyleGeyserBaseAbility.ToReference<BlueprintAbilityReference>();
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+
+            WaterStyleGeyserBaseAbility.AddComponent<AbilityVariants>(c => {
+                c.m_Variants = new BlueprintAbilityReference[] {
+                    WaterStyleGeyserCalmAbility.ToReference<BlueprintAbilityReference>(),
+                    WaterStyleGeyserRapidAbility.ToReference<BlueprintAbilityReference>()
+                };
+            });
             #endregion
             #region Rain
             var WaterStyleRainBaseAbility = Helpers.CreateBlueprint<BlueprintAbility>("WaterStyleRainBaseAbility", bp => {
                 bp.SetName("Rain Style");
                 bp.SetDescription("Calm: Leap to an ally as per dimension door as a move action by expending 1 point from your ki pool." +
                     "\nRapid: Accept 1 point of burn, leap to an enemy as per dimension door as a move action, then make a single unarmed attack against that enemy. " +
-                    "\nThis does not remove or suppress other water styles.");
+                    "Unlike other rapid styles, this does not suppress calm water styles.");
                 bp.m_Icon = Stabilize.m_Icon;
                 bp.m_AllowNonContextActions = false;
                 bp.Type = AbilityType.Supernatural;
@@ -496,7 +1130,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.CanTargetEnemies = true;
                 bp.CanTargetFriends = true;
                 bp.CanTargetSelf = false;
-                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Kineticist;
                 bp.HasFastAnimation = false;
                 bp.ActionType = UnitCommand.CommandType.Move;
                 bp.AvailableMetamagic = 0;
@@ -504,6 +1138,116 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
 
+
+            var WaterStyleRainCalmAbility = Helpers.CreateBlueprint<BlueprintAbility>("WaterStyleRainCalmAbility", bp => {
+                bp.SetName("Rain Style - Calm");
+                bp.SetDescription("Leap to an ally as per dimension door as a move action by expending 1 point from your ki pool. \nThis style does not remove or suppress other water styles.");
+                bp.m_Icon = Stabilize.m_Icon;
+                //bp.AddComponent<AbilityEffectRunAction>(c => {
+                //    c.SavingThrowType = SavingThrowType.Unknown;
+                //    c.Actions = Helpers.CreateActionList(
+                //        new ContextActionApplyBuff() {
+                //            m_Buff = WaterStyleRainCalmBuff.ToReference<BlueprintBuffReference>(),
+                //            UseDurationSeconds = false,
+                //            DurationValue = new ContextDurationValue() {
+                //                Rate = DurationRate.Minutes,
+                //                BonusValue = 1,
+                //                DiceType = DiceType.Zero,
+                //                DiceCountValue = 0,
+                //                m_IsExtendable = true
+                //            },
+                //            DurationSeconds = 0
+                //        },
+                //        new ContextActionRemoveBuff() { m_Buff = WaterStyleRiverCalmBuff.ToReference<BlueprintBuffReference>() },
+                //        new ContextActionRemoveBuff() { m_Buff = WaterStyleWaterfallCalmBuff.ToReference<BlueprintBuffReference>() },
+                //        new ContextActionRemoveBuff() { m_Buff = WaterStyleWaveCalmBuff.ToReference<BlueprintBuffReference>() }
+                //        );
+                //});
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = ScaledFistPowerResource;
+                    c.m_IsSpendResource = true;
+                    c.Amount = 1;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Medium;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = true;
+                bp.CanTargetSelf = false;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Kineticist;
+                bp.HasFastAnimation = false;
+                bp.ActionType = UnitCommand.CommandType.Move;
+                bp.AvailableMetamagic = 0;
+                bp.m_Parent = WaterStyleRainBaseAbility.ToReference<BlueprintAbilityReference>();
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+
+            var WaterStyleRainRapidAbility = Helpers.CreateBlueprint<BlueprintAbility>("WaterStyleRainRapidAbility", bp => {
+                bp.SetName("Rain Style - Rapid");
+                bp.SetDescription("Accept 1 point of burn, leap to an enemy as per dimension door as a move action, then make a single unarmed attack against that enemy. " +
+                    "Unlike other rapid styles, this does not suppress calm water styles.");
+                bp.m_Icon = Stabilize.m_Icon;
+                //bp.AddComponent<AbilityEffectRunAction>(c => {
+                //    c.SavingThrowType = SavingThrowType.Unknown;
+                //    c.Actions = Helpers.CreateActionList(
+                //        new ContextActionApplyBuff() {
+                //            m_Buff = WaterStyleRainRapidBuff.ToReference<BlueprintBuffReference>(),
+                //            UseDurationSeconds = false,
+                //            DurationValue = new ContextDurationValue() {
+                //                Rate = DurationRate.Rounds,
+                //                BonusValue = 1,
+                //                DiceType = DiceType.Zero,
+                //                DiceCountValue = 0,
+                //                m_IsExtendable = true
+                //            },
+                //            DurationSeconds = 0
+                //        },
+                //        new ContextActionApplyBuff() {
+                //            m_Buff = WaterStyleSuppressCalmBuff.ToReference<BlueprintBuffReference>(),
+                //            UseDurationSeconds = false,
+                //            DurationValue = new ContextDurationValue() {
+                //                Rate = DurationRate.Rounds,
+                //                BonusValue = 1,
+                //                DiceType = DiceType.Zero,
+                //                DiceCountValue = 0,
+                //                m_IsExtendable = true
+                //            },
+                //            DurationSeconds = 0
+                //        },
+                //        new ContextActionRemoveBuff() { m_Buff = WaterStyleRiverRapidBuff.ToReference<BlueprintBuffReference>() },
+                //        new ContextActionRemoveBuff() { m_Buff = WaterStyleWaterfallRapidBuff.ToReference<BlueprintBuffReference>() },
+                //        new ContextActionRemoveBuff() { m_Buff = WaterStyleWaveRapidBuff.ToReference<BlueprintBuffReference>() }
+                //        );
+                //});
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = BurnResource;
+                    c.m_IsSpendResource = true;
+                    c.Amount = 1;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Medium;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = true;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = false;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Kineticist;
+                bp.HasFastAnimation = false;
+                bp.ActionType = UnitCommand.CommandType.Move;
+                bp.AvailableMetamagic = 0;
+                bp.m_Parent = WaterStyleRainBaseAbility.ToReference<BlueprintAbilityReference>();
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+
+            WaterStyleRainBaseAbility.AddComponent<AbilityVariants>(c => {
+                c.m_Variants = new BlueprintAbilityReference[] {
+                    WaterStyleRainCalmAbility.ToReference<BlueprintAbilityReference>(),
+                    WaterStyleRainRapidAbility.ToReference<BlueprintAbilityReference>()
+                };
+            });
             #endregion
             #region River
             var WaterStyleRiverBaseAbility = Helpers.CreateBlueprint<BlueprintAbility>("WaterStyleRiverBaseAbility", bp => {
@@ -527,6 +1271,114 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
 
+            var WaterStyleRiverCalmAbility = Helpers.CreateBlueprint<BlueprintAbility>("WaterStyleRiverCalmAbility", bp => {
+                bp.SetName("River Style - Calm");
+                bp.SetDescription("Spend 1 point from your ki pool as a swift action, for one minute your first unarmed strike each round deals an extra 2d6 bludgeoning damage, increasing by 1d6 at levels 11 and 17.");
+                bp.m_Icon = Stabilize.m_Icon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = WaterStyleRiverCalmBuff.ToReference<BlueprintBuffReference>(),
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Minutes,
+                                BonusValue = 1,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                m_IsExtendable = true
+                            },
+                            DurationSeconds = 0
+                        },
+                        new ContextActionRemoveBuff() { m_Buff = WaterStyleGeyserCalmBuff.ToReference<BlueprintBuffReference>() },
+                        new ContextActionRemoveBuff() { m_Buff = WaterStyleWaterfallCalmBuff.ToReference<BlueprintBuffReference>() },
+                        new ContextActionRemoveBuff() { m_Buff = WaterStyleWaveCalmBuff.ToReference<BlueprintBuffReference>() }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = ScaledFistPowerResource;
+                    c.m_IsSpendResource = true;
+                    c.Amount = 1;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.HasFastAnimation = false;
+                bp.ActionType = UnitCommand.CommandType.Swift;
+                bp.AvailableMetamagic = 0;
+                bp.m_Parent = WaterStyleRiverBaseAbility.ToReference<BlueprintAbilityReference>();
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+
+            var WaterStyleRiverRapidAbility = Helpers.CreateBlueprint<BlueprintAbility>("WaterStyleRiverRapidAbility", bp => {
+                bp.SetName("River Style - Rapid");
+                bp.SetDescription("Accept 1 point of burn as a swift action, for one round your unarmed strikes deal an extra 2d8 bludgeoning damage, increasing by 1d8 at levels 11 and 17.");
+                bp.m_Icon = Stabilize.m_Icon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = WaterStyleRiverRapidBuff.ToReference<BlueprintBuffReference>(),
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                BonusValue = 1,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                m_IsExtendable = true
+                            },
+                            DurationSeconds = 0
+                        },
+                        new ContextActionApplyBuff() {
+                            m_Buff = WaterStyleSuppressCalmBuff.ToReference<BlueprintBuffReference>(),
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                BonusValue = 1,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                m_IsExtendable = true
+                            },
+                            DurationSeconds = 0
+                        },
+                        new ContextActionRemoveBuff() { m_Buff = WaterStyleGeyserRapidBuff.ToReference<BlueprintBuffReference>() },
+                        new ContextActionRemoveBuff() { m_Buff = WaterStyleWaterfallRapidBuff.ToReference<BlueprintBuffReference>() },
+                        new ContextActionRemoveBuff() { m_Buff = WaterStyleWaveRapidBuff.ToReference<BlueprintBuffReference>() }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = BurnResource;
+                    c.m_IsSpendResource = true;
+                    c.Amount = 1;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.HasFastAnimation = false;
+                bp.ActionType = UnitCommand.CommandType.Swift;
+                bp.AvailableMetamagic = 0;
+                bp.m_Parent = WaterStyleRiverBaseAbility.ToReference<BlueprintAbilityReference>();
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+
+            WaterStyleRiverBaseAbility.AddComponent<AbilityVariants>(c => {
+                c.m_Variants = new BlueprintAbilityReference[] {
+                    WaterStyleRiverCalmAbility.ToReference<BlueprintAbilityReference>(),
+                    WaterStyleRiverRapidAbility.ToReference<BlueprintAbilityReference>()
+                };
+            });
             #endregion
             #region Waterfall
             var WaterStyleWaterfallBaseAbility = Helpers.CreateBlueprint<BlueprintAbility>("WaterStyleWaterfallBaseAbility", bp => {
@@ -551,6 +1403,118 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
 
+            var WaterStyleWaterfallCalmAbility = Helpers.CreateBlueprint<BlueprintAbility>("WaterStyleWaterfallCalmAbility", bp => {
+                bp.SetName("Waterfall Style - Calm");
+                bp.SetDescription("Spend 1 point from your ki pool as a swift action, make a free trip attempt on critical unarmed hits for one minute. " +
+                    "\nThese trip attempts use the {g|Encyclopedia:BAB}base attack bonus{/g} of the attack used to hit the foe and do not provoke an " +
+                    "{g|Encyclopedia:Attack_Of_Opportunity}attack of opportunity{/g}.");
+                bp.m_Icon = Stabilize.m_Icon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = WaterStyleWaterfallCalmBuff.ToReference<BlueprintBuffReference>(),
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Minutes,
+                                BonusValue = 1,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                m_IsExtendable = true
+                            },
+                            DurationSeconds = 0
+                        },
+                        new ContextActionRemoveBuff() { m_Buff = WaterStyleGeyserCalmBuff.ToReference<BlueprintBuffReference>() },
+                        new ContextActionRemoveBuff() { m_Buff = WaterStyleRiverCalmBuff.ToReference<BlueprintBuffReference>() },
+                        new ContextActionRemoveBuff() { m_Buff = WaterStyleWaveCalmBuff.ToReference<BlueprintBuffReference>() }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = ScaledFistPowerResource;
+                    c.m_IsSpendResource = true;
+                    c.Amount = 1;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.HasFastAnimation = false;
+                bp.ActionType = UnitCommand.CommandType.Swift;
+                bp.AvailableMetamagic = 0;
+                bp.m_Parent = WaterStyleWaterfallBaseAbility.ToReference<BlueprintAbilityReference>();
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+
+            var WaterStyleWaterfallRapidAbility = Helpers.CreateBlueprint<BlueprintAbility>("WaterStyleWaterfallRapidAbility", bp => {
+                bp.SetName("Waterfall Style - Rapid");
+                bp.SetDescription("Accept 1 point of burn as a swift action, the next unarmed strike that hits deals extra damage equal to half your blast damage, in addition to making a free trip attempt. " +
+                    "\nThis trip attempt uses the {g|Encyclopedia:BAB}base attack bonus{/g} of the attack used to hit the foe and does not provoke an " +
+                    "{g|Encyclopedia:Attack_Of_Opportunity}attack of opportunity{/g}.");
+                bp.m_Icon = Stabilize.m_Icon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = WaterStyleWaterfallRapidBuff.ToReference<BlueprintBuffReference>(),
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                BonusValue = 1,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                m_IsExtendable = true
+                            },
+                            DurationSeconds = 0
+                        },
+                        new ContextActionApplyBuff() {
+                            m_Buff = WaterStyleSuppressCalmBuff.ToReference<BlueprintBuffReference>(),
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                BonusValue = 1,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                m_IsExtendable = true
+                            },
+                            DurationSeconds = 0
+                        },
+                        new ContextActionRemoveBuff() { m_Buff = WaterStyleGeyserRapidBuff.ToReference<BlueprintBuffReference>() },
+                        new ContextActionRemoveBuff() { m_Buff = WaterStyleRiverRapidBuff.ToReference<BlueprintBuffReference>() },
+                        new ContextActionRemoveBuff() { m_Buff = WaterStyleWaveRapidBuff.ToReference<BlueprintBuffReference>() }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = BurnResource;
+                    c.m_IsSpendResource = true;
+                    c.Amount = 1;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.HasFastAnimation = false;
+                bp.ActionType = UnitCommand.CommandType.Swift;
+                bp.AvailableMetamagic = 0;
+                bp.m_Parent = WaterStyleWaterfallBaseAbility.ToReference<BlueprintAbilityReference>();
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+
+            WaterStyleWaterfallBaseAbility.AddComponent<AbilityVariants>(c => {
+                c.m_Variants = new BlueprintAbilityReference[] {
+                    WaterStyleWaterfallCalmAbility.ToReference<BlueprintAbilityReference>(),
+                    WaterStyleWaterfallRapidAbility.ToReference<BlueprintAbilityReference>()
+                };
+            });
             #endregion
             #region Wave
             var WaterStyleWaveBaseAbility = Helpers.CreateBlueprint<BlueprintAbility>("WaterStyleWaveBaseAbility", bp => {
@@ -578,6 +1542,120 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
 
+            var WaterStyleWaveCalmAbility = Helpers.CreateBlueprint<BlueprintAbility>("WaterStyleWaveCalmAbility", bp => {
+                bp.SetName("Wave Style - Calm");
+                bp.SetDescription("Spend 1 point from your ki pool to enter a braced stance for 1 minute. This stance grants a +2 bonus to {g|Encyclopedia:CMD}CMD{/g} " +
+                    "against all {g|Encyclopedia:Combat_Maneuvers}combat maneuvers{/g}.");
+                bp.m_Icon = Stabilize.m_Icon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = WaterStyleWaveCalmBuff.ToReference<BlueprintBuffReference>(),
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Minutes,
+                                BonusValue = 1,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                m_IsExtendable = true
+                            },
+                            DurationSeconds = 0
+                        },
+                        new ContextActionRemoveBuff() { m_Buff = WaterStyleGeyserCalmBuff.ToReference<BlueprintBuffReference>() },
+                        new ContextActionRemoveBuff() { m_Buff = WaterStyleRiverCalmBuff.ToReference<BlueprintBuffReference>() },
+                        new ContextActionRemoveBuff() { m_Buff = WaterStyleWaterfallCalmBuff.ToReference<BlueprintBuffReference>() }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = ScaledFistPowerResource;
+                    c.m_IsSpendResource = true;
+                    c.Amount = 1;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.HasFastAnimation = false;
+                bp.ActionType = UnitCommand.CommandType.Swift;
+                bp.AvailableMetamagic = 0;
+                bp.m_Parent = WaterStyleWaveBaseAbility.ToReference<BlueprintAbilityReference>();
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+
+            var WaterStyleWaveRapidAbility = Helpers.CreateBlueprint<BlueprintAbility>("WaterStyleWaveRapidAbility", bp => {
+                bp.SetName("Wave Style - Rapid");
+                bp.SetDescription("Accept 1 point of burn, strike out with a kinetic blast in a 15-foot cone, targets take damage equal to your blast damage. " +
+                    "Attempt a bull rush {g|Encyclopedia:Combat_Maneuvers}combat maneuver{/g} {g|Encyclopedia:Check}check{/g} against each target, " +
+                    "using your {g|Encyclopedia:Charisma}Charisma{/g} modifier instead of your {g|Encyclopedia:Strength}Strength{/g} modifier to " +
+                    "determine your {g|Encyclopedia:CMB}Combat Maneuver Bonus{/g}. Targets may attempt a Reflex save to reduce the damage by half and " +
+                    "be unaffected by the bull rush combat maneuver.");
+                bp.m_Icon = Stabilize.m_Icon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = WaterStyleWaveRapidBuff.ToReference<BlueprintBuffReference>(),
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                BonusValue = 1,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                m_IsExtendable = true
+                            },
+                            DurationSeconds = 0
+                        },
+                        new ContextActionApplyBuff() {
+                            ToCaster = true,
+                            m_Buff = WaterStyleSuppressCalmBuff.ToReference<BlueprintBuffReference>(),
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                BonusValue = 1,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                m_IsExtendable = true
+                            },
+                            DurationSeconds = 0
+                        },
+                        new ContextActionRemoveBuff() { m_Buff = WaterStyleGeyserRapidBuff.ToReference<BlueprintBuffReference>() },
+                        new ContextActionRemoveBuff() { m_Buff = WaterStyleRiverRapidBuff.ToReference<BlueprintBuffReference>() },
+                        new ContextActionRemoveBuff() { m_Buff = WaterStyleWaterfallRapidBuff.ToReference<BlueprintBuffReference>() }
+                        );
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = BurnResource;
+                    c.m_IsSpendResource = true;
+                    c.Amount = 1;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Projectile;
+                bp.CanTargetPoint = true;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = false;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Kineticist;
+                bp.HasFastAnimation = false;
+                bp.ActionType = UnitCommand.CommandType.Standard;
+                bp.AvailableMetamagic = 0;
+                bp.m_Parent = WaterStyleWaveBaseAbility.ToReference<BlueprintAbilityReference>();
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+
+            WaterStyleWaveBaseAbility.AddComponent<AbilityVariants>(c => {
+                c.m_Variants = new BlueprintAbilityReference[] {
+                    WaterStyleWaveCalmAbility.ToReference<BlueprintAbilityReference>(),
+                    WaterStyleWaveRapidAbility.ToReference<BlueprintAbilityReference>()
+                };
+            });
             #endregion
             #region Style Features
             var WaterStyleGeyserFeature = Helpers.CreateBlueprint<BlueprintFeature>("WaterStyleGeyserFeature", bp => {
@@ -593,7 +1671,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.SetName("Rain Style");
                 bp.SetDescription("Calm: Leap to an ally as per dimension door as a move action by expending 1 point from your ki pool." +
                     "\nRapid: Accept 1 point of burn, leap to an enemy as per dimension door as a move action, then make a single unarmed attack against that enemy. " +
-                    "\nThis does not remove or suppress other water styles.");
+                    "Unlike other rapid styles, this does not suppress calm water styles.");
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] { WaterStyleRainBaseAbility.ToReference<BlueprintUnitFactReference>() };
                 });
@@ -702,10 +1780,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
 
 
 
-            //Add new Water Styles (burn?)
-            //Water Stride on hit
-            //Water Dance => cooling
-            //start with point blank shot
+            //Water Stride 
             //Hook into Wild Talents from CO+
         }
     }

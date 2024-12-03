@@ -82,7 +82,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
             var DrakeBloodUmbral = Resources.GetModBlueprint<BlueprintFeature>("DrakeBloodUmbral");
             var DrakeBloodUmbralSpelllist = Resources.GetModBlueprint<BlueprintFeature>("DrakeBloodUmbralSpelllist");
             #endregion
-
+            #region Breath
             var DrakeBreathWeaponFire3 = Helpers.CreateBlueprint<BlueprintAbility>("DrakeBreathWeaponFire3", bp => {
                 bp.SetName("Mythic Drake Fire Breath");
                 bp.SetDescription("This breath weapon deals {g|Encyclopedia:Dice}1d6{/g} points of {g|Encyclopedia:Energy_Damage}fire damage{/g} per drake companion level in a 50-foot cone. " +
@@ -983,7 +983,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
             DrakeBreathWeaponUmbral2.GetComponent<AbilityResourceLogic>().ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>() {
                 DrakeBreathWeaponUmbral3Feature.ToReference<BlueprintUnitFactReference>()
             };
-
+            #endregion
             var DraconicBodyBuff = Helpers.CreateBuff("DraconicBodyBuff", bp => {
                 bp.SetName("Draconic Body");
                 bp.SetDescription("The drake gains two natural claw attacks that deal {g|Encyclopedia:Dice}1d2{/g} damage from a tiny drake, but increase " +
