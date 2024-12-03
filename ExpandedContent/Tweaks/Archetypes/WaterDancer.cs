@@ -1,5 +1,6 @@
 ﻿using ExpandedContent.Config;
 using ExpandedContent.Extensions;
+using ExpandedContent.Tweaks.Classes;
 using ExpandedContent.Tweaks.Classes.DrakeClass;
 using ExpandedContent.Tweaks.Components;
 using ExpandedContent.Utilities;
@@ -16,6 +17,7 @@ using Kingmaker.ElementsSystem;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
 using Kingmaker.Enums.Damage;
+using Kingmaker.ResourceLinks;
 using Kingmaker.RuleSystem;
 using Kingmaker.RuleSystem.Rules;
 using Kingmaker.RuleSystem.Rules.Damage;
@@ -54,6 +56,8 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var ElementalBastionBuff = Resources.GetBlueprintReference<BlueprintBuffReference>("99953956704788444964899b5b8e96ab");
             var ElementalFocusWater = Resources.GetBlueprint<BlueprintProgression>("7ab8947ce2e19c44a9edcf5fd1466686");
             var ElementalFocusSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("1f3a15a3ae8a5524ab8b97f469bf4e3d");
+            var Kinetic_WaterBlast00_Projectile = Resources.GetBlueprintReference<BlueprintProjectileReference>("06e268d6a2b5a3a438c2dd52d68bfef6");
+            var ColdCone15Feet00 = Resources.GetBlueprint<BlueprintProjectile>("5af8b717a209fd444a1e4d077ed776f0");
             var KineticBlastProgression = Resources.GetBlueprint<BlueprintProgression>("30a5b8cf728bd4a4d8d90fc4953e322e");
             var KineticBlastFeature = Resources.GetBlueprintReference<BlueprintFeatureReference>("93efbde2764b5504e98e6824cab3d27c");
             var KineticistMainStatProperty = Resources.GetBlueprintReference<BlueprintUnitPropertyReference>("f897845bbbc008d4f9c1c4a03e22357a");
@@ -88,6 +92,8 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var ExtraKi = Resources.GetBlueprint<BlueprintFeature>("231a2a603d0b437e939553e6da3e7247");
             var AbundantKiPool = Resources.GetBlueprint<BlueprintFeature>("e8752f9126d986748b10d0bdac693264");
             var ScaledFistPowerResource = Resources.GetBlueprintReference<BlueprintAbilityResourceReference>("7d002c1025fbfe2458f1509bf7a89ce1");
+            var KiAbundantStep = Resources.GetBlueprint<BlueprintAbility>("336a841704b7e2341b51f89fc9491f54");
+            var DarkLurkerDimensionDoor = Resources.GetBlueprintReference<BlueprintAbilityReference>("e439fcfa702d4cd294e9d26c337ab77b");
 
             var KiPowerFeatureSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("3049386713ff04245a38b32483362551");
             var WildTalentSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("5c883ae0cd6d7d5448b7a420f51f8459");
@@ -999,7 +1005,6 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
                 bp.Stacking = StackingType.Replace;
             });
-
             #endregion
             #region Geyser
             var WaterStyleGeyserBaseAbility = Helpers.CreateBlueprint<BlueprintAbility>("WaterStyleGeyserBaseAbility", bp => {
@@ -1158,26 +1163,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.SetName("Rain Style - Calm");
                 bp.SetDescription("Leap to an ally as per dimension door as a move action by expending 1 point from your ki pool. \nThis style does not remove or suppress other water styles.");
                 bp.m_Icon = Stabilize.m_Icon;
-                //bp.AddComponent<AbilityEffectRunAction>(c => {
-                //    c.SavingThrowType = SavingThrowType.Unknown;
-                //    c.Actions = Helpers.CreateActionList(
-                //        new ContextActionApplyBuff() {
-                //            m_Buff = WaterStyleRainCalmBuff.ToReference<BlueprintBuffReference>(),
-                //            UseDurationSeconds = false,
-                //            DurationValue = new ContextDurationValue() {
-                //                Rate = DurationRate.Minutes,
-                //                BonusValue = 1,
-                //                DiceType = DiceType.Zero,
-                //                DiceCountValue = 0,
-                //                m_IsExtendable = true
-                //            },
-                //            DurationSeconds = 0
-                //        },
-                //        new ContextActionRemoveBuff() { m_Buff = WaterStyleRiverCalmBuff.ToReference<BlueprintBuffReference>() },
-                //        new ContextActionRemoveBuff() { m_Buff = WaterStyleWaterfallCalmBuff.ToReference<BlueprintBuffReference>() },
-                //        new ContextActionRemoveBuff() { m_Buff = WaterStyleWaveCalmBuff.ToReference<BlueprintBuffReference>() }
-                //        );
-                //});
+                bp.AddComponent(KiAbundantStep.GetComponent<AbilityCustomDimensionDoor>());
                 bp.AddComponent<AbilityResourceLogic>(c => {
                     c.m_RequiredResource = ScaledFistPowerResource;
                     c.m_IsSpendResource = true;
@@ -1204,38 +1190,47 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.SetDescription("Accept 1 point of burn, leap to an enemy as per dimension door as a move action, then make a single unarmed attack against that enemy. " +
                     "Unlike other rapid styles, this does not suppress calm water styles.");
                 bp.m_Icon = Stabilize.m_Icon;
-                //bp.AddComponent<AbilityEffectRunAction>(c => {
-                //    c.SavingThrowType = SavingThrowType.Unknown;
-                //    c.Actions = Helpers.CreateActionList(
-                //        new ContextActionApplyBuff() {
-                //            m_Buff = WaterStyleRainRapidBuff.ToReference<BlueprintBuffReference>(),
-                //            UseDurationSeconds = false,
-                //            DurationValue = new ContextDurationValue() {
-                //                Rate = DurationRate.Rounds,
-                //                BonusValue = 1,
-                //                DiceType = DiceType.Zero,
-                //                DiceCountValue = 0,
-                //                m_IsExtendable = true
-                //            },
-                //            DurationSeconds = 0
-                //        },
-                //        new ContextActionApplyBuff() {
-                //            m_Buff = WaterStyleSuppressCalmBuff.ToReference<BlueprintBuffReference>(),
-                //            UseDurationSeconds = false,
-                //            DurationValue = new ContextDurationValue() {
-                //                Rate = DurationRate.Rounds,
-                //                BonusValue = 1,
-                //                DiceType = DiceType.Zero,
-                //                DiceCountValue = 0,
-                //                m_IsExtendable = true
-                //            },
-                //            DurationSeconds = 0
-                //        },
-                //        new ContextActionRemoveBuff() { m_Buff = WaterStyleRiverRapidBuff.ToReference<BlueprintBuffReference>() },
-                //        new ContextActionRemoveBuff() { m_Buff = WaterStyleWaterfallRapidBuff.ToReference<BlueprintBuffReference>() },
-                //        new ContextActionRemoveBuff() { m_Buff = WaterStyleWaveRapidBuff.ToReference<BlueprintBuffReference>() }
-                //        );
-                //});
+                bp.AddComponent<AbilityExecuteActionOnCast>(c => {
+                    c.Actions = Helpers.CreateActionList(                        
+                        new ContextActionRemoveBuff() { m_Buff = WaterStyleGeyserRapidBuff.ToReference<BlueprintBuffReference>(), ToCaster = true },
+                        new ContextActionRemoveBuff() { m_Buff = WaterStyleRiverRapidBuff.ToReference<BlueprintBuffReference>(), ToCaster = true },
+                        new ContextActionRemoveBuff() { m_Buff = WaterStyleWaterfallRapidBuff.ToReference<BlueprintBuffReference>(), ToCaster = true }
+                        );
+                });
+                bp.AddComponent<AdditionalAbilityEffectRunActionOnClickedTarget>(c => {
+                    c.Action = Helpers.CreateActionList(
+                        new ContextActionCastSpell() {
+                            m_Spell = DarkLurkerDimensionDoor,
+                            OverrideDC = false,
+                            DC = 0,
+                            OverrideSpellLevel = false,
+                            SpellLevel = 0,
+                            CastByTarget = false,
+                            LogIfCanNotTarget = false,
+                            MarkAsChild = false
+                        },
+                        new ContextActionMeleeAttack() {
+                            SelectNewTarget = false,
+                            AutoHit = false,
+                            IgnoreStatBonus = false,
+                            AutoCritThreat = false,
+                            AutoCritConfirmation = false,
+                            ExtraAttack = false,
+                            FullAttack = false,
+                            ForceStartAnimation = false,
+                            AnimationType = Kingmaker.Visual.Animation.Kingmaker.UnitAnimationType.SpecialAttack
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityCustomTeleportation>(c => {
+                    c.m_Projectile = Kinetic_WaterBlast00_Projectile;
+                    c.DisappearFx = new PrefabLink() { AssetId = "f1f41fef03cb5734e95db1342f0c605e" };
+                    c.DisappearDuration = 0.5f;
+                    c.AppearFx = new PrefabLink();
+                    c.AppearDuration = 0;
+                    c.AlongPath = false;
+                    c.AlongPathDistanceMuliplier = 1;
+                });
                 bp.AddComponent<AbilityResourceLogic>(c => {
                     c.m_RequiredResource = BurnResource;
                     c.m_IsSpendResource = true;
@@ -1613,18 +1608,6 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.SavingThrowType = SavingThrowType.Unknown;
                     c.Actions = Helpers.CreateActionList(
                         new ContextActionApplyBuff() {
-                            m_Buff = WaterStyleWaveRapidBuff.ToReference<BlueprintBuffReference>(),
-                            UseDurationSeconds = false,
-                            DurationValue = new ContextDurationValue() {
-                                Rate = DurationRate.Rounds,
-                                BonusValue = 1,
-                                DiceType = DiceType.Zero,
-                                DiceCountValue = 0,
-                                m_IsExtendable = true
-                            },
-                            DurationSeconds = 0
-                        },
-                        new ContextActionApplyBuff() {
                             ToCaster = true,
                             m_Buff = WaterStyleSuppressCalmBuff.ToReference<BlueprintBuffReference>(),
                             UseDurationSeconds = false,
@@ -1637,10 +1620,136 @@ namespace ExpandedContent.Tweaks.Archetypes {
                             },
                             DurationSeconds = 0
                         },
-                        new ContextActionRemoveBuff() { m_Buff = WaterStyleGeyserRapidBuff.ToReference<BlueprintBuffReference>() },
-                        new ContextActionRemoveBuff() { m_Buff = WaterStyleRiverRapidBuff.ToReference<BlueprintBuffReference>() },
-                        new ContextActionRemoveBuff() { m_Buff = WaterStyleWaterfallRapidBuff.ToReference<BlueprintBuffReference>() }
+                        new ContextActionRemoveBuff() { m_Buff = WaterStyleGeyserRapidBuff.ToReference<BlueprintBuffReference>(), ToCaster = true },
+                        new ContextActionRemoveBuff() { m_Buff = WaterStyleRiverRapidBuff.ToReference<BlueprintBuffReference>(), ToCaster = true },
+                        new ContextActionRemoveBuff() { m_Buff = WaterStyleWaterfallRapidBuff.ToReference<BlueprintBuffReference>(), ToCaster = true },
+                        new ContextActionSavingThrow() {
+                            m_ConditionalDCIncrease = new ContextActionSavingThrow.ConditionalDCIncrease[0],
+                            Type = SavingThrowType.Reflex,
+                            HasCustomDC = false,
+                            CustomDC = new ContextValue(),
+                            Actions = Helpers.CreateActionList(
+                                new ContextActionDealDamage() {
+                                    m_Type = ContextActionDealDamage.Type.Damage,
+                                    DamageType = new DamageTypeDescription() {
+                                        Type = DamageType.Physical,
+                                        Common = new DamageTypeDescription.CommomData() {
+                                            Reality = 0,
+                                            Alignment = 0,
+                                            Precision = false
+                                        },
+                                        Physical = new DamageTypeDescription.PhysicalData() {
+                                            Material = 0,
+                                            Form = PhysicalDamageForm.Bludgeoning,
+                                            Enhancement = 0,
+                                            EnhancementTotal = 0
+                                        },
+                                        Energy = DamageEnergyType.Fire
+                                    },
+                                    AbilityType = StatType.Unknown,
+                                    EnergyDrainType = EnergyDrainType.Temporary,
+                                    Duration = new ContextDurationValue() {
+                                        Rate = DurationRate.Rounds,
+                                        DiceType = DiceType.Zero,
+                                        DiceCountValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                        BonusValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                        m_IsExtendable = true,
+                                    },
+                                    PreRolledSharedValue = AbilitySharedValue.Damage,
+                                    Value = new ContextDiceValue() {
+                                        DiceType = DiceType.D6,
+                                        DiceCountValue = new ContextValue() {
+                                            ValueType = ContextValueType.Rank,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.DamageDice,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                        BonusValue = new ContextValue() {
+                                            ValueType = ContextValueType.Shared,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                    },
+                                    IsAoE = true,
+                                    HalfIfSaved = true,
+                                    ResultSharedValue = AbilitySharedValue.Damage,
+                                    CriticalSharedValue = AbilitySharedValue.Damage
+                                },
+                                new ContextActionConditionalSaved() {
+                                    Succeed = new ActionList(),
+                                    Failed = Helpers.CreateActionList(
+                                        new ContextActionCombatManeuver() {
+                                            Type = CombatManeuver.BullRush,
+                                            IgnoreConcealment = true,
+                                            OnSuccess = Helpers.CreateActionList(),
+                                            ReplaceStat = false,
+                                            NewStat = StatType.Unknown,
+                                            UseKineticistMainStat = true,
+                                            UseCastingStat = false,
+                                            UseCasterLevelAsBaseAttack = false,
+                                            UseBestMentalStat = false,
+                                            BatteringBlast = false
+                                        }
+                                    ),
+                                }
+                            ),
+                        }
                         );
+                });
+                bp.AddComponent<AbilityDeliverProjectile>(c => {
+                    c.m_Projectiles = new BlueprintProjectileReference[] {
+                        ColdCone15Feet00.ToReference<BlueprintProjectileReference>()
+                    };
+                    c.Type = AbilityProjectileType.Cone;
+                    c.m_Length = new Feet() { m_Value = 15 };
+                    c.m_LineWidth = new Feet() { m_Value = 5 };
+                    c.AttackRollBonusStat = StatType.Unknown;
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.DamageDice;
+                    c.m_BaseValueType = ContextRankBaseValueType.FeatureRank;
+                    c.m_Feature = KineticBlastFeature;
+                    c.m_Progression = ContextRankProgression.AsIs;
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.DamageBonus;
+                    c.m_BaseValueType = ContextRankBaseValueType.CustomProperty;
+                    c.m_Progression = ContextRankProgression.AsIs;
+                    c.m_CustomProperty = KineticistMainStatProperty;
+                });
+                bp.AddComponent<ContextCalculateSharedValue>(c => {
+                    c.ValueType = AbilitySharedValue.Damage;
+                    c.Value = new ContextDiceValue() {
+                        DiceType = DiceType.One,
+                        DiceCountValue = new ContextValue() {
+                            ValueType = ContextValueType.Rank,
+                            ValueRank = AbilityRankType.DamageDice
+                        },
+                        BonusValue = new ContextValue() {
+                            ValueType = ContextValueType.Rank,
+                            ValueRank = AbilityRankType.DamageBonus
+                        }
+                    };
+                    c.Modifier = 1;
+                });
+                bp.AddComponent<ContextCalculateAbilityParamsBasedOnClass>(c => {
+                    c.StatType = StatType.Charisma;
+                    c.m_CharacterClass = MonkClass.ToReference<BlueprintCharacterClassReference>();
                 });
                 bp.AddComponent<AbilityResourceLogic>(c => {
                     c.m_RequiredResource = BurnResource;
