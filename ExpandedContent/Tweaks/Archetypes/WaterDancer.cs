@@ -984,6 +984,22 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.m_Flags = 0;
                 bp.Stacking = StackingType.Replace;
             });
+            var WaterStyleSuppressCalmBuff = Helpers.CreateBuff("WaterStyleSuppressCalmBuff", bp => {
+                bp.SetName("Calm Style suppress");
+                bp.SetDescription("");
+                bp.AddComponent<SuppressBuffs>(c => {
+                    c.m_Buffs = new BlueprintBuffReference[] { 
+                        WaterStyleGeyserCalmBuff.ToReference<BlueprintBuffReference>(),
+                        WaterStyleRiverCalmBuff.ToReference<BlueprintBuffReference>(),
+                        WaterStyleWaterfallCalmBuff.ToReference<BlueprintBuffReference>(),
+                        WaterStyleWaveCalmBuff.ToReference<BlueprintBuffReference>()
+                    };
+                });
+                bp.IsClassFeature = true;
+                bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
+                bp.Stacking = StackingType.Replace;
+            });
+
             #endregion
             #region Geyser
             var WaterStyleGeyserBaseAbility = Helpers.CreateBlueprint<BlueprintAbility>("WaterStyleGeyserBaseAbility", bp => {
@@ -1084,8 +1100,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                             DurationSeconds = 0
                         },
                         new ContextActionRemoveBuff() { m_Buff = WaterStyleRiverRapidBuff.ToReference<BlueprintBuffReference>() },
-                        new ContextActionRemoveBuff() { m_Buff = WaterStyleWaterfallRapidBuff.ToReference<BlueprintBuffReference>() },
-                        new ContextActionRemoveBuff() { m_Buff = WaterStyleWaveRapidBuff.ToReference<BlueprintBuffReference>() }
+                        new ContextActionRemoveBuff() { m_Buff = WaterStyleWaterfallRapidBuff.ToReference<BlueprintBuffReference>() }
                         );
                 });
                 bp.AddComponent<AbilityResourceLogic>(c => {
@@ -1348,8 +1363,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                             DurationSeconds = 0
                         },
                         new ContextActionRemoveBuff() { m_Buff = WaterStyleGeyserRapidBuff.ToReference<BlueprintBuffReference>() },
-                        new ContextActionRemoveBuff() { m_Buff = WaterStyleWaterfallRapidBuff.ToReference<BlueprintBuffReference>() },
-                        new ContextActionRemoveBuff() { m_Buff = WaterStyleWaveRapidBuff.ToReference<BlueprintBuffReference>() }
+                        new ContextActionRemoveBuff() { m_Buff = WaterStyleWaterfallRapidBuff.ToReference<BlueprintBuffReference>() }
                         );
                 });
                 bp.AddComponent<AbilityResourceLogic>(c => {
@@ -1484,8 +1498,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                             DurationSeconds = 0
                         },
                         new ContextActionRemoveBuff() { m_Buff = WaterStyleGeyserRapidBuff.ToReference<BlueprintBuffReference>() },
-                        new ContextActionRemoveBuff() { m_Buff = WaterStyleRiverRapidBuff.ToReference<BlueprintBuffReference>() },
-                        new ContextActionRemoveBuff() { m_Buff = WaterStyleWaveRapidBuff.ToReference<BlueprintBuffReference>() }
+                        new ContextActionRemoveBuff() { m_Buff = WaterStyleRiverRapidBuff.ToReference<BlueprintBuffReference>() }
                         );
                 });
                 bp.AddComponent<AbilityResourceLogic>(c => {
