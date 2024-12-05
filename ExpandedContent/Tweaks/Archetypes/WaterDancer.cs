@@ -100,6 +100,12 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var ExtraWildTalentSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("0f73730cf1b44ee882671e55d5f6e471");
 
             var MonkStyleStrike = Resources.GetBlueprintReference<BlueprintFeatureSelectionReference>("7bc6a93f6e48eff49be5b0cde83c9450");
+            var GeyserStyleIcon = AssetLoader.LoadInternal("Skills", "Icon_GeyserStyle.jpg");
+            var RainStyleIcon = AssetLoader.LoadInternal("Skills", "Icon_RainStyle.jpg");
+            var RiverStyleIcon = AssetLoader.LoadInternal("Skills", "Icon_RiverStyle.jpg");
+            var WaterfallStyleIcon = AssetLoader.LoadInternal("Skills", "Icon_WaterfallStyle.jpg");
+            var WaveStyleIcon = AssetLoader.LoadInternal("Skills", "Icon_WaveStyle.jpg");
+
 
             var WaterDancerArchetype = Helpers.CreateBlueprint<BlueprintArchetype>("WaterDancerArchetype", bp => {
                 bp.LocalizedName = Helpers.CreateString($"WaterDancerArchetype.Name", "Water Dancer");
@@ -479,7 +485,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var WaterStyleGeyserCalmBuff = Helpers.CreateBuff("WaterStyleGeyserCalmBuff", bp => {
                 bp.SetName("Geyser Style - Calm");
                 bp.SetDescription("Spend 1 point from your ki pool as a swift action, your first unarmed strike each round ignores damage reduction for one minute.");
-                bp.m_Icon = ;
+                bp.m_Icon = GeyserStyleIcon;
                 bp.AddComponent<IgnoreDamageReductionOnAttack>(c => {
                     c.OnlyOnFullAttack = false;
                     c.OnlyOnFirstAttack = true;
@@ -497,7 +503,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.SetName("Geyser Style - Rapid");
                 bp.SetDescription("Accept 1 point of burn as a swift action, the next unarmed strike that hits deals extra damage equal to your blast damage, " +
                     "unarmed strikes this round ignore damage reduction.");
-                bp.m_Icon = ;
+                bp.m_Icon = GeyserStyleIcon;
                 bp.AddComponent<IgnoreDamageReductionOnAttack>(c => {
                     c.OnlyOnFullAttack = false;
                     c.OnlyOnFirstAttack = false;
@@ -619,7 +625,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var WaterStyleRiverCalmBuff = Helpers.CreateBuff("WaterStyleRiverCalmBuff", bp => {
                 bp.SetName("River Style - Calm");
                 bp.SetDescription("Spend 1 point from your ki pool as a swift action, for one minute your first unarmed strike each round deals an extra 2d6 bludgeoning damage, increasing by 1d6 at levels 11 and 17.");
-                bp.m_Icon = ;
+                bp.m_Icon = RiverStyleIcon;
                 bp.AddComponent<AdditionalDiceOnAttack>(c => {
                     c.OnlyOnFullAttack = false;
                     c.OnlyOnFirstAttack = false;
@@ -696,7 +702,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var WaterStyleRiverRapidBuff = Helpers.CreateBuff("WaterStyleRiverRapidBuff", bp => {
                 bp.SetName("River Style - Rapid");
                 bp.SetDescription("Accept 1 point of burn as a swift action, for one round your unarmed strikes deal an extra 2d8 bludgeoning damage, increasing by 1d8 at levels 11 and 17.");
-                bp.m_Icon = ;
+                bp.m_Icon = RiverStyleIcon;
                 bp.AddComponent<AdditionalDiceOnAttack>(c => {
                     c.OnlyOnFullAttack = false;
                     c.OnlyOnFirstAttack = false;
@@ -775,7 +781,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.SetDescription("Spend 1 point from your ki pool as a swift action, make a free trip attempt on critical unarmed hits for one minute. " +
                     "\nThese trip attempts use the {g|Encyclopedia:BAB}base attack bonus{/g} of the attack used to hit the foe and do not provoke an " +
                     "{g|Encyclopedia:Attack_Of_Opportunity}attack of opportunity{/g}.");
-                bp.m_Icon = ;
+                bp.m_Icon = WaterfallStyleIcon;
                 bp.AddComponent<AddInitiatorAttackWithWeaponTrigger>(c => {
                     c.TriggerBeforeAttack = false;
                     c.OnlyHit = true;
@@ -827,7 +833,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.SetDescription("Accept 1 point of burn as a swift action, the next unarmed strike that hits deals extra damage equal to half your blast damage, in addition to making a free trip attempt. " +
                     "\nThis trip attempt uses the {g|Encyclopedia:BAB}base attack bonus{/g} of the attack used to hit the foe and does not provoke an " +
                     "{g|Encyclopedia:Attack_Of_Opportunity}attack of opportunity{/g}.");
-                bp.m_Icon = ;
+                bp.m_Icon = WaterfallStyleIcon;
 
                 bp.AddComponent<ContextRankConfig>(c => {
                     c.m_Type = AbilityRankType.DamageDice;
@@ -980,7 +986,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.SetName("Wave Style - Calm");
                 bp.SetDescription("Spend 1 point from your ki pool to enter a braced stance for 1 minute. This stance grants a +2 bonus to {g|Encyclopedia:CMD}CMD{/g} " +
                     "against all {g|Encyclopedia:Combat_Maneuvers}combat maneuvers{/g}.");
-                bp.m_Icon = ;
+                bp.m_Icon = WaveStyleIcon;
                 bp.AddComponent<AddStatBonus>(c => {
                     c.Stat = StatType.AdditionalCMD;
                     c.Descriptor = ModifierDescriptor.UntypedStackable;
@@ -1011,7 +1017,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.SetName("Geyser Style");
                 bp.SetDescription("Calm: Spend 1 point from your ki pool as a swift action, your first unarmed strike each round ignores damage reduction for one minute." +
                     "\nRapid: Accept 1 point of burn as a swift action, the next unarmed strike that hits deals extra damage equal to your blast damage, unarmed strikes this round ignore damage reduction.");
-                bp.m_Icon = Stabilize.m_Icon;
+                bp.m_Icon = GeyserStyleIcon;
                 bp.m_AllowNonContextActions = false;
                 bp.Type = AbilityType.Supernatural;
                 bp.Range = AbilityRange.Personal;
@@ -1030,7 +1036,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var WaterStyleGeyserCalmAbility = Helpers.CreateBlueprint<BlueprintAbility>("WaterStyleGeyserCalmAbility", bp => {
                 bp.SetName("Geyser Style - Calm");
                 bp.SetDescription("Spend 1 point from your ki pool as a swift action, your first unarmed strike each round ignores damage reduction for one minute.");
-                bp.m_Icon = Stabilize.m_Icon;
+                bp.m_Icon = GeyserStyleIcon;
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.SavingThrowType = SavingThrowType.Unknown;
                     c.Actions = Helpers.CreateActionList(
@@ -1076,7 +1082,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.SetName("Geyser Style - Rapid");
                 bp.SetDescription("Accept 1 point of burn as a swift action, the next unarmed strike that hits deals extra damage equal to your blast damage, " +
                     "unarmed strikes this round ignore damage reduction.");
-                bp.m_Icon = Stabilize.m_Icon;
+                bp.m_Icon = GeyserStyleIcon;
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.SavingThrowType = SavingThrowType.Unknown;
                     c.Actions = Helpers.CreateActionList(
@@ -1142,7 +1148,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.SetDescription("Calm: Leap to an ally as per dimension door as a move action by expending 1 point from your ki pool." +
                     "\nRapid: Accept 1 point of burn, leap to an enemy as per dimension door as a move action, then make a single unarmed attack against that enemy. " +
                     "Unlike other rapid styles, this does not suppress calm water styles.");
-                bp.m_Icon = Stabilize.m_Icon;
+                bp.m_Icon = RainStyleIcon;
                 bp.m_AllowNonContextActions = false;
                 bp.Type = AbilityType.Supernatural;
                 bp.Range = AbilityRange.Medium;
@@ -1162,7 +1168,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var WaterStyleRainCalmAbility = Helpers.CreateBlueprint<BlueprintAbility>("WaterStyleRainCalmAbility", bp => {
                 bp.SetName("Rain Style - Calm");
                 bp.SetDescription("Leap to an ally as per dimension door as a move action by expending 1 point from your ki pool. \nThis style does not remove or suppress other water styles.");
-                bp.m_Icon = Stabilize.m_Icon;
+                bp.m_Icon = RainStyleIcon;
                 bp.AddComponent(KiAbundantStep.GetComponent<AbilityCustomDimensionDoor>());
                 bp.AddComponent<AbilityResourceLogic>(c => {
                     c.m_RequiredResource = ScaledFistPowerResource;
@@ -1189,7 +1195,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.SetName("Rain Style - Rapid");
                 bp.SetDescription("Accept 1 point of burn, leap to an enemy as per dimension door as a move action, then make a single unarmed attack against that enemy. " +
                     "Unlike other rapid styles, this does not suppress calm water styles.");
-                bp.m_Icon = Stabilize.m_Icon;
+                bp.m_Icon = RainStyleIcon;
                 bp.AddComponent<AbilityExecuteActionOnCast>(c => {
                     c.Actions = Helpers.CreateActionList(                        
                         new ContextActionRemoveBuff() { m_Buff = WaterStyleGeyserRapidBuff.ToReference<BlueprintBuffReference>(), ToCaster = true },
@@ -1265,7 +1271,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.SetDescription("Calm:  Spend 1 point from your ki pool as a swift action, for one minute your first unarmed strike each round deals an extra 2d6 bludgeoning damage, " +
                     "increasing by 1d6 at levels 11 and 17." +
                     "\nRapid: Accept 1 point of burn as a swift action, for one round your unarmed strikes deal an extra 2d8 bludgeoning damage, increasing by 1d8 at levels 11 and 17.");
-                bp.m_Icon = Stabilize.m_Icon;
+                bp.m_Icon = RiverStyleIcon;
                 bp.m_AllowNonContextActions = false;
                 bp.Type = AbilityType.Supernatural;
                 bp.Range = AbilityRange.Personal;
@@ -1284,7 +1290,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var WaterStyleRiverCalmAbility = Helpers.CreateBlueprint<BlueprintAbility>("WaterStyleRiverCalmAbility", bp => {
                 bp.SetName("River Style - Calm");
                 bp.SetDescription("Spend 1 point from your ki pool as a swift action, for one minute your first unarmed strike each round deals an extra 2d6 bludgeoning damage, increasing by 1d6 at levels 11 and 17.");
-                bp.m_Icon = Stabilize.m_Icon;
+                bp.m_Icon = RiverStyleIcon;
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.SavingThrowType = SavingThrowType.Unknown;
                     c.Actions = Helpers.CreateActionList(
@@ -1329,7 +1335,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var WaterStyleRiverRapidAbility = Helpers.CreateBlueprint<BlueprintAbility>("WaterStyleRiverRapidAbility", bp => {
                 bp.SetName("River Style - Rapid");
                 bp.SetDescription("Accept 1 point of burn as a swift action, for one round your unarmed strikes deal an extra 2d8 bludgeoning damage, increasing by 1d8 at levels 11 and 17.");
-                bp.m_Icon = Stabilize.m_Icon;
+                bp.m_Icon = RiverStyleIcon;
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.SavingThrowType = SavingThrowType.Unknown;
                     c.Actions = Helpers.CreateActionList(
@@ -1396,7 +1402,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     "\nRapid: Accept 1 point of burn as a swift action, the next unarmed strike that hits deals extra damage equal to half your blast damage, in addition to making a free trip attempt. " +
                     "\nThese trip attempts use the {g|Encyclopedia:BAB}base attack bonus{/g} of the attack used to hit the foe and do not provoke an " +
                     "{g|Encyclopedia:Attack_Of_Opportunity}attack of opportunity{/g}.");
-                bp.m_Icon = Stabilize.m_Icon;
+                bp.m_Icon = WaterfallStyleIcon;
                 bp.m_AllowNonContextActions = false;
                 bp.Type = AbilityType.Supernatural;
                 bp.Range = AbilityRange.Personal;
@@ -1417,7 +1423,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.SetDescription("Spend 1 point from your ki pool as a swift action, make a free trip attempt on critical unarmed hits for one minute. " +
                     "\nThese trip attempts use the {g|Encyclopedia:BAB}base attack bonus{/g} of the attack used to hit the foe and do not provoke an " +
                     "{g|Encyclopedia:Attack_Of_Opportunity}attack of opportunity{/g}.");
-                bp.m_Icon = Stabilize.m_Icon;
+                bp.m_Icon = WaterfallStyleIcon;
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.SavingThrowType = SavingThrowType.Unknown;
                     c.Actions = Helpers.CreateActionList(
@@ -1464,7 +1470,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.SetDescription("Accept 1 point of burn as a swift action, the next unarmed strike that hits deals extra damage equal to half your blast damage, in addition to making a free trip attempt. " +
                     "\nThis trip attempt uses the {g|Encyclopedia:BAB}base attack bonus{/g} of the attack used to hit the foe and does not provoke an " +
                     "{g|Encyclopedia:Attack_Of_Opportunity}attack of opportunity{/g}.");
-                bp.m_Icon = Stabilize.m_Icon;
+                bp.m_Icon = WaterfallStyleIcon;
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.SavingThrowType = SavingThrowType.Unknown;
                     c.Actions = Helpers.CreateActionList(
@@ -1534,7 +1540,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     "using your {g|Encyclopedia:Charisma}Charisma{/g} modifier instead of your {g|Encyclopedia:Strength}Strength{/g} modifier to " +
                     "determine your {g|Encyclopedia:CMB}Combat Maneuver Bonus{/g}. Targets may attempt a Reflex save to reduce the damage by half and " +
                     "be unaffected by the bull rush combat maneuver.");
-                bp.m_Icon = Stabilize.m_Icon;
+                bp.m_Icon = WaveStyleIcon;
                 bp.m_AllowNonContextActions = false;
                 bp.Type = AbilityType.Supernatural;
                 bp.Range = AbilityRange.Personal;
@@ -1554,7 +1560,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.SetName("Wave Style - Calm");
                 bp.SetDescription("Spend 1 point from your ki pool to enter a braced stance for 1 minute. This stance grants a +2 bonus to {g|Encyclopedia:CMD}CMD{/g} " +
                     "against all {g|Encyclopedia:Combat_Maneuvers}combat maneuvers{/g}.");
-                bp.m_Icon = Stabilize.m_Icon;
+                bp.m_Icon = WaveStyleIcon;
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.SavingThrowType = SavingThrowType.Unknown;
                     c.Actions = Helpers.CreateActionList(
@@ -1603,7 +1609,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     "using your {g|Encyclopedia:Charisma}Charisma{/g} modifier instead of your {g|Encyclopedia:Strength}Strength{/g} modifier to " +
                     "determine your {g|Encyclopedia:CMB}Combat Maneuver Bonus{/g}. Targets may attempt a Reflex save to reduce the damage by half and " +
                     "be unaffected by the bull rush combat maneuver.");
-                bp.m_Icon = Stabilize.m_Icon;
+                bp.m_Icon = WaveStyleIcon;
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.SavingThrowType = SavingThrowType.Unknown;
                     c.Actions = Helpers.CreateActionList(
@@ -1902,7 +1908,6 @@ namespace ExpandedContent.Tweaks.Archetypes {
 
 
 
-            //Water Stride 
             //Hook into Wild Talents from CO+
         }
     }
