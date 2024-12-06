@@ -26,6 +26,7 @@ using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.UnitLogic.Abilities.Components;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.Class.Kineticist;
+using Kingmaker.UnitLogic.Class.Kineticist.Actions;
 using Kingmaker.UnitLogic.Commands.Base;
 using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.UnitLogic.Mechanics;
@@ -34,6 +35,7 @@ using Kingmaker.UnitLogic.Mechanics.Components;
 using Kingmaker.UnitLogic.Mechanics.Properties;
 using Kingmaker.Utility;
 using Kingmaker.Visual.Animation.Kingmaker.Actions;
+using System.Collections.Generic;
 using TabletopTweaks.Core.NewComponents.Properties;
 
 namespace ExpandedContent.Tweaks.Archetypes {
@@ -116,7 +118,18 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.OverrideAttributeRecommendations = true;
                 bp.RecommendedAttributes = new StatType[] { StatType.Strength, StatType.Constitution, StatType.Charisma };
                 bp.NotRecommendedAttributes = new StatType[] { };
+                bp.AddComponent<PrerequisiteNoClassLevel>(c => {
+                    c.m_CharacterClass = KineticistClass.ToReference<BlueprintCharacterClassReference>();
+                    c.HideInUI = true;
+                });
             });
+            KineticistClass.AddComponent<PrerequisiteNoArchetype>(c => {
+                c.m_CharacterClass = MonkClass.ToReference<BlueprintCharacterClassReference>();
+                c.m_Archetype = WaterDancerArchetype.ToReference<BlueprintArchetypeReference>();
+                c.HideInUI = true;
+            });
+
+
 
             var WaterDancerProficiency = Helpers.CreateBlueprint<BlueprintFeature>("WaterDancerProficiency", bp => {
                 bp.SetName("Water Dancer Proficiencies");
@@ -447,14 +460,8 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.SavingThrowType = SavingThrowType.Unknown;
                     c.Actions = Helpers.CreateActionList(
-                        new ContextRestoreResource() {
-                            m_IsFullRestoreAllResources = false,
-                            m_Resource = BurnResource,
-                            ContextValueRestoration = true,
-                            Value = new ContextValue() {
-                                ValueType = ContextValueType.Simple,
-                                Value = 1
-                            }
+                        new ContextActionHealBurn() {
+                            Value = 1
                         }                        
                         );
                 });
@@ -1114,10 +1121,18 @@ namespace ExpandedContent.Tweaks.Archetypes {
                         new ContextActionRemoveBuff() { m_Buff = WaterStyleWaterfallRapidBuff.ToReference<BlueprintBuffReference>() }
                         );
                 });
-                bp.AddComponent<AbilityResourceLogic>(c => {
-                    c.m_RequiredResource = BurnResource;
-                    c.m_IsSpendResource = true;
+                bp.AddComponent<AbilityKineticist>(c => {
+                    c.m_RequiredResource = null;
+                    c.m_IsSpendResource = false;
+                    c.CostIsCustom = false;
                     c.Amount = 1;
+                    c.ResourceCostIncreasingFacts = new List<BlueprintUnitFactReference>();
+                    c.ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>();
+                    c.BlastBurnCost = 0;
+                    c.InfusionBurnCost = 0;
+                    c.WildTalentBurnCost = 1;
+                    c.CachedDamageInfo = new List<AbilityKineticist.DamageInfo>();
+                    c.CachedDamageSource = null;
                 });
                 bp.m_AllowNonContextActions = false;
                 bp.Type = AbilityType.Supernatural;
@@ -1237,10 +1252,18 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.AlongPath = false;
                     c.AlongPathDistanceMuliplier = 1;
                 });
-                bp.AddComponent<AbilityResourceLogic>(c => {
-                    c.m_RequiredResource = BurnResource;
-                    c.m_IsSpendResource = true;
+                bp.AddComponent<AbilityKineticist>(c => {
+                    c.m_RequiredResource = null;
+                    c.m_IsSpendResource = false;
+                    c.CostIsCustom = false;
                     c.Amount = 1;
+                    c.ResourceCostIncreasingFacts = new List<BlueprintUnitFactReference>();
+                    c.ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>();
+                    c.BlastBurnCost = 0;
+                    c.InfusionBurnCost = 0;
+                    c.WildTalentBurnCost = 1;
+                    c.CachedDamageInfo = new List<AbilityKineticist.DamageInfo>();
+                    c.CachedDamageSource = null;
                 });
                 bp.m_AllowNonContextActions = false;
                 bp.Type = AbilityType.Supernatural;
@@ -1367,10 +1390,18 @@ namespace ExpandedContent.Tweaks.Archetypes {
                         new ContextActionRemoveBuff() { m_Buff = WaterStyleWaterfallRapidBuff.ToReference<BlueprintBuffReference>() }
                         );
                 });
-                bp.AddComponent<AbilityResourceLogic>(c => {
-                    c.m_RequiredResource = BurnResource;
-                    c.m_IsSpendResource = true;
+                bp.AddComponent<AbilityKineticist>(c => {
+                    c.m_RequiredResource = null;
+                    c.m_IsSpendResource = false;
+                    c.CostIsCustom = false;
                     c.Amount = 1;
+                    c.ResourceCostIncreasingFacts = new List<BlueprintUnitFactReference>();
+                    c.ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>();
+                    c.BlastBurnCost = 0;
+                    c.InfusionBurnCost = 0;
+                    c.WildTalentBurnCost = 1;
+                    c.CachedDamageInfo = new List<AbilityKineticist.DamageInfo>();
+                    c.CachedDamageSource = null;
                 });
                 bp.m_AllowNonContextActions = false;
                 bp.Type = AbilityType.Supernatural;
@@ -1502,10 +1533,18 @@ namespace ExpandedContent.Tweaks.Archetypes {
                         new ContextActionRemoveBuff() { m_Buff = WaterStyleRiverRapidBuff.ToReference<BlueprintBuffReference>() }
                         );
                 });
-                bp.AddComponent<AbilityResourceLogic>(c => {
-                    c.m_RequiredResource = BurnResource;
-                    c.m_IsSpendResource = true;
+                bp.AddComponent<AbilityKineticist>(c => {
+                    c.m_RequiredResource = null;
+                    c.m_IsSpendResource = false;
+                    c.CostIsCustom = false;
                     c.Amount = 1;
+                    c.ResourceCostIncreasingFacts = new List<BlueprintUnitFactReference>();
+                    c.ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>();
+                    c.BlastBurnCost = 0;
+                    c.InfusionBurnCost = 0;
+                    c.WildTalentBurnCost = 1;
+                    c.CachedDamageInfo = new List<AbilityKineticist.DamageInfo>();
+                    c.CachedDamageSource = null;
                 });
                 bp.m_AllowNonContextActions = false;
                 bp.Type = AbilityType.Supernatural;
@@ -1757,10 +1796,18 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.StatType = StatType.Charisma;
                     c.m_CharacterClass = MonkClass.ToReference<BlueprintCharacterClassReference>();
                 });
-                bp.AddComponent<AbilityResourceLogic>(c => {
-                    c.m_RequiredResource = BurnResource;
-                    c.m_IsSpendResource = true;
+                bp.AddComponent<AbilityKineticist>(c => {
+                    c.m_RequiredResource = null;
+                    c.m_IsSpendResource = false;
+                    c.CostIsCustom = false;
                     c.Amount = 1;
+                    c.ResourceCostIncreasingFacts = new List<BlueprintUnitFactReference>();
+                    c.ResourceCostDecreasingFacts = new List<BlueprintUnitFactReference>();
+                    c.BlastBurnCost = 0;
+                    c.InfusionBurnCost = 0;
+                    c.WildTalentBurnCost = 1;
+                    c.CachedDamageInfo = new List<AbilityKineticist.DamageInfo>();
+                    c.CachedDamageSource = null;
                 });
                 bp.m_AllowNonContextActions = false;
                 bp.Type = AbilityType.Supernatural;
