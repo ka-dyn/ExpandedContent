@@ -1742,7 +1742,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                                             Type = CombatManeuver.BullRush,
                                             IgnoreConcealment = true,
                                             OnSuccess = Helpers.CreateActionList(),
-                                            ReplaceStat = false,
+                                            ReplaceStat = true,
                                             NewStat = StatType.Unknown,
                                             UseKineticistMainStat = true,
                                             UseCastingStat = false,
