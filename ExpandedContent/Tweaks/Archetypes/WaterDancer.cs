@@ -76,6 +76,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var MonkACBonusUnlock = Resources.GetBlueprintReference<BlueprintFeatureReference>("2615c5f87b3d72b42ac0e73b56d895e0");
             var ScaledFistACBonusUnlock = Resources.GetBlueprintReference<BlueprintFeatureReference>("2a8922e28b3eba54fa7a244f7b05bd9e");
 
+
             var StunningFist = Resources.GetBlueprintReference<BlueprintFeatureReference>("a29a582c3daa4c24bb0e991c596ccb28");
             var StunningFistFatigueFeature = Resources.GetBlueprintReference<BlueprintFeatureReference>("819645da2e446f84d9b168ed1676ec29");
             var StunningFistSickenedFeature = Resources.GetBlueprintReference<BlueprintFeatureReference>("d256ab3837538cc489d4b571e3a813eb");
@@ -274,6 +275,18 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 c.m_CharacterClass = MonkClass.ToReference<BlueprintCharacterClassReference>();
                 c.m_Archetype = WaterDancerArchetype.ToReference<BlueprintArchetypeReference>();
             });
+            #endregion
+            #region Shroud of Water
+            var ShroudOfWaterEffectFeatures = new BlueprintFeature[] {
+                Resources.GetBlueprint<BlueprintFeature>("4d8feca11d6e29a499ae761b90eacdba"),//Shield
+                Resources.GetBlueprint<BlueprintFeature>("1ff803cb49f63ea4185490fae2c43ca7")//Armor
+            };
+            foreach (var feature in ShroudOfWaterEffectFeatures) {
+                feature.GetComponent<ContextRankConfig>().TemporaryContext(c => {
+                    c.m_Class = c.m_Class.AppendToArray(MonkClass.ToReference<BlueprintCharacterClassReference>());
+                    c.Archetype = WaterDancerArchetype.ToReference<BlueprintArchetypeReference>();
+                });
+            }
             #endregion
             #region Ki
             var WaterDancerKiPowerFeature = Helpers.CreateBlueprint<BlueprintFeature>("WaterDancerKiPowerFeature", bp => {
@@ -1889,7 +1902,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             });
             #endregion
             var WaterStyleStrikesFeatureSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("WaterStyleStrikesFeatureSelection", bp => {
-                bp.SetName("Water Style Strke");
+                bp.SetName("Water Style Strike");
                 bp.SetDescription("At 5th level, and every 4 levels thereafter, a water dancer learns one type of water style strike. \r\nEach style has two forms: \nCalm water " +
                     "forms use ki as a resource and provide long lasting, minor effects. \nRapid water forms force the water dancer to accept a point of burn, in exchange for short, but major effects. " +
                     "\r\nA water dancer can only be effected by one style at a time, using a calm style removes other calm styles, rapid styles do not remove calm styles but suppress them for one " +
