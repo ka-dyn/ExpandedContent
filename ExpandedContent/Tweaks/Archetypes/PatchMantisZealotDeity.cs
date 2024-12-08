@@ -43,6 +43,8 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var GodClawFeature = Resources.GetBlueprint<BlueprintFeature>("583a26e88031d0a4a94c8180105692a5");
             var AtheismFeature = Resources.GetBlueprint<BlueprintFeature>("92c0d2da0a836ce418a267093c09ca54");
             var NewAchaekekFeature = Resources.GetBlueprint<BlueprintFeature>("a3189d5b7c4d4d91beaa8bfffac3e38e");
+            var NewApsuFeature = Resources.GetBlueprint<BlueprintFeature>("772e2673945e4583a804ae01f67efea0");
+            var NewDahakFeature = Resources.GetBlueprint<BlueprintFeature>("8f7118d68f6e44dea94dddb51f38cbdd");
 
             #region Mantis Zealot
             AbadarFeature.AddComponent<PrerequisiteNoArchetype>(c => {
@@ -142,6 +144,8 @@ namespace ExpandedContent.Tweaks.Archetypes {
             DesnaFeature.SetDisallowedArchetype(DreadKnightClass, ClawOfTheFalseWyrmArchetype);
             CaydenCaileanFeature.SetDisallowedArchetype(DreadKnightClass, ClawOfTheFalseWyrmArchetype);
             NewAchaekekFeature.SetDisallowedArchetype(DreadKnightClass, ClawOfTheFalseWyrmArchetype);
+            NorgorberFeature.SetDisallowedArchetype(DreadKnightClass, ClawOfTheFalseWyrmArchetype);
+            NewApsuFeature.SetDisallowedArchetype(DreadKnightClass, ClawOfTheFalseWyrmArchetype);
             #endregion
             #region Sworn of the Eldest
             AbadarFeature.SetDisallowedArchetype(InquisitorClass, SwornOfTheEldestArchetype);
