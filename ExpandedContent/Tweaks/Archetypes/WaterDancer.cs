@@ -1962,7 +1962,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             };
 
 
-            //if (ModSettings.AddedContent.Archetypes.IsDisabled("Water Dancer")) { return; }
+            if (ModSettings.AddedContent.Archetypes.IsDisabled("Water Dancer")) { return; }
             MonkClass.m_Archetypes = MonkClass.m_Archetypes.AppendToArray(WaterDancerArchetype.ToReference<BlueprintArchetypeReference>());
 
 

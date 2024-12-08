@@ -2,6 +2,7 @@
 using ExpandedContent.Tweaks.Components;
 using ExpandedContent.Utilities;
 using HarmonyLib;
+using Kingmaker;
 using Kingmaker.Assets.UnitLogic.Mechanics.Properties;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
@@ -940,6 +941,7 @@ namespace ExpandedContent.Config {
                         .ForEach(level => level.m_Spells.Add(TouchofBlindnessSpell.ToReference<BlueprintAbilityReference>()
                         ));
 
+                    
                     Main.Log("Finished Character Options Plus Compat Patch.");
                 }
 
@@ -953,6 +955,69 @@ namespace ExpandedContent.Config {
                         c.m_Spell = BlackTentaclesSpell.ToReference<BlueprintAbilityReference>();
                     });
                     Main.Log("Finished Making Friends Plus Compat Patch.");
+                }
+            }
+        }
+
+        [HarmonyPatch(typeof(GameStarter), "FixTMPAssets")]//This patches very late, after localization, so do not use it for anything involving text
+        static class BlueprintsCache_Init_Patc {
+            static bool Initialized;
+
+            [HarmonyAfter()]
+            [HarmonyPostfix]
+            [HarmonyPriority(Priority.Last)]
+
+            public static void Postfix() {
+                if (Initialized) return;
+                Initialized = true;
+
+                if (IsCharacterOptionsPlusEnabled()) {
+                    Main.Log("Starting Late Character Options Plus Compat Patch.");
+
+                    var MonkClass = Resources.GetBlueprintReference<BlueprintCharacterClassReference>("e8f21e5b58e0569468e420ebea456124");
+                    var KineticistClass = Resources.GetBlueprintReference<BlueprintCharacterClassReference>("42a455d9ec1ad924d889272429eb8391");
+                    var WaterDancerArchetype = Resources.GetBlueprintReference<BlueprintArchetypeReference>("748a85a9c88649a6b92cf948fce8e070");
+                    var SuffocateWildTalentAbility = Resources.GetBlueprint<BlueprintAbility>("938c3f619f9b4318b90554210e044752");
+                    if (SuffocateWildTalentAbility != null) {
+                        SuffocateWildTalentAbility.RemoveComponents<ContextCalculateAbilityParamsBasedOnClass>();
+                        SuffocateWildTalentAbility.AddComponent<ContextCalculateAbilityParamsBasedOnHigherClass>(c => {
+                            c.UseKineticistMainStat = true;
+                            c.StatType = StatType.Charisma;
+                            c.m_Classes = new BlueprintCharacterClassReference[] {
+                                KineticistClass,
+                                MonkClass
+                            };
+                            c.m_Archetypes = new BlueprintArchetypeReference[] {
+                                WaterDancerArchetype
+                            };
+                        });
+                    }
+                    var SuffocateWildTalentFeature = Resources.GetBlueprint<BlueprintFeature>("2306f7e0445c48069789ff9ddcd6ec11");
+                    if (SuffocateWildTalentFeature != null) {
+                        SuffocateWildTalentFeature.GetComponent<PrerequisiteClassLevel>().TemporaryContext(c => {
+                            c.Group = Prerequisite.GroupType.Any;
+                        });
+                        SuffocateWildTalentFeature.AddComponent<PrerequisiteArchetypeLevel>(c => {
+                            c.Group = Prerequisite.GroupType.Any;
+                            c.m_CharacterClass = MonkClass;
+                            c.m_Archetype = WaterDancerArchetype;
+                            c.Level = 14;
+                        });
+                    }
+                    var ShimmeringMirageFeature = Resources.GetBlueprint<BlueprintFeature>("2438b572-d1dd-4bab-b484-7b8fe4dab6ed");
+                    if (ShimmeringMirageFeature != null) {
+                        ShimmeringMirageFeature.GetComponent<PrerequisiteClassLevel>().TemporaryContext(c => {
+                            c.Group = Prerequisite.GroupType.Any;
+                        });
+                        ShimmeringMirageFeature.AddComponent<PrerequisiteArchetypeLevel>(c => {
+                            c.Group = Prerequisite.GroupType.Any;
+                            c.m_CharacterClass = MonkClass;
+                            c.m_Archetype = WaterDancerArchetype;
+                            c.Level = 12;
+                        });
+                    }
+
+                    Main.Log("Finished Late Character Options Plus Compat Patch.");
                 }
             }
         }

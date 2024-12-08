@@ -224,6 +224,11 @@
         "Enabled": true,
         "Homebrew": false,
         "Description": "A cavalier archetype that trades teamwork abilities for a draconic mount."
+      },
+      "Water Dancer": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "A chained monk archetype that uses wild talents instead of ki, homebrewed to fit the unchained monk used in game."
       }
     },
     "IsExpanded": false
