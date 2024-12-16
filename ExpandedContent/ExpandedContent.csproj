@@ -24,7 +24,6 @@
 		<Reference Include="$(WrathInstallDir)\Wrath_Data\Managed\UnityModManager\0Harmony.dll*" />
 		<Reference Include="$(WrathInstallDir)\Mods\TabletopTweaks-Core\TabletopTweaks-Core.dll" />
 		<Reference Include="$(WrathInstallDir)\Mods\ExpandedContent\ModKit.dll" />
-		<Reference Include="..\..\Reference DLLs\BlueprintCore.dll" />
 	</ItemGroup>
 	<ItemGroup>
 		<None Include="Info.json" CopyToOutputDirectory="Always" />
@@ -56,6 +55,7 @@
 		<PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="all" />
 		<PackageReference Include="BepInEx.AssemblyPublicizer.MSBuild" IncludeAssets="build; contentfiles" Version="0.4.2" PrivateAssets="all" />
 		<PackageReference Include="ILRepack.MSBuild.Task" Version="2.*" />
+		<PackageReference Include="WW-Blueprint-Core" Version="*" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Properties\" />
