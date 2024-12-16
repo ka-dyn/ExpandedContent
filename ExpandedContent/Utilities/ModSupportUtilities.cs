@@ -6,7 +6,7 @@ using static UnityModManagerNet.UnityModManager;
 namespace ExpandedContent.Utilities {
     class ModSupportUtilities {
 
-        public static ModEntry ModEntry;
+        //public static ModEntry ModEntry;
         //Old Filepath incase something breaks                      var FilePath = $"..{Path.DirectorySeparatorChar}TabletopTweaks-Base{Path.DirectorySeparatorChar}UserSettings{Path.DirectorySeparatorChar}Fixes.json";
 
         public static bool GetShiftersRushTTTBaseSetting() {

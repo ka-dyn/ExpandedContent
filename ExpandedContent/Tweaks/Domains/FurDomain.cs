@@ -851,7 +851,7 @@ namespace ExpandedContent.Tweaks.Domains {
                 c.HideInUI = true;
                 c.m_Feature = FurDomainProgressionSeparatist.ToReference<BlueprintFeatureReference>();
             });
-            Main.Log("Stop looking at my logs.");
+
             if (ModSettings.AddedContent.Domains.IsDisabled("Fur Subdomain")) { return; }
             DomainTools.RegisterDomain(FurDomainProgression);
             DomainTools.RegisterSecondaryDomain(FurDomainProgressionSecondary);

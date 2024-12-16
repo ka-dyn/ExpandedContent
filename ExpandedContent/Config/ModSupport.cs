@@ -27,11 +27,11 @@ using Kingmaker.UnitLogic.Mechanics.Actions;
 using Kingmaker.UnitLogic.Mechanics.Components;
 using Kingmaker.UnitLogic.Mechanics.Properties;
 using Kingmaker.Utility;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using TabletopTweaks.Core.NewComponents;
-using static Kingmaker.Kingdom.Buffs.KingdomTacticalArmyFeature;
 using static UnityModManagerNet.UnityModManager;
 
 
@@ -43,7 +43,6 @@ namespace ExpandedContent.Config {
         protected static bool IsPrestigePlusEnabled() { return IsModEnabled("PrestigePlus"); }
         protected static bool IsCharacterOptionsPlusEnabled() { return IsModEnabled("CharacterOptionsPlus"); }
         protected static bool IsMakingFriendsEnabled() { return IsModEnabled("WOTR_MAKING_FRIENDS"); }
-        protected static bool IsHomebrewArchetypesEnabled() { if (Resources.GetBlueprint<BlueprintProgression>("0e9edc96f2724444e8aae89d6e8bc225") != null) { return true; } else return false; }
 
         private static readonly BlueprintDlc Dlc5 = Resources.GetBlueprint<BlueprintDlc>("95a25ca16bd54ce3b3ea56f83538fa0d");
 
@@ -337,7 +336,6 @@ namespace ExpandedContent.Config {
                 if (IsTabletopTweaksBaseEnabled()) {
                     Main.Log("Starting TTT-Base Compat Patch.");
                     #region Oracle Stuff
-                    Main.Log("Patching Oracle Stuff");
                     var OracleClass = Resources.GetBlueprint<BlueprintCharacterClass>("20ce9bf8af32bee4c8557a045ab499b1");
                     var RayOfEnfeeblementSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("450af0402422b0b4980d9c2175869612");
                     var ShieldOfFortificationAbility = Resources.GetModBlueprint<BlueprintAbility>("ShieldOfFortificationAbility");
@@ -451,11 +449,8 @@ namespace ExpandedContent.Config {
                             c.SpellLevel = 9;
                         });
                     });
-                    Main.Log("Done");
-
                     #endregion
                     #region Wild Shape Stuff
-                    Main.Log("Patching Wild Shape Stuff");
                     var WildShapeDragonShapeBiteFeature = Resources.GetModBlueprint<BlueprintFeature>("WildShapeDragonShapeBiteFeature");
                     var MutatedShapeFeaturePrerequisite = Resources.GetBlueprint<BlueprintFeature>("82cb6efb4e3f48cbaf2ea59a3dd1a5cc").GetComponent<PrerequisiteFeaturesFromList>();
                     MutatedShapeFeaturePrerequisite.m_Features = MutatedShapeFeaturePrerequisite.m_Features.AppendToArray(WildShapeDragonShapeBiteFeature.ToReference<BlueprintFeatureReference>());
@@ -482,20 +477,16 @@ namespace ExpandedContent.Config {
                             c.m_Facts = c.m_Facts.AppendToArray(MutatedShapeEffect.ToReference<BlueprintUnitFactReference>());
                         });
                     }
-                    Main.Log("Done");
                     #endregion
                     #region Natural Spell
-                    Main.Log("Patching Natural Spell Stuff");
                     var NaturalSpellPrerequisiteFeaturesFromList = Resources.GetBlueprint<BlueprintFeature>("c806103e27cce6f429e5bf47067966cf").GetComponent<PrerequisiteFeaturesFromList>();
                     var TreesingerWildShapeMandragoraFeature = Resources.GetModBlueprint<BlueprintFeature>("TreesingerWildShapeMandragoraFeature");
                     NaturalSpellPrerequisiteFeaturesFromList.m_Features = NaturalSpellPrerequisiteFeaturesFromList.m_Features.AppendToArray(
                         WildShapeDragonShapeBiteFeature.ToReference<BlueprintFeatureReference>(), 
                         TreesingerWildShapeMandragoraFeature.ToReference<BlueprintFeatureReference>()
                         );
-                    Main.Log("Done");
                     #endregion
                     #region Blessing Stuff
-                    Main.Log("Patching Blessing Stuff");
                     var newblessingabilities = new BlueprintAbilityReference[] {
                         Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMajorMHBaseAbility").ToReference<BlueprintAbilityReference>(),
                         Resources.GetModBlueprint<BlueprintAbility>("ArtificeBlessingMajorOHBaseAbility").ToReference<BlueprintAbilityReference>(),
@@ -775,11 +766,9 @@ namespace ExpandedContent.Config {
                     QuickenBlessing.m_Features = QuickenBlessing.m_Features.RemoveFromArray(TTTQuickenBlessingArtificeFeature);
                     QuickenBlessing.m_AllFeatures = QuickenBlessing.m_AllFeatures.RemoveFromArray(TTTQuickenBlessingCommunityFeature);
                     QuickenBlessing.m_Features = QuickenBlessing.m_Features.RemoveFromArray(TTTQuickenBlessingCommunityFeature);
-                    Main.Log("Done");
 
                     #endregion
                     #region God load order stuff
-                    Main.Log("Patching God load order Stuff");
                     //I sohuld not need to do this but for some users TTT always loads first
                     var IroriFeatureAddFeatureOnClassLevel = Resources.GetBlueprint<BlueprintFeature>("23a77a5985de08349820429ce1b5a234").GetComponent<AddFeatureOnClassLevelExclude>();
                     IroriFeatureAddFeatureOnClassLevel.m_AdditionalClasses = IroriFeatureAddFeatureOnClassLevel.m_AdditionalClasses.AppendToArray(RangerClass);
@@ -797,10 +786,8 @@ namespace ExpandedContent.Config {
                         c.Level = IroriFeatureAddFeatureOnClassLevel.Level;
                         c.BeforeThisLevel = IroriFeatureAddFeatureOnClassLevel.BeforeThisLevel;
                     });
-                    Main.Log("Done");
                     #endregion
                     #region Drake Rider stuff
-                    Main.Log("Patching Drake Rider Stuff");
                     var ExpertTrainer = Resources.GetBlueprint<BlueprintFeature>("ae97a4eb750d499c837988f62a24e0de");
                     var DrakeRiderArchetype = Resources.GetModBlueprint<BlueprintArchetype>("DrakeRiderArchetype");
 
@@ -808,10 +795,8 @@ namespace ExpandedContent.Config {
                         Level = 4,
                         m_Features =  new List<BlueprintFeatureBaseReference>() { ExpertTrainer.ToReference<BlueprintFeatureBaseReference>() }
                     });
-                    Main.Log("Done");
                     #endregion
                     #region Shadow Mystery stuff
-                    Main.Log("Patching Shadow Mystery Stuff");
                     var ShadowEnchantmentSpell = Resources.GetBlueprint<BlueprintAbility>("d934f706a12b40ec87a9c8baf221b8a9");
                     var ShadowEnchantmentGreaterSpell = Resources.GetBlueprint<BlueprintAbility>("ba07962827484eb38bf0b6aadd9f5f22");
                     var OracleShadowFinalRevelationMetamagic = Resources.GetModBlueprint<BlueprintFeature>("OracleShadowFinalRevelation").GetComponent<AutoMetamagic>();
@@ -829,10 +814,8 @@ namespace ExpandedContent.Config {
                         .ForEach(level => level.m_Spells.Add(ShadowEnchantmentGreaterSpell.ToReference<BlueprintAbilityReference>()
                         ));
 
-                    Main.Log("Done");
                     #endregion
                     #region Stargazer Spellbooks
-                    Main.Log("Patching Stargazer Spellbook Stuff");
                     var StargazerChannelerOfTheUnknownLevelUp = Resources.GetModBlueprint<BlueprintFeature>("StargazerChannelerOfTheUnknownLevelUp");
                     var StargazerChannelerOfTheUnknownProgression = Resources.GetModBlueprint<BlueprintProgression>("StargazerChannelerOfTheUnknownProgression");
                     var StargazerClericProgression = Resources.GetModBlueprint<BlueprintProgression>("StargazerClericProgression");
@@ -856,10 +839,8 @@ namespace ExpandedContent.Config {
                     });
                     var StargazerSpellbook = Resources.GetModBlueprint<BlueprintFeatureSelection>("StargazerSpellbook");
                     StargazerSpellbook.m_AllFeatures = StargazerSpellbook.m_AllFeatures.AppendToArray(StargazerChannelerOfTheUnknownProgression.ToReference<BlueprintFeatureReference>());
-                    Main.Log("Done");
                     #endregion
                     #region Subdomain stuff
-                    Main.Log("Patching Subdomain Stuff");
                     var ArcaneDomainSpellList = Resources.GetModBlueprint<BlueprintSpellList>("ArcaneDomainSpellList");
                     ArcaneDomainSpellList.SpellsByLevel
                         .Where(level => level.SpellLevel == 9)
@@ -881,7 +862,6 @@ namespace ExpandedContent.Config {
                             "{g|SpellsSpellResistance}spell resistance{/g}, {g|SpellsGreaterDispelMagic}dispel magic, greater{/g}, {g|SpellsPowerWordBlind}power word blind{/g}, " +
                             "{g|SpellsProtectionFromSpells}protection from spells{/g}, mages disjunction.");
                     }
-                    Main.Log("Done");
                     #endregion
                     Main.Log("Finishing TTT-Base Compat Patch.");
                 }
@@ -1014,99 +994,45 @@ namespace ExpandedContent.Config {
                     }
                     var SuffocateWildTalentFeature = Resources.GetBlueprint<BlueprintFeature>("2306f7e0445c48069789ff9ddcd6ec11");
                     if (SuffocateWildTalentFeature != null) {
-                        SuffocateWildTalentFeature.GetComponent<PrerequisiteClassLevel>().TemporaryContext(c => {
-                            c.Group = Prerequisite.GroupType.Any;
-                        });
-                        SuffocateWildTalentFeature.AddComponent<PrerequisiteArchetypeLevel>(c => {
-                            c.Group = Prerequisite.GroupType.Any;
-                            c.m_CharacterClass = MonkClass;
-                            c.m_Archetype = WaterDancerArchetype;
-                            c.Level = 14;
-                        });
+                        try {
+                            SuffocateWildTalentFeature.GetComponent<PrerequisiteClassLevel>().TemporaryContext(c => {
+                                c.Group = Prerequisite.GroupType.Any;
+                            });
+                            SuffocateWildTalentFeature.AddComponent<PrerequisiteArchetypeLevel>(c => {
+                                c.Group = Prerequisite.GroupType.Any;
+                                c.m_CharacterClass = MonkClass;
+                                c.m_Archetype = WaterDancerArchetype;
+                                c.Level = 14;
+                            });
+                        }
+                        catch (Exception e) 
+                        {
+                            Main.Log("Error patching Suffocate Wild Talent from CO+");
+                            Main.Log(e.ToString());
+                        }
                     }
-                    Main.Log("Suffocate Wild Talent Patched.");
-
                     var ShimmeringMirageFeature = Resources.GetBlueprint<BlueprintFeature>("2438b572-d1dd-4bab-b484-7b8fe4dab6ed");
                     if (ShimmeringMirageFeature != null) {
-                        ShimmeringMirageFeature.GetComponent<PrerequisiteClassLevel>().TemporaryContext(c => {
-                            c.Group = Prerequisite.GroupType.Any;
-                        });
-                        ShimmeringMirageFeature.AddComponent<PrerequisiteArchetypeLevel>(c => {
-                            c.Group = Prerequisite.GroupType.Any;
-                            c.m_CharacterClass = MonkClass;
-                            c.m_Archetype = WaterDancerArchetype;
-                            c.Level = 12;
-                        });
+                        try 
+                        {
+                            ShimmeringMirageFeature.GetComponent<PrerequisiteClassLevel>().TemporaryContext(c => {
+                                c.Group = Prerequisite.GroupType.Any;
+                            });
+                            ShimmeringMirageFeature.AddComponent<PrerequisiteArchetypeLevel>(c => {
+                                c.Group = Prerequisite.GroupType.Any;
+                                c.m_CharacterClass = MonkClass;
+                                c.m_Archetype = WaterDancerArchetype;
+                                c.Level = 12;
+                            });
+                        } 
+                        catch (Exception e) 
+                        {
+                            Main.Log("Error patching Shimmering Mirage from CO+");
+                            Main.Log(e.ToString());
+                        }
                     }
-                    Main.Log("Shimmerinf Mirage Wild Talent Patched.");
 
                     Main.Log("Finished Late Character Options Plus Compat Patch.");
-                }
-
-                if (IsHomebrewArchetypesEnabled()) {
-                    Main.Log("Starting Late Homebrew Archetypes Compat Patch.");
-                    #region Void Domain
-                    Main.Log("Patching Void Domain.");
-                    var VoidDomainAllowedFeature = Resources.GetBlueprintReference<BlueprintFeatureReference>("fadd0fd2c0e5a6b4eb59d974a778fb2a");
-                    var VoidDeities = new BlueprintFeature[] {  
-                        Resources.GetModBlueprint<BlueprintFeature>("AtlachNachaFeature"),
-                        Resources.GetModBlueprint<BlueprintFeature>("AzathothFeature"),
-                        Resources.GetModBlueprint<BlueprintFeature>("BlackButterflyFeature"),
-                        Resources.GetModBlueprint<BlueprintFeature>("CthulhuFeature"),
-                        Resources.GetModBlueprint<BlueprintFeature>("HasturFeature"),
-                        Resources.GetModBlueprint<BlueprintFeature>("KerkamothFeature"),
-                        Resources.GetModBlueprint<BlueprintFeature>("MaatFeature"),
-                        Resources.GetModBlueprint<BlueprintFeature>("MonadFeature"),
-                        Resources.GetModBlueprint<BlueprintFeature>("NhimbalothFeature"),
-                        Resources.GetModBlueprint<BlueprintFeature>("RhanTegothFeature"),
-                        Resources.GetModBlueprint<BlueprintFeature>("ShubNiggurathFeature"),
-                        Resources.GetModBlueprint<BlueprintFeature>("YogSothothFeature")
-                    };
-                    foreach (var deity in VoidDeities) {
-                        deity.SetAllowedDomains(VoidDomainAllowedFeature);
-                    }
-
-                    var StargazerClass = Resources.GetModBlueprint<BlueprintCharacterClass>("StargazerClass");
-                    var PaladinClass = Resources.GetBlueprint<BlueprintCharacterClass>("bfa11238e7ae3544bbeb4d0b92e897ec");
-                    var TempleChampionArchetype = Resources.GetModBlueprint<BlueprintArchetype>("TempleChampionArchetype");
-                    var VoidDomainProgressions = new BlueprintProgression[] {
-                        Resources.GetBlueprint<BlueprintProgression>("0e9edc96f2724444e8aae89d6e8bc225"),//Normal
-                        Resources.GetBlueprint<BlueprintProgression>("d4b6d394869684149a7f2d0b1a8caca0"),//Secondary
-                    };
-                    foreach (var progression in VoidDomainProgressions) {
-                        progression.m_Classes = progression.m_Classes.AppendToArray(
-                            new BlueprintProgression.ClassWithLevel {
-                                m_Class = PaladinClass.ToReference<BlueprintCharacterClassReference>(),
-                                AdditionalLevel = 0
-                            },
-                            new BlueprintProgression.ClassWithLevel {
-                                m_Class = StargazerClass.ToReference<BlueprintCharacterClassReference>(),
-                                AdditionalLevel = 0
-                            }
-                        );
-                        progression.m_Archetypes = progression.m_Archetypes.AppendToArray(
-                            new BlueprintProgression.ArchetypeWithLevel {
-                                m_Archetype = TempleChampionArchetype.ToReference<BlueprintArchetypeReference>(),
-                                AdditionalLevel = 0
-                            }
-                        );
-                    }
-
-                    var GreatTapestrySummonBuffConfig = Resources.GetBlueprint<BlueprintBuff>("a38d60935197cab4198322da3c85785a").GetComponent<ContextRankConfig>();
-                    GreatTapestrySummonBuffConfig.m_Class = GreatTapestrySummonBuffConfig.m_Class.AppendToArray(
-                        StargazerClass.ToReference<BlueprintCharacterClassReference>(),
-                        PaladinClass.ToReference<BlueprintCharacterClassReference>()
-                        );
-                    GreatTapestrySummonBuffConfig.m_AdditionalArchetypes = GreatTapestrySummonBuffConfig.m_AdditionalArchetypes.AppendToArray(
-                        TempleChampionArchetype.ToReference<BlueprintArchetypeReference>()
-                        );
-                    #endregion
-
-                    Main.Log("Finished Late Homebrew Archetypes Compat Patch.");
-
-                }
-                if (!IsHomebrewArchetypesEnabled()) {
-                    Main.Log("Don't worry about 0e9edc96f2724444e8aae89d6e8bc225 not loading, it's all according to plan yesyes.");
                 }
             }
         }

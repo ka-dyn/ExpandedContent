@@ -13,7 +13,9 @@ namespace ExpandedContent.Tweaks.Miscellaneous {
 
 
         [HarmonyPatch(typeof(AbilityDeliverProjectile), "RangedHandOfTheApprentice", new Type[] {typeof(bool) })]
+        public static void IgnorePatch() {
 
+        }
 
     }
 }
