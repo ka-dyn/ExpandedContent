@@ -37,6 +37,8 @@ New Archetypes
 
 - Drake Rider, Cavalier
 
+- Water Dancer, Monk
+
 New Prestige Class
 
 - Stargazer
