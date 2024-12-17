@@ -11,7 +11,7 @@ namespace ExpandedContent.Tweaks {
             public static void Postfix() {
                 if (Initialized) return;
                 Initialized = true;
-
+                Main.Log("Test 3");
                 Miscellaneous.LazyLocker.AddLazyLocker();
 
                 Miscellaneous.OpeningVolley.AddOpeningVolley();
