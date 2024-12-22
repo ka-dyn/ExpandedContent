@@ -3655,7 +3655,16 @@
     "WaterStyleWaveFeature": "21c83713-ed53-48ed-85c8-b4875a998acd",
     "WaterStyleWaveRapidAbility": "a816a7df-815b-489d-96b1-06c26d58984c",
 
-    "AbraxasSacredWeaponFeature": "252e4549-00bb-4dd9-bf61-73e49037143e"
+    "AbraxasSacredWeaponFeature": "252e4549-00bb-4dd9-bf61-73e49037143e",
+
+    "NobleScionFeatureSelection": "a4bf9ad4-e288-4016-a4e3-7c5e23615528",
+    "NobleScionOfLoreFeature": "bf22058b-46e4-4843-84b4-cb9ff6ad726d",
+    "NobleScionOfMagicFeature": "cc1912c6-39c9-4285-b468-6aeb6d01c391",
+    "NobleScionOfPrideBuff": "61e7d7ed-e365-4df1-9a20-c5daaf88be51",
+    "NobleScionOfPrideFeature": "50aa268c-4aa4-4e9a-9fbf-ba9ae2475fc9",
+    "NobleScionOfPrideSuppresion": "8bfe3275-d91e-4360-9eb8-6d4f7ee3224b",
+    "NobleScionOfTheArtsFeature": "9f1e825a-b8f5-4c89-8dc4-9a8517cee76b",
+    "NobleScionOfWarFeature": "30b40efe-6f14-4681-b7e9-4daaf17bc245"
 
 
 
