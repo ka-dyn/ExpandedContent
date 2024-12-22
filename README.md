@@ -81,6 +81,7 @@ New Feats
 - Bullseye Shot
 - Pinpoint Targeting
 - Demon Hunter
+- Noble Scion
 
 New Mythic Abilities
 
