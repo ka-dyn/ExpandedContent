@@ -11,7 +11,7 @@ namespace ExpandedContent.Tweaks {
             public static void Postfix() {
                 if (Initialized) return;
                 Initialized = true;
-                Main.Log("Test 3");
+
                 Miscellaneous.LazyLocker.AddLazyLocker();
 
                 Miscellaneous.OpeningVolley.AddOpeningVolley();
@@ -251,6 +251,7 @@ namespace ExpandedContent.Tweaks {
                 DemonLords.CythVsug.AddCythVsugFeature();
                 DemonLords.Jezelda.AddJezeldaFeature();
                 DemonLords.Shax.AddShaxFeature();
+                DemonLords.Abraxas.AddAbraxasFeature();
 
                 Deities.Apsu.AddApsu();
                 Deities.Dahak.AddDahakFeature();

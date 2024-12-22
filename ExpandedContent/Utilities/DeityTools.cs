@@ -217,6 +217,15 @@ namespace ExpandedContent.Utilities {
                 c.m_Archetype = NewMantisZealotArchetype;
             });
         }
+        public static void DisallowElderMythosCultist(this BlueprintFeature deity) {//For Homebrew Archetypes, only use if HA is detected
+            BlueprintCharacterClassReference ClericClass = Resources.GetBlueprintReference<BlueprintCharacterClassReference>("67819271767a9dd4fbfd4ae700befea0");
+            BlueprintArchetypeReference ElderMythosCultistArchetype = Resources.GetBlueprintReference<BlueprintArchetypeReference>("b7b9138f2e19b9f45a6ca457f6467710");
+            deity.AddComponent<PrerequisiteNoArchetype>(c => {
+                c.HideInUI = true;
+                c.m_CharacterClass = ClericClass;
+                c.m_Archetype = ElderMythosCultistArchetype;
+            });
+        }
         public static void AddSacredWeapon(this BlueprintFeature feature, WeaponCategory weapon) {
             BlueprintFeatureReference WeaponFeature = Resources.GetBlueprintReference<BlueprintFeatureReference>("bae328694ee21bc4587c5ffd0035b6a2");
             BlueprintBuffReference Buff1d6 = Resources.GetBlueprintReference<BlueprintBuffReference>("75a3eaf9cff6acd4a8385ba91ffa329a");

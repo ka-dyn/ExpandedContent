@@ -993,7 +993,7 @@ namespace ExpandedContent.Config {
 
                 if (IsCharacterOptionsPlusEnabled()) {
                     Main.Log("Starting Late Character Options Plus Compat Patch.");
-
+                    Main.Log("Patching Suffocate Wild Talent.");
                     var MonkClass = Resources.GetBlueprintReference<BlueprintCharacterClassReference>("e8f21e5b58e0569468e420ebea456124");
                     var KineticistClass = Resources.GetBlueprintReference<BlueprintCharacterClassReference>("42a455d9ec1ad924d889272429eb8391");
                     var WaterDancerArchetype = Resources.GetBlueprintReference<BlueprintArchetypeReference>("748a85a9c88649a6b92cf948fce8e070");
@@ -1025,7 +1025,7 @@ namespace ExpandedContent.Config {
                         });
                     }
                     Main.Log("Suffocate Wild Talent Patched.");
-
+                    Main.Log("Patching Shimmering Mirage Wild Talent.");
                     var ShimmeringMirageFeature = Resources.GetBlueprint<BlueprintFeature>("2438b572-d1dd-4bab-b484-7b8fe4dab6ed");
                     if (ShimmeringMirageFeature != null) {
                         ShimmeringMirageFeature.GetComponent<PrerequisiteClassLevel>().TemporaryContext(c => {
@@ -1038,7 +1038,7 @@ namespace ExpandedContent.Config {
                             c.Level = 12;
                         });
                     }
-                    Main.Log("Shimmerinf Mirage Wild Talent Patched.");
+                    Main.Log("Shimmering Mirage Wild Talent Patched.");
 
                     Main.Log("Finished Late Character Options Plus Compat Patch.");
                 }
@@ -1100,8 +1100,129 @@ namespace ExpandedContent.Config {
                     GreatTapestrySummonBuffConfig.m_AdditionalArchetypes = GreatTapestrySummonBuffConfig.m_AdditionalArchetypes.AppendToArray(
                         TempleChampionArchetype.ToReference<BlueprintArchetypeReference>()
                         );
-                    #endregion
+                    Main.Log("Void Domain Patched.");
 
+                    #endregion
+                    #region Elder Cultist Lock
+                    Main.Log("Patching Elder Cultist Lock.");
+                    var NonElderMythosDeities = new BlueprintFeature[] {
+                        Resources.GetModBlueprint<BlueprintFeature>("ApepFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("BastetFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("HathorFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("NeithFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("NephthysFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("PtahFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("SekhmetFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("SelketFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("SetFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("SobekFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("BesmaraFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("MilaniFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("NaderiFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("SivanahFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("YdersiusFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("ZyphusFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("DaikitsuFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("FumeiyoshiFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("HeiFengFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("LadyNanbyoFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("LaoShuPoFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("NalinivatiFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("WukongFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("YamatsumiFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("AbraxasFeature"),
+                        Resources.GetBlueprint<BlueprintFeature>("d714ecb5d5bb89a42957de0304e459c9"),//AreshkegalFeature
+                        Resources.GetBlueprint<BlueprintFeature>("bd72ca8ffcfec5745899ac56c93f12c5"),//BaphometFeature
+                        Resources.GetModBlueprint<BlueprintFeature>("CythVsugFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("DagonFeature"),
+                        Resources.GetBlueprint<BlueprintFeature>("ddf913858bdf43b4da3b731e082fbcc0"),//DeskariFeature
+                        Resources.GetModBlueprint<BlueprintFeature>("GoguntaFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("JezeldaFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("JubilexFeature"),
+                        Resources.GetBlueprint<BlueprintFeature>("f12c1ccc9d600c04f8887cd28a8f45a5"),//KabririFeature
+                        Resources.GetModBlueprint<BlueprintFeature>("MazmezzFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("MestamaFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("NocticulaFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("NurgalFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("OrcusFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("PazuzuFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("ShaxFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("ShivaskaFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("TreerazerFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("ZuraFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("FindeladlaraFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("KetephysFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("YuelralFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("AshavaFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("BlackButterflyFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("ChadaliFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("ChucaroFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("ImmonhielFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("JalaijataliFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("LalaciFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("PicoperiFeature"),
+                        Resources.GetBlueprint<BlueprintFeature>("ebb0b46f95dbac74681c78aae895dbd0"),//PuluraFeature
+                        Resources.GetModBlueprint<BlueprintFeature>("SinashaktiFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("TolcFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("ValaniFeature"),
+                        Resources.GetBlueprint<BlueprintFeature>("99a7a8f13c1300c42878558fa9471e2f"),//GreenFaithFeature
+                        Resources.GetBlueprint<BlueprintFeature>("c3e4d5681906d5246ab8b0637b98cbfe"),//GroetusFeature
+                        Resources.GetModBlueprint<BlueprintFeature>("AtroposFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("BarzahkFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("CeyannanFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("IlsurrishFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("MonadFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("NarriseminekFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("SsilameshnikFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("YdajiskFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("DammarFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("ImotFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("MotherVultureFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("MrtyuFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("NarakaasFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("PhlegyasFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("SalocFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("TeshallasFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("ThePaleHorseFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("ValeFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("VavaalravFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("VonymosFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("DrethaFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("LanishraFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("NulgrethFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("RullFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("SezelrianFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("VargFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("VerexFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("ZagreshFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("CountRanalcFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("TheGreenMotherFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("TheLanternKingFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("TheLostPrinceFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("NgFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("RagadahnFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("ShykaFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("ApollyonFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("CharonFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("SzurielFeature"),
+                        Resources.GetModBlueprint<BlueprintFeature>("TrelmarixianFeature")
+                    };
+                    foreach ( var deity in NonElderMythosDeities ) {
+                        deity.DisallowElderMythosCultist();
+                    }
+                    Main.Log("Elder Cultist Lock Patched.");
+                    #endregion
+                    #region Aid Another
+                    Main.Log("Patching Aid Another.");
+                    var HAAidAnotherAbility = Resources.GetBlueprint<BlueprintAbility>("96541931e626be84788bb554f90563d1");
+                    var FightDefensivelyFeature = Resources.GetBlueprint<BlueprintFeature>("ca22afeb94442b64fb8536e7a9f7dc11")
+                        .GetComponents<AddFacts>()
+                        .Where(c => c.m_Facts.Any(f => f.deserializedGuid == HAAidAnotherAbility.AssetGuid));
+                    FightDefensivelyFeature.ForEach(c => {
+                        c.m_Facts = c.m_Facts.RemoveFromArray(HAAidAnotherAbility.ToReference<BlueprintUnitFactReference>());
+                    });
+                    Main.Log("Aid Another Patched.");
+                    #endregion
                     Main.Log("Finished Late Homebrew Archetypes Compat Patch.");
 
                 }
