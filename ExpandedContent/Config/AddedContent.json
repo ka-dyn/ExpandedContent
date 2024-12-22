@@ -497,6 +497,11 @@
         "Enabled": true,
         "Homebrew": false,
         "Description": "Feat that grants a bonus to attack rolls and spell penetration against demons."
+      },
+      "Noble Scion": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Feat that grants bonuses to those born in noble houses."
       }
     },
     "IsExpanded": false
