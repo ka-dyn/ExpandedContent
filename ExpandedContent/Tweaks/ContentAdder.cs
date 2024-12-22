@@ -18,6 +18,7 @@ namespace ExpandedContent.Tweaks {
                 Miscellaneous.BullseyeShot.AddBullseyeShot();
                 Miscellaneous.PinpointTargeting.AddPinpointTargeting();
                 Miscellaneous.DemonHunter.AddDemonHunter();
+                Miscellaneous.NobleScion.AddNobleScion();
 
                 Classes.DrakeClass.DrakeCompanionClass.AddDrakeCompanionClass();
                 Classes.DrakeClass.DrakeCompanionGreen.AddDrakeCompanionGreen();

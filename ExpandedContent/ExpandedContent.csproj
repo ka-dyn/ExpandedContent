@@ -258,6 +258,7 @@
     <Compile Include="Tweaks\Components\ManeuverContextBonus.cs" />
     <Compile Include="Tweaks\Components\MaxCastingAttributeWithArchetypeGetter.cs" />
     <Compile Include="Tweaks\Components\LearnDomainSpell.cs" />
+    <Compile Include="Tweaks\Components\PrerequisiteCharacterIsFirstLevel.cs" />
     <Compile Include="Tweaks\Components\ReplaceAbilitiesStatFromArchetype.cs" />
     <Compile Include="Tweaks\Components\SpearParry.cs" />
     <Compile Include="Tweaks\Components\DeflectArrowsExpanded.cs" />
@@ -456,6 +457,7 @@
     <Compile Include="Tweaks\Miscellaneous\MountPatches\WolverineMountPatch.cs" />
     <Compile Include="Tweaks\Miscellaneous\NewActivatableAbilityGroups\NewActivatableAbilityGroupAdder.cs" />
     <Compile Include="Tweaks\Miscellaneous\NewActivatableAbilityGroups\UnitPartActivatableAbilityGroupEC.cs" />
+    <Compile Include="Tweaks\Miscellaneous\NobleScion.cs" />
     <Compile Include="Tweaks\Miscellaneous\Pinpoint Targeting.cs" />
     <Compile Include="Tweaks\Miscellaneous\BullseyeShot.cs" />
     <Compile Include="Tweaks\Miscellaneous\OpeningVolley.cs" />
