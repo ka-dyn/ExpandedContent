@@ -217,7 +217,7 @@ namespace ExpandedContent.Tweaks.Curses {
                     c.m_Feature = DeepOneCurseProgression.ToReference<BlueprintFeatureReference>();
                 });
                 bp.LevelEntries = new LevelEntry[] {
-                    Helpers.LevelEntry(1, DeepOneCurseFeatureLevel1),
+                    //Helpers.LevelEntry(1, DeepOneCurseFeatureLevel1),
                     Helpers.LevelEntry(5, DeepOneCurseFeatureLevel5),
                     Helpers.LevelEntry(10, DeepOneCurseFeatureLevel10),
                     Helpers.LevelEntry(15, DeepOneCurseFeatureLevel15)

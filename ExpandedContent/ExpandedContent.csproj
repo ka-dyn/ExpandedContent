@@ -270,6 +270,7 @@
     <Compile Include="Tweaks\Components\WeaponMultipleCategoriesContextAttackBonus.cs" />
     <Compile Include="Tweaks\Components\WeaponTypeContextDamageBonus.cs" />
     <Compile Include="Tweaks\ContentAdder.cs" />
+    <Compile Include="Tweaks\Curses\Aboleth.cs" />
     <Compile Include="Tweaks\Curses\DeepOne.cs" />
     <Compile Include="Tweaks\Curses\Vampirism.cs" />
     <Compile Include="Tweaks\Deities\Naderi.cs" />
