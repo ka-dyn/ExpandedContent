@@ -184,11 +184,13 @@ namespace ExpandedContent.Tweaks.Curses {
             });
             var BeneficialAbolethCurseProgression = Helpers.CreateBlueprint<BlueprintProgression>("BeneficialAbolethCurseProgression", bp => {
                 bp.SetName("Aboleth");
-                bp.SetDescription("The lure of the ocean tugs at your soul. \nYou reduce your base land speed by 5 feet. " +
-                    "\nAt 5th level, your natural armor bonus increases by 1 as your skin thickens. " +
-                    "\nAt 10th level, you gain a +1 bonus to your caster level when casting spells with the cold descriptor. " +
-                    "\nAt 15th level, add elemental body - water (I,II,III,IV) to your list of oracle spells known. " +
-                    "\nWhile under the effects of these spells or the seamantle spell, gain the benefits of the freedom of movement spell.");
+                bp.SetDescription("Your mind is marked by aboleth tampering, either as a result of a close encounter with one of these creatures while you were a child, " +
+                    "or even through an ancestor, close family member, or one of your sisters or brothers in faith—this associate’s interaction with the aboleths may be " +
+                    "all that it takes to infect you. \nYou take a –2 penalty on saving throws against mind-affecting effects and add hypnotism to your list of 1st-level " +
+                    "oracle spells known. " +
+                    "\nAt 5th level, add mirror image to your list of 2nd-level oracle spells known. " +
+                    "\nAt 10th level, add hold monster to your list of 4th-level oracle spells known. " +
+                    "\nAt 15th level, add cloak of dreams to your list of 6th-level oracle spells known.");
                 bp.m_Icon = AbolethIcon;
                 bp.IsClassFeature = true;
                 bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
@@ -221,11 +223,13 @@ namespace ExpandedContent.Tweaks.Curses {
             });
             var AbolethCurseNoProgression = Helpers.CreateBlueprint<BlueprintProgression>("AbolethCurseNoProgression", bp => {
                 bp.SetName("Aboleth");
-                bp.SetDescription("The lure of the ocean tugs at your soul. \nYou reduce your base land speed by 5 feet. " +
-                    "\nAt 5th level, your natural armor bonus increases by 1 as your skin thickens. " +
-                    "\nAt 10th level, you gain a +1 bonus to your caster level when casting spells with the cold descriptor. " +
-                    "\nAt 15th level, add elemental body - water (I,II,III,IV) to your list of oracle spells known. " +
-                    "\nWhile under the effects of these spells or the seamantle spell, gain the benefits of the freedom of movement spell.");
+                bp.SetDescription("Your mind is marked by aboleth tampering, either as a result of a close encounter with one of these creatures while you were a child, " +
+                    "or even through an ancestor, close family member, or one of your sisters or brothers in faith—this associate’s interaction with the aboleths may be " +
+                    "all that it takes to infect you. \nYou take a –2 penalty on saving throws against mind-affecting effects and add hypnotism to your list of 1st-level " +
+                    "oracle spells known. " +
+                    "\nAt 5th level, add mirror image to your list of 2nd-level oracle spells known. " +
+                    "\nAt 10th level, add hold monster to your list of 4th-level oracle spells known. " +
+                    "\nAt 15th level, add cloak of dreams to your list of 6th-level oracle spells known.");
                 bp.m_Icon = AbolethIcon;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.OracleCurse };
                 bp.IsClassFeature = true;
