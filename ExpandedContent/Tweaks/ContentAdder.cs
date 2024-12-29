@@ -221,6 +221,9 @@ namespace ExpandedContent.Tweaks {
 
                 Curses.Vampirism.AddVampirismCurse();
                 Curses.DeepOne.AddDeepOneCurse();
+                Curses.Accursed.AddAccursedCurse();
+                Curses.GodMeddled.AddGodMeddledCurse();
+                //Curses.Aboleth.AddAbolethCurse(); Need art
 
                 Miscellaneous.AidAnother.AddAidAnother();
 

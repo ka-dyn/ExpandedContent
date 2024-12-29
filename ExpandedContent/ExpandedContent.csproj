@@ -247,8 +247,10 @@
     <Compile Include="Tweaks\Components\AddImmunityToEnergyDrainFromFact.cs" />
     <Compile Include="Tweaks\Components\AddTargetAttackRollTriggerExpanded.cs" />
     <Compile Include="Tweaks\Components\AutoMetamagicMagicSourceOnly.cs" />
+    <Compile Include="Tweaks\Components\ContextActionOnApplyingSpell.cs" />
     <Compile Include="Tweaks\Components\ContextCalculateAbilityParamsBasedOnHigherClass.cs" />
     <Compile Include="Tweaks\Components\ContextConditionIsPetOwner.cs" />
+    <Compile Include="Tweaks\Components\DisableAllMoraleBonuses.cs" />
     <Compile Include="Tweaks\Components\IgnoreDamageReductionOnAttackRangeType.cs" />
     <Compile Include="Tweaks\Components\CheckWeaponEnchant.cs" />
     <Compile Include="Tweaks\Components\AbilityCasterOffHandWeaponCheck.cs" />
@@ -260,6 +262,7 @@
     <Compile Include="Tweaks\Components\LearnDomainSpell.cs" />
     <Compile Include="Tweaks\Components\PrerequisiteCharacterIsFirstLevel.cs" />
     <Compile Include="Tweaks\Components\ReplaceAbilitiesStatFromArchetype.cs" />
+    <Compile Include="Tweaks\Components\SavingThrowBonusAgainstMagicSource.cs" />
     <Compile Include="Tweaks\Components\SpearParry.cs" />
     <Compile Include="Tweaks\Components\DeflectArrowsExpanded.cs" />
     <Compile Include="Tweaks\Components\ACBonusAgainstNotCaster.cs" />
@@ -273,6 +276,7 @@
     <Compile Include="Tweaks\Curses\Aboleth.cs" />
     <Compile Include="Tweaks\Curses\Accursed.cs" />
     <Compile Include="Tweaks\Curses\DeepOne.cs" />
+    <Compile Include="Tweaks\Curses\GodMeddled.cs" />
     <Compile Include="Tweaks\Curses\Vampirism.cs" />
     <Compile Include="Tweaks\Deities\Naderi.cs" />
     <Compile Include="Tweaks\Deities\Groetus.cs" />
@@ -1608,6 +1612,9 @@
     <Content Include="Assets\Potions\Form06_Yellow_Simple.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Skills\Icon_AccursedCurse.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Skills\Icon_AidAnother.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -1758,6 +1765,9 @@
     <Content Include="Assets\Skills\Icon_GloomblindBolts.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Skills\Icon_GodMeddledCurse.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Skills\Icon_Goodberry.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -1780,6 +1790,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_InvokeDeity.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_LichCurse.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_LightningRod.jpg">

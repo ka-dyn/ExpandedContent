@@ -13,6 +13,7 @@ using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.Enums;
+using ExpandedContent.Tweaks.Components;
 
 namespace ExpandedContent.Tweaks.Curses {
     internal class Accursed {
@@ -39,9 +40,9 @@ namespace ExpandedContent.Tweaks.Curses {
                     "However, you gain a +4 bonus to all saving throws against curse effects. ");
                 bp.AddComponent<DisableAllMoraleBonuses>();
                 bp.AddComponent<SavingThrowBonusAgainstDescriptor>(c => {
-                    c.SpellDescriptor = SpellDescriptor.MindAffecting;
-                    c.ModifierDescriptor = ModifierDescriptor.Penalty;
-                    c.Value = -2;
+                    c.SpellDescriptor = SpellDescriptor.Curse;
+                    c.ModifierDescriptor = ModifierDescriptor.UntypedStackable;
+                    c.Value = 4;
                 });
                 bp.m_AllowNonContextActions = false;
                 bp.HideInUI = false;
@@ -83,7 +84,7 @@ namespace ExpandedContent.Tweaks.Curses {
             });
             var AccursedCurseFeatureLevel10 = Helpers.CreateBlueprint<BlueprintFeature>("AccursedCurseFeatureLevel10", bp => {
                 bp.SetName("Accursed");
-                bp.SetDescription("At 10th level, add bestow curse to your list of 4th-level oracle spells known");
+                bp.SetDescription("At 10th level, add bestow curse to your list of 4th-level oracle spells known.");
                 bp.AddComponent<AddKnownSpell>(c => {
                     c.m_Spell = BestowCurseSpell;
                     c.SpellLevel = 4;
