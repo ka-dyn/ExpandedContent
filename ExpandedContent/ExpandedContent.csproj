@@ -277,6 +277,7 @@
     <Compile Include="Tweaks\Curses\Accursed.cs" />
     <Compile Include="Tweaks\Curses\DeepOne.cs" />
     <Compile Include="Tweaks\Curses\GodMeddled.cs" />
+    <Compile Include="Tweaks\Curses\Lich.cs" />
     <Compile Include="Tweaks\Curses\Vampirism.cs" />
     <Compile Include="Tweaks\Deities\Naderi.cs" />
     <Compile Include="Tweaks\Deities\Groetus.cs" />
@@ -1610,6 +1611,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Potions\Form06_Yellow_Simple.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_AbolethCurse.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_AccursedCurse.png">

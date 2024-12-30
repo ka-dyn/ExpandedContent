@@ -29,6 +29,12 @@ using Kingmaker.ElementsSystem;
 using Kingmaker.UnitLogic.Mechanics.Conditions;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.UnitLogic.Abilities.Blueprints;
+using Kingmaker.UnitLogic.Abilities.Components.TargetCheckers;
+using Kingmaker.Visual.Animation.Kingmaker.Actions;
+using Kingmaker.Utility;
+using Kingmaker.UnitLogic.Commands.Base;
+using Kingmaker.ResourceLinks;
+using Kingmaker.UnitLogic.Abilities.Components;
 
 namespace ExpandedContent.Tweaks.Curses {
     internal class GodMeddled {
@@ -54,6 +60,68 @@ namespace ExpandedContent.Tweaks.Curses {
             var EnlargePersonBuff = Resources.GetBlueprint<BlueprintBuff>("4f139d125bb602f48bfaec3d3e1937cb");
             var RecentlyDeanBuff = Resources.GetBlueprint<BlueprintBuff>("38bb8a5d773243843bbaaa2c340cc19c");
             var GodMeddledIcon = AssetLoader.LoadInternal("Skills", "Icon_GodMeddledCurse.png");
+
+
+
+
+            var GodMeddlingTeleportAbility = Helpers.CreateBlueprint<BlueprintAbility>("GodMeddlingTeleportAbility", bp => {
+                bp.SetName("God Meddled - Teleport");
+                bp.SetDescription("");
+                bp.AddComponent<LineOfSightIgnorance>();
+                bp.AddComponent<AbilityCustomTeleportation>(c => {
+                    c.m_Projectile = null;
+                    c.DisappearFx = new PrefabLink() { AssetId = "f1f41fef03cb5734e95db1342f0c605e" };
+                    c.DisappearDuration = 0.5f;
+                    c.AppearFx = new PrefabLink();
+                    c.AppearDuration = 0;
+                    c.AlongPath = false;
+                    c.AlongPathDistanceMuliplier = 1;
+                });
+                bp.AddComponent<AdditionalAbilityEffectRunActionOnClickedTarget>(c => {
+                    c.Action = Helpers.CreateActionList(
+                        new ContextActionProvokeAttackOfOpportunity() { ApplyToCaster =  true }
+                        );
+                });
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Custom;
+                bp.CanTargetPoint = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetEnemies = true;
+                bp.SpellResistance = false;
+                bp.CustomRange = new Feet() { m_Value = 50 };
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Immediate;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.DisableLog = true;
+            });
+
+            var GodMeddlingPushAbility = Helpers.CreateBlueprint<BlueprintAbility>("GodMeddlingPushAbility", bp => {
+                bp.SetName("God Meddled - Push");
+                bp.SetDescription("");
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionPush() {
+                            Distance = 10,
+                            ProvokeAttackOfOpportunity = false
+                        });
+                });
+                bp.AddComponent<AbilityTargetsAround>(c => {
+                    c.m_Radius = 10.Feet();
+                    c.m_TargetType = TargetType.Any;
+                    c.m_IncludeDead = false;
+                    c.m_Condition = new ConditionsChecker();
+                    c.m_SpreadSpeed = 0.Feet();
+                });
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Projectile;
+                bp.CanTargetPoint = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetEnemies = false;
+                bp.SpellResistance = false;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Immediate;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.DisableLog = true;
+            });
 
 
             var GodMeddlingCasterLevelBuff = Helpers.CreateBuff("GodMeddlingCasterLevelBuff", bp => {
@@ -372,6 +440,196 @@ namespace ExpandedContent.Tweaks.Curses {
                 bp.Stacking = StackingType.Replace;
             });
 
+            var GodMeddlingBeneficialActionBuff = Helpers.CreateBuff("GodMeddlingBeneficialActionBuff", bp => {
+                bp.SetName("God Meddled");
+                bp.SetDescription("You have been affected by one of the below effects, and are immune to the gods' meddling for one round." +
+                    "\n1-7: No effect." +
+                    "\n8-10: You shrink by one size category for 1 round, as reduce person." +
+                    "\n11-13: You grow by one size category for 1 round, as enlarge person." +
+                    "\n14-15: Your caster level is treated as 1 higher for 1 round." +
+                    "\n16-17: Creatures adjacent to you are pushed 10 feet away from the space you occupy." +
+                    "\n18-19: You are affected by the benefits of haste for 1 round." +
+                    "\n20: The next spell cast may be cast as a swift action as if modified by the Quicken Spell feat.");
+                bp.AddComponent<AddFactContextActions>(c => {
+                    c.Activated = Helpers.CreateActionList(
+                            new ContextActionRandomize() {
+                                m_Actions = new ContextActionRandomize.ActionWrapper[] {
+                                    //1-7
+                                    new ContextActionRandomize.ActionWrapper{
+                                        Weight = 7,
+                                        Action = Helpers.CreateActionList()
+                                    },                                    
+                                    //8-10
+                                    new ContextActionRandomize.ActionWrapper{
+                                        Weight = 3,
+                                        Action = Helpers.CreateActionList(
+                                            new Conditional() {
+                                                ConditionsChecker = new ConditionsChecker() {
+                                                    Operation = Operation.And,
+                                                    Conditions = new Condition[] {
+                                                        new ContextConditionHasFact() {
+                                                            Not = false,
+                                                            m_Fact = EnlargePersonBuff.ToReference<BlueprintUnitFactReference>()
+                                                        }
+                                                    }
+                                                },
+                                                IfTrue = Helpers.CreateActionList(
+                                                    new ContextActionRemoveBuff() {
+                                                        m_Buff = EnlargePersonBuff.ToReference<BlueprintBuffReference>()
+                                                    }
+                                                    ),
+                                                IfFalse = Helpers.CreateActionList(
+                                                    new ContextActionApplyBuff() {
+                                                        m_Buff = ReducePersonBuff.ToReference<BlueprintBuffReference>(),
+                                                        Permanent = false,
+                                                        UseDurationSeconds = false,
+                                                        DurationValue = new ContextDurationValue() {
+                                                            Rate = DurationRate.Rounds,
+                                                            DiceType = DiceType.Zero,
+                                                            DiceCountValue = 0,
+                                                            BonusValue = 1
+                                                        },
+                                                        DurationSeconds = 0
+                                                    }
+                                                    )
+                                            }
+                                            )
+                                    },
+                                    //11-13
+                                    new ContextActionRandomize.ActionWrapper{
+                                        Weight = 3,
+                                        Action = Helpers.CreateActionList(
+                                            new Conditional() {
+                                                ConditionsChecker = new ConditionsChecker() {
+                                                    Operation = Operation.And,
+                                                    Conditions = new Condition[] {
+                                                        new ContextConditionHasFact() {
+                                                            Not = false,
+                                                            m_Fact = ReducePersonBuff.ToReference<BlueprintUnitFactReference>()
+                                                        }
+                                                    }
+                                                },
+                                                IfTrue = Helpers.CreateActionList(
+                                                    new ContextActionRemoveBuff() {
+                                                        m_Buff = ReducePersonBuff.ToReference<BlueprintBuffReference>()
+                                                    }
+                                                    ),
+                                                IfFalse = Helpers.CreateActionList(
+                                                    new ContextActionApplyBuff() {
+                                                        m_Buff = EnlargePersonBuff.ToReference<BlueprintBuffReference>(),
+                                                        Permanent = false,
+                                                        UseDurationSeconds = false,
+                                                        DurationValue = new ContextDurationValue() {
+                                                            Rate = DurationRate.Rounds,
+                                                            DiceType = DiceType.Zero,
+                                                            DiceCountValue = 0,
+                                                            BonusValue = 1
+                                                        },
+                                                        DurationSeconds = 0
+                                                    }
+                                                    )
+                                            }
+                                            )
+                                    },
+                                    //14-15
+                                    new ContextActionRandomize.ActionWrapper{
+                                        Weight = 2,
+                                        Action = Helpers.CreateActionList(
+                                            new ContextActionApplyBuff() {
+                                                m_Buff = GodMeddlingCasterLevelBuff.ToReference<BlueprintBuffReference>(),
+                                                Permanent = false,
+                                                UseDurationSeconds = false,
+                                                DurationValue = new ContextDurationValue() {
+                                                    Rate = DurationRate.Rounds,
+                                                    DiceType = DiceType.Zero,
+                                                    DiceCountValue = 0,
+                                                    BonusValue = 1
+                                                },
+                                                DurationSeconds = 0
+                                            }
+                                            )
+                                    },
+                                    //16-17
+                                    new ContextActionRandomize.ActionWrapper{
+                                        Weight = 1,
+                                        Action = Helpers.CreateActionList(
+                                            new ContextActionCastSpell() {
+                                                m_Spell = GodMeddlingPushAbility.ToReference<BlueprintAbilityReference>(),
+                                                OverrideDC = false,
+                                                DC = 0,
+                                                OverrideSpellLevel = false,
+                                                SpellLevel = 0,
+                                                CastByTarget = false,
+                                                LogIfCanNotTarget = false,
+                                                MarkAsChild = false
+                                            }
+                                            )
+                                    },
+                                    //18-19
+                                    new ContextActionRandomize.ActionWrapper{
+                                        Weight = 2,
+                                        Action = Helpers.CreateActionList(
+                                            new Conditional() {
+                                                ConditionsChecker = new ConditionsChecker() {
+                                                    Operation = Operation.And,
+                                                    Conditions = new Condition[] {
+                                                        new ContextConditionHasFact() {
+                                                            Not = false,
+                                                            m_Fact = SlowBuff.ToReference<BlueprintUnitFactReference>()
+                                                        }
+                                                    }
+                                                },
+                                                IfTrue = Helpers.CreateActionList(
+                                                    new ContextActionRemoveBuff() {
+                                                        m_Buff = SlowBuff.ToReference<BlueprintBuffReference>()
+                                                    }
+                                                    ),
+                                                IfFalse = Helpers.CreateActionList(
+                                                    new ContextActionApplyBuff() {
+                                                        m_Buff = HasteBuff.ToReference<BlueprintBuffReference>(),
+                                                        Permanent = false,
+                                                        UseDurationSeconds = false,
+                                                        DurationValue = new ContextDurationValue() {
+                                                            Rate = DurationRate.Rounds,
+                                                            DiceType = DiceType.Zero,
+                                                            DiceCountValue = 0,
+                                                            BonusValue = 1
+                                                        },
+                                                        DurationSeconds = 0
+                                                    }
+                                                    )
+                                            }
+                                            )
+                                    },
+                                    //20
+                                    new ContextActionRandomize.ActionWrapper{
+                                        Weight = 1,
+                                        Action = Helpers.CreateActionList(
+                                            new ContextActionApplyBuff() {
+                                                m_Buff = GodMeddlingQuickenSpellBuff.ToReference<BlueprintBuffReference>(),
+                                                Permanent = false,
+                                                UseDurationSeconds = false,
+                                                DurationValue = new ContextDurationValue() {
+                                                    Rate = DurationRate.Rounds,
+                                                    DiceType = DiceType.Zero,
+                                                    DiceCountValue = 0,
+                                                    BonusValue = 1
+                                                },
+                                                DurationSeconds = 0
+                                            }
+                                            )
+                                    }
+                                }
+                            }
+                        );
+                    c.Deactivated = Helpers.CreateActionList();
+                    c.NewRound = Helpers.CreateActionList();
+                });
+                bp.m_Icon = GodMeddledIcon;
+                bp.m_Flags = BlueprintBuff.Flags.StayOnDeath;
+                bp.Stacking = StackingType.Replace;
+            });
+
             var GodMeddlingInCombatBuff = Helpers.CreateBuff("GodMeddlingInCombatBuff", bp => {
                 bp.SetName("God Meddled Combat Buff");
                 bp.SetDescription("");
@@ -411,7 +669,49 @@ namespace ExpandedContent.Tweaks.Curses {
                         new ContextActionRemoveSelf()
                         );
                 });
+                bp.m_Flags = BlueprintBuff.Flags.StayOnDeath | BlueprintBuff.Flags.HiddenInUi;
+                bp.Stacking = StackingType.Replace;
+            });
 
+            var GodMeddlingBeneficialInCombatBuff = Helpers.CreateBuff("GodMeddlingBeneficialInCombatBuff", bp => {
+                bp.SetName("God Meddled Beneficial Combat Buff");
+                bp.SetDescription("");
+                bp.AddComponent<ContextActionOnApplyingSpell>(c => {
+                    c.m_AffectedSpellSource = ContextActionOnApplyingSpell.AffectedSpellSource.Divine;
+                    c.ActionOnSelf = Helpers.CreateActionList(
+                        new Conditional() {
+                            ConditionsChecker = new ConditionsChecker() {
+                                Operation = Operation.Or,
+                                Conditions = new Condition[] {
+                                    new ContextConditionHasBuff() {
+                                        Not = false,
+                                        m_Buff = GodMeddlingBeneficialActionBuff.ToReference<BlueprintBuffReference>()
+                                    }
+                                }
+                            },
+                            IfTrue = Helpers.CreateActionList(),
+                            IfFalse = Helpers.CreateActionList(
+                                new ContextActionApplyBuff() {
+                                    m_Buff = GodMeddlingBeneficialActionBuff.ToReference<BlueprintBuffReference>(),
+                                    UseDurationSeconds = false,
+                                    DurationValue = new ContextDurationValue() {
+                                        Rate = DurationRate.Rounds,
+                                        BonusValue = 1,
+                                        DiceType = DiceType.Zero,
+                                        DiceCountValue = 0,
+                                        m_IsExtendable = true
+                                    },
+                                    DurationSeconds = 0
+                                })
+                        }
+                        );
+                });
+                bp.AddComponent<CombatStateTrigger>(c => {
+                    c.CombatStartActions = Helpers.CreateActionList();
+                    c.CombatEndActions = Helpers.CreateActionList(
+                        new ContextActionRemoveSelf()
+                        );
+                });
                 bp.m_Flags = BlueprintBuff.Flags.StayOnDeath | BlueprintBuff.Flags.HiddenInUi;
                 bp.Stacking = StackingType.Replace;
             });
@@ -450,7 +750,6 @@ namespace ExpandedContent.Tweaks.Curses {
                         );
                     c.CombatEndActions = Helpers.CreateActionList();
                 });
-
                 bp.m_AllowNonContextActions = false;
                 bp.HideInUI = false;
                 bp.HideInCharacterSheetAndLevelUp = true;
@@ -468,9 +767,25 @@ namespace ExpandedContent.Tweaks.Curses {
                     "\n16-17: Creatures adjacent to you are pushed 10 feet away from the space you occupy." +
                     "\n18-19: You are affected by the benefits of haste for 1 round." +
                     "\n20: The next spell cast may be cast as a swift action as if modified by the Quicken Spell feat.");
-
-
-
+                bp.AddComponent<CombatStateTrigger>(c => {
+                    c.CombatStartActions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = GodMeddlingBeneficialInCombatBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                BonusValue = 0,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                m_IsExtendable = true
+                            },
+                            DurationSeconds = 0,
+                            IsNotDispelable = true
+                        }
+                        );
+                    c.CombatEndActions = Helpers.CreateActionList();
+                });
                 bp.m_AllowNonContextActions = false;
                 bp.HideInUI = false;
                 bp.HideInCharacterSheetAndLevelUp = true;
@@ -522,7 +837,7 @@ namespace ExpandedContent.Tweaks.Curses {
                     "\nAt 10th level, you become immune to the confused condition. " +
                     "\nAt 15th level, you gain a +4 competence bonus on saving throws to resist mind-affecting effects." +
                     "\n\nGod Meddled Effects" +
-                    "\n1: You are teleported to the nearest enemy, and then you provoke an attack of opportunity." +
+                    "\n1: You are teleported to a random enemy, and then you provoke an attack of opportunity." +
                     "\n2-3: You are affected by the penalties of the slow spell for 1 round." +
                     "\n4-5: You are blinded for 1 round." +
                     "\n6-7: You are knocked prone." +
@@ -619,7 +934,7 @@ namespace ExpandedContent.Tweaks.Curses {
                     "\nAt 10th level, you become immune to the confused condition. " +
                     "\nAt 15th level, you gain a +4 competence bonus on saving throws to resist mind-affecting effects." +
                     "\n\nGod Meddled Effects" +
-                    "\n1: You are teleported to the nearest enemy, and then you provoke an attack of opportunity." +
+                    "\n1: You are teleported to a random enemy, and then you provoke an attack of opportunity." +
                     "\n2-3: You are affected by the penalties of the slow spell for 1 round." +
                     "\n4-5: You are blinded for 1 round." +
                     "\n6-7: You are knocked prone." +

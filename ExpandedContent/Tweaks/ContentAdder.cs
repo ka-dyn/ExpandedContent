@@ -223,7 +223,8 @@ namespace ExpandedContent.Tweaks {
                 Curses.DeepOne.AddDeepOneCurse();
                 Curses.Accursed.AddAccursedCurse();
                 Curses.GodMeddled.AddGodMeddledCurse();
-                //Curses.Aboleth.AddAbolethCurse(); Need art
+                Curses.Aboleth.AddAbolethCurse();
+                Curses.Lich.AddLichCurse();
 
                 Miscellaneous.AidAnother.AddAidAnother();
 
