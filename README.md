@@ -112,7 +112,11 @@ New Oracle Mysteries / Curses
   - Wood
 
 - Curses: 
+  - Aboleth
+  - Accursed
   - Deep One
+  - God Meddled
+  - Lich
   - Vampirism
 
 
