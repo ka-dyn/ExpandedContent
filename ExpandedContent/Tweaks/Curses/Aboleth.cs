@@ -13,6 +13,7 @@ using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.Enums;
+using ExpandedContent.Config;
 
 namespace ExpandedContent.Tweaks.Curses {
     internal class Aboleth {
@@ -276,6 +277,13 @@ namespace ExpandedContent.Tweaks.Curses {
             DualCursedSecondCurseSelection.m_AllFeatures = DualCursedSecondCurseSelection.m_AllFeatures.AppendToArray(AbolethCurseNoProgression.ToReference<BlueprintFeatureReference>());
             DualCursedSecondCurseSelection.m_Features = DualCursedSecondCurseSelection.m_Features.AppendToArray(AbolethCurseNoProgression.ToReference<BlueprintFeatureReference>());
 
+
+            //Stupid fish icon
+            if (ModSettings.AddedContent.Miscellaneous.IsDisabled("Aboleth Curse Better Icon")) { return; }
+            var AbolethBetterIcon = AssetLoader.LoadInternal("Skills", "Icon_FishCurse.png");
+            AbolethCurseProgression.m_Icon = AbolethBetterIcon;
+            BeneficialAbolethCurseProgression.m_Icon = AbolethBetterIcon;
+            AbolethCurseNoProgression.m_Icon = AbolethBetterIcon;
         }
     }
 }

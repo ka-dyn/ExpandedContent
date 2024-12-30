@@ -1754,6 +1754,9 @@
     <Content Include="Assets\Skills\Icon_FeatSelection.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Skills\Icon_FishCurse.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Skills\Icon_FormOfTheExoticDragon.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
