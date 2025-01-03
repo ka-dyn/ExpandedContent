@@ -497,6 +497,7 @@
     <Compile Include="Tweaks\Monitors\Ssilameshnik.cs" />
     <Compile Include="Tweaks\Monitors\Monad.cs" />
     <Compile Include="Tweaks\Mysteries\LunarMystery.cs" />
+    <Compile Include="Tweaks\Mysteries\MetalMystery.cs" />
     <Compile Include="Tweaks\Mysteries\MysteryProperties.cs" />
     <Compile Include="Tweaks\Mysteries\ShadowMystery.cs" />
     <Compile Include="Tweaks\Mysteries\DarkTapestryMystery.cs" />
