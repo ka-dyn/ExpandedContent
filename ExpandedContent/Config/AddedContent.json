@@ -235,12 +235,7 @@
   },
   "Domains": {
     "DisableAll": false,
-    "Settings": {
-      "Scalykind Domain": {
-        "Enabled": true,
-        "Homebrew": false,
-        "Description": "Adds the scalykind domain, a animal companion domain with different options the the animal domain."
-      },
+    "Settings": {      
       "Archon Subdomain": {
         "Enabled": true,
         "Homebrew": false,
@@ -565,6 +560,11 @@
         "Enabled": false,
         "Homebrew": false,
         "Description": "The EC version of Undead Subdomain, no longer updated due to the in-game version releasing with DLC5."
+      },
+      "Old Scalykind Domain": {
+        "Enabled": false,
+        "Homebrew": false,
+        "Description": "The EC version of Scalykind Domain, no longer updated due to the in-game version releasing."
       },
       "Mantis Zealot and Achaekek deity": {
         "Enabled": false,

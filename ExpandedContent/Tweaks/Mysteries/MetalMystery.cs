@@ -10,6 +10,7 @@ using Kingmaker.Blueprints.Items.Armors;
 using Kingmaker.Blueprints.Items.Ecnchantments;
 using Kingmaker.Craft;
 using Kingmaker.Designers.EventConditionActionSystem.Actions;
+using Kingmaker.Designers.EventConditionActionSystem.Conditions;
 using Kingmaker.Designers.Mechanics.Buffs;
 using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.ElementsSystem;
@@ -29,6 +30,7 @@ using Kingmaker.UnitLogic.Mechanics.Actions;
 using Kingmaker.UnitLogic.Mechanics.Components;
 using Kingmaker.UnitLogic.Mechanics.Conditions;
 using Kingmaker.UnitLogic.Mechanics.Properties;
+using Kingmaker.Utility;
 using Kingmaker.Visual.Animation.Kingmaker.Actions;
 using System.Collections.Generic;
 using TabletopTweaks.Core.NewComponents;
@@ -39,7 +41,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
 
             var OracleClass = Resources.GetBlueprint<BlueprintCharacterClass>("20ce9bf8af32bee4c8557a045ab499b1");
             var OracleRevelationSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("60008a10ad7ad6543b1f63016741a5d2");
-            var MetalMysteryIcon = AssetLoader.LoadInternal("Skills", "Icon_OracleMetalMystery.png");
+            var MetalMysteryIcon = AssetLoader.LoadInternal("Skills", "Icon_FishCurse.png");//Change!
             var ArcanistClass = Resources.GetBlueprint<BlueprintCharacterClass>("52dbfd8505e22f84fad8d702611f60b7");
             var MagicDeceiverArchetype = Resources.GetBlueprint<BlueprintArchetype>("5c77110cd0414e7eb4c2e485659c9a46");
 
@@ -483,7 +485,288 @@ namespace ExpandedContent.Tweaks.Mysteries {
             OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationArmorMasteryFeature.ToReference<BlueprintFeatureReference>());
             #endregion
             #region Dance of the Blades
-
+            var MasterStrikeIcon = Resources.GetBlueprint<BlueprintBuff>("eab680abdb0194343af169af393c2603").Icon;
+            var OracleRevelationDanceOfTheBladesFeatureBuff = Helpers.CreateBuff("OracleRevelationDanceOfTheBladesFeatureBuff", bp => {
+                bp.SetName("Dance of the Blades - Attack Buff");
+                bp.SetDescription("");
+                bp.AddComponent<WeaponMultipleCategoriesContextAttackBonus>(c => {
+                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+                    c.Categories = new WeaponCategory[] {
+                        WeaponCategory.Dagger,
+                        WeaponCategory.LightMace,
+                        WeaponCategory.PunchingDagger,
+                        WeaponCategory.Sickle,
+                        WeaponCategory.HeavyMace,
+                        WeaponCategory.Dart,
+                        WeaponCategory.Handaxe,
+                        WeaponCategory.Kukri,
+                        WeaponCategory.LightHammer,
+                        WeaponCategory.LightPick,
+                        WeaponCategory.Shortsword,
+                        WeaponCategory.Starknife,
+                        WeaponCategory.WeaponLightShield,
+                        WeaponCategory.SpikedLightShield,
+                        WeaponCategory.Battleaxe,
+                        WeaponCategory.Flail,
+                        WeaponCategory.HeavyPick,
+                        WeaponCategory.Longsword,
+                        WeaponCategory.Rapier,
+                        WeaponCategory.Scimitar,
+                        WeaponCategory.Warhammer,
+                        WeaponCategory.WeaponHeavyShield,
+                        WeaponCategory.SpikedHeavyShield,
+                        WeaponCategory.EarthBreaker,
+                        WeaponCategory.Falchion,
+                        WeaponCategory.Glaive,
+                        WeaponCategory.Greataxe,
+                        WeaponCategory.Greatsword,
+                        WeaponCategory.HeavyFlail,
+                        WeaponCategory.Scythe,
+                        WeaponCategory.Sai,
+                        WeaponCategory.Siangham,//??
+                        WeaponCategory.BastardSword,
+                        WeaponCategory.DuelingSword,
+                        WeaponCategory.DwarvenWaraxe,
+                        WeaponCategory.Estoc,
+                        WeaponCategory.Falcata,
+                        WeaponCategory.Tongi,
+                        WeaponCategory.ElvenCurvedBlade,
+                        WeaponCategory.Fauchard,
+                        WeaponCategory.Shuriken,
+                        WeaponCategory.Bardiche,
+                        WeaponCategory.DoubleSword,
+                        WeaponCategory.DoubleAxe,
+                        WeaponCategory.Urgrosh,
+                        WeaponCategory.HookedHammer,
+                        WeaponCategory.ThrowingAxe,
+                        WeaponCategory.SawtoothSabre
+                    };
+                    c.Value = new ContextValue() {
+                        ValueType = ContextValueType.Rank,
+                        ValueRank = AbilityRankType.Default
+                    };
+                    c.ExceptForCategories = false;
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.SummClassLevelWithArchetype;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.DelayedStartPlusDivStep;
+                    c.m_StartLevel = 7;
+                    c.m_StepLevel = 4;
+                    c.m_Class = new BlueprintCharacterClassReference[] {
+                        OracleClass.ToReference<BlueprintCharacterClassReference>(),
+                        ArcanistClass.ToReference<BlueprintCharacterClassReference>()
+                    };
+                    c.Archetype = MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>();
+                });
+                bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
+            });
+            var OracleRevelationDanceOfTheBladesAbilityBuff = Helpers.CreateBuff("OracleRevelationDanceOfTheBladesAbilityBuff", bp => {
+                bp.SetName("Dance of the Blades - Shield Buff");
+                bp.SetDescription("As a move action, you can maneuver your weapon to create a shield of whirling steel around yourself until the start of your next turn; " +
+                    "non-incorporeal melee and ranged attacks against you have a 20% miss chance while the shield is active. You must be wielding a metal weapon to use this ability.");
+                bp.m_Icon = MasterStrikeIcon;
+                bp.AddComponent<AddConcealment>(c => {
+                    c.Descriptor = ConcealmentDescriptor.Blur;
+                    c.Concealment = Concealment.Partial;
+                    c.CheckWeaponRangeType = false;
+                    c.RangeType = WeaponRangeType.Melee;
+                    c.CheckDistance = false;
+                    c.DistanceGreater = 0.Feet();
+                    c.OnlyForAttacks = true;
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.SummClassLevelWithArchetype;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.DelayedStartPlusDivStep;
+                    c.m_StartLevel = 7;
+                    c.m_StepLevel = 4;
+                    c.m_Class = new BlueprintCharacterClassReference[] {
+                        OracleClass.ToReference<BlueprintCharacterClassReference>(),
+                        ArcanistClass.ToReference<BlueprintCharacterClassReference>()
+                    };
+                    c.Archetype = MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>();
+                });
+            });
+            var OracleRevelationDanceOfTheBladesAbility = Helpers.CreateBlueprint<BlueprintAbility>("OracleRevelationDanceOfTheBladesAbility", bp => {
+                bp.SetName("Dance of the Blades");
+                bp.SetDescription("As a move action, you can maneuver your weapon to create a shield of whirling steel around yourself until the start of your next turn; " +
+                    "non-incorporeal melee and ranged attacks against you have a 20% miss chance while the shield is active. You must be wielding a metal weapon to use this ability.");
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = OracleRevelationDanceOfTheBladesAbilityBuff.ToReference<BlueprintBuffReference>(),
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                BonusValue = 1,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                m_IsExtendable = true
+                            },
+                            DurationSeconds = 0
+                        });
+                });
+                bp.AddComponent<AbilityCasterMainWeaponCheck>(c => {
+                    c.Category = new WeaponCategory[] {
+                        WeaponCategory.Dagger,
+                        WeaponCategory.LightMace,
+                        WeaponCategory.PunchingDagger,
+                        WeaponCategory.Sickle,
+                        WeaponCategory.HeavyMace,
+                        WeaponCategory.Dart,
+                        WeaponCategory.Handaxe,
+                        WeaponCategory.Kukri,
+                        WeaponCategory.LightHammer,
+                        WeaponCategory.LightPick,
+                        WeaponCategory.Shortsword,
+                        WeaponCategory.Starknife,
+                        WeaponCategory.WeaponLightShield,
+                        WeaponCategory.SpikedLightShield,
+                        WeaponCategory.Battleaxe,
+                        WeaponCategory.Flail,
+                        WeaponCategory.HeavyPick,
+                        WeaponCategory.Longsword,
+                        WeaponCategory.Rapier,
+                        WeaponCategory.Scimitar,
+                        WeaponCategory.Warhammer,
+                        WeaponCategory.WeaponHeavyShield,
+                        WeaponCategory.SpikedHeavyShield,
+                        WeaponCategory.EarthBreaker,
+                        WeaponCategory.Falchion,
+                        WeaponCategory.Glaive,
+                        WeaponCategory.Greataxe,
+                        WeaponCategory.Greatsword,
+                        WeaponCategory.HeavyFlail,
+                        WeaponCategory.Scythe,
+                        WeaponCategory.Sai,
+                        WeaponCategory.Siangham,//??
+                        WeaponCategory.BastardSword,
+                        WeaponCategory.DuelingSword,
+                        WeaponCategory.DwarvenWaraxe,
+                        WeaponCategory.Estoc,
+                        WeaponCategory.Falcata,
+                        WeaponCategory.Tongi,
+                        WeaponCategory.ElvenCurvedBlade,
+                        WeaponCategory.Fauchard,
+                        WeaponCategory.Shuriken,
+                        WeaponCategory.Bardiche,
+                        WeaponCategory.DoubleSword,
+                        WeaponCategory.DoubleAxe,
+                        WeaponCategory.Urgrosh,
+                        WeaponCategory.HookedHammer,
+                        WeaponCategory.ThrowingAxe,
+                        WeaponCategory.SawtoothSabre
+                    };
+                });
+                bp.AddComponent<CraftInfoComponent>(c => {
+                    c.SavingThrow = CraftSavingThrow.None;
+                    c.AOEType = CraftAOE.None;
+                    c.SpellType = CraftSpellType.Other;
+                });
+                bp.m_Icon = MasterStrikeIcon;
+                bp.Type = AbilityType.Extraordinary;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Touch;
+                bp.ActionType = UnitCommand.CommandType.Move;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = Helpers.CreateString("OracleRevelationDanceOfTheBladesAbility.Duration", "1 round");
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var OracleRevelationDanceOfTheBladesAbilityFeature = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationDanceOfTheBladesAbilityFeature", bp => {
+                bp.SetName("Dance of the Blades - Ability Holder");
+                bp.SetDescription("");
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        OracleRevelationDanceOfTheBladesAbility.ToReference<BlueprintUnitFactReference>()
+                    };
+                });
+                bp.IsClassFeature = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.HideInUI = true;                
+            });
+            var OracleRevelationDanceOfTheBladesFeature = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationDanceOfTheBladesFeature", bp => {
+                bp.SetName("Dance of the Blades");
+                bp.SetDescription("Your base speed increases by 10 feet. \nAt 7th level, you gain a +1 bonus on attack rolls with a metal weapon in any " +
+                    "round in which you move at least 10 feet. This bonus increases by +1 at 11th level, and every four levels thereafter. \nAt 11th level, " +
+                    "as a move action, you can maneuver your weapon to create a shield of whirling steel around yourself until the start of your next turn; " +
+                    "non-incorporeal melee and ranged attacks against you have a 20% miss chance while the shield is active. " +
+                    "You must be wielding a metal weapon to use this ability.");
+                bp.AddComponent<AddStatBonus>(c => {
+                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+                    c.Stat = StatType.Speed;
+                    c.Value = 10;
+                });
+                bp.AddComponent<MovementDistanceTrigger>(c => {
+                    c.Action = Helpers.CreateActionList(
+                        new Conditional() {
+                            ConditionsChecker = new ConditionsChecker() {
+                                Operation = Operation.And,
+                                Conditions = new Condition[] {
+                                    new IsInCombat() {
+                                        Not = false,
+                                        Unit = null,
+                                        Player = true
+                                    }
+                                }
+                            },
+                            IfFalse = Helpers.CreateActionList(),
+                            IfTrue = Helpers.CreateActionList(
+                                new ContextActionApplyBuff() {
+                                    m_Buff = OracleRevelationDanceOfTheBladesFeatureBuff.ToReference<BlueprintBuffReference>(),
+                                    UseDurationSeconds = false,
+                                    DurationValue = new ContextDurationValue() {
+                                        Rate = DurationRate.Rounds,
+                                        BonusValue = 1,
+                                        DiceType = DiceType.Zero,
+                                        DiceCountValue = 0,
+                                        m_IsExtendable = true
+                                    },
+                                    DurationSeconds = 0
+                                }
+                                )
+                        }
+                        );
+                    c.DistanceInFeet = new ContextValue() { Value = 10 };
+                    c.LimitTiggerCountInOneRound = true;
+                    c.TiggerCountMaximumInOneRound = 1;
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_AdditionalClasses = new BlueprintCharacterClassReference[] {
+                        ArcanistClass.ToReference<BlueprintCharacterClassReference>(),
+                    };
+                    c.m_Archetypes = new BlueprintArchetypeReference[] {
+                        MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>(),
+                    };
+                    c.Level = 11;
+                    c.m_Feature = OracleRevelationDanceOfTheBladesAbilityFeature.ToReference<BlueprintFeatureReference>();
+                    c.BeforeThisLevel = false;
+                });
+                bp.AddComponent<PrerequisiteFeaturesFromList>(c => {
+                    c.m_Features = new BlueprintFeatureReference[] {
+                        OracleMetalMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        EnlightnedPhilosopherMetalMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        DivineHerbalistMetalMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        OceansEchoMetalMysteryFeature.ToReference<BlueprintFeatureReference>()
+                    };
+                    c.Amount = 1;
+                });
+                bp.Groups = new FeatureGroup[] { FeatureGroup.OracleRevelation };
+                bp.IsClassFeature = true;
+            });
+            OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationDanceOfTheBladesFeature.ToReference<BlueprintFeatureReference>());
             #endregion
             #region Iron Constitution
             var OracleRevelationIronConstitutionFeature = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationIronConstitutionFeature", bp => {
@@ -532,16 +815,126 @@ namespace ExpandedContent.Tweaks.Mysteries {
             OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationIronConstitutionFeature.ToReference<BlueprintFeatureReference>());
             #endregion
             #region Iron Skin
+            var StoneskinBuff = Resources.GetBlueprint<BlueprintBuff>("37a956d0e7a84ab0bb66baf784767047");
+            var OracleRevelationIronSkinBuff = Helpers.CreateBuff("OracleRevelationIronSkinBuff", bp => {
+                bp.SetName("Iron Skin");
+                bp.SetDescription("The warded creature gains resistance to blows, cuts, stabs, and slashes. The subject gains {g|Encyclopedia:Damage_Reduction}DR{/g} 10/adamantine. " +
+                    "It ignores the first 10 points of {g|Encyclopedia:Damage}damage{/g} each time it takes damage from a weapon, though an adamantine weapon overcomes the reduction. " +
+                    "Once the {g|Encyclopedia:Spell}spell{/g} has prevented a total of 10 points of damage per {g|Encyclopedia:Caster_Level}caster level{/g} (maximum 150 points), " +
+                    "it is discharged.");
+                bp.m_Icon = StoneskinBuff.Icon;
+                bp.AddComponent(Helpers.CreateCopy(StoneskinBuff.GetComponent<AddDamageResistancePhysical>()));
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.SummClassLevelWithArchetype;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.MultiplyByModifier;
+                    c.m_StartLevel = 0;
+                    c.m_StepLevel = 10;
+                    c.m_UseMax = true;
+                    c.m_Max = 150;
+                    c.m_Class = new BlueprintCharacterClassReference[] {
+                        OracleClass.ToReference<BlueprintCharacterClassReference>(),
+                        ArcanistClass.ToReference<BlueprintCharacterClassReference>()
+                    };
+                    c.Archetype = MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>();
+                });
+            });
+            var OracleRevelationIronSkinAbility = Helpers.CreateBlueprint<BlueprintAbility>("OracleRevelationIronSkinAbility", bp => {
+                bp.SetName("Iron Skin");
+                bp.SetDescription("Once per day, your skin hardens and takes on the appearance of iron, granting you DR 10/adamantine. " +
+                    "This ability functions as stoneskin, using your oracle level as the caster level, except it only affects you. " +
+                    "At 15th level, you can use this ability twice per day. " +
+                    "\nStoneskin \nThe warded creature gains resistance to blows, cuts, stabs, and slashes. The subject gains {g|Encyclopedia:Damage_Reduction}DR{/g} 10/adamantine, " +
+                    "for 10 minutes per {g|Encyclopedia:Caster_Level}caster level{/g}. " +
+                    "It ignores the first 10 points of {g|Encyclopedia:Damage}damage{/g} each time it takes damage from a weapon, though an adamantine weapon overcomes the reduction. " +
+                    "Once the {g|Encyclopedia:Spell}spell{/g} has prevented a total of 10 points of damage per {g|Encyclopedia:Caster_Level}caster level{/g} (maximum 150 points), " +
+                    "it is discharged.");
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = OracleRevelationIronSkinBuff.ToReference<BlueprintBuffReference>(),
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.TenMinutes,
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Rank,
+                                    ValueRank = AbilityRankType.Default
+                                },
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                m_IsExtendable = true
+                            },
+                            DurationSeconds = 0
+                        });
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.SummClassLevelWithArchetype;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.AsIs;
+                    c.m_StartLevel = 0;
+                    c.m_StepLevel = 0;
+                    c.m_UseMax = false;
+                    c.m_Max = 0;
+                    c.m_Class = new BlueprintCharacterClassReference[] {
+                        OracleClass.ToReference<BlueprintCharacterClassReference>(),
+                        ArcanistClass.ToReference<BlueprintCharacterClassReference>(),
+                    };
+                    c.Archetype = MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.m_AdditionalArchetypes = new BlueprintArchetypeReference[] { };
+                });
+                bp.AddComponent<CraftInfoComponent>(c => {
+                    c.SavingThrow = CraftSavingThrow.None;
+                    c.AOEType = CraftAOE.None;
+                    c.SpellType = CraftSpellType.Other;
+                });
+                bp.m_Icon = StoneskinBuff.Icon;
+                bp.Type = AbilityType.SpellLike;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Touch;
+                bp.ActionType = UnitCommand.CommandType.Move;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = Helpers.CreateString("OracleRevelationIronSkinAbility.Duration", "1 round");
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+
             var OracleRevelationIronSkinFeature = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationIronSkinFeature", bp => {
                 bp.SetName("Iron Skin");
                 bp.SetDescription("Once per day, your skin hardens and takes on the appearance of iron, granting you DR 10/adamantine. " +
                     "This ability functions as stoneskin, using your oracle level as the caster level, except it only affects you. " +
-                    "At 15th level, you can use this ability twice per day. You must be at least 11th level to select this revelation.");
+                    "At 15th level, you can use this ability twice per day. " +
+                    "\nStoneskin \nThe warded creature gains resistance to blows, cuts, stabs, and slashes. The subject gains {g|Encyclopedia:Damage_Reduction}DR{/g} 10/adamantine, " +
+                    "for 10 minutes per {g|Encyclopedia:Caster_Level}caster level{/g}. " +
+                    "It ignores the first 10 points of {g|Encyclopedia:Damage}damage{/g} each time it takes damage from a weapon, though an adamantine weapon overcomes the reduction. " +
+                    "Once the {g|Encyclopedia:Spell}spell{/g} has prevented a total of 10 points of damage per {g|Encyclopedia:Caster_Level}caster level{/g} (maximum 150 points), " +
+                    "it is discharged.");
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] {
-                        MartialWeaponProficiency.ToReference<BlueprintUnitFactReference>(),
-                        HeavyArmorProficiency.ToReference<BlueprintUnitFactReference>()
+                        OracleRevelationIronSkinAbility.ToReference<BlueprintUnitFactReference>()
                     };
+                });
+                bp.AddComponent<PrerequisiteClassLevel>(c => {
+                    c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Group = Prerequisite.GroupType.Any;
+                    c.Level = 11;
+                });
+                bp.AddComponent<PrerequisiteArchetypeLevel>(c => {
+                    c.Group = Prerequisite.GroupType.Any;
+                    c.CheckInProgression = false;
+                    c.HideInUI = false;
+                    c.m_CharacterClass = ArcanistClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.Level = 11;
                 });
                 bp.AddComponent<PrerequisiteFeaturesFromList>(c => {
                     c.m_Features = new BlueprintFeatureReference[] {
@@ -558,6 +951,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
             OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationIronSkinFeature.ToReference<BlueprintFeatureReference>());
             #endregion
             #region Iron Weapon
+            var CrusadersEdgeIcon = Resources.GetBlueprint<BlueprintBuff>("7ca348639a91ae042967f796098e3bc3").Icon;
             var ColdIronWeaponEnchentment = Resources.GetBlueprint<BlueprintWeaponEnchantment>("e5990dc76d2a613409916071c898eee8");
             var Enhancement1 = Resources.GetBlueprint<BlueprintWeaponEnchantment>("d42fc23b92c640846ac137dc26e000d4");
             var Enhancement2 = Resources.GetBlueprint<BlueprintWeaponEnchantment>("eb2faccc4c9487d43b3575d7e77ff3f5");
@@ -610,7 +1004,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.SetDescription("You can imbue held weapons made mostly of metal, while enchanted the weapons are considered made of cold iron. At 7th level, 15th level, and 19th level, the weapon " +
                     "gains a +1 enhancement bonus. At 11th level, the weapon is considered made of adamantine. This effect lasts a number of minutes equal to your oracle level. " +
                     "You can use this ability a number of times per day equal to 3 + your Charisma modifier.");
-                bp.m_Icon = IronWeaponEnchantIcon;
+                bp.m_Icon = CrusadersEdgeIcon;
                 bp.AddComponent<BuffEnchantWornItem>(c => {
                     c.m_EnchantmentBlueprint = ColdIronWeaponEnchentment.ToReference<BlueprintItemEnchantmentReference>();
                     c.Slot = EquipSlotBase.SlotType.PrimaryHand;
@@ -621,7 +1015,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.SetDescription("You can imbue held weapons made mostly of metal, while enchanted the weapons are considered made of cold iron. At 7th level, 15th level, and 19th level, the weapon " +
                     "gains a +1 enhancement bonus. At 11th level, the weapon is considered made of adamantine. This effect lasts a number of minutes equal to your oracle level. " +
                     "You can use this ability a number of times per day equal to 3 + your Charisma modifier.");
-                bp.m_Icon = IronWeaponEnchantIcon;
+                bp.m_Icon = CrusadersEdgeIcon;
                 bp.AddComponent<BuffEnchantWornItem>(c => {
                     c.m_EnchantmentBlueprint = ColdIronWeaponEnchentment.ToReference<BlueprintItemEnchantmentReference>();
                     c.Slot = EquipSlotBase.SlotType.SecondaryHand;
@@ -632,7 +1026,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.SetDescription("You can imbue held weapons made mostly of metal, while enchanted the weapons are considered made of cold iron. At 7th level, 15th level, and 19th level, the weapon " +
                     "gains a +1 enhancement bonus. At 11th level, the weapon is considered made of adamantine. This effect lasts a number of minutes equal to your oracle level. " +
                     "You can use this ability a number of times per day equal to 3 + your Charisma modifier.");
-                bp.m_Icon = IronWeaponEnchantIcon;
+                bp.m_Icon = CrusadersEdgeIcon;
                 bp.AddComponent<BuffEnchantWornItem>(c => {
                     c.m_EnchantmentBlueprint = ColdIronWeaponEnchentment.ToReference<BlueprintItemEnchantmentReference>();
                     c.Slot = EquipSlotBase.SlotType.PrimaryHand;
@@ -643,7 +1037,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.SetDescription("You can imbue held weapons made mostly of metal, while enchanted the weapons are considered made of cold iron. At 7th level, 15th level, and 19th level, the weapon " +
                     "gains a +1 enhancement bonus. At 11th level, the weapon is considered made of adamantine. This effect lasts a number of minutes equal to your oracle level. " +
                     "You can use this ability a number of times per day equal to 3 + your Charisma modifier.");
-                bp.m_Icon = IronWeaponEnchantIcon;
+                bp.m_Icon = CrusadersEdgeIcon;
                 bp.AddComponent<BuffEnchantWornItem>(c => {
                     c.m_EnchantmentBlueprint = ColdIronWeaponEnchentment.ToReference<BlueprintItemEnchantmentReference>();
                     c.Slot = EquipSlotBase.SlotType.SecondaryHand;
@@ -654,7 +1048,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.SetDescription("You can imbue held weapons made mostly of metal, while enchanted the weapons are considered made of cold iron. At 7th level, 15th level, and 19th level, the weapon " +
                     "gains a +1 enhancement bonus. At 11th level, the weapon is considered made of adamantine. This effect lasts a number of minutes equal to your oracle level. " +
                     "You can use this ability a number of times per day equal to 3 + your Charisma modifier.");
-                bp.m_Icon = IronWeaponEnchantIcon;
+                bp.m_Icon = CrusadersEdgeIcon;
                 bp.AddComponent<BuffEnchantWornItem>(c => {
                     c.m_EnchantmentBlueprint = ColdIronWeaponEnchentment.ToReference<BlueprintItemEnchantmentReference>();
                     c.Slot = EquipSlotBase.SlotType.PrimaryHand;
@@ -669,7 +1063,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.SetDescription("You can imbue held weapons made mostly of metal, while enchanted the weapons are considered made of cold iron. At 7th level, 15th level, and 19th level, the weapon " +
                     "gains a +1 enhancement bonus. At 11th level, the weapon is considered made of adamantine. This effect lasts a number of minutes equal to your oracle level. " +
                     "You can use this ability a number of times per day equal to 3 + your Charisma modifier.");
-                bp.m_Icon = IronWeaponEnchantIcon;
+                bp.m_Icon = CrusadersEdgeIcon;
                 bp.AddComponent<BuffEnchantWornItem>(c => {
                     c.m_EnchantmentBlueprint = ColdIronWeaponEnchentment.ToReference<BlueprintItemEnchantmentReference>();
                     c.Slot = EquipSlotBase.SlotType.SecondaryHand;
@@ -684,7 +1078,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.SetDescription("You can imbue held weapons made mostly of metal, while enchanted the weapons are considered made of cold iron. At 7th level, 15th level, and 19th level, the weapon " +
                     "gains a +1 enhancement bonus. At 11th level, the weapon is considered made of adamantine. This effect lasts a number of minutes equal to your oracle level. " +
                     "You can use this ability a number of times per day equal to 3 + your Charisma modifier.");
-                bp.m_Icon = IronWeaponEnchantIcon;
+                bp.m_Icon = CrusadersEdgeIcon;
                 bp.AddComponent<BuffEnchantWornItem>(c => {
                     c.m_EnchantmentBlueprint = ColdIronWeaponEnchentment.ToReference<BlueprintItemEnchantmentReference>();
                     c.Slot = EquipSlotBase.SlotType.PrimaryHand;
@@ -699,7 +1093,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.SetDescription("You can imbue held weapons made mostly of metal, while enchanted the weapons are considered made of cold iron. At 7th level, 15th level, and 19th level, the weapon " +
                     "gains a +1 enhancement bonus. At 11th level, the weapon is considered made of adamantine. This effect lasts a number of minutes equal to your oracle level. " +
                     "You can use this ability a number of times per day equal to 3 + your Charisma modifier.");
-                bp.m_Icon = IronWeaponEnchantIcon;
+                bp.m_Icon = CrusadersEdgeIcon;
                 bp.AddComponent<BuffEnchantWornItem>(c => {
                     c.m_EnchantmentBlueprint = ColdIronWeaponEnchentment.ToReference<BlueprintItemEnchantmentReference>();
                     c.Slot = EquipSlotBase.SlotType.SecondaryHand;
@@ -714,7 +1108,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.SetDescription("You can imbue held weapons made mostly of metal, while enchanted the weapons are considered made of cold iron. At 7th level, 15th level, and 19th level, the weapon " +
                     "gains a +1 enhancement bonus. At 11th level, the weapon is considered made of adamantine. This effect lasts a number of minutes equal to your oracle level. " +
                     "You can use this ability a number of times per day equal to 3 + your Charisma modifier.");
-                bp.m_Icon = IronWeaponEnchantIcon;
+                bp.m_Icon = CrusadersEdgeIcon;
                 bp.AddComponent<BuffEnchantWornItem>(c => {
                     c.m_EnchantmentBlueprint = ColdIronWeaponEnchentment.ToReference<BlueprintItemEnchantmentReference>();
                     c.Slot = EquipSlotBase.SlotType.PrimaryHand;
@@ -729,7 +1123,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.SetDescription("You can imbue held weapons made mostly of metal, while enchanted the weapons are considered made of cold iron. At 7th level, 15th level, and 19th level, the weapon " +
                     "gains a +1 enhancement bonus. At 11th level, the weapon is considered made of adamantine. This effect lasts a number of minutes equal to your oracle level. " +
                     "You can use this ability a number of times per day equal to 3 + your Charisma modifier.");
-                bp.m_Icon = IronWeaponEnchantIcon;
+                bp.m_Icon = CrusadersEdgeIcon;
                 bp.AddComponent<BuffEnchantWornItem>(c => {
                     c.m_EnchantmentBlueprint = ColdIronWeaponEnchentment.ToReference<BlueprintItemEnchantmentReference>();
                     c.Slot = EquipSlotBase.SlotType.SecondaryHand;
@@ -745,7 +1139,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.SetDescription("You can imbue held weapons made mostly of metal, while enchanted the weapons are considered made of cold iron. At 7th level, 15th level, and 19th level, the weapon " +
                     "gains a +1 enhancement bonus. At 11th level, the weapon is considered made of adamantine. This effect lasts a number of minutes equal to your oracle level. " +
                     "You can use this ability a number of times per day equal to 3 + your Charisma modifier.");
-                bp.m_Icon = IronWeaponEnchantIcon;
+                bp.m_Icon = CrusadersEdgeIcon;
                 bp.AddComponent<AbilityCasterMainWeaponCheck>(c => {
                     c.Category = new WeaponCategory[] {
                         WeaponCategory.Dagger,
@@ -1007,7 +1401,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.SetDescription("You can imbue held weapons made mostly of metal, while enchanted the weapons are considered made of cold iron. At 7th level, 15th level, and 19th level, the weapon " +
                     "gains a +1 enhancement bonus. At 11th level, the weapon is considered made of adamantine. This effect lasts a number of minutes equal to your oracle level. " +
                     "You can use this ability a number of times per day equal to 3 + your Charisma modifier.");
-                bp.m_Icon = IronWeaponEnchantIcon;
+                bp.m_Icon = CrusadersEdgeIcon;
                 bp.AddComponent<AbilityCasterOffHandWeaponCheck>(c => {
                     c.Category = new WeaponCategory[] {                        
                         WeaponCategory.Dagger,
@@ -1269,7 +1663,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.SetDescription("You can imbue held weapons made mostly of metal, while enchanted the weapons are considered made of cold iron. At 7th level, 15th level, and 19th level, the weapon " +
                     "gains a +1 enhancement bonus. At 11th level, the weapon is considered made of adamantine. This effect lasts a number of minutes equal to your oracle level. " +
                     "You can use this ability a number of times per day equal to 3 + your Charisma modifier.");
-                bp.m_Icon = IronWeaponEnchantIcon;
+                bp.m_Icon = CrusadersEdgeIcon;
                 bp.AddComponent<AbilityVariants>(c => {
                     c.m_Variants = new BlueprintAbilityReference[] {
                         OracleRevelationIronWeaponEnchantAbilityMainHand.ToReference<BlueprintAbilityReference>(),
@@ -1380,9 +1774,6 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.IsClassFeature = true;
             });
             OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationIronWeaponEnchantFeature.ToReference<BlueprintFeatureReference>());
-            #endregion
-            #region Rusting Grasp
-
             #endregion
             #region Skill at Arms
             var MartialWeaponProficiency = Resources.GetBlueprint<BlueprintFeature>("203992ef5b35c864390b4e4a1e200629");

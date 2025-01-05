@@ -684,7 +684,7 @@ namespace ExpandedContent.Tweaks.Domains {
             var DomainMastery = Resources.GetBlueprint<BlueprintFeature>("2de64f6a1f2baee4f9b7e52e3f046ec5").GetComponent<AutoMetamagic>();
             DomainMastery.Abilities.Add(ScalykindDomainBaseAbility.ToReference<BlueprintAbilityReference>());
             DomainMastery.Abilities.Add(ScalykindDomainBaseAbilitySeparatist.ToReference<BlueprintAbilityReference>());
-            if (ModSettings.AddedContent.Domains.IsDisabled("Scalykind Domain")) { return; }
+            if (ModSettings.AddedContent.RetiredFeatures.IsDisabled("Old Scalykind Domain")) { return; }
             DomainTools.RegisterDomain(ScalykindDomainProgression);
             DomainTools.RegisterSecondaryDomain(ScalykindDomainProgressionSecondary);
             DomainTools.RegisterDivineHunterDomain(ScalykindDomainProgression);
