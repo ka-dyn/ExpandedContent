@@ -106,6 +106,7 @@ New Oracle Mysteries / Curses
   - Dragon
   - Heavens
   - Lunar
+  - Metal
   - Shadow
   - Succor
   - Winter
