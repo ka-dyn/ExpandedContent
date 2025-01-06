@@ -39,7 +39,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.SetName("Token");
                 bp.SetDescription("");
                 bp.m_Icon = DanceOfAThousandCutsIcon;
-                //bp.m_Flags = BlueprintBuff.Flags.HiddenInUi | BlueprintBuff.Flags.IsFromSpell;
+                bp.m_Flags = BlueprintBuff.Flags.HiddenInUi | BlueprintBuff.Flags.IsFromSpell;
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = false;
                 bp.Stacking = StackingType.Replace;
