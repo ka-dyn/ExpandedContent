@@ -244,6 +244,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.HideInUI = true;
                 bp.HideInCharacterSheetAndLevelUp = true;
                 bp.IsClassFeature = true;
+                bp.IgnorePrerequisites = true;
             });
             var OracleMetalFinalRevelationImprovedCritSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("OracleMetalFinalRevelationImprovedCritSelection", bp => {
                 bp.SetName("Final Revelation - Improved Critical");
@@ -257,6 +258,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.HideInUI = true;
                 bp.HideInCharacterSheetAndLevelUp = true;
                 bp.IsClassFeature = true;
+                bp.IgnorePrerequisites = true;
             });
             var OracleMetalFinalRevelation = Helpers.CreateBlueprint<BlueprintProgression>("OracleMetalFinalRevelation", bp => {
                 bp.SetName("Final Revelation");
@@ -441,6 +443,8 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     c.m_Progression = ContextRankProgression.DivStep;
                     c.m_StartLevel = 0;
                     c.m_StepLevel = 5;
+                    c.m_UseMax = true;
+                    c.m_Max = 3;
                     c.m_Class = new BlueprintCharacterClassReference[] {
                         OracleClass.ToReference<BlueprintCharacterClassReference>(),
                         ArcanistClass.ToReference<BlueprintCharacterClassReference>()
@@ -904,7 +908,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Touch;
                 bp.ActionType = UnitCommand.CommandType.Move;
                 bp.AvailableMetamagic = 0;
-                bp.LocalizedDuration = Helpers.CreateString("OracleRevelationIronSkinAbility.Duration", "1 round");
+                bp.LocalizedDuration = Helpers.CreateString("OracleRevelationIronSkinAbility.Duration", "10 minutes/level");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
 
