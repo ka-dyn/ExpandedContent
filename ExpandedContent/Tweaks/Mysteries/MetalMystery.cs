@@ -407,7 +407,6 @@ namespace ExpandedContent.Tweaks.Mysteries {
             var FullBardingType = Resources.GetBlueprintReference<BlueprintArmorTypeReference>("55a6ac3d3ed31fc4d8a7f26f509999a8");//Heavy
             var FullplateType = Resources.GetBlueprintReference<BlueprintArmorTypeReference>("afd9065539b3ac5499eddca923654c4b");//Heavy
             #endregion
-
             #region ArmorMastery
             var OracleRevelationArmorMasteryEffectFeature = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationArmorMasteryEffectFeature", bp => {
                 bp.SetName("OracleRevelationArmorMasteryEffectFeature");
@@ -820,6 +819,31 @@ namespace ExpandedContent.Tweaks.Mysteries {
             #endregion
             #region Iron Skin
             var StoneskinBuff = Resources.GetBlueprint<BlueprintBuff>("37a956d0e7a84ab0bb66baf784767047");
+            var OracleRevelationIronSkinResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("OracleRevelationIronSkinResource", bp => {
+                bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
+                    BaseValue = 1,
+                    IncreasedByLevel = true,
+                    LevelIncrease = 1,
+                    IncreasedByLevelStartPlusDivStep = false,
+                    StartingLevel = 0,
+                    StartingIncrease = 1,
+                    LevelStep = 15,
+                    PerStepIncrease = 1,
+                    MinClassLevelIncrease = 0,
+                    OtherClassesModifier = 0,
+                    IncreasedByStat = false,
+                    ResourceBonusStat = StatType.Unknown,
+                    m_Class = new BlueprintCharacterClassReference[] {
+                        OracleClass.ToReference<BlueprintCharacterClassReference>(),
+                        ArcanistClass.ToReference<BlueprintCharacterClassReference>(),
+                    },
+                    m_Archetypes = new BlueprintArchetypeReference[] {
+                        MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>(),
+                    }
+                };
+                bp.m_UseMax = true;
+                bp.m_Max = 2;
+            });
             var OracleRevelationIronSkinBuff = Helpers.CreateBuff("OracleRevelationIronSkinBuff", bp => {
                 bp.SetName("Iron Skin");
                 bp.SetDescription("The warded creature gains resistance to blows, cuts, stabs, and slashes. The subject gains {g|Encyclopedia:Damage_Reduction}DR{/g} 10/adamantine. " +
@@ -896,6 +920,10 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     c.AOEType = CraftAOE.None;
                     c.SpellType = CraftSpellType.Other;
                 });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = OracleRevelationIronSkinResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
                 bp.m_Icon = StoneskinBuff.Icon;
                 bp.Type = AbilityType.SpellLike;
                 bp.Range = AbilityRange.Personal;
@@ -926,6 +954,10 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     c.m_Facts = new BlueprintUnitFactReference[] {
                         OracleRevelationIronSkinAbility.ToReference<BlueprintUnitFactReference>()
                     };
+                });
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = OracleRevelationIronSkinResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
                 });
                 bp.AddComponent<PrerequisiteClassLevel>(c => {
                     c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
