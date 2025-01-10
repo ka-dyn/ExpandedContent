@@ -220,7 +220,7 @@ namespace ExpandedContent.Tweaks.Domains {
             var SummonNaturesAllyVISpell = Resources.GetBlueprint<BlueprintAbility>("55bbce9b3e76d4a4a8c8e0698d29002c");
             var AnimalShapesSpell = Resources.GetBlueprint<BlueprintAbility>("cf689244b2c7e904eb85f26fd6e81552");
             var SummonNaturesAllyVIIISpell = Resources.GetBlueprint<BlueprintAbility>("ea78c04f0bd13d049a1cce5daf8d83e0");
-            var ShapechangeSpell = Resources.GetBlueprint<BlueprintAbility>("22b9044aa229815429d57d0a30e4b739");
+            var SummonNaturesAllyIXSpell = Resources.GetBlueprint<BlueprintAbility>("a7469ef84ba50ac4cbf3d145e3173f8e");
             var FurDomainSpellList = Helpers.CreateBlueprint<BlueprintSpellList>("FurDomainSpellList", bp => {
                 bp.SpellsByLevel = new SpellLevelList[10] {
                     new SpellLevelList(0) {
@@ -278,7 +278,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     new SpellLevelList(9) {
                         SpellLevel = 9,
                         m_Spells = new List<BlueprintAbilityReference>() {
-                            ShapechangeSpell.ToReference<BlueprintAbilityReference>()
+                            SummonNaturesAllyIXSpell.ToReference<BlueprintAbilityReference>()
                         }
                     },
                 };

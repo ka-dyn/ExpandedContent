@@ -87,12 +87,6 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.AddFeatures(AnimalCompanionFeatureCentipede, CompanionGiantFlyFeature, CompanionWebSpiderFeature, AnimalCompanionEmpty);
             });
 
-
-
-
-
-
-
             var CheetahSprintIcon = AssetLoader.LoadInternal("Skills", "Icon_CheetahSprint.jpg");
 
             var InsectDomainBaseBuff = Helpers.CreateBuff("InsectDomainBaseBuff", bp => {
@@ -100,34 +94,24 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.SetDescription("As a swift action, you can grow an exoskeleton that grants you a +1 enhancement bonus to your natural armor and 1d4 temporary hit points + 1 " +
                     "for every 2 cleric levels you have. The natural armor bonus increases by 1 for every 5 cleric levels you have. The exoskeleton retracts after 1 round, ending its benefits. " +
                     "You can use this ability a number of times per day equal to 3 + your Wisdom modifier.");
-                bp.m_Icon = CheetahSprintIcon;
-                bp.AddComponent<BuffMovementSpeed>(c => {
-                    c.Descriptor = ModifierDescriptor.UntypedStackable;
-                    c.Value = 0;
-                    c.ContextBonus = new ContextValue() {
+                bp.m_Icon = CheetfwefwefwahSprintIcon;
+                bp.AddComponent<AddContextStatBonus>(c => {
+                    c.Descriptor = ModifierDescriptor.NaturalArmorEnhancement;
+                    c.Stat = StatType.AC;
+                    c.Multiplier = 1;
+                    c.Value = new ContextValue() {
                         ValueType = ContextValueType.Rank,
                         ValueRank = AbilityRankType.StatBonus
                     };
-                    c.CappedOnMultiplier = false;
-                    c.CappedMinimum = false;
                 });
                 bp.AddComponent<ContextRankConfig>(c => {
                     c.m_Type = AbilityRankType.StatBonus;
                     c.m_BaseValueType = ContextRankBaseValueType.SummClassLevelWithArchetype;
                     c.m_Stat = StatType.Unknown;
                     c.m_SpecificModifier = ModifierDescriptor.None;
-                    c.m_Progression = ContextRankProgression.Custom;
-                    c.m_CustomProgression = new ContextRankConfig.CustomProgressionItem[] {
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 4, ProgressionValue = 10 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 9, ProgressionValue = 15 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 14, ProgressionValue = 20 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 19, ProgressionValue = 25 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 24, ProgressionValue = 30 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 29, ProgressionValue = 35 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 34, ProgressionValue = 40 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 39, ProgressionValue = 45 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 100, ProgressionValue = 50 }
-                    };
+                    c.m_Progression = ContextRankProgression.OnePlusDivStep;
+                    c.m_StartLevel = 0;
+                    c.m_StepLevel = 5;
                     c.Archetype = DivineHunterArchetype.ToReference<BlueprintArchetypeReference>();
                     c.m_AdditionalArchetypes = new BlueprintArchetypeReference[] {
                         TempleChampionArchetype.ToReference<BlueprintArchetypeReference>(),
@@ -143,7 +127,68 @@ namespace ExpandedContent.Tweaks.Domains {
                         ArcanistClass.ToReference<BlueprintCharacterClassReference>(),
                     };
                 });
-                bp.FxOnStart = new PrefabLink() { AssetId = "91ef30ab58fa0d3449d4d2ccc20cb0f8" }; //Haste FX
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.StatBonus;
+                    c.m_BaseValueType = ContextRankBaseValueType.SummClassLevelWithArchetype;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.Custom;
+                    c.Archetype = DivineHunterArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.m_AdditionalArchetypes = new BlueprintArchetypeReference[] {
+                        TempleChampionArchetype.ToReference<BlueprintArchetypeReference>(),
+                        MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>()
+                    };
+                    c.m_Class = new BlueprintCharacterClassReference[] {
+                        ClericClass.ToReference<BlueprintCharacterClassReference>(),
+                        InquisitorClass.ToReference<BlueprintCharacterClassReference>(),
+                        HunterClass.ToReference<BlueprintCharacterClassReference>(),
+                        PaladinClass.ToReference<BlueprintCharacterClassReference>(),
+                        DruidClass.ToReference<BlueprintCharacterClassReference>(),
+                        StargazerClass.ToReference<BlueprintCharacterClassReference>(),
+                        ArcanistClass.ToReference<BlueprintCharacterClassReference>(),
+                    };
+                });
+                bp.AddComponent<TemporaryHitPointsFromAbilityValue>(c => {
+                    c.Descriptor = ModifierDescriptor.None;
+                    c.Value = new ContextValue() {
+                        ValueType = ContextValueType.Shared,
+                        ValueShared = AbilitySharedValue.Heal
+                    };
+                    c.RemoveWhenHitPointsEnd = true;
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.SummClassLevelWithArchetype;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.Div2;
+                    c.Archetype = DivineHunterArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.m_AdditionalArchetypes = new BlueprintArchetypeReference[] {
+                        TempleChampionArchetype.ToReference<BlueprintArchetypeReference>(),
+                        MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>()
+                    };
+                    c.m_Class = new BlueprintCharacterClassReference[] {
+                        ClericClass.ToReference<BlueprintCharacterClassReference>(),
+                        InquisitorClass.ToReference<BlueprintCharacterClassReference>(),
+                        HunterClass.ToReference<BlueprintCharacterClassReference>(),
+                        PaladinClass.ToReference<BlueprintCharacterClassReference>(),
+                        DruidClass.ToReference<BlueprintCharacterClassReference>(),
+                        StargazerClass.ToReference<BlueprintCharacterClassReference>(),
+                        ArcanistClass.ToReference<BlueprintCharacterClassReference>(),
+                    };
+                });
+                bp.AddComponent<ContextCalculateSharedValue>(c => {
+                    c.ValueType = AbilitySharedValue.Heal;
+                    c.Value = new ContextDiceValue() {
+                        DiceType = DiceType.D4,
+                        DiceCountValue = 1,
+                        BonusValue = new ContextValue() {
+                            ValueType = ContextValueType.Rank,
+                            ValueRank = AbilityRankType.Default
+                        }
+                    };
+                    c.Modifier = 1;
+                });
             });
 
             var InsectDomainBaseResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("InsectDomainBaseResource", bp => {
@@ -155,7 +200,6 @@ namespace ExpandedContent.Tweaks.Domains {
                 };
                 bp.IsDomainAbility = true;
             });
-
 
             var InsectDomainBaseAbility = Helpers.CreateBlueprint<BlueprintAbility>("InsectDomainBaseAbility", bp => {
                 bp.SetName("Exoskeleton");
@@ -203,15 +247,15 @@ namespace ExpandedContent.Tweaks.Domains {
             });
 
             //Spelllist
-            var MagicFangSpell = Resources.GetBlueprint<BlueprintAbility>("403cf599412299a4f9d5d925c7b9fb33");
-            var HoldAnimalSpell = Resources.GetBlueprint<BlueprintAbility>("41bab342089c0254ca222eb918e98cd4");
-            var BeastShapeISpell = Resources.GetBlueprint<BlueprintAbility>("61a7ed778dd93f344a5dacdbad324cc9");
-            var SummonNaturesAllyIVSpell = Resources.GetBlueprint<BlueprintAbility>("c83db50513abdf74ca103651931fac4b");
-            var BeastShapeIIISpell = Resources.GetBlueprint<BlueprintAbility>("9b93040dad242eb43ac7de6bb6547030");
-            var SummonNaturesAllyVISpell = Resources.GetBlueprint<BlueprintAbility>("55bbce9b3e76d4a4a8c8e0698d29002c");
-            var AnimalShapesSpell = Resources.GetBlueprint<BlueprintAbility>("cf689244b2c7e904eb85f26fd6e81552");
-            var SummonNaturesAllyVIIISpell = Resources.GetBlueprint<BlueprintAbility>("ea78c04f0bd13d049a1cce5daf8d83e0");
-            var ShapechangeSpell = Resources.GetBlueprint<BlueprintAbility>("22b9044aa229815429d57d0a30e4b739");
+            var MagicFangSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("403cf599412299a4f9d5d925c7b9fb33");
+            var HoldAnimalSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("41bab342089c0254ca222eb918e98cd4");
+            var VerminShapeIAbility = Resources.GetModBlueprint<BlueprintAbility>("VerminShapeIAbility");
+            var VerminShapeIIAbility = Resources.GetBlueprint<BlueprintAbility>("VerminShapeIIAbility");
+            var CapeOfWaspsSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("e418c20c8ce362943a8025d82c865c1c");
+            var PlagueStormSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("82a5b848c05e3f342b893dedb1f9b446");
+            var SummonNaturesAllyVIISpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("051b979e7d7f8ec41b9fa35d04746b33");
+            var SummonNaturesAllyVIIISpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("ea78c04f0bd13d049a1cce5daf8d83e0");
+            var ShapechangeSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("22b9044aa229815429d57d0a30e4b739");
             var InsectDomainSpellList = Helpers.CreateBlueprint<BlueprintSpellList>("InsectDomainSpellList", bp => {
                 bp.SpellsByLevel = new SpellLevelList[10] {
                     new SpellLevelList(0) {
@@ -221,55 +265,55 @@ namespace ExpandedContent.Tweaks.Domains {
                     new SpellLevelList(1) {
                         SpellLevel = 1,
                         m_Spells = new List<BlueprintAbilityReference>() {
-                            MagicFangSpell.ToReference<BlueprintAbilityReference>()
+                            MagicFangSpell
                         }
                     },
                     new SpellLevelList(2) {
                         SpellLevel = 2,
                         m_Spells = new List<BlueprintAbilityReference>() {
-                            HoldAnimalSpell.ToReference<BlueprintAbilityReference>()
+                            HoldAnimalSpell
                         }
                     },
                     new SpellLevelList(3) {
                         SpellLevel = 3,
                         m_Spells = new List<BlueprintAbilityReference>() {
-                            BeastShapeISpell.ToReference<BlueprintAbilityReference>()
+                            addspellplease
                         }
                     },
                     new SpellLevelList(4) {
                         SpellLevel = 4,
                         m_Spells = new List<BlueprintAbilityReference>() {
-                            SummonNaturesAllyIVSpell.ToReference<BlueprintAbilityReference>()
+                            addspellplease
                         }
                     },
                     new SpellLevelList(5) {
                         SpellLevel = 5,
                         m_Spells = new List<BlueprintAbilityReference>() {
-                            BeastShapeIIISpell.ToReference<BlueprintAbilityReference>()
+                            CapeOfWaspsSpell
                         }
                     },
                     new SpellLevelList(6) {
                         SpellLevel = 6,
                         m_Spells = new List<BlueprintAbilityReference>() {
-                            SummonNaturesAllyVISpell.ToReference<BlueprintAbilityReference>()
+                            PlagueStormSpell
                         }
                     },
                     new SpellLevelList(7) {
                         SpellLevel = 7,
                         m_Spells = new List<BlueprintAbilityReference>() {
-                            AnimalShapesSpell.ToReference<BlueprintAbilityReference>()
+                            SummonNaturesAllyVIISpell
                         }
                     },
                     new SpellLevelList(8) {
                         SpellLevel = 8,
                         m_Spells = new List<BlueprintAbilityReference>() {
-                            SummonNaturesAllyVIIISpell.ToReference<BlueprintAbilityReference>()
+                            SummonNaturesAllyVIIISpell
                         }
                     },
                     new SpellLevelList(9) {
                         SpellLevel = 9,
                         m_Spells = new List<BlueprintAbilityReference>() {
-                            ShapechangeSpell.ToReference<BlueprintAbilityReference>()
+                            ShapechangeSpell
                         }
                     },
                 };
@@ -634,37 +678,54 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.SetDescription("As a swift action, you can grow an exoskeleton that grants you a +1 enhancement bonus to your natural armor and 1d4 temporary hit points + 1 " +
                     "for every 2 cleric levels you have. The natural armor bonus increases by 1 for every 5 cleric levels you have. The exoskeleton retracts after 1 round, ending its benefits. " +
                     "You can use this ability a number of times per day equal to 3 + your Wisdom modifier.");
-                bp.m_Icon = CheetahSprintIcon;
-                bp.AddComponent<BuffMovementSpeed>(c => {
-                    c.Descriptor = ModifierDescriptor.UntypedStackable;
-                    c.Value = 0;
-                    c.ContextBonus = new ContextValue() {
+                bp.m_Icon = CheetahergergSprintIcon;
+                bp.AddComponent<AddContextStatBonus>(c => {
+                    c.Descriptor = ModifierDescriptor.NaturalArmorEnhancement;
+                    c.Stat = StatType.AC;
+                    c.Multiplier = 1;
+                    c.Value = new ContextValue() {
                         ValueType = ContextValueType.Rank,
                         ValueRank = AbilityRankType.StatBonus
                     };
-                    c.CappedOnMultiplier = false;
-                    c.CappedMinimum = false;
                 });
                 bp.AddComponent<ContextRankConfig>(c => {
                     c.m_Type = AbilityRankType.StatBonus;
                     c.m_BaseValueType = ContextRankBaseValueType.CustomProperty;
                     c.m_Stat = StatType.Unknown;
                     c.m_SpecificModifier = ModifierDescriptor.None;
-                    c.m_Progression = ContextRankProgression.Custom;
-                    c.m_CustomProgression = new ContextRankConfig.CustomProgressionItem[] {
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 4, ProgressionValue = 10 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 9, ProgressionValue = 15 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 14, ProgressionValue = 20 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 19, ProgressionValue = 25 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 24, ProgressionValue = 30 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 29, ProgressionValue = 35 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 34, ProgressionValue = 40 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 39, ProgressionValue = 45 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 100, ProgressionValue = 50 }
-                    };
+                    c.m_Progression = ContextRankProgression.OnePlusDivStep;
+                    c.m_StartLevel = 0;
+                    c.m_StepLevel = 5;
                     c.m_CustomProperty = SeparatistWithDruidAsIsProperty.ToReference<BlueprintUnitPropertyReference>();
                 });
-                bp.FxOnStart = new PrefabLink() { AssetId = "91ef30ab58fa0d3449d4d2ccc20cb0f8" }; //Haste FX
+                bp.AddComponent<TemporaryHitPointsFromAbilityValue>(c => {
+                    c.Descriptor = ModifierDescriptor.None;
+                    c.Value = new ContextValue() {
+                        ValueType = ContextValueType.Shared,
+                        ValueShared = AbilitySharedValue.Heal
+                    };
+                    c.RemoveWhenHitPointsEnd = true;
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.CustomProperty;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.Div2;
+                    c.m_CustomProperty = SeparatistWithDruidAsIsProperty.ToReference<BlueprintUnitPropertyReference>();
+                });
+                bp.AddComponent<ContextCalculateSharedValue>(c => {
+                    c.ValueType = AbilitySharedValue.Heal;
+                    c.Value = new ContextDiceValue() {
+                        DiceType = DiceType.D4,
+                        DiceCountValue = 1,
+                        BonusValue = new ContextValue() {
+                            ValueType = ContextValueType.Rank,
+                            ValueRank = AbilityRankType.Default
+                        }
+                    };
+                    c.Modifier = 1;
+                });
             });
 
             var InsectDomainBaseAbilitySeparatist = Helpers.CreateBlueprint<BlueprintAbility>("InsectDomainBaseAbilitySeparatist", bp => {
