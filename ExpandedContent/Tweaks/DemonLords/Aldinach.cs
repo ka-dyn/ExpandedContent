@@ -11,7 +11,7 @@ using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
 namespace ExpandedContent.Tweaks.DemonLords {
-    internal class Mazmezz {
+    internal class Aldinach {
         private static readonly BlueprintSpellbook CrusaderSpellbook = Resources.GetBlueprint<BlueprintSpellbook>("673d39f7da699aa408cdda6282e7dcc0");
         private static readonly BlueprintSpellbook ClericSpellbook = Resources.GetBlueprint<BlueprintSpellbook>("4673d19a0cf2fab4f885cc4d1353da33");
         private static readonly BlueprintSpellbook InquisitorSpellbook = Resources.GetBlueprint<BlueprintSpellbook>("57fab75111f377248810ece84193a5a5");
@@ -22,7 +22,7 @@ namespace ExpandedContent.Tweaks.DemonLords {
         private static readonly BlueprintCharacterClass DreadKnightClass = Resources.GetModBlueprint<BlueprintCharacterClass>("DreadKnightClass");
         private static readonly BlueprintFeature MythicIgnoreAlignmentRestrictions = Resources.GetBlueprint<BlueprintFeature>("24e78475f0a243e1a810452d14d0a1bd");
 
-        public static void AddMazmezzFeature() {
+        public static void AddAldinachFeature() {
 
             BlueprintItem MasterworkKukri = Resources.GetBlueprint<BlueprintItem>("da97ded5a2cfb944691b785763ad341e");
 
@@ -32,27 +32,25 @@ namespace ExpandedContent.Tweaks.DemonLords {
             BlueprintArchetype SwornOfTheEldestArchetype = Resources.GetModBlueprint<BlueprintArchetype>("SwornOfTheEldestArchetype");
 
             BlueprintFeature KukriProficiency = Resources.GetBlueprint<BlueprintFeature>("a7e822a8507e44b0a981ca55586dfad9");
-            var MazmezzIcon = AssetLoader.LoadInternal("Deities", "Icon_Mazmezz.jpg");
-            var MazmezzFeature = Helpers.CreateBlueprint<BlueprintFeature>("MazmezzFeature", (bp => {
-                bp.SetName("Mazmezz");
-                bp.SetDescription("\nTitles: The Creeping Queen, Lord of Vermin, Demon Lord of Vermin and Bindings " +
+            var AldinachIcon = AssetLoader.LoadInternal("Deities", "Icon_Aldinach.jpg");
+            var AldinachFeature = Helpers.CreateBlueprint<BlueprintFeature>("AldinachFeature", (bp => {
+                bp.SetName("Aldinach");
+                bp.SetDescription("\nTitles: She of the Six Venoms, Lord of Scorpions " +
                     "\nAlignment: Chaotic Evil   " +
-                    "\nAreas of Concern: Bindings, Driders, Vermin   " +
-                    "\nDomains: Animal, Chaos, Destruction, Evil   " +
-                    "\nSubdomains: Catastrophe, Demon, Insect, Rage, Venom   " +
-                    "\nFavoured Weapon: Net (Kukri)   " +
-                    "\nHoly Symbol: Skull in spiderweb   " +
-                    "\nSacred Animal: Spider   " +
-                    "\nMazmezz appears as a hideous tangle of insectoid legs, far too many for any worldly insect to command. Some of these legs end in claws, others in pincers, " +
-                    "and still others in spinnerets. At the center, a sickening clot of wriggling hair boils around a roughly spherical body, the only concession toward a “front” " +
-                    "being an immense spider’s mouth filled with thrashing pedipalps and fangs. Mazmezz has the insidious ability to wrap herself in gauzy, vexing swaths of webbing " +
-                    "that can magically alter her form to anything she can imagine—the form of a beautiful woman or female drider is a particular favorite when she’s dealing with " +
-                    "those she might wish to capture and keep as trophies for her horrific harem. Yet when forced to punish foes or do battle, the Creeping Queen always reverts to " +
-                    "her nauseating true form. Mazmezz is worshiped primarily by drow, driders, and ettercaps, but some particularly demented humanoids worship her as well—these " +
-                    "tend to be isolated admirers rather than members of full-blown cults. Her hive-like Abyssal domain is known as Khavak-Vog, and its tangled ways are the lair " +
-                    "of her favored children, the bebiliths. The core of her maze-like lair is guarded by several of these fiends grown to great size. Legend holds that the first " +
-                    "bebiliths were spawned by Mazmezz; if true, this would explain the disgust and hatred with which most other demon lords hold the Creeping Queen.");
-                bp.m_Icon = MazmezzIcon;
+                    "\nAreas of Concern: Sand, Scorpions, Thirst   " +
+                    "\nDomains: Animal, Chaos, Evil, Sun   " +
+                    "\nSubdomains: Demon, Feather, Fur, Insect, Light, Thirst " +
+                    "\nFavoured Weapon: Kukri   " +
+                    "\nHoly Symbol: Sandy gold scorpion   " +
+                    "\nSacred Animal: Scorpion   " +
+                    "\nAldinach’s cults are strongest in deserts, particularly in Osirion’s wastelands and the remote reaches of Rahadoum, where her cultists work " +
+                    "to seduce and corrupt that realm’s godless citizens. Aldinach is one of Lamashtu’s daughters, although since Lamashtu’s ascension to divinity, " +
+                    "the two have not associated overmuch. The same cannot be said of her relationship with her sister Areshkagal, with whom Aldinach is locked in an " +
+                    "eternal war. Ever since Aldinach stole the Abyssal realm known as the Sea of Whispering Sands from her sister, forcing Areshkagal into exile in " +
+                    "the desolate Blood Clefts, Aldinach has been forced to defend her desert realm constantly from her sister’s increasingly desperate attempts to " +
+                    "reclaim her lost territory. Although she has ruled the Whispering Sands for only a few dozen centuries, already she has inspired her minions to " +
+                    "create hundreds of eerie desert cities in her honor, hidden amid the trackless sands.");
+                bp.m_Icon = AldinachIcon;
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;
                 bp.HideInCharacterSheetAndLevelUp = false;
@@ -69,24 +67,25 @@ namespace ExpandedContent.Tweaks.DemonLords {
                     c.Alignment = AlignmentMaskType.ChaoticNeutral | AlignmentMaskType.NeutralEvil | AlignmentMaskType.ChaoticEvil;
                 });
                 bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[] { 
+                    c.m_Facts = new BlueprintUnitFactReference[] {
                         ChannelNegativeAllowed.ToReference<BlueprintUnitFactReference>()
                     };
                 });
                 bp.SetAllowedDomains(
                     DeityTools.DomainAllowed.ChaosDomainAllowed,
-                    DeityTools.DomainAllowed.DestructionDomainAllowed,
                     DeityTools.DomainAllowed.EvilDomainAllowed,
+                    DeityTools.DomainAllowed.SunDomainAllowed,
                     DeityTools.DomainAllowed.AnimalDomainAllowed,
                     DeityTools.DomainAllowed.DemonDomainEvilAllowed,
                     DeityTools.DomainAllowed.DemonDomainChaosAllowed,
-                    DeityTools.DomainAllowed.RageDomainAllowed,
+                    DeityTools.DomainAllowed.FurDomainAllowed,
                     DeityTools.SeparatistDomainAllowed.AirDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.ArtificeDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.CharmDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.ArcaneDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.CommunityDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.DarknessDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.DestructionDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.LightningDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.DeathDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.EarthDomainAllowedSeparatist,
@@ -105,7 +104,6 @@ namespace ExpandedContent.Tweaks.DemonLords {
                     DeityTools.SeparatistDomainAllowed.ReposeDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.RuneDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.StrengthDomainAllowedSeparatist,
-                    DeityTools.SeparatistDomainAllowed.SunDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.TravelDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.TrickeryDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.UndeadDomainAllowedSeparatist,
@@ -119,12 +117,12 @@ namespace ExpandedContent.Tweaks.DemonLords {
                     DeityTools.SeparatistDomainAllowed.DragonDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.FerocityDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.FistDomainAllowedSeparatist,
-                    DeityTools.SeparatistDomainAllowed.FurDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.GrowthDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.HeroismDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.LustDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.PsychopompDomainDeathAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.PsychopompDomainReposeAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.RageDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.ResolveDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.RestorationDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.RevelationDomainAllowedSeparatist,
@@ -150,26 +148,24 @@ namespace ExpandedContent.Tweaks.DemonLords {
                 });
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>();
-
-
                     c.m_Feature = KukriProficiency.ToReference<BlueprintFeatureReference>();
-
                     c.Level = 1;
                     c.m_Archetypes = null;
                     c.m_AdditionalClasses = new BlueprintCharacterClassReference[2] {
-                               InquistorClass.ToReference<BlueprintCharacterClassReference>(),
-                               WarpriestClass.ToReference<BlueprintCharacterClassReference>() };
+                        InquistorClass.ToReference<BlueprintCharacterClassReference>(),
+                        WarpriestClass.ToReference<BlueprintCharacterClassReference>() 
+                    };
                 });
                 bp.AddComponent<AddStartingEquipment>(c => {
                     c.m_BasicItems = new BlueprintItemReference[1] { MasterworkKukri.ToReference<BlueprintItemReference>() };
                     c.m_RestrictedByClass = new BlueprintCharacterClassReference[3] {
-                                ClericClass.ToReference<BlueprintCharacterClassReference>(),
-                                InquistorClass.ToReference<BlueprintCharacterClassReference>(),
-                                WarpriestClass.ToReference<BlueprintCharacterClassReference>()
+                        ClericClass.ToReference<BlueprintCharacterClassReference>(),
+                        InquistorClass.ToReference<BlueprintCharacterClassReference>(),
+                        WarpriestClass.ToReference<BlueprintCharacterClassReference>()
                     };
                 });
             }));
-            DeityTools.LazySacredWeaponMaker("Mazmezz", MazmezzFeature, WeaponCategory.Kukri);
+            DeityTools.LazySacredWeaponMaker("Aldinach", AldinachFeature, WeaponCategory.Kukri);
 
         }
     }

@@ -279,6 +279,7 @@
     <Compile Include="Tweaks\Curses\GodMeddled.cs" />
     <Compile Include="Tweaks\Curses\Lich.cs" />
     <Compile Include="Tweaks\Curses\Vampirism.cs" />
+    <Compile Include="Tweaks\Deities\Ghlaunder.cs" />
     <Compile Include="Tweaks\Deities\Naderi.cs" />
     <Compile Include="Tweaks\Deities\Groetus.cs" />
     <Compile Include="Tweaks\Deities\Dretha.cs" />
@@ -366,6 +367,7 @@
     <Compile Include="Tweaks\Deities\Daikitsu.cs" />
     <Compile Include="Tweaks\Deities\Fumeiyoshi.cs" />
     <Compile Include="Tweaks\Deities\Wukong.cs" />
+    <Compile Include="Tweaks\DemonLords\Aldinach.cs" />
     <Compile Include="Tweaks\DemonLords\Areshkegal.cs" />
     <Compile Include="Tweaks\Deities\Arshea.cs" />
     <Compile Include="Tweaks\DemonLords\Baphomet.cs" />
@@ -396,6 +398,7 @@
     <Compile Include="Tweaks\Deities\Ragathiel.cs" />
     <Compile Include="Tweaks\DemonLords\Zura.cs" />
     <Compile Include="Tweaks\Domains\DomainProperties.cs" />
+    <Compile Include="Tweaks\Domains\InsectDomain.cs" />
     <Compile Include="Tweaks\Domains\LoyaltyDomain.cs" />
     <Compile Include="Tweaks\Domains\DefenseDomain.cs" />
     <Compile Include="Tweaks\Domains\HeroismDomain.cs" />

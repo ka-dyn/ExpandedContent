@@ -10,8 +10,8 @@ using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Alignments;
 using Kingmaker.UnitLogic.FactLogic;
 
-namespace ExpandedContent.Tweaks.DemonLords {
-    internal class Mazmezz {
+namespace ExpandedContent.Tweaks.Deities {
+    internal class Ghlaunder {
         private static readonly BlueprintSpellbook CrusaderSpellbook = Resources.GetBlueprint<BlueprintSpellbook>("673d39f7da699aa408cdda6282e7dcc0");
         private static readonly BlueprintSpellbook ClericSpellbook = Resources.GetBlueprint<BlueprintSpellbook>("4673d19a0cf2fab4f885cc4d1353da33");
         private static readonly BlueprintSpellbook InquisitorSpellbook = Resources.GetBlueprint<BlueprintSpellbook>("57fab75111f377248810ece84193a5a5");
@@ -22,37 +22,33 @@ namespace ExpandedContent.Tweaks.DemonLords {
         private static readonly BlueprintCharacterClass DreadKnightClass = Resources.GetModBlueprint<BlueprintCharacterClass>("DreadKnightClass");
         private static readonly BlueprintFeature MythicIgnoreAlignmentRestrictions = Resources.GetBlueprint<BlueprintFeature>("24e78475f0a243e1a810452d14d0a1bd");
 
-        public static void AddMazmezzFeature() {
+        public static void AddGhlaunderFeature() {
 
-            BlueprintItem MasterworkKukri = Resources.GetBlueprint<BlueprintItem>("da97ded5a2cfb944691b785763ad341e");
+            BlueprintItem MasterworkSpear = Resources.GetBlueprint<BlueprintItem>("a68e679797aedff4caa1ac763f93644b");
 
-            BlueprintArchetype FeralChampionArchetype = Resources.GetBlueprint<BlueprintArchetype>("f68ca492c9c15e241ab73735fbd0fb9f");
             BlueprintArchetype PriestOfBalance = Resources.GetBlueprint<BlueprintArchetype>("a4560e3fb5d247d68fb1a2738fcc0855");
             BlueprintArchetype ClawOfTheFalseWyrmArchetype = Resources.GetModBlueprint<BlueprintArchetype>("ClawOfTheFalseWyrmArchetype");
             BlueprintArchetype SwornOfTheEldestArchetype = Resources.GetModBlueprint<BlueprintArchetype>("SwornOfTheEldestArchetype");
 
-            BlueprintFeature KukriProficiency = Resources.GetBlueprint<BlueprintFeature>("a7e822a8507e44b0a981ca55586dfad9");
-            var MazmezzIcon = AssetLoader.LoadInternal("Deities", "Icon_Mazmezz.jpg");
-            var MazmezzFeature = Helpers.CreateBlueprint<BlueprintFeature>("MazmezzFeature", (bp => {
-                bp.SetName("Mazmezz");
-                bp.SetDescription("\nTitles: The Creeping Queen, Lord of Vermin, Demon Lord of Vermin and Bindings " +
+            BlueprintFeature SpearProficiency = Resources.GetBlueprint<BlueprintFeature>("0c10b4bbcbcb6a942a77a6804682c7d8");
+            var GhlaunderIcon = AssetLoader.LoadInternal("Deities", "Icon_Ghlaunder.jpg");
+            var GhlaunderFeature = Helpers.CreateBlueprint<BlueprintFeature>("GhlaunderFeature", (bp => {
+                bp.SetName("Ghlaunder");
+                bp.SetDescription("\nTitles: The Gossamer King" +
                     "\nAlignment: Chaotic Evil   " +
-                    "\nAreas of Concern: Bindings, Driders, Vermin   " +
-                    "\nDomains: Animal, Chaos, Destruction, Evil   " +
-                    "\nSubdomains: Catastrophe, Demon, Insect, Rage, Venom   " +
-                    "\nFavoured Weapon: Net (Kukri)   " +
-                    "\nHoly Symbol: Skull in spiderweb   " +
-                    "\nSacred Animal: Spider   " +
-                    "\nMazmezz appears as a hideous tangle of insectoid legs, far too many for any worldly insect to command. Some of these legs end in claws, others in pincers, " +
-                    "and still others in spinnerets. At the center, a sickening clot of wriggling hair boils around a roughly spherical body, the only concession toward a “front” " +
-                    "being an immense spider’s mouth filled with thrashing pedipalps and fangs. Mazmezz has the insidious ability to wrap herself in gauzy, vexing swaths of webbing " +
-                    "that can magically alter her form to anything she can imagine—the form of a beautiful woman or female drider is a particular favorite when she’s dealing with " +
-                    "those she might wish to capture and keep as trophies for her horrific harem. Yet when forced to punish foes or do battle, the Creeping Queen always reverts to " +
-                    "her nauseating true form. Mazmezz is worshiped primarily by drow, driders, and ettercaps, but some particularly demented humanoids worship her as well—these " +
-                    "tend to be isolated admirers rather than members of full-blown cults. Her hive-like Abyssal domain is known as Khavak-Vog, and its tangled ways are the lair " +
-                    "of her favored children, the bebiliths. The core of her maze-like lair is guarded by several of these fiends grown to great size. Legend holds that the first " +
-                    "bebiliths were spawned by Mazmezz; if true, this would explain the disgust and hatred with which most other demon lords hold the Creeping Queen.");
-                bp.m_Icon = MazmezzIcon;
+                    "\nAreas of Concern: Infection, Insects, Parasites, Stagnation " +
+                    "\nDomains: Air, Animal, Chaos, Destruction, Evil " +
+                    "\nSubdomains: Catastrophe, Cloud, Demon, Fur, Insect, Plague, Rage, Wind " +
+                    "\nFavoured Weapon: Spear   " +
+                    "\nHoly Symbol: Mosquito in profile   " +
+                    "\nSacred Animal: Mosquito   " +
+                    "\nGhlaunder is associated with stirges, giant mosquitos, fungoid creatures, and vampires. His vague, buzzing doctrine is that parasites and infection are necessary, lest the weak " +
+                    "and old overrun the world. His cultists usually live in secluded communes and travel in secret, concealing their true devotion for fear of reprisal. They call their god by mysterious " +
+                    "names-the Gossamer King, the Dream Tender, or the Slumberer-and only in areas ravaged by disease do they make themselves known, preaching salvation from afflictions for the price of " +
+                    "eternally worshiping their blood-drinking god. Members of Ghlaunder's faith may be carriers of parasites or disease, but most experience few to no ill effects. Some disguise " +
+                    "themselves as members of other churches taking special pleasure in pretending to be from obscure branches of Desna's faith-and seed contagions or parasites in settlements to " +
+                    "weed out those they consider unfit.");
+                bp.m_Icon = GhlaunderIcon;
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;
                 bp.HideInCharacterSheetAndLevelUp = false;
@@ -69,19 +65,21 @@ namespace ExpandedContent.Tweaks.DemonLords {
                     c.Alignment = AlignmentMaskType.ChaoticNeutral | AlignmentMaskType.NeutralEvil | AlignmentMaskType.ChaoticEvil;
                 });
                 bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[] { 
+                    c.m_Facts = new BlueprintUnitFactReference[] {
                         ChannelNegativeAllowed.ToReference<BlueprintUnitFactReference>()
                     };
                 });
                 bp.SetAllowedDomains(
+                    DeityTools.DomainAllowed.AnimalDomainAllowed,
+                    DeityTools.DomainAllowed.AirDomainAllowed,
                     DeityTools.DomainAllowed.ChaosDomainAllowed,
                     DeityTools.DomainAllowed.DestructionDomainAllowed,
                     DeityTools.DomainAllowed.EvilDomainAllowed,
-                    DeityTools.DomainAllowed.AnimalDomainAllowed,
                     DeityTools.DomainAllowed.DemonDomainEvilAllowed,
                     DeityTools.DomainAllowed.DemonDomainChaosAllowed,
                     DeityTools.DomainAllowed.RageDomainAllowed,
-                    DeityTools.SeparatistDomainAllowed.AirDomainAllowedSeparatist,
+                    DeityTools.DomainAllowed.FurDomainAllowed,
+                    DeityTools.DomainAllowed.WindDomainAllowed,
                     DeityTools.SeparatistDomainAllowed.ArtificeDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.CharmDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.ArcaneDomainAllowedSeparatist,
@@ -119,7 +117,6 @@ namespace ExpandedContent.Tweaks.DemonLords {
                     DeityTools.SeparatistDomainAllowed.DragonDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.FerocityDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.FistDomainAllowedSeparatist,
-                    DeityTools.SeparatistDomainAllowed.FurDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.GrowthDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.HeroismDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.LustDomainAllowedSeparatist,
@@ -135,7 +132,6 @@ namespace ExpandedContent.Tweaks.DemonLords {
                     DeityTools.SeparatistDomainAllowed.StormDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.ThieveryDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.WhimsyDomainAllowedSeparatist,//Chaos
-                    DeityTools.SeparatistDomainAllowed.WindDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.MurderDomainAllowedSeparatist
 
                 );
@@ -152,7 +148,7 @@ namespace ExpandedContent.Tweaks.DemonLords {
                     c.m_Class = ClericClass.ToReference<BlueprintCharacterClassReference>();
 
 
-                    c.m_Feature = KukriProficiency.ToReference<BlueprintFeatureReference>();
+                    c.m_Feature = SpearProficiency.ToReference<BlueprintFeatureReference>();
 
                     c.Level = 1;
                     c.m_Archetypes = null;
@@ -161,7 +157,7 @@ namespace ExpandedContent.Tweaks.DemonLords {
                                WarpriestClass.ToReference<BlueprintCharacterClassReference>() };
                 });
                 bp.AddComponent<AddStartingEquipment>(c => {
-                    c.m_BasicItems = new BlueprintItemReference[1] { MasterworkKukri.ToReference<BlueprintItemReference>() };
+                    c.m_BasicItems = new BlueprintItemReference[1] { MasterworkSpear.ToReference<BlueprintItemReference>() };
                     c.m_RestrictedByClass = new BlueprintCharacterClassReference[3] {
                                 ClericClass.ToReference<BlueprintCharacterClassReference>(),
                                 InquistorClass.ToReference<BlueprintCharacterClassReference>(),
@@ -169,7 +165,7 @@ namespace ExpandedContent.Tweaks.DemonLords {
                     };
                 });
             }));
-            DeityTools.LazySacredWeaponMaker("Mazmezz", MazmezzFeature, WeaponCategory.Kukri);
+            DeityTools.LazySacredWeaponMaker("Ghlaunder", GhlaunderFeature, WeaponCategory.Kukri);
 
         }
     }

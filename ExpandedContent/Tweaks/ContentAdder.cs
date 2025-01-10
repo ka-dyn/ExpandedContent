@@ -258,6 +258,7 @@ namespace ExpandedContent.Tweaks {
                 DemonLords.Jezelda.AddJezeldaFeature();
                 DemonLords.Shax.AddShaxFeature();
                 DemonLords.Abraxas.AddAbraxasFeature();
+                DemonLords.Aldinach.AddAldinachFeature();
 
                 Deities.Apsu.AddApsu();
                 Deities.Dahak.AddDahakFeature();
@@ -312,6 +313,7 @@ namespace ExpandedContent.Tweaks {
                 Deities.Groetus.AddGroetus();
                 Deities.Naderi.AddNaderiFeature();
                 Deities.Sivanah.AddSivanahFeature();
+                Deities.Ghlaunder.AddGhlaunderFeature();
                
                 Deities.PatchPulura.AddPulura();
                 Deities.Ragathiel.AddRagathielFeature();

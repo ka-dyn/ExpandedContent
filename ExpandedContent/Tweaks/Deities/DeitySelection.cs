@@ -52,6 +52,7 @@ namespace ExpandedContent.Tweaks.Deities {
 
             //Demon Lords
             var AbraxasFeature = Resources.GetModBlueprint<BlueprintFeature>("AbraxasFeature");
+            var AldinachFeature = Resources.GetModBlueprint<BlueprintFeature>("AldinachFeature");
             var AreshkegalFeature = Resources.GetBlueprint<BlueprintFeature>("d714ecb5d5bb89a42957de0304e459c9");
             var BaphometFeature = Resources.GetBlueprint<BlueprintFeature>("bd72ca8ffcfec5745899ac56c93f12c5");
             var CythVsugFeature = Resources.GetModBlueprint<BlueprintFeature>("CythVsugFeature");
@@ -151,6 +152,7 @@ namespace ExpandedContent.Tweaks.Deities {
             var SivanahFeature = Resources.GetModBlueprint<BlueprintFeature>("SivanahFeature");
             var NewApsuFeature = Resources.GetBlueprint<BlueprintFeature>("772e2673945e4583a804ae01f67efea0");
             var NewDahakFeature = Resources.GetBlueprint<BlueprintFeature>("8f7118d68f6e44dea94dddb51f38cbdd");
+            var GhlaunderFeature = Resources.GetModBlueprint<BlueprintFeature>("GhlaunderFeature");
 
 
             //Philosophies
@@ -459,7 +461,8 @@ namespace ExpandedContent.Tweaks.Deities {
                 YdersiusFeature.ToReference<BlueprintFeatureReference>(),
                 ZyphusFeature.ToReference<BlueprintFeatureReference>(),
                 NaderiFeature.ToReference<BlueprintFeatureReference>(),
-                SivanahFeature.ToReference<BlueprintFeatureReference>()
+                SivanahFeature.ToReference<BlueprintFeatureReference>(),
+                GhlaunderFeature.ToReference<BlueprintFeatureReference>()
                 };
                 bp.IsClassFeature = true;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
