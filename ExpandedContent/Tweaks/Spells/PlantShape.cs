@@ -70,7 +70,7 @@ namespace ExpandedContent.Tweaks.Spells {
 
             var PlantShapeIBuff = Helpers.CreateBuff("PlantShapeIBuff", bp => {
                 bp.SetName("Plant Shape (Mandragora)");
-                bp.SetDescription("You are in mandragora form now. You have a +2 size bonus to Dexterity and  Constitution and a +2 natural armor bonus. " +
+                bp.SetDescription("You are in mandragora form now. You have a +2 size bonus to Dexterity and Constitution and a +2 natural armor bonus. " +
                     "Your movement speed is increased by 10 feet. You also have one 1d6 bite attack, two 1d4 slams and poison ability.");
                 bp.m_Icon = PlantShapeIIcon;
                 bp.AddComponent<Polymorph>(c => {

@@ -548,6 +548,7 @@
     <Compile Include="Tweaks\Spells\KingsCastle.cs" />
     <Compile Include="Tweaks\Spells\Shambler.cs" />
     <Compile Include="Tweaks\Spells\TransmuteBloodToAcid.cs" />
+    <Compile Include="Tweaks\Spells\VerminShape.cs" />
     <Compile Include="Tweaks\Spells\WoodenPhalanx.cs" />
     <Compile Include="Tweaks\Spells\Shillelagh.cs" />
     <Compile Include="Tweaks\Spells\ShieldOfFortificationGreater.cs" />
