@@ -330,6 +330,7 @@ namespace ExpandedContent.Tweaks.Deities {
                 bp.m_Icon = DemonLordsIcon;
                 bp.m_AllFeatures = new BlueprintFeatureReference[] {
                 AbraxasFeature.ToReference<BlueprintFeatureReference>(),
+                AldinachFeature.ToReference<BlueprintFeatureReference>(),
                 AreshkegalFeature.ToReference<BlueprintFeatureReference>(),
                 BaphometFeature.ToReference<BlueprintFeatureReference>(),
                 CythVsugFeature.ToReference<BlueprintFeatureReference>(),

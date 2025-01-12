@@ -43,6 +43,7 @@ namespace ExpandedContent.Tweaks.Domains {
             var MagicDeceiverArchetype = Resources.GetBlueprint<BlueprintArchetype>("5c77110cd0414e7eb4c2e485659c9a46");
             var AnimalBlessingFeature = Resources.GetBlueprint<BlueprintFeature>("9d991f8374c3def4cb4a6287f370814d");
             var WildShapeWolfBuff = Resources.GetBlueprint<BlueprintBuff>("470fb1a22e7eb5849999f1101eacc5dc"); //Animal
+            var OracleRevelationWoodArmorIcon = AssetLoader.LoadInternal("Skills", "Icon_OracleRevelationWoodArmor.jpg"); //Might change this
 
 
 
@@ -94,9 +95,9 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.SetDescription("As a swift action, you can grow an exoskeleton that grants you a +1 enhancement bonus to your natural armor and 1d4 temporary hit points + 1 " +
                     "for every 2 cleric levels you have. The natural armor bonus increases by 1 for every 5 cleric levels you have. The exoskeleton retracts after 1 round, ending its benefits. " +
                     "You can use this ability a number of times per day equal to 3 + your Wisdom modifier.");
-                bp.m_Icon = CheetfwefwefwahSprintIcon;
+                bp.m_Icon = OracleRevelationWoodArmorIcon;
                 bp.AddComponent<AddContextStatBonus>(c => {
-                    c.Descriptor = ModifierDescriptor.NaturalArmorEnhancement;
+                    c.Descriptor = ModifierDescriptor.NaturalArmor;
                     c.Stat = StatType.AC;
                     c.Multiplier = 1;
                     c.Value = new ContextValue() {
@@ -112,27 +113,6 @@ namespace ExpandedContent.Tweaks.Domains {
                     c.m_Progression = ContextRankProgression.OnePlusDivStep;
                     c.m_StartLevel = 0;
                     c.m_StepLevel = 5;
-                    c.Archetype = DivineHunterArchetype.ToReference<BlueprintArchetypeReference>();
-                    c.m_AdditionalArchetypes = new BlueprintArchetypeReference[] {
-                        TempleChampionArchetype.ToReference<BlueprintArchetypeReference>(),
-                        MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>()
-                    };
-                    c.m_Class = new BlueprintCharacterClassReference[] {
-                        ClericClass.ToReference<BlueprintCharacterClassReference>(),
-                        InquisitorClass.ToReference<BlueprintCharacterClassReference>(),
-                        HunterClass.ToReference<BlueprintCharacterClassReference>(),
-                        PaladinClass.ToReference<BlueprintCharacterClassReference>(),
-                        DruidClass.ToReference<BlueprintCharacterClassReference>(),
-                        StargazerClass.ToReference<BlueprintCharacterClassReference>(),
-                        ArcanistClass.ToReference<BlueprintCharacterClassReference>(),
-                    };
-                });
-                bp.AddComponent<ContextRankConfig>(c => {
-                    c.m_Type = AbilityRankType.StatBonus;
-                    c.m_BaseValueType = ContextRankBaseValueType.SummClassLevelWithArchetype;
-                    c.m_Stat = StatType.Unknown;
-                    c.m_SpecificModifier = ModifierDescriptor.None;
-                    c.m_Progression = ContextRankProgression.Custom;
                     c.Archetype = DivineHunterArchetype.ToReference<BlueprintArchetypeReference>();
                     c.m_AdditionalArchetypes = new BlueprintArchetypeReference[] {
                         TempleChampionArchetype.ToReference<BlueprintArchetypeReference>(),
@@ -229,7 +209,7 @@ namespace ExpandedContent.Tweaks.Domains {
                             DurationSeconds = 0
                         });
                 });
-                bp.m_Icon = WildShapeWolfBuff.m_Icon;
+                bp.m_Icon = OracleRevelationWoodArmorIcon;
                 bp.Type = AbilityType.Supernatural;
                 bp.Range = AbilityRange.Personal;
                 bp.CanTargetPoint = false;
@@ -249,8 +229,8 @@ namespace ExpandedContent.Tweaks.Domains {
             //Spelllist
             var MagicFangSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("403cf599412299a4f9d5d925c7b9fb33");
             var HoldAnimalSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("41bab342089c0254ca222eb918e98cd4");
-            var VerminShapeIAbility = Resources.GetModBlueprint<BlueprintAbility>("VerminShapeIAbility");
-            var VerminShapeIIAbility = Resources.GetBlueprint<BlueprintAbility>("VerminShapeIIAbility");
+            var VerminShapeIParentAbility = Resources.GetModBlueprint<BlueprintAbility>("VerminShapeIParentAbility");
+            var VerminShapeIIAbility = Resources.GetModBlueprint<BlueprintAbility>("VerminShapeIIAbility");
             var CapeOfWaspsSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("e418c20c8ce362943a8025d82c865c1c");
             var PlagueStormSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("82a5b848c05e3f342b893dedb1f9b446");
             var SummonNaturesAllyVIISpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("051b979e7d7f8ec41b9fa35d04746b33");
@@ -277,13 +257,13 @@ namespace ExpandedContent.Tweaks.Domains {
                     new SpellLevelList(3) {
                         SpellLevel = 3,
                         m_Spells = new List<BlueprintAbilityReference>() {
-                            addspellplease
+                            VerminShapeIParentAbility.ToReference<BlueprintAbilityReference>()
                         }
                     },
                     new SpellLevelList(4) {
                         SpellLevel = 4,
                         m_Spells = new List<BlueprintAbilityReference>() {
-                            addspellplease
+                            VerminShapeIIAbility.ToReference<BlueprintAbilityReference>()
                         }
                     },
                     new SpellLevelList(5) {
@@ -678,9 +658,9 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.SetDescription("As a swift action, you can grow an exoskeleton that grants you a +1 enhancement bonus to your natural armor and 1d4 temporary hit points + 1 " +
                     "for every 2 cleric levels you have. The natural armor bonus increases by 1 for every 5 cleric levels you have. The exoskeleton retracts after 1 round, ending its benefits. " +
                     "You can use this ability a number of times per day equal to 3 + your Wisdom modifier.");
-                bp.m_Icon = CheetahergergSprintIcon;
+                bp.m_Icon = OracleRevelationWoodArmorIcon;
                 bp.AddComponent<AddContextStatBonus>(c => {
-                    c.Descriptor = ModifierDescriptor.NaturalArmorEnhancement;
+                    c.Descriptor = ModifierDescriptor.NaturalArmor;
                     c.Stat = StatType.AC;
                     c.Multiplier = 1;
                     c.Value = new ContextValue() {
@@ -756,7 +736,7 @@ namespace ExpandedContent.Tweaks.Domains {
                             DurationSeconds = 0
                         });
                 });
-                bp.m_Icon = WildShapeWolfBuff.m_Icon;
+                bp.m_Icon = OracleRevelationWoodArmorIcon;
                 bp.Type = AbilityType.Supernatural;
                 bp.Range = AbilityRange.Personal;
                 bp.CanTargetPoint = false;

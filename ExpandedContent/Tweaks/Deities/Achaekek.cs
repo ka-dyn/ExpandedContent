@@ -198,6 +198,7 @@ namespace ExpandedContent.Tweaks.Deities {
                 bp.SetDisallowedArchetype(InquistorClass, SwornOfTheEldestArchetype);
                 bp.SetAllowedDomains(                    
                     DeityTools.DomainAllowed.BloodDomainAllowed,
+                    DeityTools.DomainAllowed.InsectDomainAllowed,
                     DeityTools.DomainAllowed.ThieveryDomainAllowed,
                     DeityTools.SeparatistDomainAllowed.ArchonDomainLawAllowedSeparatist,//Lawful
                     DeityTools.SeparatistDomainAllowed.CavesDomainAllowedSeparatist,

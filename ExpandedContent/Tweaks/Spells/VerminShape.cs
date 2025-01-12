@@ -62,10 +62,6 @@ namespace ExpandedContent.Tweaks.Spells {
             var Bite2d6 = Resources.GetBlueprint<BlueprintItemWeapon>("2abc1dc6172759c42971bd04b8c115cb");
 
 
-
-            var Centipede = Resources.GetBlueprint<BlueprintUnit>("5186793686fa66240ac47624c6461865");
-
-
             var VerminShapeWebAbilityCooldown = Helpers.CreateBuff("VerminShapeWebAbilityCooldown", bp => {
                 bp.m_AllowNonContextActions = false;
                 bp.SetName("Web Ability Cooldown");
@@ -156,7 +152,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.m_Icon = VerminShapeIIcon;
                 bp.AddComponent<Polymorph>(c => {
                     c.m_Race = BeastShapeIBuffPolymorph.m_Race;
-                    c.m_Prefab = Centipede.Prefab;
+                    c.m_Prefab = new UnitViewLink { AssetId = "bf09aef8864bed844a2353f76ffc1864" }; ;
                     c.m_PrefabFemale = BeastShapeIBuffPolymorph.m_PrefabFemale;
                     c.m_SpecialDollType = SpecialDollType.None;
                     c.m_ReplaceUnitForInspection = BeastShapeIBuffPolymorph.m_ReplaceUnitForInspection;
@@ -283,7 +279,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.m_Icon = InfestAbilityIcon;
                 bp.AddComponent<Polymorph>(c => {
                     c.m_Race = BeastShapeIBuffPolymorph.m_Race;
-                    c.m_Prefab = new UnitViewLink() { AssetId = "20ab823ad1fa2344696f4467b831aed5" };
+                    c.m_Prefab = new UnitViewLink() { AssetId = "54e0335882f2dea4188214ea3c8c93de" };
                     c.m_PrefabFemale = BeastShapeIBuffPolymorph.m_PrefabFemale;
                     c.m_SpecialDollType = SpecialDollType.None;
                     c.m_ReplaceUnitForInspection = BeastShapeIBuffPolymorph.m_ReplaceUnitForInspection;

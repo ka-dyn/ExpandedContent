@@ -79,6 +79,7 @@ namespace ExpandedContent.Tweaks.DemonLords {
                     DeityTools.DomainAllowed.DemonDomainEvilAllowed,
                     DeityTools.DomainAllowed.DemonDomainChaosAllowed,
                     DeityTools.DomainAllowed.FurDomainAllowed,
+                    DeityTools.DomainAllowed.InsectDomainAllowed,
                     DeityTools.SeparatistDomainAllowed.AirDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.ArtificeDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.CharmDomainAllowedSeparatist,
