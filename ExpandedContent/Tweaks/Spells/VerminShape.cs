@@ -42,7 +42,7 @@ namespace ExpandedContent.Tweaks.Spells {
         public static void AddVerminShape() {
 
             var VerminShapeIIcon = AssetLoader.LoadInternal("Skills", "Icon_VerminShapeI.jpg");
-            var VerminShapeIIIcon = AssetLoader.LoadInternal("Skills", "Icon_VerminShapeII.jpg");
+            //var VerminShapeIIIcon = AssetLoader.LoadInternal("Skills", "Icon_VerminShapeII.jpg");
             var BeastShapeIBuffPolymorph = Resources.GetBlueprint<BlueprintBuff>("00d8fbe9cf61dc24298be8d95500c84b").GetComponent<Polymorph>();
             var BeastShapeIBuffSuppressBuffs = Resources.GetBlueprint<BlueprintBuff>("00d8fbe9cf61dc24298be8d95500c84b").GetComponents<SuppressBuffs>();
             var TurnBarkStandart = Resources.GetBlueprint<BlueprintAbility>("bd09b025ee2a82f46afab922c4decca9");
@@ -55,6 +55,7 @@ namespace ExpandedContent.Tweaks.Spells {
             var SpiderWebImmunity = Resources.GetBlueprint<BlueprintFeature>("3051e7002c803fc47a11bcfa381b9fbd");
             var WebArea = Resources.GetBlueprint<BlueprintAbilityAreaEffect>("fd323c05f76390749a8555b13156813d");
             var WebSpell = Resources.GetBlueprint<BlueprintAbility>("134cb6d492269aa4f8662700ef57449f");
+            var InfestAbilityIcon = Resources.GetBlueprint<BlueprintAbility>("ddeb440cc43526241b09b3e1fe81da44").Icon;
 
 
             var Bite1d6 = Resources.GetBlueprint<BlueprintItemWeapon>("a000716f88c969c499a535dadcf09286");
@@ -275,11 +276,11 @@ namespace ExpandedContent.Tweaks.Spells {
 
             var VerminShapeIISpiderBuff = Helpers.CreateBuff("VerminShapeIISpiderBuff", bp => {
                 bp.SetName("Vermin Shape (Giant Spider)");
-                bp.SetDescription("You become a giant spider. You gain a +4 size bonus to your Strength, a +2 size bonus to your Constitution, +4 natural " +
+                bp.SetDescription("You become a giant spider. You gain a +4 size bonus to your Strength, a -2 penalty to your Dexterity, a +2 size bonus to your Constitution, +5 natural " +
                     "armor bonus, trip immunity, web immunity, and a web ability with a ({g|Encyclopedia:DC}DC{/g} of 10 + half the casters level + their " +
                     "{g|Encyclopedia:Constitution}Constitution{/g} modifier); after use, the web ability cannot be used for 1 minute. " +
                     "Your movement speed is increased by 10 feet. You have have two 2d6 bite attacks plus poison");
-                bp.m_Icon = VerminShapeIIIcon;
+                bp.m_Icon = InfestAbilityIcon;
                 bp.AddComponent<Polymorph>(c => {
                     c.m_Race = BeastShapeIBuffPolymorph.m_Race;
                     c.m_Prefab = new UnitViewLink() { AssetId = "20ab823ad1fa2344696f4467b831aed5" };
@@ -291,9 +292,9 @@ namespace ExpandedContent.Tweaks.Spells {
                     c.Size = Size.Large;
                     c.UseSizeAsBaseForDamage = false;
                     c.StrengthBonus = 4;
-                    c.DexterityBonus = 0;
+                    c.DexterityBonus = -2;
                     c.ConstitutionBonus = 2;
-                    c.NaturalArmor = 4;
+                    c.NaturalArmor = 5;
                     c.AllowDamageTransfer = false;
                     c.m_MainHand = Bite2d6.ToReference<BlueprintItemWeaponReference>();
                     c.m_OffHand = Bite2d6.ToReference<BlueprintItemWeaponReference>();
@@ -304,7 +305,7 @@ namespace ExpandedContent.Tweaks.Spells {
                         TurnBarkStandart.ToReference<BlueprintUnitFactReference>(),
                         TripImmunity.ToReference<BlueprintUnitFactReference>(),
                         SpiderWebImmunity.ToReference<BlueprintUnitFactReference>(),
-
+                        VerminShapeWebAbility.ToReference<BlueprintUnitFactReference>()
                     };
                     c.m_EnterTransition = BeastShapeIBuffPolymorph.m_EnterTransition;
                     c.m_ExitTransition = BeastShapeIBuffPolymorph.m_ExitTransition;
@@ -556,7 +557,7 @@ namespace ExpandedContent.Tweaks.Spells {
 
             var VerminShapeIIAbility = Helpers.CreateBlueprint<BlueprintAbility>("VerminShapeIIAbility", bp => {
                 bp.SetName("Vermin Shape II");
-                bp.SetDescription("You become a giant spider. You gain a +4 size bonus to your Strength, a +2 size bonus to your Constitution, +4 natural " +
+                bp.SetDescription("You become a giant spider. You gain a +4 size bonus to your Strength, a -2 penalty to your Dexterity, a +2 size bonus to your Constitution, +5 natural " +
                     "armor bonus, trip immunity, web immunity, and a web ability with a ({g|Encyclopedia:DC}DC{/g} of 10 + half the casters level + their " +
                     "{g|Encyclopedia:Constitution}Constitution{/g} modifier); after use, the web ability cannot be used for 1 minute. " +
                     "Your movement speed is increased by 10 feet. You have have two 2d6 bite attacks plus poison");
@@ -625,7 +626,7 @@ namespace ExpandedContent.Tweaks.Spells {
                     c.AOEType = CraftAOE.None;
                     c.SpellType = CraftSpellType.Buff;
                 });
-                bp.m_Icon = VerminShapeIIIcon;
+                bp.m_Icon = InfestAbilityIcon;
                 bp.Type = AbilityType.Spell;
                 bp.Range = AbilityRange.Personal;
                 bp.CanTargetPoint = false;

@@ -235,7 +235,7 @@
   },
   "Domains": {
     "DisableAll": false,
-    "Settings": {      
+    "Settings": {
       "Archon Subdomain": {
         "Enabled": true,
         "Homebrew": false,
@@ -395,6 +395,11 @@
         "Enabled": true,
         "Homebrew": false,
         "Description": "Adds the lightning subdomain, a subdomain to the air domain."
+      },
+      "Insect Subdomain": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds the insect subdomain, a subdomain to the animal domain."
       }
     },
     "IsExpanded": false

@@ -152,6 +152,7 @@ namespace ExpandedContent.Tweaks {
                 Spells.BurstOfNettles.AddBurstOfNettles();
                 Spells.EruptivePustules.AddEruptivePustules();
                 Spells.TransmuteBloodToAcid.AddTransmuteBloodToAcid();
+                Spells.VerminShape.AddVerminShape();
 
                 Miscellaneous.AlchemistDiscoveries.MutagenDiscovery.AddMutagenDiscovery();
                 Miscellaneous.AlchemistDiscoveries.MindchemistSkillDiscovery.AddMindchemistSkillDiscovery();
@@ -196,6 +197,7 @@ namespace ExpandedContent.Tweaks {
                 Domains.LoyaltyDomain.AddLoyaltyDomain();
                 Domains.ArcaneDomain.AddArcaneDomain();
                 Domains.LightningDomain.AddLightningDomain();
+                Domains.InsectDomain.AddInsectDomain();
                 Domains.BaseDeityPatch.AddBaseDeityPatch();
 
                 Blessings.ArtificeBlessing.AddArtificeBlessing();
