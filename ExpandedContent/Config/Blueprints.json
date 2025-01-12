@@ -3748,7 +3748,40 @@
     "OracleRevelationIronWeaponEnchantResource": "0511d03b-542a-464e-bfe8-36a6f10f5645",
     "OracleRevelationSkillAtArmsFeature": "41b4e850-36f8-4796-9aa6-a2671ca5702a",
 
-    "OracleRevelationIronSkinResource": "a9a9153f-a2d5-44d9-adb7-255a10ffc05a"
+    "OracleRevelationIronSkinResource": "a9a9153f-a2d5-44d9-adb7-255a10ffc05a",
+
+    "AldinachFeature": "43a9a695-ea6a-4317-ae02-0472bd9f1d70",
+    "AldinachSacredWeaponFeature": "d6e7450d-f152-4929-8aad-ea0d09c30951",
+    "GhlaunderFeature": "c5daae2c-52b3-4a84-a396-a34b42924b3e",
+    "GhlaunderSacredWeaponFeature": "5d551578-ac0d-4caf-a1f2-1d1aa7590558",
+    "InsectDomainAllowed": "202ae02a-8b5c-4e21-88b0-a3cc274dabe5",
+    "InsectDomainAllowedSeparatist": "b69023ae-d008-4f55-983c-d929a13e7388",
+    "InsectDomainAnimalCompanionSelection": "4ff5c26a-dd87-4066-94f3-da39d6261dd0",
+    "InsectDomainAnimalCompanionSelectionSeparatist": "9bed4bf2-2e28-4d6d-acca-476d442a0765",
+    "InsectDomainBaseAbility": "4b83cfcb-5642-4e41-973d-9970f2c436ef",
+    "InsectDomainBaseAbilitySeparatist": "96caa3d8-dd3b-4e0d-8d73-8f1d09d9f37a",
+    "InsectDomainBaseBuff": "6fb5c463-f33e-4cd1-a3df-5b48cc3a6918",
+    "InsectDomainBaseBuffSeparatist": "eff342b6-3fc2-467d-97ea-6d5a1a89bd9d",
+    "InsectDomainBaseFeature": "b0591b92-351f-4265-8772-0427c04b4d9d",
+    "InsectDomainBaseFeatureSeparatist": "d9aea64b-fcfe-4517-a0d6-47142d7ef597",
+    "InsectDomainBaseResource": "c41cd97c-7d80-47ba-9b2b-46c2b54521c1",
+    "InsectDomainBaseResourceSeparatist": "1a464f3d-d6df-4dfc-8081-68f9bb08ca1f",
+    "InsectDomainProgression": "25325b7f-f157-484c-bf9a-2a118cc6d68d",
+    "InsectDomainProgressionDruid": "cb27ac3b-2380-4a6f-a396-e62fcdab2c19",
+    "InsectDomainProgressionSecondary": "4fd8efae-9f0c-4088-b43f-41b33f632989",
+    "InsectDomainProgressionSeparatist": "5bbee3f0-bfe7-443e-a219-f462c90c3dac",
+    "InsectDomainSpellList": "351b22ca-6c01-4bfb-9ab7-386c3242cb05",
+    "InsectDomainSpellListFeature": "350defa3-6289-4044-816d-626a884e7702",
+    "InsectDomainSpellListFeatureDruid": "f8832ee4-f151-45d1-9e8a-a6004dc23e5f",
+    "VerminShapeICentipedeAbility": "39b243bb-38d1-435e-a9d0-d6ca2f33633c",
+    "VerminShapeICentipedeBuff": "58e70647-b90e-4e86-ab3b-d922eb5995fe",
+    "VerminShapeIFlyAbility": "b024e684-7bf0-4ca4-a521-2d9adb97653c",
+    "VerminShapeIFlyBuff": "8854e18b-2488-4dd1-ab9a-ecd92a9c18be",
+    "VerminShapeIIAbility": "0bc85d15-a3f8-45e5-89ab-1fe3b351352a",
+    "VerminShapeIISpiderBuff": "0371c8d7-051d-46a6-853e-bf59f78b85ce",
+    "VerminShapeIParentAbility": "f7f764d8-f69d-4224-880f-9183a8013d19",
+    "VerminShapeWebAbility": "64b4159e-bd5b-40e3-a727-da12ea746b03",
+    "VerminShapeWebAbilityCooldown": "a324ce54-61ea-41aa-9f4b-621ba51395e1"
 
 
 
