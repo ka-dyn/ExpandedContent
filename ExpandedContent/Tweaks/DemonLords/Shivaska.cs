@@ -103,6 +103,7 @@ namespace ExpandedContent.Tweaks.DemonLords {
                     DeityTools.SeparatistDomainAllowed.ProtectionDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.ReposeDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.RuneDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.InsectDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.StrengthDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.SunDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.TravelDomainAllowedSeparatist,

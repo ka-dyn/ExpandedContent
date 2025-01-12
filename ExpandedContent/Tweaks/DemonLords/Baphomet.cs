@@ -58,6 +58,7 @@ namespace ExpandedContent.Tweaks.DemonLords {
                     DeityTools.SeparatistDomainAllowed.RestorationDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.RevelationDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.RevolutionDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.InsectDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.RiversDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.ScalykindDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.StarsDomainAllowedSeparatist,
