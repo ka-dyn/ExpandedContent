@@ -963,6 +963,207 @@ namespace ExpandedContent.Tweaks.Archetypes {
 
             #endregion
 
+            #region Warpriest
+
+            var WarpriestClass = Resources.GetBlueprint<BlueprintCharacterClass>("30b5e47d47a0e37438cc5a80c96cfb99");
+            var MysticTheurgeWarpriestProgression = Resources.GetBlueprint<BlueprintProgression>("9a4ad60a34f042b0b4178624aa90f803");
+            var LoremasterWarpriestProgression = Resources.GetBlueprint<BlueprintProgression>("286f28e8ca6f49ab9bfac4e92580eba0");
+            var HellknightSigniferWarpriestProgression = Resources.GetBlueprint<BlueprintProgression>("edadfb72864f4f359cee399246cc2c1f");
+
+            #region Soldier of Gaia
+            var SoldierOfGaiaSpellbook = Resources.GetModBlueprint<BlueprintSpellbook>("SoldierOfGaiaSpellbook");
+            var SoldierOfGaiaSpelllist = Resources.GetModBlueprint<BlueprintSpellList>("SoldierOfGaiaSpelllist");
+            var SoldierOfGaiaArchetype = Resources.GetModBlueprint<BlueprintArchetype>("SoldierOfGaiaArchetype");
+
+            MysticTheurgeWarpriestProgression.AddComponent<PrerequisiteNoArchetype>(c => {
+                c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
+                c.m_Archetype = SoldierOfGaiaArchetype.ToReference<BlueprintArchetypeReference>();
+            });
+            var MysticTheurgeSoldierOfGaiaLevelUp = Helpers.CreateBlueprint<BlueprintFeature>("MysticTheurgeSoldierOfGaiaLevelUp", bp => {
+                bp.SetName("Ravener Hunter");
+                bp.SetDescription("At 1st level, the mystic theurge selects a divine {g|Encyclopedia:Spell}spellcasting{/g} class she belonged to before adding the prestige class. When a " +
+                    "new mystic theurge level is gained, the character gains new spells per day and new spells known as if she had also gained a level in that spellcasting class.");
+                bp.AddComponent<AddSpellbookLevel>(c => {
+                    c.m_Spellbook = SoldierOfGaiaSpellbook.ToReference<BlueprintSpellbookReference>();
+                });
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = false;
+                bp.HideNotAvailibleInUI = false;
+                bp.IsClassFeature = true;
+                bp.m_AllowNonContextActions = false;
+                bp.Ranks = 10;
+            });
+            var MysticTheurgeSoldierOfGaiaProgression = Helpers.CreateBlueprint<BlueprintProgression>("MysticTheurgeSoldierOfGaiaProgression", bp => {
+                bp.SetName("Ravener Hunter");
+                bp.SetDescription("At 1st level, the mystic theurge selects a divine {g|Encyclopedia:Spell}spellcasting{/g} class she belonged to before adding the prestige class. When a " +
+                    "new mystic theurge level is gained, the character gains new spells per day and new spells known as if she had also gained a level in that spellcasting class.");
+                bp.AddComponent<PrerequisiteClassSpellLevel>(c => {
+                    c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
+                    c.RequiredSpellLevel = 2;
+                    c.HideInUI = false;
+                });
+                bp.AddComponent<PrerequisiteArchetypeLevel>(c => {
+                    c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = SoldierOfGaiaArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.Level = 1;
+                    c.HideInUI = false;
+                });                
+                bp.AddComponent<MysticTheurgeSpellbook>(c => {
+                    c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_MysticTheurge = MysticTheurgeClass.ToReference<BlueprintCharacterClassReference>();
+                });
+                bp.Groups = new FeatureGroup[] { FeatureGroup.MysticTheurgeDivineSpellbook };
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = false;
+                bp.HideNotAvailibleInUI = true;
+                bp.IsClassFeature = true;
+                bp.m_AllowNonContextActions = false;
+                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
+                    new BlueprintProgression.ClassWithLevel() { AdditionalLevel = 0, m_Class = MysticTheurgeClass.ToReference<BlueprintCharacterClassReference>() },
+                    new BlueprintProgression.ClassWithLevel() { AdditionalLevel = 0, m_Class = WarpriestClass.ToReference<BlueprintCharacterClassReference>() }
+                };
+                bp.LevelEntries = new LevelEntry[] {
+                    Helpers.LevelEntry(1, MysticTheurgeSoldierOfGaiaLevelUp),
+                    Helpers.LevelEntry(2, MysticTheurgeSoldierOfGaiaLevelUp),
+                    Helpers.LevelEntry(3, MysticTheurgeSoldierOfGaiaLevelUp),
+                    Helpers.LevelEntry(4, MysticTheurgeSoldierOfGaiaLevelUp),
+                    Helpers.LevelEntry(5, MysticTheurgeSoldierOfGaiaLevelUp),
+                    Helpers.LevelEntry(6, MysticTheurgeSoldierOfGaiaLevelUp),
+                    Helpers.LevelEntry(7, MysticTheurgeSoldierOfGaiaLevelUp),
+                    Helpers.LevelEntry(8, MysticTheurgeSoldierOfGaiaLevelUp),
+                    Helpers.LevelEntry(9, MysticTheurgeSoldierOfGaiaLevelUp),
+                    Helpers.LevelEntry(10, MysticTheurgeSoldierOfGaiaLevelUp)
+                };
+                bp.GiveFeaturesForPreviousLevels = false;
+            });
+            MysticTheurgeDivineSpellbookSelection.m_AllFeatures = MysticTheurgeDivineSpellbookSelection.m_AllFeatures.AppendToArray(MysticTheurgeSoldierOfGaiaProgression.ToReference<BlueprintFeatureReference>());
+
+            LoremasterWarpriestProgression.AddComponent<PrerequisiteNoArchetype>(c => {
+                c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
+                c.m_Archetype = SoldierOfGaiaArchetype.ToReference<BlueprintArchetypeReference>();
+            });
+            var LoremasterSoldierOfGaiaLevelUp = Helpers.CreateBlueprint<BlueprintFeature>("LoremasterSoldierOfGaiaLevelUp", bp => {
+                bp.SetName("Soldier of Golarion");
+                bp.SetDescription("At 1st level, the mystic theurge selects a divine {g|Encyclopedia:Spell}spellcasting{/g} class she belonged to before adding the prestige class. When a " +
+                    "new mystic theurge level is gained, the character gains new spells per day and new spells known as if she had also gained a level in that spellcasting class.");
+                bp.AddComponent<AddSpellbookLevel>(c => {
+                    c.m_Spellbook = SoldierOfGaiaSpellbook.ToReference<BlueprintSpellbookReference>();
+                });
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = false;
+                bp.HideNotAvailibleInUI = false;
+                bp.IsClassFeature = true;
+                bp.m_AllowNonContextActions = false;
+                bp.Ranks = 10;
+            });
+            var LoremasterSoldierOfGaiaProgression = Helpers.CreateBlueprint<BlueprintProgression>("LoremasterSoldierOfGaiaProgression", bp => {
+                bp.SetName("Soldier of Golarion");
+                bp.SetDescription("When a new loremaster level is gained, the character gains new {g|Encyclopedia:Spell}spells{/g} per day as if he had also gained a level in a " +
+                    "spellcasting class he belonged to before adding the prestige class. He does not, however, gain other benefits a character of that class would have gained, " +
+                    "except for additional spells per day, spells known (if he is a spontaneous spellcaster), and an increased effective level of spellcasting. If a character " +
+                    "had more than one spellcasting class before becoming a loremaster, he must decide to which class he adds the new level for purposes of determining the " +
+                    "number of spells per day.");
+                bp.AddComponent<PrerequisiteClassSpellLevel>(c => {
+                    c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
+                    c.RequiredSpellLevel = 3;
+                    c.HideInUI = false;
+                });
+                bp.AddComponent<PrerequisiteArchetypeLevel>(c => {
+                    c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = SoldierOfGaiaArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.Level = 1;
+                    c.HideInUI = false;
+                });
+                bp.Groups = new FeatureGroup[] { FeatureGroup.MythicAdditionalProgressions };
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = false;
+                bp.HideNotAvailibleInUI = true;
+                bp.IsClassFeature = true;
+                bp.m_AllowNonContextActions = false;
+                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
+                    new BlueprintProgression.ClassWithLevel() { AdditionalLevel = 0, m_Class = LoremasterClass.ToReference<BlueprintCharacterClassReference>() }
+                };
+                bp.LevelEntries = new LevelEntry[] {
+                    Helpers.LevelEntry(1, LoremasterSoldierOfGaiaLevelUp),
+                    Helpers.LevelEntry(2, LoremasterSoldierOfGaiaLevelUp),
+                    Helpers.LevelEntry(3, LoremasterSoldierOfGaiaLevelUp),
+                    Helpers.LevelEntry(4, LoremasterSoldierOfGaiaLevelUp),
+                    Helpers.LevelEntry(5, LoremasterSoldierOfGaiaLevelUp),
+                    Helpers.LevelEntry(6, LoremasterSoldierOfGaiaLevelUp),
+                    Helpers.LevelEntry(7, LoremasterSoldierOfGaiaLevelUp),
+                    Helpers.LevelEntry(8, LoremasterSoldierOfGaiaLevelUp),
+                    Helpers.LevelEntry(9, LoremasterSoldierOfGaiaLevelUp),
+                    Helpers.LevelEntry(10, LoremasterSoldierOfGaiaLevelUp)
+                };
+                bp.GiveFeaturesForPreviousLevels = false;
+            });
+            LoremasterSpellbookSelection.m_AllFeatures = LoremasterSpellbookSelection.m_AllFeatures.AppendToArray(LoremasterSoldierOfGaiaProgression.ToReference<BlueprintFeatureReference>());
+
+            HellknightSigniferWarpriestProgression.AddComponent<PrerequisiteNoArchetype>(c => {
+                c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
+                c.m_Archetype = SoldierOfGaiaArchetype.ToReference<BlueprintArchetypeReference>();
+            });
+            var HellknightSigniferSoldierOfGaiaLevelUp = Helpers.CreateBlueprint<BlueprintFeature>("HellknightSigniferSoldierOfGaiaLevelUp", bp => {
+                bp.SetName("Soldier of Golarion");
+                bp.SetDescription("At 1st level, the mystic theurge selects a divine {g|Encyclopedia:Spell}spellcasting{/g} class she belonged to before adding the prestige class. When a " +
+                    "new mystic theurge level is gained, the character gains new spells per day and new spells known as if she had also gained a level in that spellcasting class.");
+                bp.AddComponent<AddSpellbookLevel>(c => {
+                    c.m_Spellbook = SoldierOfGaiaSpellbook.ToReference<BlueprintSpellbookReference>();
+                });
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = false;
+                bp.HideNotAvailibleInUI = false;
+                bp.IsClassFeature = true;
+                bp.m_AllowNonContextActions = false;
+                bp.Ranks = 10;
+            });
+            var HellknightSigniferSoldierOfGaiaProgression = Helpers.CreateBlueprint<BlueprintProgression>("HellknightSigniferSoldierOfGaiaProgression", bp => {
+                bp.SetName("Soldier of Golarion");
+                bp.SetDescription("At 1st level, and at every level thereafter, a Hellknight signifer gains new {g|Encyclopedia:Spell}spells{/g} per day as if he had also gained a level " +
+                    "in a spellcasting class he belonged to before adding the prestige class. He does not, however, gain any other benefit a character of that class would have gained, " +
+                    "except for additional spells per day, spells known, and an increased effective level of spellcasting. If a character had more than one spellcasting class before " +
+                    "becoming a Hellknight signifer, he must decide to which class he adds the new level for purposes of determining spells per day.");
+                bp.AddComponent<PrerequisiteClassSpellLevel>(c => {
+                    c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
+                    c.RequiredSpellLevel = 3;
+                    c.HideInUI = false;
+                });
+                bp.AddComponent<PrerequisiteArchetypeLevel>(c => {
+                    c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = SoldierOfGaiaArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.Level = 1;
+                    c.HideInUI = false;
+                });
+                bp.Groups = new FeatureGroup[] { FeatureGroup.HellknightSigniferSpellbook };
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = false;
+                bp.HideNotAvailibleInUI = true;
+                bp.IsClassFeature = true;
+                bp.m_AllowNonContextActions = false;
+                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
+                    new BlueprintProgression.ClassWithLevel() { AdditionalLevel = 0, m_Class = HellknightSigniferClass.ToReference<BlueprintCharacterClassReference>() }
+                };
+                bp.LevelEntries = new LevelEntry[] {
+                    Helpers.LevelEntry(1, HellknightSigniferSoldierOfGaiaLevelUp),
+                    Helpers.LevelEntry(2, HellknightSigniferSoldierOfGaiaLevelUp),
+                    Helpers.LevelEntry(3, HellknightSigniferSoldierOfGaiaLevelUp),
+                    Helpers.LevelEntry(4, HellknightSigniferSoldierOfGaiaLevelUp),
+                    Helpers.LevelEntry(5, HellknightSigniferSoldierOfGaiaLevelUp),
+                    Helpers.LevelEntry(6, HellknightSigniferSoldierOfGaiaLevelUp),
+                    Helpers.LevelEntry(7, HellknightSigniferSoldierOfGaiaLevelUp),
+                    Helpers.LevelEntry(8, HellknightSigniferSoldierOfGaiaLevelUp),
+                    Helpers.LevelEntry(9, HellknightSigniferSoldierOfGaiaLevelUp),
+                    Helpers.LevelEntry(10, HellknightSigniferSoldierOfGaiaLevelUp)
+                };
+                bp.GiveFeaturesForPreviousLevels = false;
+            });
+            HellknightSigniferSpellbookSelection.m_AllFeatures = HellknightSigniferSpellbookSelection.m_AllFeatures.AppendToArray(HellknightSigniferSoldierOfGaiaProgression.ToReference<BlueprintFeatureReference>());
+
+
+            #endregion
+
+            #endregion
+
             #region Hunter
             var HunterClass = Resources.GetBlueprint<BlueprintCharacterClass>("34ecd1b5e1b90b9498795791b0855239");
             var SkulkingHunterArchetype = Resources.GetModBlueprint<BlueprintArchetype>("SkulkingHunterArchetype");

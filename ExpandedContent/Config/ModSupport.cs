@@ -83,8 +83,20 @@ namespace ExpandedContent.Config {
                 var SkulkingHunterSpelllist = Resources.GetModBlueprint<BlueprintSpellList>("SkulkingHunterSpelllist");
                 SpellWithDesriptorAdders.SkulkingHunterSpellAdder(RangerSpelllist, DruidSpelllist, WizardSpelllist, SkulkingHunterSpelllist);
 
+                //Soldier of Golarion spelllist patch
+                //This is done after other mods have loaded to also grab any spells they may add
+                var SoldierOfGaiaSpelllist = Resources.GetModBlueprint<BlueprintSpellList>("SoldierOfGaiaSpelllist");
+                SoldierOfGaiaSpelllist.SpellsByLevel[0].m_Spells = ClericSpelllist.SpellsByLevel[0].m_Spells;
+                SoldierOfGaiaSpelllist.SpellsByLevel[1].m_Spells = ClericSpelllist.SpellsByLevel[1].m_Spells;
+                SoldierOfGaiaSpelllist.SpellsByLevel[2].m_Spells = ClericSpelllist.SpellsByLevel[2].m_Spells;
+                SoldierOfGaiaSpelllist.SpellsByLevel[3].m_Spells = ClericSpelllist.SpellsByLevel[3].m_Spells;
+                SoldierOfGaiaSpelllist.SpellsByLevel[4].m_Spells = ClericSpelllist.SpellsByLevel[4].m_Spells;
+                SoldierOfGaiaSpelllist.SpellsByLevel[5].m_Spells = ClericSpelllist.SpellsByLevel[5].m_Spells;
+                SoldierOfGaiaSpelllist.SpellsByLevel[6].m_Spells = ClericSpelllist.SpellsByLevel[6].m_Spells;
 
-                
+
+
+
                 if (IsDLCEnabled(Dlc5)) {
                     Main.Log("You should only be able to see this with DLC5 installed, but this is broke so you can see it reguardless.");
                 }
