@@ -140,7 +140,7 @@ New Subdomains
 - Fur
 - Growth
 - Heroism
-- Ice
+- Insect
 - Lightning
 - Loyalty
 - Lust
@@ -218,6 +218,7 @@ New Spells
 - Burst of Nettles
 - Transmute Blood To Acid
 - Eruptive Pustules
+- Vermin Shape (I, II)
 
 
 Compatible with all mods as far as I am aware, extra features are unlocked if used with these mods
