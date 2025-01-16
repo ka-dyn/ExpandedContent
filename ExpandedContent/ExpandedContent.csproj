@@ -248,6 +248,7 @@
     <Compile Include="Tweaks\Components\AddImmunityToEnergyDrainFromFact.cs" />
     <Compile Include="Tweaks\Components\AddTargetAttackRollTriggerExpanded.cs" />
     <Compile Include="Tweaks\Components\AutoMetamagicMagicSourceOnly.cs" />
+    <Compile Include="Tweaks\Components\ContextActionCombatManeuverExpanded.cs" />
     <Compile Include="Tweaks\Components\ContextActionOnApplyingSpell.cs" />
     <Compile Include="Tweaks\Components\ContextCalculateAbilityParamsBasedOnHigherClass.cs" />
     <Compile Include="Tweaks\Components\ContextConditionIsPetOwner.cs" />

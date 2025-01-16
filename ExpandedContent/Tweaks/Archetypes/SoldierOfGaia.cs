@@ -14,6 +14,32 @@ using ExpandedContent.Utilities;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.UnitLogic.FactLogic;
+using Kingmaker.UnitLogic.Buffs.Blueprints;
+using Kingmaker.Craft;
+using Kingmaker.Enums;
+using Kingmaker.RuleSystem;
+using Kingmaker.UnitLogic.Abilities.Components;
+using Kingmaker.UnitLogic.Abilities;
+using Kingmaker.UnitLogic.Commands.Base;
+using Kingmaker.UnitLogic.Mechanics.Actions;
+using Kingmaker.UnitLogic.Mechanics.Properties;
+using Kingmaker.UnitLogic.Mechanics;
+using Kingmaker.Utility;
+using Kingmaker.Visual.Animation.Kingmaker.Actions;
+using Kingmaker.UnitLogic.Mechanics.Components;
+using Kingmaker.Enums.Damage;
+using Kingmaker.ResourceLinks;
+using Kingmaker.RuleSystem.Rules.Damage;
+using Kingmaker.RuleSystem.Rules;
+using Kingmaker.UnitLogic.Abilities.Components.AreaEffects;
+using UnityEngine;
+using ExpandedContent.Tweaks.Components;
+using Kingmaker.UnitLogic;
+using Kingmaker.Designers.EventConditionActionSystem.Actions;
+using Kingmaker.ElementsSystem;
+using Kingmaker.UnitLogic.Mechanics.Conditions;
+using Owlcat.Runtime.Visual.RenderPipeline.RendererFeatures.Fluid;
+using Kingmaker.Blueprints.Classes.Prerequisites;
 
 namespace ExpandedContent.Tweaks.Archetypes {
     internal class SoldierOfGaia {
@@ -32,7 +58,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var SacredArmorEnchantPlus5 = Resources.GetBlueprintReference<BlueprintFeatureReference>("1e560784dfcb00f4da1415bbad3226c3");
 
             var SoldierOfGaiaArchetype = Helpers.CreateBlueprint<BlueprintArchetype>("SoldierOfGaiaArchetype", bp => {
-                bp.LocalizedName = Helpers.CreateString($"SoldierOfGaiaArchetype.Name", "Soldier of Golarion");
+                bp.LocalizedName = Helpers.CreateString($"SoldierOfGaiaArchetype.Name", "Soldier of Gaia");
                 bp.LocalizedDescription = Helpers.CreateString($"SoldierOfGaiaArchetype.Description", "Every war needs soldiers. Most people don’t know it, but a war rages " +
                     "every day between the forces of the natural world and those that would defile and destroy it. Whether these enemies be the obscene monstrosities of other " +
                     "planes or the foulness known as “civilization”, Golarion calls upon a few mortal emissaries to serve as her warriors in this fight.");
@@ -41,7 +67,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     "of other planes or the foulness known as “civilization”, Golarion calls upon a few mortal emissaries to serve as her warriors in this fight.");
             });
 
-
+            #region SpellBook
             var SoldierOfGaiaSpelllist = Helpers.CreateBlueprint<BlueprintSpellList>("SoldierOfGaiaSpelllist", bp => {//Fill in mod support to get all spells
                 bp.IsMythic = false;
                 bp.SpellsByLevel = new SpellLevelList[10] {
@@ -88,7 +114,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 };
             });
             var SoldierOfGaiaSpellbook = Helpers.CreateBlueprint<BlueprintSpellbook>("SoldierOfGaiaSpellbook", bp => {
-                bp.Name = Helpers.CreateString($"SoldierOfGaiaSpellbook.Name", "Soldier of Golarion");
+                bp.Name = Helpers.CreateString($"SoldierOfGaiaSpellbook.Name", "Soldier of Gaia");
                 bp.m_SpellsPerDay = WarpriestSpellLevels.ToReference<BlueprintSpellsTableReference>();
                 bp.m_SpellList = SoldierOfGaiaSpelllist.ToReference<BlueprintSpellListReference>();
                 bp.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
@@ -99,7 +125,8 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.IsArcane = false;
             });
             SoldierOfGaiaArchetype.m_ReplaceSpellbook = SoldierOfGaiaSpellbook.ToReference<BlueprintSpellbookReference>();
-
+            #endregion
+            #region Spon Casting
             var SummonNatureISingle = Resources.GetBlueprintReference<BlueprintAbilityReference>("c6147854641924442a3bb736080cfeb6");
             var SummonNatureIISingle = Resources.GetBlueprintReference<BlueprintAbilityReference>("848bd9df8b2643143a7020be7cde8800");
             var SummonNatureIIISingle = Resources.GetBlueprintReference<BlueprintAbilityReference>("6db23a29c0c55c546a0feaef0c8d33d6");
@@ -117,7 +144,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var SummonNatureVId4Plus1 = Resources.GetBlueprintReference<BlueprintAbilityReference>("7aefdbd7e0933b744b9c85566d16e504");
             var SoldierOfGaiaSpontaneousCasting = Helpers.CreateBlueprint<BlueprintFeature>("SoldierOfGaiaSpontaneousCasting", bp => {
                 bp.SetName("Spontaneous Casting");
-                bp.SetDescription("A soldier of Gaia can expend any prepared spell of 1st level or higher to cast a summon nature’s ally spell of that level.");
+                bp.SetDescription("A soldier of gaia can expend any prepared spell of 1st level or higher to cast a summon nature’s ally spell of that level.");
                 bp.m_Icon = DruidSpontaneousSummonIcon;
                 bp.AddComponent<SpontaneousSpellConversion>(c => {
                     c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
@@ -168,7 +195,49 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.IsClassFeature = true;
                 bp.m_AllowNonContextActions = false;
             });
-
+            #endregion
+            #region Base Class PreReq Patch
+            Main.Log("Patching Warpriest for Soldier of Gaia");
+            var ChannelPositiveAllowed = Resources.GetBlueprintReference<BlueprintFeatureReference>("8c769102f3996684fb6e09a2c4e7e5b9");
+            var WarpriestPosFeatures = new BlueprintFeature[] {
+                Resources.GetBlueprint<BlueprintFeature>("bf6e072089989444d8f3dddf84677798"), //Fervor Pos
+                Resources.GetBlueprint<BlueprintFeature>("bd588bc544d2f8547a02bb82ad9f466a"), //Channel Pos
+            };
+            foreach (var feature in WarpriestPosFeatures) {
+                feature.GetComponents<PrerequisiteFeature>().ForEach(c => {
+                    c.Group = Prerequisite.GroupType.Any;
+                });
+                feature.AddComponent<PrerequisiteFeaturesFromList>(c => {
+                    c.Group = Prerequisite.GroupType.Any;
+                    c.HideInUI = true;
+                    c.Amount = 2;
+                    c.m_Features = new BlueprintFeatureReference[] {
+                        SoldierOfGaiaSpontaneousCasting.ToReference<BlueprintFeatureReference>(),
+                        ChannelPositiveAllowed
+                    };
+                });
+            }
+            var ChannelNegativeAllowed = Resources.GetBlueprintReference<BlueprintFeatureReference>("dab5255d809f77c4395afc2b713e9cd6");
+            var WarpriestNegFeatures = new BlueprintFeature[] {
+                Resources.GetBlueprint<BlueprintFeature>("689fd51f02e3c5f40918b6a6e830bbc8"), //Fervor Neg
+                Resources.GetBlueprint<BlueprintFeature>("e02c8a7336a542f4baffa116b6506950"), //Channel Neg
+            };
+            foreach (var feature in WarpriestNegFeatures) {
+                feature.GetComponents<PrerequisiteFeature>().ForEach(c => {
+                    c.Group = Prerequisite.GroupType.Any;
+                });
+                feature.AddComponent<PrerequisiteFeaturesFromList>(c => {
+                    c.Group = Prerequisite.GroupType.Any;
+                    c.HideInUI = true;
+                    c.Amount = 2;
+                    c.m_Features = new BlueprintFeatureReference[] {
+                        SoldierOfGaiaSpontaneousCasting.ToReference<BlueprintFeatureReference>(),
+                        ChannelNegativeAllowed
+                    };
+                });
+            }
+            #endregion
+            #region Blessings
             var AirBlessingFeature = Resources.GetBlueprint<BlueprintFeature>("e1ff99dc3aeaa064e8eecde51c1c4773");
             var AnimalBlessingFeature = Resources.GetBlueprint<BlueprintFeature>("9d991f8374c3def4cb4a6287f370814d");
             var EarthBlessingFeature = Resources.GetBlueprint<BlueprintFeature>("73c37a22bc9a523409a47218d507acf6");
@@ -187,14 +256,398 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.Groups = new FeatureGroup[0];
                 bp.IsClassFeature = true;
             });
+            #endregion
+            #region FriendOfTheForest
+            var EntangledBuff = Resources.GetBlueprint<BlueprintBuff>("d1aea643c260c5e4ea66012876f2b7f5");
+            var SoldierOfGaiaFriendOfTheForestBuff = Helpers.CreateBuff("SoldierOfGaiaFriendOfTheForestBuff", bp => {
+                bp.SetName("Friend of the Forest");
+                bp.SetDescription("A target grappled by an arrow can attempt to escape every {g|Encyclopedia:Combat_Round}round{/g} by making a successful combat " +
+                    "maneuver, {g|Encyclopedia:Strength}Strength{/g}, {g|Encyclopedia:Athletics}Athletics{/g}, or {g|Encyclopedia:Mobility}Mobility check{/g} against the archers " +
+                    "CMD. The pinned target gets a +4 bonus on this check.");
+                bp.AddComponent<AddCondition>(c => {
+                    c.Condition = UnitCondition.CantMove;
+                });
+                bp.AddComponent<AddCondition>(c => {
+                    c.Condition = UnitCondition.Entangled;
+                });                
+                bp.AddComponent<AddFactContextActions>(c => {
+                    c.Activated = Helpers.CreateActionList(
+                        new ContextActionDealDamage() {
+                            m_Type = ContextActionDealDamage.Type.Damage,
+                            DamageType = new DamageTypeDescription() {
+                                Type = DamageType.Direct,
+                                Common = new DamageTypeDescription.CommomData() {
+                                    Reality = 0,
+                                    Alignment = 0,
+                                    Precision = false
+                                },
+                                Physical = new DamageTypeDescription.PhysicalData() {
+                                    Material = 0,
+                                    Form = 0,
+                                    Enhancement = 0,
+                                    EnhancementTotal = 0
+                                },
+                                Energy = DamageEnergyType.NegativeEnergy
+                            },
+                            Drain = false,
+                            AbilityType = StatType.Unknown,
+                            EnergyDrainType = EnergyDrainType.Temporary,
+                            Duration = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                m_IsExtendable = true,
+                            },
+                            PreRolledSharedValue = AbilitySharedValue.Damage,
+                            Value = new ContextDiceValue() {
+                                DiceType = DiceType.D6,
+                                DiceCountValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 1,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 4,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                            },
+                            IsAoE = false,
+                            HalfIfSaved = false,
+                            UseMinHPAfterDamage = true,
+                            MinHPAfterDamage = 1,
+                            ResultSharedValue = AbilitySharedValue.Damage,
+                            CriticalSharedValue = AbilitySharedValue.Damage
+                        }
+                        );
+                    c.Deactivated = Helpers.CreateActionList();
+                    c.NewRound = Helpers.CreateActionList(
+                        new ContextActionBreakFree() {
+                            UseCMB = false,
+                            UseCMD = false,
+                            UseOverrideDC = true,
+                            OverridenDC = new ContextValue() {
+                                ValueType = ContextValueType.Shared,
+                                ValueShared = AbilitySharedValue.Damage
+                            },
+                            Success = Helpers.CreateActionList(
+                                new ContextActionRemoveSelf()
+                                ),
+                            Failure = Helpers.CreateActionList(
+                                new ContextActionDealDamage() {
+                                    m_Type = ContextActionDealDamage.Type.Damage,
+                                    DamageType = new DamageTypeDescription() {
+                                        Type = DamageType.Direct,
+                                        Common = new DamageTypeDescription.CommomData() {
+                                            Reality = 0,
+                                            Alignment = 0,
+                                            Precision = false
+                                        },
+                                        Physical = new DamageTypeDescription.PhysicalData() {
+                                            Material = 0,
+                                            Form = 0,
+                                            Enhancement = 0,
+                                            EnhancementTotal = 0
+                                        },
+                                        Energy = DamageEnergyType.NegativeEnergy
+                                    },
+                                    Drain = false,
+                                    AbilityType = StatType.Unknown,
+                                    EnergyDrainType = EnergyDrainType.Temporary,
+                                    Duration = new ContextDurationValue() {
+                                        Rate = DurationRate.Rounds,
+                                        DiceType = DiceType.Zero,
+                                        DiceCountValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                        BonusValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                        m_IsExtendable = true,
+                                    },
+                                    PreRolledSharedValue = AbilitySharedValue.Damage,
+                                    Value = new ContextDiceValue() {
+                                        DiceType = DiceType.D6,
+                                        DiceCountValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 1,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                        BonusValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 4,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                    },
+                                    IsAoE = false,
+                                    HalfIfSaved = false,
+                                    UseMinHPAfterDamage = true,
+                                    MinHPAfterDamage = 1,
+                                    ResultSharedValue = AbilitySharedValue.Damage,
+                                    CriticalSharedValue = AbilitySharedValue.Damage
+                                }
+                                ),
+                        }
+                        );
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
+                    c.m_Progression = ContextRankProgression.AsIs;
+                    c.m_Class = new BlueprintCharacterClassReference[] {
+                        WarpriestClass.ToReference<BlueprintCharacterClassReference>()
+                    };
+                });
+                bp.AddComponent<ContextCalculateSharedValue>(c => {
+                    c.ValueType = AbilitySharedValue.Damage;
+                    c.Value = new ContextDiceValue() {
+                        DiceType = DiceType.One,
+                        DiceCountValue = 10,
+                        BonusValue = new ContextValue() {
+                            ValueType = ContextValueType.Rank,
+                            ValueRank = AbilityRankType.Default
+                        }
+                    };
+                    c.Modifier = 1;
+                });
+                bp.m_Icon = EntangledBuff.Icon;
+                bp.m_AllowNonContextActions = false;
+                bp.Stacking = StackingType.Replace;
+                bp.Frequency = DurationRate.Rounds;
+            });
 
+            var SoldierOfGaiaFriendOfTheForestArea = Helpers.CreateBlueprint<BlueprintAbilityAreaEffect>("SoldierOfGaiaFriendOfTheForestArea", bp => {
+                bp.AddComponent<AbilityAreaEffectRunAction>(c => {
+                    c.UnitEnter = Helpers.CreateActionList(
+                        new Conditional() {
+                            ConditionsChecker = new ConditionsChecker() {
+                                Operation = Operation.Or,
+                                Conditions = new Condition[] {
+                                    new ContextConditionHasBuff() {
+                                        m_Buff = SoldierOfGaiaFriendOfTheForestBuff.ToReference<BlueprintBuffReference>(),
+                                        Not = false
+                                    }
+                                }
+                            },
+                            IfTrue = Helpers.CreateActionList(),
+                            IfFalse = Helpers.CreateActionList(
+                                new ContextActionCombatManeuverExpanded() {
+                                    Bonus = 5,
+                                    HasBABReplacement = true,
+                                    BABReplacementValue = new ContextValue() { ValueType = ContextValueType.Rank, ValueRank = AbilityRankType.Default },
+                                    OnSuccess = Helpers.CreateActionList(
+                                        new ContextActionApplyBuff() {
+                                            m_Buff = SoldierOfGaiaFriendOfTheForestBuff.ToReference<BlueprintBuffReference>(),
+                                            Permanent = true,
+                                            DurationValue = new ContextDurationValue() {
+                                                Rate = DurationRate.Minutes,
+                                                DiceType = DiceType.Zero,
+                                                DiceCountValue = new ContextValue(),
+                                                BonusValue = new ContextValue(),
+                                                m_IsExtendable = true
+                                            },
+                                            IsFromSpell = false,
+                                            IsNotDispelable = true,
+                                        }
+                                        ),
+                                    OnFailure = Helpers.CreateActionList()
+                                }
+                            )
+                        }                        
+                        );
+                    c.UnitExit = Helpers.CreateActionList(
+                        new Conditional() {
+                            ConditionsChecker = new ConditionsChecker() {
+                                Operation = Operation.Or,
+                                Conditions = new Condition[] {
+                                    new ContextConditionHasBuff() {
+                                        m_Buff = SoldierOfGaiaFriendOfTheForestBuff.ToReference<BlueprintBuffReference>(),
+                                        Not = false
+                                    }
+                                }
+                            },
+                            IfTrue = Helpers.CreateActionList(),
+                            IfFalse = Helpers.CreateActionList(
+                                new ContextActionRemoveBuff() {
+                                    m_Buff = SoldierOfGaiaFriendOfTheForestBuff.ToReference<BlueprintBuffReference>()
+                                }
+                                )
+                        }
+                        );
+                    c.Round = Helpers.CreateActionList(
+                        new Conditional() {
+                            ConditionsChecker = new ConditionsChecker() {
+                                Operation = Operation.Or,
+                                Conditions = new Condition[] {
+                                    new ContextConditionHasBuff() {
+                                        m_Buff = SoldierOfGaiaFriendOfTheForestBuff.ToReference<BlueprintBuffReference>(),
+                                        Not = false
+                                    }
+                                }
+                            },
+                            IfTrue = Helpers.CreateActionList(),
+                            IfFalse = Helpers.CreateActionList(
+                                new ContextActionCombatManeuverExpanded() {
+                                    Bonus = 5,
+                                    HasBABReplacement = true,
+                                    BABReplacementValue = new ContextValue() { ValueType = ContextValueType.Rank, ValueRank = AbilityRankType.Default },
+                                    OnSuccess = Helpers.CreateActionList(
+                                        new ContextActionApplyBuff() {
+                                            m_Buff = SoldierOfGaiaFriendOfTheForestBuff.ToReference<BlueprintBuffReference>(),
+                                            Permanent = true,
+                                            DurationValue = new ContextDurationValue() {
+                                                Rate = DurationRate.Minutes,
+                                                DiceType = DiceType.Zero,
+                                                DiceCountValue = new ContextValue(),
+                                                BonusValue = new ContextValue(),
+                                                m_IsExtendable = true
+                                            },
+                                            IsFromSpell = false,
+                                            IsNotDispelable = true,
+                                        }
+                                        ),
+                                    OnFailure = Helpers.CreateActionList()
+                                }
+                            )
+                        }
+                        );
+                    c.UnitMove = Helpers.CreateActionList();
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
+                    c.m_Progression = ContextRankProgression.AsIs;
+                    c.m_Class = new BlueprintCharacterClassReference[] {
+                        WarpriestClass.ToReference<BlueprintCharacterClassReference>()
+                    };
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.m_TargetType = BlueprintAbilityAreaEffect.TargetType.Any;
+                bp.m_Tags = AreaEffectTags.DestroyableInCutscene;
+                bp.SpellResistance = false;
+                bp.AffectEnemies = true;
+                bp.AggroEnemies = true;
+                bp.AffectDead = false;
+                bp.IgnoreSleepingUnits = false;
+                bp.Shape = AreaEffectShape.Cylinder;
+                bp.Size = new Feet() { m_Value = 20 };
+                bp.Fx = new PrefabLink() { AssetId = "ec9e5e455d0493148a8ffaa5bf8c0f6a" }; //entangle
+                bp.CanBeUsedInTacticalCombat = false;
+                bp.m_TickRoundAfterSpawn = false;
+            });
+            SoldierOfGaiaFriendOfTheForestArea.Fx = SoldierOfGaiaFriendOfTheForestArea.Fx.CreateDynamicProxy(pfl => {
+                Main.Log($"Editing: {pfl}");
+                pfl.name = "FriendOfTheForest_20feetAoE";
+                //Main.Log($"{FxDebug.DumpGameObject(pfl.gameObject)}");
+                pfl.transform.localScale = new(0.25f, 1.0f, 0.25f);                
+            });
 
+            var SoldierOfGaiaFriendOfTheForestAbility = Helpers.CreateBlueprint<BlueprintAbility>("SoldierOfGaiaFriendOfTheForestAbility", bp => {
+                bp.SetName("Friend of the Forest");
+                bp.SetDescription("This spell summons forth a misty cloud of rust-red toxic algae. Any creature within the mist is coated by it, turning the creature the same reddish color. " +
+                    "All targets within the mist gain concealment. Any creature within the mist must save or take 1d4 points of Wisdom damage and become enraged, attacking any creatures it " +
+                    "detects nearby (as the “attack nearest creature” result of the confused condition). An enraged creature remains so for one minute per caster level. A creature only " +
+                    "needs to save once each time it is within the mist (though leaving and returning requires another save).");
+                bp.m_Icon = EntangledBuff.Icon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionSpawnAreaEffect() {
+                            m_AreaEffect = SoldierOfGaiaFriendOfTheForestArea.ToReference<BlueprintAbilityAreaEffectReference>(),
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Rank,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                m_IsExtendable = true,
+                            },
+                            OnUnit = false
+                        });
+                });
+                bp.AddComponent<AbilityAoERadius>(c => {
+                    c.m_Radius = 20.Feet();
+                    c.m_TargetType = TargetType.Any;
+                });
+                bp.AddComponent<SpellComponent>(c => {
+                    c.School = SpellSchool.Conjuration;
+                });
+                bp.AddComponent<CraftInfoComponent>(c => {
+                    c.SpellType = CraftSpellType.Other;
+                    c.SavingThrow = CraftSavingThrow.None;
+                    c.AOEType = CraftAOE.AOE;
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
+                    c.m_Progression = ContextRankProgression.AsIs;
+                    c.m_Class = new BlueprintCharacterClassReference[] { 
+                        WarpriestClass.ToReference<BlueprintCharacterClassReference>() 
+                    };
+                });
+                bp.Type = AbilityType.SpellLike;
+                bp.Range = AbilityRange.Medium;
+                bp.CanTargetPoint = true;
+                bp.CanTargetEnemies = true;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = false;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Standard;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = Helpers.CreateString("SoldierOfGaiaFriendOfTheForestAbility.Duration", "1 round/level");
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
 
-
-
-
-
-
+            var SoldierOfGaiaFriendOfTheForestFeature = Helpers.CreateBlueprint<BlueprintFeature>("SoldierOfGaiaFriendOfTheForestFeature", bp => {
+                bp.SetName("Friend of the Forest");
+                bp.SetDescription("At 7th level, once per day, a soldier of gaia can call upon their connection with nature to receive aid from the natural world. " +
+                    "\nEvery creature within the area of the spell is the target of a combat maneuver check made to grapple each round at the beginning of your turn, " +
+                    "as well as when entering the area.");
+                bp.m_Icon = EntangledBuff.Icon;
+                bp.Ranks = 1;
+                bp.IsClassFeature = true;
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { SoldierOfGaiaFriendOfTheForestAbility.ToReference<BlueprintUnitFactReference>() };
+                });
+            });
+            #endregion
 
             SoldierOfGaiaArchetype.RemoveFeatures = new LevelEntry[] {
                     Helpers.LevelEntry(1, WarpriestSpontaneousSelection, SecondBlessingSelection),
@@ -206,7 +659,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             };
             SoldierOfGaiaArchetype.AddFeatures = new LevelEntry[] {
                     Helpers.LevelEntry(1, SoldierOfGaiaSpontaneousCasting, SoldierOfGaiaBlessingSelection),
-                    Helpers.LevelEntry(7, SoldierOfGaiaFriendOfTheForest )
+                    Helpers.LevelEntry(7, SoldierOfGaiaFriendOfTheForestFeature )
             };
 
             if (ModSettings.AddedContent.Archetypes.IsDisabled("Soldier of Gaia")) { return; }

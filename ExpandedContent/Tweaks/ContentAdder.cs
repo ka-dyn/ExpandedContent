@@ -74,6 +74,7 @@ namespace ExpandedContent.Tweaks {
                 Archetypes.DivineTracker.AddDivineTracker();
                 Archetypes.PlantMaster.AddPlantMaster();
                 Archetypes.DrakeRider.AddDrakeRider();
+                Archetypes.SoldierOfGaia.AddSoldierOfGaia();
 
                 Archetypes.WaterDancer.AddWaterDancer();
 

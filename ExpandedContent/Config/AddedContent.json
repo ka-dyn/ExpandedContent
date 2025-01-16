@@ -229,6 +229,11 @@
         "Enabled": true,
         "Homebrew": false,
         "Description": "A chained monk archetype that uses wild talents instead of ki, homebrewed to fit the unchained monk used in game."
+      },
+      "Soldier of Gaia": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "A warpriest archetype that uses druid spells."
       }
     },
     "IsExpanded": false
