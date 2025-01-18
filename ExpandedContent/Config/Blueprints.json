@@ -3781,7 +3781,24 @@
     "VerminShapeIISpiderBuff": "0371c8d7-051d-46a6-853e-bf59f78b85ce",
     "VerminShapeIParentAbility": "f7f764d8-f69d-4224-880f-9183a8013d19",
     "VerminShapeWebAbility": "64b4159e-bd5b-40e3-a727-da12ea746b03",
-    "VerminShapeWebAbilityCooldown": "a324ce54-61ea-41aa-9f4b-621ba51395e1"
+    "VerminShapeWebAbilityCooldown": "a324ce54-61ea-41aa-9f4b-621ba51395e1",
+
+    "HellknightSigniferSoldierOfGaiaLevelUp": "fb1140af-7eae-4065-b895-431bcca96e30",
+    "HellknightSigniferSoldierOfGaiaProgression": "28af5a2f-6a12-4a29-abba-4ef858a340e2",
+    "LoremasterSoldierOfGaiaLevelUp": "dc917e2a-3793-450f-9178-432686c20b93",
+    "LoremasterSoldierOfGaiaProgression": "da18c4b7-af69-4233-9763-fbcfd4ea8b0a",
+    "MysticTheurgeSoldierOfGaiaLevelUp": "aa1322a7-3c0e-4fb4-ac70-ffbc77dee36a",
+    "MysticTheurgeSoldierOfGaiaProgression": "3a79546f-1d89-4334-b3cd-b5f9e4d2b2c3",
+    "SoldierOfGaiaArchetype": "4d8a9bd4-2a13-4055-a1da-b1073eabbff0",
+    "SoldierOfGaiaBlessingSelection": "5e05f87a-74f7-4580-8977-838b418a48fe",
+    "SoldierOfGaiaFriendOfTheForestAbility": "11a3e18c-04aa-468c-8a30-6702714c5f5b",
+    "SoldierOfGaiaFriendOfTheForestArea": "32cf8ea5-e5ab-43fc-9797-3461a292ae9d",
+    "SoldierOfGaiaFriendOfTheForestBuff": "a56719a6-04be-49ba-9cc0-d8709c5fd1ea",
+    "SoldierOfGaiaFriendOfTheForestFeature": "30ef6844-39e9-4a74-9e3a-4c242b4ae640",
+    "SoldierOfGaiaFriendOfTheForestResource": "337f7cf3-9bc6-4dea-99d8-92e237364e32",
+    "SoldierOfGaiaSpellbook": "0d15ccac-8e4c-403f-afe7-a67b757a783d",
+    "SoldierOfGaiaSpelllist": "c69fd151-fdf0-4c43-94c2-b9cefeadddf1",
+    "SoldierOfGaiaSpontaneousCasting": "506c8780-3aab-4796-b35a-c4bb52dfb15f"
 
 
 

@@ -17,8 +17,6 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var InquisitorClass = Resources.GetBlueprint<BlueprintCharacterClass>("f1a70d9e1b0b41e49874e1fa9052a1ce");
             var SwornOfTheEldestArchetype = Resources.GetModBlueprint<BlueprintArchetype>("SwornOfTheEldestArchetype");
 
-
-
             var AbadarFeature = Resources.GetBlueprint<BlueprintFeature>("6122dacf418611540a3c91e67197ee4e");
             var AsmodeusFeature = Resources.GetBlueprint<BlueprintFeature>("a3a5ccc9c670e6f4ca4a686d23b89900");
             var CalistriaFeature = Resources.GetBlueprint<BlueprintFeature>("c7531715a3f046d4da129619be63f44c");
@@ -171,6 +169,23 @@ namespace ExpandedContent.Tweaks.Archetypes {
             ZonKuthonFeature.SetDisallowedArchetype(InquisitorClass, SwornOfTheEldestArchetype);
             GodClawFeature.SetDisallowedArchetype(InquisitorClass, SwornOfTheEldestArchetype);
             NewAchaekekFeature.SetDisallowedArchetype(InquisitorClass, SwornOfTheEldestArchetype);
+            #endregion
+            #region Soldier of Gaia
+            CalistriaFeature.DisallowSoldierOfGaia();
+            CaydenCaileanFeature.DisallowSoldierOfGaia();
+            DesnaFeature.DisallowSoldierOfGaia();
+            GorumFeature.DisallowSoldierOfGaia();
+            IomedaeFeature.DisallowSoldierOfGaia();
+            IroriFeature.DisallowSoldierOfGaia();
+            LamashtuFeature.DisallowSoldierOfGaia();
+            NethysFeature.DisallowSoldierOfGaia();
+            NorgorberFeature.DisallowSoldierOfGaia();
+            UrgathoaFeature.DisallowSoldierOfGaia();
+            ZonKuthonFeature.DisallowSoldierOfGaia();
+            GodClawFeature.DisallowSoldierOfGaia();
+            NewAchaekekFeature.DisallowSoldierOfGaia();
+            NewApsuFeature.DisallowSoldierOfGaia();
+            NewDahakFeature.DisallowSoldierOfGaia();
             #endregion
         }
     }

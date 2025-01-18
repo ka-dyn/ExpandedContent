@@ -26,7 +26,7 @@ namespace ExpandedContent.Tweaks.Deities {
             LichDeityFeature.SetDisallowedArchetype(DreadKnightClass, ClawOfTheFalseWyrmArchetype);
             LichDeityFeature.SetDisallowedArchetype(InquistorClass, SwornOfTheEldestArchetype);
             LichDeityFeature.DisallowNewMantisZealot();
-            bp.DisallowSoldierOfGaia();
+            LichDeityFeature.DisallowSoldierOfGaia();
             LichDeityFeature.AddComponent<AddFacts>(c => {
                         c.m_Facts = new BlueprintUnitFactReference[] { LichDeityMythicFeature.ToReference<BlueprintUnitFactReference>() };
                     });

@@ -246,7 +246,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var PlantBlessingFeature = Resources.GetBlueprint<BlueprintFeature>("4cd28bbb761f490fa418d471383e38c7");
             var WaterBlessingFeature = Resources.GetBlueprint<BlueprintFeature>("0f457943bb99f9b48b709c90bfc0467e");
             var WeatherBlessingFeature = Resources.GetBlueprint<BlueprintFeature>("4172d92c598de1d47aa2c0dd51c05e24");
-            var SoldierOfGaiaBlessingSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("", bp => {
+            var SoldierOfGaiaBlessingSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("SoldierOfGaiaBlessingSelection", bp => {
                 bp.SetName("Soldier's Blessing");
                 bp.SetDescription("At least one of a soldier’s blessings must be drawn from the following list: Air, Animal, Earth, Fire, Plant, Water, or Weather. " +
                     "\nThe soldier cannot worship a deity that does not offer at least one of those blessings. ");
@@ -263,9 +263,11 @@ namespace ExpandedContent.Tweaks.Archetypes {
 
             var SoldierOfGaiaFriendOfTheForestResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("SoldierOfGaiaFriendOfTheForestResource", bp => {
                 bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
-                    BaseValue = 1,
-                    IncreasedByLevel = true,
-                    m_Class = new BlueprintCharacterClassReference[] {
+                    BaseValue = 0,
+                    IncreasedByLevel = false,
+                    IncreasedByLevelStartPlusDivStep = true,
+                    m_Class = new BlueprintCharacterClassReference[] {},
+                    m_ClassDiv = new BlueprintCharacterClassReference[] {
                         WarpriestClass.ToReference<BlueprintCharacterClassReference>()
                     },
                     m_Archetypes = new BlueprintArchetypeReference[] { },
@@ -276,11 +278,10 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     PerStepIncrease = 1,
                 };
             });
-
             var SoldierOfGaiaFriendOfTheForestBuff = Helpers.CreateBuff("SoldierOfGaiaFriendOfTheForestBuff", bp => {
                 bp.SetName("Friend of the Forest");
                 bp.SetDescription("A soldier of gaia can call upon their connection with nature to receive aid from the natural world. " +
-                    "\nEvery creature within the area of the spell is the target of a combat maneuver check made to grapple each round at the beginning of your turn, " +
+                    "\nEvery enemy within the area of the spell is the target of a combat maneuver check made to grapple each round at the beginning of your turn, " +
                     "as well as when entering the area. The CMB of this grapple attempt is equal to your warpriest level plus 5, increasing to plus 10 when trying to escape " +
                     "the grapple.");
                 bp.AddComponent<AddCondition>(c => {
@@ -569,7 +570,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     };
                 });
                 bp.m_AllowNonContextActions = false;
-                bp.m_TargetType = BlueprintAbilityAreaEffect.TargetType.Any;
+                bp.m_TargetType = BlueprintAbilityAreaEffect.TargetType.Enemy;
                 bp.m_Tags = AreaEffectTags.DestroyableInCutscene;
                 bp.SpellResistance = false;
                 bp.AffectEnemies = true;
@@ -586,12 +587,12 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 Main.Log($"Editing: {pfl}");
                 pfl.name = "FriendOfTheForest_20feetAoE";
                 //Main.Log($"{FxDebug.DumpGameObject(pfl.gameObject)}");
-                pfl.transform.localScale = new(0.25f, 1.0f, 0.25f);                
+                pfl.transform.localScale = new(0.25f, 0.75f, 0.25f);                
             });
             var SoldierOfGaiaFriendOfTheForestAbility = Helpers.CreateBlueprint<BlueprintAbility>("SoldierOfGaiaFriendOfTheForestAbility", bp => {
                 bp.SetName("Friend of the Forest");
                 bp.SetDescription("A soldier of gaia can call upon their connection with nature to receive aid from the natural world. " +
-                    "\nEvery creature within the area of the spell is the target of a combat maneuver check made to grapple each round at the beginning of your turn, " +
+                    "\nEvery enemy within the area of the spell is the target of a combat maneuver check made to grapple each round at the beginning of your turn, " +
                     "as well as when entering the area. The CMB of this grapple attempt is equal to your warpriest level plus 5, increasing to plus 10 when trying to escape " +
                     "the grapple.");
                 bp.m_Icon = EntangledBuff.Icon;
@@ -623,7 +624,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 });
                 bp.AddComponent<AbilityAoERadius>(c => {
                     c.m_Radius = 20.Feet();
-                    c.m_TargetType = TargetType.Any;
+                    c.m_TargetType = TargetType.Enemy;
                 });
                 bp.AddComponent<SpellComponent>(c => {
                     c.School = SpellSchool.Conjuration;
@@ -660,7 +661,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var SoldierOfGaiaFriendOfTheForestFeature = Helpers.CreateBlueprint<BlueprintFeature>("SoldierOfGaiaFriendOfTheForestFeature", bp => {
                 bp.SetName("Friend of the Forest");
                 bp.SetDescription("At 7th level, once per day, a soldier of gaia can call upon their connection with nature to receive aid from the natural world. " +
-                    "\nEvery creature within the area of the spell is the target of a combat maneuver check made to grapple each round at the beginning of your turn, " +
+                    "\nEvery enemy within the area of the spell is the target of a combat maneuver check made to grapple each round at the beginning of your turn, " +
                     "as well as when entering the area. The CMB of this grapple attempt is equal to your warpriest level plus 5, increasing to plus 10 when trying to escape " +
                     "the grapple. \nA soldier of gaia can use this ability twice per day at 13th level and three times per day at 19th level.");
                 bp.m_Icon = EntangledBuff.Icon;

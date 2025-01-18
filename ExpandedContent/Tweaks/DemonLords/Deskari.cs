@@ -34,6 +34,7 @@ namespace ExpandedContent.Tweaks.DemonLords {
             DeskariFeature.DisallowDarkSister();
             DeskariFeature.DisallowNewMantisZealot();
             DeskariFeature.MagicDeceiverLock();
+            DeskariFeature.DisallowSoldierOfGaia();
 
             DeskariFeature.SetAllowedDomains(
                     DeityTools.DomainAllowed.BloodDomainAllowed,
