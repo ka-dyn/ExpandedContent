@@ -233,7 +233,6 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.AddComponent<AbilityResourceLogic>(c => {
                     c.m_RequiredResource = BloodDomainGreaterResource.ToReference<BlueprintAbilityResourceReference>();
                     c.m_IsSpendResource = true;
-
                 });
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.SavingThrowType = SavingThrowType.Unknown;

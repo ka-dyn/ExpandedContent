@@ -41,7 +41,6 @@ namespace ExpandedContent.Tweaks.Components {
                 int BABbonus = BABReplacementValue.Calculate(Context);
                 Main.Log($"This should equal the contextvalue, {BABbonus}");
                 BABbonus = BABbonus + Bonus;
-                //ruleCombatManeuver.ReplaceAttackBonus = BABbonus;
 
                 ruleCombatManeuver.OverrideBonus = BABbonus;
             }

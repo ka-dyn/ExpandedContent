@@ -29,6 +29,7 @@ namespace ExpandedContent.Tweaks.DemonLords {
             KabririFeature.DisallowDarkSister();
             KabririFeature.DisallowNewMantisZealot();
             KabririFeature.MagicDeceiverLock();
+            KabririFeature.DisallowSoldierOfGaia();
 
             KabririFeature.SetAllowedDomains(
                     DeityTools.DomainAllowed.DemonDomainEvilAllowed,

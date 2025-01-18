@@ -40,6 +40,7 @@ using Kingmaker.ElementsSystem;
 using Kingmaker.UnitLogic.Mechanics.Conditions;
 using Owlcat.Runtime.Visual.RenderPipeline.RendererFeatures.Fluid;
 using Kingmaker.Blueprints.Classes.Prerequisites;
+using ExpandedContent.Tweaks.Classes;
 
 namespace ExpandedContent.Tweaks.Archetypes {
     internal class SoldierOfGaia {
@@ -259,11 +260,29 @@ namespace ExpandedContent.Tweaks.Archetypes {
             #endregion
             #region FriendOfTheForest
             var EntangledBuff = Resources.GetBlueprint<BlueprintBuff>("d1aea643c260c5e4ea66012876f2b7f5");
+
+            var SoldierOfGaiaFriendOfTheForestResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("SoldierOfGaiaFriendOfTheForestResource", bp => {
+                bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
+                    BaseValue = 1,
+                    IncreasedByLevel = true,
+                    m_Class = new BlueprintCharacterClassReference[] {
+                        WarpriestClass.ToReference<BlueprintCharacterClassReference>()
+                    },
+                    m_Archetypes = new BlueprintArchetypeReference[] { },
+                    LevelIncrease = 1,
+                    StartingLevel = 7,
+                    LevelStep = 6,
+                    StartingIncrease = 1,
+                    PerStepIncrease = 1,
+                };
+            });
+
             var SoldierOfGaiaFriendOfTheForestBuff = Helpers.CreateBuff("SoldierOfGaiaFriendOfTheForestBuff", bp => {
                 bp.SetName("Friend of the Forest");
-                bp.SetDescription("A target grappled by an arrow can attempt to escape every {g|Encyclopedia:Combat_Round}round{/g} by making a successful combat " +
-                    "maneuver, {g|Encyclopedia:Strength}Strength{/g}, {g|Encyclopedia:Athletics}Athletics{/g}, or {g|Encyclopedia:Mobility}Mobility check{/g} against the archers " +
-                    "CMD. The pinned target gets a +4 bonus on this check.");
+                bp.SetDescription("A soldier of gaia can call upon their connection with nature to receive aid from the natural world. " +
+                    "\nEvery creature within the area of the spell is the target of a combat maneuver check made to grapple each round at the beginning of your turn, " +
+                    "as well as when entering the area. The CMB of this grapple attempt is equal to your warpriest level plus 5, increasing to plus 10 when trying to escape " +
+                    "the grapple.");
                 bp.AddComponent<AddCondition>(c => {
                     c.Condition = UnitCondition.CantMove;
                 });
@@ -444,7 +463,6 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.Stacking = StackingType.Replace;
                 bp.Frequency = DurationRate.Rounds;
             });
-
             var SoldierOfGaiaFriendOfTheForestArea = Helpers.CreateBlueprint<BlueprintAbilityAreaEffect>("SoldierOfGaiaFriendOfTheForestArea", bp => {
                 bp.AddComponent<AbilityAreaEffectRunAction>(c => {
                     c.UnitEnter = Helpers.CreateActionList(
@@ -570,13 +588,12 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 //Main.Log($"{FxDebug.DumpGameObject(pfl.gameObject)}");
                 pfl.transform.localScale = new(0.25f, 1.0f, 0.25f);                
             });
-
             var SoldierOfGaiaFriendOfTheForestAbility = Helpers.CreateBlueprint<BlueprintAbility>("SoldierOfGaiaFriendOfTheForestAbility", bp => {
                 bp.SetName("Friend of the Forest");
-                bp.SetDescription("This spell summons forth a misty cloud of rust-red toxic algae. Any creature within the mist is coated by it, turning the creature the same reddish color. " +
-                    "All targets within the mist gain concealment. Any creature within the mist must save or take 1d4 points of Wisdom damage and become enraged, attacking any creatures it " +
-                    "detects nearby (as the “attack nearest creature” result of the confused condition). An enraged creature remains so for one minute per caster level. A creature only " +
-                    "needs to save once each time it is within the mist (though leaving and returning requires another save).");
+                bp.SetDescription("A soldier of gaia can call upon their connection with nature to receive aid from the natural world. " +
+                    "\nEvery creature within the area of the spell is the target of a combat maneuver check made to grapple each round at the beginning of your turn, " +
+                    "as well as when entering the area. The CMB of this grapple attempt is equal to your warpriest level plus 5, increasing to plus 10 when trying to escape " +
+                    "the grapple.");
                 bp.m_Icon = EntangledBuff.Icon;
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.SavingThrowType = SavingThrowType.Unknown;
@@ -598,6 +615,11 @@ namespace ExpandedContent.Tweaks.Archetypes {
                             },
                             OnUnit = false
                         });
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = SoldierOfGaiaFriendOfTheForestResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+
                 });
                 bp.AddComponent<AbilityAoERadius>(c => {
                     c.m_Radius = 20.Feet();
@@ -639,13 +661,19 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.SetName("Friend of the Forest");
                 bp.SetDescription("At 7th level, once per day, a soldier of gaia can call upon their connection with nature to receive aid from the natural world. " +
                     "\nEvery creature within the area of the spell is the target of a combat maneuver check made to grapple each round at the beginning of your turn, " +
-                    "as well as when entering the area.");
+                    "as well as when entering the area. The CMB of this grapple attempt is equal to your warpriest level plus 5, increasing to plus 10 when trying to escape " +
+                    "the grapple. \nA soldier of gaia can use this ability twice per day at 13th level and three times per day at 19th level.");
                 bp.m_Icon = EntangledBuff.Icon;
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] { SoldierOfGaiaFriendOfTheForestAbility.ToReference<BlueprintUnitFactReference>() };
                 });
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = SoldierOfGaiaFriendOfTheForestResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+
             });
             #endregion
 

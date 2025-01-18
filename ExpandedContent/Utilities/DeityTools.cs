@@ -273,5 +273,14 @@ namespace ExpandedContent.Utilities {
                 c.m_Feature = RazmiriInfiltratorProgression.ToReference<BlueprintFeatureReference>();
             });
         }
+        public static void DisallowSoldierOfGaia(this BlueprintFeature deity) {
+            BlueprintCharacterClassReference WarpriestClass = Resources.GetBlueprintReference<BlueprintCharacterClassReference>("30b5e47d47a0e37438cc5a80c96cfb99");
+            BlueprintArchetype SoldierOfGaiaArchetype = Resources.GetModBlueprint<BlueprintArchetype>("SoldierOfGaiaArchetype");
+            deity.AddComponent<PrerequisiteNoArchetype>(c => {
+                c.HideInUI = true;
+                c.m_CharacterClass = WarpriestClass;
+                c.m_Archetype = SoldierOfGaiaArchetype.ToReference<BlueprintArchetypeReference>();
+            });
+        }
     }
 }
