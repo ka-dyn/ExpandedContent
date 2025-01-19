@@ -37,7 +37,7 @@ namespace ExpandedContent.Tweaks.Spells {
 
             var StaggeredBuff = Resources.GetBlueprintReference<BlueprintBuffReference>("df3950af5a783bd4d91ab73eb8fa0fd3");
             var BleedImmunity = Resources.GetBlueprint<BlueprintBuff>("3f6038d75ccffaa40b338f4b13f9e4b6");
-            var CritImmunity = Resources.GetBlueprint<BlueprintFeature>("df3950af5a783bd4d91ab73eb8fa0fd3");
+            var CritImmunity = Resources.GetBlueprint<BlueprintFeature>("ced0f4e5d02d5914a9f9ff74acacf26d");
 
 
             var TransmuteBloodToAcidBuff = Helpers.CreateBuff("TransmuteBloodToAcidBuff", bp => {
