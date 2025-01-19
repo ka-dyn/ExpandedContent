@@ -3,11 +3,7 @@ using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints;
 using Kingmaker.UnitLogic.Abilities.Blueprints;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ExpandedContent.Config;
 using ExpandedContent.Extensions;
 using ExpandedContent.Utilities;
@@ -32,15 +28,13 @@ using Kingmaker.ResourceLinks;
 using Kingmaker.RuleSystem.Rules.Damage;
 using Kingmaker.RuleSystem.Rules;
 using Kingmaker.UnitLogic.Abilities.Components.AreaEffects;
-using UnityEngine;
 using ExpandedContent.Tweaks.Components;
 using Kingmaker.UnitLogic;
 using Kingmaker.Designers.EventConditionActionSystem.Actions;
 using Kingmaker.ElementsSystem;
 using Kingmaker.UnitLogic.Mechanics.Conditions;
-using Owlcat.Runtime.Visual.RenderPipeline.RendererFeatures.Fluid;
 using Kingmaker.Blueprints.Classes.Prerequisites;
-using ExpandedContent.Tweaks.Classes;
+using UnityEngine;
 
 namespace ExpandedContent.Tweaks.Archetypes {
     internal class SoldierOfGaia {
@@ -587,6 +581,16 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 Main.Log($"Editing: {pfl}");
                 pfl.name = "FriendOfTheForest_20feetAoE";
                 //Main.Log($"{FxDebug.DumpGameObject(pfl.gameObject)}");
+                Object.DestroyImmediate(pfl.transform.Find("AnimationRoot/WaveAll_GrassLiana00").gameObject);
+                Object.DestroyImmediate(pfl.transform.Find("AnimationRoot/WaveAll_GrassLiana00_RotatableCopy").gameObject);
+                Object.DestroyImmediate(pfl.transform.Find("AnimationRoot/WaveAll_GrassLianaSingle00").gameObject);
+                Object.DestroyImmediate(pfl.transform.Find("AnimationRoot/WaveAll_GrassLianaSingle00_RotatableCopy").gameObject);
+                Object.DestroyImmediate(pfl.transform.Find("AnimationRoot/Wave00_Ground00").gameObject);
+                Object.DestroyImmediate(pfl.transform.Find("AnimationRoot/Wave01_Ground00").gameObject);
+                Object.DestroyImmediate(pfl.transform.Find("AnimationRoot/Wave02_Ground00").gameObject);
+                Object.DestroyImmediate(pfl.transform.Find("AnimationRoot/Wave00_Ground00_RotatableCopy").gameObject);
+                Object.DestroyImmediate(pfl.transform.Find("AnimationRoot/Wave01_Ground00_RotatableCopy").gameObject);
+                Object.DestroyImmediate(pfl.transform.Find("AnimationRoot/Wave02_Ground00_RotatableCopy").gameObject);
                 pfl.transform.localScale = new(0.25f, 0.75f, 0.25f);                
             });
             var SoldierOfGaiaFriendOfTheForestAbility = Helpers.CreateBlueprint<BlueprintAbility>("SoldierOfGaiaFriendOfTheForestAbility", bp => {
