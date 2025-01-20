@@ -39,6 +39,8 @@ New Archetypes
 
 - Water Dancer, Monk
 
+- Soldier of Gaia, Warpriest
+
 New Prestige Class
 
 - Stargazer
