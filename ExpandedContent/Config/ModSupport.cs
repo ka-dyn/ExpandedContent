@@ -86,13 +86,13 @@ namespace ExpandedContent.Config {
                 //Soldier of Golarion spelllist patch
                 //This is done after other mods have loaded to also grab any spells they may add
                 var SoldierOfGaiaSpelllist = Resources.GetModBlueprint<BlueprintSpellList>("SoldierOfGaiaSpelllist");
-                SoldierOfGaiaSpelllist.SpellsByLevel[0].m_Spells = ClericSpelllist.SpellsByLevel[0].m_Spells;
-                SoldierOfGaiaSpelllist.SpellsByLevel[1].m_Spells = ClericSpelllist.SpellsByLevel[1].m_Spells;
-                SoldierOfGaiaSpelllist.SpellsByLevel[2].m_Spells = ClericSpelllist.SpellsByLevel[2].m_Spells;
-                SoldierOfGaiaSpelllist.SpellsByLevel[3].m_Spells = ClericSpelllist.SpellsByLevel[3].m_Spells;
-                SoldierOfGaiaSpelllist.SpellsByLevel[4].m_Spells = ClericSpelllist.SpellsByLevel[4].m_Spells;
-                SoldierOfGaiaSpelllist.SpellsByLevel[5].m_Spells = ClericSpelllist.SpellsByLevel[5].m_Spells;
-                SoldierOfGaiaSpelllist.SpellsByLevel[6].m_Spells = ClericSpelllist.SpellsByLevel[6].m_Spells;
+                SoldierOfGaiaSpelllist.SpellsByLevel[0].m_Spells = DruidSpelllist.SpellsByLevel[0].m_Spells;
+                SoldierOfGaiaSpelllist.SpellsByLevel[1].m_Spells = DruidSpelllist.SpellsByLevel[1].m_Spells;
+                SoldierOfGaiaSpelllist.SpellsByLevel[2].m_Spells = DruidSpelllist.SpellsByLevel[2].m_Spells;
+                SoldierOfGaiaSpelllist.SpellsByLevel[3].m_Spells = DruidSpelllist.SpellsByLevel[3].m_Spells;
+                SoldierOfGaiaSpelllist.SpellsByLevel[4].m_Spells = DruidSpelllist.SpellsByLevel[4].m_Spells;
+                SoldierOfGaiaSpelllist.SpellsByLevel[5].m_Spells = DruidSpelllist.SpellsByLevel[5].m_Spells;
+                SoldierOfGaiaSpelllist.SpellsByLevel[6].m_Spells = DruidSpelllist.SpellsByLevel[6].m_Spells;
 
 
 

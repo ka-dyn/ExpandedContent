@@ -186,6 +186,7 @@
     <Compile Include="Tweaks\Archdevils\Mammon.cs" />
     <Compile Include="Tweaks\Archdevils\Mephistopheles.cs" />
     <Compile Include="Tweaks\Archdevils\Moloch.cs" />
+    <Compile Include="Tweaks\Archetypes\Beastmorph.cs" />
     <Compile Include="Tweaks\Archetypes\DrakeRider.cs" />
     <Compile Include="Tweaks\Archetypes\DivineScourge.cs" />
     <Compile Include="Tweaks\Archetypes\Mindchemist.cs" />

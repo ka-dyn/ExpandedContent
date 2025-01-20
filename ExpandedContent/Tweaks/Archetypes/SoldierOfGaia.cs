@@ -119,7 +119,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.CasterLevelModifier = 0;
                 bp.IsArcane = false;
             });
-            SoldierOfGaiaArchetype.m_ReplaceSpellbook = SoldierOfGaiaSpellbook.ToReference<BlueprintSpellbookReference>();
+            SoldierOfGaiaArchetype.m_ReplaceSpellbook = SoldierOfGaiaSpellbook.ToReference<BlueprintSpellbookReference>();            
             #endregion
             #region Spon Casting
             var SummonNatureISingle = Resources.GetBlueprintReference<BlueprintAbilityReference>("c6147854641924442a3bb736080cfeb6");
