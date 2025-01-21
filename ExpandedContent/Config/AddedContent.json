@@ -234,6 +234,11 @@
         "Enabled": true,
         "Homebrew": false,
         "Description": "A warpriest archetype that uses druid spells."
+      },
+      "Beastmorph": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "A alchemist archetype that uses uses mutagens to gain animalistic abilities."
       }
     },
     "IsExpanded": false

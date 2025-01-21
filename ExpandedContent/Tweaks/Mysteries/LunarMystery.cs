@@ -4032,6 +4032,8 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 c.HideInUI = true;
                 c.m_Feature = OracleRevelationPropheticArmorFeature.ToReference<BlueprintFeatureReference>();
             });
+            var ScaledFistACBonusBuff = Resources.GetBlueprint<BlueprintBuff>("64acb179cc6a4f19bb3513d094b28d02").GetComponent<SuppressBuffs>();
+            ScaledFistACBonusBuff.m_Buffs = ScaledFistACBonusBuff.m_Buffs.AppendToArray(OracleRevelationPropheticArmorBuff.ToReference<BlueprintBuffReference>());
             OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationPropheticArmorFeature.ToReference<BlueprintFeatureReference>());
             //TouchOfTheMoon
             var OracleCureSpells = Resources.GetBlueprintReference<BlueprintFeatureReference>("0f7fb23d8f97b024388a433c5a8d493f");

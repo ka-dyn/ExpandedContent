@@ -11,7 +11,8 @@ namespace ExpandedContent.Tweaks.Miscellaneous.NewActivatableAbilityGroups {
     public static class NewActivatableAbilityGroupAdder {
 
         public enum ECActivatableAbilityGroup : int {
-            GiftOfClawAndHorn = 2801
+            GiftOfClawAndHorn = 2801,
+            BeastformMutagen = 2802
         }
 
         private static bool IsECGroup(this ActivatableAbilityGroup group) {
