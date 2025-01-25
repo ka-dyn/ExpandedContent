@@ -75,7 +75,6 @@ namespace ExpandedContent.Tweaks {
                 Archetypes.PlantMaster.AddPlantMaster();
                 Archetypes.DrakeRider.AddDrakeRider();
                 Archetypes.SoldierOfGaia.AddSoldierOfGaia();
-                Archetypes.Beastmorph.AddBeastmorph();
 
                 Archetypes.WaterDancer.AddWaterDancer();
 
@@ -160,6 +159,8 @@ namespace ExpandedContent.Tweaks {
                 Miscellaneous.AlchemistDiscoveries.MindchemistSkillDiscovery.AddMindchemistSkillDiscovery();
                 Miscellaneous.AlchemistDiscoveries.HealingTouchDiscovery.AddHealingTouchDiscovery();
                 Miscellaneous.AlchemistDiscoveries.PheromonesDiscovery.AddPheromonesDiccovery();
+
+                Archetypes.Beastmorph.AddBeastmorph();
 
                 Domains.DomainProperties.AddDomainProperties();
                 Domains.ImpossibleSubdomainSelection.AddImpossibleSubdomainSelection();

@@ -103,7 +103,110 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.HideInCharacterSheetAndLevelUp = false;
             });
             #endregion
-            #region Beastform Buffs
+            #region Beastform Effect Buffs
+            var BeastmorphBeastformMutagenScentEffectBuff = Helpers.CreateBuff("BeastmorphBeastformMutagenScentEffectBuff", bp => {
+                bp.SetName("Beastform Mutagen - Scent");
+                bp.SetDescription("A beastmorph’s mutagen causes him to take on animalistic features. " +
+                    "\nDetect unseen foes within 15 feet by sense of smell, as if you had {g|Encyclopedia:Blindsense}blindsense{/g}.");
+                bp.m_Icon = BeastShapeIIISpell.Icon;
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+                bp.m_Flags = 0;
+                bp.Stacking = StackingType.Replace;
+            });
+            var BeastmorphBeastformMutagenScalesEffectBuff = Helpers.CreateBuff("BeastmorphBeastformMutagenScalesEffectBuff", bp => {
+                bp.SetName("Beastform Mutagen - Scaly Skin");
+                bp.SetDescription("A beastmorph’s mutagen causes him to take on animalistic features. " +
+                    "\nGain a +2 natural armor bonus to AC.");
+                bp.m_Icon = BeastShapeIIISpell.Icon;
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+                bp.m_Flags = 0;
+                bp.Stacking = StackingType.Replace;
+            });
+            var BeastmorphBeastformMutagenEyesEffectBuff = Helpers.CreateBuff("BeastmorphBeastformMutagenEyesEffectBuff", bp => {
+                bp.SetName("Beastform Mutagen - Compound Eyes");
+                bp.SetDescription("A beastmorph’s mutagen causes him to take on animalistic features. " +
+                    "\nGain a +4 bonus to {g|Encyclopedia:Perception}perception{/g}.");
+                bp.m_Icon = BeastShapeIIISpell.Icon;
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+                bp.m_Flags = 0;
+                bp.Stacking = StackingType.Replace;
+            });
+            var BeastmorphBeastformMutagenSpeedEffectBuff = Helpers.CreateBuff("BeastmorphBeastformMutagenSpeedEffectBuff", bp => {
+                bp.SetName("Beastform Mutagen - Speed");
+                bp.SetDescription("A beastmorph’s mutagen causes him to take on animalistic features. " +
+                    "\nYour movement speed is increased by 10 feet, increasing to 20 feet at 10th level, and 30 feet at 14th level.");
+                bp.m_Icon = BeastShapeIIISpell.Icon;
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+                bp.m_Flags = 0;
+                bp.Stacking = StackingType.Replace;
+            });
+            var BeastmorphBeastformMutagenBuoyancyEffectBuff = Helpers.CreateBuff("BeastmorphBeastformMutagenBuoyancyEffectBuff", bp => {
+                bp.SetName("Beastform Mutagen - Buoyancy");
+                bp.SetDescription("A beastmorph’s mutagen causes him to take on animalistic features. " +
+                    "\nYou are immune to ground effects and being tripped.");
+                bp.m_Icon = BeastShapeIIISpell.Icon;
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+                bp.m_Flags = 0;
+                bp.Stacking = StackingType.Replace;
+            });
+            var BeastmorphBeastformMutagenPounceEffectBuff = Helpers.CreateBuff("BeastmorphBeastformMutagenPounceEffectBuff", bp => {
+                bp.SetName("Beastform Mutagen - Pounce");
+                bp.SetDescription("A beastmorph’s mutagen causes him to take on animalistic features. " +
+                    "\nYou can perform a full attack at the end of your charge.");
+                bp.m_Icon = BeastShapeIIISpell.Icon;
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+                bp.m_Flags = 0;
+                bp.Stacking = StackingType.Replace;
+            });
+            var BeastmorphBeastformMutagenTripEffectBuff = Helpers.CreateBuff("BeastmorphBeastformMutagenTripEffectBuff", bp => {
+                bp.SetName("Beastform Mutagen - Trip");
+                bp.SetDescription("A beastmorph’s mutagen causes him to take on animalistic features. " +
+                    "\nMake a free trip attempt on your first melee attack that hits each round.");
+                bp.m_Icon = BeastShapeIIISpell.Icon;
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+                bp.m_Flags = 0;
+                bp.Stacking = StackingType.Replace;
+            });
+            var BeastmorphBeastformMutagenBlindsenseEffectBuff = Helpers.CreateBuff("BeastmorphBeastformMutagenBlindsenseEffectBuff", bp => {
+                bp.SetName("Beastform Mutagen - Blindsense");
+                bp.SetDescription("A beastmorph’s mutagen causes him to take on animalistic features. " +
+                    "\nDetect unseen foes within 30 feet, this range does not stack with the range from the scent mutagen.");
+                bp.m_Icon = BeastShapeIIISpell.Icon;
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+                bp.m_Flags = 0;
+                bp.Stacking = StackingType.Replace;
+            });
+            var BeastmorphBeastformMutagenFerocityEffectBuff = Helpers.CreateBuff("BeastmorphBeastformMutagenFerocityEffectBuff", bp => {
+                bp.SetName("Beastform Mutagen - Ferocity");
+                bp.SetDescription("A beastmorph’s mutagen causes him to take on animalistic features. " +
+                    "\nWhen your hit point total is below 0 but you are not killed, you can fight on for 1 more {g|Encyclopedia:Combat_Round}round{/g}.");
+                bp.m_Icon = BeastShapeIIISpell.Icon;
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+                bp.m_Flags = 0;
+                bp.Stacking = StackingType.Replace;
+            });
+            var BeastmorphBeastformMutagenWebEffectBuff = Helpers.CreateBuff("BeastmorphBeastformMutagenWebEffectBuff", bp => {
+                bp.SetName("Beastform Mutagen - Web");
+                bp.SetDescription("A beastmorph’s mutagen causes him to take on animalistic features. " +
+                    "\nYou gain the ability to fire webs as if a spider, you must wait one minute between uses and the DC of the web is 10 + " +
+                    "half your beastmorph level constitution modifier.");
+                bp.m_Icon = BeastShapeIIISpell.Icon;
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+                bp.m_Flags = 0;
+                bp.Stacking = StackingType.Replace;
+            });
+            #endregion
+            #region Beastform Toggle Buffs
             var BeastmorphBeastformMutagenScentBuff = Helpers.CreateBuff("BeastmorphBeastformMutagenScentBuff", bp => {
                 bp.SetName("Beastform Mutagen - Scent Toggle");
                 bp.SetDescription("");
@@ -185,6 +288,12 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.Stacking = StackingType.Replace;
             });
             #endregion
+
+
+
+
+
+
             #region Beastform Activatable Ability
             var BeastmorphBeastformMutagenScent = Helpers.CreateBlueprint<BlueprintActivatableAbility>("BeastmorphBeastformMutagenScent", bp => {
                 bp.SetName("Beastform Mutagen - Scent");
