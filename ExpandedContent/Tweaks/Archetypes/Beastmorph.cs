@@ -74,8 +74,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     "may select one of the following additional effects for the duration. " +
                     "\nScent - Detect unseen foes within 15 feet by sense of smell, as if you had {g|Encyclopedia:Blindsense}blindsense{/g}. " +
                     "\nScaly Skin - Gain a +2 natural armor bonus to AC. " +
-                    "\nCompound Eyes - Gain a +4 bonus to {g|Encyclopedia:Perception}perception{/g}.");
-                
+                    "\nCompound Eyes - Gain a +4 bonus to {g|Encyclopedia:Perception}perception{/g}.");                
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = true;
                 bp.HideInCharacterSheetAndLevelUp = false;
@@ -86,7 +85,9 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     "using his mutagen, and the following effects are added to the list of beastform options. " +
                     "\nSpeed - Your movement speed is increased by 10 feet, increasing to 20 feet at 10th level, and 30 feet at 14th level. " +
                     "\nBuoyancy - You are immune to ground effects and being tripped. ");
-                
+                bp.AddComponent<IncreaseActivatableAbilityGroupSize>(c => {
+                    c.Group = (ActivatableAbilityGroup)ECActivatableAbilityGroup.BeastformMutagen;                    
+                });
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = true;
                 bp.HideInCharacterSheetAndLevelUp = false;
@@ -97,7 +98,9 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     "using his mutagen, and the following effects are added to the list of beastform options. " +
                     "\nPounce - You can perform a full attack at the end of your charge. " +
                     "\nTrip - Make a free trip attempt on your first melee attack that hits each round. ");
-                
+                bp.AddComponent<IncreaseActivatableAbilityGroupSize>(c => {
+                    c.Group = (ActivatableAbilityGroup)ECActivatableAbilityGroup.BeastformMutagen;
+                });
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = true;
                 bp.HideInCharacterSheetAndLevelUp = false;
@@ -111,7 +114,9 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     "At the end of your next turn, unless brought to above 0 {g|Encyclopedia:HP}hit points{/g}, you immediately fall {g|Encyclopedia:Injury_Death}unconscious{/g}. " +
                     "\nWeb - You gain the ability to fire webs as if a spider, you must wait one minute between uses and the DC of the web is 10 + half your beastmorph level + " +
                     "constitution modifier.");
-                
+                bp.AddComponent<IncreaseActivatableAbilityGroupSize>(c => {
+                    c.Group = (ActivatableAbilityGroup)ECActivatableAbilityGroup.BeastformMutagen;
+                });
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = true;
                 bp.HideInCharacterSheetAndLevelUp = false;
@@ -129,7 +134,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.m_Icon = BeastShapeIIISpell.Icon;
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = true;
-                bp.m_Flags = 0;
+                bp.m_Flags = BlueprintBuff.Flags.RemoveOnRest;
                 bp.Stacking = StackingType.Replace;
             });
             var BeastmorphBeastformMutagenScalesEffectBuff = Helpers.CreateBuff("BeastmorphBeastformMutagenScalesEffectBuff", bp => {
@@ -144,7 +149,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.m_Icon = BeastShapeIIISpell.Icon;
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = true;
-                bp.m_Flags = 0;
+                bp.m_Flags = BlueprintBuff.Flags.RemoveOnRest;
                 bp.Stacking = StackingType.Replace;
             });
             var BeastmorphBeastformMutagenEyesEffectBuff = Helpers.CreateBuff("BeastmorphBeastformMutagenEyesEffectBuff", bp => {
@@ -159,7 +164,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.m_Icon = BeastShapeIIISpell.Icon;
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = true;
-                bp.m_Flags = 0;
+                bp.m_Flags = BlueprintBuff.Flags.RemoveOnRest;
                 bp.Stacking = StackingType.Replace;
             });
             var BeastmorphBeastformMutagenSpeedEffectBuff = Helpers.CreateBuff("BeastmorphBeastformMutagenSpeedEffectBuff", bp => {
@@ -191,7 +196,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.m_Icon = BeastShapeIIISpell.Icon;
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = true;
-                bp.m_Flags = 0;
+                bp.m_Flags = BlueprintBuff.Flags.RemoveOnRest;
                 bp.Stacking = StackingType.Replace;
             });
             var BeastmorphBeastformMutagenBuoyancyEffectBuff = Helpers.CreateBuff("BeastmorphBeastformMutagenBuoyancyEffectBuff", bp => {
@@ -206,7 +211,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.m_Icon = BeastShapeIIISpell.Icon;
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = true;
-                bp.m_Flags = 0;
+                bp.m_Flags = BlueprintBuff.Flags.RemoveOnRest;
                 bp.Stacking = StackingType.Replace;
             });
             var BeastmorphBeastformMutagenPounceEffectBuff = Helpers.CreateBuff("BeastmorphBeastformMutagenPounceEffectBuff", bp => {
@@ -217,7 +222,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.m_Icon = BeastShapeIIISpell.Icon;
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = true;
-                bp.m_Flags = 0;
+                bp.m_Flags = BlueprintBuff.Flags.RemoveOnRest;
                 bp.Stacking = StackingType.Replace;
             });
             var BeastmorphBeastformMutagenTripEffectBuff = Helpers.CreateBuff("BeastmorphBeastformMutagenTripEffectBuff", bp => {
@@ -269,7 +274,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.m_Icon = BeastShapeIIISpell.Icon;
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = true;
-                bp.m_Flags = 0;
+                bp.m_Flags = BlueprintBuff.Flags.RemoveOnRest;
                 bp.Stacking = StackingType.Replace;
             });
             var BeastmorphBeastformMutagenBlindsenseEffectBuff = Helpers.CreateBuff("BeastmorphBeastformMutagenBlindsenseEffectBuff", bp => {
@@ -283,7 +288,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.m_Icon = BeastShapeIIISpell.Icon;
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = true;
-                bp.m_Flags = 0;
+                bp.m_Flags = BlueprintBuff.Flags.RemoveOnRest;
                 bp.Stacking = StackingType.Replace;
             });
             var BeastmorphBeastformMutagenFerocityEffectBuff = Helpers.CreateBuff("BeastmorphBeastformMutagenFerocityEffectBuff", bp => {
@@ -294,7 +299,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.m_Icon = BeastShapeIIISpell.Icon;
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = true;
-                bp.m_Flags = 0;
+                bp.m_Flags = BlueprintBuff.Flags.RemoveOnRest;
                 bp.Stacking = StackingType.Replace;
             });
             var BeastformMutagenWebCooldown = Helpers.CreateBuff("BeastformMutagenWebCooldown", bp => {
@@ -394,7 +399,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.m_Icon = BeastShapeIIISpell.Icon;
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = true;
-                bp.m_Flags = 0;
+                bp.m_Flags = BlueprintBuff.Flags.RemoveOnRest;
                 bp.Stacking = StackingType.Replace;
             });
             #endregion
@@ -980,7 +985,9 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     Helpers.LevelEntry(10, BeastmorphBeastformGreaterMutagenFeature),
                     Helpers.LevelEntry(14, BeastmorphBeastformGrandMutagenFeature)
             };
-
+            AlchemistClass.Progression.UIGroups = AlchemistClass.Progression.UIGroups.AppendToArray(
+                Helpers.CreateUIGroup(BeastmorphBeastformMutagenFeature, BeastmorphBeastformImprovedMutagenFeature, BeastmorphBeastformGreaterMutagenFeature, BeastmorphBeastformGrandMutagenFeature)
+            );
             if (ModSettings.AddedContent.Archetypes.IsDisabled("Beastmorph")) { return; }
             AlchemistClass.m_Archetypes = AlchemistClass.m_Archetypes.AppendToArray(BeastmorphArchetype.ToReference<BlueprintArchetypeReference>());
         }
