@@ -63,9 +63,6 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     "taking on inhuman shapes when they use mutagens.");
             });
 
-
-
-
             #region Beastform Features
             var BeastmorphBeastformMutagenFeature = Helpers.CreateBlueprint<BlueprintFeature>("BeastmorphBeastformMutagenFeature", bp => {
                 bp.SetName("Beastform Mutagen");
