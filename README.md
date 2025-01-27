@@ -41,6 +41,8 @@ New Archetypes
 
 - Soldier of Gaia, Warpriest
 
+- Beastmorph, Alchemist
+
 New Prestige Class
 
 - Stargazer
