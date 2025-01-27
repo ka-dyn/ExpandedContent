@@ -26,7 +26,7 @@ using Kingmaker.ResourceLinks;
 using Kingmaker.UnitLogic.Mechanics.Properties;
 
 namespace ExpandedContent.Tweaks.Domains {
-    internal class InsectDomain {//WIP!!!!!!!!!!!!!!!!!!!!!!!!
+    internal class InsectDomain {
 
         public static void AddInsectDomain() {
 
