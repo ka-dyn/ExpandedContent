@@ -149,6 +149,8 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.AddComponent<AddInitiatorSavingThrowTrigger>(c => {
                     c.OnlyPass = false;
                     c.OnlyFail = false;
+                    c.SpecificSave = false;
+                    c.ChooseSave = SavingThrowType.Fortitude;
                     c.Action = Helpers.CreateActionList(
                         new ContextActionRemoveSelf()
                         );
