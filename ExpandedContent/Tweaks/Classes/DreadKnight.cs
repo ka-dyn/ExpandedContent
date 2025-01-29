@@ -163,7 +163,7 @@ namespace ExpandedContent.Tweaks.Classes {
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;
             });
-            // Sinful Absolution
+            #region Sinful Absolution
             var SinfulAbsIcon = AssetLoader.LoadInternal("Skills", "Icon_SinfulAbsolution.png");
             var FiendishSmiteGoodBuff = Resources.GetBlueprint<BlueprintBuff>("a9035e49d6d79a64eaec321f2cb629a8");
             var SinfulAbsolutionBuff = Helpers.CreateBlueprint<BlueprintBuff>("SinfulAbsolutionBuff", bp => {
@@ -403,7 +403,8 @@ namespace ExpandedContent.Tweaks.Classes {
                 bp.AddComponent<PrerequisiteFeature>(c => { c.m_Feature = SinfulAbsolutionFeature.ToReference<BlueprintFeatureReference>(); });
             });
             MythicAbilitySelection.m_AllFeatures = MythicAbilitySelection.m_AllFeatures.AppendToArray(AbundantSin.ToReference<BlueprintFeatureReference>());
-            // Aura of Evil
+            #endregion
+            #region Aura of Evil
             var EvilIcon = AssetLoader.LoadInternal("Skills", "Icon_AuraEvil.png");
             var UnholyNimbus = Resources.GetBlueprint<BlueprintBuff>("ec14c8e821c460b42bb925a2320ddf0c");
             var AuraOfEvilBuff = Helpers.CreateBlueprint<BlueprintBuff>("AuraOfEvilBuff", bp => {
@@ -427,6 +428,7 @@ namespace ExpandedContent.Tweaks.Classes {
                 //    c.m_Buff = AuraOfEvilBuff.ToReference<BlueprintBuffReference>();
                 //});
             });
+            #endregion
             #region Profane Resilience
             var ProfaneResIcon = AssetLoader.LoadInternal("Skills", "Icon_UnholyRes.png");
             var ProfaneResilience = Helpers.CreateBlueprint<BlueprintFeature>("ProfaneResilience", bp => {
@@ -2813,88 +2815,93 @@ namespace ExpandedContent.Tweaks.Classes {
             var WeaponBondAxiomaticChoice = Resources.GetBlueprint<BlueprintActivatableAbility>("d76e8a80ab14ac942b6a9b8aaa5860b1");
             var WeaponBondFlamingBurstChoice = Resources.GetBlueprint<BlueprintActivatableAbility>("3af19bdbd6215434f8421a860cc98363");
             var WeaponBondSwitchAbility = Resources.GetBlueprint<BlueprintAbility>("7ff088ab58c69854b82ea95c2b0e35b4");
-            WeaponBondSwitchAbility.m_DisplayName = Helpers.CreateString("$WeaponBondSwitchAbility.DisplayName", "Divine/Profane Weapon Bond");
-            WeaponBondSwitchAbility.m_Description = Helpers.CreateString("$WeaponBondSwitchAbility.Description", "Upon reaching 5th level, a paladin/dreadknight forms a divine/profane bond with her weapon. " +
-                "As a {g|Encyclopedia:Standard_Actions}standard action{/g}, she can call upon the aid of a celestial/fiendish spirit for 1 minute per " +
-                "paladin/dreadknight level.\nAt 5th level, this spirit grants the weapon a +1 enhancement {g|Encyclopedia:Bonus}bonus{/g}. For every three " +
-                "levels beyond 5th, the weapon gains another +1 enhancement bonus, to a maximum of +6 at 20th level. These bonuses can be added " +
-                "to the weapon, stacking with existing weapon bonuses to a maximum of +5.\nAlternatively, they can be used to add any of the " +
-                "following weapon properties: axiomatic/anarchic, brilliant energy/vorpal, defending, disruption/vicious, flaming, flaming burst, holy/unholy, keen, " +
-                "and {g|Encyclopedia:Speed}speed{/g} depending on class. Adding these properties consumes an amount of bonus equal to the " +
-                "property's cost. These bonuses are added to any properties the weapon already has, but duplicate abilities do not " +
-                "stack.\nA paladin/dreadknight can use this ability once per day at 5th level, and one additional time per day for every four " +
-                "levels beyond 5th, to a total of four times per day at 17th level.");
-            WeaponBondSwitchAbility.RemoveComponents<ContextRankConfig>();
-            WeaponBondSwitchAbility.AddComponent<ContextRankConfig>(c => {
-                c.m_BaseValueType = ContextRankBaseValueType.CharacterLevel;
-                c.m_Max = 20;
+            //WeaponBondSwitchAbility.m_DisplayName = Helpers.CreateString("$WeaponBondSwitchAbility.DisplayName", "Divine/Profane Weapon Bond");
+            //WeaponBondSwitchAbility.m_Description = Helpers.CreateString("$WeaponBondSwitchAbility.Description", "Upon reaching 5th level, a paladin/dreadknight forms a divine/profane bond with her weapon. " +
+            //    "As a {g|Encyclopedia:Standard_Actions}standard action{/g}, she can call upon the aid of a celestial/fiendish spirit for 1 minute per " +
+            //    "paladin/dreadknight level.\nAt 5th level, this spirit grants the weapon a +1 enhancement {g|Encyclopedia:Bonus}bonus{/g}. For every three " +
+            //    "levels beyond 5th, the weapon gains another +1 enhancement bonus, to a maximum of +6 at 20th level. These bonuses can be added " +
+            //    "to the weapon, stacking with existing weapon bonuses to a maximum of +5.\nAlternatively, they can be used to add any of the " +
+            //    "following weapon properties: axiomatic/anarchic, brilliant energy/vorpal, defending, disruption/vicious, flaming, flaming burst, holy/unholy, keen, " +
+            //    "and {g|Encyclopedia:Speed}speed{/g} depending on class. Adding these properties consumes an amount of bonus equal to the " +
+            //    "property's cost. These bonuses are added to any properties the weapon already has, but duplicate abilities do not " +
+            //    "stack.\nA paladin/dreadknight can use this ability once per day at 5th level, and one additional time per day for every four " +
+            //    "levels beyond 5th, to a total of four times per day at 17th level.");
+            //WeaponBondSwitchAbility.RemoveComponents<ContextRankConfig>();
+            //WeaponBondSwitchAbility.AddComponent<ContextRankConfig>(c => {
+            //    c.m_BaseValueType = ContextRankBaseValueType.CharacterLevel;
+            //    c.m_Max = 20;
+            //});
+            WeaponBondSwitchAbility.GetComponent<ContextRankConfig>().TemporaryContext(c => {
+                c.m_Class = c.m_Class.AppendToArray(DreadKnightClass.ToReference<BlueprintCharacterClassReference>());
+                c.m_UseMax = true;
+                c.m_BaseValueType = ContextRankBaseValueType.SummClassLevelWithArchetype;
             });
             WeaponBondSwitchAbility.RemoveComponents<AbilityCasterAlignment>();
             WeaponBondSwitchAbility.AddComponent<AbilityCasterAlignment>(c => {
                 c.Alignment = AlignmentMaskType.Any;
             });
-            var WeaponBondDurationBuff = Resources.GetBlueprint<BlueprintBuff>("bf570774501886f47b395a4bfe75eeb2");
-            WeaponBondDurationBuff.m_DisplayName = Helpers.CreateString("$WeaponBondSwitchAbility.DisplayName", "Divine/Profane Weapon Bond");
-            WeaponBondDurationBuff.m_Description = Helpers.CreateString("$WeaponBondSwitchAbility.Description", "Upon reaching 5th level, a paladin/dreadknight forms a divine/profane bond with her weapon. " +
-                "As a {g|Encyclopedia:Standard_Actions}standard action{/g}, she can call upon the aid of a celestial/fiendish spirit for 1 minute per " +
-                "paladin/dreadknight level.\nAt 5th level, this spirit grants the weapon a +1 enhancement {g|Encyclopedia:Bonus}bonus{/g}. For every three " +
-                "levels beyond 5th, the weapon gains another +1 enhancement bonus, to a maximum of +6 at 20th level. These bonuses can be added " +
-                "to the weapon, stacking with existing weapon bonuses to a maximum of +5.\nAlternatively, they can be used to add any of the " +
-                "following weapon properties: axiomatic/anarchic, brilliant energy/vorpal, defending, disruption/vicious, flaming, flaming burst, holy/unholy, keen, " +
-                "and {g|Encyclopedia:Speed}speed{/g} depending on class. Adding these properties consumes an amount of bonus equal to the " +
-                "property's cost. These bonuses are added to any properties the weapon already has, but duplicate abilities do not " +
-                "stack.\nA paladin/dreadknight can use this ability once per day at 5th level, and one additional time per day for every four " +
-                "levels beyond 5th, to a total of four times per day at 17th level.");
+            //var WeaponBondDurationBuff = Resources.GetBlueprint<BlueprintBuff>("bf570774501886f47b395a4bfe75eeb2");
+            //WeaponBondDurationBuff.m_DisplayName = Helpers.CreateString("$WeaponBondSwitchAbility.DisplayName", "Divine/Profane Weapon Bond");
+            //WeaponBondDurationBuff.m_Description = Helpers.CreateString("$WeaponBondSwitchAbility.Description", "Upon reaching 5th level, a paladin/dreadknight forms a divine/profane bond with her weapon. " +
+            //    "As a {g|Encyclopedia:Standard_Actions}standard action{/g}, she can call upon the aid of a celestial/fiendish spirit for 1 minute per " +
+            //    "paladin/dreadknight level.\nAt 5th level, this spirit grants the weapon a +1 enhancement {g|Encyclopedia:Bonus}bonus{/g}. For every three " +
+            //    "levels beyond 5th, the weapon gains another +1 enhancement bonus, to a maximum of +6 at 20th level. These bonuses can be added " +
+            //    "to the weapon, stacking with existing weapon bonuses to a maximum of +5.\nAlternatively, they can be used to add any of the " +
+            //    "following weapon properties: axiomatic/anarchic, brilliant energy/vorpal, defending, disruption/vicious, flaming, flaming burst, holy/unholy, keen, " +
+            //    "and {g|Encyclopedia:Speed}speed{/g} depending on class. Adding these properties consumes an amount of bonus equal to the " +
+            //    "property's cost. These bonuses are added to any properties the weapon already has, but duplicate abilities do not " +
+            //    "stack.\nA paladin/dreadknight can use this ability once per day at 5th level, and one additional time per day for every four " +
+            //    "levels beyond 5th, to a total of four times per day at 17th level.");
             var WeaponBondResourse = Resources.GetBlueprint<BlueprintAbilityResource>("3683d1af071c1744185ff93cba9db10b");
-            WeaponBondFlamingBurstChoice.SetName("Divine/Profane Weapon Bond - Flaming Burst");
-            WeaponBondFlamingBurstChoice.SetDescription("A paladin/dread knight can add the flaming burst property to a weapon enhanced with her divine/profane weapon bond, " +
-                "but this consumes 2 points of enhancement {g|Encyclopedia:Bonus}bonus{/g} granted to this weapon. A flaming burst weapon functions as a " +
-                "flaming weapon that also explodes with flame upon striking a successful {g|Encyclopedia:Critical}critical hit{/g}. The fire does not harm " +
-                "the wielder. In addition to the extra {g|Encyclopedia:Dice}1d6{/g} {g|Encyclopedia:Energy_Damage}fire damage{/g} from the flaming ability, a " +
-                "flaming burst weapon deals an extra 1d10 points of fire {g|Encyclopedia:Damage}damage{/g} on a successful critical hit. If the weapon's " +
-                "critical multiplier is ?3, add an extra 2d10 points of fire damage instead, and if the multiplier is ?4, add an extra 3d10 points of fire damage.");
+            //WeaponBondFlamingBurstChoice.SetName("Divine/Profane Weapon Bond - Flaming Burst");
+            //WeaponBondFlamingBurstChoice.SetDescription("A paladin/dread knight can add the flaming burst property to a weapon enhanced with her divine/profane weapon bond, " +
+            //    "but this consumes 2 points of enhancement {g|Encyclopedia:Bonus}bonus{/g} granted to this weapon. A flaming burst weapon functions as a " +
+            //    "flaming weapon that also explodes with flame upon striking a successful {g|Encyclopedia:Critical}critical hit{/g}. The fire does not harm " +
+            //    "the wielder. In addition to the extra {g|Encyclopedia:Dice}1d6{/g} {g|Encyclopedia:Energy_Damage}fire damage{/g} from the flaming ability, a " +
+            //    "flaming burst weapon deals an extra 1d10 points of fire {g|Encyclopedia:Damage}damage{/g} on a successful critical hit. If the weapon's " +
+            //    "critical multiplier is ?3, add an extra 2d10 points of fire damage instead, and if the multiplier is ?4, add an extra 3d10 points of fire damage.");
             var WeaponBondBrilliantEnergyChoice = Resources.GetBlueprint<BlueprintActivatableAbility>("f1eec5cc68099384cbfc6964049b24fa");
-            WeaponBondBrilliantEnergyChoice.SetName("Divine/Profane Weapon Bond - Brilliant Energy");
-            WeaponBondBrilliantEnergyChoice.SetDescription("A paladin/dread knight can add the brilliant energy property to a weapon enhanced with her divine/profane weapon bond, " +
-                "but this consumes 4 points of enhancement {g|Encyclopedia:Bonus}bonus{/g} granted to this weapon.\nA brilliant energy weapon ignores nonliving matter. " +
-                "Armor and shield bonuses to {g|Encyclopedia:Armor_Class}AC{/g} (including any enhancement bonuses to that armor) do not count against it because the weapon " +
-                "passes through armor. ({g|Encyclopedia:Dexterity}Dexterity{/g}, deflection, dodge, natural armor, and other such bonuses still apply.) A brilliant energy " +
-                "weapon cannot harm undead, constructs, or objects.");
-            WeaponBondAdditionalUse.SetName("Divine/Profane Weapon Bond - Additional Use");
-            WeaponBondAdditionalUse.SetDescription("Upon reaching 5th level, a paladin/dreadknight forms a divine/profane bond with her weapon. " +
-                "As a {g|Encyclopedia:Standard_Actions}standard action{/g}, she can call upon the aid of a celestial/fiendish spirit for 1 minute per " +
-                "paladin/dreadknight level.\nAt 5th level, this spirit grants the weapon a +1 enhancement {g|Encyclopedia:Bonus}bonus{/g}. For every three " +
-                "levels beyond 5th, the weapon gains another +1 enhancement bonus, to a maximum of +6 at 20th level. These bonuses can be added " +
-                "to the weapon, stacking with existing weapon bonuses to a maximum of +5.\nAlternatively, they can be used to add any of the " +
-                "following weapon properties: axiomatic/anarchic, brilliant energy/vorpal, defending, disruption/vicious, flaming, flaming burst, holy/unholy, keen, " +
-                "and {g|Encyclopedia:Speed}speed{/g} depending on class. Adding these properties consumes an amount of bonus equal to the " +
-                "property's cost. These bonuses are added to any properties the weapon already has, but duplicate abilities do not " +
-                "stack.\nA paladin/dreadknight can use this ability once per day at 5th level, and one additional time per day for every four " +
-                "levels beyond 5th, to a total of four times per day at 17th level.");
-            var WeaponBondKeenChoice = Resources.GetBlueprint<BlueprintActivatableAbility>("27d76f1afda08a64d897cc81201b5218");
-            WeaponBondKeenChoice.SetName("Divine/Profane Weapon Bond - Keen");
-            WeaponBondKeenChoice.SetDescription("A paladin/dread knight can add the keen property to a weapon enhanced with her divine/profane weapon bond, " +
-                "but this consumes 1 point of enhancement {g|Encyclopedia:Bonus}bonus{/g} granted to this weapon.\nThe keen property doubles the " +
-                "threat range of a weapon. This benefit doesn't stack with any other effects that expand the threat range of a weapon " +
-                "(such as the keen edge {g|Encyclopedia:Spell}spell{/g} or the Improved {g|Encyclopedia:Critical}Critical{/g} {g|Encyclopedia:Feat}feat{/g}).");
-            var WeaponBondSpeedChoice = Resources.GetBlueprint<BlueprintActivatableAbility>("ed1ef581af9d9014fa1386216b31cdae");
-            WeaponBondSpeedChoice.SetName("Divine/Profane Weapon Bond - Speed");
-            WeaponBondSpeedChoice.SetDescription("A paladin/dread knight can add the {g|Encyclopedia:Speed}speed{/g} property to a weapon " +
-                "enhanced with her divine/profane weapon bond, but this consumes 3 points of enhancement {g|Encyclopedia:Bonus}bonus{/g} granted to " +
-                "this weapon.\nWhen making a full {g|Encyclopedia:Attack}attack{/g}, the wielder of a speed weapon may make one extra attack with it. " +
-                "The attack uses the wielder's full {g|Encyclopedia:BAB}base attack bonus{/g}, plus any modifiers appropriate to the situation. " +
-                "(This benefit is not cumulative with similar effects, such as a haste {g|Encyclopedia:Spell}spell{/g}.)");
-            var WeaponBondFlamingChoice = Resources.GetBlueprint<BlueprintActivatableAbility>("7902941ef70a0dc44bcfc174d6193386");
-            WeaponBondFlamingChoice.SetName("Divine/Profane Weapon Bond - Flaming");
-            WeaponBondFlamingChoice.SetDescription("A paladin/dread knight can add the flaming property to a weapon enhanced with her divine/profane weapon bond, " +
-                "but this consumes 1 point of enhancement {g|Encyclopedia:Bonus}bonus{/g} granted to this weapon.\nA flaming weapon is sheathed in " +
-                "fire that deals an extra {g|Encyclopedia:Dice}1d6{/g} points of {g|Encyclopedia:Energy_Damage}fire damage{/g} on a successful hit. " +
-                "The fire does not harm the wielder.");
-            WeaponBondAxiomaticChoice.SetName("Divine/Profane Weapon Bond - Axiomatic");
-            WeaponBondAxiomaticChoice.SetDescription("A paladin/dread knight can add the axiomatic property to a weapon enhanced with her divine/profane weapon bond, " +
-                "but this consumes 2 points of enhancement {g|Encyclopedia:Bonus}bonus{/g} granted to this weapon.\nAn axiomatic weapon is infused with " +
-                "lawful power. It makes the weapon {g|Encyclopedia:Alignment}lawful-aligned{/g} and thus overcomes the corresponding {g|Encyclopedia:Damage_Reduction}damage " +
-                "reduction{/g}. It deals an extra {g|Encyclopedia:Dice}2d6{/g} points of {g|Encyclopedia:Damage}damage{/g} against chaotic creatures.");
+            //WeaponBondBrilliantEnergyChoice.SetName("Divine/Profane Weapon Bond - Brilliant Energy");
+            //WeaponBondBrilliantEnergyChoice.SetDescription("A paladin/dread knight can add the brilliant energy property to a weapon enhanced with her divine/profane weapon bond, " +
+            //    "but this consumes 4 points of enhancement {g|Encyclopedia:Bonus}bonus{/g} granted to this weapon.\nA brilliant energy weapon ignores nonliving matter. " +
+            //    "Armor and shield bonuses to {g|Encyclopedia:Armor_Class}AC{/g} (including any enhancement bonuses to that armor) do not count against it because the weapon " +
+            //    "passes through armor. ({g|Encyclopedia:Dexterity}Dexterity{/g}, deflection, dodge, natural armor, and other such bonuses still apply.) A brilliant energy " +
+            //    "weapon cannot harm undead, constructs, or objects.");
+            //WeaponBondAdditionalUse.SetName("Divine/Profane Weapon Bond - Additional Use");
+            //WeaponBondAdditionalUse.SetDescription("Upon reaching 5th level, a paladin/dreadknight forms a divine/profane bond with her weapon. " +
+            //    "As a {g|Encyclopedia:Standard_Actions}standard action{/g}, she can call upon the aid of a celestial/fiendish spirit for 1 minute per " +
+            //    "paladin/dreadknight level.\nAt 5th level, this spirit grants the weapon a +1 enhancement {g|Encyclopedia:Bonus}bonus{/g}. For every three " +
+            //    "levels beyond 5th, the weapon gains another +1 enhancement bonus, to a maximum of +6 at 20th level. These bonuses can be added " +
+            //    "to the weapon, stacking with existing weapon bonuses to a maximum of +5.\nAlternatively, they can be used to add any of the " +
+            //    "following weapon properties: axiomatic/anarchic, brilliant energy/vorpal, defending, disruption/vicious, flaming, flaming burst, holy/unholy, keen, " +
+            //    "and {g|Encyclopedia:Speed}speed{/g} depending on class. Adding these properties consumes an amount of bonus equal to the " +
+            //    "property's cost. These bonuses are added to any properties the weapon already has, but duplicate abilities do not " +
+            //    "stack.\nA paladin/dreadknight can use this ability once per day at 5th level, and one additional time per day for every four " +
+            //    "levels beyond 5th, to a total of four times per day at 17th level.");
+            //var WeaponBondKeenChoice = Resources.GetBlueprint<BlueprintActivatableAbility>("27d76f1afda08a64d897cc81201b5218");
+            //WeaponBondKeenChoice.SetName("Divine/Profane Weapon Bond - Keen");
+            //WeaponBondKeenChoice.SetDescription("A paladin/dread knight can add the keen property to a weapon enhanced with her divine/profane weapon bond, " +
+            //    "but this consumes 1 point of enhancement {g|Encyclopedia:Bonus}bonus{/g} granted to this weapon.\nThe keen property doubles the " +
+            //    "threat range of a weapon. This benefit doesn't stack with any other effects that expand the threat range of a weapon " +
+            //    "(such as the keen edge {g|Encyclopedia:Spell}spell{/g} or the Improved {g|Encyclopedia:Critical}Critical{/g} {g|Encyclopedia:Feat}feat{/g}).");
+            //var WeaponBondSpeedChoice = Resources.GetBlueprint<BlueprintActivatableAbility>("ed1ef581af9d9014fa1386216b31cdae");
+            //WeaponBondSpeedChoice.SetName("Divine/Profane Weapon Bond - Speed");
+            //WeaponBondSpeedChoice.SetDescription("A paladin/dread knight can add the {g|Encyclopedia:Speed}speed{/g} property to a weapon " +
+            //    "enhanced with her divine/profane weapon bond, but this consumes 3 points of enhancement {g|Encyclopedia:Bonus}bonus{/g} granted to " +
+            //    "this weapon.\nWhen making a full {g|Encyclopedia:Attack}attack{/g}, the wielder of a speed weapon may make one extra attack with it. " +
+            //    "The attack uses the wielder's full {g|Encyclopedia:BAB}base attack bonus{/g}, plus any modifiers appropriate to the situation. " +
+            //    "(This benefit is not cumulative with similar effects, such as a haste {g|Encyclopedia:Spell}spell{/g}.)");
+            //var WeaponBondFlamingChoice = Resources.GetBlueprint<BlueprintActivatableAbility>("7902941ef70a0dc44bcfc174d6193386");
+            //WeaponBondFlamingChoice.SetName("Divine/Profane Weapon Bond - Flaming");
+            //WeaponBondFlamingChoice.SetDescription("A paladin/dread knight can add the flaming property to a weapon enhanced with her divine/profane weapon bond, " +
+            //    "but this consumes 1 point of enhancement {g|Encyclopedia:Bonus}bonus{/g} granted to this weapon.\nA flaming weapon is sheathed in " +
+            //    "fire that deals an extra {g|Encyclopedia:Dice}1d6{/g} points of {g|Encyclopedia:Energy_Damage}fire damage{/g} on a successful hit. " +
+            //    "The fire does not harm the wielder.");
+            //WeaponBondAxiomaticChoice.SetName("Divine/Profane Weapon Bond - Axiomatic");
+            //WeaponBondAxiomaticChoice.SetDescription("A paladin/dread knight can add the axiomatic property to a weapon enhanced with her divine/profane weapon bond, " +
+            //    "but this consumes 2 points of enhancement {g|Encyclopedia:Bonus}bonus{/g} granted to this weapon.\nAn axiomatic weapon is infused with " +
+            //    "lawful power. It makes the weapon {g|Encyclopedia:Alignment}lawful-aligned{/g} and thus overcomes the corresponding {g|Encyclopedia:Damage_Reduction}damage " +
+            //    "reduction{/g}. It deals an extra {g|Encyclopedia:Dice}2d6{/g} points of {g|Encyclopedia:Damage}damage{/g} against chaotic creatures.");
             var VorpalIcon = AssetLoader.LoadInternal("Skills", "Icon_Vorpal.png");
             var ViciousIcon = AssetLoader.LoadInternal("Skills", "Icon_Vicious.png");
             var FiendishWeaponViciousBuff = Helpers.CreateBlueprint<BlueprintBuff>("FiendishWeaponViciousBuff", bp => {
@@ -3459,7 +3466,7 @@ namespace ExpandedContent.Tweaks.Classes {
                 });
             });
             #endregion
-            // Aura of Sin
+            #region Aura of Sin
             var AOSIcon = AssetLoader.LoadInternal("Skills", "Icon_AOS.png");
             var AuraOfSinEffectBuff = Helpers.CreateBlueprint<BlueprintBuff>("AuraOfSinEffectBuff", bp => {
                 bp.SetName("Aura of Sin");
@@ -3508,7 +3515,8 @@ namespace ExpandedContent.Tweaks.Classes {
                     c.m_Buff = AuraOfSinBuff.ToReference<BlueprintBuffReference>();
                 });
             });
-            // Aura of Depravity - NEEDS TESTING
+            #endregion
+            #region Aura of Depravity
             var AODepIcon = AssetLoader.LoadInternal("Skills", "Icon_AODepravity.png");
             var AuraOfDepravityEffectBuff = Helpers.CreateBlueprint<BlueprintBuff>("AuraOfDepravityEffectBuff", bp => {
                 bp.SetName("Aura of Depravity");
@@ -3580,7 +3588,8 @@ namespace ExpandedContent.Tweaks.Classes {
                     c.Descriptor = SpellDescriptor.Compulsion;
                 });
             });
-            // Profane Champion
+            #endregion
+            #region Profane Champion
             var ProfaneChampIcon = AssetLoader.LoadInternal("Skills", "Icon_ProfaneChamp.png");            
             var ProfaneChampion = Helpers.CreateBlueprint<BlueprintFeature>("ProfaneChampion", bp => {
                 bp.SetName("Profane Champion");
@@ -3639,6 +3648,7 @@ namespace ExpandedContent.Tweaks.Classes {
                 DreadKnightCompanionSelection.ToReference<BlueprintFeatureReference>(),
                 FiendishWeaponBondProgression.ToReference<BlueprintFeatureReference>() };
             });
+            #endregion
             //Hellknight Singnifer Spellbook Stuffs
             var HellknightSigniferClass = Resources.GetBlueprint<BlueprintCharacterClass>("ee6425d6392101843af35f756ce7fefd");
             var HellknightSigniferDreadknightLevelUp = Helpers.CreateBlueprint<BlueprintFeature>("HellknightSigniferDreadknightLevelUp", bp => {
