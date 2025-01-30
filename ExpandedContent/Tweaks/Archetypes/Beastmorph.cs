@@ -953,7 +953,8 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 Resources.GetBlueprint<BlueprintAbility>("4c81642195d090448b92dc4673d7bce7"), //GrandWisInt
                 Resources.GetBlueprint<BlueprintAbility>("8f899ac4f1a140347a9d8049c9049125"), //GrandWisCha
                 Resources.GetBlueprint<BlueprintAbility>("f9f179c3015a6564faef97adf87c4662"), //GrandChaInt
-                Resources.GetBlueprint<BlueprintAbility>("21bd5d475d1526f41bc1d269e8932612") //GrandChaWis
+                Resources.GetBlueprint<BlueprintAbility>("21bd5d475d1526f41bc1d269e8932612"), //GrandChaWis
+                Resources.GetBlueprint<BlueprintAbility>("17903369fcc1aa241a87ec264597aed5") //TrueMutagen
             };
             foreach (var ability in MutagenAbilities) {
                 LazyBeastformConditional(ability, BeastmorphBeastformMutagenScentBuff, BeastmorphBeastformMutagenScentEffectBuff);
