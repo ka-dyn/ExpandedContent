@@ -72,6 +72,7 @@ namespace ExpandedContent.Utilities {
             public static BlueprintFeature FurDomainAllowed => Resources.GetModBlueprint<BlueprintFeature>("FurDomainAllowed");
             public static BlueprintFeature GrowthDomainAllowed => Resources.GetModBlueprint<BlueprintFeature>("GrowthDomainAllowed");
             public static BlueprintFeature HeroismDomainAllowed => Resources.GetModBlueprint<BlueprintFeature>("HeroismDomainAllowed");
+            public static BlueprintFeature InsanityDomainAllowed => Resources.GetModBlueprint<BlueprintFeature>("InsanityDomainAllowed");
             public static BlueprintFeature InsectDomainAllowed => Resources.GetModBlueprint<BlueprintFeature>("InsectDomainAllowed");
             public static BlueprintFeature OldIceDomainAllowed => Resources.GetModBlueprint<BlueprintFeature>("IceDomainAllowed");
             public static BlueprintFeature LightningDomainAllowed => Resources.GetModBlueprint<BlueprintFeature>("LightningDomainAllowed");
@@ -148,6 +149,7 @@ namespace ExpandedContent.Utilities {
             public static BlueprintFeature FurDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("FurDomainAllowedSeparatist");
             public static BlueprintFeature GrowthDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("GrowthDomainAllowedSeparatist");
             public static BlueprintFeature HeroismDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("HeroismDomainAllowedSeparatist");
+            public static BlueprintFeature InsanityDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("InsanityDomainAllowedSeparatist");
             public static BlueprintFeature InsectDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("InsectDomainAllowedSeparatist");
             //public static BlueprintFeature IceDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("IceDomainAllowedSeparatist");
             public static BlueprintFeature LightningDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("LightningDomainAllowedSeparatist");

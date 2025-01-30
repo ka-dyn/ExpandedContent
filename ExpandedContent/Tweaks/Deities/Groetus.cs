@@ -23,6 +23,7 @@ namespace ExpandedContent.Tweaks.Deities {
             GroetusFeature.DisallowSoldierOfGaia();
             GroetusFeature.SetAllowedDomains(
                     DeityTools.DomainAllowed.StarsDomainAllowed,
+                    DeityTools.DomainAllowed.InsanityDomainAllowed,
                     DeityTools.SeparatistDomainAllowed.AgathionDomainAllowedSeparatist,//Good
                     DeityTools.SeparatistDomainAllowed.ArchonDomainGoodAllowedSeparatist,//Good
                     DeityTools.SeparatistDomainAllowed.BloodDomainAllowedSeparatist,

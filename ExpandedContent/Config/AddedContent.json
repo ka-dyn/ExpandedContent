@@ -410,6 +410,11 @@
         "Enabled": true,
         "Homebrew": false,
         "Description": "Adds the insect subdomain, a subdomain to the animal domain."
+      },
+      "Insanity Subdomain": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds the insanity subdomain, a subdomain to the madness domain."
       }
     },
     "IsExpanded": false

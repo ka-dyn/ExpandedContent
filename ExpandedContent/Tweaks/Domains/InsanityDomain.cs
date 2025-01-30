@@ -46,7 +46,7 @@ namespace ExpandedContent.Tweaks.Domains {
             var MadnessDomainGreaterFeature = Resources.GetBlueprint<BlueprintFeature>("9acc8ab2f313d0e49bb01e030c868e3f");
             var MadnessDomainGreaterFeatureSeparatist = Resources.GetBlueprint<BlueprintFeature>("249e48a1be504850808042c3ed053cda");
             var Confusionbuff = Resources.GetBlueprintReference<BlueprintBuffReference>("886c7407dc629dc499b9f1465ff382df");
-
+            var FrightfulAspectIcon = Resources.GetBlueprint<BlueprintAbility>("e788b02f8d21014488067bdd3ba7b325").Icon;
 
             var InsanityDomainBaseResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("InsanityDomainBaseResource", bp => {
                 bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
@@ -96,7 +96,7 @@ namespace ExpandedContent.Tweaks.Domains {
                         new ContextActionRemoveSelf()
                         );
                 });
-                bp.m_Icon = InsanityBeaconIcon;
+                bp.m_Icon = FrightfulAspectIcon;
                 bp.m_Flags = 0;
                 bp.Stacking = StackingType.Replace;
             });
@@ -127,7 +127,7 @@ namespace ExpandedContent.Tweaks.Domains {
                             DurationSeconds = 0
                         });
                 });
-                bp.m_Icon = InsanityBeaconIcon;
+                bp.m_Icon = FrightfulAspectIcon;
                 bp.Type = AbilityType.Supernatural;
                 bp.Range = AbilityRange.Touch;
                 bp.CanTargetPoint = false;
@@ -460,7 +460,7 @@ namespace ExpandedContent.Tweaks.Domains {
                             DurationSeconds = 0
                         });
                 });
-                bp.m_Icon = InsanityBeaconIcon;
+                bp.m_Icon = FrightfulAspectIcon;
                 bp.Type = AbilityType.Supernatural;
                 bp.Range = AbilityRange.Touch;
                 bp.CanTargetPoint = false;

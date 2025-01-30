@@ -93,6 +93,7 @@ namespace ExpandedContent.Tweaks.Archdevils {
                     DeityTools.DomainAllowed.CharmDomainAllowed,
                     DeityTools.DomainAllowed.LustDomainAllowed,
                     DeityTools.DomainAllowed.RageDomainAllowed,
+                    DeityTools.SeparatistDomainAllowed.InsanityDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.AirDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.AnimalDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.ArtificeDomainAllowedSeparatist,
