@@ -32,14 +32,12 @@ namespace ExpandedContent.Tweaks.Components {
         public bool CurrentAreaPartIsFavoredTerrain => AreaService.Instance.CurrentAreaSetting == Terrain;
 
         public override void OnTurnOn() {
-            base.OnTurnOn();
-            base.Owner.Ensure<UnitPartFavoredTerrain>().AddEntry(Terrain, base.Fact);
+            //base.OnTurnOn();
             UpdateModifiers();
         }
 
         public override void OnTurnOff() {
-            base.OnTurnOff();
-            base.Owner.Ensure<UnitPartFavoredTerrain>().RemoveEntry(base.Fact);
+            //base.OnTurnOff();
             DeactivateModifier();
         }
 
