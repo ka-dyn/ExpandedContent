@@ -75,9 +75,9 @@
         "Description": "Adds a modified version of the Vindictive Bastard archetype as a full class."
       },
       "Dread Knight": {
-        "Enabled": true,
-        "Homebrew": false,
-        "Description": "Adds the Antipaladin as a class, renamed and modified slightly to fit the campaign setting."
+        "Enabled": false,
+        "Homebrew": true,
+        "Description": "Adds the Antipaladin as a class, renamed and modified slightly to fit the campaign setting. For a true Antipaladin, please download the Microscopic Content Expansion mod."
       },
       "Stargazer": {
         "Enabled": true,
