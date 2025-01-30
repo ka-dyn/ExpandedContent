@@ -18,6 +18,7 @@ using Kingmaker.UnitLogic.Mechanics.Properties;
 using Kingmaker.UnitLogic.Mechanics.Components;
 using ExpandedContent.Config;
 using Kingmaker.RuleSystem;
+using ExpandedContent.Tweaks.Components;
 
 namespace ExpandedContent.Tweaks.Domains {
     internal class CavesDomain {
@@ -47,7 +48,8 @@ namespace ExpandedContent.Tweaks.Domains {
                     "possess. These minutes do not need to be consecutive, but they must be spent in " +
                     "1-minute increments.");
                 bp.m_Icon = Tremorsence.Icon;
-                bp.AddComponent<AddContextStatBonus>(c => {
+                bp.AddComponent<AddContextStatBonusInTerrain>(c => {
+                    c.Terrain = AreaSetting.Underground;
                     c.Descriptor = ModifierDescriptor.Insight;
                     c.Stat = StatType.SkillStealth;
                     c.Value = new ContextValue() {
@@ -58,7 +60,8 @@ namespace ExpandedContent.Tweaks.Domains {
                         Property = UnitProperty.None,
                     };
                 });
-                bp.AddComponent<AddContextStatBonus>(c => {
+                bp.AddComponent<AddContextStatBonusInTerrain>(c => {
+                    c.Terrain = AreaSetting.Underground;
                     c.Descriptor = ModifierDescriptor.Insight;
                     c.Stat = StatType.SkillPerception;
                     c.Value = new ContextValue() {
@@ -90,7 +93,8 @@ namespace ExpandedContent.Tweaks.Domains {
                         ArcanistClass.ToReference<BlueprintCharacterClassReference>(),
                     };
                 });
-                bp.AddComponent<AddContextStatBonus>(c => {
+                bp.AddComponent<AddContextStatBonusInTerrain>(c => {
+                    c.Terrain = AreaSetting.Underground;
                     c.Descriptor = ModifierDescriptor.Insight;
                     c.Stat = StatType.Initiative;
                     c.Value = new ContextValue() {
@@ -100,6 +104,8 @@ namespace ExpandedContent.Tweaks.Domains {
                         ValueShared = AbilitySharedValue.Damage,
                         Property = UnitProperty.None,
                     };
+                    c.HasMinimal = true;
+                    c.Minimal = 0;
                 });
                 // Config for Initiative
                 bp.AddComponent<ContextRankConfig>(c => {
@@ -109,14 +115,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     c.m_SpecificModifier = ModifierDescriptor.None;
                     c.m_Progression = ContextRankProgression.AsIs;
                 });
-                bp.m_AllowNonContextActions = false;
-                bp.AddComponent<FavoredTerrain>(c => {
-                    c.Setting = AreaSetting.Underground;
-                });
-                bp.AddComponent<FavoredTerrainExpertise>(c => {
-                    c.Setting = AreaSetting.Underground;
-                });
-
+                bp.m_AllowNonContextActions = false;                
             });
             //CavesDomainGreaterResource
             var CavesDomainGreaterResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("CavesDomainGreaterResource", bp => {
@@ -532,22 +531,24 @@ namespace ExpandedContent.Tweaks.Domains {
                     "possess. These minutes do not need to be consecutive, but they must be spent in " +
                     "1-minute increments.");
                 bp.m_Icon = Tremorsence.Icon;
-                bp.AddComponent<AddContextStatBonus>(c => {
+                bp.AddComponent<AddContextStatBonusInTerrain>(c => {
+                    c.Terrain = AreaSetting.Underground;
                     c.Descriptor = ModifierDescriptor.Insight;
                     c.Stat = StatType.SkillStealth;
                     c.Value = new ContextValue() {
-                        ValueType = ContextValueType.Shared,
+                        ValueType = ContextValueType.Rank,
                         Value = 0,
                         ValueRank = AbilityRankType.StatBonus,
                         ValueShared = AbilitySharedValue.Damage,
                         Property = UnitProperty.None,
                     };
                 });
-                bp.AddComponent<AddContextStatBonus>(c => {
+                bp.AddComponent<AddContextStatBonusInTerrain>(c => {
+                    c.Terrain = AreaSetting.Underground;
                     c.Descriptor = ModifierDescriptor.Insight;
                     c.Stat = StatType.SkillPerception;
                     c.Value = new ContextValue() {
-                        ValueType = ContextValueType.Shared,
+                        ValueType = ContextValueType.Rank,
                         Value = 0,
                         ValueRank = AbilityRankType.StatBonus,
                         ValueShared = AbilitySharedValue.Damage,
@@ -604,17 +605,19 @@ namespace ExpandedContent.Tweaks.Domains {
                     c.m_UseMin = true;
                     c.m_Min = 1;
                 });
-
-                bp.AddComponent<AddContextStatBonus>(c => {
+                bp.AddComponent<AddContextStatBonusInTerrain>(c => {
+                    c.Terrain = AreaSetting.Underground;
                     c.Descriptor = ModifierDescriptor.Insight;
                     c.Stat = StatType.Initiative;
                     c.Value = new ContextValue() {
-                        ValueType = ContextValueType.Shared,
+                        ValueType = ContextValueType.Rank,
                         Value = 0,
                         ValueRank = AbilityRankType.Default,
-                        ValueShared = AbilitySharedValue.StatBonus,
+                        ValueShared = AbilitySharedValue.Damage,
                         Property = UnitProperty.None,
                     };
+                    c.HasMinimal = true;
+                    c.Minimal = 0;
                 });
                 // Config for Initiative
                 bp.AddComponent<ContextCalculateSharedValue>(c => {
@@ -641,12 +644,6 @@ namespace ExpandedContent.Tweaks.Domains {
                     c.m_Progression = ContextRankProgression.AsIs;
                 });
                 bp.m_AllowNonContextActions = false;
-                bp.AddComponent<FavoredTerrain>(c => {
-                    c.Setting = AreaSetting.Underground;
-                });
-                bp.AddComponent<FavoredTerrainExpertise>(c => {
-                    c.Setting = AreaSetting.Underground;
-                });
             });
 
             var CavesDomainGreaterAbilitySeparatist = Helpers.CreateBlueprint<BlueprintActivatableAbility>("CavesDomainGreaterAbilitySeparatist", bp => {

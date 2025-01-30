@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace ExpandedContent.Tweaks.Components {
     
-    [ComponentName("Immune to Energy Drain from X")]//Needs testing
+    [ComponentName("Immune to Energy Drain from X")]
 
     public class AddImmunityToEnergyDrainFromFact : UnitFactComponentDelegate, ITargetRulebookHandler<RuleDrainEnergy>, IRulebookHandler<RuleDrainEnergy>, ISubscriber, ITargetRulebookSubscriber {
         public BlueprintUnitFactReference m_CheckedFact;
