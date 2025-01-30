@@ -971,7 +971,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 //LevelEntry added later                
                 bp.GiveFeaturesForPreviousLevels = true;
             });
-            //FormOfTheBeast
+            #region FormOfTheBeast
             var OracleRevelationBeastFormResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("OracleRevelationBeastFormResource", bp => {
                 bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
                     BaseValue = 1,
@@ -1632,9 +1632,9 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.IsClassFeature = true;
             });
             OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationBeastFormProgression.ToReference<BlueprintFeatureReference>());
-            //EyeOfTheMoon
+            #endregion
 
-            //GiftOfClawAndHorn
+            #region GiftOfClawAndHorn
             var BearShamanTotemTransformationIcon = AssetLoader.LoadInternal("Skills", "Icon_BearShamanTotemTransformation.jpg");
             var OracleRevelationGiftOfClawAndHornResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("OracleRevelationGiftOfClawAndHornResource", bp => {
                 bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
@@ -3630,9 +3630,9 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.IsClassFeature = true;
             });
             OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationGiftOfClawAndHornProgression.ToReference<BlueprintFeatureReference>());
-            //MantleOfMoonlight ????
+            #endregion
 
-            //Moonbeam
+            #region Moonbeam
             var OracleRevelationMoonbeamResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("OracleRevelationMoonbeamResource", bp => {
                 bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
                     BaseValue = 0,
@@ -3838,7 +3838,8 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.IsClassFeature = true;
             });
             OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationMoonbeamFeature.ToReference<BlueprintFeatureReference>());
-            //PrimalCompanion
+            #endregion
+            #region PrimalCompanion
             var OracleBondedMountProgression = Resources.GetBlueprint<BlueprintProgression>("7d1c29c3101dd7643a625448fbbaa919");
             var AnimalCompanionRank = Resources.GetBlueprint<BlueprintFeature>("1670990255e4fe948a863bafd5dbda5d");
             var AnimalCompanionArchetypeSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("65af7290b4efd5f418132141aaa36c1b");
@@ -3908,6 +3909,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 c.m_Feature = OracleRevelationPrimalCompanion.ToReference<BlueprintFeatureReference>();
             });
             OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationPrimalCompanion.ToReference<BlueprintFeatureReference>());
+            #endregion
             //PropheticArmor
             var OracleRevelationNatureWhispers = Resources.GetBlueprint<BlueprintFeature>("3d2cd23869f0d98458169b88738f3c32");
             var OracleRevelationPropheticArmorBuff = Helpers.CreateBuff("OracleRevelationPropheticArmorBuff", bp => {

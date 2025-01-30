@@ -31,6 +31,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using TabletopTweaks.Core.NewComponents;
+using TabletopTweaks.Core.NewComponents.OwlcatReplacements;
 using static Kingmaker.Kingdom.Buffs.KingdomTacticalArmyFeature;
 using static UnityModManagerNet.UnityModManager;
 
@@ -892,6 +893,16 @@ namespace ExpandedContent.Config {
                             "\nDomain {g|Encyclopedia:Spell}Spells{/g}: magic missile, {g|SpellsResistEnergy}resist energy{/g}, {g|SpellsDispelMagic}dispel magic{/g}, arcane concordance, " +
                             "{g|SpellsSpellResistance}spell resistance{/g}, {g|SpellsGreaterDispelMagic}dispel magic, greater{/g}, {g|SpellsPowerWordBlind}power word blind{/g}, " +
                             "{g|SpellsProtectionFromSpells}protection from spells{/g}, mages disjunction.");
+                    }
+                    Main.Log("Done");
+                    #endregion
+                    #region Monk AC Stacking
+                    Main.Log("Patching Monk AC Stacking with TTT");
+                    var ScaledFistACBonusBuffSuppressBuffsTTT = Resources.GetBlueprint<BlueprintBuff>("64acb179cc6a4f19bb3513d094b28d02").GetComponent<SuppressBuffsTTT>();
+                    var OracleRevelationPropheticArmorBuff = Resources.GetModBlueprint<BlueprintBuff>("OracleRevelationPropheticArmorBuff");
+                    if (ScaledFistACBonusBuffSuppressBuffsTTT != null) {
+                        ScaledFistACBonusBuffSuppressBuffsTTT.m_Buffs = ScaledFistACBonusBuffSuppressBuffsTTT.m_Buffs
+                            .AppendToArray(OracleRevelationPropheticArmorBuff.ToReference<BlueprintBuffReference>());
                     }
                     Main.Log("Done");
                     #endregion
