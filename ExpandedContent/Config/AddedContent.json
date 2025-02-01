@@ -415,6 +415,11 @@
         "Enabled": true,
         "Homebrew": false,
         "Description": "Adds the insanity subdomain, a subdomain to the madness domain."
+      },
+      "Duels Subdomain": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds the duels subdomain, a subdomain to the war domain."
       }
     },
     "IsExpanded": false
