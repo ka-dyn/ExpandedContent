@@ -49,6 +49,7 @@ namespace ExpandedContent.Tweaks.Domains {
             var WarDomainGreaterFeatureSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("79c6421dbdb028c4fa0c31b8eea95f16");
             var FeintAbility = Resources.GetBlueprintReference<BlueprintAbilityReference>("1bb6f0b196aa457ba80bdb312dc64952");
             var RangedFeintAbility = Resources.GetBlueprintReference<BlueprintAbilityReference>("74134224db554e63bd6183af247340e0");
+            var CommandApproachAbilityIcon = Resources.GetBlueprint<BlueprintAbility>("f049fe38f5bb5ae48b252852727ab86a").Icon;
 
             var DuelsDomainBaseResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("DuelsDomainBaseResource", bp => {
                 bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
@@ -66,7 +67,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     "\nAs a swift action, you can challenge a visible foe within 30 feet, gaining a +1 sacred bonus to your " +
                     "AC against that creature’s attacks and a bonus equal to 1/2 your cleric level on Bluff skill checks to feint against it. " +
                     "These bonuses last for a number of rounds equal to 1/2 your cleric level.");
-                bp.m_Icon = WitchHexEvilEyeSavesAbility.m_Icon;
+                bp.m_Icon = CommandApproachAbilityIcon;
                 bp.AddComponent<UniqueBuff>();
                 bp.AddComponent<RemoveBuffIfCasterIsMissing>(c => {
                     c.RemoveOnCasterDeath = true;
@@ -83,7 +84,7 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.SetDescription("As a swift action, you can challenge a visible foe within 30 feet, gaining a +1 sacred bonus to your " +
                     "AC against that creature’s attacks and a bonus equal to 1/2 your cleric level on Bluff skill checks to feint against it. " +
                     "These bonuses last for a number of rounds equal to 1/2 your cleric level. You can use this ability a number of times per day equal to 3 + your Wisdom modifier.");
-                bp.m_Icon = WitchHexEvilEyeSavesAbility.m_Icon;
+                bp.m_Icon = CommandApproachAbilityIcon;
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.SavingThrowType = SavingThrowType.Unknown;
                     c.Actions = Helpers.CreateActionList(
@@ -149,7 +150,7 @@ namespace ExpandedContent.Tweaks.Domains {
 
             //Spelllist
             var MagicWeaponSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("d7fdd79f0f6b6a2418298e936bb68e40");
-            var WardingWeaponAbility = Resources.GetModBlueprint<BlueprintAbility>("WardingWeaponAbility");
+            var GraceSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("464a7193519429f48b4d190acb753cf0");
             var MagicalVestmentSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("2d4263d80f5136b4296d6eb43a221d7d");
             var DivinePowerSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("ef16771cb05d1344989519e87f25b3c5");
             var DanceOfAHundredCutsAbility = Resources.GetModBlueprint<BlueprintAbility>("DanceOfAHundredCutsAbility");
@@ -172,7 +173,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     new SpellLevelList(2) {
                         SpellLevel = 2,
                         m_Spells = new List<BlueprintAbilityReference>() {
-                            WardingWeaponAbility.ToReference<BlueprintAbilityReference>()
+                            GraceSpell
                         }
                     },
                     new SpellLevelList(3) {
@@ -408,7 +409,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     "\nDivine Challenge: As a swift action, you can challenge a visible foe within 30 feet, gaining a +1 sacred bonus to your " +
                     "AC against that creature’s attacks and a bonus equal to 1/2 your cleric level on Bluff skill checks to feint against it. " +
                     "These bonuses last for a number of rounds equal to 1/2 your cleric level. You can use this ability a number of times per day equal to 3 + your Wisdom modifier." +
-                    "\nDomain {g|Encyclopedia:Spell}Spells{/g}: {g|SpellsMagicWeapon}magic weapon{/g}, warding weapon, {g|SpellsMagicalVestment}magical vestment{/g}, " +
+                    "\nDomain {g|Encyclopedia:Spell}Spells{/g}: {g|SpellsMagicWeapon}magic weapon{/g}, {g|SpellsGrace}grace{/g}, {g|SpellsMagicalVestment}magical vestment{/g}, " +
                     "{g|SpellsDivinePower}divine power{/g}, dance of a hundred cuts, {g|SpellsBladeBarrier}blade barrier{/g}, " +
                     "{g|SpellsPowerWordBlind}power word blind{/g}, dance of a thousand cuts, {g|SpellsPowerWordKill}power word kill{/g}.");
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Domain };
@@ -480,7 +481,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     "\nDivine Challenge: As a swift action, you can challenge a visible foe within 30 feet, gaining a +1 sacred bonus to your " +
                     "AC against that creature’s attacks and a bonus equal to 1/2 your cleric level on Bluff skill checks to feint against it. " +
                     "These bonuses last for a number of rounds equal to 1/2 your cleric level. You can use this ability a number of times per day equal to 3 + your Wisdom modifier." +
-                    "\nDomain {g|Encyclopedia:Spell}Spells{/g}: {g|SpellsMagicWeapon}magic weapon{/g}, warding weapon, {g|SpellsMagicalVestment}magical vestment{/g}, " +
+                    "\nDomain {g|Encyclopedia:Spell}Spells{/g}: {g|SpellsMagicWeapon}magic weapon{/g}, {g|SpellsGrace}grace{/g}, {g|SpellsMagicalVestment}magical vestment{/g}, " +
                     "{g|SpellsDivinePower}divine power{/g}, dance of a hundred cuts, {g|SpellsBladeBarrier}blade barrier{/g}, " +
                     "{g|SpellsPowerWordBlind}power word blind{/g}, dance of a thousand cuts, {g|SpellsPowerWordKill}power word kill{/g}.");
                 bp.Groups = new FeatureGroup[] { FeatureGroup.ClericSecondaryDomain };
@@ -547,7 +548,7 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.SetDescription("As a swift action, you can challenge a visible foe within 30 feet, gaining a +1 sacred bonus to your " +
                     "AC against that creature’s attacks and a bonus equal to 1/2 your cleric level on Bluff skill checks to feint against it. " +
                     "These bonuses last for a number of rounds equal to 1/2 your cleric level. You can use this ability a number of times per day equal to 3 + your Wisdom modifier.");
-                bp.m_Icon = WitchHexEvilEyeSavesAbility.m_Icon;
+                bp.m_Icon = CommandApproachAbilityIcon;
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.SavingThrowType = SavingThrowType.Unknown;
                     c.Actions = Helpers.CreateActionList(
@@ -788,7 +789,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     "\nDivine Challenge: As a swift action, you can challenge a visible foe within 30 feet, gaining a +1 sacred bonus to your " +
                     "AC against that creature’s attacks and a bonus equal to 1/2 your cleric level on Bluff skill checks to feint against it. " +
                     "These bonuses last for a number of rounds equal to 1/2 your cleric level. You can use this ability a number of times per day equal to 3 + your Wisdom modifier." +
-                    "\nDomain {g|Encyclopedia:Spell}Spells{/g}: {g|SpellsMagicWeapon}magic weapon{/g}, warding weapon, {g|SpellsMagicalVestment}magical vestment{/g}, " +
+                    "\nDomain {g|Encyclopedia:Spell}Spells{/g}: {g|SpellsMagicWeapon}magic weapon{/g}, {g|SpellsGrace}grace{/g}, {g|SpellsMagicalVestment}magical vestment{/g}, " +
                     "{g|SpellsDivinePower}divine power{/g}, dance of a hundred cuts, {g|SpellsBladeBarrier}blade barrier{/g}, " +
                     "{g|SpellsPowerWordBlind}power word blind{/g}, dance of a thousand cuts, {g|SpellsPowerWordKill}power word kill{/g}.");
                 bp.Groups = new FeatureGroup[] { FeatureGroup.SeparatistSecondaryDomain };

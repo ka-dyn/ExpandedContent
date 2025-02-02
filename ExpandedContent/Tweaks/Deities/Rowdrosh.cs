@@ -112,6 +112,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     DeityTools.SeparatistDomainAllowed.SunDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.TrickeryDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.UndeadDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.DuelsDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.InsectDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.WarDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.WaterDomainAllowedSeparatist,

@@ -67,6 +67,7 @@ namespace ExpandedContent.Utilities {
             public static BlueprintFeature DemonDomainChaosAllowed => Resources.GetModBlueprint<BlueprintFeature>("DemonDomainChaosAllowed");
             public static BlueprintFeature DemonDomainEvilAllowed => Resources.GetModBlueprint<BlueprintFeature>("DemonDomainEvilAllowed");
             public static BlueprintFeature DragonDomainAllowed => Resources.GetModBlueprint<BlueprintFeature>("DragonDomainAllowed");
+            public static BlueprintFeature DuelsDomainAllowed => Resources.GetModBlueprint<BlueprintFeature>("DuelsDomainAllowed");
             public static BlueprintFeature FerocityDomainAllowed => Resources.GetModBlueprint<BlueprintFeature>("FerocityDomainAllowed");
             public static BlueprintFeature FistDomainAllowed => Resources.GetModBlueprint<BlueprintFeature>("FistDomainAllowed");
             public static BlueprintFeature FurDomainAllowed => Resources.GetModBlueprint<BlueprintFeature>("FurDomainAllowed");
@@ -144,6 +145,7 @@ namespace ExpandedContent.Utilities {
             public static BlueprintFeature DemonDomainChaosAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("DemonDomainChaosAllowedSeparatist");
             public static BlueprintFeature DemonDomainEvilAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("DemonDomainEvilAllowedSeparatist");
             public static BlueprintFeature DragonDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("DragonDomainAllowedSeparatist");
+            public static BlueprintFeature DuelsDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("DuelsDomainAllowedSeparatist");
             public static BlueprintFeature FerocityDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("FerocityDomainAllowedSeparatist");
             public static BlueprintFeature FistDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("FistDomainAllowedSeparatist");
             public static BlueprintFeature FurDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("FurDomainAllowedSeparatist");
