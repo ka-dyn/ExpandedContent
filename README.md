@@ -52,7 +52,7 @@ New Classes
 - Oathbreaker - Based off the Vindictive Bastard fallen Paladin class. 
   - With Castigator archetype
   
-- DreadKnight - Based off the Antipaladin alternative class.
+- DreadKnight - Based off the Antipaladin alternative class. (Disabled by default)
   - With Conqueror and Claw of the False Wyrm archetypes
 
 New Features
@@ -139,11 +139,13 @@ New Subdomains
 - Defence
 - Demon
 - Dragon
+- Duels
 - Ferocity
 - Fist
 - Fur
 - Growth
 - Heroism
+- Insanity
 - Insect
 - Lightning
 - Loyalty
