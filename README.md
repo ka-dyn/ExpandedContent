@@ -39,7 +39,7 @@ New Archetypes
 
 - Water Dancer, Monk
 
-- Soldier of Gaia, Warpriest
+- Soldier of Gaia, Faithful Paragon, Warpriest
 
 - Beastmorph, Alchemist
 
