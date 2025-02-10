@@ -306,6 +306,109 @@ namespace ExpandedContent.Utilities {
 
         }
 
+        public static void FaithfulParagonSpellAdder(BlueprintSpellList clericspelllist, BlueprintSpellList paladinspelllist, BlueprintSpellList newspelllist) {
+            var NewLevel0Spells = newspelllist.SpellsByLevel[0].m_Spells;
+            var NewLevel1Spells = newspelllist.SpellsByLevel[1].m_Spells;
+            var NewLevel2Spells = newspelllist.SpellsByLevel[2].m_Spells;
+            var NewLevel3Spells = newspelllist.SpellsByLevel[3].m_Spells;
+            var NewLevel4Spells = newspelllist.SpellsByLevel[4].m_Spells;
+            var NewLevel5Spells = newspelllist.SpellsByLevel[5].m_Spells;
+            var NewLevel6Spells = newspelllist.SpellsByLevel[6].m_Spells;
+            var ClericLevel0Spells = clericspelllist.SpellsByLevel[0].Spells;
+            var ClericLevel1Spells = clericspelllist.SpellsByLevel[1].Spells;
+            var ClericLevel2Spells = clericspelllist.SpellsByLevel[2].Spells;
+            var ClericLevel3Spells = clericspelllist.SpellsByLevel[3].Spells;
+            var ClericLevel4Spells = clericspelllist.SpellsByLevel[4].Spells;
+            var ClericLevel5Spells = clericspelllist.SpellsByLevel[5].Spells;
+            var ClericLevel6Spells = clericspelllist.SpellsByLevel[6].Spells;
+            var PaladinLevel0Spells = paladinspelllist.SpellsByLevel[0].Spells;
+            var PaladinLevel1Spells = paladinspelllist.SpellsByLevel[1].Spells;
+            var PaladinLevel2Spells = paladinspelllist.SpellsByLevel[2].Spells;
+            var PaladinLevel3Spells = paladinspelllist.SpellsByLevel[3].Spells;
+            var PaladinLevel4Spells = paladinspelllist.SpellsByLevel[4].Spells;
+
+            foreach (var spell in ClericLevel0Spells) {
+                if (!NewLevel0Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) {
+                    NewLevel0Spells.Add(spell.ToReference<BlueprintAbilityReference>());
+                }
+            }
+            foreach (var spell in PaladinLevel0Spells) {
+                if (!NewLevel0Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) {
+                    NewLevel0Spells.Add(spell.ToReference<BlueprintAbilityReference>());
+                }
+            }
+            foreach (var spell in ClericLevel1Spells) {
+                if (!NewLevel1Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) {
+                    NewLevel1Spells.Add(spell.ToReference<BlueprintAbilityReference>());
+                }
+            }
+            foreach (var spell in PaladinLevel1Spells) {
+                if (!NewLevel1Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) {
+                    NewLevel1Spells.Add(spell.ToReference<BlueprintAbilityReference>());
+                }
+            }
+            foreach (var spell in ClericLevel2Spells) {
+                if ((!NewLevel1Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                    (!NewLevel2Spells.Contains(spell.ToReference<BlueprintAbilityReference>()))) {
+                    NewLevel2Spells.Add(spell.ToReference<BlueprintAbilityReference>());
+                }
+            }
+            foreach (var spell in PaladinLevel2Spells) {
+                if ((!NewLevel1Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                    (!NewLevel2Spells.Contains(spell.ToReference<BlueprintAbilityReference>()))) {
+                    NewLevel2Spells.Add(spell.ToReference<BlueprintAbilityReference>());
+                }
+            }
+            foreach (var spell in ClericLevel3Spells) {
+                if ((!NewLevel1Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                    (!NewLevel2Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                    (!NewLevel3Spells.Contains(spell.ToReference<BlueprintAbilityReference>()))) {
+                    NewLevel3Spells.Add(spell.ToReference<BlueprintAbilityReference>());
+                }
+            }
+            foreach (var spell in PaladinLevel3Spells) {
+                if ((!NewLevel1Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                    (!NewLevel2Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                    (!NewLevel3Spells.Contains(spell.ToReference<BlueprintAbilityReference>()))) {
+                    NewLevel3Spells.Add(spell.ToReference<BlueprintAbilityReference>());
+                }
+            }
+            foreach (var spell in ClericLevel4Spells) {
+                if ((!NewLevel1Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                    (!NewLevel2Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                    (!NewLevel3Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                    (!NewLevel4Spells.Contains(spell.ToReference<BlueprintAbilityReference>()))) {
+                    NewLevel4Spells.Add(spell.ToReference<BlueprintAbilityReference>());
+                }
+            }
+            foreach (var spell in PaladinLevel4Spells) {
+                if ((!NewLevel1Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                    (!NewLevel2Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                    (!NewLevel3Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                    (!NewLevel4Spells.Contains(spell.ToReference<BlueprintAbilityReference>()))) {
+                    NewLevel4Spells.Add(spell.ToReference<BlueprintAbilityReference>());
+                }
+            }
+            foreach (var spell in ClericLevel5Spells) {
+                if ((!NewLevel1Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                    (!NewLevel2Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                    (!NewLevel3Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                    (!NewLevel4Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                    (!NewLevel5Spells.Contains(spell.ToReference<BlueprintAbilityReference>()))) {
+                    NewLevel5Spells.Add(spell.ToReference<BlueprintAbilityReference>());
+                }
+            }
+            foreach (var spell in ClericLevel6Spells) {
+                if ((!NewLevel1Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                    (!NewLevel2Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                    (!NewLevel3Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                    (!NewLevel4Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                    (!NewLevel5Spells.Contains(spell.ToReference<BlueprintAbilityReference>())) &&
+                    (!NewLevel6Spells.Contains(spell.ToReference<BlueprintAbilityReference>()))) {
+                    NewLevel6Spells.Add(spell.ToReference<BlueprintAbilityReference>());
+                }
+            }
+        }
 
     }
 }

@@ -95,6 +95,11 @@ namespace ExpandedContent.Config {
                 SoldierOfGaiaSpelllist.SpellsByLevel[5].m_Spells = DruidSpelllist.SpellsByLevel[5].m_Spells;
                 SoldierOfGaiaSpelllist.SpellsByLevel[6].m_Spells = DruidSpelllist.SpellsByLevel[6].m_Spells;
 
+                //Faithful Paragon spelllist patch
+                //This is done after other mods have loaded to also grab any spells they may add
+                var FaithfulParagonSpelllist = Resources.GetModBlueprint<BlueprintSpellList>("FaithfulParagonSpelllist");
+                var PaladinSpelllist = Resources.GetBlueprint<BlueprintSpellList>("9f5be2f7ea64fe04eb40878347b147bc");
+                SpellWithDesriptorAdders.FaithfulParagonSpellAdder(ClericSpelllist, PaladinSpelllist, FaithfulParagonSpelllist);
 
 
 

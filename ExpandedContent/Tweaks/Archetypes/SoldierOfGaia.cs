@@ -51,6 +51,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var SacredArmorEnchantPlus3 = Resources.GetBlueprintReference<BlueprintFeatureReference>("bd292463fa74d664086f0a3e4e425c47");
             var SacredArmorEnchantPlus4 = Resources.GetBlueprintReference<BlueprintFeatureReference>("ee65ff63443ce42488515db6a43fee5e");
             var SacredArmorEnchantPlus5 = Resources.GetBlueprintReference<BlueprintFeatureReference>("1e560784dfcb00f4da1415bbad3226c3");
+            var ScriptureIcon = AssetLoader.LoadInternal("Skills", "Icon_Scripture.png");
 
             var SoldierOfGaiaArchetype = Helpers.CreateBlueprint<BlueprintArchetype>("SoldierOfGaiaArchetype", bp => {
                 bp.LocalizedName = Helpers.CreateString($"SoldierOfGaiaArchetype.Name", "Soldier of Gaia");
@@ -119,7 +120,15 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.CasterLevelModifier = 0;
                 bp.IsArcane = false;
             });
-            SoldierOfGaiaArchetype.m_ReplaceSpellbook = SoldierOfGaiaSpellbook.ToReference<BlueprintSpellbookReference>();            
+            SoldierOfGaiaArchetype.m_ReplaceSpellbook = SoldierOfGaiaSpellbook.ToReference<BlueprintSpellbookReference>();
+            var SoldierOfGaiaSpellsFeature = Helpers.CreateBlueprint<BlueprintFeature>("SoldierOfGaiaSpellsFeature", bp => {
+                bp.SetName("Druidic Casting");
+                bp.SetDescription("The soldier of gaia casts divine spells drawn from the druid spell list rather than the cleric spell list. " +
+                    "Druid spells of 7th level and above are not on the soldier of gaia’s class spell list");
+                bp.Ranks = 1;
+                bp.IsClassFeature = true;
+                bp.m_Icon = ScriptureIcon;
+            });
             #endregion
             #region Spon Casting
             var SummonNatureISingle = Resources.GetBlueprintReference<BlueprintAbilityReference>("c6147854641924442a3bb736080cfeb6");
@@ -691,7 +700,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     Helpers.LevelEntry(19, SacredArmorEnchantPlus5)
             };
             SoldierOfGaiaArchetype.AddFeatures = new LevelEntry[] {
-                    Helpers.LevelEntry(1, SoldierOfGaiaSpontaneousCasting, SoldierOfGaiaBlessingSelection),
+                    Helpers.LevelEntry(1, SoldierOfGaiaSpellsFeature, SoldierOfGaiaSpontaneousCasting, SoldierOfGaiaBlessingSelection),
                     Helpers.LevelEntry(7, SoldierOfGaiaFriendOfTheForestFeature )
             };
 

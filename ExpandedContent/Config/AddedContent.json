@@ -238,7 +238,12 @@
       "Beastmorph": {
         "Enabled": true,
         "Homebrew": false,
-        "Description": "A alchemist archetype that uses uses mutagens to gain animalistic abilities."
+        "Description": "A alchemist archetype that uses mutagens to gain animalistic abilities."
+      },
+      "Faithful Paragon": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "A warpriest archetype that focuses on defence."
       }
     },
     "IsExpanded": false

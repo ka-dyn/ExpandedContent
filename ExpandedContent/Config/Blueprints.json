@@ -3868,7 +3868,20 @@
     "InsanityDomainProgressionSecondary": "19f2cebd-46cb-40ea-9e1a-4aa7cdba0eb6",
     "InsanityDomainProgressionSeparatist": "c75703e7-80dd-43a3-8604-a80ff1c34146",
     "InsanityDomainSpellList": "2e7f41fc-d164-43f7-9608-330587f51406",
-    "InsanityDomainSpellListFeature": "ba7c2f9d-54a0-4c14-b56e-ef4434326194"
+    "InsanityDomainSpellListFeature": "ba7c2f9d-54a0-4c14-b56e-ef4434326194",
+
+    "FaithfulParagonArchetype": "6a41c40f-bc48-4431-8baa-284cf70b2d5f",
+    "FaithfulParagonDivineConvictionAbility": "1d318741-0859-4b67-bb70-68a93ea9898e",
+    "FaithfulParagonDivineConvictionBuff": "656c9738-744a-4a7b-b129-18e5ff3c1e5a",
+    "FaithfulParagonDivineConvictionFeature": "a6d8e1b5-33df-4580-99c1-aafda327319c",
+    "FaithfulParagonFaithSustainsAbility": "07a1564a-8498-4cb3-9716-eca418e0deef",
+    "FaithfulParagonFaithSustainsBuff": "152526fd-b431-4545-8cd7-216b9148c401",
+    "FaithfulParagonFaithSustainsFeature": "eb3e734a-2721-43ae-91b0-299fbdaf657c",
+    "FaithfulParagonFervorFeature": "e57d6784-6444-4ca8-868d-ad9869fbd63c",
+    "FaithfulParagonSpellbook": "5519a931-5816-46a3-a0ad-22128bb8bb2c",
+    "FaithfulParagonSpelllist": "a6189c1e-7a86-4134-904c-69d18baef3a5",
+    "FaithfulParagonSpellsFeature": "aadc3675-dc3c-4ee0-907f-e9b1528e8036",
+    "SoldierOfGaiaSpellsFeature": "09fc8b4a-a627-4077-8a39-015fc67b2224"
 
 
 
