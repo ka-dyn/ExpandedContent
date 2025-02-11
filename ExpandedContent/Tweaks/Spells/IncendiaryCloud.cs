@@ -473,7 +473,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
                 bp.ActionType = UnitCommand.CommandType.Standard;
                 bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Extend | Metamagic.Heighten | Metamagic.Bolstered | Metamagic.CompletelyNormal;
-                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedDuration = Helpers.CreateString("IncendiaryCloud.Duration", "1 round/level");
                 bp.LocalizedSavingThrow = Helpers.CreateString("IncendiaryCloud.SavingThrow", "Reflex half");
             });
 
