@@ -544,6 +544,7 @@
     <Compile Include="Tweaks\Spells\DustOfTwilight.cs" />
     <Compile Include="Tweaks\Spells\ArcaneConcordance.cs" />
     <Compile Include="Tweaks\Spells\EruptivePustules.cs" />
+    <Compile Include="Tweaks\Spells\IncendiaryCloud.cs" />
     <Compile Include="Tweaks\Spells\MydriaticSpontaneityMass.cs" />
     <Compile Include="Tweaks\Spells\MydriaticSpontaneity.cs" />
     <Compile Include="Tweaks\Spells\ShadowClaws.cs" />
