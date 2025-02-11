@@ -980,7 +980,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 c.m_Archetype = SoldierOfGaiaArchetype.ToReference<BlueprintArchetypeReference>();
             });
             var MysticTheurgeSoldierOfGaiaLevelUp = Helpers.CreateBlueprint<BlueprintFeature>("MysticTheurgeSoldierOfGaiaLevelUp", bp => {
-                bp.SetName("Ravener Hunter");
+                bp.SetName("Soldier of Gaia");
                 bp.SetDescription("At 1st level, the mystic theurge selects a divine {g|Encyclopedia:Spell}spellcasting{/g} class she belonged to before adding the prestige class. When a " +
                     "new mystic theurge level is gained, the character gains new spells per day and new spells known as if she had also gained a level in that spellcasting class.");
                 bp.AddComponent<AddSpellbookLevel>(c => {
@@ -994,7 +994,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.Ranks = 10;
             });
             var MysticTheurgeSoldierOfGaiaProgression = Helpers.CreateBlueprint<BlueprintProgression>("MysticTheurgeSoldierOfGaiaProgression", bp => {
-                bp.SetName("Ravener Hunter");
+                bp.SetName("Soldier of Gaia");
                 bp.SetDescription("At 1st level, the mystic theurge selects a divine {g|Encyclopedia:Spell}spellcasting{/g} class she belonged to before adding the prestige class. When a " +
                     "new mystic theurge level is gained, the character gains new spells per day and new spells known as if she had also gained a level in that spellcasting class.");
                 bp.AddComponent<PrerequisiteClassSpellLevel>(c => {
@@ -1043,7 +1043,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 c.m_Archetype = SoldierOfGaiaArchetype.ToReference<BlueprintArchetypeReference>();
             });
             var LoremasterSoldierOfGaiaLevelUp = Helpers.CreateBlueprint<BlueprintFeature>("LoremasterSoldierOfGaiaLevelUp", bp => {
-                bp.SetName("Soldier of Golarion");
+                bp.SetName("Soldier of Gaia");
                 bp.SetDescription("At 1st level, the mystic theurge selects a divine {g|Encyclopedia:Spell}spellcasting{/g} class she belonged to before adding the prestige class. When a " +
                     "new mystic theurge level is gained, the character gains new spells per day and new spells known as if she had also gained a level in that spellcasting class.");
                 bp.AddComponent<AddSpellbookLevel>(c => {
@@ -1057,7 +1057,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.Ranks = 10;
             });
             var LoremasterSoldierOfGaiaProgression = Helpers.CreateBlueprint<BlueprintProgression>("LoremasterSoldierOfGaiaProgression", bp => {
-                bp.SetName("Soldier of Golarion");
+                bp.SetName("Soldier of Gaia");
                 bp.SetDescription("When a new loremaster level is gained, the character gains new {g|Encyclopedia:Spell}spells{/g} per day as if he had also gained a level in a " +
                     "spellcasting class he belonged to before adding the prestige class. He does not, however, gain other benefits a character of that class would have gained, " +
                     "except for additional spells per day, spells known (if he is a spontaneous spellcaster), and an increased effective level of spellcasting. If a character " +
@@ -1104,7 +1104,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 c.m_Archetype = SoldierOfGaiaArchetype.ToReference<BlueprintArchetypeReference>();
             });
             var HellknightSigniferSoldierOfGaiaLevelUp = Helpers.CreateBlueprint<BlueprintFeature>("HellknightSigniferSoldierOfGaiaLevelUp", bp => {
-                bp.SetName("Soldier of Golarion");
+                bp.SetName("Soldier of Gaia");
                 bp.SetDescription("At 1st level, the mystic theurge selects a divine {g|Encyclopedia:Spell}spellcasting{/g} class she belonged to before adding the prestige class. When a " +
                     "new mystic theurge level is gained, the character gains new spells per day and new spells known as if she had also gained a level in that spellcasting class.");
                 bp.AddComponent<AddSpellbookLevel>(c => {
@@ -1118,7 +1118,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.Ranks = 10;
             });
             var HellknightSigniferSoldierOfGaiaProgression = Helpers.CreateBlueprint<BlueprintProgression>("HellknightSigniferSoldierOfGaiaProgression", bp => {
-                bp.SetName("Soldier of Golarion");
+                bp.SetName("Soldier of Gaia");
                 bp.SetDescription("At 1st level, and at every level thereafter, a Hellknight signifer gains new {g|Encyclopedia:Spell}spells{/g} per day as if he had also gained a level " +
                     "in a spellcasting class he belonged to before adding the prestige class. He does not, however, gain any other benefit a character of that class would have gained, " +
                     "except for additional spells per day, spells known, and an increased effective level of spellcasting. If a character had more than one spellcasting class before " +
@@ -1158,6 +1158,198 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.GiveFeaturesForPreviousLevels = false;
             });
             HellknightSigniferSpellbookSelection.m_AllFeatures = HellknightSigniferSpellbookSelection.m_AllFeatures.AppendToArray(HellknightSigniferSoldierOfGaiaProgression.ToReference<BlueprintFeatureReference>());
+
+
+            #endregion
+
+            #region Faithful Paragon
+            var FaithfulParagonSpellbook = Resources.GetModBlueprint<BlueprintSpellbook>("FaithfulParagonSpellbook");
+            var FaithfulParagonSpelllist = Resources.GetModBlueprint<BlueprintSpellList>("FaithfulParagonSpelllist");
+            var FaithfulParagonArchetype = Resources.GetModBlueprint<BlueprintArchetype>("FaithfulParagonArchetype");
+
+            MysticTheurgeWarpriestProgression.AddComponent<PrerequisiteNoArchetype>(c => {
+                c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
+                c.m_Archetype = FaithfulParagonArchetype.ToReference<BlueprintArchetypeReference>();
+            });
+            var MysticTheurgeFaithfulParagonLevelUp = Helpers.CreateBlueprint<BlueprintFeature>("MysticTheurgeFaithfulParagonLevelUp", bp => {
+                bp.SetName("Faithful Paragon");
+                bp.SetDescription("At 1st level, the mystic theurge selects a divine {g|Encyclopedia:Spell}spellcasting{/g} class she belonged to before adding the prestige class. When a " +
+                    "new mystic theurge level is gained, the character gains new spells per day and new spells known as if she had also gained a level in that spellcasting class.");
+                bp.AddComponent<AddSpellbookLevel>(c => {
+                    c.m_Spellbook = FaithfulParagonSpellbook.ToReference<BlueprintSpellbookReference>();
+                });
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = false;
+                bp.HideNotAvailibleInUI = false;
+                bp.IsClassFeature = true;
+                bp.m_AllowNonContextActions = false;
+                bp.Ranks = 10;
+            });
+            var MysticTheurgeFaithfulParagonProgression = Helpers.CreateBlueprint<BlueprintProgression>("MysticTheurgeFaithfulParagonProgression", bp => {
+                bp.SetName("Faithful Paragon");
+                bp.SetDescription("At 1st level, the mystic theurge selects a divine {g|Encyclopedia:Spell}spellcasting{/g} class she belonged to before adding the prestige class. When a " +
+                    "new mystic theurge level is gained, the character gains new spells per day and new spells known as if she had also gained a level in that spellcasting class.");
+                bp.AddComponent<PrerequisiteClassSpellLevel>(c => {
+                    c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
+                    c.RequiredSpellLevel = 2;
+                    c.HideInUI = false;
+                });
+                bp.AddComponent<PrerequisiteArchetypeLevel>(c => {
+                    c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = FaithfulParagonArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.Level = 1;
+                    c.HideInUI = false;
+                });
+                bp.AddComponent<MysticTheurgeSpellbook>(c => {
+                    c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_MysticTheurge = MysticTheurgeClass.ToReference<BlueprintCharacterClassReference>();
+                });
+                bp.Groups = new FeatureGroup[] { FeatureGroup.MysticTheurgeDivineSpellbook };
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = false;
+                bp.HideNotAvailibleInUI = true;
+                bp.IsClassFeature = true;
+                bp.m_AllowNonContextActions = false;
+                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
+                    new BlueprintProgression.ClassWithLevel() { AdditionalLevel = 0, m_Class = MysticTheurgeClass.ToReference<BlueprintCharacterClassReference>() },
+                    new BlueprintProgression.ClassWithLevel() { AdditionalLevel = 0, m_Class = WarpriestClass.ToReference<BlueprintCharacterClassReference>() }
+                };
+                bp.LevelEntries = new LevelEntry[] {
+                    Helpers.LevelEntry(1, MysticTheurgeFaithfulParagonLevelUp),
+                    Helpers.LevelEntry(2, MysticTheurgeFaithfulParagonLevelUp),
+                    Helpers.LevelEntry(3, MysticTheurgeFaithfulParagonLevelUp),
+                    Helpers.LevelEntry(4, MysticTheurgeFaithfulParagonLevelUp),
+                    Helpers.LevelEntry(5, MysticTheurgeFaithfulParagonLevelUp),
+                    Helpers.LevelEntry(6, MysticTheurgeFaithfulParagonLevelUp),
+                    Helpers.LevelEntry(7, MysticTheurgeFaithfulParagonLevelUp),
+                    Helpers.LevelEntry(8, MysticTheurgeFaithfulParagonLevelUp),
+                    Helpers.LevelEntry(9, MysticTheurgeFaithfulParagonLevelUp),
+                    Helpers.LevelEntry(10, MysticTheurgeFaithfulParagonLevelUp)
+                };
+                bp.GiveFeaturesForPreviousLevels = false;
+            });
+            MysticTheurgeDivineSpellbookSelection.m_AllFeatures = MysticTheurgeDivineSpellbookSelection.m_AllFeatures.AppendToArray(MysticTheurgeFaithfulParagonProgression.ToReference<BlueprintFeatureReference>());
+
+            LoremasterWarpriestProgression.AddComponent<PrerequisiteNoArchetype>(c => {
+                c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
+                c.m_Archetype = FaithfulParagonArchetype.ToReference<BlueprintArchetypeReference>();
+            });
+            var LoremasterFaithfulParagonLevelUp = Helpers.CreateBlueprint<BlueprintFeature>("LoremasterFaithfulParagonLevelUp", bp => {
+                bp.SetName("Faithful Paragon");
+                bp.SetDescription("At 1st level, the mystic theurge selects a divine {g|Encyclopedia:Spell}spellcasting{/g} class she belonged to before adding the prestige class. When a " +
+                    "new mystic theurge level is gained, the character gains new spells per day and new spells known as if she had also gained a level in that spellcasting class.");
+                bp.AddComponent<AddSpellbookLevel>(c => {
+                    c.m_Spellbook = FaithfulParagonSpellbook.ToReference<BlueprintSpellbookReference>();
+                });
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = false;
+                bp.HideNotAvailibleInUI = false;
+                bp.IsClassFeature = true;
+                bp.m_AllowNonContextActions = false;
+                bp.Ranks = 10;
+            });
+            var LoremasterFaithfulParagonProgression = Helpers.CreateBlueprint<BlueprintProgression>("LoremasterFaithfulParagonProgression", bp => {
+                bp.SetName("Faithful Paragon");
+                bp.SetDescription("When a new loremaster level is gained, the character gains new {g|Encyclopedia:Spell}spells{/g} per day as if he had also gained a level in a " +
+                    "spellcasting class he belonged to before adding the prestige class. He does not, however, gain other benefits a character of that class would have gained, " +
+                    "except for additional spells per day, spells known (if he is a spontaneous spellcaster), and an increased effective level of spellcasting. If a character " +
+                    "had more than one spellcasting class before becoming a loremaster, he must decide to which class he adds the new level for purposes of determining the " +
+                    "number of spells per day.");
+                bp.AddComponent<PrerequisiteClassSpellLevel>(c => {
+                    c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
+                    c.RequiredSpellLevel = 3;
+                    c.HideInUI = false;
+                });
+                bp.AddComponent<PrerequisiteArchetypeLevel>(c => {
+                    c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = FaithfulParagonArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.Level = 1;
+                    c.HideInUI = false;
+                });
+                bp.Groups = new FeatureGroup[] { FeatureGroup.MythicAdditionalProgressions };
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = false;
+                bp.HideNotAvailibleInUI = true;
+                bp.IsClassFeature = true;
+                bp.m_AllowNonContextActions = false;
+                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
+                    new BlueprintProgression.ClassWithLevel() { AdditionalLevel = 0, m_Class = LoremasterClass.ToReference<BlueprintCharacterClassReference>() }
+                };
+                bp.LevelEntries = new LevelEntry[] {
+                    Helpers.LevelEntry(1, LoremasterFaithfulParagonLevelUp),
+                    Helpers.LevelEntry(2, LoremasterFaithfulParagonLevelUp),
+                    Helpers.LevelEntry(3, LoremasterFaithfulParagonLevelUp),
+                    Helpers.LevelEntry(4, LoremasterFaithfulParagonLevelUp),
+                    Helpers.LevelEntry(5, LoremasterFaithfulParagonLevelUp),
+                    Helpers.LevelEntry(6, LoremasterFaithfulParagonLevelUp),
+                    Helpers.LevelEntry(7, LoremasterFaithfulParagonLevelUp),
+                    Helpers.LevelEntry(8, LoremasterFaithfulParagonLevelUp),
+                    Helpers.LevelEntry(9, LoremasterFaithfulParagonLevelUp),
+                    Helpers.LevelEntry(10, LoremasterFaithfulParagonLevelUp)
+                };
+                bp.GiveFeaturesForPreviousLevels = false;
+            });
+            LoremasterSpellbookSelection.m_AllFeatures = LoremasterSpellbookSelection.m_AllFeatures.AppendToArray(LoremasterFaithfulParagonProgression.ToReference<BlueprintFeatureReference>());
+
+            HellknightSigniferWarpriestProgression.AddComponent<PrerequisiteNoArchetype>(c => {
+                c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
+                c.m_Archetype = FaithfulParagonArchetype.ToReference<BlueprintArchetypeReference>();
+            });
+            var HellknightSigniferFaithfulParagonLevelUp = Helpers.CreateBlueprint<BlueprintFeature>("HellknightSigniferFaithfulParagonLevelUp", bp => {
+                bp.SetName("Faithful Paragon");
+                bp.SetDescription("At 1st level, the mystic theurge selects a divine {g|Encyclopedia:Spell}spellcasting{/g} class she belonged to before adding the prestige class. When a " +
+                    "new mystic theurge level is gained, the character gains new spells per day and new spells known as if she had also gained a level in that spellcasting class.");
+                bp.AddComponent<AddSpellbookLevel>(c => {
+                    c.m_Spellbook = FaithfulParagonSpellbook.ToReference<BlueprintSpellbookReference>();
+                });
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = false;
+                bp.HideNotAvailibleInUI = false;
+                bp.IsClassFeature = true;
+                bp.m_AllowNonContextActions = false;
+                bp.Ranks = 10;
+            });
+            var HellknightSigniferFaithfulParagonProgression = Helpers.CreateBlueprint<BlueprintProgression>("HellknightSigniferFaithfulParagonProgression", bp => {
+                bp.SetName("Faithful Paragon");
+                bp.SetDescription("At 1st level, and at every level thereafter, a Hellknight signifer gains new {g|Encyclopedia:Spell}spells{/g} per day as if he had also gained a level " +
+                    "in a spellcasting class he belonged to before adding the prestige class. He does not, however, gain any other benefit a character of that class would have gained, " +
+                    "except for additional spells per day, spells known, and an increased effective level of spellcasting. If a character had more than one spellcasting class before " +
+                    "becoming a Hellknight signifer, he must decide to which class he adds the new level for purposes of determining spells per day.");
+                bp.AddComponent<PrerequisiteClassSpellLevel>(c => {
+                    c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
+                    c.RequiredSpellLevel = 3;
+                    c.HideInUI = false;
+                });
+                bp.AddComponent<PrerequisiteArchetypeLevel>(c => {
+                    c.m_CharacterClass = WarpriestClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = FaithfulParagonArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.Level = 1;
+                    c.HideInUI = false;
+                });
+                bp.Groups = new FeatureGroup[] { FeatureGroup.HellknightSigniferSpellbook };
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = false;
+                bp.HideNotAvailibleInUI = true;
+                bp.IsClassFeature = true;
+                bp.m_AllowNonContextActions = false;
+                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
+                    new BlueprintProgression.ClassWithLevel() { AdditionalLevel = 0, m_Class = HellknightSigniferClass.ToReference<BlueprintCharacterClassReference>() }
+                };
+                bp.LevelEntries = new LevelEntry[] {
+                    Helpers.LevelEntry(1, HellknightSigniferFaithfulParagonLevelUp),
+                    Helpers.LevelEntry(2, HellknightSigniferFaithfulParagonLevelUp),
+                    Helpers.LevelEntry(3, HellknightSigniferFaithfulParagonLevelUp),
+                    Helpers.LevelEntry(4, HellknightSigniferFaithfulParagonLevelUp),
+                    Helpers.LevelEntry(5, HellknightSigniferFaithfulParagonLevelUp),
+                    Helpers.LevelEntry(6, HellknightSigniferFaithfulParagonLevelUp),
+                    Helpers.LevelEntry(7, HellknightSigniferFaithfulParagonLevelUp),
+                    Helpers.LevelEntry(8, HellknightSigniferFaithfulParagonLevelUp),
+                    Helpers.LevelEntry(9, HellknightSigniferFaithfulParagonLevelUp),
+                    Helpers.LevelEntry(10, HellknightSigniferFaithfulParagonLevelUp)
+                };
+                bp.GiveFeaturesForPreviousLevels = false;
+            });
+            HellknightSigniferSpellbookSelection.m_AllFeatures = HellknightSigniferSpellbookSelection.m_AllFeatures.AppendToArray(HellknightSigniferFaithfulParagonProgression.ToReference<BlueprintFeatureReference>());
 
 
             #endregion
