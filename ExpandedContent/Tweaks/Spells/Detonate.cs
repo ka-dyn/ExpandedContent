@@ -27,84 +27,456 @@ using Kingmaker.UnitLogic.Mechanics.Components;
 using Kingmaker.UnitLogic.Mechanics.Properties;
 using Kingmaker.Utility;
 using Kingmaker.Visual.Animation.Kingmaker.Actions;
+using Kingmaker.Designers.EventConditionActionSystem.Actions;
+using Kingmaker.UnitLogic.Mechanics.Conditions;
 
 namespace ExpandedContent.Tweaks.Spells {
     internal class Detonate {
         public static void AddDetonate() {
-            var DetonateIcon = AssetLoader.LoadInternal("Skills", "Icon_Detonate.jpg");
-            var Icon_ScrollOfDetonate = AssetLoader.LoadInternal("Items", "Icon_ScrollOfDetonate.png");
+            var DetonateIcon = AssetLoader.LoadInternal("Skills", "Icon_FishCurse.png");
+            //var Icon_ScrollOfDetonate = AssetLoader.LoadInternal("Items", "Icon_ScrollOfDetonate.png");
 
 
+
+
+
+            var DetonateAcidBuff = Helpers.CreateBuff("DetonateAcidBuff", bp => {
+                bp.SetName("Detonate - Acid");
+                bp.SetDescription("You flood yourself with a potent surge of elemental energy. One round after completing the casting of the spell, the energy explodes from your body. " +
+                    "\nChoose one of the following four energy types: acid, cold, electricity, or fire. The explosion inflicts 1d8 points of damage of that energy type per caster level " +
+                    "(maximum 10d8) to all creatures within 15 feet, and half that amount to targets past 15 feet but within 30 feet. You automatically take half damage from the explosion, " +
+                    "without a saving throw, but any other energy resistance or energy immunity effects you may have in place can prevent or lessen this overflow damage caused by the explosion.");
+                bp.m_Icon = DetonateIcon;
+                bp.m_Flags = BlueprintBuff.Flags.IsFromSpell | BlueprintBuff.Flags.RemoveOnRest;
+            });
+            var DetonateColdBuff = Helpers.CreateBuff("DetonateColdBuff", bp => {
+                bp.SetName("Detonate - Cold");
+                bp.SetDescription("You flood yourself with a potent surge of elemental energy. One round after completing the casting of the spell, the energy explodes from your body. " +
+                    "\nChoose one of the following four energy types: acid, cold, electricity, or fire. The explosion inflicts 1d8 points of damage of that energy type per caster level " +
+                    "(maximum 10d8) to all creatures within 15 feet, and half that amount to targets past 15 feet but within 30 feet. You automatically take half damage from the explosion, " +
+                    "without a saving throw, but any other energy resistance or energy immunity effects you may have in place can prevent or lessen this overflow damage caused by the explosion.");
+                bp.m_Icon = DetonateIcon;
+                bp.m_Flags = BlueprintBuff.Flags.IsFromSpell | BlueprintBuff.Flags.RemoveOnRest;
+            });
+            var DetonateElectricityBuff = Helpers.CreateBuff("DetonateElectricityBuff", bp => {
+                bp.SetName("Detonate - Electricity");
+                bp.SetDescription("You flood yourself with a potent surge of elemental energy. One round after completing the casting of the spell, the energy explodes from your body. " +
+                    "\nChoose one of the following four energy types: acid, cold, electricity, or fire. The explosion inflicts 1d8 points of damage of that energy type per caster level " +
+                    "(maximum 10d8) to all creatures within 15 feet, and half that amount to targets past 15 feet but within 30 feet. You automatically take half damage from the explosion, " +
+                    "without a saving throw, but any other energy resistance or energy immunity effects you may have in place can prevent or lessen this overflow damage caused by the explosion.");
+                bp.m_Icon = DetonateIcon;
+                bp.m_Flags = BlueprintBuff.Flags.IsFromSpell | BlueprintBuff.Flags.RemoveOnRest;
+            });
+            var DetonateFireBuff = Helpers.CreateBuff("DetonateFireBuff", bp => {
+                bp.SetName("Detonate - Fire");
+                bp.SetDescription("You flood yourself with a potent surge of elemental energy. One round after completing the casting of the spell, the energy explodes from your body. " +
+                    "\nChoose one of the following four energy types: acid, cold, electricity, or fire. The explosion inflicts 1d8 points of damage of that energy type per caster level " +
+                    "(maximum 10d8) to all creatures within 15 feet, and half that amount to targets past 15 feet but within 30 feet. You automatically take half damage from the explosion, " +
+                    "without a saving throw, but any other energy resistance or energy immunity effects you may have in place can prevent or lessen this overflow damage caused by the explosion.");
+                bp.m_Icon = DetonateIcon;                
+                bp.m_Flags = BlueprintBuff.Flags.IsFromSpell | BlueprintBuff.Flags.RemoveOnRest;
+            });
 
             var DetonateAcidExplosion = Helpers.CreateBlueprint<BlueprintAbility>("DetonateAcidExplosion", bp => {
                 bp.SetName("Detonate - Acid");
                 bp.SetDescription("The explosion inflicts 1d8 points of damage of that energy type per caster level " +
                     "(maximum 10d8) to all creatures within 15 feet, and half that amount to targets past 15 feet but within 30 feet. You automatically take half damage from the explosion, " +
                     "without a saving throw, but any other energy resistance or energy immunity effects you may have in place can prevent or lessen this overflow damage caused by the explosion.");
+
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.SavingThrowType = SavingThrowType.Unknown;
                     c.Actions = Helpers.CreateActionList(
-                        new ContextActionDealDamage() {
-                            m_Type = ContextActionDealDamage.Type.Damage,
-                            DamageType = new DamageTypeDescription() {
-                                Type = DamageType.Energy,
-                                Common = new DamageTypeDescription.CommomData() {
-                                    Reality = 0,
-                                    Alignment = 0,
-                                    Precision = false
-                                },
-                                Physical = new DamageTypeDescription.PhysicalData() {
-                                    Material = 0,
-                                    Form = 0,
-                                    Enhancement = 0,
-                                    EnhancementTotal = 0
-                                },
-                                Energy = DamageEnergyType.Acid
+                        new Conditional() {
+                            ConditionsChecker = new ConditionsChecker() {
+                                Operation = Operation.Or,
+                                Conditions = new Condition[] {
+                                    new ContextConditionIsCaster() {
+                                        Not = false
+                                    }
+                                }
                             },
-                            Drain = false,
-                            AbilityType = StatType.Unknown,
-                            EnergyDrainType = EnergyDrainType.Temporary,
-                            Duration = new ContextDurationValue() {
-                                Rate = DurationRate.Rounds,
-                                DiceType = DiceType.Zero,
-                                DiceCountValue = new ContextValue() {
-                                    ValueType = ContextValueType.Simple,
-                                    Value = 0,
-                                    ValueRank = AbilityRankType.Default,
-                                    ValueShared = AbilitySharedValue.Damage,
-                                    Property = UnitProperty.None
-                                },
-                                BonusValue = new ContextValue() {
-                                    ValueType = ContextValueType.Simple,
-                                    Value = 0,
-                                    ValueRank = AbilityRankType.Default,
-                                    ValueShared = AbilitySharedValue.Damage,
-                                    Property = UnitProperty.None
-                                },
-                                m_IsExtendable = true,
-                            },
-                            PreRolledSharedValue = AbilitySharedValue.Damage,
-                            Value = new ContextDiceValue() {
-                                DiceType = DiceType.D6,
-                                DiceCountValue = new ContextValue() {
-                                    ValueType = ContextValueType.Rank,
-                                    Value = 0,
-                                    ValueRank = AbilityRankType.Default,
-                                    ValueShared = AbilitySharedValue.Damage,
-                                    Property = UnitProperty.None
-                                },
-                                BonusValue = new ContextValue() {
-                                    ValueType = ContextValueType.Simple,
-                                    Value = 0,
-                                    ValueRank = AbilityRankType.Default,
-                                    ValueShared = AbilitySharedValue.Damage,
-                                    Property = UnitProperty.None
-                                },
-                            },
-                            IsAoE = true,
-                            HalfIfSaved = true,
-                            ResultSharedValue = AbilitySharedValue.Damage,
-                            CriticalSharedValue = AbilitySharedValue.Damage
+                            IfTrue = Helpers.CreateActionList(
+                                new ContextActionDealDamage() {
+                                    m_Type = ContextActionDealDamage.Type.Damage,
+                                    DamageType = new DamageTypeDescription() {
+                                        Type = DamageType.Energy,
+                                        Common = new DamageTypeDescription.CommomData() {
+                                            Reality = 0,
+                                            Alignment = 0,
+                                            Precision = false
+                                        },
+                                        Physical = new DamageTypeDescription.PhysicalData() {
+                                            Material = 0,
+                                            Form = 0,
+                                            Enhancement = 0,
+                                            EnhancementTotal = 0
+                                        },
+                                        Energy = DamageEnergyType.Acid
+                                    },
+                                    Drain = false,
+                                    AbilityType = StatType.Unknown,
+                                    EnergyDrainType = EnergyDrainType.Temporary,
+                                    Duration = new ContextDurationValue() {
+                                        Rate = DurationRate.Rounds,
+                                        DiceType = DiceType.Zero,
+                                        DiceCountValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                        BonusValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                        m_IsExtendable = true,
+                                    },
+                                    ReadPreRolledFromSharedValue = true,
+                                    PreRolledSharedValue = AbilitySharedValue.Damage,
+                                    Value = new ContextDiceValue() {
+                                        DiceType = DiceType.D8,
+                                        DiceCountValue = new ContextValue() {
+                                            ValueType = ContextValueType.Rank,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.DamageDice,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                        BonusValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                    },
+                                    IsAoE = false,
+                                    HalfIfSaved = false,
+                                    Half = true,
+                                    UseMinHPAfterDamage = false,
+                                    MinHPAfterDamage = 0,
+                                    WriteResultToSharedValue = false,
+                                    ResultSharedValue = AbilitySharedValue.Damage
+                                }
+                                ),
+                            IfFalse = Helpers.CreateActionList(
+                                new ContextActionSavingThrow() {
+                                    m_ConditionalDCIncrease = new ContextActionSavingThrow.ConditionalDCIncrease[0],
+                                    Type = SavingThrowType.Reflex,
+                                    HasCustomDC = false,
+                                    CustomDC = new ContextValue(),
+                                    Actions = Helpers.CreateActionList(
+                                        new ContextActionConditionalSaved() {
+                                            Succeed = Helpers.CreateActionList(
+                                                new Conditional() {
+                                                    ConditionsChecker = new ConditionsChecker() {
+                                                        Operation = Operation.Or,
+                                                        Conditions = new Condition[] {
+                                                            new ContextConditionDistanceToTarget() {
+                                                                DistanceGreater = new Feet() { m_Value = 15 },
+                                                                Not = true
+                                                            }
+                                                        }
+                                                    },
+                                                    IfTrue = Helpers.CreateActionList(
+                                                        new ContextActionDealDamage() {
+                                                            m_Type = ContextActionDealDamage.Type.Damage,
+                                                            DamageType = new DamageTypeDescription() {
+                                                                Type = DamageType.Energy,
+                                                                Common = new DamageTypeDescription.CommomData() {
+                                                                    Reality = 0,
+                                                                    Alignment = 0,
+                                                                    Precision = false
+                                                                },
+                                                                Physical = new DamageTypeDescription.PhysicalData() {
+                                                                    Material = 0,
+                                                                    Form = 0,
+                                                                    Enhancement = 0,
+                                                                    EnhancementTotal = 0
+                                                                },
+                                                                Energy = DamageEnergyType.Acid
+                                                            },
+                                                            Drain = false,
+                                                            AbilityType = StatType.Unknown,
+                                                            EnergyDrainType = EnergyDrainType.Temporary,
+                                                            Duration = new ContextDurationValue() {
+                                                                Rate = DurationRate.Rounds,
+                                                                DiceType = DiceType.Zero,
+                                                                DiceCountValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Simple,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.Default,
+                                                                    ValueShared = AbilitySharedValue.Damage,
+                                                                    Property = UnitProperty.None
+                                                                },
+                                                                BonusValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Simple,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.Default,
+                                                                    ValueShared = AbilitySharedValue.Damage,
+                                                                    Property = UnitProperty.None
+                                                                },
+                                                                m_IsExtendable = true,
+                                                            },
+                                                            ReadPreRolledFromSharedValue = true,//!
+                                                            PreRolledSharedValue = AbilitySharedValue.Damage,
+                                                            Value = new ContextDiceValue() {
+                                                                DiceType = DiceType.D8,
+                                                                DiceCountValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Rank,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.DamageDice,
+                                                                    ValueShared = AbilitySharedValue.Damage,
+                                                                    Property = UnitProperty.None
+                                                                },
+                                                                BonusValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Simple,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.Default,
+                                                                    ValueShared = AbilitySharedValue.Damage,
+                                                                    Property = UnitProperty.None
+                                                                },
+                                                            },
+                                                            IsAoE = true,
+                                                            HalfIfSaved = true,
+                                                            Half = false,
+                                                            UseMinHPAfterDamage = false,
+                                                            MinHPAfterDamage = 0,
+                                                            WriteResultToSharedValue = false,
+                                                            ResultSharedValue = AbilitySharedValue.Damage
+                                                        }
+                                                        ),
+                                                    IfFalse = Helpers.CreateActionList(
+                                                        new ContextActionDealDamage() {
+                                                            m_Type = ContextActionDealDamage.Type.Damage,
+                                                            DamageType = new DamageTypeDescription() {
+                                                                Type = DamageType.Energy,
+                                                                Common = new DamageTypeDescription.CommomData() {
+                                                                    Reality = 0,
+                                                                    Alignment = 0,
+                                                                    Precision = false
+                                                                },
+                                                                Physical = new DamageTypeDescription.PhysicalData() {
+                                                                    Material = 0,
+                                                                    Form = 0,
+                                                                    Enhancement = 0,
+                                                                    EnhancementTotal = 0
+                                                                },
+                                                                Energy = DamageEnergyType.Acid
+                                                            },
+                                                            Drain = false,
+                                                            AbilityType = StatType.Unknown,
+                                                            EnergyDrainType = EnergyDrainType.Temporary,
+                                                            Duration = new ContextDurationValue() {
+                                                                Rate = DurationRate.Rounds,
+                                                                DiceType = DiceType.Zero,
+                                                                DiceCountValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Simple,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.Default,
+                                                                    ValueShared = AbilitySharedValue.Damage,
+                                                                    Property = UnitProperty.None
+                                                                },
+                                                                BonusValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Simple,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.Default,
+                                                                    ValueShared = AbilitySharedValue.Damage,
+                                                                    Property = UnitProperty.None
+                                                                },
+                                                                m_IsExtendable = true,
+                                                            },
+                                                            ReadPreRolledFromSharedValue = true,//!
+                                                            PreRolledSharedValue = AbilitySharedValue.Damage,
+                                                            Value = new ContextDiceValue() {
+                                                                DiceType = DiceType.D8,
+                                                                DiceCountValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Rank,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.DamageDice,
+                                                                    ValueShared = AbilitySharedValue.Damage,
+                                                                    Property = UnitProperty.None
+                                                                },
+                                                                BonusValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Simple,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.Default,
+                                                                    ValueShared = AbilitySharedValue.Damage,
+                                                                    Property = UnitProperty.None
+                                                                },
+                                                            },
+                                                            IsAoE = true,
+                                                            HalfIfSaved = true,
+                                                            Half = true,
+                                                            UseMinHPAfterDamage = false,
+                                                            MinHPAfterDamage = 0,
+                                                            WriteResultToSharedValue = false,
+                                                            ResultSharedValue = AbilitySharedValue.Damage
+                                                        }
+                                                        )
+                                                }
+                                            ),
+                                            Failed = Helpers.CreateActionList(
+                                                new Conditional() {
+                                                    ConditionsChecker = new ConditionsChecker() {
+                                                        Operation = Operation.Or,
+                                                        Conditions = new Condition[] {
+                                                            new ContextConditionDistanceToTarget() {
+                                                                DistanceGreater = new Feet() { m_Value = 15 },
+                                                                Not = true
+                                                            }
+                                                        }
+                                                    },
+                                                    IfTrue = Helpers.CreateActionList(
+                                                        new ContextActionDealDamage() {
+                                                            m_Type = ContextActionDealDamage.Type.Damage,
+                                                            DamageType = new DamageTypeDescription() {
+                                                                Type = DamageType.Energy,
+                                                                Common = new DamageTypeDescription.CommomData() {
+                                                                    Reality = 0,
+                                                                    Alignment = 0,
+                                                                    Precision = false
+                                                                },
+                                                                Physical = new DamageTypeDescription.PhysicalData() {
+                                                                    Material = 0,
+                                                                    Form = 0,
+                                                                    Enhancement = 0,
+                                                                    EnhancementTotal = 0
+                                                                },
+                                                                Energy = DamageEnergyType.Acid
+                                                            },
+                                                            Drain = false,
+                                                            AbilityType = StatType.Unknown,
+                                                            EnergyDrainType = EnergyDrainType.Temporary,
+                                                            Duration = new ContextDurationValue() {
+                                                                Rate = DurationRate.Rounds,
+                                                                DiceType = DiceType.Zero,
+                                                                DiceCountValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Simple,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.Default,
+                                                                    ValueShared = AbilitySharedValue.Damage,
+                                                                    Property = UnitProperty.None
+                                                                },
+                                                                BonusValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Simple,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.Default,
+                                                                    ValueShared = AbilitySharedValue.Damage,
+                                                                    Property = UnitProperty.None
+                                                                },
+                                                                m_IsExtendable = true,
+                                                            },
+                                                            ReadPreRolledFromSharedValue = true,//!
+                                                            PreRolledSharedValue = AbilitySharedValue.Damage,
+                                                            Value = new ContextDiceValue() {
+                                                                DiceType = DiceType.D8,
+                                                                DiceCountValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Rank,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.DamageDice,
+                                                                    ValueShared = AbilitySharedValue.Damage,
+                                                                    Property = UnitProperty.None
+                                                                },
+                                                                BonusValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Simple,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.Default,
+                                                                    ValueShared = AbilitySharedValue.Damage,
+                                                                    Property = UnitProperty.None
+                                                                },
+                                                            },
+                                                            IsAoE = true,
+                                                            HalfIfSaved = true,
+                                                            Half = false,
+                                                            UseMinHPAfterDamage = false,
+                                                            MinHPAfterDamage = 0,
+                                                            WriteResultToSharedValue = false,
+                                                            ResultSharedValue = AbilitySharedValue.Damage
+                                                        }
+                                                        ),
+                                                    IfFalse = Helpers.CreateActionList(
+                                                        new ContextActionDealDamage() {
+                                                            m_Type = ContextActionDealDamage.Type.Damage,
+                                                            DamageType = new DamageTypeDescription() {
+                                                                Type = DamageType.Energy,
+                                                                Common = new DamageTypeDescription.CommomData() {
+                                                                    Reality = 0,
+                                                                    Alignment = 0,
+                                                                    Precision = false
+                                                                },
+                                                                Physical = new DamageTypeDescription.PhysicalData() {
+                                                                    Material = 0,
+                                                                    Form = 0,
+                                                                    Enhancement = 0,
+                                                                    EnhancementTotal = 0
+                                                                },
+                                                                Energy = DamageEnergyType.Acid
+                                                            },
+                                                            Drain = false,
+                                                            AbilityType = StatType.Unknown,
+                                                            EnergyDrainType = EnergyDrainType.Temporary,
+                                                            Duration = new ContextDurationValue() {
+                                                                Rate = DurationRate.Rounds,
+                                                                DiceType = DiceType.Zero,
+                                                                DiceCountValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Simple,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.Default,
+                                                                    ValueShared = AbilitySharedValue.Damage,
+                                                                    Property = UnitProperty.None
+                                                                },
+                                                                BonusValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Simple,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.Default,
+                                                                    ValueShared = AbilitySharedValue.Damage,
+                                                                    Property = UnitProperty.None
+                                                                },
+                                                                m_IsExtendable = true,
+                                                            },
+                                                            ReadPreRolledFromSharedValue = true,//!
+                                                            PreRolledSharedValue = AbilitySharedValue.Damage,
+                                                            Value = new ContextDiceValue() {
+                                                                DiceType = DiceType.D8,
+                                                                DiceCountValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Rank,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.DamageDice,
+                                                                    ValueShared = AbilitySharedValue.Damage,
+                                                                    Property = UnitProperty.None
+                                                                },
+                                                                BonusValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Simple,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.Default,
+                                                                    ValueShared = AbilitySharedValue.Damage,
+                                                                    Property = UnitProperty.None
+                                                                },
+                                                            },
+                                                            IsAoE = true,
+                                                            HalfIfSaved = true,
+                                                            Half = true,
+                                                            UseMinHPAfterDamage = false,
+                                                            MinHPAfterDamage = 0,
+                                                            WriteResultToSharedValue = false,
+                                                            ResultSharedValue = AbilitySharedValue.Damage
+                                                        }
+                                                        )
+                                                }
+                                            ),
+                                        }
+                                        )
+                                }
+                                )
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = DetonateAcidBuff.ToReference<BlueprintBuffReference>(),
+                            ToCaster = true
                         }
                         );
                 });
@@ -127,7 +499,7 @@ namespace ExpandedContent.Tweaks.Spells {
                     c.OrientationMode = AbilitySpawnFxOrientation.Copy;
                 });
                 bp.AddComponent<ContextRankConfig>(c => {
-                    c.m_Type = AbilityRankType.Default;
+                    c.m_Type = AbilityRankType.DamageDice;
                     c.m_BaseValueType = ContextRankBaseValueType.CasterLevel;
                     c.m_Stat = StatType.Unknown;
                     c.m_SpecificModifier = ModifierDescriptor.None;
@@ -136,6 +508,18 @@ namespace ExpandedContent.Tweaks.Spells {
                     c.m_StepLevel = 0;
                     c.m_UseMax = true;
                     c.m_Max = 10;
+                });
+                bp.AddComponent<ContextCalculateSharedValue>(c => {
+                    c.ValueType = AbilitySharedValue.Damage;
+                    c.Value = new ContextDiceValue() {
+                        DiceType = DiceType.D8,
+                        DiceCountValue = new ContextValue() {
+                            ValueType = ContextValueType.Rank,
+                            ValueRank = AbilityRankType.DamageDice
+                        },
+                        BonusValue = 0
+                    };
+                    c.Modifier = 1;
                 });
                 bp.AddComponent<SpellComponent>(c => {
                     c.School = SpellSchool.Evocation;
@@ -164,126 +548,1492 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = Helpers.CreateString("DetonateAcidExplosion.SavingThrow", "Relex half");
             });
-
-
-
-
-
-
-
-
-
-            var DetonateAcidBuff = Helpers.CreateBuff("DetonateAcidBuff", bp => {
-                bp.SetName("Detonate - Acid");
-                bp.SetDescription("You flood yourself with a potent surge of elemental energy. One round after completing the casting of the spell, the energy explodes from your body. " +
-                    "\nChoose one of the following four energy types: acid, cold, electricity, or fire. The explosion inflicts 1d8 points of damage of that energy type per caster level " +
-                    "(maximum 10d8) to all creatures within 15 feet, and half that amount to targets past 15 feet but within 30 feet. You automatically take half damage from the explosion, " +
-                    "without a saving throw, but any other energy resistance or energy immunity effects you may have in place can prevent or lessen this overflow damage caused by the explosion.");
-                bp.m_Icon = SteamBlastBase.m_Icon;
-                bp.AddComponent<AddFactContextActions>(c => {
-                    c.Activated = Helpers.CreateActionList();
-                    c.Deactivated = Helpers.CreateActionList();
-                    c.NewRound = Helpers.CreateActionList(
-                        new ContextActionCastSpell() {
-                            m_Spell = DetonateAcidExplosion.ToReference<BlueprintAbilityReference>(),
-                            OverrideDC = false,
-                            DC = 0,
-                            OverrideSpellLevel = false,
-                            SpellLevel = 0,
-                            CastByTarget = false,
-                            LogIfCanNotTarget = false,
-                            MarkAsChild = false//?
-                        }
-                        );
-                });
-                bp.AddComponent<ReplaceAbilityParamsWithContext>(c => {
-                    c.m_Ability = DetonateAcidExplosion.ToReference<BlueprintAbilityReference>();
-                });
-                bp.m_Flags = BlueprintBuff.Flags.IsFromSpell | BlueprintBuff.Flags.RemoveOnRest;
-            });
-            var DetonateColdBuff = Helpers.CreateBuff("DetonateColdBuff", bp => {
+            var DetonateColdExplosion = Helpers.CreateBlueprint<BlueprintAbility>("DetonateColdExplosion", bp => {
                 bp.SetName("Detonate - Cold");
-                bp.SetDescription("You flood yourself with a potent surge of elemental energy. One round after completing the casting of the spell, the energy explodes from your body. " +
-                    "\nChoose one of the following four energy types: acid, cold, electricity, or fire. The explosion inflicts 1d8 points of damage of that energy type per caster level " +
+                bp.SetDescription("The explosion inflicts 1d8 points of damage of that energy type per caster level " +
                     "(maximum 10d8) to all creatures within 15 feet, and half that amount to targets past 15 feet but within 30 feet. You automatically take half damage from the explosion, " +
                     "without a saving throw, but any other energy resistance or energy immunity effects you may have in place can prevent or lessen this overflow damage caused by the explosion.");
-                bp.m_Icon = SteamBlastBase.m_Icon;
-                bp.AddComponent<AddFactContextActions>(c => {
-                    c.Activated = Helpers.CreateActionList();
-                    c.Deactivated = Helpers.CreateActionList();
-                    c.NewRound = Helpers.CreateActionList(
-                        new ContextActionCastSpell() {
-                            m_Spell = DetonateColdExplosion.ToReference<BlueprintAbilityReference>(),
-                            OverrideDC = false,
-                            DC = 0,
-                            OverrideSpellLevel = false,
-                            SpellLevel = 0,
-                            CastByTarget = false,
-                            LogIfCanNotTarget = false,
-                            MarkAsChild = false//?
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new Conditional() {
+                            ConditionsChecker = new ConditionsChecker() {
+                                Operation = Operation.Or,
+                                Conditions = new Condition[] {
+                                    new ContextConditionIsCaster() {
+                                        Not = false
+                                    }
+                                }
+                            },
+                            IfTrue = Helpers.CreateActionList(
+                                new ContextActionDealDamage() {
+                                    m_Type = ContextActionDealDamage.Type.Damage,
+                                    DamageType = new DamageTypeDescription() {
+                                        Type = DamageType.Energy,
+                                        Common = new DamageTypeDescription.CommomData() {
+                                            Reality = 0,
+                                            Alignment = 0,
+                                            Precision = false
+                                        },
+                                        Physical = new DamageTypeDescription.PhysicalData() {
+                                            Material = 0,
+                                            Form = 0,
+                                            Enhancement = 0,
+                                            EnhancementTotal = 0
+                                        },
+                                        Energy = DamageEnergyType.Cold
+                                    },
+                                    Drain = false,
+                                    AbilityType = StatType.Unknown,
+                                    EnergyDrainType = EnergyDrainType.Temporary,
+                                    Duration = new ContextDurationValue() {
+                                        Rate = DurationRate.Rounds,
+                                        DiceType = DiceType.Zero,
+                                        DiceCountValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                        BonusValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                        m_IsExtendable = true,
+                                    },
+                                    ReadPreRolledFromSharedValue = true,
+                                    PreRolledSharedValue = AbilitySharedValue.Damage,
+                                    Value = new ContextDiceValue() {
+                                        DiceType = DiceType.D8,
+                                        DiceCountValue = new ContextValue() {
+                                            ValueType = ContextValueType.Rank,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.DamageDice,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                        BonusValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                    },
+                                    IsAoE = false,
+                                    HalfIfSaved = false,
+                                    Half = true,
+                                    UseMinHPAfterDamage = false,
+                                    MinHPAfterDamage = 0,
+                                    WriteResultToSharedValue = false,
+                                    ResultSharedValue = AbilitySharedValue.Damage
+                                }
+                                ),
+                            IfFalse = Helpers.CreateActionList(
+                                new ContextActionSavingThrow() {
+                                    m_ConditionalDCIncrease = new ContextActionSavingThrow.ConditionalDCIncrease[0],
+                                    Type = SavingThrowType.Reflex,
+                                    HasCustomDC = false,
+                                    CustomDC = new ContextValue(),
+                                    Actions = Helpers.CreateActionList(
+                                        new ContextActionConditionalSaved() {
+                                            Succeed = Helpers.CreateActionList(
+                                                new Conditional() {
+                                                    ConditionsChecker = new ConditionsChecker() {
+                                                        Operation = Operation.Or,
+                                                        Conditions = new Condition[] {
+                                                            new ContextConditionDistanceToTarget() {
+                                                                DistanceGreater = new Feet() { m_Value = 15 },
+                                                                Not = true
+                                                            }
+                                                        }
+                                                    },
+                                                    IfTrue = Helpers.CreateActionList(
+                                                        new ContextActionDealDamage() {
+                                                            m_Type = ContextActionDealDamage.Type.Damage,
+                                                            DamageType = new DamageTypeDescription() {
+                                                                Type = DamageType.Energy,
+                                                                Common = new DamageTypeDescription.CommomData() {
+                                                                    Reality = 0,
+                                                                    Alignment = 0,
+                                                                    Precision = false
+                                                                },
+                                                                Physical = new DamageTypeDescription.PhysicalData() {
+                                                                    Material = 0,
+                                                                    Form = 0,
+                                                                    Enhancement = 0,
+                                                                    EnhancementTotal = 0
+                                                                },
+                                                                Energy = DamageEnergyType.Cold
+                                                            },
+                                                            Drain = false,
+                                                            AbilityType = StatType.Unknown,
+                                                            EnergyDrainType = EnergyDrainType.Temporary,
+                                                            Duration = new ContextDurationValue() {
+                                                                Rate = DurationRate.Rounds,
+                                                                DiceType = DiceType.Zero,
+                                                                DiceCountValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Simple,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.Default,
+                                                                    ValueShared = AbilitySharedValue.Damage,
+                                                                    Property = UnitProperty.None
+                                                                },
+                                                                BonusValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Simple,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.Default,
+                                                                    ValueShared = AbilitySharedValue.Damage,
+                                                                    Property = UnitProperty.None
+                                                                },
+                                                                m_IsExtendable = true,
+                                                            },
+                                                            ReadPreRolledFromSharedValue = true,//!
+                                                            PreRolledSharedValue = AbilitySharedValue.Damage,
+                                                            Value = new ContextDiceValue() {
+                                                                DiceType = DiceType.D8,
+                                                                DiceCountValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Rank,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.DamageDice,
+                                                                    ValueShared = AbilitySharedValue.Damage,
+                                                                    Property = UnitProperty.None
+                                                                },
+                                                                BonusValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Simple,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.Default,
+                                                                    ValueShared = AbilitySharedValue.Damage,
+                                                                    Property = UnitProperty.None
+                                                                },
+                                                            },
+                                                            IsAoE = true,
+                                                            HalfIfSaved = true,
+                                                            Half = false,
+                                                            UseMinHPAfterDamage = false,
+                                                            MinHPAfterDamage = 0,
+                                                            WriteResultToSharedValue = false,
+                                                            ResultSharedValue = AbilitySharedValue.Damage
+                                                        }
+                                                        ),
+                                                    IfFalse = Helpers.CreateActionList(
+                                                        new ContextActionDealDamage() {
+                                                            m_Type = ContextActionDealDamage.Type.Damage,
+                                                            DamageType = new DamageTypeDescription() {
+                                                                Type = DamageType.Energy,
+                                                                Common = new DamageTypeDescription.CommomData() {
+                                                                    Reality = 0,
+                                                                    Alignment = 0,
+                                                                    Precision = false
+                                                                },
+                                                                Physical = new DamageTypeDescription.PhysicalData() {
+                                                                    Material = 0,
+                                                                    Form = 0,
+                                                                    Enhancement = 0,
+                                                                    EnhancementTotal = 0
+                                                                },
+                                                                Energy = DamageEnergyType.Cold
+                                                            },
+                                                            Drain = false,
+                                                            AbilityType = StatType.Unknown,
+                                                            EnergyDrainType = EnergyDrainType.Temporary,
+                                                            Duration = new ContextDurationValue() {
+                                                                Rate = DurationRate.Rounds,
+                                                                DiceType = DiceType.Zero,
+                                                                DiceCountValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Simple,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.Default,
+                                                                    ValueShared = AbilitySharedValue.Damage,
+                                                                    Property = UnitProperty.None
+                                                                },
+                                                                BonusValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Simple,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.Default,
+                                                                    ValueShared = AbilitySharedValue.Damage,
+                                                                    Property = UnitProperty.None
+                                                                },
+                                                                m_IsExtendable = true,
+                                                            },
+                                                            ReadPreRolledFromSharedValue = true,//!
+                                                            PreRolledSharedValue = AbilitySharedValue.Damage,
+                                                            Value = new ContextDiceValue() {
+                                                                DiceType = DiceType.D8,
+                                                                DiceCountValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Rank,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.DamageDice,
+                                                                    ValueShared = AbilitySharedValue.Damage,
+                                                                    Property = UnitProperty.None
+                                                                },
+                                                                BonusValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Simple,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.Default,
+                                                                    ValueShared = AbilitySharedValue.Damage,
+                                                                    Property = UnitProperty.None
+                                                                },
+                                                            },
+                                                            IsAoE = true,
+                                                            HalfIfSaved = true,
+                                                            Half = true,
+                                                            UseMinHPAfterDamage = false,
+                                                            MinHPAfterDamage = 0,
+                                                            WriteResultToSharedValue = false,
+                                                            ResultSharedValue = AbilitySharedValue.Damage
+                                                        }
+                                                        )
+                                                }
+                                            ),
+                                            Failed = Helpers.CreateActionList(
+                                                new Conditional() {
+                                                    ConditionsChecker = new ConditionsChecker() {
+                                                        Operation = Operation.Or,
+                                                        Conditions = new Condition[] {
+                                                            new ContextConditionDistanceToTarget() {
+                                                                DistanceGreater = new Feet() { m_Value = 15 },
+                                                                Not = true
+                                                            }
+                                                        }
+                                                    },
+                                                    IfTrue = Helpers.CreateActionList(
+                                                        new ContextActionDealDamage() {
+                                                            m_Type = ContextActionDealDamage.Type.Damage,
+                                                            DamageType = new DamageTypeDescription() {
+                                                                Type = DamageType.Energy,
+                                                                Common = new DamageTypeDescription.CommomData() {
+                                                                    Reality = 0,
+                                                                    Alignment = 0,
+                                                                    Precision = false
+                                                                },
+                                                                Physical = new DamageTypeDescription.PhysicalData() {
+                                                                    Material = 0,
+                                                                    Form = 0,
+                                                                    Enhancement = 0,
+                                                                    EnhancementTotal = 0
+                                                                },
+                                                                Energy = DamageEnergyType.Cold
+                                                            },
+                                                            Drain = false,
+                                                            AbilityType = StatType.Unknown,
+                                                            EnergyDrainType = EnergyDrainType.Temporary,
+                                                            Duration = new ContextDurationValue() {
+                                                                Rate = DurationRate.Rounds,
+                                                                DiceType = DiceType.Zero,
+                                                                DiceCountValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Simple,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.Default,
+                                                                    ValueShared = AbilitySharedValue.Damage,
+                                                                    Property = UnitProperty.None
+                                                                },
+                                                                BonusValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Simple,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.Default,
+                                                                    ValueShared = AbilitySharedValue.Damage,
+                                                                    Property = UnitProperty.None
+                                                                },
+                                                                m_IsExtendable = true,
+                                                            },
+                                                            ReadPreRolledFromSharedValue = true,//!
+                                                            PreRolledSharedValue = AbilitySharedValue.Damage,
+                                                            Value = new ContextDiceValue() {
+                                                                DiceType = DiceType.D8,
+                                                                DiceCountValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Rank,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.DamageDice,
+                                                                    ValueShared = AbilitySharedValue.Damage,
+                                                                    Property = UnitProperty.None
+                                                                },
+                                                                BonusValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Simple,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.Default,
+                                                                    ValueShared = AbilitySharedValue.Damage,
+                                                                    Property = UnitProperty.None
+                                                                },
+                                                            },
+                                                            IsAoE = true,
+                                                            HalfIfSaved = true,
+                                                            Half = false,
+                                                            UseMinHPAfterDamage = false,
+                                                            MinHPAfterDamage = 0,
+                                                            WriteResultToSharedValue = false,
+                                                            ResultSharedValue = AbilitySharedValue.Damage
+                                                        }
+                                                        ),
+                                                    IfFalse = Helpers.CreateActionList(
+                                                        new ContextActionDealDamage() {
+                                                            m_Type = ContextActionDealDamage.Type.Damage,
+                                                            DamageType = new DamageTypeDescription() {
+                                                                Type = DamageType.Energy,
+                                                                Common = new DamageTypeDescription.CommomData() {
+                                                                    Reality = 0,
+                                                                    Alignment = 0,
+                                                                    Precision = false
+                                                                },
+                                                                Physical = new DamageTypeDescription.PhysicalData() {
+                                                                    Material = 0,
+                                                                    Form = 0,
+                                                                    Enhancement = 0,
+                                                                    EnhancementTotal = 0
+                                                                },
+                                                                Energy = DamageEnergyType.Cold
+                                                            },
+                                                            Drain = false,
+                                                            AbilityType = StatType.Unknown,
+                                                            EnergyDrainType = EnergyDrainType.Temporary,
+                                                            Duration = new ContextDurationValue() {
+                                                                Rate = DurationRate.Rounds,
+                                                                DiceType = DiceType.Zero,
+                                                                DiceCountValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Simple,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.Default,
+                                                                    ValueShared = AbilitySharedValue.Damage,
+                                                                    Property = UnitProperty.None
+                                                                },
+                                                                BonusValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Simple,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.Default,
+                                                                    ValueShared = AbilitySharedValue.Damage,
+                                                                    Property = UnitProperty.None
+                                                                },
+                                                                m_IsExtendable = true,
+                                                            },
+                                                            ReadPreRolledFromSharedValue = true,//!
+                                                            PreRolledSharedValue = AbilitySharedValue.Damage,
+                                                            Value = new ContextDiceValue() {
+                                                                DiceType = DiceType.D8,
+                                                                DiceCountValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Rank,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.DamageDice,
+                                                                    ValueShared = AbilitySharedValue.Damage,
+                                                                    Property = UnitProperty.None
+                                                                },
+                                                                BonusValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Simple,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.Default,
+                                                                    ValueShared = AbilitySharedValue.Damage,
+                                                                    Property = UnitProperty.None
+                                                                },
+                                                            },
+                                                            IsAoE = true,
+                                                            HalfIfSaved = true,
+                                                            Half = true,
+                                                            UseMinHPAfterDamage = false,
+                                                            MinHPAfterDamage = 0,
+                                                            WriteResultToSharedValue = false,
+                                                            ResultSharedValue = AbilitySharedValue.Damage
+                                                        }
+                                                        )
+                                                }
+                                            ),
+                                        }
+                                        )
+                                }
+                                )
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = DetonateColdBuff.ToReference<BlueprintBuffReference>(),
+                            ToCaster = true
                         }
                         );
                 });
-                bp.AddComponent<ReplaceAbilityParamsWithContext>(c => {
-                    c.m_Ability = DetonateColdExplosion.ToReference<BlueprintAbilityReference>();
+                bp.AddComponent<AbilityTargetsAround>(c => {
+                    c.m_Radius = 30.Feet();
+                    c.m_TargetType = TargetType.Any;
+                    c.m_IncludeDead = false;
+                    c.m_Condition = new ConditionsChecker();
+                    c.m_SpreadSpeed = 0.Feet();
                 });
-                bp.m_Flags = BlueprintBuff.Flags.IsFromSpell | BlueprintBuff.Flags.RemoveOnRest;
+                bp.AddComponent<AbilitySpawnFx>(c => {
+                    c.PrefabLink = WailOfBansheeFx.PrefabLink;
+                    c.Time = AbilitySpawnFxTime.OnApplyEffect;
+                    c.Anchor = AbilitySpawnFxAnchor.ClickedTarget;
+                    c.WeaponTarget = AbilitySpawnFxWeaponTarget.None;
+                    c.DestroyOnCast = false;
+                    c.Delay = 0;
+                    c.PositionAnchor = AbilitySpawnFxAnchor.None;
+                    c.OrientationAnchor = AbilitySpawnFxAnchor.None;
+                    c.OrientationMode = AbilitySpawnFxOrientation.Copy;
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.DamageDice;
+                    c.m_BaseValueType = ContextRankBaseValueType.CasterLevel;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.AsIs;
+                    c.m_StartLevel = 0;
+                    c.m_StepLevel = 0;
+                    c.m_UseMax = true;
+                    c.m_Max = 10;
+                });
+                bp.AddComponent<ContextCalculateSharedValue>(c => {
+                    c.ValueType = AbilitySharedValue.Damage;
+                    c.Value = new ContextDiceValue() {
+                        DiceType = DiceType.D8,
+                        DiceCountValue = new ContextValue() {
+                            ValueType = ContextValueType.Rank,
+                            ValueRank = AbilityRankType.DamageDice
+                        },
+                        BonusValue = 0
+                    };
+                    c.Modifier = 1;
+                });
+                bp.AddComponent<SpellComponent>(c => {
+                    c.School = SpellSchool.Evocation;
+                });
+                bp.AddComponent<SpellDescriptorComponent>(c => {
+                    c.Descriptor = SpellDescriptor.Cold;
+                });
+                bp.AddComponent<CraftInfoComponent>(c => {
+                    c.SpellType = CraftSpellType.Damage;
+                    c.SavingThrow = CraftSavingThrow.Reflex;
+                    c.AOEType = CraftAOE.AOE;
+                });
+                bp.m_Icon = DetonateIcon;
+                bp.Type = AbilityType.Spell;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = true;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Self;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten | Metamagic.CompletelyNormal;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = Helpers.CreateString("DetonateColdExplosion.SavingThrow", "Relex half");
             });
-            var DetonateElectricityBuff = Helpers.CreateBuff("DetonateElectricityBuff", bp => {
+            var DetonateElectricityExplosion = Helpers.CreateBlueprint<BlueprintAbility>("DetonateElectricityExplosion", bp => {
                 bp.SetName("Detonate - Electricity");
-                bp.SetDescription("You flood yourself with a potent surge of elemental energy. One round after completing the casting of the spell, the energy explodes from your body. " +
-                    "\nChoose one of the following four energy types: acid, cold, electricity, or fire. The explosion inflicts 1d8 points of damage of that energy type per caster level " +
+                bp.SetDescription("The explosion inflicts 1d8 points of damage of that energy type per caster level " +
                     "(maximum 10d8) to all creatures within 15 feet, and half that amount to targets past 15 feet but within 30 feet. You automatically take half damage from the explosion, " +
                     "without a saving throw, but any other energy resistance or energy immunity effects you may have in place can prevent or lessen this overflow damage caused by the explosion.");
-                bp.m_Icon = SteamBlastBase.m_Icon;
-                bp.AddComponent<AddFactContextActions>(c => {
-                    c.Activated = Helpers.CreateActionList();
-                    c.Deactivated = Helpers.CreateActionList();
-                    c.NewRound = Helpers.CreateActionList(
-                        new ContextActionCastSpell() {
-                            m_Spell = DetonateElectricityExplosion.ToReference<BlueprintAbilityReference>(),
-                            OverrideDC = false,
-                            DC = 0,
-                            OverrideSpellLevel = false,
-                            SpellLevel = 0,
-                            CastByTarget = false,
-                            LogIfCanNotTarget = false,
-                            MarkAsChild = false//?
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new Conditional() {
+                            ConditionsChecker = new ConditionsChecker() {
+                                Operation = Operation.Or,
+                                Conditions = new Condition[] {
+                                    new ContextConditionIsCaster() {
+                                        Not = false
+                                    }
+                                }
+                            },
+                            IfTrue = Helpers.CreateActionList(
+                                new ContextActionDealDamage() {
+                                    m_Type = ContextActionDealDamage.Type.Damage,
+                                    DamageType = new DamageTypeDescription() {
+                                        Type = DamageType.Energy,
+                                        Common = new DamageTypeDescription.CommomData() {
+                                            Reality = 0,
+                                            Alignment = 0,
+                                            Precision = false
+                                        },
+                                        Physical = new DamageTypeDescription.PhysicalData() {
+                                            Material = 0,
+                                            Form = 0,
+                                            Enhancement = 0,
+                                            EnhancementTotal = 0
+                                        },
+                                        Energy = DamageEnergyType.Electricity
+                                    },
+                                    Drain = false,
+                                    AbilityType = StatType.Unknown,
+                                    EnergyDrainType = EnergyDrainType.Temporary,
+                                    Duration = new ContextDurationValue() {
+                                        Rate = DurationRate.Rounds,
+                                        DiceType = DiceType.Zero,
+                                        DiceCountValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                        BonusValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                        m_IsExtendable = true,
+                                    },
+                                    ReadPreRolledFromSharedValue = true,
+                                    PreRolledSharedValue = AbilitySharedValue.Damage,
+                                    Value = new ContextDiceValue() {
+                                        DiceType = DiceType.D8,
+                                        DiceCountValue = new ContextValue() {
+                                            ValueType = ContextValueType.Rank,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.DamageDice,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                        BonusValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                    },
+                                    IsAoE = false,
+                                    HalfIfSaved = false,
+                                    Half = true,
+                                    UseMinHPAfterDamage = false,
+                                    MinHPAfterDamage = 0,
+                                    WriteResultToSharedValue = false,
+                                    ResultSharedValue = AbilitySharedValue.Damage
+                                }
+                                ),
+                            IfFalse = Helpers.CreateActionList(
+                                new ContextActionSavingThrow() {
+                                    m_ConditionalDCIncrease = new ContextActionSavingThrow.ConditionalDCIncrease[0],
+                                    Type = SavingThrowType.Reflex,
+                                    HasCustomDC = false,
+                                    CustomDC = new ContextValue(),
+                                    Actions = Helpers.CreateActionList(
+                                        new ContextActionConditionalSaved() {
+                                            Succeed = Helpers.CreateActionList(
+                                                new Conditional() {
+                                                    ConditionsChecker = new ConditionsChecker() {
+                                                        Operation = Operation.Or,
+                                                        Conditions = new Condition[] {
+                                                            new ContextConditionDistanceToTarget() {
+                                                                DistanceGreater = new Feet() { m_Value = 15 },
+                                                                Not = true
+                                                            }
+                                                        }
+                                                    },
+                                                    IfTrue = Helpers.CreateActionList(
+                                                        new ContextActionDealDamage() {
+                                                            m_Type = ContextActionDealDamage.Type.Damage,
+                                                            DamageType = new DamageTypeDescription() {
+                                                                Type = DamageType.Energy,
+                                                                Common = new DamageTypeDescription.CommomData() {
+                                                                    Reality = 0,
+                                                                    Alignment = 0,
+                                                                    Precision = false
+                                                                },
+                                                                Physical = new DamageTypeDescription.PhysicalData() {
+                                                                    Material = 0,
+                                                                    Form = 0,
+                                                                    Enhancement = 0,
+                                                                    EnhancementTotal = 0
+                                                                },
+                                                                Energy = DamageEnergyType.Electricity
+                                                            },
+                                                            Drain = false,
+                                                            AbilityType = StatType.Unknown,
+                                                            EnergyDrainType = EnergyDrainType.Temporary,
+                                                            Duration = new ContextDurationValue() {
+                                                                Rate = DurationRate.Rounds,
+                                                                DiceType = DiceType.Zero,
+                                                                DiceCountValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Simple,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.Default,
+                                                                    ValueShared = AbilitySharedValue.Damage,
+                                                                    Property = UnitProperty.None
+                                                                },
+                                                                BonusValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Simple,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.Default,
+                                                                    ValueShared = AbilitySharedValue.Damage,
+                                                                    Property = UnitProperty.None
+                                                                },
+                                                                m_IsExtendable = true,
+                                                            },
+                                                            ReadPreRolledFromSharedValue = true,//!
+                                                            PreRolledSharedValue = AbilitySharedValue.Damage,
+                                                            Value = new ContextDiceValue() {
+                                                                DiceType = DiceType.D8,
+                                                                DiceCountValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Rank,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.DamageDice,
+                                                                    ValueShared = AbilitySharedValue.Damage,
+                                                                    Property = UnitProperty.None
+                                                                },
+                                                                BonusValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Simple,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.Default,
+                                                                    ValueShared = AbilitySharedValue.Damage,
+                                                                    Property = UnitProperty.None
+                                                                },
+                                                            },
+                                                            IsAoE = true,
+                                                            HalfIfSaved = true,
+                                                            Half = false,
+                                                            UseMinHPAfterDamage = false,
+                                                            MinHPAfterDamage = 0,
+                                                            WriteResultToSharedValue = false,
+                                                            ResultSharedValue = AbilitySharedValue.Damage
+                                                        }
+                                                        ),
+                                                    IfFalse = Helpers.CreateActionList(
+                                                        new ContextActionDealDamage() {
+                                                            m_Type = ContextActionDealDamage.Type.Damage,
+                                                            DamageType = new DamageTypeDescription() {
+                                                                Type = DamageType.Energy,
+                                                                Common = new DamageTypeDescription.CommomData() {
+                                                                    Reality = 0,
+                                                                    Alignment = 0,
+                                                                    Precision = false
+                                                                },
+                                                                Physical = new DamageTypeDescription.PhysicalData() {
+                                                                    Material = 0,
+                                                                    Form = 0,
+                                                                    Enhancement = 0,
+                                                                    EnhancementTotal = 0
+                                                                },
+                                                                Energy = DamageEnergyType.Electricity
+                                                            },
+                                                            Drain = false,
+                                                            AbilityType = StatType.Unknown,
+                                                            EnergyDrainType = EnergyDrainType.Temporary,
+                                                            Duration = new ContextDurationValue() {
+                                                                Rate = DurationRate.Rounds,
+                                                                DiceType = DiceType.Zero,
+                                                                DiceCountValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Simple,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.Default,
+                                                                    ValueShared = AbilitySharedValue.Damage,
+                                                                    Property = UnitProperty.None
+                                                                },
+                                                                BonusValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Simple,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.Default,
+                                                                    ValueShared = AbilitySharedValue.Damage,
+                                                                    Property = UnitProperty.None
+                                                                },
+                                                                m_IsExtendable = true,
+                                                            },
+                                                            ReadPreRolledFromSharedValue = true,//!
+                                                            PreRolledSharedValue = AbilitySharedValue.Damage,
+                                                            Value = new ContextDiceValue() {
+                                                                DiceType = DiceType.D8,
+                                                                DiceCountValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Rank,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.DamageDice,
+                                                                    ValueShared = AbilitySharedValue.Damage,
+                                                                    Property = UnitProperty.None
+                                                                },
+                                                                BonusValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Simple,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.Default,
+                                                                    ValueShared = AbilitySharedValue.Damage,
+                                                                    Property = UnitProperty.None
+                                                                },
+                                                            },
+                                                            IsAoE = true,
+                                                            HalfIfSaved = true,
+                                                            Half = true,
+                                                            UseMinHPAfterDamage = false,
+                                                            MinHPAfterDamage = 0,
+                                                            WriteResultToSharedValue = false,
+                                                            ResultSharedValue = AbilitySharedValue.Damage
+                                                        }
+                                                        )
+                                                }
+                                            ),
+                                            Failed = Helpers.CreateActionList(
+                                                new Conditional() {
+                                                    ConditionsChecker = new ConditionsChecker() {
+                                                        Operation = Operation.Or,
+                                                        Conditions = new Condition[] {
+                                                            new ContextConditionDistanceToTarget() {
+                                                                DistanceGreater = new Feet() { m_Value = 15 },
+                                                                Not = true
+                                                            }
+                                                        }
+                                                    },
+                                                    IfTrue = Helpers.CreateActionList(
+                                                        new ContextActionDealDamage() {
+                                                            m_Type = ContextActionDealDamage.Type.Damage,
+                                                            DamageType = new DamageTypeDescription() {
+                                                                Type = DamageType.Energy,
+                                                                Common = new DamageTypeDescription.CommomData() {
+                                                                    Reality = 0,
+                                                                    Alignment = 0,
+                                                                    Precision = false
+                                                                },
+                                                                Physical = new DamageTypeDescription.PhysicalData() {
+                                                                    Material = 0,
+                                                                    Form = 0,
+                                                                    Enhancement = 0,
+                                                                    EnhancementTotal = 0
+                                                                },
+                                                                Energy = DamageEnergyType.Electricity
+                                                            },
+                                                            Drain = false,
+                                                            AbilityType = StatType.Unknown,
+                                                            EnergyDrainType = EnergyDrainType.Temporary,
+                                                            Duration = new ContextDurationValue() {
+                                                                Rate = DurationRate.Rounds,
+                                                                DiceType = DiceType.Zero,
+                                                                DiceCountValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Simple,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.Default,
+                                                                    ValueShared = AbilitySharedValue.Damage,
+                                                                    Property = UnitProperty.None
+                                                                },
+                                                                BonusValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Simple,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.Default,
+                                                                    ValueShared = AbilitySharedValue.Damage,
+                                                                    Property = UnitProperty.None
+                                                                },
+                                                                m_IsExtendable = true,
+                                                            },
+                                                            ReadPreRolledFromSharedValue = true,//!
+                                                            PreRolledSharedValue = AbilitySharedValue.Damage,
+                                                            Value = new ContextDiceValue() {
+                                                                DiceType = DiceType.D8,
+                                                                DiceCountValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Rank,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.DamageDice,
+                                                                    ValueShared = AbilitySharedValue.Damage,
+                                                                    Property = UnitProperty.None
+                                                                },
+                                                                BonusValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Simple,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.Default,
+                                                                    ValueShared = AbilitySharedValue.Damage,
+                                                                    Property = UnitProperty.None
+                                                                },
+                                                            },
+                                                            IsAoE = true,
+                                                            HalfIfSaved = true,
+                                                            Half = false,
+                                                            UseMinHPAfterDamage = false,
+                                                            MinHPAfterDamage = 0,
+                                                            WriteResultToSharedValue = false,
+                                                            ResultSharedValue = AbilitySharedValue.Damage
+                                                        }
+                                                        ),
+                                                    IfFalse = Helpers.CreateActionList(
+                                                        new ContextActionDealDamage() {
+                                                            m_Type = ContextActionDealDamage.Type.Damage,
+                                                            DamageType = new DamageTypeDescription() {
+                                                                Type = DamageType.Energy,
+                                                                Common = new DamageTypeDescription.CommomData() {
+                                                                    Reality = 0,
+                                                                    Alignment = 0,
+                                                                    Precision = false
+                                                                },
+                                                                Physical = new DamageTypeDescription.PhysicalData() {
+                                                                    Material = 0,
+                                                                    Form = 0,
+                                                                    Enhancement = 0,
+                                                                    EnhancementTotal = 0
+                                                                },
+                                                                Energy = DamageEnergyType.Electricity
+                                                            },
+                                                            Drain = false,
+                                                            AbilityType = StatType.Unknown,
+                                                            EnergyDrainType = EnergyDrainType.Temporary,
+                                                            Duration = new ContextDurationValue() {
+                                                                Rate = DurationRate.Rounds,
+                                                                DiceType = DiceType.Zero,
+                                                                DiceCountValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Simple,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.Default,
+                                                                    ValueShared = AbilitySharedValue.Damage,
+                                                                    Property = UnitProperty.None
+                                                                },
+                                                                BonusValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Simple,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.Default,
+                                                                    ValueShared = AbilitySharedValue.Damage,
+                                                                    Property = UnitProperty.None
+                                                                },
+                                                                m_IsExtendable = true,
+                                                            },
+                                                            ReadPreRolledFromSharedValue = true,//!
+                                                            PreRolledSharedValue = AbilitySharedValue.Damage,
+                                                            Value = new ContextDiceValue() {
+                                                                DiceType = DiceType.D8,
+                                                                DiceCountValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Rank,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.DamageDice,
+                                                                    ValueShared = AbilitySharedValue.Damage,
+                                                                    Property = UnitProperty.None
+                                                                },
+                                                                BonusValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Simple,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.Default,
+                                                                    ValueShared = AbilitySharedValue.Damage,
+                                                                    Property = UnitProperty.None
+                                                                },
+                                                            },
+                                                            IsAoE = true,
+                                                            HalfIfSaved = true,
+                                                            Half = true,
+                                                            UseMinHPAfterDamage = false,
+                                                            MinHPAfterDamage = 0,
+                                                            WriteResultToSharedValue = false,
+                                                            ResultSharedValue = AbilitySharedValue.Damage
+                                                        }
+                                                        )
+                                                }
+                                            ),
+                                        }
+                                        )
+                                }
+                                )
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = DetonateElectricityBuff.ToReference<BlueprintBuffReference>(),
+                            ToCaster = true
                         }
                         );
                 });
-                bp.AddComponent<ReplaceAbilityParamsWithContext>(c => {
-                    c.m_Ability = DetonateElectricityExplosion.ToReference<BlueprintAbilityReference>();
+                bp.AddComponent<AbilityTargetsAround>(c => {
+                    c.m_Radius = 30.Feet();
+                    c.m_TargetType = TargetType.Any;
+                    c.m_IncludeDead = false;
+                    c.m_Condition = new ConditionsChecker();
+                    c.m_SpreadSpeed = 0.Feet();
                 });
-                bp.m_Flags = BlueprintBuff.Flags.IsFromSpell | BlueprintBuff.Flags.RemoveOnRest;
+                bp.AddComponent<AbilitySpawnFx>(c => {
+                    c.PrefabLink = WailOfBansheeFx.PrefabLink;
+                    c.Time = AbilitySpawnFxTime.OnApplyEffect;
+                    c.Anchor = AbilitySpawnFxAnchor.ClickedTarget;
+                    c.WeaponTarget = AbilitySpawnFxWeaponTarget.None;
+                    c.DestroyOnCast = false;
+                    c.Delay = 0;
+                    c.PositionAnchor = AbilitySpawnFxAnchor.None;
+                    c.OrientationAnchor = AbilitySpawnFxAnchor.None;
+                    c.OrientationMode = AbilitySpawnFxOrientation.Copy;
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.DamageDice;
+                    c.m_BaseValueType = ContextRankBaseValueType.CasterLevel;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.AsIs;
+                    c.m_StartLevel = 0;
+                    c.m_StepLevel = 0;
+                    c.m_UseMax = true;
+                    c.m_Max = 10;
+                });
+                bp.AddComponent<ContextCalculateSharedValue>(c => {
+                    c.ValueType = AbilitySharedValue.Damage;
+                    c.Value = new ContextDiceValue() {
+                        DiceType = DiceType.D8,
+                        DiceCountValue = new ContextValue() {
+                            ValueType = ContextValueType.Rank,
+                            ValueRank = AbilityRankType.DamageDice
+                        },
+                        BonusValue = 0
+                    };
+                    c.Modifier = 1;
+                });
+                bp.AddComponent<SpellComponent>(c => {
+                    c.School = SpellSchool.Evocation;
+                });
+                bp.AddComponent<SpellDescriptorComponent>(c => {
+                    c.Descriptor = SpellDescriptor.Electricity;
+                });
+                bp.AddComponent<CraftInfoComponent>(c => {
+                    c.SpellType = CraftSpellType.Damage;
+                    c.SavingThrow = CraftSavingThrow.Reflex;
+                    c.AOEType = CraftAOE.AOE;
+                });
+                bp.m_Icon = DetonateIcon;
+                bp.Type = AbilityType.Spell;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = true;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Self;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten | Metamagic.CompletelyNormal;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = Helpers.CreateString("DetonateElectricityExplosion.SavingThrow", "Relex half");
             });
-            var DetonateFireBuff = Helpers.CreateBuff("DetonateFireBuff", bp => {
+            var DetonateFireExplosion = Helpers.CreateBlueprint<BlueprintAbility>("DetonateFireExplosion", bp => {
                 bp.SetName("Detonate - Fire");
-                bp.SetDescription("You flood yourself with a potent surge of elemental energy. One round after completing the casting of the spell, the energy explodes from your body. " +
-                    "\nChoose one of the following four energy types: acid, cold, electricity, or fire. The explosion inflicts 1d8 points of damage of that energy type per caster level " +
+                bp.SetDescription("The explosion inflicts 1d8 points of damage of that energy type per caster level " +
                     "(maximum 10d8) to all creatures within 15 feet, and half that amount to targets past 15 feet but within 30 feet. You automatically take half damage from the explosion, " +
                     "without a saving throw, but any other energy resistance or energy immunity effects you may have in place can prevent or lessen this overflow damage caused by the explosion.");
-                bp.m_Icon = SteamBlastBase.m_Icon;
-                bp.AddComponent<AddFactContextActions>(c => {
-                    c.Activated = Helpers.CreateActionList();
-                    c.Deactivated = Helpers.CreateActionList();
-                    c.NewRound = Helpers.CreateActionList(
-                        new ContextActionCastSpell() {
-                            m_Spell = DetonateFireExplosion.ToReference<BlueprintAbilityReference>(),
-                            OverrideDC = false,
-                            DC = 0,
-                            OverrideSpellLevel = false,
-                            SpellLevel = 0,
-                            CastByTarget = false,
-                            LogIfCanNotTarget = false,
-                            MarkAsChild = false//?
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new Conditional() {
+                            ConditionsChecker = new ConditionsChecker() {
+                                Operation = Operation.Or,
+                                Conditions = new Condition[] {
+                                    new ContextConditionIsCaster() {
+                                        Not = false
+                                    }
+                                }
+                            },
+                            IfTrue = Helpers.CreateActionList(
+                                new ContextActionDealDamage() {
+                                    m_Type = ContextActionDealDamage.Type.Damage,
+                                    DamageType = new DamageTypeDescription() {
+                                        Type = DamageType.Energy,
+                                        Common = new DamageTypeDescription.CommomData() {
+                                            Reality = 0,
+                                            Alignment = 0,
+                                            Precision = false
+                                        },
+                                        Physical = new DamageTypeDescription.PhysicalData() {
+                                            Material = 0,
+                                            Form = 0,
+                                            Enhancement = 0,
+                                            EnhancementTotal = 0
+                                        },
+                                        Energy = DamageEnergyType.Fire
+                                    },
+                                    Drain = false,
+                                    AbilityType = StatType.Unknown,
+                                    EnergyDrainType = EnergyDrainType.Temporary,
+                                    Duration = new ContextDurationValue() {
+                                        Rate = DurationRate.Rounds,
+                                        DiceType = DiceType.Zero,
+                                        DiceCountValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                        BonusValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                        m_IsExtendable = true,
+                                    },
+                                    ReadPreRolledFromSharedValue = true,
+                                    PreRolledSharedValue = AbilitySharedValue.Damage,
+                                    Value = new ContextDiceValue() {
+                                        DiceType = DiceType.D8,
+                                        DiceCountValue = new ContextValue() {
+                                            ValueType = ContextValueType.Rank,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.DamageDice,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                        BonusValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                    },
+                                    IsAoE = false,
+                                    HalfIfSaved = false,
+                                    Half = true,
+                                    UseMinHPAfterDamage = false,
+                                    MinHPAfterDamage = 0,
+                                    WriteResultToSharedValue = false,
+                                    ResultSharedValue = AbilitySharedValue.Damage
+                                }
+                                ),
+                            IfFalse = Helpers.CreateActionList(
+                                new ContextActionSavingThrow() {
+                                    m_ConditionalDCIncrease = new ContextActionSavingThrow.ConditionalDCIncrease[0],
+                                    Type = SavingThrowType.Reflex,
+                                    HasCustomDC = false,
+                                    CustomDC = new ContextValue(),
+                                    Actions = Helpers.CreateActionList(
+                                        new ContextActionConditionalSaved() {
+                                            Succeed = Helpers.CreateActionList(
+                                                new Conditional() {
+                                                    ConditionsChecker = new ConditionsChecker() {
+                                                        Operation = Operation.Or,
+                                                        Conditions = new Condition[] {
+                                                            new ContextConditionDistanceToTarget() {
+                                                                DistanceGreater = new Feet() { m_Value = 15 },
+                                                                Not = true
+                                                            }
+                                                        }
+                                                    },
+                                                    IfTrue = Helpers.CreateActionList(
+                                                        new ContextActionDealDamage() {
+                                                            m_Type = ContextActionDealDamage.Type.Damage,
+                                                            DamageType = new DamageTypeDescription() {
+                                                                Type = DamageType.Energy,
+                                                                Common = new DamageTypeDescription.CommomData() {
+                                                                    Reality = 0,
+                                                                    Alignment = 0,
+                                                                    Precision = false
+                                                                },
+                                                                Physical = new DamageTypeDescription.PhysicalData() {
+                                                                    Material = 0,
+                                                                    Form = 0,
+                                                                    Enhancement = 0,
+                                                                    EnhancementTotal = 0
+                                                                },
+                                                                Energy = DamageEnergyType.Fire
+                                                            },
+                                                            Drain = false,
+                                                            AbilityType = StatType.Unknown,
+                                                            EnergyDrainType = EnergyDrainType.Temporary,
+                                                            Duration = new ContextDurationValue() {
+                                                                Rate = DurationRate.Rounds,
+                                                                DiceType = DiceType.Zero,
+                                                                DiceCountValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Simple,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.Default,
+                                                                    ValueShared = AbilitySharedValue.Damage,
+                                                                    Property = UnitProperty.None
+                                                                },
+                                                                BonusValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Simple,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.Default,
+                                                                    ValueShared = AbilitySharedValue.Damage,
+                                                                    Property = UnitProperty.None
+                                                                },
+                                                                m_IsExtendable = true,
+                                                            },
+                                                            ReadPreRolledFromSharedValue = true,//!
+                                                            PreRolledSharedValue = AbilitySharedValue.Damage,
+                                                            Value = new ContextDiceValue() {
+                                                                DiceType = DiceType.D8,
+                                                                DiceCountValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Rank,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.DamageDice,
+                                                                    ValueShared = AbilitySharedValue.Damage,
+                                                                    Property = UnitProperty.None
+                                                                },
+                                                                BonusValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Simple,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.Default,
+                                                                    ValueShared = AbilitySharedValue.Damage,
+                                                                    Property = UnitProperty.None
+                                                                },
+                                                            },
+                                                            IsAoE = true,
+                                                            HalfIfSaved = true,
+                                                            Half = false,
+                                                            UseMinHPAfterDamage = false,
+                                                            MinHPAfterDamage = 0,
+                                                            WriteResultToSharedValue = false,
+                                                            ResultSharedValue = AbilitySharedValue.Damage
+                                                        }
+                                                        ),
+                                                    IfFalse = Helpers.CreateActionList(
+                                                        new ContextActionDealDamage() {
+                                                            m_Type = ContextActionDealDamage.Type.Damage,
+                                                            DamageType = new DamageTypeDescription() {
+                                                                Type = DamageType.Energy,
+                                                                Common = new DamageTypeDescription.CommomData() {
+                                                                    Reality = 0,
+                                                                    Alignment = 0,
+                                                                    Precision = false
+                                                                },
+                                                                Physical = new DamageTypeDescription.PhysicalData() {
+                                                                    Material = 0,
+                                                                    Form = 0,
+                                                                    Enhancement = 0,
+                                                                    EnhancementTotal = 0
+                                                                },
+                                                                Energy = DamageEnergyType.Fire
+                                                            },
+                                                            Drain = false,
+                                                            AbilityType = StatType.Unknown,
+                                                            EnergyDrainType = EnergyDrainType.Temporary,
+                                                            Duration = new ContextDurationValue() {
+                                                                Rate = DurationRate.Rounds,
+                                                                DiceType = DiceType.Zero,
+                                                                DiceCountValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Simple,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.Default,
+                                                                    ValueShared = AbilitySharedValue.Damage,
+                                                                    Property = UnitProperty.None
+                                                                },
+                                                                BonusValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Simple,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.Default,
+                                                                    ValueShared = AbilitySharedValue.Damage,
+                                                                    Property = UnitProperty.None
+                                                                },
+                                                                m_IsExtendable = true,
+                                                            },
+                                                            ReadPreRolledFromSharedValue = true,//!
+                                                            PreRolledSharedValue = AbilitySharedValue.Damage,
+                                                            Value = new ContextDiceValue() {
+                                                                DiceType = DiceType.D8,
+                                                                DiceCountValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Rank,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.DamageDice,
+                                                                    ValueShared = AbilitySharedValue.Damage,
+                                                                    Property = UnitProperty.None
+                                                                },
+                                                                BonusValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Simple,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.Default,
+                                                                    ValueShared = AbilitySharedValue.Damage,
+                                                                    Property = UnitProperty.None
+                                                                },
+                                                            },
+                                                            IsAoE = true,
+                                                            HalfIfSaved = true,
+                                                            Half = true,
+                                                            UseMinHPAfterDamage = false,
+                                                            MinHPAfterDamage = 0,
+                                                            WriteResultToSharedValue = false,
+                                                            ResultSharedValue = AbilitySharedValue.Damage
+                                                        }
+                                                        )
+                                                }
+                                            ),
+                                            Failed = Helpers.CreateActionList(
+                                                new Conditional() {
+                                                    ConditionsChecker = new ConditionsChecker() {
+                                                        Operation = Operation.Or,
+                                                        Conditions = new Condition[] {
+                                                            new ContextConditionDistanceToTarget() {
+                                                                DistanceGreater = new Feet() { m_Value = 15 },
+                                                                Not = true
+                                                            }
+                                                        }
+                                                    },
+                                                    IfTrue = Helpers.CreateActionList(
+                                                        new ContextActionDealDamage() {
+                                                            m_Type = ContextActionDealDamage.Type.Damage,
+                                                            DamageType = new DamageTypeDescription() {
+                                                                Type = DamageType.Energy,
+                                                                Common = new DamageTypeDescription.CommomData() {
+                                                                    Reality = 0,
+                                                                    Alignment = 0,
+                                                                    Precision = false
+                                                                },
+                                                                Physical = new DamageTypeDescription.PhysicalData() {
+                                                                    Material = 0,
+                                                                    Form = 0,
+                                                                    Enhancement = 0,
+                                                                    EnhancementTotal = 0
+                                                                },
+                                                                Energy = DamageEnergyType.Fire
+                                                            },
+                                                            Drain = false,
+                                                            AbilityType = StatType.Unknown,
+                                                            EnergyDrainType = EnergyDrainType.Temporary,
+                                                            Duration = new ContextDurationValue() {
+                                                                Rate = DurationRate.Rounds,
+                                                                DiceType = DiceType.Zero,
+                                                                DiceCountValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Simple,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.Default,
+                                                                    ValueShared = AbilitySharedValue.Damage,
+                                                                    Property = UnitProperty.None
+                                                                },
+                                                                BonusValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Simple,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.Default,
+                                                                    ValueShared = AbilitySharedValue.Damage,
+                                                                    Property = UnitProperty.None
+                                                                },
+                                                                m_IsExtendable = true,
+                                                            },
+                                                            ReadPreRolledFromSharedValue = true,//!
+                                                            PreRolledSharedValue = AbilitySharedValue.Damage,
+                                                            Value = new ContextDiceValue() {
+                                                                DiceType = DiceType.D8,
+                                                                DiceCountValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Rank,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.DamageDice,
+                                                                    ValueShared = AbilitySharedValue.Damage,
+                                                                    Property = UnitProperty.None
+                                                                },
+                                                                BonusValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Simple,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.Default,
+                                                                    ValueShared = AbilitySharedValue.Damage,
+                                                                    Property = UnitProperty.None
+                                                                },
+                                                            },
+                                                            IsAoE = true,
+                                                            HalfIfSaved = true,
+                                                            Half = false,
+                                                            UseMinHPAfterDamage = false,
+                                                            MinHPAfterDamage = 0,
+                                                            WriteResultToSharedValue = false,
+                                                            ResultSharedValue = AbilitySharedValue.Damage
+                                                        }
+                                                        ),
+                                                    IfFalse = Helpers.CreateActionList(
+                                                        new ContextActionDealDamage() {
+                                                            m_Type = ContextActionDealDamage.Type.Damage,
+                                                            DamageType = new DamageTypeDescription() {
+                                                                Type = DamageType.Energy,
+                                                                Common = new DamageTypeDescription.CommomData() {
+                                                                    Reality = 0,
+                                                                    Alignment = 0,
+                                                                    Precision = false
+                                                                },
+                                                                Physical = new DamageTypeDescription.PhysicalData() {
+                                                                    Material = 0,
+                                                                    Form = 0,
+                                                                    Enhancement = 0,
+                                                                    EnhancementTotal = 0
+                                                                },
+                                                                Energy = DamageEnergyType.Fire
+                                                            },
+                                                            Drain = false,
+                                                            AbilityType = StatType.Unknown,
+                                                            EnergyDrainType = EnergyDrainType.Temporary,
+                                                            Duration = new ContextDurationValue() {
+                                                                Rate = DurationRate.Rounds,
+                                                                DiceType = DiceType.Zero,
+                                                                DiceCountValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Simple,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.Default,
+                                                                    ValueShared = AbilitySharedValue.Damage,
+                                                                    Property = UnitProperty.None
+                                                                },
+                                                                BonusValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Simple,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.Default,
+                                                                    ValueShared = AbilitySharedValue.Damage,
+                                                                    Property = UnitProperty.None
+                                                                },
+                                                                m_IsExtendable = true,
+                                                            },
+                                                            ReadPreRolledFromSharedValue = true,//!
+                                                            PreRolledSharedValue = AbilitySharedValue.Damage,
+                                                            Value = new ContextDiceValue() {
+                                                                DiceType = DiceType.D8,
+                                                                DiceCountValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Rank,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.DamageDice,
+                                                                    ValueShared = AbilitySharedValue.Damage,
+                                                                    Property = UnitProperty.None
+                                                                },
+                                                                BonusValue = new ContextValue() {
+                                                                    ValueType = ContextValueType.Simple,
+                                                                    Value = 0,
+                                                                    ValueRank = AbilityRankType.Default,
+                                                                    ValueShared = AbilitySharedValue.Damage,
+                                                                    Property = UnitProperty.None
+                                                                },
+                                                            },
+                                                            IsAoE = true,
+                                                            HalfIfSaved = true,
+                                                            Half = true,
+                                                            UseMinHPAfterDamage = false,
+                                                            MinHPAfterDamage = 0,
+                                                            WriteResultToSharedValue = false,
+                                                            ResultSharedValue = AbilitySharedValue.Damage
+                                                        }
+                                                        )
+                                                }
+                                            ),
+                                        }
+                                        )
+                                }
+                                )
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = DetonateFireBuff.ToReference<BlueprintBuffReference>(),
+                            ToCaster = true
                         }
                         );
                 });
-                bp.AddComponent<ReplaceAbilityParamsWithContext>(c => {
-                    c.m_Ability = DetonateFireExplosion.ToReference<BlueprintAbilityReference>();
+                bp.AddComponent<AbilityTargetsAround>(c => {
+                    c.m_Radius = 30.Feet();
+                    c.m_TargetType = TargetType.Any;
+                    c.m_IncludeDead = false;
+                    c.m_Condition = new ConditionsChecker();
+                    c.m_SpreadSpeed = 0.Feet();
                 });
-                bp.m_Flags = BlueprintBuff.Flags.IsFromSpell | BlueprintBuff.Flags.RemoveOnRest;
+                bp.AddComponent<AbilitySpawnFx>(c => {
+                    c.PrefabLink = WailOfBansheeFx.PrefabLink;
+                    c.Time = AbilitySpawnFxTime.OnApplyEffect;
+                    c.Anchor = AbilitySpawnFxAnchor.ClickedTarget;
+                    c.WeaponTarget = AbilitySpawnFxWeaponTarget.None;
+                    c.DestroyOnCast = false;
+                    c.Delay = 0;
+                    c.PositionAnchor = AbilitySpawnFxAnchor.None;
+                    c.OrientationAnchor = AbilitySpawnFxAnchor.None;
+                    c.OrientationMode = AbilitySpawnFxOrientation.Copy;
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.DamageDice;
+                    c.m_BaseValueType = ContextRankBaseValueType.CasterLevel;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.AsIs;
+                    c.m_StartLevel = 0;
+                    c.m_StepLevel = 0;
+                    c.m_UseMax = true;
+                    c.m_Max = 10;
+                });
+                bp.AddComponent<ContextCalculateSharedValue>(c => {
+                    c.ValueType = AbilitySharedValue.Damage;
+                    c.Value = new ContextDiceValue() {
+                        DiceType = DiceType.D8,
+                        DiceCountValue = new ContextValue() {
+                            ValueType = ContextValueType.Rank,
+                            ValueRank = AbilityRankType.DamageDice
+                        },
+                        BonusValue = 0
+                    };
+                    c.Modifier = 1;
+                });
+                bp.AddComponent<SpellComponent>(c => {
+                    c.School = SpellSchool.Evocation;
+                });
+                bp.AddComponent<SpellDescriptorComponent>(c => {
+                    c.Descriptor = SpellDescriptor.Fire;
+                });
+                bp.AddComponent<CraftInfoComponent>(c => {
+                    c.SpellType = CraftSpellType.Damage;
+                    c.SavingThrow = CraftSavingThrow.Reflex;
+                    c.AOEType = CraftAOE.AOE;
+                });
+                bp.m_Icon = DetonateIcon;
+                bp.Type = AbilityType.Spell;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = true;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Self;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten | Metamagic.CompletelyNormal;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = Helpers.CreateString("DetonateFireExplosion.SavingThrow", "Relex half");
+            });
+
+            DetonateAcidBuff.AddComponent<AddFactContextActions>(c => {
+                c.Activated = Helpers.CreateActionList();
+                c.Deactivated = Helpers.CreateActionList();
+                c.NewRound = Helpers.CreateActionList(
+                    new ContextActionCastSpell() {
+                        m_Spell = DetonateAcidExplosion.ToReference<BlueprintAbilityReference>(),
+                        OverrideDC = false,
+                        DC = 0,
+                        OverrideSpellLevel = false,
+                        SpellLevel = 0,
+                        CastByTarget = false,
+                        LogIfCanNotTarget = false,
+                        MarkAsChild = false//?
+                    }
+                    );
+            });
+            DetonateAcidBuff.AddComponent<ReplaceAbilityParamsWithContext>(c => {
+                c.m_Ability = DetonateAcidExplosion.ToReference<BlueprintAbilityReference>();
+            });
+            DetonateColdBuff.AddComponent<AddFactContextActions>(c => {
+                c.Activated = Helpers.CreateActionList();
+                c.Deactivated = Helpers.CreateActionList();
+                c.NewRound = Helpers.CreateActionList(
+                    new ContextActionCastSpell() {
+                        m_Spell = DetonateColdExplosion.ToReference<BlueprintAbilityReference>(),
+                        OverrideDC = false,
+                        DC = 0,
+                        OverrideSpellLevel = false,
+                        SpellLevel = 0,
+                        CastByTarget = false,
+                        LogIfCanNotTarget = false,
+                        MarkAsChild = false//?
+                    }
+                    );
+            });
+            DetonateColdBuff.AddComponent<ReplaceAbilityParamsWithContext>(c => {
+                c.m_Ability = DetonateColdExplosion.ToReference<BlueprintAbilityReference>();
+            });
+            DetonateElectricityBuff.AddComponent<AddFactContextActions>(c => {
+                c.Activated = Helpers.CreateActionList();
+                c.Deactivated = Helpers.CreateActionList();
+                c.NewRound = Helpers.CreateActionList(
+                    new ContextActionCastSpell() {
+                        m_Spell = DetonateElectricityExplosion.ToReference<BlueprintAbilityReference>(),
+                        OverrideDC = false,
+                        DC = 0,
+                        OverrideSpellLevel = false,
+                        SpellLevel = 0,
+                        CastByTarget = false,
+                        LogIfCanNotTarget = false,
+                        MarkAsChild = false//?
+                    }
+                    );
+            });
+            DetonateElectricityBuff.AddComponent<ReplaceAbilityParamsWithContext>(c => {
+                c.m_Ability = DetonateElectricityExplosion.ToReference<BlueprintAbilityReference>();
+            });
+            DetonateFireBuff.AddComponent<AddFactContextActions>(c => {
+                c.Activated = Helpers.CreateActionList();
+                c.Deactivated = Helpers.CreateActionList();
+                c.NewRound = Helpers.CreateActionList(
+                    new ContextActionCastSpell() {
+                        m_Spell = DetonateFireExplosion.ToReference<BlueprintAbilityReference>(),
+                        OverrideDC = false,
+                        DC = 0,
+                        OverrideSpellLevel = false,
+                        SpellLevel = 0,
+                        CastByTarget = false,
+                        LogIfCanNotTarget = false,
+                        MarkAsChild = false//?
+                    }
+                    );
+            });
+            DetonateFireBuff.AddComponent<ReplaceAbilityParamsWithContext>(c => {
+                c.m_Ability = DetonateFireExplosion.ToReference<BlueprintAbilityReference>();
             });
 
             var DetonateAcidAbility = Helpers.CreateBlueprint<BlueprintAbility>("DetonateAcidAbility", bp => {
