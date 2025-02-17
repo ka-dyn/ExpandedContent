@@ -3881,7 +3881,30 @@
     "FaithfulParagonSpellbook": "5519a931-5816-46a3-a0ad-22128bb8bb2c",
     "FaithfulParagonSpelllist": "a6189c1e-7a86-4134-904c-69d18baef3a5",
     "FaithfulParagonSpellsFeature": "aadc3675-dc3c-4ee0-907f-e9b1528e8036",
-    "SoldierOfGaiaSpellsFeature": "09fc8b4a-a627-4077-8a39-015fc67b2224"
+    "SoldierOfGaiaSpellsFeature": "09fc8b4a-a627-4077-8a39-015fc67b2224",
+
+    "DetonateAcidAbility": "926d65bd-4020-4961-a5d5-a01393fbd0bd",
+    "DetonateAcidBuff": "27bbdad4-afe6-42d1-b716-c508edc4e7aa",
+    "DetonateAcidExplosion": "d8356f82-a411-49da-9725-55e9d193bfab",
+    "DetonateBaseAbility": "2b591d58-f76e-4bdd-bef1-5e286030663d",
+    "DetonateColdAbility": "d2fa5023-26cc-41dd-8402-ebf0c824a16d",
+    "DetonateColdBuff": "9855bcf8-7739-4780-90e5-a5c4ef1829e4",
+    "DetonateColdExplosion": "97333743-3f6e-494b-b1f9-a48e283cc710",
+    "DetonateElectricityAbility": "aaefb6a2-5b99-46af-a7e8-47ac1920b799",
+    "DetonateElectricityBuff": "fa021c76-2a80-4403-ac8f-b8e459a0ce9e",
+    "DetonateElectricityExplosion": "1d67d73d-bd5d-49c0-9277-51efe2f8692c",
+    "DetonateFireAbility": "063ba1aa-dca9-4a5c-8675-bbd32221f211",
+    "DetonateFireBuff": "1c5a72e9-9962-4932-b19b-1cbe4e10f451",
+    "DetonateFireExplosion": "7f4725b1-c195-439f-b3d8-57ad288d6d87",
+    "HellknightSigniferFaithfulParagonLevelUp": "e85aeac2-1cc7-4695-bcc5-8fec8f65190d",
+    "HellknightSigniferFaithfulParagonProgression": "ef248ae6-d2b1-4347-9dc6-115494a47cdd",
+    "IncendiaryCloudAbility": "99bad8fc-a753-4acd-b868-66940eef62da",
+    "IncendiaryCloudArea": "16dd156a-c57a-420d-82df-bad6e8e73ec7",
+    "IncendiaryCloudConcealmentBuff": "09011f92-3eb1-4c38-9848-0fdb825c946d",
+    "LoremasterFaithfulParagonLevelUp": "f8dfced9-6284-40cc-9767-5ceae1403553",
+    "LoremasterFaithfulParagonProgression": "aca18786-2c0c-4ddf-b4f3-d7bd9a57e63d",
+    "MysticTheurgeFaithfulParagonLevelUp": "5da83cce-283e-4019-b446-3e9b55d05048",
+    "MysticTheurgeFaithfulParagonProgression": "904da150-fa0a-403b-9446-4f2bdabdd573"
 
 
 
