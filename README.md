@@ -225,6 +225,8 @@ New Spells
 - Transmute Blood To Acid
 - Eruptive Pustules
 - Vermin Shape (I, II)
+- Detonate
+- Incendiary Cloud
 
 
 Compatible with all mods as far as I am aware, extra features are unlocked if used with these mods
