@@ -156,6 +156,7 @@ namespace ExpandedContent.Tweaks {
                 Spells.TransmuteBloodToAcid.AddTransmuteBloodToAcid();
                 Spells.VerminShape.AddVerminShape();
                 Spells.Detonate.AddDetonate();
+                Spells.IncendiaryCloud.AddIncendiaryCloud();
 
                 Miscellaneous.AlchemistDiscoveries.MutagenDiscovery.AddMutagenDiscovery();
                 Miscellaneous.AlchemistDiscoveries.MindchemistSkillDiscovery.AddMindchemistSkillDiscovery();

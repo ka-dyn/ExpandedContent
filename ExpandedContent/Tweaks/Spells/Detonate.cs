@@ -29,17 +29,18 @@ using Kingmaker.Utility;
 using Kingmaker.Visual.Animation.Kingmaker.Actions;
 using Kingmaker.Designers.EventConditionActionSystem.Actions;
 using Kingmaker.UnitLogic.Mechanics.Conditions;
+using UnityEngine;
+using Kingmaker.Visual.Decals;
+using System.Linq;
 
 namespace ExpandedContent.Tweaks.Spells {
     internal class Detonate {
         public static void AddDetonate() {
-            var DetonateIcon = AssetLoader.LoadInternal("Skills", "Icon_FishCurse.png");
+            var DetonateIcon = Resources.GetBlueprint<BlueprintAbility>("9afdc3eeca49c594aa7bf00e8e9803ac").Icon;
             //var Icon_ScrollOfDetonate = AssetLoader.LoadInternal("Items", "Icon_ScrollOfDetonate.png");
 
 
-
-
-
+            #region Buffs 1
             var DetonateAcidBuff = Helpers.CreateBuff("DetonateAcidBuff", bp => {
                 bp.SetName("Detonate - Acid");
                 bp.SetDescription("You flood yourself with a potent surge of elemental energy. One round after completing the casting of the spell, the energy explodes from your body. " +
@@ -76,13 +77,13 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.m_Icon = DetonateIcon;                
                 bp.m_Flags = BlueprintBuff.Flags.IsFromSpell | BlueprintBuff.Flags.RemoveOnRest;
             });
-
+            #endregion
+            #region Explosions
             var DetonateAcidExplosion = Helpers.CreateBlueprint<BlueprintAbility>("DetonateAcidExplosion", bp => {
                 bp.SetName("Detonate - Acid");
                 bp.SetDescription("The explosion inflicts 1d8 points of damage of that energy type per caster level " +
                     "(maximum 10d8) to all creatures within 15 feet, and half that amount to targets past 15 feet but within 30 feet. You automatically take half damage from the explosion, " +
                     "without a saving throw, but any other energy resistance or energy immunity effects you may have in place can prevent or lessen this overflow damage caused by the explosion.");
-
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.SavingThrowType = SavingThrowType.Unknown;
                     c.Actions = Helpers.CreateActionList(
@@ -488,7 +489,7 @@ namespace ExpandedContent.Tweaks.Spells {
                     c.m_SpreadSpeed = 0.Feet();
                 });
                 bp.AddComponent<AbilitySpawnFx>(c => {
-                    c.PrefabLink = WailOfBansheeFx.PrefabLink;
+                    c.PrefabLink = new PrefabLink() { AssetId = "13eb28db3412f894795b434673d6bbd4" };
                     c.Time = AbilitySpawnFxTime.OnApplyEffect;
                     c.Anchor = AbilitySpawnFxAnchor.ClickedTarget;
                     c.WeaponTarget = AbilitySpawnFxWeaponTarget.None;
@@ -958,7 +959,7 @@ namespace ExpandedContent.Tweaks.Spells {
                     c.m_SpreadSpeed = 0.Feet();
                 });
                 bp.AddComponent<AbilitySpawnFx>(c => {
-                    c.PrefabLink = WailOfBansheeFx.PrefabLink;
+                    c.PrefabLink = new PrefabLink() { AssetId = "941ea458189aeeb4e8edf9a2dcd9659c" };
                     c.Time = AbilitySpawnFxTime.OnApplyEffect;
                     c.Anchor = AbilitySpawnFxAnchor.ClickedTarget;
                     c.WeaponTarget = AbilitySpawnFxWeaponTarget.None;
@@ -1428,7 +1429,7 @@ namespace ExpandedContent.Tweaks.Spells {
                     c.m_SpreadSpeed = 0.Feet();
                 });
                 bp.AddComponent<AbilitySpawnFx>(c => {
-                    c.PrefabLink = WailOfBansheeFx.PrefabLink;
+                    c.PrefabLink = new PrefabLink() { AssetId = "90494fc296c45c743ab2b90f864228ca" };
                     c.Time = AbilitySpawnFxTime.OnApplyEffect;
                     c.Anchor = AbilitySpawnFxAnchor.ClickedTarget;
                     c.WeaponTarget = AbilitySpawnFxWeaponTarget.None;
@@ -1898,7 +1899,7 @@ namespace ExpandedContent.Tweaks.Spells {
                     c.m_SpreadSpeed = 0.Feet();
                 });
                 bp.AddComponent<AbilitySpawnFx>(c => {
-                    c.PrefabLink = WailOfBansheeFx.PrefabLink;
+                    c.PrefabLink = new PrefabLink() { AssetId = "808355a0f2a83344a918f89ea66d99a2" };
                     c.Time = AbilitySpawnFxTime.OnApplyEffect;
                     c.Anchor = AbilitySpawnFxAnchor.ClickedTarget;
                     c.WeaponTarget = AbilitySpawnFxWeaponTarget.None;
@@ -1958,7 +1959,50 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = Helpers.CreateString("DetonateFireExplosion.SavingThrow", "Relex half");
             });
-
+            #endregion
+            #region FX
+            var DetonateAcidExplosionSpawnFx = DetonateAcidExplosion.GetComponent<AbilitySpawnFx>();
+            DetonateAcidExplosionSpawnFx.PrefabLink = DetonateAcidExplosionSpawnFx.PrefabLink.CreateDynamicProxy(pfl => {
+                //Main.Log($"Editing: {pfl}");
+                pfl.name = "DetonateAcid_30feetAoE";
+                //Main.Log($"{FxDebug.DumpGameObject(pfl.gameObject)}");
+                var Rescale = pfl.transform.Find("Rescale (1)");
+                Rescale.transform.localScale = new(5f, 5f, 5f);
+                var Decal = pfl.transform.Find("Rescale (1)/RandomRotate/Decal").GetComponent<FxDecal>().Animations.Last();
+                Decal.Lifetime = 5.5f;
+            });
+            var DetonateColdExplosionSpawnFx = DetonateColdExplosion.GetComponent<AbilitySpawnFx>();
+            DetonateColdExplosionSpawnFx.PrefabLink = DetonateColdExplosionSpawnFx.PrefabLink.CreateDynamicProxy(pfl => {
+                //Main.Log($"Editing: {pfl}");
+                pfl.name = "DetonateCold_30feetAoE";
+                pfl.transform.localScale = new(3.5f, 3f, 3.5f);
+                //Main.Log($"{FxDebug.DumpGameObject(pfl.gameObject)}");
+                //var Rescale = pfl.transform.Find("Rescale (1)");
+                //Rescale.transform.localScale = new(5f, 5f, 5f);
+                //var Decal = pfl.transform.Find("Rescale (1)/RandomRotate/Decal").GetComponent<FxDecal>().Animations.Last();
+                //Decal.Lifetime = 5.5f;
+            });
+            var DetonateElectricityExplosionSpawnFx = DetonateElectricityExplosion.GetComponent<AbilitySpawnFx>();
+            DetonateElectricityExplosionSpawnFx.PrefabLink = DetonateElectricityExplosionSpawnFx.PrefabLink.CreateDynamicProxy(pfl => {
+                //Main.Log($"Editing: {pfl}");
+                pfl.name = "DetonateElectricity_30feetAoE";
+                pfl.transform.localScale = new(3.7f, 3.7f, 3.7f);
+                //Main.Log($"{FxDebug.DumpGameObject(pfl.gameObject)}");
+                Object.DestroyImmediate(pfl.transform.Find("Rescale/Lightning_starter").gameObject);
+            });
+            var DetonateFireExplosionSpawnFx = DetonateFireExplosion.GetComponent<AbilitySpawnFx>();
+            DetonateFireExplosionSpawnFx.PrefabLink = DetonateFireExplosionSpawnFx.PrefabLink.CreateDynamicProxy(pfl => {
+                //Main.Log($"Editing: {pfl}");
+                pfl.name = "DetonateFire_30feetAoE";
+                pfl.transform.localScale = new(3.7f, 3.7f, 3.7f);
+                //Main.Log($"{FxDebug.DumpGameObject(pfl.gameObject)}");
+                //var Rescale = pfl.transform.Find("Rescale (1)");
+                //Rescale.transform.localScale = new(5f, 5f, 5f);
+                //var Decal = pfl.transform.Find("Rescale (1)/RandomRotate/Decal").GetComponent<FxDecal>().Animations.Last();
+                //Decal.Lifetime = 5.5f;
+            });
+            #endregion
+            #region Buffs 2
             DetonateAcidBuff.AddComponent<AddFactContextActions>(c => {
                 c.Activated = Helpers.CreateActionList();
                 c.Deactivated = Helpers.CreateActionList();
@@ -2035,7 +2079,8 @@ namespace ExpandedContent.Tweaks.Spells {
             DetonateFireBuff.AddComponent<ReplaceAbilityParamsWithContext>(c => {
                 c.m_Ability = DetonateFireExplosion.ToReference<BlueprintAbilityReference>();
             });
-
+            #endregion
+            #region Variants
             var DetonateAcidAbility = Helpers.CreateBlueprint<BlueprintAbility>("DetonateAcidAbility", bp => {
                 bp.SetName("Detonate - Acid");
                 bp.SetDescription("You flood yourself with a potent surge of elemental energy. One round after completing the casting of the spell, the energy explodes from your body. " +
@@ -2236,7 +2281,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.LocalizedDuration = Helpers.CreateString("DetonateFireAbility.Duration", "1 round, then instantaneous");
                 bp.LocalizedSavingThrow = Helpers.CreateString("DetonateFireAbility.SavingThrow", "Reflex half");
             });
-
+            #endregion
             var DetonateBaseAbility = Helpers.CreateBlueprint<BlueprintAbility>("DetonateBaseAbility", bp => {
                 bp.SetName("Detonate");
                 bp.SetDescription("You flood yourself with a potent surge of elemental energy. One round after completing the casting of the spell, the energy explodes from your body. " +

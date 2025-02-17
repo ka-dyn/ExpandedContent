@@ -34,7 +34,7 @@ namespace ExpandedContent.Tweaks.Spells {
     internal class IncendiaryCloud {
         public static void AddIncendiaryCloud() {
             var IncendiaryCloudIcon = AssetLoader.LoadInternal("Skills", "Icon_IncendiaryCloud.jpg");
-            var Icon_ScrollOfIncendiaryCloud = AssetLoader.LoadInternal("Items", "Icon_ScrollOfIncendiaryCloud.png");
+            //var Icon_ScrollOfIncendiaryCloud = AssetLoader.LoadInternal("Items", "Icon_ScrollOfIncendiaryCloud.png");
 
             var BlurBuff = Resources.GetBlueprint<BlueprintBuff>("dd3ad347240624d46a11a092b4dd4674");
 
@@ -382,33 +382,39 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.AffectDead = false;
                 bp.IgnoreSleepingUnits = false;
                 bp.Shape = AreaEffectShape.Cylinder;
-                bp.Size = new Feet() { m_Value = 40 };
+                bp.Size = new Feet() { m_Value = 20 };
                 bp.Fx = new PrefabLink() { AssetId = "ee38b41b2b360b2458ec48f1868ca51b" }; //Cloudkill cloud
                 bp.CanBeUsedInTacticalCombat = false;
                 bp.m_TickRoundAfterSpawn = false;
             });
             IncendiaryCloudArea.Fx = IncendiaryCloudArea.Fx.CreateDynamicProxy(pfl => {
                 Main.Log($"Editing: {pfl}");
-                pfl.name = "IncendiaryCloud_40feetAoE";
+                pfl.name = "IncendiaryCloud_20feetAoE";
                 //Main.Log($"{FxDebug.DumpGameObject(pfl.gameObject)}");
-                pfl.transform.localScale = new(1.75f, 1.0f, 1.75f);
+                //pfl.transform.localScale = new(1.75f, 1.0f, 1.75f);
                 var Fog_Loop = pfl.transform.Find("Root/Fog_Loop (1)/Fog_Loop").GetComponent<ParticleSystem>();
-                Fog_Loop.startColor = new Color(1f, 0f, 0f, 1f);
-                Fog_Loop.scalingMode = ParticleSystemScalingMode.Hierarchy;
+                Fog_Loop.startColor = new Color(0.0549f, 0.0313f, 0.0471f, 1f);
+                //Fog_Loop.scalingMode = ParticleSystemScalingMode.Hierarchy;
                 var Fog_Loop_1 = pfl.transform.Find("Root/Fog_Loop (1)").GetComponent<ParticleSystem>();
-                Fog_Loop_1.startColor = new Color(1f, 0f, 0f, 1f);
-                Fog_Loop_1.scalingMode = ParticleSystemScalingMode.Hierarchy;
+                Fog_Loop_1.startColor = new Color(0.0549f, 0.0313f, 0.0471f, 1f);
+                //Fog_Loop_1.scalingMode = ParticleSystemScalingMode.Hierarchy;
                 var Smoke_Particles_Loop = pfl.transform.Find("Root/Smoke_Particles_Loop").GetComponent<ParticleSystem>();
-                Smoke_Particles_Loop.startColor = new Color(1f, 0f, 0f, 1f);
+                Smoke_Particles_Loop.startColor = new Color(0.06f, 0.0313f, 0.0471f, 1f);
                 var StartSmoke_Fill = pfl.transform.Find("Root/StartSmoke_Fill").GetComponent<ParticleSystem>();
-                StartSmoke_Fill.startColor = new Color(1f, 0f, 0f, 0.8f);
-                StartSmoke_Fill.scalingMode = ParticleSystemScalingMode.Hierarchy;
+                StartSmoke_Fill.startColor = new Color(0.0549f, 0.0313f, 0.0471f, 1f);
+                //StartSmoke_Fill.scalingMode = ParticleSystemScalingMode.Hierarchy;
                 var StartSmoke_Fill_1 = pfl.transform.Find("Root/StartSmoke_Fill (1)").GetComponent<ParticleSystem>();
-                StartSmoke_Fill_1.startColor = new Color(1f, 0f, 0f, 0.8f);
-                StartSmoke_Fill_1.scalingMode = ParticleSystemScalingMode.Hierarchy;
+                StartSmoke_Fill_1.startColor = new Color(0.0549f, 0.0313f, 0.0471f, 1f);
+                //StartSmoke_Fill_1.scalingMode = ParticleSystemScalingMode.Hierarchy;
                 var StartSmoke_Particles = pfl.transform.Find("Root/StartSmoke_Particles").GetComponent<ParticleSystem>();
-                StartSmoke_Particles.startColor = new Color(1f, 0f, 0f, 0.8f);
-                StartSmoke_Particles.scalingMode = ParticleSystemScalingMode.Hierarchy;
+                StartSmoke_Particles.startColor = new Color(0.06f, 0.0313f, 0.0471f, 1f);
+                //StartSmoke_Particles.scalingMode = ParticleSystemScalingMode.Hierarchy;
+                var Sparks = pfl.transform.Find("Root/Sparks").GetComponent<ParticleSystem>();
+                Sparks.startColor = new Color(0.9f, 0.25f, 0f, 1f);
+                Sparks.transform.localScale = new(1.75f, 1.0f, 1.75f);
+                var Sparks_Loop = pfl.transform.Find("Root/Sparks_Loop").GetComponent<ParticleSystem>();
+                Sparks_Loop.startColor = new Color(0.8f, 0.5f, 0f, 0.9f);
+                Sparks_Loop.transform.localScale = new(1.75f, 1.0f, 1.75f);
             });
 
             var IncendiaryCloudAbility = Helpers.CreateBlueprint<BlueprintAbility>("IncendiaryCloudAbility", bp => {
@@ -477,8 +483,8 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.LocalizedSavingThrow = Helpers.CreateString("IncendiaryCloud.SavingThrow", "Reflex half");
             });
 
-            var IncendiaryCloudScroll = ItemTools.CreateScroll("ScrollOfIncendiaryCloud", Icon_ScrollOfIncendiaryCloud, IncendiaryCloudAbility, 8, 15);
-            VenderTools.AddScrollToLeveledVenders(IncendiaryCloudScroll);
+            //var IncendiaryCloudScroll = ItemTools.CreateScroll("ScrollOfIncendiaryCloud", Icon_ScrollOfIncendiaryCloud, IncendiaryCloudAbility, 8, 15);
+            //VenderTools.AddScrollToLeveledVenders(IncendiaryCloudScroll);
             IncendiaryCloudAbility.AddToSpellList(SpellTools.SpellList.WizardSpellList, 8);
         }
     }

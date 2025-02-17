@@ -1811,6 +1811,9 @@
     <Content Include="Assets\Skills\Icon_HypnoticPattern.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Skills\Icon_IncendiaryCloud.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Skills\Icon_InflictPain.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

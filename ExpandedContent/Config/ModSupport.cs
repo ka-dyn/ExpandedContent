@@ -911,6 +911,31 @@ namespace ExpandedContent.Config {
                     }
                     Main.Log("Done");
                     #endregion
+                    #region Loremaster Spellbooks
+                    Main.Log("Patching TTT Loremaster Spellbooks");
+                    var LoremasterRavenerHunterProgression = Resources.GetModBlueprint<BlueprintProgression>("LoremasterRavenerHunterProgression");
+                    var LoremasterSwornOfTheEldestProgression = Resources.GetModBlueprint<BlueprintProgression>("LoremasterSwornOfTheEldestProgression");
+                    var LoremasterSoldierOfGaiaProgression = Resources.GetModBlueprint<BlueprintProgression>("LoremasterSoldierOfGaiaProgression");
+                    var LoremasterFaithfulParagonProgression = Resources.GetModBlueprint<BlueprintProgression>("LoremasterFaithfulParagonProgression");
+                    var LoremasterSkulkingHunterProgression = Resources.GetModBlueprint<BlueprintProgression>("LoremasterSkulkingHunterProgression");
+                    var LoremasterSilverChampionProgression = Resources.GetModBlueprint<BlueprintProgression>("LoremasterSilverChampionProgression");
+                    var LoremasterDreadKnightProgression = Resources.GetModBlueprint<BlueprintProgression>("LoremasterDreadKnightProgression");
+                    var LoremasterClawOfTheFalseWyrmProgression = Resources.GetModBlueprint<BlueprintProgression>("LoremasterClawOfTheFalseWyrmProgression");
+                    var LoremasterSpellbookSelectionTTT = Resources.GetBlueprint<BlueprintFeatureSelection>("af469dfbc8c3424ab2eba33b754c3077");
+                    if (LoremasterSpellbookSelectionTTT != null) {
+                        LoremasterSpellbookSelectionTTT.m_AllFeatures = LoremasterSpellbookSelectionTTT.m_AllFeatures.AppendToArray(
+                            LoremasterRavenerHunterProgression.ToReference<BlueprintFeatureReference>(),
+                            LoremasterSwornOfTheEldestProgression.ToReference<BlueprintFeatureReference>(),
+                            LoremasterSoldierOfGaiaProgression.ToReference<BlueprintFeatureReference>(),
+                            LoremasterFaithfulParagonProgression.ToReference<BlueprintFeatureReference>(),
+                            LoremasterSkulkingHunterProgression.ToReference<BlueprintFeatureReference>(),
+                            LoremasterSilverChampionProgression.ToReference<BlueprintFeatureReference>(),
+                            LoremasterDreadKnightProgression.ToReference<BlueprintFeatureReference>(),
+                            LoremasterClawOfTheFalseWyrmProgression.ToReference<BlueprintFeatureReference>()
+                            );
+                    }
+                    Main.Log("Done");
+                    #endregion
                     Main.Log("Finishing TTT-Base Compat Patch.");
                 }
 

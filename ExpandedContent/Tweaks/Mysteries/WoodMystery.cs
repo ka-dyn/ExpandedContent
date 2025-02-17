@@ -2422,7 +2422,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
             });
             var OracleRevelationThornBurstAbilitySpawnFx = OracleRevelationThornBurstAbility.GetComponent<AbilitySpawnFx>();
             OracleRevelationThornBurstAbilitySpawnFx.PrefabLink = OracleRevelationThornBurstAbilitySpawnFx.PrefabLink.CreateDynamicProxy(pfl => {                
-                Main.Log($"Editing: {pfl}");
+                //Main.Log($"Editing: {pfl}");
                 pfl.name = "ThornBurst_20feetAoE";
                 Main.Log($"{FxDebug.DumpGameObject(pfl.gameObject)}");
                 Object.DestroyImmediate(pfl.transform.Find("Root /stone_cast").gameObject);

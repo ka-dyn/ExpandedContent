@@ -332,7 +332,7 @@ namespace ExpandedContent.Tweaks.Spells {
             BurstOfNettlesAbilitySpawnFx.PrefabLink = BurstOfNettlesAbilitySpawnFx.PrefabLink.CreateDynamicProxy(pfl => {
                 Main.Log($"Editing: {pfl}");
                 pfl.name = "ThornBurst_20feetAoE";
-                Main.Log($"{FxDebug.DumpGameObject(pfl.gameObject)}");
+                //Main.Log($"{FxDebug.DumpGameObject(pfl.gameObject)}");
                 Object.DestroyImmediate(pfl.transform.Find("Root /stone_cast").gameObject);
                 Object.DestroyImmediate(pfl.transform.Find("Root /SnowFlakes").gameObject);
                 Object.DestroyImmediate(pfl.transform.Find("Root /StonesBig").gameObject);
