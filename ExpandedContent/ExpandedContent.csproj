@@ -416,6 +416,7 @@
     <Compile Include="Tweaks\Domains\PlantDomainPatch.cs" />
     <Compile Include="Tweaks\Domains\ResolveDomain.cs" />
     <Compile Include="Tweaks\Domains\CurseDomain.cs" />
+    <Compile Include="Tweaks\Domains\SmokeDomain.cs" />
     <Compile Include="Tweaks\Domains\StarsDomain.cs" />
     <Compile Include="Tweaks\Domains\RestorationDomain.cs" />
     <Compile Include="Tweaks\Domains\ImpossibleSubdomainSelection.cs" />
@@ -1701,6 +1702,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_ClaySkin.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Skills\Icon_CloudOfSmoke.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Skills\Icon_Command.png">
