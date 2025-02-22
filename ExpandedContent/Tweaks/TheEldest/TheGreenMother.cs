@@ -88,6 +88,7 @@ namespace ExpandedContent.Tweaks.TheEldest {
                     DeityTools.DomainAllowed.CavesDomainAllowed,
                     DeityTools.DomainAllowed.GrowthDomainAllowed,
                     DeityTools.DomainAllowed.LustDomainAllowed,
+                    DeityTools.SeparatistDomainAllowed.SmokeDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.DuelsDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.AirDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.LightningDomainAllowedSeparatist,

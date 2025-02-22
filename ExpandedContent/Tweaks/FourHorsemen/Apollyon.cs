@@ -75,6 +75,7 @@ namespace ExpandedContent.Tweaks.FourHorsemen {
                     DeityTools.DomainAllowed.DarknessDomainAllowed,
                     DeityTools.DomainAllowed.DestructionDomainAllowed,
                     DeityTools.DomainAllowed.EvilDomainAllowed,
+                    DeityTools.SeparatistDomainAllowed.SmokeDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.AnimalDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.ArcaneDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.InsanityDomainAllowedSeparatist,

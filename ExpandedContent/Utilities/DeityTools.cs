@@ -88,6 +88,7 @@ namespace ExpandedContent.Utilities {
             public static BlueprintFeature RevolutionDomainAllowed => Resources.GetModBlueprint<BlueprintFeature>("RevolutionDomainAllowed");
             public static BlueprintFeature RiversDomainAllowed => Resources.GetModBlueprint<BlueprintFeature>("RiversDomainAllowed");
             public static BlueprintFeature OldScalykindDomainAllowed => Resources.GetModBlueprint<BlueprintFeature>("ScalykindDomainAllowed");
+            public static BlueprintFeature SmokeDomainAllowed => Resources.GetModBlueprint<BlueprintFeature>("SmokeDomainAllowed");
             public static BlueprintFeature StarsDomainAllowed => Resources.GetModBlueprint<BlueprintFeature>("StarsDomainAllowed");
             public static BlueprintFeature StormDomainAllowed => Resources.GetModBlueprint<BlueprintFeature>("StormDomainAllowed");
             public static BlueprintFeature ThieveryDomainAllowed => Resources.GetModBlueprint<BlueprintFeature>("ThieveryDomainAllowed");
@@ -166,6 +167,7 @@ namespace ExpandedContent.Utilities {
             public static BlueprintFeature RevolutionDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("RevolutionDomainAllowedSeparatist");
             public static BlueprintFeature RiversDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("RiversDomainAllowedSeparatist");
             //public static BlueprintFeature ScalykindDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("ScalykindDomainAllowedSeparatist");
+            public static BlueprintFeature SmokeDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("SmokeDomainAllowedSeparatist");
             public static BlueprintFeature StarsDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("StarsDomainAllowedSeparatist");
             public static BlueprintFeature StormDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("StormDomainAllowedSeparatist");
             public static BlueprintFeature ThieveryDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("ThieveryDomainAllowedSeparatist");

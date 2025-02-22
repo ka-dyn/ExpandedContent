@@ -91,6 +91,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     DeityTools.DomainAllowed.FerocityDomainAllowed,
                     DeityTools.DomainAllowed.RageDomainAllowed,
                     DeityTools.DomainAllowed.BloodDomainAllowed,
+                    DeityTools.SeparatistDomainAllowed.SmokeDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.AirDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.LightningDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.AnimalDomainAllowedSeparatist,

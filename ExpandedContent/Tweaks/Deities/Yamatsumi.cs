@@ -86,6 +86,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     DeityTools.DomainAllowed.OldIceDomainAllowed,
                     DeityTools.DomainAllowed.ResolveDomainAllowed,
                     DeityTools.DomainAllowed.FistDomainAllowed,
+                    DeityTools.DomainAllowed.SmokeDomainAllowed,
                     DeityTools.SeparatistDomainAllowed.AirDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.AnimalDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.LightningDomainAllowedSeparatist,

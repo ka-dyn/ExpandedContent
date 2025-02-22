@@ -80,6 +80,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     DeityTools.DomainAllowed.WaterDomainAllowed,
                     DeityTools.DomainAllowed.AgathionDomainAllowed,
                     DeityTools.DomainAllowed.WindDomainAllowed,
+                    DeityTools.SeparatistDomainAllowed.SmokeDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.ArtificeDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.ChaosDomainAllowedSeparatist,//Chaos
                     DeityTools.SeparatistDomainAllowed.CharmDomainAllowedSeparatist,

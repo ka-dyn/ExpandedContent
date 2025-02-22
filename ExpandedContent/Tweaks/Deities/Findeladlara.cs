@@ -77,6 +77,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     DeityTools.DomainAllowed.CommunityDomainAllowed,
                     DeityTools.DomainAllowed.GoodDomainAllowed,
                     DeityTools.DomainAllowed.WhimsyDomainAllowed,
+                    DeityTools.SeparatistDomainAllowed.SmokeDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.InsanityDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.AnimalDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.CharmDomainAllowedSeparatist,

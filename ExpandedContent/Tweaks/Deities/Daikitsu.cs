@@ -81,6 +81,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     DeityTools.DomainAllowed.FurDomainAllowed,
                     DeityTools.DomainAllowed.GrowthDomainAllowed,
                     DeityTools.SeparatistDomainAllowed.InsanityDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.SmokeDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.AirDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.ChaosDomainAllowedSeparatist,//Chaos
                     DeityTools.SeparatistDomainAllowed.CharmDomainAllowedSeparatist,

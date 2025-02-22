@@ -85,6 +85,7 @@ namespace ExpandedContent.Tweaks.TheElderMythos {
                     DeityTools.DomainAllowed.EarthDomainAllowed,
                     DeityTools.DomainAllowed.FireDomainAllowed,
                     DeityTools.DomainAllowed.CavesDomainAllowed,
+                    DeityTools.DomainAllowed.SmokeDomainAllowed,
                     DeityTools.SeparatistDomainAllowed.DuelsDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.ArcaneDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.AirDomainAllowedSeparatist,

@@ -86,6 +86,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     DeityTools.DomainAllowed.DefenseDomainAllowed,
                     DeityTools.DomainAllowed.LoyaltyDomainAllowed,
                     DeityTools.SeparatistDomainAllowed.AirDomainAllowedSeparatist,
+                    DeityTools.SeparatistDomainAllowed.SmokeDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.AnimalDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.ArtificeDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.DuelsDomainAllowedSeparatist,
