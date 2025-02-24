@@ -206,6 +206,8 @@ namespace ExpandedContent.Tweaks {
                 Domains.InsectDomain.AddInsectDomain();
                 Domains.InsanityDomain.AddInsanityDomain();
                 Domains.DuelsDomain.AddDuelsDomain();
+                Domains.SmokeDomain.AddSmokeDomain();
+                Domains.AshDomain.AddAshDomain();
                 Domains.BaseDeityPatch.AddBaseDeityPatch();
 
                 Blessings.ArtificeBlessing.AddArtificeBlessing();

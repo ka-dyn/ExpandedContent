@@ -425,6 +425,16 @@
         "Enabled": true,
         "Homebrew": false,
         "Description": "Adds the duels subdomain, a subdomain to the war domain."
+      },
+      "Smoke Subdomain": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds the smoke subdomain, a subdomain to the fire domain."
+      },
+      "Ash Subdomain": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds the ash subdomain, a subdomain to the fire domain."
       }
     },
     "IsExpanded": false

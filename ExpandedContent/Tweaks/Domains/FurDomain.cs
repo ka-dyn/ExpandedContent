@@ -649,14 +649,14 @@ namespace ExpandedContent.Tweaks.Domains {
                     c.m_SpecificModifier = ModifierDescriptor.None;
                     c.m_Progression = ContextRankProgression.Custom;
                     c.m_CustomProgression = new ContextRankConfig.CustomProgressionItem[] {
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 4, ProgressionValue = 10 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 9, ProgressionValue = 15 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 14, ProgressionValue = 20 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 19, ProgressionValue = 25 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 24, ProgressionValue = 30 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 29, ProgressionValue = 35 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 34, ProgressionValue = 40 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 39, ProgressionValue = 45 },
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 6, ProgressionValue = 10 },
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 11, ProgressionValue = 15 },
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 16, ProgressionValue = 20 },
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 21, ProgressionValue = 25 },
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 26, ProgressionValue = 30 },
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 31, ProgressionValue = 35 },
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 36, ProgressionValue = 40 },
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 41, ProgressionValue = 45 },
                         new ContextRankConfig.CustomProgressionItem(){ BaseValue = 100, ProgressionValue = 50 }
                     };
                     c.m_CustomProperty = SeparatistWithDruidAsIsProperty.ToReference<BlueprintUnitPropertyReference>();

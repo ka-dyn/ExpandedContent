@@ -27,6 +27,7 @@ using Kingmaker.UnitLogic.Abilities.Components.AreaEffects;
 using UnityEngine;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.Buffs.Components;
+using Kingmaker.Craft;
 
 namespace ExpandedContent.Tweaks.Domains {
     internal class SmokeDomain {
@@ -107,8 +108,6 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.m_Flags = 0;
                 bp.Stacking = StackingType.Replace;
             });
-
-
 
             var SmokeDomainBaseAbilityArea = Helpers.CreateBlueprint<BlueprintAbilityAreaEffect>("SmokeDomainBaseAbilityArea", bp => {
                 bp.AddComponent<AbilityAreaEffectRunAction>(c => {
@@ -211,6 +210,15 @@ namespace ExpandedContent.Tweaks.Domains {
                             },
                             OnUnit = false
                         });
+                });
+                bp.AddComponent<AbilityAoERadius>(c => {
+                    c.m_Radius = 5.Feet();
+                    c.m_TargetType = TargetType.Any;
+                });
+                bp.AddComponent<CraftInfoComponent>(c => {
+                    c.SpellType = CraftSpellType.Other;
+                    c.SavingThrow = CraftSavingThrow.None;
+                    c.AOEType = CraftAOE.AOE;
                 });
                 bp.m_Icon = CloudOfSmokeIcon;
                 bp.Type = AbilityType.Supernatural;
@@ -581,6 +589,15 @@ namespace ExpandedContent.Tweaks.Domains {
                             },
                             OnUnit = false
                         });
+                });
+                bp.AddComponent<AbilityAoERadius>(c => {
+                    c.m_Radius = 5.Feet();
+                    c.m_TargetType = TargetType.Any;
+                });
+                bp.AddComponent<CraftInfoComponent>(c => {
+                    c.SpellType = CraftSpellType.Other;
+                    c.SavingThrow = CraftSavingThrow.None;
+                    c.AOEType = CraftAOE.AOE;
                 });
                 bp.m_Icon = CloudOfSmokeIcon;
                 bp.Type = AbilityType.Supernatural;

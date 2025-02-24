@@ -60,6 +60,7 @@ namespace ExpandedContent.Utilities {
             public static BlueprintFeature ArcaneDomainAllowed => Resources.GetModBlueprint<BlueprintFeature>("ArcaneDomainAllowed");
             public static BlueprintFeature ArchonDomainGoodAllowed => Resources.GetModBlueprint<BlueprintFeature>("ArchonDomainGoodAllowed");
             public static BlueprintFeature ArchonDomainLawAllowed => Resources.GetModBlueprint<BlueprintFeature>("ArchonDomainLawAllowed");
+            public static BlueprintFeature AshDomainAllowed => Resources.GetModBlueprint<BlueprintFeature>("AshDomainAllowed");
             public static BlueprintFeature BloodDomainAllowed => Resources.GetModBlueprint<BlueprintFeature>("BloodDomainAllowed");
             public static BlueprintFeature CavesDomainAllowed => Resources.GetModBlueprint<BlueprintFeature>("CavesDomainAllowed");
             public static BlueprintFeature CurseDomainAllowed => Resources.GetModBlueprint<BlueprintFeature>("CurseDomainAllowed");
@@ -139,6 +140,7 @@ namespace ExpandedContent.Utilities {
             public static BlueprintFeature ArcaneDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("ArcaneDomainAllowedSeparatist");
             public static BlueprintFeature ArchonDomainGoodAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("ArchonDomainGoodAllowedSeparatist");
             public static BlueprintFeature ArchonDomainLawAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("ArchonDomainLawAllowedSeparatist");
+            public static BlueprintFeature AshDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("AshDomainAllowedSeparatist");
             public static BlueprintFeature BloodDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("BloodDomainAllowedSeparatist");
             public static BlueprintFeature CavesDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("CavesDomainAllowedSeparatist");
             public static BlueprintFeature CurseDomainAllowedSeparatist => Resources.GetModBlueprint<BlueprintFeature>("CurseDomainAllowedSeparatist");

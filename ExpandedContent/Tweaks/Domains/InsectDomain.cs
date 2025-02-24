@@ -674,7 +674,9 @@ namespace ExpandedContent.Tweaks.Domains {
                     c.m_Stat = StatType.Unknown;
                     c.m_SpecificModifier = ModifierDescriptor.None;
                     c.m_Progression = ContextRankProgression.OnePlusDivStep;
-                    c.m_StartLevel = 0;
+                    c.m_UseMin = true;
+                    c.m_Min = 1;
+                    c.m_StartLevel = -2;
                     c.m_StepLevel = 5;
                     c.m_CustomProperty = SeparatistWithDruidAsIsProperty.ToReference<BlueprintUnitPropertyReference>();
                 });
