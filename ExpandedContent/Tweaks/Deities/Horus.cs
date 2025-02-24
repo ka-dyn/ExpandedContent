@@ -94,6 +94,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     DeityTools.DomainAllowed.SunDomainAllowed,
                     DeityTools.DomainAllowed.RevelationDomainAllowed,
                     DeityTools.DomainAllowed.WindDomainAllowed,
+                    DeityTools.SeparatistDomainAllowed.AshDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.SmokeDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.ArtificeDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.InsanityDomainAllowedSeparatist,

@@ -156,16 +156,16 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.AffectDead = false;
                 bp.IgnoreSleepingUnits = false;
                 bp.Shape = AreaEffectShape.Cylinder;
-                bp.Size = new Feet() { m_Value = 10 };
+                bp.Size = new Feet() { m_Value = 5 };
                 bp.Fx = new PrefabLink() { AssetId = "ee38b41b2b360b2458ec48f1868ca51b" }; //Cloudkill cloud
                 bp.CanBeUsedInTacticalCombat = false;
                 bp.m_TickRoundAfterSpawn = false;
             });
             SmokeDomainBaseAbilityArea.Fx = SmokeDomainBaseAbilityArea.Fx.CreateDynamicProxy(pfl => {
                 Main.Log($"Editing: {pfl}");
-                pfl.name = "IncendiaryCloud_20feetAoE";
+                pfl.name = "SmokeDomainBaseAbility_5feetAoE";
                 //Main.Log($"{FxDebug.DumpGameObject(pfl.gameObject)}");
-                pfl.transform.localScale = new(0.5f, 1.0f, 0.5f);
+                pfl.transform.localScale = new(0.25f, 1.0f, 0.25f);
                 var Fog_Loop = pfl.transform.Find("Root/Fog_Loop (1)/Fog_Loop").GetComponent<ParticleSystem>();
                 Fog_Loop.startColor = new Color(0.0549f, 0.0313f, 0.0471f, 1f);
                 Fog_Loop.scalingMode = ParticleSystemScalingMode.Hierarchy;

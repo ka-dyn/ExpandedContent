@@ -89,6 +89,7 @@ namespace ExpandedContent.Tweaks.Archdevils {
                     DeityTools.DomainAllowed.FireDomainAllowed,
                     DeityTools.DomainAllowed.WarDomainAllowed,
                     DeityTools.DomainAllowed.SmokeDomainAllowed,
+                    DeityTools.DomainAllowed.AshDomainAllowed,
                     DeityTools.SeparatistDomainAllowed.AirDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.AnimalDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.ArtificeDomainAllowedSeparatist,

@@ -128,11 +128,8 @@ namespace ExpandedContent.Tweaks.Domains {
                         new ContextActionSavingThrow() {
                             Type = SavingThrowType.Fortitude,
                             FromBuff = false,
-                            HasCustomDC = true,
-                            CustomDC = new ContextValue() {
-                                ValueType = ContextValueType.Shared,
-                                ValueShared = AbilitySharedValue.Damage
-                            },
+                            HasCustomDC = false,
+                            CustomDC = new ContextValue(),
                             Actions = Helpers.CreateActionList(
                                 new ContextActionConditionalSaved() {
                                     Succeed = Helpers.CreateActionList(),
@@ -227,49 +224,49 @@ namespace ExpandedContent.Tweaks.Domains {
                             OnUnit = false
                         });
                 });
-                bp.AddComponent<ContextCalculateSharedValue>(c => {
-                    c.ValueType = AbilitySharedValue.Damage;
-                    c.Value = new ContextDiceValue() {
-                        DiceType = DiceType.One,
-                        DiceCountValue = new ContextValue() {
-                            ValueType = ContextValueType.Rank,
-                            Value = 0,
-                            ValueRank = AbilityRankType.DamageDice
-                        },
-                        BonusValue = new ContextValue() {
-                            ValueType = ContextValueType.Rank,
-                            Value = 0,
-                            ValueRank = AbilityRankType.DamageDiceAlternative
-                        }
-                    };
-                    c.Modifier = 1;
-                });
-                bp.AddComponent<ContextRankConfig>(c => {
-                    c.m_Type = AbilityRankType.DamageDice;
-                    c.m_BaseValueType = ContextRankBaseValueType.SummClassLevelWithArchetype;
-                    c.m_Stat = StatType.Unknown;
-                    c.m_Progression = ContextRankProgression.Div2;
-                    c.Archetype = DivineHunterArchetype.ToReference<BlueprintArchetypeReference>();
-                    c.m_AdditionalArchetypes = new BlueprintArchetypeReference[] {
-                        TempleChampionArchetype.ToReference<BlueprintArchetypeReference>(),
-                        MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>()
-                    };
-                    c.m_Class = new BlueprintCharacterClassReference[] {
-                        InquisitorClass.ToReference<BlueprintCharacterClassReference>(),
-                        DruidClass.ToReference<BlueprintCharacterClassReference>(),
-                        HunterClass.ToReference<BlueprintCharacterClassReference>(),
-                        PaladinClass.ToReference<BlueprintCharacterClassReference>(),
-                        StargazerClass.ToReference<BlueprintCharacterClassReference>(),
-                        ArcanistClass.ToReference<BlueprintCharacterClassReference>(),
-                    };
-                });
-                bp.AddComponent<ContextRankConfig>(c => {
-                    c.m_Type = AbilityRankType.DamageDiceAlternative;
-                    c.m_BaseValueType = ContextRankBaseValueType.StatBonus;
-                    c.m_Stat = StatType.Wisdom;
-                    c.m_SpecificModifier = ModifierDescriptor.None;
-                    c.m_Progression = ContextRankProgression.BonusValue;
-                });
+                //bp.AddComponent<ContextCalculateSharedValue>(c => {
+                //    c.ValueType = AbilitySharedValue.Damage;
+                //    c.Value = new ContextDiceValue() {
+                //        DiceType = DiceType.One,
+                //        DiceCountValue = new ContextValue() {
+                //            ValueType = ContextValueType.Rank,
+                //            Value = 0,
+                //            ValueRank = AbilityRankType.DamageDice
+                //        },
+                //        BonusValue = new ContextValue() {
+                //            ValueType = ContextValueType.Rank,
+                //            Value = 0,
+                //            ValueRank = AbilityRankType.DamageDiceAlternative
+                //        }
+                //    };
+                //    c.Modifier = 1;
+                //});
+                //bp.AddComponent<ContextRankConfig>(c => {
+                //    c.m_Type = AbilityRankType.DamageDice;
+                //    c.m_BaseValueType = ContextRankBaseValueType.SummClassLevelWithArchetype;
+                //    c.m_Stat = StatType.Unknown;
+                //    c.m_Progression = ContextRankProgression.Div2;
+                //    c.Archetype = DivineHunterArchetype.ToReference<BlueprintArchetypeReference>();
+                //    c.m_AdditionalArchetypes = new BlueprintArchetypeReference[] {
+                //        TempleChampionArchetype.ToReference<BlueprintArchetypeReference>(),
+                //        MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>()
+                //    };
+                //    c.m_Class = new BlueprintCharacterClassReference[] {
+                //        InquisitorClass.ToReference<BlueprintCharacterClassReference>(),
+                //        DruidClass.ToReference<BlueprintCharacterClassReference>(),
+                //        HunterClass.ToReference<BlueprintCharacterClassReference>(),
+                //        PaladinClass.ToReference<BlueprintCharacterClassReference>(),
+                //        StargazerClass.ToReference<BlueprintCharacterClassReference>(),
+                //        ArcanistClass.ToReference<BlueprintCharacterClassReference>(),
+                //    };
+                //});
+                //bp.AddComponent<ContextRankConfig>(c => {
+                //    c.m_Type = AbilityRankType.DamageDiceAlternative;
+                //    c.m_BaseValueType = ContextRankBaseValueType.StatBonus;
+                //    c.m_Stat = StatType.Wisdom;
+                //    c.m_SpecificModifier = ModifierDescriptor.None;
+                //    c.m_Progression = ContextRankProgression.BonusValue;
+                //});
                 bp.AddComponent<AbilityResourceLogic>(c => {
                     c.m_RequiredResource = AshDomainGreaterResource.ToReference<BlueprintAbilityResourceReference>();
                     c.m_IsSpendResource = true;
@@ -309,6 +306,10 @@ namespace ExpandedContent.Tweaks.Domains {
                 });
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] { AshDomainGreaterAbility.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<ReplaceAbilitiesStat>(c => {
+                    c.m_Ability = new BlueprintAbilityReference[] { AshDomainGreaterAbility.ToReference<BlueprintAbilityReference>() };
+                    c.Stat = StatType.Wisdom;
                 });
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = true;
@@ -686,51 +687,51 @@ namespace ExpandedContent.Tweaks.Domains {
                             OnUnit = false
                         });
                 });
-                bp.AddComponent<ContextCalculateSharedValue>(c => {
-                    c.ValueType = AbilitySharedValue.Damage;
-                    c.Value = new ContextDiceValue() {
-                        DiceType = DiceType.One,
-                        DiceCountValue = new ContextValue() {
-                            ValueType = ContextValueType.Rank,
-                            Value = 0,
-                            ValueRank = AbilityRankType.DamageDice
-                        },
-                        BonusValue = new ContextValue() {
-                            ValueType = ContextValueType.Rank,
-                            Value = 0,
-                            ValueRank = AbilityRankType.Default
-                        }
-                    };
-                    c.Modifier = 1;
-                });
-                bp.AddComponent<ContextRankConfig>(c => {
-                    c.m_Type = AbilityRankType.DamageDice;
-                    c.m_BaseValueType = ContextRankBaseValueType.SummClassLevelWithArchetype;
-                    c.m_Stat = StatType.Unknown;
-                    c.m_Progression = ContextRankProgression.StartPlusDivStep;
-                    c.m_StartLevel = 2;
-                    c.m_StepLevel = 2;
-                    c.Archetype = DivineHunterArchetype.ToReference<BlueprintArchetypeReference>();
-                    c.m_AdditionalArchetypes = new BlueprintArchetypeReference[] {
-                        TempleChampionArchetype.ToReference<BlueprintArchetypeReference>(),
-                        MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>()
-                    };
-                    c.m_Class = new BlueprintCharacterClassReference[] {
-                        InquisitorClass.ToReference<BlueprintCharacterClassReference>(),
-                        DruidClass.ToReference<BlueprintCharacterClassReference>(),
-                        HunterClass.ToReference<BlueprintCharacterClassReference>(),
-                        PaladinClass.ToReference<BlueprintCharacterClassReference>(),
-                        StargazerClass.ToReference<BlueprintCharacterClassReference>(),
-                        ArcanistClass.ToReference<BlueprintCharacterClassReference>(),
-                    };
-                });
-                bp.AddComponent<ContextRankConfig>(c => {
-                    c.m_Type = AbilityRankType.DamageDiceAlternative;
-                    c.m_BaseValueType = ContextRankBaseValueType.StatBonus;
-                    c.m_Stat = StatType.Wisdom;
-                    c.m_SpecificModifier = ModifierDescriptor.None;
-                    c.m_Progression = ContextRankProgression.BonusValue;
-                });
+                //bp.AddComponent<ContextCalculateSharedValue>(c => {
+                //    c.ValueType = AbilitySharedValue.Damage;
+                //    c.Value = new ContextDiceValue() {
+                //        DiceType = DiceType.One,
+                //        DiceCountValue = new ContextValue() {
+                //            ValueType = ContextValueType.Rank,
+                //            Value = 0,
+                //            ValueRank = AbilityRankType.DamageDice
+                //        },
+                //        BonusValue = new ContextValue() {
+                //            ValueType = ContextValueType.Rank,
+                //            Value = 0,
+                //            ValueRank = AbilityRankType.Default
+                //        }
+                //    };
+                //    c.Modifier = 1;
+                //});
+                //bp.AddComponent<ContextRankConfig>(c => {
+                //    c.m_Type = AbilityRankType.DamageDice;
+                //    c.m_BaseValueType = ContextRankBaseValueType.SummClassLevelWithArchetype;
+                //    c.m_Stat = StatType.Unknown;
+                //    c.m_Progression = ContextRankProgression.StartPlusDivStep;
+                //    c.m_StartLevel = 2;
+                //    c.m_StepLevel = 2;
+                //    c.Archetype = DivineHunterArchetype.ToReference<BlueprintArchetypeReference>();
+                //    c.m_AdditionalArchetypes = new BlueprintArchetypeReference[] {
+                //        TempleChampionArchetype.ToReference<BlueprintArchetypeReference>(),
+                //        MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>()
+                //    };
+                //    c.m_Class = new BlueprintCharacterClassReference[] {
+                //        InquisitorClass.ToReference<BlueprintCharacterClassReference>(),
+                //        DruidClass.ToReference<BlueprintCharacterClassReference>(),
+                //        HunterClass.ToReference<BlueprintCharacterClassReference>(),
+                //        PaladinClass.ToReference<BlueprintCharacterClassReference>(),
+                //        StargazerClass.ToReference<BlueprintCharacterClassReference>(),
+                //        ArcanistClass.ToReference<BlueprintCharacterClassReference>(),
+                //    };
+                //});
+                //bp.AddComponent<ContextRankConfig>(c => {
+                //    c.m_Type = AbilityRankType.DamageDiceAlternative;
+                //    c.m_BaseValueType = ContextRankBaseValueType.StatBonus;
+                //    c.m_Stat = StatType.Wisdom;
+                //    c.m_SpecificModifier = ModifierDescriptor.None;
+                //    c.m_Progression = ContextRankProgression.BonusValue;
+                //});
                 bp.AddComponent<AbilityResourceLogic>(c => {
                     c.m_RequiredResource = AshDomainGreaterResource.ToReference<BlueprintAbilityResourceReference>();
                     c.m_IsSpendResource = true;
@@ -771,6 +772,10 @@ namespace ExpandedContent.Tweaks.Domains {
                 });
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] { AshDomainGreaterAbilitySeparatist.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<ReplaceAbilitiesStat>(c => {
+                    c.m_Ability = new BlueprintAbilityReference[] { AshDomainGreaterAbilitySeparatist.ToReference<BlueprintAbilityReference>() };
+                    c.Stat = StatType.Wisdom;
                 });
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = true;
