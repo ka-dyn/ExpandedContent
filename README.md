@@ -133,6 +133,7 @@ New Subdomains
 - Agathion
 - Arcane
 - Archon
+- Ash
 - Blood
 - Caves
 - Curse
@@ -157,6 +158,7 @@ New Subdomains
 - Revelation
 - Revolution
 - Rivers
+- Smoke
 - Stars
 - Storm
 - Thievery
