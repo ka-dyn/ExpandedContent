@@ -289,7 +289,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
             var OracleMetalMysteryFeature = Helpers.CreateBlueprint<BlueprintFeature>("OracleMetalMysteryFeature", bp => {
                 bp.m_Icon = MetalMysteryIcon;
                 bp.SetName("Metal");
-                bp.SetDescription("An oracle with the Metal mystery adds {g|Encyclopedia:Athletics}Athletics{/g}, {g|Encyclopedia:Persuasion}Persuasion{/g} " +
+                bp.SetDescription("An oracle with the metal mystery adds {g|Encyclopedia:Athletics}Athletics{/g}, {g|Encyclopedia:Persuasion}Persuasion{/g} " +
                     "and {g|Encyclopedia:Use_Magic_Device}Use Magic Device{/g} to her list of class {g|Encyclopedia:Skills}skills{/g}.");
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
@@ -324,7 +324,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
             var EnlightnedPhilosopherMetalMysteryFeature = Helpers.CreateBlueprint<BlueprintFeature>("EnlightnedPhilosopherMetalMysteryFeature", bp => {
                 bp.m_Icon = MetalMysteryIcon;
                 bp.SetName("Metal");
-                bp.SetDescription("An oracle with the Metal mystery adds {g|Encyclopedia:Athletics}Athletics{/g}, {g|Encyclopedia:Persuasion}Persuasion{/g} " +
+                bp.SetDescription("An oracle with the metal mystery adds {g|Encyclopedia:Athletics}Athletics{/g}, {g|Encyclopedia:Persuasion}Persuasion{/g} " +
                     "and {g|Encyclopedia:Use_Magic_Device}Use Magic Device{/g} to her list of class {g|Encyclopedia:Skills}skills{/g}.");
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
@@ -348,7 +348,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
             var DivineHerbalistMetalMysteryFeature = Helpers.CreateBlueprint<BlueprintFeature>("DivineHerbalistMetalMysteryFeature", bp => {
                 bp.m_Icon = MetalMysteryIcon;
                 bp.SetName("Metal");
-                bp.SetDescription("Gain access to the spells and revelations of the Metal mystery. \nDue to the divine herbalist archetype the class skills gained from this archetype" +
+                bp.SetDescription("Gain access to the spells and revelations of the metal mystery. \nDue to the divine herbalist archetype the class skills gained from this archetype" +
                     "are replaced by the master herbalist feature and the brew potions feat.");
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
@@ -368,7 +368,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
             var OceansEchoMetalMysteryFeature = Helpers.CreateBlueprint<BlueprintFeature>("OceansEchoMetalMysteryFeature", bp => {
                 bp.m_Icon = MetalMysteryIcon;
                 bp.SetName("Metal");
-                bp.SetDescription("Gain access to the spells and revelations of the Metal mystery. \nDue to the ocean's echo archetype the class skills gained from this archtype" +
+                bp.SetDescription("Gain access to the spells and revelations of the metal mystery. \nDue to the ocean's echo archetype the class skills gained from this archtype" +
                     "are changed to {g|Encyclopedia:Persuasion}Persuasion{/g}, {g|Encyclopedia:Knowledge_World}Knowledge (world){/g} and {g|Encyclopedia:Lore_Nature}Lore (nature){/g}");
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();

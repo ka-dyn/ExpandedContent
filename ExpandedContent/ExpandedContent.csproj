@@ -509,6 +509,7 @@
     <Compile Include="Tweaks\Monitors\Kerkamoth.cs" />
     <Compile Include="Tweaks\Monitors\Ssilameshnik.cs" />
     <Compile Include="Tweaks\Monitors\Monad.cs" />
+    <Compile Include="Tweaks\Mysteries\ApocalypseMystery.cs" />
     <Compile Include="Tweaks\Mysteries\LunarMystery.cs" />
     <Compile Include="Tweaks\Mysteries\MetalMystery.cs" />
     <Compile Include="Tweaks\Mysteries\MysteryProperties.cs" />
@@ -539,6 +540,7 @@
     <Compile Include="Resources.cs" />
     <Compile Include="SaveGamePatch.cs" />
     <Compile Include="Tweaks\Spells\BurstOfNettles.cs" />
+    <Compile Include="Tweaks\Spells\CorrosiveConsumption.cs" />
     <Compile Include="Tweaks\Spells\DanceOfAThousandCuts.cs" />
     <Compile Include="Tweaks\Spells\DanceOfAHundredCuts.cs" />
     <Compile Include="Tweaks\Spells\ClaySkin.cs" />
@@ -560,6 +562,7 @@
     <Compile Include="Tweaks\Spells\KingsCastle.cs" />
     <Compile Include="Tweaks\Spells\Shambler.cs" />
     <Compile Include="Tweaks\Spells\TransmuteBloodToAcid.cs" />
+    <Compile Include="Tweaks\Spells\TrialOfFireAndAcid.cs" />
     <Compile Include="Tweaks\Spells\VerminShape.cs" />
     <Compile Include="Tweaks\Spells\WoodenPhalanx.cs" />
     <Compile Include="Tweaks\Spells\Shillelagh.cs" />

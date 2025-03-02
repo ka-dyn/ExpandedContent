@@ -157,6 +157,8 @@ namespace ExpandedContent.Tweaks {
                 Spells.VerminShape.AddVerminShape();
                 Spells.Detonate.AddDetonate();
                 Spells.IncendiaryCloud.AddIncendiaryCloud();
+                Spells.TrialOfFireAndAcid.AddTrialOfFireAndAcid();
+                Spells.CorrosiveConsumption.AddCorrosiveConsumption();
 
                 Miscellaneous.AlchemistDiscoveries.MutagenDiscovery.AddMutagenDiscovery();
                 Miscellaneous.AlchemistDiscoveries.MindchemistSkillDiscovery.AddMindchemistSkillDiscovery();
