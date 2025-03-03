@@ -27,7 +27,7 @@ namespace ExpandedContent.Tweaks.Spells {
     internal class CorrosiveConsumption {
         public static void AddCorrosiveConsumption() {
             var CorrosiveConsumptionIcon = AssetLoader.LoadInternal("Skills", "Icon_CorrosiveConsumption.jpg");
-            //var Icon_ScrollOfCorrosiveConsumption = AssetLoader.LoadInternal("Items", "Icon_ScrollOfCorrosiveConsumption.png");
+            var Icon_ScrollOfCorrosiveConsumption = AssetLoader.LoadInternal("Items", "Icon_ScrollOfCorrosiveConsumption.png");
 
 
             var CorrosiveConsumptionFlagBuff = Helpers.CreateBuff("CorrosiveConsumptionFlagBuff", bp => {
@@ -302,15 +302,10 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
-            //var CorrosiveConsumptionScroll = ItemTools.CreateScroll("ScrollOfCorrosiveConsumption", Icon_ScrollOfCorrosiveConsumption, CorrosiveConsumptionAbility, 3, 5);
-            //VenderTools.AddScrollToLeveledVenders(CorrosiveConsumptionScroll);
-            CorrosiveConsumptionAbility.AddToSpellList(SpellTools.SpellList.BloodragerSpellList, 3);
-            CorrosiveConsumptionAbility.AddToSpellList(SpellTools.SpellList.ClericSpellList, 3);
-            CorrosiveConsumptionAbility.AddToSpellList(SpellTools.SpellList.MagusSpellList, 3);
-            CorrosiveConsumptionAbility.AddToSpellList(SpellTools.SpellList.ShamanSpelllist, 3);
-            CorrosiveConsumptionAbility.AddToSpellList(SpellTools.SpellList.WarpriestSpelllist, 3);
-            CorrosiveConsumptionAbility.AddToSpellList(SpellTools.SpellList.WizardSpellList, 3);
-            CorrosiveConsumptionAbility.AddToSpellList(SpellTools.SpellList.WitchSpellList, 3);
+            var CorrosiveConsumptionScroll = ItemTools.CreateScroll("ScrollOfCorrosiveConsumption", Icon_ScrollOfCorrosiveConsumption, CorrosiveConsumptionAbility, 5, 9);
+            VenderTools.AddScrollToLeveledVenders(CorrosiveConsumptionScroll);
+            CorrosiveConsumptionAbility.AddToSpellList(SpellTools.SpellList.MagusSpellList, 5);
+            CorrosiveConsumptionAbility.AddToSpellList(SpellTools.SpellList.WizardSpellList, 5);
         }
     }
 }

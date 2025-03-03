@@ -27,7 +27,7 @@ namespace ExpandedContent.Tweaks.Spells {
     internal class TrialOfFireAndAcid {
         public static void AddTrialOfFireAndAcid() {
             var TrialOfFireAndAcidIcon = AssetLoader.LoadInternal("Skills", "Icon_TrialOfFireAndAcid.jpg");
-            //var Icon_ScrollOfTrialOfFireAndAcid = AssetLoader.LoadInternal("Items", "Icon_ScrollOfTrialOfFireAndAcid.png");
+            var Icon_ScrollOfTrialOfFireAndAcid = AssetLoader.LoadInternal("Items", "Icon_ScrollOfTrialOfFireAndAcid.png");
 
             var TrialOfFireAndAcidBuff = Helpers.CreateBuff("TrialOfFireAndAcidBuff", bp => {
                 bp.SetName("Trial of Fire and Acid");
@@ -37,205 +37,213 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.AddComponent<AddFactContextActions>(c => {
                     c.Activated = Helpers.CreateActionList();
                     c.Deactivated = Helpers.CreateActionList();
-                    c.NewRound = Helpers.CreateActionList(                        
-                        new ContextActionConditionalSaved() {
-                            Succeed = Helpers.CreateActionList(
-                                new ContextActionDealDamage() {
-                                    m_Type = ContextActionDealDamage.Type.Damage,
-                                    DamageType = new DamageTypeDescription() {
-                                        Common = new DamageTypeDescription.CommomData() {
-                                            Reality = 0,
-                                            Alignment = 0,
-                                            Precision = false
+                    c.NewRound = Helpers.CreateActionList(
+                        new ContextActionSavingThrow() {
+                            Type = SavingThrowType.Fortitude,
+                            FromBuff = false,
+                            HasCustomDC = false,
+                            CustomDC = new ContextValue() { },
+                            Actions = Helpers.CreateActionList(
+                                new ContextActionConditionalSaved() {
+                                    Succeed = Helpers.CreateActionList(
+                                        new ContextActionDealDamage() {
+                                            m_Type = ContextActionDealDamage.Type.Damage,
+                                            DamageType = new DamageTypeDescription() {
+                                                Common = new DamageTypeDescription.CommomData() {
+                                                    Reality = 0,
+                                                    Alignment = 0,
+                                                    Precision = false
+                                                },
+                                                Physical = new DamageTypeDescription.PhysicalData() {
+                                                    Material = 0,
+                                                    Form = Kingmaker.Enums.Damage.PhysicalDamageForm.Slashing,
+                                                    Enhancement = 0,
+                                                    EnhancementTotal = 0
+                                                },
+                                                Energy = Kingmaker.Enums.Damage.DamageEnergyType.Fire,
+                                                Type = DamageType.Energy
+                                            },
+                                            Drain = false,
+                                            AbilityType = StatType.Unknown,
+                                            Duration = new ContextDurationValue() {
+                                                Rate = DurationRate.Rounds,
+                                                DiceType = DiceType.Zero,
+                                                DiceCountValue = new ContextValue() {
+                                                    ValueType = ContextValueType.Simple,
+                                                    Value = 0,
+                                                    ValueRank = AbilityRankType.Default,
+                                                    ValueShared = AbilitySharedValue.Damage,
+                                                    Property = UnitProperty.None
+                                                },
+                                                BonusValue = new ContextValue() {
+                                                    ValueType = ContextValueType.Simple,
+                                                    Value = 0,
+                                                    ValueRank = AbilityRankType.Default,
+                                                    ValueShared = AbilitySharedValue.Damage,
+                                                    Property = UnitProperty.None
+                                                },
+                                                m_IsExtendable = true,
+                                            },
+                                            PreRolledSharedValue = AbilitySharedValue.Damage,
+                                            Value = new ContextDiceValue() {
+                                                DiceType = DiceType.D6,
+                                                DiceCountValue = 1,
+                                                BonusValue = 0,
+                                            },
+                                            ResultSharedValue = AbilitySharedValue.Damage,
+                                            CriticalSharedValue = AbilitySharedValue.Damage,
+                                            Half = true
                                         },
-                                        Physical = new DamageTypeDescription.PhysicalData() {
-                                            Material = 0,
-                                            Form = Kingmaker.Enums.Damage.PhysicalDamageForm.Slashing,
-                                            Enhancement = 0,
-                                            EnhancementTotal = 0
+                                        new ContextActionDealDamage() {
+                                            m_Type = ContextActionDealDamage.Type.Damage,
+                                            DamageType = new DamageTypeDescription() {
+                                                Common = new DamageTypeDescription.CommomData() {
+                                                    Reality = 0,
+                                                    Alignment = 0,
+                                                    Precision = false
+                                                },
+                                                Physical = new DamageTypeDescription.PhysicalData() {
+                                                    Material = 0,
+                                                    Form = Kingmaker.Enums.Damage.PhysicalDamageForm.Slashing,
+                                                    Enhancement = 0,
+                                                    EnhancementTotal = 0
+                                                },
+                                                Energy = Kingmaker.Enums.Damage.DamageEnergyType.Acid,
+                                                Type = DamageType.Energy
+                                            },
+                                            Drain = false,
+                                            AbilityType = StatType.Unknown,
+                                            Duration = new ContextDurationValue() {
+                                                Rate = DurationRate.Rounds,
+                                                DiceType = DiceType.Zero,
+                                                DiceCountValue = new ContextValue() {
+                                                    ValueType = ContextValueType.Simple,
+                                                    Value = 0,
+                                                    ValueRank = AbilityRankType.Default,
+                                                    ValueShared = AbilitySharedValue.Damage,
+                                                    Property = UnitProperty.None
+                                                },
+                                                BonusValue = new ContextValue() {
+                                                    ValueType = ContextValueType.Simple,
+                                                    Value = 0,
+                                                    ValueRank = AbilityRankType.Default,
+                                                    ValueShared = AbilitySharedValue.Damage,
+                                                    Property = UnitProperty.None
+                                                },
+                                                m_IsExtendable = true,
+                                            },
+                                            PreRolledSharedValue = AbilitySharedValue.Damage,
+                                            Value = new ContextDiceValue() {
+                                                DiceType = DiceType.D6,
+                                                DiceCountValue = 1,
+                                                BonusValue = 0,
+                                            },
+                                            ResultSharedValue = AbilitySharedValue.Damage,
+                                            CriticalSharedValue = AbilitySharedValue.Damage,
+                                            Half = true
+                                        }
+                                    ),
+                                    Failed = Helpers.CreateActionList(
+                                        new ContextActionDealDamage() {
+                                            m_Type = ContextActionDealDamage.Type.Damage,
+                                            DamageType = new DamageTypeDescription() {
+                                                Common = new DamageTypeDescription.CommomData() {
+                                                    Reality = 0,
+                                                    Alignment = 0,
+                                                    Precision = false
+                                                },
+                                                Physical = new DamageTypeDescription.PhysicalData() {
+                                                    Material = 0,
+                                                    Form = Kingmaker.Enums.Damage.PhysicalDamageForm.Slashing,
+                                                    Enhancement = 0,
+                                                    EnhancementTotal = 0
+                                                },
+                                                Energy = Kingmaker.Enums.Damage.DamageEnergyType.Fire,
+                                                Type = DamageType.Energy
+                                            },
+                                            Drain = false,
+                                            AbilityType = StatType.Unknown,
+                                            Duration = new ContextDurationValue() {
+                                                Rate = DurationRate.Rounds,
+                                                DiceType = DiceType.Zero,
+                                                DiceCountValue = new ContextValue() {
+                                                    ValueType = ContextValueType.Simple,
+                                                    Value = 0,
+                                                    ValueRank = AbilityRankType.Default,
+                                                    ValueShared = AbilitySharedValue.Damage,
+                                                    Property = UnitProperty.None
+                                                },
+                                                BonusValue = new ContextValue() {
+                                                    ValueType = ContextValueType.Simple,
+                                                    Value = 0,
+                                                    ValueRank = AbilityRankType.Default,
+                                                    ValueShared = AbilitySharedValue.Damage,
+                                                    Property = UnitProperty.None
+                                                },
+                                                m_IsExtendable = true,
+                                            },
+                                            PreRolledSharedValue = AbilitySharedValue.Damage,
+                                            Value = new ContextDiceValue() {
+                                                DiceType = DiceType.D6,
+                                                DiceCountValue = 1,
+                                                BonusValue = 0,
+                                            },
+                                            ResultSharedValue = AbilitySharedValue.Damage,
+                                            CriticalSharedValue = AbilitySharedValue.Damage,
+                                            Half = false
                                         },
-                                        Energy = Kingmaker.Enums.Damage.DamageEnergyType.Fire,
-                                        Type = DamageType.Energy
-                                    },
-                                    Drain = false,
-                                    AbilityType = StatType.Unknown,
-                                    Duration = new ContextDurationValue() {
-                                        Rate = DurationRate.Rounds,
-                                        DiceType = DiceType.Zero,
-                                        DiceCountValue = new ContextValue() {
-                                            ValueType = ContextValueType.Simple,
-                                            Value = 0,
-                                            ValueRank = AbilityRankType.Default,
-                                            ValueShared = AbilitySharedValue.Damage,
-                                            Property = UnitProperty.None
-                                        },
-                                        BonusValue = new ContextValue() {
-                                            ValueType = ContextValueType.Simple,
-                                            Value = 0,
-                                            ValueRank = AbilityRankType.Default,
-                                            ValueShared = AbilitySharedValue.Damage,
-                                            Property = UnitProperty.None
-                                        },
-                                        m_IsExtendable = true,
-                                    },
-                                    PreRolledSharedValue = AbilitySharedValue.Damage,
-                                    Value = new ContextDiceValue() {
-                                        DiceType = DiceType.D6,
-                                        DiceCountValue = 1,
-                                        BonusValue = 0,
-                                    },
-                                    ResultSharedValue = AbilitySharedValue.Damage,
-                                    CriticalSharedValue = AbilitySharedValue.Damage,
-                                    Half = true
-                                },
-                                new ContextActionDealDamage() {
-                                    m_Type = ContextActionDealDamage.Type.Damage,
-                                    DamageType = new DamageTypeDescription() {
-                                        Common = new DamageTypeDescription.CommomData() {
-                                            Reality = 0,
-                                            Alignment = 0,
-                                            Precision = false
-                                        },
-                                        Physical = new DamageTypeDescription.PhysicalData() {
-                                            Material = 0,
-                                            Form = Kingmaker.Enums.Damage.PhysicalDamageForm.Slashing,
-                                            Enhancement = 0,
-                                            EnhancementTotal = 0
-                                        },
-                                        Energy = Kingmaker.Enums.Damage.DamageEnergyType.Acid,
-                                        Type = DamageType.Energy
-                                    },
-                                    Drain = false,
-                                    AbilityType = StatType.Unknown,
-                                    Duration = new ContextDurationValue() {
-                                        Rate = DurationRate.Rounds,
-                                        DiceType = DiceType.Zero,
-                                        DiceCountValue = new ContextValue() {
-                                            ValueType = ContextValueType.Simple,
-                                            Value = 0,
-                                            ValueRank = AbilityRankType.Default,
-                                            ValueShared = AbilitySharedValue.Damage,
-                                            Property = UnitProperty.None
-                                        },
-                                        BonusValue = new ContextValue() {
-                                            ValueType = ContextValueType.Simple,
-                                            Value = 0,
-                                            ValueRank = AbilityRankType.Default,
-                                            ValueShared = AbilitySharedValue.Damage,
-                                            Property = UnitProperty.None
-                                        },
-                                        m_IsExtendable = true,
-                                    },
-                                    PreRolledSharedValue = AbilitySharedValue.Damage,
-                                    Value = new ContextDiceValue() {
-                                        DiceType = DiceType.D6,
-                                        DiceCountValue = 1,
-                                        BonusValue = 0,
-                                    },
-                                    ResultSharedValue = AbilitySharedValue.Damage,
-                                    CriticalSharedValue = AbilitySharedValue.Damage,
-                                    Half = true
-                                }
-                            ),
-                            Failed = Helpers.CreateActionList(
-                                new ContextActionDealDamage() {
-                                    m_Type = ContextActionDealDamage.Type.Damage,
-                                    DamageType = new DamageTypeDescription() {
-                                        Common = new DamageTypeDescription.CommomData() {
-                                            Reality = 0,
-                                            Alignment = 0,
-                                            Precision = false
-                                        },
-                                        Physical = new DamageTypeDescription.PhysicalData() {
-                                            Material = 0,
-                                            Form = Kingmaker.Enums.Damage.PhysicalDamageForm.Slashing,
-                                            Enhancement = 0,
-                                            EnhancementTotal = 0
-                                        },
-                                        Energy = Kingmaker.Enums.Damage.DamageEnergyType.Fire,
-                                        Type = DamageType.Energy
-                                    },
-                                    Drain = false,
-                                    AbilityType = StatType.Unknown,
-                                    Duration = new ContextDurationValue() {
-                                        Rate = DurationRate.Rounds,
-                                        DiceType = DiceType.Zero,
-                                        DiceCountValue = new ContextValue() {
-                                            ValueType = ContextValueType.Simple,
-                                            Value = 0,
-                                            ValueRank = AbilityRankType.Default,
-                                            ValueShared = AbilitySharedValue.Damage,
-                                            Property = UnitProperty.None
-                                        },
-                                        BonusValue = new ContextValue() {
-                                            ValueType = ContextValueType.Simple,
-                                            Value = 0,
-                                            ValueRank = AbilityRankType.Default,
-                                            ValueShared = AbilitySharedValue.Damage,
-                                            Property = UnitProperty.None
-                                        },
-                                        m_IsExtendable = true,
-                                    },
-                                    PreRolledSharedValue = AbilitySharedValue.Damage,
-                                    Value = new ContextDiceValue() {
-                                        DiceType = DiceType.D6,
-                                        DiceCountValue = 1,
-                                        BonusValue = 0,
-                                    },
-                                    ResultSharedValue = AbilitySharedValue.Damage,
-                                    CriticalSharedValue = AbilitySharedValue.Damage,
-                                    Half = false
-                                },
-                                new ContextActionDealDamage() {
-                                    m_Type = ContextActionDealDamage.Type.Damage,
-                                    DamageType = new DamageTypeDescription() {
-                                        Common = new DamageTypeDescription.CommomData() {
-                                            Reality = 0,
-                                            Alignment = 0,
-                                            Precision = false
-                                        },
-                                        Physical = new DamageTypeDescription.PhysicalData() {
-                                            Material = 0,
-                                            Form = Kingmaker.Enums.Damage.PhysicalDamageForm.Slashing,
-                                            Enhancement = 0,
-                                            EnhancementTotal = 0
-                                        },
-                                        Energy = Kingmaker.Enums.Damage.DamageEnergyType.Acid,
-                                        Type = DamageType.Energy
-                                    },
-                                    Drain = false,
-                                    AbilityType = StatType.Unknown,
-                                    Duration = new ContextDurationValue() {
-                                        Rate = DurationRate.Rounds,
-                                        DiceType = DiceType.Zero,
-                                        DiceCountValue = new ContextValue() {
-                                            ValueType = ContextValueType.Simple,
-                                            Value = 0,
-                                            ValueRank = AbilityRankType.Default,
-                                            ValueShared = AbilitySharedValue.Damage,
-                                            Property = UnitProperty.None
-                                        },
-                                        BonusValue = new ContextValue() {
-                                            ValueType = ContextValueType.Simple,
-                                            Value = 0,
-                                            ValueRank = AbilityRankType.Default,
-                                            ValueShared = AbilitySharedValue.Damage,
-                                            Property = UnitProperty.None
-                                        },
-                                        m_IsExtendable = true,
-                                    },
-                                    PreRolledSharedValue = AbilitySharedValue.Damage,
-                                    Value = new ContextDiceValue() {
-                                        DiceType = DiceType.D6,
-                                        DiceCountValue = 1,
-                                        BonusValue = 0,
-                                    },
-                                    ResultSharedValue = AbilitySharedValue.Damage,
-                                    CriticalSharedValue = AbilitySharedValue.Damage,
-                                    Half = false
+                                        new ContextActionDealDamage() {
+                                            m_Type = ContextActionDealDamage.Type.Damage,
+                                            DamageType = new DamageTypeDescription() {
+                                                Common = new DamageTypeDescription.CommomData() {
+                                                    Reality = 0,
+                                                    Alignment = 0,
+                                                    Precision = false
+                                                },
+                                                Physical = new DamageTypeDescription.PhysicalData() {
+                                                    Material = 0,
+                                                    Form = Kingmaker.Enums.Damage.PhysicalDamageForm.Slashing,
+                                                    Enhancement = 0,
+                                                    EnhancementTotal = 0
+                                                },
+                                                Energy = Kingmaker.Enums.Damage.DamageEnergyType.Acid,
+                                                Type = DamageType.Energy
+                                            },
+                                            Drain = false,
+                                            AbilityType = StatType.Unknown,
+                                            Duration = new ContextDurationValue() {
+                                                Rate = DurationRate.Rounds,
+                                                DiceType = DiceType.Zero,
+                                                DiceCountValue = new ContextValue() {
+                                                    ValueType = ContextValueType.Simple,
+                                                    Value = 0,
+                                                    ValueRank = AbilityRankType.Default,
+                                                    ValueShared = AbilitySharedValue.Damage,
+                                                    Property = UnitProperty.None
+                                                },
+                                                BonusValue = new ContextValue() {
+                                                    ValueType = ContextValueType.Simple,
+                                                    Value = 0,
+                                                    ValueRank = AbilityRankType.Default,
+                                                    ValueShared = AbilitySharedValue.Damage,
+                                                    Property = UnitProperty.None
+                                                },
+                                                m_IsExtendable = true,
+                                            },
+                                            PreRolledSharedValue = AbilitySharedValue.Damage,
+                                            Value = new ContextDiceValue() {
+                                                DiceType = DiceType.D6,
+                                                DiceCountValue = 1,
+                                                BonusValue = 0,
+                                            },
+                                            ResultSharedValue = AbilitySharedValue.Damage,
+                                            CriticalSharedValue = AbilitySharedValue.Damage,
+                                            Half = false
+                                        }
+                                    )
                                 }
                             )
-                        }
+                        }                        
                         );
                 });
                 bp.m_AllowNonContextActions = false;

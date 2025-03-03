@@ -67,7 +67,7 @@ namespace ExpandedContent.Tweaks.Spells {
                                         ),
                                     Failed = Helpers.CreateActionList()
                                 }
-                        )
+                            )
                         }
                     );
                 });
