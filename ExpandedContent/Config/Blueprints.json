@@ -3943,7 +3943,14 @@
     "SmokeDomainProgressionSeparatist": "93f20908-0f7a-473a-aea0-d9f91df4d883",
     "SmokeDomainSpellList": "6fcb6a84-d427-49f7-b600-d7fa4f3fba85",
     "SmokeDomainSpellListFeature": "d3e64914-8e14-4fe4-9474-a128c5ab38b1",
-    "SmokeDomainSpellListFeatureDruid": "6fa8149c-6a35-4ca8-8721-afce87725e18"
+    "SmokeDomainSpellListFeatureDruid": "6fa8149c-6a35-4ca8-8721-afce87725e18",
+
+    "CorrosiveConsumptionAbility": "11ced132-0292-4dd8-b609-828aa05a3e3d",
+    "CorrosiveConsumptionBuff": "c3dbd94a-2303-4215-bd5f-1b680f42451b",
+    "CorrosiveConsumptionFlagBuff": "8ad316a0-2119-4932-9538-ee0b0db156dc",
+    "ScrollOfCorrosiveConsumption": "d42c0125-b489-4e49-aff6-4d44c7a133d0",
+    "TrialOfFireAndAcidAbility": "56557368-ccbb-415f-a57b-11612affabb9",
+    "TrialOfFireAndAcidBuff": "6b5951bc-0540-437d-bc0f-c9ed7d82442a"
 
 
   },

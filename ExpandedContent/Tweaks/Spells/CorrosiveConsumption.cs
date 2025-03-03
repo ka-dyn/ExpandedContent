@@ -293,7 +293,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.CanTargetEnemies = true;
                 bp.CanTargetFriends = true;
                 bp.CanTargetSelf = true;
-                bp.SpellResistance = false;
+                bp.SpellResistance = true;
                 bp.EffectOnAlly = AbilityEffectOnUnit.None;
                 bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Point;
