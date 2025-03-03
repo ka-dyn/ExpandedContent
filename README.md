@@ -229,6 +229,8 @@ New Spells
 - Vermin Shape (I, II)
 - Detonate
 - Incendiary Cloud
+- Corrosive Consumption
+- Trial of Fire and Acid
 
 
 Compatible with all mods as far as I am aware, extra features are unlocked if used with these mods
