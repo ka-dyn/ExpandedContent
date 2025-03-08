@@ -248,6 +248,7 @@
     <Compile Include="Tweaks\Classes\Oathbreaker.cs" />
     <Compile Include="Tweaks\Classes\DreadKnight.cs" />
     <Compile Include="Tweaks\Components\AddContextStatBonusInTerrain.cs" />
+    <Compile Include="Tweaks\Components\AddExtraDrainToEnergyDrainInstance.cs" />
     <Compile Include="Tweaks\Components\AddImmunityToEnergyDrainFromFact.cs" />
     <Compile Include="Tweaks\Components\AddInitiatorSavingThrowTriggerExpanded.cs" />
     <Compile Include="Tweaks\Components\AddTargetAttackRollTriggerExpanded.cs" />

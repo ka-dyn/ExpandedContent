@@ -8,6 +8,7 @@ using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Items.Armors;
 using Kingmaker.Blueprints.Items.Ecnchantments;
+using Kingmaker.Blueprints.Items.Weapons;
 using Kingmaker.Craft;
 using Kingmaker.Designers.EventConditionActionSystem.Actions;
 using Kingmaker.Designers.EventConditionActionSystem.Conditions;
@@ -16,12 +17,17 @@ using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.ElementsSystem;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
+using Kingmaker.Enums.Damage;
 using Kingmaker.RuleSystem;
+using Kingmaker.RuleSystem.Rules.Damage;
+using Kingmaker.RuleSystem.Rules;
 using Kingmaker.UI.GenericSlot;
 using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.UnitLogic.Abilities.Components;
 using Kingmaker.UnitLogic.Abilities.Components.CasterCheckers;
+using Kingmaker.UnitLogic.Abilities.Components.TargetCheckers;
+using Kingmaker.UnitLogic.ActivatableAbilities;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.Commands.Base;
 using Kingmaker.UnitLogic.FactLogic;
@@ -215,19 +221,566 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     c.SpellLevel = 9;
                 });
             });
-            #region Final Revelation
-            var WeaponFocus = Resources.GetBlueprint<BlueprintParametrizedFeature>("1e1f627d26ad36f43bbd26cc2bf8ac7e");
+            #region Final Revelation TESTING
+            var BestowCurseFeebleBodyBuff = Resources.GetBlueprint<BlueprintBuff>("c092750ba895e014cb24a25e2e8274a7");
+            var BestowCurseWeaknessBuff = Resources.GetBlueprint<BlueprintBuff>("de92c96c86cb2cd4c8eb8e2881b84d99");
+            var BestowCurseIdiocyBuff = Resources.GetBlueprint<BlueprintBuff>("7fbb7799e8684434e80487cef9cc7f09");
+            var BestowCurseDeteriorationBuff = Resources.GetBlueprint<BlueprintBuff>("caae9592917719a41b601b678a8e6ddf");
             var WeaponFocusGreater = Resources.GetBlueprint<BlueprintParametrizedFeature>("09c9e82965fb4334b984a1e9df3bd088");
             var ImprovedCritical = Resources.GetBlueprint<BlueprintParametrizedFeature>("f4201c85a991369408740c6888362e20");
 
+            var OracleApocalypseLazyCombatBuff = Helpers.CreateBuff("OracleApocalypseLazyCombatBuff", bp => {
+                bp.SetName("Not in combat");
+                bp.SetDescription("");
+                bp.IsClassFeature = true;
+                bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
+                bp.Stacking = StackingType.Replace;
+
+            });
+
+            var OracleApocalypseFinalFeebleBodyBuff = Helpers.CreateBuff("OracleApocalypseFinalFeebleBodyBuff", bp => {
+                bp.SetName("Critical Curse - Feeble Body");
+                bp.SetDescription("During this combat the next creature you confirm a critical hit against is cursed " +
+                    "by your attack as the bestow curse spell, except the target doesn’t receive a Will saving throw to negate the effects and spell resistance does " +
+                    "not apply against this ability." +
+                    "\r\nCurse of Feeble Body — The subject suffers a –6 {g|Encyclopedia:Penalty}penalty{/g} to {g|Encyclopedia:Constitution}Constitution{/g} score.");
+                bp.m_Icon = WaterfallStyleIcon;
+                bp.AddComponent<CombatStateTrigger>(c => {
+                    c.CombatStartActions = Helpers.CreateActionList();
+                    c.CombatEndActions = Helpers.CreateActionList( new ContextActionRemoveSelf() );
+                });
+                bp.AddComponent<AddInitiatorAttackWithWeaponTrigger>(c => {
+                    c.TriggerBeforeAttack = false;
+                    c.OnlyHit = true;
+                    c.OnMiss = false;
+                    c.OnlyOnFullAttack = false;
+                    c.OnlyOnFirstAttack = false;
+                    c.OnlyOnFirstHit = false;
+                    c.CriticalHit = true;
+                    c.OnAttackOfOpportunity = false;
+                    c.NotCriticalHit = false;
+                    c.OnlySneakAttack = false;
+                    c.NotSneakAttack = false;
+                    c.m_WeaponType = new BlueprintWeaponTypeReference();
+                    c.CheckWeaponCategory = false;
+                    c.Category = WeaponCategory.UnarmedStrike;
+                    c.CheckWeaponGroup = false;
+                    c.Group = WeaponFighterGroup.None;
+                    c.CheckWeaponRangeType = false;
+                    c.RangeType = WeaponRangeType.Ranged;
+                    c.ActionsOnInitiator = false;
+                    c.ReduceHPToZero = false;
+                    c.DamageMoreTargetMaxHP = false;
+                    c.CheckDistance = false;
+                    c.DistanceLessEqual = new Feet(); //?
+                    c.AllNaturalAndUnarmed = true;
+                    c.DuelistWeapon = false;
+                    c.NotExtraAttack = false;
+                    c.OnCharge = false;
+                    c.Action = Helpers.CreateActionList(                        
+                        new ContextActionApplyBuff() {
+                            m_Buff = BestowCurseFeebleBodyBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = new ContextValue(),
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 1,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                m_IsExtendable = true
+                            },
+                            IsFromSpell = true,
+                        },
+                        new ContextActionRemoveSelf()
+                        );
+                });
+                bp.IsClassFeature = true;
+                bp.m_Flags = 0;
+                bp.Stacking = StackingType.Replace;
+            });
+            var OracleApocalypseFinalWeaknessBuff = Helpers.CreateBuff("OracleApocalypseFinalWeaknessBuff", bp => {
+                bp.SetName("Critical Curse - Weakness");
+                bp.SetDescription("During this combat the next creature you confirm a critical hit against is cursed " +
+                    "by your attack as the bestow curse spell, except the target doesn’t receive a Will saving throw to negate the effects and spell resistance does " +
+                    "not apply against this ability." +
+                    "\r\nCurse of Weakness — The subject suffers a –6 penalty to {g|Encyclopedia:Strength}Strength{/g} and {g|Encyclopedia:Dexterity}Dexterity{/g} scores.");
+                bp.m_Icon = WaterfallStyleIcon;
+                bp.AddComponent<CombatStateTrigger>(c => {
+                    c.CombatStartActions = Helpers.CreateActionList();
+                    c.CombatEndActions = Helpers.CreateActionList(new ContextActionRemoveSelf());
+                });
+                bp.AddComponent<AddInitiatorAttackWithWeaponTrigger>(c => {
+                    c.TriggerBeforeAttack = false;
+                    c.OnlyHit = true;
+                    c.OnMiss = false;
+                    c.OnlyOnFullAttack = false;
+                    c.OnlyOnFirstAttack = false;
+                    c.OnlyOnFirstHit = false;
+                    c.CriticalHit = true;
+                    c.OnAttackOfOpportunity = false;
+                    c.NotCriticalHit = false;
+                    c.OnlySneakAttack = false;
+                    c.NotSneakAttack = false;
+                    c.m_WeaponType = new BlueprintWeaponTypeReference();
+                    c.CheckWeaponCategory = false;
+                    c.Category = WeaponCategory.UnarmedStrike;
+                    c.CheckWeaponGroup = false;
+                    c.Group = WeaponFighterGroup.None;
+                    c.CheckWeaponRangeType = false;
+                    c.RangeType = WeaponRangeType.Ranged;
+                    c.ActionsOnInitiator = false;
+                    c.ReduceHPToZero = false;
+                    c.DamageMoreTargetMaxHP = false;
+                    c.CheckDistance = false;
+                    c.DistanceLessEqual = new Feet(); //?
+                    c.AllNaturalAndUnarmed = true;
+                    c.DuelistWeapon = false;
+                    c.NotExtraAttack = false;
+                    c.OnCharge = false;
+                    c.Action = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = BestowCurseWeaknessBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = new ContextValue(),
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 1,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                m_IsExtendable = true
+                            },
+                            IsFromSpell = true,
+                        },
+                        new ContextActionRemoveSelf()
+                        );
+                });
+                bp.IsClassFeature = true;
+                bp.m_Flags = 0;
+                bp.Stacking = StackingType.Replace;
+            });
+            var OracleApocalypseFinalIdiocyBuff = Helpers.CreateBuff("OracleApocalypseFinalIdiocyBuff", bp => {
+                bp.SetName("Critical Curse - Idiocy");
+                bp.SetDescription("During this combat the next creature you confirm a critical hit against is cursed " +
+                    "by your attack as the bestow curse spell, except the target doesn’t receive a Will saving throw to negate the effects and spell resistance does " +
+                    "not apply against this ability." +
+                    "\r\nCurse of Idiocy — The subject suffers a –6 penalty to {g|Encyclopedia:Intelligence}Intelligence{/g}, {g|Encyclopedia:Wisdom}Wisdom{/g}, " +
+                    "and {g|Encyclopedia:Charisma}Charisma{/g} scores.");
+                bp.m_Icon = WaterfallStyleIcon;
+                bp.AddComponent<CombatStateTrigger>(c => {
+                    c.CombatStartActions = Helpers.CreateActionList();
+                    c.CombatEndActions = Helpers.CreateActionList(new ContextActionRemoveSelf());
+                });
+                bp.AddComponent<AddInitiatorAttackWithWeaponTrigger>(c => {
+                    c.TriggerBeforeAttack = false;
+                    c.OnlyHit = true;
+                    c.OnMiss = false;
+                    c.OnlyOnFullAttack = false;
+                    c.OnlyOnFirstAttack = false;
+                    c.OnlyOnFirstHit = false;
+                    c.CriticalHit = true;
+                    c.OnAttackOfOpportunity = false;
+                    c.NotCriticalHit = false;
+                    c.OnlySneakAttack = false;
+                    c.NotSneakAttack = false;
+                    c.m_WeaponType = new BlueprintWeaponTypeReference();
+                    c.CheckWeaponCategory = false;
+                    c.Category = WeaponCategory.UnarmedStrike;
+                    c.CheckWeaponGroup = false;
+                    c.Group = WeaponFighterGroup.None;
+                    c.CheckWeaponRangeType = false;
+                    c.RangeType = WeaponRangeType.Ranged;
+                    c.ActionsOnInitiator = false;
+                    c.ReduceHPToZero = false;
+                    c.DamageMoreTargetMaxHP = false;
+                    c.CheckDistance = false;
+                    c.DistanceLessEqual = new Feet(); //?
+                    c.AllNaturalAndUnarmed = true;
+                    c.DuelistWeapon = false;
+                    c.NotExtraAttack = false;
+                    c.OnCharge = false;
+                    c.Action = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = BestowCurseIdiocyBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = new ContextValue(),
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 1,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                m_IsExtendable = true
+                            },
+                            IsFromSpell = true,
+                        },
+                        new ContextActionRemoveSelf()
+                        );
+                });
+                bp.IsClassFeature = true;
+                bp.m_Flags = 0;
+                bp.Stacking = StackingType.Replace;
+            });
+            var OracleApocalypseFinalDeteriorationBuff = Helpers.CreateBuff("OracleApocalypseFinalDeteriorationBuff", bp => {
+                bp.SetName("Critical Curse - Deterioration");
+                bp.SetDescription("During this combat the next creature you confirm a critical hit against is cursed " +
+                    "by your attack as the bestow curse spell, except the target doesn’t receive a Will saving throw to negate the effects and spell resistance does " +
+                    "not apply against this ability." +
+                    "\r\nCurse of Idiocy — The subject suffers a –6 penalty to {g|Encyclopedia:Intelligence}Intelligence{/g}, {g|Encyclopedia:Wisdom}Wisdom{/g}, " +
+                    "and {g|Encyclopedia:Charisma}Charisma{/g} scores.");
+                bp.m_Icon = WaterfallStyleIcon;
+                bp.AddComponent<CombatStateTrigger>(c => {
+                    c.CombatStartActions = Helpers.CreateActionList();
+                    c.CombatEndActions = Helpers.CreateActionList(new ContextActionRemoveSelf());
+                });
+                bp.AddComponent<AddInitiatorAttackWithWeaponTrigger>(c => {
+                    c.TriggerBeforeAttack = false;
+                    c.OnlyHit = true;
+                    c.OnMiss = false;
+                    c.OnlyOnFullAttack = false;
+                    c.OnlyOnFirstAttack = false;
+                    c.OnlyOnFirstHit = false;
+                    c.CriticalHit = true;
+                    c.OnAttackOfOpportunity = false;
+                    c.NotCriticalHit = false;
+                    c.OnlySneakAttack = false;
+                    c.NotSneakAttack = false;
+                    c.m_WeaponType = new BlueprintWeaponTypeReference();
+                    c.CheckWeaponCategory = false;
+                    c.Category = WeaponCategory.UnarmedStrike;
+                    c.CheckWeaponGroup = false;
+                    c.Group = WeaponFighterGroup.None;
+                    c.CheckWeaponRangeType = false;
+                    c.RangeType = WeaponRangeType.Ranged;
+                    c.ActionsOnInitiator = false;
+                    c.ReduceHPToZero = false;
+                    c.DamageMoreTargetMaxHP = false;
+                    c.CheckDistance = false;
+                    c.DistanceLessEqual = new Feet(); //?
+                    c.AllNaturalAndUnarmed = true;
+                    c.DuelistWeapon = false;
+                    c.NotExtraAttack = false;
+                    c.OnCharge = false;
+                    c.Action = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = BestowCurseDeteriorationBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = new ContextValue(),
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 1,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                m_IsExtendable = true
+                            },
+                            IsFromSpell = true,
+                        },
+                        new ContextActionRemoveSelf()
+                        );
+                });
+                bp.IsClassFeature = true;
+                bp.m_Flags = 0;
+                bp.Stacking = StackingType.Replace;
+            });
+
+            var OracleApocalypseFinalCriticalCurseAbility = Helpers.CreateBlueprint<BlueprintAbility>("OracleApocalypseFinalCriticalCurseAbility", bp => {
+                bp.SetName("Critical Curse");
+                bp.SetDescription("While in combat you may expend a swift action; during this combat the next creature you confirm a critical hit against is cursed " +
+                    "by your attack as the bestow curse spell, except the target doesn’t receive a Will saving throw to negate the effects and spell resistance does " +
+                    "not apply against this ability." +
+                    "\nBestow Curse" +
+                    "\nYou place a curse on the subject. Choose one of the following:" +
+                    "\r\nCurse of Feeble Body — The subject suffers a –6 {g|Encyclopedia:Penalty}penalty{/g} to {g|Encyclopedia:Constitution}Constitution{/g} score." +
+                    "\r\nCurse of Weakness — The subject suffers a –6 penalty to {g|Encyclopedia:Strength}Strength{/g} and {g|Encyclopedia:Dexterity}Dexterity{/g} scores." +
+                    "\r\nCurse of Idiocy — The subject suffers a –6 penalty to {g|Encyclopedia:Intelligence}Intelligence{/g}, {g|Encyclopedia:Wisdom}Wisdom{/g}, " +
+                    "and {g|Encyclopedia:Charisma}Charisma{/g} scores." +
+                    "\r\nCurse of Deterioration — The subject suffers a –4 penalty on {g|Encyclopedia:Attack}attack rolls{/g}, {g|Encyclopedia:Saving_Throw}saves{/g}, " +
+                    "{g|Encyclopedia:Ability_Scores}ability checks{/g}, and {g|Encyclopedia:Skills}skill{/g} {g|Encyclopedia:Check}checks{/g}.");
+                bp.AddComponent<AbilityTargetHasFact>(c => {
+                    c.m_CheckedFacts = new BlueprintUnitFactReference[] { OracleApocalypseLazyCombatBuff.ToReference<BlueprintUnitFactReference>() };
+                    c.Inverted = false;
+                });
+                bp.m_Icon = WaveStyleIcon;
+                bp.m_AllowNonContextActions = false;
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.HasFastAnimation = false;
+                bp.ActionType = UnitCommand.CommandType.Swift;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var OracleApocalypseFinalFeebleBodyAbility = Helpers.CreateBlueprint<BlueprintAbility>("OracleApocalypseFinalFeebleBodyAbility", bp => {
+                bp.SetName("Critical Curse - Feeble Body");
+                bp.SetDescription("While in combat you may expend a swift action; during this combat the next creature you confirm a critical hit against is cursed " +
+                    "by your attack as the bestow curse spell, except the target doesn’t receive a Will saving throw to negate the effects and spell resistance does " +
+                    "not apply against this ability." +
+                    "\r\nCurse of Feeble Body — The subject suffers a –6 {g|Encyclopedia:Penalty}penalty{/g} to {g|Encyclopedia:Constitution}Constitution{/g} score.");
+                bp.m_Icon = WaveStyleIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = OracleApocalypseFinalFeebleBodyBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Minutes,
+                                BonusValue = 0,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                m_IsExtendable = true
+                            },
+                            DurationSeconds = 0
+                        },
+                        new ContextActionRemoveBuff() { m_Buff = OracleApocalypseFinalWeaknessBuff.ToReference<BlueprintBuffReference>() },
+                        new ContextActionRemoveBuff() { m_Buff = OracleApocalypseFinalIdiocyBuff.ToReference<BlueprintBuffReference>() },
+                        new ContextActionRemoveBuff() { m_Buff = OracleApocalypseFinalDeteriorationBuff.ToReference<BlueprintBuffReference>() }
+                        );
+                });
+                bp.AddComponent<AbilityTargetHasFact>(c => {
+                    c.m_CheckedFacts = new BlueprintUnitFactReference[] { OracleApocalypseLazyCombatBuff.ToReference<BlueprintUnitFactReference>() };
+                    c.Inverted = false;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.HasFastAnimation = false;
+                bp.ActionType = UnitCommand.CommandType.Swift;
+                bp.AvailableMetamagic = 0;
+                bp.m_Parent = OracleApocalypseFinalCriticalCurseAbility.ToReference<BlueprintAbilityReference>();
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var OracleApocalypseFinalWeaknessAbility = Helpers.CreateBlueprint<BlueprintAbility>("OracleApocalypseFinalWeaknessAbility", bp => {
+                bp.SetName("Critical Curse - Weakness");
+                bp.SetDescription("While in combat you may expend a swift action; during this combat the next creature you confirm a critical hit against is cursed " +
+                    "by your attack as the bestow curse spell, except the target doesn’t receive a Will saving throw to negate the effects and spell resistance does " +
+                    "not apply against this ability." +
+                    "\r\nCurse of Weakness — The subject suffers a –6 penalty to {g|Encyclopedia:Strength}Strength{/g} and {g|Encyclopedia:Dexterity}Dexterity{/g} scores.");
+                bp.m_Icon = WaveStyleIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = OracleApocalypseFinalWeaknessBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Minutes,
+                                BonusValue = 0,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                m_IsExtendable = true
+                            },
+                            DurationSeconds = 0
+                        },
+                        new ContextActionRemoveBuff() { m_Buff = OracleApocalypseFinalFeebleBodyBuff.ToReference<BlueprintBuffReference>() },
+                        new ContextActionRemoveBuff() { m_Buff = OracleApocalypseFinalIdiocyBuff.ToReference<BlueprintBuffReference>() },
+                        new ContextActionRemoveBuff() { m_Buff = OracleApocalypseFinalDeteriorationBuff.ToReference<BlueprintBuffReference>() }
+                        );
+                });
+                bp.AddComponent<AbilityTargetHasFact>(c => {
+                    c.m_CheckedFacts = new BlueprintUnitFactReference[] { OracleApocalypseLazyCombatBuff.ToReference<BlueprintUnitFactReference>() };
+                    c.Inverted = false;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.HasFastAnimation = false;
+                bp.ActionType = UnitCommand.CommandType.Swift;
+                bp.AvailableMetamagic = 0;
+                bp.m_Parent = OracleApocalypseFinalCriticalCurseAbility.ToReference<BlueprintAbilityReference>();
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var OracleApocalypseFinalIdiocyAbility = Helpers.CreateBlueprint<BlueprintAbility>("OracleApocalypseFinalIdiocyAbility", bp => {
+                bp.SetName("Critical Curse - Idiocy");
+                bp.SetDescription("While in combat you may expend a swift action; during this combat the next creature you confirm a critical hit against is cursed " +
+                    "by your attack as the bestow curse spell, except the target doesn’t receive a Will saving throw to negate the effects and spell resistance does " +
+                    "not apply against this ability." +
+                    "\r\nCurse of Idiocy — The subject suffers a –6 penalty to {g|Encyclopedia:Intelligence}Intelligence{/g}, {g|Encyclopedia:Wisdom}Wisdom{/g}, " +
+                    "and {g|Encyclopedia:Charisma}Charisma{/g} scores.");
+                bp.m_Icon = WaveStyleIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = OracleApocalypseFinalIdiocyBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Minutes,
+                                BonusValue = 0,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                m_IsExtendable = true
+                            },
+                            DurationSeconds = 0
+                        },
+                        new ContextActionRemoveBuff() { m_Buff = OracleApocalypseFinalFeebleBodyBuff.ToReference<BlueprintBuffReference>() },
+                        new ContextActionRemoveBuff() { m_Buff = OracleApocalypseFinalWeaknessBuff.ToReference<BlueprintBuffReference>() },
+                        new ContextActionRemoveBuff() { m_Buff = OracleApocalypseFinalDeteriorationBuff.ToReference<BlueprintBuffReference>() }
+                        );
+                });
+                bp.AddComponent<AbilityTargetHasFact>(c => {
+                    c.m_CheckedFacts = new BlueprintUnitFactReference[] { OracleApocalypseLazyCombatBuff.ToReference<BlueprintUnitFactReference>() };
+                    c.Inverted = false;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.HasFastAnimation = false;
+                bp.ActionType = UnitCommand.CommandType.Swift;
+                bp.AvailableMetamagic = 0;
+                bp.m_Parent = OracleApocalypseFinalCriticalCurseAbility.ToReference<BlueprintAbilityReference>();
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var OracleApocalypseFinalDeteriorationAbility = Helpers.CreateBlueprint<BlueprintAbility>("OracleApocalypseFinalDeteriorationAbility", bp => {
+                bp.SetName("Critical Curse - Deterioration");
+                bp.SetDescription("While in combat you may expend a swift action; during this combat the next creature you confirm a critical hit against is cursed " +
+                    "by your attack as the bestow curse spell, except the target doesn’t receive a Will saving throw to negate the effects and spell resistance does " +
+                    "not apply against this ability." +
+                    "\r\nCurse of Idiocy — The subject suffers a –6 penalty to {g|Encyclopedia:Intelligence}Intelligence{/g}, {g|Encyclopedia:Wisdom}Wisdom{/g}, " +
+                    "and {g|Encyclopedia:Charisma}Charisma{/g} scores.");
+                bp.m_Icon = WaveStyleIcon;
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = OracleApocalypseFinalDeteriorationBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Minutes,
+                                BonusValue = 0,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                m_IsExtendable = true
+                            },
+                            DurationSeconds = 0
+                        },
+                        new ContextActionRemoveBuff() { m_Buff = OracleApocalypseFinalFeebleBodyBuff.ToReference<BlueprintBuffReference>() },
+                        new ContextActionRemoveBuff() { m_Buff = OracleApocalypseFinalWeaknessBuff.ToReference<BlueprintBuffReference>() },
+                        new ContextActionRemoveBuff() { m_Buff = OracleApocalypseFinalIdiocyBuff.ToReference<BlueprintBuffReference>() }
+                        );
+                });
+                bp.AddComponent<AbilityTargetHasFact>(c => {
+                    c.m_CheckedFacts = new BlueprintUnitFactReference[] { OracleApocalypseLazyCombatBuff.ToReference<BlueprintUnitFactReference>() };
+                    c.Inverted = false;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.HasFastAnimation = false;
+                bp.ActionType = UnitCommand.CommandType.Swift;
+                bp.AvailableMetamagic = 0;
+                bp.m_Parent = OracleApocalypseFinalCriticalCurseAbility.ToReference<BlueprintAbilityReference>();
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+
+            OracleApocalypseFinalCriticalCurseAbility.AddComponent<AbilityVariants>(c => {
+                c.m_Variants = new BlueprintAbilityReference[] {
+                    OracleApocalypseFinalFeebleBodyAbility.ToReference<BlueprintAbilityReference>(),
+                    OracleApocalypseFinalWeaknessAbility.ToReference<BlueprintAbilityReference>(),
+                    OracleApocalypseFinalIdiocyAbility.ToReference<BlueprintAbilityReference>(),
+                    OracleApocalypseFinalDeteriorationAbility.ToReference<BlueprintAbilityReference>()
+                };
+            });
+
             var OracleApocalypseFinalRevelation = Helpers.CreateBlueprint<BlueprintFeature>("OracleApocalypseFinalRevelation", bp => {
                 bp.SetName("Final Revelation");
-                bp.SetDescription("");
-
-
-
-
-
+                bp.SetDescription("Upon reaching 20th level, you become a herald of the apocalypse and wield the awesome power to fulfill such prophecy. " +
+                    "Anytime you successfully cast a spell or use an ability that bestows 1 or more negative levels, you then bestow an 1d4 additional negative levels." +
+                    "\nAdditionally, while in combat you may expend a swift action; during this combat the next creature you confirm a critical hit against is cursed " +
+                    "by your attack as the bestow curse spell, except the target doesn’t receive a Will saving throw to negate the effects and spell resistance does " +
+                    "not apply against this ability.");
+                bp.AddComponent<AddExtraDrainToEnergyDrainInstance>(c => {
+                    c.CheckSpellDescriptor = false;
+                    c.SpellDescriptor = SpellDescriptor.None;
+                    c.SpellsOnly = false;
+                    c.Value = new ContextDiceValue() {
+                        DiceType = DiceType.D4,
+                        DiceCountValue = 1,
+                        BonusValue = 0
+                    };
+                });
+                bp.AddComponent<CombatStateTrigger>(c => {
+                    c.CombatStartActions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = OracleApocalypseLazyCombatBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Minutes,
+                                BonusValue = 0,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                m_IsExtendable = true
+                            },
+                            DurationSeconds = 0
+                        });
+                    c.CombatEndActions = Helpers.CreateActionList(
+                        new ContextActionRemoveBuff() {
+                            ToCaster = true,
+                            m_Buff = OracleApocalypseLazyCombatBuff.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                });                
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        OracleApocalypseFinalFeebleBodyAbility.ToReference<BlueprintUnitFactReference>(),
+                        OracleApocalypseFinalIdiocyAbility.ToReference<BlueprintUnitFactReference>(),
+                        OracleApocalypseFinalWeaknessAbility.ToReference<BlueprintUnitFactReference>(),
+                        OracleApocalypseFinalDeteriorationAbility.ToReference<BlueprintUnitFactReference>(),
+                        OracleApocalypseFinalCriticalCurseAbility.ToReference<BlueprintUnitFactReference>()
+                    };
+                });
                 bp.m_AllowNonContextActions = false;
                 bp.HideInUI = false;
                 bp.HideInCharacterSheetAndLevelUp = false;
