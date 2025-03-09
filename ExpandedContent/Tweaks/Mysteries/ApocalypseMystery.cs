@@ -45,6 +45,7 @@ using static Kingmaker.RuleSystem.Rules.Abilities.RuleApplySpell;
 using Kingmaker.ResourceLinks;
 using Kingmaker.UnitLogic.Buffs.Components;
 using Kingmaker.UnitLogic.Abilities.Components.AreaEffects;
+using UnityEngine.Rendering;
 
 namespace ExpandedContent.Tweaks.Mysteries {
     internal class ApocalypseMystery {
@@ -1869,8 +1870,121 @@ namespace ExpandedContent.Tweaks.Mysteries {
             });
             OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationPassTheTorchFeature.ToReference<BlueprintFeatureReference>());
             #endregion
-            #region Spell Blast  
+            #region Spell Blast 
+            var BatteringBlastIcon = Resources.GetBlueprint<BlueprintAbility>("0a2f7c6aa81bc6548ac7780d8b70bcbc").Icon;
+            var OracleRevelationSpelBlastBuff = Helpers.CreateBuff("OracleRevelationSpelBlastBuff", bp => {
+                bp.SetName("Spell Blast");
+                bp.SetDescription("As a swift action empower your ray spells for 1 minute, whenever you confirm a critical hit against an opponent with a ranged touch attack spell, " +
+                    "you immediately attempt to bull rush your opponent away from you. You don’t provoke an attack of opportunity for this bull rush attempt.");
+                bp.AddComponent<AddInitiatorAttackWithWeaponTrigger>(c => {
+                    c.TriggerBeforeAttack = false;
+                    c.OnlyHit = true;
+                    c.OnMiss = false;
+                    c.OnlyOnFullAttack = false;
+                    c.OnlyOnFirstAttack = false;
+                    c.OnlyOnFirstHit = false;
+                    c.CriticalHit = true;
+                    c.OnAttackOfOpportunity = false;
+                    c.NotCriticalHit = false;
+                    c.OnlySneakAttack = false;
+                    c.NotSneakAttack = false;
+                    c.m_WeaponType = new BlueprintWeaponTypeReference();
+                    c.CheckWeaponCategory = true;
+                    c.Category = WeaponCategory.Ray;
+                    c.CheckWeaponGroup = false;
+                    c.Group = WeaponFighterGroup.Bows;
+                    c.CheckWeaponRangeType = false;
+                    c.RangeType = WeaponRangeType.Melee;
+                    c.ActionsOnInitiator = false;
+                    c.ReduceHPToZero = false;
+                    c.DamageMoreTargetMaxHP = false;
+                    c.CheckDistance = false;
+                    c.DistanceLessEqual = new Feet(); //?
+                    c.AllNaturalAndUnarmed = false;
+                    c.DuelistWeapon = false;
+                    c.NotExtraAttack = false;
+                    c.OnCharge = false;
+                    c.Action = Helpers.CreateActionList(
+                        new ContextActionCombatManeuver() {
+                            Type = CombatManeuver.BullRush,
+                            IgnoreConcealment = true,
+                            OnSuccess = Helpers.CreateActionList(),
+                            ReplaceStat = false,
+                            NewStat = StatType.Unknown,
+                            UseKineticistMainStat = false,
+                            UseCastingStat = false,
+                            UseCasterLevelAsBaseAttack = false,
+                            UseBestMentalStat = false,
+                            BatteringBlast = false
+                        }
+                        );
+                });
+                bp.m_Icon = BatteringBlastIcon;
+                bp.IsClassFeature = false;
+                bp.Stacking = StackingType.Replace;
+            });
 
+            var OracleRevelationSpelBlastAbility = Helpers.CreateBlueprint<BlueprintAbility>("OracleRevelationSpelBlastAbility", bp => {
+                bp.SetName("Spell Blast");
+                bp.SetDescription("As a swift action empower your ray spells for 1 minute, whenever you confirm a critical hit against an opponent with a ranged touch attack spell, " +
+                    "you immediately attempt to bull rush your opponent away from you. You don’t provoke an attack of opportunity for this bull rush attempt.");
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = OracleRevelationSpelBlastBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = false,
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Minutes,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 1
+                            },
+                            DurationSeconds = 0
+                        }
+                        );
+                });
+                bp.m_Icon = BatteringBlastIcon;
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Swift;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+
+            var OracleRevelationSpelBlastFeature = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationSpelBlastFeature", bp => {
+                bp.SetName("Spell Blast");
+                bp.SetDescription("As a swift action empower your ray spells for 1 minute, whenever you confirm a critical hit against an opponent with a ranged touch attack spell, " +
+                    "you immediately attempt to bull rush your opponent away from you. You don’t provoke an attack of opportunity for this bull rush attempt.");
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        OracleRevelationSpelBlastAbility.ToReference<BlueprintUnitFactReference>()
+                    };
+                });
+                bp.AddComponent<PrerequisiteFeaturesFromList>(c => {
+                    c.m_Features = new BlueprintFeatureReference[] {
+                        OracleApocalypseMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        EnlightnedPhilosopherApocalypseMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        DivineHerbalistApocalypseMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        OceansEchoApocalypseMysteryFeature.ToReference<BlueprintFeatureReference>()
+                    };
+                    c.Amount = 1;
+                });
+                bp.Groups = new FeatureGroup[] { FeatureGroup.OracleRevelation };
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+            OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationSpelBlastFeature.ToReference<BlueprintFeatureReference>());
             #endregion
 
             MysteryTools.RegisterMystery(OracleApocalypseMysteryFeature);
