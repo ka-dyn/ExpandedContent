@@ -40,6 +40,11 @@ using Kingmaker.Utility;
 using Kingmaker.Visual.Animation.Kingmaker.Actions;
 using System.Collections.Generic;
 using TabletopTweaks.Core.NewComponents;
+using Kingmaker.UnitLogic.Abilities.Components.Base;
+using static Kingmaker.RuleSystem.Rules.Abilities.RuleApplySpell;
+using Kingmaker.ResourceLinks;
+using Kingmaker.UnitLogic.Buffs.Components;
+using Kingmaker.UnitLogic.Abilities.Components.AreaEffects;
 
 namespace ExpandedContent.Tweaks.Mysteries {
     internal class ApocalypseMystery {
@@ -895,28 +900,974 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = true;
             });
-            #region Defy Elements 
+            #region Defy Elements TESTING
+            var OracleRevelationDefyElementsAcidRank = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationDefyElementsAcidRank", bp => {
+                bp.SetName("Defy Elements - Acid");
+                bp.SetDescription("You gain resistance 5 to the acid energy damage, this can be chosen on future selection of the defy elements " +
+                    "revelation to increase the effect to a maximum resistance of 20.");
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+                bp.Ranks = 4;
+            });
+            var OracleRevelationDefyElementsColdRank = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationDefyElementsColdRank", bp => {
+                bp.SetName("Defy Elements - Cold");
+                bp.SetDescription("You gain resistance 5 to the cold energy damage, this can be chosen on future selection of the defy elements " +
+                    "revelation to increase the effect to a maximum resistance of 20.");
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+                bp.Ranks = 4;
+            });
+            var OracleRevelationDefyElementsFireRank = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationDefyElementsFireRank", bp => {
+                bp.SetName("Defy Elements - Fire");
+                bp.SetDescription("You gain resistance 5 to the fire energy damage, this can be chosen on future selection of the defy elements " +
+                    "revelation to increase the effect to a maximum resistance of 20.");
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+                bp.Ranks = 4;
+            });
+            var OracleRevelationDefyElementsElectricityRank = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationDefyElementsElectricityRank", bp => {
+                bp.SetName("Defy Elements - Electricity");
+                bp.SetDescription("You gain resistance 5 to the electricity energy damage, this can be chosen on future selection of the defy elements " +
+                    "revelation to increase the effect to a maximum resistance of 20.");
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+                bp.Ranks = 4;
+            });
+            var OracleRevelationDefyElementsSonicRank = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationDefyElementsSonicRank", bp => {
+                bp.SetName("Defy Elements - Sonic");
+                bp.SetDescription("You gain resistance 5 to the sonic energy damage, this can be chosen on future selection of the defy elements " +
+                    "revelation to increase the effect to a maximum resistance of 20.");
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+                bp.Ranks = 4;
+            });
+            var OracleRevelationDefyElementsSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("OracleRevelationDefyElementsSelection", bp => {
+                bp.SetName("Defy Elements");
+                bp.SetDescription("Choose one energy type (acid, cold, fire, electricity, or sonic). You gain resistance 5 to the selected energy type. " +
+                    "At 5th level and every 5 levels thereafter, you can choose an additional energy type for which to gain resistance 5, or you can choose a " +
+                    "previously chosen energy type and increase that resistance by 5 (to a maximum resistance of 20 for any one energy type).");
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.Ranks = 5;
+                bp.IsClassFeature = true;
+                bp.AddFeatures(
+                    OracleRevelationDefyElementsAcidRank, 
+                    OracleRevelationDefyElementsColdRank, 
+                    OracleRevelationDefyElementsFireRank, 
+                    OracleRevelationDefyElementsElectricityRank, 
+                    OracleRevelationDefyElementsSonicRank
+                    );
+            });
+
+            var OracleRevelationDefyElementsResistanceFeature = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationDefyElementsResistanceFeature", bp => {
+                bp.SetName("Defy Elements Res Handler");
+                bp.SetDescription("");
+                bp.AddComponent<AddDamageResistanceEnergy>(c => {
+                    c.Type = DamageEnergyType.Acid;
+                    c.Value = 5;
+                    c.UseValueMultiplier = true;
+                    c.ValueMultiplier = new ContextValue() {
+                        ValueType = ContextValueType.Rank,
+                        ValueRank = AbilityRankType.Default
+                    };
+                });
+                bp.AddComponent<AddDamageResistanceEnergy>(c => {
+                    c.Type = DamageEnergyType.Cold;
+                    c.Value = 5;
+                    c.UseValueMultiplier = true;
+                    c.ValueMultiplier = new ContextValue() {
+                        ValueType = ContextValueType.Rank,
+                        ValueRank = AbilityRankType.DamageDice
+                    };
+                });
+                bp.AddComponent<AddDamageResistanceEnergy>(c => {
+                    c.Type = DamageEnergyType.Fire;
+                    c.Value = 5;
+                    c.UseValueMultiplier = true;
+                    c.ValueMultiplier = new ContextValue() {
+                        ValueType = ContextValueType.Rank,
+                        ValueRank = AbilityRankType.DamageDiceAlternative
+                    };
+                });
+                bp.AddComponent<AddDamageResistanceEnergy>(c => {
+                    c.Type = DamageEnergyType.Electricity;
+                    c.Value = 5;
+                    c.UseValueMultiplier = true;
+                    c.ValueMultiplier = new ContextValue() {
+                        ValueType = ContextValueType.Rank,
+                        ValueRank = AbilityRankType.DamageBonus
+                    };
+                });
+                bp.AddComponent<AddDamageResistanceEnergy>(c => {
+                    c.Type = DamageEnergyType.Sonic;
+                    c.Value = 5;
+                    c.UseValueMultiplier = true;
+                    c.ValueMultiplier = new ContextValue() {
+                        ValueType = ContextValueType.Rank,
+                        ValueRank = AbilityRankType.StatBonus
+                    };
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;//Acid
+                    c.m_BaseValueType = ContextRankBaseValueType.FeatureRank;
+                    c.m_Progression = ContextRankProgression.AsIs;
+                    c.m_Feature = OracleRevelationDefyElementsAcidRank.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.DamageDice;//Cold
+                    c.m_BaseValueType = ContextRankBaseValueType.FeatureRank;
+                    c.m_Progression = ContextRankProgression.AsIs;
+                    c.m_Feature = OracleRevelationDefyElementsColdRank.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.DamageDiceAlternative;//Fire
+                    c.m_BaseValueType = ContextRankBaseValueType.FeatureRank;
+                    c.m_Progression = ContextRankProgression.AsIs;
+                    c.m_Feature = OracleRevelationDefyElementsFireRank.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.DamageBonus;//Electricity
+                    c.m_BaseValueType = ContextRankBaseValueType.FeatureRank;
+                    c.m_Progression = ContextRankProgression.AsIs;
+                    c.m_Feature = OracleRevelationDefyElementsElectricityRank.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.StatBonus;//Sonic
+                    c.m_BaseValueType = ContextRankBaseValueType.FeatureRank;
+                    c.m_Progression = ContextRankProgression.AsIs;
+                    c.m_Feature = OracleRevelationDefyElementsSonicRank.ToReference<BlueprintFeatureReference>();
+                });
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.IsClassFeature = true;
+            });
+
+            var OracleRevelationDefyElementsProgression = Helpers.CreateBlueprint<BlueprintProgression>("OracleRevelationDefyElementsProgression", bp => {
+                bp.SetName("Defy Elements");
+                bp.SetDescription("Choose one energy type (acid, cold, fire, electricity, or sonic). You gain resistance 5 to the selected energy type. " +
+                    "At 5th level and every 5 levels thereafter, you can choose an additional energy type for which to gain resistance 5, or you can choose a " +
+                    "previously chosen energy type and increase that resistance by 5 (to a maximum resistance of 20 for any one energy type).");
+                bp.m_Icon = PlantShapeIIIIcon;
+                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    },
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = ArcanistClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    }
+                };
+                bp.m_Archetypes = new BlueprintProgression.ArchetypeWithLevel[] {                    
+                    new BlueprintProgression.ArchetypeWithLevel {
+                        m_Archetype = MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>(),
+                        AdditionalLevel = 0
+                    }
+                };
+                bp.LevelEntries = new LevelEntry[] {
+                    Helpers.LevelEntry(1, OracleRevelationDefyElementsResistanceFeature, OracleRevelationDefyElementsSelection),
+                    Helpers.LevelEntry(5, OracleRevelationDefyElementsSelection),
+                    Helpers.LevelEntry(10, OracleRevelationDefyElementsSelection),
+                    Helpers.LevelEntry(15, OracleRevelationDefyElementsSelection),
+                    Helpers.LevelEntry(20, OracleRevelationDefyElementsSelection)
+                };
+                bp.GiveFeaturesForPreviousLevels = true;
+                bp.AddComponent<PrerequisiteFeaturesFromList>(c => {
+                    c.m_Features = new BlueprintFeatureReference[] {
+                        OracleApocalypseMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        EnlightnedPhilosopherApocalypseMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        DivineHerbalistApocalypseMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        OceansEchoApocalypseMysteryFeature.ToReference<BlueprintFeatureReference>()
+                    };
+                    c.Amount = 1;
+                });
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.Groups = new FeatureGroup[] { FeatureGroup.OracleRevelation };
+                bp.IsClassFeature = true;
+            });
+            OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationDefyElementsProgression.ToReference<BlueprintFeatureReference>());
+            #endregion
+            #region Doomsayer TESTING, cooldown needs to effect player even though abilities only target enemies
+            var ShakenBuff = Resources.GetBlueprint<BlueprintBuff>("25ec6cb6ab1845c48a95f9c20b034220");
+            var OracleRevelationDoomsayerShakenBuff = Helpers.CreateBuff("OracleRevelationDoomsayerShakenBuff", bp => {
+                bp.SetName("Doomsayers Prophecy");
+                bp.SetDescription("This debuff has the same effect as being shaken, with the addition of being able to be extended by the doomsayers actions. " +
+                    "\nShaken" +
+                    "\nA shaken character takes a –2 {g|Encyclopedia:Penalty}penalty{/g} on {g|Encyclopedia:Attack}attack rolls{/g}, {g|Encyclopedia:Saving_Throw}saving throws{/g}, " +
+                    "{g|Encyclopedia:Skills}skill checks{/g}, and {g|Encyclopedia:Ability_Scores}ability checks{/g}. Shaken is a less severe state of fear than " +
+                    "{g|ConditionFrightened}frightened{/g}.");
+                bp.AddComponent<AddCondition>(c => {
+                    c.Condition = Kingmaker.UnitLogic.UnitCondition.Shaken;
+                });
+                bp.AddComponent<SpellDescriptorComponent>(c => {
+                    c.Descriptor = SpellDescriptor.MindAffecting | SpellDescriptor.Fear | SpellDescriptor.Shaken;
+                });
+                bp.m_Icon = ShakenBuff.Icon;
+                bp.IsClassFeature = false;
+                bp.Stacking = StackingType.Replace;
+                bp.FxOnStart = ShakenBuff.FxOnStart;
+            });
+            var OracleRevelationDoomsayerCooldownBuff = Helpers.CreateBuff("OracleRevelationDoomsayerCooldownBuff", bp => {
+                bp.m_AllowNonContextActions = false;
+                bp.SetName("Doomsayer - Once Per Round");
+                bp.SetDescription("");
+                bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
+                bp.Stacking = StackingType.Replace;
+                bp.Frequency = DurationRate.Rounds;
+            });
+            var OracleRevelationDoomsayerAbility = Helpers.CreateBlueprint<BlueprintAbility>("OracleRevelationDoomsayerAbility", bp => {
+                bp.SetName("Doomsayer");
+                bp.SetDescription("As a standard action, you can utter a dire prophecy that strikes fear in enemies within 30 feet, causing them to become shaken until the end of your next round.");
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = OracleRevelationDoomsayerShakenBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = false,
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 2
+                            },
+                            DurationSeconds = 0
+                        },
+                        new ContextActionApplyBuff() {
+                            m_Buff = OracleRevelationDoomsayerCooldownBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = false,
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 1
+                            },
+                            DurationSeconds = 0,
+                            ToCaster = true
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityTargetsAround>(c => {
+                    c.m_Radius = new Feet() { m_Value = 30 };
+                    c.m_TargetType = TargetType.Enemy;
+                    c.m_IncludeDead = false;
+                    c.m_Condition = new ConditionsChecker() {
+                        Conditions = new Condition[] {
+                            new ContextConditionIsCaster() {
+                                Not = true
+                            }
+                        }
+                    };
+                });
+                bp.AddComponent<SpellDescriptorComponent>(c => {
+                    c.Descriptor = SpellDescriptor.MindAffecting | SpellDescriptor.Fear;
+                });
+                bp.AddComponent<CraftInfoComponent>(c => {
+                    c.SavingThrow = CraftSavingThrow.None;
+                    c.AOEType = CraftAOE.AOE;
+                    c.SpellType = CraftSpellType.Debuff;
+                });
+                bp.m_Icon = ShakenBuff.Icon;
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Point;
+                bp.ActionType = UnitCommand.CommandType.Standard;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = Helpers.CreateString("OracleRevelationDoomsayerAbility.Duration", "2 rounds");
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+
+            var OracleRevelationDoomsayerExtendAbility = Helpers.CreateBlueprint<BlueprintAbility>("OracleRevelationDoomsayerExtendAbility", bp => {
+                bp.SetName("Doomsayer - Extend");
+                bp.SetDescription("Continue doomsaying as a move action, extending the effect an additional round on all enemies withing range.");
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new Conditional() {
+                            ConditionsChecker = new ConditionsChecker() {
+                                Operation = Operation.Or,
+                                Conditions = new Condition[] {
+                                    new ContextConditionHasBuffFromCaster() {
+                                        Not = false,
+                                        m_Buff = OracleRevelationDoomsayerShakenBuff.ToReference<BlueprintBuffReference>()
+                                    }
+                                }
+                            },
+                            IfTrue = Helpers.CreateActionList(
+                                new ContextActionReduceBuffDuration() {
+                                    m_TargetBuff = OracleRevelationDoomsayerShakenBuff.ToReference<BlueprintBuffReference>(),
+                                    DurationValue = new ContextDurationValue() {
+                                        Rate = DurationRate.Rounds,
+                                        DiceType = DiceType.Zero,
+                                        DiceCountValue = 0,
+                                        BonusValue = 1,
+                                        m_IsExtendable = true
+                                    },
+                                    Increase = true,
+                                    ToTarget = true
+                                }
+                                ),
+                            IfFalse = Helpers.CreateActionList()
+                        },                        
+                        new ContextActionApplyBuff() {
+                            m_Buff = OracleRevelationDoomsayerCooldownBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = false,
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 1
+                            },
+                            DurationSeconds = 0,
+                            ToCaster = true
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityTargetsAround>(c => {
+                    c.m_Radius = new Feet() { m_Value = 30 };
+                    c.m_TargetType = TargetType.Enemy;
+                    c.m_IncludeDead = false;
+                    c.m_Condition = new ConditionsChecker() {
+                        Conditions = new Condition[] {
+                            new ContextConditionIsCaster() {
+                                Not = true
+                            }
+                        }
+                    };
+                });
+                bp.AddComponent<SpellDescriptorComponent>(c => {
+                    c.Descriptor = SpellDescriptor.MindAffecting | SpellDescriptor.Fear;
+                });
+                bp.AddComponent<CraftInfoComponent>(c => {
+                    c.SavingThrow = CraftSavingThrow.None;
+                    c.AOEType = CraftAOE.AOE;
+                    c.SpellType = CraftSpellType.Debuff;
+                });
+                bp.m_Icon = ShakenBuff.Icon;
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Point;
+                bp.ActionType = UnitCommand.CommandType.Move;
+                bp.AvailableMetamagic = Metamagic.Quicken;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+
+            var OracleRevelationDoomsayerSwiftExtend = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationDoomsayerSwiftExtend", bp => {
+                bp.SetName("OracleRevelationDoomsayerSwiftExtend");
+                bp.SetDescription("");
+                bp.AddComponent<AutoMetamagic>(c => {
+                    c.m_AllowedAbilities = AutoMetamagic.AllowedType.Any;
+                    c.Metamagic = Metamagic.Quicken;
+                    c.Abilities = new List<BlueprintAbilityReference> { OracleRevelationDoomsayerExtendAbility.ToReference<BlueprintAbilityReference>() };
+                });
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.IsClassFeature = true;
+            });
+
+            var OracleRevelationDoomsayerFeature = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationDoomsayerFeature", bp => {
+                bp.SetName("Doomsayer");
+                bp.SetDescription("As a standard action, you can utter a dire prophecy that strikes fear in enemies within 30 feet, causing them to become shaken until the end of your next round. " +
+                    "During a round you have not used this ability, you can continue doomsaying as a move action, extending the effect an additional round on all enemies withing range. " +
+                    "This ability cannot cause a creature to become frightened or panicked, even if the target was already shaken from another effect; and for the purpose of immunities is a mind altering fear effect. " +
+                    "\nAt 15th level you may extend the shaken effect as a swift action instead. " +
+                    "\nYou must be at least 7th level to select this revelation.");
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { 
+                        OracleRevelationDoomsayerAbility.ToReference<BlueprintUnitFactReference>(),
+                        OracleRevelationDoomsayerExtendAbility.ToReference<BlueprintUnitFactReference>()
+                    };
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_AdditionalClasses = new BlueprintCharacterClassReference[] {
+                        ArcanistClass.ToReference<BlueprintCharacterClassReference>(),
+                    };
+                    c.m_Archetypes = new BlueprintArchetypeReference[] {
+                        MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>(),
+                    };
+                    c.Level = 15;
+                    c.m_Feature = OracleRevelationDoomsayerSwiftExtend.ToReference<BlueprintFeatureReference>();
+                    c.BeforeThisLevel = false;
+                });
+                bp.AddComponent<PrerequisiteFeaturesFromList>(c => {
+                    c.m_Features = new BlueprintFeatureReference[] {
+                        OracleApocalypseMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        EnlightnedPhilosopherApocalypseMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        DivineHerbalistApocalypseMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        OceansEchoApocalypseMysteryFeature.ToReference<BlueprintFeatureReference>()
+                    };
+                    c.Amount = 1;
+                });
+                bp.AddComponent<PrerequisiteClassLevel>(c => {
+                    c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Group = Prerequisite.GroupType.Any;
+                    c.Level = 7;
+                });                
+                bp.AddComponent<PrerequisiteArchetypeLevel>(c => {
+                    c.Group = Prerequisite.GroupType.Any;
+                    c.CheckInProgression = false;
+                    c.HideInUI = false;
+                    c.m_CharacterClass = ArcanistClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.Level = 7;
+                });
+                bp.Groups = new FeatureGroup[] { FeatureGroup.OracleRevelation };
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+            OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationDoomsayerFeature.ToReference<BlueprintFeatureReference>());
+            #endregion
+            #region Dust to Dust TESTING
+            var OracleRevelationDustToDustResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("OracleRevelationDustToDustResource", bp => {
+                bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
+                    BaseValue = 0,
+                    IncreasedByLevel = false,
+                    IncreasedByLevelStartPlusDivStep = true,
+                    m_Class = new BlueprintCharacterClassReference[0],
+                    m_ClassDiv = new BlueprintCharacterClassReference[] {
+                        OracleClass.ToReference<BlueprintCharacterClassReference>(),
+                        ArcanistClass.ToReference<BlueprintCharacterClassReference>()
+                    },
+                    m_Archetypes = new BlueprintArchetypeReference[0],
+                    m_ArchetypesDiv = new BlueprintArchetypeReference[] {
+                        MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>()
+                    },
+                    StartingLevel = 1,
+                    LevelStep = 9,
+                    StartingIncrease = 1,
+                    PerStepIncrease = 1,
+                };
+                bp.m_UseMax = true;
+                bp.m_Max = 2;
+            });
+            var OracleRevelationDustToDustAbility = Helpers.CreateBlueprint<BlueprintAbility>("OracleRevelationDustToDustAbility", bp => {
+                bp.SetName("Dust to Dust");
+                bp.SetDescription("Once per day as a standard action, you can cause the weapons around you to shatter in their wielders’ hands. " +
+                    "When you use this ability, attempt a disarm combat maneuver against every creature in a 10-foot radius, using your caster level in place of your base attack bonus " +
+                    "and your Charisma modifier in place of Strength. \nAt 10th level, you can use this ability twice per day.");
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionCombatManeuver() {
+                            Type = CombatManeuver.Disarm,
+                            IgnoreConcealment = true,
+                            OnSuccess = Helpers.CreateActionList(),
+                            ReplaceStat = true,
+                            NewStat = StatType.Charisma,
+                            UseKineticistMainStat = false,
+                            UseCastingStat = false,
+                            UseCasterLevelAsBaseAttack = true,
+                            UseBestMentalStat = false,
+                            BatteringBlast = false
+                        }
+                        );
+                });
+                bp.AddComponent<AbilityTargetsAround>(c => {
+                    c.m_Radius = new Feet() { m_Value = 10 };
+                    c.m_TargetType = TargetType.Enemy;
+                    c.m_IncludeDead = false;
+                    c.m_Condition = new ConditionsChecker() {
+                        Conditions = new Condition[] {
+                            new ContextConditionIsCaster() {
+                                Not = true
+                            }
+                        }
+                    };
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = OracleRevelationDustToDustResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<CraftInfoComponent>(c => {
+                    c.SavingThrow = CraftSavingThrow.None;
+                    c.AOEType = CraftAOE.AOE;
+                    c.SpellType = CraftSpellType.Debuff;
+                });
+                bp.m_Icon = Disarmicon;
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Standard;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+            var OracleRevelationDustToDustFeature = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationDustToDustFeature", bp => {
+                bp.SetName("Dust to Dust");
+                bp.SetDescription("Once per day as a standard action, you can cause the weapons around you to shatter in their wielders’ hands. " +
+                    "When you use this ability, attempt a disarm combat maneuver against every creature in a 10-foot radius, using your caster level in place of your base attack bonus " +
+                    "and your Charisma modifier in place of Strength. \nAt 10th level, you can use this ability twice per day.");
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        OracleRevelationDustToDustAbility.ToReference<BlueprintUnitFactReference>()
+                    };
+                });
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = OracleRevelationDustToDustResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.AddComponent<PrerequisiteFeaturesFromList>(c => {
+                    c.m_Features = new BlueprintFeatureReference[] {
+                        OracleApocalypseMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        EnlightnedPhilosopherApocalypseMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        DivineHerbalistApocalypseMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        OceansEchoApocalypseMysteryFeature.ToReference<BlueprintFeatureReference>()
+                    };
+                    c.Amount = 1;
+                });
+                bp.Groups = new FeatureGroup[] { FeatureGroup.OracleRevelation };
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+            OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationDustToDustFeature.ToReference<BlueprintFeatureReference>());
 
             #endregion
-            #region Destructive Roots 
-
-            #endregion
-            #region Doomsayer 
-
-
-            #endregion
-            #region Dust to Dust 
-
-            #endregion
-
             #region Erosion Touch and Near Death
-
+            var ErosionTouch = Resources.GetBlueprint<BlueprintFeature>("b459fee5bc4b33449bb883b0ac5a01d8").GetComponent<PrerequisiteFeaturesFromList>();
+            ErosionTouch.m_Features = ErosionTouch.m_Features.AppendToArray(OracleApocalypseMysteryFeature.ToReference<BlueprintFeatureReference>());
+            ErosionTouch.m_Features = ErosionTouch.m_Features.AppendToArray(EnlightnedPhilosopherApocalypseMysteryFeature.ToReference<BlueprintFeatureReference>());
+            ErosionTouch.m_Features = ErosionTouch.m_Features.AppendToArray(DivineHerbalistApocalypseMysteryFeature.ToReference<BlueprintFeatureReference>());
+            ErosionTouch.m_Features = ErosionTouch.m_Features.AppendToArray(OceansEchoApocalypseMysteryFeature.ToReference<BlueprintFeatureReference>());
+            var NearDeath = Resources.GetBlueprint<BlueprintFeature>("96649fb9694c1164caf7b836898685aa").GetComponent<PrerequisiteFeaturesFromList>();
+            NearDeath.m_Features = NearDeath.m_Features.AppendToArray(OracleApocalypseMysteryFeature.ToReference<BlueprintFeatureReference>());
+            NearDeath.m_Features = NearDeath.m_Features.AppendToArray(EnlightnedPhilosopherApocalypseMysteryFeature.ToReference<BlueprintFeatureReference>());
+            NearDeath.m_Features = NearDeath.m_Features.AppendToArray(DivineHerbalistApocalypseMysteryFeature.ToReference<BlueprintFeatureReference>());
+            NearDeath.m_Features = NearDeath.m_Features.AppendToArray(OceansEchoApocalypseMysteryFeature.ToReference<BlueprintFeatureReference>());
             #endregion
-            #region Pass the Torch 
+            #region Pass the Torch DO NOY FORGORT TESTTING
+            var OracleRevelationPassTheTorchResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("OracleRevelationPassTheTorchResource", bp => {
+                bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
+                    BaseValue = 1,
+                    IncreasedByLevel = false,
+                    IncreasedByStat = false,
+                    IncreasedByLevelStartPlusDivStep = true,
+                    StartingLevel = 5,
+                    StartingIncrease = 1,
+                    LevelStep = 5,
+                    PerStepIncrease = 1,
+                    m_ClassDiv = new BlueprintCharacterClassReference[] {
+                        OracleClass.ToReference<BlueprintCharacterClassReference>(),
+                        ArcanistClass.ToReference<BlueprintCharacterClassReference>()
+                    },
+                    m_ArchetypesDiv = new BlueprintArchetypeReference[] {
+                        MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>()
+                    }
+                };
+            });
+            var OracleRevelationPassTheTorchRoundToken = Helpers.CreateBuff("OracleRevelationPassTheTorchRoundToken", bp => {
+                bp.SetName("Pass the Torch - Round Token");
+                bp.SetDescription("");
+                bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
+                bp.IsClassFeature = true;
+                bp.Stacking = StackingType.Stack;
+                bp.Ranks = 20;
+            });
+            var OracleRevelationPassTheTorchArea = Helpers.CreateBlueprint<BlueprintAbilityAreaEffect>("OracleRevelationPassTheTorchArea", bp => {
+                bp.AddComponent<AbilityAreaEffectRunAction>(c => {
+                    c.UnitEnter = Helpers.CreateActionList();
+                    c.UnitExit = Helpers.CreateActionList();
+                    c.Round = Helpers.CreateActionList(
+                        new Conditional() {
+                            ConditionsChecker = new ConditionsChecker() {
+                                Operation = Operation.Or,
+                                Conditions = new Condition[] {
+                                    new ContextConditionIsCaster() {
+                                        Not = false
+                                    }
+                                }
+                            },
+                            IfTrue = Helpers.CreateActionList(
+                                new ContextActionDealDamage() {
+                                    m_Type = ContextActionDealDamage.Type.Damage,
+                                    DamageType = new DamageTypeDescription() {
+                                        Type = DamageType.Energy,
+                                        Common = new DamageTypeDescription.CommomData() {
+                                            Reality = 0,
+                                            Alignment = 0,
+                                            Precision = false
+                                        },
+                                        Physical = new DamageTypeDescription.PhysicalData() {
+                                            Material = 0,
+                                            Form = 0,
+                                            Enhancement = 0,
+                                            EnhancementTotal = 0
+                                        },
+                                        Energy = DamageEnergyType.Fire
+                                    },
+                                    Drain = false,
+                                    AbilityType = StatType.Unknown,
+                                    EnergyDrainType = EnergyDrainType.Temporary,
+                                    Duration = new ContextDurationValue() {
+                                        Rate = DurationRate.Rounds,
+                                        DiceType = DiceType.Zero,
+                                        DiceCountValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                        BonusValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                        m_IsExtendable = true,
+                                    },
+                                    PreRolledSharedValue = AbilitySharedValue.Damage,
+                                    Value = new ContextDiceValue() {
+                                        DiceType = DiceType.D4,
+                                        DiceCountValue = 1,
+                                        BonusValue = 0,
+                                    },
+                                    IsAoE = false,
+                                    HalfIfSaved = false,
+                                    UseMinHPAfterDamage = false,
+                                    MinHPAfterDamage = 0,
+                                    ResultSharedValue = AbilitySharedValue.Damage,
+                                    CriticalSharedValue = AbilitySharedValue.Damage
+                                },
+                                new ContextActionApplyBuff() {
+                                    m_Buff = OracleRevelationPassTheTorchRoundToken.ToReference<BlueprintBuffReference>(),
+                                    Permanent = true,
+                                    UseDurationSeconds = false,
+                                    DurationValue = new ContextDurationValue() {
+                                        Rate = DurationRate.Rounds,
+                                        DiceType = DiceType.Zero,
+                                        DiceCountValue = 0,
+                                        BonusValue = 0
+                                    },
+                                    DurationSeconds = 0
+                                }
+                                ),
+                            IfFalse = Helpers.CreateActionList(
+                                new ContextActionDealDamage() {
+                                    m_Type = ContextActionDealDamage.Type.Damage,
+                                    DamageType = new DamageTypeDescription() {
+                                        Type = DamageType.Energy,
+                                        Common = new DamageTypeDescription.CommomData() {
+                                            Reality = 0,
+                                            Alignment = 0,
+                                            Precision = false
+                                        },
+                                        Physical = new DamageTypeDescription.PhysicalData() {
+                                            Material = 0,
+                                            Form = 0,
+                                            Enhancement = 0,
+                                            EnhancementTotal = 0
+                                        },
+                                        Energy = DamageEnergyType.Fire
+                                    },
+                                    Drain = false,
+                                    AbilityType = StatType.Unknown,
+                                    EnergyDrainType = EnergyDrainType.Temporary,
+                                    Duration = new ContextDurationValue() {
+                                        Rate = DurationRate.Rounds,
+                                        DiceType = DiceType.Zero,
+                                        DiceCountValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                        BonusValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                        m_IsExtendable = true,
+                                    },
+                                    PreRolledSharedValue = AbilitySharedValue.Damage,
+                                    Value = new ContextDiceValue() {
+                                        DiceType = DiceType.D6,
+                                        DiceCountValue = 1,
+                                        BonusValue = new ContextValue() {
+                                            ValueType = ContextValueType.Rank,
+                                            ValueRank = AbilityRankType.DamageBonus
+                                        },
+                                    },
+                                    IsAoE = false,
+                                    HalfIfSaved = false,
+                                    UseMinHPAfterDamage = false,
+                                    MinHPAfterDamage = 0,
+                                    ResultSharedValue = AbilitySharedValue.Damage,
+                                    CriticalSharedValue = AbilitySharedValue.Damage
+                                }
+                            )
+                        }
+                        );
+                    c.UnitMove = Helpers.CreateActionList();
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.DamageBonus;
+                    c.m_BaseValueType = ContextRankBaseValueType.CasterBuffRank;
+                    c.m_Buff = OracleRevelationPassTheTorchRoundToken.ToReference<BlueprintBuffReference>();
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.AsIs;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.m_TargetType = BlueprintAbilityAreaEffect.TargetType.Any;
+                bp.m_Tags = AreaEffectTags.DestroyableInCutscene;
+                bp.SpellResistance = false;
+                bp.AffectEnemies = true;
+                bp.AggroEnemies = true;
+                bp.AffectDead = false;
+                bp.IgnoreSleepingUnits = false;
+                bp.Shape = AreaEffectShape.Cylinder;
+                bp.Size = new Feet() { m_Value = 5 };
+                bp.Fx = new PrefabLink() { };
+                bp.CanBeUsedInTacticalCombat = false;
+                bp.m_TickRoundAfterSpawn = false;
+            });
+            var OracleRevelationPassTheTorchBuff = Helpers.CreateBuff("OracleRevelationPassTheTorchBuff", bp => {
+                bp.SetName("Pass the Torch");
+                bp.SetDescription("You take 1d4 points of fire damage when you activate this ability and again at the beginning of your turn until you end the effect. " +
+                    "Any creature that begins the next round adjacent to you takes 1d6 points of fire damage as the fire spreads, plus 1 additional point of " +
+                    "fire damage for each previous round you have had this ability active. For example, adjacent creatures take 1d6+5 points of damage if you " +
+                    "have had this ability active for 5 rounds. You can end this ability early as a free action.");
+                bp.AddComponent<AddAreaEffect>(c => {
+                    c.m_AreaEffect = OracleRevelationPassTheTorchArea.ToReference<BlueprintAbilityAreaEffectReference>();
+                });
+                bp.AddComponent<AddFactContextActions>(c => {
+                    c.Activated = Helpers.CreateActionList();
+                    c.Deactivated = Helpers.CreateActionList(
+                        new ContextActionRemoveBuff() {
+                            m_Buff = OracleRevelationPassTheTorchRoundToken.ToReference<BlueprintBuffReference>()
+                        }
+                        );
+                    c.NewRound = Helpers.CreateActionList();
+                });
+                bp.m_Icon = passthe;
+                bp.IsClassFeature = false;
+                bp.Stacking = StackingType.Replace;
+                bp.FxOnStart = new PrefabLink() { AssetId = "26fa35beb7d89bf4dafb93033941700c" };
+            });
 
-            #endregion
-            #region Power of the Fallen ?????????????? 
 
+            var OracleRevelationPassTheTorchAbility = Helpers.CreateBlueprint<BlueprintAbility>("OracleRevelationPassTheTorchAbility", bp => {
+                bp.SetName("Pass the Torch");
+                bp.SetDescription("Once per day as a swift action, you can channel the energy of the apocalypse into your body, causing you to ignite. " +
+                    "You take 1d4 points of fire damage when you activate this ability and again at the beginning of your turn until you end the effect. " +
+                    "Any creature that begins the next round adjacent to you takes 1d6 points of fire damage as the fire spreads, plus 1 additional point of " +
+                    "fire damage for each previous round you have had this ability active. For example, adjacent creatures take 1d6+5 points of damage if you " +
+                    "have had this ability active for 5 rounds. You can use this ability each time for a number of rounds equal to 1/2 your oracle level, " +
+                    "and you can end this ability as a free action. At 5th level and every 5 levels thereafter, you can use this ability one additional time per day.");
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = OracleRevelationPassTheTorchBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = false,
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Rank,
+                                    ValueRank = AbilityRankType.Default
+                                }
+                            },
+                            DurationSeconds = 0
+                        },
+                        new ContextActionDealDamage() {
+                            m_Type = ContextActionDealDamage.Type.Damage,
+                            DamageType = new DamageTypeDescription() {
+                                Type = DamageType.Energy,
+                                Common = new DamageTypeDescription.CommomData() {
+                                    Reality = 0,
+                                    Alignment = 0,
+                                    Precision = false
+                                },
+                                Physical = new DamageTypeDescription.PhysicalData() {
+                                    Material = 0,
+                                    Form = 0,
+                                    Enhancement = 0,
+                                    EnhancementTotal = 0
+                                },
+                                Energy = DamageEnergyType.Fire
+                            },
+                            Drain = false,
+                            AbilityType = StatType.Unknown,
+                            EnergyDrainType = EnergyDrainType.Temporary,
+                            Duration = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Simple,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage,
+                                    Property = UnitProperty.None
+                                },
+                                m_IsExtendable = true,
+                            },
+                            PreRolledSharedValue = AbilitySharedValue.Damage,
+                            Value = new ContextDiceValue() {
+                                DiceType = DiceType.D4,
+                                DiceCountValue = 1,
+                                BonusValue = 0,
+                            },
+                            IsAoE = false,
+                            HalfIfSaved = false,
+                            UseMinHPAfterDamage = false,
+                            MinHPAfterDamage = 0,
+                            ResultSharedValue = AbilitySharedValue.Damage,
+                            CriticalSharedValue = AbilitySharedValue.Damage
+                        }
+                        //,
+                        //new ContextActionApplyBuff() {
+                        //    m_Buff = OracleRevelationPassTheTorchRoundToken.ToReference<BlueprintBuffReference>(),
+                        //    Permanent = true,
+                        //    UseDurationSeconds = false,
+                        //    DurationValue = new ContextDurationValue() {
+                        //        Rate = DurationRate.Rounds,
+                        //        DiceType = DiceType.Zero,
+                        //        DiceCountValue = 0,
+                        //        BonusValue = 0
+                        //    },
+                        //    DurationSeconds = 0
+                        //}
+                        );
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.SummClassLevelWithArchetype;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.Div2;
+                    c.m_StartLevel = 0;
+                    c.m_StepLevel = 0;
+                    c.m_UseMin = true;
+                    c.m_Min = 1;
+                    c.m_UseMax = false;
+                    c.m_Max = 0;
+                    c.m_Class = new BlueprintCharacterClassReference[] {
+                        OracleClass.ToReference<BlueprintCharacterClassReference>(),
+                        ArcanistClass.ToReference<BlueprintCharacterClassReference>(),
+                    };
+                    c.Archetype = MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>();
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = OracleRevelationPassTheTorchResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.m_Icon = passthetorchicon;
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Swift;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = Helpers.CreateString("OracleRevelationPassTheTorchAbility.Duration", "1 round/2 levels, unless ended by caster");
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+
+            var OracleRevelationPassTheTorchRemoveAbility = Helpers.CreateBlueprint<BlueprintAbility>("OracleRevelationPassTheTorchRemoveAbility", bp => {
+                bp.SetName("Pass the Torch - Early Remove");
+                bp.SetDescription("You may end the effect of pass the torch early by removing the buff as a free action.");
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionRemoveBuff() {
+                            m_Buff = OracleRevelationPassTheTorchBuff.ToReference<BlueprintBuffReference>()
+
+                        }
+                        );
+                });
+                bp.m_Icon = passthetorchicon;
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+
+            var OracleRevelationPassTheTorchFeature = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationPassTheTorchFeature", bp => {
+                bp.SetName("Pass the Torch");
+                bp.SetDescription("Once per day as a swift action, you can channel the energy of the apocalypse into your body, causing you to ignite. " +
+                    "You take 1d4 points of fire damage when you activate this ability and again at the beginning of your turn until you end the effect. " +
+                    "Any creature that begins the next round adjacent to you takes 1d6 points of fire damage as the fire spreads, plus 1 additional point of " +
+                    "fire damage for each previous round you have had this ability active. For example, adjacent creatures take 1d6+5 points of damage if you " +
+                    "have had this ability active for 5 rounds. You can use this ability each time for a number of rounds equal to 1/2 your oracle level, " +
+                    "and you can end this ability as a free action. At 5th level and every 5 levels thereafter, you can use this ability one additional time per day.");
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        OracleRevelationPassTheTorchAbility.ToReference<BlueprintUnitFactReference>(),
+                        OracleRevelationPassTheTorchRemoveAbility.ToReference<BlueprintUnitFactReference>()
+                    };
+                });
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = OracleRevelationPassTheTorchResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.AddComponent<PrerequisiteFeaturesFromList>(c => {
+                    c.m_Features = new BlueprintFeatureReference[] {
+                        OracleApocalypseMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        EnlightnedPhilosopherApocalypseMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        DivineHerbalistApocalypseMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        OceansEchoApocalypseMysteryFeature.ToReference<BlueprintFeatureReference>()
+                    };
+                    c.Amount = 1;
+                });
+                bp.Groups = new FeatureGroup[] { FeatureGroup.OracleRevelation };
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+            OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationPassTheTorchFeature.ToReference<BlueprintFeatureReference>());
             #endregion
             #region Spell Blast  
 

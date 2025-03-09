@@ -402,7 +402,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.GiveFeaturesForPreviousLevels = true;
             });
 
-            //WoodArmor
+            #region WoodArmor
             var OracleRevelationWoodArmorResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("OracleRevelationWoodArmorResource", bp => {
                 bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
                     BaseValue = 0,
@@ -715,7 +715,9 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.IsClassFeature = true;
             });
             OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationWoodArmorFeature.ToReference<BlueprintFeatureReference>());
-            //WoodBond
+            #endregion
+
+            #region WoodBond
             var OracleRevelationWoodBondFeature = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationWoodBondFeature", bp => {
                 bp.SetName("Wood Bond");
                 bp.SetDescription("Your mystical bond with wood is such that your weapons become an extension of your body. You gain a +1 competence bonus on attack rolls when " +
@@ -776,7 +778,8 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.IsClassFeature = true;
             });
             OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationWoodBondFeature.ToReference<BlueprintFeatureReference>());
-            //TreeForm
+            #endregion
+            #region TreeForm
             var PlantShapeIIcon = AssetLoader.LoadInternal("Skills", "Icon_PlantShapeI.jpg");
             var PlantShapeIIIcon = AssetLoader.LoadInternal("Skills", "Icon_PlantShapeII.jpg");
             var PlantShapeIIIIcon = AssetLoader.LoadInternal("Skills", "Icon_PlantShapeIII.jpg");
@@ -1336,7 +1339,8 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.IsClassFeature = true;
             });
             OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationTreeFormProgression.ToReference<BlueprintFeatureReference>());
-            //WoodenWeaponEnchant
+            #endregion
+            #region WoodenWeaponEnchant
             var MasterWork = Resources.GetBlueprint<BlueprintWeaponEnchantment>("6b38844e2bffbac48b63036b66e735be");
             var Enhancement1 = Resources.GetBlueprint<BlueprintWeaponEnchantment>("d42fc23b92c640846ac137dc26e000d4");
             var Enhancement2 = Resources.GetBlueprint<BlueprintWeaponEnchantment>("eb2faccc4c9487d43b3575d7e77ff3f5");
@@ -2080,7 +2084,8 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.IsClassFeature = true;
             });
             OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationWoodenWeaponEnchantFeature.ToReference<BlueprintFeatureReference>());
-            //Lignification = Maybe patch the UnitCondition thing to stop animations
+            #endregion
+            #region Lignification = Maybe patch the UnitCondition thing to stop animations
             var Incorporeal = Resources.GetBlueprint<BlueprintFeature>("c4a7f98d743bc784c9d4cf2105852c39");
             var SubtypeElemental = Resources.GetBlueprint<BlueprintFeature>("198fd8924dabcb5478d0f78bd453c586");
             var ConstructType = Resources.GetBlueprint<BlueprintFeature>("fd389783027d63343b4a5634bd81645f");
@@ -2211,7 +2216,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.CanTargetEnemies = true;
                 bp.CanTargetFriends = true;
                 bp.CanTargetSelf = false;
-                bp.SpellResistance = true;
+                bp.SpellResistance = false;
                 bp.EffectOnAlly = AbilityEffectOnUnit.None;
                 bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
@@ -2263,7 +2268,8 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.IsClassFeature = true;
             });
             OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationLignificationFeature.ToReference<BlueprintFeatureReference>());
-            //ThornBurst
+            #endregion
+            #region ThornBurst
             var OracleRevelationThornBurstResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("OracleRevelationThornBurstResource", bp => {
                 bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
                     BaseValue = 1,
@@ -2461,6 +2467,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.IsClassFeature = true;
             });
             OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationThornBurstFeature.ToReference<BlueprintFeatureReference>());
+            #endregion
             //Ravener Hunter Cont.
             var RavenerHunterWoodRevelationSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("RavenerHunterWoodRevelationSelection", bp => {
                 bp.SetName("Wood Revelation");
