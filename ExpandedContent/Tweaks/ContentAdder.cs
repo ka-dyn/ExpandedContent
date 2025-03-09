@@ -231,6 +231,7 @@ namespace ExpandedContent.Tweaks {
                 Mysteries.ShadowMystery.AddShadowMystery();
                 Mysteries.DarkTapestryMystery.AddDarkTapestryMystery();
                 Mysteries.MetalMystery.AddMetalMystery();
+                Mysteries.ApocalypseMystery.AddApocalypseMystery();
 
                 Spirits.HeavensSpirit.AddHeavensSprit();
 

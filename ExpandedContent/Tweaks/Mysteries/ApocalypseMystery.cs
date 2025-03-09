@@ -62,7 +62,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
             var SummonNaturesAllyIISpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("298148133cdc3fd42889b99c82711986");
             var ExplosiveRunesSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("ff652882623d43f184eb6abef741e20e");
             var IceStormSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("fcb028205a71ee64d98175ff39a0abf9");
-            var TidalSurgeSpell = Resources.GetModBlueprint<BlueprintAbility>("50bdf209dede4ce1acc722d5fdfcf53c");
+            var TidalSurgeSpell = Resources.GetBlueprint<BlueprintAbility>("50bdf209dede4ce1acc722d5fdfcf53c");
             var CircleOfDeathSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("a89dcbbab8f40e44e920cc60636097cf");
             var IncendiaryCloudAbility = Resources.GetModBlueprint<BlueprintAbility>("IncendiaryCloudAbility");
             var MomentOfPrescienceAbility = Resources.GetModBlueprint<BlueprintAbility>("MomentOfPrescienceAbility");
@@ -250,7 +250,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     "by your attack as the bestow curse spell, except the target doesn’t receive a Will saving throw to negate the effects and spell resistance does " +
                     "not apply against this ability." +
                     "\r\nCurse of Feeble Body — The subject suffers a –6 {g|Encyclopedia:Penalty}penalty{/g} to {g|Encyclopedia:Constitution}Constitution{/g} score.");
-                bp.m_Icon = WaterfallStyleIcon;
+                bp.m_Icon = ApocalypseMysteryIcon;
                 bp.AddComponent<CombatStateTrigger>(c => {
                     c.CombatStartActions = Helpers.CreateActionList();
                     c.CombatEndActions = Helpers.CreateActionList( new ContextActionRemoveSelf() );
@@ -315,7 +315,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     "by your attack as the bestow curse spell, except the target doesn’t receive a Will saving throw to negate the effects and spell resistance does " +
                     "not apply against this ability." +
                     "\r\nCurse of Weakness — The subject suffers a –6 penalty to {g|Encyclopedia:Strength}Strength{/g} and {g|Encyclopedia:Dexterity}Dexterity{/g} scores.");
-                bp.m_Icon = WaterfallStyleIcon;
+                bp.m_Icon = ApocalypseMysteryIcon;
                 bp.AddComponent<CombatStateTrigger>(c => {
                     c.CombatStartActions = Helpers.CreateActionList();
                     c.CombatEndActions = Helpers.CreateActionList(new ContextActionRemoveSelf());
@@ -381,7 +381,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     "not apply against this ability." +
                     "\r\nCurse of Idiocy — The subject suffers a –6 penalty to {g|Encyclopedia:Intelligence}Intelligence{/g}, {g|Encyclopedia:Wisdom}Wisdom{/g}, " +
                     "and {g|Encyclopedia:Charisma}Charisma{/g} scores.");
-                bp.m_Icon = WaterfallStyleIcon;
+                bp.m_Icon = ApocalypseMysteryIcon;
                 bp.AddComponent<CombatStateTrigger>(c => {
                     c.CombatStartActions = Helpers.CreateActionList();
                     c.CombatEndActions = Helpers.CreateActionList(new ContextActionRemoveSelf());
@@ -447,7 +447,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     "not apply against this ability." +
                     "\r\nCurse of Idiocy — The subject suffers a –6 penalty to {g|Encyclopedia:Intelligence}Intelligence{/g}, {g|Encyclopedia:Wisdom}Wisdom{/g}, " +
                     "and {g|Encyclopedia:Charisma}Charisma{/g} scores.");
-                bp.m_Icon = WaterfallStyleIcon;
+                bp.m_Icon = ApocalypseMysteryIcon;
                 bp.AddComponent<CombatStateTrigger>(c => {
                     c.CombatStartActions = Helpers.CreateActionList();
                     c.CombatEndActions = Helpers.CreateActionList(new ContextActionRemoveSelf());
@@ -524,7 +524,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     c.m_CheckedFacts = new BlueprintUnitFactReference[] { OracleApocalypseLazyCombatBuff.ToReference<BlueprintUnitFactReference>() };
                     c.Inverted = false;
                 });
-                bp.m_Icon = WaveStyleIcon;
+                bp.m_Icon = ApocalypseMysteryIcon;
                 bp.m_AllowNonContextActions = false;
                 bp.Type = AbilityType.Supernatural;
                 bp.Range = AbilityRange.Personal;
@@ -545,7 +545,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     "by your attack as the bestow curse spell, except the target doesn’t receive a Will saving throw to negate the effects and spell resistance does " +
                     "not apply against this ability." +
                     "\r\nCurse of Feeble Body — The subject suffers a –6 {g|Encyclopedia:Penalty}penalty{/g} to {g|Encyclopedia:Constitution}Constitution{/g} score.");
-                bp.m_Icon = WaveStyleIcon;
+                bp.m_Icon = ApocalypseMysteryIcon;
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.SavingThrowType = SavingThrowType.Unknown;
                     c.Actions = Helpers.CreateActionList(
@@ -592,7 +592,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     "by your attack as the bestow curse spell, except the target doesn’t receive a Will saving throw to negate the effects and spell resistance does " +
                     "not apply against this ability." +
                     "\r\nCurse of Weakness — The subject suffers a –6 penalty to {g|Encyclopedia:Strength}Strength{/g} and {g|Encyclopedia:Dexterity}Dexterity{/g} scores.");
-                bp.m_Icon = WaveStyleIcon;
+                bp.m_Icon = ApocalypseMysteryIcon;
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.SavingThrowType = SavingThrowType.Unknown;
                     c.Actions = Helpers.CreateActionList(
@@ -640,7 +640,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     "not apply against this ability." +
                     "\r\nCurse of Idiocy — The subject suffers a –6 penalty to {g|Encyclopedia:Intelligence}Intelligence{/g}, {g|Encyclopedia:Wisdom}Wisdom{/g}, " +
                     "and {g|Encyclopedia:Charisma}Charisma{/g} scores.");
-                bp.m_Icon = WaveStyleIcon;
+                bp.m_Icon = ApocalypseMysteryIcon;
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.SavingThrowType = SavingThrowType.Unknown;
                     c.Actions = Helpers.CreateActionList(
@@ -688,7 +688,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     "not apply against this ability." +
                     "\r\nCurse of Idiocy — The subject suffers a –6 penalty to {g|Encyclopedia:Intelligence}Intelligence{/g}, {g|Encyclopedia:Wisdom}Wisdom{/g}, " +
                     "and {g|Encyclopedia:Charisma}Charisma{/g} scores.");
-                bp.m_Icon = WaveStyleIcon;
+                bp.m_Icon = ApocalypseMysteryIcon;
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.SavingThrowType = SavingThrowType.Unknown;
                     c.Actions = Helpers.CreateActionList(
@@ -1048,7 +1048,6 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.SetDescription("Choose one energy type (acid, cold, fire, electricity, or sonic). You gain resistance 5 to the selected energy type. " +
                     "At 5th level and every 5 levels thereafter, you can choose an additional energy type for which to gain resistance 5, or you can choose a " +
                     "previously chosen energy type and increase that resistance by 5 (to a maximum resistance of 20 for any one energy type).");
-                bp.m_Icon = PlantShapeIIIIcon;
                 bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
                     new BlueprintProgression.ClassWithLevel {
                         m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>(),
@@ -1122,47 +1121,71 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.SavingThrowType = SavingThrowType.Unknown;
                     c.Actions = Helpers.CreateActionList(
-                        new ContextActionApplyBuff() {
-                            m_Buff = OracleRevelationDoomsayerShakenBuff.ToReference<BlueprintBuffReference>(),
-                            Permanent = false,
-                            UseDurationSeconds = false,
-                            DurationValue = new ContextDurationValue() {
-                                Rate = DurationRate.Rounds,
-                                DiceType = DiceType.Zero,
-                                DiceCountValue = 0,
-                                BonusValue = 2
+                        new Conditional() {
+                            ConditionsChecker = new ConditionsChecker() {
+                                Operation = Operation.Or,
+                                Conditions = new Condition[] {
+                                    new ContextConditionIsCaster() {
+                                        Not = false
+                                    }
+                                }
                             },
-                            DurationSeconds = 0
-                        },
-                        new ContextActionApplyBuff() {
-                            m_Buff = OracleRevelationDoomsayerCooldownBuff.ToReference<BlueprintBuffReference>(),
-                            Permanent = false,
-                            UseDurationSeconds = false,
-                            DurationValue = new ContextDurationValue() {
-                                Rate = DurationRate.Rounds,
-                                DiceType = DiceType.Zero,
-                                DiceCountValue = 0,
-                                BonusValue = 1
-                            },
-                            DurationSeconds = 0,
-                            ToCaster = true
-                        }
+                            IfTrue = Helpers.CreateActionList(
+                                new ContextActionApplyBuff() {
+                                    m_Buff = OracleRevelationDoomsayerCooldownBuff.ToReference<BlueprintBuffReference>(),
+                                    Permanent = false,
+                                    UseDurationSeconds = false,
+                                    DurationValue = new ContextDurationValue() {
+                                        Rate = DurationRate.Rounds,
+                                        DiceType = DiceType.Zero,
+                                        DiceCountValue = 0,
+                                        BonusValue = 1
+                                    },
+                                    DurationSeconds = 0,
+                                    ToCaster = true
+                                }
+                                ),
+                            IfFalse = Helpers.CreateActionList(
+                                new Conditional() {
+                                    ConditionsChecker = new ConditionsChecker() {
+                                        Operation = Operation.Or,
+                                        Conditions = new Condition[] {
+                                            new ContextConditionIsEnemy() {
+                                                Not = false
+                                            }
+                                        }
+                                    },
+                                    IfTrue = Helpers.CreateActionList(
+                                        new ContextActionApplyBuff() {
+                                            m_Buff = OracleRevelationDoomsayerShakenBuff.ToReference<BlueprintBuffReference>(),
+                                            Permanent = false,
+                                            UseDurationSeconds = false,
+                                            DurationValue = new ContextDurationValue() {
+                                                Rate = DurationRate.Rounds,
+                                                DiceType = DiceType.Zero,
+                                                DiceCountValue = 0,
+                                                BonusValue = 2
+                                            },
+                                            DurationSeconds = 0
+                                        }
+                                        ),
+                                    IfFalse = Helpers.CreateActionList()
+                                }
+                                )
+                        }                        
                         );
                 });
                 bp.AddComponent<AbilityTargetsAround>(c => {
                     c.m_Radius = new Feet() { m_Value = 30 };
-                    c.m_TargetType = TargetType.Enemy;
+                    c.m_TargetType = TargetType.Any;
                     c.m_IncludeDead = false;
-                    c.m_Condition = new ConditionsChecker() {
-                        Conditions = new Condition[] {
-                            new ContextConditionIsCaster() {
-                                Not = true
-                            }
-                        }
-                    };
+                    c.m_Condition = new ConditionsChecker() { };
                 });
                 bp.AddComponent<SpellDescriptorComponent>(c => {
                     c.Descriptor = SpellDescriptor.MindAffecting | SpellDescriptor.Fear;
+                });
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { OracleRevelationDoomsayerCooldownBuff.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<CraftInfoComponent>(c => {
                     c.SavingThrow = CraftSavingThrow.None;
@@ -1235,18 +1258,12 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 });
                 bp.AddComponent<AbilityTargetsAround>(c => {
                     c.m_Radius = new Feet() { m_Value = 30 };
-                    c.m_TargetType = TargetType.Enemy;
+                    c.m_TargetType = TargetType.Any;
                     c.m_IncludeDead = false;
-                    c.m_Condition = new ConditionsChecker() {
-                        Conditions = new Condition[] {
-                            new ContextConditionIsCaster() {
-                                Not = true
-                            }
-                        }
-                    };
+                    c.m_Condition = new ConditionsChecker() {};
                 });
-                bp.AddComponent<SpellDescriptorComponent>(c => {
-                    c.Descriptor = SpellDescriptor.MindAffecting | SpellDescriptor.Fear;
+                bp.AddComponent<AbilityCasterHasNoFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { OracleRevelationDoomsayerCooldownBuff.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<CraftInfoComponent>(c => {
                     c.SavingThrow = CraftSavingThrow.None;
@@ -1336,7 +1353,8 @@ namespace ExpandedContent.Tweaks.Mysteries {
             });
             OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationDoomsayerFeature.ToReference<BlueprintFeatureReference>());
             #endregion
-            #region Dust to Dust TESTING
+            #region Dust to Dust
+            var StaggeredIcon = Resources.GetBlueprint<BlueprintBuff>("df3950af5a783bd4d91ab73eb8fa0fd3").Icon;
             var OracleRevelationDustToDustResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("OracleRevelationDustToDustResource", bp => {
                 bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
                     BaseValue = 0,
@@ -1402,7 +1420,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     c.AOEType = CraftAOE.AOE;
                     c.SpellType = CraftSpellType.Debuff;
                 });
-                bp.m_Icon = Disarmicon;
+                bp.m_Icon = StaggeredIcon;
                 bp.Type = AbilityType.Supernatural;
                 bp.Range = AbilityRange.Personal;
                 bp.CanTargetPoint = false;
@@ -1461,6 +1479,8 @@ namespace ExpandedContent.Tweaks.Mysteries {
             NearDeath.m_Features = NearDeath.m_Features.AppendToArray(OceansEchoApocalypseMysteryFeature.ToReference<BlueprintFeatureReference>());
             #endregion
             #region Pass the Torch DO NOY FORGORT TESTTING
+            var FirebellyIcon = Resources.GetBlueprint<BlueprintAbility>("b065231094a21d14dbf1c3832f776871").Icon;
+
             var OracleRevelationPassTheTorchResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("OracleRevelationPassTheTorchResource", bp => {
                 bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
                     BaseValue = 1,
@@ -1483,7 +1503,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
             var OracleRevelationPassTheTorchRoundToken = Helpers.CreateBuff("OracleRevelationPassTheTorchRoundToken", bp => {
                 bp.SetName("Pass the Torch - Round Token");
                 bp.SetDescription("");
-                bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
+                //bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
                 bp.IsClassFeature = true;
                 bp.Stacking = StackingType.Stack;
                 bp.Ranks = 20;
@@ -1497,135 +1517,150 @@ namespace ExpandedContent.Tweaks.Mysteries {
                             ConditionsChecker = new ConditionsChecker() {
                                 Operation = Operation.Or,
                                 Conditions = new Condition[] {
-                                    new ContextConditionIsCaster() {
+                                    new ContextConditionCasterHasFact() {
+                                        m_Fact = OracleRevelationPassTheTorchRoundToken.ToReference<BlueprintUnitFactReference>(),
                                         Not = false
                                     }
                                 }
                             },
                             IfTrue = Helpers.CreateActionList(
-                                new ContextActionDealDamage() {
-                                    m_Type = ContextActionDealDamage.Type.Damage,
-                                    DamageType = new DamageTypeDescription() {
-                                        Type = DamageType.Energy,
-                                        Common = new DamageTypeDescription.CommomData() {
-                                            Reality = 0,
-                                            Alignment = 0,
-                                            Precision = false
-                                        },
-                                        Physical = new DamageTypeDescription.PhysicalData() {
-                                            Material = 0,
-                                            Form = 0,
-                                            Enhancement = 0,
-                                            EnhancementTotal = 0
-                                        },
-                                        Energy = DamageEnergyType.Fire
+                                new Conditional() {
+                                    ConditionsChecker = new ConditionsChecker() {
+                                        Operation = Operation.Or,
+                                        Conditions = new Condition[] {
+                                            new ContextConditionIsCaster() {
+                                                Not = false
+                                            }
+                                        }
                                     },
-                                    Drain = false,
-                                    AbilityType = StatType.Unknown,
-                                    EnergyDrainType = EnergyDrainType.Temporary,
-                                    Duration = new ContextDurationValue() {
-                                        Rate = DurationRate.Rounds,
-                                        DiceType = DiceType.Zero,
-                                        DiceCountValue = new ContextValue() {
-                                            ValueType = ContextValueType.Simple,
-                                            Value = 0,
-                                            ValueRank = AbilityRankType.Default,
-                                            ValueShared = AbilitySharedValue.Damage,
-                                            Property = UnitProperty.None
+                                    IfTrue = Helpers.CreateActionList(
+                                        new ContextActionDealDamage() {
+                                            m_Type = ContextActionDealDamage.Type.Damage,
+                                            DamageType = new DamageTypeDescription() {
+                                                Type = DamageType.Energy,
+                                                Common = new DamageTypeDescription.CommomData() {
+                                                    Reality = 0,
+                                                    Alignment = 0,
+                                                    Precision = false
+                                                },
+                                                Physical = new DamageTypeDescription.PhysicalData() {
+                                                    Material = 0,
+                                                    Form = 0,
+                                                    Enhancement = 0,
+                                                    EnhancementTotal = 0
+                                                },
+                                                Energy = DamageEnergyType.Fire
+                                            },
+                                            Drain = false,
+                                            AbilityType = StatType.Unknown,
+                                            EnergyDrainType = EnergyDrainType.Temporary,
+                                            Duration = new ContextDurationValue() {
+                                                Rate = DurationRate.Rounds,
+                                                DiceType = DiceType.Zero,
+                                                DiceCountValue = new ContextValue() {
+                                                    ValueType = ContextValueType.Simple,
+                                                    Value = 0,
+                                                    ValueRank = AbilityRankType.Default,
+                                                    ValueShared = AbilitySharedValue.Damage,
+                                                    Property = UnitProperty.None
+                                                },
+                                                BonusValue = new ContextValue() {
+                                                    ValueType = ContextValueType.Simple,
+                                                    Value = 0,
+                                                    ValueRank = AbilityRankType.Default,
+                                                    ValueShared = AbilitySharedValue.Damage,
+                                                    Property = UnitProperty.None
+                                                },
+                                                m_IsExtendable = true,
+                                            },
+                                            PreRolledSharedValue = AbilitySharedValue.Damage,
+                                            Value = new ContextDiceValue() {
+                                                DiceType = DiceType.D4,
+                                                DiceCountValue = 1,
+                                                BonusValue = 0,
+                                            },
+                                            IsAoE = false,
+                                            HalfIfSaved = false,
+                                            UseMinHPAfterDamage = false,
+                                            MinHPAfterDamage = 0,
+                                            ResultSharedValue = AbilitySharedValue.Damage,
+                                            CriticalSharedValue = AbilitySharedValue.Damage
                                         },
-                                        BonusValue = new ContextValue() {
-                                            ValueType = ContextValueType.Simple,
-                                            Value = 0,
-                                            ValueRank = AbilityRankType.Default,
-                                            ValueShared = AbilitySharedValue.Damage,
-                                            Property = UnitProperty.None
-                                        },
-                                        m_IsExtendable = true,
-                                    },
-                                    PreRolledSharedValue = AbilitySharedValue.Damage,
-                                    Value = new ContextDiceValue() {
-                                        DiceType = DiceType.D4,
-                                        DiceCountValue = 1,
-                                        BonusValue = 0,
-                                    },
-                                    IsAoE = false,
-                                    HalfIfSaved = false,
-                                    UseMinHPAfterDamage = false,
-                                    MinHPAfterDamage = 0,
-                                    ResultSharedValue = AbilitySharedValue.Damage,
-                                    CriticalSharedValue = AbilitySharedValue.Damage
-                                },
-                                new ContextActionApplyBuff() {
-                                    m_Buff = OracleRevelationPassTheTorchRoundToken.ToReference<BlueprintBuffReference>(),
-                                    Permanent = true,
-                                    UseDurationSeconds = false,
-                                    DurationValue = new ContextDurationValue() {
-                                        Rate = DurationRate.Rounds,
-                                        DiceType = DiceType.Zero,
-                                        DiceCountValue = 0,
-                                        BonusValue = 0
-                                    },
-                                    DurationSeconds = 0
+                                        new ContextActionApplyBuff() {
+                                            m_Buff = OracleRevelationPassTheTorchRoundToken.ToReference<BlueprintBuffReference>(),
+                                            Permanent = true,
+                                            UseDurationSeconds = false,
+                                            DurationValue = new ContextDurationValue() {
+                                                Rate = DurationRate.Rounds,
+                                                DiceType = DiceType.Zero,
+                                                DiceCountValue = 0,
+                                                BonusValue = 0
+                                            },
+                                            DurationSeconds = 0,
+                                            IsNotDispelable = true
+                                        }
+                                        ),
+                                    IfFalse = Helpers.CreateActionList(
+                                        new ContextActionDealDamage() {
+                                            m_Type = ContextActionDealDamage.Type.Damage,
+                                            DamageType = new DamageTypeDescription() {
+                                                Type = DamageType.Energy,
+                                                Common = new DamageTypeDescription.CommomData() {
+                                                    Reality = 0,
+                                                    Alignment = 0,
+                                                    Precision = false
+                                                },
+                                                Physical = new DamageTypeDescription.PhysicalData() {
+                                                    Material = 0,
+                                                    Form = 0,
+                                                    Enhancement = 0,
+                                                    EnhancementTotal = 0
+                                                },
+                                                Energy = DamageEnergyType.Fire
+                                            },
+                                            Drain = false,
+                                            AbilityType = StatType.Unknown,
+                                            EnergyDrainType = EnergyDrainType.Temporary,
+                                            Duration = new ContextDurationValue() {
+                                                Rate = DurationRate.Rounds,
+                                                DiceType = DiceType.Zero,
+                                                DiceCountValue = new ContextValue() {
+                                                    ValueType = ContextValueType.Simple,
+                                                    Value = 0,
+                                                    ValueRank = AbilityRankType.Default,
+                                                    ValueShared = AbilitySharedValue.Damage,
+                                                    Property = UnitProperty.None
+                                                },
+                                                BonusValue = new ContextValue() {
+                                                    ValueType = ContextValueType.Simple,
+                                                    Value = 0,
+                                                    ValueRank = AbilityRankType.Default,
+                                                    ValueShared = AbilitySharedValue.Damage,
+                                                    Property = UnitProperty.None
+                                                },
+                                                m_IsExtendable = true,
+                                            },
+                                            PreRolledSharedValue = AbilitySharedValue.Damage,
+                                            Value = new ContextDiceValue() {
+                                                DiceType = DiceType.D6,
+                                                DiceCountValue = 1,
+                                                BonusValue = new ContextValue() {
+                                                    ValueType = ContextValueType.Rank,
+                                                    ValueRank = AbilityRankType.DamageBonus
+                                                },
+                                            },
+                                            IsAoE = false,
+                                            HalfIfSaved = false,
+                                            UseMinHPAfterDamage = false,
+                                            MinHPAfterDamage = 0,
+                                            ResultSharedValue = AbilitySharedValue.Damage,
+                                            CriticalSharedValue = AbilitySharedValue.Damage
+                                        }
+                                    )
                                 }
                                 ),
-                            IfFalse = Helpers.CreateActionList(
-                                new ContextActionDealDamage() {
-                                    m_Type = ContextActionDealDamage.Type.Damage,
-                                    DamageType = new DamageTypeDescription() {
-                                        Type = DamageType.Energy,
-                                        Common = new DamageTypeDescription.CommomData() {
-                                            Reality = 0,
-                                            Alignment = 0,
-                                            Precision = false
-                                        },
-                                        Physical = new DamageTypeDescription.PhysicalData() {
-                                            Material = 0,
-                                            Form = 0,
-                                            Enhancement = 0,
-                                            EnhancementTotal = 0
-                                        },
-                                        Energy = DamageEnergyType.Fire
-                                    },
-                                    Drain = false,
-                                    AbilityType = StatType.Unknown,
-                                    EnergyDrainType = EnergyDrainType.Temporary,
-                                    Duration = new ContextDurationValue() {
-                                        Rate = DurationRate.Rounds,
-                                        DiceType = DiceType.Zero,
-                                        DiceCountValue = new ContextValue() {
-                                            ValueType = ContextValueType.Simple,
-                                            Value = 0,
-                                            ValueRank = AbilityRankType.Default,
-                                            ValueShared = AbilitySharedValue.Damage,
-                                            Property = UnitProperty.None
-                                        },
-                                        BonusValue = new ContextValue() {
-                                            ValueType = ContextValueType.Simple,
-                                            Value = 0,
-                                            ValueRank = AbilityRankType.Default,
-                                            ValueShared = AbilitySharedValue.Damage,
-                                            Property = UnitProperty.None
-                                        },
-                                        m_IsExtendable = true,
-                                    },
-                                    PreRolledSharedValue = AbilitySharedValue.Damage,
-                                    Value = new ContextDiceValue() {
-                                        DiceType = DiceType.D6,
-                                        DiceCountValue = 1,
-                                        BonusValue = new ContextValue() {
-                                            ValueType = ContextValueType.Rank,
-                                            ValueRank = AbilityRankType.DamageBonus
-                                        },
-                                    },
-                                    IsAoE = false,
-                                    HalfIfSaved = false,
-                                    UseMinHPAfterDamage = false,
-                                    MinHPAfterDamage = 0,
-                                    ResultSharedValue = AbilitySharedValue.Damage,
-                                    CriticalSharedValue = AbilitySharedValue.Damage
-                                }
-                            )
-                        }
+                            IfFalse = Helpers.CreateActionList()
+                        }                        
                         );
                     c.UnitMove = Helpers.CreateActionList();
                 });
@@ -1669,7 +1704,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                         );
                     c.NewRound = Helpers.CreateActionList();
                 });
-                bp.m_Icon = passthe;
+                bp.m_Icon = FirebellyIcon;
                 bp.IsClassFeature = false;
                 bp.Stacking = StackingType.Replace;
                 bp.FxOnStart = new PrefabLink() { AssetId = "26fa35beb7d89bf4dafb93033941700c" };
@@ -1754,19 +1789,19 @@ namespace ExpandedContent.Tweaks.Mysteries {
                             ResultSharedValue = AbilitySharedValue.Damage,
                             CriticalSharedValue = AbilitySharedValue.Damage
                         }
-                        //,
-                        //new ContextActionApplyBuff() {
-                        //    m_Buff = OracleRevelationPassTheTorchRoundToken.ToReference<BlueprintBuffReference>(),
-                        //    Permanent = true,
-                        //    UseDurationSeconds = false,
-                        //    DurationValue = new ContextDurationValue() {
-                        //        Rate = DurationRate.Rounds,
-                        //        DiceType = DiceType.Zero,
-                        //        DiceCountValue = 0,
-                        //        BonusValue = 0
-                        //    },
-                        //    DurationSeconds = 0
-                        //}
+                        ,
+                        new ContextActionApplyBuff() {
+                            m_Buff = OracleRevelationPassTheTorchRoundToken.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 0
+                            },
+                            DurationSeconds = 0
+                        }
                         );
                 });
                 bp.AddComponent<ContextRankConfig>(c => {
@@ -1791,7 +1826,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     c.m_RequiredResource = OracleRevelationPassTheTorchResource.ToReference<BlueprintAbilityResourceReference>();
                     c.m_IsSpendResource = true;
                 });
-                bp.m_Icon = passthetorchicon;
+                bp.m_Icon = FirebellyIcon;
                 bp.Type = AbilityType.Supernatural;
                 bp.Range = AbilityRange.Personal;
                 bp.CanTargetPoint = false;
@@ -1820,7 +1855,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                         }
                         );
                 });
-                bp.m_Icon = passthetorchicon;
+                bp.m_Icon = FirebellyIcon;
                 bp.Type = AbilityType.Supernatural;
                 bp.Range = AbilityRange.Personal;
                 bp.CanTargetPoint = false;

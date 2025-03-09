@@ -1880,6 +1880,9 @@
     <Content Include="Assets\Skills\Icon_OD.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Skills\Icon_OracleApocalypseMystery.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Skills\Icon_OracleDarkTapestryMystery.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
