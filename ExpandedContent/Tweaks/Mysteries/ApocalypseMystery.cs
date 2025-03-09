@@ -227,7 +227,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     c.SpellLevel = 9;
                 });
             });
-            #region Final Revelation TESTING
+            #region Final Revelation
             var BestowCurseFeebleBodyBuff = Resources.GetBlueprint<BlueprintBuff>("c092750ba895e014cb24a25e2e8274a7");
             var BestowCurseWeaknessBuff = Resources.GetBlueprint<BlueprintBuff>("de92c96c86cb2cd4c8eb8e2881b84d99");
             var BestowCurseIdiocyBuff = Resources.GetBlueprint<BlueprintBuff>("7fbb7799e8684434e80487cef9cc7f09");
@@ -901,7 +901,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = true;
             });
-            #region Defy Elements TESTING
+            #region Defy Elements
             var OracleRevelationDefyElementsAcidRank = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationDefyElementsAcidRank", bp => {
                 bp.SetName("Defy Elements - Acid");
                 bp.SetDescription("You gain resistance 5 to the acid energy damage, this can be chosen on future selection of the defy elements " +
@@ -1087,7 +1087,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
             });
             OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationDefyElementsProgression.ToReference<BlueprintFeatureReference>());
             #endregion
-            #region Doomsayer TESTING, cooldown needs to effect player even though abilities only target enemies
+            #region Doomsayer
             var ShakenBuff = Resources.GetBlueprint<BlueprintBuff>("25ec6cb6ab1845c48a95f9c20b034220");
             var OracleRevelationDoomsayerShakenBuff = Helpers.CreateBuff("OracleRevelationDoomsayerShakenBuff", bp => {
                 bp.SetName("Doomsayers Prophecy");
@@ -1478,7 +1478,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
             NearDeath.m_Features = NearDeath.m_Features.AppendToArray(DivineHerbalistApocalypseMysteryFeature.ToReference<BlueprintFeatureReference>());
             NearDeath.m_Features = NearDeath.m_Features.AppendToArray(OceansEchoApocalypseMysteryFeature.ToReference<BlueprintFeatureReference>());
             #endregion
-            #region Pass the Torch DO NOY FORGORT TESTTING
+            #region Pass the Torch 
             var FirebellyIcon = Resources.GetBlueprint<BlueprintAbility>("b065231094a21d14dbf1c3832f776871").Icon;
 
             var OracleRevelationPassTheTorchResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("OracleRevelationPassTheTorchResource", bp => {
@@ -1503,213 +1503,239 @@ namespace ExpandedContent.Tweaks.Mysteries {
             var OracleRevelationPassTheTorchRoundToken = Helpers.CreateBuff("OracleRevelationPassTheTorchRoundToken", bp => {
                 bp.SetName("Pass the Torch - Round Token");
                 bp.SetDescription("");
-                //bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
+                
+                bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
                 bp.IsClassFeature = true;
-                bp.Stacking = StackingType.Stack;
+                bp.Stacking = StackingType.Rank;
                 bp.Ranks = 20;
             });
-            var OracleRevelationPassTheTorchArea = Helpers.CreateBlueprint<BlueprintAbilityAreaEffect>("OracleRevelationPassTheTorchArea", bp => {
-                bp.AddComponent<AbilityAreaEffectRunAction>(c => {
-                    c.UnitEnter = Helpers.CreateActionList();
-                    c.UnitExit = Helpers.CreateActionList();
-                    c.Round = Helpers.CreateActionList(
+
+            var OracleRevelationPassTheTorchPulse = Helpers.CreateBlueprint<BlueprintAbility>("OracleRevelationPassTheTorchPulse", bp => {
+                bp.SetName("Pass the Torch - Pulse");
+                bp.SetDescription("Once per day as a swift action, you can channel the energy of the apocalypse into your body, causing you to ignite. " +
+                    "You take 1d4 points of fire damage when you activate this ability and again at the beginning of your turn until you end the effect. " +
+                    "Any creature that begins the next round adjacent to you takes 1d6 points of fire damage as the fire spreads, plus 1 additional point of " +
+                    "fire damage for each previous round you have had this ability active. For example, adjacent creatures take 1d6+5 points of damage if you " +
+                    "have had this ability active for 5 rounds. You can use this ability each time for a number of rounds equal to 1/2 your oracle level, " +
+                    "and you can end this ability as a free action. At 5th level and every 5 levels thereafter, you can use this ability one additional time per day.");
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
                         new Conditional() {
                             ConditionsChecker = new ConditionsChecker() {
                                 Operation = Operation.Or,
                                 Conditions = new Condition[] {
-                                    new ContextConditionCasterHasFact() {
-                                        m_Fact = OracleRevelationPassTheTorchRoundToken.ToReference<BlueprintUnitFactReference>(),
+                                    new ContextConditionIsCaster() {
                                         Not = false
                                     }
                                 }
                             },
                             IfTrue = Helpers.CreateActionList(
-                                new Conditional() {
-                                    ConditionsChecker = new ConditionsChecker() {
-                                        Operation = Operation.Or,
-                                        Conditions = new Condition[] {
-                                            new ContextConditionIsCaster() {
-                                                Not = false
-                                            }
-                                        }
-                                    },
-                                    IfTrue = Helpers.CreateActionList(
-                                        new ContextActionDealDamage() {
-                                            m_Type = ContextActionDealDamage.Type.Damage,
-                                            DamageType = new DamageTypeDescription() {
-                                                Type = DamageType.Energy,
-                                                Common = new DamageTypeDescription.CommomData() {
-                                                    Reality = 0,
-                                                    Alignment = 0,
-                                                    Precision = false
-                                                },
-                                                Physical = new DamageTypeDescription.PhysicalData() {
-                                                    Material = 0,
-                                                    Form = 0,
-                                                    Enhancement = 0,
-                                                    EnhancementTotal = 0
-                                                },
-                                                Energy = DamageEnergyType.Fire
-                                            },
-                                            Drain = false,
-                                            AbilityType = StatType.Unknown,
-                                            EnergyDrainType = EnergyDrainType.Temporary,
-                                            Duration = new ContextDurationValue() {
-                                                Rate = DurationRate.Rounds,
-                                                DiceType = DiceType.Zero,
-                                                DiceCountValue = new ContextValue() {
-                                                    ValueType = ContextValueType.Simple,
-                                                    Value = 0,
-                                                    ValueRank = AbilityRankType.Default,
-                                                    ValueShared = AbilitySharedValue.Damage,
-                                                    Property = UnitProperty.None
-                                                },
-                                                BonusValue = new ContextValue() {
-                                                    ValueType = ContextValueType.Simple,
-                                                    Value = 0,
-                                                    ValueRank = AbilityRankType.Default,
-                                                    ValueShared = AbilitySharedValue.Damage,
-                                                    Property = UnitProperty.None
-                                                },
-                                                m_IsExtendable = true,
-                                            },
-                                            PreRolledSharedValue = AbilitySharedValue.Damage,
-                                            Value = new ContextDiceValue() {
-                                                DiceType = DiceType.D4,
-                                                DiceCountValue = 1,
-                                                BonusValue = 0,
-                                            },
-                                            IsAoE = false,
-                                            HalfIfSaved = false,
-                                            UseMinHPAfterDamage = false,
-                                            MinHPAfterDamage = 0,
-                                            ResultSharedValue = AbilitySharedValue.Damage,
-                                            CriticalSharedValue = AbilitySharedValue.Damage
+                                new ContextActionDealDamage() {
+                                    m_Type = ContextActionDealDamage.Type.Damage,
+                                    DamageType = new DamageTypeDescription() {
+                                        Type = DamageType.Energy,
+                                        Common = new DamageTypeDescription.CommomData() {
+                                            Reality = 0,
+                                            Alignment = 0,
+                                            Precision = false
                                         },
-                                        new ContextActionApplyBuff() {
-                                            m_Buff = OracleRevelationPassTheTorchRoundToken.ToReference<BlueprintBuffReference>(),
-                                            Permanent = true,
-                                            UseDurationSeconds = false,
-                                            DurationValue = new ContextDurationValue() {
-                                                Rate = DurationRate.Rounds,
-                                                DiceType = DiceType.Zero,
-                                                DiceCountValue = 0,
-                                                BonusValue = 0
-                                            },
-                                            DurationSeconds = 0,
-                                            IsNotDispelable = true
-                                        }
-                                        ),
-                                    IfFalse = Helpers.CreateActionList(
-                                        new ContextActionDealDamage() {
-                                            m_Type = ContextActionDealDamage.Type.Damage,
-                                            DamageType = new DamageTypeDescription() {
-                                                Type = DamageType.Energy,
-                                                Common = new DamageTypeDescription.CommomData() {
-                                                    Reality = 0,
-                                                    Alignment = 0,
-                                                    Precision = false
-                                                },
-                                                Physical = new DamageTypeDescription.PhysicalData() {
-                                                    Material = 0,
-                                                    Form = 0,
-                                                    Enhancement = 0,
-                                                    EnhancementTotal = 0
-                                                },
-                                                Energy = DamageEnergyType.Fire
-                                            },
-                                            Drain = false,
-                                            AbilityType = StatType.Unknown,
-                                            EnergyDrainType = EnergyDrainType.Temporary,
-                                            Duration = new ContextDurationValue() {
-                                                Rate = DurationRate.Rounds,
-                                                DiceType = DiceType.Zero,
-                                                DiceCountValue = new ContextValue() {
-                                                    ValueType = ContextValueType.Simple,
-                                                    Value = 0,
-                                                    ValueRank = AbilityRankType.Default,
-                                                    ValueShared = AbilitySharedValue.Damage,
-                                                    Property = UnitProperty.None
-                                                },
-                                                BonusValue = new ContextValue() {
-                                                    ValueType = ContextValueType.Simple,
-                                                    Value = 0,
-                                                    ValueRank = AbilityRankType.Default,
-                                                    ValueShared = AbilitySharedValue.Damage,
-                                                    Property = UnitProperty.None
-                                                },
-                                                m_IsExtendable = true,
-                                            },
-                                            PreRolledSharedValue = AbilitySharedValue.Damage,
-                                            Value = new ContextDiceValue() {
-                                                DiceType = DiceType.D6,
-                                                DiceCountValue = 1,
-                                                BonusValue = new ContextValue() {
-                                                    ValueType = ContextValueType.Rank,
-                                                    ValueRank = AbilityRankType.DamageBonus
-                                                },
-                                            },
-                                            IsAoE = false,
-                                            HalfIfSaved = false,
-                                            UseMinHPAfterDamage = false,
-                                            MinHPAfterDamage = 0,
-                                            ResultSharedValue = AbilitySharedValue.Damage,
-                                            CriticalSharedValue = AbilitySharedValue.Damage
-                                        }
-                                    )
+                                        Physical = new DamageTypeDescription.PhysicalData() {
+                                            Material = 0,
+                                            Form = 0,
+                                            Enhancement = 0,
+                                            EnhancementTotal = 0
+                                        },
+                                        Energy = DamageEnergyType.Fire
+                                    },
+                                    Drain = false,
+                                    AbilityType = StatType.Unknown,
+                                    EnergyDrainType = EnergyDrainType.Temporary,
+                                    Duration = new ContextDurationValue() {
+                                        Rate = DurationRate.Rounds,
+                                        DiceType = DiceType.Zero,
+                                        DiceCountValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                        BonusValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                        m_IsExtendable = true,
+                                    },
+                                    PreRolledSharedValue = AbilitySharedValue.Damage,
+                                    Value = new ContextDiceValue() {
+                                        DiceType = DiceType.D4,
+                                        DiceCountValue = 1,
+                                        BonusValue = 0,
+                                    },
+                                    IsAoE = false,
+                                    HalfIfSaved = false,
+                                    UseMinHPAfterDamage = false,
+                                    MinHPAfterDamage = 0,
+                                    ResultSharedValue = AbilitySharedValue.Damage,
+                                    CriticalSharedValue = AbilitySharedValue.Damage
+                                },
+                                new ContextActionApplyBuff() {
+                                    m_Buff = OracleRevelationPassTheTorchRoundToken.ToReference<BlueprintBuffReference>(),
+                                    //Permanent = true,
+                                    UseDurationSeconds = false,
+                                    DurationValue = new ContextDurationValue() {
+                                        Rate = DurationRate.Hours,
+                                        DiceType = DiceType.Zero,
+                                        DiceCountValue = 0,
+                                        BonusValue = 1
+                                    },
+                                    DurationSeconds = 0
                                 }
                                 ),
-                            IfFalse = Helpers.CreateActionList()
-                        }                        
+                            IfFalse = Helpers.CreateActionList(
+                                new ContextActionDealDamage() {
+                                    m_Type = ContextActionDealDamage.Type.Damage,
+                                    DamageType = new DamageTypeDescription() {
+                                        Type = DamageType.Energy,
+                                        Common = new DamageTypeDescription.CommomData() {
+                                            Reality = 0,
+                                            Alignment = 0,
+                                            Precision = false
+                                        },
+                                        Physical = new DamageTypeDescription.PhysicalData() {
+                                            Material = 0,
+                                            Form = 0,
+                                            Enhancement = 0,
+                                            EnhancementTotal = 0
+                                        },
+                                        Energy = DamageEnergyType.Fire
+                                    },
+                                    Drain = false,
+                                    AbilityType = StatType.Unknown,
+                                    EnergyDrainType = EnergyDrainType.Temporary,
+                                    Duration = new ContextDurationValue() {
+                                        Rate = DurationRate.Rounds,
+                                        DiceType = DiceType.Zero,
+                                        DiceCountValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                        BonusValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                        m_IsExtendable = true,
+                                    },
+                                    PreRolledSharedValue = AbilitySharedValue.Damage,
+                                    Value = new ContextDiceValue() {
+                                        DiceType = DiceType.D6,
+                                        DiceCountValue = 1,
+                                        BonusValue = new ContextValue() {
+                                            ValueType = ContextValueType.Rank,
+                                            ValueRank = AbilityRankType.DamageBonus
+                                        },
+                                    },
+                                    IsAoE = false,
+                                    HalfIfSaved = false,
+                                    UseMinHPAfterDamage = false,
+                                    MinHPAfterDamage = 0,
+                                    ResultSharedValue = AbilitySharedValue.Damage,
+                                    CriticalSharedValue = AbilitySharedValue.Damage
+                                }
+                                )
+                        }
                         );
-                    c.UnitMove = Helpers.CreateActionList();
                 });
+                bp.AddComponent<AbilityTargetsAround>(c => {
+                    c.m_Radius = 5.Feet();
+                    c.m_TargetType = TargetType.Any;
+                    c.m_IncludeDead = false;
+                    c.m_Condition = new ConditionsChecker();
+                    c.m_SpreadSpeed = 0.Feet();
+                });
+                //bp.AddComponent<AbilitySpawnFx>(c => {
+                //    c.PrefabLink = new PrefabLink() { AssetId = "13eb28db3412f894795b434673d6bbd4" };
+                //    c.Time = AbilitySpawnFxTime.OnApplyEffect;
+                //    c.Anchor = AbilitySpawnFxAnchor.ClickedTarget;
+                //    c.WeaponTarget = AbilitySpawnFxWeaponTarget.None;
+                //    c.DestroyOnCast = false;
+                //    c.Delay = 0;
+                //    c.PositionAnchor = AbilitySpawnFxAnchor.None;
+                //    c.OrientationAnchor = AbilitySpawnFxAnchor.None;
+                //    c.OrientationMode = AbilitySpawnFxOrientation.Copy;
+                //});
                 bp.AddComponent<ContextRankConfig>(c => {
                     c.m_Type = AbilityRankType.DamageBonus;
                     c.m_BaseValueType = ContextRankBaseValueType.CasterBuffRank;
                     c.m_Buff = OracleRevelationPassTheTorchRoundToken.ToReference<BlueprintBuffReference>();
+                    c.m_BuffRankMultiplier = 1;
                     c.m_Stat = StatType.Unknown;
                     c.m_SpecificModifier = ModifierDescriptor.None;
                     c.m_Progression = ContextRankProgression.AsIs;
                 });
-                bp.m_AllowNonContextActions = false;
-                bp.m_TargetType = BlueprintAbilityAreaEffect.TargetType.Any;
-                bp.m_Tags = AreaEffectTags.DestroyableInCutscene;
+                bp.AddComponent<CraftInfoComponent>(c => {
+                    c.SpellType = CraftSpellType.Damage;
+                    c.SavingThrow = CraftSavingThrow.Reflex;
+                    c.AOEType = CraftAOE.AOE;
+                });
+                bp.m_Icon = FirebellyIcon;
+                bp.Type = AbilityType.Spell;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
                 bp.SpellResistance = false;
-                bp.AffectEnemies = true;
-                bp.AggroEnemies = true;
-                bp.AffectDead = false;
-                bp.IgnoreSleepingUnits = false;
-                bp.Shape = AreaEffectShape.Cylinder;
-                bp.Size = new Feet() { m_Value = 5 };
-                bp.Fx = new PrefabLink() { };
-                bp.CanBeUsedInTacticalCombat = false;
-                bp.m_TickRoundAfterSpawn = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Self;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
+
+
+
+
             var OracleRevelationPassTheTorchBuff = Helpers.CreateBuff("OracleRevelationPassTheTorchBuff", bp => {
                 bp.SetName("Pass the Torch");
                 bp.SetDescription("You take 1d4 points of fire damage when you activate this ability and again at the beginning of your turn until you end the effect. " +
                     "Any creature that begins the next round adjacent to you takes 1d6 points of fire damage as the fire spreads, plus 1 additional point of " +
                     "fire damage for each previous round you have had this ability active. For example, adjacent creatures take 1d6+5 points of damage if you " +
-                    "have had this ability active for 5 rounds. You can end this ability early as a free action.");
-                bp.AddComponent<AddAreaEffect>(c => {
-                    c.m_AreaEffect = OracleRevelationPassTheTorchArea.ToReference<BlueprintAbilityAreaEffectReference>();
-                });
+                    "have had this ability active for 5 rounds. You can end this ability early as a free action.");                
                 bp.AddComponent<AddFactContextActions>(c => {
                     c.Activated = Helpers.CreateActionList();
-                    c.Deactivated = Helpers.CreateActionList(
-                        new ContextActionRemoveBuff() {
-                            m_Buff = OracleRevelationPassTheTorchRoundToken.ToReference<BlueprintBuffReference>()
+                    c.Deactivated = Helpers.CreateActionList();
+                    c.NewRound = Helpers.CreateActionList(
+                        new ContextActionCastSpell() {
+                            m_Spell = OracleRevelationPassTheTorchPulse.ToReference<BlueprintAbilityReference>(),
+                            OverrideDC = false,
+                            DC = 0,
+                            OverrideSpellLevel = false,
+                            SpellLevel = 0,
+                            CastByTarget = false,
+                            LogIfCanNotTarget = false,
+                            MarkAsChild = false//?
                         }
                         );
-                    c.NewRound = Helpers.CreateActionList();
                 });
                 bp.m_Icon = FirebellyIcon;
                 bp.IsClassFeature = false;
                 bp.Stacking = StackingType.Replace;
                 bp.FxOnStart = new PrefabLink() { AssetId = "26fa35beb7d89bf4dafb93033941700c" };
             });
-
+            
 
             var OracleRevelationPassTheTorchAbility = Helpers.CreateBlueprint<BlueprintAbility>("OracleRevelationPassTheTorchAbility", bp => {
                 bp.SetName("Pass the Torch");
@@ -1792,13 +1818,13 @@ namespace ExpandedContent.Tweaks.Mysteries {
                         ,
                         new ContextActionApplyBuff() {
                             m_Buff = OracleRevelationPassTheTorchRoundToken.ToReference<BlueprintBuffReference>(),
-                            Permanent = true,
+                            Permanent = false,
                             UseDurationSeconds = false,
                             DurationValue = new ContextDurationValue() {
-                                Rate = DurationRate.Rounds,
+                                Rate = DurationRate.Hours,
                                 DiceType = DiceType.Zero,
                                 DiceCountValue = 0,
-                                BonusValue = 0
+                                BonusValue = 1
                             },
                             DurationSeconds = 0
                         }
@@ -1851,7 +1877,9 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     c.Actions = Helpers.CreateActionList(
                         new ContextActionRemoveBuff() {
                             m_Buff = OracleRevelationPassTheTorchBuff.ToReference<BlueprintBuffReference>()
-
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = OracleRevelationPassTheTorchRoundToken.ToReference<BlueprintBuffReference>()
                         }
                         );
                 });
@@ -1871,6 +1899,43 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
+
+            OracleRevelationPassTheTorchRoundToken.AddComponent<AddAbilityUseTrigger>(c => {
+                c.ActionsOnAllTargets = false;
+                c.AfterCast = false;
+                c.ActionsOnTarget = false;
+                c.FromSpellbook = false;
+                c.m_Spellbooks = new BlueprintSpellbookReference[] { };
+                c.ForOneSpell = false;
+                c.m_Ability = new BlueprintAbilityReference();
+                c.ForMultipleSpells = true;
+                c.Abilities = new List<BlueprintAbilityReference>() {
+                    OracleRevelationPassTheTorchAbility.ToReference<BlueprintAbilityReference>(),
+                    OracleRevelationPassTheTorchRemoveAbility.ToReference<BlueprintAbilityReference>()
+                };
+                c.MinSpellLevel = false;
+                c.MinSpellLevelLimit = 0;
+                c.ExactSpellLevel = false;
+                c.ExactSpellLevelLimit = 0;
+                c.CheckAbilityType = false;
+                c.Type = AbilityType.Spell;
+                c.CheckDescriptor = false;
+                c.SpellDescriptor = new SpellDescriptor();
+                c.CheckRange = false;
+                c.Range = AbilityRange.Touch;
+                c.Action = Helpers.CreateActionList(
+                    new ContextActionOnContextCaster() {
+                        Actions = Helpers.CreateActionList(
+                            new ContextActionRemoveBuff() {
+                                m_Buff = OracleRevelationPassTheTorchRoundToken.ToReference<BlueprintBuffReference>()
+                            }
+                            )
+                    });
+            });
+
+
+
+
 
             var OracleRevelationPassTheTorchFeature = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationPassTheTorchFeature", bp => {
                 bp.SetName("Pass the Torch");
