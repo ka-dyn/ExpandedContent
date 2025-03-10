@@ -936,6 +936,16 @@ namespace ExpandedContent.Config {
                     }
                     Main.Log("Done");
                     #endregion
+                    #region Extra Revelation feat insert
+                    Main.Log("Adding new revelations to the Extra Revelation feat");
+                    var ExtraRevelationFeatTTT = Resources.GetBlueprint<BlueprintFeatureSelection>("0a68ce40e26d4b769d450586a4996b23");
+                    var OracleRevelationSelectionRevelations = Resources.GetBlueprint<BlueprintFeatureSelection>("60008a10ad7ad6543b1f63016741a5d2");                    
+                    if (ExtraRevelationFeatTTT != null) {
+                        ExtraRevelationFeatTTT.m_Features = OracleRevelationSelectionRevelations.m_Features.ToArray();
+                        ExtraRevelationFeatTTT.m_AllFeatures = OracleRevelationSelectionRevelations.m_AllFeatures.ToArray();
+                    }
+                    Main.Log("Done");
+                    #endregion
                     Main.Log("Finishing TTT-Base Compat Patch.");
                 }
 
