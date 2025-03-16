@@ -247,6 +247,7 @@
     <Compile Include="Tweaks\Classes\DrakeClass\DrakeCompanionSelection.cs" />
     <Compile Include="Tweaks\Classes\Oathbreaker.cs" />
     <Compile Include="Tweaks\Classes\DreadKnight.cs" />
+    <Compile Include="Tweaks\Components\AddBuffInTerrain.cs" />
     <Compile Include="Tweaks\Components\AddContextStatBonusInTerrain.cs" />
     <Compile Include="Tweaks\Components\AddExtraDrainToEnergyDrainInstance.cs" />
     <Compile Include="Tweaks\Components\AddImmunityToEnergyDrainFromFact.cs" />
@@ -592,6 +593,7 @@
     <Compile Include="Tweaks\Spells\Slipstream.cs" />
     <Compile Include="Tweaks\Spells\HydraulicPush.cs" />
     <Compile Include="Tweaks\Spirits\HeavensSpirit.cs" />
+    <Compile Include="Tweaks\Spirits\SlumsSpirit.cs" />
     <Compile Include="Tweaks\TheElderMythos\Abhoth.cs" />
     <Compile Include="Tweaks\TheElderMythos\AtlachNacha.cs" />
     <Compile Include="Tweaks\TheElderMythos\Azathoth.cs" />

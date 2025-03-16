@@ -35,32 +35,32 @@ using Kingmaker.UnitLogic.Abilities.Components.CasterCheckers;
 using System.Collections.Generic;
 using Kingmaker.Formations.Facts;
 using Kingmaker.RuleSystem.Rules;
+using Kingmaker.UnitLogic.Abilities.Components.TargetCheckers;
+using ExpandedContent.Tweaks.Components;
 
 namespace ExpandedContent.Tweaks.Spirits {
-    internal class HeavensSpirit {
-        public static void AddHeavensSprit() {
+    internal class SlumsSpirit {
+        public static void AddSlumsSprit() {
 
             var ShamanClass = Resources.GetBlueprint<BlueprintCharacterClass>("145f1d3d360a7ad48bd95d392c81b38e");
             var UnswornShamanArchetype = Resources.GetBlueprint<BlueprintArchetype>("556590a43467a27459ac1a80324c9f9f");
             var ShamanHexSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("4223fe18c75d4d14787af196a04e14e7");
             var PossessedShamanSharedSkillSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("9d0477ebd71d43041b419c216b5d6cff");
-            var GlitterdustBuff = Resources.GetBlueprint<BlueprintBuff>("03457e519288aad4085eae91918a76bf");
 
 
 
             #region Spelllist
-            var ColorSpraySpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("91da41b9793a4624797921f221db653c");
-            var RainbowPatternSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("4b8265132f9c8174f87ce7fa6d0fe47b");
-            var PrismaticSpraySpell = Resources.GetBlueprint<BlueprintAbility>("b22fd434bdb60fb4ba1068206402c4cf");
-            var ChainLightningSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("645558d63604747428d55f0dd3a4cb58");
-            var SearingLightSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("bf0accce250381a44b857d4af6c8e10d");
-            var HypnoticPatternAbility = Resources.GetModBlueprint<BlueprintAbility>("HypnoticPatternAbility");
-            var SunburstSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("e96424f70ff884947b06f41a765b7658");
-            var PolarMidnightSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("ba48abb52b142164eba309fd09898856");
-            var BreakEnchantmentSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("7792da00c85b9e042a0fdfc2b66ec9a8");
-            var MeteorSwarmSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("5e36df08c71748f7936bce310181fb71");
+            var HazeOfDreamsSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("40ec382849b60504d88946df46a10f2d");
+            var SummonMonsterIIBaseSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("1724061e89c667045a6891179ee2e8e7");
+            var HoldPersonSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("c7104f7526c4c524f91474614054547e");
+            var ConfusionSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("cf6c901fb7acc904e85c63b342e9c949");
+            var EcholocationSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("20b548bf09bb3ea4bafea78dcb4f3db6");
+            var CloakOfDreamsSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("7f71a70d822af94458dc1a235507e972");
+            var HoldPersonMassSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("defbbeaef79eda64abc645036228a31b");
+            var RiftOfRuinSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("dd3dacafcf40a0145a5824c838e2698d");
+            var HoldMonsterMassSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("7f4b66a2b1fdab142904a263c7866d46");
 
-            var HeavensSpiritSpellList = Helpers.CreateBlueprint<BlueprintSpellList>("HeavensSpiritSpellList", bp => {
+            var SlumsSpiritSpellList = Helpers.CreateBlueprint<BlueprintSpellList>("SlumsSpiritSpellList", bp => {
                 bp.IsMythic = false;
                 bp.SpellsByLevel = new SpellLevelList[10] {
                     new SpellLevelList(0) {
@@ -70,64 +70,63 @@ namespace ExpandedContent.Tweaks.Spirits {
                     new SpellLevelList(1) {
                         SpellLevel = 1,
                         m_Spells = new List<BlueprintAbilityReference>() {
-                            ColorSpraySpell
+                            HazeOfDreamsSpell
                         }
                     },
                     new SpellLevelList(2) {
                         SpellLevel = 2,
                         m_Spells = new List<BlueprintAbilityReference>() {
-                            HypnoticPatternAbility.ToReference<BlueprintAbilityReference>()
+                            SummonMonsterIIBaseSpell
                         }
                     },
                     new SpellLevelList(3) {
                         SpellLevel = 3,
                         m_Spells = new List<BlueprintAbilityReference>() {
-                            SearingLightSpell
+                            HoldPersonSpell
                         }
                     },
                     new SpellLevelList(4) {
                         SpellLevel = 4,
                         m_Spells = new List<BlueprintAbilityReference>() {
-                            RainbowPatternSpell
+                            ConfusionSpell
                         }
                     },
                     new SpellLevelList(5) {
                         SpellLevel = 5,
                         m_Spells = new List<BlueprintAbilityReference>() {
-                            BreakEnchantmentSpell
+                            EcholocationSpell
                         }
                     },
                     new SpellLevelList(6) {
                         SpellLevel = 6,
                         m_Spells = new List<BlueprintAbilityReference>() {
-                            ChainLightningSpell
+                            CloakOfDreamsSpell
                         }
                     },
                     new SpellLevelList(7) {
                         SpellLevel = 7,
                         m_Spells = new List<BlueprintAbilityReference>() {
-                            PrismaticSpraySpell.ToReference<BlueprintAbilityReference>()
+                            HoldPersonMassSpell
                         }
                     },
                     new SpellLevelList(8) {
                         SpellLevel = 8,
                         m_Spells = new List<BlueprintAbilityReference>() {
-                            SunburstSpell
+                            RiftOfRuinSpell
                         }
                     },
                     new SpellLevelList(9) {
                         SpellLevel = 9,
                         m_Spells = new List<BlueprintAbilityReference>() {
-                            PolarMidnightSpell,
-                            MeteorSwarmSpell
+                            HoldMonsterMassSpell
                         }
                     },
                 };
             });
-            var HeavensSpiritSpellListFeature = Helpers.CreateBlueprint<BlueprintFeature>("HeavensSpiritSpellListFeature", bp => {
+            var SlumsSpiritSpellListFeature = Helpers.CreateBlueprint<BlueprintFeature>("SlumsSpiritSpellListFeature", bp => {
                 bp.AddComponent<AddSpecialSpellList>(c => {
                     c.m_CharacterClass = ShamanClass.ToReference<BlueprintCharacterClassReference>();
-                    c.m_SpellList = HeavensSpiritSpellList.ToReference<BlueprintSpellListReference>();
+                    c.m_SpellList = SlumsSpiritSpellList.ToReference<BlueprintSpellListReference>();
                 });
                 bp.AddComponent<PrerequisiteNoFeature>(c => {
                     c.Group = Prerequisite.GroupType.All;
@@ -138,353 +137,240 @@ namespace ExpandedContent.Tweaks.Spirits {
                 bp.HideInUI = true;
                 bp.HideInCharacterSheetAndLevelUp = false;
                 bp.HideNotAvailibleInUI = false;
-                bp.IsClassFeature = true;                
+                bp.IsClassFeature = true;
             });
             #endregion
             #region Spirit Features
-            #region Base
-            var ShamanHeavensSpiritBaseResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("ShamanHeavensSpiritBaseResource", bp => {
+            #region Base TEST NUMBER OF USES
+            var DimensionDorrCasterOnly = Resources.GetBlueprint<BlueprintAbility>("a9b8be9b87865744382f7c64e599aeb2");
+            var ShamanSlumsSpiritBaseResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("ShamanSlumsSpiritBaseResource", bp => {
                 bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
                     BaseValue = 3,
                     IncreasedByLevel = false,
-                    IncreasedByStat = true,
-                    ResourceBonusStat = StatType.Charisma,
+                    IncreasedByLevelStartPlusDivStep = true,
+                    m_Class = new BlueprintCharacterClassReference[] { },
+                    m_ClassDiv = new BlueprintCharacterClassReference[] {
+                        ShamanClass.ToReference<BlueprintCharacterClassReference>()
+                    },
+                    m_Archetypes = new BlueprintArchetypeReference[] { },
+                    LevelIncrease = 1,
+                    StartingLevel = 12,
+                    LevelStep = 8,
+                    StartingIncrease = 1,
+                    PerStepIncrease = 1
                 };
             });
-            var ShamanHeavensSpiritBaseAbilityBuff = Helpers.CreateBuff("ShamanHeavensSpiritBaseAbilityBuff", bp => {
-                bp.SetName("Stardust");
-                bp.SetDescription("As a standard action, the shaman causes stardust to materialize around one creature within 30 feet. This stardust causes the target to shed light " +
-                    "as a candle, and it cannot benefit from concealment or any invisibility effects. The creature takes a –1 penalty on attack rolls and sight-based Perception " +
-                    "checks. This penalty to attack rolls and Perception checks increases by 1 at 4th level and every 4 levels thereafter, to a maximum of –6 at 20th level. This " +
-                    "effect lasts for a number of rounds equal to half the shaman’s level (minimum 1). Sightless creatures cannot be affected by this ability.");
-                bp.m_Icon = GlitterdustBuff.Icon;
-                bp.AddComponent<AddContextStatBonus>(c => {
-                    c.Stat = StatType.AdditionalAttackBonus;
-                    c.Descriptor = ModifierDescriptor.UntypedStackable;
-                    c.Value = new ContextValue() {
-                        ValueType = ContextValueType.Rank,
-                        ValueRank = AbilityRankType.Default
-                    };
-                    c.Multiplier = -1;
-                });
-                bp.AddComponent<AddContextStatBonus>(c => {
-                    c.Stat = StatType.SkillPerception;
-                    c.Descriptor = ModifierDescriptor.UntypedStackable;
-                    c.Value = new ContextValue() {
-                        ValueType = ContextValueType.Rank,
-                        ValueRank = AbilityRankType.Default
-                    };
-                    c.Multiplier = -1;
-                });
-                bp.AddComponent<ContextRankConfig>(c => {
-                    c.m_Type = AbilityRankType.Default;
-                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
-                    c.m_Class = new BlueprintCharacterClassReference[] { ShamanClass.ToReference<BlueprintCharacterClassReference>() };
-                    c.m_Progression = ContextRankProgression.OnePlusDivStep;
-                    c.m_StartLevel = 0;
-                    c.m_StepLevel = 4;
-                    c.m_UseMax = true;
-                    c.m_Max = 5;
-                });
-                bp.AddComponent<AddConditionImmunity>(c => {
-                    c.Condition = UnitCondition.GreaterInvisibility;
-                });
-                bp.AddComponent<DoNotBenefitFromConcealment>();
-                bp.m_AllowNonContextActions = false;
-                bp.IsClassFeature = false;
-                bp.m_Flags = BlueprintBuff.Flags.RemoveOnRest;
-                bp.Stacking = StackingType.Replace;
-            });
-            var ShamanHeavensSpiritBaseAbility = Helpers.CreateBlueprint<BlueprintAbility>("ShamanHeavensSpiritBaseAbility", bp => {
-                bp.SetName("Stardust");
-                bp.SetDescription("As a standard action, the shaman causes stardust to materialize around one creature within 30 feet. This stardust causes the target to shed light " +
-                    "as a candle, and it cannot benefit from concealment or any invisibility effects. The creature takes a –1 penalty on attack rolls and sight-based Perception " +
-                    "checks. This penalty to attack rolls and Perception checks increases by 1 at 4th level and every 4 levels thereafter, to a maximum of –6 at 20th level. This " +
-                    "effect lasts for a number of rounds equal to half the shaman’s level (minimum 1). Sightless creatures cannot be affected by this ability. The shaman can use " +
-                    "this ability a number of times per day equal to 3 + her Charisma modifier.");
-                bp.AddComponent<AbilityEffectRunAction>(c => {
-                    c.SavingThrowType = SavingThrowType.Unknown;
-                    c.Actions = Helpers.CreateActionList(
-                        new ContextActionApplyBuff() {
-                            m_Buff = ShamanHeavensSpiritBaseAbilityBuff.ToReference<BlueprintBuffReference>(),
-                            Permanent = false,
-                            UseDurationSeconds = false,
-                            DurationValue = new ContextDurationValue() {
-                                Rate = DurationRate.Rounds,
-                                DiceType = DiceType.Zero,
-                                DiceCountValue = 0,
-                                BonusValue = new ContextValue() {
-                                    ValueType = ContextValueType.Rank,
-                                    Value = 0,
-                                    ValueRank = AbilityRankType.Default,
-                                    ValueShared = AbilitySharedValue.Damage
-                                }
-                            },
-                            DurationSeconds = 0
-                        });
-                });
-                bp.AddComponent<ContextRankConfig>(c => {
-                    c.m_Type = AbilityRankType.Default;
-                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
-                    c.m_Class = new BlueprintCharacterClassReference[] { ShamanClass.ToReference<BlueprintCharacterClassReference>() };
-                    c.m_Progression = ContextRankProgression.Div2;
-                    c.m_UseMin = true;
-                    c.m_Min = 1;
-                    
-                });
+
+            var ShamanSlumsSpiritBaseAbility = Helpers.CreateBlueprint<BlueprintAbility>("ShamanSlumsSpiritBaseAbility", bp => {
+                bp.SetName("Doors to Everywhere");
+                bp.SetDescription("You instantly transfer yourself from your current location to any other spot within range, as if using the dimention door spell. " +
+                    "However only you are transported and not your allies." +
+                    "You can use this ability three times per day, plus one additional time per day at 12th level and at 20th level.");
+                bp.AddComponent(Helpers.CreateCopy(DimensionDorrCasterOnly.GetComponent<AbilityCustomDimensionDoor>()));
+                bp.AddComponent<LineOfSightIgnorance>();
                 bp.AddComponent<AbilityResourceLogic>(c => {
-                    c.m_RequiredResource = ShamanHeavensSpiritBaseResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_RequiredResource = ShamanSlumsSpiritBaseResource.ToReference<BlueprintAbilityResourceReference>();
                     c.m_IsSpendResource = true;
                 });
-                bp.AddComponent<CraftInfoComponent>(c => {
-                    c.SavingThrow = CraftSavingThrow.None;
-                    c.AOEType = CraftAOE.None;
-                    c.SpellType = CraftSpellType.Debuff;
-                });
-                bp.m_Icon = GlitterdustBuff.Icon;
-                bp.Type = AbilityType.Special;
-                bp.Range = AbilityRange.Close;
-                bp.CanTargetPoint = false;
-                bp.CanTargetEnemies = true;
+                bp.m_Icon = DimensionDorrCasterOnly.Icon;
+                bp.Type = AbilityType.Extraordinary;
+                bp.Range = AbilityRange.Long;
+                bp.CanTargetPoint = true;
+                bp.CanTargetEnemies = false;
                 bp.CanTargetFriends = false;
                 bp.CanTargetSelf = false;
                 bp.SpellResistance = false;
                 bp.EffectOnAlly = AbilityEffectOnUnit.None;
-                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
-                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Point;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Directional;
                 bp.ActionType = UnitCommand.CommandType.Standard;
                 bp.AvailableMetamagic = Metamagic.Maximize | Metamagic.Quicken | Metamagic.Heighten | Metamagic.Reach | Metamagic.CompletelyNormal;
-                bp.LocalizedDuration = Helpers.CreateString("ShamanHeavensSpiritBaseAbility.Duration", "1 round/2 levels");
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
-            var ShamanHeavensSpiritBaseFeature = Helpers.CreateBlueprint<BlueprintFeature>("ShamanHeavensSpiritBaseFeature", bp => {
-                bp.SetName("Stardust");
-                bp.SetDescription("As a standard action, the shaman causes stardust to materialize around one creature within 30 feet. This stardust causes the target to shed light " +
-                    "as a candle, and it cannot benefit from concealment or any invisibility effects. The creature takes a –1 penalty on attack rolls and sight-based Perception " +
-                    "checks. This penalty to attack rolls and Perception checks increases by 1 at 4th level and every 4 levels thereafter, to a maximum of –6 at 20th level. This " +
-                    "effect lasts for a number of rounds equal to half the shaman’s level (minimum 1). Sightless creatures cannot be affected by this ability. The shaman can use " +
-                    "this ability a number of times per day equal to 3 + her Charisma modifier.");
-                bp.m_Icon = GlitterdustBuff.Icon;
+            var ShamanSlumsSpiritBaseFeature = Helpers.CreateBlueprint<BlueprintFeature>("ShamanSlumsSpiritBaseFeature", bp => {
+                bp.SetName("Doors to Everywhere");
+                bp.SetDescription("You instantly transfer yourself from your current location to any other spot within range, as if using the dimention door spell. " +
+                    "However only you are transported and not your allies." +
+                    "You can use this ability three times per day, plus one additional time per day at 12th level and at 20th level.");
+                bp.m_Icon = DimensionDorrCasterOnly.Icon;
                 bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[] { ShamanHeavensSpiritBaseAbility.ToReference<BlueprintUnitFactReference>() };
+                    c.m_Facts = new BlueprintUnitFactReference[] { ShamanSlumsSpiritBaseAbility.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.AddComponent<AddAbilityResources>(c => {
-                    c.m_Resource = ShamanHeavensSpiritBaseResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_Resource = ShamanSlumsSpiritBaseResource.ToReference<BlueprintAbilityResourceReference>();
                     c.RestoreAmount = true;
-                });                
-                bp.m_AllowNonContextActions = false;                
+                });
+                bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = true;
             });
             #endregion
-            #region Greater
-            var ShamanHeavensSpiritGreaterFeature = Helpers.CreateBlueprint<BlueprintFeature>("ShamanHeavensSpiritGreaterFeature", bp => {
-                bp.SetName("Void Adaptation");
-                bp.SetDescription("The shaman gains cold resistance 15. In addition, every time you miss an attack roll because of {g|Encyclopedia:Concealment}concealment{/g}, " +
-                    "you can {g|Encyclopedia:Dice}reroll{/g} your miss chance percentile roll one time to see if you actually hit.");
-                bp.AddComponent<RerollConcealment>(c => {
-                    c.m_WeaponCoverage = RerollConcealment.WeaponCoverage.All;
+            #region Greater TEST 
+
+            var ShamanSlumsSpiritGreaterBuff = Helpers.CreateBuff("ShamanSlumsSpiritGreaterBuff", bp => {
+                bp.SetName("City’s Shroud");
+                bp.SetDescription("When in an urban environment, the shaman blends into the streets around her, making her difficult to pin down. " +
+                    "She gains the effects of the evasion and improved uncanny dodge class features." +
+                    "\nEvasion" +
+                    "\nA character can avoid even magical and unusual attacks with great agility. If a character makes a successful " +
+                    "{g|Encyclopedia:Saving_Throw}Reflex saving throw{/g} against an attack that normally deals half {g|Encyclopedia:Damage}damage{/g} " +
+                    "on a successful save, he instead takes no damage. A {g|Encyclopedia:Helpless}helpless{/g} character does not gain the benefit of evasion." +
+                    "\nImproved Uncanny Dodge" +
+                    "\nThe character can no longer be {g|Encyclopedia:Flanking}flanked{/g}.\r\nThis defense denies another rogue the ability to sneak attack " +
+                    "the character by flanking her, unless the attacker has at least four more rogue levels than the target does.");
+                bp.m_Icon = GlitterdustBuff.Icon;
+                bp.AddComponent<Evasion>(c => {
+                    c.SavingThrow = SavingThrowType.Reflex;
                 });
-                bp.AddComponent<AddDamageResistanceEnergy>(c => {
-                    c.Value = 15;
-                    c.Type = DamageEnergyType.Cold;
+                bp.AddComponent<AddMechanicsFeature>(c => {
+                    c.m_Feature = AddMechanicsFeature.MechanicsFeatureType.CannotBeFlanked;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+                bp.m_Flags = BlueprintBuff.Flags.StayOnDeath;
+                bp.Stacking = StackingType.Replace;
+            });
+            var ShamanSlumsSpiritGreaterFeature = Helpers.CreateBlueprint<BlueprintFeature>("ShamanSlumsSpiritGreaterFeature", bp => {
+                bp.SetName("City’s Shroud");
+                bp.SetDescription("When in an urban environment, the shaman blends into the streets around her, making her difficult to pin down. " +
+                    "She gains the effects of the evasion and improved uncanny dodge class features." +
+                    "\nEvasion" +
+                    "\nA character can avoid even magical and unusual attacks with great agility. If a character makes a successful " +
+                    "{g|Encyclopedia:Saving_Throw}Reflex saving throw{/g} against an attack that normally deals half {g|Encyclopedia:Damage}damage{/g} " +
+                    "on a successful save, he instead takes no damage. A {g|Encyclopedia:Helpless}helpless{/g} character does not gain the benefit of evasion." +
+                    "\nImproved Uncanny Dodge" +
+                    "\nThe character can no longer be {g|Encyclopedia:Flanking}flanked{/g}.\r\nThis defense denies another rogue the ability to sneak attack " +
+                    "the character by flanking her, unless the attacker has at least four more rogue levels than the target does.");
+                bp.AddComponent<AddBuffInTerrain>(c => {
+                    c.Terrain = AreaSetting.Urban;
+                    c.m_Buff = ShamanSlumsSpiritGreaterBuff.ToReference<BlueprintBuffReference>();
                 });
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = true;
             });
             #endregion
             #region True
-            var ScintillatingPatternSpell = Resources.GetBlueprint<BlueprintAbility>("4dc60d08c6c4d3c47b413904e4de5ff0");
-            var ShamanHeavensPrismaticSprayResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("ShamanHeavensPrismaticSprayResource", bp => {
+            var SneakAttackIcon = Resources.GetBlueprint<BlueprintFeature>("9b9eac6709e1c084cb18c3a366e0ec87").Icon;
+            var ShamanSlumsSpiritTrueResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("ShamanSlumsSpiritTrueResource", bp => {
                 bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
-                    BaseValue = 1,
+                    BaseValue = 3,
                     IncreasedByLevel = false,
-                    IncreasedByStat = false,
+                    IncreasedByStat = true,
+                    ResourceBonusStat = StatType.Charisma
                 };
             });
-            var ShamanHeavensScintillatingPatternResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("ShamanHeavensScintillatingPatternResource", bp => {
-                bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
-                    BaseValue = 1,
-                    IncreasedByLevel = false,
-                    IncreasedByStat = false,
-                };
-            });
-            var ShamanHeavensPrismaticSprayAbility = Helpers.CreateBlueprint<BlueprintAbility>("ShamanHeavensPrismaticSprayAbility", bp => {
-                bp.SetName("Phantasmagoric Display - Prismatic Spray");
-                bp.SetDescription("This {g|Encyclopedia:Spell}spell{/g} causes seven shimmering, multicolored beams of light to spray from your hand. Each beam has a different power. Creatures in " +
-                    "the area of the spell with 8 HD or less are automatically blinded for {g|Encyclopedia:Dice}2d4{/g} {g|Encyclopedia:Combat_Round}rounds{/g}. Every creature in the area is randomly " +
-                    "struck by one or more beams, which have additional effects:\n20 points {g|Encyclopedia:Energy_Damage}fire damage{/g} (Reflex half)\n40 points acid " +
-                    "{g|Encyclopedia:Damage}damage{/g} (Reflex half)\n80 points electricity damage (Reflex half)\nPoison (Frequency 1/rd. for 6 rds.; Init. effect {g|Encyclopedia:Injury_Death}death{/g}; " +
-                    "Sec. effect 1 {g|Encyclopedia:Constitution}Con{/g}/rd.; {g|Encyclopedia:Healing}Cure{/g} 2 consecutive Fort {g|Encyclopedia:Saving_Throw}saves{/g})\nBaleful " +
-                    "Polymorph (Fortitude negates)\nInsane, as insanity spell (Will negates)\nSent to another plane forever (Will negates)\nCreature struck by two rays receives both rays' effects at once.");
-                bp.m_Icon = PrismaticSpraySpell.Icon;
-                bp.AddComponent<SpellComponent>(c => {
-                    c.School = SpellSchool.Evocation;
+            var ShamanSlumsSpiritTrueBuff = Helpers.CreateBuff("ShamanSlumsSpiritTrueBuff", bp => {
+                bp.SetName("Paragon of the City");
+                bp.SetDescription("As a standard action, the shaman assumes a spirit-infused paragon form that makes her a lethal stalker of the alleys and shadows. " +
+                    "She gains the ability to make sneak attacks as a rogue of her shaman level for 1 minute. (If she already has sneak attack dice, these stack.) " +
+                    "She can use this ability a number of times per day equal to 3 + her Charisma modifier.");
+                bp.m_Icon = SneakAttackIcon;
+                bp.AddComponent<AddContextStatBonus>(c => {
+                    c.Stat = StatType.SneakAttack;
+                    c.Value = new ContextValue() {
+                        ValueType = ContextValueType.Rank,
+                        ValueRank = AbilityRankType.Default
+                    };
+                    c.Descriptor = ModifierDescriptor.UntypedStackable;
                 });
-                bp.AddComponent<AbilityEffectRunAction>(c => {
-                    c.Actions = PrismaticSpraySpell.GetComponent<AbilityEffectRunAction>().Actions;
-                });
-                bp.AddComponent<AbilityDeliverProjectile>(c => {
-                    c.m_Projectiles = PrismaticSpraySpell.GetComponent<AbilityDeliverProjectile>().m_Projectiles;
-                    c.Type = AbilityProjectileType.Cone;
-                    c.m_Length = new Feet() { m_Value = 60 };
-                    c.m_LineWidth = new Feet() { m_Value = 5 };
-                    c.AttackRollBonusStat = StatType.Unknown;
-                });
-                bp.AddComponent<CraftInfoComponent>(c => {
-                    c.SpellType = CraftSpellType.Other;
-                    c.SavingThrow = CraftSavingThrow.None;
-                    c.AOEType = CraftAOE.AOE;
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.StartPlusDivStep;
+                    c.m_StartLevel = 1;
+                    c.m_StepLevel = 2;
+                    c.m_Class = new BlueprintCharacterClassReference[] { ShamanClass.ToReference<BlueprintCharacterClassReference>() };
                 });
                 bp.m_AllowNonContextActions = false;
-                bp.Type = AbilityType.SpellLike;
-                bp.Range = AbilityRange.Projectile;
-                bp.CanTargetPoint = true;
-                bp.CanTargetEnemies = true;
-                bp.CanTargetFriends = false;
-                bp.CanTargetSelf = true;
-                bp.SpellResistance = true;
-                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Directional;
-                bp.ActionType = UnitCommand.CommandType.Standard;
-                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Extend | Metamagic.Heighten | Metamagic.CompletelyNormal | Metamagic.Bolstered | Metamagic.Selective;
-                bp.LocalizedDuration = PrismaticSpraySpell.LocalizedDuration;
-                bp.LocalizedSavingThrow = PrismaticSpraySpell.LocalizedSavingThrow;
+                bp.IsClassFeature = true;
+                bp.m_Flags = BlueprintBuff.Flags.StayOnDeath;
+                bp.Stacking = StackingType.Replace;
             });
-            var ShamanHeavensScintillatingPatternAbility = Helpers.CreateBlueprint<BlueprintAbility>("ShamanHeavensScintillatingPatternAbility", bp => {
-                bp.SetName("Phantasmagoric Display - Scintillating Pattern");
-                bp.SetDescription("A twisting pattern of coruscating colors weaves through the air, affecting creatures within. The {g|Encyclopedia:Spell}spell{/g} affects a total number of HD of creatures " +
-                    "equal to your {g|Encyclopedia:Caster_Level}caster level{/g} (maximum 20). Creatures with the fewest HD are affected first, and among creatures with equal HD, those who are closest to the " +
-                    "spell's point of origin are affected first. HD that are not sufficient to affect a creature are wasted. The spell affects each subject according to its HD.\n6 or less: " +
-                    "{g|Encyclopedia:Injury_Death}Unconscious{/g} for {g|Encyclopedia:Dice}1d4{/g} {g|Encyclopedia:Combat_Round}rounds{/g}, then stunned for the same amount of rounds, and then confused for the " +
-                    "same amount of rounds. (Treat an unconscious result as stunned for nonliving creatures.)\n7 to 12: Stunned for 1d4 rounds, then confused for the same amount of rounds.\n13 or more: Confused " +
-                    "for 1d4 rounds.\nSightless creatures are not affected by scintillating pattern.");        
-                bp.m_Icon = ScintillatingPatternSpell.Icon;
+            var ShamanSlumsSpiritTrueAbility = Helpers.CreateBlueprint<BlueprintAbility>("ShamanSlumsSpiritTrueAbility", bp => {
+                bp.SetName("Paragon of the City");
+                bp.SetDescription("As a standard action, the shaman assumes a spirit-infused paragon form that makes her a lethal stalker of the alleys and shadows. " +
+                    "She gains the ability to make sneak attacks as a rogue of her shaman level for 1 minute. (If she already has sneak attack dice, these stack.) " +
+                    "She can use this ability a number of times per day equal to 3 + her Charisma modifier.");
+                bp.m_Icon = SneakAttackIcon;
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.SavingThrowType = SavingThrowType.Unknown;
-                    c.Actions = ScintillatingPatternSpell.GetComponent<AbilityEffectRunAction>().Actions;
-                });
-                bp.AddComponent<AbilitySpawnFx>(c => {
-                    c.PrefabLink = new PrefabLink() { AssetId = "63f322580ec0e7c4c96fc62ecabad40f" };
-                    c.Anchor = AbilitySpawnFxAnchor.Caster;
-                    c.WeaponTarget = AbilitySpawnFxWeaponTarget.None;
-                    c.DestroyOnCast = false;
-                    c.Delay = 0;
-                    c.PositionAnchor = AbilitySpawnFxAnchor.None;
-                    c.OrientationAnchor = AbilitySpawnFxAnchor.None;
-                    c.OrientationMode = AbilitySpawnFxOrientation.Copy;
-                });
-                bp.AddComponent<AbilityTargetsAround>(c => {
-                    c.m_Radius = 20.Feet();
-                    c.m_TargetType = TargetType.Any;
-                    c.m_IncludeDead = false;
-                    c.m_Condition = new ConditionsChecker() {
-                        Conditions = new Condition[0]
-                    };
-                });
-                bp.AddComponent<CraftInfoComponent>(c => {
-                    c.SpellType = CraftSpellType.Other;
-                    c.SavingThrow = CraftSavingThrow.None;
-                    c.AOEType = CraftAOE.AOE;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = ShamanSlumsSpiritTrueBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = false,
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Minutes,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 1
+                            },
+                            DurationSeconds = 0,
+                            IsNotDispelable = true
+                        });
                 });
                 bp.m_AllowNonContextActions = false;
-                bp.Type = AbilityType.SpellLike;
-                bp.Range = AbilityRange.Close;
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
                 bp.CanTargetPoint = false;
-                bp.CanTargetEnemies = true;
-                bp.CanTargetFriends = true;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
                 bp.CanTargetSelf = true;
-                bp.SpellResistance = true;
-                bp.EffectOnAlly = AbilityEffectOnUnit.Harmful;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
                 bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
-                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Directional;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.SelfTouch;
                 bp.ActionType = UnitCommand.CommandType.Standard;
                 bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Extend | Metamagic.Heighten | Metamagic.CompletelyNormal | Metamagic.Reach | Metamagic.Selective;
-                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedDuration = Helpers.CreateString("ShamanSlumsSpiritTrueAbility.Duration", "1 minute");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
-            var ShamanHeavensSpiritTrueFeature = Helpers.CreateBlueprint<BlueprintFeature>("ShamanHeavensSpiritTrueFeature", bp => {
-                bp.SetName("Phantasmagoric Display");
-                bp.SetDescription("The shaman can cast prismatic spray and scintillating pattern, each once per day with a caster level equal to her shaman level.");
-                bp.m_Icon = PrismaticSpraySpell.Icon;
+            var ShamanSlumsSpiritTrueFeature = Helpers.CreateBlueprint<BlueprintFeature>("ShamanSlumsSpiritTrueFeature", bp => {
+                bp.SetName("Paragon of the City");
+                bp.SetDescription("As a standard action, the shaman assumes a spirit-infused paragon form that makes her a lethal stalker of the alleys and shadows. " +
+                    "She gains the ability to make sneak attacks as a rogue of her shaman level for 1 minute. (If she already has sneak attack dice, these stack.) " +
+                    "She can use this ability a number of times per day equal to 3 + her Charisma modifier.");
+                bp.m_Icon = SneakAttackIcon;
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] {
-                        ShamanHeavensPrismaticSprayAbility.ToReference<BlueprintUnitFactReference>(),
-                        ShamanHeavensScintillatingPatternAbility.ToReference<BlueprintUnitFactReference>()
+                        ShamanSlumsSpiritTrueAbility.ToReference<BlueprintUnitFactReference>()
                     };
                 });
                 bp.AddComponent<AddAbilityResources>(c => {
-                    c.m_Resource = ShamanHeavensPrismaticSprayResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_Resource = ShamanSlumsSpiritTrueResource.ToReference<BlueprintAbilityResourceReference>();
                     c.RestoreAmount = true;
-                });
-                bp.AddComponent<AddAbilityResources>(c => {
-                    c.m_Resource = ShamanHeavensScintillatingPatternResource.ToReference<BlueprintAbilityResourceReference>();
-                    c.RestoreAmount = true;
-                });
-                bp.AddComponent<ReplaceAbilitiesStat>(c => {
-                    c.m_Ability = new BlueprintAbilityReference[] {
-                        ShamanHeavensPrismaticSprayAbility.ToReference<BlueprintAbilityReference>(),
-                        ShamanHeavensScintillatingPatternAbility.ToReference<BlueprintAbilityReference>() 
-                    };
-                    c.Stat = StatType.Wisdom;
                 });
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = true;
             });
             #endregion
             #region Manifestation 
-            var ShamanHeavensSpiritManifestationResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("ShamanHeavensSpiritManifestationResource", bp => {
-                bp.m_MaxAmount = new BlueprintAbilityResource.Amount() {
-                    BaseValue = 1,
-                    IncreasedByLevel = false,
-                    IncreasedByStat = false
-                };
-            });
-            var EnlightenedPhilosopherFinalRevelationBuff = Resources.GetBlueprintReference<BlueprintBuffReference>("9f1ee3c61ef993d448b0b866ee198ea8");
-            var ShamanHeavensSpiritManifestationFeature = Helpers.CreateBlueprint<BlueprintFeature>("ShamanHeavensSpiritManifestationFeature", bp => {
+            var Corrupter = Resources.GetBlueprint<BlueprintFeature>("55c364c3f02e4fdc8a63125b5a4c256c");
+            var ShamanSlumsSpiritManifestationFeature = Helpers.CreateBlueprint<BlueprintFeature>("ShamanSlumsSpiritManifestationFeature", bp => {
                 bp.SetName("Manifestation");
-                bp.SetDescription("Upon reaching 20th level, the shaman becomes the spirit of heaven. You receive a {g|Encyclopedia:Bonus}bonus{/g} " +
-                    "on all {g|Encyclopedia:Saving_Throw}saving throws{/g} equal to your {g|Encyclopedia:Wisdom}Wisdom{/g} modifier. You become immune to fear effects, and automatically " +
-                    "confirm all critical hits. Once per day, should you die, 1 {g|Encyclopedia:Combat_Round}round{/g} after dying you are reborn. Your body re-forms with all your equipment, " +
-                    "and you return to life with maximum {g|Encyclopedia:HP}hit points{/g}.");
-                bp.AddComponent<DerivativeStatBonus>(c => {
-                    c.BaseStat = StatType.Wisdom;
-                    c.DerivativeStat = StatType.SaveFortitude;
+                bp.SetDescription("Upon reaching 20th level, the shaman becomes a spirit of the slums. She is immune to all diseases and poisons. " +
+                    "When in an urban environment, she gains a +4 insight bonus to her AC and on Reflex saves.");
+                bp.AddComponent<SpellImmunityToSpellDescriptor>(c => {
+                    c.Descriptor = SpellDescriptor.Poison | SpellDescriptor.Disease;
+                    c.m_CasterIgnoreImmunityFact = Corrupter.ToReference<BlueprintUnitFactReference>();
                 });
-                bp.AddComponent<DerivativeStatBonus>(c => {
-                    c.BaseStat = StatType.Wisdom;
-                    c.DerivativeStat = StatType.SaveWill;
+                bp.AddComponent<BuffDescriptorImmunity>(c => {
+                    c.Descriptor = SpellDescriptor.Poison | SpellDescriptor.Disease;
+                    c.m_IgnoreFeature = Corrupter.ToReference<BlueprintUnitFactReference>();
                 });
-                bp.AddComponent<DerivativeStatBonus>(c => {
-                    c.BaseStat = StatType.Wisdom;
-                    c.DerivativeStat = StatType.SaveReflex;
+                bp.AddComponent<AddContextStatBonusInTerrain>(c => {
+                    c.Terrain = AreaSetting.Urban;
+                    c.Descriptor = ModifierDescriptor.Insight;
+                    c.Stat = StatType.AC;
+                    c.Value = 4;
                 });
-                bp.AddComponent<AddConditionImmunity>(c => {
-                    c.Condition = UnitCondition.Frightened;
-                });
-                bp.AddComponent<InitiatorCritAutoconfirm>();
-                bp.AddComponent<DeathActions>(c => {
-                    c.Actions = Helpers.CreateActionList(
-                        new ContextActionApplyBuff() {
-                            m_Buff = EnlightenedPhilosopherFinalRevelationBuff,
-                            Permanent = false,
-                            UseDurationSeconds = false,
-                            DurationValue = new ContextDurationValue() {
-                                Rate = DurationRate.Rounds,
-                                DiceType = DiceType.Zero,
-                                DiceCountValue = 0,
-                                BonusValue = 1,
-                                m_IsExtendable = true
-                            },
-                            DurationSeconds = 0
-                        }
-                        );
-                    c.CheckResource = true;
-                    c.OnlyOnParty = false;
-                    c.m_Resource = ShamanHeavensSpiritManifestationResource.ToReference<BlueprintAbilityResourceReference>();
-                });
-                bp.AddComponent<AddAbilityResources>(c => {
-                    c.UseThisAsResource = false;
-                    c.m_Resource = ShamanHeavensSpiritManifestationResource.ToReference<BlueprintAbilityResourceReference>();
-                    c.RestoreAmount = true;
+                bp.AddComponent<AddContextStatBonusInTerrain>(c => {
+                    c.Terrain = AreaSetting.Urban;
+                    c.Descriptor = ModifierDescriptor.Insight;
+                    c.Stat = StatType.SaveReflex;
+                    c.Value = 4;
                 });
                 bp.m_AllowNonContextActions = false;
                 bp.HideInUI = false;
@@ -494,10 +380,10 @@ namespace ExpandedContent.Tweaks.Spirits {
             #endregion
             #endregion
             #region Progression
-            var ShamanHeavensSpiritProgression = Helpers.CreateBlueprint<BlueprintProgression>("ShamanHeavensSpiritProgression", bp => {
-                bp.SetName("Heavens");
-                bp.SetDescription("A shaman who selects the heavens spirit has eyes that sparkle like starlight, exuding an aura of otherworldliness to those she is around. " +
-                    "When she calls upon one of this spirit’s abilities, her eyes turn pitch black and the colors around her drain for a brief moment.");
+            var ShamanSlumsSpiritProgression = Helpers.CreateBlueprint<BlueprintProgression>("ShamanSlumsSpiritProgression", bp => {
+                bp.SetName("Slums");
+                bp.SetDescription("A shaman who selects the slums spirit gains the city’s alleys and avenues as steadfast allies. The rats in the gutter, " +
+                    "the torches along the walls, the coins that flow through the market are all a part of her and serve her whim.");
                 bp.AddComponent<AddFeaturesFromSelectionToDescription>(c => {
                     c.SetIntroduction("Additional Hexes:");
                     c.m_FeatureSelection = ShamanHexSelection.ToReference<BlueprintFeatureSelectionReference>();
@@ -505,9 +391,9 @@ namespace ExpandedContent.Tweaks.Spirits {
                 });
                 bp.AddComponent<AddSpellsToDescription>(c => {
                     c.SetIntroduction("Bonus Spells:");
-                    c.m_SpellLists = new BlueprintSpellListReference[] { HeavensSpiritSpellList.ToReference<BlueprintSpellListReference>() };
+                    c.m_SpellLists = new BlueprintSpellListReference[] { SlumsSpiritSpellList.ToReference<BlueprintSpellListReference>() };
                 });
-                bp.m_AllowNonContextActions = false;                
+                bp.m_AllowNonContextActions = false;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.ShamanSpirit };
                 bp.IsClassFeature = true;
                 bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
@@ -516,12 +402,12 @@ namespace ExpandedContent.Tweaks.Spirits {
                         AdditionalLevel = 0
                     }
                 };
-                bp.m_Archetypes = new BlueprintProgression.ArchetypeWithLevel[] {};
+                bp.m_Archetypes = new BlueprintProgression.ArchetypeWithLevel[] { };
                 bp.LevelEntries = new LevelEntry[] {
-                    Helpers.LevelEntry(1, ShamanHeavensSpiritBaseFeature, HeavensSpiritSpellListFeature),
-                    Helpers.LevelEntry(8, ShamanHeavensSpiritGreaterFeature),
-                    Helpers.LevelEntry(16, ShamanHeavensSpiritTrueFeature),
-                    Helpers.LevelEntry(20, ShamanHeavensSpiritManifestationFeature)
+                    Helpers.LevelEntry(1, ShamanSlumsSpiritBaseFeature, SlumsSpiritSpellListFeature),
+                    Helpers.LevelEntry(8, ShamanSlumsSpiritGreaterFeature),
+                    Helpers.LevelEntry(16, ShamanSlumsSpiritTrueFeature),
+                    Helpers.LevelEntry(20, ShamanSlumsSpiritManifestationFeature)
                 };
                 bp.GiveFeaturesForPreviousLevels = true;
             });
@@ -530,46 +416,46 @@ namespace ExpandedContent.Tweaks.Spirits {
 
 
             #region Wandering Spirit
-            var ShamanHeavensSpiritWanderingTrueBuff = Helpers.CreateBuff("ShamanHeavensSpiritWanderingTrueBuff", bp => {
+            var ShamanSlumsSpiritWanderingTrueBuff = Helpers.CreateBuff("ShamanSlumsSpiritWanderingTrueBuff", bp => {
                 bp.SetName("");
                 bp.SetDescription("");
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] {
-                        ShamanHeavensSpiritTrueFeature.ToReference<BlueprintUnitFactReference>()
+                        ShamanSlumsSpiritTrueFeature.ToReference<BlueprintUnitFactReference>()
                     };
                 });
                 bp.IsClassFeature = false;
                 bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
                 bp.Stacking = StackingType.Replace;
             });
-            var ShamanHeavensSpiritWanderingGreaterBuff = Helpers.CreateBuff("ShamanHeavensSpiritWanderingGreaterBuff", bp => {
+            var ShamanSlumsSpiritWanderingGreaterBuff = Helpers.CreateBuff("ShamanSlumsSpiritWanderingGreaterBuff", bp => {
                 bp.SetName("");
                 bp.SetDescription("");
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] {
-                        ShamanHeavensSpiritGreaterFeature.ToReference<BlueprintUnitFactReference>()
+                        ShamanSlumsSpiritGreaterFeature.ToReference<BlueprintUnitFactReference>()
                     };
                 });
                 bp.IsClassFeature = false;
                 bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
                 bp.Stacking = StackingType.Replace;
             });
-            var ShamanHeavensSpiritWanderingBaseBuff = Helpers.CreateBuff("ShamanHeavensSpiritWanderingBaseBuff", bp => {
+            var ShamanSlumsSpiritWanderingBaseBuff = Helpers.CreateBuff("ShamanSlumsSpiritWanderingBaseBuff", bp => {
                 bp.SetName("");
                 bp.SetDescription("");
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] {
-                        ShamanHeavensSpiritBaseFeature.ToReference<BlueprintUnitFactReference>()
+                        ShamanSlumsSpiritBaseFeature.ToReference<BlueprintUnitFactReference>()
                     };
                 });
                 bp.IsClassFeature = false;
                 bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
                 bp.Stacking = StackingType.Replace;
             });
-            var ShamanHeavensSpiritWanderingFeature = Helpers.CreateBlueprint<BlueprintFeature>("ShamanHeavensSpiritWanderingFeature", bp => {
-                bp.SetName("Heavens");
-                bp.SetDescription("A shaman who selects the heavens spirit has eyes that sparkle like starlight, exuding an aura of otherworldliness to those she is around. " +
-                    "When she calls upon one of this spirit’s abilities, her eyes turn pitch black and the colors around her drain for a brief moment.");
+            var ShamanSlumsSpiritWanderingFeature = Helpers.CreateBlueprint<BlueprintFeature>("ShamanSlumsSpiritWanderingFeature", bp => {
+                bp.SetName("Slums");
+                bp.SetDescription("A shaman who selects the slums spirit gains the city’s alleys and avenues as steadfast allies. The rats in the gutter, " +
+                    "the torches along the walls, the coins that flow through the market are all a part of her and serve her whim.");
                 bp.AddComponent<AddFactContextActions>(c => {
                     c.Activated = Helpers.CreateActionList(
                         new Conditional() {
@@ -586,7 +472,7 @@ namespace ExpandedContent.Tweaks.Spirits {
                             },
                             IfTrue = Helpers.CreateActionList(
                                 new ContextActionApplyBuff() {
-                                    m_Buff = ShamanHeavensSpiritWanderingTrueBuff.ToReference<BlueprintBuffReference>(),
+                                    m_Buff = ShamanSlumsSpiritWanderingTrueBuff.ToReference<BlueprintBuffReference>(),
                                     Permanent = true,
                                     DurationValue = new ContextDurationValue() {
                                         Rate = DurationRate.Rounds,
@@ -612,7 +498,7 @@ namespace ExpandedContent.Tweaks.Spirits {
                             },
                             IfTrue = Helpers.CreateActionList(
                                 new ContextActionApplyBuff() {
-                                    m_Buff = ShamanHeavensSpiritWanderingGreaterBuff.ToReference<BlueprintBuffReference>(),
+                                    m_Buff = ShamanSlumsSpiritWanderingGreaterBuff.ToReference<BlueprintBuffReference>(),
                                     Permanent = true,
                                     DurationValue = new ContextDurationValue() {
                                         Rate = DurationRate.Rounds,
@@ -625,7 +511,7 @@ namespace ExpandedContent.Tweaks.Spirits {
                             IfFalse = Helpers.CreateActionList()
                         },
                         new ContextActionApplyBuff() {
-                            m_Buff = ShamanHeavensSpiritWanderingBaseBuff.ToReference<BlueprintBuffReference>(),
+                            m_Buff = ShamanSlumsSpiritWanderingBaseBuff.ToReference<BlueprintBuffReference>(),
                             Permanent = true,
                             DurationValue = new ContextDurationValue() {
                                 Rate = DurationRate.Rounds,
@@ -638,25 +524,25 @@ namespace ExpandedContent.Tweaks.Spirits {
                         );
                     c.Deactivated = Helpers.CreateActionList(
                         new ContextActionRemoveBuff() {
-                            m_Buff = ShamanHeavensSpiritWanderingTrueBuff.ToReference<BlueprintBuffReference>()
+                            m_Buff = ShamanSlumsSpiritWanderingTrueBuff.ToReference<BlueprintBuffReference>()
                         },
                         new ContextActionRemoveBuff() {
-                            m_Buff = ShamanHeavensSpiritWanderingGreaterBuff.ToReference<BlueprintBuffReference>()
+                            m_Buff = ShamanSlumsSpiritWanderingGreaterBuff.ToReference<BlueprintBuffReference>()
                         },
                         new ContextActionRemoveBuff() {
-                            m_Buff = ShamanHeavensSpiritWanderingBaseBuff.ToReference<BlueprintBuffReference>()
+                            m_Buff = ShamanSlumsSpiritWanderingBaseBuff.ToReference<BlueprintBuffReference>()
                         }
                         );
                     c.NewRound = Helpers.CreateActionList();
                 });
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] {
-                        HeavensSpiritSpellListFeature.ToReference<BlueprintUnitFactReference>()
+                        SlumsSpiritSpellListFeature.ToReference<BlueprintUnitFactReference>()
                     };
-                });                
+                });
                 bp.AddComponent<PrerequisiteNoFeature>(c => {
                     c.HideInUI = false;
-                    c.m_Feature = ShamanHeavensSpiritProgression.ToReference<BlueprintFeatureReference>();
+                    c.m_Feature = ShamanSlumsSpiritProgression.ToReference<BlueprintFeatureReference>();
                 });
                 bp.AddComponent<ContextRankConfig>(c => {
                     c.m_Type = AbilityRankType.Default;
@@ -680,7 +566,7 @@ namespace ExpandedContent.Tweaks.Spirits {
                         BonusValue = new ContextValue() {
                             ValueType = ContextValueType.Rank,
                             ValueRank = AbilityRankType.Default
-                        }                        
+                        }
                     };
                     c.Modifier = 1;
                 });
@@ -689,10 +575,10 @@ namespace ExpandedContent.Tweaks.Spirits {
             });
             #endregion
             #region Unsworn Wandering Spirit
-            var UnswornShamanHeavensSpiritWanderingFeature1 = Helpers.CreateBlueprint<BlueprintFeature>("UnswornShamanHeavensSpiritWanderingFeature1", bp => {
-                bp.SetName("Heavens");
-                bp.SetDescription("A shaman who selects the heavens spirit has eyes that sparkle like starlight, exuding an aura of otherworldliness to those she is around. " +
-                    "When she calls upon one of this spirit’s abilities, her eyes turn pitch black and the colors around her drain for a brief moment.");
+            var UnswornShamanSlumsSpiritWanderingFeature1 = Helpers.CreateBlueprint<BlueprintFeature>("UnswornShamanSlumsSpiritWanderingFeature1", bp => {
+                bp.SetName("Slums");
+                bp.SetDescription("A shaman who selects the slums spirit gains the city’s alleys and avenues as steadfast allies. The rats in the gutter, " +
+                    "the torches along the walls, the coins that flow through the market are all a part of her and serve her whim.");
                 bp.AddComponent<AddFactContextActions>(c => {
                     c.Activated = Helpers.CreateActionList(
                         new Conditional() {
@@ -709,7 +595,7 @@ namespace ExpandedContent.Tweaks.Spirits {
                             },
                             IfTrue = Helpers.CreateActionList(
                                 new ContextActionApplyBuff() {
-                                    m_Buff = ShamanHeavensSpiritWanderingTrueBuff.ToReference<BlueprintBuffReference>(),
+                                    m_Buff = ShamanSlumsSpiritWanderingTrueBuff.ToReference<BlueprintBuffReference>(),
                                     Permanent = true,
                                     DurationValue = new ContextDurationValue() {
                                         Rate = DurationRate.Rounds,
@@ -735,7 +621,7 @@ namespace ExpandedContent.Tweaks.Spirits {
                             },
                             IfTrue = Helpers.CreateActionList(
                                 new ContextActionApplyBuff() {
-                                    m_Buff = ShamanHeavensSpiritWanderingGreaterBuff.ToReference<BlueprintBuffReference>(),
+                                    m_Buff = ShamanSlumsSpiritWanderingGreaterBuff.ToReference<BlueprintBuffReference>(),
                                     Permanent = true,
                                     DurationValue = new ContextDurationValue() {
                                         Rate = DurationRate.Rounds,
@@ -748,7 +634,7 @@ namespace ExpandedContent.Tweaks.Spirits {
                             IfFalse = Helpers.CreateActionList()
                         },
                         new ContextActionApplyBuff() {
-                            m_Buff = ShamanHeavensSpiritWanderingBaseBuff.ToReference<BlueprintBuffReference>(),
+                            m_Buff = ShamanSlumsSpiritWanderingBaseBuff.ToReference<BlueprintBuffReference>(),
                             Permanent = true,
                             DurationValue = new ContextDurationValue() {
                                 Rate = DurationRate.Rounds,
@@ -761,25 +647,25 @@ namespace ExpandedContent.Tweaks.Spirits {
                         );
                     c.Deactivated = Helpers.CreateActionList(
                         new ContextActionRemoveBuff() {
-                            m_Buff = ShamanHeavensSpiritWanderingTrueBuff.ToReference<BlueprintBuffReference>()
+                            m_Buff = ShamanSlumsSpiritWanderingTrueBuff.ToReference<BlueprintBuffReference>()
                         },
                         new ContextActionRemoveBuff() {
-                            m_Buff = ShamanHeavensSpiritWanderingGreaterBuff.ToReference<BlueprintBuffReference>()
+                            m_Buff = ShamanSlumsSpiritWanderingGreaterBuff.ToReference<BlueprintBuffReference>()
                         },
                         new ContextActionRemoveBuff() {
-                            m_Buff = ShamanHeavensSpiritWanderingBaseBuff.ToReference<BlueprintBuffReference>()
+                            m_Buff = ShamanSlumsSpiritWanderingBaseBuff.ToReference<BlueprintBuffReference>()
                         }
                         );
                     c.NewRound = Helpers.CreateActionList();
                 });
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] {
-                        HeavensSpiritSpellListFeature.ToReference<BlueprintUnitFactReference>()
+                        SlumsSpiritSpellListFeature.ToReference<BlueprintUnitFactReference>()
                     };
                 });
                 bp.AddComponent<PrerequisiteNoFeature>(c => {
                     c.HideInUI = false;
-                    c.m_Feature = ShamanHeavensSpiritProgression.ToReference<BlueprintFeatureReference>();
+                    c.m_Feature = ShamanSlumsSpiritProgression.ToReference<BlueprintFeatureReference>();
                 });
                 bp.AddComponent<ContextRankConfig>(c => {
                     c.m_Type = AbilityRankType.Default;
@@ -810,10 +696,10 @@ namespace ExpandedContent.Tweaks.Spirits {
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = true;
             });
-            var UnswornShamanHeavensSpiritWanderingFeature2 = Helpers.CreateBlueprint<BlueprintFeature>("UnswornShamanHeavensSpiritWanderingFeature2", bp => {
-                bp.SetName("Heavens");
-                bp.SetDescription("A shaman who selects the heavens spirit has eyes that sparkle like starlight, exuding an aura of otherworldliness to those she is around. " +
-                    "When she calls upon one of this spirit’s abilities, her eyes turn pitch black and the colors around her drain for a brief moment.");
+            var UnswornShamanSlumsSpiritWanderingFeature2 = Helpers.CreateBlueprint<BlueprintFeature>("UnswornShamanSlumsSpiritWanderingFeature2", bp => {
+                bp.SetName("Slums");
+                bp.SetDescription("A shaman who selects the slums spirit gains the city’s alleys and avenues as steadfast allies. The rats in the gutter, " +
+                    "the torches along the walls, the coins that flow through the market are all a part of her and serve her whim.");
                 bp.AddComponent<AddFactContextActions>(c => {
                     c.Activated = Helpers.CreateActionList(
                         new Conditional() {
@@ -830,7 +716,7 @@ namespace ExpandedContent.Tweaks.Spirits {
                             },
                             IfTrue = Helpers.CreateActionList(
                                 new ContextActionApplyBuff() {
-                                    m_Buff = ShamanHeavensSpiritWanderingTrueBuff.ToReference<BlueprintBuffReference>(),
+                                    m_Buff = ShamanSlumsSpiritWanderingTrueBuff.ToReference<BlueprintBuffReference>(),
                                     Permanent = true,
                                     DurationValue = new ContextDurationValue() {
                                         Rate = DurationRate.Rounds,
@@ -856,7 +742,7 @@ namespace ExpandedContent.Tweaks.Spirits {
                             },
                             IfTrue = Helpers.CreateActionList(
                                 new ContextActionApplyBuff() {
-                                    m_Buff = ShamanHeavensSpiritWanderingGreaterBuff.ToReference<BlueprintBuffReference>(),
+                                    m_Buff = ShamanSlumsSpiritWanderingGreaterBuff.ToReference<BlueprintBuffReference>(),
                                     Permanent = true,
                                     DurationValue = new ContextDurationValue() {
                                         Rate = DurationRate.Rounds,
@@ -869,7 +755,7 @@ namespace ExpandedContent.Tweaks.Spirits {
                             IfFalse = Helpers.CreateActionList()
                         },
                         new ContextActionApplyBuff() {
-                            m_Buff = ShamanHeavensSpiritWanderingBaseBuff.ToReference<BlueprintBuffReference>(),
+                            m_Buff = ShamanSlumsSpiritWanderingBaseBuff.ToReference<BlueprintBuffReference>(),
                             Permanent = true,
                             DurationValue = new ContextDurationValue() {
                                 Rate = DurationRate.Rounds,
@@ -882,25 +768,25 @@ namespace ExpandedContent.Tweaks.Spirits {
                         );
                     c.Deactivated = Helpers.CreateActionList(
                         new ContextActionRemoveBuff() {
-                            m_Buff = ShamanHeavensSpiritWanderingTrueBuff.ToReference<BlueprintBuffReference>()
+                            m_Buff = ShamanSlumsSpiritWanderingTrueBuff.ToReference<BlueprintBuffReference>()
                         },
                         new ContextActionRemoveBuff() {
-                            m_Buff = ShamanHeavensSpiritWanderingGreaterBuff.ToReference<BlueprintBuffReference>()
+                            m_Buff = ShamanSlumsSpiritWanderingGreaterBuff.ToReference<BlueprintBuffReference>()
                         },
                         new ContextActionRemoveBuff() {
-                            m_Buff = ShamanHeavensSpiritWanderingBaseBuff.ToReference<BlueprintBuffReference>()
+                            m_Buff = ShamanSlumsSpiritWanderingBaseBuff.ToReference<BlueprintBuffReference>()
                         }
                         );
                     c.NewRound = Helpers.CreateActionList();
                 });
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] {
-                        HeavensSpiritSpellListFeature.ToReference<BlueprintUnitFactReference>()
+                        SlumsSpiritSpellListFeature.ToReference<BlueprintUnitFactReference>()
                     };
                 });
                 bp.AddComponent<PrerequisiteNoFeature>(c => {
                     c.HideInUI = false;
-                    c.m_Feature = ShamanHeavensSpiritProgression.ToReference<BlueprintFeatureReference>();
+                    c.m_Feature = ShamanSlumsSpiritProgression.ToReference<BlueprintFeatureReference>();
                 });
                 bp.AddComponent<ContextRankConfig>(c => {
                     c.m_Type = AbilityRankType.Default;
@@ -1259,29 +1145,29 @@ namespace ExpandedContent.Tweaks.Spirits {
                     c.Group = Prerequisite.GroupType.Any;
                     c.CheckInProgression = false;
                     c.HideInUI = false;
-                    c.m_Feature = ShamanHeavensSpiritProgression.ToReference<BlueprintFeatureReference>();
+                    c.m_Feature = ShamanSlumsSpiritProgression.ToReference<BlueprintFeatureReference>();
                 });
                 bp.AddComponent<PrerequisiteFeature>(c => {
                     c.Group = Prerequisite.GroupType.Any;
                     c.CheckInProgression = false;
                     c.HideInUI = false;
-                    c.m_Feature = ShamanHeavensSpiritWanderingFeature.ToReference<BlueprintFeatureReference>();
+                    c.m_Feature = ShamanSlumsSpiritWanderingFeature.ToReference<BlueprintFeatureReference>();
                 });
                 bp.AddComponent<PrerequisiteFeature>(c => {
                     c.Group = Prerequisite.GroupType.Any;
                     c.CheckInProgression = false;
                     c.HideInUI = false;
-                    c.m_Feature = ShamanHeavensSpiritBaseFeature.ToReference<BlueprintFeatureReference>();
+                    c.m_Feature = ShamanSlumsSpiritBaseFeature.ToReference<BlueprintFeatureReference>();
                 });
                 bp.Groups = new FeatureGroup[] { FeatureGroup.ShamanHex };
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = true;
-            });            
+            });
             SpiritTools.RegisterShamanHex(ShamanHexGuidingStarFeature);
             #endregion
-            #region Lure of the Heavens
-            var LureOfTheHeavensIcon = AssetLoader.LoadInternal("Skills", "Icon_LureOfTheHeavens.png");
-            var ShamanHexLureOfTheHeavensResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("ShamanHexLureOfTheHeavensResource", bp => {
+            #region Lure of the Slums
+            var LureOfTheSlumsIcon = AssetLoader.LoadInternal("Skills", "Icon_LureOfTheSlums.png");
+            var ShamanHexLureOfTheSlumsResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("ShamanHexLureOfTheSlumsResource", bp => {
                 bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
                     BaseValue = 0,
                     IncreasedByLevel = true,
@@ -1302,8 +1188,8 @@ namespace ExpandedContent.Tweaks.Spirits {
                 bp.m_UseMax = true;
                 bp.m_Max = 20;
             });
-            var ShamanHexLureOfTheHeavensHoverFeature = Helpers.CreateBlueprint<BlueprintFeature>("ShamanHexLureOfTheHeavensHoverFeature", bp => {
-                bp.SetName("Lure of the Heavens");
+            var ShamanHexLureOfTheSlumsHoverFeature = Helpers.CreateBlueprint<BlueprintFeature>("ShamanHexLureOfTheSlumsHoverFeature", bp => {
+                bp.SetName("Lure of the Slums");
                 bp.SetDescription("");
                 bp.AddComponent<AddConditionImmunity>(c => {
                     c.Condition = UnitCondition.DifficultTerrain;
@@ -1316,12 +1202,12 @@ namespace ExpandedContent.Tweaks.Spirits {
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = true;
             });
-            var ShamanHexLureOfTheHeavensFlyBuff = Helpers.CreateBuff("ShamanHexLureOfTheHeavensFlyBuff", bp => {
-                bp.SetName("Lure of the Heavens");
+            var ShamanHexLureOfTheSlumsFlyBuff = Helpers.CreateBuff("ShamanHexLureOfTheSlumsFlyBuff", bp => {
+                bp.SetName("Lure of the Slums");
                 bp.SetDescription("Your connection to the skies above is so strong that your feet barely touch the ground. At 1st level, you no longer leave tracks gaining a +1 to stealth. At 5th level, " +
                     "you can hover up to 6 inches above the ground, avoiding difficult terrain. At 10th level you gain the ability to fly along the ground, gaining a +3 dodge bonus to AC against melee attacks, " +
                     "for a number of minutes per day equal to your shaman level. This duration does not need to be consecutive, but it must be spent in 1-minute increments.");
-                bp.m_Icon = LureOfTheHeavensIcon;
+                bp.m_Icon = LureOfTheSlumsIcon;
                 bp.AddComponent<ACBonusAgainstAttacks>(c => {
                     c.AgainstMeleeOnly = true;
                     c.AgainstRangedOnly = false;
@@ -1344,17 +1230,17 @@ namespace ExpandedContent.Tweaks.Spirits {
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = true;
             });
-            var ShamanHexLureOfTheHeavensFlyAbility = Helpers.CreateBlueprint<BlueprintActivatableAbility>("ShamanHexLureOfTheHeavensFlyAbility", bp => {
-                bp.SetName("Lure of the Heavens");
+            var ShamanHexLureOfTheSlumsFlyAbility = Helpers.CreateBlueprint<BlueprintActivatableAbility>("ShamanHexLureOfTheSlumsFlyAbility", bp => {
+                bp.SetName("Lure of the Slums");
                 bp.SetDescription("Your connection to the skies above is so strong that your feet barely touch the ground. At 1st level, you no longer leave tracks gaining a +1 to stealth. At 5th level, " +
                     "you can hover up to 6 inches above the ground, avoiding difficult terrain. At 10th level you gain the ability to fly along the ground, gaining a +3 dodge bonus to AC against melee attacks, " +
                     "for a number of minutes per day equal to your shaman level. This duration does not need to be consecutive, but it must be spent in 1-minute increments.");
-                bp.m_Icon = LureOfTheHeavensIcon;
+                bp.m_Icon = LureOfTheSlumsIcon;
                 bp.AddComponent<ActivatableAbilityResourceLogic>(c => {
                     c.SpendType = ActivatableAbilityResourceLogic.ResourceSpendType.OncePerMinute;
-                    c.m_RequiredResource = ShamanHexLureOfTheHeavensResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_RequiredResource = ShamanHexLureOfTheSlumsResource.ToReference<BlueprintAbilityResourceReference>();
                 });
-                bp.m_Buff = ShamanHexLureOfTheHeavensFlyBuff.ToReference<BlueprintBuffReference>();
+                bp.m_Buff = ShamanHexLureOfTheSlumsFlyBuff.ToReference<BlueprintBuffReference>();
                 bp.AddComponent<SpellDescriptorComponent>(c => {
                     c.Descriptor = SpellDescriptor.Hex;
                 });
@@ -1363,24 +1249,24 @@ namespace ExpandedContent.Tweaks.Spirits {
                 bp.m_ActivateWithUnitCommand = UnitCommand.CommandType.Standard;
                 bp.DeactivateIfCombatEnded = false;
             });
-            var ShamanHexLureOfTheHeavensFlyFeature = Helpers.CreateBlueprint<BlueprintFeature>("ShamanHexLureOfTheHeavensFlyFeature", bp => {
-                bp.SetName("Lure of the Heavens");
+            var ShamanHexLureOfTheSlumsFlyFeature = Helpers.CreateBlueprint<BlueprintFeature>("ShamanHexLureOfTheSlumsFlyFeature", bp => {
+                bp.SetName("Lure of the Slums");
                 bp.SetDescription("Your connection to the skies above is so strong that your feet barely touch the ground. At 1st level, you no longer leave tracks gaining a +1 to stealth. At 5th level, " +
                     "you can hover up to 6 inches above the ground, avoiding difficult terrain. At 10th level you gain the ability to fly along the ground, gaining a +3 dodge bonus to AC against melee attacks, " +
                     "for a number of minutes per day equal to your shaman level. This duration does not need to be consecutive, but it must be spent in 1-minute increments.");
                 bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[] { ShamanHexLureOfTheHeavensFlyAbility.ToReference<BlueprintUnitFactReference>() };
+                    c.m_Facts = new BlueprintUnitFactReference[] { ShamanHexLureOfTheSlumsFlyAbility.ToReference<BlueprintUnitFactReference>() };
                 });
                 bp.HideInUI = true;
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = true;
             });
-            var ShamanHexLureOfTheHeavensFeature = Helpers.CreateBlueprint<BlueprintFeature>("ShamanHexLureOfTheHeavensFeature", bp => {
-                bp.SetName("Lure of the Heavens");
+            var ShamanHexLureOfTheSlumsFeature = Helpers.CreateBlueprint<BlueprintFeature>("ShamanHexLureOfTheSlumsFeature", bp => {
+                bp.SetName("Lure of the Slums");
                 bp.SetDescription("Your connection to the skies above is so strong that your feet barely touch the ground. At 1st level, you no longer leave tracks gaining a +1 to stealth. At 5th level, " +
                     "you can hover up to 6 inches above the ground, avoiding difficult terrain. At 10th level you gain the ability to fly along the ground, gaining a +3 dodge bonus to AC against melee attacks, " +
                     "for a number of minutes per day equal to your shaman level. This duration does not need to be consecutive, but it must be spent in 1-minute increments.");
-                bp.m_Icon = LureOfTheHeavensIcon;
+                bp.m_Icon = LureOfTheSlumsIcon;
                 bp.AddComponent<AddStatBonus>(c => {
                     c.Descriptor = ModifierDescriptor.UntypedStackable;
                     c.Stat = StatType.SkillStealth;
@@ -1389,42 +1275,42 @@ namespace ExpandedContent.Tweaks.Spirits {
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = ShamanClass.ToReference<BlueprintCharacterClassReference>();
                     c.Level = 5;
-                    c.m_Feature = ShamanHexLureOfTheHeavensHoverFeature.ToReference<BlueprintFeatureReference>();
+                    c.m_Feature = ShamanHexLureOfTheSlumsHoverFeature.ToReference<BlueprintFeatureReference>();
                     c.BeforeThisLevel = false;
                 });
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = ShamanClass.ToReference<BlueprintCharacterClassReference>();
                     c.Level = 10;
-                    c.m_Feature = ShamanHexLureOfTheHeavensFlyFeature.ToReference<BlueprintFeatureReference>();
+                    c.m_Feature = ShamanHexLureOfTheSlumsFlyFeature.ToReference<BlueprintFeatureReference>();
                     c.BeforeThisLevel = false;
                 });
                 bp.AddComponent<AddAbilityResources>(c => {
-                    c.m_Resource = ShamanHexLureOfTheHeavensResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_Resource = ShamanHexLureOfTheSlumsResource.ToReference<BlueprintAbilityResourceReference>();
                     c.RestoreAmount = true;
                 });
                 bp.AddComponent<PrerequisiteFeature>(c => {
                     c.Group = Prerequisite.GroupType.Any;
                     c.CheckInProgression = false;
                     c.HideInUI = false;
-                    c.m_Feature = ShamanHeavensSpiritProgression.ToReference<BlueprintFeatureReference>();
+                    c.m_Feature = ShamanSlumsSpiritProgression.ToReference<BlueprintFeatureReference>();
                 });
                 bp.AddComponent<PrerequisiteFeature>(c => {
                     c.Group = Prerequisite.GroupType.Any;
                     c.CheckInProgression = false;
                     c.HideInUI = false;
-                    c.m_Feature = ShamanHeavensSpiritWanderingFeature.ToReference<BlueprintFeatureReference>();
+                    c.m_Feature = ShamanSlumsSpiritWanderingFeature.ToReference<BlueprintFeatureReference>();
                 });
                 bp.AddComponent<PrerequisiteFeature>(c => {
                     c.Group = Prerequisite.GroupType.Any;
                     c.CheckInProgression = false;
                     c.HideInUI = false;
-                    c.m_Feature = ShamanHeavensSpiritBaseFeature.ToReference<BlueprintFeatureReference>();
+                    c.m_Feature = ShamanSlumsSpiritBaseFeature.ToReference<BlueprintFeatureReference>();
                 });
                 bp.Groups = new FeatureGroup[] { FeatureGroup.ShamanHex };
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = true;
             });
-            SpiritTools.RegisterShamanHex(ShamanHexLureOfTheHeavensFeature);
+            SpiritTools.RegisterShamanHex(ShamanHexLureOfTheSlumsFeature);
             #endregion
             #region Starburn
             var MageLightBuff = Resources.GetBlueprint<BlueprintBuff>("571baa4cf65bbcb4996fe429ca77d1a5");
@@ -1543,7 +1429,7 @@ namespace ExpandedContent.Tweaks.Spirits {
                                 )
                         }
                         );
-                });                
+                });
                 bp.AddComponent<AbilityResourceLogic>(c => {
                     c.m_RequiredResource = ShamanHexStarburnResource.ToReference<BlueprintAbilityResourceReference>();
                     c.m_IsSpendResource = true;
@@ -1557,7 +1443,7 @@ namespace ExpandedContent.Tweaks.Spirits {
                     c.m_StartLevel = 0;
                     c.m_StepLevel = 2;
                     c.m_UseMin = true;
-                    c.m_Min = 1;                    
+                    c.m_Min = 1;
                     c.m_Class = new BlueprintCharacterClassReference[] {
                         ShamanClass.ToReference<BlueprintCharacterClassReference>()
                     };
@@ -1603,19 +1489,19 @@ namespace ExpandedContent.Tweaks.Spirits {
                     c.Group = Prerequisite.GroupType.Any;
                     c.CheckInProgression = false;
                     c.HideInUI = false;
-                    c.m_Feature = ShamanHeavensSpiritProgression.ToReference<BlueprintFeatureReference>();
+                    c.m_Feature = ShamanSlumsSpiritProgression.ToReference<BlueprintFeatureReference>();
                 });
                 bp.AddComponent<PrerequisiteFeature>(c => {
                     c.Group = Prerequisite.GroupType.Any;
                     c.CheckInProgression = false;
                     c.HideInUI = false;
-                    c.m_Feature = ShamanHeavensSpiritWanderingFeature.ToReference<BlueprintFeatureReference>();
+                    c.m_Feature = ShamanSlumsSpiritWanderingFeature.ToReference<BlueprintFeatureReference>();
                 });
                 bp.AddComponent<PrerequisiteFeature>(c => {
                     c.Group = Prerequisite.GroupType.Any;
                     c.CheckInProgression = false;
                     c.HideInUI = false;
-                    c.m_Feature = ShamanHeavensSpiritBaseFeature.ToReference<BlueprintFeatureReference>();
+                    c.m_Feature = ShamanSlumsSpiritBaseFeature.ToReference<BlueprintFeatureReference>();
                 });
                 bp.Groups = new FeatureGroup[] { FeatureGroup.ShamanHex };
                 bp.m_AllowNonContextActions = false;
@@ -1624,19 +1510,19 @@ namespace ExpandedContent.Tweaks.Spirits {
             SpiritTools.RegisterShamanHex(ShamanHexStarburnFeature);
             #endregion
 
-            ShamanHeavensSpiritProgression.IsPrerequisiteFor = new List<BlueprintFeatureReference>() {
+            ShamanSlumsSpiritProgression.IsPrerequisiteFor = new List<BlueprintFeatureReference>() {
                 ShamanHexGuidingStarFeature.ToReference<BlueprintFeatureReference>(),
-                ShamanHexLureOfTheHeavensFeature.ToReference<BlueprintFeatureReference>(),
+                ShamanHexLureOfTheSlumsFeature.ToReference<BlueprintFeatureReference>(),
                 ShamanHexStarburnFeature.ToReference<BlueprintFeatureReference>()
             };
             #endregion
 
 
-            SpiritTools.RegisterSpirit(ShamanHeavensSpiritProgression);
-            SpiritTools.RegisterSecondSpirit(ShamanHeavensSpiritProgression);
-            SpiritTools.RegisterWanderingSpirit(ShamanHeavensSpiritWanderingFeature);
-            SpiritTools.RegisterUnswornSpirit1(UnswornShamanHeavensSpiritWanderingFeature1);
-            SpiritTools.RegisterUnswornSpirit2(UnswornShamanHeavensSpiritWanderingFeature2);
+            SpiritTools.RegisterSpirit(ShamanSlumsSpiritProgression);
+            SpiritTools.RegisterSecondSpirit(ShamanSlumsSpiritProgression);
+            SpiritTools.RegisterWanderingSpirit(ShamanSlumsSpiritWanderingFeature);
+            SpiritTools.RegisterUnswornSpirit1(UnswornShamanSlumsSpiritWanderingFeature1);
+            SpiritTools.RegisterUnswornSpirit2(UnswornShamanSlumsSpiritWanderingFeature2);
 
 
         }
