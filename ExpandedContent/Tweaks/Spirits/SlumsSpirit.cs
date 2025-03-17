@@ -1126,20 +1126,16 @@ namespace ExpandedContent.Tweaks.Spirits {
                     ShamanHexGuidingStarMetamagicAbilityExtend.ToReference<BlueprintAbilityReference>()
                 };
             });
-            var ShamanHexGuidingStarFeature = Helpers.CreateBlueprint<BlueprintFeature>("ShamanHexGuidingStarFeature", bp => {
-                bp.SetName("Guiding Star");
-                bp.SetDescription("The stars themselves hold many answers, you may add your Wisdom modifier to your Charisma modifier on all Charisma-based skill checks. In addition, once per day you can " +
-                    "cast one spell as if it were modified by the Empower Spell or Extend Spell feat without increasing the spell’s casting time or level.");
+            var ShamanHexAccidentFeature = Helpers.CreateBlueprint<BlueprintFeature>("ShamanHexAccidentFeature", bp => {
+                bp.SetName("Accident");
+                bp.SetDescription("The shaman causes a target within 30 feet to stumble and fall. The shaman attempts a trip {g|Encyclopedia:Combat_Maneuvers}combat maneuver{/g} " +
+                    "using her {g|Encyclopedia:Caster_Level}caster level{/g} as its {g|Encyclopedia:BAB}base attack bonus{/g} against the target’s CMD. On a successful check, " +
+                    "the target falls prone and takes 1d6 points of damage.");
                 bp.m_Icon = GuidingStarIcon;
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] {
-                        ShamanHexGuidingStarSkillFeature.ToReference<BlueprintUnitFactReference>(),
-                        ShamanHexGuidingStarMetamagicAbilityBase.ToReference<BlueprintUnitFactReference>()
+                        ShamanHexAccidentAbility.ToReference<BlueprintUnitFactReference>()
                     };
-                });
-                bp.AddComponent<AddAbilityResources>(c => {
-                    c.m_Resource = ShamanHexGuidingStarResource.ToReference<BlueprintAbilityResourceReference>();
-                    c.RestoreAmount = true;
                 });
                 bp.AddComponent<PrerequisiteFeature>(c => {
                     c.Group = Prerequisite.GroupType.Any;
@@ -1163,7 +1159,7 @@ namespace ExpandedContent.Tweaks.Spirits {
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = true;
             });
-            SpiritTools.RegisterShamanHex(ShamanHexGuidingStarFeature);
+            SpiritTools.RegisterShamanHex(ShamanHexAccidentFeature);
             #endregion
             #region Lure of the Slums
             var LureOfTheSlumsIcon = AssetLoader.LoadInternal("Skills", "Icon_LureOfTheSlums.png");
@@ -1261,32 +1257,17 @@ namespace ExpandedContent.Tweaks.Spirits {
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = true;
             });
-            var ShamanHexLureOfTheSlumsFeature = Helpers.CreateBlueprint<BlueprintFeature>("ShamanHexLureOfTheSlumsFeature", bp => {
-                bp.SetName("Lure of the Slums");
-                bp.SetDescription("Your connection to the skies above is so strong that your feet barely touch the ground. At 1st level, you no longer leave tracks gaining a +1 to stealth. At 5th level, " +
-                    "you can hover up to 6 inches above the ground, avoiding difficult terrain. At 10th level you gain the ability to fly along the ground, gaining a +3 dodge bonus to AC against melee attacks, " +
-                    "for a number of minutes per day equal to your shaman level. This duration does not need to be consecutive, but it must be spent in 1-minute increments.");
+            var ShamanHexBadPennyFeature = Helpers.CreateBlueprint<BlueprintFeature>("ShamanHexBadPennyFeature", bp => {
+                bp.SetName("Bad Penny");
+                bp.SetDescription("As a standard action, the shaman can curse a coin, and magically place it in the pockets of a target within 30 feet. " +
+                    "The bearer of the cursed coin takes a –2 penalty on all saving throws and skill checks as long he has the coin on his person. " +
+                    "Once the coin leaves his person, the curse ends and the coin becomes a mundane piece of tender again. " +
+                    "At 8th level, the penalty becomes –4. If the shaman curses a new coin, the previous curse ends. This is a curse effect.");
                 bp.m_Icon = LureOfTheSlumsIcon;
-                bp.AddComponent<AddStatBonus>(c => {
-                    c.Descriptor = ModifierDescriptor.UntypedStackable;
-                    c.Stat = StatType.SkillStealth;
-                    c.Value = 1;
-                });
-                bp.AddComponent<AddFeatureOnClassLevel>(c => {
-                    c.m_Class = ShamanClass.ToReference<BlueprintCharacterClassReference>();
-                    c.Level = 5;
-                    c.m_Feature = ShamanHexLureOfTheSlumsHoverFeature.ToReference<BlueprintFeatureReference>();
-                    c.BeforeThisLevel = false;
-                });
-                bp.AddComponent<AddFeatureOnClassLevel>(c => {
-                    c.m_Class = ShamanClass.ToReference<BlueprintCharacterClassReference>();
-                    c.Level = 10;
-                    c.m_Feature = ShamanHexLureOfTheSlumsFlyFeature.ToReference<BlueprintFeatureReference>();
-                    c.BeforeThisLevel = false;
-                });
-                bp.AddComponent<AddAbilityResources>(c => {
-                    c.m_Resource = ShamanHexLureOfTheSlumsResource.ToReference<BlueprintAbilityResourceReference>();
-                    c.RestoreAmount = true;
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        ShamanHexBadPennyAbility.ToReference<BlueprintUnitFactReference>()
+                    };
                 });
                 bp.AddComponent<PrerequisiteFeature>(c => {
                     c.Group = Prerequisite.GroupType.Any;
@@ -1310,7 +1291,7 @@ namespace ExpandedContent.Tweaks.Spirits {
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = true;
             });
-            SpiritTools.RegisterShamanHex(ShamanHexLureOfTheSlumsFeature);
+            SpiritTools.RegisterShamanHex(ShamanHexBadPennyFeature);
             #endregion
             #region Starburn
             var MageLightBuff = Resources.GetBlueprint<BlueprintBuff>("571baa4cf65bbcb4996fe429ca77d1a5");
@@ -1470,19 +1451,18 @@ namespace ExpandedContent.Tweaks.Spirits {
                 bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = Helpers.CreateString("ShamanHexStarburnAbility.SavingThrow", "Fortitude partial");
             });
-            var ShamanHexStarburnFeature = Helpers.CreateBlueprint<BlueprintFeature>("ShamanHexStarburnFeature", bp => {
-                bp.SetName("Starburn");
-                bp.SetDescription("As a standard action, the shaman causes one creature within 30 feet to burn like a star. The creature takes 1d6 points of fire damage for every " +
-                    "2 levels the shaman possesses and emits bright light for 1 round. A successful Fortitude saving throw halves the damage and negates the emission of bright light. " +
-                    "The shaman can use this hex a number of times per day equal to her Charisma modifier (minimum 1), but must wait 1d4 rounds between uses.");
+            var ShamanHexCitySpiritFeature = Helpers.CreateBlueprint<BlueprintFeature>("ShamanHexCitySpiritFeature", bp => {
+                bp.SetName("City Spirit");
+                bp.SetDescription("As a swift action, the shaman channels the city’s spirit through herself, gaining a +4 bonus on all Dexterity– and Wisdom-based skill checks. " +
+                    "She can use this ability for a number of minutes per day equal to 3 + her Charisma modifier. These minutes need not be consecutive.");
                 bp.m_Icon = MageLightBuff.m_Icon;
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] {
-                        ShamanHexStarburnAbility.ToReference<BlueprintUnitFactReference>()
+                        ShamanHexCitySpiritAbility.ToReference<BlueprintUnitFactReference>()
                     };
                 });
                 bp.AddComponent<AddAbilityResources>(c => {
-                    c.m_Resource = ShamanHexStarburnResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_Resource = ShamanHexCitySpiritResource.ToReference<BlueprintAbilityResourceReference>();
                     c.RestoreAmount = true;
                 });
                 bp.AddComponent<PrerequisiteFeature>(c => {
@@ -1507,13 +1487,56 @@ namespace ExpandedContent.Tweaks.Spirits {
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = true;
             });
-            SpiritTools.RegisterShamanHex(ShamanHexStarburnFeature);
+            SpiritTools.RegisterShamanHex(ShamanHexCitySpiritFeature);
+            #endregion
+            #region Ward of the City
+
+            var ShamanHexWardOfTheCityFeature = Helpers.CreateBlueprint<BlueprintFeature>("ShamanHexWardOfTheCityFeature", bp => {
+                bp.SetName("Ward of the City");
+                bp.SetDescription("The spirit of the city shrouds one creature the shaman touches from the hazards of the slums. " +
+                    "The warded creature gains a +5 bonus on saves against disease and poison, and a +25% bonus on percentage chances to negate critical hits and sneak attacks. " +
+                    "(This stacks with effects such as fortification, or abilities that grant a creature with no chance to negate critical hits a flat 25% chance.) " +
+                    "Each time the ward is used (whether the roll is successful or not), the bonuses are reduced by 1 and 5%, respectively. " +
+                    "The ward ends when the bonuses are reduced to 0, when the shaman wards a new creature, or after 24 hours, whichever comes first. " +
+                    "At 8th level and 16th level, the ward’s starting bonuses increase by 2 and 10%, respectively. " +
+                    "A creature affected by this hex cannot be affected by it again for 24 hours.");
+                bp.m_Icon = MageLightBuff.m_Icon;
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        ShamanHexWardOfTheCityAbility.ToReference<BlueprintUnitFactReference>()
+                    };
+                });
+                bp.AddComponent<PrerequisiteFeature>(c => {
+                    c.Group = Prerequisite.GroupType.Any;
+                    c.CheckInProgression = false;
+                    c.HideInUI = false;
+                    c.m_Feature = ShamanSlumsSpiritProgression.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteFeature>(c => {
+                    c.Group = Prerequisite.GroupType.Any;
+                    c.CheckInProgression = false;
+                    c.HideInUI = false;
+                    c.m_Feature = ShamanSlumsSpiritWanderingFeature.ToReference<BlueprintFeatureReference>();
+                });
+                bp.AddComponent<PrerequisiteFeature>(c => {
+                    c.Group = Prerequisite.GroupType.Any;
+                    c.CheckInProgression = false;
+                    c.HideInUI = false;
+                    c.m_Feature = ShamanSlumsSpiritBaseFeature.ToReference<BlueprintFeatureReference>();
+                });
+                bp.Groups = new FeatureGroup[] { FeatureGroup.ShamanHex };
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+            SpiritTools.RegisterShamanHex(ShamanHexWardOfTheCityFeature);
             #endregion
 
+
             ShamanSlumsSpiritProgression.IsPrerequisiteFor = new List<BlueprintFeatureReference>() {
-                ShamanHexGuidingStarFeature.ToReference<BlueprintFeatureReference>(),
-                ShamanHexLureOfTheSlumsFeature.ToReference<BlueprintFeatureReference>(),
-                ShamanHexStarburnFeature.ToReference<BlueprintFeatureReference>()
+                ShamanHexAccidentFeature.ToReference<BlueprintFeatureReference>(),
+                ShamanHexBadPennyFeature.ToReference<BlueprintFeatureReference>(),
+                ShamanHexCitySpiritFeature.ToReference<BlueprintFeatureReference>(),
+                ShamanHexWardOfTheCityFeature.ToReference<BlueprintFeatureReference>()
             };
             #endregion
 
