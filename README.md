@@ -129,6 +129,7 @@ New Oracle Mysteries / Curses
 New Shaman Spirits
 
 - Heavens
+- Slums
 
 New Subdomains
 - Agathion
