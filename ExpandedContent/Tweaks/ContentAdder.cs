@@ -234,6 +234,7 @@ namespace ExpandedContent.Tweaks {
                 Mysteries.ApocalypseMystery.AddApocalypseMystery();
 
                 Spirits.HeavensSpirit.AddHeavensSprit();
+                Spirits.SlumsSpirit.AddSlumsSprit();
 
                 Curses.Vampirism.AddVampirismCurse();
                 Curses.DeepOne.AddDeepOneCurse();

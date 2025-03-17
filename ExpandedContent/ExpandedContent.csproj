@@ -1693,6 +1693,9 @@
     <Content Include="Assets\Skills\Icon_AuraEvil.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Skills\Icon_BadPenny.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Skills\Icon_BearShamanTotemTransformation.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
