@@ -271,6 +271,7 @@
     <Compile Include="Tweaks\Components\PrerequisiteCharacterIsFirstLevel.cs" />
     <Compile Include="Tweaks\Components\ReplaceAbilitiesStatFromArchetype.cs" />
     <Compile Include="Tweaks\Components\SavingThrowBonusAgainstMagicSource.cs" />
+    <Compile Include="Tweaks\Components\SavingThrowContextBonusAgainstSpecificSpells.cs" />
     <Compile Include="Tweaks\Components\SpearParry.cs" />
     <Compile Include="Tweaks\Components\DeflectArrowsExpanded.cs" />
     <Compile Include="Tweaks\Components\ACBonusAgainstNotCaster.cs" />
@@ -593,6 +594,14 @@
     <Compile Include="Tweaks\Spells\Slipstream.cs" />
     <Compile Include="Tweaks\Spells\HydraulicPush.cs" />
     <Compile Include="Tweaks\Spirits\HeavensSpirit.cs" />
+    <Compile Include="Tweaks\Spirits\Hexes\BitingFrostHex.cs" />
+    <Compile Include="Tweaks\Spirits\Hexes\DeathlyBeingHex.cs" />
+    <Compile Include="Tweaks\Spirits\Hexes\EnhancedCuresHex.cs" />
+    <Compile Include="Tweaks\Spirits\Hexes\ErosionCurseHex.cs" />
+    <Compile Include="Tweaks\Spirits\Hexes\EyesOfBattleHex.cs" />
+    <Compile Include="Tweaks\Spirits\Hexes\SluggishHex.cs" />
+    <Compile Include="Tweaks\Spirits\Hexes\SparkingAuraHex.cs" />
+    <Compile Include="Tweaks\Spirits\Hexes\WardOfStoneHex.cs" />
     <Compile Include="Tweaks\Spirits\SlumsSpirit.cs" />
     <Compile Include="Tweaks\TheElderMythos\Abhoth.cs" />
     <Compile Include="Tweaks\TheElderMythos\AtlachNacha.cs" />
