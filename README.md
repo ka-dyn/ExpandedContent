@@ -127,10 +127,23 @@ New Oracle Mysteries / Curses
 
 
 New Shaman Spirits
-
 - Heavens
 - Slums
 
+New Shaman Hexes
+- Accident
+- Bad Penny
+- Biting Frost
+- City Spirit
+- Deathly Being
+- Enhanced Cures
+- Erosion Curse
+- Eyes of Battle
+- Guiding Star
+- Lure of the Heavens
+- Sluggish
+- Starburn
+    
 New Subdomains
 - Agathion
 - Arcane
