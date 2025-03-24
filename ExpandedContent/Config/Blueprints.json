@@ -4025,7 +4025,28 @@
     "SlumsSpiritSpellList": "4b2f945d-f087-4682-9490-ef32f275a532",
     "SlumsSpiritSpellListFeature": "ef458ea9-ba11-4c6b-b427-3a5403a14b99",
     "UnswornShamanSlumsSpiritWanderingFeature1": "e0789da4-e982-4c20-97d6-c5ba6088f6e7",
-    "UnswornShamanSlumsSpiritWanderingFeature2": "e16f2370-8988-4c34-80e9-c21af7d25719"
+    "UnswornShamanSlumsSpiritWanderingFeature2": "e16f2370-8988-4c34-80e9-c21af7d25719",
+
+    "ShamanHexBitingFrostAbility": "0d021409-fc94-4abf-ae86-757517704050",
+    "ShamanHexBitingFrostBuff": "11c4be78-3c0f-4d45-bb63-9cda06f8f304",
+    "ShamanHexBitingFrostCooldown": "8959ac28-6818-4437-93df-07b6162a63fa",
+    "ShamanHexBitingFrostFeature": "da56c0e9-0280-4e41-9a0e-5e76ddd44cc9",
+    "ShamanHexDeathlyBeingFeature": "38eb3954-9dfc-4449-a110-8787d06c0a44",
+    "ShamanHexEnchancedCuresFeature": "8a77449d-bf7a-42f3-bee7-80fbb98505af",
+    "ShamanHexErosionCurseAbility": "b063f89f-3fdd-4212-820f-c0ff96e0f153",
+    "ShamanHexErosionCurseCooldown": "46011533-e895-444b-bd47-2d39f63e5391",
+    "ShamanHexErosionCurseFeature": "366d874c-9fe0-4bdd-a533-b3492502e829",
+    "ShamanHexEyesOfBattleAbilityBase": "69caecd6-6b1f-4dbe-9738-906195565003",
+    "ShamanHexEyesOfBattleFeature": "0002deb1-952b-4cc0-bad5-c772055212ec",
+    "ShamanHexEyesOfBattleIgnoreConcealmentAbility": "2e441c82-6c65-4387-9f9e-b3fbcb5312e1",
+    "ShamanHexEyesOfBattleIgnoreConcealmentBuff": "9e3e1a1d-4a3b-468c-aa49-8b396367c3d8",
+    "ShamanHexEyesOfBattlePerceptionBonusAbility": "1e1442aa-4d25-4932-9718-d7955f7b8ce2",
+    "ShamanHexEyesOfBattlePerceptionBonusBuff": "5d2845ff-6dbb-4f6a-afd7-c553a257f194",
+    "ShamanHexEyesOfBattleResource": "540afbee-e0c3-48c3-8066-7f465e7c308c",
+    "ShamanHexSluggishAbility": "8954455d-484d-4557-8692-491fdfcafbc0",
+    "ShamanHexSluggishBuff": "9efc6560-dfcc-4ace-bd4c-dabc75093321",
+    "ShamanHexSluggishCooldown": "0bc42750-efd2-4ebc-8837-6d77555ecfdd",
+    "ShamanHexSluggishFeature": "3bf18de6-ef7d-4087-a546-7e784c567d3c"
 
 
   },

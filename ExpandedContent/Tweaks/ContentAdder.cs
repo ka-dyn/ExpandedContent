@@ -236,6 +236,13 @@ namespace ExpandedContent.Tweaks {
                 Spirits.HeavensSpirit.AddHeavensSprit();
                 Spirits.SlumsSpirit.AddSlumsSprit();
 
+                Spirits.Hexes.BitingFrostHex.AddBitingFrostHex();
+                Spirits.Hexes.DeathlyBeingHex.AddDeathlyBeingHex();
+                Spirits.Hexes.EnchancedCuresHex.AddEnchancedCuresHex();
+                Spirits.Hexes.ErosionCurseHex.AddErosionCurseHex();
+                Spirits.Hexes.EyesOfBattleHex.AddEyesOfBattleHex();
+                Spirits.Hexes.SluggishHex.AddSluggishHex();
+
                 Curses.Vampirism.AddVampirismCurse();
                 Curses.DeepOne.AddDeepOneCurse();
                 Curses.Accursed.AddAccursedCurse();

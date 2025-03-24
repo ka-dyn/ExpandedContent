@@ -97,6 +97,9 @@ namespace ExpandedContent.Tweaks.Spirits.Hexes {
                 bp.IsClassFeature = true;
             });
             SpiritTools.RegisterShamanHex(ShamanHexEnchancedCuresFeature);
+
+            ShamanLifeSpiritProgression.IsPrerequisiteFor.Add(ShamanHexEnchancedCuresFeature.ToReference<BlueprintFeatureReference>());
+
         }
     }
 }
