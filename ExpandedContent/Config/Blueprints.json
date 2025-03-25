@@ -4046,7 +4046,10 @@
     "ShamanHexSluggishAbility": "8954455d-484d-4557-8692-491fdfcafbc0",
     "ShamanHexSluggishBuff": "9efc6560-dfcc-4ace-bd4c-dabc75093321",
     "ShamanHexSluggishCooldown": "0bc42750-efd2-4ebc-8837-6d77555ecfdd",
-    "ShamanHexSluggishFeature": "3bf18de6-ef7d-4087-a546-7e784c567d3c"
+    "ShamanHexSluggishFeature": "3bf18de6-ef7d-4087-a546-7e784c567d3c",
+
+    "RageLevelDruidDomainProperty": "df2ffaf3-165e-4f5d-aa76-9aacef673ce0",
+    "RageLevelNormalDomainProperty": "e433c61b-0a85-4f3e-ab24-c3225b8e1728"
 
 
   },

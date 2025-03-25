@@ -38,6 +38,9 @@ namespace ExpandedContent.Tweaks.Domains {
 
             var RageResource = Resources.GetBlueprint<BlueprintAbilityResource>("24353fcf8096ea54684a72bf58dedbc9");
 
+
+
+
             var RageDomainExtraRage = Helpers.CreateBlueprint<BlueprintFeature>("RageDomainExtraRage", bp => {
                 bp.SetName("");
                 bp.SetDescription("");
@@ -383,6 +386,81 @@ namespace ExpandedContent.Tweaks.Domains {
                     Helpers.CreateUIGroup(RageDomainBaseFeature, RageFeature, RagePowerSelection, RagePowerSelection)
                 };
                 bp.GiveFeaturesForPreviousLevels = true;
+            });
+
+            //Rage Property Plugs
+            var RageLevelProperty = Resources.GetBlueprint<BlueprintUnitProperty>("6a8e9d4b8ba547f5819354a05dd2a291");
+
+            var RageLevelNormalDomainProperty = Helpers.CreateBlueprint<BlueprintUnitProperty>("RageLevelNormalDomainProperty", bp => {
+                bp.AddComponent<FactRankGetter>(c => {
+                    c.Settings = new PropertySettings() {
+                        m_Progression = PropertySettings.Progression.AsIs
+                    };
+                    c.m_Fact = RageDomainBaseFeature.ToReference<BlueprintUnitFactReference>();
+                });
+                bp.AddComponent<SummClassLevelGetter>(c => {
+                    c.Settings = new PropertySettings() {
+                        m_Progression = PropertySettings.Progression.Div2,
+                        m_Negate = false
+                    };
+                    c.m_Class = new BlueprintCharacterClassReference[] {
+                        ClericClass.ToReference<BlueprintCharacterClassReference>(),
+                        InquisitorClass.ToReference<BlueprintCharacterClassReference>(),
+                        HunterClass.ToReference<BlueprintCharacterClassReference>(),
+                        PaladinClass.ToReference<BlueprintCharacterClassReference>(),
+                        StargazerClass.ToReference<BlueprintCharacterClassReference>(),
+                        ArcanistClass.ToReference<BlueprintCharacterClassReference>()
+                    };
+                    c.Archetype = DivineHunterArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.m_Archetypes = new BlueprintArchetypeReference[] { 
+                        TempleChampionArchetype.ToReference<BlueprintArchetypeReference>(),
+                        MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>()
+                    };
+                });
+                bp.BaseValue = 0;
+                bp.OperationOnComponents = BlueprintUnitProperty.MathOperation.Multiply;
+            });
+
+            var RageLevelDruidDomainProperty = Helpers.CreateBlueprint<BlueprintUnitProperty>("RageLevelDruidDomainProperty", bp => {
+                bp.AddComponent<FactRankGetter>(c => {
+                    c.Settings = new PropertySettings() {
+                        m_Progression = PropertySettings.Progression.AsIs
+                    };
+                    c.m_Fact = RageDomainSpellListFeatureDruid.ToReference<BlueprintUnitFactReference>();
+                });
+                bp.AddComponent<ClassLevelGetter>(c => {
+                    c.Settings = new PropertySettings() {
+                        m_Progression = PropertySettings.Progression.Div2,
+                        m_Min = 1
+                    };
+                    c.m_Class = DruidClass.ToReference<BlueprintCharacterClassReference>();
+                });
+                bp.BaseValue = 0;
+                bp.OperationOnComponents = BlueprintUnitProperty.MathOperation.Multiply;
+            });
+            RageLevelProperty.AddComponent<CustomPropertyGetter>(c => {
+                c.Settings = new PropertySettings() {
+                    m_Progression = PropertySettings.Progression.AsIs,
+                    m_StartLevel = 0,
+                    m_StepLevel = 0,
+                    m_Negate = false,
+                    m_LimitType = PropertySettings.LimitType.None,
+                    m_Min = 0,
+                    m_Max = 20,
+                };
+                c.m_Property = RageLevelNormalDomainProperty.ToReference<BlueprintUnitPropertyReference>();
+            });
+            RageLevelProperty.AddComponent<CustomPropertyGetter>(c => {
+                c.Settings = new PropertySettings() {
+                    m_Progression = PropertySettings.Progression.AsIs,
+                    m_StartLevel = 0,
+                    m_StepLevel = 0,
+                    m_Negate = false,
+                    m_LimitType = PropertySettings.LimitType.None,
+                    m_Min = 0,
+                    m_Max = 20,
+                };
+                c.m_Property = RageLevelDruidDomainProperty.ToReference<BlueprintUnitPropertyReference>();
             });
 
             //Separatist versions
