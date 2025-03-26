@@ -417,7 +417,7 @@ namespace ExpandedContent.Tweaks.Domains {
                         MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>()
                     };
                 });
-                bp.BaseValue = 0;
+                bp.BaseValue = 1;
                 bp.OperationOnComponents = BlueprintUnitProperty.MathOperation.Multiply;
             });
 
@@ -435,7 +435,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     };
                     c.m_Class = DruidClass.ToReference<BlueprintCharacterClassReference>();
                 });
-                bp.BaseValue = 0;
+                bp.BaseValue = 1;
                 bp.OperationOnComponents = BlueprintUnitProperty.MathOperation.Multiply;
             });
             RageLevelProperty.AddComponent<CustomPropertyGetter>(c => {
