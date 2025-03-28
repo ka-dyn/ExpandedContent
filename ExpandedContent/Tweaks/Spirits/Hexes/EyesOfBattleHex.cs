@@ -24,6 +24,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
+using Kingmaker.Blueprints.Items.Weapons;
+using Kingmaker.Utility;
 
 namespace ExpandedContent.Tweaks.Spirits.Hexes
 {
@@ -81,6 +83,38 @@ namespace ExpandedContent.Tweaks.Spirits.Hexes
                     "her next attack, as long as that attack is made before the end of her next turn.");
                 bp.m_Icon = TrueSeeingIcon;
                 bp.AddComponent<IgnoreConcealment>();
+                bp.AddComponent<AddInitiatorAttackWithWeaponTrigger>(c => {
+                    c.TriggerBeforeAttack = false;
+                    c.OnlyHit = false;
+                    c.OnMiss = false;
+                    c.OnlyOnFullAttack = false;
+                    c.OnlyOnFirstAttack = false;
+                    c.OnlyOnFirstHit = false;
+                    c.CriticalHit = false;
+                    c.OnAttackOfOpportunity = false;
+                    c.NotCriticalHit = false;
+                    c.OnlySneakAttack = false;
+                    c.NotSneakAttack = false;
+                    c.m_WeaponType = new BlueprintWeaponTypeReference();
+                    c.CheckWeaponCategory = false;
+                    c.Category = WeaponCategory.UnarmedStrike;
+                    c.CheckWeaponGroup = false;
+                    c.Group = WeaponFighterGroup.Bows;
+                    c.CheckWeaponRangeType = false;
+                    c.RangeType = WeaponRangeType.Melee;
+                    c.ActionsOnInitiator = true;
+                    c.ReduceHPToZero = false;
+                    c.DamageMoreTargetMaxHP = false;
+                    c.CheckDistance = false;
+                    c.DistanceLessEqual = new Feet(); //?
+                    c.AllNaturalAndUnarmed = false;
+                    c.DuelistWeapon = false;
+                    c.NotExtraAttack = false;
+                    c.OnCharge = false;
+                    c.Action = Helpers.CreateActionList(
+                        new ContextActionRemoveSelf()
+                        );
+                });
                 bp.IsClassFeature = false;
                 bp.m_Flags = 0;
                 bp.Stacking = StackingType.Replace;
@@ -145,6 +179,7 @@ namespace ExpandedContent.Tweaks.Spirits.Hexes
                 bp.AddComponent<SpellDescriptorComponent>(c => {
                     c.Descriptor = SpellDescriptor.Hex;
                 });
+                bp.m_Parent = ShamanHexEyesOfBattleAbilityBase.ToReference<BlueprintAbilityReference>();
                 bp.Type = AbilityType.Supernatural;
                 bp.Range = AbilityRange.Personal;
                 bp.CanTargetPoint = false;
@@ -189,6 +224,7 @@ namespace ExpandedContent.Tweaks.Spirits.Hexes
                 bp.AddComponent<SpellDescriptorComponent>(c => {
                     c.Descriptor = SpellDescriptor.Hex;
                 });
+                bp.m_Parent = ShamanHexEyesOfBattleAbilityBase.ToReference<BlueprintAbilityReference>();
                 bp.Type = AbilityType.Supernatural;
                 bp.Range = AbilityRange.Personal;
                 bp.CanTargetPoint = false;
