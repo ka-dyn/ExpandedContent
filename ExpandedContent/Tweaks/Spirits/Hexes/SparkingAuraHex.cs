@@ -181,7 +181,7 @@ namespace ExpandedContent.Tweaks.Spirits.Hexes {
                         }
                         );
                     c.ActionOnSelf = Helpers.CreateActionList();
-                    c.DoNotPassAttackRoll = true;
+                    c.DoNotPassAttackRoll = false;
                 });
                 bp.AddComponent<ContextRankConfig>(c => {
                     c.m_Type = AbilityRankType.Default;
@@ -191,7 +191,7 @@ namespace ExpandedContent.Tweaks.Spirits.Hexes {
                     c.m_Progression = ContextRankProgression.AsIs;
                 });
                 bp.IsClassFeature = false;
-                bp.m_Flags = BlueprintBuff.Flags.HiddenInUi | BlueprintBuff.Flags.RemoveOnRest;
+                bp.m_Flags = BlueprintBuff.Flags.RemoveOnRest;
                 bp.Stacking = StackingType.Replace;
                 //bp.FxOnStart = new Kingmaker.ResourceLinks.PrefabLink() { AssetId = "6035a889bae45f242908569a7bc25c93" }; //KhorElectricityVisualBuff
             });
