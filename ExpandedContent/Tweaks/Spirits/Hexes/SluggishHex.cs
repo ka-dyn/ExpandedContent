@@ -54,6 +54,12 @@ namespace ExpandedContent.Tweaks.Spirits.Hexes {
                     "The penalty lasts for a number of rounds equal to the shaman’s character level and does not stack with other effects that reduce speed. Whether or not the " +
                     "save is successful, the creature can’t be the target of this hex again for 24 hours.");
                 bp.m_Icon = SlowIcon;
+                bp.AddComponent<AddCondition>(c => {
+                    c.Condition = Kingmaker.UnitLogic.UnitCondition.Slowed;
+                });
+                bp.AddComponent<ChangeImpatience>(c => {
+                    c.Delta = -1;
+                });
                 bp.IsClassFeature = false;
                 bp.m_Flags = BlueprintBuff.Flags.HiddenInUi | BlueprintBuff.Flags.RemoveOnRest;
                 bp.Stacking = StackingType.Replace;
@@ -83,10 +89,13 @@ namespace ExpandedContent.Tweaks.Spirits.Hexes {
                                             m_Buff = ShamanHexSluggishBuff.ToReference<BlueprintBuffReference>(),
                                             UseDurationSeconds = false,
                                             DurationValue = new ContextDurationValue() {
-                                                Rate = DurationRate.Days,
+                                                Rate = DurationRate.Rounds,
                                                 DiceType = DiceType.Zero,
                                                 DiceCountValue = 0,
-                                                BonusValue = 1,
+                                                BonusValue = new ContextValue() {
+                                                    ValueType = ContextValueType.Rank,
+                                                    ValueRank = AbilityRankType.Default
+                                                },
                                                 m_IsExtendable = true
                                             },
                                             DurationSeconds = 0,
