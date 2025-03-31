@@ -4049,7 +4049,18 @@
     "ShamanHexSluggishFeature": "3bf18de6-ef7d-4087-a546-7e784c567d3c",
 
     "RageLevelDruidDomainProperty": "df2ffaf3-165e-4f5d-aa76-9aacef673ce0",
-    "RageLevelNormalDomainProperty": "e433c61b-0a85-4f3e-ab24-c3225b8e1728"
+    "RageLevelNormalDomainProperty": "e433c61b-0a85-4f3e-ab24-c3225b8e1728",
+
+    "ShamanHexSparkingAuraAbility": "a48fde6a-7169-45c2-be48-cf9d0851a6fb",
+    "ShamanHexSparkingAuraBuff": "c10c434a-b3a5-4f3c-9491-2bb01bccd0f1",
+    "ShamanHexSparkingAuraCooldown": "1fa3b6d1-54cb-4372-bb38-5ecbaab8aab0",
+    "ShamanHexSparkingAuraFeature": "04ef0676-1d65-4945-bbed-57bc4c2801e4",
+    "ShamanHexWardOfStoneAbility": "d239fbc7-c930-4d83-bc56-655b29a2ace1",
+    "ShamanHexWardOfStoneBuff1": "0f54d2a3-1eae-4058-961e-b39e7f83ddf7",
+    "ShamanHexWardOfStoneBuff2": "a7aa8c83-8cbd-4d9d-9ca3-9cb0641fd851",
+    "ShamanHexWardOfStoneBuff3": "9263054f-2ca9-4268-a484-704f2d4b1baa",
+    "ShamanHexWardOfStoneCooldown": "6c88320e-b03f-4c5c-8af7-43f1e49cf291",
+    "ShamanHexWardOfStoneFeature": "be69970a-3d48-4a28-9e93-0dcf3105f5c6"
 
 
   },

@@ -242,6 +242,8 @@ namespace ExpandedContent.Tweaks {
                 Spirits.Hexes.ErosionCurseHex.AddErosionCurseHex();
                 Spirits.Hexes.EyesOfBattleHex.AddEyesOfBattleHex();
                 Spirits.Hexes.SluggishHex.AddSluggishHex();
+                Spirits.Hexes.SparkingAuraHex.AddSparkingAuraHex();
+                Spirits.Hexes.WardOfStoneHex.AddWardOfStoneHex();
 
                 Curses.Vampirism.AddVampirismCurse();
                 Curses.DeepOne.AddDeepOneCurse();
