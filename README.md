@@ -141,8 +141,10 @@ New Shaman Hexes
 - Eyes of Battle
 - Guiding Star
 - Lure of the Heavens
+- Shocking Aura
 - Sluggish
 - Starburn
+- Ward of Stone
     
 New Subdomains
 - Agathion
