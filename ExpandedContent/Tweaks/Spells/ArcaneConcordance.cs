@@ -163,6 +163,17 @@ namespace ExpandedContent.Tweaks.Spells {
                             DurationSeconds = 0
                         });
                 });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.CasterLevel;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.AsIs;
+                    c.m_StartLevel = 0;
+                    c.m_StepLevel = 0;
+                    c.m_UseMax = false;
+                    c.m_Max = 20;
+                });
                 bp.AddComponent<SpellComponent>(c => {
                     c.School = SpellSchool.Evocation;
                 });
@@ -272,6 +283,17 @@ namespace ExpandedContent.Tweaks.Spells {
                             },
                             DurationSeconds = 0
                         });
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.CasterLevel;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.AsIs;
+                    c.m_StartLevel = 0;
+                    c.m_StepLevel = 0;
+                    c.m_UseMax = false;
+                    c.m_Max = 20;
                 });
                 bp.AddComponent<SpellComponent>(c => {
                     c.School = SpellSchool.Evocation;
