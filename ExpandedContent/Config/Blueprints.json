@@ -4060,7 +4060,24 @@
     "ShamanHexWardOfStoneBuff2": "a7aa8c83-8cbd-4d9d-9ca3-9cb0641fd851",
     "ShamanHexWardOfStoneBuff3": "9263054f-2ca9-4268-a484-704f2d4b1baa",
     "ShamanHexWardOfStoneCooldown": "6c88320e-b03f-4c5c-8af7-43f1e49cf291",
-    "ShamanHexWardOfStoneFeature": "be69970a-3d48-4a28-9e93-0dcf3105f5c6"
+    "ShamanHexWardOfStoneFeature": "be69970a-3d48-4a28-9e93-0dcf3105f5c6",
+
+    "DivineDomainAllowed": "6312310d-682b-4894-acfd-fd6d7ef2c3a7",
+    "DivineDomainAllowedSeparatist": "30ee6d65-69e7-41a4-a781-53ca97444d2e",
+    "DivineDomainBaseAbility": "adfc4485-d173-4b40-ac9b-9b5314aed78e",
+    "DivineDomainBaseAbilitySeparatist": "7727a49b-444f-4cbd-ac96-e5a1d9290afc",
+    "DivineDomainBaseBoonAbility": "4691cb9a-aebe-4974-bd30-98bfa0f51a4d",
+    "DivineDomainBaseBoonBuff": "2b0d3d78-b4e7-4380-9a1d-3a6faf77f179",
+    "DivineDomainBaseFeature": "2d0afdf1-08ab-46b1-af0c-574a8573165d",
+    "DivineDomainBaseFeatureSeparatist": "4e20e682-eb49-4f57-af40-d41c24607d1f",
+    "DivineDomainBaseResource": "931739c4-2c1c-4e80-bc17-c81477c3d33d",
+    "DivineDomainBaseResourceSeparatist": "4eebedb5-f766-4251-8fb7-1c667089ebd1",
+    "DivineDomainBaseSelfBuff": "170479d7-f3ba-4503-980e-df547e00cf25",
+    "DivineDomainProgression": "9e8d5243-7ff2-445d-9560-ca78aefc8f9f",
+    "DivineDomainProgressionSecondary": "8a26fa1c-3391-45cb-b2a9-03a7513ec83f",
+    "DivineDomainProgressionSeparatist": "c5346d5f-4b34-4491-b987-60361f8f7c72",
+    "DivineDomainSpellList": "f2b5ea46-76a3-4460-85b0-497d1450ea77",
+    "DivineDomainSpellListFeature": "fbc362a3-a77c-461e-a4ad-8d706f58f198"
 
 
   },

@@ -231,7 +231,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.m_TickRoundAfterSpawn = false;
             });
             BloodMistArea.Fx = BloodMistArea.Fx.CreateDynamicProxy(pfl => {
-                Main.Log($"Editing: {pfl}");
+                //Main.Log($"Editing: {pfl}");
                 pfl.name = "BloodMist_40feetAoE";
                 //Main.Log($"{FxDebug.DumpGameObject(pfl.gameObject)}");
                 pfl.transform.localScale = new(1.75f, 1.0f, 1.75f);

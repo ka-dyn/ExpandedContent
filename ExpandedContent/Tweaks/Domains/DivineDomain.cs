@@ -161,7 +161,7 @@ namespace ExpandedContent.Tweaks.Domains {
                             UseDurationSeconds = false,
                             DurationValue = new ContextDurationValue() {
                                 Rate = DurationRate.Rounds,
-                                BonusValue = 1,
+                                BonusValue = 2,
                                 DiceType = DiceType.Zero,
                                 DiceCountValue = 0,
                                 m_IsExtendable = true
@@ -199,10 +199,21 @@ namespace ExpandedContent.Tweaks.Domains {
             });
             var DivineDomainBaseBoonAbilitySpawnFx = DivineDomainBaseBoonAbility.GetComponent<AbilitySpawnFx>();
             DivineDomainBaseBoonAbilitySpawnFx.PrefabLink = DivineDomainBaseBoonAbilitySpawnFx.PrefabLink.CreateDynamicProxy(pfl => {
-                //Main.Log($"Editing: {pfl}");
+                Main.Log($"Editing: {pfl}");
                 pfl.name = "DivineDomainBase_15feetAoE";
-                //Main.Log($"{FxDebug.DumpGameObject(pfl.gameObject)}");
-                pfl.transform.localScale = new(0.75f, 1.0f, 0.75f);//Test size please
+                Main.Log($"{FxDebug.DumpGameObject(pfl.gameObject)}");
+                var Shockwave_Rays = pfl.transform.Find("Ground/Shockwave_Rays").GetComponent<ParticleSystem>();
+                Shockwave_Rays.transform.localScale = new(0.66f, 0.66f, 0.66f);
+                var Shockwave = pfl.transform.Find("Ground/Shockwave").GetComponent<ParticleSystem>();
+                Shockwave.transform.localScale = new(0.66f, 0.66f, 0.66f);
+                var Sparks = pfl.transform.Find("Ground/Sparks").GetComponent<ParticleSystem>();
+                Sparks.transform.localScale = new(0.66f, 1.0f, 0.66f);
+                var Sparks_Small = pfl.transform.Find("Ground/Sparks_Small").GetComponent<ParticleSystem>();
+                Sparks_Small.transform.localScale = new(0.66f, 1.0f, 0.66f);
+                var Spiral00 = pfl.transform.Find("Ground/Spiral00").GetComponent<ParticleSystem>();
+                Spiral00.transform.localScale = new(0.66f, 1.0f, 0.66f);
+                var Spiral01 = pfl.transform.Find("Ground/Spiral01").GetComponent<ParticleSystem>();
+                Spiral01.transform.localScale = new(0.66f, 1.0f, 0.66f);
             });
 
 
