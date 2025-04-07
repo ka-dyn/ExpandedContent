@@ -407,6 +407,7 @@
     <Compile Include="Tweaks\Deities\Ragathiel.cs" />
     <Compile Include="Tweaks\DemonLords\Zura.cs" />
     <Compile Include="Tweaks\Domains\AshDomain.cs" />
+    <Compile Include="Tweaks\Domains\DivineDomain.cs" />
     <Compile Include="Tweaks\Domains\DomainProperties.cs" />
     <Compile Include="Tweaks\Domains\DuelsDomain.cs" />
     <Compile Include="Tweaks\Domains\InsanityDomain.cs" />
