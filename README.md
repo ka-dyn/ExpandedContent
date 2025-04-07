@@ -156,6 +156,7 @@ New Subdomains
 - Curse
 - Defence
 - Demon
+- Divine
 - Dragon
 - Duels
 - Ferocity
