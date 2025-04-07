@@ -54,7 +54,7 @@ namespace ExpandedContent.Tweaks.Domains {
             var MagicDomainGreaterFeatureSeparatist = Resources.GetBlueprint<BlueprintFeature>("724216a6124d486fa55d7476db26bf1a");
             var AirBlessingFeature = Resources.GetBlueprint<BlueprintFeature>("e1ff99dc3aeaa064e8eecde51c1c4773");
             var Kinetic_AirBlastLine00 = Resources.GetBlueprint<BlueprintProjectile>("03689858955c6bf409be06f35f09946a");
-            var ArcaneBeaconIcon = AssetLoader.LoadInternal("Skills", "Icon_ArcaneBeacon.jpg");
+            var DivineVesselIcon = AssetLoader.LoadInternal("Skills", "Icon_DivineVessel.png");
 
 
             var DivineDomainBaseResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("DivineDomainBaseResource", bp => {
@@ -146,7 +146,7 @@ namespace ExpandedContent.Tweaks.Domains {
                         new ContextActionRemoveSelf()
                         );
                 });
-                bp.m_Icon = ArcaneBeaconIcon;
+                bp.m_Icon = DivineVesselIcon;
                 bp.Stacking = StackingType.Replace;
             });
 
@@ -225,7 +225,7 @@ namespace ExpandedContent.Tweaks.Domains {
                         }
                         );
                 });
-                bp.m_Icon = ArcaneBeaconIcon;
+                bp.m_Icon = DivineVesselIcon;
                 bp.Stacking = StackingType.Replace;
             });
 
@@ -254,7 +254,7 @@ namespace ExpandedContent.Tweaks.Domains {
                             DurationSeconds = 0
                         });
                 });
-                bp.m_Icon = ArcaneBeaconIcon;
+                bp.m_Icon = DivineVesselIcon;
                 bp.Type = AbilityType.Supernatural;
                 bp.Range = AbilityRange.Personal;
                 bp.CanTargetPoint = false;
@@ -574,7 +574,7 @@ namespace ExpandedContent.Tweaks.Domains {
                             DurationSeconds = 0
                         });
                 });
-                bp.m_Icon = ArcaneBeaconIcon;
+                bp.m_Icon = DivineVesselIcon;
                 bp.Type = AbilityType.Supernatural;
                 bp.Range = AbilityRange.Personal;
                 bp.CanTargetPoint = false;

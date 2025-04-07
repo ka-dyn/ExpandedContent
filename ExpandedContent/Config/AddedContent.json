@@ -435,6 +435,11 @@
         "Enabled": true,
         "Homebrew": false,
         "Description": "Adds the ash subdomain, a subdomain to the fire domain."
+      },
+      "Divine Subdomain": {
+        "Enabled": true,
+        "Homebrew": false,
+        "Description": "Adds the divine subdomain, a subdomain to the magic domain."
       }
     },
     "IsExpanded": false
