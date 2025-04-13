@@ -286,7 +286,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.SetDescription("A soldier of gaia can call upon their connection with nature to receive aid from the natural world. " +
                     "\nEvery enemy within the area of the spell is the target of a combat maneuver check made to grapple each round at the beginning of your turn, " +
                     "as well as when entering the area. The CMB of this grapple attempt is equal to your warpriest level plus 5, increasing to plus 10 when trying to escape " +
-                    "the grapple.");
+                    "the grapple. If a creature is grappled by this ability, or fails to escape the grapple, it takes 1d6+4 points of damage.");
                 bp.AddComponent<AddCondition>(c => {
                     c.Condition = UnitCondition.CantMove;
                 });
@@ -517,12 +517,12 @@ namespace ExpandedContent.Tweaks.Archetypes {
                                     }
                                 }
                             },
-                            IfTrue = Helpers.CreateActionList(),
-                            IfFalse = Helpers.CreateActionList(
+                            IfTrue = Helpers.CreateActionList(
                                 new ContextActionRemoveBuff() {
                                     m_Buff = SoldierOfGaiaFriendOfTheForestBuff.ToReference<BlueprintBuffReference>()
                                 }
-                                )
+                                ),
+                            IfFalse = Helpers.CreateActionList()
                         }
                         );
                     c.Round = Helpers.CreateActionList(
@@ -587,7 +587,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.m_TickRoundAfterSpawn = false;
             });
             SoldierOfGaiaFriendOfTheForestArea.Fx = SoldierOfGaiaFriendOfTheForestArea.Fx.CreateDynamicProxy(pfl => {
-                Main.Log($"Editing: {pfl}");
+                //Main.Log($"Editing: {pfl}");
                 pfl.name = "FriendOfTheForest_20feetAoE";
                 //Main.Log($"{FxDebug.DumpGameObject(pfl.gameObject)}");
                 Object.DestroyImmediate(pfl.transform.Find("AnimationRoot/WaveAll_GrassLiana00").gameObject);
@@ -607,7 +607,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.SetDescription("A soldier of gaia can call upon their connection with nature to receive aid from the natural world. " +
                     "\nEvery enemy within the area of the spell is the target of a combat maneuver check made to grapple each round at the beginning of your turn, " +
                     "as well as when entering the area. The CMB of this grapple attempt is equal to your warpriest level plus 5, increasing to plus 10 when trying to escape " +
-                    "the grapple.");
+                    "the grapple. If a creature is grappled by this ability, or fails to escape the grapple, it takes 1d6+4 points of damage.");
                 bp.m_Icon = EntangledBuff.Icon;
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.SavingThrowType = SavingThrowType.Unknown;
@@ -676,7 +676,8 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.SetDescription("At 7th level, once per day, a soldier of gaia can call upon their connection with nature to receive aid from the natural world. " +
                     "\nEvery enemy within the area of the spell is the target of a combat maneuver check made to grapple each round at the beginning of your turn, " +
                     "as well as when entering the area. The CMB of this grapple attempt is equal to your warpriest level plus 5, increasing to plus 10 when trying to escape " +
-                    "the grapple. \nA soldier of gaia can use this ability twice per day at 13th level and three times per day at 19th level.");
+                    "the grapple. If a creature is grappled by this ability, or fails to escape the grapple, it takes 1d6+4 points of damage. " +
+                    "\nA soldier of gaia can use this ability twice per day at 13th level and three times per day at 19th level.");
                 bp.m_Icon = EntangledBuff.Icon;
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;

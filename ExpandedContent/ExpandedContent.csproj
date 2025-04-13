@@ -604,6 +604,7 @@
     <Compile Include="Tweaks\Spirits\Hexes\SparkingAuraHex.cs" />
     <Compile Include="Tweaks\Spirits\Hexes\WardOfStoneHex.cs" />
     <Compile Include="Tweaks\Spirits\SlumsSpirit.cs" />
+    <Compile Include="Tweaks\Spirits\WoodSpirit.cs" />
     <Compile Include="Tweaks\TheElderMythos\Abhoth.cs" />
     <Compile Include="Tweaks\TheElderMythos\AtlachNacha.cs" />
     <Compile Include="Tweaks\TheElderMythos\Azathoth.cs" />
