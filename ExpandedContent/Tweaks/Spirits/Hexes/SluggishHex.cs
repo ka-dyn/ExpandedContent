@@ -61,7 +61,7 @@ namespace ExpandedContent.Tweaks.Spirits.Hexes {
                     c.Delta = -1;
                 });
                 bp.IsClassFeature = false;
-                bp.m_Flags = BlueprintBuff.Flags.HiddenInUi | BlueprintBuff.Flags.RemoveOnRest;
+                bp.m_Flags = BlueprintBuff.Flags.RemoveOnRest;
                 bp.Stacking = StackingType.Replace;
                 bp.FxOnStart = new Kingmaker.ResourceLinks.PrefabLink() { AssetId = "d6a8c6aead8ec1e4b9362cff1c2373a2" };
             });

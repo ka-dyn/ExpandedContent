@@ -48,7 +48,7 @@ using Kingmaker.Designers.Mechanics.EquipmentEnchants;
 
 namespace ExpandedContent.Tweaks.Spirits {
     internal class WoodSpirit {
-        public static void AddSlumsSprit() {
+        public static void AddWoodSprit() {
 
             var ShamanClass = Resources.GetBlueprint<BlueprintCharacterClass>("145f1d3d360a7ad48bd95d392c81b38e");
             var UnswornShamanArchetype = Resources.GetBlueprint<BlueprintArchetype>("556590a43467a27459ac1a80324c9f9f");
@@ -1105,9 +1105,11 @@ namespace ExpandedContent.Tweaks.Spirits {
 
             var ShamanWoodSpiritTrueFeature = Helpers.CreateBlueprint<BlueprintFeature>("ShamanWoodSpiritTrueFeature", bp => {
                 bp.SetName("Tree Form");
-                bp.SetDescription("As a standard action, the shaman assumes a spirit-infused paragon form that makes her a lethal stalker of the alleys and shadows. " +
-                    "She gains the ability to make sneak attacks as a rogue of her shaman level for 1 minute. (If she already has sneak attack dice, these stack.) " +
-                    "She can use this ability a number of times per day equal to 3 + her Charisma modifier.");
+                bp.SetDescription("As a standard action, the shaman can assume the form of a plant creature as per plant shape III with a duration of 1 hour per level. " +
+                    "She can use this ability once per day. \nYou become a Huge Treant or a Huge Giant Flytrap. \\nTreant: You become a huge treant. You gain a +8 size bonus to your Strength, " +
+                    "+4 to Constitution, -2 penalty to Dexterity and a +6 natural armor bonus. You also gain two 2d6 slam attacks, damage reduction 10/slashing, vulnerability to fire and overrun " +
+                    "ability. Giant Flytrap: You become a huge giant flytrap. You gain a +8 size bonus to your Strength, +4 to Constitution, -2 penalty to Dexterity and a +6 natural armor bonus. " +
+                    "You also gain four 1d8 bite attacks, acid Resistance 20 and blindsight and poison ability.");
                 bp.m_Icon = PlantShapeIIIIcon;
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] {
@@ -1618,77 +1620,92 @@ namespace ExpandedContent.Tweaks.Spirits {
             #endregion
 
             #region Hexes
-            #region Accident 
-            var TouchOfGracelessnessIcon = Resources.GetBlueprint<BlueprintAbility>("5d38c80a819e8084ba19b29a865312c2").Icon;
-            var ShamanHexAccidentAbility = Helpers.CreateBlueprint<BlueprintAbility>("ShamanHexAccidentAbility", bp => {
-                bp.SetName("Accident");
-                bp.SetDescription("The shaman causes a target within 30 feet to stumble and fall. The shaman attempts a trip {g|Encyclopedia:Combat_Maneuvers}combat maneuver{/g} " +
-                    "using her {g|Encyclopedia:Caster_Level}caster level{/g} as its {g|Encyclopedia:BAB}base attack bonus{/g} against the target’s CMD. On a successful trip attempt, " +
-                    "the target falls prone and takes 1d6 points of damage.");
-                bp.m_Icon = TouchOfGracelessnessIcon;
+            #region Hex of Lignification 
+            var LignificationIcon = AssetLoader.LoadInternal("Skills", "Icon_Lignification.jpg");
+            var ShamanHexHexOfLignificationCooldown = Helpers.CreateBuff("ShamanHexHexOfLignificationCooldown", bp => {
+                bp.SetName("Already targeted by this hex today");
+                bp.SetDescription("");
+                bp.IsClassFeature = false;
+                bp.m_Flags = BlueprintBuff.Flags.HiddenInUi | BlueprintBuff.Flags.RemoveOnRest;
+                bp.Stacking = StackingType.Replace;
+            });
+
+
+            var ShamanHexHexOfLignificationBuff = Helpers.CreateBuff("ShamanHexHexOfLignificationBuff", bp => {
+                bp.SetName("Hex of Lignification");
+                bp.SetDescription("The shaman causes a creature within 30 feet to turn into a twisted, treelike shape for 2 rounds. " +
+                    "The target gains hardness 5 but is staggered, and can negate the effect with a successful Fortitude saving throw. " +
+                    "Whether or not the target succeeds at its save, it can’t be the target of this hex again for 24 hours.");
+                bp.m_Icon = LignificationIcon;
+                bp.AddComponent<AddCondition>(c => {
+                    c.Condition = UnitCondition.Staggered;
+                });
+                bp.AddComponent<AddDamageResistanceHardness>(c => {
+                    c.Value = 5;
+                    c.UsePool = false;
+                    c.Pool = new ContextValue();
+                    c.m_ExcludedTypes = 0;
+                });
+                bp.IsClassFeature = false;
+                bp.m_Flags = BlueprintBuff.Flags.RemoveOnRest;
+                bp.Stacking = StackingType.Replace;
+                bp.FxOnStart = new PrefabLink() { AssetId = "f684f2a037e944f4a894037c86e4194b" };
+            });
+
+            var ShamanHexHexOfLignificationAbility = Helpers.CreateBlueprint<BlueprintAbility>("ShamanHexHexOfLignificationAbility", bp => {
+                bp.SetName("Hex of Lignification");
+                bp.SetDescription("The shaman causes a creature within 30 feet to turn into a twisted, treelike shape for 2 rounds. " +
+                    "The target gains hardness 5 but is staggered, and can negate the effect with a successful Fortitude saving throw. " +
+                    "Whether or not the target succeeds at its save, it can’t be the target of this hex again for 24 hours.");
+                bp.m_Icon = LignificationIcon;
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.SavingThrowType = SavingThrowType.Unknown;
                     c.Actions = Helpers.CreateActionList(
-                        new ContextActionCombatManeuver() {
-                            Type = CombatManeuver.Trip,
-                            IgnoreConcealment = true,
-                            OnSuccess = Helpers.CreateActionList(
-                                new ContextActionDealDamage() {
-                                    m_Type = ContextActionDealDamage.Type.Damage,
-                                    DamageType = new DamageTypeDescription() {
-                                        Common = new DamageTypeDescription.CommomData() {
-                                            Reality = 0,
-                                            Alignment = 0,
-                                            Precision = false
-                                        },
-                                        Physical = new DamageTypeDescription.PhysicalData() {
-                                            Material = 0,
-                                            Form = Kingmaker.Enums.Damage.PhysicalDamageForm.Bludgeoning,
-                                            Enhancement = 0,
-                                            EnhancementTotal = 0
-                                        },
-                                        Energy = Kingmaker.Enums.Damage.DamageEnergyType.Acid,
-                                        Type = DamageType.Physical
-                                    },
-                                    Drain = false,
-                                    AbilityType = StatType.Unknown,
-                                    Duration = new ContextDurationValue() {
-                                        Rate = DurationRate.Rounds,
-                                        DiceType = DiceType.Zero,
-                                        DiceCountValue = new ContextValue() {
-                                            ValueType = ContextValueType.Simple,
-                                            Value = 0,
-                                            ValueRank = AbilityRankType.Default,
-                                            ValueShared = AbilitySharedValue.Damage,
-                                            Property = UnitProperty.None
-                                        },
-                                        BonusValue = new ContextValue() {
-                                            ValueType = ContextValueType.Simple,
-                                            Value = 0,
-                                            ValueRank = AbilityRankType.Default,
-                                            ValueShared = AbilitySharedValue.Damage,
-                                            Property = UnitProperty.None
-                                        },
-                                        m_IsExtendable = true,
-                                    },
-                                    PreRolledSharedValue = AbilitySharedValue.Damage,
-                                    Value = new ContextDiceValue() {
-                                        DiceType = DiceType.D6,
-                                        DiceCountValue = 1,
-                                        BonusValue = 0,
-                                    },
-                                    ResultSharedValue = AbilitySharedValue.Damage,
-                                    CriticalSharedValue = AbilitySharedValue.Damage,
-                                    Half = false
+                        new ContextActionSavingThrow() {
+                            Type = SavingThrowType.Fortitude,
+                            FromBuff = false,
+                            HasCustomDC = false,
+                            CustomDC = new ContextValue(),
+                            Actions = Helpers.CreateActionList(
+                                new ContextActionConditionalSaved() {
+                                    Succeed = Helpers.CreateActionList(),
+                                    Failed = Helpers.CreateActionList(
+                                        new ContextActionApplyBuff() {
+                                            m_Buff = ShamanHexHexOfLignificationBuff.ToReference<BlueprintBuffReference>(),
+                                            UseDurationSeconds = false,
+                                            DurationValue = new ContextDurationValue() {
+                                                Rate = DurationRate.Rounds,
+                                                DiceType = DiceType.Zero,
+                                                DiceCountValue = 0,
+                                                BonusValue = new ContextValue() {
+                                                    ValueType = ContextValueType.Rank,
+                                                    ValueRank = AbilityRankType.Default
+                                                },
+                                                m_IsExtendable = true
+                                            },
+                                            DurationSeconds = 0,
+                                            IsFromSpell = false,
+                                            ToCaster = false,
+                                            AsChild = true,
+                                        }
+                                    )
                                 }
-                                ),
-                            ReplaceStat = true,
-                            NewStat = StatType.Unknown,
-                            UseKineticistMainStat = false,
-                            UseCastingStat = false,
-                            UseCasterLevelAsBaseAttack = true,
-                            UseBestMentalStat = false,
-                            BatteringBlast = false
+                                )
+                        },
+                        new ContextActionApplyBuff() {
+                            m_Buff = ShamanHexHexOfLignificationCooldown.ToReference<BlueprintBuffReference>(),
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Days,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = 1,
+                                m_IsExtendable = true
+                            },
+                            DurationSeconds = 0,
+                            IsFromSpell = false,
+                            ToCaster = false,
+                            AsChild = true,
                         }
                         );
                 });
@@ -1700,19 +1717,13 @@ namespace ExpandedContent.Tweaks.Spirits {
                     c.StatType = StatType.Wisdom;
                     c.m_CharacterClass = ShamanClass.ToReference<BlueprintCharacterClassReference>();
                 });
-                //bp.AddComponent<ContextCalculateAbilityParams>(c => {
-                //    c.UseKineticistMainStat = false;
-                //    c.StatType = StatType.Wisdom;
-                //    c.StatTypeFromCustomProperty = false;
-                //    c.m_CustomProperty = null;
-                //    c.ReplaceCasterLevel = true;
-                //    c.CasterLevel = new ContextValue() {
-                //        ValueType = ContextValueType.Rank,
-                //        ValueRank = AbilityRankType.Default
-                //    };
-                //    c.ReplaceSpellLevel = false;
-                //    c.SpellLevel = new ContextValue();
-                //});
+                bp.AddComponent<AbilityTargetHasFact>(c => {
+                    c.m_CheckedFacts = new BlueprintUnitFactReference[] {
+                        ShamanHexHexOfLignificationCooldown.ToReference<BlueprintUnitFactReference>()
+                    };
+                    c.Inverted = true;
+                    c.FromCaster = true;
+                });
                 bp.AddComponent<ContextRankConfig>(c => {
                     c.m_Type = AbilityRankType.Default;
                     c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
@@ -1733,18 +1744,18 @@ namespace ExpandedContent.Tweaks.Spirits {
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Directional;
                 bp.ActionType = UnitCommand.CommandType.Standard;
                 bp.AvailableMetamagic = 0;
-                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
-                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedDuration = Helpers.CreateString("ShamanHexHexOfLignificationAbility.Duration", "2 rounds");
+                bp.LocalizedSavingThrow = Helpers.CreateString("ShamanHexHexOfLignificationAbility.SavingThrow", "Fortitude negates");
             });
-            var ShamanHexAccidentFeature = Helpers.CreateBlueprint<BlueprintFeature>("ShamanHexAccidentFeature", bp => {
-                bp.SetName("Accident");
-                bp.SetDescription("The shaman causes a target within 30 feet to stumble and fall. The shaman attempts a trip {g|Encyclopedia:Combat_Maneuvers}combat maneuver{/g} " +
-                    "using her {g|Encyclopedia:Caster_Level}caster level{/g} as its {g|Encyclopedia:BAB}base attack bonus{/g} against the target’s CMD. On a successful trip attempt, " +
-                    "the target falls prone and takes 1d6 points of damage.");
-                bp.m_Icon = TouchOfGracelessnessIcon;
+            var ShamanHexHexOfLignificationFeature = Helpers.CreateBlueprint<BlueprintFeature>("ShamanHexHexOfLignificationFeature", bp => {
+                bp.SetName("Hex of Lignification");
+                bp.SetDescription("The shaman causes a creature within 30 feet to turn into a twisted, treelike shape for 2 rounds. " +
+                    "The target gains hardness 5 but is staggered, and can negate the effect with a successful Fortitude saving throw. " +
+                    "Whether or not the target succeeds at its save, it can’t be the target of this hex again for 24 hours.");
+                bp.m_Icon = LignificationIcon;
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] {
-                        ShamanHexAccidentAbility.ToReference<BlueprintUnitFactReference>()
+                        ShamanHexHexOfLignificationAbility.ToReference<BlueprintUnitFactReference>()
                     };
                 });
                 bp.AddComponent<PrerequisiteFeature>(c => {
@@ -1769,128 +1780,20 @@ namespace ExpandedContent.Tweaks.Spirits {
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = true;
             });
-            SpiritTools.RegisterShamanHex(ShamanHexAccidentFeature);
+            SpiritTools.RegisterShamanHex(ShamanHexHexOfLignificationFeature);
             #endregion
-            #region Bad Penny - Need to code getting the coin back in the future
-            var BadPennyIcon = AssetLoader.LoadInternal("Skills", "Icon_BadPenny.png");
-            var GoldCoins = Resources.GetBlueprint<BlueprintItem>("f2bc0997c24e573448c6c91d2be88afa");
-            var TouchItem = Resources.GetBlueprintReference<BlueprintItemWeaponReference>("bb337517547de1a4189518d404ec49d4");
-            var ShamanHexBadPennyBuff = Helpers.CreateBuff("ShamanHexBadPennyBuff", bp => {
-                bp.SetName("Bad Penny");
-                bp.SetDescription("As a standard action, the shaman can curse a coin, and place it in the pockets of a target, attempting to plant the coin is a melee touch attack. " +
-                    "The bearer of the cursed coin takes a –2 penalty on all saving throws and skill checks as long he has the coin on his person. " +
-                    "Once the coin leaves his person, the curse ends and the coin becomes a mundane piece of tender again. " +
-                    "At 8th level, the penalty becomes –4. If the shaman curses a new coin, the previous curse ends. This is a curse effect.");
-                bp.m_Icon = BadPennyIcon;
-                bp.AddComponent<AddContextStatBonus>(c => {
-                    c.Stat = StatType.SaveFortitude;
-                    c.Value = new ContextValue() {
-                        ValueType = ContextValueType.Rank,
-                        ValueRank = AbilityRankType.Default
-                    };
-                    c.Descriptor = ModifierDescriptor.UntypedStackable;
-                });
-                bp.AddComponent<AddContextStatBonus>(c => {
-                    c.Stat = StatType.SaveReflex;
-                    c.Value = new ContextValue() {
-                        ValueType = ContextValueType.Rank,
-                        ValueRank = AbilityRankType.Default
-                    };
-                    c.Descriptor = ModifierDescriptor.UntypedStackable;
-                });
-                bp.AddComponent<AddContextStatBonus>(c => {
-                    c.Stat = StatType.SaveWill;
-                    c.Value = new ContextValue() {
-                        ValueType = ContextValueType.Rank,
-                        ValueRank = AbilityRankType.Default
-                    };
-                    c.Descriptor = ModifierDescriptor.UntypedStackable;
-                });
-                bp.AddComponent<ContextRankConfig>(c => {
-                    c.m_Type = AbilityRankType.Default;
-                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
-                    c.m_Stat = StatType.Unknown;
-                    c.m_SpecificModifier = ModifierDescriptor.None;
-                    c.m_Progression = ContextRankProgression.Custom;
-                    c.m_Class = new BlueprintCharacterClassReference[] { ShamanClass.ToReference<BlueprintCharacterClassReference>() };
-                    c.m_CustomProgression = new ContextRankConfig.CustomProgressionItem[] {
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 7, ProgressionValue = -2 },
-                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 100, ProgressionValue = -4 }
-                    };
-                });
-                bp.AddComponent<SpellDescriptorComponent>(c => {
-                    c.Descriptor = SpellDescriptor.Curse;
-                });
-                bp.AddComponent<UniqueBuff>();
-                bp.m_Flags = BlueprintBuff.Flags.RemoveOnRest;
-                bp.Stacking = StackingType.Replace;
-                bp.m_AllowNonContextActions = false;
-                bp.IsClassFeature = true;
-            });
-            var ShamanHexBadPennyAbility = Helpers.CreateBlueprint<BlueprintAbility>("ShamanHexBadPennyAbility", bp => {
-                bp.SetName("Bad Penny");
-                bp.SetDescription("As a standard action, the shaman can curse a coin, and place it in the pockets of a target, attempting to plant the coin is a melee touch attack. " +
-                    "The bearer of the cursed coin takes a –2 penalty on all saving throws and skill checks as long he has the coin on his person. " +
-                    "Once the coin leaves his person, the curse ends and the coin becomes a mundane piece of tender again. " +
-                    "At 8th level, the penalty becomes –4. If the shaman curses a new coin, the previous curse ends. This is a curse effect.");
-                bp.AddComponent<AbilityEffectRunAction>(c => {
-                    c.SavingThrowType = SavingThrowType.Unknown;
-                    c.Actions = Helpers.CreateActionList(
-                        new ContextActionApplyBuff() {
-                            m_Buff = ShamanHexBadPennyBuff.ToReference<BlueprintBuffReference>(),
-                            Permanent = true,
-                            UseDurationSeconds = false,
-                            DurationValue = new ContextDurationValue() {
-                                Rate = DurationRate.Rounds,
-                                DiceType = DiceType.Zero,
-                                DiceCountValue = 0,
-                                BonusValue = new ContextValue() {
-                                    ValueType = ContextValueType.Simple,
-                                    Value = 0,
-                                    ValueRank = AbilityRankType.Default,
-                                    ValueShared = AbilitySharedValue.Damage
-                                }
-                            },
-                            DurationSeconds = 0
-                        });
-                });
-                bp.AddComponent<AbilityDeliverTouch>(c => {
-                    c.m_TouchWeapon = TouchItem;
-                });
-                bp.AddComponent<SpellDescriptorComponent>(c => {
-                    c.Descriptor = SpellDescriptor.Curse | SpellDescriptor.Hex;
-                });
-                bp.MaterialComponent = new BlueprintAbility.MaterialComponentData() {
-                    Count = 1,
-                    m_Item = GoldCoins.ToReference<BlueprintItemReference>()
-                };
-                bp.m_Icon = BadPennyIcon;
-                bp.Type = AbilityType.Supernatural;
-                bp.Range = AbilityRange.Touch;
-                bp.CanTargetPoint = false;
-                bp.CanTargetEnemies = true;
-                bp.CanTargetFriends = true;
-                bp.CanTargetSelf = false;
-                bp.SpellResistance = false;
-                bp.EffectOnAlly = AbilityEffectOnUnit.None;
-                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
-                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Touch;
-                bp.ActionType = UnitCommand.CommandType.Standard;
-                bp.AvailableMetamagic = Metamagic.Quicken | Metamagic.Heighten | Metamagic.Reach | Metamagic.CompletelyNormal;
-                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
-                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
-            });
-            var ShamanHexBadPennyFeature = Helpers.CreateBlueprint<BlueprintFeature>("ShamanHexBadPennyFeature", bp => {
-                bp.SetName("Bad Penny");
-                bp.SetDescription("As a standard action, the shaman can curse a coin, and place it in the pockets of a target, attempting to plant the coin is a melee touch attack. " +
-                    "The bearer of the cursed coin takes a –2 penalty on all saving throws and skill checks as long he has the coin on his person. " +
-                    "Once the coin leaves his person, the curse ends and the coin becomes a mundane piece of tender again. " +
-                    "At 8th level, the penalty becomes –4. If the shaman curses a new coin, the previous curse ends. This is a curse effect.");
-                bp.m_Icon = BadPennyIcon;
-                bp.AddComponent<AddFacts>(c => {
-                    c.m_Facts = new BlueprintUnitFactReference[] {
-                        ShamanHexBadPennyAbility.ToReference<BlueprintUnitFactReference>()
-                    };
+            #region Verdant Path
+            var DruidWoodlandStrideIcon = Resources.GetBlueprint<BlueprintFeature>("4c1419ef6cfc430a9071405788da4a73").Icon;
+            
+            var ShamanHexVerdantPathFeature = Helpers.CreateBlueprint<BlueprintFeature>("ShamanHexVerdantPathFeature", bp => {
+                bp.SetName("Verdant Path");
+                bp.SetDescription("Even the most tangled briars make way for the shaman, and suitable roots and branches appear to support her feet. " +
+                    "The shaman gains woodland stride, as per the druid ability of the same name. " +
+                    "\nYou can move through any sort difficult terrain at your normal {g|Encyclopedia:Speed}speed{/g} and without " +
+                    "taking {g|Encyclopedia:Damage}damage{/g} or suffering any other impairment.");
+                bp.m_Icon = DruidWoodlandStrideIcon;
+                bp.AddComponent<AddConditionImmunity>(c => {
+                    c.Condition = UnitCondition.DifficultTerrain;
                 });
                 bp.AddComponent<PrerequisiteFeature>(c => {
                     c.Group = Prerequisite.GroupType.Any;
@@ -1914,13 +1817,13 @@ namespace ExpandedContent.Tweaks.Spirits {
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = true;
             });
-            SpiritTools.RegisterShamanHex(ShamanHexBadPennyFeature);
+            SpiritTools.RegisterShamanHex(ShamanHexVerdantPathFeature);
             #endregion
 
 
             ShamanWoodSpiritProgression.IsPrerequisiteFor = new List<BlueprintFeatureReference>() {
                 ShamanHexHexOfLignificationFeature.ToReference<BlueprintFeatureReference>(),
-                ShamanHexNaturesGiftsFeature.ToReference<BlueprintFeatureReference>(),
+                //ShamanHexNaturesGiftsFeature.ToReference<BlueprintFeatureReference>(),
                 ShamanHexVerdantPathFeature.ToReference<BlueprintFeatureReference>()
             };
             #endregion
