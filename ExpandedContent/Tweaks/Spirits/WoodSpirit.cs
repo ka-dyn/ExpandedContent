@@ -41,6 +41,10 @@ using Kingmaker.Blueprints.Items;
 using static TabletopTweaks.Core.MechanicsChanges.AdditionalModifierDescriptors;
 using Kingmaker.UnitLogic.Abilities.Components.AreaEffects;
 using UnityEngine;
+using Kingmaker.Designers.Mechanics.Buffs;
+using Kingmaker.Blueprints.Items.Weapons;
+using Kingmaker.Blueprints.Items.Ecnchantments;
+using Kingmaker.Designers.Mechanics.EquipmentEnchants;
 
 namespace ExpandedContent.Tweaks.Spirits {
     internal class WoodSpirit {
@@ -156,8 +160,98 @@ namespace ExpandedContent.Tweaks.Spirits {
                 };
             });
 
+            var Slam1d8 = Resources.GetBlueprint<BlueprintItemWeapon>("5ea80d97dcfc81f46a1b9b2f256340f2");
+            var SlamReachEnchantment = Helpers.CreateBlueprint<BlueprintWeaponEnchantment>("SlamReachEnchantment", bp => {
+                bp.SetName("Reach");
+                bp.SetDescription("The reach of these slam attacks is increased by 5 feet.");
+                bp.AddComponent<AddStatBonusEquipment>(c => {
+                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+                    c.Stat = StatType.Reach;
+                    c.Value = 5;
+                });
+                bp.SetPrefix("Reach");
+                bp.SetSuffix("");
+            });
+            var Slam1d8WithReach = Helpers.CreateBlueprint<BlueprintItemWeapon>("Slam1d8WithReach", bp => {
+                bp.m_DisplayNameText = Slam1d8.m_DisplayNameText;
+                bp.m_DescriptionText = Slam1d8.m_DescriptionText;
+                bp.m_FlavorText = Slam1d8.m_FlavorText;
+                bp.m_NonIdentifiedNameText = Slam1d8.m_NonIdentifiedNameText;
+                bp.m_NonIdentifiedDescriptionText = Slam1d8.m_NonIdentifiedDescriptionText;
+                bp.m_Icon = Slam1d8.m_Icon;
+                bp.m_Cost = 0;
+                bp.m_Weight = 0;
+                bp.m_IsNotable = false;
+                bp.m_IsJunk = false;
+                bp.m_ForceStackable = false;
+                bp.m_Destructible = false;
+                bp.m_ShardItem = null;
+                bp.m_MiscellaneousType = BlueprintItem.MiscellaneousItemType.None;
+                bp.m_InventoryPutSound = Slam1d8.m_InventoryPutSound;
+                bp.m_InventoryTakeSound = Slam1d8.m_InventoryTakeSound;
+                bp.NeedSkinningForCollect = false;
+                bp.TrashLootTypes = Slam1d8.TrashLootTypes;
+                bp.CR = 0;
+                bp.SpendCharges = true;
+                bp.Charges = 1;
+                bp.RestoreChargesOnRest = false;
+                bp.CasterLevel = 1;
+                bp.SpellLevel = 1;
+                bp.DC = 11;
+                bp.HideAbilityInfo = false;
+                bp.IsNonRemovable = false;
+                bp.m_EquipmentEntity = new KingmakerEquipmentEntityReference();
+                bp.m_EquipmentEntityAlternatives = new KingmakerEquipmentEntityReference[0];
+                bp.m_ForcedRampColorPresetIndex = 0;
+                bp.m_VisualParameters = Slam1d8.m_VisualParameters;
+                bp.m_Type = Slam1d8.m_Type;
+                bp.m_Size = Size.Medium;
+                bp.m_Enchantments = new BlueprintWeaponEnchantmentReference[] { SlamReachEnchantment.ToReference<BlueprintWeaponEnchantmentReference>() };
+                bp.m_OverrideDamageDice = true;
+                bp.m_DamageDice = Slam1d8.m_DamageDice;
+                bp.m_OverrideDamageType = false;
+                bp.m_DamageType = Slam1d8.m_DamageType;
+                bp.CountAsDouble = false;
+                bp.Double = false;
+                bp.m_SecondWeapon = null;
+                bp.KeepInPolymorph = false;
+                bp.m_OverrideShardItem = false;
+                bp.m_OverrideDestructible = false;
+                bp.m_AlwaysPrimary = false;
+                bp.m_IsCanChangeVisualOverriden = false;
+                bp.m_CanChangeVisual = false;
+            });
 
-
+            var ShamanWoodSpiritBaseBuff = Helpers.CreateBuff("ShamanWoodSpiritBaseBuff", bp => {
+                bp.SetName("Tree Limb");
+                bp.SetDescription("As a swift action, the shaman can turn her arms into heavy, branch-like limbs. " +
+                    "Until the beginning of her next turn her unarmed strikes are replaced by slam attacks, these slam attacks deal 1d8 points of damage " +
+                    "(for a Medium shaman; 1d6 if Small, 2d6 if Large). A shaman can use this ability a number of times per day equal to 3 + her Charisma modifier." +
+                    "\nAt 8th level, the reach of these slam attacks increases by 5 feet.");
+                bp.m_Icon = WoodenFistIcon;
+                bp.Ranks = 1;
+                bp.IsClassFeature = true;
+                bp.AddComponent<EmptyHandWeaponOverride>(c => {
+                    c.m_Weapon = Slam1d8.ToReference<BlueprintItemWeaponReference>();
+                    c.IsPermanent = false;
+                    c.IsMonkUnarmedStrike = false;
+                });
+            });
+            var ShamanWoodSpiritBaseReachBuff = Helpers.CreateBuff("ShamanWoodSpiritBaseReachBuff", bp => {
+                bp.SetName("Tree Limb");
+                bp.SetDescription("As a swift action, the shaman can turn her arms into heavy, branch-like limbs. " +
+                    "Until the beginning of her next turn her unarmed strikes are replaced by slam attacks, these slam attacks deal 1d8 points of damage " +
+                    "(for a Medium shaman; 1d6 if Small, 2d6 if Large). A shaman can use this ability a number of times per day equal to 3 + her Charisma modifier." +
+                    "\nAt 8th level, the reach of these slam attacks increases by 5 feet.");
+                bp.m_Icon = WoodenFistIcon;
+                bp.Ranks = 1;
+                bp.IsClassFeature = true;
+                bp.AddComponent<EmptyHandWeaponOverride>(c => {
+                    c.m_Weapon = Slam1d8WithReach.ToReference<BlueprintItemWeaponReference>();
+                    c.IsPermanent = false;
+                    c.IsMonkUnarmedStrike = false;
+                });
+            });
 
 
             var ShamanWoodSpiritBaseAbility = Helpers.CreateBlueprint<BlueprintAbility>("ShamanWoodSpiritBaseAbility", bp => {
@@ -272,6 +366,8 @@ namespace ExpandedContent.Tweaks.Spirits {
             });
             #endregion
             #region Greater  
+            var EntangledBuff = Resources.GetBlueprint<BlueprintBuff>("d1aea643c260c5e4ea66012876f2b7f5");
+
             var ShamanWoodSpiritGreaterResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("ShamanWoodSpiritGreaterResource", bp => {
                 bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
                     BaseValue = 0,
@@ -291,8 +387,15 @@ namespace ExpandedContent.Tweaks.Spirits {
                 bp.m_UseMax = true;
                 bp.m_Max = 2;
             });
-            
-            
+
+            var ShamanWoodSpiritGreaterTerrainBuff = Helpers.CreateBuff("ShamanWoodSpiritGreaterTerrainBuff", bp => {
+                bp.SetName("ShamanWoodSpiritGreaterTerrainBuff");
+                bp.SetDescription("Affected by difficult terrain");
+                bp.AddComponent<AddCondition>(c => {
+                    c.Condition = UnitCondition.DifficultTerrain;
+                });
+                bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
+            });
 
             var ShamanWoodSpiritGreaterBuff = Helpers.CreateBuff("ShamanWoodSpiritGreaterBuff", bp => {
                 bp.SetName("Bloody Roots");
@@ -483,7 +586,6 @@ namespace ExpandedContent.Tweaks.Spirits {
                 bp.Frequency = DurationRate.Rounds;
             });
 
-
             var ShamanWoodSpiritGreaterArea = Helpers.CreateBlueprint<BlueprintAbilityAreaEffect>("ShamanWoodSpiritGreaterArea", bp => {
                 bp.AddComponent<AbilityAreaEffectRunAction>(c => {
                     c.UnitEnter = Helpers.CreateActionList(
@@ -491,37 +593,72 @@ namespace ExpandedContent.Tweaks.Spirits {
                             ConditionsChecker = new ConditionsChecker() {
                                 Operation = Operation.Or,
                                 Conditions = new Condition[] {
-                                    new ContextConditionHasBuff() {
-                                        m_Buff = ShamanWoodSpiritGreaterBuff.ToReference<BlueprintBuffReference>(),
-                                        Not = false
-                                    }
+                                    new ContextConditionIsCaster() { Not = false }
                                 }
                             },
                             IfTrue = Helpers.CreateActionList(),
                             IfFalse = Helpers.CreateActionList(
-                                new ContextActionCombatManeuverExpanded() {
-                                    Bonus = 5,
-                                    HasBABReplacement = true,
-                                    BABReplacementValue = new ContextValue() { ValueType = ContextValueType.Rank, ValueRank = AbilityRankType.Default },
-                                    OnSuccess = Helpers.CreateActionList(
-                                        new ContextActionApplyBuff() {
-                                            m_Buff = ShamanWoodSpiritGreaterBuff.ToReference<BlueprintBuffReference>(),
-                                            Permanent = true,
-                                            DurationValue = new ContextDurationValue() {
-                                                Rate = DurationRate.Minutes,
-                                                DiceType = DiceType.Zero,
-                                                DiceCountValue = new ContextValue(),
-                                                BonusValue = new ContextValue(),
-                                                m_IsExtendable = true
+                                new ContextActionApplyBuff() {
+                                    m_Buff = ShamanWoodSpiritGreaterTerrainBuff.ToReference<BlueprintBuffReference>(),
+                                    Permanent = true,
+                                    DurationValue = new ContextDurationValue() {
+                                        Rate = DurationRate.Minutes,
+                                        DiceType = DiceType.Zero,
+                                        DiceCountValue = new ContextValue(),
+                                        BonusValue = new ContextValue(),
+                                        m_IsExtendable = true
+                                    },
+                                    IsFromSpell = false,
+                                    IsNotDispelable = true,
+                                },
+                                new Conditional() {
+                                    ConditionsChecker = new ConditionsChecker() {
+                                        Operation = Operation.Or,
+                                        Conditions = new Condition[] {
+                                            new ContextConditionIsEnemy() { Not = false }
+                                        }
+                                    },
+                                    IfTrue = Helpers.CreateActionList(
+                                        new Conditional() {
+                                            ConditionsChecker = new ConditionsChecker() {
+                                                Operation = Operation.Or,
+                                                Conditions = new Condition[] {
+                                                    new ContextConditionHasBuff() {
+                                                        m_Buff = ShamanWoodSpiritGreaterBuff.ToReference<BlueprintBuffReference>(),
+                                                        Not = false
+                                                    }
+                                                }
                                             },
-                                            IsFromSpell = false,
-                                            IsNotDispelable = true,
+                                            IfTrue = Helpers.CreateActionList(),
+                                            IfFalse = Helpers.CreateActionList(
+                                                new ContextActionCombatManeuverExpanded() {
+                                                    Bonus = 5,
+                                                    HasBABReplacement = true,
+                                                    BABReplacementValue = new ContextValue() { ValueType = ContextValueType.Rank, ValueRank = AbilityRankType.Default },
+                                                    OnSuccess = Helpers.CreateActionList(
+                                                        new ContextActionApplyBuff() {
+                                                            m_Buff = ShamanWoodSpiritGreaterBuff.ToReference<BlueprintBuffReference>(),
+                                                            Permanent = true,
+                                                            DurationValue = new ContextDurationValue() {
+                                                                Rate = DurationRate.Minutes,
+                                                                DiceType = DiceType.Zero,
+                                                                DiceCountValue = new ContextValue(),
+                                                                BonusValue = new ContextValue(),
+                                                                m_IsExtendable = true
+                                                            },
+                                                            IsFromSpell = false,
+                                                            IsNotDispelable = true,
+                                                        }
+                                                        ),
+                                                    OnFailure = Helpers.CreateActionList()
+                                                }
+                                            )
                                         }
                                         ),
-                                    OnFailure = Helpers.CreateActionList()
+                                    IfFalse = Helpers.CreateActionList()
                                 }
-                            )
-                        }
+                                )
+                        }                        
                         );
                     c.UnitExit = Helpers.CreateActionList(
                         new Conditional() {
@@ -540,6 +677,9 @@ namespace ExpandedContent.Tweaks.Spirits {
                                 }
                                 ),
                             IfFalse = Helpers.CreateActionList()
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = ShamanWoodSpiritGreaterTerrainBuff.ToReference<BlueprintBuffReference>()
                         }
                         );
                     c.Round = Helpers.CreateActionList(
@@ -547,36 +687,47 @@ namespace ExpandedContent.Tweaks.Spirits {
                             ConditionsChecker = new ConditionsChecker() {
                                 Operation = Operation.Or,
                                 Conditions = new Condition[] {
-                                    new ContextConditionHasBuff() {
-                                        m_Buff = ShamanWoodSpiritGreaterBuff.ToReference<BlueprintBuffReference>(),
-                                        Not = false
-                                    }
+                                    new ContextConditionIsEnemy() { Not = false }
                                 }
                             },
-                            IfTrue = Helpers.CreateActionList(),
-                            IfFalse = Helpers.CreateActionList(
-                                new ContextActionCombatManeuverExpanded() {
-                                    Bonus = 5,
-                                    HasBABReplacement = true,
-                                    BABReplacementValue = new ContextValue() { ValueType = ContextValueType.Rank, ValueRank = AbilityRankType.Default },
-                                    OnSuccess = Helpers.CreateActionList(
-                                        new ContextActionApplyBuff() {
-                                            m_Buff = ShamanWoodSpiritGreaterBuff.ToReference<BlueprintBuffReference>(),
-                                            Permanent = true,
-                                            DurationValue = new ContextDurationValue() {
-                                                Rate = DurationRate.Minutes,
-                                                DiceType = DiceType.Zero,
-                                                DiceCountValue = new ContextValue(),
-                                                BonusValue = new ContextValue(),
-                                                m_IsExtendable = true
-                                            },
-                                            IsFromSpell = false,
-                                            IsNotDispelable = true,
+                            IfTrue = Helpers.CreateActionList(
+                                new Conditional() {
+                                    ConditionsChecker = new ConditionsChecker() {
+                                        Operation = Operation.Or,
+                                        Conditions = new Condition[] {
+                                            new ContextConditionHasBuff() {
+                                                m_Buff = ShamanWoodSpiritGreaterBuff.ToReference<BlueprintBuffReference>(),
+                                                Not = false
+                                            }
                                         }
-                                        ),
-                                    OnFailure = Helpers.CreateActionList()
+                                    },
+                                    IfTrue = Helpers.CreateActionList(),
+                                    IfFalse = Helpers.CreateActionList(
+                                        new ContextActionCombatManeuverExpanded() {
+                                            Bonus = 5,
+                                            HasBABReplacement = true,
+                                            BABReplacementValue = new ContextValue() { ValueType = ContextValueType.Rank, ValueRank = AbilityRankType.Default },
+                                            OnSuccess = Helpers.CreateActionList(
+                                                new ContextActionApplyBuff() {
+                                                    m_Buff = ShamanWoodSpiritGreaterBuff.ToReference<BlueprintBuffReference>(),
+                                                    Permanent = true,
+                                                    DurationValue = new ContextDurationValue() {
+                                                        Rate = DurationRate.Minutes,
+                                                        DiceType = DiceType.Zero,
+                                                        DiceCountValue = new ContextValue(),
+                                                        BonusValue = new ContextValue(),
+                                                        m_IsExtendable = true
+                                                    },
+                                                    IsFromSpell = false,
+                                                    IsNotDispelable = true,
+                                                }
+                                                ),
+                                            OnFailure = Helpers.CreateActionList()
+                                        }
+                                    )
                                 }
-                            )
+                                ),
+                            IfFalse = Helpers.CreateActionList()
                         }
                         );
                     c.UnitMove = Helpers.CreateActionList();
@@ -706,69 +857,96 @@ namespace ExpandedContent.Tweaks.Spirits {
             });
             #endregion
             #region True
-            var SneakAttackIcon = Resources.GetBlueprint<BlueprintFeature>("9b9eac6709e1c084cb18c3a366e0ec87").Icon;
+            var PlantShapeIIIIcon = AssetLoader.LoadInternal("Skills", "Icon_PlantShapeIII.jpg");
+            var PlantShapeIIITreantBuff = Resources.GetModBlueprint<BlueprintBuff>("PlantShapeIIITreantBuff");
+            var PlantShapeIIIGiantFlytrapBuff = Resources.GetModBlueprint<BlueprintBuff>("PlantShapeIIIGiantFlytrapBuff");
             var ShamanWoodSpiritTrueResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("ShamanWoodSpiritTrueResource", bp => {
                 bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
-                    BaseValue = 3,
+                    BaseValue = 1,
                     IncreasedByLevel = false,
-                    IncreasedByStat = true,
+                    IncreasedByStat = false,
                     ResourceBonusStat = StatType.Charisma
                 };
             });
-            var ShamanWoodSpiritTrueBuff = Helpers.CreateBuff("ShamanWoodSpiritTrueBuff", bp => {
-                bp.SetName("Paragon of the City");
-                bp.SetDescription("As a standard action, the shaman assumes a spirit-infused paragon form that makes her a lethal stalker of the alleys and shadows. " +
-                    "She gains the ability to make sneak attacks as a rogue of her shaman level for 1 minute. (If she already has sneak attack dice, these stack.) " +
-                    "She can use this ability a number of times per day equal to 3 + her Charisma modifier.");
-                bp.m_Icon = SneakAttackIcon;
-                bp.AddComponent<AddContextStatBonus>(c => {
-                    c.Stat = StatType.SneakAttack;
-                    c.Value = new ContextValue() {
-                        ValueType = ContextValueType.Rank,
-                        ValueRank = AbilityRankType.Default
-                    };
-                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+
+            var ShamanWoodSpiritTrueTreantAbility = Helpers.CreateBlueprint<BlueprintAbility>("ShamanWoodSpiritTrueTreantAbility", bp => {
+                bp.SetName("Tree Form (Treant)");
+                bp.SetDescription("You become a huge treant. You gain a +8 size bonus to your Strength, +4 to Constitution, -2 penalty to Dexterity and a +6 " +
+                    "natural armor bonus. You also gain two 2d6 slam attacks, damage reduction 10/slashing, vulnerability to fire and overrun ability.");
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = ShamanWoodSpiritTrueResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = PlantShapeIIITreantBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = false,
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Hours,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Rank,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage
+                                }
+                            },
+                            DurationSeconds = 0
+                        });
+                });
+                bp.AddComponent<AbilityTargetHasFact>(c => {
+                    c.m_CheckedFacts = new BlueprintUnitFactReference[] { PlantShapeIIITreantBuff.ToReference<BlueprintUnitFactReference>() };
+                    c.Inverted = true;
+                });
+                bp.AddComponent<AbilityExecuteActionOnCast>(c => {
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionRemoveBuffsByDescriptor() {
+                            NotSelf = true,
+                            SpellDescriptor = SpellDescriptor.Polymorph,
+                        }
+                        );
                 });
                 bp.AddComponent<ContextRankConfig>(c => {
                     c.m_Type = AbilityRankType.Default;
                     c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
                     c.m_Stat = StatType.Unknown;
                     c.m_SpecificModifier = ModifierDescriptor.None;
-                    c.m_Progression = ContextRankProgression.StartPlusDivStep;
-                    c.m_StartLevel = 1;
-                    c.m_StepLevel = 2;
-                    c.m_Class = new BlueprintCharacterClassReference[] { ShamanClass.ToReference<BlueprintCharacterClassReference>() };
+                    c.m_Progression = ContextRankProgression.AsIs;
+                    c.m_StartLevel = 0;
+                    c.m_StepLevel = 0;
+                    c.m_UseMax = false;
+                    c.m_Max = 0;
+                    c.m_Class = new BlueprintCharacterClassReference[] {
+                        ShamanClass.ToReference<BlueprintCharacterClassReference>()
+                    };
                 });
-                bp.m_AllowNonContextActions = false;
-                bp.IsClassFeature = true;
-                bp.m_Flags = BlueprintBuff.Flags.StayOnDeath;
-                bp.Stacking = StackingType.Replace;
-            });
-            var ShamanWoodSpiritTrueAbility = Helpers.CreateBlueprint<BlueprintAbility>("ShamanWoodSpiritTrueAbility", bp => {
-                bp.SetName("Paragon of the City");
-                bp.SetDescription("As a standard action, the shaman assumes a spirit-infused paragon form that makes her a lethal stalker of the alleys and shadows. " +
-                    "She gains the ability to make sneak attacks as a rogue of her shaman level for 1 minute. (If she already has sneak attack dice, these stack.) " +
-                    "She can use this ability a number of times per day equal to 3 + her Charisma modifier.");
-                bp.m_Icon = SneakAttackIcon;
-                bp.AddComponent<AbilityEffectRunAction>(c => {
-                    c.SavingThrowType = SavingThrowType.Unknown;
-                    c.Actions = Helpers.CreateActionList(
-                        new ContextActionApplyBuff() {
-                            m_Buff = ShamanWoodSpiritTrueBuff.ToReference<BlueprintBuffReference>(),
-                            Permanent = false,
-                            UseDurationSeconds = false,
-                            DurationValue = new ContextDurationValue() {
-                                Rate = DurationRate.Minutes,
-                                DiceType = DiceType.Zero,
-                                DiceCountValue = 0,
-                                BonusValue = 1
-                            },
-                            DurationSeconds = 0,
-                            IsNotDispelable = true
-                        });
+                bp.AddComponent<AbilitySpawnFx>(c => {
+                    c.PrefabLink = new PrefabLink() { AssetId = "352469f228a3b1f4cb269c7ab0409b8e" };
+                    c.Time = AbilitySpawnFxTime.OnApplyEffect;
+                    c.Anchor = AbilitySpawnFxAnchor.Caster;
+                    c.DestroyOnCast = false;
+                    c.Delay = 0;
+                    c.PositionAnchor = AbilitySpawnFxAnchor.None;
+                    c.OrientationAnchor = AbilitySpawnFxAnchor.None;
+                    c.OrientationMode = AbilitySpawnFxOrientation.Copy;
                 });
-                bp.m_AllowNonContextActions = false;
-                bp.Type = AbilityType.Supernatural;
+                bp.AddComponent<SpellDescriptorComponent>(c => {
+                    c.Descriptor = SpellDescriptor.Polymorph;
+                });
+                bp.AddComponent<SpellComponent>(c => {
+                    c.School = SpellSchool.Transmutation;
+                });
+                bp.AddComponent<CraftInfoComponent>(c => {
+                    c.SavingThrow = CraftSavingThrow.None;
+                    c.AOEType = CraftAOE.None;
+                    c.SpellType = CraftSpellType.Buff;
+                });
+                bp.m_Icon = PlantShapeIIIIcon;
+                bp.Type = AbilityType.Spell;
                 bp.Range = AbilityRange.Personal;
                 bp.CanTargetPoint = false;
                 bp.CanTargetEnemies = false;
@@ -779,16 +957,158 @@ namespace ExpandedContent.Tweaks.Spirits {
                 bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
                 bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.SelfTouch;
                 bp.ActionType = UnitCommand.CommandType.Standard;
-                bp.AvailableMetamagic = Metamagic.Empower | Metamagic.Maximize | Metamagic.Quicken | Metamagic.Extend | Metamagic.Heighten | Metamagic.CompletelyNormal | Metamagic.Reach | Metamagic.Selective;
-                bp.LocalizedDuration = Helpers.CreateString("ShamanWoodSpiritTrueAbility.Duration", "1 minute");
+                bp.AvailableMetamagic = Metamagic.Quicken | Metamagic.Heighten | Metamagic.CompletelyNormal | Metamagic.Extend;
+                bp.LocalizedDuration = Helpers.CreateString("ShamanWoodSpiritTrueTreantAbility.Duration", "1 hour/level");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
+
+            var ShamanWoodSpiritTrueGiantFlytrapAbility = Helpers.CreateBlueprint<BlueprintAbility>("ShamanWoodSpiritTrueGiantFlytrapAbility", bp => {
+                bp.SetName("Tree Form (Giant Flytrap)");
+                bp.SetDescription("You become a huge giant flytrap. You gain a +8 size bonus to your Strength, +4 to Constitution, -2 penalty to Dexterity and a +6 " +
+                    "natural armor bonus. You also gain four 1d8 bite attacks, acid Resistance 20 and blindsight and poison ability.");
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = ShamanWoodSpiritTrueResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = PlantShapeIIIGiantFlytrapBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = false,
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Hours,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Rank,
+                                    Value = 0,
+                                    ValueRank = AbilityRankType.Default,
+                                    ValueShared = AbilitySharedValue.Damage
+                                }
+                            },
+                            DurationSeconds = 0
+                        });
+                });
+                bp.AddComponent<AbilityTargetHasFact>(c => {
+                    c.m_CheckedFacts = new BlueprintUnitFactReference[] { PlantShapeIIIGiantFlytrapBuff.ToReference<BlueprintUnitFactReference>() };
+                    c.Inverted = true;
+                });
+                bp.AddComponent<AbilityExecuteActionOnCast>(c => {
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionRemoveBuffsByDescriptor() {
+                            NotSelf = true,
+                            SpellDescriptor = SpellDescriptor.Polymorph,
+                        }
+                        );
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.AsIs;
+                    c.m_StartLevel = 0;
+                    c.m_StepLevel = 0;
+                    c.m_UseMax = false;
+                    c.m_Max = 0;
+                    c.m_Class = new BlueprintCharacterClassReference[] {
+                        ShamanClass.ToReference<BlueprintCharacterClassReference>()
+                    };
+                });
+                bp.AddComponent<AbilitySpawnFx>(c => {
+                    c.PrefabLink = new PrefabLink() { AssetId = "352469f228a3b1f4cb269c7ab0409b8e" };
+                    c.Time = AbilitySpawnFxTime.OnApplyEffect;
+                    c.Anchor = AbilitySpawnFxAnchor.Caster;
+                    c.DestroyOnCast = false;
+                    c.Delay = 0;
+                    c.PositionAnchor = AbilitySpawnFxAnchor.None;
+                    c.OrientationAnchor = AbilitySpawnFxAnchor.None;
+                    c.OrientationMode = AbilitySpawnFxOrientation.Copy;
+                });
+                bp.AddComponent<SpellDescriptorComponent>(c => {
+                    c.Descriptor = SpellDescriptor.Polymorph;
+                });
+                bp.AddComponent<SpellComponent>(c => {
+                    c.School = SpellSchool.Transmutation;
+                });
+                bp.AddComponent<CraftInfoComponent>(c => {
+                    c.SavingThrow = CraftSavingThrow.None;
+                    c.AOEType = CraftAOE.None;
+                    c.SpellType = CraftSpellType.Buff;
+                });
+                bp.m_Icon = PlantShapeIIIIcon;
+                bp.Type = AbilityType.Spell;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.SelfTouch;
+                bp.ActionType = UnitCommand.CommandType.Standard;
+                bp.AvailableMetamagic = Metamagic.Quicken | Metamagic.Heighten | Metamagic.CompletelyNormal | Metamagic.Extend;
+                bp.LocalizedDuration = Helpers.CreateString("ShamanWoodSpiritTrueGiantFlytrapAbility.Duration", "1 hour/level");
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+
+            var ShamanWoodSpiritTrueAbility = Helpers.CreateBlueprint<BlueprintAbility>("ShamanWoodSpiritTrueAbility", bp => {
+                bp.SetName("Tree Form");
+                bp.SetDescription("You become a Huge Treant or a Huge Giant Flytrap. \nTreant: You become a huge treant. You gain a +8 size bonus to your Strength, " +
+                    "+4 to Constitution, -2 penalty to Dexterity and a +6 natural armor bonus. You also gain two 2d6 slam attacks, damage reduction 10/slashing, " +
+                    "vulnerability to fire and overrun ability. Giant Flytrap: You become a huge giant flytrap. You gain a +8 size bonus to your Strength, +4 to " +
+                    "Constitution, -2 penalty to Dexterity and a +6 natural armor bonus. You also gain four 1d8 bite attacks, acid Resistance 20 and blindsight " +
+                    "and poison ability.");
+                bp.AddComponent<AbilityVariants>(c => {
+                    c.m_Variants = new BlueprintAbilityReference[] {
+                        ShamanWoodSpiritTrueTreantAbility.ToReference<BlueprintAbilityReference>(),
+                        ShamanWoodSpiritTrueGiantFlytrapAbility.ToReference<BlueprintAbilityReference>()
+                    };
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = ShamanWoodSpiritTrueResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<SpellDescriptorComponent>(c => {
+                    c.Descriptor = SpellDescriptor.Polymorph;
+                });
+                bp.AddComponent<SpellComponent>(c => {
+                    c.School = SpellSchool.Transmutation;
+                });
+                bp.AddComponent<CraftInfoComponent>(c => {
+                    c.SavingThrow = CraftSavingThrow.None;
+                    c.AOEType = CraftAOE.None;
+                    c.SpellType = CraftSpellType.Buff;
+                });
+                bp.m_Icon = PlantShapeIIIIcon;
+                bp.Type = AbilityType.Spell;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.SelfTouch;
+                bp.ActionType = UnitCommand.CommandType.Standard;
+                bp.AvailableMetamagic = Metamagic.Quicken | Metamagic.Heighten | Metamagic.CompletelyNormal | Metamagic.Extend;
+                bp.LocalizedDuration = Helpers.CreateString("ShamanWoodSpiritTrueAbility.Duration", "1 hour/level");
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+
+            ShamanWoodSpiritTrueTreantAbility.m_Parent = ShamanWoodSpiritTrueAbility.ToReference<BlueprintAbilityReference>();
+            ShamanWoodSpiritTrueGiantFlytrapAbility.m_Parent = ShamanWoodSpiritTrueAbility.ToReference<BlueprintAbilityReference>();
+
             var ShamanWoodSpiritTrueFeature = Helpers.CreateBlueprint<BlueprintFeature>("ShamanWoodSpiritTrueFeature", bp => {
-                bp.SetName("Paragon of the City");
+                bp.SetName("Tree Form");
                 bp.SetDescription("As a standard action, the shaman assumes a spirit-infused paragon form that makes her a lethal stalker of the alleys and shadows. " +
                     "She gains the ability to make sneak attacks as a rogue of her shaman level for 1 minute. (If she already has sneak attack dice, these stack.) " +
                     "She can use this ability a number of times per day equal to 3 + her Charisma modifier.");
-                bp.m_Icon = SneakAttackIcon;
+                bp.m_Icon = PlantShapeIIIIcon;
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] {
                         ShamanWoodSpiritTrueAbility.ToReference<BlueprintUnitFactReference>()
@@ -803,30 +1123,52 @@ namespace ExpandedContent.Tweaks.Spirits {
             });
             #endregion
             #region Manifestation 
-            var Corrupter = Resources.GetBlueprint<BlueprintFeature>("55c364c3f02e4fdc8a63125b5a4c256c");
+            var ImmunityToParalysis = Resources.GetBlueprint<BlueprintFeature>("4b152a7bc5bab5042b437b955fea46cd");
+            var ImmunityToPoison = Resources.GetBlueprint<BlueprintFeature>("7e3f3228be49cce49bda37f7901bf246");
+            var ImmunityToStunning = Resources.GetBlueprint<BlueprintFeature>("bd9df2d4a4cef274285b8827b6769bde");
+            var ImmunityToSleep = Resources.GetBlueprint<BlueprintFeature>("c263f44f72df009489409af122b5eefc");
+            var BalefulPolymorphBuff = Resources.GetBlueprint<BlueprintBuff>("0a52d8761bfd125429842103aed48b90");
+
             var ShamanWoodSpiritManifestationFeature = Helpers.CreateBlueprint<BlueprintFeature>("ShamanWoodSpiritManifestationFeature", bp => {
                 bp.SetName("Manifestation");
-                bp.SetDescription("Upon reaching 20th level, the shaman becomes a spirit of the slums. She is immune to all diseases and poisons. " +
-                    "When in an urban environment, she gains a +4 insight bonus to her AC and on Reflex saves.");
-                bp.AddComponent<SpellImmunityToSpellDescriptor>(c => {
-                    c.Descriptor = SpellDescriptor.Poison | SpellDescriptor.Disease;
-                    c.m_CasterIgnoreImmunityFact = Corrupter.ToReference<BlueprintUnitFactReference>();
+                bp.SetDescription("Upon reaching 20th level, the shaman becomes a living creature of wood. " +
+                    "She gains a +4 natural armor bonus to her Armor Class and damage reduction 10/— against wooden weapons. " +
+                    "She gains immunity to paralysis, poison, sleep, and stun, along with enemy polymorph spells.");
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        ImmunityToParalysis.ToReference<BlueprintUnitFactReference>(),
+                        ImmunityToPoison.ToReference<BlueprintUnitFactReference>(),
+                        ImmunityToSleep.ToReference<BlueprintUnitFactReference>(),
+                        ImmunityToStunning.ToReference<BlueprintUnitFactReference>()
+                    };
                 });
-                bp.AddComponent<BuffDescriptorImmunity>(c => {
-                    c.Descriptor = SpellDescriptor.Poison | SpellDescriptor.Disease;
-                    c.m_IgnoreFeature = Corrupter.ToReference<BlueprintUnitFactReference>();
+                bp.AddComponent<SpecificBuffImmunity>(c => {
+                    c.m_Buff = BalefulPolymorphBuff.ToReference<BlueprintBuffReference>();
                 });
-                bp.AddComponent<AddContextStatBonusInTerrain>(c => {
-                    c.Terrain = AreaSetting.Urban;
-                    c.Descriptor = ModifierDescriptor.Insight;
+                bp.AddComponent<AddStatBonus>(c => {
+                    c.Descriptor = ModifierDescriptor.NaturalArmor;
                     c.Stat = StatType.AC;
                     c.Value = 4;
                 });
-                bp.AddComponent<AddContextStatBonusInTerrain>(c => {
-                    c.Terrain = AreaSetting.Urban;
-                    c.Descriptor = ModifierDescriptor.Insight;
-                    c.Stat = StatType.SaveReflex;
-                    c.Value = 4;
+                bp.AddComponent<DamageReductionAgainstWeaponCategory>(c => {
+                    c.Reduction = 10;
+                    c.Categories = new WeaponCategory[] {
+                        WeaponCategory.Greatclub,
+                        WeaponCategory.Club,
+                        WeaponCategory.Javelin,
+                        WeaponCategory.Kama,
+                        WeaponCategory.Longbow,
+                        WeaponCategory.Longspear,
+                        WeaponCategory.Nunchaku,
+                        WeaponCategory.Quarterstaff,
+                        WeaponCategory.Shortbow,
+                        WeaponCategory.Shortspear,
+                        WeaponCategory.SlingStaff,
+                        WeaponCategory.Spear,
+                        WeaponCategory.Trident,
+                        WeaponCategory.LightCrossbow,
+                        WeaponCategory.HeavyCrossbow
+                    };
                 });
                 bp.m_AllowNonContextActions = false;
                 bp.HideInUI = false;
@@ -837,9 +1179,9 @@ namespace ExpandedContent.Tweaks.Spirits {
             #endregion
             #region Progression
             var ShamanWoodSpiritProgression = Helpers.CreateBlueprint<BlueprintProgression>("ShamanWoodSpiritProgression", bp => {
-                bp.SetName("Slums");
-                bp.SetDescription("A shaman who selects the slums spirit gains the city’s alleys and avenues as steadfast allies. The rats in the gutter, " +
-                    "the torches along the walls, the coins that flow through the market are all a part of her and serve her whim.");
+                bp.SetName("Wood");
+                bp.SetDescription("A shaman who selects the wood spirit has a skin tone similar to the coloration of trees in her home region. " +
+                    "Her vibrant hair is fragrant and resembles leaves and blossoms.");
                 bp.AddComponent<AddFeaturesFromSelectionToDescription>(c => {
                     c.SetIntroduction("Additional Hexes:");
                     c.m_FeatureSelection = ShamanHexSelection.ToReference<BlueprintFeatureSelectionReference>();
@@ -909,9 +1251,9 @@ namespace ExpandedContent.Tweaks.Spirits {
                 bp.Stacking = StackingType.Replace;
             });
             var ShamanWoodSpiritWanderingFeature = Helpers.CreateBlueprint<BlueprintFeature>("ShamanWoodSpiritWanderingFeature", bp => {
-                bp.SetName("Slums");
-                bp.SetDescription("A shaman who selects the slums spirit gains the city’s alleys and avenues as steadfast allies. The rats in the gutter, " +
-                    "the torches along the walls, the coins that flow through the market are all a part of her and serve her whim.");
+                bp.SetName("Wood");
+                bp.SetDescription("A shaman who selects the wood spirit has a skin tone similar to the coloration of trees in her home region. " +
+                    "Her vibrant hair is fragrant and resembles leaves and blossoms.");
                 bp.AddComponent<AddFactContextActions>(c => {
                     c.Activated = Helpers.CreateActionList(
                         new Conditional() {
@@ -1032,9 +1374,9 @@ namespace ExpandedContent.Tweaks.Spirits {
             #endregion
             #region Unsworn Wandering Spirit
             var UnswornShamanWoodSpiritWanderingFeature1 = Helpers.CreateBlueprint<BlueprintFeature>("UnswornShamanWoodSpiritWanderingFeature1", bp => {
-                bp.SetName("Slums");
-                bp.SetDescription("A shaman who selects the slums spirit gains the city’s alleys and avenues as steadfast allies. The rats in the gutter, " +
-                    "the torches along the walls, the coins that flow through the market are all a part of her and serve her whim.");
+                bp.SetName("Wood");
+                bp.SetDescription("A shaman who selects the wood spirit has a skin tone similar to the coloration of trees in her home region. " +
+                    "Her vibrant hair is fragrant and resembles leaves and blossoms.");
                 bp.AddComponent<AddFactContextActions>(c => {
                     c.Activated = Helpers.CreateActionList(
                         new Conditional() {
@@ -1153,9 +1495,9 @@ namespace ExpandedContent.Tweaks.Spirits {
                 bp.IsClassFeature = true;
             });
             var UnswornShamanWoodSpiritWanderingFeature2 = Helpers.CreateBlueprint<BlueprintFeature>("UnswornShamanWoodSpiritWanderingFeature2", bp => {
-                bp.SetName("Slums");
-                bp.SetDescription("A shaman who selects the slums spirit gains the city’s alleys and avenues as steadfast allies. The rats in the gutter, " +
-                    "the torches along the walls, the coins that flow through the market are all a part of her and serve her whim.");
+                bp.SetName("Wood");
+                bp.SetDescription("A shaman who selects the wood spirit has a skin tone similar to the coloration of trees in her home region. " +
+                    "Her vibrant hair is fragrant and resembles leaves and blossoms.");
                 bp.AddComponent<AddFactContextActions>(c => {
                     c.Activated = Helpers.CreateActionList(
                         new Conditional() {
@@ -1578,7 +1920,8 @@ namespace ExpandedContent.Tweaks.Spirits {
 
             ShamanWoodSpiritProgression.IsPrerequisiteFor = new List<BlueprintFeatureReference>() {
                 ShamanHexHexOfLignificationFeature.ToReference<BlueprintFeatureReference>(),
-                ShamanHexNaturesGiftsFeature.ToReference<BlueprintFeatureReference>()
+                ShamanHexNaturesGiftsFeature.ToReference<BlueprintFeatureReference>(),
+                ShamanHexVerdantPathFeature.ToReference<BlueprintFeatureReference>()
             };
             #endregion
 

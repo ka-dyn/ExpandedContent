@@ -258,6 +258,7 @@
     <Compile Include="Tweaks\Components\ContextActionOnApplyingSpell.cs" />
     <Compile Include="Tweaks\Components\ContextCalculateAbilityParamsBasedOnHigherClass.cs" />
     <Compile Include="Tweaks\Components\ContextConditionIsPetOwner.cs" />
+    <Compile Include="Tweaks\Components\DamageReductionAgainstWeaponCategory.cs" />
     <Compile Include="Tweaks\Components\DisableAllMoraleBonuses.cs" />
     <Compile Include="Tweaks\Components\IgnoreDamageReductionOnAttackRangeType.cs" />
     <Compile Include="Tweaks\Components\CheckWeaponEnchant.cs" />
