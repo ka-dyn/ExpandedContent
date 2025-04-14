@@ -129,6 +129,7 @@ New Oracle Mysteries / Curses
 New Shaman Spirits
 - Heavens
 - Slums
+- Wood
 
 New Shaman Hexes
 - Accident
@@ -140,10 +141,12 @@ New Shaman Hexes
 - Erosion Curse
 - Eyes of Battle
 - Guiding Star
+- Hex of Lignification
 - Lure of the Heavens
 - Shocking Aura
 - Sluggish
 - Starburn
+- Verdant Path
 - Ward of Stone
     
 New Subdomains
