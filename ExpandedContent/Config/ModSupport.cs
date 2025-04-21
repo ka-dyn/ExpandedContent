@@ -798,23 +798,28 @@ namespace ExpandedContent.Config {
                     #endregion
                     #region God load order stuff
                     Main.Log("Patching God load order Stuff");
-                    //I sohuld not need to do this but for some users TTT always loads first
-                    var IroriFeatureAddFeatureOnClassLevel = Resources.GetBlueprint<BlueprintFeature>("23a77a5985de08349820429ce1b5a234").GetComponent<AddFeatureOnClassLevelExclude>();
-                    IroriFeatureAddFeatureOnClassLevel.m_AdditionalClasses = IroriFeatureAddFeatureOnClassLevel.m_AdditionalClasses.AppendToArray(RangerClass);
-                    IroriFeatureAddFeatureOnClassLevel.m_Archetypes = IroriFeatureAddFeatureOnClassLevel.m_Archetypes.AppendToArray(DivineTrackerArchetype.ToReference<BlueprintArchetypeReference>());
-                    var PuluraFeature = Resources.GetBlueprint<BlueprintFeature>("ebb0b46f95dbac74681c78aae895dbd0");
-                    var SlingStaffProficiency = Resources.GetBlueprint<BlueprintFeature>("a0be067e11f4d8345a8b57a92e52a301");
-                    PuluraFeature.AddComponent<AddFeatureOnClassLevelExclude>(c => {
-                        c.m_Class = IroriFeatureAddFeatureOnClassLevel.m_Class;
-                        c.m_AdditionalClasses = IroriFeatureAddFeatureOnClassLevel.m_AdditionalClasses;
-                        c.m_Archetypes = IroriFeatureAddFeatureOnClassLevel.m_Archetypes;
-                        c.m_ExcludeClass = IroriFeatureAddFeatureOnClassLevel.m_Class;
-                        c.m_AdditionalExcludeClasses = new BlueprintCharacterClassReference[0];
-                        c.m_ExcludeArchetypes = IroriFeatureAddFeatureOnClassLevel.m_ExcludeArchetypes;
-                        c.m_Feature = SlingStaffProficiency.ToReference<BlueprintFeatureReference>();
-                        c.Level = IroriFeatureAddFeatureOnClassLevel.Level;
-                        c.BeforeThisLevel = IroriFeatureAddFeatureOnClassLevel.BeforeThisLevel;
-                    });
+                    if (ModSupportUtilities.GetChannelerOfTheUnknownEnabledSetting()) { //TTT Option ON - Channeler of the Unknown
+                        //I should not need to do this but for some users TTT always loads first
+                        Main.Log("Patching ChannelerOfTheUnknown load order issue");
+                        var IroriFeatureAddFeatureOnClassLevel = Resources.GetBlueprint<BlueprintFeature>("23a77a5985de08349820429ce1b5a234").GetComponent<AddFeatureOnClassLevelExclude>();
+                        if (IroriFeatureAddFeatureOnClassLevel != null) {
+                            IroriFeatureAddFeatureOnClassLevel.m_AdditionalClasses = IroriFeatureAddFeatureOnClassLevel.m_AdditionalClasses.AppendToArray(RangerClass);
+                            IroriFeatureAddFeatureOnClassLevel.m_Archetypes = IroriFeatureAddFeatureOnClassLevel.m_Archetypes.AppendToArray(DivineTrackerArchetype.ToReference<BlueprintArchetypeReference>());
+                            var PuluraFeature = Resources.GetBlueprint<BlueprintFeature>("ebb0b46f95dbac74681c78aae895dbd0");
+                            var SlingStaffProficiency = Resources.GetBlueprint<BlueprintFeature>("a0be067e11f4d8345a8b57a92e52a301");
+                            PuluraFeature.AddComponent<AddFeatureOnClassLevelExclude>(c => {
+                                c.m_Class = IroriFeatureAddFeatureOnClassLevel.m_Class;
+                                c.m_AdditionalClasses = IroriFeatureAddFeatureOnClassLevel.m_AdditionalClasses;
+                                c.m_Archetypes = IroriFeatureAddFeatureOnClassLevel.m_Archetypes;
+                                c.m_ExcludeClass = IroriFeatureAddFeatureOnClassLevel.m_Class;
+                                c.m_AdditionalExcludeClasses = new BlueprintCharacterClassReference[0];
+                                c.m_ExcludeArchetypes = IroriFeatureAddFeatureOnClassLevel.m_ExcludeArchetypes;
+                                c.m_Feature = SlingStaffProficiency.ToReference<BlueprintFeatureReference>();
+                                c.Level = IroriFeatureAddFeatureOnClassLevel.Level;
+                                c.BeforeThisLevel = IroriFeatureAddFeatureOnClassLevel.BeforeThisLevel;
+                            });
+                        }else { Main.Log("AddFeatureOnClassLevelExclude not present while ChannelerOfTheUnknown is enabled."); }
+                    }
                     Main.Log("Done");
                     #endregion
                     #region Drake Rider stuff

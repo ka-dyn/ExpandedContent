@@ -53,5 +53,16 @@ namespace ExpandedContent.Utilities {
                 return false;
             }
         }
+        public static bool GetChannelerOfTheUnknownEnabledSetting() {
+            try {
+                var FilePath = Path.Combine("..", "TabletopTweaks-Base", "UserSettings", "AddedContent.json");
+                var xks = System.IO.Path.Combine(Config.ModSettings.ModEntry.Path, FilePath);
+                JObject o1 = JObject.Parse(File.ReadAllText(xks));
+                return (bool)o1["Archetypes"]["Settings"]["ChannelerOfTheUnknown"]["Enabled"];
+            } catch (Exception ex) {
+                Main.Log(ex.Message);
+                return false;
+            }
+        }
     }
 }
