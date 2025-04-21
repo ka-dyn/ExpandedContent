@@ -38,7 +38,7 @@ namespace ExpandedContent.Tweaks.Deities {
             BlueprintFeature FlailProficiency = Resources.GetBlueprint<BlueprintFeature>("6d273f46bce2e0f47a0958810dc4c7d9");
             var HadregashIcon = AssetLoader.LoadInternal("Deities", "Icon_Hadregash.jpg");
             var HadregashFeature = Helpers.CreateBlueprint<BlueprintFeature>("HadregashFeature", (bp => {
-                bp.SetName("General Susumu");
+                bp.SetName("Hadregash");
                 bp.SetDescription("\nTitles: Greatest Supreme Chieftain Boss" +
                     "\nAlignment: Lawful Evil   " +
                     "\nAreas of Concern: Conquest, Invasion, War " +
