@@ -254,6 +254,11 @@ namespace ExpandedContent.Tweaks.Deities {
             var SzurielFeature = Resources.GetModBlueprint<BlueprintFeature>("SzurielFeature");
             var TrelmarixianFeature = Resources.GetModBlueprint<BlueprintFeature>("TrelmarixianFeature");
 
+            //Goblin Hero-Gods
+            var HadregashFeature = Resources.GetModBlueprint<BlueprintFeature>("HadregashFeature");
+            var VenkelvoreFeature = Resources.GetModBlueprint<BlueprintFeature>("VenkelvoreFeature");
+            var ZarongelFeature = Resources.GetModBlueprint<BlueprintFeature>("ZarongelFeature");
+            var ZogmugotFeature = Resources.GetModBlueprint<BlueprintFeature>("ZogmugotFeature");
 
             var DeitySelection = Resources.GetBlueprint<BlueprintFeatureSelection>("59e7a76987fe3b547b9cce045f4db3e4");
             var PaladinClass = Resources.GetBlueprint<BlueprintCharacterClass>("bfa11238e7ae3544bbeb4d0b92e897ec");
@@ -661,6 +666,21 @@ namespace ExpandedContent.Tweaks.Deities {
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
                 bp.Group = FeatureGroup.Deities;
             });
+            var GoblinHeroGodsIcon = AssetLoader.LoadInternal("Deities", "Icon_GoblinHeroGods.jpg");
+            var GoblinHeroGodsSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("GoblinHeroGodsSelection", bp => {
+                bp.SetName("Goblin Hero-Gods");
+                bp.SetDescription("");
+                bp.m_Icon = GoblinHeroGodsIcon;
+                bp.m_AllFeatures = new BlueprintFeatureReference[] {
+                    HadregashFeature.ToReference<BlueprintFeatureReference>(),
+                    VenkelvoreFeature.ToReference<BlueprintFeatureReference>(),
+                    ZarongelFeature.ToReference<BlueprintFeatureReference>(),
+                    ZogmugotFeature.ToReference<BlueprintFeatureReference>()
+                };
+                bp.IsClassFeature = true;
+                bp.Groups = new FeatureGroup[] { FeatureGroup.Deities };
+                bp.Group = FeatureGroup.Deities;
+            });
 
             var DeitySelectionIcon = AssetLoader.LoadInternal("Deities", "Icon_DeitySelection.jpg");
             DeitySelection.m_Icon = DeitySelectionIcon;
@@ -975,7 +995,11 @@ namespace ExpandedContent.Tweaks.Deities {
                 ApollyonFeature,
                 CharonFeature,
                 SzurielFeature,
-                TrelmarixianFeature
+                TrelmarixianFeature,
+                HadregashFeature,
+                VenkelvoreFeature,
+                ZarongelFeature,
+                ZogmugotFeature
             };
             foreach (var deity in FaithfulParagonNotAllowed) {
                 deity.AddComponent<PrerequisiteNoArchetype>(c => {
@@ -1128,6 +1152,12 @@ namespace ExpandedContent.Tweaks.Deities {
             var DeitySelection = Resources.GetBlueprint<BlueprintFeatureSelection>("59e7a76987fe3b547b9cce045f4db3e4");
             var FourHorsemenSelection = Resources.GetModBlueprint<BlueprintFeatureSelection>("FourHorsemenSelection");
             DeitySelection.m_AllFeatures = DeitySelection.m_AllFeatures.AddToArray(FourHorsemenSelection.ToReference<BlueprintFeatureReference>());
+        }
+        public static void GoblinHeroGodsToggle() {
+            if (ModSettings.AddedContent.Deities.IsDisabled("Goblin Hero Gods")) { return; }
+            var DeitySelection = Resources.GetBlueprint<BlueprintFeatureSelection>("59e7a76987fe3b547b9cce045f4db3e4");
+            var GoblinHeroGodsSelection = Resources.GetModBlueprint<BlueprintFeatureSelection>("GoblinHeroGodsSelection");
+            DeitySelection.m_AllFeatures = DeitySelection.m_AllFeatures.AddToArray(GoblinHeroGodsSelection.ToReference<BlueprintFeatureReference>());
         }
     }
 }

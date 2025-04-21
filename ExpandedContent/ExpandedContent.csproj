@@ -290,6 +290,7 @@
     <Compile Include="Tweaks\Curses\Lich.cs" />
     <Compile Include="Tweaks\Curses\Vampirism.cs" />
     <Compile Include="Tweaks\Deities\Ghlaunder.cs" />
+    <Compile Include="Tweaks\Deities\Hadregash.cs" />
     <Compile Include="Tweaks\Deities\Naderi.cs" />
     <Compile Include="Tweaks\Deities\Groetus.cs" />
     <Compile Include="Tweaks\Deities\Dretha.cs" />
@@ -299,6 +300,7 @@
     <Compile Include="Tweaks\Deities\Rull.cs" />
     <Compile Include="Tweaks\Deities\Sezelrian.cs" />
     <Compile Include="Tweaks\Deities\Varg.cs" />
+    <Compile Include="Tweaks\Deities\Venkelvore.cs" />
     <Compile Include="Tweaks\Deities\Verex.cs" />
     <Compile Include="Tweaks\Deities\Zagresh.cs" />
     <Compile Include="Tweaks\Deities\Ydersius.cs" />
@@ -328,6 +330,8 @@
     <Compile Include="Tweaks\Deities\Soralyon.cs" />
     <Compile Include="Tweaks\Deities\Tanagaar.cs" />
     <Compile Include="Tweaks\Deities\Tolc.cs" />
+    <Compile Include="Tweaks\Deities\Zarongel.cs" />
+    <Compile Include="Tweaks\Deities\Zogmugot.cs" />
     <Compile Include="Tweaks\Deities\Zyphus.cs" />
     <Compile Include="Tweaks\Deities\Valani.cs" />
     <Compile Include="Tweaks\Deities\Vildeis.cs" />
@@ -880,6 +884,9 @@
     <Content Include="Assets\Deities\Icon_Ghlaunder.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Deities\Icon_GoblinHeroGods.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Deities\Icon_Godclaw.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -887,6 +894,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_GreenFaith.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Hadregash.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Halcamora.jpg">
@@ -1228,6 +1238,9 @@
     <Content Include="Assets\Deities\Icon_Vavaalrav.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Deities\Icon_Venkelvore.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Deities\Icon_Verex.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -1274,6 +1287,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Zagresh.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Zarongel.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Zogmugot.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_Zohls.jpg">

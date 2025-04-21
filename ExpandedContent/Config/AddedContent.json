@@ -511,6 +511,11 @@
         "Enabled": true,
         "Homebrew": false,
         "Description": "Adds The Four Horsemen of Abaddon as deity options."
+      },
+      "Goblin Hero Gods": {
+        "Enabled": false,
+        "Homebrew": false,
+        "Description": "Adds the goblin hero-gods as deity options."
       }
     },
     "IsExpanded": false

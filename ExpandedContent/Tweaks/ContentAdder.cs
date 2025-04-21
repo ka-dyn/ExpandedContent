@@ -449,6 +449,11 @@ namespace ExpandedContent.Tweaks {
                 FourHorsemen.Charon.AddCharonFeature();
                 FourHorsemen.Szuriel.AddSzurielFeature();
                 FourHorsemen.Trelmarixian.AddTrelmarixianFeature();
+
+                Deities.Hadregash.AddHadregashFeature();
+                Deities.Venkelvore.AddVenkelvoreFeature();
+                Deities.Zarongel.AddZarongelFeature();
+                Deities.Zogmugot.AddZogmugotFeature();
                 
                 Deities.PatchLichDeity.AddLichDeity();
                 Deities.DeitySelectionFeature.PatchDeitySelection();
@@ -465,6 +470,7 @@ namespace ExpandedContent.Tweaks {
                 Deities.DeitySelectionFeature.OrcPantheonToggle();
                 Deities.DeitySelectionFeature.InnerSeaDeitiesregionToggle();
                 Deities.DeitySelectionFeature.FourHorsemenToggle();
+                Deities.DeitySelectionFeature.GoblinHeroGodsToggle();
 
                 Items.AmuletEarlyRider.AddAmuletEarlyRider();
 

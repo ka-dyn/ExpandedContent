@@ -4111,7 +4111,17 @@
     "UnswornShamanWoodSpiritWanderingFeature1": "33c4be6d-f465-4f0b-ad0e-48c06d3f1b9c",
     "UnswornShamanWoodSpiritWanderingFeature2": "402d7318-16a4-4c22-ade7-36275315f856",
     "WoodSpiritSpellList": "5f33f16d-3b2a-4f97-8840-74ea8c26ab89",
-    "WoodSpiritSpellListFeature": "bb03f49d-6b62-4a2f-9a66-bf497e9f8884"
+    "WoodSpiritSpellListFeature": "bb03f49d-6b62-4a2f-9a66-bf497e9f8884",
+
+    "GoblinHeroGodsSelection": "f2fd92d9-f5be-48ad-97b6-76b2e98d741c",
+    "HadregashFeature": "262056f0-eae5-4c28-af57-198b9edbaa81",
+    "HadregashSacredWeaponFeature": "bf340289-b9af-47d0-82a4-4a2ed177c512",
+    "VenkelvoreFeature": "3ecabe6a-060f-44b7-9155-5d90cd994c1d",
+    "VenkelvoreSacredWeaponFeature": "34ffc61a-92c0-46a5-ac4f-0e69dc8f1446",
+    "ZarongelFeature": "dd7430c3-5b2d-40d6-9230-3c572d09d04e",
+    "ZarongelSacredWeaponFeature": "e2dc0fcb-7e46-4eb9-a047-8e318acf01c9",
+    "ZogmugotFeature": "6a23d618-8827-42bc-9690-345477b5404c",
+    "ZogmugotSacredWeaponFeature": "1b8535ef-a007-4b57-8692-f74154e17865"
 
 
   },
