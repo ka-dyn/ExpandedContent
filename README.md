@@ -128,6 +128,7 @@ New Oracle Mysteries / Curses
 
 New Shaman Spirits
 - Heavens
+- Mammoth
 - Slums
 - Wood
 
