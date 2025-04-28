@@ -796,11 +796,11 @@ namespace ExpandedContent.Tweaks.Spirits {
                 bp.SetName("Mammoth");
                 bp.SetDescription("A shaman who selects the mammoth spirit is abnormally tall and stocky, with thick shaggy hair. When she uses a " +
                     "special ability of this spirit, her muscles ripple and flex, and her stature seems even greater than before.");
-                bp.AddComponent<AddFeaturesFromSelectionToDescription>(c => {
-                    c.SetIntroduction("Additional Hexes:");
-                    c.m_FeatureSelection = ShamanHexSelection.ToReference<BlueprintFeatureSelectionReference>();
-                    c.OnlyIfRequiresThisFeature = true;
-                });
+                //bp.AddComponent<AddFeaturesFromSelectionToDescription>(c => {
+                //    c.SetIntroduction("Additional Hexes:");
+                //    c.m_FeatureSelection = ShamanHexSelection.ToReference<BlueprintFeatureSelectionReference>();
+                //    c.OnlyIfRequiresThisFeature = true;
+                //});
                 bp.AddComponent<AddSpellsToDescription>(c => {
                     c.SetIntroduction("Bonus Spells:");
                     c.m_SpellLists = new BlueprintSpellListReference[] { MammothSpiritSpellList.ToReference<BlueprintSpellListReference>() };
