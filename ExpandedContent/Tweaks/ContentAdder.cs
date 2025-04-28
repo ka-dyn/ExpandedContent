@@ -237,6 +237,7 @@ namespace ExpandedContent.Tweaks {
                 Spirits.HeavensSpirit.AddHeavensSprit();
                 Spirits.SlumsSpirit.AddSlumsSprit();
                 Spirits.WoodSpirit.AddWoodSprit();
+                Spirits.MammothSpirit.AddMammothSprit();
 
                 Spirits.Hexes.BitingFrostHex.AddBitingFrostHex();
                 Spirits.Hexes.DeathlyBeingHex.AddDeathlyBeingHex();

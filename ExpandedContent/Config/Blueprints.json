@@ -4121,7 +4121,30 @@
     "ZarongelFeature": "dd7430c3-5b2d-40d6-9230-3c572d09d04e",
     "ZarongelSacredWeaponFeature": "e2dc0fcb-7e46-4eb9-a047-8e318acf01c9",
     "ZogmugotFeature": "6a23d618-8827-42bc-9690-345477b5404c",
-    "ZogmugotSacredWeaponFeature": "1b8535ef-a007-4b57-8692-f74154e17865"
+    "ZogmugotSacredWeaponFeature": "1b8535ef-a007-4b57-8692-f74154e17865",
+
+    "MammothSpiritSpellList": "5dc4d6b0-1439-4487-83f0-bccca3fedb4d",
+    "MammothSpiritSpellListFeature": "fd69ae86-7d2b-4250-8244-7be18d5b343f",
+    "ShamanMammothSpiritBaseAbility": "dc292694-b161-4e64-961d-9ea8c1b981aa",
+    "ShamanMammothSpiritBaseFeature": "07b29ee4-9ace-4ad0-9147-0b0334df3c01",
+    "ShamanMammothSpiritBaseResource": "4a7be688-40a4-42d3-b3da-e8007a68476d",
+    "ShamanMammothSpiritGreaterFeature": "3bf1ab1d-aec7-487c-8bfc-1e426df13429",
+    "ShamanMammothSpiritGreaterFeatureWandering ": "a4e15d35-25e7-4595-b877-2c764f0949ae",
+    "ShamanMammothSpiritManifestationAbility": "d14b82e6-f985-48d7-9110-21fa551b8c42",
+    "ShamanMammothSpiritManifestationAbilityI": "a781bb1b-1387-474f-81d0-33af9034ce05",
+    "ShamanMammothSpiritManifestationAbilityII": "3dab8fc9-dcbf-43bd-a6cb-a2e7095f97be",
+    "ShamanMammothSpiritManifestationAbilityIII": "3a688fed-3463-4688-b102-a81729b1bb2d",
+    "ShamanMammothSpiritManifestationAbilityIVS": "96698761-2643-46ed-b75f-c15618b9241c",
+    "ShamanMammothSpiritManifestationAbilityIVW": "36d426b0-b840-4513-a903-29d80527f1b9",
+    "ShamanMammothSpiritManifestationFeature": "42932675-1ddf-47e9-a577-89ac8ab857ee",
+    "ShamanMammothSpiritProgression": "89c74e28-9d12-4b89-9a38-22777fea0ceb",
+    "ShamanMammothSpiritWanderingBaseBuff": "2a5f58e0-677d-41f1-9cb6-0e5d894b60d2",
+    "ShamanMammothSpiritWanderingFeature": "1eaa11b6-8ef3-4a58-8eb6-820d4968addc",
+    "ShamanMammothSpiritWanderingGreaterBuff": "ed49d71b-1988-4c94-be1f-b6c8251f4ab0",
+    "ShamanMammothSpiritWanderingTrueBuff": "8323624f-d020-4b61-a2ea-15c2765a4dd3",
+    "TempImprovedUnarmedStrikeBuff": "468e6936-2865-495f-84df-7973d7573ba7",
+    "UnswornShamanMammothSpiritWanderingFeature1": "26f02ddb-4766-461a-be18-bed5f4877beb",
+    "UnswornShamanMammothSpiritWanderingFeature2": "ca34ff83-d5a6-4290-8217-29141a475ea2"
 
 
   },

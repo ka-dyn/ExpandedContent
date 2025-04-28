@@ -47,6 +47,7 @@ namespace ExpandedContent.Tweaks.AnimalCompanions {
             var VerminType = Resources.GetBlueprint<BlueprintFeature>("09478937695300944a179530664e42ec");
             var AnimalCompanionSlotFeature = Resources.GetBlueprint<BlueprintFeature>("75bb2b3c41c99e041b4743fdb16a4289");
             var InflictLightWoundsMass = Resources.GetBlueprint<BlueprintAbility>("e5af3674bb241f14b9a9f6b0c7dc3d27");
+            var AirborneFeature = Resources.GetBlueprint<BlueprintFeature>("70cffb448c132fa409e49156d013b175");
 
             var Bleed1d6Buff = Resources.GetBlueprint<BlueprintBuff>("75039846c3d85d940aa96c249b97e562");
             var Bleed2d6Buff = Resources.GetBlueprint<BlueprintBuff>("16249b8075ab8684ca105a78a047a5ef");
@@ -290,6 +291,7 @@ namespace ExpandedContent.Tweaks.AnimalCompanions {
                 bp.MaxHP = 0;
                 bp.m_AddFacts = new BlueprintUnitFactReference[] {
                     CompanionUpdateGiantFlyFeature.ToReference<BlueprintUnitFactReference>(),
+                    AirborneFeature.ToReference<BlueprintUnitFactReference>(),
                     TripImmune.ToReference<BlueprintUnitFactReference>(),
                     UnmountableFeature.ToReference<BlueprintUnitFactReference>(),
                     AnimalCompanionSlotFeature.ToReference<BlueprintUnitFactReference>()

@@ -142,7 +142,7 @@ namespace ExpandedContent.Tweaks.Spirits {
             });
             #endregion
             #region Spirit Features
-            #region Base TEST NUMBER OF USES
+            #region Base
             var DimensionDorrCasterOnly = Resources.GetBlueprint<BlueprintAbility>("a9b8be9b87865744382f7c64e599aeb2");
             var ShamanSlumsSpiritBaseResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("ShamanSlumsSpiritBaseResource", bp => {
                 bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
