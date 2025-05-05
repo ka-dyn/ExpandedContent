@@ -3205,11 +3205,11 @@ namespace ExpandedContent.Tweaks.Classes {
                     })
                     .ToArray();
                 bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
-                new BlueprintProgression.ClassWithLevel {
-                    m_Class = DreadKnightClass.ToReference<BlueprintCharacterClassReference>(),
-                    AdditionalLevel = 0
-                }
-            };
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = DreadKnightClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    }
+                };
                 bp.UIGroups = new UIGroup[0];
             });
             var ServantIcon = AssetLoader.LoadInternal("Skills", "Icon_Servant.png");

@@ -76,6 +76,8 @@ namespace ExpandedContent.Tweaks {
                 Archetypes.DrakeRider.AddDrakeRider();
                 Archetypes.SoldierOfGaia.AddSoldierOfGaia();
                 Archetypes.FaithfulParagon.AddFaithfulParagon();
+                Archetypes.Warhound.AddWarhound();
+
 
                 Archetypes.WaterDancer.AddWaterDancer();
 
@@ -256,6 +258,7 @@ namespace ExpandedContent.Tweaks {
                 Curses.Lich.AddLichCurse();
 
                 Miscellaneous.AidAnother.AddAidAnother();
+
 
                 Archdevils.Baalzebul.AddBaalzebul();
                 Archdevils.Barbatos.AddBarbatos();

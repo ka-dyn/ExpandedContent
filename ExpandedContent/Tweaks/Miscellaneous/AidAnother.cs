@@ -27,6 +27,8 @@ using Kingmaker.UnitLogic.Mechanics.Components;
 using Kingmaker.UnitLogic.Mechanics.Conditions;
 using Kingmaker.UnitLogic.Mechanics.Properties;
 using Kingmaker.Visual.Animation.Kingmaker.Actions;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ExpandedContent.Tweaks.Miscellaneous {
     internal class AidAnother {
@@ -920,11 +922,32 @@ namespace ExpandedContent.Tweaks.Miscellaneous {
                 bp.m_AllowNonContextActions = false;
             });
 
+            //Warhound Swift Hunting
+            var WarhoundArchetype = Resources.GetModBlueprint<BlueprintArchetype>("WarhoundArchetype");
+            var WarhoundSwiftAidHuntFeature = Helpers.CreateBlueprint<BlueprintFeature>("WarhoundSwiftAidHuntFeature", bp => {
+                bp.SetName("Swift Hunting");
+                bp.SetDescription("At 14th level, the warhound and their animal companion both gain the swift aid feat.");
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        SwiftAidAnotherFeature.ToReference<BlueprintUnitFactReference>()
+                    };
+                });
+                bp.AddComponent<AddFeatureToPet>(c => {
+                    c.m_Feature = SwiftAidAnotherFeature.ToReference<BlueprintFeatureReference>();
+                });
+                bp.m_Icon = SwiftAidAnotherIcon;
+                bp.IsClassFeature = true;
+            });
+
 
             if (ModSettings.AddedContent.Miscellaneous.IsDisabled("Aid Another")) { return; }
             OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationPerfectAid.ToReference<BlueprintFeatureReference>());
             SkillAbilities.m_Facts = SkillAbilities.m_Facts.AppendToArray(AidAnotherAbility.ToReference<BlueprintUnitFactReference>());
             FeatTools.AddAsFeat(SwiftAidAnotherFeature);
+            WarhoundArchetype.AddFeatures = WarhoundArchetype.AddFeatures.AppendToArray(new LevelEntry() {
+                Level = 14,
+                m_Features = new List<BlueprintFeatureBaseReference>() { WarhoundSwiftAidHuntFeature.ToReference<BlueprintFeatureBaseReference>() }
+            });
 
 
 

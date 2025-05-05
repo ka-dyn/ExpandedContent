@@ -244,6 +244,11 @@
         "Enabled": true,
         "Homebrew": false,
         "Description": "A warpriest archetype that focuses on defence."
+      },
+      "Warhound": {
+        "Enabled": true,
+        "Homebrew": true,
+        "Description": "A slayer archetype that trades delayed features for an animal comapanion."
       }
     },
     "IsExpanded": false

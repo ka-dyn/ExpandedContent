@@ -4144,7 +4144,13 @@
     "ShamanMammothSpiritWanderingTrueBuff": "8323624f-d020-4b61-a2ea-15c2765a4dd3",
     "TempImprovedUnarmedStrikeBuff": "468e6936-2865-495f-84df-7973d7573ba7",
     "UnswornShamanMammothSpiritWanderingFeature1": "26f02ddb-4766-461a-be18-bed5f4877beb",
-    "UnswornShamanMammothSpiritWanderingFeature2": "ca34ff83-d5a6-4290-8217-29141a475ea2"
+    "UnswornShamanMammothSpiritWanderingFeature2": "ca34ff83-d5a6-4290-8217-29141a475ea2",
+
+    "WarhoundAnimalCompanionProgression": "568db777-0bfa-475f-80df-90398705a0b3",
+    "WarhoundAnimalCompanionSelection": "46c5bb10-b0d7-4022-94fd-e62acceb31d9",
+    "WarhoundArchetype": "6a327220-0e9e-42fc-83e3-6f6eb5031800",
+    "WarhoundsEyeFeature": "5b72864e-c66d-4f58-849e-4707b0bccc94",
+    "WarhoundSwiftAidHuntFeature": "93c0ea54-8134-4f46-8657-83693fe8fa79"
 
 
   },
