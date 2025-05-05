@@ -43,6 +43,8 @@ New Archetypes
 
 - Beastmorph, Alchemist
 
+- Warhound, Slayer
+
 New Prestige Class
 
 - Stargazer
