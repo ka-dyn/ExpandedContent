@@ -110,7 +110,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.SetName("Divine Hexes");
                 bp.SetDescription("At 3rd level and every 4 cleric levels thereafter, a divine scourge can select the following hexes from the witch class hex list, up to a maximum of five hexes at 19th " +
                     "level: cackle, evil eye, misfortune, slumber, and vulnerability. \nAt 11th level, a divine scourge can instead select from the following list of major hexes: agony, delicious fright, " +
-                    "hoarfrost, and restless slumber. \nThe divine scourge uses her Wisdom modifier instead of her Intelligence modifier to determine the save DCs of her hexes.Any hex that refers to " +
+                    "hoarfrost, and restless slumber. \nThe divine scourge uses her Wisdom modifier instead of her Intelligence modifier to determine the save DCs of her hexes. Any hex that refers to " +
                     "using her Intelligence modifier to determine its duration or effect instead uses her Charisma modifier for that purpose.");
                 bp.m_Icon = WitchHexSelection.m_Icon;
                 bp.HideInCharacterSheetAndLevelUp = false;
@@ -125,7 +125,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.SetName("Divine Hexes");
                 bp.SetDescription("At 3rd level and every 4 cleric levels thereafter, a divine scourge can select the following hexes from the witch class hex list, up to a maximum of five hexes at 19th " +
                     "level: cackle, evil eye, misfortune, slumber, and vulnerability. \nAt 11th level, a divine scourge can instead select from the following list of major hexes: agony, delicious fright, " +
-                    "hoarfrost, and restless slumber. \nThe divine scourge uses her Wisdom modifier instead of her Intelligence modifier to determine the save DCs of her hexes.Any hex that refers to " +
+                    "hoarfrost, and restless slumber. \nThe divine scourge uses her Wisdom modifier instead of her Intelligence modifier to determine the save DCs of her hexes. Any hex that refers to " +
                     "using her Intelligence modifier to determine its duration or effect instead uses her Charisma modifier for that purpose.");
                 bp.m_Icon = WitchHexSelection.m_Icon;
                 bp.HideInCharacterSheetAndLevelUp = false;
