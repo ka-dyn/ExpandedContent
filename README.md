@@ -5,6 +5,8 @@ This mod Is dependant on [TabletopTweaks-Core](https://github.com/Vek17/Tabletop
 
 While this mod is not dependant on [TabletopTweaks-Base](https://github.com/Vek17/TabletopTweaks-Base "TabletopTweaks-Base") it is recommended as all testing is done with it installed and it fixes several base game issues.
 
+[WIP Wiki to link to everything, explain differences from tabletop, and mention what is 3rd party](https://github.com/ka-dyn/ExpandedContent/wiki)
+
 *Contents*
 
 New Archetypes
