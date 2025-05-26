@@ -182,8 +182,8 @@ namespace ExpandedContent.Tweaks.Domains {
                     "lasts for 1 round. During this round, you take a –2 penalty to AC. You can use this ability for a number of times per day equal to 3 + your Wisdom modifier.\nScythe " +
                     "of Evil: At 8th level, you can give a weapon touched the unholy special weapon quality for a number of rounds equal to 1/2 your level in the class that gave you access" +
                     "to this domain. You can use this ability once per day at 8th level, and an additional time per day for every four levels beyond 8th.\nDomain " +
-                    "{g|Encyclopedia:Spell}Spells{/g}: doom, communal protection from law, rage, freedom of movement, acidic spray, summon monster VI, word of chaos, " +
-                    "cloak of chaos, summon monster IX.");
+                    "{g|Encyclopedia:Spell}Spells{/g}: doom, boneshaker, rage, unholy blight, slay living, summon monster VI, blasphemy, " +
+                    "unholy aura, summon monster IX.");
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Domain };
                 bp.IsClassFeature = true;
                 bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
@@ -259,8 +259,8 @@ namespace ExpandedContent.Tweaks.Domains {
                     "lasts for 1 round. During this round, you take a –2 penalty to AC. You can use this ability for a number of times per day equal to 3 + your Wisdom modifier.\nScythe " +
                     "of Evil: At 8th level, you can give a weapon touched the unholy special weapon quality for a number of rounds equal to 1/2 your level in the class that gave you access" +
                     "to this domain. You can use this ability once per day at 8th level, and an additional time per day for every four levels beyond 8th.\nDomain " +
-                    "{g|Encyclopedia:Spell}Spells{/g}: doom, communal protection from law, rage, freedom of movement, acidic spray, summon monster VI, word of chaos, " +
-                    "cloak of chaos, summon monster IX.");
+                    "{g|Encyclopedia:Spell}Spells{/g}: doom, boneshaker, rage, unholy blight, slay living, summon monster VI, blasphemy, " +
+                    "unholy aura, summon monster IX.");
                 bp.Groups = new FeatureGroup[] { FeatureGroup.ClericSecondaryDomain };
                 bp.IsClassFeature = true;
                 bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
@@ -378,8 +378,8 @@ namespace ExpandedContent.Tweaks.Domains {
                     "lasts for 1 round. During this round, you take a –2 penalty to AC. You can use this ability for a number of times per day equal to 3 + your Wisdom modifier.\nScythe " +
                     "of Evil: At 8th level, you can give a weapon touched the unholy special weapon quality for a number of rounds equal to 1/2 your level in the class that gave you access" +
                     "to this domain. You can use this ability once per day at 8th level, and an additional time per day for every four levels beyond 8th.\nDomain " +
-                    "{g|Encyclopedia:Spell}Spells{/g}: doom, communal protection from law, rage, freedom of movement, acidic spray, summon monster VI, word of chaos, " +
-                    "cloak of chaos, summon monster IX.");
+                    "{g|Encyclopedia:Spell}Spells{/g}: doom, boneshaker, rage, unholy blight, slay living, summon monster VI, blasphemy, " +
+                    "unholy aura, summon monster IX.");
                 bp.Groups = new FeatureGroup[] { FeatureGroup.SeparatistSecondaryDomain };
                 bp.IsClassFeature = true;
                 bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {

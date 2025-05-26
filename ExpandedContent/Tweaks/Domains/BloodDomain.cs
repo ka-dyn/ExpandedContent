@@ -464,7 +464,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     "equal to 1/2 your level in the class that gave you access to this domain for 1 {g|Encyclopedia:Combat_Round}round{/g} (minimum +1). You can do so a number of times " +
                     "per day equal to 3 + your {g|Encyclopedia:Wisdom}Wisdom{/g} modifier.\nWounding Blade (Su): At 8th level, you can give a weapon that you touch the wounding special " +
                     "weapon quality for a number of rounds equal to 1/2 your cleric level. You can use this ability once per day at 8th level, and an additional time per day for every " +
-                    "four levels beyond 8th.\nDomain Spells: magic weapon, aid, vampiric touch, diving power, vinetrap, blade barrier, inflict serious wounds, power word stun, power word kill.");
+                    "four levels beyond 8th.\nDomain Spells: magic weapon, aid, vampiric touch, divine power, vinetrap, blade barrier, inflict serious wounds, power word stun, power word kill.");
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Domain };
                 bp.IsClassFeature = true;
                 bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
@@ -535,7 +535,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     "equal to 1/2 your level in the class that gave you access to this domain for 1 {g|Encyclopedia:Combat_Round}round{/g} (minimum +1). You can do so a number of times " +
                     "per day equal to 3 + your {g|Encyclopedia:Wisdom}Wisdom{/g} modifier.\nWounding Blade (Su): At 8th level, you can give a weapon that you touch the wounding special " +
                     "weapon quality for a number of rounds equal to 1/2 your cleric level. You can use this ability once per day at 8th level, and an additional time per day for every " +
-                    "four levels beyond 8th.\nDomain Spells: magic weapon, aid, vampiric touch, diving power, vinetrap, blade barrier, inflict serious wounds, power word stun, power word kill.");
+                    "four levels beyond 8th.\nDomain Spells: magic weapon, aid, vampiric touch, divine power, vinetrap, blade barrier, inflict serious wounds, power word stun, power word kill.");
                 bp.Groups = new FeatureGroup[] { FeatureGroup.ClericSecondaryDomain };
                 bp.IsClassFeature = true;
                 bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
@@ -774,7 +774,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     "equal to 1/2 your level in the class that gave you access to this domain for 1 {g|Encyclopedia:Combat_Round}round{/g} (minimum +1). You can do so a number of times " +
                     "per day equal to 3 + your {g|Encyclopedia:Wisdom}Wisdom{/g} modifier.\nWounding Blade (Su): At 8th level, you can give a weapon that you touch the wounding special " +
                     "weapon quality for a number of rounds equal to 1/2 your cleric level. You can use this ability once per day at 8th level, and an additional time per day for every " +
-                    "four levels beyond 8th.\nDomain Spells: magic weapon, aid, vampiric touch, diving power, vinetrap, blade barrier, inflict serious wounds, power word stun, power word kill.");
+                    "four levels beyond 8th.\nDomain Spells: magic weapon, aid, vampiric touch, divine power, vinetrap, blade barrier, inflict serious wounds, power word stun, power word kill.");
                 bp.Groups = new FeatureGroup[] { FeatureGroup.SeparatistSecondaryDomain };
                 bp.IsClassFeature = true;
                 bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {

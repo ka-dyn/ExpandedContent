@@ -23,6 +23,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var SlayerTalentSelection2 = Resources.GetBlueprint<BlueprintFeatureSelection>("04430ad24988baa4daa0bcd4f1c7d118");
             var SlayerTalentSelection6 = Resources.GetBlueprint<BlueprintFeatureSelection>("43d1b15873e926848be2abf0ea3ad9a8");
             var SlayerTalentSelection10 = Resources.GetBlueprint<BlueprintFeatureSelection>("913b9cf25c9536949b43a2651b7ffb66");
+            var SlayersAdvanceFeature = Resources.GetBlueprint<BlueprintFeature>("758e04f4568ec3f4c8d1fd83aed06fb9");
 
             var AnimalCompanionSelectionDruid = Resources.GetBlueprint<BlueprintFeatureSelection>("571f8434d98560c43935e132df65fe76");
             var AnimalCompanionRank = Resources.GetBlueprint<BlueprintFeature>("1670990255e4fe948a863bafd5dbda5d");
@@ -135,7 +136,8 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     Helpers.LevelEntry(1, SlayerStudyTargetFeature),
                     Helpers.LevelEntry(2, SlayerTalentSelection2),
                     Helpers.LevelEntry(8, SlayerTalentSelection6),
-                    Helpers.LevelEntry(14, SlayerTalentSelection10),
+                    Helpers.LevelEntry(13, SlayersAdvanceFeature),
+                    Helpers.LevelEntry(14, SlayerTalentSelection10)
             };
             WarhoundArchetype.AddFeatures = new LevelEntry[] {
                     Helpers.LevelEntry(1, WarhoundsEyeFeature),

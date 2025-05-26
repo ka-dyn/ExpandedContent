@@ -291,6 +291,7 @@ namespace ExpandedContent.Tweaks.AnimalCompanions {
                 bp.MaxHP = 0;
                 bp.m_AddFacts = new BlueprintUnitFactReference[] {
                     CompanionUpdateGiantFlyFeature.ToReference<BlueprintUnitFactReference>(),
+                    VerminType.ToReference<BlueprintUnitFactReference>(),
                     AirborneFeature.ToReference<BlueprintUnitFactReference>(),
                     TripImmune.ToReference<BlueprintUnitFactReference>(),
                     UnmountableFeature.ToReference<BlueprintUnitFactReference>(),

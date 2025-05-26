@@ -329,7 +329,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     "times per day equal to 3 + your {g|Encyclopedia:Wisdom}Wisdom{/g} modifier.\nTunnel Runner: At 8th level, while underground you may gain an insight " +
                     "bonus equal to your cleric level on Stealth and Perception skill checks and an insight bonus equal to your Wisdom modifier on initiative checks. " +
                     "You can use this ability for 1 minute per day per cleric level you possess. These minutes do not need to be consecutive, but they must be spent in " +
-                    "1-minute increments.\nDomain Spells: stone fist, createpit, spiked pit, spike stones, acidic spray, hungry pit, elemental body IV (earth), " +
+                    "1-minute increments.\nDomain Spells: stone fist, create pit, spiked pit, spike stones, acidic spray, hungry pit, elemental body IV (earth), " +
                     "iron body, elemental swarm (earth).");
                 bp.Groups = new FeatureGroup[] { FeatureGroup.Domain };
                 bp.IsClassFeature = true;
@@ -403,7 +403,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     "times per day equal to 3 + your {g|Encyclopedia:Wisdom}Wisdom{/g} modifier.\nTunnel Runner: At 8th level, while underground you may gain an insight " +
                     "bonus equal to your cleric level on Stealth and Perception skill checks and an insight bonus equal to your Wisdom modifier on initiative checks. " +
                     "You can use this ability for 1 minute per day per cleric level you possess. These minutes do not need to be consecutive, but they must be spent in " +
-                    "1-minute increments.\nDomain Spells: stone fist, createpit, spiked pit, spike stones, acidic spray, hungry pit, elemental body IV (earth), " +
+                    "1-minute increments.\nDomain Spells: stone fist, create pit, spiked pit, spike stones, acidic spray, hungry pit, elemental body IV (earth), " +
                     "iron body, elemental swarm (earth).");
                 bp.Groups = new FeatureGroup[] { FeatureGroup.ClericSecondaryDomain };
                 bp.IsClassFeature = true;
@@ -463,7 +463,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     "times per day equal to 3 + your {g|Encyclopedia:Wisdom}Wisdom{/g} modifier.\nTunnel Runner (Su): At 6th level, as a standard action, " +
                     "you can create a 30-foot aura of gale-like winds that slows the progress of enemies. Creatures in the aura cannot take a 5-foot step " +
                     "and treat it as as difficult terrain. You can use this ability for a number of rounds per day equal to your cleric level. The rounds " +
-                    "do not need to be consecutive.\nDomain Spells: stone fist, createpit, spiked pit, spike stones, acidic spray, hungry pit, elemental body IV (earth), " +
+                    "do not need to be consecutive.\nDomain Spells: stone fist, create pit, spiked pit, spike stones, acidic spray, hungry pit, elemental body IV (earth), " +
                     "iron body, elemental swarm (earth).");
                 bp.AddComponent<PrerequisiteClassLevel>(c => {
                     c.Group = Prerequisite.GroupType.All;
@@ -748,7 +748,7 @@ namespace ExpandedContent.Tweaks.Domains {
                     "times per day equal to 3 + your {g|Encyclopedia:Wisdom}Wisdom{/g} modifier.\nTunnel Runner: At 8th level, while underground you may gain an insight " +
                     "bonus equal to your cleric level on Stealth and Perception skill checks and an insight bonus equal to your Wisdom modifier on initiative checks. " +
                     "You can use this ability for 1 minute per day per cleric level you possess. These minutes do not need to be consecutive, but they must be spent in " +
-                    "1-minute increments.\nDomain Spells: stone fist, createpit, spiked pit, spike stones, acidic spray, hungry pit, elemental body IV (earth), " +
+                    "1-minute increments.\nDomain Spells: stone fist, create pit, spiked pit, spike stones, acidic spray, hungry pit, elemental body IV (earth), " +
                     "iron body, elemental swarm (earth).");
                 bp.Groups = new FeatureGroup[] { FeatureGroup.SeparatistSecondaryDomain };
                 bp.IsClassFeature = true;
