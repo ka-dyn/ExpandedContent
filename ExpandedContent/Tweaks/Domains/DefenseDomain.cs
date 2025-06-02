@@ -506,7 +506,7 @@ namespace ExpandedContent.Tweaks.Domains {
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
 
-            var DefenseDomainBaseFeatureSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("DefenseDomainBaseFeature", bp => {
+            var DefenseDomainBaseFeatureSeparatist = Helpers.CreateBlueprint<BlueprintFeature>("DefenseDomainBaseFeatureSeparatist", bp => {
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] { DefenseDomainBaseAbilitySeparatist.ToReference<BlueprintUnitFactReference>(), DefenseDomainBaseClassFeature.ToReference<BlueprintUnitFactReference>() };
                 });
