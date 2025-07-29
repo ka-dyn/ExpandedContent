@@ -82,7 +82,7 @@ namespace ExpandedContent.Tweaks.Spells {
                 bp.LocalizedDuration = Helpers.CreateString("SlipstreamAbility.Duration", "10 minutes/level");
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
-            var SlipstreamScroll = ItemTools.CreateScroll("ScrollOfSlipstream", Icon_ScrollOfSlipstream, SlipstreamAbility, 1, 1);
+            var SlipstreamScroll = ItemTools.CreateScroll("ScrollOfSlipstream", Icon_ScrollOfSlipstream, SlipstreamAbility, 2, 3);
             VenderTools.AddScrollToLeveledVenders(SlipstreamScroll);
             SlipstreamAbility.AddToSpellList(SpellTools.SpellList.BloodragerSpellList, 2);
             SlipstreamAbility.AddToSpellList(SpellTools.SpellList.DruidSpellList, 2);

@@ -36,6 +36,7 @@ using Kingmaker.UnitLogic.Mechanics.Properties;
 using Kingmaker.Utility;
 using Kingmaker.Visual.Animation.Kingmaker.Actions;
 using System.Collections.Generic;
+using System.Linq;
 using TabletopTweaks.Core.NewComponents.Properties;
 
 namespace ExpandedContent.Tweaks.Archetypes {
@@ -287,6 +288,9 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.Archetype = WaterDancerArchetype.ToReference<BlueprintArchetypeReference>();
                 });
             }
+            var ShroudOfWaterResouce = Resources.GetBlueprint<BlueprintAbilityResource>("1f4eeef738e694c44aad070a0b3d64a2");
+            ShroudOfWaterResouce.m_MaxAmount.m_ClassDiv = ShroudOfWaterResouce.m_MaxAmount.m_ClassDiv.AppendToArray(MonkClass.ToReference<BlueprintCharacterClassReference>());
+            ShroudOfWaterResouce.m_MaxAmount.m_ArchetypesDiv = ShroudOfWaterResouce.m_MaxAmount.m_ArchetypesDiv.AppendToArray(WaterDancerArchetype.ToReference<BlueprintArchetypeReference>());
             #endregion
             #region Ki
             var WaterDancerKiPowerFeature = Helpers.CreateBlueprint<BlueprintFeature>("WaterDancerKiPowerFeature", bp => {
@@ -456,6 +460,13 @@ namespace ExpandedContent.Tweaks.Archetypes {
                         WaterDancerArchetype.ToReference<BlueprintArchetypeReference>()
                     };
                 });
+                wildtalentAbility.GetComponents<ContextRankConfig>()
+                    .Where(c => c.m_BaseValueType is ContextRankBaseValueType.ClassLevel)
+                    .ForEach(result => {
+                        result.m_BaseValueType = ContextRankBaseValueType.MaxClassLevelWithArchetype;
+                        result.m_Class = result.m_Class.AppendToArray(MonkClass.ToReference<BlueprintCharacterClassReference>());
+                        result.Archetype = WaterDancerArchetype.ToReference<BlueprintArchetypeReference>();
+                    });
             }
             #endregion
             #endregion
