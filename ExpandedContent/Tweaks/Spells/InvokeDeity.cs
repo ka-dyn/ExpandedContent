@@ -2590,6 +2590,7 @@ namespace ExpandedContent.Tweaks.Spells {
                     c.CheckFact = false;
                     c.m_FactToCheck = null;
                 });
+                bp.AddComponent<AddConditionImmunity>(c => { c.Condition = Kingmaker.UnitLogic.UnitCondition.Stunned; });
                 bp.m_Icon = BarkskinBuff.m_Icon;
                 bp.m_Flags = BlueprintBuff.Flags.IsFromSpell;
                 bp.Stacking = StackingType.Replace;

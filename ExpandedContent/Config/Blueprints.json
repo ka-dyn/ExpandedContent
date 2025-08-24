@@ -4150,7 +4150,9 @@
     "WarhoundAnimalCompanionSelection": "46c5bb10-b0d7-4022-94fd-e62acceb31d9",
     "WarhoundArchetype": "6a327220-0e9e-42fc-83e3-6f6eb5031800",
     "WarhoundsEyeFeature": "5b72864e-c66d-4f58-849e-4707b0bccc94",
-    "WarhoundSwiftAidHuntFeature": "93c0ea54-8134-4f46-8657-83693fe8fa79"
+    "WarhoundSwiftAidHuntFeature": "93c0ea54-8134-4f46-8657-83693fe8fa79",
+
+    "DefenseDomainBaseFeatureSeparatist": "ad41d6c0-d6d4-4aaf-b430-d563ab2b5ee0"
 
 
   },
