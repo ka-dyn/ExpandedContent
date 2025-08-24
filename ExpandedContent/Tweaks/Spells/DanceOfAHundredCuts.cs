@@ -261,6 +261,7 @@ namespace ExpandedContent.Tweaks.Spells {
             var DanceOfAHundredCutsScroll = ItemTools.CreateScroll("ScrollOfDanceOfAHundredCuts", Icon_ScrollOfDanceOfAHundredCuts, DanceOfAHundredCutsAbility, 4, 10);
             VenderTools.AddScrollToLeveledVenders(DanceOfAHundredCutsScroll);
             DanceOfAHundredCutsAbility.AddToSpellList(SpellTools.SpellList.BardSpellList, 4);
+            DanceOfAHundredCutsAbility.AddToSpellList(SpellTools.SpellList.AzataMythicSpelllist, 4);
         }
     }
 }
