@@ -1,18 +1,19 @@
-﻿using System.Collections.Generic;
-using ExpandedContent.Utilities;
+﻿using ExpandedContent.Config;
 using ExpandedContent.Extensions;
+using ExpandedContent.Utilities;
+using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Prerequisites;
-using Kingmaker.Blueprints;
-using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.Blueprints.Classes.Spells;
-using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.EntitySystem.Stats;
+using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.UnitLogic.ActivatableAbilities;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.Commands.Base;
-using ExpandedContent.Config;
+using Kingmaker.UnitLogic.FactLogic;
+using System.Collections.Generic;
+using static ExpandedContent.Utilities.DeityTools;
 
 namespace ExpandedContent.Tweaks.Domains {
     internal class FistDomain {
@@ -476,6 +477,7 @@ namespace ExpandedContent.Tweaks.Domains {
             DomainTools.RegisterSecondaryTempleDomain(FistDomainProgressionSecondary);
             DomainTools.RegisterImpossibleSubdomain(FistDomainProgression, FistDomainProgressionSecondary);
             DomainTools.RegisterSeparatistDomain(FistDomainProgressionSeparatist);
+            DomainTools.AllowFakeDivineSpark(FistDomainAllowed);
 
         }
     }

@@ -1,17 +1,18 @@
-﻿using System.Collections.Generic;
-using ExpandedContent.Utilities;
+﻿using ExpandedContent.Config;
 using ExpandedContent.Extensions;
+using ExpandedContent.Utilities;
+using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Prerequisites;
-using Kingmaker.Blueprints;
-using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.Blueprints.Classes.Spells;
-using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
-using ExpandedContent.Config;
+using Kingmaker.UnitLogic.Abilities.Blueprints;
+using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.UnitLogic.Mechanics.Properties;
+using System.Collections.Generic;
+using static ExpandedContent.Utilities.DeityTools;
 
 namespace ExpandedContent.Tweaks.Domains {
     internal class RevelationDomain {
@@ -412,6 +413,7 @@ namespace ExpandedContent.Tweaks.Domains {
             DomainTools.RegisterSecondaryTempleDomain(RevelationDomainProgressionSecondary);
             DomainTools.RegisterImpossibleSubdomain(RevelationDomainProgression, RevelationDomainProgressionSecondary);
             DomainTools.RegisterSeparatistDomain(RevelationDomainProgressionSeparatist);
+            DomainTools.AllowFakeDivineSpark(RevelationDomainAllowed);
 
         }
     }

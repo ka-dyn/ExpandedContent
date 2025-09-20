@@ -1,22 +1,23 @@
-﻿using System.Collections.Generic;
-using ExpandedContent.Utilities;
+﻿using ExpandedContent.Config;
 using ExpandedContent.Extensions;
+using ExpandedContent.Utilities;
+using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Prerequisites;
-using Kingmaker.Blueprints;
-using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.Blueprints.Classes.Spells;
-using Kingmaker.UnitLogic.Abilities.Blueprints;
+using Kingmaker.Designers.Mechanics.Buffs;
 using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.EntitySystem.Stats;
-using Kingmaker.UnitLogic.ActivatableAbilities;
-using Kingmaker.UnitLogic.Commands.Base;
-using Kingmaker.UnitLogic.Buffs.Components;
-using Kingmaker.Utility;
 using Kingmaker.Enums;
-using Kingmaker.Designers.Mechanics.Buffs;
-using ExpandedContent.Config;
+using Kingmaker.UnitLogic.Abilities.Blueprints;
+using Kingmaker.UnitLogic.ActivatableAbilities;
 using Kingmaker.UnitLogic.Alignments;
+using Kingmaker.UnitLogic.Buffs.Components;
+using Kingmaker.UnitLogic.Commands.Base;
+using Kingmaker.UnitLogic.FactLogic;
+using Kingmaker.Utility;
+using System.Collections.Generic;
+using static ExpandedContent.Utilities.DeityTools;
 
 namespace ExpandedContent.Tweaks.Domains {
     internal class ArchonDomainGood {
@@ -617,6 +618,7 @@ namespace ExpandedContent.Tweaks.Domains {
             DomainTools.RegisterSecondaryTempleDomain(ArchonDomainGoodProgressionSecondary);
             DomainTools.RegisterImpossibleSubdomain(ArchonDomainGoodProgression, ArchonDomainGoodProgressionSecondary);
             DomainTools.RegisterSeparatistDomain(ArchonDomainGoodProgressionSeparatist);
+            DomainTools.AllowFakeDivineSpark(ArchonDomainGoodAllowed);
 
         }
 

@@ -571,6 +571,7 @@ namespace ExpandedContent.Tweaks.Domains {
             DomainTools.RegisterSecondaryTempleDomain(PsychopompDomainDeathProgressionSecondary);
             DomainTools.RegisterImpossibleSubdomain(PsychopompDomainDeathProgression, PsychopompDomainDeathProgressionSecondary);
             DomainTools.RegisterSeparatistDomain(PsychopompDomainDeathProgressionSeparatist);
+            DomainTools.AllowFakeDivineSpark(PsychopompDomainDeathAllowed);
         }
     }
 }

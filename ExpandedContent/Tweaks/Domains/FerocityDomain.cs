@@ -1,25 +1,26 @@
-﻿using System.Collections.Generic;
-using ExpandedContent.Utilities;
+﻿using ExpandedContent.Config;
 using ExpandedContent.Extensions;
+using ExpandedContent.Utilities;
+using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Prerequisites;
-using Kingmaker.Blueprints;
-using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.Blueprints.Classes.Spells;
-using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.EntitySystem.Stats;
-using Kingmaker.UnitLogic.Commands.Base;
-using Kingmaker.UnitLogic.Mechanics.Actions;
-using Kingmaker.UnitLogic.Mechanics;
-using Kingmaker.RuleSystem;
-using Kingmaker.UnitLogic.Abilities.Components;
 using Kingmaker.Enums;
+using Kingmaker.RuleSystem;
 using Kingmaker.UnitLogic.Abilities;
-using Kingmaker.UnitLogic.Mechanics.Properties;
+using Kingmaker.UnitLogic.Abilities.Blueprints;
+using Kingmaker.UnitLogic.Abilities.Components;
+using Kingmaker.UnitLogic.Commands.Base;
+using Kingmaker.UnitLogic.FactLogic;
+using Kingmaker.UnitLogic.Mechanics;
+using Kingmaker.UnitLogic.Mechanics.Actions;
 using Kingmaker.UnitLogic.Mechanics.Components;
+using Kingmaker.UnitLogic.Mechanics.Properties;
 using Kingmaker.Visual.Animation.Kingmaker.Actions;
-using ExpandedContent.Config;
+using System.Collections.Generic;
+using static ExpandedContent.Utilities.DeityTools;
 
 namespace ExpandedContent.Tweaks.Domains {
     internal class FerocityDomain {
@@ -615,6 +616,7 @@ namespace ExpandedContent.Tweaks.Domains {
             DomainTools.RegisterSecondaryTempleDomain(FerocityDomainProgressionSecondary);
             DomainTools.RegisterImpossibleSubdomain(FerocityDomainProgression, FerocityDomainProgressionSecondary);
             DomainTools.RegisterSeparatistDomain(FerocityDomainProgressionSeparatist);
+            DomainTools.AllowFakeDivineSpark(FerocityDomainAllowed);
         }
     }
 }

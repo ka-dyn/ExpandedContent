@@ -1,31 +1,32 @@
-﻿using System.Collections.Generic;
-using ExpandedContent.Utilities;
+﻿using ExpandedContent.Config;
 using ExpandedContent.Extensions;
+using ExpandedContent.Utilities;
+using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Prerequisites;
-using Kingmaker.Blueprints;
-using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.Blueprints.Classes.Spells;
-using Kingmaker.UnitLogic.Abilities.Blueprints;
-using Kingmaker.Designers.Mechanics.Facts;
-using Kingmaker.EntitySystem.Stats;
-using Kingmaker.UnitLogic.ActivatableAbilities;
-using Kingmaker.UnitLogic.Commands.Base;
-using Kingmaker.ElementsSystem;
-using Kingmaker.UnitLogic.Mechanics.Actions;
-using Kingmaker.UnitLogic;
-using Kingmaker.UnitLogic.Mechanics;
-using Kingmaker.RuleSystem;
-using Kingmaker.Utility;
-using Kingmaker.UnitLogic.Abilities.Components;
-using Kingmaker.Enums;
-using Kingmaker.UnitLogic.Abilities;
-using Kingmaker.UnitLogic.Mechanics.Properties;
-using Kingmaker.Visual.Animation.Kingmaker.Actions;
-using ExpandedContent.Config;
 using Kingmaker.Craft;
+using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.ElementsSystem;
+using Kingmaker.EntitySystem.Stats;
+using Kingmaker.Enums;
 using Kingmaker.ResourceLinks;
+using Kingmaker.RuleSystem;
+using Kingmaker.UnitLogic;
+using Kingmaker.UnitLogic.Abilities;
+using Kingmaker.UnitLogic.Abilities.Blueprints;
+using Kingmaker.UnitLogic.Abilities.Components;
+using Kingmaker.UnitLogic.ActivatableAbilities;
 using Kingmaker.UnitLogic.Alignments;
+using Kingmaker.UnitLogic.Commands.Base;
+using Kingmaker.UnitLogic.FactLogic;
+using Kingmaker.UnitLogic.Mechanics;
+using Kingmaker.UnitLogic.Mechanics.Actions;
+using Kingmaker.UnitLogic.Mechanics.Properties;
+using Kingmaker.Utility;
+using Kingmaker.Visual.Animation.Kingmaker.Actions;
+using System.Collections.Generic;
+using static ExpandedContent.Utilities.DeityTools;
 
 namespace ExpandedContent.Tweaks.Domains {
     internal class WhimsyDomain {
@@ -698,6 +699,7 @@ namespace ExpandedContent.Tweaks.Domains {
             DomainTools.RegisterSecondaryTempleDomain(WhimsyDomainProgressionSecondary);
             DomainTools.RegisterImpossibleSubdomain(WhimsyDomainProgression, WhimsyDomainProgressionSecondary);
             DomainTools.RegisterSeparatistDomain(WhimsyDomainProgressionSeparatist);
+            DomainTools.AllowFakeDivineSpark(WhimsyDomainAllowed);
 
         }
     }

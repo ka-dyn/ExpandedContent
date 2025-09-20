@@ -2,6 +2,8 @@
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Selection;
 using ExpandedContent.Extensions;
+using Kingmaker.Designers.EventConditionActionSystem.Actions;
+using Kingmaker.UnitLogic.FactLogic;
 
 
 namespace ExpandedContent.Utilities {
@@ -10,6 +12,8 @@ namespace ExpandedContent.Utilities {
         public static void RegisterDomain(BlueprintProgression domain) {
             BlueprintFeatureSelection DomainSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("48525e5da45c9c243a343fc6545dbdb9");
             DomainSelection.m_AllFeatures = DomainSelection.m_AllFeatures.AddToArray(domain.ToReference<BlueprintFeatureReference>());
+            BlueprintFeatureSelection FakeDivineSparkSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("e6d337e709b4478cb6e5389d3f85b601");
+            FakeDivineSparkSelection.m_AllFeatures = FakeDivineSparkSelection.m_AllFeatures.AddToArray(domain.ToReference<BlueprintFeatureReference>());
 
         }
         public static void RegisterSecondaryDomain(BlueprintProgression secondarydomain) {
@@ -57,6 +61,12 @@ namespace ExpandedContent.Utilities {
         public static void RegisterSeparatistDomain(BlueprintProgression separatistdomain) {
             BlueprintFeatureSelection SeparatistDomainSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("42b781e4375d499383b2602d90661283");
             SeparatistDomainSelection.m_AllFeatures = SeparatistDomainSelection.m_AllFeatures.AddToArray(separatistdomain.ToReference<BlueprintFeatureReference>());
+        }
+
+        public static void AllowFakeDivineSpark(BlueprintFeature domainallowedfeature) {
+            var FakeDivineSparkFeatureAddFactsComponent = Resources.GetBlueprint<BlueprintFeature>("bcf3ea648bd94612b8e8f1a69e9026e5").GetComponent<AddFacts>();
+            FakeDivineSparkFeatureAddFactsComponent.m_Facts = FakeDivineSparkFeatureAddFactsComponent.m_Facts.AppendToArray(domainallowedfeature.ToReference<BlueprintUnitFactReference>());
+
         }
     }
 }

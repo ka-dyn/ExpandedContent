@@ -1,31 +1,32 @@
-﻿using System.Collections.Generic;
-using ExpandedContent.Utilities;
+﻿using ExpandedContent.Config;
 using ExpandedContent.Extensions;
+using ExpandedContent.Utilities;
+using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Prerequisites;
-using Kingmaker.Blueprints;
-using Kingmaker.UnitLogic.FactLogic;
+using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.Blueprints.Classes.Spells;
-using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.EntitySystem.Stats;
+using Kingmaker.Enums;
+using Kingmaker.Enums.Damage;
+using Kingmaker.RuleSystem;
+using Kingmaker.RuleSystem.Rules;
+using Kingmaker.RuleSystem.Rules.Damage;
+using Kingmaker.UnitLogic.Abilities;
+using Kingmaker.UnitLogic.Abilities.Blueprints;
+using Kingmaker.UnitLogic.Abilities.Components;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.Commands.Base;
-using Kingmaker.UnitLogic.Mechanics.Actions;
+using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.UnitLogic.Mechanics;
-using Kingmaker.RuleSystem;
-using Kingmaker.Utility;
-using Kingmaker.Blueprints.Classes.Selection;
-using Kingmaker.UnitLogic.Abilities.Components;
-using Kingmaker.RuleSystem.Rules.Damage;
+using Kingmaker.UnitLogic.Mechanics.Actions;
 using Kingmaker.UnitLogic.Mechanics.Components;
-using Kingmaker.Enums;
-using Kingmaker.Visual.Animation.Kingmaker.Actions;
-using Kingmaker.UnitLogic.Abilities;
-using Kingmaker.Enums.Damage;
 using Kingmaker.UnitLogic.Mechanics.Properties;
-using Kingmaker.RuleSystem.Rules;
-using ExpandedContent.Config;
+using Kingmaker.Utility;
+using Kingmaker.Visual.Animation.Kingmaker.Actions;
+using System.Collections.Generic;
+using static ExpandedContent.Utilities.DeityTools;
 
 namespace ExpandedContent.Tweaks.Domains {
     internal class DragonDomain {
@@ -2014,6 +2015,7 @@ namespace ExpandedContent.Tweaks.Domains {
             DomainTools.RegisterSecondaryTempleDomain(DragonDomainProgressionSecondary);
             DomainTools.RegisterImpossibleSubdomain(DragonDomainProgression, DragonDomainProgressionSecondary);
             DomainTools.RegisterSeparatistDomain(DragonDomainProgressionSeparatist);
+            DomainTools.AllowFakeDivineSpark(DragonDomainAllowed);
 
         }
     }

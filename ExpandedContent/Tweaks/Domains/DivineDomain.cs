@@ -1,38 +1,39 @@
-﻿using System.Collections.Generic;
-using ExpandedContent.Utilities;
+﻿using ExpandedContent.Config;
 using ExpandedContent.Extensions;
+using ExpandedContent.Tweaks.Components;
+using ExpandedContent.Utilities;
+using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Prerequisites;
-using Kingmaker.Blueprints;
-using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.Blueprints.Classes.Spells;
-using Kingmaker.UnitLogic.Abilities.Blueprints;
+using Kingmaker.Designers.EventConditionActionSystem.Actions;
+using Kingmaker.Designers.Mechanics.Buffs;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.ElementsSystem;
 using Kingmaker.EntitySystem.Stats;
-using Kingmaker.UnitLogic.Mechanics.Actions;
-using Kingmaker.Utility;
-using Kingmaker.UnitLogic.Abilities;
-using Kingmaker.UnitLogic.Abilities.Components;
-using Kingmaker.RuleSystem.Rules;
-using Kingmaker.Visual.Animation.Kingmaker.Actions;
-using ExpandedContent.Config;
-using Kingmaker.UnitLogic.Mechanics.Properties;
+using Kingmaker.Enums;
+using Kingmaker.ResourceLinks;
 using Kingmaker.RuleSystem;
-using Kingmaker.UnitLogic.Mechanics;
+using Kingmaker.RuleSystem.Rules;
+using Kingmaker.UnitLogic.Abilities;
+using Kingmaker.UnitLogic.Abilities.Blueprints;
+using Kingmaker.UnitLogic.Abilities.Components;
+using Kingmaker.UnitLogic.Abilities.Components.Base;
+using Kingmaker.UnitLogic.Abilities.Components.TargetCheckers;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.Buffs.Components;
-using Kingmaker.ResourceLinks;
-using UnityEngine;
-using ExpandedContent.Tweaks.Components;
-using Kingmaker.Enums;
 using Kingmaker.UnitLogic.Commands.Base;
-using Kingmaker.Designers.EventConditionActionSystem.Actions;
-using Kingmaker.ElementsSystem;
-using Kingmaker.UnitLogic.Mechanics.Conditions;
-using Kingmaker.UnitLogic.Abilities.Components.TargetCheckers;
-using Kingmaker.UnitLogic.Abilities.Components.Base;
+using Kingmaker.UnitLogic.FactLogic;
+using Kingmaker.UnitLogic.Mechanics;
+using Kingmaker.UnitLogic.Mechanics.Actions;
 using Kingmaker.UnitLogic.Mechanics.Components;
-using Kingmaker.Designers.Mechanics.Buffs;
+using Kingmaker.UnitLogic.Mechanics.Conditions;
+using Kingmaker.UnitLogic.Mechanics.Properties;
+using Kingmaker.Utility;
+using Kingmaker.Visual.Animation.Kingmaker.Actions;
+using System.Collections.Generic;
+using UnityEngine;
+using static ExpandedContent.Utilities.DeityTools;
 
 namespace ExpandedContent.Tweaks.Domains {
     internal class DivineDomain {
@@ -721,6 +722,7 @@ namespace ExpandedContent.Tweaks.Domains {
             DomainTools.RegisterSecondaryTempleDomain(DivineDomainProgressionSecondary);
             DomainTools.RegisterImpossibleSubdomain(DivineDomainProgression, DivineDomainProgressionSecondary);
             DomainTools.RegisterSeparatistDomain(DivineDomainProgressionSeparatist);
+            DomainTools.AllowFakeDivineSpark(DivineDomainAllowed);
 
         }
     }

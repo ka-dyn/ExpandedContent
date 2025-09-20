@@ -1,30 +1,31 @@
-﻿using System.Collections.Generic;
-using ExpandedContent.Utilities;
+﻿using ExpandedContent.Config;
 using ExpandedContent.Extensions;
+using ExpandedContent.Tweaks.Components;
+using ExpandedContent.Utilities;
+using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Prerequisites;
-using Kingmaker.Blueprints;
-using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.Blueprints.Classes.Spells;
-using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.EntitySystem.Stats;
-using Kingmaker.UnitLogic.ActivatableAbilities;
-using Kingmaker.UnitLogic.Commands.Base;
-using Kingmaker.UnitLogic.Buffs.Components;
-using Kingmaker.UnitLogic;
-using Kingmaker.Utility;
-using Kingmaker.ResourceLinks;
-using ExpandedContent.Config;
-using Kingmaker.UnitLogic.Mechanics.Properties;
-using Kingmaker.UnitLogic.Buffs.Blueprints;
-using Kingmaker.UnitLogic.Abilities.Components;
 using Kingmaker.Enums;
+using Kingmaker.ResourceLinks;
 using Kingmaker.RuleSystem;
-using Kingmaker.UnitLogic.Mechanics.Actions;
+using Kingmaker.UnitLogic;
+using Kingmaker.UnitLogic.Abilities.Blueprints;
+using Kingmaker.UnitLogic.Abilities.Components;
+using Kingmaker.UnitLogic.ActivatableAbilities;
+using Kingmaker.UnitLogic.Buffs.Blueprints;
+using Kingmaker.UnitLogic.Buffs.Components;
+using Kingmaker.UnitLogic.Commands.Base;
+using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.UnitLogic.Mechanics;
-using ExpandedContent.Tweaks.Components;
+using Kingmaker.UnitLogic.Mechanics.Actions;
+using Kingmaker.UnitLogic.Mechanics.Properties;
+using Kingmaker.Utility;
 using Kingmaker.Visual.Animation.Kingmaker.Actions;
+using System.Collections.Generic;
+using static ExpandedContent.Utilities.DeityTools;
 
 namespace ExpandedContent.Tweaks.Domains {
     internal class LightningDomain {
@@ -693,6 +694,7 @@ namespace ExpandedContent.Tweaks.Domains {
             DomainTools.RegisterSecondaryTempleDomain(LightningDomainProgressionSecondary);
             DomainTools.RegisterImpossibleSubdomain(LightningDomainProgression, LightningDomainProgressionSecondary);
             DomainTools.RegisterSeparatistDomain(LightningDomainProgressionSeparatist);
+            DomainTools.AllowFakeDivineSpark(LightningDomainAllowed);
 
         }
     }

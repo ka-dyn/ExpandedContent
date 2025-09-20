@@ -1,26 +1,27 @@
-﻿using System.Collections.Generic;
-using ExpandedContent.Utilities;
+﻿using ExpandedContent.Config;
 using ExpandedContent.Extensions;
+using ExpandedContent.Utilities;
+using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Prerequisites;
-using Kingmaker.Blueprints;
-using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.Blueprints.Classes.Spells;
-using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.EntitySystem.Stats;
+using Kingmaker.Enums;
+using Kingmaker.RuleSystem.Rules;
+using Kingmaker.UnitLogic.Abilities;
+using Kingmaker.UnitLogic.Abilities.Blueprints;
+using Kingmaker.UnitLogic.Abilities.Components;
+using Kingmaker.UnitLogic.Abilities.Components.TargetCheckers;
 using Kingmaker.UnitLogic.ActivatableAbilities;
 using Kingmaker.UnitLogic.Commands.Base;
-using Kingmaker.UnitLogic.Mechanics.Actions;
+using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.UnitLogic.Mechanics;
-using Kingmaker.UnitLogic.Abilities.Components;
-using Kingmaker.Enums;
-using Kingmaker.UnitLogic.Abilities;
-using Kingmaker.Visual.Animation.Kingmaker.Actions;
-using ExpandedContent.Config;
-using Kingmaker.RuleSystem.Rules;
-using Kingmaker.UnitLogic.Abilities.Components.TargetCheckers;
+using Kingmaker.UnitLogic.Mechanics.Actions;
 using Kingmaker.UnitLogic.Mechanics.Properties;
+using Kingmaker.Visual.Animation.Kingmaker.Actions;
+using System.Collections.Generic;
+using static ExpandedContent.Utilities.DeityTools;
 
 namespace ExpandedContent.Tweaks.Domains {
     internal class RevolutionDomain {
@@ -640,6 +641,7 @@ namespace ExpandedContent.Tweaks.Domains {
             DomainTools.RegisterSecondaryTempleDomain(RevolutionDomainProgressionSecondary);
             DomainTools.RegisterImpossibleSubdomain(RevolutionDomainProgression, RevolutionDomainProgressionSecondary);
             DomainTools.RegisterSeparatistDomain(RevolutionDomainProgressionSeparatist);
+            DomainTools.AllowFakeDivineSpark(RevolutionDomainAllowed);
 
         }
     }

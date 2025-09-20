@@ -648,6 +648,7 @@ namespace ExpandedContent.Tweaks.Domains {
             DomainTools.RegisterSecondaryTempleDomain(AgathionDomainProgressionSecondary);
             DomainTools.RegisterImpossibleSubdomain(AgathionDomainProgression, AgathionDomainProgressionSecondary);
             DomainTools.RegisterSeparatistDomain(AgathionDomainProgressionSeparatist);
+            DomainTools.AllowFakeDivineSpark(AgathionDomainAllowed);
         }
 
     }

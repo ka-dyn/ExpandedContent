@@ -1,33 +1,34 @@
-﻿using System.Collections.Generic;
-using ExpandedContent.Utilities;
+﻿using ExpandedContent.Config;
 using ExpandedContent.Extensions;
+using ExpandedContent.Utilities;
+using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.Blueprints.Classes.Prerequisites;
-using Kingmaker.Blueprints;
-using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.Blueprints.Classes.Spells;
-using Kingmaker.UnitLogic.Abilities.Blueprints;
+using Kingmaker.Craft;
 using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.EntitySystem.Stats;
-using Kingmaker.UnitLogic.Mechanics.Actions;
-using Kingmaker.Utility;
-using Kingmaker.UnitLogic.Abilities;
-using Kingmaker.UnitLogic.Abilities.Components;
-using Kingmaker.RuleSystem.Rules;
-using Kingmaker.Visual.Animation.Kingmaker.Actions;
-using ExpandedContent.Config;
-using Kingmaker.UnitLogic.Mechanics.Properties;
 using Kingmaker.Enums;
-using Kingmaker.RuleSystem;
-using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.Enums.Damage;
 using Kingmaker.ResourceLinks;
+using Kingmaker.RuleSystem;
+using Kingmaker.RuleSystem.Rules;
 using Kingmaker.RuleSystem.Rules.Damage;
+using Kingmaker.UnitLogic.Abilities;
+using Kingmaker.UnitLogic.Abilities.Blueprints;
+using Kingmaker.UnitLogic.Abilities.Components;
 using Kingmaker.UnitLogic.Abilities.Components.AreaEffects;
-using UnityEngine;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.Buffs.Components;
-using Kingmaker.Craft;
+using Kingmaker.UnitLogic.FactLogic;
+using Kingmaker.UnitLogic.Mechanics;
+using Kingmaker.UnitLogic.Mechanics.Actions;
+using Kingmaker.UnitLogic.Mechanics.Properties;
+using Kingmaker.Utility;
+using Kingmaker.Visual.Animation.Kingmaker.Actions;
+using System.Collections.Generic;
+using UnityEngine;
+using static ExpandedContent.Utilities.DeityTools;
 
 namespace ExpandedContent.Tweaks.Domains {
     internal class SmokeDomain {
@@ -739,6 +740,7 @@ namespace ExpandedContent.Tweaks.Domains {
             DomainTools.RegisterSecondaryTempleDomain(SmokeDomainProgressionSecondary);
             DomainTools.RegisterImpossibleSubdomain(SmokeDomainProgression, SmokeDomainProgressionSecondary);
             DomainTools.RegisterSeparatistDomain(SmokeDomainProgressionSeparatist);
+            DomainTools.AllowFakeDivineSpark(SmokeDomainAllowed);
 
         }
     }
