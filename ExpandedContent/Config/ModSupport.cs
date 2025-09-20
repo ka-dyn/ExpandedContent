@@ -46,16 +46,16 @@ namespace ExpandedContent.Config {
         protected static bool IsMakingFriendsEnabled() { return IsModEnabled("WOTR_MAKING_FRIENDS"); }
         protected static bool IsHomebrewArchetypesEnabled() { if (Resources.GetBlueprint<BlueprintProgression>("0e9edc96f2724444e8aae89d6e8bc225") != null) { return true; } else return false; }
 
-        private static readonly BlueprintDlc Dlc5 = Resources.GetBlueprint<BlueprintDlc>("95a25ca16bd54ce3b3ea56f83538fa0d");
+        //private static readonly BlueprintDlc Dlc5 = Resources.GetBlueprint<BlueprintDlc>("95a25ca16bd54ce3b3ea56f83538fa0d");
 
 
 
 
-        protected static bool IsDLCEnabled(BlueprintDlc dlcname) {
-            IEnumerable<BlueprintDlc> dlcs = BlueprintRoot.Instance.DlcSettings.Dlcs;
-            return dlcs.Contains(dlcname);
-            //return dlcname.IsAvailable.Equals(true);
-        }
+        //protected static bool IsDLCEnabled(BlueprintDlc dlcname) {
+        //    IEnumerable<BlueprintDlc> dlcs = BlueprintRoot.Instance.DlcSettings.Dlcs;
+        //    return dlcs.Contains(dlcname);
+        //    //return dlcname.IsAvailable.Equals(true);
+        //}
 
 
         [HarmonyPatch(typeof(BlueprintsCache), "Init")]
@@ -103,9 +103,9 @@ namespace ExpandedContent.Config {
 
 
 
-                if (IsDLCEnabled(Dlc5)) {
-                    Main.Log("You should only be able to see this with DLC5 installed, but this is broke so you can see it reguardless.");
-                }
+                //if (IsDLCEnabled(Dlc5)) {
+                //    Main.Log("You should only be able to see this with DLC5 installed, but this is broke so you can see it reguardless.");
+                //}
 
                 if (IsMysticalMayhemEnabled()) {
                     Main.Log("Starting Mystical Mayhem Compat Patch.");

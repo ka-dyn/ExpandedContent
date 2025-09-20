@@ -27,7 +27,7 @@ namespace ExpandedContent.Tweaks.Miscellaneous {
             var OpeningVolleyTargetBuff = Helpers.CreateBuff("OpeningVolleyTargetBuff", bp => {
                 bp.SetName("Opening Volley Targeted");
                 bp.SetDescription("Your ranged assault leaves your foe disoriented and vulnerable to your melee attack. \nWhenever you deal damage with a ranged attack, " +
-                    "you gain a + 4 circumstance bonus on the next melee attack roll you make against the opponent.This attack must occur before the end of your next turn.");
+                    "you gain a +4 circumstance bonus on the next melee attack roll you make against the opponent. This attack must occur before the end of your next turn.");
                 bp.m_Icon = PreciseShotFeature.Icon;
                 bp.AddComponent<AttackBonusAgainstTarget>(c => {
                     c.Value = 4;
@@ -48,7 +48,7 @@ namespace ExpandedContent.Tweaks.Miscellaneous {
             var OpeningVolleyFeature = Helpers.CreateBlueprint<BlueprintFeature>("OpeningVolleyFeature", bp => {
                 bp.SetName("Opening Volley");
                 bp.SetDescription("Your ranged assault leaves your foe disoriented and vulnerable to your melee attack. \nWhenever you deal damage with a ranged attack, " +
-                    "you gain a + 4 circumstance bonus on the next melee attack roll you make against the opponent.This attack must occur before the end of your next turn.");
+                    "you gain a +4 circumstance bonus on the next melee attack roll you make against the opponent. This attack must occur before the end of your next turn.");
                 bp.m_Icon = PreciseShotFeature.Icon;
                 bp.AddComponent<AddInitiatorAttackWithWeaponTrigger>(c => {
                     c.TriggerBeforeAttack = false;
