@@ -51,7 +51,7 @@ New Prestige Class
 
 - Stargazer
 
-New Classes
+New Classes (These are from an old mod version, and disabled by default)
 
 - Oathbreaker - Based off the Vindictive Bastard fallen Paladin class. 
   - With Castigator archetype
@@ -271,3 +271,4 @@ Thanks to AlterAsc for the creation of the Sworn of the Eldest Archetype.
 Many of the icons and art stuff in the mod are thanks to xTekek.
 
 Mandarin Chinese Localisation is updated and maintained [Here](https://github.com/nixgnot/WOTR-CONTENTS-MODS-CN "Mandarin Chinese Localisation") 
+
