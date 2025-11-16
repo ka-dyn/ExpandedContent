@@ -722,7 +722,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var OracleWindMysteryFeature = Resources.GetBlueprint<BlueprintFeature>("7c1fdd831af747b47bb2cce0051f309b");
             var OceansEchoAncestorsMysteryFeature = Helpers.CreateBlueprint<BlueprintFeature>("OceansEchoAncestorsMysteryFeature", bp => {
                 bp.SetName("Ancestors");
-                bp.SetDescription("Gain access to the spells and revelations of the ancestors mystery \nDue to the ocean's echo archetype the class skills gained from this archtype" +
+                bp.SetDescription("Gain access to the spells and revelations of the ancestors mystery \nDue to the ocean's echo archetype the class skills gained from this archetype " +
                     "are changed to {g|Encyclopedia:Persuasion}Persuasion{/g}, {g|Encyclopedia:Knowledge_World}Knowledge (world){/g} and {g|Encyclopedia:Lore_Nature}Lore (nature){/g}");
                 bp.m_Icon = OracleAncestorsMysteryFeature.m_Icon;
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
@@ -750,7 +750,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             });
             var OceansEchoBattleMysteryFeature = Helpers.CreateBlueprint<BlueprintFeature>("OceansEchoBattleMysteryFeature", bp => {
                 bp.SetName("Battle");
-                bp.SetDescription("Gain access to the spells and revelations of the battle mystery \nDue to the ocean's echo archetype the class skills gained from this archtype" +
+                bp.SetDescription("Gain access to the spells and revelations of the battle mystery \nDue to the ocean's echo archetype the class skills gained from this archetype " +
                     "are changed to {g|Encyclopedia:Persuasion}Persuasion{/g}, {g|Encyclopedia:Knowledge_World}Knowledge (world){/g} and {g|Encyclopedia:Lore_Nature}Lore (nature){/g}");
                 bp.m_Icon = OracleBattleMysteryFeature.m_Icon;
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
@@ -778,7 +778,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             });
             var OceansEchoBonesMysteryFeature = Helpers.CreateBlueprint<BlueprintFeature>("OceansEchoBonesMysteryFeature", bp => {
                 bp.SetName("Bones");
-                bp.SetDescription("Gain access to the spells and revelations of the bones mystery \nDue to the ocean's echo archetype the class skills gained from this archtype" +
+                bp.SetDescription("Gain access to the spells and revelations of the bones mystery \nDue to the ocean's echo archetype the class skills gained from this archetype " +
                     "are changed to {g|Encyclopedia:Persuasion}Persuasion{/g}, {g|Encyclopedia:Knowledge_World}Knowledge (world){/g} and {g|Encyclopedia:Lore_Nature}Lore (nature){/g}");
                 bp.m_Icon = OracleBonesMysteryFeature.m_Icon;
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
@@ -806,7 +806,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             });
             var OceansEchoFlameMysteryFeature = Helpers.CreateBlueprint<BlueprintFeature>("OceansEchoFlameMysteryFeature", bp => {
                 bp.SetName("Flame");
-                bp.SetDescription("Gain access to the spells and revelations of the flame mystery \nDue to the ocean's echo archetype the class skills gained from this archtype" +
+                bp.SetDescription("Gain access to the spells and revelations of the flame mystery \nDue to the ocean's echo archetype the class skills gained from this archetype " +
                     "are changed to {g|Encyclopedia:Persuasion}Persuasion{/g}, {g|Encyclopedia:Knowledge_World}Knowledge (world){/g} and {g|Encyclopedia:Lore_Nature}Lore (nature){/g}");
                 bp.m_Icon = OracleFlameMysteryFeature.m_Icon;
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
@@ -834,7 +834,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             });
             var OceansEchoLifeMysteryFeature = Helpers.CreateBlueprint<BlueprintFeature>("OceansEchoLifeMysteryFeature", bp => {
                 bp.SetName("Life");
-                bp.SetDescription("Gain access to the spells and revelations of the life mystery \nDue to the ocean's echo archetype the class skills gained from this archtype" +
+                bp.SetDescription("Gain access to the spells and revelations of the life mystery \nDue to the ocean's echo archetype the class skills gained from this archetype " +
                     "are changed to {g|Encyclopedia:Persuasion}Persuasion{/g}, {g|Encyclopedia:Knowledge_World}Knowledge (world){/g} and {g|Encyclopedia:Lore_Nature}Lore (nature){/g}");
                 bp.m_Icon = OracleLifeMysteryFeature.m_Icon;
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
@@ -862,7 +862,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             });
             var OceansEchoNatureMysteryFeature = Helpers.CreateBlueprint<BlueprintFeature>("OceansEchoNatureMysteryFeature", bp => {
                 bp.SetName("Nature");
-                bp.SetDescription("Gain access to the spells and revelations of the nature mystery \nDue to the ocean's echo archetype the class skills gained from this archtype" +
+                bp.SetDescription("Gain access to the spells and revelations of the nature mystery \nDue to the ocean's echo archetype the class skills gained from this archetype " +
                     "are changed to {g|Encyclopedia:Persuasion}Persuasion{/g}, {g|Encyclopedia:Knowledge_World}Knowledge (world){/g} and {g|Encyclopedia:Lore_Nature}Lore (nature){/g}");
                 bp.m_Icon = OracleNatureMysteryFeature.m_Icon;
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
@@ -890,7 +890,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             });
             var OceansEchoStoneMysteryFeature = Helpers.CreateBlueprint<BlueprintFeature>("OceansEchoStoneMysteryFeature", bp => {
                 bp.SetName("Stone");
-                bp.SetDescription("Gain access to the spells and revelations of the stone mystery \nDue to the ocean's echo archetype the class skills gained from this archtype" +
+                bp.SetDescription("Gain access to the spells and revelations of the stone mystery \nDue to the ocean's echo archetype the class skills gained from this archetype " +
                     "are changed to {g|Encyclopedia:Persuasion}Persuasion{/g}, {g|Encyclopedia:Knowledge_World}Knowledge (world){/g} and {g|Encyclopedia:Lore_Nature}Lore (nature){/g}");
                 bp.m_Icon = OracleStoneMysteryFeature.m_Icon;
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
@@ -918,7 +918,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             });
             var OceansEchoWavesMysteryFeature = Helpers.CreateBlueprint<BlueprintFeature>("OceansEchoWavesMysteryFeature", bp => {
                 bp.SetName("Waves");
-                bp.SetDescription("Gain access to the spells and revelations of the waves mystery \nDue to the ocean's echo archetype the class skills gained from this archtype" +
+                bp.SetDescription("Gain access to the spells and revelations of the waves mystery \nDue to the ocean's echo archetype the class skills gained from this archetype " +
                     "are changed to {g|Encyclopedia:Persuasion}Persuasion{/g}, {g|Encyclopedia:Knowledge_World}Knowledge (world){/g} and {g|Encyclopedia:Lore_Nature}Lore (nature){/g}");
                 bp.m_Icon = OracleWavesMysteryFeature.m_Icon;
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
@@ -946,7 +946,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             });
             var OceansEchoWindMysteryFeature = Helpers.CreateBlueprint<BlueprintFeature>("OceansEchoWindMysteryFeature", bp => {
                 bp.SetName("Wind");
-                bp.SetDescription("Gain access to the spells and revelations of the wind mystery \nDue to the ocean's echo archetype the class skills gained from this archtype" +
+                bp.SetDescription("Gain access to the spells and revelations of the wind mystery \nDue to the ocean's echo archetype the class skills gained from this archetype " +
                     "are changed to {g|Encyclopedia:Persuasion}Persuasion{/g}, {g|Encyclopedia:Knowledge_World}Knowledge (world){/g} and {g|Encyclopedia:Lore_Nature}Lore (nature){/g}");
                 bp.m_Icon = OracleWindMysteryFeature.m_Icon;
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {

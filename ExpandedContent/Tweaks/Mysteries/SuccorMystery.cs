@@ -296,7 +296,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
             var OceansEchoSuccorMysteryFeature = Helpers.CreateBlueprint<BlueprintFeature>("OceansEchoSuccorMysteryFeature", bp => {
                 bp.m_Icon = SuccorMysteryIcon;
                 bp.SetName("Succor");
-                bp.SetDescription("Gain access to the spells and revelations of the succor mystery. \nDue to the ocean's echo archetype the class skills gained from this archtype" +
+                bp.SetDescription("Gain access to the spells and revelations of the succor mystery. \nDue to the ocean's echo archetype the class skills gained from this archetype " +
                     "are changed to {g|Encyclopedia:Persuasion}Persuasion{/g}, {g|Encyclopedia:Knowledge_World}Knowledge (world){/g} and {g|Encyclopedia:Lore_Nature}Lore (nature){/g}");
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();

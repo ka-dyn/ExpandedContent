@@ -360,7 +360,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
             var OceansEchoWinterMysteryFeature = Helpers.CreateBlueprint<BlueprintFeature>("OceansEchoWinterMysteryFeature", bp => {
                 bp.m_Icon = WinterMysteryIcon;
                 bp.SetName("Winter");
-                bp.SetDescription("Gain access to the spells and revelations of the winter mystery. \nDue to the ocean's echo archetype the class skills gained from this archtype" +
+                bp.SetDescription("Gain access to the spells and revelations of the winter mystery. \nDue to the ocean's echo archetype the class skills gained from this archetype " +
                     "are changed to {g|Encyclopedia:Persuasion}Persuasion{/g}, {g|Encyclopedia:Knowledge_World}Knowledge (world){/g} and {g|Encyclopedia:Lore_Nature}Lore (nature){/g}");
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();

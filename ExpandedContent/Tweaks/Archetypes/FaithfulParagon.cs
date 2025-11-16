@@ -292,6 +292,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     "to the next saving throw he makes. \nThis effect is expended after a saving throw, or during a long rest.");
                 bp.AddComponent<ModifyD20>(c => {
                     c.Rule = RuleType.SavingThrow;
+                    c.m_SavingThrowType = FlaggedSavingThrowType.All;                   
                     c.DispellMagicCheckType = RuleDispelMagic.CheckType.None;
                     c.RollsAmount = 0;
                     c.TakeBest = false;
@@ -299,7 +300,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.AddBonus = true;
                     c.Bonus = new ContextValue() {
                         ValueType = ContextValueType.Rank,
-                        ValueRank = AbilityRankType.StatBonus
+                        ValueRank = AbilityRankType.Default
                     };
                     c.BonusDescriptor = ModifierDescriptor.UntypedStackable;
                     c.WithChance = false;
@@ -313,8 +314,8 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.AgainstAlignment = false;
                     c.Alignment = AlignmentComponent.None;
                     c.TargetAlignment = false;
-                    c.SpecificSkill = true;
-                    c.Skill = new StatType[] { StatType.SkillPersuasion };
+                    c.SpecificSkill = false;
+                    c.Skill = new StatType[] { };
                     c.Value = new ContextValue();
                     c.ActionsToTrigger = Helpers.CreateActionList(
                         new ContextActionRemoveSelf()

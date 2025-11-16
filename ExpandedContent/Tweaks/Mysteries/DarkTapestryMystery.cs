@@ -375,7 +375,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
             var OceansEchoDarkTapestryMysteryFeature = Helpers.CreateBlueprint<BlueprintFeature>("OceansEchoDarkTapestryMysteryFeature", bp => {
                 bp.m_Icon = DarkTapestryMysteryIcon;
                 bp.SetName("Dark Tapestry");
-                bp.SetDescription("Gain access to the spells and revelations of the dark tapestry mystery. \nDue to the ocean's echo archetype the class skills gained from this archtype" +
+                bp.SetDescription("Gain access to the spells and revelations of the dark tapestry mystery. \nDue to the ocean's echo archetype the class skills gained from this archetype " +
                     "are changed to {g|Encyclopedia:Persuasion}Persuasion{/g}, {g|Encyclopedia:Knowledge_World}Knowledge (world){/g} and {g|Encyclopedia:Lore_Nature}Lore (nature){/g}");
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();

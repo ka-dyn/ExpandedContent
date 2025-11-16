@@ -467,7 +467,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
             var OceansEchoDragonMysteryFeature = Helpers.CreateBlueprint<BlueprintFeature>("OceansEchoDragonMysteryFeature", bp => {
                 bp.m_Icon = DraconicMysteryIcon;
                 bp.SetName("Dragon");
-                bp.SetDescription("Gain access to the spells and revelations of the dragon mystery. \nDue to the ocean's echo archetype the class skills gained from this archtype" +
+                bp.SetDescription("Gain access to the spells and revelations of the dragon mystery. \nDue to the ocean's echo archetype the class skills gained from this archetype " +
                     "are changed to {g|Encyclopedia:Persuasion}Persuasion{/g}, {g|Encyclopedia:Knowledge_World}Knowledge (world){/g} and {g|Encyclopedia:Lore_Nature}Lore (nature){/g}");
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
@@ -1342,7 +1342,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.HideInUI = true;
                 bp.GiveFeaturesForPreviousLevels = true;
             });
-            var BloodlineDraconicRedResistancesAbilityLevel1 = Resources.GetBlueprint<BlueprintFeature>("f0808daee57206645a2b23b17d5b63f0");
+            var BloodlineDraconicRedResistancesAbilityLevel1 = Resources.GetBlueprint<BlueprintFeature>("67979ecc80c4fed40954d62e3844583e");
             var BloodlineDraconicRedResistancesAbilityLevel2 = Resources.GetBlueprint<BlueprintFeature>("e353df68a1bb5894ea1d33b0bda1400d");
             var BloodlineDraconicRedResistancesAbilityLevel3 = Resources.GetBlueprint<BlueprintFeature>("d102a33c03260a6458b7508a243e1958");
             var OracleRevelationDraconicResistancesFireLevel1 = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationDraconicResistancesFireLevel1", bp => {
