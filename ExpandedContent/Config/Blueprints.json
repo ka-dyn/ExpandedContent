@@ -4152,7 +4152,9 @@
     "WarhoundsEyeFeature": "5b72864e-c66d-4f58-849e-4707b0bccc94",
     "WarhoundSwiftAidHuntFeature": "93c0ea54-8134-4f46-8657-83693fe8fa79",
 
-    "DefenseDomainBaseFeatureSeparatist": "ad41d6c0-d6d4-4aaf-b430-d563ab2b5ee0"
+    "DefenseDomainBaseFeatureSeparatist": "ad41d6c0-d6d4-4aaf-b430-d563ab2b5ee0",
+
+    "WyrmSingerMythicDraconicRageEffectBuff": "1d38e607-50cd-4bbd-a072-082d9b2c2f68"
 
 
   },

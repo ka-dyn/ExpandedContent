@@ -1813,7 +1813,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     c.Archetype = MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>();
                     c.m_Archetypes = new BlueprintArchetypeReference[] { };
                 });
-                bp.BaseValue = 0;
+                bp.BaseValue = 1;
                 bp.OperationOnComponents = BlueprintUnitProperty.MathOperation.Multiply;
             });
             var ShadowUnitProperties = new BlueprintUnitProperty[] {

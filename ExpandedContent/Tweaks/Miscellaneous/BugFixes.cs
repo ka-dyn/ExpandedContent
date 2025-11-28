@@ -15,6 +15,7 @@ using Kingmaker.RuleSystem.Rules.Damage;
 using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
+using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Mechanics.Actions;
 using Kingmaker.UnitLogic.Mechanics.Components;
@@ -31,7 +32,8 @@ namespace ExpandedContent.Tweaks.Miscellaneous {
 
         public static void AddBugFixes() {
 
-
+            #region ShamblingMoundGrapple Patch
+            Main.Log("Starting ShamblingMoundGrapple Patch");
             var ShamblingMoundGrappledTargetBuff = Resources.GetBlueprint<BlueprintBuff>("2b5743ae1c3e478ab99defebcc881019");
             ShamblingMoundGrappledTargetBuff.AddComponent<AddFactContextActions>(c => {
                 c.Activated = Helpers.CreateActionList(
@@ -162,10 +164,12 @@ namespace ExpandedContent.Tweaks.Miscellaneous {
                     }
                     );
             });
+            Main.Log("Patched");
+            #endregion
 
-
-            //Divine Scourge Hex DC patch
-            //Needs to be loaded after to not break any mods that edit the MaxCastingAttributeGetter of WitchHexDCProperty
+            #region Divine Scourge Hex DC patch
+            Main.Log("Starting Divine Scourge Hex DC Patch");
+            Main.Log("Needs to be loaded after to not break any mods that edit the MaxCastingAttributeGetter of WitchHexDCProperty");
             var ClericClass = Resources.GetBlueprint<BlueprintCharacterClass>("67819271767a9dd4fbfd4ae700befea0");
             var DivineScourgeArchetype = Resources.GetModBlueprint<BlueprintArchetype>("DivineScourgeArchetype");
             var WitchHexDCProperty = Resources.GetBlueprint<BlueprintUnitProperty>("bdc230ce338f427ba74de65597b0d57a");
@@ -179,10 +183,12 @@ namespace ExpandedContent.Tweaks.Miscellaneous {
                 c.m_Classes = c.m_Classes.AppendToArray(ClericClass.ToReference<BlueprintCharacterClassReference>());
             });
             WitchHexDCProperty.RemoveComponents<MaxCastingAttributeGetter>();
+            Main.Log("Patched");
+            #endregion
 
-
-            //Spontaneous Healing Discovery Resource patch
-            //Looks like Owlcat changed from using m_Class to m_ClassDiv, but only put in the alchemist class
+            #region Spontaneous Healing Discovery Resource patch
+            Main.Log("Starting ShamblingMoundGrapple Patch");
+            Main.Log("Looks like Owlcat changed from using m_Class to m_ClassDiv, but only put in the alchemist class");
             var SpontaneousHealingResource = Resources.GetBlueprint<BlueprintAbilityResource>("0b417a7292b2e924782ef2aab9451816").m_MaxAmount;
             var RogueClass = Resources.GetBlueprintReference<BlueprintCharacterClassReference>("299aa766dee3cbf4790da4efb8c72484");
             var FighterClass = Resources.GetBlueprintReference<BlueprintCharacterClassReference>("48ac8db94d5de7645906c7d0ad3bcfbd");
@@ -190,8 +196,22 @@ namespace ExpandedContent.Tweaks.Miscellaneous {
             var MutationWarriorArchetype = Resources.GetBlueprintReference<BlueprintArchetypeReference>("758e0061a077e54409a3bf0eb51511e5");
             SpontaneousHealingResource.m_ClassDiv = SpontaneousHealingResource.m_ClassDiv.AppendToArray(RogueClass, FighterClass);
             SpontaneousHealingResource.m_ArchetypesDiv = SpontaneousHealingResource.m_ArchetypesDiv.AppendToArray(UndergroundChemistArchetype, MutationWarriorArchetype);
+            Main.Log("Patched");
+            #endregion
 
-
+            #region PossessedShamanSharedSkillAthletics patch
+            Main.Log("Starting PossessedShamanSharedSkillAthletics Patch");
+            Main.Log("This ability is not setup like the others, not discounting the basestat and therefore giving up to double bonus");
+            var PossessedShamanSharedSkillAthleticsStatBonus = Resources.GetBlueprint<BlueprintFeature>("e8c505d8efb982d439b5f1408ab36437").GetComponent<AddContextStatBonus>();
+            if (PossessedShamanSharedSkillAthleticsStatBonus.Value.ValueType == ContextValueType.Rank) {
+                PossessedShamanSharedSkillAthleticsStatBonus.Value.ValueType = ContextValueType.Shared;
+                Main.Log("Patched");
+            } 
+            else { Main.Log("Someone else fixed it."); }
+            
+            
+            
+            #endregion
         }
 
 

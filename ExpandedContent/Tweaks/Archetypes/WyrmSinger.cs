@@ -44,6 +44,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var SkaldClass = Resources.GetBlueprint<BlueprintCharacterClass>("6afa347d804838b48bda16acb0573dc0");
             var RagingSongResource = Resources.GetBlueprintReference<BlueprintAbilityResourceReference>("4a2302c4ec2cfb042bba67d825babfec");
             var InspiredRageFeature = Resources.GetBlueprint<BlueprintFeature>("1a639eadc2c3ed546bc4bb236864cd0c");
+            var MythicInspire = Resources.GetBlueprint<BlueprintFeature>("69fad80df0d44dfea19aef513db959c2");
             var SkaldRagePowerSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("2476514e31791394fa140f1a07941c96");
             var SongOfTheFallenFeature = Resources.GetBlueprint<BlueprintFeature>("9fc5d126524dbc84a90b1856707e2d87");
             var BloodragerBloodlineSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("62b33ac8ceb18dd47ad4c8f06849bc01");
@@ -1391,7 +1392,177 @@ namespace ExpandedContent.Tweaks.Archetypes {
             });
 
             var InspiredRageAddFactContextActions = Resources.GetBlueprint<BlueprintBuff>("75b3978757908d24aaaecaf2dc209b89").GetComponents<AddFactContextActions>();
-            var InspiredRageAddFactsFromCaster = Resources.GetBlueprint<BlueprintBuff>("75b3978757908d24aaaecaf2dc209b89").GetComponent<AddFactsFromCaster>();            
+            var InspiredRageAddFactsFromCaster = Resources.GetBlueprint<BlueprintBuff>("75b3978757908d24aaaecaf2dc209b89").GetComponent<AddFactsFromCaster>();
+            var WyrmSingerMythicDraconicRageEffectBuff = Helpers.CreateBlueprint<BlueprintBuff>("WyrmSingerMythicDraconicRageEffectBuff", bp => {
+                bp.SetName("Draconic Rage");
+                bp.SetDescription("At 1st level, a wyrm singer can kindle an echo of ancient rage felt between warring dragon clans in his allies. This ability acts as inspired rage, except those affected gain " +
+                    "a +2 bonus on melee attack and damage rolls and a +2 bonus on saving throws against paralysis and sleep effects (but they still take a –1 penalty to their AC), rather than " +
+                    "inspired rage’s normal bonuses. At 4th level and every 4 skald levels thereafter, the song’s bonuses on saves against paralysis and sleep effects increase by 1. At 8th and 16th levels, " +
+                    "the song’s bonus on melee attack and damage rolls increases by 1.");
+                bp.m_Icon = BloodragerBloodlineSelection.Icon;
+                bp.AddComponent(InspiredRageAddFactsFromCaster);
+                bp.AddComponents(InspiredRageAddFactContextActions);
+                bp.AddComponent<WeaponAttackTypeDamageBonus>(c => {
+                    c.Type = WeaponRangeType.Melee;
+                    c.AttackBonus = 1;
+                    c.Descriptor = ModifierDescriptor.Rage;
+                    c.Value = new ContextValue() {
+                        ValueType = ContextValueType.Shared,
+                        ValueRank = AbilityRankType.Default,
+                        ValueShared = AbilitySharedValue.Heal,
+                        m_AbilityParameter = AbilityParameterType.Level
+                    };
+                });
+                bp.AddComponent<AttackTypeAttackBonus>(c => {
+                    c.Type = WeaponRangeType.Melee;
+                    c.AllTypesExcept = false;
+                    c.AttackBonus = 1;
+                    c.Descriptor = ModifierDescriptor.Rage;
+                    c.Value = new ContextValue() {
+                        ValueType = ContextValueType.Shared,
+                        ValueShared = AbilitySharedValue.Heal,
+                        m_AbilityParameter = AbilityParameterType.Level
+                    };
+                    c.CheckFact = false;
+                    c.m_RequiredFact = null;
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
+                    c.m_Progression = ContextRankProgression.Custom;
+                    c.m_CustomProgression = new ContextRankConfig.CustomProgressionItem[] {
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 7, ProgressionValue = 2 },
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 15, ProgressionValue = 3 },
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 100, ProgressionValue = 4 }
+                    };
+                    c.m_Class = new BlueprintCharacterClassReference[] {
+                        SkaldClass.ToReference<BlueprintCharacterClassReference>()
+                    };
+                });
+                bp.AddComponent<SavingThrowContextBonusAgainstDescriptor>(c => {
+                    c.SpellDescriptor = SpellDescriptor.Paralysis | SpellDescriptor.Sleep;
+                    c.ModifierDescriptor = ModifierDescriptor.UntypedStackable;
+                    c.Value = new ContextValue() {
+                        ValueType = ContextValueType.Shared,
+                        ValueShared = AbilitySharedValue.Damage,
+                        m_AbilityParameter = AbilityParameterType.Level
+                    };
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.StatBonus;
+                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
+                    c.m_Progression = ContextRankProgression.Custom;
+                    c.m_CustomProgression = new ContextRankConfig.CustomProgressionItem[] {
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 3, ProgressionValue = 2 },
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 7, ProgressionValue = 3 },
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 11, ProgressionValue = 4 },
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 15, ProgressionValue = 5 },
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 19, ProgressionValue = 6 },
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 100, ProgressionValue = 7 }
+                    };
+                    c.m_Class = new BlueprintCharacterClassReference[] {
+                        SkaldClass.ToReference<BlueprintCharacterClassReference>()
+                    };
+                });
+                bp.AddComponent<ContextCalculateAbilityParams>(c => {
+                    c.UseKineticistMainStat = false;
+                    c.StatType = StatType.Charisma;
+                    c.StatTypeFromCustomProperty = false;
+                    c.ReplaceCasterLevel = true;
+                    c.CasterLevel = new ContextValue() {
+                        ValueType = ContextValueType.Rank,
+                        ValueRank = AbilityRankType.DamageDice,
+                        m_AbilityParameter = AbilityParameterType.Level
+                    };
+                    c.ReplaceSpellLevel = false;
+                    c.SpellLevel = 0;
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.DamageDice;
+                    c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
+                    c.m_Progression = ContextRankProgression.Div2;
+                    c.m_Class = new BlueprintCharacterClassReference[] {
+                        SkaldClass.ToReference<BlueprintCharacterClassReference>()
+                    };
+                });
+                bp.AddComponent<AddFactContextActions>(c => {
+                    c.Activated = Helpers.CreateActionList();
+                    c.Deactivated = Helpers.CreateActionList(
+                        new ContextActionRemoveBuff() {
+                            m_Buff = WyrmSingerBreathWeaponBuffAcid.ToReference<BlueprintBuffReference>()
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = WyrmSingerBreathWeaponBuffCold.ToReference<BlueprintBuffReference>()
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = WyrmSingerBreathWeaponBuffElectricity.ToReference<BlueprintBuffReference>()
+                        },
+                        new ContextActionRemoveBuff() {
+                            m_Buff = WyrmSingerBreathWeaponBuffFire.ToReference<BlueprintBuffReference>()
+                        });
+                    c.NewRound = Helpers.CreateActionList();
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.ProjectilesCount;
+                    c.m_BaseValueType = ContextRankBaseValueType.MythicLevel;
+                    c.m_Progression = ContextRankProgression.Custom;
+                    c.m_CustomProgression = new ContextRankConfig.CustomProgressionItem[] {
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 1, ProgressionValue = 1 },
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 2, ProgressionValue = 1 },
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 3, ProgressionValue = 1 },
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 4, ProgressionValue = 2 },
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 5, ProgressionValue = 2 },
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 6, ProgressionValue = 2 },
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 7, ProgressionValue = 3 },
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 8, ProgressionValue = 3 },
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 9, ProgressionValue = 3 },
+                        new ContextRankConfig.CustomProgressionItem(){ BaseValue = 10, ProgressionValue = 4 }
+                    };
+                });
+                bp.AddComponent<ContextCalculateSharedValue>(c => {
+                    c.ValueType = AbilitySharedValue.Damage;
+                    c.Value = new ContextDiceValue() {
+                        DiceType = DiceType.One,
+                        DiceCountValue = new ContextValue() {
+                            ValueType = ContextValueType.Rank,
+                            Value = 0,
+                            ValueRank = AbilityRankType.StatBonus
+                        },
+                        BonusValue = new ContextValue() {
+                            ValueType = ContextValueType.Rank,
+                            Value = 0,
+                            ValueRank = AbilityRankType.ProjectilesCount
+                        }
+                    };
+                    c.Modifier = 1;
+                });
+                bp.AddComponent<ContextCalculateSharedValue>(c => {
+                    c.ValueType = AbilitySharedValue.Heal;
+                    c.Value = new ContextDiceValue() {
+                        DiceType = DiceType.One,
+                        DiceCountValue = new ContextValue() {
+                            ValueType = ContextValueType.Rank,
+                            Value = 0,
+                            ValueRank = AbilityRankType.Default
+                        },
+                        BonusValue = new ContextValue() {
+                            ValueType = ContextValueType.Rank,
+                            Value = 0,
+                            ValueRank = AbilityRankType.ProjectilesCount
+                        }
+                    };
+                    c.Modifier = 1;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = false;
+                bp.m_Flags = 0;
+                bp.Stacking = StackingType.Ignore;
+                bp.TickEachSecond = false;
+                bp.Frequency = DurationRate.Rounds;
+                bp.FxOnStart = new PrefabLink();
+                bp.FxOnRemove = new PrefabLink();
+            });
+
             var WyrmSingerDraconicRageEffectBuff = Helpers.CreateBlueprint<BlueprintBuff>("WyrmSingerDraconicRageEffectBuff", bp => {
                 bp.SetName("Draconic Rage");
                 bp.SetDescription("At 1st level, a wyrm singer can kindle an echo of ancient rage felt between warring dragon clans in his allies. This ability acts as inspired rage, except those affected gain " +
@@ -1510,19 +1681,31 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.FxOnRemove = new PrefabLink();
             });
             WyrmSingerBreathWeaponAbilityAcid.AddComponent<AbilityTargetHasFact>(c => {
-                c.m_CheckedFacts = new BlueprintUnitFactReference[] { WyrmSingerDraconicRageEffectBuff.ToReference<BlueprintUnitFactReference>() };
+                c.m_CheckedFacts = new BlueprintUnitFactReference[] {
+                    WyrmSingerMythicDraconicRageEffectBuff.ToReference<BlueprintUnitFactReference>(),
+                    WyrmSingerDraconicRageEffectBuff.ToReference<BlueprintUnitFactReference>() 
+                };
                 c.Inverted = false;
             });
             WyrmSingerBreathWeaponAbilityCold.AddComponent<AbilityTargetHasFact>(c => {
-                c.m_CheckedFacts = new BlueprintUnitFactReference[] { WyrmSingerDraconicRageEffectBuff.ToReference<BlueprintUnitFactReference>() };
+                c.m_CheckedFacts = new BlueprintUnitFactReference[] {
+                    WyrmSingerMythicDraconicRageEffectBuff.ToReference<BlueprintUnitFactReference>(),
+                    WyrmSingerDraconicRageEffectBuff.ToReference<BlueprintUnitFactReference>()
+                };
                 c.Inverted = false;
             });
             WyrmSingerBreathWeaponAbilityElectricity.AddComponent<AbilityTargetHasFact>(c => {
-                c.m_CheckedFacts = new BlueprintUnitFactReference[] { WyrmSingerDraconicRageEffectBuff.ToReference<BlueprintUnitFactReference>() };
+                c.m_CheckedFacts = new BlueprintUnitFactReference[] {
+                    WyrmSingerMythicDraconicRageEffectBuff.ToReference<BlueprintUnitFactReference>(),
+                    WyrmSingerDraconicRageEffectBuff.ToReference<BlueprintUnitFactReference>()
+                };
                 c.Inverted = false;
             });
             WyrmSingerBreathWeaponAbilityFire.AddComponent<AbilityTargetHasFact>(c => {
-                c.m_CheckedFacts = new BlueprintUnitFactReference[] { WyrmSingerDraconicRageEffectBuff.ToReference<BlueprintUnitFactReference>() };
+                c.m_CheckedFacts = new BlueprintUnitFactReference[] {
+                    WyrmSingerMythicDraconicRageEffectBuff.ToReference<BlueprintUnitFactReference>(),
+                    WyrmSingerDraconicRageEffectBuff.ToReference<BlueprintUnitFactReference>()
+                };
                 c.Inverted = false;
             });
 
@@ -1544,23 +1727,55 @@ namespace ExpandedContent.Tweaks.Archetypes {
                                 }
                             },
                             IfTrue = Helpers.CreateActionList(
-                                new ContextActionApplyBuff() {
-                                    m_Buff = WyrmSingerDraconicRageEffectBuff.ToReference<BlueprintBuffReference>(),
-                                    Permanent = true,
-                                    UseDurationSeconds = false,
-                                    DurationValue = new ContextDurationValue() {
-                                        Rate = DurationRate.Rounds,
-                                        DiceType = DiceType.Zero,
-                                        DiceCountValue = 0,
-                                        BonusValue = 0
+                                new Conditional() {
+                                    ConditionsChecker = new ConditionsChecker() {
+                                        Operation = Operation.And,
+                                        Conditions = new Condition[] {
+                                            new ContextConditionCasterHasFact() {
+                                                m_Fact = MythicInspire.ToReference<BlueprintUnitFactReference>(),
+                                                Not = false
+                                            }
+                                        }
                                     },
-                                    DurationSeconds = 0,
-                                    IsFromSpell = false,
-                                    IsNotDispelable = false,
-                                    ToCaster = false,
-                                    AsChild = true,
-                                    SameDuration = false
-                                }
+                                    IfTrue = Helpers.CreateActionList(
+                                        new ContextActionApplyBuff() {
+                                            m_Buff = WyrmSingerMythicDraconicRageEffectBuff.ToReference<BlueprintBuffReference>(),
+                                            Permanent = true,
+                                            UseDurationSeconds = false,
+                                            DurationValue = new ContextDurationValue() {
+                                                Rate = DurationRate.Rounds,
+                                                DiceType = DiceType.Zero,
+                                                DiceCountValue = 0,
+                                                BonusValue = 0
+                                            },
+                                            DurationSeconds = 0,
+                                            IsFromSpell = false,
+                                            IsNotDispelable = false,
+                                            ToCaster = false,
+                                            AsChild = true,
+                                            SameDuration = false
+                                        }
+                                        ),
+                                    IfFalse = Helpers.CreateActionList(
+                                        new ContextActionApplyBuff() {
+                                            m_Buff = WyrmSingerDraconicRageEffectBuff.ToReference<BlueprintBuffReference>(),
+                                            Permanent = true,
+                                            UseDurationSeconds = false,
+                                            DurationValue = new ContextDurationValue() {
+                                                Rate = DurationRate.Rounds,
+                                                DiceType = DiceType.Zero,
+                                                DiceCountValue = 0,
+                                                BonusValue = 0
+                                            },
+                                            DurationSeconds = 0,
+                                            IsFromSpell = false,
+                                            IsNotDispelable = false,
+                                            ToCaster = false,
+                                            AsChild = true,
+                                            SameDuration = false
+                                        }
+                                    )
+                                }                                
                                 ),
                             IfFalse = Helpers.CreateActionList(
                                 new ContextActionRemoveBuff() {
@@ -1572,6 +1787,11 @@ namespace ExpandedContent.Tweaks.Archetypes {
                         }
                         );
                     c.UnitExit = Helpers.CreateActionList(
+                        new ContextActionRemoveBuff() {
+                            m_Buff = WyrmSingerMythicDraconicRageEffectBuff.ToReference<BlueprintBuffReference>(),
+                            RemoveRank = false,
+                            ToCaster = false
+                        },
                         new ContextActionRemoveBuff() {
                             m_Buff = WyrmSingerDraconicRageEffectBuff.ToReference<BlueprintBuffReference>(),
                             RemoveRank = false,
@@ -1614,33 +1834,98 @@ namespace ExpandedContent.Tweaks.Archetypes {
                                 }
                             },
                             IfTrue = Helpers.CreateActionList(
-                                new ContextActionApplyBuff() {
-                                    m_Buff = WyrmSingerDraconicRageEffectBuff.ToReference<BlueprintBuffReference>(),
-                                    Permanent = true,
-                                    UseDurationSeconds = false,
-                                    DurationValue = new ContextDurationValue() {
-                                        Rate = DurationRate.Rounds,
-                                        DiceType = DiceType.Zero,
-                                        DiceCountValue = 0,
-                                        BonusValue = 0
+                                new Conditional() {
+                                    ConditionsChecker = new ConditionsChecker() {
+                                        Operation = Operation.And,
+                                        Conditions = new Condition[] {
+                                            new ContextConditionCasterHasFact() {
+                                                m_Fact = MythicInspire.ToReference<BlueprintUnitFactReference>(),
+                                                Not = false
+                                            }
+                                        }
                                     },
-                                    DurationSeconds = 0,
-                                    IsFromSpell = false,
-                                    IsNotDispelable = false,
-                                    ToCaster = false,
-                                    AsChild = true,
-                                    SameDuration = false
+                                    IfTrue = Helpers.CreateActionList(
+                                        new Conditional() {
+                                            ConditionsChecker = new ConditionsChecker() {
+                                                Operation = Operation.And,
+                                                Conditions = new Condition[] {
+                                                    new ContextConditionHasBuff() {
+                                                        m_Buff = WyrmSingerMythicDraconicRageEffectBuff.ToReference<BlueprintBuffReference>(),
+                                                        Not = true
+                                                    }
+                                                }
+                                            },
+                                            IfTrue = Helpers.CreateActionList(
+                                                new ContextActionApplyBuff() {
+                                                    m_Buff = WyrmSingerMythicDraconicRageEffectBuff.ToReference<BlueprintBuffReference>(),
+                                                    Permanent = true,
+                                                    UseDurationSeconds = false,
+                                                    DurationValue = new ContextDurationValue() {
+                                                        Rate = DurationRate.Rounds,
+                                                        DiceType = DiceType.Zero,
+                                                        DiceCountValue = 0,
+                                                        BonusValue = 0
+                                                    },
+                                                    DurationSeconds = 0,
+                                                    IsFromSpell = false,
+                                                    IsNotDispelable = false,
+                                                    ToCaster = false,
+                                                    AsChild = true,
+                                                    SameDuration = false
+                                                }
+                                                ),
+                                            IfFalse = Helpers.CreateActionList()
+                                        }
+                                        ),
+                                    IfFalse = Helpers.CreateActionList(
+                                        new Conditional() {
+                                            ConditionsChecker = new ConditionsChecker() {
+                                                Operation = Operation.And,
+                                                Conditions = new Condition[] {
+                                                    new ContextConditionHasBuff() {
+                                                        m_Buff = WyrmSingerDraconicRageEffectBuff.ToReference<BlueprintBuffReference>(),
+                                                        Not = true
+                                                    }
+                                                }
+                                            },
+                                            IfTrue = Helpers.CreateActionList(
+                                                new ContextActionApplyBuff() {
+                                                    m_Buff = WyrmSingerDraconicRageEffectBuff.ToReference<BlueprintBuffReference>(),
+                                                    Permanent = true,
+                                                    UseDurationSeconds = false,
+                                                    DurationValue = new ContextDurationValue() {
+                                                        Rate = DurationRate.Rounds,
+                                                        DiceType = DiceType.Zero,
+                                                        DiceCountValue = 0,
+                                                        BonusValue = 0
+                                                    },
+                                                    DurationSeconds = 0,
+                                                    IsFromSpell = false,
+                                                    IsNotDispelable = false,
+                                                    ToCaster = false,
+                                                    AsChild = true,
+                                                    SameDuration = false
+                                                }
+                                                ),
+                                            IfFalse = Helpers.CreateActionList()
+                                        }
+                                    )
                                 }
-                                ),
+                            ),
                             IfFalse = Helpers.CreateActionList(
+                                new ContextActionRemoveBuff() {
+                                    m_Buff = WyrmSingerMythicDraconicRageEffectBuff.ToReference<BlueprintBuffReference>(),
+                                    RemoveRank = false,
+                                    ToCaster = false
+                                },
                                 new ContextActionRemoveBuff() {
                                     m_Buff = WyrmSingerDraconicRageEffectBuff.ToReference<BlueprintBuffReference>(),
                                     RemoveRank = false,
                                     ToCaster = false
                                 }
-                                )
+                            )
                         }
-                        );
+                    );
                 });
                 bp.m_AllowNonContextActions = false;
                 bp.m_TargetType = BlueprintAbilityAreaEffect.TargetType.Ally;
