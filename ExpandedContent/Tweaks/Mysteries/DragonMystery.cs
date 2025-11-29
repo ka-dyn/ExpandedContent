@@ -492,7 +492,9 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = true;
             });
-            //Presence of Dragons
+
+
+            #region Presence of Dragons
             var ShakenBuff = Resources.GetBlueprint<BlueprintBuff>("25ec6cb6ab1845c48a95f9c20b034220");
             var OracleRevelationPresenceOfDragonsResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("OracleRevelationPresenceOfDragonsResource", bp => {
                 bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
@@ -633,7 +635,8 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.IsClassFeature = true;
             });
             OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationPresenceOfDragons.ToReference<BlueprintFeatureReference>());
-            //Talons of the Dragon
+            #endregion
+            #region Talons of the Dragon
             var BloodlineDraconicClawsResource = Resources.GetBlueprint<BlueprintAbilityResource>("5be91334e3de5aa458ade509cc16daff");
             var BloodlineDraconicBlackClawsFeatureLevel1 = Resources.GetBlueprint<BlueprintFeature>("2594e96fb980fdc49b139fdf88bc7679");
             var BloodlineDraconicBlackClawsFeatureLevel2 = Resources.GetBlueprint<BlueprintFeature>("838044e2a5853bb41b9e0a123a44432d");
@@ -1104,10 +1107,60 @@ namespace ExpandedContent.Tweaks.Mysteries {
             });
             OracleRevelationDragonTalonsSelection.AddComponent<PrerequisiteNoFeature>(c => { c.m_Feature = OracleRevelationDragonTalonsSelection.ToReference<BlueprintFeatureReference>(); });
             OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationDragonTalonsSelection.ToReference<BlueprintFeatureReference>());
-            //Draconic Resistances
-            var BloodlineDraconicBlackResistancesAbilityLevel1 = Resources.GetBlueprint<BlueprintFeature>("5623c02b343f59a46a4227f32f44ba8b");
-            var BloodlineDraconicBlackResistancesAbilityLevel2 = Resources.GetBlueprint<BlueprintFeature>("307544d817c7d5f4883f1400918d07fb");
-            var BloodlineDraconicBlackResistancesAbilityLevel3 = Resources.GetBlueprint<BlueprintFeature>("586f50b2310239647b8c054e9d12a3e3");
+            #endregion
+            #region Draconic Resistances    
+            #region Acid
+            var OracleRevelationDraconicResistancesAcidAbilityLevel1 = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationDraconicResistancesAcidAbilityLevel1", bp => {
+                bp.SetName("");
+                bp.SetDescription("");
+                bp.AddComponent<AddStatBonus>(c => {
+                    c.Descriptor = ModifierDescriptor.NaturalArmor;
+                    c.Value = 1;
+                    c.Stat = StatType.AC;
+                });
+                bp.AddComponent<AddDamageResistanceEnergy>(c => {
+                    c.Type = DamageEnergyType.Acid;
+                    c.Value = 5;
+                });
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.IsClassFeature = true;
+                bp.m_AllowNonContextActions = false;
+            });
+            var OracleRevelationDraconicResistancesAcidAbilityLevel2 = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationDraconicResistancesAcidAbilityLevel2", bp => {
+                bp.SetName("");
+                bp.SetDescription("");
+                bp.AddComponent<AddStatBonus>(c => {
+                    c.Descriptor = ModifierDescriptor.NaturalArmor;
+                    c.Value = 2;
+                    c.Stat = StatType.AC;
+                });
+                bp.AddComponent<AddDamageResistanceEnergy>(c => {
+                    c.Type = DamageEnergyType.Acid;
+                    c.Value = 10;
+                });
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.IsClassFeature = true;
+                bp.m_AllowNonContextActions = false;
+            });
+            var OracleRevelationDraconicResistancesAcidAbilityLevel3 = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationDraconicResistancesAcidAbilityLevel3", bp => {
+                bp.SetName("");
+                bp.SetDescription("");
+                bp.AddComponent<AddStatBonus>(c => {
+                    c.Descriptor = ModifierDescriptor.NaturalArmor;
+                    c.Value = 4;
+                    c.Stat = StatType.AC;
+                });
+                bp.AddComponent<AddDamageResistanceEnergy>(c => {
+                    c.Type = DamageEnergyType.Acid;
+                    c.Value = 20;
+                });
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.IsClassFeature = true;
+                bp.m_AllowNonContextActions = false;
+            });
             var OracleRevelationDraconicResistancesAcidLevel1 = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationDraconicResistancesAcidLevel1", bp => {
                 bp.SetName("Draconic Resistances - Acid");
                 bp.SetDescription("Like the great dragons, you are not easily harmed by common means of attack. You gain acid resistance 5 and a +1 natural armor bonus. " +
@@ -1122,7 +1175,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                         MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>()
                     };
                     c.Level = 9;
-                    c.m_Feature = BloodlineDraconicBlackResistancesAbilityLevel1.ToReference<BlueprintFeatureReference>();
+                    c.m_Feature = OracleRevelationDraconicResistancesAcidAbilityLevel1.ToReference<BlueprintFeatureReference>();
                     c.BeforeThisLevel = true;
                 });
                 bp.HideInUI = false;
@@ -1141,7 +1194,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                         MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>()
                     };
                     c.Level = 15;
-                    c.m_Feature = BloodlineDraconicBlackResistancesAbilityLevel2.ToReference<BlueprintFeatureReference>();
+                    c.m_Feature = OracleRevelationDraconicResistancesAcidAbilityLevel2.ToReference<BlueprintFeatureReference>();
                     c.BeforeThisLevel = true;
                 });
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
@@ -1153,7 +1206,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                         MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>()
                     };
                     c.Level = 15;
-                    c.m_Feature = BloodlineDraconicBlackResistancesAbilityLevel3.ToReference<BlueprintFeatureReference>();
+                    c.m_Feature = OracleRevelationDraconicResistancesAcidAbilityLevel3.ToReference<BlueprintFeatureReference>();
                     c.BeforeThisLevel = false;
                 });
                 bp.HideInUI = true;
@@ -1184,9 +1237,59 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.HideInUI = true;
                 bp.GiveFeaturesForPreviousLevels = true;
             });
-            var BloodlineDraconicWhiteResistancesAbilityLevel1 = Resources.GetBlueprint<BlueprintFeature>("f0808daee57206645a2b23b17d5b63f0");
-            var BloodlineDraconicWhiteResistancesAbilityLevel2 = Resources.GetBlueprint<BlueprintFeature>("64b243d2b7d780e459779c446af558e4");
-            var BloodlineDraconicWhiteResistancesAbilityLevel3 = Resources.GetBlueprint<BlueprintFeature>("66d8598b2c9c69f468c2efcdc9ad0e2d");
+            #endregion
+            #region Cold
+            var OracleRevelationDraconicResistancesColdAbilityLevel1 = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationDraconicResistancesColdAbilityLevel1", bp => {
+                bp.SetName("");
+                bp.SetDescription("");
+                bp.AddComponent<AddStatBonus>(c => {
+                    c.Descriptor = ModifierDescriptor.NaturalArmor;
+                    c.Value = 1;
+                    c.Stat = StatType.AC;
+                });
+                bp.AddComponent<AddDamageResistanceEnergy>(c => {
+                    c.Type = DamageEnergyType.Cold;
+                    c.Value = 5;
+                });
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.IsClassFeature = true;
+                bp.m_AllowNonContextActions = false;
+            });
+            var OracleRevelationDraconicResistancesColdAbilityLevel2 = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationDraconicResistancesColdAbilityLevel2", bp => {
+                bp.SetName("");
+                bp.SetDescription("");
+                bp.AddComponent<AddStatBonus>(c => {
+                    c.Descriptor = ModifierDescriptor.NaturalArmor;
+                    c.Value = 2;
+                    c.Stat = StatType.AC;
+                });
+                bp.AddComponent<AddDamageResistanceEnergy>(c => {
+                    c.Type = DamageEnergyType.Cold;
+                    c.Value = 10;
+                });
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.IsClassFeature = true;
+                bp.m_AllowNonContextActions = false;
+            });
+            var OracleRevelationDraconicResistancesColdAbilityLevel3 = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationDraconicResistancesColdAbilityLevel3", bp => {
+                bp.SetName("");
+                bp.SetDescription("");
+                bp.AddComponent<AddStatBonus>(c => {
+                    c.Descriptor = ModifierDescriptor.NaturalArmor;
+                    c.Value = 4;
+                    c.Stat = StatType.AC;
+                });
+                bp.AddComponent<AddDamageResistanceEnergy>(c => {
+                    c.Type = DamageEnergyType.Cold;
+                    c.Value = 20;
+                });
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.IsClassFeature = true;
+                bp.m_AllowNonContextActions = false;
+            });
             var OracleRevelationDraconicResistancesColdLevel1 = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationDraconicResistancesColdLevel1", bp => {
                 bp.SetName("Draconic Resistances - Cold");
                 bp.SetDescription("Like the great dragons, you are not easily harmed by common means of attack. You gain cold resistance 5 and a +1 natural armor bonus. " +
@@ -1201,7 +1304,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                         MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>()
                     };
                     c.Level = 9;
-                    c.m_Feature = BloodlineDraconicWhiteResistancesAbilityLevel1.ToReference<BlueprintFeatureReference>();
+                    c.m_Feature = OracleRevelationDraconicResistancesColdAbilityLevel1.ToReference<BlueprintFeatureReference>();
                     c.BeforeThisLevel = true;
                 });
                 bp.HideInUI = false;
@@ -1220,7 +1323,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                         MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>()
                     };
                     c.Level = 15;
-                    c.m_Feature = BloodlineDraconicWhiteResistancesAbilityLevel2.ToReference<BlueprintFeatureReference>();
+                    c.m_Feature = OracleRevelationDraconicResistancesColdAbilityLevel2.ToReference<BlueprintFeatureReference>();
                     c.BeforeThisLevel = true;
                 });
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
@@ -1232,7 +1335,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                         MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>()
                     };
                     c.Level = 15;
-                    c.m_Feature = BloodlineDraconicWhiteResistancesAbilityLevel3.ToReference<BlueprintFeatureReference>();
+                    c.m_Feature = OracleRevelationDraconicResistancesColdAbilityLevel3.ToReference<BlueprintFeatureReference>();
                     c.BeforeThisLevel = false;
                 });
                 bp.HideInUI = true;
@@ -1263,9 +1366,60 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.HideInUI = true;
                 bp.GiveFeaturesForPreviousLevels = true;
             });
-            var BloodlineDraconicBlueResistancesAbilityLevel1 = Resources.GetBlueprint<BlueprintFeature>("73916f082fbb1b843a55dec6671da447");
-            var BloodlineDraconicBlueResistancesAbilityLevel2 = Resources.GetBlueprint<BlueprintFeature>("9fc2e77baef2ee5429d6918678102d80");
-            var BloodlineDraconicBlueResistancesAbilityLevel3 = Resources.GetBlueprint<BlueprintFeature>("c4f5015c46c12ab40b6274ee5e49f33e");
+            #endregion
+            #region Electric
+            var OracleRevelationDraconicResistancesElectricAbilityLevel1 = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationDraconicResistancesElectricAbilityLevel1", bp => {
+                bp.SetName("");
+                bp.SetDescription("");
+                bp.AddComponent<AddStatBonus>(c => {
+                    c.Descriptor = ModifierDescriptor.NaturalArmor;
+                    c.Value = 1;
+                    c.Stat = StatType.AC;
+                });
+                bp.AddComponent<AddDamageResistanceEnergy>(c => {
+                    c.Type = DamageEnergyType.Electricity;
+                    c.Value = 5;
+                });
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.IsClassFeature = true;
+                bp.m_AllowNonContextActions = false;
+            });
+            var OracleRevelationDraconicResistancesElectricAbilityLevel2 = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationDraconicResistancesElectricAbilityLevel2", bp => {
+                bp.SetName("");
+                bp.SetDescription("");
+                bp.AddComponent<AddStatBonus>(c => {
+                    c.Descriptor = ModifierDescriptor.NaturalArmor;
+                    c.Value = 2;
+                    c.Stat = StatType.AC;
+                });
+                bp.AddComponent<AddDamageResistanceEnergy>(c => {
+                    c.Type = DamageEnergyType.Electricity;
+                    c.Value = 10;
+                });
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.IsClassFeature = true;
+                bp.m_AllowNonContextActions = false;
+            });
+            var OracleRevelationDraconicResistancesElectricAbilityLevel3 = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationDraconicResistancesElectricAbilityLevel3", bp => {
+                bp.SetName("");
+                bp.SetDescription("");
+                bp.AddComponent<AddStatBonus>(c => {
+                    c.Descriptor = ModifierDescriptor.NaturalArmor;
+                    c.Value = 4;
+                    c.Stat = StatType.AC;
+                });
+                bp.AddComponent<AddDamageResistanceEnergy>(c => {
+                    c.Type = DamageEnergyType.Electricity;
+                    c.Value = 20;
+                });
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.IsClassFeature = true;
+                bp.m_AllowNonContextActions = false;
+            });
+
             var OracleRevelationDraconicResistancesElectricLevel1 = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationDraconicResistancesElectricLevel1", bp => {
                 bp.SetName("Draconic Resistances - Electric");
                 bp.SetDescription("Like the great dragons, you are not easily harmed by common means of attack. You gain electricity resistance 5 and a +1 natural armor bonus. " +
@@ -1280,7 +1434,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                         MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>()
                     };
                     c.Level = 9;
-                    c.m_Feature = BloodlineDraconicBlueResistancesAbilityLevel1.ToReference<BlueprintFeatureReference>();
+                    c.m_Feature = OracleRevelationDraconicResistancesElectricAbilityLevel1.ToReference<BlueprintFeatureReference>();
                     c.BeforeThisLevel = true;
                 });
                 bp.HideInUI = false;
@@ -1299,7 +1453,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                         MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>()
                     };
                     c.Level = 15;
-                    c.m_Feature = BloodlineDraconicBlueResistancesAbilityLevel2.ToReference<BlueprintFeatureReference>();
+                    c.m_Feature = OracleRevelationDraconicResistancesElectricAbilityLevel2.ToReference<BlueprintFeatureReference>();
                     c.BeforeThisLevel = true;
                 });
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
@@ -1311,7 +1465,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                         MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>()
                     };
                     c.Level = 15;
-                    c.m_Feature = BloodlineDraconicBlueResistancesAbilityLevel3.ToReference<BlueprintFeatureReference>();
+                    c.m_Feature = OracleRevelationDraconicResistancesElectricAbilityLevel3.ToReference<BlueprintFeatureReference>();
                     c.BeforeThisLevel = false;
                 });
                 bp.HideInUI = true;
@@ -1342,9 +1496,59 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.HideInUI = true;
                 bp.GiveFeaturesForPreviousLevels = true;
             });
-            var BloodlineDraconicRedResistancesAbilityLevel1 = Resources.GetBlueprint<BlueprintFeature>("67979ecc80c4fed40954d62e3844583e");
-            var BloodlineDraconicRedResistancesAbilityLevel2 = Resources.GetBlueprint<BlueprintFeature>("e353df68a1bb5894ea1d33b0bda1400d");
-            var BloodlineDraconicRedResistancesAbilityLevel3 = Resources.GetBlueprint<BlueprintFeature>("d102a33c03260a6458b7508a243e1958");
+            #endregion
+            #region Fire
+            var OracleRevelationDraconicResistancesFireAbilityLevel1 = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationDraconicResistancesFireAbilityLevel1", bp => {
+                bp.SetName("");
+                bp.SetDescription("");
+                bp.AddComponent<AddStatBonus>(c => {
+                    c.Descriptor = ModifierDescriptor.NaturalArmor;
+                    c.Value = 1;
+                    c.Stat = StatType.AC;
+                });
+                bp.AddComponent<AddDamageResistanceEnergy>(c => {
+                    c.Type = DamageEnergyType.Fire;
+                    c.Value = 5;
+                });
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.IsClassFeature = true;
+                bp.m_AllowNonContextActions = false;
+            });
+            var OracleRevelationDraconicResistancesFireAbilityLevel2 = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationDraconicResistancesFireAbilityLevel2", bp => {
+                bp.SetName("");
+                bp.SetDescription("");
+                bp.AddComponent<AddStatBonus>(c => {
+                    c.Descriptor = ModifierDescriptor.NaturalArmor;
+                    c.Value = 2;
+                    c.Stat = StatType.AC;
+                });
+                bp.AddComponent<AddDamageResistanceEnergy>(c => {
+                    c.Type = DamageEnergyType.Fire;
+                    c.Value = 10;
+                });
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.IsClassFeature = true;
+                bp.m_AllowNonContextActions = false;
+            });
+            var OracleRevelationDraconicResistancesFireAbilityLevel3 = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationDraconicResistancesFireAbilityLevel3", bp => {
+                bp.SetName("");
+                bp.SetDescription("");
+                bp.AddComponent<AddStatBonus>(c => {
+                    c.Descriptor = ModifierDescriptor.NaturalArmor;
+                    c.Value = 4;
+                    c.Stat = StatType.AC;
+                });
+                bp.AddComponent<AddDamageResistanceEnergy>(c => {
+                    c.Type = DamageEnergyType.Fire;
+                    c.Value = 20;
+                });
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.IsClassFeature = true;
+                bp.m_AllowNonContextActions = false;
+            });
             var OracleRevelationDraconicResistancesFireLevel1 = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationDraconicResistancesFireLevel1", bp => {
                 bp.SetName("Draconic Resistances - Fire");
                 bp.SetDescription("Like the great dragons, you are not easily harmed by common means of attack. You gain fire resistance 5 and a +1 natural armor bonus. " +
@@ -1359,7 +1563,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                         MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>()
                     };
                     c.Level = 9;
-                    c.m_Feature = BloodlineDraconicRedResistancesAbilityLevel1.ToReference<BlueprintFeatureReference>();
+                    c.m_Feature = OracleRevelationDraconicResistancesFireAbilityLevel1.ToReference<BlueprintFeatureReference>();
                     c.BeforeThisLevel = true;
                 });
                 bp.HideInUI = false;
@@ -1378,7 +1582,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                         MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>()
                     };
                     c.Level = 15;
-                    c.m_Feature = BloodlineDraconicRedResistancesAbilityLevel2.ToReference<BlueprintFeatureReference>();
+                    c.m_Feature = OracleRevelationDraconicResistancesFireAbilityLevel2.ToReference<BlueprintFeatureReference>();
                     c.BeforeThisLevel = true;
                 });
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
@@ -1390,7 +1594,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                         MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>()
                     };
                     c.Level = 15;
-                    c.m_Feature = BloodlineDraconicRedResistancesAbilityLevel3.ToReference<BlueprintFeatureReference>();
+                    c.m_Feature = OracleRevelationDraconicResistancesFireAbilityLevel3.ToReference<BlueprintFeatureReference>();
                     c.BeforeThisLevel = false;
                 });
                 bp.HideInUI = true;
@@ -1421,6 +1625,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.HideInUI = true;
                 bp.GiveFeaturesForPreviousLevels = true;
             });
+            #endregion
             var OracleRevelationDraconicResistancesSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("OracleRevelationDraconicResistancesSelection", bp => {
                 bp.SetName("Draconic Resistances");
                 bp.SetDescription("Like the great dragons, you are not easily harmed by common means of attack. You gain resistance 5 against your chosen energy type and a +1 natural armor bonus. " +
@@ -1446,7 +1651,8 @@ namespace ExpandedContent.Tweaks.Mysteries {
             });
             OracleRevelationDraconicResistancesSelection.AddComponent<PrerequisiteNoFeature>(c => { c.m_Feature = OracleRevelationDraconicResistancesSelection.ToReference<BlueprintFeatureReference>(); });
             OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationDraconicResistancesSelection.ToReference<BlueprintFeatureReference>());
-            //Breath Weapon
+            #endregion
+            #region Breath Weapon
             var BloodlineDraconicRedBreathWeaponAbility = Resources.GetBlueprint<BlueprintAbility>("3f31704e595e78942b3640cdc9b95d8b");
             var BloodlineDraconicWhiteBreathWeaponAbility = Resources.GetBlueprint<BlueprintAbility>("84be529914c90664aa948d8266bb3fa6");
             var BloodlineDraconicBlueBreathWeaponAbility = Resources.GetBlueprint<BlueprintAbility>("60a3047f434f38544a2878c26955d3ad");
@@ -2930,7 +3136,8 @@ namespace ExpandedContent.Tweaks.Mysteries {
             });
             OracleRevelationDragonBreathWeaponSelection.AddComponent<PrerequisiteNoFeature>(c => { c.m_Feature = OracleRevelationDragonBreathWeaponSelection.ToReference<BlueprintFeatureReference>(); });
             OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationDragonBreathWeaponSelection.ToReference<BlueprintFeatureReference>());
-            //Form of the Dragon
+            #endregion
+            #region Form of the Dragon
             var OracleRevelationFormOfTheDragonResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("OracleRevelationFormOfTheDragonResource", bp => {
                 bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
                     BaseValue = 1,
@@ -4757,7 +4964,8 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.IsClassFeature = true;
             });
             OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationFormOfTheDragonFeature.ToReference<BlueprintFeatureReference>());
-            //Wings of the Dragon
+            #endregion
+            #region Wings of the Dragon
             var BuffWingsDraconicRed = Resources.GetBlueprint<BlueprintBuff>("08ae1c01155a2184db869e9ebedc758d");
             var BuffWingsDraconicBlue = Resources.GetBlueprint<BlueprintBuff>("800cde038f9e6304d95365edc60ab0a4");
             var BuffWingsDraconicGold = Resources.GetBlueprint<BlueprintBuff>("984064a3dd0f25444ad143b8a33d7d92");
@@ -5319,7 +5527,8 @@ namespace ExpandedContent.Tweaks.Mysteries {
             });
             OracleRevelationWingsOfTheDragonSelection.AddComponent<PrerequisiteNoFeature>(c => { c.m_Feature = OracleRevelationWingsOfTheDragonSelection.ToReference<BlueprintFeatureReference>(); });
             OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationWingsOfTheDragonSelection.ToReference<BlueprintFeatureReference>());
-            //Dragon Sense Revelation
+            #endregion
+            #region Dragon Sense Revelation
             var OracleDragonSensesBlindsense = Helpers.CreateBlueprint<BlueprintFeature>("OracleDragonSensesBlindsense", bp => {
                 bp.SetName("Dragon Senses");
                 bp.SetDescription("");
@@ -5402,7 +5611,8 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.IsClassFeature = true;
             });
             OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationDragonSenses.ToReference<BlueprintFeatureReference>());
-            //Scaled Toughness Revelation
+            #endregion
+            #region Scaled Toughness Revelation
             var OracleRevelationScaledToughnessResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("OracleRevelationScaledToughnessResource", bp => {
                 bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
                     BaseValue = 0,
@@ -5539,6 +5749,8 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.IsClassFeature = true;
             });
             OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationScaledToughness.ToReference<BlueprintFeatureReference>());
+            #endregion
+
             MysteryTools.RegisterMystery(OracleDragonMysteryFeature);
             MysteryTools.RegisterSecondMystery(OracleDragonMysteryFeature);
             MysteryTools.RegisterEnlightendPhilosopherMystery(EnlightnedPhilosopherDragonMysteryFeature);

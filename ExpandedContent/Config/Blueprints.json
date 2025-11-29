@@ -4154,7 +4154,21 @@
 
     "DefenseDomainBaseFeatureSeparatist": "ad41d6c0-d6d4-4aaf-b430-d563ab2b5ee0",
 
-    "WyrmSingerMythicDraconicRageEffectBuff": "1d38e607-50cd-4bbd-a072-082d9b2c2f68"
+    "WyrmSingerMythicDraconicRageEffectBuff": "1d38e607-50cd-4bbd-a072-082d9b2c2f68",
+    "OracleRevelationDraconicResistancesAcidAbilityLevel1": "872614f3-6293-4372-aae1-ca3aaddb731c",
+    "OracleRevelationDraconicResistancesAcidAbilityLevel2": "a0b99a6a-8bd6-4cb5-a88b-37092ee403c9",
+    "OracleRevelationDraconicResistancesAcidAbilityLevel3": "05d3179d-8d70-4bf0-81a5-44c2d02893f1",
+    "OracleRevelationDraconicResistancesColdAbilityLevel1": "ac26e457-6736-46c7-85da-d925ac1eb175",
+    "OracleRevelationDraconicResistancesColdAbilityLevel2": "0e38810e-71c4-4ec0-887c-14649712ccdc",
+    "OracleRevelationDraconicResistancesColdAbilityLevel3": "2da2aba7-c962-4288-8888-53057e64bd8d",
+    "OracleRevelationDraconicResistancesElectricAbilityLevel1": "7157ac7f-32df-439b-9de0-e5d1d26548bc",
+    "OracleRevelationDraconicResistancesElectricAbilityLevel2": "e332f6d9-c78b-4064-aafd-9a67a5480e0c",
+    "OracleRevelationDraconicResistancesElectricAbilityLevel3": "56f49988-c42a-4fb5-99df-ff6a2a6463c2",
+    "OracleRevelationDraconicResistancesFireAbilityLevel1": "c5d427e9-4be8-4977-97ef-65dd3c3dae02",
+    "OracleRevelationDraconicResistancesFireAbilityLevel2": "7b426994-11b9-4a6f-b215-472889fab295",
+    "OracleRevelationDraconicResistancesFireAbilityLevel3": "c06a33c4-b97a-410a-a0b0-d3031c53c5ec"
+
+
 
 
   },
