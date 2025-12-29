@@ -173,6 +173,83 @@ namespace ExpandedContent.Tweaks.Archetypes {
                         new ContextActionRemoveSelf()
                         );
                 });
+
+                bp.AddComponent<AddInitiatorAttackWithWeaponTrigger>(c => {
+                    c.TriggerBeforeAttack = false;
+                    c.OnlyHit = true;
+                    c.OnMiss = false;
+                    c.OnlyOnFullAttack = false;
+                    c.OnlyOnFirstAttack = false;
+                    c.OnlyOnFirstHit = false;
+                    c.CriticalHit = false;
+                    c.OnAttackOfOpportunity = false;
+                    c.NotCriticalHit = false;
+                    c.OnlySneakAttack = false;
+                    c.NotSneakAttack = false;
+                    c.m_WeaponType = new BlueprintWeaponTypeReference();
+                    c.CheckWeaponCategory = false;
+                    c.Category = WeaponCategory.UnarmedStrike;
+                    c.CheckWeaponGroup = true;
+                    c.Group = WeaponFighterGroup.Crossbows;
+                    c.CheckWeaponRangeType = false;
+                    c.RangeType = WeaponRangeType.Melee;
+                    c.ActionsOnInitiator = false;
+                    c.ReduceHPToZero = false;
+                    c.DamageMoreTargetMaxHP = false;
+                    c.CheckDistance = false;
+                    c.DistanceLessEqual = new Feet(); //?
+                    c.AllNaturalAndUnarmed = false;
+                    c.DuelistWeapon = false;
+                    c.NotExtraAttack = false;
+                    c.OnCharge = false;
+                    c.Action = Helpers.CreateActionList(
+                        new ContextActionCombatManeuver() {
+                            Type = CombatManeuver.Disarm,
+                            IgnoreConcealment = true,
+                            OnSuccess = Helpers.CreateActionList(),
+                            ReplaceStat = false,
+                            NewStat = StatType.Unknown,
+                            UseKineticistMainStat = false,
+                            UseCastingStat = false,
+                            UseCasterLevelAsBaseAttack = false,
+                            UseBestMentalStat = false,
+                            BatteringBlast = false
+                        }
+                        );
+                });
+                bp.AddComponent<AddInitiatorAttackWithWeaponTrigger>(c => {
+                    c.TriggerBeforeAttack = false;
+                    c.OnlyHit = true;
+                    c.OnMiss = false;
+                    c.OnlyOnFullAttack = false;
+                    c.OnlyOnFirstAttack = false;
+                    c.OnlyOnFirstHit = false;
+                    c.CriticalHit = false;
+                    c.OnAttackOfOpportunity = false;
+                    c.NotCriticalHit = false;
+                    c.OnlySneakAttack = false;
+                    c.NotSneakAttack = false;
+                    c.m_WeaponType = new BlueprintWeaponTypeReference();
+                    c.CheckWeaponCategory = false;
+                    c.Category = WeaponCategory.UnarmedStrike;
+                    c.CheckWeaponGroup = true;
+                    c.Group = WeaponFighterGroup.Crossbows;
+                    c.CheckWeaponRangeType = false;
+                    c.RangeType = WeaponRangeType.Melee;
+                    c.ActionsOnInitiator = true;
+                    c.ReduceHPToZero = false;
+                    c.DamageMoreTargetMaxHP = false;
+                    c.CheckDistance = false;
+                    c.DistanceLessEqual = new Feet(); //?
+                    c.AllNaturalAndUnarmed = false;
+                    c.DuelistWeapon = false;
+                    c.NotExtraAttack = false;
+                    c.OnCharge = false;
+                    c.Action = Helpers.CreateActionList(
+                        new ContextActionRemoveSelf()
+                        );
+                });
+
                 bp.m_AllowNonContextActions = false;
                 bp.Stacking = StackingType.Replace;
             });
@@ -261,6 +338,83 @@ namespace ExpandedContent.Tweaks.Archetypes {
                         new ContextActionRemoveSelf()
                         );
                 });
+
+                bp.AddComponent<AddInitiatorAttackWithWeaponTrigger>(c => {
+                    c.TriggerBeforeAttack = false;
+                    c.OnlyHit = true;
+                    c.OnMiss = false;
+                    c.OnlyOnFullAttack = false;
+                    c.OnlyOnFirstAttack = false;
+                    c.OnlyOnFirstHit = false;
+                    c.CriticalHit = false;
+                    c.OnAttackOfOpportunity = false;
+                    c.NotCriticalHit = false;
+                    c.OnlySneakAttack = false;
+                    c.NotSneakAttack = false;
+                    c.m_WeaponType = new BlueprintWeaponTypeReference();
+                    c.CheckWeaponCategory = false;
+                    c.Category = WeaponCategory.UnarmedStrike;
+                    c.CheckWeaponGroup = true;
+                    c.Group = WeaponFighterGroup.Crossbows;
+                    c.CheckWeaponRangeType = false;
+                    c.RangeType = WeaponRangeType.Melee;
+                    c.ActionsOnInitiator = false;
+                    c.ReduceHPToZero = false;
+                    c.DamageMoreTargetMaxHP = false;
+                    c.CheckDistance = false;
+                    c.DistanceLessEqual = new Feet(); //?
+                    c.AllNaturalAndUnarmed = false;
+                    c.DuelistWeapon = false;
+                    c.NotExtraAttack = false;
+                    c.OnCharge = false;
+                    c.Action = Helpers.CreateActionList(
+                        new ContextActionCombatManeuver() {
+                            Type = CombatManeuver.SunderArmor,
+                            IgnoreConcealment = true,
+                            OnSuccess = Helpers.CreateActionList(),
+                            ReplaceStat = false,
+                            NewStat = StatType.Unknown,
+                            UseKineticistMainStat = false,
+                            UseCastingStat = false,
+                            UseCasterLevelAsBaseAttack = false,
+                            UseBestMentalStat = false,
+                            BatteringBlast = false
+                        }
+                        );
+                });
+                bp.AddComponent<AddInitiatorAttackWithWeaponTrigger>(c => {
+                    c.TriggerBeforeAttack = false;
+                    c.OnlyHit = true;
+                    c.OnMiss = false;
+                    c.OnlyOnFullAttack = false;
+                    c.OnlyOnFirstAttack = false;
+                    c.OnlyOnFirstHit = false;
+                    c.CriticalHit = false;
+                    c.OnAttackOfOpportunity = false;
+                    c.NotCriticalHit = false;
+                    c.OnlySneakAttack = false;
+                    c.NotSneakAttack = false;
+                    c.m_WeaponType = new BlueprintWeaponTypeReference();
+                    c.CheckWeaponCategory = false;
+                    c.Category = WeaponCategory.UnarmedStrike;
+                    c.CheckWeaponGroup = true;
+                    c.Group = WeaponFighterGroup.Crossbows;
+                    c.CheckWeaponRangeType = false;
+                    c.RangeType = WeaponRangeType.Melee;
+                    c.ActionsOnInitiator = true;
+                    c.ReduceHPToZero = false;
+                    c.DamageMoreTargetMaxHP = false;
+                    c.CheckDistance = false;
+                    c.DistanceLessEqual = new Feet(); //?
+                    c.AllNaturalAndUnarmed = false;
+                    c.DuelistWeapon = false;
+                    c.NotExtraAttack = false;
+                    c.OnCharge = false;
+                    c.Action = Helpers.CreateActionList(
+                        new ContextActionRemoveSelf()
+                        );
+                });
+
                 bp.m_AllowNonContextActions = false;
                 bp.Stacking = StackingType.Replace;
             });
@@ -349,6 +503,83 @@ namespace ExpandedContent.Tweaks.Archetypes {
                         new ContextActionRemoveSelf()
                         );
                 });
+
+                bp.AddComponent<AddInitiatorAttackWithWeaponTrigger>(c => {
+                    c.TriggerBeforeAttack = false;
+                    c.OnlyHit = true;
+                    c.OnMiss = false;
+                    c.OnlyOnFullAttack = false;
+                    c.OnlyOnFirstAttack = false;
+                    c.OnlyOnFirstHit = false;
+                    c.CriticalHit = false;
+                    c.OnAttackOfOpportunity = false;
+                    c.NotCriticalHit = false;
+                    c.OnlySneakAttack = false;
+                    c.NotSneakAttack = false;
+                    c.m_WeaponType = new BlueprintWeaponTypeReference();
+                    c.CheckWeaponCategory = false;
+                    c.Category = WeaponCategory.UnarmedStrike;
+                    c.CheckWeaponGroup = true;
+                    c.Group = WeaponFighterGroup.Crossbows;
+                    c.CheckWeaponRangeType = false;
+                    c.RangeType = WeaponRangeType.Melee;
+                    c.ActionsOnInitiator = false;
+                    c.ReduceHPToZero = false;
+                    c.DamageMoreTargetMaxHP = false;
+                    c.CheckDistance = false;
+                    c.DistanceLessEqual = new Feet(); //?
+                    c.AllNaturalAndUnarmed = false;
+                    c.DuelistWeapon = false;
+                    c.NotExtraAttack = false;
+                    c.OnCharge = false;
+                    c.Action = Helpers.CreateActionList(
+                        new ContextActionCombatManeuver() {
+                            Type = CombatManeuver.BullRush,
+                            IgnoreConcealment = true,
+                            OnSuccess = Helpers.CreateActionList(),
+                            ReplaceStat = false,
+                            NewStat = StatType.Unknown,
+                            UseKineticistMainStat = false,
+                            UseCastingStat = false,
+                            UseCasterLevelAsBaseAttack = false,
+                            UseBestMentalStat = false,
+                            BatteringBlast = false
+                        }
+                        );
+                });
+                bp.AddComponent<AddInitiatorAttackWithWeaponTrigger>(c => {
+                    c.TriggerBeforeAttack = false;
+                    c.OnlyHit = true;
+                    c.OnMiss = false;
+                    c.OnlyOnFullAttack = false;
+                    c.OnlyOnFirstAttack = false;
+                    c.OnlyOnFirstHit = false;
+                    c.CriticalHit = false;
+                    c.OnAttackOfOpportunity = false;
+                    c.NotCriticalHit = false;
+                    c.OnlySneakAttack = false;
+                    c.NotSneakAttack = false;
+                    c.m_WeaponType = new BlueprintWeaponTypeReference();
+                    c.CheckWeaponCategory = false;
+                    c.Category = WeaponCategory.UnarmedStrike;
+                    c.CheckWeaponGroup = true;
+                    c.Group = WeaponFighterGroup.Crossbows;
+                    c.CheckWeaponRangeType = false;
+                    c.RangeType = WeaponRangeType.Melee;
+                    c.ActionsOnInitiator = true;
+                    c.ReduceHPToZero = false;
+                    c.DamageMoreTargetMaxHP = false;
+                    c.CheckDistance = false;
+                    c.DistanceLessEqual = new Feet(); //?
+                    c.AllNaturalAndUnarmed = false;
+                    c.DuelistWeapon = false;
+                    c.NotExtraAttack = false;
+                    c.OnCharge = false;
+                    c.Action = Helpers.CreateActionList(
+                        new ContextActionRemoveSelf()
+                        );
+                });
+
                 bp.m_AllowNonContextActions = false;
                 bp.Stacking = StackingType.Replace;
             });
@@ -493,6 +724,88 @@ namespace ExpandedContent.Tweaks.Archetypes {
                         new ContextActionRemoveSelf()
                         );
                 });
+
+                bp.AddComponent<AddInitiatorAttackWithWeaponTrigger>(c => {
+                    c.TriggerBeforeAttack = false;
+                    c.OnlyHit = true;
+                    c.OnMiss = false;
+                    c.OnlyOnFullAttack = false;
+                    c.OnlyOnFirstAttack = false;
+                    c.OnlyOnFirstHit = false;
+                    c.CriticalHit = false;
+                    c.OnAttackOfOpportunity = false;
+                    c.NotCriticalHit = false;
+                    c.OnlySneakAttack = false;
+                    c.NotSneakAttack = false;
+                    c.m_WeaponType = new BlueprintWeaponTypeReference();
+                    c.CheckWeaponCategory = false;
+                    c.Category = WeaponCategory.UnarmedStrike;
+                    c.CheckWeaponGroup = true;
+                    c.Group = WeaponFighterGroup.Crossbows;
+                    c.CheckWeaponRangeType = false;
+                    c.RangeType = WeaponRangeType.Melee;
+                    c.ActionsOnInitiator = false;
+                    c.ReduceHPToZero = false;
+                    c.DamageMoreTargetMaxHP = false;
+                    c.CheckDistance = false;
+                    c.DistanceLessEqual = new Feet(); //?
+                    c.AllNaturalAndUnarmed = false;
+                    c.DuelistWeapon = false;
+                    c.NotExtraAttack = false;
+                    c.OnCharge = false;
+                    c.Action = Helpers.CreateActionList(
+                        new ContextActionCombatManeuver() {
+                            Type = CombatManeuver.Grapple,
+                            IgnoreConcealment = true,
+                            OnSuccess = Helpers.CreateActionList(
+                                new ContextActionApplyBuff() {
+                                    m_Buff = TrickShotGrappleTargetBuff.ToReference<BlueprintBuffReference>(),
+                                    Permanent = true,
+                                }
+                                ),
+                            ReplaceStat = false,
+                            NewStat = StatType.Unknown,
+                            UseKineticistMainStat = false,
+                            UseCastingStat = false,
+                            UseCasterLevelAsBaseAttack = false,
+                            UseBestMentalStat = false,
+                            BatteringBlast = false
+                        }
+                        );
+                });
+                bp.AddComponent<AddInitiatorAttackWithWeaponTrigger>(c => {
+                    c.TriggerBeforeAttack = false;
+                    c.OnlyHit = true;
+                    c.OnMiss = false;
+                    c.OnlyOnFullAttack = false;
+                    c.OnlyOnFirstAttack = false;
+                    c.OnlyOnFirstHit = false;
+                    c.CriticalHit = false;
+                    c.OnAttackOfOpportunity = false;
+                    c.NotCriticalHit = false;
+                    c.OnlySneakAttack = false;
+                    c.NotSneakAttack = false;
+                    c.m_WeaponType = new BlueprintWeaponTypeReference();
+                    c.CheckWeaponCategory = false;
+                    c.Category = WeaponCategory.UnarmedStrike;
+                    c.CheckWeaponGroup = true;
+                    c.Group = WeaponFighterGroup.Crossbows;
+                    c.CheckWeaponRangeType = false;
+                    c.RangeType = WeaponRangeType.Melee;
+                    c.ActionsOnInitiator = true;
+                    c.ReduceHPToZero = false;
+                    c.DamageMoreTargetMaxHP = false;
+                    c.CheckDistance = false;
+                    c.DistanceLessEqual = new Feet(); //?
+                    c.AllNaturalAndUnarmed = false;
+                    c.DuelistWeapon = false;
+                    c.NotExtraAttack = false;
+                    c.OnCharge = false;
+                    c.Action = Helpers.CreateActionList(
+                        new ContextActionRemoveSelf()
+                        );
+                });
+
                 bp.m_AllowNonContextActions = false;
                 bp.Stacking = StackingType.Replace;
             });
@@ -581,6 +894,84 @@ namespace ExpandedContent.Tweaks.Archetypes {
                         new ContextActionRemoveSelf()
                         );
                 });
+
+                bp.AddComponent<AddInitiatorAttackWithWeaponTrigger>(c => {
+                    c.TriggerBeforeAttack = false;
+                    c.OnlyHit = true;
+                    c.OnMiss = false;
+                    c.OnlyOnFullAttack = false;
+                    c.OnlyOnFirstAttack = false;
+                    c.OnlyOnFirstHit = false;
+                    c.CriticalHit = false;
+                    c.OnAttackOfOpportunity = false;
+                    c.NotCriticalHit = false;
+                    c.OnlySneakAttack = false;
+                    c.NotSneakAttack = false;
+                    c.m_WeaponType = new BlueprintWeaponTypeReference();
+                    c.CheckWeaponCategory = false;
+                    c.Category = WeaponCategory.UnarmedStrike;
+                    c.CheckWeaponGroup = true;
+                    c.Group = WeaponFighterGroup.Crossbows;
+                    c.CheckWeaponRangeType = false;
+                    c.RangeType = WeaponRangeType.Melee;
+                    c.ActionsOnInitiator = false;
+                    c.ReduceHPToZero = false;
+                    c.DamageMoreTargetMaxHP = false;
+                    c.CheckDistance = false;
+                    c.DistanceLessEqual = new Feet(); //?
+                    c.AllNaturalAndUnarmed = false;
+                    c.DuelistWeapon = false;
+                    c.NotExtraAttack = false;
+                    c.OnCharge = false;
+                    c.Action = Helpers.CreateActionList(
+                        new ContextActionCombatManeuver() {
+                            Type = CombatManeuver.Trip,
+                            IgnoreConcealment = true,
+                            OnSuccess = Helpers.CreateActionList(),
+                            ReplaceStat = false,
+                            NewStat = StatType.Unknown,
+                            UseKineticistMainStat = false,
+                            UseCastingStat = false,
+                            UseCasterLevelAsBaseAttack = false,
+                            UseBestMentalStat = false,
+                            BatteringBlast = false
+                        }
+                        );
+                });
+                bp.AddComponent<AddInitiatorAttackWithWeaponTrigger>(c => {
+                    c.TriggerBeforeAttack = false;
+                    c.OnlyHit = true;
+                    c.OnMiss = false;
+                    c.OnlyOnFullAttack = false;
+                    c.OnlyOnFirstAttack = false;
+                    c.OnlyOnFirstHit = false;
+                    c.CriticalHit = false;
+                    c.OnAttackOfOpportunity = false;
+                    c.NotCriticalHit = false;
+                    c.OnlySneakAttack = false;
+                    c.NotSneakAttack = false;
+                    c.m_WeaponType = new BlueprintWeaponTypeReference();
+                    c.CheckWeaponCategory = false;
+                    c.Category = WeaponCategory.UnarmedStrike;
+                    c.CheckWeaponGroup = true;
+                    c.Group = WeaponFighterGroup.Crossbows;
+                    c.CheckWeaponRangeType = false;
+                    c.RangeType = WeaponRangeType.Melee;
+                    c.ActionsOnInitiator = true;
+                    c.ReduceHPToZero = false;
+                    c.DamageMoreTargetMaxHP = false;
+                    c.CheckDistance = false;
+                    c.DistanceLessEqual = new Feet(); //?
+                    c.AllNaturalAndUnarmed = false;
+                    c.DuelistWeapon = false;
+                    c.NotExtraAttack = false;
+                    c.OnCharge = false;
+                    c.Action = Helpers.CreateActionList(
+                        new ContextActionRemoveSelf()
+                        );
+                });
+
+
                 bp.m_AllowNonContextActions = false;
                 bp.Stacking = StackingType.Replace;
             });
@@ -868,6 +1259,27 @@ namespace ExpandedContent.Tweaks.Archetypes {
                         ValueRank = AbilityRankType.Default
                     };
                 });
+
+                bp.AddComponent<WeaponGroupAttackBonus>(c => {
+                    c.WeaponGroup = WeaponFighterGroup.Crossbows;
+                    c.AttackBonus = 1;
+                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+                    c.multiplyByContext = true;
+                    c.contextMultiplier = new ContextValue() {
+                        ValueType = ContextValueType.Rank,
+                        ValueRank = AbilityRankType.Default
+                    };
+                });
+                bp.AddComponent<WeaponGroupDamageBonus>(c => {
+                    c.WeaponGroup = WeaponFighterGroup.Crossbows;
+                    c.DamageBonus = 0;
+                    c.Descriptor = ModifierDescriptor.UntypedStackable;
+                    c.AdditionalValue = new ContextValue() {
+                        ValueType = ContextValueType.Rank,
+                        ValueRank = AbilityRankType.Default
+                    };
+                });
+
                 bp.AddComponent<ContextRankConfig>(c => {
                     c.m_Type = AbilityRankType.Default;
                     c.m_BaseValueType = ContextRankBaseValueType.ClassLevel;
@@ -1010,6 +1422,24 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.OnlyOnFirstAttack = true;
                     c.CheckWeaponGroup = true;
                     c.Group = WeaponFighterGroup.Bows;
+                    c.Action = Helpers.CreateActionList(
+                        new ContextActionRangedAttack() {
+                            SelectNewTarget = false,
+                            AutoHit = false,
+                            IgnoreStatBonus = false,
+                            AutoCritThreat = false,
+                            AutoCritConfirmation = false,
+                            ExtraAttack = true,
+                            FullAttack = false,
+                        },
+                        new ContextActionRemoveSelf()
+                        );
+                });
+                bp.AddComponent<AddInitiatorAttackWithWeaponTrigger>(c => {
+                    c.OnlyHit = false;
+                    c.OnlyOnFirstAttack = true;
+                    c.CheckWeaponGroup = true;
+                    c.Group = WeaponFighterGroup.Crossbows;
                     c.Action = Helpers.CreateActionList(
                         new ContextActionRangedAttack() {
                             SelectNewTarget = false,

@@ -734,6 +734,22 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     Helpers.LevelEntry(5, OracleRevelationDragonTalonsAcidLevel2),
                     Helpers.LevelEntry(7, OracleRevelationDragonTalonsAcidLevel3)
                 };
+                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    },
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = ArcanistClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    }
+                };
+                bp.m_Archetypes = new BlueprintProgression.ArchetypeWithLevel[] {
+                    new BlueprintProgression.ArchetypeWithLevel {
+                        m_Archetype = MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>(),
+                        AdditionalLevel = 0
+                    }
+                };
                 bp.AddComponent<PrerequisiteNoFeature>(c => {
                     c.m_Feature = OracleDragonMysteryFlagCold.ToReference<BlueprintFeatureReference>();
                 });
@@ -843,6 +859,22 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     Helpers.LevelEntry(1, OracleDragonMysteryFlagCold, OracleRevelationDragonTalonsColdLevel1),
                     Helpers.LevelEntry(5, OracleRevelationDragonTalonsColdLevel2),
                     Helpers.LevelEntry(7, OracleRevelationDragonTalonsColdLevel3)
+                };
+                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    },
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = ArcanistClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    }
+                };
+                bp.m_Archetypes = new BlueprintProgression.ArchetypeWithLevel[] {
+                    new BlueprintProgression.ArchetypeWithLevel {
+                        m_Archetype = MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>(),
+                        AdditionalLevel = 0
+                    }
                 };
                 bp.AddComponent<PrerequisiteNoFeature>(c => {
                     c.m_Feature = OracleDragonMysteryFlagAcid.ToReference<BlueprintFeatureReference>();
@@ -954,6 +986,22 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     Helpers.LevelEntry(5, OracleRevelationDragonTalonsElectricLevel2),
                     Helpers.LevelEntry(7, OracleRevelationDragonTalonsElectricLevel3)
                 };
+                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    },
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = ArcanistClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    }
+                };
+                bp.m_Archetypes = new BlueprintProgression.ArchetypeWithLevel[] {
+                    new BlueprintProgression.ArchetypeWithLevel {
+                        m_Archetype = MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>(),
+                        AdditionalLevel = 0
+                    }
+                };
                 bp.AddComponent<PrerequisiteNoFeature>(c => {
                     c.m_Feature = OracleDragonMysteryFlagAcid.ToReference<BlueprintFeatureReference>();
                 });
@@ -1063,6 +1111,22 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     Helpers.LevelEntry(1, OracleDragonMysteryFlagFire, OracleRevelationDragonTalonsFireLevel1),
                     Helpers.LevelEntry(5, OracleRevelationDragonTalonsFireLevel2),
                     Helpers.LevelEntry(7, OracleRevelationDragonTalonsFireLevel3)
+                };
+                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    },
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = ArcanistClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    }
+                };
+                bp.m_Archetypes = new BlueprintProgression.ArchetypeWithLevel[] {
+                    new BlueprintProgression.ArchetypeWithLevel {
+                        m_Archetype = MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>(),
+                        AdditionalLevel = 0
+                    }
                 };
                 bp.AddComponent<PrerequisiteNoFeature>(c => {
                     c.m_Feature = OracleDragonMysteryFlagAcid.ToReference<BlueprintFeatureReference>();
@@ -1179,7 +1243,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     c.BeforeThisLevel = true;
                 });
                 bp.HideInUI = false;
-                bp.Ranks = 2;
+                bp.Ranks = 1;
                 bp.IsClassFeature = true;
             });
             var OracleRevelationDraconicResistancesAcidLevel2 = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationDraconicResistancesAcidLevel2", bp => {
@@ -1211,7 +1275,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 });
                 bp.HideInUI = true;
                 bp.HideInCharacterSheetAndLevelUp = true;
-                bp.Ranks = 2;
+                bp.Ranks = 1;
                 bp.IsClassFeature = true;
             });
             var OracleRevelationDraconicResistancesAcidProgress = Helpers.CreateBlueprint<BlueprintProgression>("OracleRevelationDraconicResistancesAcidProgress", bp => {
@@ -1222,6 +1286,22 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.LevelEntries = new LevelEntry[] {
                     Helpers.LevelEntry(1, OracleDragonMysteryFlagAcid, OracleRevelationDraconicResistancesAcidLevel1),
                     Helpers.LevelEntry(9, OracleRevelationDraconicResistancesAcidLevel2)
+                };
+                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    },
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = ArcanistClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    }
+                };
+                bp.m_Archetypes = new BlueprintProgression.ArchetypeWithLevel[] {
+                    new BlueprintProgression.ArchetypeWithLevel {
+                        m_Archetype = MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>(),
+                        AdditionalLevel = 0
+                    }
                 };
                 bp.AddComponent<PrerequisiteNoFeature>(c => {
                     c.m_Feature = OracleDragonMysteryFlagCold.ToReference<BlueprintFeatureReference>();
@@ -1308,7 +1388,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     c.BeforeThisLevel = true;
                 });
                 bp.HideInUI = false;
-                bp.Ranks = 2;
+                bp.Ranks = 1;
                 bp.IsClassFeature = true;
             });
             var OracleRevelationDraconicResistancesColdLevel2 = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationDraconicResistancesColdLevel2", bp => {
@@ -1340,7 +1420,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 });
                 bp.HideInUI = true;
                 bp.HideInCharacterSheetAndLevelUp = true;
-                bp.Ranks = 2;
+                bp.Ranks = 1;
                 bp.IsClassFeature = true;
             });
             var OracleRevelationDraconicResistancesColdProgress = Helpers.CreateBlueprint<BlueprintProgression>("OracleRevelationDraconicResistancesColdProgress", bp => {
@@ -1351,6 +1431,22 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.LevelEntries = new LevelEntry[] {
                     Helpers.LevelEntry(1, OracleDragonMysteryFlagCold, OracleRevelationDraconicResistancesColdLevel1),
                     Helpers.LevelEntry(9, OracleRevelationDraconicResistancesColdLevel2)
+                };
+                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    },
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = ArcanistClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    }
+                };
+                bp.m_Archetypes = new BlueprintProgression.ArchetypeWithLevel[] {
+                    new BlueprintProgression.ArchetypeWithLevel {
+                        m_Archetype = MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>(),
+                        AdditionalLevel = 0
+                    }
                 };
                 bp.AddComponent<PrerequisiteNoFeature>(c => {
                     c.m_Feature = OracleDragonMysteryFlagAcid.ToReference<BlueprintFeatureReference>();
@@ -1438,7 +1534,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     c.BeforeThisLevel = true;
                 });
                 bp.HideInUI = false;
-                bp.Ranks = 2;
+                bp.Ranks = 1;
                 bp.IsClassFeature = true;
             });
             var OracleRevelationDraconicResistancesElectricLevel2 = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationDraconicResistancesElectricLevel2", bp => {
@@ -1470,7 +1566,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 });
                 bp.HideInUI = true;
                 bp.HideInCharacterSheetAndLevelUp = true;
-                bp.Ranks = 2;
+                bp.Ranks = 1;
                 bp.IsClassFeature = true;
             });
             var OracleRevelationDraconicResistancesElectricProgress = Helpers.CreateBlueprint<BlueprintProgression>("OracleRevelationDraconicResistancesElectricProgress", bp => {
@@ -1481,6 +1577,22 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.LevelEntries = new LevelEntry[] {
                     Helpers.LevelEntry(1, OracleDragonMysteryFlagElectric, OracleRevelationDraconicResistancesElectricLevel1),
                     Helpers.LevelEntry(9, OracleRevelationDraconicResistancesElectricLevel2)
+                };
+                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    },
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = ArcanistClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    }
+                };
+                bp.m_Archetypes = new BlueprintProgression.ArchetypeWithLevel[] {
+                    new BlueprintProgression.ArchetypeWithLevel {
+                        m_Archetype = MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>(),
+                        AdditionalLevel = 0
+                    }
                 };
                 bp.AddComponent<PrerequisiteNoFeature>(c => {
                     c.m_Feature = OracleDragonMysteryFlagAcid.ToReference<BlueprintFeatureReference>();
@@ -1567,7 +1679,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     c.BeforeThisLevel = true;
                 });
                 bp.HideInUI = false;
-                bp.Ranks = 2;
+                bp.Ranks = 1;
                 bp.IsClassFeature = true;
             });
             var OracleRevelationDraconicResistancesFireLevel2 = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationDraconicResistancesFireLevel2", bp => {
@@ -1599,7 +1711,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 });
                 bp.HideInUI = true;
                 bp.HideInCharacterSheetAndLevelUp = true;
-                bp.Ranks = 2;
+                bp.Ranks = 1;
                 bp.IsClassFeature = true;
             });
             var OracleRevelationDraconicResistancesFireProgress = Helpers.CreateBlueprint<BlueprintProgression>("OracleRevelationDraconicResistancesFireProgress", bp => {
@@ -1610,6 +1722,22 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.LevelEntries = new LevelEntry[] {
                     Helpers.LevelEntry(1, OracleDragonMysteryFlagFire, OracleRevelationDraconicResistancesFireLevel1),
                     Helpers.LevelEntry(9, OracleRevelationDraconicResistancesFireLevel2)
+                };
+                bp.m_Classes = new BlueprintProgression.ClassWithLevel[] {
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    },
+                    new BlueprintProgression.ClassWithLevel {
+                        m_Class = ArcanistClass.ToReference<BlueprintCharacterClassReference>(),
+                        AdditionalLevel = 0
+                    }
+                };
+                bp.m_Archetypes = new BlueprintProgression.ArchetypeWithLevel[] {
+                    new BlueprintProgression.ArchetypeWithLevel {
+                        m_Archetype = MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>(),
+                        AdditionalLevel = 0
+                    }
                 };
                 bp.AddComponent<PrerequisiteNoFeature>(c => {
                     c.m_Feature = OracleDragonMysteryFlagAcid.ToReference<BlueprintFeatureReference>();

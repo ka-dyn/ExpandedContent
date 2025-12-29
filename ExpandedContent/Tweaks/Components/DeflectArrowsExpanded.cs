@@ -49,7 +49,12 @@ namespace ExpandedContent.Tweaks.Components {
             }
         }
         public static bool IsWeaponABow(HandSlot hand) {
-            return hand.MaybeWeapon != null && (hand.MaybeWeapon.Blueprint.Category == WeaponCategory.Longbow || hand.MaybeWeapon.Blueprint.Category == WeaponCategory.Shortbow);
+            return hand.MaybeWeapon != null && (
+                hand.MaybeWeapon.Blueprint.Category == WeaponCategory.Longbow || 
+                hand.MaybeWeapon.Blueprint.Category == WeaponCategory.Shortbow || 
+                hand.MaybeWeapon.Blueprint.Category == WeaponCategory.LightCrossbow || 
+                hand.MaybeWeapon.Blueprint.Category == WeaponCategory.HeavyCrossbow
+                );
         }
         public static bool IsWeaponAMonkWeapon(HandSlot hand) {
             return hand.MaybeWeapon != null && hand.MaybeWeapon.Blueprint.IsMonk;
