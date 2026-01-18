@@ -520,6 +520,7 @@
     <Compile Include="Tweaks\Monitors\Ssilameshnik.cs" />
     <Compile Include="Tweaks\Monitors\Monad.cs" />
     <Compile Include="Tweaks\Mysteries\ApocalypseMystery.cs" />
+    <Compile Include="Tweaks\Mysteries\GodclawMystery.cs" />
     <Compile Include="Tweaks\Mysteries\LunarMystery.cs" />
     <Compile Include="Tweaks\Mysteries\MetalMystery.cs" />
     <Compile Include="Tweaks\Mysteries\MysteryProperties.cs" />

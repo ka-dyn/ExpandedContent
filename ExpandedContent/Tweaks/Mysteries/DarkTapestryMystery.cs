@@ -296,7 +296,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
             var OracleDarkTapestryMysteryFeature = Helpers.CreateBlueprint<BlueprintFeature>("OracleDarkTapestryMysteryFeature", bp => {
                 bp.m_Icon = DarkTapestryMysteryIcon;
                 bp.SetName("Dark Tapestry");
-                bp.SetDescription("An oracle with the dark tapestry mystery adds {g|Encyclopedia:Knowledge_Arcana}Knowledge (Arcana) {/g}, {g|Encyclopedia:Persuasion}Persuasion{/g} " +
+                bp.SetDescription("An oracle with the dark tapestry mystery adds {g|Encyclopedia:Knowledge_Arcana}Knowledge (arcana) {/g}, {g|Encyclopedia:Persuasion}Persuasion{/g} " +
                     "and {g|Encyclopedia:Stealth}Stealth{/g} to her list of class {g|Encyclopedia:Skills}skills{/g}.");
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
@@ -331,7 +331,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
             var EnlightnedPhilosopherDarkTapestryMysteryFeature = Helpers.CreateBlueprint<BlueprintFeature>("EnlightnedPhilosopherDarkTapestryMysteryFeature", bp => {
                 bp.m_Icon = DarkTapestryMysteryIcon;
                 bp.SetName("Dark Tapestry");
-                bp.SetDescription("An oracle with the dark tapestry mystery adds {g|Encyclopedia:Knowledge_Arcana}Knowledge (Arcana) {/g}, {g|Encyclopedia:Persuasion}Persuasion{/g} " +
+                bp.SetDescription("An oracle with the dark tapestry mystery adds {g|Encyclopedia:Knowledge_Arcana}Knowledge (arcana) {/g}, {g|Encyclopedia:Persuasion}Persuasion{/g} " +
                     "and {g|Encyclopedia:Stealth}Stealth{/g} to her list of class {g|Encyclopedia:Skills}skills{/g}.");
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();

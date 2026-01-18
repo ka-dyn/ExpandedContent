@@ -387,7 +387,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.m_Icon = DraconicMysteryIcon;
                 bp.SetName("Dragon");
                 bp.SetDescription("An oracle with the dragon mystery adds {g|Encyclopedia:Mobility}Mobility{/g}, {g|Encyclopedia:Persuasion}Persuasion{/g}, " +
-                    "{g|Encyclopedia:Perception}Perception{/g} and {g|Encyclopedia:Knowledge_Arcana}Knowledge (Arcana) {/g} to her list of class {g|Encyclopedia:Skills}skills{/g}.");
+                    "{g|Encyclopedia:Perception}Perception{/g} and {g|Encyclopedia:Knowledge_Arcana}Knowledge (arcana) {/g} to her list of class {g|Encyclopedia:Skills}skills{/g}.");
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_AdditionalClasses = new BlueprintCharacterClassReference[] { ArcanistClass.ToReference<BlueprintCharacterClassReference>() };
@@ -421,7 +421,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.m_Icon = DraconicMysteryIcon;
                 bp.SetName("Dragon");
                 bp.SetDescription("An oracle with the dragon mystery adds {g|Encyclopedia:Mobility}Mobility{/g}, {g|Encyclopedia:Persuasion}Persuasion{/g}, " +
-                    "{g|Encyclopedia:Perception}Perception{/g} and {g|Encyclopedia:Knowledge_Arcana}Knowledge (Arcana) {/g} to her list of class {g|Encyclopedia:Skills}skills{/g}.");
+                    "{g|Encyclopedia:Perception}Perception{/g} and {g|Encyclopedia:Knowledge_Arcana}Knowledge (arcana) {/g} to her list of class {g|Encyclopedia:Skills}skills{/g}.");
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
                     c.Level = 2;

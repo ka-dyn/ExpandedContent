@@ -21,6 +21,7 @@ using Kingmaker.UnitLogic.Commands.Base;
 using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Mechanics.Actions;
+using Kingmaker.UnitLogic.Mechanics.Components;
 using Kingmaker.UnitLogic.Mechanics.Properties;
 using Kingmaker.Utility;
 using Kingmaker.Visual.Animation.Kingmaker.Actions;
@@ -80,8 +81,16 @@ namespace ExpandedContent.Tweaks.Domains {
                     c.SpecificSave = false;
                     c.ChooseSave = SavingThrowType.Fortitude;
                     c.SpecificDescriptor = true;
-
+                    c.SpellDescriptor = SpellDescriptor.MindAffecting;
+                    c.m_CheckedFact = new BlueprintUnitFactReference();
                     c.Action = Helpers.CreateActionList(
+                        new ContextActionRemoveSelf()
+                        );
+                });
+                bp.AddComponent<AddFactContextActions>(c => {
+                    c.Activated = Helpers.CreateActionList();
+                    c.Deactivated = Helpers.CreateActionList();
+                    c.NewRound = Helpers.CreateActionList(
                         new ContextActionApplyBuff() {
                             m_Buff = Confusionbuff,
                             UseDurationSeconds = false,
@@ -93,8 +102,7 @@ namespace ExpandedContent.Tweaks.Domains {
                                 m_IsExtendable = true
                             },
                             DurationSeconds = 0
-                        },
-                        new ContextActionRemoveSelf()
+                        }
                         );
                 });
                 bp.m_Icon = FrightfulAspectIcon;

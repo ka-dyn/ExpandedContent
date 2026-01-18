@@ -290,7 +290,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
             var OracleHeavensMysteryFeature = Helpers.CreateBlueprint<BlueprintFeature>("OracleHeavensMysteryFeature", bp => {
                 bp.m_Icon = HeavensMysteryIcon;
                 bp.SetName("Heavens");
-                bp.SetDescription("An oracle with the heavens mystery adds {g|Encyclopedia:Perception}Perception{/g} and {g|Encyclopedia:Knowledge_Arcana}Knowledge (Arcana) {/g} to " +
+                bp.SetDescription("An oracle with the heavens mystery adds {g|Encyclopedia:Perception}Perception{/g} and {g|Encyclopedia:Knowledge_Arcana}Knowledge (arcana) {/g} to " +
                     "her list of class {g|Encyclopedia:Skills}skills{/g}.");
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
@@ -322,7 +322,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
             var EnlightnedPhilosopherHeavensMysteryFeature = Helpers.CreateBlueprint<BlueprintFeature>("EnlightnedPhilosopherHeavensMysteryFeature", bp => {
                 bp.m_Icon = HeavensMysteryIcon;
                 bp.SetName("Heavens");
-                bp.SetDescription("An oracle with the heavens mystery adds {g|Encyclopedia:Perception}Perception{/g} and {g|Encyclopedia:Knowledge_Arcana}Knowledge (Arcana) {/g} to " +
+                bp.SetDescription("An oracle with the heavens mystery adds {g|Encyclopedia:Perception}Perception{/g} and {g|Encyclopedia:Knowledge_Arcana}Knowledge (arcana) {/g} to " +
                     "her list of class {g|Encyclopedia:Skills}skills{/g}.");
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
@@ -413,7 +413,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 //LevelEntry added later                
                 bp.GiveFeaturesForPreviousLevels = true;
             });
-            //Awesome Display
+            #region Awesome Display
             var ScintillatingPatternSpell = Resources.GetBlueprintReference<BlueprintAbilityReference>("4dc60d08c6c4d3c47b413904e4de5ff0");
             var OracleRevelationAwesomeDisplay = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationAwesomeDisplay", bp => {
                 bp.SetName("Awesome Display");
@@ -471,7 +471,8 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.IsClassFeature = true;
             });
             OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationAwesomeDisplay.ToReference<BlueprintFeatureReference>());
-            //Coat of Many Stars
+            #endregion
+            #region Coat of Many Stars
             var EdictOfImpenetrableFortress = Resources.GetBlueprint<BlueprintAbility>("d7741c08ccf699e4a8a8f8ab2ed345f8");
             var OracleRevelationCoatOfManyStarsResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("OracleRevelationCoatOfManyStarsResource", bp => {
                 bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
@@ -786,7 +787,8 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.IsClassFeature = true;
             });
             OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationCoatOfManyStarsFeature.ToReference<BlueprintFeatureReference>());
-            //Dweller in Darkness
+            #endregion
+            #region Dweller in Darkness
             var UndeadType = Resources.GetBlueprint<BlueprintFeature>("734a29b693e9ec346ba2951b27987e33");
             var UndeadMindAffection = Resources.GetBlueprint<BlueprintFeature>("7853143d87baea1429bb409b023edb6b");
             var ConstructType = Resources.GetBlueprint<BlueprintFeature>("fd389783027d63343b4a5634bd81645f");
@@ -1248,7 +1250,8 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.IsClassFeature = true;
             });
             OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationDwellerInTheDarknessFeature.ToReference<BlueprintFeatureReference>());
-            //Guiding Star
+            #endregion
+            #region Guiding Star
             var GuidingStarIcon = AssetLoader.LoadInternal("Skills", "Icon_GuidingStar.png");
             var OracleSpellbook = Resources.GetBlueprint<BlueprintSpellbook>("6c03364712b415941a98f74522a81273");
             var RavenerHunterSpellbook = Resources.GetModBlueprint<BlueprintSpellbook>("RavenerHunterSpellbook");
@@ -1623,7 +1626,8 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.IsClassFeature = true;
             });
             OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationGuidingStarFeature.ToReference<BlueprintFeatureReference>());
-            //Interstallar Void
+            #endregion
+            #region Interstallar Void
             var FreezingNothingness = Resources.GetBlueprint<BlueprintAbility>("89bc94bd06dcf5847bb9e4d6ba1b9767");
             var FatiguedBuff = Resources.GetBlueprintReference<BlueprintBuffReference>("e6f2fc5d73d88064583cb828801212f4");
             var ExhaustedBuff = Resources.GetBlueprintReference<BlueprintBuffReference>("46d1b9cc3d0fd36469a471b047d773a2");
@@ -2155,7 +2159,8 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.IsClassFeature = true;
             });
             OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationInterstallarVoidFeature.ToReference<BlueprintFeatureReference>());
-            //Lure of the Heavens
+            #endregion
+            #region Lure of the Heavens
             var LureOfTheHeavensIcon = AssetLoader.LoadInternal("Skills", "Icon_LureOfTheHeavens.png");
             var OracleRevelationLureOfTheHeavensResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("OracleRevelationLureOfTheHeavensResource", bp => {
                 bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
@@ -2311,7 +2316,8 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.IsClassFeature = true;
             });
             OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationLureOfTheHeavensFeature.ToReference<BlueprintFeatureReference>());
-            //Spray of Shooting Stars
+            #endregion
+            #region Spray of Shooting Stars
             var MoltenOrbSpell = Resources.GetBlueprint<BlueprintAbility>("42a65895ba0cb3a42b6019039dd2bff1");
             var MoltenOrbProjectile = Resources.GetBlueprint<BlueprintProjectile>("49c812020338e90479b54cfc5b1f6305");
             var OracleRevelationSprayOfShootingStarsResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("OracleRevelationSprayOfShootingStarsResource", bp => {
@@ -2752,6 +2758,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.IsClassFeature = true;
             });
             OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationSprayOfShootingStarsFeature.ToReference<BlueprintFeatureReference>());
+            #endregion
 
             //Ravener Hunter Cont.
             var RavenerHunterHeavensRevelationSelection = Helpers.CreateBlueprint<BlueprintFeatureSelection>("RavenerHunterHeavensRevelationSelection", bp => {

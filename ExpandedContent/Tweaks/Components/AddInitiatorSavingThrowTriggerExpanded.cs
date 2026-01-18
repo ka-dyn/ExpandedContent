@@ -1,11 +1,14 @@
 ﻿using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes.Spells;
+using Kingmaker.Blueprints.Facts;
 using Kingmaker.ElementsSystem;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
 using Kingmaker.PubSubSystem;
 using Kingmaker.RuleSystem.Rules;
 using Kingmaker.UnitLogic;
+using Kingmaker.UnitLogic.Buffs.Blueprints;
+using Kingmaker.UnitLogic.Buffs.Components;
 using Kingmaker.UnitLogic.Mechanics.Components;
 using Kingmaker.Utility;
 using System;
@@ -17,8 +20,9 @@ using System.Threading.Tasks;
 namespace ExpandedContent.Tweaks.Components {
 
     [ComponentName("Adding extra conditions on AddInitiatorSavingThrowTrigger")]
+    [AllowedOn(typeof(BlueprintBuff))]
 
-    public class AddInitiatorSavingThrowTriggerExpanded : UnitFactComponentDelegate, IInitiatorRulebookHandler<RuleSavingThrow>, IRulebookHandler<RuleSavingThrow>, ISubscriber, IInitiatorRulebookSubscriber {
+    public class AddInitiatorSavingThrowTriggerExpanded : UnitBuffComponentDelegate, IInitiatorRulebookHandler<RuleSavingThrow>, IRulebookHandler<RuleSavingThrow>, ISubscriber, IInitiatorRulebookSubscriber {
         
         public bool OnlyPass;
         public bool OnlyFail;
@@ -26,6 +30,13 @@ namespace ExpandedContent.Tweaks.Components {
         public SavingThrowType ChooseSave = SavingThrowType.Fortitude;
         public bool SpecificDescriptor;
         public SpellDescriptorWrapper SpellDescriptor;
+        public bool SpellsOnly = false;
+        public bool FromExactSpellLevel = false;
+        public int SpellLevel;
+        public bool OnlyFromCaster = false;
+        public bool OnlyFromFact = false;
+        public BlueprintUnitFactReference m_CheckedFact;
+        public BlueprintUnitFact CheckedFact => m_CheckedFact?.Get();
 
         public ActionList Action;
 
@@ -53,8 +64,21 @@ namespace ExpandedContent.Tweaks.Components {
                 return false;
             }
 
-            if (SpecificDescriptor && evt.Reason.Context.SpellDescriptor.HasAnyFlag(SpellDescriptor)) {
+            if (SpecificDescriptor && !evt.Reason.Context.SpellDescriptor.HasAnyFlag(SpellDescriptor)) {
                 return false;
+            }
+
+            if (SpellsOnly && !evt.Reason.Context.SourceAbility.IsSpell) {
+                return false;
+            }
+            if (FromExactSpellLevel && (evt.Reason.Context.SpellLevel != SpellLevel)) {
+                return false;
+            }
+            if (OnlyFromCaster && (evt.Reason.Caster != Buff.Context.MaybeCaster)) {
+                return false;
+            }
+            if (OnlyFromFact && !evt.Reason.Caster.HasFact(CheckedFact)) { 
+                return false; 
             }
 
             return true;
