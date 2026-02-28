@@ -12,6 +12,9 @@ using Kingmaker.Blueprints.Items.Armors;
 using Kingmaker.Blueprints.Items.Weapons;
 using Kingmaker.Craft;
 using Kingmaker.Designers.EventConditionActionSystem.Actions;
+using Kingmaker.Designers.EventConditionActionSystem.Conditions;
+using Kingmaker.Designers.EventConditionActionSystem.Evaluators;
+using Kingmaker.Designers.Mechanics.Buffs;
 using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.ElementsSystem;
 using Kingmaker.EntitySystem.Stats;
@@ -430,8 +433,195 @@ namespace ExpandedContent.Tweaks.Mysteries {
             });
 
 
-            #region Armored Mind 
-            //Maybe change to all heavy armor
+            #region Armored Mind [Needs Testing]
+            var DivinationSchool = Resources.GetBlueprint<BlueprintProgression>("d7d18ce5c24bd324d96173fdc3309646");
+            var OracleRevelationArmoredMindSubBuff = Helpers.CreateBuff("OracleRevelationArmoredMindSubBuff", bp => {
+                bp.SetName("Armored Mind Stat Buff");
+                bp.SetDescription("");
+                bp.AddComponent<SavingThrowContextBonusAgainstDescriptor>(c => {
+                    c.SpellDescriptor = SpellDescriptor.MindAffecting;
+                    c.ModifierDescriptor = ModifierDescriptor.UntypedStackable;
+                    c.Value = new ContextValue() {
+                        ValueType = ContextValueType.Rank,
+                        ValueRank = AbilityRankType.Default
+                    };
+                    bp.AddComponent<ContextRankConfig>(c => {
+                        c.m_Type = AbilityRankType.Default;
+                        c.m_BaseValueType = ContextRankBaseValueType.SummClassLevelWithArchetype;
+                        c.m_Progression = ContextRankProgression.Custom;
+                        c.m_CustomProgression = new ContextRankConfig.CustomProgressionItem[] {
+                            new ContextRankConfig.CustomProgressionItem(){ BaseValue = 10, ProgressionValue = 2 },
+                            new ContextRankConfig.CustomProgressionItem(){ BaseValue = 100, ProgressionValue = 4 }
+                        };
+                        c.m_Class = new BlueprintCharacterClassReference[] {
+                            OracleClass.ToReference<BlueprintCharacterClassReference>(),
+                            ArcanistClass.ToReference<BlueprintCharacterClassReference>(),
+                        };
+                        c.Archetype = MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>();
+                    });
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = false;
+                bp.m_Flags = BlueprintBuff.Flags.HiddenInUi | BlueprintBuff.Flags.StayOnDeath;
+                bp.Stacking = StackingType.Replace;
+            });
+            var OracleRevelationArmoredMindBuff = Helpers.CreateBuff("OracleRevelationArmoredMindBuff", bp => {
+                bp.SetName("Armored Mind Tracking Buff");
+                bp.SetDescription("");
+                bp.AddComponent<RecalculateOnStatChange>(c => {
+                    c.UseKineticistMainStat = false;
+                    c.Stat = StatType.AC;
+                });
+                bp.AddComponent<AddFactContextActions>(c => {
+                    c.Activated = Helpers.CreateActionList(
+                        new Conditional() {
+                            ConditionsChecker = new ConditionsChecker() {
+                                Operation = Operation.And,
+                                Conditions = new Condition[] {
+                                    new UnitArmor() {
+                                        Not = false,
+                                        Unit = new FactOwner(),
+                                        IncludeArmorCategories = new ArmorProficiencyGroup[] { ArmorProficiencyGroup.Heavy },
+                                        ExcludeArmorCategories = new ArmorProficiencyGroup[0] { }
+                                    }
+                                }
+                            },
+                            IfTrue = Helpers.CreateActionList(
+                                new AddFact() {
+                                    Unit = new FactOwner(),
+                                    m_Fact = OracleRevelationArmoredMindSubBuff.ToReference<BlueprintUnitFactReference>()
+                                }
+                            ),
+                            IfFalse = Helpers.CreateActionList()
+                        }
+                    );
+                    c.Deactivated = Helpers.CreateActionList(
+                        new RemoveFact() {
+                            Unit = new FactOwner(),
+                            m_Fact = OracleRevelationArmoredMindSubBuff.ToReference<BlueprintUnitFactReference>()
+                        }
+                    );
+                    c.NewRound = Helpers.CreateActionList();
+                });
+                bp.m_Flags = BlueprintBuff.Flags.HiddenInUi | BlueprintBuff.Flags.StayOnDeath;
+                bp.Stacking = StackingType.Replace;
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = false;
+            });
+            var OracleRevelationArmoredMindAbilityBuff = Helpers.CreateBuff("OracleRevelationArmoredMindAbilityBuff", bp => {
+                bp.SetName("Armored Mind");
+                bp.SetDescription("As a free action you may activate your armored mind, you reroll the next failed Will saving throw against a mind-affecting effect and choose the " +
+                    "more favorable result.");
+                bp.m_Icon = DivinationSchool.m_Icon;
+                bp.AddComponent<ModifyD20>(c => {
+                    c.Rule = RuleType.SavingThrow;
+                    c.DispellMagicCheckType = RuleDispelMagic.CheckType.None;
+                    c.RollsAmount = 1;
+                    c.TakeBest = true;
+                    c.RollResult = new ContextValue();
+                    c.AddBonus = false;
+                    c.Bonus = new ContextValue();
+                    c.BonusDescriptor = ModifierDescriptor.None;
+                    c.WithChance = false;
+                    c.Chance = new ContextValue();
+                    c.RerollOnlyIfFailed = true;
+                    c.RerollOnlyIfSuccess = false;
+                    c.RollCondition = ModifyD20.RollConditionType.None;
+                    c.ValueToCompareRoll = new ContextValue();
+                    c.DispellOnRerollFinished = true;
+                    c.DispellOn20 = false;
+                    c.AgainstAlignment = false;
+                    c.Alignment = AlignmentComponent.None;
+                    c.TargetAlignment = false;
+                    c.SpecificSkill = false;
+                    c.Skill = new StatType[] { };
+                    c.Value = new ContextValue();
+                    c.m_SavingThrowType = FlaggedSavingThrowType.Will;
+                    c.SpecificDescriptor = true;
+                    c.SpellDescriptor = SpellDescriptor.MindAffecting;
+                });
+                bp.m_AllowNonContextActions = false;
+                bp.m_Flags = BlueprintBuff.Flags.RemoveOnRest;
+                bp.Stacking = StackingType.Replace;
+            });
+
+            var OracleRevelationArmoredMindAbility = Helpers.CreateBlueprint<BlueprintAbility>("OracleRevelationArmoredMindAbility", bp => {
+                bp.SetName("Armored Mind");
+                bp.SetDescription("As a free action you may activate your armored mind, you reroll the next failed Will saving throw against a mind-affecting effect and choose the " +
+                    "more favorable result.");
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = OracleRevelationArmoredMindAbilityBuff.ToReference<BlueprintBuffReference>(),
+                            Permanent = true,
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                BonusValue = 0,
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                m_IsExtendable = true
+                            },
+                            DurationSeconds = 0
+                        });
+                });
+                bp.m_Icon = DivinationSchool.Icon;
+                bp.Type = AbilityType.Supernatural;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.SpellResistance = false;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Omni;
+                bp.ActionType = UnitCommand.CommandType.Free;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
+
+            var OracleRevelationArmoredMindFeature = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationArmoredMindFeature", bp => {
+                bp.SetName("Armored Mind");
+                bp.SetDescription("While you are wearing heavy armor, you gain a +2 bonus on Will saving throws to resist mind-affecting effects. " +
+                    "\nOnce per day at 7th level, you can reroll the next Will saving throw against a mind-affecting effect and choose the more favorable result. " +
+                    "\nAt 11th level, the bonus on Will saving throws increases to +4.");
+                bp.AddComponent<HasArmorFeatureUnlock>(c => {
+                    c.m_NewFact = OracleRevelationArmoredMindBuff.ToReference<BlueprintUnitFactReference>();
+                    c.FilterByBlueprintArmorTypes = false;
+                    c.m_BlueprintArmorTypes = new BlueprintArmorTypeReference[] { };
+                    c.FilterByArmorProficiencyGroup = true;
+                    c.m_ArmorProficiencyGroupEntries = ArmorProficiencyGroupFlag.Heavy;
+                    c.m_DisableWhenHasShield = false;
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_AdditionalClasses = new BlueprintCharacterClassReference[] {
+                        ArcanistClass.ToReference<BlueprintCharacterClassReference>()
+                    };
+                    c.m_Archetypes = new BlueprintArchetypeReference[] {
+                        MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>()
+                    };
+                    c.Level = 7;
+                    c.m_Feature = OracleRevelationArmoredMindAbility.ToReference<BlueprintFeatureReference>();
+                    c.BeforeThisLevel = false;
+                });
+                bp.AddComponent<PrerequisiteFeaturesFromList>(c => {
+                    c.m_Features = new BlueprintFeatureReference[] {
+                        OracleGodclawMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        EnlightnedPhilosopherGodclawMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        DivineHerbalistGodclawMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        OceansEchoGodclawMysteryFeature.ToReference<BlueprintFeatureReference>()
+                    };
+                    c.Amount = 1;
+                });
+                bp.Groups = new FeatureGroup[] { FeatureGroup.OracleRevelation };
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+            OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationArmoredMindFeature.ToReference<BlueprintFeatureReference>());
             #endregion
             #region Boon of Bravery 
 
