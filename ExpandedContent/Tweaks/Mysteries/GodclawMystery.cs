@@ -508,9 +508,18 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = false;
             });
+            var OracleRevelationArmoredMindResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("OracleRevelationArmoredMindResource", bp => {
+                bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
+                    BaseValue = 1,
+                    IncreasedByLevel = false,
+                    IncreasedByStat = false,
+                    ResourceBonusStat = StatType.Charisma,
+                };
+            });
+
             var OracleRevelationArmoredMindAbilityBuff = Helpers.CreateBuff("OracleRevelationArmoredMindAbilityBuff", bp => {
                 bp.SetName("Armored Mind");
-                bp.SetDescription("As a free action you may activate your armored mind, you reroll the next failed Will saving throw against a mind-affecting effect and choose the " +
+                bp.SetDescription("Once per day, as a free action you may activate your armored mind, you reroll the next failed Will saving throw against a mind-affecting effect and choose the " +
                     "more favorable result.");
                 bp.m_Icon = DivinationSchool.m_Icon;
                 bp.AddComponent<ModifyD20>(c => {
@@ -547,7 +556,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
 
             var OracleRevelationArmoredMindAbility = Helpers.CreateBlueprint<BlueprintAbility>("OracleRevelationArmoredMindAbility", bp => {
                 bp.SetName("Armored Mind");
-                bp.SetDescription("As a free action you may activate your armored mind, you reroll the next failed Will saving throw against a mind-affecting effect and choose the " +
+                bp.SetDescription("Once per day, as a free action you may activate your armored mind, you reroll the next failed Will saving throw against a mind-affecting effect and choose the " +
                     "more favorable result.");
                 bp.AddComponent<AbilityEffectRunAction>(c => {
                     c.SavingThrowType = SavingThrowType.Unknown;
@@ -565,6 +574,10 @@ namespace ExpandedContent.Tweaks.Mysteries {
                             },
                             DurationSeconds = 0
                         });
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = OracleRevelationArmoredMindResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
                 });
                 bp.m_Icon = DivinationSchool.Icon;
                 bp.Type = AbilityType.Supernatural;
@@ -608,6 +621,11 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     c.m_Feature = OracleRevelationArmoredMindAbility.ToReference<BlueprintFeatureReference>();
                     c.BeforeThisLevel = false;
                 });
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = OracleRevelationArmoredMindResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+
                 bp.AddComponent<PrerequisiteFeaturesFromList>(c => {
                     c.m_Features = new BlueprintFeatureReference[] {
                         OracleGodclawMysteryFeature.ToReference<BlueprintFeatureReference>(),
