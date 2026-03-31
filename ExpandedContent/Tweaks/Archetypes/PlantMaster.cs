@@ -338,8 +338,8 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 c.m_Progression = ContextRankProgression.Custom;
                 c.m_CustomProgression = new ContextRankConfig.CustomProgressionItem[] {
                     new ContextRankConfig.CustomProgressionItem(){ BaseValue = 1, ProgressionValue = 2 },
-                    new ContextRankConfig.CustomProgressionItem(){ BaseValue = 2, ProgressionValue = 3 },
-                    new ContextRankConfig.CustomProgressionItem(){ BaseValue = 3, ProgressionValue = 4 }
+                    new ContextRankConfig.CustomProgressionItem(){ BaseValue = 2, ProgressionValue = 4 },
+                    new ContextRankConfig.CustomProgressionItem(){ BaseValue = 3, ProgressionValue = 6 }
                 };
             });
             var PlantFocusBramblesEffect = Helpers.CreateBlueprint<BlueprintFeature>("PlantFocusBramblesEffect", bp => {

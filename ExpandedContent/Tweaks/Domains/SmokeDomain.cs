@@ -83,8 +83,10 @@ namespace ExpandedContent.Tweaks.Domains {
                     c.Descriptor = ModifierDescriptor.Penalty;
                     c.Value = -2;
                 });
-                bp.AddComponent<AddAttackBonus>(c => {
-                    c.Bonus = -2;
+                bp.AddComponent<AddStatBonus>(c => {
+                    c.Stat = StatType.AdditionalAttackBonus;
+                    c.Descriptor = ModifierDescriptor.Penalty;
+                    c.Value = -2;
                 });
                 bp.FxOnStart = BlurBuff.FxOnStart; //blur
                 bp.m_AllowNonContextActions = false;
@@ -101,8 +103,10 @@ namespace ExpandedContent.Tweaks.Domains {
                     c.Descriptor = ModifierDescriptor.Penalty;
                     c.Value = -2;
                 });
-                bp.AddComponent<AddAttackBonus>(c => {
-                    c.Bonus = -2;
+                bp.AddComponent<AddStatBonus>(c => {
+                    c.Stat = StatType.AdditionalAttackBonus;
+                    c.Descriptor = ModifierDescriptor.Penalty;
+                    c.Value = -2;
                 });
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = false;
