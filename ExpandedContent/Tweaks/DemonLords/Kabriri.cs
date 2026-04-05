@@ -69,7 +69,7 @@ namespace ExpandedContent.Tweaks.DemonLords {
                     DeityTools.SeparatistDomainAllowed.WhimsyDomainAllowedSeparatist,//Chaos
                     DeityTools.SeparatistDomainAllowed.WindDomainAllowedSeparatist
                 );
-
+            KabririFeature.HideNotAvailibleInUI = false;
         }
                 
             

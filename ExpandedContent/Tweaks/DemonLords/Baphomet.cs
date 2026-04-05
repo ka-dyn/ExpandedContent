@@ -72,7 +72,7 @@ namespace ExpandedContent.Tweaks.DemonLords {
                     DeityTools.SeparatistDomainAllowed.WhimsyDomainAllowedSeparatist,//Chaos
                     DeityTools.SeparatistDomainAllowed.WindDomainAllowedSeparatist
                 );
-
+            BaphometFeature.HideNotAvailibleInUI = false;
         }
     }
 

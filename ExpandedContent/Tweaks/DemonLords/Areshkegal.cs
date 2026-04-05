@@ -68,6 +68,7 @@ namespace ExpandedContent.Tweaks.DemonLords {
                     DeityTools.SeparatistDomainAllowed.StormDomainAllowedSeparatist,
                     DeityTools.SeparatistDomainAllowed.WhimsyDomainAllowedSeparatist//Chaos
                 );
+            AreshkegalFeature.HideNotAvailibleInUI = false;
         }
 
 

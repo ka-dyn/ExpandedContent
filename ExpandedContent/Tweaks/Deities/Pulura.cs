@@ -95,7 +95,7 @@ namespace ExpandedContent.Tweaks.Deities {
 
             PuluraFeature.DisallowNewMantisZealot();
             PuluraFeature.MagicDeceiverLock();
-
+            PuluraFeature.HideNotAvailibleInUI = false;
             PuluraFeature.RemoveComponents<PrerequisiteNoFeature>();
             var EmpyrealLordSelection = Resources.GetModBlueprint<BlueprintFeatureSelection>("EmpyrealLordSelection");
 
