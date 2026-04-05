@@ -1,5 +1,6 @@
 ﻿using BlueprintCore.Blueprints.CustomConfigurators.UnitLogic.Abilities;
 using ExpandedContent.Extensions;
+using ExpandedContent.Tweaks.Classes;
 using ExpandedContent.Tweaks.Components;
 using ExpandedContent.Tweaks.Deities;
 using ExpandedContent.Utilities;
@@ -229,7 +230,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 });
             });
             #endregion
-            #region Final Revelation
+            #region Final Revelation [Needs Testing]
             var ClashingRocksSpell = Resources.GetBlueprint<BlueprintAbility>("01300baad090d634cb1a1b2defe068d6");
             var OracleGodclawFinalRevelationResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("OracleGodclawFinalRevelationResource", bp => {
                 bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
@@ -625,7 +626,6 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     c.m_Resource = OracleRevelationArmoredMindResource.ToReference<BlueprintAbilityResourceReference>();
                     c.RestoreAmount = true;
                 });
-
                 bp.AddComponent<PrerequisiteFeaturesFromList>(c => {
                     c.m_Features = new BlueprintFeatureReference[] {
                         OracleGodclawMysteryFeature.ToReference<BlueprintFeatureReference>(),
@@ -641,19 +641,149 @@ namespace ExpandedContent.Tweaks.Mysteries {
             });
             OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationArmoredMindFeature.ToReference<BlueprintFeatureReference>());
             #endregion
-            #region Boon of Bravery 
+            #region Boon of Bravery [Needs Testing]
+            var RemoveFearBuffIcon = Resources.GetBlueprint<BlueprintBuff>("c5c86809a1c834e42a2eb33133e90a28").m_Icon;
+            var OracleRevelationBoonOfBraveryResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("OracleRevelationBoonOfBraveryResource", bp => {
+                bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
+                    BaseValue = 0,
+                    IncreasedByLevel = false,
+                    IncreasedByLevelStartPlusDivStep = true,
+                    m_ClassDiv = new BlueprintCharacterClassReference[] {
+                        OracleClass.ToReference<BlueprintCharacterClassReference>(),
+                        ArcanistClass.ToReference<BlueprintCharacterClassReference>(),
+                    },
+                    m_ArchetypesDiv = new BlueprintArchetypeReference[] {
+                        MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>(),
+                    },
+                    StartingLevel = 0,
+                    StartingIncrease = 1,
+                    PerStepIncrease = 1,
+                    LevelStep = 5
+                };
+            });
 
+            var OracleRevelationBoonOfBraveryBuff = Helpers.CreateBuff("OracleRevelationBoonOfBraveryBuff", bp => {
+                bp.SetName("Boon of Bravery");
+                bp.SetDescription("You gain a +1 morale bonus on attack rolls, damage rolls, and will saving throws against fear effects for a number of rounds equal to your Charisma bonus. " +
+                    "At 7th level, this bonus increases to +2, and at 14th level this bonus increases to +3.");
+                bp.AddComponent<AddContextStatBonus>(c => {
+                    c.Stat = StatType.AdditionalAttackBonus;
+                    c.Value = new ContextValue() {
+                        ValueType = ContextValueType.Rank,
+                        ValueRank = AbilityRankType.Default
+                    };
+                    c.Descriptor = ModifierDescriptor.Morale;
+                });
+                bp.AddComponent<AddContextStatBonus>(c => {
+                    c.Stat = StatType.AdditionalDamage;
+                    c.Value = new ContextValue() {
+                        ValueType = ContextValueType.Rank,
+                        ValueRank = AbilityRankType.Default
+                    };
+                    c.Descriptor = ModifierDescriptor.Morale;
+                });
+                bp.AddComponent<SavingThrowBonusAgainstDescriptor>(c => {
+                    c.SpellDescriptor = SpellDescriptor.Fear;
+                    c.ModifierDescriptor = ModifierDescriptor.Morale;
+                    c.Value = 0;
+                    c.Bonus = new ContextValue() {
+                        ValueType = ContextValueType.Rank,
+                        ValueRank = AbilityRankType.Default
+                    };
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.SummClassLevelWithArchetype;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.StartPlusDivStep;
+                    c.m_StartLevel = 0;
+                    c.m_StepLevel = 7;
+                    c.m_UseMax = true;
+                    c.m_Max = 3;
+                    c.m_Class = new BlueprintCharacterClassReference[] {
+                        OracleClass.ToReference<BlueprintCharacterClassReference>(),
+                        ArcanistClass.ToReference<BlueprintCharacterClassReference>(),
+                    };
+                    c.Archetype = MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.m_AdditionalArchetypes = new BlueprintArchetypeReference[] { };
+                });
+                bp.m_Icon = RemoveFearBuffIcon;
+            });
 
-
-
+            var OracleRevelationBoonOfBraveryAbility = Helpers.CreateBlueprint<BlueprintAbility>("OracleRevelationBoonOfBraveryAbility", bp => {
+                bp.SetName("Boon of Bravery");
+                bp.SetDescription("As a move action, you can call upon your deities to grant you courage. " +
+                    "You gain a +1 morale bonus on attack rolls, damage rolls, and will saving throws against fear effects for a number of rounds equal to your Charisma bonus. " +
+                    "At 7th level, this bonus increases to +2, and at 14th level this bonus increases to +3. You can use this ability once per day, plus one additional time per " +
+                    "day at 5th level, and every 5 levels thereafter.");
+                bp.AddComponent<AbilityEffectRunAction>(c => {
+                    c.SavingThrowType = SavingThrowType.Unknown;
+                    c.Actions = Helpers.CreateActionList(
+                        new ContextActionApplyBuff() {
+                            m_Buff = OracleRevelationBoonOfBraveryBuff.ToReference<BlueprintBuffReference>(),
+                            UseDurationSeconds = false,
+                            DurationValue = new ContextDurationValue() {
+                                Rate = DurationRate.Rounds,
+                                BonusValue = new ContextValue() {
+                                    ValueType = ContextValueType.Rank,
+                                    ValueRank = AbilityRankType.Default
+                                },
+                                DiceType = DiceType.Zero,
+                                DiceCountValue = 0,
+                                m_IsExtendable = true
+                            },
+                            DurationSeconds = 0
+                        });
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.StatBonus;
+                    c.m_Stat = StatType.Charisma;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.AsIs;
+                    c.m_StartLevel = 0;
+                    c.m_StepLevel = 0;
+                    c.m_UseMin = true;
+                    c.m_Min = 0;
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = OracleRevelationArmoredMindResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<CraftInfoComponent>(c => {
+                    c.SavingThrow = CraftSavingThrow.None;
+                    c.AOEType = CraftAOE.None;
+                    c.SpellType = CraftSpellType.Buff;
+                });
+                bp.m_Icon = RemoveFearBuffIcon;
+                bp.Type = AbilityType.Extraordinary;
+                bp.Range = AbilityRange.Personal;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = false;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = true;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.None;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Touch;
+                bp.ActionType = UnitCommand.CommandType.Move;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = Helpers.CreateString("OracleRevelationBoonOfBraveryAbility.Duration", "1 round");
+                bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
+            });
             var OracleRevelationBoonOfBraveryFeature = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationBoonOfBraveryFeature", bp => {
                 bp.SetName("Boon of Bravery");
                 bp.SetDescription("As a move action, you can call upon your deities to grant you courage. " +
-                    "You gain a +1 morale bonus on attack rolls, damage rolls, and Will saving throws against fear effects for a number of rounds equal to your Charisma bonus. " +
+                    "You gain a +1 morale bonus on attack rolls, damage rolls, and will saving throws against fear effects for a number of rounds equal to your Charisma bonus. " +
                     "At 7th level, this bonus increases to +2, and at 14th level this bonus increases to +3. You can use this ability once per day, plus one additional time per " +
                     "day at 5th level, and every 5 levels thereafter.");
-                
-
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { OracleRevelationBoonOfBraveryAbility.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = OracleRevelationBoonOfBraveryResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
                 bp.AddComponent<PrerequisiteFeaturesFromList>(c => {
                     c.m_Features = new BlueprintFeatureReference[] {
                         OracleGodclawMysteryFeature.ToReference<BlueprintFeatureReference>(),
@@ -663,6 +793,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     };
                     c.Amount = 1;
                 });
+                bp.m_Icon = RemoveFearBuffIcon;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.OracleRevelation };
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = true;

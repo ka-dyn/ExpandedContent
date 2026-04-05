@@ -88,7 +88,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
 
 
 
-
+            #region Breath Attack Stuff
             var WyrmSingerBreathWeaponBuffAcid = Helpers.CreateBuff("WyrmSingerBreathWeaponBuffAcid", bp => {
                 bp.SetName("Grant Breath Weapon - Acid");
                 bp.SetDescription("A wyrm singer can grant a breath weapon attack to himself or an ally affected by his draconic rage raging song. Using the breath weapon is a standard " +
@@ -1390,7 +1390,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.Ranks = 1;
                 bp.IsClassFeature = true;
             });
-
+            #endregion
             var InspiredRageAddFactContextActions = Resources.GetBlueprint<BlueprintBuff>("75b3978757908d24aaaecaf2dc209b89").GetComponents<AddFactContextActions>();
             var InspiredRageAddFactsFromCaster = Resources.GetBlueprint<BlueprintBuff>("75b3978757908d24aaaecaf2dc209b89").GetComponent<AddFactsFromCaster>();
             var WyrmSingerMythicDraconicRageEffectBuff = Helpers.CreateBlueprint<BlueprintBuff>("WyrmSingerMythicDraconicRageEffectBuff", bp => {
