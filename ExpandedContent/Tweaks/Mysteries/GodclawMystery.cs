@@ -32,6 +32,7 @@ using Kingmaker.UnitLogic.Abilities.Components;
 using Kingmaker.UnitLogic.Abilities.Components.AreaEffects;
 using Kingmaker.UnitLogic.Abilities.Components.CasterCheckers;
 using Kingmaker.UnitLogic.Abilities.Components.TargetCheckers;
+using Kingmaker.UnitLogic.ActivatableAbilities;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.Buffs.Components;
 using Kingmaker.UnitLogic.Commands.Base;
@@ -757,7 +758,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     c.SpellType = CraftSpellType.Buff;
                 });
                 bp.m_Icon = RemoveFearBuffIcon;
-                bp.Type = AbilityType.Extraordinary;
+                bp.Type = AbilityType.Supernatural;
                 bp.Range = AbilityRange.Personal;
                 bp.CanTargetPoint = false;
                 bp.CanTargetEnemies = false;
@@ -765,10 +766,10 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.CanTargetSelf = true;
                 bp.EffectOnAlly = AbilityEffectOnUnit.None;
                 bp.EffectOnEnemy = AbilityEffectOnUnit.None;
-                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Touch;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.SelfTouch;
                 bp.ActionType = UnitCommand.CommandType.Move;
                 bp.AvailableMetamagic = 0;
-                bp.LocalizedDuration = Helpers.CreateString("OracleRevelationBoonOfBraveryAbility.Duration", "1 round");
+                bp.LocalizedDuration = new Kingmaker.Localization.LocalizedString();
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
             var OracleRevelationBoonOfBraveryFeature = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationBoonOfBraveryFeature", bp => {
@@ -800,15 +801,171 @@ namespace ExpandedContent.Tweaks.Mysteries {
             });
             OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationBoonOfBraveryFeature.ToReference<BlueprintFeatureReference>());
             #endregion
-            #region Boon of the Defender 
+            #region Boon of the Defender [Needs Testing]
+            var OracleRevelationBoonOfTheDefenderIcon = AssetLoader.LoadInternal("Skills", "Icon_OracleRevelationBoonOfTheDefender.jpg");
+            var OracleRevelationBoonOfTheDefenderResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("OracleRevelationBoonOfTheDefenderResource", bp => {
+                bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
+                    BaseValue = 1,
+                    IncreasedByLevel = false,
+                    IncreasedByLevelStartPlusDivStep = true,
+                    m_ClassDiv = new BlueprintCharacterClassReference[] {
+                        OracleClass.ToReference<BlueprintCharacterClassReference>(),
+                        ArcanistClass.ToReference<BlueprintCharacterClassReference>()
+                    },
+                    m_ArchetypesDiv = new BlueprintArchetypeReference[] {
+                        MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>()
+                    },
+                    StartingLevel = 4,
+                    LevelStep = 2,
+                    StartingIncrease = 1,
+                    PerStepIncrease = 1,
+                };
+            });
+            var OracleRevelationBoonOfTheDefenderBuff = Helpers.CreateBuff("OracleRevelationBoonOfTheDefenderBuff", bp => {
+                bp.SetName("Boon of the Defender");
+                bp.SetDescription("As a standard action, you can form a shield around you that blocks incoming attacks for a number of minutes equal to " +
+                    "1/2 your oracle level (minimum 1). The shield grants a +4 deflection bonus to your Armor Class. At 7th level, and again at 11th level and 15th level, " +
+                    "this bonus increases by +1. At 19th level, the shield also grants you DR 2/chaos. The shield’s duration does not need to be consecutive, but it must be spent in 1-minute increments.");
+                bp.m_Icon = OracleRevelationBoonOfTheDefenderIcon;
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.SummClassLevelWithArchetype;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.DelayedStartPlusDivStep;
+                    c.m_StartLevel = 7;
+                    c.m_StepLevel = 4;
+                    c.m_UseMax = true;
+                    c.m_Max = 3;
+                    c.m_Class = new BlueprintCharacterClassReference[] {
+                        OracleClass.ToReference<BlueprintCharacterClassReference>(),
+                        ArcanistClass.ToReference<BlueprintCharacterClassReference>(),
+                    };
+                    c.Archetype = MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>();
+                });
+                bp.AddComponent<ContextCalculateSharedValue>(c => {//+4
+                    c.ValueType = AbilitySharedValue.StatBonus;
+                    c.Value = new ContextDiceValue() {
+                        DiceType = DiceType.One,
+                        DiceCountValue = 4,
+                        BonusValue = new ContextValue() {
+                            ValueType = ContextValueType.Rank,
+                            Value = 0,
+                            ValueRank = AbilityRankType.Default,
+                            ValueShared = AbilitySharedValue.Damage,
+                            Property = UnitProperty.None
+                        }
+                    };
+                    c.Modifier = 1;
+                });
+                bp.AddComponent<AddContextStatBonus>(c => {
+                    c.Descriptor = ModifierDescriptor.Deflection;
+                    c.Stat = StatType.AC;
+                    c.Multiplier = 1;
+                    c.Value = new ContextValue() {
+                        ValueType = ContextValueType.Shared,
+                        ValueShared = AbilitySharedValue.StatBonus
+                    };
+                    c.HasMinimal = false;
+                    c.Minimal = 0;
+                });
 
-            var OracleRevelationBoonOfDefenderFeature = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationBoonOfDefenderFeature", bp => {
-                bp.SetName("Boon of Defender");
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.DamageDice;
+                    c.m_BaseValueType = ContextRankBaseValueType.SummClassLevelWithArchetype;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.DelayedStartPlusDivStep;
+                    c.m_StartLevel = 19;
+                    c.m_StepLevel = 2;
+                    c.m_UseMax = true;
+                    c.m_Max = 1;
+                    c.m_Class = new BlueprintCharacterClassReference[] {
+                        OracleClass.ToReference<BlueprintCharacterClassReference>(),
+                        ArcanistClass.ToReference<BlueprintCharacterClassReference>(),
+                    };
+                    c.Archetype = MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>();
+                });
+                bp.AddComponent<ContextCalculateSharedValue>(c => {//X2
+                    c.ValueType = AbilitySharedValue.DamageBonus;
+                    c.Value = new ContextDiceValue() {
+                        DiceType = DiceType.Zero,
+                        DiceCountValue = new ContextValue() {
+                            ValueType = ContextValueType.Simple,
+                            Value = 0,
+                            ValueRank = AbilityRankType.Default,
+                            ValueShared = AbilitySharedValue.Damage,
+                            Property = UnitProperty.None
+                        },
+                        BonusValue = new ContextValue() {
+                            ValueType = ContextValueType.Rank,
+                            Value = 0,
+                            ValueRank = AbilityRankType.DamageDice,
+                            ValueShared = AbilitySharedValue.Damage,
+                            Property = UnitProperty.None
+                        }
+                    };
+                    c.Modifier = 2;
+                });
+                bp.AddComponent<AddDamageResistancePhysical>(c => {
+                    c.Value = new ContextValue() {
+                        ValueType = ContextValueType.Shared,
+                        ValueShared = AbilitySharedValue.DamageBonus
+                    };
+                    c.UsePool = false;
+                    c.Pool = new ContextValue();
+                    c.Or = false;
+                    c.BypassedByMaterial = false;
+                    c.Material = PhysicalDamageMaterial.Adamantite;
+                    c.BypassedByForm = false;
+                    c.Form = PhysicalDamageForm.Slashing;
+                    c.BypassedByMagic = false;
+                    c.MinEnhancementBonus = 1;
+                    c.BypassedByAlignment = true;
+                    c.Alignment = DamageAlignment.Chaotic;
+                    c.BypassedByReality = false;
+                    c.Reality = DamageRealityType.Ghost;
+                    c.BypassedByWeaponType = false;
+                    c.m_WeaponType = new BlueprintWeaponTypeReference();
+                    c.BypassedByEpic = false;
+                    c.m_CheckedFactMythic = new BlueprintUnitFactReference();
+                });
+                bp.m_Flags = BlueprintBuff.Flags.StayOnDeath;
+                bp.Stacking = StackingType.Replace;
+                bp.m_AllowNonContextActions = false;
+            });
+
+
+
+            var OracleRevelationBoonOfTheDefenderAbility = Helpers.CreateBlueprint<BlueprintActivatableAbility>("OracleRevelationBoonOfTheDefenderAbility", bp => {
+                bp.SetName("Boon of the Defender");
+                bp.SetDescription("As a standard action, you can form a shield around you that blocks incoming attacks for a number of minutes equal to " +
+                    "1/2 your oracle level (minimum 1). The shield grants a +4 deflection bonus to your Armor Class. At 7th level, and again at 11th level and 15th level, " +
+                    "this bonus increases by +1. At 19th level, the shield also grants you DR 2/chaos. The shield’s duration does not need to be consecutive, but it must be spent in 1-minute increments.");
+                bp.m_Icon = OracleRevelationBoonOfTheDefenderIcon;
+                bp.AddComponent<ActivatableAbilityResourceLogic>(c => {
+                    c.SpendType = ActivatableAbilityResourceLogic.ResourceSpendType.OncePerMinute;
+                    c.m_RequiredResource = OracleRevelationBoonOfTheDefenderResource.ToReference<BlueprintAbilityResourceReference>();
+                });
+                bp.m_Buff = OracleRevelationBoonOfTheDefenderBuff.ToReference<BlueprintBuffReference>();
+                bp.DeactivateIfOwnerDisabled = false;
+                bp.ActivationType = AbilityActivationType.WithUnitCommand;
+                bp.m_ActivateWithUnitCommand = UnitCommand.CommandType.Standard;
+                bp.DeactivateIfCombatEnded = false;
+            });
+            var OracleRevelationBoonOfTheDefenderFeature = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationBoonOfTheDefenderFeature", bp => {
+                bp.SetName("Boon of the Defender");
                 bp.SetDescription("As a standard action, you can form a shield around you that blocks incoming attacks for a number of minutes equal to " +
                     "1/2 your oracle level (minimum 1). The shield grants a +4 deflection bonus to your Armor Class. At 7th level, and again at 11th level and 15th level, " +
                     "this bonus increases by +1. At 19th level, the shield also grants you DR 2/chaos. The shield’s duration does not need to be consecutive, but it must be spent in 1-minute increments.");
 
-
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { OracleRevelationBoonOfTheDefenderAbility.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = OracleRevelationBoonOfTheDefenderResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
                 bp.AddComponent<PrerequisiteFeaturesFromList>(c => {
                     c.m_Features = new BlueprintFeatureReference[] {
                         OracleGodclawMysteryFeature.ToReference<BlueprintFeatureReference>(),
@@ -818,35 +975,20 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     };
                     c.Amount = 1;
                 });
+                bp.m_Icon = OracleRevelationBoonOfTheDefenderIcon;
                 bp.Groups = new FeatureGroup[] { FeatureGroup.OracleRevelation };
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = true;
             });
-            OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationBoonOfDefenderFeature.ToReference<BlueprintFeatureReference>());
+            OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationBoonOfTheDefenderFeature.ToReference<BlueprintFeatureReference>());
             #endregion
-            #region Boon of the Guide 
-
-            var OracleRevelationBoonOfGuideFeature = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationBoonOfGuideFeature", bp => {
-                bp.SetName("Boon of Guide");
-                bp.SetDescription("Once per day as an free action you may gain the boon of the guide, the next time you fail a saving throw that causes you to become blinded, deafened, frightened, panicked, " +
-                    "paralyzed, shaken, or stunned, you can attempt that saving throw again with a +4 insight bonus on the roll. You must take the second result, even if it is worse. " +
-                    "At 7th and 15th level, you can use this ability one additional time per day.");
-
-
-                bp.AddComponent<PrerequisiteFeaturesFromList>(c => {
-                    c.m_Features = new BlueprintFeatureReference[] {
-                        OracleGodclawMysteryFeature.ToReference<BlueprintFeatureReference>(),
-                        EnlightnedPhilosopherGodclawMysteryFeature.ToReference<BlueprintFeatureReference>(),
-                        DivineHerbalistGodclawMysteryFeature.ToReference<BlueprintFeatureReference>(),
-                        OceansEchoGodclawMysteryFeature.ToReference<BlueprintFeatureReference>()
-                    };
-                    c.Amount = 1;
-                });
-                bp.Groups = new FeatureGroup[] { FeatureGroup.OracleRevelation };
-                bp.m_AllowNonContextActions = false;
-                bp.IsClassFeature = true;
-            });
-            OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationBoonOfGuideFeature.ToReference<BlueprintFeatureReference>());
+            #region Boon of the Guide
+            //It's just Battlefield Clarity from Battle Mystery bar the name, so I'm just gonna use it
+            var BattlefieldClarity = Resources.GetBlueprint<BlueprintFeature>("c0c2b21d83dd2514c98ae8d3684ad981").GetComponent<PrerequisiteFeaturesFromList>();
+            BattlefieldClarity.m_Features = BattlefieldClarity.m_Features.AppendToArray(OracleGodclawMysteryFeature.ToReference<BlueprintFeatureReference>());
+            BattlefieldClarity.m_Features = BattlefieldClarity.m_Features.AppendToArray(EnlightnedPhilosopherGodclawMysteryFeature.ToReference<BlueprintFeatureReference>());
+            BattlefieldClarity.m_Features = BattlefieldClarity.m_Features.AppendToArray(DivineHerbalistGodclawMysteryFeature.ToReference<BlueprintFeatureReference>());
+            BattlefieldClarity.m_Features = BattlefieldClarity.m_Features.AppendToArray(OceansEchoGodclawMysteryFeature.ToReference<BlueprintFeatureReference>());
             #endregion
             #region Boon of Terror [Needs Testing]
             var ShakenBuff = Resources.GetBlueprint<BlueprintBuff>("25ec6cb6ab1845c48a95f9c20b034220");
@@ -1348,7 +1490,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
             //Use Command as the template instead
             #endregion
             #region Resiliency
-            //needs simplifying to match CRPG downstate
+            //needs simplifying to match CRPG downstate         Diehard at lvl 1 - bonus to fort/will saves under 0 health at level 7
             #endregion
 
             MysteryTools.RegisterMystery(OracleGodclawMysteryFeature);

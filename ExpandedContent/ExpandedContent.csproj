@@ -1940,6 +1940,9 @@
     <Content Include="Assets\Skills\Icon_OracleMetalMystery.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Skills\Icon_OracleRevelationBoonOfTheDefender.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Skills\Icon_OracleRevelationShellOfSuccor.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
