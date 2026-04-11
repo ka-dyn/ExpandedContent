@@ -1488,6 +1488,148 @@ namespace ExpandedContent.Tweaks.Mysteries {
             #endregion
             #region Iron Order
             //Use Command as the template instead
+            var OracleRevelationIronOrderResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("OracleRevelationIronOrderResource", bp => {
+                bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
+                    BaseValue = 1,
+                    IncreasedByLevel = false,
+                    LevelIncrease = 0,
+                    IncreasedByLevelStartPlusDivStep = false,
+                    StartingLevel = 0,
+                    StartingIncrease = 0,
+                    LevelStep = 0,
+                    PerStepIncrease = 0,
+                    MinClassLevelIncrease = 0,
+                    OtherClassesModifier = 0,
+                    IncreasedByStat = false,
+                    ResourceBonusStat = StatType.Unknown,
+                };
+            });
+
+
+
+            var OracleRevelationIronOrderUpgrade = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationIronOrderUpgrade", bp => {
+                bp.SetName("Iron Order");
+                bp.SetDescription("");
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { OracleRevelationIronOrderGreaterAbility.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<ReplaceAbilitiesStat>(c => {
+                    c.m_Ability = new BlueprintAbilityReference[] { OracleRevelationIronOrderGreaterAbility.ToReference<BlueprintAbilityReference>() };
+                    c.Stat = StatType.Charisma;
+                });
+
+                bp.HideInUI = true;
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+            var OracleRevelationIronOrderFeature = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationIronOrderFeature", bp => {
+                bp.SetName("Iron Order");
+                bp.SetDescription("Once per day, you can issue an order as per the {g|SpellsCommand}command{/g}. " +
+                    "Any creature of chaotic alignment has difficulty defying your command, taking a –4 penalty on its saving throw to resist it. " +
+                    "At 15th level, your order may function as per {g|SpellsCommandGreater}command, greater{/g}. " +
+                    "\nIf you are wearing heavy armor, your orders’s target takes an additional –2 penalty on its saving throw to resist the order " +
+                    "(regardless of the target’s alignment; this stacks with the penalty chaotic creatures take). " +
+                    "\nYou must be at least 7th level to select this revelation.");
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] { OracleRevelationIronOrderAbility.ToReference<BlueprintUnitFactReference>() };
+                });
+                bp.AddComponent<ReplaceAbilitiesStat>(c => {
+                    c.m_Ability = new BlueprintAbilityReference[] { OracleRevelationIronOrderAbility.ToReference<BlueprintAbilityReference>() };
+                    c.Stat = StatType.Charisma;
+                });
+                bp.AddComponent<AddFeatureOnClassLevel>(c => {
+                    c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_AdditionalClasses = new BlueprintCharacterClassReference[] {
+                        ArcanistClass.ToReference<BlueprintCharacterClassReference>()
+                    };
+                    c.m_Archetypes = new BlueprintArchetypeReference[] {
+                        MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>()
+                    };
+                    c.Level = 15;
+                    c.m_Feature = OracleRevelationIronOrderUpgrade.ToReference<BlueprintFeatureReference>();
+                    c.BeforeThisLevel = false;
+                });
+                bp.AddComponent<OwnerAbilityTargetSavingThrowBonusExpanded>(c => {
+                    c.Bonus = -4;
+                    c.Descriptor = ModifierDescriptor.None;
+                    c.CheckAbilityType = false;
+                    c.Type = AbilityType.SpellLike;
+                    c.OnlyTheseAbilities = true;
+                    c.m_Spells = new BlueprintAbilityReference[] {
+                        OracleRevelationIronOrderApproachAbility.ToReference<BlueprintAbilityReference>(),
+                        OracleRevelationIronOrderFallAbility.ToReference<BlueprintAbilityReference>(),
+                        OracleRevelationIronOrderFleeAbility.ToReference<BlueprintAbilityReference>(),
+                        OracleRevelationIronOrderHaltAbility.ToReference<BlueprintAbilityReference>(),
+                        OracleRevelationIronOrderApproachGreaterAbility.ToReference<BlueprintAbilityReference>(),
+                        OracleRevelationIronOrderFallGreaterAbility.ToReference<BlueprintAbilityReference>(),
+                        OracleRevelationIronOrderFleeGreaterAbility.ToReference<BlueprintAbilityReference>(),
+                        OracleRevelationIronOrderHaltGreaterAbility.ToReference<BlueprintAbilityReference>()
+                    };
+                    c.Conditions = new ConditionsChecker() {
+                        Operation = Operation.Or,
+                        Conditions = new Condition[] {
+                            new ContextConditionAlignment() {
+                                Alignment = AlignmentComponent.Chaotic,
+                                CheckCaster = false,
+                                Not = false
+                            }
+                        }
+                    };
+                    bp.AddComponent<OwnerAbilityTargetSavingThrowBonusExpanded>(c => {
+                    c.Bonus = -2;
+                    c.Descriptor = ModifierDescriptor.None;
+                    c.CheckAbilityType = false;
+                    c.Type = AbilityType.SpellLike;
+                    c.OnlyTheseAbilities = true;
+                    c.m_Spells = new BlueprintAbilityReference[] {
+                        OracleRevelationIronOrderApproachAbility.ToReference<BlueprintAbilityReference>(),
+                        OracleRevelationIronOrderFallAbility.ToReference<BlueprintAbilityReference>(),
+                        OracleRevelationIronOrderFleeAbility.ToReference<BlueprintAbilityReference>(),
+                        OracleRevelationIronOrderHaltAbility.ToReference<BlueprintAbilityReference>(),
+                        OracleRevelationIronOrderApproachGreaterAbility.ToReference<BlueprintAbilityReference>(),
+                        OracleRevelationIronOrderFallGreaterAbility.ToReference<BlueprintAbilityReference>(),
+                        OracleRevelationIronOrderFleeGreaterAbility.ToReference<BlueprintAbilityReference>(),
+                        OracleRevelationIronOrderHaltGreaterAbility.ToReference<BlueprintAbilityReference>()
+                    };
+                    c.Conditions = new ConditionsChecker() {
+                        Operation = Operation.Or,
+                        Conditions = new Condition[] {
+                            new ContextConditionCasterArmorCategory() {
+                                armorCategory = new ArmorProficiencyGroup[] {ArmorProficiencyGroup.Heavy},
+                                Not = false
+                            }
+                        }
+                    };
+                });
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = OracleRevelationIronOrderResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.AddComponent<PrerequisiteFeaturesFromList>(c => {
+                    c.m_Features = new BlueprintFeatureReference[] {
+                        OracleGodclawMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        EnlightnedPhilosopherGodclawMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        DivineHerbalistGodclawMysteryFeature.ToReference<BlueprintFeatureReference>(),
+                        OceansEchoGodclawMysteryFeature.ToReference<BlueprintFeatureReference>()
+                    };
+                    c.Amount = 1;
+                });
+                bp.AddComponent<PrerequisiteClassLevel>(c => {
+                    c.m_CharacterClass = OracleClass.ToReference<BlueprintCharacterClassReference>();
+                    c.Level = 7;
+                    c.Group = Prerequisite.GroupType.Any;
+                });
+                bp.AddComponent<PrerequisiteArchetypeLevel>(c => {
+                    c.m_CharacterClass = ArcanistClass.ToReference<BlueprintCharacterClassReference>();
+                    c.m_Archetype = MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>();
+                    c.Level = 7;
+                    c.Group = Prerequisite.GroupType.Any;
+                });
+                bp.Groups = new FeatureGroup[] { FeatureGroup.OracleRevelation };
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+            OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationIronOrderFeature.ToReference<BlueprintFeatureReference>());
             #endregion
             #region Resiliency
             //needs simplifying to match CRPG downstate         Diehard at lvl 1 - bonus to fort/will saves under 0 health at level 7
