@@ -161,6 +161,7 @@ namespace ExpandedContent.Tweaks {
                 Spells.IncendiaryCloud.AddIncendiaryCloud();
                 Spells.TrialOfFireAndAcid.AddTrialOfFireAndAcid();
                 Spells.CorrosiveConsumption.AddCorrosiveConsumption();
+                Spells.DazeMonster.AddDazeMonster();
 
                 Miscellaneous.AlchemistDiscoveries.MutagenDiscovery.AddMutagenDiscovery();
                 Miscellaneous.AlchemistDiscoveries.MindchemistSkillDiscovery.AddMindchemistSkillDiscovery();
@@ -235,6 +236,7 @@ namespace ExpandedContent.Tweaks {
                 Mysteries.DarkTapestryMystery.AddDarkTapestryMystery();
                 Mysteries.MetalMystery.AddMetalMystery();
                 Mysteries.ApocalypseMystery.AddApocalypseMystery();
+                Mysteries.GodclawMystery.AddGodclawMystery();
 
                 Spirits.HeavensSpirit.AddHeavensSprit();
                 Spirits.SlumsSpirit.AddSlumsSprit();

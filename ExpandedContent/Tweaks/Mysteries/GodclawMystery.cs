@@ -56,7 +56,8 @@ namespace ExpandedContent.Tweaks.Mysteries {
 
             var OracleClass = Resources.GetBlueprint<BlueprintCharacterClass>("20ce9bf8af32bee4c8557a045ab499b1");
             var OracleRevelationSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("60008a10ad7ad6543b1f63016741a5d2");
-            var GodclawMysteryIcon = AssetLoader.LoadInternal("Skills", "Icon_OracleGodclawMystery.png");
+            //var GodclawMysteryIcon = AssetLoader.LoadInternal("Skills", "Icon_OracleGodclawMystery.png"); Use other for testing
+            var GodclawMysteryIcon = AssetLoader.LoadInternal("Deities", "Icon_Godclaw.jpg");
             var ArcanistClass = Resources.GetBlueprint<BlueprintCharacterClass>("52dbfd8505e22f84fad8d702611f60b7");
             var MagicDeceiverArchetype = Resources.GetBlueprint<BlueprintArchetype>("5c77110cd0414e7eb4c2e485659c9a46");
 
@@ -1486,8 +1487,18 @@ namespace ExpandedContent.Tweaks.Mysteries {
             #endregion
             OracleRevelationSelection.m_AllFeatures = OracleRevelationSelection.m_AllFeatures.AppendToArray(OracleRevelationBoonOfTerrorFeature.ToReference<BlueprintFeatureReference>());
             #endregion
-            #region Iron Order
-            //Use Command as the template instead
+            #region Iron Order [Needs Testing]
+            var CommandSpell = Resources.GetBlueprint<BlueprintAbility>("feb70aab86cc17f4bb64432c83737ac2");
+            var CommandApproachSpell = Resources.GetBlueprint<BlueprintAbility>("f049fe38f5bb5ae48b252852727ab86a");
+            var CommandFallSpell = Resources.GetBlueprint<BlueprintAbility>("9e87cb2778afdc24e9ceb523aca512a8");
+            var CommandFleeSpell = Resources.GetBlueprint<BlueprintAbility>("7c1d48449ecf4374497e7009c49f6376");
+            var CommandHaltSpell = Resources.GetBlueprint<BlueprintAbility>("a43abe1819699894c94a7cec3ccd3765");
+            var CommandGreaterSpell = Resources.GetBlueprint<BlueprintAbility>("cb15cc8d7a5480648855a23b3ba3f93d");
+            var CommandGreaterApproachSpell = Resources.GetBlueprint<BlueprintAbility>("305e7eebe6572d44eb44f29b43436d77");
+            var CommandGreaterFallSpell = Resources.GetBlueprint<BlueprintAbility>("4cffe11248cb2134d98c9e39a827476a");
+            var CommandGreaterFleeSpell = Resources.GetBlueprint<BlueprintAbility>("c0373cd86479df24d9f03bb23a99d57c");
+            var CommandGreaterHaltSpell = Resources.GetBlueprint<BlueprintAbility>("138bdf210567a45449151ac47630cecd");
+
             var OracleRevelationIronOrderResource = Helpers.CreateBlueprint<BlueprintAbilityResource>("OracleRevelationIronOrderResource", bp => {
                 bp.m_MaxAmount = new BlueprintAbilityResource.Amount {
                     BaseValue = 1,
@@ -1505,8 +1516,383 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 };
             });
 
+            var OracleRevelationIronOrderAbility = Helpers.CreateBlueprint<BlueprintAbility>("OracleRevelationIronOrderAbility", bp => {
+                bp.SetName("Iron Order");
+                bp.SetDescription("Once per day, you can issue an order as per the {g|SpellsCommand}command{/g} spell. " +
+                    "Any creature of chaotic alignment has difficulty defying your command, taking a –4 penalty on its saving throw to resist it. " +
+                    "\nIf you are wearing heavy armor, your orders’s target takes an additional –2 penalty on its saving throw to resist the order " +
+                    "(regardless of the target’s alignment; this stacks with the penalty chaotic creatures take).");
+                bp.m_Icon = CommandSpell.Icon;
+                //AbilityVariants added after
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = OracleRevelationIronOrderResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<SpellComponent>(c => { c.School = SpellSchool.Enchantment; });
+                bp.Type = AbilityType.SpellLike;
+                bp.Range = AbilityRange.Close;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = true;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = false;
+                bp.SpellResistance = true;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Point;
+                bp.ActionType = UnitCommand.CommandType.Standard;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = Helpers.CreateString("OracleRevelationIronOrderAbility.Duration", "1 round");
+                bp.LocalizedSavingThrow = Helpers.CreateString("OracleRevelationIronOrderAbility.SavingThrow", "Will negates");
+            });
+            var OracleRevelationIronOrderGreaterAbility = Helpers.CreateBlueprint<BlueprintAbility>("OracleRevelationIronOrderGreaterAbility", bp => {
+                bp.SetName("Iron Order, Greater");
+                bp.SetDescription("Once per day, you can issue an order as per the {g|SpellsGreaterCommand}command, greater{/g} spell. " +
+                    "Any creature of chaotic alignment has difficulty defying your command, taking a –4 penalty on its saving throw to resist it. " +
+                    "\nIf you are wearing heavy armor, your orders’s target takes an additional –2 penalty on its saving throw to resist the order " +
+                    "(regardless of the target’s alignment; this stacks with the penalty chaotic creatures take).");
+                bp.m_Icon = CommandGreaterSpell.Icon;
+                //AbilityVariants added after
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = OracleRevelationIronOrderResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.AddComponent<SpellComponent>(c => { c.School = SpellSchool.Enchantment; });
+                bp.Type = AbilityType.SpellLike;
+                bp.Range = AbilityRange.Close;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = true;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = false;
+                bp.SpellResistance = true;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Point;
+                bp.ActionType = UnitCommand.CommandType.Standard;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = Helpers.CreateString("OracleRevelationIronOrderGreaterAbility.Duration", "1 round/level");
+                bp.LocalizedSavingThrow = Helpers.CreateString("OracleRevelationIronOrderGreaterAbility.SavingThrow", "Will negates");
+            });
+
+            var OracleRevelationIronOrderApproachAbility = Helpers.CreateBlueprint<BlueprintAbility>("OracleRevelationIronOrderApproachAbility", bp => {
+                bp.SetName("Iron Order - Approach");
+                bp.SetDescription("On its turn, the subject moves toward you as quickly and directly as possible for 1 {g|Encyclopedia:Combat_Round}round{/g}. " +
+                    "The creature may do nothing but move during its turn, and it provokes {g|Encyclopedia:Attack_Of_Opportunity}attacks of opportunity{/g} for this movement as normal. " +
+                    "\nAny creature of chaotic alignment has difficulty defying your command, taking a –4 penalty on its saving throw to resist it. " +
+                    "If you are wearing heavy armor, your orders’s target takes an additional –2 penalty on its saving throw to resist the order " +
+                    "(regardless of the target’s alignment; this stacks with the penalty chaotic creatures take).");
+                bp.m_Icon = CommandApproachSpell.Icon;
+                bp.CopyComponentArray(CommandApproachSpell);
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = OracleRevelationIronOrderResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.m_Parent = OracleRevelationIronOrderAbility.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.SpellLike;
+                bp.Range = AbilityRange.Close;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = true;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = false;
+                bp.SpellResistance = true;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Point;
+                bp.ActionType = UnitCommand.CommandType.Standard;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = Helpers.CreateString("OracleRevelationIronOrderApproachAbility.Duration", "1 round");
+                bp.LocalizedSavingThrow = Helpers.CreateString("OracleRevelationIronOrderApproachAbility.SavingThrow", "Will negates");
+            });
+            var OracleRevelationIronOrderFallAbility = Helpers.CreateBlueprint<BlueprintAbility>("OracleRevelationIronOrderFallAbility", bp => {
+                bp.SetName("Iron Order - Fall");
+                bp.SetDescription("On its turn, the subject falls to the ground and remains {g|ConditionProne}prone{/g} for 1 {g|Encyclopedia:Combat_Round}round{/g}. " +
+                    "It may act normally while prone but takes any appropriate {g|Encyclopedia:Penalty}penalties{/g}. " +
+                    "\nAny creature of chaotic alignment has difficulty defying your command, taking a –4 penalty on its saving throw to resist it. " +
+                    "If you are wearing heavy armor, your orders’s target takes an additional –2 penalty on its saving throw to resist the order " +
+                    "(regardless of the target’s alignment; this stacks with the penalty chaotic creatures take).");
+                bp.m_Icon = CommandFallSpell.Icon;
+                bp.CopyComponentArray(CommandFallSpell);
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = OracleRevelationIronOrderResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.m_Parent = OracleRevelationIronOrderAbility.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.SpellLike;
+                bp.Range = AbilityRange.Close;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = true;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = false;
+                bp.SpellResistance = true;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Point;
+                bp.ActionType = UnitCommand.CommandType.Standard;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = Helpers.CreateString("OracleRevelationIronOrderFallAbility.Duration", "1 round");
+                bp.LocalizedSavingThrow = Helpers.CreateString("OracleRevelationIronOrderFallAbility.SavingThrow", "Will negates");
+            });
+            var OracleRevelationIronOrderFleeAbility = Helpers.CreateBlueprint<BlueprintAbility>("OracleRevelationIronOrderFleeAbility", bp => {
+                bp.SetName("Iron Order - Flee");
+                bp.SetDescription("On its turn, the subject moves away from you as quickly as possible for 1 {g|Encyclopedia:Combat_Round}round{/g}. " +
+                    "It may do nothing but move during its turn, and it provokes {g|Encyclopedia:Attack_Of_Opportunity}attacks of opportunity{/g} for this movement as normal. " +
+                    "\nAny creature of chaotic alignment has difficulty defying your command, taking a –4 penalty on its saving throw to resist it. " +
+                    "If you are wearing heavy armor, your orders’s target takes an additional –2 penalty on its saving throw to resist the order " +
+                    "(regardless of the target’s alignment; this stacks with the penalty chaotic creatures take).");
+                bp.m_Icon = CommandFleeSpell.Icon;
+                bp.CopyComponentArray(CommandFleeSpell);
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = OracleRevelationIronOrderResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.m_Parent = OracleRevelationIronOrderAbility.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.SpellLike;
+                bp.Range = AbilityRange.Close;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = true;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = false;
+                bp.SpellResistance = true;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Point;
+                bp.ActionType = UnitCommand.CommandType.Standard;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = Helpers.CreateString("OracleRevelationIronOrderFleeAbility.Duration", "1 round");
+                bp.LocalizedSavingThrow = Helpers.CreateString("OracleRevelationIronOrderFleeAbility.SavingThrow", "Will negates");
+            });
+            var OracleRevelationIronOrderHaltAbility = Helpers.CreateBlueprint<BlueprintAbility>("OracleRevelationIronOrderHaltAbility", bp => {
+                bp.SetName("Iron Order - Halt");
+                bp.SetDescription("On its turn, the subject moves toward you as quickly and directly as possible for 1 {g|Encyclopedia:Combat_Round}round{/g}. " +
+                    "The creature may do nothing but move during its turn, and it provokes {g|Encyclopedia:Attack_Of_Opportunity}attacks of opportunity{/g} for this movement as normal. " +
+                    "\nAny creature of chaotic alignment has difficulty defying your command, taking a –4 penalty on its saving throw to resist it. " +
+                    "If you are wearing heavy armor, your orders’s target takes an additional –2 penalty on its saving throw to resist the order " +
+                    "(regardless of the target’s alignment; this stacks with the penalty chaotic creatures take).");
+                bp.m_Icon = CommandHaltSpell.Icon;
+                bp.CopyComponentArray(CommandHaltSpell);
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = OracleRevelationIronOrderResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.m_Parent = OracleRevelationIronOrderAbility.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.SpellLike;
+                bp.Range = AbilityRange.Close;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = true;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = false;
+                bp.SpellResistance = true;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Point;
+                bp.ActionType = UnitCommand.CommandType.Standard;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = Helpers.CreateString("OracleRevelationIronOrderHaltAbility.Duration", "1 round");
+                bp.LocalizedSavingThrow = Helpers.CreateString("OracleRevelationIronOrderHaltAbility.SavingThrow", "Will negates");
+            });
+
+            var OracleRevelationIronOrderApproachGreaterAbility = Helpers.CreateBlueprint<BlueprintAbility>("OracleRevelationIronOrderApproachGreaterAbility", bp => {
+                bp.SetName("Iron Order, Greater - Approach");
+                bp.SetDescription("This {g|Encyclopedia:Spell}spell{/g} functions like command, except this spell affects multiple enemies in a 30-foot radius, " +
+                    "and the activities continue beyond 1 {g|Encyclopedia:Combat_Round}round{/g}. At the start of each commanded creature's {g|Encyclopedia:CA_Types}action{/g} " +
+                    "after the first, it gets another {g|Encyclopedia:Saving_Throw}Will save{/g} to attempt to break free from the spell. Each creature must receive " +
+                    "the same command." +
+                    "\r\nApproach: On its turn, the subject moves toward you as quickly and directly as possible for 1 round. The creature may do nothing but move during its turn, " +
+                    "and it provokes {g|Encyclopedia:Attack_Of_Opportunity}attacks of opportunity{/g} for this movement as normal. " +
+                    "\nAny creature of chaotic alignment has difficulty defying your command, taking a –4 penalty on its saving throw to resist it. " +
+                    "If you are wearing heavy armor, your orders’s target takes an additional –2 penalty on its saving throw to resist the order " +
+                    "(regardless of the target’s alignment; this stacks with the penalty chaotic creatures take).");
+                bp.m_Icon = CommandGreaterApproachSpell.Icon;
+                bp.CopyComponentArray(CommandGreaterApproachSpell);
+                bp.RemoveComponents<ContextRankConfig>();
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.SummClassLevelWithArchetype;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.AsIs;
+                    c.m_Class = new BlueprintCharacterClassReference[] {
+                        OracleClass.ToReference<BlueprintCharacterClassReference>(),
+                        ArcanistClass.ToReference<BlueprintCharacterClassReference>()
+                    };
+                    c.Archetype = MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>();
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = OracleRevelationIronOrderResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.m_Parent = OracleRevelationIronOrderAbility.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.SpellLike;
+                bp.Range = AbilityRange.Close;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = true;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = false;
+                bp.SpellResistance = true;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Point;
+                bp.ActionType = UnitCommand.CommandType.Standard;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = Helpers.CreateString("OracleRevelationIronOrderApproachGreaterAbility.Duration", "1 round/level");
+                bp.LocalizedSavingThrow = Helpers.CreateString("OracleRevelationIronOrderApproachGreaterAbility.SavingThrow", "Will negates");
+            });
+            var OracleRevelationIronOrderFallGreaterAbility = Helpers.CreateBlueprint<BlueprintAbility>("OracleRevelationIronOrderFallGreaterAbility", bp => {
+                bp.SetName("Iron Order, Greater - Fall");
+                bp.SetDescription("This {g|Encyclopedia:Spell}spell{/g} functions like command, except this spell affects multiple enemies in a 30-foot radius, " +
+                    "and the activities continue beyond 1 {g|Encyclopedia:Combat_Round}round{/g}. At the start of each commanded creature's {g|Encyclopedia:CA_Types}action{/g} " +
+                    "after the first, it gets another {g|Encyclopedia:Saving_Throw}Will save{/g} to attempt to break free from the spell. Each creature must receive " +
+                    "the same command." +
+                    "\r\nFall: On its turn, the subject falls to the ground and remains {g|ConditionProne}prone{/g} for 1 {g|Encyclopedia:Combat_Round}round{/g}. " +
+                    "It may act normally while prone but takes any appropriate {g|Encyclopedia:Penalty}penalties{/g}. " +
+                    "\nAny creature of chaotic alignment has difficulty defying your command, taking a –4 penalty on its saving throw to resist it. " +
+                    "If you are wearing heavy armor, your orders’s target takes an additional –2 penalty on its saving throw to resist the order " +
+                    "(regardless of the target’s alignment; this stacks with the penalty chaotic creatures take).");
+                bp.m_Icon = CommandGreaterFallSpell.Icon;
+                bp.CopyComponentArray(CommandGreaterFallSpell);
+                bp.RemoveComponents<ContextRankConfig>();
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.SummClassLevelWithArchetype;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.AsIs;
+                    c.m_Class = new BlueprintCharacterClassReference[] {
+                        OracleClass.ToReference<BlueprintCharacterClassReference>(),
+                        ArcanistClass.ToReference<BlueprintCharacterClassReference>()
+                    };
+                    c.Archetype = MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>();
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = OracleRevelationIronOrderResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.m_Parent = OracleRevelationIronOrderAbility.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.SpellLike;
+                bp.Range = AbilityRange.Close;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = true;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = false;
+                bp.SpellResistance = true;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Point;
+                bp.ActionType = UnitCommand.CommandType.Standard;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = Helpers.CreateString("OracleRevelationIronOrderFallGreaterAbility.Duration", "1 round/level");
+                bp.LocalizedSavingThrow = Helpers.CreateString("OracleRevelationIronOrderFallGreaterAbility.SavingThrow", "Will negates");
+            });
+            var OracleRevelationIronOrderFleeGreaterAbility = Helpers.CreateBlueprint<BlueprintAbility>("OracleRevelationIronOrderFleeGreaterAbility", bp => {
+                bp.SetName("Iron Order, Greater - Flee");
+                bp.SetDescription("This {g|Encyclopedia:Spell}spell{/g} functions like command, except this spell affects multiple enemies in a 30-foot radius, " +
+                    "and the activities continue beyond 1 {g|Encyclopedia:Combat_Round}round{/g}. At the start of each commanded creature's {g|Encyclopedia:CA_Types}action{/g} " +
+                    "after the first, it gets another {g|Encyclopedia:Saving_Throw}Will save{/g} to attempt to break free from the spell. Each creature must receive " +
+                    "the same command." +
+                    "\r\nFlee: On its turn, the subject moves away from you as quickly as possible for 1 {g|Encyclopedia:Combat_Round}round{/g}. " +
+                    "It may do nothing but move during its turn, and it provokes {g|Encyclopedia:Attack_Of_Opportunity}attacks of opportunity{/g} for this movement as normal. " +
+                    "\nAny creature of chaotic alignment has difficulty defying your command, taking a –4 penalty on its saving throw to resist it. " +
+                    "If you are wearing heavy armor, your orders’s target takes an additional –2 penalty on its saving throw to resist the order " +
+                    "(regardless of the target’s alignment; this stacks with the penalty chaotic creatures take).");
+                bp.m_Icon = CommandGreaterFleeSpell.Icon;
+                bp.CopyComponentArray(CommandGreaterFleeSpell);
+                bp.RemoveComponents<ContextRankConfig>();
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.SummClassLevelWithArchetype;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.AsIs;
+                    c.m_Class = new BlueprintCharacterClassReference[] {
+                        OracleClass.ToReference<BlueprintCharacterClassReference>(),
+                        ArcanistClass.ToReference<BlueprintCharacterClassReference>()
+                    };
+                    c.Archetype = MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>();
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = OracleRevelationIronOrderResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.m_Parent = OracleRevelationIronOrderAbility.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.SpellLike;
+                bp.Range = AbilityRange.Close;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = true;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = false;
+                bp.SpellResistance = true;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Point;
+                bp.ActionType = UnitCommand.CommandType.Standard;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = Helpers.CreateString("OracleRevelationIronOrderFleeGreaterAbility.Duration", "1 round/level");
+                bp.LocalizedSavingThrow = Helpers.CreateString("OracleRevelationIronOrderFleeGreaterAbility.SavingThrow", "Will negates");
+            });
+            var OracleRevelationIronOrderHaltGreaterAbility = Helpers.CreateBlueprint<BlueprintAbility>("OracleRevelationIronOrderHaltGreaterAbility", bp => {
+                bp.SetName("Iron Order, Greater - Halt");
+                bp.SetDescription("This {g|Encyclopedia:Spell}spell{/g} functions like command, except this spell affects multiple enemies in a 30-foot radius, " +
+                    "and the activities continue beyond 1 {g|Encyclopedia:Combat_Round}round{/g}. At the start of each commanded creature's {g|Encyclopedia:CA_Types}action{/g} " +
+                    "after the first, it gets another {g|Encyclopedia:Saving_Throw}Will save{/g} to attempt to break free from the spell. Each creature must receive " +
+                    "the same command." +
+                    "\r\nHalt: On its turn, the subject moves toward you as quickly and directly as possible for 1 {g|Encyclopedia:Combat_Round}round{/g}. " +
+                    "The creature may do nothing but move during its turn, and it provokes {g|Encyclopedia:Attack_Of_Opportunity}attacks of opportunity{/g} for this movement as normal. " +
+                    "\nAny creature of chaotic alignment has difficulty defying your command, taking a –4 penalty on its saving throw to resist it. " +
+                    "If you are wearing heavy armor, your orders’s target takes an additional –2 penalty on its saving throw to resist the order " +
+                    "(regardless of the target’s alignment; this stacks with the penalty chaotic creatures take).");
+                bp.m_Icon = CommandGreaterHaltSpell.Icon;
+                bp.CopyComponentArray(CommandGreaterHaltSpell);
+                bp.RemoveComponents<ContextRankConfig>();
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.SummClassLevelWithArchetype;
+                    c.m_Stat = StatType.Unknown;
+                    c.m_SpecificModifier = ModifierDescriptor.None;
+                    c.m_Progression = ContextRankProgression.AsIs;
+                    c.m_Class = new BlueprintCharacterClassReference[] {
+                        OracleClass.ToReference<BlueprintCharacterClassReference>(),
+                        ArcanistClass.ToReference<BlueprintCharacterClassReference>()
+                    };
+                    c.Archetype = MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>();
+                });
+                bp.AddComponent<AbilityResourceLogic>(c => {
+                    c.m_RequiredResource = OracleRevelationIronOrderResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_IsSpendResource = true;
+                });
+                bp.m_Parent = OracleRevelationIronOrderAbility.ToReference<BlueprintAbilityReference>();
+                bp.Type = AbilityType.SpellLike;
+                bp.Range = AbilityRange.Close;
+                bp.CanTargetPoint = false;
+                bp.CanTargetEnemies = true;
+                bp.CanTargetFriends = false;
+                bp.CanTargetSelf = false;
+                bp.SpellResistance = true;
+                bp.EffectOnAlly = AbilityEffectOnUnit.None;
+                bp.EffectOnEnemy = AbilityEffectOnUnit.Harmful;
+                bp.Animation = UnitAnimationActionCastSpell.CastAnimationStyle.Point;
+                bp.ActionType = UnitCommand.CommandType.Standard;
+                bp.AvailableMetamagic = 0;
+                bp.LocalizedDuration = Helpers.CreateString("OracleRevelationIronOrderHaltGreaterAbility.Duration", "1 round/level");
+                bp.LocalizedSavingThrow = Helpers.CreateString("OracleRevelationIronOrderHaltGreaterAbility.SavingThrow", "Will negates");
+            });
 
 
+
+            OracleRevelationIronOrderAbility.AddComponent<AbilityVariants>(c => {
+                c.m_Variants = new BlueprintAbilityReference[] {
+                    OracleRevelationIronOrderApproachAbility.ToReference<BlueprintAbilityReference>(),
+                    OracleRevelationIronOrderFallAbility.ToReference<BlueprintAbilityReference>(),
+                    OracleRevelationIronOrderFleeAbility.ToReference<BlueprintAbilityReference>(),
+                    OracleRevelationIronOrderHaltAbility.ToReference<BlueprintAbilityReference>()
+                };
+            });
+            OracleRevelationIronOrderGreaterAbility.AddComponent<AbilityVariants>(c => {
+                c.m_Variants = new BlueprintAbilityReference[] {
+                    OracleRevelationIronOrderApproachGreaterAbility.ToReference<BlueprintAbilityReference>(),
+                    OracleRevelationIronOrderFallGreaterAbility.ToReference<BlueprintAbilityReference>(),
+                    OracleRevelationIronOrderFleeGreaterAbility.ToReference<BlueprintAbilityReference>(),
+                    OracleRevelationIronOrderHaltGreaterAbility.ToReference<BlueprintAbilityReference>()
+                };
+            });
             var OracleRevelationIronOrderUpgrade = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationIronOrderUpgrade", bp => {
                 bp.SetName("Iron Order");
                 bp.SetDescription("");
@@ -1519,17 +1905,19 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 });
 
                 bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = true;
             });
             var OracleRevelationIronOrderFeature = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationIronOrderFeature", bp => {
                 bp.SetName("Iron Order");
-                bp.SetDescription("Once per day, you can issue an order as per the {g|SpellsCommand}command{/g}. " +
+                bp.SetDescription("Once per day, you can issue an order as per the {g|SpellsCommand}command{/g} spell. " +
                     "Any creature of chaotic alignment has difficulty defying your command, taking a –4 penalty on its saving throw to resist it. " +
-                    "At 15th level, your order may function as per {g|SpellsCommandGreater}command, greater{/g}. " +
+                    "At 15th level, your order may function as per {g|SpellsGreaterCommand}command, greater{/g}. " +
                     "\nIf you are wearing heavy armor, your orders’s target takes an additional –2 penalty on its saving throw to resist the order " +
                     "(regardless of the target’s alignment; this stacks with the penalty chaotic creatures take). " +
                     "\nYou must be at least 7th level to select this revelation.");
+                bp.m_Icon = CommandGreaterSpell.Icon;
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] { OracleRevelationIronOrderAbility.ToReference<BlueprintUnitFactReference>() };
                 });
@@ -1574,8 +1962,9 @@ namespace ExpandedContent.Tweaks.Mysteries {
                                 Not = false
                             }
                         }
-                    };
-                    bp.AddComponent<OwnerAbilityTargetSavingThrowBonusExpanded>(c => {
+                    };                    
+                });
+                bp.AddComponent<OwnerAbilityTargetSavingThrowBonusExpanded>(c => {
                     c.Bonus = -2;
                     c.Descriptor = ModifierDescriptor.None;
                     c.CheckAbilityType = false;
