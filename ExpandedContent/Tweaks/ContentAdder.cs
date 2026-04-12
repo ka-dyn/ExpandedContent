@@ -385,6 +385,7 @@ namespace ExpandedContent.Tweaks {
                 Deities.Winlas.AddWinlasFeature();
                 Deities.Ylimancha.AddYlimanchaFeature();
                 Deities.Zohls.AddZohlsFeature();
+                Deities.Reymenda.AddReymendaFeature();
 
                 TheEldest.Ng.AddNgFeature();
                 TheEldest.Shyka.AddShykaFeature();

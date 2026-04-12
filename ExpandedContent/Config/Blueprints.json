@@ -4209,7 +4209,11 @@
     "OracleRevelationIronOrderHaltAbility": "3e25252e-f3b6-4b97-8b1d-2afb6ce1ce81",
     "OracleRevelationIronOrderHaltGreaterAbility": "78e19747-4a7c-40fd-8426-83d372f9214d",
     "OracleRevelationIronOrderResource": "9edb4717-c82e-4261-968a-657e55a7dec6",
-    "OracleRevelationIronOrderUpgrade": "d0395978-bc30-47e1-b23b-32614377e484"
+    "OracleRevelationIronOrderUpgrade": "d0395978-bc30-47e1-b23b-32614377e484",
+
+    "ReymendaFeature": "a2ba22e5-c318-46e3-96df-bde41e08c8b6",
+    "ReymendaSacredWeaponFeature": "d13d8065-d4fd-43e2-8151-0877f9a88197"
+
 
 
 

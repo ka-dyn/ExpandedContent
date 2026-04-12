@@ -110,6 +110,7 @@ namespace ExpandedContent.Tweaks.Deities {
             var WinlasFeature = Resources.GetModBlueprint<BlueprintFeature>("WinlasFeature");
             var YlimanchaFeature = Resources.GetModBlueprint<BlueprintFeature>("YlimanchaFeature");
             var ZohlsFeature = Resources.GetModBlueprint<BlueprintFeature>("ZohlsFeature");
+            var ReymendaFeature = Resources.GetModBlueprint<BlueprintFeature>("ReymendaFeature");
 
             //Elven Pantheon
             var FindeladlaraFeature = Resources.GetModBlueprint<BlueprintFeature>("FindeladlaraFeature");
@@ -417,6 +418,7 @@ namespace ExpandedContent.Tweaks.Deities {
                 PicoperiFeature.ToReference<BlueprintFeatureReference>(),
                 PuluraFeature.ToReference<BlueprintFeatureReference>(),
                 RagathielFeature.ToReference<BlueprintFeatureReference>(),
+                ReymendaFeature.ToReference<BlueprintFeatureReference>(),
                 RowdroshFeature.ToReference<BlueprintFeatureReference>(),
                 SeramaydielFeature.ToReference<BlueprintFeatureReference>(),
                 SheiFeature.ToReference<BlueprintFeatureReference>(),
@@ -999,7 +1001,8 @@ namespace ExpandedContent.Tweaks.Deities {
                 HadregashFeature,
                 VenkelvoreFeature,
                 ZarongelFeature,
-                ZogmugotFeature
+                ZogmugotFeature,
+                ReymendaFeature
             };
             foreach (var deity in FaithfulParagonNotAllowed) {
                 deity.AddComponent<PrerequisiteNoArchetype>(c => {

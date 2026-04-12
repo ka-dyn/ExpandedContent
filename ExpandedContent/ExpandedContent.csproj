@@ -298,6 +298,7 @@
     <Compile Include="Tweaks\Deities\Groetus.cs" />
     <Compile Include="Tweaks\Deities\Dretha.cs" />
     <Compile Include="Tweaks\Deities\Lanishra.cs" />
+    <Compile Include="Tweaks\Deities\Reymenda.cs" />
     <Compile Include="Tweaks\Deities\Sivanah.cs" />
     <Compile Include="Tweaks\Deities\Nulgreth.cs" />
     <Compile Include="Tweaks\Deities\Rull.cs" />
@@ -1119,6 +1120,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\ICON_Ragathiel.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Deities\Icon_Reymenda.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Deities\Icon_RhanTegoth.jpg">
