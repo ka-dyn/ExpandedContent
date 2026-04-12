@@ -1938,6 +1938,9 @@
     <Content Include="Assets\Skills\Icon_OracleDraconicMystery.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Skills\Icon_OracleGodclawMystery.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Skills\Icon_OracleHeavensMystery.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

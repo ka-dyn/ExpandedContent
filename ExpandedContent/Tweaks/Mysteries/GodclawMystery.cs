@@ -56,8 +56,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
 
             var OracleClass = Resources.GetBlueprint<BlueprintCharacterClass>("20ce9bf8af32bee4c8557a045ab499b1");
             var OracleRevelationSelection = Resources.GetBlueprint<BlueprintFeatureSelection>("60008a10ad7ad6543b1f63016741a5d2");
-            //var GodclawMysteryIcon = AssetLoader.LoadInternal("Skills", "Icon_OracleGodclawMystery.png"); Use other for testing
-            var GodclawMysteryIcon = AssetLoader.LoadInternal("Deities", "Icon_Godclaw.jpg");
+            var GodclawMysteryIcon = AssetLoader.LoadInternal("Skills", "Icon_OracleGodclawMystery.png");
             var ArcanistClass = Resources.GetBlueprint<BlueprintCharacterClass>("52dbfd8505e22f84fad8d702611f60b7");
             var MagicDeceiverArchetype = Resources.GetBlueprint<BlueprintArchetype>("5c77110cd0414e7eb4c2e485659c9a46");
 
