@@ -447,21 +447,21 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     c.Value = new ContextValue() {
                         ValueType = ContextValueType.Rank,
                         ValueRank = AbilityRankType.Default
-                    };
-                    bp.AddComponent<ContextRankConfig>(c => {
-                        c.m_Type = AbilityRankType.Default;
-                        c.m_BaseValueType = ContextRankBaseValueType.SummClassLevelWithArchetype;
-                        c.m_Progression = ContextRankProgression.Custom;
-                        c.m_CustomProgression = new ContextRankConfig.CustomProgressionItem[] {
+                    };                    
+                });
+                bp.AddComponent<ContextRankConfig>(c => {
+                    c.m_Type = AbilityRankType.Default;
+                    c.m_BaseValueType = ContextRankBaseValueType.SummClassLevelWithArchetype;
+                    c.m_Progression = ContextRankProgression.Custom;
+                    c.m_CustomProgression = new ContextRankConfig.CustomProgressionItem[] {
                             new ContextRankConfig.CustomProgressionItem(){ BaseValue = 10, ProgressionValue = 2 },
                             new ContextRankConfig.CustomProgressionItem(){ BaseValue = 100, ProgressionValue = 4 }
                         };
-                        c.m_Class = new BlueprintCharacterClassReference[] {
+                    c.m_Class = new BlueprintCharacterClassReference[] {
                             OracleClass.ToReference<BlueprintCharacterClassReference>(),
                             ArcanistClass.ToReference<BlueprintCharacterClassReference>(),
                         };
-                        c.Archetype = MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>();
-                    });
+                    c.Archetype = MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>();
                 });
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = false;

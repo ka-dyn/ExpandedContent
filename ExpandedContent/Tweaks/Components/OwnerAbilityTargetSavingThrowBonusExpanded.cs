@@ -41,7 +41,7 @@ namespace ExpandedContent.Tweaks.Components {
 
         public void OnEventAboutToTrigger(RuleSavingThrow evt) {
             BlueprintAbility blueprintAbility = evt.Reason.Context?.SourceAbility;
-            if (evt.Reason.Caster != base.Owner || (CheckAbilityType && (evt.Reason.Ability == null || evt.Reason.Ability.Blueprint.Type != Type)) || (OnlyTheseAbilities && Spells.Contains(blueprintAbility))) {
+            if (evt.Reason.Caster != base.Owner || (CheckAbilityType && (evt.Reason.Ability == null || evt.Reason.Ability.Blueprint.Type != Type)) || (OnlyTheseAbilities && !Spells.Contains(blueprintAbility))) {
                 return;
             }
 
