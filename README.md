@@ -113,6 +113,7 @@ New Oracle Mysteries / Curses
   - Apocalypse
   - Dark Tapestry
   - Dragon
+  - Godclaw
   - Heavens
   - Lunar
   - Metal
@@ -257,6 +258,7 @@ New Spells
 - Incendiary Cloud
 - Corrosive Consumption
 - Trial of Fire and Acid
+- Daze Monster
 
 
 Compatible with all mods as far as I am aware, extra features are unlocked if used with these mods
