@@ -92,6 +92,44 @@ namespace ExpandedContent.Tweaks.Archetypes {
                     c.m_Feature = BackToBack.ToReference<BlueprintFeatureReference>();
                 });
             });
+
+
+
+
+//            Drake size thingy grated at lvl 5
+
+//Dark lurker Blade from Shadows feature shows that we can use a ChangeSizeTrigger to deploy buffs
+
+//We could put these on both drake and rogue to deploy a different buff to eachother depending on size(an AddFactContextActions for initial deployment)
+
+//                Use ContextConditionSize to find own size, then use a custom ContextConditionSizeOfPartner and buff if smaller
+                
+
+//Buff each other in a 5f radius as that will handle the range checking issue
+
+
+//Current plan is to grant 1 sneak dice and + 1 to hit, increasing at the rate of levels 5 - 1, 11 - 2, 17 - 3, as this matches the rate the archetype lost sneak die.
+//If same size then 0 sneak die, but both units gain the X to hit(flavour to imply they are ganging up on enemy)
+//Make Mounting supress Buff
+
+
+//Feature with ChangeSizeTrigger to give unit Aura matching their size(needs aura for each size, but less work overall)
+//                If partner is lower size than aura, give them buff while in aura
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             ClutchThiefArchetype.RemoveFeatures = new LevelEntry[] {
                     Helpers.LevelEntry(2, RogueTalentSelection),
                     Helpers.LevelEntry(3, DangerSenseRogue),

@@ -598,6 +598,24 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.LocalizedSavingThrow = new Kingmaker.Localization.LocalizedString();
             });
 
+            var OracleRevelationArmoredMindAbilityFeature = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationArmoredMindAbilityFeature", bp => {
+                bp.SetName("Armored Mind Ability Unlock");
+                bp.SetDescription("");
+                bp.AddComponent<AddFacts>(c => {
+                    c.m_Facts = new BlueprintUnitFactReference[] {
+                        OracleRevelationArmoredMindAbility.ToReference<BlueprintUnitFactReference>()
+                    };
+                });
+                bp.AddComponent<AddAbilityResources>(c => {
+                    c.m_Resource = OracleRevelationArmoredMindResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.RestoreAmount = true;
+                });
+                bp.HideInUI = true;
+                bp.HideInCharacterSheetAndLevelUp = true;
+                bp.m_AllowNonContextActions = false;
+                bp.IsClassFeature = true;
+            });
+
             var OracleRevelationArmoredMindFeature = Helpers.CreateBlueprint<BlueprintFeature>("OracleRevelationArmoredMindFeature", bp => {
                 bp.SetName("Armored Mind");
                 bp.SetDescription("While you are wearing heavy armor, you gain a +2 bonus on Will saving throws to resist mind-affecting effects. " +
@@ -620,12 +638,8 @@ namespace ExpandedContent.Tweaks.Mysteries {
                         MagicDeceiverArchetype.ToReference<BlueprintArchetypeReference>()
                     };
                     c.Level = 7;
-                    c.m_Feature = OracleRevelationArmoredMindAbility.ToReference<BlueprintFeatureReference>();
+                    c.m_Feature = OracleRevelationArmoredMindAbilityFeature.ToReference<BlueprintFeatureReference>();
                     c.BeforeThisLevel = false;
-                });
-                bp.AddComponent<AddAbilityResources>(c => {
-                    c.m_Resource = OracleRevelationArmoredMindResource.ToReference<BlueprintAbilityResourceReference>();
-                    c.RestoreAmount = true;
                 });
                 bp.AddComponent<PrerequisiteFeaturesFromList>(c => {
                     c.m_Features = new BlueprintFeatureReference[] {
@@ -749,7 +763,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     c.m_Min = 0;
                 });
                 bp.AddComponent<AbilityResourceLogic>(c => {
-                    c.m_RequiredResource = OracleRevelationArmoredMindResource.ToReference<BlueprintAbilityResourceReference>();
+                    c.m_RequiredResource = OracleRevelationBoonOfBraveryResource.ToReference<BlueprintAbilityResourceReference>();
                     c.m_IsSpendResource = true;
                 });
                 bp.AddComponent<CraftInfoComponent>(c => {
@@ -1938,11 +1952,13 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 });
                 bp.AddComponent<OwnerAbilityTargetSavingThrowBonusExpanded>(c => {
                     c.Bonus = -4;
-                    c.Descriptor = ModifierDescriptor.None;
+                    c.Descriptor = ModifierDescriptor.UntypedStackable;
                     c.CheckAbilityType = false;
                     c.Type = AbilityType.SpellLike;
                     c.OnlyTheseAbilities = true;
                     c.m_Spells = new BlueprintAbilityReference[] {
+                        OracleRevelationIronOrderAbility.ToReference<BlueprintAbilityReference>(),
+                        OracleRevelationIronOrderGreaterAbility.ToReference<BlueprintAbilityReference>(),
                         OracleRevelationIronOrderApproachAbility.ToReference<BlueprintAbilityReference>(),
                         OracleRevelationIronOrderFallAbility.ToReference<BlueprintAbilityReference>(),
                         OracleRevelationIronOrderFleeAbility.ToReference<BlueprintAbilityReference>(),
@@ -1965,11 +1981,13 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 });
                 bp.AddComponent<OwnerAbilityTargetSavingThrowBonusExpanded>(c => {
                     c.Bonus = -2;
-                    c.Descriptor = ModifierDescriptor.None;
+                    c.Descriptor = ModifierDescriptor.UntypedStackable;
                     c.CheckAbilityType = false;
                     c.Type = AbilityType.SpellLike;
                     c.OnlyTheseAbilities = true;
                     c.m_Spells = new BlueprintAbilityReference[] {
+                        OracleRevelationIronOrderAbility.ToReference<BlueprintAbilityReference>(),
+                        OracleRevelationIronOrderGreaterAbility.ToReference<BlueprintAbilityReference>(),
                         OracleRevelationIronOrderApproachAbility.ToReference<BlueprintAbilityReference>(),
                         OracleRevelationIronOrderFallAbility.ToReference<BlueprintAbilityReference>(),
                         OracleRevelationIronOrderFleeAbility.ToReference<BlueprintAbilityReference>(),

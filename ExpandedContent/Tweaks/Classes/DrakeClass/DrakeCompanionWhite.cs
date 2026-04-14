@@ -40,6 +40,7 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
             var RedDragon = Resources.GetBlueprint<BlueprintUnit>("9e8727d008bec6e47842ba13df87d939");
             var UnitDog = Resources.GetBlueprint<BlueprintUnit>("918939943bf32ba4a95470ea696c2ba5");
             var HeadLocatorFeature = Resources.GetBlueprint<BlueprintFeature>("9c57e9674b4a4a2b9920f9fec47f7e6a");
+            var WeaponFinesseFeat = Resources.GetBlueprint<BlueprintFeature>("90e54424d682d104ab36436bd527af09");
             var DrakeSizeTiny = Resources.GetModBlueprint<BlueprintFeature>("DrakeSizeTiny");
             var UmbralDragonBarks = Resources.GetBlueprint<BlueprintUnitAsksList>("a526fcf667234d4e8bb2ba5376a0f91a");
 
@@ -143,7 +144,8 @@ namespace ExpandedContent.Tweaks.Classes.DrakeClass {
                     DrakeSubtypeCold.ToReference<BlueprintUnitFactReference>(),
                     DragonType.ToReference<BlueprintUnitFactReference>(),
                     DrakeBloodWhite.ToReference<BlueprintUnitFactReference>(),
-                    DrakeSizeTiny.ToReference<BlueprintUnitFactReference>()
+                    DrakeSizeTiny.ToReference<BlueprintUnitFactReference>(),
+                    WeaponFinesseFeat.ToReference<BlueprintUnitFactReference>()
                 };
             });
 
