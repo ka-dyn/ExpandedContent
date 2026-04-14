@@ -8,6 +8,139 @@
       "zhCN": "召唤灰熊"
     },
     {
+      "Key": "9fec9602c34c4fffa07d78e1f46219e4",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Advanced Shambling Mound",
+      "zhCN": "高等蔓生怪"
+    },
+    {
+      "Key": "aaefd539a796487d8cfe66d5e51916c8",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Summoned Giant Advanced Grizzly",
+      "zhCN": "召唤巨型高等灰熊"
+    },
+    {
+      "Key": "6990af2dec8c425ea2b9970d0ab46bd5",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Copper Drake",
+      "zhCN": "赤铜龙兽"
+    },
+    {
+      "Key": "215e9f56e8054610b339d75ffa4f9ee0",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Summoned Giant Grizzly",
+      "zhCN": "召唤巨型灰熊"
+    },
+    {
+      "Key": "ee9a9d2f31844be2b7cb124b144bc809",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Summoned Giant Smilodon",
+      "zhCN": "召唤巨型剑齿虎"
+    },
+    {
+      "Key": "d78cef6333094acfb027c9ea446537e5",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Silver Drake",
+      "zhCN": "银龙兽"
+    },
+    {
+      "Key": "6eafdf9201084d4984570d387657970a",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Advanced Wood Golum",
+      "zhCN": "高等木魔像"
+    },
+    {
+      "Key": "9f2c24dc859a4289b1811c76e9edf29e",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Summoned Elder Blizzard Elemental",
+      "zhCN": "召唤长老暴风雪元素"
+    },
+    {
+      "Key": "397646f788464ad8b8887c8ca6f61183",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Bronze Drake",
+      "zhCN": "青铜龙兽"
+    },
+    {
+      "Key": "1822845d85d245e1a4e78cc8210b900a",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Summoned Advanced Smilodon",
+      "zhCN": "召唤高等剑齿虎"
+    },
+    {
+      "Key": "a48ac449e70d4b81a5f04bc68cd5e0ad",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Brass Drake",
+      "zhCN": "黄铜龙兽"
+    },
+    {
+      "Key": "df385a2529774cb1ba3bec71ca54effa",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Summoned Huge Blizzard Elemental",
+      "zhCN": "召唤巨型暴风雪元素"
+    },
+    {
+      "Key": "0f2cf0a97d3f45c1bd348e117a3efbf1",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Summoned Giant Advanced Smilodon",
+      "zhCN": "召唤巨型高等剑齿虎"
+    },
+    {
+      "Key": "8ab1da2e175249818cd9529bd3459995",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Summoned Giant Leopard",
+      "zhCN": "召唤巨型花豹"
+    },
+    {
+      "Key": "f8965a40cdce4b03840f3403362aa277",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Sapling Treant",
+      "zhCN": "树人幼苗"
+    },
+    {
+      "Key": "dbe201e8d03947028000ff87f2712ef4",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Umbral Drake",
+      "zhCN": "影龙兽"
+    },
+    {
+      "Key": "cceb9f3a49784ef6afab7bdd568637ba",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Summoned Young Leopard",
+      "zhCN": "召唤幼年花豹"
+    },
+    {
+      "Key": "3bfa12fd3f624f0bb59b43abbf8c4476",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "White Drake",
+      "zhCN": "白龙兽"
+    },
+    {
+      "Key": "8945ce6f69c14eb9b1556c0c185c4d75",
+      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
+      "ProcessTemplates": false,
+      "enGB": "Shadow Decoy",
+      "zhCN": "阴影诱饵"
+    },
+    {
       "Key": "a17ca893a04545bc9753dd2fbebd28ba",
       "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
       "ProcessTemplates": false,
@@ -27,13 +160,6 @@
       "ProcessTemplates": false,
       "enGB": "Gold Drake",
       "zhCN": "金龙兽"
-    },
-    {
-      "Key": "ed20a45c798a49fd83b19b7b9f0d845c",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Summoned Advanced Grizzly",
-      "zhCN": "召唤高等灰熊"
     },
     {
       "Key": "c6cfbb7f5f6f47a1bc266d8b6c94396e",
@@ -57,11 +183,11 @@
       "zhCN": "绿龙兽"
     },
     {
-      "Key": "7654a5eb9541443da42ae4c9eabccf8d",
+      "Key": "ed20a45c798a49fd83b19b7b9f0d845c",
       "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
       "ProcessTemplates": false,
-      "enGB": "Crawling Mound",
-      "zhCN": "爬行怪"
+      "enGB": "Summoned Advanced Grizzly",
+      "zhCN": "召唤高等灰熊"
     },
     {
       "Key": "1cfda936bc994277bf04f013b1461281",
@@ -113,137 +239,11 @@
       "zhCN": "召唤幼年剑齿虎"
     },
     {
-      "Key": "3bfa12fd3f624f0bb59b43abbf8c4476",
+      "Key": "7654a5eb9541443da42ae4c9eabccf8d",
       "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
       "ProcessTemplates": false,
-      "enGB": "White Drake",
-      "zhCN": "白龙兽"
-    },
-    {
-      "Key": "8945ce6f69c14eb9b1556c0c185c4d75",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Shadow Decoy",
-      "zhCN": "阴影诱饵"
-    },
-    {
-      "Key": "dbe201e8d03947028000ff87f2712ef4",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Umbral Drake",
-      "zhCN": "影龙兽"
-    },
-    {
-      "Key": "6eafdf9201084d4984570d387657970a",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Advanced Wood Golum",
-      "zhCN": "高等木魔像"
-    },
-    {
-      "Key": "9fec9602c34c4fffa07d78e1f46219e4",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Advanced Shambling Mound",
-      "zhCN": "高等蔓生怪"
-    },
-    {
-      "Key": "aaefd539a796487d8cfe66d5e51916c8",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Summoned Giant Advanced Grizzly",
-      "zhCN": "召唤巨型高等灰熊"
-    },
-    {
-      "Key": "6990af2dec8c425ea2b9970d0ab46bd5",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Copper Drake",
-      "zhCN": "赤铜龙兽"
-    },
-    {
-      "Key": "215e9f56e8054610b339d75ffa4f9ee0",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Summoned Giant Grizzly",
-      "zhCN": "召唤巨型灰熊"
-    },
-    {
-      "Key": "ee9a9d2f31844be2b7cb124b144bc809",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Summoned Giant Smilodon",
-      "zhCN": "召唤巨型剑齿虎"
-    },
-    {
-      "Key": "d78cef6333094acfb027c9ea446537e5",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Silver Drake",
-      "zhCN": "银龙兽"
-    },
-    {
-      "Key": "9f2c24dc859a4289b1811c76e9edf29e",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Summoned Elder Blizzard Elemental",
-      "zhCN": "召唤长老暴风雪元素"
-    },
-    {
-      "Key": "f8965a40cdce4b03840f3403362aa277",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Sapling Treant",
-      "zhCN": "树人幼苗"
-    },
-    {
-      "Key": "397646f788464ad8b8887c8ca6f61183",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Bronze Drake",
-      "zhCN": "青铜龙兽"
-    },
-    {
-      "Key": "1822845d85d245e1a4e78cc8210b900a",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Summoned Advanced Smilodon",
-      "zhCN": "召唤高等剑齿虎"
-    },
-    {
-      "Key": "a48ac449e70d4b81a5f04bc68cd5e0ad",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Brass Drake",
-      "zhCN": "黄铜龙兽"
-    },
-    {
-      "Key": "df385a2529774cb1ba3bec71ca54effa",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Summoned Huge Blizzard Elemental",
-      "zhCN": "召唤巨型暴风雪元素"
-    },
-    {
-      "Key": "0f2cf0a97d3f45c1bd348e117a3efbf1",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Summoned Giant Advanced Smilodon",
-      "zhCN": "召唤巨型高等剑齿虎"
-    },
-    {
-      "Key": "8ab1da2e175249818cd9529bd3459995",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Summoned Giant Leopard",
-      "zhCN": "召唤巨型花豹"
-    },
-    {
-      "Key": "cceb9f3a49784ef6afab7bdd568637ba",
-      "SimpleName": " (Kingmaker.Localization.SharedStringAsset)LocalizedName",
-      "ProcessTemplates": false,
-      "enGB": "Summoned Young Leopard",
-      "zhCN": "召唤幼年花豹"
+      "enGB": "Crawling Mound",
+      "zhCN": "爬行怪"
     },
     {
       "Key": "72649485145f43a1b53eb14219424047",
@@ -389,18 +389,18 @@
       "zhCN": "所有攻击造成1点流血伤害/轮，但无法叠加"
     },
     {
-      "Key": "024249c8a2ba45699a22e6ee7263d1e7",
-      "SimpleName": "<null>FlavorText",
-      "ProcessTemplates": false,
-      "enGB": "A amulet common to those who raise animals for riding, allowing them to start training early.",
-      "zhCN": "饲养动物的人常用的护身符，可以让他们尽早开始训练。"
-    },
-    {
       "Key": "6174558e720345a48658694e8e2ccba2",
       "SimpleName": "<null>FlavorText",
       "ProcessTemplates": false,
       "enGB": "A small bunch of magic berries made from plant matter with druidic magic.",
       "zhCN": "一小束由植物物质制成的魔法浆果，带有德鲁伊魔法。"
+    },
+    {
+      "Key": "024249c8a2ba45699a22e6ee7263d1e7",
+      "SimpleName": "<null>FlavorText",
+      "ProcessTemplates": false,
+      "enGB": "A amulet common to those who raise animals for riding, allowing them to start training early.",
+      "zhCN": "饲养动物的人常用的护身符，可以让他们尽早开始训练。"
     },
     {
       "Key": "1f339f9d31594459b1ef3b5d57e8aca2",
@@ -1282,11 +1282,10 @@
       "zhCN": "\n你遵循正义的亚空之路。\n秩序之触：你能够以{g|Encyclopedia:Standard_Actions}标准动作{/g}{g|Encyclopedia:TouchAttack}接触{/g}一个自愿生物，向其注入圣洁秩序之力，使其在1{g|Encyclopedia:Combat_Round}轮{/g}内，可将所有{g|Encyclopedia:Attack}攻击检定{/g}、{g|Encyclopedia:Skills}技能检定{/g}、{g|Encyclopedia:Ability_Scores}属性检定{/g}和{g|Encyclopedia:Saving_Throw}豁免检定{/g}视为在{g|Encyclopedia:Dice}d20{/g}的投骰中获得了11的骰面值。每天可使用次数为{g|Encyclopedia:Wisdom}感知{/g}调整值+3。\n威胁灵光：到了8级，你能用标准动作发动30尺的防护灵光，敌人的命中、AC、豁免受到-2惩罚。你每天能使用的轮数等于牧师等级，不必连续。\n领域法术：神圣恩典，共用防护混乱，祈祷术，神圣之惩，支配人类，剑刃障壁，箴铭之语，秩序护盾，支配怪物。"
     },
     {
-      "Key": "bab66feedd7f4602bfff2ac95ff3cb7f",
+      "Key": "9f587fb553514961975091ffdcb902c2",
       "SimpleName": "ArchonDomainLawProgressionSecondary.Description",
       "ProcessTemplates": true,
-      "IsUsed": false,
-      "enGB": "\nYou follow the archons path of righteousness.\nTouch of Law: You can touch a willing creature as a standard action, infusing it with the power of divine order and allowing it to treat all attack rolls, skill checks, ability checks, and saving throws for 1 round as if the natural d20 roll resulted in an 11. You can use this ability a number of times per day equal to 3 + your Wisdom modifier.[LONGEND]\nAura of Menace: At 8th level, you can emit a 30-foot aura of menace as a standard action. Enemies in this aura take a –2 penalty to AC and on attacks and saves as long as they remain inside the aura. You can use this ability for a number of rounds per day equal to your cleric level. These rounds do not need to be consecutive.\nDomain Spells: divine favor, communal protection from chaos, prayer, holy smite, dominate person, blade barrier, dictum, shield of law, dominate monster.",
+      "enGB": "\nYou follow the archons path of righteousness.\nTouch of Law: You can touch a willing creature as a standard action, infusing it with the power of divine order and allowing it to treat all attack rolls, skill checks, ability checks, and saving throws for 1 round as if the natural d20 roll resulted in an 11.[LONGSTART] You can use this ability a number of times per day equal to 3 + your Wisdom modifier.[LONGEND]\nAura of Menace: At 8th level, you can emit a 30-foot aura of menace as a standard action. Enemies in this aura take a –2 penalty to AC and on attacks and saves as long as they remain inside the aura. You can use this ability for a number of rounds per day equal to your cleric level. These rounds do not need to be consecutive.\nDomain Spells: divine favor, communal protection from chaos, prayer, holy smite, dominate person, blade barrier, dictum, shield of law, dominate monster.",
       "zhCN": "\n你遵循正义的亚空之路。\n秩序之触：你能够以{g|Encyclopedia:Standard_Actions}标准动作{/g}{g|Encyclopedia:TouchAttack}接触{/g}一个自愿生物，向其注入圣洁秩序之力，使其在1{g|Encyclopedia:Combat_Round}轮{/g}内，可将所有{g|Encyclopedia:Attack}攻击检定{/g}、{g|Encyclopedia:Skills}技能检定{/g}、{g|Encyclopedia:Ability_Scores}属性检定{/g}和{g|Encyclopedia:Saving_Throw}豁免检定{/g}视为在{g|Encyclopedia:Dice}d20{/g}的投骰中获得了11的骰面值。每天可使用次数为{g|Encyclopedia:Wisdom}感知{/g}调整值+3。\n威胁灵光：到了8级，你能用标准动作发动30尺的防护灵光，敌人的命中、AC、豁免受到-2惩罚。你每天能使用的轮数等于牧师等级，不必连续。\n领域法术：神圣恩典，共用防护混乱，祈祷术，神圣之惩，支配人类，剑刃障壁，箴铭之语，秩序护盾，支配怪物。"
     },
     {
@@ -1298,10 +1297,11 @@
       "zhCN": "\n你遵循正义的亚空之路。\n秩序之触：你能够以{g|Encyclopedia:Standard_Actions}标准动作{/g}{g|Encyclopedia:TouchAttack}接触{/g}一个自愿生物，向其注入圣洁秩序之力，使其在1{g|Encyclopedia:Combat_Round}轮{/g}内，可将所有{g|Encyclopedia:Attack}攻击检定{/g}、{g|Encyclopedia:Skills}技能检定{/g}、{g|Encyclopedia:Ability_Scores}属性检定{/g}和{g|Encyclopedia:Saving_Throw}豁免检定{/g}视为在{g|Encyclopedia:Dice}d20{/g}的投骰中获得了11的骰面值。每天可使用次数为{g|Encyclopedia:Wisdom}感知{/g}调整值+3。\n威胁灵光：到了8级，你能用标准动作发动30尺的防护灵光，敌人的命中、AC、豁免受到-2惩罚。你每天能使用的轮数等于牧师等级，不必连续。\n领域法术：神圣恩典，共用防护混乱，祈祷术，神圣之惩，支配人类，剑刃障壁，箴铭之语，秩序护盾，支配怪物。"
     },
     {
-      "Key": "9f587fb553514961975091ffdcb902c2",
+      "Key": "bab66feedd7f4602bfff2ac95ff3cb7f",
       "SimpleName": "ArchonDomainLawProgressionSecondary.Description",
       "ProcessTemplates": true,
-      "enGB": "\nYou follow the archons path of righteousness.\nTouch of Law: You can touch a willing creature as a standard action, infusing it with the power of divine order and allowing it to treat all attack rolls, skill checks, ability checks, and saving throws for 1 round as if the natural d20 roll resulted in an 11.[LONGSTART] You can use this ability a number of times per day equal to 3 + your Wisdom modifier.[LONGEND]\nAura of Menace: At 8th level, you can emit a 30-foot aura of menace as a standard action. Enemies in this aura take a –2 penalty to AC and on attacks and saves as long as they remain inside the aura. You can use this ability for a number of rounds per day equal to your cleric level. These rounds do not need to be consecutive.\nDomain Spells: divine favor, communal protection from chaos, prayer, holy smite, dominate person, blade barrier, dictum, shield of law, dominate monster.",
+      "IsUsed": false,
+      "enGB": "\nYou follow the archons path of righteousness.\nTouch of Law: You can touch a willing creature as a standard action, infusing it with the power of divine order and allowing it to treat all attack rolls, skill checks, ability checks, and saving throws for 1 round as if the natural d20 roll resulted in an 11. You can use this ability a number of times per day equal to 3 + your Wisdom modifier.[LONGEND]\nAura of Menace: At 8th level, you can emit a 30-foot aura of menace as a standard action. Enemies in this aura take a –2 penalty to AC and on attacks and saves as long as they remain inside the aura. You can use this ability for a number of rounds per day equal to your cleric level. These rounds do not need to be consecutive.\nDomain Spells: divine favor, communal protection from chaos, prayer, holy smite, dominate person, blade barrier, dictum, shield of law, dominate monster.",
       "zhCN": "\n你遵循正义的亚空之路。\n秩序之触：你能够以{g|Encyclopedia:Standard_Actions}标准动作{/g}{g|Encyclopedia:TouchAttack}接触{/g}一个自愿生物，向其注入圣洁秩序之力，使其在1{g|Encyclopedia:Combat_Round}轮{/g}内，可将所有{g|Encyclopedia:Attack}攻击检定{/g}、{g|Encyclopedia:Skills}技能检定{/g}、{g|Encyclopedia:Ability_Scores}属性检定{/g}和{g|Encyclopedia:Saving_Throw}豁免检定{/g}视为在{g|Encyclopedia:Dice}d20{/g}的投骰中获得了11的骰面值。每天可使用次数为{g|Encyclopedia:Wisdom}感知{/g}调整值+3。\n威胁灵光：到了8级，你能用标准动作发动30尺的防护灵光，敌人的命中、AC、豁免受到-2惩罚。你每天能使用的轮数等于牧师等级，不必连续。\n领域法术：神圣恩典，共用防护混乱，祈祷术，神圣之惩，支配人类，剑刃障壁，箴铭之语，秩序护盾，支配怪物。"
     },
     {
@@ -3097,20 +3097,20 @@
       "zhCN": "11 级时，恐惧骑士可以消耗两次 \"罪恶赦免 \"能力的使用次数，在 1 分钟内利用自己的额外能力给予所有盟友该效果。作为一个快速动作，恐惧骑士在视线范围内选择一个目标进行灼烧。恐惧骑士的盟友在他们的攻击投掷上加上他的魅力加成（如果有的话），并在对他的灼烧目标进行的所有伤害投掷上加上他的恐惧骑士等级。攻击会自动绕过该生物可能拥有的任何灾难恢复能力。此外，当赦免光环生效时，恐惧骑士的盟友在受到此能力目标的攻击时，会在其 AC 上获得与他的魅力加成（如果有的话）相等的防御加成。"
     },
     {
-      "Key": "71b3e9bbe7b542cfbed9de9b4a92a59b",
-      "SimpleName": "AuraOfAbsolutionBuff.Description",
-      "ProcessTemplates": true,
-      "IsUsed": false,
-      "enGB": "Once per day, a dreadknight can reach out to the profane lords to grant sinful absolution to the forces arrayed against them. As a swift action, the dreadknight chooses one target within sight to crush. The dreadknight adds their Charisma bonus (if any) on their attack rolls and adds their Dread Knight level on all damage rolls made against the target of their unholy smite. Regardless of the target, sinful absolution attacks automatically bypass any DR the creature might possess. In addition, while Sinful Absolution is in effect, the dreadknight gains a deflection bonus equal to their Charisma modifier(if any) to their AC against attacks made by the target of sinful absolution. The sinful absolution effect remains until the target of sinful absolution is dead or the next time the dreadknight rests and regains their uses of this ability. At 4th level, and at every three levels thereafter, the dreadknight may grant sinful absoltion one additional time per day.",
-      "zhCN": "每天一次，恐惧骑士向亵渎领主索取原罪之力并以此摧毁胆敢反抗她们的势力。\n以一个迅捷动作，恐惧骑士选择以原罪之力侵蚀一个视野内的目标。\n恐惧骑士在他们的攻击检定上加上他们的魅力加值（如果有的话），并在对他们侵蚀目标的所有伤害检定上加上他们的恐惧骑士等级。\n无论是何种目标，原罪斩都会自动穿透该生物可能拥有的任何 DR。\n此外，当原罪斩生效时，恐惧骑士在对抗侵蚀目标的攻击时获得等于其魅力调整值（如果有的话）的偏斜加值。\n原罪斩效果一直持续到侵蚀目标死亡或恐惧骑士下一次休息并恢复该能力使用次数时。在第 4 级以及之后的每 3 级，恐惧骑士每天可以额外使用一次原罪斩。"
-    },
-    {
       "Key": "d1272e843197434680c8a7e9e14b7e48",
       "SimpleName": "AuraOfAbsolutionBuff.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "At 11th level, a dreadknight can expend two uses of his sinful absolution ability to grant the effect to all allies for 1 minute, using his bonuses. As a swift action, the dreadknight chooses one target within sight to smite. The dreadknight's allies add his Charisma bonus (if any) to their attack rolls and add his dreadknight level to all damage rolls made against the target of his smite. Attacks automatically bypass any DR the creature might possess. In addition, while aura of absolution is in effect, the dreadknight's allies gain a deflection bonus equal to his Charisma bonus (if any) to their AC against attacks made by the target of this ability.",
       "zhCN": "11 级时，恐惧骑士可以消耗两次 \"罪恶赦免 \"能力的使用次数，在 1 分钟内利用自己的额外能力给予所有盟友该效果。作为一个快速动作，恐惧骑士在视线范围内选择一个目标进行灼烧。恐惧骑士的盟友在他们的攻击投掷上加上他的魅力加成（如果有的话），并在对他的灼烧目标进行的所有伤害投掷上加上他的恐惧骑士等级。攻击会自动绕过该生物可能拥有的任何灾难恢复能力。此外，当赦免光环生效时，恐惧骑士的盟友在受到此能力目标的攻击时，会在其 AC 上获得与他的魅力加成（如果有的话）相等的防御加成。"
+    },
+    {
+      "Key": "71b3e9bbe7b542cfbed9de9b4a92a59b",
+      "SimpleName": "AuraOfAbsolutionBuff.Description",
+      "ProcessTemplates": true,
+      "IsUsed": false,
+      "enGB": "Once per day, a dreadknight can reach out to the profane lords to grant sinful absolution to the forces arrayed against them. As a swift action, the dreadknight chooses one target within sight to crush. The dreadknight adds their Charisma bonus (if any) on their attack rolls and adds their Dread Knight level on all damage rolls made against the target of their unholy smite. Regardless of the target, sinful absolution attacks automatically bypass any DR the creature might possess. In addition, while Sinful Absolution is in effect, the dreadknight gains a deflection bonus equal to their Charisma modifier(if any) to their AC against attacks made by the target of sinful absolution. The sinful absolution effect remains until the target of sinful absolution is dead or the next time the dreadknight rests and regains their uses of this ability. At 4th level, and at every three levels thereafter, the dreadknight may grant sinful absoltion one additional time per day.",
+      "zhCN": "每天一次，恐惧骑士向亵渎领主索取原罪之力并以此摧毁胆敢反抗她们的势力。\n以一个迅捷动作，恐惧骑士选择以原罪之力侵蚀一个视野内的目标。\n恐惧骑士在他们的攻击检定上加上他们的魅力加值（如果有的话），并在对他们侵蚀目标的所有伤害检定上加上他们的恐惧骑士等级。\n无论是何种目标，原罪斩都会自动穿透该生物可能拥有的任何 DR。\n此外，当原罪斩生效时，恐惧骑士在对抗侵蚀目标的攻击时获得等于其魅力调整值（如果有的话）的偏斜加值。\n原罪斩效果一直持续到侵蚀目标死亡或恐惧骑士下一次休息并恢复该能力使用次数时。在第 4 级以及之后的每 3 级，恐惧骑士每天可以额外使用一次原罪斩。"
     },
     {
       "Key": "34ac698c566645889ad3064b03ca2005",
@@ -3484,6 +3484,13 @@
       "zhCN": "熊图腾动物伙伴"
     },
     {
+      "Key": "a09c02ba158445c1867ca3c4283143d7",
+      "SimpleName": "BearShamanDomainSelection.Description",
+      "ProcessTemplates": true,
+      "enGB": "A bear totem druid who chooses an animal companion must select a bear or wolverine. If choosing a domain, the bear totem druid must choose from the Animal, Earth, Protection, and Strength domains.",
+      "zhCN": "巨熊德鲁伊动物伙伴必须是熊，如果他选择了领域能力的话，他必须以从下几个领域中挑选：动物、大地、保护和力量。"
+    },
+    {
       "Key": "5732b13616734f61ab2639bf8a84e43f",
       "SimpleName": "BearShamanDomainSelection.Description",
       "ProcessTemplates": true,
@@ -3497,13 +3504,6 @@
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "A bear shaman who chooses an animal companion must select a bear. If choosing a domain, the bear shaman must choose from the Animal, Earth, Protection, and Strength domains.",
-      "zhCN": "巨熊德鲁伊动物伙伴必须是熊，如果他选择了领域能力的话，他必须以从下几个领域中挑选：动物、大地、保护和力量。"
-    },
-    {
-      "Key": "a09c02ba158445c1867ca3c4283143d7",
-      "SimpleName": "BearShamanDomainSelection.Description",
-      "ProcessTemplates": true,
-      "enGB": "A bear totem druid who chooses an animal companion must select a bear or wolverine. If choosing a domain, the bear totem druid must choose from the Animal, Earth, Protection, and Strength domains.",
       "zhCN": "巨熊德鲁伊动物伙伴必须是熊，如果他选择了领域能力的话，他必须以从下几个领域中挑选：动物、大地、保护和力量。"
     },
     {
@@ -4183,19 +4183,19 @@
       "zhCN": "到了8级，你能通过触碰令武器变成血光武器，持续轮数为牧师等级一半。你8级能每天使用1次，以后每比8级高4级多1次。血光：流血武器在命中时可以额外造成1点出血伤害。血光武器重复击中可以使流血伤害叠加。出血的生物在该生物的回合开始时受到出血伤害。这可以通过应用任何治疗生命值伤害的法术来终止。"
     },
     {
+      "Key": "4bee6e4f2a794624ada046af6ac995df",
+      "SimpleName": "BloodDomainProgression.Description",
+      "ProcessTemplates": true,
+      "IsUsed": false,
+      "enGB": "\nYou are a crusader for your god, always ready and willing to fight to defend your faith.\nBattle Rage: You can touch a creature as a standard action to give it a bonus on melee damage rolls equal to 1/2 your level in the class that gave you access to this domain for 1 round (minimum +1). You can do so a number of times per day equal to 3 + your Wisdom modifier.\nWounding Blade (Su): At 8th level, you can give a weapon that you touch the wounding special weapon quality for a number of rounds equal to 1/2 your cleric level. You can use this ability once per day at 8th level, and an additional time per day for every four levels beyond 8th.\nDomain Spells: magic weapon, aid, vampiric touch, divine power, vinetrap, blade barrier, inflict serious wounds, power word stun, power word kill."
+    },
+    {
       "Key": "80b493600a354fc692f498c39d0c432e",
       "SimpleName": "BloodDomainProgression.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "\nYou are a crusader for your god, always ready and willing to fight to defend your faith.\nBattle Rage: You can touch a creature as a standard action to give it a bonus on melee damage rolls equal to 1/2 your level in the class that gave you access to this domain for 1 round (minimum +1). You can do so a number of times per day equal to 3 + your Wisdom modifier.\nWounding Blade (Su): At 8th level, you can give a weapon that you touch the wounding special weapon quality for a number of rounds equal to 1/2 your cleric level. You can use this ability once per day at 8th level, and an additional time per day for every four levels beyond 8th.\nDomain Spells: magic weapon, aid, vampiric touch, diving power, vinetrap, blade barrier, inflict serious wounds, power word stun, power word kill.",
       "zhCN": "\n你是神明的圣战士，时刻准备着为保卫自己的信仰而战。\n战斗怒火：作为{g|Encyclopedia:Standard_Actions}标准动作{/g}，你可{g|Encyclopedia:TouchAttack}接触{/g}生物，赋予其近战{g|Encyclopedia:Damage}伤害检定{/g}{g|Encyclopedia:Bonus}加值{/g}，加值等于1/2赋予你此领域的职业等级（最小为1），持续1{g|Encyclopedia:Combat_Round}轮{/g}。每天可使用次数为{g|Encyclopedia:Wisdom}感知{/g}调整值+3。\n伤刃：到了8级，你能通过触碰令武器变成血光武器，持续轮数为牧师等级一半。你8级能每天使用1次，以后每比8级高4级多1次。\n领域法术：魔化武器，援助术，吸血鬼之触，神能，藤蔓陷阱，剑刃障壁，群体造成重伤，律令震慑，律令死亡。"
-    },
-    {
-      "Key": "4bee6e4f2a794624ada046af6ac995df",
-      "SimpleName": "BloodDomainProgression.Description",
-      "ProcessTemplates": true,
-      "IsUsed": false,
-      "enGB": "\nYou are a crusader for your god, always ready and willing to fight to defend your faith.\nBattle Rage: You can touch a creature as a standard action to give it a bonus on melee damage rolls equal to 1/2 your level in the class that gave you access to this domain for 1 round (minimum +1). You can do so a number of times per day equal to 3 + your Wisdom modifier.\nWounding Blade (Su): At 8th level, you can give a weapon that you touch the wounding special weapon quality for a number of rounds equal to 1/2 your cleric level. You can use this ability once per day at 8th level, and an additional time per day for every four levels beyond 8th.\nDomain Spells: magic weapon, aid, vampiric touch, divine power, vinetrap, blade barrier, inflict serious wounds, power word stun, power word kill."
     },
     {
       "Key": "14f4da71da944c54ac4775d97b83d313",
@@ -4416,19 +4416,19 @@
       "zhCN": "复仇"
     },
     {
-      "Key": "82ed0699d67d45ab9c5c20e5da85796d",
-      "SimpleName": "CavesDomainBaseFeature.Description",
-      "ProcessTemplates": true,
-      "enGB": "\nYou have mastery over rock and stone, can manifest vast pits, and command earth creatures.\nAcid Dart: As a standard action, you can unleash an acid dart targeting any foe within 30 feet as a ranged touch attack. This acid dart deals 1d6 points of acid damage+ 1 point for every two levels you possess in the class that gave you access to this domain. You can use this ability a number of times per day equal to 3 + your Wisdom modifier.\nTunnel Runner: At 8th level, while underground you may gain an insight bonus equal to your cleric level on Stealth and Perception skill checks and an insight bonus equal to your Wisdom modifier on initiative checks. You can use this ability for 1 minute per day per cleric level you possess. These minutes do not need to be consecutive, but they must be spent in 1-minute increments.",
-      "zhCN": "\n你可以控制岩石和石头，可以显现巨型的坑洞，并指挥大地生物：作为一个标准动作，你可以对30英尺范围内的任何敌人释放酸性飞镖作为范围触碰攻击。这枚酸性飞镖会造成 1d6 点酸性伤害+1 点伤害，每提升两级你就会获得该领域的等级。你每天可以使用此能力的次数等于 3 + 你的感知修正值。\n隧道奔跑者：8级时，当你在地下时，你可以在隐身和感知技能检定上获得相当于你的牧师等级的洞察加值，在主动检定上获得相当于你的感知修正值的洞察加值。你拥有的神职等级越高，每天可使用此能力 1 分钟。这些分钟不需要连续使用，但必须以 1 分钟为单位。"
-    },
-    {
       "Key": "1a082e677bb2456e8a1e6c006da3ea4f",
       "SimpleName": "CavesDomainBaseFeature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "\nYou have mastery over rock and stone, can manifest vast pits, and command earth creatures.\nAcid Dart: As a standard action, you can unleash an acid dart targeting any foe within 30 feet as a ranged touch attack. This acid dart deals 1d6 points of acid damage+ 1 point for every two levels you possess in the class that gave you access to this domain. You can use this ability a number of times per day equal to 3 + your Wisdom modifier.\nTunnel Runner (Su): At 6th level, as a standard action, you can create a 30-foot aura of gale-like winds that slows the progress of enemies. Creatures in the aura cannot take a 5-foot step and treat it as as difficult terrain. You can use this ability for a number of rounds per day equal to your cleric level. The rounds do not need to be consecutive.",
       "zhCN": "\n你拥有对大地、金属与石头的掌控，可发射酸蚀飞镖并指挥土系生物。\n强酸镖：作为{g|Encyclopedia:Standard_Actions}标准动作{/g}，你能够以远程{g|Encyclopedia:TouchAttack}接触攻击{/g}的方式，对30英尺内的任意敌人发射一枚强酸镖。此强酸镖将造成{g|Encyclopedia:Dice}1d6{/g}点{g|Encyclopedia:Energy_Damage}酸蚀伤害{/g}，赋予你此领域的职业等级每提升2级，可额外造成1点伤害。每天可使用次数为{g|Encyclopedia:Wisdom}感知{/g}调整值+3。\n隧道竞走：在第 6 级，在地下时，你在隐匿和察觉技能检定上获得等同于你牧师等级的洞察加值，在先攻检定上获得等同于你的感知调整值的洞察加值。每天时间为每牧师等级1分钟，不需连续但必须以分钟计。"
+    },
+    {
+      "Key": "82ed0699d67d45ab9c5c20e5da85796d",
+      "SimpleName": "CavesDomainBaseFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nYou have mastery over rock and stone, can manifest vast pits, and command earth creatures.\nAcid Dart: As a standard action, you can unleash an acid dart targeting any foe within 30 feet as a ranged touch attack. This acid dart deals 1d6 points of acid damage+ 1 point for every two levels you possess in the class that gave you access to this domain. You can use this ability a number of times per day equal to 3 + your Wisdom modifier.\nTunnel Runner: At 8th level, while underground you may gain an insight bonus equal to your cleric level on Stealth and Perception skill checks and an insight bonus equal to your Wisdom modifier on initiative checks. You can use this ability for 1 minute per day per cleric level you possess. These minutes do not need to be consecutive, but they must be spent in 1-minute increments.",
+      "zhCN": "\n你可以控制岩石和石头，可以显现巨型的坑洞，并指挥大地生物：作为一个标准动作，你可以对30英尺范围内的任何敌人释放酸性飞镖作为范围触碰攻击。这枚酸性飞镖会造成 1d6 点酸性伤害+1 点伤害，每提升两级你就会获得该领域的等级。你每天可以使用此能力的次数等于 3 + 你的感知修正值。\n隧道奔跑者：8级时，当你在地下时，你可以在隐身和感知技能检定上获得相当于你的牧师等级的洞察加值，在主动检定上获得相当于你的感知修正值的洞察加值。你拥有的神职等级越高，每天可使用此能力 1 分钟。这些分钟不需要连续使用，但必须以 1 分钟为单位。"
     },
     {
       "Key": "a1d121274e404e86a3d6ba0729da73f8",
@@ -4619,19 +4619,19 @@
       "zhCN": "\n你的一触一笑都能迷惑敌人，你的美丽和优雅是神圣的。\n晕眩之触：作为近战触碰攻击，你可以使生物眩晕1回合。命中骰子比你获得此领域的等级高的生物不受影响。你每天可以使用此能力的次数等于 3 + 你的感知修正值。\n迷人微笑：8级时，你可以施放 \"魅惑他人 \"作为快速行动，DC为10+你获得此领域的等级的1/2+你的感知值。魅惑他人的效果持续 1 个回合。您每天可以使用此能力的次数等于您的施法者等级。"
     },
     {
-      "Key": "7d31dca0329a479796ab776eab37cb02",
-      "SimpleName": "CharmDomainProgressionDruid.Description",
-      "ProcessTemplates": true,
-      "enGB": "\nYou can baffle and befuddle foes with a touch or a smile, and your beauty and grace are divine. \nDazing Touch: You can cause a living creature to become dazed for 1 round as a melee touch attack. Creatures with more Hit Dice than your level in the class that gave you access to this domain are unaffected. You can use this ability a number of times per day equal to 3 + your Wisdom modifier. \nCharming Smile: At 8th level, you can cast charm person as a swift action, with a DC of 10 + 1/2 your level in the class that gave you access to this domain + your Wisdom modifier. The effect of charm person lasts for 1 round. You can use this ability a number of times per day equal to your caster level. \nDomain Spells: hypnotism, hideous laughter, deep slumber, rainbow pattern, dominate person, mass eagle's splendor, insanity, euphoric tranquility, dominate monster.",
-      "zhCN": "\n你的一触一笑都能迷惑敌人，你的美丽和优雅是神圣的。\n晕眩之触：作为近战触碰攻击，你可以使生物眩晕1回合。命中骰子比你获得此领域的等级高的生物不受影响。你每天可以使用此能力的次数等于 3 + 你的感知修正值。\n迷人微笑：8级时，你可以施放 \"魅惑他人 \"作为快速行动，DC为10+你获得此领域的等级的1/2+你的感知值。魅惑他人的效果持续 1 个回合。你每天可以使用此能力的次数等于你的施法者等级。\n领域法术：催眠术、狰狞的笑声、深度沉睡、彩虹图案、支配他人、群鹰之华、精神错乱、极乐宁静、支配怪物。"
-    },
-    {
       "Key": "ee9f941fe17a463982b189da267efdcc",
       "SimpleName": "CharmDomainProgressionDruid.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "\nYou can baffle and befuddle foes with a touch or a smile, and your beauty and grace are divine. Dazing Touch: You can cause a living creature to become dazed for 1 round as a melee touch attack. Creatures with more Hit Dice than your level in the class that gave you access to this domain are unaffected. You can use this ability a number of times per day equal to 3 + your Wisdom modifier. Charming Smile: At 8th level, you can cast charm person as a swift action, with a DC of 10 + 1/2 your level in the class that gave you access to this domain + your Wisdom modifier. The effect of charm person lasts for 1 round. You can use this ability a number of times per day equal to your caster level. Domain Spells: hypnotism, hideous laughter, deep slumber, rainbow pattern, dominate person, mass eagle's splendor, insanity, euphoric tranquility, dominate monster.",
       "zhCN": "你可以用触摸或微笑来迷惑和迷惑敌人，你的美丽和优雅是神圣的。眩晕之触：你可以作为近战接触攻击使一个活物眩晕 1 轮。生命骰数高于您的等级且允许您访问此领域的生物不受影响。你每天可以使用这个能力的次数等于 3 + 你的感知调整值。迷人的微笑：在第 8 级时，你可以以一个迅捷动作施展魅惑人，DC 为 10 + 1/2 你在允许你进入该领域的职业中的等级 + 你的感知调整值。魅惑人效果持续1轮。你每天可以使用此能力的次数等于你的施法者等级。领域法术：催眠术，狰狞笑声，沉睡，虹纹，主宰人，群雄鹰辉，精神错乱，欣快宁静，主宰怪物。"
+    },
+    {
+      "Key": "7d31dca0329a479796ab776eab37cb02",
+      "SimpleName": "CharmDomainProgressionDruid.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nYou can baffle and befuddle foes with a touch or a smile, and your beauty and grace are divine. \nDazing Touch: You can cause a living creature to become dazed for 1 round as a melee touch attack. Creatures with more Hit Dice than your level in the class that gave you access to this domain are unaffected. You can use this ability a number of times per day equal to 3 + your Wisdom modifier. \nCharming Smile: At 8th level, you can cast charm person as a swift action, with a DC of 10 + 1/2 your level in the class that gave you access to this domain + your Wisdom modifier. The effect of charm person lasts for 1 round. You can use this ability a number of times per day equal to your caster level. \nDomain Spells: hypnotism, hideous laughter, deep slumber, rainbow pattern, dominate person, mass eagle's splendor, insanity, euphoric tranquility, dominate monster.",
+      "zhCN": "\n你的一触一笑都能迷惑敌人，你的美丽和优雅是神圣的。\n晕眩之触：作为近战触碰攻击，你可以使生物眩晕1回合。命中骰子比你获得此领域的等级高的生物不受影响。你每天可以使用此能力的次数等于 3 + 你的感知修正值。\n迷人微笑：8级时，你可以施放 \"魅惑他人 \"作为快速行动，DC为10+你获得此领域的等级的1/2+你的感知值。魅惑他人的效果持续 1 个回合。你每天可以使用此能力的次数等于你的施法者等级。\n领域法术：催眠术、狰狞的笑声、深度沉睡、彩虹图案、支配他人、群鹰之华、精神错乱、极乐宁静、支配怪物。"
     },
     {
       "Key": "a3bbb527e58a48c4b2eac6d3c31932cb",
@@ -5894,19 +5894,19 @@
       "zhCN": "冷眼"
     },
     {
+      "Key": "a1ecd92b79f0422996393afbc6a01fe3",
+      "SimpleName": "CurseDomainBaseFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nYou are infused with fate, spreading ill omens to foes while granting fortune to yourself.\nMalign Eye: As a standard action, you can afflict one target within 30 feet with your malign eye, causing it to take a –2 penalty on all saving throws against your spells. The effect lasts for 1 minute. You can use this ability for a number of times per day equal to 3 + your Wisdom modifier.\nDivine Fortune: At 6th level, as a standard action, you can bless yourself with divine luck. For the next half your level in the class that gave you access to this domain rounds you roll two times on every d20 roll and take the best result. You can use this ability once per day at 6th level, and one additional time per day for every 6 levels in the class that gave you access to this domain beyond 6th.",
+      "zhCN": "\n你被命运灌注，向敌人散播不祥之兆，同时为自己带来幸运。\n邪恶之眼：作为一个标准动作，你可以用你的邪恶之眼折磨30英尺内的一个目标，使其在所有针对你的法术的豁免检定中受到-2的惩罚。效果持续 1 分钟。您每天可以使用此能力的次数等于 3 + 您的感知修正值：6级时，作为标准动作，你可以用神圣的幸运祝福自己。持续你在此领域职业等级的一般轮次，你可以在每次D20掷骰子时掷两次，取最好的结果。在 6 级时，您每天可以使用一次此能力，在 6 级之后，每升 6 级，每天可以额外使用一次。"
+    },
+    {
       "Key": "625fa031c02c41708049ee33d6d6595d",
       "SimpleName": "CurseDomainBaseFeature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "\nYou are infused with fate, spreading ill omens to foes while granting fortune to yourself.\nMalign Eye: As a standard action, you can afflict one target within 30 feet with your malign eye, causing it to take a –2 penalty on all saving throws against your spells. The effect lasts for 1 minute. You can use this ability for a number of times per day equal to 3 + your Wisdom modifier.\nMight of the Gods: At 8th level, you add 1/2 of your level in the class that gave you access to this domain as an enhancement bonus to your Athletics checks.",
       "zhCN": "\n你与命运融为一体，向敌人传播恶兆，同时给自己带来好运。\n冷眼:以标准动作，你怨恨地瞪了30尺内单个目标一眼，令其对你的所有法术的豁免检定受到-2惩罚。效果持续1分钟或者到目标攻击命中你，每天能使用的次数为“3+感知修正”。\n神圣幸运：6级起，你可以用标准{g|Encyclopedia:CA_Types}动作{/g}，以神圣的幸运自我祝福。接下来的等于赋予你此领域的职业等级一半的{g|Encyclopedia:Combat_Round}轮数{/g}内，你可以为所有d20检定投骰两次，并取最有利的结果。6级时你每天可施展一次此能力，之后你每在赋予你此领域的职业上提升6级，就可再获得一次每日施展次数。"
-    },
-    {
-      "Key": "a1ecd92b79f0422996393afbc6a01fe3",
-      "SimpleName": "CurseDomainBaseFeature.Description",
-      "ProcessTemplates": true,
-      "enGB": "\nYou are infused with fate, spreading ill omens to foes while granting fortune to yourself.\nMalign Eye: As a standard action, you can afflict one target within 30 feet with your malign eye, causing it to take a –2 penalty on all saving throws against your spells. The effect lasts for 1 minute. You can use this ability for a number of times per day equal to 3 + your Wisdom modifier.\nDivine Fortune: At 6th level, as a standard action, you can bless yourself with divine luck. For the next half your level in the class that gave you access to this domain rounds you roll two times on every d20 roll and take the best result. You can use this ability once per day at 6th level, and one additional time per day for every 6 levels in the class that gave you access to this domain beyond 6th.",
-      "zhCN": "\n你被命运灌注，向敌人散播不祥之兆，同时为自己带来幸运。\n邪恶之眼：作为一个标准动作，你可以用你的邪恶之眼折磨30英尺内的一个目标，使其在所有针对你的法术的豁免检定中受到-2的惩罚。效果持续 1 分钟。您每天可以使用此能力的次数等于 3 + 您的感知修正值：6级时，作为标准动作，你可以用神圣的幸运祝福自己。持续你在此领域职业等级的一般轮次，你可以在每次D20掷骰子时掷两次，取最好的结果。在 6 级时，您每天可以使用一次此能力，在 6 级之后，每升 6 级，每天可以额外使用一次。"
     },
     {
       "Key": "4bc3141c356a4e2a8672b45e57043aab",
@@ -5940,6 +5940,14 @@
       "zhCN": "\n你被命运灌注，向敌人散播不祥之兆，同时为自己带来幸运。\n邪恶之眼：作为一个标准动作，你可以用你的邪恶之眼折磨30英尺内的一个目标，使其在所有针对你的法术的豁免检定中受到-2的惩罚。效果持续 1 分钟。您每天可以使用此能力的次数等于 3 + 您的感知修正值：6级时，作为标准动作，你可以用神圣的幸运祝福自己。持续你在此领域职业等级的一般轮次，你可以在每次D20掷骰子时掷两次，取最好的结果。六级时每天可以使用一次，六级后每升六级，每天可以额外使用一次。\n领域法术：破敌、援助、赐予破敌、公有能量保护、破除魔法、眼球术、大恢复术、预知时刻、群体治疗。"
     },
     {
+      "Key": "ebd5d5a44321402b93f9bf4184010191",
+      "SimpleName": "CurseDomainProgressionSecondary.Description",
+      "ProcessTemplates": true,
+      "IsUsed": false,
+      "enGB": "\nYou are infused with fate, spreading ill omens to foes while granting fortune to yourself.\nMalign Eye: As a standard action, you can afflict one target within 30 feet with your malign eye, causing it to take a –2 penalty on all saving throws against your spells. The effect lasts for 1 minute. You can use this ability for a number of times per day equal to 3 + your Wisdom modifier.\nDivine Fortune: At 6th level, as a standard action, you can bless yourself with divine luck. For the next half your level in the class that gave you access to this domain rounds you roll two times on every d20 roll and take the best result. You can use this ability once per day at 6th level, and one additional time per day for every 6 levels in the class that gave you access to this domain beyond 6th.\nDomain Spells: bane, aid, bestow curse, communal protection from energy, break enchantment, eyebite, restoration greater, moment of prescience, mass heal.",
+      "zhCN": "\n你被命运灌注，向敌人散播不祥之兆，同时为自己带来幸运。\n邪恶之眼：作为一个标准动作，你可以用你的邪恶之眼折磨30英尺内的一个目标，使其在所有针对你的法术的豁免检定中受到-2的惩罚。效果持续 1 分钟。您每天可以使用此能力的次数等于 3 + 您的感知修正值：6级时，作为标准动作，你可以用神圣的幸运祝福自己。持续你在此领域职业等级的一般轮次，你可以在每次D20掷骰子时掷两次，取最好的结果。六级时每天可以使用一次，六级后每升六级，每天可以额外使用一次。\n领域法术：破敌、援助、赐予破敌、公有能量保护、破除魔法、眼球术、大恢复术、预知时刻、群体治疗。"
+    },
+    {
       "Key": "0bccb32cda1b4f11aca1e1b4c740aa6d",
       "SimpleName": "CurseDomainProgressionSecondary.Description",
       "ProcessTemplates": true,
@@ -5954,14 +5962,6 @@
       "IsUsed": false,
       "enGB": "\nYou are infused with fate, spreading ill omens to foes while granting fortune to yourself.\nMalign Eye: As a standard action, you can afflict one target within 30 feet with your malign eye, causing it to take a –2 penalty on all saving throws against your spells. The effect lasts for 1 minute. You can use this ability for a number of times per day equal to 3 + your Wisdom modifier.\nMight of the Gods: At 8th level, you add 1/2 of your level in the class that gave you access to this domain as an enhancement bonus to your Athletics checks.\nDomain Spells: bane, aid, bestow curse, communal protection from energy, break enchantment, eyebite, restoration greater, euphoric tranquility, mass heal.",
       "zhCN": "\n你与命运融为一体，向敌人传播恶兆，同时给自己带来好运。\n冷眼:以标准动作，你怨恨地瞪了30尺内单个目标一眼，令其对你的所有法术的豁免检定受到-2惩罚。效果持续1分钟或者到目标攻击命中你，每天能使用的次数为“3+感知修正”。\n神圣幸运：6级起，你可以用标准{g|Encyclopedia:CA_Types}动作{/g}，以神圣的幸运自我祝福。接下来的等于赋予你此领域的职业等级一半的{g|Encyclopedia:Combat_Round}轮数{/g}内，你可以为所有d20检定投骰两次，并取最有利的结果。6级时你每天可施展一次此能力，之后你每在赋予你此领域的职业上提升6级，就可再获得一次每日施展次数。\n领域法术：绝望术、援助术、降咒、共用防护能量、破除法术、凶险注视、高等复原术、狂喜宁静、群体医疗术。"
-    },
-    {
-      "Key": "ebd5d5a44321402b93f9bf4184010191",
-      "SimpleName": "CurseDomainProgressionSecondary.Description",
-      "ProcessTemplates": true,
-      "IsUsed": false,
-      "enGB": "\nYou are infused with fate, spreading ill omens to foes while granting fortune to yourself.\nMalign Eye: As a standard action, you can afflict one target within 30 feet with your malign eye, causing it to take a –2 penalty on all saving throws against your spells. The effect lasts for 1 minute. You can use this ability for a number of times per day equal to 3 + your Wisdom modifier.\nDivine Fortune: At 6th level, as a standard action, you can bless yourself with divine luck. For the next half your level in the class that gave you access to this domain rounds you roll two times on every d20 roll and take the best result. You can use this ability once per day at 6th level, and one additional time per day for every 6 levels in the class that gave you access to this domain beyond 6th.\nDomain Spells: bane, aid, bestow curse, communal protection from energy, break enchantment, eyebite, restoration greater, moment of prescience, mass heal.",
-      "zhCN": "\n你被命运灌注，向敌人散播不祥之兆，同时为自己带来幸运。\n邪恶之眼：作为一个标准动作，你可以用你的邪恶之眼折磨30英尺内的一个目标，使其在所有针对你的法术的豁免检定中受到-2的惩罚。效果持续 1 分钟。您每天可以使用此能力的次数等于 3 + 您的感知修正值：6级时，作为标准动作，你可以用神圣的幸运祝福自己。持续你在此领域职业等级的一般轮次，你可以在每次D20掷骰子时掷两次，取最好的结果。六级时每天可以使用一次，六级后每升六级，每天可以额外使用一次。\n领域法术：破敌、援助、赐予破敌、公有能量保护、破除魔法、眼球术、大恢复术、预知时刻、群体治疗。"
     },
     {
       "Key": "3d776fbbe9694b319dcfddb0d39ab2d5",
@@ -6472,19 +6472,19 @@
       "zhCN": "\n你的灵魂体现了恶魔的无序和邪恶本性，你的主人赋予你深渊的力量。\n深渊狂怒：以迅捷动作，你让自己获得等于牧师等级一半的增强加值到近战命中伤害和战技检定上1轮，同时AC受到-2惩罚。每天能用“3+感知修正”次。\n邪恶镰刀：在第 8 级时，你可以赋予你接触到的武器污邪附魔，持续轮数等于你获取该领域的职业等级的 1/2。你可以在 8 级时每天使用一次此能力，8 级之后每 4 级每天可以额外使用一次。\n领域法术：丧志术，颤骨，狂暴术，污邪之害，杀生术，召唤怪物VI，渎神之语，污邪灵光，召唤怪物IX。"
     },
     {
+      "Key": "1d3bdb89b23741b1b2fc09b1d3319618",
+      "SimpleName": "DemonDomainEvilProgressionSecondary.Description",
+      "ProcessTemplates": true,
+      "IsUsed": false,
+      "enGB": "\nYour soul embodies the anarchic and evil nature of demonkind, your master grants you the power of the Abyss.\nFury of the Abyss: As a swift action, you can give yourself an enhancement bonus equal to 1/2 your cleric level (minimum +1) on melee attacks, melee damage rolls, and combat maneuver checks. This bonus lasts for 1 round. During this round, you take a –2 penalty to AC. You can use this ability for a number of times per day equal to 3 + your Wisdom modifier.\nScythe of Evil: At 8th level, you can give a weapon touched the unholy special weapon quality for a number of rounds equal to 1/2 your level in the class that gave you accessto this domain. You can use this ability once per day at 8th level, and an additional time per day for every four levels beyond 8th.\nDomain Spells: doom, boneshaker, rage, unholy blight, slay living, summon monster VI, blasphemy, unholy aura, summon monster IX."
+    },
+    {
       "Key": "66385a41b42a49988c57428cb0412222",
       "SimpleName": "DemonDomainEvilProgressionSecondary.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "\nYour soul embodies the anarchic and evil nature of demonkind, your master grants you the power of the Abyss.\nFury of the Abyss: As a swift action, you can give yourself an enhancement bonus equal to 1/2 your cleric level (minimum +1) on melee attacks, melee damage rolls, and combat maneuver checks. This bonus lasts for 1 round. During this round, you take a –2 penalty to AC. You can use this ability for a number of times per day equal to 3 + your Wisdom modifier.\nScythe of Evil: At 8th level, you can give a weapon touched the unholy special weapon quality for a number of rounds equal to 1/2 your level in the class that gave you accessto this domain. You can use this ability once per day at 8th level, and an additional time per day for every four levels beyond 8th.\nDomain Spells: doom, communal protection from law, rage, freedom of movement, acidic spray, summon monster VI, word of chaos, cloak of chaos, summon monster IX.",
       "zhCN": "\n你的灵魂体现了恶魔的无序和邪恶本性，你的主人赋予你深渊的力量。\n深渊狂怒：以迅捷动作，你让自己获得等于牧师等级一半的增强加值到近战命中伤害和战技检定上1轮，同时AC受到-2惩罚。每天能用“3+感知修正”次。\n邪恶镰刀：在第 8 级时，你可以赋予你接触到的武器污邪附魔，持续轮数等于你获取该领域的职业等级的 1/2。你可以在 8 级时每天使用一次此能力，8 级之后每 4 级每天可以额外使用一次。\n领域法术：丧志术，颤骨，狂暴术，污邪之害，杀生术，召唤怪物VI，渎神之语，污邪灵光，召唤怪物IX。"
-    },
-    {
-      "Key": "1d3bdb89b23741b1b2fc09b1d3319618",
-      "SimpleName": "DemonDomainEvilProgressionSecondary.Description",
-      "ProcessTemplates": true,
-      "IsUsed": false,
-      "enGB": "\nYour soul embodies the anarchic and evil nature of demonkind, your master grants you the power of the Abyss.\nFury of the Abyss: As a swift action, you can give yourself an enhancement bonus equal to 1/2 your cleric level (minimum +1) on melee attacks, melee damage rolls, and combat maneuver checks. This bonus lasts for 1 round. During this round, you take a –2 penalty to AC. You can use this ability for a number of times per day equal to 3 + your Wisdom modifier.\nScythe of Evil: At 8th level, you can give a weapon touched the unholy special weapon quality for a number of rounds equal to 1/2 your level in the class that gave you accessto this domain. You can use this ability once per day at 8th level, and an additional time per day for every four levels beyond 8th.\nDomain Spells: doom, boneshaker, rage, unholy blight, slay living, summon monster VI, blasphemy, unholy aura, summon monster IX."
     },
     {
       "Key": "2e4cea931dd1412f92f1d58bb481e2d3",
@@ -6820,17 +6820,17 @@
       "zhCN": "获得月球秘示域的法术和启示。\n由于神圣草药师原型的出现，从该原型中获得的类技能被草药大师特性和酿造药剂专长所取代。"
     },
     {
-      "Key": "31a9fed2abc44429a9c2c3d3d057c3d4",
-      "SimpleName": "DivineHerbalistMetalMysteryFeature.Description",
-      "ProcessTemplates": true,
-      "enGB": "Gain access to the spells and revelations of the metal mystery. \nDue to the divine herbalist archetype the class skills gained from this archetypeare replaced by the master herbalist feature and the brew potions feat."
-    },
-    {
       "Key": "f6fb6951c7ff4a24b3578ccd8a3c4e30",
       "SimpleName": "DivineHerbalistMetalMysteryFeature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "Gain access to the spells and revelations of the Metal mystery. \nDue to the divine herbalist archetype the class skills gained from this archetypeare replaced by the master herbalist feature and the brew potions feat."
+    },
+    {
+      "Key": "31a9fed2abc44429a9c2c3d3d057c3d4",
+      "SimpleName": "DivineHerbalistMetalMysteryFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "Gain access to the spells and revelations of the metal mystery. \nDue to the divine herbalist archetype the class skills gained from this archetypeare replaced by the master herbalist feature and the brew potions feat."
     },
     {
       "Key": "a45ba8a7ca3b45f8a93e9369e2123a4b",
@@ -8103,18 +8103,18 @@
       "zhCN": "龙兽酸蚀吐息"
     },
     {
+      "Key": "c9243b63bf01462db1c4c04fe50be4f3",
+      "SimpleName": "DrakeBreathWeaponAcid1Feature.Description",
+      "ProcessTemplates": true,
+      "enGB": "This breath weapon deals 4d6 points of acid damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day.",
+      "zhCN": "这种喷吐武器在 15 英尺锥形范围内造成 4d6 点酸蚀伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮才能恢复。在升级之前，您可以每天使用两次。"
+    },
+    {
       "Key": "ebc705b901f5406d9285e6bb351cc811",
       "SimpleName": "DrakeBreathWeaponAcid1Feature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "This breath weapon deals 4d6 points of acid damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day.",
-      "zhCN": "这种喷吐武器在 15 英尺锥形范围内造成 4d6 点酸蚀伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮才能恢复。在升级之前，您可以每天使用两次。"
-    },
-    {
-      "Key": "c9243b63bf01462db1c4c04fe50be4f3",
-      "SimpleName": "DrakeBreathWeaponAcid1Feature.Description",
-      "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 4d6 points of acid damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day.",
       "zhCN": "这种喷吐武器在 15 英尺锥形范围内造成 4d6 点酸蚀伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮才能恢复。在升级之前，您可以每天使用两次。"
     },
     {
@@ -8231,18 +8231,18 @@
       "zhCN": "这种喷吐武器在 15 英尺锥形范围内造成 4d6 点寒冷伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮才能恢复。在升级之前，您可以每天使用两次。"
     },
     {
+      "Key": "0ef9c57e42be40f68560acfccc9ccfcc",
+      "SimpleName": "DrakeBreathWeaponCold2.Description",
+      "ProcessTemplates": true,
+      "enGB": "This breath weapon deals 8d6 points of cold damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day.",
+      "zhCN": "这种喷吐武器在 30 英尺锥形范围内造成 8d6 点寒冷伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮才能恢复。在升级之前，您可以每天使用 5 次。"
+    },
+    {
       "Key": "656c5f75a55b4485b4f3535f7638d9b1",
       "SimpleName": "DrakeBreathWeaponCold2.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "This breath weapon deals 8d6 points of cold damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day.",
-      "zhCN": "这种喷吐武器在 30 英尺锥形范围内造成 8d6 点寒冷伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮才能恢复。在升级之前，您可以每天使用 5 次。"
-    },
-    {
-      "Key": "0ef9c57e42be40f68560acfccc9ccfcc",
-      "SimpleName": "DrakeBreathWeaponCold2.Description",
-      "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 8d6 points of cold damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day.",
       "zhCN": "这种喷吐武器在 30 英尺锥形范围内造成 8d6 点寒冷伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮才能恢复。在升级之前，您可以每天使用 5 次。"
     },
     {
@@ -8306,19 +8306,19 @@
       "zhCN": "这种喷吐武器在 50 英尺锥形范围内造成每龙兽伙伴等级 1d6 点寒冷伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮才能恢复。您可以每天使用 5 次。解锁它可以让你在不消耗任何资源的情况下使用高等喷吐武器，但是你必须等待 1d4 轮才能充能。与非神话的吐息攻击不同，这不会伤害盟友。"
     },
     {
-      "Key": "eb3d8c2900514c838132616b1975f49a",
-      "SimpleName": "DrakeBreathWeaponElectricity1.Description",
-      "ProcessTemplates": true,
-      "IsUsed": false,
-      "enGB": "This breath weapon deals 4d6 points of electricity damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day.",
-      "zhCN": "这种喷吐武器在 15 英尺锥形范围内造成 4d6 点电击伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮才能恢复。在升级之前，您可以每天使用两次。"
-    },
-    {
       "Key": "791c70eb71fa47bc939447ac7c5232aa",
       "SimpleName": "DrakeBreathWeaponElectricity1.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "This breath weapon deals 4d6 points of electricity damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day.",
+      "zhCN": "这种喷吐武器在 15 英尺锥形范围内造成 4d6 点电击伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮才能恢复。在升级之前，您可以每天使用两次。"
+    },
+    {
+      "Key": "eb3d8c2900514c838132616b1975f49a",
+      "SimpleName": "DrakeBreathWeaponElectricity1.Description",
+      "ProcessTemplates": true,
+      "IsUsed": false,
+      "enGB": "This breath weapon deals 4d6 points of electricity damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day.",
       "zhCN": "这种喷吐武器在 15 英尺锥形范围内造成 4d6 点电击伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮才能恢复。在升级之前，您可以每天使用两次。"
     },
     {
@@ -8366,18 +8366,18 @@
       "zhCN": "高等龙兽闪电吐息"
     },
     {
-      "Key": "8f10dfe77a9048439f53573f4e1428e1",
-      "SimpleName": "DrakeBreathWeaponElectricity2Feature.Description",
-      "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 8d6 points of electricity damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day. \nUnlocking this allows you to use your lesser breath weapon without spending any resources, however you must wait 1d4 rounds to recharge.",
-      "zhCN": "这种喷吐武器在 30 英尺锥形范围内造成 8d6 点电击伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮才能恢复。在升级之前，您可以每天使用 5 次。解锁它可以让你在不消耗任何资源的情况下使用你的次级喷吐武器，但是你必须等待 1d4 轮才能充能。"
-    },
-    {
       "Key": "4778d4eca01c4e718788e59b77ea34c6",
       "SimpleName": "DrakeBreathWeaponElectricity2Feature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "This breath weapon deals 8d6 points of electricity damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day. \nUnlocking this allows you to use your lesser breath weapon without spending any resources, however you must wait 1d4 rounds to recharge.",
+      "zhCN": "这种喷吐武器在 30 英尺锥形范围内造成 8d6 点电击伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮才能恢复。在升级之前，您可以每天使用 5 次。解锁它可以让你在不消耗任何资源的情况下使用你的次级喷吐武器，但是你必须等待 1d4 轮才能充能。"
+    },
+    {
+      "Key": "8f10dfe77a9048439f53573f4e1428e1",
+      "SimpleName": "DrakeBreathWeaponElectricity2Feature.Description",
+      "ProcessTemplates": true,
+      "enGB": "This breath weapon deals 8d6 points of electricity damage in a 30-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this 5 times a day. \nUnlocking this allows you to use your lesser breath weapon without spending any resources, however you must wait 1d4 rounds to recharge.",
       "zhCN": "这种喷吐武器在 30 英尺锥形范围内造成 8d6 点电击伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮才能恢复。在升级之前，您可以每天使用 5 次。解锁它可以让你在不消耗任何资源的情况下使用你的次级喷吐武器，但是你必须等待 1d4 轮才能充能。"
     },
     {
@@ -8494,19 +8494,19 @@
       "zhCN": "这种喷吐武器在 30 英尺锥形范围内造成 8d6 点火焰伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮才能恢复。在升级之前，您可以每天使用 5 次。解锁它可以让你在不消耗任何资源的情况下使用你的次级喷吐武器，但是你必须等待 1d4 轮才能充能。"
     },
     {
-      "Key": "8c788890645148329f0c9962114d729b",
-      "SimpleName": "DrakeBreathWeaponFire3.Description",
-      "ProcessTemplates": true,
-      "IsUsed": false,
-      "enGB": "This breath weapon deals 1d6 points of fire damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies.",
-      "zhCN": "这种喷吐武器在 50 英尺锥形范围内造成每龙兽伙伴等级 1d6 点火焰伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮才能恢复。您可以每天使用 5 次。解锁它可以让你在不消耗任何资源的情况下使用高等喷吐武器，但是你必须等待 1d4 轮才能充能。与非神话般的吐息攻击不同，这不会伤害盟友。"
-    },
-    {
       "Key": "033f8e7260db4b54bbe04989414075a9",
       "SimpleName": "DrakeBreathWeaponFire3.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "This breath weapon deals 1d6 points of fire damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies.",
+      "zhCN": "这种喷吐武器在 50 英尺锥形范围内造成每龙兽伙伴等级 1d6 点火焰伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮才能恢复。您可以每天使用 5 次。解锁它可以让你在不消耗任何资源的情况下使用高等喷吐武器，但是你必须等待 1d4 轮才能充能。与非神话般的吐息攻击不同，这不会伤害盟友。"
+    },
+    {
+      "Key": "8c788890645148329f0c9962114d729b",
+      "SimpleName": "DrakeBreathWeaponFire3.Description",
+      "ProcessTemplates": true,
+      "IsUsed": false,
+      "enGB": "This breath weapon deals 1d6 points of fire damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies.",
       "zhCN": "这种喷吐武器在 50 英尺锥形范围内造成每龙兽伙伴等级 1d6 点火焰伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮才能恢复。您可以每天使用 5 次。解锁它可以让你在不消耗任何资源的情况下使用高等喷吐武器，但是你必须等待 1d4 轮才能充能。与非神话般的吐息攻击不同，这不会伤害盟友。"
     },
     {
@@ -8555,18 +8555,18 @@
       "zhCN": "龙兽负能量吐息"
     },
     {
+      "Key": "3f82888cb6534862aa8217b840d23643",
+      "SimpleName": "DrakeBreathWeaponUmbral1Feature.Description",
+      "ProcessTemplates": true,
+      "enGB": "This breath weapon deals 4d6 points of  negative damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day.\nTargets with an affinity to negative energy (such as undead) are not healed by this ability and are treated as if the ability did not hit them.",
+      "zhCN": "这种喷吐武器在 15 英尺的锥形范围内造成 4d6 点负能量伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。此豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮来重新充能。在升级之前，您可以每天使用两次。具有负能量亲和力的目标（例如不死生物）不会被该能力治疗，并且被视为该能力没有击中他们。"
+    },
+    {
       "Key": "9dcf386ecbdd464c8e79505773731c5c",
       "SimpleName": "DrakeBreathWeaponUmbral1Feature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "This breath weapon deals 4d6 points of  negative damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day.\nTargets with an affinity to negativeenergy (such as undead) are not healed by this ability and are treated as if the ability did not hit them.",
-      "zhCN": "这种喷吐武器在 15 英尺的锥形范围内造成 4d6 点负能量伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。此豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮来重新充能。在升级之前，您可以每天使用两次。具有负能量亲和力的目标（例如不死生物）不会被该能力治疗，并且被视为该能力没有击中他们。"
-    },
-    {
-      "Key": "3f82888cb6534862aa8217b840d23643",
-      "SimpleName": "DrakeBreathWeaponUmbral1Feature.Description",
-      "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 4d6 points of  negative damage in a 15-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. Until upgraded you can use this twice a day.\nTargets with an affinity to negative energy (such as undead) are not healed by this ability and are treated as if the ability did not hit them.",
       "zhCN": "这种喷吐武器在 15 英尺的锥形范围内造成 4d6 点负能量伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。此豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮来重新充能。在升级之前，您可以每天使用两次。具有负能量亲和力的目标（例如不死生物）不会被该能力治疗，并且被视为该能力没有击中他们。"
     },
     {
@@ -8629,18 +8629,18 @@
       "zhCN": "神话龙兽负能量吐息"
     },
     {
+      "Key": "0f7fb006bcc849bbb98412921a310e58",
+      "SimpleName": "DrakeBreathWeaponUmbral3Feature.Description",
+      "ProcessTemplates": true,
+      "enGB": "This breath weapon deals 1d6 points of negative energy damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nTargets with an affinity to negativeenergy (such as undead) are not healed by this ability and are treated as if the ability did not hit them. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies.",
+      "zhCN": "这种喷吐武器在 50 英尺的锥形范围内造成每龙兽伙伴等级 1d6 点负能量伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮来重新充能。您每天可以使用 5 次。具有负能量亲和力的目标（例如不死生物）不会被该能力治疗，并且被视为该能力没有击中他们。解锁它可以让你在不花费任何资源的情况下使用你的高等喷吐武器，但是你必须等待 1d4 轮才能充能。与非神话吐息攻击不同，这不会伤害盟友。"
+    },
+    {
       "Key": "2501763ac7a141a68f0422d203e733e3",
       "SimpleName": "DrakeBreathWeaponUmbral3Feature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "This breath weapon deals 1d6 points of negative energy damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier.After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nTargets with an affinity to negativeenergy (such as undead) are not healed by this ability and are treated as if the ability did not hit them. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies.",
-      "zhCN": "这种喷吐武器在 50 英尺的锥形范围内造成每龙兽伙伴等级 1d6 点负能量伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮来重新充能。您每天可以使用 5 次。具有负能量亲和力的目标（例如不死生物）不会被该能力治疗，并且被视为该能力没有击中他们。解锁它可以让你在不花费任何资源的情况下使用你的高等喷吐武器，但是你必须等待 1d4 轮才能充能。与非神话吐息攻击不同，这不会伤害盟友。"
-    },
-    {
-      "Key": "0f7fb006bcc849bbb98412921a310e58",
-      "SimpleName": "DrakeBreathWeaponUmbral3Feature.Description",
-      "ProcessTemplates": true,
-      "enGB": "This breath weapon deals 1d6 points of negative energy damage per drake companion level in a 50-foot cone. Those caught in the area of the breath receive a Reflex save for half damage. The DC of this save is equal to 10 + 1/2 your drake companion level + your Constitution modifier. After use this ability takes 1d4 rounds to recharge. You can use this 5 times a day. \nTargets with an affinity to negativeenergy (such as undead) are not healed by this ability and are treated as if the ability did not hit them. \nUnlocking this allows you to use your greater breath weapon without spending any resources, however you must wait 1d4 rounds to recharge. \nUnlike non-mythic breath attacks, this does not damage allies.",
       "zhCN": "这种喷吐武器在 50 英尺的锥形范围内造成每龙兽伙伴等级 1d6 点负能量伤害。那些处于吐息覆盖区域的人通过一次成功的反射豁免，使伤害减半。该豁免的 DC 等于 10 + 1/2 你的龙兽伙伴等级 + 你的体质调整值。使用此能力后需要 1d4 轮来重新充能。您每天可以使用 5 次。具有负能量亲和力的目标（例如不死生物）不会被该能力治疗，并且被视为该能力没有击中他们。解锁它可以让你在不花费任何资源的情况下使用你的高等喷吐武器，但是你必须等待 1d4 轮才能充能。与非神话吐息攻击不同，这不会伤害盟友。"
     },
     {
@@ -8748,12 +8748,18 @@
       "zhCN": "龙兽伙伴——黄铜龙"
     },
     {
-      "Key": "79ee20b4fa904207925abd7a68c9c911",
+      "Key": "caff35fd81ce46118a63b44020b0c5bc",
       "SimpleName": "DrakeCompanionFeatureBronze.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
-      "enGB": "Drakes are brutish lesser kindred of true dragons. Though they aren’t particularly intelligent, drakes’ significantly faster breeding allows their kind to survive in harsh environments. While a young drake is weaker than a standard animal companion, as they grow they will start to resemble their draconic cousins more and more until they rival them in power. \n This drake is descended from metallic bronze dragons, giving it the fire subtype and granting it potential to wield electric breath attacks",
-      "zhCN": "龙兽是真龙的野蛮小亲戚。虽然它们并不是特别聪明，但龙兽的快速繁衍使它们能够在恶劣的环境中生存。虽然幼年龙兽比标准的动物同伴弱，但随着它们的成长，它们会越来越像它们的真龙表亲，直到它们在力量上与它们相仿。这只龙是金属龙的青铜龙的后裔，赋予它气系亚种，并赋予它使用闪电龙息的能力"
+      "enGB": "Drakes are brutish lesser kindred of true dragons. Though they aren’t particularly intelligent, drakes’ significantly faster breeding allows their kind to survive in harsh environments. While a young drake is weaker than a standard animal companion, as they grow they will start to resemble their draconic cousins more and more until they rival them in power. \nThis drake is descended from metallic bronze dragons, giving it the fire subtype and granting it potential to wield electric breath attacks\nDrake companions cannot be used as a mount.",
+      "zhCN": "龙兽是真龙的残暴劣种。虽然它们并不特别聪明，但龙的繁殖速度明显更快，这使它们能够在恶劣的环境中生存。虽然幼龙比普通的动物伙伴弱小，但随着它们的成长，它们会越来越像它们的龙类表亲，直到在力量上与它们匹敌。\n这种龙是金属青铜龙的后裔，使其具有火亚型，并有可能拥有闪电吐息攻击\n龙伙伴不能用作坐骑。"
+    },
+    {
+      "Key": "5b18de3629bd4fa690e990f4e925b5e2",
+      "SimpleName": "DrakeCompanionFeatureBronze.Description",
+      "ProcessTemplates": true,
+      "enGB": "Drakes are brutish lesser kindred of true dragons. Though they aren’t particularly intelligent, drakes’ significantly faster breeding allows their kind to survive in harsh environments. While a young drake is weaker than a standard animal companion, as they grow they will start to resemble their draconic cousins more and more until they rival them in power. \nThis drake is descended from metallic bronze dragons, giving it the air subtype and granting it potential to wield electric breath attacks."
     },
     {
       "Key": "13eca8801c964f0ea099c9309e0db0ff",
@@ -8764,18 +8770,12 @@
       "zhCN": "龙兽是真龙的残暴劣种。虽然它们并不特别聪明，但龙的繁殖速度明显更快，这使它们能够在恶劣的环境中生存。虽然幼龙比普通的动物伙伴弱小，但随着它们的成长，它们会越来越像它们的龙类表亲，直到在力量上与它们匹敌。\n这只龙是金属青铜龙的后裔，因此具有火亚型，并有可能拥有闪电吐息攻击。"
     },
     {
-      "Key": "5b18de3629bd4fa690e990f4e925b5e2",
-      "SimpleName": "DrakeCompanionFeatureBronze.Description",
-      "ProcessTemplates": true,
-      "enGB": "Drakes are brutish lesser kindred of true dragons. Though they aren’t particularly intelligent, drakes’ significantly faster breeding allows their kind to survive in harsh environments. While a young drake is weaker than a standard animal companion, as they grow they will start to resemble their draconic cousins more and more until they rival them in power. \nThis drake is descended from metallic bronze dragons, giving it the air subtype and granting it potential to wield electric breath attacks."
-    },
-    {
-      "Key": "caff35fd81ce46118a63b44020b0c5bc",
+      "Key": "79ee20b4fa904207925abd7a68c9c911",
       "SimpleName": "DrakeCompanionFeatureBronze.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
-      "enGB": "Drakes are brutish lesser kindred of true dragons. Though they aren’t particularly intelligent, drakes’ significantly faster breeding allows their kind to survive in harsh environments. While a young drake is weaker than a standard animal companion, as they grow they will start to resemble their draconic cousins more and more until they rival them in power. \nThis drake is descended from metallic bronze dragons, giving it the fire subtype and granting it potential to wield electric breath attacks\nDrake companions cannot be used as a mount.",
-      "zhCN": "龙兽是真龙的残暴劣种。虽然它们并不特别聪明，但龙的繁殖速度明显更快，这使它们能够在恶劣的环境中生存。虽然幼龙比普通的动物伙伴弱小，但随着它们的成长，它们会越来越像它们的龙类表亲，直到在力量上与它们匹敌。\n这种龙是金属青铜龙的后裔，使其具有火亚型，并有可能拥有闪电吐息攻击\n龙伙伴不能用作坐骑。"
+      "enGB": "Drakes are brutish lesser kindred of true dragons. Though they aren’t particularly intelligent, drakes’ significantly faster breeding allows their kind to survive in harsh environments. While a young drake is weaker than a standard animal companion, as they grow they will start to resemble their draconic cousins more and more until they rival them in power. \n This drake is descended from metallic bronze dragons, giving it the fire subtype and granting it potential to wield electric breath attacks",
+      "zhCN": "龙兽是真龙的野蛮小亲戚。虽然它们并不是特别聪明，但龙兽的快速繁衍使它们能够在恶劣的环境中生存。虽然幼年龙兽比标准的动物同伴弱，但随着它们的成长，它们会越来越像它们的真龙表亲，直到它们在力量上与它们相仿。这只龙是金属龙的青铜龙的后裔，赋予它气系亚种，并赋予它使用闪电龙息的能力"
     },
     {
       "Key": "6439268407a241ef9fad827c778c740d",
@@ -8875,13 +8875,6 @@
       "zhCN": "龙兽伙伴——绿龙"
     },
     {
-      "Key": "128a7124d564451cb9ab374ceb994051",
-      "SimpleName": "DrakeCompanionFeatureRed.Description",
-      "ProcessTemplates": true,
-      "enGB": "Drakes are brutish lesser kindred of true dragons. Though they aren’t particularly intelligent, drakes’ significantly faster breeding allows their kind to survive in harsh environments. While a young drake is weaker than a standard animal companion, as they grow they will start to resemble their draconic cousins more and more until they rival them in power. \nThis drake is descended from chromatic red dragons, giving it the fire subtype and granting it potential to wield fire breath attacks.",
-      "zhCN": "龙兽是真龙的残暴劣种。虽然它们并不特别聪明，但龙的繁殖速度明显更快，这使它们能够在恶劣的环境中生存。虽然幼龙比普通的动物伙伴弱小，但随着它们的成长，它们会越来越像它们的龙类表亲，直到在力量上与它们匹敌。\n这只龙兽是半色红龙的后裔，因此具有火亚型，并有可能拥有火焰吐息攻击。"
-    },
-    {
       "Key": "71b3c59a4ae7438a9569725f7b1bcdd8",
       "SimpleName": "DrakeCompanionFeatureRed.Description",
       "ProcessTemplates": true,
@@ -8896,6 +8889,13 @@
       "IsUsed": false,
       "enGB": "Drakes are brutish lesser kindred of true dragons. Though they aren’t particularly intelligent, drakes’ significantly faster breeding allows their kind to survive in harsh environments. While a young drake is weaker than a standard animal companion, as they grow they will start to resemble their draconic cousins more and more until they rival them in power. \n This drake is descended from chromatic red dragons, giving it the fire subtype and granting it potential to wield fire breath attacks",
       "zhCN": "龙兽是真龙的野蛮小亲戚。虽然它们并不是特别聪明，但龙兽的快速繁衍使它们能够在恶劣的环境中生存。虽然幼年龙兽比标准的动物同伴弱，但随着它们的成长，它们会越来越像它们的真龙表亲，直到它们在力量上与它们相仿。这只龙是色彩龙的红龙的后裔，赋予它火系亚种，并赋予它使用火焰龙息的能力"
+    },
+    {
+      "Key": "128a7124d564451cb9ab374ceb994051",
+      "SimpleName": "DrakeCompanionFeatureRed.Description",
+      "ProcessTemplates": true,
+      "enGB": "Drakes are brutish lesser kindred of true dragons. Though they aren’t particularly intelligent, drakes’ significantly faster breeding allows their kind to survive in harsh environments. While a young drake is weaker than a standard animal companion, as they grow they will start to resemble their draconic cousins more and more until they rival them in power. \nThis drake is descended from chromatic red dragons, giving it the fire subtype and granting it potential to wield fire breath attacks.",
+      "zhCN": "龙兽是真龙的残暴劣种。虽然它们并不特别聪明，但龙的繁殖速度明显更快，这使它们能够在恶劣的环境中生存。虽然幼龙比普通的动物伙伴弱小，但随着它们的成长，它们会越来越像它们的龙类表亲，直到在力量上与它们匹敌。\n这只龙兽是半色红龙的后裔，因此具有火亚型，并有可能拥有火焰吐息攻击。"
     },
     {
       "Key": "6e65e2583dbf47e89211f6089d511134",
@@ -8935,6 +8935,13 @@
       "zhCN": "龙兽伙伴——银龙"
     },
     {
+      "Key": "1e36bc121abd431da1dd55e86f058e0d",
+      "SimpleName": "DrakeCompanionFeatureUmbral.Description",
+      "ProcessTemplates": true,
+      "enGB": "Drakes are brutish lesser kindred of true dragons. Though they aren’t particularly intelligent, drakes’ significantly faster breeding allows their kind to survive in harsh environments. While a young drake is weaker than a standard animal companion, as they grow they will start to resemble their draconic cousins more and more until they rival them in power. \nThis drake is descended from umbral dragons from the plain of shadows, giving it the outsider subtype and granting it potential to wield negative energy breath attacks.\nThough a living creature, a umbral drake reacts to positive and negative energy as if they were undead — positive energy harms them, while negative energy heals them.",
+      "zhCN": "龙兽是真龙的残暴劣种。虽然它们并不特别聪明，但龙的繁殖速度明显更快，这使它们能够在恶劣的环境中生存。虽然幼龙比普通的动物伙伴弱小，但随着它们的成长，它们会越来越像它们的龙类表亲，直到在力量上与它们匹敌。\n这只龙兽是阴影平原的本体龙的后裔，使它具有外来者的亚型，并赋予它拥有负能量吐息攻击的潜力。\n本体龙兽虽然是生物，但它们对正负能量的反应就像亡灵一样--正能量会伤害它们，而负能量则会治愈它们。"
+    },
+    {
       "Key": "12e3373b752f436c825f33bea6b73659",
       "SimpleName": "DrakeCompanionFeatureUmbral.Description",
       "ProcessTemplates": true,
@@ -8949,13 +8956,6 @@
       "IsUsed": false,
       "enGB": "Drakes are brutish lesser kindred of true dragons. Though they aren’t particularly intelligent, drakes’ significantly faster breeding allows their kind to survive in harsh environments. While a young drake is weaker than a standard animal companion, as they grow they will start to resemble their draconic cousins more and more until they rival them in power. \n This drake is descended from umbral dragons from the plain of shadows, giving it the outsider subtype and granting it potential to wield negative energy breath attacks.\nThough a living creature, a umbral drake reacts to positive and negative energy as if they were undead — positive energy harms them, while negative energy heals them.",
       "zhCN": "龙兽是真龙的野蛮小亲戚。虽然它们并不是特别聪明，但龙兽的快速繁衍使它们能够在恶劣的环境中生存。虽然幼年龙兽比标准的动物同伴弱，但随着它们的成长，它们会越来越像它们的真龙表亲，直到它们在力量上与它们相仿。这只龙兽是来自阴影平原的影龙的后裔，赋予它异界亚种，并赋予它使用负能量龙息的能力。尽管是活物，影龙兽对正能量和负能量的反应就好像它们是不死生物一样——正能量会伤害它们，而负能量会治愈它们。"
-    },
-    {
-      "Key": "1e36bc121abd431da1dd55e86f058e0d",
-      "SimpleName": "DrakeCompanionFeatureUmbral.Description",
-      "ProcessTemplates": true,
-      "enGB": "Drakes are brutish lesser kindred of true dragons. Though they aren’t particularly intelligent, drakes’ significantly faster breeding allows their kind to survive in harsh environments. While a young drake is weaker than a standard animal companion, as they grow they will start to resemble their draconic cousins more and more until they rival them in power. \nThis drake is descended from umbral dragons from the plain of shadows, giving it the outsider subtype and granting it potential to wield negative energy breath attacks.\nThough a living creature, a umbral drake reacts to positive and negative energy as if they were undead — positive energy harms them, while negative energy heals them.",
-      "zhCN": "龙兽是真龙的残暴劣种。虽然它们并不特别聪明，但龙的繁殖速度明显更快，这使它们能够在恶劣的环境中生存。虽然幼龙比普通的动物伙伴弱小，但随着它们的成长，它们会越来越像它们的龙类表亲，直到在力量上与它们匹敌。\n这只龙兽是阴影平原的本体龙的后裔，使它具有外来者的亚型，并赋予它拥有负能量吐息攻击的潜力。\n本体龙兽虽然是生物，但它们对正负能量的反应就像亡灵一样--正能量会伤害它们，而负能量则会治愈它们。"
     },
     {
       "Key": "5bbaa627af6146e8b075761419969ea5",
@@ -9094,18 +9094,18 @@
       "zhCN": "龙兽敏锐头脑"
     },
     {
-      "Key": "c81f2a883a024d4dac1ecfb26f1b67ff",
-      "SimpleName": "DrakeNaturalArmor.Description",
-      "ProcessTemplates": true,
-      "enGB": "The drake’s natural armor bonus to its AC increases by 2 when it reaches 3rd level and every 3 levels thereafter.",
-      "zhCN": "等级达到 3 级时，龙兽的 AC 天生防御加值增加2，之后每3级增加一次。"
-    },
-    {
       "Key": "85a69afe2081444192f460815be405b0",
       "SimpleName": "DrakeNaturalArmor.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "The drake’s natural armor bonus to its AC increases by 2 when the charge reaches 3rd level and every 3 levels thereafter.",
+      "zhCN": "等级达到 3 级时，龙兽的 AC 天生防御加值增加2，之后每3级增加一次。"
+    },
+    {
+      "Key": "c81f2a883a024d4dac1ecfb26f1b67ff",
+      "SimpleName": "DrakeNaturalArmor.Description",
+      "ProcessTemplates": true,
+      "enGB": "The drake’s natural armor bonus to its AC increases by 2 when it reaches 3rd level and every 3 levels thereafter.",
       "zhCN": "等级达到 3 级时，龙兽的 AC 天生防御加值增加2，之后每3级增加一次。"
     },
     {
@@ -9151,18 +9151,18 @@
       "zhCN": "骑马作战训练"
     },
     {
-      "Key": "fae2d01a258d437494c423afc2c32476",
-      "SimpleName": "DrakenScalesFeature.Description",
-      "ProcessTemplates": true,
-      "enGB": "The drake gains elemental resistances based on its subtype, along with minor resistance to elemental damage from non-opposing elements. \nFire subtype - Fire resistance 25, Eletricity resistance 5, Acid resistance 5.\nCold subtype - Cold resistance 25, Eletricity resistance 5, Acid resistance 5.\nAir subtype - Eletricity resistance 25, Fire resistance 5, Cold resistance 5.\nAcid subtype - Acid resistance 25, Fire resistance 5, Cold resistance 5.\nOutsider subtype - Fire, Cold, Acid, Electricity resistance 10.",
-      "zhCN": "龙兽会根据其亚种获得元素抗性，以及对非对立元素造成的元素伤害的轻微抗性。\n火系亚种——耐火 25，耐电 5，耐酸 5。 \n寒系亚种——耐寒 25， 耐电 5， 耐酸 5。 \n气系亚种——耐电 25， 耐火 5， 耐寒 5。 \n土系亚种——耐酸25，耐火5，耐寒5。"
-    },
-    {
       "Key": "04ed6b896c35425fa26212ff0a823110",
       "SimpleName": "DrakenScalesFeature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "The drake gains elemental resistances based on its subtype, along with minor resistance to elemental damage from non-opposing elements. \nFire subtype - Fire resistance 25, Eletricity resistance 5, Acid resistance 5.\nCold subtype - Cold resistance 25, Eletricity resistance 5, Acid resistance 5.\nAir subtype - Eletricity resistance 25, Fire resistance 5, Cold resistance 5.\nAcid subtype - Acid resistance 25, Fire resistance 5, Cold resistance 5.",
+      "zhCN": "龙兽会根据其亚种获得元素抗性，以及对非对立元素造成的元素伤害的轻微抗性。\n火系亚种——耐火 25，耐电 5，耐酸 5。 \n寒系亚种——耐寒 25， 耐电 5， 耐酸 5。 \n气系亚种——耐电 25， 耐火 5， 耐寒 5。 \n土系亚种——耐酸25，耐火5，耐寒5。"
+    },
+    {
+      "Key": "fae2d01a258d437494c423afc2c32476",
+      "SimpleName": "DrakenScalesFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "The drake gains elemental resistances based on its subtype, along with minor resistance to elemental damage from non-opposing elements. \nFire subtype - Fire resistance 25, Eletricity resistance 5, Acid resistance 5.\nCold subtype - Cold resistance 25, Eletricity resistance 5, Acid resistance 5.\nAir subtype - Eletricity resistance 25, Fire resistance 5, Cold resistance 5.\nAcid subtype - Acid resistance 25, Fire resistance 5, Cold resistance 5.\nOutsider subtype - Fire, Cold, Acid, Electricity resistance 10.",
       "zhCN": "龙兽会根据其亚种获得元素抗性，以及对非对立元素造成的元素伤害的轻微抗性。\n火系亚种——耐火 25，耐电 5，耐酸 5。 \n寒系亚种——耐寒 25， 耐电 5， 耐酸 5。 \n气系亚种——耐电 25， 耐火 5， 耐寒 5。 \n土系亚种——耐酸25，耐火5，耐寒5。"
     },
     {
@@ -9908,6 +9908,14 @@
       "enGB": "An oracle with the godclaw mystery adds Persuasion, Perception and Knowledge (world) to her list of class skills."
     },
     {
+      "Key": "87a3a668a0744c2395e62368807b469d",
+      "SimpleName": "EnlightnedPhilosopherHeavensMysteryFeature.Description",
+      "ProcessTemplates": true,
+      "IsUsed": false,
+      "enGB": "An oracle with the heavens mystery adds Perception and Knowledge (world)  to her list of class skills.",
+      "zhCN": "具有苍天秘示域的先知将察觉和知识（世界）添加到她的本职技能列表中。"
+    },
+    {
       "Key": "ca0109695d76452e9e35dbada994a096",
       "SimpleName": "EnlightnedPhilosopherHeavensMysteryFeature.Description",
       "ProcessTemplates": true,
@@ -9921,14 +9929,6 @@
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "An oracle with the heavens mystery adds Perception and Knowledge (arcana)  to her list of class skills."
-    },
-    {
-      "Key": "87a3a668a0744c2395e62368807b469d",
-      "SimpleName": "EnlightnedPhilosopherHeavensMysteryFeature.Description",
-      "ProcessTemplates": true,
-      "IsUsed": false,
-      "enGB": "An oracle with the heavens mystery adds Perception and Knowledge (world)  to her list of class skills.",
-      "zhCN": "具有苍天秘示域的先知将察觉和知识（世界）添加到她的本职技能列表中。"
     },
     {
       "Key": "16510dc6370b4f6c85184593e23b1e3e",
@@ -10334,19 +10334,19 @@
       "zhCN": "\n你的神的旨意必须以坚定和凶猛的方式传达--你的信仰赋予你难以置信的力量和愤怒：作为一个敏捷动作，你可以将本回合的攻击加持为凶猛一击。如果这些攻击命中，就会造成相当于你牧师等级1/2（最低+1）的额外伤害。\n众神之威：八级时，你的运动检定增加1/2的等级加成。\n领域法术：变巨术、牛之蛮力、狂暴术，群体变巨术、正气如虹、群体牛之蛮力、力拔山兮、骇人外形、转变术。"
     },
     {
-      "Key": "0c8f38d512ed40dea72b2a72595c2f24",
-      "SimpleName": "FerocityDomainProgressionSecondary.Description",
-      "ProcessTemplates": true,
-      "enGB": "\nThe will of your deitiy must be delivered with conviction and ferocity — your faith gives you incredible might and fury.\nFerocious Strikes: As a swift action, you can imbue attacks you make this round to be ferocious strikes. If these attacks hit, they deal additional damage equal to 1/2 your cleric level (minimum +1). You can use this ability a number of times per day equal to 3 + your Wisdom modifier.\nMight of the Gods: At 8th level, you add 1/2 of your level in the class that gave you access to this domain as an enhancement bonus to your Athletics checks.\nDomain Spells: enlarge person, bull's strength, rage, mass enlarge person, righteous might, mass bull's strength, legendary proportions, frightful aspect, transformation.",
-      "zhCN": "\n你的神的旨意必须以坚定和凶猛的方式传达--你的信仰赋予你难以置信的力量和愤怒：作为一个敏捷动作，你可以将本回合的攻击加持为凶猛一击。如果这些攻击命中，就会造成相当于你牧师等级1/2（最低+1）的额外伤害。\n众神之威：八级时，你的运动检定增加1/2的等级加成。\n领域法术：变巨术、牛之蛮力、狂暴术，群体变巨术、正气如虹、群体牛之蛮力、力拔山兮、骇人外形、转变术。"
-    },
-    {
       "Key": "2290d6cf833b42c4b6df8026ac3ea253",
       "SimpleName": "FerocityDomainProgressionSecondary.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "\nThe will of your deitiy must be delivered with conviction and ferocity — your faith gives you incredible might and fury.\nFerocious Strikes: As a swift action, you can imbue attacks you make this round to be ferocious strikes. If these attacks hit, they deal additional damage equal to 1/2 your cleric level (minimum +1). You can use this ability a number of times per day equal to 3 + your Wisdom modifier.\nMight of the Gods: At 8th level, you add 1/2 of your level in the class that gave you access to this domain as an enhancement bonus to your Athletics checks.\nDomain Spells: enlarge person, bull's strength, magical vestment, mass enlarge person, righteous might, stoneskin, legendary proportions, frightful aspect, transformation.",
       "zhCN": "\n你的神祇的意志必须以信念和凶猛来践行-你的信仰给了你难以置信的力量和愤怒\n凶猛打击：当进行一次近战攻击时，你可以宣布它成为一次凶猛打击。如果命中，将造成等于牧师等级一半的额外伤害（最少为1），每天“3+感知修正”次。\n神授力量：在8级时，你的运动{g|Encyclopedia:Check}检定{/g}将获得增强加值，加值等于1/2赋予你此领域的职业等级。\n领域法术：变巨术，牛之蛮力，魔化防具，群体变巨术，正气如虹，石肤，伟岸雄姿，可怖外表，战法转换。"
+    },
+    {
+      "Key": "0c8f38d512ed40dea72b2a72595c2f24",
+      "SimpleName": "FerocityDomainProgressionSecondary.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nThe will of your deitiy must be delivered with conviction and ferocity — your faith gives you incredible might and fury.\nFerocious Strikes: As a swift action, you can imbue attacks you make this round to be ferocious strikes. If these attacks hit, they deal additional damage equal to 1/2 your cleric level (minimum +1). You can use this ability a number of times per day equal to 3 + your Wisdom modifier.\nMight of the Gods: At 8th level, you add 1/2 of your level in the class that gave you access to this domain as an enhancement bonus to your Athletics checks.\nDomain Spells: enlarge person, bull's strength, rage, mass enlarge person, righteous might, mass bull's strength, legendary proportions, frightful aspect, transformation.",
+      "zhCN": "\n你的神的旨意必须以坚定和凶猛的方式传达--你的信仰赋予你难以置信的力量和愤怒：作为一个敏捷动作，你可以将本回合的攻击加持为凶猛一击。如果这些攻击命中，就会造成相当于你牧师等级1/2（最低+1）的额外伤害。\n众神之威：八级时，你的运动检定增加1/2的等级加成。\n领域法术：变巨术、牛之蛮力、狂暴术，群体变巨术、正气如虹、群体牛之蛮力、力拔山兮、骇人外形、转变术。"
     },
     {
       "Key": "2bd496029395497187112446785bdecc",
@@ -10653,19 +10653,19 @@
       "zhCN": "暗影武器"
     },
     {
-      "Key": "fba4f02a960c40f7bfea93f82cff9b73",
-      "SimpleName": "FormOfTheExoticDragonBuffCragLinnorm.Description",
-      "ProcessTemplates": true,
-      "enGB": "Take the form of a rarely seen dragon. You gain a +10 polymorph bonus to Strength, a +8 polymorph bonus to Constitution, a +8 natural armor bonus to AC, immunity to difficult terrain, blindsense with a range of 60 feet, and damage reduction 10/magic, frightful presence (DC equal to the DC for this spell). Your movement speed is increased by 10 feet. \nThis form also grants fire damage immunity, a fire breath attack, fast healing 5, and the following natural attacks, one large bite (4d6), two claw attacks (2d6), and one tail slap attack (4d6).",
-      "zhCN": "化身为罕见的巨龙。你获得力量 +10 变形加成、体质 +8 变形加成、AC +8 天生护甲加成、困难地形免疫、60 英尺范围内的致盲感知、伤害减免 10/魔法、可怖存在（DC 等于本法术的 DC）。你的移动速度增加 10 英尺。\n此形态还赋予火焰伤害免疫、火焰呼吸攻击、快速愈合5以及以下自然攻击：一次大咬（4d6）、两次爪子攻击（2d6）和一次尾巴拍击攻击（4d6）。"
-    },
-    {
       "Key": "7f6def3e883a4430907e63b4ef4f9f4e",
       "SimpleName": "FormOfTheExoticDragonBuffCragLinnorm.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "Take the form of a rarely seen dragon. You gain a +10 polymorph bonus to Strength, a +8 polymorph bonus to Constitution, a +8 natural armor bonus to AC, immunity to difficult terrain, blindsense with a range of 60 feet, and damage reduction 10/magic, frightful presence (DC equal to the DC for this spell). Your movement speed is increased by 10 feet. \nTest text",
       "zhCN": "化身为罕见的巨龙。你获得力量 +10 变形加成、体质 +8 变形加成、AC +8 天生护甲加成、困难地形免疫、60 英尺范围内的致盲感知、伤害减免 10/魔法、可怖存在（DC 等于本法术的 DC）。你的移动速度增加 10 英尺。\n"
+    },
+    {
+      "Key": "fba4f02a960c40f7bfea93f82cff9b73",
+      "SimpleName": "FormOfTheExoticDragonBuffCragLinnorm.Description",
+      "ProcessTemplates": true,
+      "enGB": "Take the form of a rarely seen dragon. You gain a +10 polymorph bonus to Strength, a +8 polymorph bonus to Constitution, a +8 natural armor bonus to AC, immunity to difficult terrain, blindsense with a range of 60 feet, and damage reduction 10/magic, frightful presence (DC equal to the DC for this spell). Your movement speed is increased by 10 feet. \nThis form also grants fire damage immunity, a fire breath attack, fast healing 5, and the following natural attacks, one large bite (4d6), two claw attacks (2d6), and one tail slap attack (4d6).",
+      "zhCN": "化身为罕见的巨龙。你获得力量 +10 变形加成、体质 +8 变形加成、AC +8 天生护甲加成、困难地形免疫、60 英尺范围内的致盲感知、伤害减免 10/魔法、可怖存在（DC 等于本法术的 DC）。你的移动速度增加 10 英尺。\n此形态还赋予火焰伤害免疫、火焰呼吸攻击、快速愈合5以及以下自然攻击：一次大咬（4d6）、两次爪子攻击（2d6）和一次尾巴拍击攻击（4d6）。"
     },
     {
       "Key": "c64faf0e6849452e90b9fd32edb8498d",
@@ -11408,19 +11408,19 @@
       "zhCN": "哈斯塔"
     },
     {
-      "Key": "a83bd872adc4484187910d686bf0fb31",
-      "SimpleName": "HathorFeature.Description",
-      "ProcessTemplates": true,
-      "enGB": "\nTitles: Mistress of Jubilation   \nAlignment: Chaotic Good   \nAreas of Concern: Dance, Joy, Love, Music, The Sky   \nDomains: Air, Chaos, Charm, Good, Travel   \nSubdomains: Azata, Cloud, Exploration, Love, Revelry, Trade   \nFavoured Weapon: Shortsword   \nHoly Symbol: Solar Disk with Horns   \nSacred Animal: Cow   \nThe cow-headed goddess Hathor was worshiped from the earliest days of Ancient Osirion, and remained a popular deity throughout its history. A divinity of air and sky, Hathor is also a goddess of beauty and love, happiness and merriment. She is the queen of the dance, the mistress of music, and the sovereign of song. Hathor is a wife, a mother, and a lover, a goddess of fertility, sexuality, and motherhood. She is also a goddess of trade and goods that bring wealth from foreign lands. Hathor is the daughter of Ra, and sister to Bastet, Maat, and Sekhmet. She is the consort of Horus, and as he is a god of kings, so is she a goddess of queens, though she is venerated by royalty and commoners alike. Hathor appears as a voluptuous cow-headed woman with the solar disk of her father Ra between her horns and carrying a sistrum. Sometimes she is depicted as a human woman with a horned headdress. More rarely, she is depicted as a great wild cow whose milk nourishes the living. Hathor is a patron and protector of women, and is worshiped by mothers, wives, and lovers of all ages. She also serves as a patron of bards, dancers, musicians, and performers, which makes her a popular deity in thriving cities and their playhouses. In her role as a goddess of trade, Hathor is also a patron of miners, particularly those who mine for precious stones. Hathor's priesthood is predominantly female, and her temples hold great festivals full of music and dance where worshipers consume large amounts of beer and wine and revel for days on end.",
-      "zhCN": "\n头衔：欢庆的女主人 \n阵营：混乱善良 \n关注领域：舞蹈、喜悦、爱、音乐、天空 \n领域：气、混沌、魅惑，善良，旅行 \n子领域：魅惑、善良，旅行 <br气、混乱、魅惑，善良，旅行 \n子域：阿扎塔、云、探索、爱、狂欢、贸易 \n最喜爱的武器：短剑 \n神圣象征：有角的太阳圆盘 \n神圣的动物：牛 \n牛头女神哈托尔从古代奥西里昂的早期就受到崇拜，在整个历史中一直是受人欢迎的神灵。哈托尔是气和天空之神，也是美丽与爱情、幸福与欢乐的女神。她是舞蹈的女王、音乐的女主人和歌曲的君主。哈托尔是妻子、母亲和情人，是生育、性欲和母性女神。她还是贸易和货物女神，从异国他乡带来财富。哈托尔是拉神的女儿，是巴斯提、玛阿特和塞克梅特的姐妹。她是荷鲁斯的妃子，因为荷鲁斯是王神，所以她也是王后女神，尽管她受到王室和平民的共同崇拜。哈托尔的形象是一个体态丰满的牛头女人，牛角间夹着她父亲拉神的太阳圆盘，手持一把杖。有时，她也被描绘成头戴牛角头饰的人类女性。更罕见的是，她被描绘成一头伟大的野牛，她的乳汁滋养着生灵。哈托尔是妇女的守护神和保护神，母亲、妻子和所有年龄段的情人都崇拜她。她还是吟游诗人、舞者、音乐家和表演者的守护神，这使她成为繁荣城市及其剧场中深受欢迎的神灵。作为贸易女神，哈托尔也是矿工，尤其是开采宝石者的守护神。哈托尔的神职主要由女性担任，她的神庙会举行盛大的节日活动，充满音乐和舞蹈，祭祀者会喝下大量啤酒和葡萄酒，连续狂欢数日。"
-    },
-    {
       "Key": "cec2a13783664b12853eb919f7d34224",
       "SimpleName": "HathorFeature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "\nTitles: Mistress of Jubilation   \nAlignment: Chaotic Good   \nAreas of Concern: Dance, Joy, Love, Music, The Sky   \nDomains: Air, Chaos, Charm, Good, Travel   \nSubdomains: Azata, Cloud, Exploration, Love, Revelry, Trade   \nFavoured Weapon: Shortsword   \nHoly Symbol: Solar Disk with Horns   \nSacred Animal: Cow   \nThe cow-headed goddess Hathor was worshiped from the earliest days of Ancient Osirion, and remained a popular deity throughout its history. A divinity of air and sky, Hathor is also a goddess of beauty and love, happiness and merriment. She is the queen of the dance, the mistress of music, and the sovereign of song. Hathor is a wife, a mother, and a lover, a goddess of fertility, sexuality, and motherhood. She is also a goddess of trade and goods that bring wealth from foreign lands. Hathor is the daughter of Ra, and sister to Bastet, Maat, and Sekhmet. She is the consort of Horus, and as he is a god of kings, so is she a goddess of queens, though she is venerated by royalty and commoners alike. Hathor appears as a voluptuous cow-headed woman with the solar disk ofher father Ra between her horns and carrying a sistrum. Sometimes she is depicted as a human woman with a horned headdress. More rarely, she is depicted as a great wild cow whose milk nourishes the living. Hathor is a patron and protector of women, and is worshiped by mothers, wives, and lovers of all ages. She also serves as a patron ofbards, dancers, musicians, and performers, which makes her a popular deity in thriving cities and their playhouses. In her role as a goddess of trade, Hathor is also a patron of miners, particularly those who mine for precious stones. Hathor's priesthood is predominantly female, and her temples hold great festivals full of music and dance where worshipers consume large amounts of beer and wine and revel for days on end.",
       "zhCN": "\n头衔：欢腾女士\n阵营：混乱善良\n神职：舞蹈、欢愉、爱情、音乐、天空\n领域：气、混乱、魅惑，善良、旅行\n子领域：爱塔、云、探索、爱慕、狂欢、交易\n偏好武器：短剑\n圣徽：日轮与牛角\n圣兽：母牛\n牛头女神哈索尔从古奥西里昂建国初期就受敬拜，直至今日信众依旧众多。虽为天与空之神，哈索尔也是美、爱、欢、娱的女神。祂是华舞天后，美音女士，以及歌之圣皇。哈索尔也是妻母爱人，是多产、性欲与母性之神。祂同时也是从远方带来财富的贸易与货品女神。\n哈索尔是拉的女儿，芭丝特、玛亚特与塞赫美特的姊妹。祂是荷鲁斯的配偶，因此当丈夫是王之神时，祂也是后之神，但祂受到上下各阶级一同崇拜。哈索尔以角间头顶父亲日轮，手持响铃的牛首佳丽姿态示人，有时也会被以穿戴牛角头饰的人类女性形象描绘。更罕见的画像则把祂画成一只乳汁滋养众生的巨型野牛。\n哈索尔是女性的守护神，受到各个年龄层的母亲、妻子及爱人所敬拜。祂也是吟游诗人、舞者、音乐家及艺人的守护神，因此在大城市及其中的戏院信徒众多。虽然哈索尔是贸易女神，祂同时也是矿业女神，尤其庇护开采宝石的矿工。哈索尔的祭司几乎全是女人，其神庙会举办充满了音乐与舞蹈，酒流满地且持续数日的盛大狂欢庆典。"
+    },
+    {
+      "Key": "a83bd872adc4484187910d686bf0fb31",
+      "SimpleName": "HathorFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nTitles: Mistress of Jubilation   \nAlignment: Chaotic Good   \nAreas of Concern: Dance, Joy, Love, Music, The Sky   \nDomains: Air, Chaos, Charm, Good, Travel   \nSubdomains: Azata, Cloud, Exploration, Love, Revelry, Trade   \nFavoured Weapon: Shortsword   \nHoly Symbol: Solar Disk with Horns   \nSacred Animal: Cow   \nThe cow-headed goddess Hathor was worshiped from the earliest days of Ancient Osirion, and remained a popular deity throughout its history. A divinity of air and sky, Hathor is also a goddess of beauty and love, happiness and merriment. She is the queen of the dance, the mistress of music, and the sovereign of song. Hathor is a wife, a mother, and a lover, a goddess of fertility, sexuality, and motherhood. She is also a goddess of trade and goods that bring wealth from foreign lands. Hathor is the daughter of Ra, and sister to Bastet, Maat, and Sekhmet. She is the consort of Horus, and as he is a god of kings, so is she a goddess of queens, though she is venerated by royalty and commoners alike. Hathor appears as a voluptuous cow-headed woman with the solar disk of her father Ra between her horns and carrying a sistrum. Sometimes she is depicted as a human woman with a horned headdress. More rarely, she is depicted as a great wild cow whose milk nourishes the living. Hathor is a patron and protector of women, and is worshiped by mothers, wives, and lovers of all ages. She also serves as a patron of bards, dancers, musicians, and performers, which makes her a popular deity in thriving cities and their playhouses. In her role as a goddess of trade, Hathor is also a patron of miners, particularly those who mine for precious stones. Hathor's priesthood is predominantly female, and her temples hold great festivals full of music and dance where worshipers consume large amounts of beer and wine and revel for days on end.",
+      "zhCN": "\n头衔：欢庆的女主人 \n阵营：混乱善良 \n关注领域：舞蹈、喜悦、爱、音乐、天空 \n领域：气、混沌、魅惑，善良，旅行 \n子领域：魅惑、善良，旅行 <br气、混乱、魅惑，善良，旅行 \n子域：阿扎塔、云、探索、爱、狂欢、贸易 \n最喜爱的武器：短剑 \n神圣象征：有角的太阳圆盘 \n神圣的动物：牛 \n牛头女神哈托尔从古代奥西里昂的早期就受到崇拜，在整个历史中一直是受人欢迎的神灵。哈托尔是气和天空之神，也是美丽与爱情、幸福与欢乐的女神。她是舞蹈的女王、音乐的女主人和歌曲的君主。哈托尔是妻子、母亲和情人，是生育、性欲和母性女神。她还是贸易和货物女神，从异国他乡带来财富。哈托尔是拉神的女儿，是巴斯提、玛阿特和塞克梅特的姐妹。她是荷鲁斯的妃子，因为荷鲁斯是王神，所以她也是王后女神，尽管她受到王室和平民的共同崇拜。哈托尔的形象是一个体态丰满的牛头女人，牛角间夹着她父亲拉神的太阳圆盘，手持一把杖。有时，她也被描绘成头戴牛角头饰的人类女性。更罕见的是，她被描绘成一头伟大的野牛，她的乳汁滋养着生灵。哈托尔是妇女的守护神和保护神，母亲、妻子和所有年龄段的情人都崇拜她。她还是吟游诗人、舞者、音乐家和表演者的守护神，这使她成为繁荣城市及其剧场中深受欢迎的神灵。作为贸易女神，哈托尔也是矿工，尤其是开采宝石者的守护神。哈托尔的神职主要由女性担任，她的神庙会举行盛大的节日活动，充满音乐和舞蹈，祭祀者会喝下大量啤酒和葡萄酒，连续狂欢数日。"
     },
     {
       "Key": "05c79dc4411340858b5f65f45b90df0b",
@@ -11661,19 +11661,19 @@
       "zhCN": "空心刀刃"
     },
     {
+      "Key": "9d85cf3821b64572a75f21114cda0314",
+      "SimpleName": "HorusFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nTitles: The Distant Falcon, Horakhty   \nAlignment: Lawful Neutral   \nAreas of Concern: Rulership, Sky, Sun   \nDomains: Air, Animal, Law, Nobility, Sun   \nSubdomains: Day, Feather, Inevitable, Leadership, Light, Revelation, Wind   \nFavoured Weapon: Khopesh (Falcata)   \nHoly Symbol: Eye of Horus   \nSacred Animal: Falcon   \nHorus is the god of the sky, the celestial falcon whose eyes are the sun and moon, whose speckled feathers are the stars, and whose wings are the sky. He is also a sun god, and in the form of Horakhty he is a deity of both the rising and setting suns. The posthumous son of Osiris and Isis, Horus faced off against the usurper Set, and with his victory over the Lord of the Dark Desert, Horus became the rightful heir of Osiris. Horus took his father's place as king and ruled Osirion with his consort Hathor during the Age of Anguish, becoming also a god of kings and pharaonic rule. Horus appears as a man with the head of a falcon wearing the traditional double crown of pharaohs called the pschent. He is also sometimes represented as a great celestial falcon. His symbol, the eye of Horus, is used to ward off evil, and the symbol commonly appears on protective amulets and trinkets. As a sun deity and god of kings, Horus lends his support to Ra, and aids him in his continuous battles against Apep. An ally of Osiris and Isis, Horus is a steadfast enemy of Set, and the two have fought countless battles over the ages. Horus is worshiped by kings and pharaohs, as well as by hunters, paladins, rangers, and warriors. He is sometimes venerated as part of a triad with Osiris and Isis, or as one-half of a royal couple with his consort Hathor, but there are temples dedicated solely to Horus as well. Though rare in this age, Horus' clergy gets along well with the faithful of Abadar, as both churches value leadership and law. Temples to Horus are still found in the larger cities of Osirion.",
+      "zhCN": "\n头衔：遥远的猎鹰，霍拉赫提 \n阵营：守序中立 \n关注领域：统治, 天空, 太阳 \n领域：气、动物、守序、高贵、太阳 \n子域：白昼、羽毛、必然、领导、光、启示、风 \n最喜爱的武器：科佩什（法尔卡塔） \n神圣象征：荷鲁斯之眼 \n圣兽：猎鹰猎鹰 \n荷鲁斯是天空之神，天鹰的眼睛是太阳和月亮，斑驳的羽毛是星星，翅膀是天空。他也是太阳神，以霍拉赫蒂（Horakhty）的形式，他是太阳升起和落下的神灵。荷鲁斯是奥西里斯和伊希斯的遗腹子，他对抗篡位者赛特，战胜了黑暗沙漠之王，荷鲁斯成为奥西里斯的守序继承人。荷鲁斯继承了父亲的王位，在痛苦时代与他的妃子哈托尔一起统治着奥西里昂，也成为了国王和法老统治之神。荷鲁斯的形象是一个鹰头人身的男子，头戴法老的传统双冠，称为 pschent。他有时也表现为一只巨型的天鹰。他的标志--荷鲁斯之眼被用来驱除邪恶，这个标志通常出现在护身符和饰品上。作为太阳神和王神，荷鲁斯支持拉神，协助他与阿佩普不断作战。荷鲁斯是奥西里斯和伊希斯的盟友，也是赛特坚定不移的敌人，二者在漫长的岁月中进行了无数次战斗。荷鲁斯受到国王和法老以及猎人、圣骑士、游侠和战士的崇拜。他有时与奥西里斯和伊希斯组成三神，或与他的妃子哈托尔组成王室夫妇的二分之一，但也有专门供奉荷鲁斯的神庙。虽然在这个时代很少见，但荷鲁斯的神职人员与阿巴达尔的信徒相处融洽，因为两个教会都重视领导力和守序。在奥西瑞恩较大的城市中仍能找到荷鲁斯的神庙。"
+    },
+    {
       "Key": "6c96cfb89d62491c94f691454cacf23c",
       "SimpleName": "HorusFeature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "\nTitles: The Distant Falcon, Horakhty   \nAlignment: Lawful Neutral   \nAreas of Concern: Rulership, Sky, Sun   \nDomains: Air, Animal, Law, Nobility, Sun   \nSubdomains: Day, Feather, Inevitable, Leadership, Light, Revelation, Wind   \nFavoured Weapon: Khopesh (Falcata)   \nHoly Symbol: Eye of Horus   \nSacred Animal: Falcon   \nHorus is the god of the sky, the celestial falcon whose eyes are the sun and moon, whose speckled feathers are the stars, and whose wings are the sky. He is also a sun god, and in the form of Horakhty he is a deity of both the rising and setting suns. The posthumous son of Osiris and Isis, Horus faced off against the usurper Set, and with his victory over the Lord of the Dark Desert, Horus became the rightful heir of Osiris. Horus took his father's place as king and ruled Osirion with his consort Hathor during the Age of Anguish, becoming also a god of kings and pharaonic rule. Horus appears as a man with the head of a falcon wearing the traditional double crown of pharaohs called the pschent. He is also sometimes represented as a great celestial falcon. His symbol, the eye of Horus, is used to ward off evil, and the symbol commonly appears on protective amulets and trinkets. As a sun deity and god of kings, Horus lends his support to Ra, and aids him in his continuous battles against Apep. An ally of Osiris and Isis , Horus is a steadfast enemy of Set, and the two have fought countless battles over the ages. Horus is worshiped by kings and pharaohs, as well as by hunters, paladins, rangers, and warriors. He is sometimes venerated as part of a triad with Osiris and Isis, or as one-half of a royal couple with his consort Hathor, but there are temples dedicated solely to Horus as well. Though rare in this age, Horus' clergy gets along well with the faithful of Abadar, as both churche s value leadership and law. Temples to Horus are still found in the larger cities of Osirion.",
       "zhCN": "\n头衔：彼方之鹰\n阵营：守序中立\n神职：统驭、天空、太阳\n领域：气、动物、守序、崇高、太阳\n子领域：白昼、飞羽、制裁、领导、光明、风\n偏好武器：镰状剑(反曲剑)\n圣徽：荷鲁斯之眼\n圣兽：隼\n荷鲁斯是天空之神，是双目为日月，飞羽为繁星，展翼为长空的神鹰。祂也是太阳神，当化身为荷拉赫提─二个地平线的荷鲁斯─时，祂同时身兼日出与日落之神。身为欧西里斯与伊西斯的遗腹子，荷鲁斯与窜乱者赛特大战，在祂击退了黑沙魔王以后成为了欧西里斯的正统后继者。荷鲁斯接掌了父亲留下的王位，并与配偶哈索尔于痛苦之年共同治理奥西里昂，从此成为了君王与法老政权之神。\n荷鲁斯以头戴传统法老红白双冠的隼首男子的姿态示人，但偶尔也被描绘成巨型神鹰。祂的圣徽荷鲁斯之眼被用来避邪，因此常出现在保平安的护符或饰品上。作为太阳与君主之神，荷鲁斯支持拉并协助祂持续对抗阿佩普。而荷鲁斯作为欧西里斯与伊西斯的盟友，自然与赛特是死敌，两者在几千年以来不断地争斗。\n荷鲁斯受到君王与法老，以及猎人、圣武士、游侠和武人所敬拜。祂一般是被视为与欧西里斯及伊西斯并列的三神之一，或是与哈索尔同席的神君夫妇的一半来崇拜，但也存在单纯供奉荷鲁斯的神殿。虽然在过去很罕见，但荷鲁斯的祭司与阿巴达尔的信徒交流友善，毕竟两神都强调权威与法治的重要。直至今日在奥西里昂的大城市之中依然可以找到荷鲁斯的神殿。"
-    },
-    {
-      "Key": "9d85cf3821b64572a75f21114cda0314",
-      "SimpleName": "HorusFeature.Description",
-      "ProcessTemplates": true,
-      "enGB": "\nTitles: The Distant Falcon, Horakhty   \nAlignment: Lawful Neutral   \nAreas of Concern: Rulership, Sky, Sun   \nDomains: Air, Animal, Law, Nobility, Sun   \nSubdomains: Day, Feather, Inevitable, Leadership, Light, Revelation, Wind   \nFavoured Weapon: Khopesh (Falcata)   \nHoly Symbol: Eye of Horus   \nSacred Animal: Falcon   \nHorus is the god of the sky, the celestial falcon whose eyes are the sun and moon, whose speckled feathers are the stars, and whose wings are the sky. He is also a sun god, and in the form of Horakhty he is a deity of both the rising and setting suns. The posthumous son of Osiris and Isis, Horus faced off against the usurper Set, and with his victory over the Lord of the Dark Desert, Horus became the rightful heir of Osiris. Horus took his father's place as king and ruled Osirion with his consort Hathor during the Age of Anguish, becoming also a god of kings and pharaonic rule. Horus appears as a man with the head of a falcon wearing the traditional double crown of pharaohs called the pschent. He is also sometimes represented as a great celestial falcon. His symbol, the eye of Horus, is used to ward off evil, and the symbol commonly appears on protective amulets and trinkets. As a sun deity and god of kings, Horus lends his support to Ra, and aids him in his continuous battles against Apep. An ally of Osiris and Isis, Horus is a steadfast enemy of Set, and the two have fought countless battles over the ages. Horus is worshiped by kings and pharaohs, as well as by hunters, paladins, rangers, and warriors. He is sometimes venerated as part of a triad with Osiris and Isis, or as one-half of a royal couple with his consort Hathor, but there are temples dedicated solely to Horus as well. Though rare in this age, Horus' clergy gets along well with the faithful of Abadar, as both churches value leadership and law. Temples to Horus are still found in the larger cities of Osirion.",
-      "zhCN": "\n头衔：遥远的猎鹰，霍拉赫提 \n阵营：守序中立 \n关注领域：统治, 天空, 太阳 \n领域：气、动物、守序、高贵、太阳 \n子域：白昼、羽毛、必然、领导、光、启示、风 \n最喜爱的武器：科佩什（法尔卡塔） \n神圣象征：荷鲁斯之眼 \n圣兽：猎鹰猎鹰 \n荷鲁斯是天空之神，天鹰的眼睛是太阳和月亮，斑驳的羽毛是星星，翅膀是天空。他也是太阳神，以霍拉赫蒂（Horakhty）的形式，他是太阳升起和落下的神灵。荷鲁斯是奥西里斯和伊希斯的遗腹子，他对抗篡位者赛特，战胜了黑暗沙漠之王，荷鲁斯成为奥西里斯的守序继承人。荷鲁斯继承了父亲的王位，在痛苦时代与他的妃子哈托尔一起统治着奥西里昂，也成为了国王和法老统治之神。荷鲁斯的形象是一个鹰头人身的男子，头戴法老的传统双冠，称为 pschent。他有时也表现为一只巨型的天鹰。他的标志--荷鲁斯之眼被用来驱除邪恶，这个标志通常出现在护身符和饰品上。作为太阳神和王神，荷鲁斯支持拉神，协助他与阿佩普不断作战。荷鲁斯是奥西里斯和伊希斯的盟友，也是赛特坚定不移的敌人，二者在漫长的岁月中进行了无数次战斗。荷鲁斯受到国王和法老以及猎人、圣骑士、游侠和战士的崇拜。他有时与奥西里斯和伊希斯组成三神，或与他的妃子哈托尔组成王室夫妇的二分之一，但也有专门供奉荷鲁斯的神庙。虽然在这个时代很少见，但荷鲁斯的神职人员与阿巴达尔的信徒相处融洽，因为两个教会都重视领导力和守序。在奥西瑞恩较大的城市中仍能找到荷鲁斯的神庙。"
     },
     {
       "Key": "fb3bfd2a4b4b47009e33fcd94acf1672",
@@ -11793,19 +11793,19 @@
       "zhCN": "寒冰之躯"
     },
     {
-      "Key": "ee2ec3047988477e939322560caad5cb",
-      "SimpleName": "IceDomainGreaterFeature.Description",
-      "ProcessTemplates": true,
-      "enGB": "At 8th level, you can transmute your body and equipment to ice for a period of time. It takes a standard action to take on the form of ice, and you can end the transmutation with a free action on your turn. When you take on the form of ice, you are immune to cold and have DR 5/—, but you take twice the normal amount of damage from fire. You can take on the form of ice for a number of rounds per day equal to your cleric level. The rounds need not be consecutive.",
-      "zhCN": "8 级时，你可以在一段时间内将身体和装备转化为冰。变成冰的形态需要一个标准动作，你可以在你的回合中用一个自由动作结束转化。当你变成冰的形态时，你对寒冷免疫，防御力为 5/-，但受到的火焰伤害是正常值的两倍。你每天可以化身为冰，持续回合数等于你的牧师等级。这些回合不必连续。"
-    },
-    {
       "Key": "64e4c22e3aaf4c67948fa173176d63f9",
       "SimpleName": "IceDomainGreaterFeature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "At 8th level, you can transmute your body and equipment to ice for a period of time. It takes a standard action to take on the form of ice, and you can end the transmutation with a free action on your turn. When you take on the form of ice, you are immune to cold and have DR 5/—, but you take twice the normal amount of damage from fire. You can take on the form of ice for a number of rounds per day equal to your cleric level. The rounds need not be consecutive",
       "zhCN": "到了8级，就可用标准动作令自己身心像冰川一样玉洁冰清。此时你免疫寒冷伤害，并与获得伤害减免5/-，但是会受到双倍的火伤害。每天变成冰的轮数等于牧师等级，自由动作解除，无需连续。"
+    },
+    {
+      "Key": "ee2ec3047988477e939322560caad5cb",
+      "SimpleName": "IceDomainGreaterFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "At 8th level, you can transmute your body and equipment to ice for a period of time. It takes a standard action to take on the form of ice, and you can end the transmutation with a free action on your turn. When you take on the form of ice, you are immune to cold and have DR 5/—, but you take twice the normal amount of damage from fire. You can take on the form of ice for a number of rounds per day equal to your cleric level. The rounds need not be consecutive.",
+      "zhCN": "8 级时，你可以在一段时间内将身体和装备转化为冰。变成冰的形态需要一个标准动作，你可以在你的回合中用一个自由动作结束转化。当你变成冰的形态时，你对寒冷免疫，防御力为 5/-，但受到的火焰伤害是正常值的两倍。你每天可以化身为冰，持续回合数等于你的牧师等级。这些回合不必连续。"
     },
     {
       "Key": "fd67d83c63e04b31baa4acd6c4702309",
@@ -12219,19 +12219,19 @@
       "zhCN": "伊瑞兹"
     },
     {
+      "Key": "e9ba65fa3a6e4547b5673fe3bbca631c",
+      "SimpleName": "IsisFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nTitles: Queen of Miracles   \nAlignment: Neutral Good   \nAreas of Concern: Fertility, Magic, Motherhood, Rebirth   \nDomains: Charm, Community, Good, Healing, Magic   \nSubdomains: Agathion, Arcane, Divine, Family, Love, Resurrection   \nFavoured Weapon: Quarterstaff   \nHoly Symbol: Knot of Isis   \nSacred Animal: Kite   \nWhen Set killed his brother Osiris, it was their sister Isis who recovered Osiris's body, and using her magic, conceived a son, Horus, with her dead husband. Enraged, Set then dismembered Osiris's corpse and scattered the remains, but Isis gathered up all of the pieces of her husband's body and with a magic spell resurrected Osiris. Isis ruled as queen alongside Osiris during the Age of Legend, and like him, she is a fertility and nature goddess, viewed as the ideal mother and wife. She is a goddess of rebirth and resurrection, and the protector of the canopic jar that holds the deceased's liver. She is also a deity of magic, both arcane and divine. Isis appears as a beautiful human woman with winged arms, wearing a crown shaped like a throne. She is the loyal wife and partner of Osiris, and is fiercely protective of her son Horus. Isis is close to her sister Nephthys, but is a sworn enemy of her brother Set. Isis is worshiped by sorcerers, wizards, and witches as a patron of magic, but also by mothers, wives, and druids in her role as a goddess of fertility. The vast majority of her clerics are women, but men and women both are initiated into her mystery cults to learn her secret and sacred rites.",
+      "zhCN": "\n头衔：奇迹女王 \n阵营：中立善良 \n关注领域：生育、魔法、母性、重生 \n领域：魅惑，团队，善良，治愈、魔法 \n次领域：魔法、母性、重生魅惑，团队，善良，治愈、魔法 \n子域：Agathion、奥术、神圣、家庭、爱、复活 \n最喜爱的武器：四分杖 \n神圣象征：伊希斯之结 \n神圣的动物：风筝 \n当赛特杀死他的兄弟奥西里斯时，他们的妹妹伊希斯找到了奥西里斯的尸体，并用她的魔法与死去的丈夫怀上了儿子荷鲁斯。愤怒的赛特随后肢解了奥西里斯的尸体，并将遗体撒了一地，但伊希斯收集了丈夫的所有遗体碎片，并用魔法复活了奥西里斯。在传说时代，伊希斯作为王后与奥西里斯并肩作战，她和奥西里斯一样是生育女神和自然女神，被视为理想的母亲和妻子。她是重生和复活女神，也是盛放死者肝脏的罐子的保护神。她也是魔法之神，既神秘又神圣。伊希斯是一位美丽的人类女性，双臂生翼，头戴宝座状的王冠。她是奥西里斯忠诚的妻子和伙伴，对儿子荷鲁斯保护有加。伊希斯与她的妹妹奈芙提斯（Nephthys）关系密切，但却是她哥哥赛特（Set）的死敌。伊希斯是巫师、魔法师和女巫崇拜的魔法守护神，同时也是母亲、妻子和德鲁伊崇拜的生育女神。她的绝大多数神职人员都是女性，但男性和女性都可以加入她的神秘崇拜，学习她神秘而神圣的仪式。"
+    },
+    {
       "Key": "b2338ba35d18449ca58c3df3e86ef1e1",
       "SimpleName": "IsisFeature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "\nTitles: Queen of Miracles   \nAlignment: Neutral Good   \nAreas of Concern: Fertility, Magic, Motherhood, Rebirth   \nDomains: Charm, Community, Good, Healing, Magic   \nSubdomains: Agathion, Arcane, Divine, Family, Love, Resurrection   \nFavoured Weapon: Quarterstaff   \nHoly Symbol: Knot of Isis   \nSacred Animal: Kite   \nWhen Set killed his brother Osiris, it was their sister Isis who recovered Osiris's body, and using her magic, conceived a son, Horus, with her dead husband. Enraged, Set then dismembered Osiris's corpse and scattered the remains, but Isis gathered up all of the pieces of her husband's body and with a magic spell resurrected Osiris. Isis ruled as queen alongside Osiris during the Age of Legend, and like him, she is a fertility and nature goddess, viewed as the ideal mother and wife . She is a goddess of rebirth and resurrection, and the protector of the canopic jar that holds the deceased's liver. She is also a deity of magic, both arcane and divine. Isis appears as a beautiful human woman with winged arms, wearing a crown shaped like a throne. She is the loyal wife and partner of Osiris, and is fiercely protective of her son Horus. Isis is close to her sister Nephthys, but is a sworn enemy of her brother Set. Isis is worshiped by sorcerers, wizards, and witches as a patron of magic, but also by mothers, wives, and druids in her role as a goddess of fertility. The vast majority of her clerics are women, but men and women both are initiated into her mystery cults to learn her secret and sacred rites.",
       "zhCN": "\n头衔：奇迹天后\n阵营：中立善良\n神职：多产、魔法、母性、重生\n领域：魅惑、联盟、善良、医疗、魔法 \n子领域：盖丁、秘示域、神力、家族、爱慕、回生\n偏好武器：木棍\n圣徽：伊西斯之结\n圣兽：鸢\n当赛特击杀祂兄弟的欧西里斯后，是祂们的姊妹伊西斯回收欧西里昂的尸骸，并透过魔法与亡夫产下一子荷鲁斯。塞特听闻后大怒之下将欧西里斯分尸并四散尸块，但伊西斯将全部的碎片收集拼凑起来以后又施了一道法术将欧西里斯复活。\n伊西斯在欧西里斯身侧以天后的身分于传说之年统治奥西里昂，和夫君共享多产与自然的神职，被凡人视为妻子与母亲的典范。祂是重生与复活的女神，也是装载死者肝脏的卡诺波坛的守护神。祂也是不论神术或奥术一切魔法之神。伊西斯以臂下生羽，穿戴宝座型头饰的美丽人类女性形象示人。祂是欧西里斯忠贞的配偶，对儿子荷鲁斯有着很强的保护心。伊西斯与姊妹奈芙蒂斯的关系友好，但是兄弟赛特的死敌。\n伊西斯受术士、法师、巫师以魔法之神的身分敬拜，但也被母亲、妻子、德鲁伊以多产之神的身分供奉。伊西斯的祭司绝大多数皆为女性，但其教派也愿意接纳来学习密典与仪式的男人。"
-    },
-    {
-      "Key": "e9ba65fa3a6e4547b5673fe3bbca631c",
-      "SimpleName": "IsisFeature.Description",
-      "ProcessTemplates": true,
-      "enGB": "\nTitles: Queen of Miracles   \nAlignment: Neutral Good   \nAreas of Concern: Fertility, Magic, Motherhood, Rebirth   \nDomains: Charm, Community, Good, Healing, Magic   \nSubdomains: Agathion, Arcane, Divine, Family, Love, Resurrection   \nFavoured Weapon: Quarterstaff   \nHoly Symbol: Knot of Isis   \nSacred Animal: Kite   \nWhen Set killed his brother Osiris, it was their sister Isis who recovered Osiris's body, and using her magic, conceived a son, Horus, with her dead husband. Enraged, Set then dismembered Osiris's corpse and scattered the remains, but Isis gathered up all of the pieces of her husband's body and with a magic spell resurrected Osiris. Isis ruled as queen alongside Osiris during the Age of Legend, and like him, she is a fertility and nature goddess, viewed as the ideal mother and wife. She is a goddess of rebirth and resurrection, and the protector of the canopic jar that holds the deceased's liver. She is also a deity of magic, both arcane and divine. Isis appears as a beautiful human woman with winged arms, wearing a crown shaped like a throne. She is the loyal wife and partner of Osiris, and is fiercely protective of her son Horus. Isis is close to her sister Nephthys, but is a sworn enemy of her brother Set. Isis is worshiped by sorcerers, wizards, and witches as a patron of magic, but also by mothers, wives, and druids in her role as a goddess of fertility. The vast majority of her clerics are women, but men and women both are initiated into her mystery cults to learn her secret and sacred rites.",
-      "zhCN": "\n头衔：奇迹女王 \n阵营：中立善良 \n关注领域：生育、魔法、母性、重生 \n领域：魅惑，团队，善良，治愈、魔法 \n次领域：魔法、母性、重生魅惑，团队，善良，治愈、魔法 \n子域：Agathion、奥术、神圣、家庭、爱、复活 \n最喜爱的武器：四分杖 \n神圣象征：伊希斯之结 \n神圣的动物：风筝 \n当赛特杀死他的兄弟奥西里斯时，他们的妹妹伊希斯找到了奥西里斯的尸体，并用她的魔法与死去的丈夫怀上了儿子荷鲁斯。愤怒的赛特随后肢解了奥西里斯的尸体，并将遗体撒了一地，但伊希斯收集了丈夫的所有遗体碎片，并用魔法复活了奥西里斯。在传说时代，伊希斯作为王后与奥西里斯并肩作战，她和奥西里斯一样是生育女神和自然女神，被视为理想的母亲和妻子。她是重生和复活女神，也是盛放死者肝脏的罐子的保护神。她也是魔法之神，既神秘又神圣。伊希斯是一位美丽的人类女性，双臂生翼，头戴宝座状的王冠。她是奥西里斯忠诚的妻子和伙伴，对儿子荷鲁斯保护有加。伊希斯与她的妹妹奈芙提斯（Nephthys）关系密切，但却是她哥哥赛特（Set）的死敌。伊希斯是巫师、魔法师和女巫崇拜的魔法守护神，同时也是母亲、妻子和德鲁伊崇拜的生育女神。她的绝大多数神职人员都是女性，但男性和女性都可以加入她的神秘崇拜，学习她神秘而神圣的仪式。"
     },
     {
       "Key": "90057398ddf442fc8d1b67d29bc6840a",
@@ -12277,18 +12277,18 @@
       "zhCN": "杰兹"
     },
     {
+      "Key": "92a4e62f50d7416aae1becc807e61aa3",
+      "SimpleName": "JalaijataliFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nTitles: Rillsong   \nAlignment: Chaotic Good   \nAreas of Concern: Natural music, Rapids, Waterfalls   \nDomains: Chaos, Good, Scalykind , Water   \nSubdomains: Azata, Flotsam, Revelry, Rivers   \nFavoured Weapon: Whip (Trident)   \nHoly Symbol: Water from wood pipe   \nSacred Animal: Water lizard   \nJalaijatali is a free-spirited empyreal lord who sings with the voice of a rushing creek. Her presence can be felt in the rapids of a flowing river or beneath the misty cascade of a waterfall. Jalaijatali appears as a beautiful Mwangi woman with skin formed of tiny, iridescent scales. Her pointed ears peek through short black hair, and her body is garbed in a robe of living water that continually splashes and rushes over her form. At a moment's notice, the empyreal lord can pluck a stream of water from her robe to wield as a whip. Rillsong loves to teach mortals the beauty of natural music, from the patter of a summer rain to the sawing of katydids. While Jalaijatali much prefers making music to making war, she can be roused to anger by fiends and evil creatures that corrupt her waters, particularly river drakes or water oni. On Elysium, Jalaijatali lives in a pool fed by a waterfall that falls continually from the sky with no apparent source. Around the pool stands a gazebo of acacia wood and crystal, with raised wooden platforms covered in soft mats of greenery where guests can recline.",
+      "zhCN": "\n头衔：溪流之歌\n阵营：混乱善良 \n神职：自然之音，湍流，瀑布\n领域：混乱、善良、鳞类、流水\n子领域：爱塔、漂浮、狂欢、河流\n偏好武器：鞭子（三叉戟）\n圣徽：从木管流下的水\n圣兽：水蜥蜴\n贾莱佳塔莉是一位自由奔放的至高天领主，她唱歌的声音像湍急的小溪。在流动的河流的激流中，或在薄雾缭绕的瀑布下，都能感觉到她的存在。\n贾莱佳塔莉是一个美丽的芒吉女人，皮肤由微小的虹彩鳞片组成。她的尖耳朵从黑色的短发中探出头来，她的身体披着一件活水长袍，不断地在她的身体上飞溅和奔流。她可以从她的长袍中拔出一股水流，作为鞭子持有。溪流之歌喜欢向凡人传授自然音乐之美，从夏雨的淅淅沥沥到螽斯的锯切。虽然贾莱佳塔莉更喜欢创作音乐而不是发动战争，但她可能会被恶魔和邪恶生物激怒，这些生物会酸蚀她的水域，尤其是水亚龙和水恶鬼。\n在极乐境，奔放之野有条从天上落下的无源瀑布，瀑布下面的水池就是贾莱佳塔莉的家。池旁有座相思树和水晶构成的露台，上面遍布芳草以供客人休憩。"
+    },
+    {
       "Key": "59e3ebed3bae4b69abecb4091f48ee1c",
       "SimpleName": "JalaijataliFeature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "\nTitles: Rillsong   \nAlignment: Chaotic Good   \nAreas of Concern: Natural music, Rapids, Waterfalls   \nDomains: Chaos, Good, Scalykind , Water   \nSubdomains: Azata, Flotsam, Revelry, Rivers   \nFavoured Weapon: Whip (Trident)   \nHoly Symbol: Water from wood pipe   \nSacred Animal: Water lizard   \nJalaijatali is a free-spirited empyreal lord who sings with the voice of a rushing creek. Her presence can be felt in the rapids of a flowing river or beneath the misty cascade of a waterfall. Jalaijatali appears as a beautiful Mwangi woman with skin formed of tiny, iridescent scales . Her pointed ears peek through short black hair, and her body is garbed in a robe of living water that continually splashes and rushes over her form. At a moment's notice, the empyreal lord can pluck a stream of water from her robe to wield as a whip. Rillsong loves to teach mortals the beauty of natural music, from the patter of a summer rain to the sawing of katydids. While Jalaijatali much prefers making music to making war, she can be roused to anger by fiends and evil creatures that corrupt her waters, particularly river drakes or water oni. On Elysium, Jalaijatali lives in a pool fed by a waterfall that falls continually from the sky with no apparent source. Around the pool stands a gazebo of acacia wood and crystal, with raised wooden platforms covered in soft mats of greenery where guests can recline.",
-      "zhCN": "\n头衔：溪流之歌\n阵营：混乱善良 \n神职：自然之音，湍流，瀑布\n领域：混乱、善良、鳞类、流水\n子领域：爱塔、漂浮、狂欢、河流\n偏好武器：鞭子（三叉戟）\n圣徽：从木管流下的水\n圣兽：水蜥蜴\n贾莱佳塔莉是一位自由奔放的至高天领主，她唱歌的声音像湍急的小溪。在流动的河流的激流中，或在薄雾缭绕的瀑布下，都能感觉到她的存在。\n贾莱佳塔莉是一个美丽的芒吉女人，皮肤由微小的虹彩鳞片组成。她的尖耳朵从黑色的短发中探出头来，她的身体披着一件活水长袍，不断地在她的身体上飞溅和奔流。她可以从她的长袍中拔出一股水流，作为鞭子持有。溪流之歌喜欢向凡人传授自然音乐之美，从夏雨的淅淅沥沥到螽斯的锯切。虽然贾莱佳塔莉更喜欢创作音乐而不是发动战争，但她可能会被恶魔和邪恶生物激怒，这些生物会酸蚀她的水域，尤其是水亚龙和水恶鬼。\n在极乐境，奔放之野有条从天上落下的无源瀑布，瀑布下面的水池就是贾莱佳塔莉的家。池旁有座相思树和水晶构成的露台，上面遍布芳草以供客人休憩。"
-    },
-    {
-      "Key": "92a4e62f50d7416aae1becc807e61aa3",
-      "SimpleName": "JalaijataliFeature.Description",
-      "ProcessTemplates": true,
-      "enGB": "\nTitles: Rillsong   \nAlignment: Chaotic Good   \nAreas of Concern: Natural music, Rapids, Waterfalls   \nDomains: Chaos, Good, Scalykind , Water   \nSubdomains: Azata, Flotsam, Revelry, Rivers   \nFavoured Weapon: Whip (Trident)   \nHoly Symbol: Water from wood pipe   \nSacred Animal: Water lizard   \nJalaijatali is a free-spirited empyreal lord who sings with the voice of a rushing creek. Her presence can be felt in the rapids of a flowing river or beneath the misty cascade of a waterfall. Jalaijatali appears as a beautiful Mwangi woman with skin formed of tiny, iridescent scales. Her pointed ears peek through short black hair, and her body is garbed in a robe of living water that continually splashes and rushes over her form. At a moment's notice, the empyreal lord can pluck a stream of water from her robe to wield as a whip. Rillsong loves to teach mortals the beauty of natural music, from the patter of a summer rain to the sawing of katydids. While Jalaijatali much prefers making music to making war, she can be roused to anger by fiends and evil creatures that corrupt her waters, particularly river drakes or water oni. On Elysium, Jalaijatali lives in a pool fed by a waterfall that falls continually from the sky with no apparent source. Around the pool stands a gazebo of acacia wood and crystal, with raised wooden platforms covered in soft mats of greenery where guests can recline.",
       "zhCN": "\n头衔：溪流之歌\n阵营：混乱善良 \n神职：自然之音，湍流，瀑布\n领域：混乱、善良、鳞类、流水\n子领域：爱塔、漂浮、狂欢、河流\n偏好武器：鞭子（三叉戟）\n圣徽：从木管流下的水\n圣兽：水蜥蜴\n贾莱佳塔莉是一位自由奔放的至高天领主，她唱歌的声音像湍急的小溪。在流动的河流的激流中，或在薄雾缭绕的瀑布下，都能感觉到她的存在。\n贾莱佳塔莉是一个美丽的芒吉女人，皮肤由微小的虹彩鳞片组成。她的尖耳朵从黑色的短发中探出头来，她的身体披着一件活水长袍，不断地在她的身体上飞溅和奔流。她可以从她的长袍中拔出一股水流，作为鞭子持有。溪流之歌喜欢向凡人传授自然音乐之美，从夏雨的淅淅沥沥到螽斯的锯切。虽然贾莱佳塔莉更喜欢创作音乐而不是发动战争，但她可能会被恶魔和邪恶生物激怒，这些生物会酸蚀她的水域，尤其是水亚龙和水恶鬼。\n在极乐境，奔放之野有条从天上落下的无源瀑布，瀑布下面的水池就是贾莱佳塔莉的家。池旁有座相思树和水晶构成的露台，上面遍布芳草以供客人休憩。"
     },
     {
@@ -12405,19 +12405,19 @@
       "zhCN": "国王城堡"
     },
     {
-      "Key": "06181e43c62846ffb5ca5a9542da54f3",
-      "SimpleName": "KnowledgeDomainBaseFeatureDruid.Description",
-      "ProcessTemplates": true,
-      "enGB": "\nYou are a scholar and a sage of legends. In addition, you treat all Knowledge and Lore skills as class skills. \nVoid Form: You can become semi-tangible as a standard action. While in this form, you are immune to critical hits and gain a +1 deflection bonus to AC. This bonus increases by 1 at 8th level and every 4 levels thereafter. You can use this power a number of rounds per day equal to your level in the class that gave you access to this domain. \nTeaching Moment: At 8th level as a swift action you can grant all allies within 30 feet special insights. Once during the next minute, each affected creature can choose to roll twice and take the better result before attempting an attack roll, ability check, skill check, or saving throw. You can use this ability once per day at 8th level, and one additional time per day for every 4 levels in the class that gave you access to this domain beyond 8th.",
-      "zhCN": "\n你是一位学者和传说中的圣人。此外，你将所有知识和传说技能视为类技能。\n虚无形态：作为标准动作，你可以变成半实体。在这种形态下，你对要害攻击免疫，并获得 AC+1防御加成。该加成在第 8 级时增加 1，之后每 4 级增加 1。你每天可以使用此能力的回合数等于你获得此领域的等级。\n教学时刻：8级时，作为一个迅速行动，你可以给予30英尺内的所有盟友特殊洞察加值。在接下来的一分钟内，每个受影响的生物可以选择掷两次骰，并在尝试攻击掷骰、属性检定、技能检定或豁免投掷之前取较好的结果。在 8 级时，您每天可以使用一次此能力，8 级之后，每 4 级您就可以多使用一次。"
-    },
-    {
       "Key": "04c66d3e24e74140b3993e55f1a5cdb4",
       "SimpleName": "KnowledgeDomainBaseFeatureDruid.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "\nYou are a scholar and a sage of legends. In addition, you treat all Knowledge and Lore skills as class skills. Void Form: You can become semi-tangible as a standard action. While in this form, you are immune to critical hits and gain a +1 deflection bonus to AC. This bonus increases by 1 at 8th level and every 4 levels thereafter. You can use this power a number of rounds per day equal to your level in the class that gave you access to this domain. Teaching Moment: At 8th level as a swift action you can grant all allies within 30 feet special insights. Once during the next minute, each affected creature can choose to roll twice and take the better result before attempting an attack roll, ability check, skill check, or saving throw. You can use this ability once per day at 8th level, and one additional time per day for every 4 levels in the class that gave you access to this domain beyond 8th.",
       "zhCN": "\n你是位学者，一位传说中的圣贤。此外，你可将所有知识和学识{g|Encyclopedia:Skills}技能{/g}视为你的本职技能。\n虚空形态：作为{g|Encyclopedia:Standard_Actions}标准动作{/g}，你可进入半实体状态。进入此状态后，你将免疫{g|Encyclopedia:Critical}重击{/g}，且{g|Encyclopedia:Armor_Class}防御等级{/g}获得+1偏斜{g|Encyclopedia:Bonus}加值{/g}。在8级时，此加值会增加1点，随后每4级再增加1点。每天可使用{g|Encyclopedia:Combat_Round}轮数{/g}等于赋予你此领域的职业等级。\n授业时刻：8级时，作为{g|Encyclopedia:Swift_Action}迅捷动作{/g}，你可赋予30英尺范围内所有盟友特殊的洞察加值。在下一分钟内，每个受影响生物在进行单次{g|Encyclopedia:Attack}攻击检定{/g}、{g|Encyclopedia:Ability_Scores}属性检定{/g}、技能{g|Encyclopedia:Check}检定{/g}或{g|Encyclopedia:Saving_Throw}豁免检定{/g}时，可选择投骰两次，并采用更高的{g|Encyclopedia:Dice}检定{/g}结果。在8级时，每天可使用一次此能力，8级后赋予你此领域的职业每升4级，可获得1次额外的使用次数。"
+    },
+    {
+      "Key": "06181e43c62846ffb5ca5a9542da54f3",
+      "SimpleName": "KnowledgeDomainBaseFeatureDruid.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nYou are a scholar and a sage of legends. In addition, you treat all Knowledge and Lore skills as class skills. \nVoid Form: You can become semi-tangible as a standard action. While in this form, you are immune to critical hits and gain a +1 deflection bonus to AC. This bonus increases by 1 at 8th level and every 4 levels thereafter. You can use this power a number of rounds per day equal to your level in the class that gave you access to this domain. \nTeaching Moment: At 8th level as a swift action you can grant all allies within 30 feet special insights. Once during the next minute, each affected creature can choose to roll twice and take the better result before attempting an attack roll, ability check, skill check, or saving throw. You can use this ability once per day at 8th level, and one additional time per day for every 4 levels in the class that gave you access to this domain beyond 8th.",
+      "zhCN": "\n你是一位学者和传说中的圣人。此外，你将所有知识和传说技能视为类技能。\n虚无形态：作为标准动作，你可以变成半实体。在这种形态下，你对要害攻击免疫，并获得 AC+1防御加成。该加成在第 8 级时增加 1，之后每 4 级增加 1。你每天可以使用此能力的回合数等于你获得此领域的等级。\n教学时刻：8级时，作为一个迅速行动，你可以给予30英尺内的所有盟友特殊洞察加值。在接下来的一分钟内，每个受影响的生物可以选择掷两次骰，并在尝试攻击掷骰、属性检定、技能检定或豁免投掷之前取较好的结果。在 8 级时，您每天可以使用一次此能力，8 级之后，每 4 级您就可以多使用一次。"
     },
     {
       "Key": "d2ef0ba99a654c56995997b439f0171f",
@@ -12528,18 +12528,18 @@
       "zhCN": "病难母"
     },
     {
+      "Key": "44cfe3bd69c84e1b9f07ca7fde904b3d",
+      "SimpleName": "LalaciFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nTitles: He of Motley Repose   \nAlignment: Chaotic Good   \nAreas of Concern: Rainbows, Relaxation, Shade   \nDomains: Chaos, Good, Luck, Sun   \nSubdomains: Azata, Fate, Light, Whimsy   \nFavoured Weapon: Sling (Slingstaff)   \nHoly Symbol: Rainbow with shadow   \nSacred Animal: Lacewing   \nLalaci sees the beauty in conflict. The sun wars with the rain and creates a rainbow, and He of Motley Repose believes that everyone's inner nature should be a similar mix of action and restraint, placid adoration and righteous scorn. He offers rest and relaxation to those who meet each day with excitement and vigor and who may be tired from the chaotic beauty that is their life. To mortal eyes, Lalaci appears to be fair-skinned with white-blonde hair and yellow-white eyes. He tucks the two prismatic wings that curve from his shoulders down so that he appears to wear a beautiful multicolored cloak, though among his own kind he walks in his true naked form, with crystalline flesh that refracts light as golden rays. He of Motley Repose provides rest to the hardworking and shade to those exhausted from the sun. Glassblowers and illusionists often find creative inspiration in Lalaci's rainbows; particularly gifted glass artists and lightweavers who lead worthy lives sometimes find small prisms at their workstations-tokens of Lalaci's favor. His devotees claim that the reflections of rainbows in natural bodies of water create portals to his celestial domain: an enormous, warped glass palace that floats on a cloud across the surface of Elysium.",
+      "zhCN": "\n头衔：七彩长眠者\n阵营：混乱善良 \n神职：彩虹、休闲、阴影 \n领域：混乱、善良、幸运、太阳\n子领域：爱塔、天命、光明、滑稽\n偏好武器：吊索（投石杖） \n圣徽：带阴影的彩虹\n圣兽：草蜻蛉\n拉剌奇看到了冲突中的美。太阳与雨交相辉映，创造出彩虹，七彩长眠者认为，每个人的内在本性都应该是类似的混合行动和克制，平静的崇拜和正义的蔑视。他为那些每天都充满兴奋和活力的人提供休息和放松，他们可能会因生活中混乱的美丽而感到疲倦。\n在凡人眼中，拉剌奇似乎皮肤白皙，有着白金色的头发和黄白色的眼睛。他把从肩膀上弯曲的两个棱柱形翅膀掖好，这样他看起来就穿着一件漂亮的彩色斗篷，尽管在他自己的同类中，他以真正赤裸的形式行走，水晶般的肉体折射出金色的光芒。\n七彩长眠者为辛勤工作的人提供休息，为那些因太阳而疲劳的人提供阴凉。吹玻璃工和魔术师经常在拉剌奇的彩虹中找到创意灵感；特别有天赋的玻璃艺术家和过着有价值生活的织光师有时会在他们的工作站上找到小棱镜——这是拉剌奇青睐的象征。他的信徒声称，自然水体中彩虹的反射创造了通往他的天界的门户：奔放之野云端一座巨型扭曲的玻璃城堡，漂浮在极乐境表面的云层上。"
+    },
+    {
       "Key": "21eaf4d1d6474217a066392160e8dd15",
       "SimpleName": "LalaciFeature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "\nTitles: He of Motley Repose   \nAlignment: Chaotic Good   \nAreas of Concern: Rainbows, Relaxation, Shade   \nDomains: Chaos, Good, Luck, Sun   \nSubdomains: Azata, Fate, Light, Whimsy   \nFavoured Weapon: Sling (Slingstaff)   \nHoly Symbol: Rainbow with shadow   \nSacred Animal: Lacewing   \nLalaci sees the beauty in conflict. The sun wars with the rain and creates a rainbow, and He of Motley Repose believes that everyone's inner nature should be a similar mix of action and restraint, placid adoration and righteous scorn. He offers rest and relaxation to those who meet each day with excitement and vigor and who may be tired from the chaotic beauty that is their life. To mortal eyes, Lalaci appears to be fair-skinned with white-blonde hair and yellow-white eyes. He tucks the two prismatic wings that curve from his shoulders down so that he appears to wear a beautiful multicolored cloak, though among his own kind he walks in his true naked form, with crystalline flesh that refracts light as golden rays. He of Motley Repose provides rest to the hardworking and shade to those exhausted from the sun. Glassblowers and illusionists often find creative inspiration in Lalaci's rainbows; particularly gifted glass artists and lightweavers who lead worthy lives sometimes find small prisms at their workstations-tokens of Lalaci's favor. His devotees claim that the reflections of rainbows in natural bodies of water create portals to his celestial domain: an enormous, warped gla s s palace that floats on a cloud across the surface of Elysium.",
-      "zhCN": "\n头衔：七彩长眠者\n阵营：混乱善良 \n神职：彩虹、休闲、阴影 \n领域：混乱、善良、幸运、太阳\n子领域：爱塔、天命、光明、滑稽\n偏好武器：吊索（投石杖） \n圣徽：带阴影的彩虹\n圣兽：草蜻蛉\n拉剌奇看到了冲突中的美。太阳与雨交相辉映，创造出彩虹，七彩长眠者认为，每个人的内在本性都应该是类似的混合行动和克制，平静的崇拜和正义的蔑视。他为那些每天都充满兴奋和活力的人提供休息和放松，他们可能会因生活中混乱的美丽而感到疲倦。\n在凡人眼中，拉剌奇似乎皮肤白皙，有着白金色的头发和黄白色的眼睛。他把从肩膀上弯曲的两个棱柱形翅膀掖好，这样他看起来就穿着一件漂亮的彩色斗篷，尽管在他自己的同类中，他以真正赤裸的形式行走，水晶般的肉体折射出金色的光芒。\n七彩长眠者为辛勤工作的人提供休息，为那些因太阳而疲劳的人提供阴凉。吹玻璃工和魔术师经常在拉剌奇的彩虹中找到创意灵感；特别有天赋的玻璃艺术家和过着有价值生活的织光师有时会在他们的工作站上找到小棱镜——这是拉剌奇青睐的象征。他的信徒声称，自然水体中彩虹的反射创造了通往他的天界的门户：奔放之野云端一座巨型扭曲的玻璃城堡，漂浮在极乐境表面的云层上。"
-    },
-    {
-      "Key": "44cfe3bd69c84e1b9f07ca7fde904b3d",
-      "SimpleName": "LalaciFeature.Description",
-      "ProcessTemplates": true,
-      "enGB": "\nTitles: He of Motley Repose   \nAlignment: Chaotic Good   \nAreas of Concern: Rainbows, Relaxation, Shade   \nDomains: Chaos, Good, Luck, Sun   \nSubdomains: Azata, Fate, Light, Whimsy   \nFavoured Weapon: Sling (Slingstaff)   \nHoly Symbol: Rainbow with shadow   \nSacred Animal: Lacewing   \nLalaci sees the beauty in conflict. The sun wars with the rain and creates a rainbow, and He of Motley Repose believes that everyone's inner nature should be a similar mix of action and restraint, placid adoration and righteous scorn. He offers rest and relaxation to those who meet each day with excitement and vigor and who may be tired from the chaotic beauty that is their life. To mortal eyes, Lalaci appears to be fair-skinned with white-blonde hair and yellow-white eyes. He tucks the two prismatic wings that curve from his shoulders down so that he appears to wear a beautiful multicolored cloak, though among his own kind he walks in his true naked form, with crystalline flesh that refracts light as golden rays. He of Motley Repose provides rest to the hardworking and shade to those exhausted from the sun. Glassblowers and illusionists often find creative inspiration in Lalaci's rainbows; particularly gifted glass artists and lightweavers who lead worthy lives sometimes find small prisms at their workstations-tokens of Lalaci's favor. His devotees claim that the reflections of rainbows in natural bodies of water create portals to his celestial domain: an enormous, warped glass palace that floats on a cloud across the surface of Elysium.",
       "zhCN": "\n头衔：七彩长眠者\n阵营：混乱善良 \n神职：彩虹、休闲、阴影 \n领域：混乱、善良、幸运、太阳\n子领域：爱塔、天命、光明、滑稽\n偏好武器：吊索（投石杖） \n圣徽：带阴影的彩虹\n圣兽：草蜻蛉\n拉剌奇看到了冲突中的美。太阳与雨交相辉映，创造出彩虹，七彩长眠者认为，每个人的内在本性都应该是类似的混合行动和克制，平静的崇拜和正义的蔑视。他为那些每天都充满兴奋和活力的人提供休息和放松，他们可能会因生活中混乱的美丽而感到疲倦。\n在凡人眼中，拉剌奇似乎皮肤白皙，有着白金色的头发和黄白色的眼睛。他把从肩膀上弯曲的两个棱柱形翅膀掖好，这样他看起来就穿着一件漂亮的彩色斗篷，尽管在他自己的同类中，他以真正赤裸的形式行走，水晶般的肉体折射出金色的光芒。\n七彩长眠者为辛勤工作的人提供休息，为那些因太阳而疲劳的人提供阴凉。吹玻璃工和魔术师经常在拉剌奇的彩虹中找到创意灵感；特别有天赋的玻璃艺术家和过着有价值生活的织光师有时会在他们的工作站上找到小棱镜——这是拉剌奇青睐的象征。他的信徒声称，自然水体中彩虹的反射创造了通往他的天界的门户：奔放之野云端一座巨型扭曲的玻璃城堡，漂浮在极乐境表面的云层上。"
     },
     {
@@ -16054,6 +16054,12 @@
       "enGB": "Armored Mind"
     },
     {
+      "Key": "5d8992d57ba540e19ddf6e28c4b86833",
+      "SimpleName": "OracleRevelationArmoredMindAbilityFeature.Name",
+      "ProcessTemplates": false,
+      "enGB": "Armored Mind Ability Unlock"
+    },
+    {
       "Key": "77d63910183248749da7fe403717172e",
       "SimpleName": "OracleRevelationArmoredMindBuff.Name",
       "ProcessTemplates": false,
@@ -19337,19 +19343,19 @@
       "zhCN": "欧西里斯"
     },
     {
+      "Key": "11c0f23361e14d1c8b9ea75591c2eeae",
+      "SimpleName": "OtolmensFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nTitles: The Universal   \nAlignment: Lawful Neutral   \nForm: Primordial Inevitable   \nAreas of Concern: Machinery, Mathematics, Physics   \nDomains: Artifice, Fire, Knowledge, Law   \nFavoured Weapon: Heavy mace   \nHoly Symbol: Planet held within a geometrical compass  \nPhysics is at the heart of the cosmos, spawning nebulae, destroying stars, maintaining orbits, and more. Yet supernatural forces like magic, souls, outsiders, and deities introduce variations that both warp a logical universe and even gnaw at the foundation of mathematics itself. Otolmens watches the universe from Axis with the help of thousands of axiomites who tirelessly process the vast stream of data and observations she records. Where her predictions encounter anomalies, she dispatches teams of outsiders—or, rarely, mortals—to investigate, report back, and even correct the disturbance directly. Sites where the cosmic calculus is at risk are especially high priorities, and her agents as often clash with aeons over how to amend disturbances as they cooperate. Otolmens regularly submits reports to a host of deities, summarizing her findings and the means by which she intends to correct the errors. After millions of such dispatches, these reports are largely formalities—not only because the divine host has largely grown inured to these messages, but also because there’s little a divinity might say in response that would discourage her. On a cosmic scale, her recalibrations are subtle and ultimately help sustain the multiverse, so she continues her calculations virtually uninterrupted, with the assistance of thousands of devoted axiomites and visiting mortal mathematicians.",
+      "zhCN": "\n头衔：宇宙 \n结盟：守序中立 \nForm：原始必然 \n关注领域：手艺，数学、物理 \n领域：手艺，数学、物理手艺，数学、物理 \n领域：艺术、火焰、知识、守序 \n最喜爱的武器：重锤 \n神圣象征：行星被置于几何罗盘之中 \n物理学是宇宙的核心，它催生星云、摧毁恒星、维持轨道等等。然而，魔法、灵魂、外来者和神灵等超自然力量带来的变化，既扭曲了逻辑宇宙，甚至啃噬了数学本身的基础。奥托曼斯在数以千计的公理人的帮助下，从轴心观察着宇宙，这些公理人不知疲倦地处理着她记录下来的大量数据和观察结果。在她的预测遇到异常情况时，她会派遣外人团队--或者很少是凡人--进行调查、汇报，甚至直接纠正干扰。宇宙计算受到威胁的地方是特别优先考虑的地方，她的特工们经常在如何修正干扰的问题上与宙斯发生冲突，也经常在合作的问题上发生冲突。奥托曼斯定期向众多神灵提交报告，总结她的发现和纠正错误的方法。经过数百万次这样的发送之后，这些报告基本上都流于形式--这不仅是因为神灵们已经对这些信息习以为常，还因为神灵们几乎不会说什么让她气馁的话。在宇宙范围内，她的重新调整是微妙的，最终有助于维持多元宇宙，因此她在成千上万忠实的公理派和来访的凡人数学家的协助下，几乎不间断地继续着她的计算。"
+    },
+    {
       "Key": "82fe0779e27d451f907ba513ec0e8a36",
       "SimpleName": "OtolmensFeature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "\nTitles: The Universal   \nAlignment: Lawful Neutral   \nForm: Primordial Inevitable   \nAreas of Concern: Machinery, Mathematics, Physics   \nDomains: Artifice, Fire, Knowledge, Law   \nFavoured Weapon: Heavy Mace   \nHoly Symbol: Planet held within a geometrical compass  \nPhysics is at the heart of the cosmos, spawning nebulae, destroying stars, maintaining orbits, and more. Yet supernatural forces like magic, souls, outsiders, and deities introduce variations that both warp a logical universe and even gnaw at the foundation of mathematics itself. Otolmens watches the universe from Axis with the help of thousands of axiomites who tirelessly process the vast stream of data and observations she records. Where her predictions encounter anomalies, she dispatches teams of outsiders—or, rarely, mortals—to investigate, report back, and even correct the disturbance directly. Sites where the cosmic calculus is at risk are especially high priorities, and her agents as often clash with aeons over how to amend disturbances as they cooperate. Otolmens regularly submits reports to a host of deities, summarizing her findings and the means by which she intends to correct the errors. After millions of such dispatches, these reports are largely formalities—not only because the divine host has largely grown inured to these messages, but also because there’s little a divinity might say in response that would discourage her. On a cosmic scale, her recalibrations are subtle and ultimately help sustain the multiverse, so she continues her calculations virtually uninterrupted, with the assistance of thousands of devoted axiomites and visiting mortal mathematicians.",
       "zhCN": "\n头衔：宇宙\n阵营：守序中立\n形态：原始不可避免\n领域：手艺，数学、物理\n领域：技巧、火、知识、守序\n偏好武器：重锤\n圣徽：几何罗盘内的行星物理学是核心宇宙，产生星云，摧毁恒星，维持轨道等等。然而，魔法、灵魂、外来者和神灵等超自然力量引入了变化，这些变化既扭曲了逻辑宇宙，甚至侵蚀了数学本身的基础。 Otolmens 在成千上万的公理家的帮助下从 Axis 观察宇宙，这些公理家不知疲倦地处理她记录的大量数据和观察结果。当她的预测遇到异常时，她会派出一群外人——或者，很少是凡人——去调查、报告，甚至直接纠正干扰。宇宙演算存在风险的地点尤其受到高度重视，她的特工们在合作时经常就如何修正干扰问题发生冲突。 Otolmens 定期向众多神灵提交报告，总结她的发现以及她打算纠正错误的方法。在数以百万计的此类发送之后，这些报告大多是形式——不仅因为神圣的宿主在很大程度上已经习惯了这些信息，而且还因为几乎没有神灵会在回应时说让她气馁。在宇宙尺度上，她的重新校准是微妙的，并最终有助于维持多元宇宙，因此她几乎不间断地继续她的计算，并在数千名忠诚的公理家和来访的凡人数学家的帮助下。"
-    },
-    {
-      "Key": "11c0f23361e14d1c8b9ea75591c2eeae",
-      "SimpleName": "OtolmensFeature.Description",
-      "ProcessTemplates": true,
-      "enGB": "\nTitles: The Universal   \nAlignment: Lawful Neutral   \nForm: Primordial Inevitable   \nAreas of Concern: Machinery, Mathematics, Physics   \nDomains: Artifice, Fire, Knowledge, Law   \nFavoured Weapon: Heavy mace   \nHoly Symbol: Planet held within a geometrical compass  \nPhysics is at the heart of the cosmos, spawning nebulae, destroying stars, maintaining orbits, and more. Yet supernatural forces like magic, souls, outsiders, and deities introduce variations that both warp a logical universe and even gnaw at the foundation of mathematics itself. Otolmens watches the universe from Axis with the help of thousands of axiomites who tirelessly process the vast stream of data and observations she records. Where her predictions encounter anomalies, she dispatches teams of outsiders—or, rarely, mortals—to investigate, report back, and even correct the disturbance directly. Sites where the cosmic calculus is at risk are especially high priorities, and her agents as often clash with aeons over how to amend disturbances as they cooperate. Otolmens regularly submits reports to a host of deities, summarizing her findings and the means by which she intends to correct the errors. After millions of such dispatches, these reports are largely formalities—not only because the divine host has largely grown inured to these messages, but also because there’s little a divinity might say in response that would discourage her. On a cosmic scale, her recalibrations are subtle and ultimately help sustain the multiverse, so she continues her calculations virtually uninterrupted, with the assistance of thousands of devoted axiomites and visiting mortal mathematicians.",
-      "zhCN": "\n头衔：宇宙 \n结盟：守序中立 \nForm：原始必然 \n关注领域：手艺，数学、物理 \n领域：手艺，数学、物理手艺，数学、物理 \n领域：艺术、火焰、知识、守序 \n最喜爱的武器：重锤 \n神圣象征：行星被置于几何罗盘之中 \n物理学是宇宙的核心，它催生星云、摧毁恒星、维持轨道等等。然而，魔法、灵魂、外来者和神灵等超自然力量带来的变化，既扭曲了逻辑宇宙，甚至啃噬了数学本身的基础。奥托曼斯在数以千计的公理人的帮助下，从轴心观察着宇宙，这些公理人不知疲倦地处理着她记录下来的大量数据和观察结果。在她的预测遇到异常情况时，她会派遣外人团队--或者很少是凡人--进行调查、汇报，甚至直接纠正干扰。宇宙计算受到威胁的地方是特别优先考虑的地方，她的特工们经常在如何修正干扰的问题上与宙斯发生冲突，也经常在合作的问题上发生冲突。奥托曼斯定期向众多神灵提交报告，总结她的发现和纠正错误的方法。经过数百万次这样的发送之后，这些报告基本上都流于形式--这不仅是因为神灵们已经对这些信息习以为常，还因为神灵们几乎不会说什么让她气馁的话。在宇宙范围内，她的重新调整是微妙的，最终有助于维持多元宇宙，因此她在成千上万忠实的公理派和来访的凡人数学家的协助下，几乎不间断地继续着她的计算。"
     },
     {
       "Key": "edf36c07dc8745c68325cacef003f904",
@@ -19455,19 +19461,19 @@
       "zhCN": "你可以毫不费力地为你的盟友提供帮助，无论是帮助他们在激烈的战斗中攻击还是保卫他们。每当你使用援助动作对你的一个盟友带来攻击检定或 AC 加值时，你造成的加值增加 1。此加值在第 4 级和此后每 5 个先知等级增加 1（最多-5 在 19 级）。它不与其他专长或职业特性叠加，这些专长或职业特性可以提高您在使用援助其他动作时提供的加值。"
     },
     {
+      "Key": "9040a70fb6584cc5abb4f6359c232219",
+      "SimpleName": "PerfectAidAnotherOffenceBuff.Name",
+      "ProcessTemplates": false,
+      "enGB": "Aid Another Bonus - Distracted Defending",
+      "zhCN": "援助另一项奖励--分心防守"
+    },
+    {
       "Key": "22d57920ce524fa3851b1583bf513fa8",
       "SimpleName": "PerfectAidAnotherOffenceBuff.Name",
       "ProcessTemplates": false,
       "IsUsed": false,
       "enGB": "Perfect Aid Another - Distracted Defending",
       "zhCN": "完美助人 - 分心防守"
-    },
-    {
-      "Key": "9040a70fb6584cc5abb4f6359c232219",
-      "SimpleName": "PerfectAidAnotherOffenceBuff.Name",
-      "ProcessTemplates": false,
-      "enGB": "Aid Another Bonus - Distracted Defending",
-      "zhCN": "援助另一项奖励--分心防守"
     },
     {
       "Key": "6dca0ae196dd4a5ab6dad37062a7180b",
@@ -20207,18 +20213,18 @@
       "zhCN": "植物形状（晃动的蔓生怪）"
     },
     {
-      "Key": "48082b12d5804a47a8261058503f27ce",
-      "SimpleName": "PlantShapeIIIAbility.Description",
-      "ProcessTemplates": true,
-      "enGB": "You become a Huge Treant or a Huge Giant Flytrap.",
-      "zhCN": "你会变成巨型的树人或巨型的捕蝇草。"
-    },
-    {
       "Key": "066c47348ce84bfe8c8164fb6bbd4d4e",
       "SimpleName": "PlantShapeIIIAbility.Description",
       "ProcessTemplates": true,
       "enGB": "You become a huge treant or a huge giant flytrap.",
       "zhCN": "你会变成一棵巨型的树或一个巨型的捕蝇草。"
+    },
+    {
+      "Key": "48082b12d5804a47a8261058503f27ce",
+      "SimpleName": "PlantShapeIIIAbility.Description",
+      "ProcessTemplates": true,
+      "enGB": "You become a Huge Treant or a Huge Giant Flytrap.",
+      "zhCN": "你会变成巨型的树人或巨型的捕蝇草。"
     },
     {
       "Key": "40f2795f415840d0a612bfddf8b3d741",
@@ -20724,6 +20730,13 @@
       "zhCN": "拉格达恩"
     },
     {
+      "Key": "a25bd1eabfbf4b04bd0c91e5c1ae1ba4",
+      "SimpleName": "RagathielFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nTitles: General of Vengeance   \nAlignment: Lawful Good   \nDomains: Destruction, Good, Law, Nobility   \nSubdomains: Archon, Leadership, Martyr, Rage   \nFavoured Weapon: Bastard Sword   \nHoly Symbol: Sword, crossed with Wing   \nSacred Animal: Mastiff   \nSacred Colours: Crimson, Gold   \nRagathiel is an empyreal lord—a good servant of the gods who through transcendence has achieved some small measure of divine power—known as the General of Vengeance. His portfolio includes chivalry, duty, and vengeance, and his holy symbol is a bastard sword crossed with a crimson wing. He makes his home at the base of the mountain of Heaven, in his eponymous fortress, a magnificent steel structure designed to withstand a thousand-year siege if need be. Ragathiel takes an active role in the battle against Hell's fiendish legions. He shines at the head of his army, a figure of golden light cleaving through the ranks of devils that face him. Soldiers of all kinds, but particularly knights, pay homage to Ragathiel and pray for his virtue and wrathful strength in battle. Those who have taken vows, especially those of duty or vengeance, hold Ragathiel as their ideal, and his agents sometimes assist those who have been grievously wronged and now seek righteous vengeance. As strange as it may seem, Ragathiel is the son of Feronia, a demigoddess of the Plane of Fire, and Dispater, the Father of Dis. He was conceived in a brief tryst (lasting only a few centuries), after which his mother took him out of Hell. Ragathiel's tainted heritage has left him with a wrathful heart, and the angel struggles constantly to master his baser impulses in service to the light. For thousands of years he strove to prove himself to the angelic choirs of Heaven. In the Maelstrom he wrestled for 16 years with a monstrous evil serpent whose scales wept acidic blood until he was able to choke the life out of it. He led an entire army against one of the iron fortresses of Avernus and burned the castle to the ground with holy fire, single-handedly maiming Infernal Duke Deumus in the process. Finally the other empyreal lords agreed to admit Ragathiel into their ranks, and now they appear to trust the angel completely—though that trust took centuries to develop. At some point in history, Ragathiel destroyed Typhon, the original ruler of the first layer of Hell. He may have been manipulated into doing so by the schemes of Asmodeus to punish Typhon for his indiscretions. Ragathiel was once served by the Hand of the Inheritor, an angel who now acts as the goddess Iomedae's herald. Then known as the Hand of Vengeance, this angel asked to be reassigned to Iomedae after the death of Aroden. \nAppearance: Ragathiel is a tower of glorious might. He stands almost 20 feet tall, and five lofty burning wings stretch from his back. The General of Vengeance once had six wings, but one was severed, torn from his body by the archdevil Dispater—Ragathiel's father.   \nWorship: Ragathiel is commonly worshiped by the avowed, knights, soldiers, the wronged, and the empyreal lord employs aasimar, paladins, blink dogs, and kirin as his most common servants. The holiest time for Ragathiel's followers is the brief moments before and after a battle. The faithful ask Ragathiel's eyes to fall upon them and for his wings to shield them. This is also a standard greeting and farewell among worshipers. Followers of Ragathiel commonly wear red and silver clothing. Many also don an ornament or sigil the color of flames, typically on the helmet. Ragathiel has a small but old cult in Magnimar, a city known for its many mystery cults revering various empyreal lords.   \nPaladin Code:   \n*I will avenge evil wrought upon the innocent.   \n*I will not give my word lightly, but once it is given, I will uphold a promise until my last breath.   \n*Those proven guilty must be punished for their crimes. I will not turn a blind eye to wrongdoing.   \n*Rage is a virtue and a strength only when focused against the deserving. I will never seek disproportionate retribution.   \n*Redemption finds hearts from even the cruelest origins. I will strive not to act upon prejudice against fellow mortals based on race or origin.",
+      "zhCN": "\n头衔：复仇战将\n阵营：守序善良\n神职：破坏，善良，秩序，崇高\n子领域：亚空，领导，殉难，狂暴\n偏好武器：重剑\n圣徽：交叉的剑与翼\n圣兽：獒犬\n复仇战将象征骑士精神，责任与复仇，他是骑士的典范。作为魔鬼大公迪斯帕特和原生的火之半神费洛尼娅的子嗣，他艰辛的克服他父母的名誉对他的影响。因此，他深切了解寻求接纳和信任，为了正义与良善，与自身的本性时刻斗争是多么艰辛难苦。他代表战斗中的力量，面对邪恶时的愤怒，对冤屈者的容赦，或是为之复仇。他代表在危难时领军的责任，守护无辜之人的美德与义务。他期望他的追随者消灭他们发现的邪恶异界生物，并努力去赢取周围之人的信赖与尊重。追随复仇战将之人将他视为光辉的榜样，身先士卒地冲锋在战斗与对抗邪恶的最前线。\n复仇战将的化身是一个高大的巨型人类，身高超过20呎，身着闪耀光芒的黄金板甲，手持燃烧着熊熊圣火的剑刃。五个燃烧的火翼从他的背后伸展开来，三翼在左，二翼在右——而缺失的第六翼被他的父亲在暴怒之中撕扯了下来。拉贾瑟尔的追随者包括十字军战士，骑士，士兵，被诬陷之人，被边缘化之人和被冤屈者。"
+    },
+    {
       "Key": "5b9a07c6f2a94019bbfaf7e9e6d4fb6d",
       "SimpleName": "RagathielFeature.Description",
       "ProcessTemplates": true,
@@ -20736,13 +20749,6 @@
       "SimpleName": "RagathielFeature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
-      "enGB": "\nTitles: General of Vengeance   \nAlignment: Lawful Good   \nDomains: Destruction, Good, Law, Nobility   \nSubdomains: Archon, Leadership, Martyr, Rage   \nFavoured Weapon: Bastard Sword   \nHoly Symbol: Sword, crossed with Wing   \nSacred Animal: Mastiff   \nSacred Colours: Crimson, Gold   \nRagathiel is an empyreal lord—a good servant of the gods who through transcendence has achieved some small measure of divine power—known as the General of Vengeance. His portfolio includes chivalry, duty, and vengeance, and his holy symbol is a bastard sword crossed with a crimson wing. He makes his home at the base of the mountain of Heaven, in his eponymous fortress, a magnificent steel structure designed to withstand a thousand-year siege if need be. Ragathiel takes an active role in the battle against Hell's fiendish legions. He shines at the head of his army, a figure of golden light cleaving through the ranks of devils that face him. Soldiers of all kinds, but particularly knights, pay homage to Ragathiel and pray for his virtue and wrathful strength in battle. Those who have taken vows, especially those of duty or vengeance, hold Ragathiel as their ideal, and his agents sometimes assist those who have been grievously wronged and now seek righteous vengeance. As strange as it may seem, Ragathiel is the son of Feronia, a demigoddess of the Plane of Fire, and Dispater, the Father of Dis. He was conceived in a brief tryst (lasting only a few centuries), after which his mother took him out of Hell. Ragathiel's tainted heritage has left him with a wrathful heart, and the angel struggles constantly to master his baser impulses in service to the light. For thousands of years he strove to prove himself to the angelic choirs of Heaven. In the Maelstrom he wrestled for 16 years with a monstrous evil serpent whose scales wept acidic blood until he was able to choke the life out of it. He led an entire army against one of the iron fortresses of Avernus and burned the castle to the ground with holy fire, single-handedly maiming Infernal Duke Deumus in the process. Finally the other empyreal lords agreed to admit Ragathiel into their ranks, and now they appear to trust the angel completely—though that trust took centuries to develop. At some point in history, Ragathiel destroyed Typhon, the original ruler of the first layer of Hell. He may have been manipulated into doing so by the schemes of Asmodeus to punish Typhon for his indiscretions. Ragathiel was once served by the Hand of the Inheritor, an angel who now acts as the goddess Iomedae's herald. Then known as the Hand of Vengeance, this angel asked to be reassigned to Iomedae after the death of Aroden. \nAppearance: Ragathiel is a tower of glorious might. He stands almost 20 feet tall, and five lofty burning wings stretch from his back. The General of Vengeance once had six wings, but one was severed, torn from his body by the archdevil Dispater—Ragathiel's father.   \nWorship: Ragathiel is commonly worshiped by the avowed, knights, soldiers, the wronged, and the empyreal lord employs aasimar, paladins, blink dogs, and kirin as his most common servants. The holiest time for Ragathiel's followers is the brief moments before and after a battle. The faithful ask Ragathiel's eyes to fall upon them and for his wings to shield them. This is also a standard greeting and farewell among worshipers. Followers of Ragathiel commonly wear red and silver clothing. Many also don an ornament or sigil the color of flames, typically on the helmet. Ragathiel has a small but old cult in Magnimar, a city known for its many mystery cults revering various empyreal lords.   \nPaladin Code:   \n*I will avenge evil wrought upon the innocent.   \n*I will not give my word lightly, but once it is given, I will uphold a promise until my last breath.   \n*Those proven guilty must be punished for their crimes. I will not turn a blind eye to wrongdoing.   \n*Rage is a virtue and a strength only when focused against the deserving. I will never seek disproportionate retribution.   \n*Redemption finds hearts from even the cruelest origins. I will strive not to act upon prejudice against fellow mortals based on race or origin.",
-      "zhCN": "\n头衔：复仇战将\n阵营：守序善良\n神职：破坏，善良，秩序，崇高\n子领域：亚空，领导，殉难，狂暴\n偏好武器：重剑\n圣徽：交叉的剑与翼\n圣兽：獒犬\n复仇战将象征骑士精神，责任与复仇，他是骑士的典范。作为魔鬼大公迪斯帕特和原生的火之半神费洛尼娅的子嗣，他艰辛的克服他父母的名誉对他的影响。因此，他深切了解寻求接纳和信任，为了正义与良善，与自身的本性时刻斗争是多么艰辛难苦。他代表战斗中的力量，面对邪恶时的愤怒，对冤屈者的容赦，或是为之复仇。他代表在危难时领军的责任，守护无辜之人的美德与义务。他期望他的追随者消灭他们发现的邪恶异界生物，并努力去赢取周围之人的信赖与尊重。追随复仇战将之人将他视为光辉的榜样，身先士卒地冲锋在战斗与对抗邪恶的最前线。\n复仇战将的化身是一个高大的巨型人类，身高超过20呎，身着闪耀光芒的黄金板甲，手持燃烧着熊熊圣火的剑刃。五个燃烧的火翼从他的背后伸展开来，三翼在左，二翼在右——而缺失的第六翼被他的父亲在暴怒之中撕扯了下来。拉贾瑟尔的追随者包括十字军战士，骑士，士兵，被诬陷之人，被边缘化之人和被冤屈者。"
-    },
-    {
-      "Key": "a25bd1eabfbf4b04bd0c91e5c1ae1ba4",
-      "SimpleName": "RagathielFeature.Description",
-      "ProcessTemplates": true,
       "enGB": "\nTitles: General of Vengeance   \nAlignment: Lawful Good   \nDomains: Destruction, Good, Law, Nobility   \nSubdomains: Archon, Leadership, Martyr, Rage   \nFavoured Weapon: Bastard Sword   \nHoly Symbol: Sword, crossed with Wing   \nSacred Animal: Mastiff   \nSacred Colours: Crimson, Gold   \nRagathiel is an empyreal lord—a good servant of the gods who through transcendence has achieved some small measure of divine power—known as the General of Vengeance. His portfolio includes chivalry, duty, and vengeance, and his holy symbol is a bastard sword crossed with a crimson wing. He makes his home at the base of the mountain of Heaven, in his eponymous fortress, a magnificent steel structure designed to withstand a thousand-year siege if need be. Ragathiel takes an active role in the battle against Hell's fiendish legions. He shines at the head of his army, a figure of golden light cleaving through the ranks of devils that face him. Soldiers of all kinds, but particularly knights, pay homage to Ragathiel and pray for his virtue and wrathful strength in battle. Those who have taken vows, especially those of duty or vengeance, hold Ragathiel as their ideal, and his agents sometimes assist those who have been grievously wronged and now seek righteous vengeance. As strange as it may seem, Ragathiel is the son of Feronia, a demigoddess of the Plane of Fire, and Dispater, the Father of Dis. He was conceived in a brief tryst (lasting only a few centuries), after which his mother took him out of Hell. Ragathiel's tainted heritage has left him with a wrathful heart, and the angel struggles constantly to master his baser impulses in service to the light. For thousands of years he strove to prove himself to the angelic choirs of Heaven. In the Maelstrom he wrestled for 16 years with a monstrous evil serpent whose scales wept acidic blood until he was able to choke the life out of it. He led an entire army against one of the iron fortresses of Avernus and burned the castle to the ground with holy fire, single-handedly maiming Infernal Duke Deumus in the process. Finally the other empyreal lords agreed to admit Ragathiel into their ranks, and now they appear to trust the angel completely—though that trust took centuries to develop. At some point in history, Ragathiel destroyed Typhon, the original ruler of the first layer of Hell. He may have been manipulated into doing so by the schemes of Asmodeus to punish Typhon for his indiscretions. Ragathiel was once served by the Hand of the Inheritor, an angel who now acts as the goddess Iomedae's herald. Then known as the Hand of Vengeance, this angel asked to be reassigned to Iomedae after the death of Aroden. \nAppearance: Ragathiel is a tower of glorious might. He stands almost 20 feet tall, and five lofty burning wings stretch from his back. The General of Vengeance once had six wings, but one was severed, torn from his body by the archdevil Dispater—Ragathiel's father.   \nWorship: Ragathiel is commonly worshiped by the avowed, knights, soldiers, the wronged, and the empyreal lord employs aasimar, paladins, blink dogs, and kirin as his most common servants. The holiest time for Ragathiel's followers is the brief moments before and after a battle. The faithful ask Ragathiel's eyes to fall upon them and for his wings to shield them. This is also a standard greeting and farewell among worshipers. Followers of Ragathiel commonly wear red and silver clothing. Many also don an ornament or sigil the color of flames, typically on the helmet. Ragathiel has a small but old cult in Magnimar, a city known for its many mystery cults revering various empyreal lords.   \nPaladin Code:   \n*I will avenge evil wrought upon the innocent.   \n*I will not give my word lightly, but once it is given, I will uphold a promise until my last breath.   \n*Those proven guilty must be punished for their crimes. I will not turn a blind eye to wrongdoing.   \n*Rage is a virtue and a strength only when focused against the deserving. I will never seek disproportionate retribution.   \n*Redemption finds hearts from even the cruelest origins. I will strive not to act upon prejudice against fellow mortals based on race or origin.",
       "zhCN": "\n头衔：复仇战将\n阵营：守序善良\n神职：破坏，善良，秩序，崇高\n子领域：亚空，领导，殉难，狂暴\n偏好武器：重剑\n圣徽：交叉的剑与翼\n圣兽：獒犬\n复仇战将象征骑士精神，责任与复仇，他是骑士的典范。作为魔鬼大公迪斯帕特和原生的火之半神费洛尼娅的子嗣，他艰辛的克服他父母的名誉对他的影响。因此，他深切了解寻求接纳和信任，为了正义与良善，与自身的本性时刻斗争是多么艰辛难苦。他代表战斗中的力量，面对邪恶时的愤怒，对冤屈者的容赦，或是为之复仇。他代表在危难时领军的责任，守护无辜之人的美德与义务。他期望他的追随者消灭他们发现的邪恶异界生物，并努力去赢取周围之人的信赖与尊重。追随复仇战将之人将他视为光辉的榜样，身先士卒地冲锋在战斗与对抗邪恶的最前线。\n复仇战将的化身是一个高大的巨型人类，身高超过20呎，身着闪耀光芒的黄金板甲，手持燃烧着熊熊圣火的剑刃。五个燃烧的火翼从他的背后伸展开来，三翼在左，二翼在右——而缺失的第六翼被他的父亲在暴怒之中撕扯了下来。拉贾瑟尔的追随者包括十字军战士，骑士，士兵，被诬陷之人，被边缘化之人和被冤屈者。"
     },
@@ -21146,19 +21152,19 @@
       "zhCN": "\n你已看透死亡，既是最终的解脱又是对于精彩人生的奖励。不死生物的侵蚀是对你所珍惜的一切、你的信仰的无耻亵渎。{g|Encyclopedia:Injury_Death}{/g}\n休憩：你的接触可使活物昏沉，通过对活物发起近战{g|Encyclopedia:TouchAttack}接触攻击{/g}，可使其陷入恍惚状态，持续1轮。如果你接触的是一个已陷入恍惚的活物，该活物将陷入沉睡，效果持续1轮。接触不死生物时，其受到的恍惚效果的持续{g|Encyclopedia:Combat_Round}轮数{/g}将等于你的{g|Encyclopedia:Wisdom}感知{/g}调整值。每天可使用次数为感知调整值+3。{g|Encyclopedia:Attack}{/g}\n死亡防护结界：在8级时，你可发出30英尺范围的死亡防护结界，每天可持续的轮数等于赋予你此领域的职业等级。处于此范围内的活物将对所有即死效果、能量吸取以及所有导致负向等级的效果免疫。此结界无法移除活物已经带有的负向等级，但处于此结界范围内时，负向等级将不会产生效果。生效轮次无需连续。"
     },
     {
+      "Key": "a24ca8c92bcc4d2b9b5650973fe43250",
+      "SimpleName": "ReposeDomainProgressionDruid.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nYou see death not as something to be feared, but as a final rest and reward for a life well spent. The taint of undeath is a mockery of what you hold dear. \nGentle Rest: Your touch can fill a creature with lethargy, causing a living creature to become staggered for 1 round as a melee touch attack. If you touch a staggered living creature, that creature falls asleep for 1 round instead. Undead creatures touched are staggered for a number of rounds equal to your Wisdom modifier. You can use this ability a number of times per day equal to 3 + your Wisdom modifier. \nWard Against Death: At 8th level, you can emit a 30-foot aura that wards against death for a number of rounds per day equal to your level in the class that gave you access to this domain. Living creatures in this area are immune to all death effects, energy drain, and effects that cause negative levels. This ward does not remove negative levels that a creature has already gained, but the negative levels have no effect while the creature is inside the warded area. These rounds do not need to be consecutive. \nDomain Spells: doom, scare, vampiric touch, death ward, slay living, undeath to death, destruction, waves of exhaustion, wail of the banshee.",
+      "zhCN": "\n在您看来，死亡并不可怕，而是生命的最后安息和回报。不死的污点是对你所珍视的东西的嘲弄。\n温柔的安息：你的触碰可以让生物昏睡，作为近战触碰攻击，使生物蹒跚1回合。如果你触碰一个踉跄的生物，该生物会沉睡 1 回合。被触碰的亡灵生物会昏睡一回合，持续时间等于你的感知修正值。你每天可以使用此能力的次数等于 3 + 你的感知修正值。\n抵御死亡：8级时，你可以散发出一个30英尺的光环，在每天的一定回合内抵御死亡，该回合数等于你获得此领域的等级。该区域内的生物对所有死亡效果、能量流失和导致负值的效果免疫。该守护不会消除生物已经获得的负值，但当生物在守护区域内时，负值不会产生任何影响。这些回合不需要连续进行。\n领域法术：丧志术、恐吓术，吸血鬼之触、防死结界，杀生术，亡灵归亡，灰飞湮灭，力竭波，女妖之嚎。"
+    },
+    {
       "Key": "5ff6f20680e14da3badb0ded06d52678",
       "SimpleName": "ReposeDomainProgressionDruid.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "\nYou see death not as something to be feared, but as a final rest and reward for a life well spent. The taint of undeath is a mockery of what you hold dear. Gentle Rest: Your touch can fill a creature with lethargy, causing a living creature to become staggered for 1 round as a melee touch attack. If you touch a staggered living creature, that creature falls asleep for 1 round instead. Undead creatures touched are staggered for a number of rounds equal to your Wisdom modifier. You can use this ability a number of times per day equal to 3 + your Wisdom modifier. Ward Against Death: At 8th level, you can emit a 30-foot aura that wards against death for a number of rounds per day equal to your level in the class that gave you access to this domain. Living creatures in this area are immune to all death effects, energy drain, and effects that cause negative levels. This ward does not remove negative levels that a creature has already gained, but the negative levels have no effect while the creature is inside the warded area. These rounds do not need to be consecutive. Domain Spells: doom, scare, vampiric touch, death ward, slay living, undeath to death, destruction, waves of exhaustion, wail of the banshee.",
       "zhCN": "\n你已看透死亡，既是最终的解脱又是对于精彩人生的奖励。不死生物的侵蚀是对你所珍惜的一切、你的信仰的无耻亵渎。{g|Encyclopedia:Injury_Death}{/g}\n休憩：你的接触可使活物昏沉，通过对活物发起近战{g|Encyclopedia:TouchAttack}接触攻击{/g}，可使其陷入恍惚状态，持续1轮。如果你接触的是一个已陷入恍惚的活物，该活物将陷入沉睡，效果持续1轮。接触不死生物时，其受到的恍惚效果的持续{g|Encyclopedia:Combat_Round}轮数{/g}将等于你的{g|Encyclopedia:Wisdom}感知{/g}调整值。每天可使用次数为感知调整值+3。{g|Encyclopedia:Attack}{/g}\n死亡防护结界：在8级时，你可发出30英尺范围的死亡防护结界，每天可持续的轮数等于赋予你此领域的职业等级。处于此范围内的活物将对所有即死效果、能量吸取以及所有导致负向等级的效果免疫。此结界无法移除活物已经带有的负向等级，但处于此结界范围内时，负向等级将不会产生效果。生效轮次无需连续。\n领域{g|Encyclopedia:Spell}法术{/g}：丧志术，恐吓术，吸血鬼之触，防死结界，杀生术，净化亡者，灰飞烟灭，力竭波，女妖之嚎。"
-    },
-    {
-      "Key": "a24ca8c92bcc4d2b9b5650973fe43250",
-      "SimpleName": "ReposeDomainProgressionDruid.Description",
-      "ProcessTemplates": true,
-      "enGB": "\nYou see death not as something to be feared, but as a final rest and reward for a life well spent. The taint of undeath is a mockery of what you hold dear. \nGentle Rest: Your touch can fill a creature with lethargy, causing a living creature to become staggered for 1 round as a melee touch attack. If you touch a staggered living creature, that creature falls asleep for 1 round instead. Undead creatures touched are staggered for a number of rounds equal to your Wisdom modifier. You can use this ability a number of times per day equal to 3 + your Wisdom modifier. \nWard Against Death: At 8th level, you can emit a 30-foot aura that wards against death for a number of rounds per day equal to your level in the class that gave you access to this domain. Living creatures in this area are immune to all death effects, energy drain, and effects that cause negative levels. This ward does not remove negative levels that a creature has already gained, but the negative levels have no effect while the creature is inside the warded area. These rounds do not need to be consecutive. \nDomain Spells: doom, scare, vampiric touch, death ward, slay living, undeath to death, destruction, waves of exhaustion, wail of the banshee.",
-      "zhCN": "\n在您看来，死亡并不可怕，而是生命的最后安息和回报。不死的污点是对你所珍视的东西的嘲弄。\n温柔的安息：你的触碰可以让生物昏睡，作为近战触碰攻击，使生物蹒跚1回合。如果你触碰一个踉跄的生物，该生物会沉睡 1 回合。被触碰的亡灵生物会昏睡一回合，持续时间等于你的感知修正值。你每天可以使用此能力的次数等于 3 + 你的感知修正值。\n抵御死亡：8级时，你可以散发出一个30英尺的光环，在每天的一定回合内抵御死亡，该回合数等于你获得此领域的等级。该区域内的生物对所有死亡效果、能量流失和导致负值的效果免疫。该守护不会消除生物已经获得的负值，但当生物在守护区域内时，负值不会产生任何影响。这些回合不需要连续进行。\n领域法术：丧志术、恐吓术，吸血鬼之触、防死结界，杀生术，亡灵归亡，灰飞湮灭，力竭波，女妖之嚎。"
     },
     {
       "Key": "9f439c8f941d4dccb373342e1ddb3496",
@@ -21652,19 +21658,19 @@
       "zhCN": "鲁尔"
     },
     {
-      "Key": "8815cee35cbf4cbd8cf004f6d9b41083",
-      "SimpleName": "RuneDomainBaseFeatureDruid.Description",
-      "ProcessTemplates": true,
-      "enGB": "\nIn strange and eldritch runes you find potent magic. \nBlast Rune: As a standard action, you can create a blast rune in a desired location. Any creature entering a 5-foot area around the rune takes 1d6 points of damage + 1 point for every two levels you possess in the class that gave you access to this domain. This rune deals either acid, cold, electricity, or fire damage, decided when you create the rune. The rune lasts a number of rounds equal to your level in the class that gave you access to this domain. You can use this ability a number of times per day equal to 3 + your Wisdom modifier. \nWarding Rune: At 8th level, you can create a warding rune in a desired location. Any creature entering a 5-foot area around the rune must make a Will save or they will not be able to attack for a number of rounds equal to 1/2 your level in the class that gave you access to this domain. The rune lasts a number of rounds equal to your level in the class that gave you access to this domain. You can use this ability once per day at 8th level and one additional time per day for every four levels in the class that gave you access to this domain beyond 8th.",
-      "zhCN": "\n在奇怪而古老的符文中，你会发现强大的魔法。\n爆炸符文：作为标准动作，你可以在所需位置创造一个爆炸符文。任何生物进入符文周围5英尺范围内，都会受到1d6点伤害+每两级1点。该符文会造成酸、冷、电或火伤害，由你创建符文时决定。该符文持续的回合数等于你获得该领域的等级。你每天可以使用此能力的次数等于 3 + 你的感知修正值。\n守护符文：8级时，你可以在指定地点创建一个守护符文。任何进入符文周围 5 英尺范围的生物都必须进行意志豁免，否则他们将在相当于你获得该领域的等级的 1/2 的回合内无法攻击。符文持续的回合数等于你获得此领域的等级。在 8 级时，您每天可以使用一次此能力，8 级之后，每升 4 级，每天可以额外使用一次。"
-    },
-    {
       "Key": "c403ec11e2a244e1936fa224172972b2",
       "SimpleName": "RuneDomainBaseFeatureDruid.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "\nIn strange and eldritch runes you find potent magic. Blast Rune: As a standard action, you can create a blast rune in a desired location. Any creature entering a 5-foot area around the rune takes 1d6 points of damage + 1 point for every two levels you possess in the class that gave you access to this domain. This rune deals either acid, cold, electricity, or fire damage, decided when you create the rune. The rune lasts a number of rounds equal to your level in the class that gave you access to this domain. You can use this ability a number of times per day equal to 3 + your Wisdom modifier. Warding Rune: At 8th level, you can create a warding rune in a desired location. Any creature entering a 5-foot area around the rune must make a Will save or they will not be able to attack for a number of rounds equal to 1/2 your level in the class that gave you access to this domain. The rune lasts a number of rounds equal to your level in the class that gave you access to this domain. You can use this ability once per day at 8th level and one additional time per day for every four levels in the class that gave you access to this domain beyond 8th.",
       "zhCN": "\n你从奇异可畏的符文中发现了强力的{g|Encyclopedia:Spell}法术{/g}。\n冲击符文：作为{g|Encyclopedia:Standard_Actions}标准动作{/g}，你可向指定位置放置冲击符文。任何进入符文周围5英尺范围的生物都将受到{g|Encyclopedia:Dice}1d6{/g}点{g|Encyclopedia:Damage}伤害{/g}，赋予你此领域的职业等级每提升2级，可额外造成1点伤害。在放置符文时，需决定符文所造成的伤害类型（酸蚀、寒冷、电击或是{g|Encyclopedia:Energy_Damage}火焰伤害{/g}）。此符文持续{g|Encyclopedia:Combat_Round}轮数{/g}等于赋予你此领域的职业等级。每天可使用次数为{g|Encyclopedia:Wisdom}感知{/g}调整值+3。\n防护符文：在8级时，你可向指定位置放置防护符文。任何进入符文周围5英尺范围的生物必须进行意志{g|Encyclopedia:Saving_Throw}豁免{/g}，失败则会在若干轮内无法{g|Encyclopedia:Attack}攻击{/g}，持续轮数等于1/2赋予你此领域的职业等级。此符文存在轮数等于赋予你此领域的职业等级。在8级时，每天可使用一次此技能，8级后赋予你此领域的职业每升4级，可获得1次额外的使用次数。"
+    },
+    {
+      "Key": "8815cee35cbf4cbd8cf004f6d9b41083",
+      "SimpleName": "RuneDomainBaseFeatureDruid.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nIn strange and eldritch runes you find potent magic. \nBlast Rune: As a standard action, you can create a blast rune in a desired location. Any creature entering a 5-foot area around the rune takes 1d6 points of damage + 1 point for every two levels you possess in the class that gave you access to this domain. This rune deals either acid, cold, electricity, or fire damage, decided when you create the rune. The rune lasts a number of rounds equal to your level in the class that gave you access to this domain. You can use this ability a number of times per day equal to 3 + your Wisdom modifier. \nWarding Rune: At 8th level, you can create a warding rune in a desired location. Any creature entering a 5-foot area around the rune must make a Will save or they will not be able to attack for a number of rounds equal to 1/2 your level in the class that gave you access to this domain. The rune lasts a number of rounds equal to your level in the class that gave you access to this domain. You can use this ability once per day at 8th level and one additional time per day for every four levels in the class that gave you access to this domain beyond 8th.",
+      "zhCN": "\n在奇怪而古老的符文中，你会发现强大的魔法。\n爆炸符文：作为标准动作，你可以在所需位置创造一个爆炸符文。任何生物进入符文周围5英尺范围内，都会受到1d6点伤害+每两级1点。该符文会造成酸、冷、电或火伤害，由你创建符文时决定。该符文持续的回合数等于你获得该领域的等级。你每天可以使用此能力的次数等于 3 + 你的感知修正值。\n守护符文：8级时，你可以在指定地点创建一个守护符文。任何进入符文周围 5 英尺范围的生物都必须进行意志豁免，否则他们将在相当于你获得该领域的等级的 1/2 的回合内无法攻击。符文持续的回合数等于你获得此领域的等级。在 8 级时，您每天可以使用一次此能力，8 级之后，每升 4 级，每天可以额外使用一次。"
     },
     {
       "Key": "1e7f14b35e02466e85498bb2c5fcdedb",
@@ -22489,20 +22495,20 @@
       "zhCN": "每天一次，你可以施放一个法术，就好像它被法术强效超魔修改过一样，而不会增加该法术的施法时间或等级。"
     },
     {
-      "Key": "0827f20bf8f14de9958d7b35f59d2e4c",
-      "SimpleName": "ShamanHexGuidingStarMetamagicAbilityExtend.Description",
-      "ProcessTemplates": true,
-      "IsUsed": false,
-      "enGB": "Once per day you can cast one spell from the shaman spellbook as if it were modified by the Extend Spell feat without increasing the spell’s casting time or level.",
-      "zhCN": "每天一次，你可以从萨满法术书中释放一个法术，如同其被延时超魔专长影响，而不实际增加其施法时间或者等级。"
-    },
-    {
       "Key": "917e57d16a6a4d96899700adc2473b5d",
       "SimpleName": "ShamanHexGuidingStarMetamagicAbilityExtend.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "Once per day you can cast one spell as if it were modified by the Extend Spell feat without increasing the spell’s casting time or level.",
       "zhCN": "每天可以施放一次法术，就像被法术延时超魔修改过一样，而不会增加法术的施法时间或等级。"
+    },
+    {
+      "Key": "0827f20bf8f14de9958d7b35f59d2e4c",
+      "SimpleName": "ShamanHexGuidingStarMetamagicAbilityExtend.Description",
+      "ProcessTemplates": true,
+      "IsUsed": false,
+      "enGB": "Once per day you can cast one spell from the shaman spellbook as if it were modified by the Extend Spell feat without increasing the spell’s casting time or level.",
+      "zhCN": "每天一次，你可以从萨满法术书中释放一个法术，如同其被延时超魔专长影响，而不实际增加其施法时间或者等级。"
     },
     {
       "Key": "6c484f2fe0b34dc99585833df175e282",
@@ -23223,19 +23229,19 @@
       "zhCN": "银冠勇士"
     },
     {
+      "Key": "c8220270704a44c79e2d4ef6bf6ddce6",
+      "SimpleName": "SilverChampionSpellbook.Name",
+      "ProcessTemplates": false,
+      "enGB": "Claw of the False Wyrm",
+      "zhCN": "虚龙之爪"
+    },
+    {
       "Key": "96ac5395a9054d339832829bc004945d",
       "SimpleName": "SilverChampionSpellbook.Name",
       "ProcessTemplates": false,
       "IsUsed": false,
       "enGB": "SilverChampion",
       "zhCN": "银冠勇士"
-    },
-    {
-      "Key": "c8220270704a44c79e2d4ef6bf6ddce6",
-      "SimpleName": "SilverChampionSpellbook.Name",
-      "ProcessTemplates": false,
-      "enGB": "Claw of the False Wyrm",
-      "zhCN": "虚龙之爪"
     },
     {
       "Key": "8847cba8444f4ce29366a7d71760800c",
@@ -23570,17 +23576,17 @@
       "enGB": "A soldier of gaia can call upon their connection with nature to receive aid from the natural world. \nEvery enemy within the area of the spell is the target of a combat maneuver check made to grapple each round at the beginning of your turn, as well as when entering the area. The CMB of this grapple attempt is equal to your warpriest level plus 5, increasing to plus 10 when trying to escape the grapple."
     },
     {
-      "Key": "b0f6c52ec7bf4141b58ff931b32a8062",
-      "SimpleName": "SoldierOfGaiaFriendOfTheForestBuff.Description",
-      "ProcessTemplates": true,
-      "enGB": "A soldier of gaia can call upon their connection with nature to receive aid from the natural world. \nEvery enemy within the area of the spell is the target of a combat maneuver check made to grapple each round at the beginning of your turn, as well as when entering the area. The CMB of this grapple attempt is equal to your warpriest level plus 5, increasing to plus 10 when trying to escape the grapple. If a creature is grappled by this ability, or fails to escape the grapple, it takes 1d6+4 points of damage."
-    },
-    {
       "Key": "f0e54e48c5a4444ab06caaff15936fdb",
       "SimpleName": "SoldierOfGaiaFriendOfTheForestBuff.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "A soldier of gaia can call upon their connection with nature to receive aid from the natural world. \nEvery enemy within the area of the spell is the target of a combat maneuver check made to grapple each round at the beginning of your turn, as well as when entering the area. The CMB of this grapple attempt is equal to your warpriest level plus 5, increasing to plus 10 when trying to escape the grapple."
+    },
+    {
+      "Key": "b0f6c52ec7bf4141b58ff931b32a8062",
+      "SimpleName": "SoldierOfGaiaFriendOfTheForestBuff.Description",
+      "ProcessTemplates": true,
+      "enGB": "A soldier of gaia can call upon their connection with nature to receive aid from the natural world. \nEvery enemy within the area of the spell is the target of a combat maneuver check made to grapple each round at the beginning of your turn, as well as when entering the area. The CMB of this grapple attempt is equal to your warpriest level plus 5, increasing to plus 10 when trying to escape the grapple. If a creature is grappled by this ability, or fails to escape the grapple, it takes 1d6+4 points of damage."
     },
     {
       "Key": "3273bcc8c00b410ba9916fd6ac272504",
@@ -29094,18 +29100,18 @@
       "zhCN": "在近战中，您可以通过分散或干扰对手来帮助您的盟友进攻或防御。如果你处于对对手进行近战攻击的位置，你可以尝试以一个迅捷动作帮助你的盟友对抗该敌人。分心的敌人在对抗你盟友的下一次攻击时，他们的 AC 会受到 -1 的惩罚。此惩罚仅适用于第一次攻击检定，并在 1 轮后移除。"
     },
     {
+      "Key": "2530e57ca69a41dbba4e72c80ac2d2d9",
+      "SimpleName": "SwiftAidAnotherOffenceBuff.Name",
+      "ProcessTemplates": false,
+      "enGB": "Swift Aid Another - Distracted Defending",
+      "zhCN": "迅速援助- 分心防守"
+    },
+    {
       "Key": "39d6c37ad59b44a8b74ff1d81c1d5cb3",
       "SimpleName": "SwiftAidAnotherOffenceBuff.Name",
       "ProcessTemplates": false,
       "IsUsed": false,
       "enGB": "Swift Aid Another - Offence",
-      "zhCN": "迅速援助- 分心防守"
-    },
-    {
-      "Key": "2530e57ca69a41dbba4e72c80ac2d2d9",
-      "SimpleName": "SwiftAidAnotherOffenceBuff.Name",
-      "ProcessTemplates": false,
-      "enGB": "Swift Aid Another - Distracted Defending",
       "zhCN": "迅速援助- 分心防守"
     },
     {
@@ -29393,18 +29399,18 @@
       "zhCN": "神偷"
     },
     {
-      "Key": "e6b99ab1d5eb4fd9b6fe6d2b2c3004a3",
-      "SimpleName": "ThieveryDomainGreaterFeature.Description",
-      "ProcessTemplates": true,
-      "enGB": "At 8th level, you can grant yourself the ability to roll twice on any trickery skill check, this abilities effect lasts until used then dispels itself. You can use this ability once per day at 8th level, plus one additional time per day for every 2 levels beyond 8th.",
-      "zhCN": "在 8 级时，你可以赋予自己在任何诡计技能检查中投掷两次的能力，该能力的效果持续到使用为止，然后会自动消失。8 级时每天可以使用一次，8 级以后每升 2 级每天可以使用一次。"
-    },
-    {
       "Key": "2eb22e6cf4ae4b8f8be8a31ba8049a55",
       "SimpleName": "ThieveryDomainGreaterFeature.Description",
       "ProcessTemplates": true,
       "enGB": "At 8th level, you can make grant yourself the ability to roll twice on any trickery skill check, this abilities effect lasts until used then dispels itself. You can use this ability once per day at 8th level, plus one additional time per day for every 2 levels beyond 8th.",
       "zhCN": "到了8级当你进行巧手检定之时，可自由动作发动此能力双投取高。此能力在8级能每天用1次，每比8级高2级多1次。"
+    },
+    {
+      "Key": "e6b99ab1d5eb4fd9b6fe6d2b2c3004a3",
+      "SimpleName": "ThieveryDomainGreaterFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "At 8th level, you can grant yourself the ability to roll twice on any trickery skill check, this abilities effect lasts until used then dispels itself. You can use this ability once per day at 8th level, plus one additional time per day for every 2 levels beyond 8th.",
+      "zhCN": "在 8 级时，你可以赋予自己在任何诡计技能检查中投掷两次的能力，该能力的效果持续到使用为止，然后会自动消失。8 级时每天可以使用一次，8 级以后每升 2 级每天可以使用一次。"
     },
     {
       "Key": "737a3548d50747a090b781f5fe126504",
@@ -30762,18 +30768,18 @@
       "zhCN": "野性变身 - 城镇德鲁伊"
     },
     {
+      "Key": "0269241f6f7d46dfa35389317c1a9315",
+      "SimpleName": "ValaniFeature.Description",
+      "ProcessTemplates": true,
+      "enGB": "\nTitles: Fireshaker, The Father of Islands   \nAlignment: Chaotic Good   \nAreas of Concern: Change, Growth, Primal forces   \nDomains: Chaos, Earth, Good, Weather   \nSubdomains: Azata, Growth, Seasons, Storms   \nFavoured Weapon: Club   \nHoly Symbol: Volcano with gold lava   \nSacred Animal: Dinosaur   \nIt is said that trees bend beneath the force of Valani's laugh and his wrathful roar can split the ground around him. Valani's hot temper is well known among the empyreal lords, and his peers respect him for his mastery over the forces of nature. Fireshaker understands that change cannot be forestalled and that growth requires destruction in order for goodness to take root in what was once evil soil. Valani is a massive figure, standing 10 feet tall with the thick arms and legs of a primate and the head of a boar. His wavy dark hair falls free under a crown of spiked grass and purple flowers. The skin left uncovered by ornate armor crafted from tiles of shell and obsidian is dark brown and ruddy, as if the light of a fire were always burning just beneath his flesh. When angered-which is often-his majestic features contort into an expres sion of awful rage. Aside from his wrath, Valani is also known for being a proud and wise father countless times over. Dozens of tribes on serene islands through the multiverse claim their blessings stem from being favored children of Fireshaker. Valani lives in the heart of the Bright-Burning Volcano in Elysium.",
+      "zhCN": "\n头衔：撼火者、岛屿之父\n阵营：混乱善良\n神职：变化，生长，原始之力\n领域：混乱、大地、善良、天气\n子领域：爱塔、滋长、季节、风暴\n偏好武器：木棒\n圣徽：喷发金色岩浆的火山\n神兽：恐龙\n据说树木在瓦拉尼的笑声中弯折，他愤怒的咆哮可以撕裂周围的土地。森林与自然之主脾气火爆，理解创造善必先毁灭恶。撼火者明白变化无法阻止，森林的成长需要先进行破坏才能让善良在曾经邪恶的土壤中生根发芽。\n瓦拉尼身材魁梧，身高8尺，野猪头，四肢粗壮，身披黑曜石铠甲。他那卷曲的黑发披散在荆棘紫花冠。由贝壳和黑曜石制成的华丽盔甲所覆盖的皮肤呈深褐色和红润，仿佛皮肤下有火焰在燃烧。\n当他生气时——通常是这样——他威严的容貌会扭曲成一种可怕的愤怒表情。除了愤怒之外，瓦拉尼瓦拉尼也是一个骄傲而明智的父亲。在多元宇宙的宁静岛屿上，数十个部落声称他们的祝福源于成为撼火者的宠儿。\n瓦拉尼住在极乐境奔放之野熊焰火山。"
+    },
+    {
       "Key": "8168f85829b041f9979f0acd6139ac91",
       "SimpleName": "ValaniFeature.Description",
       "ProcessTemplates": true,
       "IsUsed": false,
       "enGB": "\nTitles: Fireshaker, The Father of Islands   \nAlignment: Chaotic Good   \nAreas of Concern: Change, Growth, Primal forces   \nDomains: Chaos, Earth, Good, Weather   \nSubdomains: Azata, Growth, Seasons, Storms   \nFavoured Weapon: Club   \nHoly Symbol: Volcano with gold lava   \nSacred Animal: Dinosaur   \nIt is said that trees bend beneath the force of Valani's laugh and his wrathful roar can split the ground around him. Valani's hot temper is well known among the empyreal lords, and his peers respect him for his mastery over the forces of nature. Fireshaker understands that change cannot be forestalled and that growth requires destruction in order for goodness to take root in what was once evil soil. Valani is a massive figure, standing 10 feet tall with the thick arms and legs of a primate and the head of a boar. His wavy dark hair falls free under a crown of spiked grass and purple flowers. The skin left uncovered by ornate armor crafted from tiles of shell and obsidian is dark brown and ruddy, as if the light of a fire were always burning just beneath his flesh. When angered-which is often-his majestic features contort into an expres sion of awful rage. Aside from his wrath, Valani is also known for being a proud and wise father countless times over. Dozens of tribes on serene islands through the multiverse claim their blessings stem from being favored children ofFireshaker. Valani lives in the heart of the Bright-Burning Volcano in Elysium.",
-      "zhCN": "\n头衔：撼火者、岛屿之父\n阵营：混乱善良\n神职：变化，生长，原始之力\n领域：混乱、大地、善良、天气\n子领域：爱塔、滋长、季节、风暴\n偏好武器：木棒\n圣徽：喷发金色岩浆的火山\n神兽：恐龙\n据说树木在瓦拉尼的笑声中弯折，他愤怒的咆哮可以撕裂周围的土地。森林与自然之主脾气火爆，理解创造善必先毁灭恶。撼火者明白变化无法阻止，森林的成长需要先进行破坏才能让善良在曾经邪恶的土壤中生根发芽。\n瓦拉尼身材魁梧，身高8尺，野猪头，四肢粗壮，身披黑曜石铠甲。他那卷曲的黑发披散在荆棘紫花冠。由贝壳和黑曜石制成的华丽盔甲所覆盖的皮肤呈深褐色和红润，仿佛皮肤下有火焰在燃烧。\n当他生气时——通常是这样——他威严的容貌会扭曲成一种可怕的愤怒表情。除了愤怒之外，瓦拉尼瓦拉尼也是一个骄傲而明智的父亲。在多元宇宙的宁静岛屿上，数十个部落声称他们的祝福源于成为撼火者的宠儿。\n瓦拉尼住在极乐境奔放之野熊焰火山。"
-    },
-    {
-      "Key": "0269241f6f7d46dfa35389317c1a9315",
-      "SimpleName": "ValaniFeature.Description",
-      "ProcessTemplates": true,
-      "enGB": "\nTitles: Fireshaker, The Father of Islands   \nAlignment: Chaotic Good   \nAreas of Concern: Change, Growth, Primal forces   \nDomains: Chaos, Earth, Good, Weather   \nSubdomains: Azata, Growth, Seasons, Storms   \nFavoured Weapon: Club   \nHoly Symbol: Volcano with gold lava   \nSacred Animal: Dinosaur   \nIt is said that trees bend beneath the force of Valani's laugh and his wrathful roar can split the ground around him. Valani's hot temper is well known among the empyreal lords, and his peers respect him for his mastery over the forces of nature. Fireshaker understands that change cannot be forestalled and that growth requires destruction in order for goodness to take root in what was once evil soil. Valani is a massive figure, standing 10 feet tall with the thick arms and legs of a primate and the head of a boar. His wavy dark hair falls free under a crown of spiked grass and purple flowers. The skin left uncovered by ornate armor crafted from tiles of shell and obsidian is dark brown and ruddy, as if the light of a fire were always burning just beneath his flesh. When angered-which is often-his majestic features contort into an expres sion of awful rage. Aside from his wrath, Valani is also known for being a proud and wise father countless times over. Dozens of tribes on serene islands through the multiverse claim their blessings stem from being favored children of Fireshaker. Valani lives in the heart of the Bright-Burning Volcano in Elysium.",
       "zhCN": "\n头衔：撼火者、岛屿之父\n阵营：混乱善良\n神职：变化，生长，原始之力\n领域：混乱、大地、善良、天气\n子领域：爱塔、滋长、季节、风暴\n偏好武器：木棒\n圣徽：喷发金色岩浆的火山\n神兽：恐龙\n据说树木在瓦拉尼的笑声中弯折，他愤怒的咆哮可以撕裂周围的土地。森林与自然之主脾气火爆，理解创造善必先毁灭恶。撼火者明白变化无法阻止，森林的成长需要先进行破坏才能让善良在曾经邪恶的土壤中生根发芽。\n瓦拉尼身材魁梧，身高8尺，野猪头，四肢粗壮，身披黑曜石铠甲。他那卷曲的黑发披散在荆棘紫花冠。由贝壳和黑曜石制成的华丽盔甲所覆盖的皮肤呈深褐色和红润，仿佛皮肤下有火焰在燃烧。\n当他生气时——通常是这样——他威严的容貌会扭曲成一种可怕的愤怒表情。除了愤怒之外，瓦拉尼瓦拉尼也是一个骄傲而明智的父亲。在多元宇宙的宁静岛屿上，数十个部落声称他们的祝福源于成为撼火者的宠儿。\n瓦拉尼住在极乐境奔放之野熊焰火山。"
     },
     {
