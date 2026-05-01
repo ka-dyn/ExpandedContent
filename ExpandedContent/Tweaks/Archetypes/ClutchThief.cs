@@ -36,15 +36,15 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var ClutchThiefArchetype = Helpers.CreateBlueprint<BlueprintArchetype>("ClutchThiefArchetype", bp => {
                 bp.LocalizedName = Helpers.CreateString($"ClutchThiefArchetype.Name", "Clutch Thief");
                 bp.LocalizedDescription = Helpers.CreateString($"ClutchThiefArchetype.Description", "Whether to stop it falling into the wrong hands, or to hold the power " +
-                    "for themselves, it is common for an aspiring thief to see a drake egg as a valuable score. Less common is for the egg to hatch while in the thieves care. " +
+                    "for themselves, it is common for an aspiring thief to see a drake egg as a valuable score. Less common is for the egg to hatch while in the thief's care. " +
                     "With a bit of knowledge borrowed from the drake wardens on raising young drakes, the clutch thief gains a new and interesting partner in crime.");
                 bp.LocalizedDescriptionShort = Helpers.CreateString($"ClutchThiefArchetype.Description", "Whether to stop it falling into the wrong hands, or to hold the power " +
-                    "for themselves, it is common for an aspiring thief to see a drake egg as a valuable score. Less common is for the egg to hatch while in the thieves care. " +
+                    "for themselves, it is common for an aspiring thief to see a drake egg as a valuable score. Less common is for the egg to hatch while in the thief's care. " +
                     "With a bit of knowledge borrowed from the drake wardens on raising young drakes, the clutch thief gains a new and interesting partner in crime.");
             });
             var ClutchThiefBondFeature = Helpers.CreateBlueprint<BlueprintFeatureSelection>("ClutchThiefBondFeature", bp => {
                 bp.SetName("Clutch Thieves Bond");
-                bp.SetDescription("At 4th level, the clutch thieves drake companion is finally strong enough to help as a animal companion, but his drake’s level is equal to his rogue level – 3.");
+                bp.SetDescription("At 4th level, the clutch thief's drake companion is finally strong enough to help as a animal companion, but his drake’s level is equal to his rogue level – 3.");
                 bp.m_AllowNonContextActions = false;
                 bp.IsClassFeature = true;
                 bp.Group = FeatureGroup.None;

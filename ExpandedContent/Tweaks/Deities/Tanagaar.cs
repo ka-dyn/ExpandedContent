@@ -54,7 +54,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     "Poachers or trappers who leave wounded animals in distress or use cruel hunting tactics face the full wrath of Tanagaar's faithful. Guards who find " +
                     "themselves overwhelmed while defending legitimate borders may find unexpected aid from Tanagaar, and more than one border conflict has seen the tide of " +
                     "battle turn because of hundreds of screeching owls swooping down on the unlawful assailants. Tanagaar concerns himself with watching the borders of Heaven " +
-                    "from the depths of the Unbent Forest on the lowest slopes of the mountain. There he maintains a force ofhound archon s couts who assist him in patrolling and " +
+                    "from the depths of the Unbent Forest on the lowest slopes of the mountain. There he maintains a force of hound archon scouts who assist him in patrolling and " +
                     "defending their divine realm.");
                 bp.m_Icon = TanagaarIcon;
                 bp.Ranks = 1;
