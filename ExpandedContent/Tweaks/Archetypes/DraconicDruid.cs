@@ -105,7 +105,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.AddComponent<AddStatBonus>(c => {
                     c.Stat = StatType.AC;
                     c.Value = 1;
-                    c.Descriptor = ModifierDescriptor.NaturalArmorEnhancement;
+                    c.Descriptor = ModifierDescriptor.NaturalArmor;
                 });
                 bp.AddComponent<SpellDescriptorComponent>(c => {
                     c.Descriptor = SpellDescriptor.Polymorph;
