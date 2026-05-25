@@ -92,9 +92,9 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.AddComponent<AddFeatureOnApply>(c => {
                     c.m_Feature = DruidAnimalCompanionProgression.ToReference<BlueprintFeatureReference>();
                 });
-                bp.AddComponent<AddFeatureOnApply>(c => {
-                    c.m_Feature = AnimalCompanionRank.ToReference<BlueprintFeatureReference>();
-                });
+                //bp.AddComponent<AddFeatureOnApply>(c => {
+                //    c.m_Feature = AnimalCompanionRank.ToReference<BlueprintFeatureReference>();
+                //}); Looks like the progression used now adds a rank at level 1
                 bp.AddComponent<AddFeatureOnApply>(c => {
                     c.m_Feature = AnimalCompanionArchetypeSelection.ToReference<BlueprintFeatureReference>();
                 });
