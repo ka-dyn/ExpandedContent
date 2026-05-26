@@ -7,14 +7,26 @@ using Kingmaker.Blueprints.Classes.Prerequisites;
 using Kingmaker.Blueprints.Classes.Spells;
 using Kingmaker.Blueprints.Facts;
 using Kingmaker.Blueprints.Items.Weapons;
+using Kingmaker.Designers.EventConditionActionSystem.Actions;
 using Kingmaker.Designers.Mechanics.Buffs;
 using Kingmaker.Designers.Mechanics.Facts;
+using Kingmaker.ElementsSystem;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums;
+using Kingmaker.Enums.Damage;
 using Kingmaker.ResourceLinks;
+using Kingmaker.RuleSystem;
+using Kingmaker.RuleSystem.Rules;
 using Kingmaker.RuleSystem.Rules.Damage;
+using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.UnitLogic.Abilities.Blueprints;
+using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.FactLogic;
+using Kingmaker.UnitLogic.Mechanics;
+using Kingmaker.UnitLogic.Mechanics.Actions;
+using Kingmaker.UnitLogic.Mechanics.Components;
+using Kingmaker.UnitLogic.Mechanics.Conditions;
+using Kingmaker.UnitLogic.Mechanics.Properties;
 using Kingmaker.Utility;
 using Kingmaker.Visual.HitSystem;
 using Kingmaker.Visual.Sound;
@@ -43,31 +55,120 @@ namespace ExpandedContent.Tweaks.AnimalCompanions {
             var EntangleSpell = Resources.GetBlueprint<BlueprintAbility>("0fd00984a2c0e0a429cf1a911b4ec5ca");
 
 
+
+            var CompanionSaplingTreantConstructSelfBuff = Helpers.CreateBuff("CompanionSaplingTreantConstructSelfBuff", bp => {
+                bp.m_AllowNonContextActions = false;
+                bp.SetName("CompanionSaplingTreantConstructSelfBuff");
+                bp.SetDescription("");
+                bp.AddComponent<OutcomingDamageAndHealingModifier>(c => {
+                    c.ModifierPercents = new ContextValue {
+                        ValueType = ContextValueType.Simple,
+                        Value = 100
+                    };
+                    c.Type = OutcomingDamageAndHealingModifier.ModifyingType.OnlyDamage;
+                    c.m_DamageWeaponType = OutcomingDamageAndHealingModifier.WeaponType.Melee;
+                    c.m_SourceToTargetFactionType = OutcomingDamageAndHealingModifier.FactionType.Any;
+                    c.m_AoeEntry = OutcomingDamageAndHealingModifier.EntryType.OnlyFalse;
+                    c.m_OverrideOtherModifierPercents = false;
+                });
+                bp.m_Flags = BlueprintBuff.Flags.HiddenInUi;
+                bp.Stacking = StackingType.Replace;
+                bp.Frequency = DurationRate.Rounds;
+            });
+
+
             var CompanionSaplingTreantConstructFeature = Helpers.CreateBlueprint<BlueprintFeature>("CompanionSaplingTreantConstructFeature", bp => {
                 bp.SetName("Construct Smasher");
                 bp.SetDescription("The sapling treant deals double damage to constructs and objects.");
-                bp.AddComponent<AddOutgoingDamageBonus>(c => {
-                    c.DamageType = new DamageTypeDescription() {
-                        Type = DamageType.Physical,
-                        Common = new DamageTypeDescription.CommomData() {
-                            Reality = 0,
-                            Alignment = 0,
-                            Precision = false
-                        },
-                        Physical = new DamageTypeDescription.PhysicalData() {
-                            Material = 0,
-                            Form = Kingmaker.Enums.Damage.PhysicalDamageForm.Bludgeoning,
-                            Enhancement = 0,
-                            EnhancementTotal = 0
-                        },
-                        Energy = Kingmaker.Enums.Damage.DamageEnergyType.Fire
-                    };
-                    c.Condition = DamageIncreaseCondition.Fact;
-                    c.Reason = DamageIncreaseReason.None;
-                    c.OriginalDamageFactor = 1;
-                    c.CheckedDescriptor = SpellDescriptor.None;
-                    c.m_CheckedFact = ConstructType.ToReference<BlueprintUnitFactReference>();
-                });                
+                //bp.AddComponent<AddOutgoingDamageBonus>(c => {
+                //    c.DamageType = new DamageTypeDescription() {
+                //        Type = DamageType.Physical,
+                //        Common = new DamageTypeDescription.CommomData() {
+                //            Reality = 0,
+                //            Alignment = 0,
+                //            Precision = false
+                //        },
+                //        Physical = new DamageTypeDescription.PhysicalData() {
+                //            Material = 0,
+                //            Form = Kingmaker.Enums.Damage.PhysicalDamageForm.Bludgeoning,
+                //            Enhancement = 0,
+                //            EnhancementTotal = 0
+                //        },
+                //        Energy = Kingmaker.Enums.Damage.DamageEnergyType.Fire
+                //    };
+                //    c.Condition = DamageIncreaseCondition.Fact;
+                //    c.Reason = DamageIncreaseReason.None;
+                //    c.OriginalDamageFactor = 1;
+                //    c.CheckedDescriptor = SpellDescriptor.None;
+                //    c.m_CheckedFact = ConstructType.ToReference<BlueprintUnitFactReference>();
+                //});                
+                bp.AddComponent<AddInitiatorAttackWithWeaponTrigger>(c => {
+                    c.TriggerBeforeAttack = true;
+                    c.OnlyHit = false;
+                    c.OnMiss = false;
+                    c.OnlyOnFullAttack = false;
+                    c.OnlyOnFirstAttack = false;
+                    c.OnlyOnFirstHit = false;
+                    c.CriticalHit = false;
+                    c.OnAttackOfOpportunity = false;
+                    c.NotCriticalHit = false;
+                    c.OnlySneakAttack = false;
+                    c.NotSneakAttack = false;
+                    c.m_WeaponType = new BlueprintWeaponTypeReference();
+                    c.CheckWeaponCategory = false;
+                    c.Category = WeaponCategory.UnarmedStrike;
+                    c.CheckWeaponGroup = false;
+                    c.Group = WeaponFighterGroup.None;
+                    c.CheckWeaponRangeType = false;
+                    c.RangeType = WeaponRangeType.Melee;
+                    c.ActionsOnInitiator = false;
+                    c.ReduceHPToZero = false;
+                    c.DamageMoreTargetMaxHP = false;
+                    c.CheckDistance = false;
+                    c.DistanceLessEqual = new Feet(); //?
+                    c.AllNaturalAndUnarmed = false;
+                    c.DuelistWeapon = false;
+                    c.NotExtraAttack = false;
+                    c.OnCharge = false;
+                    c.Action = Helpers.CreateActionList(
+                        new Conditional() {
+                            ConditionsChecker = new ConditionsChecker() {
+                                Operation = Operation.And,
+                                Conditions = new Condition[] {
+                                    new ContextConditionHasFact() {
+                                        Not = false,
+                                        m_Fact = ConstructType.ToReference<BlueprintUnitFactReference>()
+                                    }
+                                }
+                            },
+                            IfTrue = Helpers.CreateActionList(
+                                new ContextActionApplyBuff() {
+                                    ToCaster = true,
+                                    IsNotDispelable = true,
+                                    m_Buff = CompanionSaplingTreantConstructSelfBuff.ToReference<BlueprintBuffReference>(),
+                                    DurationValue = new ContextDurationValue() {
+                                        Rate = DurationRate.Rounds,
+                                        DiceType = DiceType.One,
+                                        DiceCountValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 0,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                        BonusValue = new ContextValue() {
+                                            ValueType = ContextValueType.Simple,
+                                            Value = 1,
+                                            ValueRank = AbilityRankType.Default,
+                                            ValueShared = AbilitySharedValue.Damage,
+                                            Property = UnitProperty.None
+                                        },
+                                    }
+                                }
+                                ),
+                            IfFalse = Helpers.CreateActionList()
+                        });
+                });
             });
 
             var CompanionNotUpgradedSaplingTreant = Helpers.CreateBlueprint<BlueprintFeature>("CompanionNotUpgradedSaplingTreant", bp => {
