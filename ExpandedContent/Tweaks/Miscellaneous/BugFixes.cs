@@ -14,6 +14,8 @@ using Kingmaker.RuleSystem.Rules;
 using Kingmaker.RuleSystem.Rules.Damage;
 using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Abilities;
+using Kingmaker.UnitLogic.Abilities.Blueprints;
+using Kingmaker.UnitLogic.Abilities.Components.TargetCheckers;
 using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.UnitLogic.Mechanics;
@@ -163,6 +165,21 @@ namespace ExpandedContent.Tweaks.Miscellaneous {
                         CriticalSharedValue = AbilitySharedValue.Damage
                     }
                     );
+            });
+            Main.Log("Patched");
+            #endregion
+
+            #region Animal Growth Targeting Plants fix
+            Main.Log("Starting AnimalGrowth working on trees or drakes Patch");
+            var AnimalGrowthSpell = Resources.GetBlueprint<BlueprintAbility>("56923211d2ac95e43b8ac5031bab74d8");
+            var PlantType = Resources.GetBlueprint<BlueprintFeature>("706e61781d692a042b35941f14bc41c5");
+            var DragonType = Resources.GetBlueprint<BlueprintFeature>("455ac88e22f55804ab87c2467deff1d6");
+            AnimalGrowthSpell.AddComponent<AbilityTargetHasFact>(c => {
+                c.m_CheckedFacts = new BlueprintUnitFactReference[] { 
+                    PlantType.ToReference<BlueprintUnitFactReference>(),
+                    DragonType.ToReference<BlueprintUnitFactReference>()
+                };
+                c.Inverted = true;
             });
             Main.Log("Patched");
             #endregion
