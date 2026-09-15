@@ -11,41 +11,41 @@ While this mod is not dependant on [TabletopTweaks-Base](https://github.com/Vek1
 
 New Archetypes
 
-- Ravener Hunter, Sworn of the Eldest, Inquisitor
+- Ravener Hunter, Sworn of the Eldest - Inquisitor
 
-- Mooncaller, Draconic Druid, Storm Druid, Urban Druid, Bear Shaman, Lion Shaman, Treesinger, Druid
+- Mooncaller, Draconic Druid, Storm Druid, Urban Druid, Bear Shaman, Lion Shaman, Treesinger - Druid
 
-- Temple Champion, Silver Champion, Paladin
+- Temple Champion, Silver Champion - Paladin
 
-- Divine Tracker, Drake Warden, Ranger
+- Divine Tracker, Drake Warden - Ranger
 
-- Clutch Thief, Rogue
+- Clutch Thief - Rogue
 
-- Ocean's Echo, Oracle
+- Ocean's Echo - Oracle
 
-- Draconic Shaman, Shaman
+- Draconic Shaman - Shaman
 
-- Draconic Scholar, Arcanist
+- Draconic Scholar - Arcanist
 
-- Wyrm Singer, Skald
+- Wyrm Singer - Skald
 
-- Archer, Spear Fighter, Child of Acavna and Amaznen, Fighter
+- Archer, Spear Fighter, Child of Acavna and Amaznen - Fighter
 
-- Plant Master, Skulking Hunter, Hunter
+- Plant Master, Skulking Hunter - Hunter
 
-- Divine Scourge, Cleric
+- Divine Scourge - Cleric
 
-- Mindchemist, Alchemist
+- Mindchemist - Alchemist
 
-- Drake Rider, Cavalier
+- Drake Rider - Cavalier
 
-- Water Dancer, Monk
+- Water Dancer - Monk
 
-- Soldier of Gaia, Faithful Paragon, Warpriest
+- Soldier of Gaia, Faithful Paragon - Warpriest
 
-- Beastmorph, Alchemist
+- Beastmorph - Alchemist
 
-- Warhound, Slayer
+- Warhound - Slayer
 
 New Prestige Class
 
