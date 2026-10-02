@@ -36,7 +36,7 @@ namespace ExpandedContent.Tweaks.Spirits.Hexes {
 
             var ShamanFrostSpiritProgression = Resources.GetBlueprint<BlueprintProgression>("44c130a12d49ebf4a95945feffe5aae7");
             var ShamanFrostSpiritWanderingFeature = Resources.GetBlueprint<BlueprintFeature>("6aeab860502ca2643affcbf1a83187e0");
-            var ShamanFrostSpiritBaseFeature = Resources.GetBlueprint<BlueprintProgression>("30dc785861c12374c910e5ede5b87ef4");
+            var ShamanFrostSpiritBaseFeature = Resources.GetBlueprint<BlueprintFeature>("30dc785861c12374c910e5ede5b87ef4");
 
             var ShamanHexSluggishCooldown = Helpers.CreateBuff("ShamanHexSluggishCooldown", bp => {
                 bp.SetName("Already targeted by this hex today");

@@ -37,7 +37,7 @@ namespace ExpandedContent.Tweaks.Spirits.Hexes {
 
             var ShamanNatureSpiritProgression = Resources.GetBlueprint<BlueprintProgression>("379d33ef16e812146b5517601ab25e66");
             var ShamanNatureSpiritWanderingFeature = Resources.GetBlueprint<BlueprintFeature>("54943a544ec1b31438366aaf73e5f310");
-            var ShamanNatureSpiritBaseFeature = Resources.GetBlueprint<BlueprintProgression>("0a7166e9c6ea5874e9fc4984f30f2d8d");
+            var ShamanNatureSpiritBaseFeature = Resources.GetBlueprint<BlueprintFeature>("0a7166e9c6ea5874e9fc4984f30f2d8d");
 
             var ConstructType = Resources.GetBlueprint<BlueprintFeature>("fd389783027d63343b4a5634bd81645f");
             var OracleRevelationErosionTouchIcon = Resources.GetBlueprint<BlueprintAbility>("f9fa310c8c0f8784e94b6ae265f7b921").Icon;

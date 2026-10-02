@@ -42,7 +42,7 @@ namespace ExpandedContent.Tweaks.Spirits.Hexes {
 
             var ShamanStoneSpiritProgression = Resources.GetBlueprint<BlueprintProgression>("acff6b0cf279a31439010afea01df912");
             var ShamanStoneSpiritWanderingFeature = Resources.GetBlueprint<BlueprintFeature>("e6468a6fac9e1074897b2487a0659e96");
-            var ShamanStoneSpiritBaseFeature = Resources.GetBlueprint<BlueprintProgression>("5c3ccab7cb27f4a408531197eb2abd3f");
+            var ShamanStoneSpiritBaseFeature = Resources.GetBlueprint<BlueprintFeature>("5c3ccab7cb27f4a408531197eb2abd3f");
 
             var ClaySkinIcon = AssetLoader.LoadInternal("Skills", "Icon_ClaySkin.jpg");
 
