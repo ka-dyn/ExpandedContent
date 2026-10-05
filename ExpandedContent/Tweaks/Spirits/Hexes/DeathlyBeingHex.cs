@@ -26,7 +26,7 @@ namespace ExpandedContent.Tweaks.Spirits.Hexes {
 
             var ShamanBonesSpiritProgression = Resources.GetBlueprint<BlueprintProgression>("65b5e7f17a1b928418fc9e8a6b55eafa");
             var ShamanBonesSpiritWanderingFeature = Resources.GetBlueprint<BlueprintFeature>("a3862152ae6010445bc25915ac58fc8e");
-            var ShamanBonesSpiritBaseFeature = Resources.GetBlueprint<BlueprintProgression>("f556c44606e5eaa47bac31aae9ebc96d");
+            var ShamanBonesSpiritBaseFeature = Resources.GetBlueprint<BlueprintFeature>("f556c44606e5eaa47bac31aae9ebc96d");
 
             var NegativeEnergyAffinity = Resources.GetBlueprint<BlueprintFeature>("d5ee498e19722854198439629c1841a5");
 

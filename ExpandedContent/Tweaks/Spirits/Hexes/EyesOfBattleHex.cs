@@ -36,7 +36,7 @@ namespace ExpandedContent.Tweaks.Spirits.Hexes
 
             var ShamanBattleSpiritProgression = Resources.GetBlueprint<BlueprintProgression>("26e81d83d13dbf6448b10019c802612d");
             var ShamanBattleSpiritWanderingFeature = Resources.GetBlueprint<BlueprintFeature>("82ec7a49f3ab65a44bbf4177dfdfe469");
-            var ShamanBattleSpiritBaseFeature = Resources.GetBlueprint<BlueprintProgression>("5e1161a3a7e5a83458de8a5f412c8d0c");
+            var ShamanBattleSpiritBaseFeature = Resources.GetBlueprint<BlueprintFeature>("5e1161a3a7e5a83458de8a5f412c8d0c");
 
             var TrueSeeingIcon = Resources.GetBlueprint<BlueprintBuff>("09b4b69169304474296484c74aa12027").Icon;
 

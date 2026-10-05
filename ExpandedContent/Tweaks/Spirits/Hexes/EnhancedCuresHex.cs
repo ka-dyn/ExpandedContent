@@ -41,7 +41,7 @@ namespace ExpandedContent.Tweaks.Spirits.Hexes {
 
             var ShamanLifeSpiritProgression = Resources.GetBlueprint<BlueprintProgression>("f9ee5a9146561ba4bac4cb8a7126f85c");
             var ShamanLifeSpiritWanderingFeature = Resources.GetBlueprint<BlueprintFeature>("ea7b7bf33205d4b41a913c2a8487c7c7");
-            var ShamanLifeSpiritBaseFeature = Resources.GetBlueprint<BlueprintProgression>("9ae3ba76663a19141a3996c1e3ce95e3");
+            var ShamanLifeSpiritBaseFeature = Resources.GetBlueprint<BlueprintFeature>("9ae3ba76663a19141a3996c1e3ce95e3");
 
 
 
