@@ -2515,8 +2515,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     c.m_BaseValueType = ContextRankBaseValueType.SummClassLevelWithArchetype;
                     c.m_Stat = StatType.Unknown;
                     c.m_SpecificModifier = ModifierDescriptor.None;
-                    c.m_Progression = ContextRankProgression.Div2;
-                    c.m_StepLevel = 2;
+                    c.m_Progression = ContextRankProgression.AsIs;
                     c.m_UseMin = true;
                     c.m_Min = 1;
                     c.m_Class = new BlueprintCharacterClassReference[] {
@@ -2678,8 +2677,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                     c.m_BaseValueType = ContextRankBaseValueType.SummClassLevelWithArchetype;
                     c.m_Stat = StatType.Unknown;
                     c.m_SpecificModifier = ModifierDescriptor.None;
-                    c.m_Progression = ContextRankProgression.Div2;
-                    c.m_StepLevel = 2;
+                    c.m_Progression = ContextRankProgression.AsIs;
                     c.m_UseMin = true;
                     c.m_Min = 1;
                     c.m_Class = new BlueprintCharacterClassReference[] {
