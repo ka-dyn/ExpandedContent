@@ -1337,6 +1337,14 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var ProtectionBlessingFeatureConfig = Resources.GetBlueprint<BlueprintFeature>("c6a3fa9d8d7f942499e4909cd01ca22d").GetComponent<AddFeatureOnClassLevel>();
             ProtectionBlessingFeatureConfig.m_AdditionalClasses = ProtectionBlessingFeatureConfig.m_AdditionalClasses.AppendToArray(PaladinClass.ToReference<BlueprintCharacterClassReference>());
             ProtectionBlessingFeatureConfig.m_Archetypes = ProtectionBlessingFeatureConfig.m_Archetypes.AppendToArray(TempleChampionArchetype.ToReference<BlueprintArchetypeReference>());
+            var ProtectionBlessingMinorBuffConfig = Resources.GetBlueprint<BlueprintBuff>("944fa7a1eb0d891458917d831f906a41").GetComponent<ContextRankConfig>();
+            ProtectionBlessingMinorBuffConfig.m_BaseValueType = ContextRankBaseValueType.SummClassLevelWithArchetype;
+            ProtectionBlessingMinorBuffConfig.m_Class = ProtectionBlessingMinorBuffConfig.m_Class.AppendToArray(PaladinClass.ToReference<BlueprintCharacterClassReference>());
+            ProtectionBlessingMinorBuffConfig.m_AdditionalArchetypes = ProtectionBlessingMinorBuffConfig.m_AdditionalArchetypes.AppendToArray(TempleChampionArchetype.ToReference<BlueprintArchetypeReference>());
+            var ProtectionBlessingMajorBuffEffectConfig = Resources.GetBlueprint<BlueprintBuff>("a9a3a4b202945f8409b4b15221a0f588").GetComponent<ContextRankConfig>();
+            ProtectionBlessingMajorBuffEffectConfig.m_BaseValueType = ContextRankBaseValueType.SummClassLevelWithArchetype;
+            ProtectionBlessingMajorBuffEffectConfig.m_Class = ProtectionBlessingMajorBuffEffectConfig.m_Class.AppendToArray(PaladinClass.ToReference<BlueprintCharacterClassReference>());
+            ProtectionBlessingMajorBuffEffectConfig.m_AdditionalArchetypes = ProtectionBlessingMajorBuffEffectConfig.m_AdditionalArchetypes.AppendToArray(TempleChampionArchetype.ToReference<BlueprintArchetypeReference>());
             //Repose
             var ReposeBlessingFeatureConfig = Resources.GetBlueprint<BlueprintFeature>("64a416082927673409deb330af04d6d2").GetComponent<AddFeatureOnClassLevel>();
             ReposeBlessingFeatureConfig.m_AdditionalClasses = ReposeBlessingFeatureConfig.m_AdditionalClasses.AppendToArray(PaladinClass.ToReference<BlueprintCharacterClassReference>());
@@ -1353,6 +1361,10 @@ namespace ExpandedContent.Tweaks.Archetypes {
             var TravelBlessingFeatureConfig = Resources.GetBlueprint<BlueprintFeature>("87641a8efec53d64d853ecc436234dce").GetComponent<AddFeatureOnClassLevel>();
             TravelBlessingFeatureConfig.m_AdditionalClasses = TravelBlessingFeatureConfig.m_AdditionalClasses.AppendToArray(PaladinClass.ToReference<BlueprintCharacterClassReference>());
             TravelBlessingFeatureConfig.m_Archetypes = TravelBlessingFeatureConfig.m_Archetypes.AppendToArray(TempleChampionArchetype.ToReference<BlueprintArchetypeReference>());
+            var TrickeryBlessingMinorAbilityConfig = Resources.GetBlueprint<BlueprintAbility>("c630aa6a5c6566d4995585b94a5d3749").GetComponent<ContextRankConfig>();
+            TrickeryBlessingMinorAbilityConfig.m_BaseValueType = ContextRankBaseValueType.SummClassLevelWithArchetype;
+            TrickeryBlessingMinorAbilityConfig.m_Class = TrickeryBlessingMinorAbilityConfig.m_Class.AppendToArray(PaladinClass.ToReference<BlueprintCharacterClassReference>());
+            TrickeryBlessingMinorAbilityConfig.m_AdditionalArchetypes = TrickeryBlessingMinorAbilityConfig.m_AdditionalArchetypes.AppendToArray(TempleChampionArchetype.ToReference<BlueprintArchetypeReference>());
             //Trickery
             var TrickeryBlessingFeatureConfig = Resources.GetBlueprint<BlueprintFeature>("a8e7abcad0cf8384b9f12c3b075b5cae").GetComponent<AddFeatureOnClassLevel>();
             TrickeryBlessingFeatureConfig.m_AdditionalClasses = TrickeryBlessingFeatureConfig.m_AdditionalClasses.AppendToArray(PaladinClass.ToReference<BlueprintCharacterClassReference>());
