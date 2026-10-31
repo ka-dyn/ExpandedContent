@@ -725,7 +725,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.SetDescription("At 6th level, a treesinger can use wildshape to change into a mandragora and back twice a day. The effect lasts for 1 hour per druid level, or until she " +
                     "changes back. \nChanging form is a {g|Encyclopedia:Standard_Actions}standard action{/g} and doesn't provoke an {g|Encyclopedia:Attack_Of_Opportunity}attack of opportunity{/g}. " +
                     "A druid can use this ability an additional time per day at 8th level and every two levels thereafter, for a total of eight times at 18th level. At 9th level, a treesinger " +
-                    "can use wild shape to change into a shambling mound ro a quickwood. At 12th level, a treesinger can use wild shape to change into a giant flytrap or a treant.");
+                    "can use wild shape to change into a shambling mound or a quickwood. At 12th level, a treesinger can use wild shape to change into a giant flytrap or a treant.");
                 bp.m_Icon = WildShapeIVShamblingMoundFeature.Icon;
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] {
@@ -745,7 +745,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.SetDescription("At 6th level, a treesinger can use wildshape to change into a mandragora and back twice a day. The effect lasts for 1 hour per druid level, or until she " +
                     "changes back. \nChanging form is a {g|Encyclopedia:Standard_Actions}standard action{/g} and doesn't provoke an {g|Encyclopedia:Attack_Of_Opportunity}attack of opportunity{/g}. " +
                     "A druid can use this ability an additional time per day at 8th level and every two levels thereafter, for a total of eight times at 18th level. At 9th level, a treesinger " +
-                    "can use wild shape to change into a shambling mound ro a quickwood. At 12th level, a treesinger can use wild shape to change into a giant flytrap or a treant.");
+                    "can use wild shape to change into a shambling mound or a quickwood. At 12th level, a treesinger can use wild shape to change into a giant flytrap or a treant.");
                 bp.m_Icon = WildShapeIVShamblingMoundFeature.Icon;
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] {
@@ -760,7 +760,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.SetDescription("At 6th level, a treesinger can use wildshape to change into a mandragora and back twice a day. The effect lasts for 1 hour per druid level, or until she " +
                     "changes back. \nChanging form is a {g|Encyclopedia:Standard_Actions}standard action{/g} and doesn't provoke an {g|Encyclopedia:Attack_Of_Opportunity}attack of opportunity{/g}. " +
                     "A druid can use this ability an additional time per day at 8th level and every two levels thereafter, for a total of eight times at 18th level. At 9th level, a treesinger " +
-                    "can use wild shape to change into a shambling mound ro a quickwood. At 12th level, a treesinger can use wild shape to change into a giant flytrap or a treant.");
+                    "can use wild shape to change into a shambling mound or a quickwood. At 12th level, a treesinger can use wild shape to change into a giant flytrap or a treant.");
                 bp.m_Icon = WildShapeIVShamblingMoundFeature.Icon;
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] {
@@ -775,7 +775,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.SetDescription("At 6th level, a treesinger can use wildshape to change into a mandragora and back twice a day. The effect lasts for 1 hour per druid level, or until she " +
                     "changes back. \nChanging form is a {g|Encyclopedia:Standard_Actions}standard action{/g} and doesn't provoke an {g|Encyclopedia:Attack_Of_Opportunity}attack of opportunity{/g}. " +
                     "A druid can use this ability an additional time per day at 8th level and every two levels thereafter, for a total of eight times at 18th level. At 9th level, a treesinger " +
-                    "can use wild shape to change into a shambling mound ro a quickwood. At 12th level, a treesinger can use wild shape to change into a giant flytrap or a treant.");
+                    "can use wild shape to change into a shambling mound or a quickwood. At 12th level, a treesinger can use wild shape to change into a giant flytrap or a treant.");
                 bp.m_Icon = WildShapeIVShamblingMoundFeature.Icon;
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] {
@@ -790,7 +790,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
                 bp.SetDescription("At 6th level, a treesinger can use wildshape to change into a mandragora and back twice a day. The effect lasts for 1 hour per druid level, or until she " +
                     "changes back. \nChanging form is a {g|Encyclopedia:Standard_Actions}standard action{/g} and doesn't provoke an {g|Encyclopedia:Attack_Of_Opportunity}attack of opportunity{/g}. " +
                     "A druid can use this ability an additional time per day at 8th level and every two levels thereafter, for a total of eight times at 18th level. At 9th level, a treesinger " +
-                    "can use wild shape to change into a shambling mound ro a quickwood. At 12th level, a treesinger can use wild shape to change into a giant flytrap or a treant.");
+                    "can use wild shape to change into a shambling mound or a quickwood. At 12th level, a treesinger can use wild shape to change into a giant flytrap or a treant.");
                 bp.m_Icon = WildShapeIVShamblingMoundFeature.Icon;
                 bp.AddComponent<AddFacts>(c => {
                     c.m_Facts = new BlueprintUnitFactReference[] {

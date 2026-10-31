@@ -333,7 +333,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.m_Icon = ShadowMysteryIcon;
                 bp.SetName("Shadow");
                 bp.SetDescription("An oracle with the shadow mystery adds {g|Encyclopedia:Persuasion}Persuasion{/g}, {g|Encyclopedia:Stealth}Stealth{/g} " +
-                    "and {g|Encyclopedia:Knowledge_World}Knowledge (World) {/g} to her list of class {g|Encyclopedia:Skills}skills{/g}.");
+                    "and {g|Encyclopedia:Knowledge_World}Knowledge (World){/g} to her list of class {g|Encyclopedia:Skills}skills{/g}.");
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_AdditionalClasses = new BlueprintCharacterClassReference[] {
@@ -371,7 +371,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.m_Icon = ShadowMysteryIcon;
                 bp.SetName("Shadow");
                 bp.SetDescription("An oracle with the shadow mystery adds {g|Encyclopedia:Persuasion}Persuasion{/g}, {g|Encyclopedia:Stealth}Stealth{/g} " +
-                    "and {g|Encyclopedia:Knowledge_World}Knowledge (World) {/g} to her list of class {g|Encyclopedia:Skills}skills{/g}.");
+                    "and {g|Encyclopedia:Knowledge_World}Knowledge (World){/g} to her list of class {g|Encyclopedia:Skills}skills{/g}.");
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
                     c.Level = 2;

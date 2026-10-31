@@ -1665,7 +1665,7 @@ namespace ExpandedContent.Tweaks.Classes {
             var StargazerMysteryMagicCOMSBuff = Helpers.CreateBuff("StargazerMysteryMagicCOMSBuff", bp => {
                 bp.SetName("Mystery Magic - Coat of Many Stars");
                 bp.SetDescription("You conjure a coat of starry radiance that grants you a +4 armor {g|Encyclopedia:Bonus}bonus{/g} along with " +
-                    "{g|Encyclopedia:Damage_Reduction}DR{/g} 5/{g|Encyclopedia:Damage_Type}slashing{/g}. At 7th  and 9th level, the armor " +
+                    "{g|Encyclopedia:Damage_Reduction}DR{/g} 5/{g|Encyclopedia:Damage_Type}slashing{/g}. At 7th and 9th level, the armor " +
                     "bonus increases by +2. You can use this coat for 1 hour number of times per day equal to stargazer level.");
                 bp.m_Icon = EdictOfImpenetrableFortress.Icon;
                 bp.AddComponent<ContextRankConfig>(c => {
@@ -1767,7 +1767,7 @@ namespace ExpandedContent.Tweaks.Classes {
             var StargazerMysteryMagicCOMSAbility = Helpers.CreateBlueprint<BlueprintActivatableAbility>("StargazerMysteryMagicCOMSAbility", bp => {
                 bp.SetName("Mystery Magic - Coat of Many Stars");
                 bp.SetDescription("You conjure a coat of starry radiance that grants you a +4 armor {g|Encyclopedia:Bonus}bonus{/g} along with " +
-                    "{g|Encyclopedia:Damage_Reduction}DR{/g} 5/{g|Encyclopedia:Damage_Type}slashing{/g}. At 7th  and 9th level, the armor " +
+                    "{g|Encyclopedia:Damage_Reduction}DR{/g} 5/{g|Encyclopedia:Damage_Type}slashing{/g}. At 7th and 9th level, the armor " +
                     "bonus increases by +2. You can use this coat for 1 hour number of times per day equal to stargazer level.");
                 bp.m_Icon = EdictOfImpenetrableFortress.Icon;
                 bp.AddComponent<ActivatableAbilityResourceLogic>(c => {
@@ -1783,7 +1783,7 @@ namespace ExpandedContent.Tweaks.Classes {
             var StargazerMysteryMagicCOMSFeature = Helpers.CreateBlueprint<BlueprintFeature>("StargazerMysteryMagicCOMSFeature", bp => {
                 bp.SetName("Mystery Magic - Coat of Many Stars");
                 bp.SetDescription("You conjure a coat of starry radiance that grants you a +4 armor {g|Encyclopedia:Bonus}bonus{/g} along with " +
-                    "{g|Encyclopedia:Damage_Reduction}DR{/g} 5/{g|Encyclopedia:Damage_Type}slashing{/g}. At 7th  and 9th level, the armor " +
+                    "{g|Encyclopedia:Damage_Reduction}DR{/g} 5/{g|Encyclopedia:Damage_Type}slashing{/g}. At 7th and 9th level, the armor " +
                     "bonus increases by +2. You can use this coat for 1 hour number of times per day equal to stargazer level.");
                 bp.m_Icon = EdictOfImpenetrableFortress.Icon;
                 bp.AddComponent<AddFacts>(c => {

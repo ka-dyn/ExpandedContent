@@ -51,7 +51,7 @@ namespace ExpandedContent.Tweaks.Deities {
                     "True Spark dances in dangerous wilderness and lonely graveyards alike, leading lost spirits home. When individuals " +
                     "die violently or unexpectedly, their spirits can become lost. Lonely ghosts and confused spectres become hypnotized by " +
                     "Ashava's dance and follow her as she leads them to their peaceful graves. Those who watch over dangerous areas where " +
-                    "travelers can lose their way pray to Ashava for the safety oftheir guests. Ashava despises will-o'-wisps and goes out of " +
+                    "travelers can lose their way pray to Ashava for the safety of their guests. Ashava despises will-o'-wisps and goes out of " +
                     "her way to destroy the foul creatures. When not guiding spirits, Ashava lives in the moonlight of the Sparkling Fens on Elysium, " +
                     "at the base of the Mountain of Lingering Soulsong." +
                     "\nAppearance: Ashava's every motion is light and unfettered; she moves like the wild wind across the plains. She stands 7 feet tall, " +

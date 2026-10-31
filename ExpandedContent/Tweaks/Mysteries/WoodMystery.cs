@@ -267,7 +267,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.m_Icon = WoodMysteryIcon;
                 bp.SetName("Wood");
                 bp.SetDescription("An oracle with the wood mystery adds {g|Encyclopedia:Mobility}Mobility{/g}, {g|Encyclopedia:Lore_Nature}Lore (nature){/g}, " +
-                    "{g|Encyclopedia:Stealth}Stealth{/g}  and {g|Encyclopedia:Knowledge_World}Knowledge (World) {/g} to her list of class {g|Encyclopedia:Skills}skills{/g}.");
+                    "{g|Encyclopedia:Stealth}Stealth{/g} and {g|Encyclopedia:Knowledge_World}Knowledge (World){/g} to her list of class {g|Encyclopedia:Skills}skills{/g}.");
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_AdditionalClasses = new BlueprintCharacterClassReference[] {
@@ -305,7 +305,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.m_Icon = WoodMysteryIcon;
                 bp.SetName("Wood");
                 bp.SetDescription("An oracle with the wood mystery adds {g|Encyclopedia:Mobility}Mobility{/g}, {g|Encyclopedia:Lore_Nature}Lore (nature){/g}, " +
-                    "{g|Encyclopedia:Stealth}Stealth{/g}  and {g|Encyclopedia:Knowledge_World}Knowledge (World) {/g} to her list of class {g|Encyclopedia:Skills}skills{/g}.");
+                    "{g|Encyclopedia:Stealth}Stealth{/g} and {g|Encyclopedia:Knowledge_World}Knowledge (World){/g} to her list of class {g|Encyclopedia:Skills}skills{/g}.");
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
                     c.Level = 2;

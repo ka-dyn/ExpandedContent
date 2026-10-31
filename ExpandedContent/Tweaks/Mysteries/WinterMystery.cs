@@ -274,7 +274,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.m_Icon = WinterMysteryIcon;
                 bp.SetName("Winter");
                 bp.SetDescription("An oracle with the winter mystery adds {g|Encyclopedia:Persuasion}Persuasion{/g}, {g|Encyclopedia:Stealth}Stealth{/g}, " +
-                    "{g|Encyclopedia:Lore_Nature}Lore (nature){/g} and {g|Encyclopedia:Knowledge_World}Knowledge (World) {/g} to " +
+                    "{g|Encyclopedia:Lore_Nature}Lore (nature){/g} and {g|Encyclopedia:Knowledge_World}Knowledge (World){/g} to " +
                     "her list of class {g|Encyclopedia:Skills}skills{/g}.");
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
@@ -313,7 +313,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.m_Icon = WinterMysteryIcon;
                 bp.SetName("Winter");
                 bp.SetDescription("An oracle with the winter mystery adds {g|Encyclopedia:Persuasion}Persuasion{/g}, {g|Encyclopedia:Stealth}Stealth{/g}, " +
-                    "{g|Encyclopedia:Lore_Nature}Lore (nature){/g} and {g|Encyclopedia:Knowledge_World}Knowledge (World) {/g} to " +
+                    "{g|Encyclopedia:Lore_Nature}Lore (nature){/g} and {g|Encyclopedia:Knowledge_World}Knowledge (World){/g} to " +
                     "her list of class {g|Encyclopedia:Skills}skills{/g}.");
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();

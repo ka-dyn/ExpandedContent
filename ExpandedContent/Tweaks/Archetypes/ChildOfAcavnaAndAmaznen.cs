@@ -210,7 +210,7 @@ namespace ExpandedContent.Tweaks.Archetypes {
             });
             var ChildOfAcavnaAndAmaznenDelayedCasting = Helpers.CreateBlueprint<BlueprintFeature>("ChildOfAcavnaAndAmaznenDelayedCasting", bp => {
                 bp.SetName("Student of Spellcasting");
-                bp.SetDescription("The child of Acavna and Amaznen gains a spellbook starting with spells from the bloodrager spelllist equal to 3 + their Intelligence modifier. " +
+                bp.SetDescription("The child of Acavna and Amaznen gains a spellbook starting with spells from the bloodrager spell list equal to 3 + their Intelligence modifier. " +
                     "\nWhile they are unable to cast these spells before 5th level, they may add one additional per level and copy spells from scrolls into the spellbook until then.");                
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.BeforeThisLevel = true;

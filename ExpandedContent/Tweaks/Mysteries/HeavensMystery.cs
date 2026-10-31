@@ -290,7 +290,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
             var OracleHeavensMysteryFeature = Helpers.CreateBlueprint<BlueprintFeature>("OracleHeavensMysteryFeature", bp => {
                 bp.m_Icon = HeavensMysteryIcon;
                 bp.SetName("Heavens");
-                bp.SetDescription("An oracle with the heavens mystery adds {g|Encyclopedia:Perception}Perception{/g} and {g|Encyclopedia:Knowledge_Arcana}Knowledge (arcana) {/g} to " +
+                bp.SetDescription("An oracle with the heavens mystery adds {g|Encyclopedia:Perception}Perception{/g} and {g|Encyclopedia:Knowledge_Arcana}Knowledge (arcana){/g} to " +
                     "her list of class {g|Encyclopedia:Skills}skills{/g}.");
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
@@ -322,7 +322,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
             var EnlightnedPhilosopherHeavensMysteryFeature = Helpers.CreateBlueprint<BlueprintFeature>("EnlightnedPhilosopherHeavensMysteryFeature", bp => {
                 bp.m_Icon = HeavensMysteryIcon;
                 bp.SetName("Heavens");
-                bp.SetDescription("An oracle with the heavens mystery adds {g|Encyclopedia:Perception}Perception{/g} and {g|Encyclopedia:Knowledge_Arcana}Knowledge (arcana) {/g} to " +
+                bp.SetDescription("An oracle with the heavens mystery adds {g|Encyclopedia:Perception}Perception{/g} and {g|Encyclopedia:Knowledge_Arcana}Knowledge (arcana){/g} to " +
                     "her list of class {g|Encyclopedia:Skills}skills{/g}.");
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();

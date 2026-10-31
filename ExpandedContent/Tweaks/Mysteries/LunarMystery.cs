@@ -837,7 +837,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.m_Icon = LunarMysteryIcon;
                 bp.SetName("Lunar");
                 bp.SetDescription("An oracle with the lunar mystery adds {g|Encyclopedia:Mobility}Mobility{/g}, {g|Encyclopedia:Lore_Nature}Lore (nature){/g}, " +
-                    "{g|Encyclopedia:Perception}Perception{/g}  and {g|Encyclopedia:Knowledge_World}Knowledge (World) {/g} to her list of class {g|Encyclopedia:Skills}skills{/g}.");
+                    "{g|Encyclopedia:Perception}Perception{/g} and {g|Encyclopedia:Knowledge_World}Knowledge (World){/g} to her list of class {g|Encyclopedia:Skills}skills{/g}.");
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
                     c.m_AdditionalClasses = new BlueprintCharacterClassReference[] {
@@ -875,7 +875,7 @@ namespace ExpandedContent.Tweaks.Mysteries {
                 bp.m_Icon = LunarMysteryIcon;
                 bp.SetName("Lunar");
                 bp.SetDescription("An oracle with the lunar mystery adds {g|Encyclopedia:Mobility}Mobility{/g}, {g|Encyclopedia:Lore_Nature}Lore (nature){/g}, " +
-                    "{g|Encyclopedia:Perception}Perception{/g}  and {g|Encyclopedia:Knowledge_World}Knowledge (World) {/g} to her list of class {g|Encyclopedia:Skills}skills{/g}.");
+                    "{g|Encyclopedia:Perception}Perception{/g} and {g|Encyclopedia:Knowledge_World}Knowledge (World){/g} to her list of class {g|Encyclopedia:Skills}skills{/g}.");
                 bp.AddComponent<AddFeatureOnClassLevel>(c => {
                     c.m_Class = OracleClass.ToReference<BlueprintCharacterClassReference>();
                     c.Level = 2;
